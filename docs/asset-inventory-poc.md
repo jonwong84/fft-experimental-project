@@ -81,7 +81,7 @@ All seven mixed reference files have lengths divisible by 2,336, and their corre
 
 A local check read the 92-byte `MENU/TUTO7.SCR` entry directly from the verified BIN using its inventory LBA (72,317), Mode 2 sector payload offset 24, and ISO byte length. The resulting file exactly matched the existing decomp reference extraction by SHA-256 (`ECAD1978610D681F30A36A70F687A1B17C47AF9D04D7A61367927E77C7E05D30`). The temporary result was written under ignored `/scratch/first-raw-extraction/`. The reusable `IsoDataFileExtractor` copies ordinary Form 1 files using the directory entry's extent and exact byte length, truncates the final sector, validates Windows-safe relative output paths, and refuses to overwrite existing files. Synthetic tests cover multi-sector reads, final-sector truncation, unsafe paths, and preservation of an existing output. The reusable API was also run against `MENU/TUTO7.SCR` from the verified BIN and produced the same length and SHA-256 as the reference extraction.
 
-The CLI supports explicitly selected `data` files with repeated `--path` options and an opt-in `--all-data` mode. Before writing, it verifies the image and CUE profile, checks the complete inventory against reference paths and LBAs, rejects Windows path collisions and file/directory conflicts across the inventory, and confirms every selected entry is marked `data`. It verifies each extracted SHA-256 against the reference inventory. Output must go to a dedicated subdirectory under `/scratch/`, and existing files are never replaced. Mixed entries are skipped by `--all-data` and rejected if selected explicitly.
+The CLI supports explicitly selected `data` files with repeated `--path` options and an opt-in `--all-data` mode. Before writing, it verifies the image and CUE profile, checks the complete inventory against reference paths and LBAs, rejects Windows path collisions and file/directory conflicts across the inventory, and confirms every selected entry is marked `data`. It verifies each extracted SHA-256 against the reference inventory. Output must go to a dedicated subdirectory under `/scratch/`, and existing files are never replaced. After successful extraction it writes `assets.manifest.json` (schema version 1), with deterministic `base:<lowercase-relative-path>` IDs, original relative paths, byte lengths, and verified hashes. Mixed entries are skipped by `--all-data` and rejected if selected explicitly.
 
 The first full `--all-data` run extracted all 2,457 ordinary files (162,790,593 bytes; about 155.25 MiB). Every file's SHA-256 matched the reference inventory, the extracted file count and total byte count matched, and no mixed XA/STR files were written. The output and command log remain under ignored `/scratch/`.
 
@@ -91,7 +91,7 @@ The first full `--all-data` run extracted all 2,457 ordinary files (162,790,593 
 - Hashing every payload in the initial reader milestone (may be added as a follow-up verification mode).
 - Decoding SPR, GNS, TIM/TM2, text, sound, movie, and other resource formats.
 - Supporting arbitrary BIN/CUE layouts, multi-track discs, Mode 2 Form 2 sectors, Joliet/Rock Ridge, multi-extent files, or interleaved files.
-- Runtime access to raw sectors. The client will load prepared loose files by logical asset IDs/manifest paths and must work when the BIN is unavailable.
+- Runtime access to raw sectors. A `Fft.Content` library can now load prepared loose files by manifest ID and verify their size/hash; the console client is not wired to it yet and must work when the BIN is unavailable.
 
 ## Open decisions
 

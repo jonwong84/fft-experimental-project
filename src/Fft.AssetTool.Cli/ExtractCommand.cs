@@ -1,7 +1,9 @@
 using System.Security.Cryptography;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Fft.Content;
 using Fft.AssetTool;
+using Fft.Core;
 
 namespace Fft.AssetTool.Cli;
 
@@ -115,6 +117,22 @@ public sealed class ExtractCommand
                 }
             }
 
+            string manifestDirectory = PreparedAssetManifest.FileName + "/";
+            if (selectedEntries.Any(item =>
+                string.Equals(item.Entry.RelativePath, PreparedAssetManifest.FileName, StringComparison.OrdinalIgnoreCase) ||
+                item.Entry.RelativePath.StartsWith(manifestDirectory, StringComparison.OrdinalIgnoreCase)))
+            {
+                throw new InvalidDataException(
+                    $"An image file conflicts with the generated {PreparedAssetManifest.FileName}.");
+            }
+
+            string manifestPath = Path.Combine(outputRoot, PreparedAssetManifest.FileName);
+            if (File.Exists(manifestPath) || Directory.Exists(manifestPath))
+            {
+                throw new IOException($"Output path already exists: {manifestPath}");
+            }
+
+            var manifestEntries = new List<PreparedAssetEntry>(selectedEntries.Count);
             foreach (var (entry, expectedSha256) in selectedEntries)
             {
                 string destination = IsoDataFileExtractor.ExtractForm1DataFile(image, entry, outputRoot);
@@ -126,10 +144,15 @@ public sealed class ExtractCommand
                         $"SHA-256 mismatch for '{entry.RelativePath}': extracted {actualSha256}, expected {expectedSha256}.");
                 }
 
+                var id = new AssetId($"base:{entry.RelativePath.ToLowerInvariant()}");
+                manifestEntries.Add(new PreparedAssetEntry(id, entry.RelativePath, entry.ByteLength, actualSha256));
+
                 output.WriteLine($"Extracted {entry.RelativePath} ({entry.ByteLength} bytes, SHA-256 verified)");
                 output.WriteLine($"  {Path.GetRelativePath(_workspaceRoot, destination)}");
             }
 
+            new PreparedAssetManifest(manifestEntries).SaveToFile(manifestPath);
+            output.WriteLine($"Prepared asset manifest: {Path.GetRelativePath(_workspaceRoot, manifestPath)}");
             output.WriteLine($"Source SHA-256: {sourceHash}");
             return 0;
         }

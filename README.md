@@ -2,7 +2,7 @@
 
 Windows-first C#/.NET reimplementation of the North American PS1 release of Final Fantasy Tactics (`SCUS-94221`). See `PROJECT_PLAN.md` for scope and architecture.
 
-This checkout currently contains a headless .NET 10 console bootstrap, a `Fft.Core` library with immutable tile-position and battle-map data types, a deliberately simplified flat-grid movement-range prototype, a managed ISO inventory parser, and the `Fft.AssetTool.Cli` inventory command. The inventory tool has not been validated for arbitrary disc layouts; asset extraction/decoding, full FFT movement/combat rules, campaign logic, and a graphics/UI framework are not included.
+This checkout currently contains a headless .NET 10 console bootstrap, a `Fft.Core` library with immutable tile-position and battle-map data types plus namespaced asset IDs, a deliberately simplified flat-grid movement-range prototype, a managed ISO inventory/extraction tool that emits a versioned asset manifest, a separate `Fft.Content` library that loads and verifies files by manifest ID, and a unit `.SPR` parser with a bounded attack-image decoder. The console client is not wired to the content library yet. Asset format coverage is still narrow; SHP/SEQ animation metadata, other sprite formats, full FFT movement/combat rules, campaign logic, and a graphics/UI framework are not implemented.
 
 ## Build, run, and test
 

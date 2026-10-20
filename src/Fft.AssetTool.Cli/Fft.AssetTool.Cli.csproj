@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Fft.AssetTool\Fft.AssetTool.csproj" />
+    <ProjectReference Include="..\Fft.Content\Fft.Content.csproj" />
   </ItemGroup>
 
 </Project>
