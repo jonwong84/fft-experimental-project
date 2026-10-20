@@ -74,6 +74,25 @@ SHA-256. `Fft.Content.LooseAssetStore.Load` then loaded and hash-checked that
 file by ID, and the loaded bytes parsed and decoded successfully without opening
 the BIN in the reader process.
 
+`docs/fixtures/chocobo-attack-image.json` records the input identity and the
+decoded output identity without storing any game data: 256×200 pixels, packed
+4bpp with the first pixel in the high nibble, 25,600 decoded bytes, and SHA-256
+`d07fff4e49bf5e0a8b91343b2a722521ac5309e34ec23d2d5810e579a741c24f`. Run the
+check with:
+
+```powershell
+dotnet run --project src/Fft.AssetTool.Cli/Fft.AssetTool.Cli.csproj -c Release -- verify-sprite --content-root scratch/prepared-chocobo-content
+```
+
+Before recording the fixture digest, the managed output was compared byte for
+byte with a separate, temporary source-derived transcription of the original C
+routine. The copied decomp checkout contains no runnable PS1 game binary, and
+no native C compiler is available in this environment; therefore this is not a
+comparison against an executing original C routine or emulator. The fixture
+proves repeatability against that source-derived baseline, not definitive
+original-runtime equivalence. The fixture cites the exact source commit and
+function so a future executable reference run can replace or confirm it.
+
 Automated tests in `tests/Fft.AssetTool.Tests/` cover high-first nibble reading,
 packed pixel order, direct and extended transparent runs, run clipping at
 output end, truncated streams, fixed-prefix section sizes, source-copy behavior,
@@ -84,9 +103,8 @@ remains under ignored `/scratch/` and is not required by the test suite.
 
 ## Not yet established
 
-- Running the application composition root with the prepared content manifest;
-  the console client does not consume it yet.
 - A parsed SHP/SEQ runtime model or rendered comparison against the original.
-- Byte-for-byte comparison with a trusted output from the original C routine.
+- Byte-for-byte comparison with output from an executing original C routine or
+  emulator; the current golden digest is source-derived as described above.
 - Whether all `.SPR` variants use this unit-sheet format. `WEP.SPR` and
   `OTHER.SPR` have separate layouts in the reference header and are out of scope.

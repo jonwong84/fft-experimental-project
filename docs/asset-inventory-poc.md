@@ -91,7 +91,7 @@ The first full `--all-data` run extracted all 2,457 ordinary files (162,790,593 
 - Hashing every payload in the initial reader milestone (may be added as a follow-up verification mode).
 - Decoding SPR, GNS, TIM/TM2, text, sound, movie, and other resource formats.
 - Supporting arbitrary BIN/CUE layouts, multi-track discs, Mode 2 Form 2 sectors, Joliet/Rock Ridge, multi-extent files, or interleaved files.
-- Runtime access to raw sectors. A `Fft.Content` library can now load prepared loose files by manifest ID and verify their size/hash; the console client is not wired to it yet and must work when the BIN is unavailable.
+- Runtime access to raw sectors. A `Fft.Content` library can now load prepared loose files by manifest ID and verify their size/hash; the console client has a narrow prepared-asset loading mode and runs without the BIN when the prepared content directory is available.
 
 ## Open decisions
 

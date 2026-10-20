@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Fft.Content\Fft.Content.csproj" />
+    <ProjectReference Include="..\Fft.Core\Fft.Core.csproj" />
+  </ItemGroup>
+
 </Project>
