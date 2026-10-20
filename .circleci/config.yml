@@ -1,0 +1,64 @@
+version: 2.1
+
+jobs:
+  build-test-sonar:
+    docker:
+      - image: mcr.microsoft.com/dotnet/sdk:10.0
+    steps:
+      - checkout
+      - run:
+          name: Install SonarScanner for .NET
+          command: |
+            dotnet tool install --global dotnet-sonarscanner --version 12.0.0
+            echo 'export PATH="$PATH:/root/.dotnet/tools"' >> "$BASH_ENV"
+      - run:
+          name: Restore solution
+          command: dotnet restore Fft.sln
+      - run:
+          name: Begin SonarQube Cloud analysis
+          command: |
+            if [[ -z "${SONAR_TOKEN:-}" || -z "${SONAR_ORGANIZATION:-}" || -z "${SONAR_PROJECT_KEY:-}" ]]; then
+              echo "SONAR_TOKEN, SONAR_ORGANIZATION, and SONAR_PROJECT_KEY must be configured in the CircleCI context."
+              exit 1
+            fi
+
+            sonar_args=(
+              "/k:${SONAR_PROJECT_KEY}"
+              "/o:${SONAR_ORGANIZATION}"
+              "/d:sonar.token=${SONAR_TOKEN}"
+            )
+
+            if [[ "${SONAR_REGION:-}" == "us" ]]; then
+              sonar_args+=("/d:sonar.region=us")
+            fi
+
+            if [[ -n "${CIRCLE_PULL_REQUEST:-}" ]]; then
+              pull_request_number="${CIRCLE_PULL_REQUEST##*/}"
+              sonar_args+=(
+                "/d:sonar.pullrequest.key=${pull_request_number}"
+                "/d:sonar.pullrequest.branch=${CIRCLE_BRANCH}"
+                "/d:sonar.pullrequest.base=main"
+              )
+            fi
+
+            dotnet sonarscanner begin "${sonar_args[@]}"
+      - run:
+          name: Build solution
+          command: dotnet build Fft.sln --configuration Release --no-restore
+      - run:
+          name: Run tests
+          command: dotnet test Fft.sln --configuration Release --no-build --no-restore
+      - run:
+          name: Complete SonarQube Cloud analysis
+          command: dotnet sonarscanner end "/d:sonar.token=${SONAR_TOKEN}"
+
+workflows:
+  build-test-scan:
+    jobs:
+      - build-test-sonar:
+          context: global-v1
+          filters:
+            branches:
+              only:
+                - main
+                - /^feature\/.*/
