@@ -1,0 +1,93 @@
+version: 2.1
+
+jobs:
+  build-test-sonar:
+    docker:
+      - image: mcr.microsoft.com/dotnet/sdk:10.0
+    steps:
+      - checkout
+      - run:
+          name: Install SonarScanner and PR lookup tools
+          command: |
+            apt-get update
+            apt-get install --yes --no-install-recommends curl jq
+            rm -rf /var/lib/apt/lists/*
+            dotnet tool install --global dotnet-sonarscanner --version 12.0.0
+            echo 'export PATH="$PATH:/root/.dotnet/tools"' >> "$BASH_ENV"
+      - run:
+          name: Restore solution
+          command: dotnet restore Fft.sln
+      - run:
+          name: Begin SonarQube Cloud analysis
+          command: |
+            if [[ -z "${SONAR_TOKEN:-}" ]]; then
+              echo "SONAR_TOKEN must be configured in the CircleCI context."
+              exit 1
+            fi
+
+            sonar_args=(
+              "/k:jonwong84_fft-experimental-project"
+              "/o:jonwong84"
+              "/d:sonar.token=${SONAR_TOKEN}"
+            )
+
+            if [[ "${SONAR_REGION:-}" == "us" ]]; then
+              sonar_args+=("/d:sonar.region=us")
+            fi
+
+            if [[ -n "${CIRCLE_PULL_REQUEST:-}" ]]; then
+              if [[ -z "${GITHUB_TOKEN:-}" ]]; then
+                echo "GITHUB_TOKEN must be configured in the CircleCI context to look up the PR target branch."
+                exit 1
+              fi
+
+              pull_request_url="${CIRCLE_PULL_REQUEST%%[?#]*}"
+              pull_request_url="${pull_request_url%/}"
+              pull_request_number="${pull_request_url##*/}"
+              if [[ ! "${pull_request_number}" =~ ^[0-9]+$ ]]; then
+                echo "Could not extract a valid pull request number from CIRCLE_PULL_REQUEST."
+                exit 1
+              fi
+
+              pull_request_json=$(curl --fail --silent --show-error \
+                --header 'Accept: application/vnd.github+json' \
+                --header "Authorization: Bearer ${GITHUB_TOKEN}" \
+                --header 'X-GitHub-Api-Version: 2026-03-10' \
+                "https://api.github.com/repos/jonwong84/fft-experimental-project/pulls/${pull_request_number}") || {
+                  echo "GitHub pull request lookup failed for PR ${pull_request_number}."
+                  exit 1
+                }
+
+              pull_request_base=$(printf '%s' "${pull_request_json}" | jq --raw-output --exit-status '.base.ref | strings | select(length > 0)') || {
+                echo "GitHub pull request ${pull_request_number} did not return a base branch."
+                exit 1
+              }
+
+              sonar_args+=(
+                "/d:sonar.pullrequest.key=${pull_request_number}"
+                "/d:sonar.pullrequest.branch=${CIRCLE_BRANCH}"
+                "/d:sonar.pullrequest.base=${pull_request_base}"
+              )
+            fi
+
+            dotnet sonarscanner begin "${sonar_args[@]}"
+      - run:
+          name: Build solution
+          command: dotnet build Fft.sln --configuration Release --no-restore
+      - run:
+          name: Run tests
+          command: dotnet test Fft.sln --configuration Release --no-build --no-restore
+      - run:
+          name: Complete SonarQube Cloud analysis
+          command: dotnet sonarscanner end "/d:sonar.token=${SONAR_TOKEN}"
+
+workflows:
+  build-test-scan:
+    jobs:
+      - build-test-sonar:
+          context: global-v1
+          filters:
+            branches:
+              only:
+                - main
+                - /^feature\/.*/
