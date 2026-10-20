@@ -2,7 +2,7 @@
 
 ## Scope
 
-The managed core now has data shapes for the terrain and effective unit values that the original movement code reads. This is input modeling only: `FlatGridMovementRange` and `BattleSimulator` do not yet consume those fields for terrain-aware pathfinding.
+The managed core has data shapes for the terrain and effective unit values that the original movement code reads. `TerrainAwareMovementRange` now consumes surface costs and basic tile movement flags for a bounded same-layer, flat-grid propagation slice. `FlatGridMovementRange` and the existing `BattleSimulator` transition remain the earlier simplified prototype and do not yet use the new policy.
 
 ## Source trace
 
@@ -12,6 +12,10 @@ Reference snapshot: `adamrt/fft_decomp` commit `611b504d25d4a9b03fab8023d7dbea75
 - `include/fft/unit.h:152-185` defines active movement ability bits in three groups, including ignore-height, Any Ground, Any Weather, water restrictions, fly, float, lava, and water modes.
 - `src/battle/move_range.c:290-431` resolves movement inputs, selects a movement/cost-table mode, and creates the per-surface costs. Any Ground changes every non-blocked terrain cost to one; blocked remains blocked.
 - `src/battle/move_range.c:434-444` prepares jump-height values and raises the effective jump for flying or ignore-height movement.
+- `src/battle/move_range.c:417-430` copies the selected terrain cost table into effective costs, substitutes the resolved weather cost, and applies Any Ground to non-blocked surfaces.
+- `src/battle/move_range.c:573-620` spreads for the unit's Move allowance. `src/battle/move_range.c:1002-1105` validates candidate destinations, subtracts the entered tile's surface cost from remaining range, and queues an improved path when range remains.
+- `src/battle/move_range.c:696-709` prepares blocked/enterable tile state; `src/battle/move_range.c:812-845` filters final destinations including Cannot Stop and Untargetable tiles.
+- `src/battle/move_range.c:924-938` bounds-checks candidate coordinates before tile propagation.
 - `include/fft/move.h:84-99` gives the semantic movement-class choices; `move_range.c:367-396` shows their precedence (Fly, Teleport, Float, Lava, Water Surface, Water Depth One, Underwater, Normal).
 
 ## Managed representation
@@ -22,6 +26,12 @@ Reference snapshot: `adamrt/fft_decomp` commit `611b504d25d4a9b03fab8023d7dbea75
 
 The domain values do not impose the original tile field widths on custom content. An importer for original files must still validate source ranges. The model intentionally omits rendering-only shading/camera fields and has not yet defined how jobs, equipment, current statuses, weather, and content definitions resolve into an effective movement profile.
 
+## Terrain propagation proof
+
+`TerrainAwareMovementRange` is a deterministic policy using a priority queue to find the least total entry cost to each same-layer cardinal tile. A destination tile's cost is charged when entering it. It returns tiles whose least accumulated cost is no greater than the profile's Move value, excluding the origin. Tile-level Blocked and blocked surface costs prevent propagation; Cannot Stop and Untargetable prevent a tile from appearing as a final destination, while still allowing propagation through it in this limited model. A surface absent from the effective profile is treated as invalid input and raises an error.
+
+The policy is not a line-by-line port of the original frontier routine. It deliberately excludes elevation/layer transitions, slope and jump checks, water/weather/movement-mode resolution, occupants, mounts, and special surfaces. The tests use synthetic maps and check cost-on-entry, an alternate cheaper route, blockers, destination-filter flags, and invalid profile data. They establish this bounded rule only, not whole-game pathfinding equivalence.
+
 ## What this does not prove
 
-No C# movement rule currently reads the new terrain/profile fields. The profile's surface costs are supplied as effective values; weather and ability resolution are not implemented. Original movement also uses unit records, mounts/standing heights, water and ceiling checks, slope directions, jump spans, frontier/path records, and map flags. Source-faithful pathfinding and a source-derived reachable-set fixture remain future work.
+The new policy reads terrain surfaces, effective profile costs, Blocked, Cannot Stop, and Untargetable fields. The profile's surface costs are supplied as effective values; weather and ability resolution are not implemented. Original movement also uses unit records, mounts/standing heights, water and ceiling checks, slope directions, jump spans, frontier/path records, and additional map flags. Source-faithful pathfinding and a differential reachable-set fixture remain future work.

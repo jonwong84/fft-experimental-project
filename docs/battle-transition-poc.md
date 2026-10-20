@@ -30,7 +30,7 @@ One narrow invariant is independently traced: candidates outside map bounds are 
 
 ## Known prototype limits
 
-- Terrain height, slope, half-height, ceiling, surface, flags, and effective unit movement inputs are modeled but not consumed by pathfinding.
+- The simulator's flat-grid helper does not consume terrain height, slope, half-height, ceiling, surface, flags, or effective unit movement inputs. The separate `TerrainAwareMovementRange` uses surface costs and a small subset of flags only; it is not integrated into the simulator.
 - No jump, fly, teleport, ride/mount, status, dead/jumping-unit, or movement-class rules are implemented.
 - No path choice or path reconstruction, action phase, turn order, CT, RNG, damage, or campaign state.
 - A unit may move once in this proof model; it does not yet model all turn-phase choices or movement abilities.
@@ -39,4 +39,4 @@ One narrow invariant is independently traced: candidates outside map bounds are 
 
 ## Next fidelity slice
 
-Keep this command/state boundary only if it remains useful after the movement model becomes richer. The modeled fields and their source mapping are recorded in [`behavior/movement-inputs.md`](behavior/movement-inputs.md). Next, resolve a concrete effective movement profile, define a source-traceable terrain/unit fixture, and implement the first terrain-aware propagation rule with focused tests. Do not extend the flat-grid helper to appear more faithful without tracing the relevant source paths and data first.
+Keep this command/state boundary only if it remains useful after the movement model becomes richer. The modeled fields and their source mapping are recorded in [`behavior/movement-inputs.md`](behavior/movement-inputs.md). A first terrain-cost propagation policy now exists separately with synthetic tests. Next, trace a concrete height/slope/jump eligibility case and add it as a separate focused rule/fixture. Do not extend the flat-grid helper to appear more faithful without tracing the relevant source paths and data first.

@@ -1,5 +1,7 @@
 # Architecture overview
 
+**Engine name:** Zodiac. Final Fantasy Tactics is the first planned content set. Existing solution, project, and namespace names remain `Fft.*` for now; renaming them is a separate compatibility/workflow decision.
+
 **Status:** Proposed architecture for review. The repository is still an early prototype; the diagrams below describe intended dependency boundaries, not a claim that these projects or services already exist.
 
 ## Goals
@@ -12,11 +14,11 @@
 
 ## Current repository, verified
 
-- `Fft.Core` contains common identifiers/value types, map data types, and a deliberately simplified flat-grid movement prototype.
+- `Fft.Core` contains common identifiers/value types, map data types, a typed battle transition proof, and flat-grid movement policies (one prototype and one bounded terrain-cost slice).
 - `Fft.Content` loads a versioned manifest and hash-verified loose files by logical asset ID. It references `Fft.Core`.
 - `Fft.AssetTool` and `Fft.AssetTool.Cli` handle offline image inventory, extraction, and a narrow unit `.SPR` parsing/decoding proof. The CLI composes the tools.
 - `Fft.Client` is a console composition proof. It can load a prepared asset; it is not yet an interactive game client.
-- Tests exist for the current projects. No battle state-transition engine, campaign runtime, graphics/audio backend, input loop, or save system exists yet.
+- Tests exist for the current projects. No complete campaign runtime, graphics/audio backend, input loop, or save system exists yet.
 
 The architecture should evolve from this shape without splitting projects just for conceptual neatness. Add a new assembly when it creates a useful dependency boundary or an independently testable responsibility.
 

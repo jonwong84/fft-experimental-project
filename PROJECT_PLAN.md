@@ -1,6 +1,6 @@
-# FFT Native C# Reimplementation — Discovery and Plan
+# Zodiac — FFT Native C# Reimplementation Plan
 
-**Status:** Discovery plus a runnable .NET 10 console client, a headless Core library with immutable battle-map/state types and a typed movement transition proof of concept, an AssetTool that inventories/extracts ordinary files and emits a versioned asset manifest, and a separate Content library that verifies and loads prepared files by ID. The client can load one asset from a prepared content directory by ID and report its verified size; it is still only a command-line composition proof, not a game loop or renderer. The local `/scratch/` extraction contains 2,457 ordinary files with reference-matching SHA-256 hashes; no assets are checked into the repository. Current movement remains a simplified flat-grid model; source-faithful movement/combat rules, campaign logic, broad asset decoding, and UI framework remain unimplemented.
+**Status:** Zodiac has a runnable .NET 10 console client, a headless Core library with immutable battle-map/state types and a typed movement transition proof of concept, an AssetTool that inventories/extracts ordinary files and emits a versioned asset manifest, and a separate Content library that verifies and loads prepared files by ID. The client can load one asset from a prepared content directory by ID and report its verified size; it is still only a command-line composition proof, not a game loop or renderer. The local `/scratch/` extraction contains 2,457 ordinary files with reference-matching SHA-256 hashes; no assets are checked into the repository. The transition simulator still uses simplified flat-grid movement; a separate terrain-cost policy now proves one bounded rule. Source-faithful movement/combat rules, campaign logic, broad asset decoding, authoring tools, and UI framework remain unimplemented.
 
 ## Executive summary
 
@@ -96,7 +96,8 @@ The PS1 implementation is not a single monolithic program: resident code and sev
 2. **Use the BIN only as a local import source.** Extract its file system, inventory and verify files, convert/decompress supported assets to disk, and have the application load those files from disk. The game runtime must neither read the original BIN nor invoke/link the C reference.
 3. **Preserve original behavior as the default experience.** Rules, content, campaign flow, bugs, timing, and presentation should match observable PS1 behavior where practical. Differences and confidence should be documented; compatibility fixes should be explicit.
 4. **Allow expansion without changing the original campaign.** Definitions and mutable state are separate; additional jobs, abilities, items, characters, monsters, maps, encounters, campaigns, and mechanics can be added as separate content/rule sets. This extension boundary is also a prerequisite for the user's later goal of integrating The Lion War content.
-5. **Keep the project personal and local.** There is no distribution goal. Game media, extracted data, and generated assets remain in ignored local directories.
+5. **Make data authorable and inspectable.** Provide typed C# definitions and validation for content such as jobs, abilities, items, flags, formulas, text, sprites, animations, maps, scripts, and encounters, with a staged path to visual editing tools.
+6. **Keep the project personal and local.** There is no distribution goal. Game media, extracted data, and generated assets remain in ignored local directories.
 
 ### Required for the first complete game
 
@@ -105,6 +106,7 @@ The PS1 implementation is not a single monolithic program: resident code and sev
 - A playable start-to-finish original campaign, including its battle, world/campaign, event/script, menu, save/load, and ending paths. The original jobs, abilities, items, characters, monsters, maps, encounters, text, and presentation assets required by that release are in scope.
 - Original mode is the default and has regression coverage for formulas, turn/action flow, movement, status, rewards, scripts, save data, and important presentation behavior.
 - C# content definitions are separate from battle/campaign/save state. Original content can be loaded from validated data files, with no arbitrary original table capacity baked into the new engine.
+- Core content categories have typed C# definition models and validation diagnostics; a visual editor can be staged after the schema/tool APIs stabilize. C# authoring must not imply arbitrary user-code execution in the runtime.
 - Automated tests and reproducible build/run instructions from the first implementation milestone. Significant architecture decisions and deviations from baseline are recorded.
 - Original BIN, extracted files, and converted assets are ignored by Git and stay local.
 
@@ -116,7 +118,7 @@ The PS1 implementation is not a single monolithic program: resident code and sev
 
 ### Explicitly outside the initial target
 
-- Other regional releases, multiplayer, non-Windows platforms, mod browser/marketplace, arbitrary third-party code plugins, and a full visual authoring suite. The Lion War/War of the Lions material is excluded from the initial PS1 compatibility baseline, but is a stated later project goal after the foundations and baseline are stable.
+- Other regional releases, multiplayer, non-Windows platforms, mod browser/marketplace, arbitrary third-party code plugins, and a complete multi-domain visual authoring suite. The Lion War/War of the Lions material is excluded from the initial PS1 compatibility baseline, but is a stated later project goal after the foundations and baseline are stable.
 - Exact PS1 machine-code, hardware, and cycle-level reproduction. Match player-visible behavior and timing where it matters; replace the original platform implementation.
 
 ### Fidelity acceptance is layered
@@ -258,7 +260,7 @@ These are milestone gates, not calendar estimates.
 
 ## Recommended next milestone in concrete scope
 
-The first headless transition boundary is implemented and documented in [`docs/battle-transition-poc.md`](docs/battle-transition-poc.md): it validates state/command/event flow and deterministic replay using an explicitly simplified flat-grid movement policy. One source-backed invariant—rejecting out-of-map movement candidates—is recorded in [`docs/behavior/movement-boundary.md`](docs/behavior/movement-boundary.md). Managed terrain and effective unit movement inputs are now modeled in `Fft.Core` and traced in [`docs/behavior/movement-inputs.md`](docs/behavior/movement-inputs.md), but no pathfinding rule consumes them yet. The next movement slice is to resolve an effective profile and implement a source-traceable terrain-aware propagation fixture.
+The first headless transition boundary is implemented and documented in [`docs/battle-transition-poc.md`](docs/battle-transition-poc.md): it validates state/command/event flow and deterministic replay using an explicitly simplified flat-grid movement policy. One source-backed invariant—rejecting out-of-map movement candidates—is recorded in [`docs/behavior/movement-boundary.md`](docs/behavior/movement-boundary.md). Managed terrain and effective unit movement inputs are modeled in `Fft.Core` and traced in [`docs/behavior/movement-inputs.md`](docs/behavior/movement-inputs.md). A separate `TerrainAwareMovementRange` policy applies entry costs, blocked surfaces, and basic final-destination flags under flat same-layer assumptions; it is not yet integrated into `BattleSimulator` and does not reproduce FFT's complete movement behavior. The next movement step is to add a source-traced height/slope/jump eligibility fixture.
 
 The supported BIN/CUE pair has been verified against the decomp profile; the ignored reference inventory contains 2,464 ISO entries. The managed AssetTool inventories all paths and LBAs, extracts all 2,457 ordinary `data` files, and verifies every extracted SHA-256 against the reference inventory. Seven `mixed` XA/STR files remain explicitly unsupported, with their sector representation still to be confirmed. The bounded unit `.SPR` attack-image decoder, fixed-prefix model, manifest writer, and independent logical-ID content reader are implemented; a selected Chocobo file passed the full extraction-to-load path. The console client now consumes the prepared content reader for a requested asset ID. The AssetTool CLI verifies the Chocobo decoded-output hash fixture and can create an all-palettes diagnostic PNG. Details and limitations are recorded in `docs/sprite-attack-image-decoder-poc.md`. The next asset step is to compare against output produced by an executing original routine or emulator and then source-trace frame/palette selection; the current fixture is based on a source-derived transcription, not such a run. The existing movement-range prototype remains a deliberately limited simulation proof; richer FFT rules should wait for source-traced behavior notes and tests.
 
