@@ -3,11 +3,11 @@
 **Prepared:** 2026-10-20  
 **Workspace:** `C:\repositories\fft-experimental-project`  
 **Branch:** `feature/initial-development`  
-**Last committed project change observed:** `48b4772 Add battle simulation and movement model foundations`  
+**Last committed project change observed at original handoff creation:** `48b4772 Add battle simulation and movement model foundations`
 **Engine name:** Zodiac  
 **First content set / compatibility target:** North American PlayStation release of Final Fantasy Tactics, `SCUS-94221`
 
-This document is a restart point for the owner or another coding agent. It distinguishes completed work, local-only prerequisites, current uncommitted work, and future intentions. The goal is not to imply that the project is already a game engine capable of playing FFT: it is an early .NET foundation with useful asset-pipeline proofs and small simulation models.
+This document is a restart point for the owner or another coding agent. It distinguishes completed work, local-only prerequisites, current uncommitted work, and future intentions. The goal is not to imply that the project is already a game engine capable of playing FFT: it is an early .NET foundation with useful asset-pipeline proofs and small simulation models. Amendments dated 2026-10-20 extend the architecture to make Zodiac reusable and separate it from the FFT game layer.
 
 ## 1. Mission and confirmed direction
 
@@ -26,7 +26,7 @@ Priorities:
 
 ## 2. Current working-tree state
 
-At handoff creation, `git status --short` showed the following **uncommitted** work after the last commit. Keep it; it is intentional work from the latest session.
+At original handoff creation, `git status --short` showed the movement-policy/documentation work below. That work was subsequently committed and pushed as `ed72bf7 Add terrain movement proof and project handoff`. The current architecture clarification is a new, separate documentation change; check `git status --short` for its exact files before continuing.
 
 ```text
  M PROJECT_PLAN.md
@@ -37,7 +37,7 @@ At handoff creation, `git status --short` showed the following **uncommitted** w
 ?? tests/Fft.Core.Tests/TerrainAwareMovementRangeTests.cs
 ```
 
-This uncommitted slice:
+The committed movement slice:
 
 - Adds `TerrainAwareMovementRange`, a deterministic, same-layer, cardinal movement-cost propagation policy using a priority queue.
 - Charges the cost of the tile being entered; accepts a tile when minimum entered-tile cost is no greater than effective `Move`.
@@ -96,7 +96,7 @@ Relevant detailed notes: [`PROJECT_PLAN.md`](../PROJECT_PLAN.md), [`asset-invent
 
 ## 4. Architecture direction
 
-The current architecture note is [`architecture/overview.md`](architecture/overview.md); the ADRs record significant boundaries. The current project names are still FFT-specific, but the user has now named the engine **Zodiac**. Do not rename all projects/namespaces in a broad refactor. Decide the product/API split incrementally.
+The current architecture note is [`architecture/overview.md`](architecture/overview.md); the ADRs record significant boundaries. The user has named the reusable engine **Zodiac** and clarified that the project has two parts: the Zodiac engine and an FFT game/content implementation that runs on it. Proposed ADR 0004 records this one-way boundary. Current project names are still FFT-specific and the code has not yet been split; do not rename all projects/namespaces in a broad refactor. Decide and prove the product/API split incrementally.
 
 Target dependency shape:
 
@@ -108,6 +108,8 @@ Zodiac Windows client / composition root
     ├── platform adapters: rendering, audio, input, file/save services
     └── authoring/import tools: data editor, asset converters, validators
 ```
+
+The intended dependency is one-way: the FFT game/content layer depends on Zodiac engine contracts; Zodiac cannot depend on FFT. The current `Fft.*` solution does not satisfy this clean split yet. [`adr/0004-zodiac-engine-and-fft-game-boundary.md`](adr/0004-zodiac-engine-and-fft-game-boundary.md) records the new proposed decision.
 
 Important boundary decisions:
 

@@ -6,7 +6,7 @@
 
 ## Goals
 
-- Reproduce the North American PS1 release (`SCUS-94221`) as a managed C#/.NET Windows application.
+- Build Zodiac as a reusable C#/.NET tactical-game engine and run the North American PS1 release (`SCUS-94221`) as its first game/content layer.
 - Keep compatibility behavior observable and testable, including quirks that affect play.
 - Keep the original simulation deterministic and independent of presentation and operating-system services.
 - Permit additional content and mechanics without imposing the original executable's fixed-size data limits.
@@ -28,32 +28,52 @@ The architecture should evolve from this shape without splitting projects just f
 flowchart TD
     Client[Windows client and composition root]
     App[Application use cases]
-    Core[Core domain and deterministic simulation]
-    Content[Content definitions and prepared-asset access]
+    Engine[Zodiac engine contracts and deterministic simulation]
+    FftGame[FFT game rules and compatibility profile]
+    FftData[FFT definitions and prepared assets]
     Win[Windows platform adapters]
-    Tool[Offline asset authoring tools]
+    Tool[Authoring and asset-import tools]
     Files[(Prepared files and save files)]
 
     Client --> App
     Client --> Win
-    Client --> Content
-    App --> Core
-    App --> Content
-    Content --> Core
+    App --> FftGame
+    App --> Engine
+    FftGame --> Engine
+    FftGame --> FftData
     Win -. implements ports defined inward .-> App
-    Tool --> Files
-    Content --> Files
+    Tool --> FftData
+    FftData --> Files
 ```
 
-`Fft.Core` is the current home for the domain and simulation boundary. An `Fft.Application` project is a future option for client-facing use cases once those use cases exist; it should not be created only to add another layer around the current console command. Windows adapters and a rendering library are intentionally undecided.
+The system has two product concerns with a one-way dependency: **Zodiac engine/framework** and **Final Fantasy Tactics game implementation**. The FFT layer depends on Zodiac; Zodiac must not depend on FFT types, assets, formulas, IDs, or campaign scripts. The current `Fft.*` projects have not yet been split along this boundary; this is a target architecture, not a description of today's assembly graph.
+
+### Zodiac engine/framework responsibility
+
+- Provide reusable deterministic tactical simulation primitives and contracts: map/grid topology, spatial positions, runtime-state boundaries, commands/transitions, turn-scheduling hooks, action/targeting abstractions, movement/range policy contracts, status/effect application points, deterministic random-state interfaces, simulation events, and replay/logging seams.
+- Keep behavior neutral where different games reasonably vary. Rules should be selected or supplied through explicit policies/profiles rather than FFT-specific branches in the engine.
+- Provide content package and asset-service abstractions without embedding FFT identifiers, binary layouts, jobs, abilities, formulas, or copyrighted assets.
+- Keep rendering, input, audio, storage, and operating-system specifics in adapters or host applications.
+- Aim for a small tactical engine, not an all-purpose framework. Add abstractions when another concrete use case demonstrates value.
+
+### FFT game/content responsibility
+
+- Own FFT concepts and compatibility behavior: jobs and JP, abilities/skill sets, items/equipment, statuses, FFT formula implementations, progression, CT/turn semantics, map terrain meanings, encounters, battle/campaign/event scripts, localization, and PS1-specific asset conversion/selection.
+- Translate validated FFT definitions and imported source data into Zodiac runtime contracts. Preserve exact compatibility semantics in an explicit PS1 profile; isolate later Lion War/WotL additions in a separate profile/content set.
+- Keep a trace from important FFT rules/data fields to the pinned decomp source and, where available, original/emulator observations and regression fixtures.
+- Keep the asset importer FFT-aware. The engine consumes prepared logical assets or game-provided rendering data, never raw BIN sectors.
+
+This boundary is conceptual first. `Fft.Core` currently contains FFT-flavored map and movement models and is not yet a clean reusable engine package. Generalize or move a type only when its engine-level contract is understood and an FFT adapter can preserve behavior. Keep project/namespace renames separate from behavior changes.
+
+`Fft.Core` is the current home for the domain and simulation boundary, but it is not yet cleanly split into reusable Zodiac contracts and FFT-specific rules. A future assembly split may introduce a Zodiac-owned engine library and an FFT content/rules library after seams are proven. An application project is a future option for client-facing use cases once those use cases exist; it should not be created only to add another layer around the current console command. Windows adapters and a rendering library are intentionally undecided.
 
 The dependency rule is inward: simulation code must not reference `Fft.Client`, graphics/audio/input packages, operating-system APIs, the BIN, or the C reference. Platform adapters implement interfaces owned by an inward-facing layer. The client is the composition root that chooses implementations and connects input, use cases, content, and presentation.
 
 ## Responsibilities and contracts
 
-### Core domain and simulation
+### Zodiac engine domain and simulation
 
-- Own stable IDs, immutable content-facing definitions, battle/campaign runtime state, rule calculations, compatibility profiles, deterministic random state, and simulation events.
+- Own reusable stable/runtime identity contracts, simulation state/transition abstractions, deterministic random state, generic tactical policies, and simulation events. It must not own FFT job definitions, formula tables, story state, campaign data, or PS1 binary layouts.
 - Represent play as explicit inputs to a transition: current state plus a command and RNG state produce a new state, result/events, and updated RNG state.
 - Avoid file I/O, wall-clock reads, global randomness, rendering, audio, and direct input polling.
 - Use collections sized by content and explicit validation/resource budgets. Preserve original limits only when they affect compatibility or are an intentional safety limit.
@@ -63,7 +83,7 @@ Commands express requested actions; the simulation validates them. Events descri
 
 ### Content definitions and runtime state
 
-- Keep immutable, validated definitions (jobs, abilities, items, maps, encounters, campaign data) separate from mutable instances (unit HP/MP, status, equipment, turn state, and story flags).
+- Keep immutable, validated game-specific definitions (FFT jobs, abilities, items, maps, encounters, campaign data) separate from mutable runtime instances (unit HP/MP, status, equipment, turn state, and story flags). These definitions belong to the FFT game/content layer, not Zodiac's generic engine package.
 - Give definitions stable, namespaced IDs. Validate cross-references and schema versions when loading a package rather than failing during a battle.
 - Layer original-compatible content and additions explicitly. Do not overwrite or silently alter baseline definitions when loading an extension pack.
 - Keep save data as a versioned persistence contract made from stable IDs and explicit state DTOs, not a serialized in-memory object graph. Define migrations when save format becomes necessary.
