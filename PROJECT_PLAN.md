@@ -1,6 +1,6 @@
 # FFT Native C# Reimplementation — Discovery and Plan
 
-**Status:** Discovery plus a runnable .NET 10 console client, a headless Core library with immutable battle-map data types and logical asset IDs, an AssetTool that inventories/extracts ordinary files and emits a versioned manifest, and a separate Content library that verifies and loads prepared files by ID. The client can load one asset from a prepared content directory by ID and report its verified size; it is still only a command-line composition proof, not a game loop or renderer. The local `/scratch/` extraction contains 2,457 ordinary files with reference-matching SHA-256 hashes; no assets are checked into the repository. Full movement/combat rules, campaign logic, broad asset decoding, and UI framework remain unimplemented.
+**Status:** Discovery plus a runnable .NET 10 console client, a headless Core library with immutable battle-map/state types and a typed movement transition proof of concept, an AssetTool that inventories/extracts ordinary files and emits a versioned asset manifest, and a separate Content library that verifies and loads prepared files by ID. The client can load one asset from a prepared content directory by ID and report its verified size; it is still only a command-line composition proof, not a game loop or renderer. The local `/scratch/` extraction contains 2,457 ordinary files with reference-matching SHA-256 hashes; no assets are checked into the repository. Current movement remains a simplified flat-grid model; source-faithful movement/combat rules, campaign logic, broad asset decoding, and UI framework remain unimplemented.
 
 ## Executive summary
 
@@ -158,33 +158,11 @@ The inventory gives an initial format profile: 138 `.SPR`, 121 `.GNS`, 14 `.SEQ`
 
 ## Proposed architecture
 
-Use a solution organized by stable responsibilities, initially as a small number of projects rather than many micro-projects:
+The detailed, current proposal is in [`docs/architecture/overview.md`](docs/architecture/overview.md), with initial decisions in [`docs/adr/`](docs/adr/). It describes intended boundaries and explicitly distinguishes them from projects/services already implemented.
 
-```text
-src/
-  Fft.Domain/             identifiers, immutable definitions, value types
-  Fft.Simulation/         battle/campaign state transitions, RNG, rules
-  Fft.Content/            schema, validation, package loading, asset references
-  Fft.Application/        use cases, orchestration, save coordination
-  Fft.Platform.Windows/   window, graphics, audio, input, filesystem adapters
-  Fft.Client/             composition root and presentation
-tests/
-  Fft.Domain.Tests/
-  Fft.Simulation.Tests/
-  Fft.Content.Tests/
-docs/adr/
-```
+The current project structure is intentionally small: `Fft.Core` holds the initial domain/simulation types, `Fft.Content` loads prepared content, `Fft.AssetTool` and its CLI perform offline asset work, and `Fft.Client` is the composition root proof. Do not split `Fft.Core` or add application/platform projects until a concrete boundary needs an independent assembly.
 
-### Major design decisions proposed
-
-- **Simulation as deterministic state transitions:** `BattleState + Command + deterministic RNG state -> new state + emitted events`. No renderer, wall clock, audio, or global random source inside rules. Capture random draws or use a named seeded PRNG so replay/regression behavior is stable.
-- **Preserve observable quirks explicitly:** document rule variants/compatibility switches where needed. Avoid “fixing” a retail quirk silently; also avoid forcing every new campaign to inherit a defect if the extension objective calls for selectable rules.
-- **Definitions versus state:** immutable, validated definitions (jobs, abilities, items, units, maps, encounter scripts) are keyed by stable IDs; runtime instances hold HP/MP, statuses, equipment, turn state, story flags, and ownership. Definition content can be packaged and versioned independently of save data.
-- **Data-driven before executable plugins:** declarative content and a small typed effect/action vocabulary first. Consider a sandboxed scripting model only after deterministic replay and compatibility APIs are established.
-- **Ports/adapters for platform services:** interfaces for rendering, input, audio, asset access, clock, and save storage. Windows implementations stay outside simulation.
-- **Versioned saves:** schema version, migration path, integrity validation, and stable IDs. Do not persist implementation-specific object graphs.
-- **Asset source boundary:** content references logical asset IDs; the local import pipeline resolves the user-provided BIN into extracted and decoded disk files. Keep those inputs/outputs in ignored local storage; the game client opens prepared files without accessing the BIN.
-- **No fixed original limits in the domain:** use validated collections and explicit resource budgets where needed. Keep limits only where they represent true compatibility behavior or a deliberate operational safeguard.
+The proposed simulation contract is an explicit deterministic transition from state plus command and RNG state to a resulting state and events. Immutable definitions remain separate from mutable battle/campaign state. Original-compatible behavior stays identifiable; additions and The Lion War content use explicit profiles/packages. Asset import remains offline and the client reads prepared files by logical asset ID. These directions do not yet imply a save format, plugin ABI, scripting language, or Windows graphics/audio library.
 
 ### Platform-specific replacement areas
 
@@ -280,7 +258,9 @@ These are milestone gates, not calendar estimates.
 
 ## Recommended next milestone in concrete scope
 
-The supported BIN/CUE pair has been verified against the decomp profile; the ignored reference inventory contains 2,464 ISO entries. The managed AssetTool inventories all paths and LBAs, extracts all 2,457 ordinary `data` files, and verifies every extracted SHA-256 against the reference inventory. Seven `mixed` XA/STR files remain explicitly unsupported, with their sector representation still to be confirmed. The bounded unit `.SPR` attack-image decoder, fixed-prefix model, manifest writer, and independent logical-ID content reader are implemented; a selected Chocobo file passed the full extraction-to-load path. The console client now consumes the prepared content reader for a requested asset ID. The AssetTool CLI also verifies the Chocobo decoded-output hash fixture. Details and limitations are recorded in `docs/sprite-attack-image-decoder-poc.md`. The next asset step is to compare against output produced by an executing original routine or emulator; the current fixture is based on a source-derived transcription, not such a run. The existing movement-range prototype remains a deliberately limited simulation proof; richer FFT rules should wait for source-traced behavior notes and tests.
+The first headless transition boundary is implemented and documented in [`docs/battle-transition-poc.md`](docs/battle-transition-poc.md): it validates state/command/event flow and deterministic replay using an explicitly simplified flat-grid movement policy. One source-backed invariant—rejecting out-of-map movement candidates—is recorded in [`docs/behavior/movement-boundary.md`](docs/behavior/movement-boundary.md). Managed terrain and effective unit movement inputs are now modeled in `Fft.Core` and traced in [`docs/behavior/movement-inputs.md`](docs/behavior/movement-inputs.md), but no pathfinding rule consumes them yet. The next movement slice is to resolve an effective profile and implement a source-traceable terrain-aware propagation fixture.
+
+The supported BIN/CUE pair has been verified against the decomp profile; the ignored reference inventory contains 2,464 ISO entries. The managed AssetTool inventories all paths and LBAs, extracts all 2,457 ordinary `data` files, and verifies every extracted SHA-256 against the reference inventory. Seven `mixed` XA/STR files remain explicitly unsupported, with their sector representation still to be confirmed. The bounded unit `.SPR` attack-image decoder, fixed-prefix model, manifest writer, and independent logical-ID content reader are implemented; a selected Chocobo file passed the full extraction-to-load path. The console client now consumes the prepared content reader for a requested asset ID. The AssetTool CLI verifies the Chocobo decoded-output hash fixture and can create an all-palettes diagnostic PNG. Details and limitations are recorded in `docs/sprite-attack-image-decoder-poc.md`. The next asset step is to compare against output produced by an executing original routine or emulator and then source-trace frame/palette selection; the current fixture is based on a source-derived transcription, not such a run. The existing movement-range prototype remains a deliberately limited simulation proof; richer FFT rules should wait for source-traced behavior notes and tests.
 
 The attack-image decoder, fixed unit SPR prefix model, versioned manifest writer, and logical-ID loose-file reader have been checked against synthetic data; they also completed extraction, manifest generation, hash-verified loading, parsing, and decoding for `BATTLE/CYOKO.SPR`. The console composition root now reads a selected prepared asset by ID, and the CLI checks the full decoded-byte hash against `docs/fixtures/chocobo-attack-image.json`. The expected digest was cross-checked against a temporary source-derived transcription of the C routine; it still needs confirmation from an executing original routine or emulator. Keep mixed XA/STR extraction, complete story scripts, broad asset conversion, original audio/video, and a UI framework deferred until narrow proofs pass. The first extraction and inventory proofs establish ordinary loose files; deterministic battle behavior still needs separate source-traced proof work.
 

@@ -89,7 +89,11 @@ public sealed class PreparedAssetManifestTests
 
     private sealed class TemporaryDirectory : IDisposable
     {
-        public TemporaryDirectory() => Path = System.IO.Path.Combine(System.IO.Path.GetTempPath(), Guid.NewGuid().ToString("N"));
+        public TemporaryDirectory()
+        {
+            Path = System.IO.Path.Combine(System.IO.Path.GetTempPath(), Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(Path);
+        }
 
         public string Path { get; }
 

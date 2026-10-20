@@ -84,6 +84,22 @@ check with:
 dotnet run --project src/Fft.AssetTool.Cli/Fft.AssetTool.Cli.csproj -c Release -- verify-sprite --content-root scratch/prepared-chocobo-content
 ```
 
+To produce a local visual diagnostic containing the same decoded image under
+each of the SPR's sixteen palette banks, run:
+
+```powershell
+dotnet run --project src/Fft.AssetTool.Cli/Fft.AssetTool.Cli.csproj -c Release -- verify-sprite --content-root scratch/prepared-chocobo-content --preview-output scratch/chocobo-palettes.png
+```
+
+The source loader copies sixteen 16-color CLUTs and sets the PS1 STP bit on
+colors 1 through 15 while leaving color zero transparent (`unit_animations.c`,
+`sprite_sheet_load_into_vram_slot`). The preview expands 5-bit channels by bit
+replication and displays nonzero texture indices as opaque colors. It ignores
+STP-dependent blending, GPU draw ordering, frame cropping/transforms, and
+display scaling. All palette banks are shown because this fixture does not yet
+establish which palette selection corresponds to each rendered attack frame;
+the result is a diagnostic contact sheet, not a faithful game screenshot.
+
 Before recording the fixture digest, the managed output was compared byte for
 byte with a separate, temporary source-derived transcription of the original C
 routine. The copied decomp checkout contains no runnable PS1 game binary, and
