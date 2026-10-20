@@ -17,14 +17,14 @@ jobs:
       - run:
           name: Begin SonarQube Cloud analysis
           command: |
-            if [[ -z "${SONAR_TOKEN:-}" || -z "${SONAR_ORGANIZATION:-}" || -z "${SONAR_PROJECT_KEY:-}" ]]; then
-              echo "SONAR_TOKEN, SONAR_ORGANIZATION, and SONAR_PROJECT_KEY must be configured in the CircleCI context."
+            if [[ -z "${SONAR_TOKEN:-}" ]]; then
+              echo "SONAR_TOKEN must be configured in the CircleCI context."
               exit 1
             fi
 
             sonar_args=(
-              "/k:${SONAR_PROJECT_KEY}"
-              "/o:${SONAR_ORGANIZATION}"
+              "/k:jonwong84_fft-experimental-project"
+              "/o:jonwong84"
               "/d:sonar.token=${SONAR_TOKEN}"
             )
 
