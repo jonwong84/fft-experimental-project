@@ -2,15 +2,21 @@ namespace Fft.Core;
 
 /// <summary>Applies the initial, deliberately limited battle command set.</summary>
 /// <remarks>
-/// Movement currently uses <see cref="FlatGridMovementRange"/>. This transition demonstrates
+/// The two-argument overload retains <see cref="FlatGridMovementRange"/> for compatibility.
+/// The explicit overload can select the bounded terrain-cost prototype. This transition demonstrates
 /// immutable state and command handling; it is not a source-faithful implementation of FFT movement.
 /// </remarks>
 public static class BattleSimulator
 {
-    public static BattleTransitionResult Apply(BattleState state, MoveUnitCommand command)
+    public static BattleTransitionResult Apply(BattleState state, MoveUnitCommand command) =>
+        Apply(state, command, BattleMovementPolicy.FlatGridPrototype);
+
+    public static BattleTransitionResult Apply(BattleState state, MoveUnitCommand command, BattleMovementPolicy movementPolicy)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(command);
+        if (!Enum.IsDefined(movementPolicy))
+            throw new ArgumentOutOfRangeException(nameof(movementPolicy));
 
         if (!state.TryGetUnit(command.UnitId, out BattleUnitState? unit, out int unitIndex))
         {
@@ -27,7 +33,16 @@ public static class BattleSimulator
             return BattleTransitionResult.Reject(state, BattleTransitionRejection.DestinationOccupied);
         }
 
-        IReadOnlySet<TilePosition> reachable = FlatGridMovementRange.Calculate(state.Map, unit.Position, unit.Move);
+        IReadOnlySet<TilePosition> reachable = movementPolicy switch
+        {
+            BattleMovementPolicy.FlatGridPrototype => FlatGridMovementRange.Calculate(state.Map, unit.Position, unit.Move),
+            // Conservative synthetic policy: other units block traversal as well as stopping.
+            // Original allegiance, mount and standing-height rules remain unsupported.
+            BattleMovementPolicy.TerrainCostPrototype => TerrainAwareMovementRange.Calculate(
+                state.Map, unit.Position, unit.MovementProfile,
+                state.Units.Where(other => other.Id != unit.Id).Select(other => other.Position).ToHashSet()),
+            _ => throw new ArgumentOutOfRangeException(nameof(movementPolicy)),
+        };
         if (!reachable.Contains(command.Destination))
         {
             return BattleTransitionResult.Reject(state, BattleTransitionRejection.DestinationNotReachable);

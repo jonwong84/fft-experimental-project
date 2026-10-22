@@ -2,7 +2,9 @@
 
 ## Scope
 
-The managed core has data shapes for the terrain and effective unit values that the original movement code reads. `TerrainAwareMovementRange` now consumes surface costs and basic tile movement flags for a bounded same-layer, flat-grid propagation slice. `FlatGridMovementRange` and the existing `BattleSimulator` transition remain the earlier simplified prototype and do not yet use the new policy.
+The managed core has data shapes for the terrain and effective unit values that the original movement code reads. `TerrainAwareMovementRange` consumes surface costs and basic tile movement flags for a bounded same-layer, flat-grid propagation slice. `FlatGridMovementRange` remains the separate simplified prototype.
+
+Integration update (ZOD-012, 2026-10-22): the transition now accepts an [explicit terrain-cost prototype policy](terrain-policy-integration.md). The two-argument overload retains flat behavior; terrain mode adds explicitly supplied occupancy blockers. This does not implement the geometry rules traced below.
 
 ## Source trace
 

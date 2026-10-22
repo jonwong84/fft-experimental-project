@@ -25,7 +25,9 @@ Each source case and each expected assertion group requires `evidenceIds`. IDs m
 
 ## Bounded scenario payload
 
-V1 scenarios target `BattleSimulator.Apply` with flat prototype movement only. `scenario.initialState.map` contains a stable `id`, positive integer `width`, `depth`, `layerCount`, and an explicit `tiles` array in layer/Y/X order (X fastest), exactly width * depth * layers entries. Each tile includes surface ID, height, halfHeight, waterDepth, slope (east/west/south/north), ceilingDepth, and symbolic movementFlags. These are synthetic managed values, not packed disc bytes.
+V1 scenarios target `BattleSimulator.Apply` with an explicitly identified prototype policy. `scenario.initialState.map` contains a stable `id`, positive integer `width`, `depth`, `layerCount`, and an explicit `tiles` array in layer/Y/X order (X fastest), exactly width * depth * layers entries. Each tile includes surface ID, height, halfHeight, waterDepth, slope (east/west/south/north), ceilingDepth, and symbolic movementFlags. These are synthetic managed values, not packed disc bytes.
+
+ZOD-012 extends the supported policy capabilities to `fft:movement/terrain-cost-prototype` alongside `fft:movement/flat-grid-prototype`, using the same v1 payload. The runner selects the policy from the explicit ID. See [terrain policy semantics and exclusions](terrain-policy-integration.md); neither ID claims full PS1 compatibility.
 
 `initialState.units` is an ordered array with unique stable IDs, position (x/y/layer), hasMoved, and a full movementProfile: move, jump, bodyHeight, mode, traits and terrainCosts. Terrain costs are objects with surface ID, movePoints and isBlocked, unique by surface ID. Empty costs are explicit for the flat prototype. Symbols match the current managed enums exactly. Positions must be in bounds; do not add an initial occupancy restriction absent from current `BattleState`. `rngState: null` explicitly records that this transition has no RNG. Future RNG behavior requires a defined state/width/draw comparison extension before use.
 

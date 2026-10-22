@@ -33,7 +33,12 @@ internal static class MovementFixtureRunner
             EqualLiteral(target, "game", "FFT"); EqualLiteral(target, "edition", "SCUS-94221");
             EqualLiteral(target, "region", "North America"); EqualLiteral(target, "platform", "PS1");
             policy = StableId(target["policyId"]);
-            Require(policy == "fft:movement/flat-grid-prototype", "Unsupported policyId");
+            var movementPolicy = policy switch
+            {
+                "fft:movement/flat-grid-prototype" => BattleMovementPolicy.FlatGridPrototype,
+                "fft:movement/terrain-cost-prototype" => BattleMovementPolicy.TerrainCostPrototype,
+                _ => throw new InvalidDataException("Unsupported policyId"),
+            };
             Shape(root["reference"], "decompCommit observedOn usedForExpectations");
             reference = Sha(root["reference"]!["decompCommit"]);
             Require(DateOnly.TryParseExact(Text(root["reference"]!["observedOn"]), "yyyy-MM-dd",
@@ -118,7 +123,7 @@ internal static class MovementFixtureRunner
                 var beforeMap = MapSnapshot(state.Map);
                 var command = commands[i]!;
                 var actual = BattleSimulator.Apply(state,
-                    new MoveUnitCommand(new BattleUnitId(StableId(command["unitId"])), Position(command["destination"])));
+                    new MoveUnitCommand(new BattleUnitId(StableId(command["unitId"])), Position(command["destination"])), movementPolicy);
                 var groups = Array(expectations[i]!["assertions"]);
                 var resultGroup = Group(groups, "result");
                 var stateGroup = Group(groups, "state-and-events");

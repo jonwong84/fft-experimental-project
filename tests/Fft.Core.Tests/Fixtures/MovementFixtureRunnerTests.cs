@@ -15,6 +15,8 @@ public sealed class MovementFixtureRunnerTests
     [Theory]
     [InlineData("flat-move.synthetic.json")]
     [InlineData("flat-rejections.synthetic.json")]
+    [InlineData("terrain-cost-accepted.synthetic.json")]
+    [InlineData("terrain-cost-rejected.synthetic.json")]
     public void Committed_scenarios_replay_with_equal_reports_and_retained_provenance(string file)
     {
         string json = Load(file);
@@ -24,7 +26,7 @@ public sealed class MovementFixtureRunnerTests
         Assert.Equal("611b504d25d4a9b03fab8023d7dbea75fe381d5d", first.ReferenceRevision);
         Assert.Equal(Revision, first.ImplementationRevision);
         Assert.Contains("synthetic-expectation/specified", first.Diagnostic);
-        Assert.Contains("BattleSimulator.Apply", first.ProvenanceJson);
+        Assert.Contains("src/Fft.Core/", first.ProvenanceJson);
         Assert.Contains("exclusions", first.ProvenanceJson);
     }
 

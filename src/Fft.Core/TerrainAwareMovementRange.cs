@@ -16,7 +16,14 @@ public static class TerrainAwareMovementRange
     public static IReadOnlySet<TilePosition> Calculate(
         BattleMapDefinition map,
         TilePosition origin,
-        UnitMovementProfile movementProfile)
+        UnitMovementProfile movementProfile) => Calculate(map, origin, movementProfile, null);
+
+    /// <summary>Calculates range with explicitly supplied tiles that prevent traversal.</summary>
+    public static IReadOnlySet<TilePosition> Calculate(
+        BattleMapDefinition map,
+        TilePosition origin,
+        UnitMovementProfile movementProfile,
+        IReadOnlySet<TilePosition>? traversalBlocked)
     {
         ArgumentNullException.ThrowIfNull(map);
         ArgumentNullException.ThrowIfNull(movementProfile);
@@ -48,7 +55,8 @@ public static class TerrainAwareMovementRange
             void Visit(int x, int y)
             {
                 var destination = new TilePosition(x, y, origin.Layer);
-                if (!map.TryGetTile(destination, out BattleTile tile) || tile.IsBlocked)
+                if (!map.TryGetTile(destination, out BattleTile tile) || tile.IsBlocked
+                    || traversalBlocked?.Contains(destination) == true)
                 {
                     return;
                 }

@@ -107,7 +107,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-005 — Trace FFT RNG state, arithmetic, and call ordering
 
-**Type:** Spike · **Priority:** P1 · **Status:** Ready · **Depends on:** None
+**Type:** Spike · **Priority:** P1 · **Status:** Partial investigation; BIOS state evidence needed · **Depends on:** None
+
+**Findings:** [RNG trace and evidence gap](behavior/rng-state-and-ordering.md) pins seed sites, bounded range arithmetic and formula-01 draw ordering. The checkout only contains BIOS rand/srand veneers; state width, recurrence and state-overflow vectors remain unresolved. Acceptance is open, with a concrete BIOS/harness follow-up plan. ZOD-013 remains waiting; do not substitute a guessed generator.
 
 **Scope:** Find the RNG routines used by the proposed physical attack and record state width, update arithmetic, range conversion, seeding, and draw ordering, including failed/rejected actions where relevant.
 
@@ -157,7 +159,7 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-010 — Implement the selected adjacent-step geometry rule
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-004, ZOD-012
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-004, ZOD-012
 
 **Scope:** Implement only the eligibility rule selected by ZOD-004 through the established movement boundary.
 
@@ -175,7 +177,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-012 — Integrate the bounded terrain-cost policy explicitly
 
-**Type:** Story · **Priority:** P1 · **Status:** Ready · **Depends on:** ZOD-008, ZOD-011
+**Type:** Story · **Priority:** P1 · **Status:** Complete · **Depends on:** ZOD-008, ZOD-011
+
+**Result:** [Explicit terrain policy](behavior/terrain-policy-integration.md) integrates resolved entry costs, blockers, stopping flags and deliberate occupancy traversal rules. Flat prototype behavior is retained and both policies have replay fixtures. Locked restore, zero-warning Release build and all 227 solution tests passed on Windows after parallel ZOD-014 integration. No full FFT movement equivalence is claimed.
 
 **Scope:** Allow the battle transition to use the effective movement profile and existing terrain-cost policy through the established engine/game boundary. Preserve an explicitly selected flat prototype mode where needed for existing tests.
 
@@ -191,7 +195,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-014 — Implement minimal typed job and ability definitions
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-003
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-003
+
+**Result:** [Typed metadata definitions](architecture/zod-014-typed-definitions.md) add immutable FFT-owned IDs/definitions and a validated catalog with 32 new tests, including a graph beyond original table capacities. Retail row import, execution effects and package format remain separate. Coordinator verified all 227 solution tests after integration.
 
 **Scope:** Create FFT-owned immutable definitions and typed IDs for the selected job/ability slice, including references and named flags justified by source. Use the agreed `Fft` ownership convention when a new project boundary is warranted.
 
@@ -199,7 +205,7 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-015 — Decide and prototype the editable content package format
 
-**Type:** Spike · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-014
+**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-014
 
 **Scope:** Compare simple file-based representations for the minimal definitions. Recommend a format, package layout, schema version policy, stable ID/reference convention, and separation from the existing asset manifest and future save data.
 
