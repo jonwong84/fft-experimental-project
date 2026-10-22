@@ -22,6 +22,8 @@
 
 The architecture should evolve from this shape without splitting projects just for conceptual neatness. Add a new assembly when it creates a useful dependency boundary or an independently testable responsibility.
 
+The completed [ZOD-001 ownership audit](zod-001-type-ownership.md) classifies every current Core type and recommends a bounds-only flat cardinal range calculation as the first engine slice, accessed through an FFT-owned facade. This is a documented extraction plan; the current assemblies and behavior remain unchanged.
+
 ## Target dependency shape
 
 ```mermaid

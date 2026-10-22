@@ -67,7 +67,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-001 — Audit current types and select the first engine slice
 
-**Type:** Spike · **Priority:** P1 · **Status:** Ready · **Depends on:** None
+**Type:** Spike · **Priority:** P1 · **Status:** Complete · **Depends on:** None
+
+**Result:** [Ownership audit and extraction recommendation](architecture/zod-001-type-ownership.md) (2026-10-22). Select the bounds-only flat cardinal range calculation with an FFT-owned facade; retain terrain semantics, profiles and transition policy in FFT. No extraction or project rename implemented. ZOD-007 still requires ZOD-002.
 
 **Scope:** Classify every current `Fft.Core` type as FFT-owned, reusable candidate, or unresolved. Inspect its actual consumers in Content, tools, client, and tests. Evaluate one small extraction that performs useful work; use the existing map/movement transition as the concrete example.
 
