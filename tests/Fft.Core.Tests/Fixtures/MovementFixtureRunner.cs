@@ -245,7 +245,7 @@ internal static class MovementFixtureRunner
                 terrainCosts = u.MovementProfile.TerrainCosts.OrderBy(c => c.Key.Value, StringComparer.Ordinal)
                     .Select(c => new { surface = c.Key.Value, movePoints = c.Value.MovePoints, isBlocked = c.Value.IsBlocked })
             }
-        }), rngState = (object?)null
+        }), rngState = state.RngState is { } rng ? new { value = rng.Value, drawCount = rng.DrawCount } : null
     })!;
 
     private static JsonNode MapSnapshot(BattleMapDefinition map)

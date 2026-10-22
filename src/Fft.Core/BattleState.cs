@@ -8,7 +8,7 @@ public sealed class BattleState
     private readonly ReadOnlyCollection<BattleUnitState> _units;
     private readonly Dictionary<BattleUnitId, int> _unitIndexes;
 
-    public BattleState(BattleMapDefinition map, IEnumerable<BattleUnitState> units)
+    public BattleState(BattleMapDefinition map, IEnumerable<BattleUnitState> units, FftRandomState? rngState = null)
     {
         ArgumentNullException.ThrowIfNull(map);
         ArgumentNullException.ThrowIfNull(units);
@@ -31,10 +31,14 @@ public sealed class BattleState
         }
 
         Map = map;
+        RngState = rngState;
         _units = Array.AsReadOnly(unitArray);
     }
 
     public BattleMapDefinition Map { get; }
+
+    /// <summary>Explicit RNG snapshot; null means this scenario has not selected a random stream.</summary>
+    public FftRandomState? RngState { get; }
 
     public IReadOnlyList<BattleUnitState> Units => _units;
 
@@ -57,6 +61,6 @@ public sealed class BattleState
     {
         BattleUnitState[] updated = [.. _units];
         updated[index] = replacement;
-        return new BattleState(Map, updated);
+        return new BattleState(Map, updated, RngState);
     }
 }

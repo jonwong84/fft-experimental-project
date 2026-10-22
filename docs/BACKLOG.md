@@ -189,7 +189,13 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-013 — Implement explicit deterministic RNG state
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-005, ZOD-007, ZOD-011
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-005, ZOD-007, ZOD-011
+
+**Result:** [Explicit deterministic RNG](behavior/deterministic-rng.md) adds a neutral explicit-state
+transition contract, FFT-owned verified BIOS generator, ordered RNG replay diagnostics and optional battle
+RNG snapshots. All 64 recorded BIOS vectors pass; accepted/rejected movement preserves state and consumes
+zero draws under each current prototype policy. Locked restore, Release build (zero warnings/errors) and
+all 334 solution tests passed on 2026-10-22. Combat consumption ordering remains with its action slice.
 
 **Scope:** Introduce the neutral state/transition seam and the source-traced FFT RNG implementation justified by ZOD-005.
 
