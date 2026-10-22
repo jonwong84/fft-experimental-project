@@ -165,7 +165,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-011 — Add a deterministic scenario fixture runner
 
-**Type:** Story · **Priority:** P1 · **Status:** Waiting · **Depends on:** ZOD-002, ZOD-008
+**Type:** Story · **Priority:** P1 · **Status:** Complete · **Depends on:** ZOD-002, ZOD-008
+
+**Result:** [Movement fixture runner](behavior/fixture-runner.md) executes accepted/rejected sequential prototype scenarios, validates v1 metadata, retains provenance and diagnoses state/event mismatches. Source descriptions remain not executed. Windows locked restore, Release build and all 182 tests passed; no gameplay change.
 
 **Scope:** Execute the versioned fixture inputs through the current FFT transition, compare explicit state fields and ordered events, and report the first meaningful mismatch.
 
@@ -173,7 +175,7 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-012 — Integrate the bounded terrain-cost policy explicitly
 
-**Type:** Story · **Priority:** P1 · **Status:** Waiting · **Depends on:** ZOD-008, ZOD-011
+**Type:** Story · **Priority:** P1 · **Status:** Ready · **Depends on:** ZOD-008, ZOD-011
 
 **Scope:** Allow the battle transition to use the effective movement profile and existing terrain-cost policy through the established engine/game boundary. Preserve an explicitly selected flat prototype mode where needed for existing tests.
 

@@ -1,12 +1,12 @@
 # Behavioral fixtures v1 (ZOD-002)
 
-Date: 2026-10-22. This defines a documentation/data contract for the future ZOD-011 runner; no runner or production serialization API is implemented here. FFT owns these fixtures under `Fft.*`; they do not become Zodiac engine contracts. The [ownership audit](../architecture/zod-001-type-ownership.md) remains the extraction plan.
+Date: 2026-10-22. This defines the fixture data contract; [ZOD-011's test runner](fixture-runner.md) now executes the bounded managed scenarios. No production serialization API is introduced. FFT owns these fixtures under `Fft.*`; they do not become Zodiac engine contracts. The [ownership audit](../architecture/zod-001-type-ownership.md) remains the extraction plan.
 
 ## Files and versioning
 
 Store committed, synthetic scenario data and provenance in `docs/fixtures/behavior/*.json`. The format is identified by `format: "fft.behavior-fixture"` and integer `schemaVersion: 1`; this distinguishes it from the existing sprite decode fixture, whose unrelated version is also 1. A reader must reject an unknown format/version, duplicate JSON keys, unknown fields, missing required fields, invalid enum strings, invalid IDs and non-integer numeric values. Do not silently fill absent state fields from current constructors. A schema change needs an explicit version and migration decision; changing only provenance or correcting expectations does not change the schema version, but must be explained in review.
 
-The [synthetic accepted move](../fixtures/behavior/flat-move.synthetic.json) is a complete transition example. The [source-traced boundary description](../fixtures/behavior/map-boundary.source-description.json) uses the same envelope with `execution: "description-only"`; it specifies direct coordinate-guard vectors and a separately labeled managed transition projection. Description-only records are not executable runner passes. Both are design examples until ZOD-011 loads and compares them.
+The [synthetic accepted move](../fixtures/behavior/flat-move.synthetic.json) and [rejection replay](../fixtures/behavior/flat-rejections.synthetic.json) are executable transition examples. The [source-traced boundary description](../fixtures/behavior/map-boundary.source-description.json) uses the same envelope with `execution: "description-only"`; it specifies direct coordinate-guard vectors and a separately labeled managed transition projection. Description-only records are validated and reported as not executed, never as runner passes.
 
 ## Envelope and evidence
 
@@ -51,4 +51,4 @@ Keep BINs, extracted files, decoded media, emulator saves, screenshots and oracl
 
 Missing local captures must report unavailable evidence, never fabricated verification. The baseline runner must run committed synthetic scenarios without loading captures, BINs, C code, network, renderer or emulator. Capture-dependent differential checks are separately selected local checks. The existing sprite fixture is not silently upgraded or reclassified by this design.
 
-Validation for this design task consists of JSON parsing, link and evidence-reference checks, hand-checking complete prototype snapshots against the managed transition, and re-reading the pinned coordinate guard and its caller. No fixture runner has executed these JSON files; implementation and mismatch-diagnostic tests remain ZOD-011.
+Original design validation consisted of JSON parsing, link and evidence-reference checks, hand-checking complete prototype snapshots against the managed transition, and re-reading the pinned coordinate guard and its caller. Subsequent ZOD-011 implementation executes the synthetic scenarios and tests deliberate mismatches and invalid input; see [runner checks and limits](fixture-runner.md).

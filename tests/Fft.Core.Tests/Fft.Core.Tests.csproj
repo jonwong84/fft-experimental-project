@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\..\docs\fixtures\behavior\*.json" Link="Fixtures\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <Compile Include="..\..\samples\Relay\RelayScenario.cs" Link="Samples\RelayScenario.cs" />
     <ProjectReference Include="..\..\src\Fft.Core\Fft.Core.csproj" />
   </ItemGroup>
