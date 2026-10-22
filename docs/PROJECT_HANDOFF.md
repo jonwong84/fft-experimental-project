@@ -240,6 +240,8 @@ The detailed roadmap lives in `PROJECT_PLAN.md`; the sequence below emphasizes n
 
 ## 10. Starting instructions for whoever continues
 
+**Planning update (2026-10-22):** Use [BACKLOG.md](BACKLOG.md) for current work order and ticket acceptance criteria. Its first task audits current type ownership before any engine extraction; the next movement implementation remains gated on source tracing. The agreed naming convention is recorded in [the architecture overview](architecture/overview.md). Earlier working-tree and test-run snapshots in this handoff are historical; inspect the current checkout before continuing.
+
 1. Read `AGENTS.md`, this handoff, `PROJECT_PLAN.md`, architecture overview, and relevant ADR/behavior note.
 2. Check `git status --short` first. At this handoff, current work is uncommitted; preserve it and do not reset or rebase without user direction.
 3. Keep `C:\repositories\fft_decomp` read-only. Verify and record its current HEAD before new source analysis. Do not rely on stale line numbers without checking the pinned commit.

@@ -4,6 +4,8 @@ Zodiac is a Windows-first C#/.NET game engine, with the North American PS1 relea
 
 The proposed dependency boundaries and initial architecture decisions are documented in [`docs/architecture/overview.md`](docs/architecture/overview.md) and [`docs/adr/`](docs/adr/). A detailed restart point for future contributors is in [`docs/PROJECT_HANDOFF.md`](docs/PROJECT_HANDOFF.md).
 
+The prioritized development tickets, dependencies, and acceptance criteria are maintained in [`docs/BACKLOG.md`](docs/BACKLOG.md).
+
 This checkout currently contains a headless .NET 10 console bootstrap, a `Fft.Core` library with immutable map and battle-state types plus a typed movement transition proof of concept, flat-grid movement policies (a prototype and a bounded terrain-cost slice), source-mapped terrain and unit movement inputs, a managed ISO inventory/extraction tool that emits a versioned asset manifest, a separate `Fft.Content` library that loads and verifies files by manifest ID, and a unit `.SPR` parser with a bounded attack-image decoder. The console client can load one prepared asset by ID through `Fft.Content`; it is not yet a game loop or renderer. The movement transition is an architecture proof, not FFT-faithful pathfinding. Asset format coverage is still narrow; SHP/SEQ animation metadata, source-faithful movement/combat rules, campaign logic, an authoring tool, and a graphics/UI framework are not implemented.
 
 ## Build, run, and test

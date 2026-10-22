@@ -203,6 +203,8 @@ Never use the C decompilation as a runtime library. A developer-only bridge may 
 
 ## Phased roadmap and acceptance criteria
 
+The actionable work breakdown is maintained in [`docs/BACKLOG.md`](docs/BACKLOG.md), with stable ticket IDs, priorities, prerequisites, and acceptance criteria. It refines the phases below into incremental work and records the current recommended execution order.
+
 These are milestone gates, not calendar estimates.
 
 ### Phase 0 — Discovery and project setup
