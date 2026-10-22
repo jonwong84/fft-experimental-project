@@ -87,7 +87,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-003 — Trace a minimal job and ability definition slice
 
-**Type:** Spike · **Priority:** P1 · **Status:** Ready · **Depends on:** None
+**Type:** Spike · **Priority:** P1 · **Status:** Complete · **Depends on:** None
+
+**Result:** [Job/ability slice design](behavior/job-ability-slice.md) maps Squire's candidate records, widths, flags, consumers and definition/state boundary, with a synthetic metadata sample. Exact retail row values and membership remain an explicit verified-import gate; no catalog or ability execution is claimed. FFTPatcher was not consulted or reused.
 
 **Scope:** Select one baseline job and only the ability/skill-set fields needed to represent it. Trace original records, field encodings, references, consumers, and meaningful flags. Compare selected FFTPatcher field names/workflow with the PS1 source, verifying the exact tool revision and edition support if consulted.
 
@@ -95,7 +97,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-004 — Trace one adjacent-step height/slope eligibility rule
 
-**Type:** Spike · **Priority:** P1 · **Status:** Ready · **Depends on:** None
+**Type:** Spike · **Priority:** P1 · **Status:** Complete · **Depends on:** None
+
+**Result:** [Adjacent-step geometry trace](behavior/adjacent-step-geometry.md) specifies the dry non-steep facing-edge gate, doubled capped Jump, source-derived threshold/reverse/slope vectors, arithmetic envelope and exclusions. Static source evidence only; no oracle or original observation. ZOD-010 still depends on ZOD-012.
 
 **Scope:** Extend [movement-inputs.md](behavior/movement-inputs.md) for one ordinary same-layer cardinal step. Trace source callers, height units, slope orientation, effective standing height, comparison widths, and the exact unit/profile assumptions.
 
@@ -111,7 +115,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-006 — Make SDK selection and dependency restoration reproducible
 
-**Type:** Chore · **Priority:** P1 · **Status:** Ready · **Depends on:** None
+**Type:** Chore · **Priority:** P1 · **Status:** Implemented; Linux CI validation pending · **Depends on:** None
+
+**Result:** [SDK and dependency policy](development/build-reproducibility.md) preserves Antigravity's central versions and lock files, pins SDK 10.0.402 without roll-forward, defaults to locked restore, and aligns CircleCI. Windows locked restore and Release build passed; all 155 tests passed on 2026-10-22. Linux CI and remote Sonar have not run for these changes; confirm them before closing the acceptance gate.
 
 **Scope:** Inspect the installed SDK, project package versions, and CircleCI image. Choose an explicit SDK selection/roll-forward policy and a package restoration strategy appropriate to this solution.
 
@@ -119,7 +125,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-007 — Extract the first useful Zodiac engine slice
 
-**Type:** Story · **Priority:** P1 · **Status:** Ready · **Depends on:** ZOD-001, ZOD-002
+**Type:** Story · **Priority:** P1 · **Status:** Complete · **Depends on:** ZOD-001, ZOD-002
+
+**Result:** [Engine slice](architecture/zod-007-engine-slice.md) adds independent bounds/position contracts and flat cardinal range with 21 engine tests. Coordinator validated locked restore, zero-warning Release build and all 155 tests. FFT still uses its existing calculation; adapter integration is ZOD-008.
 
 **Scope:** Implement exactly the extraction justified by ZOD-001 in `Zodiac.Engine`, with an engine test project. Prefer the smallest coherent functionality over a general framework of empty interfaces.
 
@@ -127,7 +135,7 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-008 — Adapt the existing FFT transition to the engine slice
 
-**Type:** Story · **Priority:** P1 · **Status:** Waiting · **Depends on:** ZOD-007
+**Type:** Story · **Priority:** P1 · **Status:** Ready · **Depends on:** ZOD-007
 
 **Scope:** Connect the current FFT battle proof to the new engine functionality while preserving the documented prototype movement behavior. This is the first actual game-to-engine integration.
 
@@ -177,7 +185,7 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-014 — Implement minimal typed job and ability definitions
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-003
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-003
 
 **Scope:** Create FFT-owned immutable definitions and typed IDs for the selected job/ability slice, including references and named flags justified by source. Use the agreed `Fft` ownership convention when a new project boundary is warranted.
 

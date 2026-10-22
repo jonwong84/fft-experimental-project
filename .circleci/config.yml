@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build-test-sonar:
     docker:
-      - image: mcr.microsoft.com/dotnet/sdk:10.0
+      - image: mcr.microsoft.com/dotnet/sdk:10.0.402
     steps:
       - checkout
       - run:
@@ -16,7 +16,7 @@ jobs:
             echo 'export PATH="$PATH:/root/.dotnet/tools"' >> "$BASH_ENV"
       - run:
           name: Restore solution
-          command: dotnet restore Fft.sln
+          command: dotnet restore Fft.sln --locked-mode
       - run:
           name: Begin SonarQube Cloud analysis
           command: |

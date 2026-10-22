@@ -10,10 +10,11 @@ This checkout currently contains a headless .NET 10 console bootstrap, a `Fft.Co
 
 ## Build, run, and test
 
-Requires the .NET 10 SDK.
+Requires the .NET SDK version selected by `global.json` (currently 10.0.402). See [SDK and dependency policy](docs/development/build-reproducibility.md) for installation, locked restoration, and deliberate upgrades.
 
 ```powershell
-dotnet build Fft.sln -c Release
+dotnet restore Fft.sln --locked-mode
+dotnet build Fft.sln -c Release --no-restore
 dotnet run --project src/Fft.Client/Fft.Client.csproj -c Release --no-build
 dotnet run --project src/Fft.Client/Fft.Client.csproj -c Release -- --content-root scratch/prepared-chocobo-content --asset-id base:battle/cyoko.spr
 dotnet run --project src/Fft.AssetTool.Cli/Fft.AssetTool.Cli.csproj -c Release -- verify-sprite --content-root scratch/prepared-chocobo-content

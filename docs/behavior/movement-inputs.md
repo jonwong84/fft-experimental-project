@@ -6,6 +6,8 @@ The managed core has data shapes for the terrain and effective unit values that 
 
 ## Source trace
 
+ZOD-004 extends this historical input inventory with the [ordinary adjacent-step geometry investigation](adjacent-step-geometry.md) (2026-10-22). It records a newly observed reference HEAD, exact caller/edge-height/Jump arithmetic, bounded accept/reject vectors, slope direction and steep-slope quirks, and the recommended ZOD-010 scope. Its evidence is static source tracing; no executable reference or original-game observation was performed.
+
 Reference snapshot: `adamrt/fft_decomp` commit `611b504d25d4a9b03fab8023d7dbea75fe381d5d`.
 
 - `include/fft/battle_map.h:323-335` describes the eight-byte terrain record. Movement-relevant fields include surface type, whole-unit height, half-height/water depth, slope byte, ceiling depth, and blocked/untargetable/cannot-stop flags.
