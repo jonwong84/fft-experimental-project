@@ -2,6 +2,8 @@
 
 Date: 2026-10-22. Recommend **a loose UTF-8 JSON file per metadata package**, using explicit typed-ID references and strict versioned readers. A test-only prototype demonstrates round-trip authoring, validation and explicit baseline/add-on composition using the [ZOD-014 definitions](zod-014-typed-definitions.md). There is no production loader/export API yet; ZOD-016 owns that implementation. The candidate format may change deliberately before that work establishes a public compatibility contract.
 
+Implementation update: [ZOD-016](zod-016-content-packages.md) now supplies the production API, authoring/export path and CLI validation command. This note preserves the format-selection evidence and test-only prototype; use the ZOD-016 API for production callers.
+
 This is a format investigation using invented content, not a new source-behavior investigation. Source-derived field meanings are inherited from [ZOD-003](../behavior/job-ability-slice.md), pinned to decomp `611b504d25d4a9b03fab8023d7dbea75fe381d5d`. No retail row bytes, BIN import or original-game execution were used. A package's `baseline` role does not prove its content was imported from the original game.
 
 ## Representation comparison

@@ -4,6 +4,10 @@ internal static class Program
 {
     private static int Main(string[] args)
     {
+        // Metadata validation has no repository, scratch, BIN or reference-checkout dependency.
+        if (args.Length > 0 && string.Equals(args[0], "validate-content", StringComparison.Ordinal))
+            return new ValidateContentCommand().Run(args, Console.Out, Console.Error);
+
         string? workspaceRoot = FindWorkspaceRoot(AppContext.BaseDirectory)
             ?? FindWorkspaceRoot(Environment.CurrentDirectory);
         if (workspaceRoot is null)

@@ -1,0 +1,13 @@
+{
+  "format": "fft.content-metadata", "schemaVersion": 1,
+  "packageId": "sample.base:package/recruits", "profileId": "sample:profile/metadata",
+  "kind": "baseline", "requiredBaselinePackageId": null,
+  "jobs": [{"id": "sample.base:job/recruit", "primarySkillsetId": "sample.base:skillset/practice",
+    "baseMove": 3, "baseJump": 2, "steppingStone": true,
+    "innateAbilityIds": ["sample.base:ability/focus", "sample.base:ability/focus"]}],
+  "skillsets": [{"id": "sample.base:skillset/practice",
+    "slots": [{"index": 9, "abilityId": "sample.base:ability/focus"}, {"index": 0, "abilityId": null}]}],
+  "abilities": [{"id": "sample.base:ability/focus", "jpCost": 65535, "learnOnHitRateRaw": 255,
+    "serializedClassRaw": 15, "flags": ["show-name", "learn-on-hit", "cannot-learn-with-jp"],
+    "unknownTypeBitsRaw": 16, "aiFlagsRaw": [255, 128, 1, 66]}]
+}

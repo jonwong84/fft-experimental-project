@@ -12,6 +12,14 @@ This checkout currently contains a headless .NET 10 console bootstrap, a `Fft.Co
 
 Requires the .NET SDK version selected by `global.json` (currently 10.0.402). See [SDK and dependency policy](docs/development/build-reproducibility.md) for installation, locked restoration, and deliberate upgrades.
 
+Content metadata validation uses the shared `Fft.Content.ContentPackages` API. It reads data only; it does not load authoring programs, the BIN or assets:
+
+```powershell
+dotnet run --project src/Fft.AssetTool.Cli -c Release -- validate-content --package docs/fixtures/content/metadata-synthetic.json
+```
+
+Use repeated `--addon <path>` arguments to validate explicitly selected additions against that baseline. Exit codes are 0 for valid metadata, 1 for invalid content or file errors, and 2 for command usage errors. See [production content packages](docs/architecture/zod-016-content-packages.md) for C# authoring, deterministic export, diagnostics and limits. This validates structural metadata, not battle readiness or original-game equivalence.
+
 ```powershell
 dotnet restore Fft.sln --locked-mode
 dotnet build Fft.sln -c Release --no-restore

@@ -217,7 +217,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-016 — Build the shared content validator and C# authoring export
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-015
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-015
+
+**Result:** [Production content package API](architecture/zod-016-content-packages.md) shares typed validation across C# and JSON, reports package/record/field context, exports deterministic LF JSON through a validated sibling-file replacement, and loads runtime metadata without authoring code. `validate-content` returns 0/1/2 for valid/content-or-file-error/usage. Windows locked restore, zero-warning Release build and all 309 tests passed; actual CLI checks outside the repository confirmed success/failure. Only synthetic example data is committed with this work; Linux CI remains unverified locally.
 
 **Scope:** Let a trusted local authoring program construct the selected C# definitions and export the same versioned data that a hand-edited package uses. Expose validation for both CLI and later editor consumers.
 
@@ -225,7 +227,7 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-017 — Import and validate the selected original job/ability records
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-003, ZOD-016
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-003, ZOD-016
 
 **Scope:** Read only the selected source records from local prepared/extracted files and convert them to the new definitions. Identify any additional container or executable-table parsing needed before implementation.
 
