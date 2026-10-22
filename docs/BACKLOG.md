@@ -347,7 +347,14 @@ simulation. This ticket supplies contracts/validation; ZOD-022 implements attack
 
 ### ZOD-057 — Verify and import the selected retail sword and attack records
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-017, ZOD-021, ZOD-055
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-017, ZOD-021, ZOD-055
+
+**Result:** [Verified retail sword import](behavior/retail-sword-import.md) traces and imports seven selected
+item/weapon/proc/attribute/ability/menu records with exact input identity and raw provenance. Two imports were
+byte-identical; direct byte checks found no discrepancies. Retail power4, evade5, flags0x8e and empty proc
+type0 differ from the synthetic profile. Export remains explicitly metadata-only; ZOD-058 handles runtime
+representation. Existing Squire output is unchanged. Windows locked restore, zero-warning Release build
+and all 519 solution tests passed on 2026-10-22.
 
 **Scope:** Trace and import the selected original sword/item and attack configuration from verified prepared
 files; resolve the candidate row identified by ZOD-021 instead of substituting familiar values.
@@ -356,6 +363,19 @@ files; resolve the candidate row identified by ZOD-021 instead of substituting f
 unknown bytes remain in ignored import provenance with edition/input hashes and converter version.
 Repeated imports are deterministic; malformed/unsupported inputs have diagnostics and synthetic parser tests.
 Record any mismatch with ZOD-021's deliberately synthetic configuration before claiming retail equivalence.
+
+### ZOD-058 — Represent the verified retail sword differences explicitly
+
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-055, ZOD-056, ZOD-057
+
+**Scope:** Extend the bounded content/setup contract to represent the verified Broad Sword without replacing
+its power, evade, capability flags or empty proc mode. Decide an explicit package-version/migration policy.
+
+**Acceptance criteria:** Capability bits are distinct from targeting/active support effects; empty type0
+status data round-trips without becoming type128; weapon evade has source-traced effective-stat/evasion
+semantics before runtime support is claimed. Imported data can be validated/exported faithfully, unsupported
+combinations fail explicitly, and existing synthetic profile/fixtures retain their versioned behavior.
+No retail combat equivalence is claimed without executing ZOD-022 and checking appropriate vectors.
 
 ### ZOD-023 — Complete a reproducible two-unit battle scenario
 

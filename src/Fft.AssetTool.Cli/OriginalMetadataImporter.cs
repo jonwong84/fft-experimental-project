@@ -1,6 +1,4 @@
-using System.Buffers.Binary;
 using System.Collections.Immutable;
-using System.Security.Cryptography;
 using Fft.AssetTool;
 using Fft.Content.ContentPackages;
 using Fft.Content.Definitions;
@@ -18,11 +16,7 @@ public static class OriginalMetadataImporter
     /// <summary>Requires the exact pinned executable before attributing output to SCUS-94221.</summary>
     public static OriginalMetadataImport ImportVerified(ReadOnlySpan<byte> executable)
     {
-        if (executable.Length != ExecutableLength)
-            throw new InvalidDataException($"SCUS-94221 executable must contain {ExecutableLength} bytes.");
-        string hash = Convert.ToHexStringLower(SHA256.HashData(executable));
-        if (hash != ExecutableSha256)
-            throw new InvalidDataException($"SCUS-94221 executable SHA-256 mismatch: {hash}.");
+        OriginalExecutableReader.Verify(executable);
         return DecodeSelection(executable);
     }
 
@@ -32,28 +26,11 @@ public static class OriginalMetadataImporter
     /// </summary>
     public static OriginalMetadataImport DecodeSelection(ReadOnlySpan<byte> executable)
     {
-        if (executable.Length < 0x800 || !executable[..8].SequenceEqual("PS-X EXE"u8))
-            throw new InvalidDataException("Expected a complete PS-X EXE header.");
-        uint load = BinaryPrimitives.ReadUInt32LittleEndian(executable[0x18..]);
-        uint size = BinaryPrimitives.ReadUInt32LittleEndian(executable[0x1c..]);
-        if (load != 0x80010000 || size == 0 || (ulong)size + 0x800 != (ulong)executable.Length)
-            throw new InvalidDataException("Unsupported PS-X EXE load address or initialized payload size.");
-
-        byte[] image = executable.ToArray();
-        var records = new List<OriginalMetadataSourceRecord>();
+        var reader = new OriginalExecutableReader(executable);
+        var records = reader.Records;
         var diagnostics = new List<string>();
-        byte[] Read(string table, uint tableAddress, int stride, int index, string? definitionId)
-        {
-            ulong address = (ulong)tableAddress + (ulong)stride * (uint)index;
-            if (address < load || address + (uint)stride > (ulong)load + size)
-                throw new InvalidDataException($"{table}[{index}] is outside initialized executable data.");
-            int offset = checked((int)(address - load + 0x800));
-            byte[] raw = image.AsSpan(offset, stride).ToArray();
-            records.Add(new(table, index, definitionId, checked((uint)address), offset, stride,
-                Convert.ToHexStringLower(raw)));
-            return raw;
-        }
-
+        byte[] Read(string table, uint tableAddress, int stride, int index, string? definitionId) =>
+            reader.Read(table, tableAddress, stride, index, definitionId);
         const string jobId = "fft.ps1:job/squire";
         OriginalJobRecord job = OriginalMetadataRecords.DecodeJob(Read("g_job_data", 0x800610b8, 48, 74, jobId));
         if (job.Skillset >= 176)

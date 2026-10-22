@@ -21,7 +21,7 @@ internal static class Program
             return new ExtractCommand(workspaceRoot).Run(args, Console.Out, Console.Error);
         }
 
-        if (args.Length > 0 && string.Equals(args[0], "import-metadata", StringComparison.Ordinal))
+        if (args.Length > 0 && args[0] is "import-metadata" or "import-sword")
             return new ImportMetadataCommand(workspaceRoot).Run(args, Console.Out, Console.Error);
 
         if (args.Length > 0 && string.Equals(args[0], "verify-sprite", StringComparison.Ordinal))

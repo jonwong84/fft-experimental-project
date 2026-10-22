@@ -15,7 +15,8 @@ public sealed class ImportMetadataCommand(string workspaceRoot)
         try
         {
             var options = new Dictionary<string, string>(StringComparer.Ordinal);
-            if (args.Length == 0 || args[0] != "import-metadata") throw new ArgumentException("Expected import-metadata command.");
+            if (args.Length == 0 || args[0] is not ("import-metadata" or "import-sword")) throw new ArgumentException("Expected import-metadata or import-sword command.");
+            bool swordMode = args[0] == "import-sword";
             for (int i = 1; i < args.Length; i++)
             {
                 string key = args[i];
@@ -34,8 +35,9 @@ public sealed class ImportMetadataCommand(string workspaceRoot)
             if (new FileInfo(inputPath).Length != OriginalMetadataImporter.ExecutableLength)
                 throw new InvalidDataException("Input has an unsupported executable byte length.");
             byte[] bytes = File.ReadAllBytes(inputPath);
-            OriginalMetadataImport result = OriginalMetadataImporter.ImportVerified(bytes);
-            string provenance = JsonSerializer.Serialize(new
+            OriginalMetadataImport? result = swordMode ? null : OriginalMetadataImporter.ImportVerified(bytes);
+            OriginalSwordImport? sword = swordMode ? OriginalSwordImporter.ImportVerified(bytes) : null;
+            string provenance = swordMode ? OriginalSwordImporter.ToJson(sword!) : JsonSerializer.Serialize(new
             {
                 format = "fft.original-metadata-import", schemaVersion = 1,
                 targetEdition = "SCUS-94221", scope = "partial-learning-metadata",
@@ -43,7 +45,7 @@ public sealed class ImportMetadataCommand(string workspaceRoot)
                 input = new { fileName = "SCUS_942.21", byteLength = bytes.Length, sha256 = OriginalMetadataImporter.ExecutableSha256 },
                 referenceRevision = OriginalMetadataImporter.ReferenceRevision,
                 converterVersion = OriginalMetadataImporter.ConverterVersion,
-                records = result.Records, diagnostics = result.Diagnostics,
+                records = result!.Records, diagnostics = result.Diagnostics,
             }, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true }) + "\n";
 
             // Publish the two related files together only after all decoding and validation succeeds.
@@ -53,8 +55,8 @@ public sealed class ImportMetadataCommand(string workspaceRoot)
             try
             {
                 Directory.CreateDirectory(staging);
-                result.Package.Save(Path.Combine(staging, "content.package.json"));
-                File.WriteAllText(Path.Combine(staging, "import.provenance.json"), provenance.Replace("\r\n", "\n", StringComparison.Ordinal), new UTF8Encoding(false));
+                if (!swordMode) result!.Package.Save(Path.Combine(staging, "content.package.json"));
+                File.WriteAllText(Path.Combine(staging, swordMode ? "sword.import.json" : "import.provenance.json"), provenance.Replace("\r\n", "\n", StringComparison.Ordinal), new UTF8Encoding(false));
                 Directory.Move(staging, outputPath);
             }
             finally
@@ -64,18 +66,20 @@ public sealed class ImportMetadataCommand(string workspaceRoot)
                 {
                     File.Delete(Path.Combine(staging, "content.package.json"));
                     File.Delete(Path.Combine(staging, "import.provenance.json"));
+                    File.Delete(Path.Combine(staging, "sword.import.json"));
                     Directory.Delete(staging);
                 }
             }
-            output.WriteLine($"Imported {result.Package.Jobs.Length} job, {result.Package.Skillsets.Length} skillset, " +
+            if (swordMode) output.WriteLine($"Imported selected retail sword and Attack metadata: {sword!.Records.Length} source records at {outputPath}; metadata-only, no runtime package.");
+            else output.WriteLine($"Imported {result!.Package.Jobs.Length} job, {result.Package.Skillsets.Length} skillset, " +
                 $"{result.Package.Abilities.Length} abilities; {result.Records.Length} source records preserved at {outputPath}.");
-            foreach (string diagnostic in result.Diagnostics) output.WriteLine(diagnostic);
+            foreach (string diagnostic in swordMode ? sword!.Diagnostics : result!.Diagnostics) output.WriteLine(diagnostic);
             return 0;
         }
         catch (ArgumentException exception)
         {
             error.WriteLine(exception.Message);
-            error.WriteLine("Usage: import-metadata --exe <scratch/SCUS_942.21> --output <fresh-scratch-directory>");
+            error.WriteLine("Usage: import-metadata|import-sword --exe <scratch/SCUS_942.21> --output <fresh-scratch-directory>");
             return 2;
         }
         catch (Exception exception) when (exception is IOException or InvalidDataException or UnauthorizedAccessException)

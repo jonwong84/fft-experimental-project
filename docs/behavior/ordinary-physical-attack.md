@@ -1,5 +1,9 @@
 # Ordinary physical sword attack (ZOD-021)
 
+Retail follow-up: [ZOD-057](retail-sword-import.md) now verifies the selected Broad Sword records and
+documents their differences from this deliberately synthetic profile. The source-derived scenario below
+remains unchanged and must not be relabeled as a retail Broad Sword battle.
+
 Date: 2026-10-22. Target edition: North American PS1 `SCUS-94221`. Read-only reference checkout `C:\repositories\fft_decomp`, observed HEAD **`611b504d25d4a9b03fab8023d7dbea75fe381d5d`** (`git rev-parse HEAD`). Every C path/symbol below refers to that exact revision. Line numbers are navigation aids. This investigation is documentation only; no combat implementation or formula interpreter is introduced.
 
 ## Selection and evidence boundary
