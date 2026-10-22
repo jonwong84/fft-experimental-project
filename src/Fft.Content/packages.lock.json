@@ -3,6 +3,12 @@
   "dependencies": {
     "net10.0": {
       "fft.core": {
+        "type": "Project",
+        "dependencies": {
+          "Zodiac.Engine": "[1.0.0, )"
+        }
+      },
+      "zodiac.engine": {
         "type": "Project"
       }
     }

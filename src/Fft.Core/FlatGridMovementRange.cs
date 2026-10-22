@@ -21,48 +21,10 @@ public static class FlatGridMovementRange
             throw new ArgumentOutOfRangeException(nameof(origin), origin, "Origin must be inside the map.");
         }
 
-        var visited = new HashSet<TilePosition> { origin };
-        var destinations = new HashSet<TilePosition>();
-        var frontier = new Queue<(TilePosition Position, int Distance)>();
-        frontier.Enqueue((origin, 0));
-
-        while (frontier.TryDequeue(out var current))
-        {
-            if (current.Distance >= move)
-            {
-                continue;
-            }
-
-            if (current.Position.X > 0)
-            {
-                Visit(new TilePosition(current.Position.X - 1, current.Position.Y, origin.Layer));
-            }
-
-            if (current.Position.X < map.Width - 1)
-            {
-                Visit(new TilePosition(current.Position.X + 1, current.Position.Y, origin.Layer));
-            }
-
-            if (current.Position.Y > 0)
-            {
-                Visit(new TilePosition(current.Position.X, current.Position.Y - 1, origin.Layer));
-            }
-
-            if (current.Position.Y < map.Depth - 1)
-            {
-                Visit(new TilePosition(current.Position.X, current.Position.Y + 1, origin.Layer));
-            }
-
-            void Visit(TilePosition position)
-            {
-                if (visited.Add(position))
-                {
-                    destinations.Add(position);
-                    frontier.Enqueue((position, current.Distance + 1));
-                }
-            }
-        }
-
-        return destinations.ToFrozenSet();
+        var bounds = new Zodiac.Engine.GridBounds(map.Width, map.Depth, map.LayerCount);
+        var engineOrigin = new Zodiac.Engine.GridPosition(origin.X, origin.Y, origin.Layer);
+        return Zodiac.Engine.FlatGridMovementRange.Calculate(bounds, engineOrigin, move)
+            .Select(position => new TilePosition(position.X, position.Y, position.Layer))
+            .ToFrozenSet();
     }
 }

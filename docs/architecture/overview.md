@@ -24,6 +24,8 @@ The architecture should evolve from this shape without splitting projects just f
 
 The completed [ZOD-001 ownership audit](zod-001-type-ownership.md) classifies every current Core type and recommends a bounds-only flat cardinal range calculation as the first engine slice, accessed through an FFT-owned facade. This is a documented extraction plan; the current assemblies and behavior remain unchanged.
 
+Implementation update (2026-10-22): ZOD-007/008 now provide that bounds-only engine calculation and FFT facade integration. ZOD-009's [Relay sample](../../samples/Relay/README.md) runs the calculation with invented content, and a build target enforces the current engine project-reference boundary. These satisfy the bounded M0 engine demonstration; the broader architecture below remains a target, not implemented battle/campaign functionality.
+
 ## Target dependency shape
 
 ```mermaid

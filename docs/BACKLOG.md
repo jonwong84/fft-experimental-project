@@ -135,7 +135,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-008 — Adapt the existing FFT transition to the engine slice
 
-**Type:** Story · **Priority:** P1 · **Status:** Ready · **Depends on:** ZOD-007
+**Type:** Story · **Priority:** P1 · **Status:** Complete · **Depends on:** ZOD-007
+
+**Result:** [FFT adapter integration](architecture/zod-008-fft-adapter.md) routes the existing FFT facade through Zodiac while retaining flat prototype behavior. Locked restore, Release build and all 162 tests passed on Windows; no project rename or terrain-policy change.
 
 **Scope:** Connect the current FFT battle proof to the new engine functionality while preserving the documented prototype movement behavior. This is the first actual game-to-engine integration.
 
@@ -143,7 +145,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-009 — Prove engine independence with a neutral sample and dependency check
 
-**Type:** Story · **Priority:** P1 · **Status:** Waiting · **Depends on:** ZOD-008
+**Type:** Story · **Priority:** P1 · **Status:** Complete · **Depends on:** ZOD-008
+
+**Result:** [Relay neutral scenario](../samples/Relay/README.md) compiles in engine-only tests and completes an invented delivery. A separate integration test varies FFT Move without affecting its result. The evaluated project-reference guard rejects a deliberate FFT reference and runs in the existing CI build. Windows locked restore, Release build and all 164 tests passed; remote CI remains unverified.
 
 **Scope:** Add one tiny synthetic tactical scenario using the extracted engine functionality and no FFT types. Add a focused architectural check for forbidden engine-to-FFT project references.
 
