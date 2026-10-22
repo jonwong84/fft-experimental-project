@@ -1,5 +1,9 @@
 # Minimal job and ability definition slice (ZOD-003)
 
+Implementation follow-up: [ZOD-017's verified local import](original-metadata-import.md) now resolves the
+selected retail records and Squire-to-Basic-Skill edge. The original design/evidence limits below describe
+what was known during ZOD-003; raw imported records and generated packages remain under ignored scratch.
+
 Date: 2026-10-22. Design and static source study only; no importer, catalog, combat rule or production schema is implemented. All decomp paths and symbols below refer to the read-only local checkout `C:\repositories\fft_decomp` at **`611b504d25d4a9b03fab8023d7dbea75fe381d5d`**, observed with `git rev-parse HEAD`. This is the SCUS-94221 compatibility investigation; no BIN edition/hash or original-game execution was verified in this task.
 
 ## Selected slice and evidence boundary

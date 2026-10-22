@@ -233,7 +233,13 @@ all 334 solution tests passed on 2026-10-22. Combat consumption ordering remains
 
 ### ZOD-017 — Import and validate the selected original job/ability records
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-003, ZOD-016
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-003, ZOD-016
+
+**Result:** [Selected original metadata import](behavior/original-metadata-import.md) verifies the pinned
+SCUS-94221 executable, resolves Squire's actual skillset and imports one job, one 22-slot skillset and ten
+referenced abilities. All 22 raw source records and unknown fields remain in ignored provenance. Two local
+imports were byte-identical and passed shared validation; synthetic tests require no game files. Windows
+locked restore, Release build (zero warnings/errors) and all 379 solution tests passed on 2026-10-22.
 
 **Scope:** Read only the selected source records from local prepared/extracted files and convert them to the new definitions. Identify any additional container or executable-table parsing needed before implementation.
 
@@ -241,7 +247,13 @@ all 334 solution tests passed on 2026-10-22. Combat consumption ordering remains
 
 ### ZOD-018 — Resolve content definitions into bounded battle units
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-012, ZOD-017
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-012, ZOD-017
+
+**Result:** [Base-job setup](behavior/base-job-battle-setup.md) resolves stable definition references before
+startup and creates independent movement snapshots from shared immutable definitions. Base Move/Jump map
+directly; body height/costs remain explicit prototype inputs, with stepping stones and effective-stat
+derivation excluded. Authored Move changes reachability through the unchanged simulator. Integrated Windows
+locked restore, zero-warning Release build and all 464 tests passed on 2026-10-22.
 
 **Scope:** Build a unit for the selected scenario from typed definitions and explicit runtime inputs. Source-trace any calculation needed to derive its effective movement/combat values; retain explicitly supplied values where the calculation is not yet implemented.
 
@@ -249,7 +261,12 @@ all 334 solution tests passed on 2026-10-22. Combat consumption ordering remains
 
 ### ZOD-019 — Trace the smallest CT and turn-completion scenario
 
-**Type:** Spike · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-002
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-002
+
+**Result:** [CT and turn-completion trace](behavior/ct-turn-cycle.md) pins tick caps, CT modulo, largest-CT/
+slot-tie selection, Move/Act/Wait markers and completion refunds. Includes a checkable two-unit sequence and
+the unconditional upkeep RNG draw before readiness delivery. Independently reviewed static source evidence;
+no original-game/executable turn oracle or implementation is claimed.
 
 **Scope:** Study normal CT accumulation, ready-unit selection/ties, and turn completion for two ordinary units, with no speed-changing statuses or charged abilities.
 
@@ -257,15 +274,28 @@ all 334 solution tests passed on 2026-10-22. Combat consumption ordering remains
 
 ### ZOD-020 — Implement the bounded turn cycle and wait command
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-008, ZOD-011, ZOD-019
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-008, ZOD-011, ZOD-013, ZOD-019
+
+**Result:** [Bounded turn implementation](behavior/ct-turn-implementation.md) implements explicit CT/Speed/
+tie keys, selection, choice consumption, completion and one upkeep RNG draw per new readiness. A separate
+movement wrapper enforces active turns and restores movement on later turns while preserving movement-only
+APIs/fixtures. Source boundary vectors and repeated state/event/RNG scenarios pass. Integrated Windows
+locked restore, zero-warning Release build and all 464 tests passed on 2026-10-22. ConfirmAct is a synthetic
+choice marker; attack effects remain ZOD-022.
 
 **Scope:** Advance the two-unit scenario using the selected CT semantics and explicit turn completion.
 
-**Acceptance criteria:** Ready-unit/tie vectors pass; inactive units cannot issue actions; waiting/ending a turn updates the documented fields and permits subsequent turns; event/state sequences replay identically. RNG is introduced only if the traced scenario needs it. Expanded status, charge, and unusual tie behavior remain separately tracked.
+**Acceptance criteria:** Ready-unit/tie vectors pass; inactive units cannot issue actions; waiting/ending a turn updates the documented fields and permits subsequent turns; event/state sequences replay identically, including the source-traced upkeep RNG draw at new readiness selection. Expanded status, charge, and unusual tie behavior remain separately tracked.
 
 ### ZOD-021 — Trace one ordinary physical attack end to end
 
-**Type:** Spike · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-002, ZOD-003, ZOD-005
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-002, ZOD-003, ZOD-005
+
+**Result:** [Ordinary physical attack trace](behavior/ordinary-physical-attack.md) specifies synthetic sword
+inputs, targeting/facing/height, sequential evade and critical/proc draws, damage widths, HP/KO/Critical and
+turn consequences. Seeded hit/miss/critical and boundary vectors were independently reviewed against pinned
+source. No executing FFT oracle or verified retail sword row is claimed. Prerequisites are ZOD-055/056;
+retail sword verification is ZOD-057.
 
 **Scope:** Select a precisely specified unit/weapon/target configuration and trace target legality, facing/range, hit checks, damage arithmetic, HP/KO changes, RNG draw order, and turn consequences. Identify every deliberately absent modifier.
 
@@ -273,11 +303,53 @@ all 334 solution tests passed on 2026-10-22. Combat consumption ordering remains
 
 ### ZOD-022 — Implement the selected attack and HP/KO transitions
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-013, ZOD-018, ZOD-020, ZOD-021
+**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-013, ZOD-018, ZOD-020, ZOD-021, ZOD-055, ZOD-056
 
 **Scope:** Implement only the source-traced action configuration and required definition fields.
 
 **Acceptance criteria:** Hit, miss, boundary damage, KO, range/facing, and invalid-command cases have fixtures; HP, action availability, and RNG state advance in the documented order; rejected actions preserve state as specified; state/events support presentation without presentation code. Unsupported equipment/status/modifier combinations fail explicitly or are excluded by scenario validation.
+
+### ZOD-055 — Define the bounded executable sword content slice
+
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-014, ZOD-021
+
+**Result:** [Sword definitions and package](architecture/zod-055-sword-content.md) add immutable constrained
+weapon/effect content and a separate versioned sword layer with shared strict validation and canonical
+round trips. Metadata v1 remains unchanged. Unsupported fields have package/record/field diagnostics;
+retail values and attack resolution remain separate. Integrated Windows locked restore, zero-warning
+Release build and all 464 tests passed on 2026-10-22.
+
+**Scope:** Add the minimum FFT-owned immutable sword/attack definition fields selected by ZOD-021 and shared
+package validation. Keep learning-only abilities distinct from supported executable content.
+
+**Acceptance criteria:** Weapon type, power, formula, targeting flags, evade/element and empty added-effect
+configuration can represent the selected synthetic sword without simulator constants or guessed defaults.
+Unsupported configurations fail explicitly; authored packages round-trip with field-specific diagnostics.
+No retail sword values are asserted until ZOD-057 verifies them.
+
+### ZOD-056 — Extend battle snapshots and fixtures for the bounded attack
+
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-013, ZOD-018, ZOD-020, ZOD-021
+
+**Scope:** Add explicit attack runtime inputs/state and a versioned fixture contract for the selected scenario,
+using ZOD-021's field inventory. Keep immutable definitions separate from HP, facing and current turn state.
+
+**Acceptance criteria:** Snapshots represent required HP/maxHP, combat stats, facing, supported statuses/KO,
+equipment references, action availability and RNG state/count. Replay compares those fields and ordered events;
+existing movement fixtures retain their documented semantics. Invalid or unsupported setup fails before
+simulation. This ticket supplies contracts/validation; ZOD-022 implements attack resolution.
+
+### ZOD-057 — Verify and import the selected retail sword and attack records
+
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-017, ZOD-021, ZOD-055
+
+**Scope:** Trace and import the selected original sword/item and attack configuration from verified prepared
+files; resolve the candidate row identified by ZOD-021 instead of substituting familiar values.
+
+**Acceptance criteria:** Every required semantic field maps to a pinned layout and exact original record;
+unknown bytes remain in ignored import provenance with edition/input hashes and converter version.
+Repeated imports are deterministic; malformed/unsupported inputs have diagnostics and synthetic parser tests.
+Record any mismatch with ZOD-021's deliberately synthetic configuration before claiming retail equivalence.
 
 ### ZOD-023 — Complete a reproducible two-unit battle scenario
 

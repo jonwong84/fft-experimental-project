@@ -26,12 +26,14 @@ public sealed partial class ContentPackage
     {
         private readonly JsonElement root;
         private readonly string? packageId;
+        private readonly PackageJsonValidation validation;
         private int referenceCount;
 
         internal PackageJsonReader(JsonElement root)
         {
             this.root = root;
             packageId = GuessString(root, "packageId");
+            validation = new PackageJsonValidation(packageId);
         }
 
         internal ContentPackage Read()
@@ -146,38 +148,17 @@ public sealed partial class ContentPackage
         }
 
         private void Fields(JsonElement node, string? record, string path, params string[] fields)
-        {
-            if (node.ValueKind != JsonValueKind.Object) throw Failure(record, path, "Expected an object.");
-            var seen = new HashSet<string>(StringComparer.Ordinal);
-            foreach (JsonProperty property in node.EnumerateObject())
-            {
-                string propertyPath = path + "." + property.Name;
-                if (!seen.Add(property.Name)) throw Failure(record, propertyPath, "Duplicate JSON field.");
-                if (!fields.Contains(property.Name, StringComparer.Ordinal)) throw Failure(record, propertyPath, "Unknown field.");
-            }
-            foreach (string field in fields)
-                if (!seen.Contains(field)) throw Failure(record, path + "." + field, "Required field is missing.");
-        }
+            => validation.Fields(node, record, path, fields);
 
         private JsonElement.ArrayEnumerator Array(JsonElement node, string? record, string path, int maximum)
-        {
-            if (node.ValueKind != JsonValueKind.Array) throw Failure(record, path, "Expected an array.");
-            if (node.GetArrayLength() > maximum) throw Failure(record, path, $"Array exceeds {maximum} entries.");
-            return node.EnumerateArray();
-        }
+            => validation.Array(node, record, path, maximum);
 
-        private string Id(JsonElement node, string? record, string path) => ValidateId(Text(node, record, path), packageId, record, path);
-        private string Text(JsonElement node, string? record, string path) => node.ValueKind == JsonValueKind.String
-            ? node.GetString()! : throw Failure(record, path, "Expected a string.");
+        private string Id(JsonElement node, string? record, string path) => validation.Id(node, record, path);
+        private string Text(JsonElement node, string? record, string path) => validation.Text(node, record, path);
         private int Integer(JsonElement node, string? record, string path, int minimum, int maximum)
-        {
-            if (node.ValueKind != JsonValueKind.Number || !node.TryGetInt32(out int value) || value < minimum || value > maximum)
-                throw Failure(record, path, $"Expected an integer from {minimum} through {maximum}.");
-            return value;
-        }
+            => validation.Integer(node, record, path, minimum, maximum);
         private ContentPackageValidationException Failure(string? record, string path, string message) => new(packageId, record, path, message);
         private static string? GuessString(JsonElement node, string property) =>
-            node.ValueKind == JsonValueKind.Object && node.TryGetProperty(property, out JsonElement value) && value.ValueKind == JsonValueKind.String
-                ? value.GetString() : null;
+            PackageJsonValidation.GuessString(node, property);
     }
 }
