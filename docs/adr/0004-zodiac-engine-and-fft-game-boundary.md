@@ -17,9 +17,11 @@ Zodiac owns reusable deterministic simulation facilities and extension points. T
 
 Generalize a concept only when its invariant behavior can be stated independently of FFT and validated. Keep compatibility-specific policy in FFT-owned implementations. Keep the PS1 baseline distinct from Lion War/WotL content and intentional rule differences.
 
-The current project/namespace names may remain `Fft.*` while these seams are explored. Assembly moves and namespace renames should be separate, reviewable changes after the contracts stabilize.
+FFT is a separate game using Zodiac as its engine, with its own `Fft.*` project and namespace space. Engine extraction does not imply moving FFT underneath Zodiac. Assembly moves and any separately justified namespace renames should be reviewable changes after the contracts stabilize.
 
-The agreed target naming convention is `Zodiac.Engine` for reusable engine code and `Zodiac.Games.Fft` for FFT-specific code. Use `Zodiac.Games.Fft.Content`, `Zodiac.Games.Fft.AssetTool`, and `Zodiac.Games.Fft.Client` for those game-specific concerns as they are separated. Do not introduce `Zodiac.Engine.Core` without a concrete project boundary that warrants it. Namespaces signal ownership; project references enforce the one-way dependency. Existing `Fft.*` projects are retained during discovery and migrated incrementally, independently of behavior changes.
+The agreed naming convention is `Zodiac.Engine` for reusable engine code and the separate `Fft.*` root for FFT-specific code. Retain `Fft.Core`, `Fft.Content`, `Fft.AssetTool`, `Fft.AssetTool.Cli`, and `Fft.Client` for their game-owned responsibilities. Extract only proven reusable code into Zodiac. Do not introduce `Zodiac.Engine.Core` without a concrete project boundary that warrants it. Namespaces signal ownership; project references enforce the one-way dependency: FFT references Zodiac, and Zodiac never references FFT.
+
+Naming clarification (2026-10-22): the owner selected independent `Fft.*` names instead of nesting the game beneath the engine's namespace. This updates naming only; the ownership boundary and incremental extraction plan remain the same.
 
 ## Consequences
 
@@ -27,7 +29,7 @@ The agreed target naming convention is `Zodiac.Engine` for reusable engine code 
 - FFT regression tests can validate its rules and data against the decomp and observations while running through Zodiac.
 - A small independent sample game/content set should eventually prove that Zodiac is reusable and does not contain hidden FFT assumptions.
 - `JobDefinition`, FFT formula catalogs, PS1 flags, text keys, sprite records, and ENTD/script definitions belong to the FFT content/tooling side unless a second game demonstrates a genuinely shared contract.
-- Reusable types use `Zodiac.Engine`; FFT rules, data, and tools use `Zodiac.Games.Fft` and its subnamespaces. The project reference graph, rather than naming alone, must prevent engine-to-game dependencies.
+- Reusable types use `Zodiac.Engine`; FFT rules, data, and tools use `Fft` and its subnamespaces. The project reference graph, rather than naming alone, must prevent engine-to-game dependencies.
 - Generic tactical concepts such as commands, simulation ticks, entity identity, deterministic randomness, and policy interfaces are candidates for Zodiac, but their APIs must be justified by concrete usage.
 - Reuse will be demonstrated by a second content set, not by renaming FFT assemblies or using generic-sounding names.
 

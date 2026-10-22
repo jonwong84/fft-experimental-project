@@ -77,7 +77,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-002 — Define behavioral fixture provenance and comparison rules
 
-**Type:** Design task · **Priority:** P1 · **Status:** Ready · **Depends on:** None
+**Type:** Design task · **Priority:** P1 · **Status:** Complete · **Depends on:** None
+
+**Result:** [Behavioral fixture format v1](behavior/fixture-format.md) (2026-10-22) defines provenance, confidence, exact comparison rules and local capture metadata. Includes a synthetic accepted movement scenario and a source-traced coordinate-guard description with separately labeled managed expectations. The JSON examples have not been executed by a fixture runner; ZOD-011 implements that runner.
 
 **Scope:** Define a small versioned scenario/expected-result format using the movement proof as an example. Record target edition, decomp SHA and function, evidence kind, preconditions, inputs, expected state/events, exclusions, and confidence.
 
@@ -117,7 +119,7 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-007 — Extract the first useful Zodiac engine slice
 
-**Type:** Story · **Priority:** P1 · **Status:** Waiting · **Depends on:** ZOD-001, ZOD-002
+**Type:** Story · **Priority:** P1 · **Status:** Ready · **Depends on:** ZOD-001, ZOD-002
 
 **Scope:** Implement exactly the extraction justified by ZOD-001 in `Zodiac.Engine`, with an engine test project. Prefer the smallest coherent functionality over a general framework of empty interfaces.
 
@@ -177,7 +179,7 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 **Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-003
 
-**Scope:** Create FFT-owned immutable definitions and typed IDs for the selected job/ability slice, including references and named flags justified by source. Use the agreed `Zodiac.Games.Fft` ownership convention when a new project boundary is warranted.
+**Scope:** Create FFT-owned immutable definitions and typed IDs for the selected job/ability slice, including references and named flags justified by source. Use the agreed `Fft` ownership convention when a new project boundary is warranted.
 
 **Acceptance criteria:** Synthetic definitions preserve field values and structural invariants; invalid/duplicate IDs and unresolved references have clear diagnostics; unit progression/runtime state remains separate; collections accept a synthetic catalog beyond original table capacities. Original numeric indices are import metadata, not the public storage or identity limit. Full catalogs and every FFTPatcher field are outside this slice.
 

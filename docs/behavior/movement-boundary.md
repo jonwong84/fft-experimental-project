@@ -20,3 +20,5 @@ This supports the bounds invariant only. It does not establish the complete reac
 - `BattleSimulatorTests.Apply_rejects_destination_outside_map_bounds` checks that the transition rejects an out-of-map request without changing state or emitting events.
 
 The transition test is an invariant-level match to the cited source check, not an executable differential comparison. The remaining flat-grid outputs are still prototype behavior.
+
+The [v1 source-traced fixture description](../fixtures/behavior/map-boundary.source-description.json) records signed coordinate boundary vectors and labels the managed transition expectations separately as synthetic. See the [fixture evidence and comparison rules](fixture-format.md). This description has not been executed by a fixture runner.

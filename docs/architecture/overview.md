@@ -1,6 +1,6 @@
 # Architecture overview
 
-**Engine name:** Zodiac. Final Fantasy Tactics is the first planned content set. The agreed target namespaces are `Zodiac.Engine` for reusable engine logic and `Zodiac.Games.Fft` for FFT-specific logic and tooling. Existing projects and namespaces remain `Fft.*` during the prototype; migration is gradual and separate from behavior changes.
+**Engine name:** Zodiac. Final Fantasy Tactics is a separate game that uses Zodiac as its engine. The agreed namespace roots are `Zodiac.Engine` for reusable engine logic and `Fft.*` for FFT-specific logic and tooling. FFT is not nested under the Zodiac namespace.
 
 **Status:** Proposed architecture for review. The repository is still an early prototype; the diagrams below describe intended dependency boundaries, not a claim that these projects or services already exist.
 
@@ -53,12 +53,12 @@ The system has two product concerns with a one-way dependency: **Zodiac engine/f
 ### Namespace and project naming convention
 
 - Use `Zodiac.Engine` as the namespace and project name for reusable deterministic simulation contracts and behavior. Do not add a `.Core` segment unless a later, concrete assembly boundary justifies it.
-- Use `Zodiac.Games.Fft` as the root for FFT-specific rules and compatibility behavior. Put FFT content definitions and loading under `Zodiac.Games.Fft.Content`, offline import tools under `Zodiac.Games.Fft.AssetTool`, and the FFT host/client under `Zodiac.Games.Fft.Client` when those projects are migrated.
-- Namespaces communicate ownership, but project references enforce the boundary: FFT projects may reference `Zodiac.Engine`; Zodiac projects must not reference `Zodiac.Games.Fft.*`.
+- Keep `Fft.*` as the separate root for FFT-specific rules and compatibility behavior. Retain `Fft.Content` for content definitions and loading, `Fft.AssetTool` / `Fft.AssetTool.Cli` for offline import tools, and `Fft.Client` for the FFT host. `Fft.Core` remains the current home of FFT simulation and the mixed prototype pending bounded engine extraction.
+- Namespaces communicate ownership, but project references enforce the boundary: FFT projects may reference `Zodiac.Engine`; Zodiac projects must not reference `Fft.*`.
 - Assign a type to `Zodiac.Engine` only when its meaning and behavior are independent of FFT. FFT formulas, PS1 compatibility policies, job/ability/item definitions, game data identifiers, and FFT asset formats stay FFT-owned.
 - Keep existing `Fft.*` projects and namespaces during exploration. Move types in small, reviewable steps after their ownership and contracts are understood; do not combine namespace migration with behavior changes.
 
-The current intended mapping is therefore `Fft.Core` (mixed prototype) to be split by responsibility over time, `Fft.Content` toward `Zodiac.Games.Fft.Content`, and `Fft.AssetTool` / `Fft.AssetTool.Cli` toward `Zodiac.Games.Fft.AssetTool` / `Zodiac.Games.Fft.AssetTool.Cli`. This is a target naming map, not a claim that the projects have already moved. Shared asset-service abstractions may instead move into an engine-owned project if a concrete engine use case requires them.
+Extract proven reusable responsibilities from the mixed `Fft.Core` prototype into `Zodiac.Engine` over time. FFT-owned projects retain their `Fft.*` names; there is no planned migration into a Zodiac game namespace. Shared asset-service abstractions may move into an engine-owned project only if a concrete engine use case requires them.
 
 ### Zodiac engine/framework responsibility
 
