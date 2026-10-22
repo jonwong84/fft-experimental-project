@@ -159,7 +159,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-010 — Implement the selected adjacent-step geometry rule
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-004, ZOD-012
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-004, ZOD-012
+
+**Result:** [Bounded adjacent-step policy](behavior/adjacent-step-implementation.md) adds explicit dry, non-steep facing-edge geometry with capped Jump and conservative supported-domain validation. Source-derived bidirectional vectors, combined cost/blocker cases and synthetic accepted/rejected replay fixtures pass. Existing policies are unchanged. Coordinator verified locked restore, zero-warning Release build and all 281 tests after parallel package-prototype integration.
 
 **Scope:** Implement only the eligibility rule selected by ZOD-004 through the established movement boundary.
 
@@ -205,7 +207,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-015 — Decide and prototype the editable content package format
 
-**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-014
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-014
+
+**Result:** [Content package decision/prototype](architecture/zod-015-content-package.md) selects strict loose JSON, round-trips synthetic typed metadata, preserves all primary flag bytes, and specifies explicit baseline/add-on composition and deterministic output. Test-only prototype has 22 passing cases; production loader/export work remains ZOD-016. Full integrated solution passes 281 tests.
 
 **Scope:** Compare simple file-based representations for the minimal definitions. Recommend a format, package layout, schema version policy, stable ID/reference convention, and separation from the existing asset manifest and future save data.
 
@@ -213,7 +217,7 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-016 — Build the shared content validator and C# authoring export
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-015
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-015
 
 **Scope:** Let a trusted local authoring program construct the selected C# definitions and export the same versioned data that a hand-edited package uses. Expose validation for both CLI and later editor consumers.
 

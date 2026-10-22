@@ -17,6 +17,8 @@ public sealed class MovementFixtureRunnerTests
     [InlineData("flat-rejections.synthetic.json")]
     [InlineData("terrain-cost-accepted.synthetic.json")]
     [InlineData("terrain-cost-rejected.synthetic.json")]
+    [InlineData("adjacent-step-accepted.synthetic.json")]
+    [InlineData("adjacent-step-rejected.synthetic.json")]
     public void Committed_scenarios_replay_with_equal_reports_and_retained_provenance(string file)
     {
         string json = Load(file);
@@ -105,6 +107,16 @@ public sealed class MovementFixtureRunnerTests
         var report = MovementFixtureRunner.Run(json, Revision);
         Assert.Equal("invalid-fixture", report.Status);
         Assert.Contains("Duplicate property", report.Diagnostic);
+    }
+
+    [Fact]
+    public void Unsupported_adjacent_policy_domain_is_reported_as_invalid_fixture()
+    {
+        var f = JsonNode.Parse(Load("adjacent-step-accepted.synthetic.json"))!;
+        f["scenario"]!["initialState"]!["units"]![0]!["movementProfile"]!["mode"] = "Fly";
+        var report = Run(f);
+        Assert.Equal("invalid-fixture", report.Status);
+        Assert.Contains("Normal mode", report.Diagnostic);
     }
 
     [Fact]

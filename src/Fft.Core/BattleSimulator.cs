@@ -3,7 +3,7 @@ namespace Fft.Core;
 /// <summary>Applies the initial, deliberately limited battle command set.</summary>
 /// <remarks>
 /// The two-argument overload retains <see cref="FlatGridMovementRange"/> for compatibility.
-/// The explicit overload can select the bounded terrain-cost prototype. This transition demonstrates
+/// The explicit overload can select bounded terrain-cost or adjacent-step prototypes. This transition demonstrates
 /// immutable state and command handling; it is not a source-faithful implementation of FFT movement.
 /// </remarks>
 public static class BattleSimulator
@@ -39,6 +39,9 @@ public static class BattleSimulator
             // Conservative synthetic policy: other units block traversal as well as stopping.
             // Original allegiance, mount and standing-height rules remain unsupported.
             BattleMovementPolicy.TerrainCostPrototype => TerrainAwareMovementRange.Calculate(
+                state.Map, unit.Position, unit.MovementProfile,
+                state.Units.Where(other => other.Id != unit.Id).Select(other => other.Position).ToHashSet()),
+            BattleMovementPolicy.OrdinaryAdjacentStepPrototype => OrdinaryAdjacentStepRange.Calculate(
                 state.Map, unit.Position, unit.MovementProfile,
                 state.Units.Where(other => other.Id != unit.Id).Select(other => other.Position).ToHashSet()),
             _ => throw new ArgumentOutOfRangeException(nameof(movementPolicy)),

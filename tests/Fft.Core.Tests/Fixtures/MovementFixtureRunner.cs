@@ -37,6 +37,7 @@ internal static class MovementFixtureRunner
             {
                 "fft:movement/flat-grid-prototype" => BattleMovementPolicy.FlatGridPrototype,
                 "fft:movement/terrain-cost-prototype" => BattleMovementPolicy.TerrainCostPrototype,
+                "fft:movement/ordinary-adjacent-step-prototype" => BattleMovementPolicy.OrdinaryAdjacentStepPrototype,
                 _ => throw new InvalidDataException("Unsupported policyId"),
             };
             Shape(root["reference"], "decompCommit observedOn usedForExpectations");
@@ -148,7 +149,7 @@ internal static class MovementFixtureRunner
             return Result("passed-assertion", $"Prototype regression passed for {commands.Count} commands; " +
                 string.Join("; ", evidence.Values) + ". Source cases were not executed; no original-game equivalence claim.");
         }
-        catch (Exception ex) when (ex is JsonException or InvalidDataException or ArgumentException or InvalidOperationException or OverflowException or FormatException)
+        catch (Exception ex) when (ex is JsonException or InvalidDataException or ArgumentException or InvalidOperationException or OverflowException or FormatException or NotSupportedException)
         {
             return Result("invalid-fixture", ex.Message);
         }

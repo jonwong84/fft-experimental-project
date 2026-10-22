@@ -81,3 +81,5 @@ For example an east-rising edge `(10,4,52)` at Jump 3 is steep: an east exit rej
 - Horizontal jump spans, water/depth and submerged/Float standing height, mounts, stepping stones/occupied tiles, corner/steep slopes, interlayer transitions, special movement modes, weather/cost resolution, ceilings as a general mechanic, and endpoint restrictions beyond existing cost/flag policy are excluded. If ZOD-010 needs any of them to support its chosen scenario, expand the trace before implementing, rather than infer a rule.
 
 ZOD-010 can now implement the bounded non-steep dry adjacent edge gate with threshold, reverse-direction, slope-facing and Jump-cap tests, while retaining the exclusions. Source tracing resolves that gate; it does not establish original-game equivalence for the complete movement system.
+
+Implementation update: [ZOD-010's explicit policy](adjacent-step-implementation.md) now implements this bounded gate with source-derived tests and conservative domain validation. The source investigation above remains the provenance for the geometry rule; synthetic transition fixtures do not upgrade it to executable-reference or original-observation evidence.

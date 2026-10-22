@@ -5,4 +5,5 @@ public enum BattleMovementPolicy
 {
     FlatGridPrototype,
     TerrainCostPrototype,
+    OrdinaryAdjacentStepPrototype,
 }

@@ -1,0 +1,200 @@
+{
+  "format": "fft.behavior-fixture",
+  "schemaVersion": 1,
+  "fixtureId": "fixture:movement/adjacent-step-accepted",
+  "execution": "scenario",
+  "purpose": "Synthetic transition composition at/above the source-traced Jump3 facing-edge threshold: accepted.",
+  "target": {
+    "game": "FFT",
+    "edition": "SCUS-94221",
+    "region": "North America",
+    "platform": "PS1",
+    "policyId": "fft:movement/ordinary-adjacent-step-prototype"
+  },
+  "reference": {
+    "decompCommit": "611b504d25d4a9b03fab8023d7dbea75fe381d5d",
+    "observedOn": "2026-10-22",
+    "usedForExpectations": false
+  },
+  "evidence": [
+    {
+      "id": "prototype-transition",
+      "kind": "synthetic-expectation",
+      "confidence": "specified",
+      "claim": "Synthetic typed transition expectation composing the bounded facing-edge geometry gate with immutable managed state/events; no whole-game equivalence claim.",
+      "sources": [
+        {
+          "path": "src/Fft.Core/BattleSimulator.cs",
+          "symbol": "BattleSimulator.Apply",
+          "revision": "7af9f8e479de4df1fcadfa10c178bd468e25a0c0"
+        },
+        {
+          "path": "src/Fft.Core/BattleUnitState.cs",
+          "symbol": "BattleUnitState.MoveTo",
+          "revision": "7af9f8e479de4df1fcadfa10c178bd468e25a0c0"
+        }
+      ],
+      "limitations": [
+        "Managed prototype contract only; no original-game execution or observation."
+      ]
+    }
+  ],
+  "preconditions": [
+    "One normal unmounted unit, size6, Jump3 and Move1; dry unoccupied tiles; no overhead layer."
+  ],
+  "exclusions": [
+    "Steep/corner slopes, water, ceilings and special movement",
+    "Original-game full movement equivalence",
+    "Path reconstruction and layer transitions"
+  ],
+  "unknowns": [
+    "Original-game complete movement behavior remains unverified."
+  ],
+  "scenario": {
+    "initialState": {
+      "map": {
+        "id": "fixture:map/two-tiles",
+        "width": 2,
+        "depth": 1,
+        "layerCount": 1,
+        "tiles": [
+          {
+            "surface": "base:terrain/unclassified",
+            "height": 10,
+            "halfHeight": 0,
+            "waterDepth": 0,
+            "slope": {
+              "east": 0,
+              "west": 0,
+              "south": 0,
+              "north": 0
+            },
+            "ceilingDepth": 0,
+            "movementFlags": []
+          },
+          {
+            "surface": "base:terrain/unclassified",
+            "height": 13,
+            "halfHeight": 0,
+            "waterDepth": 0,
+            "slope": {
+              "east": 0,
+              "west": 0,
+              "south": 0,
+              "north": 0
+            },
+            "ceilingDepth": 0,
+            "movementFlags": []
+          }
+        ]
+      },
+      "units": [
+        {
+          "id": "fixture:unit/mover",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "layer": 0
+          },
+          "hasMoved": false,
+          "movementProfile": {
+            "move": 1,
+            "jump": 3,
+            "bodyHeight": 6,
+            "mode": "Normal",
+            "traits": [],
+            "terrainCosts": [
+              {
+                "isBlocked": false,
+                "surface": "base:terrain/unclassified",
+                "movePoints": 1
+              }
+            ]
+          }
+        }
+      ],
+      "rngState": null
+    },
+    "commands": [
+      {
+        "index": 0,
+        "kind": "move-unit",
+        "unitId": "fixture:unit/mover",
+        "destination": {
+          "x": 1,
+          "y": 0,
+          "layer": 0
+        }
+      }
+    ]
+  },
+  "sourceCases": [],
+  "expectations": [
+    {
+      "commandIndex": 0,
+      "assertions": [
+        {
+          "kind": "result",
+          "accepted": true,
+          "rejection": "None",
+          "evidenceIds": [
+            "prototype-transition"
+          ]
+        },
+        {
+          "kind": "state-and-events",
+          "stateRelation": "new-instance",
+          "state": {
+            "mapId": "fixture:map/two-tiles",
+            "units": [
+              {
+                "id": "fixture:unit/mover",
+                "position": {
+                  "x": 1,
+                  "y": 0,
+                  "layer": 0
+                },
+                "hasMoved": true,
+                "movementProfile": {
+                  "move": 1,
+                  "jump": 3,
+                  "bodyHeight": 6,
+                  "mode": "Normal",
+                  "traits": [],
+                  "terrainCosts": [
+                    {
+                      "isBlocked": false,
+                      "surface": "base:terrain/unclassified",
+                      "movePoints": 1
+                    }
+                  ]
+                }
+              }
+            ],
+            "rngState": null
+          },
+          "events": [
+            {
+              "kind": "unit-moved",
+              "unitId": "fixture:unit/mover",
+              "from": {
+                "x": 0,
+                "y": 0,
+                "layer": 0
+              },
+              "to": {
+                "x": 1,
+                "y": 0,
+                "layer": 0
+              }
+            }
+          ],
+          "evidenceIds": [
+            "prototype-transition"
+          ]
+        }
+      ]
+    }
+  ],
+  "captures": []
+}

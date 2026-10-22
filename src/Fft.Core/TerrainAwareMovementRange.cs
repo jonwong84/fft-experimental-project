@@ -23,7 +23,11 @@ public static class TerrainAwareMovementRange
         BattleMapDefinition map,
         TilePosition origin,
         UnitMovementProfile movementProfile,
-        IReadOnlySet<TilePosition>? traversalBlocked)
+        IReadOnlySet<TilePosition>? traversalBlocked) => Calculate(map, origin, movementProfile, traversalBlocked, false);
+
+    internal static IReadOnlySet<TilePosition> Calculate(
+        BattleMapDefinition map, TilePosition origin, UnitMovementProfile movementProfile,
+        IReadOnlySet<TilePosition>? traversalBlocked, bool useAdjacentGeometry)
     {
         ArgumentNullException.ThrowIfNull(map);
         ArgumentNullException.ThrowIfNull(movementProfile);
@@ -70,6 +74,13 @@ public static class TerrainAwareMovementRange
                 if (terrainCost.IsBlocked)
                 {
                     return;
+                }
+
+                if (useAdjacentGeometry)
+                {
+                    map.TryGetTile(current, out BattleTile sourceTile);
+                    if (!OrdinaryAdjacentStepRange.CanStep(sourceTile, tile, current, destination, movementProfile.Jump))
+                        return;
                 }
 
                 int nextCost = checked(currentCost + terrainCost.MovePoints);
