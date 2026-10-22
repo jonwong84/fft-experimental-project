@@ -303,7 +303,7 @@ retail sword verification is ZOD-057.
 
 ### ZOD-022 — Implement the selected attack and HP/KO transitions
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-013, ZOD-018, ZOD-020, ZOD-021, ZOD-055, ZOD-056
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-013, ZOD-018, ZOD-020, ZOD-021, ZOD-055, ZOD-056
 
 **Scope:** Implement only the source-traced action configuration and required definition fields.
 
@@ -329,7 +329,13 @@ No retail sword values are asserted until ZOD-057 verifies them.
 
 ### ZOD-056 — Extend battle snapshots and fixtures for the bounded attack
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-013, ZOD-018, ZOD-020, ZOD-021
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-013, ZOD-018, ZOD-020, ZOD-021
+
+**Result:** [Attack snapshots and fixture v2](behavior/attack-snapshot-fixtures-v2.md) add explicit combat
+state, startup equipment/domain validation and exact ordered replay comparisons across existing movement/
+turn transitions. V1 semantics remain unchanged. A source-derived KO description validates but reports
+not-executed; no attack resolution or death scheduling is claimed. Windows locked restore, zero-warning
+Release build and all 498 solution tests passed on 2026-10-22.
 
 **Scope:** Add explicit attack runtime inputs/state and a versioned fixture contract for the selected scenario,
 using ZOD-021's field inventory. Keep immutable definitions separate from HP, facing and current turn state.

@@ -157,7 +157,7 @@ internal static class MovementFixtureRunner
             $"{id}; policy {policy}; {message}");
     }
 
-    private static Dictionary<string, string> Evidence(JsonNode node)
+    internal static Dictionary<string, string> Evidence(JsonNode node)
     {
         var result = new Dictionary<string, string>(StringComparer.Ordinal);
         foreach (var entry in Array(node))
@@ -181,7 +181,7 @@ internal static class MovementFixtureRunner
         return result;
     }
 
-    private static string EvidenceLabel(JsonNode? ids, Dictionary<string, string> evidence)
+    internal static string EvidenceLabel(JsonNode? ids, Dictionary<string, string> evidence)
     {
         var labels = Strings(ids).Select(id => evidence.TryGetValue(id, out string? value)
             ? value : throw new InvalidDataException($"Unresolved evidence ID: {id}")).ToArray();
@@ -190,7 +190,7 @@ internal static class MovementFixtureRunner
         return string.Join(", ", labels);
     }
 
-    private static void ValidateCaptures(JsonNode node)
+    internal static void ValidateCaptures(JsonNode node)
     {
         foreach (var capture in Array(node))
         {
@@ -204,7 +204,7 @@ internal static class MovementFixtureRunner
         }
     }
 
-    private static BattleTile Tile(JsonNode? node)
+    internal static BattleTile Tile(JsonNode? node)
     {
         Shape(node, "surface height halfHeight waterDepth slope ceilingDepth movementFlags");
         Shape(node!["slope"], "east west south north"); var slope = node["slope"]!;
@@ -213,7 +213,7 @@ internal static class MovementFixtureRunner
             Int(node["ceilingDepth"]), Flags<BattleTileMovementFlags>(node["movementFlags"]));
     }
 
-    private static BattleUnitState Unit(JsonNode? node)
+    internal static BattleUnitState Unit(JsonNode? node)
     {
         Shape(node, "id position hasMoved movementProfile"); var p = node!["movementProfile"]!;
         Shape(p, "move jump bodyHeight mode traits terrainCosts");
@@ -228,12 +228,12 @@ internal static class MovementFixtureRunner
                 EnumValue<UnitMovementMode>(p["mode"]), Flags<UnitMovementTraits>(p["traits"]), costs), Bool(node["hasMoved"]));
     }
 
-    private static TilePosition Position(JsonNode? node)
+    internal static TilePosition Position(JsonNode? node)
     {
         Shape(node, "x y layer"); return new(Int(node!["x"]), Int(node["y"]), Int(node["layer"]));
     }
 
-    private static JsonNode Snapshot(BattleState state, string mapId) => JsonSerializer.SerializeToNode(new
+    internal static JsonNode Snapshot(BattleState state, string mapId) => JsonSerializer.SerializeToNode(new
     {
         mapId, units = state.Units.Select(u => new
         {
@@ -248,7 +248,7 @@ internal static class MovementFixtureRunner
         }), rngState = state.RngState is { } rng ? new { value = rng.Value, drawCount = rng.DrawCount } : null
     })!;
 
-    private static JsonNode MapSnapshot(BattleMapDefinition map)
+    internal static JsonNode MapSnapshot(BattleMapDefinition map)
     {
         var tiles = new List<object>();
         for (int layer = 0; layer < map.LayerCount; layer++)
@@ -263,7 +263,7 @@ internal static class MovementFixtureRunner
         return JsonSerializer.SerializeToNode(new { width = map.Width, depth = map.Depth, layerCount = map.LayerCount, tiles })!;
     }
 
-    private static JsonNode CanonicalState(JsonNode node)
+    internal static JsonNode CanonicalState(JsonNode node)
     {
         var clone = node.DeepClone();
         foreach (var unit in Array(clone["units"]))
@@ -275,14 +275,14 @@ internal static class MovementFixtureRunner
         return clone;
     }
 
-    private static object Pos(TilePosition p) => new { x = p.X, y = p.Y, layer = p.Layer };
-    private static JsonNode Events(IReadOnlyList<BattleMovementEvent> events) => JsonSerializer.SerializeToNode(
+    internal static object Pos(TilePosition p) => new { x = p.X, y = p.Y, layer = p.Layer };
+    internal static JsonNode Events(IReadOnlyList<BattleMovementEvent> events) => JsonSerializer.SerializeToNode(
         events.Select(e => new { kind = "unit-moved", unitId = e.UnitId.Value, from = Pos(e.From), to = Pos(e.To) }))!;
 
-    private static string[] FlagNames<T>(T value) where T : struct, Enum => Enum.GetValues<T>()
+    internal static string[] FlagNames<T>(T value) where T : struct, Enum => Enum.GetValues<T>()
         .Where(flag => Convert.ToInt32(flag) != 0 && (Convert.ToInt32(value) & Convert.ToInt32(flag)) != 0)
         .Select(flag => flag.ToString()).Order(StringComparer.Ordinal).ToArray();
-    private static T Flags<T>(JsonNode? node) where T : struct, Enum
+    internal static T Flags<T>(JsonNode? node) where T : struct, Enum
     {
         var names = Strings(node); Require(names.Distinct(StringComparer.Ordinal).Count() == names.Length, "Duplicate flags");
         int result = 0;
@@ -293,38 +293,38 @@ internal static class MovementFixtureRunner
         }
         return (T)Enum.ToObject(typeof(T), result);
     }
-    private static T EnumValue<T>(JsonNode? node) where T : struct, Enum
+    internal static T EnumValue<T>(JsonNode? node) where T : struct, Enum
     {
         string value = Text(node);
         Require(Enum.GetNames<T>().Contains(value, StringComparer.Ordinal), $"Unknown {typeof(T).Name}: {value}");
         return Enum.Parse<T>(value);
     }
-    private static JsonNode Group(JsonArray groups, string kind)
+    internal static JsonNode Group(JsonArray groups, string kind)
     {
         var matches = groups.Where(g => Text(g?["kind"]) == kind).ToArray();
         Require(matches.Length == 1, $"Exactly one {kind} assertion required"); return matches[0]!;
     }
-    private static void Shape(JsonNode? node, string names)
+    internal static void Shape(JsonNode? node, string names)
     {
         Require(node is JsonObject, "Expected object");
         var expected = names.Split(' ').ToHashSet(StringComparer.Ordinal);
         Require(expected.SetEquals(node!.AsObject().Select(p => p.Key)), $"Missing or unknown fields; required: {names}");
     }
-    private static JsonArray Array(JsonNode? node) => node as JsonArray ?? throw new InvalidDataException("Expected array");
-    private static string[] Strings(JsonNode? node) => Array(node).Select(Text).ToArray();
-    private static string Text(JsonNode? node) => node is JsonValue v && v.TryGetValue<string>(out var text) && !string.IsNullOrWhiteSpace(text)
+    internal static JsonArray Array(JsonNode? node) => node as JsonArray ?? throw new InvalidDataException("Expected array");
+    internal static string[] Strings(JsonNode? node) => Array(node).Select(Text).ToArray();
+    internal static string Text(JsonNode? node) => node is JsonValue v && v.TryGetValue<string>(out var text) && !string.IsNullOrWhiteSpace(text)
         ? text : throw new InvalidDataException("Expected nonblank string");
-    private static int Int(JsonNode? node) => node is JsonValue v && v.TryGetValue<int>(out int number)
+    internal static int Int(JsonNode? node) => node is JsonValue v && v.TryGetValue<int>(out int number)
         ? number : throw new InvalidDataException("Expected signed 32-bit integer");
-    private static bool Bool(JsonNode? node) => node is JsonValue v && v.TryGetValue<bool>(out bool value)
+    internal static bool Bool(JsonNode? node) => node is JsonValue v && v.TryGetValue<bool>(out bool value)
         ? value : throw new InvalidDataException("Expected boolean");
-    private static string StableId(JsonNode? node) { string value = Text(node); _ = new AssetId(value); return value; }
-    private static string Sha(JsonNode? node) { string value = Text(node); Require(Regex.IsMatch(value, "^[0-9a-f]{40}$"), "Invalid revision SHA"); return value; }
-    private static void RelativePath(string value) => Require(!Path.IsPathRooted(value) && !value.Contains('\\') &&
+    internal static string StableId(JsonNode? node) { string value = Text(node); _ = new AssetId(value); return value; }
+    internal static string Sha(JsonNode? node) { string value = Text(node); Require(Regex.IsMatch(value, "^[0-9a-f]{40}$"), "Invalid revision SHA"); return value; }
+    internal static void RelativePath(string value) => Require(!Path.IsPathRooted(value) && !value.Contains('\\') &&
         !value.Contains(':') && value.Split('/').All(part => part.Length > 0 && part is not "." and not ".."), "Invalid relative path");
-    private static void EqualLiteral(JsonNode node, string field, string value) => Require(Text(node[field]) == value, $"Unsupported {field}");
-    private static void Require(bool condition, string message) { if (!condition) throw new InvalidDataException(message); }
-    private static void RejectDuplicateKeys(JsonElement node, string path)
+    internal static void EqualLiteral(JsonNode node, string field, string value) => Require(Text(node[field]) == value, $"Unsupported {field}");
+    internal static void Require(bool condition, string message) { if (!condition) throw new InvalidDataException(message); }
+    internal static void RejectDuplicateKeys(JsonElement node, string path)
     {
         if (node.ValueKind == JsonValueKind.Object)
         {
@@ -337,7 +337,7 @@ internal static class MovementFixtureRunner
         else if (node.ValueKind == JsonValueKind.Array)
             foreach (var item in node.EnumerateArray()) RejectDuplicateKeys(item, path + "[]");
     }
-    private static string? Difference(JsonNode? expected, JsonNode? actual, string path)
+    internal static string? Difference(JsonNode? expected, JsonNode? actual, string path)
     {
         if (expected is JsonObject eo && actual is JsonObject ao)
         {

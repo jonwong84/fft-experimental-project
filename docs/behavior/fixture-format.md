@@ -1,5 +1,8 @@
 # Behavioral fixtures v1 (ZOD-002)
 
+ZOD-056 adds a separate [bounded combat snapshot v2 contract](attack-snapshot-fixtures-v2.md).
+V1's payload, reader and movement-only semantics below remain unchanged; no automatic migration is performed.
+
 Date: 2026-10-22. This defines the fixture data contract; [ZOD-011's test runner](fixture-runner.md) now executes the bounded managed scenarios. No production serialization API is introduced. FFT owns these fixtures under `Fft.*`; they do not become Zodiac engine contracts. The [ownership audit](../architecture/zod-001-type-ownership.md) remains the extraction plan.
 
 ## Files and versioning
