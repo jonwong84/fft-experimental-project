@@ -107,9 +107,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-005 — Trace FFT RNG state, arithmetic, and call ordering
 
-**Type:** Spike · **Priority:** P1 · **Status:** Partial investigation; BIOS state evidence needed · **Depends on:** None
+**Type:** Spike · **Priority:** P1 · **Status:** Complete for pinned US v3.0 BIOS · **Depends on:** None
 
-**Findings:** [RNG trace and evidence gap](behavior/rng-state-and-ordering.md) pins seed sites, bounded range arithmetic and formula-01 draw ordering. The checkout only contains BIOS rand/srand veneers; state width, recurrence and state-overflow vectors remain unresolved. Acceptance is open, with a concrete BIOS/harness follow-up plan. ZOD-013 remains waiting; do not substitute a guessed generator.
+**Findings:** [Initial RNG trace](behavior/rng-state-and-ordering.md) pins seed sites, bounded range arithmetic and formula-01 draw ordering. [Supplied BIOS verification](behavior/bios-rng-verification.md) resolves its missing state/update evidence through independent static analysis and actual ROM instruction execution: eight seeds, 64 observed state/output pairs, multiply/add wrap boundaries and reseeding. BIOS and raw captures stay ignored; only metadata/vectors and an optional verification script are committed. No whole-game or other-BIOS equivalence is claimed; ZOD-013 can implement the now-evidenced generator.
 
 **Scope:** Find the RNG routines used by the proposed physical attack and record state width, update arithmetic, range conversion, seeding, and draw ordering, including failed/rejected actions where relevant.
 
@@ -189,7 +189,7 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ### ZOD-013 — Implement explicit deterministic RNG state
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-005, ZOD-007, ZOD-011
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-005, ZOD-007, ZOD-011
 
 **Scope:** Introduce the neutral state/transition seam and the source-traced FFT RNG implementation justified by ZOD-005.
 

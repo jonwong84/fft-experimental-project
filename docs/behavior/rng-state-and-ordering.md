@@ -2,9 +2,9 @@
 
 Date: 2026-10-22. Compatibility target: North American PS1 `SCUS-94221`. Reference: read-only `C:\repositories\fft_decomp`, HEAD observed by `git rev-parse HEAD`: `611b504d25d4a9b03fab8023d7dbea75fe381d5d`. Every C path/symbol here is pinned to that revision; line numbers are navigation aids. Managed project baseline for this investigation: `2aa8f0c`.
 
-**Investigation is partial.** Range conversion and a bounded formula's draw ordering are source-traced. The underlying PRNG state width, recurrence, overflow and seed-to-output vectors are unresolved because the reference contains BIOS call veneers, not the BIOS implementation. ZOD-005 acceptance remains open and ZOD-013's FFT generator implementation should remain unready pending that evidence. This document does not invent a BIOS algorithm from familiarity with another platform's `rand`.
+**Follow-up completed:** [Supplied US v3.0 BIOS verification](bios-rng-verification.md) now resolves the state width, recurrence, overflow and seed-to-output vectors using the user's hashed BIOS and actual instruction execution. ZOD-005 is complete for that pinned BIOS and ZOD-013 is ready. This note preserves the initial source investigation and its limits: the decomp checkout itself still contains only BIOS call veneers. Full-game initial stream position, other BIOS revisions and whole-command draw equivalence remain separate questions.
 
-Evidence classification follows [fixture format v1](fixture-format.md): supported claims below are `source-derived` / `source-traced`; missing BIOS behavior is `unresolved`. Arithmetic and tape vectors have not been run against a C harness, BIOS, emulator or original game. No captures or game media were produced. Host-side integer calculations only hand-check the written arithmetic; they are not an independent oracle.
+Evidence classification follows [fixture format v1](fixture-format.md): supported claims below are `source-derived` / `source-traced`. The formula arithmetic and raw-value tapes in this initial note have not been executed against the FFT formula chain. The follow-up separately records `executable-reference` BIOS generator vectors, local capture metadata and emulator limits. Do not extend that generator evidence to the unexecuted formula tapes or original-game behavior.
 
 ## What the reference proves and what it omits
 
@@ -85,7 +85,7 @@ These are direct-helper expectations for **supplied raw return values**, not gen
 - Execute, accessory=100/baseHit=100, raw tape `[32767,...]`: initial certainty check marks miss, the accessory still draws, roll 99 <100 evades, consumes 1.
 - Preview, zero evades and any four raw values in 0..32767: consumes four direct evade draws; subsequent critical uses fixed `0x4000`, and proc uses no draw. This is not evidence that every preview routine in the game uses precisely four draws.
 
-Overflow/seed vectors still required: seed inputs 0, 1, `0x7fffffff`, `0x80000000`, `0xffffffff`; first outputs and full internal states for several consecutive calls; a state that overflows the update multiply/add; behavior across reseed and repeated seed. Their expected states/outputs intentionally remain unspecified until BIOS evidence exists.
+The initial missing overflow/seed vectors are now supplied in the [BIOS follow-up](bios-rng-verification.md): boundary seeds, consecutive states/outputs, multiply/add wrap boundaries and reseeding. These are separate generator vectors observed by executing ROM instructions, not results obtained by executing this note's formula-level raw-value tapes.
 
 ## Failed actions versus rejected commands
 
@@ -101,7 +101,7 @@ The neutral engine can support explicit immutable RNG state threaded through tra
 
 FFT owns the BIOS-compatible algorithm choice, eventual recurrence/output arithmetic, seed/import policy, 15-bit output semantics, multiply/divide versus modulo conversions, threshold polarity, critical/proc probabilities, and formula-specific draw order/short circuits. An unrelated game may choose another generator. A neutral seam does not require moving these helpers/constants into Zodiac.
 
-Until the BIOS state shape is resolved, documentation and raw-value-tape tests can validate policy ordering without promising a concrete state format. Do not commit a guessed production state contract solely to unblock ZOD-013. Fixture v1 currently has null RNG state and no attack events; a schema extension is needed before replay can compare real states and draw traces.
+The supplied BIOS follow-up establishes one full 32-bit word as the generator state. ZOD-013 can now use that evidence for the FFT-owned generator while keeping the engine seam neutral. Fixture v1 currently has null RNG state and no attack events; an explicit schema extension is still needed before replay can compare real states and draw traces.
 
 ## Concrete follow-up evidence plan
 
@@ -111,4 +111,4 @@ Until the BIOS state shape is resolved, documentation and raw-value-tape tests c
 4. Separately invoke the pinned formula chain with initialized scratch/units/content and instrument every raw draw. Use the supplied tape vectors to check ordering, then a known incoming BIOS state to check full outputs. Record harness revision/compiler/options, input construction and return data. Original/emulator attack observations require verified edition/assets and controlled initial RNG state.
 5. Keep oracle binaries, emulator saves and outputs under ignored `scratch/behavior/<fixture-id>/`; commit metadata with hashes and procedures only. No oracle/C toolchain/PS1 runtime dependency enters the application. Runtime continues to use prepared files, never the BIN.
 
-ZOD-005 can close after the BIOS evidence and state/overflow vectors are added and reviewed. Current work supports formula-ordering and range-conversion test design, while leaving generator implementation and full-command draw equivalence explicitly unresolved.
+The [BIOS evidence and state/overflow vectors](bios-rng-verification.md) have now been added and reviewed, closing ZOD-005 for the pinned US v3.0 image. Production generator implementation remains ZOD-013; full-command draw equivalence and the source trace for action legality remain later work. The plan above is retained as the original investigation's reproducible evidence requirements.
