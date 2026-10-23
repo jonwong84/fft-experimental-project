@@ -96,4 +96,8 @@ Repeated `--addon <path>` options validate explicitly selected additions against
 - [Project plan](PROJECT_PLAN.md): complete intended scope, phases and unresolved decisions.
 - [Architecture](docs/architecture/overview.md) and [ADRs](docs/adr/): ownership and significant design choices.
 - [Backlog](docs/BACKLOG.md): current work order, dependencies and acceptance criteria.
+- [Baseline coverage inventory](docs/coverage/README.md): current capability, source/evidence,
+  tests, manual checkpoints and unresolved gaps across the original-game target.
+- [Event/script investigation](docs/architecture/zod-040-event-script-investigation.md):
+  script families, a bounded conditional event, tool assessment and next decoder/executor slices.
 - [Project handoff](docs/PROJECT_HANDOFF.md): latest checkpoint followed by historical development context.

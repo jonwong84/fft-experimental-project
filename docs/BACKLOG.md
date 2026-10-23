@@ -54,7 +54,10 @@ ZOD-034 implements independent Windows CI, reports and self-contained folder che
 remote CI execution and a clean interactive machine remain validation gates.
 ZOD-035 completes the bounded save/load proof with explicit DTOs, active-turn/RNG
 restoration, synthetic migration and safe replacement. Next independent lanes:
-ZOD-026's original capture workflow and ZOD-045's baseline coverage inventory.
+ZOD-026's original capture workflow. ZOD-040 now maps the script families and
+selects a bounded conditional event; ZOD-045 adds the [coverage inventory](coverage/README.md).
+Next implementation: ZOD-064's event decoder, then ZOD-065's pure executor.
+ZOD-067's campaign-save/checkpoint investigation can proceed independently.
 M2 is not complete yet.
 Independent asset/reference investigations can proceed in parallel when the owner selects their scope;
 give each agent distinct files and acceptance criteria. M1 does not imply complete FFT combat or presentation.
@@ -665,11 +668,21 @@ Campaign persistence, UI save slots and original memory-card import remain separ
 
 ### ZOD-040 — Investigate event/script formats and community-tool interoperability
 
-**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** None
+**Type:** Spike · **Priority:** P2 · **Status:** Complete for the selected synthetic event; retail/tool round-trips pending · **Depends on:** None
 
 **Scope:** Identify battle/story/world script families, exact relevant community editors, supported editions, opcode encodings, execution order, state dependencies, and the subset needed for one small event. Inspect tool licenses before proposing code reuse.
 
 **Acceptance criteria:** Provide an opcode/control-flow map for one chosen event, a tool capability/interchange assessment with pinned references, and an interpreter/conversion recommendation. Separate bytecode decoding from semantic execution and specify unsupported opcodes. Produce child tickets for one bounded event interpreter, not a full scripting framework.
+
+**Evidence (2026-10-23):** [Script investigation](architecture/zod-040-event-script-investigation.md)
+distinguishes scenario bytecode, battle conditions, location scripts and presentation
+streams at reference `11464943bbdbd2a0af022d90cb7f10455cf911df`. A fifteen-record
+authored event maps exact offsets, operand lengths and true/false paths; a local
+source-derived check verifies inputs 0/1/2. Tool assessment pins EntryEdit/FFTPatcher,
+event syntax support and libFFT source/licenses; Juravis/EasyVent source/edition
+uncertainties and binary round-trips remain explicit. No original event/script/media
+is committed or executed. The bounded decoder/executor/lifecycle follow-ups are
+ZOD-064/065/066. Research completion does not establish original event compatibility.
 
 ### ZOD-041 — Implement campaign, encounters, events, and optional content
 
@@ -705,11 +718,25 @@ Campaign persistence, UI save slots and original memory-card import remain separ
 
 ### ZOD-045 — Build the baseline feature/content coverage matrix
 
-**Type:** Inventory task · **Priority:** P2 · **Status:** Ready · **Depends on:** None
+**Type:** Inventory task · **Priority:** P2 · **Status:** Complete initial family-level inventory; deeper catalogs remain open · **Depends on:** None
 
 **Scope:** Convert the full-original-game target into an inventory by subsystem, content family, screen, campaign/optional encounter, asset family, and compatibility profile. Use existing evidence and explicitly label unknown entries rather than inventing counts.
 
 **Acceptance criteria:** Entries identify source/evidence, implementation status, ticket owner/reference, automated scenario checks, manual checkpoints, and unresolved gaps; all major original-game areas have a place in the matrix; it can drive child tickets for the broad epics. Update it incrementally rather than waiting until final acceptance.
+
+**Evidence (2026-10-23):** [Coverage guide](coverage/README.md),
+[readable entries](coverage/baseline-coverage.md) and authoritative
+[JSON](coverage/baseline-coverage.json) define 58 stable planning entries across
+nine domains. Every entry names its ticket/component, scoped implementation and
+evidence, pinned source entry points, existing bounded checks or their absence,
+manual checkpoint, unresolved gaps and next action. No original record/encounter
+count or completion percentage is inferred. Sound-novel/music/test reachability
+has an explicit US-edition eligibility audit; Windows Save/Load and custom profiles
+are distinct scopes. The standard-library checker validates links/tickets/IDs and
+the generated view; optional reference validation verifies HEAD/source paths.
+No .NET runtime, package, asset or C reference change is made by this inventory.
+The last recorded 954-test baseline is retained as historical evidence, not rerun.
+
 
 ### ZOD-046 — Run original-game acceptance and regression review
 
@@ -719,11 +746,85 @@ Campaign persistence, UI save slots and original memory-card import remain separ
 
 **Acceptance criteria:** Every baseline entry is implemented and checked, intentionally unused with evidence, or explicitly unresolved; unresolved required behavior blocks a claim of complete baseline compatibility. New game through ending and mandatory optional-content routes are documented; deterministic scenarios and presentation checkpoints have reviewable results; runtime operates with the BIN and C checkout unavailable. Use independent original/emulator comparisons for critical behaviors and disclose remaining evidence limits.
 
+## Bounded children selected by ZOD-040 and ZOD-045
+
+### ZOD-064 — Decode one bounded PS1 scenario block into prepared event data
+
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-040
+
+**Scope:** Implement offline structural parsing for the authored conditional event
+selected by ZOD-040. Distinguish raw/processed block headers, preserve block-relative
+offsets and scene/dialect identity, and produce a validated prepared representation
+for the selected opcode subset. Keep raw import in AssetTool and prepared validation
+in Content; no C runtime, scene execution or general scripting framework.
+
+**Acceptance criteria:** Synthetic blocks cover text offsets, bounded lengths,
+truncation, unsupported bytes and exact first forward-label resolution. D0 may
+target D2/D4; D1 targets D2 only; jumps land after markers; DB stops search but is
+not executable in this profile. Invalid/unsupported programs fail before emitting
+an executable definition. Preserve inspection data separately from executable
+capability validation. Prepared loading needs no original block/BIN/reference code.
+No original event dumps are committed. An optional EntryEdit round-trip needs its
+exact binary/configuration pinned and is not a runtime dependency.
+
+### ZOD-065 — Execute the bounded conditional event deterministically
+
+**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-064, ZOD-035
+
+**Scope:** Add a pure FFT-owned transition over the selected prepared event, explicit
+instruction position, variables 0..3 and terminal state. Support only the documented
+F2/BE/B0/B1/A2/D0/D1/D2/D4 capability set and bounded arithmetic domain. Keep DB as
+a structural sentinel; original EventEnd, waits, RNG, dialogue and concurrent tasks
+remain unsupported. ZOD-035's save schema is unchanged.
+
+**Acceptance criteria:** True/false and dirty-initial-variable cases match exact
+instruction/variable traces; input snapshots remain unchanged, replay is identical,
+and D4 landing differs from sequential exit. Unsupported/malformed programs and
+arithmetic-domain/budget failures report clear diagnostics without silently ending
+the event or applying partial state. Tests need no assets, clock, UI, C or network.
+FFT opcodes/flags stay out of Zodiac.
+
+### ZOD-066 — Trace one real event's activation and completion prerequisites
+
+**Type:** Spike · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-064, ZOD-065
+
+**Scope:** Select one small original event from a verified local TEST.EVT import.
+Record numeric event ID/hash, the condition/entry path, every used opcode and the
+completion/next-scene path. Distinguish EventEnd lifecycle from thread exit and
+name required state/presentation capabilities before translating another operation.
+
+**Acceptance criteria:** Source/caller/data and control-flow notes are pinned to the
+actual reference SHA. Original bytes/dumps remain ignored; committed metadata
+identifies local inputs/captures without containing the original script. Record
+an independent original/emulator observation if available, or its exact blocker.
+Propose one bounded next semantic addition and fixtures; no silent instruction
+skipping or bulk dispatcher port. This trace does not claim the campaign works.
+
+### ZOD-067 — Trace campaign save fields, lifetimes and legal checkpoints
+
+**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-035, ZOD-045
+
+**Scope:** Inventory logical state read/written by original CARD/WORLD save paths
+and resident setup: party/progression/equipment, inventory/poached stock, world/
+script flags, calendar, side-content progress, settings and summary metadata.
+Trace original save availability and distinguish persistent data from transient
+battle/UI state. Recommend a bounded campaign DTO and Windows Save/Load workflow.
+
+**Acceptance criteria:** Each selected logical field has source/caller, lifetime,
+owner, restore order and unknowns; unsupported fields/checkpoints are explicit.
+Determine which RNG streams are saved, reconstructed or reset on load rather than
+assuming that the bounded battle proof defines original campaign load behavior.
+Original save availability is recorded independently of proposed Windows slot/path,
+summary/overwrite/recovery behavior. Propose the first campaign persistence/UI
+implementation child with dependencies and synthetic migration/failure checks.
+No packed memory-card image import, new UI or campaign runtime is implemented;
+original-card interoperability remains optional. Can run alongside ZOD-064.
+
 ## Authoring, extensions, and later goals
 
 ### ZOD-047 — Build the first job/ability inspection and editing UI
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-016, ZOD-018
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-016, ZOD-018
 
 **Scope:** Choose an editor host for a small search/select/edit/validate/export workflow over the established definitions. Start with the fields and linked ability references from the first content slice; choose the UI technology through a short decision if required.
 

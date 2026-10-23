@@ -27,8 +27,16 @@ the [bounded save/load proof](development/two-unit-battle-saves.md): versioned D
 selected content bindings, active-turn/RNG restoration, strict validation, synthetic
 migration and safe file replacement. All thirteen checkpoints continue with identical
 state/events. Latest locked restore, zero-warning Release build and all **954 tests**
-passed. Next independent lanes: original captures (ZOD-026) and baseline coverage
-inventory (ZOD-045). MAP003's static scene does not broaden M1
+passed. ZOD-040's [script investigation](architecture/zod-040-event-script-investigation.md)
+now maps script families, one source-derived synthetic event and pinned tool
+capabilities/limits. ZOD-045's [coverage inventory](coverage/README.md) records 58
+planning entries across nine domains, with scoped evidence/checks and open gaps.
+The source/link/view checker passed against the pinned read-only reference; these
+documentation tasks do not rerun the 954-test suite or implement script execution.
+Next: ZOD-064's decoder, then ZOD-065's pure executor; ZOD-067's campaign-save and
+checkpoint trace can proceed independently. Original captures (ZOD-026), comparison
+checkpoints (ZOD-033), and remote CI/clean-machine evidence (ZOD-034) remain open.
+MAP003's static scene does not broaden M1
 combat's height-10 domain. Gameplay is limited to the synthetic local two-unit battle;
 source-derived checks do not establish original-rendering equivalence. Physical input timing
 remains a manual follow-up. Original media/captures remain ignored.

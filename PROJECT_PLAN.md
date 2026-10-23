@@ -131,6 +131,11 @@ The PS1 implementation is not a single monolithic program: resident code and sev
 
 ### Definition of a complete original-game target
 
+Implementation inventory (2026-10-23): [ZOD-045 coverage](docs/coverage/README.md)
+maps the major baseline families, current supported subsets, evidence, tests,
+manual checkpoints and unresolved gaps. It drives bounded child tickets; exact
+record/event/resource subcatalogs remain open and no completion percentage is inferred.
+
 For the baseline, “complete” means more than reaching the ending once. The target is the playable North American PS1 release, including its opening/title flow, main story, optional/special battles and side content, party/job/equipment progression, world and menu systems, event/dialog scripts, endings, save/load, and the original presentation resources those paths use. Multiplayer, other regional editions, and War of the Lions additions are excluded from this baseline. The Lion War integration is a separate later compatibility/content target, not a reason to blur baseline acceptance. Inventory each subsystem and content family; completion is accepted only when every baseline entry is accounted for as implemented, intentionally unused, or explicitly unresolved.
 
 The original compatibility mode is the reference behavior. Any quality-of-life changes or new mechanics belong to a separate expanded mode or content/rules package. This keeps the vanilla acceptance target measurable while still supporting the engine-extension goal.

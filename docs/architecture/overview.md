@@ -14,6 +14,10 @@
 
 ## Current repository, verified
 
+The [baseline coverage inventory](../coverage/README.md) records the current
+supported subsets, source/evidence, tests, manual checkpoints and remaining gaps.
+Its family-level entries are not a complete original record/encounter catalog.
+
 - `Fft.Core` contains common identifiers/value types, map data types, a typed battle transition proof, and flat-grid movement policies (one prototype and one bounded terrain-cost slice).
 - `Fft.Content` loads a versioned manifest and hash-verified loose files by logical asset ID,
   including the bounded prepared static sprite pose and frozen MAP003 scene/terrain. It references `Fft.Core`, without original-format parsers.
@@ -235,3 +239,11 @@ The terrain and unit movement input model, including its source mapping and unim
 - Which original/emulator observations are available for validating behavior beyond static decompilation.
 
 Resolve these only when a milestone has concrete requirements that depend on them.
+
+Discovery update (2026-10-23): [ZOD-040](zod-040-event-script-investigation.md)
+separates event/scenario/location/presentation script families and recommends
+offline decoding followed by a pure FFT-owned conditional-event executor.
+ZOD-064/065/066 own the bounded follow-ups. No FFT opcode/variable bank enters
+Zodiac, and no event interpreter is implemented by this investigation.
+ZOD-067 traces logical campaign save fields and original save availability before
+expanding ZOD-035's snapshot contract or adding the Windows Save/Load interface.
