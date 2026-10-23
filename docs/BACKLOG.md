@@ -45,9 +45,11 @@ ZOD-025 adds the synthetic Windows view with live GPU/resize/close checks and ex
 ZOD-027 traces the first ordinary Chocobo idle pose; ZOD-028 prepares and loads its static
 render input with verified local files. ZOD-029 selects MAP003's frozen day/dry base scene
 and traces its geometry, texture/palette and terrain inputs. ZOD-030 now prepares and
-loads that slice, retaining native terrain heights and both layers. Next render the
-prepared map and pose together (ZOD-031). ZOD-026's independent capture investigation remains a separate lane. These
-unlock the prepared-asset renderer, not full M2 yet.
+loads that slice, retaining native terrain heights and both layers. ZOD-031 renders
+the prepared map and pose together in a fixed inspection scene with declared lighting/depth
+approximations. Next add input/UI for the supported M1 battle (ZOD-032); the static MAP003
+scene does not expand that battle's supported terrain/combat domain. ZOD-026's independent
+capture investigation remains a separate lane. M2 is not complete yet.
 Independent asset/reference investigations can proceed in parallel when the owner selects their scope;
 give each agent distinct files and acceptance criteria. M1 does not imply complete FFT combat or presentation.
 The numbered queue below records the completed foundation sequence.
@@ -543,7 +545,16 @@ must not cause source terrain to be rewritten. Alternate states and animation pl
 
 ### ZOD-031 — Render one prepared map and unit pose
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-025, ZOD-028, ZOD-030
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-025, ZOD-028, ZOD-030
+
+**Result:** [Fixed prepared scene, source comparison and limits](development/prepared-scene.md)
+(2026-10-23). MAP003 and the held Chocobo pose render from prepared files with native
+terrain placement, per-polygon palettes, point cutout, a fixed authored camera and modern
+depth. Yaw visibility, coordinate handedness, strip coverage and sprite offsets/order have
+source-derived/synthetic checks. Neutral lighting and original-ordering limits are explicit;
+independent original/emulator comparison remains unavailable pending ZOD-026/033.
+Two Windows GPU runs produce identical images and unchanged input hashes across 120 frames.
+Locked restore, zero-warning Release build and all 833 tests pass (37 new cases).
 
 **Scope:** Compose the selected map and sprite using fixed camera/pose inputs; implement only the selected palette, sampling, blend, and ordering behavior.
 
@@ -551,7 +562,7 @@ must not cause source terrain to be rewritten. Alternate states and animation pl
 
 ### ZOD-032 — Make the bounded battle playable through input and UI
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-023, ZOD-031
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-023, ZOD-031
 
 **Scope:** Select a unit, show legal destinations/targets, issue supported move/attack/wait commands, and display active turn, HP, rejections, and terminal result.
 

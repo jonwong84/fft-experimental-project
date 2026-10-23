@@ -6,7 +6,7 @@ The proposed dependency boundaries and initial architecture decisions are docume
 
 The prioritized development tickets, dependencies, and acceptance criteria are maintained in [`docs/BACKLOG.md`](docs/BACKLOG.md).
 
-This checkout contains a .NET 10 deterministic, bounded headless battle and a MonoGame Windows host displaying its synthetic starting snapshot. The graphical view supports resize and exit; gameplay input and original map/sprite rendering remain future work. Core and Zodiac.Engine stay independent of graphics/input. The offline asset tools and Fft.Content provide a separate prepared-file pipeline; asset coverage and supported simulation rules remain narrow. Full FFT combat, campaign, animation and authoring UI are not implemented.
+This checkout contains a .NET 10 deterministic, bounded headless battle and a MonoGame Windows host displaying its synthetic starting snapshot or a fixed prepared MAP003/Chocobo scene. The graphical views support resize and exit; gameplay input remains future work. Core and Zodiac.Engine stay independent of graphics/input. The offline asset tools and Fft.Content provide a separate prepared-file pipeline; asset coverage and supported simulation rules remain narrow. Full FFT combat, campaign, animation and authoring UI are not implemented.
 
 ## Build, run, and test
 
@@ -18,12 +18,14 @@ does not advance the battle; use `--scenario two-unit-battle` to execute its hea
 
 The [selected sprite-pose preparation guide](docs/development/prepared-sprite-pose.md) describes
 `prepare-sprite-pose` and the client's `--sprite-pose` load check. The prepared Chocobo pose
-is static render input; the Windows window continues to use its synthetic scene.
+is static render input, now displayed with MAP003 through `--prepared-scene`.
 
 The [selected map preparation guide](docs/development/prepared-map-slice.md) describes
 `prepare-map` and the client's `--map` load check. MAP003's day/dry geometry, indexed
 textures, frozen presentation metadata and native terrain are prepared separately
-from rendering and combat integration.
+from combat integration. See the [fixed prepared scene guide](docs/development/prepared-scene.md)
+for `--prepared-scene --map-root <directory> --pose-root <directory>`, finite GPU captures,
+the authored camera and explicit rendering/comparison limits.
 
 Content metadata validation uses the shared `Fft.Content.ContentPackages` API. It reads data only; it does not load authoring programs, the BIN or assets:
 

@@ -21,7 +21,8 @@
   decoding, selected SHP/SEQ pose preparation and bounded GNS/mesh/indexed-texture conversion.
   The CLI composes the tools; no full animation interpreter exists.
 - `Fft.Client` can load a prepared asset, run the deterministic synthetic two-unit battle headlessly,
-  and open a MonoGame Windows view of its immutable starting snapshot. Gameplay input is not implemented.
+  and open a MonoGame Windows view of its immutable starting snapshot or a fixed prepared
+  MAP003/Chocobo scene. Gameplay input is not implemented.
 - Tests exist for the current projects, including pure client layout tests. The synthetic graphics
   host has separate Windows checks; no complete campaign runtime, audio adapter or save system exists yet.
 
@@ -56,6 +57,14 @@ that scene as manifest-addressable geometry, indexed texture/palette data, froze
 metadata and two dense terrain layers. Content validates/loads it and projects normalized
 terrain into Core without original-format parsing. Native heights and opaque provenance remain
 intact. Client has a headless map-load check; ZOD-031 still owns prepared scene rendering.
+
+Implementation update (2026-10-23): [ZOD-031](../development/prepared-scene.md) renders that
+map and pose with a fixed authored camera, per-polygon palette selection, point-sampled
+opaque cutout and modern depth. A source-derived terrain/quad alignment checkpoint and
+synthetic tests cover transforms, strip coverage and piece order. Neutral lighting and
+modern depth are explicit approximations; independent original comparison remains ZOD-026/033.
+All rendering/resource lifetime and presentation timing stay in Client. Core/Engine,
+simulation rules, prepared formats, project references and package locks are unchanged.
 
 ## Target dependency shape
 

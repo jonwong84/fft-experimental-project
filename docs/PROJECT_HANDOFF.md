@@ -5,15 +5,19 @@ Windows host are implemented; ZOD-027's [Chocobo idle-pose trace](architecture/z
 and ZOD-028's [static pose preparation/loading](development/prepared-sprite-pose.md) are complete.
 ZOD-029's [MAP003 source map](architecture/zod-029-map003-source-map.md) selects a frozen
 day/dry scene and exact four-cell geometry/terrain checkpoint. ZOD-030's
-[map preparation/loading](development/prepared-map-slice.md) now prepares that scene repeatably
+[map preparation/loading](development/prepared-map-slice.md) prepares that scene repeatably
 as geometry, indexed textures/palettes, frozen presentation metadata and both native terrain layers.
+ZOD-031's [fixed prepared scene](development/prepared-scene.md) renders that map and the held
+Chocobo with an authored camera, neutral texture lighting and modern depth/cutout policy.
 Start with the current [backlog](BACKLOG.md) and
 [Windows host instructions](development/windows-synthetic-host.md); the original handoff sections
-below are historical. Locked restore, zero-warning Release build and all **796 tests** passed for ZOD-030.
+below are historical. Locked restore, zero-warning Release build and all **833 tests** passed for ZOD-031.
 The selected six-piece pose and 9x13 map are prepared under ignored scratch and loaded by Client without
-original-format parsing; native terrain heights remain intact. The graphical window still displays only synthetic content.
-Next: render the map/pose (ZOD-031), and establish independent captures (ZOD-026).
-No original media or live simulation gameplay has entered the graphical view.
+original-format parsing; native terrain heights remain intact. The original synthetic view remains available.
+Two finite prepared-scene GPU runs produce identical images and unchanged input hashes.
+Next: input/UI for the supported M1 battle (ZOD-032), and independent captures (ZOD-026).
+MAP003's static scene does not broaden M1 combat's height-10 domain. Live gameplay is not implemented;
+source-derived checks do not establish original-rendering equivalence. Original media/captures remain ignored.
 
 **Prepared:** 2026-10-20  
 **Workspace:** `C:\repositories\fft-experimental-project`  

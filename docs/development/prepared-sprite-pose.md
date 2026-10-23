@@ -124,3 +124,6 @@ Evidence remains source-derived plus local deterministic conversion; the existin
 attack-image digest is unchanged. No executing C/emulator oracle, original-rendering
 comparison, animation cadence, camera calibration, map occlusion or GPU rasterization
 has been established by these checks. ZOD-026 and ZOD-031/033 retain those separate gates.
+
+Implementation follow-up: [ZOD-031](prepared-scene.md) now displays this held pose with
+MAP003 in a fixed prepared scene. Animation and independent original comparison remain deferred.

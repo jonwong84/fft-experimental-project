@@ -137,3 +137,7 @@ Alternate weather/night/layout resources, animation playback, event terrain chan
 camera calibration and graphics/GTE/blend/occlusion equivalence remain unsupported.
 The window continues to show the synthetic scene. ZOD-031 adds a fixed authored scene
 using this map and the prepared pose; ZOD-026/033 retain independent comparison gates.
+
+Implementation follow-up: [ZOD-031's fixed prepared scene](prepared-scene.md) now renders
+the map and pose through a separate Windows command, with declared camera/lighting/depth
+approximations. The limits above describe the ZOD-030 loading milestone.
