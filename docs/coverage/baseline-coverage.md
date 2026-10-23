@@ -3,7 +3,7 @@
 Generated from `baseline-coverage.json` by `tools/verification/verify_baseline_coverage.py --write-view`.
 Edit the JSON, then regenerate this view. See [the inventory guide](README.md) for status/evidence rules.
 
-Target: **SCUS-94221**. Snapshot: 2026-10-23; managed base `9ef9857`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+Target: **SCUS-94221**. Snapshot: 2026-10-23; managed base `6663c4d`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 These entries are planning scopes, not a feature-completion percentage or a complete record/encounter catalog.
 
 ## Simulation
@@ -550,25 +550,25 @@ Next action: Record the final acceptance route with source anchors and prepared 
 
 Status: **partial**; scope: **baseline**; ticket: **ZOD-040**; owner area: FFT campaign/application.
 
-ZOD-040 maps script families; ZOD-064 inspects authored raw/processed blocks and loads a strictly validated prepared conditional event. No event executor or retail archive import exists.
+ZOD-064 prepares authored raw/processed blocks; ZOD-065 projects validated Content records into a pure Core-owned conditional-event executor with immutable state/traces, replay and atomic arithmetic/budget rejection. No retail event or scene/campaign lifecycle executes.
 
-Evidence: [docs/architecture/zod-040-event-script-investigation.md](../../docs/architecture/zod-040-event-script-investigation.md), [docs/development/prepared-scenario-event.md](../../docs/development/prepared-scenario-event.md).
+Evidence: [docs/architecture/zod-040-event-script-investigation.md](../../docs/architecture/zod-040-event-script-investigation.md), [docs/development/prepared-scenario-event.md](../../docs/development/prepared-scenario-event.md), [docs/behavior/conditional-event-execution.md](../../docs/behavior/conditional-event-execution.md).
 
 Source entry points (pinned revision above; not full traces): [src/battle/event/interpreter.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/event/interpreter.c), [src/world/event/interpreter.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/event/interpreter.c), [src/lib/event/script/control.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/lib/event/script/control.c), [src/wldcore/map/location_script.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/wldcore/map/location_script.c).
 
-Current implementation: [src/Fft.AssetTool/ScenarioBlockInspector.cs](../../src/Fft.AssetTool/ScenarioBlockInspector.cs), [src/Fft.AssetTool.Cli/ScenarioEventExporter.cs](../../src/Fft.AssetTool.Cli/ScenarioEventExporter.cs), [src/Fft.Content/Events/PreparedScenarioEvent.cs](../../src/Fft.Content/Events/PreparedScenarioEvent.cs).
+Current implementation: [src/Fft.AssetTool/ScenarioBlockInspector.cs](../../src/Fft.AssetTool/ScenarioBlockInspector.cs), [src/Fft.AssetTool.Cli/ScenarioEventExporter.cs](../../src/Fft.AssetTool.Cli/ScenarioEventExporter.cs), [src/Fft.Content/Events/PreparedScenarioEvent.cs](../../src/Fft.Content/Events/PreparedScenarioEvent.cs), [src/Fft.Core/Events/ConditionalEventProgram.cs](../../src/Fft.Core/Events/ConditionalEventProgram.cs), [src/Fft.Core/Events/ConditionalEventState.cs](../../src/Fft.Core/Events/ConditionalEventState.cs), [src/Fft.Core/Events/ConditionalEventExecutor.cs](../../src/Fft.Core/Events/ConditionalEventExecutor.cs).
 
-Existing bounded checks: [tests/Fft.AssetTool.Tests/ScenarioBlockInspectorTests.cs](../../tests/Fft.AssetTool.Tests/ScenarioBlockInspectorTests.cs), [tests/Fft.AssetTool.Cli.Tests/ScenarioEventExporterTests.cs](../../tests/Fft.AssetTool.Cli.Tests/ScenarioEventExporterTests.cs), [tests/Fft.Content.Tests/PreparedScenarioEventTests.cs](../../tests/Fft.Content.Tests/PreparedScenarioEventTests.cs).
+Existing bounded checks: [tests/Fft.AssetTool.Tests/ScenarioBlockInspectorTests.cs](../../tests/Fft.AssetTool.Tests/ScenarioBlockInspectorTests.cs), [tests/Fft.AssetTool.Cli.Tests/ScenarioEventExporterTests.cs](../../tests/Fft.AssetTool.Cli.Tests/ScenarioEventExporterTests.cs), [tests/Fft.Content.Tests/PreparedScenarioEventTests.cs](../../tests/Fft.Content.Tests/PreparedScenarioEventTests.cs), [tests/Fft.Core.Tests/ConditionalEventExecutorTests.cs](../../tests/Fft.Core.Tests/ConditionalEventExecutorTests.cs), [tests/Fft.Content.Tests/PreparedScenarioExecutionTests.cs](../../tests/Fft.Content.Tests/PreparedScenarioExecutionTests.cs).
 
 Manual checkpoint (pending-original-observation): Capture one controlled branch/dialogue event with explicit initial state and timing.
 
 Remaining gaps:
 
-- Real activation/completion, packed text decoding, semantic execution/scheduling/arithmetic and independent original observations remain unverified.
+- Real activation/completion, packed text, EventEnd/task scheduling, wider arithmetic/RNG and independent original observations remain unverified.
 
-Next action: Implement ZOD-065's pure conditional-event executor with Content-to-Core projection, then trace real activation/completion in ZOD-066.
+Next action: Trace one verified original event and all activation/completion prerequisites in ZOD-066 before expanding semantic execution.
 
-Bounded follow-ups: ZOD-065, ZOD-066.
+Bounded follow-ups: ZOD-066.
 
 ## Screens
 

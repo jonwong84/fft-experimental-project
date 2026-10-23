@@ -357,7 +357,8 @@ ZOD-064 now implements the [bounded synthetic decoder/prepared loader](../develo
 The fixture uses one empty packed text entry at offset 48; no full text-bank
 header is needed. It preserves the raw/processed distinction and exact forward
 marker rules. The following validation records this investigation historically;
-ZOD-065 still owns semantic execution and ZOD-066 owns real activation/completion.
+ZOD-065 now implements [bounded semantic execution](../behavior/conditional-event-execution.md);
+ZOD-066 still owns real activation/completion.
 
 ## Validation and remaining evidence limits
 

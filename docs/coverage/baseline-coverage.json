@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-23",
   "edition": "SCUS-94221",
-  "managedCommit": "9ef9857",
+  "managedCommit": "6663c4d",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 1012,
-    "source": "docs/development/prepared-scenario-event.md",
+    "passed": 1057,
+    "source": "docs/behavior/conditional-event-execution.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -1086,7 +1086,7 @@
       "ownerTicket": "ZOD-040",
       "ownerArea": "FFT campaign/application",
       "status": "partial",
-      "currentScope": "ZOD-040 maps script families; ZOD-064 inspects authored raw/processed blocks and loads a strictly validated prepared conditional event. No event executor or retail archive import exists.",
+      "currentScope": "ZOD-064 prepares authored raw/processed blocks; ZOD-065 projects validated Content records into a pure Core-owned conditional-event executor with immutable state/traces, replay and atomic arithmetic/budget rejection. No retail event or scene/campaign lifecycle executes.",
       "referenceSources": [
         {
           "path": "src/battle/event/interpreter.c",
@@ -1107,12 +1107,16 @@
       ],
       "evidenceDocs": [
         "docs/architecture/zod-040-event-script-investigation.md",
-        "docs/development/prepared-scenario-event.md"
+        "docs/development/prepared-scenario-event.md",
+        "docs/behavior/conditional-event-execution.md"
       ],
       "implementationPaths": [
         "src/Fft.AssetTool/ScenarioBlockInspector.cs",
         "src/Fft.AssetTool.Cli/ScenarioEventExporter.cs",
-        "src/Fft.Content/Events/PreparedScenarioEvent.cs"
+        "src/Fft.Content/Events/PreparedScenarioEvent.cs",
+        "src/Fft.Core/Events/ConditionalEventProgram.cs",
+        "src/Fft.Core/Events/ConditionalEventState.cs",
+        "src/Fft.Core/Events/ConditionalEventExecutor.cs"
       ],
       "automatedChecks": [
         {
@@ -1126,6 +1130,14 @@
         {
           "path": "tests/Fft.Content.Tests/PreparedScenarioEventTests.cs",
           "scope": "Strict synthetic JSON/provenance/offset validation and immutable records."
+        },
+        {
+          "path": "tests/Fft.Core.Tests/ConditionalEventExecutorTests.cs",
+          "scope": "Source-derived synthetic exact instruction/state traces, dirty variables, replay, immutable boundaries, arithmetic and budget rollback; no original oracle."
+        },
+        {
+          "path": "tests/Fft.Content.Tests/PreparedScenarioExecutionTests.cs",
+          "scope": "Authored hash-verified prepared file to Core projection/execution, unchanged schema, D0/D1/D4 landings; no original script/asset."
         }
       ],
       "manualCheckpoint": {
@@ -1133,11 +1145,10 @@
         "procedure": "Capture one controlled branch/dialogue event with explicit initial state and timing."
       },
       "openQuestions": [
-        "Real activation/completion, packed text decoding, semantic execution/scheduling/arithmetic and independent original observations remain unverified."
+        "Real activation/completion, packed text, EventEnd/task scheduling, wider arithmetic/RNG and independent original observations remain unverified."
       ],
-      "nextAction": "Implement ZOD-065's pure conditional-event executor with Content-to-Core projection, then trace real activation/completion in ZOD-066.",
+      "nextAction": "Trace one verified original event and all activation/completion prerequisites in ZOD-066 before expanding semantic execution.",
       "followUpTickets": [
-        "ZOD-065",
         "ZOD-066"
       ]
     },

@@ -28,8 +28,10 @@ Its family-level entries are not a complete original record/encounter catalog.
   select a bounded native checkpoint service and UI. Full campaign persistence remains separate.
 - `Fft.Content.Events` validates/loads the [prepared synthetic conditional event](../development/prepared-scenario-event.md).
   AssetTool owns raw block inspection and the CLI assembly composes conversion.
-  No event execution exists yet; ZOD-065 must project into a Core-owned execution
-  definition without reversing the Content-to-Core dependency.
+  ZOD-065 projects into `Fft.Core.Events`: immutable normalized operations,
+  instruction state/traces and pure bounded Step/Run execution. Content-to-Core
+  dependencies remain one-way. [Execution limits](../behavior/conditional-event-execution.md)
+  exclude EventEnd, scene lifecycle, timing, RNG and campaign integration.
 - `Fft.AssetTool` and `Fft.AssetTool.Cli` handle offline image inventory, extraction, narrow unit `.SPR`
   decoding, selected SHP/SEQ pose preparation and bounded GNS/mesh/indexed-texture conversion.
   The CLI composes the tools; no full animation interpreter exists.

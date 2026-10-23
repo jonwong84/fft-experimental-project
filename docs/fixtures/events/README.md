@@ -27,7 +27,9 @@ block SHA-256 is
 The 15 semantic records occupy 4..47, with D0 at 21 landing at 35 and D1 at 31
 landing at 45. D4 at 45 exits sequentially; DB at 47 is structural and unreachable.
 Variables 0..3 and runtime branch expectations are documented by ZOD-040; this
-fixture proves preparation/loading only. Tests reconstruct the bytes from a literal,
+fixture records preparation/loading metadata. ZOD-065 now projects it into the
+[bounded executor](../../behavior/conditional-event-execution.md), with independent
+expected semantic traces in Core tests. Tests reconstruct the bytes from a literal,
 check the independent hash/offsets and load the committed JSON separately.
 
 Processed input is a separate inspection variant: replace the first four bytes

@@ -59,9 +59,12 @@ selects a bounded conditional event; ZOD-045 adds the [coverage inventory](cover
 ZOD-064 now prepares/loads that synthetic event with strict capability validation;
 locked restore, zero-warning Release build and all 1,012 tests pass. ZOD-067 now
 traces campaign save families, checkpoints and the two unsaved RNG lifecycles.
-Next implementation: ZOD-065's pure executor. ZOD-068's synthetic world-checkpoint
-service is an independent lane; ZOD-069's native Save/Load UI waits on that service
-and minimal client navigation. Neither lane establishes original campaign support.
+ZOD-065 now executes the bounded conditional event with immutable instruction
+state/traces, replay, explicit arithmetic limits and atomic rejection on failures.
+Locked restore, zero-warning Release build and all 1,057 tests pass. Next: ZOD-066's
+real-event activation/completion investigation. ZOD-068's synthetic world-checkpoint
+service is an independent deferred lane; ZOD-069's native Save/Load UI waits on that
+service and minimal client navigation. Original campaign support remains open.
 M2 is not complete yet.
 Independent asset/reference investigations can proceed in parallel when the owner selects their scope;
 give each agent distinct files and acceptance criteria. M1 does not imply complete FFT combat or presentation.
@@ -780,7 +783,15 @@ exact binary/configuration pinned and is not a runtime dependency.
 
 ### ZOD-065 — Execute the bounded conditional event deterministically
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-064, ZOD-035
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-064, ZOD-035
+
+**Result (2026-10-23):** [Conditional-event execution](behavior/conditional-event-execution.md)
+adds a Core-owned immutable program/state and pure Step/Run transitions, projected
+from validated prepared Content records. Both branches match exact dirty-variable
+traces and replay; D0/D1/D4 landing behavior, arithmetic/budget rollback and invalid
+definitions are covered. Variables are restricted to 0..65,535; no overflow
+semantics, EventEnd, scene lifecycle or save integration is claimed. Locked restore,
+zero-warning Release build and all 1,057 tests passed (45 new cases).
 
 **Scope:** Add a pure FFT-owned transition over the selected prepared event, explicit
 instruction position, variables 0..3 and terminal state. Support only the documented
@@ -798,7 +809,7 @@ FFT opcodes/flags stay out of Zodiac.
 
 ### ZOD-066 — Trace one real event's activation and completion prerequisites
 
-**Type:** Spike · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-064, ZOD-065
+**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-064, ZOD-065
 
 **Scope:** Select one small original event from a verified local TEST.EVT import.
 Record numeric event ID/hash, the condition/entry path, every used opcode and the

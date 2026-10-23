@@ -39,9 +39,15 @@ and strict prepared JSON/manifest loading. No event execution or retail import.
 Locked restore, zero-warning Release build and all **1,012 tests** pass (58 new).
 ZOD-067's [campaign save trace](architecture/zod-067-campaign-save-state.md) maps
 field lifetimes, entry paths and the unsaved BIOS/event RNG lifecycles. Retail
-checkpoint enumeration and original observations remain pending. Next: ZOD-065's
-pure executor, with Content-to-Core projection. ZOD-068's synthetic world-checkpoint
-service can proceed independently; ZOD-069's UI follows the service/navigation. Original captures (ZOD-026), comparison
+checkpoint enumeration and original observations remain pending. ZOD-065 now
+[executes the bounded event](behavior/conditional-event-execution.md) through a
+Core-owned immutable program/state and pure Step/Run transitions, with Content
+projection, exact traces/replay and atomic arithmetic/budget rejection. Domain:
+variables 0..3 with values 0..65,535; no EventEnd, scene lifecycle or save integration.
+Latest locked restore, zero-warning Release build and all **1,057 tests** passed
+(45 new). Next: ZOD-066's real-event activation/completion trace. ZOD-068's synthetic
+world-checkpoint service remains independent/deferred; ZOD-069's UI follows the
+service/navigation. Original captures (ZOD-026), comparison
 checkpoints (ZOD-033), and remote CI/clean-machine evidence (ZOD-034) remain open.
 MAP003's static scene does not broaden M1
 combat's height-10 domain. Gameplay is limited to the synthetic local two-unit battle;

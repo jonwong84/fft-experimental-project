@@ -42,10 +42,11 @@ Do not label original imported data synthetic: this exporter supports authored
 fixtures only. A future retail import must verify edition/archive identity and
 provide a separate provenance/capability contract.
 
-ZOD-065 must project this Content definition into an FFT Core-owned execution
-definition, following the existing Content-to-Core direction. Core must not acquire
-a Content dependency. That ticket owns variables, instruction position, arithmetic
-limits, ordered traces, budget failures and pure execution; none exist here yet.
+ZOD-065 now projects this Content definition into an FFT Core-owned execution
+definition, following the existing Content-to-Core direction. Core has no Content
+dependency. See [conditional-event execution](../behavior/conditional-event-execution.md)
+for variables, instruction position, arithmetic limits, ordered traces, budget
+failures and pure execution. This decoder milestone itself adds no interpreter.
 
 ## Framing and structural inspection
 
@@ -113,7 +114,7 @@ The [fixture provenance](../fixtures/events/README.md) records the independently
 authored conditional event, raw-block hash and minimal packed text section. Its
 15 records occupy offsets 4..47, text starts at 48, and the expected jumps are
 21 -> 35 and 31 -> 45. Existing source-derived true/false state traces remain in
-ZOD-040; execution is deliberately left to ZOD-065.
+ZOD-040; semantic execution is documented separately under ZOD-065.
 
 Regression coverage lives in `ScenarioBlockInspectorTests`,
 `ScenarioEventExporterTests` and `PreparedScenarioEventTests`. It checks raw and

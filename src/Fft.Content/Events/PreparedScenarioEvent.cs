@@ -2,6 +2,7 @@ using System.Collections.Immutable;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Fft.Core;
+using Fft.Core.Events;
 
 namespace Fft.Content.Events;
 
@@ -151,6 +152,22 @@ public sealed class PreparedScenarioEvent
         if (definition.Id != id) throw new InvalidDataException("Prepared event ID differs from its manifest selection.");
         return definition;
     }
+
+    /// <summary>Project validated bytecode structure into Core's closed semantic contract; DB and labels are not executable.</summary>
+    public ConditionalEventProgram ToExecutionDefinition() => new(Id,
+        Instructions.Where(r => r.Operation != ScenarioOperation.SearchEnd).Select(r => r.Operation switch
+        {
+            ScenarioOperation.Nop => new ConditionalEventInstruction(r.Offset, ConditionalEventOperation.Nop),
+            ScenarioOperation.ZeroVariable => new(r.Offset, ConditionalEventOperation.ZeroVariable, r.Operand1),
+            ScenarioOperation.AddImmediate => new(r.Offset, ConditionalEventOperation.AddImmediate, r.Operand1, r.Operand2),
+            ScenarioOperation.AddVariable => new(r.Offset, ConditionalEventOperation.AddVariable, r.Operand1, r.Operand2),
+            ScenarioOperation.CompareEqual => new(r.Offset, ConditionalEventOperation.CompareEqual),
+            ScenarioOperation.JumpForwardIfZero => new(r.Offset, ConditionalEventOperation.JumpForwardIfZero, TargetOffset: r.TargetOffset),
+            ScenarioOperation.JumpForward => new(r.Offset, ConditionalEventOperation.JumpForward, TargetOffset: r.TargetOffset),
+            ScenarioOperation.ForwardTarget => new(r.Offset, ConditionalEventOperation.Target),
+            ScenarioOperation.ForwardTargetExit => new(r.Offset, ConditionalEventOperation.Exit),
+            _ => throw new InvalidDataException("Unsupported executable scenario operation."),
+        }));
     private static ScenarioOperation ParseOperation(string text) => Enum.GetNames<ScenarioOperation>().Contains(text)
         ? Enum.Parse<ScenarioOperation>(text) : throw new InvalidDataException($"Unknown prepared operation '{text}'.");
     private static bool Hex(string? value, int count) => value is not null && value.Length == count && value.All(c => c is >= '0' and <= '9' or >= 'a' and <= 'f');
