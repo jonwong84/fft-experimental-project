@@ -351,6 +351,14 @@ running prepared events. General authoring UI, custom mechanics and menu
 contributions remain ZOD-048/050/062, after actual baseline needs establish their
 contracts.
 
+## Implementation follow-up
+
+ZOD-064 now implements the [bounded synthetic decoder/prepared loader](../development/prepared-scenario-event.md).
+The fixture uses one empty packed text entry at offset 48; no full text-bank
+header is needed. It preserves the raw/processed distinction and exact forward
+marker rules. The following validation records this investigation historically;
+ZOD-065 still owns semantic execution and ZOD-066 owns real activation/completion.
+
 ## Validation and remaining evidence limits
 
 Reviewed the shared operand-size array, both scene dispatchers, forward/backward

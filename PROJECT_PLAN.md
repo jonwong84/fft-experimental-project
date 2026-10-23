@@ -115,6 +115,10 @@ The PS1 implementation is not a single monolithic program: resident code and sev
 - Add-on content for jobs, abilities, items, characters, monsters, maps, encounters, and campaigns loads without changing simulation code when it uses existing mechanics.
 - New mechanics can be added through a documented, versioned extension boundary. Begin with data-driven rules and a constrained effect/action model; consider third-party executable scripts only after determinism, compatibility, and security requirements are clear.
 - Custom content and rule changes must not silently alter the default original-mode behavior.
+- The owner intends to fix selected original-game bugs later. Keep those corrections
+  in an explicitly selected FFT rules/profile option, with documented original and
+  corrected behavior and separate regressions. Choose the bugs and timing after
+  their affected systems have a stable compatibility baseline; see ZOD-070.
 
 ### Explicitly outside the initial target
 

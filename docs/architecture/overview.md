@@ -23,7 +23,13 @@ Its family-level entries are not a complete original record/encounter catalog.
   including the bounded prepared static sprite pose and frozen MAP003 scene/terrain. It references `Fft.Core`, without original-format parsers.
 - `Fft.Content.Saves` owns the [bounded save DTO/codec and file adapter](../development/two-unit-battle-saves.md).
   Core restores snapshots against selected definitions without I/O; Client supplies
-  a headless proof. Full campaign persistence remains separate.
+  a headless proof. The [ZOD-067 investigation](zod-067-campaign-save-state.md)
+  maps original campaign fields/checkpoints and unsaved RNG lifecycles; ZOD-068/069
+  select a bounded native checkpoint service and UI. Full campaign persistence remains separate.
+- `Fft.Content.Events` validates/loads the [prepared synthetic conditional event](../development/prepared-scenario-event.md).
+  AssetTool owns raw block inspection and the CLI assembly composes conversion.
+  No event execution exists yet; ZOD-065 must project into a Core-owned execution
+  definition without reversing the Content-to-Core dependency.
 - `Fft.AssetTool` and `Fft.AssetTool.Cli` handle offline image inventory, extraction, narrow unit `.SPR`
   decoding, selected SHP/SEQ pose preparation and bounded GNS/mesh/indexed-texture conversion.
   The CLI composes the tools; no full animation interpreter exists.

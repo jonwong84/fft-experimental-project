@@ -3,7 +3,7 @@
 Generated from `baseline-coverage.json` by `tools/verification/verify_baseline_coverage.py --write-view`.
 Edit the JSON, then regenerate this view. See [the inventory guide](README.md) for status/evidence rules.
 
-Target: **SCUS-94221**. Snapshot: 2026-10-23; managed base `7990b5d`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+Target: **SCUS-94221**. Snapshot: 2026-10-23; managed base `9ef9857`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 These entries are planning scopes, not a feature-completion percentage or a complete record/encounter catalog.
 
 ## Simulation
@@ -550,23 +550,25 @@ Next action: Record the final acceptance route with source anchors and prepared 
 
 Status: **partial**; scope: **baseline**; ticket: **ZOD-040**; owner area: FFT campaign/application.
 
-ZOD-040 now maps script families and one source-derived synthetic conditional event; no managed original-event decoder or interpreter executes.
+ZOD-040 maps script families; ZOD-064 inspects authored raw/processed blocks and loads a strictly validated prepared conditional event. No event executor or retail archive import exists.
 
-Evidence: [docs/architecture/zod-040-event-script-investigation.md](../../docs/architecture/zod-040-event-script-investigation.md).
+Evidence: [docs/architecture/zod-040-event-script-investigation.md](../../docs/architecture/zod-040-event-script-investigation.md), [docs/development/prepared-scenario-event.md](../../docs/development/prepared-scenario-event.md).
 
 Source entry points (pinned revision above; not full traces): [src/battle/event/interpreter.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/event/interpreter.c), [src/world/event/interpreter.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/event/interpreter.c), [src/lib/event/script/control.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/lib/event/script/control.c), [src/wldcore/map/location_script.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/wldcore/map/location_script.c).
 
-Automated baseline check: **none identified for this scope**; add a scenario regression when implementing the next action.
+Current implementation: [src/Fft.AssetTool/ScenarioBlockInspector.cs](../../src/Fft.AssetTool/ScenarioBlockInspector.cs), [src/Fft.AssetTool.Cli/ScenarioEventExporter.cs](../../src/Fft.AssetTool.Cli/ScenarioEventExporter.cs), [src/Fft.Content/Events/PreparedScenarioEvent.cs](../../src/Fft.Content/Events/PreparedScenarioEvent.cs).
+
+Existing bounded checks: [tests/Fft.AssetTool.Tests/ScenarioBlockInspectorTests.cs](../../tests/Fft.AssetTool.Tests/ScenarioBlockInspectorTests.cs), [tests/Fft.AssetTool.Cli.Tests/ScenarioEventExporterTests.cs](../../tests/Fft.AssetTool.Cli.Tests/ScenarioEventExporterTests.cs), [tests/Fft.Content.Tests/PreparedScenarioEventTests.cs](../../tests/Fft.Content.Tests/PreparedScenarioEventTests.cs).
 
 Manual checkpoint (pending-original-observation): Capture one controlled branch/dialogue event with explicit initial state and timing.
 
 Remaining gaps:
 
-- Real event activation/completion, text boundaries, full scheduling/arithmetic and independent original semantics remain unverified.
+- Real activation/completion, packed text decoding, semantic execution/scheduling/arithmetic and independent original observations remain unverified.
 
-Next action: Implement ZOD-064's bounded decoder, then ZOD-065's deterministic conditional-event executor; trace real activation/completion in ZOD-066.
+Next action: Implement ZOD-065's pure conditional-event executor with Content-to-Core projection, then trace real activation/completion in ZOD-066.
 
-Bounded follow-ups: ZOD-064, ZOD-065, ZOD-066.
+Bounded follow-ups: ZOD-065, ZOD-066.
 
 ## Screens
 
@@ -676,9 +678,9 @@ Next action: Create a screen/operation inventory with text and asset dependencie
 
 Status: **absent**; scope: **platform-replacement**; ticket: **ZOD-042**; owner area: Fft.Client presentation and application commands.
 
-Bounded file API/headless proof exists; no player-facing save selection, metadata or load flow.
+No player-facing save selection/load flow. ZOD-067 traces title/world/story entry mechanisms and recommends native slots/prompts; complete retail availability remains unenumerated.
 
-Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md).
+Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-067-campaign-save-state.md](../../docs/architecture/zod-067-campaign-save-state.md).
 
 Source entry points (pinned revision above; not full traces): [src/world/card_save.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/card_save.c), [include/fft/save.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/save.h), [src/event/card/entry.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/event/card/entry.c).
 
@@ -688,11 +690,11 @@ Manual checkpoint (pending-original-observation): At legal original save locatio
 
 Remaining gaps:
 
-- Original availability/checkpoints need tracing; Windows slot/file location, metadata, overwrite, navigation and recovery policy are undecided.
+- Implement the proposed slot service/navigation and UI; verify original checkpoint availability independently of Windows workflow decisions.
 
-Next action: Add a player-facing Save/Load child with ZOD-053 campaign-state prerequisites.
+Next action: Implement ZOD-069 after ZOD-068 and minimal ZOD-042 navigation; original checkpoint catalog/observations remain open.
 
-Bounded follow-ups: ZOD-067.
+Bounded follow-ups: ZOD-068, ZOD-069.
 
 ### COV-UI-007 — Options, text/input settings and settings persistence
 
@@ -998,9 +1000,9 @@ Next action: Carry its DTO/validation/atomic-write pattern into separately trace
 
 Status: **absent**; scope: **platform-replacement**; ticket: **ZOD-053**; owner area: FFT persistence/application and Windows storage.
 
-No complete campaign serialization or restore.
+ZOD-067 maps source save families, lifetimes, restore order and entry paths; neither RNG stream is saved. No campaign serialization/restore runtime exists.
 
-Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md).
+Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-067-campaign-save-state.md](../../docs/architecture/zod-067-campaign-save-state.md).
 
 Source entry points (pinned revision above; not full traces): [include/fft/save.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/save.h), [src/main/save_state.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/main/save_state.c), [src/world/card_save.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/card_save.c).
 
@@ -1010,19 +1012,19 @@ Manual checkpoint (pending-original-observation): Save/continue at selected lega
 
 Remaining gaps:
 
-- Source fields include party, inventory/poached stock, script variables, options and side-content progress. Exact lifetimes, unknown fields and save checkpoints need tracing; establish which RNG streams are saved, rebuilt or reset on load.
+- Complete retail checkpoint enumeration, unmodeled fields/side content, original observations, content-version rules and explicit native RNG continuation/seed policy remain open.
 
-Next action: Inventory logical save state/lifetimes before defining campaign DTOs.
+Next action: Implement ZOD-068's RNG-free synthetic world-checkpoint service; retain ZOD-053 for complete campaign scope.
 
-Bounded follow-ups: ZOD-067.
+Bounded follow-ups: ZOD-068, ZOD-069.
 
 ### COV-SAV-003 — Windows save storage, metadata, backups and recovery
 
 Status: **absent**; scope: **platform-replacement**; ticket: **ZOD-053**; owner area: FFT persistence/application and Windows storage.
 
-Caller-path atomic saves exist; no storage-location/slot discovery/backup or recovery policy.
+Caller-path atomic battle saves exist; ZOD-067 recommends per-user slots, derived metadata and validated explicit recovery. No slot service/catalog or backup workflow exists.
 
-Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md).
+Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-067-campaign-save-state.md](../../docs/architecture/zod-067-campaign-save-state.md).
 
 Source entry points (pinned revision above; not full traces): [src/world/card_save.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/card_save.c), [include/fft/save.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/save.h).
 
@@ -1032,11 +1034,11 @@ Manual checkpoint (pending-original-observation): Test overwrite/cancel, missing
 
 Remaining gaps:
 
-- Per-user paths, metadata, backup rotation, compatible version selection and concurrent writer policy are undecided.
+- Implement the proposed per-user slot contract and define backup/recovery, stale/concurrent overwrite behavior and content compatibility before exposing UI.
 
-Next action: Coordinate a storage policy child with COV-UI-006; retain original save availability separately.
+Next action: Implement bounded slot/storage behavior in ZOD-068, then expose through ZOD-069.
 
-Bounded follow-ups: ZOD-067.
+Bounded follow-ups: ZOD-068, ZOD-069.
 
 ## Validation
 

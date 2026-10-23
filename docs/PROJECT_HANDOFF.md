@@ -33,8 +33,15 @@ capabilities/limits. ZOD-045's [coverage inventory](coverage/README.md) records 
 planning entries across nine domains, with scoped evidence/checks and open gaps.
 The source/link/view checker passed against the pinned read-only reference; these
 documentation tasks do not rerun the 954-test suite or implement script execution.
-Next: ZOD-064's decoder, then ZOD-065's pure executor; ZOD-067's campaign-save and
-checkpoint trace can proceed independently. Original captures (ZOD-026), comparison
+ZOD-064 now implements [synthetic event preparation/loading](development/prepared-scenario-event.md):
+raw/processed framing, retained inspection bytes, closed capability/CFG validation
+and strict prepared JSON/manifest loading. No event execution or retail import.
+Locked restore, zero-warning Release build and all **1,012 tests** pass (58 new).
+ZOD-067's [campaign save trace](architecture/zod-067-campaign-save-state.md) maps
+field lifetimes, entry paths and the unsaved BIOS/event RNG lifecycles. Retail
+checkpoint enumeration and original observations remain pending. Next: ZOD-065's
+pure executor, with Content-to-Core projection. ZOD-068's synthetic world-checkpoint
+service can proceed independently; ZOD-069's UI follows the service/navigation. Original captures (ZOD-026), comparison
 checkpoints (ZOD-033), and remote CI/clean-machine evidence (ZOD-034) remain open.
 MAP003's static scene does not broaden M1
 combat's height-10 domain. Gameplay is limited to the synthetic local two-unit battle;

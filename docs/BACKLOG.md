@@ -56,8 +56,12 @@ ZOD-035 completes the bounded save/load proof with explicit DTOs, active-turn/RN
 restoration, synthetic migration and safe replacement. Next independent lanes:
 ZOD-026's original capture workflow. ZOD-040 now maps the script families and
 selects a bounded conditional event; ZOD-045 adds the [coverage inventory](coverage/README.md).
-Next implementation: ZOD-064's event decoder, then ZOD-065's pure executor.
-ZOD-067's campaign-save/checkpoint investigation can proceed independently.
+ZOD-064 now prepares/loads that synthetic event with strict capability validation;
+locked restore, zero-warning Release build and all 1,012 tests pass. ZOD-067 now
+traces campaign save families, checkpoints and the two unsaved RNG lifecycles.
+Next implementation: ZOD-065's pure executor. ZOD-068's synthetic world-checkpoint
+service is an independent lane; ZOD-069's native Save/Load UI waits on that service
+and minimal client navigation. Neither lane establishes original campaign support.
 M2 is not complete yet.
 Independent asset/reference investigations can proceed in parallel when the owner selects their scope;
 give each agent distinct files and acceptance criteria. M1 does not imply complete FFT combat or presentation.
@@ -750,7 +754,14 @@ The last recorded 954-test baseline is retained as historical evidence, not reru
 
 ### ZOD-064 — Decode one bounded PS1 scenario block into prepared event data
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-040
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-040
+
+**Result (2026-10-23):** [Prepared conditional event](development/prepared-scenario-event.md)
+implements raw/processed block inspection, the independently authored fixture,
+closed capability/CFG validation, exact forward targets and strict hash-verified
+prepared loading. Inspection retains unsupported records separately. No interpreter,
+retail archive import or new CLI command is implemented. Locked restore, zero-warning
+Release build and all 1,012 tests passed; source-derived/synthetic evidence only.
 
 **Scope:** Implement offline structural parsing for the authored conditional event
 selected by ZOD-040. Distinguish raw/processed block headers, preserve block-relative
@@ -769,13 +780,14 @@ exact binary/configuration pinned and is not a runtime dependency.
 
 ### ZOD-065 — Execute the bounded conditional event deterministically
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-064, ZOD-035
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-064, ZOD-035
 
 **Scope:** Add a pure FFT-owned transition over the selected prepared event, explicit
 instruction position, variables 0..3 and terminal state. Support only the documented
 F2/BE/B0/B1/A2/D0/D1/D2/D4 capability set and bounded arithmetic domain. Keep DB as
 a structural sentinel; original EventEnd, waits, RNG, dialogue and concurrent tasks
-remain unsupported. ZOD-035's save schema is unchanged.
+remain unsupported. ZOD-035's save schema is unchanged. Project validated Content
+records into a Core-owned execution definition; do not add a Core-to-Content reference.
 
 **Acceptance criteria:** True/false and dirty-initial-variable cases match exact
 instruction/variable traces; input snapshots remain unchanged, replay is identical,
@@ -802,7 +814,15 @@ skipping or bulk dispatcher port. This trace does not claim the campaign works.
 
 ### ZOD-067 — Trace campaign save fields, lifetimes and legal checkpoints
 
-**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-035, ZOD-045
+**Type:** Spike · **Priority:** P2 · **Status:** Complete for field-family and entry-path trace; retail checkpoint catalog pending · **Depends on:** ZOD-035, ZOD-045
+
+**Result (2026-10-23):** [Campaign save investigation](architecture/zod-067-campaign-save-state.md)
+maps logical fields, writers, lifetime/ownership, restore order, unknowns and
+title/world/story save entry paths. Neither RNG generator is stored in the original
+image; live BIOS callbacks and scene/menu reseeding require an explicit native
+policy. Original/emulator observations and complete retail checkpoint enumeration
+remain open. No campaign runtime, UI or original-card importer added. Follow-ups:
+ZOD-068 for a synthetic checkpoint service, then ZOD-069 for native UI.
 
 **Scope:** Inventory logical state read/written by original CARD/WORLD save paths
 and resident setup: party/progression/equipment, inventory/poached stock, world/
@@ -819,6 +839,46 @@ summary/overwrite/recovery behavior. Propose the first campaign persistence/UI
 implementation child with dependencies and synthetic migration/failure checks.
 No packed memory-card image import, new UI or campaign runtime is implemented;
 original-card interoperability remains optional. Can run alongside ZOD-064.
+
+### ZOD-068 — Prove a synthetic world-checkpoint Save/Load service
+
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-035, ZOD-067
+
+**Scope:** Define one small authored campaign profile and Core-owned immutable idle
+world checkpoint: stable route/location IDs, party/equipment, inventory/funds,
+one date/progress flag and elapsed duration. Use Content DTOs/bindings/migration and
+an application service for slots and safe storage. Establish the few required
+job/item/location definitions within this child rather than waiting for all of
+ZOD-039/041. Keep it independent of event decoding/execution. No RNG operations,
+encounters, side-content, battle/script suspension or original-card import.
+
+**Acceptance criteria:** Freshly composed definitions restore identical supported
+state and the next synthetic command's state/events. Cross-field IDs, duplicates,
+limits, checkpoint/route and summary mismatches reject before publication. Commit
+invented predecessor/current schema fixtures; test known migration and reject
+future versions, wrong profiles, checksum errors and malformed/oversized input.
+Specify per-user location, safe slot IDs, catalog metadata and stale/concurrent
+writer behavior. Validate serialize/flush/promotion/access failures preserve the
+live session and previous file; canceled/failed load preserves state, with explicit
+validated recovery. No hidden RNG seed/draw or wall-clock dependency enters Core.
+RNG capability is unsupported until a named policy and replayable inputs exist.
+This is a synthetic campaign proof, not completion of ZOD-041/053.
+
+### ZOD-069 — Add native Windows Save/Load slot navigation
+
+**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-068, ZOD-042
+
+**Scope:** After ZOD-068 and a minimal client screen/navigation flow under ZOD-042,
+add a slot list/details, Save/Load actions, overwrite/discard confirmation and
+error/recovery states. Use the tested service and published checkpoint availability.
+The UI does not create campaign state or replicate persistence validation.
+
+**Acceptance criteria:** Supported synthetic checkpoints save/continue through the
+UI; invalid/corrupt/incompatible slots show useful status and preserve recoverable
+data. Cancel, stale overwrite, access errors and load failure preserve the session.
+Record keyboard/mouse/controller and Windows manual checks separately from pure
+state tests. Keep original save availability distinct from any future save-anywhere
+feature; no PS1 card formatting/browser emulation is required.
 
 ## Authoring, extensions, and later goals
 
@@ -955,6 +1015,26 @@ compatibility rules and package/version identity. Sampling, frame alignment and 
 supported scene semantics. Invalid/missing replacements have diagnostics/fallback policy; original assets
 remain available. Visual comparisons and manual checks distinguish new artwork from higher output
 resolution. Simulation results remain unchanged; movie enhancement remains separately scoped.
+
+### ZOD-070 — Plan and implement selected original-game bug fixes
+
+**Type:** Epic · **Priority:** P4 · **Status:** Needs breakdown · **Depends on:** ZOD-045, ZOD-049
+
+**Owner's goal:** Fix selected outstanding bugs from the original game much later.
+No bug list or correction semantics have been selected; this does not change the
+current implementation queue or original compatibility target.
+
+**Scope:** Once each affected system has a stable compatibility baseline, select
+individual bugs and create bounded source-traced correction tickets. Corrections
+belong to explicit FFT rules/profile options; preserve original behavior in the
+default compatibility profile. Do not put FFT-specific fixes in Zodiac.
+
+**Acceptance criteria:** Each selected correction records a reproducible original
+case, pinned source/evidence, intended changed behavior and regression checks for
+both original and corrected profiles. Record implications for RNG/order, saves,
+replays and content compatibility where relevant. Enabling a correction is explicit;
+disabled corrections leave baseline regressions unchanged. No fixes implemented
+or general scripting/plugin framework required by this planning entry.
 
 ### ZOD-054 — Decide local packaging, versioning, and optional publishing
 

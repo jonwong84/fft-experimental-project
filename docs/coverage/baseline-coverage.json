@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-23",
   "edition": "SCUS-94221",
-  "managedCommit": "7990b5d",
+  "managedCommit": "9ef9857",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,9 +11,9 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 954,
-    "source": "docs/development/two-unit-battle-saves.md",
-    "runForThisInventory": false
+    "passed": 1012,
+    "source": "docs/development/prepared-scenario-event.md",
+    "runForThisInventory": true
   },
   "statusDefinitions": {
     "partial": "A stated subset exists; full row remains open.",
@@ -1086,7 +1086,7 @@
       "ownerTicket": "ZOD-040",
       "ownerArea": "FFT campaign/application",
       "status": "partial",
-      "currentScope": "ZOD-040 now maps script families and one source-derived synthetic conditional event; no managed original-event decoder or interpreter executes.",
+      "currentScope": "ZOD-040 maps script families; ZOD-064 inspects authored raw/processed blocks and loads a strictly validated prepared conditional event. No event executor or retail archive import exists.",
       "referenceSources": [
         {
           "path": "src/battle/event/interpreter.c",
@@ -1106,20 +1106,37 @@
         }
       ],
       "evidenceDocs": [
-        "docs/architecture/zod-040-event-script-investigation.md"
+        "docs/architecture/zod-040-event-script-investigation.md",
+        "docs/development/prepared-scenario-event.md"
       ],
-      "implementationPaths": [],
-      "automatedChecks": [],
+      "implementationPaths": [
+        "src/Fft.AssetTool/ScenarioBlockInspector.cs",
+        "src/Fft.AssetTool.Cli/ScenarioEventExporter.cs",
+        "src/Fft.Content/Events/PreparedScenarioEvent.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.AssetTool.Tests/ScenarioBlockInspectorTests.cs",
+          "scope": "Synthetic block framing/operand widths and retained inspection; no semantic execution."
+        },
+        {
+          "path": "tests/Fft.AssetTool.Cli.Tests/ScenarioEventExporterTests.cs",
+          "scope": "Synthetic conversion/CFG/target gate and prepared-manifest loading; no original event."
+        },
+        {
+          "path": "tests/Fft.Content.Tests/PreparedScenarioEventTests.cs",
+          "scope": "Strict synthetic JSON/provenance/offset validation and immutable records."
+        }
+      ],
       "manualCheckpoint": {
         "status": "pending-original-observation",
         "procedure": "Capture one controlled branch/dialogue event with explicit initial state and timing."
       },
       "openQuestions": [
-        "Real event activation/completion, text boundaries, full scheduling/arithmetic and independent original semantics remain unverified."
+        "Real activation/completion, packed text decoding, semantic execution/scheduling/arithmetic and independent original observations remain unverified."
       ],
-      "nextAction": "Implement ZOD-064's bounded decoder, then ZOD-065's deterministic conditional-event executor; trace real activation/completion in ZOD-066.",
+      "nextAction": "Implement ZOD-065's pure conditional-event executor with Content-to-Core projection, then trace real activation/completion in ZOD-066.",
       "followUpTickets": [
-        "ZOD-064",
         "ZOD-065",
         "ZOD-066"
       ]
@@ -1341,23 +1358,24 @@
       "ownerTicket": "ZOD-042",
       "ownerArea": "Fft.Client presentation and application commands",
       "status": "absent",
-      "currentScope": "Bounded file API/headless proof exists; no player-facing save selection, metadata or load flow.",
+      "currentScope": "No player-facing save selection/load flow. ZOD-067 traces title/world/story entry mechanisms and recommends native slots/prompts; complete retail availability remains unenumerated.",
       "referenceSources": [
         {
           "path": "src/world/card_save.c",
-          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+          "inspection": "ZOD-067 statically traces selected save families/entry paths; complete retail checkpoint enumeration and original observations remain pending."
         },
         {
           "path": "include/fft/save.h",
-          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+          "inspection": "ZOD-067 statically traces selected save families/entry paths; complete retail checkpoint enumeration and original observations remain pending."
         },
         {
           "path": "src/event/card/entry.c",
-          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+          "inspection": "ZOD-067 statically traces selected save families/entry paths; complete retail checkpoint enumeration and original observations remain pending."
         }
       ],
       "evidenceDocs": [
-        "PROJECT_PLAN.md"
+        "PROJECT_PLAN.md",
+        "docs/architecture/zod-067-campaign-save-state.md"
       ],
       "implementationPaths": [],
       "automatedChecks": [],
@@ -1366,11 +1384,12 @@
         "procedure": "At legal original save locations, save/continue through Windows UI and test overwrite/cancel/failure recovery."
       },
       "openQuestions": [
-        "Original availability/checkpoints need tracing; Windows slot/file location, metadata, overwrite, navigation and recovery policy are undecided."
+        "Implement the proposed slot service/navigation and UI; verify original checkpoint availability independently of Windows workflow decisions."
       ],
-      "nextAction": "Add a player-facing Save/Load child with ZOD-053 campaign-state prerequisites.",
+      "nextAction": "Implement ZOD-069 after ZOD-068 and minimal ZOD-042 navigation; original checkpoint catalog/observations remain open.",
       "followUpTickets": [
-        "ZOD-067"
+        "ZOD-068",
+        "ZOD-069"
       ]
     },
     {
@@ -1971,23 +1990,24 @@
       "ownerTicket": "ZOD-053",
       "ownerArea": "FFT persistence/application and Windows storage",
       "status": "absent",
-      "currentScope": "No complete campaign serialization or restore.",
+      "currentScope": "ZOD-067 maps source save families, lifetimes, restore order and entry paths; neither RNG stream is saved. No campaign serialization/restore runtime exists.",
       "referenceSources": [
         {
           "path": "include/fft/save.h",
-          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+          "inspection": "ZOD-067 statically traces selected save families/entry paths; complete retail checkpoint enumeration and original observations remain pending."
         },
         {
           "path": "src/main/save_state.c",
-          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+          "inspection": "ZOD-067 statically traces selected save families/entry paths; complete retail checkpoint enumeration and original observations remain pending."
         },
         {
           "path": "src/world/card_save.c",
-          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+          "inspection": "ZOD-067 statically traces selected save families/entry paths; complete retail checkpoint enumeration and original observations remain pending."
         }
       ],
       "evidenceDocs": [
-        "PROJECT_PLAN.md"
+        "PROJECT_PLAN.md",
+        "docs/architecture/zod-067-campaign-save-state.md"
       ],
       "implementationPaths": [],
       "automatedChecks": [],
@@ -1996,11 +2016,12 @@
         "procedure": "Save/continue at selected legal campaign points and compare party, flags, inventories, calendar and RNG-sensitive behavior."
       },
       "openQuestions": [
-        "Source fields include party, inventory/poached stock, script variables, options and side-content progress. Exact lifetimes, unknown fields and save checkpoints need tracing; establish which RNG streams are saved, rebuilt or reset on load."
+        "Complete retail checkpoint enumeration, unmodeled fields/side content, original observations, content-version rules and explicit native RNG continuation/seed policy remain open."
       ],
-      "nextAction": "Inventory logical save state/lifetimes before defining campaign DTOs.",
+      "nextAction": "Implement ZOD-068's RNG-free synthetic world-checkpoint service; retain ZOD-053 for complete campaign scope.",
       "followUpTickets": [
-        "ZOD-067"
+        "ZOD-068",
+        "ZOD-069"
       ]
     },
     {
@@ -2011,19 +2032,20 @@
       "ownerTicket": "ZOD-053",
       "ownerArea": "FFT persistence/application and Windows storage",
       "status": "absent",
-      "currentScope": "Caller-path atomic saves exist; no storage-location/slot discovery/backup or recovery policy.",
+      "currentScope": "Caller-path atomic battle saves exist; ZOD-067 recommends per-user slots, derived metadata and validated explicit recovery. No slot service/catalog or backup workflow exists.",
       "referenceSources": [
         {
           "path": "src/world/card_save.c",
-          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+          "inspection": "ZOD-067 statically traces selected save families/entry paths; complete retail checkpoint enumeration and original observations remain pending."
         },
         {
           "path": "include/fft/save.h",
-          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+          "inspection": "ZOD-067 statically traces selected save families/entry paths; complete retail checkpoint enumeration and original observations remain pending."
         }
       ],
       "evidenceDocs": [
-        "PROJECT_PLAN.md"
+        "PROJECT_PLAN.md",
+        "docs/architecture/zod-067-campaign-save-state.md"
       ],
       "implementationPaths": [],
       "automatedChecks": [],
@@ -2032,11 +2054,12 @@
         "procedure": "Test overwrite/cancel, missing/corrupt files, access errors and recovery without losing the last valid save."
       },
       "openQuestions": [
-        "Per-user paths, metadata, backup rotation, compatible version selection and concurrent writer policy are undecided."
+        "Implement the proposed per-user slot contract and define backup/recovery, stale/concurrent overwrite behavior and content compatibility before exposing UI."
       ],
-      "nextAction": "Coordinate a storage policy child with COV-UI-006; retain original save availability separately.",
+      "nextAction": "Implement bounded slot/storage behavior in ZOD-068, then expose through ZOD-069.",
       "followUpTickets": [
-        "ZOD-067"
+        "ZOD-068",
+        "ZOD-069"
       ]
     },
     {

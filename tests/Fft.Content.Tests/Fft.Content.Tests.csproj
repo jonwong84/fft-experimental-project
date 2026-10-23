@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <None Include="../../docs/fixtures/saves/*.json" Link="Fixtures/Saves/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../docs/fixtures/events/*.json" Link="Fixtures/Events/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
