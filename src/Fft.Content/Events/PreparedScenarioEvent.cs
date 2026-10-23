@@ -7,21 +7,23 @@ using Fft.Core.Events;
 namespace Fft.Content.Events;
 
 public enum ScenarioEventScene { Battle, World }
-public enum ScenarioOperation { Nop, ZeroVariable, AddImmediate, AddVariable, CompareEqual, JumpForwardIfZero, JumpForward, ForwardTarget, ForwardTargetExit, SearchEnd }
+public enum ScenarioOperation { Nop, ZeroVariable, AddImmediate, AddVariable, CompareEqual, JumpForwardIfZero, JumpForward, ForwardTarget, ForwardTargetExit, SearchEnd, WaitFrames }
 public sealed record PreparedScenarioInstruction(int Offset, ScenarioOperation Operation, int? Operand1 = null, int? Operand2 = null, int? TargetOffset = null);
 public sealed record ScenarioEventSource(string Kind, string Edition, string ReferenceRevision, string BlockSha256,
     string Encoding, int TextOffset);
 
-/// <summary>Validated, immutable synthetic conditional-event definition. No original-block parser or interpreter.</summary>
+/// <summary>Validated immutable synthetic event definition with explicitly selected conditional or timed proof profile.</summary>
 public sealed class PreparedScenarioEvent
 {
     public const string Format = "fft.prepared-scenario-event";
     public const string Profile = "sample:event-profile/conditional-v1";
+    public const string TimedProfile = "sample:event-profile/non-tutorial-speed1-timed-v1";
     public const string Dialect = "fft.ps1-us:scenario-bytecode";
     public const int MaxJsonBytes = 1024 * 1024;
     public AssetId Id { get; }
     public ScenarioEventScene Scene { get; }
     public ScenarioEventSource Source { get; }
+    public string ExecutionProfile { get; }
     public ImmutableArray<PreparedScenarioInstruction> Instructions { get; }
     public int EntryOffset => 4;
     public int EndOffset => Instructions[^1].Offset + 1;
@@ -32,12 +34,16 @@ public sealed class PreparedScenarioEvent
         RespectRequiredConstructorParameters = true, RespectNullableAnnotations = true, AllowDuplicateProperties = false, MaxDepth = 12,
     };
 
-    public PreparedScenarioEvent(AssetId id, ScenarioEventScene scene, ScenarioEventSource source, IEnumerable<PreparedScenarioInstruction> instructions)
+    public PreparedScenarioEvent(AssetId id, ScenarioEventScene scene, ScenarioEventSource source,
+        IEnumerable<PreparedScenarioInstruction> instructions, string executionProfile = Profile)
     {
         ArgumentNullException.ThrowIfNull(source);
         ArgumentNullException.ThrowIfNull(instructions);
         if (string.IsNullOrWhiteSpace(id.Value) || id.Value.Length > 256 || !Enum.IsDefined(scene))
             throw new InvalidDataException("Prepared event requires an explicit stable ID and Battle/World scene.");
+        if (executionProfile is not (Profile or TimedProfile) || (executionProfile == TimedProfile && scene != ScenarioEventScene.Battle))
+            throw new InvalidDataException("Event requires a supported explicit profile; timed proof requires Battle, non-tutorial speed one.");
+        ExecutionProfile = executionProfile;
         if (source.Kind != "synthetic" || source.Edition != "SCUS-94221" || !Hex(source.ReferenceRevision, 40) ||
             !Hex(source.BlockSha256, 64) || source.Encoding is not ("raw" or "processed") || source.TextOffset is < 5 or >= 8192)
             throw new InvalidDataException("Event requires synthetic provenance, edition, reference/hash and a preserved in-block text boundary.");
@@ -69,7 +75,7 @@ public sealed class PreparedScenarioEvent
 
     public static int Size(ScenarioOperation operation) => operation switch
     {
-        ScenarioOperation.ZeroVariable => 3,
+        ScenarioOperation.ZeroVariable or ScenarioOperation.WaitFrames => 3,
         ScenarioOperation.AddImmediate or ScenarioOperation.AddVariable => 5,
         ScenarioOperation.JumpForwardIfZero or ScenarioOperation.JumpForward or ScenarioOperation.ForwardTarget or ScenarioOperation.ForwardTargetExit => 2,
         ScenarioOperation.Nop or ScenarioOperation.CompareEqual or ScenarioOperation.SearchEnd => 1,
@@ -93,7 +99,7 @@ public sealed class PreparedScenarioEvent
         throw new InvalidDataException($"No legal forward target for jump at {jump.Offset} before SearchEnd.");
     }
 
-    private static void ValidateOperands(PreparedScenarioInstruction r)
+    private void ValidateOperands(PreparedScenarioInstruction r)
     {
         bool variable = r.Operand1 is >= 0 and <= 3;
         bool valid = r.Operation switch
@@ -101,6 +107,7 @@ public sealed class PreparedScenarioEvent
             ScenarioOperation.ZeroVariable => variable && r.Operand2 is null,
             ScenarioOperation.AddImmediate => variable && r.Operand2 is >= 0 and <= ushort.MaxValue,
             ScenarioOperation.AddVariable => variable && r.Operand2 is >= 0 and <= 3,
+            ScenarioOperation.WaitFrames => ExecutionProfile == TimedProfile && r.Operand1 is >= 0 and <= short.MaxValue && r.Operand2 is null,
             ScenarioOperation.JumpForwardIfZero or ScenarioOperation.JumpForward or ScenarioOperation.ForwardTarget or ScenarioOperation.ForwardTargetExit
                 => r.Operand1 is >= 0 and <= byte.MaxValue && r.Operand2 is null,
             _ => r.Operand1 is null && r.Operand2 is null,
@@ -126,7 +133,7 @@ public sealed class PreparedScenarioEvent
         }
     }
 
-    public byte[] ToUtf8() => JsonSerializer.SerializeToUtf8Bytes(new EventDto(Format, 1, Profile, Dialect, Id.Value,
+    public byte[] ToUtf8() => JsonSerializer.SerializeToUtf8Bytes(new EventDto(Format, 1, ExecutionProfile, Dialect, Id.Value,
         Scene.ToString(), Source, Instructions.Select(r => new InstructionDto(r.Offset, r.Operation.ToString(), r.Operand1, r.Operand2, r.TargetOffset)).ToArray()), Options);
 
     public static PreparedScenarioEvent Parse(ReadOnlyMemory<byte> utf8)
@@ -135,11 +142,11 @@ public sealed class PreparedScenarioEvent
         try
         {
             var dto = JsonSerializer.Deserialize<EventDto>(utf8.Span, Options) ?? throw new InvalidDataException("Event document is required.");
-            if (dto.Format != Format || dto.SchemaVersion != 1 || dto.Profile != Profile || dto.Dialect != Dialect || !Enum.GetNames<ScenarioEventScene>().Contains(dto.Scene))
+            if (dto.Format != Format || dto.SchemaVersion != 1 || dto.Profile is not (Profile or TimedProfile) || dto.Dialect != Dialect || !Enum.GetNames<ScenarioEventScene>().Contains(dto.Scene))
                 throw new InvalidDataException("Unsupported event format/schema/profile/dialect/scene.");
             if (dto.Instructions.Length > 8188 || dto.Instructions.Any(r => r is null)) throw new InvalidDataException("Invalid event instruction collection.");
             return new(new(dto.Id), Enum.Parse<ScenarioEventScene>(dto.Scene), dto.Source,
-                dto.Instructions.Select(r => new PreparedScenarioInstruction(r.Offset, ParseOperation(r.Operation), r.Operand1, r.Operand2, r.TargetOffset)));
+                dto.Instructions.Select(r => new PreparedScenarioInstruction(r.Offset, ParseOperation(r.Operation), r.Operand1, r.Operand2, r.TargetOffset)), dto.Profile);
         }
         catch (Exception exception) when (exception is JsonException or ArgumentException or OverflowException)
         { throw new InvalidDataException($"Invalid prepared scenario event: {exception.Message}", exception); }
@@ -154,8 +161,20 @@ public sealed class PreparedScenarioEvent
     }
 
     /// <summary>Project validated bytecode structure into Core's closed semantic contract; DB and labels are not executable.</summary>
-    public ConditionalEventProgram ToExecutionDefinition() => new(Id,
-        Instructions.Where(r => r.Operation != ScenarioOperation.SearchEnd).Select(r => r.Operation switch
+    public ConditionalEventProgram ToExecutionDefinition()
+    {
+        if (ExecutionProfile != Profile) throw new InvalidDataException("Select timed execution for the timed profile.");
+        return new(Id, Instructions.Where(r => r.Operation != ScenarioOperation.SearchEnd).Select(ToConditionalInstruction));
+    }
+
+    public TimedEventProgram ToTimedExecutionDefinition()
+    {
+        if (ExecutionProfile != TimedProfile) throw new InvalidDataException("Timed execution requires the explicit timed profile.");
+        return new(Id, Instructions.Where(r => r.Operation != ScenarioOperation.SearchEnd).Select(r =>
+            r.Operation == ScenarioOperation.WaitFrames ? new TimedEventInstruction(r.Offset, r.Operand1!.Value) : new(ToConditionalInstruction(r))));
+    }
+
+    private static ConditionalEventInstruction ToConditionalInstruction(PreparedScenarioInstruction r) => r.Operation switch
         {
             ScenarioOperation.Nop => new ConditionalEventInstruction(r.Offset, ConditionalEventOperation.Nop),
             ScenarioOperation.ZeroVariable => new(r.Offset, ConditionalEventOperation.ZeroVariable, r.Operand1),
@@ -167,7 +186,7 @@ public sealed class PreparedScenarioEvent
             ScenarioOperation.ForwardTarget => new(r.Offset, ConditionalEventOperation.Target),
             ScenarioOperation.ForwardTargetExit => new(r.Offset, ConditionalEventOperation.Exit),
             _ => throw new InvalidDataException("Unsupported executable scenario operation."),
-        }));
+        };
     private static ScenarioOperation ParseOperation(string text) => Enum.GetNames<ScenarioOperation>().Contains(text)
         ? Enum.Parse<ScenarioOperation>(text) : throw new InvalidDataException($"Unknown prepared operation '{text}'.");
     private static bool Hex(string? value, int count) => value is not null && value.Length == count && value.All(c => c is >= '0' and <= '9' or >= 'a' and <= 'f');

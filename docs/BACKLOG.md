@@ -64,8 +64,11 @@ state/traces, replay, explicit arithmetic limits and atomic rejection on failure
 Locked restore, zero-warning Release build and all 1,057 tests pass. ZOD-066 now
 traces verified common BattleStart event 401, its fallback activation and EventEnd
 return to battle. Original observations and its required runtime capabilities are
-still absent. Next event slice: ZOD-071's explicit-tick frame-wait proof. ZOD-068's synthetic world-checkpoint
-service is an independent deferred lane; ZOD-069's native Save/Load UI waits on that
+still absent. ZOD-071 now adds a separate timed synthetic profile with explicit
+scheduler ticks, immutable waits, exact resume ordering and atomic failures.
+Locked restore, zero-warning Release build and all 1,105 tests pass. Next event
+step: ZOD-072's task-lifetime/barrier contract. ZOD-068's synthetic world-checkpoint
+service remains an independent lane; ZOD-069's native Save/Load UI waits on that
 service and minimal client navigation. Original campaign support remains open.
 M2 is not complete yet.
 Independent asset/reference investigations can proceed in parallel when the owner selects their scope;
@@ -904,7 +907,15 @@ feature; no PS1 card formatting/browser emulation is required.
 
 ### ZOD-071 — Prove one deterministic non-tutorial event frame wait
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-065, ZOD-066
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-065, ZOD-066
+
+**Result (2026-10-23):** [Explicit-tick wait proof](behavior/timed-event-waits.md)
+adds a distinct non-tutorial speed-one timed profile, signed-halfword F1 validation,
+immutable pending waits and RunUntilBlocked/AdvanceTicks. Exact first/final tick,
+zero/sequential/max waits, replay and per-call rollback are covered; original
+conditional behavior and battle saves remain unchanged. Locked restore, zero-warning
+Release build and all 1,105 tests passed (48 new). No E5, camera/banner workers,
+EventEnd, original playback or renderer timing. ZOD-072 defines the next task boundary.
 
 **Scope:** Add F1 wait semantics to a separately identified timed synthetic profile,
 using immutable pending-wait state and explicit caller-supplied scheduler ticks.
@@ -924,6 +935,25 @@ rejection per call. Reject absent capabilities before applying any state; do not
 silently skip original instructions. Existing conditional event regressions remain
 unchanged. This does not enable original BattleStart: ZOD-066 lists the remaining
 camera, task, banner, mutable-operand and EventEnd prerequisites.
+
+### ZOD-072 — Define deterministic event task lifetimes and barrier contract
+
+**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-066, ZOD-071
+
+**Scope:** Trace E5's yield-before-check, running-task scan and task lifetimes for
+one synthetic proof using the selected BattleStart task kinds. Separate camera,
+dark-screen transition/hold and condition-display completion from whole-event
+completion. Specify an FFT-owned immutable task state and explicit start/complete/
+cancel or acknowledgement protocol before implementing any presentation worker.
+
+**Acceptance criteria:** Pin source/callers and distinguish task kind from instance,
+multiple matching tasks, mandatory first yield even when none run, deterministic
+tick/update ordering and the dark-screen 54/55 transition. Define budgets, stable
+identities, duplicate/stale/unknown completion handling and atomic rejection. Provide
+independently authored pending/complete/empty-task and failure/replay expectations,
+then one bounded implementation child. Preserve existing conditional/timed profiles,
+Core-to-Content independence and pure simulation. No full PS1 scheduler, worker
+callbacks, clock/GPU polling, original event export or EventEnd implementation.
 
 ## Authoring, extensions, and later goals
 
@@ -1066,8 +1096,9 @@ resolution. Simulation results remain unchanged; movie enhancement remains separ
 **Type:** Epic · **Priority:** P4 · **Status:** Needs breakdown · **Depends on:** ZOD-045, ZOD-049
 
 **Owner's goal:** Fix selected outstanding bugs from the original game much later.
-No bug list or correction semantics have been selected; this does not change the
-current implementation queue or original compatibility target.
+Collect reports and candidate corrections in the [original bug catalog](KNOWN_BUGS.md).
+Individual fixes and correction semantics remain unselected; this does not change
+the current implementation queue or original compatibility target.
 
 **Scope:** Once each affected system has a stable compatibility baseline, select
 individual bugs and create bounded source-traced correction tickets. Corrections

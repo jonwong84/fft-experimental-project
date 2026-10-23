@@ -24,6 +24,8 @@ event, EntryEdit binary or independent semantic oracle was run for this mileston
   owns immutable prepared records, strict JSON validation and hash-verified
   `LooseAssetStore` loading in Content. No original parser enters Content/Client.
   No project reference, package lock, save schema or Zodiac API changes.
+  ZOD-071 separately adds [timed-profile admission and projection](../behavior/timed-event-waits.md);
+  the conditional profile still rejects F1 and its serialized shape is unchanged.
 
 For an **authored synthetic** block, the preparation flow is:
 

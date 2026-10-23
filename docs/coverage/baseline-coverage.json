@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-23",
   "edition": "SCUS-94221",
-  "managedCommit": "0e7a09c",
+  "managedCommit": "de040e5",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,9 +11,9 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 1057,
-    "source": "docs/behavior/conditional-event-execution.md",
-    "runForThisInventory": false
+    "passed": 1105,
+    "source": "docs/behavior/timed-event-waits.md",
+    "runForThisInventory": true
   },
   "statusDefinitions": {
     "partial": "A stated subset exists; full row remains open.",
@@ -1086,7 +1086,7 @@
       "ownerTicket": "ZOD-040",
       "ownerArea": "FFT campaign/application",
       "status": "partial",
-      "currentScope": "ZOD-064 prepares authored raw/processed blocks; ZOD-065 projects validated Content records into a pure Core-owned conditional-event executor with immutable state/traces, replay and atomic arithmetic/budget rejection. No retail event or scene/campaign lifecycle executes. ZOD-066 traces verified original event 401: fallback activation, all 13 opcode kinds and EventEnd continuation; structural inspection only.",
+      "currentScope": "ZOD-064 prepares authored raw/processed blocks; ZOD-065 projects validated Content records into a pure Core-owned conditional-event executor with immutable state/traces, replay and atomic arithmetic/budget rejection. No retail event or scene/campaign lifecycle executes. ZOD-066 traces verified original event 401: fallback activation, all 13 opcode kinds and EventEnd continuation; structural inspection only. ZOD-071 adds a separate non-tutorial speed-one timed profile with immutable waits, explicit ticks, exact resumption and atomic failures; synchronous capability remains unchanged.",
       "referenceSources": [
         {
           "path": "src/battle/event/interpreter.c",
@@ -1115,6 +1115,10 @@
         {
           "path": "src/event/attack/scenario_setup.c",
           "inspection": "ZOD-066 traces selected entry gates/finish override; no complete original encounter reachability catalog."
+        },
+        {
+          "path": "src/lib/thread/scheduler.c",
+          "inspection": "ZOD-071 traces scoped signed-count yield helper; native ticks are explicit scheduler resumptions, not full PS1 scheduling equivalence."
         }
       ],
       "evidenceDocs": [
@@ -1122,7 +1126,8 @@
         "docs/development/prepared-scenario-event.md",
         "docs/behavior/conditional-event-execution.md",
         "docs/architecture/zod-066-battle-start-event.md",
-        "docs/evidence/events/battle-start-0401.json"
+        "docs/evidence/events/battle-start-0401.json",
+        "docs/behavior/timed-event-waits.md"
       ],
       "implementationPaths": [
         "src/Fft.AssetTool/ScenarioBlockInspector.cs",
@@ -1130,7 +1135,10 @@
         "src/Fft.Content/Events/PreparedScenarioEvent.cs",
         "src/Fft.Core/Events/ConditionalEventProgram.cs",
         "src/Fft.Core/Events/ConditionalEventState.cs",
-        "src/Fft.Core/Events/ConditionalEventExecutor.cs"
+        "src/Fft.Core/Events/ConditionalEventExecutor.cs",
+        "src/Fft.Core/Events/TimedEventProgram.cs",
+        "src/Fft.Core/Events/TimedEventState.cs",
+        "src/Fft.Core/Events/TimedEventExecutor.cs"
       ],
       "automatedChecks": [
         {
@@ -1152,6 +1160,18 @@
         {
           "path": "tests/Fft.Content.Tests/PreparedScenarioExecutionTests.cs",
           "scope": "Authored hash-verified prepared file to Core projection/execution, unchanged schema, D0/D1/D4 landings; no original script/asset."
+        },
+        {
+          "path": "tests/Fft.Core.Tests/TimedEventExecutorTests.cs",
+          "scope": "Source-derived synthetic zero/one/60/max waits, sequential boundaries, batch replay, admission and atomic tick/instruction/arithmetic rejection."
+        },
+        {
+          "path": "tests/Fft.Content.Tests/PreparedTimedScenarioTests.cs",
+          "scope": "Independent timed fixture traces, explicit profile isolation, strict admission and hash-verified prepared loading without original data."
+        },
+        {
+          "path": "tests/Fft.AssetTool.Cli.Tests/TimedScenarioEventExporterTests.cs",
+          "scope": "Signed synthetic F1 decode, raw/processed boundary/hash agreement, profile/unsupported gates and D0/D4 wait landing."
         }
       ],
       "manualCheckpoint": {
@@ -1159,11 +1179,11 @@
         "procedure": "Capture one controlled branch/dialogue event with explicit initial state and timing."
       },
       "openQuestions": [
-        "Original event-401 reachability/timed observations, full camera/task/banner/operand/lifecycle support, other event activation paths, packed text, wider arithmetic/RNG and original equivalence remain unverified."
+        "E5 task lifetime/completion protocol, original event-401 observations/reachability, camera/banner/operand mutation, EventEnd, tutorial/speed-changing waits, wider arithmetic/RNG and original equivalence remain open."
       ],
-      "nextAction": "Implement ZOD-071's explicit-tick non-tutorial frame-wait proof; use ZOD-066 prerequisites and controlled original observations before enabling a retail event.",
+      "nextAction": "Define deterministic typed task lifetimes/barriers in ZOD-072 before implementing E5; original playback still requires all ZOD-066 worker/lifecycle prerequisites and observations.",
       "followUpTickets": [
-        "ZOD-071"
+        "ZOD-072"
       ]
     },
     {

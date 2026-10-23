@@ -143,7 +143,8 @@ Engine 24 and Client 98. This adds 45 cases to the previous 1,012-test baseline.
 
 ZOD-066 now [traces original common BattleStart](../architecture/zod-066-battle-start-event.md),
 including activation, every opcode and completion prerequisites. It selects
-ZOD-071's explicit-tick frame wait as the next bounded addition; original playback
-still requires camera/task/banner/EventEnd capabilities.
+ZOD-071's [separate timed profile](timed-event-waits.md) now implements that bounded
+frame wait; this synchronous profile remains unchanged. Original playback still
+requires camera/task/banner/EventEnd capabilities.
 No silent instruction skipping or bulk interpreter port is justified by this proof.
 ZOD-068's synthetic campaign save service remains a separate deferred lane.

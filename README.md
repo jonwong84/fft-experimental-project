@@ -23,7 +23,7 @@ See the [architecture overview](docs/architecture/overview.md) and [ADR 0004](do
 - **Playable synthetic battle:** control both units with mouse or keyboard; select, inspect legal moves/targets, move, attack, wait, advance turns and restart. HP, choices, rejections and the first-KO result are visible. [Controls and validation](docs/development/playable-battle.md).
 - **Deterministic headless battle:** the same supported scenario runs through typed commands, with reproducible state/RNG results and replay checks. [Scenario and rules](docs/behavior/two-unit-battle-scenario.md).
 - **Bounded save/load proof:** versioned snapshots restore all thirteen authored checkpoints against selected definitions and continue with identical state/events. Strict validation, synthetic migration and safe file replacement are tested. [Save contract and headless check](docs/development/two-unit-battle-saves.md).
-- **Bounded synthetic event:** prepare/load one authored PS1-format conditional event and execute it through pure FFT transitions with immutable state/traces, replay and atomic arithmetic/budget rejection. [Decoder](docs/development/prepared-scenario-event.md) and [execution limits](docs/behavior/conditional-event-execution.md).
+- **Bounded synthetic events:** prepare/load authored PS1-format conditional events and execute them through pure FFT transitions. A separate timed profile adds explicit-tick waits, immutable suspension/resumption, replay and atomic failures. [Decoder](docs/development/prepared-scenario-event.md), [conditional execution](docs/behavior/conditional-event-execution.md) and [wait contract](docs/behavior/timed-event-waits.md).
 - **Prepared original scene:** MAP003 and a held Chocobo pose render from prepared files with a fixed authored camera. Per-polygon palettes, native terrain placement and sprite piece order are preserved; lighting and depth behavior use documented approximations. [Scene guide and comparison limits](docs/development/prepared-scene.md).
 - **Offline asset preparation:** verified ordinary-file extraction, bounded sprite/map conversion, hash-verified prepared loading and narrow typed content-package validation. [Map preparation](docs/development/prepared-map-slice.md), [sprite-pose preparation](docs/development/prepared-sprite-pose.md), [content packages](docs/architecture/zod-016-content-packages.md).
 
@@ -53,7 +53,7 @@ dotnet run --project src/Fft.Client -c Release --no-build --no-restore -- --scen
 dotnet run --project src/Fft.Client -c Release --no-build --no-restore -- --window
 ```
 
-The latest recorded implementation milestone, ZOD-065, passed locked restore, a Release build with zero warnings and **1,057 tests** across Engine, Core, Content, AssetTool, AssetTool CLI and Client. Windows GPU/UI checks are separate opt-in checks; physical input timing, mixed-DPI behavior and clean-machine validation have remaining manual follow-ups. See the [playable check](docs/development/playable-battle.md#automated-windows-check) and [synthetic host checks](docs/development/windows-synthetic-host.md).
+The latest recorded implementation milestone, ZOD-071, passed locked restore, a Release build with zero warnings and **1,105 tests** across Engine, Core, Content, AssetTool, AssetTool CLI and Client. Windows GPU/UI checks are separate opt-in checks; physical input timing, mixed-DPI behavior and clean-machine validation have remaining manual follow-ups. See the [playable check](docs/development/playable-battle.md#automated-windows-check) and [synthetic host checks](docs/development/windows-synthetic-host.md).
 
 ZOD-034 adds an independent Windows CI job alongside Linux/Sonar, downloadable test
 reports and a private self-contained client folder. Local bundle/headless and
@@ -97,6 +97,7 @@ Repeated `--addon <path>` options validate explicitly selected additions against
 - [Project plan](PROJECT_PLAN.md): complete intended scope, phases and unresolved decisions.
 - [Architecture](docs/architecture/overview.md) and [ADRs](docs/adr/): ownership and significant design choices.
 - [Backlog](docs/BACKLOG.md): current work order, dependencies and acceptance criteria.
+- [Original bug catalog](docs/KNOWN_BUGS.md): reports and proposed corrections for later ZOD-070 work.
 - [Baseline coverage inventory](docs/coverage/README.md): current capability, source/evidence,
   tests, manual checkpoints and unresolved gaps across the original-game target.
 - [Event/script investigation](docs/architecture/zod-040-event-script-investigation.md):

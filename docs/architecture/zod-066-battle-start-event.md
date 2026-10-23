@@ -235,6 +235,14 @@ keep instruction and tick budgets separate. Preserve the synchronous conditional
 profile and battle save schema. Even after that proof, this original event still
 requires every other capability above; F1 is not permission to skip them.
 
+## Implementation follow-up
+
+ZOD-071 now implements the [separate explicit-tick wait proof](../behavior/timed-event-waits.md)
+with signed counts, immutable suspension, exact tick boundaries and atomic errors.
+The investigation and validation below remain historical; no original BattleStart
+playback or missing worker/lifecycle behavior was added. ZOD-072 scopes the next
+task-lifetime/barrier contract.
+
 ## Verification and completion boundary
 
 Whole-image/CUE identity, reference inventory/archive hash, direct sector payload

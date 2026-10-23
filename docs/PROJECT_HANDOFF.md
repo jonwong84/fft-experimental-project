@@ -49,10 +49,16 @@ Latest locked restore, zero-warning Release build and all **1,057 tests** passed
 now pins verified original event 401, all 13 opcode kinds, fallback selection and
 EventEnd continuation to normal battle. Inspection is complete; original playback
 requires concurrent cameras, mutable operands, banners, task barriers and lifecycle
-support. No original observation/event-entry state was identified. Next event
-slice: ZOD-071's explicit-tick frame wait; ZOD-068's synthetic world-checkpoint
-service remains independent/deferred, and ZOD-069's UI follows service/navigation.
-ZOD-066 is research only and does not rerun the 1,057-test suite. Original captures (ZOD-026), comparison
+support. No original observation/event-entry state was identified. ZOD-071 now
+implements [explicit-tick frame waits](behavior/timed-event-waits.md) in a separate
+non-tutorial speed-one profile: signed counts 0..32,767, immutable pending state,
+RunUntilBlocked/AdvanceTicks, exact resume boundaries, batch replay and atomic
+arithmetic/instruction/tick rejection. Zero and sequential waits, maximum counts,
+profile isolation and prepared-file loading are covered. Latest locked restore,
+zero-warning Release build and all **1,105 tests** passed (48 new). Conditional
+behavior, battle save schemas, project references and package locks remain intact.
+Next event step: ZOD-072 task-lifetime/barrier contract; ZOD-068's synthetic world
+checkpoint service remains independent, and ZOD-069's UI follows service/navigation. Original captures (ZOD-026), comparison
 checkpoints (ZOD-033), and remote CI/clean-machine evidence (ZOD-034) remain open.
 MAP003's static scene does not broaden M1
 combat's height-10 domain. Gameplay is limited to the synthetic local two-unit battle;
