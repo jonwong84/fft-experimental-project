@@ -17,7 +17,7 @@
 - `Fft.Core` contains common identifiers/value types, map data types, a typed battle transition proof, and flat-grid movement policies (one prototype and one bounded terrain-cost slice).
 - `Fft.Content` loads a versioned manifest and hash-verified loose files by logical asset ID. It references `Fft.Core`.
 - `Fft.AssetTool` and `Fft.AssetTool.Cli` handle offline image inventory, extraction, and a narrow unit `.SPR` parsing/decoding proof. The CLI composes the tools.
-- `Fft.Client` is a console composition proof. It can load a prepared asset; it is not yet an interactive game client.
+- `Fft.Client` is a console composition proof. It can load a prepared asset and run the deterministic synthetic two-unit battle; it is not yet an interactive game client.
 - Tests exist for the current projects. No complete campaign runtime, graphics/audio backend, input loop, or save system exists yet.
 
 The architecture should evolve from this shape without splitting projects just for conceptual neatness. Add a new assembly when it creates a useful dependency boundary or an independently testable responsibility.
@@ -25,6 +25,11 @@ The architecture should evolve from this shape without splitting projects just f
 The completed [ZOD-001 ownership audit](zod-001-type-ownership.md) classifies every current Core type and recommends a bounds-only flat cardinal range calculation as the first engine slice, accessed through an FFT-owned facade. This is a documented extraction plan; the current assemblies and behavior remain unchanged.
 
 Implementation update (2026-10-22): ZOD-007/008 now provide that bounds-only engine calculation and FFT facade integration. ZOD-009's [Relay sample](../../samples/Relay/README.md) runs the calculation with invented content, and a build target enforces the current engine project-reference boundary. These satisfy the bounded M0 engine demonstration; the broader architecture below remains a target, not implemented battle/campaign functionality.
+
+Implementation update (2026-10-23): [ZOD-023](../behavior/two-unit-battle-scenario.md) completes bounded
+M1 headless battle integration with an explicit synthetic first-KO objective, immutable restart/replay and
+terminal-command rejection. FFT owns the lifecycle and rule composition, Content owns the invented setup/script,
+and Client owns console output. Full FFT combat/campaign and Windows presentation remain separate work.
 
 ## Target dependency shape
 

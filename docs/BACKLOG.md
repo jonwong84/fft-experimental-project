@@ -40,10 +40,10 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
-**Current focus (2026-10-23):** ZOD-022's bounded sword attack/HP/KO transition is complete,
-following ZOD-058's retail representation and ZOD-024's rendering recommendation. Next complete
-ZOD-023's bounded start-to-result scenario. ZOD-025 can proceed independently with the synthetic
-Windows host and ADR 0005's manual graphics/input/DPI gates, provided production files have distinct ownership.
+**Current focus (2026-10-23):** ZOD-023 completes the bounded M1 headless start-to-result scenario.
+Next create ZOD-025's synthetic Windows host using ADR 0005, with its manual graphics/input/DPI gates.
+Independent asset/reference investigations can proceed in parallel when the owner selects their scope;
+give each agent distinct files and acceptance criteria. M1 does not imply complete FFT combat or presentation.
 The numbered queue below records the completed foundation sequence.
 
 1. **ZOD-001:** Audit current type ownership and select the first real engine slice.
@@ -406,7 +406,16 @@ No retail combat equivalence is claimed without executing ZOD-022 and checking a
 
 ### ZOD-023 — Complete a reproducible two-unit battle scenario
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-010, ZOD-022
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-010, ZOD-022
+
+**Result:** [Two-unit headless battle](behavior/two-unit-battle-scenario.md) adds an immutable authored
+definition, pure command/result lifecycle, explicit first-KO terminal rule and restart via the original setup.
+The synthetic content/script composes adjacent-step movement, ordinary turns, both units' attacks and Wait.
+The client launches it with `--scenario two-unit-battle`. Two full CLI transcripts match, ending at tick 20
+with first-unit victory, RNG word 2473755763 and 22 draws. Tests compare full replay snapshots/events,
+invalid-command recovery, terminal rejection, setup preflight and either winner. This satisfies bounded M1;
+no original victory logic, AI, death scheduling or complete FFT compatibility is claimed.
+Windows locked restore, zero-warning Release build and all 632 solution tests passed on 2026-10-23.
 
 **Scope:** Define a tiny battle objective and run a complete start-to-result sequence with the supported move/action/wait rules. Label an invented objective as a scenario rule unless original victory behavior has been traced.
 

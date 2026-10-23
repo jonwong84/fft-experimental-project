@@ -106,7 +106,9 @@ public static class AttackBattleSimulator
     }
 
     public static AttackBattleResult Advance(AttackBattleSnapshot state) => Transition(state, () => TurnBattleSimulator.Advance(state.TurnBattle), allowDead: false);
-    public static AttackBattleResult Move(AttackBattleSnapshot state, MoveUnitCommand command) => Transition(state, () => TurnBattleSimulator.Move(state.TurnBattle, command), allowDead: false);
+    public static AttackBattleResult Move(AttackBattleSnapshot state, MoveUnitCommand command,
+        BattleMovementPolicy movementPolicy = BattleMovementPolicy.FlatGridPrototype) =>
+        Transition(state, () => TurnBattleSimulator.Move(state.TurnBattle, command, movementPolicy), allowDead: false);
     public static AttackBattleResult Wait(AttackBattleSnapshot state, BattleUnitId unitId) => Transition(state, () => TurnBattleSimulator.Wait(state.TurnBattle, unitId), allowDead: true);
     public static AttackBattleResult ConfirmAct(AttackBattleSnapshot state, BattleUnitId unitId) => Transition(state, () => TurnBattleSimulator.ConfirmAct(state.TurnBattle, unitId), allowDead: false);
 
