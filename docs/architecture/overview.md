@@ -28,6 +28,20 @@ Implementation update (2026-10-22): ZOD-007/008 now provide that bounds-only eng
 
 ## Target dependency shape
 
+### Product boundaries agreed with the owner
+
+The intended product has three conceptual parts:
+
+- **Zodiac Engine:** reusable game-development facilities, with deterministic simulation separated from presentation, input and authoring adapters.
+- **FFT framework:** FFT rules, runtime systems, definition schemas, validators and supported script/action/condition execution. Existing `Fft.Core` and parts of `Fft.Content` implement this responsibility today.
+- **FFT content:** original or authored jobs, abilities, equipment, maps, campaigns, event scripts, menu declarations, graphics and music, supplied through prepared content packages.
+
+These are ownership boundaries, not a decision to create three assemblies or rename current namespaces. `Zodiac.Engine` remains the engine name/root; FFT remains independently rooted in `Fft.*`. Immutable definitions and schema code belong to the framework, while particular records belong to content. Running battle/campaign state is distinct from both. A new game can use Zodiac directly with its own rules, or use the FFT framework when it wants those mechanics.
+
+Content management should eventually support adding, replacing, organizing, validating and previewing music, graphics, maps, scripted events and conditions. Packages associate records/assets by stable logical IDs and explicit dependencies; import provenance and original baseline content remain preserved. Original event decoding, deterministic interpretation, authoring UI and arbitrary custom executable behavior remain separate decisions (ZOD-040/043/047/048/049/050).
+
+A menu entry can be declarative content selecting a framework-defined typed action and supported availability condition. Adding a title option for an existing StartCampaign action should require only content; a new operation also requires its handler. Package contributions need explicit target menus, stable entry IDs, deterministic placement and conflict/missing-reference diagnostics. This is a future contract investigated by ZOD-062, not an implemented menu or general scripting API.
+
 ```mermaid
 flowchart TD
     Client[Windows client and composition root]
@@ -115,6 +129,12 @@ Commands express requested actions; the simulation validates them. Events descri
 - Platform adapters own Windows windowing, graphics, audio, controller/keyboard input, file locations, and OS timing. Exact libraries are deferred until a rendering proof identifies requirements.
 - Presentation translates input into application commands and turns state/events into view models or render submissions. It never writes battle state directly.
 - Keep the simulation executable headlessly in tests and command-line tools.
+
+The owner also wants native Windows presentation/input enhancements investigated: widescreen, higher-resolution rendering/textures, keyboard/mouse and controller support. These are future requirements (ZOD-059/060/061/063), with stack capabilities considered during ZOD-024. The higher-resolution video goal means rendering the game view at a selectable resolution, for example 1920 x 1080 on a landscape display (the owner's 1080 x 1920 example is assumed to have dimensions reversed). It does not request movie replacement/upscaling. Widescreen camera/viewport and UI layout, internal rendering resolution and source/replacement texture detail remain separate concerns.
+
+Higher-resolution mode should rasterize supported scene geometry at the selected internal resolution rather than only enlarge a completed low-resolution frame. Original sprites/textures retain their source detail and use an explicit sampling policy; replacement artwork is a separate content capability and is not a prerequisite for higher-resolution rendering. Resolution and aspect ratio are independent settings: an original-aspect presentation may use letterboxing/pillarboxing, while widescreen requires the camera/UI work in ZOD-059.
+
+Presentation options should preserve gameplay outcomes for the same logical commands and seed. Distinguish the original presentation/reference profile from explicitly selected enhancements and replacement asset packs. Device adapters translate keyboard, mouse and controller operations into the same application commands; remapping, prompts and navigation belong outside deterministic simulation. Higher output resolution alone does not create new source texture or movie detail.
 
 ### Extensions and The Lion War
 

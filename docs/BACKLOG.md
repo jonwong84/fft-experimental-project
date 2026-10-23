@@ -395,6 +395,10 @@ No retail combat equivalence is claimed without executing ZOD-022 and checking a
 
 **Acceptance criteria:** An ADR records the recommended stack, tested SDK/runtime compatibility, license/deployment needs, limitations, and a minimal window/texture experiment if necessary to resolve a decision. Game simulation stays headless. Editor framework selection is a separate decision unless evidence supports sharing it.
 
+**Later-goal inputs:** Assess support for widescreen/resize/high-DPI viewports, selectable internal resolution,
+replacement texture handling, keyboard/mouse and controllers. These capabilities inform stack selection;
+ZOD-059/060/061 own the later feature work and do not expand this spike into a full implementation.
+
 ### ZOD-025 — Create the Windows host with a synthetic battle view
 
 **Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-024
@@ -583,11 +587,16 @@ No retail combat equivalence is claimed without executing ZOD-022 and checking a
 
 **Acceptance criteria:** Inspect a local original definition, create an authored copy/add-on, change a supported field, receive field-specific validation, export, and use it in the bounded scenario; read-only baseline source and authored changes have clear provenance. Unsaved changes and failed export are handled predictably. The editor uses shared validators/exporters and never reimplements combat formulas or edits the BIN.
 
-### ZOD-048 — Expand authoring to flags, formulas, text, sprites, animation, maps, and scripts
+### ZOD-048 — Expand authoring to flags, formulas, text, graphics, scripts, conditions, and audio
 
 **Type:** Epic · **Priority:** P4 · **Status:** Needs breakdown · **Depends on:** ZOD-047
 
 **Scope:** Add focused editing/preview workflows as the corresponding definitions and decoders mature. Named flags show verified meanings and unknown bits; formula parameters distinguish data from executable behavior; text has font/layout preview; sprite/animation/map/script editing uses established format and validation APIs.
+
+**Owner's content-management goals:** Add, modify and organize music, graphics, scripted game events and
+conditions as supported formats mature. Include logical-ID/reference inspection, asset association, shared
+validation, package provenance and appropriate previews. Coordinate audio with ZOD-043, event interpretation
+with ZOD-040 and package management with ZOD-049. Menu/action/condition declarations are scoped by ZOD-062.
 
 **Acceptance criteria:** Each selected editor round-trips supported authored data, validates references, supports recoverable editing, and previews through the same runtime/decoder semantics where practical. Complete this incrementally by content category. A general visual editor for every domain is a future goal rather than a prerequisite for the original game.
 
@@ -630,6 +639,74 @@ No retail combat equivalence is claimed without executing ZOD-022 and checking a
 **Scope:** Extend the save proof to party/progression/equipment, campaign flags/time/world state, supported battle checkpoints, settings as appropriate, and required content/profile references. Define migration and backup handling as formats change.
 
 **Acceptance criteria:** Save/continue covers the required campaign paths and does not lose flags, inventory, progression, or RNG state relevant to the supported checkpoint; incomplete/corrupt/incompatible saves fail with useful diagnostics and preserve recoverable data; migrations have synthetic regression fixtures. Interoperability with original memory-card saves remains a separately scoped optional feature.
+
+### ZOD-059 — Add a widescreen presentation mode
+
+**Type:** Story · **Priority:** P4 · **Status:** Waiting · **Depends on:** ZOD-025, ZOD-031, ZOD-033
+
+**Scope:** Add an explicitly selected widescreen viewport/camera and menu/HUD layout mode while retaining
+the original presentation/reference profile. Decide how battle scenes, fixed layouts and cinematics fit.
+
+**Acceptance criteria:** Supported aspect ratios render with correct geometry, picking and UI placement;
+resize does not stretch the scene or alter simulation coordinates/ranges. Original-profile comparisons
+remain available. The same logical commands and seed produce identical gameplay outcomes across modes;
+framing and unsupported scenes have documented decisions and manual checks.
+
+### ZOD-060 — Add selectable game-view rendering resolution
+
+**Type:** Story · **Priority:** P4 · **Status:** Waiting · **Depends on:** ZOD-031, ZOD-033
+
+**Scope:** Implement selectable internal rendering resolution for the game view, with 1920 x 1080 as an
+example landscape target. The owner means rendered gameplay, not enhanced prerecorded movies. Distinguish
+scene rasterization, output/window scaling, original texture/sprite detail and aspect ratio.
+
+**Acceptance criteria:** Supported scene geometry renders at the chosen internal resolution rather than
+only scaling a completed low-resolution frame. Scene alignment, sampling/transparency, picking and UI
+readability remain correct; original assets and presentation profile remain supported. Rendering resolution
+can vary independently of aspect-ratio mode, with explicit viewport/scaling behavior. Original sprites and
+textures retain their source detail unless separate replacements are selected. Simulation results remain
+unchanged. No replacement asset pack or movie enhancement is required by this ticket.
+
+### ZOD-061 — Complete native Windows keyboard, mouse and controller interaction
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting · **Depends on:** ZOD-032, ZOD-042
+
+**Scope:** Extend the initial battle input proof into consistent keyboard/mouse and controller navigation
+across supported game screens, using device-independent application actions and configurable bindings.
+
+**Acceptance criteria:** Battle and menu workflows are operable through the supported devices; mouse
+picking respects camera/viewport transforms, and controller navigation has predictable focus. Binding
+conflicts, device changes, prompts and persistence have explicit behavior. Different devices can generate
+the same logical command replay without device APIs, polling timing or input state entering simulation.
+Record Windows manual checks separately from headless tests.
+
+### ZOD-062 — Design extensible menu entries and availability conditions
+
+**Type:** Design task · **Priority:** P4 · **Status:** Waiting · **Depends on:** ZOD-040, ZOD-049
+
+**Scope:** Specify declarative menus/contributions, typed action references and supported read-only
+availability conditions. Use adding a title-screen campaign option as the bounded example; align with the
+framework's event/condition semantics without introducing a general-purpose executable plugin system.
+
+**Acceptance criteria:** A synthetic package contributes an entry targeting an existing typed action;
+stable IDs, placement/ordering, localized labels, action arguments and condition references are specified.
+Duplicate entries, missing targets/handlers and conflicting/cyclic placement have deterministic diagnostics.
+Original content/profile behavior remains explicit. Distinguish adding an entry from implementing a new
+action, and deterministic gameplay conditions from presentation/device availability. Record schema/version
+and validation rules before creating implementation child tickets.
+
+### ZOD-063 — Support validated higher-detail graphic replacements
+
+**Type:** Story · **Priority:** P4 · **Status:** Waiting · **Depends on:** ZOD-031, ZOD-033, ZOD-049
+
+**Scope:** Add higher-detail texture/sprite replacements through selected content packages, independently
+of game-view rendering resolution. Use existing logical asset identities and shared authoring validation.
+
+**Acceptance criteria:** Replacement assets resolve deterministically with explicit dimension/palette/frame
+compatibility rules and package/version identity. Sampling, frame alignment and transparency preserve the
+supported scene semantics. Invalid/missing replacements have diagnostics/fallback policy; original assets
+remain available. Visual comparisons and manual checks distinguish new artwork from higher output
+resolution. Simulation results remain unchanged; movie enhancement remains separately scoped.
 
 ### ZOD-054 — Decide local packaging, versioning, and optional publishing
 
