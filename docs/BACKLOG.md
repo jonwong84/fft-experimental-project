@@ -61,8 +61,10 @@ locked restore, zero-warning Release build and all 1,012 tests pass. ZOD-067 now
 traces campaign save families, checkpoints and the two unsaved RNG lifecycles.
 ZOD-065 now executes the bounded conditional event with immutable instruction
 state/traces, replay, explicit arithmetic limits and atomic rejection on failures.
-Locked restore, zero-warning Release build and all 1,057 tests pass. Next: ZOD-066's
-real-event activation/completion investigation. ZOD-068's synthetic world-checkpoint
+Locked restore, zero-warning Release build and all 1,057 tests pass. ZOD-066 now
+traces verified common BattleStart event 401, its fallback activation and EventEnd
+return to battle. Original observations and its required runtime capabilities are
+still absent. Next event slice: ZOD-071's explicit-tick frame-wait proof. ZOD-068's synthetic world-checkpoint
 service is an independent deferred lane; ZOD-069's native Save/Load UI waits on that
 service and minimal client navigation. Original campaign support remains open.
 M2 is not complete yet.
@@ -809,7 +811,16 @@ FFT opcodes/flags stay out of Zodiac.
 
 ### ZOD-066 — Trace one real event's activation and completion prerequisites
 
-**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-064, ZOD-065
+**Type:** Spike · **Priority:** P2 · **Status:** Complete for selected source trace; original observation pending · **Depends on:** ZOD-064, ZOD-065
+
+**Result (2026-10-23):** [BattleStart investigation](architecture/zod-066-battle-start-event.md)
+selects event 401 (`0x191`) from a reverified BIN/archive, with pinned block hash
+and summarized evidence metadata. Python and the managed inspector agree on 31
+records/13 opcodes. The menu fallback entry path, concurrent camera/fade/banner
+work and EventEnd return to normal battle are traced. No matched original capture
+or event-entry state was available; no semantic playback or runtime change.
+ZOD-071 selects one non-tutorial explicit-tick F1 wait proof; other capabilities
+remain required before original playback. The 1,057-test baseline was not rerun.
 
 **Scope:** Select one small original event from a verified local TEST.EVT import.
 Record numeric event ID/hash, the condition/entry path, every used opcode and the
@@ -890,6 +901,29 @@ data. Cancel, stale overwrite, access errors and load failure preserve the sessi
 Record keyboard/mouse/controller and Windows manual checks separately from pure
 state tests. Keep original save availability distinct from any future save-anywhere
 feature; no PS1 card formatting/browser emulation is required.
+
+### ZOD-071 — Prove one deterministic non-tutorial event frame wait
+
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-065, ZOD-066
+
+**Scope:** Add F1 wait semantics to a separately identified timed synthetic profile,
+using immutable pending-wait state and explicit caller-supplied scheduler ticks.
+Start with non-tutorial speed 1 and counts 0..32,767; preserve signed-halfword
+encoding and document/reject negative counts as outside the proof domain. Trace
+scheduler entry/resume ordering before implementing. Keep the synchronous
+conditional profile, battle save schema and one-way Content-to-Core dependency.
+No wall-clock sleeps, renderer timing, E5 task barriers, camera workers, event
+speed changes, EventEnd, original export or full PS1 cooperative scheduler.
+
+**Acceptance criteria:** Independently authored fixtures cover zero, one, 60 and
+maximum counts, sequential waits, arithmetic before/after waiting, unchanged inputs,
+identical tick replay, suspension versus exit, post-exit rejection, negative/
+truncated/unsupported input and budget failures. Define the exact first consumed
+tick and resumption boundary, with separate instruction/tick limits and atomic
+rejection per call. Reject absent capabilities before applying any state; do not
+silently skip original instructions. Existing conditional event regressions remain
+unchanged. This does not enable original BattleStart: ZOD-066 lists the remaining
+camera, task, banner, mutable-operand and EventEnd prerequisites.
 
 ## Authoring, extensions, and later goals
 

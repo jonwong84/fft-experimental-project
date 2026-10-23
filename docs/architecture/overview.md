@@ -32,6 +32,9 @@ Its family-level entries are not a complete original record/encounter catalog.
   instruction state/traces and pure bounded Step/Run execution. Content-to-Core
   dependencies remain one-way. [Execution limits](../behavior/conditional-event-execution.md)
   exclude EventEnd, scene lifecycle, timing, RNG and campaign integration.
+  [ZOD-066](zod-066-battle-start-event.md) traces original common BattleStart and
+  names the missing camera/task/banner/lifecycle capabilities; it adds no playback.
+  Original camera operand mutation must remain distinct from immutable definitions.
 - `Fft.AssetTool` and `Fft.AssetTool.Cli` handle offline image inventory, extraction, narrow unit `.SPR`
   decoding, selected SHP/SEQ pose preparation and bounded GNS/mesh/indexed-texture conversion.
   The CLI composes the tools; no full animation interpreter exists.

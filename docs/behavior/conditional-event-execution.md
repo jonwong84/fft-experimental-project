@@ -141,7 +141,9 @@ Full locked restore passed, the Release build reported zero warnings/errors,
 and all **1,057 tests** passed: Core 332, Content 336, AssetTool 164, CLI 103,
 Engine 24 and Client 98. This adds 45 cases to the previous 1,012-test baseline.
 
-Next, ZOD-066 must select a verified original event and trace its activation,
-every opcode and completion prerequisites before adding another semantic slice.
+ZOD-066 now [traces original common BattleStart](../architecture/zod-066-battle-start-event.md),
+including activation, every opcode and completion prerequisites. It selects
+ZOD-071's explicit-tick frame wait as the next bounded addition; original playback
+still requires camera/task/banner/EventEnd capabilities.
 No silent instruction skipping or bulk interpreter port is justified by this proof.
 ZOD-068's synthetic campaign save service remains a separate deferred lane.

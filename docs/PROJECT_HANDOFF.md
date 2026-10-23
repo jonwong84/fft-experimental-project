@@ -45,9 +45,14 @@ Core-owned immutable program/state and pure Step/Run transitions, with Content
 projection, exact traces/replay and atomic arithmetic/budget rejection. Domain:
 variables 0..3 with values 0..65,535; no EventEnd, scene lifecycle or save integration.
 Latest locked restore, zero-warning Release build and all **1,057 tests** passed
-(45 new). Next: ZOD-066's real-event activation/completion trace. ZOD-068's synthetic
-world-checkpoint service remains independent/deferred; ZOD-069's UI follows the
-service/navigation. Original captures (ZOD-026), comparison
+(45 new). ZOD-066's [BattleStart trace](architecture/zod-066-battle-start-event.md)
+now pins verified original event 401, all 13 opcode kinds, fallback selection and
+EventEnd continuation to normal battle. Inspection is complete; original playback
+requires concurrent cameras, mutable operands, banners, task barriers and lifecycle
+support. No original observation/event-entry state was identified. Next event
+slice: ZOD-071's explicit-tick frame wait; ZOD-068's synthetic world-checkpoint
+service remains independent/deferred, and ZOD-069's UI follows service/navigation.
+ZOD-066 is research only and does not rerun the 1,057-test suite. Original captures (ZOD-026), comparison
 checkpoints (ZOD-033), and remote CI/clean-machine evidence (ZOD-034) remain open.
 MAP003's static scene does not broaden M1
 combat's height-10 domain. Gameplay is limited to the synthetic local two-unit battle;

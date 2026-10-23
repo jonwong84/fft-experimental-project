@@ -1,0 +1,177 @@
+{
+  "format": "fft.event-source-analysis",
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "edition": "SCUS-94221",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "managedBase": "0e7a09c",
+  "evidenceKind": "verified-local-input-and-static-source",
+  "semanticExecutionPerformed": false,
+  "image": {
+    "localPath": "scratch/fft-clean-base-game.bin",
+    "bytes": 541315152,
+    "sha256": "29e63bb6d2e7b842fe87f7c0ee03b7076681c34bcc47095cca27ec53236bf4f9",
+    "cueLocalPath": "scratch/fft-clean-base-game.cue",
+    "layout": "single-track MODE2/2352 INDEX 01 00:00:00"
+  },
+  "archive": {
+    "localPath": "scratch/all-data-extraction/EVENT/TEST.EVT",
+    "isoPath": "EVENT/TEST.EVT",
+    "bytes": 4096000,
+    "lba": 3707,
+    "sha256": "107b109254ccbb150aca7baf336b632837b22e340677e2b9e746ac61b3de4405",
+    "referenceInventoryLocalPath": "scratch/fft-decomp-work/build/extracted/inventory.json",
+    "directVerifiedBinPayloadMatch": true
+  },
+  "event": {
+    "id": 401,
+    "hexId": "0x191",
+    "sourceName": "EVENT_ID_BATTLE_START",
+    "scene": "Battle",
+    "zeroBasedArchiveBlockIndex": true,
+    "archiveOffset": 3284992,
+    "firstLogicalLba": 5311,
+    "bytes": 8192,
+    "sha256": "a12ad52f48c2b6684993f196ead1721ecb8895cfd0f6690faed1a0d9ccca483f",
+    "encoding": "raw",
+    "textOffset": 207,
+    "entryOffset": 4,
+    "lastSearchSentinelOffset": 206,
+    "codeEndOffset": 207,
+    "instructionCountExcludingProcessedHeaderNops": 31,
+    "opcodeKinds": 13,
+    "inspectionComplete": true,
+    "textDecoded": false
+  },
+  "opcodeSummary": [
+    {
+      "opcode": "19",
+      "count": 6,
+      "operandBytes": 16
+    },
+    {
+      "opcode": "1c",
+      "count": 2,
+      "operandBytes": 1
+    },
+    {
+      "opcode": "1d",
+      "count": 1,
+      "operandBytes": 0
+    },
+    {
+      "opcode": "1e",
+      "count": 1,
+      "operandBytes": 0
+    },
+    {
+      "opcode": "4d",
+      "count": 1,
+      "operandBytes": 1
+    },
+    {
+      "opcode": "63",
+      "count": 3,
+      "operandBytes": 1
+    },
+    {
+      "opcode": "73",
+      "count": 3,
+      "operandBytes": 14
+    },
+    {
+      "opcode": "76",
+      "count": 1,
+      "operandBytes": 6
+    },
+    {
+      "opcode": "77",
+      "count": 1,
+      "operandBytes": 0
+    },
+    {
+      "opcode": "78",
+      "count": 2,
+      "operandBytes": 2
+    },
+    {
+      "opcode": "db",
+      "count": 1,
+      "operandBytes": 0
+    },
+    {
+      "opcode": "e5",
+      "count": 8,
+      "operandBytes": 2
+    },
+    {
+      "opcode": "f1",
+      "count": 1,
+      "operandBytes": 2
+    }
+  ],
+  "activation": {
+    "selector": "MENU_REQUEST_SCENARIO_CHECK fallback in request_dispatch",
+    "requires": [
+      "non-tutorial current event",
+      "player input mode",
+      "START option and idle event slot",
+      "g_scenario_event_active == 0",
+      "EVENT_SCRIPT_VAR_BATTLE_NOT_STARTED != 0",
+      "EVENT_SCRIPT_VAR_WORLD_DEBUG_BATTLE_STYLE == 0"
+    ],
+    "conditionChainSelectsThisPath": false,
+    "specificEncounterReachabilityObserved": false
+  },
+  "completion": {
+    "operation": "DB EventEnd",
+    "finishWord": 0,
+    "immediateScenarioRecheckExcludedByCommonIdRange": true,
+    "clearsBattleNotStarted": true,
+    "frameResult": "SCRIPT_EVENT_FRAME_NO_FINISH",
+    "ordinaryBattleContinuation": "turn_next_event_start; no next event/world route selected by this event"
+  },
+  "localArtifacts": {
+    "selectedBlock": "scratch/zod-066/event-0401.bin",
+    "decodedInspection": "scratch/zod-066/event-0401-inspection.json",
+    "candidateInventory": "scratch/zod-066/selection-index.json",
+    "verification": "scratch/zod-066/verification.json",
+    "managedHarness": "scratch/zod-066/Inspect.csproj",
+    "managedSummary": "scratch/zod-066/managed-inspection-summary.json"
+  },
+  "originalObservation": {
+    "status": "pending-controlled-original-or-emulator-observation",
+    "blocker": "No matched event-entry save/state, input log and timed original capture identified in checked artifacts; no original execution harness run. Managed client lacks camera/task/banner/EventEnd capabilities. Installed emulator availability not established.",
+    "captureLocalPath": null
+  },
+  "nextTicket": "ZOD-071",
+  "sourcePaths": [
+    "include/fft/script_variable.h",
+    "include/fft/script_instruction.h",
+    "include/fft/thread.h",
+    "src/battle/entry.c",
+    "src/battle/turn/controller.c",
+    "src/lib/menu/command_prompts.c",
+    "src/event/attack/scenario_setup.c",
+    "src/lib/event/scene/runtime.c",
+    "src/lib/event/scene/resources.c",
+    "src/lib/event/script/event_thread.c",
+    "src/lib/event/script/scene_commands.c",
+    "src/lib/event/script/control.c",
+    "src/battle/event/interpreter.c",
+    "src/lib/event/script/camera_fusion.c",
+    "src/lib/event/scene/menu_overlays.c",
+    "src/event/require/entry_conditions.c",
+    "src/event/require/entry_dark_screen.c",
+    "src/event/require/conditions.c",
+    "src/battle/event/frame.c",
+    "src/lib/event/script/scenario.c",
+    "src/lib/thread/scheduler.c",
+    "src/lib/event/scene/menu_sessions.c"
+  ],
+  "limits": [
+    "Opcode counts and framing do not prove semantic behavior or all archive slots valid/reachable.",
+    "Original script/operands/text and generated dumps remain ignored; this metadata is not a runtime event definition.",
+    "No synthetic export of original data, new opcode execution, campaign or EventEnd support."
+  ]
+}

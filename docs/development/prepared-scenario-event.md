@@ -136,6 +136,7 @@ Locked restore passed, the Release build reported zero warnings/errors, and all
 **1,012 tests** passed (Engine 24, Core 293, Content 330, AssetTool 164, CLI 103,
 Client 98). This adds 58 decoder/prepared-file cases to the previous 954 tests.
 A separate read-only agent review found no actionable correctness issues.
-Original activation/completion remains ZOD-066; general tools/authoring and retail
+ZOD-066 now [traces one original activation/completion path](../architecture/zod-066-battle-start-event.md)
+without enabling original playback; general tools/authoring and retail
 round-trips remain separate. Do not infer complete scripting, save integration or
 campaign support from this decoder.

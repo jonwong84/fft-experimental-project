@@ -101,5 +101,6 @@ Repeated `--addon <path>` options validate explicitly selected additions against
   tests, manual checkpoints and unresolved gaps across the original-game target.
 - [Event/script investigation](docs/architecture/zod-040-event-script-investigation.md):
   script families, a bounded conditional event, tool assessment and next decoder/executor slices.
+- [Original BattleStart trace](docs/architecture/zod-066-battle-start-event.md): verified event identity, activation, opcode dependencies and completion; original playback remains unsupported.
 - [Campaign save investigation](docs/architecture/zod-067-campaign-save-state.md): persistent fields, original save entry paths, RNG lifecycles and proposed native workflow.
 - [Project handoff](docs/PROJECT_HANDOFF.md): latest checkpoint followed by historical development context.

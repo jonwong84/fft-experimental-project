@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-23",
   "edition": "SCUS-94221",
-  "managedCommit": "6663c4d",
+  "managedCommit": "0e7a09c",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -13,7 +13,7 @@
   "lastRecordedTests": {
     "passed": 1057,
     "source": "docs/behavior/conditional-event-execution.md",
-    "runForThisInventory": true
+    "runForThisInventory": false
   },
   "statusDefinitions": {
     "partial": "A stated subset exists; full row remains open.",
@@ -1086,7 +1086,7 @@
       "ownerTicket": "ZOD-040",
       "ownerArea": "FFT campaign/application",
       "status": "partial",
-      "currentScope": "ZOD-064 prepares authored raw/processed blocks; ZOD-065 projects validated Content records into a pure Core-owned conditional-event executor with immutable state/traces, replay and atomic arithmetic/budget rejection. No retail event or scene/campaign lifecycle executes.",
+      "currentScope": "ZOD-064 prepares authored raw/processed blocks; ZOD-065 projects validated Content records into a pure Core-owned conditional-event executor with immutable state/traces, replay and atomic arithmetic/budget rejection. No retail event or scene/campaign lifecycle executes. ZOD-066 traces verified original event 401: fallback activation, all 13 opcode kinds and EventEnd continuation; structural inspection only.",
       "referenceSources": [
         {
           "path": "src/battle/event/interpreter.c",
@@ -1103,12 +1103,26 @@
         {
           "path": "src/wldcore/map/location_script.c",
           "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/lib/menu/command_prompts.c",
+          "inspection": "ZOD-066 traces selected common BattleStart fallback, not full scenario-condition coverage."
+        },
+        {
+          "path": "src/battle/event/frame.c",
+          "inspection": "ZOD-066 traces selected zero-finish event continuation and pending requests; no original execution."
+        },
+        {
+          "path": "src/event/attack/scenario_setup.c",
+          "inspection": "ZOD-066 traces selected entry gates/finish override; no complete original encounter reachability catalog."
         }
       ],
       "evidenceDocs": [
         "docs/architecture/zod-040-event-script-investigation.md",
         "docs/development/prepared-scenario-event.md",
-        "docs/behavior/conditional-event-execution.md"
+        "docs/behavior/conditional-event-execution.md",
+        "docs/architecture/zod-066-battle-start-event.md",
+        "docs/evidence/events/battle-start-0401.json"
       ],
       "implementationPaths": [
         "src/Fft.AssetTool/ScenarioBlockInspector.cs",
@@ -1145,11 +1159,11 @@
         "procedure": "Capture one controlled branch/dialogue event with explicit initial state and timing."
       },
       "openQuestions": [
-        "Real activation/completion, packed text, EventEnd/task scheduling, wider arithmetic/RNG and independent original observations remain unverified."
+        "Original event-401 reachability/timed observations, full camera/task/banner/operand/lifecycle support, other event activation paths, packed text, wider arithmetic/RNG and original equivalence remain unverified."
       ],
-      "nextAction": "Trace one verified original event and all activation/completion prerequisites in ZOD-066 before expanding semantic execution.",
+      "nextAction": "Implement ZOD-071's explicit-tick non-tutorial frame-wait proof; use ZOD-066 prerequisites and controlled original observations before enabling a retail event.",
       "followUpTickets": [
-        "ZOD-066"
+        "ZOD-071"
       ]
     },
     {

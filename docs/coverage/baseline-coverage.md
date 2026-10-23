@@ -3,7 +3,7 @@
 Generated from `baseline-coverage.json` by `tools/verification/verify_baseline_coverage.py --write-view`.
 Edit the JSON, then regenerate this view. See [the inventory guide](README.md) for status/evidence rules.
 
-Target: **SCUS-94221**. Snapshot: 2026-10-23; managed base `6663c4d`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+Target: **SCUS-94221**. Snapshot: 2026-10-23; managed base `0e7a09c`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 These entries are planning scopes, not a feature-completion percentage or a complete record/encounter catalog.
 
 ## Simulation
@@ -550,11 +550,11 @@ Next action: Record the final acceptance route with source anchors and prepared 
 
 Status: **partial**; scope: **baseline**; ticket: **ZOD-040**; owner area: FFT campaign/application.
 
-ZOD-064 prepares authored raw/processed blocks; ZOD-065 projects validated Content records into a pure Core-owned conditional-event executor with immutable state/traces, replay and atomic arithmetic/budget rejection. No retail event or scene/campaign lifecycle executes.
+ZOD-064 prepares authored raw/processed blocks; ZOD-065 projects validated Content records into a pure Core-owned conditional-event executor with immutable state/traces, replay and atomic arithmetic/budget rejection. No retail event or scene/campaign lifecycle executes. ZOD-066 traces verified original event 401: fallback activation, all 13 opcode kinds and EventEnd continuation; structural inspection only.
 
-Evidence: [docs/architecture/zod-040-event-script-investigation.md](../../docs/architecture/zod-040-event-script-investigation.md), [docs/development/prepared-scenario-event.md](../../docs/development/prepared-scenario-event.md), [docs/behavior/conditional-event-execution.md](../../docs/behavior/conditional-event-execution.md).
+Evidence: [docs/architecture/zod-040-event-script-investigation.md](../../docs/architecture/zod-040-event-script-investigation.md), [docs/development/prepared-scenario-event.md](../../docs/development/prepared-scenario-event.md), [docs/behavior/conditional-event-execution.md](../../docs/behavior/conditional-event-execution.md), [docs/architecture/zod-066-battle-start-event.md](../../docs/architecture/zod-066-battle-start-event.md), [docs/evidence/events/battle-start-0401.json](../../docs/evidence/events/battle-start-0401.json).
 
-Source entry points (pinned revision above; not full traces): [src/battle/event/interpreter.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/event/interpreter.c), [src/world/event/interpreter.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/event/interpreter.c), [src/lib/event/script/control.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/lib/event/script/control.c), [src/wldcore/map/location_script.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/wldcore/map/location_script.c).
+Source entry points (pinned revision above; not full traces): [src/battle/event/interpreter.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/event/interpreter.c), [src/world/event/interpreter.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/event/interpreter.c), [src/lib/event/script/control.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/lib/event/script/control.c), [src/wldcore/map/location_script.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/wldcore/map/location_script.c), [src/lib/menu/command_prompts.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/lib/menu/command_prompts.c), [src/battle/event/frame.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/event/frame.c), [src/event/attack/scenario_setup.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/event/attack/scenario_setup.c).
 
 Current implementation: [src/Fft.AssetTool/ScenarioBlockInspector.cs](../../src/Fft.AssetTool/ScenarioBlockInspector.cs), [src/Fft.AssetTool.Cli/ScenarioEventExporter.cs](../../src/Fft.AssetTool.Cli/ScenarioEventExporter.cs), [src/Fft.Content/Events/PreparedScenarioEvent.cs](../../src/Fft.Content/Events/PreparedScenarioEvent.cs), [src/Fft.Core/Events/ConditionalEventProgram.cs](../../src/Fft.Core/Events/ConditionalEventProgram.cs), [src/Fft.Core/Events/ConditionalEventState.cs](../../src/Fft.Core/Events/ConditionalEventState.cs), [src/Fft.Core/Events/ConditionalEventExecutor.cs](../../src/Fft.Core/Events/ConditionalEventExecutor.cs).
 
@@ -564,11 +564,11 @@ Manual checkpoint (pending-original-observation): Capture one controlled branch/
 
 Remaining gaps:
 
-- Real activation/completion, packed text, EventEnd/task scheduling, wider arithmetic/RNG and independent original observations remain unverified.
+- Original event-401 reachability/timed observations, full camera/task/banner/operand/lifecycle support, other event activation paths, packed text, wider arithmetic/RNG and original equivalence remain unverified.
 
-Next action: Trace one verified original event and all activation/completion prerequisites in ZOD-066 before expanding semantic execution.
+Next action: Implement ZOD-071's explicit-tick non-tutorial frame-wait proof; use ZOD-066 prerequisites and controlled original observations before enabling a retail event.
 
-Bounded follow-ups: ZOD-066.
+Bounded follow-ups: ZOD-071.
 
 ## Screens
 
