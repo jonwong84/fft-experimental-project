@@ -23,6 +23,10 @@ arguments return 2. The existing no-argument bootstrap and prepared-asset loadin
 arguments remain available. The output is a developer command/event/state trace,
 not an interactive game UI or a saved replay format.
 
+Implementation follow-up (2026-10-23): [ZOD-032](../development/playable-battle.md) now
+plays this same supported scenario in a separate Windows UI. The `--scenario` command
+remains the deterministic headless script described here; Core behavior is unchanged.
+
 `Fft.Content.Samples.SyntheticTwoUnitBattle` composes an explicit synthetic metadata
 dependency and sword package, validates setup and resolves its weapon projection
 through `AttackBattleSetup`. It creates a 2-by-2, single-layer dry flat height-10

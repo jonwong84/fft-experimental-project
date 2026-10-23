@@ -9,15 +9,20 @@ day/dry scene and exact four-cell geometry/terrain checkpoint. ZOD-030's
 as geometry, indexed textures/palettes, frozen presentation metadata and both native terrain layers.
 ZOD-031's [fixed prepared scene](development/prepared-scene.md) renders that map and the held
 Chocobo with an authored camera, neutral texture lighting and modern depth/cutout policy.
+ZOD-032's [playable two-unit battle](development/playable-battle.md) adds mouse/keyboard
+selection, legal highlights, move/attack/wait/advance, status and restart for synthetic M1.
 Start with the current [backlog](BACKLOG.md) and
 [Windows host instructions](development/windows-synthetic-host.md); the original handoff sections
-below are historical. Locked restore, zero-warning Release build and all **833 tests** passed for ZOD-031.
+below are historical. Locked restore, zero-warning Release build and all **868 tests** passed for ZOD-032.
 The selected six-piece pose and 9x13 map are prepared under ignored scratch and loaded by Client without
 original-format parsing; native terrain heights remain intact. The original synthetic view remains available.
 Two finite prepared-scene GPU runs produce identical images and unchanged input hashes.
-Next: input/UI for the supported M1 battle (ZOD-032), and independent captures (ZOD-026).
-MAP003's static scene does not broaden M1 combat's height-10 domain. Live gameplay is not implemented;
-source-derived checks do not establish original-rendering equivalence. Original media/captures remain ignored.
+Two programmed Windows battle runs also match the original headless result and submitted-command
+replay, including after a resize. Next independent lanes: original captures (ZOD-026) and
+Windows CI/clean-machine validation (ZOD-034). MAP003's static scene does not broaden M1
+combat's height-10 domain. Gameplay is limited to the synthetic local two-unit battle;
+source-derived checks do not establish original-rendering equivalence. Physical input timing
+remains a manual follow-up. Original media/captures remain ignored.
 
 **Prepared:** 2026-10-20  
 **Workspace:** `C:\repositories\fft-experimental-project`  

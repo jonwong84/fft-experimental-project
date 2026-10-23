@@ -22,7 +22,8 @@
   The CLI composes the tools; no full animation interpreter exists.
 - `Fft.Client` can load a prepared asset, run the deterministic synthetic two-unit battle headlessly,
   and open a MonoGame Windows view of its immutable starting snapshot or a fixed prepared
-  MAP003/Chocobo scene. Gameplay input is not implemented.
+  MAP003/Chocobo scene. A separate local two-unit battle UI sends validated commands to
+  the supported M1 scenario; the prepared scene remains static.
 - Tests exist for the current projects, including pure client layout tests. The synthetic graphics
   host has separate Windows checks; no complete campaign runtime, audio adapter or save system exists yet.
 
@@ -65,6 +66,14 @@ synthetic tests cover transforms, strip coverage and piece order. Neutral lighti
 modern depth are explicit approximations; independent original comparison remains ZOD-026/033.
 All rendering/resource lifetime and presentation timing stay in Client. Core/Engine,
 simulation rules, prepared formats, project references and package locks are unchanged.
+
+Implementation update (2026-10-23): [ZOD-032](../development/playable-battle.md) adds
+mouse/keyboard selection, legal highlights, Move/Attack/Wait/Advance, status and restart
+for the synthetic M1 scenario. Client owns input routing and a command journal; Core
+accepts/rejects every attempted battle command and supplies immutable results. Highlight
+probes discard pure result snapshots, preserving live RNG/state. Programmed Windows
+play, headless script and journal replay agree, including after a resize. No new battle
+rules, original-content combat integration or graphics/input dependency enters Core/Engine.
 
 ## Target dependency shape
 

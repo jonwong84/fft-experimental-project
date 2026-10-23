@@ -6,7 +6,7 @@ The proposed dependency boundaries and initial architecture decisions are docume
 
 The prioritized development tickets, dependencies, and acceptance criteria are maintained in [`docs/BACKLOG.md`](docs/BACKLOG.md).
 
-This checkout contains a .NET 10 deterministic, bounded headless battle and a MonoGame Windows host displaying its synthetic starting snapshot or a fixed prepared MAP003/Chocobo scene. The graphical views support resize and exit; gameplay input remains future work. Core and Zodiac.Engine stay independent of graphics/input. The offline asset tools and Fft.Content provide a separate prepared-file pipeline; asset coverage and supported simulation rules remain narrow. Full FFT combat, campaign, animation and authoring UI are not implemented.
+This checkout contains a .NET 10 deterministic, bounded headless battle, a playable local two-unit Windows example, and separate synthetic/prepared MAP003 inspection views. Core and Zodiac.Engine stay independent of graphics/input. The offline asset tools and Fft.Content provide a separate prepared-file pipeline; asset coverage and supported simulation rules remain narrow. Full FFT combat, campaign, animation and authoring UI are not implemented.
 
 ## Build, run, and test
 
@@ -15,6 +15,11 @@ Requires the .NET SDK version selected by `global.json` (currently 10.0.402). Se
 On Windows, `--window` opens the synthetic battle view. See [launch and graphical validation](docs/development/windows-synthetic-host.md)
 for resize/exit controls, the finite `--window-check` capture, and input/DPI limits. Rendering
 does not advance the battle; use `--scenario two-unit-battle` to execute its headless script.
+
+Use `--battle` for the [playable two-unit example](docs/development/playable-battle.md):
+select units, move/attack/wait, advance turns, inspect HP/rejections and restart. The
+player controls both units. `--battle-check <fresh-scratch-directory>` completes its
+programmed UI/replay check. This supported synthetic battle remains separate from MAP003.
 
 The [selected sprite-pose preparation guide](docs/development/prepared-sprite-pose.md) describes
 `prepare-sprite-pose` and the client's `--sprite-pose` load check. The prepared Chocobo pose
@@ -41,6 +46,7 @@ dotnet build Fft.sln -c Release --no-restore
 dotnet run --project src/Fft.Client/Fft.Client.csproj -c Release --no-build
 dotnet run --project src/Fft.Client -c Release --no-build --no-restore -- --scenario two-unit-battle
 dotnet run --project src/Fft.Client -c Release --no-build --no-restore -- --window
+dotnet run --project src/Fft.Client -c Release --no-build --no-restore -- --battle
 dotnet run --project src/Fft.Client/Fft.Client.csproj -c Release -- --content-root scratch/prepared-chocobo-content --asset-id base:battle/cyoko.spr
 dotnet run --project src/Fft.AssetTool.Cli/Fft.AssetTool.Cli.csproj -c Release -- verify-sprite --content-root scratch/prepared-chocobo-content
 dotnet run --project src/Fft.AssetTool.Cli/Fft.AssetTool.Cli.csproj -c Release -- verify-sprite --content-root scratch/prepared-chocobo-content --preview-output scratch/chocobo-palettes.png

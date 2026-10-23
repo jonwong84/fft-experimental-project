@@ -47,9 +47,11 @@ render input with verified local files. ZOD-029 selects MAP003's frozen day/dry 
 and traces its geometry, texture/palette and terrain inputs. ZOD-030 now prepares and
 loads that slice, retaining native terrain heights and both layers. ZOD-031 renders
 the prepared map and pose together in a fixed inspection scene with declared lighting/depth
-approximations. Next add input/UI for the supported M1 battle (ZOD-032); the static MAP003
-scene does not expand that battle's supported terrain/combat domain. ZOD-026's independent
-capture investigation remains a separate lane. M2 is not complete yet.
+approximations. ZOD-032 now makes the supported synthetic M1 battle playable with
+selection, legal highlights, Move/Attack/Wait, manual next-turn and restart controls.
+The static MAP003 scene does not expand that battle's supported terrain/combat domain.
+Next independent lanes: ZOD-026's original capture workflow and ZOD-034's Windows CI/
+clean-machine validation. M2 is not complete yet.
 Independent asset/reference investigations can proceed in parallel when the owner selects their scope;
 give each agent distinct files and acceptance criteria. M1 does not imply complete FFT combat or presentation.
 The numbered queue below records the completed foundation sequence.
@@ -562,7 +564,17 @@ Locked restore, zero-warning Release build and all 833 tests pass (37 new cases)
 
 ### ZOD-032 — Make the bounded battle playable through input and UI
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-023, ZOD-031
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-023, ZOD-031
+
+**Result:** [Playable two-unit battle, controls and evidence](development/playable-battle.md)
+(2026-10-23). `--battle` supports mouse/keyboard selection, legal move/target highlights,
+Move/Attack/Wait/Advance, HP/turn/choice/rejection/outcome display and restart. Client
+publishes only accepted Core scenario results; discarded pure probes supply highlights.
+Programmed Windows UI input, including a mid-battle resize and two rejected attempts,
+matches both session-journal replay and the original twelve-command headless script.
+Two final runs have identical checkpoint images and simulation receipts. Locked restore,
+zero-warning Release build and all 868 tests pass (35 new cases). Physical-device timing,
+controllers, original menu fidelity and prepared MAP003 combat integration remain separate.
 
 **Scope:** Select a unit, show legal destinations/targets, issue supported move/attack/wait commands, and display active turn, HP, rejections, and terminal result.
 
@@ -578,7 +590,7 @@ Locked restore, zero-warning Release build and all 833 tests pass (37 new cases)
 
 ### ZOD-034 — Add Windows CI and clean-machine launch validation
 
-**Type:** Chore · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-025
+**Type:** Chore · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-025
 
 **Scope:** Add a suitable Windows build/test path in CircleCI when the host introduces Windows requirements. Retain Linux coverage for platform-neutral projects and store useful test/build reports.
 
