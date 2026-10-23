@@ -17,12 +17,18 @@ dotnet test Fft.sln --configuration Release --no-build --no-restore
 
 The first command must print 10.0.402. Build and tests need no BIN, prepared assets, C toolchain, or container. Restore needs access to NuGet packages or a populated local cache. Locked mode protects package resolution; it does not make downloads available offline.
 
-CircleCI uses `mcr.microsoft.com/dotnet/sdk:10.0.402` and explicitly restores in locked mode before its existing build/test/Sonar stages. The fixed SDK tag aligns compiler selection with Windows; the base image is not pinned by digest, so this is not a claim of byte-for-byte OS/image reproducibility. SonarScanner remains independently versioned at 12.0.0. Apt utilities and external Sonar analysis are not part of the locked NuGet graph.
+CircleCI's Linux job uses `mcr.microsoft.com/dotnet/sdk:10.0.402` and explicitly restores in locked mode before build/test/Sonar stages. ZOD-034 adds an independent Windows machine job that installs the same exact SDK from `global.json`, then builds/tests and checks a self-contained folder. Both jobs retain test reports; see the [Windows CI/launch guide](windows-launch-validation.md) for reports, artifacts and outstanding remote/clean-machine gates. The image tags are not pinned by digest, so this is not a claim of byte-for-byte OS/image reproducibility. SonarScanner remains independently versioned at 12.0.0; TRX-to-JUnit conversion uses trx2junit 2.1.0. Those tools, Apt utilities and external Sonar analysis are not part of the locked application NuGet graph.
+
+Normal restores use `packages.lock.json`. The Windows folder script selects separate
+`packages.win-x64.lock.json` files with `-p:FftWindowsBundle=true` on both restore
+and publish. The RID graph is locked without changing Core/Engine's portable target
+frameworks. After a publish restore, repeat normal locked solution restore before
+portable `--no-restore` builds, because intermediate asset files are shared.
 
 ## Deliberate upgrades and new projects
 
 1. For SDK upgrades, install the proposed stable version, then update both `global.json` and the CircleCI SDK tag in one change. For package upgrades, edit `Directory.Packages.props`; project PackageReference entries remain versionless.
-2. Regenerate locks intentionally with `dotnet restore Fft.sln -p:RestoreLockedMode=false --force-evaluate`. Review all dependency/version/content-hash changes, including transitive changes. New projects must be registered in the solution and have their own lock file generated through this step.
+2. Regenerate locks intentionally with `dotnet restore Fft.sln -p:RestoreLockedMode=false --force-evaluate`. For a Client dependency/SDK change, also regenerate the Windows publish locks with `dotnet restore src/Fft.Client/Fft.Client.csproj --runtime win-x64 -p:SelfContained=true -p:FftWindowsBundle=true -p:RestoreLockedMode=false --force-evaluate`, then repeat normal locked restore. Review all dependency/version/content-hash changes, including transitive changes. New projects must be registered in the solution and have their own lock file generated through this step.
 3. Run the locked restore/build/test commands above, review the working-tree diff, and commit configuration plus all affected locks together. Run CI to verify Linux and Sonar separately. Never use an unlocked restore in CI to mask drift.
 
 Package removal, target-framework changes and SDK changes can alter lock files even without a direct version change. Treat these as reviewed dependency changes. Retaining multiple local SDK versions is supported; roll-forward remains disabled until an explicit policy change is reviewed.

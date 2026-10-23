@@ -2,6 +2,8 @@
   <PropertyGroup>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <RestoreLockedMode Condition="'$(RestoreLockedMode)' == ''">true</RestoreLockedMode>
+    <!-- Publishing selects a separate reviewed graph; normal builds remain portable. -->
+    <NuGetLockFilePath Condition="'$(FftWindowsBundle)' == 'true'">$(MSBuildProjectDirectory)/packages.win-x64.lock.json</NuGetLockFilePath>
   </PropertyGroup>
 </Project>
 

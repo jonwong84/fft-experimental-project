@@ -53,6 +53,12 @@ dotnet run --project src/Fft.Client -c Release --no-build --no-restore -- --wind
 
 The latest recorded implementation milestone, ZOD-032, passed locked restore, a Release build with zero warnings and **868 tests** across Engine, Core, Content, AssetTool, AssetTool CLI and Client. Windows GPU/UI checks are separate opt-in checks; physical input timing, mixed-DPI behavior and clean-machine validation have remaining manual follow-ups. See the [playable check](docs/development/playable-battle.md#automated-windows-check) and [synthetic host checks](docs/development/windows-synthetic-host.md).
 
+ZOD-034 adds an independent Windows CI job alongside Linux/Sonar, downloadable test
+reports and a private self-contained client folder. Local bundle/headless and
+published GPU checks passed; remote CI and clean-machine graphical launch remain
+pending. See [Windows launch validation](docs/development/windows-launch-validation.md)
+for producing the folder, prerequisites and the manual check.
+
 ## Inspect prepared original assets
 
 After following the [map](docs/development/prepared-map-slice.md) and [pose](docs/development/prepared-sprite-pose.md) preparation guides, launch their default output roots together:

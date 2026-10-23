@@ -50,8 +50,10 @@ the prepared map and pose together in a fixed inspection scene with declared lig
 approximations. ZOD-032 now makes the supported synthetic M1 battle playable with
 selection, legal highlights, Move/Attack/Wait, manual next-turn and restart controls.
 The static MAP003 scene does not expand that battle's supported terrain/combat domain.
-Next independent lanes: ZOD-026's original capture workflow and ZOD-034's Windows CI/
-clean-machine validation. M2 is not complete yet.
+ZOD-034 implements independent Windows CI, reports and self-contained folder checks;
+remote CI execution and a clean interactive machine remain validation gates. Next
+independent lanes: ZOD-026's original capture workflow and ZOD-035's save/load proof.
+M2 is not complete yet.
 Independent asset/reference investigations can proceed in parallel when the owner selects their scope;
 give each agent distinct files and acceptance criteria. M1 does not imply complete FFT combat or presentation.
 The numbered queue below records the completed foundation sequence.
@@ -590,11 +592,22 @@ controllers, original menu fidelity and prepared MAP003 combat integration remai
 
 ### ZOD-034 — Add Windows CI and clean-machine launch validation
 
-**Type:** Chore · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-025
+**Type:** Chore · **Priority:** P2 · **Status:** Implemented; remote CI and clean-machine validation pending · **Depends on:** ZOD-025
 
 **Scope:** Add a suitable Windows build/test path in CircleCI when the host introduces Windows requirements. Retain Linux coverage for platform-neutral projects and store useful test/build reports.
 
 **Acceptance criteria:** Windows-targeted build/test failures are visible in CI; no original assets or interactive desktop are required for automated checks; manual clean-machine launch prerequisites are documented and checked. Headless code builds without the rendering backend. Build artifact creation is permitted; public publishing/version automation remains a separate decision.
+
+**Implementation/evidence (2026-10-23):** [Windows launch guide](development/windows-launch-validation.md)
+records the independent CircleCI Windows machine job, retained Linux/Sonar lane,
+TRX/JUnit reports, separate locked win-x64 publish graph and private folder bundle
+with native dependencies/notices. Local Windows PowerShell 5.1 publishing and headless
+launch passed; portable locked restore, zero-warning Release build and all 868 tests
+passed. Core/Engine built without Client/MonoGame. The published synthetic GPU check
+matched the headless script/replay after resize. These are workstation observations;
+remote CI and a clean Windows 11 x64 interactive launch are still required before
+closing this ticket. No original assets are needed or bundled, and no public release
+or automatic versioning is introduced.
 
 ## Complete PS1 baseline: decompose these as source evidence grows
 

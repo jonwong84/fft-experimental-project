@@ -18,8 +18,12 @@ The selected six-piece pose and 9x13 map are prepared under ignored scratch and 
 original-format parsing; native terrain heights remain intact. The original synthetic view remains available.
 Two finite prepared-scene GPU runs produce identical images and unchanged input hashes.
 Two programmed Windows battle runs also match the original headless result and submitted-command
-replay, including after a resize. Next independent lanes: original captures (ZOD-026) and
-Windows CI/clean-machine validation (ZOD-034). MAP003's static scene does not broaden M1
+replay, including after a resize. ZOD-034 now implements independent Windows CI,
+TRX/JUnit reports and a self-contained folder check with separate locked publish
+graphs and dependency notices. Local publishing, headless launch and the published
+GPU check passed; remote CI and clean-machine interactive validation remain pending.
+See the [launch guide](development/windows-launch-validation.md). Next independent
+lanes: original captures (ZOD-026) and save/load proof (ZOD-035). MAP003's static scene does not broaden M1
 combat's height-10 domain. Gameplay is limited to the synthetic local two-unit battle;
 source-derived checks do not establish original-rendering equivalence. Physical input timing
 remains a manual follow-up. Original media/captures remain ignored.

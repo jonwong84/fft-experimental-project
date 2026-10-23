@@ -13,6 +13,7 @@ jobs:
             apt-get install --yes --no-install-recommends curl jq
             rm -rf /var/lib/apt/lists/*
             dotnet tool install --global dotnet-sonarscanner --version 12.0.0
+            dotnet tool install --global trx2junit --version 2.1.0 --allow-roll-forward
             echo 'export PATH="$PATH:/root/.dotnet/tools"' >> "$BASH_ENV"
       - run:
           name: Restore solution
@@ -73,13 +74,91 @@ jobs:
             dotnet sonarscanner begin "${sonar_args[@]}"
       - run:
           name: Build solution
-          command: dotnet build Fft.sln --configuration Release --no-restore
+          command: |
+            mkdir -p scratch/ci/linux
+            dotnet build Fft.sln --configuration Release --no-restore
       - run:
           name: Run tests
-          command: dotnet test Fft.sln --configuration Release --no-build --no-restore
+          command: dotnet test Fft.sln --configuration Release --no-build --no-restore --logger trx --results-directory scratch/ci/linux/trx
+      - run:
+          name: Convert test reports
+          when: always
+          command: |
+            if compgen -G 'scratch/ci/linux/trx/*.trx' > /dev/null; then
+              trx2junit --output scratch/ci/linux/junit scratch/ci/linux/trx/*.trx
+            fi
+      - store_test_results:
+          path: scratch/ci/linux/junit
+      - store_artifacts:
+          path: scratch/ci/linux
+          destination: linux-validation
       - run:
           name: Complete SonarQube Cloud analysis
           command: dotnet sonarscanner end "/d:sonar.token=${SONAR_TOKEN}"
+
+  windows-build-test-launch:
+    resource_class: windows.medium
+    machine:
+      image: windows-server-2022-gui:current
+      shell: powershell.exe -ExecutionPolicy Bypass
+    environment:
+      DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+      DOTNET_NOLOGO: "1"
+    steps:
+      - checkout
+      - run:
+          name: Install exact x64 SDK and pinned report tool
+          command: |
+            $ErrorActionPreference = 'Stop'
+            New-Item -ItemType Directory -Path scratch/ci/bootstrap -Force | Out-Null
+            Invoke-WebRequest https://dot.net/v1/dotnet-install.ps1 -UseBasicParsing -OutFile scratch/ci/bootstrap/dotnet-install.ps1
+            $sdkVersion = (Get-Content global.json -Raw | ConvertFrom-Json).sdk.version
+            & ./scratch/ci/bootstrap/dotnet-install.ps1 -Version $sdkVersion -Architecture x64 -InstallDir C:/fft-dotnet -NoPath
+            & C:/fft-dotnet/dotnet.exe --version
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+            & C:/fft-dotnet/dotnet.exe tool install trx2junit --version 2.1.0 --allow-roll-forward --tool-path scratch/ci/tools
+            exit $LASTEXITCODE
+      - run:
+          name: Restore portable solution in locked mode
+          command: |
+            & C:/fft-dotnet/dotnet.exe restore Fft.sln --locked-mode
+            exit $LASTEXITCODE
+      - run:
+          name: Build headless Core and Engine without the rendering backend
+          command: |
+            & C:/fft-dotnet/dotnet.exe build src/Fft.Core/Fft.Core.csproj -c Release --no-restore -bl:scratch/ci/headless.binlog
+            exit $LASTEXITCODE
+      - run:
+          name: Build Windows solution
+          command: |
+            & C:/fft-dotnet/dotnet.exe build Fft.sln -c Release --no-restore -bl:scratch/ci/build.binlog
+            exit $LASTEXITCODE
+      - run:
+          name: Run headless tests on Windows
+          command: |
+            & C:/fft-dotnet/dotnet.exe test Fft.sln -c Release --no-build --no-restore --logger trx --results-directory scratch/ci/trx
+            exit $LASTEXITCODE
+      - run:
+          name: Publish and check self-contained client without a desktop or assets
+          command: |
+            & ./tools/ci/Publish-WindowsClient.ps1 -OutputRoot scratch/ci/windows-launch -DotNet C:/fft-dotnet/dotnet.exe
+      - run:
+          name: Convert test reports even after failure
+          when: always
+          command: |
+            $ErrorActionPreference = 'Stop'
+            $env:DOTNET_ROOT = 'C:/fft-dotnet'
+            $env:DOTNET_ROOT_X64 = 'C:/fft-dotnet'
+            $reports = @(Get-ChildItem scratch/ci/trx -Filter *.trx -ErrorAction SilentlyContinue | ForEach-Object { $_.FullName })
+            if ($reports.Count -gt 0) {
+              & ./scratch/ci/tools/trx2junit.exe --output scratch/ci/junit @reports
+              exit $LASTEXITCODE
+            }
+      - store_test_results:
+          path: scratch/ci/junit
+      - store_artifacts:
+          path: scratch/ci
+          destination: windows-validation
 
 workflows:
   build-test-scan:
@@ -91,3 +170,11 @@ workflows:
               only:
                 - main
                 - /^feature\/.*/
+                - /^codex\/.*/
+      - windows-build-test-launch:
+          filters:
+            branches:
+              only:
+                - main
+                - /^feature\/.*/
+                - /^codex\/.*/

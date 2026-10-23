@@ -16,4 +16,9 @@
     <ProjectReference Include="..\Fft.Core\Fft.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="../../licenses/*" Link="THIRD-PARTY/%(Filename)%(Extension)" CopyToPublishDirectory="PreserveNewest" />
+    <None Include="../../docs/development/windows-launch-validation.md" Link="WINDOWS-LAUNCH.md" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>
