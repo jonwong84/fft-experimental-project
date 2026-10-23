@@ -56,6 +56,22 @@ public sealed class AttackBattleSetupTests
     }
 
     [Fact]
+    public void Explicit_v2_keeps_raw_weapon_evade_without_granting_Weapon_Guard_or_support_abilities()
+    {
+        var sword = new SwordDefinition(new("sample:item/sword"), SwordWeaponType.Sword, 1, 7,
+            SwordDamageFormula.WeaponDamage, SwordTargetingFlags.Striking, 9, SwordElement.Neutral,
+            new(SwordEmptyProcMode.None, new byte[5]), (SwordCapabilityFlags)14);
+        var package = new SwordContentPackage("sample:package/swords", "sample:profile/attack", "sample:package/metadata", [sword], 2);
+        var state = State();
+        var snapshot = AttackBattleSetup.Create(state, [Unit(A, new("sample:item/sword")), Unit(B)], package, Metadata());
+        Assert.Equal(9, package.Swords[0].Evade);
+        Assert.Equal(0, snapshot.Combatants[0].RightHandEvade);
+        Assert.Same(state, snapshot.TurnBattle);
+        Assert.Throws<NotSupportedException>(() => new AttackUnitState(A, 50, 50, 0, 0, 5, 10,
+            9, 0, 0, 70, 0, BattleFacing.East, AttackUnitStatus.None, 0, new("sample:item/sword")));
+    }
+
+    [Fact]
     public void Result_statuses_are_representable_but_not_accepted_as_initial_supported_setup()
     {
         AttackUnitState[] units = [Unit(A), Unit(B, hp: 0, status: AttackUnitStatus.Dead)];

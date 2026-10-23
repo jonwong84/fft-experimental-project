@@ -9,6 +9,9 @@ public sealed class ImportMetadataCommandTests
     [InlineData("import-metadata")]
     [InlineData("import-metadata", "--exe")]
     [InlineData("import-metadata", "--unknown", "anything")]
+    [InlineData("import-metadata", "--exe", "one", "--output", "out", "--metadata", "selected")]
+    [InlineData("import-sword", "--exe", "one", "--output", "out", "--metadata")]
+    [InlineData("import-sword", "--exe", "one", "--output", "out", "--metadata", "a", "--metadata", "b")]
     [InlineData("import-metadata", "--exe", "one", "--exe", "two", "--output", "out")]
     public void Invalid_arguments_report_usage(params string[] args)
     {
@@ -34,6 +37,18 @@ public sealed class ImportMetadataCommandTests
             Assert.Contains("scratch", error);
             Assert.False(Directory.Exists(root));
         }
+    }
+
+    [Fact]
+    public void Selected_sword_metadata_dependency_must_also_stay_in_scratch()
+    {
+        string root = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString("N"));
+        var (code, output, error) = Run(root, ["import-sword", "--exe", Path.Combine(root, "scratch", "source.exe"),
+            "--output", Path.Combine(root, "scratch", "output"), "--metadata", Path.Combine(root, "outside.json")]);
+        Assert.Equal(1, code);
+        Assert.Empty(output);
+        Assert.Contains("scratch", error);
+        Assert.False(Directory.Exists(root));
     }
 
     [Fact]

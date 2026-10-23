@@ -10,6 +10,8 @@ public sealed partial class SwordContentPackage
 {
     public const string Format = "fft.sword-content";
     public const int SchemaVersion = 1;
+    public const int CurrentSchemaVersion = 2;
+    public int Version { get; }
     public string PackageId { get; }
     public string ProfileId { get; }
     public string RequiredMetadataPackageId { get; }
@@ -17,8 +19,15 @@ public sealed partial class SwordContentPackage
 
     public SwordContentPackage(string packageId, string profileId, string requiredMetadataPackageId,
         IEnumerable<SwordDefinition> swords)
+        : this(packageId, profileId, requiredMetadataPackageId, swords, SchemaVersion) { }
+
+    public SwordContentPackage(string packageId, string profileId, string requiredMetadataPackageId,
+        IEnumerable<SwordDefinition> swords, int version)
     {
         var validation = new PackageJsonValidation(packageId);
+        if (version is not (1 or 2))
+            throw validation.Failure(null, "$.schemaVersion", "Unsupported schema version.");
+        Version = version;
         PackageId = validation.Id(packageId, null, "$.packageId");
         ProfileId = validation.Id(profileId, null, "$.profileId");
         RequiredMetadataPackageId = validation.Id(requiredMetadataPackageId, null, "$.requiredMetadataPackageId");
@@ -38,10 +47,15 @@ public sealed partial class SwordContentPackage
             if (id[..id.IndexOf(':')] != owner)
                 throw validation.Failure(id, path, $"Definition must belong to package namespace '{owner}'.");
             if (!ids.Add(sword.Id)) throw validation.Failure(id, path, $"Duplicate sword ID '{id}'.");
+            if (version == 1 && (sword.CapabilityFlags != SwordCapabilityFlags.None || sword.AddedEffect.TypeRaw != 128))
+                throw validation.Failure(id, $"$.swords[{values.Count}]", "Schema 1 requires no capability flags and empty proc type 128; select schema 2 explicitly.");
             values.Add(sword);
         }
         Swords = values.ToImmutable();
     }
+
+    /// <summary>Explicit format upgrade; preserves every definition without activating new behavior.</summary>
+    public SwordContentPackage UpgradeToV2() => new(PackageId, ProfileId, RequiredMetadataPackageId, Swords, CurrentSchemaVersion);
 
     /// <summary>Explicitly verifies the selected metadata dependency; no directory discovery or implicit activation.</summary>
     public void ValidateAgainst(ContentPackage metadata)
@@ -67,15 +81,16 @@ public sealed partial class SwordContentPackage
             v.Fields(root, null, "$", "format", "schemaVersion", "packageId", "profileId", "requiredMetadataPackageId", "swords");
             if (v.Text(root.GetProperty("format"), null, "$.format") != Format)
                 throw v.Failure(null, "$.format", "Unsupported package format.");
-            if (v.Integer(root.GetProperty("schemaVersion"), null, "$.schemaVersion", 0, int.MaxValue) != SchemaVersion)
+            int version = v.Integer(root.GetProperty("schemaVersion"), null, "$.schemaVersion", 0, int.MaxValue);
+            if (version is not (1 or 2))
                 throw v.Failure(null, "$.schemaVersion", "Unsupported schema version.");
             string package = v.Id(root.GetProperty("packageId"), null, "$.packageId");
             string profile = v.Id(root.GetProperty("profileId"), null, "$.profileId");
             string dependency = v.Id(root.GetProperty("requiredMetadataPackageId"), null, "$.requiredMetadataPackageId");
             var swords = new List<SwordDefinition>();
             foreach (JsonElement node in v.Array(root.GetProperty("swords"), null, "$.swords", ContentPackage.MaxDefinitionsPerKind))
-                swords.Add(ReadSword(node, $"$.swords[{swords.Count}]", v));
-            return new SwordContentPackage(package, profile, dependency, swords);
+                swords.Add(ReadSword(node, $"$.swords[{swords.Count}]", v, version));
+            return new SwordContentPackage(package, profile, dependency, swords, version);
         }
         catch (JsonException exception)
         {
@@ -83,22 +98,30 @@ public sealed partial class SwordContentPackage
         }
     }
 
-    private static SwordDefinition ReadSword(JsonElement node, string path, PackageJsonValidation v)
+    private static SwordDefinition ReadSword(JsonElement node, string path, PackageJsonValidation v, int version)
     {
         string? record = PackageJsonValidation.GuessString(node, "id");
-        v.Fields(node, record, path, "id", "type", "range", "power", "formula", "targetingFlags", "evade", "element", "addedEffect");
+        if (version == 1)
+            v.Fields(node, record, path, "id", "type", "range", "power", "formula", "targetingFlags", "evade", "element", "addedEffect");
+        else
+            v.Fields(node, record, path, "id", "type", "range", "power", "formula", "targetingFlags", "capabilityFlags", "evade", "element", "addedEffect");
         string id = v.Id(node.GetProperty("id"), record, path + ".id");
         int type = v.Integer(node.GetProperty("type"), id, path + ".type", 3, 3);
         int range = v.Integer(node.GetProperty("range"), id, path + ".range", 1, 1);
         int power = v.Integer(node.GetProperty("power"), id, path + ".power", 0, 255);
         int formula = v.Integer(node.GetProperty("formula"), id, path + ".formula", 1, 1);
         int flags = v.Integer(node.GetProperty("targetingFlags"), id, path + ".targetingFlags", 128, 128);
+        int capabilities = version == 1 ? 0 : v.Integer(node.GetProperty("capabilityFlags"), id, path + ".capabilityFlags", 0, 14);
+        if ((capabilities & ~0x0e) != 0)
+            throw v.Failure(id, path + ".capabilityFlags", "Unsupported sword capability bits.");
         int evade = v.Integer(node.GetProperty("evade"), id, path + ".evade", 0, 255);
         int element = v.Integer(node.GetProperty("element"), id, path + ".element", 0, 0);
         string effectPath = path + ".addedEffect";
         JsonElement effect = node.GetProperty("addedEffect");
         v.Fields(effect, id, effectPath, "typeRaw", "statusesRaw");
-        int effectType = v.Integer(effect.GetProperty("typeRaw"), id, effectPath + ".typeRaw", 128, 128);
+        int effectType = v.Integer(effect.GetProperty("typeRaw"), id, effectPath + ".typeRaw", version == 1 ? 128 : 0, 128);
+        if (effectType is not (0 or 128))
+            throw v.Failure(id, effectPath + ".typeRaw", "Only empty modes 0 and 128 are supported.");
         JsonElement statuses = effect.GetProperty("statusesRaw");
         JsonElement.ArrayEnumerator entries = v.Array(statuses, id, effectPath + ".statusesRaw", 5);
         if (statuses.GetArrayLength() != 5) throw v.Failure(id, effectPath + ".statusesRaw", "Exactly five status bytes are required.");
@@ -107,7 +130,7 @@ public sealed partial class SwordContentPackage
             raw.Add((byte)v.Integer(entry, id, $"{effectPath}.statusesRaw[{raw.Count}]", 0, 0));
         return new SwordDefinition(new WeaponId(id), (SwordWeaponType)type, range, power,
             (SwordDamageFormula)formula, (SwordTargetingFlags)flags, evade, (SwordElement)element,
-            new EmptySwordAddedEffect(effectType, raw));
+            new EmptySwordAddedEffect((SwordEmptyProcMode)effectType, raw), (SwordCapabilityFlags)capabilities);
     }
 
     public string ToJson()
@@ -117,7 +140,7 @@ public sealed partial class SwordContentPackage
         {
             writer.WriteStartObject();
             writer.WriteString("format", Format);
-            writer.WriteNumber("schemaVersion", SchemaVersion);
+            writer.WriteNumber("schemaVersion", Version);
             writer.WriteString("packageId", PackageId);
             writer.WriteString("profileId", ProfileId);
             writer.WriteString("requiredMetadataPackageId", RequiredMetadataPackageId);
@@ -131,6 +154,7 @@ public sealed partial class SwordContentPackage
                 writer.WriteNumber("power", sword.Power);
                 writer.WriteNumber("formula", (byte)sword.Formula);
                 writer.WriteNumber("targetingFlags", (byte)sword.TargetingFlags);
+                if (Version == 2) writer.WriteNumber("capabilityFlags", (byte)sword.CapabilityFlags);
                 writer.WriteNumber("evade", sword.Evade);
                 writer.WriteNumber("element", (byte)sword.Element);
                 writer.WriteStartObject("addedEffect");

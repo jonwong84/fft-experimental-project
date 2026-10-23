@@ -1,5 +1,9 @@
 # Bounded executable sword content (ZOD-055)
 
+Version follow-up: [ZOD-058](../behavior/retail-sword-representation.md) adds explicit schema 2
+capabilities, empty proc modes and raw/effective evade handling. The schema 1 defaults and
+synthetic profile documented below remain unchanged.
+
 Date: 2026-10-22. The FFT-owned `SwordDefinition` supplies the immutable content selected by [ZOD-021](../behavior/ordinary-physical-attack.md). It is separate from JP/learning-only `AbilityDefinition` and `DefinitionCatalog`; neither learning definitions nor metadata package v1 become implicitly executable. No mutable combat state or attack resolution is implemented.
 
 Source field meanings are pinned to read-only decomp HEAD `611b504d25d4a9b03fab8023d7dbea75fe381d5d`, observed again for this implementation. `include/fft/item.h::weapon_data_t` supplies byte-width range, flags, formula, power, evade, element and proc fields; `src/battle/formula_weapons.c::formula_weapon_damage` supplies formula1; `src/battle/target_panels.c::target_range_calculate_strike_lunge` supplies striking behavior; `include/fft/status.h::status_infliction_type_e` defines all-or-nothing as `0x80`. This is source-traced field interpretation, not verified retail sword values. ZOD-057 still owns item/weapon row import and verification.

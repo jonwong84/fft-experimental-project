@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using Fft.Content.ContentPackages;
 
 namespace Fft.AssetTool.Cli;
 
@@ -20,7 +21,7 @@ public sealed class ImportMetadataCommand(string workspaceRoot)
             for (int i = 1; i < args.Length; i++)
             {
                 string key = args[i];
-                if (key is not ("--exe" or "--output") || i + 1 >= args.Length ||
+                if ((key is not ("--exe" or "--output") && !(swordMode && key == "--metadata")) || i + 1 >= args.Length ||
                     args[i + 1].StartsWith("--", StringComparison.Ordinal) || !options.TryAdd(key, args[++i]))
                     throw new ArgumentException($"Unknown, duplicate, or missing option: {key}");
             }
@@ -28,15 +29,20 @@ public sealed class ImportMetadataCommand(string workspaceRoot)
                 throw new ArgumentException("--exe and --output are required.");
             string inputPath = ScratchPath(exe);
             string outputPath = ScratchPath(destination);
+            string? metadataPath = options.TryGetValue("--metadata", out string? selected) ? ScratchPath(selected) : null;
             if (File.Exists(outputPath) || Directory.Exists(outputPath))
                 throw new IOException("Output directory already exists; choose a fresh scratch destination.");
             if (inputPath.StartsWith(outputPath + Path.DirectorySeparatorChar, PathComparison))
                 throw new IOException("Output directory cannot contain the input executable.");
+            if (metadataPath is not null && metadataPath.StartsWith(outputPath + Path.DirectorySeparatorChar, PathComparison))
+                throw new IOException("Output directory cannot contain the selected metadata dependency.");
             if (new FileInfo(inputPath).Length != OriginalMetadataImporter.ExecutableLength)
                 throw new InvalidDataException("Input has an unsupported executable byte length.");
             byte[] bytes = File.ReadAllBytes(inputPath);
             OriginalMetadataImport? result = swordMode ? null : OriginalMetadataImporter.ImportVerified(bytes);
             OriginalSwordImport? sword = swordMode ? OriginalSwordImporter.ImportVerified(bytes) : null;
+            SwordContentPackage? swordPackage = metadataPath is null ? null :
+                OriginalSwordContentExporter.CreatePackage(sword!, ContentPackage.Load(metadataPath));
             string provenance = swordMode ? OriginalSwordImporter.ToJson(sword!) : JsonSerializer.Serialize(new
             {
                 format = "fft.original-metadata-import", schemaVersion = 1,
@@ -56,6 +62,7 @@ public sealed class ImportMetadataCommand(string workspaceRoot)
             {
                 Directory.CreateDirectory(staging);
                 if (!swordMode) result!.Package.Save(Path.Combine(staging, "content.package.json"));
+                swordPackage?.Save(Path.Combine(staging, "sword.package.json"));
                 File.WriteAllText(Path.Combine(staging, swordMode ? "sword.import.json" : "import.provenance.json"), provenance.Replace("\r\n", "\n", StringComparison.Ordinal), new UTF8Encoding(false));
                 Directory.Move(staging, outputPath);
             }
@@ -67,10 +74,12 @@ public sealed class ImportMetadataCommand(string workspaceRoot)
                     File.Delete(Path.Combine(staging, "content.package.json"));
                     File.Delete(Path.Combine(staging, "import.provenance.json"));
                     File.Delete(Path.Combine(staging, "sword.import.json"));
+                    File.Delete(Path.Combine(staging, "sword.package.json"));
                     Directory.Delete(staging);
                 }
             }
-            if (swordMode) output.WriteLine($"Imported selected retail sword and Attack metadata: {sword!.Records.Length} source records at {outputPath}; metadata-only, no runtime package.");
+            if (swordMode) output.WriteLine($"Imported selected retail sword and Attack metadata: {sword!.Records.Length} source records at {outputPath}; " +
+                (swordPackage is null ? "metadata-only, no runtime package." : "validated schema2 sword.package.json exported; combat execution remains separate."));
             else output.WriteLine($"Imported {result!.Package.Jobs.Length} job, {result.Package.Skillsets.Length} skillset, " +
                 $"{result.Package.Abilities.Length} abilities; {result.Records.Length} source records preserved at {outputPath}.");
             foreach (string diagnostic in swordMode ? sword!.Diagnostics : result!.Diagnostics) output.WriteLine(diagnostic);
@@ -79,10 +88,10 @@ public sealed class ImportMetadataCommand(string workspaceRoot)
         catch (ArgumentException exception)
         {
             error.WriteLine(exception.Message);
-            error.WriteLine("Usage: import-metadata|import-sword --exe <scratch/SCUS_942.21> --output <fresh-scratch-directory>");
+            error.WriteLine("Usage: import-metadata|import-sword --exe <scratch/SCUS_942.21> --output <fresh-scratch-directory> [--metadata <scratch/content.package.json> (import-sword only)]");
             return 2;
         }
-        catch (Exception exception) when (exception is IOException or InvalidDataException or UnauthorizedAccessException)
+        catch (Exception exception) when (exception is IOException or InvalidDataException or UnauthorizedAccessException or ContentPackageValidationException)
         {
             error.WriteLine($"Metadata import failed: {exception.Message}");
             return 1;

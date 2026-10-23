@@ -7,7 +7,7 @@ namespace Fft.AssetTool.Cli;
 /// <summary>Offline, lossless selected-record import; never substitutes a supported synthetic sword.</summary>
 public static class OriginalSwordImporter
 {
-    public const string ConverterVersion = "fft.selected-sword/1";
+    public const string ConverterVersion = "fft.selected-sword/2";
     public const string WeaponId = "fft.ps1:item/broad-sword";
 
     public static OriginalSwordImport ImportVerified(ReadOnlySpan<byte> executable)
@@ -43,7 +43,7 @@ public static class OriginalSwordImporter
         if (proc.Statuses.Any(value => value != 0)) diagnostics.Add("Proc has nonempty status bytes; the synthetic profile has five zero bytes.");
         diagnostics.Add("All source bytes preserved, including item unused/padding, weapon unused03, attributes, ability AI and ability-0 secondary data.");
         diagnostics.Add("Attack uses skillset1/menu8 and resolves ability0, but selects the weapon formula; ability-0 range formula is not the Attack formula.");
-        diagnostics.Add("Metadata-only import: current SwordDefinition requires exact striking flags and empty proc type128; AttackBattleSetup additionally excludes nonzero weapon evade. No runtime package emitted.");
+        diagnostics.Add("This report preserves source records only. Optional schema2 sword export requires explicit metadata selection and supported fields; it does not execute combat.");
         return new(executable.Length, null, item, weapon, proc, attributes, ability, range, menu,
             reader.Records.ToImmutableArray(), diagnostics.ToImmutableArray());
 

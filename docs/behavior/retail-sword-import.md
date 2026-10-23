@@ -1,5 +1,9 @@
 # Selected retail sword and Attack import (ZOD-057)
 
+Follow-up: [ZOD-058](retail-sword-representation.md) adds explicit schema 2 sidecar export
+and raw/effective evade semantics. The metadata-only result and converter-1 hashes below
+record the original ZOD-057 milestone; converter 2 updates its diagnostic without changing raw records.
+
 Date: 2026-10-22. Read-only reference checkout `C:\repositories\fft_decomp` HEAD:
 `611b504d25d4a9b03fab8023d7dbea75fe381d5d`, rechecked before tracing. Target is
 SCUS-94221. This imports the selected original records and documents their actual
@@ -73,16 +77,16 @@ power, evade, raw weapon flags and proc type. The existing synthetic fixtures re
 unchanged. Their25-damage example is not retroactively labeled a retail Broad Sword
 result. Zero status bytes do not authorize replacing the proc type0 with128.
 
-The current `SwordDefinition` requires flags exactly128 and empty proc type128;
-`AttackBattleSetup` additionally excludes nonzero weapon evade. Therefore export
-is explicitly **metadata-only**, with no runtime sword package. It includes the
+At ZOD-057, `SwordDefinition` required flags exactly128 and empty proc type128;
+`AttackBattleSetup` additionally excluded nonzero weapon evade. That milestone's export
+was explicitly **metadata-only**, with no runtime sword package. It includes the
 decoded item/weapon/proc/ability/menu values, complete raw attribute/secondary data,
 record identities/indices/offsets/raw bytes, edition/input hash, pinned reference,
 converter version `fft.selected-sword/1` and diagnostics. Raw unused/padding bytes
 are preserved, including weapon unused03; no meaning is guessed for them.
 
-ZOD-058 tracks representing these verified differences and their supported runtime
-conditions. ZOD-022 may still implement its declared synthetic scenario. Neither
+ZOD-058 now represents these verified differences and their supported setup
+conditions in an explicit version. ZOD-022 may still implement its declared synthetic scenario. Neither
 import nor metadata representation proves equipped-stat derivation, complete
 attack execution, or a retail battle's RNG ordering.
 

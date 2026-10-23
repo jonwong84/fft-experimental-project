@@ -40,6 +40,12 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Current focus (2026-10-22):** ZOD-058's retail sword representation and ZOD-024's
+rendering/input recommendation are complete. Next implement ZOD-022's bounded attack/HP/KO
+transition. ZOD-025 can proceed independently with the synthetic Windows host and ADR 0005's
+manual graphics/input/DPI gates, provided production files have distinct ownership.
+The numbered queue below records the completed foundation sequence.
+
 1. **ZOD-001:** Audit current type ownership and select the first real engine slice.
 2. **ZOD-002:** Establish the evidence format before adding more behavior fixtures.
 3. **ZOD-003:** Trace one job and the ability references needed for the first content slice.
@@ -352,8 +358,8 @@ simulation. This ticket supplies contracts/validation; ZOD-022 implements attack
 **Result:** [Verified retail sword import](behavior/retail-sword-import.md) traces and imports seven selected
 item/weapon/proc/attribute/ability/menu records with exact input identity and raw provenance. Two imports were
 byte-identical; direct byte checks found no discrepancies. Retail power4, evade5, flags0x8e and empty proc
-type0 differ from the synthetic profile. Export remains explicitly metadata-only; ZOD-058 handles runtime
-representation. Existing Squire output is unchanged. Windows locked restore, zero-warning Release build
+type0 differ from the synthetic profile. That milestone's export was metadata-only; ZOD-058 adds explicit
+schema 2 representation separately. Existing Squire output is unchanged. Windows locked restore, zero-warning Release build
 and all 519 solution tests passed on 2026-10-22.
 
 **Scope:** Trace and import the selected original sword/item and attack configuration from verified prepared
@@ -366,7 +372,14 @@ Record any mismatch with ZOD-021's deliberately synthetic configuration before c
 
 ### ZOD-058 — Represent the verified retail sword differences explicitly
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-055, ZOD-056, ZOD-057
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-055, ZOD-056, ZOD-057
+
+**Result:** [Retail sword representation and migration](behavior/retail-sword-representation.md)
+add explicit schema 2 capability flags and empty proc modes, preserve schema 1 behavior, and trace raw
+versus effective weapon evade. Opt-in verified sidecar export preserves retail values, requires selected
+metadata, and rejects unsupported combinations. Two exports are byte-identical; raw records and existing
+Squire output are unchanged. No attacks or retail combat equivalence are claimed.
+Windows locked restore, zero-warning Release build and all 553 solution tests passed on 2026-10-22.
 
 **Scope:** Extend the bounded content/setup contract to represent the verified Broad Sword without replacing
 its power, evade, capability flags or empty proc mode. Decide an explicit package-version/migration policy.
@@ -389,7 +402,13 @@ No retail combat equivalence is claimed without executing ZOD-022 and checking a
 
 ### ZOD-024 — Select a Windows rendering/input stack using a bounded spike
 
-**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** None
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** None
+
+**Result:** [ADR 0005](adr/0005-windows-rendering-and-input-stack.md) recommends MonoGame DesktopGL
+3.8.6 after comparing WindowsDX, FNA and Silk.NET. The isolated locked probe passes with SDK 10.0.402,
+.NET 10.0.13 and Windows x64, including SDL native loading/version query. No production dependency added.
+Window/GPU/texture execution, controllers, resize and DPI remain explicit ZOD-025 manual gates;
+no presentation compatibility is claimed from the no-window probe.
 
 **Scope:** Compare a small set of managed-host options against windowing, texture upload, pixel sampling, indexed palettes/transparency, PS1 blend approximations, depth/order, camera transforms, input, diagnostics, and Windows deployment requirements. Clarify whether platform libraries use native components and how that fits the managed-game-logic requirement.
 
@@ -401,7 +420,7 @@ ZOD-059/060/061 own the later feature work and do not expand this spike into a f
 
 ### ZOD-025 — Create the Windows host with a synthetic battle view
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-024
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-024
 
 **Scope:** Open a window, display a synthetic grid/unit, manage resize/exit, and separate presentation timing from simulation advancement using the selected stack.
 

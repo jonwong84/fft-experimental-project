@@ -142,7 +142,7 @@ public sealed class SwordContentPackageTests
             Assert.Equal("$.swords[0].power", Assert.Throws<ContentPackageValidationException>(() =>
                 SwordContentPackage.ReadJson(root.ToJsonString())).FieldPath);
         }
-        JsonObject version = Parse(); version["schemaVersion"] = 2;
+        JsonObject version = Parse(); version["schemaVersion"] = 3;
         Assert.Equal("$.schemaVersion", Assert.Throws<ContentPackageValidationException>(() =>
             SwordContentPackage.ReadJson(version.ToJsonString())).FieldPath);
         Assert.Throws<ContentPackageValidationException>(() => SwordContentPackage.ReadJson(new string('x', ContentPackage.MaxJsonBytes + 1)));
@@ -164,6 +164,62 @@ public sealed class SwordContentPackageTests
             Assert.Throws<ContentPackageValidationException>(() => SwordContentPackage.Load(path));
         }
         finally { File.Delete(path); }
+    }
+
+    [Fact]
+    public void Upgrade_is_explicit_preserves_legacy_values_and_requires_versioned_fields()
+    {
+        var legacy = SwordContentPackage.ReadJson(Sample);
+        string before = legacy.ToJson();
+        var upgraded = legacy.UpgradeToV2();
+        Assert.Equal(1, legacy.Version);
+        Assert.Equal(before, legacy.ToJson());
+        Assert.DoesNotContain("capabilityFlags", before);
+        Assert.Equal(2, upgraded.Version);
+        Assert.Same(legacy.Swords[0], upgraded.Swords[0]);
+        Assert.Equal(upgraded.ToJson(), SwordContentPackage.ReadJson(upgraded.ToJson()).ToJson());
+        JsonObject root = JsonNode.Parse(upgraded.ToJson())!.AsObject();
+        root["swords"]![0]!.AsObject().Remove("capabilityFlags");
+        Assert.Equal("$.swords[0].capabilityFlags", Assert.Throws<ContentPackageValidationException>(() =>
+            SwordContentPackage.ReadJson(root.ToJsonString())).FieldPath);
+        root = Parse(); root["swords"]![0]!["capabilityFlags"] = 0;
+        Assert.Equal("$.swords[0].capabilityFlags", Assert.Throws<ContentPackageValidationException>(() =>
+            SwordContentPackage.ReadJson(root.ToJsonString())).FieldPath);
+    }
+
+    [Theory]
+    [InlineData(0, 0)] [InlineData(2, 128)] [InlineData(4, 0)] [InlineData(8, 128)] [InlineData(14, 0)]
+    public void V2_preserves_capabilities_raw_evade_and_empty_proc_without_normalization(int capabilities, int proc)
+    {
+        var root = Parse(); root["schemaVersion"] = 2;
+        var row = root["swords"]![0]!;
+        row["capabilityFlags"] = capabilities; row["evade"] = 9;
+        row["addedEffect"]!["typeRaw"] = proc;
+        var package = SwordContentPackage.ReadJson(root.ToJsonString());
+        var sword = Assert.Single(package.Swords);
+        Assert.Equal(128 | capabilities, sword.RawWeaponFlags);
+        Assert.Equal(128, (int)sword.TargetingFlags);
+        Assert.Equal(9, sword.Evade);
+        Assert.Equal(proc, sword.AddedEffect.TypeRaw);
+        Assert.Equal(package.ToJson(), SwordContentPackage.ReadJson(package.ToJson()).ToJson());
+        if (capabilities != 0 || proc != 128)
+            Assert.Throws<ContentPackageValidationException>(() => new SwordContentPackage(package.PackageId,
+                package.ProfileId, package.RequiredMetadataPackageId, package.Swords));
+    }
+
+    [Theory]
+    [InlineData("capabilityFlags", 1)] [InlineData("capabilityFlags", 15)] [InlineData("capabilityFlags", 128)]
+    [InlineData("typeRaw", 64)] [InlineData("status", 1)]
+    public void V2_still_rejects_forced_two_hands_unknown_flags_and_nonempty_procs(string field, int value)
+    {
+        var root = JsonNode.Parse(SwordContentPackage.ReadJson(Sample).UpgradeToV2().ToJson())!;
+        var sword = root["swords"]![0]!;
+        string path;
+        if (field == "typeRaw") { sword["addedEffect"]![field] = value; path = ".addedEffect.typeRaw"; }
+        else if (field == "status") { sword["addedEffect"]!["statusesRaw"]![0] = value; path = ".addedEffect.statusesRaw[0]"; }
+        else { sword[field] = value; path = "." + field; }
+        Assert.Equal("$.swords[0]" + path, Assert.Throws<ContentPackageValidationException>(() =>
+            SwordContentPackage.ReadJson(root.ToJsonString())).FieldPath);
     }
 
     private static JsonObject Parse() => JsonNode.Parse(Sample)!.AsObject();

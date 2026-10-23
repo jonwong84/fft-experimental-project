@@ -1,6 +1,9 @@
 using System.Buffers.Binary;
 using System.Text.Json.Nodes;
 using Fft.AssetTool.Cli;
+using Fft.AssetTool;
+using Fft.Content.ContentPackages;
+using System.Collections.Immutable;
 using Xunit;
 
 namespace Fft.AssetTool.Cli.Tests;
@@ -90,6 +93,56 @@ public sealed class OriginalSwordImporterTests
         Assert.Equal(1, new ImportMetadataCommand(root).Run(["import-sword", "--exe", Path.Combine(root, "outside.exe"), "--output", Path.Combine(root, "scratch", "out")], output, error));
         Assert.Contains("scratch", error.ToString()); Assert.Empty(output.ToString()); Assert.False(Directory.Exists(root));
     }
+
+    [Fact]
+    public void Explicit_export_maps_invented_data_losslessly_and_preserves_raw_import_records()
+    {
+        var source = SupportedSelection();
+        string raw = OriginalSwordImporter.ToJson(source);
+        var package = OriginalSwordContentExporter.CreatePackage(source, Metadata());
+        var sword = Assert.Single(package.Swords);
+        Assert.Equal(2, package.Version);
+        Assert.Equal(source.Weapon.Flags, sword.RawWeaponFlags);
+        Assert.Equal(source.Weapon.Power, sword.Power);
+        Assert.Equal(source.Weapon.Evade, sword.Evade);
+        Assert.Equal(source.Proc.Type, sword.AddedEffect.TypeRaw);
+        Assert.Equal(source.Proc.Statuses.ToArray(), sword.AddedEffect.StatusesRaw.ToArray());
+        Assert.Equal(raw, OriginalSwordImporter.ToJson(source));
+        Assert.Null(source.VerifiedInputSha256); // Mapping never certifies an unverified input.
+        Assert.Equal(package.ToJson(), SwordContentPackage.ReadJson(package.ToJson()).ToJson());
+        Assert.Throws<InvalidDataException>(() => OriginalSwordContentExporter.ExportVerified(Synthetic(), Metadata()));
+    }
+
+    [Theory]
+    [InlineData("flags")] [InlineData("category-flags")] [InlineData("attributes")] [InlineData("proc-mode")] [InlineData("statuses")]
+    [InlineData("range")] [InlineData("formula")] [InlineData("element")] [InlineData("dependency")]
+    public void Export_rejects_unsupported_data_instead_of_discarding_it(string invalid)
+    {
+        var source = SupportedSelection();
+        switch (invalid)
+        {
+            case "flags": source = source with { Weapon = source.Weapon with { Flags = 129 } }; break;
+            case "category-flags": source = source with { Item = source.Item with { TypeFlags = 0x90 } }; break;
+            case "attributes": source = source with { Attributes = ImmutableArray.CreateRange(Enumerable.Repeat((byte)1, 25)) }; break;
+            case "proc-mode": source = source with { Proc = source.Proc with { Type = 64 } }; break;
+            case "statuses": source = source with { Proc = new OriginalProcRecord(0, [1, 0, 0, 0, 0]) }; break;
+            case "range": source = source with { Weapon = source.Weapon with { Range = 2 } }; break;
+            case "formula": source = source with { Weapon = source.Weapon with { Formula = 2 } }; break;
+            case "element": source = source with { Weapon = source.Weapon with { Element = 1 } }; break;
+        }
+        void Export() => OriginalSwordContentExporter.CreatePackage(source, Metadata(invalid == "dependency" ? "sample:package/wrong" : OriginalSwordContentExporter.MetadataPackageId));
+        if (invalid is "range" or "formula" or "element") Assert.Throws<ArgumentOutOfRangeException>(Export);
+        else if (invalid == "statuses") Assert.Throws<ArgumentException>(Export);
+        else Assert.Throws<InvalidDataException>(Export);
+    }
+
+    private static OriginalSwordImport SupportedSelection() => OriginalSwordImporter.DecodeSelection(Synthetic()) with
+    {
+        Attributes = ImmutableArray.CreateRange(new byte[25]),
+    };
+
+    private static ContentPackage Metadata(string id = OriginalSwordContentExporter.MetadataPackageId) =>
+        new(id, OriginalSwordContentExporter.ProfileId, ContentPackageKind.Baseline, null, [], [], []);
 
     private static byte[] Synthetic()
     {
