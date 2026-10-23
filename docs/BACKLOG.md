@@ -40,8 +40,10 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
-**Current focus (2026-10-23):** ZOD-023 completes the bounded M1 headless start-to-result scenario.
-Next create ZOD-025's synthetic Windows host using ADR 0005, with its manual graphics/input/DPI gates.
+**Current focus (2026-10-23):** ZOD-023 completes the bounded M1 headless start-to-result scenario;
+ZOD-025 adds the synthetic Windows view with live GPU/resize/close checks and explicit input/DPI limits.
+Next trace the selected sprite pose (ZOD-027) and map (ZOD-029), with ZOD-026's independent
+capture investigation as a separate lane. These unlock the prepared-asset renderer, not full M2 yet.
 Independent asset/reference investigations can proceed in parallel when the owner selects their scope;
 give each agent distinct files and acceptance criteria. M1 does not imply complete FFT combat or presentation.
 The numbered queue below records the completed foundation sequence.
@@ -443,7 +445,14 @@ ZOD-059/060/061 own the later feature work and do not expand this spike into a f
 
 ### ZOD-025 — Create the Windows host with a synthetic battle view
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-024
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-024
+
+**Result:** [Windows launch, ownership and validation notes](development/windows-synthetic-host.md)
+(2026-10-23). MonoGame DesktopGL 3.8.6 is confined to Client. An immutable two-unit snapshot
+renders with authored textures/font, point sampling, explicit transparency/order, centered resize
+and disposable/resettable graphics resources. Live Windows GPU readback and native close passed;
+rendering leaves CT/RNG/state unchanged. Physical Escape/controller, mixed-DPI and forced-device-reset
+checks remain explicitly unverified. Full solution: 656 passed, including 24 headless layout cases.
 
 **Scope:** Open a window, display a synthetic grid/unit, manage resize/exit, and separate presentation timing from simulation advancement using the selected stack.
 

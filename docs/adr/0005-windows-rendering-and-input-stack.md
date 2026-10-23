@@ -87,6 +87,12 @@ Consequently **window creation, texture upload execution, OpenGL support, 1080p 
 
 ## Consequences and next bounded gate
 
+Implementation follow-up (2026-10-23): ZOD-025 now integrates the exact package in `Fft.Client`.
+[The host note](../development/windows-synthetic-host.md) records live window/GPU upload/readback,
+maximize/restore, native close and snapshot-invariance checks. The no-window experiment above
+remains historical evidence; physical keyboard/controller, mixed-DPI, forced-device-reset and
+deployment checks are still limited as described in the follow-up.
+
 ZOD-025 can add the selected host package at an exact reviewed version, with normal central-version/lock integration, and render invented tiles plus a synthetic palette sprite using prepared data. Its acceptance should record native graphics initialization, transparent/opaque pixels, sampling/order, input, resize/high-DPI mapping and reproducible Windows launch. Add no original game media to that proof. Keep client frame pacing and rendering resource lifetime outside CT/RNG/game simulation.
 
 No full engine renderer abstraction, editor shell, native gameplay port, WotL/Lion War presentation policy, audio driver, video player or complete replacement-texture system is selected here. Those needs should drive their own bounded contracts and checks. This completes the stack-selection investigation with tested managed/native loading evidence and explicit limits; it does not complete the Windows host implementation.

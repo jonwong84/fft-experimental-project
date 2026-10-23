@@ -2,6 +2,10 @@ using Fft.Content;
 using Fft.Core;
 using Fft.Content.Samples;
 using System.Text.Json;
+using Fft.Client.Presentation;
+
+if (args.Length == 1 && args[0] == "--window") return WindowsBattleHost.Run();
+if (args.Length == 2 && args[0] == "--window-check") return WindowsBattleHost.Run(args[1]);
 
 if (args.Length == 0)
 {
@@ -36,7 +40,7 @@ if (args.Length == 2 && args[0] == "--scenario" && args[1] == "two-unit-battle")
 
 if (args.Length != 4 || args[0] != "--content-root" || args[2] != "--asset-id")
 {
-    Console.Error.WriteLine("Usage: Fft.Client [--scenario two-unit-battle | --content-root <directory> --asset-id <namespace:path>]");
+    Console.Error.WriteLine("Usage: Fft.Client [--window | --window-check <new-directory> | --scenario two-unit-battle | --content-root <directory> --asset-id <namespace:path>]");
     return 2;
 }
 

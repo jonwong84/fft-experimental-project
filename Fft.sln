@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zodiac.Engine", "src\Zodiac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zodiac.Engine.Tests", "tests\Zodiac.Engine.Tests\Zodiac.Engine.Tests.csproj", "{073C4DA0-01F5-417A-8682-0084F90BB3DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fft.Client.Tests", "tests\Fft.Client.Tests\Fft.Client.Tests.csproj", "{9134DE49-D40C-40A6-BB95-FE5770CE4CD6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -171,6 +173,18 @@ Global
 		{073C4DA0-01F5-417A-8682-0084F90BB3DC}.Release|x64.Build.0 = Release|Any CPU
 		{073C4DA0-01F5-417A-8682-0084F90BB3DC}.Release|x86.ActiveCfg = Release|Any CPU
 		{073C4DA0-01F5-417A-8682-0084F90BB3DC}.Release|x86.Build.0 = Release|Any CPU
+		{9134DE49-D40C-40A6-BB95-FE5770CE4CD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9134DE49-D40C-40A6-BB95-FE5770CE4CD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9134DE49-D40C-40A6-BB95-FE5770CE4CD6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9134DE49-D40C-40A6-BB95-FE5770CE4CD6}.Debug|x64.Build.0 = Debug|Any CPU
+		{9134DE49-D40C-40A6-BB95-FE5770CE4CD6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9134DE49-D40C-40A6-BB95-FE5770CE4CD6}.Debug|x86.Build.0 = Debug|Any CPU
+		{9134DE49-D40C-40A6-BB95-FE5770CE4CD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9134DE49-D40C-40A6-BB95-FE5770CE4CD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9134DE49-D40C-40A6-BB95-FE5770CE4CD6}.Release|x64.ActiveCfg = Release|Any CPU
+		{9134DE49-D40C-40A6-BB95-FE5770CE4CD6}.Release|x64.Build.0 = Release|Any CPU
+		{9134DE49-D40C-40A6-BB95-FE5770CE4CD6}.Release|x86.ActiveCfg = Release|Any CPU
+		{9134DE49-D40C-40A6-BB95-FE5770CE4CD6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -187,5 +201,6 @@ Global
 		{5B0BE422-3E39-434A-A4B9-7E99515203DE} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 		{1646B60A-8C63-4612-AEF4-B1FBD3C4DA41} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{073C4DA0-01F5-417A-8682-0084F90BB3DC} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
+		{9134DE49-D40C-40A6-BB95-FE5770CE4CD6} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 	EndGlobalSection
 EndGlobal

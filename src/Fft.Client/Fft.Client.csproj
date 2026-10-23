@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.DesktopGL" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Fft.Content\Fft.Content.csproj" />
     <ProjectReference Include="..\Fft.Core\Fft.Core.csproj" />
   </ItemGroup>

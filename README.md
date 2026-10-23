@@ -6,11 +6,15 @@ The proposed dependency boundaries and initial architecture decisions are docume
 
 The prioritized development tickets, dependencies, and acceptance criteria are maintained in [`docs/BACKLOG.md`](docs/BACKLOG.md).
 
-This checkout currently contains a headless .NET 10 console bootstrap, a `Fft.Core` library with immutable map and battle-state types plus a typed movement transition proof of concept, flat-grid movement policies (a prototype and a bounded terrain-cost slice), source-mapped terrain and unit movement inputs, a managed ISO inventory/extraction tool that emits a versioned asset manifest, a separate `Fft.Content` library that loads and verifies files by manifest ID, and a unit `.SPR` parser with a bounded attack-image decoder. The console client can load one prepared asset by ID through `Fft.Content`; it is not yet a game loop or renderer. The movement transition is an architecture proof, not FFT-faithful pathfinding. Asset format coverage is still narrow; SHP/SEQ animation metadata, source-faithful movement/combat rules, campaign logic, an authoring tool, and a graphics/UI framework are not implemented.
+This checkout contains a .NET 10 deterministic, bounded headless battle and a MonoGame Windows host displaying its synthetic starting snapshot. The graphical view supports resize and exit; gameplay input and original map/sprite rendering remain future work. Core and Zodiac.Engine stay independent of graphics/input. The offline asset tools and Fft.Content provide a separate prepared-file pipeline; asset coverage and supported simulation rules remain narrow. Full FFT combat, campaign, animation and authoring UI are not implemented.
 
 ## Build, run, and test
 
 Requires the .NET SDK version selected by `global.json` (currently 10.0.402). See [SDK and dependency policy](docs/development/build-reproducibility.md) for installation, locked restoration, and deliberate upgrades.
+
+On Windows, `--window` opens the synthetic battle view. See [launch and graphical validation](docs/development/windows-synthetic-host.md)
+for resize/exit controls, the finite `--window-check` capture, and input/DPI limits. Rendering
+does not advance the battle; use `--scenario two-unit-battle` to execute its headless script.
 
 Content metadata validation uses the shared `Fft.Content.ContentPackages` API. It reads data only; it does not load authoring programs, the BIN or assets:
 
@@ -24,6 +28,8 @@ Use repeated `--addon <path>` arguments to validate explicitly selected addition
 dotnet restore Fft.sln --locked-mode
 dotnet build Fft.sln -c Release --no-restore
 dotnet run --project src/Fft.Client/Fft.Client.csproj -c Release --no-build
+dotnet run --project src/Fft.Client -c Release --no-build --no-restore -- --scenario two-unit-battle
+dotnet run --project src/Fft.Client -c Release --no-build --no-restore -- --window
 dotnet run --project src/Fft.Client/Fft.Client.csproj -c Release -- --content-root scratch/prepared-chocobo-content --asset-id base:battle/cyoko.spr
 dotnet run --project src/Fft.AssetTool.Cli/Fft.AssetTool.Cli.csproj -c Release -- verify-sprite --content-root scratch/prepared-chocobo-content
 dotnet run --project src/Fft.AssetTool.Cli/Fft.AssetTool.Cli.csproj -c Release -- verify-sprite --content-root scratch/prepared-chocobo-content --preview-output scratch/chocobo-palettes.png

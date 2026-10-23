@@ -17,8 +17,10 @@
 - `Fft.Core` contains common identifiers/value types, map data types, a typed battle transition proof, and flat-grid movement policies (one prototype and one bounded terrain-cost slice).
 - `Fft.Content` loads a versioned manifest and hash-verified loose files by logical asset ID. It references `Fft.Core`.
 - `Fft.AssetTool` and `Fft.AssetTool.Cli` handle offline image inventory, extraction, and a narrow unit `.SPR` parsing/decoding proof. The CLI composes the tools.
-- `Fft.Client` is a console composition proof. It can load a prepared asset and run the deterministic synthetic two-unit battle; it is not yet an interactive game client.
-- Tests exist for the current projects. No complete campaign runtime, graphics/audio backend, input loop, or save system exists yet.
+- `Fft.Client` can load a prepared asset, run the deterministic synthetic two-unit battle headlessly,
+  and open a MonoGame Windows view of its immutable starting snapshot. Gameplay input is not implemented.
+- Tests exist for the current projects, including pure client layout tests. The synthetic graphics
+  host has separate Windows checks; no complete campaign runtime, audio adapter or save system exists yet.
 
 The architecture should evolve from this shape without splitting projects just for conceptual neatness. Add a new assembly when it creates a useful dependency boundary or an independently testable responsibility.
 
@@ -29,7 +31,12 @@ Implementation update (2026-10-22): ZOD-007/008 now provide that bounds-only eng
 Implementation update (2026-10-23): [ZOD-023](../behavior/two-unit-battle-scenario.md) completes bounded
 M1 headless battle integration with an explicit synthetic first-KO objective, immutable restart/replay and
 terminal-command rejection. FFT owns the lifecycle and rule composition, Content owns the invented setup/script,
-and Client owns console output. Full FFT combat/campaign and Windows presentation remain separate work.
+and Client owns console output. Full FFT combat/campaign remain separate work.
+
+Implementation update (2026-10-23): [ZOD-025](../development/windows-synthetic-host.md) adds the
+MonoGame DesktopGL host in Client only. It renders a fixed synthetic snapshot without simulation
+transitions or original assets. Live GPU/resize/close checks and headless layout tests passed;
+mixed-DPI, physical input and prepared-map/sprite rendering remain bounded follow-up work.
 
 ## Target dependency shape
 
@@ -98,7 +105,11 @@ Extract proven reusable responsibilities from the mixed `Fft.Core` prototype int
 
 This boundary is conceptual first. `Fft.Core` currently contains FFT-flavored map and movement models and is not yet a clean reusable engine package. Generalize or move a type only when its engine-level contract is understood and an FFT adapter can preserve behavior. Keep project/namespace renames separate from behavior changes.
 
-`Fft.Core` is the current home for the domain and simulation boundary, but it is not yet cleanly split into reusable Zodiac contracts and FFT-specific rules. A future assembly split may introduce a Zodiac-owned engine library and an FFT content/rules library after seams are proven. An application project is a future option for client-facing use cases once those use cases exist; it should not be created only to add another layer around the current console command. [ADR 0005](../adr/0005-windows-rendering-and-input-stack.md) recommends MonoGame DesktopGL for the first Windows presentation/input adapter; no production host or dependency is integrated yet, and graphical/device/DPI validation remains ZOD-025 work.
+`Fft.Core` is the current home for FFT simulation; the proven reusable bounds-only slice lives in
+`Zodiac.Engine`. Further assembly splits should follow demonstrated seams. An application project
+remains a future option when concrete use cases require it. [ADR 0005](../adr/0005-windows-rendering-and-input-stack.md)
+selects MonoGame DesktopGL, integrated by ZOD-025 in Client only. See the
+[host note](../development/windows-synthetic-host.md) for executed checks and remaining DPI/device/input limits.
 
 The dependency rule is inward: simulation code must not reference `Fft.Client`, graphics/audio/input packages, operating-system APIs, the BIN, or the C reference. Platform adapters implement interfaces owned by an inward-facing layer. The client is the composition root that chooses implementations and connects input, use cases, content, and presentation.
 
@@ -131,7 +142,7 @@ Commands express requested actions; the simulation validates them. Events descri
 ### Application, platform, and presentation
 
 - Application use cases coordinate requests such as starting a battle, issuing a simulation command, loading campaign data, and saving. They do not implement game rules or draw pixels.
-- Platform adapters own Windows windowing, graphics, audio, controller/keyboard input, file locations, and OS timing. Exact libraries are deferred until a rendering proof identifies requirements.
+- Platform adapters own Windows windowing, graphics, audio, controller/keyboard input, file locations, and OS timing. MonoGame DesktopGL now hosts the synthetic Windows view; broader adapters remain future work.
 - Presentation translates input into application commands and turns state/events into view models or render submissions. It never writes battle state directly.
 - Keep the simulation executable headlessly in tests and command-line tools.
 
@@ -167,7 +178,7 @@ The terrain and unit movement input model, including its source mapping and unim
 
 ## Deferred decisions and open questions
 
-- Windows graphics/windowing/audio/input libraries and deployment format.
+- Production audio/input coverage and Windows deployment format beyond the synthetic MonoGame host.
 - Whether turn/campaign runtime eventually warrants separate `Fft.Simulation` and `Fft.Application` assemblies.
 - Exact save schema, migration policy, and backup behavior.
 - Package archive format, signing/trust policy, conflict resolution, and hot reload needs.
