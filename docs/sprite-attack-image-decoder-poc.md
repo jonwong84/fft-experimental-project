@@ -6,6 +6,11 @@ This milestone implements the fixed prefix model and compressed attack-image
 stream for a unit `.SPR` file, plus a loose-file reader addressed by logical
 asset IDs. It does not parse SHP/SEQ records or image display metadata.
 
+[ZOD-027's later idle-pose trace](architecture/zod-027-chocobo-idle-pose.md) selects an ordinary
+Chocobo frame and documents its SHP/SEQ/palette composition at a newer pinned reference revision.
+It distinguishes ordinary-sheet low-first pixel packing from this attack-image fixture's
+managed high-first output contract; it adds no parser or rendered-equivalence claim.
+
 The reference is the local source snapshot recorded at decomp commit
 `611b504d25d4a9b03fab8023d7dbea75fe381d5d`. In that snapshot:
 

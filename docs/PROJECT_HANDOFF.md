@@ -1,11 +1,13 @@
 # Zodiac / FFT Project Handoff
 
 **Latest checkpoint (2026-10-23):** ZOD-023's bounded headless battle and ZOD-025's synthetic
-Windows host are implemented. Start with the current [backlog](BACKLOG.md) and
+Windows host are implemented; ZOD-027's [Chocobo idle-pose trace](architecture/zod-027-chocobo-idle-pose.md)
+is complete as documentation and local metadata verification. Start with the current [backlog](BACKLOG.md) and
 [Windows host instructions](development/windows-synthetic-host.md); the original handoff sections
 below are historical. Locked restore, Release build and all **656 tests** passed for ZOD-025.
-Next investigations: selected sprite pose (ZOD-027), map inputs (ZOD-029), and independent capture
-workflow (ZOD-026). No original media or live simulation gameplay has entered the graphical view.
+Next: prepare the selected pose (ZOD-028), trace map inputs (ZOD-029), and establish the independent
+capture workflow (ZOD-026). ZOD-027 added no executable changes and did not rerun the solution suite.
+No original media or live simulation gameplay has entered the graphical view.
 
 **Prepared:** 2026-10-20  
 **Workspace:** `C:\repositories\fft-experimental-project`  

@@ -42,8 +42,9 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 **Current focus (2026-10-23):** ZOD-023 completes the bounded M1 headless start-to-result scenario;
 ZOD-025 adds the synthetic Windows view with live GPU/resize/close checks and explicit input/DPI limits.
-Next trace the selected sprite pose (ZOD-027) and map (ZOD-029), with ZOD-026's independent
-capture investigation as a separate lane. These unlock the prepared-asset renderer, not full M2 yet.
+ZOD-027 now traces the first ordinary Chocobo idle pose. ZOD-028 can implement that bounded
+prepared slice; ZOD-029's map trace and ZOD-026's independent capture investigation remain
+separate lanes. These unlock the prepared-asset renderer, not full M2 yet.
 Independent asset/reference investigations can proceed in parallel when the owner selects their scope;
 give each agent distinct files and acceptance criteria. M1 does not imply complete FFT combat or presentation.
 The numbered queue below records the completed foundation sequence.
@@ -468,7 +469,14 @@ checks remain explicitly unverified. Full solution: 656 passed, including 24 hea
 
 ### ZOD-027 — Trace one sprite frame, palette, and animation selection path
 
-**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** None
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** None
+
+**Result:** [Chocobo idle-pose source map and preparation scope](architecture/zod-027-chocobo-idle-pose.md)
+(2026-10-23), pinned to reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+Select sheet 134, primary SHP frame 9, idle SEQ 6 and explicit palette bank 0.
+Records, six-piece composition, ordinary-sheet nibble packing, reverse piece draw order,
+palette/STP handling and source wait units are documented and checked against local file metadata.
+No parser/runtime changes or original-game rendering comparison; camera, timing and GPU limits remain explicit.
 
 **Scope:** Starting from the existing `.SPR` proof and [sprite decoder note](sprite-attack-image-decoder-poc.md), select one ordinary unit pose and trace the minimum SHP/SEQ references, palette selection, piece transforms, transparency/blending, and timing needed to display it.
 
@@ -476,7 +484,11 @@ checks remain explicitly unverified. Full solution: 656 passed, including 24 hea
 
 ### ZOD-028 — Parse and prepare the selected sprite-frame slice
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-027
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-027
+
+**Selected slice:** Follow ZOD-027's [bounded implementation recommendation](architecture/zod-027-chocobo-idle-pose.md#smallest-zod-028-implementation):
+ordinary Chocobo primary frame 9 with bank 0; optional sequence 6 idle loop only.
+Keep attack/EVTCHR/SP2, special part splitting and general animation interpretation outside this first converter.
 
 **Scope:** Implement the selected metadata parsers/converter and decoded render input for one pose or short sequence.
 
