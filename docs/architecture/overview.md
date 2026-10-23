@@ -45,6 +45,11 @@ source-traced Chocobo static pose as manifest-addressable metadata and RGBA data
 loads that representation without AssetTool/original-format dependencies. Prepared scene rendering
 still awaits the selected map pipeline; deterministic simulation is unchanged.
 
+Discovery update (2026-10-23): [ZOD-029](zod-029-map003-source-map.md) selects MAP003's day/dry
+base scene and a four-cell alignment checkpoint. Its source terrain, indexed texture/palette,
+geometry and frozen presentation metadata remain distinct preparation responsibilities for ZOD-030.
+The existing bounded combat profile must not force source heights or flags to be rewritten.
+
 ## Target dependency shape
 
 ### Product boundaries agreed with the owner

@@ -43,7 +43,8 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 **Current focus (2026-10-23):** ZOD-023 completes the bounded M1 headless start-to-result scenario;
 ZOD-025 adds the synthetic Windows view with live GPU/resize/close checks and explicit input/DPI limits.
 ZOD-027 traces the first ordinary Chocobo idle pose; ZOD-028 prepares and loads its static
-render input with verified local files. Next trace map inputs (ZOD-029), then prepare them
+render input with verified local files. ZOD-029 selects MAP003's frozen day/dry base scene
+and traces its geometry, texture/palette and terrain inputs. Next prepare that slice
 (ZOD-030). ZOD-026's independent capture investigation remains a separate lane. These
 unlock the prepared-asset renderer, not full M2 yet.
 Independent asset/reference investigations can proceed in parallel when the owner selects their scope;
@@ -505,7 +506,14 @@ Keep attack/EVTCHR/SP2, special part splitting and general animation interpretat
 
 ### ZOD-029 — Trace one battle map's geometry, terrain, and texture inputs
 
-**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** None
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** None
+
+**Result:** [MAP003 source map, alignment checkpoint and converter scope](architecture/zod-029-map003-source-map.md)
+(2026-10-23), reference `11464943bbdbd2a0af022d90cb7f10455cf911df`. Select day/dry,
+default arrangement, frozen presentation. Verified GNS selects MAP003.8 texture and MAP003.9
+primary mesh; terrain is 9x13 in two fixed-stride source layers. A four-cell rug checkpoint
+matches terrain height to exact quad positions/materials/normals/flags. State/animation, camera,
+lighting and original-rendering limits are explicit. No parser/renderer implementation or new test run.
 
 **Scope:** Select one small battle map and trace its file selection, geometry/texture/palette data, tile heights/slopes/layers, coordinates, and minimum scene setup. Distinguish visual geometry from movement terrain.
 
@@ -513,7 +521,12 @@ Keep attack/EVTCHR/SP2, special part splitting and general animation interpretat
 
 ### ZOD-030 — Prepare and load the selected map slice
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-029
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-029
+
+**Selected slice:** Follow ZOD-029's [preparation recommendation](architecture/zod-029-map003-source-map.md#minimum-zod-030-preparation-and-zod-031-scene-setup):
+MAP003 base day/dry geometry, per-polygon palette/page references, frozen presentation metadata,
+and both valid terrain layers. Preserve native heights; current M1 combat's height-10 restriction
+must not cause source terrain to be rewritten. Alternate states and animation playback are deferred.
 
 **Scope:** Parse/convert the traced map inputs into prepared geometry/textures and FFT-owned simulation terrain definitions.
 
