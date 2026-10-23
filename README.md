@@ -1,59 +1,92 @@
-# Zodiac — FFT native reimplementation
+# Zodiac / FFT
 
-Zodiac is a Windows-first C#/.NET game engine, with the North American PS1 release of Final Fantasy Tactics (`SCUS-94221`) as its first planned content set. See [`PROJECT_PLAN.md`](PROJECT_PLAN.md) and [`docs/architecture/overview.md`](docs/architecture/overview.md) for scope and architecture.
+This repository develops **Zodiac**, a reusable C#/.NET engine, alongside a separate **Final Fantasy Tactics implementation** that uses it. The application target is a complete, playable Windows reimplementation of the North American PS1 release, `SCUS-94221`.
 
-The proposed dependency boundaries and initial architecture decisions are documented in [`docs/architecture/overview.md`](docs/architecture/overview.md) and [`docs/adr/`](docs/adr/). A detailed restart point for future contributors is in [`docs/PROJECT_HANDOFF.md`](docs/PROJECT_HANDOFF.md).
+The project is an early prototype. A bounded two-unit battle is playable, and one prepared original map and sprite pose can be inspected together. The original game is not yet playable as a complete campaign.
 
-The prioritized development tickets, dependencies, and acceptance criteria are maintained in [`docs/BACKLOG.md`](docs/BACKLOG.md).
+## Engine, framework and content
 
-This checkout contains a .NET 10 deterministic, bounded headless battle, a playable local two-unit Windows example, and separate synthetic/prepared MAP003 inspection views. Core and Zodiac.Engine stay independent of graphics/input. The offline asset tools and Fft.Content provide a separate prepared-file pipeline; asset coverage and supported simulation rules remain narrow. Full FFT combat, campaign, animation and authoring UI are not implemented.
+The design has three parts:
 
-## Build, run, and test
+- **Zodiac.Engine:** reusable facilities independent of FFT rules, formats and assets.
+- **FFT framework:** FFT simulation rules, compatibility policies, content schemas and runtime systems. These currently live in `Fft.Core` and parts of `Fft.Content`.
+- **FFT content:** particular definitions, scenarios and assets used by that framework, including invented examples and locally prepared original data.
 
-Requires the .NET SDK version selected by `global.json` (currently 10.0.402). See [SDK and dependency policy](docs/development/build-reproducibility.md) for installation, locked restoration, and deliberate upgrades.
+FFT keeps its own `Fft.*` namespace and project space. FFT depends on Zodiac; Zodiac does not depend on FFT. Rendering, input and UI belong to `Fft.Client`, while original-format preparation belongs to `Fft.AssetTool` and `Fft.AssetTool.Cli`. Simulation stays independent of graphics, input, wall-clock time and file I/O.
 
-On Windows, `--window` opens the synthetic battle view. See [launch and graphical validation](docs/development/windows-synthetic-host.md)
-for resize/exit controls, the finite `--window-check` capture, and input/DPI limits. Rendering
-does not advance the battle; use `--scenario two-unit-battle` to execute its headless script.
+**Zodiac's implemented scope is currently small:** grid positions/bounds, an unobstructed flat-grid movement calculation, and deterministic RNG contracts. FFT owns the PS1 RNG implementation and gameplay draw ordering, terrain-aware movement, turn scheduling, combat and scenario outcomes. The [Relay sample](samples/Relay/README.md) demonstrates the engine's movement calculation with independent, invented rules. Broader engine capabilities will be extracted incrementally as their reusable contracts become clear.
 
-Use `--battle` for the [playable two-unit example](docs/development/playable-battle.md):
-select units, move/attack/wait, advance turns, inspect HP/rejections and restart. The
-player controls both units. `--battle-check <fresh-scratch-directory>` completes its
-programmed UI/replay check. This supported synthetic battle remains separate from MAP003.
+See the [architecture overview](docs/architecture/overview.md) and [ADR 0004](docs/adr/0004-zodiac-engine-and-fft-game-boundary.md) for the ownership boundary and intended direction.
 
-The [selected sprite-pose preparation guide](docs/development/prepared-sprite-pose.md) describes
-`prepare-sprite-pose` and the client's `--sprite-pose` load check. The prepared Chocobo pose
-is static render input, now displayed with MAP003 through `--prepared-scene`.
+## What works today
 
-The [selected map preparation guide](docs/development/prepared-map-slice.md) describes
-`prepare-map` and the client's `--map` load check. MAP003's day/dry geometry, indexed
-textures, frozen presentation metadata and native terrain are prepared separately
-from combat integration. See the [fixed prepared scene guide](docs/development/prepared-scene.md)
-for `--prepared-scene --map-root <directory> --pose-root <directory>`, finite GPU captures,
-the authored camera and explicit rendering/comparison limits.
+- **Playable synthetic battle:** control both units with mouse or keyboard; select, inspect legal moves/targets, move, attack, wait, advance turns and restart. HP, choices, rejections and the first-KO result are visible. [Controls and validation](docs/development/playable-battle.md).
+- **Deterministic headless battle:** the same supported scenario runs through typed commands, with reproducible state/RNG results and replay checks. [Scenario and rules](docs/behavior/two-unit-battle-scenario.md).
+- **Prepared original scene:** MAP003 and a held Chocobo pose render from prepared files with a fixed authored camera. Per-polygon palettes, native terrain placement and sprite piece order are preserved; lighting and depth behavior use documented approximations. [Scene guide and comparison limits](docs/development/prepared-scene.md).
+- **Offline asset preparation:** verified ordinary-file extraction, bounded sprite/map conversion, hash-verified prepared loading and narrow typed content-package validation. [Map preparation](docs/development/prepared-map-slice.md), [sprite-pose preparation](docs/development/prepared-sprite-pose.md), [content packages](docs/architecture/zod-016-content-packages.md).
 
-Content metadata validation uses the shared `Fft.Content.ContentPackages` API. It reads data only; it does not load authoring programs, the BIN or assets:
+The playable battle uses invented units, art and a small height-10 map. MAP003 remains a separate static inspection scene with its native terrain intact. Rendering that map does not expand the supported combat domain.
 
-```powershell
-dotnet run --project src/Fft.AssetTool.Cli -c Release -- validate-content --package docs/fixtures/content/metadata-synthetic.json
-```
+Full original combat, campaign, AI, save/load, audio, general animation playback and authoring UI remain future work. Independent original/emulator visual comparison is also pending; current source-derived and synthetic checks do not establish complete original-game equivalence. Original behavior is the default compatibility target, with intentional new mechanics and custom content kept separate.
 
-Use repeated `--addon <path>` arguments to validate explicitly selected additions against that baseline. Exit codes are 0 for valid metadata, 1 for invalid content or file errors, and 2 for command usage errors. See [production content packages](docs/architecture/zod-016-content-packages.md) for C# authoring, deterministic export, diagnostics and limits. This validates structural metadata, not battle readiness or original-game equivalence.
+## Build, test and play
+
+Requires the exact .NET SDK selected by `global.json`, currently **10.0.402**. The graphical commands currently support Windows. Build/test and the headless scenario require no original game files or GPU. See the [SDK and dependency policy](docs/development/build-reproducibility.md) for reproducible setup and deliberate upgrades.
+
+From the repository root:
 
 ```powershell
 dotnet restore Fft.sln --locked-mode
 dotnet build Fft.sln -c Release --no-restore
-dotnet run --project src/Fft.Client/Fft.Client.csproj -c Release --no-build
-dotnet run --project src/Fft.Client -c Release --no-build --no-restore -- --scenario two-unit-battle
-dotnet run --project src/Fft.Client -c Release --no-build --no-restore -- --window
+dotnet test Fft.sln -c Release --no-build --no-restore
 dotnet run --project src/Fft.Client -c Release --no-build --no-restore -- --battle
-dotnet run --project src/Fft.Client/Fft.Client.csproj -c Release -- --content-root scratch/prepared-chocobo-content --asset-id base:battle/cyoko.spr
-dotnet run --project src/Fft.AssetTool.Cli/Fft.AssetTool.Cli.csproj -c Release -- verify-sprite --content-root scratch/prepared-chocobo-content
-dotnet run --project src/Fft.AssetTool.Cli/Fft.AssetTool.Cli.csproj -c Release -- verify-sprite --content-root scratch/prepared-chocobo-content --preview-output scratch/chocobo-palettes.png
-dotnet test Fft.sln -c Release --no-build
-dotnet run --project src/Fft.AssetTool.Cli/Fft.AssetTool.Cli.csproj -c Release -- inventory --bin scratch/fft-clean-base-game.bin --cue scratch/fft-clean-base-game.cue
-dotnet run --project src/Fft.AssetTool.Cli/Fft.AssetTool.Cli.csproj -c Release -- extract --bin scratch/fft-clean-base-game.bin --cue scratch/fft-clean-base-game.cue --path MENU/TUTO7.SCR --output scratch/extracted-sample
-dotnet run --project src/Fft.AssetTool.Cli/Fft.AssetTool.Cli.csproj -c Release -- extract --bin scratch/fft-clean-base-game.bin --cue scratch/fft-clean-base-game.cue --all-data --output scratch/all-data-extraction
 ```
 
-With no arguments, the client prints an identifying line and exits with code 0. With `--content-root` and `--asset-id`, it loads the prepared manifest, reads the selected file, and verifies its size and SHA-256. The `verify-sprite` AssetTool command checks the local Chocobo `.SPR` input and its decoded 256×200 packed-4bpp output against a hash fixture in `docs/fixtures/`; optional `--preview-output` writes a 4×4 PNG contact sheet for all 16 palette banks under ignored `/scratch/`. The preview is a diagnostic approximation, not an emulation of PS1 blending or final display output. The fixture includes hashes and source provenance, not image data. The AssetTool inventory command verifies the supported local image profile, reads its ISO primary-volume tree, and compares it with the local reference inventory. The `extract` command accepts repeated `--path` options or `--all-data` for every entry marked `data` in the reference inventory. It validates the complete inventory for Windows path collisions before writing anything, verifies paths and LBAs against the image, checks each extracted SHA-256 against the reference, and writes only to a dedicated directory under ignored `/scratch/`. Mixed XA/STR entries remain unsupported. `dotnet test` runs the Core and AssetTool xUnit projects.
+In the playable window, `N` advances to the next turn, `M` selects Move, `A` selects Attack, `W` waits, and `R` restarts. Click units/cards and destinations/targets, or use the keyboard cursor. The player controls both units. See the [complete controls and example victory sequence](docs/development/playable-battle.md#controls).
+
+To run the headless script or the separate static synthetic window:
+
+```powershell
+dotnet run --project src/Fft.Client -c Release --no-build --no-restore -- --scenario two-unit-battle
+dotnet run --project src/Fft.Client -c Release --no-build --no-restore -- --window
+```
+
+The latest recorded implementation milestone, ZOD-032, passed locked restore, a Release build with zero warnings and **868 tests** across Engine, Core, Content, AssetTool, AssetTool CLI and Client. Windows GPU/UI checks are separate opt-in checks; physical input timing, mixed-DPI behavior and clean-machine validation have remaining manual follow-ups. See the [playable check](docs/development/playable-battle.md#automated-windows-check) and [synthetic host checks](docs/development/windows-synthetic-host.md).
+
+## Inspect prepared original assets
+
+After following the [map](docs/development/prepared-map-slice.md) and [pose](docs/development/prepared-sprite-pose.md) preparation guides, launch their default output roots together:
+
+```powershell
+dotnet run --project src/Fft.Client -c Release --no-build --no-restore -- --prepared-scene --map-root scratch/prepared-map003 --pose-root scratch/prepared-chocobo-idle
+```
+
+Use the directories you actually prepared if their names differ. The [scene guide](docs/development/prepared-scene.md) describes the fixed camera, finite captures, rendering policy and unsupported PS1 effects. The client also supports `--content-root <directory>` with `--asset-id`, `--sprite-pose` or `--map` for headless prepared-file load checks. With no arguments it prints an identifying line and exits.
+
+The running application loads prepared files. The original BIN is an offline import input; runtime does not read it or invoke the reference C code. No original media is included in this repository. Keep the BIN, extracted files, decoded/prepared assets, generated inventories and captures under ignored `scratch/`; never commit them. The local reference checkout at `C:\repositories\fft_decomp` is for read-only source study and validation.
+
+## Offline tooling
+
+The import tools verify the supported local image profile and compare paths, LBAs and file hashes against the reference inventory. Ordinary-file extraction supports selected paths or all `data` entries; mixed XA/STR entries remain unsupported. Choose a fresh output directory under `scratch/`.
+
+```powershell
+dotnet run --project src/Fft.AssetTool.Cli -c Release --no-build --no-restore -- inventory --bin scratch/fft-clean-base-game.bin --cue scratch/fft-clean-base-game.cue
+dotnet run --project src/Fft.AssetTool.Cli -c Release --no-build --no-restore -- extract --bin scratch/fft-clean-base-game.bin --cue scratch/fft-clean-base-game.cue --all-data --output scratch/all-data-extraction
+```
+
+See the [asset inventory proof](docs/asset-inventory-poc.md) and [sprite decoder proof](docs/sprite-attack-image-decoder-poc.md) for earlier extraction/diagnostic workflows. Prepared map and pose conversion commands are in their linked guides.
+
+Structural content metadata can be validated without original files:
+
+```powershell
+dotnet run --project src/Fft.AssetTool.Cli -c Release --no-build --no-restore -- validate-content --package docs/fixtures/content/metadata-synthetic.json
+```
+
+Repeated `--addon <path>` options validate explicitly selected additions against the baseline. This checks metadata structure and references; it does not establish battle readiness or original-game equivalence. See [content packages](docs/architecture/zod-016-content-packages.md) for authoring, export and diagnostics.
+
+## Project documentation
+
+- [Project plan](PROJECT_PLAN.md): complete intended scope, phases and unresolved decisions.
+- [Architecture](docs/architecture/overview.md) and [ADRs](docs/adr/): ownership and significant design choices.
+- [Backlog](docs/BACKLOG.md): current work order, dependencies and acceptance criteria.
+- [Project handoff](docs/PROJECT_HANDOFF.md): latest checkpoint followed by historical development context.
