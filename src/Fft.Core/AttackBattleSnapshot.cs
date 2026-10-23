@@ -52,9 +52,15 @@ public sealed record AttackUnitState
         Brave = brave; ZodiacSign = zodiacSign; Facing = facing; Status = status; KoCount = koCount;
         RightHandWeaponId = rightHandWeaponId;
     }
+
+    internal AttackUnitState WithResult(int hp, BattleFacing facing, int koCount) => new(UnitId,
+        hp, MaxHp, Mp, MaxMp, PhysicalAttack, ClassPhysicalEvade, RightHandEvade, LeftHandEvade,
+        AccessoryEvade, Brave, ZodiacSign, facing,
+        hp == 0 ? AttackUnitStatus.Dead : hp <= MaxHp / 5 ? AttackUnitStatus.Critical : AttackUnitStatus.None,
+        koCount, RightHandWeaponId);
 }
 
-/// <summary>Snapshot contract only: no attack formula, HP mutation or death scheduling is implemented here.</summary>
+/// <summary>Immutable attack state; death scheduling remains outside the bounded simulator.</summary>
 public sealed class AttackBattleSnapshot
 {
     public TurnBattleState TurnBattle { get; }
@@ -87,6 +93,11 @@ public sealed class AttackBattleSnapshot
     {
         if (Combatants.Any(unit => unit.Status != AttackUnitStatus.None))
             throw new NotSupportedException("Initial attack setup requires healthy units; result snapshots may represent Dead/Critical.");
+        ValidateSupportedGeometry();
+    }
+
+    internal void ValidateSupportedGeometry()
+    {
         var positions = new HashSet<TilePosition>();
         foreach (BattleUnitState unit in TurnBattle.Battle.Units)
         {
@@ -109,10 +120,11 @@ public sealed class AttackBattleSnapshot
     }
 }
 
-/// <summary>Future attack identity and ordered result event contracts; this ticket does not emit them.</summary>
+/// <summary>A bounded unit-target command, validated atomically before publishing effects.</summary>
 public sealed record AttackUnitCommand(BattleUnitId ActorId, BattleUnitId TargetId);
-public enum AttackCommandRejection { None, UnknownActor, UnknownTarget, InactiveActor, ActionAlreadyTaken, SelfTarget, DeadTarget, OutOfRange, UnsupportedSetup }
+public enum AttackCommandRejection { None, UnknownActor, UnknownTarget, InactiveActor, ActionAlreadyTaken, SelfTarget, DeadTarget, OutOfRange, UnsupportedSetup, RandomDrawCountExhausted }
 public abstract record AttackResultEvent;
+public sealed record AttackTurnBattleEvent(TurnBattleEvent Event) : AttackResultEvent;
 public sealed record AttackResolvedEvent(BattleUnitId ActorId, BattleUnitId TargetId, bool Hit, bool Critical, int Damage) : AttackResultEvent;
 public sealed record AttackHpChangedEvent(BattleUnitId UnitId, int Before, int After) : AttackResultEvent;
 public sealed record AttackStatusChangedEvent(BattleUnitId UnitId, AttackUnitStatus Before, AttackUnitStatus After) : AttackResultEvent;

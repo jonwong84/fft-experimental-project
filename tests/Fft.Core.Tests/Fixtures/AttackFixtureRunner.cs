@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Collections.Immutable;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -7,7 +8,7 @@ using static Fft.Core.Tests.Fixtures.MovementFixtureRunner;
 
 namespace Fft.Core.Tests.Fixtures;
 
-// V2 is test infrastructure. No JSON or fixture loading enters simulation.
+// V2 preserves contract-only attacks. V3 supplies explicit weapon projections and executes attacks.
 internal static class AttackFixtureRunner
 {
     internal static Report Run(string json, string implementationRevision)
@@ -22,7 +23,8 @@ internal static class AttackFixtureRunner
             RejectDuplicateKeys(doc.RootElement, "$");
             JsonNode root = JsonNode.Parse(json)!;
             Shape(root, "format schemaVersion fixtureId execution purpose target reference evidence preconditions exclusions unknowns scenario sourceCases expectations captures");
-            EqualLiteral(root, "format", "fft.behavior-fixture"); Require(Int(root["schemaVersion"]) == 2, "Unsupported schemaVersion");
+            EqualLiteral(root, "format", "fft.behavior-fixture");
+            int version = Int(root["schemaVersion"]); Require(version is 2 or 3, "Unsupported schemaVersion");
             id = StableId(root["fixtureId"]); Text(root["purpose"]);
             Shape(root["target"], "game edition region platform policyId");
             EqualLiteral(root["target"]!, "game", "FFT"); EqualLiteral(root["target"]!, "edition", "SCUS-94221");
@@ -42,9 +44,21 @@ internal static class AttackFixtureRunner
             provenance = new JsonObject(new[] { "target", "reference", "evidence", "preconditions", "exclusions", "unknowns", "captures" }
                 .Select(name => new KeyValuePair<string, JsonNode?>(name, root[name]!.DeepClone()))).ToJsonString();
             string execution = Text(root["execution"]); Require(execution is "scenario" or "description-only", "Unsupported execution");
-            var scenario = root["scenario"]!; Shape(scenario, "weaponIds initialState commands");
-            string[] weapons = Strings(scenario["weaponIds"]); foreach (string weapon in weapons) _ = new AssetId(weapon);
+            var scenario = root["scenario"]!;
+            Shape(scenario, version == 2 ? "weaponIds initialState commands" : "weapons initialState commands");
+            BoundedSwordWeapon[] definitions = version == 2 ? [] : Array(scenario["weapons"]).Select(node =>
+            {
+                Shape(node, "id power");
+                return new BoundedSwordWeapon(new AssetId(StableId(node!["id"])), Int(node["power"]));
+            }).ToArray();
+            string[] weapons = version == 2 ? Strings(scenario["weaponIds"]) : definitions.Select(weapon => weapon.Id.Value).ToArray();
+            foreach (string weapon in weapons) _ = new AssetId(weapon);
             Require(weapons.Distinct(StringComparer.Ordinal).Count() == weapons.Length, "Duplicate weapon declaration");
+            if (version == 3)
+            {
+                var audit = JsonNode.Parse(provenance)!.AsObject(); audit["weapons"] = scenario["weapons"]!.DeepClone();
+                provenance = audit.ToJsonString();
+            }
             var initial = scenario["initialState"]!;
             Shape(initial, "map units rngState turns combatants");
             var mapNode = initial["map"]!; Shape(mapNode, "id width depth layerCount tiles");
@@ -85,27 +99,53 @@ internal static class AttackFixtureRunner
                 _ = ReadState(group["state"]!, map, mapId, weapons);
                 foreach (var ev in Array(group["events"])) ValidateEvent(ev!);
             }
-            if (execution == "description-only" || hasAttack)
-                return Result("not-executed", "Validated v2 contract; attack resolution is not implemented. No combat assertion executed.");
+            if (execution == "description-only" || (version == 2 && hasAttack))
+                return Result("not-executed", "Validated contract; description-only/v2 attack fixtures do not execute combat assertions.");
             for (int i = 0; i < commands.Count; i++)
             {
-                Require(state.Combatants.All(unit => unit.Status == AttackUnitStatus.None), "Turn replay after combat statuses is outside this ticket");
+                if (version == 2) Require(state.Combatants.All(unit => unit.Status == AttackUnitStatus.None), "V2 turn replay after combat statuses is outside its contract");
                 var before = Snapshot(state, mapId); var beforeMap = MapSnapshot(state.TurnBattle.Battle.Map);
                 var command = commands[i]!;
-                var actual = Text(command["kind"]) switch
+                AttackBattleResult actual;
+                if (version == 2)
                 {
-                    "advance" => TurnBattleSimulator.Advance(state.TurnBattle),
-                    "move-unit" => TurnBattleSimulator.Move(state.TurnBattle, new(new(StableId(command["unitId"])), Position(command["destination"]))),
-                    "wait" => TurnBattleSimulator.Wait(state.TurnBattle, new(StableId(command["unitId"]))),
-                    "confirm-act" => TurnBattleSimulator.ConfirmAct(state.TurnBattle, new(StableId(command["unitId"]))),
-                    _ => throw new InvalidDataException("Attack execution unavailable"),
-                };
-                AttackBattleSnapshot next = actual.Accepted ? state.WithTurnBattle(actual.State) : state;
+                    var turn = Text(command["kind"]) switch
+                    {
+                        "advance" => TurnBattleSimulator.Advance(state.TurnBattle),
+                        "move-unit" => TurnBattleSimulator.Move(state.TurnBattle, new(new(StableId(command["unitId"])), Position(command["destination"]))),
+                        "wait" => TurnBattleSimulator.Wait(state.TurnBattle, new(StableId(command["unitId"]))),
+                        "confirm-act" => TurnBattleSimulator.ConfirmAct(state.TurnBattle, new(StableId(command["unitId"]))),
+                        _ => throw new InvalidDataException("V2 attack execution unavailable"),
+                    };
+                    actual = new(turn.Accepted, AttackCommandRejection.None, turn.TurnRejection, turn.MovementRejection,
+                        turn.Accepted ? state.WithTurnBattle(turn.State) : state,
+                        turn.Events.Select(ev => (AttackResultEvent)new AttackTurnBattleEvent(ev)).ToImmutableArray());
+                }
+                else
+                {
+                    string? actorId = command["actorId"]?.GetValue<string>();
+                    var actor = state.Combatants.FirstOrDefault(unit => unit.UnitId.Value == actorId);
+                    var weapon = definitions.SingleOrDefault(item => item.Id == actor?.RightHandWeaponId);
+                    actual = Text(command["kind"]) switch
+                    {
+                        "attack-unit" => AttackBattleSimulator.Attack(state, new(new(StableId(command["actorId"])), new(StableId(command["targetId"]))), weapon),
+                        "advance" => AttackBattleSimulator.Advance(state),
+                        "move-unit" => AttackBattleSimulator.Move(state, new(new(StableId(command["unitId"])), Position(command["destination"]))),
+                        "wait" => AttackBattleSimulator.Wait(state, new(StableId(command["unitId"]))),
+                        "confirm-act" => AttackBattleSimulator.ConfirmAct(state, new(StableId(command["unitId"]))),
+                        _ => throw new InvalidDataException("Unsupported v3 command"),
+                    };
+                }
+                AttackBattleSnapshot next = actual.State;
+                string attackOutcome = Text(command["kind"]) != "attack-unit" ? "none" : !actual.Accepted ? "rejected" :
+                    actual.Events.OfType<AttackKnockedOutEvent>().Any() ? "ko" : actual.Events.OfType<AttackResolvedEvent>().Single().Hit ? "hit" : "miss";
                 var groups = Array(expectations[i]!["assertions"]); var result = Group(groups, "result"); var group = Group(groups, "state-and-events");
                 string label = EvidenceLabel(group["evidenceIds"], evidence);
                 string? mismatch = Difference(result["accepted"], JsonValue.Create(actual.Accepted), $"expectations[{i}].accepted")
                     ?? Difference(result["turnRejection"], JsonValue.Create(actual.TurnRejection.ToString()), $"expectations[{i}].turnRejection")
                     ?? Difference(result["movementRejection"], JsonValue.Create(actual.MovementRejection.ToString()), $"expectations[{i}].movementRejection")
+                    ?? Difference(result["attackRejection"], JsonValue.Create(actual.AttackRejection.ToString()), $"expectations[{i}].attackRejection")
+                    ?? Difference(result["attackOutcome"], JsonValue.Create(attackOutcome), $"expectations[{i}].attackOutcome")
                     ?? Difference(group["stateRelation"], JsonValue.Create(ReferenceEquals(state, next) ? "same-instance" : "new-instance"), $"expectations[{i}].stateRelation")
                     ?? Difference(Snapshot(ReadState(group["state"]!, map, mapId, weapons), mapId), Snapshot(next, mapId), $"expectations[{i}].state")
                     ?? Difference(group["events"], new JsonArray(actual.Events.Select(Event).ToArray()), $"expectations[{i}].events")
@@ -114,7 +154,7 @@ internal static class AttackFixtureRunner
                 if (mismatch is not null) return Result("failed-assertion", $"command {i}; {label}; {mismatch}");
                 state = next;
             }
-            return Result("passed-assertion", "V2 movement/turn regression passed; combat fields preserved, no attack formula executed.");
+            return Result("passed-assertion", version == 2 ? "V2 movement/turn regression passed; combat fields preserved, no attack formula executed." : "V3 bounded attack/turn replay passed; weapon projections and complete state/events compared.");
         }
         catch (Exception ex) when (ex is JsonException or InvalidDataException or ArgumentException or InvalidOperationException or OverflowException or FormatException or NotSupportedException)
         { return Result("invalid-fixture", ex.Message); }
@@ -158,6 +198,15 @@ internal static class AttackFixtureRunner
     }
 
     private static ulong Unsigned(JsonNode? node) => node is JsonValue v && v.TryGetValue<ulong>(out ulong value) ? value : throw new InvalidDataException("Expected UInt64 integer");
+    private static JsonNode Event(AttackResultEvent ev) => ev switch
+    {
+        AttackTurnBattleEvent turn => Event(turn.Event),
+        AttackResolvedEvent a => JsonSerializer.SerializeToNode(new { kind = "attack-resolved", actorId = a.ActorId.Value, targetId = a.TargetId.Value, hit = a.Hit, critical = a.Critical, damage = a.Damage })!,
+        AttackHpChangedEvent h => JsonSerializer.SerializeToNode(new { kind = "hp-changed", unitId = h.UnitId.Value, before = h.Before, after = h.After })!,
+        AttackStatusChangedEvent s => JsonSerializer.SerializeToNode(new { kind = "status-changed", unitId = s.UnitId.Value, before = s.Before.ToString(), after = s.After.ToString() })!,
+        AttackKnockedOutEvent k => JsonSerializer.SerializeToNode(new { kind = "unit-knocked-out", unitId = k.UnitId.Value, koCount = k.KoCount })!,
+        _ => throw new InvalidDataException("Unsupported attack event"),
+    };
     private static JsonNode Event(TurnBattleEvent ev) => ev switch
     {
         TurnBattleMovementEvent m => JsonSerializer.SerializeToNode(new { kind = "unit-moved", unitId = m.Movement.UnitId.Value, from = Pos(m.Movement.From), to = Pos(m.Movement.To) })!,

@@ -1,5 +1,14 @@
 # Ordinary physical sword attack (ZOD-021)
 
+Implementation follow-up: [ZOD-022](bounded-sword-implementation.md) now executes this bounded
+managed profile, with source-derived v3 replays and explicit exclusions. This original discovery
+note retains its historical evidence and non-execution claims for the work performed at that milestone.
+
+Reference refresh: the [pre-ZOD-022 review](reference-refresh-2026-10-22.md) rechecks this
+bounded chain at `11464943bbdbd2a0af022d90cb7f10455cf911df`, records moved/renamed symbols
+and finds no change requiring these synthetic vectors to be revised. This original trace
+retains its historical revision and paths below.
+
 Retail follow-up: [ZOD-057](retail-sword-import.md) now verifies the selected Broad Sword records and
 documents their differences from this deliberately synthetic profile. The source-derived scenario below
 remains unchanged and must not be relabeled as a retail Broad Sword battle.

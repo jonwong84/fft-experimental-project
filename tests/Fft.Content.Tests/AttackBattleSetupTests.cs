@@ -14,9 +14,9 @@ public sealed class AttackBattleSetupTests
         [new SwordDefinition(new("sample:item/sword"), SwordWeaponType.Sword, 1, power, SwordDamageFormula.WeaponDamage, SwordTargetingFlags.Striking, evade, SwordElement.Neutral, new(128, new byte[5]))]);
     private static AttackUnitState Unit(BattleUnitId id, AssetId? weapon = null, int pa = 5, int hp = 50, AttackUnitStatus status = AttackUnitStatus.None, int zodiac = 0) =>
         new(id, hp, 50, 0, 0, pa, 10, 0, 0, 0, 70, zodiac, BattleFacing.East, status, 0, weapon);
-    private static TurnBattleState State()
+    private static TurnBattleState State(uint seed = uint.MaxValue, ulong count = 77)
     {
-        var rng = new FftRandomState(uint.MaxValue, 77);
+        var rng = new FftRandomState(seed, count);
         var map = new BattleMapDefinition(3, 3, 1, Enumerable.Repeat(new BattleTile(10), 9).ToArray());
         return new(new(map, [new(A, new(1, 1, 0), 1), new(B, new(2, 1, 0), 1)], rng),
             new([new(A, 10, 0, 0, true), new(B, 10, 100, 1)], rng, phase: TurnCyclePhase.UnitTurn));
@@ -69,6 +69,36 @@ public sealed class AttackBattleSetupTests
         Assert.Same(state, snapshot.TurnBattle);
         Assert.Throws<NotSupportedException>(() => new AttackUnitState(A, 50, 50, 0, 0, 5, 10,
             9, 0, 0, 70, 0, BattleFacing.East, AttackUnitStatus.None, 0, new("sample:item/sword")));
+    }
+
+    [Fact]
+    public void Content_projection_validates_dependencies_and_resolves_exact_selected_weapon()
+    {
+        var package = Swords();
+        var metadata = Metadata();
+        Assert.Throws<ContentPackageValidationException>(() => AttackBattleSetup.ResolveWeapon(package, Metadata("sample:profile/other"), new("sample:item/sword")));
+        Assert.Throws<ArgumentException>(() => AttackBattleSetup.ResolveWeapon(package, metadata, new("sample:item/missing")));
+        Assert.Throws<NotSupportedException>(() => AttackBattleSetup.ResolveWeapon(Swords(evade: 1), metadata, new("sample:item/sword")));
+    }
+
+    [Theory]
+    [InlineData(1, 5, 25)]
+    [InlineData(2, 7, 35)]
+    public void Selected_content_executes_without_activating_capabilities_or_mutating_packages(int version, int power, int damage)
+    {
+        var package = version == 1 ? Swords(power) : new SwordContentPackage("sample:package/swords", "sample:profile/attack", "sample:package/metadata",
+            [new(new("sample:item/sword"), SwordWeaponType.Sword, 1, power, SwordDamageFormula.WeaponDamage,
+                SwordTargetingFlags.Striking, 9, SwordElement.Neutral, new(SwordEmptyProcMode.None, new byte[5]), (SwordCapabilityFlags)14)], 2);
+        var metadata = Metadata();
+        string before = package.ToJson(), metadataBefore = metadata.ToJson();
+        var setup = AttackBattleSetup.Create(State(1, 0), [Unit(A, new("sample:item/sword")), Unit(B)], package, metadata);
+        var weapon = AttackBattleSetup.ResolveWeapon(package, metadata, new("sample:item/sword"));
+        var result = AttackBattleSimulator.Attack(setup, new(A, B), weapon);
+        Assert.True(result.Accepted);
+        Assert.Equal(new AttackResolvedEvent(A, B, true, false, damage), result.Events.OfType<AttackResolvedEvent>().Single());
+        Assert.Equal(50 - damage, result.State.Combatants[1].Hp);
+        Assert.Equal(6ul, result.State.TurnBattle.Turns.RngState.DrawCount);
+        Assert.Equal(before, package.ToJson()); Assert.Equal(metadataBefore, metadata.ToJson());
     }
 
     [Fact]

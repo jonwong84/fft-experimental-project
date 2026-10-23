@@ -103,7 +103,7 @@ public sealed class AttackSnapshotTests
     public void Duplicate_keys_versions_and_unresolved_evidence_are_invalid()
     {
         Assert.Equal("invalid-fixture", AttackFixtureRunner.Run(Load().Replace("\"schemaVersion\": 2", "\"schemaVersion\": 2,\"schemaVersion\":2", StringComparison.Ordinal), Revision).Status);
-        var root = JsonNode.Parse(Load())!; root["schemaVersion"] = 3;
+        var root = JsonNode.Parse(Load())!; root["schemaVersion"] = 4;
         Assert.Equal("invalid-fixture", AttackFixtureRunner.Run(root.ToJsonString(), Revision).Status);
         root = JsonNode.Parse(Load())!; root["expectations"]![0]!["assertions"]![0]!["evidenceIds"] = new JsonArray("absent");
         Assert.Equal("invalid-fixture", AttackFixtureRunner.Run(root.ToJsonString(), Revision).Status);

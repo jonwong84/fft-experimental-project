@@ -1,5 +1,9 @@
 # Bounded attack snapshots and behavioral fixtures v2 (ZOD-056)
 
+Implementation follow-up: [ZOD-022](bounded-sword-implementation.md) adds executable schema 3
+with explicit weapon parameters. Schema 2 retains the contract-only attack behavior described here;
+its historical descriptions are not silently converted to executed evidence.
+
 Date: 2026-10-22. Reference checkout HEAD was rechecked as
 `611b504d25d4a9b03fab8023d7dbea75fe381d5d`. The field inventory follows
 [ZOD-021's physical attack trace](ordinary-physical-attack.md), including

@@ -40,10 +40,10 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
-**Current focus (2026-10-22):** ZOD-058's retail sword representation and ZOD-024's
-rendering/input recommendation are complete. Next implement ZOD-022's bounded attack/HP/KO
-transition. ZOD-025 can proceed independently with the synthetic Windows host and ADR 0005's
-manual graphics/input/DPI gates, provided production files have distinct ownership.
+**Current focus (2026-10-23):** ZOD-022's bounded sword attack/HP/KO transition is complete,
+following ZOD-058's retail representation and ZOD-024's rendering recommendation. Next complete
+ZOD-023's bounded start-to-result scenario. ZOD-025 can proceed independently with the synthetic
+Windows host and ADR 0005's manual graphics/input/DPI gates, provided production files have distinct ownership.
 The numbered queue below records the completed foundation sequence.
 
 1. **ZOD-001:** Audit current type ownership and select the first real engine slice.
@@ -309,7 +309,21 @@ retail sword verification is ZOD-057.
 
 ### ZOD-022 — Implement the selected attack and HP/KO transitions
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-013, ZOD-018, ZOD-020, ZOD-021, ZOD-055, ZOD-056
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-013, ZOD-018, ZOD-020, ZOD-021, ZOD-055, ZOD-056
+
+**Result:** [Bounded sword implementation](behavior/bounded-sword-implementation.md) adds pure atomic
+unit attacks, ordered evade/critical/proc draws, facing/action/turn effects, HP/Critical/Dead and byte-wrapped
+KO counts. Explicit content projection supports both sword schema versions. Executable fixture v3 supplies
+weapon parameters and compares complete ordered state/events; v1/v2 behavior remains unchanged. Nine
+source-derived/synthetic replays cover hits, misses, criticals, KO, facing, PA-zero/damage bounds, range
+rejection and Move/Attack completion. In-bounds knockback and post-KO scheduling remain explicitly unsupported;
+no retail combat equivalence is claimed.
+Windows locked restore, zero-warning Release build and all 618 solution tests passed on 2026-10-23.
+
+**Reference checkpoint:** [Pre-implementation refresh](behavior/reference-refresh-2026-10-22.md)
+rechecks the bounded chain at `11464943bbdbd2a0af022d90cb7f10455cf911df`. New implementation
+evidence should use that revision/current symbols; older traces and fixtures retain their
+actual original source revisions. No vector change was identified by the targeted review.
 
 **Scope:** Implement only the source-traced action configuration and required definition fields.
 
@@ -392,7 +406,7 @@ No retail combat equivalence is claimed without executing ZOD-022 and checking a
 
 ### ZOD-023 — Complete a reproducible two-unit battle scenario
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-010, ZOD-022
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-010, ZOD-022
 
 **Scope:** Define a tiny battle objective and run a complete start-to-result sequence with the supported move/action/wait rules. Label an invented objective as a scenario rule unless original victory behavior has been traced.
 

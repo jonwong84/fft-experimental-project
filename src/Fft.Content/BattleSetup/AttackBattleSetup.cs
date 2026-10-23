@@ -28,11 +28,23 @@ public static class AttackBattleSetup
                 // not grant reaction/support abilities. AttackUnitState still excludes effective hand evade.
                 if (PhysicalWeaponEvasion.GetContribution(weapon.Evade, hasWeaponGuard: false, actionUnrestricted: true) != unit.RightHandEvade)
                     throw new NotSupportedException("Effective weapon evade does not match the supported no-reaction profile.");
-                // Largest possible critical XA is 2*PA-1 (or zero when PA is zero).
-                if ((long)Math.Max(0, 2 * unit.PhysicalAttack - 1) * weapon.Power > short.MaxValue)
+                // Same-sign zodiac floors XA to 1 even when PA is zero, before the critical step.
+                if ((long)(2 * Math.Max(1, unit.PhysicalAttack) - 1) * weapon.Power > short.MaxValue)
                     throw new NotSupportedException($"Unit '{unit.UnitId}' exceeds the traced nonnegative signed-16 damage envelope.");
             }
         }
         return snapshot;
+    }
+
+    /// <summary>Projects a selected supported content sword without coupling simulation to package loading.</summary>
+    public static BoundedSwordWeapon ResolveWeapon(SwordContentPackage swords, ContentPackage metadata, AssetId id)
+    {
+        ArgumentNullException.ThrowIfNull(swords);
+        swords.ValidateAgainst(metadata);
+        var weapon = swords.Swords.SingleOrDefault(sword => sword.Id.Value == id.Value)
+            ?? throw new ArgumentException($"Missing sword '{id}'.", nameof(id));
+        if (swords.Version == 1 && weapon.Evade != 0)
+            throw new NotSupportedException("Legacy sword setup excludes nonzero raw weapon evade.");
+        return new(id, weapon.Power);
     }
 }
