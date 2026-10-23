@@ -166,7 +166,7 @@ passed: Core 353, Content 350, CLI 116, AssetTool 164, Engine 24 and Client 98.
 The 48 new cases comprise Core 21, Content 14 and CLI 13. No original file,
 emulator, C executable, clock or graphics device is required by those tests.
 
-The next event boundary needs a typed task-lifetime/barrier contract before E5 can
-be added. Original camera workers, banners, operand rewriting, speed changes,
+ZOD-072 now [defines the scene task-lifetime/barrier contract](../architecture/zod-072-event-task-contract.md),
+with ZOD-073 selecting a pure ledger/single-consumer proof before E5 integration. Original camera workers, banners, operand rewriting, speed changes,
 EventEnd and original timing observations remain open. General scheduling and
 original BattleStart playback are not established by this frame-wait proof.

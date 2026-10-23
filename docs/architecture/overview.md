@@ -38,6 +38,9 @@ Its family-level entries are not a complete original record/encounter catalog.
   [ZOD-066](zod-066-battle-start-event.md) traces original common BattleStart and
   names the missing camera/task/banner/lifecycle capabilities; it adds no playback.
   Original camera operand mutation must remain distinct from immutable definitions.
+  [ZOD-072](zod-072-event-task-contract.md) selects a scene-owned task ledger and
+  explicit barrier protocol, independently of interpreter lifetime. This is a
+  documented contract; ZOD-073 still needs to implement its bounded pure proof.
 - `Fft.AssetTool` and `Fft.AssetTool.Cli` handle offline image inventory, extraction, narrow unit `.SPR`
   decoding, selected SHP/SEQ pose preparation and bounded GNS/mesh/indexed-texture conversion.
   The CLI composes the tools; no full animation interpreter exists.

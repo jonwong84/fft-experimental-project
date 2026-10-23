@@ -57,8 +57,13 @@ arithmetic/instruction/tick rejection. Zero and sequential waits, maximum counts
 profile isolation and prepared-file loading are covered. Latest locked restore,
 zero-warning Release build and all **1,105 tests** passed (48 new). Conditional
 behavior, battle save schemas, project references and package locks remain intact.
-Next event step: ZOD-072 task-lifetime/barrier contract; ZOD-068's synthetic world
-checkpoint service remains independent, and ZOD-069's UI follows service/navigation. Original captures (ZOD-026), comparison
+ZOD-072 now [defines the scene task/barrier contract](architecture/zod-072-event-task-contract.md):
+scene-wide live polling, mandatory first yield, BATTLE/WORLD scan differences,
+stable scene/task identities, revisions, dark-screen phases and atomic explicit
+updates. Its 17 authored specification cases are unexecuted; no runtime changes
+or new suite run. Next event step: ZOD-073 pure ledger/single-consumer proof before
+E5 interpreter integration. ZOD-068's synthetic world checkpoint service remains
+independent, and ZOD-069's UI follows service/navigation. Original captures (ZOD-026), comparison
 checkpoints (ZOD-033), and remote CI/clean-machine evidence (ZOD-034) remain open.
 MAP003's static scene does not broaden M1
 combat's height-10 domain. Gameplay is limited to the synthetic local two-unit battle;

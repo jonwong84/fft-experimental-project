@@ -66,8 +66,10 @@ traces verified common BattleStart event 401, its fallback activation and EventE
 return to battle. Original observations and its required runtime capabilities are
 still absent. ZOD-071 now adds a separate timed synthetic profile with explicit
 scheduler ticks, immutable waits, exact resume ordering and atomic failures.
-Locked restore, zero-warning Release build and all 1,105 tests pass. Next event
-step: ZOD-072's task-lifetime/barrier contract. ZOD-068's synthetic world-checkpoint
+Locked restore, zero-warning Release build and all 1,105 tests pass. ZOD-072 now
+selects a source-traced scene task ledger/barrier contract and 17 unexecuted
+specification cases. Next event step: ZOD-073's pure ledger/barrier proof; E5
+interpreter integration and real workers remain separate. ZOD-068's synthetic world-checkpoint
 service remains an independent lane; ZOD-069's native Save/Load UI waits on that
 service and minimal client navigation. Original campaign support remains open.
 M2 is not complete yet.
@@ -938,7 +940,15 @@ camera, task, banner, mutable-operand and EventEnd prerequisites.
 
 ### ZOD-072 — Define deterministic event task lifetimes and barrier contract
 
-**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-066, ZOD-071
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-066, ZOD-071
+
+**Result (2026-10-23):** [Scene task/barrier contract](architecture/zod-072-event-task-contract.md)
+traces scene-wide E5 polling, mandatory first yield, multiple instances/owners,
+BATTLE/WORLD scan differences and the dark-screen 54/55 phases. Selects immutable
+scene/run identities, revisions, explicit ordered tick updates, budgets and atomic
+errors. Seventeen authored specification cases are not executed tests. ZOD-073
+implements the first pure ledger/single-consumer proof; no E5 capability, renderer
+workers or runtime change is added here. The 1,105-test baseline was not rerun.
 
 **Scope:** Trace E5's yield-before-check, running-task scan and task lifetimes for
 one synthetic proof using the selected BattleStart task kinds. Separate camera,
@@ -954,6 +964,28 @@ independently authored pending/complete/empty-task and failure/replay expectatio
 then one bounded implementation child. Preserve existing conditional/timed profiles,
 Core-to-Content independence and pure simulation. No full PS1 scheduler, worker
 callbacks, clock/GPU polling, original event export or EventEnd implementation.
+
+### ZOD-073 — Prove the scene task ledger and single barrier consumer
+
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-072
+
+**Scope:** Implement the selected pure BATTLE scene task ledger/barrier contract
+in Fft.Core.Events. Use explicit scene-run identity, monotonic task instances,
+owner metadata, revisions, Camera/ConditionDisplay running states and DarkScreen
+entry/hold/release phases. Provide transactional task updates, BeginBarrier and
+one explicit AdvanceTick; no effect workers or event-interpreter integration.
+
+**Acceptance criteria:** Convert ZOD-072's 17 independent specification cases into
+headless state/ordered-trace regressions and cover immutable inputs, phase/resource
+boundaries and identical replay. Poll the current scene-wide class set after the
+mandatory first tick, across all owners; distinguish matching class from instance
+and whole-event completion. Enforce selected live/start/update/ID/counter limits,
+terminal tombstones and deterministic duplicate/stale/foreign/unknown diagnostics.
+Rejected batches preserve allocation, revisions, tasks, barrier, tick and empty
+committed traces. Keep Core independent of Content, with no clock/GPU/I/O callback
+or Zodiac task classes. Existing conditional/timed profiles, save formats and E5
+rejection remain unchanged. This proof does not execute original opcodes, select
+opcode-77 slots, implement EventEnd, or add multiple interpreter consumers.
 
 ## Authoring, extensions, and later goals
 
