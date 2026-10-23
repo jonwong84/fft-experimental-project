@@ -17,6 +17,9 @@
 - `Fft.Core` contains common identifiers/value types, map data types, a typed battle transition proof, and flat-grid movement policies (one prototype and one bounded terrain-cost slice).
 - `Fft.Content` loads a versioned manifest and hash-verified loose files by logical asset ID,
   including the bounded prepared static sprite pose and frozen MAP003 scene/terrain. It references `Fft.Core`, without original-format parsers.
+- `Fft.Content.Saves` owns the [bounded save DTO/codec and file adapter](../development/two-unit-battle-saves.md).
+  Core restores snapshots against selected definitions without I/O; Client supplies
+  a headless proof. Full campaign persistence remains separate.
 - `Fft.AssetTool` and `Fft.AssetTool.Cli` handle offline image inventory, extraction, narrow unit `.SPR`
   decoding, selected SHP/SEQ pose preparation and bounded GNS/mesh/indexed-texture conversion.
   The CLI composes the tools; no full animation interpreter exists.
@@ -25,7 +28,7 @@
   MAP003/Chocobo scene. A separate local two-unit battle UI sends validated commands to
   the supported M1 scenario; the prepared scene remains static.
 - Tests exist for the current projects, including pure client layout tests. The synthetic graphics
-  host has separate Windows checks; no complete campaign runtime, audio adapter or save system exists yet.
+  host has separate Windows checks; no complete campaign runtime, audio adapter or campaign save system exists yet.
 
 The architecture should evolve from this shape without splitting projects just for conceptual neatness. Add a new assembly when it creates a useful dependency boundary or an independently testable responsibility.
 
@@ -224,7 +227,8 @@ The terrain and unit movement input model, including its source mapping and unim
 
 - Production audio/input coverage and Windows deployment format beyond the synthetic MonoGame host.
 - Whether turn/campaign runtime eventually warrants separate `Fft.Simulation` and `Fft.Application` assemblies.
-- Exact save schema, migration policy, and backup behavior.
+- Complete campaign save schema, broader content/package migration policy, and backup behavior.
+  ZOD-035 selects only the bounded two-unit contract and synthetic migration above.
 - Package archive format, signing/trust policy, conflict resolution, and hot reload needs.
 - Script language and sandbox policy, if declarative mechanics prove insufficient.
 - Exact The Lion War variant, revision, imported features, and intentional rule changes.

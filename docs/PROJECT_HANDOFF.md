@@ -22,8 +22,13 @@ replay, including after a resize. ZOD-034 now implements independent Windows CI,
 TRX/JUnit reports and a self-contained folder check with separate locked publish
 graphs and dependency notices. Local publishing, headless launch and the published
 GPU check passed; remote CI and clean-machine interactive validation remain pending.
-See the [launch guide](development/windows-launch-validation.md). Next independent
-lanes: original captures (ZOD-026) and save/load proof (ZOD-035). MAP003's static scene does not broaden M1
+See the [launch guide](development/windows-launch-validation.md). ZOD-035 completes
+the [bounded save/load proof](development/two-unit-battle-saves.md): versioned DTOs,
+selected content bindings, active-turn/RNG restoration, strict validation, synthetic
+migration and safe file replacement. All thirteen checkpoints continue with identical
+state/events. Latest locked restore, zero-warning Release build and all **954 tests**
+passed. Next independent lanes: original captures (ZOD-026) and baseline coverage
+inventory (ZOD-045). MAP003's static scene does not broaden M1
 combat's height-10 domain. Gameplay is limited to the synthetic local two-unit battle;
 source-derived checks do not establish original-rendering equivalence. Physical input timing
 remains a manual follow-up. Original media/captures remain ignored.

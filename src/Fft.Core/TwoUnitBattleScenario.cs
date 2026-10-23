@@ -69,6 +69,48 @@ public sealed class TwoUnitBattleDefinition
 
     /// <summary>Fresh lifecycle state over the original immutable setup and RNG; also the explicit restart operation.</summary>
     public TwoUnitBattleState Start() => new(this, InitialBattle, TwoUnitBattleOutcome.InProgress);
+
+    /// <summary>Restores a command-boundary snapshot against this definition's immutable inputs. No I/O or RNG draws.</summary>
+    public TwoUnitBattleState Restore(AttackBattleSnapshot battle)
+    {
+        ArgumentNullException.ThrowIfNull(battle);
+        var initial = InitialBattle.TurnBattle;
+        var current = battle.TurnBattle;
+        if (!ReferenceEquals(current.Battle.Map, initial.Battle.Map) ||
+            current.Battle.Units.Count != initial.Battle.Units.Count)
+            throw new ArgumentException("Restore must resolve the scenario's original map and units.", nameof(battle));
+        battle.ValidateSupportedGeometry();
+        foreach (var template in initial.Battle.Units)
+        {
+            if (!current.Battle.TryGetUnit(template.Id, out var unit) ||
+                !ReferenceEquals(unit!.MovementProfile, template.MovementProfile))
+                throw new ArgumentException($"Restore changed immutable movement inputs for '{template.Id}'.", nameof(battle));
+            var turn = current.Turns.Units.Single(item => item.Id == template.Id);
+            var originalTurn = initial.Turns.Units.Single(item => item.Id == template.Id);
+            var combat = battle.Combatants.Single(item => item.UnitId == template.Id);
+            var originalCombat = InitialBattle.Combatants.Single(item => item.UnitId == template.Id);
+            if (turn.Speed != originalTurn.Speed || turn.TieKey != originalTurn.TieKey ||
+                combat != originalCombat.WithResult(combat.Hp, combat.Facing, combat.KoCount))
+                throw new ArgumentException($"Restore changed immutable combat/turn inputs for '{template.Id}'.", nameof(battle));
+            int expectedKoCount = combat.Hp == 0 ? (originalCombat.KoCount + 1) & 255 : originalCombat.KoCount;
+            if (combat.Hp > originalCombat.Hp || combat.KoCount != expectedKoCount)
+                throw new ArgumentException("The bounded scenario has no healing, revival or prior KO processing.", nameof(battle));
+            if (current.Turns.Phase == TurnCyclePhase.AddCt &&
+                (unit.Position != template.Position || unit.HasMoved != template.HasMoved || turn != originalTurn || combat != originalCombat))
+                throw new ArgumentException("AddCt is only a legal checkpoint at the initial setup.", nameof(battle));
+        }
+        if (current.Turns.Ticks < initial.Turns.Ticks || current.Turns.RngState.DrawCount < initial.Turns.RngState.DrawCount ||
+            (current.Turns.Phase == TurnCyclePhase.AddCt &&
+                (current.Turns.Ticks != initial.Turns.Ticks || current.Turns.RngState != initial.Turns.RngState)))
+            throw new ArgumentException("Restore clock/RNG counters precede the setup or change its initial AddCt checkpoint.", nameof(battle));
+        var first = battle.Combatants.Single(unit => unit.UnitId == FirstUnitId);
+        var second = battle.Combatants.Single(unit => unit.UnitId == SecondUnitId);
+        if (first.Hp == 0 && second.Hp == 0)
+            throw new ArgumentException("Both units cannot be dead at a first-KO checkpoint.", nameof(battle));
+        var outcome = first.Hp == 0 ? TwoUnitBattleOutcome.SecondUnitWon
+            : second.Hp == 0 ? TwoUnitBattleOutcome.FirstUnitWon : TwoUnitBattleOutcome.InProgress;
+        return new(this, battle, outcome);
+    }
 }
 
 public enum TwoUnitBattleOutcome { InProgress, FirstUnitWon, SecondUnitWon }

@@ -164,7 +164,7 @@ The detailed, current proposal is in [`docs/architecture/overview.md`](docs/arch
 
 The current project structure is intentionally small: `Fft.Core` holds the initial domain/simulation types, `Fft.Content` loads prepared content, `Fft.AssetTool` and its CLI perform offline asset work, and `Fft.Client` is the composition root proof. Do not split `Fft.Core` or add application/platform projects until a concrete boundary needs an independent assembly.
 
-The proposed simulation contract is an explicit deterministic transition from state plus command and RNG state to a resulting state and events. Immutable definitions remain separate from mutable battle/campaign state. Original-compatible behavior stays identifiable; additions and The Lion War content use explicit profiles/packages. Asset import remains offline and the client reads prepared files by logical asset ID. These directions do not yet imply a save format, plugin ABI, scripting language, or Windows graphics/audio library.
+The proposed simulation contract is an explicit deterministic transition from state plus command and RNG state to a resulting state and events. Immutable definitions remain separate from mutable battle/campaign state. Original-compatible behavior stays identifiable; additions and The Lion War content use explicit profiles/packages. Asset import remains offline and the client reads prepared files by logical asset ID. These directions do not select a complete campaign save format, plugin ABI or scripting language. The bounded [ZOD-035 save proof](docs/development/two-unit-battle-saves.md) now uses versioned state DTOs and selected content definitions; ADR 0005 records the implemented Windows host choice.
 
 ### Platform-specific replacement areas
 

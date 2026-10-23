@@ -3,12 +3,17 @@ using Fft.Content.BattleSetup;
 using Fft.Content.ContentPackages;
 using Fft.Content.Definitions;
 using Fft.Core;
+using Fft.Content.Saves;
 
 namespace Fft.Content.Samples;
 
 /// <summary>Invented content and script for the headless milestone; no original media or recovered unit records.</summary>
 public static class SyntheticTwoUnitBattle
 {
+    public const string ProfileId = "sample:profile/two-unit-battle";
+    public const int ProfileVersion = 1;
+    public const int ContentVersion = 1;
+    public static TwoUnitBattleSaveProfile CreateSaveProfile() => new(ProfileId, ProfileVersion, ContentVersion, Create());
     public static BattleUnitId FirstUnitId => new("sample:unit/first");
     public static BattleUnitId SecondUnitId => new("sample:unit/second");
 
@@ -17,7 +22,7 @@ public static class SyntheticTwoUnitBattle
         var first = FirstUnitId;
         var second = SecondUnitId;
         var weaponId = new AssetId("sample:item/plain-sword");
-        var metadata = new ContentPackage("sample:package/two-unit-metadata", "sample:profile/two-unit-battle",
+        var metadata = new ContentPackage("sample:package/two-unit-metadata", ProfileId,
             ContentPackageKind.Baseline, null, [], [], []);
         var swords = new SwordContentPackage("sample:package/two-unit-swords", metadata.ProfileId, metadata.PackageId,
             [new(new(weaponId.Value), SwordWeaponType.Sword, 1, 5, SwordDamageFormula.WeaponDamage,

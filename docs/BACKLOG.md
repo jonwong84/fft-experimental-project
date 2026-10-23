@@ -51,8 +51,10 @@ approximations. ZOD-032 now makes the supported synthetic M1 battle playable wit
 selection, legal highlights, Move/Attack/Wait, manual next-turn and restart controls.
 The static MAP003 scene does not expand that battle's supported terrain/combat domain.
 ZOD-034 implements independent Windows CI, reports and self-contained folder checks;
-remote CI execution and a clean interactive machine remain validation gates. Next
-independent lanes: ZOD-026's original capture workflow and ZOD-035's save/load proof.
+remote CI execution and a clean interactive machine remain validation gates.
+ZOD-035 completes the bounded save/load proof with explicit DTOs, active-turn/RNG
+restoration, synthetic migration and safe replacement. Next independent lanes:
+ZOD-026's original capture workflow and ZOD-045's baseline coverage inventory.
 M2 is not complete yet.
 Independent asset/reference investigations can proceed in parallel when the owner selects their scope;
 give each agent distinct files and acceptance criteria. M1 does not imply complete FFT combat or presentation.
@@ -613,11 +615,21 @@ or automatic versioning is introduced.
 
 ### ZOD-035 — Add a versioned save/load proof for the bounded scenario
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-016, ZOD-023
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-016, ZOD-023
 
 **Scope:** Save and load explicit battle snapshot DTOs with schema/content-profile versions, stable definition IDs, unit state, active turn, and RNG state. Choose an explicit legal checkpoint if mid-action state is unsupported.
 
 **Acceptance criteria:** Loading and continuing matches uninterrupted play; invalid/missing IDs, corrupt data, and unsupported versions fail clearly; save writes preserve the last valid file on failure; the format does not serialize the in-memory object graph. Test migration handling with synthetic versioned data. Original memory-card import is optional until separately scoped.
+
+**Evidence (2026-10-23):** [Save contract/proof](development/two-unit-battle-saves.md)
+records schema/profile/content versions, stable ID resolution, exact active-turn/RNG
+restoration and strict bounded JSON/checksum validation. Synthetic schema-1/2
+fixtures exercise migration without rewriting the source. Flushed sibling writes
+preserve the previous file on validation or promotion failure, including a tested
+Windows deletion-sharing lock. The headless `--save-check` compares all remaining
+state/events at thirteen checkpoints with freshly composed definitions. Locked
+restore, zero-warning Release build and all 954 tests passed (86 new cases).
+Campaign persistence, UI save slots and original memory-card import remain separate.
 
 ### ZOD-036 — Implement status, reaction, support, and charge interactions
 

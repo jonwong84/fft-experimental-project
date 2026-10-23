@@ -22,12 +22,13 @@ See the [architecture overview](docs/architecture/overview.md) and [ADR 0004](do
 
 - **Playable synthetic battle:** control both units with mouse or keyboard; select, inspect legal moves/targets, move, attack, wait, advance turns and restart. HP, choices, rejections and the first-KO result are visible. [Controls and validation](docs/development/playable-battle.md).
 - **Deterministic headless battle:** the same supported scenario runs through typed commands, with reproducible state/RNG results and replay checks. [Scenario and rules](docs/behavior/two-unit-battle-scenario.md).
+- **Bounded save/load proof:** versioned snapshots restore all thirteen authored checkpoints against selected definitions and continue with identical state/events. Strict validation, synthetic migration and safe file replacement are tested. [Save contract and headless check](docs/development/two-unit-battle-saves.md).
 - **Prepared original scene:** MAP003 and a held Chocobo pose render from prepared files with a fixed authored camera. Per-polygon palettes, native terrain placement and sprite piece order are preserved; lighting and depth behavior use documented approximations. [Scene guide and comparison limits](docs/development/prepared-scene.md).
 - **Offline asset preparation:** verified ordinary-file extraction, bounded sprite/map conversion, hash-verified prepared loading and narrow typed content-package validation. [Map preparation](docs/development/prepared-map-slice.md), [sprite-pose preparation](docs/development/prepared-sprite-pose.md), [content packages](docs/architecture/zod-016-content-packages.md).
 
 The playable battle uses invented units, art and a small height-10 map. MAP003 remains a separate static inspection scene with its native terrain intact. Rendering that map does not expand the supported combat domain.
 
-Full original combat, campaign, AI, save/load, audio, general animation playback and authoring UI remain future work. Independent original/emulator visual comparison is also pending; current source-derived and synthetic checks do not establish complete original-game equivalence. Original behavior is the default compatibility target, with intentional new mechanics and custom content kept separate.
+Full original combat, campaign, AI, campaign save/load, audio, general animation playback and authoring UI remain future work. Independent original/emulator visual comparison is also pending; current source-derived and synthetic checks do not establish complete original-game equivalence. Original behavior is the default compatibility target, with intentional new mechanics and custom content kept separate.
 
 ## Build, test and play
 
@@ -51,7 +52,7 @@ dotnet run --project src/Fft.Client -c Release --no-build --no-restore -- --scen
 dotnet run --project src/Fft.Client -c Release --no-build --no-restore -- --window
 ```
 
-The latest recorded implementation milestone, ZOD-032, passed locked restore, a Release build with zero warnings and **868 tests** across Engine, Core, Content, AssetTool, AssetTool CLI and Client. Windows GPU/UI checks are separate opt-in checks; physical input timing, mixed-DPI behavior and clean-machine validation have remaining manual follow-ups. See the [playable check](docs/development/playable-battle.md#automated-windows-check) and [synthetic host checks](docs/development/windows-synthetic-host.md).
+The latest recorded implementation milestone, ZOD-035, passed locked restore, a Release build with zero warnings and **954 tests** across Engine, Core, Content, AssetTool, AssetTool CLI and Client. Windows GPU/UI checks are separate opt-in checks; physical input timing, mixed-DPI behavior and clean-machine validation have remaining manual follow-ups. See the [playable check](docs/development/playable-battle.md#automated-windows-check) and [synthetic host checks](docs/development/windows-synthetic-host.md).
 
 ZOD-034 adds an independent Windows CI job alongside Linux/Sonar, downloadable test
 reports and a private self-contained client folder. Local bundle/headless and
