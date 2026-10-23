@@ -84,6 +84,20 @@ public sealed class PreparedAssetManifestTests
         Assert.Throws<KeyNotFoundException>(() => store.ReadAllBytes(new AssetId("base:missing")));
     }
 
+    [Fact]
+    public void Bounded_load_rejects_manifest_budget_before_file_access_and_accepts_exact_limit()
+    {
+        using var directory = new TemporaryDirectory();
+        byte[] contents = [1, 2, 3, 4];
+        var entry = CreateEntry("sample:bounded", "asset.bin", contents);
+        var store = new LooseAssetStore(directory.Path, new PreparedAssetManifest([entry]));
+        // Deliberately missing: budget rejection must happen before file access/allocation.
+        Assert.Contains("load budget", Assert.Throws<InvalidDataException>(() => store.ReadAllBytes(entry.Id, 3)).Message);
+        Assert.Throws<ArgumentOutOfRangeException>(() => store.ReadAllBytes(entry.Id, -1));
+        File.WriteAllBytes(Path.Combine(directory.Path, entry.RelativePath), contents);
+        Assert.Equal(contents, store.ReadAllBytes(entry.Id, 4));
+    }
+
     private static PreparedAssetEntry CreateEntry(string id, string path, byte[] contents) =>
         new(new AssetId(id), path, contents.Length, Convert.ToHexStringLower(SHA256.HashData(contents)));
 

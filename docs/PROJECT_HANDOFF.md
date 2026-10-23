@@ -3,14 +3,16 @@
 **Latest checkpoint (2026-10-23):** ZOD-023's bounded headless battle and ZOD-025's synthetic
 Windows host are implemented; ZOD-027's [Chocobo idle-pose trace](architecture/zod-027-chocobo-idle-pose.md)
 and ZOD-028's [static pose preparation/loading](development/prepared-sprite-pose.md) are complete.
-ZOD-029's [MAP003 source map](architecture/zod-029-map003-source-map.md) now selects a frozen
-day/dry scene and exact four-cell geometry/terrain checkpoint; this was documentation/local inspection only.
+ZOD-029's [MAP003 source map](architecture/zod-029-map003-source-map.md) selects a frozen
+day/dry scene and exact four-cell geometry/terrain checkpoint. ZOD-030's
+[map preparation/loading](development/prepared-map-slice.md) now prepares that scene repeatably
+as geometry, indexed textures/palettes, frozen presentation metadata and both native terrain layers.
 Start with the current [backlog](BACKLOG.md) and
 [Windows host instructions](development/windows-synthetic-host.md); the original handoff sections
-below are historical. Locked restore, Release build and all **720 tests** passed for ZOD-028.
-The selected six-piece pose is prepared repeatably under ignored scratch and loaded by Client without
-original-format parsing; the graphical window still displays only synthetic content.
-Next: prepare MAP003 (ZOD-030), then render the map/pose (ZOD-031), and establish independent captures (ZOD-026).
+below are historical. Locked restore, zero-warning Release build and all **796 tests** passed for ZOD-030.
+The selected six-piece pose and 9x13 map are prepared under ignored scratch and loaded by Client without
+original-format parsing; native terrain heights remain intact. The graphical window still displays only synthetic content.
+Next: render the map/pose (ZOD-031), and establish independent captures (ZOD-026).
 No original media or live simulation gameplay has entered the graphical view.
 
 **Prepared:** 2026-10-20  

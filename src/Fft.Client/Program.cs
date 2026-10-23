@@ -38,9 +38,9 @@ if (args.Length == 2 && args[0] == "--scenario" && args[1] == "two-unit-battle")
     return state.Outcome == TwoUnitBattleOutcome.FirstUnitWon ? 0 : 1;
 }
 
-if (args.Length != 4 || args[0] != "--content-root" || args[2] is not ("--asset-id" or "--sprite-pose"))
+if (args.Length != 4 || args[0] != "--content-root" || args[2] is not ("--asset-id" or "--sprite-pose" or "--map"))
 {
-    Console.Error.WriteLine("Usage: Fft.Client [--window | --window-check <new-directory> | --scenario two-unit-battle | --content-root <directory> (--asset-id|--sprite-pose) <namespace:path>]");
+    Console.Error.WriteLine("Usage: Fft.Client [--window | --window-check <new-directory> | --scenario two-unit-battle | --content-root <directory> (--asset-id|--sprite-pose|--map) <namespace:path>]");
     return 2;
 }
 
@@ -48,6 +48,15 @@ try
 {
     var assetId = new AssetId(args[3]);
     LooseAssetStore content = LooseAssetStore.Load(args[1]);
+    if (args[2] == "--map")
+    {
+        var map = PreparedBattleMap.Load(content, assetId);
+        var terrain = map.Definition.ToBattleMap();
+        Console.WriteLine($"Loaded prepared map '{map.Definition.Id}': {terrain.Width}x{terrain.Depth}, " +
+            $"{terrain.LayerCount} terrain layers, {map.Definition.Polygons.Length} polygons, " +
+            $"{map.TextureIndices.Length} texture indices; manifest hashes verified. Base presentation frozen.");
+        return 0;
+    }
     if (args[2] == "--sprite-pose")
     {
         var pose = PreparedSpritePose.Load(content, assetId);

@@ -26,12 +26,19 @@ public sealed class LooseAssetStore
         return new LooseAssetStore(root, manifest);
     }
 
-    public byte[] ReadAllBytes(AssetId id)
+    public byte[] ReadAllBytes(AssetId id) => ReadAllBytes(id, int.MaxValue);
+
+    /// <summary>Rejects an over-budget manifest/file before allocating the asset buffer.</summary>
+    public byte[] ReadAllBytes(AssetId id, int maxBytes)
     {
+        ArgumentOutOfRangeException.ThrowIfNegative(maxBytes);
         if (!_entries.TryGetValue(id, out PreparedAssetEntry? entry))
         {
             throw new KeyNotFoundException($"No prepared file is mapped for asset ID '{id}'.");
         }
+
+        if (entry.ByteLength > maxBytes)
+            throw new InvalidDataException($"Prepared asset '{id}' exceeds its {maxBytes}-byte load budget.");
 
         string fullPath = Path.GetFullPath(Path.Combine(
             _rootDirectory, entry.RelativePath.Replace('/', Path.DirectorySeparatorChar)));
@@ -55,8 +62,12 @@ public sealed class LooseAssetStore
                 $"Prepared asset '{id}' has {fileInfo.Length} bytes; manifest expects {entry.ByteLength}.");
         }
 
-        byte[] data = File.ReadAllBytes(fullPath);
-        if (data.LongLength != entry.ByteLength)
+        using var stream = new FileStream(fullPath, FileMode.Open, FileAccess.Read, FileShare.Read);
+        if (stream.Length != entry.ByteLength || stream.Length > maxBytes)
+            throw new InvalidDataException($"Prepared asset '{id}' changed size before loading.");
+        byte[] data = new byte[checked((int)entry.ByteLength)];
+        stream.ReadExactly(data);
+        if (stream.ReadByte() != -1)
         {
             throw new InvalidDataException(
                 $"Prepared asset '{id}' changed size while it was being read; manifest expects {entry.ByteLength} bytes.");

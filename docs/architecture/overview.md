@@ -16,9 +16,10 @@
 
 - `Fft.Core` contains common identifiers/value types, map data types, a typed battle transition proof, and flat-grid movement policies (one prototype and one bounded terrain-cost slice).
 - `Fft.Content` loads a versioned manifest and hash-verified loose files by logical asset ID,
-  including the bounded prepared static sprite pose. It references `Fft.Core`, without original-format parsers.
+  including the bounded prepared static sprite pose and frozen MAP003 scene/terrain. It references `Fft.Core`, without original-format parsers.
 - `Fft.AssetTool` and `Fft.AssetTool.Cli` handle offline image inventory, extraction, narrow unit `.SPR`
-  decoding and selected SHP/SEQ pose preparation. The CLI composes the tools; no full animation interpreter exists.
+  decoding, selected SHP/SEQ pose preparation and bounded GNS/mesh/indexed-texture conversion.
+  The CLI composes the tools; no full animation interpreter exists.
 - `Fft.Client` can load a prepared asset, run the deterministic synthetic two-unit battle headlessly,
   and open a MonoGame Windows view of its immutable starting snapshot. Gameplay input is not implemented.
 - Tests exist for the current projects, including pure client layout tests. The synthetic graphics
@@ -49,6 +50,12 @@ Discovery update (2026-10-23): [ZOD-029](zod-029-map003-source-map.md) selects M
 base scene and a four-cell alignment checkpoint. Its source terrain, indexed texture/palette,
 geometry and frozen presentation metadata remain distinct preparation responsibilities for ZOD-030.
 The existing bounded combat profile must not force source heights or flags to be rewritten.
+
+Implementation update (2026-10-23): [ZOD-030](../development/prepared-map-slice.md) now prepares
+that scene as manifest-addressable geometry, indexed texture/palette data, frozen presentation
+metadata and two dense terrain layers. Content validates/loads it and projects normalized
+terrain into Core without original-format parsing. Native heights and opaque provenance remain
+intact. Client has a headless map-load check; ZOD-031 still owns prepared scene rendering.
 
 ## Target dependency shape
 

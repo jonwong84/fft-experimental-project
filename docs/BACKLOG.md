@@ -44,8 +44,9 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 ZOD-025 adds the synthetic Windows view with live GPU/resize/close checks and explicit input/DPI limits.
 ZOD-027 traces the first ordinary Chocobo idle pose; ZOD-028 prepares and loads its static
 render input with verified local files. ZOD-029 selects MAP003's frozen day/dry base scene
-and traces its geometry, texture/palette and terrain inputs. Next prepare that slice
-(ZOD-030). ZOD-026's independent capture investigation remains a separate lane. These
+and traces its geometry, texture/palette and terrain inputs. ZOD-030 now prepares and
+loads that slice, retaining native terrain heights and both layers. Next render the
+prepared map and pose together (ZOD-031). ZOD-026's independent capture investigation remains a separate lane. These
 unlock the prepared-asset renderer, not full M2 yet.
 Independent asset/reference investigations can proceed in parallel when the owner selects their scope;
 give each agent distinct files and acceptance criteria. M1 does not imply complete FFT combat or presentation.
@@ -521,7 +522,15 @@ lighting and original-rendering limits are explicit. No parser/renderer implemen
 
 ### ZOD-030 — Prepare and load the selected map slice
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-029
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-029
+
+**Result:** [Prepared MAP003 pipeline and validation](development/prepared-map-slice.md)
+(2026-10-23). Bounded offline GNS/mesh/indexed-texture preparation publishes a hash-verified
+three-file package. Content loads immutable geometry/materials/palettes, frozen presentation
+metadata and both dense terrain layers; Core receives normalized terrain with native heights.
+Client's `--map` check reads prepared files only. Two verified local conversions have identical
+hashes and match the four-cell source checkpoint. Locked restore, zero-warning Release build
+and all 796 tests pass (76 new cases). No prepared scene rendering or combat-domain expansion.
 
 **Selected slice:** Follow ZOD-029's [preparation recommendation](architecture/zod-029-map003-source-map.md#minimum-zod-030-preparation-and-zod-031-scene-setup):
 MAP003 base day/dry geometry, per-polygon palette/page references, frozen presentation metadata,
@@ -534,7 +543,7 @@ must not cause source terrain to be rewritten. Alternate states and animation pl
 
 ### ZOD-031 — Render one prepared map and unit pose
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-025, ZOD-028, ZOD-030
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-025, ZOD-028, ZOD-030
 
 **Scope:** Compose the selected map and sprite using fixed camera/pose inputs; implement only the selected palette, sampling, blend, and ordering behavior.
 

@@ -20,6 +20,11 @@ The [selected sprite-pose preparation guide](docs/development/prepared-sprite-po
 `prepare-sprite-pose` and the client's `--sprite-pose` load check. The prepared Chocobo pose
 is static render input; the Windows window continues to use its synthetic scene.
 
+The [selected map preparation guide](docs/development/prepared-map-slice.md) describes
+`prepare-map` and the client's `--map` load check. MAP003's day/dry geometry, indexed
+textures, frozen presentation metadata and native terrain are prepared separately
+from rendering and combat integration.
+
 Content metadata validation uses the shared `Fft.Content.ContentPackages` API. It reads data only; it does not load authoring programs, the BIN or assets:
 
 ```powershell

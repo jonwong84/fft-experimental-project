@@ -287,3 +287,7 @@ animated meshes in other maps, complete slope/water movement, original event cam
 map/sprite occlusion equivalence, exact PS1 lighting/GTE arithmetic, affine texturing,
 semi-transparency, dithering, and raster edge rules. Retain raw input metadata and
 report differences explicitly when ZOD-031/033 add rendering comparisons.
+
+Implementation follow-up (2026-10-23): [ZOD-030](../development/prepared-map-slice.md)
+implements the bounded preparation/load pipeline and records repeatable output hashes,
+the native terrain/quad checkpoint and synthetic validation. Rendering remains ZOD-031.
