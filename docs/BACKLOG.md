@@ -42,9 +42,10 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 **Current focus (2026-10-23):** ZOD-023 completes the bounded M1 headless start-to-result scenario;
 ZOD-025 adds the synthetic Windows view with live GPU/resize/close checks and explicit input/DPI limits.
-ZOD-027 now traces the first ordinary Chocobo idle pose. ZOD-028 can implement that bounded
-prepared slice; ZOD-029's map trace and ZOD-026's independent capture investigation remain
-separate lanes. These unlock the prepared-asset renderer, not full M2 yet.
+ZOD-027 traces the first ordinary Chocobo idle pose; ZOD-028 prepares and loads its static
+render input with verified local files. Next trace map inputs (ZOD-029), then prepare them
+(ZOD-030). ZOD-026's independent capture investigation remains a separate lane. These
+unlock the prepared-asset renderer, not full M2 yet.
 Independent asset/reference investigations can proceed in parallel when the owner selects their scope;
 give each agent distinct files and acceptance criteria. M1 does not imply complete FFT combat or presentation.
 The numbered queue below records the completed foundation sequence.
@@ -484,7 +485,15 @@ No parser/runtime changes or original-game rendering comparison; camera, timing 
 
 ### ZOD-028 — Parse and prepare the selected sprite-frame slice
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-027
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-027
+
+**Result:** [Preparation command, prepared format and validation](development/prepared-sprite-pose.md)
+(2026-10-23). Bounded SHP/SEQ readers and ordinary-sheet decoding prepare Chocobo primary frame 9,
+bank 0, wait 6 as a static six-piece pose plus RGBA atlas. Source inputs are length/hash verified;
+fresh scratch exports repeat byte-for-byte. Content/Client load only manifest-verified prepared files.
+No animation playback or prepared scene rendering yet. Locked restore, Release build and all 720 tests
+pass, including 64 new synthetic parser/contract/CLI cases. Source evidence remains pinned to
+`11464943bbdbd2a0af022d90cb7f10455cf911df`; no independent original-rendering equivalence is claimed.
 
 **Selected slice:** Follow ZOD-027's [bounded implementation recommendation](architecture/zod-027-chocobo-idle-pose.md#smallest-zod-028-implementation):
 ordinary Chocobo primary frame 9 with bank 0; optional sequence 6 idle loop only.
@@ -709,6 +718,8 @@ with ZOD-040 and package management with ZOD-049. Menu/action/condition declarat
 
 **Scope:** Add an explicitly selected widescreen viewport/camera and menu/HUD layout mode while retaining
 the original presentation/reference profile. Decide how battle scenes, fixed layouts and cinematics fit.
+The owner intends to rework the UI for the wider aspect ratio: review screen composition, menu placement,
+information density and readability alongside ZOD-061's keyboard/mouse interaction design.
 
 **Acceptance criteria:** Supported aspect ratios render with correct geometry, picking and UI placement;
 resize does not stretch the scene or alter simulation coordinates/ranges. Original-profile comparisons
@@ -736,6 +747,9 @@ unchanged. No replacement asset pack or movie enhancement is required by this ti
 
 **Scope:** Extend the initial battle input proof into consistent keyboard/mouse and controller navigation
 across supported game screens, using device-independent application actions and configurable bindings.
+The owner intends UI changes tailored to native keyboard/mouse use. Review menu flows, direct mouse
+selection, keyboard focus/shortcuts and device-appropriate prompts together with ZOD-059's wider layouts;
+choose the concrete interactions when representative battle/menu workflows exist.
 
 **Acceptance criteria:** Battle and menu workflows are operable through the supported devices; mouse
 picking respects camera/viewport transforms, and controller navigation has predictable focus. Binding

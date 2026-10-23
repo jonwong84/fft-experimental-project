@@ -38,9 +38,9 @@ if (args.Length == 2 && args[0] == "--scenario" && args[1] == "two-unit-battle")
     return state.Outcome == TwoUnitBattleOutcome.FirstUnitWon ? 0 : 1;
 }
 
-if (args.Length != 4 || args[0] != "--content-root" || args[2] != "--asset-id")
+if (args.Length != 4 || args[0] != "--content-root" || args[2] is not ("--asset-id" or "--sprite-pose"))
 {
-    Console.Error.WriteLine("Usage: Fft.Client [--window | --window-check <new-directory> | --scenario two-unit-battle | --content-root <directory> --asset-id <namespace:path>]");
+    Console.Error.WriteLine("Usage: Fft.Client [--window | --window-check <new-directory> | --scenario two-unit-battle | --content-root <directory> (--asset-id|--sprite-pose) <namespace:path>]");
     return 2;
 }
 
@@ -48,11 +48,19 @@ try
 {
     var assetId = new AssetId(args[3]);
     LooseAssetStore content = LooseAssetStore.Load(args[1]);
+    if (args[2] == "--sprite-pose")
+    {
+        var pose = PreparedSpritePose.Load(content, assetId);
+        Console.WriteLine($"Loaded prepared pose '{pose.Definition.Id}': frame {pose.Definition.FrameId}, " +
+            $"wait {pose.Definition.Wait} (frozen), palette {pose.Definition.PaletteIndex}, " +
+            $"{pose.Definition.PartsBackToFront.Length} pieces, {pose.Rgba.Length} RGBA bytes; manifest hashes verified.");
+        return 0;
+    }
     byte[] asset = content.ReadAllBytes(assetId);
     Console.WriteLine($"Loaded prepared asset '{assetId}' ({asset.Length} bytes; manifest size and SHA-256 verified).");
     return 0;
 }
-catch (Exception exception) when (exception is ArgumentException or IOException or JsonException or UnauthorizedAccessException or KeyNotFoundException)
+catch (Exception exception) when (exception is ArgumentException or IOException or InvalidDataException or JsonException or UnauthorizedAccessException or KeyNotFoundException)
 {
     Console.Error.WriteLine(exception.Message);
     return 2;

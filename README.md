@@ -16,6 +16,10 @@ On Windows, `--window` opens the synthetic battle view. See [launch and graphica
 for resize/exit controls, the finite `--window-check` capture, and input/DPI limits. Rendering
 does not advance the battle; use `--scenario two-unit-battle` to execute its headless script.
 
+The [selected sprite-pose preparation guide](docs/development/prepared-sprite-pose.md) describes
+`prepare-sprite-pose` and the client's `--sprite-pose` load check. The prepared Chocobo pose
+is static render input; the Windows window continues to use its synthetic scene.
+
 Content metadata validation uses the shared `Fft.Content.ContentPackages` API. It reads data only; it does not load authoring programs, the BIN or assets:
 
 ```powershell

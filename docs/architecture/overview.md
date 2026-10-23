@@ -15,8 +15,10 @@
 ## Current repository, verified
 
 - `Fft.Core` contains common identifiers/value types, map data types, a typed battle transition proof, and flat-grid movement policies (one prototype and one bounded terrain-cost slice).
-- `Fft.Content` loads a versioned manifest and hash-verified loose files by logical asset ID. It references `Fft.Core`.
-- `Fft.AssetTool` and `Fft.AssetTool.Cli` handle offline image inventory, extraction, and a narrow unit `.SPR` parsing/decoding proof. The CLI composes the tools.
+- `Fft.Content` loads a versioned manifest and hash-verified loose files by logical asset ID,
+  including the bounded prepared static sprite pose. It references `Fft.Core`, without original-format parsers.
+- `Fft.AssetTool` and `Fft.AssetTool.Cli` handle offline image inventory, extraction, narrow unit `.SPR`
+  decoding and selected SHP/SEQ pose preparation. The CLI composes the tools; no full animation interpreter exists.
 - `Fft.Client` can load a prepared asset, run the deterministic synthetic two-unit battle headlessly,
   and open a MonoGame Windows view of its immutable starting snapshot. Gameplay input is not implemented.
 - Tests exist for the current projects, including pure client layout tests. The synthetic graphics
@@ -37,6 +39,11 @@ Implementation update (2026-10-23): [ZOD-025](../development/windows-synthetic-h
 MonoGame DesktopGL host in Client only. It renders a fixed synthetic snapshot without simulation
 transitions or original assets. Live GPU/resize/close checks and headless layout tests passed;
 mixed-DPI, physical input and prepared-map/sprite rendering remain bounded follow-up work.
+
+Implementation update (2026-10-23): [ZOD-028](../development/prepared-sprite-pose.md) prepares the
+source-traced Chocobo static pose as manifest-addressable metadata and RGBA data. Runtime Content
+loads that representation without AssetTool/original-format dependencies. Prepared scene rendering
+still awaits the selected map pipeline; deterministic simulation is unchanged.
 
 ## Target dependency shape
 
@@ -151,6 +158,13 @@ The owner also wants native Windows presentation/input enhancements investigated
 Higher-resolution mode should rasterize supported scene geometry at the selected internal resolution rather than only enlarge a completed low-resolution frame. Original sprites/textures retain their source detail and use an explicit sampling policy; replacement artwork is a separate content capability and is not a prerequisite for higher-resolution rendering. Resolution and aspect ratio are independent settings: an original-aspect presentation may use letterboxing/pillarboxing, while widescreen requires the camera/UI work in ZOD-059.
 
 Presentation options should preserve gameplay outcomes for the same logical commands and seed. Distinguish the original presentation/reference profile from explicitly selected enhancements and replacement asset packs. Device adapters translate keyboard, mouse and controller operations into the same application commands; remapping, prompts and navigation belong outside deterministic simulation. Higher output resolution alone does not create new source texture or movie detail.
+
+The owner also intends to rework the UI itself for wider aspect ratios and native keyboard/mouse use.
+ZOD-059 and ZOD-061 should coordinate screen composition, menu/HUD placement, information density,
+direct mouse selection, keyboard focus/shortcuts and prompts. Concrete layouts and interaction choices
+come after representative battle/menu workflows exist. Keep this an explicit Windows presentation option
+alongside the original reference presentation; UI changes consume the same validated gameplay commands
+and remain outside deterministic simulation. This records future design intent, not implementation now.
 
 ### Extensions and The Lion War
 

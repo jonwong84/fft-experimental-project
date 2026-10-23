@@ -15,6 +15,10 @@ Evidence is **source-derived analysis plus local file-structure inspection**, no
 executing C oracle, emulator observation, rendered comparison or original-game equivalence.
 The previous attack-image fixture retains its historical reference revision and meaning.
 
+Implementation follow-up: [ZOD-028](../development/prepared-sprite-pose.md) now prepares the
+static pose and loads its prepared representation. The original comparison, broader animation
+and rendering limitations below remain applicable.
+
 ## Selected preconditions and file identity
 
 Select spritesheet ID 134 (`SPRITE_SHEET_ID_CHOCOBO`), dry/unmounted primary frame set,
