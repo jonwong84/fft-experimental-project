@@ -1,0 +1,1400 @@
+{
+  "format": "fft.original-banner-continuation-evidence",
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "managedBase": "a022cb9",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "edition": "SCUS-94221",
+  "evidenceKind": "executed-original-no-input-continuation-and-saved-context-crop-observation",
+  "entryStateSha256": "133b893188d0abe7909725f910496b74bad9cfc85733cb38d76fece03048901a",
+  "sourceFunctions": [
+    {
+      "address": 2149355392,
+      "length": 4132,
+      "sha256": "231240f68206f06c842633bd08d76cb806eaac8b3e032ba673417f590ed12607"
+    },
+    {
+      "address": 2148845912,
+      "length": 60,
+      "sha256": "23aa4a3549fe6cb707b4f4e7a19e7f36356ce2411a96dfbb3d64c6fc5d1c2392"
+    }
+  ],
+  "captureReports": [
+    {
+      "localPath": "scratch/banner-continuation-c/report.json",
+      "bytes": 47733,
+      "sha256": "907568cfdc1a4f169de2e67da7d96cd5e1e49223cd15faa1e3a0aad4578215b4"
+    },
+    {
+      "localPath": "scratch/banner-continuation-d/report.json",
+      "bytes": 47733,
+      "sha256": "13c7585105f0bf0ed19573527e6ce5e2048ec2b4a65752819b116045af8eddaa"
+    }
+  ],
+  "tools": [
+    {
+      "localPath": "tools/verification/capture_banner_continuation.py",
+      "bytes": 15599,
+      "sha256": "01219dd92df23f9112cbf1d9a7d10850c7e3a28c4944c68b67b8e9202e44a0ed"
+    },
+    {
+      "localPath": "tools/verification/analyze_banner_precision.py",
+      "bytes": 11397,
+      "sha256": "63d262fa2374dec4114ec2a6577c8c6071456696d538cafa30594be7e882052e"
+    },
+    {
+      "localPath": "tools/verification/compare_observed_banner.py",
+      "bytes": 16541,
+      "sha256": "e5de625712f74373c1beace5ea394e3744c9f500a57700a4287c3fd5e88d80fa"
+    },
+    {
+      "localPath": "tools/verification/compare_visual_checkpoints.py",
+      "bytes": 13970,
+      "sha256": "3ee039e9a767c491d2b44b9889b7d3512262d456e51cf34017945b5e84e3210b"
+    },
+    {
+      "localPath": "tools/verification/prepare_retroarch_reference.py",
+      "bytes": 11773,
+      "sha256": "3bf0e6ffb79f0e12afaf8f4ba6da030034d18de828baee9bd5ae8220c9d365b0"
+    },
+    {
+      "localPath": "tools/verification/trace_banner_draw_state.py",
+      "bytes": 5610,
+      "sha256": "f26eecf3ba0988be80d2db30646a6b128d7675b3171126b794635780faa56635"
+    },
+    {
+      "localPath": "tools/verification/verify_retroarch_boot.py",
+      "bytes": 6352,
+      "sha256": "17fb0868304ea1b44481a78f5aedda211b6438460486f26a11e5c69dd9266390"
+    }
+  ],
+  "observations": [
+    {
+      "frontendFrames": null,
+      "slot": 3,
+      "savedReturnAddress": 2149356420,
+      "phase": "Revealing",
+      "phaseCounter": 18,
+      "logicalTick": 18,
+      "revealCompleted": 18,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ]
+    },
+    {
+      "frontendFrames": 4,
+      "slot": 3,
+      "savedReturnAddress": 2149356420,
+      "phase": "Revealing",
+      "phaseCounter": 19,
+      "logicalTick": 19,
+      "revealCompleted": 19,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ]
+    },
+    {
+      "frontendFrames": 6,
+      "slot": 3,
+      "savedReturnAddress": 2149358296,
+      "phase": "Holding",
+      "phaseCounter": 0,
+      "logicalTick": 20,
+      "revealCompleted": 20,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ]
+    },
+    {
+      "frontendFrames": 8,
+      "slot": 3,
+      "savedReturnAddress": 2149358296,
+      "phase": "Holding",
+      "phaseCounter": 1,
+      "logicalTick": 21,
+      "revealCompleted": 20,
+      "holdCompleted": 1,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ]
+    },
+    {
+      "frontendFrames": 24,
+      "slot": 3,
+      "savedReturnAddress": 2149358296,
+      "phase": "Holding",
+      "phaseCounter": 9,
+      "logicalTick": 29,
+      "revealCompleted": 20,
+      "holdCompleted": 9,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ]
+    },
+    {
+      "frontendFrames": 124,
+      "slot": 3,
+      "savedReturnAddress": 2149358296,
+      "phase": "Holding",
+      "phaseCounter": 59,
+      "logicalTick": 79,
+      "revealCompleted": 20,
+      "holdCompleted": 59,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ]
+    },
+    {
+      "frontendFrames": 126,
+      "slot": 3,
+      "savedReturnAddress": 2149358532,
+      "phase": "Hiding",
+      "phaseCounter": 0,
+      "logicalTick": 80,
+      "revealCompleted": 20,
+      "holdCompleted": 60,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ]
+    },
+    {
+      "frontendFrames": 128,
+      "slot": 3,
+      "savedReturnAddress": 2149358532,
+      "phase": "Hiding",
+      "phaseCounter": 1,
+      "logicalTick": 81,
+      "revealCompleted": 20,
+      "holdCompleted": 60,
+      "hideCompleted": 1,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ]
+    },
+    {
+      "frontendFrames": 130,
+      "slot": 3,
+      "savedReturnAddress": 2149358532,
+      "phase": "Hiding",
+      "phaseCounter": 2,
+      "logicalTick": 82,
+      "revealCompleted": 20,
+      "holdCompleted": 60,
+      "hideCompleted": 2,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 8,
+          "VisibleRows": 23
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 8,
+          "VisibleRows": 23
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 8,
+          "VisibleRows": 23
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 8,
+          "VisibleRows": 23
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 8,
+          "VisibleRows": 23
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 8,
+          "VisibleRows": 23
+        }
+      ]
+    },
+    {
+      "frontendFrames": 132,
+      "slot": 3,
+      "savedReturnAddress": 2149358532,
+      "phase": "Hiding",
+      "phaseCounter": 3,
+      "logicalTick": 83,
+      "revealCompleted": 20,
+      "holdCompleted": 60,
+      "hideCompleted": 3,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 16,
+          "VisibleRows": 15
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 16,
+          "VisibleRows": 15
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 16,
+          "VisibleRows": 15
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 16,
+          "VisibleRows": 15
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 16,
+          "VisibleRows": 15
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 16,
+          "VisibleRows": 15
+        }
+      ]
+    },
+    {
+      "frontendFrames": 134,
+      "slot": 3,
+      "savedReturnAddress": 2149358532,
+      "phase": "Hiding",
+      "phaseCounter": 4,
+      "logicalTick": 84,
+      "revealCompleted": 20,
+      "holdCompleted": 60,
+      "hideCompleted": 4,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 24,
+          "VisibleRows": 7
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 24,
+          "VisibleRows": 7
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 24,
+          "VisibleRows": 7
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 24,
+          "VisibleRows": 7
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 24,
+          "VisibleRows": 7
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 24,
+          "VisibleRows": 7
+        }
+      ]
+    },
+    {
+      "frontendFrames": 136,
+      "slot": 3,
+      "savedReturnAddress": 2149358532,
+      "phase": "Hiding",
+      "phaseCounter": 5,
+      "logicalTick": 85,
+      "revealCompleted": 20,
+      "holdCompleted": 60,
+      "hideCompleted": 5,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 31,
+          "VisibleRows": 0
+        }
+      ]
+    },
+    {
+      "frontendFrames": 138,
+      "slot": 3,
+      "savedReturnAddress": 2149358532,
+      "phase": "Hiding",
+      "phaseCounter": 6,
+      "logicalTick": 86,
+      "revealCompleted": 20,
+      "holdCompleted": 60,
+      "hideCompleted": 6,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 31,
+          "VisibleRows": 0
+        }
+      ]
+    },
+    {
+      "frontendFrames": 140,
+      "slot": 3,
+      "savedReturnAddress": 2149358532,
+      "phase": "Hiding",
+      "phaseCounter": 7,
+      "logicalTick": 87,
+      "revealCompleted": 20,
+      "holdCompleted": 60,
+      "hideCompleted": 7,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 31,
+          "VisibleRows": 0
+        }
+      ]
+    },
+    {
+      "frontendFrames": 142,
+      "slot": 3,
+      "savedReturnAddress": 2149358532,
+      "phase": "Hiding",
+      "phaseCounter": 8,
+      "logicalTick": 88,
+      "revealCompleted": 20,
+      "holdCompleted": 60,
+      "hideCompleted": 8,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 31,
+          "VisibleRows": 0
+        }
+      ]
+    },
+    {
+      "frontendFrames": 144,
+      "slot": 3,
+      "savedReturnAddress": 2149358532,
+      "phase": "Hiding",
+      "phaseCounter": 9,
+      "logicalTick": 89,
+      "revealCompleted": 20,
+      "holdCompleted": 60,
+      "hideCompleted": 9,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 31,
+          "VisibleRows": 0
+        }
+      ]
+    },
+    {
+      "frontendFrames": 146,
+      "slot": 3,
+      "savedReturnAddress": 2149359464,
+      "phase": "ExitYield",
+      "phaseCounter": 10,
+      "logicalTick": 90,
+      "revealCompleted": 20,
+      "holdCompleted": 60,
+      "hideCompleted": 10,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 31,
+          "VisibleRows": 0
+        }
+      ]
+    },
+    {
+      "frontendFrames": 148,
+      "slot": 3,
+      "savedReturnAddress": 2148845956,
+      "phase": "Completed",
+      "phaseCounter": null,
+      "logicalTick": 91,
+      "revealCompleted": 20,
+      "holdCompleted": 60,
+      "hideCompleted": 10,
+      "taskRunning": false,
+      "taskId": 0,
+      "draws": []
+    }
+  ],
+  "fullRevealObserved": false,
+  "originalEvent401Verified": false,
+  "physicalCircleInputObserved": false,
+  "pixelComparisonPerformed": false,
+  "originalFidelityEstablished": false,
+  "originalLoadingDurationEstablished": false,
+  "managedReplayCompared": true,
+  "screenshotTaskLatencyCalibrated": false,
+  "validation": {
+    "managedPassed": 1436,
+    "managedNewClientCases": 18,
+    "pythonPassed": 92,
+    "pythonNewCases": 11
+  },
+  "limits": [
+    "Only late reveal (entry counter 18), sampled hold boundaries/interior and complete hide/exit are observed.",
+    "Frontend cadence is local to these independently restored samples; no universal frame/tick conversion.",
+    "No original event-401 reachability, early reveal, physical Circle replay or general blending/raster verdict.",
+    "Screenshots provide context, not a calibrated pixel/timing comparison."
+  ],
+  "repeatValidation": {
+    "checkpoints": 17,
+    "allPngFilesByteIdentical": true,
+    "allExitStatesByteIdentical": true,
+    "allTaskGeometryObservationsIdentical": true,
+    "wholeReportsByteIdentical": false,
+    "checkpointsIdentities": [
+      {
+        "frontendFrames": 4,
+        "matches": {
+          "png": true,
+          "state": true,
+          "observations": true
+        },
+        "png": {
+          "localPath": "scratch/banner-continuation-c/frames-004/frame.png",
+          "bytes": 43233,
+          "sha256": "4fc1a51f516efbd1c94493476f0b382e901e2c0e0baf7cc865a391e4463d65aa"
+        },
+        "state": {
+          "localPath": "scratch/banner-continuation-c/frames-004/states/fft-clean-base-game.state.auto",
+          "bytes": 1498649,
+          "sha256": "3496e2ba6da1113c2e0dc7e43e080c70d151eca45b6b153a248dae26f04abec3"
+        },
+        "repeatPng": {
+          "localPath": "scratch/banner-continuation-d/frames-004/frame.png",
+          "bytes": 43233,
+          "sha256": "4fc1a51f516efbd1c94493476f0b382e901e2c0e0baf7cc865a391e4463d65aa"
+        },
+        "repeatState": {
+          "localPath": "scratch/banner-continuation-d/frames-004/states/fft-clean-base-game.state.auto",
+          "bytes": 1498649,
+          "sha256": "3496e2ba6da1113c2e0dc7e43e080c70d151eca45b6b153a248dae26f04abec3"
+        }
+      },
+      {
+        "frontendFrames": 6,
+        "matches": {
+          "png": true,
+          "state": true,
+          "observations": true
+        },
+        "png": {
+          "localPath": "scratch/banner-continuation-c/frames-006/frame.png",
+          "bytes": 42981,
+          "sha256": "bf3db5bc532ebcda5cb64fa583e3b32f2a6c5b94a43659c3e24237c914046f7f"
+        },
+        "state": {
+          "localPath": "scratch/banner-continuation-c/frames-006/states/fft-clean-base-game.state.auto",
+          "bytes": 1498786,
+          "sha256": "3b475e0e7ae99b0405924f68ae1518ba006afe9387fe0ef343bf1df10822e155"
+        },
+        "repeatPng": {
+          "localPath": "scratch/banner-continuation-d/frames-006/frame.png",
+          "bytes": 42981,
+          "sha256": "bf3db5bc532ebcda5cb64fa583e3b32f2a6c5b94a43659c3e24237c914046f7f"
+        },
+        "repeatState": {
+          "localPath": "scratch/banner-continuation-d/frames-006/states/fft-clean-base-game.state.auto",
+          "bytes": 1498786,
+          "sha256": "3b475e0e7ae99b0405924f68ae1518ba006afe9387fe0ef343bf1df10822e155"
+        }
+      },
+      {
+        "frontendFrames": 8,
+        "matches": {
+          "png": true,
+          "state": true,
+          "observations": true
+        },
+        "png": {
+          "localPath": "scratch/banner-continuation-c/frames-008/frame.png",
+          "bytes": 42784,
+          "sha256": "39bdd52722d250810c4c49fb64b2f150d04ce30504546539fc7c3252c14e2be4"
+        },
+        "state": {
+          "localPath": "scratch/banner-continuation-c/frames-008/states/fft-clean-base-game.state.auto",
+          "bytes": 1499844,
+          "sha256": "a7c5d096931dcb0fd0027b37a191427ea505abe49d0ef395a7738113dcd650fc"
+        },
+        "repeatPng": {
+          "localPath": "scratch/banner-continuation-d/frames-008/frame.png",
+          "bytes": 42784,
+          "sha256": "39bdd52722d250810c4c49fb64b2f150d04ce30504546539fc7c3252c14e2be4"
+        },
+        "repeatState": {
+          "localPath": "scratch/banner-continuation-d/frames-008/states/fft-clean-base-game.state.auto",
+          "bytes": 1499844,
+          "sha256": "a7c5d096931dcb0fd0027b37a191427ea505abe49d0ef395a7738113dcd650fc"
+        }
+      },
+      {
+        "frontendFrames": 24,
+        "matches": {
+          "png": true,
+          "state": true,
+          "observations": true
+        },
+        "png": {
+          "localPath": "scratch/banner-continuation-c/frames-024/frame.png",
+          "bytes": 43055,
+          "sha256": "acb90b782245b4c781214639ff1637000d5c8dc880579989a524b5433894e299"
+        },
+        "state": {
+          "localPath": "scratch/banner-continuation-c/frames-024/states/fft-clean-base-game.state.auto",
+          "bytes": 1499357,
+          "sha256": "040c0863acd8c2c30153ec8f57355fe0d6aff0439ffed09a539b17d48ccd12d6"
+        },
+        "repeatPng": {
+          "localPath": "scratch/banner-continuation-d/frames-024/frame.png",
+          "bytes": 43055,
+          "sha256": "acb90b782245b4c781214639ff1637000d5c8dc880579989a524b5433894e299"
+        },
+        "repeatState": {
+          "localPath": "scratch/banner-continuation-d/frames-024/states/fft-clean-base-game.state.auto",
+          "bytes": 1499357,
+          "sha256": "040c0863acd8c2c30153ec8f57355fe0d6aff0439ffed09a539b17d48ccd12d6"
+        }
+      },
+      {
+        "frontendFrames": 124,
+        "matches": {
+          "png": true,
+          "state": true,
+          "observations": true
+        },
+        "png": {
+          "localPath": "scratch/banner-continuation-c/frames-124/frame.png",
+          "bytes": 43401,
+          "sha256": "59ed33dfd441247b18bf14210c16557d3088a9d52a6dc2c00296fcdf976a9517"
+        },
+        "state": {
+          "localPath": "scratch/banner-continuation-c/frames-124/states/fft-clean-base-game.state.auto",
+          "bytes": 1497200,
+          "sha256": "bda99d53fd090819aa6d8f63cd89751cd82428db1dada974c1dbede782c5198a"
+        },
+        "repeatPng": {
+          "localPath": "scratch/banner-continuation-d/frames-124/frame.png",
+          "bytes": 43401,
+          "sha256": "59ed33dfd441247b18bf14210c16557d3088a9d52a6dc2c00296fcdf976a9517"
+        },
+        "repeatState": {
+          "localPath": "scratch/banner-continuation-d/frames-124/states/fft-clean-base-game.state.auto",
+          "bytes": 1497200,
+          "sha256": "bda99d53fd090819aa6d8f63cd89751cd82428db1dada974c1dbede782c5198a"
+        }
+      },
+      {
+        "frontendFrames": 126,
+        "matches": {
+          "png": true,
+          "state": true,
+          "observations": true
+        },
+        "png": {
+          "localPath": "scratch/banner-continuation-c/frames-126/frame.png",
+          "bytes": 43562,
+          "sha256": "4da751365d2bb2bd9558a95107feb6fdce7e8821140ec88de42fc749aee8bd77"
+        },
+        "state": {
+          "localPath": "scratch/banner-continuation-c/frames-126/states/fft-clean-base-game.state.auto",
+          "bytes": 1499633,
+          "sha256": "afdebf407e61831bdfdedb1e9ab0bea8592de1dbc8a11cdeaf45b44df34265b1"
+        },
+        "repeatPng": {
+          "localPath": "scratch/banner-continuation-d/frames-126/frame.png",
+          "bytes": 43562,
+          "sha256": "4da751365d2bb2bd9558a95107feb6fdce7e8821140ec88de42fc749aee8bd77"
+        },
+        "repeatState": {
+          "localPath": "scratch/banner-continuation-d/frames-126/states/fft-clean-base-game.state.auto",
+          "bytes": 1499633,
+          "sha256": "afdebf407e61831bdfdedb1e9ab0bea8592de1dbc8a11cdeaf45b44df34265b1"
+        }
+      },
+      {
+        "frontendFrames": 128,
+        "matches": {
+          "png": true,
+          "state": true,
+          "observations": true
+        },
+        "png": {
+          "localPath": "scratch/banner-continuation-c/frames-128/frame.png",
+          "bytes": 43273,
+          "sha256": "2a2c97739d40e627fd61bf879fed42ef9a35abdeb48815719b4c4f025df57d2a"
+        },
+        "state": {
+          "localPath": "scratch/banner-continuation-c/frames-128/states/fft-clean-base-game.state.auto",
+          "bytes": 1499754,
+          "sha256": "eaaa7e7bfd29dd1d6a403eaad13d7c8ca8404b01ef30706878012da871bf8e42"
+        },
+        "repeatPng": {
+          "localPath": "scratch/banner-continuation-d/frames-128/frame.png",
+          "bytes": 43273,
+          "sha256": "2a2c97739d40e627fd61bf879fed42ef9a35abdeb48815719b4c4f025df57d2a"
+        },
+        "repeatState": {
+          "localPath": "scratch/banner-continuation-d/frames-128/states/fft-clean-base-game.state.auto",
+          "bytes": 1499754,
+          "sha256": "eaaa7e7bfd29dd1d6a403eaad13d7c8ca8404b01ef30706878012da871bf8e42"
+        }
+      },
+      {
+        "frontendFrames": 130,
+        "matches": {
+          "png": true,
+          "state": true,
+          "observations": true
+        },
+        "png": {
+          "localPath": "scratch/banner-continuation-c/frames-130/frame.png",
+          "bytes": 43164,
+          "sha256": "a930b32defb6c46abe3b1640e8b1809017a288b1a34f1ad8fbf6bc1d78d2d470"
+        },
+        "state": {
+          "localPath": "scratch/banner-continuation-c/frames-130/states/fft-clean-base-game.state.auto",
+          "bytes": 1499614,
+          "sha256": "6097d8ba0af630c2c248ca761471e90184ea74a76086c2905ba35f8a21e53867"
+        },
+        "repeatPng": {
+          "localPath": "scratch/banner-continuation-d/frames-130/frame.png",
+          "bytes": 43164,
+          "sha256": "a930b32defb6c46abe3b1640e8b1809017a288b1a34f1ad8fbf6bc1d78d2d470"
+        },
+        "repeatState": {
+          "localPath": "scratch/banner-continuation-d/frames-130/states/fft-clean-base-game.state.auto",
+          "bytes": 1499614,
+          "sha256": "6097d8ba0af630c2c248ca761471e90184ea74a76086c2905ba35f8a21e53867"
+        }
+      },
+      {
+        "frontendFrames": 132,
+        "matches": {
+          "png": true,
+          "state": true,
+          "observations": true
+        },
+        "png": {
+          "localPath": "scratch/banner-continuation-c/frames-132/frame.png",
+          "bytes": 43467,
+          "sha256": "8065e1a34276a31e73e3541f20b637517ebb209f20640ea8ea06cb1852c2cff4"
+        },
+        "state": {
+          "localPath": "scratch/banner-continuation-c/frames-132/states/fft-clean-base-game.state.auto",
+          "bytes": 1499457,
+          "sha256": "39c4915098adfc97847c3d18b72a72a809bbf334dc407cf7f1062f9a86f9eb52"
+        },
+        "repeatPng": {
+          "localPath": "scratch/banner-continuation-d/frames-132/frame.png",
+          "bytes": 43467,
+          "sha256": "8065e1a34276a31e73e3541f20b637517ebb209f20640ea8ea06cb1852c2cff4"
+        },
+        "repeatState": {
+          "localPath": "scratch/banner-continuation-d/frames-132/states/fft-clean-base-game.state.auto",
+          "bytes": 1499457,
+          "sha256": "39c4915098adfc97847c3d18b72a72a809bbf334dc407cf7f1062f9a86f9eb52"
+        }
+      },
+      {
+        "frontendFrames": 134,
+        "matches": {
+          "png": true,
+          "state": true,
+          "observations": true
+        },
+        "png": {
+          "localPath": "scratch/banner-continuation-c/frames-134/frame.png",
+          "bytes": 42992,
+          "sha256": "653ae0d411015fb4a969fd9bf1689e7b2c0b7caf4f0aacc7b117eca57fc3c884"
+        },
+        "state": {
+          "localPath": "scratch/banner-continuation-c/frames-134/states/fft-clean-base-game.state.auto",
+          "bytes": 1497418,
+          "sha256": "bb609b847de7ad5833f6f79e9f312406e7a41694a904b0d1fb9b9d8ea1691eb8"
+        },
+        "repeatPng": {
+          "localPath": "scratch/banner-continuation-d/frames-134/frame.png",
+          "bytes": 42992,
+          "sha256": "653ae0d411015fb4a969fd9bf1689e7b2c0b7caf4f0aacc7b117eca57fc3c884"
+        },
+        "repeatState": {
+          "localPath": "scratch/banner-continuation-d/frames-134/states/fft-clean-base-game.state.auto",
+          "bytes": 1497418,
+          "sha256": "bb609b847de7ad5833f6f79e9f312406e7a41694a904b0d1fb9b9d8ea1691eb8"
+        }
+      },
+      {
+        "frontendFrames": 136,
+        "matches": {
+          "png": true,
+          "state": true,
+          "observations": true
+        },
+        "png": {
+          "localPath": "scratch/banner-continuation-c/frames-136/frame.png",
+          "bytes": 40177,
+          "sha256": "803b0c742711080b4293465a46cb89fc5cbc0e68f633edcd084dc3dcacf40d8d"
+        },
+        "state": {
+          "localPath": "scratch/banner-continuation-c/frames-136/states/fft-clean-base-game.state.auto",
+          "bytes": 1494562,
+          "sha256": "84126c59adb6faac1fd164f087c53c720818876b80dea9060a9ee53d852f30df"
+        },
+        "repeatPng": {
+          "localPath": "scratch/banner-continuation-d/frames-136/frame.png",
+          "bytes": 40177,
+          "sha256": "803b0c742711080b4293465a46cb89fc5cbc0e68f633edcd084dc3dcacf40d8d"
+        },
+        "repeatState": {
+          "localPath": "scratch/banner-continuation-d/frames-136/states/fft-clean-base-game.state.auto",
+          "bytes": 1494562,
+          "sha256": "84126c59adb6faac1fd164f087c53c720818876b80dea9060a9ee53d852f30df"
+        }
+      },
+      {
+        "frontendFrames": 138,
+        "matches": {
+          "png": true,
+          "state": true,
+          "observations": true
+        },
+        "png": {
+          "localPath": "scratch/banner-continuation-c/frames-138/frame.png",
+          "bytes": 38876,
+          "sha256": "92dec364db801992a137172ae29238850f159da3f8cd5f0c4c71fb8102d5bb06"
+        },
+        "state": {
+          "localPath": "scratch/banner-continuation-c/frames-138/states/fft-clean-base-game.state.auto",
+          "bytes": 1493347,
+          "sha256": "5f19e7a874fdb143c59adc40c2c54bc8120ca4c9a50bb67dece92ee65e740443"
+        },
+        "repeatPng": {
+          "localPath": "scratch/banner-continuation-d/frames-138/frame.png",
+          "bytes": 38876,
+          "sha256": "92dec364db801992a137172ae29238850f159da3f8cd5f0c4c71fb8102d5bb06"
+        },
+        "repeatState": {
+          "localPath": "scratch/banner-continuation-d/frames-138/states/fft-clean-base-game.state.auto",
+          "bytes": 1493347,
+          "sha256": "5f19e7a874fdb143c59adc40c2c54bc8120ca4c9a50bb67dece92ee65e740443"
+        }
+      },
+      {
+        "frontendFrames": 140,
+        "matches": {
+          "png": true,
+          "state": true,
+          "observations": true
+        },
+        "png": {
+          "localPath": "scratch/banner-continuation-c/frames-140/frame.png",
+          "bytes": 38864,
+          "sha256": "20d59495a2c76347d94898f18df7814d416358786ab619bd7fa30753fdac1c62"
+        },
+        "state": {
+          "localPath": "scratch/banner-continuation-c/frames-140/states/fft-clean-base-game.state.auto",
+          "bytes": 1493222,
+          "sha256": "5397222ac4a734b34faa4cfd3cbe73587c285409f00e38b22be8bcdbf6d9f4db"
+        },
+        "repeatPng": {
+          "localPath": "scratch/banner-continuation-d/frames-140/frame.png",
+          "bytes": 38864,
+          "sha256": "20d59495a2c76347d94898f18df7814d416358786ab619bd7fa30753fdac1c62"
+        },
+        "repeatState": {
+          "localPath": "scratch/banner-continuation-d/frames-140/states/fft-clean-base-game.state.auto",
+          "bytes": 1493222,
+          "sha256": "5397222ac4a734b34faa4cfd3cbe73587c285409f00e38b22be8bcdbf6d9f4db"
+        }
+      },
+      {
+        "frontendFrames": 142,
+        "matches": {
+          "png": true,
+          "state": true,
+          "observations": true
+        },
+        "png": {
+          "localPath": "scratch/banner-continuation-c/frames-142/frame.png",
+          "bytes": 38734,
+          "sha256": "0b64d6905a38961934e87d4ff1e04c78cc13cfd3ceb33aa3219b0d60a70b29ae"
+        },
+        "state": {
+          "localPath": "scratch/banner-continuation-c/frames-142/states/fft-clean-base-game.state.auto",
+          "bytes": 1493244,
+          "sha256": "6d4bd92c59c3875edcf43fa7c2f169317175617d0a6912df565205dc2376bf67"
+        },
+        "repeatPng": {
+          "localPath": "scratch/banner-continuation-d/frames-142/frame.png",
+          "bytes": 38734,
+          "sha256": "0b64d6905a38961934e87d4ff1e04c78cc13cfd3ceb33aa3219b0d60a70b29ae"
+        },
+        "repeatState": {
+          "localPath": "scratch/banner-continuation-d/frames-142/states/fft-clean-base-game.state.auto",
+          "bytes": 1493244,
+          "sha256": "6d4bd92c59c3875edcf43fa7c2f169317175617d0a6912df565205dc2376bf67"
+        }
+      },
+      {
+        "frontendFrames": 144,
+        "matches": {
+          "png": true,
+          "state": true,
+          "observations": true
+        },
+        "png": {
+          "localPath": "scratch/banner-continuation-c/frames-144/frame.png",
+          "bytes": 38995,
+          "sha256": "441e240122439cc8b2bf2e2d89b3ca027c219fcda3a4bb88e2a1680c886a332b"
+        },
+        "state": {
+          "localPath": "scratch/banner-continuation-c/frames-144/states/fft-clean-base-game.state.auto",
+          "bytes": 1493443,
+          "sha256": "de2506cbee992e46e374d26b439ea2863ff61d5938bb60de37ed4a09f3cdff2d"
+        },
+        "repeatPng": {
+          "localPath": "scratch/banner-continuation-d/frames-144/frame.png",
+          "bytes": 38995,
+          "sha256": "441e240122439cc8b2bf2e2d89b3ca027c219fcda3a4bb88e2a1680c886a332b"
+        },
+        "repeatState": {
+          "localPath": "scratch/banner-continuation-d/frames-144/states/fft-clean-base-game.state.auto",
+          "bytes": 1493443,
+          "sha256": "de2506cbee992e46e374d26b439ea2863ff61d5938bb60de37ed4a09f3cdff2d"
+        }
+      },
+      {
+        "frontendFrames": 146,
+        "matches": {
+          "png": true,
+          "state": true,
+          "observations": true
+        },
+        "png": {
+          "localPath": "scratch/banner-continuation-c/frames-146/frame.png",
+          "bytes": 39023,
+          "sha256": "e453be1db4bc039d9d055f10ffc756d0b787047e8b3d4765a85b0e4cbe4eae24"
+        },
+        "state": {
+          "localPath": "scratch/banner-continuation-c/frames-146/states/fft-clean-base-game.state.auto",
+          "bytes": 1493247,
+          "sha256": "8614b4294bfe34c37ac793376d5b38ea59c0c98b1b15b7ef3117a2faad60edc1"
+        },
+        "repeatPng": {
+          "localPath": "scratch/banner-continuation-d/frames-146/frame.png",
+          "bytes": 39023,
+          "sha256": "e453be1db4bc039d9d055f10ffc756d0b787047e8b3d4765a85b0e4cbe4eae24"
+        },
+        "repeatState": {
+          "localPath": "scratch/banner-continuation-d/frames-146/states/fft-clean-base-game.state.auto",
+          "bytes": 1493247,
+          "sha256": "8614b4294bfe34c37ac793376d5b38ea59c0c98b1b15b7ef3117a2faad60edc1"
+        }
+      },
+      {
+        "frontendFrames": 148,
+        "matches": {
+          "png": true,
+          "state": true,
+          "observations": true
+        },
+        "png": {
+          "localPath": "scratch/banner-continuation-c/frames-148/frame.png",
+          "bytes": 38987,
+          "sha256": "03cb8d925c909678a6eedc08bd71ee29d07916752b3f3d303acfc0cae35a147e"
+        },
+        "state": {
+          "localPath": "scratch/banner-continuation-c/frames-148/states/fft-clean-base-game.state.auto",
+          "bytes": 1492488,
+          "sha256": "10b7d21b51ac6a08a57d2f62ecc8286269aa8a0cd61b05b01b9c913eb99a428c"
+        },
+        "repeatPng": {
+          "localPath": "scratch/banner-continuation-d/frames-148/frame.png",
+          "bytes": 38987,
+          "sha256": "03cb8d925c909678a6eedc08bd71ee29d07916752b3f3d303acfc0cae35a147e"
+        },
+        "repeatState": {
+          "localPath": "scratch/banner-continuation-d/frames-148/states/fft-clean-base-game.state.auto",
+          "bytes": 1492488,
+          "sha256": "10b7d21b51ac6a08a57d2f62ecc8286269aa8a0cd61b05b01b9c913eb99a428c"
+        }
+      }
+    ],
+    "reviewPages": [
+      {
+        "localPath": "scratch/banner-continuation-c/review.html",
+        "bytes": 3352,
+        "sha256": "dfd2d4a494e98c6d3d2e0e45605f8e5c974c3763bd94670d43d387f5f067f179"
+      },
+      {
+        "localPath": "scratch/banner-continuation-d/review.html",
+        "bytes": 3352,
+        "sha256": "dfd2d4a494e98c6d3d2e0e45605f8e5c974c3763bd94670d43d387f5f067f179"
+      }
+    ],
+    "visuallyInspectedFrontendBudgets": [
+      130,
+      134,
+      136,
+      148
+    ]
+  },
+  "slotReuseProbe": {
+    "state": {
+      "localPath": "scratch/banner-continuation-explore-c/frames-150/states/fft-clean-base-game.state.auto",
+      "bytes": 1492434,
+      "sha256": "90bed6607dae26193861a10c5e564f1236fd56e773a01b77a059c2b2cb7a70aa"
+    },
+    "frontendFrames": 150,
+    "slot": 3,
+    "taskId": 56,
+    "condition": 0,
+    "hold": 60,
+    "savedReturnAddress": 2149333960,
+    "rejectedBySelectedVerifier": true
+  },
+  "ownerVisualReview": {
+    "date": "2026-10-24",
+    "status": "accepted",
+    "statement": "This looks right to me.",
+    "artifact": {
+      "localPath": "scratch/banner-continuation-c/review.html",
+      "sha256": "dfd2d4a494e98c6d3d2e0e45605f8e5c974c3763bd94670d43d387f5f067f179"
+    },
+    "scope": "Owner accepted the displayed original banner continuation gallery after the visual review guidance.",
+    "remainingGaps": "Full reveal/loading, physical Circle input, event identity, screenshot/task latency and background-sensitive blending/coverage remain open."
+  }
+}

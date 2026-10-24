@@ -194,6 +194,22 @@ an in-game Settings menu, and accurate music/sound effects (ZOD-043).
 No shader/backend/stretch factor is selected; revisit much later without changing
 the current banner investigation or native-pixel diagnostic captures.
 
+**Original continuation (2026-10-24):** The
+[saved-task continuation](development/original-banner-continuation.md) identifies
+the existing full-visible original state as reveal iteration 18. Two 17-checkpoint
+no-input restore sets repeat screenshots, exit-state files and decoded task/quad
+observations through late reveal, sampled hold boundaries, every hide iteration
+and natural task exit. Eighteen metadata-only managed replay cases match the
+recorded phases/counters/crops; the task is still live at checkpoint 90 and clears
+at 91. A later reused slot is rejected. Locked restore, zero-warning Release build,
+1,436 .NET tests (18 new Client) and 92 Python tests (11 new) pass. The owner
+accepted the continuation gallery's visual appearance on 2026-10-24. No runtime,
+package, asset/save-schema or opcode-admission change. Full reveal/loading,
+physical Circle input, event identity, screenshot/task latency and background
+blending/coverage remain open; ZOD-033 stays partial. Original media remain ignored;
+no automatic commit. Next obtain an earlier state for reveal or select bounded
+background-sensitive comparisons; ZOD-079 remains deferred.
+
 **Prepared:** 2026-10-20  
 **Workspace:** `C:\repositories\fft-experimental-project`  
 **Branch:** `feature/initial-development`  

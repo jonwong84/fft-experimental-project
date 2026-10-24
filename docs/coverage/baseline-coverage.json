@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-24",
   "edition": "SCUS-94221",
-  "managedCommit": "ec50eb7",
+  "managedCommit": "a022cb9",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 1418,
-    "source": "docs/development/five-bit-general-banner.md",
+    "passed": 1436,
+    "source": "docs/development/original-banner-continuation.md",
     "runForThisInventory": false
   },
   "statusDefinitions": {
@@ -1648,7 +1648,7 @@
       "ownerTicket": "ZOD-033",
       "ownerArea": "Fft.Client platform adapters",
       "status": "partial",
-      "currentScope": "Fixed prepared MAP003/Chocobo scene renders with declared neutral-lighting and modern depth/cutout approximations. ZOD-033 adds strict optional headless authored/same-environment PNG comparison, checkpoint/tick/view/turn-projection bindings, regional RGBA diagnostics and zero-tolerance synthetic Windows plans. All 22 Python tests pass; two 120-frame synthetic captures and reports match. No original rendered comparison or full simulation equivalence is claimed. The existing RetroArch 1.22.2/Beetle PSX software installation now has an isolated native capture profile. Two input-disconnected finite boots reach introductory game content with matching raw screenshots and unchanged installed settings; the owner subsequently captured the target banner/state, and two four-frame state restores produce identical banner scene images. Exact original/managed timing/context, BSV playback and original comparisons remain open. All 30 Python tests pass, with 8 new profile/isolation checks. A separate full-visible observed banner profile now records explicit measured borders and context bindings. Two diagnostic reports/review pages match. Manual inspection finds consistent apparent text placement; strict equality fails at 1,460/1,577 managed-background-invariant samples (original equal or darker by up to 16 RGB levels). No fidelity threshold is selected or runtime changed. All 52 Python tests pass (22 new). A subsequent developer precision study reads the frozen GPU dtd=0/displayed VRAM and exactly matches all 1,577 prior core samples with source-informed five-bit arithmetic, quantized vertical colors and zero-padded emulator output. Two reports match; all 66 Python tests pass (14 new). No runtime profile is changed, and installed-DLL source identity/per-primitive draw-state provenance remain unverified. A subsequent bounded Client five-bit profile now uses explicit per-draw dither/origin state. Frozen DMA-chain reconstruction identifies the REQUIRE dark-screen mode before all six banner packets. Actual native captures match all 1,577 selected original glyph pixels exactly, two capture sets repeat, and all 16 legacy RGB8 capture files retain historical bytes. The dither-on negative control distinguishes draw-state and pixel failures. Locked restore, zero-warning Release build, 1,418 .NET tests (30 new) and 81 Python tests (15 new) pass; timing, background-sensitive blending and broader integration remain open.",
+      "currentScope": "Fixed prepared MAP003/Chocobo scene renders with declared neutral-lighting and modern depth/cutout approximations. ZOD-033 adds strict optional headless authored/same-environment PNG comparison, checkpoint/tick/view/turn-projection bindings, regional RGBA diagnostics and zero-tolerance synthetic Windows plans. All 22 Python tests pass; two 120-frame synthetic captures and reports match. No original rendered comparison or full simulation equivalence is claimed. The existing RetroArch 1.22.2/Beetle PSX software installation now has an isolated native capture profile. Two input-disconnected finite boots reach introductory game content with matching raw screenshots and unchanged installed settings; the owner subsequently captured the target banner/state, and two four-frame state restores produce identical banner scene images. Exact original/managed timing/context, BSV playback and original comparisons remain open. All 30 Python tests pass, with 8 new profile/isolation checks. A separate full-visible observed banner profile now records explicit measured borders and context bindings. Two diagnostic reports/review pages match. Manual inspection finds consistent apparent text placement; strict equality fails at 1,460/1,577 managed-background-invariant samples (original equal or darker by up to 16 RGB levels). No fidelity threshold is selected or runtime changed. All 52 Python tests pass (22 new). A subsequent developer precision study reads the frozen GPU dtd=0/displayed VRAM and exactly matches all 1,577 prior core samples with source-informed five-bit arithmetic, quantized vertical colors and zero-padded emulator output. Two reports match; all 66 Python tests pass (14 new). No runtime profile is changed, and installed-DLL source identity/per-primitive draw-state provenance remain unverified. A subsequent bounded Client five-bit profile now uses explicit per-draw dither/origin state. Frozen DMA-chain reconstruction identifies the REQUIRE dark-screen mode before all six banner packets. Actual native captures match all 1,577 selected original glyph pixels exactly, two capture sets repeat, and all 16 legacy RGB8 capture files retain historical bytes. The dither-on negative control distinguishes draw-state and pixel failures. Locked restore, zero-warning Release build, 1,418 .NET tests (30 new) and 81 Python tests (15 new) pass; timing, background-sensitive blending and broader integration remain open. Original saved-task continuation now identifies the entry as reveal counter 18 and reproduces late reveal, sampled hold boundaries, every hide iteration and natural exit. Two 17-checkpoint capture sets repeat PNGs, exit states and task/quad observations. Eighteen metadata-only managed replay cases match observed phases/counters/crops, with task exit at checkpoint 91 and later slot reuse rejected. Locked restore, zero-warning Release build, 1,436 .NET tests and 92 Python tests pass. Full reveal/loading, physical Circle input, event identity, screenshot/task latency and background blending/coverage remain open.",
       "referenceSources": [
         {
           "path": "src/battle/map/runtime.c",
@@ -1675,7 +1675,9 @@
         "docs/architecture/general-banner-native-color-study.md",
         "docs/evidence/visual/general-banner-precision-study-v1.json",
         "docs/development/five-bit-general-banner.md",
-        "docs/evidence/visual/five-bit-general-banner-v1.json"
+        "docs/evidence/visual/five-bit-general-banner-v1.json",
+        "docs/development/original-banner-continuation.md",
+        "docs/evidence/visual/original-banner-continuation-v1.json"
       ],
       "implementationPaths": [
         "src/Fft.Client/Presentation/PreparedSceneGeometry.cs",
@@ -1690,7 +1692,8 @@
         "src/Fft.Client/Presentation/FiveBitGeneralBannerPresentation.cs",
         "src/Fft.Client/Presentation/BannerPreviewOptions.cs",
         "tools/verification/trace_banner_draw_state.py",
-        "tools/verification/compare_native_banner.py"
+        "tools/verification/compare_native_banner.py",
+        "tools/verification/capture_banner_continuation.py"
       ],
       "automatedChecks": [
         {
@@ -1720,17 +1723,25 @@
         {
           "path": "tools/verification/test_native_banner.py",
           "scope": "15 authored DMA-chain and native-receipt/comparison regressions; no original media/emulator needed."
+        },
+        {
+          "path": "tests/Fft.Client.Tests/ObservedBannerContinuationTests.cs",
+          "scope": "18 metadata-only original-observation checkpoint cases compare actual managed phase/counters/terminal state/crop projection using authored artwork; no original media/emulator required."
+        },
+        {
+          "path": "tools/verification/test_banner_continuation.py",
+          "scope": "11 authored context/packet/state-fingerprint/command/output guard cases; no original code or media required."
         }
       ],
       "manualCheckpoint": {
         "status": "bounded-native-foreground-observed-wider-fidelity-pending",
-        "procedure": "Two finite native Windows runs with CPU/GPU readback at 15 checkpoints; inspect hold PNG and compare exact foreground with explicit original draw state. Retain raw regional/background differences and negative dither control.",
+        "procedure": "Two finite native Windows runs with CPU/GPU readback at 15 checkpoints; inspect hold PNG and compare exact foreground with explicit original draw state. Retain raw regional/background differences and negative dither control. Inspect the original continuation gallery through hide/exit; phases come from saved task counters, and screenshot latency is uncalibrated.",
         "evidence": "docs/development/five-bit-general-banner.md"
       },
       "openQuestions": [
         "Independent original visual equivalence, PS1 blend/order effects and other variants are pending."
       ],
-      "nextAction": "Obtain a pre-banner state/input sequence for reveal/hide timing, then extend original background-sensitive blending and coverage checks. Full scene/event integration remains separate."
+      "nextAction": "Obtain an earlier original state for full reveal/loading/input anchors, or select background-sensitive blend/coverage comparisons. Screenshot/task latency, event identity and full scene integration remain separate gates."
     },
     {
       "id": "COV-PRE-002",
@@ -2399,7 +2410,7 @@
       "ownerTicket": "ZOD-026",
       "ownerArea": "Development validation",
       "status": "partial",
-      "currentScope": "ZOD-026 executes the verified original SCUS-94221 Chocobo attack decoder/helper instructions under Unicorn 2.1.4. Two independent-execution captures/reports match the historical managed decoded-byte digest; wrong-hash and existing-output gates pass. No original game, palette/frame/camera/timing or rendered scene comparison is claimed. ZOD-033 adds strict optional headless authored/same-environment PNG comparison, checkpoint/tick/view/turn-projection bindings, regional RGBA diagnostics and zero-tolerance synthetic Windows plans. All 22 Python tests pass; two 120-frame synthetic captures and reports match. No original rendered comparison or full simulation equivalence is claimed. The existing RetroArch 1.22.2/Beetle PSX software installation now has an isolated native capture profile. Two input-disconnected finite boots reach introductory game content with matching raw screenshots and unchanged installed settings; the owner subsequently captured the target banner/state, and two four-frame state restores produce identical banner scene images. Exact original/managed timing/context, BSV playback and original comparisons remain open. All 30 Python tests pass, with 8 new profile/isolation checks. A separate full-visible observed banner profile now records explicit measured borders and context bindings. Two diagnostic reports/review pages match. Manual inspection finds consistent apparent text placement; strict equality fails at 1,460/1,577 managed-background-invariant samples (original equal or darker by up to 16 RGB levels). No fidelity threshold is selected or runtime changed. All 52 Python tests pass (22 new). A subsequent developer precision study reads the frozen GPU dtd=0/displayed VRAM and exactly matches all 1,577 prior core samples with source-informed five-bit arithmetic, quantized vertical colors and zero-padded emulator output. Two reports match; all 66 Python tests pass (14 new). No runtime profile is changed, and installed-DLL source identity/per-primitive draw-state provenance remain unverified. A subsequent bounded Client five-bit profile now uses explicit per-draw dither/origin state. Frozen DMA-chain reconstruction identifies the REQUIRE dark-screen mode before all six banner packets. Actual native captures match all 1,577 selected original glyph pixels exactly, two capture sets repeat, and all 16 legacy RGB8 capture files retain historical bytes. The dither-on negative control distinguishes draw-state and pixel failures. Locked restore, zero-warning Release build, 1,418 .NET tests (30 new) and 81 Python tests (15 new) pass; timing, background-sensitive blending and broader integration remain open.",
+      "currentScope": "ZOD-026 executes the verified original SCUS-94221 Chocobo attack decoder/helper instructions under Unicorn 2.1.4. Two independent-execution captures/reports match the historical managed decoded-byte digest; wrong-hash and existing-output gates pass. No original game, palette/frame/camera/timing or rendered scene comparison is claimed. ZOD-033 adds strict optional headless authored/same-environment PNG comparison, checkpoint/tick/view/turn-projection bindings, regional RGBA diagnostics and zero-tolerance synthetic Windows plans. All 22 Python tests pass; two 120-frame synthetic captures and reports match. No original rendered comparison or full simulation equivalence is claimed. The existing RetroArch 1.22.2/Beetle PSX software installation now has an isolated native capture profile. Two input-disconnected finite boots reach introductory game content with matching raw screenshots and unchanged installed settings; the owner subsequently captured the target banner/state, and two four-frame state restores produce identical banner scene images. Exact original/managed timing/context, BSV playback and original comparisons remain open. All 30 Python tests pass, with 8 new profile/isolation checks. A separate full-visible observed banner profile now records explicit measured borders and context bindings. Two diagnostic reports/review pages match. Manual inspection finds consistent apparent text placement; strict equality fails at 1,460/1,577 managed-background-invariant samples (original equal or darker by up to 16 RGB levels). No fidelity threshold is selected or runtime changed. All 52 Python tests pass (22 new). A subsequent developer precision study reads the frozen GPU dtd=0/displayed VRAM and exactly matches all 1,577 prior core samples with source-informed five-bit arithmetic, quantized vertical colors and zero-padded emulator output. Two reports match; all 66 Python tests pass (14 new). No runtime profile is changed, and installed-DLL source identity/per-primitive draw-state provenance remain unverified. A subsequent bounded Client five-bit profile now uses explicit per-draw dither/origin state. Frozen DMA-chain reconstruction identifies the REQUIRE dark-screen mode before all six banner packets. Actual native captures match all 1,577 selected original glyph pixels exactly, two capture sets repeat, and all 16 legacy RGB8 capture files retain historical bytes. The dither-on negative control distinguishes draw-state and pixel failures. Locked restore, zero-warning Release build, 1,418 .NET tests (30 new) and 81 Python tests (15 new) pass; timing, background-sensitive blending and broader integration remain open. Original saved-task continuation now identifies the entry as reveal counter 18 and reproduces late reveal, sampled hold boundaries, every hide iteration and natural exit. Two 17-checkpoint capture sets repeat PNGs, exit states and task/quad observations. Eighteen metadata-only managed replay cases match observed phases/counters/crops, with task exit at checkpoint 91 and later slot reuse rejected. Locked restore, zero-warning Release build, 1,436 .NET tests and 92 Python tests pass. Full reveal/loading, physical Circle input, event identity, screenshot/task latency and background blending/coverage remain open.",
       "referenceSources": [
         {
           "path": "src/battle/units/sprite_display.c",
@@ -2428,7 +2439,9 @@
         "docs/architecture/general-banner-native-color-study.md",
         "docs/evidence/visual/general-banner-precision-study-v1.json",
         "docs/development/five-bit-general-banner.md",
-        "docs/evidence/visual/five-bit-general-banner-v1.json"
+        "docs/evidence/visual/five-bit-general-banner-v1.json",
+        "docs/development/original-banner-continuation.md",
+        "docs/evidence/visual/original-banner-continuation-v1.json"
       ],
       "implementationPaths": [
         "tools/verification/verify_sprite_attack.py",
@@ -2442,7 +2455,8 @@
         "src/Fft.Client/Presentation/FiveBitGeneralBannerPresentation.cs",
         "src/Fft.Client/Presentation/BannerPreviewOptions.cs",
         "tools/verification/trace_banner_draw_state.py",
-        "tools/verification/compare_native_banner.py"
+        "tools/verification/compare_native_banner.py",
+        "tools/verification/capture_banner_continuation.py"
       ],
       "automatedChecks": [
         {
@@ -2472,17 +2486,25 @@
         {
           "path": "tools/verification/test_native_banner.py",
           "scope": "15 authored DMA-chain and native-receipt/comparison regressions; no original media/emulator needed."
+        },
+        {
+          "path": "tests/Fft.Client.Tests/ObservedBannerContinuationTests.cs",
+          "scope": "18 metadata-only original-observation checkpoint cases compare actual managed phase/counters/terminal state/crop projection using authored artwork; no original media/emulator required."
+        },
+        {
+          "path": "tools/verification/test_banner_continuation.py",
+          "scope": "11 authored context/packet/state-fingerprint/command/output guard cases; no original code or media required."
         }
       ],
       "manualCheckpoint": {
         "status": "bounded-native-foreground-observed-wider-fidelity-pending",
-        "procedure": "Two finite native Windows runs with CPU/GPU readback at 15 checkpoints; inspect hold PNG and compare exact foreground with explicit original draw state. Retain raw regional/background differences and negative dither control.",
+        "procedure": "Two finite native Windows runs with CPU/GPU readback at 15 checkpoints; inspect hold PNG and compare exact foreground with explicit original draw state. Retain raw regional/background differences and negative dither control. Inspect the original continuation gallery through hide/exit; phases come from saved task counters, and screenshot latency is uncalibrated.",
         "evidence": "docs/development/five-bit-general-banner.md"
       },
       "openQuestions": [
         "Matched original rendered scene captures, palette/frame/camera/timing controls, ZOD-033 thresholds and human visual review remain open; the decoder oracle does not establish GPU equivalence."
       ],
-      "nextAction": "Obtain a pre-banner state/input sequence for reveal/hide timing, then extend original background-sensitive blending and coverage checks. Full scene/event integration remains separate."
+      "nextAction": "Obtain an earlier original state for full reveal/loading/input anchors, or select background-sensitive blend/coverage comparisons. Screenshot/task latency, event identity and full scene integration remain separate gates."
     },
     {
       "id": "COV-VAL-003",

@@ -676,6 +676,18 @@ locked restore, zero-warning Release build, 1,418 .NET tests (30 new) and 81 Pyt
 tests (15 new) pass. Reveal/hide timing, original background-sensitive blending,
 general rasterization and full scene/event integration remain open.
 
+**Continuation follow-up:** [Original saved-task observations](development/original-banner-continuation.md)
+identify the existing full-visible state as reveal iteration 18, then reproduce
+late reveal, sampled hold boundaries, all ten hide iterations and natural exit.
+Two 17-checkpoint no-input capture sets repeat PNGs, exit states and submitted
+geometry. Eighteen metadata-only managed replay cases match phase/counters/crops;
+1,436 .NET and 92 Python tests pass with a zero-warning Release build. The observed
+next task's slot reuse rejects. Full reveal onset/loading, physical Circle input, event identity,
+pixel timing and background-sensitive blend/coverage comparisons remain open;
+ZOD-033 remains partial. No runtime policy or original opcode admission changes.
+The owner accepted the continuation gallery's visual appearance on 2026-10-24;
+this does not close the remaining timing/input/rendering gaps.
+
 **Scope:** Capture selected scenes at fixed state/presentation ticks and compare them with documented baseline/reference captures using appropriate regions and tolerances.
 
 **Acceptance criteria:** Capture conditions are reproducible; reports distinguish geometry, palette, transparency/order, and timing discrepancies from simulation failures; thresholds are justified rather than masking visible defects. Synthetic renderer checks can run without game files; original media and comparisons remain local. Human inspection is recorded for effects automated metrics cannot establish.

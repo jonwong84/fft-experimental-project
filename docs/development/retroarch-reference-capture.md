@@ -163,6 +163,12 @@ records identities without media. No managed source changed or .NET tests reran.
 
 ## Next comparison gate
 
+The later [saved-task continuation study](original-banner-continuation.md) resolves
+the old state's logical location to reveal counter 18 and validates its no-input
+continuation through hide/exit. Appearance alone had only identified fully visible
+artwork. Early reveal, loading, physical input and event identity remain open;
+the historical gate below describes the evidence available at this setup milestone.
+
 The current state freezes the visible banner, not a verified pre-banner anchor.
 Record which encounter/event path was actually reached; appearance alone does
 not prove event 401's fallback activation. Obtain a pre-banner state when tracing

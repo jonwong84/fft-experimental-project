@@ -161,3 +161,9 @@ remain ignored under scratch. No automatic commit was made.
 Next: obtain a pre-banner anchor/input sequence for reveal/hide timing and extend
 comparisons to original background-sensitive blending and coverage. Full scene
 state/event integration and a general compatibility default remain separate gates.
+
+Follow-up: [original continuation evidence](original-banner-continuation.md) now
+binds the existing state to late reveal counter 18 and corroborates sampled hold,
+all hide iterations and natural exit against the managed replay. An earlier state
+is still needed for full reveal/loading and input anchors. This does not enlarge
+the foreground pixel comparison or establish screenshot/task latency.
