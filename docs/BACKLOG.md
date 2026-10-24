@@ -688,6 +688,19 @@ ZOD-033 remains partial. No runtime policy or original opcode admission changes.
 The owner accepted the continuation gallery's visual appearance on 2026-10-24;
 this does not close the remaining timing/input/rendering gaps.
 
+**Background blend follow-up:** The [controlled background comparison](development/general-banner-background-blending.md)
+now uses a scratch-only palette-transparent state copy at the full-visible anchor.
+All 28 non-GPU subsystems/GPU registers and all 58,312 outside-footprint pixels
+remain unchanged. Actual C# composition over the recovered background matches all
+3,128 affected pixels, including 1,551 previously excluded background-sensitive
+samples, at zero tolerance. Two capture sets repeat; all 16 default checker GPU
+capture files keep historical bytes. Locked restores, zero-warning builds, 1,450
+.NET tests (14 new) and 104 Python tests (12 new) pass. The owner confirmed the
+original and C# views look identical on 2026-10-24. Partial reveal/hide pixels and framebuffer correspondence,
+early reveal/loading/input, event identity and general scene rendering remain open.
+The altered-state control is explicitly separate from unmodified retail evidence;
+ZOD-033 remains partial. No automatic commit.
+
 **Scope:** Capture selected scenes at fixed state/presentation ticks and compare them with documented baseline/reference captures using appropriate regions and tolerances.
 
 **Acceptance criteria:** Capture conditions are reproducible; reports distinguish geometry, palette, transparency/order, and timing discrepancies from simulation failures; thresholds are justified rather than masking visible defects. Synthetic renderer checks can run without game files; original media and comparisons remain local. Human inspection is recorded for effects automated metrics cannot establish.

@@ -149,3 +149,8 @@ Next: obtain a state before the banner becomes visible for reveal/loading/input
 anchors, or select original background-sensitive blend/coverage comparisons.
 ZOD-033 remains partial, full scene/event integration is separate, and ZOD-079's
 later CRT/aspect/backend/Settings/audio discussion remains deferred.
+
+Follow-up: the [controlled blend comparison](general-banner-background-blending.md)
+uses the no-input full-visible anchor and an isolated palette-transparent state
+copy to match all affected pixels with actual C# composition over the recovered
+background. Partial-frame correspondence and early reveal/input gates remain open.

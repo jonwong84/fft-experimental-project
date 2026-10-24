@@ -210,6 +210,25 @@ blending/coverage remain open; ZOD-033 stays partial. Original media remain igno
 no automatic commit. Next obtain an earlier state for reveal or select bounded
 background-sensitive comparisons; ZOD-079 remains deferred.
 
+**Controlled background blending (2026-10-24):** The
+[full-visible blend check](development/general-banner-background-blending.md)
+now makes only the selected palette transparent in a scratch state copy to recover
+a matched background. All 28 non-GPU subsystems, every GPU register and all 58,312
+outside-footprint pixels remain unchanged. Actual C# `ComposeOver` output matches
+all 3,128 affected original pixels exactly, including the 1,551 previously excluded
+background-sensitive samples. Two original/probe/C# runs repeat; the default
+checker retains all 16 historical GPU capture files byte-for-byte. The pure
+compositor gains explicit opaque RGB5 background input; a standalone locked CPU
+evidence host stays outside the main solution. Locked restores, zero-warning
+Release builds, 1,450 .NET tests (14 new Client) and 104 Python tests (12 new) pass.
+The owner confirmed the original and C# views look identical on 2026-10-24.
+This altered-state control is labeled
+separately from unmodified original evidence and does not validate managed map
+rendering. Partial reveal/hide pixels and framebuffer correspondence, early
+reveal/loading/input, event identity and full scene integration remain open.
+ZOD-033 stays partial; ZOD-079 remains deferred. Original artifacts stay ignored;
+no automatic commit.
+
 **Prepared:** 2026-10-20  
 **Workspace:** `C:\repositories\fft-experimental-project`  
 **Branch:** `feature/initial-development`  

@@ -46,6 +46,23 @@ public static class FiveBitGeneralBannerPresentation
     }
 
     public static byte[] Compose(LoadedGeneralBanner banner, ImmutableArray<BannerRasterDraw> draws)
+        => ComposeCore(banner, draws, default);
+
+    /// <summary>Compose over explicit opaque, zero-padded RGB5 scanout pixels; no implicit quantization.</summary>
+    public static byte[] ComposeOver(LoadedGeneralBanner banner, ImmutableArray<BannerRasterDraw> draws,
+        ReadOnlySpan<byte> backgroundRgba)
+    {
+        if (backgroundRgba.Length != 256 * 240 * 4)
+            throw new ArgumentException("Expected a 256x240 RGBA background.", nameof(backgroundRgba));
+        for (int at = 0; at < backgroundRgba.Length; at += 4)
+            if (backgroundRgba[at + 3] != 255 ||
+                ((backgroundRgba[at] | backgroundRgba[at + 1] | backgroundRgba[at + 2]) & 7) != 0)
+                throw new ArgumentException("Background must be opaque zero-padded RGB5.", nameof(backgroundRgba));
+        return ComposeCore(banner, draws, backgroundRgba);
+    }
+
+    private static byte[] ComposeCore(LoadedGeneralBanner banner, ImmutableArray<BannerRasterDraw> draws,
+        ReadOnlySpan<byte> backgroundRgba)
     {
         ArgumentNullException.ThrowIfNull(banner);
         banner.Definition.Validate();
@@ -66,9 +83,16 @@ public static class FiveBitGeneralBannerPresentation
         for (int y = 0; y < 240; y++)
         for (int x = 0; x < 256; x++)
         {
-            int at = (y * 256 + x) * 4, shade = ((x / 16 + y / 16) & 1) * 12;
-            rgba[at] = (byte)((40 + shade) >> 3); rgba[at + 1] = (byte)((56 + shade) >> 3);
-            rgba[at + 2] = (byte)((72 + shade) >> 3); rgba[at + 3] = 255;
+            int at = (y * 256 + x) * 4;
+            if (backgroundRgba.IsEmpty)
+            {
+                int shade = ((x / 16 + y / 16) & 1) * 12;
+                rgba[at] = (byte)((40 + shade) >> 3); rgba[at + 1] = (byte)((56 + shade) >> 3);
+                rgba[at + 2] = (byte)((72 + shade) >> 3);
+            }
+            else
+                for (int channel = 0; channel < 3; channel++) rgba[at + channel] = (byte)(backgroundRgba[at + channel] >> 3);
+            rgba[at + 3] = 255;
         }
         foreach (var draw in draws)
         {

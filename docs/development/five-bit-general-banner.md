@@ -167,3 +167,10 @@ binds the existing state to late reveal counter 18 and corroborates sampled hold
 all hide iterations and natural exit against the managed replay. An earlier state
 is still needed for full reveal/loading and input anchors. This does not enlarge
 the foreground pixel comparison or establish screenshot/task latency.
+
+The subsequent [controlled background comparison](general-banner-background-blending.md)
+adds `ComposeOver` with explicit opaque zero-padded RGB5 background input. Its actual
+C# CPU output now matches all 3,128 affected pixels at one full-visible original
+anchor, including the 1,551 background-sensitive samples. The background comes
+from a labeled palette-transparent state probe; it is not managed scene rendering.
+The existing checker preview retains its policy and byte-identical GPU captures.
