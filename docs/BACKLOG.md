@@ -72,8 +72,10 @@ pure ledger/single-consumer proof with all 17 specification regressions plus 40
 boundary cases; locked restore, zero-warning Release build and all 1,162 tests pass.
 ZOD-074 now integrates E5 in a separate BATTLE synthetic profile with atomic
 ledger/VM state and shared ticks; all 1,230 tests pass (68 new). Next event step:
-ZOD-075 selects one deterministic effect model from the source before translating
-an actual worker. ZOD-068's synthetic world-checkpoint
+ZOD-075 selects condition-8 banner progress after asset readiness, with exact
+reveal/hold/hide/exit-yield and Circle boundaries plus 24 unexecuted specification
+cases. Next event step: ZOD-076's pure logical banner driver and atomic scene
+adapter; original workers/loading/graphics remain separate. ZOD-068's synthetic world-checkpoint
 service remains an independent lane; ZOD-069's native Save/Load UI waits on that
 service and minimal client navigation. Original campaign support remains open.
 M2 is not complete yet.
@@ -1040,7 +1042,17 @@ concurrent consumers, WORLD support or original BattleStart playback.
 
 ### ZOD-075 — Trace and select the first deterministic scene effect model
 
-**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-074
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-074
+
+**Result (2026-10-23):** [General-banner effect selection](architecture/zod-075-general-banner-effect.md)
+selects condition 8's logical post-readiness lifecycle, after comparing camera,
+dark-screen and banner dependencies. Traces byte operands, inline task-56 lifetime,
+20/H/10 iterations, extra exit yield, phase-specific Circle sampling and startup
+loading exclusions. Defines immutable effect state, completion authority, native
+cancellation and atomic VM/ledger composition. Twenty-four authored cases are
+specification-only and unexecuted; ZOD-076 implements the bounded driver/adapter.
+No runtime/opcode/graphics change or new .NET run; the 1,230-test baseline remains
+historical. Original total loading time and visual/timing equivalence remain open.
 
 **Scope:** Select one bounded camera, dark-screen or condition-display effect from
 the original BattleStart path that can generate task phase/completion facts from
@@ -1059,6 +1071,33 @@ one bounded implementation child. Account for barrier class versus task identity
 initial/last-tick ordering, retained scene lifetime and cancellation authority.
 No broad scheduler/worker port, new engine extraction, full original event playback
 or unobserved claim of retail timing equivalence.
+
+### ZOD-076 — Prove the logical general-banner effect and atomic scene adapter
+
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-075
+
+**Scope:** Implement the selected pure condition-8 post-readiness effect in
+Fft.Core.Events, with a typed authored definition, one retained managed effect/task
+and explicit per-tick logical Circle input. Compose generated task termination
+facts atomically with the existing scene event/ledger tick. Do not add graphics,
+asset loading or original DisplayConditions opcode admission.
+
+**Acceptance criteria:** Convert the 24 independent specification cases into
+headless complete-state/ordered-trace regressions, plus immutable/replay, missing
+input, binding, ID/resource and checked-clock boundaries. Preserve exact reveal
+20/hold H/hide 10/exit-yield ordering for H 0..255; skip reads only in reveal/hold,
+with one more active yield after Circle. All active subphases remain task 56;
+original skip completes it, while explicit native owner cancellation retains a
+distinct Cancelled outcome and authority. One shared tick applies supplied unmanaged
+facts then generated termination before barrier polling/VM resumption. Enforce
+managed identity/revision ownership, combined update budgets and complete rollback
+of effect/task/VM/tick/allocations on every failure. Other class-56 tasks still
+block; effects progress after VM exit and survive explicit next-event start without
+resetting scene/task identity or counters. Retain terminal effect/task records;
+reject a second attachment in this proof. Keep old APIs/profiles, opcode-78
+rejection, save formats, package graphs and Core independence unchanged. No GPU/
+clock/I/O callbacks, full startup timing, other conditions, EventEnd, concurrent
+consumers or original BattleStart playback.
 
 ## Authoring, extensions, and later goals
 

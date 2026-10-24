@@ -71,9 +71,14 @@ BATTLE profile with conditional operations/F1, shared explicit ticks, exact
 resumption, atomic ledger/VM rollback and retained scene tasks across exit/restart.
 The authored seven-tick fixture has full combined snapshot/trace/replay checks;
 old profiles still reject E5. Locked restore, zero-warning Release build and all
-**1,230 tests** passed (68 new: Core 27, Content 23, CLI 18). Next event step is
-ZOD-075's source trace/selection of one deterministic effect model; actual workers
-and original event playback remain absent. ZOD-068's synthetic world checkpoint service remains
+**1,230 tests** passed (68 new: Core 27, Content 23, CLI 18). ZOD-075 now
+[selects condition 8's post-readiness logical banner](architecture/zod-075-general-banner-effect.md):
+20/H/10 reveal/hold/hide iterations, an extra exit yield, Circle sampling only in
+reveal/hold, immutable managed-effect authority and atomic scene composition.
+Its 24 authored specification cases are unexecuted; this documentation milestone
+adds no runtime change or .NET run. Next event step is ZOD-076's pure logical
+driver/adapter; original startup/loading timing, graphics and playback remain open.
+ZOD-068's synthetic world checkpoint service remains
 independent, and ZOD-069's UI follows service/navigation. Original captures (ZOD-026), comparison
 checkpoints (ZOD-033), and remote CI/clean-machine evidence (ZOD-034) remain open.
 MAP003's static scene does not broaden M1

@@ -106,5 +106,6 @@ Repeated `--addon <path>` options validate explicitly selected additions against
 - [Original BattleStart trace](docs/architecture/zod-066-battle-start-event.md): verified event identity, activation, opcode dependencies and completion; original playback remains unsupported.
 - [Scene task/barrier contract](docs/architecture/zod-072-event-task-contract.md): source trace, identities, phases and polling order; [ZOD-073 execution proof](docs/behavior/scene-task-barriers.md).
 - [Synthetic event barriers](docs/behavior/scene-event-barriers.md): separate E5 profile, shared ticks, atomic VM/task transitions and retained scene lifetime.
+- [First scene effect selection](docs/architecture/zod-075-general-banner-effect.md): source-traced logical general-banner phases and Circle skip; implementation remains ZOD-076.
 - [Campaign save investigation](docs/architecture/zod-067-campaign-save-state.md): persistent fields, original save entry paths, RNG lifecycles and proposed native workflow.
 - [Project handoff](docs/PROJECT_HANDOFF.md): latest checkpoint followed by historical development context.

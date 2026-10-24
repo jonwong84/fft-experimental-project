@@ -246,6 +246,11 @@ ZOD-073 now [implements its pure ledger/barrier proof](../behavior/scene-task-ba
 ZOD-074 now [integrates E5 in a separate synthetic profile](../behavior/scene-event-barriers.md); original workers and
 BattleStart playback remain unsupported.
 
+ZOD-075 now [selects the general condition-8 banner's logical lifecycle](zod-075-general-banner-effect.md),
+using the selected DisplayConditions at offset 164 as its path anchor. Post-load
+phase/input/termination expectations are separate from unimplemented startup
+loading, rendering and the later Ready condition. ZOD-076 is its first pure proof.
+
 ## Verification and completion boundary
 
 Whole-image/CUE identity, reference inventory/archive hash, direct sector payload

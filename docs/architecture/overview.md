@@ -45,7 +45,9 @@ Its family-level entries are not a complete original record/encounter catalog.
   and atomic failures. ZOD-074 [integrates E5 in a separate BATTLE synthetic profile](../behavior/scene-event-barriers.md):
   immutable combined VM/ledger state, one shared tick, same-tick resumption,
   ordered traces and atomic rollback. Scene tasks survive interpreter exit/restart.
-  Actual worker algorithms remain unimplemented; ZOD-075 selects the first effect model.
+  Actual worker algorithms remain unimplemented. [ZOD-075](zod-075-general-banner-effect.md)
+  selects condition 8's post-readiness logical banner lifecycle and explicit Circle
+  input as the first effect model; ZOD-076 implements its bounded driver/adapter.
 - `Fft.AssetTool` and `Fft.AssetTool.Cli` handle offline image inventory, extraction, narrow unit `.SPR`
   decoding, selected SHP/SEQ pose preparation and bounded GNS/mesh/indexed-texture conversion.
   The CLI composes the tools; no full animation interpreter exists.
