@@ -149,6 +149,19 @@ scene images; one-frame startup attempts produced black images. See the
 [observation metadata](evidence/visual/original-banner-state-v1.json). Exact timing,
 event-path identity and the original/managed comparison remain open; ZOD-033 stays partial.
 
+**First original/managed banner diagnostic (2026-10-24):** The
+[observed comparison guide](development/observed-general-banner-comparison.md)
+records a separate strict contract, original 280x240 buffer with measured 12-column
+black borders, and managed tick-20 full-visible artwork anchor. Two local reports
+and review pages match exactly. Apparent text placement is consistent on visual
+inspection. Of 1,577 managed-background-invariant samples, 1,460 differ; the
+original is equal or darker, by up to 16 RGB levels. Background-sensitive samples
+remain separate. No original tick/simulation equivalence, automatic cause or
+fidelity verdict is claimed; no tolerance is widened or runtime changed. All 52
+Python tests pass (22 new); the .NET suite was not rerun (last result: 1,388).
+Trace native color precision before changing rendering, and obtain pre-banner
+anchors for reveal/hide timing. ZOD-033 remains partial. No automatic commit.
+
 **Prepared:** 2026-10-20  
 **Workspace:** `C:\repositories\fft-experimental-project`  
 **Branch:** `feature/initial-development`  

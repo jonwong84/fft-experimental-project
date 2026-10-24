@@ -103,6 +103,13 @@ effect identity/start/progress across interpreter exit/restart as in ZOD-076.
 
 ## Verification and remaining gates
 
+Subsequent [observed comparison](observed-general-banner-comparison.md) aligns a
+restored original full-visible banner with the tick-20 preview. Placement appears
+consistent; 1,460 of 1,577 managed-background-invariant samples differ, with the
+original up to 16 RGB levels darker. This diagnostic does not establish native
+precision, timing, transparency or fidelity. The implementation/policy and
+historical validation below remain unchanged.
+
 Locked restore, zero-warning Release build and **1,388 tests pass** (86 new:
 AssetTool 15, Content 38, Client 26, CLI 7). All 20 historical
 [authored expectations](../evidence/events/general-banner-presentation-contract-v1.json)

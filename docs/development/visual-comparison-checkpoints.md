@@ -3,11 +3,12 @@
 Date: 2026-10-24. Managed baseline: `c561efc`.
 
 **Implemented:** headless authored/same-environment PNG comparisons, strict
-checkpoint bindings, regional RGBA diagnostics and a synthetic Windows capture
-adapter. **Still pending:** a matched original rendered reference and reviewed
-original-versus-managed thresholds. The existing RetroArch installation now has a
+checkpoint bindings, regional RGBA diagnostics, a synthetic Windows capture
+adapter and a separate [bounded observed banner diagnostic](observed-general-banner-comparison.md).
+**Still pending:** matched original timing/scene state and reviewed fidelity
+thresholds. The existing RetroArch installation now has a
 [private boot-checked reference profile](retroarch-reference-capture.md), but no matched
-battle comparison yet. The owner has since supplied a raw banner screenshot/state;
+full battle comparison yet. The owner has supplied a raw banner screenshot/state;
 [two bounded restores](retroarch-reference-capture.md#owner-captured-banner-checkpoint)
 produce identical banner scene images. ZOD-026's executable decoder oracle does not
 supply a rendered scene reference. ZOD-033 remains partial.
@@ -74,7 +75,7 @@ Exit codes: **0** comparison passed; **1** valid evidence differed (report writt
 **2** invalid/unavailable evidence (no comparison report published). A missing
 reference cannot become a successful comparison. `originalComparisonPerformed`
 is always false. Original-capture modes/kinds are explicitly rejected in v1;
-adding an observed-original profile needs its own capture/context contract.
+the separate observed banner tool now owns its own capture/context contract.
 
 Before comparing pixels, the tool checks:
 
@@ -153,7 +154,9 @@ The remaining original comparison needs an actual game checkpoint/input sequence
 plus matched frame/camera/palette state. The private RetroArch setup now reaches
 introductory game content, and the owner's banner state now reproduces a rendered
 battle checkpoint in two bounded restores. The exact original/managed timing,
-context and comparison profile remain unverified. ZOD-026's original attack-decoder byte agreement
+context remain unverified. The separate full-visible-artwork profile now records
+matching apparent text placement and strict sampled color differences without
+claiming fidelity or timing equivalence. ZOD-026's original attack-decoder byte agreement
 is retained separately; it cannot calibrate rendered thresholds. MAP003 lighting/
 depth/camera approximations and banner RGB8 precision/parity limits remain those in
 their existing guides. The subsequent original game boot/state observations do not

@@ -1,0 +1,118 @@
+{
+  "format": "fft.observed-general-banner-comparison-evidence",
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "managedBase": "baa37d5",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "evidenceKind": "emulator-versus-managed-full-visible-artwork-diagnostic",
+  "originalComparisonPerformed": true,
+  "originalFidelityEstablished": false,
+  "originalTimingVerified": false,
+  "simulationCompared": false,
+  "originalEventPathVerified": false,
+  "automaticRootCauseDiagnosis": false,
+  "alignment": {
+    "originalRawSize": [
+      280,
+      240
+    ],
+    "managedRawSize": [
+      256,
+      240
+    ],
+    "originalRect": [
+      12,
+      0,
+      256,
+      240
+    ],
+    "candidateRect": [
+      0,
+      0,
+      256,
+      240
+    ],
+    "method": "Measured and checked black side borders; no alignment search, resampling or color correction"
+  },
+  "anchor": "Original visibly full two-line artwork; managed tick 20 Holding, six full-height pieces. No clock equivalence.",
+  "plan": {
+    "localPath": "scratch/banner-033-comparison-plan/plan.json",
+    "byteLength": 2247,
+    "sha256": "58a12df650a711c3128fc260490510f8a02ad1817cc47411e3c23567b04308a1"
+  },
+  "report": {
+    "localPath": "scratch/banner-033-comparison-a/report.json",
+    "byteLength": 11148,
+    "sha256": "e8604109a51038b4e82f336b438932136d1186291b3578baa8ecc4b740acf19d"
+  },
+  "review": {
+    "localPath": "scratch/banner-033-comparison-a/review.html",
+    "byteLength": 83950,
+    "sha256": "241654a613f5ec4cb0549b4328a1e278fbaf4dc5f843558e1ba6cffe2ef090bc"
+  },
+  "originalImage": {
+    "localPath": "scratch/banner-033-original-a/restore-004-a/frame.png",
+    "byteLength": 43233,
+    "sha256": "4fc1a51f516efbd1c94493476f0b382e901e2c0e0baf7cc865a391e4463d65aa"
+  },
+  "managedImage": {
+    "localPath": "scratch/banner-078-preview-a/tick-020.png",
+    "byteLength": 10189,
+    "sha256": "c76dd1042fd3ea64e84a3d4fa7c9d7f2ee1ae844def11eabe3b7e9068412a719"
+  },
+  "repeatReport": {
+    "localPath": "scratch/banner-033-comparison-b/report.json",
+    "byteLength": 11148,
+    "sha256": "e8604109a51038b4e82f336b438932136d1186291b3578baa8ecc4b740acf19d"
+  },
+  "repeatReview": {
+    "localPath": "scratch/banner-033-comparison-b/review.html",
+    "byteLength": 83950,
+    "sha256": "241654a613f5ec4cb0549b4328a1e278fbaf4dc5f843558e1ba6cffe2ef090bc"
+  },
+  "reportAndReviewRepeatExactly": true,
+  "diagnosticEqualityThreshold": [
+    0,
+    0,
+    0
+  ],
+  "fidelityAcceptanceTolerance": null,
+  "strictInvariantEquality": false,
+  "invariantSamples": 1577,
+  "changedInvariantSamples": 1460,
+  "maxAbsoluteRgbDelta": [
+    16,
+    16,
+    15
+  ],
+  "originalMinusManagedChannelMax": [
+    0,
+    0,
+    0
+  ],
+  "backgroundSensitiveTextureSupportPixels": 1551,
+  "manualInspection": "Both complete lines show matching apparent native size and positions after the declared 12-column mapping; no missing line or large placement shift observed. Original darker; different background/shadows. Pixel-perfect geometry/timing/transparency not established.",
+  "diagnosis": "Deltas consistent with documented precision/dithering limitations, but cause not proven. No rendering change or threshold relaxation.",
+  "tools": {
+    "compare_observed_banner.py": {
+      "localPath": "tools/verification/compare_observed_banner.py",
+      "byteLength": 16541,
+      "sha256": "e5de625712f74373c1beace5ea394e3744c9f500a57700a4287c3fd5e88d80fa"
+    },
+    "prepare_observed_banner_comparison.py": {
+      "localPath": "tools/verification/prepare_observed_banner_comparison.py",
+      "byteLength": 3850,
+      "sha256": "c326f6ffefc304b92ba1fa7716aac909b974d20a7897676e55673a1f9562941f"
+    },
+    "test_observed_banner.py": {
+      "localPath": "tools/verification/test_observed_banner.py",
+      "byteLength": 16392,
+      "sha256": "4fd5321dbe5d0a2c97a94d2be148877660ee8247cdc702702b555ed5d047ac58"
+    }
+  },
+  "pythonTestsPassed": 52,
+  "authoredTestsAdded": 22,
+  "managedSuiteRerun": false,
+  "lastManagedTestsPassed": 1388,
+  "nextGate": "Trace native color/gradient precision before changing rendering; obtain a pre-banner anchor and documented input sequence for reveal/hide timing. Broader scene-state comparisons and justified fidelity thresholds remain open."
+}

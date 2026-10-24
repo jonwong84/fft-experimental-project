@@ -632,7 +632,7 @@ controllers, original menu fidelity and prepared MAP003 combat integration remai
 
 ### ZOD-033 — Add deterministic visual comparison checkpoints
 
-**Type:** Story · **Priority:** P2 · **Status:** Partial — synthetic comparison implemented; original rendered reference pending · **Depends on:** ZOD-026, ZOD-031
+**Type:** Story · **Priority:** P2 · **Status:** Partial — synthetic comparison and bounded original banner diagnostic implemented; fidelity/timing validation pending · **Depends on:** ZOD-026, ZOD-031
 
 **Result (2026-10-24):** [Visual comparison workflow](development/visual-comparison-checkpoints.md)
 adds optional headless authored/same-environment PNG comparisons, strict capture/
@@ -649,9 +649,15 @@ two raw introductory captures match, installed settings are preserved, and all 3
 Python tests pass (8 new). The owner subsequently captured the target banner and a
 state with a matching thumbnail; two four-frame restores produce identical banner
 scene images. [Checkpoint metadata](evidence/visual/original-banner-state-v1.json)
-records this bounded observation. Exact original/managed timing/context alignment,
-an original comparison profile/thresholds and comparative human review remain
-required before completion.
+records this bounded observation. The [first observed banner comparison](development/observed-general-banner-comparison.md)
+now declares the measured border mapping and a full-visible artwork anchor, with
+separate raw/background-sensitive and managed-background-invariant diagnostics.
+Two reports/review pages match; all 52 Python tests pass (22 new). Human inspection
+finds consistent apparent placement; strict equality fails at 1,460/1,577 sampled
+core pixels, with the original equal or darker by up to 16 RGB levels. No threshold
+was relaxed or runtime changed. Exact original/managed timing/context alignment,
+native color cause, justified fidelity thresholds and broader comparative human
+review remain required before completion.
 
 **Scope:** Capture selected scenes at fixed state/presentation ticks and compare them with documented baseline/reference captures using appropriate regions and tolerances.
 

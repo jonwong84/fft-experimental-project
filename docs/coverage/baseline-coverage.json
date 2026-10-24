@@ -1648,7 +1648,7 @@
       "ownerTicket": "ZOD-033",
       "ownerArea": "Fft.Client platform adapters",
       "status": "partial",
-      "currentScope": "Fixed prepared MAP003/Chocobo scene renders with declared neutral-lighting and modern depth/cutout approximations. ZOD-033 adds strict optional headless authored/same-environment PNG comparison, checkpoint/tick/view/turn-projection bindings, regional RGBA diagnostics and zero-tolerance synthetic Windows plans. All 22 Python tests pass; two 120-frame synthetic captures and reports match. No original rendered comparison or full simulation equivalence is claimed. The existing RetroArch 1.22.2/Beetle PSX software installation now has an isolated native capture profile. Two input-disconnected finite boots reach introductory game content with matching raw screenshots and unchanged installed settings; the owner subsequently captured the target banner/state, and two four-frame state restores produce identical banner scene images. Exact original/managed timing/context, BSV playback and original comparisons remain open. All 30 Python tests pass, with 8 new profile/isolation checks.",
+      "currentScope": "Fixed prepared MAP003/Chocobo scene renders with declared neutral-lighting and modern depth/cutout approximations. ZOD-033 adds strict optional headless authored/same-environment PNG comparison, checkpoint/tick/view/turn-projection bindings, regional RGBA diagnostics and zero-tolerance synthetic Windows plans. All 22 Python tests pass; two 120-frame synthetic captures and reports match. No original rendered comparison or full simulation equivalence is claimed. The existing RetroArch 1.22.2/Beetle PSX software installation now has an isolated native capture profile. Two input-disconnected finite boots reach introductory game content with matching raw screenshots and unchanged installed settings; the owner subsequently captured the target banner/state, and two four-frame state restores produce identical banner scene images. Exact original/managed timing/context, BSV playback and original comparisons remain open. All 30 Python tests pass, with 8 new profile/isolation checks. A separate full-visible observed banner profile now records explicit measured borders and context bindings. Two diagnostic reports/review pages match. Manual inspection finds consistent apparent text placement; strict equality fails at 1,460/1,577 managed-background-invariant samples (original equal or darker by up to 16 RGB levels). No fidelity threshold is selected or runtime changed. All 52 Python tests pass (22 new).",
       "referenceSources": [
         {
           "path": "src/battle/map/runtime.c",
@@ -1669,7 +1669,9 @@
         "docs/evidence/visual/synthetic-checkpoint-comparison-v1.json",
         "docs/development/retroarch-reference-capture.md",
         "docs/evidence/visual/retroarch-reference-readiness-v1.json",
-        "docs/evidence/visual/original-banner-state-v1.json"
+        "docs/evidence/visual/original-banner-state-v1.json",
+        "docs/development/observed-general-banner-comparison.md",
+        "docs/evidence/visual/observed-general-banner-comparison-v1.json"
       ],
       "implementationPaths": [
         "src/Fft.Client/Presentation/PreparedSceneGeometry.cs",
@@ -1677,7 +1679,9 @@
         "tools/verification/compare_visual_checkpoints.py",
         "tools/verification/prepare_synthetic_visual_comparison.py",
         "tools/verification/prepare_retroarch_reference.py",
-        "tools/verification/verify_retroarch_boot.py"
+        "tools/verification/verify_retroarch_boot.py",
+        "tools/verification/compare_observed_banner.py",
+        "tools/verification/prepare_observed_banner_comparison.py"
       ],
       "automatedChecks": [
         {
@@ -1691,17 +1695,21 @@
         {
           "path": "tools/verification/test_retroarch_reference.py",
           "scope": "8 authored profile/path/command regressions enforce disabled enhancements/autoload, scratch paths, option parsing, output preservation and finite controller-disconnected boot arguments; no original files or emulator required by tests."
+        },
+        {
+          "path": "tools/verification/test_observed_banner.py",
+          "scope": "22 authored cases cover material sensitivity masks, signed color diagnostics, explicit borders, input/receipt/provenance bindings, strict differences, deterministic reports, frozen plans and preserved outputs; no game/emulator/GPU needed."
         }
       ],
       "manualCheckpoint": {
-        "status": "workstation-observed-original-comparison-pending",
-        "procedure": "Programmed local fixed-scene checks passed; an independent original comparison remains pending.",
-        "evidence": "docs/development/prepared-scene.md"
+        "status": "bounded-banner-observed-fidelity-pending",
+        "procedure": "Inspect restored original and managed full-visible artwork at explicit native viewport alignment. Apparent placement consistent; color discrepancy recorded without tolerance relaxation. Timing and full scene remain unverified.",
+        "evidence": "docs/development/observed-general-banner-comparison.md"
       },
       "openQuestions": [
         "Independent original visual equivalence, PS1 blend/order effects and other variants are pending."
       ],
-      "nextAction": "Use the frozen banner state for timing/context calibration; verify encounter/event identity and obtain pre-banner reveal anchors, then define an explicit original comparison profile and justified thresholds. Bounded state-restore repeatability is observed; ZOD-033 remains partial."
+      "nextAction": "Trace native color/gradient precision before changing rendering; obtain a pre-banner anchor and documented input sequence for reveal/hide timing. Broader scene-state comparisons and justified fidelity thresholds remain open."
     },
     {
       "id": "COV-PRE-002",
@@ -2370,7 +2378,7 @@
       "ownerTicket": "ZOD-026",
       "ownerArea": "Development validation",
       "status": "partial",
-      "currentScope": "ZOD-026 executes the verified original SCUS-94221 Chocobo attack decoder/helper instructions under Unicorn 2.1.4. Two independent-execution captures/reports match the historical managed decoded-byte digest; wrong-hash and existing-output gates pass. No original game, palette/frame/camera/timing or rendered scene comparison is claimed. ZOD-033 adds strict optional headless authored/same-environment PNG comparison, checkpoint/tick/view/turn-projection bindings, regional RGBA diagnostics and zero-tolerance synthetic Windows plans. All 22 Python tests pass; two 120-frame synthetic captures and reports match. No original rendered comparison or full simulation equivalence is claimed. The existing RetroArch 1.22.2/Beetle PSX software installation now has an isolated native capture profile. Two input-disconnected finite boots reach introductory game content with matching raw screenshots and unchanged installed settings; the owner subsequently captured the target banner/state, and two four-frame state restores produce identical banner scene images. Exact original/managed timing/context, BSV playback and original comparisons remain open. All 30 Python tests pass, with 8 new profile/isolation checks.",
+      "currentScope": "ZOD-026 executes the verified original SCUS-94221 Chocobo attack decoder/helper instructions under Unicorn 2.1.4. Two independent-execution captures/reports match the historical managed decoded-byte digest; wrong-hash and existing-output gates pass. No original game, palette/frame/camera/timing or rendered scene comparison is claimed. ZOD-033 adds strict optional headless authored/same-environment PNG comparison, checkpoint/tick/view/turn-projection bindings, regional RGBA diagnostics and zero-tolerance synthetic Windows plans. All 22 Python tests pass; two 120-frame synthetic captures and reports match. No original rendered comparison or full simulation equivalence is claimed. The existing RetroArch 1.22.2/Beetle PSX software installation now has an isolated native capture profile. Two input-disconnected finite boots reach introductory game content with matching raw screenshots and unchanged installed settings; the owner subsequently captured the target banner/state, and two four-frame state restores produce identical banner scene images. Exact original/managed timing/context, BSV playback and original comparisons remain open. All 30 Python tests pass, with 8 new profile/isolation checks. A separate full-visible observed banner profile now records explicit measured borders and context bindings. Two diagnostic reports/review pages match. Manual inspection finds consistent apparent text placement; strict equality fails at 1,460/1,577 managed-background-invariant samples (original equal or darker by up to 16 RGB levels). No fidelity threshold is selected or runtime changed. All 52 Python tests pass (22 new).",
       "referenceSources": [
         {
           "path": "src/battle/units/sprite_display.c",
@@ -2393,14 +2401,18 @@
         "docs/evidence/visual/synthetic-checkpoint-comparison-v1.json",
         "docs/development/retroarch-reference-capture.md",
         "docs/evidence/visual/retroarch-reference-readiness-v1.json",
-        "docs/evidence/visual/original-banner-state-v1.json"
+        "docs/evidence/visual/original-banner-state-v1.json",
+        "docs/development/observed-general-banner-comparison.md",
+        "docs/evidence/visual/observed-general-banner-comparison-v1.json"
       ],
       "implementationPaths": [
         "tools/verification/verify_sprite_attack.py",
         "tools/verification/compare_visual_checkpoints.py",
         "tools/verification/prepare_synthetic_visual_comparison.py",
         "tools/verification/prepare_retroarch_reference.py",
-        "tools/verification/verify_retroarch_boot.py"
+        "tools/verification/verify_retroarch_boot.py",
+        "tools/verification/compare_observed_banner.py",
+        "tools/verification/prepare_observed_banner_comparison.py"
       ],
       "automatedChecks": [
         {
@@ -2414,16 +2426,21 @@
         {
           "path": "tools/verification/test_retroarch_reference.py",
           "scope": "8 authored profile/path/command regressions enforce disabled enhancements/autoload, scratch paths, option parsing, output preservation and finite controller-disconnected boot arguments; no original files or emulator required by tests."
+        },
+        {
+          "path": "tools/verification/test_observed_banner.py",
+          "scope": "22 authored cases cover material sensitivity masks, signed color diagnostics, explicit borders, input/receipt/provenance bindings, strict differences, deterministic reports, frozen plans and preserved outputs; no game/emulator/GPU needed."
         }
       ],
       "manualCheckpoint": {
-        "status": "pending-original-observation",
-        "procedure": "Record edition, environment, state, palette, camera, frame/timing, inputs and capture hashes under ignored scratch."
+        "status": "bounded-banner-observed-fidelity-pending",
+        "procedure": "Inspect restored original and managed full-visible artwork at explicit native viewport alignment. Apparent placement consistent; color discrepancy recorded without tolerance relaxation. Timing and full scene remain unverified.",
+        "evidence": "docs/development/observed-general-banner-comparison.md"
       },
       "openQuestions": [
         "Matched original rendered scene captures, palette/frame/camera/timing controls, ZOD-033 thresholds and human visual review remain open; the decoder oracle does not establish GPU equivalence."
       ],
-      "nextAction": "Use the frozen banner state for timing/context calibration; verify encounter/event identity and obtain pre-banner reveal anchors, then define an explicit original comparison profile and justified thresholds. Bounded state-restore repeatability is observed; ZOD-033 remains partial."
+      "nextAction": "Trace native color/gradient precision before changing rendering; obtain a pre-banner anchor and documented input sequence for reveal/hide timing. Broader scene-state comparisons and justified fidelity thresholds remain open."
     },
     {
       "id": "COV-VAL-003",
