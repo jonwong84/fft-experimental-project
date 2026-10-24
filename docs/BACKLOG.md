@@ -79,9 +79,14 @@ with all 24 contract regressions and 47 additional boundary cases. Locked restor
 zero-warning Release build and all 1,302 tests pass (72 new including an opcode-78
 rejection case). ZOD-077 now traces verified banner-0 pixels, palette bank 4,
 six shaded pieces, UV wrap/screen origin and the preloaded readiness boundary.
-Its 20 authored presentation expectations remain unexecuted. Next event step:
-ZOD-078's bounded prepared banner/CPU preview; original loading latency and
-opcode-78 admission remain separate. ZOD-068's synthetic world-checkpoint
+ZOD-078 now prepares and strictly loads that six-piece artwork, with a pure
+accepted-snapshot projection and RGB8 CPU preview. All 20 authored expectations
+have regressions; locked restore, zero-warning Release build and all 1,388 tests
+pass (86 new). Two preparations and two finite Windows GPU capture sets match;
+prepared-only loading uses no original input/reference paths. Original loading
+latency, opcode-78 admission and visual equivalence remain separate. The next
+scene capability needs a separately selected source-traced milestone.
+ZOD-068's synthetic world-checkpoint
 service remains an independent lane; ZOD-069's native Save/Load UI waits on that
 service and minimal client navigation. Original campaign support remains open.
 M2 is not complete yet.
@@ -1151,7 +1156,17 @@ of original visual/timing equivalence without original observations.
 
 ### ZOD-078 — Prepare and preview the bounded general banner
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-077
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-077
+
+**Result:** [Prepared general-banner preview](development/prepared-general-banner.md)
+(2026-10-23): pinned input/range checks, staged preparation, strict immutable Content
+loading and preloaded Windows CPU/GPU preview. All 20 authored expectations have
+regressions; locked restore, zero-warning Release build and all **1,388 tests** pass
+(86 new). Two preparations match all files; two finite Windows checks reach tick
+91 with byte-identical captures/reports and CPU/GPU readback. Prepared-only runtime
+uses no BIN/reference paths. Core/event/save/package graphs remain unchanged.
+Original comparison, loading latency, packet parity and opcode admission remain
+open; next scene capability requires a separate source-traced selection.
 
 **Scope:** Prepare only condition-8/banner-0 artwork from verified local inputs,
 load it through Content and preview the existing logical effect in Client using

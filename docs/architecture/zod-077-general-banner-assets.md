@@ -12,6 +12,11 @@ output. This avoids extending the opaque map material into an unproved general
 PS1 GPU renderer. ZOD-078 owns implementation; this ticket changes documentation
 and summarized evidence only.
 
+Implementation follow-up: [ZOD-078](../development/prepared-general-banner.md) now
+implements this bounded pipeline and preview, with regressions for all 20 authored
+expectations and repeatable local preparation/Windows captures. The unexecuted
+statements below preserve this investigation's historical evidence boundary.
+
 Evidence is static source tracing and hash-verified local asset inspection, not
 original execution or an original timing/visual comparison. The
 [source metadata](../evidence/events/general-banner-assets-v1.json) contains hashes

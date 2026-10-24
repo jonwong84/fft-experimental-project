@@ -91,6 +91,19 @@ host boundary; includes 20 authored, unexecuted presentation expectations. This
 documentation milestone did not rerun the .NET suite. Next event step: ZOD-078's
 prepared conversion/loading and RGB8 CPU preview; no original loading duration,
 opcode-78 admission or original visual/timing equivalence is established.
+ZOD-078 now implements the [prepared general-banner preview](development/prepared-general-banner.md):
+verified local input/range decoding, staged fresh-root preparation, strict immutable
+Content loading and accepted-snapshot CPU composition with a preloaded Windows host.
+All 20 authored expectations now have regressions. Locked restore, zero-warning
+Release build and all **1,388 tests** pass (86 new: AssetTool 15, Content 38,
+Client 26, CLI 7). Two preparations match all five files; two finite Windows
+checks complete at tick 91 with matching 15 PNGs/report and exact CPU/GPU readback.
+The second run uses a separate working directory with prepared files only and no
+original input/reference paths. Core/Engine, event profiles/opcode rejection,
+save schemas and dependency/package graphs remain intact. Outputs remain ignored
+under scratch. No automatic commit. Original parity/precision/latency/comparison,
+opcode-78 and complete BattleStart remain open; select the next source-traced
+scene capability separately after this preview is reviewed.
 ZOD-068's synthetic world checkpoint service remains
 independent, and ZOD-069's UI follows service/navigation. Original captures (ZOD-026), comparison
 checkpoints (ZOD-033), and remote CI/clean-machine evidence (ZOD-034) remain open.
