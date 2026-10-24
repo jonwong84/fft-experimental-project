@@ -72,11 +72,11 @@ def isolation(original_state, probe_state):
                 originalSubsystemSha256=left, probeSubsystemSha256=right)
 
 
-def compose(background, definition, indices, palette):
+def compose(background, definition, indices, palette, *, partial_triplet=False):
     v.require(len(background) == CANVAS_BYTES, 'Expected one native background')
     v.require(all(background[at + 3] == 255 and not ((background[at] | background[at + 1] | background[at + 2]) & 7)
                   for at in range(0, CANVAS_BYTES, 4)), 'Background must be opaque zero-padded RGB5')
-    b.transfer_bounds(definition, indices, palette)
+    b.transfer_bounds(definition, indices, palette, partial_triplet=partial_triplet)
     rgba = bytearray(background); words = struct.unpack('<16H', palette)
     for at in range(0, CANVAS_BYTES, 4):
         for channel in range(3): rgba[at + channel] >>= 3

@@ -91,9 +91,9 @@ def shade5(texel, vertex, noise=0):
     return min(31, max(0, (((texel * vertex) >> 4) + noise) >> 3))
 
 
-def native_bounds(definition, indices, palette, dither=False, replicate=False, rounded=True):
+def native_bounds(definition, indices, palette, dither=False, replicate=False, rounded=True, *, partial_triplet=False):
     # Reuse bounds validation without reinterpreting original image formats.
-    b.transfer_bounds(definition, indices, palette)
+    b.transfer_bounds(definition, indices, palette, partial_triplet=partial_triplet)
     words = struct.unpack('<16H', palette)
     low, high = bytearray(256 * 240 * 3), bytearray([31]) * (256 * 240 * 3)
     for p in definition['pieces']:

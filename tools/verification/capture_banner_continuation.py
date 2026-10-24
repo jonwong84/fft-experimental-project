@@ -33,7 +33,7 @@ def read_ram(state):
     return ram
 
 
-def inspect_ram(ram, definition, slot=None):
+def inspect_ram(ram, definition, slot=None, *, early_reveal=False):
     """Decode only this function's suspended contexts, never a general task classifier."""
     visual.require(len(ram) == dma.RAM_SIZE and dma.word(ram, THREADS_POINTER) == THREADS_BASE,
                    'Unexpected battle thread table')
@@ -77,15 +77,22 @@ def inspect_ram(ram, definition, slot=None):
     if phase == 'Completed':
         visual.require(not selected, 'Exited banner still appears in current ordering table')
     else:
-        visual.require([i for i, _, _ in selected] == list(range(6)), 'Expected six ordered banner packets')
+        indices = list(range(6))
+        if early_reveal and phase == 'Revealing':
+            indices = list(range(0 if counter == 0 else 3 if counter < 10 else 6))
+        visual.require([i for i, _, _ in selected] == indices, 'Expected source-selected ordered banner packets' if early_reveal else 'Expected six ordered banner packets')
         bank = read(0x2c)
-        visual.require(bank in (0, 1) and all(b == bank for _, b, _ in selected), 'Banner parity/packet bank mismatch')
+        if selected:
+            visual.require(bank in (0, 1) and all(b == bank for _, b, _ in selected), 'Banner parity/packet bank mismatch')
         for index, _, data in selected:
             visual.require(len(data) == 12 and data[0] >> 24 == 0x3e, 'Expected shaded banner quad')
             piece = definition['pieces'][index]
             xy = [struct.unpack('<hh', struct.pack('<I', data[v * 3 + 1])) for v in range(4)]
             crop = xy[0][1] - piece['y']
             visual.integer(crop, 0, piece['height'], 'observed crop')
+            if early_reveal and phase == 'Revealing':
+                amount = (counter - (1 if index < 3 else 10)) * 8
+                visual.require(crop == piece['height'] - min(piece['height'], amount), 'Reveal counter/crop mismatch')
             rows = piece['height'] - crop
             expected_xy = [(piece['x'] + 128 + dx, piece['y'] + crop + dy)
                            for dx, dy in ((0, 0), (piece['width'], 0), (0, rows), (piece['width'], rows))]

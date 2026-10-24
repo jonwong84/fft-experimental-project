@@ -30,3 +30,11 @@ It preloads/validates all backgrounds, replays in order and writes five RGBA fil
 plus a separate `fft.banner-hide-cpu-check` receipt. The
 [hide verifier](../verification/compare_banner_hide.py) prepares this plan and
 invokes the mode; source-based display correspondence remains outside this host.
+
+The separate `--reveal-sequence` mode accepts `fft.banner-reveal-backgrounds` v1
+with exactly ticks 1, 2, 3, 4, 5, 9, 10, 11, 12, 13 and 14 in that order. It writes
+an `fft.banner-reveal-cpu-check` receipt. The
+[early-reveal verifier](../verification/compare_banner_reveal.py) supplies isolated
+backgrounds and compares the actual C# pixels. A valid difference exits that Python
+tool with code 1 and retains strict diagnostic evidence; invalid input exits 2.
+The original single-anchor and hide-sequence modes retain their contracts.

@@ -36,7 +36,7 @@ def walk(ram, root):
 
 def trace(state, definition, geometry=None):
     if geometry is not None:
-        v.require(type(geometry) is list and len(geometry) == 6, 'Expected six explicit submitted crops')
+        v.require(type(geometry) is list and len(geometry) in (3, 6), 'Expected three or six explicit submitted crops')
         for index, item in enumerate(geometry):
             v.fields(item, 'PieceIndex CropTop VisibleRows', 'submitted crop')
             v.require(type(item['PieceIndex']) is int and item['PieceIndex'] == index, 'Unexpected submitted piece order')
@@ -65,6 +65,7 @@ def trace(state, definition, geometry=None):
             delta = address - (BANNER_BASE & 0xffffff)
             bank, index = delta // BANNER_BANK_STRIDE, delta % BANNER_BANK_STRIDE // 52
             piece = definition['pieces'][index]
+            v.require(geometry is None or index < len(geometry), 'Unexpected extra submitted banner piece')
             crop = 0 if geometry is None else geometry[index]['CropTop']
             rows = piece['height'] - crop
             # Bind all vertices, including cropped/degenerate submissions when explicitly selected.
@@ -84,7 +85,7 @@ def trace(state, definition, geometry=None):
             vertices = 4 if op & 8 else 3
             polygon_words = 1 + vertices * (1 + bool(op & 4)) + ((vertices - 1) if op & 16 else 0)
             if not (0x20 <= op <= 0x3f and len(data) == polygon_words): mode = None
-    v.require([x['pieceIndex'] for x in banners] == list(range(6)), 'Expected exactly six ordered banner draws')
+    v.require([x['pieceIndex'] for x in banners] == list(range(6 if geometry is None else len(geometry))), 'Unexpected ordered banner draws')
     v.require(len({x['bank'] for x in banners}) == 1, 'Mixed banner banks')
     v.require(all(x['precedingMode']['address'] in ((BURST_MODE_BASE & 0xffffff), (BURST_MODE_BASE & 0xffffff) + 12) and
                   x['precedingMode']['command'] == 0xe1000006 for x in banners), 'Unexpected banner-time draw mode')

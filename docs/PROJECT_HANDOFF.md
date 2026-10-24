@@ -255,6 +255,25 @@ Next trace initial reveal/readiness from this earlier anchor, retaining explicit
 unsupported states. Loading duration, physical Circle behavior, event identity and
 new pixel comparisons remain open. No runtime changes or full-suite rerun.
 
+**Early reveal/readiness diagnostic (2026-10-24):** The
+[source-bound investigation](development/early-banner-reveal.md) identifies all
+four loader yields and the first pre-reveal yield from nine original snapshots.
+Existing byte residency predates the loader; it is not used as readiness proof.
+The old budget-340 guard failure is explained by the first triplet's three
+degenerate submissions. Explicit early-reveal checks bind exact source counters,
+triplet admission, XY/UV and both pre-submission VSync call sites. Sixteen new
+metadata-only managed replay cases match observed counters/crops. Nine of eleven
+displayed canvases match actual C# composition; reveal 4 differs at 21 pixels and
+reveal 13 at 14 pixels, blue only, original minus C# +8. All isolation, scanout,
+geometry, footprint and C#/Python checks pass. Two runs repeat 107 selected
+artifacts and the strict differences; no tolerance/runtime renderer change.
+Locked restores, zero-warning builds, 1,466 .NET and 130 Python tests pass, plus
+five actual-host rejection checks. The owner visually approved
+`scratch/banner-reveal-d/review.html` on 2026-10-24; the two measured pixel
+differences remain open. Next trace the two 24-row color differences before a bounded renderer
+correction. Universal load duration, Circle input and event identity remain open;
+ZOD-033 stays partial. No automatic commit.
+
 **Owner formula direction (2026-10-24):** Keep weapon and ability algorithms
 readable/editable as ordinary C# code. The
 [formula notes](development/editable-combat-formulas.md) distinguish current bounded

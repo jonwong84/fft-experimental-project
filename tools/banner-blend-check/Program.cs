@@ -9,6 +9,7 @@ using Fft.Core.Events;
 try
 {
     if (args.Length == 4 && args[0] == "--sequence") return Sequence(args[1], args[2], args[3]);
+    if (args.Length == 4 && args[0] == "--reveal-sequence") return Sequence(args[1], args[2], args[3], reveal: true);
     if (args.Length != 3) throw new ArgumentException("Expected prepared-root background.rgba fresh-output-root.");
     string preparedRoot = ScratchPath(args[0]), backgroundPath = ScratchPath(args[1]), output = ScratchPath(args[2]);
     if (Directory.Exists(output) || File.Exists(output)) throw new IOException("Output already exists.");
@@ -70,22 +71,23 @@ static void Fields(JsonElement node, string expected)
         throw new InvalidDataException("Duplicate, missing or unknown sequence fields.");
 }
 
-static int Sequence(string content, string plan, string destination)
+static int Sequence(string content, string plan, string destination, bool reveal = false)
 {
+    int[] ticks = reveal ? [1, 2, 3, 4, 5, 9, 10, 11, 12, 13, 14] : [81, 82, 83, 84, 85];
     string output = ScratchPath(destination), prepared = ScratchPath(content), planPath = ScratchPath(plan);
     if (Directory.Exists(output) || File.Exists(output)) throw new IOException("Output already exists.");
     if (new FileInfo(planPath).Length > 65536) throw new InvalidDataException("Sequence plan exceeds budget.");
     using var document = JsonDocument.Parse(File.ReadAllBytes(planPath), new JsonDocumentOptions { MaxDepth = 8 });
     var root = document.RootElement;
     Fields(root, "format schemaVersion checkpoints");
-    if (root.GetProperty("format").GetString() != "fft.banner-hide-backgrounds" || root.GetProperty("schemaVersion").GetInt32() != 1 ||
-        root.GetProperty("checkpoints").GetArrayLength() != 5) throw new InvalidDataException("Expected the five hide checkpoints.");
+    if (root.GetProperty("format").GetString() != (reveal ? "fft.banner-reveal-backgrounds" : "fft.banner-hide-backgrounds") || root.GetProperty("schemaVersion").GetInt32() != 1 ||
+        root.GetProperty("checkpoints").GetArrayLength() != ticks.Length) throw new InvalidDataException("Unexpected sequence checkpoints.");
     var inputs = new List<(int Tick, byte[] Background)>();
     foreach (var checkpoint in root.GetProperty("checkpoints").EnumerateArray())
     {
         Fields(checkpoint, "logicalTick backgroundPath backgroundSha256");
         int tick = checkpoint.GetProperty("logicalTick").GetInt32();
-        if (tick != 81 + inputs.Count) throw new InvalidDataException("Expected ordered hide checkpoints 81..85.");
+        if (tick != ticks[inputs.Count]) throw new InvalidDataException(reveal ? "Unexpected ordered reveal checkpoints." : "Expected ordered hide checkpoints 81..85.");
         string backgroundPath = ScratchPath(checkpoint.GetProperty("backgroundPath").GetString()!);
         if (new FileInfo(backgroundPath).Length != 256 * 240 * 4) throw new InvalidDataException("Invalid sequence background size.");
         byte[] pixels = File.ReadAllBytes(backgroundPath);
@@ -115,13 +117,13 @@ static int Sequence(string content, string plan, string destination)
             revealCompleted = state.Banner.RevealCompleted, holdCompleted = state.Banner.HoldCompleted, hideCompleted = state.Banner.HideCompleted,
             file, backgroundSha256 = Hash(input.Background), rgbaSha256 = Hash(pixels), pieces = geometry });
     }
-    var receipt = new { format = "fft.banner-hide-cpu-check", schemaVersion = 1,
+    var receipt = new { format = reveal ? "fft.banner-reveal-cpu-check" : "fft.banner-hide-cpu-check", schemaVersion = 1,
         renderer = "FiveBitGeneralBannerPresentation.ComposeOver", sourceKind = banner.Definition.Source.Kind,
         referenceRevision = banner.Definition.Source.ReferenceRevision, precision = "five-bit", ditherEnabled = false,
         framebufferOrigin = new[] { 0, 0 }, gpuReadbackPerformed = false, originalComparison = "pending", checkpoints = frames };
     Directory.CreateDirectory(output);
     foreach (var frame in outputs) File.WriteAllBytes(Path.Combine(output, frame.Name), frame.Pixels);
     File.WriteAllText(Path.Combine(output, "check.json"), JsonSerializer.Serialize(receipt, new JsonSerializerOptions { WriteIndented = true }) + "\n");
-    Console.WriteLine("CPU hide sequence composed at checkpoints 81..85; original comparison pending.");
+    Console.WriteLine(reveal ? "CPU reveal sequence composed; original comparison pending." : "CPU hide sequence composed at checkpoints 81..85; original comparison pending.");
     return 0;
 }

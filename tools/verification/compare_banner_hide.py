@@ -33,14 +33,15 @@ def snapshot(state, definition):
     return context(core, ram, observation)
 
 
-def context(core, ram, observation):
+def context(core, ram, observation, *, first_vsync_wait=False):
     """Closed pre-submission VSync context; not a general GPU/frame classifier."""
     cpu, gpu = p.subsystem_records(core, b'CPU'), p.gpu_records(core)
     v.require(len(cpu.get('GPR', b'')) == 128 and len(cpu.get('BACKED_PC', b'')) == 4, 'Missing CPU registers')
     registers = struct.unpack('<32I', cpu['GPR']); pc = int.from_bytes(cpu['BACKED_PC'], 'little'); sp = registers[29]
-    v.require(0x8001dcf0 <= pc < 0x8001dd8c and registers[31] == 0x8001dc64, 'CPU is not in the selected VSync wait')
+    vsync_return = 0x8001dc40 if first_vsync_wait else 0x8001dc64
+    v.require(0x8001dcf0 <= pc < 0x8001dd8c and registers[31] == vsync_return, 'CPU is not in the selected VSync wait')
     v.require(0x801f0000 <= sp and sp + 0x5c <= 0x80200000 and sp % 4 == 0, 'Unexpected main-stack frame')
-    v.require([trace.word(ram, sp + x) for x in (0x18, 0x38, 0x58)] == [0x8001dc64, 0x80093b68, 0x8007a058],
+    v.require([trace.word(ram, sp + x) for x in (0x18, 0x38, 0x58)] == [vsync_return, 0x80093b68, 0x8007a058],
               'VSync/frame-submit/entry return chain differs')
     polarity = trace.word(ram, POLARITY); v.integer(polarity, 0, 1, 'screen polarity')
     v.require(trace.word(ram, 0x80045980) == 2, 'Unexpected VSync interval')
@@ -53,7 +54,7 @@ def context(core, ram, observation):
               scalar('OffsX') == -128 and scalar('OffsY') == 240 - front_y and gpu['dtd'] == b'\0', 'GPU front/back state differs from pending flip')
     v.require(gpu.get('DisplayOff') == b'\0' and gpu.get('InCmd') == b'\0' and gpu.get('BlitterFIFO.in_count') == bytes(4), 'Unsupported display/pending GPU command')
     return dict(frameCounter=trace.word(ram, FRAME_COUNTER), polarity=polarity, cpuPc=pc, cpuSp=sp,
-        returnAddresses=[0x8001dc64, 0x80093b68, 0x8007a058], frontOrigin=[0, front_y], backOrigin=[0, 240 - front_y],
+        returnAddresses=[vsync_return, 0x80093b68, 0x8007a058], frontOrigin=[0, front_y], backOrigin=[0, 240 - front_y],
         pendingDrawOrigin=[0, front_y], pendingDisplayOrigin=[0, 240 - front_y], task=observation)
 
 
@@ -99,12 +100,12 @@ def metrics(original, candidate, points):
     return dict(compared=True, **b.samples(original, candidate, points)) if points else dict(pixels=0, changedPixels=0, compared=False, exactEquality=None)
 
 
-def compare(original, background, native, original_scanout, probe_scanout, definition, geometry, indices, palette, isolated):
+def compare(original, background, native, original_scanout, probe_scanout, definition, geometry, indices, palette, isolated, *, partial_triplet=False):
     projected = cropped_definition(definition, geometry)
     if projected['pieces']:
-        expected = bg.compose(background, projected, indices, palette)
-        _, _, touched, _ = b.transfer_bounds(projected, indices, palette)
-        low, high = p.native_bounds(projected, indices, palette)
+        expected = bg.compose(background, projected, indices, palette, partial_triplet=partial_triplet)
+        _, _, touched, _ = b.transfer_bounds(projected, indices, palette, partial_triplet=partial_triplet)
+        low, high = p.native_bounds(projected, indices, palette, partial_triplet=partial_triplet)
         invariant = {at for at in touched if low[at * 4:at * 4 + 3] == high[at * 4:at * 4 + 3]}
     else:
         v.require(len(background) == bg.CANVAS_BYTES and all(background[at + 3] == 255 and

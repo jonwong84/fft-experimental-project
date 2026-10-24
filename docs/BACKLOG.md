@@ -719,6 +719,19 @@ overlay/partial-packet guards remain closed; next trace early reveal/readiness
 before extending accepted observations. No new pixel, loading-duration, physical
 input or event-identity claim; the original reference files remain ignored.
 
+**Early reveal/readiness follow-up:** The [bounded diagnostic](development/early-banner-reveal.md)
+now classifies four loader yields and the first reveal yield, explains the earlier
+three-piece packet set, and matches sixteen original counter/crop observations
+with managed replay. Actual C# composition matches nine of eleven displayed
+frames; reveal 4/13 retain 21/14 blue-channel pixel differences of +8 original
+minus C#. Source/probe isolation, scanout, geometry and C#/Python model checks
+pass; two runs repeat 107 selected artifacts. No tolerance or runtime renderer
+change. Locked restores, zero-warning builds, 1,466 .NET and 130 Python tests pass.
+Next trace color interpolation/triangle initialization at the two 24-row reveals
+before a renderer correction. The owner visually approved the diagnostic gallery
+on 2026-10-24; the two measured pixel differences, physical Circle behavior and
+event identity remain open. ZOD-033 stays partial.
+
 **Scope:** Capture selected scenes at fixed state/presentation ticks and compare them with documented baseline/reference captures using appropriate regions and tolerances.
 
 **Acceptance criteria:** Capture conditions are reproducible; reports distinguish geometry, palette, transparency/order, and timing discrepancies from simulation failures; thresholds are justified rather than masking visible defects. Synthetic renderer checks can run without game files; original media and comparisons remain local. Human inspection is recorded for effects automated metrics cannot establish.

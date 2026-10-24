@@ -47,7 +47,7 @@ def align(original, candidate, original_rect, candidate_rect):
     return b''.join(original[(y * 280 + 12) * 4:(y * 280 + 268) * 4] for y in range(240)), candidate
 
 
-def transfer_bounds(definition, indices, palette):
+def transfer_bounds(definition, indices, palette, *, partial_triplet=False):
     """Managed-policy sensitivity mask, not an independent original renderer.
 
     Add/subtract with saturation and opaque replacement are monotone. Evaluating
@@ -59,7 +59,8 @@ def transfer_bounds(definition, indices, palette):
     low, high = bytearray(WIDTH * HEIGHT * 3), bytearray([255]) * (WIDTH * HEIGHT * 3)
     touched = set()
     pieces = definition['pieces']
-    v.require(len(pieces) == 6 and [p['sourceIndex'] for p in pieces] == list(range(6)), 'Expected six ordered pieces')
+    v.require(len(pieces) in ((3, 6) if partial_triplet else (6,)) and
+              [p['sourceIndex'] for p in pieces] == list(range(len(pieces))), 'Expected six ordered pieces' if not partial_triplet else 'Expected ordered first triplet or six pieces')
     for p in pieces:
         for name in ('x', 'y', 'u', 'v', 'width', 'height'):
             v.integer(p[name], 0 if name not in ('width', 'height') else 1, 256, 'piece ' + name)

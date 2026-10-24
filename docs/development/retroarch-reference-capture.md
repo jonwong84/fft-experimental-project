@@ -165,6 +165,11 @@ records identities without media. No managed source changed or .NET tests reran.
 
 ### Earlier owner state received (2026-10-24)
 
+Follow-up: the [early reveal/readiness diagnostic](early-banner-reveal.md) now
+classifies the selected loader waits and early triplet submissions. Nine of
+eleven displayed frames match C# exactly; two retain strict blue-channel
+differences. The intake observations below preserve their earlier guard results.
+
 The owner captured a new state in the same private slot. It is frozen separately
 at `scratch/banner-pre-anchor-a/fft-clean-base-game.state` before further slot
 reuse: 1,535,609 bytes, SHA-256

@@ -158,3 +158,8 @@ reveal, loading duration, physical Circle input and original event identity stil
 need earlier original anchors. There is no general PS1 rasterizer, managed scene
 rendering or universal frame-lag claim; ZOD-033 remains partial. Deferred ZOD-079
 does not become the active task.
+
+Follow-up: the earlier anchor now supports a separate
+[early reveal/readiness diagnostic](early-banner-reveal.md). Two partial-reveal
+color differences remain open; this does not change the exact hide results or
+the owner's approval of this gallery.
