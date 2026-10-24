@@ -643,9 +643,15 @@ wrong hashes and output preservation. Two fresh 120-frame synthetic GPU captures
 and two reports match exactly. The adapter's simulation binding covers the explicit
 turn projection; wider state remains a future capture contract. No .NET source,
 package graph, simulation/event/save behavior or original assets changed; the
-earlier full managed validation remains 1,388 tests. The owner has no emulator/
-save/state/recording available; matched original scene captures, original comparison
-thresholds and original human visual review remain required before completion.
+earlier full managed validation remains 1,388 tests. A [private RetroArch/Beetle PSX
+profile](development/retroarch-reference-capture.md) is now prepared and boot-checked:
+two raw introductory captures match, installed settings are preserved, and all 30
+Python tests pass (8 new). The owner subsequently captured the target banner and a
+state with a matching thumbnail; two four-frame restores produce identical banner
+scene images. [Checkpoint metadata](evidence/visual/original-banner-state-v1.json)
+records this bounded observation. Exact original/managed timing/context alignment,
+an original comparison profile/thresholds and comparative human review remain
+required before completion.
 
 **Scope:** Capture selected scenes at fixed state/presentation ticks and compare them with documented baseline/reference captures using appropriate regions and tolerances.
 

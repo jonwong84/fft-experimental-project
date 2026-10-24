@@ -3,7 +3,7 @@
 Generated from `baseline-coverage.json` by `tools/verification/verify_baseline_coverage.py --write-view`.
 Edit the JSON, then regenerate this view. See [the inventory guide](README.md) for status/evidence rules.
 
-Target: **SCUS-94221**. Snapshot: 2026-10-24; managed base `c561efc`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+Target: **SCUS-94221**. Snapshot: 2026-10-24; managed base `66e08c0`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 These entries are planning scopes, not a feature-completion percentage or a complete record/encounter catalog.
 
 ## Simulation
@@ -740,15 +740,15 @@ Next action: Create a US reachability/exclusion audit; retain unresolved status 
 
 Status: **partial**; scope: **baseline**; ticket: **ZOD-033**; owner area: Fft.Client platform adapters.
 
-Fixed prepared MAP003/Chocobo scene renders with declared neutral-lighting and modern depth/cutout approximations. ZOD-033 adds strict optional headless authored/same-environment PNG comparison, checkpoint/tick/view/turn-projection bindings, regional RGBA diagnostics and zero-tolerance synthetic Windows plans. All 22 Python tests pass; two 120-frame synthetic captures and reports match. No original rendered comparison or full simulation equivalence is claimed.
+Fixed prepared MAP003/Chocobo scene renders with declared neutral-lighting and modern depth/cutout approximations. ZOD-033 adds strict optional headless authored/same-environment PNG comparison, checkpoint/tick/view/turn-projection bindings, regional RGBA diagnostics and zero-tolerance synthetic Windows plans. All 22 Python tests pass; two 120-frame synthetic captures and reports match. No original rendered comparison or full simulation equivalence is claimed. The existing RetroArch 1.22.2/Beetle PSX software installation now has an isolated native capture profile. Two input-disconnected finite boots reach introductory game content with matching raw screenshots and unchanged installed settings; the owner subsequently captured the target banner/state, and two four-frame state restores produce identical banner scene images. Exact original/managed timing/context, BSV playback and original comparisons remain open. All 30 Python tests pass, with 8 new profile/isolation checks.
 
-Evidence: [docs/development/prepared-scene.md](../../docs/development/prepared-scene.md), [docs/development/visual-comparison-checkpoints.md](../../docs/development/visual-comparison-checkpoints.md), [docs/evidence/visual/synthetic-checkpoint-comparison-v1.json](../../docs/evidence/visual/synthetic-checkpoint-comparison-v1.json).
+Evidence: [docs/development/prepared-scene.md](../../docs/development/prepared-scene.md), [docs/development/visual-comparison-checkpoints.md](../../docs/development/visual-comparison-checkpoints.md), [docs/evidence/visual/synthetic-checkpoint-comparison-v1.json](../../docs/evidence/visual/synthetic-checkpoint-comparison-v1.json), [docs/development/retroarch-reference-capture.md](../../docs/development/retroarch-reference-capture.md), [docs/evidence/visual/retroarch-reference-readiness-v1.json](../../docs/evidence/visual/retroarch-reference-readiness-v1.json), [docs/evidence/visual/original-banner-state-v1.json](../../docs/evidence/visual/original-banner-state-v1.json).
 
 Source entry points (pinned revision above; not full traces): [src/battle/map/runtime.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/map/runtime.c), [src/battle/map/light.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/map/light.c), [src/battle/map/palettes.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/map/palettes.c).
 
-Current implementation: [src/Fft.Client/Presentation/PreparedSceneGeometry.cs](../../src/Fft.Client/Presentation/PreparedSceneGeometry.cs), [src/Fft.Client/Presentation/PreparedSceneWindow.cs](../../src/Fft.Client/Presentation/PreparedSceneWindow.cs), [tools/verification/compare_visual_checkpoints.py](../../tools/verification/compare_visual_checkpoints.py), [tools/verification/prepare_synthetic_visual_comparison.py](../../tools/verification/prepare_synthetic_visual_comparison.py).
+Current implementation: [src/Fft.Client/Presentation/PreparedSceneGeometry.cs](../../src/Fft.Client/Presentation/PreparedSceneGeometry.cs), [src/Fft.Client/Presentation/PreparedSceneWindow.cs](../../src/Fft.Client/Presentation/PreparedSceneWindow.cs), [tools/verification/compare_visual_checkpoints.py](../../tools/verification/compare_visual_checkpoints.py), [tools/verification/prepare_synthetic_visual_comparison.py](../../tools/verification/prepare_synthetic_visual_comparison.py), [tools/verification/prepare_retroarch_reference.py](../../tools/verification/prepare_retroarch_reference.py), [tools/verification/verify_retroarch_boot.py](../../tools/verification/verify_retroarch_boot.py).
 
-Existing bounded checks: [tests/Fft.Client.Tests/PreparedSceneGeometryTests.cs](../../tests/Fft.Client.Tests/PreparedSceneGeometryTests.cs), [tools/verification/test_visual_checkpoints.py](../../tools/verification/test_visual_checkpoints.py).
+Existing bounded checks: [tests/Fft.Client.Tests/PreparedSceneGeometryTests.cs](../../tests/Fft.Client.Tests/PreparedSceneGeometryTests.cs), [tools/verification/test_visual_checkpoints.py](../../tools/verification/test_visual_checkpoints.py), [tools/verification/test_retroarch_reference.py](../../tools/verification/test_retroarch_reference.py).
 
 Manual checkpoint (workstation-observed-original-comparison-pending): Programmed local fixed-scene checks passed; an independent original comparison remains pending.
 
@@ -756,7 +756,7 @@ Remaining gaps:
 
 - Independent original visual equivalence, PS1 blend/order effects and other variants are pending.
 
-Next action: Obtain a matched original rendered checkpoint with selected emulator/settings and view/input/timing provenance, then define the original comparison profile and justified thresholds. The owner currently has no emulator/save/state/recording; ZOD-033 remains partial.
+Next action: Use the frozen banner state for timing/context calibration; verify encounter/event identity and obtain pre-banner reveal anchors, then define an explicit original comparison profile and justified thresholds. Bounded state-restore repeatability is observed; ZOD-033 remains partial.
 
 ### COV-PRE-002 — Unit sprites, SHP/SEQ animation and battle poses
 
@@ -1070,15 +1070,15 @@ Next action: Add fixture/scenario evidence when each row's supported domain expa
 
 Status: **partial**; scope: **baseline**; ticket: **ZOD-026**; owner area: Development validation.
 
-ZOD-026 executes the verified original SCUS-94221 Chocobo attack decoder/helper instructions under Unicorn 2.1.4. Two independent-execution captures/reports match the historical managed decoded-byte digest; wrong-hash and existing-output gates pass. No original game, palette/frame/camera/timing or rendered scene comparison is claimed. ZOD-033 adds strict optional headless authored/same-environment PNG comparison, checkpoint/tick/view/turn-projection bindings, regional RGBA diagnostics and zero-tolerance synthetic Windows plans. All 22 Python tests pass; two 120-frame synthetic captures and reports match. No original rendered comparison or full simulation equivalence is claimed.
+ZOD-026 executes the verified original SCUS-94221 Chocobo attack decoder/helper instructions under Unicorn 2.1.4. Two independent-execution captures/reports match the historical managed decoded-byte digest; wrong-hash and existing-output gates pass. No original game, palette/frame/camera/timing or rendered scene comparison is claimed. ZOD-033 adds strict optional headless authored/same-environment PNG comparison, checkpoint/tick/view/turn-projection bindings, regional RGBA diagnostics and zero-tolerance synthetic Windows plans. All 22 Python tests pass; two 120-frame synthetic captures and reports match. No original rendered comparison or full simulation equivalence is claimed. The existing RetroArch 1.22.2/Beetle PSX software installation now has an isolated native capture profile. Two input-disconnected finite boots reach introductory game content with matching raw screenshots and unchanged installed settings; the owner subsequently captured the target banner/state, and two four-frame state restores produce identical banner scene images. Exact original/managed timing/context, BSV playback and original comparisons remain open. All 30 Python tests pass, with 8 new profile/isolation checks.
 
-Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/development/sprite-executable-reference.md](../../docs/development/sprite-executable-reference.md), [docs/evidence/sprites/chocobo-attack-executable-v1.json](../../docs/evidence/sprites/chocobo-attack-executable-v1.json), [docs/development/visual-comparison-checkpoints.md](../../docs/development/visual-comparison-checkpoints.md), [docs/evidence/visual/synthetic-checkpoint-comparison-v1.json](../../docs/evidence/visual/synthetic-checkpoint-comparison-v1.json).
+Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/development/sprite-executable-reference.md](../../docs/development/sprite-executable-reference.md), [docs/evidence/sprites/chocobo-attack-executable-v1.json](../../docs/evidence/sprites/chocobo-attack-executable-v1.json), [docs/development/visual-comparison-checkpoints.md](../../docs/development/visual-comparison-checkpoints.md), [docs/evidence/visual/synthetic-checkpoint-comparison-v1.json](../../docs/evidence/visual/synthetic-checkpoint-comparison-v1.json), [docs/development/retroarch-reference-capture.md](../../docs/development/retroarch-reference-capture.md), [docs/evidence/visual/retroarch-reference-readiness-v1.json](../../docs/evidence/visual/retroarch-reference-readiness-v1.json), [docs/evidence/visual/original-banner-state-v1.json](../../docs/evidence/visual/original-banner-state-v1.json).
 
 Source entry points (pinned revision above; not full traces): [src/battle/units/sprite_display.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/units/sprite_display.c), [src/battle/map/runtime.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/map/runtime.c), [src/battle/units/sp2.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/units/sp2.c).
 
-Current implementation: [tools/verification/verify_sprite_attack.py](../../tools/verification/verify_sprite_attack.py), [tools/verification/compare_visual_checkpoints.py](../../tools/verification/compare_visual_checkpoints.py), [tools/verification/prepare_synthetic_visual_comparison.py](../../tools/verification/prepare_synthetic_visual_comparison.py).
+Current implementation: [tools/verification/verify_sprite_attack.py](../../tools/verification/verify_sprite_attack.py), [tools/verification/compare_visual_checkpoints.py](../../tools/verification/compare_visual_checkpoints.py), [tools/verification/prepare_synthetic_visual_comparison.py](../../tools/verification/prepare_synthetic_visual_comparison.py), [tools/verification/prepare_retroarch_reference.py](../../tools/verification/prepare_retroarch_reference.py), [tools/verification/verify_retroarch_boot.py](../../tools/verification/verify_retroarch_boot.py).
 
-Existing bounded checks: [tools/verification/verify_sprite_attack.py](../../tools/verification/verify_sprite_attack.py), [tools/verification/test_visual_checkpoints.py](../../tools/verification/test_visual_checkpoints.py).
+Existing bounded checks: [tools/verification/verify_sprite_attack.py](../../tools/verification/verify_sprite_attack.py), [tools/verification/test_visual_checkpoints.py](../../tools/verification/test_visual_checkpoints.py), [tools/verification/test_retroarch_reference.py](../../tools/verification/test_retroarch_reference.py).
 
 Manual checkpoint (pending-original-observation): Record edition, environment, state, palette, camera, frame/timing, inputs and capture hashes under ignored scratch.
 
@@ -1086,7 +1086,7 @@ Remaining gaps:
 
 - Matched original rendered scene captures, palette/frame/camera/timing controls, ZOD-033 thresholds and human visual review remain open; the decoder oracle does not establish GPU equivalence.
 
-Next action: Obtain a matched original rendered checkpoint with selected emulator/settings and view/input/timing provenance, then define the original comparison profile and justified thresholds. The owner currently has no emulator/save/state/recording; ZOD-033 remains partial.
+Next action: Use the frozen banner state for timing/context calibration; verify encounter/event identity and obtain pre-banner reveal anchors, then define an explicit original comparison profile and justified thresholds. Bounded state-restore repeatability is observed; ZOD-033 remains partial.
 
 ### COV-VAL-003 — Windows/Linux CI and clean-machine launch
 

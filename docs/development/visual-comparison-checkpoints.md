@@ -5,8 +5,11 @@ Date: 2026-10-24. Managed baseline: `c561efc`.
 **Implemented:** headless authored/same-environment PNG comparisons, strict
 checkpoint bindings, regional RGBA diagnostics and a synthetic Windows capture
 adapter. **Still pending:** a matched original rendered reference and reviewed
-original-versus-managed thresholds. The owner confirmed no emulator/save/state or
-recording is currently available. ZOD-026's executable decoder oracle does not
+original-versus-managed thresholds. The existing RetroArch installation now has a
+[private boot-checked reference profile](retroarch-reference-capture.md), but no matched
+battle comparison yet. The owner has since supplied a raw banner screenshot/state;
+[two bounded restores](retroarch-reference-capture.md#owner-captured-banner-checkpoint)
+produce identical banner scene images. ZOD-026's executable decoder oracle does not
 supply a rendered scene reference. ZOD-033 remains partial.
 
 No original source rule, engine/game simulation, managed project/package graph,
@@ -146,10 +149,12 @@ All three regions have zero changed pixels and zero maximum RGBA deltas.
 The local screenshot was visually inspected: readable labels, two authored sprites,
 four map tiles, palette accents and transparent corners; no original media involved.
 
-The remaining original comparison needs a selected emulator/settings and actual
-game checkpoint/input sequence plus matched frame/camera/palette state. The owner
-has no such artifacts at present. ZOD-026's original attack-decoder byte agreement
+The remaining original comparison needs an actual game checkpoint/input sequence
+plus matched frame/camera/palette state. The private RetroArch setup now reaches
+introductory game content, and the owner's banner state now reproduces a rendered
+battle checkpoint in two bounded restores. The exact original/managed timing,
+context and comparison profile remain unverified. ZOD-026's original attack-decoder byte agreement
 is retained separately; it cannot calibrate rendered thresholds. MAP003 lighting/
 depth/camera approximations and banner RGB8 precision/parity limits remain those in
-their existing guides. No emulator was installed, no full game booted, no original
-equivalence claimed and no automatic commit made.
+their existing guides. The subsequent original game boot/state observations do not
+establish visual equivalence. No automatic commit was made.

@@ -130,9 +130,24 @@ a synthetic Windows receipt adapter. All 22 Python tests pass. Two fresh synthet
 snapshot unchanged, logical tick 0/RNG 1/0. The adapter fingerprints an explicit
 bounded turn projection; no broader simulation equivalence is implied. No managed
 source/package/save/event changes or full .NET rerun; last full suite remains
-1,388 tests. Owner confirms no emulator/save/state/recording is available. ZOD-033
-remains partial until matched original captures and reviewed original thresholds/
+1,388 tests. RetroArch has since been located and boot-checked; see the setup below.
+ZOD-033 remains partial until matched original captures and reviewed original thresholds/
 human inspection exist. No emulator installed, no original fidelity claim or commit.
+
+The [private RetroArch reference setup](development/retroarch-reference-capture.md)
+now uses the existing RetroArch 1.22.2/Beetle PSX software installation with verified
+BIN/CUE/BIOS, native software settings and scratch-only configurations/output.
+Two finite, input-disconnected 1,200-frame boots reach the introductory game credit
+with identical 350x240 raw PNGs. Normal emulator configuration hashes are unchanged;
+selected software options are retained. All 30 Python tests pass (8 new); managed
+code and the last 1,388-test full validation remain unchanged. The local interactive
+launcher is `scratch/retroarch-reference/launch.ps1`. BSV recording exists but replay
+playback remains unverified. The owner subsequently captured the target banner and
+a state whose thumbnail matches the raw screenshot. Frozen copies are under
+`scratch/banner-033-original-a`. Two four-frame restores produce identical banner
+scene images; one-frame startup attempts produced black images. See the
+[observation metadata](evidence/visual/original-banner-state-v1.json). Exact timing,
+event-path identity and the original/managed comparison remain open; ZOD-033 stays partial.
 
 **Prepared:** 2026-10-20  
 **Workspace:** `C:\repositories\fft-experimental-project`  
