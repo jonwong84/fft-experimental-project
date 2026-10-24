@@ -162,6 +162,14 @@ The inventory gives an initial format profile: 138 `.SPR`, 121 `.GNS`, 14 `.SEQ`
 
 ### Decisions to revisit as proofs produce evidence
 
+**Owner's later presentation goals (2026-10-24):** Investigate the intended
+original CRT/4:3 proportions rather than treating raw square pixels as final
+display geometry; add an optional CRT shader; discuss hardware/software rendering
+and resolution choices through an in-game Settings menu; discuss accurate audio
+and sound effects. These remain deferred design topics, with evidence and
+implementation choices pending. See [the detailed notes](docs/development/later-presentation-decisions.md)
+and ZOD-079/042/043/059/060 in the backlog; the active work order is unchanged.
+
 - Whether every optional/special encounter must be completable in the first “complete game” acceptance, or whether those are tracked as a later completeness gate. Current recommendation: include them in the final baseline because the goal is a full original-game reimplementation.
 - Whether normalized assets should be packed into a local cache bundle or remain individual files. Start with ordinary files plus a manifest; bundle only if load-time or organization evidence justifies it.
 - Which compatibility defects should receive an opt-in fix. Default remains original behavior; do not let this block exact vanilla behavior work.

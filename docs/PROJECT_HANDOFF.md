@@ -162,6 +162,13 @@ Python tests pass (22 new); the .NET suite was not rerun (last result: 1,388).
 Trace native color precision before changing rendering, and obtain pre-banner
 anchors for reveal/hide timing. ZOD-033 remains partial. No automatic commit.
 
+**Later owner notes (2026-10-24):** [Presentation decisions](development/later-presentation-decisions.md)
+and deferred ZOD-079 retain requested original CRT/4:3 aspect correction, an
+optional CRT shader, hardware/software rendering and resolution discussion,
+an in-game Settings menu, and accurate music/sound effects (ZOD-043).
+No shader/backend/stretch factor is selected; revisit much later without changing
+the current banner investigation or native-pixel diagnostic captures.
+
 **Prepared:** 2026-10-20  
 **Workspace:** `C:\repositories\fft-experimental-project`  
 **Branch:** `feature/initial-development`  

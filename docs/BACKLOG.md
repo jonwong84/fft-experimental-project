@@ -768,6 +768,12 @@ ZOD-064/065/066. Research completion does not establish original event compatibi
 
 **Acceptance criteria:** The baseline UI inventory is complete; each screen supports the required operations and navigation without direct state mutation; selected original screen/input comparisons and transition regressions pass. Start with the smallest party/job/equipment workflow needed by the first campaign loop.
 
+**Later owner direction (2026-10-24):** Provide an in-game Settings menu as display,
+CRT, supported renderer/resolution and audio options grow. Decide defaults,
+persistence, live/restart behavior and safe display recovery when those options
+are scoped. Coordinate ZOD-079 and the [later presentation notes](development/later-presentation-decisions.md);
+this does not advance Settings ahead of the current campaign/UI prerequisites.
+
 ### ZOD-043 — Establish audio decoding/playback and expand to baseline coverage
 
 **Type:** Epic · **Priority:** P3 · **Status:** Needs breakdown · **Depends on:** ZOD-024
@@ -775,6 +781,12 @@ ZOD-064/065/066. Research completion does not establish original event compatibi
 **Scope:** First investigate music/sample/sound-effect formats and playback semantics. Select a backend, prove one prepared sound/music path, then expand music, effects, loops, transitions, timing, volume, and any required streamed audio.
 
 **Acceptance criteria:** A bounded sample plays from prepared disk data; source formats and timing assumptions are documented; audio events do not control simulation; required baseline audio is inventoried and comparison checkpoints cover selected loops/transitions. Parser tests use synthetic data and original recordings stay local.
+
+**Later owner direction (2026-10-24):** Discuss accurate music and sound-effect
+reproduction, including source-backed sequencing/timing, pitch/envelopes, loops,
+mixing, interpolation/reverb and applicable streamed paths. Define original
+recording comparisons separately from device latency and Settings controls; see
+the [later presentation notes](development/later-presentation-decisions.md).
 
 ### ZOD-044 — Finish asset preparation for remaining required formats
 
@@ -1295,6 +1307,32 @@ with ZOD-040 and package management with ZOD-049. Menu/action/condition declarat
 
 **Acceptance criteria:** Save/continue covers the required campaign paths and does not lose flags, inventory, progression, or RNG state relevant to the supported checkpoint; incomplete/corrupt/incompatible saves fail with useful diagnostics and preserve recoverable data; migrations have synthetic regression fixtures. Interoperability with original memory-card saves remains a separately scoped optional feature.
 
+### ZOD-079 — Specify later display, rendering and Settings options
+
+**Type:** Deferred design task · **Priority:** P4 · **Status:** Waiting — owner requested much later · **Depends on:** ZOD-025, ZOD-033
+
+**Owner notes (2026-10-24):** Preserve intended original CRT/4:3 display proportions
+through investigated pixel-aspect correction; provide an optional CRT shader;
+discuss hardware/GPU versus software/CPU rendering and selectable resolutions;
+introduce an in-game Settings menu as these options grow. Accurate audio/effects
+discussion remains owned by ZOD-043. Details are in the
+[later presentation decisions](development/later-presentation-decisions.md).
+This planning entry does not change the active implementation queue.
+
+**Scope:** Record mode-aware original display mapping, diagnostic versus displayed
+captures, CRT options, rendering-path tradeoffs, resolution terminology and the
+Settings/persistence boundaries. Coordinate ZOD-042/043/053/059/060/061/063.
+Do not assume a universal stretch factor, select a shader/backend now or require
+two complete renderers before the comparison supports that choice.
+
+**Acceptance criteria:** A design record identifies original versus optional
+presentation profiles, evidence/open questions, proposed settings and defaults,
+aspect/scaling/input transforms, representative visual/audio validation,
+performance/deployment constraints and bounded implementation follow-ups.
+Presentation settings leave simulation results unchanged; original media remain
+local. No shader, renderer replacement, Settings screen or audio implementation
+is required to complete this design task.
+
 ### ZOD-059 — Add a widescreen presentation mode
 
 **Type:** Story · **Priority:** P4 · **Status:** Waiting · **Depends on:** ZOD-025, ZOD-031, ZOD-033
@@ -1308,6 +1346,9 @@ information density and readability alongside ZOD-061's keyboard/mouse interacti
 resize does not stretch the scene or alter simulation coordinates/ranges. Original-profile comparisons
 remain available. The same logical commands and seed produce identical gameplay outcomes across modes;
 framing and unsupported scenes have documented decisions and manual checks.
+
+**Later clarification:** Original CRT/4:3 pixel-aspect correction and optional CRT
+processing are separate from widescreen composition; coordinate ZOD-079.
 
 ### ZOD-060 — Add selectable game-view rendering resolution
 
@@ -1323,6 +1364,10 @@ readability remain correct; original assets and presentation profile remain supp
 can vary independently of aspect-ratio mode, with explicit viewport/scaling behavior. Original sprites and
 textures retain their source detail unless separate replacements are selected. Simulation results remain
 unchanged. No replacement asset pack or movie enhancement is required by this ticket.
+
+**Later owner discussion:** Coordinate internal/output resolution and Settings
+with ZOD-079's hardware/software rendering evaluation; multiple full rendering
+backends remain a decision, not a prerequisite assumed by this ticket.
 
 ### ZOD-061 — Complete native Windows keyboard, mouse and controller interaction
 
