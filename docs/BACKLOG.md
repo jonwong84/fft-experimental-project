@@ -744,6 +744,41 @@ gallery on 2026-10-24; historical diagnostic approval remains separate. Next sel
 Circle-input validation method; physical input, event identity and broader
 integration/rendering remain open. ZOD-033 stays partial.
 
+**Physical reveal Circle follow-up:** A [paired original observation](development/original-banner-circle-input.md)
+now verifies a USB-controller Circle press from neutral reveal count 5. The
+source-bound input/phase witness distinguishes the shared natural/skip exit PC:
+the task retains 5/0/0 progress, takes one active exit yield and clears on the next
+source update. Two no-input continuations repeat states/PNGs; two inspection
+reports repeat. Three metadata-only C# replay cases match the existing driver;
+eight authored Python checks reject invalid witnesses. Locked restore,
+zero-warning build, 1,489 .NET and 143 Python tests pass. No runtime change.
+A neutral hold checkpoint is prepared in private slot 1 for the next physical
+case. Hold/hide input, BSV playback, USB/display latency, original event identity
+and broader integration/rendering remain open. ZOD-033 stays partial.
+
+**Physical hold Circle follow-up:** The same [source-bound lane](development/original-banner-circle-input.md#physical-hold-result)
+now verifies the owner's hold-phase press from a frozen neutral Holding count-1
+state. Source frames 9000/9001/9002 map to logical ticks 21/22/23, retaining 20/1/0
+through the extra active yield and task clear. Two three-frontend-frame restores
+repeat state/PNG bytes and both inspector reports match. A later four-frame sample
+is correctly rejected after original slot reuse. Six combined C# checkpoints and
+ten authored Python witness checks pass; zero-warning Release build, all 1,492
+.NET tests and 145 Python tests pass. No runtime changes. Next select a separate
+physical hide-input or input-movie case; latency, event identity and broader
+integration/rendering remain open. ZOD-033 stays partial.
+
+**Physical hide Circle follow-up:** The [paired hide observation](development/original-banner-circle-input.md#physical-hide-result)
+now verifies neutral input -> Circle-only over source frames 6435/6436. The same
+active task advances Hiding count 1 -> 2, alternates buffers and queues six exact
+8-row crops; no skip yield occurs. Both inspector reports match. Two additional
+metadata-only C# checkpoints match the unchanged driver, and seven authored
+Python hide-witness checks pass. Zero-warning Release build, 1,494 .NET and 152
+Python tests pass. No runtime change or emulator launch for this pair inspection.
+Each phase now has one bounded owner-operated press observation; later natural
+completion after this hide press, input boundaries/repeats, BSV playback, latency,
+event identity and wider integration remain open. Review/commit this evidence,
+then select the next independent gate. ZOD-033 stays partial.
+
 **Scope:** Capture selected scenes at fixed state/presentation ticks and compare them with documented baseline/reference captures using appropriate regions and tolerances.
 
 **Acceptance criteria:** Capture conditions are reproducible; reports distinguish geometry, palette, transparency/order, and timing discrepancies from simulation failures; thresholds are justified rather than masking visible defects. Synthetic renderer checks can run without game files; original media and comparisons remain local. Human inspection is recorded for effects automated metrics cannot establish.

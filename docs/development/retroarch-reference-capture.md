@@ -28,7 +28,7 @@ are explicit:
 - Arrows: D-pad; Enter: Start; right Shift: Select.
 - Z: Cross; X: Circle; A: Square; S: Triangle; Q/W: L1/R1.
 - P: pause/resume; K: advance one frame while paused; F8: raw screenshot.
-- F2: save state in slot 0; F4: load that state; Escape: quit.
+- F2: save state in the selected slot (initially 0); F4: load that slot; Escape: quit.
 
 States and screenshots belong to the private profile under
 `scratch/retroarch-reference/states` and `/screenshots`; RetroArch may add a
@@ -42,6 +42,24 @@ The launcher checks hashes of the emulator, core, verified BIN/CUE, source and
 actual copied BIOS, and prepared policy files. If those inputs change, prepare a
 new profile and review the change. Do not edit capture settings during a reference
 run. A changed profile must have its own evidence identity.
+
+For loading existing states, the separate local helper is now:
+
+```powershell
+& .\scratch\retroarch-reference\launch-state-review.ps1
+```
+
+It retains the private profile and hash guards but omits input-movie recording:
+the original boot-recording launcher can reject an older state with
+`[Replay] Not from current recording.` Playback remains unverified. The base
+configuration also disables the notification font, so absence of an F2 popup
+does not establish save failure. The state-review helper enables the font and
+save notifications in future session overrides; an already running session
+retains its original settings. Use F1 → Save States → Save State when needed,
+then check the file/log. K advances a frontend frame while paused; saved source
+counters, rather than K counts, establish logical progression. See the
+[physical reveal Circle observation](original-banner-circle-input.md) for the
+frozen session, successful menu save and prepared hold checkpoint in slot 1.
 
 ## Preparation and bounded readiness check
 

@@ -291,6 +291,69 @@ diagnostic evidence/approval remain intact. Next select a bounded original Circl
 validation method; event identity and wider rendering/integration remain open.
 No automatic commit.
 
+**Physical reveal Circle observation (2026-10-24):** The
+[paired original witness](development/original-banner-circle-input.md) verifies
+the owner's USB-controller Circle press from neutral reveal count 5. Saved input,
+retained loop count, source frame, active task and empty queued banner list
+distinguish the shared skip/natural exit address. The task takes one extra active
+yield then clears on the next source update, retaining 5/0/0 progress. Two
+no-input continuations repeat state/PNG bytes; two inspection reports repeat.
+Three metadata-only C# cases match the existing managed driver. Locked restore,
+zero-warning build, 1,489 .NET and 143 Python tests pass. No runtime changes or
+automatic commit. A separate ignored state-review launcher omits recording so
+older states load; Quick Menu saves succeeded where F2 notification/file updates
+were uncertain. Future helper sessions enable the notification font; the current
+session still uses its frozen earlier configuration. The next physical case is
+hold skipping: a repeated neutral Holding count-1 state is installed in private
+slot 1, preserving slot 0. Have the owner load slot 1 and save a neutral checkpoint,
+then freeze/inspect the actual starting phase before requesting Circle. Hold/hide
+input, BSV playback, USB/display latency, original event 401 identity and broader
+rendering/integration remain open; ZOD-033 remains partial.
+
+**Physical hold Circle follow-up (2026-10-24):** The
+[paired hold witness](development/original-banner-circle-input.md#physical-hold-result)
+now verifies the owner's slot-1 press from neutral Holding count 1. Source frames
+9000/9001/9002 map to logical ticks 21/22/23, retaining 20/1/0 progress through the
+extra active exit yield and task clear. Two dedicated three-frontend-frame
+restores repeat original state/PNG bytes; both inspector reports match. The first
+four-frame sample reached a new condition-0 task at frame 9003; the existing
+clear guard correctly rejects that slot reuse. Private slots and protected input/
+configuration hashes remain unchanged by the finite restores. Combined validation
+now passes six metadata-only C# checkpoints and ten authored Python witness
+checks: zero-warning Release build, 1,492 .NET and 145 Python tests. Runtime code
+is unchanged; nothing is committed automatically. Physical hide input and BSV
+playback remain open alongside USB/display latency, event 401 identity and wider
+integration/rendering. Select the hide-phase or input-movie case separately.
+
+**Hide-input preparation (2026-10-24):** The owner selected physical hide input
+next. Two hash-bound archived natural-continuation states/PNGs match exactly;
+fresh source/input/task inspection verifies neutral Hiding count 1, logical tick
+81 / progress 20/60/1 / source frame 6435. A copy and matching thumbnail are now
+installed in unused private **slot 2**, preserving slots 0/1 and protected inputs/
+configuration hashes. Preparation evidence is
+`scratch/banner-circle-hide-anchor-a/report.json`; no emulator or test suite ran.
+The next user step is to load slot 2 and save a neutral checkpoint through Quick
+Menu with the game paused. Freeze/inspect that actual baseline before requesting
+Circle; physical hide behavior remains unverified. Last full validation is still
+1,492 .NET and 145 Python tests. See the
+[operator notes](development/original-banner-circle-input.md#prepared-hide-input-checkpoint).
+
+**Physical hide Circle result (2026-10-24):** The
+[paired hide witness](development/original-banner-circle-input.md#physical-hide-result)
+now verifies the owner's slot-2 press. The frozen neutral baseline at source
+frame 6435 and Circle-only after-state at 6436 show the same active task/stack,
+hide count 1 -> 2, buffer alternation and six exact 8-row crops. Logical ticks
+81/82 retain normal 20/60/1 -> 20/60/2 progress with no exit cause. Two inspector
+reports match; two additional metadata-only managed cases match the unchanged
+driver. Zero-warning Release build, all 1,494 .NET and 152 Python tests pass.
+No emulator ran for this pair inspection; no runtime behavior changed. Original
+states/media stay ignored and nothing is committed automatically. Each phase now
+has one bounded physical press observation. Review/commit the evidence before
+selecting input-movie playback or exact original event-entry identification as
+the next gate. Later natural completion after the hide press, boundary timings/
+repeats, USB/display latency, event 401 identity and broader integration remain
+open; ZOD-033 remains partial.
+
 **Owner formula direction (2026-10-24):** Keep weapon and ability algorithms
 readable/editable as ordinary C# code. The
 [formula notes](development/editable-combat-formulas.md) distinguish current bounded

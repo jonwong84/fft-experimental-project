@@ -1,0 +1,376 @@
+{
+  "format": "fft.original-banner-circle-reveal-evidence",
+  "schemaVersion": 1,
+  "recorded": "2026-10-24",
+  "edition": "SCUS-94221",
+  "managedBaseCommit": "5dfcacc",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "evidenceGuide": "docs/development/original-banner-circle-input.md",
+  "scope": "One owner-operated USB-controller reveal-phase Circle press, paired neutral/pressed original states and repeated no-input task exit.",
+  "physicalProvenance": {
+    "action": "Owner was instructed to hold Circle, tap K twice while paused, release Circle and save; successful post-press state was saved through Quick Menu.",
+    "port": 1,
+    "frontendDriver": "XInput",
+    "deviceLogName": "Xbox 360 Controller",
+    "coreDevice": "PlayStation Controller",
+    "session": "b42ada1aa583401ab46ee921e4b95683",
+    "inputMovieRecorded": false,
+    "exactPhysicalTimingIndependentlyRecorded": false,
+    "files": [
+      {
+        "localPath": "scratch/banner-circle-observation-plan/retroarch.log",
+        "bytes": 6665,
+        "sha256": "2ce44116d1f9576fc0c216458ea4c57ad1d2922f589e1ac2053c3e5cd71bae10"
+      },
+      {
+        "localPath": "scratch/banner-circle-observation-plan/session.cfg",
+        "bytes": 179,
+        "sha256": "876aff385d512a22bf27f918957f7edfb28f98e1e9ee3ea450074133aeb3f50b"
+      },
+      {
+        "localPath": "scratch/banner-circle-observation-plan/core-options.cfg",
+        "bytes": 1165,
+        "sha256": "ab6ef957daf729321de0d9f9aa8104068718dbf38617515b25e34c7f733acc48"
+      }
+    ]
+  },
+  "reports": [
+    {
+      "localPath": "scratch/banner-circle-observed-a/report.json",
+      "bytes": 5816,
+      "sha256": "60750a58a4719016160c91e89dbed1f8dc10d39770701554898cd32d40a5eb7e"
+    },
+    {
+      "localPath": "scratch/banner-circle-observed-b/report.json",
+      "bytes": 5816,
+      "sha256": "60750a58a4719016160c91e89dbed1f8dc10d39770701554898cd32d40a5eb7e"
+    }
+  ],
+  "repeatedReportsByteIdentical": true,
+  "plan": {
+    "localPath": "scratch/banner-circle-observation-plan/plan.json",
+    "bytes": 1126,
+    "sha256": "e6763b533ca356f1a0bc4376697fba60d48e7c8b3546e95eb93e36f0f5ca731a"
+  },
+  "tools": [
+    {
+      "localPath": "tools/verification/inspect_banner_circle.py",
+      "bytes": 7216,
+      "sha256": "81b8d749e4fd086c59a70386d9ebb366b4eadd4bab448a7a900379a6c1b8dd37"
+    },
+    {
+      "localPath": "tools/verification/capture_banner_continuation.py",
+      "bytes": 16116,
+      "sha256": "d9d973d970f8ebfdf9bf9b5907022a8c9ff70cdb6e26d955b9734c8a08cf269c"
+    },
+    {
+      "localPath": "tools/verification/compare_banner_hide.py",
+      "bytes": 21845,
+      "sha256": "9a375e7dfa44fd18404d1f2fd8eabd31db5a166dded4ef25432b1d50fec56c28"
+    },
+    {
+      "localPath": "tools/verification/trace_banner_draw_state.py",
+      "bytes": 6618,
+      "sha256": "15f44edd29c87f43ae0824c92e3b415deec58e6bd80c2b0ab487f7d4d3afdd9a"
+    },
+    {
+      "localPath": "tools/verification/compare_visual_checkpoints.py",
+      "bytes": 13970,
+      "sha256": "3ee039e9a767c491d2b44b9889b7d3512262d456e51cf34017945b5e84e3210b"
+    }
+  ],
+  "inputs": {
+    "format": "fft.banner-circle-observation-plan",
+    "schemaVersion": 1,
+    "definition": {
+      "localPath": "scratch/banner-078-a/banner.json",
+      "bytes": 4071,
+      "sha256": "e1c61e66de5ca10f84743f286ec8fb7f34c0bdd14e41b5eb0cab704a629ffdac"
+    },
+    "before": {
+      "localPath": "scratch/banner-circle-before-a/fft-clean-base-game.state",
+      "bytes": 1495280,
+      "sha256": "b42e0b9587fdaf098bfd718642f5676a2ed719ce17b528e304b983e35b8ae17a"
+    },
+    "after": {
+      "localPath": "scratch/banner-circle-after-a/fft-clean-base-game.state",
+      "bytes": 1496069,
+      "sha256": "6be768cb4ca80a45fd11abe03849f9f5657bb1754dbf26fe48931841d6369646"
+    },
+    "exits": [
+      {
+        "localPath": "scratch/banner-circle-exit-a/first/states/fft-clean-base-game.state.auto",
+        "bytes": 1493497,
+        "sha256": "3e3dde19cd522e373ae5965828dd9c51e7879f261a19f81f7b7d587d656f0e3c"
+      },
+      {
+        "localPath": "scratch/banner-circle-exit-a/repeat/states/fft-clean-base-game.state.auto",
+        "bytes": 1493497,
+        "sha256": "3e3dde19cd522e373ae5965828dd9c51e7879f261a19f81f7b7d587d656f0e3c"
+      }
+    ]
+  },
+  "witness": {
+    "slot": 3,
+    "before": {
+      "slot": 3,
+      "savedReturnAddress": 2149356420,
+      "phase": "Revealing",
+      "phaseCounter": 5,
+      "logicalTick": 5,
+      "revealCompleted": 5,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ]
+    },
+    "after": {
+      "logicalTick": 6,
+      "phase": "ExitYield",
+      "revealCompleted": 5,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "exitCause": "CircleSkipped",
+      "isTerminal": false,
+      "draws": []
+    },
+    "beforeFrameCounter": 8984,
+    "afterFrameCounter": 8985,
+    "beforeInput": {
+      "residentCurrent": 0,
+      "residentPrevious": 0,
+      "residentPressed": 0,
+      "eventPressed": 0,
+      "eventHeld": 0
+    },
+    "afterInput": {
+      "residentCurrent": 32,
+      "residentPrevious": 32,
+      "residentPressed": 32,
+      "eventPressed": 32,
+      "eventHeld": 32
+    },
+    "savedReturnAddress": 2149359464,
+    "evidence": "Paired pre-phase, unchanged loop counter, Circle-only event/resident input, shared yield and empty queued banner list; return address alone is insufficient."
+  },
+  "observations": [
+    {
+      "slot": 3,
+      "savedReturnAddress": 2149356420,
+      "phase": "Revealing",
+      "phaseCounter": 5,
+      "logicalTick": 5,
+      "revealCompleted": 5,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ],
+      "exitCause": null,
+      "isTerminal": false
+    },
+    {
+      "logicalTick": 6,
+      "phase": "ExitYield",
+      "revealCompleted": 5,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "exitCause": "CircleSkipped",
+      "isTerminal": false,
+      "draws": []
+    },
+    {
+      "logicalTick": 7,
+      "phase": "Completed",
+      "revealCompleted": 5,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "exitCause": "CircleSkipped",
+      "isTerminal": true,
+      "draws": []
+    }
+  ],
+  "continuation": {
+    "report": {
+      "localPath": "scratch/banner-circle-exit-a/report.json",
+      "bytes": 4594,
+      "sha256": "4cc92b6deb7058fb5c00c54e0c5763ab72e56522f367099fdaab4865ad8f25a1"
+    },
+    "controllerInput": "disconnected",
+    "frontendFramesPerRun": 4,
+    "sourceFrameCounter": 8986,
+    "savedReturnAddress": "0x8014c984",
+    "taskRunning": false,
+    "taskId": 0,
+    "pngAndExitStateByteIdentical": true,
+    "protectedInputsUnchanged": true,
+    "captures": [
+      {
+        "frontendFrames": 4,
+        "inputStateSha256": "6be768cb4ca80a45fd11abe03849f9f5657bb1754dbf26fe48931841d6369646",
+        "exitState": {
+          "localPath": "scratch/banner-circle-exit-a/first/states/fft-clean-base-game.state.auto",
+          "bytes": 1493497,
+          "sha256": "3e3dde19cd522e373ae5965828dd9c51e7879f261a19f81f7b7d587d656f0e3c"
+        },
+        "png": {
+          "localPath": "scratch/banner-circle-exit-a/first/frame.png",
+          "bytes": 41827,
+          "sha256": "e79b7c68cf1a08acc352cc4437b54d73efea5b2fe935f90d2d31518436dd5d2d"
+        },
+        "command": {
+          "localPath": "scratch/banner-circle-exit-a/first/command.json",
+          "bytes": 841,
+          "sha256": "4f989ebcbecf05a6bc563475c72e456229a2e2d8b3f13ffd269fee24c35ecc24"
+        },
+        "config": {
+          "localPath": "scratch/banner-circle-exit-a/first/restore.cfg",
+          "bytes": 505,
+          "sha256": "9274a9219dba7956779c777f58e2440892abfa11103d1c3fc028a6eb51a19ece"
+        },
+        "effectiveOptions": {
+          "localPath": "scratch/banner-circle-exit-a/first/core-options.cfg",
+          "bytes": 1986,
+          "sha256": "38281cdd808978b08a2c9132acf86308828449a031a9ec24ac9b149a2a0a4247"
+        },
+        "log": {
+          "localPath": "scratch/banner-circle-exit-a/first/retroarch.log",
+          "bytes": 5989,
+          "sha256": "728216e69f85c0ca22076eba5205484149c67501640be00125301cbd624e953f"
+        },
+        "diagnostics": [
+          "[ERROR] [Environ] GET_VARIABLE: beetle_psx_pgxp_vertex - Invalid value.",
+          "[ERROR] [Environ] GET_VARIABLE: beetle_psx_pgxp_texture - Invalid value.",
+          "[ERROR] [Environ] GET_VARIABLE: beetle_psx_filter - Invalid value.",
+          "[WARN] [GLSL] Stock GLSL shaders will be used.",
+          "[WARN] [MIDI] Output device \"Microsoft GS Wavetable Synth\" unavailable."
+        ]
+      },
+      {
+        "frontendFrames": 4,
+        "inputStateSha256": "6be768cb4ca80a45fd11abe03849f9f5657bb1754dbf26fe48931841d6369646",
+        "exitState": {
+          "localPath": "scratch/banner-circle-exit-a/repeat/states/fft-clean-base-game.state.auto",
+          "bytes": 1493497,
+          "sha256": "3e3dde19cd522e373ae5965828dd9c51e7879f261a19f81f7b7d587d656f0e3c"
+        },
+        "png": {
+          "localPath": "scratch/banner-circle-exit-a/repeat/frame.png",
+          "bytes": 41827,
+          "sha256": "e79b7c68cf1a08acc352cc4437b54d73efea5b2fe935f90d2d31518436dd5d2d"
+        },
+        "command": {
+          "localPath": "scratch/banner-circle-exit-a/repeat/command.json",
+          "bytes": 844,
+          "sha256": "7cf74272d795eb68b9f7dde5f2e376e89b8032182272793eb8b5d3f3f03f8557"
+        },
+        "config": {
+          "localPath": "scratch/banner-circle-exit-a/repeat/restore.cfg",
+          "bytes": 508,
+          "sha256": "ec7e68e1349194e8bf273418ef3b23b807c0445ceffc3d4a339ad52ddc500498"
+        },
+        "effectiveOptions": {
+          "localPath": "scratch/banner-circle-exit-a/repeat/core-options.cfg",
+          "bytes": 1986,
+          "sha256": "38281cdd808978b08a2c9132acf86308828449a031a9ec24ac9b149a2a0a4247"
+        },
+        "log": {
+          "localPath": "scratch/banner-circle-exit-a/repeat/retroarch.log",
+          "bytes": 5997,
+          "sha256": "1ae25e166267f89e4b8f3ec7e30d5ab3089fe72382657510a2328ed18fa80a54"
+        },
+        "diagnostics": [
+          "[ERROR] [Environ] GET_VARIABLE: beetle_psx_pgxp_vertex - Invalid value.",
+          "[ERROR] [Environ] GET_VARIABLE: beetle_psx_pgxp_texture - Invalid value.",
+          "[ERROR] [Environ] GET_VARIABLE: beetle_psx_filter - Invalid value.",
+          "[WARN] [GLSL] Stock GLSL shaders will be used.",
+          "[WARN] [MIDI] Output device \"Microsoft GS Wavetable Synth\" unavailable."
+        ]
+      }
+    ],
+    "deadStackIsAnimationProgress": false
+  },
+  "nextHoldAnchor": {
+    "report": {
+      "localPath": "scratch/banner-circle-hold-anchor-a/report.json",
+      "bytes": 6575,
+      "sha256": "91dc224f793b090d184ca03750ac57a3d9c7787bfb39411a072ab78849e1f405"
+    },
+    "preparedSlot": 1,
+    "installedState": {
+      "localPath": "scratch/retroarch-reference/states/Beetle PSX/fft-clean-base-game.state1",
+      "bytes": 1500012,
+      "sha256": "8d64f7514d54a8eda6dbf8b2aef4bed882e9fca021c808413dcb92d551eb10c4"
+    },
+    "phase": "Holding",
+    "phaseCounter": 1,
+    "logicalTick": 21,
+    "neutral": true,
+    "repeatedPngAndStateByteIdentical": true,
+    "physicallyPressedCircle": false,
+    "instruction": "Load slot 1 and save; freeze and inspect actual neutral pre-press state before requesting the next Circle press."
+  },
+  "futureStateReviewHelper": {
+    "file": {
+      "localPath": "scratch/banner-circle-observation-plan/state-review-launcher-current.ps1",
+      "bytes": 3616,
+      "sha256": "4d3ea452abe40708df101aabae6d73e0343159f2eeb6c000702cf6cf25f20507"
+    },
+    "describesLiveSessionLaunchRevision": false,
+    "changes": "Recording disabled; future session overrides enable notification font and save notification."
+  },
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "dotnetTestsPassed": 1489,
+    "pythonTestsPassed": 143,
+    "newManagedCases": 3,
+    "newPythonTests": 8,
+    "runtimeChanged": false
+  },
+  "originalEvent401Verified": false,
+  "holdPhysicalInputVerified": false,
+  "hidePhysicalInputVerified": false,
+  "bsvPlaybackVerified": false,
+  "limits": [
+    "One source-bound controller press observation; physical action comes from the owner report plus saved input fields.",
+    "No USB-to-screen latency, repeatable BSV playback, other physical input phase or original event identity claim.",
+    "Images are context only; queued draw absence is not instantaneous visible disappearance.",
+    "Frontend frame counts are not universal logical ticks.",
+    "Released Circle may remain in the last sampled saved input words until another poll.",
+    "The prepared hold anchor does not establish physical hold skipping."
+  ]
+}

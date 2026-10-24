@@ -10,6 +10,9 @@
     <None Include="../../docs/evidence/events/general-banner-presentation-contract-v1.json" Link="Fixtures/general-banner-presentation-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../../docs/evidence/visual/original-banner-continuation-v1.json" Link="Fixtures/original-banner-continuation-v1.json" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../../docs/evidence/visual/early-banner-reveal-v1.json" Link="Fixtures/early-banner-reveal-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../docs/evidence/visual/original-banner-circle-reveal-v1.json" Link="Fixtures/original-banner-circle-reveal-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../docs/evidence/visual/original-banner-circle-hold-v1.json" Link="Fixtures/original-banner-circle-hold-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../docs/evidence/visual/original-banner-circle-hide-v1.json" Link="Fixtures/original-banner-circle-hide-v1.json" CopyToOutputDirectory="PreserveNewest" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="xunit" />
     <PackageReference Include="xunit.runner.visualstudio" />
