@@ -1,0 +1,2751 @@
+{
+  "format": "fft.baseline-coverage",
+  "schemaVersion": 1,
+  "updated": "2026-10-24",
+  "edition": "SCUS-94221",
+  "managedCommit": "ec50eb7",
+  "reference": {
+    "root": "C:/repositories/fft_decomp",
+    "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "readOnly": true
+  },
+  "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
+  "lastRecordedTests": {
+    "passed": 1418,
+    "source": "docs/development/five-bit-general-banner.md",
+    "runForThisInventory": false
+  },
+  "statusDefinitions": {
+    "partial": "A stated subset exists; full row remains open.",
+    "absent": "No supported runtime path for the row's full feature; source entry point only.",
+    "slice-proven": "Only the explicitly described bounded proof is validated, not full baseline behavior.",
+    "validation-pending": "Implementation/configuration exists with named outstanding validation gates.",
+    "planned": "A future or optional capability; no implementation claimed.",
+    "eligibility-unresolved": "Source exists; target-edition reachability/requiredness must be established."
+  },
+  "rows": [
+    {
+      "id": "COV-SIM-001",
+      "domain": "simulation",
+      "title": "PS1 RNG algorithm and gameplay draw ordering",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-038",
+      "ownerArea": "Fft.Core simulation",
+      "status": "partial",
+      "currentScope": "FFT BIOS RNG algorithm/state is implemented with supplied-BIOS vectors; draw ordering is covered only for bounded CT/sword paths.",
+      "referenceSources": [
+        {
+          "path": "include/fft/random.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/turn/clock.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/lib/event/script/control.c",
+          "inspection": "Separate event RNG read through variable 0x21; see ZOD-040 for source trace and exclusions."
+        }
+      ],
+      "evidenceDocs": [
+        "docs/behavior/bios-rng-verification.md",
+        "docs/behavior/rng-state-and-ordering.md",
+        "docs/architecture/zod-040-event-script-investigation.md"
+      ],
+      "implementationPaths": [
+        "src/Fft.Core/FftBiosRandom.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.Core.Tests/FftBiosRandomTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Fft.Core.Tests/RandomReplayRunnerTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Observe controlled original battle inputs and record incoming RNG state/draw order."
+      },
+      "openQuestions": [
+        "Whole-game consumers and seed lifecycles remain open; the event interpreter uses a separate RNG, whose algorithm/seed/order is not covered by the BIOS proof."
+      ],
+      "nextAction": "Extend ordering traces one new rule/caller at a time."
+    },
+    {
+      "id": "COV-SIM-002",
+      "domain": "simulation",
+      "title": "CT, readiness, turn choices and AT prediction",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-036",
+      "ownerArea": "Fft.Core simulation",
+      "status": "partial",
+      "currentScope": "Positive-Speed living ordinary units, CT refunds and explicit move/action/Wait are implemented; full scheduler is absent.",
+      "referenceSources": [
+        {
+          "path": "src/battle/turn/clock.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "include/fft/turn.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/behavior/ct-turn-implementation.md"
+      ],
+      "implementationPaths": [
+        "src/Fft.Core/TurnCycle.cs",
+        "src/Fft.Core/TurnBattleState.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.Core.Tests/TurnCycleTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Fft.Core.Tests/TurnBattleSimulatorTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Compare readiness, ties, Wait refunds and charged/status turns with original observations."
+      },
+      "openQuestions": [
+        "Statuses, charge timers, Mimes, presence changes and AT-list prediction remain unsupported."
+      ],
+      "nextAction": "Select one status/charge interaction after a source trace."
+    },
+    {
+      "id": "COV-SIM-003",
+      "domain": "simulation",
+      "title": "Ordinary movement and terrain costs",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-037",
+      "ownerArea": "Fft.Core simulation",
+      "status": "partial",
+      "currentScope": "Flat, terrain-cost and restricted adjacent-step policies exist; M1 uses the restricted ordinary policy.",
+      "referenceSources": [
+        {
+          "path": "src/battle/map/move_range.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/units/movement.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/behavior/adjacent-step-implementation.md",
+        "docs/behavior/terrain-policy-integration.md"
+      ],
+      "implementationPaths": [
+        "src/Fft.Core/OrdinaryAdjacentStepRange.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.Core.Tests/OrdinaryAdjacentStepTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Fft.Core.Tests/TerrainAwareMovementRangeTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Compare legal destinations and chosen paths for flat and elevation cases."
+      },
+      "openQuestions": [
+        "Full slopes, horizontal jumps, ceilings, water, multi-layer transitions and special movement modes remain open."
+      ],
+      "nextAction": "Trace one movement family with callers and regression vectors."
+    },
+    {
+      "id": "COV-SIM-004",
+      "domain": "simulation",
+      "title": "Occupancy, allegiance, mounts and special movement",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-037",
+      "ownerArea": "Fft.Core simulation",
+      "status": "absent",
+      "currentScope": "M1 blocks other-unit occupancy in its supported domain; no general allegiance/mount/fly/teleport rule set exists.",
+      "referenceSources": [
+        {
+          "path": "src/battle/map/move_range.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "include/fft/move.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Observe ally/enemy traversal, riding and one selected special movement mode."
+      },
+      "openQuestions": [
+        "Mode-specific movement and stopping rules, rider/mount state coupling and teleport outcomes need separate traces."
+      ],
+      "nextAction": "Break ZOD-037 into separate ordinary-geometry and special-mode children."
+    },
+    {
+      "id": "COV-SIM-005",
+      "domain": "simulation",
+      "title": "Targeting, hit/evasion and immediate sword damage",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-038",
+      "ownerArea": "Fft.Core simulation",
+      "status": "partial",
+      "currentScope": "One range-1 neutral empty-proc sword with explicit effective stats, neutral zodiac and no equipment evade is executable.",
+      "referenceSources": [
+        {
+          "path": "src/battle/combat/targets.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/combat/resolution.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/combat/formula_core.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/behavior/bounded-sword-implementation.md"
+      ],
+      "implementationPaths": [
+        "src/Fft.Core/AttackBattleSimulator.cs",
+        "src/Fft.Core/PhysicalWeaponEvasion.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.Core.Tests/AttackBattleSimulatorTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Fft.Core.Tests/AttackFixtureV3Tests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Compare controlled original hit/miss/critical/damage and resulting facing/HP."
+      },
+      "openQuestions": [
+        "Other weapons, affinities, equipment evade, zodiac interactions, line of sight and area targets remain open."
+      ],
+      "nextAction": "Choose one additional action/target family under ZOD-038."
+    },
+    {
+      "id": "COV-SIM-006",
+      "domain": "simulation",
+      "title": "Abilities, magic, recovery and action-formula catalog",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-038",
+      "ownerArea": "Fft.Core simulation",
+      "status": "absent",
+      "currentScope": "Metadata models/imports do not execute the original action catalog.",
+      "referenceSources": [
+        {
+          "path": "src/battle/combat/formulas.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "include/fft/formula.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "include/fft/ability.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Compare one selected original ability with exact target/stats/RNG preconditions."
+      },
+      "openQuestions": [
+        "Formula and action-family enumeration, arithmetic envelopes, MP costs, target rules and effects are not implemented."
+      ],
+      "nextAction": "Inventory formula families before translating one bounded ability."
+    },
+    {
+      "id": "COV-SIM-007",
+      "domain": "simulation",
+      "title": "Status durations, triggers, reactions and supports",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-036",
+      "ownerArea": "Fft.Core simulation",
+      "status": "absent",
+      "currentScope": "Only resulting Healthy/Critical/Dead projection exists in the sword slice.",
+      "referenceSources": [
+        {
+          "path": "include/fft/status.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "include/fft/reaction.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/turn/clock.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/combat/resolution.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Observe one status lifecycle and one reaction/support interaction."
+      },
+      "openQuestions": [
+        "Full statuses, timers, charge interactions and trigger ordering need independent traces."
+      ],
+      "nextAction": "Create a child for a single complete status lifecycle."
+    },
+    {
+      "id": "COV-SIM-008",
+      "domain": "simulation",
+      "title": "Original knockback, KO scheduling, revival and pickups",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-036",
+      "ownerArea": "Fft.Core simulation",
+      "status": "absent",
+      "currentScope": "M1 stops at first KO; original knockback and post-KO lifecycle are unsupported.",
+      "referenceSources": [
+        {
+          "path": "src/battle/combat/resolution.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/combat/pickups.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "include/fft/crystal.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Record original knockback eligibility/destination and KO-to-crystal/treasure or revival behavior."
+      },
+      "openQuestions": [
+        "Eligibility/critical rolls, collision/fall, countdown ordering, revival and pickup effects remain open."
+      ],
+      "nextAction": "Trace original behavior first; keep the planned knockback modification in COV-PRO-003."
+    },
+    {
+      "id": "COV-SIM-009",
+      "domain": "simulation",
+      "title": "Enemy, ally and automatic-battle AI",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-038",
+      "ownerArea": "Fft.Core simulation",
+      "status": "absent",
+      "currentScope": "Playable sample controls both units locally; no AI policy executes.",
+      "referenceSources": [
+        {
+          "path": "src/battle/ai/turn.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/ai/evaluation.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "include/fft/ai.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Observe selected mandatory AI turns and distinguish legal choices from exact policy matching."
+      },
+      "openQuestions": [
+        "Decision families, scoring, tie/RNG ordering and special unit behavior remain unimplemented."
+      ],
+      "nextAction": "Select one reproducible AI decision and its required action domain."
+    },
+    {
+      "id": "COV-SIM-010",
+      "domain": "simulation",
+      "title": "XP, JP, growth, learned abilities and job unlocks",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-039",
+      "ownerArea": "Fft.Core simulation",
+      "status": "absent",
+      "currentScope": "Job/ability metadata and base-job setup do not implement persistent progression.",
+      "referenceSources": [
+        {
+          "path": "src/main/job_progress.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/main/unit_stats.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/combat/outcomes.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Compare one award/level/job-unlock chain and roster persistence."
+      },
+      "openQuestions": [
+        "Growth arithmetic, awards, spillover, learning costs, unlock requirements and level changes need traces."
+      ],
+      "nextAction": "Split progression into award, learning and stat-rebuild children."
+    },
+    {
+      "id": "COV-SIM-011",
+      "domain": "simulation",
+      "title": "Original victory/loss, rewards and post-battle party changes",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-041",
+      "ownerArea": "Fft.Core simulation",
+      "status": "absent",
+      "currentScope": "Synthetic first-KO victory is invented and cannot stand in for original battle conditions.",
+      "referenceSources": [
+        {
+          "path": "src/battle/entry.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/event/require/conditions.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/event/require/war_trophies.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/event/require/party_changes.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Complete a selected original battle objective and compare rewards/party/world transitions."
+      },
+      "openQuestions": [
+        "Original objective/event predicates, failure paths, trophies and recruitment/loss outcomes are absent."
+      ],
+      "nextAction": "Inventory one event-to-battle-to-results path."
+    },
+    {
+      "id": "COV-CAT-001",
+      "domain": "catalog",
+      "title": "Jobs, skillsets and ability metadata",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-039",
+      "ownerArea": "Fft.Content definitions and offline import",
+      "status": "partial",
+      "currentScope": "Typed metadata, reference validation and selected Squire-family original import exist.",
+      "referenceSources": [
+        {
+          "path": "include/fft/job.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "include/fft/skillset.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/main/party.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/behavior/original-metadata-import.md",
+        "docs/architecture/zod-014-typed-definitions.md"
+      ],
+      "implementationPaths": [
+        "src/Fft.Content/Definitions/JobDefinition.cs",
+        "src/Fft.AssetTool/OriginalMetadataRecords.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.AssetTool.Tests/OriginalMetadataRecordsTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Fft.Content.Tests/Definitions/DefinitionTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Inspect one original job/ability menu against imported records."
+      },
+      "openQuestions": [
+        "Full catalog rows and field-to-runtime meaning are not enumerated; imported metadata does not imply executable effects."
+      ],
+      "nextAction": "Expand one record family with full provenance and unsupported-field diagnostics."
+    },
+    {
+      "id": "COV-CAT-002",
+      "domain": "catalog",
+      "title": "Items, equipment and effective combat stats",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-039",
+      "ownerArea": "Fft.Content definitions and offline import",
+      "status": "partial",
+      "currentScope": "Selected sword/Attack import and schema-2 raw/effective evade representation exist; full equipment stat derivation is absent.",
+      "referenceSources": [
+        {
+          "path": "include/fft/item.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/main/unit_loadout.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/main/unit_stats.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/behavior/retail-sword-representation.md",
+        "docs/behavior/base-job-battle-setup.md"
+      ],
+      "implementationPaths": [
+        "src/Fft.AssetTool/OriginalSwordRecords.cs",
+        "src/Fft.Content/BattleSetup/AttackBattleSetup.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.AssetTool.Tests/OriginalSwordRecordsTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Fft.Content.Tests/AttackBattleSetupTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Compare selected equipment fields, legal loadouts and resulting displayed/effective stats."
+      },
+      "openQuestions": [
+        "Remaining item categories, equip restrictions, two-handed/dual wield, affinities and complete stat rebuilding are absent."
+      ],
+      "nextAction": "Separate raw import completeness from effective-stat implementation."
+    },
+    {
+      "id": "COV-CAT-003",
+      "domain": "catalog",
+      "title": "Characters, monsters, party records and ENTD encounters",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-039",
+      "ownerArea": "Fft.Content definitions and offline import",
+      "status": "absent",
+      "currentScope": "No general original party/ENTD definition-to-runtime path; sample units are invented.",
+      "referenceSources": [
+        {
+          "path": "include/fft/unit_party.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "include/fft/unit_entd.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/main/encounter.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/main/party.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Inspect a selected encounter roster and its generated runtime units."
+      },
+      "openQuestions": [
+        "Record inventory, flags, growth/randomization, allegiances and persistent/battle projection are unresolved."
+      ],
+      "nextAction": "Trace one ordinary ENTD record and required party/runtime inputs."
+    },
+    {
+      "id": "COV-CAT-004",
+      "domain": "catalog",
+      "title": "Maps, terrain and scene definitions",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-039",
+      "ownerArea": "Fft.Content definitions and offline import",
+      "status": "partial",
+      "currentScope": "One frozen MAP003 base scene and both native terrain layers can be prepared/loaded; combat remains restricted to synthetic height-10 terrain.",
+      "referenceSources": [
+        {
+          "path": "include/fft/battle_map.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/map/terrain.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/map/gns.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/development/prepared-map-slice.md",
+        "docs/architecture/zod-029-map003-source-map.md"
+      ],
+      "implementationPaths": [
+        "src/Fft.AssetTool/OriginalBattleMap.cs",
+        "src/Fft.Content/PreparedBattleMap.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.AssetTool.Tests/OriginalBattleMapTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Fft.Content.Tests/PreparedBattleMapTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Compare terrain alignment and selected day/weather variants with original captures."
+      },
+      "openQuestions": [
+        "Complete map/variant inventory and native-terrain combat support are not established."
+      ],
+      "nextAction": "Enumerate required map variants separately from geometry rendering."
+    },
+    {
+      "id": "COV-CAT-005",
+      "domain": "catalog",
+      "title": "Dialogue, names, descriptions and localized text",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-039",
+      "ownerArea": "Fft.Content definitions and offline import",
+      "status": "absent",
+      "currentScope": "Synthetic TinyFont and labels do not provide original text banks, encoding or fonts.",
+      "referenceSources": [
+        {
+          "path": "include/fft/text.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/lib/event/dialog/banks.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/lib/menu/text/entries.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Compare one title/menu/dialogue string, line break and control-code behavior."
+      },
+      "openQuestions": [
+        "US encoding/control-code map, compressed text conversion, bank references and glyph resources need inventory."
+      ],
+      "nextAction": "Choose one original text-bank decode and prepared text contract."
+    },
+    {
+      "id": "COV-CAT-006",
+      "domain": "catalog",
+      "title": "Stores, loot, recruit and world-content tables",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-039",
+      "ownerArea": "Fft.Content definitions and offline import",
+      "status": "absent",
+      "currentScope": "No shared validated catalog for shops, encounters, propositions or rewards.",
+      "referenceSources": [
+        {
+          "path": "src/world/shop/stock.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/world/shop/soldier_office.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/wldcore/proposition/data.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Inspect one town's available stock/recruits/propositions at a known story state."
+      },
+      "openQuestions": [
+        "Required table records, conditional availability and cross-references remain unenumerated."
+      ],
+      "nextAction": "Inventory dependencies of the first campaign loop."
+    },
+    {
+      "id": "COV-CAM-001",
+      "domain": "campaign",
+      "title": "New game, name/birthday, initial party and inventory",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-041",
+      "ownerArea": "FFT campaign/application",
+      "status": "absent",
+      "currentScope": "Bootstrap and synthetic Restart do not create an original campaign.",
+      "referenceSources": [
+        {
+          "path": "src/main/new_game.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/open/new_game.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/open/title.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Start a new original game and record name/birthday, initial resources and first transition."
+      },
+      "openQuestions": [
+        "Initial campaign state and source-driven roster generation/menus are absent."
+      ],
+      "nextAction": "Define the smallest new-game state/use-case child."
+    },
+    {
+      "id": "COV-CAM-002",
+      "domain": "campaign",
+      "title": "Main-story progression, flags and required encounter graph",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-041",
+      "ownerArea": "FFT campaign/application",
+      "status": "absent",
+      "currentScope": "No campaign graph or chapter progression is implemented.",
+      "referenceSources": [
+        {
+          "path": "include/fft/script_variable.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/wldcore/map/location_script.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/lib/event/script/scenario.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Track mandatory story transitions through ending with chapter gates and failure/retry branches."
+      },
+      "openQuestions": [
+        "Exact mandatory node/edge enumeration is unknown; no battle/event count is asserted."
+      ],
+      "nextAction": "Inventory stable encounter/event IDs and prerequisites without dumping scripts into Git."
+    },
+    {
+      "id": "COV-CAM-003",
+      "domain": "campaign",
+      "title": "World routes, travel/calendar and encounter selection",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-041",
+      "ownerArea": "FFT campaign/application",
+      "status": "absent",
+      "currentScope": "No world-map navigation, date advancement or random encounter runtime.",
+      "referenceSources": [
+        {
+          "path": "src/wldcore/map/routes.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/wldcore/calendar_advance_days.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/main/encounter.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Travel one known route and compare date, flags, selected encounter and return location."
+      },
+      "openQuestions": [
+        "Route unlocks, travel ordering, random/rare encounter eligibility and RNG consumers remain open."
+      ],
+      "nextAction": "Trace one location-to-encounter round trip."
+    },
+    {
+      "id": "COV-CAM-004",
+      "domain": "campaign",
+      "title": "Battle deployment, event triggers and world return",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-041",
+      "ownerArea": "FFT campaign/application",
+      "status": "absent",
+      "currentScope": "Only authored two-unit start/first-KO result exists; it is not an original encounter.",
+      "referenceSources": [
+        {
+          "path": "src/battle/entry.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "include/fft/deploy.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/event/frame.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/wldcore/map/event_transition.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Enter one original encounter, deploy, run its first event, finish and return to world."
+      },
+      "openQuestions": [
+        "Deployment rules, event barriers/triggers, objective setup and return-state transfer are absent."
+      ],
+      "nextAction": "Bound the first event-to-battle-to-world child by exact prerequisites."
+    },
+    {
+      "id": "COV-CAM-005",
+      "domain": "campaign",
+      "title": "Optional recruitment and side-event chains",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-041",
+      "ownerArea": "FFT campaign/application",
+      "status": "absent",
+      "currentScope": "No optional campaign content is implemented.",
+      "referenceSources": [
+        {
+          "path": "include/fft/script_variable.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "include/fft/location.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Record prerequisite flags and branches for selected Beowulf/Reis, Nelveska and Cloud-related paths."
+      },
+      "openQuestions": [
+        "Header anchors identify candidate chains, not a complete optional-event catalog; all other reachable optional paths remain to enumerate."
+      ],
+      "nextAction": "Extract an edition-scoped optional event/flag index as a separate bounded inventory."
+    },
+    {
+      "id": "COV-CAM-006",
+      "domain": "campaign",
+      "title": "Deep Dungeon floors, exits and special encounter progression",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-041",
+      "ownerArea": "FFT campaign/application",
+      "status": "absent",
+      "currentScope": "No dungeon selection, hidden-exit or dungeon encounter progression.",
+      "referenceSources": [
+        {
+          "path": "include/fft/location.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "include/fft/script_variable.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/wldcore/map/routes.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Observe one floor unlock/entry/exit sequence and completion flags."
+      },
+      "openQuestions": [
+        "Exact floor/encounter/resource mapping and special visibility/exit rules need traces; no floor count is asserted."
+      ],
+      "nextAction": "Inventory the dungeon graph and its simulation/presentation requirements."
+    },
+    {
+      "id": "COV-CAM-007",
+      "domain": "campaign",
+      "title": "Bars, rumors, propositions and discoveries",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-041",
+      "ownerArea": "FFT campaign/application",
+      "status": "absent",
+      "currentScope": "No proposition assignment, elapsed days, reports or discovery state.",
+      "referenceSources": [
+        {
+          "path": "src/wldcore/bar.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/wldcore/proposition/dispatch.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/wldcore/proposition/results.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/wldcore/brave_story/collections.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Assign one proposition, advance days, collect its report/reward and verify discovery persistence."
+      },
+      "openQuestions": [
+        "Complete rumor/proposition availability and reward/quirk rules are unimplemented."
+      ],
+      "nextAction": "Trace a single dispatch-to-report lifecycle with the retail quirk retained."
+    },
+    {
+      "id": "COV-CAM-008",
+      "domain": "campaign",
+      "title": "Monster breeding, poaching and Fur Shop",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-041",
+      "ownerArea": "FFT campaign/application",
+      "status": "absent",
+      "currentScope": "No persistent monster breeding or poached-stock lifecycle.",
+      "referenceSources": [
+        {
+          "path": "src/world/breeding.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/world/shop/fur.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "include/fft/item.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Observe an egg/hatch or poach-to-stock transaction and save/continue."
+      },
+      "openQuestions": [
+        "Breeding timing/RNG, eligibility, poach tables and stock transactions remain open."
+      ],
+      "nextAction": "Create distinct simulation and campaign-state children for the selected lifecycle."
+    },
+    {
+      "id": "COV-CAM-009",
+      "domain": "campaign",
+      "title": "Ending, credits and final epilogue transition",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-041",
+      "ownerArea": "FFT campaign/application",
+      "status": "absent",
+      "currentScope": "No original ending path, movie/audio or final scene execution.",
+      "referenceSources": [
+        {
+          "path": "src/open/ending.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/main/open_overlay.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/entry.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Complete the ending/credits and subsequent epilogue, including skip/timing behavior where supported."
+      },
+      "openQuestions": [
+        "Cross-program transition, required resources and completion flags need an exact path inventory."
+      ],
+      "nextAction": "Record the final acceptance route with source anchors and prepared resource dependencies."
+    },
+    {
+      "id": "COV-CAM-010",
+      "domain": "campaign",
+      "title": "Event/script decode, execution and scheduling",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-040",
+      "ownerArea": "FFT campaign/application",
+      "status": "partial",
+      "currentScope": "ZOD-064 prepares authored raw/processed blocks; ZOD-065 projects validated Content records into a pure Core-owned conditional-event executor with immutable state/traces, replay and atomic arithmetic/budget rejection. No retail event or scene/campaign lifecycle executes. ZOD-066 traces verified original event 401: fallback activation, all 13 opcode kinds and EventEnd continuation; structural inspection only. ZOD-071 adds a separate non-tutorial speed-one timed profile with immutable waits, explicit ticks, exact resumption and atomic failures; synchronous capability remains unchanged. ZOD-072 selects a scene-owned task/barrier protocol. ZOD-073 implements its pure ledger/single-consumer proof with explicit ordered facts/ticks, stable identities/revisions, terminal tombstones, live scene-wide polling and atomic failures; 17 specification regressions plus 40 boundary cases pass. ZOD-074 integrates E5 classes 4/54/55/56 in a separate BATTLE synthetic profile with F1/conditional operations, shared explicit ticks, atomic VM/ledger rollback, exact combined traces and retained scene tasks across interpreter exit/restart. Old profiles still reject E5. The standalone event API still takes explicit task facts; no original event playback. ZOD-075 selects condition 8's post-readiness logical banner effect: exact reveal/hold/hide/exit-yield, explicit Circle sample, managed authority and atomic composition; its specification remains historical. ZOD-076 implements the post-readiness logical condition-8 driver and atomic adapter, generating managed termination facts from explicit Circle/ticks with retained scene lifetime and full rollback. All 24 contract regressions plus 47 boundary cases pass; original loading, graphics and opcode-78 admission remain absent. ZOD-077 traces verified banner-0 image/palette/geometry and readiness, with summarized hashes and 20 unexecuted authored presentation expectations; selects a prepared RGB8 CPU preview, without implementing rendering/loading or original startup. ZOD-078 prepares condition-8/image-0 artwork from verified local inputs, strictly loads immutable six-piece data and previews accepted effect snapshots with a preloaded RGB8 CPU/Windows host. All 20 authored expectations have regressions; two preparations and two finite Windows capture sets match, with exact CPU/GPU readback and prepared-only runtime paths. Original comparison, parity and loading latency remain open.",
+      "referenceSources": [
+        {
+          "path": "src/battle/event/interpreter.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/world/event/interpreter.c",
+          "inspection": "ZOD-072 checks WORLD E5 slots 1..16 versus BATTLE 1..15; World task-barrier implementation remains excluded."
+        },
+        {
+          "path": "src/lib/event/script/control.c",
+          "inspection": "ZOD-072 contrasts first-slot/caller-excluding task lookup with inline scene-wide E5 polling; ZOD-073 proves only the selected native ledger/barrier policy."
+        },
+        {
+          "path": "src/wldcore/map/location_script.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/lib/menu/command_prompts.c",
+          "inspection": "ZOD-066 traces selected common BattleStart fallback, not full scenario-condition coverage."
+        },
+        {
+          "path": "src/battle/event/frame.c",
+          "inspection": "ZOD-066 traces selected zero-finish event continuation and pending requests; no original execution."
+        },
+        {
+          "path": "src/event/attack/scenario_setup.c",
+          "inspection": "ZOD-066 traces selected entry gates/finish override; no complete original encounter reachability catalog."
+        },
+        {
+          "path": "src/lib/thread/scheduler.c",
+          "inspection": "ZOD-071 traces scoped signed-count yield helper; native ticks are explicit scheduler resumptions, not full PS1 scheduling equivalence."
+        },
+        {
+          "path": "include/fft/thread.h",
+          "inspection": "ZOD-072 checks signed-32 running/task fields, mutable classes and selected 4/54/55/56 meanings; ZOD-073 native identity/revision policy is distinct from PS1 slots."
+        },
+        {
+          "path": "src/event/require/entry_conditions.c",
+          "inspection": "ZOD-075 traces condition >=8 as inline general-banner work in task 56; selected condition is 8, other branches remain excluded."
+        },
+        {
+          "path": "src/event/require/conditions.c",
+          "inspection": "ZOD-075 traces exact 20/H/10 iterations, Circle checks only in reveal/hold, extra active exit yield and rendering-state exclusions; no effect implementation."
+        },
+        {
+          "path": "src/event/require/screen_support.c",
+          "inspection": "ZOD-075 traces banner loading/allocation/upload yields as a startup exclusion; H+31 is post-readiness, not total opcode-78 latency."
+        },
+        {
+          "path": "src/lib/event/scene/menu_overlays.c",
+          "inspection": "ZOD-075 traces script_conditions_display into REQUIRE without a separate child task for general banner 8."
+        },
+        {
+          "path": "src/lib/menu/display.c",
+          "inspection": "ZOD-075 verifies input selector 0 returns the event press word, while selector 1 returns held input; no hardware polling in the proposed effect."
+        },
+        {
+          "path": "src/lib/event/scene/control.c",
+          "inspection": "ZOD-075 traces event pressed/repeat derivation; explicit recorded Circle samples are the selected native boundary."
+        },
+        {
+          "path": "include/fft/script_instruction.h",
+          "inspection": "ZOD-075 verifies condition 8, opcode-78 byte operands and unselected camera/dark-screen instruction shapes."
+        },
+        {
+          "path": "include/psx/pad.h",
+          "inspection": "ZOD-075 verifies Circle bit 0x0020; input mapping/filtering and tutorial routing remain outside the first effect proof."
+        },
+        {
+          "path": "target/event.yaml",
+          "inspection": "ZOD-077 verifies REQUIRE module identity/base and selected palette/quad/range/tpage/color addresses."
+        },
+        {
+          "path": "include/fft/gfx.h",
+          "inspection": "ZOD-077 traces palette/frame layout, STP and battle draw origin."
+        },
+        {
+          "path": "include/psx/libgpu.h",
+          "inspection": "ZOD-077 traces coordinate widths, CLUT/page/blend bits and ordering-table head insertion."
+        },
+        {
+          "path": "src/battle/frame.c",
+          "inspection": "ZOD-077 traces 256x240 battle display and -128 horizontal draw origin."
+        },
+        {
+          "path": "src/battle/entry.c",
+          "inspection": "ZOD-077 verifies battle display-init arguments."
+        },
+        {
+          "path": "src/platform/psyq/libgpu/SetDefDrawEnv.c",
+          "inspection": "ZOD-077 verifies draw origin is applied to the draw-environment offset."
+        }
+      ],
+      "evidenceDocs": [
+        "docs/architecture/zod-040-event-script-investigation.md",
+        "docs/development/prepared-scenario-event.md",
+        "docs/behavior/conditional-event-execution.md",
+        "docs/architecture/zod-066-battle-start-event.md",
+        "docs/evidence/events/battle-start-0401.json",
+        "docs/behavior/timed-event-waits.md",
+        "docs/architecture/zod-072-event-task-contract.md",
+        "docs/evidence/events/task-barrier-contract-v1.json",
+        "docs/behavior/scene-task-barriers.md",
+        "docs/behavior/scene-event-barriers.md",
+        "docs/fixtures/events/task-barrier-sequence-v1.json",
+        "docs/architecture/zod-075-general-banner-effect.md",
+        "docs/evidence/events/general-banner-effect-contract-v1.json",
+        "docs/behavior/general-banner-effect.md",
+        "docs/architecture/zod-077-general-banner-assets.md",
+        "docs/evidence/events/general-banner-assets-v1.json",
+        "docs/evidence/events/general-banner-presentation-contract-v1.json",
+        "docs/development/prepared-general-banner.md"
+      ],
+      "implementationPaths": [
+        "src/Fft.AssetTool/ScenarioBlockInspector.cs",
+        "src/Fft.AssetTool.Cli/ScenarioEventExporter.cs",
+        "src/Fft.Content/Events/PreparedScenarioEvent.cs",
+        "src/Fft.Core/Events/ConditionalEventProgram.cs",
+        "src/Fft.Core/Events/ConditionalEventState.cs",
+        "src/Fft.Core/Events/ConditionalEventExecutor.cs",
+        "src/Fft.Core/Events/TimedEventProgram.cs",
+        "src/Fft.Core/Events/TimedEventState.cs",
+        "src/Fft.Core/Events/TimedEventExecutor.cs",
+        "src/Fft.Core/Events/SceneTaskState.cs",
+        "src/Fft.Core/Events/SceneTaskResult.cs",
+        "src/Fft.Core/Events/SceneTaskLedger.cs",
+        "src/Fft.Core/Events/SceneEventProgram.cs",
+        "src/Fft.Core/Events/SceneEventState.cs",
+        "src/Fft.Core/Events/SceneEventExecutor.cs",
+        "src/Fft.Core/Events/SceneEventResult.cs",
+        "src/Fft.Core/Events/GeneralBannerState.cs",
+        "src/Fft.Core/Events/BannerSceneResult.cs",
+        "src/Fft.Core/Events/BannerSceneExecutor.cs",
+        "src/Fft.AssetTool/GeneralBannerDecoder.cs",
+        "src/Fft.AssetTool.Cli/PrepareGeneralBannerCommand.cs",
+        "src/Fft.Content/PreparedGeneralBanner.cs",
+        "src/Fft.Client/Presentation/GeneralBannerPresentation.cs",
+        "src/Fft.Client/Presentation/GeneralBannerPreview.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.AssetTool.Tests/ScenarioBlockInspectorTests.cs",
+          "scope": "Synthetic block framing/operand widths and retained inspection; no semantic execution."
+        },
+        {
+          "path": "tests/Fft.AssetTool.Cli.Tests/ScenarioEventExporterTests.cs",
+          "scope": "Synthetic conversion/CFG/target gate and prepared-manifest loading; no original event."
+        },
+        {
+          "path": "tests/Fft.Content.Tests/PreparedScenarioEventTests.cs",
+          "scope": "Strict synthetic JSON/provenance/offset validation and immutable records."
+        },
+        {
+          "path": "tests/Fft.Core.Tests/ConditionalEventExecutorTests.cs",
+          "scope": "Source-derived synthetic exact instruction/state traces, dirty variables, replay, immutable boundaries, arithmetic and budget rollback; no original oracle."
+        },
+        {
+          "path": "tests/Fft.Content.Tests/PreparedScenarioExecutionTests.cs",
+          "scope": "Authored hash-verified prepared file to Core projection/execution, unchanged schema, D0/D1/D4 landings; no original script/asset."
+        },
+        {
+          "path": "tests/Fft.Core.Tests/TimedEventExecutorTests.cs",
+          "scope": "Source-derived synthetic zero/one/60/max waits, sequential boundaries, batch replay, admission and atomic tick/instruction/arithmetic rejection."
+        },
+        {
+          "path": "tests/Fft.Content.Tests/PreparedTimedScenarioTests.cs",
+          "scope": "Independent timed fixture traces, explicit profile isolation, strict admission and hash-verified prepared loading without original data."
+        },
+        {
+          "path": "tests/Fft.AssetTool.Cli.Tests/TimedScenarioEventExporterTests.cs",
+          "scope": "Signed synthetic F1 decode, raw/processed boundary/hash agreement, profile/unsupported gates and D0/D4 wait landing."
+        },
+        {
+          "path": "tests/Fft.Core.Tests/SceneTaskContractTests.cs",
+          "scope": "All 17 preimplementation cases execute against independently authored full snapshots/ordered traces and identical replay; source-derived/native-policy evidence, not original observations."
+        },
+        {
+          "path": "tests/Fft.Core.Tests/SceneTaskLedgerTests.cs",
+          "scope": "40 phase/resource/failure boundary cases: all active classes, cancellation/completion, live/current polling, tombstones/capacity, IDs, typed error precedence, atomic allocation and checked counter exhaustion."
+        },
+        {
+          "path": "tests/Fft.Core.Tests/SceneEventExecutorTests.cs",
+          "scope": "27 cases: mandatory yields, all empty selectors, F1/E5 sequencing, multi-owner live polling, cancellation, atomic continuation/task/budget failure and retained scene lifecycle."
+        },
+        {
+          "path": "tests/Fft.Content.Tests/PreparedSceneEventTests.cs",
+          "scope": "23 cases: independent seven-tick fixture with full combined snapshots/ordered traces/replay, strict profile/capability gates, unsupported unreachable selectors and manifest corruption/ID checks."
+        },
+        {
+          "path": "tests/Fft.AssetTool.Cli.Tests/SceneScenarioEventExporterTests.cs",
+          "scope": "19 cases: unsigned E5 decoding/unsupported high-byte selectors, old-profile isolation, literal raw/processed hash/offset agreement, D0-to-D4 barrier landing and explicit opcode-78 rejection across all old exports."
+        },
+        {
+          "path": "tests/Fft.Core.Tests/GeneralBannerContractTests.cs",
+          "scope": "All 24 preimplementation banner cases execute: full logical effect/ledger/VM checkpoints, ordered trace fields, exact failures/immutability and identical replay; no original observation."
+        },
+        {
+          "path": "tests/Fft.Core.Tests/BannerSceneBoundaryTests.cs",
+          "scope": "47 cases: input/ID/budget gates, managed completion authority, live/tombstone capacity, cancellation, retained active/terminal lifecycle, mixed F1/E5 rollback and checked clock/binding failures."
+        },
+        {
+          "path": "tests/Fft.AssetTool.Tests/GeneralBannerDecoderTests.cs",
+          "scope": "Authored packing/CLUT/UV/screen expectations and bounded malformed original layouts; no retail payload fixtures."
+        },
+        {
+          "path": "tests/Fft.Content.Tests/PreparedGeneralBannerTests.cs",
+          "scope": "Strict closed metadata, nested fields, formats/geometry/provenance, immutable prepared-only loading and corruption gates."
+        },
+        {
+          "path": "tests/Fft.Client.Tests/GeneralBannerPresentationTests.cs",
+          "scope": "Authored material/crop/order/counter milestones, readiness, rollback, restart and identical histories with omitted/repeated rendering; modern RGB8 policy only."
+        },
+        {
+          "path": "tests/Fft.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs",
+          "scope": "Input/profile/output gates preserve prior files and do not publish partial roots."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Capture one controlled branch/dialogue event with explicit initial state and timing."
+      },
+      "openQuestions": [
+        "original packet parity, startup/loading latency, draw-state reachability, input mapping, event-401 observations, camera/dark-screen/Ready workers, opcode-78 admission, EventEnd, tutorial/World/speed changes and original scheduler/visual equivalence remain open."
+      ],
+      "nextAction": "Review the bounded preview, then separately select the next source-traced scene/resource capability; original startup/opcode integration and original capture comparison remain open.",
+      "followUpTickets": []
+    },
+    {
+      "id": "COV-UI-001",
+      "domain": "screens",
+      "title": "Opening/title, New Game/Continue and name/birthday screens",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-042",
+      "ownerArea": "Fft.Client presentation and application commands",
+      "status": "absent",
+      "currentScope": "No original game-flow shell; no-argument client prints a bootstrap line.",
+      "referenceSources": [
+        {
+          "path": "src/open/title.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/open/prologue.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/world/name_entry.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Navigate title/new game/continue, confirm/cancel name and birthday."
+      },
+      "openQuestions": [
+        "Original flow, assets, focus, input semantics and Windows presentation design are absent."
+      ],
+      "nextAction": "Inventory commands and required screen transitions before layout work."
+    },
+    {
+      "id": "COV-UI-002",
+      "domain": "screens",
+      "title": "Battle command menus, selection, targeting and previews",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-042",
+      "ownerArea": "Fft.Client presentation and application commands",
+      "status": "partial",
+      "currentScope": "Synthetic two-unit keyboard/mouse UI supports select/move/attack/wait/advance/restart and legal highlights.",
+      "referenceSources": [
+        {
+          "path": "src/battle/turn/controller.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/menu/ability_choices.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/lib/menu/unit_view/preview_bonuses.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/development/playable-battle.md"
+      ],
+      "implementationPaths": [
+        "src/Fft.Client/Presentation/BattleInteraction.cs",
+        "src/Fft.Client/Presentation/BattleUiLayout.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.Client.Tests/BattleInteractionTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Fft.Client.Tests/BattleUiInputTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Compare original menu flow/previews and separately test physical input, focus and DPI on Windows."
+      },
+      "openQuestions": [
+        "Original battle menus, full previews/AT list/status panels and wider native layout are absent."
+      ],
+      "nextAction": "Grow supported commands through the same simulation boundary; coordinate enhanced layout with COV-PRO-002."
+    },
+    {
+      "id": "COV-UI-003",
+      "domain": "screens",
+      "title": "Formation, roster, equipment, jobs and learned-ability menus",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-042",
+      "ownerArea": "Fft.Client presentation and application commands",
+      "status": "absent",
+      "currentScope": "No interactive persistent party/job/equipment workflow.",
+      "referenceSources": [
+        {
+          "path": "src/world/formation/screen.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/world/formation/equipment.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/world/formation/abilities.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/event/jobstts/entry.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Inspect/change a job, learn/equip an ability and alter equipment, then re-enter a battle."
+      },
+      "openQuestions": [
+        "Stateful use cases, UI assets, sorting, restrictions and navigation remain absent."
+      ],
+      "nextAction": "Start with one validated party/job/equipment operation needed by a campaign child."
+    },
+    {
+      "id": "COV-UI-004",
+      "domain": "screens",
+      "title": "World location menus, shops, fitting, Soldier Office and bars",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-042",
+      "ownerArea": "Fft.Client presentation and application commands",
+      "status": "absent",
+      "currentScope": "No location commerce/rumor/proposition UI.",
+      "referenceSources": [
+        {
+          "path": "src/world/shop/screen.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/world/shop/fitting.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/world/shop/soldier_office.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/wldcore/bar.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Complete one buy/sell/fitting/recruit or bar transaction with cancellation and insufficient funds."
+      },
+      "openQuestions": [
+        "All menu workflows, prices/stock/eligibility and persistent inventory integration remain absent."
+      ],
+      "nextAction": "Separate transaction validation/use cases from UI implementation."
+    },
+    {
+      "id": "COV-UI-005",
+      "domain": "screens",
+      "title": "Brave Story, help/tutorial, status and result screens",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-042",
+      "ownerArea": "Fft.Client presentation and application commands",
+      "status": "absent",
+      "currentScope": "No original records/tutorial/help/result interface.",
+      "referenceSources": [
+        {
+          "path": "src/wldcore/brave_story/menu.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/wldcore/tutorial_menus.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/world/tutorial.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/event/require/status_panel.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Open each required screen at a selected known campaign state and verify navigation/text."
+      },
+      "openQuestions": [
+        "Exact screen/subscreen and help topic inventory is unknown; after-battle results need domain integration."
+      ],
+      "nextAction": "Create a screen/operation inventory with text and asset dependencies."
+    },
+    {
+      "id": "COV-UI-006",
+      "domain": "screens",
+      "title": "Windows Save/Load interface and original save availability",
+      "profileScope": "platform-replacement",
+      "ownerTicket": "ZOD-042",
+      "ownerArea": "Fft.Client presentation and application commands",
+      "status": "absent",
+      "currentScope": "No player-facing save selection/load flow. ZOD-067 traces title/world/story entry mechanisms and recommends native slots/prompts; complete retail availability remains unenumerated.",
+      "referenceSources": [
+        {
+          "path": "src/world/card_save.c",
+          "inspection": "ZOD-067 statically traces selected save families/entry paths; complete retail checkpoint enumeration and original observations remain pending."
+        },
+        {
+          "path": "include/fft/save.h",
+          "inspection": "ZOD-067 statically traces selected save families/entry paths; complete retail checkpoint enumeration and original observations remain pending."
+        },
+        {
+          "path": "src/event/card/entry.c",
+          "inspection": "ZOD-067 statically traces selected save families/entry paths; complete retail checkpoint enumeration and original observations remain pending."
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md",
+        "docs/architecture/zod-067-campaign-save-state.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "At legal original save locations, save/continue through Windows UI and test overwrite/cancel/failure recovery."
+      },
+      "openQuestions": [
+        "Implement the proposed slot service/navigation and UI; verify original checkpoint availability independently of Windows workflow decisions."
+      ],
+      "nextAction": "Implement ZOD-069 after ZOD-068 and minimal ZOD-042 navigation; original checkpoint catalog/observations remain open.",
+      "followUpTickets": [
+        "ZOD-068",
+        "ZOD-069"
+      ]
+    },
+    {
+      "id": "COV-UI-007",
+      "domain": "screens",
+      "title": "Options, text/input settings and settings persistence",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-042",
+      "ownerArea": "Fft.Client presentation and application commands",
+      "status": "absent",
+      "currentScope": "Host controls are fixed; no original options screen or persisted user settings.",
+      "referenceSources": [
+        {
+          "path": "src/world/options.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/event/option/game_options.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "include/fft/option.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Change a supported option, cancel/confirm, restart and verify its selected persistence scope."
+      },
+      "openQuestions": [
+        "Per-campaign versus per-user settings and exact original option behavior remain to classify."
+      ],
+      "nextAction": "Trace option effects and decide which Windows settings live outside campaign saves."
+    },
+    {
+      "id": "COV-UI-008",
+      "domain": "screens",
+      "title": "Edition eligibility of sound novels, music/test menus and unused paths",
+      "profileScope": "edition-audit",
+      "ownerTicket": "ZOD-045",
+      "ownerArea": "Fft.Client presentation and application commands",
+      "status": "eligibility-unresolved",
+      "currentScope": "Source presence is documented; reachability and required resources in SCUS-94221 have not been established here.",
+      "referenceSources": [
+        {
+          "path": "src/wldcore/sound_novel/menus.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/open/music_test.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/open/title.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Verify reachable title/treasure menus in the target edition before classifying any candidate as required or intentionally unused."
+      },
+      "openQuestions": [
+        "Code in the decomp does not prove a reachable baseline feature; edition gates and assets need evidence."
+      ],
+      "nextAction": "Create a US reachability/exclusion audit; retain unresolved status until evidence supports exclusion."
+    },
+    {
+      "id": "COV-PRE-001",
+      "domain": "presentation",
+      "title": "Map rendering, texture palettes, lighting and transparency",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-033",
+      "ownerArea": "Fft.Client platform adapters",
+      "status": "partial",
+      "currentScope": "Fixed prepared MAP003/Chocobo scene renders with declared neutral-lighting and modern depth/cutout approximations. ZOD-033 adds strict optional headless authored/same-environment PNG comparison, checkpoint/tick/view/turn-projection bindings, regional RGBA diagnostics and zero-tolerance synthetic Windows plans. All 22 Python tests pass; two 120-frame synthetic captures and reports match. No original rendered comparison or full simulation equivalence is claimed. The existing RetroArch 1.22.2/Beetle PSX software installation now has an isolated native capture profile. Two input-disconnected finite boots reach introductory game content with matching raw screenshots and unchanged installed settings; the owner subsequently captured the target banner/state, and two four-frame state restores produce identical banner scene images. Exact original/managed timing/context, BSV playback and original comparisons remain open. All 30 Python tests pass, with 8 new profile/isolation checks. A separate full-visible observed banner profile now records explicit measured borders and context bindings. Two diagnostic reports/review pages match. Manual inspection finds consistent apparent text placement; strict equality fails at 1,460/1,577 managed-background-invariant samples (original equal or darker by up to 16 RGB levels). No fidelity threshold is selected or runtime changed. All 52 Python tests pass (22 new). A subsequent developer precision study reads the frozen GPU dtd=0/displayed VRAM and exactly matches all 1,577 prior core samples with source-informed five-bit arithmetic, quantized vertical colors and zero-padded emulator output. Two reports match; all 66 Python tests pass (14 new). No runtime profile is changed, and installed-DLL source identity/per-primitive draw-state provenance remain unverified. A subsequent bounded Client five-bit profile now uses explicit per-draw dither/origin state. Frozen DMA-chain reconstruction identifies the REQUIRE dark-screen mode before all six banner packets. Actual native captures match all 1,577 selected original glyph pixels exactly, two capture sets repeat, and all 16 legacy RGB8 capture files retain historical bytes. The dither-on negative control distinguishes draw-state and pixel failures. Locked restore, zero-warning Release build, 1,418 .NET tests (30 new) and 81 Python tests (15 new) pass; timing, background-sensitive blending and broader integration remain open.",
+      "referenceSources": [
+        {
+          "path": "src/battle/map/runtime.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/map/light.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/map/palettes.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/development/prepared-scene.md",
+        "docs/development/visual-comparison-checkpoints.md",
+        "docs/evidence/visual/synthetic-checkpoint-comparison-v1.json",
+        "docs/development/retroarch-reference-capture.md",
+        "docs/evidence/visual/retroarch-reference-readiness-v1.json",
+        "docs/evidence/visual/original-banner-state-v1.json",
+        "docs/development/observed-general-banner-comparison.md",
+        "docs/evidence/visual/observed-general-banner-comparison-v1.json",
+        "docs/architecture/general-banner-native-color-study.md",
+        "docs/evidence/visual/general-banner-precision-study-v1.json",
+        "docs/development/five-bit-general-banner.md",
+        "docs/evidence/visual/five-bit-general-banner-v1.json"
+      ],
+      "implementationPaths": [
+        "src/Fft.Client/Presentation/PreparedSceneGeometry.cs",
+        "src/Fft.Client/Presentation/PreparedSceneWindow.cs",
+        "tools/verification/compare_visual_checkpoints.py",
+        "tools/verification/prepare_synthetic_visual_comparison.py",
+        "tools/verification/prepare_retroarch_reference.py",
+        "tools/verification/verify_retroarch_boot.py",
+        "tools/verification/compare_observed_banner.py",
+        "tools/verification/prepare_observed_banner_comparison.py",
+        "tools/verification/analyze_banner_precision.py",
+        "src/Fft.Client/Presentation/FiveBitGeneralBannerPresentation.cs",
+        "src/Fft.Client/Presentation/BannerPreviewOptions.cs",
+        "tools/verification/trace_banner_draw_state.py",
+        "tools/verification/compare_native_banner.py"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.Client.Tests/PreparedSceneGeometryTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tools/verification/test_visual_checkpoints.py",
+          "scope": "22 optional synthetic-only Python tests cover strict contracts, distinct timing/state/view/environment mismatches, regional RGBA metrics/threshold boundaries, wrong hashes, PNG formats, report repeatability and safe output; no original game or GPU required."
+        },
+        {
+          "path": "tools/verification/test_retroarch_reference.py",
+          "scope": "8 authored profile/path/command regressions enforce disabled enhancements/autoload, scratch paths, option parsing, output preservation and finite controller-disconnected boot arguments; no original files or emulator required by tests."
+        },
+        {
+          "path": "tools/verification/test_observed_banner.py",
+          "scope": "22 authored cases cover material sensitivity masks, signed color diagnostics, explicit borders, input/receipt/provenance bindings, strict differences, deterministic reports, frozen plans and preserved outputs; no game/emulator/GPU needed."
+        },
+        {
+          "path": "tools/verification/test_banner_precision.py",
+          "scope": "14 authored tests cover five-bit modulation, gradient bias, output encoding, bounded labeled-state inspection, malformed/duplicate/truncated formats, original bindings, stored VRAM checks and deterministic study outputs; no original game/emulator required."
+        },
+        {
+          "path": "tests/Fft.Client.Tests/FiveBitGeneralBannerPresentationTests.cs",
+          "scope": "30 authored Client cases cover five-bit arithmetic, dither pattern/phase and per-draw state, zero-padding, crops, degenerate draws, replay-independent composition and explicit CLI selection."
+        },
+        {
+          "path": "tools/verification/test_native_banner.py",
+          "scope": "15 authored DMA-chain and native-receipt/comparison regressions; no original media/emulator needed."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "bounded-native-foreground-observed-wider-fidelity-pending",
+        "procedure": "Two finite native Windows runs with CPU/GPU readback at 15 checkpoints; inspect hold PNG and compare exact foreground with explicit original draw state. Retain raw regional/background differences and negative dither control.",
+        "evidence": "docs/development/five-bit-general-banner.md"
+      },
+      "openQuestions": [
+        "Independent original visual equivalence, PS1 blend/order effects and other variants are pending."
+      ],
+      "nextAction": "Obtain a pre-banner state/input sequence for reveal/hide timing, then extend original background-sensitive blending and coverage checks. Full scene/event integration remains separate."
+    },
+    {
+      "id": "COV-PRE-002",
+      "domain": "presentation",
+      "title": "Unit sprites, SHP/SEQ animation and battle poses",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-044",
+      "ownerArea": "Fft.Client platform adapters",
+      "status": "partial",
+      "currentScope": "A selected six-piece held Chocobo pose is prepared/loaded/rendered; no general sequence playback.",
+      "referenceSources": [
+        {
+          "path": "include/fft/animation.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/units/animation_policy.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/units/animation_motion.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/development/prepared-sprite-pose.md",
+        "docs/architecture/zod-027-chocobo-idle-pose.md"
+      ],
+      "implementationPaths": [
+        "src/Fft.AssetTool/OrdinaryUnitPoseDecoder.cs",
+        "src/Fft.Content/PreparedSpritePose.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.AssetTool.Tests/OrdinaryUnitPoseTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Fft.Content.Tests/PreparedSpritePoseTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Compare selected pose/palette/piece order and later animation timing against original capture."
+      },
+      "openQuestions": [
+        "Other units/poses, weapon animations, SEQ control flow, animation timing and special sprite families remain open."
+      ],
+      "nextAction": "Create a bounded multi-frame sequence playback investigation under ZOD-044."
+    },
+    {
+      "id": "COV-PRE-003",
+      "domain": "presentation",
+      "title": "Effects, projectiles, particles, shadows and camera choreography",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-044",
+      "ownerArea": "Fft.Client platform adapters",
+      "status": "absent",
+      "currentScope": "No original effect playback or camera/action animation system.",
+      "referenceSources": [
+        {
+          "path": "src/battle/effects/runtime.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/effects/playback.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/effects/projectile.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/map/camera_control.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Compare one selected original action effect, shadows and camera transitions at fixed checkpoints."
+      },
+      "openQuestions": [
+        "Data versus native EFFECT families, timing, transparency, projection and camera semantics need separate inventory."
+      ],
+      "nextAction": "Choose a data-only effect family after source/resource classification."
+    },
+    {
+      "id": "COV-PRE-004",
+      "domain": "presentation",
+      "title": "Original UI graphics, fonts, portraits and dialogue presentation",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-044",
+      "ownerArea": "Fft.Client platform adapters",
+      "status": "partial",
+      "currentScope": "ZOD-078 prepares condition-8/image-0 artwork from verified local inputs, strictly loads immutable six-piece data and previews accepted effect snapshots with a preloaded RGB8 CPU/Windows host. All 20 authored expectations have regressions; two preparations and two finite Windows capture sets match, with exact CPU/GPU readback and prepared-only runtime paths. Original comparison, parity and loading latency remain open. Other font/menu/world/effect/audio families remain unsupported.",
+      "referenceSources": [
+        {
+          "path": "src/world/text/font_rendering.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/lib/event/dialog/typewriter.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/lib/menu/unit_view/portraits.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/event/require/conditions.c",
+          "inspection": "ZOD-077 traces selected general-banner geometry/colors/blend and piece order; original rendering equivalence remains unobserved."
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md",
+        "docs/architecture/zod-077-general-banner-assets.md",
+        "docs/evidence/events/general-banner-assets-v1.json",
+        "docs/development/prepared-general-banner.md"
+      ],
+      "implementationPaths": [
+        "src/Fft.AssetTool/GeneralBannerDecoder.cs",
+        "src/Fft.AssetTool.Cli/PrepareGeneralBannerCommand.cs",
+        "src/Fft.Content/PreparedGeneralBanner.cs",
+        "src/Fft.Client/Presentation/GeneralBannerPresentation.cs",
+        "src/Fft.Client/Presentation/GeneralBannerPreview.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.AssetTool.Tests/GeneralBannerDecoderTests.cs",
+          "scope": "Authored packing/CLUT/UV/screen expectations and bounded malformed original layouts; no retail payload fixtures."
+        },
+        {
+          "path": "tests/Fft.Content.Tests/PreparedGeneralBannerTests.cs",
+          "scope": "Strict closed metadata, nested fields, formats/geometry/provenance, immutable prepared-only loading and corruption gates."
+        },
+        {
+          "path": "tests/Fft.Client.Tests/GeneralBannerPresentationTests.cs",
+          "scope": "Authored material/crop/order/counter milestones, readiness, rollback, restart and identical histories with omitted/repeated rendering; modern RGB8 policy only."
+        },
+        {
+          "path": "tests/Fft.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs",
+          "scope": "Input/profile/output gates preserve prior files and do not publish partial roots."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Compare original glyphs, menu/dialogue layout, portraits, typewriter timing and clipping."
+      },
+      "openQuestions": [
+        "Original resources, glyph decoding, portrait variants and text control semantics remain unprepared."
+      ],
+      "nextAction": "Review the bounded preview, then separately select the next source-traced scene/resource capability; original startup/opcode integration and original capture comparison remain open.",
+      "followUpTickets": []
+    },
+    {
+      "id": "COV-PRE-005",
+      "domain": "presentation",
+      "title": "Music, sound effects, samples, loops and transitions",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-043",
+      "ownerArea": "Fft.Client platform adapters",
+      "status": "absent",
+      "currentScope": "MonoGame's packaged native audio dependency is not an implemented FFT audio system.",
+      "referenceSources": [
+        {
+          "path": "src/lib/suzuki/smd_interpreter.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/lib/suzuki/sfx.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/main/sound_requests.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Compare one prepared music/SFX path, loop point, volume and scene transition with original recordings."
+      },
+      "openQuestions": [
+        "SMD/sample/SFX decoding and scheduling, backend choice and required audio inventory remain open."
+      ],
+      "nextAction": "Start ZOD-043 with a bounded format/backend investigation and synthetic fixtures."
+    },
+    {
+      "id": "COV-PRE-006",
+      "domain": "presentation",
+      "title": "Movies, streamed XA audio and opening/ending synchronization",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-044",
+      "ownerArea": "Fft.Client platform adapters",
+      "status": "absent",
+      "currentScope": "No prepared movie/streamed-audio player.",
+      "referenceSources": [
+        {
+          "path": "include/fft/movie.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/open/ending.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/main/cd_read.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Observe one opening or ending stream with skip, duration and audio/video alignment."
+      },
+      "openQuestions": [
+        "Sector framing, MDEC/VLC/video/audio conversion, seek/skip and all required streams remain unsupported."
+      ],
+      "nextAction": "Split mixed-sector decode from prepared-stream playback; keep BIN access offline."
+    },
+    {
+      "id": "COV-PRE-007",
+      "domain": "presentation",
+      "title": "Windows graphics/input host and native interaction",
+      "profileScope": "platform-replacement",
+      "ownerTicket": "ZOD-061",
+      "ownerArea": "Fft.Client platform adapters",
+      "status": "partial",
+      "currentScope": "Synthetic and fixed prepared hosts run on Windows; bounded mouse/keyboard routing, resize mapping and programmed GPU checks exist.",
+      "referenceSources": [
+        {
+          "path": "include/fft/input.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/world/screen/pad_input.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/development/windows-synthetic-host.md",
+        "docs/development/playable-battle.md"
+      ],
+      "implementationPaths": [
+        "src/Fft.Client/Presentation/BattleInputLatch.cs",
+        "src/Fft.Client/Presentation/SceneLayout.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.Client.Tests/BattleUiInputTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Fft.Client.Tests/SceneLayoutTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Test physical keyboard/mouse/controller, focus, native drag/resize, mixed-DPI and resource reset on supported Windows hardware."
+      },
+      "openQuestions": [
+        "Physical timing, controller/remapping/accessibility and mixed-monitor behavior are not fully validated."
+      ],
+      "nextAction": "Preserve shared logical commands while expanding device/navigation coverage."
+    },
+    {
+      "id": "COV-AST-001",
+      "domain": "assets",
+      "title": "Edition verification and ordinary-file extraction",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-044",
+      "ownerArea": "Fft.AssetTool preparation and Fft.Content loading",
+      "status": "partial",
+      "currentScope": "Verified SCUS-94221 input and ordinary data-file extraction/inventory are implemented.",
+      "referenceSources": [
+        {
+          "path": "target/main.yaml",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/main/file_requests.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/asset-inventory-poc.md"
+      ],
+      "implementationPaths": [
+        "src/Fft.AssetTool/Mode2RawImageReader.cs",
+        "src/Fft.AssetTool/IsoDataFileExtractor.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.AssetTool.Tests/IsoDataFileExtractorTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Fft.AssetTool.Cli.Tests/ExtractCommandTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Repeat local edition verification/import and confirm runtime works with source media unavailable."
+      },
+      "openQuestions": [
+        "Extraction is not decoding or complete resource-role inventory; mixed XA/STR payloads remain unsupported."
+      ],
+      "nextAction": "Assign conversion/load/provenance state to each required resource family."
+    },
+    {
+      "id": "COV-AST-002",
+      "domain": "assets",
+      "title": "Prepared manifests, integrity and disk-only runtime loading",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-044",
+      "ownerArea": "Fft.AssetTool preparation and Fft.Content loading",
+      "status": "partial",
+      "currentScope": "Versioned manifest and hash-verified loose loading exist for selected assets; no universal decoder/package manager.",
+      "referenceSources": [
+        {
+          "path": "src/main/file_loading.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/map/loading.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/adr/0003-offline-asset-import-and-loose-runtime-content.md"
+      ],
+      "implementationPaths": [
+        "src/Fft.Content/LooseAssetStore.cs",
+        "src/Fft.Content/PreparedAssetManifest.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.Content.Tests/PreparedAssetManifestTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Run a selected prepared scene with BIN/reference checkout unavailable and check missing/corrupt dependency diagnostics."
+      },
+      "openQuestions": [
+        "Complete asset dependency closure and startup selection are not established."
+      ],
+      "nextAction": "Record required logical IDs/formats for each chosen scenario."
+    },
+    {
+      "id": "COV-AST-003",
+      "domain": "assets",
+      "title": "Prepared map, sprite, shape and sequence converters",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-044",
+      "ownerArea": "Fft.AssetTool preparation and Fft.Content loading",
+      "status": "partial",
+      "currentScope": "One frozen MAP003 variant and one held Chocobo pose have bounded offline converters.",
+      "referenceSources": [
+        {
+          "path": "src/battle/map/gns.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "include/fft/sprite.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "include/fft/animation.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/development/prepared-map-slice.md",
+        "docs/development/prepared-sprite-pose.md"
+      ],
+      "implementationPaths": [
+        "src/Fft.AssetTool.Cli/PrepareMapCommand.cs",
+        "src/Fft.AssetTool.Cli/PrepareSpritePoseCommand.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.AssetTool.Cli.Tests/PrepareMapCommandTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Fft.AssetTool.Cli.Tests/PrepareSpritePoseCommandTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Repeat each selected conversion, compare input/output hashes and inspect independently matched original captures."
+      },
+      "openQuestions": [
+        "Other map variants, sheets, animation commands and special overlays/effects are outside current converters."
+      ],
+      "nextAction": "Expand one family/profile with explicit unsupported inputs and bounded fixtures."
+    },
+    {
+      "id": "COV-AST-004",
+      "domain": "assets",
+      "title": "Remaining fonts, menus, world, effects, audio and mixed streams",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-044",
+      "ownerArea": "Fft.AssetTool preparation and Fft.Content loading",
+      "status": "partial",
+      "currentScope": "ZOD-078 prepares condition-8/image-0 artwork from verified local inputs, strictly loads immutable six-piece data and previews accepted effect snapshots with a preloaded RGB8 CPU/Windows host. All 20 authored expectations have regressions; two preparations and two finite Windows capture sets match, with exact CPU/GPU readback and prepared-only runtime paths. Original comparison, parity and loading latency remain open. Other font/menu/world/effect/audio families remain unsupported.",
+      "referenceSources": [
+        {
+          "path": "src/main/file_requests.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/effects/resources.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/world/screen/resources.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/lib/event/dialog/backreferences.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/event/require/conditions.c",
+          "inspection": "ZOD-077 traces selected general-banner geometry/colors/blend and piece order; original rendering equivalence remains unobserved."
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md",
+        "docs/architecture/zod-077-general-banner-assets.md",
+        "docs/evidence/events/general-banner-assets-v1.json",
+        "docs/development/prepared-general-banner.md"
+      ],
+      "implementationPaths": [
+        "src/Fft.AssetTool/GeneralBannerDecoder.cs",
+        "src/Fft.AssetTool.Cli/PrepareGeneralBannerCommand.cs",
+        "src/Fft.Content/PreparedGeneralBanner.cs",
+        "src/Fft.Client/Presentation/GeneralBannerPresentation.cs",
+        "src/Fft.Client/Presentation/GeneralBannerPreview.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.AssetTool.Tests/GeneralBannerDecoderTests.cs",
+          "scope": "Authored packing/CLUT/UV/screen expectations and bounded malformed original layouts; no retail payload fixtures."
+        },
+        {
+          "path": "tests/Fft.Content.Tests/PreparedGeneralBannerTests.cs",
+          "scope": "Strict closed metadata, nested fields, formats/geometry/provenance, immutable prepared-only loading and corruption gates."
+        },
+        {
+          "path": "tests/Fft.Client.Tests/GeneralBannerPresentationTests.cs",
+          "scope": "Authored material/crop/order/counter milestones, readiness, rollback, restart and identical histories with omitted/repeated rendering; modern RGB8 policy only."
+        },
+        {
+          "path": "tests/Fft.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs",
+          "scope": "Input/profile/output gates preserve prior files and do not publish partial roots."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Check each chosen family for repeatable conversion and actual runtime presentation with BIN absent."
+      },
+      "openQuestions": [
+        "Per-file role, decoder support, dependencies and byte provenance are unresolved for the remaining families; historical disc counts do not establish support."
+      ],
+      "nextAction": "Review the bounded preview, then separately select the next source-traced scene/resource capability; original startup/opcode integration and original capture comparison remain open.",
+      "followUpTickets": []
+    },
+    {
+      "id": "COV-SAV-001",
+      "domain": "persistence",
+      "title": "Bounded battle snapshot DTOs, migration and safe file writes",
+      "profileScope": "platform-replacement",
+      "ownerTicket": "ZOD-035",
+      "ownerArea": "FFT persistence/application and Windows storage",
+      "status": "slice-proven",
+      "currentScope": "Schema 2/profile-content v1 restores 13 command boundaries, active turns, RNG, CT, HP/status and both outcomes; synthetic v1 migration and safe replacement are tested.",
+      "referenceSources": [
+        {
+          "path": "include/fft/save.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/development/two-unit-battle-saves.md"
+      ],
+      "implementationPaths": [
+        "src/Fft.Content/Saves/TwoUnitBattleSave.cs",
+        "src/Fft.Content/Saves/TwoUnitBattleSave.Files.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.Content.Tests/Saves/TwoUnitBattleSaveTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Fft.Content.Tests/Saves/TwoUnitBattleSaveFileTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Fft.Client.Tests/BattleSaveCheckTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Use the headless save check now; later test player-facing save/continue at original legal campaign checkpoints."
+      },
+      "openQuestions": [
+        "This is a managed synthetic contract, not original save availability, full campaign state, a memory-card format or save UI."
+      ],
+      "nextAction": "Carry its DTO/validation/atomic-write pattern into separately traced campaign persistence."
+    },
+    {
+      "id": "COV-SAV-002",
+      "domain": "persistence",
+      "title": "Campaign/party/inventory/world saves and content-version policy",
+      "profileScope": "platform-replacement",
+      "ownerTicket": "ZOD-053",
+      "ownerArea": "FFT persistence/application and Windows storage",
+      "status": "absent",
+      "currentScope": "ZOD-067 maps source save families, lifetimes, restore order and entry paths; neither RNG stream is saved. No campaign serialization/restore runtime exists.",
+      "referenceSources": [
+        {
+          "path": "include/fft/save.h",
+          "inspection": "ZOD-067 statically traces selected save families/entry paths; complete retail checkpoint enumeration and original observations remain pending."
+        },
+        {
+          "path": "src/main/save_state.c",
+          "inspection": "ZOD-067 statically traces selected save families/entry paths; complete retail checkpoint enumeration and original observations remain pending."
+        },
+        {
+          "path": "src/world/card_save.c",
+          "inspection": "ZOD-067 statically traces selected save families/entry paths; complete retail checkpoint enumeration and original observations remain pending."
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md",
+        "docs/architecture/zod-067-campaign-save-state.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Save/continue at selected legal campaign points and compare party, flags, inventories, calendar and RNG-sensitive behavior."
+      },
+      "openQuestions": [
+        "Complete retail checkpoint enumeration, unmodeled fields/side content, original observations, content-version rules and explicit native RNG continuation/seed policy remain open."
+      ],
+      "nextAction": "Implement ZOD-068's RNG-free synthetic world-checkpoint service; retain ZOD-053 for complete campaign scope.",
+      "followUpTickets": [
+        "ZOD-068",
+        "ZOD-069"
+      ]
+    },
+    {
+      "id": "COV-SAV-003",
+      "domain": "persistence",
+      "title": "Windows save storage, metadata, backups and recovery",
+      "profileScope": "platform-replacement",
+      "ownerTicket": "ZOD-053",
+      "ownerArea": "FFT persistence/application and Windows storage",
+      "status": "absent",
+      "currentScope": "Caller-path atomic battle saves exist; ZOD-067 recommends per-user slots, derived metadata and validated explicit recovery. No slot service/catalog or backup workflow exists.",
+      "referenceSources": [
+        {
+          "path": "src/world/card_save.c",
+          "inspection": "ZOD-067 statically traces selected save families/entry paths; complete retail checkpoint enumeration and original observations remain pending."
+        },
+        {
+          "path": "include/fft/save.h",
+          "inspection": "ZOD-067 statically traces selected save families/entry paths; complete retail checkpoint enumeration and original observations remain pending."
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md",
+        "docs/architecture/zod-067-campaign-save-state.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Test overwrite/cancel, missing/corrupt files, access errors and recovery without losing the last valid save."
+      },
+      "openQuestions": [
+        "Implement the proposed per-user slot contract and define backup/recovery, stale/concurrent overwrite behavior and content compatibility before exposing UI."
+      ],
+      "nextAction": "Implement bounded slot/storage behavior in ZOD-068, then expose through ZOD-069.",
+      "followUpTickets": [
+        "ZOD-068",
+        "ZOD-069"
+      ]
+    },
+    {
+      "id": "COV-VAL-001",
+      "domain": "validation",
+      "title": "Managed source vectors, deterministic replays and scenario regressions",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-046",
+      "ownerArea": "Development validation",
+      "status": "partial",
+      "currentScope": "Movement/clock/sword/scenario/save checks exist; last recorded baseline is 954 passing tests at managed commit 7990b5d.",
+      "referenceSources": [
+        {
+          "path": "src/battle/turn/clock.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/combat/formulas.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/behavior/fixture-runner.md",
+        "docs/behavior/two-unit-battle-scenario.md",
+        "docs/development/two-unit-battle-saves.md"
+      ],
+      "implementationPaths": [
+        "tests/Fft.Core.Tests/Fixtures/MovementFixtureRunner.cs",
+        "tests/Fft.Core.Tests/Fixtures/AttackFixtureRunner.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.Core.Tests/Fixtures/MovementFixtureRunnerTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Fft.Core.Tests/AttackFixtureV3Tests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Compare critical supported behavior against independent original/emulator observations, keeping source-derived and synthetic expectations distinct."
+      },
+      "openQuestions": [
+        "Most original systems lack regressions; passing source-derived tests is not complete original equivalence."
+      ],
+      "nextAction": "Add fixture/scenario evidence when each row's supported domain expands."
+    },
+    {
+      "id": "COV-VAL-002",
+      "domain": "validation",
+      "title": "Independent original sprite/scene/audio capture and comparison",
+      "profileScope": "baseline",
+      "ownerTicket": "ZOD-026",
+      "ownerArea": "Development validation",
+      "status": "partial",
+      "currentScope": "ZOD-026 executes the verified original SCUS-94221 Chocobo attack decoder/helper instructions under Unicorn 2.1.4. Two independent-execution captures/reports match the historical managed decoded-byte digest; wrong-hash and existing-output gates pass. No original game, palette/frame/camera/timing or rendered scene comparison is claimed. ZOD-033 adds strict optional headless authored/same-environment PNG comparison, checkpoint/tick/view/turn-projection bindings, regional RGBA diagnostics and zero-tolerance synthetic Windows plans. All 22 Python tests pass; two 120-frame synthetic captures and reports match. No original rendered comparison or full simulation equivalence is claimed. The existing RetroArch 1.22.2/Beetle PSX software installation now has an isolated native capture profile. Two input-disconnected finite boots reach introductory game content with matching raw screenshots and unchanged installed settings; the owner subsequently captured the target banner/state, and two four-frame state restores produce identical banner scene images. Exact original/managed timing/context, BSV playback and original comparisons remain open. All 30 Python tests pass, with 8 new profile/isolation checks. A separate full-visible observed banner profile now records explicit measured borders and context bindings. Two diagnostic reports/review pages match. Manual inspection finds consistent apparent text placement; strict equality fails at 1,460/1,577 managed-background-invariant samples (original equal or darker by up to 16 RGB levels). No fidelity threshold is selected or runtime changed. All 52 Python tests pass (22 new). A subsequent developer precision study reads the frozen GPU dtd=0/displayed VRAM and exactly matches all 1,577 prior core samples with source-informed five-bit arithmetic, quantized vertical colors and zero-padded emulator output. Two reports match; all 66 Python tests pass (14 new). No runtime profile is changed, and installed-DLL source identity/per-primitive draw-state provenance remain unverified. A subsequent bounded Client five-bit profile now uses explicit per-draw dither/origin state. Frozen DMA-chain reconstruction identifies the REQUIRE dark-screen mode before all six banner packets. Actual native captures match all 1,577 selected original glyph pixels exactly, two capture sets repeat, and all 16 legacy RGB8 capture files retain historical bytes. The dither-on negative control distinguishes draw-state and pixel failures. Locked restore, zero-warning Release build, 1,418 .NET tests (30 new) and 81 Python tests (15 new) pass; timing, background-sensitive blending and broader integration remain open.",
+      "referenceSources": [
+        {
+          "path": "src/battle/units/sprite_display.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/map/runtime.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/units/sp2.c",
+          "inspection": "Pinned decoder/helper and current EVTCHR caller traced for bounded original-instruction execution; no source translation used as oracle."
+        }
+      ],
+      "evidenceDocs": [
+        "PROJECT_PLAN.md",
+        "docs/development/sprite-executable-reference.md",
+        "docs/evidence/sprites/chocobo-attack-executable-v1.json",
+        "docs/development/visual-comparison-checkpoints.md",
+        "docs/evidence/visual/synthetic-checkpoint-comparison-v1.json",
+        "docs/development/retroarch-reference-capture.md",
+        "docs/evidence/visual/retroarch-reference-readiness-v1.json",
+        "docs/evidence/visual/original-banner-state-v1.json",
+        "docs/development/observed-general-banner-comparison.md",
+        "docs/evidence/visual/observed-general-banner-comparison-v1.json",
+        "docs/architecture/general-banner-native-color-study.md",
+        "docs/evidence/visual/general-banner-precision-study-v1.json",
+        "docs/development/five-bit-general-banner.md",
+        "docs/evidence/visual/five-bit-general-banner-v1.json"
+      ],
+      "implementationPaths": [
+        "tools/verification/verify_sprite_attack.py",
+        "tools/verification/compare_visual_checkpoints.py",
+        "tools/verification/prepare_synthetic_visual_comparison.py",
+        "tools/verification/prepare_retroarch_reference.py",
+        "tools/verification/verify_retroarch_boot.py",
+        "tools/verification/compare_observed_banner.py",
+        "tools/verification/prepare_observed_banner_comparison.py",
+        "tools/verification/analyze_banner_precision.py",
+        "src/Fft.Client/Presentation/FiveBitGeneralBannerPresentation.cs",
+        "src/Fft.Client/Presentation/BannerPreviewOptions.cs",
+        "tools/verification/trace_banner_draw_state.py",
+        "tools/verification/compare_native_banner.py"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tools/verification/verify_sprite_attack.py",
+          "scope": "Optional local original-instruction decoder oracle with pinned hashes, bounded architectural execution/accesses, canaries and managed digest comparison; not part of ordinary tests."
+        },
+        {
+          "path": "tools/verification/test_visual_checkpoints.py",
+          "scope": "22 optional synthetic-only Python tests cover strict contracts, distinct timing/state/view/environment mismatches, regional RGBA metrics/threshold boundaries, wrong hashes, PNG formats, report repeatability and safe output; no original game or GPU required."
+        },
+        {
+          "path": "tools/verification/test_retroarch_reference.py",
+          "scope": "8 authored profile/path/command regressions enforce disabled enhancements/autoload, scratch paths, option parsing, output preservation and finite controller-disconnected boot arguments; no original files or emulator required by tests."
+        },
+        {
+          "path": "tools/verification/test_observed_banner.py",
+          "scope": "22 authored cases cover material sensitivity masks, signed color diagnostics, explicit borders, input/receipt/provenance bindings, strict differences, deterministic reports, frozen plans and preserved outputs; no game/emulator/GPU needed."
+        },
+        {
+          "path": "tools/verification/test_banner_precision.py",
+          "scope": "14 authored tests cover five-bit modulation, gradient bias, output encoding, bounded labeled-state inspection, malformed/duplicate/truncated formats, original bindings, stored VRAM checks and deterministic study outputs; no original game/emulator required."
+        },
+        {
+          "path": "tests/Fft.Client.Tests/FiveBitGeneralBannerPresentationTests.cs",
+          "scope": "30 authored Client cases cover five-bit arithmetic, dither pattern/phase and per-draw state, zero-padding, crops, degenerate draws, replay-independent composition and explicit CLI selection."
+        },
+        {
+          "path": "tools/verification/test_native_banner.py",
+          "scope": "15 authored DMA-chain and native-receipt/comparison regressions; no original media/emulator needed."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "bounded-native-foreground-observed-wider-fidelity-pending",
+        "procedure": "Two finite native Windows runs with CPU/GPU readback at 15 checkpoints; inspect hold PNG and compare exact foreground with explicit original draw state. Retain raw regional/background differences and negative dither control.",
+        "evidence": "docs/development/five-bit-general-banner.md"
+      },
+      "openQuestions": [
+        "Matched original rendered scene captures, palette/frame/camera/timing controls, ZOD-033 thresholds and human visual review remain open; the decoder oracle does not establish GPU equivalence."
+      ],
+      "nextAction": "Obtain a pre-banner state/input sequence for reveal/hide timing, then extend original background-sensitive blending and coverage checks. Full scene/event integration remains separate."
+    },
+    {
+      "id": "COV-VAL-003",
+      "domain": "validation",
+      "title": "Windows/Linux CI and clean-machine launch",
+      "profileScope": "platform-replacement",
+      "ownerTicket": "ZOD-034",
+      "ownerArea": "Development validation",
+      "status": "validation-pending",
+      "currentScope": "Independent Windows CI, retained Linux/Sonar, TRX/JUnit and private self-contained folder validation are configured; local headless/GPU runs passed.",
+      "referenceSources": [
+        {
+          "path": "include/fft/system.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/development/windows-launch-validation.md"
+      ],
+      "implementationPaths": [
+        ".circleci/config.yml",
+        "tools/ci/Publish-WindowsClient.ps1"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tools/ci/Publish-WindowsClient.ps1",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Observe actual remote CI jobs and a clean Windows 11 x64 graphical launch without SDK/original media."
+      },
+      "openQuestions": [
+        "Remote job results and clean-machine interactive evidence remain pending; this inventory does not close those gates."
+      ],
+      "nextAction": "Record job URLs and clean-machine environment/results before marking ZOD-034 complete."
+    },
+    {
+      "id": "COV-VAL-004",
+      "domain": "validation",
+      "title": "Engine independence, immutable definitions and runtime import boundary",
+      "profileScope": "platform-replacement",
+      "ownerTicket": "ZOD-009",
+      "ownerArea": "Development validation",
+      "status": "slice-proven",
+      "currentScope": "Grid/bounds/RNG contracts are Zodiac-owned; FFT-specific rules and persistence remain separate, with build reference guard and Relay sample.",
+      "referenceSources": [
+        {
+          "path": "include/fft/unit.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/adr/0004-zodiac-engine-and-fft-game-boundary.md",
+        "samples/Relay/README.md"
+      ],
+      "implementationPaths": [
+        "Directory.Build.targets",
+        "src/Zodiac.Engine/GridBounds.cs",
+        "src/Zodiac.Engine/IDeterministicRandom.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.Core.Tests/EngineIndependenceTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Zodiac.Engine.Tests/RelayScenarioTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Review dependency graph and run prepared/synthetic clients with reference tools/media unavailable."
+      },
+      "openQuestions": [
+        "Broader reusable engine extraction requires demonstrated seams; this bounded architectural proof says nothing about complete FFT content."
+      ],
+      "nextAction": "Preserve the one-way dependency and extract only independently stated invariants."
+    },
+    {
+      "id": "COV-PRO-001",
+      "domain": "profiles",
+      "title": "Original baseline, add-on isolation and later Lion War target",
+      "profileScope": "extension",
+      "ownerTicket": "ZOD-049",
+      "ownerArea": "FFT compatibility/content composition",
+      "status": "partial",
+      "currentScope": "Typed baseline/add-on metadata composition exists; full content/profile isolation and exact Lion War selection are future work.",
+      "referenceSources": [
+        {
+          "path": "include/fft/job.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "include/fft/item.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/adr/0002-compatible-baseline-and-extension-profiles.md",
+        "docs/architecture/zod-016-content-packages.md"
+      ],
+      "implementationPaths": [
+        "src/Fft.Content/ContentPackages/ContentPackage.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.Content.Tests/ContentPackages/ContentPackageTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "With add-on files present but disabled, compare original-mode results and selected package/version identity."
+      },
+      "openQuestions": [
+        "Full profile manifests, selected mechanics, package conflicts and exact Lion War revision/content delta are unresolved."
+      ],
+      "nextAction": "Complete ZOD-049 before integrating separately selected ZOD-051/052 content."
+    },
+    {
+      "id": "COV-PRO-002",
+      "domain": "profiles",
+      "title": "Widescreen, higher resolution/textures and native Windows UI",
+      "profileScope": "extension",
+      "ownerTicket": "ZOD-059",
+      "ownerArea": "FFT compatibility/content composition",
+      "status": "planned",
+      "currentScope": "Host resize/letterbox is a bounded facility; selectable geometry rendering resolution, widescreen camera/UI and replacements are not delivered.",
+      "referenceSources": [
+        {
+          "path": "src/battle/map/camera.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "include/fft/render.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/architecture/overview.md",
+        "docs/development/prepared-scene.md"
+      ],
+      "implementationPaths": [
+        "src/Fft.Client/Presentation/SceneLayout.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.Client.Tests/SceneLayoutTests.cs",
+          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Compare layout, camera, input mapping and unchanged simulation at each explicitly selected presentation option."
+      },
+      "openQuestions": [
+        "ZOD-059/060/062/063 remain future presentation-profile work. Required Windows interaction is tracked separately by COV-PRE-007 under ZOD-061; resize alone does not establish widescreen or higher-detail rendering."
+      ],
+      "nextAction": "Keep aspect, resolution, extensible UI and replacement artwork distinct; coordinate their layouts/navigation with required ZOD-061 interaction."
+    },
+    {
+      "id": "COV-PRO-003",
+      "domain": "profiles",
+      "title": "Planned custom knockback and other rule changes",
+      "profileScope": "extension",
+      "ownerTicket": "ZOD-050",
+      "ownerArea": "FFT compatibility/content composition",
+      "status": "planned",
+      "currentScope": "User intends a redesigned knockback mechanic; no new mechanic or original knockback implementation has been selected here.",
+      "referenceSources": [
+        {
+          "path": "src/battle/combat/resolution.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/behavior/bounded-sword-implementation.md",
+        "docs/architecture/overview.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "Compare original mode and explicitly selected custom profile for the same commands/seed."
+      },
+      "openQuestions": [
+        "Redesign rules and compatibility selection are unspecified; no silent change to original defaults is accepted."
+      ],
+      "nextAction": "Document the original rule first, then specify a separate custom policy/profile."
+    },
+    {
+      "id": "COV-PRO-004",
+      "domain": "profiles",
+      "title": "Optional original memory-card import",
+      "profileScope": "optional-interoperability",
+      "ownerTicket": "ZOD-053",
+      "ownerArea": "FFT compatibility/content composition",
+      "status": "planned",
+      "currentScope": "The Windows save format replaces card storage; original-card interoperability is optional and unscoped.",
+      "referenceSources": [
+        {
+          "path": "include/fft/save.h",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/lib/memcard.c",
+          "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        }
+      ],
+      "evidenceDocs": [
+        "docs/development/two-unit-battle-saves.md"
+      ],
+      "implementationPaths": [],
+      "automatedChecks": [],
+      "manualCheckpoint": {
+        "status": "pending-original-observation",
+        "procedure": "If separately selected later, import a local supported original save with explicit edition/version checks."
+      },
+      "openQuestions": [
+        "Original parity, packing, card container handling and import scope have not been selected."
+      ],
+      "nextAction": "Do not make optional card import a dependency of native Windows Save/Load."
+    },
+    {
+      "id": "COV-PRO-005",
+      "domain": "profiles",
+      "title": "Typed content authoring, validation, export and first editor",
+      "profileScope": "extension",
+      "ownerTicket": "ZOD-047",
+      "ownerArea": "FFT content authoring and tools",
+      "status": "partial",
+      "currentScope": "Typed metadata/sword schemas, import/export and shared validation exist; no interactive job/ability editor.",
+      "referenceSources": [
+        {
+          "path": "include/fft/job.h",
+          "inspection": "Original job record family; selected field mapping is traced by linked notes."
+        }
+      ],
+      "evidenceDocs": [
+        "docs/architecture/zod-016-content-packages.md",
+        "docs/architecture/zod-014-typed-definitions.md"
+      ],
+      "implementationPaths": [
+        "src/Fft.Content/ContentPackages/ContentPackage.cs",
+        "src/Fft.AssetTool.Cli/ValidateContentCommand.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.Content.Tests/ContentPackages/ContentPackageTests.cs",
+          "scope": "Typed package composition/validation/export only; no editor workflow."
+        }
+      ],
+      "manualCheckpoint": {
+        "status": "pending-editor-workflow",
+        "procedure": "Inspect an original job, author a separate supported change, validate/export and use it in the supported battle path."
+      },
+      "openQuestions": [
+        "Editor UI, draft/undo/unsaved-state handling and general text/graphics/script/audio authoring remain future work."
+      ],
+      "nextAction": "ZOD-047 can start its first bounded job/ability editor; broader authoring remains ZOD-048."
+    }
+  ]
+}

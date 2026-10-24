@@ -1,0 +1,123 @@
+{
+  "format": "fft.prepared-scenario-event",
+  "schemaVersion": 1,
+  "profile": "sample:event-profile/conditional-v1",
+  "dialect": "fft.ps1-us:scenario-bytecode",
+  "id": "sample:event/conditional-outcome-v1",
+  "scene": "Battle",
+  "source": {
+    "kind": "synthetic",
+    "edition": "SCUS-94221",
+    "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "blockSha256": "7cb7271dcaf8ccc99a5507ac3b5b431c6c69663eadb1d6fad522cd1d9c0b7f2f",
+    "encoding": "raw",
+    "textOffset": 48
+  },
+  "instructions": [
+    {
+      "offset": 4,
+      "operation": "ZeroVariable",
+      "operand1": 0,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 7,
+      "operation": "AddVariable",
+      "operand1": 0,
+      "operand2": 2,
+      "targetOffset": null
+    },
+    {
+      "offset": 12,
+      "operation": "ZeroVariable",
+      "operand1": 1,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 15,
+      "operation": "AddImmediate",
+      "operand1": 1,
+      "operand2": 1,
+      "targetOffset": null
+    },
+    {
+      "offset": 20,
+      "operation": "CompareEqual",
+      "operand1": null,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 21,
+      "operation": "JumpForwardIfZero",
+      "operand1": 1,
+      "operand2": null,
+      "targetOffset": 35
+    },
+    {
+      "offset": 23,
+      "operation": "ZeroVariable",
+      "operand1": 3,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 26,
+      "operation": "AddImmediate",
+      "operand1": 3,
+      "operand2": 1,
+      "targetOffset": null
+    },
+    {
+      "offset": 31,
+      "operation": "JumpForward",
+      "operand1": 2,
+      "operand2": null,
+      "targetOffset": 45
+    },
+    {
+      "offset": 33,
+      "operation": "ForwardTarget",
+      "operand1": 1,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 35,
+      "operation": "ZeroVariable",
+      "operand1": 3,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 38,
+      "operation": "AddImmediate",
+      "operand1": 3,
+      "operand2": 2,
+      "targetOffset": null
+    },
+    {
+      "offset": 43,
+      "operation": "ForwardTarget",
+      "operand1": 2,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 45,
+      "operation": "ForwardTargetExit",
+      "operand1": 3,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 47,
+      "operation": "SearchEnd",
+      "operand1": null,
+      "operand2": null,
+      "targetOffset": null
+    }
+  ]
+}

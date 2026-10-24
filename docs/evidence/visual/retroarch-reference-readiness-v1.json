@@ -1,0 +1,55 @@
+{
+  "format": "fft.retroarch-reference-readiness",
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "managedBase": "66e08c0",
+  "evidenceKind": "emulator-observation-boot-readiness",
+  "retroarchVersion": "1.22.2 (Git 59e4fc7), 2026-01-17",
+  "executableSha256": "323c7b8e27c76d8debcb2458966255b44e011afb57e2434ed99e4336192e7c7c",
+  "core": "Beetle PSX software",
+  "coreInfoDeclaredVersion": "v0.9.44.1; installed info file, DLL hash is authoritative",
+  "coreSha256": "62760b374cdd4bbbb1d5c80265e36c6c2451df14e35bf4f0b2388bd8f2d1cffc",
+  "profileLocalPath": "scratch/retroarch-reference/profile.json",
+  "originalIntroductoryRenderingObserved": true,
+  "originalBattleCheckpointReached": false,
+  "originalComparisonPerformed": false,
+  "normalConfigsUnchanged": true,
+  "selectedCoreOptionsRetained": true,
+  "frontendFrameBudget": 1200,
+  "controllersDisconnectedForBoot": true,
+  "replayPlaybackVerified": false,
+  "replayFilesByteIdentical": false,
+  "pythonTestsPassed": 30,
+  "managedSuiteRerun": false,
+  "lastManagedTestsPassed": 1388,
+  "captures": [
+    {
+      "id": "retroarch-fft-introductory-credit-v1",
+      "kind": "emulator-raw-screenshot",
+      "localPath": "scratch/retroarch-boot-033-b/frame.png",
+      "sha256": "5cd698c1ee357522e1abf33145fb767e90be563113b7d7b4e6bfeee0e26caec2",
+      "byteLength": 3096,
+      "tool": "RetroArch 1.22.2 / Beetle PSX software pinned DLL",
+      "procedure": "Cold start private native/uncropped software profile, no patches, disconnected controllers/null input, no SRAM load/save; request raw screenshot and exit at frontend frame budget 1200. Visually inspected introductory game credit, 350x240 RGB.",
+      "editionVerification": "SCUS-94221 BIN SHA-256 29e63bb6d2e7b842fe87f7c0ee03b7076681c34bcc47095cca27ec53236bf4f9; verified Mode 2 CUE and US BIOS SHA-256 11052b6499e466bbf0a709b1f9cb6834a9418e66680387912451e971cf8a1fef."
+    },
+    {
+      "id": "retroarch-boot-readiness-report-v1",
+      "kind": "emulator-readiness-report",
+      "localPath": "scratch/retroarch-boot-033-b/check.json",
+      "sha256": "4a0b5cf69a3ab8ca23dd5b529df895a9152f40afd3d88db6353bb3f788ef40cc",
+      "byteLength": 1897,
+      "tool": "verify_retroarch_boot.py / Python 3.12.14",
+      "procedure": "Verify source/policy/actual BIOS hashes, finite process return, controller isolation, retained selected core options, raw screenshot/replay presence and unchanged installed settings. Raw diagnostics remain in this report.",
+      "editionVerification": "Same verified inputs as the companion raw screenshot; full profile/provenance remain local."
+    }
+  ],
+  "repeatRawImage": "scratch/retroarch-boot-033-a/frame.png",
+  "repeatRawImageMatches": true,
+  "unresolvedDiagnostics": [
+    "Three software-core GET_VARIABLE queries report unavailable pgxp_vertex, pgxp_texture and filter keys; selected software options are separately retained/checked.",
+    "Stock-GLSL and MIDI diagnostics are retained in raw logs.",
+    "Frontend frame budget is not asserted to equal PS1 VSyncs or logical banner progress."
+  ],
+  "nextGate": "Manually reach and freeze a matched condition-8 battle/banner checkpoint; verify state/recording reproduction and context, then add an observed-original comparison profile and justified regions/thresholds."
+}

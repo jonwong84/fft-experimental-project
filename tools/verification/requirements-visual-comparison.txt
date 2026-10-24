@@ -1,0 +1,2 @@
+# Optional developer PNG adapter only; never a managed game/runtime dependency.
+Pillow==12.3.0

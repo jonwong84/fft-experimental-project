@@ -1,0 +1,83 @@
+{
+  "format": "fft.original-banner-state-observation",
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "managedBase": "66e08c0",
+  "edition": "SCUS-94221",
+  "evidenceKind": "emulator-observation-bounded-state-restore",
+  "profile": {
+    "localPath": "scratch/retroarch-reference/profile.json",
+    "sha256": "2179365bc1b2ea9643a835ebfa461ee12940841ba023ee1c05e9ee11002dcadf",
+    "byteLength": 2287
+  },
+  "originalScreenshot": {
+    "localPath": "scratch/banner-033-original-a/banner.png",
+    "sha256": "a36a373373f002c25d5d415c775e4336591bf8369c477f47cc3ac196367b9485",
+    "byteLength": 43009
+  },
+  "state": {
+    "localPath": "scratch/banner-033-original-a/fft-clean-base-game.state",
+    "sha256": "133b893188d0abe7909725f910496b74bad9cfc85733cb38d76fece03048901a",
+    "byteLength": 1528924
+  },
+  "thumbnail": {
+    "localPath": "scratch/banner-033-original-a/state-thumbnail.png",
+    "sha256": "a36a373373f002c25d5d415c775e4336591bf8369c477f47cc3ac196367b9485",
+    "byteLength": 43009
+  },
+  "restoreReport": {
+    "localPath": "scratch/banner-033-original-a/state-check-004.json",
+    "sha256": "b298c6a26459ddae889ebf0887d002e0f938e3edf3ab797397d4849f2a575e09",
+    "byteLength": 2165
+  },
+  "originalPngSize": [
+    280,
+    240
+  ],
+  "pngMode": "RGB",
+  "thumbnailByteMatchesScreenshot": true,
+  "restoredBannerSceneVisuallyInspected": true,
+  "repeatRestoredImagesByteIdentical": true,
+  "selectedCoreOptionsRetained": true,
+  "normalConfigsUnchanged": true,
+  "originalComparisonPerformed": false,
+  "originalComparisonMeaning": "original-versus-managed rendering",
+  "replayPlaybackVerified": false,
+  "eventPathVerified": false,
+  "logicalBannerTickVerified": false,
+  "restoreImages": [
+    {
+      "localPath": "scratch/banner-033-original-a/restore-004-a/frame.png",
+      "sha256": "4fc1a51f516efbd1c94493476f0b382e901e2c0e0baf7cc865a391e4463d65aa",
+      "byteLength": 43233
+    },
+    {
+      "localPath": "scratch/banner-033-original-a/restore-004-b/frame.png",
+      "sha256": "4fc1a51f516efbd1c94493476f0b382e901e2c0e0baf7cc865a391e4463d65aa",
+      "byteLength": 43233
+    }
+  ],
+  "frontendFrameBudgetAfterEntryState": 4,
+  "screenshotVersusRestoreDiagnostic": {
+    "changedRgbPixels": 834,
+    "changedBounds": [
+      12,
+      0,
+      240,
+      194
+    ],
+    "cause": "unclassified; not the same verified animation frame"
+  },
+  "procedure": "Copy user state/thumbnail under ignored scratch; verify pinned inputs/profile/BIOS; load separate state copies with --entryslot 0, private state/options/save directories, disconnected controllers, requested null input drivers, no patches/SRAM load-save; capture after four frontend frames. Commands and logs retained per run.",
+  "exploratoryFailure": "Two earlier one-frame runs captured black after state loading. Retained separately; not accepted visual references.",
+  "retainedDiagnostics": [
+    "[ERROR] [Environ] GET_VARIABLE: beetle_psx_pgxp_vertex - Invalid value.",
+    "[ERROR] [Environ] GET_VARIABLE: beetle_psx_pgxp_texture - Invalid value.",
+    "[ERROR] [Environ] GET_VARIABLE: beetle_psx_filter - Invalid value.",
+    "[WARN] [GLSL] Stock GLSL shaders will be used.",
+    "[WARN] [MIDI] Output device \"Microsoft GS Wavetable Synth\" unavailable."
+  ],
+  "nextGate": "Verify encounter/event identity and timing anchors, obtain pre-banner state for reveal/hide traces, then add an explicit observed-original comparison profile with justified regions/thresholds and comparative human review.",
+  "managedSuiteRerun": false,
+  "lastManagedTestsPassed": 1388
+}

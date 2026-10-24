@@ -1,0 +1,882 @@
+{
+  "format": "fft.task-barrier-contract-expectations",
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "managedBase": "fea60ef",
+  "specificationOnly": true,
+  "executed": false,
+  "proofId": "sample:task-barrier-contract/v1",
+  "scene": "Battle",
+  "defaultSceneRunId": "sample:scene/a",
+  "evidencePolicy": "Source-derived predicates plus declared native identity/order/failure policies; no reducer, original execution or accepted runtime format.",
+  "initialStateConvention": "All cases start at tick 0, Ready, with listed task records and next sequence one above the largest listed sequence. Task references use the default scene unless explicitly overridden. Seeded records summarize accepted setup history, not a proposed public restore API.",
+  "taskClassCodes": {
+    "Camera": 4,
+    "DarkScreenTransition": 54,
+    "DarkScreenHold": 55,
+    "ConditionDisplay": 56
+  },
+  "limits": {
+    "maxLiveTasks": 64,
+    "maxTotalStarted": 256,
+    "maxUpdatesPerCommand": 64,
+    "ticksPerAdvance": 1,
+    "maxIdCharacters": 256
+  },
+  "cases": [
+    {
+      "id": "BAR-EMPTY-001",
+      "evidence": "source-derived predicate and declared native tick boundary",
+      "initialTasks": [],
+      "commands": [
+        {
+          "command": "BeginBarrier",
+          "selector": "Camera",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [],
+          "updateBudget": 64
+        }
+      ],
+      "expected": [
+        {
+          "afterCommand": 1,
+          "tick": 0,
+          "barrier": "Pending",
+          "polls": 0
+        },
+        {
+          "afterCommand": 2,
+          "tick": 1,
+          "barrier": "Released",
+          "matching": []
+        }
+      ],
+      "traceKinds": [
+        "BarrierEntered",
+        "TickAdvanced",
+        "BarrierPolled",
+        "BarrierReleased"
+      ]
+    },
+    {
+      "id": "BAR-MULTI-002",
+      "evidence": "source-derived scene-wide live predicate",
+      "initialTasks": [
+        {
+          "sequence": 1,
+          "owner": "sample:owner/a",
+          "family": "Camera",
+          "phase": "Running",
+          "revision": 0
+        },
+        {
+          "sequence": 2,
+          "owner": "sample:owner/b",
+          "family": "Camera",
+          "phase": "Running",
+          "revision": 0
+        }
+      ],
+      "commands": [
+        {
+          "command": "BeginBarrier",
+          "selector": "Camera",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [
+            {
+              "update": "Complete",
+              "sequence": 1,
+              "expectedRevision": 0
+            }
+          ],
+          "updateBudget": 64
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [
+            {
+              "update": "Complete",
+              "sequence": 2,
+              "expectedRevision": 0
+            }
+          ],
+          "updateBudget": 64
+        }
+      ],
+      "expected": [
+        {
+          "afterCommand": 2,
+          "tick": 1,
+          "barrier": "Pending",
+          "matching": [
+            2
+          ],
+          "task1Phase": "Completed",
+          "task2Phase": "Running"
+        },
+        {
+          "afterCommand": 3,
+          "tick": 2,
+          "barrier": "Released",
+          "matching": [],
+          "task1Revision": 1,
+          "task2Revision": 1
+        }
+      ],
+      "replayExpectation": "Same scene ID, initial records and ordered commands yield identical snapshots and ordered traces."
+    },
+    {
+      "id": "BAR-NONMATCH-003",
+      "evidence": "source-derived class predicate; task completion is not event completion",
+      "initialTasks": [
+        {
+          "sequence": 1,
+          "owner": "sample:owner/a",
+          "family": "ConditionDisplay",
+          "phase": "Running",
+          "revision": 0
+        }
+      ],
+      "commands": [
+        {
+          "command": "BeginBarrier",
+          "selector": "Camera",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [],
+          "updateBudget": 64
+        }
+      ],
+      "expected": [
+        {
+          "afterCommand": 2,
+          "tick": 1,
+          "barrier": "Released",
+          "matching": [],
+          "task1Phase": "Running"
+        }
+      ],
+      "exclusion": "No interpreter/scene exit or cancellation is implied."
+    },
+    {
+      "id": "BAR-LIVE-004",
+      "evidence": "source-derived live set, not entry-time capture",
+      "initialTasks": [
+        {
+          "sequence": 1,
+          "owner": "sample:owner/a",
+          "family": "Camera",
+          "phase": "Running",
+          "revision": 0
+        }
+      ],
+      "commands": [
+        {
+          "command": "BeginBarrier",
+          "selector": "Camera",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [
+            {
+              "update": "Complete",
+              "sequence": 1,
+              "expectedRevision": 0
+            },
+            {
+              "update": "Start",
+              "family": "Camera",
+              "owner": "sample:owner/b"
+            }
+          ],
+          "updateBudget": 64
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [
+            {
+              "update": "Complete",
+              "sequence": 2,
+              "expectedRevision": 0
+            }
+          ],
+          "updateBudget": 64
+        }
+      ],
+      "expected": [
+        {
+          "afterCommand": 2,
+          "tick": 1,
+          "barrier": "Pending",
+          "matching": [
+            2
+          ],
+          "nextSequence": 3
+        },
+        {
+          "afterCommand": 3,
+          "tick": 2,
+          "barrier": "Released",
+          "matching": []
+        }
+      ]
+    },
+    {
+      "id": "BAR-DARK-005",
+      "evidence": "source-derived 54/55 lifecycle plus declared instance/revision protocol",
+      "initialTasks": [
+        {
+          "sequence": 1,
+          "owner": "sample:owner/a",
+          "family": "DarkScreen",
+          "phase": "Entering",
+          "revision": 0
+        }
+      ],
+      "commands": [
+        {
+          "command": "BeginBarrier",
+          "selector": "DarkScreenTransition",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [
+            {
+              "update": "Phase",
+              "sequence": 1,
+              "expectedRevision": 0,
+              "target": "Holding"
+            }
+          ],
+          "updateBudget": 64
+        },
+        {
+          "command": "BeginBarrier",
+          "selector": "DarkScreenHold",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [
+            {
+              "update": "Phase",
+              "sequence": 1,
+              "expectedRevision": 1,
+              "target": "Leaving"
+            }
+          ],
+          "updateBudget": 64
+        },
+        {
+          "command": "BeginBarrier",
+          "selector": "DarkScreenTransition",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [
+            {
+              "update": "Complete",
+              "sequence": 1,
+              "expectedRevision": 2
+            }
+          ],
+          "updateBudget": 64
+        }
+      ],
+      "expected": [
+        {
+          "afterCommand": 2,
+          "tick": 1,
+          "barrier": "Released",
+          "task1Phase": "Holding",
+          "task1Revision": 1,
+          "task1Class": 55,
+          "liveTasks": 1
+        },
+        {
+          "afterCommand": 4,
+          "tick": 2,
+          "barrier": "Released",
+          "task1Phase": "Leaving",
+          "task1Revision": 2,
+          "task1Class": 54,
+          "liveTasks": 1
+        },
+        {
+          "afterCommand": 6,
+          "tick": 3,
+          "barrier": "Released",
+          "task1Phase": "Completed",
+          "task1Revision": 3,
+          "task1Class": null,
+          "liveTasks": 0,
+          "totalStarted": 1
+        }
+      ],
+      "exclusion": "No opcode-77 first-slot selection or graphics worker is implemented."
+    },
+    {
+      "id": "BAR-CANCEL-006",
+      "evidence": "declared acknowledged-cancellation policy, consistent with absence predicate",
+      "initialTasks": [
+        {
+          "sequence": 1,
+          "owner": "sample:owner/a",
+          "family": "Camera",
+          "phase": "Running",
+          "revision": 0
+        }
+      ],
+      "commands": [
+        {
+          "command": "BeginBarrier",
+          "selector": "Camera",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [
+            {
+              "update": "Cancel",
+              "sequence": 1,
+              "expectedRevision": 0,
+              "reason": "OwnerAcknowledgedCancellation"
+            }
+          ],
+          "updateBudget": 64
+        }
+      ],
+      "expected": [
+        {
+          "afterCommand": 2,
+          "tick": 1,
+          "barrier": "Released",
+          "task1Phase": "Cancelled",
+          "task1Revision": 1,
+          "matching": []
+        }
+      ],
+      "exclusion": "Cancellation is not reported as successful task work or whole-event completion."
+    },
+    {
+      "id": "BAR-PRECOMPLETED-007",
+      "evidence": "source-derived mandatory first yield",
+      "initialTasks": [
+        {
+          "sequence": 1,
+          "owner": "sample:owner/a",
+          "family": "Camera",
+          "phase": "Completed",
+          "revision": 1
+        }
+      ],
+      "commands": [
+        {
+          "command": "BeginBarrier",
+          "selector": "Camera",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [],
+          "updateBudget": 64
+        }
+      ],
+      "expected": [
+        {
+          "afterCommand": 1,
+          "tick": 0,
+          "barrier": "Pending",
+          "polls": 0
+        },
+        {
+          "afterCommand": 2,
+          "tick": 1,
+          "barrier": "Released",
+          "matching": []
+        }
+      ]
+    },
+    {
+      "id": "BAR-DUPLICATE-008",
+      "evidence": "declared terminal tombstone policy",
+      "initialTasks": [
+        {
+          "sequence": 1,
+          "owner": "sample:owner/a",
+          "family": "Camera",
+          "phase": "Completed",
+          "revision": 1
+        }
+      ],
+      "commands": [
+        {
+          "command": "BeginBarrier",
+          "selector": "Camera",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [
+            {
+              "update": "Complete",
+              "sequence": 1,
+              "expectedRevision": 0
+            }
+          ],
+          "updateBudget": 64
+        }
+      ],
+      "expectedRejection": {
+        "atCommand": 2,
+        "reason": "DuplicateTerminalUpdate",
+        "tick": 0,
+        "barrier": "Pending",
+        "task1Revision": 1,
+        "sameInputSnapshot": true,
+        "committedTrace": [],
+        "acceptedUpdates": 0,
+        "consumedTicks": 0
+      }
+    },
+    {
+      "id": "BAR-STALE-009",
+      "evidence": "declared revision check",
+      "initialTasks": [
+        {
+          "sequence": 1,
+          "owner": "sample:owner/a",
+          "family": "DarkScreen",
+          "phase": "Holding",
+          "revision": 1
+        }
+      ],
+      "commands": [
+        {
+          "command": "BeginBarrier",
+          "selector": "DarkScreenHold",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [
+            {
+              "update": "Phase",
+              "sequence": 1,
+              "expectedRevision": 0,
+              "target": "Leaving"
+            }
+          ],
+          "updateBudget": 64
+        }
+      ],
+      "expectedRejection": {
+        "atCommand": 2,
+        "reason": "StaleTaskRevision",
+        "tick": 0,
+        "barrier": "Pending",
+        "task1Phase": "Holding",
+        "sameInputSnapshot": true,
+        "committedTrace": []
+      }
+    },
+    {
+      "id": "BAR-FOREIGN-010",
+      "evidence": "declared scene identity check",
+      "initialTasks": [
+        {
+          "sequence": 1,
+          "owner": "sample:owner/a",
+          "family": "Camera",
+          "phase": "Running",
+          "revision": 0
+        }
+      ],
+      "commands": [
+        {
+          "command": "BeginBarrier",
+          "selector": "Camera",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [
+            {
+              "update": "Complete",
+              "sceneRunId": "sample:scene/b",
+              "sequence": 1,
+              "expectedRevision": 0
+            }
+          ],
+          "updateBudget": 64
+        }
+      ],
+      "expectedRejection": {
+        "atCommand": 2,
+        "reason": "WrongScene",
+        "tick": 0,
+        "barrier": "Pending",
+        "sameInputSnapshot": true,
+        "committedTrace": []
+      }
+    },
+    {
+      "id": "BAR-UNKNOWN-011",
+      "evidence": "declared identity lookup check",
+      "initialTasks": [
+        {
+          "sequence": 1,
+          "owner": "sample:owner/a",
+          "family": "Camera",
+          "phase": "Running",
+          "revision": 0
+        }
+      ],
+      "commands": [
+        {
+          "command": "BeginBarrier",
+          "selector": "Camera",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [
+            {
+              "update": "Complete",
+              "sequence": 99,
+              "expectedRevision": 0
+            }
+          ],
+          "updateBudget": 64
+        }
+      ],
+      "expectedRejection": {
+        "atCommand": 2,
+        "reason": "UnknownTask",
+        "tick": 0,
+        "barrier": "Pending",
+        "sameInputSnapshot": true,
+        "committedTrace": []
+      }
+    },
+    {
+      "id": "BAR-ATOMIC-012",
+      "evidence": "declared transactional candidate allocation",
+      "initialTasks": [
+        {
+          "sequence": 1,
+          "owner": "sample:owner/a",
+          "family": "Camera",
+          "phase": "Running",
+          "revision": 0
+        }
+      ],
+      "commands": [
+        {
+          "command": "BeginBarrier",
+          "selector": "Camera",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [
+            {
+              "update": "Start",
+              "family": "ConditionDisplay",
+              "owner": "sample:owner/a"
+            },
+            {
+              "update": "Complete",
+              "sequence": 1,
+              "expectedRevision": 9
+            }
+          ],
+          "updateBudget": 64
+        }
+      ],
+      "expectedRejection": {
+        "atCommand": 2,
+        "reason": "StaleTaskRevision",
+        "tick": 0,
+        "barrier": "Pending",
+        "nextSequence": 2,
+        "liveTasks": 1,
+        "totalStarted": 1,
+        "task2Exists": false,
+        "sameInputSnapshot": true,
+        "committedTrace": []
+      }
+    },
+    {
+      "id": "BAR-UPDATE-BUDGET-013",
+      "evidence": "declared per-command resource bound",
+      "initialTasks": [
+        {
+          "sequence": 1,
+          "owner": "sample:owner/a",
+          "family": "Camera",
+          "phase": "Running",
+          "revision": 0
+        }
+      ],
+      "commands": [
+        {
+          "command": "BeginBarrier",
+          "selector": "Camera",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [
+            {
+              "update": "Complete",
+              "sequence": 1,
+              "expectedRevision": 0
+            },
+            {
+              "update": "Start",
+              "family": "ConditionDisplay",
+              "owner": "sample:owner/a"
+            }
+          ],
+          "updateBudget": 1
+        }
+      ],
+      "expectedRejection": {
+        "atCommand": 2,
+        "reason": "UpdateBudgetExceeded",
+        "tick": 0,
+        "barrier": "Pending",
+        "sameInputSnapshot": true,
+        "committedTrace": []
+      }
+    },
+    {
+      "id": "BAR-PHASE-014",
+      "evidence": "declared family transition guard",
+      "initialTasks": [
+        {
+          "sequence": 1,
+          "owner": "sample:owner/a",
+          "family": "Camera",
+          "phase": "Running",
+          "revision": 0
+        }
+      ],
+      "commands": [
+        {
+          "command": "BeginBarrier",
+          "selector": "Camera",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [
+            {
+              "update": "Phase",
+              "sequence": 1,
+              "expectedRevision": 0,
+              "target": "Holding"
+            }
+          ],
+          "updateBudget": 64
+        }
+      ],
+      "expectedRejection": {
+        "atCommand": 2,
+        "reason": "IllegalTaskTransition",
+        "tick": 0,
+        "task1Phase": "Running",
+        "sameInputSnapshot": true,
+        "committedTrace": []
+      }
+    },
+    {
+      "id": "BAR-SEQUENTIAL-015",
+      "evidence": "source-derived first yield applied to each barrier",
+      "initialTasks": [],
+      "commands": [
+        {
+          "command": "BeginBarrier",
+          "selector": "Camera",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [],
+          "updateBudget": 64
+        },
+        {
+          "command": "BeginBarrier",
+          "selector": "Camera",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [],
+          "updateBudget": 64
+        }
+      ],
+      "expected": [
+        {
+          "afterCommand": 2,
+          "tick": 1,
+          "barrier": "Released"
+        },
+        {
+          "afterCommand": 3,
+          "tick": 1,
+          "barrier": "Pending",
+          "pollsForNewBarrier": 0
+        },
+        {
+          "afterCommand": 4,
+          "tick": 2,
+          "barrier": "Released"
+        }
+      ]
+    },
+    {
+      "id": "BAR-PENDING-016",
+      "evidence": "declared single-consumer proof boundary",
+      "initialTasks": [
+        {
+          "sequence": 1,
+          "owner": "sample:owner/a",
+          "family": "Camera",
+          "phase": "Running",
+          "revision": 0
+        }
+      ],
+      "commands": [
+        {
+          "command": "BeginBarrier",
+          "selector": "Camera",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        },
+        {
+          "command": "BeginBarrier",
+          "selector": "ConditionDisplay",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        }
+      ],
+      "expectedRejection": {
+        "atCommand": 2,
+        "reason": "BarrierAlreadyPending",
+        "tick": 0,
+        "barrier": "Pending",
+        "selector": "Camera",
+        "sameInputSnapshot": true,
+        "committedTrace": []
+      }
+    },
+    {
+      "id": "BAR-ORDERED-PHASES-017",
+      "evidence": "declared update order and live poll boundary",
+      "initialTasks": [
+        {
+          "sequence": 1,
+          "owner": "sample:owner/a",
+          "family": "DarkScreen",
+          "phase": "Holding",
+          "revision": 1
+        }
+      ],
+      "commands": [
+        {
+          "command": "BeginBarrier",
+          "selector": "DarkScreenTransition",
+          "consumer": "sample:consumer/event-a",
+          "sourceOffset": 4
+        },
+        {
+          "command": "AdvanceTick",
+          "updates": [
+            {
+              "update": "Phase",
+              "sequence": 1,
+              "expectedRevision": 1,
+              "target": "Leaving"
+            },
+            {
+              "update": "Complete",
+              "sequence": 1,
+              "expectedRevision": 2
+            }
+          ],
+          "updateBudget": 64
+        }
+      ],
+      "expected": [
+        {
+          "afterCommand": 2,
+          "tick": 1,
+          "barrier": "Released",
+          "task1Phase": "Completed",
+          "task1Revision": 3,
+          "matching": []
+        }
+      ],
+      "traceKinds": [
+        "BarrierEntered",
+        "TickAdvanced",
+        "TaskPhaseChanged",
+        "TaskCompleted",
+        "BarrierPolled",
+        "BarrierReleased"
+      ]
+    }
+  ],
+  "additionalImplementationChecks": [
+    "Live/start/tombstone capacity without eviction or ID reuse; complete-before-start ordering at live capacity.",
+    "Start commands with identical payload allocate distinct instances; valid distinct revisions are processed in supplied order.",
+    "Illegal dark completion before Leaving; cancelled or completed tasks cannot be revived.",
+    "Counter overflow and malformed/unknown selectors or payloads reject atomically.",
+    "ApplyUpdates while Pending rejects; updates must be part of the polling tick.",
+    "All tasks complete does not implicitly release a fresh barrier, execute D4/DB, exit an event or close the scene."
+  ],
+  "sourcePaths": [
+    "include/fft/thread.h",
+    "src/battle/event/interpreter.c",
+    "src/world/event/interpreter.c",
+    "src/lib/thread/scheduler.c",
+    "src/lib/event/script/control.c",
+    "src/lib/event/script/scene_commands.c",
+    "src/lib/event/script/camera_fusion.c",
+    "src/lib/event/scene/menu_overlays.c",
+    "src/event/require/entry_conditions.c",
+    "src/event/require/entry_dark_screen.c"
+  ]
+}
