@@ -1,5 +1,11 @@
 # ZOD-066 — Original common BattleStart event
 
+Follow-up (2026-10-24): the retained banner captures are now
+[identified as event 4](../development/original-banner-event-identity.md), with
+its condition-8 command at offset 804 and wait at 807. They do not observe the
+common event-401 fallback described below. This source analysis retains its
+historical scope; event-401 activation and complete playback remain open.
+
 Date: 2026-10-23. Edition: North American PS1 `SCUS-94221`.
 Read-only reference HEAD, verified during this investigation:
 `11464943bbdbd2a0af022d90cb7f10455cf911df`.

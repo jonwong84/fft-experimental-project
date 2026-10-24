@@ -354,6 +354,38 @@ the next gate. Later natural completion after the hide press, boundary timings/
 repeats, USB/display latency, event 401 identity and broader integration remain
 open; ZOD-033 remains partial.
 
+**Captured event identity (2026-10-24):** The
+[source-bound study](development/original-banner-event-identity.md) identifies the
+retained banner as **event 4**, not common BattleStart event 401. Eight selected
+states agree on current/cache IDs, a unique full archive payload match after
+the four-byte loader marker, text relocation and verified resident interpreter
+code. Saved $fp carries the command offset: the earliest pre-banner state waits
+at 731; the condition-8/hold-60 banner is command 804 and its active task matches
+the task-56 wait at 807. Packed battle-not-started/debug flags decode as 1/0,
+with scenario-active 1. Earliest event entry and conditional selection are not
+captured; event-401 fallback activation remains unobserved. Two inspection reports
+repeat exactly; all 163 Python tests pass (11 new). No emulator or original
+instruction execution, runtime changes or .NET rerun; last full .NET validation
+remains 1,494. Original bytes/media stay ignored; nothing is committed automatically.
+Next trace/select bounded opcode-78 scene admission using the existing preloaded
+driver/readiness contract. Preserve loading duration, complete event playback,
+additional scene capabilities and exact entry captures as separate gates.
+
+**ZOD-080 admission/update-order selection (2026-10-24):** The
+[new contract](architecture/zod-080-banner-opcode-admission.md) traces condition 8's
+two u8 operands, asynchronous worker start, preloaded readiness and native
+event-before-child scheduling. The retained hold continuations independently
+show event offset 807 with active worker at source frame 9001, still 807 with a
+cleared worker at 9002, and offset 813/new condition 0 at 9003. The old synthetic
+effect-first adapter stays unchanged. Select a separate ordered Core transaction:
+task clear at H+31, parent resumption at H+32; new effects never step on their
+birth tick. **Next: ZOD-081**, typed pure Core execution/rollback/replay; then
+ZOD-082's explicit authored preloaded profile and strict preparation/loading/host
+composition. The 28 new authored expectations are specification-only, unexecuted.
+No runtime/profile changes, emulator run or suite rerun; historical validation
+remains 1,494 .NET / 163 Python. Existing event-identity work was uncommitted at
+entry and remains preserved. ZOD-079 stays deferred. No automatic commit.
+
 **Owner formula direction (2026-10-24):** Keep weapon and ability algorithms
 readable/editable as ordinary C# code. The
 [formula notes](development/editable-combat-formulas.md) distinguish current bounded

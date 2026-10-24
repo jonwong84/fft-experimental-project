@@ -1,0 +1,147 @@
+{
+  "format": "fft.banner-opcode-admission-source-analysis",
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "managedBase": "07431935a64890db4524ae0be223a9c688392d21",
+  "sourceTrace": {
+    "localPath": "scratch/banner-admission-trace-a/report.json",
+    "bytes": 2544,
+    "sha256": "1741153b169dd63d4b47dc35bc7f48ccc1a392f9a3781f53f3940320688fe2ac"
+  },
+  "traceScript": {
+    "localPath": "scratch/trace-banner-admission.py",
+    "bytes": 2740,
+    "sha256": "cf0720ea0232e85d3e02d3eb155844cea609fa7085ea98794bc0b4dacc4f1170"
+  },
+  "sourcePaths": [
+    "src/battle/event/interpreter.c",
+    "src/lib/event/script/control.c",
+    "src/lib/thread/scheduler.c",
+    "target/battle.yaml",
+    "src/lib/event/scene/menu_overlays.c",
+    "src/event/require/entry_conditions.c",
+    "src/event/require/conditions.c",
+    "src/event/require/screen_support.c",
+    "include/fft/thread.h"
+  ],
+  "inputs": {
+    "battle": {
+      "localPath": "scratch/all-data-extraction/BATTLE.BIN",
+      "bytes": 1397096,
+      "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94"
+    },
+    "archive": {
+      "localPath": "scratch/all-data-extraction/EVENT/TEST.EVT",
+      "bytes": 4096000,
+      "sha256": "107b109254ccbb150aca7baf336b632837b22e340677e2b9e746ac61b3de4405"
+    }
+  },
+  "scheduler": {
+    "address": 2148846208,
+    "bytes": 308,
+    "sha256": "2f09dae8797f8acbde873608b889474322bad8efbce867c640d5ef74cdb1289a"
+  },
+  "observations": [
+    {
+      "state": {
+        "localPath": "scratch/banner-circle-hold-after-a/fft-clean-base-game.state1",
+        "bytes": 1499887,
+        "sha256": "0f7d977bab63bdf32c21a4a68e7cd6bd829366f98439d526ddc1e188bef9e598"
+      },
+      "sourceFrame": 9001,
+      "eventId": 4,
+      "eventSlot": 1,
+      "eventInstructionOffset": 807,
+      "workerSlot": 3,
+      "condition": 8,
+      "hold": 60,
+      "workerReturn": 2149359464,
+      "workerRunning": 1,
+      "workerTask": 56
+    },
+    {
+      "state": {
+        "localPath": "scratch/banner-circle-hold-exit-c/first/states/fft-clean-base-game.state.auto",
+        "bytes": 1496248,
+        "sha256": "3d9d1d25b5bddcd0f5e6325b464d611b862d19c93f025f54200211c8964e6f72"
+      },
+      "sourceFrame": 9002,
+      "eventId": 4,
+      "eventSlot": 1,
+      "eventInstructionOffset": 807,
+      "workerSlot": 3,
+      "condition": 8,
+      "hold": 60,
+      "workerReturn": 2148845956,
+      "workerRunning": 0,
+      "workerTask": 0
+    },
+    {
+      "state": {
+        "localPath": "scratch/banner-circle-hold-exit-a/first/states/fft-clean-base-game.state.auto",
+        "bytes": 1492949,
+        "sha256": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+      },
+      "sourceFrame": 9003,
+      "eventId": 4,
+      "eventSlot": 1,
+      "eventInstructionOffset": 813,
+      "workerSlot": 3,
+      "condition": 0,
+      "hold": 60,
+      "workerReturn": 2149333960,
+      "workerRunning": 1,
+      "workerTask": 56
+    }
+  ],
+  "contract": {
+    "localPath": "docs/evidence/events/banner-opcode-admission-contract-v1.json",
+    "bytes": 17699,
+    "sha256": "b6d4a0a8fab094a5dfa73cb3ad116e156f26831c2d759e550e270380aeaed42e"
+  },
+  "caseCount": 28,
+  "expectationsExecuted": false,
+  "selectedImplementation": [
+    "ZOD-081",
+    "ZOD-082"
+  ],
+  "runtimeChanged": false,
+  "emulatorLaunched": false,
+  "lastDotnetTestsPassed": 1494,
+  "lastPythonTestsPassed": 163,
+  "suitesRerun": false,
+  "limits": [
+    "Inspection of retained original continuations; no new emulator run.",
+    "Source post-readiness order only; no general task scheduler, loading duration or event-entry equivalence.",
+    "New-profile preloading is a selected domain, not original loading latency.",
+    "Existing effect-first adapter is unchanged; new event-before-worker transaction is not yet implemented."
+  ],
+  "analysisTools": [
+    {
+      "localPath": "tools/verification/inspect_banner_event.py",
+      "bytes": 10569,
+      "sha256": "e2293c00c86507df9fc5847331dd6ac9c245aff21ba1d33f41855ea9df0c6362"
+    },
+    {
+      "localPath": "tools/verification/compare_banner_hide.py",
+      "bytes": 21845,
+      "sha256": "9a375e7dfa44fd18404d1f2fd8eabd31db5a166dded4ef25432b1d50fec56c28"
+    },
+    {
+      "localPath": "tools/verification/analyze_banner_precision.py",
+      "bytes": 11968,
+      "sha256": "0721ef12c3d54fd4a2d8c69ee3b942dc40bff1cef3e6737275ad5e0912341bf2"
+    },
+    {
+      "localPath": "tools/verification/trace_banner_draw_state.py",
+      "bytes": 6618,
+      "sha256": "15f44edd29c87f43ae0824c92e3b415deec58e6bd80c2b0ab487f7d4d3afdd9a"
+    },
+    {
+      "localPath": "tools/verification/capture_banner_continuation.py",
+      "bytes": 16116,
+      "sha256": "d9d973d970f8ebfdf9bf9b5907022a8c9ff70cdb6e26d955b9734c8a08cf269c"
+    }
+  ]
+}

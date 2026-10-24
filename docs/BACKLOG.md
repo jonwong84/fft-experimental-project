@@ -88,6 +88,12 @@ pass (86 new). Two preparations and two finite Windows GPU capture sets match;
 prepared-only loading uses no original input/reference paths. Original loading
 latency, opcode-78 admission and visual equivalence remain separate. The next
 scene capability needs a separately selected source-traced milestone.
+ZOD-080 now selects [bounded opcode-78 admission and update order](architecture/zod-080-banner-opcode-admission.md).
+Retained original states show that the parent observes banner termination on the
+following update. The existing synthetic effect-first adapter stays unchanged.
+Next implement **ZOD-081's ordered Core transaction**, then **ZOD-082's separate
+authored preloaded profile**. The 28 new contract expectations are specification-only;
+no opcode is admitted yet. ZOD-079 remains deferred.
 ZOD-068's synthetic world-checkpoint
 service remains an independent lane; ZOD-069's native Save/Load UI waits on that
 service and minimal client navigation. Original campaign support remains open.
@@ -779,6 +785,18 @@ completion after this hide press, input boundaries/repeats, BSV playback, latenc
 event identity and wider integration remain open. Review/commit this evidence,
 then select the next independent gate. ZOD-033 stays partial.
 
+**Captured event identity follow-up:** The [saved-state verifier](development/original-banner-event-identity.md)
+identifies event **4** in all eight selected states through current/cache IDs,
+unique full archive payload match, text relocation and the saved interpreter
+context. The condition-8/hold-60 command is at offset 804, followed by the task-56
+wait at 807; active worker arguments agree. The earliest state is already waiting
+inside event 4 at offset 731. Scenario-active and packed gate bits support this
+scenario path; event 401's fallback is not observed. Two reports repeat; all 163
+Python tests pass (11 new). No emulator, instruction execution, managed changes
+or .NET rerun; last full .NET validation remains 1,494. Next trace/select bounded
+opcode-78 scene admission with the preloaded driver; event entry, original
+loading duration and complete playback remain separate gates. ZOD-033 stays partial.
+
 **Scope:** Capture selected scenes at fixed state/presentation ticks and compare them with documented baseline/reference captures using appropriate regions and tolerances.
 
 **Acceptance criteria:** Capture conditions are reproducible; reports distinguish geometry, palette, transparency/order, and timing discrepancies from simulation failures; thresholds are justified rather than masking visible defects. Synthetic renderer checks can run without game files; original media and comparisons remain local. Human inspection is recorded for effects automated metrics cannot establish.
@@ -1372,6 +1390,66 @@ local preparations and a finite Windows preview/check with repeatable captures.
 Retain existing event APIs/profiles and opcode-78 rejection, Core/Engine purity,
 save schemas and package graphs. No other banners, original loading delay,
 EventEnd, full BattleStart, map/camera integration or original equivalence claim.
+
+### ZOD-080 — Trace bounded DisplayConditions admission and update order
+
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-074, ZOD-076, ZOD-078
+
+**Result (2026-10-24):** The [source/contract selection](architecture/zod-080-banner-opcode-admission.md)
+traces unsigned-byte operands, asynchronous start, one task-56 worker, native
+event-before-child scheduling and preloaded readiness. Three retained original
+states at source frames 9001/9002/9003 show event offset 807 / live worker,
+807 / cleared worker, then 813 / a different condition. The first parent poll
+after completion is on the next update. The current synthetic effect-first
+adapter is preserved; 28 authored expectations remain unexecuted. No runtime
+changes or new original run; last suite counts remain 1,494 .NET / 163 Python.
+
+**Acceptance criteria:** Pin source revision and original evidence; trace operand
+widths, callers, startup, slot/task lifetime, worker clear and parent visibility.
+Select one condition-8/hold-0..255 preloaded authored profile with explicit phase
+order, readiness, ownership, rollback/budget and legacy isolation rules. Record
+independently authored expectations and a bounded implementation split; do not
+enable original events, loading delays, Ready, other conditions or EventEnd.
+
+### ZOD-081 — Prove ordered event/banner transactions in Core
+
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-080
+
+**Scope:** Implement the selected typed event-before-worker program/adapter using
+the existing conditional executor, banner reducer and ledger validation. Poll/resume
+the prior VM suspension before post-VM worker facts; do not step a newborn effect
+at its birth tick. Publish clock, VM, task/effect states, identities and ordered
+trace atomically. Preserve old API behavior/traces and the effect-first adapter.
+
+**Acceptance criteria:** Convert ZOD-080's Core cases to automated regressions and
+add meaningful boundary/late-failure checks. Natural task clear remains H+31 while
+a waiting parent resumes H+32. Check Circle extra yield, hide ignore, mandatory
+E5 yield, other owners, post-poll facts, cumulative budgets, rollback, checked
+counters, protected managed identity, retained scene lifetime and deterministic
+replay. Keep typed admission private to the atomic executor; no exposed half-tick
+or callback. One ready condition-8 effect per scene, including terminal retention;
+explicit Circle samples and resource/owner IDs. No AssetTool/Content/profile/schema,
+retail import, startup-duration or graphics work. Run locked restore, zero-warning
+Release build and appropriate full regressions.
+
+### ZOD-082 — Prepare and execute the authored preloaded banner profile
+
+**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-081, ZOD-078
+
+**Scope:** Add explicit authored BATTLE/non-tutorial/speed-one opcode-78 conversion,
+strict Content validation/projection and prepared-files-only host composition for
+ZOD-080's proposed ordered preloaded profile. Load/validate artwork/resources
+before scene creation and bind stable logical identities at the composition root.
+
+**Acceptance criteria:** Decode condition and hold as separate unsigned bytes;
+admit only one condition-8 record and hold 0..255. Keep old profiles/exports and
+JSON contracts closed to 78. Reject WORLD, unsupported conditions/records even
+unreachable, retail provenance and full event 4/401 playback. Verify authored raw/
+processed preparation -> strict load -> ordered Core execution -> accepted-snapshot
+presentation, failed-readiness safety and deterministic replay with omitted/repeated
+draws. Runtime uses prepared files only; resources never enter Core. Demonstrate
+finite repeatable host checks and retain explicit preloaded/startup/latency limits.
+No other banner family, native slot emulator, EventEnd, full BattleStart or automatic commit.
 
 ## Authoring, extensions, and later goals
 
