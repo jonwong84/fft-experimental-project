@@ -1,5 +1,10 @@
 # Early banner reveal and readiness — bounded ZOD-033 diagnostic
 
+Follow-up: the [triangle color correction](banner-triangle-colors.md) now explains
+and fixes the two retained differences. All eleven selected original frames match
+actual corrected C# output exactly. This document and its evidence retain the
+historical diagnostic and owner approval rather than rewriting those results.
+
 Date: 2026-10-24. Edition: `SCUS-94221`. Read-only reference HEAD:
 `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 Managed base: `2ec1724`; working tree was clean at entry.

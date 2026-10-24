@@ -174,3 +174,9 @@ C# CPU output now matches all 3,128 affected pixels at one full-visible original
 anchor, including the 1,551 background-sensitive samples. The background comes
 from a labeled palette-transparent state probe; it is not managed scene rendering.
 The existing checker preview retains its policy and byte-identical GPU captures.
+
+The later [triangle color correction](banner-triangle-colors.md) refines the
+five-bit color policy to seed each rectangle triangle at its selected core vertex.
+It closes the two 24-row reveal differences while preserving the fifteen existing
+five-bit PNGs and all RGB8 files. The prior top-only formula describes the
+historical implementation; the new trace records its bounded replacement.

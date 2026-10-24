@@ -732,6 +732,18 @@ before a renderer correction. The owner visually approved the diagnostic gallery
 on 2026-10-24; the two measured pixel differences, physical Circle behavior and
 event identity remain open. ZOD-033 stays partial.
 
+**Triangle color follow-up:** The [source-backed correction](development/banner-triangle-colors.md)
+now seeds the two rectangular triangles at their distinct core vertices. Actual
+C# matches all eleven archived original reveal frames at zero tolerance; only
+the prior 21/14 blue-channel pixels change. Two corrected runs repeat 57 artifacts.
+Full-visible and hide outputs remain byte-identical, fifteen prior five-bit GPU
+PNGs remain unchanged, and all sixteen RGB8 files remain unchanged. Five-bit
+receipt policy text changes explicitly. Locked restores, zero-warning builds,
+1,486 .NET and 135 Python tests pass. The owner visually approved the corrected
+gallery on 2026-10-24; historical diagnostic approval remains separate. Next select an original
+Circle-input validation method; physical input, event identity and broader
+integration/rendering remain open. ZOD-033 stays partial.
+
 **Scope:** Capture selected scenes at fixed state/presentation ticks and compare them with documented baseline/reference captures using appropriate regions and tolerances.
 
 **Acceptance criteria:** Capture conditions are reproducible; reports distinguish geometry, palette, transparency/order, and timing discrepancies from simulation failures; thresholds are justified rather than masking visible defects. Synthetic renderer checks can run without game files; original media and comparisons remain local. Human inspection is recorded for effects automated metrics cannot establish.

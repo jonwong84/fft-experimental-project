@@ -38,3 +38,9 @@ an `fft.banner-reveal-cpu-check` receipt. The
 backgrounds and compares the actual C# pixels. A valid difference exits that Python
 tool with code 1 and retains strict diagnostic evidence; invalid input exits 2.
 The original single-anchor and hide-sequence modes retain their contracts.
+
+The [triangle color verifier](../verification/verify_banner_triangle_colors.py)
+reuses hash-bound original/control reveal captures and invokes this host after
+rebuilding Client. It launches no emulator. The
+[color trace](../../docs/development/banner-triangle-colors.md) documents the
+corrected per-triangle seed and preservation of the older exact checkpoints.

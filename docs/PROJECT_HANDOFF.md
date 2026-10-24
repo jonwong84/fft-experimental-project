@@ -274,6 +274,23 @@ differences remain open. Next trace the two 24-row color differences before a bo
 correction. Universal load duration, Circle input and event identity remain open;
 ZOD-033 stays partial. No automatic commit.
 
+**Triangle color correction (2026-10-24):** The
+[bounded source trace](development/banner-triangle-colors.md) identifies different
+Q12 color seeds for the two rectangle triangles. Client now selects the seed
+per sample using the source-derived shared diagonal; the Python model follows
+the same bounded reduction. Actual C# composition matches all eleven archived
+original reveal frames exactly, changing only the prior 21/14 blue-channel pixels.
+Two runs repeat 57 selected artifacts. Full-visible/five-hide RGBA and receipts
+remain byte-identical, as do fifteen old five-bit Windows PNGs and all sixteen
+RGB8 files; the five-bit receipt policy text changes explicitly. Locked restores,
+zero-warning builds, 1,486 .NET and 135 Python tests pass. The new CPU verifier
+reuses hash-bound original/control states and launches no emulator; the unchanged
+GPU schedule excludes the newly corrected 24-row frames. The owner visually
+approved `scratch/banner-triangle-colors-a/review.html` on 2026-10-24. Historical
+diagnostic evidence/approval remain intact. Next select a bounded original Circle-input
+validation method; event identity and wider rendering/integration remain open.
+No automatic commit.
+
 **Owner formula direction (2026-10-24):** Keep weapon and ability algorithms
 readable/editable as ordinary C# code. The
 [formula notes](development/editable-combat-formulas.md) distinguish current bounded

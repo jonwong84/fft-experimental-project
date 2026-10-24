@@ -85,6 +85,15 @@ def vertex_channel(top, bottom, row, height, rounded=True):
     return (top * 4096 + (2048 if rounded else 0) + slope * row) >> 12
 
 
+def quad_vertex_channel(top, bottom, column, row, width, height, rounded=True):
+    first = vertex_channel(top, bottom, row, height, rounded)
+    v.integer(width, 1, 256, 'quad width'); v.integer(column, 0, width - 1, 'quad column')
+    if column * height < width * (height - row): return first
+    numerator = (bottom - top) * 4096
+    slope = (abs(numerator) // height) * (-1 if numerator < 0 else 1)
+    return (bottom * 4096 + (2048 if rounded else 0) + slope * (row - height)) >> 12
+
+
 def shade5(texel, vertex, noise=0):
     v.integer(texel, 0, 31, 'five-bit texel'); v.integer(vertex, 0, 255, 'vertex channel')
     v.integer(noise, -4, 3, 'dither offset')
@@ -104,7 +113,7 @@ def native_bounds(definition, indices, palette, dither=False, replicate=False, r
                 x, y = p['x'] + col, p['y'] + row
                 noise = DITHER[y & 3][x & 3] if dither else 0
                 for ch, key in enumerate('rgb'):
-                    vertex = vertex_channel(p['colors'][0][key], p['colors'][2][key], row, p['height'], rounded)
+                    vertex = quad_vertex_channel(p['colors'][0][key], p['colors'][2][key], col, row, p['width'], p['height'], rounded)
                     shade = shade5((word >> (ch * 5)) & 31, vertex, noise)
                     at = (y * 256 + x) * 3 + ch
                     for target in (low, high):

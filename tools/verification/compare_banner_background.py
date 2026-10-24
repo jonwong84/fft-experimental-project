@@ -82,10 +82,10 @@ def compose(background, definition, indices, palette, *, partial_triplet=False):
         for channel in range(3): rgba[at + channel] >>= 3
     for piece in definition['pieces']:
         for row in range(piece['height']):
-            colors = [p.vertex_channel(piece['colors'][0][c], piece['colors'][2][c], row, piece['height']) for c in 'rgb']
             for x in range(piece['width']):
                 word = words[indices[(piece['v'] + row) * 256 + piece['u'] + x]]
                 if not word: continue
+                colors = [p.quad_vertex_channel(piece['colors'][0][c], piece['colors'][2][c], x, row, piece['width'], piece['height']) for c in 'rgb']
                 at = ((piece['y'] + row) * 256 + piece['x'] + x) * 4
                 for channel in range(3):
                     source = p.shade5((word >> (channel * 5)) & 31, colors[channel])

@@ -19,7 +19,7 @@ public sealed record BannerRasterDraw(BannerDraw Geometry, BannerRasterState Sta
 /// <summary>Bounded axis-aligned five-bit material profile, not a general PS1 GPU.</summary>
 public static class FiveBitGeneralBannerPresentation
 {
-    public const string Policy = "256x240 authored checker quantized to RGB5; point/half-open sampling; Q12 vertical color slope with half-unit color bias; RGB5 texture modulation and per-pass saturation; explicit per-draw dither/framebuffer phase; zero-padded RGB5 scanout; no general triangle, timing, pixel-aspect or hardware equivalence";
+    public const string Policy = "256x240 authored checker quantized to RGB5; point/half-open sampling; Q12 triangle-seeded vertical colors with half-unit color bias; RGB5 texture modulation and per-pass saturation; explicit per-draw dither/framebuffer phase; zero-padded RGB5 scanout; no general triangle, timing, pixel-aspect or hardware equivalence";
     private static readonly int[,] Dither = { { -4, 0, -3, 1 }, { 2, -2, 3, -1 }, { -3, 1, -4, 0 }, { 3, -1, 2, -2 } };
 
     public static int VertexChannel(int top, int bottom, int row, int height)
@@ -29,6 +29,19 @@ public static class FiveBitGeneralBannerPresentation
         // Signed division truncates toward zero, including falling gradients.
         int step = (bottom - top) * 4096 / height;
         return (top * 4096 + 2048 + step * row) >> 12;
+    }
+
+    /// <summary>Color for the supported TL/TR/BL/BR rectangle with equal colors on each horizontal edge.</summary>
+    public static int QuadVertexChannel(int top, int bottom, int column, int row, int width, int height)
+    {
+        if (width is < 1 or > 256 || column < 0 || column >= width)
+            throw new ArgumentOutOfRangeException(nameof(column));
+        int firstTriangle = VertexChannel(top, bottom, row, height);
+        // TL/TR/BL seeds at TL; TR/BL/BR seeds at BL. The shared diagonal belongs to the second triangle.
+        // See docs/development/banner-triangle-colors.md for the source trace and bounded arithmetic reduction.
+        if (column * height < width * (height - row)) return firstTriangle;
+        int step = (bottom - top) * 4096 / height;
+        return (bottom * 4096 + 2048 + step * (row - height)) >> 12;
     }
 
     public static int Shade5(int texture, int vertex, int dither)
@@ -101,14 +114,14 @@ public static class FiveBitGeneralBannerPresentation
             for (int row = 0; row < g.VisibleRows; row++)
             {
                 var top = p.Colors[0]; var bottom = p.Colors[2];
-                int red = VertexChannel(top.R, bottom.R, row, g.VisibleRows);
-                int green = VertexChannel(top.G, bottom.G, row, g.VisibleRows);
-                int blue = VertexChannel(top.B, bottom.B, row, g.VisibleRows);
                 for (int x = 0; x < p.Width; x++)
                 {
                     int index = banner.Indices[(p.V + g.CropTop + row) * 256 + p.U + x];
                     ushort word = BinaryPrimitives.ReadUInt16LittleEndian(banner.Palette.AsSpan(index * 2, 2));
                     if (word == 0) continue;
+                    int red = QuadVertexChannel(top.R, bottom.R, x, row, p.Width, g.VisibleRows);
+                    int green = QuadVertexChannel(top.G, bottom.G, x, row, p.Width, g.VisibleRows);
+                    int blue = QuadVertexChannel(top.B, bottom.B, x, row, p.Width, g.VisibleRows);
                     int screenX = p.X + x, screenY = p.Y + g.CropTop + row;
                     int noise = draw.State.DitherEnabled ? Dither[(draw.State.FramebufferY + screenY) & 3, (draw.State.FramebufferX + screenX) & 3] : 0;
                     int at = (screenY * 256 + screenX) * 4;
