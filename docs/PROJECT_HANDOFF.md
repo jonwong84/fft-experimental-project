@@ -229,7 +229,31 @@ reveal/loading/input, event identity and full scene integration remain open.
 ZOD-033 stays partial; ZOD-079 remains deferred. Original artifacts stay ignored;
 no automatic commit.
 
-**Prepared:** 2026-10-20  
+**Displayed hide comparison (2026-10-24):** The
+[hide-frame check](development/displayed-banner-hide.md) binds pre-submission
+VSync/main-stack state, pending display/draw environments and two-buffer source
+order to earlier hash-bound submissions. All five PNG crops match displayed VRAM;
+actual C# output matches 6,917 affected samples across four visible hide anchors
+and preserves the fully hidden background. Controlled probes retain all 28
+non-GPU subsystem payloads/GPU registers, and two runs repeat. No pixel fitting,
+universal lag or managed map-rendering claim. Locked restores, zero-warning builds,
+1,450 .NET and 116 Python tests (12 new) pass. Runtime, schemas and dependency
+graphs stay unchanged; only the developer host gains a bounded sequence mode.
+Owner review of this new gallery is pending. Early reveal/loading, physical Circle
+input, event reachability and broader rendering remain open. ZOD-033 stays partial;
+ZOD-079 remains deferred. No automatic commit.
+
+**Owner formula direction (2026-10-24):** Keep weapon and ability algorithms
+readable/editable as ordinary C# code. The
+[formula notes](development/editable-combat-formulas.md) distinguish current bounded
+sword execution/learning-only ability metadata from future formula families.
+Before broader combat work, consider small typed arithmetic methods, explicit
+RNG/modifier sequencing, shared validated data and original/custom profile
+isolation. Source edits and rebuilding are sufficient initially; no runtime
+compiler, DSL or arbitrary plugin system is selected. Recorded under ZOD-038/048;
+no combat refactor is made during the banner milestone.
+
+**Prepared:** 2026-10-20
 **Workspace:** `C:\repositories\fft-experimental-project`  
 **Branch:** `feature/initial-development`  
 **Last committed project change observed at original handoff creation:** `48b4772 Add battle simulation and movement model foundations`

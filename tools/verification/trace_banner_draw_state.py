@@ -34,7 +34,15 @@ def walk(ram, root):
     return packets, len(seen)
 
 
-def trace(state, definition):
+def trace(state, definition, geometry=None):
+    if geometry is not None:
+        v.require(type(geometry) is list and len(geometry) == 6, 'Expected six explicit submitted crops')
+        for index, item in enumerate(geometry):
+            v.fields(item, 'PieceIndex CropTop VisibleRows', 'submitted crop')
+            v.require(type(item['PieceIndex']) is int and item['PieceIndex'] == index, 'Unexpected submitted piece order')
+            v.integer(item['CropTop'], 0, definition['pieces'][index]['height'], 'submitted crop top')
+            v.integer(item['VisibleRows'], 0, definition['pieces'][index]['height'], 'submitted visible rows')
+            v.require(item['CropTop'] + item['VisibleRows'] == definition['pieces'][index]['height'], 'Invalid submitted crop')
     core = p.unpack_state(state)
     records = p.subsystem_records(core, b'MAIN')
     ram = records.get('MainRAM.data8', b'')
@@ -57,14 +65,16 @@ def trace(state, definition):
             delta = address - (BANNER_BASE & 0xffffff)
             bank, index = delta // BANNER_BANK_STRIDE, delta % BANNER_BANK_STRIDE // 52
             piece = definition['pieces'][index]
-            # Bind all six full-visible packets to the prepared geometry/color/UV/material.
-            for vertex, (dx, dy) in enumerate(((0, 0), (piece['width'], 0), (0, piece['height']), (piece['width'], piece['height']))):
+            crop = 0 if geometry is None else geometry[index]['CropTop']
+            rows = piece['height'] - crop
+            # Bind all vertices, including cropped/degenerate submissions when explicitly selected.
+            for vertex, (dx, dy) in enumerate(((0, 0), (piece['width'], 0), (0, rows), (piece['width'], rows))):
                 rgb, xy, uv = data[vertex * 3:vertex * 3 + 3]
                 color = piece['colors'][vertex]
                 v.require(rgb & 0xffffff == color['r'] | color['g'] << 8 | color['b'] << 16, 'Banner vertex color mismatch')
                 x, y = struct.unpack('<hh', struct.pack('<I', xy))
-                v.require((x, y) == (piece['x'] + 128 + dx, piece['y'] + dy), 'Banner geometry mismatch')
-                v.require(uv & 0xffff == (piece['u'] + dx) | ((piece['v'] + dy) & 255) << 8, 'Banner UV mismatch')
+                v.require((x, y) == (piece['x'] + 128 + dx, piece['y'] + crop + dy), 'Banner geometry mismatch')
+                v.require(uv & 0xffff == (piece['u'] + dx) | ((piece['v'] + crop + dy) & 255) << 8, 'Banner UV mismatch')
             tpage = data[5] >> 16
             v.require(tpage == (0x26 if piece['material'] == 'add' else 0x46), 'Banner material mismatch')
             banners.append(dict(pieceIndex=index, packetAddress=address, bank=bank, precedingMode=dict(mode)))

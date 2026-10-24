@@ -23,3 +23,10 @@ background is exactly 256x240 raw RGBA8, opaque alpha, RGB channels divisible by
 eight. The host performs 29 explicit no-Circle logical steps and writes
 `composed.rgba` plus a hash-bound `check.json`. It performs no original comparison;
 the Python tool validates isolation, provenance and pixel equality separately.
+
+The optional `--sequence` mode accepts a closed `fft.banner-hide-backgrounds` v1
+plan containing exactly checkpoints 81..85 with background paths and SHA-256s.
+It preloads/validates all backgrounds, replays in order and writes five RGBA files
+plus a separate `fft.banner-hide-cpu-check` receipt. The
+[hide verifier](../verification/compare_banner_hide.py) prepares this plan and
+invokes the mode; source-based display correspondence remains outside this host.

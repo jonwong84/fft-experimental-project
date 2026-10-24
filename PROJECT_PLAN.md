@@ -97,6 +97,12 @@ The PS1 implementation is not a single monolithic program: resident code and sev
 3. **Preserve original behavior as the default experience.** Rules, content, campaign flow, bugs, timing, and presentation should match observable PS1 behavior where practical. Differences and confidence should be documented; compatibility fixes should be explicit.
 4. **Allow expansion without changing the original campaign.** Definitions and mutable state are separate; additional jobs, abilities, items, characters, monsters, maps, encounters, campaigns, and mechanics can be added as separate content/rule sets. This extension boundary is also a prerequisite for the user's later goal of integrating The Lion War content.
 5. **Make data authorable and inspectable.** Provide typed C# definitions and validation for content such as jobs, abilities, items, flags, formulas, text, sprites, animations, maps, scripts, and encounters, with a staged path to visual editing tools.
+
+   Owner clarification (2026-10-24): weapon/ability formula algorithms must remain
+   readable and editable as C# code. Favor small typed calculations and explicit
+   deterministic resolution, with original/custom profile isolation; record
+   [refactoring criteria](docs/development/editable-combat-formulas.md) before
+   expanding the bounded combat slice. No runtime compiler/plugin system is implied.
 6. **Keep the project personal and local.** There is no distribution goal. Game media, extracted data, and generated assets remain in ignored local directories.
 
 ### Required for the first complete game

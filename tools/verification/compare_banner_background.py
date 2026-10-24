@@ -140,7 +140,7 @@ def native_capture(root, background):
     return rgba, receipt
 
 
-def capture(profile, profile_root, output, source):
+def capture(profile, profile_root, output, source, frames=24):
     output.mkdir(); (output / 'states').mkdir(); (output / 'saves').mkdir()
     state_name = Path(profile['cue']).stem + '.state'; copied = output / 'states' / state_name
     copied.write_bytes(source); shutil.copyfile(profile_root / 'core-options.cfg', output / 'core-options.cfg')
@@ -148,7 +148,7 @@ def capture(profile, profile_root, output, source):
         core_options_path=(output / 'core-options.cfg').as_posix(), savestate_directory=(output / 'states').as_posix(),
         sort_savestates_enable='false', savestates_in_content_dir='false', savefile_directory=(output / 'saves').as_posix(), savestate_auto_save='true')
     (output / 'restore.cfg').write_text(profile_tool.config(settings), encoding='utf-8', newline='\n')
-    args = continuation.command(profile, profile_root, output, 24)
+    args = continuation.command(profile, profile_root, output, frames)
     (output / 'command.json').write_text(json.dumps(args, indent=2) + '\n', encoding='utf-8', newline='\n')
     startup = subprocess.STARTUPINFO(); startup.dwFlags |= subprocess.STARTF_USESHOWWINDOW; startup.wShowWindow = 0
     result = subprocess.run(args, cwd=Path(profile['executable']).parent, capture_output=True, timeout=55, startupinfo=startup)
@@ -166,7 +166,7 @@ def capture(profile, profile_root, output, source):
     pixels = b.image(png_path.read_bytes(), (280, 240))
     # Preserve the already reviewed fixed 12-column border mapping, never search for alignment.
     pixels = b.align(pixels, bytes(CANVAS_BYTES), [12, 0, 256, 240], [0, 0, 256, 240])[0]
-    metadata = dict(frontendFrames=24, inputStateSha256=v.sha(source), exitState=continuation.identity(saved),
+    metadata = dict(frontendFrames=frames, inputStateSha256=v.sha(source), exitState=continuation.identity(saved),
         png=continuation.identity(png_path), command=continuation.identity(output / 'command.json'),
         config=continuation.identity(output / 'restore.cfg'), effectiveOptions=continuation.identity(output / 'core-options.cfg'),
         log=continuation.identity(output / 'retroarch.log'), diagnostics=[x for x in log.splitlines() if '[ERROR]' in x or '[WARN]' in x])

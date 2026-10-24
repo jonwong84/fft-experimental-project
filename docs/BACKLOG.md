@@ -701,6 +701,17 @@ early reveal/loading/input, event identity and general scene rendering remain op
 The altered-state control is explicitly separate from unmodified retail evidence;
 ZOD-033 remains partial. No automatic commit.
 
+**Displayed hide follow-up:** [Source-bound hide comparison](development/displayed-banner-hide.md)
+now identifies the pre-submission VSync stack and two-buffer order, binds each
+displayed surface to a hash-bound earlier submission, and matches entire raw PNG
+crops to displayed VRAM. Actual C# composition matches all 6,917 affected samples
+across four visible hide anchors plus the fully hidden background-preservation
+frame. The controlled probes retain all 28 non-GPU subsystem/GPU-register states;
+two runs repeat. No crop/lag fitting or general frame-lag claim. Locked restores,
+zero-warning builds, 1,450 .NET and 116 Python tests (12 new) pass. Owner review of
+the new hide gallery remains pending. Early reveal/loading, physical Circle input,
+event identity and broader scene rendering remain open; ZOD-033 stays partial.
+
 **Scope:** Capture selected scenes at fixed state/presentation ticks and compare them with documented baseline/reference captures using appropriate regions and tolerances.
 
 **Acceptance criteria:** Capture conditions are reproducible; reports distinguish geometry, palette, transparency/order, and timing discrepancies from simulation failures; thresholds are justified rather than masking visible defects. Synthetic renderer checks can run without game files; original media and comparisons remain local. Human inspection is recorded for effects automated metrics cannot establish.
@@ -765,6 +776,15 @@ Campaign persistence, UI save slots and original memory-card import remain separ
 **Type:** Epic · **Priority:** P3 · **Status:** Needs breakdown · **Depends on:** ZOD-022
 
 **Scope:** Inventory action families, formula variants, range/area/line-of-sight rules, equipment/elements, hit/evade behavior, XP/JP/loot, victory/loss conditions, and required AI decisions. Split behavior families and decision rules into separate tickets, linked to ZOD-036/037 where needed.
+
+**Owner direction (2026-10-24):** Keep weapon/ability formulas readable and editable
+as ordinary named C# code. Before expanding combat, consider extracting the bounded
+sword calculation into typed, independently testable arithmetic while preserving
+RNG/modifier order and atomic application. Distinguish data tuning from algorithm
+changes; preserve original behavior beside explicitly selected custom variants.
+See [editable combat formulas](development/editable-combat-formulas.md) for current
+limits, source-edit workflow and refactoring criteria. This does not start a broad
+combat rewrite or change the active banner queue.
 
 **Acceptance criteria:** All baseline actions and required AI choices are mapped to implementation/fixtures or explicit unresolved entries; representative encounters validate state, RNG draw ordering, and rewards; mandatory enemy/ally turns can complete without player scripting. Record observed AI deviations separately from player-action correctness.
 
@@ -1306,6 +1326,10 @@ EventEnd, full BattleStart, map/camera integration or original equivalence claim
 conditions as supported formats mature. Include logical-ID/reference inspection, asset association, shared
 validation, package provenance and appropriate previews. Coordinate audio with ZOD-043, event interpretation
 with ZOD-040 and package management with ZOD-049. Menu/action/condition declarations are scoped by ZOD-062.
+
+Weapon/ability formula algorithms should also remain directly readable/editable in
+C#; UI and data authoring complement that workflow. See the owner's
+[formula/refactoring direction](development/editable-combat-formulas.md).
 
 **Acceptance criteria:** Each selected editor round-trips supported authored data, validates references, supports recoverable editing, and previews through the same runtime/decoder semantics where practical. Complete this incrementally by content category. A general visual editor for every domain is a future goal rather than a prerequisite for the original game.
 

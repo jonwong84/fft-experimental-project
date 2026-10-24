@@ -154,3 +154,8 @@ Follow-up: the [controlled blend comparison](general-banner-background-blending.
 uses the no-input full-visible anchor and an isolated palette-transparent state
 copy to match all affected pixels with actual C# composition over the recovered
 background. Partial-frame correspondence and early reveal/input gates remain open.
+
+The later [displayed hide check](displayed-banner-hide.md) resolves the selected
+queued-task/front-buffer relationship through the VSync stack/source order and
+saved scanout. Its labels distinguish queued progress from displayed progress;
+the continuation metadata here retains its original task-counter meaning.

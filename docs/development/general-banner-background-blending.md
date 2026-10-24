@@ -151,3 +151,9 @@ Next: establish screenshot/framebuffer correspondence for partial reveal/hide pi
 comparisons, or obtain a pre-banner anchor for early reveal/loading/input checks.
 Physical Circle input and original event reachability remain open. ZOD-033 stays
 partial; full scene integration and deferred ZOD-079 remain separate.
+
+Follow-up: [displayed hide comparisons](displayed-banner-hide.md) now establish
+the selected pre-submission/front-buffer correspondence and compare the partial
+crops and fully hidden anchor. The full-visible control above remains historical
+evidence with its original identities; early reveal/loading/input and wider scene
+rendering remain open.

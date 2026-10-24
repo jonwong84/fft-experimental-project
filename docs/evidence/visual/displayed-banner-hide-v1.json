@@ -1,0 +1,1824 @@
+{
+  "format": "fft.displayed-banner-hide-evidence",
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "managedBase": "702cc4a",
+  "edition": "SCUS-94221",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "evidenceKind": "source-bound-displayed-hide-and-controlled-original-background-comparison",
+  "entryStateSha256": "133b893188d0abe7909725f910496b74bad9cfc85733cb38d76fece03048901a",
+  "sourcePlan": {
+    "localPath": "scratch/banner-033-comparison-plan/plan.json",
+    "bytes": 2247,
+    "sha256": "58a12df650a711c3128fc260490510f8a02ad1817cc47411e3c23567b04308a1"
+  },
+  "captureProfile": {
+    "localPath": "scratch/retroarch-reference/profile.json",
+    "bytes": 2287,
+    "sha256": "2179365bc1b2ea9643a835ebfa461ee12940841ba023ee1c05e9ee11002dcadf"
+  },
+  "continuationEvidence": {
+    "localPath": "docs/evidence/visual/original-banner-continuation-v1.json",
+    "bytes": 40018,
+    "sha256": "0c2b9d2a195ac402fbc7ebda39fcb1c4ceb83c99a97141766f1d6ae9574349bf"
+  },
+  "sourceFunctions": [
+    {
+      "address": 2148088472,
+      "bytes": 344,
+      "sha256": "1b36797b7b673151d2baac9dc6f5219504ece941251149af47fcd25d33191055"
+    },
+    {
+      "address": 2147981976,
+      "bytes": 1852,
+      "sha256": "8ada54ca495c6cab8d6372374082be64cffb75a11682a2e7f0a5a6bcca21939f"
+    },
+    {
+      "address": 2147605416,
+      "bytes": 328,
+      "sha256": "52593b17cb59da9fca39f2dc7b537615812a1c5bd54f4551bef0a6d1ae270aa2"
+    },
+    {
+      "address": 2147605744,
+      "bytes": 156,
+      "sha256": "65614fd4dad4c750ef5a792b8f0533e19ade2d4ff23ffb7e2ed68445e7162347"
+    }
+  ],
+  "sourceBindings": {
+    "frameCounterAddress": 2147768724,
+    "polarityAddress": 2147768700,
+    "drawEnvironmentAddress": 2147805716,
+    "drawEnvironmentStride": 92,
+    "displayEnvironmentAddress": 2147805900,
+    "displayEnvironmentStride": 20,
+    "sampledVsyncInterval": 2,
+    "preSubmissionReturnAddresses": [
+      2147605604,
+      2148088680,
+      2147983448
+    ],
+    "method": "CPU VSync stack + original two-buffer submission order + earlier hash-bound frame; no pixel/crop search"
+  },
+  "displayedFrameCorrespondenceEstablished": true,
+  "universalFrameLagEstablished": false,
+  "originalFidelityEstablished": false,
+  "controlledProbe": true,
+  "fullRevealObserved": false,
+  "originalEvent401Verified": false,
+  "managedMapRenderingCompared": false,
+  "gpuReadbackPerformed": false,
+  "intervention": {
+    "vramByteOffset": 523008,
+    "wordCount": 16,
+    "byteCount": 32,
+    "changedCoreBytes": 30,
+    "onlySelectedPaletteChanged": true,
+    "entryCoreSha256": "305e4ebdabb6abf041917076ab774d11568b5205a8216dabaf1984d6a439d8b1",
+    "probeCoreSha256": "d89cd2265ff149ff845b2e84ec9a62402615986d0761eee9e0ac442db519dd7d"
+  },
+  "reports": [
+    {
+      "localPath": "scratch/banner-hide-c/report.json",
+      "bytes": 111562,
+      "sha256": "03a5b8a560d0a9cd03e23f5ebbb316bbe0bf0bdc22890d6efaac44de120a815c"
+    },
+    {
+      "localPath": "scratch/banner-hide-d/report.json",
+      "bytes": 111562,
+      "sha256": "02886ca9d7f77c1e2db0992c72cca68c37dcf5e582eb77fab3fccc7bb72092f3"
+    }
+  ],
+  "observations": [
+    {
+      "frontendFrames": 132,
+      "displayedLogicalTick": 81,
+      "binding": {
+        "displayedLogicalTick": 81,
+        "currentQueuedLogicalTick": 83,
+        "displayedSubmissionFrameCounter": 6435,
+        "currentFrameCounter": 6437,
+        "sourceFrameDistance": 2,
+        "frontOrigin": [
+          0,
+          0
+        ],
+        "displayedGeometry": [
+          {
+            "PieceIndex": 0,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 1,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 2,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 3,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 4,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 5,
+            "CropTop": 0,
+            "VisibleRows": 31
+          }
+        ],
+        "method": "Pre-submission VSync stack + two-buffer source order + hash-bound prior submission; no pixel/offset search"
+      },
+      "cpuPc": 2147605788,
+      "cpuSp": 2149580608,
+      "returnAddresses": [
+        2147605604,
+        2148088680,
+        2147983448
+      ],
+      "queuedSource": {
+        "localPath": "scratch/banner-continuation-c/frames-128/states/fft-clean-base-game.state.auto",
+        "bytes": 1499754,
+        "sha256": "eaaa7e7bfd29dd1d6a403eaad13d7c8ca8404b01ef30706878012da871bf8e42"
+      },
+      "originalState": {
+        "localPath": "scratch/banner-continuation-c/frames-132/states/fft-clean-base-game.state.auto",
+        "bytes": 1499457,
+        "sha256": "39c4915098adfc97847c3d18b72a72a809bbf334dc407cf7f1062f9a86f9eb52"
+      },
+      "originalPng": {
+        "localPath": "scratch/banner-continuation-c/frames-132/frame.png",
+        "bytes": 43467,
+        "sha256": "8065e1a34276a31e73e3541f20b637517ebb209f20640ea8ea06cb1852c2cff4"
+      },
+      "probeState": {
+        "localPath": "scratch/banner-hide-c/frame-132/probe/states/fft-clean-base-game.state.auto",
+        "bytes": 1493326,
+        "sha256": "64c53e048fd523e4dff39fdd889bf7f5aced79424c58c431ce12f1055aaa05a4"
+      },
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "touched": {
+          "compared": true,
+          "pixels": 3128,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            36,
+            27,
+            203,
+            46
+          ],
+          "sampleMaskSha256": "821f7e1767d9d0afe7abbfd3bc0a23798655cfe80c1f6f045d775aed852c03dc",
+          "exactEquality": true
+        },
+        "backgroundSensitive": {
+          "compared": true,
+          "pixels": 1551,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            36,
+            27,
+            203,
+            46
+          ],
+          "sampleMaskSha256": "734993e1748826a7ed75dda27e45f3b1419d792af3a6c40399d9ca94ac853e60",
+          "exactEquality": true
+        },
+        "foregroundInvariant": {
+          "compared": true,
+          "pixels": 1577,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            37,
+            28,
+            201,
+            44
+          ],
+          "sampleMaskSha256": "ec18470571e922ff79e5185db536cdf933a39c2f0bcd44576ad9c3ad892b90db",
+          "exactEquality": true
+        },
+        "pythonModel": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "probeOutsideBanner": {
+          "compared": true,
+          "pixels": 58312,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5d4856f684e1bb31c676509823108080b67179579b08f3a090edc518c01b5780",
+          "exactEquality": true
+        }
+      },
+      "visibleArtworkCompared": true,
+      "stateIsolation": {
+        "nonGpuSubsystemCount": 28,
+        "allNonGpuSubsystemsIdentical": true,
+        "allGpuRegistersIdentical": true,
+        "mainRamSha256": "2701b9a3773689d9f68cea33dbed3696f9107f4441f587259afea03b9db00f7c"
+      },
+      "failures": []
+    },
+    {
+      "frontendFrames": 134,
+      "displayedLogicalTick": 82,
+      "binding": {
+        "displayedLogicalTick": 82,
+        "currentQueuedLogicalTick": 84,
+        "displayedSubmissionFrameCounter": 6436,
+        "currentFrameCounter": 6438,
+        "sourceFrameDistance": 2,
+        "frontOrigin": [
+          0,
+          240
+        ],
+        "displayedGeometry": [
+          {
+            "PieceIndex": 0,
+            "CropTop": 8,
+            "VisibleRows": 23
+          },
+          {
+            "PieceIndex": 1,
+            "CropTop": 8,
+            "VisibleRows": 23
+          },
+          {
+            "PieceIndex": 2,
+            "CropTop": 8,
+            "VisibleRows": 23
+          },
+          {
+            "PieceIndex": 3,
+            "CropTop": 8,
+            "VisibleRows": 23
+          },
+          {
+            "PieceIndex": 4,
+            "CropTop": 8,
+            "VisibleRows": 23
+          },
+          {
+            "PieceIndex": 5,
+            "CropTop": 8,
+            "VisibleRows": 23
+          }
+        ],
+        "method": "Pre-submission VSync stack + two-buffer source order + hash-bound prior submission; no pixel/offset search"
+      },
+      "cpuPc": 2147605804,
+      "cpuSp": 2149580608,
+      "returnAddresses": [
+        2147605604,
+        2148088680,
+        2147983448
+      ],
+      "queuedSource": {
+        "localPath": "scratch/banner-continuation-c/frames-130/states/fft-clean-base-game.state.auto",
+        "bytes": 1499614,
+        "sha256": "6097d8ba0af630c2c248ca761471e90184ea74a76086c2905ba35f8a21e53867"
+      },
+      "originalState": {
+        "localPath": "scratch/banner-continuation-c/frames-134/states/fft-clean-base-game.state.auto",
+        "bytes": 1497418,
+        "sha256": "bb609b847de7ad5833f6f79e9f312406e7a41694a904b0d1fb9b9d8ea1691eb8"
+      },
+      "originalPng": {
+        "localPath": "scratch/banner-continuation-c/frames-134/frame.png",
+        "bytes": 42992,
+        "sha256": "653ae0d411015fb4a969fd9bf1689e7b2c0b7caf4f0aacc7b117eca57fc3c884"
+      },
+      "probeState": {
+        "localPath": "scratch/banner-hide-c/frame-134/probe/states/fft-clean-base-game.state.auto",
+        "bytes": 1493719,
+        "sha256": "ac19ef4276b3c8639687dbe93263724ecda9c778ccf7efa33b68a4c359577efd"
+      },
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "touched": {
+          "compared": true,
+          "pixels": 2828,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            36,
+            28,
+            203,
+            45
+          ],
+          "sampleMaskSha256": "daf51495264670ab9e53c9a6bb2da4999e8a4314a7a2dc1d6b92abc043007337",
+          "exactEquality": true
+        },
+        "backgroundSensitive": {
+          "compared": true,
+          "pixels": 1355,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            36,
+            28,
+            203,
+            45
+          ],
+          "sampleMaskSha256": "7d9d6db0634cfb4e0739a0e8bce94581aa9718a408765a6613e76c8c20c99a5c",
+          "exactEquality": true
+        },
+        "foregroundInvariant": {
+          "compared": true,
+          "pixels": 1473,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            37,
+            28,
+            201,
+            44
+          ],
+          "sampleMaskSha256": "43f004d8fa2a8278bf3cd6a25b79fd6600552a65bd195b5d7cf88d88a98967d0",
+          "exactEquality": true
+        },
+        "pythonModel": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "probeOutsideBanner": {
+          "compared": true,
+          "pixels": 58612,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "67057978e6843c2670e9dfaed54b5e6fd3c9f791e9ee45d6a75319f281def67e",
+          "exactEquality": true
+        }
+      },
+      "visibleArtworkCompared": true,
+      "stateIsolation": {
+        "nonGpuSubsystemCount": 28,
+        "allNonGpuSubsystemsIdentical": true,
+        "allGpuRegistersIdentical": true,
+        "mainRamSha256": "c3a6a547d27164ed6573eb9fe707c6b51b754a3757b95f3c3af5a4609350a664"
+      },
+      "failures": []
+    },
+    {
+      "frontendFrames": 136,
+      "displayedLogicalTick": 83,
+      "binding": {
+        "displayedLogicalTick": 83,
+        "currentQueuedLogicalTick": 85,
+        "displayedSubmissionFrameCounter": 6437,
+        "currentFrameCounter": 6439,
+        "sourceFrameDistance": 2,
+        "frontOrigin": [
+          0,
+          0
+        ],
+        "displayedGeometry": [
+          {
+            "PieceIndex": 0,
+            "CropTop": 16,
+            "VisibleRows": 15
+          },
+          {
+            "PieceIndex": 1,
+            "CropTop": 16,
+            "VisibleRows": 15
+          },
+          {
+            "PieceIndex": 2,
+            "CropTop": 16,
+            "VisibleRows": 15
+          },
+          {
+            "PieceIndex": 3,
+            "CropTop": 16,
+            "VisibleRows": 15
+          },
+          {
+            "PieceIndex": 4,
+            "CropTop": 16,
+            "VisibleRows": 15
+          },
+          {
+            "PieceIndex": 5,
+            "CropTop": 16,
+            "VisibleRows": 15
+          }
+        ],
+        "method": "Pre-submission VSync stack + two-buffer source order + hash-bound prior submission; no pixel/offset search"
+      },
+      "cpuPc": 2147605792,
+      "cpuSp": 2149580608,
+      "returnAddresses": [
+        2147605604,
+        2148088680,
+        2147983448
+      ],
+      "queuedSource": {
+        "localPath": "scratch/banner-continuation-c/frames-132/states/fft-clean-base-game.state.auto",
+        "bytes": 1499457,
+        "sha256": "39c4915098adfc97847c3d18b72a72a809bbf334dc407cf7f1062f9a86f9eb52"
+      },
+      "originalState": {
+        "localPath": "scratch/banner-continuation-c/frames-136/states/fft-clean-base-game.state.auto",
+        "bytes": 1494562,
+        "sha256": "84126c59adb6faac1fd164f087c53c720818876b80dea9060a9ee53d852f30df"
+      },
+      "originalPng": {
+        "localPath": "scratch/banner-continuation-c/frames-136/frame.png",
+        "bytes": 40177,
+        "sha256": "803b0c742711080b4293465a46cb89fc5cbc0e68f633edcd084dc3dcacf40d8d"
+      },
+      "probeState": {
+        "localPath": "scratch/banner-hide-c/frame-136/probe/states/fft-clean-base-game.state.auto",
+        "bytes": 1493648,
+        "sha256": "9c42940ec256e064144ef04d15655f1207beb13b2a1b3586e398cd0e740926fe"
+      },
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "touched": {
+          "compared": true,
+          "pixels": 939,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            36,
+            36,
+            203,
+            11
+          ],
+          "sampleMaskSha256": "0af7fc7f66707a2183ba8b999981baeb81cbfad3cd204c82ee4048bfb6330f5c",
+          "exactEquality": true
+        },
+        "backgroundSensitive": {
+          "compared": true,
+          "pixels": 458,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            36,
+            36,
+            203,
+            11
+          ],
+          "sampleMaskSha256": "ed060782db29b7a16912a6a70c1a9be9b2ed27769dcc2ef9288a17cbb073c661",
+          "exactEquality": true
+        },
+        "foregroundInvariant": {
+          "compared": true,
+          "pixels": 481,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            37,
+            36,
+            201,
+            10
+          ],
+          "sampleMaskSha256": "5c9a9a925edc8e37a6067892c2d7a5ec96a6bd4eef465d5b03066b46dd4ce772",
+          "exactEquality": true
+        },
+        "pythonModel": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "probeOutsideBanner": {
+          "compared": true,
+          "pixels": 60501,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "770f3ee3a59dd6da387b361a4642fec60e28ddfa904da9452d2dfb7e56c08daf",
+          "exactEquality": true
+        }
+      },
+      "visibleArtworkCompared": true,
+      "stateIsolation": {
+        "nonGpuSubsystemCount": 28,
+        "allNonGpuSubsystemsIdentical": true,
+        "allGpuRegistersIdentical": true,
+        "mainRamSha256": "939177eb5ce1f405491c1b5fd589b5c517c8bf9644181d4534daaf436eaad5c4"
+      },
+      "failures": []
+    },
+    {
+      "frontendFrames": 138,
+      "displayedLogicalTick": 84,
+      "binding": {
+        "displayedLogicalTick": 84,
+        "currentQueuedLogicalTick": 86,
+        "displayedSubmissionFrameCounter": 6438,
+        "currentFrameCounter": 6440,
+        "sourceFrameDistance": 2,
+        "frontOrigin": [
+          0,
+          240
+        ],
+        "displayedGeometry": [
+          {
+            "PieceIndex": 0,
+            "CropTop": 24,
+            "VisibleRows": 7
+          },
+          {
+            "PieceIndex": 1,
+            "CropTop": 24,
+            "VisibleRows": 7
+          },
+          {
+            "PieceIndex": 2,
+            "CropTop": 24,
+            "VisibleRows": 7
+          },
+          {
+            "PieceIndex": 3,
+            "CropTop": 24,
+            "VisibleRows": 7
+          },
+          {
+            "PieceIndex": 4,
+            "CropTop": 24,
+            "VisibleRows": 7
+          },
+          {
+            "PieceIndex": 5,
+            "CropTop": 24,
+            "VisibleRows": 7
+          }
+        ],
+        "method": "Pre-submission VSync stack + two-buffer source order + hash-bound prior submission; no pixel/offset search"
+      },
+      "cpuPc": 2147605860,
+      "cpuSp": 2149580608,
+      "returnAddresses": [
+        2147605604,
+        2148088680,
+        2147983448
+      ],
+      "queuedSource": {
+        "localPath": "scratch/banner-continuation-c/frames-134/states/fft-clean-base-game.state.auto",
+        "bytes": 1497418,
+        "sha256": "bb609b847de7ad5833f6f79e9f312406e7a41694a904b0d1fb9b9d8ea1691eb8"
+      },
+      "originalState": {
+        "localPath": "scratch/banner-continuation-c/frames-138/states/fft-clean-base-game.state.auto",
+        "bytes": 1493347,
+        "sha256": "5f19e7a874fdb143c59adc40c2c54bc8120ca4c9a50bb67dece92ee65e740443"
+      },
+      "originalPng": {
+        "localPath": "scratch/banner-continuation-c/frames-138/frame.png",
+        "bytes": 38876,
+        "sha256": "92dec364db801992a137172ae29238850f159da3f8cd5f0c4c71fb8102d5bb06"
+      },
+      "probeState": {
+        "localPath": "scratch/banner-hide-c/frame-138/probe/states/fft-clean-base-game.state.auto",
+        "bytes": 1493286,
+        "sha256": "43895795afaea3bee0485f54a8502876ea48374527434de68a0f605cf015f913"
+      },
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "touched": {
+          "compared": true,
+          "pixels": 22,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            228,
+            44,
+            10,
+            3
+          ],
+          "sampleMaskSha256": "470fa9f3b169f13fcdd65a4b89ece065827e7c5d82f1bb50a9b444bc48104ca4",
+          "exactEquality": true
+        },
+        "backgroundSensitive": {
+          "compared": true,
+          "pixels": 21,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            228,
+            44,
+            10,
+            3
+          ],
+          "sampleMaskSha256": "cdf7a229353f45a2d0f86a21471ba11329f04a6b813c4cd2be7427a2f4abc86b",
+          "exactEquality": true
+        },
+        "foregroundInvariant": {
+          "compared": true,
+          "pixels": 1,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            231,
+            45,
+            1,
+            1
+          ],
+          "sampleMaskSha256": "cf4bde92dfba8ce4fddf0ca0fbca6e0fae07e717f240854cd65931ca8fe32975",
+          "exactEquality": true
+        },
+        "pythonModel": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "probeOutsideBanner": {
+          "compared": true,
+          "pixels": 61418,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "c64cdbe0e48689e135c0f8e34e30e1cf4643f6d5a041028962106657af4cf906",
+          "exactEquality": true
+        }
+      },
+      "visibleArtworkCompared": true,
+      "stateIsolation": {
+        "nonGpuSubsystemCount": 28,
+        "allNonGpuSubsystemsIdentical": true,
+        "allGpuRegistersIdentical": true,
+        "mainRamSha256": "1dbb642209d26be9f4e33ed2fcb7c698213481010e5fa46e11974c7957526630"
+      },
+      "failures": []
+    },
+    {
+      "frontendFrames": 140,
+      "displayedLogicalTick": 85,
+      "binding": {
+        "displayedLogicalTick": 85,
+        "currentQueuedLogicalTick": 87,
+        "displayedSubmissionFrameCounter": 6439,
+        "currentFrameCounter": 6441,
+        "sourceFrameDistance": 2,
+        "frontOrigin": [
+          0,
+          0
+        ],
+        "displayedGeometry": [
+          {
+            "PieceIndex": 0,
+            "CropTop": 31,
+            "VisibleRows": 0
+          },
+          {
+            "PieceIndex": 1,
+            "CropTop": 31,
+            "VisibleRows": 0
+          },
+          {
+            "PieceIndex": 2,
+            "CropTop": 31,
+            "VisibleRows": 0
+          },
+          {
+            "PieceIndex": 3,
+            "CropTop": 31,
+            "VisibleRows": 0
+          },
+          {
+            "PieceIndex": 4,
+            "CropTop": 31,
+            "VisibleRows": 0
+          },
+          {
+            "PieceIndex": 5,
+            "CropTop": 31,
+            "VisibleRows": 0
+          }
+        ],
+        "method": "Pre-submission VSync stack + two-buffer source order + hash-bound prior submission; no pixel/offset search"
+      },
+      "cpuPc": 2147605788,
+      "cpuSp": 2149580608,
+      "returnAddresses": [
+        2147605604,
+        2148088680,
+        2147983448
+      ],
+      "queuedSource": {
+        "localPath": "scratch/banner-continuation-c/frames-136/states/fft-clean-base-game.state.auto",
+        "bytes": 1494562,
+        "sha256": "84126c59adb6faac1fd164f087c53c720818876b80dea9060a9ee53d852f30df"
+      },
+      "originalState": {
+        "localPath": "scratch/banner-continuation-c/frames-140/states/fft-clean-base-game.state.auto",
+        "bytes": 1493222,
+        "sha256": "5397222ac4a734b34faa4cfd3cbe73587c285409f00e38b22be8bcdbf6d9f4db"
+      },
+      "originalPng": {
+        "localPath": "scratch/banner-continuation-c/frames-140/frame.png",
+        "bytes": 38864,
+        "sha256": "20d59495a2c76347d94898f18df7814d416358786ab619bd7fa30753fdac1c62"
+      },
+      "probeState": {
+        "localPath": "scratch/banner-hide-c/frame-140/probe/states/fft-clean-base-game.state.auto",
+        "bytes": 1493200,
+        "sha256": "513b809bc0dfd463a9fd06b7f78d586a626713ff5dfe3f1a1469e38a5a01f4b5"
+      },
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "touched": {
+          "pixels": 0,
+          "changedPixels": 0,
+          "compared": false,
+          "exactEquality": null
+        },
+        "backgroundSensitive": {
+          "pixels": 0,
+          "changedPixels": 0,
+          "compared": false,
+          "exactEquality": null
+        },
+        "foregroundInvariant": {
+          "pixels": 0,
+          "changedPixels": 0,
+          "compared": false,
+          "exactEquality": null
+        },
+        "pythonModel": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "probeOutsideBanner": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        }
+      },
+      "visibleArtworkCompared": false,
+      "stateIsolation": {
+        "nonGpuSubsystemCount": 28,
+        "allNonGpuSubsystemsIdentical": true,
+        "allGpuRegistersIdentical": true,
+        "mainRamSha256": "edb175c2e21073993e6df2898ca5201464515df4afefcf72927e390fe54291d5"
+      },
+      "failures": []
+    }
+  ],
+  "affectedTemporalSamples": 6917,
+  "visibleAnchors": 4,
+  "hiddenAnchors": 1,
+  "repeatValidation": {
+    "artifacts": [
+      {
+        "artifact": "frame-132/probe/frame.png",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-132/probe/frame.png",
+          "bytes": 38975,
+          "sha256": "dc7bebf731716dccbe2c37ac707db7b0cd84cfe9fe5c57ae43ec189f77e00efa"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-132/probe/frame.png",
+          "bytes": 38975,
+          "sha256": "dc7bebf731716dccbe2c37ac707db7b0cd84cfe9fe5c57ae43ec189f77e00efa"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-132/probe/states/fft-clean-base-game.state.auto",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-132/probe/states/fft-clean-base-game.state.auto",
+          "bytes": 1493326,
+          "sha256": "64c53e048fd523e4dff39fdd889bf7f5aced79424c58c431ce12f1055aaa05a4"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-132/probe/states/fft-clean-base-game.state.auto",
+          "bytes": 1493326,
+          "sha256": "64c53e048fd523e4dff39fdd889bf7f5aced79424c58c431ce12f1055aaa05a4"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-132/background.rgba",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-132/background.rgba",
+          "bytes": 245760,
+          "sha256": "14742475031315e04c8fc1ddf38183117e19dce9038e24c09fddf9b43cb03571"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-132/background.rgba",
+          "bytes": 245760,
+          "sha256": "14742475031315e04c8fc1ddf38183117e19dce9038e24c09fddf9b43cb03571"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-132/original.png",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-132/original.png",
+          "bytes": 40707,
+          "sha256": "5bf9f27b967aa22eaa37528e45a62aca059d5b13ff1c7092d07913fc3fc68655"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-132/original.png",
+          "bytes": 40707,
+          "sha256": "5bf9f27b967aa22eaa37528e45a62aca059d5b13ff1c7092d07913fc3fc68655"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-132/background.png",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-132/background.png",
+          "bytes": 36284,
+          "sha256": "e29d4f5b646c969b167a79f8fa256698eb32a8309e2482e5377bdcf6155882ef"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-132/background.png",
+          "bytes": 36284,
+          "sha256": "e29d4f5b646c969b167a79f8fa256698eb32a8309e2482e5377bdcf6155882ef"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-132/native.png",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-132/native.png",
+          "bytes": 40707,
+          "sha256": "5bf9f27b967aa22eaa37528e45a62aca059d5b13ff1c7092d07913fc3fc68655"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-132/native.png",
+          "bytes": 40707,
+          "sha256": "5bf9f27b967aa22eaa37528e45a62aca059d5b13ff1c7092d07913fc3fc68655"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "native/tick-081.rgba",
+        "first": {
+          "localPath": "scratch/banner-hide-c/native/tick-081.rgba",
+          "bytes": 245760,
+          "sha256": "41cd8609f45ab0534fc6df0ad69b799158a4c9dcddccc27a1d67011598bc9fb3"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/native/tick-081.rgba",
+          "bytes": 245760,
+          "sha256": "41cd8609f45ab0534fc6df0ad69b799158a4c9dcddccc27a1d67011598bc9fb3"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-134/probe/frame.png",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-134/probe/frame.png",
+          "bytes": 38964,
+          "sha256": "7f9135d21f60be7a7f8664d3e1640e823548bf92fc010957c115dd78d024e31d"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-134/probe/frame.png",
+          "bytes": 38964,
+          "sha256": "7f9135d21f60be7a7f8664d3e1640e823548bf92fc010957c115dd78d024e31d"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-134/probe/states/fft-clean-base-game.state.auto",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-134/probe/states/fft-clean-base-game.state.auto",
+          "bytes": 1493719,
+          "sha256": "ac19ef4276b3c8639687dbe93263724ecda9c778ccf7efa33b68a4c359577efd"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-134/probe/states/fft-clean-base-game.state.auto",
+          "bytes": 1493719,
+          "sha256": "ac19ef4276b3c8639687dbe93263724ecda9c778ccf7efa33b68a4c359577efd"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-134/background.rgba",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-134/background.rgba",
+          "bytes": 245760,
+          "sha256": "d5f954467ea5cc180f2d504fe43ef04bf6463246229ba1501079f7c98c319ea8"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-134/background.rgba",
+          "bytes": 245760,
+          "sha256": "d5f954467ea5cc180f2d504fe43ef04bf6463246229ba1501079f7c98c319ea8"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-134/original.png",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-134/original.png",
+          "bytes": 40201,
+          "sha256": "30f2cd465fde03361d937b23dc0afc306f8f96b9efd6d9c0a26fd92021641f38"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-134/original.png",
+          "bytes": 40201,
+          "sha256": "30f2cd465fde03361d937b23dc0afc306f8f96b9efd6d9c0a26fd92021641f38"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-134/background.png",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-134/background.png",
+          "bytes": 36287,
+          "sha256": "29a93934278f74711dc8ed41968f0f8ccfc31b28f116bcdfa27a0f94df0b635e"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-134/background.png",
+          "bytes": 36287,
+          "sha256": "29a93934278f74711dc8ed41968f0f8ccfc31b28f116bcdfa27a0f94df0b635e"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-134/native.png",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-134/native.png",
+          "bytes": 40201,
+          "sha256": "30f2cd465fde03361d937b23dc0afc306f8f96b9efd6d9c0a26fd92021641f38"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-134/native.png",
+          "bytes": 40201,
+          "sha256": "30f2cd465fde03361d937b23dc0afc306f8f96b9efd6d9c0a26fd92021641f38"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "native/tick-082.rgba",
+        "first": {
+          "localPath": "scratch/banner-hide-c/native/tick-082.rgba",
+          "bytes": 245760,
+          "sha256": "3c5dc601e630b1ef6089e9c44b114a5a3e067751fb4c7cc6f6f38f7c71602176"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/native/tick-082.rgba",
+          "bytes": 245760,
+          "sha256": "3c5dc601e630b1ef6089e9c44b114a5a3e067751fb4c7cc6f6f38f7c71602176"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-136/probe/frame.png",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-136/probe/frame.png",
+          "bytes": 38774,
+          "sha256": "750f3d8388a2aba9ea340eacf5a7f281fae81ab068fca398a718633cfc8c3870"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-136/probe/frame.png",
+          "bytes": 38774,
+          "sha256": "750f3d8388a2aba9ea340eacf5a7f281fae81ab068fca398a718633cfc8c3870"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-136/probe/states/fft-clean-base-game.state.auto",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-136/probe/states/fft-clean-base-game.state.auto",
+          "bytes": 1493648,
+          "sha256": "9c42940ec256e064144ef04d15655f1207beb13b2a1b3586e398cd0e740926fe"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-136/probe/states/fft-clean-base-game.state.auto",
+          "bytes": 1493648,
+          "sha256": "9c42940ec256e064144ef04d15655f1207beb13b2a1b3586e398cd0e740926fe"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-136/background.rgba",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-136/background.rgba",
+          "bytes": 245760,
+          "sha256": "6bb7350da31bde1ea287346ac57861d0a6e5b939defdb079c20710c65b0fa28d"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-136/background.rgba",
+          "bytes": 245760,
+          "sha256": "6bb7350da31bde1ea287346ac57861d0a6e5b939defdb079c20710c65b0fa28d"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-136/original.png",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-136/original.png",
+          "bytes": 37576,
+          "sha256": "cdfdee699e0d66baaf0c931d28cea526907159428a90c4f0e33b3b67156acf18"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-136/original.png",
+          "bytes": 37576,
+          "sha256": "cdfdee699e0d66baaf0c931d28cea526907159428a90c4f0e33b3b67156acf18"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-136/background.png",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-136/background.png",
+          "bytes": 36293,
+          "sha256": "f82aa4f2df4b5aa80a1a934d6600004337ef17b03c3e78737e315c7bb7a5373f"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-136/background.png",
+          "bytes": 36293,
+          "sha256": "f82aa4f2df4b5aa80a1a934d6600004337ef17b03c3e78737e315c7bb7a5373f"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-136/native.png",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-136/native.png",
+          "bytes": 37576,
+          "sha256": "cdfdee699e0d66baaf0c931d28cea526907159428a90c4f0e33b3b67156acf18"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-136/native.png",
+          "bytes": 37576,
+          "sha256": "cdfdee699e0d66baaf0c931d28cea526907159428a90c4f0e33b3b67156acf18"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "native/tick-083.rgba",
+        "first": {
+          "localPath": "scratch/banner-hide-c/native/tick-083.rgba",
+          "bytes": 245760,
+          "sha256": "724b7e053a7a1c8110b6c09a138356b8c468dfebf45ce4fc36c9fc1adbafa76a"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/native/tick-083.rgba",
+          "bytes": 245760,
+          "sha256": "724b7e053a7a1c8110b6c09a138356b8c468dfebf45ce4fc36c9fc1adbafa76a"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-138/probe/frame.png",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-138/probe/frame.png",
+          "bytes": 38811,
+          "sha256": "141fb409ad6d93217591156831bc6703c3839a4c214644f37067ab0af036a37c"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-138/probe/frame.png",
+          "bytes": 38811,
+          "sha256": "141fb409ad6d93217591156831bc6703c3839a4c214644f37067ab0af036a37c"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-138/probe/states/fft-clean-base-game.state.auto",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-138/probe/states/fft-clean-base-game.state.auto",
+          "bytes": 1493286,
+          "sha256": "43895795afaea3bee0485f54a8502876ea48374527434de68a0f605cf015f913"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-138/probe/states/fft-clean-base-game.state.auto",
+          "bytes": 1493286,
+          "sha256": "43895795afaea3bee0485f54a8502876ea48374527434de68a0f605cf015f913"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-138/background.rgba",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-138/background.rgba",
+          "bytes": 245760,
+          "sha256": "6f3012d651daab8d27c0d51963e9d633b0cb3440f0a3a0538bb5ea89eb285648"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-138/background.rgba",
+          "bytes": 245760,
+          "sha256": "6f3012d651daab8d27c0d51963e9d633b0cb3440f0a3a0538bb5ea89eb285648"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-138/original.png",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-138/original.png",
+          "bytes": 36405,
+          "sha256": "861c94ab84bfb9c5f49bc9e754ee5ea4f2cf92f0e4d8a71ec279873bcedb536e"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-138/original.png",
+          "bytes": 36405,
+          "sha256": "861c94ab84bfb9c5f49bc9e754ee5ea4f2cf92f0e4d8a71ec279873bcedb536e"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-138/background.png",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-138/background.png",
+          "bytes": 36344,
+          "sha256": "cca2731d09f36321968c8367b8de28bb1dedad921a2e1d10331684602f3b0f5d"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-138/background.png",
+          "bytes": 36344,
+          "sha256": "cca2731d09f36321968c8367b8de28bb1dedad921a2e1d10331684602f3b0f5d"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-138/native.png",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-138/native.png",
+          "bytes": 36405,
+          "sha256": "861c94ab84bfb9c5f49bc9e754ee5ea4f2cf92f0e4d8a71ec279873bcedb536e"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-138/native.png",
+          "bytes": 36405,
+          "sha256": "861c94ab84bfb9c5f49bc9e754ee5ea4f2cf92f0e4d8a71ec279873bcedb536e"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "native/tick-084.rgba",
+        "first": {
+          "localPath": "scratch/banner-hide-c/native/tick-084.rgba",
+          "bytes": 245760,
+          "sha256": "40debbc2e3ce69546142ed4056432302dbe383525615d3716c05a230bc6afaab"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/native/tick-084.rgba",
+          "bytes": 245760,
+          "sha256": "40debbc2e3ce69546142ed4056432302dbe383525615d3716c05a230bc6afaab"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-140/probe/frame.png",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-140/probe/frame.png",
+          "bytes": 38864,
+          "sha256": "20d59495a2c76347d94898f18df7814d416358786ab619bd7fa30753fdac1c62"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-140/probe/frame.png",
+          "bytes": 38864,
+          "sha256": "20d59495a2c76347d94898f18df7814d416358786ab619bd7fa30753fdac1c62"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-140/probe/states/fft-clean-base-game.state.auto",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-140/probe/states/fft-clean-base-game.state.auto",
+          "bytes": 1493200,
+          "sha256": "513b809bc0dfd463a9fd06b7f78d586a626713ff5dfe3f1a1469e38a5a01f4b5"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-140/probe/states/fft-clean-base-game.state.auto",
+          "bytes": 1493200,
+          "sha256": "513b809bc0dfd463a9fd06b7f78d586a626713ff5dfe3f1a1469e38a5a01f4b5"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-140/background.rgba",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-140/background.rgba",
+          "bytes": 245760,
+          "sha256": "41e7d17b7bdcf341d08335da651d2108bc190c1d37c92a8ccfa0449301af8846"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-140/background.rgba",
+          "bytes": 245760,
+          "sha256": "41e7d17b7bdcf341d08335da651d2108bc190c1d37c92a8ccfa0449301af8846"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-140/original.png",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-140/original.png",
+          "bytes": 36384,
+          "sha256": "892d97c925630fc57cc434e5a2c49e308b0fde0dad58e756ccd2d7a429816dbc"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-140/original.png",
+          "bytes": 36384,
+          "sha256": "892d97c925630fc57cc434e5a2c49e308b0fde0dad58e756ccd2d7a429816dbc"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-140/background.png",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-140/background.png",
+          "bytes": 36384,
+          "sha256": "892d97c925630fc57cc434e5a2c49e308b0fde0dad58e756ccd2d7a429816dbc"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-140/background.png",
+          "bytes": 36384,
+          "sha256": "892d97c925630fc57cc434e5a2c49e308b0fde0dad58e756ccd2d7a429816dbc"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "frame-140/native.png",
+        "first": {
+          "localPath": "scratch/banner-hide-c/frame-140/native.png",
+          "bytes": 36384,
+          "sha256": "892d97c925630fc57cc434e5a2c49e308b0fde0dad58e756ccd2d7a429816dbc"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/frame-140/native.png",
+          "bytes": 36384,
+          "sha256": "892d97c925630fc57cc434e5a2c49e308b0fde0dad58e756ccd2d7a429816dbc"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "native/tick-085.rgba",
+        "first": {
+          "localPath": "scratch/banner-hide-c/native/tick-085.rgba",
+          "bytes": 245760,
+          "sha256": "41e7d17b7bdcf341d08335da651d2108bc190c1d37c92a8ccfa0449301af8846"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/native/tick-085.rgba",
+          "bytes": 245760,
+          "sha256": "41e7d17b7bdcf341d08335da651d2108bc190c1d37c92a8ccfa0449301af8846"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "native/check.json",
+        "first": {
+          "localPath": "scratch/banner-hide-c/native/check.json",
+          "bytes": 5564,
+          "sha256": "a6dc18e93ae61c985e136da454c19da025afe1dbb75b3b831f2b9a9e2b362010"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/native/check.json",
+          "bytes": 5564,
+          "sha256": "a6dc18e93ae61c985e136da454c19da025afe1dbb75b3b831f2b9a9e2b362010"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "review.html",
+        "first": {
+          "localPath": "scratch/banner-hide-c/review.html",
+          "bytes": 2654,
+          "sha256": "6dee755c2c24428ce32ead4135e9fc1e0721d71d90f39f916c3cce7e1dc87d01"
+        },
+        "second": {
+          "localPath": "scratch/banner-hide-d/review.html",
+          "bytes": 2654,
+          "sha256": "6dee755c2c24428ce32ead4135e9fc1e0721d71d90f39f916c3cce7e1dc87d01"
+        },
+        "byteIdentical": true
+      }
+    ],
+    "metricsIdentical": true,
+    "bindingsIdentical": true,
+    "stateIsolationIdentical": true,
+    "wholeReportsByteIdentical": false
+  },
+  "tools": [
+    {
+      "localPath": "tools/verification/compare_banner_hide.py",
+      "bytes": 21621,
+      "sha256": "56c57db8e70b1310f1a91fb6961d9af9c6c762048eaa6cbeb09db7ea9e02cf50"
+    },
+    {
+      "localPath": "tools/verification/analyze_banner_precision.py",
+      "bytes": 11397,
+      "sha256": "63d262fa2374dec4114ec2a6577c8c6071456696d538cafa30594be7e882052e"
+    },
+    {
+      "localPath": "tools/verification/capture_banner_continuation.py",
+      "bytes": 15599,
+      "sha256": "01219dd92df23f9112cbf1d9a7d10850c7e3a28c4944c68b67b8e9202e44a0ed"
+    },
+    {
+      "localPath": "tools/verification/compare_banner_background.py",
+      "bytes": 20860,
+      "sha256": "acdc78b08533e3480ff2f8ca2d48d577625caa55cc7054cc70d0343d91b80e79"
+    },
+    {
+      "localPath": "tools/verification/compare_observed_banner.py",
+      "bytes": 16541,
+      "sha256": "e5de625712f74373c1beace5ea394e3744c9f500a57700a4287c3fd5e88d80fa"
+    },
+    {
+      "localPath": "tools/verification/compare_visual_checkpoints.py",
+      "bytes": 13970,
+      "sha256": "3ee039e9a767c491d2b44b9889b7d3512262d456e51cf34017945b5e84e3210b"
+    },
+    {
+      "localPath": "tools/verification/prepare_retroarch_reference.py",
+      "bytes": 11773,
+      "sha256": "3bf0e6ffb79f0e12afaf8f4ba6da030034d18de828baee9bd5ae8220c9d365b0"
+    },
+    {
+      "localPath": "tools/verification/trace_banner_draw_state.py",
+      "bytes": 6467,
+      "sha256": "228ee3d48f148204e9a83b228969e8e347414250761309efcff23f4349ce9513"
+    },
+    {
+      "localPath": "tools/banner-blend-check/Program.cs",
+      "bytes": 8375,
+      "sha256": "abd3fcdfd3911d92c550ce7cb3835710890ddbcc65c92c188f58726d97bcc889"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/FiveBitGeneralBannerPresentation.cs",
+      "bytes": 6721,
+      "sha256": "9ca71f7f8ed122f09f192abb2f13b40696c272d073d072b983935468a2318108"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/GeneralBannerPresentation.cs",
+      "bytes": 5586,
+      "sha256": "f522659e2fbb579e491cc13004d05f21a9b51149c717b75710b712c7cbc0cc92"
+    }
+  ],
+  "manualReview": {
+    "agent": "Selected partial/tail/hidden panels inspected; original and C# pixels match automatically throughout.",
+    "agentInspectedFrontendFrames": [
+      136,
+      138,
+      140
+    ],
+    "owner": "pending",
+    "reviewArtifact": {
+      "localPath": "scratch/banner-hide-c/review.html",
+      "bytes": 2654,
+      "sha256": "6dee755c2c24428ce32ead4135e9fc1e0721d71d90f39f916c3cce7e1dc87d01"
+    }
+  },
+  "validation": {
+    "managedPassed": 1450,
+    "pythonPassed": 116,
+    "newPythonCases": 12,
+    "releaseBuildWarnings": 0,
+    "mainSolutionLockedRestorePassed": true,
+    "developerHostLockedRestorePassed": true,
+    "developerHostBuildWarnings": 0,
+    "actualHostNegativeCases": 5,
+    "actualHostNegativeReport": {
+      "localPath": "scratch/banner-hide-negative/report.json",
+      "bytes": 1031,
+      "sha256": "c75ceb5b9c6a8efaa3b21efab205ffa9a668089e4e816f11a4d99a59fa64c87e"
+    }
+  },
+  "limits": [
+    "Five selected no-input snapshots during native axis-aligned six-piece banner hiding only.",
+    "307,200 full-canvas comparisons include inherited controlled original backgrounds; no managed map/scene fidelity claim.",
+    "Fully hidden artwork has no pixel sample success: compared=false and exactEquality=null; background preservation still checked.",
+    "No early reveal/loading/physical Circle input/event-401 reachability or general PS1 rasterizer claim.",
+    "Source-based selected frame distance is not a universal emulator/frontend delay setting."
+  ]
+}
