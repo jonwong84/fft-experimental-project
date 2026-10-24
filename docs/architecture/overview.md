@@ -39,8 +39,10 @@ Its family-level entries are not a complete original record/encounter catalog.
   names the missing camera/task/banner/lifecycle capabilities; it adds no playback.
   Original camera operand mutation must remain distinct from immutable definitions.
   [ZOD-072](zod-072-event-task-contract.md) selects a scene-owned task ledger and
-  explicit barrier protocol, independently of interpreter lifetime. This is a
-  documented contract; ZOD-073 still needs to implement its bounded pure proof.
+  explicit barrier protocol, independently of interpreter lifetime. ZOD-073 now
+  [implements the pure ledger/barrier proof](../behavior/scene-task-barriers.md)
+  with stable instances/revisions, live scene-wide polling, explicit ordered facts
+  and atomic failures. No workers or E5 interpreter integration exist yet (ZOD-074).
 - `Fft.AssetTool` and `Fft.AssetTool.Cli` handle offline image inventory, extraction, narrow unit `.SPR`
   decoding, selected SHP/SEQ pose preparation and bounded GNS/mesh/indexed-texture conversion.
   The CLI composes the tools; no full animation interpreter exists.

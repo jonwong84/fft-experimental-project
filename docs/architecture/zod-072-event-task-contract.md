@@ -226,6 +226,11 @@ selection, EventEnd and original/emulator comparison remain outside ZOD-073.
 
 ## Verification and remaining evidence
 
+Implementation follow-up: ZOD-073 now [executes this bounded contract](../behavior/scene-task-barriers.md),
+including all 17 specification cases and additional phase/resource/failure checks.
+The proposal and investigation results below remain historical. E5 interpreter
+integration is the separate ZOD-074 child; no original worker is implemented.
+
 The source review cross-checked both E5 scans, record widths, start/exit/suspend/
 resume behavior, lookup/allocation helpers, camera tags, REQUIRE parent lifetime
 and the 54 -> 55 -> 54 hold signal. Pinned paths, metadata cases/IDs, document links,

@@ -242,7 +242,9 @@ with signed counts, immutable suspension, exact tick boundaries and atomic error
 The investigation and validation below remain historical; no original BattleStart
 playback or missing worker/lifecycle behavior was added. ZOD-072 now
 [defines the scene task-lifetime/barrier contract](zod-072-event-task-contract.md);
-ZOD-073 still needs to implement its pure proof before E5 integration.
+ZOD-073 now [implements its pure ledger/barrier proof](../behavior/scene-task-barriers.md).
+E5 interpreter integration is the separate ZOD-074 child; original workers and
+BattleStart playback remain unsupported.
 
 ## Verification and completion boundary
 

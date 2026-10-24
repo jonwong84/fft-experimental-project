@@ -67,9 +67,11 @@ return to battle. Original observations and its required runtime capabilities ar
 still absent. ZOD-071 now adds a separate timed synthetic profile with explicit
 scheduler ticks, immutable waits, exact resume ordering and atomic failures.
 Locked restore, zero-warning Release build and all 1,105 tests pass. ZOD-072 now
-selects a source-traced scene task ledger/barrier contract and 17 unexecuted
-specification cases. Next event step: ZOD-073's pure ledger/barrier proof; E5
-interpreter integration and real workers remain separate. ZOD-068's synthetic world-checkpoint
+selects a source-traced scene task ledger/barrier contract. ZOD-073 implements its
+pure ledger/single-consumer proof with all 17 specification regressions plus 40
+boundary cases; locked restore, zero-warning Release build and all 1,162 tests pass.
+Next event step: ZOD-074's separate synthetic E5 profile with atomic ledger/VM
+integration. Real workers remain separate. ZOD-068's synthetic world-checkpoint
 service remains an independent lane; ZOD-069's native Save/Load UI waits on that
 service and minimal client navigation. Original campaign support remains open.
 M2 is not complete yet.
@@ -967,7 +969,17 @@ callbacks, clock/GPU polling, original event export or EventEnd implementation.
 
 ### ZOD-073 — Prove the scene task ledger and single barrier consumer
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-072
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-072
+
+**Result (2026-10-23):** [Pure scene task/barrier proof](behavior/scene-task-barriers.md)
+implements immutable scene/instance identities, revisions, family phases and
+terminal tombstones. Explicit ordered ApplyUpdates/BeginBarrier/AdvanceTick
+commands enforce live scene-wide polling, mandatory yield and transactional
+resource/error handling. All 17 authored specification cases now have full snapshot,
+ordered trace and replay regressions, plus 40 boundary checks. Locked restore,
+zero-warning Release build and all 1,162 tests pass (57 new). Prepared profiles,
+save schemas, package locks and production dependencies are unchanged. E5 remains
+rejected by existing profiles; ZOD-074 owns separate interpreter integration.
 
 **Scope:** Implement the selected pure BATTLE scene task ledger/barrier contract
 in Fft.Core.Events. Use explicit scene-run identity, monotonic task instances,
@@ -986,6 +998,31 @@ committed traces. Keep Core independent of Content, with no clock/GPU/I/O callba
 or Zodiac task classes. Existing conditional/timed profiles, save formats and E5
 rejection remain unchanged. This proof does not execute original opcodes, select
 opcode-77 slots, implement EventEnd, or add multiple interpreter consumers.
+
+### ZOD-074 — Integrate task barriers into a separate synthetic event profile
+
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-071, ZOD-073
+
+**Scope:** Compose the proved conditional/frame-wait behavior and scene ledger with
+a normalized E5 barrier operation in one explicit new BATTLE synthetic execution
+profile. Use recorded logical task facts, one shared logical tick boundary and a
+single interpreter consumer. AssetTool owns unsigned original operand decoding;
+Content validates the new capability/profile and projects immutable definitions
+inward to Core. Existing profiles remain closed to E5.
+
+**Acceptance criteria:** Pin the source revision and declare the exact new profile
+and tick/command contracts before implementation. Admit only selected task classes
+4/54/55/56, reject unsupported selectors/scenes/opcodes even when unreachable,
+and preserve strict prepared validation and one-way dependencies. Independently
+authored synthetic fixtures prove empty/multiple/new matching tasks, all selected
+classes, F1/E5 sequencing, same-tick continuation after release and a fresh yield
+for a newly entered barrier. Budgets, bad updates and continuation failures must
+roll back both VM and ledger/tick state with empty committed traces. Replay records
+all explicit facts and checks exact combined state/ordered traces. The scene ledger
+survives interpreter exit/restart without ID reuse or implicit task cancellation;
+define and test that boundary. Preserve old APIs/profiles, saves and package graphs.
+No worker algorithms, callback/GPU timing, opcode-77 slot selection, EventEnd,
+concurrent consumers, WORLD support or original BattleStart playback.
 
 ## Authoring, extensions, and later goals
 

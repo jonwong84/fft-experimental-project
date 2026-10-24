@@ -60,9 +60,14 @@ behavior, battle save schemas, project references and package locks remain intac
 ZOD-072 now [defines the scene task/barrier contract](architecture/zod-072-event-task-contract.md):
 scene-wide live polling, mandatory first yield, BATTLE/WORLD scan differences,
 stable scene/task identities, revisions, dark-screen phases and atomic explicit
-updates. Its 17 authored specification cases are unexecuted; no runtime changes
-or new suite run. Next event step: ZOD-073 pure ledger/single-consumer proof before
-E5 interpreter integration. ZOD-068's synthetic world checkpoint service remains
+updates. Its original JSON remains specification-only. ZOD-073 now
+[implements the pure scene ledger/barrier](behavior/scene-task-barriers.md):
+stable scene/task IDs, revisions, terminal tombstones, explicit ordered updates,
+live polling and atomic rejection. All 17 cases have full-state/trace/replay
+regressions, with 40 additional boundary cases. Locked restore, zero-warning
+Release build and all **1,162 tests** passed (57 new Core cases). Next event step:
+ZOD-074's separate synthetic E5 profile with atomic ledger/VM integration; no actual
+worker or original event playback exists. ZOD-068's synthetic world checkpoint service remains
 independent, and ZOD-069's UI follows service/navigation. Original captures (ZOD-026), comparison
 checkpoints (ZOD-033), and remote CI/clean-machine evidence (ZOD-034) remain open.
 MAP003's static scene does not broaden M1
