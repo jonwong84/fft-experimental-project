@@ -122,6 +122,18 @@ code changed or full-suite rerun; the last full validation remains 1,388 tests.
 Matched original rendered captures/comparison checkpoints (ZOD-033) remain open,
 along with remote CI/clean-machine evidence (ZOD-034). No automatic commit.
 
+**2026-10-24 update:** ZOD-033's [synthetic visual comparison lane](development/visual-comparison-checkpoints.md)
+now has strict headless PNG/capture/plan validation, separate tick/state/view/
+environment failures, regional RGBA diagnostics, explicit threshold rationale and
+a synthetic Windows receipt adapter. All 22 Python tests pass. Two fresh synthetic
+120-frame Windows captures and two reports match exactly with zero tolerances;
+snapshot unchanged, logical tick 0/RNG 1/0. The adapter fingerprints an explicit
+bounded turn projection; no broader simulation equivalence is implied. No managed
+source/package/save/event changes or full .NET rerun; last full suite remains
+1,388 tests. Owner confirms no emulator/save/state/recording is available. ZOD-033
+remains partial until matched original captures and reviewed original thresholds/
+human inspection exist. No emulator installed, no original fidelity claim or commit.
+
 **Prepared:** 2026-10-20  
 **Workspace:** `C:\repositories\fft-experimental-project`  
 **Branch:** `feature/initial-development`  

@@ -1,9 +1,9 @@
 {
   "format": "fft.baseline-coverage",
   "schemaVersion": 1,
-  "updated": "2026-10-23",
+  "updated": "2026-10-24",
   "edition": "SCUS-94221",
-  "managedCommit": "9012e42",
+  "managedCommit": "c561efc",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -1648,7 +1648,7 @@
       "ownerTicket": "ZOD-033",
       "ownerArea": "Fft.Client platform adapters",
       "status": "partial",
-      "currentScope": "Fixed prepared MAP003/Chocobo scene renders with declared neutral-lighting and modern depth/cutout approximations.",
+      "currentScope": "Fixed prepared MAP003/Chocobo scene renders with declared neutral-lighting and modern depth/cutout approximations. ZOD-033 adds strict optional headless authored/same-environment PNG comparison, checkpoint/tick/view/turn-projection bindings, regional RGBA diagnostics and zero-tolerance synthetic Windows plans. All 22 Python tests pass; two 120-frame synthetic captures and reports match. No original rendered comparison or full simulation equivalence is claimed.",
       "referenceSources": [
         {
           "path": "src/battle/map/runtime.c",
@@ -1664,16 +1664,24 @@
         }
       ],
       "evidenceDocs": [
-        "docs/development/prepared-scene.md"
+        "docs/development/prepared-scene.md",
+        "docs/development/visual-comparison-checkpoints.md",
+        "docs/evidence/visual/synthetic-checkpoint-comparison-v1.json"
       ],
       "implementationPaths": [
         "src/Fft.Client/Presentation/PreparedSceneGeometry.cs",
-        "src/Fft.Client/Presentation/PreparedSceneWindow.cs"
+        "src/Fft.Client/Presentation/PreparedSceneWindow.cs",
+        "tools/verification/compare_visual_checkpoints.py",
+        "tools/verification/prepare_synthetic_visual_comparison.py"
       ],
       "automatedChecks": [
         {
           "path": "tests/Fft.Client.Tests/PreparedSceneGeometryTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tools/verification/test_visual_checkpoints.py",
+          "scope": "22 optional synthetic-only Python tests cover strict contracts, distinct timing/state/view/environment mismatches, regional RGBA metrics/threshold boundaries, wrong hashes, PNG formats, report repeatability and safe output; no original game or GPU required."
         }
       ],
       "manualCheckpoint": {
@@ -1684,7 +1692,7 @@
       "openQuestions": [
         "Independent original visual equivalence, PS1 blend/order effects and other variants are pending."
       ],
-      "nextAction": "Establish ZOD-026 oracle/capture evidence before ZOD-033 comparison thresholds."
+      "nextAction": "Obtain a matched original rendered checkpoint with selected emulator/settings and view/input/timing provenance, then define the original comparison profile and justified thresholds. The owner currently has no emulator/save/state/recording; ZOD-033 remains partial."
     },
     {
       "id": "COV-PRE-002",
@@ -2353,7 +2361,7 @@
       "ownerTicket": "ZOD-026",
       "ownerArea": "Development validation",
       "status": "partial",
-      "currentScope": "ZOD-026 executes the verified original SCUS-94221 Chocobo attack decoder/helper instructions under Unicorn 2.1.4. Two independent-execution captures/reports match the historical managed decoded-byte digest; wrong-hash and existing-output gates pass. No original game, palette/frame/camera/timing or rendered scene comparison is claimed.",
+      "currentScope": "ZOD-026 executes the verified original SCUS-94221 Chocobo attack decoder/helper instructions under Unicorn 2.1.4. Two independent-execution captures/reports match the historical managed decoded-byte digest; wrong-hash and existing-output gates pass. No original game, palette/frame/camera/timing or rendered scene comparison is claimed. ZOD-033 adds strict optional headless authored/same-environment PNG comparison, checkpoint/tick/view/turn-projection bindings, regional RGBA diagnostics and zero-tolerance synthetic Windows plans. All 22 Python tests pass; two 120-frame synthetic captures and reports match. No original rendered comparison or full simulation equivalence is claimed.",
       "referenceSources": [
         {
           "path": "src/battle/units/sprite_display.c",
@@ -2371,15 +2379,23 @@
       "evidenceDocs": [
         "PROJECT_PLAN.md",
         "docs/development/sprite-executable-reference.md",
-        "docs/evidence/sprites/chocobo-attack-executable-v1.json"
+        "docs/evidence/sprites/chocobo-attack-executable-v1.json",
+        "docs/development/visual-comparison-checkpoints.md",
+        "docs/evidence/visual/synthetic-checkpoint-comparison-v1.json"
       ],
       "implementationPaths": [
-        "tools/verification/verify_sprite_attack.py"
+        "tools/verification/verify_sprite_attack.py",
+        "tools/verification/compare_visual_checkpoints.py",
+        "tools/verification/prepare_synthetic_visual_comparison.py"
       ],
       "automatedChecks": [
         {
           "path": "tools/verification/verify_sprite_attack.py",
           "scope": "Optional local original-instruction decoder oracle with pinned hashes, bounded architectural execution/accesses, canaries and managed digest comparison; not part of ordinary tests."
+        },
+        {
+          "path": "tools/verification/test_visual_checkpoints.py",
+          "scope": "22 optional synthetic-only Python tests cover strict contracts, distinct timing/state/view/environment mismatches, regional RGBA metrics/threshold boundaries, wrong hashes, PNG formats, report repeatability and safe output; no original game or GPU required."
         }
       ],
       "manualCheckpoint": {
@@ -2389,7 +2405,7 @@
       "openQuestions": [
         "Matched original rendered scene captures, palette/frame/camera/timing controls, ZOD-033 thresholds and human visual review remain open; the decoder oracle does not establish GPU equivalence."
       ],
-      "nextAction": "Use the documented workflow and obtain a matched original rendered checkpoint for ZOD-033; retain the bounded decoder oracle separately."
+      "nextAction": "Obtain a matched original rendered checkpoint with selected emulator/settings and view/input/timing provenance, then define the original comparison profile and justified thresholds. The owner currently has no emulator/save/state/recording; ZOD-033 remains partial."
     },
     {
       "id": "COV-VAL-003",

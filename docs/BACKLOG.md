@@ -632,7 +632,20 @@ controllers, original menu fidelity and prepared MAP003 combat integration remai
 
 ### ZOD-033 — Add deterministic visual comparison checkpoints
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready (original rendered reference still required) · **Depends on:** ZOD-026, ZOD-031
+**Type:** Story · **Priority:** P2 · **Status:** Partial — synthetic comparison implemented; original rendered reference pending · **Depends on:** ZOD-026, ZOD-031
+
+**Result (2026-10-24):** [Visual comparison workflow](development/visual-comparison-checkpoints.md)
+adds optional headless authored/same-environment PNG comparisons, strict capture/
+checkpoint bindings, regional RGBA metrics, explicit zero-tolerance synthetic
+plans and a finite Windows receipt adapter. All 22 Python regressions pass,
+including deliberately different pixels/ticks/state/environment, malformed inputs,
+wrong hashes and output preservation. Two fresh 120-frame synthetic GPU captures
+and two reports match exactly. The adapter's simulation binding covers the explicit
+turn projection; wider state remains a future capture contract. No .NET source,
+package graph, simulation/event/save behavior or original assets changed; the
+earlier full managed validation remains 1,388 tests. The owner has no emulator/
+save/state/recording available; matched original scene captures, original comparison
+thresholds and original human visual review remain required before completion.
 
 **Scope:** Capture selected scenes at fixed state/presentation ticks and compare them with documented baseline/reference captures using appropriate regions and tolerances.
 
