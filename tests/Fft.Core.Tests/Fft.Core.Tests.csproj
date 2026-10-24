@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Include="..\..\docs\evidence\events\task-barrier-contract-v1.json" Link="Fixtures\task-barrier-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\docs\evidence\events\general-banner-effect-contract-v1.json" Link="Fixtures\general-banner-effect-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="xunit" />
     <PackageReference Include="xunit.runner.visualstudio" />

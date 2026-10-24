@@ -258,6 +258,12 @@ remain separate children.
 
 ## Verification boundary
 
+Implementation follow-up: ZOD-076 now [implements this logical driver and atomic
+scene adapter](../behavior/general-banner-effect.md), with regressions for all 24
+authored cases and additional resource/ownership/lifecycle boundaries. This note
+and its specification artifact retain their original discovery classification;
+startup/loading, graphics and opcode-78 admission remain separate.
+
 This investigation rechecked source operands, dispatch/inline lifetime, phase
 loops, input selection/staging, asset-readiness yields and task clearing; verified
 the existing selected block hash; and checked expectation IDs/counts, pinned

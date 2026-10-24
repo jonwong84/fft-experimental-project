@@ -143,10 +143,12 @@ tests** passed: Core 437, Content 373, CLI 134, AssetTool 164, Engine 24 and Cli
 references, package locks, battle save formats and old execution APIs/profiles are
 unchanged. No GPU, emulator, original file or C runtime is needed by the tests.
 
-Original task completion is still supplied as explicit authored logical facts.
+This profile's task inputs remain explicit logical facts. ZOD-076 now
+[generates its managed banner termination facts](general-banner-effect.md) in a
+separate pure adapter, without changing this event API/profile.
 ZOD-075 now [selects condition 8's post-readiness logical banner](../architecture/zod-075-general-banner-effect.md),
-with phase/input/exit-yield expectations and atomic ownership policy; ZOD-076
-implements the first driver/adapter. No completion authority changes in ZOD-075.
+with phase/input/exit-yield expectations and atomic ownership policy. ZOD-077
+traces banner assets/readiness before presentation or opcode integration.
 Original camera/banner/
 fade algorithms, opcode-77 slot selection, EventEnd, WORLD, tutorial/speed changes,
 concurrent consumers and original scheduling/comparison evidence remain open.

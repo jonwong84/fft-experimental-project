@@ -75,9 +75,16 @@ old profiles still reject E5. Locked restore, zero-warning Release build and all
 [selects condition 8's post-readiness logical banner](architecture/zod-075-general-banner-effect.md):
 20/H/10 reveal/hold/hide iterations, an extra exit yield, Circle sampling only in
 reveal/hold, immutable managed-effect authority and atomic scene composition.
-Its 24 authored specification cases are unexecuted; this documentation milestone
-adds no runtime change or .NET run. Next event step is ZOD-076's pure logical
-driver/adapter; original startup/loading timing, graphics and playback remain open.
+Its source JSON remains a historical specification. ZOD-076 now
+[implements the pure logical banner driver/adapter](behavior/general-banner-effect.md),
+including all 24 cases and 47 additional ownership/resource/lifecycle checks.
+The driver owns one retained task, generates terminal facts, shares one atomic
+tick with VM/ledger, preserves effect progress across interpreter exit/restart,
+and distinguishes original Circle completion from native owner cancellation.
+Old profiles/APIs still reject opcode 78; startup/loading and graphics remain open.
+Locked restore, zero-warning Release build and all **1,302 tests** passed (72 new:
+Core 71, CLI 1). Next event step: ZOD-077's banner-0 asset/readiness trace before
+preparation/presentation or opcode integration; original playback remains absent.
 ZOD-068's synthetic world checkpoint service remains
 independent, and ZOD-069's UI follows service/navigation. Original captures (ZOD-026), comparison
 checkpoints (ZOD-033), and remote CI/clean-machine evidence (ZOD-034) remain open.

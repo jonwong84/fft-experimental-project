@@ -47,7 +47,10 @@ Its family-level entries are not a complete original record/encounter catalog.
   ordered traces and atomic rollback. Scene tasks survive interpreter exit/restart.
   Actual worker algorithms remain unimplemented. [ZOD-075](zod-075-general-banner-effect.md)
   selects condition 8's post-readiness logical banner lifecycle and explicit Circle
-  input as the first effect model; ZOD-076 implements its bounded driver/adapter.
+  input as the first effect model. ZOD-076 now [implements the logical banner driver
+  and atomic scene adapter](../behavior/general-banner-effect.md), generating its
+  own managed task completion/cancellation from explicit logical samples. Other
+  tasks remain authored facts; banner assets/rendering/readiness are ZOD-077.
 - `Fft.AssetTool` and `Fft.AssetTool.Cli` handle offline image inventory, extraction, narrow unit `.SPR`
   decoding, selected SHP/SEQ pose preparation and bounded GNS/mesh/indexed-texture conversion.
   The CLI composes the tools; no full animation interpreter exists.

@@ -51,6 +51,7 @@ public sealed class SceneScenarioEventExporterTests
     [InlineData("speed")]
     [InlineData("camera")]
     [InlineData("remove-dark")]
+    [InlineData("conditions")]
     [InlineData("unknown")]
     [InlineData("reachable-end")]
     [InlineData("truncated")]
@@ -62,13 +63,20 @@ public sealed class SceneScenarioEventExporterTests
             "speed"=>[0xd4,0,0x1c,1,0xdb],
             "camera"=>[0x28,0,0,0xd4,0,0xdb],
             "remove-dark"=>[0xd4,0,0x77,0xdb],
+            "conditions"=>[0x78,8,60,0xd4,0,0xdb],
             "unknown"=>[0xff,0xd4,0,0xdb],
             "reachable-end"=>[0xe5,4,0,0xdb],
             "negative-wait"=>[0xf1,0xff,0xff,0xd4,0,0xdb],
             _=>[0xe5,4],
         };
-        Assert.Throws<InvalidDataException>(()=>ScenarioEventExporter.CreateSyntheticTaskBarriers(
-            ScenarioBlockInspector.Inspect(Block(code),ScenarioBlockEncoding.Raw),new("sample:event/invalid")));
+        var inspection=ScenarioBlockInspector.Inspect(Block(code),ScenarioBlockEncoding.Raw);
+        Assert.Throws<InvalidDataException>(()=>ScenarioEventExporter.CreateSyntheticTaskBarriers(inspection,new("sample:event/invalid")));
+        if (problem == "conditions")
+        {
+            Assert.True(inspection.Complete);
+            Assert.Throws<InvalidDataException>(()=>ScenarioEventExporter.CreateSyntheticTimed(inspection,new("sample:event/invalid")));
+            Assert.Throws<InvalidDataException>(()=>ScenarioEventExporter.CreateSynthetic(inspection,new("sample:event/invalid"),ScenarioEventScene.Battle));
+        }
     }
 
     [Fact]

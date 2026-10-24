@@ -74,8 +74,11 @@ ZOD-074 now integrates E5 in a separate BATTLE synthetic profile with atomic
 ledger/VM state and shared ticks; all 1,230 tests pass (68 new). Next event step:
 ZOD-075 selects condition-8 banner progress after asset readiness, with exact
 reveal/hold/hide/exit-yield and Circle boundaries plus 24 unexecuted specification
-cases. Next event step: ZOD-076's pure logical banner driver and atomic scene
-adapter; original workers/loading/graphics remain separate. ZOD-068's synthetic world-checkpoint
+cases. ZOD-076 now implements the pure logical banner driver/atomic scene adapter,
+with all 24 contract regressions and 47 additional boundary cases. Locked restore,
+zero-warning Release build and all 1,302 tests pass (72 new including an opcode-78
+rejection case). Next event step: ZOD-077's banner asset/readiness trace; original
+loading/graphics remain separate. ZOD-068's synthetic world-checkpoint
 service remains an independent lane; ZOD-069's native Save/Load UI waits on that
 service and minimal client navigation. Original campaign support remains open.
 M2 is not complete yet.
@@ -1074,7 +1077,18 @@ or unobserved claim of retail timing equivalence.
 
 ### ZOD-076 — Prove the logical general-banner effect and atomic scene adapter
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-075
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-075
+
+**Result (2026-10-23):** [Logical general-banner driver](behavior/general-banner-effect.md)
+adds immutable condition-8 progress, explicit Circle/native cancellation, managed
+task authority and atomic effect/event/ledger ticks. Implements exact 20/H/10/final
+yield boundaries, retained scene lifetime, ordered unmanaged/generated facts and
+full rollback on budgets, bad updates and VM continuation failure. All 24 authored
+cases now have headless checkpoint/trace/failure/replay regressions, plus 47 boundary
+cases and an opcode-78 rejection check across old export profiles. Locked restore,
+zero-warning Release build and all 1,302 tests pass (72 new). Production dependency
+and package graphs, old APIs/profiles and saves are unchanged. No original loading,
+rendering, DisplayConditions admission or full event playback is added.
 
 **Scope:** Implement the selected pure condition-8 post-readiness effect in
 Fft.Core.Events, with a typed authored definition, one retained managed effect/task
@@ -1098,6 +1112,29 @@ reject a second attachment in this proof. Keep old APIs/profiles, opcode-78
 rejection, save formats, package graphs and Core independence unchanged. No GPU/
 clock/I/O callbacks, full startup timing, other conditions, EventEnd, concurrent
 consumers or original BattleStart playback.
+
+### ZOD-077 — Trace general-banner assets and the preparation/readiness boundary
+
+**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-076
+
+**Scope:** Trace condition-8 banner/image 0 from the selected BattleStart path to
+its local original image/palette and source quad/range/texture-page/color records.
+Select one bounded prepared presentation slice driven by the proved logical
+effect, while defining where asset readiness sits relative to scene execution.
+
+**Acceptance criteria:** Pin source HEAD and verify the edition/hash/identity of
+selected local input ranges. Trace data layouts, dimensions, packing/palette and
+piece ordering, source vertex/offset arithmetic, relevant quirks/uncertainty and
+renderer requirements. Keep raw/decoded assets and inventories ignored under
+scratch; commit only permitted summarized evidence and authored fixtures. Specify
+immutable prepared files and logical-ID/manifest projection with no original
+parsing or I/O in Core. Separate preloaded readiness from unimplemented original
+allocation/file/upload yields; never let callback arrival, draw count or GPU state
+decide a logical completion tick. Preserve the source buffer-parity uncertainty
+and leave unsupported values explicit. Provide one bounded preparation/presentation
+implementation child with independently checkable expectations. No full opcode-78
+admission, fake loading duration, other condition/banner families, EventEnd or claim
+of original visual/timing equivalence without original observations.
 
 ## Authoring, extensions, and later goals
 

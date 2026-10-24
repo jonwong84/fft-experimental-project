@@ -249,7 +249,9 @@ BattleStart playback remain unsupported.
 ZOD-075 now [selects the general condition-8 banner's logical lifecycle](zod-075-general-banner-effect.md),
 using the selected DisplayConditions at offset 164 as its path anchor. Post-load
 phase/input/termination expectations are separate from unimplemented startup
-loading, rendering and the later Ready condition. ZOD-076 is its first pure proof.
+loading, rendering and the later Ready condition. ZOD-076 now
+[implements that pure logical proof](../behavior/general-banner-effect.md); original
+opcode-78 admission and full event playback remain unsupported.
 
 ## Verification and completion boundary
 
