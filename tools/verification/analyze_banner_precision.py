@@ -46,7 +46,7 @@ def unpack_state(data):
     return blocks[b'MEM ']
 
 
-def gpu_records(core):
+def subsystem_records(core, subsystem):
     v.require(len(core) >= 32 and core[:8] == b'MDFNSVST', 'Expected labeled Mednafen state')
     used = struct.unpack_from('<I', core, 20)[0]
     v.require(32 <= used <= len(core) <= MAX_STATE, 'Invalid core state length')
@@ -57,15 +57,20 @@ def gpu_records(core):
         size = struct.unpack_from('<I', core, pos + 32)[0]; pos += 36
         v.require(name and name not in sections and len(sections) < 128 and pos + size <= used, 'Invalid/duplicate subsystem')
         sections[name] = core[pos:pos + size]; pos += size
-    v.require(b'GPU' in sections, 'Missing GPU subsystem')
-    data = sections[b'GPU']; records, pos = {}, 0
+    v.require(subsystem in sections, 'Missing state subsystem')
+    data = sections[subsystem]; records, pos = {}, 0
     while pos < len(data):
         size = data[pos]; pos += 1
-        v.require(size and pos + size + 4 <= len(data), 'Invalid GPU field name')
+        v.require(size and pos + size + 4 <= len(data), 'Invalid subsystem field name')
         name = data[pos:pos + size].decode('ascii'); pos += size
         length = struct.unpack_from('<I', data, pos)[0]; pos += 4
-        v.require(name not in records and len(records) < 256 and pos + length <= len(data), 'Invalid/duplicate GPU field')
+        v.require(name not in records and len(records) < 256 and pos + length <= len(data), 'Invalid/duplicate subsystem field')
         records[name] = data[pos:pos + length]; pos += length
+    return records
+
+
+def gpu_records(core):
+    records = subsystem_records(core, b'GPU')
     for key, length in (('dtd', 1), ('DisplayMode', 4), ('DisplayFB_XStart', 4), ('DisplayFB_YStart', 4), ('&GPURAM[0][0]', 1048576)):
         v.require(key in records and len(records[key]) == length, 'Missing/invalid GPU field: ' + key)
     v.require(records['dtd'] in (b'\0', b'\1'), 'Invalid dither flag')

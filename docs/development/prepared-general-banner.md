@@ -115,6 +115,12 @@ matches those samples using five-bit arithmetic and the frozen dither-off state.
 It is developer evidence for a future explicit precision profile; this modern
 RGB8 preview and its tests are not silently relabeled native-compatible.
 
+The subsequent [explicit five-bit profile](five-bit-general-banner.md) now adds
+`--precision five-bit --dither off|on`, while default RGB8 captures retain their
+historical bytes. Fresh locked restore, zero-warning Release build and all 1,418
+.NET tests pass. The native full-visible foreground matches the original at
+1,577 samples; original timing and background-sensitive blending remain open.
+
 Locked restore, zero-warning Release build and **1,388 tests pass** (86 new:
 AssetTool 15, Content 38, Client 26, CLI 7). All 20 historical
 [authored expectations](../evidence/events/general-banner-presentation-contract-v1.json)

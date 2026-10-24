@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using System.Security.Cryptography;
 using System.Text.Json;
 using Fft.Content;
@@ -30,12 +31,11 @@ public static class GeneralBannerPreview
     {
         try
         {
-            if (args.Length is not (3 or 5) || args[1] != "--content-root" || (args.Length == 5 && args[3] != "--check"))
-                throw new ArgumentException("Usage: --general-banner --content-root <prepared-directory> [--check <fresh-scratch-directory>]");
+            var options = BannerPreviewOptions.Parse(args);
             if (!OperatingSystem.IsWindows()) throw new PlatformNotSupportedException("Banner window currently supports Windows only.");
             // No scene or task exists until both prepared files and GPU resources have loaded successfully.
-            var banner = PreparedGeneralBanner.Load(LooseAssetStore.Load(args[2]), BannerId);
-            string? check = args.Length == 5 ? Path.GetFullPath(args[4]) : null;
+            var banner = PreparedGeneralBanner.Load(LooseAssetStore.Load(options.ContentRoot), BannerId);
+            string? check = options.CheckRoot is null ? null : Path.GetFullPath(options.CheckRoot);
             if (check is not null)
             {
                 string scratch = Path.GetFullPath("scratch") + Path.DirectorySeparatorChar;
@@ -45,7 +45,7 @@ public static class GeneralBannerPreview
                     if (Directory.Exists(at) && (File.GetAttributes(at) & FileAttributes.ReparsePoint) != 0)
                         throw new IOException("Reparse-point capture output is unsupported.");
             }
-            using var window = new GeneralBannerWindow(banner, check);
+            using var window = new GeneralBannerWindow(banner, check, options);
             window.Run();
             if (check is not null && !window.CheckCompleted) throw new InvalidOperationException("Banner check did not finish.");
             return 0;
@@ -60,6 +60,7 @@ internal sealed class GeneralBannerWindow : Game
 {
     private readonly LoadedGeneralBanner banner;
     private readonly string? check;
+    private readonly BannerPreviewOptions options;
     private readonly GraphicsDeviceManager graphics;
     private SpriteBatch? batch;
     private Texture2D? texture;
@@ -72,11 +73,12 @@ internal sealed class GeneralBannerWindow : Game
     private static readonly HashSet<long> CaptureTicks = [0, 1, 2, 5, 9, 10, 11, 14, 20, 80, 81, 82, 85, 90, 91];
     public bool CheckCompleted { get; private set; }
 
-    internal GeneralBannerWindow(LoadedGeneralBanner banner, string? check)
+    internal GeneralBannerWindow(LoadedGeneralBanner banner, string? check, BannerPreviewOptions options)
     {
-        this.banner = banner; this.check = check;
+        this.banner = banner; this.check = check; this.options = options;
         graphics = new(this) { PreferredBackBufferWidth = 768, PreferredBackBufferHeight = 720, SynchronizeWithVerticalRetrace = true };
-        Window.Title = "General banner | modern RGB8 preview | Space tick, C Circle tick, Esc close";
+        Window.Title = options.FiveBit ? $"General banner | bounded RGB5, dither {(options.Dither == true ? "on" : "off")} | Space tick, C Circle tick, Esc close" :
+            "General banner | modern RGB8 preview | Space tick, C Circle tick, Esc close";
         Window.AllowUserResizing = true;
         graphics.DeviceReset += (_, _) => rebuild = true;
         IsMouseVisible = true;
@@ -87,7 +89,7 @@ internal sealed class GeneralBannerWindow : Game
         CreateResources();
         if (check is not null) Directory.CreateDirectory(check);
         state = GeneralBannerPreview.Start(banner);
-        Console.WriteLine(GeneralBannerPresentation.Policy);
+        Console.WriteLine(options.FiveBit ? FiveBitGeneralBannerPresentation.Policy : GeneralBannerPresentation.Policy);
     }
 
     private void CreateResources()
@@ -119,7 +121,9 @@ internal sealed class GeneralBannerWindow : Game
         if (state is null || Window.ClientBounds.Width <= 0 || Window.ClientBounds.Height <= 0) return;
         if (rebuild) CreateResources(); // Rebuild never changes state or supplies terminal facts.
         var projection = GeneralBannerPresentation.Project(state.Banner!);
-        byte[] rgba = GeneralBannerPresentation.Compose(banner, projection);
+        // The preview explicitly supplies state for each draw; it does not infer game GPU state.
+        var rasterDraws = projection.Select(g => new BannerRasterDraw(g, new(options.Dither == true, 0, 0))).ToImmutableArray();
+        byte[] rgba = options.FiveBit ? FiveBitGeneralBannerPresentation.Compose(banner, rasterDraws) : GeneralBannerPresentation.Compose(banner, projection);
         texture!.SetData(rgba);
         GraphicsDevice.SetRenderTarget(target);
         GraphicsDevice.Clear(Color.Black);
@@ -133,7 +137,12 @@ internal sealed class GeneralBannerWindow : Game
             if (!rgba.AsSpan().SequenceEqual(readback)) throw new InvalidOperationException("GPU point/opaque output differs from CPU canvas.");
             string file = $"tick-{state.Event.Tick:D3}.png";
             using (var stream = File.Create(Path.Combine(check, file))) target.SaveAsPng(stream, 256, 240);
-            captures.Add(new { tick = state.Event.Tick, phase = state.Banner!.Phase.ToString(), file,
+            if (options.FiveBit)
+                captures.Add(new { tick = state.Event.Tick, phase = state.Banner!.Phase.ToString(), file,
+                    rgbaSha256 = Convert.ToHexStringLower(SHA256.HashData(rgba)), pieces = projection,
+                    drawStates = rasterDraws.Select(d => new { pieceIndex = d.Geometry.PieceIndex, ditherEnabled = d.State.DitherEnabled,
+                        framebufferX = d.State.FramebufferX, framebufferY = d.State.FramebufferY }).ToArray() });
+            else captures.Add(new { tick = state.Event.Tick, phase = state.Banner!.Phase.ToString(), file,
                 rgbaSha256 = Convert.ToHexStringLower(SHA256.HashData(rgba)), pieces = projection });
         }
         GraphicsDevice.Clear(Color.Black);
@@ -144,12 +153,20 @@ internal sealed class GeneralBannerWindow : Game
         painted = state.Event.Tick;
         if (check is not null && state.Banner!.IsTerminal && !CheckCompleted)
         {
-            File.WriteAllText(Path.Combine(check, "check.json"), JsonSerializer.Serialize(new
+            object receipt = options.FiveBit ? new
+            {
+                format = "fft.general-banner-native-capture", schemaVersion = 1, precision = "five-bit",
+                policy = FiveBitGeneralBannerPresentation.Policy, ditherEnabled = options.Dither!.Value,
+                framebufferOrigin = new[] { 0, 0 }, referenceRevision = banner.Definition.Source.ReferenceRevision,
+                completionTick = state.Event.Tick, phase = state.Banner.Phase.ToString(), captures,
+                originalComparison = "pending", rendererTaskAcknowledgments = 0,
+            } : (object)new
             {
                 policy = GeneralBannerPresentation.Policy, referenceRevision = banner.Definition.Source.ReferenceRevision,
                 completionTick = state.Event.Tick, phase = state.Banner.Phase.ToString(), captures,
                 originalComparison = "pending", rendererTaskAcknowledgments = 0,
-            }, new JsonSerializerOptions { WriteIndented = true }) + "\n");
+            };
+            File.WriteAllText(Path.Combine(check, "check.json"), JsonSerializer.Serialize(receipt, new JsonSerializerOptions { WriteIndented = true }) + "\n");
             CheckCompleted = true; Exit();
         }
         base.Draw(gameTime);

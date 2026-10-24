@@ -173,6 +173,20 @@ banner-time draw-mode writer remains untraced. Next select a bounded precision
 profile with explicit draw state, and obtain pre-banner timing anchors.
 ZOD-033 remains partial; no automatic commit.
 
+**Five-bit implementation (2026-10-24):** The
+[bounded banner profile](development/five-bit-general-banner.md) now accepts explicit
+per-draw dithering/framebuffer phase and is available with
+`--precision five-bit --dither off|on`; the existing RGB8 path remains default.
+Frozen RAM ordering-table reconstruction identifies the dark-screen worker's
+`0xE1000006` before all six banner draws. Two native Windows runs and actual
+original comparisons match 1,577 foreground samples exactly; all 16 legacy RGB8
+capture files also repeat unchanged. Dither-on is a retained negative comparison.
+Fresh locked restore, zero-warning Release build and 1,418 .NET tests (30 new),
+plus 81 Python tests (15 new), pass. No logical scene/Core/Engine or asset-schema
+change; ZOD-033 remains partial for timing, blending/coverage and wider integration.
+Next obtain pre-banner timing anchors and original background-sensitive evidence.
+No automatic commit.
+
 **Later owner notes (2026-10-24):** [Presentation decisions](development/later-presentation-decisions.md)
 and deferred ZOD-079 retain requested original CRT/4:3 aspect correction, an
 optional CRT shader, hardware/software rendering and resolution discussion,

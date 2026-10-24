@@ -666,6 +666,16 @@ the installed DLL's source revision and the banner-time draw-mode writer remain
 unverified. Select a bounded precision implementation with explicit state before
 changing the modern preview; timing and broader fidelity remain open.
 
+**Five-bit follow-up:** The [bounded Client profile](development/five-bit-general-banner.md)
+now supplies explicit per-draw dither/origin state, with opt-in CLI selection and
+unchanged RGB8 default output. Frozen RAM chain reconstruction identifies the
+REQUIRE dark-screen mode immediately before all six banner packets. Two native
+GPU capture sets repeat exactly and match all 1,577 original foreground samples
+at zero tolerance; dither-on retains separate state/color differences. Fresh
+locked restore, zero-warning Release build, 1,418 .NET tests (30 new) and 81 Python
+tests (15 new) pass. Reveal/hide timing, original background-sensitive blending,
+general rasterization and full scene/event integration remain open.
+
 **Scope:** Capture selected scenes at fixed state/presentation ticks and compare them with documented baseline/reference captures using appropriate regions and tolerances.
 
 **Acceptance criteria:** Capture conditions are reproducible; reports distinguish geometry, palette, transparency/order, and timing discrepancies from simulation failures; thresholds are justified rather than masking visible defects. Synthetic renderer checks can run without game files; original media and comparisons remain local. Human inspection is recorded for effects automated metrics cannot establish.

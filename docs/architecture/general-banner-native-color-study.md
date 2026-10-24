@@ -17,6 +17,12 @@ ZOD-033 remains partial. A bounded compatibility precision profile is now justif
 as follow-up work; the declared modern RGB8 compositor has not violated its own
 policy and is not silently rewritten here.
 
+Subsequent [five-bit implementation](../development/five-bit-general-banner.md)
+now supplies that explicit profile and reconstructs the frozen command writer:
+the REQUIRE dark-screen worker's mode precedes all six banner draws. Its actual
+C# capture matches the selected samples; the historical study below remains
+separate evidence rather than being relabeled implementation validation.
+
 ## FFT source trace and draw-state boundary
 
 At the pinned FFT revision, `src/event/require/conditions.c` initializes textured
