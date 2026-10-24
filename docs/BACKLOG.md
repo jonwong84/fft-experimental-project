@@ -656,8 +656,15 @@ Two reports/review pages match; all 52 Python tests pass (22 new). Human inspect
 finds consistent apparent placement; strict equality fails at 1,460/1,577 sampled
 core pixels, with the original equal or darker by up to 16 RGB levels. No threshold
 was relaxed or runtime changed. Exact original/managed timing/context alignment,
-native color cause, justified fidelity thresholds and broader comparative human
-review remain required before completion.
+native draw-state provenance, justified fidelity thresholds and broader comparative
+human review remain required before completion. The subsequent
+[color precision study](architecture/general-banner-native-color-study.md) reads
+the frozen GPU's dtd=0 and displayed VRAM, then exactly matches all 1,577 selected
+samples with source-informed five-bit gradient/material/scanout arithmetic.
+Two reports match; all 66 Python tests pass (14 new). No runtime policy changed;
+the installed DLL's source revision and the banner-time draw-mode writer remain
+unverified. Select a bounded precision implementation with explicit state before
+changing the modern preview; timing and broader fidelity remain open.
 
 **Scope:** Capture selected scenes at fixed state/presentation ticks and compare them with documented baseline/reference captures using appropriate regions and tolerances.
 

@@ -11,6 +11,12 @@ equality fails: the managed modern RGB8 preview is brighter in the selected core
 pixels. No tolerance was relaxed, fidelity established or runtime code changed.
 ZOD-033 remains partial.
 
+Subsequent [color precision study](../architecture/general-banner-native-color-study.md)
+now explains the selected foreground discrepancy: the frozen GPU state has
+dithering off, and a source-informed five-bit gradient/material/scanout model
+matches all 1,577 samples exactly. The historical modern comparison below remains
+unchanged. This is a developer study, not a production renderer or timing proof.
+
 ## Inputs and alignment
 
 The [original state observation](../evidence/visual/original-banner-state-v1.json)
@@ -130,6 +136,7 @@ frozen preparation and output preservation). Tests need no game files, emulator,
 GPU or reference checkout. No C# changed; the full .NET suite was not rerun and
 its last recorded result remains 1,388 tests.
 
-Next: trace the native color discrepancy before changing rendering; obtain a
+Next after the linked precision study: select a bounded precision profile with
+explicit draw-state provenance before changing rendering; obtain a
 pre-banner anchor and documented inputs for reveal/hide timing. Broader scene
 state/camera comparisons and justified original fidelity thresholds remain open.

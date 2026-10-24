@@ -1648,7 +1648,7 @@
       "ownerTicket": "ZOD-033",
       "ownerArea": "Fft.Client platform adapters",
       "status": "partial",
-      "currentScope": "Fixed prepared MAP003/Chocobo scene renders with declared neutral-lighting and modern depth/cutout approximations. ZOD-033 adds strict optional headless authored/same-environment PNG comparison, checkpoint/tick/view/turn-projection bindings, regional RGBA diagnostics and zero-tolerance synthetic Windows plans. All 22 Python tests pass; two 120-frame synthetic captures and reports match. No original rendered comparison or full simulation equivalence is claimed. The existing RetroArch 1.22.2/Beetle PSX software installation now has an isolated native capture profile. Two input-disconnected finite boots reach introductory game content with matching raw screenshots and unchanged installed settings; the owner subsequently captured the target banner/state, and two four-frame state restores produce identical banner scene images. Exact original/managed timing/context, BSV playback and original comparisons remain open. All 30 Python tests pass, with 8 new profile/isolation checks. A separate full-visible observed banner profile now records explicit measured borders and context bindings. Two diagnostic reports/review pages match. Manual inspection finds consistent apparent text placement; strict equality fails at 1,460/1,577 managed-background-invariant samples (original equal or darker by up to 16 RGB levels). No fidelity threshold is selected or runtime changed. All 52 Python tests pass (22 new).",
+      "currentScope": "Fixed prepared MAP003/Chocobo scene renders with declared neutral-lighting and modern depth/cutout approximations. ZOD-033 adds strict optional headless authored/same-environment PNG comparison, checkpoint/tick/view/turn-projection bindings, regional RGBA diagnostics and zero-tolerance synthetic Windows plans. All 22 Python tests pass; two 120-frame synthetic captures and reports match. No original rendered comparison or full simulation equivalence is claimed. The existing RetroArch 1.22.2/Beetle PSX software installation now has an isolated native capture profile. Two input-disconnected finite boots reach introductory game content with matching raw screenshots and unchanged installed settings; the owner subsequently captured the target banner/state, and two four-frame state restores produce identical banner scene images. Exact original/managed timing/context, BSV playback and original comparisons remain open. All 30 Python tests pass, with 8 new profile/isolation checks. A separate full-visible observed banner profile now records explicit measured borders and context bindings. Two diagnostic reports/review pages match. Manual inspection finds consistent apparent text placement; strict equality fails at 1,460/1,577 managed-background-invariant samples (original equal or darker by up to 16 RGB levels). No fidelity threshold is selected or runtime changed. All 52 Python tests pass (22 new). A subsequent developer precision study reads the frozen GPU dtd=0/displayed VRAM and exactly matches all 1,577 prior core samples with source-informed five-bit arithmetic, quantized vertical colors and zero-padded emulator output. Two reports match; all 66 Python tests pass (14 new). No runtime profile is changed, and installed-DLL source identity/per-primitive draw-state provenance remain unverified.",
       "referenceSources": [
         {
           "path": "src/battle/map/runtime.c",
@@ -1671,7 +1671,9 @@
         "docs/evidence/visual/retroarch-reference-readiness-v1.json",
         "docs/evidence/visual/original-banner-state-v1.json",
         "docs/development/observed-general-banner-comparison.md",
-        "docs/evidence/visual/observed-general-banner-comparison-v1.json"
+        "docs/evidence/visual/observed-general-banner-comparison-v1.json",
+        "docs/architecture/general-banner-native-color-study.md",
+        "docs/evidence/visual/general-banner-precision-study-v1.json"
       ],
       "implementationPaths": [
         "src/Fft.Client/Presentation/PreparedSceneGeometry.cs",
@@ -1681,7 +1683,8 @@
         "tools/verification/prepare_retroarch_reference.py",
         "tools/verification/verify_retroarch_boot.py",
         "tools/verification/compare_observed_banner.py",
-        "tools/verification/prepare_observed_banner_comparison.py"
+        "tools/verification/prepare_observed_banner_comparison.py",
+        "tools/verification/analyze_banner_precision.py"
       ],
       "automatedChecks": [
         {
@@ -1699,6 +1702,10 @@
         {
           "path": "tools/verification/test_observed_banner.py",
           "scope": "22 authored cases cover material sensitivity masks, signed color diagnostics, explicit borders, input/receipt/provenance bindings, strict differences, deterministic reports, frozen plans and preserved outputs; no game/emulator/GPU needed."
+        },
+        {
+          "path": "tools/verification/test_banner_precision.py",
+          "scope": "14 authored tests cover five-bit modulation, gradient bias, output encoding, bounded labeled-state inspection, malformed/duplicate/truncated formats, original bindings, stored VRAM checks and deterministic study outputs; no original game/emulator required."
         }
       ],
       "manualCheckpoint": {
@@ -1709,7 +1716,7 @@
       "openQuestions": [
         "Independent original visual equivalence, PS1 blend/order effects and other variants are pending."
       ],
-      "nextAction": "Trace native color/gradient precision before changing rendering; obtain a pre-banner anchor and documented input sequence for reveal/hide timing. Broader scene-state comparisons and justified fidelity thresholds remain open."
+      "nextAction": "Select an explicit bounded precision profile; trace banner-time draw state before choosing a compatibility default. Preserve modern RGB8 expectations. Obtain pre-banner anchors for reveal/hide timing."
     },
     {
       "id": "COV-PRE-002",
@@ -2378,7 +2385,7 @@
       "ownerTicket": "ZOD-026",
       "ownerArea": "Development validation",
       "status": "partial",
-      "currentScope": "ZOD-026 executes the verified original SCUS-94221 Chocobo attack decoder/helper instructions under Unicorn 2.1.4. Two independent-execution captures/reports match the historical managed decoded-byte digest; wrong-hash and existing-output gates pass. No original game, palette/frame/camera/timing or rendered scene comparison is claimed. ZOD-033 adds strict optional headless authored/same-environment PNG comparison, checkpoint/tick/view/turn-projection bindings, regional RGBA diagnostics and zero-tolerance synthetic Windows plans. All 22 Python tests pass; two 120-frame synthetic captures and reports match. No original rendered comparison or full simulation equivalence is claimed. The existing RetroArch 1.22.2/Beetle PSX software installation now has an isolated native capture profile. Two input-disconnected finite boots reach introductory game content with matching raw screenshots and unchanged installed settings; the owner subsequently captured the target banner/state, and two four-frame state restores produce identical banner scene images. Exact original/managed timing/context, BSV playback and original comparisons remain open. All 30 Python tests pass, with 8 new profile/isolation checks. A separate full-visible observed banner profile now records explicit measured borders and context bindings. Two diagnostic reports/review pages match. Manual inspection finds consistent apparent text placement; strict equality fails at 1,460/1,577 managed-background-invariant samples (original equal or darker by up to 16 RGB levels). No fidelity threshold is selected or runtime changed. All 52 Python tests pass (22 new).",
+      "currentScope": "ZOD-026 executes the verified original SCUS-94221 Chocobo attack decoder/helper instructions under Unicorn 2.1.4. Two independent-execution captures/reports match the historical managed decoded-byte digest; wrong-hash and existing-output gates pass. No original game, palette/frame/camera/timing or rendered scene comparison is claimed. ZOD-033 adds strict optional headless authored/same-environment PNG comparison, checkpoint/tick/view/turn-projection bindings, regional RGBA diagnostics and zero-tolerance synthetic Windows plans. All 22 Python tests pass; two 120-frame synthetic captures and reports match. No original rendered comparison or full simulation equivalence is claimed. The existing RetroArch 1.22.2/Beetle PSX software installation now has an isolated native capture profile. Two input-disconnected finite boots reach introductory game content with matching raw screenshots and unchanged installed settings; the owner subsequently captured the target banner/state, and two four-frame state restores produce identical banner scene images. Exact original/managed timing/context, BSV playback and original comparisons remain open. All 30 Python tests pass, with 8 new profile/isolation checks. A separate full-visible observed banner profile now records explicit measured borders and context bindings. Two diagnostic reports/review pages match. Manual inspection finds consistent apparent text placement; strict equality fails at 1,460/1,577 managed-background-invariant samples (original equal or darker by up to 16 RGB levels). No fidelity threshold is selected or runtime changed. All 52 Python tests pass (22 new). A subsequent developer precision study reads the frozen GPU dtd=0/displayed VRAM and exactly matches all 1,577 prior core samples with source-informed five-bit arithmetic, quantized vertical colors and zero-padded emulator output. Two reports match; all 66 Python tests pass (14 new). No runtime profile is changed, and installed-DLL source identity/per-primitive draw-state provenance remain unverified.",
       "referenceSources": [
         {
           "path": "src/battle/units/sprite_display.c",
@@ -2403,7 +2410,9 @@
         "docs/evidence/visual/retroarch-reference-readiness-v1.json",
         "docs/evidence/visual/original-banner-state-v1.json",
         "docs/development/observed-general-banner-comparison.md",
-        "docs/evidence/visual/observed-general-banner-comparison-v1.json"
+        "docs/evidence/visual/observed-general-banner-comparison-v1.json",
+        "docs/architecture/general-banner-native-color-study.md",
+        "docs/evidence/visual/general-banner-precision-study-v1.json"
       ],
       "implementationPaths": [
         "tools/verification/verify_sprite_attack.py",
@@ -2412,7 +2421,8 @@
         "tools/verification/prepare_retroarch_reference.py",
         "tools/verification/verify_retroarch_boot.py",
         "tools/verification/compare_observed_banner.py",
-        "tools/verification/prepare_observed_banner_comparison.py"
+        "tools/verification/prepare_observed_banner_comparison.py",
+        "tools/verification/analyze_banner_precision.py"
       ],
       "automatedChecks": [
         {
@@ -2430,6 +2440,10 @@
         {
           "path": "tools/verification/test_observed_banner.py",
           "scope": "22 authored cases cover material sensitivity masks, signed color diagnostics, explicit borders, input/receipt/provenance bindings, strict differences, deterministic reports, frozen plans and preserved outputs; no game/emulator/GPU needed."
+        },
+        {
+          "path": "tools/verification/test_banner_precision.py",
+          "scope": "14 authored tests cover five-bit modulation, gradient bias, output encoding, bounded labeled-state inspection, malformed/duplicate/truncated formats, original bindings, stored VRAM checks and deterministic study outputs; no original game/emulator required."
         }
       ],
       "manualCheckpoint": {
@@ -2440,7 +2454,7 @@
       "openQuestions": [
         "Matched original rendered scene captures, palette/frame/camera/timing controls, ZOD-033 thresholds and human visual review remain open; the decoder oracle does not establish GPU equivalence."
       ],
-      "nextAction": "Trace native color/gradient precision before changing rendering; obtain a pre-banner anchor and documented input sequence for reveal/hide timing. Broader scene-state comparisons and justified fidelity thresholds remain open."
+      "nextAction": "Select an explicit bounded precision profile; trace banner-time draw state before choosing a compatibility default. Preserve modern RGB8 expectations. Obtain pre-banner anchors for reveal/hide timing."
     },
     {
       "id": "COV-VAL-003",

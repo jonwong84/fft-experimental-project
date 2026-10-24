@@ -162,6 +162,17 @@ Python tests pass (22 new); the .NET suite was not rerun (last result: 1,388).
 Trace native color precision before changing rendering, and obtain pre-banner
 anchors for reveal/hide timing. ZOD-033 remains partial. No automatic commit.
 
+**Color precision follow-up (2026-10-24):** The
+[banner study](architecture/general-banner-native-color-study.md) reads the frozen
+state's dtd=0 and displayed VRAM, and matches all 1,577 earlier glyph samples
+exactly with source-informed five-bit arithmetic, a quantized color gradient and
+zero-padded emulator scanout. Two reports match; 66 Python tests pass (14 new).
+No runtime renderer changed or .NET suite reran (last: 1,388). Pinned emulator
+source is study evidence, not the identified installed DLL build; the exact
+banner-time draw-mode writer remains untraced. Next select a bounded precision
+profile with explicit draw state, and obtain pre-banner timing anchors.
+ZOD-033 remains partial; no automatic commit.
+
 **Later owner notes (2026-10-24):** [Presentation decisions](development/later-presentation-decisions.md)
 and deferred ZOD-079 retain requested original CRT/4:3 aspect correction, an
 optional CRT shader, hardware/software rendering and resolution discussion,
