@@ -2,6 +2,10 @@
 
 ## Scope
 
+Later evidence: [ZOD-026's original-instruction oracle](development/sprite-executable-reference.md)
+now independently confirms this fixture's decoded-byte digest. The source-derived
+statements below retain their historical meaning; rendered equivalence remains open.
+
 This milestone implements the fixed prefix model and compressed attack-image
 stream for a unit `.SPR` file, plus a loose-file reader addressed by logical
 asset IDs. It does not parse SHP/SEQ records or image display metadata.

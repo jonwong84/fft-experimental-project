@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-23",
   "edition": "SCUS-94221",
-  "managedCommit": "af61b01",
+  "managedCommit": "9012e42",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -2352,8 +2352,8 @@
       "profileScope": "baseline",
       "ownerTicket": "ZOD-026",
       "ownerArea": "Development validation",
-      "status": "absent",
-      "currentScope": "Source-derived hashes and repeatable workstation captures do not establish an independent original oracle.",
+      "status": "partial",
+      "currentScope": "ZOD-026 executes the verified original SCUS-94221 Chocobo attack decoder/helper instructions under Unicorn 2.1.4. Two independent-execution captures/reports match the historical managed decoded-byte digest; wrong-hash and existing-output gates pass. No original game, palette/frame/camera/timing or rendered scene comparison is claimed.",
       "referenceSources": [
         {
           "path": "src/battle/units/sprite_display.c",
@@ -2362,21 +2362,34 @@
         {
           "path": "src/battle/map/runtime.c",
           "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/units/sp2.c",
+          "inspection": "Pinned decoder/helper and current EVTCHR caller traced for bounded original-instruction execution; no source translation used as oracle."
         }
       ],
       "evidenceDocs": [
-        "PROJECT_PLAN.md"
+        "PROJECT_PLAN.md",
+        "docs/development/sprite-executable-reference.md",
+        "docs/evidence/sprites/chocobo-attack-executable-v1.json"
       ],
-      "implementationPaths": [],
-      "automatedChecks": [],
+      "implementationPaths": [
+        "tools/verification/verify_sprite_attack.py"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tools/verification/verify_sprite_attack.py",
+          "scope": "Optional local original-instruction decoder oracle with pinned hashes, bounded architectural execution/accesses, canaries and managed digest comparison; not part of ordinary tests."
+        }
+      ],
       "manualCheckpoint": {
         "status": "pending-original-observation",
         "procedure": "Record edition, environment, state, palette, camera, frame/timing, inputs and capture hashes under ignored scratch."
       },
       "openQuestions": [
-        "No independent comparison is claimed by the current prepared-scene proof; ZOD-033 thresholds and manual review remain open."
+        "Matched original rendered scene captures, palette/frame/camera/timing controls, ZOD-033 thresholds and human visual review remain open; the decoder oracle does not establish GPU equivalence."
       ],
-      "nextAction": "Finish the ZOD-026 workflow or record its exact blocker/fallback."
+      "nextAction": "Use the documented workflow and obtain a matched original rendered checkpoint for ZOD-033; retain the bounded decoder oracle separately."
     },
     {
       "id": "COV-VAL-003",

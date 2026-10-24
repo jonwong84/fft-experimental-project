@@ -112,6 +112,16 @@ combat's height-10 domain. Gameplay is limited to the synthetic local two-unit b
 source-derived checks do not establish original-rendering equivalence. Physical input timing
 remains a manual follow-up. Original media/captures remain ignored.
 
+ZOD-026 now completes a bounded [original-instruction sprite oracle](development/sprite-executable-reference.md):
+the original Chocobo attack decoder/helper execute from verified BATTLE.BIN bytes
+under existing Unicorn 2.1.4, matching the 25,600-byte managed fixture digest.
+Two captures/reports match; wrong-hash and existing-output gates pass; managed CLI
+verification passes. No original game or GPU render ran. Historical fixture
+provenance remains intact; new executable-reference metadata is separate. No .NET
+code changed or full-suite rerun; the last full validation remains 1,388 tests.
+Matched original rendered captures/comparison checkpoints (ZOD-033) remain open,
+along with remote CI/clean-machine evidence (ZOD-034). No automatic commit.
+
 **Prepared:** 2026-10-20  
 **Workspace:** `C:\repositories\fft-experimental-project`  
 **Branch:** `feature/initial-development`  

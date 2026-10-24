@@ -3,7 +3,7 @@
 Generated from `baseline-coverage.json` by `tools/verification/verify_baseline_coverage.py --write-view`.
 Edit the JSON, then regenerate this view. See [the inventory guide](README.md) for status/evidence rules.
 
-Target: **SCUS-94221**. Snapshot: 2026-10-23; managed base `af61b01`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+Target: **SCUS-94221**. Snapshot: 2026-10-23; managed base `9012e42`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 These entries are planning scopes, not a feature-completion percentage or a complete record/encounter catalog.
 
 ## Simulation
@@ -1068,23 +1068,25 @@ Next action: Add fixture/scenario evidence when each row's supported domain expa
 
 ### COV-VAL-002 — Independent original sprite/scene/audio capture and comparison
 
-Status: **absent**; scope: **baseline**; ticket: **ZOD-026**; owner area: Development validation.
+Status: **partial**; scope: **baseline**; ticket: **ZOD-026**; owner area: Development validation.
 
-Source-derived hashes and repeatable workstation captures do not establish an independent original oracle.
+ZOD-026 executes the verified original SCUS-94221 Chocobo attack decoder/helper instructions under Unicorn 2.1.4. Two independent-execution captures/reports match the historical managed decoded-byte digest; wrong-hash and existing-output gates pass. No original game, palette/frame/camera/timing or rendered scene comparison is claimed.
 
-Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md).
+Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/development/sprite-executable-reference.md](../../docs/development/sprite-executable-reference.md), [docs/evidence/sprites/chocobo-attack-executable-v1.json](../../docs/evidence/sprites/chocobo-attack-executable-v1.json).
 
-Source entry points (pinned revision above; not full traces): [src/battle/units/sprite_display.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/units/sprite_display.c), [src/battle/map/runtime.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/map/runtime.c).
+Source entry points (pinned revision above; not full traces): [src/battle/units/sprite_display.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/units/sprite_display.c), [src/battle/map/runtime.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/map/runtime.c), [src/battle/units/sp2.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/units/sp2.c).
 
-Automated baseline check: **none identified for this scope**; add a scenario regression when implementing the next action.
+Current implementation: [tools/verification/verify_sprite_attack.py](../../tools/verification/verify_sprite_attack.py).
+
+Existing bounded checks: [tools/verification/verify_sprite_attack.py](../../tools/verification/verify_sprite_attack.py).
 
 Manual checkpoint (pending-original-observation): Record edition, environment, state, palette, camera, frame/timing, inputs and capture hashes under ignored scratch.
 
 Remaining gaps:
 
-- No independent comparison is claimed by the current prepared-scene proof; ZOD-033 thresholds and manual review remain open.
+- Matched original rendered scene captures, palette/frame/camera/timing controls, ZOD-033 thresholds and human visual review remain open; the decoder oracle does not establish GPU equivalence.
 
-Next action: Finish the ZOD-026 workflow or record its exact blocker/fallback.
+Next action: Use the documented workflow and obtain a matched original rendered checkpoint for ZOD-033; retain the bounded decoder oracle separately.
 
 ### COV-VAL-003 — Windows/Linux CI and clean-machine launch
 

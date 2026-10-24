@@ -53,8 +53,10 @@ The static MAP003 scene does not expand that battle's supported terrain/combat d
 ZOD-034 implements independent Windows CI, reports and self-contained folder checks;
 remote CI execution and a clean interactive machine remain validation gates.
 ZOD-035 completes the bounded save/load proof with explicit DTOs, active-turn/RNG
-restoration, synthetic migration and safe replacement. Next independent lanes:
-ZOD-026's original capture workflow. ZOD-040 now maps the script families and
+restoration, synthetic migration and safe replacement. ZOD-026 now independently
+confirms the Chocobo attack decoder digest by executing verified original MIPS
+instructions in the optional developer harness. Original rendered scene captures
+remain a separate gate for ZOD-033. ZOD-040 now maps the script families and
 selects a bounded conditional event; ZOD-045 adds the [coverage inventory](coverage/README.md).
 ZOD-064 now prepares/loads that synthetic event with strict capability validation;
 locked restore, zero-warning Release build and all 1,012 tests pass. ZOD-067 now
@@ -506,7 +508,17 @@ checks remain explicitly unverified. Full solution: 656 passed, including 24 hea
 
 ### ZOD-026 — Establish an independent sprite/reference capture workflow
 
-**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** None
+**Type:** Spike · **Priority:** P2 · **Status:** Complete (bounded executable decoder oracle) · **Depends on:** None
+
+**Result:** [Original-instruction sprite capture](development/sprite-executable-reference.md)
+(2026-10-23) executes the verified original decoder/helper with Unicorn 2.1.4,
+confirming the existing 25,600-byte Chocobo attack-image digest. Two captures/reports
+match; wrong-hash and existing-output checks pass; managed CLI verification passes.
+Original input/code/output remain under scratch with committed provenance only.
+No full game was booted and no palette/frame/camera/timing/visual equivalence is
+claimed. This completes the ticket's executable-reference alternative; ZOD-033
+still needs matched original rendered captures for original-scene comparison.
+No .NET runtime changes; the last full suite remains 1,388 passing tests.
 
 **Scope:** Evaluate an executing original routine or controlled original/emulator observation for the current sprite proof. Define how to capture relevant decoded output or appearance with edition, palette, frame, camera, timing, and environment recorded. Align resulting metadata with ZOD-002 before integrating it into the fixture runner.
 
@@ -620,7 +632,7 @@ controllers, original menu fidelity and prepared MAP003 combat integration remai
 
 ### ZOD-033 — Add deterministic visual comparison checkpoints
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-026, ZOD-031
+**Type:** Story · **Priority:** P2 · **Status:** Ready (original rendered reference still required) · **Depends on:** ZOD-026, ZOD-031
 
 **Scope:** Capture selected scenes at fixed state/presentation ticks and compare them with documented baseline/reference captures using appropriate regions and tolerances.
 
