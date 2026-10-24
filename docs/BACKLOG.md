@@ -70,8 +70,10 @@ Locked restore, zero-warning Release build and all 1,105 tests pass. ZOD-072 now
 selects a source-traced scene task ledger/barrier contract. ZOD-073 implements its
 pure ledger/single-consumer proof with all 17 specification regressions plus 40
 boundary cases; locked restore, zero-warning Release build and all 1,162 tests pass.
-Next event step: ZOD-074's separate synthetic E5 profile with atomic ledger/VM
-integration. Real workers remain separate. ZOD-068's synthetic world-checkpoint
+ZOD-074 now integrates E5 in a separate BATTLE synthetic profile with atomic
+ledger/VM state and shared ticks; all 1,230 tests pass (68 new). Next event step:
+ZOD-075 selects one deterministic effect model from the source before translating
+an actual worker. ZOD-068's synthetic world-checkpoint
 service remains an independent lane; ZOD-069's native Save/Load UI waits on that
 service and minimal client navigation. Original campaign support remains open.
 M2 is not complete yet.
@@ -1001,7 +1003,19 @@ opcode-77 slots, implement EventEnd, or add multiple interpreter consumers.
 
 ### ZOD-074 — Integrate task barriers into a separate synthetic event profile
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-071, ZOD-073
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-071, ZOD-073
+
+**Result (2026-10-23):** [Synthetic event barrier contract](behavior/scene-event-barriers.md)
+adds the explicit BATTLE non-tutorial speed-one task-barrier profile. Core composes
+conditional operations, F1 and selected E5 classes with immutable shared-tick
+VM/ledger state, ordered facts/resumption and atomic rejection. Content validates
+and projects the profile; the named offline exporter decodes E5 unsigned and F1
+signed. A separate authored fixture proves all classes and seven exact tick
+boundaries, with full combined snapshots/traces and fresh-definition replay.
+Tasks/tombstones/counters survive explicit exit and next-event start. Old profiles
+still reject E5; no actual worker is added. Locked restore, zero-warning Release
+build and all 1,230 tests pass (68 new). Packages, project references, old APIs and
+save formats remain unchanged.
 
 **Scope:** Compose the proved conditional/frame-wait behavior and scene ledger with
 a normalized E5 barrier operation in one explicit new BATTLE synthetic execution
@@ -1023,6 +1037,28 @@ survives interpreter exit/restart without ID reuse or implicit task cancellation
 define and test that boundary. Preserve old APIs/profiles, saves and package graphs.
 No worker algorithms, callback/GPU timing, opcode-77 slot selection, EventEnd,
 concurrent consumers, WORLD support or original BattleStart playback.
+
+### ZOD-075 — Trace and select the first deterministic scene effect model
+
+**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-074
+
+**Scope:** Select one bounded camera, dark-screen or condition-display effect from
+the original BattleStart path that can generate task phase/completion facts from
+pure logical state and ticks. Trace its source before translating a worker. Separate
+logical effect progress and scene state from rendering resources and host pacing.
+
+**Acceptance criteria:** Pin reference HEAD, entry/callers, operands/data, arithmetic
+widths, update/yield order, completion predicate and observable quirks for the
+selected candidate. Explain why it is the smallest independently checkable slice,
+which initial scene/content/input values it needs, and which values remain unknown.
+Specify immutable Core-owned effect state and its atomic composition with the
+proved VM/ledger tick; do not let GPU completion, draw counts, wall-clock time or
+I/O callback arrival supply completion facts. Provide independently authored phase/
+tick/termination and failure expectations with their evidence classification, then
+one bounded implementation child. Account for barrier class versus task identity,
+initial/last-tick ordering, retained scene lifetime and cancellation authority.
+No broad scheduler/worker port, new engine extraction, full original event playback
+or unobserved claim of retail timing equivalence.
 
 ## Authoring, extensions, and later goals
 

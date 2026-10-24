@@ -150,7 +150,8 @@ their unsupported-opcode admission checks also passed. No original media, C
 executable, GPU or emulator is required by these tests. Package locks, production
 project references, prepared profiles and save schemas are unchanged.
 
-ZOD-074 is the separate child for E5 integration into an explicit synthetic profile,
-including atomic ledger/VM state and mixed frame-wait/barrier ordering. Original
+ZOD-074 now [integrates E5 in an explicit synthetic profile](scene-event-barriers.md),
+including atomic ledger/VM state and mixed frame-wait/barrier ordering. The ledger
+and its standalone API remain unchanged. Original
 workers, opcode-77 first-slot behavior, concurrent interpreter consumers, WORLD
 scanning, EventEnd and original scheduling observations remain open.

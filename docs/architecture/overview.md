@@ -42,7 +42,10 @@ Its family-level entries are not a complete original record/encounter catalog.
   explicit barrier protocol, independently of interpreter lifetime. ZOD-073 now
   [implements the pure ledger/barrier proof](../behavior/scene-task-barriers.md)
   with stable instances/revisions, live scene-wide polling, explicit ordered facts
-  and atomic failures. No workers or E5 interpreter integration exist yet (ZOD-074).
+  and atomic failures. ZOD-074 [integrates E5 in a separate BATTLE synthetic profile](../behavior/scene-event-barriers.md):
+  immutable combined VM/ledger state, one shared tick, same-tick resumption,
+  ordered traces and atomic rollback. Scene tasks survive interpreter exit/restart.
+  Actual worker algorithms remain unimplemented; ZOD-075 selects the first effect model.
 - `Fft.AssetTool` and `Fft.AssetTool.Cli` handle offline image inventory, extraction, narrow unit `.SPR`
   decoding, selected SHP/SEQ pose preparation and bounded GNS/mesh/indexed-texture conversion.
   The CLI composes the tools; no full animation interpreter exists.

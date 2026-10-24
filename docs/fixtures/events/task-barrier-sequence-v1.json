@@ -1,0 +1,116 @@
+{
+  "format": "fft.prepared-scenario-event",
+  "schemaVersion": 1,
+  "profile": "sample:event-profile/non-tutorial-speed1-task-barrier-v1",
+  "dialect": "fft.ps1-us:scenario-bytecode",
+  "id": "sample:event/task-barrier-sequence-v1",
+  "scene": "Battle",
+  "source": {
+    "kind": "synthetic",
+    "edition": "SCUS-94221",
+    "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "blockSha256": "a9618ad699ad4d101a60fc3a8a6809e8dc04309a34d86a9d2a0a989e75e83310",
+    "encoding": "raw",
+    "textOffset": 51
+  },
+  "instructions": [
+    {
+      "offset": 4,
+      "operation": "ZeroVariable",
+      "operand1": 3,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 7,
+      "operation": "WaitForTaskClass",
+      "operand1": 4,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 10,
+      "operation": "AddImmediate",
+      "operand1": 3,
+      "operand2": 1,
+      "targetOffset": null
+    },
+    {
+      "offset": 15,
+      "operation": "WaitFrames",
+      "operand1": 1,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 18,
+      "operation": "WaitForTaskClass",
+      "operand1": 54,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 21,
+      "operation": "AddImmediate",
+      "operand1": 3,
+      "operand2": 2,
+      "targetOffset": null
+    },
+    {
+      "offset": 26,
+      "operation": "WaitForTaskClass",
+      "operand1": 55,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 29,
+      "operation": "AddImmediate",
+      "operand1": 3,
+      "operand2": 4,
+      "targetOffset": null
+    },
+    {
+      "offset": 34,
+      "operation": "WaitForTaskClass",
+      "operand1": 54,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 37,
+      "operation": "WaitFrames",
+      "operand1": 0,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 40,
+      "operation": "WaitForTaskClass",
+      "operand1": 56,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 43,
+      "operation": "AddImmediate",
+      "operand1": 3,
+      "operand2": 8,
+      "targetOffset": null
+    },
+    {
+      "offset": 48,
+      "operation": "ForwardTargetExit",
+      "operand1": 1,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 50,
+      "operation": "SearchEnd",
+      "operand1": null,
+      "operand2": null,
+      "targetOffset": null
+    }
+  ]
+}

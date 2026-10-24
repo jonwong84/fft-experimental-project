@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-23",
   "edition": "SCUS-94221",
-  "managedCommit": "56b94e4",
+  "managedCommit": "d64f854",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 1162,
-    "source": "docs/behavior/scene-task-barriers.md",
+    "passed": 1230,
+    "source": "docs/behavior/scene-event-barriers.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -1086,7 +1086,7 @@
       "ownerTicket": "ZOD-040",
       "ownerArea": "FFT campaign/application",
       "status": "partial",
-      "currentScope": "ZOD-064 prepares authored raw/processed blocks; ZOD-065 projects validated Content records into a pure Core-owned conditional-event executor with immutable state/traces, replay and atomic arithmetic/budget rejection. No retail event or scene/campaign lifecycle executes. ZOD-066 traces verified original event 401: fallback activation, all 13 opcode kinds and EventEnd continuation; structural inspection only. ZOD-071 adds a separate non-tutorial speed-one timed profile with immutable waits, explicit ticks, exact resumption and atomic failures; synchronous capability remains unchanged. ZOD-072 selects a scene-owned task/barrier protocol. ZOD-073 implements its pure ledger/single-consumer proof with explicit ordered facts/ticks, stable identities/revisions, terminal tombstones, live scene-wide polling and atomic failures; 17 specification regressions plus 40 boundary cases pass. No E5 interpreter integration or actual workers.",
+      "currentScope": "ZOD-064 prepares authored raw/processed blocks; ZOD-065 projects validated Content records into a pure Core-owned conditional-event executor with immutable state/traces, replay and atomic arithmetic/budget rejection. No retail event or scene/campaign lifecycle executes. ZOD-066 traces verified original event 401: fallback activation, all 13 opcode kinds and EventEnd continuation; structural inspection only. ZOD-071 adds a separate non-tutorial speed-one timed profile with immutable waits, explicit ticks, exact resumption and atomic failures; synchronous capability remains unchanged. ZOD-072 selects a scene-owned task/barrier protocol. ZOD-073 implements its pure ledger/single-consumer proof with explicit ordered facts/ticks, stable identities/revisions, terminal tombstones, live scene-wide polling and atomic failures; 17 specification regressions plus 40 boundary cases pass. ZOD-074 integrates E5 classes 4/54/55/56 in a separate BATTLE synthetic profile with F1/conditional operations, shared explicit ticks, atomic VM/ledger rollback, exact combined traces and retained scene tasks across interpreter exit/restart. Old profiles still reject E5. Completion facts remain authored; no actual worker or original event playback.",
       "referenceSources": [
         {
           "path": "src/battle/event/interpreter.c",
@@ -1134,7 +1134,9 @@
         "docs/behavior/timed-event-waits.md",
         "docs/architecture/zod-072-event-task-contract.md",
         "docs/evidence/events/task-barrier-contract-v1.json",
-        "docs/behavior/scene-task-barriers.md"
+        "docs/behavior/scene-task-barriers.md",
+        "docs/behavior/scene-event-barriers.md",
+        "docs/fixtures/events/task-barrier-sequence-v1.json"
       ],
       "implementationPaths": [
         "src/Fft.AssetTool/ScenarioBlockInspector.cs",
@@ -1148,7 +1150,11 @@
         "src/Fft.Core/Events/TimedEventExecutor.cs",
         "src/Fft.Core/Events/SceneTaskState.cs",
         "src/Fft.Core/Events/SceneTaskResult.cs",
-        "src/Fft.Core/Events/SceneTaskLedger.cs"
+        "src/Fft.Core/Events/SceneTaskLedger.cs",
+        "src/Fft.Core/Events/SceneEventProgram.cs",
+        "src/Fft.Core/Events/SceneEventState.cs",
+        "src/Fft.Core/Events/SceneEventExecutor.cs",
+        "src/Fft.Core/Events/SceneEventResult.cs"
       ],
       "automatedChecks": [
         {
@@ -1190,6 +1196,18 @@
         {
           "path": "tests/Fft.Core.Tests/SceneTaskLedgerTests.cs",
           "scope": "40 phase/resource/failure boundary cases: all active classes, cancellation/completion, live/current polling, tombstones/capacity, IDs, typed error precedence, atomic allocation and checked counter exhaustion."
+        },
+        {
+          "path": "tests/Fft.Core.Tests/SceneEventExecutorTests.cs",
+          "scope": "27 cases: mandatory yields, all empty selectors, F1/E5 sequencing, multi-owner live polling, cancellation, atomic continuation/task/budget failure and retained scene lifecycle."
+        },
+        {
+          "path": "tests/Fft.Content.Tests/PreparedSceneEventTests.cs",
+          "scope": "23 cases: independent seven-tick fixture with full combined snapshots/ordered traces/replay, strict profile/capability gates, unsupported unreachable selectors and manifest corruption/ID checks."
+        },
+        {
+          "path": "tests/Fft.AssetTool.Cli.Tests/SceneScenarioEventExporterTests.cs",
+          "scope": "18 cases: unsigned E5 decoding/unsupported high-byte selectors, old-profile isolation, literal raw/processed hash/offset agreement and D0-to-D4 barrier landing."
         }
       ],
       "manualCheckpoint": {
@@ -1197,11 +1215,11 @@
         "procedure": "Capture one controlled branch/dialogue event with explicit initial state and timing."
       },
       "openQuestions": [
-        "E5 interpreter composition and atomic combined ledger/VM state remain open (ZOD-074); original event-401 observations, worker timing, camera/banner/operand mutation, EventEnd, tutorial/World/speed changes and full scheduler equivalence remain open."
+        "Actual deterministic effect models (ZOD-075), original event-401 observations, worker timing, camera/banner/operand mutation, EventEnd, tutorial/World/speed changes and full scheduler equivalence remain open."
       ],
-      "nextAction": "Implement ZOD-074 as a separate synthetic E5 execution profile with explicit tick/fact inputs and atomic ledger/VM publication; actual workers and original playback remain separate.",
+      "nextAction": "Trace and select one bounded deterministic scene effect model in ZOD-075, including logical task facts, arithmetic/tick ordering and an implementation child; original workers/playback remain open.",
       "followUpTickets": [
-        "ZOD-074"
+        "ZOD-075"
       ]
     },
     {

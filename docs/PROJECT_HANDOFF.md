@@ -65,9 +65,15 @@ updates. Its original JSON remains specification-only. ZOD-073 now
 stable scene/task IDs, revisions, terminal tombstones, explicit ordered updates,
 live polling and atomic rejection. All 17 cases have full-state/trace/replay
 regressions, with 40 additional boundary cases. Locked restore, zero-warning
-Release build and all **1,162 tests** passed (57 new Core cases). Next event step:
-ZOD-074's separate synthetic E5 profile with atomic ledger/VM integration; no actual
-worker or original event playback exists. ZOD-068's synthetic world checkpoint service remains
+Release build and all **1,162 tests** passed (57 new Core cases). ZOD-074 now
+[integrates synthetic E5 barriers](behavior/scene-event-barriers.md) into a separate
+BATTLE profile with conditional operations/F1, shared explicit ticks, exact
+resumption, atomic ledger/VM rollback and retained scene tasks across exit/restart.
+The authored seven-tick fixture has full combined snapshot/trace/replay checks;
+old profiles still reject E5. Locked restore, zero-warning Release build and all
+**1,230 tests** passed (68 new: Core 27, Content 23, CLI 18). Next event step is
+ZOD-075's source trace/selection of one deterministic effect model; actual workers
+and original event playback remain absent. ZOD-068's synthetic world checkpoint service remains
 independent, and ZOD-069's UI follows service/navigation. Original captures (ZOD-026), comparison
 checkpoints (ZOD-033), and remote CI/clean-machine evidence (ZOD-034) remain open.
 MAP003's static scene does not broaden M1

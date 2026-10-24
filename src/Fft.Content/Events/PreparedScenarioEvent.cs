@@ -7,17 +7,18 @@ using Fft.Core.Events;
 namespace Fft.Content.Events;
 
 public enum ScenarioEventScene { Battle, World }
-public enum ScenarioOperation { Nop, ZeroVariable, AddImmediate, AddVariable, CompareEqual, JumpForwardIfZero, JumpForward, ForwardTarget, ForwardTargetExit, SearchEnd, WaitFrames }
+public enum ScenarioOperation { Nop, ZeroVariable, AddImmediate, AddVariable, CompareEqual, JumpForwardIfZero, JumpForward, ForwardTarget, ForwardTargetExit, SearchEnd, WaitFrames, WaitForTaskClass }
 public sealed record PreparedScenarioInstruction(int Offset, ScenarioOperation Operation, int? Operand1 = null, int? Operand2 = null, int? TargetOffset = null);
 public sealed record ScenarioEventSource(string Kind, string Edition, string ReferenceRevision, string BlockSha256,
     string Encoding, int TextOffset);
 
-/// <summary>Validated immutable synthetic event definition with explicitly selected conditional or timed proof profile.</summary>
+/// <summary>Validated immutable synthetic event definition with an explicitly selected closed execution profile.</summary>
 public sealed class PreparedScenarioEvent
 {
     public const string Format = "fft.prepared-scenario-event";
     public const string Profile = "sample:event-profile/conditional-v1";
     public const string TimedProfile = "sample:event-profile/non-tutorial-speed1-timed-v1";
+    public const string TaskBarrierProfile = "sample:event-profile/non-tutorial-speed1-task-barrier-v1";
     public const string Dialect = "fft.ps1-us:scenario-bytecode";
     public const int MaxJsonBytes = 1024 * 1024;
     public AssetId Id { get; }
@@ -41,8 +42,8 @@ public sealed class PreparedScenarioEvent
         ArgumentNullException.ThrowIfNull(instructions);
         if (string.IsNullOrWhiteSpace(id.Value) || id.Value.Length > 256 || !Enum.IsDefined(scene))
             throw new InvalidDataException("Prepared event requires an explicit stable ID and Battle/World scene.");
-        if (executionProfile is not (Profile or TimedProfile) || (executionProfile == TimedProfile && scene != ScenarioEventScene.Battle))
-            throw new InvalidDataException("Event requires a supported explicit profile; timed proof requires Battle, non-tutorial speed one.");
+        if (executionProfile is not (Profile or TimedProfile or TaskBarrierProfile) || (executionProfile != Profile && scene != ScenarioEventScene.Battle))
+            throw new InvalidDataException("Event requires a supported explicit profile; timed/task proofs require Battle, non-tutorial speed one.");
         ExecutionProfile = executionProfile;
         if (source.Kind != "synthetic" || source.Edition != "SCUS-94221" || !Hex(source.ReferenceRevision, 40) ||
             !Hex(source.BlockSha256, 64) || source.Encoding is not ("raw" or "processed") || source.TextOffset is < 5 or >= 8192)
@@ -75,7 +76,7 @@ public sealed class PreparedScenarioEvent
 
     public static int Size(ScenarioOperation operation) => operation switch
     {
-        ScenarioOperation.ZeroVariable or ScenarioOperation.WaitFrames => 3,
+        ScenarioOperation.ZeroVariable or ScenarioOperation.WaitFrames or ScenarioOperation.WaitForTaskClass => 3,
         ScenarioOperation.AddImmediate or ScenarioOperation.AddVariable => 5,
         ScenarioOperation.JumpForwardIfZero or ScenarioOperation.JumpForward or ScenarioOperation.ForwardTarget or ScenarioOperation.ForwardTargetExit => 2,
         ScenarioOperation.Nop or ScenarioOperation.CompareEqual or ScenarioOperation.SearchEnd => 1,
@@ -107,7 +108,8 @@ public sealed class PreparedScenarioEvent
             ScenarioOperation.ZeroVariable => variable && r.Operand2 is null,
             ScenarioOperation.AddImmediate => variable && r.Operand2 is >= 0 and <= ushort.MaxValue,
             ScenarioOperation.AddVariable => variable && r.Operand2 is >= 0 and <= 3,
-            ScenarioOperation.WaitFrames => ExecutionProfile == TimedProfile && r.Operand1 is >= 0 and <= short.MaxValue && r.Operand2 is null,
+            ScenarioOperation.WaitFrames => ExecutionProfile is TimedProfile or TaskBarrierProfile && r.Operand1 is >= 0 and <= short.MaxValue && r.Operand2 is null,
+            ScenarioOperation.WaitForTaskClass => ExecutionProfile == TaskBarrierProfile && r.Operand1 is 4 or 54 or 55 or 56 && r.Operand2 is null,
             ScenarioOperation.JumpForwardIfZero or ScenarioOperation.JumpForward or ScenarioOperation.ForwardTarget or ScenarioOperation.ForwardTargetExit
                 => r.Operand1 is >= 0 and <= byte.MaxValue && r.Operand2 is null,
             _ => r.Operand1 is null && r.Operand2 is null,
@@ -142,7 +144,7 @@ public sealed class PreparedScenarioEvent
         try
         {
             var dto = JsonSerializer.Deserialize<EventDto>(utf8.Span, Options) ?? throw new InvalidDataException("Event document is required.");
-            if (dto.Format != Format || dto.SchemaVersion != 1 || dto.Profile is not (Profile or TimedProfile) || dto.Dialect != Dialect || !Enum.GetNames<ScenarioEventScene>().Contains(dto.Scene))
+            if (dto.Format != Format || dto.SchemaVersion != 1 || dto.Profile is not (Profile or TimedProfile or TaskBarrierProfile) || dto.Dialect != Dialect || !Enum.GetNames<ScenarioEventScene>().Contains(dto.Scene))
                 throw new InvalidDataException("Unsupported event format/schema/profile/dialect/scene.");
             if (dto.Instructions.Length > 8188 || dto.Instructions.Any(r => r is null)) throw new InvalidDataException("Invalid event instruction collection.");
             return new(new(dto.Id), Enum.Parse<ScenarioEventScene>(dto.Scene), dto.Source,
@@ -163,7 +165,7 @@ public sealed class PreparedScenarioEvent
     /// <summary>Project validated bytecode structure into Core's closed semantic contract; DB and labels are not executable.</summary>
     public ConditionalEventProgram ToExecutionDefinition()
     {
-        if (ExecutionProfile != Profile) throw new InvalidDataException("Select timed execution for the timed profile.");
+        if (ExecutionProfile != Profile) throw new InvalidDataException("Conditional execution requires the explicit conditional profile.");
         return new(Id, Instructions.Where(r => r.Operation != ScenarioOperation.SearchEnd).Select(ToConditionalInstruction));
     }
 
@@ -172,6 +174,17 @@ public sealed class PreparedScenarioEvent
         if (ExecutionProfile != TimedProfile) throw new InvalidDataException("Timed execution requires the explicit timed profile.");
         return new(Id, Instructions.Where(r => r.Operation != ScenarioOperation.SearchEnd).Select(r =>
             r.Operation == ScenarioOperation.WaitFrames ? new TimedEventInstruction(r.Offset, r.Operand1!.Value) : new(ToConditionalInstruction(r))));
+    }
+
+    public SceneEventProgram ToSceneExecutionDefinition()
+    {
+        if (ExecutionProfile != TaskBarrierProfile) throw new InvalidDataException("Scene execution requires the explicit task-barrier profile.");
+        return new(Id, Instructions.Where(r => r.Operation != ScenarioOperation.SearchEnd).Select(r => r.Operation switch
+        {
+            ScenarioOperation.WaitFrames => new SceneEventInstruction(r.Offset, r.Operand1!.Value),
+            ScenarioOperation.WaitForTaskClass => new SceneEventInstruction(r.Offset, (SceneTaskClass)r.Operand1!.Value),
+            _ => new SceneEventInstruction(ToConditionalInstruction(r)),
+        }));
     }
 
     private static ConditionalEventInstruction ToConditionalInstruction(PreparedScenarioInstruction r) => r.Operation switch

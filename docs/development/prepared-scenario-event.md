@@ -26,6 +26,8 @@ event, EntryEdit binary or independent semantic oracle was run for this mileston
   No project reference, package lock, save schema or Zodiac API changes.
   ZOD-071 separately adds [timed-profile admission and projection](../behavior/timed-event-waits.md);
   the conditional profile still rejects F1 and its serialized shape is unchanged.
+  ZOD-074 adds a [separate BATTLE task-barrier profile](../behavior/scene-event-barriers.md)
+  and explicit scene projection; old profiles remain closed to E5.
 
 For an **authored synthetic** block, the preparation flow is:
 
@@ -101,9 +103,13 @@ dispatchers and `script_jump_target_find` establish these distinctions:
 - Missing targets and any reachable DB/missing-code path reject preparation.
   Reachability checks both D0 branches conservatively, without variable inference.
 
-Every decoded instruction must belong to the subset, including unreachable code.
+For the conditional profile, every decoded instruction must belong to the subset, including unreachable code.
 Waits, packed/global variables, RNG, dialogue, concurrent tasks, unit manipulation,
 scene changes, full EventEnd and all other opcodes reject executable preparation.
+The separate timed profile adds F1; ZOD-074's explicit task-barrier profile adds
+F1 and E5 selectors 4/54/55/56 in BATTLE only. Both use the same strict envelope;
+neither admits worker-start opcodes or full EventEnd. See the linked execution
+contracts for their respective immutable transitions and limits.
 Inspection is still available. Contiguous offsets, encoded sizes, one final DB,
 operand shapes and exact first-target landings are revalidated when loading JSON.
 Unknown/duplicate/missing/null fields, numeric/unknown enum values, invalid

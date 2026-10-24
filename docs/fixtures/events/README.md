@@ -61,3 +61,31 @@ independently of decoding/execution. Initial variable 3 = 9 is cleared, then add
 
 The same conditional-profile fixtures remain unchanged. No original block or
 decoded script is committed; generated copies stay ignored.
+
+## Task barrier sequence
+
+`task-barrier-sequence-v1.json` is a third independently authored fixture at
+reference HEAD `11464943bbdbd2a0af022d90cb7f10455cf911df`, selecting
+`sample:event-profile/non-tutorial-speed1-task-barrier-v1`. It contains no original
+script/text/media. Allocate 8,192 zero bytes, write little-endian u32 value 51 at
+offset 0, this literal invented code at offset 4, and FE at offset 51:
+
+```text
+BE 03 00 E5 04 00 B0 03 00 01 00 F1 01 00 E5 36 00
+B0 03 00 02 00 E5 37 00 B0 03 00 04 00 E5 36 00 F1 00 00
+E5 38 00 B0 03 00 08 00 D4 01 DB
+```
+
+Full invented block SHA-256:
+`a9618ad699ad4d101a60fc3a8a6809e8dc04309a34d86a9d2a0a989e75e83310`.
+The 14 structural offsets are 4/7/10/15/18/21/26/29/34/37/40/43/48/50.
+E5 selects Camera 4, transition 54, hold 55, transition 54 and ConditionDisplay 56;
+F1 waits at 15/37 count 1/0. D4 at 48 exits; DB at 50 is unreachable.
+
+The [combined execution contract](../../behavior/scene-event-barriers.md#independent-fixture)
+records all seven tick boundaries and explicit authored task facts. Content tests
+independently assert full states/ordered traces and fresh-definition replay; CLI
+tests reconstruct the literal block and compare its hash/offsets before conversion.
+These are source-derived predicates plus declared native ordering policies, not
+an original/emulator semantic oracle. Processed input replaces the header with
+F2 F2 F2 F2 and explicitly preserves text offset 51; its hash differs.
