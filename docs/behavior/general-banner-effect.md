@@ -159,8 +159,8 @@ edit copies the authored evidence into test output; production references, packa
 locks, old APIs/profiles and saves are unchanged. No original media, C runtime,
 emulator, GPU, wall-clock time or input device is needed by these tests.
 
-ZOD-077 traces banner-0 assets and the preparation/readiness boundary before a
-presentation or opcode adapter. Original quad/color/image values, loading latency,
-buffer-parity uncertainty, other condition workers, EventEnd and original
+ZOD-077 now [traces banner-0 assets and the preparation/readiness boundary](../architecture/zod-077-general-banner-assets.md),
+selecting ZOD-078's prepared conversion/loading and CPU preview. Original loading
+latency, buffer-parity uncertainty, other condition workers, EventEnd and original
 BattleStart playback remain open. H+31 establishes only the selected logical
 post-readiness lifecycle.

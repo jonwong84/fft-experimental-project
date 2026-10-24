@@ -253,6 +253,11 @@ loading, rendering and the later Ready condition. ZOD-076 now
 [implements that pure logical proof](../behavior/general-banner-effect.md); original
 opcode-78 admission and full event playback remain unsupported.
 
+ZOD-077 now [traces the selected banner's prepared asset/readiness boundary](zod-077-general-banner-assets.md):
+verified image 0, palette bank 4, six shaded pieces, UV wrap and battle screen
+translation. ZOD-078 owns the bounded prepared preview; native startup latency,
+original timing/visual comparison and original opcode execution remain open.
+
 ## Verification and completion boundary
 
 Whole-image/CUE identity, reference inventory/archive hash, direct sector payload

@@ -17,6 +17,11 @@ are specification-only and unexecuted. No original timing or visual comparison i
 available. The selected child is ZOD-076; no runtime, test or package change is
 made by ZOD-075.
 
+Follow-up discovery: [ZOD-077](zod-077-general-banner-assets.md) now resolves the
+selected original image/palette/geometry and recommends ZOD-078's prepared preview.
+The unknown-data statements below describe this ticket's historical evidence;
+original startup latency, packet parity and visual equivalence remain unresolved.
+
 ## Why this candidate
 
 - **Ordinary Camera:** asset-independent, but even linear mode has seven component

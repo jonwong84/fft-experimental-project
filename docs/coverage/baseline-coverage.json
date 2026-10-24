@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-23",
   "edition": "SCUS-94221",
-  "managedCommit": "4634a7e",
+  "managedCommit": "c84e0c4",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -13,7 +13,7 @@
   "lastRecordedTests": {
     "passed": 1302,
     "source": "docs/behavior/general-banner-effect.md",
-    "runForThisInventory": true
+    "runForThisInventory": false
   },
   "statusDefinitions": {
     "partial": "A stated subset exists; full row remains open.",
@@ -1086,7 +1086,7 @@
       "ownerTicket": "ZOD-040",
       "ownerArea": "FFT campaign/application",
       "status": "partial",
-      "currentScope": "ZOD-064 prepares authored raw/processed blocks; ZOD-065 projects validated Content records into a pure Core-owned conditional-event executor with immutable state/traces, replay and atomic arithmetic/budget rejection. No retail event or scene/campaign lifecycle executes. ZOD-066 traces verified original event 401: fallback activation, all 13 opcode kinds and EventEnd continuation; structural inspection only. ZOD-071 adds a separate non-tutorial speed-one timed profile with immutable waits, explicit ticks, exact resumption and atomic failures; synchronous capability remains unchanged. ZOD-072 selects a scene-owned task/barrier protocol. ZOD-073 implements its pure ledger/single-consumer proof with explicit ordered facts/ticks, stable identities/revisions, terminal tombstones, live scene-wide polling and atomic failures; 17 specification regressions plus 40 boundary cases pass. ZOD-074 integrates E5 classes 4/54/55/56 in a separate BATTLE synthetic profile with F1/conditional operations, shared explicit ticks, atomic VM/ledger rollback, exact combined traces and retained scene tasks across interpreter exit/restart. Old profiles still reject E5. The standalone event API still takes explicit task facts; no original event playback. ZOD-075 selects condition 8's post-readiness logical banner effect: exact reveal/hold/hide/exit-yield, explicit Circle sample, managed authority and atomic composition; its specification remains historical. ZOD-076 implements the post-readiness logical condition-8 driver and atomic adapter, generating managed termination facts from explicit Circle/ticks with retained scene lifetime and full rollback. All 24 contract regressions plus 47 boundary cases pass; original loading, graphics and opcode-78 admission remain absent.",
+      "currentScope": "ZOD-064 prepares authored raw/processed blocks; ZOD-065 projects validated Content records into a pure Core-owned conditional-event executor with immutable state/traces, replay and atomic arithmetic/budget rejection. No retail event or scene/campaign lifecycle executes. ZOD-066 traces verified original event 401: fallback activation, all 13 opcode kinds and EventEnd continuation; structural inspection only. ZOD-071 adds a separate non-tutorial speed-one timed profile with immutable waits, explicit ticks, exact resumption and atomic failures; synchronous capability remains unchanged. ZOD-072 selects a scene-owned task/barrier protocol. ZOD-073 implements its pure ledger/single-consumer proof with explicit ordered facts/ticks, stable identities/revisions, terminal tombstones, live scene-wide polling and atomic failures; 17 specification regressions plus 40 boundary cases pass. ZOD-074 integrates E5 classes 4/54/55/56 in a separate BATTLE synthetic profile with F1/conditional operations, shared explicit ticks, atomic VM/ledger rollback, exact combined traces and retained scene tasks across interpreter exit/restart. Old profiles still reject E5. The standalone event API still takes explicit task facts; no original event playback. ZOD-075 selects condition 8's post-readiness logical banner effect: exact reveal/hold/hide/exit-yield, explicit Circle sample, managed authority and atomic composition; its specification remains historical. ZOD-076 implements the post-readiness logical condition-8 driver and atomic adapter, generating managed termination facts from explicit Circle/ticks with retained scene lifetime and full rollback. All 24 contract regressions plus 47 boundary cases pass; original loading, graphics and opcode-78 admission remain absent. ZOD-077 traces verified banner-0 image/palette/geometry and readiness, with summarized hashes and 20 unexecuted authored presentation expectations; selects a prepared RGB8 CPU preview, without implementing rendering/loading or original startup.",
       "referenceSources": [
         {
           "path": "src/battle/event/interpreter.c",
@@ -1155,6 +1155,30 @@
         {
           "path": "include/psx/pad.h",
           "inspection": "ZOD-075 verifies Circle bit 0x0020; input mapping/filtering and tutorial routing remain outside the first effect proof."
+        },
+        {
+          "path": "target/event.yaml",
+          "inspection": "ZOD-077 verifies REQUIRE module identity/base and selected palette/quad/range/tpage/color addresses."
+        },
+        {
+          "path": "include/fft/gfx.h",
+          "inspection": "ZOD-077 traces palette/frame layout, STP and battle draw origin."
+        },
+        {
+          "path": "include/psx/libgpu.h",
+          "inspection": "ZOD-077 traces coordinate widths, CLUT/page/blend bits and ordering-table head insertion."
+        },
+        {
+          "path": "src/battle/frame.c",
+          "inspection": "ZOD-077 traces 256x240 battle display and -128 horizontal draw origin."
+        },
+        {
+          "path": "src/battle/entry.c",
+          "inspection": "ZOD-077 verifies battle display-init arguments."
+        },
+        {
+          "path": "src/platform/psyq/libgpu/SetDefDrawEnv.c",
+          "inspection": "ZOD-077 verifies draw origin is applied to the draw-environment offset."
         }
       ],
       "evidenceDocs": [
@@ -1171,7 +1195,10 @@
         "docs/fixtures/events/task-barrier-sequence-v1.json",
         "docs/architecture/zod-075-general-banner-effect.md",
         "docs/evidence/events/general-banner-effect-contract-v1.json",
-        "docs/behavior/general-banner-effect.md"
+        "docs/behavior/general-banner-effect.md",
+        "docs/architecture/zod-077-general-banner-assets.md",
+        "docs/evidence/events/general-banner-assets-v1.json",
+        "docs/evidence/events/general-banner-presentation-contract-v1.json"
       ],
       "implementationPaths": [
         "src/Fft.AssetTool/ScenarioBlockInspector.cs",
@@ -1261,11 +1288,11 @@
         "procedure": "Capture one controlled branch/dialogue event with explicit initial state and timing."
       },
       "openQuestions": [
-        "ZOD-077 still needs banner-0 image/quad/color/layout and readiness evidence before preparation/presentation; original startup/loading latency, input mapping, event-401 observations, camera/dark-screen/Ready workers, opcode-78 admission, EventEnd, tutorial/World/speed changes and full scheduler/visual equivalence remain open."
+        "ZOD-078 must implement the selected prepared artwork pipeline and declared RGB8 CPU preview; original packet parity, startup/loading latency, draw-state reachability, input mapping, event-401 observations, camera/dark-screen/Ready workers, opcode-78 admission, EventEnd, tutorial/World/speed changes and original scheduler/visual equivalence remain open."
       ],
-      "nextAction": "Trace selected banner-0 assets and the preloaded/original-startup readiness boundary in ZOD-077, then select a bounded prepared presentation child; preserve logical completion authority in Core.",
+      "nextAction": "Implement ZOD-078's bounded prepared banner/CPU preview with preloaded readiness and unchanged logical completion authority; retain original startup/opcode integration as separate work.",
       "followUpTickets": [
-        "ZOD-077"
+        "ZOD-078"
       ]
     },
     {
@@ -1738,7 +1765,7 @@
       "ownerTicket": "ZOD-044",
       "ownerArea": "Fft.Client platform adapters",
       "status": "absent",
-      "currentScope": "TinyFont and invented artwork prove the host only.",
+      "currentScope": "TinyFont and invented artwork prove the host only. ZOD-077 selects general-banner-0 artwork and a prepared RGB8 preview policy; no converter or renderer is implemented yet.",
       "referenceSources": [
         {
           "path": "src/world/text/font_rendering.c",
@@ -1751,10 +1778,16 @@
         {
           "path": "src/lib/menu/unit_view/portraits.c",
           "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/event/require/conditions.c",
+          "inspection": "ZOD-077 traces selected general-banner geometry/colors/blend and piece order; original rendering equivalence remains unobserved."
         }
       ],
       "evidenceDocs": [
-        "PROJECT_PLAN.md"
+        "PROJECT_PLAN.md",
+        "docs/architecture/zod-077-general-banner-assets.md",
+        "docs/evidence/events/general-banner-assets-v1.json"
       ],
       "implementationPaths": [],
       "automatedChecks": [],
@@ -1765,7 +1798,10 @@
       "openQuestions": [
         "Original resources, glyph decoding, portrait variants and text control semantics remain unprepared."
       ],
-      "nextAction": "Choose one text/font resource and one screen for the first prepared UI slice."
+      "nextAction": "Implement ZOD-078's selected prepared general-banner preview, then select further resources separately; original comparison and other families remain open.",
+      "followUpTickets": [
+        "ZOD-078"
+      ]
     },
     {
       "id": "COV-PRE-005",
@@ -2031,7 +2067,7 @@
       "ownerTicket": "ZOD-044",
       "ownerArea": "Fft.AssetTool preparation and Fft.Content loading",
       "status": "absent",
-      "currentScope": "No complete prepared format-family pipeline.",
+      "currentScope": "No complete prepared format-family pipeline. ZOD-077 selects general-banner-0 artwork and a prepared RGB8 preview policy; no converter or renderer is implemented yet.",
       "referenceSources": [
         {
           "path": "src/main/file_requests.c",
@@ -2048,10 +2084,16 @@
         {
           "path": "src/lib/event/dialog/backreferences.c",
           "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/event/require/conditions.c",
+          "inspection": "ZOD-077 traces selected general-banner geometry/colors/blend and piece order; original rendering equivalence remains unobserved."
         }
       ],
       "evidenceDocs": [
-        "PROJECT_PLAN.md"
+        "PROJECT_PLAN.md",
+        "docs/architecture/zod-077-general-banner-assets.md",
+        "docs/evidence/events/general-banner-assets-v1.json"
       ],
       "implementationPaths": [],
       "automatedChecks": [],
@@ -2062,7 +2104,10 @@
       "openQuestions": [
         "Per-file role, decoder support, dependencies and byte provenance are unresolved for the remaining families; historical disc counts do not establish support."
       ],
-      "nextAction": "Build per-family resource subcatalogs without committing generated inventories/media."
+      "nextAction": "Implement ZOD-078's selected prepared general-banner preview, then select further resources separately; original comparison and other families remain open.",
+      "followUpTickets": [
+        "ZOD-078"
+      ]
     },
     {
       "id": "COV-SAV-001",

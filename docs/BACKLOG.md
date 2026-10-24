@@ -77,8 +77,11 @@ reveal/hold/hide/exit-yield and Circle boundaries plus 24 unexecuted specificati
 cases. ZOD-076 now implements the pure logical banner driver/atomic scene adapter,
 with all 24 contract regressions and 47 additional boundary cases. Locked restore,
 zero-warning Release build and all 1,302 tests pass (72 new including an opcode-78
-rejection case). Next event step: ZOD-077's banner asset/readiness trace; original
-loading/graphics remain separate. ZOD-068's synthetic world-checkpoint
+rejection case). ZOD-077 now traces verified banner-0 pixels, palette bank 4,
+six shaded pieces, UV wrap/screen origin and the preloaded readiness boundary.
+Its 20 authored presentation expectations remain unexecuted. Next event step:
+ZOD-078's bounded prepared banner/CPU preview; original loading latency and
+opcode-78 admission remain separate. ZOD-068's synthetic world-checkpoint
 service remains an independent lane; ZOD-069's native Save/Load UI waits on that
 service and minimal client navigation. Original campaign support remains open.
 M2 is not complete yet.
@@ -1115,7 +1118,17 @@ consumers or original BattleStart playback.
 
 ### ZOD-077 — Trace general-banner assets and the preparation/readiness boundary
 
-**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-076
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-076
+
+**Result (2026-10-23):** [Asset/readiness trace](architecture/zod-077-general-banner-assets.md)
+pins verified BONUS.BIN image 0 and REQUIRE geometry/range/page/color records,
+palette bank 4, six-piece blend order, u8 UV wrap and the battle screen origin.
+Selected crops stay within initialized pixels despite the native oversized upload.
+Specifies immutable prepared files, a preloaded host boundary and an explicit
+RGB8 CPU preview policy; original packet parity/loading latency and visual
+equivalence remain unresolved. Includes summarized hash evidence and 20 authored,
+unexecuted presentation expectations. Selects ZOD-078; no runtime/test/package
+changes. Historical implementation validation remains ZOD-076's 1,302 tests.
 
 **Scope:** Trace condition-8 banner/image 0 from the selected BattleStart path to
 its local original image/palette and source quad/range/texture-page/color records.
@@ -1135,6 +1148,37 @@ and leave unsupported values explicit. Provide one bounded preparation/presentat
 implementation child with independently checkable expectations. No full opcode-78
 admission, fake loading duration, other condition/banner families, EventEnd or claim
 of original visual/timing equivalence without original observations.
+
+### ZOD-078 — Prepare and preview the bounded general banner
+
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-077
+
+**Scope:** Prepare only condition-8/banner-0 artwork from verified local inputs,
+load it through Content and preview the existing logical effect in Client using
+the selected deterministic CPU compositor. Load all resources before scene
+creation. Use a 256x240 authored inspection background and explicit logical ticks/
+Circle samples; keep original scene/event execution separate.
+
+**Acceptance criteria:** Implement bounded AssetTool parsing and CLI conversion
+with input/range identity checks, stable manifest IDs and repeatable output hashes.
+Emit versioned normalized six-piece metadata, 256x200 unpacked indices and selected
+RGB555/STP palette 4, retaining per-piece colors and add/subtract operations.
+Content strictly validates formats, fields, ranges, references, hashes and the
+selected profile; publish immutable data only after all validation succeeds.
+Keep prepared outputs/provenance/captures ignored, authored test artwork distinct
+from retail provenance, and failed preparation/load from damaging prior output or
+allocating a scene task. Implement point-sampled RGB8 composition with neutral-128
+modulation, vertical gradients, saturating add/subtract, correct crop/shared-clamp
+boundaries and ordering-table traversal. Label modern precision/raster/background
+approximations and unresolved native parity explicitly. Convert ZOD-077's 20
+authored expectations into regressions, plus strict-load/rollback/replay and scene
+restart checks. Render only accepted logical progress; omitted/repeated draws,
+GPU/device events and failed ticks must not change effect/task/VM history or supply
+termination facts. Demonstrate BIN/reference-free prepared loading, two matching
+local preparations and a finite Windows preview/check with repeatable captures.
+Retain existing event APIs/profiles and opcode-78 rejection, Core/Engine purity,
+save schemas and package graphs. No other banners, original loading delay,
+EventEnd, full BattleStart, map/camera integration or original equivalence claim.
 
 ## Authoring, extensions, and later goals
 

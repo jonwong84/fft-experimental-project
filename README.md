@@ -108,5 +108,6 @@ Repeated `--addon <path>` options validate explicitly selected additions against
 - [Scene task/barrier contract](docs/architecture/zod-072-event-task-contract.md): source trace, identities, phases and polling order; [ZOD-073 execution proof](docs/behavior/scene-task-barriers.md).
 - [Synthetic event barriers](docs/behavior/scene-event-barriers.md): separate E5 profile, shared ticks, atomic VM/task transitions and retained scene lifetime.
 - [First scene effect selection](docs/architecture/zod-075-general-banner-effect.md): source-traced logical general-banner phases and Circle skip; [ZOD-076 implementation](docs/behavior/general-banner-effect.md).
+- [General-banner asset/readiness trace](docs/architecture/zod-077-general-banner-assets.md): verified image/palette/piece selection and proposed prepared preview; conversion/rendering is the next milestone.
 - [Campaign save investigation](docs/architecture/zod-067-campaign-save-state.md): persistent fields, original save entry paths, RNG lifecycles and proposed native workflow.
 - [Project handoff](docs/PROJECT_HANDOFF.md): latest checkpoint followed by historical development context.

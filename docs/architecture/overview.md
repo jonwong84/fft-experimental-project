@@ -50,7 +50,10 @@ Its family-level entries are not a complete original record/encounter catalog.
   input as the first effect model. ZOD-076 now [implements the logical banner driver
   and atomic scene adapter](../behavior/general-banner-effect.md), generating its
   own managed task completion/cancellation from explicit logical samples. Other
-  tasks remain authored facts; banner assets/rendering/readiness are ZOD-077.
+  tasks remain authored facts. [ZOD-077](zod-077-general-banner-assets.md) now traces
+  banner-0 pixels/palette/geometry and specifies a preload boundary with an
+  explicit RGB8 presentation policy. ZOD-078 owns prepared conversion/loading and
+  the bounded CPU preview; original startup and opcode admission remain open.
 - `Fft.AssetTool` and `Fft.AssetTool.Cli` handle offline image inventory, extraction, narrow unit `.SPR`
   decoding, selected SHP/SEQ pose preparation and bounded GNS/mesh/indexed-texture conversion.
   The CLI composes the tools; no full animation interpreter exists.

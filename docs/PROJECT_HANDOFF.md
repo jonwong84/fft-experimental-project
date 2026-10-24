@@ -83,8 +83,14 @@ tick with VM/ledger, preserves effect progress across interpreter exit/restart,
 and distinguishes original Circle completion from native owner cancellation.
 Old profiles/APIs still reject opcode 78; startup/loading and graphics remain open.
 Locked restore, zero-warning Release build and all **1,302 tests** passed (72 new:
-Core 71, CLI 1). Next event step: ZOD-077's banner-0 asset/readiness trace before
-preparation/presentation or opcode integration; original playback remains absent.
+Core 71, CLI 1). ZOD-077 now [traces banner-0 assets and readiness](architecture/zod-077-general-banner-assets.md):
+verified image/overlay ranges, palette bank 4, six shaded pieces, UV wrap, native
+screen origin and order-dependent add/subtract. Selected samples avoid the native
+loader's undefined upload suffix. Defines immutable prepared data and a preloaded
+host boundary; includes 20 authored, unexecuted presentation expectations. This
+documentation milestone did not rerun the .NET suite. Next event step: ZOD-078's
+prepared conversion/loading and RGB8 CPU preview; no original loading duration,
+opcode-78 admission or original visual/timing equivalence is established.
 ZOD-068's synthetic world checkpoint service remains
 independent, and ZOD-069's UI follows service/navigation. Original captures (ZOD-026), comparison
 checkpoints (ZOD-033), and remote CI/clean-machine evidence (ZOD-034) remain open.
