@@ -1,0 +1,672 @@
+{
+  "format": "fft.original-pre-banner-anchor",
+  "schemaVersion": 1,
+  "recordedDate": "2026-10-24",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "source": "Owner-captured private RetroArch state, frozen before further slot reuse.",
+  "entryState": {
+    "localPath": "scratch/banner-pre-anchor-a/fft-clean-base-game.state",
+    "bytes": 1535609,
+    "sha256": "c661e684cdcd7a65ae5f2633e686a00865b501ebc31949c54e68fee43e2b6afd"
+  },
+  "entryThumbnail": {
+    "localPath": "scratch/banner-pre-anchor-a/state-thumbnail.png",
+    "bytes": 49264,
+    "sha256": "0ac69df8652f0546b6d40da889188c2947b24f1c3440d399888658f3d5721f04"
+  },
+  "captureProfile": {
+    "localPath": "scratch/retroarch-reference/profile.json",
+    "bytes": 2287,
+    "sha256": "2179365bc1b2ea9643a835ebfa461ee12940841ba023ee1c05e9ee11002dcadf"
+  },
+  "inspection": {
+    "localPath": "scratch/banner-pre-anchor-a/inspection.json",
+    "bytes": 1081,
+    "sha256": "27ae00fd22504dfcafd9fe6bcdb3049c6c27c32a9e5e673d930005eeecc15407"
+  },
+  "probeReports": [
+    {
+      "localPath": "scratch/banner-pre-anchor-a/probe-report.json",
+      "bytes": 4782,
+      "sha256": "9df5134f2f443a275089b229455a90f4d3bf6f30512c1e738e46289847b028bf"
+    },
+    {
+      "localPath": "scratch/banner-pre-anchor-a/later-probe-report.json",
+      "bytes": 2335,
+      "sha256": "ee86e68a007614ebc3a3cb1d137004fa146f827bf6becf18389d2f962d9373cb"
+    },
+    {
+      "localPath": "scratch/banner-pre-anchor-a/onset-probe-report.json",
+      "bytes": 5987,
+      "sha256": "f5c8080c8fbaafa29ffbd82a7fff7c1d9fa96591799f4a1fd3d48416e5d6e261"
+    },
+    {
+      "localPath": "scratch/banner-pre-anchor-a/repeat-probe-report.json",
+      "bytes": 5133,
+      "sha256": "056a908f8b9dec1db04d9d13e69e59637a90c1bc62b9543cc9b4e41f84077fd6"
+    }
+  ],
+  "checkpoints": [
+    {
+      "frontendFrames": 4,
+      "localCaptureDirectory": "scratch/banner-pre-anchor-a/frames-004",
+      "observation": {
+        "classified": false,
+        "guardFailure": "Original banner/scheduler code changed"
+      },
+      "artifacts": [
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-004/frame.png",
+          "bytes": 49256,
+          "sha256": "6e209938b212429a7a37f3d79f14c96001665ee7024c849975b0f46f0679107e"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-004/states/fft-clean-base-game.state.auto",
+          "bytes": 1502833,
+          "sha256": "8df8e6930332522c6daa9a51f3dd942425cf2e92ea0dfc57afc7cadfb54ac47f"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-004/command.json",
+          "bytes": 853,
+          "sha256": "e3784bb1964a2d313b503795df705a2f06d5e9e74a7cf92ec4136db50a9c3074"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-004/restore.cfg",
+          "bytes": 517,
+          "sha256": "f17d14410319e11e5b70b70bdb7796494dabb4296e260c84efb327bdf8634144"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-004/core-options.cfg",
+          "bytes": 1986,
+          "sha256": "38281cdd808978b08a2c9132acf86308828449a031a9ec24ac9b149a2a0a4247"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-004/retroarch.log",
+          "bytes": 6021,
+          "sha256": "2849c6eeed5e188149417a2e551865384ae9da4e267e0b28019ba4ab7d6e0c65"
+        }
+      ]
+    },
+    {
+      "frontendFrames": 148,
+      "localCaptureDirectory": "scratch/banner-pre-anchor-a/frames-148",
+      "observation": {
+        "classified": false,
+        "guardFailure": "Expected one original ConditionDisplay task"
+      },
+      "artifacts": [
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-148/frame.png",
+          "bytes": 48976,
+          "sha256": "734d76cb145edd42aaa5c97772a9b1c56e1808a6327d6e841cbb141852947fbe"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-148/states/fft-clean-base-game.state.auto",
+          "bytes": 1493107,
+          "sha256": "2198a6f5c02b42c1f9539082faa0ce236759542d65ca913a5bed350ff9ee1931"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-148/command.json",
+          "bytes": 855,
+          "sha256": "af81805b0d7e23bc1ecfb35975e22cd96e2d5010c957aca2a8a8edc988be60d4"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-148/restore.cfg",
+          "bytes": 517,
+          "sha256": "31d2533433051b205a4340f485ead8e523ed3b7b31c9ca9311b5ce115c2a7401"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-148/core-options.cfg",
+          "bytes": 1986,
+          "sha256": "38281cdd808978b08a2c9132acf86308828449a031a9ec24ac9b149a2a0a4247"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-148/retroarch.log",
+          "bytes": 6334,
+          "sha256": "1801115f12ee075900dcd6b88ed1e9e5503b9b2f1cc831037c684454713fb7b6"
+        }
+      ]
+    },
+    {
+      "frontendFrames": 300,
+      "localCaptureDirectory": "scratch/banner-pre-anchor-a/frames-300",
+      "observation": {
+        "classified": false,
+        "guardFailure": "Expected one original ConditionDisplay task"
+      },
+      "artifacts": [
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-300/frame.png",
+          "bytes": 39089,
+          "sha256": "248713a278453f3262b9d3f00a188f5c5c2807a27f43c41313cc9bd5efa684a2"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-300/states/fft-clean-base-game.state.auto",
+          "bytes": 1492421,
+          "sha256": "d413c0d70437181c959cb223fe72e08eff2c2b8f9b826ec8f5bcf21e42290e9c"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-300/command.json",
+          "bytes": 882,
+          "sha256": "26c73c8d469360d69ec23340525053b542fc9a899785dba16d4e6833f6416eb9"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-300/restore.cfg",
+          "bytes": 526,
+          "sha256": "db990931ca5a32492a38c2a3b46b2c47146d91923dff8b526eff5cede9c97fb6"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-300/core-options.cfg",
+          "bytes": 1986,
+          "sha256": "38281cdd808978b08a2c9132acf86308828449a031a9ec24ac9b149a2a0a4247"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-300/retroarch.log",
+          "bytes": 6334,
+          "sha256": "1dc2fa2901dc12fd2c9a5ce160985ca9c81befa9ded1daef9a520e2b90d569ef"
+        }
+      ]
+    },
+    {
+      "frontendFrames": 600,
+      "localCaptureDirectory": "scratch/banner-pre-anchor-a/frames-600",
+      "observation": {
+        "classified": false,
+        "guardFailure": "Selected task parameters changed/reused"
+      },
+      "artifacts": [
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-600/frame.png",
+          "bytes": 40065,
+          "sha256": "ef3209c4abf32cc56ec3bbea421ca79c5cb148c1572f6d57926689537fb378ce"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-600/states/fft-clean-base-game.state.auto",
+          "bytes": 1496316,
+          "sha256": "bb7e1aedd9c646e17f28d5071910ab658d316858ba978eb75d1211b232ef5475"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-600/command.json",
+          "bytes": 882,
+          "sha256": "b098e7a6a316d1796d9406f332ae12e524c92d6188eac024c6bb047e2198ab84"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-600/restore.cfg",
+          "bytes": 526,
+          "sha256": "d8a1aed1d27f621e11d12ef50d910d096a55d03c2c10dc255362a8874b88dfd4"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-600/core-options.cfg",
+          "bytes": 1986,
+          "sha256": "38281cdd808978b08a2c9132acf86308828449a031a9ec24ac9b149a2a0a4247"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-600/retroarch.log",
+          "bytes": 6334,
+          "sha256": "95bea2d3ecddb9c856e745db90507ecac9b4d366f377daa049087471db2eb496"
+        }
+      ]
+    },
+    {
+      "frontendFrames": 400,
+      "localCaptureDirectory": "scratch/banner-pre-anchor-a/frames-400",
+      "observation": {
+        "slot": 3,
+        "savedReturnAddress": 2149358296,
+        "phase": "Holding",
+        "phaseCounter": 11,
+        "logicalTick": 31,
+        "revealCompleted": 20,
+        "holdCompleted": 11,
+        "hideCompleted": 0,
+        "taskRunning": true,
+        "taskId": 56,
+        "draws": [
+          {
+            "PieceIndex": 0,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 1,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 2,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 3,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 4,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 5,
+            "CropTop": 0,
+            "VisibleRows": 31
+          }
+        ]
+      },
+      "artifacts": [
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-400/frame.png",
+          "bytes": 43506,
+          "sha256": "481e6475585b586dd676d8e2188fe8f00f32e0844bc2a36e27e08745f1355d30"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-400/states/fft-clean-base-game.state.auto",
+          "bytes": 1498690,
+          "sha256": "8e9cae7d2411226535f7c66076d2fd964cbf450fd75c047c938a2386eb8a36f8"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-400/command.json",
+          "bytes": 882,
+          "sha256": "decdb40f8d28ce78059f0bd02fbc2eeec95b7f9e66b94a7dd156d8b70eea1645"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-400/restore.cfg",
+          "bytes": 526,
+          "sha256": "5b60b6b0b8afdaa38a79f9bfe9f882cb0a07254996dcbe1e594383399a747a15"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-400/core-options.cfg",
+          "bytes": 1986,
+          "sha256": "38281cdd808978b08a2c9132acf86308828449a031a9ec24ac9b149a2a0a4247"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-400/retroarch.log",
+          "bytes": 6334,
+          "sha256": "40657403ed2cf11233df51b9f06495ff0a653357c451759814d9166d18b1eafa"
+        }
+      ]
+    },
+    {
+      "frontendFrames": 450,
+      "localCaptureDirectory": "scratch/banner-pre-anchor-a/frames-450",
+      "observation": {
+        "slot": 3,
+        "savedReturnAddress": 2149358296,
+        "phase": "Holding",
+        "phaseCounter": 36,
+        "logicalTick": 56,
+        "revealCompleted": 20,
+        "holdCompleted": 36,
+        "hideCompleted": 0,
+        "taskRunning": true,
+        "taskId": 56,
+        "draws": [
+          {
+            "PieceIndex": 0,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 1,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 2,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 3,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 4,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 5,
+            "CropTop": 0,
+            "VisibleRows": 31
+          }
+        ]
+      },
+      "artifacts": [
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-450/frame.png",
+          "bytes": 42782,
+          "sha256": "3089896fed3878f8afdd833b778eb5f5eea3663acd1f6b747fccab333ad3e4c8"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-450/states/fft-clean-base-game.state.auto",
+          "bytes": 1496568,
+          "sha256": "4932a9724c5c1ca62970920655e8d9221dd73e4590b815bd304a8a2a7da0281b"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-450/command.json",
+          "bytes": 882,
+          "sha256": "f479f26da67222f0c313aeb96cffd0d367937b6b03ec9b28833fe4cac3fd1486"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-450/restore.cfg",
+          "bytes": 526,
+          "sha256": "9a1c39c4453b6d8e8e460556dc23f1abe0df5061329acc5e8c225bf606fe5a87"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-450/core-options.cfg",
+          "bytes": 1986,
+          "sha256": "38281cdd808978b08a2c9132acf86308828449a031a9ec24ac9b149a2a0a4247"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-450/retroarch.log",
+          "bytes": 6334,
+          "sha256": "a4f5115c7f0ca3ad3e7ff20c57aa849976048852483fd0bd28c54d90731ac614"
+        }
+      ]
+    },
+    {
+      "frontendFrames": 500,
+      "localCaptureDirectory": "scratch/banner-pre-anchor-a/frames-500",
+      "observation": {
+        "slot": 3,
+        "savedReturnAddress": 2149358532,
+        "phase": "Hiding",
+        "phaseCounter": 1,
+        "logicalTick": 81,
+        "revealCompleted": 20,
+        "holdCompleted": 60,
+        "hideCompleted": 1,
+        "taskRunning": true,
+        "taskId": 56,
+        "draws": [
+          {
+            "PieceIndex": 0,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 1,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 2,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 3,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 4,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 5,
+            "CropTop": 0,
+            "VisibleRows": 31
+          }
+        ]
+      },
+      "artifacts": [
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-500/frame.png",
+          "bytes": 43524,
+          "sha256": "dcdcf9828ca03d5e3586255e7b8272dfb37cd6bd85557c7f81bd8c672e745240"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-500/states/fft-clean-base-game.state.auto",
+          "bytes": 1499405,
+          "sha256": "d98d58db74bd0d63b7223430b75de7e3d1d0182e29df654fb9842e6182883895"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-500/command.json",
+          "bytes": 882,
+          "sha256": "9486b09691a27349a33cc46d1fc842ef167c01f788a5571f6b9da9e23a6d9e30"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-500/restore.cfg",
+          "bytes": 526,
+          "sha256": "89afca9cc0c9704de438bc854e7ab45c601c79498073dd9429a0785e07cabbfb"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-500/core-options.cfg",
+          "bytes": 1986,
+          "sha256": "38281cdd808978b08a2c9132acf86308828449a031a9ec24ac9b149a2a0a4247"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-500/retroarch.log",
+          "bytes": 6334,
+          "sha256": "d838404e1f5873146ae0caa804490ef3c3fcbb8815bf6d538d0a5fdefbd802ed"
+        }
+      ]
+    },
+    {
+      "frontendFrames": 340,
+      "localCaptureDirectory": "scratch/banner-pre-anchor-a/frames-340-repeat",
+      "observation": {
+        "classified": false,
+        "guardFailure": "Expected six ordered banner packets"
+      },
+      "artifacts": [
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-340-repeat/frame.png",
+          "bytes": 39017,
+          "sha256": "db0454cf96c0ced42a3abd7fc1c1cbd238afc0e4972365870ed2ac172fb3bd15"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-340-repeat/states/fft-clean-base-game.state.auto",
+          "bytes": 1491961,
+          "sha256": "abcfeeafe2fce9a2002e29d1ed0010b479cbc1838010663cdf9eaf16a53ff33f"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-340-repeat/command.json",
+          "bytes": 903,
+          "sha256": "67a7d3ad14aaecb097b4aab3b5e272ce3339e93d9091e43f7b65d485f2e276a1"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-340-repeat/restore.cfg",
+          "bytes": 547,
+          "sha256": "e4acfb9031e3771b37e831d051e91d6de426de2daa83f28f2b1522274860be0c"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-340-repeat/core-options.cfg",
+          "bytes": 1986,
+          "sha256": "38281cdd808978b08a2c9132acf86308828449a031a9ec24ac9b149a2a0a4247"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-340-repeat/retroarch.log",
+          "bytes": 6390,
+          "sha256": "f760c7ab7d01a0267e32b38388a975bb27b000ca77871bbaac6c52de652d1b9f"
+        }
+      ]
+    },
+    {
+      "frontendFrames": 360,
+      "localCaptureDirectory": "scratch/banner-pre-anchor-a/frames-360-repeat",
+      "observation": {
+        "slot": 3,
+        "savedReturnAddress": 2149356420,
+        "phase": "Revealing",
+        "phaseCounter": 11,
+        "logicalTick": 11,
+        "revealCompleted": 11,
+        "holdCompleted": 0,
+        "hideCompleted": 0,
+        "taskRunning": true,
+        "taskId": 56,
+        "draws": [
+          {
+            "PieceIndex": 0,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 1,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 2,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 3,
+            "CropTop": 23,
+            "VisibleRows": 8
+          },
+          {
+            "PieceIndex": 4,
+            "CropTop": 23,
+            "VisibleRows": 8
+          },
+          {
+            "PieceIndex": 5,
+            "CropTop": 23,
+            "VisibleRows": 8
+          }
+        ]
+      },
+      "artifacts": [
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-360-repeat/frame.png",
+          "bytes": 41819,
+          "sha256": "a157600048e3e4f4cf8ec0e80ec99633c4d8ac44a46eab8b2264343f2bbced0f"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-360-repeat/states/fft-clean-base-game.state.auto",
+          "bytes": 1494684,
+          "sha256": "7fda56d15befce4e4dc11c45d49d2d5459352738f4a6c03bf18df93660258ed5"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-360-repeat/command.json",
+          "bytes": 903,
+          "sha256": "9ed8710d3dce4fc66849e22183ff223b22439f45a1f5e7832e55320fdcf076b7"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-360-repeat/restore.cfg",
+          "bytes": 547,
+          "sha256": "11c1c65a9903d7385aad3b6c81b3b124087c211143fdc4f98a13be95e93515f5"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-360-repeat/core-options.cfg",
+          "bytes": 1986,
+          "sha256": "38281cdd808978b08a2c9132acf86308828449a031a9ec24ac9b149a2a0a4247"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-360-repeat/retroarch.log",
+          "bytes": 6390,
+          "sha256": "ca50714d8139bcc9b5b41186d0709491923c092104506808ad0581e9395d3afd"
+        }
+      ]
+    },
+    {
+      "frontendFrames": 400,
+      "localCaptureDirectory": "scratch/banner-pre-anchor-a/frames-400-repeat",
+      "observation": {
+        "slot": 3,
+        "savedReturnAddress": 2149358296,
+        "phase": "Holding",
+        "phaseCounter": 11,
+        "logicalTick": 31,
+        "revealCompleted": 20,
+        "holdCompleted": 11,
+        "hideCompleted": 0,
+        "taskRunning": true,
+        "taskId": 56,
+        "draws": [
+          {
+            "PieceIndex": 0,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 1,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 2,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 3,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 4,
+            "CropTop": 0,
+            "VisibleRows": 31
+          },
+          {
+            "PieceIndex": 5,
+            "CropTop": 0,
+            "VisibleRows": 31
+          }
+        ]
+      },
+      "artifacts": [
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-400-repeat/frame.png",
+          "bytes": 43506,
+          "sha256": "481e6475585b586dd676d8e2188fe8f00f32e0844bc2a36e27e08745f1355d30"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-400-repeat/states/fft-clean-base-game.state.auto",
+          "bytes": 1498690,
+          "sha256": "8e9cae7d2411226535f7c66076d2fd964cbf450fd75c047c938a2386eb8a36f8"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-400-repeat/command.json",
+          "bytes": 903,
+          "sha256": "a32d2826273038396be099fd4630a596bc610d27bb1e24a43a8e102a9a8dd5b5"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-400-repeat/restore.cfg",
+          "bytes": 547,
+          "sha256": "a123f4ba3e03583aeaec594f6bfba0629934b160b029e318c0a2739f37a134cc"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-400-repeat/core-options.cfg",
+          "bytes": 1986,
+          "sha256": "38281cdd808978b08a2c9132acf86308828449a031a9ec24ac9b149a2a0a4247"
+        },
+        {
+          "localPath": "scratch/banner-pre-anchor-a/frames-400-repeat/retroarch.log",
+          "bytes": 6390,
+          "sha256": "9c0a4813dfe0a1a24fc70110d4ea5e37e90e4dd681f86d28213e636c4edafec8"
+        }
+      ]
+    }
+  ],
+  "repeat": {
+    "frontendFrames": 400,
+    "pngByteIdentical": true,
+    "exitStateByteIdentical": true
+  },
+  "checks": {
+    "ownerStateUnchanged": true,
+    "protectedInputsAndConfigurationUnchanged": true,
+    "controllersDisconnected": true,
+    "allCapturesNoInput": true,
+    "originalBannerAndSchedulerInstructionHashesMatchAtAcceptedCheckpoints": true
+  },
+  "limits": [
+    "Earlier-state intake and exploratory no-input restoration only; no new C# pixel comparison or reveal/loading/input equivalence established.",
+    "At the entry state, banner overlay instruction bytes differ; the existing banner inspector intentionally rejects it.",
+    "The 340-frame checkpoint fails the existing six-ordered-packet guard and is retained as unclassified; no guard was relaxed.",
+    "The 600-frame thumbnail shows READY; task parameters differ from condition 8. It is not admitted as the target banner.",
+    "Frontend budgets are selected restore budgets, not universal PS1 VSync or logical-tick conversions.",
+    "Original event identity and physical Circle input remain unverified.",
+    "No managed code changed or full test suites rerun; previous baseline remains 1,450 .NET and 116 Python tests."
+  ]
+}

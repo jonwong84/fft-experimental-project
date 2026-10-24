@@ -1792,7 +1792,10 @@
       138,
       140
     ],
-    "owner": "pending",
+    "owner": "accepted",
+    "ownerReviewDate": "2026-10-24",
+    "ownerStatement": "The hide-frame gallery looks correct.",
+    "ownerReviewScope": "Visual agreement of the five displayed hide anchors, including the small tail and fully hidden frame. Early reveal/loading, physical Circle input, original event identity and broader scene rendering remain open.",
     "reviewArtifact": {
       "localPath": "scratch/banner-hide-c/review.html",
       "bytes": 2654,

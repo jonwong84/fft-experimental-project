@@ -163,13 +163,48 @@ records identities without media. No managed source changed or .NET tests reran.
 
 ## Next comparison gate
 
+### Earlier owner state received (2026-10-24)
+
+The owner captured a new state in the same private slot. It is frozen separately
+at `scratch/banner-pre-anchor-a/fft-clean-base-game.state` before further slot
+reuse: 1,535,609 bytes, SHA-256
+`c661e684cdcd7a65ae5f2633e686a00865b501ebc31949c54e68fee43e2b6afd`.
+The previous late-reveal anchor remains intact. Its new thumbnail shows the rainy
+battle scene before the banner; see the metadata-only
+[intake evidence](../evidence/visual/original-pre-banner-anchor-v1.json).
+The read-only reference HEAD remains
+`11464943bbdbd2a0af022d90cb7f10455cf911df`.
+
+Ten finite, hidden, no-input exploratory restores locate the target condition-8,
+hold-60 task: budget 360 reaches reveal counter 11, 400 reaches hold counter 11,
+450 reaches hold counter 36, and 500 reaches hide counter 1. These observations
+pass the existing original-instruction, task/stack and draw-packet guards.
+Two independent budget-400 restores repeat both the raw PNG and exit state
+byte-for-byte. The owner's state, protected reference inputs and installed/private
+base configurations remain unchanged. Each run retains its exact command,
+configuration, effective options, log, screenshot and exit state under scratch.
+
+Earlier checkpoints remain deliberately unclassified: the entry state's banner
+overlay bytes differ, and budget 340 fails the existing six-ordered-packet guard.
+At budget 600, the screenshot shows `READY!` and task parameters differ from the
+selected condition-8 banner. None of these guards was relaxed. Do not infer a
+universal frontend-to-logical-frame conversion or loading duration from the
+exploratory sample spacing.
+
+This provides the earlier original anchor needed for the next bounded reveal/
+readiness investigation. It does not yet establish reveal onset, loading duration,
+physical Circle behavior, event identity or a new original/C# pixel comparison.
+No managed code changed and no full suites were rerun; the last complete baseline
+remains 1,450 .NET and 116 Python tests. Original states and all generated media
+remain ignored; tracked changes contain only documentation and descriptive metadata.
+
 The later [saved-task continuation study](original-banner-continuation.md) resolves
 the old state's logical location to reveal counter 18 and validates its no-input
 continuation through hide/exit. Appearance alone had only identified fully visible
 artwork. Early reveal, loading, physical input and event identity remain open;
 the historical gate below describes the evidence available at this setup milestone.
 
-The current state freezes the visible banner, not a verified pre-banner anchor.
+The previous state freezes the visible banner, not a verified pre-banner anchor.
 Record which encounter/event path was actually reached; appearance alone does
 not prove event 401's fallback activation. Obtain a pre-banner state when tracing
 the reveal, then retain screenshots at clearly described

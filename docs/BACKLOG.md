@@ -708,9 +708,16 @@ crops to displayed VRAM. Actual C# composition matches all 6,917 affected sample
 across four visible hide anchors plus the fully hidden background-preservation
 frame. The controlled probes retain all 28 non-GPU subsystem/GPU-register states;
 two runs repeat. No crop/lag fitting or general frame-lag claim. Locked restores,
-zero-warning builds, 1,450 .NET and 116 Python tests (12 new) pass. Owner review of
-the new hide gallery remains pending. Early reveal/loading, physical Circle input,
+zero-warning builds, 1,450 .NET and 116 Python tests (12 new) pass. The owner
+approved the displayed hide gallery on 2026-10-24. Early reveal/loading, physical Circle input,
 event identity and broader scene rendering remain open; ZOD-033 stays partial.
+
+**Earlier anchor received:** The owner's [new pre-banner state](evidence/visual/original-pre-banner-anchor-v1.json)
+is frozen separately and advances without input to the selected reveal, hold and
+hide task. Two sampled hold restores repeat PNG and exit-state bytes. Initial
+overlay/partial-packet guards remain closed; next trace early reveal/readiness
+before extending accepted observations. No new pixel, loading-duration, physical
+input or event-identity claim; the original reference files remain ignored.
 
 **Scope:** Capture selected scenes at fixed state/presentation ticks and compare them with documented baseline/reference captures using appropriate regions and tolerances.
 

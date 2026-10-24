@@ -139,8 +139,9 @@ before/after capture, preserving base/installed configuration identities.
 
 Each `review.html` shows original, controlled background and actual C# for the five
 displayed anchors at 2x. Agent inspection records matching original/C# views as the
-lines disappear, including the small tail and empty final frame. Owner review of
-this new gallery remains pending; previous full-visible approval remains separate.
+lines disappear, including the small tail and empty final frame. The owner confirmed "The hide-frame gallery looks correct" on 2026-10-24.
+This approval covers the five displayed hide anchors; earlier reveal/loading,
+physical Circle input and event identity remain open.
 All original media, decoded state, backgrounds and generated captures stay ignored.
 
 Validation: locked restores, zero-warning Release builds, **1,450 .NET tests**

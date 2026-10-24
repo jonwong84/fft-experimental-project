@@ -239,9 +239,21 @@ non-GPU subsystem payloads/GPU registers, and two runs repeat. No pixel fitting,
 universal lag or managed map-rendering claim. Locked restores, zero-warning builds,
 1,450 .NET and 116 Python tests (12 new) pass. Runtime, schemas and dependency
 graphs stay unchanged; only the developer host gains a bounded sequence mode.
-Owner review of this new gallery is pending. Early reveal/loading, physical Circle
+The owner approved the hide-frame gallery on 2026-10-24. Early reveal/loading, physical Circle
 input, event reachability and broader rendering remain open. ZOD-033 stays partial;
 ZOD-079 remains deferred. No automatic commit.
+
+**Earlier original anchor received (2026-10-24):** The owner's new private state
+is frozen separately under `scratch/banner-pre-anchor-a`; the old late-reveal
+anchor is preserved. [Intake evidence](evidence/visual/original-pre-banner-anchor-v1.json)
+records ten finite no-input probes, including accepted reveal counter 11, hold
+counters 11/36 and hide counter 1. Two budget-400 restores repeat PNG and exit-state
+bytes. All protected inputs/base configurations and the owner's slot remain
+unchanged. Entry overlay bytes and the budget-340 packet set fail existing guards;
+these remain unclassified. Budget 600 reaches READY with different task parameters.
+Next trace initial reveal/readiness from this earlier anchor, retaining explicit
+unsupported states. Loading duration, physical Circle behavior, event identity and
+new pixel comparisons remain open. No runtime changes or full-suite rerun.
 
 **Owner formula direction (2026-10-24):** Keep weapon and ability algorithms
 readable/editable as ordinary C# code. The
