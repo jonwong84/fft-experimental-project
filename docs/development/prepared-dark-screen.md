@@ -14,7 +14,9 @@ The [source trace](../architecture/zod-092-dark-screen-transition.md) and
 [pure worker](../behavior/dark-screen-worker.md) retain their historical findings.
 [Validation metadata](../evidence/events/prepared-dark-screen-v1.json) binds this
 implementation, prepared inputs, native runs and independent audits.
-Owner gallery approval is **pending**.
+The owner approved the gallery on **2026-10-25**: "That looks good."
+Approval covers this authored preview; original entry/release comparison remains open.
+This approval update changes documentation/evidence only and reruns no implementation suites.
 
 ## Prepare, run and review
 
@@ -137,10 +139,10 @@ DSC-025..028 execute the selected prepared/math/presentation layers. DSC-030 has
 full managed and bounded native output regressions. DSC-029 and original edge/
 entry/release scanout comparison remain open. Historical contract flags stay
 unchanged; implementation evidence records the executed layers. Owner visual
-approval is pending. No new original capture/emulator execution, original duration,
+approval was recorded on 2026-10-25. No new original capture/emulator execution, original duration,
 combined startup/EventEnd, hardware backend, CRT/aspect or audio claim is made.
 
-After gallery approval, **ZOD-095** should plan and bind finite original entry/
+**Next: ZOD-095**, plan and bind finite original entry/
 release references before claiming that comparison. Integrating this held worker
 with general/Ready and the playable battle follows as separate work. Original
 inputs, decoded/prepared data, captures, inventories and reports stay ignored

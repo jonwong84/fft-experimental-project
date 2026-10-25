@@ -595,13 +595,17 @@
   ],
   "coveragePolicy": "Selected provisional integer sample/top-left, two triangles per quad, native reverse order, RGB5 average, dither/window/mask off.",
   "ownerReview": {
-    "approved": false,
+    "approved": true,
     "gallery": {
       "localPath": "scratch/dark-screen-094-review/review.html",
       "bytes": 197865,
       "sha256": "497b12256ee788ba3137f279375a747ed32eb9d6365c68ba6bbeba574980c9f0"
     },
-    "status": "pending"
+    "status": "approved",
+    "date": "2026-10-25",
+    "statement": "That looks good.",
+    "scope": "Authored prepared dark-screen gallery: normal/earliest/longest hold, entering tiles, full hold, collapse and return to checker. Original entry/release pixels and timing remain unestablished.",
+    "implementationValidationRerun": false
   },
   "pureWorkerOrLedgerChanged": false,
   "newOriginalCaptures": false,
@@ -610,6 +614,6 @@
   "originalDurationEstablished": false,
   "fullStartupEstablished": false,
   "combinedBannerReadyIntegration": false,
-  "next": "Owner gallery review, then ZOD-095 original entry/release references; combined scene integration remains separate.",
+  "next": "ZOD-095: plan and bind finite original dark-screen entry/release references; combined scene integration remains separate.",
   "mediaPolicy": "Original/prepared data, captures, logs, inventories and generated reports stay ignored under scratch; only authored code/tests/docs and metadata identities are committed."
 }

@@ -14,9 +14,12 @@ policy; original entry/release pixels/duration, combined startup and banner/Read
 integration remain open. No new original capture or emulator execution occurred.
 [Guide](development/prepared-dark-screen.md),
 [metadata](evidence/events/prepared-dark-screen-v1.json).
-**Current gate:** Owner review of `scratch/dark-screen-094-review/review.html`
-(normal/earliest/longest hold, tick slider and checkpoint rows). Approval is pending.
-After approval, **ZOD-095** plans and binds finite original entry/release references.
+The owner approved `scratch/dark-screen-094-review/review.html` on 2026-10-25:
+"That looks good." Approval covers the authored normal/earliest/longest hold
+preview and its entering/holding/collapsing checker views. Original entry/release
+pixel/timing equivalence remains open. This documentation/evidence approval
+update reruns no implementation suites; test counts above retain their prior run.
+**Next: ZOD-095**, plan and bind finite original entry/release references.
 Standing commit/push permission applies to validated implementation work.
 
 **Latest implementation checkpoint (2026-10-25):** ZOD-093 adds a separate typed

@@ -1779,7 +1779,7 @@ unchanged. [Behavior](behavior/dark-screen-worker.md),
 
 ### ZOD-094 — Prepare and preview the bounded dark-screen transition
 
-**Type:** Story · **Priority:** P2 · **Status:** Awaiting visual review · **Depends on:** ZOD-093
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-093
 
 **Scope:** Prepare the selected original delay/rotation data offline, strictly load
 a separate immutable authored definition/profile and preview accepted dark-screen
@@ -1812,11 +1812,13 @@ artifacts remain unchanged. Locked restore, zero-warning Release build and all
 coverage policy is provisional pending original entry/release comparison.
 [Guide/evidence scope](development/prepared-dark-screen.md),
 [metadata](evidence/events/prepared-dark-screen-v1.json).
-Owner review of `scratch/dark-screen-094-review/review.html` is pending.
+The owner approved `scratch/dark-screen-094-review/review.html` on 2026-10-25:
+"That looks good." Approval covers this authored gallery; original entry/release
+pixel/timing equivalence remains open. This approval update reruns no implementation suites.
 
 ### ZOD-095 — Bind original dark-screen entry and release references
 
-**Type:** Spike · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-094
+**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-094
 
 **Scope:** Plan finite source-bound original entry/release observations and compare
 the selected prepared flat-quad output. Establish any prerequisite retained state
