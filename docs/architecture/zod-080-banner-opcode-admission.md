@@ -21,6 +21,12 @@ enabled by this document.
 
 ## Source path, operands and asynchronous admission
 
+**Implementation follow-up (2026-10-25):** [ZOD-081](../development/ordered-banner-transactions.md)
+now executes the 27 Core expectations with a distinct typed ordered executor.
+The original specification artifact remains unchanged; BOP-028 and authored
+Content/host profile admission remain ZOD-082's separate gate. Statements above
+describe this document's original preimplementation checkpoint.
+
 Pinned source entry points:
 
 - `src/battle/event/interpreter.c`: opcode `0x78` fetches two **unsigned bytes**,

@@ -32,8 +32,12 @@ public static class SceneTaskLedger
         int updateBudget = SceneTaskState.MaxUpdatesPerCommand)
         => Update(state, updates, updateBudget, advanceTick: true);
 
+    // Private transaction phase: callers must publish it only with the complete ordered scene result.
+    internal static SceneTaskResult ApplyPostVmUpdates(SceneTaskState state, ImmutableArray<SceneTaskUpdate> updates, int budget)
+        => Update(state, updates, budget, advanceTick: false, allowPending: true);
+
     private static SceneTaskResult Update(SceneTaskState state, ImmutableArray<SceneTaskUpdate> updates,
-        int budget, bool advanceTick)
+        int budget, bool advanceTick, bool allowPending = false)
     {
         ArgumentNullException.ThrowIfNull(state);
         if (updates.IsDefault)
@@ -49,7 +53,7 @@ public static class SceneTaskLedger
             if (invalid != SceneTaskRejection.None)
                 return SceneTaskResult.Reject(state, invalid, "Invalid task update payload.", index);
         }
-        if (!advanceTick && state.BarrierStatus == SceneBarrierStatus.Pending)
+        if (!advanceTick && !allowPending && state.BarrierStatus == SceneBarrierStatus.Pending)
             return SceneTaskResult.Reject(state, SceneTaskRejection.AwaitingTick, "Pending task facts must be supplied through AdvanceTick.");
 
         var tasks = state.Tasks.ToBuilder();
@@ -156,7 +160,7 @@ public static class SceneTaskLedger
         _ => throw new InvalidOperationException("Expected a prevalidated referenced update."),
     };
 
-    private static SceneTaskRejection ValidateUpdate(SceneTaskUpdate? update)
+    internal static SceneTaskRejection ValidateUpdate(SceneTaskUpdate? update)
     {
         if (update is null) return SceneTaskRejection.InvalidUpdate;
         if (update is SceneTaskUpdate.Start start)

@@ -1,5 +1,24 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Git authorization (2026-10-25):** The owner grants standing permission to commit
+and push completed, validated project changes to GitHub when appropriate. This
+supersedes earlier manual-commit preferences and historical "no automatic commit"
+notes. Keep original media, extracted/prepared assets and other scratch files
+untracked as required by `AGENTS.md`.
+
+**Latest behavior checkpoint (2026-10-25):** ZOD-081's
+[ordered event/banner transaction](development/ordered-banner-transactions.md) is
+implemented in `Zodiac.Framework`: typed condition-8 admission, event-before-worker
+ticks, no newborn double-step, explicit preloaded logical identities, protected
+managed lifetime and atomic VM/effect/ledger/clock/trace publication. The banner
+clears at H+31; its waiting parent resumes H+32. All 27 authored Core expectations
+and 33 additional boundary cases execute. Legacy public APIs and effect-first
+traces remain unchanged. Locked restore, zero-warning Release build, **1,554 .NET
+tests** and **163 Python tests** pass. Historical evidence is unchanged; BOP-028
+remains unexecuted. **Next: ZOD-082**, the separate authored preloaded profile and
+strict preparation/loading/host composition. No new original captures, emulator
+run or graphics change; no automatic commit.
+
 **Owner-approved naming (2026-10-25):** **Tessera Engine** is the reusable grid,
 terrain, movement and simulation machinery; **Zodiac Framework** owns FFT rules,
 runtime systems and definition schemas; **FFT Content** supplies particular game

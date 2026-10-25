@@ -111,7 +111,7 @@ public static class BannerSceneExecutor
             [new(BannerSceneTraceKind.EventStarted, started.Tick, Before: state.Banner, After: state.Banner, StartedEvent: started)]);
     }
 
-    private static BannerSceneResult? ValidateCancellation(BannerSceneState state, BannerCancellation cancellation)
+    internal static BannerSceneResult? ValidateCancellation(BannerSceneState state, BannerCancellation cancellation)
     {
         if (!SceneTaskState.ValidId(cancellation.TaskId.SceneRunId)) return TaskFailure(state, SceneTaskRejection.InvalidId, "Cancellation requires a scene ID.");
         if (cancellation.TaskId.Sequence < 1 || cancellation.ExpectedRevision < 0)
@@ -127,7 +127,7 @@ public static class BannerSceneExecutor
         return null;
     }
 
-    private static bool ValidBinding(BannerSceneState state)
+    internal static bool ValidBinding(BannerSceneState state)
     {
         if (state.Banner is not { } banner) return true;
         if (banner.TaskId.SceneRunId != state.Event.Tasks.SceneRunId || banner.StartTick < 0 || banner.StartTick > banner.LastProcessedTick ||
@@ -143,14 +143,14 @@ public static class BannerSceneExecutor
         };
     }
 
-    private static SceneTaskId? ReferencedId(SceneTaskUpdate update) => update switch
+    internal static SceneTaskId? ReferencedId(SceneTaskUpdate update) => update switch
     {
         SceneTaskUpdate.Phase phase => phase.TaskId,
         SceneTaskUpdate.Complete complete => complete.TaskId,
         SceneTaskUpdate.Cancel cancel => cancel.TaskId,
         _ => null,
     };
-    private static SceneEventState WithTasks(SceneEventState state, SceneTaskState tasks)
+    internal static SceneEventState WithTasks(SceneEventState state, SceneTaskState tasks)
         => new(state.Program, state.Inner, tasks, state.ConsumerId, state.Suspension, state.RemainingWaitTicks, state.WaitingAtOffset);
     private static ImmutableArray<BannerSceneTrace> Wrap(IEnumerable<SceneEventTrace> trace, int instructionBudget, int? updateBudget)
         => trace.Select(t => new BannerSceneTrace(BannerSceneTraceKind.Event, t.Tick, EventTrace: t,

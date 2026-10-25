@@ -23,6 +23,20 @@ public static class SceneEventExecutor
         if (!ValidBudget(instructionBudget)) return InvalidBudget(state);
         if (!state.Exited && state.Suspension == SceneEventSuspension.Ready)
             return SceneEventResult.Reject(state, SceneEventRejection.NotWaiting, "Run the ready interpreter to a suspension or exit before advancing its scene.", state.Offset);
+        var resumedTick = ResumeTick(state, updates, updateBudget);
+        if (!resumedTick.Accepted || resumedTick.State.Exited || resumedTick.State.Suspension != SceneEventSuspension.Ready)
+            return resumedTick;
+        var resumed = Pump(resumedTick.State, instructionBudget);
+        if (!resumed.Accepted)
+            return SceneEventResult.Reject(state, resumed.Rejection, resumed.Diagnostic!, resumed.FailureOffset!.Value,
+                resumed.TaskRejection, resumed.FailureUpdateIndex);
+        return SceneEventResult.Accept(resumed.State, resumedTick.Trace.AddRange(resumed.Trace),
+            resumed.InstructionsExecuted, resumedTick.AcceptedTaskUpdates, 1);
+    }
+
+    // These phases are internal so no caller can publish a half-tick or inject a callback.
+    internal static SceneEventResult ResumeTick(SceneEventState state, ImmutableArray<SceneTaskUpdate> updates, int updateBudget)
+    {
         var ledger = SceneTaskLedger.AdvanceTick(state.Tasks, updates, updateBudget);
         if (!ledger.Accepted) return TaskFailure(state, ledger, state.WaitingAtOffset ?? state.Offset);
 
@@ -50,12 +64,7 @@ public static class SceneEventExecutor
             trace.Add(EventTrace(SceneEventTraceKind.BarrierWaitResumed, offset, state, current));
         }
 
-        var resumed = Pump(current, instructionBudget);
-        if (!resumed.Accepted)
-            return SceneEventResult.Reject(state, resumed.Rejection, resumed.Diagnostic!, resumed.FailureOffset!.Value,
-                resumed.TaskRejection, resumed.FailureUpdateIndex);
-        trace.AddRange(resumed.Trace);
-        return SceneEventResult.Accept(resumed.State, trace.ToImmutable(), resumed.InstructionsExecuted, ledger.AcceptedUpdates, 1);
+        return SceneEventResult.Accept(current, trace.ToImmutable(), 0, ledger.AcceptedUpdates, 1);
     }
 
     private static SceneEventResult Pump(SceneEventState state, int budget)
@@ -64,39 +73,52 @@ public static class SceneEventExecutor
         var trace = ImmutableArray.CreateBuilder<SceneEventTrace>();
         for (int index = 0; index < budget; index++)
         {
-            var instruction = current.Program.Instructions[current.Program.Body.IndexOf(current.Offset)];
-            var ordinary = ConditionalEventExecutor.Step(current.Inner);
-            if (!ordinary.Accepted)
-                return SceneEventResult.Reject(state, SceneEventRejection.ArithmeticDomainExceeded, ordinary.Diagnostic!, ordinary.FailureOffset!.Value);
-            var before = current;
-            var suspension = SceneEventSuspension.Ready;
-            int remaining = instruction.WaitFrames ?? 0;
-            var kind = SceneEventTraceKind.Instruction;
-            var tasks = current.Tasks;
-            ImmutableArray<SceneTaskTrace> ledgerTrace = [];
-            if (instruction.TaskClass is { } selector)
-            {
-                var entered = SceneTaskLedger.BeginBarrier(tasks, selector, current.ConsumerId, instruction.Offset, current.Program.Id);
-                if (!entered.Accepted) return TaskFailure(state, entered, instruction.Offset);
-                tasks = entered.State;
-                ledgerTrace = entered.Trace;
-                suspension = SceneEventSuspension.Barrier;
-                kind = SceneEventTraceKind.BarrierWaitEntered;
-            }
-            else if (instruction.WaitFrames is not null)
-            {
-                suspension = remaining == 0 ? SceneEventSuspension.Ready : SceneEventSuspension.Frames;
-                kind = remaining == 0 ? SceneEventTraceKind.ZeroWait : SceneEventTraceKind.FrameWaitEntered;
-            }
-            current = Copy(current, ordinary.State, tasks, suspension, remaining,
-                suspension == SceneEventSuspension.Ready ? null : instruction.Offset);
-            trace.Add(EventTrace(kind, instruction.Offset, before, current, instruction.Operation?.Operation));
-            AddLedgerTrace(trace, current, ledgerTrace);
+            var step = StepInstruction(current);
+            if (!step.Accepted)
+                return SceneEventResult.Reject(state, step.Rejection, step.Diagnostic!, step.FailureOffset!.Value,
+                    step.TaskRejection, step.FailureUpdateIndex);
+            current = step.State;
+            trace.AddRange(step.Trace);
             if (current.Exited || current.Suspension != SceneEventSuspension.Ready)
                 return SceneEventResult.Accept(current, trace.ToImmutable(), index + 1, 0, 0);
         }
         return SceneEventResult.Reject(state, SceneEventRejection.InstructionBudgetExceeded,
             $"Instruction budget {budget} exhausted before a suspension or exit at {current.Offset}.", current.Offset);
+    }
+
+    internal static SceneEventResult StepInstruction(SceneEventState current)
+    {
+        var state = current;
+        var trace = ImmutableArray.CreateBuilder<SceneEventTrace>();
+        var instruction = current.Program.Instructions[current.Program.Body.IndexOf(current.Offset)];
+        var ordinary = ConditionalEventExecutor.Step(current.Inner);
+        if (!ordinary.Accepted)
+            return SceneEventResult.Reject(state, SceneEventRejection.ArithmeticDomainExceeded, ordinary.Diagnostic!, ordinary.FailureOffset!.Value);
+        var before = current;
+        var suspension = SceneEventSuspension.Ready;
+        int remaining = instruction.WaitFrames ?? 0;
+        var kind = SceneEventTraceKind.Instruction;
+        var tasks = current.Tasks;
+        ImmutableArray<SceneTaskTrace> ledgerTrace = [];
+        if (instruction.TaskClass is { } selector)
+        {
+            var entered = SceneTaskLedger.BeginBarrier(tasks, selector, current.ConsumerId, instruction.Offset, current.Program.Id);
+            if (!entered.Accepted) return TaskFailure(state, entered, instruction.Offset);
+            tasks = entered.State;
+            ledgerTrace = entered.Trace;
+            suspension = SceneEventSuspension.Barrier;
+            kind = SceneEventTraceKind.BarrierWaitEntered;
+        }
+        else if (instruction.WaitFrames is not null)
+        {
+            suspension = remaining == 0 ? SceneEventSuspension.Ready : SceneEventSuspension.Frames;
+            kind = remaining == 0 ? SceneEventTraceKind.ZeroWait : SceneEventTraceKind.FrameWaitEntered;
+        }
+        current = Copy(current, ordinary.State, tasks, suspension, remaining,
+            suspension == SceneEventSuspension.Ready ? null : instruction.Offset);
+        trace.Add(EventTrace(kind, instruction.Offset, before, current, instruction.Operation?.Operation));
+        AddLedgerTrace(trace, current, ledgerTrace);
+        return SceneEventResult.Accept(current, trace.ToImmutable(), 1, 0, 0);
     }
 
     private static SceneEventState Copy(SceneEventState state, ConditionalEventState inner, SceneTaskState tasks,

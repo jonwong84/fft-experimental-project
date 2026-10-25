@@ -1413,7 +1413,14 @@ enable original events, loading delays, Ready, other conditions or EventEnd.
 
 ### ZOD-081 — Prove ordered event/banner transactions in Core
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-080
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-080
+
+**Implementation (2026-10-25):** [Ordered banner transactions](development/ordered-banner-transactions.md)
+add a distinct typed `Zodiac.Framework` program/executor with private shared
+VM/ledger phases. All 27 authored Core cases and 33 boundary regressions pass;
+legacy effect-first APIs/traces remain unchanged. Locked restore, zero-warning
+Release build, all 1,554 .NET and 163 Python tests pass. No Content/profile/raw
+opcode or graphics changes; BOP-028 remains ZOD-082's gate. No automatic commit.
 
 **Scope:** Implement the selected typed event-before-worker program/adapter using
 the existing conditional executor, banner reducer and ledger validation. Poll/resume
@@ -1434,7 +1441,7 @@ Release build and appropriate full regressions.
 
 ### ZOD-082 — Prepare and execute the authored preloaded banner profile
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-081, ZOD-078
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-081, ZOD-078
 
 **Scope:** Add explicit authored BATTLE/non-tutorial/speed-one opcode-78 conversion,
 strict Content validation/projection and prepared-files-only host composition for
