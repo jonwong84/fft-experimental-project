@@ -1441,7 +1441,18 @@ Release build and appropriate full regressions.
 
 ### ZOD-082 — Prepare and execute the authored preloaded banner profile
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-081, ZOD-078
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-081, ZOD-078
+
+**Implementation (2026-10-25):** [Separate authored prepared profile](development/prepared-ordered-banner-event.md)
+adds strict raw/processed conversion, manifest-verified loading/projection and
+prepared-files-only Windows composition. Old schemas/profiles remain closed.
+BOP-028 and 75 new regressions execute; all 1,629 .NET and 163 Python tests pass,
+with locked restore and a zero-warning Release build. Two raw Windows runs repeat
+all 17 files; processed state/trace/pixels agree, clear/resume is 91/92, and the
+legacy RGB8 preview repeats all 16 files. Skipped admission, failed readiness and
+whole original-event rejection are checked. No original event, loader duration,
+new renderer or native-slot behavior is admitted. Standing owner Git permission
+supersedes the historical no-automatic-commit criterion below.
 
 **Scope:** Add explicit authored BATTLE/non-tutorial/speed-one opcode-78 conversion,
 strict Content validation/projection and prepared-files-only host composition for

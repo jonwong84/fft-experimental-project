@@ -23,9 +23,10 @@ enabled by this document.
 
 **Implementation follow-up (2026-10-25):** [ZOD-081](../development/ordered-banner-transactions.md)
 now executes the 27 Core expectations with a distinct typed ordered executor.
-The original specification artifact remains unchanged; BOP-028 and authored
-Content/host profile admission remain ZOD-082's separate gate. Statements above
-describe this document's original preimplementation checkpoint.
+The original specification artifact remains unchanged. [ZOD-082](../development/prepared-ordered-banner-event.md)
+subsequently executes BOP-028 through separate authored preparation, strict Content
+loading and prepared-files-only host composition. Statements above describe this
+document's original preimplementation checkpoint.
 
 Pinned source entry points:
 

@@ -30,6 +30,9 @@ internal static class Program
         if (args.Length > 0 && args[0] == "prepare-general-banner")
             return new PrepareGeneralBannerCommand(workspaceRoot).Run(args, Console.Out, Console.Error);
 
+        if (args.Length > 0 && args[0] == "prepare-ordered-banner-event")
+            return new PrepareOrderedBannerEventCommand(workspaceRoot).Run(args, Console.Out, Console.Error);
+
         if (args.Length > 0 && args[0] == "prepare-map")
             return new PrepareMapCommand(workspaceRoot).Run(args, Console.Out, Console.Error);
 

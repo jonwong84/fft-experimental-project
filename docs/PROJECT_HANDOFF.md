@@ -1,5 +1,22 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Latest behavior checkpoint (2026-10-25):** ZOD-082's
+[authored ordered-banner profile](development/prepared-ordered-banner-event.md) is
+complete. A separate format/profile preserves old JSON/export closure, decodes
+condition/hold as unsigned bytes, strictly loads prepared files and binds logical
+artwork/owner identities before scene creation. The Windows host creates GPU
+resources before starting the ordered VM; draws/rebuilds only read accepted states.
+BOP-028 now executes across 75 new regressions and actual host checks. Locked
+restore, zero-warning Release build, **1,629 .NET tests** and **163 Python tests**
+pass. Raw repeated runs match all 17 files; processed preparation matches final
+state/trace/pixels; clear is 91 and parent exit is 92. Skipped admission and failed
+readiness are safe; original events 4/401 remain rejected; all 16 legacy RGB8
+files match. [Metadata evidence](evidence/events/ordered-banner-profile-validation-v1.json)
+contains local paths/hashes only. No additional original captures or emulator run
+was needed. Next select one source-traced scene capability/worker before expanding
+the authored subset; Ready, additional workers, original startup duration and full
+original event/campaign playback remain separate gates.
+
 **Git authorization (2026-10-25):** The owner grants standing permission to commit
 and push completed, validated project changes to GitHub when appropriate. This
 supersedes earlier manual-commit preferences and historical "no automatic commit"

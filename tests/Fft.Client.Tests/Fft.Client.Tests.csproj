@@ -7,6 +7,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="../Support/AuthoredGeneralBanner.cs" Link="Support/AuthoredGeneralBanner.cs" />
+    <Compile Include="../Support/AuthoredOrderedBannerEvent.cs" Link="Support/AuthoredOrderedBannerEvent.cs" />
+    <None Include="../../docs/evidence/events/banner-opcode-admission-contract-v1.json" Link="Fixtures/banner-opcode-admission-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../../docs/evidence/events/general-banner-presentation-contract-v1.json" Link="Fixtures/general-banner-presentation-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../../docs/evidence/visual/original-banner-continuation-v1.json" Link="Fixtures/original-banner-continuation-v1.json" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../../docs/evidence/visual/early-banner-reveal-v1.json" Link="Fixtures/early-banner-reveal-v1.json" CopyToOutputDirectory="PreserveNewest" />
