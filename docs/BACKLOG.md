@@ -1657,6 +1657,52 @@ Legacy RGB8/ordered/Ready preserves 16/17/72 files. Review gallery
 2026-10-25: "This looks great." No new emulator
 run, combined original scanout comparison or full original event playback.
 
+### ZOD-090 — Trace Ready completion and battle-control ownership
+
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-089
+
+**Scope:** Trace the verified event-4/common-401 tails, EventEnd cleanup and
+scenario chaining, event-frame completion, turn selection and input/menu gates.
+Keep original source study separate from the authored introduction's synthetic exit.
+
+**Acceptance criteria:** Pin clean reference HEAD and input/code identities;
+check retained Ready endpoints without launching an emulator; identify remaining
+workers, unsigned/signed fields, scheduling and player/AI alternatives. Record
+observation gaps and a bounded authored integration contract with future cases.
+Do not infer player control from a hidden Ready image, task clear, input mode or
+zero finish word. Preserve production code and historical evidence.
+
+**Result (2026-10-25):** Both tails release/wait for the dark-screen worker and
+restore scheduling before EventEnd; event 4 can recheck/chain scenario conditions.
+Two retained states bind Ready birth and dispatcher clear, with event ownership
+and held task 55 still present. Ten resident functions and 24 source files are
+fingerprinted; two offline reports repeat exactly. All 208 Python tests pass
+(11 new authored checks); last full managed validation remains 1,868 tests, not
+rerun. [Source/contract record](architecture/zod-090-ready-battle-handoff.md),
+[metadata](evidence/events/ready-battle-handoff-v1.json). No new original capture,
+player-control observation, runtime/renderer change or full startup claim.
+
+### ZOD-091 — Hand the authored introduction to the playable battle
+
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-090
+
+**Scope:** One prepared authored banner/Ready introduction followed by the
+existing synthetic two-unit battle in one Windows host. Reuse the existing
+descriptor, workers, input latch and battle rules. Add a pure ownership gate;
+limit refactors to the shared presentation/input routing this path requires.
+
+**Acceptance criteria:** Execute the twelve
+[authored handoff cases](evidence/events/intro-battle-contract-v1.json) from the
+[selected contract](architecture/zod-090-ready-battle-handoff.md). Freeze battle
+state/CT/RNG/journal before accepted intro event exit; child/dispatcher clear
+alone cannot open the gate. Publish availability once, preserve full late-failure
+rollback, discard queued/transition inputs and baseline held buttons. A later
+fresh explicit command must match the existing battle controller and headless
+replay. Prove readiness-before-admission, focus/device/draw independence, natural
+and skipped finite native checks, and legacy standalone behavior. No retail
+EventEnd, dark-screen release, original scene/startup/input-timing equivalence or
+automatic player-turn selection is admitted by this authored path.
+
 ## Authoring, extensions, and later goals
 
 ### ZOD-047 — Build the first job/ability inspection and editing UI

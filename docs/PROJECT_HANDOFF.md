@@ -1,5 +1,23 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Latest source checkpoint (2026-10-25):** ZOD-090 traces the boundary after Ready.
+Both verified event tails still release/wait for task-55/54 dark-screen work and
+restore speed before EventEnd. Event 4 can recheck/chain scenario conditions;
+event-frame completion then dispatches turn-clock/player/AI/menu gates. Ready
+dispatcher clear is not player ownership. Two retained endpoints (9003/9072)
+retain Event state, parent barrier 813 and held dark-screen task 55; no new
+original execution or player-control observation. Twenty-four source files and
+ten resident functions are fingerprinted, and two offline reports repeat exactly.
+All **208 Python tests** pass (11 new); production C# is unchanged, and the last
+full .NET validation remains **1,868**, not rerun in this source task.
+[Trace and selected contract](architecture/zod-090-ready-battle-handoff.md),
+[evidence](evidence/events/ready-battle-handoff-v1.json).
+**Next: ZOD-091**, one authored prepared introduction → existing playable battle,
+with a pure one-time ownership gate, frozen battle before exit and fresh input
+after the transition. Its twelve acceptance cases remain explicitly unexecuted.
+Reuse existing rules/resources; keep retail EventEnd, complete startup and physical
+input timing separate. Standing commit/push permission applies after validation.
+
 **Latest behavior checkpoint (2026-10-25):** ZOD-089 implements one prepared
 general-banner → Ready scene after tracing event 4's task/barrier handoff and
 shared atlas/pool boundaries. A separate closed authored descriptor owns exactly
