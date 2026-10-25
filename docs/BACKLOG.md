@@ -1543,7 +1543,17 @@ reinterpret its existing renderer policy. No new runtime renderer in this spike.
 
 ### ZOD-086 — Prepare and preview the authored Ready profile
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-084, ZOD-085
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-084, ZOD-085
+
+**Completion (2026-10-25):** The [prepared Ready preview](development/prepared-ready-event.md)
+adds separate strict artwork/event formats, verified offline preparation and a
+prepared-only Windows host. All 32 RPR cases and RDY-029..032 have checks; 112 new
+.NET tests bring the total to **1,794**, with **163 Python tests** passing. Locked
+restore and zero-warning Release build pass. Twelve finite scenarios produce 626
+exact CPU/GPU/independent-model captures; repeated/raw-processed outputs agree and
+all 16/16/17 legacy artifacts remain unchanged. Missing content/graphics failure
+creates no check output. The gallery awaits owner review; original displayed Ready
+comparison remains separate. Next ZOD-087.
 
 **Scope:** Add separate authored raw/processed condition-0 conversion, strict
 prepared-content projection and prepared-files-only Windows composition using
@@ -1557,6 +1567,25 @@ events 4/401. Prove finite repeatable receipts and rendering-independent replay;
 no renderer completion acknowledgments. Keep one Ready per selected scene and
 explicitly exclude concurrent shared-pool effects, combined general→Ready retail
 playback, condition 1, original loading duration, EventEnd and full BattleStart.
+
+### ZOD-087 — Validate displayed Ready glyphs against original references
+
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-086
+
+**Scope:** First inspect retained Ready artifacts and select a bounded original
+reference method. Bind queued glyphs to actual displayed frames and recover
+background-sensitive STP samples before comparing the C# Ready compositor. Keep
+the authored prepared preview separate from original event/startup execution.
+
+**Acceptance criteria:** Pin reference HEAD and artifact/code/table/texture/palette
+identities; distinguish queued from displayed work and independent capture histories.
+Retain the relevant draw environment and frame/worker context, meaningful opaque
+and STP samples, exact comparison results and an owner-review gallery. Cover selected
+birth/full/fade-out/empty anchors when supported, recording missing observations
+explicitly. Needed new captures and background probes must have a finite, verified
+procedure before execution. Do not infer original duration, Circle timing, full
+event playback or hardware equivalence from a matching frozen image; preserve
+historical evidence and legacy/general behavior.
 
 ## Authoring, extensions, and later goals
 

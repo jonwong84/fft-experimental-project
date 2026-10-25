@@ -1,5 +1,11 @@
 # ZOD-085 — Ready artwork, readiness and rendering policy
 
+**Implementation follow-up (2026-10-25):** ZOD-086's
+[prepared Ready preview](../development/prepared-ready-event.md) now implements
+this separate policy. RPR-001..032 and RDY-029..032 have managed/host checks;
+the source/specification checkpoint below remains historical. Original Ready
+displayed-pixel/timing comparison is still a separate gate.
+
 Date: 2026-10-25. Edition: `SCUS-94221`. Managed starting revision:
 `68c97dd87fdba4307d4299c0633bdc78c9d98431`; working tree clean on entry.
 Read-only FFT reference HEAD: `11464943bbdbd2a0af022d90cb7f10455cf911df`.

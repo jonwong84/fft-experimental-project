@@ -52,7 +52,7 @@ public static class ScenarioEventExporter
             verified.Encoding == ScenarioBlockEncoding.Raw ? "raw" : "processed", verified.TextOffset), records, profile);
     }
 
-    private static PreparedScenarioInstruction Convert(ScenarioInstructionRecord r, string profile)
+    internal static PreparedScenarioInstruction Convert(ScenarioInstructionRecord r, string profile)
     {
         var operation = r.Opcode switch
         {
