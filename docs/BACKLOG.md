@@ -1492,7 +1492,14 @@ and queued-packet evidence must not be labeled original scanout/timing equivalen
 
 ### ZOD-084 — Prove the ordered Ready dispatcher/child aggregate
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-083
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-083
+
+**Completion (2026-10-25):** The [ordered Ready aggregate](development/ready-display-transactions.md)
+executes all 28 Core contract cases and 25 additional boundaries. Dispatcher and
+child lifetimes, logical draws, event-before-worker publication, retained identity,
+explicit cancellation and atomic rollback are implemented without graphics or
+profile changes. Locked restore, zero-warning Release build, **1,682 .NET / 163
+Python tests** pass. Next ZOD-085; ZOD-086 still waits for its presentation policy.
 
 **Scope:** Implement one typed preloaded condition-0/H-0..255 aggregate over the
 selected event → dispatcher → child phases. The ledger's task 56 represents its

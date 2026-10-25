@@ -1,5 +1,11 @@
 # ZOD-083 — Ready display source and bounded contract
 
+**Implementation follow-up (2026-10-25):** ZOD-084's
+[ordered Ready aggregate](../development/ready-display-transactions.md) now executes
+RDY-001..028 in managed tests. This source-study checkpoint and its historical
+specification-only evidence remain unchanged; presentation and Content/host cases
+still await ZOD-085/086.
+
 Date: 2026-10-25. Edition: `SCUS-94221`. Managed base:
 `d10ca2630b5080e9ea1f67da0dd49e548fdde813`; working tree clean on entry.
 Read-only reference HEAD verified: `11464943bbdbd2a0af022d90cb7f10455cf911df`.

@@ -1,5 +1,19 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Latest behavior checkpoint (2026-10-25):** ZOD-084's
+[ordered Ready aggregate](development/ready-display-transactions.md) is complete.
+One typed preloaded condition-0 display owns a task-56 dispatcher and an untagged
+child within immutable Framework state. Event → dispatcher → child order preserves
+birth draws, overlapping input/fade-in, release reset, seven fade-out submissions,
+empty extra yield and child/dispatcher/event completion at R+8/R+9/R+10. All 28
+Core contract cases and 25 additional boundaries execute with full transaction
+rollback and rendering-independent replay. Historical source/specification files
+retain their original flags. Locked restore, zero-warning Release build,
+**1,682 .NET / 163 Python tests** pass. No graphics, Content/profile or emulator
+changes. **Next: ZOD-085** selects Ready artwork/rendering/readiness policies;
+ZOD-086 then adds the separate authored prepared host. Standing owner commit/push
+permission applies after validation.
+
 **Latest source checkpoint (2026-10-25):** ZOD-083's
 [Ready display trace](architecture/zod-083-ready-display.md) selects condition 0
 (message 0), distinct from condition 1's buggy stats helper. Ready inherits image
