@@ -4,8 +4,8 @@ The two Ready birth scanouts missing from ZOD-087 now bind through verified BIOS
 exception records and match the actual prepared C# compositor exactly. Displayed
 logical ticks 0/1 use scales **48/56**. Each compares 1,202 opaque, 77 STP and 1,049
 transparent glyph-rectangle pixels; all 77 STP pixels exercise background blending.
-The renderer and simulation are unchanged. Owner review of the new two-row gallery
-is pending: `scratch/ready-birth-088-b/review.html`.
+The renderer and simulation are unchanged. The owner approved the new two-row
+gallery, `scratch/ready-birth-088-b/review.html`, on 2026-10-25: "That looks correct."
 
 Reference: read-only `C:/repositories/fft_decomp`, clean HEAD
 `11464943bbdbd2a0af022d90cb7f10455cf911df`. Managed base:
@@ -100,8 +100,8 @@ No production C# code or schema changes are required.
 
 Two final runs are retained at `scratch/ready-birth-088-a` and `-b`; all **32**
 selected state/image/native-content artifacts repeat byte for byte. The metadata
-records their identities. Owner approval of the earlier six-frame
-gallery does not automatically approve these two new rows.
+records their identities. The owner separately approved these two new rows on
+2026-10-25; approval covers the selected birth/next-frame comparison.
 
 ## Validation and remaining scope
 
@@ -122,8 +122,12 @@ The combined evidence now covers eight selected Ready scanouts, including birth,
 full brightness, fade-out and the empty yield. This is not a general interrupt
 unwinder, original duration/physical Circle or USB/display latency result, hardware
 GPU equivalence, audio emulation validation, managed map-rendering proof, or full
-original event/startup playback. Owner review comes next; additional behavior or
+original event/startup playback. With the gallery approved, additional behavior or
 scene expansion requires its own bounded source/observation scope.
+
+The approval update changes documentation/evidence only. The test/build results
+above are the preceding ZOD-088 implementation validation; no suites were rerun
+for recording the review.
 
 To repeat with retained inputs and fresh output:
 

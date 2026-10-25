@@ -145,6 +145,7 @@ preserving existing files and creating no partial result.
 The later [birth comparison](ready-birth-comparison.md) identifies the missing
 endpoints as BIOS timer-2 sound callbacks and verifies their saved main VSync
 context through actual exception save/restore code. The birth/next scanouts now
-match actual prepared C# exactly in a separate gallery awaiting owner review.
+match actual prepared C# exactly in a separate gallery, approved by the owner on
+2026-10-25: "That looks correct."
 The earlier missing-observation record above is historical; the old main-context
 classifier remains closed, and original duration/full event playback stays open.

@@ -11,11 +11,15 @@ those endpoints. All 16 older Ready snapshots and seven C# artifacts remain equa
 Locked restores, zero-warning Release builds, **1,794 .NET / 192 Python tests** pass.
 No production C#/renderer/simulation changes or BIOS/emulator runtime dependency.
 [Detailed record](development/ready-birth-comparison.md),
-[metadata](evidence/visual/ready-birth-v1.json). **Next: owner review** of
-`scratch/ready-birth-088-b/review.html`, then select the next bounded original
+[metadata](evidence/visual/ready-birth-v1.json). The owner approved
+`scratch/ready-birth-088-b/review.html` on 2026-10-25: "That looks correct."
+Together with ZOD-087, all eight selected Ready scanouts have visual approval.
+**Next:** select the next bounded original
 behavior/scene observation before expanding the authored profile. Original input
 timing, arbitrary interrupts, hardware/audio fidelity, map rendering and full
 event/startup playback remain separate. Standing commit/push permission applies.
+This approval update changes documentation/evidence only; the test/build counts
+above remain the preceding implementation validation, with no suites rerun.
 
 **Latest validation checkpoint (2026-10-25):** ZOD-087's
 [displayed Ready comparison](development/displayed-ready-comparison.md) is complete

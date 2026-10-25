@@ -1609,8 +1609,9 @@ runs repeat 32 content artifacts and the retained original states. Old main clas
 all 16 earlier Ready snapshots and seven C# artifacts are preserved. Locked
 restores, zero-warning builds, 1,794 .NET / 192 Python tests pass.
 [Source/comparison record](development/ready-birth-comparison.md),
-[metadata evidence](evidence/visual/ready-birth-v1.json). New gallery owner review
-is pending. No runtime, timing, hardware, audio or full event playback claim.
+[metadata evidence](evidence/visual/ready-birth-v1.json). The owner approved the new
+two-row gallery on 2026-10-25: "That looks correct." No runtime, timing, hardware,
+audio or full event playback claim.
 
 **Scope:** Trace the retained birth/next-frame interrupt endpoints before deciding
 whether their original display/submission context can be validated. Reuse the

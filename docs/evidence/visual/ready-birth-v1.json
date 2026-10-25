@@ -1611,13 +1611,16 @@
     }
   },
   "ownerReview": {
-    "status": "pending",
+    "status": "approved",
     "gallery": "scratch/ready-birth-088-b/review.html",
     "galleryIdentity": {
       "localPath": "scratch/ready-birth-088-b/review.html",
       "bytes": 1121,
       "sha256": "1006c3725523d0b0d8567a6a51c252f53781d406e7cff9a8b8c766ad02d26ee8"
-    }
+    },
+    "date": "2026-10-25",
+    "quote": "That looks correct.",
+    "scope": "Two displayed Ready birth/next-frame original versus C# gallery rows; no expanded timing/hardware/audio/full-playback claim."
   },
   "runtimeRendererChanged": false,
   "simulationChanged": false,
