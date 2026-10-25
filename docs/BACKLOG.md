@@ -1718,7 +1718,7 @@ Approval covers the authored gallery; no physical input or original startup clai
 
 ### ZOD-092 — Trace the original dark-screen transition worker
 
-**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-091
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-091
 
 **Scope:** Trace the original DarkScreen/RemoveDarkScreen worker as the next
 missing startup capability. Select one bounded logical/resource/presentation
@@ -1733,6 +1733,38 @@ recording unsupported modes and missing original observations. New original
 continuations, if needed, require a finite verified procedure first. Do not add
 a native reference/emulator runtime dependency, acknowledge tasks from rendering,
 or claim full original startup/EventEnd from this source milestone.
+
+**Result (2026-10-25):** Select the shared origin/divisor-12/angle-64/radius-4
+style. Actual packets are untextured flat-color quads; BONUS loading prepares
+shared later artwork. Source-derived approximate sqrt matches all 288 original
+delays; exact integer sqrt would change six. Three retained holding states bind
+both tile banks, flash/material and fourteen resident functions. Two reports
+repeat exactly. Logical Holding birth is 55, first flash/entry-barrier observation
+56; release R clears the task at R+56 and the parent observes at R+57. These are
+post-readiness source deductions, not measured original durations. All 229 Python
+tests pass (14 new); production C# is unchanged and 1,909 .NET is the prior count,
+not rerun. [Source/selected policy](architecture/zod-092-dark-screen-transition.md),
+[evidence](evidence/events/dark-screen-source-v1.json). Thirty authored future
+cases remain unexecuted; entry/release original scanouts and runtime work remain open.
+
+### ZOD-093 — Implement the pure dark-screen worker and task proof
+
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-092
+
+**Scope:** Implement the selected post-readiness immutable worker and an atomic
+ordered task/ledger/barrier adapter using prevalidated definition data. Keep
+prepared conversion/graphics preview as subsequent work.
+
+**Acceptance criteria:** Execute the logical/transaction cases from the
+[DarkScreen contract](evidence/events/dark-screen-contract-v1.json), with explicit
+ticks, pre-update draws, strict overshoot/extra pass, Holding birth/first-flash gap,
+final release flash, exit yield and parent observation. Preserve one task identity,
+phase revisions/tombstone, accepted no-match releases, no deferred early signal,
+full late-failure rollback and render-independent replay. Reject unsupported
+parameters, foreign ownership, concurrent burst workers and external task mutation.
+No I/O, wall clock, GPU/renderer completion, PS1 library, raw event import, native
+slot emulation, arbitrary modes, cancellation or full EventEnd/startup claim.
+Document remaining preparation/presentation cases separately without marking them executed.
 
 ## Authoring, extensions, and later goals
 

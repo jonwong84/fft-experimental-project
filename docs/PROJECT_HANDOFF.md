@@ -1,5 +1,24 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Latest source checkpoint (2026-10-25):** ZOD-092 selects the original origin-mode
+DarkScreen style shared by events 4/401. It draws untextured flat translucent
+quads; BONUS loading is a separate shared-artwork side effect. Verified original
+sqrt-table approximation matches all 288 tile delays (exact sqrt changes six).
+Three retained holding states bind both packet banks, flash material and fourteen
+resident functions; two offline reports repeat exactly. Source-derived logical
+Holding birth is tick 55, first flash/parent observation 56. Release R emits one
+last flash; the body/exit yield ends at R+55, task clears R+56 and parent observes
+R+57. These are post-readiness transactions, not original duration measurements.
+All **229 Python tests** pass (14 new). Production C# is unchanged; **1,909 .NET**
+is the prior full implementation count, not rerun here. No emulator/new capture,
+original entry/release scanout or pixel equivalence claim.
+[Trace and selected policy](architecture/zod-092-dark-screen-transition.md),
+[metadata](evidence/events/dark-screen-source-v1.json). Thirty future DSC cases
+remain explicitly unexecuted. **Next: ZOD-093**, pure immutable worker and atomic
+ordered task/barrier proof, preserving same-instance phases, no-match signals,
+extra yields and full rollback. Prepared conversion/preview follows separately;
+existing intro/battle remains unchanged. Standing commit/push permission applies.
+
 **Latest behavior checkpoint (2026-10-25):** ZOD-091 runs the prepared authored
 introduction and existing playable two-unit battle in one Windows host. A pure
 ownership gate opens once at accepted event exit with terminal display tasks;
