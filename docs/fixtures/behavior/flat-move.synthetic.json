@@ -24,12 +24,12 @@
       "claim": "The flat prototype accepts one cardinal step, preserves the input, sets HasMoved and emits one event; rejected unreachable commands preserve state and emit nothing.",
       "sources": [
         {
-          "path": "src/Fft.Core/BattleSimulator.cs",
+          "path": "src/Zodiac.Framework/BattleSimulator.cs",
           "symbol": "BattleSimulator.Apply",
           "revision": "7361eb767f46d94de6d5c56e7ae4f6dd31245c02"
         },
         {
-          "path": "src/Fft.Core/BattleUnitState.cs",
+          "path": "src/Zodiac.Framework/BattleUnitState.cs",
           "symbol": "BattleUnitState.MoveTo",
           "revision": "7361eb767f46d94de6d5c56e7ae4f6dd31245c02"
         }

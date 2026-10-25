@@ -2,7 +2,7 @@
 
 Date: 2026-10-22. Managed baseline: `fab0079`. This integrates the managed prototype selected by [ZOD-001](zod-001-type-ownership.md); it translates no new PS1 rule and makes no source/original-game equivalence claim.
 
-`Fft.Core` now references `Zodiac.Engine`. Its existing `FlatGridMovementRange.Calculate` facade preserves the FFT signature and validation order (null map, negative Move, invalid origin), constructs neutral bounds/position inputs, invokes Zodiac's flat cardinal calculation, and converts the result to an immutable set of FFT positions. Bounds, budget, X/Y and layer retain their integer values. The facade selects the flat prototype policy explicitly; no tile semantics or FFT types enter the engine. Result enumeration is not an ordering contract.
+`Zodiac.Framework` now references `Tessera.Engine`. Its existing `FlatGridMovementRange.Calculate` facade preserves the FFT signature and validation order (null map, negative Move, invalid origin), constructs neutral bounds/position inputs, invokes Zodiac's flat cardinal calculation, and converts the result to an immutable set of FFT positions. Bounds, budget, X/Y and layer retain their integer values. The facade selects the flat prototype policy explicitly; no tile semantics or FFT types enter the engine. Result enumeration is not an ordering contract.
 
 `BattleSimulator` still calls the FFT facade. It retains rejection precedence (unknown unit, already moved, destination occupied, unreachable), original state reference and zero events on rejection, and one ordered movement event on acceptance. The updated snapshot preserves map, unit list order, other units and effective profile while moving the selected unit and setting HasMoved. Existing replay and immutability tests remain in place.
 

@@ -7,27 +7,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fft.Client", "src\Fft.Client\Fft.Client.csproj", "{E42C4245-29EE-4D12-A886-E9089D59DDD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fft.Core", "src\Fft.Core\Fft.Core.csproj", "{E23D846B-B38A-48AE-B1D7-46EF60666CDF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zodiac.Framework", "src\Zodiac.Framework\Zodiac.Framework.csproj", "{E23D846B-B38A-48AE-B1D7-46EF60666CDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fft.AssetTool", "src\Fft.AssetTool\Fft.AssetTool.csproj", "{4F292D9E-28B0-47CF-931B-802854A18D96}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zodiac.AssetTool", "src\Zodiac.AssetTool\Zodiac.AssetTool.csproj", "{4F292D9E-28B0-47CF-931B-802854A18D96}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fft.Core.Tests", "tests\Fft.Core.Tests\Fft.Core.Tests.csproj", "{1AA72144-BA9A-457B-A24B-69CA83C1E394}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zodiac.Framework.Tests", "tests\Zodiac.Framework.Tests\Zodiac.Framework.Tests.csproj", "{1AA72144-BA9A-457B-A24B-69CA83C1E394}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fft.AssetTool.Tests", "tests\Fft.AssetTool.Tests\Fft.AssetTool.Tests.csproj", "{D170989D-96BE-4D92-8C29-23C0E4546E37}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zodiac.AssetTool.Tests", "tests\Zodiac.AssetTool.Tests\Zodiac.AssetTool.Tests.csproj", "{D170989D-96BE-4D92-8C29-23C0E4546E37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fft.AssetTool.Cli.Tests", "tests\Fft.AssetTool.Cli.Tests\Fft.AssetTool.Cli.Tests.csproj", "{7EF3B2F8-9F42-46E7-B8C8-584C43CC7047}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zodiac.AssetTool.Cli.Tests", "tests\Zodiac.AssetTool.Cli.Tests\Zodiac.AssetTool.Cli.Tests.csproj", "{7EF3B2F8-9F42-46E7-B8C8-584C43CC7047}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fft.AssetTool.Cli", "src\Fft.AssetTool.Cli\Fft.AssetTool.Cli.csproj", "{E90E87CF-B759-40A0-85DD-0ADACEA5026A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zodiac.AssetTool.Cli", "src\Zodiac.AssetTool.Cli\Zodiac.AssetTool.Cli.csproj", "{E90E87CF-B759-40A0-85DD-0ADACEA5026A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fft.Content", "src\Fft.Content\Fft.Content.csproj", "{612C380B-F724-418F-B04F-A4A0A79F8334}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zodiac.Content", "src\Zodiac.Content\Zodiac.Content.csproj", "{612C380B-F724-418F-B04F-A4A0A79F8334}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fft.Content.Tests", "tests\Fft.Content.Tests\Fft.Content.Tests.csproj", "{5B0BE422-3E39-434A-A4B9-7E99515203DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zodiac.Content.Tests", "tests\Zodiac.Content.Tests\Zodiac.Content.Tests.csproj", "{5B0BE422-3E39-434A-A4B9-7E99515203DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zodiac.Engine", "src\Zodiac.Engine\Zodiac.Engine.csproj", "{1646B60A-8C63-4612-AEF4-B1FBD3C4DA41}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tessera.Engine", "src\Tessera.Engine\Tessera.Engine.csproj", "{1646B60A-8C63-4612-AEF4-B1FBD3C4DA41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zodiac.Engine.Tests", "tests\Zodiac.Engine.Tests\Zodiac.Engine.Tests.csproj", "{073C4DA0-01F5-417A-8682-0084F90BB3DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tessera.Engine.Tests", "tests\Tessera.Engine.Tests\Tessera.Engine.Tests.csproj", "{073C4DA0-01F5-417A-8682-0084F90BB3DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fft.Client.Tests", "tests\Fft.Client.Tests\Fft.Client.Tests.csproj", "{9134DE49-D40C-40A6-BB95-FE5770CE4CD6}"
 EndProject

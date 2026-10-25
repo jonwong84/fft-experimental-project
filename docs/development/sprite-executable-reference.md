@@ -71,7 +71,7 @@ game installation or ordinary .NET tests.
 
 ```powershell
 python tools/verification/verify_sprite_attack.py --battle scratch/all-data-extraction/BATTLE.BIN --sprite scratch/all-data-extraction/BATTLE/CYOKO.SPR --dependencies scratch/bios-analysis/deps --output scratch/behavior/chocobo-attack-oracle/new-run
-dotnet run --project src/Fft.AssetTool.Cli -c Release --no-build --no-restore -- verify-sprite --content-root scratch/prepared-chocobo-content
+dotnet run --project src/Zodiac.AssetTool.Cli -c Release --no-build --no-restore -- verify-sprite --content-root scratch/prepared-chocobo-content
 ```
 
 The capture root must be fresh and below this repository's ignored scratch.

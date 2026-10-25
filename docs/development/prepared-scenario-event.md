@@ -12,15 +12,15 @@ event, EntryEdit binary or independent semantic oracle was run for this mileston
 
 ## Boundaries and API
 
-- [ScenarioBlockInspector](../../src/Fft.AssetTool/ScenarioBlockInspector.cs) owns
+- [ScenarioBlockInspector](../../src/Zodiac.AssetTool/ScenarioBlockInspector.cs) owns
   original block framing and operand metadata in AssetTool. It retains an immutable
   copy, SHA-256, instruction offsets/raw operands and inspection diagnostics.
-- [ScenarioEventExporter.CreateSynthetic](../../src/Fft.AssetTool.Cli/ScenarioEventExporter.cs)
+- [ScenarioEventExporter.CreateSynthetic](../../src/Zodiac.AssetTool.Cli/ScenarioEventExporter.cs)
   composes inspection with the closed capability gate. It re-inspects retained
   bytes, resolves legal targets and constructs the prepared definition. Forged
   inspection records cannot bypass validation. This is an API bridge, with no new
   command-line switch. The caller supplies the scene; it is not encoded by the block.
-- [PreparedScenarioEvent](../../src/Fft.Content/Events/PreparedScenarioEvent.cs)
+- [PreparedScenarioEvent](../../src/Zodiac.Content/Events/PreparedScenarioEvent.cs)
   owns immutable prepared records, strict JSON validation and hash-verified
   `LooseAssetStore` loading in Content. No original parser enters Content/Client.
   No project reference, package lock, save schema or Zodiac API changes.

@@ -1,10 +1,10 @@
 # Shared content validation and C# export (ZOD-016)
 
-Date: 2026-10-22. `Fft.Content.ContentPackages` now implements the strict JSON metadata contract selected by [ZOD-015](zod-015-content-package.md). The production implementation is independent of the test-only prototype. Hand-edited JSON and trusted C# authoring converge on the same immutable definitions, package validation and deterministic output. This supplies metadata, not executable ability effects, verified retail content or an original-game importer.
+Date: 2026-10-22. `Zodiac.Content.ContentPackages` now implements the strict JSON metadata contract selected by [ZOD-015](zod-015-content-package.md). The production implementation is independent of the test-only prototype. Hand-edited JSON and trusted C# authoring converge on the same immutable definitions, package validation and deterministic output. This supplies metadata, not executable ability effects, verified retail content or an original-game importer.
 
 ## Public API and validation stages
 
-`ContentPackage` accepts package/profile IDs, `ContentPackageKind.Baseline` or `.Addon`, nullable required baseline package ID, and collections of the existing immutable `JobDefinition`, `SkillsetDefinition` and `AbilityDefinition`. Get-only properties expose these values and immutable snapshots of each collection. Definitions remain owned by `Fft.Content`; Zodiac does not learn FFT content formats or call these file APIs.
+`ContentPackage` accepts package/profile IDs, `ContentPackageKind.Baseline` or `.Addon`, nullable required baseline package ID, and collections of the existing immutable `JobDefinition`, `SkillsetDefinition` and `AbilityDefinition`. Get-only properties expose these values and immutable snapshots of each collection. Definitions remain owned by `Zodiac.Content`; Zodiac does not learn FFT content formats or call these file APIs.
 
 - `ReadJson(string)` reads the strict v1 format into typed definitions and validates the package.
 - `Load(string)` performs a bounded, strict UTF-8 file read and calls the same reader.
@@ -58,8 +58,8 @@ A trusted local author can construct typed definitions, construct a `ContentPack
 For example, a trusted authoring program can export this entirely invented metadata:
 
 ```csharp
-using Fft.Content.ContentPackages;
-using Fft.Content.Definitions;
+using Zodiac.Content.ContentPackages;
+using Zodiac.Content.Definitions;
 
 var abilityId = new AbilityId("sample:ability/focus");
 var skillsetId = new SkillsetId("sample:skillset/practice");
@@ -82,7 +82,7 @@ The existing prepared asset manifest and behavioral fixture formats are unchange
 
 ## CLI and integrated validation
 
-The shared validator is exposed by `Fft.AssetTool.Cli`:
+The shared validator is exposed by `Zodiac.AssetTool.Cli`:
 
 ```text
 validate-content --package <baseline.json> [--addon <addon.json> ...]

@@ -1,4 +1,4 @@
-using Fft.Content.Samples;
+using Zodiac.Content.Samples;
 
 namespace Fft.Client.Presentation;
 

@@ -54,9 +54,9 @@ The fixed BIOS generator wraps its 32-bit word as verified, but the **observatio
 
 ## Movement composition and ownership
 
-The cycle stays in `Fft.Core`; there is no new generic engine scheduler abstraction. The numeric CT threshold/caps/refunds, slot-derived tie order, choice markers and upkeep draw are FFT rules. It reuses only the existing explicit RNG facilities across the FFT-to-Zodiac boundary.
+The cycle stays in `Zodiac.Framework`; there is no new generic engine scheduler abstraction. The numeric CT threshold/caps/refunds, slot-derived tie order, choice markers and upkeep draw are FFT rules. It reuses only the existing explicit RNG facilities across the FFT-to-Zodiac boundary.
 
-The [movement composition](../../src/Fft.Core/TurnBattleState.cs) adds `TurnBattleState(BattleState, TurnCycleState)` and `TurnBattleSimulator.Advance`, `.Move`, `.ConfirmAct` and `.Wait`, while leaving the existing movement-only API and fixture-v1 contract unchanged. The constructor requires exactly matching unit IDs, an equal explicit nonnull RNG snapshot, and agreement between battle `HasMoved` and cycle `MovementTaken` for every unit.
+The [movement composition](../../src/Zodiac.Framework/TurnBattleState.cs) adds `TurnBattleState(BattleState, TurnCycleState)` and `TurnBattleSimulator.Advance`, `.Move`, `.ConfirmAct` and `.Wait`, while leaving the existing movement-only API and fixture-v1 contract unchanged. The constructor requires exactly matching unit IDs, an equal explicit nonnull RNG snapshot, and agreement between battle `HasMoved` and cycle `MovementTaken` for every unit.
 
 `Move` stages the active-unit confirmed choice and the selected existing movement-policy transition as pure local results. It publishes neither unless both accept. This lets validation reject an inactive/repeated mover before doing range work, without spending a choice when the destination fails. Ordered wrapper events are `TurnBattleMovementEvent` first, followed by `TurnBattleClockEvent` for choice-consumed and, if the action had already been used, turn-ended. Advance/ConfirmAct/Wait wrap their scheduler events in order. `ConfirmAct` is explicitly a synthetic flag command with no attack or damage.
 
@@ -66,7 +66,7 @@ No movement fixture v1 record is silently upgraded to a turn fixture: its curren
 
 ## Regression evidence
 
-[TurnCycleTests](../../tests/Fft.Core.Tests/TurnCycleTests.cs) covers source-derived tick, threshold, saturation, modulo and completion boundaries, including:
+[TurnCycleTests](../../tests/Zodiac.Framework.Tests/TurnCycleTests.cs) covers source-derived tick, threshold, saturation, modulo and completion boundaries, including:
 
 - CT 89 / Speed 10 needing two ticks, CT 90/91 reaching 100/101 in one, and CT 254 + Speed 255 saturating 254 rather than wrapping as a byte.
 - PickUnit CT 199→99, CT 200→0 and CT 254→54; unequal CT taking priority over tie key and equal CT using the explicit key despite reversed input order/string identities.
@@ -77,6 +77,6 @@ The full two-unit replay runs the [ZOD-019 sequence](ct-turn-cycle.md): A ready 
 
 The replay's five upkeep outputs are the first five committed **seed 1 executable-reference BIOS vectors**: 16838, 5758, 10113, 17515, 31051; final full RNG state is 4182499122 with draw count 5. Expected RNG values come from [the committed BIOS vector metadata](../fixtures/rng/scph5501-rng-vectors.json), not a second copy of the generator formula inside the test. Turn ordering/CT expectations remain source-derived, not independently executed original turn behavior.
 
-[TurnBattleSimulatorTests](../../tests/Fft.Core.Tests/TurnBattleSimulatorTests.cs) separately covers the movement wrapper's active-unit gating, same-tick peer selection, reactivated movement availability, action-first/move-second completion, failed-move rollback, constructor consistency and deterministic composed replay.
+[TurnBattleSimulatorTests](../../tests/Zodiac.Framework.Tests/TurnBattleSimulatorTests.cs) separately covers the movement wrapper's active-unit gating, same-tick peer selection, reactivated movement availability, action-first/move-second completion, failed-move rollback, constructor consistency and deterministic composed replay.
 
 Coordinator validation on 2026-10-22: Windows locked restore, Release build with zero warnings/errors and all 464 solution tests passed. This implementation introduces no status, charge, zero-speed fallback, AT List prediction, combat effect, UI timing, capture or imported media support. Source trace uncertainties and remaining original-game comparison needs remain those documented in ZOD-019.

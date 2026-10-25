@@ -1,6 +1,6 @@
 using System.Text.Json;
 using Fft.Client.Presentation;
-using Fft.Core.Events;
+using Zodiac.Framework.Events;
 using Fft.Tests.Support;
 using Xunit;
 

@@ -88,8 +88,8 @@ never an invitation to fabricate a default row.
 Run from the repository using prepared files already below ignored `scratch/`:
 
 ```powershell
-dotnet run --project src/Fft.AssetTool.Cli -c Release --no-build --no-restore -- import-metadata --exe scratch/all-data-extraction/SCUS_942.21 --output scratch/imported-squire
-dotnet run --project src/Fft.AssetTool.Cli -c Release --no-build --no-restore -- validate-content --package scratch/imported-squire/content.package.json
+dotnet run --project src/Zodiac.AssetTool.Cli -c Release --no-build --no-restore -- import-metadata --exe scratch/all-data-extraction/SCUS_942.21 --output scratch/imported-squire
+dotnet run --project src/Zodiac.AssetTool.Cli -c Release --no-build --no-restore -- validate-content --package scratch/imported-squire/content.package.json
 ```
 
 Use a fresh output directory. Both input and output must remain below repository

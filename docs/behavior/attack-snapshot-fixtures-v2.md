@@ -51,14 +51,14 @@ represent Dead/Critical, but startup cannot pretend the healthy turn cycle alrea
 supports their upkeep or death countdown. Resuming turns after combat statuses
 requires later explicit behavior; this ticket never runs such a replay.
 
-`Fft.Content.BattleSetup.AttackBattleSetup.Create` additionally validates the
+`Zodiac.Content.BattleSetup.AttackBattleSetup.Create` additionally validates the
 selected sword/metadata package dependency and resolves every equipped ID before
 returning a setup. Weapon evade must be zero. It rejects configurations whose
 largest possible critical product, `max(0,2*PA-1)*power`, exceeds signed16 positive
 range32767. This is a conservative setup envelope justified by the traced critical
 bonus and narrowing; it performs no damage calculation, HP clamp or RNG draw.
 Unresolved content and unsupported configuration fail before simulation. No
-content or filesystem dependency is added to `Fft.Core` or Zodiac.
+content or filesystem dependency is added to `Zodiac.Framework` or Zodiac.
 
 Future contracts name `AttackUnitCommand`, typed rejection reasons and ordered
 resolved/HP/status/KO event records. They are data contracts, not an attack API

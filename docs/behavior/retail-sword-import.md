@@ -93,7 +93,7 @@ attack execution, or a retail battle's RNG ordering.
 ## Workflow and validation
 
 ```powershell
-dotnet run --project src/Fft.AssetTool.Cli -c Release --no-build --no-restore -- import-sword --exe scratch/all-data-extraction/SCUS_942.21 --output scratch/imported-broad-sword
+dotnet run --project src/Zodiac.AssetTool.Cli -c Release --no-build --no-restore -- import-sword --exe scratch/all-data-extraction/SCUS_942.21 --output scratch/imported-broad-sword
 ```
 
 The existing import command's guards/publication path is shared: input/output stay

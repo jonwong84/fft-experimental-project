@@ -24,7 +24,7 @@
       "claim": "Specified identities, snapshot fields, typed results and ordered managed events.",
       "sources": [
         {
-          "path": "src/Fft.Core/BattleSimulator.cs",
+          "path": "src/Zodiac.Framework/BattleSimulator.cs",
           "symbol": "BattleSimulator.Apply",
           "revision": "7e92284b7fd929a718d157e16a520edd9c4caba8"
         }

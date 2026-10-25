@@ -1,12 +1,12 @@
 # Architecture overview
 
-**Engine name:** Zodiac. Final Fantasy Tactics is a separate game that uses Zodiac as its engine. The agreed namespace roots are `Zodiac.Engine` for reusable engine logic and `Fft.*` for FFT-specific logic and tooling. FFT is not nested under the Zodiac namespace.
+**Product names agreed 2026-10-25:** **Tessera Engine** supplies reusable grid, terrain, movement and simulation machinery; **Zodiac Framework** supplies FFT-specific rules and runtime systems; **FFT Content** supplies particular game definitions and prepared assets. The corresponding projects/namespaces are now `Tessera.Engine`, `Zodiac.Framework`, `Zodiac.Content` and `Zodiac.AssetTool`/`.Cli`; `Fft.Client` remains the FFT application host.
 
 **Status:** Proposed architecture for review. The repository is still an early prototype; the diagrams below describe intended dependency boundaries, not a claim that these projects or services already exist.
 
 ## Goals
 
-- Build Zodiac as a reusable C#/.NET tactical-game engine and run the North American PS1 release (`SCUS-94221`) as its first game/content layer.
+- Build Tessera as a reusable C#/.NET tactical-game engine, Zodiac as its FFT rules framework, and the North American PS1 release (`SCUS-94221`) as the first complete game/content set.
 - Keep compatibility behavior observable and testable, including quirks that affect play.
 - Keep the original simulation deterministic and independent of presentation and operating-system services.
 - Permit additional content and mechanics without imposing the original executable's fixed-size data limits.
@@ -18,17 +18,17 @@ The [baseline coverage inventory](../coverage/README.md) records the current
 supported subsets, source/evidence, tests, manual checkpoints and remaining gaps.
 Its family-level entries are not a complete original record/encounter catalog.
 
-- `Fft.Core` contains common identifiers/value types, map data types, a typed battle transition proof, and flat-grid movement policies (one prototype and one bounded terrain-cost slice).
-- `Fft.Content` loads a versioned manifest and hash-verified loose files by logical asset ID,
-  including the bounded prepared static sprite pose and frozen MAP003 scene/terrain. It references `Fft.Core`, without original-format parsers.
-- `Fft.Content.Saves` owns the [bounded save DTO/codec and file adapter](../development/two-unit-battle-saves.md).
+- `Zodiac.Framework` contains common identifiers/value types, map data types, a typed battle transition proof, and flat-grid movement policies (one prototype and one bounded terrain-cost slice).
+- `Zodiac.Content` loads a versioned manifest and hash-verified loose files by logical asset ID,
+  including the bounded prepared static sprite pose and frozen MAP003 scene/terrain. It references `Zodiac.Framework`, without original-format parsers.
+- `Zodiac.Content.Saves` owns the [bounded save DTO/codec and file adapter](../development/two-unit-battle-saves.md).
   Core restores snapshots against selected definitions without I/O; Client supplies
   a headless proof. The [ZOD-067 investigation](zod-067-campaign-save-state.md)
   maps original campaign fields/checkpoints and unsaved RNG lifecycles; ZOD-068/069
   select a bounded native checkpoint service and UI. Full campaign persistence remains separate.
-- `Fft.Content.Events` validates/loads the [prepared synthetic conditional event](../development/prepared-scenario-event.md).
+- `Zodiac.Content.Events` validates/loads the [prepared synthetic conditional event](../development/prepared-scenario-event.md).
   AssetTool owns raw block inspection and the CLI assembly composes conversion.
-  ZOD-065 projects into `Fft.Core.Events`: immutable normalized operations,
+  ZOD-065 projects into `Zodiac.Framework.Events`: immutable normalized operations,
   instruction state/traces and pure bounded Step/Run execution. Content-to-Core
   dependencies remain one-way. [Execution limits](../behavior/conditional-event-execution.md)
   exclude EventEnd, scene lifecycle, timing, RNG and campaign integration.
@@ -54,7 +54,7 @@ Its family-level entries are not a complete original record/encounter catalog.
   banner-0 pixels/palette/geometry and specifies a preload boundary with an
   explicit RGB8 presentation policy. ZOD-078 owns prepared conversion/loading and
   the bounded CPU preview; original startup and opcode admission remain open.
-- `Fft.AssetTool` and `Fft.AssetTool.Cli` handle offline image inventory, extraction, narrow unit `.SPR`
+- `Zodiac.AssetTool` and `Zodiac.AssetTool.Cli` handle offline image inventory, extraction, narrow unit `.SPR`
   decoding, selected SHP/SEQ pose preparation and bounded GNS/mesh/indexed-texture conversion.
   The CLI composes the tools; no full animation interpreter exists.
 - `Fft.Client` can load a prepared asset, run the deterministic synthetic two-unit battle headlessly,
@@ -118,11 +118,11 @@ rules, original-content combat integration or graphics/input dependency enters C
 
 The intended product has three conceptual parts:
 
-- **Zodiac Engine:** reusable game-development facilities, with deterministic simulation separated from presentation, input and authoring adapters.
-- **FFT framework:** FFT rules, runtime systems, definition schemas, validators and supported script/action/condition execution. Existing `Fft.Core` and parts of `Fft.Content` implement this responsibility today.
-- **FFT content:** original or authored jobs, abilities, equipment, maps, campaigns, event scripts, menu declarations, graphics and music, supplied through prepared content packages.
+- **Tessera Engine:** reusable grid, terrain, movement and deterministic simulation facilities, separated from presentation, input and authoring adapters.
+- **Zodiac Framework:** FFT rules, runtime systems, definition schemas, validators and supported script/action/condition execution. Existing `Zodiac.Framework` and parts of `Zodiac.Content` implement this responsibility today.
+- **FFT Content:** original or authored jobs, abilities, equipment, maps, campaigns, event scripts, menu declarations, graphics and music, supplied through prepared content packages.
 
-These are ownership boundaries, not a decision to create three assemblies or rename current namespaces. `Zodiac.Engine` remains the engine name/root; FFT remains independently rooted in `Fft.*`. Immutable definitions and schema code belong to the framework, while particular records belong to content. Running battle/campaign state is distinct from both. A new game can use Zodiac directly with its own rules, or use the FFT framework when it wants those mechanics.
+The owner approved these product names on 2026-10-25, superseding the earlier Zodiac-engine/FFT-framework terminology, then requested the matching project/namespace migration. They identify ownership boundaries rather than three required assemblies. Immutable definition models and schema code belong to Zodiac, while particular records belong to FFT Content. Running battle/campaign state is distinct from both. Another game can use Tessera directly with its own rules, or use Zodiac when it wants those mechanics. Further ownership extraction and assembly splits remain separate behavior/design work.
 
 Content management should eventually support adding, replacing, organizing, validating and previewing music, graphics, maps, scripted events and conditions. Packages associate records/assets by stable logical IDs and explicit dependencies; import provenance and original baseline content remain preserved. Original event decoding, deterministic interpretation, authoring UI and arbitrary custom executable behavior remain separate decisions (ZOD-040/043/047/048/049/050).
 
@@ -132,9 +132,9 @@ A menu entry can be declarative content selecting a framework-defined typed acti
 flowchart TD
     Client[Windows client and composition root]
     App[Application use cases]
-    Engine[Zodiac engine contracts and deterministic simulation]
-    FftGame[FFT game rules and compatibility profile]
-    FftData[FFT definitions and prepared assets]
+    Engine[Tessera Engine contracts and deterministic simulation]
+    FftGame[Zodiac Framework rules and compatibility profile]
+    FftData[FFT Content definitions and prepared assets]
     Win[Windows platform adapters]
     Tool[Authoring and asset-import tools]
     Files[(Prepared files and save files)]
@@ -150,19 +150,20 @@ flowchart TD
     FftData --> Files
 ```
 
-The system has two product concerns with a one-way dependency: **Zodiac engine/framework** and **Final Fantasy Tactics game implementation**. The FFT layer depends on Zodiac; Zodiac must not depend on FFT types, assets, formulas, IDs, or campaign scripts. The current `Fft.*` projects have not yet been split along this boundary; this is a target architecture, not a description of today's assembly graph.
+Zodiac depends on Tessera's reusable contracts; Tessera must not depend on FFT types, assets, formulas, IDs or campaign scripts. Zodiac defines the rules and schemas used by FFT Content; the host binds particular content packages to those systems. These are target ownership boundaries, not a claim that today's assembly graph already matches the product names.
 
-### Namespace and project naming convention
+### Current identifiers and naming migration
 
-- Use `Zodiac.Engine` as the namespace and project name for reusable deterministic simulation contracts and behavior. Do not add a `.Core` segment unless a later, concrete assembly boundary justifies it.
-- Keep `Fft.*` as the separate root for FFT-specific rules and compatibility behavior. Retain `Fft.Content` for content definitions and loading, `Fft.AssetTool` / `Fft.AssetTool.Cli` for offline import tools, and `Fft.Client` for the FFT host. `Fft.Core` remains the current home of FFT simulation and the mixed prototype pending bounded engine extraction.
-- Namespaces communicate ownership, but project references enforce the boundary: FFT projects may reference `Zodiac.Engine`; Zodiac projects must not reference `Fft.*`.
-- Assign a type to `Zodiac.Engine` only when its meaning and behavior are independent of FFT. FFT formulas, PS1 compatibility policies, job/ability/item definitions, game data identifiers, and FFT asset formats stay FFT-owned.
-- Keep existing `Fft.*` projects and namespaces during exploration. Move types in small, reviewable steps after their ownership and contracts are understood; do not combine namespace migration with behavior changes.
+- `Tessera.Engine` replaces `Zodiac.Engine`, including its test project and namespaces. It owns the existing reusable engine slice and the neutral Relay sample's contracts.
+- `Zodiac.Framework` replaces `Fft.Core`; `Zodiac.Content` replaces `Fft.Content`; `Zodiac.AssetTool` / `.Cli` replace `Fft.AssetTool` / `.Cli`, including their tests and namespaces. These are mechanical identity changes with their existing responsibilities retained.
+- `Fft.Client` remains the FFT host; `Fft.sln` remains the solution. Content schema/loader code is in Zodiac; particular game definitions and prepared assets are FFT Content. No asset ID, data format, compatibility-profile ID or save schema is renamed.
+- Project references enforce ownership: Tessera may not reference Zodiac or FFT-specific projects. `CheckTesseraProjectBoundary` preserves the narrow engine allowlist.
+- Assign a type to the Tessera responsibility only when its meaning and behavior are independent of FFT. FFT formulas, PS1 compatibility policies, job/ability/item schemas and FFT asset formats belong to Zodiac's game-specific responsibility; concrete records/assets belong to FFT Content.
+- Keep further ownership/behavior changes separate from this naming migration. Historical evidence retains its recorded identities; current source links and commands use the renamed projects.
 
-Extract proven reusable responsibilities from the mixed `Fft.Core` prototype into `Zodiac.Engine` over time. FFT-owned projects retain their `Fft.*` names; there is no planned migration into a Zodiac game namespace. Shared asset-service abstractions may move into an engine-owned project only if a concrete engine use case requires them.
+Extract proven reusable responsibilities from the mixed prototype into the Tessera-owned slice over time. Shared asset-service abstractions belong there only when a concrete reusable use case requires them. The agreed product names do not broaden the current engine extraction scope.
 
-### Zodiac engine/framework responsibility
+### Tessera Engine responsibility
 
 - Provide reusable deterministic tactical simulation primitives and contracts: map/grid topology, spatial positions, runtime-state boundaries, commands/transitions, turn-scheduling hooks, action/targeting abstractions, movement/range policy contracts, status/effect application points, deterministic random-state interfaces, simulation events, and replay/logging seams.
 - Keep behavior neutral where different games reasonably vary. Rules should be selected or supplied through explicit policies/profiles rather than FFT-specific branches in the engine.
@@ -170,17 +171,17 @@ Extract proven reusable responsibilities from the mixed `Fft.Core` prototype int
 - Keep rendering, input, audio, storage, and operating-system specifics in adapters or host applications.
 - Aim for a small tactical engine, not an all-purpose framework. Add abstractions when another concrete use case demonstrates value.
 
-### FFT game/content responsibility
+### Zodiac Framework and FFT Content responsibility
 
 - Own FFT concepts and compatibility behavior: jobs and JP, abilities/skill sets, items/equipment, statuses, FFT formula implementations, progression, CT/turn semantics, map terrain meanings, encounters, battle/campaign/event scripts, localization, and PS1-specific asset conversion/selection.
-- Translate validated FFT definitions and imported source data into Zodiac runtime contracts. Preserve exact compatibility semantics in an explicit PS1 profile; isolate later Lion War/WotL additions in a separate profile/content set.
+- Translate validated FFT definitions and imported source data into Tessera runtime contracts through Zodiac's rules. Preserve exact compatibility semantics in an explicit PS1 profile; isolate later Lion War/WotL additions in a separate profile/content set.
 - Keep a trace from important FFT rules/data fields to the pinned decomp source and, where available, original/emulator observations and regression fixtures.
 - Keep the asset importer FFT-aware. The engine consumes prepared logical assets or game-provided rendering data, never raw BIN sectors.
 
-This boundary is conceptual first. `Fft.Core` currently contains FFT-flavored map and movement models and is not yet a clean reusable engine package. Generalize or move a type only when its engine-level contract is understood and an FFT adapter can preserve behavior. Keep project/namespace renames separate from behavior changes.
+This boundary is conceptual first. `Zodiac.Framework` currently contains FFT-flavored map and movement models and is not yet a clean reusable engine package. Generalize or move a type only when its engine-level contract is understood and an FFT adapter can preserve behavior. Keep project/namespace renames separate from behavior changes.
 
-`Fft.Core` is the current home for FFT simulation; the proven reusable bounds-only slice lives in
-`Zodiac.Engine`. Further assembly splits should follow demonstrated seams. An application project
+`Zodiac.Framework` is the current home for FFT simulation; the proven reusable bounds-only slice lives in
+`Tessera.Engine`. Further assembly splits should follow demonstrated seams. An application project
 remains a future option when concrete use cases require it. [ADR 0005](../adr/0005-windows-rendering-and-input-stack.md)
 selects MonoGame DesktopGL, integrated by ZOD-025 in Client only. See the
 [host note](../development/windows-synthetic-host.md) for executed checks and remaining DPI/device/input limits.
@@ -189,7 +190,7 @@ The dependency rule is inward: simulation code must not reference `Fft.Client`, 
 
 ## Responsibilities and contracts
 
-### Zodiac engine domain and simulation
+### Tessera engine domain and simulation
 
 - Own reusable stable/runtime identity contracts, simulation state/transition abstractions, deterministic random state, generic tactical policies, and simulation events. It must not own FFT job definitions, formula tables, story state, campaign data, or PS1 binary layouts.
 - Represent play as explicit inputs to a transition: current state plus a command and RNG state produce a new state, result/events, and updated RNG state.
@@ -201,15 +202,15 @@ Commands express requested actions; the simulation validates them. Events descri
 
 ### Content definitions and runtime state
 
-- Keep immutable, validated game-specific definitions (FFT jobs, abilities, items, maps, encounters, campaign data) separate from mutable runtime instances (unit HP/MP, status, equipment, turn state, and story flags). These definitions belong to the FFT game/content layer, not Zodiac's generic engine package.
+- Keep immutable, validated game-specific definitions (FFT jobs, abilities, items, maps, encounters, campaign data) separate from mutable runtime instances (unit HP/MP, status, equipment, turn state, and story flags). Their models and rules belong to Zodiac, their particular records to FFT Content, and neither belongs to Tessera's generic engine responsibility.
 - Give definitions stable, namespaced IDs. Validate cross-references and schema versions when loading a package rather than failing during a battle.
 - Layer original-compatible content and additions explicitly. Do not overwrite or silently alter baseline definitions when loading an extension pack.
 - Keep save data as a versioned persistence contract made from stable IDs and explicit state DTOs, not a serialized in-memory object graph. Define migrations when save format becomes necessary.
 
 ### Asset import and runtime access
 
-- `Fft.AssetTool` is an offline import/validation tool. It may inspect the user's local BIN and emit prepared files/manifests under ignored `/scratch/` during development.
-- The running client loads prepared files by logical asset ID through `Fft.Content`; it does not open the BIN or invoke the extractor.
+- `Zodiac.AssetTool` is an offline import/validation tool. It may inspect the user's local BIN and emit prepared files/manifests under ignored `/scratch/` during development.
+- The running client loads prepared files by logical asset ID through `Zodiac.Content`; it does not open the BIN or invoke the extractor.
 - Keep source assets, converted outputs, and manifests reproducible. Test parsers/decoders with synthetic inputs and source-traced vectors; keep copyrighted game-derived bytes local.
 - Rendering consumes decoded content through a narrow asset/content boundary. It should not contain gameplay rules or ISO parsing.
 
@@ -274,6 +275,6 @@ Discovery update (2026-10-23): [ZOD-040](zod-040-event-script-investigation.md)
 separates event/scenario/location/presentation script families and recommends
 offline decoding followed by a pure FFT-owned conditional-event executor.
 ZOD-064/065/066 own the bounded follow-ups. No FFT opcode/variable bank enters
-Zodiac, and no event interpreter is implemented by this investigation.
+Tessera, and no event interpreter is implemented by this investigation.
 ZOD-067 traces logical campaign save fields and original save availability before
 expanding ZOD-035's snapshot contract or adding the Windows Save/Load interface.

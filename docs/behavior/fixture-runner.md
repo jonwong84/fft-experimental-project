@@ -1,9 +1,9 @@
 # Deterministic movement fixture runner (ZOD-011)
 
-The runner lives in `tests/Fft.Core.Tests/Fixtures/MovementFixtureRunner.cs`. It is test infrastructure for [fixture v1](fixture-format.md), not a simulation/file dependency or public runtime API. Committed JSON is copied into test output. Run from the repository root:
+The runner lives in `tests/Zodiac.Framework.Tests/Fixtures/MovementFixtureRunner.cs`. It is test infrastructure for [fixture v1](fixture-format.md), not a simulation/file dependency or public runtime API. Committed JSON is copied into test output. Run from the repository root:
 
 ```text
-dotnet test tests/Fft.Core.Tests/Fft.Core.Tests.csproj -c Release --filter FullyQualifiedName~MovementFixtureRunnerTests
+dotnet test tests/Zodiac.Framework.Tests/Zodiac.Framework.Tests.csproj -c Release --filter FullyQualifiedName~MovementFixtureRunnerTests
 ```
 
 The accepted-step fixture and the three-command rejection replay execute `BattleSimulator.Apply` sequentially. Each expected command compares acceptance/rejection first, then state identity, the immutable map's dimensions and all tile fields, ordered units and their complete movement profiles, explicit null RNG state, and ordered events. The input state/map are projected before and after each command to detect mutation. Flag sets and terrain-cost maps are normalized by symbolic name/stable surface ID; unit and event arrays are never sorted. Unknown schema fields, duplicates, invalid IDs, enum values, integer widths, evidence links and inconsistent assertion shapes are rejected before executing any command.

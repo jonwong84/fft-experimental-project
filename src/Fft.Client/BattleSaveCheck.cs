@@ -1,7 +1,7 @@
 using System.Text.Json;
-using Fft.Content.Samples;
-using Fft.Content.Saves;
-using Fft.Core;
+using Zodiac.Content.Samples;
+using Zodiac.Content.Saves;
+using Zodiac.Framework;
 
 namespace Fft.Client;
 

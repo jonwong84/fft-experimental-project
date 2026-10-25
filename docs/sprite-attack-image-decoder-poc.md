@@ -32,7 +32,7 @@ The reference is the local source snapshot recorded at decomp commit
 
 ## Managed behavior
 
-`Fft.AssetTool.SpriteAttackImageDecoder` takes a bounded `ReadOnlySpan<byte>` and
+`Zodiac.AssetTool.SpriteAttackImageDecoder` takes a bounded `ReadOnlySpan<byte>` and
 returns 25,600 packed bytes (256 by 200 pixels at 4bpp). The first pixel is the
 high nibble of each output byte. It follows the original run and nibble ordering,
 clips a run that crosses the fixed output boundary, and ignores stream bytes
@@ -40,12 +40,12 @@ after the output is complete. It throws `InvalidDataException` if the supplied
 span ends before the image is complete. This replaces the original routine's
 global cursor and missing input-length check with a deterministic, reentrant API.
 
-`Fft.AssetTool.UnitSpriteSheet` validates and copies the complete fixed prefix,
+`Zodiac.AssetTool.UnitSpriteSheet` validates and copies the complete fixed prefix,
 then exposes read-only views for the 512-byte palette block, 32,768-byte main
 pixel block, 4,096-byte portrait/body block, and variable attack-image tail. Its
 palette accessor reads raw little-endian 16-bit values; it does not apply the
-runtime STP-bit transformation. `Fft.Core.AssetId` provides a validated,
-namespaced identifier. The `Fft.Content` library reads schema-versioned
+runtime STP-bit transformation. `Zodiac.Framework.AssetId` provides a validated,
+namespaced identifier. The `Zodiac.Content` library reads schema-versioned
 `assets.manifest.json` files and verifies file size and SHA-256 when loading by
 ID. The extractor writes a deterministic `base:` ID for each extracted file,
 derived from its lowercased ISO-relative path.
@@ -79,7 +79,7 @@ fixed 12,500-byte copy that crosses the recorded file length for this fixture.
 The CLI was also run against the verified local BIN/CUE to extract only
 `BATTLE/CYOKO.SPR` into ignored `/scratch/prepared-chocobo-content/`. It wrote
 schema version 1 with ID `base:battle/cyoko.spr`, path, byte length, and verified
-SHA-256. `Fft.Content.LooseAssetStore.Load` then loaded and hash-checked that
+SHA-256. `Zodiac.Content.LooseAssetStore.Load` then loaded and hash-checked that
 file by ID, and the loaded bytes parsed and decoded successfully without opening
 the BIN in the reader process.
 
@@ -90,14 +90,14 @@ decoded output identity without storing any game data: 256×200 pixels, packed
 check with:
 
 ```powershell
-dotnet run --project src/Fft.AssetTool.Cli/Fft.AssetTool.Cli.csproj -c Release -- verify-sprite --content-root scratch/prepared-chocobo-content
+dotnet run --project src/Zodiac.AssetTool.Cli/Zodiac.AssetTool.Cli.csproj -c Release -- verify-sprite --content-root scratch/prepared-chocobo-content
 ```
 
 To produce a local visual diagnostic containing the same decoded image under
 each of the SPR's sixteen palette banks, run:
 
 ```powershell
-dotnet run --project src/Fft.AssetTool.Cli/Fft.AssetTool.Cli.csproj -c Release -- verify-sprite --content-root scratch/prepared-chocobo-content --preview-output scratch/chocobo-palettes.png
+dotnet run --project src/Zodiac.AssetTool.Cli/Zodiac.AssetTool.Cli.csproj -c Release -- verify-sprite --content-root scratch/prepared-chocobo-content --preview-output scratch/chocobo-palettes.png
 ```
 
 The source loader copies sixteen 16-color CLUTs and sets the PS1 STP bit on
@@ -118,10 +118,10 @@ proves repeatability against that source-derived baseline, not definitive
 original-runtime equivalence. The fixture cites the exact source commit and
 function so a future executable reference run can replace or confirm it.
 
-Automated tests in `tests/Fft.AssetTool.Tests/` cover high-first nibble reading,
+Automated tests in `tests/Zodiac.AssetTool.Tests/` cover high-first nibble reading,
 packed pixel order, direct and extended transparent runs, run clipping at
 output end, truncated streams, fixed-prefix section sizes, source-copy behavior,
-and palette boundaries. Tests in `tests/Fft.Content.Tests/` cover manifest
+and palette boundaries. Tests in `tests/Zodiac.Content.Tests/` cover manifest
 round-tripping, schema and entry validation, path traversal rejection, content
 hash verification, and loading a loose file by ID. The actual game asset
 remains under ignored `/scratch/` and is not required by the test suite.

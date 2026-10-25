@@ -19,7 +19,7 @@ Use the pinned SDK and existing verified extracted files beneath ignored `scratc
 dotnet restore Fft.sln --locked-mode
 dotnet build Fft.sln -c Release --no-restore
 dotnet test Fft.sln -c Release --no-build --no-restore
-dotnet run --project src/Fft.AssetTool.Cli -c Release --no-build --no-restore -- prepare-sprite-pose --spr scratch/all-data-extraction/BATTLE/CYOKO.SPR --shp scratch/all-data-extraction/BATTLE/CYOKO.SHP --seq scratch/all-data-extraction/BATTLE/CYOKO.SEQ --output scratch/prepared-chocobo-idle
+dotnet run --project src/Zodiac.AssetTool.Cli -c Release --no-build --no-restore -- prepare-sprite-pose --spr scratch/all-data-extraction/BATTLE/CYOKO.SPR --shp scratch/all-data-extraction/BATTLE/CYOKO.SHP --seq scratch/all-data-extraction/BATTLE/CYOKO.SEQ --output scratch/prepared-chocobo-idle
 dotnet run --project src/Fft.Client -c Release --no-build --no-restore -- --content-root scratch/prepared-chocobo-idle --sprite-pose base:battle/cyoko/idle-front-pose
 ```
 
@@ -35,7 +35,7 @@ Output contains only `pose.json`, `ordinary.rgba`, and `assets.manifest.json`:
 - `base:battle/cyoko/idle-front-pose` addresses the metadata.
 - `base:battle/cyoko/ordinary-rgba` addresses the 262,144-byte 256x256 atlas.
 
-The client composition path loads these through `Fft.Content.LooseAssetStore`, verifies
+The client composition path loads these through `Zodiac.Content.LooseAssetStore`, verifies
 both manifest hashes, validates metadata/atlas format, and reports the frame, wait,
 palette and piece count. It does not load original SPR/SHP/SEQ, the disc BIN/ISO,
 BATTLE.BIN, the reference checkout or any AssetTool code. Original files remain local
@@ -43,7 +43,7 @@ import inputs. No change to `--window` is made in this ticket.
 
 ## Contracts and ownership
 
-`Fft.AssetTool.UnitShapeFile` parses packed little-endian SHP tables into immutable
+`Zodiac.AssetTool.UnitShapeFile` parses packed little-endian SHP tables into immutable
 frames/parts. It validates the installed 208 primary and optional submerged references,
 normalizes `-1` to payload offset zero, checks complete frame headers/pieces, and rejects
 overlapping/truncated secondary sets. Uninstalled entries 208..255 are not interpreted
@@ -69,9 +69,9 @@ Native loading sets STP on nonzero palette indices; this opaque primitive emits 
 nonzero index. Channel expansion is `(fiveBits << 3) | (fiveBits >> 2)`, straight RGBA8.
 It is a documented conversion choice, not PS1 dithering/modulation equivalence.
 
-The CLI exporter maps decoded records into `Fft.Content.PreparedSpritePose` without
+The CLI exporter maps decoded records into `Zodiac.Content.PreparedSpritePose` without
 making Content reference AssetTool. No graphics, parser, animation or I/O package enters
-`Fft.Core` or `Zodiac.Engine`; project references and package locks are unchanged.
+`Zodiac.Framework` or `Tessera.Engine`; project references and package locks are unchanged.
 
 ## Prepared metadata v1
 

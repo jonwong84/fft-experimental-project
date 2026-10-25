@@ -161,7 +161,7 @@ do not control phase termination, so no quad payload is needed for this slice.
 
 ## Selected immutable Core contract
 
-Proposed names describe behavior; implement the API in `Fft.Core.Events` without
+Proposed names describe behavior; implement the API in `Zodiac.Framework.Events` without
 new project/namespace extraction. Content may later validate a definition and
 project inward. No prepared format/profile extension or opcode-78 admission is
 part of the first child.

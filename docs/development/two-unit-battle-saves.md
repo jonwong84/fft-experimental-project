@@ -31,7 +31,7 @@ The Windows playable window's controls and session journal remain separate;
 
 ## Ownership and selected definitions
 
-`Fft.Content.Saves.TwoUnitBattleSaveProfile` binds a **caller-selected** profile ID,
+`Zodiac.Content.Saves.TwoUnitBattleSaveProfile` binds a **caller-selected** profile ID,
 profile version, content version and immutable `TwoUnitBattleDefinition`. The
 current sample uses `sample:profile/two-unit-battle`, profile version **1**, content
 version **1**. The file must exactly match that binding and the scenario ID

@@ -1,12 +1,12 @@
 <Project>
   <!-- A narrow allowlist for today's engine projects, including evaluated/imported references. -->
-  <Target Name="CheckZodiacProjectBoundary" BeforeTargets="ResolveProjectReferences;CoreCompile"
-          Condition="$([System.String]::Copy('$(MSBuildProjectName)').StartsWith('Zodiac.Engine'))">
+  <Target Name="CheckTesseraProjectBoundary" BeforeTargets="ResolveProjectReferences;CoreCompile"
+          Condition="$([System.String]::Copy('$(MSBuildProjectName)').StartsWith('Tessera.Engine'))">
     <ItemGroup>
-      <_ForbiddenZodiacReference Include="@(ProjectReference)"
-          Condition="'%(ProjectReference.Filename)' != 'Zodiac.Engine'" />
+      <_ForbiddenTesseraReference Include="@(ProjectReference)"
+          Condition="'%(ProjectReference.Filename)' != 'Tessera.Engine'" />
     </ItemGroup>
-    <Error Condition="'@(_ForbiddenZodiacReference)' != ''"
-           Text="Zodiac engine boundary violation: $(MSBuildProjectName) may reference only Zodiac.Engine; forbidden references: @(_ForbiddenZodiacReference). FFT dependencies belong in the game layer." />
+    <Error Condition="'@(_ForbiddenTesseraReference)' != ''"
+           Text="Tessera engine boundary violation: $(MSBuildProjectName) may reference only Tessera.Engine; forbidden references: @(_ForbiddenTesseraReference). Zodiac/FFT dependencies belong in the framework or game layer." />
   </Target>
 </Project>

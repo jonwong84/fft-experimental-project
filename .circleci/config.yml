@@ -126,7 +126,7 @@ jobs:
       - run:
           name: Build headless Core and Engine without the rendering backend
           command: |
-            & C:/fft-dotnet/dotnet.exe build src/Fft.Core/Fft.Core.csproj -c Release --no-restore -bl:scratch/ci/headless.binlog
+            & C:/fft-dotnet/dotnet.exe build src/Zodiac.Framework/Zodiac.Framework.csproj -c Release --no-restore -bl:scratch/ci/headless.binlog
             exit $LASTEXITCODE
       - run:
           name: Build Windows solution

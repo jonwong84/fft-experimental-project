@@ -2,7 +2,7 @@
 
 These fixtures contain only invented `sample:*` content. They are independently
 specified projections of the fifth completed command in
-[`SyntheticTwoUnitBattle`](../../../src/Fft.Content/Samples/SyntheticTwoUnitBattle.cs),
+[`SyntheticTwoUnitBattle`](../../../src/Zodiac.Content/Samples/SyntheticTwoUnitBattle.cs),
 checked against the existing source-traced/synthetic scenario vectors. No bytes
 come from a PS1 memory card, BIN, prepared original asset or serialized runtime graph.
 

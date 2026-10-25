@@ -18,16 +18,16 @@ Input and generated output remain under the ignored `/scratch/` directory. The i
 
 ## Proposed implementation boundary
 
-Keep the parsing library in `src/Fft.AssetTool/` and put command-line file access in a separate executable host such as `src/Fft.AssetTool.Cli/`. Both should use managed .NET APIs only and depend on no C code, Docker, `dumpsxiso`, or native ISO library. Keep ISO parsing separate from `Fft.Core` and the deterministic game simulation.
+Keep the parsing library in `src/Zodiac.AssetTool/` and put command-line file access in a separate executable host such as `src/Zodiac.AssetTool.Cli/`. Both should use managed .NET APIs only and depend on no C code, Docker, `dumpsxiso`, or native ISO library. Keep ISO parsing separate from `Zodiac.Framework` and the deterministic game simulation.
 
 ### Implemented foundation
 
-`Fft.AssetTool` contains the raw-sector reader, PVD validator, and iterative PVD directory-tree reader. `Fft.AssetTool.Cli` verifies the pinned image size/hash and target CUE layout, writes inventory/report files under `/scratch/`, and compares against the existing reference inventory. The reader has synthetic tests; the CLI has been run against the supplied BIN/CUE. The comparison results and mixed-size caveat are recorded below. Extraction and asset decoding are not part of this implementation.
+`Zodiac.AssetTool` contains the raw-sector reader, PVD validator, and iterative PVD directory-tree reader. `Zodiac.AssetTool.Cli` verifies the pinned image size/hash and target CUE layout, writes inventory/report files under `/scratch/`, and compares against the existing reference inventory. The reader has synthetic tests; the CLI has been run against the supplied BIN/CUE. The comparison results and mixed-size caveat are recorded below. Extraction and asset decoding are not part of this implementation.
 
 Initial command shape (final CLI syntax can be chosen during implementation):
 
 ```text
-dotnet run --project src/Fft.AssetTool.Cli -- inventory --bin <path> --cue <path> --output <path>
+dotnet run --project src/Zodiac.AssetTool.Cli -- inventory --bin <path> --cue <path> --output <path>
 ```
 
 The reader is scoped to the verified target image profile, not arbitrary BIN/CUE formats. It must validate the expected image size/hash and the supported track layout before scanning. It must fail with a clear diagnostic when the input is not the supported single-track `MODE2/2352` layout or required Mode 2 Form 1 sectors cannot be read safely. It must not assume that `.bin` alone identifies a sector format.
@@ -91,7 +91,7 @@ The first full `--all-data` run extracted all 2,457 ordinary files (162,790,593 
 - Hashing every payload in the initial reader milestone (may be added as a follow-up verification mode).
 - Decoding SPR, GNS, TIM/TM2, text, sound, movie, and other resource formats.
 - Supporting arbitrary BIN/CUE layouts, multi-track discs, Mode 2 Form 2 sectors, Joliet/Rock Ridge, multi-extent files, or interleaved files.
-- Runtime access to raw sectors. A `Fft.Content` library can now load prepared loose files by manifest ID and verify their size/hash; the console client has a narrow prepared-asset loading mode and runs without the BIN when the prepared content directory is available.
+- Runtime access to raw sectors. A `Zodiac.Content` library can now load prepared loose files by manifest ID and verify their size/hash; the console client has a narrow prepared-asset loading mode and runs without the BIN when the prepared content directory is available.
 
 ## Open decisions
 

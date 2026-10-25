@@ -1,6 +1,6 @@
 using System.Collections.Immutable;
-using Fft.Content.Samples;
-using Fft.Core;
+using Zodiac.Content.Samples;
+using Zodiac.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace Fft.Client.Presentation;

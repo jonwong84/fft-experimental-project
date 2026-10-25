@@ -1,6 +1,6 @@
 using System.Collections.Immutable;
-using Fft.Content;
-using Fft.Core;
+using Zodiac.Content;
+using Zodiac.Framework;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 

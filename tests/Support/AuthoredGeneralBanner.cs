@@ -1,7 +1,7 @@
 using System.Collections.Immutable;
 using System.Security.Cryptography;
-using Fft.Content;
-using Fft.Core;
+using Zodiac.Content;
+using Zodiac.Framework;
 
 namespace Fft.Tests.Support;
 

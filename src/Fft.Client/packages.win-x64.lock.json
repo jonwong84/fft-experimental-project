@@ -28,19 +28,19 @@
         "resolved": "0.10.4",
         "contentHash": "WYnil3DhQHzjCY0dM9I2B3r1vWip90AOuQd25KE4NrjPQBg0tBJFluRLm5YPnO5ZLDmwrfosY8jCQGQRmWI/Pg=="
       },
-      "fft.content": {
+      "zodiac.content": {
         "type": "Project",
         "dependencies": {
-          "Fft.Core": "[1.0.0, )"
+          "Zodiac.Framework": "[1.0.0, )"
         }
       },
-      "fft.core": {
+      "zodiac.framework": {
         "type": "Project",
         "dependencies": {
-          "Zodiac.Engine": "[1.0.0, )"
+          "Tessera.Engine": "[1.0.0, )"
         }
       },
-      "zodiac.engine": {
+      "tessera.engine": {
         "type": "Project"
       }
     },

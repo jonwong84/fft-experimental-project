@@ -1,4 +1,4 @@
-using Fft.Core;
+using Zodiac.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace Fft.Client.Presentation;

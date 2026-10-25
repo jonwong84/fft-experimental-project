@@ -11,7 +11,7 @@ The project needs to reproduce observable FFT behavior while also supporting tes
 
 Simulation transitions are driven by explicit state and commands, with deterministic random state supplied and returned explicitly. A transition returns the resulting state and descriptive events. Simulation code does not depend on rendering, audio, input devices, wall-clock time, operating-system services, asset-file I/O, or the C reference.
 
-The current `Fft.Core` project remains the initial home for the small domain/simulation model. We may split it when independently useful responsibilities emerge; the architecture does not require a project split now.
+The current `Zodiac.Framework` project remains the initial home for the small domain/simulation model. We may split it when independently useful responsibilities emerge; the architecture does not require a project split now.
 
 ## Consequences
 

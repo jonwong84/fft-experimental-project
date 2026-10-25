@@ -30,7 +30,7 @@
       "title": "PS1 RNG algorithm and gameplay draw ordering",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-038",
-      "ownerArea": "Fft.Core simulation",
+      "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
       "currentScope": "FFT BIOS RNG algorithm/state is implemented with supplied-BIOS vectors; draw ordering is covered only for bounded CT/sword paths.",
       "referenceSources": [
@@ -53,15 +53,15 @@
         "docs/architecture/zod-040-event-script-investigation.md"
       ],
       "implementationPaths": [
-        "src/Fft.Core/FftBiosRandom.cs"
+        "src/Zodiac.Framework/FftBiosRandom.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Fft.Core.Tests/FftBiosRandomTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/FftBiosRandomTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
-          "path": "tests/Fft.Core.Tests/RandomReplayRunnerTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/RandomReplayRunnerTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         }
       ],
@@ -80,7 +80,7 @@
       "title": "CT, readiness, turn choices and AT prediction",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-036",
-      "ownerArea": "Fft.Core simulation",
+      "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
       "currentScope": "Positive-Speed living ordinary units, CT refunds and explicit move/action/Wait are implemented; full scheduler is absent.",
       "referenceSources": [
@@ -97,16 +97,16 @@
         "docs/behavior/ct-turn-implementation.md"
       ],
       "implementationPaths": [
-        "src/Fft.Core/TurnCycle.cs",
-        "src/Fft.Core/TurnBattleState.cs"
+        "src/Zodiac.Framework/TurnCycle.cs",
+        "src/Zodiac.Framework/TurnBattleState.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Fft.Core.Tests/TurnCycleTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/TurnCycleTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
-          "path": "tests/Fft.Core.Tests/TurnBattleSimulatorTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/TurnBattleSimulatorTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         }
       ],
@@ -125,7 +125,7 @@
       "title": "Ordinary movement and terrain costs",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-037",
-      "ownerArea": "Fft.Core simulation",
+      "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
       "currentScope": "Flat, terrain-cost and restricted adjacent-step policies exist; M1 uses the restricted ordinary policy.",
       "referenceSources": [
@@ -143,15 +143,15 @@
         "docs/behavior/terrain-policy-integration.md"
       ],
       "implementationPaths": [
-        "src/Fft.Core/OrdinaryAdjacentStepRange.cs"
+        "src/Zodiac.Framework/OrdinaryAdjacentStepRange.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Fft.Core.Tests/OrdinaryAdjacentStepTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/OrdinaryAdjacentStepTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
-          "path": "tests/Fft.Core.Tests/TerrainAwareMovementRangeTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/TerrainAwareMovementRangeTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         }
       ],
@@ -170,7 +170,7 @@
       "title": "Occupancy, allegiance, mounts and special movement",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-037",
-      "ownerArea": "Fft.Core simulation",
+      "ownerArea": "Zodiac.Framework simulation",
       "status": "absent",
       "currentScope": "M1 blocks other-unit occupancy in its supported domain; no general allegiance/mount/fly/teleport rule set exists.",
       "referenceSources": [
@@ -203,7 +203,7 @@
       "title": "Targeting, hit/evasion and immediate sword damage",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-038",
-      "ownerArea": "Fft.Core simulation",
+      "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
       "currentScope": "One range-1 neutral empty-proc sword with explicit effective stats, neutral zodiac and no equipment evade is executable.",
       "referenceSources": [
@@ -224,16 +224,16 @@
         "docs/behavior/bounded-sword-implementation.md"
       ],
       "implementationPaths": [
-        "src/Fft.Core/AttackBattleSimulator.cs",
-        "src/Fft.Core/PhysicalWeaponEvasion.cs"
+        "src/Zodiac.Framework/AttackBattleSimulator.cs",
+        "src/Zodiac.Framework/PhysicalWeaponEvasion.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Fft.Core.Tests/AttackBattleSimulatorTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/AttackBattleSimulatorTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
-          "path": "tests/Fft.Core.Tests/AttackFixtureV3Tests.cs",
+          "path": "tests/Zodiac.Framework.Tests/AttackFixtureV3Tests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         }
       ],
@@ -252,7 +252,7 @@
       "title": "Abilities, magic, recovery and action-formula catalog",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-038",
-      "ownerArea": "Fft.Core simulation",
+      "ownerArea": "Zodiac.Framework simulation",
       "status": "absent",
       "currentScope": "Metadata models/imports do not execute the original action catalog.",
       "referenceSources": [
@@ -289,7 +289,7 @@
       "title": "Status durations, triggers, reactions and supports",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-036",
-      "ownerArea": "Fft.Core simulation",
+      "ownerArea": "Zodiac.Framework simulation",
       "status": "absent",
       "currentScope": "Only resulting Healthy/Critical/Dead projection exists in the sword slice.",
       "referenceSources": [
@@ -330,7 +330,7 @@
       "title": "Original knockback, KO scheduling, revival and pickups",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-036",
-      "ownerArea": "Fft.Core simulation",
+      "ownerArea": "Zodiac.Framework simulation",
       "status": "absent",
       "currentScope": "M1 stops at first KO; original knockback and post-KO lifecycle are unsupported.",
       "referenceSources": [
@@ -367,7 +367,7 @@
       "title": "Enemy, ally and automatic-battle AI",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-038",
-      "ownerArea": "Fft.Core simulation",
+      "ownerArea": "Zodiac.Framework simulation",
       "status": "absent",
       "currentScope": "Playable sample controls both units locally; no AI policy executes.",
       "referenceSources": [
@@ -404,7 +404,7 @@
       "title": "XP, JP, growth, learned abilities and job unlocks",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-039",
-      "ownerArea": "Fft.Core simulation",
+      "ownerArea": "Zodiac.Framework simulation",
       "status": "absent",
       "currentScope": "Job/ability metadata and base-job setup do not implement persistent progression.",
       "referenceSources": [
@@ -441,7 +441,7 @@
       "title": "Original victory/loss, rewards and post-battle party changes",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-041",
-      "ownerArea": "Fft.Core simulation",
+      "ownerArea": "Zodiac.Framework simulation",
       "status": "absent",
       "currentScope": "Synthetic first-KO victory is invented and cannot stand in for original battle conditions.",
       "referenceSources": [
@@ -482,7 +482,7 @@
       "title": "Jobs, skillsets and ability metadata",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-039",
-      "ownerArea": "Fft.Content definitions and offline import",
+      "ownerArea": "Zodiac.Content definitions and offline import",
       "status": "partial",
       "currentScope": "Typed metadata, reference validation and selected Squire-family original import exist.",
       "referenceSources": [
@@ -504,16 +504,16 @@
         "docs/architecture/zod-014-typed-definitions.md"
       ],
       "implementationPaths": [
-        "src/Fft.Content/Definitions/JobDefinition.cs",
-        "src/Fft.AssetTool/OriginalMetadataRecords.cs"
+        "src/Zodiac.Content/Definitions/JobDefinition.cs",
+        "src/Zodiac.AssetTool/OriginalMetadataRecords.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Fft.AssetTool.Tests/OriginalMetadataRecordsTests.cs",
+          "path": "tests/Zodiac.AssetTool.Tests/OriginalMetadataRecordsTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
-          "path": "tests/Fft.Content.Tests/Definitions/DefinitionTests.cs",
+          "path": "tests/Zodiac.Content.Tests/Definitions/DefinitionTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         }
       ],
@@ -532,7 +532,7 @@
       "title": "Items, equipment and effective combat stats",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-039",
-      "ownerArea": "Fft.Content definitions and offline import",
+      "ownerArea": "Zodiac.Content definitions and offline import",
       "status": "partial",
       "currentScope": "Selected sword/Attack import and schema-2 raw/effective evade representation exist; full equipment stat derivation is absent.",
       "referenceSources": [
@@ -554,16 +554,16 @@
         "docs/behavior/base-job-battle-setup.md"
       ],
       "implementationPaths": [
-        "src/Fft.AssetTool/OriginalSwordRecords.cs",
-        "src/Fft.Content/BattleSetup/AttackBattleSetup.cs"
+        "src/Zodiac.AssetTool/OriginalSwordRecords.cs",
+        "src/Zodiac.Content/BattleSetup/AttackBattleSetup.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Fft.AssetTool.Tests/OriginalSwordRecordsTests.cs",
+          "path": "tests/Zodiac.AssetTool.Tests/OriginalSwordRecordsTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
-          "path": "tests/Fft.Content.Tests/AttackBattleSetupTests.cs",
+          "path": "tests/Zodiac.Content.Tests/AttackBattleSetupTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         }
       ],
@@ -582,7 +582,7 @@
       "title": "Characters, monsters, party records and ENTD encounters",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-039",
-      "ownerArea": "Fft.Content definitions and offline import",
+      "ownerArea": "Zodiac.Content definitions and offline import",
       "status": "absent",
       "currentScope": "No general original party/ENTD definition-to-runtime path; sample units are invented.",
       "referenceSources": [
@@ -623,7 +623,7 @@
       "title": "Maps, terrain and scene definitions",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-039",
-      "ownerArea": "Fft.Content definitions and offline import",
+      "ownerArea": "Zodiac.Content definitions and offline import",
       "status": "partial",
       "currentScope": "One frozen MAP003 base scene and both native terrain layers can be prepared/loaded; combat remains restricted to synthetic height-10 terrain.",
       "referenceSources": [
@@ -645,16 +645,16 @@
         "docs/architecture/zod-029-map003-source-map.md"
       ],
       "implementationPaths": [
-        "src/Fft.AssetTool/OriginalBattleMap.cs",
-        "src/Fft.Content/PreparedBattleMap.cs"
+        "src/Zodiac.AssetTool/OriginalBattleMap.cs",
+        "src/Zodiac.Content/PreparedBattleMap.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Fft.AssetTool.Tests/OriginalBattleMapTests.cs",
+          "path": "tests/Zodiac.AssetTool.Tests/OriginalBattleMapTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
-          "path": "tests/Fft.Content.Tests/PreparedBattleMapTests.cs",
+          "path": "tests/Zodiac.Content.Tests/PreparedBattleMapTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         }
       ],
@@ -673,7 +673,7 @@
       "title": "Dialogue, names, descriptions and localized text",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-039",
-      "ownerArea": "Fft.Content definitions and offline import",
+      "ownerArea": "Zodiac.Content definitions and offline import",
       "status": "absent",
       "currentScope": "Synthetic TinyFont and labels do not provide original text banks, encoding or fonts.",
       "referenceSources": [
@@ -710,7 +710,7 @@
       "title": "Stores, loot, recruit and world-content tables",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-039",
-      "ownerArea": "Fft.Content definitions and offline import",
+      "ownerArea": "Zodiac.Content definitions and offline import",
       "status": "absent",
       "currentScope": "No shared validated catalog for shops, encounters, propositions or rewards.",
       "referenceSources": [
@@ -1207,99 +1207,99 @@
         "docs/evidence/events/banner-opcode-admission-contract-v1.json"
       ],
       "implementationPaths": [
-        "src/Fft.AssetTool/ScenarioBlockInspector.cs",
-        "src/Fft.AssetTool.Cli/ScenarioEventExporter.cs",
-        "src/Fft.Content/Events/PreparedScenarioEvent.cs",
-        "src/Fft.Core/Events/ConditionalEventProgram.cs",
-        "src/Fft.Core/Events/ConditionalEventState.cs",
-        "src/Fft.Core/Events/ConditionalEventExecutor.cs",
-        "src/Fft.Core/Events/TimedEventProgram.cs",
-        "src/Fft.Core/Events/TimedEventState.cs",
-        "src/Fft.Core/Events/TimedEventExecutor.cs",
-        "src/Fft.Core/Events/SceneTaskState.cs",
-        "src/Fft.Core/Events/SceneTaskResult.cs",
-        "src/Fft.Core/Events/SceneTaskLedger.cs",
-        "src/Fft.Core/Events/SceneEventProgram.cs",
-        "src/Fft.Core/Events/SceneEventState.cs",
-        "src/Fft.Core/Events/SceneEventExecutor.cs",
-        "src/Fft.Core/Events/SceneEventResult.cs",
-        "src/Fft.Core/Events/GeneralBannerState.cs",
-        "src/Fft.Core/Events/BannerSceneResult.cs",
-        "src/Fft.Core/Events/BannerSceneExecutor.cs",
-        "src/Fft.AssetTool/GeneralBannerDecoder.cs",
-        "src/Fft.AssetTool.Cli/PrepareGeneralBannerCommand.cs",
-        "src/Fft.Content/PreparedGeneralBanner.cs",
+        "src/Zodiac.AssetTool/ScenarioBlockInspector.cs",
+        "src/Zodiac.AssetTool.Cli/ScenarioEventExporter.cs",
+        "src/Zodiac.Content/Events/PreparedScenarioEvent.cs",
+        "src/Zodiac.Framework/Events/ConditionalEventProgram.cs",
+        "src/Zodiac.Framework/Events/ConditionalEventState.cs",
+        "src/Zodiac.Framework/Events/ConditionalEventExecutor.cs",
+        "src/Zodiac.Framework/Events/TimedEventProgram.cs",
+        "src/Zodiac.Framework/Events/TimedEventState.cs",
+        "src/Zodiac.Framework/Events/TimedEventExecutor.cs",
+        "src/Zodiac.Framework/Events/SceneTaskState.cs",
+        "src/Zodiac.Framework/Events/SceneTaskResult.cs",
+        "src/Zodiac.Framework/Events/SceneTaskLedger.cs",
+        "src/Zodiac.Framework/Events/SceneEventProgram.cs",
+        "src/Zodiac.Framework/Events/SceneEventState.cs",
+        "src/Zodiac.Framework/Events/SceneEventExecutor.cs",
+        "src/Zodiac.Framework/Events/SceneEventResult.cs",
+        "src/Zodiac.Framework/Events/GeneralBannerState.cs",
+        "src/Zodiac.Framework/Events/BannerSceneResult.cs",
+        "src/Zodiac.Framework/Events/BannerSceneExecutor.cs",
+        "src/Zodiac.AssetTool/GeneralBannerDecoder.cs",
+        "src/Zodiac.AssetTool.Cli/PrepareGeneralBannerCommand.cs",
+        "src/Zodiac.Content/PreparedGeneralBanner.cs",
         "src/Fft.Client/Presentation/GeneralBannerPresentation.cs",
         "src/Fft.Client/Presentation/GeneralBannerPreview.cs",
         "tools/verification/inspect_banner_event.py"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Fft.AssetTool.Tests/ScenarioBlockInspectorTests.cs",
+          "path": "tests/Zodiac.AssetTool.Tests/ScenarioBlockInspectorTests.cs",
           "scope": "Synthetic block framing/operand widths and retained inspection; no semantic execution."
         },
         {
-          "path": "tests/Fft.AssetTool.Cli.Tests/ScenarioEventExporterTests.cs",
+          "path": "tests/Zodiac.AssetTool.Cli.Tests/ScenarioEventExporterTests.cs",
           "scope": "Synthetic conversion/CFG/target gate and prepared-manifest loading; no original event."
         },
         {
-          "path": "tests/Fft.Content.Tests/PreparedScenarioEventTests.cs",
+          "path": "tests/Zodiac.Content.Tests/PreparedScenarioEventTests.cs",
           "scope": "Strict synthetic JSON/provenance/offset validation and immutable records."
         },
         {
-          "path": "tests/Fft.Core.Tests/ConditionalEventExecutorTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/ConditionalEventExecutorTests.cs",
           "scope": "Source-derived synthetic exact instruction/state traces, dirty variables, replay, immutable boundaries, arithmetic and budget rollback; no original oracle."
         },
         {
-          "path": "tests/Fft.Content.Tests/PreparedScenarioExecutionTests.cs",
+          "path": "tests/Zodiac.Content.Tests/PreparedScenarioExecutionTests.cs",
           "scope": "Authored hash-verified prepared file to Core projection/execution, unchanged schema, D0/D1/D4 landings; no original script/asset."
         },
         {
-          "path": "tests/Fft.Core.Tests/TimedEventExecutorTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/TimedEventExecutorTests.cs",
           "scope": "Source-derived synthetic zero/one/60/max waits, sequential boundaries, batch replay, admission and atomic tick/instruction/arithmetic rejection."
         },
         {
-          "path": "tests/Fft.Content.Tests/PreparedTimedScenarioTests.cs",
+          "path": "tests/Zodiac.Content.Tests/PreparedTimedScenarioTests.cs",
           "scope": "Independent timed fixture traces, explicit profile isolation, strict admission and hash-verified prepared loading without original data."
         },
         {
-          "path": "tests/Fft.AssetTool.Cli.Tests/TimedScenarioEventExporterTests.cs",
+          "path": "tests/Zodiac.AssetTool.Cli.Tests/TimedScenarioEventExporterTests.cs",
           "scope": "Signed synthetic F1 decode, raw/processed boundary/hash agreement, profile/unsupported gates and D0/D4 wait landing."
         },
         {
-          "path": "tests/Fft.Core.Tests/SceneTaskContractTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/SceneTaskContractTests.cs",
           "scope": "All 17 preimplementation cases execute against independently authored full snapshots/ordered traces and identical replay; source-derived/native-policy evidence, not original observations."
         },
         {
-          "path": "tests/Fft.Core.Tests/SceneTaskLedgerTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/SceneTaskLedgerTests.cs",
           "scope": "40 phase/resource/failure boundary cases: all active classes, cancellation/completion, live/current polling, tombstones/capacity, IDs, typed error precedence, atomic allocation and checked counter exhaustion."
         },
         {
-          "path": "tests/Fft.Core.Tests/SceneEventExecutorTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/SceneEventExecutorTests.cs",
           "scope": "27 cases: mandatory yields, all empty selectors, F1/E5 sequencing, multi-owner live polling, cancellation, atomic continuation/task/budget failure and retained scene lifecycle."
         },
         {
-          "path": "tests/Fft.Content.Tests/PreparedSceneEventTests.cs",
+          "path": "tests/Zodiac.Content.Tests/PreparedSceneEventTests.cs",
           "scope": "23 cases: independent seven-tick fixture with full combined snapshots/ordered traces/replay, strict profile/capability gates, unsupported unreachable selectors and manifest corruption/ID checks."
         },
         {
-          "path": "tests/Fft.AssetTool.Cli.Tests/SceneScenarioEventExporterTests.cs",
+          "path": "tests/Zodiac.AssetTool.Cli.Tests/SceneScenarioEventExporterTests.cs",
           "scope": "19 cases: unsigned E5 decoding/unsupported high-byte selectors, old-profile isolation, literal raw/processed hash/offset agreement, D0-to-D4 barrier landing and explicit opcode-78 rejection across all old exports."
         },
         {
-          "path": "tests/Fft.Core.Tests/GeneralBannerContractTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/GeneralBannerContractTests.cs",
           "scope": "All 24 preimplementation banner cases execute: full logical effect/ledger/VM checkpoints, ordered trace fields, exact failures/immutability and identical replay; no original observation."
         },
         {
-          "path": "tests/Fft.Core.Tests/BannerSceneBoundaryTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/BannerSceneBoundaryTests.cs",
           "scope": "47 cases: input/ID/budget gates, managed completion authority, live/tombstone capacity, cancellation, retained active/terminal lifecycle, mixed F1/E5 rollback and checked clock/binding failures."
         },
         {
-          "path": "tests/Fft.AssetTool.Tests/GeneralBannerDecoderTests.cs",
+          "path": "tests/Zodiac.AssetTool.Tests/GeneralBannerDecoderTests.cs",
           "scope": "Authored packing/CLUT/UV/screen expectations and bounded malformed original layouts; no retail payload fixtures."
         },
         {
-          "path": "tests/Fft.Content.Tests/PreparedGeneralBannerTests.cs",
+          "path": "tests/Zodiac.Content.Tests/PreparedGeneralBannerTests.cs",
           "scope": "Strict closed metadata, nested fields, formats/geometry/provenance, immutable prepared-only loading and corruption gates."
         },
         {
@@ -1307,7 +1307,7 @@
           "scope": "Authored material/crop/order/counter milestones, readiness, rollback, restart and identical histories with omitted/repeated rendering; modern RGB8 policy only."
         },
         {
-          "path": "tests/Fft.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs",
+          "path": "tests/Zodiac.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs",
           "scope": "Input/profile/output gates preserve prior files and do not publish partial roots."
         },
         {
@@ -1869,16 +1869,16 @@
         "docs/architecture/zod-027-chocobo-idle-pose.md"
       ],
       "implementationPaths": [
-        "src/Fft.AssetTool/OrdinaryUnitPoseDecoder.cs",
-        "src/Fft.Content/PreparedSpritePose.cs"
+        "src/Zodiac.AssetTool/OrdinaryUnitPoseDecoder.cs",
+        "src/Zodiac.Content/PreparedSpritePose.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Fft.AssetTool.Tests/OrdinaryUnitPoseTests.cs",
+          "path": "tests/Zodiac.AssetTool.Tests/OrdinaryUnitPoseTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
-          "path": "tests/Fft.Content.Tests/PreparedSpritePoseTests.cs",
+          "path": "tests/Zodiac.Content.Tests/PreparedSpritePoseTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         }
       ],
@@ -1966,19 +1966,19 @@
         "docs/development/prepared-general-banner.md"
       ],
       "implementationPaths": [
-        "src/Fft.AssetTool/GeneralBannerDecoder.cs",
-        "src/Fft.AssetTool.Cli/PrepareGeneralBannerCommand.cs",
-        "src/Fft.Content/PreparedGeneralBanner.cs",
+        "src/Zodiac.AssetTool/GeneralBannerDecoder.cs",
+        "src/Zodiac.AssetTool.Cli/PrepareGeneralBannerCommand.cs",
+        "src/Zodiac.Content/PreparedGeneralBanner.cs",
         "src/Fft.Client/Presentation/GeneralBannerPresentation.cs",
         "src/Fft.Client/Presentation/GeneralBannerPreview.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Fft.AssetTool.Tests/GeneralBannerDecoderTests.cs",
+          "path": "tests/Zodiac.AssetTool.Tests/GeneralBannerDecoderTests.cs",
           "scope": "Authored packing/CLUT/UV/screen expectations and bounded malformed original layouts; no retail payload fixtures."
         },
         {
-          "path": "tests/Fft.Content.Tests/PreparedGeneralBannerTests.cs",
+          "path": "tests/Zodiac.Content.Tests/PreparedGeneralBannerTests.cs",
           "scope": "Strict closed metadata, nested fields, formats/geometry/provenance, immutable prepared-only loading and corruption gates."
         },
         {
@@ -1986,7 +1986,7 @@
           "scope": "Authored material/crop/order/counter milestones, readiness, rollback, restart and identical histories with omitted/repeated rendering; modern RGB8 policy only."
         },
         {
-          "path": "tests/Fft.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs",
+          "path": "tests/Zodiac.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs",
           "scope": "Input/profile/output gates preserve prior files and do not publish partial roots."
         }
       ],
@@ -2126,7 +2126,7 @@
       "title": "Edition verification and ordinary-file extraction",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-044",
-      "ownerArea": "Fft.AssetTool preparation and Fft.Content loading",
+      "ownerArea": "Zodiac.AssetTool preparation and Zodiac.Content loading",
       "status": "partial",
       "currentScope": "Verified SCUS-94221 input and ordinary data-file extraction/inventory are implemented.",
       "referenceSources": [
@@ -2143,16 +2143,16 @@
         "docs/asset-inventory-poc.md"
       ],
       "implementationPaths": [
-        "src/Fft.AssetTool/Mode2RawImageReader.cs",
-        "src/Fft.AssetTool/IsoDataFileExtractor.cs"
+        "src/Zodiac.AssetTool/Mode2RawImageReader.cs",
+        "src/Zodiac.AssetTool/IsoDataFileExtractor.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Fft.AssetTool.Tests/IsoDataFileExtractorTests.cs",
+          "path": "tests/Zodiac.AssetTool.Tests/IsoDataFileExtractorTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
-          "path": "tests/Fft.AssetTool.Cli.Tests/ExtractCommandTests.cs",
+          "path": "tests/Zodiac.AssetTool.Cli.Tests/ExtractCommandTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         }
       ],
@@ -2171,7 +2171,7 @@
       "title": "Prepared manifests, integrity and disk-only runtime loading",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-044",
-      "ownerArea": "Fft.AssetTool preparation and Fft.Content loading",
+      "ownerArea": "Zodiac.AssetTool preparation and Zodiac.Content loading",
       "status": "partial",
       "currentScope": "Versioned manifest and hash-verified loose loading exist for selected assets; no universal decoder/package manager.",
       "referenceSources": [
@@ -2188,12 +2188,12 @@
         "docs/adr/0003-offline-asset-import-and-loose-runtime-content.md"
       ],
       "implementationPaths": [
-        "src/Fft.Content/LooseAssetStore.cs",
-        "src/Fft.Content/PreparedAssetManifest.cs"
+        "src/Zodiac.Content/LooseAssetStore.cs",
+        "src/Zodiac.Content/PreparedAssetManifest.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Fft.Content.Tests/PreparedAssetManifestTests.cs",
+          "path": "tests/Zodiac.Content.Tests/PreparedAssetManifestTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         }
       ],
@@ -2212,7 +2212,7 @@
       "title": "Prepared map, sprite, shape and sequence converters",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-044",
-      "ownerArea": "Fft.AssetTool preparation and Fft.Content loading",
+      "ownerArea": "Zodiac.AssetTool preparation and Zodiac.Content loading",
       "status": "partial",
       "currentScope": "One frozen MAP003 variant and one held Chocobo pose have bounded offline converters.",
       "referenceSources": [
@@ -2234,16 +2234,16 @@
         "docs/development/prepared-sprite-pose.md"
       ],
       "implementationPaths": [
-        "src/Fft.AssetTool.Cli/PrepareMapCommand.cs",
-        "src/Fft.AssetTool.Cli/PrepareSpritePoseCommand.cs"
+        "src/Zodiac.AssetTool.Cli/PrepareMapCommand.cs",
+        "src/Zodiac.AssetTool.Cli/PrepareSpritePoseCommand.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Fft.AssetTool.Cli.Tests/PrepareMapCommandTests.cs",
+          "path": "tests/Zodiac.AssetTool.Cli.Tests/PrepareMapCommandTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
-          "path": "tests/Fft.AssetTool.Cli.Tests/PrepareSpritePoseCommandTests.cs",
+          "path": "tests/Zodiac.AssetTool.Cli.Tests/PrepareSpritePoseCommandTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         }
       ],
@@ -2262,7 +2262,7 @@
       "title": "Remaining fonts, menus, world, effects, audio and mixed streams",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-044",
-      "ownerArea": "Fft.AssetTool preparation and Fft.Content loading",
+      "ownerArea": "Zodiac.AssetTool preparation and Zodiac.Content loading",
       "status": "partial",
       "currentScope": "ZOD-078 prepares condition-8/image-0 artwork from verified local inputs, strictly loads immutable six-piece data and previews accepted effect snapshots with a preloaded RGB8 CPU/Windows host. All 20 authored expectations have regressions; two preparations and two finite Windows capture sets match, with exact CPU/GPU readback and prepared-only runtime paths. Original comparison, parity and loading latency remain open. Other font/menu/world/effect/audio families remain unsupported.",
       "referenceSources": [
@@ -2294,19 +2294,19 @@
         "docs/development/prepared-general-banner.md"
       ],
       "implementationPaths": [
-        "src/Fft.AssetTool/GeneralBannerDecoder.cs",
-        "src/Fft.AssetTool.Cli/PrepareGeneralBannerCommand.cs",
-        "src/Fft.Content/PreparedGeneralBanner.cs",
+        "src/Zodiac.AssetTool/GeneralBannerDecoder.cs",
+        "src/Zodiac.AssetTool.Cli/PrepareGeneralBannerCommand.cs",
+        "src/Zodiac.Content/PreparedGeneralBanner.cs",
         "src/Fft.Client/Presentation/GeneralBannerPresentation.cs",
         "src/Fft.Client/Presentation/GeneralBannerPreview.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Fft.AssetTool.Tests/GeneralBannerDecoderTests.cs",
+          "path": "tests/Zodiac.AssetTool.Tests/GeneralBannerDecoderTests.cs",
           "scope": "Authored packing/CLUT/UV/screen expectations and bounded malformed original layouts; no retail payload fixtures."
         },
         {
-          "path": "tests/Fft.Content.Tests/PreparedGeneralBannerTests.cs",
+          "path": "tests/Zodiac.Content.Tests/PreparedGeneralBannerTests.cs",
           "scope": "Strict closed metadata, nested fields, formats/geometry/provenance, immutable prepared-only loading and corruption gates."
         },
         {
@@ -2314,7 +2314,7 @@
           "scope": "Authored material/crop/order/counter milestones, readiness, rollback, restart and identical histories with omitted/repeated rendering; modern RGB8 policy only."
         },
         {
-          "path": "tests/Fft.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs",
+          "path": "tests/Zodiac.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs",
           "scope": "Input/profile/output gates preserve prior files and do not publish partial roots."
         }
       ],
@@ -2347,16 +2347,16 @@
         "docs/development/two-unit-battle-saves.md"
       ],
       "implementationPaths": [
-        "src/Fft.Content/Saves/TwoUnitBattleSave.cs",
-        "src/Fft.Content/Saves/TwoUnitBattleSave.Files.cs"
+        "src/Zodiac.Content/Saves/TwoUnitBattleSave.cs",
+        "src/Zodiac.Content/Saves/TwoUnitBattleSave.Files.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Fft.Content.Tests/Saves/TwoUnitBattleSaveTests.cs",
+          "path": "tests/Zodiac.Content.Tests/Saves/TwoUnitBattleSaveTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
-          "path": "tests/Fft.Content.Tests/Saves/TwoUnitBattleSaveFileTests.cs",
+          "path": "tests/Zodiac.Content.Tests/Saves/TwoUnitBattleSaveFileTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
@@ -2478,16 +2478,16 @@
         "docs/development/two-unit-battle-saves.md"
       ],
       "implementationPaths": [
-        "tests/Fft.Core.Tests/Fixtures/MovementFixtureRunner.cs",
-        "tests/Fft.Core.Tests/Fixtures/AttackFixtureRunner.cs"
+        "tests/Zodiac.Framework.Tests/Fixtures/MovementFixtureRunner.cs",
+        "tests/Zodiac.Framework.Tests/Fixtures/AttackFixtureRunner.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Fft.Core.Tests/Fixtures/MovementFixtureRunnerTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Fixtures/MovementFixtureRunnerTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
-          "path": "tests/Fft.Core.Tests/AttackFixtureV3Tests.cs",
+          "path": "tests/Zodiac.Framework.Tests/AttackFixtureV3Tests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         }
       ],
@@ -2744,16 +2744,16 @@
       ],
       "implementationPaths": [
         "Directory.Build.targets",
-        "src/Zodiac.Engine/GridBounds.cs",
-        "src/Zodiac.Engine/IDeterministicRandom.cs"
+        "src/Tessera.Engine/GridBounds.cs",
+        "src/Tessera.Engine/IDeterministicRandom.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Fft.Core.Tests/EngineIndependenceTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/EngineIndependenceTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
-          "path": "tests/Zodiac.Engine.Tests/RelayScenarioTests.cs",
+          "path": "tests/Tessera.Engine.Tests/RelayScenarioTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         }
       ],
@@ -2790,11 +2790,11 @@
         "docs/architecture/zod-016-content-packages.md"
       ],
       "implementationPaths": [
-        "src/Fft.Content/ContentPackages/ContentPackage.cs"
+        "src/Zodiac.Content/ContentPackages/ContentPackage.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Fft.Content.Tests/ContentPackages/ContentPackageTests.cs",
+          "path": "tests/Zodiac.Content.Tests/ContentPackages/ContentPackageTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         }
       ],
@@ -2931,12 +2931,12 @@
         "docs/architecture/zod-014-typed-definitions.md"
       ],
       "implementationPaths": [
-        "src/Fft.Content/ContentPackages/ContentPackage.cs",
-        "src/Fft.AssetTool.Cli/ValidateContentCommand.cs"
+        "src/Zodiac.Content/ContentPackages/ContentPackage.cs",
+        "src/Zodiac.AssetTool.Cli/ValidateContentCommand.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Fft.Content.Tests/ContentPackages/ContentPackageTests.cs",
+          "path": "tests/Zodiac.Content.Tests/ContentPackages/ContentPackageTests.cs",
           "scope": "Typed package composition/validation/export only; no editor workflow."
         }
       ],

@@ -66,16 +66,16 @@ exists. Full EventEnd, multiple concurrent consumers and scene disposal are sepa
 
 ## Implementation and validation
 
-Core owns [SceneEventProgram](../../src/Fft.Core/Events/SceneEventProgram.cs),
-[SceneEventState](../../src/Fft.Core/Events/SceneEventState.cs),
-[SceneEventExecutor](../../src/Fft.Core/Events/SceneEventExecutor.cs) and
-[SceneEventResult](../../src/Fft.Core/Events/SceneEventResult.cs). Conditional
+Core owns [SceneEventProgram](../../src/Zodiac.Framework/Events/SceneEventProgram.cs),
+[SceneEventState](../../src/Zodiac.Framework/Events/SceneEventState.cs),
+[SceneEventExecutor](../../src/Zodiac.Framework/Events/SceneEventExecutor.cs) and
+[SceneEventResult](../../src/Zodiac.Framework/Events/SceneEventResult.cs). Conditional
 admission and ordinary transitions are composed privately; placeholder NOPs never
 appear as executable frame/barrier instructions. The standalone ledger and old
 conditional/timed APIs are unchanged. Scene clock, scene identity, consumer,
 suspension source offset, continuation, variables and tasks are immutable.
 
-[PreparedScenarioEvent](../../src/Fft.Content/Events/PreparedScenarioEvent.cs)
+[PreparedScenarioEvent](../../src/Zodiac.Content/Events/PreparedScenarioEvent.cs)
 retains schema 1 and its strict envelope, adding `WaitForTaskClass` only for the
 new profile and `ToSceneExecutionDefinition()` as an explicit projection. Both
 timed profiles admit F1; conditional still rejects it, and only the new profile
@@ -114,17 +114,17 @@ ConditionDisplay 4. The independently specified boundaries are:
 - Tick 7: complete ConditionDisplay 4; resume, add 8, execute D4 at 48.
   Variable 3 is 15; all five task tombstones remain, next sequence is 6.
 
-[PreparedSceneEventTests](../../tests/Fft.Content.Tests/PreparedSceneEventTests.cs)
+[PreparedSceneEventTests](../../tests/Zodiac.Content.Tests/PreparedSceneEventTests.cs)
 assert every combined snapshot and ordered trace field against independently
 authored expectations, then replay the full explicit command history against a
 fresh definition. Hash-verified loose-file loading, corruption/ID mismatch and
 execution after deleting prepared files are also checked.
-[SceneEventExecutorTests](../../tests/Fft.Core.Tests/SceneEventExecutorTests.cs)
+[SceneEventExecutorTests](../../tests/Zodiac.Framework.Tests/SceneEventExecutorTests.cs)
 cover each empty selector's mandatory yield, multi-owner/new matches, mixed and
 sequential waits, 1/60/32767-frame boundaries, cancellation, exact traces, forward
 branches, scene retention/restart and typed atomic failures. Resumption failures
 roll back candidate task completion/allocation, releases, ticks and variable writes.
-[SceneScenarioEventExporterTests](../../tests/Fft.AssetTool.Cli.Tests/SceneScenarioEventExporterTests.cs)
+[SceneScenarioEventExporterTests](../../tests/Zodiac.AssetTool.Cli.Tests/SceneScenarioEventExporterTests.cs)
 cover raw/processed agreement, independent hash/offsets, unsigned high-byte
 rejection, old-profile isolation, unsupported unreachable code, signed waits,
 malformed records and D0-to-D4 landing after the marker onto a barrier.

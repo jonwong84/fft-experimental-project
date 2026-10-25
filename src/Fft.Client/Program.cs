@@ -1,6 +1,6 @@
-using Fft.Content;
-using Fft.Core;
-using Fft.Content.Samples;
+using Zodiac.Content;
+using Zodiac.Framework;
+using Zodiac.Content.Samples;
 using System.Text.Json;
 using Fft.Client.Presentation;
 using Fft.Client;

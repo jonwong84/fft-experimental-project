@@ -1,5 +1,5 @@
 using System.Collections.Immutable;
-using Fft.Core;
+using Zodiac.Framework;
 
 namespace Fft.Client.Presentation;
 

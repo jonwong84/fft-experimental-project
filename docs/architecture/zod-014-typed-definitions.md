@@ -1,10 +1,10 @@
 # Minimal typed FFT definitions (ZOD-014)
 
-Date: 2026-10-22. This implementation adds immutable job, skillset and ability **metadata** in `Fft.Content.Definitions`. It does not add retail content, an importer, a JSON package format or combat effects. It follows the [ZOD-003 source investigation](../behavior/job-ability-slice.md) pinned to decomp revision `611b504d25d4a9b03fab8023d7dbea75fe381d5d`; there is no new claim about retail Squire row values or original-game execution.
+Date: 2026-10-22. This implementation adds immutable job, skillset and ability **metadata** in `Zodiac.Content.Definitions`. It does not add retail content, an importer, a JSON package format or combat effects. It follows the [ZOD-003 source investigation](../behavior/job-ability-slice.md) pinned to decomp revision `611b504d25d4a9b03fab8023d7dbea75fe381d5d`; there is no new claim about retail Squire row values or original-game execution.
 
 ## Ownership and identities
 
-The existing `Fft.Content` assembly owns the definitions and catalog. No project or dependency change was needed. These FFT concepts do not enter `Zodiac.Engine`, in accordance with [ADR 0004](../adr/0004-zodiac-engine-and-fft-game-boundary.md).
+The existing `Zodiac.Content` assembly owns the definitions and catalog. No project or dependency change was needed. These FFT concepts do not enter `Tessera.Engine`, in accordance with [ADR 0004](../adr/0004-zodiac-engine-and-fft-game-boundary.md).
 
 `JobId`, `SkillsetId` and `AbilityId` are distinct readonly value types with ordinal string identity. They use the existing `AssetId` validation grammar (`namespace:path`, lowercase ASCII, nonempty slash-separated path segments, no `.`/`..` segment). They do not wrap original numeric indices or use display names. They cannot be assigned across definition kinds without explicitly constructing another type. Struct defaults are possible in C#, so definition/reference constructors reject them; nullable `AbilityId` is reserved for an explicitly empty skillset slot.
 
@@ -41,7 +41,7 @@ No runtime model is introduced merely to demonstrate this separation. Existing s
 Focused command:
 
 ```powershell
-dotnet test tests/Fft.Content.Tests/Fft.Content.Tests.csproj --no-restore --filter FullyQualifiedName~Fft.Content.Tests.Definitions
+dotnet test tests/Zodiac.Content.Tests/Zodiac.Content.Tests.csproj --no-restore --filter FullyQualifiedName~Zodiac.Content.Tests.Definitions
 ```
 
 Result: **32 passed, 0 failed, 0 skipped**, .NET SDK 10.0.402 on Windows. The sandboxed .NET invocation failed during host initialization; the same focused command succeeded with the authorized host access required by the installed Windows SDK. No network restore or dependency update was performed.

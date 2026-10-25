@@ -6,7 +6,7 @@ This is an architecture proof, not an FFT movement port. `BattleState` is an imm
 
 Movement reachability currently calls `FlatGridMovementRange`. That helper models an unobstructed, cardinal, same-layer grid. The simulator additionally rejects movement into a tile occupied by another unit. `BattleTile` and `UnitMovementProfile` now capture several movement-relevant inputs, but the flat-grid helper does not use them. These are deliberate prototype rules and are not claimed to match the original game.
 
-After [ZOD-008](architecture/zod-008-fft-adapter.md), the FFT-owned helper delegates bounds-only calculation to `Zodiac.Engine` and converts positions back. FFT retains policy selection, validation and transition semantics; the terrain-aware proof remains separate.
+After [ZOD-008](architecture/zod-008-fft-adapter.md), the FFT-owned helper delegates bounds-only calculation to `Tessera.Engine` and converts positions back. FFT retains policy selection, validation and transition semantics; the terrain-aware proof remains separate.
 
 ## Reference trace
 

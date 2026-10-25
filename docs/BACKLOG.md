@@ -12,9 +12,9 @@ This is the ordered work breakdown for the goals in [PROJECT_PLAN.md](../PROJECT
 
 Repository inspection confirms the following starting point:
 
-- `Fft.Core` has immutable map/battle models, a typed command transition proof, and two bounded movement policies. [BattleSimulator](../src/Fft.Core/BattleSimulator.cs) still calls `FlatGridMovementRange`; [TerrainAwareMovementRange](../src/Fft.Core/TerrainAwareMovementRange.cs) is a separate proof and omits height, slopes, jumps, occupancy, water, movement modes, and layer transitions.
-- `Fft.Content` loads hash-verified files through a [prepared asset manifest](../src/Fft.Content/PreparedAssetManifest.cs). AssetTool and its CLI support ordinary-file extraction and a bounded unit sprite decode. This is not yet a general game-definition package format or full asset decoder.
-- There is no `Zodiac.Engine` project, typed job/ability/item catalog, rendering backend, playable battle loop, campaign runtime, save system, or editor.
+- `Zodiac.Framework` has immutable map/battle models, a typed command transition proof, and two bounded movement policies. [BattleSimulator](../src/Zodiac.Framework/BattleSimulator.cs) still calls `FlatGridMovementRange`; [TerrainAwareMovementRange](../src/Zodiac.Framework/TerrainAwareMovementRange.cs) is a separate proof and omits height, slopes, jumps, occupancy, water, movement modes, and layer transitions.
+- `Zodiac.Content` loads hash-verified files through a [prepared asset manifest](../src/Zodiac.Content/PreparedAssetManifest.cs). AssetTool and its CLI support ordinary-file extraction and a bounded unit sprite decode. This is not yet a general game-definition package format or full asset decoder.
+- There is no `Tessera.Engine` project, typed job/ability/item catalog, rendering backend, playable battle loop, campaign runtime, save system, or editor.
 - [CircleCI](../.circleci/config.yml) restores, builds, tests, and invokes Sonar analysis in a Linux .NET 10 container. Windows application validation and publishing are not configured. The owner previously reported a Sonar failure; the current remote analysis result was not checked for this backlog.
 - The handoff records **134 passing tests** from the previous complete run. That is historical evidence, not a newly executed test result.
 
@@ -133,7 +133,7 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 **Result:** [Ownership audit and extraction recommendation](architecture/zod-001-type-ownership.md) (2026-10-22). Select the bounds-only flat cardinal range calculation with an FFT-owned facade; retain terrain semantics, profiles and transition policy in FFT. No extraction or project rename implemented. ZOD-007 still requires ZOD-002.
 
-**Scope:** Classify every current `Fft.Core` type as FFT-owned, reusable candidate, or unresolved. Inspect its actual consumers in Content, tools, client, and tests. Evaluate one small extraction that performs useful work; use the existing map/movement transition as the concrete example.
+**Scope:** Classify every current `Zodiac.Framework` type as FFT-owned, reusable candidate, or unresolved. Inspect its actual consumers in Content, tools, client, and tests. Evaluate one small extraction that performs useful work; use the existing map/movement transition as the concrete example.
 
 **Acceptance criteria:** A committed ownership map cites the relevant files and dependencies; the proposed engine contract can be explained without FFT; FFT terrain semantics and compatibility policy remain game-owned; the smallest extraction and FFT adapter are specified with preserved behavior and unresolved issues. Do not declare a type generic solely because its name is generic. If no viable extraction is supported yet, identify the exact missing evidence instead of inventing an API.
 
@@ -193,7 +193,7 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 **Result:** [Engine slice](architecture/zod-007-engine-slice.md) adds independent bounds/position contracts and flat cardinal range with 21 engine tests. Coordinator validated locked restore, zero-warning Release build and all 155 tests. FFT still uses its existing calculation; adapter integration is ZOD-008.
 
-**Scope:** Implement exactly the extraction justified by ZOD-001 in `Zodiac.Engine`, with an engine test project. Prefer the smallest coherent functionality over a general framework of empty interfaces.
+**Scope:** Implement exactly the extraction justified by ZOD-001 in `Tessera.Engine`, with an engine test project. Prefer the smallest coherent functionality over a general framework of empty interfaces.
 
 **Acceptance criteria:** The engine slice runs on synthetic data, has meaningful independent tests, and references no FFT assemblies, definitions, assets, or formats; deterministic behavior and any ordering contract are explicit; no platform/file/input dependencies enter simulation. Update solution/CI references only as required. Keep behavior changes out of the move and retain FFT-specific types in their current home until their own migration is justified.
 
@@ -1193,7 +1193,7 @@ save schemas, package locks and production dependencies are unchanged. E5 remain
 rejected by existing profiles; ZOD-074 owns separate interpreter integration.
 
 **Scope:** Implement the selected pure BATTLE scene task ledger/barrier contract
-in Fft.Core.Events. Use explicit scene-run identity, monotonic task instances,
+in Zodiac.Framework.Events. Use explicit scene-run identity, monotonic task instances,
 owner metadata, revisions, Camera/ConditionDisplay running states and DarkScreen
 entry/hold/release phases. Provide transactional task updates, BeginBarrier and
 one explicit AdvanceTick; no effect workers or event-interpreter integration.
@@ -1295,7 +1295,7 @@ and package graphs, old APIs/profiles and saves are unchanged. No original loadi
 rendering, DisplayConditions admission or full event playback is added.
 
 **Scope:** Implement the selected pure condition-8 post-readiness effect in
-Fft.Core.Events, with a typed authored definition, one retained managed effect/task
+Zodiac.Framework.Events, with a typed authored definition, one retained managed effect/task
 and explicit per-tick logical Circle input. Compose generated task termination
 facts atomically with the existing scene event/ledger tick. Do not add graphics,
 asset loading or original DisplayConditions opcode admission.

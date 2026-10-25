@@ -8,7 +8,7 @@ the historical [attack trace](ordinary-physical-attack.md) to these source paths
 
 ## Implemented scope and content boundary
 
-`Fft.Core.AttackBattleSimulator.Attack` is a pure, immediate, single-target sword
+`Zodiac.Framework.AttackBattleSimulator.Attack` is a pure, immediate, single-target sword
 transition over immutable `AttackBattleSnapshot` state. The profile admits ordinary
 humans with supplied effective stats, the same zodiac sign, zero MP and equipment
 evade, no reaction/support/affinity effects, and a single right-hand sword. It
@@ -22,7 +22,7 @@ legacy evade restriction, then projects the selected immutable `SwordDefinition`
 Schema 2's raw evade/capabilities/proc mode stay in the content definition and are
 not activated or rewritten by projection. Both empty proc modes have the same
 bounded HP effect and draw count; full status execution remains unsupported.
-Simulation references neither `Fft.Content` nor file/JSON/platform libraries.
+Simulation references neither `Zodiac.Content` nor file/JSON/platform libraries.
 
 Call `AttackBattleSetup.Create` once for startup/content/effective-stat validation,
 resolve the actor's weapon explicitly, and pass that projection to `Attack`.

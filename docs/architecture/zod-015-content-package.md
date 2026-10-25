@@ -84,14 +84,14 @@ During composition, sort add-ons by ordinal package ID and the resulting catalog
 
 ## Executable evidence and next step
 
-The new test-only [prototype](../../tests/Fft.Content.Tests/ContentPackages/ContentPackagePrototype.cs) and [tests](../../tests/Fft.Content.Tests/ContentPackages/ContentPackagePrototypeTests.cs) contain an inline synthetic recruit/practice/focus package and a separate trainee add-on. Data stays next to its executable checks rather than being duplicated in a fixture file requiring new project-copy configuration. The sample uses raw type byte `0xff`, maximum JP/rate values, opaque AI bytes, repeated innates, explicit empty slots and nonascending slot indices. No retail values are claimed.
+The new test-only [prototype](../../tests/Zodiac.Content.Tests/ContentPackages/ContentPackagePrototype.cs) and [tests](../../tests/Zodiac.Content.Tests/ContentPackages/ContentPackagePrototypeTests.cs) contain an inline synthetic recruit/practice/focus package and a separate trainee add-on. Data stays next to its executable checks rather than being duplicated in a fixture file requiring new project-copy configuration. The sample uses raw type byte `0xff`, maximum JP/rate values, opaque AI bytes, repeated innates, explicit empty slots and nonascending slot indices. No retail values are claimed.
 
 Focused verification on Windows, .NET SDK 10.0.402:
 
 ```powershell
-dotnet test tests/Fft.Content.Tests/Fft.Content.Tests.csproj --no-restore --filter FullyQualifiedName~Fft.Content.Tests.Packages
+dotnet test tests/Zodiac.Content.Tests/Zodiac.Content.Tests.csproj --no-restore --filter FullyQualifiedName~Zodiac.Content.Tests.Packages
 ```
 
 Result: **22 passed, 0 failed, 0 skipped**. Tests round-trip typed values and deterministic bytes, exercise **all 256 primary type-byte encodings**, reject malformed/version/unknown-field/flag/duplicate/reference errors, and demonstrate explicit add-on selection, ownership rejection, collision rejection, profile/dependency rejection, immutable baseline and selection-order independence. Tests ran with host access needed by the installed Windows SDK; no dependency changes were performed. The coordinator subsequently verified locked restore, zero-warning Release build and all **281** solution tests after geometry integration. Linux CI was not executed locally.
 
-ZOD-016 should turn this candidate into a production `Fft.Content` reader/validator/exporter shared by JSON and C# authoring, select production resource limits and improve field-path diagnostics. Keep the production API independent of the test-only helper and evaluate exact package-baseline digest requirements when introducing persisted/distributed content. No file on disk, BIN-derived definition, actual game battle or production loading workflow has been validated by this spike.
+ZOD-016 should turn this candidate into a production `Zodiac.Content` reader/validator/exporter shared by JSON and C# authoring, select production resource limits and improve field-path diagnostics. Keep the production API independent of the test-only helper and evaluate exact package-baseline digest requirements when introducing persisted/distributed content. No file on disk, BIN-derived definition, actual game battle or production loading workflow has been validated by this spike.

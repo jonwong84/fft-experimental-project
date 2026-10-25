@@ -1,9 +1,9 @@
 using System.Collections.Immutable;
 using System.Security.Cryptography;
 using System.Text.Json;
-using Fft.Content;
-using Fft.Core;
-using Fft.Core.Events;
+using Zodiac.Content;
+using Zodiac.Framework;
+using Zodiac.Framework.Events;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;

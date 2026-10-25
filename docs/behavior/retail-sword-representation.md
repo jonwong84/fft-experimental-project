@@ -75,7 +75,7 @@ The default `import-sword` remains a source-record report. Add `--metadata` to o
 into a schema 2 sidecar using an explicitly selected prepared dependency:
 
 ```powershell
-dotnet run --project src/Fft.AssetTool.Cli -c Release --no-build --no-restore -- import-sword --exe scratch/all-data-extraction/SCUS_942.21 --output scratch/imported-broad-sword-v2 --metadata scratch/imported-squire-check-a/content.package.json
+dotnet run --project src/Zodiac.AssetTool.Cli -c Release --no-build --no-restore -- import-sword --exe scratch/all-data-extraction/SCUS_942.21 --output scratch/imported-broad-sword-v2 --metadata scratch/imported-squire-check-a/content.package.json
 ```
 
 CLI input, dependency and fresh output paths must remain below `scratch/`, with

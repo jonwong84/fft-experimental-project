@@ -1,8 +1,8 @@
 # Explicit deterministic RNG (ZOD-013)
 
-`Zodiac.Engine.IDeterministicRandom<TState>` defines a pure transition from explicit
+`Tessera.Engine.IDeterministicRandom<TState>` defines a pure transition from explicit
 state to an output and updated state. It imposes no seed layout or game algorithm.
-`Fft.Core.FftBiosRandom` implements the FFT-owned generator verified in
+`Zodiac.Framework.FftBiosRandom` implements the FFT-owned generator verified in
 [BIOS verification](bios-rng-verification.md). Reference checkout revision:
 `611b504d25d4a9b03fab8023d7dbea75fe381d5d`.
 

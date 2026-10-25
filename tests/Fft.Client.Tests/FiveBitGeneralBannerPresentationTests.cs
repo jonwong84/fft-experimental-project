@@ -1,6 +1,6 @@
 using System.Collections.Immutable;
 using Fft.Client.Presentation;
-using Fft.Content;
+using Zodiac.Content;
 using Fft.Tests.Support;
 using Xunit;
 

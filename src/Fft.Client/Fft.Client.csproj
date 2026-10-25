@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Fft.Content\Fft.Content.csproj" />
-    <ProjectReference Include="..\Fft.Core\Fft.Core.csproj" />
+    <ProjectReference Include="..\Zodiac.Content\Zodiac.Content.csproj" />
+    <ProjectReference Include="..\Zodiac.Framework\Zodiac.Framework.csproj" />
   </ItemGroup>
 
   <ItemGroup>

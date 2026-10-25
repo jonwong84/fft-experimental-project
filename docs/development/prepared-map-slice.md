@@ -16,7 +16,7 @@ No executing C/emulator comparison or original-rendering equivalence is claimed.
 After the verified SCUS-94221 ordinary-file extraction, run from the repository root:
 
 ```powershell
-dotnet run --project src/Fft.AssetTool.Cli -c Release --no-build --no-restore -- prepare-map --gns scratch/all-data-extraction/MAP/MAP003.GNS --mesh scratch/all-data-extraction/MAP/MAP003.9 --texture scratch/all-data-extraction/MAP/MAP003.8 --output scratch/prepared-map003
+dotnet run --project src/Zodiac.AssetTool.Cli -c Release --no-build --no-restore -- prepare-map --gns scratch/all-data-extraction/MAP/MAP003.GNS --mesh scratch/all-data-extraction/MAP/MAP003.9 --texture scratch/all-data-extraction/MAP/MAP003.8 --output scratch/prepared-map003
 dotnet run --project src/Fft.Client -c Release --no-build --no-restore -- --content-root scratch/prepared-map003 --map base:map/003/day-dry-frozen
 ```
 
@@ -50,14 +50,14 @@ All inputs, output and any derived assets stay ignored; none belong in Git.
 
 ## Ownership and prepared format v1
 
-`Fft.AssetTool.OriginalBattleMap` owns the eight original mesh chunks and packed texture
+`Zodiac.AssetTool.OriginalBattleMap` owns the eight original mesh chunks and packed texture
 decoder. It validates chunk offsets, uniqueness/alignment, exact spans/padding, count
 budgets and terrain/material references before reading variable sections. Original
 capacity/packing rules remain at this boundary. `MapContentExporter` in the CLI maps
 decoded records into the prepared Content model. The projects and package locks are
 unchanged; no original parser, graphics dependency or I/O enters Core or Engine.
 
-`Fft.Content.PreparedBattleMap` uses format `fft.prepared-battle-map`, version 1,
+`Zodiac.Content.PreparedBattleMap` uses format `fft.prepared-battle-map`, version 1,
 profile `SCUS-94221/day-dry/default/frozen-base`. It requires:
 
 - Distinct logical map/texture IDs, dimensions and one dense layer-major tile array

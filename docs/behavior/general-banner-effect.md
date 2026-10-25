@@ -14,7 +14,7 @@ render a banner, load assets or admit original DisplayConditions opcode 78.
 
 ## Model and commands
 
-[GeneralBannerState.cs](../../src/Fft.Core/Events/GeneralBannerState.cs) contains the
+[GeneralBannerState.cs](../../src/Zodiac.Framework/Events/GeneralBannerState.cs) contains the
 authored definition, immutable effect state and retained `BannerSceneState`.
 `GeneralBannerDefinition(Id, Condition, HoldFrames)` is input data; AttachBanner
 validates it before allocation. The selected condition is 8, hold count 0..255,
@@ -27,7 +27,7 @@ remain ConditionDisplay task class 56 at revision 0. Only driver termination
 changes that task to revision 1, preserving its terminal tombstone. Visual phase
 changes do not modify ledger revision.
 
-[BannerSceneExecutor](../../src/Fft.Core/Events/BannerSceneExecutor.cs) provides:
+[BannerSceneExecutor](../../src/Zodiac.Framework/Events/BannerSceneExecutor.cs) provides:
 
 - `AttachBanner(state, definition, ownerId, updateBudget)`: at a Ready or Exited
   interpreter boundary, allocate one ConditionDisplay task and initialize an
@@ -101,7 +101,7 @@ references, cancellation, checked tick, then candidate effect and the underlying
 event/ledger transaction. Per-task payload/scene/revision/resource validation
 continues in the ledger. Other commands validate their selected definition/program
 and boundary before committing. Null state is programmer misuse and throws;
-submitted command errors are [typed results](../../src/Fft.Core/Events/BannerSceneResult.cs),
+submitted command errors are [typed results](../../src/Zodiac.Framework/Events/BannerSceneResult.cs),
 with nested task reasons and applicable update index/VM offset.
 
 Every rejection returns the exact input wrapper with empty trace and zero accepted
@@ -128,7 +128,7 @@ cleanup remains separate from logical completion authority.
 
 ## Independent evidence and validation
 
-[GeneralBannerContractTests](../../tests/Fft.Core.Tests/GeneralBannerContractTests.cs)
+[GeneralBannerContractTests](../../tests/Zodiac.Framework.Tests/GeneralBannerContractTests.cs)
 execute all 24 preimplementation
 [authored cases](../evidence/events/general-banner-effect-contract-v1.json).
 Inputs come from that historical specification. Full effect/ledger/VM checkpoint
@@ -137,13 +137,13 @@ and identical replay are checked. The source JSON retains `executed: false` as
 its original evidence classification; the regressions are the separate executed
 implementation evidence. No original/emulator oracle is claimed.
 
-[BannerSceneBoundaryTests](../../tests/Fft.Core.Tests/BannerSceneBoundaryTests.cs)
+[BannerSceneBoundaryTests](../../tests/Zodiac.Framework.Tests/BannerSceneBoundaryTests.cs)
 add 47 cases: input/ID/budget/command gates, retained active/terminal lifecycle,
 managed-update authority, cancellation, shared acknowledgment budgets, live and
 tombstone capacity, failed allocation/skip rollback, mixed F1/E5 timing and checked
 clock/binding failures. Counter and inconsistent-binding cases use test-only
 reflection into internal constructors rather than adding a restoration API.
-[SceneScenarioEventExporterTests](../../tests/Fft.AssetTool.Cli.Tests/SceneScenarioEventExporterTests.cs)
+[SceneScenarioEventExporterTests](../../tests/Zodiac.AssetTool.Cli.Tests/SceneScenarioEventExporterTests.cs)
 add an opcode-78 rejection case covering all three old export methods/profiles.
 
 ```powershell

@@ -192,7 +192,7 @@ does not establish PS1 modulation, dithering, rounding or blend equivalence.
 
 ## Smallest ZOD-028 implementation
 
-1. Add bounded offline unit SHP/SEQ readers to `Fft.AssetTool`, with explicit
+1. Add bounded offline unit SHP/SEQ readers to `Zodiac.AssetTool`, with explicit
    little-endian widths, copied immutable data, checked offsets/counts, selected
    native frame-index bounds and source `-1 -> 0` handling. Distinguish the
    optional second set even though this pose selects the primary set.
@@ -216,7 +216,7 @@ does not establish PS1 modulation, dithering, rounding or blend equivalence.
    integration separately under `scratch/`.
 
 Prepared view metadata belongs in FFT content/presentation; pure simulation and
-`Zodiac.Engine` gain no animation timing, graphics package or file-format dependency.
+`Tessera.Engine` gain no animation timing, graphics package or file-format dependency.
 ZOD-031 consumes the prepared pose after map preparation. ZOD-026 supplies the
 independent comparison workflow; neither task is completed by this source trace.
 

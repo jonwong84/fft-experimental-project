@@ -1,4 +1,24 @@
-# Zodiac / FFT Project Handoff
+# Tessera / Zodiac / FFT Project Handoff
+
+**Owner-approved naming (2026-10-25):** **Tessera Engine** is the reusable grid,
+terrain, movement and simulation machinery; **Zodiac Framework** owns FFT rules,
+runtime systems and definition schemas; **FFT Content** supplies particular game
+records and prepared assets. This supersedes the earlier engine/framework names
+in historical checkpoints. The requested migration now renames projects and
+namespaces to `Tessera.Engine`, `Zodiac.Framework`, `Zodiac.Content` and
+`Zodiac.AssetTool`/`.Cli`, including their tests. `Fft.Client` remains the game
+host and `Fft.sln` the solution. Data formats, asset/profile IDs, save schemas
+and historical evidence retain their identities. See
+[the naming/ownership convention](architecture/overview.md#product-boundaries-agreed-with-the-owner).
+
+**Naming migration validation (2026-10-25):** Project directories, solution entries,
+namespaces, references, CI paths, bundle inventory and current documentation now
+use the new identities. Locked restore and zero-warning Release build pass;
+all 1,494 .NET and 163 Python tests pass. The renamed engine boundary rejects a
+framework reference. Self-contained Windows publishing and its headless launch
+check pass with Tessera/Zodiac assemblies. External package versions/hashes and
+historical evidence are preserved. No simulation or data/save format change;
+the next behavior milestone remains ZOD-081. No automatic commit.
 
 **Latest checkpoint (2026-10-23):** ZOD-023's bounded headless battle and ZOD-025's synthetic
 Windows host are implemented; ZOD-027's [Chocobo idle-pose trace](architecture/zod-027-chocobo-idle-pose.md)
@@ -400,7 +420,8 @@ no combat refactor is made during the banner milestone.
 **Workspace:** `C:\repositories\fft-experimental-project`  
 **Branch:** `feature/initial-development`  
 **Last committed project change observed at original handoff creation:** `48b4772 Add battle simulation and movement model foundations`
-**Engine name:** Zodiac  
+**Engine name at original handoff creation:** Zodiac (now Tessera; see the naming decision above)
+
 **First content set / compatibility target:** North American PlayStation release of Final Fantasy Tactics, `SCUS-94221`
 
 This document is a restart point for the owner or another coding agent. It distinguishes completed work, local-only prerequisites, current uncommitted work, and future intentions. The goal is not to imply that the project is already a game engine capable of playing FFT: it is an early .NET foundation with useful asset-pipeline proofs and small simulation models. Amendments dated 2026-10-20 extend the architecture to make Zodiac reusable and separate it from the FFT game layer.
@@ -429,8 +450,8 @@ At original handoff creation, `git status --short` showed the movement-policy/do
  M README.md
  M docs/architecture/overview.md
  M docs/behavior/movement-inputs.md
-?? src/Fft.Core/TerrainAwareMovementRange.cs
-?? tests/Fft.Core.Tests/TerrainAwareMovementRangeTests.cs
+?? src/Zodiac.Framework/TerrainAwareMovementRange.cs
+?? tests/Zodiac.Framework.Tests/TerrainAwareMovementRangeTests.cs
 ```
 
 The committed movement slice:
@@ -463,12 +484,12 @@ There are no test fixtures containing the BIN or extracted images. Game-derived 
 
 ### Projects present
 
-- `src/Fft.Client`: .NET 10 console composition/bootstrap. It can read one prepared asset through `Fft.Content`; it is not yet an interactive game.
-- `src/Fft.Core`: stable IDs, map/tile/unit/battle state models, movement inputs, the typed battle transition proof, prototype flat movement range, and the just-added standalone terrain-cost movement policy.
-- `src/Fft.Content`: versioned manifest-based loose-file reader by logical asset ID, with size/hash verification.
-- `src/Fft.AssetTool`: managed raw-sector reader, ISO/PVD inventory, ordinary-file extraction, manifest generation, and bounded unit `.SPR` parser/attack-image decoder.
-- `src/Fft.AssetTool.Cli`: command host for inventory, comparison/extraction, and sprite verification/preview.
-- Tests: `tests/Fft.Core.Tests`, `tests/Fft.AssetTool.Tests`, `tests/Fft.AssetTool.Cli.Tests`, `tests/Fft.Content.Tests`.
+- `src/Fft.Client`: .NET 10 console composition/bootstrap. It can read one prepared asset through `Zodiac.Content`; it is not yet an interactive game.
+- `src/Zodiac.Framework`: stable IDs, map/tile/unit/battle state models, movement inputs, the typed battle transition proof, prototype flat movement range, and the just-added standalone terrain-cost movement policy.
+- `src/Zodiac.Content`: versioned manifest-based loose-file reader by logical asset ID, with size/hash verification.
+- `src/Zodiac.AssetTool`: managed raw-sector reader, ISO/PVD inventory, ordinary-file extraction, manifest generation, and bounded unit `.SPR` parser/attack-image decoder.
+- `src/Zodiac.AssetTool.Cli`: command host for inventory, comparison/extraction, and sprite verification/preview.
+- Tests: `tests/Zodiac.Framework.Tests`, `tests/Zodiac.AssetTool.Tests`, `tests/Zodiac.AssetTool.Cli.Tests`, `tests/Zodiac.Content.Tests`.
 - Solution: `Fft.sln`, targets `net10.0`. Require .NET 10 SDK.
 
 There is not yet a graphics framework, real-time game loop, Windows rendering backend, input/audio adapter, campaign system, save system, data editor, extension loader, or full FFT rules implementation.
@@ -485,7 +506,7 @@ There is not yet a graphics framework, real-time game loop, Windows rendering ba
 - `/scratch/` is in `.gitignore`.
 - The decomp inventory has 2,464 ISO entries. Managed inventory matches paths and LBAs. The 2,457 ordinary `data` entries were extracted locally and hash-checked against the reference inventory (162,790,593 bytes). Seven mixed XA/STR entries remain unsupported.
 - One ordinary file (`MENU/TUTO7.SCR`) was independently extracted from BIN and matched reference SHA-256.
-- `BATTLE/CYOKO.SPR` completed a local extract → manifest → hash-verified `Fft.Content` load → parse → bounded attack-image decode flow. A source-derived golden hash and 16-palette diagnostic PNG path exist; the preview is not an emulator screenshot or final GPU result.
+- `BATTLE/CYOKO.SPR` completed a local extract → manifest → hash-verified `Zodiac.Content` load → parse → bounded attack-image decode flow. A source-derived golden hash and 16-palette diagnostic PNG path exist; the preview is not an emulator screenshot or final GPU result.
 - BIN extraction is an offline preparation workflow only. Runtime should load prepared files from disk and not access the BIN.
 
 Relevant detailed notes: [`PROJECT_PLAN.md`](../PROJECT_PLAN.md), [`asset-inventory-poc.md`](asset-inventory-poc.md), [`sprite-attack-image-decoder-poc.md`](sprite-attack-image-decoder-poc.md), [`architecture/overview.md`](architecture/overview.md), [`battle-transition-poc.md`](battle-transition-poc.md), and [`behavior/`](behavior/).
@@ -515,7 +536,7 @@ Important boundary decisions:
 - Baseline FFT-compatible profile stays distinct from extensions and Lion War content.
 - Load prepared content via manifest/logical IDs. Do not leak sector/LBA handling into game runtime.
 - Avoid arbitrary code execution or plugin buses until typed declarative content and real extension needs are understood.
-- `Fft.Core` currently contains FFT-flavored values. The intended engine/content split is a design goal, not yet an implemented separation; decide what is genuinely reusable before renaming or relocating it.
+- `Zodiac.Framework` currently contains FFT-flavored values. The intended engine/content split is a design goal, not yet an implemented separation; decide what is genuinely reusable before renaming or relocating it.
 
 ## 5. New requirement: content authoring and editing tools
 
@@ -563,8 +584,8 @@ Reference `make check` is valuable for proving C-source byte matches; its Go too
 - Added `BattleState`, unit IDs/state, move command, transition/event types, and a deliberately simplified `BattleSimulator` with immutable successful transitions and rejection results. Tests cover immutability, invalid commands/occupancy/bounds, events, and determinism. This is not an FFT-faithful movement/turn simulator.
 - Added `FlatGridMovementRange` as a narrow cardinal flat-grid prototype.
 - Added source notes for map boundary and movement-input fields. Added the latest standalone terrain-cost propagation proof (uncommitted at handoff).
-- Added managed `Fft.AssetTool`/CLI components in milestones: raw Mode 2 sector reading; PVD/ISO inventory; image profile/hash/CUE checks; reference-inventory comparison; bounded safe extraction; path collision validation; manifest writing; narrow `.SPR` fixed-prefix/attack-image parsing/decoding.
-- Added `Fft.Content` versioned manifest and logical-ID loose-file loading with size/hash validation. Client can load a prepared file; no BIN runtime access.
+- Added managed `Zodiac.AssetTool`/CLI components in milestones: raw Mode 2 sector reading; PVD/ISO inventory; image profile/hash/CUE checks; reference-inventory comparison; bounded safe extraction; path collision validation; manifest writing; narrow `.SPR` fixed-prefix/attack-image parsing/decoding.
+- Added `Zodiac.Content` versioned manifest and logical-ID loose-file loading with size/hash validation. Client can load a prepared file; no BIN runtime access.
 - Extracted all 2,457 ordinary data entries locally and verified hashes. Mixed XA/STR entries are deferred.
 - Used `BATTLE/CYOKO.SPR` for a managed extraction/load/parse/decode proof and output-hash fixture, plus all-palette diagnostic PNG preview. Visual result is explicitly approximate; no native/emulator render equivalence is established.
 - Added architecture overview and ADRs for headless determinism, compatible baseline vs extension profiles, and offline import/loose runtime assets. ADRs 0001 and 0002 are proposed; ADR 0003 is accepted/implemented.
@@ -659,6 +680,6 @@ git diff --check
 For prepared Chocobo fixture verification (requires the ignored local prepared directory):
 
 ```powershell
-dotnet run --project src/Fft.AssetTool.Cli/Fft.AssetTool.Cli.csproj -c Release -- verify-sprite --content-root scratch/prepared-chocobo-content
+dotnet run --project src/Zodiac.AssetTool.Cli/Zodiac.AssetTool.Cli.csproj -c Release -- verify-sprite --content-root scratch/prepared-chocobo-content
 ```
 

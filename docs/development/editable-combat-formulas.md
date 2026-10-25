@@ -11,14 +11,14 @@ to make ordinary source edits possible.
 
 ## Current implementation
 
-`src/Fft.Core/AttackBattleSimulator.cs` already implements the bounded sword attack
+`src/Zodiac.Framework/AttackBattleSimulator.cs` already implements the bounded sword attack
 in C#. It currently combines validation, targeting/facing, ordered evade draws,
 critical calculation, the damage expression, the proc draw and publication of
 immutable state/events. Its source trace and strict limits are in
 [bounded sword implementation](../behavior/bounded-sword-implementation.md).
 It is not a general implementation of every weapon/ability formula.
 
-`src/Fft.Content/Definitions/SwordDefinition.cs` stores validated immutable sword
+`src/Zodiac.Content/Definitions/SwordDefinition.cs` stores validated immutable sword
 data, including power and the supported formula selector. The Core projection is
 `BoundedSwordWeapon`. `AbilityDefinition.cs` currently describes learning metadata;
 it does not yet supply executable ability effects. Do not describe a complete

@@ -19,7 +19,7 @@ From the repository root, with .NET 10 and the verified local input under scratc
 dotnet restore Fft.sln --locked-mode
 dotnet build Fft.sln -c Release --no-restore
 dotnet test Fft.sln -c Release --no-build --no-restore
-dotnet run --project src/Fft.AssetTool.Cli -c Release --no-build -- prepare-general-banner --bin scratch/fft-clean-base-game.bin --output scratch/banner-078-a
+dotnet run --project src/Zodiac.AssetTool.Cli -c Release --no-build -- prepare-general-banner --bin scratch/fft-clean-base-game.bin --output scratch/banner-078-a
 dotnet run --project src/Fft.Client -c Release --no-build -- --general-banner --content-root scratch/banner-078-a
 dotnet run --project src/Fft.Client -c Release --no-build -- --general-banner --content-root scratch/banner-078-a --check scratch/banner-078-preview-a
 ```

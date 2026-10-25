@@ -285,18 +285,18 @@ as the baseline format.
 
 ## Ownership, prepared representation and unsupported behavior
 
-- `Fft.AssetTool` owns archive/block selection, source edition/hash verification,
+- `Zodiac.AssetTool` owns archive/block selection, source edition/hash verification,
   structural parsing, offsets and diagnostics. Imported bytes stay local under
   ignored `scratch/`; the existing prepared-manifest boundary remains in force.
   Preserve unknown original records in an inspection representation if their
   lengths are known; never infer a length or silently omit them in an executable
   conversion. Reject out-of-range opcodes, truncated operands and bad text offsets.
-- `Fft.Content` owns a versioned prepared event definition and its validation:
+- `Zodiac.Content` owns a versioned prepared event definition and its validation:
   stable logical event/variable IDs, source byte offsets, scene/dialect identity,
   required capabilities and resolved instruction targets. Preserve raw label IDs
   and resolution order in provenance. Convert a supported subset to typed
   operations; do not persist pointers, PS1 addresses or mutable thread objects.
-- `Fft.Core` owns the pure transition of explicit event state: selected program
+- `Zodiac.Framework` owns the pure transition of explicit event state: selected program
   identity/version, instruction position, proof-profile variables and terminal
   status. A step budget is a deterministic diagnostic, not a silent script end.
   If an unsupported instruction is present, reject before any state change.
@@ -305,7 +305,7 @@ as the baseline format.
 - `Fft.Client` eventually turns typed presentation requests into dialogue, camera,
   animation and audio, returning explicit acknowledgements. The first event needs
   none. Simulation must not read a display frame counter, key state or file loader.
-  `Zodiac.Engine` receives no FFT opcode table, variable bank or campaign flags;
+  `Tessera.Engine` receives no FFT opcode table, variable bank or campaign flags;
   no reusable interpreter abstraction has yet earned extraction.
 
 The first executable capability set is exactly `F2, BE, B0, B1, A2, D0, D1, D2, D4`

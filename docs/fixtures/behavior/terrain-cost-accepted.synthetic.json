@@ -25,7 +25,7 @@
       "sources": [
         {
           "symbol": "TerrainAwareMovementRange.Calculate",
-          "path": "src/Fft.Core/TerrainAwareMovementRange.cs",
+          "path": "src/Zodiac.Framework/TerrainAwareMovementRange.cs",
           "revision": "2aa8f0cbfaf39b4cd9ddae337805f4485ced7494"
         }
       ],

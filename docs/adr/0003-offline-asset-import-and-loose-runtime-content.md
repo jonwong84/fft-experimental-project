@@ -9,7 +9,7 @@ The user's local BIN is a source for extraction, but the application must be a n
 
 ## Decision
 
-Use `Fft.AssetTool` for offline inventory, extraction, and format conversion. Store prepared files and local game-derived artifacts under ignored `/scratch/`. Use a versioned manifest and logical asset IDs for runtime access through `Fft.Content`. The game client reads prepared files from disk and does not read the BIN.
+Use `Zodiac.AssetTool` for offline inventory, extraction, and format conversion. Store prepared files and local game-derived artifacts under ignored `/scratch/`. Use a versioned manifest and logical asset IDs for runtime access through `Zodiac.Content`. The game client reads prepared files from disk and does not read the BIN.
 
 ## Consequences
 

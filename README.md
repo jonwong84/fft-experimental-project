@@ -1,6 +1,6 @@
-# Zodiac / FFT
+# Tessera Engine · Zodiac Framework · FFT Content
 
-This repository develops **Zodiac**, a reusable C#/.NET engine, alongside a separate **Final Fantasy Tactics implementation** that uses it. The application target is a complete, playable Windows reimplementation of the North American PS1 release, `SCUS-94221`.
+This repository develops **Tessera Engine**, reusable C#/.NET grid and simulation machinery; **Zodiac Framework**, the FFT-specific rules and runtime systems built on it; and **FFT Content**, the game definitions and prepared assets they use. The application target is a complete, playable Windows reimplementation of the North American PS1 release, `SCUS-94221`.
 
 The project is an early prototype. A bounded two-unit battle is playable, and one prepared original map and sprite pose can be inspected together. The original game is not yet playable as a complete campaign.
 
@@ -8,13 +8,15 @@ The project is an early prototype. A bounded two-unit battle is playable, and on
 
 The design has three parts:
 
-- **Zodiac.Engine:** reusable facilities independent of FFT rules, formats and assets.
-- **FFT framework:** FFT simulation rules, compatibility policies, content schemas and runtime systems. These currently live in `Fft.Core` and parts of `Fft.Content`.
-- **FFT content:** particular definitions, scenarios and assets used by that framework, including invented examples and locally prepared original data.
+- **Tessera Engine (`Tessera.Engine`):** reusable grid positions/bounds, movement and deterministic simulation contracts, independent of FFT rules, formats and assets.
+- **Zodiac Framework (`Zodiac.Framework`, `Zodiac.Content`):** FFT simulation rules, compatibility policies, definition schemas, prepared-file loading and runtime systems. `Zodiac.AssetTool` and `Zodiac.AssetTool.Cli` provide offline import/preparation tools.
+- **FFT Content:** particular definitions, scenarios and assets, including invented examples and locally prepared original data. Content packages are data; their schemas and loaders belong to Zodiac.
 
-FFT keeps its own `Fft.*` namespace and project space. FFT depends on Zodiac; Zodiac does not depend on FFT. Rendering, input and UI belong to `Fft.Client`, while original-format preparation belongs to `Fft.AssetTool` and `Fft.AssetTool.Cli`. Simulation stays independent of graphics, input, wall-clock time and file I/O.
+Zodiac depends on Tessera; Tessera has no dependency on Zodiac or FFT. `Fft.Client` remains the FFT application host and composition root for rendering, input, UI and selected content. Simulation stays independent of graphics, input, wall-clock time and file I/O. Existing `fft.*` data formats, logical asset IDs, compatibility profiles and save schemas retain their identities.
 
-**Zodiac's implemented scope is currently small:** grid positions/bounds, an unobstructed flat-grid movement calculation, and deterministic RNG contracts. FFT owns the PS1 RNG implementation and gameplay draw ordering, terrain-aware movement, turn scheduling, combat and scenario outcomes. The [Relay sample](samples/Relay/README.md) demonstrates the engine's movement calculation with independent, invented rules. Broader engine capabilities will be extracted incrementally as their reusable contracts become clear.
+**Tessera's implemented scope is currently small:** grid positions/bounds, an unobstructed flat-grid movement calculation, and deterministic RNG contracts. Zodiac owns the PS1 RNG implementation and gameplay draw ordering, terrain-aware movement, turn scheduling, combat and scenario outcomes. The [Relay sample](samples/Relay/README.md) demonstrates Tessera's movement calculation with independent, invented rules. Broader engine capabilities will be extracted incrementally as their reusable contracts become clear.
+
+The naming migration replaces `Zodiac.Engine` with `Tessera.Engine`, `Fft.Core` with `Zodiac.Framework`, `Fft.Content` with `Zodiac.Content`, and `Fft.AssetTool`/`.Cli` with `Zodiac.AssetTool`/`.Cli`, including their test projects and namespaces. The solution remains `Fft.sln`. Historical evidence retains its recorded names, paths and hashes; current commands and project links use the new names.
 
 See the [architecture overview](docs/architecture/overview.md) and [ADR 0004](docs/adr/0004-zodiac-engine-and-fft-game-boundary.md) for the ownership boundary and intended direction.
 
@@ -80,8 +82,8 @@ The running application loads prepared files. The original BIN is an offline imp
 The import tools verify the supported local image profile and compare paths, LBAs and file hashes against the reference inventory. Ordinary-file extraction supports selected paths or all `data` entries; mixed XA/STR entries remain unsupported. Choose a fresh output directory under `scratch/`.
 
 ```powershell
-dotnet run --project src/Fft.AssetTool.Cli -c Release --no-build --no-restore -- inventory --bin scratch/fft-clean-base-game.bin --cue scratch/fft-clean-base-game.cue
-dotnet run --project src/Fft.AssetTool.Cli -c Release --no-build --no-restore -- extract --bin scratch/fft-clean-base-game.bin --cue scratch/fft-clean-base-game.cue --all-data --output scratch/all-data-extraction
+dotnet run --project src/Zodiac.AssetTool.Cli -c Release --no-build --no-restore -- inventory --bin scratch/fft-clean-base-game.bin --cue scratch/fft-clean-base-game.cue
+dotnet run --project src/Zodiac.AssetTool.Cli -c Release --no-build --no-restore -- extract --bin scratch/fft-clean-base-game.bin --cue scratch/fft-clean-base-game.cue --all-data --output scratch/all-data-extraction
 ```
 
 See the [asset inventory proof](docs/asset-inventory-poc.md) and [sprite decoder proof](docs/sprite-attack-image-decoder-poc.md) for earlier extraction/diagnostic workflows. Prepared map and pose conversion commands are in their linked guides.
@@ -89,7 +91,7 @@ See the [asset inventory proof](docs/asset-inventory-poc.md) and [sprite decoder
 Structural content metadata can be validated without original files:
 
 ```powershell
-dotnet run --project src/Fft.AssetTool.Cli -c Release --no-build --no-restore -- validate-content --package docs/fixtures/content/metadata-synthetic.json
+dotnet run --project src/Zodiac.AssetTool.Cli -c Release --no-build --no-restore -- validate-content --package docs/fixtures/content/metadata-synthetic.json
 ```
 
 Repeated `--addon <path>` options validate explicitly selected additions against the baseline. This checks metadata structure and references; it does not establish battle readiness or original-game equivalence. See [content packages](docs/architecture/zod-016-content-packages.md) for authoring, export and diagnostics.

@@ -2,8 +2,8 @@ using System.Collections.Immutable;
 using System.Security.Cryptography;
 using System.Text.Json;
 using Fft.Client.Presentation;
-using Fft.Content;
-using Fft.Core.Events;
+using Zodiac.Content;
+using Zodiac.Framework.Events;
 
 // Optional finite CPU evidence host. No emulator, original formats, GPU or window are used.
 try

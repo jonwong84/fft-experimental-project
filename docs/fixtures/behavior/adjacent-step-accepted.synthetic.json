@@ -24,12 +24,12 @@
       "claim": "Synthetic typed transition expectation composing the bounded facing-edge geometry gate with immutable managed state/events; no whole-game equivalence claim.",
       "sources": [
         {
-          "path": "src/Fft.Core/BattleSimulator.cs",
+          "path": "src/Zodiac.Framework/BattleSimulator.cs",
           "symbol": "BattleSimulator.Apply",
           "revision": "7af9f8e479de4df1fcadfa10c178bd468e25a0c0"
         },
         {
-          "path": "src/Fft.Core/BattleUnitState.cs",
+          "path": "src/Zodiac.Framework/BattleUnitState.cs",
           "symbol": "BattleUnitState.MoveTo",
           "revision": "7af9f8e479de4df1fcadfa10c178bd468e25a0c0"
         }

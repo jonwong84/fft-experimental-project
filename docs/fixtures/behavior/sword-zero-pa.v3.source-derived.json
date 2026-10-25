@@ -25,7 +25,7 @@
       "sources": [
         {
           "revision": "1caa692d1cc00b5dce8c7cc2e1dc043c5b63a99c",
-          "path": "src/Fft.Core/AttackBattleSnapshot.cs",
+          "path": "src/Zodiac.Framework/AttackBattleSnapshot.cs",
           "symbol": "AttackUnitCommand and AttackResultEvent contracts"
         },
         {

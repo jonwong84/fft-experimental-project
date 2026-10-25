@@ -1,5 +1,5 @@
 using Fft.Client.Presentation;
-using Fft.Core;
+using Zodiac.Framework;
 using Xunit;
 
 namespace Fft.Client.Tests;

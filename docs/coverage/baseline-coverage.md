@@ -10,7 +10,7 @@ These entries are planning scopes, not a feature-completion percentage or a comp
 
 ### COV-SIM-001 — PS1 RNG algorithm and gameplay draw ordering
 
-Status: **partial**; scope: **baseline**; ticket: **ZOD-038**; owner area: Fft.Core simulation.
+Status: **partial**; scope: **baseline**; ticket: **ZOD-038**; owner area: Zodiac.Framework simulation.
 
 FFT BIOS RNG algorithm/state is implemented with supplied-BIOS vectors; draw ordering is covered only for bounded CT/sword paths.
 
@@ -18,9 +18,9 @@ Evidence: [docs/behavior/bios-rng-verification.md](../../docs/behavior/bios-rng-
 
 Source entry points (pinned revision above; not full traces): [include/fft/random.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/random.h), [src/battle/turn/clock.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/turn/clock.c), [src/lib/event/script/control.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/lib/event/script/control.c).
 
-Current implementation: [src/Fft.Core/FftBiosRandom.cs](../../src/Fft.Core/FftBiosRandom.cs).
+Current implementation: [src/Zodiac.Framework/FftBiosRandom.cs](../../src/Zodiac.Framework/FftBiosRandom.cs).
 
-Existing bounded checks: [tests/Fft.Core.Tests/FftBiosRandomTests.cs](../../tests/Fft.Core.Tests/FftBiosRandomTests.cs), [tests/Fft.Core.Tests/RandomReplayRunnerTests.cs](../../tests/Fft.Core.Tests/RandomReplayRunnerTests.cs).
+Existing bounded checks: [tests/Zodiac.Framework.Tests/FftBiosRandomTests.cs](../../tests/Zodiac.Framework.Tests/FftBiosRandomTests.cs), [tests/Zodiac.Framework.Tests/RandomReplayRunnerTests.cs](../../tests/Zodiac.Framework.Tests/RandomReplayRunnerTests.cs).
 
 Manual checkpoint (pending-original-observation): Observe controlled original battle inputs and record incoming RNG state/draw order.
 
@@ -32,7 +32,7 @@ Next action: Extend ordering traces one new rule/caller at a time.
 
 ### COV-SIM-002 — CT, readiness, turn choices and AT prediction
 
-Status: **partial**; scope: **baseline**; ticket: **ZOD-036**; owner area: Fft.Core simulation.
+Status: **partial**; scope: **baseline**; ticket: **ZOD-036**; owner area: Zodiac.Framework simulation.
 
 Positive-Speed living ordinary units, CT refunds and explicit move/action/Wait are implemented; full scheduler is absent.
 
@@ -40,9 +40,9 @@ Evidence: [docs/behavior/ct-turn-implementation.md](../../docs/behavior/ct-turn-
 
 Source entry points (pinned revision above; not full traces): [src/battle/turn/clock.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/turn/clock.c), [include/fft/turn.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/turn.h).
 
-Current implementation: [src/Fft.Core/TurnCycle.cs](../../src/Fft.Core/TurnCycle.cs), [src/Fft.Core/TurnBattleState.cs](../../src/Fft.Core/TurnBattleState.cs).
+Current implementation: [src/Zodiac.Framework/TurnCycle.cs](../../src/Zodiac.Framework/TurnCycle.cs), [src/Zodiac.Framework/TurnBattleState.cs](../../src/Zodiac.Framework/TurnBattleState.cs).
 
-Existing bounded checks: [tests/Fft.Core.Tests/TurnCycleTests.cs](../../tests/Fft.Core.Tests/TurnCycleTests.cs), [tests/Fft.Core.Tests/TurnBattleSimulatorTests.cs](../../tests/Fft.Core.Tests/TurnBattleSimulatorTests.cs).
+Existing bounded checks: [tests/Zodiac.Framework.Tests/TurnCycleTests.cs](../../tests/Zodiac.Framework.Tests/TurnCycleTests.cs), [tests/Zodiac.Framework.Tests/TurnBattleSimulatorTests.cs](../../tests/Zodiac.Framework.Tests/TurnBattleSimulatorTests.cs).
 
 Manual checkpoint (pending-original-observation): Compare readiness, ties, Wait refunds and charged/status turns with original observations.
 
@@ -54,7 +54,7 @@ Next action: Select one status/charge interaction after a source trace.
 
 ### COV-SIM-003 — Ordinary movement and terrain costs
 
-Status: **partial**; scope: **baseline**; ticket: **ZOD-037**; owner area: Fft.Core simulation.
+Status: **partial**; scope: **baseline**; ticket: **ZOD-037**; owner area: Zodiac.Framework simulation.
 
 Flat, terrain-cost and restricted adjacent-step policies exist; M1 uses the restricted ordinary policy.
 
@@ -62,9 +62,9 @@ Evidence: [docs/behavior/adjacent-step-implementation.md](../../docs/behavior/ad
 
 Source entry points (pinned revision above; not full traces): [src/battle/map/move_range.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/map/move_range.c), [src/battle/units/movement.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/units/movement.c).
 
-Current implementation: [src/Fft.Core/OrdinaryAdjacentStepRange.cs](../../src/Fft.Core/OrdinaryAdjacentStepRange.cs).
+Current implementation: [src/Zodiac.Framework/OrdinaryAdjacentStepRange.cs](../../src/Zodiac.Framework/OrdinaryAdjacentStepRange.cs).
 
-Existing bounded checks: [tests/Fft.Core.Tests/OrdinaryAdjacentStepTests.cs](../../tests/Fft.Core.Tests/OrdinaryAdjacentStepTests.cs), [tests/Fft.Core.Tests/TerrainAwareMovementRangeTests.cs](../../tests/Fft.Core.Tests/TerrainAwareMovementRangeTests.cs).
+Existing bounded checks: [tests/Zodiac.Framework.Tests/OrdinaryAdjacentStepTests.cs](../../tests/Zodiac.Framework.Tests/OrdinaryAdjacentStepTests.cs), [tests/Zodiac.Framework.Tests/TerrainAwareMovementRangeTests.cs](../../tests/Zodiac.Framework.Tests/TerrainAwareMovementRangeTests.cs).
 
 Manual checkpoint (pending-original-observation): Compare legal destinations and chosen paths for flat and elevation cases.
 
@@ -76,7 +76,7 @@ Next action: Trace one movement family with callers and regression vectors.
 
 ### COV-SIM-004 — Occupancy, allegiance, mounts and special movement
 
-Status: **absent**; scope: **baseline**; ticket: **ZOD-037**; owner area: Fft.Core simulation.
+Status: **absent**; scope: **baseline**; ticket: **ZOD-037**; owner area: Zodiac.Framework simulation.
 
 M1 blocks other-unit occupancy in its supported domain; no general allegiance/mount/fly/teleport rule set exists.
 
@@ -96,7 +96,7 @@ Next action: Break ZOD-037 into separate ordinary-geometry and special-mode chil
 
 ### COV-SIM-005 — Targeting, hit/evasion and immediate sword damage
 
-Status: **partial**; scope: **baseline**; ticket: **ZOD-038**; owner area: Fft.Core simulation.
+Status: **partial**; scope: **baseline**; ticket: **ZOD-038**; owner area: Zodiac.Framework simulation.
 
 One range-1 neutral empty-proc sword with explicit effective stats, neutral zodiac and no equipment evade is executable.
 
@@ -104,9 +104,9 @@ Evidence: [docs/behavior/bounded-sword-implementation.md](../../docs/behavior/bo
 
 Source entry points (pinned revision above; not full traces): [src/battle/combat/targets.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/combat/targets.c), [src/battle/combat/resolution.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/combat/resolution.c), [src/battle/combat/formula_core.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/combat/formula_core.c).
 
-Current implementation: [src/Fft.Core/AttackBattleSimulator.cs](../../src/Fft.Core/AttackBattleSimulator.cs), [src/Fft.Core/PhysicalWeaponEvasion.cs](../../src/Fft.Core/PhysicalWeaponEvasion.cs).
+Current implementation: [src/Zodiac.Framework/AttackBattleSimulator.cs](../../src/Zodiac.Framework/AttackBattleSimulator.cs), [src/Zodiac.Framework/PhysicalWeaponEvasion.cs](../../src/Zodiac.Framework/PhysicalWeaponEvasion.cs).
 
-Existing bounded checks: [tests/Fft.Core.Tests/AttackBattleSimulatorTests.cs](../../tests/Fft.Core.Tests/AttackBattleSimulatorTests.cs), [tests/Fft.Core.Tests/AttackFixtureV3Tests.cs](../../tests/Fft.Core.Tests/AttackFixtureV3Tests.cs).
+Existing bounded checks: [tests/Zodiac.Framework.Tests/AttackBattleSimulatorTests.cs](../../tests/Zodiac.Framework.Tests/AttackBattleSimulatorTests.cs), [tests/Zodiac.Framework.Tests/AttackFixtureV3Tests.cs](../../tests/Zodiac.Framework.Tests/AttackFixtureV3Tests.cs).
 
 Manual checkpoint (pending-original-observation): Compare controlled original hit/miss/critical/damage and resulting facing/HP.
 
@@ -118,7 +118,7 @@ Next action: Choose one additional action/target family under ZOD-038.
 
 ### COV-SIM-006 — Abilities, magic, recovery and action-formula catalog
 
-Status: **absent**; scope: **baseline**; ticket: **ZOD-038**; owner area: Fft.Core simulation.
+Status: **absent**; scope: **baseline**; ticket: **ZOD-038**; owner area: Zodiac.Framework simulation.
 
 Metadata models/imports do not execute the original action catalog.
 
@@ -138,7 +138,7 @@ Next action: Inventory formula families before translating one bounded ability.
 
 ### COV-SIM-007 — Status durations, triggers, reactions and supports
 
-Status: **absent**; scope: **baseline**; ticket: **ZOD-036**; owner area: Fft.Core simulation.
+Status: **absent**; scope: **baseline**; ticket: **ZOD-036**; owner area: Zodiac.Framework simulation.
 
 Only resulting Healthy/Critical/Dead projection exists in the sword slice.
 
@@ -158,7 +158,7 @@ Next action: Create a child for a single complete status lifecycle.
 
 ### COV-SIM-008 — Original knockback, KO scheduling, revival and pickups
 
-Status: **absent**; scope: **baseline**; ticket: **ZOD-036**; owner area: Fft.Core simulation.
+Status: **absent**; scope: **baseline**; ticket: **ZOD-036**; owner area: Zodiac.Framework simulation.
 
 M1 stops at first KO; original knockback and post-KO lifecycle are unsupported.
 
@@ -178,7 +178,7 @@ Next action: Trace original behavior first; keep the planned knockback modificat
 
 ### COV-SIM-009 — Enemy, ally and automatic-battle AI
 
-Status: **absent**; scope: **baseline**; ticket: **ZOD-038**; owner area: Fft.Core simulation.
+Status: **absent**; scope: **baseline**; ticket: **ZOD-038**; owner area: Zodiac.Framework simulation.
 
 Playable sample controls both units locally; no AI policy executes.
 
@@ -198,7 +198,7 @@ Next action: Select one reproducible AI decision and its required action domain.
 
 ### COV-SIM-010 — XP, JP, growth, learned abilities and job unlocks
 
-Status: **absent**; scope: **baseline**; ticket: **ZOD-039**; owner area: Fft.Core simulation.
+Status: **absent**; scope: **baseline**; ticket: **ZOD-039**; owner area: Zodiac.Framework simulation.
 
 Job/ability metadata and base-job setup do not implement persistent progression.
 
@@ -218,7 +218,7 @@ Next action: Split progression into award, learning and stat-rebuild children.
 
 ### COV-SIM-011 — Original victory/loss, rewards and post-battle party changes
 
-Status: **absent**; scope: **baseline**; ticket: **ZOD-041**; owner area: Fft.Core simulation.
+Status: **absent**; scope: **baseline**; ticket: **ZOD-041**; owner area: Zodiac.Framework simulation.
 
 Synthetic first-KO victory is invented and cannot stand in for original battle conditions.
 
@@ -240,7 +240,7 @@ Next action: Inventory one event-to-battle-to-results path.
 
 ### COV-CAT-001 — Jobs, skillsets and ability metadata
 
-Status: **partial**; scope: **baseline**; ticket: **ZOD-039**; owner area: Fft.Content definitions and offline import.
+Status: **partial**; scope: **baseline**; ticket: **ZOD-039**; owner area: Zodiac.Content definitions and offline import.
 
 Typed metadata, reference validation and selected Squire-family original import exist.
 
@@ -248,9 +248,9 @@ Evidence: [docs/behavior/original-metadata-import.md](../../docs/behavior/origin
 
 Source entry points (pinned revision above; not full traces): [include/fft/job.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/job.h), [include/fft/skillset.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/skillset.h), [src/main/party.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/main/party.c).
 
-Current implementation: [src/Fft.Content/Definitions/JobDefinition.cs](../../src/Fft.Content/Definitions/JobDefinition.cs), [src/Fft.AssetTool/OriginalMetadataRecords.cs](../../src/Fft.AssetTool/OriginalMetadataRecords.cs).
+Current implementation: [src/Zodiac.Content/Definitions/JobDefinition.cs](../../src/Zodiac.Content/Definitions/JobDefinition.cs), [src/Zodiac.AssetTool/OriginalMetadataRecords.cs](../../src/Zodiac.AssetTool/OriginalMetadataRecords.cs).
 
-Existing bounded checks: [tests/Fft.AssetTool.Tests/OriginalMetadataRecordsTests.cs](../../tests/Fft.AssetTool.Tests/OriginalMetadataRecordsTests.cs), [tests/Fft.Content.Tests/Definitions/DefinitionTests.cs](../../tests/Fft.Content.Tests/Definitions/DefinitionTests.cs).
+Existing bounded checks: [tests/Zodiac.AssetTool.Tests/OriginalMetadataRecordsTests.cs](../../tests/Zodiac.AssetTool.Tests/OriginalMetadataRecordsTests.cs), [tests/Zodiac.Content.Tests/Definitions/DefinitionTests.cs](../../tests/Zodiac.Content.Tests/Definitions/DefinitionTests.cs).
 
 Manual checkpoint (pending-original-observation): Inspect one original job/ability menu against imported records.
 
@@ -262,7 +262,7 @@ Next action: Expand one record family with full provenance and unsupported-field
 
 ### COV-CAT-002 — Items, equipment and effective combat stats
 
-Status: **partial**; scope: **baseline**; ticket: **ZOD-039**; owner area: Fft.Content definitions and offline import.
+Status: **partial**; scope: **baseline**; ticket: **ZOD-039**; owner area: Zodiac.Content definitions and offline import.
 
 Selected sword/Attack import and schema-2 raw/effective evade representation exist; full equipment stat derivation is absent.
 
@@ -270,9 +270,9 @@ Evidence: [docs/behavior/retail-sword-representation.md](../../docs/behavior/ret
 
 Source entry points (pinned revision above; not full traces): [include/fft/item.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/item.h), [src/main/unit_loadout.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/main/unit_loadout.c), [src/main/unit_stats.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/main/unit_stats.c).
 
-Current implementation: [src/Fft.AssetTool/OriginalSwordRecords.cs](../../src/Fft.AssetTool/OriginalSwordRecords.cs), [src/Fft.Content/BattleSetup/AttackBattleSetup.cs](../../src/Fft.Content/BattleSetup/AttackBattleSetup.cs).
+Current implementation: [src/Zodiac.AssetTool/OriginalSwordRecords.cs](../../src/Zodiac.AssetTool/OriginalSwordRecords.cs), [src/Zodiac.Content/BattleSetup/AttackBattleSetup.cs](../../src/Zodiac.Content/BattleSetup/AttackBattleSetup.cs).
 
-Existing bounded checks: [tests/Fft.AssetTool.Tests/OriginalSwordRecordsTests.cs](../../tests/Fft.AssetTool.Tests/OriginalSwordRecordsTests.cs), [tests/Fft.Content.Tests/AttackBattleSetupTests.cs](../../tests/Fft.Content.Tests/AttackBattleSetupTests.cs).
+Existing bounded checks: [tests/Zodiac.AssetTool.Tests/OriginalSwordRecordsTests.cs](../../tests/Zodiac.AssetTool.Tests/OriginalSwordRecordsTests.cs), [tests/Zodiac.Content.Tests/AttackBattleSetupTests.cs](../../tests/Zodiac.Content.Tests/AttackBattleSetupTests.cs).
 
 Manual checkpoint (pending-original-observation): Compare selected equipment fields, legal loadouts and resulting displayed/effective stats.
 
@@ -284,7 +284,7 @@ Next action: Separate raw import completeness from effective-stat implementation
 
 ### COV-CAT-003 — Characters, monsters, party records and ENTD encounters
 
-Status: **absent**; scope: **baseline**; ticket: **ZOD-039**; owner area: Fft.Content definitions and offline import.
+Status: **absent**; scope: **baseline**; ticket: **ZOD-039**; owner area: Zodiac.Content definitions and offline import.
 
 No general original party/ENTD definition-to-runtime path; sample units are invented.
 
@@ -304,7 +304,7 @@ Next action: Trace one ordinary ENTD record and required party/runtime inputs.
 
 ### COV-CAT-004 — Maps, terrain and scene definitions
 
-Status: **partial**; scope: **baseline**; ticket: **ZOD-039**; owner area: Fft.Content definitions and offline import.
+Status: **partial**; scope: **baseline**; ticket: **ZOD-039**; owner area: Zodiac.Content definitions and offline import.
 
 One frozen MAP003 base scene and both native terrain layers can be prepared/loaded; combat remains restricted to synthetic height-10 terrain.
 
@@ -312,9 +312,9 @@ Evidence: [docs/development/prepared-map-slice.md](../../docs/development/prepar
 
 Source entry points (pinned revision above; not full traces): [include/fft/battle_map.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/battle_map.h), [src/battle/map/terrain.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/map/terrain.c), [src/battle/map/gns.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/map/gns.c).
 
-Current implementation: [src/Fft.AssetTool/OriginalBattleMap.cs](../../src/Fft.AssetTool/OriginalBattleMap.cs), [src/Fft.Content/PreparedBattleMap.cs](../../src/Fft.Content/PreparedBattleMap.cs).
+Current implementation: [src/Zodiac.AssetTool/OriginalBattleMap.cs](../../src/Zodiac.AssetTool/OriginalBattleMap.cs), [src/Zodiac.Content/PreparedBattleMap.cs](../../src/Zodiac.Content/PreparedBattleMap.cs).
 
-Existing bounded checks: [tests/Fft.AssetTool.Tests/OriginalBattleMapTests.cs](../../tests/Fft.AssetTool.Tests/OriginalBattleMapTests.cs), [tests/Fft.Content.Tests/PreparedBattleMapTests.cs](../../tests/Fft.Content.Tests/PreparedBattleMapTests.cs).
+Existing bounded checks: [tests/Zodiac.AssetTool.Tests/OriginalBattleMapTests.cs](../../tests/Zodiac.AssetTool.Tests/OriginalBattleMapTests.cs), [tests/Zodiac.Content.Tests/PreparedBattleMapTests.cs](../../tests/Zodiac.Content.Tests/PreparedBattleMapTests.cs).
 
 Manual checkpoint (pending-original-observation): Compare terrain alignment and selected day/weather variants with original captures.
 
@@ -326,7 +326,7 @@ Next action: Enumerate required map variants separately from geometry rendering.
 
 ### COV-CAT-005 — Dialogue, names, descriptions and localized text
 
-Status: **absent**; scope: **baseline**; ticket: **ZOD-039**; owner area: Fft.Content definitions and offline import.
+Status: **absent**; scope: **baseline**; ticket: **ZOD-039**; owner area: Zodiac.Content definitions and offline import.
 
 Synthetic TinyFont and labels do not provide original text banks, encoding or fonts.
 
@@ -346,7 +346,7 @@ Next action: Choose one original text-bank decode and prepared text contract.
 
 ### COV-CAT-006 — Stores, loot, recruit and world-content tables
 
-Status: **absent**; scope: **baseline**; ticket: **ZOD-039**; owner area: Fft.Content definitions and offline import.
+Status: **absent**; scope: **baseline**; ticket: **ZOD-039**; owner area: Zodiac.Content definitions and offline import.
 
 No shared validated catalog for shops, encounters, propositions or rewards.
 
@@ -556,9 +556,9 @@ Evidence: [docs/architecture/zod-040-event-script-investigation.md](../../docs/a
 
 Source entry points (pinned revision above; not full traces): [src/battle/event/interpreter.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/event/interpreter.c), [src/world/event/interpreter.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/event/interpreter.c), [src/lib/event/script/control.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/lib/event/script/control.c), [src/wldcore/map/location_script.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/wldcore/map/location_script.c), [src/lib/menu/command_prompts.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/lib/menu/command_prompts.c), [src/battle/event/frame.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/event/frame.c), [src/event/attack/scenario_setup.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/event/attack/scenario_setup.c), [src/lib/thread/scheduler.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/lib/thread/scheduler.c), [include/fft/thread.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/thread.h), [src/event/require/entry_conditions.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/event/require/entry_conditions.c), [src/event/require/conditions.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/event/require/conditions.c), [src/event/require/screen_support.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/event/require/screen_support.c), [src/lib/event/scene/menu_overlays.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/lib/event/scene/menu_overlays.c), [src/lib/menu/display.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/lib/menu/display.c), [src/lib/event/scene/control.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/lib/event/scene/control.c), [include/fft/script_instruction.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/script_instruction.h), [include/psx/pad.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/psx/pad.h), [target/event.yaml](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/target/event.yaml), [include/fft/gfx.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/gfx.h), [include/psx/libgpu.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/psx/libgpu.h), [src/battle/frame.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/frame.c), [src/battle/entry.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/entry.c), [src/platform/psyq/libgpu/SetDefDrawEnv.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/platform/psyq/libgpu/SetDefDrawEnv.c).
 
-Current implementation: [src/Fft.AssetTool/ScenarioBlockInspector.cs](../../src/Fft.AssetTool/ScenarioBlockInspector.cs), [src/Fft.AssetTool.Cli/ScenarioEventExporter.cs](../../src/Fft.AssetTool.Cli/ScenarioEventExporter.cs), [src/Fft.Content/Events/PreparedScenarioEvent.cs](../../src/Fft.Content/Events/PreparedScenarioEvent.cs), [src/Fft.Core/Events/ConditionalEventProgram.cs](../../src/Fft.Core/Events/ConditionalEventProgram.cs), [src/Fft.Core/Events/ConditionalEventState.cs](../../src/Fft.Core/Events/ConditionalEventState.cs), [src/Fft.Core/Events/ConditionalEventExecutor.cs](../../src/Fft.Core/Events/ConditionalEventExecutor.cs), [src/Fft.Core/Events/TimedEventProgram.cs](../../src/Fft.Core/Events/TimedEventProgram.cs), [src/Fft.Core/Events/TimedEventState.cs](../../src/Fft.Core/Events/TimedEventState.cs), [src/Fft.Core/Events/TimedEventExecutor.cs](../../src/Fft.Core/Events/TimedEventExecutor.cs), [src/Fft.Core/Events/SceneTaskState.cs](../../src/Fft.Core/Events/SceneTaskState.cs), [src/Fft.Core/Events/SceneTaskResult.cs](../../src/Fft.Core/Events/SceneTaskResult.cs), [src/Fft.Core/Events/SceneTaskLedger.cs](../../src/Fft.Core/Events/SceneTaskLedger.cs), [src/Fft.Core/Events/SceneEventProgram.cs](../../src/Fft.Core/Events/SceneEventProgram.cs), [src/Fft.Core/Events/SceneEventState.cs](../../src/Fft.Core/Events/SceneEventState.cs), [src/Fft.Core/Events/SceneEventExecutor.cs](../../src/Fft.Core/Events/SceneEventExecutor.cs), [src/Fft.Core/Events/SceneEventResult.cs](../../src/Fft.Core/Events/SceneEventResult.cs), [src/Fft.Core/Events/GeneralBannerState.cs](../../src/Fft.Core/Events/GeneralBannerState.cs), [src/Fft.Core/Events/BannerSceneResult.cs](../../src/Fft.Core/Events/BannerSceneResult.cs), [src/Fft.Core/Events/BannerSceneExecutor.cs](../../src/Fft.Core/Events/BannerSceneExecutor.cs), [src/Fft.AssetTool/GeneralBannerDecoder.cs](../../src/Fft.AssetTool/GeneralBannerDecoder.cs), [src/Fft.AssetTool.Cli/PrepareGeneralBannerCommand.cs](../../src/Fft.AssetTool.Cli/PrepareGeneralBannerCommand.cs), [src/Fft.Content/PreparedGeneralBanner.cs](../../src/Fft.Content/PreparedGeneralBanner.cs), [src/Fft.Client/Presentation/GeneralBannerPresentation.cs](../../src/Fft.Client/Presentation/GeneralBannerPresentation.cs), [src/Fft.Client/Presentation/GeneralBannerPreview.cs](../../src/Fft.Client/Presentation/GeneralBannerPreview.cs), [tools/verification/inspect_banner_event.py](../../tools/verification/inspect_banner_event.py).
+Current implementation: [src/Zodiac.AssetTool/ScenarioBlockInspector.cs](../../src/Zodiac.AssetTool/ScenarioBlockInspector.cs), [src/Zodiac.AssetTool.Cli/ScenarioEventExporter.cs](../../src/Zodiac.AssetTool.Cli/ScenarioEventExporter.cs), [src/Zodiac.Content/Events/PreparedScenarioEvent.cs](../../src/Zodiac.Content/Events/PreparedScenarioEvent.cs), [src/Zodiac.Framework/Events/ConditionalEventProgram.cs](../../src/Zodiac.Framework/Events/ConditionalEventProgram.cs), [src/Zodiac.Framework/Events/ConditionalEventState.cs](../../src/Zodiac.Framework/Events/ConditionalEventState.cs), [src/Zodiac.Framework/Events/ConditionalEventExecutor.cs](../../src/Zodiac.Framework/Events/ConditionalEventExecutor.cs), [src/Zodiac.Framework/Events/TimedEventProgram.cs](../../src/Zodiac.Framework/Events/TimedEventProgram.cs), [src/Zodiac.Framework/Events/TimedEventState.cs](../../src/Zodiac.Framework/Events/TimedEventState.cs), [src/Zodiac.Framework/Events/TimedEventExecutor.cs](../../src/Zodiac.Framework/Events/TimedEventExecutor.cs), [src/Zodiac.Framework/Events/SceneTaskState.cs](../../src/Zodiac.Framework/Events/SceneTaskState.cs), [src/Zodiac.Framework/Events/SceneTaskResult.cs](../../src/Zodiac.Framework/Events/SceneTaskResult.cs), [src/Zodiac.Framework/Events/SceneTaskLedger.cs](../../src/Zodiac.Framework/Events/SceneTaskLedger.cs), [src/Zodiac.Framework/Events/SceneEventProgram.cs](../../src/Zodiac.Framework/Events/SceneEventProgram.cs), [src/Zodiac.Framework/Events/SceneEventState.cs](../../src/Zodiac.Framework/Events/SceneEventState.cs), [src/Zodiac.Framework/Events/SceneEventExecutor.cs](../../src/Zodiac.Framework/Events/SceneEventExecutor.cs), [src/Zodiac.Framework/Events/SceneEventResult.cs](../../src/Zodiac.Framework/Events/SceneEventResult.cs), [src/Zodiac.Framework/Events/GeneralBannerState.cs](../../src/Zodiac.Framework/Events/GeneralBannerState.cs), [src/Zodiac.Framework/Events/BannerSceneResult.cs](../../src/Zodiac.Framework/Events/BannerSceneResult.cs), [src/Zodiac.Framework/Events/BannerSceneExecutor.cs](../../src/Zodiac.Framework/Events/BannerSceneExecutor.cs), [src/Zodiac.AssetTool/GeneralBannerDecoder.cs](../../src/Zodiac.AssetTool/GeneralBannerDecoder.cs), [src/Zodiac.AssetTool.Cli/PrepareGeneralBannerCommand.cs](../../src/Zodiac.AssetTool.Cli/PrepareGeneralBannerCommand.cs), [src/Zodiac.Content/PreparedGeneralBanner.cs](../../src/Zodiac.Content/PreparedGeneralBanner.cs), [src/Fft.Client/Presentation/GeneralBannerPresentation.cs](../../src/Fft.Client/Presentation/GeneralBannerPresentation.cs), [src/Fft.Client/Presentation/GeneralBannerPreview.cs](../../src/Fft.Client/Presentation/GeneralBannerPreview.cs), [tools/verification/inspect_banner_event.py](../../tools/verification/inspect_banner_event.py).
 
-Existing bounded checks: [tests/Fft.AssetTool.Tests/ScenarioBlockInspectorTests.cs](../../tests/Fft.AssetTool.Tests/ScenarioBlockInspectorTests.cs), [tests/Fft.AssetTool.Cli.Tests/ScenarioEventExporterTests.cs](../../tests/Fft.AssetTool.Cli.Tests/ScenarioEventExporterTests.cs), [tests/Fft.Content.Tests/PreparedScenarioEventTests.cs](../../tests/Fft.Content.Tests/PreparedScenarioEventTests.cs), [tests/Fft.Core.Tests/ConditionalEventExecutorTests.cs](../../tests/Fft.Core.Tests/ConditionalEventExecutorTests.cs), [tests/Fft.Content.Tests/PreparedScenarioExecutionTests.cs](../../tests/Fft.Content.Tests/PreparedScenarioExecutionTests.cs), [tests/Fft.Core.Tests/TimedEventExecutorTests.cs](../../tests/Fft.Core.Tests/TimedEventExecutorTests.cs), [tests/Fft.Content.Tests/PreparedTimedScenarioTests.cs](../../tests/Fft.Content.Tests/PreparedTimedScenarioTests.cs), [tests/Fft.AssetTool.Cli.Tests/TimedScenarioEventExporterTests.cs](../../tests/Fft.AssetTool.Cli.Tests/TimedScenarioEventExporterTests.cs), [tests/Fft.Core.Tests/SceneTaskContractTests.cs](../../tests/Fft.Core.Tests/SceneTaskContractTests.cs), [tests/Fft.Core.Tests/SceneTaskLedgerTests.cs](../../tests/Fft.Core.Tests/SceneTaskLedgerTests.cs), [tests/Fft.Core.Tests/SceneEventExecutorTests.cs](../../tests/Fft.Core.Tests/SceneEventExecutorTests.cs), [tests/Fft.Content.Tests/PreparedSceneEventTests.cs](../../tests/Fft.Content.Tests/PreparedSceneEventTests.cs), [tests/Fft.AssetTool.Cli.Tests/SceneScenarioEventExporterTests.cs](../../tests/Fft.AssetTool.Cli.Tests/SceneScenarioEventExporterTests.cs), [tests/Fft.Core.Tests/GeneralBannerContractTests.cs](../../tests/Fft.Core.Tests/GeneralBannerContractTests.cs), [tests/Fft.Core.Tests/BannerSceneBoundaryTests.cs](../../tests/Fft.Core.Tests/BannerSceneBoundaryTests.cs), [tests/Fft.AssetTool.Tests/GeneralBannerDecoderTests.cs](../../tests/Fft.AssetTool.Tests/GeneralBannerDecoderTests.cs), [tests/Fft.Content.Tests/PreparedGeneralBannerTests.cs](../../tests/Fft.Content.Tests/PreparedGeneralBannerTests.cs), [tests/Fft.Client.Tests/GeneralBannerPresentationTests.cs](../../tests/Fft.Client.Tests/GeneralBannerPresentationTests.cs), [tests/Fft.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs](../../tests/Fft.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs), [tools/verification/test_banner_event.py](../../tools/verification/test_banner_event.py).
+Existing bounded checks: [tests/Zodiac.AssetTool.Tests/ScenarioBlockInspectorTests.cs](../../tests/Zodiac.AssetTool.Tests/ScenarioBlockInspectorTests.cs), [tests/Zodiac.AssetTool.Cli.Tests/ScenarioEventExporterTests.cs](../../tests/Zodiac.AssetTool.Cli.Tests/ScenarioEventExporterTests.cs), [tests/Zodiac.Content.Tests/PreparedScenarioEventTests.cs](../../tests/Zodiac.Content.Tests/PreparedScenarioEventTests.cs), [tests/Zodiac.Framework.Tests/ConditionalEventExecutorTests.cs](../../tests/Zodiac.Framework.Tests/ConditionalEventExecutorTests.cs), [tests/Zodiac.Content.Tests/PreparedScenarioExecutionTests.cs](../../tests/Zodiac.Content.Tests/PreparedScenarioExecutionTests.cs), [tests/Zodiac.Framework.Tests/TimedEventExecutorTests.cs](../../tests/Zodiac.Framework.Tests/TimedEventExecutorTests.cs), [tests/Zodiac.Content.Tests/PreparedTimedScenarioTests.cs](../../tests/Zodiac.Content.Tests/PreparedTimedScenarioTests.cs), [tests/Zodiac.AssetTool.Cli.Tests/TimedScenarioEventExporterTests.cs](../../tests/Zodiac.AssetTool.Cli.Tests/TimedScenarioEventExporterTests.cs), [tests/Zodiac.Framework.Tests/SceneTaskContractTests.cs](../../tests/Zodiac.Framework.Tests/SceneTaskContractTests.cs), [tests/Zodiac.Framework.Tests/SceneTaskLedgerTests.cs](../../tests/Zodiac.Framework.Tests/SceneTaskLedgerTests.cs), [tests/Zodiac.Framework.Tests/SceneEventExecutorTests.cs](../../tests/Zodiac.Framework.Tests/SceneEventExecutorTests.cs), [tests/Zodiac.Content.Tests/PreparedSceneEventTests.cs](../../tests/Zodiac.Content.Tests/PreparedSceneEventTests.cs), [tests/Zodiac.AssetTool.Cli.Tests/SceneScenarioEventExporterTests.cs](../../tests/Zodiac.AssetTool.Cli.Tests/SceneScenarioEventExporterTests.cs), [tests/Zodiac.Framework.Tests/GeneralBannerContractTests.cs](../../tests/Zodiac.Framework.Tests/GeneralBannerContractTests.cs), [tests/Zodiac.Framework.Tests/BannerSceneBoundaryTests.cs](../../tests/Zodiac.Framework.Tests/BannerSceneBoundaryTests.cs), [tests/Zodiac.AssetTool.Tests/GeneralBannerDecoderTests.cs](../../tests/Zodiac.AssetTool.Tests/GeneralBannerDecoderTests.cs), [tests/Zodiac.Content.Tests/PreparedGeneralBannerTests.cs](../../tests/Zodiac.Content.Tests/PreparedGeneralBannerTests.cs), [tests/Fft.Client.Tests/GeneralBannerPresentationTests.cs](../../tests/Fft.Client.Tests/GeneralBannerPresentationTests.cs), [tests/Zodiac.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs](../../tests/Zodiac.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs), [tools/verification/test_banner_event.py](../../tools/verification/test_banner_event.py).
 
 Manual checkpoint (pending-original-observation): Capture one controlled branch/dialogue event with explicit initial state and timing.
 
@@ -777,9 +777,9 @@ Evidence: [docs/development/prepared-sprite-pose.md](../../docs/development/prep
 
 Source entry points (pinned revision above; not full traces): [include/fft/animation.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/animation.h), [src/battle/units/animation_policy.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/units/animation_policy.c), [src/battle/units/animation_motion.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/units/animation_motion.c).
 
-Current implementation: [src/Fft.AssetTool/OrdinaryUnitPoseDecoder.cs](../../src/Fft.AssetTool/OrdinaryUnitPoseDecoder.cs), [src/Fft.Content/PreparedSpritePose.cs](../../src/Fft.Content/PreparedSpritePose.cs).
+Current implementation: [src/Zodiac.AssetTool/OrdinaryUnitPoseDecoder.cs](../../src/Zodiac.AssetTool/OrdinaryUnitPoseDecoder.cs), [src/Zodiac.Content/PreparedSpritePose.cs](../../src/Zodiac.Content/PreparedSpritePose.cs).
 
-Existing bounded checks: [tests/Fft.AssetTool.Tests/OrdinaryUnitPoseTests.cs](../../tests/Fft.AssetTool.Tests/OrdinaryUnitPoseTests.cs), [tests/Fft.Content.Tests/PreparedSpritePoseTests.cs](../../tests/Fft.Content.Tests/PreparedSpritePoseTests.cs).
+Existing bounded checks: [tests/Zodiac.AssetTool.Tests/OrdinaryUnitPoseTests.cs](../../tests/Zodiac.AssetTool.Tests/OrdinaryUnitPoseTests.cs), [tests/Zodiac.Content.Tests/PreparedSpritePoseTests.cs](../../tests/Zodiac.Content.Tests/PreparedSpritePoseTests.cs).
 
 Manual checkpoint (pending-original-observation): Compare selected pose/palette/piece order and later animation timing against original capture.
 
@@ -819,9 +819,9 @@ Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-077-g
 
 Source entry points (pinned revision above; not full traces): [src/world/text/font_rendering.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/text/font_rendering.c), [src/lib/event/dialog/typewriter.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/lib/event/dialog/typewriter.c), [src/lib/menu/unit_view/portraits.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/lib/menu/unit_view/portraits.c), [src/event/require/conditions.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/event/require/conditions.c).
 
-Current implementation: [src/Fft.AssetTool/GeneralBannerDecoder.cs](../../src/Fft.AssetTool/GeneralBannerDecoder.cs), [src/Fft.AssetTool.Cli/PrepareGeneralBannerCommand.cs](../../src/Fft.AssetTool.Cli/PrepareGeneralBannerCommand.cs), [src/Fft.Content/PreparedGeneralBanner.cs](../../src/Fft.Content/PreparedGeneralBanner.cs), [src/Fft.Client/Presentation/GeneralBannerPresentation.cs](../../src/Fft.Client/Presentation/GeneralBannerPresentation.cs), [src/Fft.Client/Presentation/GeneralBannerPreview.cs](../../src/Fft.Client/Presentation/GeneralBannerPreview.cs).
+Current implementation: [src/Zodiac.AssetTool/GeneralBannerDecoder.cs](../../src/Zodiac.AssetTool/GeneralBannerDecoder.cs), [src/Zodiac.AssetTool.Cli/PrepareGeneralBannerCommand.cs](../../src/Zodiac.AssetTool.Cli/PrepareGeneralBannerCommand.cs), [src/Zodiac.Content/PreparedGeneralBanner.cs](../../src/Zodiac.Content/PreparedGeneralBanner.cs), [src/Fft.Client/Presentation/GeneralBannerPresentation.cs](../../src/Fft.Client/Presentation/GeneralBannerPresentation.cs), [src/Fft.Client/Presentation/GeneralBannerPreview.cs](../../src/Fft.Client/Presentation/GeneralBannerPreview.cs).
 
-Existing bounded checks: [tests/Fft.AssetTool.Tests/GeneralBannerDecoderTests.cs](../../tests/Fft.AssetTool.Tests/GeneralBannerDecoderTests.cs), [tests/Fft.Content.Tests/PreparedGeneralBannerTests.cs](../../tests/Fft.Content.Tests/PreparedGeneralBannerTests.cs), [tests/Fft.Client.Tests/GeneralBannerPresentationTests.cs](../../tests/Fft.Client.Tests/GeneralBannerPresentationTests.cs), [tests/Fft.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs](../../tests/Fft.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs).
+Existing bounded checks: [tests/Zodiac.AssetTool.Tests/GeneralBannerDecoderTests.cs](../../tests/Zodiac.AssetTool.Tests/GeneralBannerDecoderTests.cs), [tests/Zodiac.Content.Tests/PreparedGeneralBannerTests.cs](../../tests/Zodiac.Content.Tests/PreparedGeneralBannerTests.cs), [tests/Fft.Client.Tests/GeneralBannerPresentationTests.cs](../../tests/Fft.Client.Tests/GeneralBannerPresentationTests.cs), [tests/Zodiac.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs](../../tests/Zodiac.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs).
 
 Manual checkpoint (pending-original-observation): Compare original glyphs, menu/dialogue layout, portraits, typewriter timing and clipping.
 
@@ -897,7 +897,7 @@ Next action: Preserve shared logical commands while expanding device/navigation 
 
 ### COV-AST-001 — Edition verification and ordinary-file extraction
 
-Status: **partial**; scope: **baseline**; ticket: **ZOD-044**; owner area: Fft.AssetTool preparation and Fft.Content loading.
+Status: **partial**; scope: **baseline**; ticket: **ZOD-044**; owner area: Zodiac.AssetTool preparation and Zodiac.Content loading.
 
 Verified SCUS-94221 input and ordinary data-file extraction/inventory are implemented.
 
@@ -905,9 +905,9 @@ Evidence: [docs/asset-inventory-poc.md](../../docs/asset-inventory-poc.md).
 
 Source entry points (pinned revision above; not full traces): [target/main.yaml](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/target/main.yaml), [src/main/file_requests.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/main/file_requests.c).
 
-Current implementation: [src/Fft.AssetTool/Mode2RawImageReader.cs](../../src/Fft.AssetTool/Mode2RawImageReader.cs), [src/Fft.AssetTool/IsoDataFileExtractor.cs](../../src/Fft.AssetTool/IsoDataFileExtractor.cs).
+Current implementation: [src/Zodiac.AssetTool/Mode2RawImageReader.cs](../../src/Zodiac.AssetTool/Mode2RawImageReader.cs), [src/Zodiac.AssetTool/IsoDataFileExtractor.cs](../../src/Zodiac.AssetTool/IsoDataFileExtractor.cs).
 
-Existing bounded checks: [tests/Fft.AssetTool.Tests/IsoDataFileExtractorTests.cs](../../tests/Fft.AssetTool.Tests/IsoDataFileExtractorTests.cs), [tests/Fft.AssetTool.Cli.Tests/ExtractCommandTests.cs](../../tests/Fft.AssetTool.Cli.Tests/ExtractCommandTests.cs).
+Existing bounded checks: [tests/Zodiac.AssetTool.Tests/IsoDataFileExtractorTests.cs](../../tests/Zodiac.AssetTool.Tests/IsoDataFileExtractorTests.cs), [tests/Zodiac.AssetTool.Cli.Tests/ExtractCommandTests.cs](../../tests/Zodiac.AssetTool.Cli.Tests/ExtractCommandTests.cs).
 
 Manual checkpoint (pending-original-observation): Repeat local edition verification/import and confirm runtime works with source media unavailable.
 
@@ -919,7 +919,7 @@ Next action: Assign conversion/load/provenance state to each required resource f
 
 ### COV-AST-002 — Prepared manifests, integrity and disk-only runtime loading
 
-Status: **partial**; scope: **baseline**; ticket: **ZOD-044**; owner area: Fft.AssetTool preparation and Fft.Content loading.
+Status: **partial**; scope: **baseline**; ticket: **ZOD-044**; owner area: Zodiac.AssetTool preparation and Zodiac.Content loading.
 
 Versioned manifest and hash-verified loose loading exist for selected assets; no universal decoder/package manager.
 
@@ -927,9 +927,9 @@ Evidence: [docs/adr/0003-offline-asset-import-and-loose-runtime-content.md](../.
 
 Source entry points (pinned revision above; not full traces): [src/main/file_loading.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/main/file_loading.c), [src/battle/map/loading.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/map/loading.c).
 
-Current implementation: [src/Fft.Content/LooseAssetStore.cs](../../src/Fft.Content/LooseAssetStore.cs), [src/Fft.Content/PreparedAssetManifest.cs](../../src/Fft.Content/PreparedAssetManifest.cs).
+Current implementation: [src/Zodiac.Content/LooseAssetStore.cs](../../src/Zodiac.Content/LooseAssetStore.cs), [src/Zodiac.Content/PreparedAssetManifest.cs](../../src/Zodiac.Content/PreparedAssetManifest.cs).
 
-Existing bounded checks: [tests/Fft.Content.Tests/PreparedAssetManifestTests.cs](../../tests/Fft.Content.Tests/PreparedAssetManifestTests.cs).
+Existing bounded checks: [tests/Zodiac.Content.Tests/PreparedAssetManifestTests.cs](../../tests/Zodiac.Content.Tests/PreparedAssetManifestTests.cs).
 
 Manual checkpoint (pending-original-observation): Run a selected prepared scene with BIN/reference checkout unavailable and check missing/corrupt dependency diagnostics.
 
@@ -941,7 +941,7 @@ Next action: Record required logical IDs/formats for each chosen scenario.
 
 ### COV-AST-003 — Prepared map, sprite, shape and sequence converters
 
-Status: **partial**; scope: **baseline**; ticket: **ZOD-044**; owner area: Fft.AssetTool preparation and Fft.Content loading.
+Status: **partial**; scope: **baseline**; ticket: **ZOD-044**; owner area: Zodiac.AssetTool preparation and Zodiac.Content loading.
 
 One frozen MAP003 variant and one held Chocobo pose have bounded offline converters.
 
@@ -949,9 +949,9 @@ Evidence: [docs/development/prepared-map-slice.md](../../docs/development/prepar
 
 Source entry points (pinned revision above; not full traces): [src/battle/map/gns.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/map/gns.c), [include/fft/sprite.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/sprite.h), [include/fft/animation.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/animation.h).
 
-Current implementation: [src/Fft.AssetTool.Cli/PrepareMapCommand.cs](../../src/Fft.AssetTool.Cli/PrepareMapCommand.cs), [src/Fft.AssetTool.Cli/PrepareSpritePoseCommand.cs](../../src/Fft.AssetTool.Cli/PrepareSpritePoseCommand.cs).
+Current implementation: [src/Zodiac.AssetTool.Cli/PrepareMapCommand.cs](../../src/Zodiac.AssetTool.Cli/PrepareMapCommand.cs), [src/Zodiac.AssetTool.Cli/PrepareSpritePoseCommand.cs](../../src/Zodiac.AssetTool.Cli/PrepareSpritePoseCommand.cs).
 
-Existing bounded checks: [tests/Fft.AssetTool.Cli.Tests/PrepareMapCommandTests.cs](../../tests/Fft.AssetTool.Cli.Tests/PrepareMapCommandTests.cs), [tests/Fft.AssetTool.Cli.Tests/PrepareSpritePoseCommandTests.cs](../../tests/Fft.AssetTool.Cli.Tests/PrepareSpritePoseCommandTests.cs).
+Existing bounded checks: [tests/Zodiac.AssetTool.Cli.Tests/PrepareMapCommandTests.cs](../../tests/Zodiac.AssetTool.Cli.Tests/PrepareMapCommandTests.cs), [tests/Zodiac.AssetTool.Cli.Tests/PrepareSpritePoseCommandTests.cs](../../tests/Zodiac.AssetTool.Cli.Tests/PrepareSpritePoseCommandTests.cs).
 
 Manual checkpoint (pending-original-observation): Repeat each selected conversion, compare input/output hashes and inspect independently matched original captures.
 
@@ -963,7 +963,7 @@ Next action: Expand one family/profile with explicit unsupported inputs and boun
 
 ### COV-AST-004 — Remaining fonts, menus, world, effects, audio and mixed streams
 
-Status: **partial**; scope: **baseline**; ticket: **ZOD-044**; owner area: Fft.AssetTool preparation and Fft.Content loading.
+Status: **partial**; scope: **baseline**; ticket: **ZOD-044**; owner area: Zodiac.AssetTool preparation and Zodiac.Content loading.
 
 ZOD-078 prepares condition-8/image-0 artwork from verified local inputs, strictly loads immutable six-piece data and previews accepted effect snapshots with a preloaded RGB8 CPU/Windows host. All 20 authored expectations have regressions; two preparations and two finite Windows capture sets match, with exact CPU/GPU readback and prepared-only runtime paths. Original comparison, parity and loading latency remain open. Other font/menu/world/effect/audio families remain unsupported.
 
@@ -971,9 +971,9 @@ Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-077-g
 
 Source entry points (pinned revision above; not full traces): [src/main/file_requests.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/main/file_requests.c), [src/battle/effects/resources.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/effects/resources.c), [src/world/screen/resources.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/screen/resources.c), [src/lib/event/dialog/backreferences.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/lib/event/dialog/backreferences.c), [src/event/require/conditions.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/event/require/conditions.c).
 
-Current implementation: [src/Fft.AssetTool/GeneralBannerDecoder.cs](../../src/Fft.AssetTool/GeneralBannerDecoder.cs), [src/Fft.AssetTool.Cli/PrepareGeneralBannerCommand.cs](../../src/Fft.AssetTool.Cli/PrepareGeneralBannerCommand.cs), [src/Fft.Content/PreparedGeneralBanner.cs](../../src/Fft.Content/PreparedGeneralBanner.cs), [src/Fft.Client/Presentation/GeneralBannerPresentation.cs](../../src/Fft.Client/Presentation/GeneralBannerPresentation.cs), [src/Fft.Client/Presentation/GeneralBannerPreview.cs](../../src/Fft.Client/Presentation/GeneralBannerPreview.cs).
+Current implementation: [src/Zodiac.AssetTool/GeneralBannerDecoder.cs](../../src/Zodiac.AssetTool/GeneralBannerDecoder.cs), [src/Zodiac.AssetTool.Cli/PrepareGeneralBannerCommand.cs](../../src/Zodiac.AssetTool.Cli/PrepareGeneralBannerCommand.cs), [src/Zodiac.Content/PreparedGeneralBanner.cs](../../src/Zodiac.Content/PreparedGeneralBanner.cs), [src/Fft.Client/Presentation/GeneralBannerPresentation.cs](../../src/Fft.Client/Presentation/GeneralBannerPresentation.cs), [src/Fft.Client/Presentation/GeneralBannerPreview.cs](../../src/Fft.Client/Presentation/GeneralBannerPreview.cs).
 
-Existing bounded checks: [tests/Fft.AssetTool.Tests/GeneralBannerDecoderTests.cs](../../tests/Fft.AssetTool.Tests/GeneralBannerDecoderTests.cs), [tests/Fft.Content.Tests/PreparedGeneralBannerTests.cs](../../tests/Fft.Content.Tests/PreparedGeneralBannerTests.cs), [tests/Fft.Client.Tests/GeneralBannerPresentationTests.cs](../../tests/Fft.Client.Tests/GeneralBannerPresentationTests.cs), [tests/Fft.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs](../../tests/Fft.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs).
+Existing bounded checks: [tests/Zodiac.AssetTool.Tests/GeneralBannerDecoderTests.cs](../../tests/Zodiac.AssetTool.Tests/GeneralBannerDecoderTests.cs), [tests/Zodiac.Content.Tests/PreparedGeneralBannerTests.cs](../../tests/Zodiac.Content.Tests/PreparedGeneralBannerTests.cs), [tests/Fft.Client.Tests/GeneralBannerPresentationTests.cs](../../tests/Fft.Client.Tests/GeneralBannerPresentationTests.cs), [tests/Zodiac.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs](../../tests/Zodiac.AssetTool.Cli.Tests/PrepareGeneralBannerCommandTests.cs).
 
 Manual checkpoint (pending-original-observation): Check each chosen family for repeatable conversion and actual runtime presentation with BIN absent.
 
@@ -995,9 +995,9 @@ Evidence: [docs/development/two-unit-battle-saves.md](../../docs/development/two
 
 Source entry points (pinned revision above; not full traces): [include/fft/save.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/save.h).
 
-Current implementation: [src/Fft.Content/Saves/TwoUnitBattleSave.cs](../../src/Fft.Content/Saves/TwoUnitBattleSave.cs), [src/Fft.Content/Saves/TwoUnitBattleSave.Files.cs](../../src/Fft.Content/Saves/TwoUnitBattleSave.Files.cs).
+Current implementation: [src/Zodiac.Content/Saves/TwoUnitBattleSave.cs](../../src/Zodiac.Content/Saves/TwoUnitBattleSave.cs), [src/Zodiac.Content/Saves/TwoUnitBattleSave.Files.cs](../../src/Zodiac.Content/Saves/TwoUnitBattleSave.Files.cs).
 
-Existing bounded checks: [tests/Fft.Content.Tests/Saves/TwoUnitBattleSaveTests.cs](../../tests/Fft.Content.Tests/Saves/TwoUnitBattleSaveTests.cs), [tests/Fft.Content.Tests/Saves/TwoUnitBattleSaveFileTests.cs](../../tests/Fft.Content.Tests/Saves/TwoUnitBattleSaveFileTests.cs), [tests/Fft.Client.Tests/BattleSaveCheckTests.cs](../../tests/Fft.Client.Tests/BattleSaveCheckTests.cs).
+Existing bounded checks: [tests/Zodiac.Content.Tests/Saves/TwoUnitBattleSaveTests.cs](../../tests/Zodiac.Content.Tests/Saves/TwoUnitBattleSaveTests.cs), [tests/Zodiac.Content.Tests/Saves/TwoUnitBattleSaveFileTests.cs](../../tests/Zodiac.Content.Tests/Saves/TwoUnitBattleSaveFileTests.cs), [tests/Fft.Client.Tests/BattleSaveCheckTests.cs](../../tests/Fft.Client.Tests/BattleSaveCheckTests.cs).
 
 Manual checkpoint (pending-original-observation): Use the headless save check now; later test player-facing save/continue at original legal campaign checkpoints.
 
@@ -1063,9 +1063,9 @@ Evidence: [docs/behavior/fixture-runner.md](../../docs/behavior/fixture-runner.m
 
 Source entry points (pinned revision above; not full traces): [src/battle/turn/clock.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/turn/clock.c), [src/battle/combat/formulas.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/combat/formulas.c).
 
-Current implementation: [tests/Fft.Core.Tests/Fixtures/MovementFixtureRunner.cs](../../tests/Fft.Core.Tests/Fixtures/MovementFixtureRunner.cs), [tests/Fft.Core.Tests/Fixtures/AttackFixtureRunner.cs](../../tests/Fft.Core.Tests/Fixtures/AttackFixtureRunner.cs).
+Current implementation: [tests/Zodiac.Framework.Tests/Fixtures/MovementFixtureRunner.cs](../../tests/Zodiac.Framework.Tests/Fixtures/MovementFixtureRunner.cs), [tests/Zodiac.Framework.Tests/Fixtures/AttackFixtureRunner.cs](../../tests/Zodiac.Framework.Tests/Fixtures/AttackFixtureRunner.cs).
 
-Existing bounded checks: [tests/Fft.Core.Tests/Fixtures/MovementFixtureRunnerTests.cs](../../tests/Fft.Core.Tests/Fixtures/MovementFixtureRunnerTests.cs), [tests/Fft.Core.Tests/AttackFixtureV3Tests.cs](../../tests/Fft.Core.Tests/AttackFixtureV3Tests.cs).
+Existing bounded checks: [tests/Zodiac.Framework.Tests/Fixtures/MovementFixtureRunnerTests.cs](../../tests/Zodiac.Framework.Tests/Fixtures/MovementFixtureRunnerTests.cs), [tests/Zodiac.Framework.Tests/AttackFixtureV3Tests.cs](../../tests/Zodiac.Framework.Tests/AttackFixtureV3Tests.cs).
 
 Manual checkpoint (pending-original-observation): Compare critical supported behavior against independent original/emulator observations, keeping source-derived and synthetic expectations distinct.
 
@@ -1134,9 +1134,9 @@ Evidence: [docs/adr/0004-zodiac-engine-and-fft-game-boundary.md](../../docs/adr/
 
 Source entry points (pinned revision above; not full traces): [include/fft/unit.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/unit.h).
 
-Current implementation: [Directory.Build.targets](../../Directory.Build.targets), [src/Zodiac.Engine/GridBounds.cs](../../src/Zodiac.Engine/GridBounds.cs), [src/Zodiac.Engine/IDeterministicRandom.cs](../../src/Zodiac.Engine/IDeterministicRandom.cs).
+Current implementation: [Directory.Build.targets](../../Directory.Build.targets), [src/Tessera.Engine/GridBounds.cs](../../src/Tessera.Engine/GridBounds.cs), [src/Tessera.Engine/IDeterministicRandom.cs](../../src/Tessera.Engine/IDeterministicRandom.cs).
 
-Existing bounded checks: [tests/Fft.Core.Tests/EngineIndependenceTests.cs](../../tests/Fft.Core.Tests/EngineIndependenceTests.cs), [tests/Zodiac.Engine.Tests/RelayScenarioTests.cs](../../tests/Zodiac.Engine.Tests/RelayScenarioTests.cs).
+Existing bounded checks: [tests/Zodiac.Framework.Tests/EngineIndependenceTests.cs](../../tests/Zodiac.Framework.Tests/EngineIndependenceTests.cs), [tests/Tessera.Engine.Tests/RelayScenarioTests.cs](../../tests/Tessera.Engine.Tests/RelayScenarioTests.cs).
 
 Manual checkpoint (pending-original-observation): Review dependency graph and run prepared/synthetic clients with reference tools/media unavailable.
 
@@ -1158,9 +1158,9 @@ Evidence: [docs/adr/0002-compatible-baseline-and-extension-profiles.md](../../do
 
 Source entry points (pinned revision above; not full traces): [include/fft/job.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/job.h), [include/fft/item.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/item.h).
 
-Current implementation: [src/Fft.Content/ContentPackages/ContentPackage.cs](../../src/Fft.Content/ContentPackages/ContentPackage.cs).
+Current implementation: [src/Zodiac.Content/ContentPackages/ContentPackage.cs](../../src/Zodiac.Content/ContentPackages/ContentPackage.cs).
 
-Existing bounded checks: [tests/Fft.Content.Tests/ContentPackages/ContentPackageTests.cs](../../tests/Fft.Content.Tests/ContentPackages/ContentPackageTests.cs).
+Existing bounded checks: [tests/Zodiac.Content.Tests/ContentPackages/ContentPackageTests.cs](../../tests/Zodiac.Content.Tests/ContentPackages/ContentPackageTests.cs).
 
 Manual checkpoint (pending-original-observation): With add-on files present but disabled, compare original-mode results and selected package/version identity.
 
@@ -1242,9 +1242,9 @@ Evidence: [docs/architecture/zod-016-content-packages.md](../../docs/architectur
 
 Source entry points (pinned revision above; not full traces): [include/fft/job.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/job.h).
 
-Current implementation: [src/Fft.Content/ContentPackages/ContentPackage.cs](../../src/Fft.Content/ContentPackages/ContentPackage.cs), [src/Fft.AssetTool.Cli/ValidateContentCommand.cs](../../src/Fft.AssetTool.Cli/ValidateContentCommand.cs).
+Current implementation: [src/Zodiac.Content/ContentPackages/ContentPackage.cs](../../src/Zodiac.Content/ContentPackages/ContentPackage.cs), [src/Zodiac.AssetTool.Cli/ValidateContentCommand.cs](../../src/Zodiac.AssetTool.Cli/ValidateContentCommand.cs).
 
-Existing bounded checks: [tests/Fft.Content.Tests/ContentPackages/ContentPackageTests.cs](../../tests/Fft.Content.Tests/ContentPackages/ContentPackageTests.cs).
+Existing bounded checks: [tests/Zodiac.Content.Tests/ContentPackages/ContentPackageTests.cs](../../tests/Zodiac.Content.Tests/ContentPackages/ContentPackageTests.cs).
 
 Manual checkpoint (pending-editor-workflow): Inspect an original job, author a separate supported change, validate/export and use it in the supported battle path.
 

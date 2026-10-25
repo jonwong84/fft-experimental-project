@@ -111,24 +111,24 @@
       "fft.client": {
         "type": "Project",
         "dependencies": {
-          "Fft.Content": "[1.0.0, )",
-          "Fft.Core": "[1.0.0, )",
+          "Zodiac.Content": "[1.0.0, )",
+          "Zodiac.Framework": "[1.0.0, )",
           "MonoGame.Framework.DesktopGL": "[3.8.6, )"
         }
       },
-      "fft.content": {
+      "zodiac.content": {
         "type": "Project",
         "dependencies": {
-          "Fft.Core": "[1.0.0, )"
+          "Zodiac.Framework": "[1.0.0, )"
         }
       },
-      "fft.core": {
+      "zodiac.framework": {
         "type": "Project",
         "dependencies": {
-          "Zodiac.Engine": "[1.0.0, )"
+          "Tessera.Engine": "[1.0.0, )"
         }
       },
-      "zodiac.engine": {
+      "tessera.engine": {
         "type": "Project"
       },
       "MonoGame.Framework.DesktopGL": {

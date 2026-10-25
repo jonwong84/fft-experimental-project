@@ -1,6 +1,6 @@
 using System.Collections.Immutable;
 using System.Text.RegularExpressions;
-using Fft.Core;
+using Zodiac.Framework;
 
 namespace Fft.Client.Presentation;
 

@@ -89,7 +89,7 @@ Those are explicit proof exclusions, not claims that retail lacks those states.
 
 ## Proposed native state and ownership
 
-`Fft.Core.Events` should own a pure immutable scene task ledger and barrier state.
+`Zodiac.Framework.Events` should own a pure immutable scene task ledger and barrier state.
 The proposed fields are:
 
 - **SceneRunId:** caller-supplied stable namespaced ID for a particular scene run.

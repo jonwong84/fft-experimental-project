@@ -60,13 +60,13 @@ negative/oversized counts, extra operands/targets and reachable DB still reject
 before runtime projection. Existing label resolution, CFG, byte bounds, provenance,
 JSON limits and manifest hash checks apply to both profiles.
 
-[ScenarioEventExporter.CreateSyntheticTimed](../../src/Fft.AssetTool.Cli/ScenarioEventExporter.cs)
+[ScenarioEventExporter.CreateSyntheticTimed](../../src/Zodiac.AssetTool.Cli/ScenarioEventExporter.cs)
 is the separate offline API for authored blocks. It reads F1 as signed 16-bit;
 ordinary `CreateSynthetic` remains closed to F1. No new CLI command or retail
 export path is added. Original bytes must not be relabeled synthetic.
 
-[PreparedScenarioEvent.ToTimedExecutionDefinition](../../src/Fft.Content/Events/PreparedScenarioEvent.cs)
-projects to [TimedEventProgram](../../src/Fft.Core/Events/TimedEventProgram.cs) in
+[PreparedScenarioEvent.ToTimedExecutionDefinition](../../src/Zodiac.Content/Events/PreparedScenarioEvent.cs)
+projects to [TimedEventProgram](../../src/Zodiac.Framework/Events/TimedEventProgram.cs) in
 FFT Core. DB and label bytes are not executable. The immutable timed definition
 contains either a closed conditional operation or a frame count. It privately
 normalizes each wait to fallthrough for existing CFG validation and ordinary
@@ -120,7 +120,7 @@ within a batch. No tick or candidate variable write leaks through; retrying from
 the same input with an adequate budget is deterministic. Successful earlier calls
 are already committed boundaries and remain intact.
 
-[TimedEventTrace](../../src/Fft.Core/Events/TimedEventExecutor.cs) records kind,
+[TimedEventTrace](../../src/Zodiac.Framework/Events/TimedEventExecutor.cs) records kind,
 source offset, ordinary operation (null for wait transitions), variables before/
 after, continuation offset, remaining count, absolute logical tick and exit flag.
 Each ordinary operation or wait entry/zero wait emits one record; each consumed

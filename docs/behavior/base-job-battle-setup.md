@@ -4,7 +4,7 @@ Date: 2026-10-22. Reference checkout `C:\repositories\fft_decomp`, observed HEAD
 `611b504d25d4a9b03fab8023d7dbea75fe381d5d`. This is a bounded definition-to-unit
 adapter, not complete equipment, status or effective-stat derivation.
 
-`Fft.Content.BattleSetup.BaseJobBattleSetup.Create` accepts a validated
+`Zodiac.Content.BattleSetup.BaseJobBattleSetup.Create` accepts a validated
 `DefinitionCatalog`, immutable map and explicit unit placements. It resolves every
 job, primary skillset, innate and skillset ability before returning the initial
 battle. Missing catalog references fail when constructing the catalog; missing job

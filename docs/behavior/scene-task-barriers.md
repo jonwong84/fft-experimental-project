@@ -5,7 +5,7 @@ Read-only reference HEAD verified for this milestone:
 `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 Managed base: `56b94e4` (ZOD-072); working tree was clean at entry.
 
-`Fft.Core.Events` now implements the bounded BATTLE scene ledger and single barrier
+`Zodiac.Framework.Events` now implements the bounded BATTLE scene ledger and single barrier
 consumer selected by [ZOD-072](../architecture/zod-072-event-task-contract.md).
 This executes authored logical task facts; it does not execute E5, start original
 camera/banner/fade workers or play an original event. The source predicate and
@@ -15,7 +15,7 @@ of instruction-level PS1 scheduling.
 
 ## State and commands
 
-[SceneTaskState](../../src/Fft.Core/Events/SceneTaskState.cs) is immutable. Create it
+[SceneTaskState](../../src/Zodiac.Framework/Events/SceneTaskState.cs) is immutable. Create it
 with an explicit namespaced `AssetId` identifying this scene run. IDs follow the
 existing lowercase `namespace:path` rules with a 256-character cap. A composition
 root must choose a fresh scene ID for each new live attempt; isolated replay uses
@@ -41,8 +41,8 @@ no active class and remain distinct outcomes. A dark-screen hold cannot complete
 before passing through Leaving. Suspend/resume, native NONE startup intervals,
 revival, reverse transitions and family changes are unsupported.
 
-[SceneTaskLedger](../../src/Fft.Core/Events/SceneTaskLedger.cs) provides three pure
-commands, returning [SceneTaskResult](../../src/Fft.Core/Events/SceneTaskResult.cs):
+[SceneTaskLedger](../../src/Zodiac.Framework/Events/SceneTaskLedger.cs) provides three pure
+commands, returning [SceneTaskResult](../../src/Zodiac.Framework/Events/SceneTaskResult.cs):
 
 1. `ApplyUpdates(state, updates, updateBudget)` applies an immutable ordered batch
    without ticking or polling. It accepts Ready or Released state; Pending rejects
@@ -116,7 +116,7 @@ logical completion tick. No production completion adapter exists in this slice.
 
 ## Evidence and regression results
 
-[SceneTaskContractTests](../../tests/Fft.Core.Tests/SceneTaskContractTests.cs) loads
+[SceneTaskContractTests](../../tests/Zodiac.Framework.Tests/SceneTaskContractTests.cs) loads
 the exact 17 preimplementation [ZOD-072 cases](../evidence/events/task-barrier-contract-v1.json).
 Setup uses public accepted updates rather than a restore API. Independently authored
 C# expectations assert complete snapshots, every ordered trace field, rejection
@@ -124,7 +124,7 @@ identity/index/accounting and replay of the whole command history. The original 
 remains a historical, specification-only artifact with `executed: false`; these
 tests are the separate implementation evidence, not an original-game oracle.
 
-[SceneTaskLedgerTests](../../tests/Fft.Core.Tests/SceneTaskLedgerTests.cs) adds 40
+[SceneTaskLedgerTests](../../tests/Zodiac.Framework.Tests/SceneTaskLedgerTests.cs) adds 40
 cases covering every active class, completion/cancellation, dark-screen transition
 guards, terminal duplicates, same-batch starts/revisions, multi-owner live polling,
 released/ready boundaries, malformed/default payloads, IDs and selectors, budget

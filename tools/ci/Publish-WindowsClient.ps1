@@ -48,7 +48,7 @@ try {
     Copy-Item -LiteralPath (Join-Path $packageRoot "microsoft.netcore.app.runtime.win-x64/$runtimeVersion/LICENSE.TXT") -Destination (Join-Path $bundle 'THIRD-PARTY/DotNet-LICENSE.txt')
     Copy-Item -LiteralPath (Join-Path $packageRoot "microsoft.netcore.app.runtime.win-x64/$runtimeVersion/THIRD-PARTY-NOTICES.TXT") -Destination (Join-Path $bundle 'THIRD-PARTY/DotNet-THIRD-PARTY-NOTICES.txt')
 
-    $required = @('Fft.Client.exe', 'Fft.Client.dll', 'Fft.Core.dll', 'Fft.Content.dll', 'Zodiac.Engine.dll',
+    $required = @('Fft.Client.exe', 'Fft.Client.dll', 'Zodiac.Framework.dll', 'Zodiac.Content.dll', 'Tessera.Engine.dll',
         'MonoGame.Framework.dll', 'NVorbis.dll', 'coreclr.dll', 'hostfxr.dll', 'hostpolicy.dll',
         'SDL2.dll', 'openal.dll', 'WINDOWS-LAUNCH.md', 'THIRD-PARTY/README.md',
         'THIRD-PARTY/MonoGame-LICENSE.txt', 'THIRD-PARTY/SDL-LICENSE.txt', 'THIRD-PARTY/NVorbis-LICENSE.txt',

@@ -1,6 +1,6 @@
 using System.Buffers.Binary;
 using System.Collections.Immutable;
-using Fft.Content;
+using Zodiac.Content;
 
 namespace Fft.Client.Presentation;
 

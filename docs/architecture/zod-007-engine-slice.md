@@ -5,7 +5,7 @@ Implements the bounds-only calculation selected by the [ZOD-001 audit](zod-001-t
 
 ## Implemented contract
 
-`Zodiac.Engine` is a headless .NET 10 library with no project or package references.
+`Tessera.Engine` is a headless .NET 10 library with no project or package references.
 It contains three types:
 
 - `GridPosition`: immutable signed 32-bit X/Y/layer coordinates. Layer is an index, not height. Position values may be outside a particular bounds instance; the calculation validates its origin.
@@ -20,7 +20,7 @@ Determinism means equal inputs produce equal **set membership**. Neither frozen-
 
 The engine accepts only its own coordinates, bounds and an integer budget. It has no FFT references, game data, file/input/platform services, clock, RNG, or C-reference dependency. Its tests construct only synthetic engine inputs. No original-game rule is translated or newly traced; this is preservation of the existing managed flat prototype, not evidence of PS1 movement equivalence.
 
-`Fft.Core` and every existing FFT project/type remain unchanged. The engine calculation currently exists alongside the FFT prototype; **ZOD-008** owns replacing that calculation through the existing FFT-owned facade, preserving FFT validations and transition regressions. The separate terrain-aware proof remains untouched. The independent second sample and automated forbidden-reference check remain ZOD-009.
+`Zodiac.Framework` and every existing FFT project/type remain unchanged. The engine calculation currently exists alongside the FFT prototype; **ZOD-008** owns replacing that calculation through the existing FFT-owned facade, preserving FFT validations and transition regressions. The separate terrain-aware proof remains untouched. The independent second sample and automated forbidden-reference check remain ZOD-009.
 
 Both new projects are registered in `Fft.sln`; existing CircleCI solution restore/build/test commands include them without CI changes. Engine tests use the same package versions as existing test projects. SDK/dependency policy remains ZOD-006 work.
 
@@ -29,7 +29,7 @@ Both new projects are registered in `Fft.sln`; existing CircleCI solution restor
 Run from the repository root on Windows:
 
 ```powershell
-dotnet test tests/Zodiac.Engine.Tests/Zodiac.Engine.Tests.csproj --configuration Release
+dotnet test tests/Tessera.Engine.Tests/Tessera.Engine.Tests.csproj --configuration Release
 ```
 
 Coverage includes zero budget, single-cell bounds, center/corner clipping, non-square rectangles, same-layer membership, oversized and maximum integer budgets, maximum integer dimensions with a tiny range, invalid dimensions/origins/budget, validation precedence, position equality, and immutable outputs/inputs. All expected memberships are synthetic specifications; tests do not load assets or the reference checkout.
