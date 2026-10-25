@@ -8,6 +8,7 @@ using Fft.Client;
 if (args.Length > 0 && args[0] == "--general-banner") return GeneralBannerPreview.Run(args);
 if (args.Length > 0 && args[0] == "--ordered-banner") return OrderedBannerPreview.Run(args);
 if (args.Length > 0 && args[0] == "--ready") return ReadyPreview.Run(args);
+if (args.Length > 0 && args[0] == "--dark-screen") return DarkScreenPreview.Run(args);
 if (args.Length > 0 && args[0] == "--banner-ready-sequence") return BannerReadyPreview.Run(args);
 if (args.Length > 0 && args[0] == "--intro-battle") return IntroductionBattleHost.Run(args);
 if (args.Length == 1 && args[0] == "--window") return WindowsBattleHost.Run();

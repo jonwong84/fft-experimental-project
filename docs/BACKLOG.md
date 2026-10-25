@@ -1779,7 +1779,7 @@ unchanged. [Behavior](behavior/dark-screen-worker.md),
 
 ### ZOD-094 — Prepare and preview the bounded dark-screen transition
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-093
+**Type:** Story · **Priority:** P2 · **Status:** Awaiting visual review · **Depends on:** ZOD-093
 
 **Scope:** Prepare the selected original delay/rotation data offline, strictly load
 a separate immutable authored definition/profile and preview accepted dark-screen
@@ -1800,6 +1800,40 @@ a gallery for owner review. Record DSC-001/022/025..030 layer coverage honestly;
 original entry/release pixel equivalence remains unestablished without separately
 planned source-bound original captures. Runtime uses prepared files only, without
 BIN/EXE/math-table/reference-code or emulator dependencies.
+
+**Implementation result (2026-10-25):** Verified offline EXE/table conversion,
+strict separate prepared loading and a Windows untextured RGB5 flat-quad preview
+are implemented. All 288 delays and 117 actual C# projections match original-table
+arithmetic. Final finite runs yield 957 exact native/CPU/independent-model PNGs;
+two preparations repeat both files and repeated/isolated normal runs repeat all
+159 artifacts. Real readiness negatives create no new output; all 455 old native
+artifacts remain unchanged. Locked restore, zero-warning Release build and all
+2,031 .NET / 240 Python tests pass (64/11 new). The selected top-left/integer
+coverage policy is provisional pending original entry/release comparison.
+[Guide/evidence scope](development/prepared-dark-screen.md),
+[metadata](evidence/events/prepared-dark-screen-v1.json).
+Owner review of `scratch/dark-screen-094-review/review.html` is pending.
+
+### ZOD-095 — Bind original dark-screen entry and release references
+
+**Type:** Spike · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-094
+
+**Scope:** Plan finite source-bound original entry/release observations and compare
+the selected prepared flat-quad output. Establish any prerequisite retained state
+or owner-operated capture before running a continuation. Combined banner/Ready
+integration remains separate.
+
+**Acceptance criteria:** Freshly pin clean reference HEAD and original identities;
+bind event/worker, task phase, source counters, shared RGB/material, framebuffer/
+OT state and queued-versus-displayed history for each selected observation. Use
+a finite verified procedure before any new original continuation; preserve inputs
+and bound execution/output. Compare actual C# over controlled explicit backgrounds
+at zero tolerance and retain differences without guessing a cause. Resolve or
+record edge/overlap coverage uncertainty; do not infer original duration or full
+startup from frontend budgets. Keep original assets/states/media under scratch,
+record metadata-only evidence, automated regression scope and separate owner
+visual review. If a reference is missing, record the prerequisite rather than
+claiming original pixel equivalence.
 
 ## Authoring, extensions, and later goals
 

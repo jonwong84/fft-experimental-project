@@ -1,5 +1,24 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Latest prepared-preview checkpoint (2026-10-25):** ZOD-094 implements verified
+offline DarkScreen EXE/table conversion, strict separate prepared loading and a
+standalone Windows untextured RGB5 flat-quad preview. Existing pure worker/ledger
+are unchanged. All 288 approximate-root delays and 117 actual C# projections
+match original-table arithmetic. Five final native runs give **957 exact CPU/GPU/
+independent-model PNGs**; preparations repeat both files, repeated/isolated normal
+runs repeat **159 artifacts**, and two audit reports repeat exactly. Five actual
+readiness negatives create no new output; **455 old native artifacts** are intact.
+Locked restore, zero-warning Release build, **2,031 .NET / 240 Python tests** pass
+(64/11 new). Integer-sample/top-left coverage remains a selected provisional
+policy; original entry/release pixels/duration, combined startup and banner/Ready
+integration remain open. No new original capture or emulator execution occurred.
+[Guide](development/prepared-dark-screen.md),
+[metadata](evidence/events/prepared-dark-screen-v1.json).
+**Current gate:** Owner review of `scratch/dark-screen-094-review/review.html`
+(normal/earliest/longest hold, tick slider and checkpoint rows). Approval is pending.
+After approval, **ZOD-095** plans and binds finite original entry/release references.
+Standing commit/push permission applies to validated implementation work.
+
 **Latest implementation checkpoint (2026-10-25):** ZOD-093 adds a separate typed
 authored pure dark-screen worker/adapter, reusing the existing scene ledger.
 It retains pre-update tile draws, strict overshoot/extra yields, same-task phases,

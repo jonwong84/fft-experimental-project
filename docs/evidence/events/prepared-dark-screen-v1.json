@@ -1,0 +1,615 @@
+{
+  "format": "fft.prepared-dark-screen-validation",
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "managedBase": "b30b715e61696f712b40c882907977b29b5c9347",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "sourceEvidence": {
+    "localPath": "docs/evidence/events/dark-screen-source-v1.json",
+    "bytes": 15050,
+    "sha256": "8483734563853e8c4611dddd1ddc86610497d804e0068c5e0b0fe0d86f15be02"
+  },
+  "pureWorkerEvidence": {
+    "localPath": "docs/evidence/events/dark-screen-worker-v1.json",
+    "bytes": 16791,
+    "sha256": "91ff54847c2aba8cdb63ae46c943f570354c91cd94025a43e9ba0acc60011961"
+  },
+  "historicalContract": {
+    "localPath": "docs/evidence/events/dark-screen-contract-v1.json",
+    "bytes": 9649,
+    "sha256": "8aee6e121ce7a76662432babe6881f2edcfd022aa47d9e777fb53e0cf627c4f5"
+  },
+  "historicalContractModified": false,
+  "implementation": [
+    {
+      "localPath": "src/Zodiac.AssetTool/DarkScreenDecoder.cs",
+      "bytes": 2908,
+      "sha256": "67c3b27b2d9041e94a14bb2c97234775306c8b99b7e4cf7121ccf25a53f49287"
+    },
+    {
+      "localPath": "src/Zodiac.AssetTool.Cli/PrepareDarkScreenCommand.cs",
+      "bytes": 5654,
+      "sha256": "8c00506295cc0460d17375464513196f0e3e104719c4f9a7d52d6b6e576781de"
+    },
+    {
+      "localPath": "src/Zodiac.AssetTool.Cli/Program.cs",
+      "bytes": 3132,
+      "sha256": "3d7b287f435f69a5192cbc07e9dc097386c0a95f9533e78d94f78437af864ac8"
+    },
+    {
+      "localPath": "src/Zodiac.Content/PreparedDarkScreen.cs",
+      "bytes": 6073,
+      "sha256": "e90fa2cc7fcfb0fb00490bcefaf18f0993bdaf1f253d0b696346eca7414a2083"
+    },
+    {
+      "localPath": "src/Fft.Client/Program.cs",
+      "bytes": 4779,
+      "sha256": "420ac3b61bf5423644917344d413fa9f38897eb6c91a70641bace312e12fe85a"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/DarkScreenPresentation.cs",
+      "bytes": 5380,
+      "sha256": "16aea6851d038582807e1920a2f3bc95748c6dc8ef0d68fff2b87a898e4e7332"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/DarkScreenPreview.cs",
+      "bytes": 9336,
+      "sha256": "1ce94b04e67e6bbea0a1a5786335b54742facb66d80c76046dc8e590283da190"
+    },
+    {
+      "localPath": "tests/Support/AuthoredDarkScreen.cs",
+      "bytes": 1461,
+      "sha256": "c0ee75a8eee276104c60374fd378dc0210b576a75010498c7736746e0d0ac06e"
+    },
+    {
+      "localPath": "tests/Zodiac.AssetTool.Tests/DarkScreenDecoderTests.cs",
+      "bytes": 2811,
+      "sha256": "56cd6161dcb4fa7afdff0e6c94feb0fd772408f9aa934946ab255f624aac192f"
+    },
+    {
+      "localPath": "tests/Zodiac.AssetTool.Cli.Tests/DarkScreenPreparationTests.cs",
+      "bytes": 2196,
+      "sha256": "aed69cb565a7f91503f2fa0fc0f30356ae187fe22c57490ed725239754757357"
+    },
+    {
+      "localPath": "tests/Zodiac.Content.Tests/PreparedDarkScreenTests.cs",
+      "bytes": 5715,
+      "sha256": "3e14f496f87a47546807b2e0b3d425cb6d6dc735bc1ecda7ba0728d9a050899b"
+    },
+    {
+      "localPath": "tests/Fft.Client.Tests/DarkScreenPresentationTests.cs",
+      "bytes": 6095,
+      "sha256": "7ea9478fa58c0793a5fe5b9d67848fcec38b713bae9f80896e8965054368c322"
+    },
+    {
+      "localPath": "tests/Zodiac.Content.Tests/Zodiac.Content.Tests.csproj",
+      "bytes": 1712,
+      "sha256": "bdc7780dd4aea96ffb9a0cbee5812eebfe9a46fd91a2f83c2ba6ea6bb1e1b6e2"
+    },
+    {
+      "localPath": "tests/Fft.Client.Tests/Fft.Client.Tests.csproj",
+      "bytes": 2781,
+      "sha256": "39eb2c969c98dadbeaa49e3e72e63e6021d4670fa65dd915c29bbd1ba73c67c2"
+    },
+    {
+      "localPath": "tools/verification/verify_dark_screen_preview.py",
+      "bytes": 10601,
+      "sha256": "fbb69864fbafed625e590e264791d29e56255aa47171aa694dd2c605a297ef69"
+    },
+    {
+      "localPath": "tools/verification/test_dark_screen_preview.py",
+      "bytes": 4665,
+      "sha256": "619d12e88a020e955448bafcca6fb1991900ab2693388ad2a9a245e35bcb1d9b"
+    }
+  ],
+  "assemblies": [
+    {
+      "localPath": "src/Fft.Client/bin/Release/net10.0/Fft.Client.dll",
+      "bytes": 253952,
+      "sha256": "fc461095f3a8487fbcea3d91eae0de674d118ca24e126390a3014196b226f0fc"
+    },
+    {
+      "localPath": "src/Fft.Client/bin/Release/net10.0/Zodiac.Content.dll",
+      "bytes": 248832,
+      "sha256": "2410d6cff2e6e1245284743f049e83e09e1f787c1351c5a6a28a8b9a6bc5e2a9"
+    },
+    {
+      "localPath": "src/Fft.Client/bin/Release/net10.0/Zodiac.Framework.dll",
+      "bytes": 279040,
+      "sha256": "1a6e88c14d6fe8d85174650953b7680e627a9801395ff6a73dd67c12ef99c230"
+    },
+    {
+      "localPath": "src/Zodiac.AssetTool.Cli/bin/Release/net10.0/Zodiac.AssetTool.Cli.dll",
+      "bytes": 162816,
+      "sha256": "87b2e96bac9980391bfa78ae822c3af06698f5f592068081d4ac619d3349e256"
+    },
+    {
+      "localPath": "src/Zodiac.AssetTool.Cli/bin/Release/net10.0/Zodiac.AssetTool.dll",
+      "bytes": 114176,
+      "sha256": "1568eb6ba24f99746354bf19c4425b600e6b5fd79a9bef23a1f89b99c6c90103"
+    }
+  ],
+  "originalInput": {
+    "localPath": "scratch/all-data-extraction/SCUS_942.21",
+    "bytes": 356352,
+    "sha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562"
+  },
+  "prepared": [
+    {
+      "case": "a",
+      "files": [
+        {
+          "localPath": "scratch/dark-screen-094-final/a-prepared/assets.manifest.json",
+          "bytes": 266,
+          "sha256": "ca8b6425a3a33964ac5889bd1d10903e120e8333b1fe16939ffd989353baa6d6"
+        },
+        {
+          "localPath": "scratch/dark-screen-094-final/a-prepared/dark-screen.json",
+          "bytes": 23045,
+          "sha256": "5e107c5c5896225b88cfe33b741cc27ba5779b4efe3f99cc49ec873569db3c17"
+        }
+      ]
+    },
+    {
+      "case": "b",
+      "files": [
+        {
+          "localPath": "scratch/dark-screen-094-final/b-prepared/assets.manifest.json",
+          "bytes": 266,
+          "sha256": "ca8b6425a3a33964ac5889bd1d10903e120e8333b1fe16939ffd989353baa6d6"
+        },
+        {
+          "localPath": "scratch/dark-screen-094-final/b-prepared/dark-screen.json",
+          "bytes": 23045,
+          "sha256": "5e107c5c5896225b88cfe33b741cc27ba5779b4efe3f99cc49ec873569db3c17"
+        }
+      ]
+    },
+    {
+      "case": "zero",
+      "files": [
+        {
+          "localPath": "scratch/dark-screen-094-final/zero-prepared/assets.manifest.json",
+          "bytes": 266,
+          "sha256": "ebf08c8756a476f4001908e48660c049875bb70fd0b0a62dfc24a199871f3cf3"
+        },
+        {
+          "localPath": "scratch/dark-screen-094-final/zero-prepared/dark-screen.json",
+          "bytes": 23044,
+          "sha256": "a226ff0ea8b1e1637f5ce84cd8be52fb5f9a5832506b02e592a4ff19c624788b"
+        }
+      ]
+    },
+    {
+      "case": "max",
+      "files": [
+        {
+          "localPath": "scratch/dark-screen-094-final/max-prepared/assets.manifest.json",
+          "bytes": 266,
+          "sha256": "afe64464284eff4afd7a3c91dbb2ee1cc67b5414cef23122d7a5aeb806005f8f"
+        },
+        {
+          "localPath": "scratch/dark-screen-094-final/max-prepared/dark-screen.json",
+          "bytes": 23046,
+          "sha256": "051d585dcb6f8ac42e143bc30f3cb1dabf0dfa2729de8bbfaeff205f269856b5"
+        }
+      ]
+    }
+  ],
+  "repeatedPreparationFiles": 2,
+  "byteIdenticalPreparation": true,
+  "math": {
+    "checkedDelays": 288,
+    "checkedActualCsharpProjections": 117,
+    "exactSqrtWouldChangeDelays": 6
+  },
+  "audits": [
+    {
+      "localPath": "scratch/dark-screen-094-final/audit-natural/report.json",
+      "bytes": 105727,
+      "sha256": "7a5c6fecfcbca1d6fb3850efa12775ab7bf2436cd33f87b7df4de074af16ccad"
+    },
+    {
+      "localPath": "scratch/dark-screen-094-final/audit-natural-repeat/report.json",
+      "bytes": 105727,
+      "sha256": "7a5c6fecfcbca1d6fb3850efa12775ab7bf2436cd33f87b7df4de074af16ccad"
+    },
+    {
+      "localPath": "scratch/dark-screen-094-final/audit-zero/report.json",
+      "bytes": 25831,
+      "sha256": "21c61cc4fbf4aeeadc18ae6fcd4cdc15bb60e7cb9aaf292992859273dce14916"
+    },
+    {
+      "localPath": "scratch/dark-screen-094-final/audit-max/report.json",
+      "bytes": 79520,
+      "sha256": "a41d07af699e17417c44cc457c15775b570badd7ffd7171d330e19ec19a8c9eb"
+    }
+  ],
+  "auditReportsByteIdentical": true,
+  "uniqueFinalNativeFrames": 957,
+  "nativeRuns": [
+    {
+      "case": "normal",
+      "receipt": {
+        "localPath": "scratch/dark-screen-094-final/a/check.json",
+        "bytes": 91154,
+        "sha256": "a6e77d6ff045f2787f324a1861352ef549170a340afaac0d53ed2df2796dd234"
+      },
+      "frames": 158
+    },
+    {
+      "case": "normal-repeat",
+      "receipt": {
+        "localPath": "scratch/dark-screen-094-final/b/check.json",
+        "bytes": 91154,
+        "sha256": "a6e77d6ff045f2787f324a1861352ef549170a340afaac0d53ed2df2796dd234"
+      },
+      "frames": 158
+    },
+    {
+      "case": "zero",
+      "receipt": {
+        "localPath": "scratch/dark-screen-094-final/zero/check.json",
+        "bytes": 79801,
+        "sha256": "13359d8ba8874dc348c3f047dcaf54a08faeae1cf739bc61e5e2e68ccc6d0398"
+      },
+      "frames": 114
+    },
+    {
+      "case": "max",
+      "receipt": {
+        "localPath": "scratch/dark-screen-094-final/max/check.json",
+        "bytes": 145593,
+        "sha256": "22c8ab7b2735dd3f55914601b35463cb04ad35950bdf5d2db4613a88a1af9046"
+      },
+      "frames": 369
+    },
+    {
+      "case": "isolated",
+      "receipt": {
+        "localPath": "scratch/dark-screen-094-final/isolated/scratch/capture/check.json",
+        "bytes": 91154,
+        "sha256": "a6e77d6ff045f2787f324a1861352ef549170a340afaac0d53ed2df2796dd234"
+      },
+      "frames": 158
+    }
+  ],
+  "repeatedNormalArtifacts": 159,
+  "isolatedRepeatedArtifacts": 159,
+  "isolatedWorkingDirectory": "Only copied prepared package and generated output; host libraries remain in the built application directory.",
+  "finalRunsMatchEarlierGalleryCaptures": true,
+  "readiness": {
+    "report": {
+      "localPath": "scratch/dark-screen-094-boundaries/report.json",
+      "bytes": 508,
+      "sha256": "d85eb663d339c021305a8e85e6fa27fbbda494a4959f63039f8a5583c4110e85"
+    },
+    "cases": [
+      {
+        "case": "missing-package",
+        "exitCode": 1,
+        "noNewOutput": true
+      },
+      {
+        "case": "corrupt-package",
+        "exitCode": 1,
+        "noNewOutput": true
+      },
+      {
+        "case": "wrong-profile",
+        "exitCode": 1,
+        "noNewOutput": true
+      },
+      {
+        "case": "graphics",
+        "exitCode": 1,
+        "noNewOutput": true
+      },
+      {
+        "case": "existing-output",
+        "exitCode": 1,
+        "noNewOutput": true
+      }
+    ],
+    "logs": [
+      {
+        "localPath": "scratch/dark-screen-094-boundaries/missing-package.log",
+        "bytes": 171,
+        "sha256": "ea63f16441d730c094eae5df341e1a4d5c6201168af9ca1ee2d3e3fb523b4aee"
+      },
+      {
+        "localPath": "scratch/dark-screen-094-boundaries/corrupt-package.log",
+        "bytes": 116,
+        "sha256": "adb6a252511dacdfc936baa75105dbf9863c79ca256f1805553ba5a5fb737042"
+      },
+      {
+        "localPath": "scratch/dark-screen-094-boundaries/wrong-profile.log",
+        "bytes": 71,
+        "sha256": "6ed566f34b68b87c2093ae307b0083f13ee6307ea59d4a8b1c3e5e5a7295cd8d"
+      },
+      {
+        "localPath": "scratch/dark-screen-094-boundaries/graphics.log",
+        "bytes": 63,
+        "sha256": "4076fae6e5bb80fbebdb8392ca767568ada5b4225690f09227f290ce32a530c7"
+      },
+      {
+        "localPath": "scratch/dark-screen-094-boundaries/existing-output.log",
+        "bytes": 97,
+        "sha256": "edc129c897e41f992e0d8a1750022d8cf9226783ffc45dce41df6282f6eba052"
+      }
+    ]
+  },
+  "legacy": {
+    "report": {
+      "localPath": "scratch/dark-screen-094-legacy/report.json",
+      "bytes": 1307,
+      "sha256": "9931d57a1cae4cce4f5d9b1c0c620fa7045aa522876656db4076c0abaff3d482"
+    },
+    "totalUnchangedFiles": 455,
+    "comparisons": [
+      {
+        "profile": "rgb8",
+        "baseline": "scratch/banner-078-preview-a",
+        "current": "scratch/dark-screen-094-legacy/rgb8",
+        "files": 16,
+        "allBytesEqual": true
+      },
+      {
+        "profile": "rgb5",
+        "baseline": "scratch/banner-triangle-windows-five-bit-a",
+        "current": "scratch/dark-screen-094-legacy/rgb5",
+        "files": 16,
+        "allBytesEqual": true
+      },
+      {
+        "profile": "ordered",
+        "baseline": "scratch/banner-082-window-a",
+        "current": "scratch/dark-screen-094-legacy/ordered",
+        "files": 17,
+        "allBytesEqual": true
+      },
+      {
+        "profile": "ready",
+        "baseline": "scratch/ready-086-rebuild-isolated-a/scratch/capture",
+        "current": "scratch/dark-screen-094-legacy/ready",
+        "files": 72,
+        "allBytesEqual": true
+      },
+      {
+        "profile": "sequence",
+        "baseline": "scratch/banner-ready-089-window-b",
+        "current": "scratch/dark-screen-094-legacy/sequence",
+        "files": 164,
+        "allBytesEqual": true
+      },
+      {
+        "profile": "intro",
+        "baseline": "scratch/intro-battle-091-window-a",
+        "current": "scratch/dark-screen-094-legacy/intro",
+        "files": 170,
+        "allBytesEqual": true
+      }
+    ]
+  },
+  "tests": {
+    "lockedRestore": true,
+    "releaseBuild": true,
+    "warnings": 0,
+    "errors": 0,
+    "dotnetPassed": 2031,
+    "newManagedTests": 64,
+    "perSuite": {
+      "engine": 24,
+      "framework": 725,
+      "content": 546,
+      "assetTool": 202,
+      "cli": 202,
+      "client": 332
+    },
+    "pythonPassed": 240,
+    "newPythonTests": 11,
+    "logs": [
+      {
+        "localPath": "scratch/dark-screen-094-validation/restore.log",
+        "bytes": 82,
+        "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc"
+      },
+      {
+        "localPath": "scratch/dark-screen-094-validation/build.log",
+        "bytes": 1678,
+        "sha256": "160411870c9a460ed272dbd7617d69bb19e05ae117580b773823d08bd951c5e3"
+      },
+      {
+        "localPath": "scratch/dark-screen-094-validation/dotnet.log",
+        "bytes": 3016,
+        "sha256": "765a614db2f728924d01bad566423c1bc6e5a70e23c6792709f1cfe52da6fab0"
+      },
+      {
+        "localPath": "scratch/dark-screen-094-validation/python.log",
+        "bytes": 1230,
+        "sha256": "59e3e61676aa9842d9f11e35627bdf2fd79e4a63dbfdc6e6d6ef4a1d018cf904"
+      }
+    ],
+    "trx": [
+      {
+        "localPath": "scratch/dark-screen-094-validation/dotnet-final/Jonathan_DESKTOP-EXCALIB_2026-10-25_16_28_31_net10.0.trx",
+        "bytes": 36854,
+        "sha256": "4101062a78f425b4344ffa1c8c46db442bd0fb7c349b4a81f8022bfbe45542e5",
+        "passed": 24
+      },
+      {
+        "localPath": "scratch/dark-screen-094-validation/dotnet-final/Jonathan_DESKTOP-EXCALIB_2026-10-25_16_28_31_net10.0[1].trx",
+        "bytes": 299067,
+        "sha256": "d894add09b4ce7ebef00eccdb9d660fede00d9ba227bc24aaca00128b09dcc3d",
+        "passed": 202
+      },
+      {
+        "localPath": "scratch/dark-screen-094-validation/dotnet-final/Jonathan_DESKTOP-EXCALIB_2026-10-25_16_28_32_net10.0.trx",
+        "bytes": 1096890,
+        "sha256": "384f4e22187fbd35444487eacbc1d6c7039ff4c50f380add6db939d8ab287a22",
+        "passed": 725
+      },
+      {
+        "localPath": "scratch/dark-screen-094-validation/dotnet-final/Jonathan_DESKTOP-EXCALIB_2026-10-25_16_28_32_net10.0[1].trx",
+        "bytes": 310418,
+        "sha256": "631219545c5d385a29fc9cfc790c42e216b94bbfbd6b36b56512a082b86912e2",
+        "passed": 202
+      },
+      {
+        "localPath": "scratch/dark-screen-094-validation/dotnet-final/Jonathan_DESKTOP-EXCALIB_2026-10-25_16_28_32_net10.0[2].trx",
+        "bytes": 791468,
+        "sha256": "d34d2e74775869f7ddd579f3b78e383e5456e06495d35c228afd143bc4be1958",
+        "passed": 546
+      },
+      {
+        "localPath": "scratch/dark-screen-094-validation/dotnet-final/Jonathan_DESKTOP-EXCALIB_2026-10-25_16_28_32_net10.0[3].trx",
+        "bytes": 491176,
+        "sha256": "ecf89378fdd4002b2c1b1183512fa59f87017d3e391e36b5b25b4b8f2f6b9c97",
+        "passed": 332
+      }
+    ],
+    "newManagedCheckNames": [
+      "Fft.Client.Tests.DarkScreenPresentationTests.Actual_prepared_session_replays_independently_of_composition(hold: 0)",
+      "Fft.Client.Tests.DarkScreenPresentationTests.Actual_prepared_session_replays_independently_of_composition(hold: 255)",
+      "Fft.Client.Tests.DarkScreenPresentationTests.Actual_prepared_session_replays_independently_of_composition(hold: 44)",
+      "Fft.Client.Tests.DarkScreenPresentationTests.Invalid_explicit_state_rejects_before_composition(kind: \"alpha\")",
+      "Fft.Client.Tests.DarkScreenPresentationTests.Invalid_explicit_state_rejects_before_composition(kind: \"bounds\")",
+      "Fft.Client.Tests.DarkScreenPresentationTests.Invalid_explicit_state_rejects_before_composition(kind: \"color\")",
+      "Fft.Client.Tests.DarkScreenPresentationTests.Invalid_explicit_state_rejects_before_composition(kind: \"draws\")",
+      "Fft.Client.Tests.DarkScreenPresentationTests.Invalid_explicit_state_rejects_before_composition(kind: \"length\")",
+      "Fft.Client.Tests.DarkScreenPresentationTests.Invalid_explicit_state_rejects_before_composition(kind: \"precision\")",
+      "Fft.Client.Tests.DarkScreenPresentationTests.Overlaps_are_separate_passes_and_preserve_order",
+      "Fft.Client.Tests.DarkScreenPresentationTests.Preview_options_reject_missing_or_cross_profile_arguments(first: \"--dark-screen\")",
+      "Fft.Client.Tests.DarkScreenPresentationTests.Preview_options_reject_missing_or_cross_profile_arguments(first: \"--ready\")",
+      "Fft.Client.Tests.DarkScreenPresentationTests.Preview_options_reject_missing_or_cross_profile_arguments(first: \"bogus\")",
+      "Fft.Client.Tests.DarkScreenPresentationTests.Projection_is_reversed_and_uses_signed_truncation_with_no_textures",
+      "Fft.Client.Tests.DarkScreenPresentationTests.Readiness_rejects_before_a_scene_exists",
+      "Fft.Client.Tests.DarkScreenPresentationTests.Rectangle_diagonal_and_shared_edges_are_blended_once",
+      "Fft.Client.Tests.DarkScreenPresentationTests.Rotated_diamond_edges_are_half_open_with_single_center_coverage",
+      "Fft.Client.Tests.DarkScreenPresentationTests.Signed_clipping_and_degenerate_quads_preserve_background",
+      "Zodiac.AssetTool.Cli.Tests.DarkScreenPreparationTests.Existing_output_and_unverified_original_inputs_are_preserved",
+      "Zodiac.AssetTool.Cli.Tests.DarkScreenPreparationTests.Invalid_preparation_options_publish_nothing(kind: \"duplicate\")",
+      "Zodiac.AssetTool.Cli.Tests.DarkScreenPreparationTests.Invalid_preparation_options_publish_nothing(kind: \"hold\")",
+      "Zodiac.AssetTool.Cli.Tests.DarkScreenPreparationTests.Invalid_preparation_options_publish_nothing(kind: \"missing\")",
+      "Zodiac.AssetTool.Cli.Tests.DarkScreenPreparationTests.Invalid_preparation_options_publish_nothing(kind: \"outside\")",
+      "Zodiac.AssetTool.Cli.Tests.DarkScreenPreparationTests.Invalid_preparation_options_publish_nothing(kind: \"unsupported\")",
+      "Zodiac.AssetTool.Tests.DarkScreenDecoderTests.Authored_nontrivial_factor_and_shift_are_not_exact_sqrt",
+      "Zodiac.AssetTool.Tests.DarkScreenDecoderTests.Authored_normalized_factors_have_source_width_results(value: 0, expected: 0)",
+      "Zodiac.AssetTool.Tests.DarkScreenDecoderTests.Authored_normalized_factors_have_source_width_results(value: 1, expected: 1)",
+      "Zodiac.AssetTool.Tests.DarkScreenDecoderTests.Authored_normalized_factors_have_source_width_results(value: 4, expected: 2)",
+      "Zodiac.AssetTool.Tests.DarkScreenDecoderTests.Authored_normalized_factors_have_source_width_results(value: 64, expected: 8)",
+      "Zodiac.AssetTool.Tests.DarkScreenDecoderTests.Layout_and_axis_selection_use_all_bounded_samples_without_mutating_input",
+      "Zodiac.AssetTool.Tests.DarkScreenDecoderTests.Short_or_invalid_factor_tables_reject",
+      "Zodiac.AssetTool.Tests.DarkScreenDecoderTests.Unsupported_distance_envelope_rejects(value: -1)",
+      "Zodiac.AssetTool.Tests.DarkScreenDecoderTests.Unsupported_distance_envelope_rejects(value: 127297)",
+      "Zodiac.AssetTool.Tests.DarkScreenDecoderTests.Unsupported_rotation_lengths_or_coefficients_reject",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Authored_roundtrip_loads_immutable_data_and_preserves_worker_timing",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Existing_profiles_reject_the_new_metadata",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Invalid_or_noncanonical_metadata_rejects(kind: \"bad-axes\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Invalid_or_noncanonical_metadata_rejects(kind: \"duplicate\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Invalid_or_noncanonical_metadata_rejects(kind: \"extra\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Invalid_or_noncanonical_metadata_rejects(kind: \"fraction\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Invalid_or_noncanonical_metadata_rejects(kind: \"missing-axis\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Invalid_or_noncanonical_metadata_rejects(kind: \"missing-delay\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Invalid_or_noncanonical_metadata_rejects(kind: \"missing-parameter\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Invalid_or_noncanonical_metadata_rejects(kind: \"null\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Invalid_or_noncanonical_metadata_rejects(kind: \"null-tile\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Invalid_or_noncanonical_metadata_rejects(kind: \"wrong-provenance\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Loader_rejects_wrong_id_hash_size_and_oversized_metadata",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Missing_required_fields_reject(name: \"executionProfile\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Missing_required_fields_reject(name: \"format\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Missing_required_fields_reject(name: \"holdFrames\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Missing_required_fields_reject(name: \"id\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Missing_required_fields_reject(name: \"ownerId\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Missing_required_fields_reject(name: \"parameters\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Missing_required_fields_reject(name: \"rotations\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Missing_required_fields_reject(name: \"schemaVersion\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Missing_required_fields_reject(name: \"source\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Missing_required_fields_reject(name: \"tiles\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Unsupported_domain_rejects_before_execution(kind: \"delay\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Unsupported_domain_rejects_before_execution(kind: \"hold\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Unsupported_domain_rejects_before_execution(kind: \"layout\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Unsupported_domain_rejects_before_execution(kind: \"params\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Unsupported_domain_rejects_before_execution(kind: \"range\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Unsupported_domain_rejects_before_execution(kind: \"rotation\")",
+      "Zodiac.Content.Tests.PreparedDarkScreenTests.Unsupported_domain_rejects_before_execution(kind: \"source\")"
+    ]
+  },
+  "contractLayers": [
+    {
+      "id": "DSC-001",
+      "status": "bounded-prepared-and-graphics-readiness-executed",
+      "checks": [
+        "Missing/corrupt/rehashed-unsupported package and graphics startup fail before check output; strict loading and logical binding tests."
+      ]
+    },
+    {
+      "id": "DSC-022",
+      "status": "bounded-resource-recreation-and-replay-executed",
+      "checks": [
+        "Native tick-5 resource recreation; repeated/isolated complete receipts; actual composition-independent state/trace replay."
+      ]
+    },
+    {
+      "id": "DSC-025",
+      "status": "executed",
+      "checks": [
+        "288 original approximate-root delays; nine axes; 117 actual C# fixed-point projections."
+      ]
+    },
+    {
+      "id": "DSC-026",
+      "status": "selected-policy-executed",
+      "checks": [
+        "Explicit RGB5 background, flat untextured average; CPU/GPU/independent model."
+      ]
+    },
+    {
+      "id": "DSC-027",
+      "status": "selected-provisional-coverage-executed",
+      "checks": [
+        "Single diagonal/shared-edge coverage, overlaps, signed clipping and degenerate tests."
+      ],
+      "remaining": "Original entry/release edge pixel equivalence."
+    },
+    {
+      "id": "DSC-028",
+      "status": "bounded-prepared-only-runtime-executed",
+      "checks": [
+        "Strict two-file package; isolated runtime; no original input/reference in working directory."
+      ]
+    },
+    {
+      "id": "DSC-029",
+      "status": "pending",
+      "remaining": "Finite source-bound original entry/release capture and displayed comparison; ZOD-095."
+    },
+    {
+      "id": "DSC-030",
+      "status": "bounded-regression-executed",
+      "checks": [
+        "All managed/Python suites plus 455 byte-identical historical native artifacts."
+      ]
+    }
+  ],
+  "coveragePolicy": "Selected provisional integer sample/top-left, two triangles per quad, native reverse order, RGB5 average, dither/window/mask off.",
+  "ownerReview": {
+    "approved": false,
+    "gallery": {
+      "localPath": "scratch/dark-screen-094-review/review.html",
+      "bytes": 197865,
+      "sha256": "497b12256ee788ba3137f279375a747ed32eb9d6365c68ba6bbeba574980c9f0"
+    },
+    "status": "pending"
+  },
+  "pureWorkerOrLedgerChanged": false,
+  "newOriginalCaptures": false,
+  "emulatorLaunched": false,
+  "originalEntryReleasePixelComparison": false,
+  "originalDurationEstablished": false,
+  "fullStartupEstablished": false,
+  "combinedBannerReadyIntegration": false,
+  "next": "Owner gallery review, then ZOD-095 original entry/release references; combined scene integration remains separate.",
+  "mediaPolicy": "Original/prepared data, captures, logs, inventories and generated reports stay ignored under scratch; only authored code/tests/docs and metadata identities are committed."
+}
