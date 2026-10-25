@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\..\docs\evidence\events\dark-screen-contract-v1.json" Link="Fixtures\dark-screen-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\..\docs\evidence\events\ready-display-contract-v1.json" Link="Fixtures\ready-display-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\..\docs\evidence\events\banner-opcode-admission-contract-v1.json" Link="Fixtures\banner-opcode-admission-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\..\docs\evidence\events\task-barrier-contract-v1.json" Link="Fixtures\task-barrier-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />

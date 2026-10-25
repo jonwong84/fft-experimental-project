@@ -1,5 +1,23 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Latest implementation checkpoint (2026-10-25):** ZOD-093 adds a separate typed
+authored pure dark-screen worker/adapter, reusing the existing scene ledger.
+It retains pre-update tile draws, strict overshoot/extra yields, same-task phases,
+accepted no-match releases, tombstones, event-before-worker polling and complete
+late-failure rollback. Logical Holding birth/first flash remain 55/56; release
+at 100 clears 156 and parent observes 157. The authored delay grid is synthetic;
+original delay/rotation preparation and actual rendering are not implemented.
+Locked restore, zero-warning Release build, **1,967 .NET / 229 Python tests** pass
+(58 new managed checks). Logical portions of DSC-001..024 have checks; actual
+prepared/resource readiness, GPU recreation, DSC-025..029 and new native output
+regression remain pending. No original/emulator/capture/visual equivalence claim.
+[Behavior](behavior/dark-screen-worker.md),
+[validation](evidence/events/dark-screen-worker-v1.json).
+**Next: ZOD-094**, verified prepared definition/rotation data and bounded flat-quad
+preview with finite native validation and owner gallery review. Existing profiles
+remain unchanged; integration with held general/Ready tasks follows separately.
+Standing commit/push permission applies.
+
 **Latest source checkpoint (2026-10-25):** ZOD-092 selects the original origin-mode
 DarkScreen style shared by events 4/401. It draws untextured flat translucent
 quads; BONUS loading is a separate shared-artwork side effect. Verified original

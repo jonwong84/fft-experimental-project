@@ -1749,7 +1749,7 @@ cases remain unexecuted; entry/release original scanouts and runtime work remain
 
 ### ZOD-093 — Implement the pure dark-screen worker and task proof
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-092
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-092
 
 **Scope:** Implement the selected post-readiness immutable worker and an atomic
 ordered task/ledger/barrier adapter using prevalidated definition data. Keep
@@ -1765,6 +1765,41 @@ parameters, foreign ownership, concurrent burst workers and external task mutati
 No I/O, wall clock, GPU/renderer completion, PS1 library, raw event import, native
 slot emulation, arbitrary modes, cancellation or full EventEnd/startup claim.
 Document remaining preparation/presentation cases separately without marking them executed.
+
+**Result (2026-10-25):** A separate typed authored adapter drives the immutable
+worker and existing ledger atomically, with event-before-worker order, pre-update
+draws, strict overshoot/extra yields, stable identity/revisions and no-match release.
+Protected task updates, complete late-failure rollback, retained history and replay
+are tested. All 1,967 .NET / 229 Python tests pass (58 new managed checks), with
+locked restore and zero-warning Release build. Logical DSC-001..024 portions have
+checks; actual prepared/resource readiness, GPU recreation, DSC-025..029 and native
+output regression remain separate gates. Existing Content/Client profiles are
+unchanged. [Behavior](behavior/dark-screen-worker.md),
+[validation](evidence/events/dark-screen-worker-v1.json).
+
+### ZOD-094 — Prepare and preview the bounded dark-screen transition
+
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-093
+
+**Scope:** Prepare the selected original delay/rotation data offline, strictly load
+a separate immutable authored definition/profile and preview accepted dark-screen
+submissions with the selected untextured RGB5 flat-quad policy. Integrating the
+held worker with banners/Ready and original entry/release capture comparison
+remain subsequent milestones.
+
+**Acceptance criteria:** Verify original inputs and pinned provenance; preserve
+all 288 approximate-root delays and 117 fixed-point projections through bounded
+prepared coordinates/delays and nine pairs of rotation axes. Reject unsupported
+parameters, malformed/unready packages and existing output before scene start.
+Use explicit opaque background, average blending, native order, signed clipping,
+degenerate rejection and single shared-edge coverage; no texture/STP sampling.
+Keep loading out of the pure worker and renderer completion out of task authority.
+Repeat preparation and finite native/CPU/independent-model captures, test resource
+recreation/render-independent replay, preserve old profiles/artifacts and provide
+a gallery for owner review. Record DSC-001/022/025..030 layer coverage honestly;
+original entry/release pixel equivalence remains unestablished without separately
+planned source-bound original captures. Runtime uses prepared files only, without
+BIN/EXE/math-table/reference-code or emulator dependencies.
 
 ## Authoring, extensions, and later goals
 
