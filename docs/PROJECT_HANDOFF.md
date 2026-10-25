@@ -1,5 +1,24 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Latest source checkpoint (2026-10-25):** ZOD-083's
+[Ready display trace](architecture/zod-083-ready-display.md) selects condition 0
+(message 0), distinct from condition 1's buggy stats helper. Ready inherits image
+0, selects palette 2 and six glyph quads with full-corner colors/average blending;
+it cannot reuse the existing general-banner schema/compositor unchanged. Its
+task-56 dispatcher owns an untagged child and waits for child completion. In the
+selected event → dispatcher → child order, birth already submits scale 48 (128
+when H=0); release resets fade-out to 128. Source-derived expectations are child
+clear R+8, dispatcher clear R+9 and event resume R+10. These are unexecuted proposed
+contract timings, not measured original duration. Two independent retained states
+bind event 4's command 810/wait 813, slots 1/3/4, resident code/selected tables/VRAM
+and queued scales 48/128. Native saved s3 at the fade-in yield contains the next
+scale because of the call delay slot; it must not be mistaken for the submitted
+scale. Two reports repeat; 32 authored cases remain specification-only. No runtime,
+profile, rendering or tests changed, and no emulator was run. Last full tests
+remain **1,629 .NET / 163 Python** from ZOD-082. **Next: ZOD-084** pure aggregate;
+ZOD-085 selects artwork/rendering before ZOD-086's separate authored host profile.
+Standing owner commit/push permission applies after source/evidence checks.
+
 **Latest behavior checkpoint (2026-10-25):** ZOD-082's
 [authored ordered-banner profile](development/prepared-ordered-banner-event.md) is
 complete. A separate format/profile preserves old JSON/export closure, decodes

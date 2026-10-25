@@ -1469,6 +1469,78 @@ draws. Runtime uses prepared files only; resources never enter Core. Demonstrate
 finite repeatable host checks and retain explicit preloaded/startup/latency limits.
 No other banner family, native slot emulator, EventEnd, full BattleStart or automatic commit.
 
+### ZOD-083 — Trace Ready display assets and dispatcher/child lifetime
+
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-082
+
+**Result (2026-10-25):** [Ready source/contract](architecture/zod-083-ready-display.md)
+distinguishes condition 0/message 0 from condition 1's buggy helper. Verified image
+0/palette 2, six full-corner glyphs, inherited readiness, ordered dispatcher/child
+phases and extra yields. Two retained event-4 states independently bind the wait at
+813, slots 1/3/4, resident code/tables/VRAM and queued scales 48/128. Two study
+reports repeat. Thirty-two authored expectations remain unexecuted. Selected
+source-derived clear/resume is H+8 child, H+9 dispatcher and H+10 event, not an
+observed complete duration. No runtime, profile or test change; historical full
+validation stays 1,629 .NET / 163 Python. Next ZOD-084, then presentation selection
+and authored integration in ZOD-085/086.
+
+**Acceptance criteria:** Pin source revision, callers, separate byte operands,
+signed arithmetic/byte stores, data ranges/readiness, input sampling, child/task
+ownership and scheduling. Preserve uncertainties and unsupported condition 1;
+record independently authored cases and a bounded implementation split. Source
+and queued-packet evidence must not be labeled original scanout/timing equivalence.
+
+### ZOD-084 — Prove the ordered Ready dispatcher/child aggregate
+
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-083
+
+**Scope:** Implement one typed preloaded condition-0/H-0..255 aggregate over the
+selected event → dispatcher → child phases. The ledger's task 56 represents its
+dispatcher; retain child progress/terminal state privately within the aggregate.
+Preserve the old general-banner APIs, behavior and profiles.
+
+**Acceptance criteria:** Execute RDY-001..028 and additional meaningful boundaries:
+birth draw 48 (or 128 for H=0), no birth input/double-step, input wait overlapping
+fade-in, release reset, seven fade-out submissions, empty extra yield, child clear
+R+8/dispatcher clear R+9/parent resume R+10, other-owner waits, post-poll facts,
+protected identity, retained lifetime, checked budgets/counters and full rollback.
+Keep owner-acknowledged cancellation a separate native policy. Deterministic replay
+must not depend on presentation reads. No callbacks/public half-ticks, raw opcodes,
+Content/preparation/graphics, native slots or original loading behavior. Run locked
+restore, zero-warning Release build and appropriate full regressions.
+
+### ZOD-085 — Select Ready glyph preparation and rendering policies
+
+**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-083
+
+**Scope:** Extend the Ready source study into a bounded immutable artwork and
+accepted-snapshot presentation contract: image 0, palette 2, six glyph quads,
+four-corner scaled colors and average/STP blending with explicit GPU state.
+
+**Acceptance criteria:** Trace arithmetic/order/coverage and relevant source helper
+calls before selecting a compositor. Reuse existing original-state evidence only
+within verified queued/display boundaries; retain any needed original captures as
+separate gates. Specify safe offline input ranges, strict prepared validation,
+resource-ready-before-scene ownership, independently authored expectations and
+precise preview/fidelity limits. Do not relax the general-banner schema or silently
+reinterpret its existing renderer policy. No new runtime renderer in this spike.
+
+### ZOD-086 — Prepare and preview the authored Ready profile
+
+**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-084, ZOD-085
+
+**Scope:** Add separate authored raw/processed condition-0 conversion, strict
+prepared-content projection and prepared-files-only Windows composition using
+ZOD-084's aggregate and ZOD-085's selected presentation contract.
+
+**Acceptance criteria:** Execute RDY-029..032 and selected presentation regressions.
+Decode unsigned condition/hold separately; reject old profiles, unsupported
+conditions/provenance/records even unreachable, missing readiness and retail
+events 4/401. Prove finite repeatable receipts and rendering-independent replay;
+no renderer completion acknowledgments. Keep one Ready per selected scene and
+explicitly exclude concurrent shared-pool effects, combined general→Ready retail
+playback, condition 1, original loading duration, EventEnd and full BattleStart.
+
 ## Authoring, extensions, and later goals
 
 ### ZOD-047 — Build the first job/ability inspection and editing UI
