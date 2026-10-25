@@ -1552,8 +1552,8 @@ prepared-only Windows host. All 32 RPR cases and RDY-029..032 have checks; 112 n
 restore and zero-warning Release build pass. Twelve finite scenarios produce 626
 exact CPU/GPU/independent-model captures; repeated/raw-processed outputs agree and
 all 16/16/17 legacy artifacts remain unchanged. Missing content/graphics failure
-creates no check output. The gallery awaits owner review; original displayed Ready
-comparison remains separate. Next ZOD-087.
+creates no check output. The owner approved the prepared gallery on 2026-10-25;
+original displayed Ready comparison remains separate. Next ZOD-087.
 
 **Scope:** Add separate authored raw/processed condition-0 conversion, strict
 prepared-content projection and prepared-files-only Windows composition using

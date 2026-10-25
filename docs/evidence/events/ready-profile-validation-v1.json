@@ -509,7 +509,10 @@
     "bytes": 1691,
     "sha256": "69465deaed60b4017d27df18f2e3941e21322cfef548ac7e0964b8a14a1f5f36"
   },
-  "ownerReview": "pending",
+  "ownerReview": "approved-prepared-preview",
+  "ownerReviewDate": "2026-10-25",
+  "ownerReviewComment": "Looks good to me.",
+  "ownerReviewScope": "Prepared Ready gallery appearance only; original-game visual/timing comparison remains open.",
   "limits": [
     "Original Ready scanout/background/input/loading/timing comparisons remain open in ZOD-087.",
     "Authored BATTLE/non-tutorial/speed-one, one preloaded condition-0 aggregate; no original events 4/401 or combined general-to-Ready playback.",

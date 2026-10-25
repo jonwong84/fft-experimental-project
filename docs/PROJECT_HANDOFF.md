@@ -11,7 +11,8 @@ agree. Twelve Windows scenarios yield 626 exact CPU/GPU/independent-model PNGs;
 the final host reproduces hold-60 output from an isolated working directory.
 Actual missing-event/artwork and graphics-startup failures create no check output.
 Legacy RGB8/RGB5/ordered outputs preserve all 16/16/17 historical files. Local
-gallery: `scratch/ready-086-review/review.html`; owner review is pending. No new
+gallery: `scratch/ready-086-review/review.html`; the owner approved its appearance
+on 2026-10-25 ("Looks good to me"). Original comparison remains separate. No new
 original capture/emulator run or displayed Ready fidelity/timing claim. **Next:
 ZOD-087**, inspect/bind original Ready references before displayed comparison.
 Standing commit/push permission applies after validation.

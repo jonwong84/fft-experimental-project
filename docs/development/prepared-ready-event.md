@@ -135,7 +135,9 @@ Use fresh output roots when repeating. The local gallery is
 `scratch/ready-086-review/review.html`: birth, fade-in, full, release, fade-out,
 last submission, extra yield and child/dispatcher/event clear. These are raw
 256x240 diagnostic canvases enlarged with nearest-neighbor sampling, with no CRT
-aspect/shader treatment. Owner review is pending; original comparison is separate.
+aspect/shader treatment. The owner approved this gallery on 2026-10-25: "Looks good
+to me." This accepts the prepared preview's appearance; original comparison remains
+separate.
 
 ## Executed checks and validation
 
