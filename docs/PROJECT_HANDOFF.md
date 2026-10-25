@@ -1,5 +1,26 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Latest behavior checkpoint (2026-10-25):** ZOD-089 implements one prepared
+general-banner → Ready scene after tracing event 4's task/barrier handoff and
+shared atlas/pool boundaries. A separate closed authored descriptor owns exactly
+general/E5/Ready/E5/synthetic-exit; one event consumer, clock and retained ledger
+reuse the pure workers. Both resources load before any logical admission; no
+simultaneous live displays or deferred birth Circle. Late failures roll back
+poll/admission/worker/identity progress. Existing formats/renderers remain intact.
+Locked restore, zero-warning Release build, **1,868 .NET / 197 Python tests** pass.
+Eight finite Windows scenarios produce **1,257 exact CPU/GPU/independent-model
+PNGs**; natural runs repeat all 164 files. Readiness failures create no output;
+legacy RGB8/ordered/Ready retains 16/17/72 historical files. No emulator was run;
+retained original frames support the source handoff only. No combined original
+scanout, loader-duration or full event/startup claim.
+[Record](development/banner-ready-sequence.md),
+[evidence](evidence/events/banner-ready-sequence-v1.json). The owner approved
+`scratch/banner-ready-089-review/review.html` on 2026-10-25: "This looks great."
+**Next:** trace the scene/input ownership boundary after Ready before connecting
+this introduction to the existing playable battle loop. Original startup
+compatibility and complete event playback remain separately evidenced work.
+Standing commit/push permission applies after validation.
+
 **Latest validation checkpoint (2026-10-25):** ZOD-088 closes the two missing Ready
 birth scanouts through a separate, closed BIOS IRQ verifier. The retained endpoints
 are timer-2 sound callbacks; pinned original EXE/BIOS save/restore, live COP0,

@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="../Support/AuthoredBannerReadySequence.cs" Link="Support/AuthoredBannerReadySequence.cs" />
     <Compile Include="../Support/AuthoredReady.cs" Link="Support/AuthoredReady.cs" />
     <None Include="../../docs/evidence/events/ready-presentation-contract-v1.json" Link="Fixtures/ready-presentation-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../../docs/evidence/events/ready-display-contract-v1.json" Link="Fixtures/ready-display-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />

@@ -1628,6 +1628,35 @@ no original media committed or runtime dependency added. Hardware equivalence,
 physical Circle timing, full event/startup playback and later CRT/audio remain
 separate work.
 
+### ZOD-089 — Compose the prepared general-banner → Ready scene
+
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-082, ZOD-088
+
+**Scope:** Trace the event-4 display/barrier handoff and shared native artwork/pool
+ownership, then implement one bounded authored preloaded sequence with the proven
+workers and renderers. Keep original bytecode, startup duration and other profiles
+closed; preload both resources before logical admission.
+
+**Acceptance criteria:** One event/clock/consumer/ledger preserves predecessor
+completion, successor birth and Ready child/dispatcher observation gaps without
+overlapping live displays or consuming a birth Circle sample. Both bindings must
+validate before the first task; late budget failures roll back every phase. Add
+strict prepared loading/preparation, reproducible tests and finite Windows review
+with repeated/independent CPU/GPU pixels. Preserve historical standalone outputs;
+no renderer completion facts, original runtime dependency or full startup claim.
+
+**Result (2026-10-25):** Source trace plus a separate five-operation authored
+descriptor, pure composition and prepared-only Windows host are complete.
+[Development record](development/banner-ready-sequence.md),
+[metadata evidence](evidence/events/banner-ready-sequence-v1.json). All 74 new
+managed checks pass; totals 1,868 .NET / 197 Python, zero-warning Release build.
+Eight final scenarios yield 1,257 exact CPU/GPU/independent-model PNGs; natural
+runs repeat all 164 artifacts. Missing/failed resource readiness creates no output.
+Legacy RGB8/ordered/Ready preserves 16/17/72 files. Review gallery
+`scratch/banner-ready-089-review/review.html` was approved by the owner on
+2026-10-25: "This looks great." No new emulator
+run, combined original scanout comparison or full original event playback.
+
 ## Authoring, extensions, and later goals
 
 ### ZOD-047 — Build the first job/ability inspection and editing UI
