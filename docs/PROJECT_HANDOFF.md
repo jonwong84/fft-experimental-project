@@ -10,12 +10,15 @@ Earlier degenerate-geometry probes are retained and excluded. Two final runs
 repeat **118 artifacts**, including all 26 exit states. Nine actual host negatives
 create no new output/preserve existing markers. Locked restores, zero-warning
 Release builds and **2,031 .NET / 255 Python tests** pass (15 new Python checks).
-Production `src/` is unchanged. Review `scratch/dark-screen-095-f/review.html`;
-**owner visual approval is pending**. Birth/transition/final yield/clear/parent
+Production `src/` is unchanged. The owner approved
+`scratch/dark-screen-095-f/review.html` on 2026-10-25: "This looks good."
+Approval covers these thirteen selected rows. This approval update reruns no
+implementation suites; counts above retain the recorded ZOD-095 run.
+Birth/transition/final yield/clear/parent
 scanouts, full animation, original duration, map/hardware and full startup remain
 open. [Guide](development/original-dark-screen-comparison.md),
 [metadata](evidence/events/original-dark-screen-v1.json).
-**Next: ZOD-096 after review**, specify combined authored DarkScreen/banner/Ready
+**Next: ZOD-096 (ready)**, specify combined authored DarkScreen/banner/Ready
 and the existing battle ownership handoff before implementation. Standing
 commit/push permission applies to validated work.
 

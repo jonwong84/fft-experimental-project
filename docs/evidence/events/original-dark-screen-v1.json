@@ -896,13 +896,17 @@
     }
   ],
   "ownerReview": {
-    "status": "pending",
+    "status": "approved",
     "gallery": {
       "localPath": "scratch/dark-screen-095-f/review.html",
       "bytes": 4812,
       "sha256": "46ad1a9e4ec243cd3a4884f261b185184be02551095a4485aaecf059367d70ac"
     },
-    "procedure": "Compare original and C# in each row, especially early/large entry, full flash, release and the 24-pixel tail. Controlled backgrounds explain inherited scene pixels; 2/213 are zero-coverage checks."
+    "procedure": "Compare original and C# in each row, especially early/large entry, full flash, release and the 24-pixel tail. Controlled backgrounds explain inherited scene pixels; 2/213 are zero-coverage checks.",
+    "date": "2026-10-25",
+    "quote": "This looks good.",
+    "scope": "Approval covers the thirteen selected original/control/C# gallery rows. Missing endpoints/full animation, original duration, map/hardware and combined startup remain open.",
+    "implementationSuitesRerunForApproval": false
   },
   "limits": [
     "Selected integer/top-left coverage matches these anchors, not arbitrary geometry or every original animation frame.",

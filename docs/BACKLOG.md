@@ -1818,7 +1818,7 @@ pixel/timing equivalence remains open. This approval update reruns no implementa
 
 ### ZOD-095 — Bind original dark-screen entry and release references
 
-**Type:** Spike · **Priority:** P2 · **Status:** Awaiting owner visual review · **Depends on:** ZOD-094
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-094
 
 **Scope:** Plan finite source-bound original entry/release observations and compare
 the selected prepared flat-quad output. Establish any prerequisite retained state
@@ -1846,14 +1846,16 @@ rejected; the final policy has no CPU exception. Both final runs repeat 118
 artifacts. Locked restores, zero-warning Release builds, 2,031 .NET / 255 Python
 tests pass (15 new Python checks); nine actual host negatives preserve output.
 Selected edge/overlap coverage agrees; full animation/endpoints, original duration,
-map/hardware and combined startup remain open. Review
-`scratch/dark-screen-095-f/review.html` separately; approval is pending.
+map/hardware and combined startup remain open. The gallery
+`scratch/dark-screen-095-f/review.html` was approved by the owner on 2026-10-25:
+"This looks good." Approval covers these thirteen selected rows; the stated
+remaining gaps stay open. This approval update reruns no implementation suites.
 [Guide](development/original-dark-screen-comparison.md),
 [metadata](evidence/events/original-dark-screen-v1.json).
 
 ### ZOD-096 — Specify the combined dark-screen introduction
 
-**Type:** Design task · **Priority:** P2 · **Status:** Waiting for ZOD-095 review · **Depends on:** ZOD-095, ZOD-091
+**Type:** Design task · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-095, ZOD-091
 
 **Scope:** Select the bounded authored composition of entering/held DarkScreen,
 general banner, Ready, release/barrier and the existing battle ownership handoff.

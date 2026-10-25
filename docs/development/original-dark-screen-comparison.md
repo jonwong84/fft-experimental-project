@@ -9,7 +9,9 @@ media remain under ignored `scratch/`.
 
 Review `scratch/dark-screen-095-f/review.html`: each row shows the original,
 controlled background and actual C# composition at 2× nearest-neighbor scale.
-Owner approval is **pending**. The eleven nonempty rows cover early and large
+The owner approved this gallery on **2026-10-25**: "This looks good."
+This documentation/evidence approval update reruns no implementation suites;
+validation counts below retain the recorded ZOD-095 run. The eleven nonempty rows cover early and large
 entry tiles, overlapping/clipped tiles, the held full-screen flash, release and
 the 24-pixel late tail. Entry tick 2 and release tick 213 have zero coverage;
 they validate selected empty geometry/history, not visible rasterization.
@@ -112,6 +114,6 @@ The selected entry/hold/release scanouts now have exact original/emulator pixel
 evidence. Birth, phase-transition and final body/exit/parent endpoints, full
 original animation, loading/input/display duration, original EventEnd/player
 ownership, hardware fidelity and combined startup remain open. ZOD-094's native
-CPU/GPU proof remains separate. After owner review, ZOD-096 specifies composition
+CPU/GPU proof remains separate. ZOD-096 is now ready to specify composition
 of DarkScreen with the existing authored banner/Ready introduction and battle
 handoff before changing that integration.
