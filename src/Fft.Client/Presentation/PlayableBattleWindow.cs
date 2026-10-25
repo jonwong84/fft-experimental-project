@@ -10,14 +10,13 @@ using Microsoft.Xna.Framework.Input;
 namespace Fft.Client.Presentation;
 
 /// <summary>Local two-player UI for the supported M1 battle. Only the controller publishes simulation results.</summary>
-internal sealed class PlayableBattleWindow : Game
+internal sealed partial class PlayableBattleWindow : Game
 {
     private static readonly Color Background = new(14, 21, 34);
     private static readonly Color Cyan = new(82, 202, 232), Gold = new(241, 172, 86), Muted = new(145, 162, 184);
-    private readonly BattleInteraction interaction = new(SyntheticTwoUnitBattle.Create());
-    private readonly BattleUiRouter router;
-    private readonly BattleInputLatch input = new();
-    private readonly Queue<Keys> keys = [];
+    private BattleInteraction interaction = null!;
+    private BattleUiRouter router = null!;
+    private readonly BattleInputBuffer input = new();
     private readonly GraphicsDeviceManager graphics;
     private readonly string? checkDirectory;
     private SpriteBatch? batch;
@@ -28,9 +27,10 @@ internal sealed class PlayableBattleWindow : Game
     private string? pendingCapture;
     public bool CheckCompleted { get; private set; }
 
-    public PlayableBattleWindow(string? checkDirectory)
+    public PlayableBattleWindow(string? checkDirectory, BannerReadySession? preparedIntroduction = null, BannerReadyPreviewOptions? introductionOptions = null)
     {
-        this.checkDirectory = checkDirectory; router = new(interaction);
+        if ((preparedIntroduction is null) != (introductionOptions is null)) throw new ArgumentException("Introduction resources and options must be supplied together.");
+        this.checkDirectory = checkDirectory; this.preparedIntroduction = preparedIntroduction; this.introductionOptions = introductionOptions;
         graphics = new GraphicsDeviceManager(this)
         {
             PreferredBackBufferWidth = SceneLayout.CanvasWidth, PreferredBackBufferHeight = SceneLayout.CanvasHeight,
@@ -38,15 +38,25 @@ internal sealed class PlayableBattleWindow : Game
         };
         IsFixedTimeStep = true; TargetElapsedTime = TimeSpan.FromSeconds(1.0 / 60);
         IsMouseVisible = true; Window.AllowUserResizing = true;
-        Window.Title = "FFT - Bounded two-unit battle | local two player | Esc closes";
+        Window.Title = preparedIntroduction is null ? "FFT - Bounded two-unit battle | local two player | Esc closes" :
+            "FFT - Authored introduction to bounded battle | C skips / N next turn / Esc closes";
         Window.KeyDown += OnKeyDown; Window.KeyUp += OnKeyUp;
         Activated += HandleActivated; Deactivated += HandleDeactivated; graphics.DeviceReset += OnDeviceReset;
     }
 
     protected override void LoadContent()
     {
-        CreateResources(); BaselineInput();
-        if (checkDirectory is not null) pendingCapture = "start.png";
+        CreateResources(); // Every graphics resource exists before the introduction or battle is admitted.
+        introduction = preparedIntroduction is null ? null : IntroductionBattleSession.Start(preparedIntroduction);
+        interaction = introduction?.Interaction ?? new(SyntheticTwoUnitBattle.Create());
+        router = introduction?.Router ?? new(interaction);
+        initialBattle = Snapshot(interaction.State); BaselineInput();
+        if (checkDirectory is not null)
+        {
+            Directory.CreateDirectory(checkDirectory);
+            if (introduction is null) pendingCapture = "start.png";
+            else Directory.CreateDirectory(Path.Combine(checkDirectory, "intro"));
+        }
     }
 
     private void CreateResources()
@@ -71,10 +81,16 @@ internal sealed class PlayableBattleWindow : Game
         }
         pawn.SetData(unit);
         scene = new RenderTarget2D(GraphicsDevice, SceneLayout.CanvasWidth, SceneLayout.CanvasHeight, false, SurfaceFormat.Color, DepthFormat.None);
+        if (preparedIntroduction is not null)
+        {
+            introTexture = new(GraphicsDevice, 256, 240);
+            introTarget = new(GraphicsDevice, 256, 240, false, SurfaceFormat.Color, DepthFormat.None);
+        }
     }
 
     protected override void Update(GameTime gameTime)
     {
+        if (UpdateIntroduction()) { base.Update(gameTime); return; }
         if (checkDirectory is not null)
         {
             if (checkStep < BattleUiCheckPlan.Inputs.Length && frames >= nextStepFrame)
@@ -88,18 +104,18 @@ internal sealed class PlayableBattleWindow : Game
                     resizeChecked = true;
                 }
                 var step = BattleUiCheckPlan.Inputs[checkStep++];
-                if (step.Key is { } key) router.Key(key);
+                if (step.Key is { } key) DispatchKey(key);
                 if (step.Click is { } click) InjectCanvasClick(click);
                 pendingCapture = step.Capture; nextStepFrame = frames + 12;
             }
         }
         else if (IsActive)
         {
-            while (keys.TryDequeue(out var key)) router.Key(key);
+            while (input.TryTake(out var key)) DispatchKey(key);
             var mouse = Mouse.GetState(Window);
             if (input.LeftPress(mouse.LeftButton == ButtonState.Pressed)) RoutePointer(new(mouse.X, mouse.Y));
         }
-        else keys.Clear();
+        else input.ClearQueued();
         // CT advances only through an explicit NextTurn command. Presentation time is never passed to simulation.
         base.Update(gameTime);
     }
@@ -108,7 +124,10 @@ internal sealed class PlayableBattleWindow : Game
     {
         var pp = GraphicsDevice.PresentationParameters;
         if (BattleUiLayout.CanvasPoint(mouse, Window.ClientBounds.Width, Window.ClientBounds.Height,
-            pp.BackBufferWidth, pp.BackBufferHeight) is { } canvas) router.Click(canvas);
+            pp.BackBufferWidth, pp.BackBufferHeight) is { } canvas)
+        {
+            if (introduction is null) router.Click(canvas); else introduction.Click(canvas);
+        }
     }
 
     private void InjectCanvasClick(PixelPoint canvas)
@@ -124,6 +143,7 @@ internal sealed class PlayableBattleWindow : Game
     protected override void Draw(GameTime gameTime)
     {
         if (Window.ClientBounds.Width <= 0 || Window.ClientBounds.Height <= 0) return;
+        if (DrawIntroduction()) { frames++; base.Draw(gameTime); return; }
         string before = Snapshot(interaction.State);
         GraphicsDevice.SetRenderTarget(scene); GraphicsDevice.Clear(Background);
         batch!.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, SamplerState.PointClamp,
@@ -273,27 +293,28 @@ internal sealed class PlayableBattleWindow : Game
             backbuffer = new[] { pp.BackBufferWidth, pp.BackBufferHeight }, viewport = SceneLayout.Fit(pp.BackBufferWidth, pp.BackBufferHeight),
         };
         using var json = new FileStream(Path.Combine(checkDirectory!, "check.json"), FileMode.CreateNew);
-        JsonSerializer.Serialize(json, report, new JsonSerializerOptions { WriteIndented = true });
+        JsonSerializer.Serialize(json, introduction is null ? (object)report : IntroductionReceipt(report), new JsonSerializerOptions { WriteIndented = true });
         CheckCompleted = true;
         Console.WriteLine($"Playable UI check passed: {accepted} accepted, 2 rejected; exact headless/replay match. Captures: {checkDirectory}");
     }
 
     private void BaselineInput()
     {
-        keys.Clear(); input.Reset(Keyboard.GetState().GetPressedKeys(), Mouse.GetState(Window).LeftButton == ButtonState.Pressed);
+        input.Baseline(Keyboard.GetState().GetPressedKeys(), Mouse.GetState(Window).LeftButton == ButtonState.Pressed);
     }
     private void HandleActivated(object? sender, EventArgs e) => BaselineInput();
-    private void HandleDeactivated(object? sender, EventArgs e) => keys.Clear();
+    private void HandleDeactivated(object? sender, EventArgs e) => input.ClearQueued();
     private void OnKeyDown(object? sender, InputKeyEventArgs e)
     {
         if (e.Key == Keys.Escape) { Exit(); return; }
-        if (checkDirectory is null && IsActive && input.KeyDown(e.Key)) keys.Enqueue(e.Key);
+        if (checkDirectory is null && IsActive) input.KeyDown(e.Key);
     }
     private void OnKeyUp(object? sender, InputKeyEventArgs e) => input.KeyUp(e.Key);
     private void OnDeviceReset(object? sender, EventArgs e) { if (scene is not null) CreateResources(); }
     private void DisposeResources()
     {
         scene?.Dispose(); scene = null; pawn?.Dispose(); pawn = null; diamond?.Dispose(); diamond = null;
+        introTexture?.Dispose(); introTexture = null; introTarget?.Dispose(); introTarget = null;
         pixel?.Dispose(); pixel = null; batch?.Dispose(); batch = null;
     }
     protected override void UnloadContent() => DisposeResources();

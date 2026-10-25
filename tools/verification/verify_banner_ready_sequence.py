@@ -83,6 +83,11 @@ def verify(capture_root, general_root, ready_root):
     receipt = json.loads(receipt_path.read_bytes(), object_pairs_hook=v.unique)
     v.require(receipt['format'] == 'fft.banner-ready-sequence-capture' and receipt['schemaVersion'] == 1 and receipt['rendererTaskAcknowledgments'] == 0,
               'Unsupported combined capture')
+    return verify_sequence(capture_root, general_root, ready_root, receipt)
+
+
+def verify_sequence(capture_root, general_root, ready_root, receipt):
+    """Shared prepared-data pixel/timeline audit; callers validate their own receipt format."""
     d = receipt['definition']; times = timeline(d['GeneralHold'], d['ReadyHold'], receipt['circleTicks'])
     v.require(len(receipt['captures']) == times['eventExit'] + 1 and receipt['resourcesRebuiltAtTick5'] is True, 'Incomplete finite capture/resource check')
     general, gi, gp = artwork(general_root, d['GeneralArtworkId']); ready, ri, rp = artwork(ready_root, d['ReadyArtworkId'])

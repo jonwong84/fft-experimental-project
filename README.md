@@ -23,6 +23,7 @@ See the [architecture overview](docs/architecture/overview.md) and [ADR 0004](do
 ## What works today
 
 - **Playable synthetic battle:** control both units with mouse or keyboard; select, inspect legal moves/targets, move, attack, wait, advance turns and restart. HP, choices, rejections and the first-KO result are visible. [Controls and validation](docs/development/playable-battle.md).
+- **Prepared introduction to battle:** an optional general-banner/Ready sequence hands off to that battle in one Windows host. Battle state stays frozen until the authored event exits; held inputs are baselined before commands become available. [Launch, review and validation](docs/development/introduction-battle-handoff.md).
 - **Deterministic headless battle:** the same supported scenario runs through typed commands, with reproducible state/RNG results and replay checks. [Scenario and rules](docs/behavior/two-unit-battle-scenario.md).
 - **Bounded save/load proof:** versioned snapshots restore all thirteen authored checkpoints against selected definitions and continue with identical state/events. Strict validation, synthetic migration and safe file replacement are tested. [Save contract and headless check](docs/development/two-unit-battle-saves.md).
 - **Bounded synthetic events:** prepare/load authored PS1-format conditional events and execute them through pure FFT transitions. Separate profiles add frame waits and scene task barriers with explicit shared ticks, immutable suspension/resumption, replay and atomic interpreter/task rollback. [Decoder](docs/development/prepared-scenario-event.md), [conditional execution](docs/behavior/conditional-event-execution.md), [frame waits](docs/behavior/timed-event-waits.md) and [event barriers](docs/behavior/scene-event-barriers.md).
@@ -33,7 +34,7 @@ See the [architecture overview](docs/architecture/overview.md) and [ADR 0004](do
 
 The playable battle uses invented units, art and a small height-10 map. MAP003 remains a separate static inspection scene with its native terrain intact. Rendering that map does not expand the supported combat domain.
 
-Full original combat, campaign, AI, campaign save/load, audio, general animation playback and authoring UI remain future work. Independent original/emulator visual comparison is also pending; current source-derived and synthetic checks do not establish complete original-game equivalence. Original behavior is the default compatibility target, with intentional new mechanics and custom content kept separate.
+Full original combat, campaign, AI, campaign save/load, audio, general animation playback and authoring UI remain future work. Selected banner/Ready frames have exact original/emulator comparisons; the bounded source-derived and synthetic checks do not establish complete original-game equivalence. Original behavior is the default compatibility target, with intentional new mechanics and custom content kept separate.
 
 ## Build, test and play
 

@@ -1684,7 +1684,7 @@ player-control observation, runtime/renderer change or full startup claim.
 
 ### ZOD-091 — Hand the authored introduction to the playable battle
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-090
+**Type:** Story · **Priority:** P2 · **Status:** Complete for bounded implementation; owner visual review pending · **Depends on:** ZOD-090
 
 **Scope:** One prepared authored banner/Ready introduction followed by the
 existing synthetic two-unit battle in one Windows host. Reuse the existing
@@ -1702,6 +1702,18 @@ replay. Prove readiness-before-admission, focus/device/draw independence, natura
 and skipped finite native checks, and legacy standalone behavior. No retail
 EventEnd, dark-screen release, original scene/startup/input-timing equivalence or
 automatic player-turn selection is admitted by this authored path.
+
+**Result (2026-10-25):** The pure one-time gate and prepared-only `--intro-battle`
+entry point reuse the existing battle host/rules and input latch. All twelve IBH
+cases have executed checks. Locked restore, zero-warning Release build and
+1,909 .NET / 215 Python tests pass (41/7 new). Six native scenarios produce 1,049
+exact CPU/GPU/independent-model intro PNGs and 36 byte-identical historical battle
+PNG comparisons; natural runs repeat all 170 artifacts. Actual readiness failures
+create no new output; standalone battle/sequence retain 6/164 files. An isolated
+prepared-only run repeats all 170 artifacts. No original startup, EventEnd or
+physical input-timing claim. [Implementation/validation record](development/introduction-battle-handoff.md),
+[metadata](evidence/events/intro-battle-handoff-v1.json). Owner review is pending
+at `scratch/intro-battle-091-review/review.html` (Play flow / Show handoff).
 
 ## Authoring, extensions, and later goals
 

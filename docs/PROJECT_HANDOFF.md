@@ -1,5 +1,27 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Latest behavior checkpoint (2026-10-25):** ZOD-091 runs the prepared authored
+introduction and existing playable two-unit battle in one Windows host. A pure
+ownership gate opens once at accepted event exit with terminal display tasks;
+child/dispatcher clear alone is insufficient. Battle state/CT/RNG/journal stay
+frozen through handoff. Queued intro input is discarded and held keyboard/mouse
+baselined; a later fresh command uses the existing rules. Limited refactors share
+the window via a partial class and wrap its existing input latch; formulas,
+renderer/layout, battle router and save schema remain unchanged.
+Locked restore, zero-warning Release build, **1,909 .NET / 215 Python tests** pass
+(41/7 new). All twelve IBH cases have checks. Six native scenarios yield **1,049
+exact CPU/GPU/model intro PNGs**, 36 unchanged historical battle PNG comparisons
+and 170 repeated artifacts. Readiness negatives create no new output; standalone
+battle/sequence preserve 6/164 files. An isolated prepared-only run repeats all
+170 artifacts. Focus/held-input probes use programmed production handlers, with
+no physical input/latency or original startup/EventEnd equivalence claim.
+[Record](development/introduction-battle-handoff.md),
+[evidence](evidence/events/intro-battle-handoff-v1.json).
+**Next: owner visual review** of `scratch/intro-battle-091-review/review.html`.
+Use Play flow for the natural/skipped paths or Show handoff to check the switch
+into the battle before any turn starts. Standing commit/push permission applies
+after validation. Original startup, maps, campaign and later CRT/audio remain open.
+
 **Latest source checkpoint (2026-10-25):** ZOD-090 traces the boundary after Ready.
 Both verified event tails still release/wait for task-55/54 dark-screen work and
 restore speed before EventEnd. Event 4 can recheck/chain scenario conditions;

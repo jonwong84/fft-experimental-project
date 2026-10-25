@@ -1,5 +1,9 @@
 # ZOD-090 — Ready completion and battle ownership
 
+Implementation follow-up: [ZOD-091](../development/introduction-battle-handoff.md)
+now implements the bounded authored bridge selected below. Its separate executed
+evidence preserves this historical source contract and its unexecuted fixture flags.
+
 Ready finishing does not itself give the player a turn. The original event still
 releases its dark-screen task, restores scheduling state, performs EventEnd
 cleanup and possibly chains to another event. Only after event-frame completion

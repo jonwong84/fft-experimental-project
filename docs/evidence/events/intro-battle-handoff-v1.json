@@ -1,0 +1,2537 @@
+{
+  "format": "fft.intro-battle-handoff-validation",
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "managedBase": "fc69ffc682fa8f01127fb8629fa3a18068ae73b9",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "sourceContract": {
+    "localPath": "docs/evidence/events/ready-battle-handoff-v1.json",
+    "bytes": 14144,
+    "sha256": "185f18492d69736242211a0856a3b5e48d96ef3b5e5b20753226242c211fc614"
+  },
+  "sourceFiles": [
+    {
+      "path": "src/battle/event/interpreter.c",
+      "bytes": 57266,
+      "sha256": "0f1d08b30a16b88e55936442239f875eb53d961320a1409049c6bf2b72b464ec"
+    },
+    {
+      "path": "src/battle/event/frame.c",
+      "bytes": 23797,
+      "sha256": "7117b3e5daf773352411f24ff83c2fbdcc26d660de7371d1d088d5fabd31e812"
+    },
+    {
+      "path": "src/battle/entry.c",
+      "bytes": 21402,
+      "sha256": "adb050612e82856c4300a8fe308ebee5672bc3994ff004ab9643fac167a3f510"
+    },
+    {
+      "path": "src/battle/frame.c",
+      "bytes": 7598,
+      "sha256": "7ac1a5904889e531e40f0235b86d6741f588ace695bcf7b8c605c9fc9540754f"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "bytes": 191808,
+      "sha256": "838c419938cdd610c14fa8e1cc578a1c76c949394bf1ea08449b526e74912933"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "bytes": 41903,
+      "sha256": "8d96a9971e6d7165132227c77647f87f4a28f45744adbaaabfe1abb7a9342941"
+    },
+    {
+      "path": "src/lib/event/script/scenario.c",
+      "bytes": 12186,
+      "sha256": "5eee6b7027d7a92a76dad2ec2f503a5752af90c02b837dfec8d864dcf8b185f7"
+    },
+    {
+      "path": "src/lib/event/script/scene_commands.c",
+      "bytes": 83364,
+      "sha256": "99285516a169728d4d6945d2e4d1d976a17fb372f742167cd98fed2e17519512"
+    },
+    {
+      "path": "src/lib/event/script/control.c",
+      "bytes": 17474,
+      "sha256": "af8ad98b57a70499514ad12f0d3b4c3f35a5d2eb7f25708f60f495cf1a2c736f"
+    },
+    {
+      "path": "src/lib/event/scene/control.c",
+      "bytes": 14944,
+      "sha256": "977b52bd1d783965e0392164982de3495ff9eeb783992e321019e42e2debac4c"
+    },
+    {
+      "path": "src/lib/event/scene/menu_sessions.c",
+      "bytes": 15041,
+      "sha256": "95685ca9f8552004667870b64c40eb0e3c9477b85bd4a4b3af89f1384774f20d"
+    },
+    {
+      "path": "src/lib/event/scene/menu_dispatch.c",
+      "bytes": 12054,
+      "sha256": "991829320e230445a76586348703715eb7d4e8f0b1408a577a9ac2982684a776"
+    },
+    {
+      "path": "src/lib/menu/menu_actions.c",
+      "bytes": 8816,
+      "sha256": "2c8d7ebf2be449dd664b4b67ca79c5ea89f568d28f2da51850fd9b5113315916"
+    },
+    {
+      "path": "src/lib/thread/scheduler.c",
+      "bytes": 3815,
+      "sha256": "143a43b0a0dbd9f26610d2cb17240d3d76e2320a970b963e56e6b51865bc3600"
+    },
+    {
+      "path": "src/event/require/entry_conditions.c",
+      "bytes": 5326,
+      "sha256": "f76849cd60f9dbf8df6efc82f0fc1446d22ada3bb7ba3ec89d19d6371bd8d46c"
+    },
+    {
+      "path": "src/event/require/entry_dark_screen.c",
+      "bytes": 13215,
+      "sha256": "e11a806e386cd0b182d4ab72095aea0aace69b48e24a9f55a4a05dd3e6ee6b8a"
+    },
+    {
+      "path": "src/event/attack/scenario_setup.c",
+      "bytes": 14324,
+      "sha256": "54ebe8b3b11e7ef934b2fd9c961e4298a709e4a18cbae7389eb2b9c5848db675"
+    },
+    {
+      "path": "include/fft/script.h",
+      "bytes": 14636,
+      "sha256": "7430207a08a77a716eb7930d1895a46a7db8c6b23594c0f45d32f6924177f5b8"
+    },
+    {
+      "path": "include/fft/script_variable.h",
+      "bytes": 16608,
+      "sha256": "492ce44595c88b54d2e0c6641250c6c2d5457a7826edc6ace3594ff415286b42"
+    },
+    {
+      "path": "include/fft/menu.h",
+      "bytes": 12682,
+      "sha256": "843c8262be7b49dcd8d8bcf182368779210d17f6743e1b15a1371df3dd92b863"
+    },
+    {
+      "path": "include/fft/menu_input.h",
+      "bytes": 5462,
+      "sha256": "7b600398ab9f17b8b32551ffdfb9f96504fb9c53828769737a51c8c093bc099e"
+    },
+    {
+      "path": "include/fft/battle_state.h",
+      "bytes": 9001,
+      "sha256": "2d2ccb0f958ab6c3b280bd31ebff010e7118f1a94ee0240751141a9628543f89"
+    },
+    {
+      "path": "target/battle.yaml",
+      "bytes": 304943,
+      "sha256": "f536f589674bea249747863bd60431cdba2671362ce611cbe2f8931f3d540611"
+    },
+    {
+      "path": "target/main.yaml",
+      "bytes": 136443,
+      "sha256": "a35f69fd3fe8eedd33a5d340e1c655f222dcbb17858cdba24da55c898df9fb88"
+    }
+  ],
+  "historicalContract": {
+    "localPath": "docs/evidence/events/intro-battle-contract-v1.json",
+    "bytes": 4613,
+    "sha256": "566ff21028aa42bb48cff4186310b95eea05157055ecb08179be70c6f16c8648"
+  },
+  "contractCaseExecution": [
+    {
+      "id": "IBH-001",
+      "executed": true,
+      "passed": true,
+      "managedChecks": [
+        {
+          "path": "tests/Zodiac.Framework.Tests/BattleIntroductionTests.cs",
+          "member": "Availability_follows_only_accepted_event_exit_and_all_terminal_tasks"
+        },
+        {
+          "path": "tests/Fft.Client.Tests/IntroductionBattleSessionTests.cs",
+          "member": "Battle_is_frozen_through_handoff_and_first_fresh_command_uses_existing_rules"
+        }
+      ],
+      "nativeChecks": "All six Windows receipts; resource/focus/held-input checks are programmed production handler calls."
+    },
+    {
+      "id": "IBH-002",
+      "executed": true,
+      "passed": true,
+      "managedChecks": [
+        {
+          "path": "tests/Zodiac.Framework.Tests/BattleIntroductionTests.cs",
+          "member": "Hidden_ready_child_clear_and_dispatcher_clear_do_not_open_battle"
+        }
+      ],
+      "nativeChecks": "Managed contract regression."
+    },
+    {
+      "id": "IBH-003",
+      "executed": true,
+      "passed": true,
+      "managedChecks": [
+        {
+          "path": "tests/Zodiac.Framework.Tests/BattleIntroductionTests.cs",
+          "member": "Hidden_ready_child_clear_and_dispatcher_clear_do_not_open_battle"
+        }
+      ],
+      "nativeChecks": "Managed contract regression."
+    },
+    {
+      "id": "IBH-004",
+      "executed": true,
+      "passed": true,
+      "managedChecks": [
+        {
+          "path": "tests/Zodiac.Framework.Tests/BattleIntroductionTests.cs",
+          "member": "Skipped_intro_discards_birth_sample_and_publishes_at_eighteen"
+        },
+        {
+          "path": "tests/Fft.Client.Tests/IntroductionBattleSessionTests.cs",
+          "member": "Transition_circle_is_never_reused_as_battle_action_and_cannot_publish_twice"
+        }
+      ],
+      "nativeChecks": "All six Windows receipts; resource/focus/held-input checks are programmed production handler calls."
+    },
+    {
+      "id": "IBH-005",
+      "executed": true,
+      "passed": true,
+      "managedChecks": [
+        {
+          "path": "tests/Zodiac.Framework.Tests/BattleIntroductionTests.cs",
+          "member": "Availability_follows_only_accepted_event_exit_and_all_terminal_tasks"
+        },
+        {
+          "path": "tests/Fft.Client.Tests/IntroductionBattleSessionTests.cs",
+          "member": "Battle_is_frozen_through_handoff_and_first_fresh_command_uses_existing_rules"
+        }
+      ],
+      "nativeChecks": "All six Windows receipts; resource/focus/held-input checks are programmed production handler calls."
+    },
+    {
+      "id": "IBH-006",
+      "executed": true,
+      "passed": true,
+      "managedChecks": [
+        {
+          "path": "tests/Zodiac.Framework.Tests/BattleIntroductionTests.cs",
+          "member": "Late_rejections_preserve_gate_identity_tick_trace_and_publication"
+        },
+        {
+          "path": "tests/Fft.Client.Tests/IntroductionBattleSessionTests.cs",
+          "member": "Rejected_intro_transaction_preserves_combined_state_and_retries_once"
+        }
+      ],
+      "nativeChecks": "Managed contract regression."
+    },
+    {
+      "id": "IBH-007",
+      "executed": true,
+      "passed": true,
+      "managedChecks": [
+        {
+          "path": "tests/Fft.Client.Tests/IntroductionBattleSessionTests.cs",
+          "member": "Every_battle_route_is_closed_until_event_exit_including_selection_and_save_load_keys"
+        }
+      ],
+      "nativeChecks": "Managed contract regression."
+    },
+    {
+      "id": "IBH-008",
+      "executed": true,
+      "passed": true,
+      "managedChecks": [
+        {
+          "path": "tests/Fft.Client.Tests/IntroductionBattleSessionTests.cs",
+          "member": "Handoff_baselines_held_inputs_discards_queued_presses_and_requires_release"
+        }
+      ],
+      "nativeChecks": "All six Windows receipts; resource/focus/held-input checks are programmed production handler calls."
+    },
+    {
+      "id": "IBH-009",
+      "executed": true,
+      "passed": true,
+      "managedChecks": [
+        {
+          "path": "tests/Fft.Client.Tests/IntroductionBattleSessionTests.cs",
+          "member": "Transition_circle_is_never_reused_as_battle_action_and_cannot_publish_twice"
+        },
+        {
+          "path": "tests/Fft.Client.Tests/IntroductionBattleSessionTests.cs",
+          "member": "Battle_is_frozen_through_handoff_and_first_fresh_command_uses_existing_rules"
+        }
+      ],
+      "nativeChecks": "All six Windows receipts; resource/focus/held-input checks are programmed production handler calls."
+    },
+    {
+      "id": "IBH-010",
+      "executed": true,
+      "passed": true,
+      "managedChecks": [
+        {
+          "path": "tests/Fft.Client.Tests/IntroductionBattleSessionTests.cs",
+          "member": "Missing_or_corrupt_prepared_input_never_returns_a_startable_session"
+        }
+      ],
+      "nativeChecks": "Eight actual entry-point readiness/output negatives."
+    },
+    {
+      "id": "IBH-011",
+      "executed": true,
+      "passed": true,
+      "managedChecks": [
+        {
+          "path": "tests/Fft.Client.Tests/IntroductionBattleSessionTests.cs",
+          "member": "Focus_queue_clearing_and_baselining_cannot_submit_or_replay_commands"
+        },
+        {
+          "path": "tests/Fft.Client.Tests/IntroductionBattleSessionTests.cs",
+          "member": "Repeated_rendering_or_omitted_rendering_does_not_change_gate_trace_or_battle"
+        }
+      ],
+      "nativeChecks": "All six Windows receipts; resource/focus/held-input checks are programmed production handler calls."
+    },
+    {
+      "id": "IBH-012",
+      "executed": true,
+      "passed": true,
+      "managedChecks": [
+        {
+          "path": "tests/Fft.Client.Tests/IntroductionBattleSessionTests.cs",
+          "member": "Native_check_routes_after_intro_match_old_router_headless_replay_and_rejections"
+        }
+      ],
+      "nativeChecks": "All six Windows receipts; resource/focus/held-input checks are programmed production handler calls."
+    }
+  ],
+  "implementation": [
+    {
+      "localPath": "src/Zodiac.Framework/Events/BattleIntroduction.cs",
+      "bytes": 2298,
+      "sha256": "a0c5df9542dfb5cd88698000b3343d52b40cf3a051db8028d6e289452a9982d1"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/IntroductionBattleSession.cs",
+      "bytes": 4754,
+      "sha256": "a8d9951abb0e2937e4ac7a48d7bda261bb26422cf248eaebdb2c17a5745a73fa"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/PlayableBattleWindow.cs",
+      "bytes": 19073,
+      "sha256": "fb17fdd07beecd6ed8460f5d2036db16eb1ea7d7d3babe8beeb7821d766629af"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/PlayableBattleWindow.Introduction.cs",
+      "bytes": 9399,
+      "sha256": "8864a6705daaf85390e97c871fbb39a4cfb4536401a0d87bcd2e371b4269c861"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/BattleInputBuffer.cs",
+      "bytes": 767,
+      "sha256": "f331bdc1cc48bbd11f4a8d1b0fba24ca7b77fa54c304a12895b474125df961db"
+    },
+    {
+      "localPath": "src/Fft.Client/Program.cs",
+      "bytes": 4692,
+      "sha256": "77cc806e1491fbcb0c3302d2c8b3b07c5b8a2b4853b242c053b538438bdbad41"
+    }
+  ],
+  "testsAndAudits": [
+    {
+      "localPath": "tests/Zodiac.Framework.Tests/BattleIntroductionTests.cs",
+      "bytes": 6568,
+      "sha256": "9067ecf303ab6791f79d69a99fd7725c0c0f474a78358fda35f9a9b7d939c25b"
+    },
+    {
+      "localPath": "tests/Fft.Client.Tests/IntroductionBattleSessionTests.cs",
+      "bytes": 10810,
+      "sha256": "a445d0728830525a02310f462cbf0c93323c0c660380ee73c4184cc7e3450c34"
+    },
+    {
+      "localPath": "tools/verification/verify_intro_battle.py",
+      "bytes": 5857,
+      "sha256": "ca6a1c81782a824220982771679992c17f66dd808e09cdb2aa5466fd113eda36"
+    },
+    {
+      "localPath": "tools/verification/verify_banner_ready_sequence.py",
+      "bytes": 9891,
+      "sha256": "9ef8e52e5ee2ba3da8738abb1769ba6362e8e24a6164b9e210ca538647245993"
+    },
+    {
+      "localPath": "tools/verification/test_intro_battle.py",
+      "bytes": 3643,
+      "sha256": "cbdf88006aaa77d255465dcaea761f8c09f2583a5031fdd1784bb9d0b0de8c8a"
+    }
+  ],
+  "compiledAssemblies": [
+    {
+      "localPath": "src/Fft.Client/bin/Release/net10.0/Fft.Client.dll",
+      "bytes": 230400,
+      "sha256": "3e122c159a643beeab4c59da6a6afe8d449dad5ecf19ee9a592bf69e32154779"
+    },
+    {
+      "localPath": "src/Fft.Client/bin/Release/net10.0/Zodiac.Framework.dll",
+      "bytes": 244224,
+      "sha256": "4a3570c69e70c6a42bc6fdbf422ede182b1d7547c2fb47ff305c0d2d3392ae50"
+    }
+  ],
+  "preparedInputs": [
+    {
+      "root": "scratch/banner-078-a",
+      "files": [
+        {
+          "localPath": "scratch/banner-078-a/assets.manifest.json",
+          "bytes": 690,
+          "sha256": "0c5d926cbb6ea8c31ed4581facc50cd157945c1630e382adb7b34e1f0dd7ce4f"
+        },
+        {
+          "localPath": "scratch/banner-078-a/banner.json",
+          "bytes": 4071,
+          "sha256": "e1c61e66de5ca10f84743f286ec8fb7f34c0bdd14e41b5eb0cab704a629ffdac"
+        },
+        {
+          "localPath": "scratch/banner-078-a/indices.bin",
+          "bytes": 51200,
+          "sha256": "515778839288e154c76e51db57a44e82c63a8e27c079bf3a1803136e389191dd"
+        },
+        {
+          "localPath": "scratch/banner-078-a/palette-4.bin",
+          "bytes": 32,
+          "sha256": "8aa38621ccfcd6386e23466a803999ef5ed44a1afc415f447a9fcc0054027739"
+        },
+        {
+          "localPath": "scratch/banner-078-a/provenance.json",
+          "bytes": 490,
+          "sha256": "4aa342261e3d88f9c73f8555eb8eba35dea9d9807f1986812fd7b6e0817425a5"
+        }
+      ]
+    },
+    {
+      "root": "scratch/ready-086-artwork-a",
+      "files": [
+        {
+          "localPath": "scratch/ready-086-artwork-a/artwork.json",
+          "bytes": 3912,
+          "sha256": "4099de6a8317bfe29054e70e585b3466b24df05b90d0365804e0f16c13f5a7dd"
+        },
+        {
+          "localPath": "scratch/ready-086-artwork-a/assets.manifest.json",
+          "bytes": 682,
+          "sha256": "251b40e4bff16bc9876d35539a9527ad28ffb9433e856da1ac3e8b51b28460a0"
+        },
+        {
+          "localPath": "scratch/ready-086-artwork-a/indices.bin",
+          "bytes": 51200,
+          "sha256": "515778839288e154c76e51db57a44e82c63a8e27c079bf3a1803136e389191dd"
+        },
+        {
+          "localPath": "scratch/ready-086-artwork-a/palette-2.bin",
+          "bytes": 32,
+          "sha256": "06ab76ecb265e6f4a40d0abf00812d2ac0f2817c4d20c80b69a502c2978b3256"
+        },
+        {
+          "localPath": "scratch/ready-086-artwork-a/provenance.json",
+          "bytes": 438,
+          "sha256": "16bbbbe8f566806d59f22c3a390e8250ea2378ddc1bb7e57813048eba1681293"
+        }
+      ]
+    },
+    {
+      "root": "scratch/banner-ready-089-prepared-b",
+      "files": [
+        {
+          "localPath": "scratch/banner-ready-089-prepared-b/assets.manifest.json",
+          "bytes": 257,
+          "sha256": "9a79d546e78a36d434626dffd48238fd40ca80e83576520c3fc118a353b5fcf1"
+        },
+        {
+          "localPath": "scratch/banner-ready-089-prepared-b/sequence.json",
+          "bytes": 467,
+          "sha256": "38fa23d4c72857d5e4f8767f7a32cd30954d00d9d104f2b9207fa4ea0879eeb0"
+        }
+      ]
+    },
+    {
+      "root": "scratch/banner-ready-089-prepared-d",
+      "files": [
+        {
+          "localPath": "scratch/banner-ready-089-prepared-d/assets.manifest.json",
+          "bytes": 257,
+          "sha256": "d122f87a6cacc0157f8d30a9082e4019c1c0458b1e2706d8e1c6e040c1e5f1e2"
+        },
+        {
+          "localPath": "scratch/banner-ready-089-prepared-d/sequence.json",
+          "bytes": 465,
+          "sha256": "e15b5a3ee094b8f94fa0c37db7e5ef872ca02ab1a6785a719bc04498ec71fffc"
+        }
+      ]
+    },
+    {
+      "root": "scratch/banner-ready-089-prepared-f",
+      "files": [
+        {
+          "localPath": "scratch/banner-ready-089-prepared-f/assets.manifest.json",
+          "bytes": 257,
+          "sha256": "61c090c037c6c1e868b54833a8ed18b791d836d265e81c683d21fd539424c7ef"
+        },
+        {
+          "localPath": "scratch/banner-ready-089-prepared-f/sequence.json",
+          "bytes": 469,
+          "sha256": "0a8bef8a333e1846ac14c716afefe1a1cbabb1e78e9744d2d6fa2cfce25242da"
+        }
+      ]
+    },
+    {
+      "root": "scratch/banner-ready-089-prepared-g",
+      "files": [
+        {
+          "localPath": "scratch/banner-ready-089-prepared-g/assets.manifest.json",
+          "bytes": 257,
+          "sha256": "9a79d546e78a36d434626dffd48238fd40ca80e83576520c3fc118a353b5fcf1"
+        },
+        {
+          "localPath": "scratch/banner-ready-089-prepared-g/sequence.json",
+          "bytes": 467,
+          "sha256": "38fa23d4c72857d5e4f8767f7a32cd30954d00d9d104f2b9207fa4ea0879eeb0"
+        }
+      ]
+    }
+  ],
+  "nativeReport": {
+    "localPath": "scratch/intro-battle-091-validation-a/report.json",
+    "bytes": 40404,
+    "sha256": "63db6388a826cd7954a00075a2bcb47059a287d8a6ecff7f7b17c986dbad4c7b"
+  },
+  "nativeScenarios": [
+    {
+      "name": "a",
+      "prepared": "scratch/banner-ready-089-prepared-b",
+      "circles": [],
+      "receipt": {
+        "localPath": "scratch/intro-battle-091-window-a/check.json",
+        "bytes": 113618,
+        "sha256": "f955fc7b25d5cddc74942cb3ca26824f8339cb1287a3ed2c9fc634937f00174b"
+      },
+      "audit": {
+        "localPath": "scratch/intro-battle-091-validation-a/a.json",
+        "bytes": 22457,
+        "sha256": "455e857a84f0b62811f651b96cab897cf5ec2dccbe03beb0c1abd090ef633ee0"
+      },
+      "frames": 163
+    },
+    {
+      "name": "b",
+      "prepared": "scratch/banner-ready-089-prepared-b",
+      "circles": [],
+      "receipt": {
+        "localPath": "scratch/intro-battle-091-window-b/check.json",
+        "bytes": 113618,
+        "sha256": "f955fc7b25d5cddc74942cb3ca26824f8339cb1287a3ed2c9fc634937f00174b"
+      },
+      "audit": {
+        "localPath": "scratch/intro-battle-091-validation-a/b.json",
+        "bytes": 22457,
+        "sha256": "455e857a84f0b62811f651b96cab897cf5ec2dccbe03beb0c1abd090ef633ee0"
+      },
+      "frames": 163
+    },
+    {
+      "name": "c",
+      "prepared": "scratch/banner-ready-089-prepared-g",
+      "circles": [
+        5,
+        7,
+        8
+      ],
+      "receipt": {
+        "localPath": "scratch/intro-battle-091-window-c/check.json",
+        "bytes": 31753,
+        "sha256": "99f46b57bab3e4c19825b5dcd86cb1708c599402f97353c8810c63047464bbb6"
+      },
+      "audit": {
+        "localPath": "scratch/intro-battle-091-validation-a/c.json",
+        "bytes": 4226,
+        "sha256": "e56064eb03002895d75850d464e7582988fe3e8324c718268a4a343655d67faa"
+      },
+      "frames": 19
+    },
+    {
+      "name": "d",
+      "prepared": "scratch/banner-ready-089-prepared-d",
+      "circles": [],
+      "receipt": {
+        "localPath": "scratch/intro-battle-091-window-d/check.json",
+        "bytes": 45326,
+        "sha256": "d9eccb3229f9345ede7bb1d3d4b172c0269d648238fa55bc049b587b2b127ee6"
+      },
+      "audit": {
+        "localPath": "scratch/intro-battle-091-validation-a/d.json",
+        "bytes": 7262,
+        "sha256": "be24b13533906b7af23088725c3c817bf20afa99a2eb93f5aa8d822277f32421"
+      },
+      "frames": 43
+    },
+    {
+      "name": "e",
+      "prepared": "scratch/banner-ready-089-prepared-f",
+      "circles": [],
+      "receipt": {
+        "localPath": "scratch/intro-battle-091-window-e/check.json",
+        "bytes": 336167,
+        "sha256": "ad52940a49c481b02c45173d3e4b95788a89aaee024b04a90c5b05b9a1085e07"
+      },
+      "audit": {
+        "localPath": "scratch/intro-battle-091-validation-a/e.json",
+        "bytes": 71991,
+        "sha256": "7d977f2b3391d175bdc7a67858d49c27b9a480586f4cf42a58c393ce2f635ce3"
+      },
+      "frames": 553
+    },
+    {
+      "name": "f",
+      "prepared": "scratch/banner-ready-089-prepared-b",
+      "circles": [
+        97
+      ],
+      "receipt": {
+        "localPath": "scratch/intro-battle-091-window-f/check.json",
+        "bytes": 82175,
+        "sha256": "26648b9ae5015405ea9f4ce8efd54f35c899f171eabdb27b981e6dffe20bc9f4"
+      },
+      "audit": {
+        "localPath": "scratch/intro-battle-091-validation-a/f.json",
+        "bytes": 15468,
+        "sha256": "3064424761d5ca5bf4e03925cc07775263bffb2d3b9df5bb36f4dcc54b8f9789"
+      },
+      "frames": 108
+    }
+  ],
+  "repeatability": {
+    "allBytesEqual": true,
+    "files": 170,
+    "artifacts": [
+      {
+        "localPath": "scratch/intro-battle-091-window-a/check.json",
+        "bytes": 113618,
+        "sha256": "f955fc7b25d5cddc74942cb3ca26824f8339cb1287a3ed2c9fc634937f00174b"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/finished.png",
+        "bytes": 32290,
+        "sha256": "4aec4d56018539bc3309ba2b29b2666b66acd85b2f09e395d1ebedf83643400c"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-000.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-001.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-002.png",
+        "bytes": 2884,
+        "sha256": "e96392a21e1ff850a6c84c6d44b4cd2f5439c8c3c17efdc1f0933741735db3be"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-003.png",
+        "bytes": 5049,
+        "sha256": "062c1e0d4540d57acf2fd99ba7dba4b3a65630af78ff8e94c75f554ac362ce5a"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-004.png",
+        "bytes": 7068,
+        "sha256": "87fc7f45fca16cc5e5b42c7ad93f6c8438954555ddfd15095a4cb01b26d6ee59"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-005.png",
+        "bytes": 6758,
+        "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-006.png",
+        "bytes": 6758,
+        "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-007.png",
+        "bytes": 6758,
+        "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-008.png",
+        "bytes": 6758,
+        "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-009.png",
+        "bytes": 6758,
+        "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-010.png",
+        "bytes": 6758,
+        "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-011.png",
+        "bytes": 6758,
+        "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-012.png",
+        "bytes": 7181,
+        "sha256": "4096f0ac898f1da8c29ca9aedfa47a009ca64ef3d8e9e4dcb8eb30d96b1e4d00"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-013.png",
+        "bytes": 9195,
+        "sha256": "a851ea10a48732e08a6c801913f7c83e4f7067c2f814176f1f88cf6f299a7f3d"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-014.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-015.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-016.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-017.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-018.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-019.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-020.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-021.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-022.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-023.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-024.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-025.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-026.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-027.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-028.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-029.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-030.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-031.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-032.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-033.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-034.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-035.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-036.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-037.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-038.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-039.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-040.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-041.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-042.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-043.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-044.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-045.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-046.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-047.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-048.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-049.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-050.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-051.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-052.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-053.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-054.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-055.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-056.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-057.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-058.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-059.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-060.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-061.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-062.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-063.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-064.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-065.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-066.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-067.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-068.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-069.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-070.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-071.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-072.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-073.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-074.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-075.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-076.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-077.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-078.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-079.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-080.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-081.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-082.png",
+        "bytes": 8929,
+        "sha256": "4422b8644d3ef9e09ab62280dd3ed1bb9a8b0e89caa733c6e6cd2dc2646968ac"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-083.png",
+        "bytes": 4795,
+        "sha256": "d4b11783b9ba52daaf12515aedea5e7c2963fe0ccd126998d56baa2d501870a6"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-084.png",
+        "bytes": 2861,
+        "sha256": "20a486b83202bc6d0b3f74e87f391f0d15eeaa124739e8a96948e8095b76249a"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-085.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-086.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-087.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-088.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-089.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-090.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-091.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-092.png",
+        "bytes": 5167,
+        "sha256": "d62f6b9ea0a753f4cc0b2e5f461f20446cd6e14d4f69db771d7f052142f9b965"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-093.png",
+        "bytes": 5169,
+        "sha256": "7814386e0b98cc8118db7b85d0a9acbc6e7cbd5240f466f4ce7822c081e6aeeb"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-094.png",
+        "bytes": 5232,
+        "sha256": "2e9bf9b754f921b77cebdb675c640bf69a37a7fbad0453204feaa3ef002898ed"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-095.png",
+        "bytes": 5429,
+        "sha256": "ca55ea73f8810188d70fe8828e1cc19a1ea5983e6cad2b9cba0d3120a2a3e718"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-096.png",
+        "bytes": 5507,
+        "sha256": "bbbcd638a5242cb91ca642df9907daba3ea16e726942d8ad749178dd93ad5f64"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-097.png",
+        "bytes": 5591,
+        "sha256": "79ec53aec4eb60356ec340940fa1ef73dced509b93ac4396573240b19f0244f5"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-098.png",
+        "bytes": 5627,
+        "sha256": "127186b0d5745d6aa85440f68e2a86688ef9e67d174f646369e99102e6b55089"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-099.png",
+        "bytes": 5681,
+        "sha256": "3633e2095e9ee7e7cbfde444339a18213eb588775e7da671c88faa077b2a7574"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-100.png",
+        "bytes": 5715,
+        "sha256": "ac2767be446e357e89ebb0f4490c8b69f1a0cada99aceff18d0dd018cefbf20e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-101.png",
+        "bytes": 5808,
+        "sha256": "056dc49eba6d85c857ba20168d5c9932df35e52f21deb26833d3a270a2023ad4"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-102.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-103.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-104.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-105.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-106.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-107.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-108.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-109.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-110.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-111.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-112.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-113.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-114.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-115.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-116.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-117.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-118.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-119.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-120.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-121.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-122.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-123.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-124.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-125.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-126.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-127.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-128.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-129.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-130.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-131.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-132.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-133.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-134.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-135.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-136.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-137.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-138.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-139.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-140.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-141.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-142.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-143.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-144.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-145.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-146.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-147.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-148.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-149.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-150.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-151.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-152.png",
+        "bytes": 5817,
+        "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-153.png",
+        "bytes": 5722,
+        "sha256": "3c45e431adb8674a2c35aaeaff17e4021eccf3520b0d27a9a2356cc3280f509a"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-154.png",
+        "bytes": 5681,
+        "sha256": "3633e2095e9ee7e7cbfde444339a18213eb588775e7da671c88faa077b2a7574"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-155.png",
+        "bytes": 5661,
+        "sha256": "3658af844928916ecc8287b03cea8647693dab66df8b86c34ae04c519feb6b72"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-156.png",
+        "bytes": 5507,
+        "sha256": "bbbcd638a5242cb91ca642df9907daba3ea16e726942d8ad749178dd93ad5f64"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-157.png",
+        "bytes": 5413,
+        "sha256": "66b152939780d1e37ce4a1bf64cc4309f9e573ee59cb16ebadf3a5789b4d1e60"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-158.png",
+        "bytes": 5169,
+        "sha256": "7814386e0b98cc8118db7b85d0a9acbc6e7cbd5240f466f4ce7822c081e6aeeb"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-159.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-160.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-161.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/intro/tick-162.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/moves.png",
+        "bytes": 31895,
+        "sha256": "0f7f5062b2c7ae16655befaecb88191b2bdb9eb996beba6e7474e303f233d363"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/rejected.png",
+        "bytes": 32007,
+        "sha256": "8f44537b06b37e2dc1893252c704518d7f7fe193d89362426ba7ea3b6b25145c"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/start.png",
+        "bytes": 32056,
+        "sha256": "0d1a7895d8921aaab088888b73301ac6e4756ea6f90c566bdf3536805242fe12"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/targets.png",
+        "bytes": 32104,
+        "sha256": "d4a5d23107ccc450a320ecb9de3df8af6477fd27e656248d9aab33570c67675c"
+      },
+      {
+        "localPath": "scratch/intro-battle-091-window-a/terminal-rejected.png",
+        "bytes": 32381,
+        "sha256": "7b6e74c1d2e22479f755c5a1d7d79cae97e663c248d62b5f8cdbbbe197347d26"
+      }
+    ]
+  },
+  "introFrames": 1049,
+  "historicalBattlePngComparisons": 36,
+  "boundaryReport": {
+    "localPath": "scratch/intro-battle-091-boundaries-a/report.json",
+    "bytes": 41942,
+    "sha256": "19e07d31602a3282fd542c0e221ad551601b7840575da9d6e12622f4a40884bb"
+  },
+  "readinessChecks": [
+    {
+      "case": "missing-sequence",
+      "returnCode": 1,
+      "noNewCheckOutput": true,
+      "log": {
+        "localPath": "scratch/intro-battle-091-boundaries-a/missing-sequence.log",
+        "bytes": 183,
+        "sha256": "6fcb787f2e5d8517589950cd03d1257d27ab7305d77d48c8a8adf79c06150fa7"
+      }
+    },
+    {
+      "case": "missing-general",
+      "returnCode": 1,
+      "noNewCheckOutput": true,
+      "log": {
+        "localPath": "scratch/intro-battle-091-boundaries-a/missing-general.log",
+        "bytes": 182,
+        "sha256": "832b61ce7cb0517881904785cf790826d7dd0d948d4bd773e9ac455ec55257d1"
+      }
+    },
+    {
+      "case": "missing-ready",
+      "returnCode": 1,
+      "noNewCheckOutput": true,
+      "log": {
+        "localPath": "scratch/intro-battle-091-boundaries-a/missing-ready.log",
+        "bytes": 180,
+        "sha256": "7bb805c24f63cbc934f45360465d43ea035e5af7d2bc0a24263a2bfe21bdc260"
+      }
+    },
+    {
+      "case": "corrupt-sequence",
+      "returnCode": 1,
+      "noNewCheckOutput": true,
+      "log": {
+        "localPath": "scratch/intro-battle-091-boundaries-a/corrupt-sequence.log",
+        "bytes": 110,
+        "sha256": "ac106d742927f114788a91f7a4f6b4f01b512c5929e8248eb37cc212132a5ee4"
+      }
+    },
+    {
+      "case": "corrupt-general",
+      "returnCode": 1,
+      "noNewCheckOutput": true,
+      "log": {
+        "localPath": "scratch/intro-battle-091-boundaries-a/corrupt-general.log",
+        "bytes": 119,
+        "sha256": "eb238e7dfedca0ad47014cd4dfcc054a52d690c53e532021fa96fa54086ae093"
+      }
+    },
+    {
+      "case": "corrupt-ready",
+      "returnCode": 1,
+      "noNewCheckOutput": true,
+      "log": {
+        "localPath": "scratch/intro-battle-091-boundaries-a/corrupt-ready.log",
+        "bytes": 115,
+        "sha256": "05d144e00abea20207c83bc71d7ef27a9d96d293b485e2f529393c168694ec1f"
+      }
+    },
+    {
+      "case": "graphics",
+      "returnCode": 1,
+      "noNewCheckOutput": true,
+      "log": {
+        "localPath": "scratch/intro-battle-091-boundaries-a/graphics.log",
+        "bytes": 63,
+        "sha256": "827f39b27b655e5c8c7b50ba76c443908f752f987b883b1ac562a90cb49f4be5"
+      }
+    },
+    {
+      "case": "existing-output",
+      "returnCode": 1,
+      "noNewCheckOutput": true,
+      "log": {
+        "localPath": "scratch/intro-battle-091-boundaries-a/existing-output.log",
+        "bytes": 97,
+        "sha256": "8ca821f2f7334538ec8c346102adc528af17c905e87928d44fc15fbd7323998a"
+      }
+    }
+  ],
+  "legacyChecks": [
+    {
+      "entryPoint": "battle",
+      "allBytesEqual": true,
+      "repeatedArtifacts": [
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/battle/start.png",
+          "bytes": 32056,
+          "sha256": "0d1a7895d8921aaab088888b73301ac6e4756ea6f90c566bdf3536805242fe12"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/battle/rejected.png",
+          "bytes": 32007,
+          "sha256": "8f44537b06b37e2dc1893252c704518d7f7fe193d89362426ba7ea3b6b25145c"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/battle/moves.png",
+          "bytes": 31895,
+          "sha256": "0f7f5062b2c7ae16655befaecb88191b2bdb9eb996beba6e7474e303f233d363"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/battle/targets.png",
+          "bytes": 32104,
+          "sha256": "d4a5d23107ccc450a320ecb9de3df8af6477fd27e656248d9aab33570c67675c"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/battle/finished.png",
+          "bytes": 32290,
+          "sha256": "4aec4d56018539bc3309ba2b29b2666b66acd85b2f09e395d1ebedf83643400c"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/battle/terminal-rejected.png",
+          "bytes": 32381,
+          "sha256": "7b6e74c1d2e22479f755c5a1d7d79cae97e663c248d62b5f8cdbbbe197347d26"
+        }
+      ],
+      "log": {
+        "localPath": "scratch/intro-battle-091-boundaries-a/battle.log",
+        "bytes": 177,
+        "sha256": "a02cac28ffa28c7d35c9988561bdc4a4612ee17411cea6ea34b857ddf46d5e43"
+      }
+    },
+    {
+      "entryPoint": "sequence",
+      "allBytesEqual": true,
+      "repeatedArtifacts": [
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/check.json",
+          "bytes": 70613,
+          "sha256": "4f5b74e1f7189613e0b1ac4b8b628290cfe22fc5eefb83a9f2d9981d0882135e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-000.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-001.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-002.png",
+          "bytes": 2884,
+          "sha256": "e96392a21e1ff850a6c84c6d44b4cd2f5439c8c3c17efdc1f0933741735db3be"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-003.png",
+          "bytes": 5049,
+          "sha256": "062c1e0d4540d57acf2fd99ba7dba4b3a65630af78ff8e94c75f554ac362ce5a"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-004.png",
+          "bytes": 7068,
+          "sha256": "87fc7f45fca16cc5e5b42c7ad93f6c8438954555ddfd15095a4cb01b26d6ee59"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-005.png",
+          "bytes": 6758,
+          "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-006.png",
+          "bytes": 6758,
+          "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-007.png",
+          "bytes": 6758,
+          "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-008.png",
+          "bytes": 6758,
+          "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-009.png",
+          "bytes": 6758,
+          "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-010.png",
+          "bytes": 6758,
+          "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-011.png",
+          "bytes": 6758,
+          "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-012.png",
+          "bytes": 7181,
+          "sha256": "4096f0ac898f1da8c29ca9aedfa47a009ca64ef3d8e9e4dcb8eb30d96b1e4d00"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-013.png",
+          "bytes": 9195,
+          "sha256": "a851ea10a48732e08a6c801913f7c83e4f7067c2f814176f1f88cf6f299a7f3d"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-014.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-015.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-016.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-017.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-018.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-019.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-020.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-021.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-022.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-023.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-024.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-025.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-026.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-027.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-028.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-029.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-030.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-031.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-032.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-033.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-034.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-035.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-036.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-037.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-038.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-039.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-040.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-041.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-042.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-043.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-044.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-045.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-046.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-047.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-048.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-049.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-050.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-051.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-052.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-053.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-054.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-055.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-056.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-057.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-058.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-059.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-060.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-061.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-062.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-063.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-064.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-065.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-066.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-067.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-068.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-069.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-070.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-071.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-072.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-073.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-074.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-075.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-076.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-077.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-078.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-079.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-080.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-081.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-082.png",
+          "bytes": 8929,
+          "sha256": "4422b8644d3ef9e09ab62280dd3ed1bb9a8b0e89caa733c6e6cd2dc2646968ac"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-083.png",
+          "bytes": 4795,
+          "sha256": "d4b11783b9ba52daaf12515aedea5e7c2963fe0ccd126998d56baa2d501870a6"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-084.png",
+          "bytes": 2861,
+          "sha256": "20a486b83202bc6d0b3f74e87f391f0d15eeaa124739e8a96948e8095b76249a"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-085.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-086.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-087.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-088.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-089.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-090.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-091.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-092.png",
+          "bytes": 5167,
+          "sha256": "d62f6b9ea0a753f4cc0b2e5f461f20446cd6e14d4f69db771d7f052142f9b965"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-093.png",
+          "bytes": 5169,
+          "sha256": "7814386e0b98cc8118db7b85d0a9acbc6e7cbd5240f466f4ce7822c081e6aeeb"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-094.png",
+          "bytes": 5232,
+          "sha256": "2e9bf9b754f921b77cebdb675c640bf69a37a7fbad0453204feaa3ef002898ed"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-095.png",
+          "bytes": 5429,
+          "sha256": "ca55ea73f8810188d70fe8828e1cc19a1ea5983e6cad2b9cba0d3120a2a3e718"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-096.png",
+          "bytes": 5507,
+          "sha256": "bbbcd638a5242cb91ca642df9907daba3ea16e726942d8ad749178dd93ad5f64"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-097.png",
+          "bytes": 5591,
+          "sha256": "79ec53aec4eb60356ec340940fa1ef73dced509b93ac4396573240b19f0244f5"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-098.png",
+          "bytes": 5627,
+          "sha256": "127186b0d5745d6aa85440f68e2a86688ef9e67d174f646369e99102e6b55089"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-099.png",
+          "bytes": 5681,
+          "sha256": "3633e2095e9ee7e7cbfde444339a18213eb588775e7da671c88faa077b2a7574"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-100.png",
+          "bytes": 5715,
+          "sha256": "ac2767be446e357e89ebb0f4490c8b69f1a0cada99aceff18d0dd018cefbf20e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-101.png",
+          "bytes": 5808,
+          "sha256": "056dc49eba6d85c857ba20168d5c9932df35e52f21deb26833d3a270a2023ad4"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-102.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-103.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-104.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-105.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-106.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-107.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-108.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-109.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-110.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-111.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-112.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-113.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-114.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-115.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-116.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-117.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-118.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-119.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-120.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-121.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-122.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-123.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-124.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-125.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-126.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-127.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-128.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-129.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-130.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-131.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-132.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-133.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-134.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-135.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-136.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-137.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-138.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-139.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-140.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-141.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-142.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-143.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-144.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-145.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-146.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-147.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-148.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-149.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-150.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-151.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-152.png",
+          "bytes": 5817,
+          "sha256": "0421a354674e15eea6ef3cd80227d2a9c67def2615b0cc472351b77a1395ca0e"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-153.png",
+          "bytes": 5722,
+          "sha256": "3c45e431adb8674a2c35aaeaff17e4021eccf3520b0d27a9a2356cc3280f509a"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-154.png",
+          "bytes": 5681,
+          "sha256": "3633e2095e9ee7e7cbfde444339a18213eb588775e7da671c88faa077b2a7574"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-155.png",
+          "bytes": 5661,
+          "sha256": "3658af844928916ecc8287b03cea8647693dab66df8b86c34ae04c519feb6b72"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-156.png",
+          "bytes": 5507,
+          "sha256": "bbbcd638a5242cb91ca642df9907daba3ea16e726942d8ad749178dd93ad5f64"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-157.png",
+          "bytes": 5413,
+          "sha256": "66b152939780d1e37ce4a1bf64cc4309f9e573ee59cb16ebadf3a5789b4d1e60"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-158.png",
+          "bytes": 5169,
+          "sha256": "7814386e0b98cc8118db7b85d0a9acbc6e7cbd5240f466f4ce7822c081e6aeeb"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-159.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-160.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-161.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        {
+          "localPath": "scratch/intro-battle-091-boundaries-a/sequence/tick-162.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        }
+      ],
+      "log": {
+        "localPath": "scratch/intro-battle-091-boundaries-a/sequence.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "isolatedPreparedOnly": {
+    "repeatedArtifacts": 170,
+    "allBytesEqual": true,
+    "receipt": {
+      "localPath": "scratch/intro-battle-091-boundaries-a/isolated/scratch/capture/check.json",
+      "bytes": 113618,
+      "sha256": "f955fc7b25d5cddc74942cb3ca26824f8339cb1287a3ed2c9fc634937f00174b"
+    },
+    "workingDirectoryContains": "Only copied prepared packages and generated output; host libraries remain in its application directory.",
+    "originalInputsInWorkingDirectory": false,
+    "referenceInWorkingDirectory": false
+  },
+  "tests": {
+    "dotnetPassed": 1909,
+    "newDotnet": 41,
+    "byProject": {
+      "engine": 24,
+      "framework": 667,
+      "content": 516,
+      "assetTool": 192,
+      "cli": 196,
+      "client": 314
+    },
+    "trx": [
+      {
+        "report": {
+          "localPath": "scratch/intro-battle-091-tests/Jonathan_DESKTOP-EXCALIB_2026-10-25_14_41_13_net10.0.trx",
+          "bytes": 36854,
+          "sha256": "fc75f6639436549611ad3d0059634edae72ecbc8857c7474dff68e060348fd9b"
+        },
+        "passed": 24
+      },
+      {
+        "report": {
+          "localPath": "scratch/intro-battle-091-tests/Jonathan_DESKTOP-EXCALIB_2026-10-25_14_41_13_net10.0[1].trx",
+          "bytes": 284666,
+          "sha256": "03507005381d1287796dd2a42e3178141e85480d214df6d9b44e09a48287d7ac"
+        },
+        "passed": 192
+      },
+      {
+        "report": {
+          "localPath": "scratch/intro-battle-091-tests/Jonathan_DESKTOP-EXCALIB_2026-10-25_14_41_13_net10.0[2].trx",
+          "bytes": 1012836,
+          "sha256": "16bec42d3018109dff3101b16102d26931dd78bb8b20c880f7a70c2d20ec6f3c"
+        },
+        "passed": 667
+      },
+      {
+        "report": {
+          "localPath": "scratch/intro-battle-091-tests/Jonathan_DESKTOP-EXCALIB_2026-10-25_14_41_13_net10.0[3].trx",
+          "bytes": 465422,
+          "sha256": "1a3e2327798ff0235b5115ae60d56d53bbcd00e678f383133ef769898ee996a1"
+        },
+        "passed": 314
+      },
+      {
+        "report": {
+          "localPath": "scratch/intro-battle-091-tests/Jonathan_DESKTOP-EXCALIB_2026-10-25_14_41_14_net10.0.trx",
+          "bytes": 301481,
+          "sha256": "3a29e1d705f739e22681a64900543555fdab547fc7b69cc30de5b6251ed0a51a"
+        },
+        "passed": 196
+      },
+      {
+        "report": {
+          "localPath": "scratch/intro-battle-091-tests/Jonathan_DESKTOP-EXCALIB_2026-10-25_14_41_14_net10.0[1].trx",
+          "bytes": 748793,
+          "sha256": "27b003a3629d0032ec9fd55b3fd5111c13c38bdbc6b685f0b8137a0533a11410"
+        },
+        "passed": 516
+      }
+    ],
+    "pythonPassed": 215,
+    "newPython": 7,
+    "lockedRestore": true,
+    "releaseWarnings": 0,
+    "releaseErrors": 0
+  },
+  "ownership": {
+    "availabilityAfterAcceptedEventExit": true,
+    "onePublicationPerRun": true,
+    "childAndDispatcherInsufficient": true,
+    "frozenBattleThroughTransition": true,
+    "transitionSampleForwarded": false,
+    "rendererTaskAcknowledgments": 0,
+    "heldInputPolicy": "Discard queued presses and baseline held keyboard/mouse at ownership change; release and fresh press required."
+  },
+  "refactorScope": "Optional introduction in existing playable window via a partial class; input queue wraps the existing latch. Existing battle router, rules, renderer and save schema remain unchanged.",
+  "ownerReview": {
+    "status": "pending",
+    "gallery": "scratch/intro-battle-091-review/review.html",
+    "galleryIdentity": {
+      "localPath": "scratch/intro-battle-091-review/review.html",
+      "bytes": 31585,
+      "sha256": "03f784988254ae4ab694a1860c324bf6200754c5d729e121ef503707e2269f28"
+    }
+  },
+  "emulatorLaunched": false,
+  "newOriginalCaptures": false,
+  "originalEventEndRuntimeAdmitted": false,
+  "fullOriginalStartupEstablished": false,
+  "originalPlayerControlTimingEstablished": false,
+  "physicalInputInjected": false,
+  "aspectCrtAudioPoliciesChanged": false,
+  "mediaPolicy": "Original/prepared assets, images, receipts, logs and generated reports stay ignored under scratch. Only authored code/tests and metadata identities/scalar observations are committed."
+}
