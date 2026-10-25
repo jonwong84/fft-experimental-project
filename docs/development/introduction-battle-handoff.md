@@ -85,7 +85,10 @@ the banner/Ready finish cleanly, the battle appears with no turn started, and
 the subsequent battle views retain their appearance. The terminal intro checker
 is captured offscreen for auditing; the host switches directly to the battle
 view at exit. The gallery models that switch and labels its slower review speed.
-**Owner visual review is pending.**
+The owner approved this gallery on 2026-10-25: "This looks good." Approval
+covers this authored introduction-to-battle review, not original startup or
+physical input timing. This approval update changes documentation/evidence only;
+the implementation test counts below are retained, with no suites rerun.
 
 ## Executed acceptance and validation
 

@@ -1684,7 +1684,7 @@ player-control observation, runtime/renderer change or full startup claim.
 
 ### ZOD-091 — Hand the authored introduction to the playable battle
 
-**Type:** Story · **Priority:** P2 · **Status:** Complete for bounded implementation; owner visual review pending · **Depends on:** ZOD-090
+**Type:** Story · **Priority:** P2 · **Status:** Complete for bounded implementation · **Depends on:** ZOD-090
 
 **Scope:** One prepared authored banner/Ready introduction followed by the
 existing synthetic two-unit battle in one Windows host. Reuse the existing
@@ -1712,8 +1712,27 @@ PNG comparisons; natural runs repeat all 170 artifacts. Actual readiness failure
 create no new output; standalone battle/sequence retain 6/164 files. An isolated
 prepared-only run repeats all 170 artifacts. No original startup, EventEnd or
 physical input-timing claim. [Implementation/validation record](development/introduction-battle-handoff.md),
-[metadata](evidence/events/intro-battle-handoff-v1.json). Owner review is pending
-at `scratch/intro-battle-091-review/review.html` (Play flow / Show handoff).
+[metadata](evidence/events/intro-battle-handoff-v1.json). The owner approved
+`scratch/intro-battle-091-review/review.html` on 2026-10-25: "This looks good."
+Approval covers the authored gallery; no physical input or original startup claim.
+
+### ZOD-092 — Trace the original dark-screen transition worker
+
+**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-091
+
+**Scope:** Trace the original DarkScreen/RemoveDarkScreen worker as the next
+missing startup capability. Select one bounded logical/resource/presentation
+contract before implementing it; reuse the existing task-ledger foundation.
+
+**Acceptance criteria:** Pin reference HEAD and relevant source/input identities;
+trace opcode admission/release, task 54 → 55 → 54 → exit, callers, parameter data,
+arithmetic widths and ordering. Separate resource-loading waits from logical
+progress and identify graphics/background/shared-resource ownership. Select a
+bounded prepared-input/rendering policy and independently authored expectations,
+recording unsupported modes and missing original observations. New original
+continuations, if needed, require a finite verified procedure first. Do not add
+a native reference/emulator runtime dependency, acknowledge tasks from rendering,
+or claim full original startup/EventEnd from this source milestone.
 
 ## Authoring, extensions, and later goals
 

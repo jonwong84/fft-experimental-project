@@ -2518,13 +2518,16 @@
   },
   "refactorScope": "Optional introduction in existing playable window via a partial class; input queue wraps the existing latch. Existing battle router, rules, renderer and save schema remain unchanged.",
   "ownerReview": {
-    "status": "pending",
+    "status": "approved",
     "gallery": "scratch/intro-battle-091-review/review.html",
     "galleryIdentity": {
       "localPath": "scratch/intro-battle-091-review/review.html",
       "bytes": 31585,
       "sha256": "03f784988254ae4ab694a1860c324bf6200754c5d729e121ef503707e2269f28"
-    }
+    },
+    "date": "2026-10-25",
+    "quote": "This looks good.",
+    "scope": "Authored introduction-to-existing-battle gallery; no original startup or physical input timing approval."
   },
   "emulatorLaunched": false,
   "newOriginalCaptures": false,

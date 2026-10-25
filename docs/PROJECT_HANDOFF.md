@@ -17,10 +17,14 @@ battle/sequence preserve 6/164 files. An isolated prepared-only run repeats all
 no physical input/latency or original startup/EventEnd equivalence claim.
 [Record](development/introduction-battle-handoff.md),
 [evidence](evidence/events/intro-battle-handoff-v1.json).
-**Next: owner visual review** of `scratch/intro-battle-091-review/review.html`.
-Use Play flow for the natural/skipped paths or Show handoff to check the switch
-into the battle before any turn starts. Standing commit/push permission applies
-after validation. Original startup, maps, campaign and later CRT/audio remain open.
+The owner approved `scratch/intro-battle-091-review/review.html` on 2026-10-25:
+"This looks good." This approval update changes documentation/evidence only;
+implementation test/build counts above are retained, with no suites rerun.
+**Next: ZOD-092**, trace the original DarkScreen/RemoveDarkScreen worker and its
+task-54/55 transition, prepared-resource and rendering boundaries before selecting
+a bounded implementation. This is a missing original startup capability; the
+authored bridge does not emulate it. Standing commit/push permission applies
+after validation. Full startup, maps, campaign and later CRT/audio remain open.
 
 **Latest source checkpoint (2026-10-25):** ZOD-090 traces the boundary after Ready.
 Both verified event tails still release/wait for task-55/54 dark-screen work and
