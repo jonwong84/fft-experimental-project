@@ -1,5 +1,10 @@
 # ZOD-083 — Ready display source and bounded contract
 
+**Presentation selection follow-up (2026-10-25):** ZOD-085's
+[Ready artwork/rendering policy](zod-085-ready-rendering.md) now selects the
+separate compositor and strict readiness boundary. Its 32 RPR cases and RDY-031
+remain future ZOD-086 implementation checks; no original scanout result is implied.
+
 **Implementation follow-up (2026-10-25):** ZOD-084's
 [ordered Ready aggregate](../development/ready-display-transactions.md) now executes
 RDY-001..028 in managed tests. This source-study checkpoint and its historical

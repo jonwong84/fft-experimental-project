@@ -1,5 +1,21 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Latest source checkpoint (2026-10-25):** ZOD-085's
+[Ready artwork/rendering policy](architecture/zod-085-ready-rendering.md) is complete.
+Select a separate RGB5 CPU compositor for image 0/palette 2/six full glyphs, four
+scaled corners with triangle-seeded Q12 interpolation and explicit point/dither-off/
+texture-window-zero/mask-off state. Bank 2 has **14 opaque nonzero entries, one
+transparent and one STP entry**; only STP texels average with the background.
+Two offline reports repeat with source/queued-state checks and 97,776 channel
+arithmetic comparisons. The 32 RPR expectations remain future implementation
+checks; RDY-031 is still unexecuted. No runtime/test/renderer or emulator change,
+and no original Ready scanout/timing claim. All **163 Python tests** pass; the
+last full managed validation remains ZOD-084's **1,682 .NET tests**.
+**Next: ZOD-086**, now Ready: separate strict authored conversion, prepared artwork
+and accepted-snapshot Windows preview. Actual resource readiness must precede
+scene creation; original visual comparison needs separately bound continuations.
+Standing commit/push permission applies after source/evidence validation.
+
 **Latest behavior checkpoint (2026-10-25):** ZOD-084's
 [ordered Ready aggregate](development/ready-display-transactions.md) is complete.
 One typed preloaded condition-0 display owns a task-56 dispatcher and an untagged

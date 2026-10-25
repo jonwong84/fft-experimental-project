@@ -1518,7 +1518,16 @@ restore, zero-warning Release build and appropriate full regressions.
 
 ### ZOD-085 — Select Ready glyph preparation and rendering policies
 
-**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-083
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-083
+
+**Completion (2026-10-25):** The [Ready presentation policy](architecture/zod-085-ready-rendering.md)
+selects a separate RGB5 CPU compositor, four-corner triangle interpolation,
+per-texel opaque/average STP handling, explicit draw state and strict prepared
+artwork/resource readiness. Bank 2 has 14 opaque nonzero entries, one transparent
+and one STP entry. Two source/queued-state/math reports repeat; 32 independently
+authored presentation expectations remain unexecuted until ZOD-086. No runtime
+renderer or original Ready scanout comparison was added. All 163 Python tests
+pass; last full .NET validation remains ZOD-084's 1,682 tests. Next ZOD-086.
 
 **Scope:** Extend the Ready source study into a bounded immutable artwork and
 accepted-snapshot presentation contract: image 0, palette 2, six glyph quads,
@@ -1534,13 +1543,14 @@ reinterpret its existing renderer policy. No new runtime renderer in this spike.
 
 ### ZOD-086 — Prepare and preview the authored Ready profile
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-084, ZOD-085
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-084, ZOD-085
 
 **Scope:** Add separate authored raw/processed condition-0 conversion, strict
 prepared-content projection and prepared-files-only Windows composition using
 ZOD-084's aggregate and ZOD-085's selected presentation contract.
 
-**Acceptance criteria:** Execute RDY-029..032 and selected presentation regressions.
+**Acceptance criteria:** Execute RDY-029..032 and RPR-001..032 presentation regressions
+from the [selected policy](architecture/zod-085-ready-rendering.md).
 Decode unsigned condition/hold separately; reject old profiles, unsupported
 conditions/provenance/records even unreachable, missing readiness and retail
 events 4/401. Prove finite repeatable receipts and rendering-independent replay;

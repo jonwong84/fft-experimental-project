@@ -1,5 +1,10 @@
 # ZOD-084 — Ordered Ready dispatcher and child
 
+**Presentation follow-up (2026-10-25):** ZOD-085's
+[selected Ready policy](../architecture/zod-085-ready-rendering.md) is complete.
+ZOD-086 can now implement its separate prepared artwork/authored host. The
+remaining-gates section below records the original ZOD-084 checkpoint.
+
 Date: 2026-10-25. Edition: `SCUS-94221`. Managed starting revision:
 `4189d79a38bad257d2f76d45e92388ce2c359b19`. Read-only reference HEAD verified:
 `11464943bbdbd2a0af022d90cb7f10455cf911df`.
