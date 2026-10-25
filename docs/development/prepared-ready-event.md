@@ -184,3 +184,12 @@ and background evidence before claiming displayed-pixel agreement. Natural/input
 continuations, loading duration, physical display latency, arbitrary native
 scheduling, combined general→Ready retail playback, EventEnd/full BattleStart and
 the owner's CRT/backend/audio work remain separate gates.
+
+### ZOD-087 follow-up (2026-10-25)
+
+The later [displayed Ready comparison](displayed-ready-comparison.md) now records
+six exact original/C# scanout comparisons with palette-transparent background
+controls and source-bound display history. It leaves displayed birth/next frame
+unsupported at interrupted checkpoints, and original timing/full playback open.
+Its original-comparison gallery requires separate owner review. The earlier
+validation and specification flags above retain their historical meaning.

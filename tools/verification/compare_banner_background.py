@@ -22,13 +22,18 @@ CANVAS_BYTES = 256 * 240 * 4
 
 
 def transparent_palette_state(state, palette):
+    return replace_palette_state(state, palette, PALETTE_OFFSET)
+
+
+def replace_palette_state(state, palette, palette_offset):
     """Change just the selected 16 VRAM words, preserving every other uncompressed byte."""
+    v.require(type(palette_offset) is int and 0 <= palette_offset <= 1048576 - 32 and palette_offset % 2 == 0, 'Invalid palette location')
     v.require(len(palette) == 32 and any(palette), 'Expected nonempty 16-word banner palette')
     core = p.unpack_state(state); vram = p.gpu_records(core)['&GPURAM[0][0]']
-    v.require(vram[PALETTE_OFFSET:PALETTE_OFFSET + 32] == palette, 'VRAM palette differs from prepared palette')
+    v.require(vram[palette_offset:palette_offset + 32] == palette, 'VRAM palette differs from prepared palette')
     # Uniqueness is mandatory: this is a bounded inspector, not a general save editor.
     v.require(core.count(vram) == 1, 'Ambiguous VRAM record location')
-    offset = core.index(vram) + PALETTE_OFFSET
+    offset = core.index(vram) + palette_offset
     changed = core[:offset] + bytes(32) + core[offset + 32:]
     raw, pos = bytearray(), 20
     # The existing bounded parser has already validated every RZIP chunk/RASTATE block.
@@ -42,7 +47,7 @@ def transparent_palette_state(state, palette):
         block = zlib.compress(raw[start:start + 131072]); result.extend(struct.pack('<I', len(block))); result.extend(block)
     result = bytes(result)
     v.require(p.unpack_state(result) == changed, 'Patched state failed round trip')
-    return result, dict(vramByteOffset=PALETTE_OFFSET, wordCount=16, byteCount=32,
+    return result, dict(vramByteOffset=palette_offset, wordCount=16, byteCount=32,
         changedCoreBytes=sum(a != c for a, c in zip(core, changed, strict=True)),
         onlySelectedPaletteChanged=True, entryCoreSha256=v.sha(core), probeCoreSha256=v.sha(changed))
 

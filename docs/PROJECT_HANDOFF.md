@@ -1,5 +1,24 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Latest validation checkpoint (2026-10-25):** ZOD-087's
+[displayed Ready comparison](development/displayed-ready-comparison.md) is complete
+for six supported anchors: displayed ticks 8/10/60/64/66/67 match actual prepared
+C# composition exactly over isolated original backgrounds. Each visible frame
+checks 1,202 opaque / 77 background-sensitive STP / 1,049 transparent samples;
+empty yield is fully equal. Two final finite original/control runs repeat 96 content artifacts.
+Source code/tables/texture/palette, event 4 wait 813, worker stacks/counters,
+DMA/material state and same-history two-buffer display binding are checked.
+New emulator captures were made; source states, normal configs and reference
+checkout remain unchanged. No production C# or rendering-policy change.
+Locked restore, zero-warning Release builds, **1,794 .NET / 179 Python tests** pass.
+The owner approved `scratch/ready-displayed-087-e/review.html` on 2026-10-25:
+"Visually, they look identical to my eyes."
+Displayed birth/next frame remain missing: retained endpoints are interrupted
+outside the closed main-stack classifier. **Next: ZOD-088**
+for that bounded interrupt/context trace. No original duration, physical Circle,
+hardware, map renderer or full event playback claim. Standing commit/push
+permission applies after validation; keep every original payload under scratch.
+
 **Latest behavior checkpoint (2026-10-25):** ZOD-086's
 [prepared Ready preview](development/prepared-ready-event.md) is complete. Separate
 condition-0 artwork/event formats, offline verified preparation, strict immutable

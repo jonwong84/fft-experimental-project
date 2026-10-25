@@ -1570,7 +1570,17 @@ playback, condition 1, original loading duration, EventEnd and full BattleStart.
 
 ### ZOD-087 — Validate displayed Ready glyphs against original references
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-086
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-086
+
+**Result (2026-10-25):** Six source-bound displayed Ready anchors match actual
+C# composition exactly, including 1,202 opaque / 77 background-sensitive STP
+samples per visible frame and the empty extra yield. Two finite isolated runs
+repeat 96 content artifacts; 1,794 .NET / 179 Python tests pass. No runtime arithmetic changes.
+[Comparison record](development/displayed-ready-comparison.md) and
+[metadata evidence](evidence/visual/displayed-ready-v1.json). The original-review
+gallery was approved by the owner on 2026-10-25: "Visually, they look identical
+to my eyes." Birth/next-frame endpoints stop inside interrupt
+handling and remain explicitly missing; ZOD-088 owns that bounded context gap.
 
 **Scope:** First inspect retained Ready artifacts and select a bounded original
 reference method. Bind queued glyphs to actual displayed frames and recover
@@ -1586,6 +1596,25 @@ explicitly. Needed new captures and background probes must have a finite, verifi
 procedure before execution. Do not infer original duration, Circle timing, full
 event playback or hardware equivalence from a matching frozen image; preserve
 historical evidence and legacy/general behavior.
+
+### ZOD-088 — Bind displayed Ready birth frames through interrupted checkpoints
+
+**Type:** Source/validation task · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-087
+
+**Scope:** Trace the retained birth/next-frame interrupt endpoints before deciding
+whether their original display/submission context can be validated. Reuse the
+hash-bound ZOD-087 source and failed selection captures; keep the main VSync
+classifier closed. Select a finite continuation only if new observation is needed.
+
+**Acceptance criteria:** Pin source/artifact identities and identify the actual
+interrupt/return context, saved main registers/stack and submission position, or
+document why these endpoints remain unsupported. If supported, add independently
+authored negative/boundary checks and compare actual prepared C# birth/next frames
+over isolated background controls with exact metrics and an owner-review gallery.
+No guessed return chain, timing conversion, alignment fitting or tolerance change;
+no original media committed or runtime dependency added. Hardware equivalence,
+physical Circle timing, full event/startup playback and later CRT/audio remain
+separate work.
 
 ## Authoring, extensions, and later goals
 

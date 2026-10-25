@@ -8,6 +8,7 @@ using Zodiac.Framework.Events;
 // Optional finite CPU evidence host. No emulator, original formats, GPU or window are used.
 try
 {
+    if (args.Length == 4 && args[0] == "--ready-sequence") return ReadySequence.Run(args[1], args[2], args[3]);
     if (args.Length == 4 && args[0] == "--sequence") return Sequence(args[1], args[2], args[3]);
     if (args.Length == 4 && args[0] == "--reveal-sequence") return Sequence(args[1], args[2], args[3], reveal: true);
     if (args.Length != 3) throw new ArgumentException("Expected prepared-root background.rgba fresh-output-root.");
