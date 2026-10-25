@@ -1,5 +1,24 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Latest original comparison (2026-10-25):** ZOD-095 binds thirteen selected
+DarkScreen entry/hold/release scanouts to complete original counters, queued
+packets and two-earlier double-buffer history. Actual prepared C# geometry and
+all 798,720 pixels per run match at zero tolerance; eleven nonempty anchors cover
+446,578 samples, including a 24-pixel tail. Material-only controls retain geometry
+and require exact full CPU/other subsystem/GPU-register equality; no TAR exception.
+Earlier degenerate-geometry probes are retained and excluded. Two final runs
+repeat **118 artifacts**, including all 26 exit states. Nine actual host negatives
+create no new output/preserve existing markers. Locked restores, zero-warning
+Release builds and **2,031 .NET / 255 Python tests** pass (15 new Python checks).
+Production `src/` is unchanged. Review `scratch/dark-screen-095-f/review.html`;
+**owner visual approval is pending**. Birth/transition/final yield/clear/parent
+scanouts, full animation, original duration, map/hardware and full startup remain
+open. [Guide](development/original-dark-screen-comparison.md),
+[metadata](evidence/events/original-dark-screen-v1.json).
+**Next: ZOD-096 after review**, specify combined authored DarkScreen/banner/Ready
+and the existing battle ownership handoff before implementation. Standing
+commit/push permission applies to validated work.
+
 **Latest prepared-preview checkpoint (2026-10-25):** ZOD-094 implements verified
 offline DarkScreen EXE/table conversion, strict separate prepared loading and a
 standalone Windows untextured RGB5 flat-quad preview. Existing pure worker/ledger

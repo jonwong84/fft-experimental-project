@@ -1,0 +1,914 @@
+{
+  "format": "fft.original-dark-screen-validation",
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "managedBase": "e5b130d81ce5a518ff4f4da6aaa027dace66047d",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "sourceEvidence": {
+    "localPath": "docs/evidence/events/dark-screen-source-v1.json",
+    "bytes": 15050,
+    "sha256": "8483734563853e8c4611dddd1ddc86610497d804e0068c5e0b0fe0d86f15be02"
+  },
+  "sourceFiles": [
+    {
+      "path": "src/event/require/entry_dark_screen.c",
+      "bytes": 13215,
+      "sha256": "e11a806e386cd0b182d4ab72095aea0aace69b48e24a9f55a4a05dd3e6ee6b8a"
+    },
+    {
+      "path": "src/event/require/screen_support.c",
+      "bytes": 4809,
+      "sha256": "c245776a1966ad212c8e912e4de6c6e15028bdbc5636406e070a23ccb399cbf5"
+    },
+    {
+      "path": "src/lib/event/scene/menu_overlays.c",
+      "bytes": 15504,
+      "sha256": "3e48540293a3c65b808a2419d367228e97638b873367c9f80073c873747bf419"
+    },
+    {
+      "path": "src/battle/event/interpreter.c",
+      "bytes": 57266,
+      "sha256": "0f1d08b30a16b88e55936442239f875eb53d961320a1409049c6bf2b72b464ec"
+    },
+    {
+      "path": "src/lib/event/script/control.c",
+      "bytes": 17474,
+      "sha256": "af8ad98b57a70499514ad12f0d3b4c3f35a5d2eb7f25708f60f495cf1a2c736f"
+    },
+    {
+      "path": "src/lib/thread/scheduler.c",
+      "bytes": 3815,
+      "sha256": "143a43b0a0dbd9f26610d2cb17240d3d76e2320a970b963e56e6b51865bc3600"
+    },
+    {
+      "path": "src/lib/menu/display.c",
+      "bytes": 12798,
+      "sha256": "6da84033bddac0d4f89207bfd1159ac0eb5e156bc59fd8d272f2a573eb725f4d"
+    },
+    {
+      "path": "src/platform/psyq/libgte/SquareRoot0.c",
+      "bytes": 2442,
+      "sha256": "12702bc862912fba090127786dc2ab8c1b960a912c26f06c8052a4cb07243908"
+    },
+    {
+      "path": "src/platform/psyq/libgte/RotMatrix.c",
+      "bytes": 7171,
+      "sha256": "a6b5f108fb3fcfa1196a8e089bbcbf129aa773638c17a5e8216ca627c81568db"
+    },
+    {
+      "path": "src/platform/psyq/libgte/ApplyMatrixLV.c",
+      "bytes": 2928,
+      "sha256": "cb08ae0d51e729bad1a4710f8348aeb12d78aef34dd16b79f61cc09f315f929b"
+    },
+    {
+      "path": "src/platform/psyq/libgpu/SetPolyF4.c",
+      "bytes": 165,
+      "sha256": "1b6865fcf26d9a9812baab8bfc3dd4781aed6db46f9c4fd81f94b38467fc8f5a"
+    },
+    {
+      "path": "src/platform/psyq/libgpu/SetSemiTrans.c",
+      "bytes": 153,
+      "sha256": "89e62ad39a75982f17cf488c9c42ee2a29bd2cbe3347ab815128ded43d676552"
+    },
+    {
+      "path": "src/platform/psyq/libgpu/SetDrawMode.c",
+      "bytes": 285,
+      "sha256": "3ca99f738400850b84578d5df538e1b4fb86551cfc9e100fb0da6f953b56365f"
+    },
+    {
+      "path": "include/psx/gte_inline.h",
+      "bytes": 48083,
+      "sha256": "ee6a1bccecb6ae4a13e74feee7cfc57453e9d134b84e3a4eba13d5f78977344a"
+    },
+    {
+      "path": "include/psx/libgpu.h",
+      "bytes": 32315,
+      "sha256": "8b82cd0b44260334cbbae4144434b48214731def3800ae41ed663b472269b860"
+    },
+    {
+      "path": "include/fft/after_battle.h",
+      "bytes": 4303,
+      "sha256": "96cbef18065f8e5a64d2fbcd7af2d4d94667f887d174b7158aaaff830e9efbcf"
+    },
+    {
+      "path": "include/fft/thread.h",
+      "bytes": 12726,
+      "sha256": "55565b16d3f944c3fb86d34ae5a5ca483964235bac6ce592815d5d1c62efd9c7"
+    },
+    {
+      "path": "target/battle.yaml",
+      "bytes": 304943,
+      "sha256": "f536f589674bea249747863bd60431cdba2671362ce611cbe2f8931f3d540611"
+    },
+    {
+      "path": "target/event.yaml",
+      "bytes": 204370,
+      "sha256": "7d3fd976a01e5b5beb34c7f5b0b9bcb82c8004d192f47bfab9451859c2a3b50f"
+    },
+    {
+      "path": "target/main.yaml",
+      "bytes": 136443,
+      "sha256": "a35f69fd3fe8eedd33a5d340e1c655f222dcbb17858cdba24da55c898df9fb88"
+    }
+  ],
+  "originalArchive": {
+    "localPath": "scratch/all-data-extraction/EVENT/TEST.EVT",
+    "bytes": 4096000,
+    "sha256": "107b109254ccbb150aca7baf336b632837b22e340677e2b9e746ac61b3de4405"
+  },
+  "profile": {
+    "localPath": "scratch/retroarch-reference-033-b/profile.json",
+    "bytes": 1975,
+    "sha256": "343d79415a14794c8a457f7a6463f6a70907ad3843908a5026fba9e9dc8380a3"
+  },
+  "prepared": {
+    "root": "scratch/dark-screen-095-prepared",
+    "files": [
+      {
+        "localPath": "scratch/dark-screen-095-prepared/assets.manifest.json",
+        "bytes": 266,
+        "sha256": "b7dab535fbb11a65da90681e6a063d2ee45ada5a9674a0c0ddf785afeda910c7"
+      },
+      {
+        "localPath": "scratch/dark-screen-095-prepared/dark-screen.json",
+        "bytes": 23046,
+        "sha256": "9dbf301dfe6b6df13f30107145616df3a398ed7e0f644cff41d9adb162bc95f7"
+      }
+    ]
+  },
+  "inputPlan": {
+    "localPath": "scratch/dark-screen-095-plan/plan-v5.json",
+    "bytes": 5409,
+    "sha256": "0ca63a80e06b46796516837cf24b7ad36f05f89ae9b30b288e030217b34c6d22"
+  },
+  "scope": "Thirteen selected event-4 entry/hold/release scanouts. Actual prepared C# geometry and CPU composition over isolated material-neutral backgrounds. Eleven nonempty anchors and two zero-coverage states; no full animation, hardware or original duration claim.",
+  "sourceBinding": {
+    "eventId": 4,
+    "darkScreenOffset": 794,
+    "entryWaitOffset": 801,
+    "removeOffset": 816,
+    "releaseWaitOffset": 817,
+    "birthNativeFrameEpoch": 8909,
+    "releaseNativeFrameEpoch": 9073,
+    "releaseLogicalTick": 164,
+    "authoredHoldFrames": 108,
+    "residentFunctions": 14,
+    "completeCellsPerObservation": 288,
+    "queuedToDisplayedNativeFrames": 2,
+    "fixedCrop": [
+      12,
+      0,
+      256,
+      240
+    ]
+  },
+  "controlPolicy": {
+    "name": "selected-additive-black-material-v1",
+    "onlyInputChanges": "Selected queued packet RGB bytes zero; selected E1 average-to-additive byte 06->26.",
+    "geometryChanged": false,
+    "instructionsChanged": false,
+    "linksChanged": false,
+    "countersChanged": false,
+    "palettesChanged": false,
+    "fullCpuIdentityRequired": true,
+    "cpuExceptionsAllowed": false,
+    "otherSubsystemsExact": true,
+    "otherMainRecordsExact": true,
+    "gpuRegistersExact": true,
+    "ramDifferencesLimitedToSelectedMaterialBytes": true,
+    "nonFramebufferVramExact": true,
+    "scanoutEqualsScreenshotCrop": true,
+    "outsideFootprintPixelsExact": true
+  },
+  "checkpoints": [
+    {
+      "logicalTick": 2,
+      "phase": "Entering",
+      "sourceFrame": 8911,
+      "parentOffset": 801,
+      "workerSlot": 2,
+      "packetCount": 32,
+      "sourceState": {
+        "localPath": "scratch/dark-screen-095-selection-b/entry-056/states/fft-clean-base-game.state.auto",
+        "bytes": 1500942,
+        "sha256": "0c920e3b1e7b5f436cd2559b3f92e4b662a13e536dce3ef643ea057e57ac0b42"
+      },
+      "frontendFrames": 4,
+      "sourceFrameDistance": 2,
+      "coveredPixels": 0,
+      "backgroundSensitiveChangedPixels": 0,
+      "fullCanvas": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "independentModel": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "outsideFootprintChanges": 0,
+      "nonFramebufferVramChanges": 0,
+      "fullCpuExact": true,
+      "outsideAllowedRamChanges": 0,
+      "changedRamBytes": 1
+    },
+    {
+      "logicalTick": 6,
+      "phase": "Entering",
+      "sourceFrame": 8915,
+      "parentOffset": 801,
+      "workerSlot": 2,
+      "packetCount": 74,
+      "sourceState": {
+        "localPath": "scratch/dark-screen-095-selection-b/entry-064/states/fft-clean-base-game.state.auto",
+        "bytes": 1504271,
+        "sha256": "2f5504dfacddece015450bd0758c378598a58346e3365026cd9fe03e201a996f"
+      },
+      "frontendFrames": 4,
+      "sourceFrameDistance": 2,
+      "coveredPixels": 606,
+      "backgroundSensitiveChangedPixels": 606,
+      "fullCanvas": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "independentModel": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "outsideFootprintChanges": 0,
+      "nonFramebufferVramChanges": 0,
+      "fullCpuExact": true,
+      "outsideAllowedRamChanges": 0,
+      "changedRamBytes": 1
+    },
+    {
+      "logicalTick": 14,
+      "phase": "Entering",
+      "sourceFrame": 8923,
+      "parentOffset": 801,
+      "workerSlot": 2,
+      "packetCount": 157,
+      "sourceState": {
+        "localPath": "scratch/dark-screen-095-selection-b/entry-080/states/fft-clean-base-game.state.auto",
+        "bytes": 1508791,
+        "sha256": "22ac82ddb7587b65d5152e9e01ac1da6efd957e0b0bcecc4dceb3fdace333e59"
+      },
+      "frontendFrames": 4,
+      "sourceFrameDistance": 2,
+      "coveredPixels": 12737,
+      "backgroundSensitiveChangedPixels": 12737,
+      "fullCanvas": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "independentModel": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "outsideFootprintChanges": 0,
+      "nonFramebufferVramChanges": 0,
+      "fullCpuExact": true,
+      "outsideAllowedRamChanges": 0,
+      "changedRamBytes": 1
+    },
+    {
+      "logicalTick": 26,
+      "phase": "Entering",
+      "sourceFrame": 8935,
+      "parentOffset": 801,
+      "workerSlot": 2,
+      "packetCount": 255,
+      "sourceState": {
+        "localPath": "scratch/dark-screen-095-selection-b/entry-104/states/fft-clean-base-game.state.auto",
+        "bytes": 1505128,
+        "sha256": "014731d98d15ec3f07946bdf23c5c71d543dcb9676d63d42741368f7467c1588"
+      },
+      "frontendFrames": 5,
+      "sourceFrameDistance": 2,
+      "coveredPixels": 41712,
+      "backgroundSensitiveChangedPixels": 41712,
+      "fullCanvas": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "independentModel": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "outsideFootprintChanges": 0,
+      "nonFramebufferVramChanges": 0,
+      "fullCpuExact": true,
+      "outsideAllowedRamChanges": 0,
+      "changedRamBytes": 1
+    },
+    {
+      "logicalTick": 42,
+      "phase": "Entering",
+      "sourceFrame": 8951,
+      "parentOffset": 801,
+      "workerSlot": 2,
+      "packetCount": 288,
+      "sourceState": {
+        "localPath": "scratch/dark-screen-095-selection-b/entry-136/states/fft-clean-base-game.state.auto",
+        "bytes": 1491683,
+        "sha256": "b2c8c3cf17ee78658e5b1c9c9ad00e402671b039da0e274c12c7ebaf9f07fe5d"
+      },
+      "frontendFrames": 5,
+      "sourceFrameDistance": 2,
+      "coveredPixels": 60316,
+      "backgroundSensitiveChangedPixels": 60316,
+      "fullCanvas": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "independentModel": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "outsideFootprintChanges": 0,
+      "nonFramebufferVramChanges": 0,
+      "fullCpuExact": true,
+      "outsideAllowedRamChanges": 0,
+      "changedRamBytes": 1
+    },
+    {
+      "logicalTick": 46,
+      "phase": "Entering",
+      "sourceFrame": 8955,
+      "parentOffset": 801,
+      "workerSlot": 2,
+      "packetCount": 288,
+      "sourceState": {
+        "localPath": "scratch/dark-screen-095-selection-b/entry-144/states/fft-clean-base-game.state.auto",
+        "bytes": 1491102,
+        "sha256": "7ee9d33fa35c0f64dfe942bf4335db6316876c466a787c283716d55e215e6299"
+      },
+      "frontendFrames": 5,
+      "sourceFrameDistance": 2,
+      "coveredPixels": 61223,
+      "backgroundSensitiveChangedPixels": 61223,
+      "fullCanvas": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "independentModel": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "outsideFootprintChanges": 0,
+      "nonFramebufferVramChanges": 0,
+      "fullCpuExact": true,
+      "outsideAllowedRamChanges": 0,
+      "changedRamBytes": 1
+    },
+    {
+      "logicalTick": 163,
+      "phase": "Holding",
+      "sourceFrame": 9072,
+      "parentOffset": 813,
+      "workerSlot": 2,
+      "packetCount": 1,
+      "sourceState": {
+        "localPath": "scratch/ready-displayed-087-e/original-140/states/fft-clean-base-game.state.auto",
+        "bytes": 1490722,
+        "sha256": "3c6bc7197b001c080e007a08c894325b56e35f90b42760ca2a4f7d1f399a143a"
+      },
+      "frontendFrames": 5,
+      "sourceFrameDistance": 2,
+      "coveredPixels": 61440,
+      "backgroundSensitiveChangedPixels": 61440,
+      "fullCanvas": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "independentModel": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "outsideFootprintChanges": 0,
+      "nonFramebufferVramChanges": 0,
+      "fullCpuExact": true,
+      "outsideAllowedRamChanges": 0,
+      "changedRamBytes": 4
+    },
+    {
+      "logicalTick": 165,
+      "phase": "Leaving",
+      "sourceFrame": 9074,
+      "parentOffset": 817,
+      "workerSlot": 2,
+      "packetCount": 288,
+      "sourceState": {
+        "localPath": "scratch/dark-screen-095-selection-b/release-004/states/fft-clean-base-game.state.auto",
+        "bytes": 1490475,
+        "sha256": "4451dc99336b59816c9acff4c6de3c841fb67e43fd3995de95cf4ea6a9e56a97"
+      },
+      "frontendFrames": 5,
+      "sourceFrameDistance": 2,
+      "coveredPixels": 61440,
+      "backgroundSensitiveChangedPixels": 61440,
+      "fullCanvas": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "independentModel": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "outsideFootprintChanges": 0,
+      "nonFramebufferVramChanges": 0,
+      "fullCpuExact": true,
+      "outsideAllowedRamChanges": 0,
+      "changedRamBytes": 1
+    },
+    {
+      "logicalTick": 167,
+      "phase": "Leaving",
+      "sourceFrame": 9076,
+      "parentOffset": 817,
+      "workerSlot": 2,
+      "packetCount": 288,
+      "sourceState": {
+        "localPath": "scratch/dark-screen-095-selection-b/release-008/states/fft-clean-base-game.state.auto",
+        "bytes": 1492747,
+        "sha256": "0dab0e475f3fe6d940ad8d8c95a4aae8940bb75b26dacbb6f13edc84a3d4c39c"
+      },
+      "frontendFrames": 5,
+      "sourceFrameDistance": 2,
+      "coveredPixels": 59622,
+      "backgroundSensitiveChangedPixels": 59622,
+      "fullCanvas": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "independentModel": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "outsideFootprintChanges": 0,
+      "nonFramebufferVramChanges": 0,
+      "fullCpuExact": true,
+      "outsideAllowedRamChanges": 0,
+      "changedRamBytes": 1
+    },
+    {
+      "logicalTick": 171,
+      "phase": "Leaving",
+      "sourceFrame": 9080,
+      "parentOffset": 817,
+      "workerSlot": 2,
+      "packetCount": 288,
+      "sourceState": {
+        "localPath": "scratch/dark-screen-095-selection-b/release-016/states/fft-clean-base-game.state.auto",
+        "bytes": 1501623,
+        "sha256": "2ce7eb9e05b7d33e1948f990a598f00cae925f1863371c4567f84f0e45fce74f"
+      },
+      "frontendFrames": 5,
+      "sourceFrameDistance": 2,
+      "coveredPixels": 53249,
+      "backgroundSensitiveChangedPixels": 53249,
+      "fullCanvas": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "independentModel": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "outsideFootprintChanges": 0,
+      "nonFramebufferVramChanges": 0,
+      "fullCpuExact": true,
+      "outsideAllowedRamChanges": 0,
+      "changedRamBytes": 1
+    },
+    {
+      "logicalTick": 179,
+      "phase": "Leaving",
+      "sourceFrame": 9088,
+      "parentOffset": 817,
+      "workerSlot": 2,
+      "packetCount": 288,
+      "sourceState": {
+        "localPath": "scratch/dark-screen-095-selection-b/release-032/states/fft-clean-base-game.state.auto",
+        "bytes": 1508169,
+        "sha256": "11c7c3dbab337e7e6d0444c236337a7200233ef3a2773366e287a8f8fdf38d2b"
+      },
+      "frontendFrames": 5,
+      "sourceFrameDistance": 2,
+      "coveredPixels": 34209,
+      "backgroundSensitiveChangedPixels": 34209,
+      "fullCanvas": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "independentModel": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "outsideFootprintChanges": 0,
+      "nonFramebufferVramChanges": 0,
+      "fullCpuExact": true,
+      "outsideAllowedRamChanges": 0,
+      "changedRamBytes": 1
+    },
+    {
+      "logicalTick": 211,
+      "phase": "Leaving",
+      "sourceFrame": 9120,
+      "parentOffset": 817,
+      "workerSlot": 2,
+      "packetCount": 288,
+      "sourceState": {
+        "localPath": "scratch/dark-screen-095-late-selection/frames-97/states/fft-clean-base-game.state.auto",
+        "bytes": 1505225,
+        "sha256": "b03b3bb8a865a8d12562e4b50acd76e60cb494736c85a8e7bc1b5e93f937a1d4"
+      },
+      "frontendFrames": 5,
+      "sourceFrameDistance": 2,
+      "coveredPixels": 24,
+      "backgroundSensitiveChangedPixels": 24,
+      "fullCanvas": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "independentModel": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "outsideFootprintChanges": 0,
+      "nonFramebufferVramChanges": 0,
+      "fullCpuExact": true,
+      "outsideAllowedRamChanges": 0,
+      "changedRamBytes": 1
+    },
+    {
+      "logicalTick": 213,
+      "phase": "Leaving",
+      "sourceFrame": 9122,
+      "parentOffset": 817,
+      "workerSlot": 2,
+      "packetCount": 288,
+      "sourceState": {
+        "localPath": "scratch/dark-screen-095-late-selection/frames-101/states/fft-clean-base-game.state.auto",
+        "bytes": 1506511,
+        "sha256": "86f82cfbb988a8bf996f20ea06dde6b6d717b326735ea7125a5637db48578ac7"
+      },
+      "frontendFrames": 5,
+      "sourceFrameDistance": 2,
+      "coveredPixels": 0,
+      "backgroundSensitiveChangedPixels": 0,
+      "fullCanvas": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "independentModel": {
+        "exact": true,
+        "changedPixels": 0,
+        "maxChannelDelta": 0,
+        "changedBounds": null
+      },
+      "outsideFootprintChanges": 0,
+      "nonFramebufferVramChanges": 0,
+      "fullCpuExact": true,
+      "outsideAllowedRamChanges": 0,
+      "changedRamBytes": 1
+    }
+  ],
+  "finalRuns": [
+    {
+      "report": {
+        "localPath": "scratch/dark-screen-095-e/report.json",
+        "bytes": 4503168,
+        "sha256": "98accd7d0524ebb2f905de22b7afb90b2762cc562785eb5e0661aec85d4decb0"
+      },
+      "executionPlan": {
+        "localPath": "scratch/dark-screen-095-e/plan.json",
+        "bytes": 5323,
+        "sha256": "c917d6cd0aa7a04514b80cb1f8f31d99d564ab93725c0998db3bd49cf48d448a"
+      },
+      "nativeReceipt": {
+        "localPath": "scratch/dark-screen-095-e/native/check.json",
+        "bytes": 6864,
+        "sha256": "ef4a319ac62a7315067947f8f9f97a523e4ea52e17fb43b7d38a230bf5245fda"
+      },
+      "log": {
+        "localPath": "scratch/dark-screen-095-e.log",
+        "bytes": 984,
+        "sha256": "c113091da4fbe7fc790c3c16d9ced2a3be65bc46f1b316f361de311150e1f3f7"
+      }
+    },
+    {
+      "report": {
+        "localPath": "scratch/dark-screen-095-f/report.json",
+        "bytes": 4503168,
+        "sha256": "f96fe22d4b403ed3d5cfefc59569e2f5badbb7625d0c4cd4326fb6b44f9d3f28"
+      },
+      "executionPlan": {
+        "localPath": "scratch/dark-screen-095-f/plan.json",
+        "bytes": 5323,
+        "sha256": "c917d6cd0aa7a04514b80cb1f8f31d99d564ab93725c0998db3bd49cf48d448a"
+      },
+      "nativeReceipt": {
+        "localPath": "scratch/dark-screen-095-f/native/check.json",
+        "bytes": 6864,
+        "sha256": "ef4a319ac62a7315067947f8f9f97a523e4ea52e17fb43b7d38a230bf5245fda"
+      },
+      "log": {
+        "localPath": "scratch/dark-screen-095-f.log",
+        "bytes": 984,
+        "sha256": "c113091da4fbe7fc790c3c16d9ced2a3be65bc46f1b316f361de311150e1f3f7"
+      }
+    }
+  ],
+  "repeat": {
+    "report": {
+      "localPath": "scratch/dark-screen-095-repeat.json",
+      "bytes": 386,
+      "sha256": "8c7ba28cf12cf952e8b21e8e15d6b6b0977b3b6fa732cd5ba0803fa6e32a47af"
+    },
+    "passed": true,
+    "exactArtifactGroups": {
+      "reviewPngs": 39,
+      "nativeFiles": 27,
+      "backgrounds": 13,
+      "copiedControls": 13,
+      "exitStates": 26
+    },
+    "totalExactArtifacts": 118,
+    "reportPathsDiffer": true,
+    "checkpointCount": 13,
+    "allFullCpuExact": true,
+    "quadsPerRun": 2823,
+    "visibleCoverageAnchors": 11,
+    "visibleCoveredSamples": 446578
+  },
+  "rejectedProbeHistory": {
+    "retained": true,
+    "usedInFinalProof": false,
+    "cpuAllowanceUsedInFinalProof": false,
+    "reason": "XY-degenerate controls alter workload. Entry 26 differs in historical COP0 TAR; hold 163 differs in VSync bookkeeping; release 165 changes CPU and other subsystems. Strict rejection retained; material controls replace this method.",
+    "plans": [
+      {
+        "localPath": "scratch/dark-screen-095-a/plan.json",
+        "bytes": 4346,
+        "sha256": "4d5f9a4b716511c8ce661ce2795c5f341eb1ab84c86e6ff4cbd8029674146618"
+      },
+      {
+        "localPath": "scratch/dark-screen-095-b/plan.json",
+        "bytes": 5241,
+        "sha256": "f94cd08c70d9868876c9567d16181553114cb4e23150a222483e99e4b335b8ab"
+      },
+      {
+        "localPath": "scratch/dark-screen-095-c/plan.json",
+        "bytes": 6484,
+        "sha256": "2177ab7961d911693fda3e19e090ca780ad428aa84b524f5e66c474be84b10a8"
+      },
+      {
+        "localPath": "scratch/dark-screen-095-d/plan.json",
+        "bytes": 6408,
+        "sha256": "0f8f90e1aefc471ac0248c32ee9fab7518d54ee005ca032942bb4bde8c247d9a"
+      }
+    ],
+    "holdFourPlan": {
+      "localPath": "scratch/dark-screen-095-hold-four/plan.json",
+      "bytes": 1663,
+      "sha256": "7672c9a9cbb7f41b09265a0a2f819b08a272c768826882bc21a954afe3d78551"
+    },
+    "materialPilotPlan": {
+      "localPath": "scratch/dark-screen-095-material-pilot/plan.json",
+      "bytes": 19839,
+      "sha256": "31bf1e397afb5f95bbf27718692587470279936e34130fb90880707f1085009d"
+    },
+    "materialPilotReport": {
+      "localPath": "scratch/dark-screen-095-material-pilot/report.json",
+      "bytes": 235549,
+      "sha256": "77395abf53a0009066da759d09568dac975fb86a481b6a0f859cb532263c90ff"
+    },
+    "diagnosticCpuSourceStudy": {
+      "localPath": "scratch/dark-screen-095-cpu-source/sources.json",
+      "bytes": 722,
+      "sha256": "c29148764f62d69fbb4c16053cd39e7bc54faae38271c6938277658f97aad57b"
+    },
+    "diagnosticTarStudy": {
+      "localPath": "scratch/dark-screen-095-cpu-source/tar-policy.json",
+      "bytes": 1143,
+      "sha256": "65b341c2ee030e01e753c83e36e29069705204518fbef493899152c7abfe371e"
+    },
+    "diagnosticEmulatorSourceCommit": "dda8cf71d420b1972d92324a5edecf2b92b1ec92",
+    "diagnosticSourceBuildMatchesInstalledDll": null
+  },
+  "selectionEvidence": [
+    {
+      "plan": {
+        "localPath": "scratch/dark-screen-095-selection-b/plan.json",
+        "bytes": 1542,
+        "sha256": "76c41a901e3999e4bb7e34a29ab25438114136829951b788bd28e44d0878c242"
+      },
+      "report": {
+        "localPath": "scratch/dark-screen-095-selection-b/report.json",
+        "bytes": 42170,
+        "sha256": "9fd6aaa189a7c2eaee33a84061e9a065d04da3408e9d1ae68ef9d17e21f34edc"
+      }
+    },
+    {
+      "plan": {
+        "localPath": "scratch/dark-screen-095-endpoint-selection/plan.json",
+        "bytes": 2934,
+        "sha256": "584a65f2b818c5e30e010186e91e5030a56c8f5c839dc72fefbeeb3e68722d91"
+      },
+      "report": {
+        "localPath": "scratch/dark-screen-095-endpoint-selection/report.json",
+        "bytes": 1512294,
+        "sha256": "2a9238d2b700d8df6f3cd31b6019b8b25f6b2bb86e9dd4aba98e0dacd84839c9"
+      }
+    },
+    {
+      "plan": {
+        "localPath": "scratch/dark-screen-095-late-selection/plan.json",
+        "bytes": 738,
+        "sha256": "e264a9cd06945aa4d9f30408fe716a9eef40f8e4fbf7a8f801a1de89913fb8c5"
+      },
+      "report": {
+        "localPath": "scratch/dark-screen-095-late-selection/report.json",
+        "bytes": 283572,
+        "sha256": "149d60b3c88b574e846ae2a22694571c07a07405f3814d9a0b54c53f6f739b14"
+      }
+    }
+  ],
+  "validation": {
+    "lockedRestoresPassed": true,
+    "releaseBuildWarnings": 0,
+    "dotnetPassed": 2031,
+    "newManagedTests": 0,
+    "pythonPassed": 255,
+    "newPythonTests": 15,
+    "developerHostGuards": 9,
+    "guardReport": {
+      "localPath": "scratch/dark-screen-095-guards/report.json",
+      "bytes": 1199,
+      "sha256": "d1c2e9f42defd79d1625ac52cc14a8554683abd846c7aac4fc643790c3193adc"
+    },
+    "logs": [
+      {
+        "localPath": "scratch/dark-screen-095-restore.log",
+        "bytes": 82,
+        "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc"
+      },
+      {
+        "localPath": "scratch/dark-screen-095-tool-restore.log",
+        "bytes": 82,
+        "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc"
+      },
+      {
+        "localPath": "scratch/dark-screen-095-build.log",
+        "bytes": 1678,
+        "sha256": "ec46655147dd11205cfe9f0275d1a700b3c8285c1fa732accdf869c065d8d178"
+      },
+      {
+        "localPath": "scratch/dark-screen-095-tool-build.log",
+        "bytes": 686,
+        "sha256": "67df8c9479f5df44ea9f1f4302ac6259138d87c27f1d08636c63f75b795eabe9"
+      },
+      {
+        "localPath": "scratch/dark-screen-095-dotnet-tests.log",
+        "bytes": 2983,
+        "sha256": "2b162cad1d8b6c7e6908f6feda1431b14009e3ecaa817345a7d5a35e0b9f4b04"
+      },
+      {
+        "localPath": "scratch/dark-screen-095-python-tests-recorded.log",
+        "bytes": 1245,
+        "sha256": "5ebb950924b35ba8755d96697727d6548e2ba65af18533de5955c944fb7a87fd"
+      }
+    ],
+    "trx": [
+      {
+        "localPath": "scratch/dark-screen-095-validation/dotnet/Jonathan_DESKTOP-EXCALIB_2026-10-25_19_33_14_net10.0.trx",
+        "bytes": 36854,
+        "sha256": "c757f775a2bb23970e1fa0062af3a583fcd9ccd4d63a5bccecafed40a66eccf5"
+      },
+      {
+        "localPath": "scratch/dark-screen-095-validation/dotnet/Jonathan_DESKTOP-EXCALIB_2026-10-25_19_33_14_net10.0[1].trx",
+        "bytes": 299067,
+        "sha256": "5c4d04571fb07708e81b5fc84f8784a0cdcc3cbcdd0f44be762a09c5d1bbe938"
+      },
+      {
+        "localPath": "scratch/dark-screen-095-validation/dotnet/Jonathan_DESKTOP-EXCALIB_2026-10-25_19_33_14_net10.0[2].trx",
+        "bytes": 1096890,
+        "sha256": "f79547d402fc5e52e93c2f53b94f58668f3ce0fd1d998f869595300a75678ae9"
+      },
+      {
+        "localPath": "scratch/dark-screen-095-validation/dotnet/Jonathan_DESKTOP-EXCALIB_2026-10-25_19_33_14_net10.0[3].trx",
+        "bytes": 310418,
+        "sha256": "0c63f6734ae74000965f1259edd7031636b54e5fedd956f2e2affcea2d505bb9"
+      },
+      {
+        "localPath": "scratch/dark-screen-095-validation/dotnet/Jonathan_DESKTOP-EXCALIB_2026-10-25_19_33_14_net10.0[4].trx",
+        "bytes": 791468,
+        "sha256": "b6a138a444db0c5fee370ba266626b3d75222d79ed959828c955b64fa4a6391d"
+      },
+      {
+        "localPath": "scratch/dark-screen-095-validation/dotnet/Jonathan_DESKTOP-EXCALIB_2026-10-25_19_33_14_net10.0[5].trx",
+        "bytes": 491176,
+        "sha256": "796701e56bed16c2e54edef16ef42fe936a12e21144d371f121433359d08acd5"
+      }
+    ],
+    "nativeGpuReadbackPerformed": false,
+    "normalConfigsUnchanged": true,
+    "sourceStatesPreserved": true,
+    "productionSourceChanged": false
+  },
+  "implementation": [
+    {
+      "localPath": "tools/banner-blend-check/DarkScreenSequence.cs",
+      "bytes": 6037,
+      "sha256": "852c55c88a86e21ac02b2fa7822cdfdfce5d8c106ccbbbc0ac228698fe4edadc"
+    },
+    {
+      "localPath": "tools/banner-blend-check/Program.cs",
+      "bytes": 9201,
+      "sha256": "c80afea2d8d0f34e60c21c0cced6c86d493b0ce5692edf5229d3f0632b35e157"
+    },
+    {
+      "localPath": "tools/verification/compare_dark_screen_reference.py",
+      "bytes": 16831,
+      "sha256": "d69dab23c1daec819e6c8b4f9da26fdef7d35350170231d9bbbf3e8202f2de77"
+    },
+    {
+      "localPath": "tools/verification/inspect_dark_screen_reference.py",
+      "bytes": 11377,
+      "sha256": "6205fbc72533e751c7521551346b1781f2b2c486aa8befd6d2611d62d2ce6454"
+    },
+    {
+      "localPath": "tools/verification/test_dark_screen_reference.py",
+      "bytes": 7480,
+      "sha256": "17d0204f0e9493b7f77549ce1c22ba5cbf957d52e976f3755d48f926139fa026"
+    }
+  ],
+  "ownerReview": {
+    "status": "pending",
+    "gallery": {
+      "localPath": "scratch/dark-screen-095-f/review.html",
+      "bytes": 4812,
+      "sha256": "46ad1a9e4ec243cd3a4884f261b185184be02551095a4485aaecf059367d70ac"
+    },
+    "procedure": "Compare original and C# in each row, especially early/large entry, full flash, release and the 24-pixel tail. Controlled backgrounds explain inherited scene pixels; 2/213 are zero-coverage checks."
+  },
+  "limits": [
+    "Selected integer/top-left coverage matches these anchors, not arbitrary geometry or every original animation frame.",
+    "Birth, phase transition, final body/exit yield, exact task clear and parent observation scanouts remain unbound.",
+    "Frontend budgets are execution bounds, not original loading, input or display durations.",
+    "Inherited scene pixels do not validate C# map rendering. No new GPU or hardware comparison.",
+    "Prepared hold108 is authored alignment. Original event playback, EventEnd/player ownership and combined startup remain unsupported by this comparison."
+  ]
+}

@@ -1818,7 +1818,7 @@ pixel/timing equivalence remains open. This approval update reruns no implementa
 
 ### ZOD-095 — Bind original dark-screen entry and release references
 
-**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-094
+**Type:** Spike · **Priority:** P2 · **Status:** Awaiting owner visual review · **Depends on:** ZOD-094
 
 **Scope:** Plan finite source-bound original entry/release observations and compare
 the selected prepared flat-quad output. Establish any prerequisite retained state
@@ -1836,6 +1836,40 @@ startup from frontend budgets. Keep original assets/states/media under scratch,
 record metadata-only evidence, automated regression scope and separate owner
 visual review. If a reference is missing, record the prerequisite rather than
 claiming original pixel equivalence.
+
+**Result (2026-10-25):** Thirteen source-bound entry/hold/release scanouts match
+actual prepared C# at zero tolerance. Eleven have visible coverage, including the
+24-pixel tail; two bind zero-coverage states. Material-only controls retain all
+geometry and require exact CPU, other subsystem and GPU-register equality, with
+RAM changes confined to selected RGB/E1 bytes. Earlier degenerate controls remain
+rejected; the final policy has no CPU exception. Both final runs repeat 118
+artifacts. Locked restores, zero-warning Release builds, 2,031 .NET / 255 Python
+tests pass (15 new Python checks); nine actual host negatives preserve output.
+Selected edge/overlap coverage agrees; full animation/endpoints, original duration,
+map/hardware and combined startup remain open. Review
+`scratch/dark-screen-095-f/review.html` separately; approval is pending.
+[Guide](development/original-dark-screen-comparison.md),
+[metadata](evidence/events/original-dark-screen-v1.json).
+
+### ZOD-096 — Specify the combined dark-screen introduction
+
+**Type:** Design task · **Priority:** P2 · **Status:** Waiting for ZOD-095 review · **Depends on:** ZOD-095, ZOD-091
+
+**Scope:** Select the bounded authored composition of entering/held DarkScreen,
+general banner, Ready, release/barrier and the existing battle ownership handoff.
+Trace source ordering and define the shared-clock/ledger/readiness/presentation
+contract before adding an integration profile. Preserve standalone APIs and
+existing editable C# rules; avoid a general scene-engine refactor.
+
+**Acceptance criteria:** Freshly pin source and record the selected event-4/401
+command and draw/task order, distinguishing source behavior from authored loading
+and hold choices. Define admission/preload failure, newborn behavior, event-before-
+worker polling, cross-worker release, barriers, task lifetime, Circle ownership,
+full rollback/budgets, render layering and event-exit battle/input gates. Specify
+closed prepared-profile boundaries and any narrowly required refactor. Record
+independently checkable automated cases and a finite native/owner-review plan;
+leave future implementation cases explicitly unexecuted. Do not claim original
+startup duration, missing DarkScreen endpoints or complete original event playback.
 
 ## Authoring, extensions, and later goals
 
