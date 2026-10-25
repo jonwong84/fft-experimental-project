@@ -35,11 +35,17 @@ def snapshot(state, definition):
 
 def context(core, ram, observation, *, first_vsync_wait=False):
     """Closed pre-submission VSync context; not a general GPU/frame classifier."""
-    cpu, gpu = p.subsystem_records(core, b'CPU'), p.gpu_records(core)
+    cpu = p.subsystem_records(core, b'CPU')
     v.require(len(cpu.get('GPR', b'')) == 128 and len(cpu.get('BACKED_PC', b'')) == 4, 'Missing CPU registers')
     registers = struct.unpack('<32I', cpu['GPR']); pc = int.from_bytes(cpu['BACKED_PC'], 'little'); sp = registers[29]
     vsync_return = 0x8001dc40 if first_vsync_wait else 0x8001dc64
     v.require(0x8001dcf0 <= pc < 0x8001dd8c and registers[31] == vsync_return, 'CPU is not in the selected VSync wait')
+    return _frame_context(core, ram, observation, pc, sp, vsync_return)
+
+
+def _frame_context(core, ram, observation, pc, sp, vsync_return):
+    """Shared stack/environment checks, after a caller proves live or saved CPU context."""
+    gpu = p.gpu_records(core)
     v.require(0x801f0000 <= sp and sp + 0x5c <= 0x80200000 and sp % 4 == 0, 'Unexpected main-stack frame')
     v.require([trace.word(ram, sp + x) for x in (0x18, 0x38, 0x58)] == [vsync_return, 0x80093b68, 0x8007a058],
               'VSync/frame-submit/entry return chain differs')

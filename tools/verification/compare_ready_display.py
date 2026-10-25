@@ -129,6 +129,15 @@ def packets(ram, task, glyphs):
 
 
 def snapshot(state, study, definition, indices, palette, archive, *, probe=False):
+    core, ram, task, identity = snapshot_parts(state, study, definition, indices, palette, archive, probe=probe)
+    cpu = p.subsystem_records(core, b'CPU'); ra = struct.unpack('<32I', cpu['GPR'])[31]
+    context = h.context(core, ram, task, first_vsync_wait=ra == 0x8001dc40)
+    context.update(event=identity, epoch=study['observations'][0]['state']['sha256'])
+    return context
+
+
+def snapshot_parts(state, study, definition, indices, palette, archive, *, probe=False):
+    """Verify common Ready identity/assets/queued work; this alone never binds a displayed frame."""
     ram, lengths = event.read_ram(state); core = p.unpack_state(state)
     for address, size, digest in h.CODE + EXTRA_CODE:
         at = address & 0x1fffffff
@@ -147,10 +156,7 @@ def snapshot(state, study, definition, indices, palette, archive, *, probe=False
     for key in ('tww', 'twh', 'twx', 'twy', 'MaskSetOR', 'MaskEvalAND', 'TexDisable'):
         v.require(not any(gpu[key]), 'Unsupported Ready GPU state: ' + key)
     task.update(packets(ram, task, definition['glyphs']))
-    cpu = p.subsystem_records(core, b'CPU'); ra = struct.unpack('<32I', cpu['GPR'])[31]
-    context = h.context(core, ram, task, first_vsync_wait=ra == 0x8001dc40)
-    context.update(event=identity, epoch=study['observations'][0]['state']['sha256'])
-    return context
+    return core, ram, task, identity
 
 
 def bind(current, queued):

@@ -25,22 +25,23 @@ internal static class ReadySequence
         if (names.Length != names.Distinct().Count() || !names.ToHashSet().SetEquals(expected.Split(' ')))
             throw new InvalidDataException("Unexpected or duplicate fields.");
     }
-    internal static int Run(string artworkRoot, string planPath, string destination)
+    internal static int Run(string artworkRoot, string planPath, string destination, bool birth = false)
     {
+        int[] ticks = birth ? [0, 1] : Ticks;
         string output = Scratch(destination), plan = Scratch(planPath);
         if (Directory.Exists(output) || File.Exists(output)) throw new IOException("Output exists.");
         if (new FileInfo(plan).Length > 65536) throw new InvalidDataException("Plan too large.");
         using var doc = JsonDocument.Parse(File.ReadAllBytes(plan), new JsonDocumentOptions { MaxDepth = 8 });
         var root = doc.RootElement;
         Fields(root, "format schemaVersion eventRoot checkpoints");
-        if (root.GetProperty("format").GetString() != "fft.ready-backgrounds" || root.GetProperty("schemaVersion").GetInt32() != 1 ||
-            root.GetProperty("checkpoints").GetArrayLength() != Ticks.Length) throw new InvalidDataException("Invalid Ready plan.");
+        if (root.GetProperty("format").GetString() != (birth ? "fft.ready-birth-backgrounds" : "fft.ready-backgrounds") || root.GetProperty("schemaVersion").GetInt32() != 1 ||
+            root.GetProperty("checkpoints").GetArrayLength() != ticks.Length) throw new InvalidDataException("Invalid Ready plan.");
         var inputs = new List<(int Tick, byte[] Background)>();
         foreach (var item in root.GetProperty("checkpoints").EnumerateArray())
         {
             Fields(item, "logicalTick backgroundPath backgroundSha256");
             int tick = item.GetProperty("logicalTick").GetInt32();
-            if (tick != Ticks[inputs.Count]) throw new InvalidDataException("Wrong Ready anchors.");
+            if (tick != ticks[inputs.Count]) throw new InvalidDataException("Wrong Ready anchors.");
             string path = Scratch(item.GetProperty("backgroundPath").GetString()!);
             if (new FileInfo(path).Length != 256 * 240 * 4) throw new InvalidDataException("Invalid background size.");
             byte[] bytes = File.ReadAllBytes(path);
@@ -81,7 +82,7 @@ internal static class ReadySequence
             renderer = "ReadyPresentation.ComposeOver", artworkSource = session.Artwork.Definition.Source,
             originalComparison = "pending", gpuReadbackPerformed = false, checkpoints = frames
         }, new JsonSerializerOptions { WriteIndented = true }) + "\n");
-        Console.WriteLine("Six accepted Ready snapshots composed over explicit backgrounds.");
+        Console.WriteLine($"{ticks.Length} accepted Ready snapshots composed over explicit backgrounds.");
         return 0;
     }
 }

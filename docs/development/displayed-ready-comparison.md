@@ -139,3 +139,12 @@ rendering policy, event schema or simulation behavior changes in this ticket.
 Five actual C# host checks also reject a bad last-background hash, wrong last
 tick, duplicate field, nonopaque background and existing output directory while
 preserving existing files and creating no partial result.
+
+### ZOD-088 follow-up (2026-10-25)
+
+The later [birth comparison](ready-birth-comparison.md) identifies the missing
+endpoints as BIOS timer-2 sound callbacks and verifies their saved main VSync
+context through actual exception save/restore code. The birth/next scanouts now
+match actual prepared C# exactly in a separate gallery awaiting owner review.
+The earlier missing-observation record above is historical; the old main-context
+classifier remains closed, and original duration/full event playback stays open.

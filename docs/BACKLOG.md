@@ -1599,7 +1599,18 @@ historical evidence and legacy/general behavior.
 
 ### ZOD-088 — Bind displayed Ready birth frames through interrupted checkpoints
 
-**Type:** Source/validation task · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-087
+**Type:** Source/validation task · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-087
+
+**Result (2026-10-25):** The two endpoints are BIOS timer-2 sound callbacks with
+verified active exception save/restore records. Saved main VSync context binds
+displayed ticks 0/1 (scales 48/56); actual prepared C# matches both original
+scanouts exactly, including 1,202 opaque / 77 STP samples per frame. Two finite
+runs repeat 32 content artifacts and the retained original states. Old main classification remains closed;
+all 16 earlier Ready snapshots and seven C# artifacts are preserved. Locked
+restores, zero-warning builds, 1,794 .NET / 192 Python tests pass.
+[Source/comparison record](development/ready-birth-comparison.md),
+[metadata evidence](evidence/visual/ready-birth-v1.json). New gallery owner review
+is pending. No runtime, timing, hardware, audio or full event playback claim.
 
 **Scope:** Trace the retained birth/next-frame interrupt endpoints before deciding
 whether their original display/submission context can be validated. Reuse the

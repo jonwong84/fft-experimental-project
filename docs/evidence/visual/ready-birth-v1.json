@@ -1,0 +1,1631 @@
+{
+  "format": "fft.ready-birth-validation",
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "managedBase": "4ec5ef00f03efe16ba7a27365f85fe3b31c3ed5f",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referencePathsClean": true,
+  "policy": "ready-glyph-rgb5-v1",
+  "sourcePaths": [
+    "src/lib/suzuki/driver.c",
+    "src/lib/suzuki/tick.c",
+    "src/lib/suzuki/smd_interpreter.c",
+    "src/platform/psyq/libgte/_patch_gte.c",
+    "src/platform/psyq/libcard/_patch_card.c",
+    "src/platform/psyq/libapi/ReturnFromException.c",
+    "src/platform/psyq/libetc/v_wait.c",
+    "src/platform/psyq/libetc/VSync.c",
+    "src/battle/frame.c",
+    "src/battle/entry.c",
+    "target/main.yaml"
+  ],
+  "originalInputs": [
+    {
+      "localPath": "scratch/retroarch-reference-033-b/system/scph5501.bin",
+      "bytes": 524288,
+      "sha256": "11052b6499e466bbf0a709b1f9cb6834a9418e66680387912451e971cf8a1fef"
+    },
+    {
+      "localPath": "scratch/all-data-extraction/SCUS_942.21",
+      "bytes": 356352,
+      "sha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562"
+    },
+    {
+      "localPath": "scratch/retroarch-reference-033-b/profile.json",
+      "bytes": 1975,
+      "sha256": "343d79415a14794c8a457f7a6463f6a70907ad3843908a5026fba9e9dc8380a3"
+    },
+    {
+      "localPath": "scratch/all-data-extraction/EVENT/REQUIRE.OUT",
+      "bytes": 127684,
+      "sha256": "97112c50c0b037b2cb5c9d93ae9e2a7506b582c5edbd86a1debfb7ab8e777630"
+    },
+    {
+      "localPath": "scratch/all-data-extraction/EVENT/BONUS.BIN",
+      "bytes": 958464,
+      "sha256": "c5d881b1fb62c04d1d7f0e5238faff4131676165c08e35b5cadb68b21c89165f"
+    },
+    {
+      "localPath": "scratch/all-data-extraction/EVENT/TEST.EVT",
+      "bytes": 4096000,
+      "sha256": "107b109254ccbb150aca7baf336b632837b22e340677e2b9e746ac61b3de4405"
+    }
+  ],
+  "preparedInputs": [
+    {
+      "localPath": "scratch/ready-086-artwork-a/artwork.json",
+      "bytes": 3912,
+      "sha256": "4099de6a8317bfe29054e70e585b3466b24df05b90d0365804e0f16c13f5a7dd"
+    },
+    {
+      "localPath": "scratch/ready-086-artwork-a/indices.bin",
+      "bytes": 51200,
+      "sha256": "515778839288e154c76e51db57a44e82c63a8e27c079bf3a1803136e389191dd"
+    },
+    {
+      "localPath": "scratch/ready-086-artwork-a/palette-2.bin",
+      "bytes": 32,
+      "sha256": "06ab76ecb265e6f4a40d0abf00812d2ac0f2817c4d20c80b69a502c2978b3256"
+    },
+    {
+      "localPath": "scratch/ready-086-artwork-a/assets.manifest.json",
+      "bytes": 682,
+      "sha256": "251b40e4bff16bc9876d35539a9527ad28ffb9433e856da1ac3e8b51b28460a0"
+    }
+  ],
+  "kernelRanges": [
+    {
+      "ramAddress": 128,
+      "bytes": 16,
+      "sha256": "a9c217338111a9e42bb0298255fb4ca24063e5d21b674e8567755922cf7b8405",
+      "verifiedBiosOffset": 68108
+    },
+    {
+      "ramAddress": 3200,
+      "bytes": 128,
+      "sha256": "77d15e7ce94250a7a24671234aa6205078203370af718e2e398ceaa3fe63dacd",
+      "verifiedBiosOffset": null
+    },
+    {
+      "ramAddress": 3376,
+      "bytes": 444,
+      "sha256": "17dd2fa8ffccc9d238daef52c92fdf770ccbeb62a3bbef28cff40d17be00f7ed",
+      "verifiedBiosOffset": 67632
+    },
+    {
+      "ramAddress": 3904,
+      "bytes": 216,
+      "sha256": "a784ec1182ab7eb4dcfb23ed8d1c15073454966ba455ec1f61300649f6fe87e9",
+      "verifiedBiosOffset": 68160
+    },
+    {
+      "ramAddress": 6960,
+      "bytes": 312,
+      "sha256": "badba3f1d6b70ad9020ce389d9563d82a74e5479c1af47473a77e718999192e2",
+      "verifiedBiosOffset": 71216
+    },
+    {
+      "ramAddress": 1504,
+      "bytes": 32,
+      "sha256": "7b2d3e0f812e51bdc09074f25e3bc3103f24932fef6d5190833b7e6893ff9ffb",
+      "verifiedBiosOffset": 65760
+    },
+    {
+      "ramAddress": 25628,
+      "bytes": 56,
+      "sha256": "2c2495331ec51c7a0fe18ed57fb9e4507ba9cc9366a7ce6955ae7edf40b1daf1",
+      "verifiedBiosOffset": null
+    },
+    {
+      "ramAddress": 26004,
+      "bytes": 8,
+      "sha256": "6d64edf91449c1b17746c1ef18afa2eb25c70bdf1322ab3df5a2630993b7e2f1",
+      "verifiedBiosOffset": 90260
+    }
+  ],
+  "soundRanges": [
+    {
+      "address": 2147566992,
+      "bytes": 648,
+      "sha256": "8c3ed88a730f8d9d1ef11b426515f5f5feb8df4f88734506041928afa050adbc"
+    },
+    {
+      "address": 2147568092,
+      "bytes": 1340,
+      "sha256": "47914f50ab68d8bfc34d528974f89b03fa394c9c6caef58ec5e09c52d65a3302"
+    },
+    {
+      "address": 2147570468,
+      "bytes": 1344,
+      "sha256": "8eb6628213d126e4886a89e6ac83ebf6ade55cbe13697d44b2838b98a6d5c924"
+    }
+  ],
+  "exeLoadAddress": 2147549184,
+  "exePayloadOffset": 2048,
+  "patchTemplates": [
+    {
+      "ramAddress": 3200,
+      "exeAddress": 2147605200,
+      "bytes": 56
+    },
+    {
+      "ramAddress": 25668,
+      "exeAddress": 2147649732,
+      "bytes": 20
+    }
+  ],
+  "exceptionSave": {
+    "pcbPointerAddress": 264,
+    "pcb": 2684412564,
+    "tcb": 2684412572,
+    "registerRecord": 2684412580,
+    "spOffset": 116,
+    "raOffset": 124,
+    "pcOffset": 128,
+    "statusOffset": 140,
+    "causeOffset": 144,
+    "restoreService": "BIOS B(17)",
+    "restoreAddress": 3904,
+    "cardGateDisabled": true,
+    "arbitraryInterruptUnwinding": false
+  },
+  "retainedInterruptedInputs": [
+    {
+      "state": {
+        "localPath": "scratch/ready-displayed-087-preflight-a/original-006/states/fft-clean-base-game.state.auto",
+        "bytes": 1495878,
+        "sha256": "a87ce9b77b58847bd096b582d79ed356046a50a4f8499f9bcc63a9a89349c9dc"
+      },
+      "context": {
+        "frameCounter": 9005,
+        "polarity": 0,
+        "cpuPc": 2147605788,
+        "cpuSp": 2149580608,
+        "returnAddresses": [
+          2147605604,
+          2148088680,
+          2147983448
+        ],
+        "frontOrigin": [
+          0,
+          0
+        ],
+        "backOrigin": [
+          0,
+          240
+        ],
+        "pendingDrawOrigin": [
+          0,
+          0
+        ],
+        "pendingDisplayOrigin": [
+          0,
+          240
+        ],
+        "task": {
+          "logicalTick": 2,
+          "phase": "FadeIn",
+          "scale": 64,
+          "childPc": 2149360704,
+          "childSlot": 4,
+          "dispatcherSlot": 3,
+          "bank": 1,
+          "draws": [
+            {
+              "glyphIndex": 5,
+              "scale": 64,
+              "bank": 1,
+              "address": 315372,
+              "mode": [
+                1929696,
+                3774873606,
+                3791650816
+              ]
+            },
+            {
+              "glyphIndex": 4,
+              "scale": 64,
+              "bank": 1,
+              "address": 315320,
+              "mode": [
+                1929696,
+                3774873606,
+                3791650816
+              ]
+            },
+            {
+              "glyphIndex": 3,
+              "scale": 64,
+              "bank": 1,
+              "address": 315268,
+              "mode": [
+                1929696,
+                3774873606,
+                3791650816
+              ]
+            },
+            {
+              "glyphIndex": 2,
+              "scale": 64,
+              "bank": 1,
+              "address": 315216,
+              "mode": [
+                1929696,
+                3774873606,
+                3791650816
+              ]
+            },
+            {
+              "glyphIndex": 1,
+              "scale": 64,
+              "bank": 1,
+              "address": 315164,
+              "mode": [
+                1929696,
+                3774873606,
+                3791650816
+              ]
+            },
+            {
+              "glyphIndex": 0,
+              "scale": 64,
+              "bank": 1,
+              "address": 315112,
+              "mode": [
+                1929696,
+                3774873606,
+                3791650816
+              ]
+            }
+          ],
+          "dmaNodes": 757,
+          "otag": 2147840280,
+          "renderBuffer": 2148578180
+        },
+        "cpuContextSource": "BIOS TCB resume registers; live CPU remains in the timer-2 callback",
+        "interrupt": {
+          "livePc": 2147567152,
+          "liveSp": 34040,
+          "liveReturn": 2147568120,
+          "cp0Status": 1073873924,
+          "cp0Cause": 1024,
+          "cp0Epc": 2147605788,
+          "pcb": 2684412564,
+          "tcb": 2684412572,
+          "savedRegisters": 2684412580,
+          "resumePc": 2147605788,
+          "resumeSp": 2149580608,
+          "resumeReturn": 2147605604,
+          "eventClass": 4060086274,
+          "eventSlot": 9,
+          "eventHandler": 2147568092,
+          "method": "Pinned BIOS exception save + B(17) restore, active timer-2 event and callback stack; no search or state patch"
+        },
+        "event": {
+          "eventId": 4,
+          "commandOffset": 810,
+          "waitOffset": 813,
+          "uniqueArchiveMatch": [
+            4
+          ],
+          "rawBlockSha256": "528875cb3cde1eb84c709f8b2de9afb41478041710b134a0ede075ae34d1bef7",
+          "processedBlockSha256": "0081b2e28473d913c7fdbb7da15a44a157b2d22111cde255efc73ab8fa8a8034"
+        },
+        "epoch": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+      }
+    },
+    {
+      "state": {
+        "localPath": "scratch/ready-087-selection-c/frames-008/states/fft-clean-base-game.state.auto",
+        "bytes": 1495894,
+        "sha256": "98727bdb12135bb47b5f9cbb3223181aec923f9b71baddb975d5e504b83c6bdd"
+      },
+      "context": {
+        "frameCounter": 9006,
+        "polarity": 1,
+        "cpuPc": 2147605784,
+        "cpuSp": 2149580608,
+        "returnAddresses": [
+          2147605604,
+          2148088680,
+          2147983448
+        ],
+        "frontOrigin": [
+          0,
+          240
+        ],
+        "backOrigin": [
+          0,
+          0
+        ],
+        "pendingDrawOrigin": [
+          0,
+          240
+        ],
+        "pendingDisplayOrigin": [
+          0,
+          0
+        ],
+        "task": {
+          "logicalTick": 3,
+          "phase": "FadeIn",
+          "scale": 72,
+          "childPc": 2149360704,
+          "childSlot": 4,
+          "dispatcherSlot": 3,
+          "bank": 0,
+          "draws": [
+            {
+              "glyphIndex": 5,
+              "scale": 72,
+              "bank": 0,
+              "address": 313292,
+              "mode": [
+                1929684,
+                3774873606,
+                3791650816
+              ]
+            },
+            {
+              "glyphIndex": 4,
+              "scale": 72,
+              "bank": 0,
+              "address": 313240,
+              "mode": [
+                1929684,
+                3774873606,
+                3791650816
+              ]
+            },
+            {
+              "glyphIndex": 3,
+              "scale": 72,
+              "bank": 0,
+              "address": 313188,
+              "mode": [
+                1929684,
+                3774873606,
+                3791650816
+              ]
+            },
+            {
+              "glyphIndex": 2,
+              "scale": 72,
+              "bank": 0,
+              "address": 313136,
+              "mode": [
+                1929684,
+                3774873606,
+                3791650816
+              ]
+            },
+            {
+              "glyphIndex": 1,
+              "scale": 72,
+              "bank": 0,
+              "address": 313084,
+              "mode": [
+                1929684,
+                3774873606,
+                3791650816
+              ]
+            },
+            {
+              "glyphIndex": 0,
+              "scale": 72,
+              "bank": 0,
+              "address": 313032,
+              "mode": [
+                1929684,
+                3774873606,
+                3791650816
+              ]
+            }
+          ],
+          "dmaNodes": 757,
+          "otag": 2147838744,
+          "renderBuffer": 2148517212
+        },
+        "cpuContextSource": "BIOS TCB resume registers; live CPU remains in the timer-2 callback",
+        "interrupt": {
+          "livePc": 2147570544,
+          "liveSp": 34064,
+          "liveReturn": 2147568976,
+          "cp0Status": 1073873924,
+          "cp0Cause": 805307392,
+          "cp0Epc": 2147605784,
+          "pcb": 2684412564,
+          "tcb": 2684412572,
+          "savedRegisters": 2684412580,
+          "resumePc": 2147605784,
+          "resumeSp": 2149580608,
+          "resumeReturn": 2147605604,
+          "eventClass": 4060086274,
+          "eventSlot": 9,
+          "eventHandler": 2147568092,
+          "method": "Pinned BIOS exception save + B(17) restore, active timer-2 event and callback stack; no search or state patch"
+        },
+        "event": {
+          "eventId": 4,
+          "commandOffset": 810,
+          "waitOffset": 813,
+          "uniqueArchiveMatch": [
+            4
+          ],
+          "rawBlockSha256": "528875cb3cde1eb84c709f8b2de9afb41478041710b134a0ede075ae34d1bef7",
+          "processedBlockSha256": "0081b2e28473d913c7fdbb7da15a44a157b2d22111cde255efc73ab8fa8a8034"
+        },
+        "epoch": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+      }
+    }
+  ],
+  "retainedOriginalStatesRepeat": true,
+  "originalBudgets": [
+    4,
+    6,
+    8
+  ],
+  "probeBudgets": [
+    6,
+    8
+  ],
+  "newEmulatorCaptures": true,
+  "controllersDisconnected": true,
+  "muted": true,
+  "sourceStatesPreserved": true,
+  "normalConfigsUnchanged": true,
+  "referenceUnmodified": true,
+  "plans": [
+    {
+      "localPath": "scratch/ready-birth-088-a/plan.json",
+      "bytes": 14173,
+      "sha256": "ca29e418d1100ff1421952cba4d94859995077972be8793b8de1074d6e697957"
+    },
+    {
+      "localPath": "scratch/ready-birth-088-b/plan.json",
+      "bytes": 14173,
+      "sha256": "ca29e418d1100ff1421952cba4d94859995077972be8793b8de1074d6e697957"
+    }
+  ],
+  "reports": [
+    {
+      "localPath": "scratch/ready-birth-088-a/report.json",
+      "bytes": 58097,
+      "sha256": "baf18e1da50abfec0652657e07532de767e6a6c319520869e32c2e17afef2aba"
+    },
+    {
+      "localPath": "scratch/ready-birth-088-b/report.json",
+      "bytes": 58097,
+      "sha256": "fca5aa8df2e3ae652956d8527eaacd32331065364b92734e8d447ac6bda21622"
+    }
+  ],
+  "repeatedContent": {
+    "exact": true,
+    "artifactCount": 32,
+    "artifacts": [
+      {
+        "relativePath": "000-background.png",
+        "bytes": 36224,
+        "sha256": "41565483920d2c4aca49c3533562e46352c58264019275d6f71e96804a5b724a"
+      },
+      {
+        "relativePath": "000-csharp.png",
+        "bytes": 37271,
+        "sha256": "93dc44d47a99c0aa0c5421002d1ad87437b6525c2d59ba7ea6d5b51639144bd9"
+      },
+      {
+        "relativePath": "000-original.png",
+        "bytes": 37271,
+        "sha256": "93dc44d47a99c0aa0c5421002d1ad87437b6525c2d59ba7ea6d5b51639144bd9"
+      },
+      {
+        "relativePath": "001-background.png",
+        "bytes": 36442,
+        "sha256": "801ef95f766e00bc2a25e83c8471f6e731ad37b307285f03ce71c36dba54a75e"
+      },
+      {
+        "relativePath": "001-csharp.png",
+        "bytes": 37461,
+        "sha256": "6fc6e08732d30ab823fbe56240f9095373f6c42779a895a94e1b79148de9d610"
+      },
+      {
+        "relativePath": "001-original.png",
+        "bytes": 37461,
+        "sha256": "6fc6e08732d30ab823fbe56240f9095373f6c42779a895a94e1b79148de9d610"
+      },
+      {
+        "relativePath": "background-000.rgba",
+        "bytes": 245760,
+        "sha256": "9ae02dbd3eb45088588bd36dd3eae90a5a56cbb212f1a91724eb640ac69a0fa3"
+      },
+      {
+        "relativePath": "background-001.rgba",
+        "bytes": 245760,
+        "sha256": "06d1dea08f714e3a40b0a18bdf8be073ec26adf2ecfb8c1d3ca0ab73df12e54a"
+      },
+      {
+        "relativePath": "probe.state",
+        "bytes": 1492922,
+        "sha256": "9a13284eb2ed3cbd0a40252e28f8dad4426f5208b1e72020383529ce5205ff98"
+      },
+      {
+        "relativePath": "native/check.json",
+        "bytes": 6840,
+        "sha256": "137950a5dc7d8e02eab9bc06d5cadfc686f9ae77252f714b54d19780c82999e1"
+      },
+      {
+        "relativePath": "native/tick-000.rgba",
+        "bytes": 245760,
+        "sha256": "4593c10c01a253ea689bada5ec35045db95987045bd2edc1738acf631e0071f2"
+      },
+      {
+        "relativePath": "native/tick-001.rgba",
+        "bytes": 245760,
+        "sha256": "464004830de5c1ea3bfdc36ac869c615dc6c870a3358f3d4490c4b2df1d01f93"
+      },
+      {
+        "relativePath": "original-004/frame.png",
+        "bytes": 38863,
+        "sha256": "3e54127bb4c2d8753868343a8f74f6d17754b267f14c426b40175eb3cc70fd2e"
+      },
+      {
+        "relativePath": "original-006/frame.png",
+        "bytes": 39062,
+        "sha256": "9088d0fe6c6484d28fa1a933073f8658fac29ac7950cc2282c4cca776e33400c"
+      },
+      {
+        "relativePath": "original-008/frame.png",
+        "bytes": 39608,
+        "sha256": "608ce2732a9ea232ed6b82bfff460780e158dc568da5cda8ec3719e045500ee1"
+      },
+      {
+        "relativePath": "probe-006/frame.png",
+        "bytes": 38551,
+        "sha256": "44b5488deb07fb14275b6b88211bb57fed94f87fd12b7f9c20303e0929ff758c"
+      },
+      {
+        "relativePath": "probe-008/frame.png",
+        "bytes": 39112,
+        "sha256": "f85087b1f29161dc5a9b39bb10f7fc846b1b6fba49a44288824bbc856b149500"
+      },
+      {
+        "relativePath": "original-004/states/fft-clean-base-game.state",
+        "bytes": 1492949,
+        "sha256": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+      },
+      {
+        "relativePath": "original-004/states/fft-clean-base-game.state.auto",
+        "bytes": 1494423,
+        "sha256": "58e59cfcdf33128955fdecc26bbf2d926287f3d6e9d2883c315a408f52b105a5"
+      },
+      {
+        "relativePath": "original-004/states/fft-clean-base-game.state.auto.png",
+        "bytes": 38863,
+        "sha256": "3e54127bb4c2d8753868343a8f74f6d17754b267f14c426b40175eb3cc70fd2e"
+      },
+      {
+        "relativePath": "original-006/states/fft-clean-base-game.state",
+        "bytes": 1492949,
+        "sha256": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+      },
+      {
+        "relativePath": "original-006/states/fft-clean-base-game.state.auto",
+        "bytes": 1495878,
+        "sha256": "a87ce9b77b58847bd096b582d79ed356046a50a4f8499f9bcc63a9a89349c9dc"
+      },
+      {
+        "relativePath": "original-006/states/fft-clean-base-game.state.auto.png",
+        "bytes": 39062,
+        "sha256": "9088d0fe6c6484d28fa1a933073f8658fac29ac7950cc2282c4cca776e33400c"
+      },
+      {
+        "relativePath": "original-008/states/fft-clean-base-game.state",
+        "bytes": 1492949,
+        "sha256": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+      },
+      {
+        "relativePath": "original-008/states/fft-clean-base-game.state.auto",
+        "bytes": 1495894,
+        "sha256": "98727bdb12135bb47b5f9cbb3223181aec923f9b71baddb975d5e504b83c6bdd"
+      },
+      {
+        "relativePath": "original-008/states/fft-clean-base-game.state.auto.png",
+        "bytes": 39608,
+        "sha256": "608ce2732a9ea232ed6b82bfff460780e158dc568da5cda8ec3719e045500ee1"
+      },
+      {
+        "relativePath": "probe-006/states/fft-clean-base-game.state",
+        "bytes": 1492922,
+        "sha256": "9a13284eb2ed3cbd0a40252e28f8dad4426f5208b1e72020383529ce5205ff98"
+      },
+      {
+        "relativePath": "probe-006/states/fft-clean-base-game.state.auto",
+        "bytes": 1493537,
+        "sha256": "f6737499301281d316c7ff102635f232bb6d93e69831588379e4c31d9c7a9069"
+      },
+      {
+        "relativePath": "probe-006/states/fft-clean-base-game.state.auto.png",
+        "bytes": 38551,
+        "sha256": "44b5488deb07fb14275b6b88211bb57fed94f87fd12b7f9c20303e0929ff758c"
+      },
+      {
+        "relativePath": "probe-008/states/fft-clean-base-game.state",
+        "bytes": 1492922,
+        "sha256": "9a13284eb2ed3cbd0a40252e28f8dad4426f5208b1e72020383529ce5205ff98"
+      },
+      {
+        "relativePath": "probe-008/states/fft-clean-base-game.state.auto",
+        "bytes": 1493501,
+        "sha256": "3a4475a70a34e0dcfd2e7a3689195ba9ace5e0a19f85d9231997089e23fe9309"
+      },
+      {
+        "relativePath": "probe-008/states/fft-clean-base-game.state.auto.png",
+        "bytes": 39112,
+        "sha256": "f85087b1f29161dc5a9b39bb10f7fc846b1b6fba49a44288824bbc856b149500"
+      }
+    ],
+    "excluded": "Output-path-specific plans/configs/commands/logs/reports"
+  },
+  "checks": [
+    {
+      "displayedLogicalTick": 0,
+      "scale": 48,
+      "sourceFrame": 9003,
+      "displayedAtFrame": 9005,
+      "sourceFrameDistance": 2,
+      "interrupt": {
+        "livePc": 2147567152,
+        "liveSp": 34040,
+        "liveReturn": 2147568120,
+        "cp0Status": 1073873924,
+        "cp0Cause": 1024,
+        "cp0Epc": 2147605788,
+        "pcb": 2684412564,
+        "tcb": 2684412572,
+        "savedRegisters": 2684412580,
+        "resumePc": 2147605788,
+        "resumeSp": 2149580608,
+        "resumeReturn": 2147605604,
+        "eventClass": 4060086274,
+        "eventSlot": 9,
+        "eventHandler": 2147568092,
+        "method": "Pinned BIOS exception save + B(17) restore, active timer-2 event and callback stack; no search or state patch"
+      },
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "opaque": {
+          "compared": true,
+          "pixels": 1202,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            42,
+            98,
+            177,
+            24
+          ],
+          "sampleMaskSha256": "eff75a3bed1a573467696a7e7778040c7e7d5bc9e72afcfaa459fea6b16c9b18",
+          "exactEquality": true
+        },
+        "stp": {
+          "compared": true,
+          "pixels": 77,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            49,
+            98,
+            170,
+            24
+          ],
+          "sampleMaskSha256": "fa37b07f3ed1c5b1d934e9d662947adbc071e7b6f223447d341f5dc7ddd24e29",
+          "exactEquality": true
+        },
+        "transparent": {
+          "compared": true,
+          "pixels": 1049,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            42,
+            98,
+            182,
+            24
+          ],
+          "sampleMaskSha256": "6e10ad144287eeba2e257bb75a14a8bd6cbe147132baf8486406cc4d46d85bdf",
+          "exactEquality": true
+        },
+        "outsideProbeFootprint": {
+          "compared": true,
+          "pixels": 60161,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "65343002be74841050d144ebe4f1068c4a5235ef56038834100030b1090498d3",
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        }
+      },
+      "stpChangesBackground": {
+        "compared": true,
+        "pixels": 77,
+        "changedPixels": 77,
+        "minOriginalMinusManaged": [
+          16,
+          16,
+          8
+        ],
+        "maxOriginalMinusManaged": [
+          56,
+          48,
+          40
+        ],
+        "maxAbsoluteDelta": [
+          56,
+          48,
+          40
+        ],
+        "sumAbsoluteDelta": [
+          2120,
+          2056,
+          1784
+        ],
+        "bounds": [
+          49,
+          98,
+          170,
+          24
+        ],
+        "sampleMaskSha256": "fa37b07f3ed1c5b1d934e9d662947adbc071e7b6f223447d341f5dc7ddd24e29",
+        "exactEquality": false
+      },
+      "stateIsolation": {
+        "nonGpuSubsystemsUnchanged": true,
+        "nonGpuSubsystems": {
+          "MAIN": true,
+          "CPU": true,
+          "GTE": true,
+          "DMA": true,
+          "TIMER": true,
+          "SIO": true,
+          "CDC": true,
+          "MDEC": true,
+          "SPU": true,
+          "FIO": true,
+          "FIODEV2": true,
+          "FIODEV3": true,
+          "FIODEV4": true,
+          "FIODEV5": true,
+          "FIODEV6": true,
+          "FIODEV7": true,
+          "FIOMC0": true,
+          "FIOMC1": true,
+          "FIOMC2": true,
+          "FIOMC3": true,
+          "FIOMC4": true,
+          "FIOMC5": true,
+          "FIOMC6": true,
+          "FIOMC7": true,
+          "FIOTAP0": true,
+          "FIOTAP1": true,
+          "IRQ": true
+        },
+        "gpuRegistersUnchanged": true,
+        "mainRamSha256": "a041570c632609fda4d257c66ec4b76ad842adfc11a20a5ff7e322a64ce77f01",
+        "originalSubsystemSha256": {
+          "MAIN": "fcfbd8161f77adaaef2a023e913a3c965be34d333cf8fd91569f14b34a7b2f9e",
+          "CPU": "993f13b25ffee4a4d62e60c73f5ced0cdc75472207ec071a61ead94810808552",
+          "GTE": "7cf30d26000608b1ea545533af3ef13d3615366c6b20e95fabb876127d5de530",
+          "DMA": "ce7ec38a1785f552edfc785181ecdbe8623ab7cf6026cfa57bc03bcb85cade85",
+          "TIMER": "afa9e1da39342f7d6d76716e5df2af9d929d41a6794460952e2cad5beda581b8",
+          "SIO": "600e337e98a5c5be9a34fc6472001f8d97b51fb10e5a9f523c77f25e9e046e38",
+          "CDC": "95825a51bd8b9b1613d81518851cf94bce4932f47e4d34c7202894f1a4a36af8",
+          "MDEC": "d8c531a8bb05d5c491024011d3b9863bfb1bbbe86364bef7f639f4bb574cc429",
+          "GPU": "a5f10a712baf4ea53b0396f9897789072d15b4b4ab3c6bc106b852c6ae2a55f5",
+          "SPU": "c9e995075839bb94c4b01c44c3e39ac682950b004a23100ed5258ea7d8d8aeef",
+          "FIO": "b5480a584852a4e41ed3550e8b4f44aae9597c538f4c2139f821b9739a9c12f3",
+          "FIODEV2": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIODEV3": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIODEV4": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIODEV5": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIODEV6": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIODEV7": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIOMC0": "04c4112b36f19650b814c2a0ca6c2ec9fb73048286ead833412da5f92f1feee2",
+          "FIOMC1": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC2": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC3": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC4": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC5": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC6": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC7": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOTAP0": "7774df2236760f8f8176cca226eafc266f03e1dcd0f236fc79acc9f3a13f489f",
+          "FIOTAP1": "7774df2236760f8f8176cca226eafc266f03e1dcd0f236fc79acc9f3a13f489f",
+          "IRQ": "f7cbbf80331b4aa0f4af4ca0def6e54bab5033e67dcaf87534fa55f2bc9dd058"
+        },
+        "probeSubsystemSha256": {
+          "MAIN": "fcfbd8161f77adaaef2a023e913a3c965be34d333cf8fd91569f14b34a7b2f9e",
+          "CPU": "993f13b25ffee4a4d62e60c73f5ced0cdc75472207ec071a61ead94810808552",
+          "GTE": "7cf30d26000608b1ea545533af3ef13d3615366c6b20e95fabb876127d5de530",
+          "DMA": "ce7ec38a1785f552edfc785181ecdbe8623ab7cf6026cfa57bc03bcb85cade85",
+          "TIMER": "afa9e1da39342f7d6d76716e5df2af9d929d41a6794460952e2cad5beda581b8",
+          "SIO": "600e337e98a5c5be9a34fc6472001f8d97b51fb10e5a9f523c77f25e9e046e38",
+          "CDC": "95825a51bd8b9b1613d81518851cf94bce4932f47e4d34c7202894f1a4a36af8",
+          "MDEC": "d8c531a8bb05d5c491024011d3b9863bfb1bbbe86364bef7f639f4bb574cc429",
+          "GPU": "94fc72d06f5921238633ac56f1b46d93fa487d93d4e37b095d29d1a1b8ffb133",
+          "SPU": "c9e995075839bb94c4b01c44c3e39ac682950b004a23100ed5258ea7d8d8aeef",
+          "FIO": "b5480a584852a4e41ed3550e8b4f44aae9597c538f4c2139f821b9739a9c12f3",
+          "FIODEV2": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIODEV3": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIODEV4": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIODEV5": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIODEV6": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIODEV7": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIOMC0": "04c4112b36f19650b814c2a0ca6c2ec9fb73048286ead833412da5f92f1feee2",
+          "FIOMC1": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC2": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC3": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC4": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC5": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC6": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC7": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOTAP0": "7774df2236760f8f8176cca226eafc266f03e1dcd0f236fc79acc9f3a13f489f",
+          "FIOTAP1": "7774df2236760f8f8176cca226eafc266f03e1dcd0f236fc79acc9f3a13f489f",
+          "IRQ": "f7cbbf80331b4aa0f4af4ca0def6e54bab5033e67dcaf87534fa55f2bc9dd058"
+        }
+      },
+      "passed": true
+    },
+    {
+      "displayedLogicalTick": 1,
+      "scale": 56,
+      "sourceFrame": 9004,
+      "displayedAtFrame": 9006,
+      "sourceFrameDistance": 2,
+      "interrupt": {
+        "livePc": 2147570544,
+        "liveSp": 34064,
+        "liveReturn": 2147568976,
+        "cp0Status": 1073873924,
+        "cp0Cause": 805307392,
+        "cp0Epc": 2147605784,
+        "pcb": 2684412564,
+        "tcb": 2684412572,
+        "savedRegisters": 2684412580,
+        "resumePc": 2147605784,
+        "resumeSp": 2149580608,
+        "resumeReturn": 2147605604,
+        "eventClass": 4060086274,
+        "eventSlot": 9,
+        "eventHandler": 2147568092,
+        "method": "Pinned BIOS exception save + B(17) restore, active timer-2 event and callback stack; no search or state patch"
+      },
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "opaque": {
+          "compared": true,
+          "pixels": 1202,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            42,
+            98,
+            177,
+            24
+          ],
+          "sampleMaskSha256": "eff75a3bed1a573467696a7e7778040c7e7d5bc9e72afcfaa459fea6b16c9b18",
+          "exactEquality": true
+        },
+        "stp": {
+          "compared": true,
+          "pixels": 77,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            49,
+            98,
+            170,
+            24
+          ],
+          "sampleMaskSha256": "fa37b07f3ed1c5b1d934e9d662947adbc071e7b6f223447d341f5dc7ddd24e29",
+          "exactEquality": true
+        },
+        "transparent": {
+          "compared": true,
+          "pixels": 1049,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            42,
+            98,
+            182,
+            24
+          ],
+          "sampleMaskSha256": "6e10ad144287eeba2e257bb75a14a8bd6cbe147132baf8486406cc4d46d85bdf",
+          "exactEquality": true
+        },
+        "outsideProbeFootprint": {
+          "compared": true,
+          "pixels": 60161,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "65343002be74841050d144ebe4f1068c4a5235ef56038834100030b1090498d3",
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        }
+      },
+      "stpChangesBackground": {
+        "compared": true,
+        "pixels": 77,
+        "changedPixels": 77,
+        "minOriginalMinusManaged": [
+          16,
+          16,
+          8
+        ],
+        "maxOriginalMinusManaged": [
+          56,
+          48,
+          40
+        ],
+        "maxAbsoluteDelta": [
+          56,
+          48,
+          40
+        ],
+        "sumAbsoluteDelta": [
+          2120,
+          2056,
+          1784
+        ],
+        "bounds": [
+          49,
+          98,
+          170,
+          24
+        ],
+        "sampleMaskSha256": "fa37b07f3ed1c5b1d934e9d662947adbc071e7b6f223447d341f5dc7ddd24e29",
+        "exactEquality": false
+      },
+      "stateIsolation": {
+        "nonGpuSubsystemsUnchanged": true,
+        "nonGpuSubsystems": {
+          "MAIN": true,
+          "CPU": true,
+          "GTE": true,
+          "DMA": true,
+          "TIMER": true,
+          "SIO": true,
+          "CDC": true,
+          "MDEC": true,
+          "SPU": true,
+          "FIO": true,
+          "FIODEV2": true,
+          "FIODEV3": true,
+          "FIODEV4": true,
+          "FIODEV5": true,
+          "FIODEV6": true,
+          "FIODEV7": true,
+          "FIOMC0": true,
+          "FIOMC1": true,
+          "FIOMC2": true,
+          "FIOMC3": true,
+          "FIOMC4": true,
+          "FIOMC5": true,
+          "FIOMC6": true,
+          "FIOMC7": true,
+          "FIOTAP0": true,
+          "FIOTAP1": true,
+          "IRQ": true
+        },
+        "gpuRegistersUnchanged": true,
+        "mainRamSha256": "ad621e1a7f5da5566d74d2c3fbe36efcf67a88379e151ca9244359da49d3b0cc",
+        "originalSubsystemSha256": {
+          "MAIN": "b06fc6154312f7ba30e80a3ed544642fc98cf2a468d132f2f412c84471f7ea0e",
+          "CPU": "cf0dfd214426c4a85d1e552895d58e5b9f94a50abf87a6f47571386c78500ca8",
+          "GTE": "7cf30d26000608b1ea545533af3ef13d3615366c6b20e95fabb876127d5de530",
+          "DMA": "51022e93d0483498597f8135d3d72920eb435e16d7aeeede5b1ef6f70916b718",
+          "TIMER": "6ed7887ff10726031dc0e6015e5e32d09cec1791c388196f4a04a30eea54259a",
+          "SIO": "600e337e98a5c5be9a34fc6472001f8d97b51fb10e5a9f523c77f25e9e046e38",
+          "CDC": "c2a410f4bf9aa2b974aedcdf0fa07f18c7a1a83a3f07c434054a1b353b33861b",
+          "MDEC": "d8c531a8bb05d5c491024011d3b9863bfb1bbbe86364bef7f639f4bb574cc429",
+          "GPU": "f87ffd26f756ebe435ef031a8e8fc078d24409a85ed62357fdc6684588f9f121",
+          "SPU": "aee54e3514196c08dba303401bc647e3b09f9094aa72054ee6b21f3b652c9ca2",
+          "FIO": "b5480a584852a4e41ed3550e8b4f44aae9597c538f4c2139f821b9739a9c12f3",
+          "FIODEV2": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIODEV3": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIODEV4": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIODEV5": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIODEV6": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIODEV7": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIOMC0": "04c4112b36f19650b814c2a0ca6c2ec9fb73048286ead833412da5f92f1feee2",
+          "FIOMC1": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC2": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC3": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC4": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC5": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC6": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC7": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOTAP0": "7774df2236760f8f8176cca226eafc266f03e1dcd0f236fc79acc9f3a13f489f",
+          "FIOTAP1": "7774df2236760f8f8176cca226eafc266f03e1dcd0f236fc79acc9f3a13f489f",
+          "IRQ": "f7cbbf80331b4aa0f4af4ca0def6e54bab5033e67dcaf87534fa55f2bc9dd058"
+        },
+        "probeSubsystemSha256": {
+          "MAIN": "b06fc6154312f7ba30e80a3ed544642fc98cf2a468d132f2f412c84471f7ea0e",
+          "CPU": "cf0dfd214426c4a85d1e552895d58e5b9f94a50abf87a6f47571386c78500ca8",
+          "GTE": "7cf30d26000608b1ea545533af3ef13d3615366c6b20e95fabb876127d5de530",
+          "DMA": "51022e93d0483498597f8135d3d72920eb435e16d7aeeede5b1ef6f70916b718",
+          "TIMER": "6ed7887ff10726031dc0e6015e5e32d09cec1791c388196f4a04a30eea54259a",
+          "SIO": "600e337e98a5c5be9a34fc6472001f8d97b51fb10e5a9f523c77f25e9e046e38",
+          "CDC": "c2a410f4bf9aa2b974aedcdf0fa07f18c7a1a83a3f07c434054a1b353b33861b",
+          "MDEC": "d8c531a8bb05d5c491024011d3b9863bfb1bbbe86364bef7f639f4bb574cc429",
+          "GPU": "4ceb9a2f2a2323328e663b50e8ef008209af615e2fa8f65c9fcc075dfe2f5e91",
+          "SPU": "aee54e3514196c08dba303401bc647e3b09f9094aa72054ee6b21f3b652c9ca2",
+          "FIO": "b5480a584852a4e41ed3550e8b4f44aae9597c538f4c2139f821b9739a9c12f3",
+          "FIODEV2": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIODEV3": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIODEV4": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIODEV5": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIODEV6": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIODEV7": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+          "FIOMC0": "04c4112b36f19650b814c2a0ca6c2ec9fb73048286ead833412da5f92f1feee2",
+          "FIOMC1": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC2": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC3": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC4": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC5": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC6": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOMC7": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+          "FIOTAP0": "7774df2236760f8f8176cca226eafc266f03e1dcd0f236fc79acc9f3a13f489f",
+          "FIOTAP1": "7774df2236760f8f8176cca226eafc266f03e1dcd0f236fc79acc9f3a13f489f",
+          "IRQ": "f7cbbf80331b4aa0f4af4ca0def6e54bab5033e67dcaf87534fa55f2bc9dd058"
+        }
+      },
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "toleranceRgb": [
+    0,
+    0,
+    0
+  ],
+  "opaqueAlphaAndZeroPaddedRgb5Required": true,
+  "priorReadyChecks": {
+    "report": {
+      "localPath": "scratch/ready-088-legacy-and-negatives/report.json",
+      "bytes": 1017,
+      "sha256": "7e236e451e611603ab1a29ba6d23c2107c20b7377e56d868bbcef69f450cb521"
+    },
+    "oldReadySnapshotsRevalidated": 16,
+    "oldReadyNativeArtifactsUnchanged": 7,
+    "negativeCases": [
+      {
+        "case": "wrong-domain",
+        "exitCode": 2,
+        "outputPreserved": true,
+        "diagnostic": "Banner background check failed: Invalid Ready plan."
+      },
+      {
+        "case": "wrong-last-tick",
+        "exitCode": 2,
+        "outputPreserved": true,
+        "diagnostic": "Banner background check failed: Wrong Ready anchors."
+      },
+      {
+        "case": "wrong-last-digest",
+        "exitCode": 2,
+        "outputPreserved": true,
+        "diagnostic": "Banner background check failed: Background digest differs."
+      },
+      {
+        "case": "duplicate-field",
+        "exitCode": 2,
+        "outputPreserved": true,
+        "diagnostic": "Banner background check failed: Unexpected or duplicate fields."
+      },
+      {
+        "case": "existing-output",
+        "exitCode": 2,
+        "outputPreserved": true,
+        "diagnostic": "Banner background check failed: Output exists."
+      }
+    ]
+  },
+  "tools": [
+    {
+      "localPath": "tools/verification/compare_ready_birth.py",
+      "bytes": 13998,
+      "sha256": "413bf6f80383cd19569a28f44e25c935b0b697339f1a172bff7b4ae783575b0a"
+    },
+    {
+      "localPath": "tools/verification/inspect_ready_interrupt.py",
+      "bytes": 5414,
+      "sha256": "572d25f69bbe7e1c46c9270fbdeb5f9ed1a69c5bfb8258fe5c65213429b60904"
+    },
+    {
+      "localPath": "tools/verification/compare_ready_display.py",
+      "bytes": 25318,
+      "sha256": "e113fd710c8a3bbd78159c9a9a5e0e5b3db3fc986f221103397a26618eddd06c"
+    },
+    {
+      "localPath": "tools/verification/compare_banner_hide.py",
+      "bytes": 22081,
+      "sha256": "ee308cad2f3ffcf96969299980d86a4ba2faa63b94fc0103cddf4be81862fd75"
+    },
+    {
+      "localPath": "tools/verification/analyze_banner_precision.py",
+      "bytes": 11968,
+      "sha256": "0721ef12c3d54fd4a2d8c69ee3b942dc40bff1cef3e6737275ad5e0912341bf2"
+    },
+    {
+      "localPath": "tools/verification/capture_banner_continuation.py",
+      "bytes": 16116,
+      "sha256": "d9d973d970f8ebfdf9bf9b5907022a8c9ff70cdb6e26d955b9734c8a08cf269c"
+    },
+    {
+      "localPath": "tools/verification/compare_banner_background.py",
+      "bytes": 21212,
+      "sha256": "0388ec7a12742798f2acd5b2bda86f01de780c111f94d2491b916c92a501d26a"
+    },
+    {
+      "localPath": "tools/verification/compare_observed_banner.py",
+      "bytes": 16702,
+      "sha256": "50d1ce4be252cb10b3820293170965a599046aa267ca56040f7ba29e5bff7911"
+    },
+    {
+      "localPath": "tools/verification/compare_visual_checkpoints.py",
+      "bytes": 13970,
+      "sha256": "3ee039e9a767c491d2b44b9889b7d3512262d456e51cf34017945b5e84e3210b"
+    },
+    {
+      "localPath": "tools/verification/inspect_banner_event.py",
+      "bytes": 10569,
+      "sha256": "e2293c00c86507df9fc5847331dd6ac9c245aff21ba1d33f41855ea9df0c6362"
+    },
+    {
+      "localPath": "tools/verification/prepare_retroarch_reference.py",
+      "bytes": 11773,
+      "sha256": "3bf0e6ffb79f0e12afaf8f4ba6da030034d18de828baee9bd5ae8220c9d365b0"
+    },
+    {
+      "localPath": "tools/verification/trace_banner_draw_state.py",
+      "bytes": 6618,
+      "sha256": "15f44edd29c87f43ae0824c92e3b415deec58e6bd80c2b0ab487f7d4d3afdd9a"
+    },
+    {
+      "localPath": "tools/banner-blend-check/ReadySequence.cs",
+      "bytes": 5972,
+      "sha256": "9683365bfd335b295e5f28aafc9e53a6b2f5a137babb71d13219120a130f7e08"
+    },
+    {
+      "localPath": "tools/banner-blend-check/Program.cs",
+      "bytes": 9078,
+      "sha256": "48a0d8abeee3dd3e7ffae5010e8b7d82898c65b98e573d45c3d31b94def472c5"
+    },
+    {
+      "localPath": "tools/banner-blend-check/BannerBlendCheck.csproj",
+      "bytes": 341,
+      "sha256": "d8f66aad44a1ae0598c7b397b866bfecc3e17fdb580229d6648e15aad884a3a2"
+    },
+    {
+      "localPath": "tools/banner-blend-check/packages.lock.json",
+      "bytes": 1759,
+      "sha256": "7ed89903772726ac14a0fd6f7161155e03ce9c8a0bf0c25fcce89eedfd26dacb"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/ReadyPresentation.cs",
+      "bytes": 6500,
+      "sha256": "5a7cda34c4fb94414a572de66f663c9238ccd6d333d25031021e69a915c888ca"
+    }
+  ],
+  "compiledAssemblies": [
+    {
+      "localPath": "tools/banner-blend-check/bin/Release/net10.0/BannerBlendCheck.dll",
+      "bytes": 35840,
+      "sha256": "a965ce0f39c8c441be2c90eb7c1ef64857ec8bf5abea6fa6c00fa980bd6a2fdf"
+    },
+    {
+      "localPath": "tools/banner-blend-check/bin/Release/net10.0/Fft.Client.dll",
+      "bytes": 190976,
+      "sha256": "33ffd6abc3d7448e83546a3923cb05c9f549001ca41a9b82404d70c1761bb9cf"
+    },
+    {
+      "localPath": "tools/banner-blend-check/bin/Release/net10.0/Zodiac.Content.dll",
+      "bytes": 230912,
+      "sha256": "5ecfa98938673790e199b0c12901b5ba82758ae3de6f69aba723b1110b501306"
+    },
+    {
+      "localPath": "tools/banner-blend-check/bin/Release/net10.0/Zodiac.Framework.dll",
+      "bytes": 222720,
+      "sha256": "b833febe4da0f6a4170fb33c3bd2322d3dda4eeca682533def39204f21dab7b5"
+    }
+  ],
+  "tests": {
+    "dotnetPassed": 1794,
+    "pythonPassed": 192,
+    "newPythonTests": 13,
+    "lockedRestores": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "authoredVerifier": {
+      "localPath": "tools/verification/test_ready_interrupt.py",
+      "bytes": 8365,
+      "sha256": "e52131f3f1fe3179391ef888759c39c8453267fbc9129f19bddaae6b1c5f0d87"
+    }
+  },
+  "ownerReview": {
+    "status": "pending",
+    "gallery": "scratch/ready-birth-088-b/review.html",
+    "galleryIdentity": {
+      "localPath": "scratch/ready-birth-088-b/review.html",
+      "bytes": 1121,
+      "sha256": "1006c3725523d0b0d8567a6a51c252f53781d406e7cff9a8b8c766ad02d26ee8"
+    }
+  },
+  "runtimeRendererChanged": false,
+  "simulationChanged": false,
+  "originalTimingEstablished": false,
+  "hardwareEquivalenceEstablished": false,
+  "audioFidelityEstablished": false,
+  "mapRenderingEstablished": false,
+  "fullEventPlaybackEstablished": false,
+  "historicalEvidence": "ZOD-087 receipts/specifications and owner approval remain unchanged. This dated follow-up closes its birth-observation gap through a separate classifier.",
+  "mediaPolicy": "Only metadata committed; no original executable/BIOS/kernel bytes, source copies, assets or screenshots outside ignored scratch."
+}

@@ -1,5 +1,22 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Latest validation checkpoint (2026-10-25):** ZOD-088 closes the two missing Ready
+birth scanouts through a separate, closed BIOS IRQ verifier. The retained endpoints
+are timer-2 sound callbacks; pinned original EXE/BIOS save/restore, live COP0,
+active PCB/TCB/event and callback frames prove a saved main VSync context before
+submission. Displayed ticks 0/1 at scales 48/56 match actual prepared C# exactly,
+including 1,202 opaque / 77 STP pixels per frame. Two finite original/control runs
+repeat 32 content artifacts and the old interrupted states; the old main-context classifier still rejects
+those endpoints. All 16 older Ready snapshots and seven C# artifacts remain equal.
+Locked restores, zero-warning Release builds, **1,794 .NET / 192 Python tests** pass.
+No production C#/renderer/simulation changes or BIOS/emulator runtime dependency.
+[Detailed record](development/ready-birth-comparison.md),
+[metadata](evidence/visual/ready-birth-v1.json). **Next: owner review** of
+`scratch/ready-birth-088-b/review.html`, then select the next bounded original
+behavior/scene observation before expanding the authored profile. Original input
+timing, arbitrary interrupts, hardware/audio fidelity, map rendering and full
+event/startup playback remain separate. Standing commit/push permission applies.
+
 **Latest validation checkpoint (2026-10-25):** ZOD-087's
 [displayed Ready comparison](development/displayed-ready-comparison.md) is complete
 for six supported anchors: displayed ticks 8/10/60/64/66/67 match actual prepared
