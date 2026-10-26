@@ -2,6 +2,21 @@
 
 ## Current handoff — 2026-10-26
 
+**Current owner direction: defer further editor UI work and review.** The owner
+does not want substantial editor work unless it advances the rest of the project.
+The brief [live FFTPatcher v0.497.0 reference](development/fftpatcher-desktop-reference.md)
+inspected the already open, owner-identified original SCUS-94221 PSX defaults.
+Jobs, Skill Sets and Abilities have separate pages, grouped fields, navigation
+and reverse-use links. No fields or files were changed. This supersedes the
+initial v0.495/TLW reference suggestion. ZOD-047 remains implemented/unapproved,
+M3 stays open, and further UI polish/review waits for a concrete authoring need or
+owner request. **Next:** select a bounded gameplay/source/data milestone from the
+backlog; the deferred editor review does not block unrelated development. Last
+implementation validation remains **2,349 .NET / 293 Python tests**; no suites or
+native editor checks were repeated for this documentation-only reference pass.
+
+## Editor implementation checkpoint (historical; review now deferred)
+
 **ZOD-047 UI revision implemented; owner review still pending.** The owner found
 the first editor rough and requested separate job and ability editing, considering
 FFTPatcher's workflow. That feedback is not approval. The revised editor now has

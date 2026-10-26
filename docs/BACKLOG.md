@@ -44,6 +44,17 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Owner direction (2026-10-26): limit further editor work.** A brief live
+inspection of the owner's loaded FFTPatcher v0.497.0 PSX session confirms useful
+Jobs / Skill Sets / Abilities separation, grouped fields and relationship links;
+see the [desktop reference](development/fftpatcher-desktop-reference.md). Further
+editor UI polish and owner review are deferred until a concrete gameplay/content
+milestone needs that capability or the owner requests it. ZOD-047 is implemented
+but unapproved; M3 remains open. This review does not block unrelated gameplay
+development. **Next:** select a bounded gameplay/source/data milestone from the
+remaining backlog; do not automatically start another editor revision or broad
+ZOD-048. Existing deferred work stays deferred.
+
 **Latest revision (2026-10-26): ZOD-047 separates Jobs and Abilities.** The owner
 found the first UI rough and requested FFTPatcher-inspired separation; no visual
 or interactive approval was given. The revised Windows editor has independent
@@ -2194,7 +2205,13 @@ automatic interface extraction, executable plugins or whole-game replacement cla
 
 ### ZOD-047 — Build the first job/ability inspection and editing UI
 
-**Type:** Story · **Priority:** P2 · **Status:** Implemented; owner visual/manual review pending · **Depends on:** ZOD-016, ZOD-018
+**Type:** Story · **Priority:** P2 · **Status:** Implemented; further UI work and owner review deferred by owner · **Depends on:** ZOD-016, ZOD-018
+
+**Owner direction (2026-10-26):** Keep the functional editor and its evidence;
+defer further UI polish/review unless needed by a selected gameplay/content
+milestone or requested by the owner. This is not approval or M3 completion and
+does not block unrelated gameplay work. The [live FFTPatcher reference](development/fftpatcher-desktop-reference.md)
+records the corrected v0.497.0/original-PSX reference and future workflow ideas.
 
 **Owner-requested revision (2026-10-26):** The initial UI was not approved. The
 [workspace revision](development/editor-workspaces.md) studies pinned FFTPatcher
@@ -2222,6 +2239,10 @@ native control renderings from pending owner visual and physical workflow checks
 ### ZOD-048 — Expand authoring to flags, formulas, text, graphics, scripts, conditions, and audio
 
 **Type:** Epic · **Priority:** P4 · **Status:** Needs breakdown · **Depends on:** ZOD-047
+
+**Owner sequencing (2026-10-26):** Add editor capabilities when supported runtime
+or content work needs them. FFTPatcher-inspired UI breadth alone is not a reason
+to start this epic; further editor work is currently deferred as recorded above.
 
 **Scope:** Add focused editing/preview workflows as the corresponding definitions and decoders mature. Named flags show verified meanings and unknown bits; formula parameters distinguish data from executable behavior; text has font/layout preview; sprite/animation/map/script editing uses established format and validation APIs.
 

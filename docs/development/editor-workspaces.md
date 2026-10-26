@@ -1,5 +1,12 @@
 # ZOD-047 — Job and ability workspace revision
 
+**Owner direction after implementation (2026-10-26):** Further UI polish and
+owner review are deferred until a concrete gameplay/content authoring need or
+owner request. ZOD-047 remains unapproved and M3 remains open; this review does
+not block unrelated gameplay development. The [live FFTPatcher reference](fftpatcher-desktop-reference.md)
+records the corrected local v0.497.0/original-PSX session. The implementation and
+review instructions below are retained for that later review.
+
 Selected after owner review of `5c9ff93704d037c52651132e754ad183f6ea116e`.
 The owner described the first UI as rough and requested separate job and ability
 editing, considering FFTPatcher as a workflow reference. This is feedback requiring
