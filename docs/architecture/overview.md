@@ -30,7 +30,8 @@ Its family-level entries are not a complete original record/encounter catalog.
   the [ZOD-103 native host](../development/windows-world-navigation.md) now has
   finite Windows checks plus owner visual and bounded manual-input approval.
   [ZOD-069's slot UI](../development/world-save-load-ui.md) now has finite
-  Save/Load/recovery/error checks and awaits its own owner review. Full campaign
+  Save/Load/recovery/error checks and owner gallery approval; its interactive
+  slot review remains pending. Full campaign
   persistence remains separate.
 - `Zodiac.Content.Events` validates/loads the [prepared synthetic conditional event](../development/prepared-scenario-event.md).
   AssetTool owns raw block inspection and the CLI assembly composes conversion.

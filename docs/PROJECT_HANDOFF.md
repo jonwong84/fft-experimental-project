@@ -1,5 +1,15 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Owner slot-gallery approval (2026-10-26):** The owner approved
+`scratch/world-slots-069-review/review.html`: "This appears to be fine."
+Approval covers the displayed slot pages/details, overwrite/load/recovery
+confirmations, success/error and resized canvas gallery. Interactive Save/Load,
+cancel/overwrite/recovery and slot keyboard/mouse/controller checks remain
+pending; ZOD-069 stays implemented with that review gate open. No implementation
+suites or agent-run graphics checks were repeated, and reviewed artifacts are
+unchanged. Last implementation validation remains **2,317 .NET / 287 Python
+tests**. Next use the [manual launch guide](development/world-save-load-ui.md).
+
 **Latest implementation (2026-10-26): ZOD-069 implemented; owner review pending.**
 Normal `--world-menu` now enables Home Load and World Save/Load through ZOD-068's
 service. Two five-slot pages, validated primary/backup details, frozen revisions,
