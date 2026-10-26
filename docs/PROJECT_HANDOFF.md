@@ -576,7 +576,7 @@ independent per-tick cell/draw/display/barrier equations, variable authored dela
 maxima, replay and protected binding/VM/identity/clock checks. Existing workers,
 executors, engine/Content/client code and historical contracts are unchanged.
 Locked restore, zero-warning Release build and **2,111 .NET / 269 Python tests**
-pass (81 new managed). No prepared profile, render/Windows/battle-input bridge,
+pass (80 new managed). No prepared profile, render/Windows/battle-input bridge,
 native capture, emulator or original-duration claim. DSI-025..040 remain
 unexecuted. [Behavior](behavior/dark-screen-introduction.md),
 [executed metadata](evidence/events/dark-screen-intro-worker-v1.json).

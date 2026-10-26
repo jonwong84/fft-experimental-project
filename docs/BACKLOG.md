@@ -107,7 +107,7 @@ ZOD-106 remain deferred. Do not infer owner approval from programmed checks.
 
 **Current completion (2026-10-26): ZOD-110 is complete.** Strict targeted-effect
 content/projection and verified Throw Stone import preserve historical metadata
-IDs and bytes. The combined authored Basic Skill scenario proves PA 5â†’6, ranged
+IDs and bytes. The combined authored Basic Skill scenario proves PA 5→6, ranged
 damage 6/12, knockback, first KO, restart and all terminal guards. Both two-file
 imports and four-file headless outputs repeat exactly across 46 commands and 47
 fresh-definition continuations. Independent audit checks six selected/22 historical
@@ -374,20 +374,20 @@ ZOD-005 and ZOD-006 can proceed independently. ZOD-014 through ZOD-016 form a us
 
 ## Milestone gates
 
-- **M0 â€” Demonstrated engine boundary:** ZOD-001, ZOD-007, ZOD-008, and ZOD-009 complete. A neutral scenario runs without FFT references, and the existing FFT proof uses the extracted engine slice.
-- **M1 â€” Deterministic headless battle:** ZOD-002, ZOD-004, ZOD-005, ZOD-010 through ZOD-023 complete. Two units can advance turns, move under the documented movement subset, resolve one source-traced attack, and reach a result through replayable commands. This is a bounded battle, not full FFT combat.
-- **M2 â€” Playable Windows battle slice:** M1 plus ZOD-024 through ZOD-034. Prepared map/sprite files render, input issues commands, comparison captures are recorded, and the client runs with the BIN unavailable.
-- **M3 â€” First authoring tool:** ZOD-014 through ZOD-018 and ZOD-047 complete. A job can be inspected, edited, validated, exported, loaded, and used by the bounded battle without changing simulation code.
-- **M4 â€” Original-game completeness:** ZOD-035 through ZOD-046 and ZOD-053, decomposed as needed, satisfy the baseline coverage matrix. All original content, optional encounters, campaign paths, and presentation requirements are accounted for. M0â€“M3 do not imply this gate has passed.
-- **M5 â€” Extensions and Lion War:** ZOD-049 establishes content isolation; ZOD-051 defines the exact Lion War scope before ZOD-052 integration. ZOD-050 is conditional on a demonstrated scripting need. ZOD-048 is staged by authoring need; ZOD-054 is optional.
+- **M0 — Demonstrated engine boundary:** ZOD-001, ZOD-007, ZOD-008, and ZOD-009 complete. A neutral scenario runs without FFT references, and the existing FFT proof uses the extracted engine slice.
+- **M1 — Deterministic headless battle:** ZOD-002, ZOD-004, ZOD-005, ZOD-010 through ZOD-023 complete. Two units can advance turns, move under the documented movement subset, resolve one source-traced attack, and reach a result through replayable commands. This is a bounded battle, not full FFT combat.
+- **M2 — Playable Windows battle slice:** M1 plus ZOD-024 through ZOD-034. Prepared map/sprite files render, input issues commands, comparison captures are recorded, and the client runs with the BIN unavailable.
+- **M3 — First authoring tool:** ZOD-014 through ZOD-018 and ZOD-047 complete. A job can be inspected, edited, validated, exported, loaded, and used by the bounded battle without changing simulation code.
+- **M4 — Original-game completeness:** ZOD-035 through ZOD-046 and ZOD-053, decomposed as needed, satisfy the baseline coverage matrix. All original content, optional encounters, campaign paths, and presentation requirements are accounted for. M0–M3 do not imply this gate has passed.
+- **M5 — Extensions and Lion War:** ZOD-049 establishes content isolation; ZOD-051 defines the exact Lion War scope before ZOD-052 integration. ZOD-050 is conditional on a demonstrated scripting need. ZOD-048 is staged by authoring need; ZOD-054 is optional.
 
 Milestones can have concurrent research and implementation lanes. These are acceptance gates, not a requirement to finish all simulation work before inspecting a renderer or content workflow.
 
 ## Engine boundary, evidence, and development foundations
 
-### ZOD-001 â€” Audit current types and select the first engine slice
+### ZOD-001 — Audit current types and select the first engine slice
 
-**Type:** Spike Â· **Priority:** P1 Â· **Status:** Complete Â· **Depends on:** None
+**Type:** Spike · **Priority:** P1 · **Status:** Complete · **Depends on:** None
 
 **Result:** [Ownership audit and extraction recommendation](architecture/zod-001-type-ownership.md) (2026-10-22). Select the bounds-only flat cardinal range calculation with an FFT-owned facade; retain terrain semantics, profiles and transition policy in FFT. No extraction or project rename implemented. ZOD-007 still requires ZOD-002.
 
@@ -395,9 +395,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 **Acceptance criteria:** A committed ownership map cites the relevant files and dependencies; the proposed engine contract can be explained without FFT; FFT terrain semantics and compatibility policy remain game-owned; the smallest extraction and FFT adapter are specified with preserved behavior and unresolved issues. Do not declare a type generic solely because its name is generic. If no viable extraction is supported yet, identify the exact missing evidence instead of inventing an API.
 
-### ZOD-002 â€” Define behavioral fixture provenance and comparison rules
+### ZOD-002 — Define behavioral fixture provenance and comparison rules
 
-**Type:** Design task Â· **Priority:** P1 Â· **Status:** Complete Â· **Depends on:** None
+**Type:** Design task · **Priority:** P1 · **Status:** Complete · **Depends on:** None
 
 **Result:** [Behavioral fixture format v1](behavior/fixture-format.md) (2026-10-22) defines provenance, confidence, exact comparison rules and local capture metadata. Includes a synthetic accepted movement scenario and a source-traced coordinate-guard description with separately labeled managed expectations. The JSON examples have not been executed by a fixture runner; ZOD-011 implements that runner.
 
@@ -405,9 +405,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 **Acceptance criteria:** One synthetic movement fixture and a source-traced fixture description demonstrate the format; comparison rules specify stable IDs, ordered events, integer values, and explicit state fields; unresolved expectations cannot appear as verified results. Define where local captures belong and how committed metadata references them without including game media. Do not use .NET object hash codes as persistent replay fingerprints.
 
-### ZOD-003 â€” Trace a minimal job and ability definition slice
+### ZOD-003 — Trace a minimal job and ability definition slice
 
-**Type:** Spike Â· **Priority:** P1 Â· **Status:** Complete Â· **Depends on:** None
+**Type:** Spike · **Priority:** P1 · **Status:** Complete · **Depends on:** None
 
 **Result:** [Job/ability slice design](behavior/job-ability-slice.md) maps Squire's candidate records, widths, flags, consumers and definition/state boundary, with a synthetic metadata sample. Exact retail row values and membership remain an explicit verified-import gate; no catalog or ability execution is claimed. FFTPatcher was not consulted or reused.
 
@@ -415,9 +415,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 **Acceptance criteria:** A field-by-field map identifies source evidence, original indices, proposed stable IDs, signedness/ranges, flag meanings, and unknown values; `JobDefinition` is separated from a unit's job level, JP, HP, and equipment state; the minimum next schema and synthetic sample are specified. Record the community-tool reference/reuse decision and preserve unknown source bits at the import boundary. This ticket produces a design, not a full job catalog.
 
-### ZOD-004 â€” Trace one adjacent-step height/slope eligibility rule
+### ZOD-004 — Trace one adjacent-step height/slope eligibility rule
 
-**Type:** Spike Â· **Priority:** P1 Â· **Status:** Complete Â· **Depends on:** None
+**Type:** Spike · **Priority:** P1 · **Status:** Complete · **Depends on:** None
 
 **Result:** [Adjacent-step geometry trace](behavior/adjacent-step-geometry.md) specifies the dry non-steep facing-edge gate, doubled capped Jump, source-derived threshold/reverse/slope vectors, arithmetic envelope and exclusions. Static source evidence only; no oracle or original observation. ZOD-010 still depends on ZOD-012.
 
@@ -425,9 +425,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 **Acceptance criteria:** Select a bounded rule with expected accept/reject vectors at the threshold, above it, and in both directions; identify whether slope affects this particular rule and how; explicitly exclude horizontal jump spans, water, mounts, occupied tiles, and special movement modes unless the selected rule requires one. Record source commit and remaining ambiguity before implementing ZOD-010.
 
-### ZOD-005 â€” Trace FFT RNG state, arithmetic, and call ordering
+### ZOD-005 — Trace FFT RNG state, arithmetic, and call ordering
 
-**Type:** Spike Â· **Priority:** P1 Â· **Status:** Complete for pinned US v3.0 BIOS Â· **Depends on:** None
+**Type:** Spike · **Priority:** P1 · **Status:** Complete for pinned US v3.0 BIOS · **Depends on:** None
 
 **Findings:** [Initial RNG trace](behavior/rng-state-and-ordering.md) pins seed sites, bounded range arithmetic and formula-01 draw ordering. [Supplied BIOS verification](behavior/bios-rng-verification.md) resolves its missing state/update evidence through independent static analysis and actual ROM instruction execution: eight seeds, 64 observed state/output pairs, multiply/add wrap boundaries and reseeding. BIOS and raw captures stay ignored; only metadata/vectors and an optional verification script are committed. No whole-game or other-BIOS equivalence is claimed; ZOD-013 can implement the now-evidenced generator.
 
@@ -435,9 +435,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 **Acceptance criteria:** Provide source-derived vectors including overflow/boundary values; identify which parts can be a neutral engine state contract and which are PS1 compatibility behavior; document a viable independent verification method or its blocker. Do not substitute `System.Random` without evidence of equivalence.
 
-### ZOD-006 â€” Make SDK selection and dependency restoration reproducible
+### ZOD-006 — Make SDK selection and dependency restoration reproducible
 
-**Type:** Chore Â· **Priority:** P1 Â· **Status:** Implemented; Linux CI validation pending Â· **Depends on:** None
+**Type:** Chore · **Priority:** P1 · **Status:** Implemented; Linux CI validation pending · **Depends on:** None
 
 **Result:** [SDK and dependency policy](development/build-reproducibility.md) preserves Antigravity's central versions and lock files, pins SDK 10.0.402 without roll-forward, defaults to locked restore, and aligns CircleCI. Windows locked restore and Release build passed; all 155 tests passed on 2026-10-22. Linux CI and remote Sonar have not run for these changes; confirm them before closing the acceptance gate.
 
@@ -445,9 +445,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 **Acceptance criteria:** A clean Windows checkout and Linux CI can restore/build/test using documented versions; deliberate upgrades have one documented process; package drift is either prevented or explicitly detectable. No publishing or version-number automation is required by this ticket.
 
-### ZOD-007 â€” Extract the first useful Zodiac engine slice
+### ZOD-007 — Extract the first useful Zodiac engine slice
 
-**Type:** Story Â· **Priority:** P1 Â· **Status:** Complete Â· **Depends on:** ZOD-001, ZOD-002
+**Type:** Story · **Priority:** P1 · **Status:** Complete · **Depends on:** ZOD-001, ZOD-002
 
 **Result:** [Engine slice](architecture/zod-007-engine-slice.md) adds independent bounds/position contracts and flat cardinal range with 21 engine tests. Coordinator validated locked restore, zero-warning Release build and all 155 tests. FFT still uses its existing calculation; adapter integration is ZOD-008.
 
@@ -455,9 +455,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 **Acceptance criteria:** The engine slice runs on synthetic data, has meaningful independent tests, and references no FFT assemblies, definitions, assets, or formats; deterministic behavior and any ordering contract are explicit; no platform/file/input dependencies enter simulation. Update solution/CI references only as required. Keep behavior changes out of the move and retain FFT-specific types in their current home until their own migration is justified.
 
-### ZOD-008 â€” Adapt the existing FFT transition to the engine slice
+### ZOD-008 — Adapt the existing FFT transition to the engine slice
 
-**Type:** Story Â· **Priority:** P1 Â· **Status:** Complete Â· **Depends on:** ZOD-007
+**Type:** Story · **Priority:** P1 · **Status:** Complete · **Depends on:** ZOD-007
 
 **Result:** [FFT adapter integration](architecture/zod-008-fft-adapter.md) routes the existing FFT facade through Zodiac while retaining flat prototype behavior. Locked restore, Release build and all 162 tests passed on Windows; no project rename or terrain-policy change.
 
@@ -465,9 +465,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 **Acceptance criteria:** Existing accepted/rejected commands, input immutability, resulting state, and event ordering remain covered; FFT selects/provides its policy without FFT branches in the engine; the reference graph is acyclic and one-way. Record which current files remain a prototype and any project names migrated as part of this bounded move.
 
-### ZOD-009 â€” Prove engine independence with a neutral sample and dependency check
+### ZOD-009 — Prove engine independence with a neutral sample and dependency check
 
-**Type:** Story Â· **Priority:** P1 Â· **Status:** Complete Â· **Depends on:** ZOD-008
+**Type:** Story · **Priority:** P1 · **Status:** Complete · **Depends on:** ZOD-008
 
 **Result:** [Relay neutral scenario](../samples/Relay/README.md) compiles in engine-only tests and completes an invented delivery. A separate integration test varies FFT Move without affecting its result. The evaluated project-reference guard rejects a deliberate FFT reference and runs in the existing CI build. Windows locked restore, Release build and all 164 tests passed; remote CI remains unverified.
 
@@ -477,9 +477,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 ## First deterministic battle and typed content
 
-### ZOD-010 â€” Implement the selected adjacent-step geometry rule
+### ZOD-010 — Implement the selected adjacent-step geometry rule
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-004, ZOD-012
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-004, ZOD-012
 
 **Result:** [Bounded adjacent-step policy](behavior/adjacent-step-implementation.md) adds explicit dry, non-steep facing-edge geometry with capped Jump and conservative supported-domain validation. Source-derived bidirectional vectors, combined cost/blocker cases and synthetic accepted/rejected replay fixtures pass. Existing policies are unchanged. Coordinator verified locked restore, zero-warning Release build and all 281 tests after parallel package-prototype integration.
 
@@ -487,9 +487,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 **Acceptance criteria:** Source-derived threshold/direction/slope vectors pass; tests combine geometry with entry cost and blockers; rejected moves preserve state; the policy's unsupported mechanics remain explicit. A geometry change does not silently replace the original compatibility target with a generic rule.
 
-### ZOD-011 â€” Add a deterministic scenario fixture runner
+### ZOD-011 — Add a deterministic scenario fixture runner
 
-**Type:** Story Â· **Priority:** P1 Â· **Status:** Complete Â· **Depends on:** ZOD-002, ZOD-008
+**Type:** Story · **Priority:** P1 · **Status:** Complete · **Depends on:** ZOD-002, ZOD-008
 
 **Result:** [Movement fixture runner](behavior/fixture-runner.md) executes accepted/rejected sequential prototype scenarios, validates v1 metadata, retains provenance and diagnoses state/event mismatches. Source descriptions remain not executed. Windows locked restore, Release build and all 182 tests passed; no gameplay change.
 
@@ -497,9 +497,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 **Acceptance criteria:** Accepted and rejected movement scenarios replay deterministically; deliberate state/event mismatches produce useful diagnostics; fixture metadata retains source/evidence provenance; tests require no BIN, emulator, or network. Extend the runner incrementally as new commands and state fields are introduced.
 
-### ZOD-012 â€” Integrate the bounded terrain-cost policy explicitly
+### ZOD-012 — Integrate the bounded terrain-cost policy explicitly
 
-**Type:** Story Â· **Priority:** P1 Â· **Status:** Complete Â· **Depends on:** ZOD-008, ZOD-011
+**Type:** Story · **Priority:** P1 · **Status:** Complete · **Depends on:** ZOD-008, ZOD-011
 
 **Result:** [Explicit terrain policy](behavior/terrain-policy-integration.md) integrates resolved entry costs, blockers, stopping flags and deliberate occupancy traversal rules. Flat prototype behavior is retained and both policies have replay fixtures. Locked restore, zero-warning Release build and all 227 solution tests passed on Windows after parallel ZOD-014 integration. No full FFT movement equivalence is claimed.
 
@@ -507,9 +507,9 @@ Milestones can have concurrent research and implementation lanes. These are acce
 
 **Acceptance criteria:** Commands respect terrain entry costs, blocked surfaces, destination flags, occupied destinations, and available movement under the documented subset; missing costs fail deliberately; accepted/rejected transitions have fixtures. Specify traversal through occupied tiles rather than accidentally inheriting it from range generation. Preserve separate compatibility/prototype labels; do not claim full FFT movement.
 
-### ZOD-013 â€” Implement explicit deterministic RNG state
+### ZOD-013 — Implement explicit deterministic RNG state
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-005, ZOD-007, ZOD-011
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-005, ZOD-007, ZOD-011
 
 **Result:** [Explicit deterministic RNG](behavior/deterministic-rng.md) adds a neutral explicit-state
 transition contract, FFT-owned verified BIOS generator, ordered RNG replay diagnostics and optional battle
@@ -521,9 +521,9 @@ all 334 solution tests passed on 2026-10-22. Combat consumption ordering remains
 
 **Acceptance criteria:** Recorded vectors pass with explicit integer/overflow semantics; a transition returns updated RNG state; replay compares it; draw counts/order are testable and no wall-clock or global RNG enters simulation. Rejected commands consume draws only if source evidence requires it for the selected behavior.
 
-### ZOD-014 â€” Implement minimal typed job and ability definitions
+### ZOD-014 — Implement minimal typed job and ability definitions
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-003
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-003
 
 **Result:** [Typed metadata definitions](architecture/zod-014-typed-definitions.md) add immutable FFT-owned IDs/definitions and a validated catalog with 32 new tests, including a graph beyond original table capacities. Retail row import, execution effects and package format remain separate. Coordinator verified all 227 solution tests after integration.
 
@@ -531,9 +531,9 @@ all 334 solution tests passed on 2026-10-22. Combat consumption ordering remains
 
 **Acceptance criteria:** Synthetic definitions preserve field values and structural invariants; invalid/duplicate IDs and unresolved references have clear diagnostics; unit progression/runtime state remains separate; collections accept a synthetic catalog beyond original table capacities. Original numeric indices are import metadata, not the public storage or identity limit. Full catalogs and every FFTPatcher field are outside this slice.
 
-### ZOD-015 â€” Decide and prototype the editable content package format
+### ZOD-015 — Decide and prototype the editable content package format
 
-**Type:** Spike Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-014
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-014
 
 **Result:** [Content package decision/prototype](architecture/zod-015-content-package.md) selects strict loose JSON, round-trips synthetic typed metadata, preserves all primary flag bytes, and specifies explicit baseline/add-on composition and deterministic output. Test-only prototype has 22 passing cases; production loader/export work remains ZOD-016. Full integrated solution passes 281 tests.
 
@@ -541,9 +541,9 @@ all 334 solution tests passed on 2026-10-22. Combat consumption ordering remains
 
 **Acceptance criteria:** A synthetic job/ability package round-trips through a small prototype; malformed data, unknown versions, unknown fields/flags, duplicate IDs, and unresolved references have documented handling; deterministic output and baseline/add-on isolation are specified. Prefer a simple choice supported by the evidence. No SQL service or archive format is required to prove this workflow.
 
-### ZOD-016 â€” Build the shared content validator and C# authoring export
+### ZOD-016 — Build the shared content validator and C# authoring export
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-015
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-015
 
 **Result:** [Production content package API](architecture/zod-016-content-packages.md) shares typed validation across C# and JSON, reports package/record/field context, exports deterministic LF JSON through a validated sibling-file replacement, and loads runtime metadata without authoring code. `validate-content` returns 0/1/2 for valid/content-or-file-error/usage. Windows locked restore, zero-warning Release build and all 309 tests passed; actual CLI checks outside the repository confirmed success/failure. Only synthetic example data is committed with this work; Linux CI remains unverified locally.
 
@@ -551,9 +551,9 @@ all 334 solution tests passed on 2026-10-22. Combat consumption ordering remains
 
 **Acceptance criteria:** C#-authored and file-authored equivalent data produce equivalent definitions; diagnostics identify package, record, and field; a validation command returns a nonzero exit on failure; repeated exports are deterministic; invalid input does not overwrite a valid package. Runtime consumes exported data without loading authoring code. Commit only synthetic examples.
 
-### ZOD-017 â€” Import and validate the selected original job/ability records
+### ZOD-017 — Import and validate the selected original job/ability records
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-003, ZOD-016
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-003, ZOD-016
 
 **Result:** [Selected original metadata import](behavior/original-metadata-import.md) verifies the pinned
 SCUS-94221 executable, resolves Squire's actual skillset and imports one job, one 22-slot skillset and ten
@@ -565,9 +565,9 @@ locked restore, Release build (zero warnings/errors) and all 379 solution tests 
 
 **Acceptance criteria:** Imported fields and original-index mappings match the traced source records; unknown bits/data are reported and preserved in import metadata; output provenance includes edition, input hashes, and converter version; repeated import is deterministic. Generated records stay in `scratch/`; synthetic parser tests run without game files. Missing or malformed input produces diagnostics rather than guessed defaults.
 
-### ZOD-018 â€” Resolve content definitions into bounded battle units
+### ZOD-018 — Resolve content definitions into bounded battle units
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-012, ZOD-017
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-012, ZOD-017
 
 **Result:** [Base-job setup](behavior/base-job-battle-setup.md) resolves stable definition references before
 startup and creates independent movement snapshots from shared immutable definitions. Base Move/Jump map
@@ -579,9 +579,9 @@ locked restore, zero-warning Release build and all 464 tests passed on 2026-10-2
 
 **Acceptance criteria:** Two units can share a definition while retaining independent state; stable IDs resolve before battle startup; absent content fails before simulation; a synthetic authored job changes a supported unit parameter without a simulator edit. Each derived field is documented as source-traced or an explicit prototype input.
 
-### ZOD-019 â€” Trace the smallest CT and turn-completion scenario
+### ZOD-019 — Trace the smallest CT and turn-completion scenario
 
-**Type:** Spike Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-002
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-002
 
 **Result:** [CT and turn-completion trace](behavior/ct-turn-cycle.md) pins tick caps, CT modulo, largest-CT/
 slot-tie selection, Move/Act/Wait markers and completion refunds. Includes a checkable two-unit sequence and
@@ -592,9 +592,9 @@ no original-game/executable turn oracle or implementation is claimed.
 
 **Acceptance criteria:** A source-backed state/command sequence states initial CT, speed, readiness thresholds, tie order, and CT consequences of move/action/wait; arithmetic and update order are recorded; special-case exclusions are explicit. Identify the engine scheduler seam and FFT-owned rules without designing every turn system.
 
-### ZOD-020 â€” Implement the bounded turn cycle and wait command
+### ZOD-020 — Implement the bounded turn cycle and wait command
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-008, ZOD-011, ZOD-013, ZOD-019
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-008, ZOD-011, ZOD-013, ZOD-019
 
 **Result:** [Bounded turn implementation](behavior/ct-turn-implementation.md) implements explicit CT/Speed/
 tie keys, selection, choice consumption, completion and one upkeep RNG draw per new readiness. A separate
@@ -607,9 +607,9 @@ choice marker; attack effects remain ZOD-022.
 
 **Acceptance criteria:** Ready-unit/tie vectors pass; inactive units cannot issue actions; waiting/ending a turn updates the documented fields and permits subsequent turns; event/state sequences replay identically, including the source-traced upkeep RNG draw at new readiness selection. Expanded status, charge, and unusual tie behavior remain separately tracked.
 
-### ZOD-021 â€” Trace one ordinary physical attack end to end
+### ZOD-021 — Trace one ordinary physical attack end to end
 
-**Type:** Spike Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-002, ZOD-003, ZOD-005
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-002, ZOD-003, ZOD-005
 
 **Result:** [Ordinary physical attack trace](behavior/ordinary-physical-attack.md) specifies synthetic sword
 inputs, targeting/facing/height, sequential evade and critical/proc draws, damage widths, HP/KO/Critical and
@@ -621,9 +621,9 @@ retail sword verification is ZOD-057.
 
 **Acceptance criteria:** Expected hit/miss/damage/KO and invalid-target vectors cite source functions and commit; operand widths and rounding points are explicit; the definition fields needed by the scenario are identified. Break out prerequisite schema work if the minimal job/ability definitions are insufficient. Do not implement a general formula interpreter as part of the trace.
 
-### ZOD-022 â€” Implement the selected attack and HP/KO transitions
+### ZOD-022 — Implement the selected attack and HP/KO transitions
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-013, ZOD-018, ZOD-020, ZOD-021, ZOD-055, ZOD-056
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-013, ZOD-018, ZOD-020, ZOD-021, ZOD-055, ZOD-056
 
 **Result:** [Bounded sword implementation](behavior/bounded-sword-implementation.md) adds pure atomic
 unit attacks, ordered evade/critical/proc draws, facing/action/turn effects, HP/Critical/Dead and byte-wrapped
@@ -643,9 +643,9 @@ actual original source revisions. No vector change was identified by the targete
 
 **Acceptance criteria:** Hit, miss, boundary damage, KO, range/facing, and invalid-command cases have fixtures; HP, action availability, and RNG state advance in the documented order; rejected actions preserve state as specified; state/events support presentation without presentation code. Unsupported equipment/status/modifier combinations fail explicitly or are excluded by scenario validation.
 
-### ZOD-055 â€” Define the bounded executable sword content slice
+### ZOD-055 — Define the bounded executable sword content slice
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-014, ZOD-021
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-014, ZOD-021
 
 **Result:** [Sword definitions and package](architecture/zod-055-sword-content.md) add immutable constrained
 weapon/effect content and a separate versioned sword layer with shared strict validation and canonical
@@ -661,9 +661,9 @@ configuration can represent the selected synthetic sword without simulator const
 Unsupported configurations fail explicitly; authored packages round-trip with field-specific diagnostics.
 No retail sword values are asserted until ZOD-057 verifies them.
 
-### ZOD-056 â€” Extend battle snapshots and fixtures for the bounded attack
+### ZOD-056 — Extend battle snapshots and fixtures for the bounded attack
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-013, ZOD-018, ZOD-020, ZOD-021
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-013, ZOD-018, ZOD-020, ZOD-021
 
 **Result:** [Attack snapshots and fixture v2](behavior/attack-snapshot-fixtures-v2.md) add explicit combat
 state, startup equipment/domain validation and exact ordered replay comparisons across existing movement/
@@ -679,9 +679,9 @@ equipment references, action availability and RNG state/count. Replay compares t
 existing movement fixtures retain their documented semantics. Invalid or unsupported setup fails before
 simulation. This ticket supplies contracts/validation; ZOD-022 implements attack resolution.
 
-### ZOD-057 â€” Verify and import the selected retail sword and attack records
+### ZOD-057 — Verify and import the selected retail sword and attack records
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-017, ZOD-021, ZOD-055
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-017, ZOD-021, ZOD-055
 
 **Result:** [Verified retail sword import](behavior/retail-sword-import.md) traces and imports seven selected
 item/weapon/proc/attribute/ability/menu records with exact input identity and raw provenance. Two imports were
@@ -698,9 +698,9 @@ unknown bytes remain in ignored import provenance with edition/input hashes and 
 Repeated imports are deterministic; malformed/unsupported inputs have diagnostics and synthetic parser tests.
 Record any mismatch with ZOD-021's deliberately synthetic configuration before claiming retail equivalence.
 
-### ZOD-058 â€” Represent the verified retail sword differences explicitly
+### ZOD-058 — Represent the verified retail sword differences explicitly
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-055, ZOD-056, ZOD-057
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-055, ZOD-056, ZOD-057
 
 **Result:** [Retail sword representation and migration](behavior/retail-sword-representation.md)
 add explicit schema 2 capability flags and empty proc modes, preserve schema 1 behavior, and trace raw
@@ -718,9 +718,9 @@ semantics before runtime support is claimed. Imported data can be validated/expo
 combinations fail explicitly, and existing synthetic profile/fixtures retain their versioned behavior.
 No retail combat equivalence is claimed without executing ZOD-022 and checking appropriate vectors.
 
-### ZOD-023 â€” Complete a reproducible two-unit battle scenario
+### ZOD-023 — Complete a reproducible two-unit battle scenario
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-010, ZOD-022
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-010, ZOD-022
 
 **Result:** [Two-unit headless battle](behavior/two-unit-battle-scenario.md) adds an immutable authored
 definition, pure command/result lifecycle, explicit first-KO terminal rule and restart via the original setup.
@@ -737,9 +737,9 @@ Windows locked restore, zero-warning Release build and all 632 solution tests pa
 
 ## Windows rendering, assets, and comparison workflow
 
-### ZOD-024 â€” Select a Windows rendering/input stack using a bounded spike
+### ZOD-024 — Select a Windows rendering/input stack using a bounded spike
 
-**Type:** Spike Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** None
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** None
 
 **Result:** [ADR 0005](adr/0005-windows-rendering-and-input-stack.md) recommends MonoGame DesktopGL
 3.8.6 after comparing WindowsDX, FNA and Silk.NET. The isolated locked probe passes with SDK 10.0.402,
@@ -755,9 +755,9 @@ no presentation compatibility is claimed from the no-window probe.
 replacement texture handling, keyboard/mouse and controllers. These capabilities inform stack selection;
 ZOD-059/060/061 own the later feature work and do not expand this spike into a full implementation.
 
-### ZOD-025 â€” Create the Windows host with a synthetic battle view
+### ZOD-025 — Create the Windows host with a synthetic battle view
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-024
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-024
 
 **Result:** [Windows launch, ownership and validation notes](development/windows-synthetic-host.md)
 (2026-10-23). MonoGame DesktopGL 3.8.6 is confined to Client. An immutable two-unit snapshot
@@ -770,9 +770,9 @@ checks remain explicitly unverified. Full solution: 656 passed, including 24 hea
 
 **Acceptance criteria:** Documented Windows launch works; the host renders an immutable snapshot and has a predictable resource lifecycle; rendering frames does not mutate or advance simulation; no graphics/input packages enter the engine library. A synthetic scene requires no original assets.
 
-### ZOD-026 â€” Establish an independent sprite/reference capture workflow
+### ZOD-026 — Establish an independent sprite/reference capture workflow
 
-**Type:** Spike Â· **Priority:** P2 Â· **Status:** Complete (bounded executable decoder oracle) Â· **Depends on:** None
+**Type:** Spike · **Priority:** P2 · **Status:** Complete (bounded executable decoder oracle) · **Depends on:** None
 
 **Result:** [Original-instruction sprite capture](development/sprite-executable-reference.md)
 (2026-10-23) executes the verified original decoder/helper with Unicorn 2.1.4,
@@ -788,9 +788,9 @@ No .NET runtime changes; the last full suite remains 1,388 passing tests.
 
 **Acceptance criteria:** Record one independent comparison if feasible, including input/output hashes or local capture references and its limits. If the oracle cannot be established, document the exact blocker and bounded fallback; do not relabel the existing source-transcribed hash as independent evidence. Media remains local. An emulator or reference harness is a development tool, never a game runtime dependency.
 
-### ZOD-027 â€” Trace one sprite frame, palette, and animation selection path
+### ZOD-027 — Trace one sprite frame, palette, and animation selection path
 
-**Type:** Spike Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** None
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** None
 
 **Result:** [Chocobo idle-pose source map and preparation scope](architecture/zod-027-chocobo-idle-pose.md)
 (2026-10-23), pinned to reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
@@ -803,9 +803,9 @@ No parser/runtime changes or original-game rendering comparison; camera, timing 
 
 **Acceptance criteria:** A source map identifies exact files/records and one frame's composition; unknown ordering/timing behavior is listed; define the smallest parser/rendering input slice. Avoid assuming every `.SPR`, `.SHP`, or `.SEQ` uses the selected format or covers every unit/effect.
 
-### ZOD-028 â€” Parse and prepare the selected sprite-frame slice
+### ZOD-028 — Parse and prepare the selected sprite-frame slice
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-027
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-027
 
 **Result:** [Preparation command, prepared format and validation](development/prepared-sprite-pose.md)
 (2026-10-23). Bounded SHP/SEQ readers and ordinary-sheet decoding prepare Chocobo primary frame 9,
@@ -823,9 +823,9 @@ Keep attack/EVTCHR/SP2, special part splitting and general animation interpretat
 
 **Acceptance criteria:** Synthetic/truncated/out-of-range records have meaningful tests; frame pieces, palette references, transforms, and durations match the trace; local prepared output is repeatable and manifest-addressable; runtime reads prepared files without BIN/ISO access. Keep the broad animation catalog outside this ticket.
 
-### ZOD-029 â€” Trace one battle map's geometry, terrain, and texture inputs
+### ZOD-029 — Trace one battle map's geometry, terrain, and texture inputs
 
-**Type:** Spike Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** None
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** None
 
 **Result:** [MAP003 source map, alignment checkpoint and converter scope](architecture/zod-029-map003-source-map.md)
 (2026-10-23), reference `11464943bbdbd2a0af022d90cb7f10455cf911df`. Select day/dry,
@@ -838,9 +838,9 @@ lighting and original-rendering limits are explicit. No parser/renderer implemen
 
 **Acceptance criteria:** Record a file/structure/dependency map and the edition/decomp revision; identify one region suitable for a comparison fixture and the required converter scope; state unsupported weather, alternate layouts, animation, or effects. Do not assume map visuals alone determine traversability.
 
-### ZOD-030 â€” Prepare and load the selected map slice
+### ZOD-030 — Prepare and load the selected map slice
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-029
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-029
 
 **Result:** [Prepared MAP003 pipeline and validation](development/prepared-map-slice.md)
 (2026-10-23). Bounded offline GNS/mesh/indexed-texture preparation publishes a hash-verified
@@ -859,9 +859,9 @@ must not cause source terrain to be rewritten. Alternate states and animation pl
 
 **Acceptance criteria:** Synthetic format tests cover bounds and malformed offsets/counts; terrain coordinates/heights/layers match selected source records; conversion preserves provenance and is repeatable; prepared outputs load with the BIN unavailable. The source parser remains an offline tool, not part of simulation.
 
-### ZOD-031 â€” Render one prepared map and unit pose
+### ZOD-031 — Render one prepared map and unit pose
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-025, ZOD-028, ZOD-030
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-025, ZOD-028, ZOD-030
 
 **Result:** [Fixed prepared scene, source comparison and limits](development/prepared-scene.md)
 (2026-10-23). MAP003 and the held Chocobo pose render from prepared files with native
@@ -876,9 +876,9 @@ Locked restore, zero-warning Release build and all 833 tests pass (37 new cases)
 
 **Acceptance criteria:** A fixed scene renders repeatably; terrain/unit placement agrees with simulation coordinates; a documented original/reference comparison records differences and confidence using ZOD-026 where available. Unsupported PS1 effects are explicitly listed. Runtime uses prepared files and no importer or reference C code.
 
-### ZOD-032 â€” Make the bounded battle playable through input and UI
+### ZOD-032 — Make the bounded battle playable through input and UI
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-023, ZOD-031
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-023, ZOD-031
 
 **Result:** [Playable two-unit battle, controls and evidence](development/playable-battle.md)
 (2026-10-23). `--battle` supports mouse/keyboard selection, legal move/target highlights,
@@ -894,9 +894,9 @@ controllers, original menu fidelity and prepared MAP003 combat integration remai
 
 **Acceptance criteria:** The M1 scenario can be completed in the Windows client; simulation validates every command; the UI consumes snapshots/events without writing battle state; the same commands produce the same headless result. Keep original menu fidelity and complete controller navigation in later work.
 
-### ZOD-033 â€” Add deterministic visual comparison checkpoints
+### ZOD-033 — Add deterministic visual comparison checkpoints
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Partial â€” synthetic comparison and bounded original banner diagnostic implemented; fidelity/timing validation pending Â· **Depends on:** ZOD-026, ZOD-031
+**Type:** Story · **Priority:** P2 · **Status:** Partial — synthetic comparison and bounded original banner diagnostic implemented; fidelity/timing validation pending · **Depends on:** ZOD-026, ZOD-031
 
 **Result (2026-10-24):** [Visual comparison workflow](development/visual-comparison-checkpoints.md)
 adds optional headless authored/same-environment PNG comparisons, strict capture/
@@ -1059,9 +1059,9 @@ loading duration and complete playback remain separate gates. ZOD-033 stays part
 
 **Acceptance criteria:** Capture conditions are reproducible; reports distinguish geometry, palette, transparency/order, and timing discrepancies from simulation failures; thresholds are justified rather than masking visible defects. Synthetic renderer checks can run without game files; original media and comparisons remain local. Human inspection is recorded for effects automated metrics cannot establish.
 
-### ZOD-034 â€” Add Windows CI and clean-machine launch validation
+### ZOD-034 — Add Windows CI and clean-machine launch validation
 
-**Type:** Chore Â· **Priority:** P2 Â· **Status:** Implemented; remote CI and clean-machine validation pending Â· **Depends on:** ZOD-025
+**Type:** Chore · **Priority:** P2 · **Status:** Implemented; remote CI and clean-machine validation pending · **Depends on:** ZOD-025
 
 **Scope:** Add a suitable Windows build/test path in CircleCI when the host introduces Windows requirements. Retain Linux coverage for platform-neutral projects and store useful test/build reports.
 
@@ -1080,9 +1080,9 @@ or automatic versioning is introduced.
 
 ## Complete PS1 baseline: decompose these as source evidence grows
 
-### ZOD-035 â€” Add a versioned save/load proof for the bounded scenario
+### ZOD-035 — Add a versioned save/load proof for the bounded scenario
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-016, ZOD-023
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-016, ZOD-023
 
 **Scope:** Save and load explicit battle snapshot DTOs with schema/content-profile versions, stable definition IDs, unit state, active turn, and RNG state. Choose an explicit legal checkpoint if mid-action state is unsupported.
 
@@ -1098,25 +1098,25 @@ state/events at thirteen checkpoints with freshly composed definitions. Locked
 restore, zero-warning Release build and all 954 tests passed (86 new cases).
 Campaign persistence, UI save slots and original memory-card import remain separate.
 
-### ZOD-036 â€” Implement status, reaction, support, and charge interactions
+### ZOD-036 — Implement status, reaction, support, and charge interactions
 
-**Type:** Epic Â· **Priority:** P3 Â· **Status:** Needs breakdown Â· **Depends on:** ZOD-023
+**Type:** Epic · **Priority:** P3 · **Status:** Needs breakdown · **Depends on:** ZOD-023
 
 **Scope:** Inventory baseline statuses, durations, turn triggers, reactions/counters, support modifiers, charged actions, and ordering interactions. Split by one traced mechanic or interaction set per implementation ticket.
 
 **Acceptance criteria:** The baseline coverage matrix accounts for every required mechanic; representative combinations and known quirks have deterministic state/RNG/event regressions; timing and arithmetic are traced and compared against independent observations where available. Start with one status in a complete turn/action scenario before expanding the catalog.
 
-### ZOD-037 â€” Complete baseline movement and path-selection behavior
+### ZOD-037 — Complete baseline movement and path-selection behavior
 
-**Type:** Epic Â· **Priority:** P3 Â· **Status:** Needs breakdown Â· **Depends on:** ZOD-010, ZOD-012
+**Type:** Epic · **Priority:** P3 · **Status:** Needs breakdown · **Depends on:** ZOD-010, ZOD-012
 
 **Scope:** Inventory and implement remaining slope/elevation cases, horizontal jumps, water/ceilings, mounts/standing height, ally/enemy traversal, layer transitions, special movement modes/abilities, and path/tie ordering.
 
 **Acceptance criteria:** Each supported mode has source-traced eligibility, reachable-set, destination, and selected-path fixtures; interactions are tested; independent comparisons cover selected difficult maps. No item is accepted merely because the current cost algorithm returns a plausible destination set.
 
-### ZOD-038 â€” Complete combat formulas, targeting, rewards, and AI
+### ZOD-038 — Complete combat formulas, targeting, rewards, and AI
 
-**Type:** Epic Â· **Priority:** P3 Â· **Status:** Needs breakdown Â· **Depends on:** ZOD-022
+**Type:** Epic · **Priority:** P3 · **Status:** Needs breakdown · **Depends on:** ZOD-022
 
 **Scope:** Inventory action families, formula variants, range/area/line-of-sight rules, equipment/elements, hit/evade behavior, XP/JP/loot, victory/loss conditions, and required AI decisions. Split behavior families and decision rules into separate tickets, linked to ZOD-036/037 where needed.
 
@@ -1131,9 +1131,9 @@ combat rewrite or change the active banner queue.
 
 **Acceptance criteria:** All baseline actions and required AI choices are mapped to implementation/fixtures or explicit unresolved entries; representative encounters validate state, RNG draw ordering, and rewards; mandatory enemy/ally turns can complete without player scripting. Record observed AI deviations separately from player-action correctness.
 
-### ZOD-104 â€” Trace and specify the first executable job ability
+### ZOD-104 — Trace and specify the first executable job ability
 
-**Type:** Spike Â· **Priority:** P3 Â· **Status:** Complete (source/data contract; implementation unexecuted) Â· **Depends on:** ZOD-017, ZOD-022, ZOD-023
+**Type:** Spike · **Priority:** P3 · **Status:** Complete (source/data contract; implementation unexecuted) · **Depends on:** ZOD-017, ZOD-022, ZOD-023
 
 **Result (2026-10-26):** The [Accumulate contract](architecture/zod-104-accumulate-action.md)
 pins clean decomp `11464943bbdbd2a0af022d90cb7f10455cf911df` and verifies the
@@ -1151,9 +1151,9 @@ domain, identify content/state/save/UI prerequisites, and define independently
 checkable implementation children. Original rewards, learning, equipment bonuses,
 AI and presentation equivalence remain outside the selected proof.
 
-### ZOD-105 â€” Prove the pure Accumulate content/action scenario
+### ZOD-105 — Prove the pure Accumulate content/action scenario
 
-**Type:** Story Â· **Priority:** P3 Â· **Status:** Complete Â· **Depends on:** ZOD-104
+**Type:** Story · **Priority:** P3 · **Status:** Complete · **Depends on:** ZOD-104
 
 **Result (2026-10-26):** [Implementation/workflow](behavior/accumulate-implementation.md)
 and [executed evidence](evidence/combat/accumulate-implementation-v1.json) record
@@ -1178,9 +1178,9 @@ raw provenance only under scratch; unsupported fields fail explicitly. Content
 round-trips deterministically. Existing sword fixtures/journals retain exact
 outcomes/RNG. Update behavior evidence and run appropriate locked build/suites.
 
-### ZOD-106 â€” Preserve boosted battle PA across checkpoints and replay
+### ZOD-106 — Preserve boosted battle PA across checkpoints and replay
 
-**Type:** Story Â· **Priority:** P3 Â· **Status:** Deferred Â· **Depends on:** ZOD-105
+**Type:** Story · **Priority:** P3 · **Status:** Deferred · **Depends on:** ZOD-105
 
 **Trigger (owner sequencing, 2026-10-26):** Revisit when a concrete debugging/
 checkpoint need or an explicitly selected battle-suspension feature requires
@@ -1200,9 +1200,9 @@ or mismatched-profile saves fail without changing state/files. Use rehashed sema
 negatives, not only hash-mismatch checks. Repeat accepted/rejected command journals;
 run appropriate build/suites and retain current save regression evidence.
 
-### ZOD-107 â€” Use Accumulate through the existing Windows battle controls
+### ZOD-107 — Use Accumulate through the existing Windows battle controls
 
-**Type:** Story Â· **Priority:** P3 Â· **Status:** Complete Â· **Depends on:** ZOD-105
+**Type:** Story · **Priority:** P3 · **Status:** Complete · **Depends on:** ZOD-105
 
 **Owner sequencing (2026-10-26):** ZOD-106 is deferred. Replace this slice's
 save-continuation check with in-memory command/headless/replay equality, preserving
@@ -1227,9 +1227,9 @@ state deltas, RNG preservation, atomic rejections and 15 captures. Locked Releas
 build has zero warnings; 2,459 .NET / 299 Python tests pass. Review instructions and
 limits are in the [guide](development/accumulate-battle-controls.md).
 
-### ZOD-108 â€” Trace Throw Stone targeting, damage and flat knockback
+### ZOD-108 — Trace Throw Stone targeting, damage and flat knockback
 
-**Type:** Spike Â· **Priority:** P3 Â· **Status:** Complete (source/data contract) Â· **Depends on:** ZOD-105, ZOD-107
+**Type:** Spike · **Priority:** P3 · **Status:** Complete (source/data contract) · **Depends on:** ZOD-105, ZOD-107
 
 **Result (2026-10-26):** The [contract](architecture/zod-108-throw-stone-action.md)
 pins clean read-only decomp 11464943bbdbd2a0af022d90cb7f10455cf911df, re-verifies
@@ -1246,9 +1246,9 @@ source/callers/data/widths/order; define a clear flat two-unit domain and explic
 unsupported projectile/terrain/status behavior. Preserve old profiles and record
 found fidelity gaps. Separate pure rules, prepared content and native review.
 
-### ZOD-109 â€” Prove pure Throw Stone damage and flat knockback
+### ZOD-109 — Prove pure Throw Stone damage and flat knockback
 
-**Type:** Story Â· **Priority:** P3 Â· **Status:** Complete Â· **Depends on:** ZOD-108
+**Type:** Story · **Priority:** P3 · **Status:** Complete · **Depends on:** ZOD-108
 
 **Result (2026-10-26):** [Behavior/evidence](behavior/throw-stone-implementation.md)
 records the closed pure profile, exact damage/Brave/facing/range rules and atomic
@@ -1270,9 +1270,9 @@ lethal cancellation, Act/Move ordering, RNG exhaustion, replay and atomic reject
 Unsupported setups reject before publication. Record exact event order and source
 limits; run meaningful regressions and appropriate full implementation suites.
 
-### ZOD-110 â€” Prepare Throw Stone content and a combined Basic Skill scenario
+### ZOD-110 — Prepare Throw Stone content and a combined Basic Skill scenario
 
-**Type:** Story Â· **Priority:** P3 Â· **Status:** Complete Â· **Depends on:** ZOD-109
+**Type:** Story · **Priority:** P3 · **Status:** Complete · **Depends on:** ZOD-109
 
 **Result (2026-10-26):** TST-021..028 pass with strict companion/grant validation,
 six-record verified import, canonical metadata matching, combined action routing,
@@ -1294,9 +1294,9 @@ preservation, boosted ranged damage, first KO, restart and headless continuation
 Unsupported ability saves reject before file I/O, including initial states.
 Run appropriate suites and independent import/evidence audit.
 
-### ZOD-111 â€” Use Throw Stone through prepared Windows target controls
+### ZOD-111 — Use Throw Stone through prepared Windows target controls
 
-**Type:** Story Â· **Priority:** P3 Â· **Status:** Complete Â· **Depends on:** ZOD-110
+**Type:** Story · **Priority:** P3 · **Status:** Complete · **Depends on:** ZOD-110
 
 TST-029..033 pass; TST-034 is owner-approved ("This looks good.", 2026-10-26).
 Individual physical-input steps were not separately reported or agent-observed.
@@ -1315,9 +1315,9 @@ repeat prepared/capture outputs, inspect GPU images, and preserve render/resize/
 focus atomicity. Owner visual/physical-input approval remains a separate gate.
 Battle-save persistence is not a prerequisite.
 
-### ZOD-112 â€” Specify the bounded sword's settled facing lifecycle
+### ZOD-112 — Specify the bounded sword's settled facing lifecycle
 
-**Type:** Spike Â· **Priority:** P3 Â· **Status:** Complete (source/fixture contract; correction unimplemented) Â· **Depends on:** ZOD-111
+**Type:** Spike · **Priority:** P3 · **Status:** Complete (source/fixture contract; correction unimplemented) · **Depends on:** ZOD-111
 
 **Result (2026-10-26):** [Pinned trace and migration policy](architecture/zod-112-sword-settled-facing.md)
 and [evidence](evidence/combat/sword-facing-contract-v1.json) identify the living
@@ -1345,9 +1345,9 @@ range/critical/knockback expansion, rewards/animation port, new native UI work,
 editor work or battle-save feature. Source-derived expectations remain distinct
 from original-game execution.
 
-### ZOD-113 â€” Correct settled sword facing and migrate executable fixtures
+### ZOD-113 — Correct settled sword facing and migrate executable fixtures
 
-**Type:** Story Â· **Priority:** P3 Â· **Status:** Complete Â· **Depends on:** ZOD-112
+**Type:** Story · **Priority:** P3 · **Status:** Complete · **Depends on:** ZOD-112
 
 **Result (2026-10-26):** [Correction/migration guide](behavior/sword-settled-facing-implementation.md)
 and [evidence](evidence/combat/sword-facing-implementation-v1.json) execute all
@@ -1374,9 +1374,9 @@ full .NET/Python suites and repeated headless scenarios. No editor, transient
 animation state, broader sword rules or ability-save support. New native work is
 not required if presentation is unchanged; historical captures remain historical.
 
-### ZOD-114 â€” Specify flat sword critical knockback and the geometry gate
+### ZOD-114 — Specify flat sword critical knockback and the geometry gate
 
-**Type:** Spike Â· **Priority:** P3 Â· **Status:** Ready (recommended next) Â· **Depends on:** ZOD-113
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-113
 
 **Scope:** Trace the next closed ordinary sword extension against fresh pinned
 read-only decomp: critical-triggered knockback on an open dry flat two-unit map.
@@ -1392,17 +1392,17 @@ implementation recommendation. Preserve settled-facing correction and historical
 evidence. No guard relaxation or gameplay change in this spike; no falls, slopes,
 water, additional units, reactions, animations, rewards, editor or save feature.
 
-### ZOD-039 â€” Expand typed definitions and import to the baseline catalog
+### ZOD-039 — Expand typed definitions and import to the baseline catalog
 
-**Type:** Epic Â· **Priority:** P3 Â· **Status:** Needs breakdown Â· **Depends on:** ZOD-018
+**Type:** Epic · **Priority:** P3 · **Status:** Needs breakdown · **Depends on:** ZOD-018
 
 **Scope:** Add items/equipment, full jobs and abilities/skill sets, monsters/characters, statuses, formulas/parameters, encounters/ENTD, localized text, maps, sprites/animations, stores, and campaign references in source-driven increments.
 
 **Acceptance criteria:** Every baseline record family is inventoried and accounted for; all required references/flags validate; importing supported records is repeatable; every meaningful source field is mapped, intentionally unused, or explicitly unresolved. Content-sized synthetic catalogs prove that original fixed table limits are not accidental runtime restrictions. Authoring and runtime share validation.
 
-### ZOD-040 â€” Investigate event/script formats and community-tool interoperability
+### ZOD-040 — Investigate event/script formats and community-tool interoperability
 
-**Type:** Spike Â· **Priority:** P2 Â· **Status:** Complete for the selected synthetic event; retail/tool round-trips pending Â· **Depends on:** None
+**Type:** Spike · **Priority:** P2 · **Status:** Complete for the selected synthetic event; retail/tool round-trips pending · **Depends on:** None
 
 **Scope:** Identify battle/story/world script families, exact relevant community editors, supported editions, opcode encodings, execution order, state dependencies, and the subset needed for one small event. Inspect tool licenses before proposing code reuse.
 
@@ -1418,17 +1418,17 @@ uncertainties and binary round-trips remain explicit. No original event/script/m
 is committed or executed. The bounded decoder/executor/lifecycle follow-ups are
 ZOD-064/065/066. Research completion does not establish original event compatibility.
 
-### ZOD-041 â€” Implement campaign, encounters, events, and optional content
+### ZOD-041 — Implement campaign, encounters, events, and optional content
 
-**Type:** Epic Â· **Priority:** P3 Â· **Status:** Needs breakdown Â· **Depends on:** ZOD-035, ZOD-039, ZOD-040
+**Type:** Epic · **Priority:** P3 · **Status:** Needs breakdown · **Depends on:** ZOD-035, ZOD-039, ZOD-040
 
 **Scope:** World travel/time, encounters/battle setup, story and battle events, dialogue/triggers, party transitions, propositions and side content, and ending paths. Coordinate combat prerequisites with ZOD-036/038 as each encounter needs them.
 
 **Acceptance criteria:** A coverage matrix accounts for every baseline campaign/optional path; the first child milestone completes one event-to-battle-to-world loop; complete acceptance requires new game through ending plus required side content, with scenario checks for flag/party/encounter transitions. Report unsupported scripts and avoid silently skipping them.
 
-### ZOD-042 â€” Implement original game flow, menus, and progression UI
+### ZOD-042 — Implement original game flow, menus, and progression UI
 
-**Type:** Epic Â· **Priority:** P3 Â· **Status:** Needs breakdown Â· **Depends on:** ZOD-032, ZOD-039
+**Type:** Epic · **Priority:** P3 · **Status:** Needs breakdown · **Depends on:** ZOD-032, ZOD-039
 
 **Scope:** Opening/title flow, formation, equipment, jobs/JP, shops, world navigation, battle menus, settings, help, and save/load screens. Identify required text/font/layout and input behavior for each screen.
 
@@ -1445,9 +1445,9 @@ persistence, live/restart behavior and safe display recovery when those options
 are scoped. Coordinate ZOD-079 and the [later presentation notes](development/later-presentation-decisions.md);
 this does not advance Settings ahead of the current campaign/UI prerequisites.
 
-### ZOD-043 â€” Establish audio decoding/playback and expand to baseline coverage
+### ZOD-043 — Establish audio decoding/playback and expand to baseline coverage
 
-**Type:** Epic Â· **Priority:** P3 Â· **Status:** Needs breakdown Â· **Depends on:** ZOD-024
+**Type:** Epic · **Priority:** P3 · **Status:** Needs breakdown · **Depends on:** ZOD-024
 
 **Scope:** First investigate music/sample/sound-effect formats and playback semantics. Select a backend, prove one prepared sound/music path, then expand music, effects, loops, transitions, timing, volume, and any required streamed audio.
 
@@ -1459,17 +1459,17 @@ mixing, interpolation/reverb and applicable streamed paths. Define original
 recording comparisons separately from device latency and Settings controls; see
 the [later presentation notes](development/later-presentation-decisions.md).
 
-### ZOD-044 â€” Finish asset preparation for remaining required formats
+### ZOD-044 — Finish asset preparation for remaining required formats
 
-**Type:** Epic Â· **Priority:** P3 Â· **Status:** Needs breakdown Â· **Depends on:** ZOD-028, ZOD-030
+**Type:** Epic · **Priority:** P3 · **Status:** Needs breakdown · **Depends on:** ZOD-028, ZOD-030
 
 **Scope:** Inventory unsupported map/effect/menu/world/font/movie/audio formats and the seven mixed XA/STR entries; resolve their sector/data semantics before building separate converters/streaming decoders. Prioritize by the next baseline scenario's dependencies.
 
 **Acceptance criteria:** Every resource required by the baseline is accounted for with conversion/load status and provenance; mixed entries are no longer silently omitted; runtime can present required movie/streamed content from prepared files without the BIN. Synthetic bounds/malformed-input tests and local decode/comparison evidence cover each format family. An intentionally unused resource requires a documented reason.
 
-### ZOD-045 â€” Build the baseline feature/content coverage matrix
+### ZOD-045 — Build the baseline feature/content coverage matrix
 
-**Type:** Inventory task Â· **Priority:** P2 Â· **Status:** Complete initial family-level inventory; deeper catalogs remain open Â· **Depends on:** None
+**Type:** Inventory task · **Priority:** P2 · **Status:** Complete initial family-level inventory; deeper catalogs remain open · **Depends on:** None
 
 **Scope:** Convert the full-original-game target into an inventory by subsystem, content family, screen, campaign/optional encounter, asset family, and compatibility profile. Use existing evidence and explicitly label unknown entries rather than inventing counts.
 
@@ -1489,9 +1489,9 @@ No .NET runtime, package, asset or C reference change is made by this inventory.
 The last recorded 954-test baseline is retained as historical evidence, not rerun.
 
 
-### ZOD-046 â€” Run original-game acceptance and regression review
+### ZOD-046 — Run original-game acceptance and regression review
 
-**Type:** Acceptance epic Â· **Priority:** P3 Â· **Status:** Needs breakdown Â· **Depends on:** ZOD-034, ZOD-036 through ZOD-045, ZOD-053
+**Type:** Acceptance epic · **Priority:** P3 · **Status:** Needs breakdown · **Depends on:** ZOD-034, ZOD-036 through ZOD-045, ZOD-053
 
 **Scope:** Execute the baseline matrix, campaign playthroughs, optional content, save/continue paths, presentation comparisons, asset completeness checks, and supported Windows launch validation.
 
@@ -1499,9 +1499,9 @@ The last recorded 954-test baseline is retained as historical evidence, not reru
 
 ## Bounded children selected by ZOD-040 and ZOD-045
 
-### ZOD-064 â€” Decode one bounded PS1 scenario block into prepared event data
+### ZOD-064 — Decode one bounded PS1 scenario block into prepared event data
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-040
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-040
 
 **Result (2026-10-23):** [Prepared conditional event](development/prepared-scenario-event.md)
 implements raw/processed block inspection, the independently authored fixture,
@@ -1525,9 +1525,9 @@ capability validation. Prepared loading needs no original block/BIN/reference co
 No original event dumps are committed. An optional EntryEdit round-trip needs its
 exact binary/configuration pinned and is not a runtime dependency.
 
-### ZOD-065 â€” Execute the bounded conditional event deterministically
+### ZOD-065 — Execute the bounded conditional event deterministically
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-064, ZOD-035
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-064, ZOD-035
 
 **Result (2026-10-23):** [Conditional-event execution](behavior/conditional-event-execution.md)
 adds a Core-owned immutable program/state and pure Step/Run transitions, projected
@@ -1551,9 +1551,9 @@ arithmetic-domain/budget failures report clear diagnostics without silently endi
 the event or applying partial state. Tests need no assets, clock, UI, C or network.
 FFT opcodes/flags stay out of Zodiac.
 
-### ZOD-066 â€” Trace one real event's activation and completion prerequisites
+### ZOD-066 — Trace one real event's activation and completion prerequisites
 
-**Type:** Spike Â· **Priority:** P2 Â· **Status:** Complete for selected source trace; original observation pending Â· **Depends on:** ZOD-064, ZOD-065
+**Type:** Spike · **Priority:** P2 · **Status:** Complete for selected source trace; original observation pending · **Depends on:** ZOD-064, ZOD-065
 
 **Result (2026-10-23):** [BattleStart investigation](architecture/zod-066-battle-start-event.md)
 selects event 401 (`0x191`) from a reverified BIN/archive, with pinned block hash
@@ -1576,9 +1576,9 @@ an independent original/emulator observation if available, or its exact blocker.
 Propose one bounded next semantic addition and fixtures; no silent instruction
 skipping or bulk dispatcher port. This trace does not claim the campaign works.
 
-### ZOD-067 â€” Trace campaign save fields, lifetimes and legal checkpoints
+### ZOD-067 — Trace campaign save fields, lifetimes and legal checkpoints
 
-**Type:** Spike Â· **Priority:** P2 Â· **Status:** Complete for field-family and entry-path trace; retail checkpoint catalog pending Â· **Depends on:** ZOD-035, ZOD-045
+**Type:** Spike · **Priority:** P2 · **Status:** Complete for field-family and entry-path trace; retail checkpoint catalog pending · **Depends on:** ZOD-035, ZOD-045
 
 **Result (2026-10-23):** [Campaign save investigation](architecture/zod-067-campaign-save-state.md)
 maps logical fields, writers, lifetime/ownership, restore order, unknowns and
@@ -1604,9 +1604,9 @@ implementation child with dependencies and synthetic migration/failure checks.
 No packed memory-card image import, new UI or campaign runtime is implemented;
 original-card interoperability remains optional. Can run alongside ZOD-064.
 
-### ZOD-068 â€” Prove a synthetic world-checkpoint Save/Load service
+### ZOD-068 — Prove a synthetic world-checkpoint Save/Load service
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-035, ZOD-067
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-035, ZOD-067
 
 **Result (2026-10-26):** [Synthetic checkpoint proof](development/synthetic-world-checkpoint.md)
 adds an immutable authored world state and one deterministic travel command,
@@ -1639,9 +1639,9 @@ validated recovery. No hidden RNG seed/draw or wall-clock dependency enters Core
 RNG capability is unsupported until a named policy and replayable inputs exist.
 This is a synthetic campaign proof, not completion of ZOD-041/053.
 
-### ZOD-102 â€” Prove authored world-menu application navigation
+### ZOD-102 — Prove authored world-menu application navigation
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-068
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-068
 
 **Parent:** ZOD-042. [Selected contract](development/synthetic-world-navigation.md)
 records original title/world/card input context and the separate authored flow.
@@ -1664,9 +1664,9 @@ including rejection. Repeated logical scripts match; navigation actions perform
 no filesystem operations and consume no clock/RNG/device/graphics input. Record
 native/device checks as unexecuted.
 
-### ZOD-103 â€” Host authored world-menu navigation on Windows
+### ZOD-103 — Host authored world-menu navigation on Windows
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-102
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-102
 
 **Result (2026-10-26):** [Windows host](development/windows-world-navigation.md)
 adds explicit world-menu launch/check routes, authored panels/font, shared
@@ -1696,9 +1696,9 @@ review remain separately reported gates. Do not create real user save files.
 Only this bounded navigation prerequisite is required by ZOD-069; the full
 ZOD-042 epic and original party/job/equipment workflows stay open.
 
-### ZOD-069 â€” Add native Windows Save/Load slot navigation
+### ZOD-069 — Add native Windows Save/Load slot navigation
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-068, ZOD-103
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-068, ZOD-103
 
 **Result (2026-10-26):** [Slot UI](development/world-save-load-ui.md) delegates
 catalog/save/load/recovery to the existing service, freezes selected revisions,
@@ -1730,9 +1730,9 @@ Record keyboard/mouse/controller and Windows manual checks separately from pure
 state tests. Keep original save availability distinct from any future save-anywhere
 feature; no PS1 card formatting/browser emulation is required.
 
-### ZOD-071 â€” Prove one deterministic non-tutorial event frame wait
+### ZOD-071 — Prove one deterministic non-tutorial event frame wait
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-065, ZOD-066
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-065, ZOD-066
 
 **Result (2026-10-23):** [Explicit-tick wait proof](behavior/timed-event-waits.md)
 adds a distinct non-tutorial speed-one timed profile, signed-halfword F1 validation,
@@ -1761,9 +1761,9 @@ silently skip original instructions. Existing conditional event regressions rema
 unchanged. This does not enable original BattleStart: ZOD-066 lists the remaining
 camera, task, banner, mutable-operand and EventEnd prerequisites.
 
-### ZOD-072 â€” Define deterministic event task lifetimes and barrier contract
+### ZOD-072 — Define deterministic event task lifetimes and barrier contract
 
-**Type:** Spike Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-066, ZOD-071
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-066, ZOD-071
 
 **Result (2026-10-23):** [Scene task/barrier contract](architecture/zod-072-event-task-contract.md)
 traces scene-wide E5 polling, mandatory first yield, multiple instances/owners,
@@ -1788,9 +1788,9 @@ then one bounded implementation child. Preserve existing conditional/timed profi
 Core-to-Content independence and pure simulation. No full PS1 scheduler, worker
 callbacks, clock/GPU polling, original event export or EventEnd implementation.
 
-### ZOD-073 â€” Prove the scene task ledger and single barrier consumer
+### ZOD-073 — Prove the scene task ledger and single barrier consumer
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-072
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-072
 
 **Result (2026-10-23):** [Pure scene task/barrier proof](behavior/scene-task-barriers.md)
 implements immutable scene/instance identities, revisions, family phases and
@@ -1820,9 +1820,9 @@ or Zodiac task classes. Existing conditional/timed profiles, save formats and E5
 rejection remain unchanged. This proof does not execute original opcodes, select
 opcode-77 slots, implement EventEnd, or add multiple interpreter consumers.
 
-### ZOD-074 â€” Integrate task barriers into a separate synthetic event profile
+### ZOD-074 — Integrate task barriers into a separate synthetic event profile
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-071, ZOD-073
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-071, ZOD-073
 
 **Result (2026-10-23):** [Synthetic event barrier contract](behavior/scene-event-barriers.md)
 adds the explicit BATTLE non-tutorial speed-one task-barrier profile. Core composes
@@ -1857,9 +1857,9 @@ define and test that boundary. Preserve old APIs/profiles, saves and package gra
 No worker algorithms, callback/GPU timing, opcode-77 slot selection, EventEnd,
 concurrent consumers, WORLD support or original BattleStart playback.
 
-### ZOD-075 â€” Trace and select the first deterministic scene effect model
+### ZOD-075 — Trace and select the first deterministic scene effect model
 
-**Type:** Spike Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-074
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-074
 
 **Result (2026-10-23):** [General-banner effect selection](architecture/zod-075-general-banner-effect.md)
 selects condition 8's logical post-readiness lifecycle, after comparing camera,
@@ -1889,9 +1889,9 @@ initial/last-tick ordering, retained scene lifetime and cancellation authority.
 No broad scheduler/worker port, new engine extraction, full original event playback
 or unobserved claim of retail timing equivalence.
 
-### ZOD-076 â€” Prove the logical general-banner effect and atomic scene adapter
+### ZOD-076 — Prove the logical general-banner effect and atomic scene adapter
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-075
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-075
 
 **Result (2026-10-23):** [Logical general-banner driver](behavior/general-banner-effect.md)
 adds immutable condition-8 progress, explicit Circle/native cancellation, managed
@@ -1927,9 +1927,9 @@ rejection, save formats, package graphs and Core independence unchanged. No GPU/
 clock/I/O callbacks, full startup timing, other conditions, EventEnd, concurrent
 consumers or original BattleStart playback.
 
-### ZOD-077 â€” Trace general-banner assets and the preparation/readiness boundary
+### ZOD-077 — Trace general-banner assets and the preparation/readiness boundary
 
-**Type:** Spike Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-076
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-076
 
 **Result (2026-10-23):** [Asset/readiness trace](architecture/zod-077-general-banner-assets.md)
 pins verified BONUS.BIN image 0 and REQUIRE geometry/range/page/color records,
@@ -1960,9 +1960,9 @@ implementation child with independently checkable expectations. No full opcode-7
 admission, fake loading duration, other condition/banner families, EventEnd or claim
 of original visual/timing equivalence without original observations.
 
-### ZOD-078 â€” Prepare and preview the bounded general banner
+### ZOD-078 — Prepare and preview the bounded general banner
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-077
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-077
 
 **Result:** [Prepared general-banner preview](development/prepared-general-banner.md)
 (2026-10-23): pinned input/range checks, staged preparation, strict immutable Content
@@ -2001,9 +2001,9 @@ Retain existing event APIs/profiles and opcode-78 rejection, Core/Engine purity,
 save schemas and package graphs. No other banners, original loading delay,
 EventEnd, full BattleStart, map/camera integration or original equivalence claim.
 
-### ZOD-080 â€” Trace bounded DisplayConditions admission and update order
+### ZOD-080 — Trace bounded DisplayConditions admission and update order
 
-**Type:** Spike Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-074, ZOD-076, ZOD-078
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-074, ZOD-076, ZOD-078
 
 **Result (2026-10-24):** The [source/contract selection](architecture/zod-080-banner-opcode-admission.md)
 traces unsigned-byte operands, asynchronous start, one task-56 worker, native
@@ -2021,9 +2021,9 @@ order, readiness, ownership, rollback/budget and legacy isolation rules. Record
 independently authored expectations and a bounded implementation split; do not
 enable original events, loading delays, Ready, other conditions or EventEnd.
 
-### ZOD-081 â€” Prove ordered event/banner transactions in Core
+### ZOD-081 — Prove ordered event/banner transactions in Core
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-080
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-080
 
 **Implementation (2026-10-25):** [Ordered banner transactions](development/ordered-banner-transactions.md)
 add a distinct typed `Zodiac.Framework` program/executor with private shared
@@ -2049,9 +2049,9 @@ explicit Circle samples and resource/owner IDs. No AssetTool/Content/profile/sch
 retail import, startup-duration or graphics work. Run locked restore, zero-warning
 Release build and appropriate full regressions.
 
-### ZOD-082 â€” Prepare and execute the authored preloaded banner profile
+### ZOD-082 — Prepare and execute the authored preloaded banner profile
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-081, ZOD-078
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-081, ZOD-078
 
 **Implementation (2026-10-25):** [Separate authored prepared profile](development/prepared-ordered-banner-event.md)
 adds strict raw/processed conversion, manifest-verified loading/projection and
@@ -2079,9 +2079,9 @@ draws. Runtime uses prepared files only; resources never enter Core. Demonstrate
 finite repeatable host checks and retain explicit preloaded/startup/latency limits.
 No other banner family, native slot emulator, EventEnd, full BattleStart or automatic commit.
 
-### ZOD-083 â€” Trace Ready display assets and dispatcher/child lifetime
+### ZOD-083 — Trace Ready display assets and dispatcher/child lifetime
 
-**Type:** Spike Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-082
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-082
 
 **Result (2026-10-25):** [Ready source/contract](architecture/zod-083-ready-display.md)
 distinguishes condition 0/message 0 from condition 1's buggy helper. Verified image
@@ -2100,9 +2100,9 @@ ownership and scheduling. Preserve uncertainties and unsupported condition 1;
 record independently authored cases and a bounded implementation split. Source
 and queued-packet evidence must not be labeled original scanout/timing equivalence.
 
-### ZOD-084 â€” Prove the ordered Ready dispatcher/child aggregate
+### ZOD-084 — Prove the ordered Ready dispatcher/child aggregate
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-083
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-083
 
 **Completion (2026-10-25):** The [ordered Ready aggregate](development/ready-display-transactions.md)
 executes all 28 Core contract cases and 25 additional boundaries. Dispatcher and
@@ -2112,7 +2112,7 @@ profile changes. Locked restore, zero-warning Release build, **1,682 .NET / 163
 Python tests** pass. Next ZOD-085; ZOD-086 still waits for its presentation policy.
 
 **Scope:** Implement one typed preloaded condition-0/H-0..255 aggregate over the
-selected event â†’ dispatcher â†’ child phases. The ledger's task 56 represents its
+selected event → dispatcher → child phases. The ledger's task 56 represents its
 dispatcher; retain child progress/terminal state privately within the aggregate.
 Preserve the old general-banner APIs, behavior and profiles.
 
@@ -2126,9 +2126,9 @@ must not depend on presentation reads. No callbacks/public half-ticks, raw opcod
 Content/preparation/graphics, native slots or original loading behavior. Run locked
 restore, zero-warning Release build and appropriate full regressions.
 
-### ZOD-085 â€” Select Ready glyph preparation and rendering policies
+### ZOD-085 — Select Ready glyph preparation and rendering policies
 
-**Type:** Spike Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-083
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-083
 
 **Completion (2026-10-25):** The [Ready presentation policy](architecture/zod-085-ready-rendering.md)
 selects a separate RGB5 CPU compositor, four-corner triangle interpolation,
@@ -2151,9 +2151,9 @@ resource-ready-before-scene ownership, independently authored expectations and
 precise preview/fidelity limits. Do not relax the general-banner schema or silently
 reinterpret its existing renderer policy. No new runtime renderer in this spike.
 
-### ZOD-086 â€” Prepare and preview the authored Ready profile
+### ZOD-086 — Prepare and preview the authored Ready profile
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-084, ZOD-085
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-084, ZOD-085
 
 **Completion (2026-10-25):** The [prepared Ready preview](development/prepared-ready-event.md)
 adds separate strict artwork/event formats, verified offline preparation and a
@@ -2175,12 +2175,12 @@ Decode unsigned condition/hold separately; reject old profiles, unsupported
 conditions/provenance/records even unreachable, missing readiness and retail
 events 4/401. Prove finite repeatable receipts and rendering-independent replay;
 no renderer completion acknowledgments. Keep one Ready per selected scene and
-explicitly exclude concurrent shared-pool effects, combined generalâ†’Ready retail
+explicitly exclude concurrent shared-pool effects, combined general→Ready retail
 playback, condition 1, original loading duration, EventEnd and full BattleStart.
 
-### ZOD-087 â€” Validate displayed Ready glyphs against original references
+### ZOD-087 — Validate displayed Ready glyphs against original references
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-086
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-086
 
 **Result (2026-10-25):** Six source-bound displayed Ready anchors match actual
 C# composition exactly, including 1,202 opaque / 77 background-sensitive STP
@@ -2207,9 +2207,9 @@ procedure before execution. Do not infer original duration, Circle timing, full
 event playback or hardware equivalence from a matching frozen image; preserve
 historical evidence and legacy/general behavior.
 
-### ZOD-088 â€” Bind displayed Ready birth frames through interrupted checkpoints
+### ZOD-088 — Bind displayed Ready birth frames through interrupted checkpoints
 
-**Type:** Source/validation task Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-087
+**Type:** Source/validation task · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-087
 
 **Result (2026-10-25):** The two endpoints are BIOS timer-2 sound callbacks with
 verified active exception save/restore records. Saved main VSync context binds
@@ -2238,9 +2238,9 @@ no original media committed or runtime dependency added. Hardware equivalence,
 physical Circle timing, full event/startup playback and later CRT/audio remain
 separate work.
 
-### ZOD-089 â€” Compose the prepared general-banner â†’ Ready scene
+### ZOD-089 — Compose the prepared general-banner → Ready scene
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-082, ZOD-088
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-082, ZOD-088
 
 **Scope:** Trace the event-4 display/barrier handoff and shared native artwork/pool
 ownership, then implement one bounded authored preloaded sequence with the proven
@@ -2267,9 +2267,9 @@ Legacy RGB8/ordered/Ready preserves 16/17/72 files. Review gallery
 2026-10-25: "This looks great." No new emulator
 run, combined original scanout comparison or full original event playback.
 
-### ZOD-090 â€” Trace Ready completion and battle-control ownership
+### ZOD-090 — Trace Ready completion and battle-control ownership
 
-**Type:** Spike Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-089
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-089
 
 **Scope:** Trace the verified event-4/common-401 tails, EventEnd cleanup and
 scenario chaining, event-frame completion, turn selection and input/menu gates.
@@ -2292,9 +2292,9 @@ rerun. [Source/contract record](architecture/zod-090-ready-battle-handoff.md),
 [metadata](evidence/events/ready-battle-handoff-v1.json). No new original capture,
 player-control observation, runtime/renderer change or full startup claim.
 
-### ZOD-091 â€” Hand the authored introduction to the playable battle
+### ZOD-091 — Hand the authored introduction to the playable battle
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete for bounded implementation Â· **Depends on:** ZOD-090
+**Type:** Story · **Priority:** P2 · **Status:** Complete for bounded implementation · **Depends on:** ZOD-090
 
 **Scope:** One prepared authored banner/Ready introduction followed by the
 existing synthetic two-unit battle in one Windows host. Reuse the existing
@@ -2326,16 +2326,16 @@ physical input-timing claim. [Implementation/validation record](development/intr
 `scratch/intro-battle-091-review/review.html` on 2026-10-25: "This looks good."
 Approval covers the authored gallery; no physical input or original startup claim.
 
-### ZOD-092 â€” Trace the original dark-screen transition worker
+### ZOD-092 — Trace the original dark-screen transition worker
 
-**Type:** Spike Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-091
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-091
 
 **Scope:** Trace the original DarkScreen/RemoveDarkScreen worker as the next
 missing startup capability. Select one bounded logical/resource/presentation
 contract before implementing it; reuse the existing task-ledger foundation.
 
 **Acceptance criteria:** Pin reference HEAD and relevant source/input identities;
-trace opcode admission/release, task 54 â†’ 55 â†’ 54 â†’ exit, callers, parameter data,
+trace opcode admission/release, task 54 → 55 → 54 → exit, callers, parameter data,
 arithmetic widths and ordering. Separate resource-loading waits from logical
 progress and identify graphics/background/shared-resource ownership. Select a
 bounded prepared-input/rendering policy and independently authored expectations,
@@ -2357,9 +2357,9 @@ not rerun. [Source/selected policy](architecture/zod-092-dark-screen-transition.
 [evidence](evidence/events/dark-screen-source-v1.json). Thirty authored future
 cases remain unexecuted; entry/release original scanouts and runtime work remain open.
 
-### ZOD-093 â€” Implement the pure dark-screen worker and task proof
+### ZOD-093 — Implement the pure dark-screen worker and task proof
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-092
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-092
 
 **Scope:** Implement the selected post-readiness immutable worker and an atomic
 ordered task/ledger/barrier adapter using prevalidated definition data. Keep
@@ -2387,9 +2387,9 @@ output regression remain separate gates. Existing Content/Client profiles are
 unchanged. [Behavior](behavior/dark-screen-worker.md),
 [validation](evidence/events/dark-screen-worker-v1.json).
 
-### ZOD-094 â€” Prepare and preview the bounded dark-screen transition
+### ZOD-094 — Prepare and preview the bounded dark-screen transition
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-093
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-093
 
 **Scope:** Prepare the selected original delay/rotation data offline, strictly load
 a separate immutable authored definition/profile and preview accepted dark-screen
@@ -2426,9 +2426,9 @@ The owner approved `scratch/dark-screen-094-review/review.html` on 2026-10-25:
 "That looks good." Approval covers this authored gallery; original entry/release
 pixel/timing equivalence remains open. This approval update reruns no implementation suites.
 
-### ZOD-095 â€” Bind original dark-screen entry and release references
+### ZOD-095 — Bind original dark-screen entry and release references
 
-**Type:** Spike Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-094
+**Type:** Spike · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-094
 
 **Scope:** Plan finite source-bound original entry/release observations and compare
 the selected prepared flat-quad output. Establish any prerequisite retained state
@@ -2463,9 +2463,9 @@ remaining gaps stay open. This approval update reruns no implementation suites.
 [Guide](development/original-dark-screen-comparison.md),
 [metadata](evidence/events/original-dark-screen-v1.json).
 
-### ZOD-096 â€” Specify the combined dark-screen introduction
+### ZOD-096 — Specify the combined dark-screen introduction
 
-**Type:** Design task Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-095, ZOD-091
+**Type:** Design task · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-095, ZOD-091
 
 **Scope:** Select the bounded authored composition of entering/held DarkScreen,
 general banner, Ready, release/barrier and the existing battle ownership handoff.
@@ -2497,9 +2497,9 @@ Forty future cases remain explicitly unexecuted (24 ZOD-097; 16 ZOD-098).
 [source metadata](evidence/events/dark-screen-intro-source-v1.json),
 [future cases](evidence/events/dark-screen-intro-contract-v1.json).
 
-### ZOD-097 â€” Implement the pure combined dark-screen introduction
+### ZOD-097 — Implement the pure combined dark-screen introduction
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-096
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-096
 
 **Scope:** Implement the selected nine-operation typed aggregate using existing
 DarkScreen/general/Ready transitions and scene task/event phases. One pure
@@ -2523,15 +2523,15 @@ facts and full late rollback. Availability requires accepted synthetic exit with
 all three terminal; post-exit calls reject. DSI-001..024 and 56 added boundaries
 pass. Independent cell/draw/display/barrier equations, variable authored delays,
 rollback/retry and complete state/trace replay are checked. Locked restore,
-zero-warning Release build, **2,111 .NET / 269 Python tests** pass (81 new managed).
+zero-warning Release build, **2,111 .NET / 269 Python tests** pass (80 new managed).
 Historical future flags remain unchanged; DSI-025..040 remain ZOD-098 work.
 No prepared format, renderer, device/battle routing, native check, emulator or
 original-duration claim. [Behavior](behavior/dark-screen-introduction.md),
 [executed evidence](evidence/events/dark-screen-intro-worker-v1.json).
 
-### ZOD-098 â€” Prepare and preview the combined dark-screen introduction
+### ZOD-098 — Prepare and preview the combined dark-screen introduction
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Complete Â· **Depends on:** ZOD-097, ZOD-099
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-097, ZOD-099
 
 **Result (2026-10-26):** [Prepared integration](development/prepared-dark-screen-introduction.md)
 adds a separate closed authored descriptor/CLI, three-resource readiness, ordered
@@ -2561,9 +2561,9 @@ prepared-only runs, old artifact/trace regressions and a new owner-reviewed gall
 Record human approval separately. No original BIN/C/emulator runtime dependency,
 original startup duration, new map renderer, CRT/audio policy or combat refactor.
 
-### ZOD-099 â€” Audit replaceable engine and framework contracts
+### ZOD-099 — Audit replaceable engine and framework contracts
 
-**Type:** Spike Â· **Priority:** P1 Â· **Status:** Complete Â· **Depends on:** ZOD-097
+**Type:** Spike · **Priority:** P1 · **Status:** Complete · **Depends on:** ZOD-097
 
 **Result (2026-10-25):** [Boundary audit](architecture/zod-099-replacement-boundary-audit.md)
 pins managed baseline `4bda424`, inventories concrete project/type dependencies,
@@ -2590,9 +2590,9 @@ do not claim replacement from interfaces alone. No production type
 migration, source-rule translation or runtime plugin system is required by this
 spike. Its completion releases ZOD-098; wider migration is staged separately.
 
-### ZOD-100 â€” Revisit an engine contract when substitution is needed
+### ZOD-100 — Revisit an engine contract when substitution is needed
 
-**Type:** Conditional spike Â· **Priority:** P3 Â· **Status:** Deferred Â· **Depends on:** ZOD-099
+**Type:** Conditional spike · **Priority:** P3 · **Status:** Deferred · **Depends on:** ZOD-099
 
 **Activation evidence:** A real second engine implementation, independent game/
 consumer or demonstrated integration change needs substitution, and the selected
@@ -2608,9 +2608,9 @@ and value ownership before proposing an API. Specify an implementation-independe
 proof with shared conformance cases and a real consumer, then create a separately
 bounded implementation ticket. No whole-engine replacement or runtime-plugin claim.
 
-### ZOD-101 â€” Revisit a framework contract when usage establishes a boundary
+### ZOD-101 — Revisit a framework contract when usage establishes a boundary
 
-**Type:** Conditional spike Â· **Priority:** P3 Â· **Status:** Deferred Â· **Depends on:** ZOD-099
+**Type:** Conditional spike · **Priority:** P3 · **Status:** Deferred · **Depends on:** ZOD-099
 
 **Activation evidence:** A real alternate framework or independent application
 consumer needs substitution and enough behavior is implemented to understand the
@@ -2628,9 +2628,9 @@ automatic interface extraction, executable plugins or whole-game replacement cla
 
 ## Authoring, extensions, and later goals
 
-### ZOD-047 â€” Build the first job/ability inspection and editing UI
+### ZOD-047 — Build the first job/ability inspection and editing UI
 
-**Type:** Story Â· **Priority:** P2 Â· **Status:** Implemented; further UI work and owner review deferred by owner Â· **Depends on:** ZOD-016, ZOD-018
+**Type:** Story · **Priority:** P2 · **Status:** Implemented; further UI work and owner review deferred by owner · **Depends on:** ZOD-016, ZOD-018
 
 **Owner direction (2026-10-26):** Keep the functional editor and its evidence;
 defer further UI polish/review unless needed by a selected gameplay/content
@@ -2661,9 +2661,9 @@ native control renderings from pending owner visual and physical workflow checks
 
 **Acceptance criteria:** Inspect a local original definition, create an authored copy/add-on, change a supported field, receive field-specific validation, export, and use it in the bounded scenario; read-only baseline source and authored changes have clear provenance. Unsaved changes and failed export are handled predictably. The editor uses shared validators/exporters and never reimplements combat formulas or edits the BIN.
 
-### ZOD-048 â€” Expand authoring to flags, formulas, text, graphics, scripts, conditions, and audio
+### ZOD-048 — Expand authoring to flags, formulas, text, graphics, scripts, conditions, and audio
 
-**Type:** Epic Â· **Priority:** P4 Â· **Status:** Needs breakdown Â· **Depends on:** ZOD-047
+**Type:** Epic · **Priority:** P4 · **Status:** Needs breakdown · **Depends on:** ZOD-047
 
 **Owner sequencing (2026-10-26):** Add editor capabilities when supported runtime
 or content work needs them. FFTPatcher-inspired UI breadth alone is not a reason
@@ -2682,49 +2682,49 @@ C#; UI and data authoring complement that workflow. See the owner's
 
 **Acceptance criteria:** Each selected editor round-trips supported authored data, validates references, supports recoverable editing, and previews through the same runtime/decoder semantics where practical. Complete this incrementally by content category. A general visual editor for every domain is a future goal rather than a prerequisite for the original game.
 
-### ZOD-049 â€” Prove add-on packages and compatibility-profile isolation
+### ZOD-049 — Prove add-on packages and compatibility-profile isolation
 
-**Type:** Story Â· **Priority:** P4 Â· **Status:** Waiting Â· **Depends on:** ZOD-016, ZOD-023, ZOD-045
+**Type:** Story · **Priority:** P4 · **Status:** Waiting · **Depends on:** ZOD-016, ZOD-023, ZOD-045
 
 **Scope:** Establish package identity/dependencies, namespaced IDs, precedence/conflict rules, supported schema versions, and explicit profile selection. Use synthetic added jobs/items/abilities and one changed rule parameter after each relevant category exists.
 
 **Acceptance criteria:** Original mode produces the same regression results with add-on files present but disabled; enabled add-ons add supported content without source edits; duplicate/conflicting IDs and missing dependencies fail clearly; saves/replays identify the profile/package versions they require. No arbitrary assembly loading is required. Expand the proof to new encounters/maps/campaigns as those systems become available.
 
-### ZOD-050 â€” Decide whether constrained custom mechanics or scripting are needed
+### ZOD-050 — Decide whether constrained custom mechanics or scripting are needed
 
-**Type:** Conditional spike Â· **Priority:** P4 Â· **Status:** Waiting Â· **Depends on:** ZOD-040, ZOD-049
+**Type:** Conditional spike · **Priority:** P4 · **Status:** Waiting · **Depends on:** ZOD-040, ZOD-049
 
 **Scope:** Select a real mechanic/campaign need that validated definitions, supported typed effects, and the baseline script interpreter cannot express. Compare extending typed operations with a deterministic scripting/extension API.
 
 **Acceptance criteria:** Either demonstrate the need and record execution limits, state access, determinism, API/version policy, diagnostics, trust, and replay implications, or close the ticket with evidence that current mechanisms suffice. General executable plugins require a separate design decision and are not implied by the C# authoring API.
 
-### ZOD-051 â€” Select and inventory the exact Lion War target
+### ZOD-051 — Select and inventory the exact Lion War target
 
-**Type:** Spike Â· **Priority:** P4 Â· **Status:** Waiting Â· **Depends on:** ZOD-045
+**Type:** Spike · **Priority:** P4 · **Status:** Waiting · **Depends on:** ZOD-045
 
 **Scope:** Choose the intended Lion War variant/revision with the owner and inventory its included WotL content, mod-specific adaptations, resources, scripts, and rule changes. Identify reference/provenance requirements and available local inputs.
 
 **Acceptance criteria:** A pinned feature-by-feature scope distinguishes existing PS1 baseline behavior, added content, intentional mechanical differences, and unknowns; each item maps to engine/content/script/asset capability or a child ticket. Do not assume the original PS1 BIN contains later content or that every WotL feature exists in the selected mod.
 
-### ZOD-052 â€” Integrate the selected Lion War content/profile
+### ZOD-052 — Integrate the selected Lion War content/profile
 
-**Type:** Epic Â· **Priority:** P4 Â· **Status:** Needs breakdown Â· **Depends on:** ZOD-046, ZOD-049, ZOD-051
+**Type:** Epic · **Priority:** P4 · **Status:** Needs breakdown · **Depends on:** ZOD-046, ZOD-049, ZOD-051
 
 **Scope:** Add the agreed features using established import/content/compatibility boundaries, creating focused tickets for missing capabilities identified by ZOD-051.
 
 **Acceptance criteria:** Every selected feature is represented and checked against its pinned target; Lion War is an explicit selectable profile/content set; baseline FFT regressions still pass; game data remains local and source/provenance is preserved. Any mechanic requiring ZOD-050 is gated by that design instead of bypassing the engine boundary.
 
-### ZOD-053 â€” Extend save data to complete campaign and content-version handling
+### ZOD-053 — Extend save data to complete campaign and content-version handling
 
-**Type:** Epic Â· **Priority:** P3 Â· **Status:** Needs breakdown Â· **Depends on:** ZOD-035, ZOD-041, ZOD-042
+**Type:** Epic · **Priority:** P3 · **Status:** Needs breakdown · **Depends on:** ZOD-035, ZOD-041, ZOD-042
 
 **Scope:** Extend the save proof to party/progression/equipment, campaign flags/time/world state, supported battle checkpoints, settings as appropriate, and required content/profile references. Define migration and backup handling as formats change.
 
 **Acceptance criteria:** Save/continue covers the required campaign paths and does not lose flags, inventory, progression, or RNG state relevant to the supported checkpoint; incomplete/corrupt/incompatible saves fail with useful diagnostics and preserve recoverable data; migrations have synthetic regression fixtures. Interoperability with original memory-card saves remains a separately scoped optional feature.
 
-### ZOD-079 â€” Specify later display, rendering and Settings options
+### ZOD-079 — Specify later display, rendering and Settings options
 
-**Type:** Deferred design task Â· **Priority:** P4 Â· **Status:** Waiting â€” owner requested much later Â· **Depends on:** ZOD-025, ZOD-033
+**Type:** Deferred design task · **Priority:** P4 · **Status:** Waiting — owner requested much later · **Depends on:** ZOD-025, ZOD-033
 
 **Owner notes (2026-10-24):** Preserve intended original CRT/4:3 display proportions
 through investigated pixel-aspect correction; provide an optional CRT shader;
@@ -2754,9 +2754,9 @@ Presentation settings leave simulation results unchanged; original media remain
 local. No shader, renderer replacement, Settings screen or audio implementation
 is required to complete this design task.
 
-### ZOD-059 â€” Add a widescreen presentation mode
+### ZOD-059 — Add a widescreen presentation mode
 
-**Type:** Story Â· **Priority:** P4 Â· **Status:** Waiting Â· **Depends on:** ZOD-025, ZOD-031, ZOD-033
+**Type:** Story · **Priority:** P4 · **Status:** Waiting · **Depends on:** ZOD-025, ZOD-031, ZOD-033
 
 **Scope:** Add an explicitly selected widescreen viewport/camera and menu/HUD layout mode while retaining
 the original presentation/reference profile. Decide how battle scenes, fixed layouts and cinematics fit.
@@ -2776,9 +2776,9 @@ concerns that operate together; retain the original reference profile and
 raw-pixel diagnostics. Optional CRT processing remains a separate choice under
 ZOD-079. Fixed scenes/cinematics and exact correction mappings remain unresolved.
 
-### ZOD-060 â€” Add selectable game-view rendering resolution
+### ZOD-060 — Add selectable game-view rendering resolution
 
-**Type:** Story Â· **Priority:** P4 Â· **Status:** Waiting Â· **Depends on:** ZOD-031, ZOD-033
+**Type:** Story · **Priority:** P4 · **Status:** Waiting · **Depends on:** ZOD-031, ZOD-033
 
 **Scope:** Implement selectable internal rendering resolution for the game view, with 1920 x 1080 as an
 example landscape target. The owner means rendered gameplay, not enhanced prerecorded movies. Distinguish
@@ -2795,9 +2795,9 @@ unchanged. No replacement asset pack or movie enhancement is required by this ti
 with ZOD-079's hardware/software rendering evaluation; multiple full rendering
 backends remain a decision, not a prerequisite assumed by this ticket.
 
-### ZOD-061 â€” Complete native Windows keyboard, mouse and controller interaction
+### ZOD-061 — Complete native Windows keyboard, mouse and controller interaction
 
-**Type:** Story Â· **Priority:** P3 Â· **Status:** Waiting Â· **Depends on:** ZOD-032, ZOD-042
+**Type:** Story · **Priority:** P3 · **Status:** Waiting · **Depends on:** ZOD-032, ZOD-042
 
 **Scope:** Extend the initial battle input proof into consistent keyboard/mouse and controller navigation
 across supported game screens, using device-independent application actions and configurable bindings.
@@ -2811,9 +2811,9 @@ conflicts, device changes, prompts and persistence have explicit behavior. Diffe
 the same logical command replay without device APIs, polling timing or input state entering simulation.
 Record Windows manual checks separately from headless tests.
 
-### ZOD-062 â€” Design extensible menu entries and availability conditions
+### ZOD-062 — Design extensible menu entries and availability conditions
 
-**Type:** Design task Â· **Priority:** P4 Â· **Status:** Waiting Â· **Depends on:** ZOD-040, ZOD-049
+**Type:** Design task · **Priority:** P4 · **Status:** Waiting · **Depends on:** ZOD-040, ZOD-049
 
 **Scope:** Specify declarative menus/contributions, typed action references and supported read-only
 availability conditions. Use adding a title-screen campaign option as the bounded example; align with the
@@ -2826,9 +2826,9 @@ Original content/profile behavior remains explicit. Distinguish adding an entry 
 action, and deterministic gameplay conditions from presentation/device availability. Record schema/version
 and validation rules before creating implementation child tickets.
 
-### ZOD-063 â€” Support validated higher-detail graphic replacements
+### ZOD-063 — Support validated higher-detail graphic replacements
 
-**Type:** Story Â· **Priority:** P4 Â· **Status:** Waiting Â· **Depends on:** ZOD-031, ZOD-033, ZOD-049
+**Type:** Story · **Priority:** P4 · **Status:** Waiting · **Depends on:** ZOD-031, ZOD-033, ZOD-049
 
 **Scope:** Add higher-detail texture/sprite replacements through selected content packages, independently
 of game-view rendering resolution. Use existing logical asset identities and shared authoring validation.
@@ -2839,9 +2839,9 @@ supported scene semantics. Invalid/missing replacements have diagnostics/fallbac
 remain available. Visual comparisons and manual checks distinguish new artwork from higher output
 resolution. Simulation results remain unchanged; movie enhancement remains separately scoped.
 
-### ZOD-070 â€” Plan and implement selected original-game bug fixes
+### ZOD-070 — Plan and implement selected original-game bug fixes
 
-**Type:** Epic Â· **Priority:** P4 Â· **Status:** Needs breakdown Â· **Depends on:** ZOD-045, ZOD-049
+**Type:** Epic · **Priority:** P4 · **Status:** Needs breakdown · **Depends on:** ZOD-045, ZOD-049
 
 **Owner's goal:** Fix selected outstanding bugs from the original game much later.
 Collect reports and candidate corrections in the [original bug catalog](KNOWN_BUGS.md).
@@ -2867,9 +2867,9 @@ replays and content compatibility where relevant. Enabling a correction is expli
 disabled corrections leave baseline regressions unchanged. No fixes implemented
 or general scripting/plugin framework required by this planning entry.
 
-### ZOD-054 â€” Decide local packaging, versioning, and optional publishing
+### ZOD-054 — Decide local packaging, versioning, and optional publishing
 
-**Type:** Deferred decision Â· **Priority:** P5 Â· **Status:** Waiting Â· **Depends on:** ZOD-034
+**Type:** Deferred decision · **Priority:** P5 · **Status:** Waiting · **Depends on:** ZOD-034
 
 **Scope:** Decide portable folder versus installer, runtime deployment mode, local build versioning, and whether any reusable packages need a private/public feed. Revisit the owner's shared CI tooling only when a concrete packaging need exists.
 
