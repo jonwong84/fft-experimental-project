@@ -98,9 +98,9 @@ Next action: Break ZOD-037 into separate ordinary-geometry and special-mode chil
 
 Status: **partial**; scope: **baseline**; ticket: **ZOD-038**; owner area: Zodiac.Framework simulation.
 
-One range-1 neutral empty-proc sword with explicit effective stats, neutral zodiac and no equipment evade is executable. ZOD-104 traces and specifies Accumulate; its content/action/save/host implementation remains unexecuted.
+The bounded neutral sword remains executable. A separate ZOD-105 Accumulate profile changes current PA and feeds later sword damage with unchanged RNG order; ability-profile persistence and Windows controls remain pending.
 
-Evidence: [docs/behavior/bounded-sword-implementation.md](../../docs/behavior/bounded-sword-implementation.md), [docs/architecture/zod-104-accumulate-action.md](../../docs/architecture/zod-104-accumulate-action.md), [docs/evidence/combat/accumulate-contract-v1.json](../../docs/evidence/combat/accumulate-contract-v1.json).
+Evidence: [docs/behavior/bounded-sword-implementation.md](../../docs/behavior/bounded-sword-implementation.md), [docs/architecture/zod-104-accumulate-action.md](../../docs/architecture/zod-104-accumulate-action.md), [docs/evidence/combat/accumulate-contract-v1.json](../../docs/evidence/combat/accumulate-contract-v1.json), [docs/behavior/accumulate-implementation.md](../../docs/behavior/accumulate-implementation.md), [docs/evidence/combat/accumulate-implementation-v1.json](../../docs/evidence/combat/accumulate-implementation-v1.json).
 
 Source entry points (pinned revision above; not full traces): [src/battle/combat/targets.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/combat/targets.c), [src/battle/combat/resolution.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/combat/resolution.c), [src/battle/combat/formula_core.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/combat/formula_core.c).
 
@@ -114,29 +114,31 @@ Remaining gaps:
 
 - Other weapons, affinities, equipment evade, zodiac interactions, line of sight and area targets remain open.
 
-Next action: Implement the bounded Accumulate proof in ZOD-105, then save/replay continuation in ZOD-106 and the Windows battle controls in ZOD-107. The source contract and 32 unexecuted cases are in ZOD-104.
+Next action: ZOD-105 is complete for the closed Accumulate content/action proof; implement current-PA save/replay continuation in ZOD-106, then Windows controls in ZOD-107. Broader original coverage remains open.
 
 Bounded follow-ups: ZOD-104, ZOD-105, ZOD-106, ZOD-107.
 
 ### COV-SIM-006 — Abilities, magic, recovery and action-formula catalog
 
-Status: **absent**; scope: **baseline**; ticket: **ZOD-038**; owner area: Zodiac.Framework simulation.
+Status: **partial**; scope: **baseline**; ticket: **ZOD-038**; owner area: Zodiac.Framework simulation.
 
-Metadata models/imports do not execute the original action catalog. ZOD-104 completes the bounded Accumulate source/data contract; implementation and independent original observation remain pending.
+ZOD-105 executes one immediate self PA+1 effect to cap 99 through a validated companion, explicit grants and pure two-unit commands. Broader action catalog, saves, UI and independent original observation remain open.
 
-Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-104-accumulate-action.md](../../docs/architecture/zod-104-accumulate-action.md), [docs/evidence/combat/accumulate-contract-v1.json](../../docs/evidence/combat/accumulate-contract-v1.json).
+Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-104-accumulate-action.md](../../docs/architecture/zod-104-accumulate-action.md), [docs/evidence/combat/accumulate-contract-v1.json](../../docs/evidence/combat/accumulate-contract-v1.json), [docs/behavior/accumulate-implementation.md](../../docs/behavior/accumulate-implementation.md), [docs/evidence/combat/accumulate-implementation-v1.json](../../docs/evidence/combat/accumulate-implementation-v1.json).
 
 Source entry points (pinned revision above; not full traces): [src/battle/combat/formulas.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/combat/formulas.c), [include/fft/formula.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/formula.h), [include/fft/ability.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/ability.h).
 
-Automated baseline check: **none identified for this scope**; add a scenario regression when implementing the next action.
+Current implementation: [src/Zodiac.Framework/ImmediateAbilityBattle.cs](../../src/Zodiac.Framework/ImmediateAbilityBattle.cs), [src/Zodiac.Content/ContentPackages/ImmediateAbilityContentPackage.cs](../../src/Zodiac.Content/ContentPackages/ImmediateAbilityContentPackage.cs), [src/Zodiac.AssetTool.Cli/OriginalAccumulateImporter.cs](../../src/Zodiac.AssetTool.Cli/OriginalAccumulateImporter.cs).
+
+Existing bounded checks: [tests/Zodiac.Framework.Tests/ImmediateAbilityBattleTests.cs](../../tests/Zodiac.Framework.Tests/ImmediateAbilityBattleTests.cs), [tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs](../../tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs), [tests/Zodiac.AssetTool.Cli.Tests/OriginalAccumulateImporterTests.cs](../../tests/Zodiac.AssetTool.Cli.Tests/OriginalAccumulateImporterTests.cs).
 
 Manual checkpoint (pending-original-observation): Compare one selected original ability with exact target/stats/RNG preconditions.
 
 Remaining gaps:
 
-- Formula and action-family enumeration, arithmetic envelopes, MP costs, target rules and effects are not implemented.
+- Other formula/action families, equipment bonuses, status/reaction interactions, progression/rewards, AI, charge/MP/targeting breadth and original execution remain open; new-profile persistence and Windows use are ZOD-106/107.
 
-Next action: Implement Accumulate through ZOD-105/106/107 using the ZOD-104 trace and unexecuted acceptance cases. Continue broader formula-family inventory separately.
+Next action: ZOD-105 is complete for the closed Accumulate content/action proof; implement current-PA save/replay continuation in ZOD-106, then Windows controls in ZOD-107. Broader original coverage remains open.
 
 Bounded follow-ups: ZOD-104, ZOD-105, ZOD-106, ZOD-107.
 
@@ -246,15 +248,15 @@ Next action: Inventory one event-to-battle-to-results path.
 
 Status: **partial**; scope: **baseline**; ticket: **ZOD-039**; owner area: Zodiac.Content definitions and offline import.
 
-Typed metadata, reference validation and selected Squire-family original import exist.
+Typed metadata and selected Squire-family import remain. ZOD-105 adds a separate closed immediate-ability companion, validated learned-action grants and verified Accumulate conversion, preserving learning metadata.
 
-Evidence: [docs/behavior/original-metadata-import.md](../../docs/behavior/original-metadata-import.md), [docs/architecture/zod-014-typed-definitions.md](../../docs/architecture/zod-014-typed-definitions.md), [docs/architecture/zod-104-accumulate-action.md](../../docs/architecture/zod-104-accumulate-action.md).
+Evidence: [docs/behavior/original-metadata-import.md](../../docs/behavior/original-metadata-import.md), [docs/architecture/zod-014-typed-definitions.md](../../docs/architecture/zod-014-typed-definitions.md), [docs/architecture/zod-104-accumulate-action.md](../../docs/architecture/zod-104-accumulate-action.md), [docs/behavior/accumulate-implementation.md](../../docs/behavior/accumulate-implementation.md), [docs/evidence/combat/accumulate-implementation-v1.json](../../docs/evidence/combat/accumulate-implementation-v1.json).
 
 Source entry points (pinned revision above; not full traces): [include/fft/job.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/job.h), [include/fft/skillset.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/skillset.h), [src/main/party.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/main/party.c).
 
-Current implementation: [src/Zodiac.Content/Definitions/JobDefinition.cs](../../src/Zodiac.Content/Definitions/JobDefinition.cs), [src/Zodiac.AssetTool/OriginalMetadataRecords.cs](../../src/Zodiac.AssetTool/OriginalMetadataRecords.cs).
+Current implementation: [src/Zodiac.Content/Definitions/JobDefinition.cs](../../src/Zodiac.Content/Definitions/JobDefinition.cs), [src/Zodiac.AssetTool/OriginalMetadataRecords.cs](../../src/Zodiac.AssetTool/OriginalMetadataRecords.cs), [src/Zodiac.Content/ContentPackages/ImmediateAbilityContentPackage.cs](../../src/Zodiac.Content/ContentPackages/ImmediateAbilityContentPackage.cs), [src/Zodiac.Content/BattleSetup/ImmediateAbilityBattleSetup.cs](../../src/Zodiac.Content/BattleSetup/ImmediateAbilityBattleSetup.cs).
 
-Existing bounded checks: [tests/Zodiac.AssetTool.Tests/OriginalMetadataRecordsTests.cs](../../tests/Zodiac.AssetTool.Tests/OriginalMetadataRecordsTests.cs), [tests/Zodiac.Content.Tests/Definitions/DefinitionTests.cs](../../tests/Zodiac.Content.Tests/Definitions/DefinitionTests.cs).
+Existing bounded checks: [tests/Zodiac.AssetTool.Tests/OriginalMetadataRecordsTests.cs](../../tests/Zodiac.AssetTool.Tests/OriginalMetadataRecordsTests.cs), [tests/Zodiac.Content.Tests/Definitions/DefinitionTests.cs](../../tests/Zodiac.Content.Tests/Definitions/DefinitionTests.cs), [tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs](../../tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs).
 
 Manual checkpoint (pending-original-observation): Inspect one original job/ability menu against imported records.
 
@@ -262,7 +264,7 @@ Remaining gaps:
 
 - Full catalog rows and field-to-runtime meaning are not enumerated; imported metadata does not imply executable effects.
 
-Next action: ZOD-105 adds a separate validated immediate-ability companion and explicit grants for Accumulate; preserve existing learning metadata and reject unsupported effects. Broader catalog expansion remains open.
+Next action: ZOD-105 is complete for the closed Accumulate content/action proof; implement current-PA save/replay continuation in ZOD-106, then Windows controls in ZOD-107. Broader original coverage remains open.
 
 Bounded follow-ups: ZOD-104, ZOD-105.
 

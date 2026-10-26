@@ -58,6 +58,10 @@ public sealed record AttackUnitState
         AccessoryEvade, Brave, ZodiacSign, facing,
         hp == 0 ? AttackUnitStatus.Dead : hp <= MaxHp / 5 ? AttackUnitStatus.Critical : AttackUnitStatus.None,
         koCount, RightHandWeaponId);
+
+    internal AttackUnitState WithPhysicalAttack(int physicalAttack) => new(UnitId,
+        Hp, MaxHp, Mp, MaxMp, physicalAttack, ClassPhysicalEvade, RightHandEvade, LeftHandEvade,
+        AccessoryEvade, Brave, ZodiacSign, Facing, Status, KoCount, RightHandWeaponId);
 }
 
 /// <summary>Immutable attack state; death scheduling remains outside the bounded simulator.</summary>
@@ -122,7 +126,7 @@ public sealed class AttackBattleSnapshot
 
 /// <summary>A bounded unit-target command, validated atomically before publishing effects.</summary>
 public sealed record AttackUnitCommand(BattleUnitId ActorId, BattleUnitId TargetId);
-public enum AttackCommandRejection { None, UnknownActor, UnknownTarget, InactiveActor, ActionAlreadyTaken, SelfTarget, DeadTarget, OutOfRange, UnsupportedSetup, RandomDrawCountExhausted }
+public enum AttackCommandRejection { None, UnknownActor, UnknownTarget, InactiveActor, ActionAlreadyTaken, SelfTarget, DeadTarget, OutOfRange, UnsupportedSetup, RandomDrawCountExhausted, UnknownAbility, AbilityNotGranted }
 public abstract record AttackResultEvent;
 public sealed record AttackTurnBattleEvent(TurnBattleEvent Event) : AttackResultEvent;
 public sealed record AttackResolvedEvent(BattleUnitId ActorId, BattleUnitId TargetId, bool Hit, bool Critical, int Damage) : AttackResultEvent;

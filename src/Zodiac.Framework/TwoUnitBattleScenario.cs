@@ -10,10 +10,15 @@ public sealed class TwoUnitBattleDefinition
     public BattleUnitId SecondUnitId { get; }
     public AttackBattleSnapshot InitialBattle { get; }
     public ImmutableDictionary<AssetId, BoundedSwordWeapon> Weapons { get; }
+    public ImmediateAbilityBattleProfile? ImmediateAbilities { get; }
     public BattleMovementPolicy MovementPolicy => BattleMovementPolicy.OrdinaryAdjacentStepPrototype;
 
     public TwoUnitBattleDefinition(AssetId id, BattleUnitId firstUnitId, BattleUnitId secondUnitId,
         AttackBattleSnapshot initialBattle, IEnumerable<BoundedSwordWeapon> weapons)
+        : this(id, firstUnitId, secondUnitId, initialBattle, weapons, null) { }
+
+    public TwoUnitBattleDefinition(AssetId id, BattleUnitId firstUnitId, BattleUnitId secondUnitId,
+        AttackBattleSnapshot initialBattle, IEnumerable<BoundedSwordWeapon> weapons, ImmediateAbilityBattleProfile? immediateAbilities)
     {
         if (string.IsNullOrWhiteSpace(id.Value)) throw new ArgumentException("Scenario ID is required.", nameof(id));
         ArgumentNullException.ThrowIfNull(initialBattle);
@@ -65,6 +70,8 @@ public sealed class TwoUnitBattleDefinition
         SecondUnitId = secondUnitId;
         InitialBattle = initialBattle;
         Weapons = selected.ToImmutable();
+        immediateAbilities?.ValidateSetup(initialBattle, Weapons);
+        ImmediateAbilities = immediateAbilities;
     }
 
     /// <summary>Fresh lifecycle state over the original immutable setup and RNG; also the explicit restart operation.</summary>
@@ -74,6 +81,8 @@ public sealed class TwoUnitBattleDefinition
     public TwoUnitBattleState Restore(AttackBattleSnapshot battle)
     {
         ArgumentNullException.ThrowIfNull(battle);
+        if (ImmediateAbilities is not null)
+            throw new NotSupportedException("Ability-enabled battle restore requires the ZOD-106 persistence profile.");
         var initial = InitialBattle.TurnBattle;
         var current = battle.TurnBattle;
         if (!ReferenceEquals(current.Battle.Map, initial.Battle.Map) ||
@@ -137,6 +146,7 @@ public abstract record TwoUnitBattleCommand
     public sealed record Advance : TwoUnitBattleCommand;
     public sealed record Move(BattleUnitId UnitId, TilePosition Destination) : TwoUnitBattleCommand;
     public sealed record Attack(BattleUnitId ActorId, BattleUnitId TargetId) : TwoUnitBattleCommand;
+    public sealed record UseAbility(BattleUnitId ActorId, AssetId AbilityId) : TwoUnitBattleCommand;
     public sealed record Wait(BattleUnitId UnitId) : TwoUnitBattleCommand;
 }
 
@@ -160,6 +170,10 @@ public static class TwoUnitBattleScenario
         AttackBattleResult result;
         switch (command)
         {
+            case TwoUnitBattleCommand.UseAbility ability:
+                if (state.Definition.ImmediateAbilities is not { } profile)
+                    return Reject(state, TwoUnitBattleRejection.UnsupportedCommand);
+                result = ImmediateAbilityBattleSimulator.Apply(state.Battle, new(ability.ActorId, ability.AbilityId), profile); break;
             case TwoUnitBattleCommand.Advance:
                 result = AttackBattleSimulator.Advance(state.Battle); break;
             case TwoUnitBattleCommand.Move move:

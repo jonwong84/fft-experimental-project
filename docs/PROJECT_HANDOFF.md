@@ -2,6 +2,36 @@
 
 ## Current handoff — 2026-10-26
 
+**ZOD-105 complete; next ZOD-106.** Accumulate now has a separately versioned
+closed executable companion, explicit per-unit learned grants and pure immutable
+resolution in the existing two-unit lifecycle. It increases current PA by 1 to
+99, consumes Act even at cap, preserves all unrelated state/RNG and changes later
+sword damage. Setup validates the worst reachable PA-99 sword envelope; metadata
+alone activates no effect. The old sword-only profile remains intact.
+
+Locked isolated restore/build pass with zero warnings, and all **2,438 .NET / 293
+Python tests** pass (89 new managed cases). ACC-001..020 have executed coverage,
+including repeated/rejected-action replay, source boundary vectors, grant/content
+negatives, both action orders and later sword/RNG continuation. Two verified local
+imports match both files. Independent audit checks six source records/mappings and
+all four earlier metadata/sword files byte-for-byte. The prepared executable's
+hash is unchanged. Raw data, audits and full TRX stay under ignored scratch.
+The source revision was freshly rechecked clean at
+`11464943bbdbd2a0af022d90cb7f10455cf911df` before implementation.
+See the [behavior/import/build guide](behavior/accumulate-implementation.md) and
+[new evidence](evidence/combat/accumulate-implementation-v1.json); preserve the
+historical ZOD-104 contract and unexecuted-case inventory as originally recorded.
+
+Ability-enabled battle save/restore explicitly rejects before serializing or
+reading a file, including initial and PA99 no-change states, until **ZOD-106**
+adds current-PA persistence. Existing sword saves/readers/writers and world slots
+are unchanged. **Next: ZOD-106 is Ready**, ACC-021..027; then ZOD-107, Windows
+controls/native plan/owner review, ACC-028..032. There was no new native launch,
+original/emulator execution or visual approval. Editor/game-client/Engine
+production and package/project locks are unchanged; all deferrals remain.
+
+## Accumulate source contract checkpoint (historical)
+
 **ZOD-104 complete: Accumulate source/data contract; implementation next.**
 The owner selected the first executable job ability after deferring further
 editor work. The [contract](architecture/zod-104-accumulate-action.md) pins clean

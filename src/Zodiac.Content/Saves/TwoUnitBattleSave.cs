@@ -26,6 +26,7 @@ public static partial class TwoUnitBattleSave
     {
         ArgumentNullException.ThrowIfNull(profile);
         ArgumentNullException.ThrowIfNull(state);
+        EnsureSupportedProfile(profile);
         if (!ReferenceEquals(profile.Definition, state.Definition))
             throw new BattleSaveValidationException("Save state must use the explicitly selected profile's definition.");
         _ = profile.Definition.Restore(state.Battle);
@@ -51,6 +52,7 @@ public static partial class TwoUnitBattleSave
     public static TwoUnitBattleSaveLoadResult ReadJson(TwoUnitBattleSaveProfile profile, string json)
     {
         ArgumentNullException.ThrowIfNull(profile);
+        EnsureSupportedProfile(profile);
         if (json is null || Encoding.UTF8.GetByteCount(json) > MaxJsonBytes)
             throw new BattleSaveValidationException($"Save is required and limited to {MaxJsonBytes} UTF-8 bytes.");
         try
@@ -81,6 +83,12 @@ public static partial class TwoUnitBattleSave
         {
             throw new BattleSaveValidationException($"Invalid battle save: {exception.Message}", exception);
         }
+    }
+
+    private static void EnsureSupportedProfile(TwoUnitBattleSaveProfile profile)
+    {
+        if (profile.Definition.ImmediateAbilities is not null)
+            throw new BattleSaveValidationException("Ability-enabled battles require current-PA persistence (ZOD-106); schema 1/2 cannot save or load this profile.");
     }
 
     private static void ValidateEnvelope<T>(Envelope<T> envelope)

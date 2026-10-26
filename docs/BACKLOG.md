@@ -44,6 +44,21 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Latest completion (2026-10-26): ZOD-105 is complete.** The bounded Accumulate
+content/action/scenario proof adds an explicit immediate self PA+1 companion,
+validated learned grants and pure atomic resolution. PA caps at 99; a capped use
+still consumes Act. Later sword damage uses boosted PA with unchanged draw order.
+All **2,438 .NET / 293 Python tests** pass (89 new managed cases); ACC-001..020
+have executed coverage. Two verified imports repeat exactly; independent audit
+checks six source records and four unchanged historical import files. Existing
+sword-only fixtures, journals and saves pass. Ability-enabled save/restore is
+explicitly rejected until its current PA can be preserved. See the
+[behavior/workflow](behavior/accumulate-implementation.md) and
+[evidence](evidence/combat/accumulate-implementation-v1.json).
+**Next: ZOD-106 is Ready**, save/replay continuation; ZOD-107 waits for it.
+No Windows/editor/Engine production or package-lock changes; original execution,
+visual approval and broader combat fidelity remain separate. Deferred work stays deferred.
+
 **Selected gameplay milestone (2026-10-26): Accumulate under ZOD-038.**
 **ZOD-104 is complete** as a bounded source/data investigation and contract:
 verified generic Squire/Basic Skill membership, immediate self PA+1, cap 99,
@@ -1004,7 +1019,15 @@ AI and presentation equivalence remain outside the selected proof.
 
 ### ZOD-105 — Prove the pure Accumulate content/action scenario
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-104
+**Type:** Story · **Priority:** P3 · **Status:** Complete · **Depends on:** ZOD-104
+
+**Result (2026-10-26):** [Implementation/workflow](behavior/accumulate-implementation.md)
+and [executed evidence](evidence/combat/accumulate-implementation-v1.json) record
+the closed effect companion, grant/reference validation, pure PA mutation, shared
+turn/sword continuation and explicit unsupported-save guards. All **2,438 .NET /
+293 Python tests** pass (89 new .NET); ACC-001..020 are covered. Two actual imports
+match, all six raw source records independently compare, and four prior metadata/
+sword files are unchanged. No native UI/original execution or broad ability claim.
 
 **Scope:** Implement the closed immediate self PA+1 effect, validated companion
 content/projection and explicit unit grants in a separately identified authored
@@ -1023,7 +1046,7 @@ outcomes/RNG. Update behavior evidence and run appropriate locked build/suites.
 
 ### ZOD-106 — Preserve boosted battle PA across checkpoints and replay
 
-**Type:** Story · **Priority:** P3 · **Status:** Waiting · **Depends on:** ZOD-105
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-105
 
 **Scope:** Add current PA to a new explicit ability-profile battle-save schema
 and permit only validated dynamic PA restoration. Preserve old sword-profile

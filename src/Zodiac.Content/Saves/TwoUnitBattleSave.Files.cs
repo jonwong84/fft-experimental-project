@@ -9,6 +9,8 @@ public static partial class TwoUnitBattleSave
 
     public static TwoUnitBattleSaveLoadResult Load(TwoUnitBattleSaveProfile profile, string path)
     {
+        ArgumentNullException.ThrowIfNull(profile);
+        EnsureSupportedProfile(profile);
         ArgumentException.ThrowIfNullOrWhiteSpace(path);
         using var input = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
         using var bytes = new MemoryStream();
