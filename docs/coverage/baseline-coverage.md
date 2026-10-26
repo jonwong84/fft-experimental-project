@@ -3,7 +3,7 @@
 Generated from `baseline-coverage.json` by `tools/verification/verify_baseline_coverage.py --write-view`.
 Edit the JSON, then regenerate this view. See [the inventory guide](README.md) for status/evidence rules.
 
-Target: **SCUS-94221**. Snapshot: 2026-10-26; managed base `755dd37936ea6d81dc886771bb6819687d88d0f5`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+Target: **SCUS-94221**. Snapshot: 2026-10-26; managed base `d0f53cbf0f470b4f3a51ba384898558f29cbe1a9`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 These entries are planning scopes, not a feature-completion percentage or a complete record/encounter catalog.
 
 ## Simulation
@@ -580,13 +580,15 @@ Bounded follow-ups: ZOD-080, ZOD-081, ZOD-082, ZOD-083, ZOD-084, ZOD-085, ZOD-08
 
 Status: **absent**; scope: **baseline**; ticket: **ZOD-042**; owner area: Fft.Client presentation and application commands.
 
-No original game-flow shell; no-argument client prints a bootstrap line.
+No original title/new-game/continue/name/birthday shell. ZOD-102 proves only an authored headless Home/New/live Resume/World/Party and confirmation model; no native host exists. No-argument client still prints a bootstrap line.
 
-Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md).
+Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/development/synthetic-world-navigation.md](../../docs/development/synthetic-world-navigation.md), [docs/evidence/navigation/synthetic-world-navigation-v1.json](../../docs/evidence/navigation/synthetic-world-navigation-v1.json).
 
 Source entry points (pinned revision above; not full traces): [src/open/title.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/open/title.c), [src/open/prologue.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/open/prologue.c), [src/world/name_entry.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/name_entry.c).
 
-Automated baseline check: **none identified for this scope**; add a scenario regression when implementing the next action.
+Current implementation: [src/Fft.Client/Navigation/WorldMenuSession.cs](../../src/Fft.Client/Navigation/WorldMenuSession.cs).
+
+Existing bounded checks: [tests/Fft.Client.Tests/WorldMenuSessionTests.cs](../../tests/Fft.Client.Tests/WorldMenuSessionTests.cs).
 
 Manual checkpoint (pending-original-observation): Navigate title/new game/continue, confirm/cancel name and birthday.
 
@@ -594,7 +596,9 @@ Remaining gaps:
 
 - Original flow, assets, focus, input semantics and Windows presentation design are absent.
 
-Next action: Inventory commands and required screen transitions before layout work.
+Next action: Implement the separate authored Windows navigation host in ZOD-103 before ZOD-069. Retain original title/assets/flow, input timing and name/birthday as source-traced baseline work under ZOD-042.
+
+Bounded follow-ups: ZOD-102, ZOD-103, ZOD-069.
 
 ### COV-UI-002 — Battle command menus, selection, targeting and previews
 
@@ -682,9 +686,9 @@ Next action: Create a screen/operation inventory with text and asset dependencie
 
 Status: **absent**; scope: **platform-replacement**; ticket: **ZOD-042**; owner area: Fft.Client presentation and application commands.
 
-No player-facing save selection/load flow. ZOD-067 traces title/world/story entry mechanisms and recommends native slots/prompts; complete retail availability remains unenumerated.
+No player-facing slot UI. ZOD-068 supplies the tested synthetic checkpoint service; ZOD-102 supplies headless authored navigation and safe modal decisions. ZOD-103 native navigation is still required before ZOD-069. Complete original availability remains unenumerated.
 
-Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-067-campaign-save-state.md](../../docs/architecture/zod-067-campaign-save-state.md).
+Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-067-campaign-save-state.md](../../docs/architecture/zod-067-campaign-save-state.md), [docs/development/synthetic-world-navigation.md](../../docs/development/synthetic-world-navigation.md), [docs/evidence/navigation/synthetic-world-navigation-v1.json](../../docs/evidence/navigation/synthetic-world-navigation-v1.json).
 
 Source entry points (pinned revision above; not full traces): [src/world/card_save.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/card_save.c), [include/fft/save.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/save.h), [src/event/card/entry.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/event/card/entry.c).
 
@@ -694,11 +698,11 @@ Manual checkpoint (pending-original-observation): At legal original save locatio
 
 Remaining gaps:
 
-- Implement the proposed slot service/navigation and UI; verify original checkpoint availability independently of Windows workflow decisions.
+- Native host/device/visual checks and slot list/confirmation/error/recovery screens remain unimplemented; original checkpoint availability needs separate source/observation evidence.
 
-Next action: Implement ZOD-069 after ZOD-068 and minimal ZOD-042 navigation; original checkpoint catalog/observations remain open.
+Next action: Implement ZOD-103, then ZOD-069 using the existing service; full ZOD-042 completion is not the slot proof prerequisite.
 
-Bounded follow-ups: ZOD-068, ZOD-069.
+Bounded follow-ups: ZOD-068, ZOD-069, ZOD-102, ZOD-103.
 
 ### COV-UI-007 — Options, text/input settings and settings persistence
 
@@ -1031,9 +1035,9 @@ Remaining gaps:
 
 - Complete retail checkpoint enumeration, unmodeled fields/side content, original observations, content-version rules and explicit native RNG continuation/seed policy remain open.
 
-Next action: Retain ZOD-053 for original campaign fields, checkpoints, content compatibility and explicit RNG continuation policy; expose the bounded proof through ZOD-069 after minimal ZOD-042 navigation.
+Next action: Retain ZOD-053 for original campaign fields/checkpoints, content compatibility and RNG policy. Expose the bounded proof through ZOD-069 after ZOD-103 native navigation.
 
-Bounded follow-ups: ZOD-068, ZOD-069.
+Bounded follow-ups: ZOD-068, ZOD-069, ZOD-102, ZOD-103.
 
 ### COV-SAV-003 — Windows save storage, metadata, backups and recovery
 
@@ -1055,9 +1059,9 @@ Remaining gaps:
 
 - Native slot/menu presentation remains unimplemented; original campaign compatibility, broader storage environments and power-loss durability require later scope and evidence.
 
-Next action: Scope minimal menu/navigation under ZOD-042 before ZOD-069's slot UI; retain ZOD-053 for full campaign persistence and broader storage validation.
+Next action: Implement ZOD-103 native navigation, then ZOD-069 slot UI; retain ZOD-053 for full campaign persistence and broader storage validation.
 
-Bounded follow-ups: ZOD-068, ZOD-069.
+Bounded follow-ups: ZOD-068, ZOD-069, ZOD-102, ZOD-103.
 
 ## Validation
 

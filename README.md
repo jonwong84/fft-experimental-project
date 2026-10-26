@@ -27,6 +27,11 @@ justifies it. Current assemblies are not yet interchangeable.
 
 ## What works today
 
+- **Authored world navigation model:** Home/New/live Resume, read-only Party,
+  travel and safe New/Exit decisions have headless transition regressions. The
+  native menu host and Save/Load screens are the next steps.
+  [Scope and validation](docs/development/synthetic-world-navigation.md).
+
 - **Synthetic world Save/Load:** a small authored idle-world checkpoint supports
   versioned saves, fresh-definition restore, validated slot summaries, stale-writer
   protection and explicit backup recovery. Two headless checks repeat all 14

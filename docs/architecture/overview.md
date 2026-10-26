@@ -24,8 +24,10 @@ Its family-level entries are not a complete original record/encounter catalog.
 - `Zodiac.Content.Saves` owns the [bounded save DTO/codec and file adapter](../development/two-unit-battle-saves.md).
   Core restores snapshots against selected definitions without I/O; Client supplies
   a headless proof. The [ZOD-067 investigation](zod-067-campaign-save-state.md)
-  maps original campaign fields/checkpoints and unsaved RNG lifecycles; ZOD-068/069
-  select a bounded native checkpoint service and UI. Full campaign persistence remains separate.
+  maps original campaign fields/checkpoints and unsaved RNG lifecycles. ZOD-068
+  now proves the [synthetic checkpoint service](../development/synthetic-world-checkpoint.md).
+  ZOD-102 adds its [authored application navigation model](../development/synthetic-world-navigation.md);
+  the native ZOD-103 host precedes ZOD-069's slot UI. Full campaign persistence remains separate.
 - `Zodiac.Content.Events` validates/loads the [prepared synthetic conditional event](../development/prepared-scenario-event.md).
   AssetTool owns raw block inspection and the CLI assembly composes conversion.
   ZOD-065 projects into `Zodiac.Framework.Events`: immutable normalized operations,

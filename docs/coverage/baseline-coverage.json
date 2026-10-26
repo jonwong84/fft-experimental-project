@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-26",
   "edition": "SCUS-94221",
-  "managedCommit": "755dd37936ea6d81dc886771bb6819687d88d0f5",
+  "managedCommit": "d0f53cbf0f470b4f3a51ba384898558f29cbe1a9",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 2267,
-    "source": "docs/development/synthetic-world-checkpoint.md",
+    "passed": 2285,
+    "source": "docs/development/synthetic-world-navigation.md",
     "runForThisInventory": false
   },
   "statusDefinitions": {
@@ -1581,7 +1581,7 @@
       "ownerTicket": "ZOD-042",
       "ownerArea": "Fft.Client presentation and application commands",
       "status": "absent",
-      "currentScope": "No original game-flow shell; no-argument client prints a bootstrap line.",
+      "currentScope": "No original title/new-game/continue/name/birthday shell. ZOD-102 proves only an authored headless Home/New/live Resume/World/Party and confirmation model; no native host exists. No-argument client still prints a bootstrap line.",
       "referenceSources": [
         {
           "path": "src/open/title.c",
@@ -1597,10 +1597,19 @@
         }
       ],
       "evidenceDocs": [
-        "PROJECT_PLAN.md"
+        "PROJECT_PLAN.md",
+        "docs/development/synthetic-world-navigation.md",
+        "docs/evidence/navigation/synthetic-world-navigation-v1.json"
       ],
-      "implementationPaths": [],
-      "automatedChecks": [],
+      "implementationPaths": [
+        "src/Fft.Client/Navigation/WorldMenuSession.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Fft.Client.Tests/WorldMenuSessionTests.cs",
+          "scope": "18 authored application navigation cases: focus, modal isolation, session preservation, travel/events and repeated logical script. No original title equivalence."
+        }
+      ],
       "manualCheckpoint": {
         "status": "pending-original-observation",
         "procedure": "Navigate title/new game/continue, confirm/cancel name and birthday."
@@ -1608,7 +1617,12 @@
       "openQuestions": [
         "Original flow, assets, focus, input semantics and Windows presentation design are absent."
       ],
-      "nextAction": "Inventory commands and required screen transitions before layout work."
+      "nextAction": "Implement the separate authored Windows navigation host in ZOD-103 before ZOD-069. Retain original title/assets/flow, input timing and name/birthday as source-traced baseline work under ZOD-042.",
+      "followUpTickets": [
+        "ZOD-102",
+        "ZOD-103",
+        "ZOD-069"
+      ]
     },
     {
       "id": "COV-UI-002",
@@ -1790,7 +1804,7 @@
       "ownerTicket": "ZOD-042",
       "ownerArea": "Fft.Client presentation and application commands",
       "status": "absent",
-      "currentScope": "No player-facing save selection/load flow. ZOD-067 traces title/world/story entry mechanisms and recommends native slots/prompts; complete retail availability remains unenumerated.",
+      "currentScope": "No player-facing slot UI. ZOD-068 supplies the tested synthetic checkpoint service; ZOD-102 supplies headless authored navigation and safe modal decisions. ZOD-103 native navigation is still required before ZOD-069. Complete original availability remains unenumerated.",
       "referenceSources": [
         {
           "path": "src/world/card_save.c",
@@ -1807,7 +1821,9 @@
       ],
       "evidenceDocs": [
         "PROJECT_PLAN.md",
-        "docs/architecture/zod-067-campaign-save-state.md"
+        "docs/architecture/zod-067-campaign-save-state.md",
+        "docs/development/synthetic-world-navigation.md",
+        "docs/evidence/navigation/synthetic-world-navigation-v1.json"
       ],
       "implementationPaths": [],
       "automatedChecks": [],
@@ -1816,12 +1832,14 @@
         "procedure": "At legal original save locations, save/continue through Windows UI and test overwrite/cancel/failure recovery."
       },
       "openQuestions": [
-        "Implement the proposed slot service/navigation and UI; verify original checkpoint availability independently of Windows workflow decisions."
+        "Native host/device/visual checks and slot list/confirmation/error/recovery screens remain unimplemented; original checkpoint availability needs separate source/observation evidence."
       ],
-      "nextAction": "Implement ZOD-069 after ZOD-068 and minimal ZOD-042 navigation; original checkpoint catalog/observations remain open.",
+      "nextAction": "Implement ZOD-103, then ZOD-069 using the existing service; full ZOD-042 completion is not the slot proof prerequisite.",
       "followUpTickets": [
         "ZOD-068",
-        "ZOD-069"
+        "ZOD-069",
+        "ZOD-102",
+        "ZOD-103"
       ]
     },
     {
@@ -2923,10 +2941,12 @@
       "openQuestions": [
         "Complete retail checkpoint enumeration, unmodeled fields/side content, original observations, content-version rules and explicit native RNG continuation/seed policy remain open."
       ],
-      "nextAction": "Retain ZOD-053 for original campaign fields, checkpoints, content compatibility and explicit RNG continuation policy; expose the bounded proof through ZOD-069 after minimal ZOD-042 navigation.",
+      "nextAction": "Retain ZOD-053 for original campaign fields/checkpoints, content compatibility and RNG policy. Expose the bounded proof through ZOD-069 after ZOD-103 native navigation.",
       "followUpTickets": [
         "ZOD-068",
-        "ZOD-069"
+        "ZOD-069",
+        "ZOD-102",
+        "ZOD-103"
       ]
     },
     {
@@ -2980,10 +3000,12 @@
       "openQuestions": [
         "Native slot/menu presentation remains unimplemented; original campaign compatibility, broader storage environments and power-loss durability require later scope and evidence."
       ],
-      "nextAction": "Scope minimal menu/navigation under ZOD-042 before ZOD-069's slot UI; retain ZOD-053 for full campaign persistence and broader storage validation.",
+      "nextAction": "Implement ZOD-103 native navigation, then ZOD-069 slot UI; retain ZOD-053 for full campaign persistence and broader storage validation.",
       "followUpTickets": [
         "ZOD-068",
-        "ZOD-069"
+        "ZOD-069",
+        "ZOD-102",
+        "ZOD-103"
       ]
     },
     {

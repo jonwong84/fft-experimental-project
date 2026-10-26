@@ -83,7 +83,7 @@ public sealed class WorldSaveSlotStoreTests : IDisposable
         var left=Task.Run(()=>{gate.Wait();return a.Save("slot-01",first.Revision);});
         var right=Task.Run(()=>{gate.Wait();return b.Save("slot-01",first.Revision);});gate.Set();
         var results=await Task.WhenAll(left,right).WaitAsync(TimeSpan.FromSeconds(10));
-        Assert.Single(results.Where(r=>r.Succeeded));Assert.Equal(93,seed.Store.Inspect("slot-01").Primary.Summary!.Funds);
+        Assert.Single(results,r=>r.Succeeded);Assert.Equal(93,seed.Store.Inspect("slot-01").Primary.Summary!.Funds);
     }
     [Fact]
     public void Windows_delete_sharing_failure_preserves_flushed_primary_and_backup()

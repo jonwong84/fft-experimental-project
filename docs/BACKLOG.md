@@ -44,12 +44,19 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Latest completion (2026-10-26): ZOD-102 is complete.** The authored world-menu
+application model proves Home/New/Resume, read-only Party, existing travel,
+parent focus and safe New/Exit confirmation without storage operations. All
+2,285 managed tests pass (18 new). **Next: ZOD-103**, the bounded Windows host
+and device/visual checks. ZOD-069 remains Waiting on that child, rather than the
+entire ZOD-042 epic. Original UI fidelity and campaign operations remain open.
+
 **Latest completion (2026-10-26): ZOD-068 is complete.** The synthetic idle-world
 Save/Load service validates fresh-definition restore/continuation, migration,
 slots, stale/concurrent writers, safe publishing and explicit recovery. All
 2,267 .NET / 281 Python tests pass; repeated headless checks match 14 files.
-ZOD-069 still waits for minimal menu/navigation under ZOD-042. Select that bounded
-flow before adding slot UI; original campaign/RNG/card support remains separate.
+ZOD-069 still waits for the ZOD-103 navigation host before adding slot UI;
+original campaign/RNG/card support remains separate.
 
 **Authored scene completion (2026-10-26):** **ZOD-098 is complete**. The owner approved
 `scratch/dark-screen-intro-098-review/review.html`: "Looks good to me."
@@ -937,6 +944,11 @@ ZOD-064/065/066. Research completion does not establish original event compatibi
 
 **Scope:** Opening/title flow, formation, equipment, jobs/JP, shops, world navigation, battle menus, settings, help, and save/load screens. Identify required text/font/layout and input behavior for each screen.
 
+**First bounded children (2026-10-26):** ZOD-102 proves the authored world-menu
+application model; ZOD-103 hosts it on Windows before ZOD-069 adds slot screens.
+These synthetic prerequisites do not require the full ZOD-039 catalog and do not
+complete this epic's original UI inventory, party/job/equipment workflow or fidelity.
+
 **Acceptance criteria:** The baseline UI inventory is complete; each screen supports the required operations and navigation without direct state mutation; selected original screen/input comparisons and transition regressions pass. Start with the smallest party/job/equipment workflow needed by the first campaign loop.
 
 **Later owner direction (2026-10-24):** Provide an in-game Settings menu as display,
@@ -1139,9 +1151,51 @@ validated recovery. No hidden RNG seed/draw or wall-clock dependency enters Core
 RNG capability is unsupported until a named policy and replayable inputs exist.
 This is a synthetic campaign proof, not completion of ZOD-041/053.
 
+### ZOD-102 — Prove authored world-menu application navigation
+
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-068
+
+**Parent:** ZOD-042. [Selected contract](development/synthetic-world-navigation.md)
+records original title/world/card input context and the separate authored flow.
+
+**Result (2026-10-26):** Closed client-owned model and 18 new transition tests;
+locked restore, zero-warning Release build and **2,285 managed tests pass**.
+Complete travel state/events match the existing command; repeated scripts match
+all views/results and leave save directories absent. [Executed evidence](evidence/navigation/synthetic-world-navigation-v1.json).
+Native presentation/device checks remain ZOD-103; no original UI claim.
+
+**Scope:** A closed client-owned Home/World/read-only Party/New-confirm/Exit-confirm
+model with immutable views, enabled focus, parent restoration and typed actions.
+Delegate synthetic New/travel to authored content and the checkpoint service.
+No native window, storage operations, original UI fidelity or general menu API.
+
+**Acceptance criteria:** Disabled/off-screen actions cannot mutate the
+checkpoint; modal cancellation/defaults preserve it; explicit New replaces only
+after confirmation. Travel state/events match the existing pure command,
+including rejection. Repeated logical scripts match; navigation actions perform
+no filesystem operations and consume no clock/RNG/device/graphics input. Record
+native/device checks as unexecuted.
+
+### ZOD-103 — Host authored world-menu navigation on Windows
+
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-102
+
+**Parent:** ZOD-042. **Scope:** Bind the ZOD-102 model to one explicitly selected
+Windows host with synthetic labels/panels, keyboard/mouse/controller action
+edges, safe focus/reactivation and resize-aware hit tests. Existing intro/battle
+commands remain separate. No slot screens, original title assets or new renderer.
+
+**Acceptance criteria:** A finite predeclared native plan exercises New, travel,
+read-only Party, Home/Resume, cancel/accept New and Exit, modal isolation, held
+input/focus transitions and resize. Capture model/view evidence and verify the
+same logical commands headlessly. Physical controller/keyboard/mouse and visual
+review remain separately reported gates. Do not create real user save files.
+Only this bounded navigation prerequisite is required by ZOD-069; the full
+ZOD-042 epic and original party/job/equipment workflows stay open.
+
 ### ZOD-069 — Add native Windows Save/Load slot navigation
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-068, ZOD-042
+**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-068, ZOD-103
 
 **Scope:** After ZOD-068 and a minimal client screen/navigation flow under ZOD-042,
 add a slot list/details, Save/Load actions, overwrite/discard confirmation and

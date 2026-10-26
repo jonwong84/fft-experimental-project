@@ -1,0 +1,198 @@
+{
+  "format": "fft.synthetic-world-navigation-validation",
+  "schemaVersion": 1,
+  "ticket": "ZOD-102",
+  "validatedOn": "2026-10-26",
+  "managedBase": "d0f53cbf0f470b4f3a51ba384898558f29cbe1a9",
+  "contract": "docs/development/synthetic-world-navigation.md",
+  "reference": {
+    "root": "C:\\repositories\\fft_decomp",
+    "revision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "cleanAtInspection": true,
+    "evidenceKind": "static source context; authored navigation expectations; no original execution or new rule translation",
+    "files": [
+      {
+        "localPath": "include/fft/title.h",
+        "bytes": 6813,
+        "sha256": "13c8476077887979e9d9d46cb572da7903696330ee266c7f217736e0d2e51558"
+      },
+      {
+        "localPath": "src/open/title.c",
+        "bytes": 47313,
+        "sha256": "d6761995522a2df875c30344f11120fda5fef083c346ea784014e9211b9ae354"
+      },
+      {
+        "localPath": "src/wldcore/menu_levels.c",
+        "bytes": 110100,
+        "sha256": "2a202abd8d4f57206077a660c0e22f0b1cf0bd5fa912b979d95b389544bab221"
+      },
+      {
+        "localPath": "src/world/menu/input.c",
+        "bytes": 8245,
+        "sha256": "e8728f63d42fd46440ac06b898bf29318f4d53754c0c9fcec855ce7c7fe284dd"
+      },
+      {
+        "localPath": "src/event/card/input.c",
+        "bytes": 4723,
+        "sha256": "95b2ebad52c30ba512df78284672e10c444dfd79b05211afaea206a8d9ba67f6"
+      },
+      {
+        "localPath": "src/event/card/entry.c",
+        "bytes": 58146,
+        "sha256": "b048fdd421c2217167953dce6ab64d432e0d8cda5686b79177b4422439a918da"
+      }
+    ]
+  },
+  "implementation": [
+    {
+      "localPath": "src/Fft.Client/Navigation/WorldMenuSession.cs",
+      "bytes": 6677,
+      "sha256": "3f4fce79d17c464e0a6697cdb8e4a751b503390710007b6ebd679101458abbf7"
+    },
+    {
+      "localPath": "tests/Fft.Client.Tests/WorldMenuSessionTests.cs",
+      "bytes": 10176,
+      "sha256": "781a562bfa201398008ef0c2798dea600c39026b0aff87e9d5eb7faa08eca4e0"
+    },
+    {
+      "localPath": "tests/Zodiac.Content.Tests/Saves/WorldSaveSlotStoreTests.cs",
+      "bytes": 10431,
+      "sha256": "5ea80e74e99475ed1b32ff75ffe9caa23187df1834e7bd7a64b840106d89d78c"
+    }
+  ],
+  "managed": {
+    "passed": 2285,
+    "newClientTests": 18,
+    "restore": "locked-mode",
+    "configuration": "Release",
+    "buildWarnings": 0,
+    "buildErrors": 0,
+    "assemblies": [
+      {
+        "assembly": "tessera.engine.tests.dll",
+        "passed": 24,
+        "failed": 0,
+        "skipped": 0,
+        "trx": {
+          "localPath": "scratch/world-navigation-102-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_02_17_30_net10.0.trx",
+          "bytes": 36854,
+          "sha256": "9c66d6963c9bb835e0f1a2807b5cc7774b16873a294552bbd1850b74096f591f"
+        }
+      },
+      {
+        "assembly": "zodiac.assettool.tests.dll",
+        "passed": 202,
+        "failed": 0,
+        "skipped": 0,
+        "trx": {
+          "localPath": "scratch/world-navigation-102-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_02_17_30_net10.0[1].trx",
+          "bytes": 299067,
+          "sha256": "e7d7d52b6effcb7d0d373f7d71747006d6d39fc12e956bfea228a6cad95a0726"
+        }
+      },
+      {
+        "assembly": "zodiac.framework.tests.dll",
+        "passed": 830,
+        "failed": 0,
+        "skipped": 0,
+        "trx": {
+          "localPath": "scratch/world-navigation-102-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_02_17_30_net10.0[2].trx",
+          "bytes": 1255557,
+          "sha256": "48b2f1092eeb3947cd6d5db16d1247d8f12b9deaf99bc7f582f8190636358bb3"
+        }
+      },
+      {
+        "assembly": "fft.client.tests.dll",
+        "passed": 374,
+        "failed": 0,
+        "skipped": 0,
+        "trx": {
+          "localPath": "scratch/world-navigation-102-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_02_17_30_net10.0[3].trx",
+          "bytes": 553800,
+          "sha256": "dcdf539ff8af6d62f53e05f3fdffefc0f72c70d721fac531311c4da0951f2062"
+        }
+      },
+      {
+        "assembly": "zodiac.assettool.cli.tests.dll",
+        "passed": 211,
+        "failed": 0,
+        "skipped": 0,
+        "trx": {
+          "localPath": "scratch/world-navigation-102-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_02_17_31_net10.0.trx",
+          "bytes": 324268,
+          "sha256": "fa630ab4960a1a2f7a7c8ce45a4075ef9f69244de1ffa6eed4234341b544b803"
+        }
+      },
+      {
+        "assembly": "zodiac.content.tests.dll",
+        "passed": 644,
+        "failed": 0,
+        "skipped": 0,
+        "trx": {
+          "localPath": "scratch/world-navigation-102-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_02_17_31_net10.0[1].trx",
+          "bytes": 938766,
+          "sha256": "f264da4decf3ebbf65cc49eb5fa719a6f5dbc21bb2b14862144afccb4f0adc17"
+        }
+      }
+    ]
+  },
+  "python": {
+    "passed": 281,
+    "newTests": 0,
+    "command": "python -m unittest discover -s tools/verification"
+  },
+  "logs": [
+    {
+      "localPath": "scratch/world-navigation-102-restore.log",
+      "bytes": 82,
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc"
+    },
+    {
+      "localPath": "scratch/world-navigation-102-build.log",
+      "bytes": 1678,
+      "sha256": "c5bc12e732617ab68b1806f8d39a466145a954ae047a1b6f41e3a9330c55ab60"
+    },
+    {
+      "localPath": "scratch/world-navigation-102-focused.log",
+      "bytes": 1079,
+      "sha256": "3e1caba314ad7041da5a9d76a8d8211488fd2a718e1651bd063c439c4e33bb9d"
+    },
+    {
+      "localPath": "scratch/world-navigation-102-tests.log",
+      "bytes": 2932,
+      "sha256": "8f2910620349963050588bd4392afa936cbbc28fab1445bdf660f48b47b9b867"
+    },
+    {
+      "localPath": "scratch/world-navigation-102-python.log",
+      "bytes": 1271,
+      "sha256": "74fece167aee26fc2a6a8b2d51c55e40618c74072c3d7dda7b52cbf82a1402db"
+    }
+  ],
+  "validation": {
+    "freshHome": "No checkpoint; disabled Resume skipped by wrapping focus; New opens World without activating Travel.",
+    "travel": "Complete state bytes and events match WorldCheckpointSimulator; insufficient funds preserves checkpoint identity.",
+    "navigation": "Party is read-only; Back restores parent focus; Home/Resume retains the checkpoint.",
+    "confirmation": "New and Exit default to Cancel; off-screen actions and nested exit requests cannot bypass the modal.",
+    "exit": "Home/World/Party host exit cancellation restores origin and focus; Accept closes without writing or clearing the checkpoint.",
+    "repeat": "Two independently composed logical scripts match all views/results and finish Closed with funds 86 and elapsed 64 after two trips.",
+    "storage": "Explicit isolated save directories remain absent throughout navigation tests.",
+    "sourceChange": "One existing save assertion uses the equivalent Assert.Single predicate overload to remove xUnit2031."
+  },
+  "limits": {
+    "nativeWindowsHostImplemented": false,
+    "newNativeWindows": 0,
+    "physicalDeviceChecks": false,
+    "focusAndHeldDeviceInputChecked": false,
+    "originalScreenComparison": false,
+    "saveLoadScreensImplemented": false,
+    "fullOriginalUiInventoryComplete": false,
+    "engineFrameworkProductionChanged": false,
+    "existingSaveSchemasChanged": false,
+    "noArgumentOrExistingCliRoutesChanged": false
+  },
+  "next": {
+    "ticket": "ZOD-103",
+    "status": "Ready",
+    "scope": "Bounded native host, action edges, focus/resize and separate device/visual checks; ZOD-069 remains Waiting."
+  }
+}

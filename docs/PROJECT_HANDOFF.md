@@ -1,6 +1,24 @@
 # Tessera / Zodiac / FFT Project Handoff
 
-**Latest implementation checkpoint (2026-10-26): ZOD-068 complete.** A pure
+**Latest implementation checkpoint (2026-10-26): ZOD-102 complete.** A closed
+client-owned authored world-menu model now handles Home/New/live Resume,
+read-only Party, existing checkpoint travel, parent focus and Cancel-first
+New/Exit confirmations. Navigation publishes immutable views and performs no
+storage operation. Only confirmed New replaces the session; travel delegates
+state/events to ZOD-068. Two logical scripts reproduce complete views/results
+and finish after two trips with funds 86/elapsed 64; save directories stay absent.
+Locked restore, zero-warning Release build and **2,285 managed / 281 Python
+tests pass** (18 new managed). A prior save-test assertion now uses the equivalent analyzer-approved
+predicate overload. Source/contract/validation are in the
+[guide](development/synthetic-world-navigation.md) and
+[evidence](evidence/navigation/synthetic-world-navigation-v1.json).
+**Next: ZOD-103 is Ready** for a bounded native Windows host and device/visual
+checks; no new window exists yet. ZOD-069 remains Waiting on ZOD-068/103, which
+clarifies its minimal navigation dependency without requiring the full ZOD-042
+epic. Original title/menus, formation operations, save availability and complete
+campaign remain open. No engine contracts, renderer options or quirk changes.
+
+**Previous implementation checkpoint (2026-10-26): ZOD-068 complete.** A pure
 FFT-owned immutable synthetic idle-world checkpoint binds party/job/equipment,
 inventory/funds, date/progress, location/route and explicit elapsed seconds. Its
 invented travel command costs seven funds/eleven seconds with no RNG or clock.
@@ -16,7 +34,7 @@ preserve live state/old files. Two headless runs repeat **14 files**, with an
 independent fixture/checksum/continuation/recovery audit. No original campaign,
 card/RNG continuation, graphics or UI claim. [Guide](development/synthetic-world-checkpoint.md),
 [evidence](evidence/saves/synthetic-world-checkpoint-v1.json).
-**Next:** scope minimal menu/navigation under ZOD-042 before ZOD-069's slot UI.
+**Next (now scoped above):** ZOD-102/103 under ZOD-042 before ZOD-069's slot UI.
 ZOD-069 remains Waiting; renderer options, contracts and quirk corrections stay
 deferred. This proof does not complete campaign/save epics ZOD-041/053.
 
