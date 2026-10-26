@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "ticket": "ZOD-111",
   "validatedOn": "2026-10-26",
-  "status": "implemented; owner visual/physical-input review pending",
+  "status": "complete within the bounded authored profile; owner approved",
   "managedBase": "f67adfdff405c40957cab02bbb1489bd70183191",
   "guide": "docs/development/basic-skill-battle-controls.md",
   "contract": "docs/evidence/combat/throw-stone-contract-v1.json",
@@ -51,7 +51,7 @@
     "resizePreservedStateAndHistory": true,
     "programmedFocusBaselinePreservedStateAndHistory": true,
     "physicalInputObserved": false,
-    "ownerApproved": false,
+    "ownerApproved": true,
     "originalExecution": false,
     "originalEquivalence": false,
     "throwStoneHits": 6,
@@ -219,10 +219,11 @@
     {
       "id": "TST-034",
       "ownerTicket": "ZOD-111",
-      "status": "owner-review-pending",
+      "status": "owner-approved",
       "expectation": "Owner visual and physical-input review approved separately from programmed controls",
       "evidence": [
-        "Owner visual and physical-input approval not received for this milestone"
+        "Owner replied: \"This looks good.\" after the launch/review guide and capture gallery.",
+        "Owner acceptance closes the bounded review; individual physical-input steps were not separately reported or agent-observed."
       ]
     }
   ],
@@ -233,8 +234,21 @@
     "Existing sword limits/facing discrepancy, unsupported ability save/restore guards, editor and ZOD-106 deferrals preserved."
   ],
   "next": {
-    "ticket": "ZOD-111",
-    "case": "TST-034",
-    "scope": "Owner visual and physical-input review; then select next bounded gameplay/source milestone"
+    "ticket": "ZOD-112",
+    "status": "Ready (recommended next)",
+    "scope": "Bounded source/fixture contract for sword settled-facing lifecycle",
+    "editor": "remains deferred",
+    "battleCheckpoints": "ZOD-106 remains deferred"
+  },
+  "ownerApproval": {
+    "recordedOn": "2026-10-26",
+    "statement": "This looks good.",
+    "context": "After launch/interactive walkthrough and capture gallery were provided",
+    "scope": "Owner acceptance of bounded ZOD-111 review; no original-game equivalence",
+    "implementationCommit": "85641dd961666b5dfcc5451a6624ef14d3df8d28",
+    "individualPhysicalStepsSeparatelyReported": false,
+    "agentObservedPhysicalInput": false,
+    "implementationAndCapturesRerun": false,
+    "testsRerunForApproval": false
   }
 }

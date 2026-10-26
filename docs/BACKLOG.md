@@ -44,7 +44,18 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
-**Current implementation (2026-10-26): ZOD-111 awaits owner review.** Prepared
+**Owner approval (2026-10-26): ZOD-111 is complete.** After receiving the launch
+guide and capture gallery, the owner replied, "This looks good." This closes
+TST-034 by owner acceptance; individual physical-input steps were not separately
+reported or agent-observed. Implementation/captures are unchanged; last validation
+remains **2,723 .NET / 311 Python** tests, not rerun for this documentation update.
+**Recommended next: ZOD-112**, a bounded source contract for the known sword
+settled-facing discrepancy before further combat expansion. Editor and ZOD-106
+remain deferred.
+
+### ZOD-111 implementation checkpoint (historical)
+
+**Implementation checkpoint (2026-10-26): ZOD-111 awaited owner review.** Prepared
 Basic Skill Windows controls, range/availability, select/confirm/cancel and compact
 map view pass TST-029..033. All **2,723 .NET / 311 Python** tests pass; zero-warning
 isolated Release build. Exactly two native checks pass 121 inputs each with exact
@@ -1247,9 +1258,11 @@ Run appropriate suites and independent import/evidence audit.
 
 ### ZOD-111 — Use Throw Stone through prepared Windows target controls
 
-**Type:** Story · **Priority:** P3 · **Status:** Implemented; owner review pending · **Depends on:** ZOD-110
+**Type:** Story · **Priority:** P3 · **Status:** Complete · **Depends on:** ZOD-110
 
-TST-029..033 pass; TST-034 remains pending. See the
+TST-029..033 pass; TST-034 is owner-approved ("This looks good.", 2026-10-26).
+Individual physical-input steps were not separately reported or agent-observed.
+No implementation, captures or test results changed for approval. See the
 [native plan/results/review guide](development/basic-skill-battle-controls.md) and
 [evidence](evidence/combat/throw-stone-window-v1.json). Programmed focus checks and
 agent image inspection do not establish physical-input or owner approval.
@@ -1263,6 +1276,27 @@ execution, compare every routed state/event/RNG with headless execution and repl
 repeat prepared/capture outputs, inspect GPU images, and preserve render/resize/
 focus atomicity. Owner visual/physical-input approval remains a separate gate.
 Battle-save persistence is not a prerequisite.
+
+### ZOD-112 — Specify the bounded sword's settled facing lifecycle
+
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-111
+
+**Scope:** Recheck the ZOD-108 finding against fresh pinned read-only decomp HEAD:
+trace sword preparation, temporary actor turning, hit/miss/KO resolution and the
+return-to-control restoration boundary. Compare the managed sword's persistent
+actor turn and its effect on subsequent facing-based evasion. Keep temporary
+animation facing separate from settled battle state. This is a source/fixture
+contract; do not silently change legacy behavior or rewrite historical evidence.
+
+**Acceptance criteria:** Record source callers, ordering, widths and relevant
+living/dead actor/target branches within the supported sword profile. Specify
+independently checkable initial-facing, hit/miss, target-KO, action-order and
+subsequent-evasion vectors, including state/events/RNG preservation and replay.
+Identify affected current tests/save continuations and recommend one bounded
+implementation ticket with explicit fixture-migration policy. No broader sword
+range/critical/knockback expansion, rewards/animation port, new native UI work,
+editor work or battle-save feature. Source-derived expectations remain distinct
+from original-game execution.
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 

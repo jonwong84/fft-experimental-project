@@ -1,5 +1,11 @@
 # ZOD-111 prepared Basic Skill controls
 
+**Complete by owner approval (2026-10-26).** After receiving this guide and the
+capture gallery, the owner replied, "This looks good." This closes TST-034 by
+owner acceptance; individual physical-input steps were not separately reported
+or agent-observed. No implementation/captures changed, and no tests/native checks
+were rerun for approval. The finite plan below preserves its pre-execution state.
+
 ## Finite native plan (recorded before execution, 2026-10-26)
 
 Use only authored, manifest-verified prepared content and the existing managed
@@ -41,7 +47,7 @@ script owns the same explicit inventory. Both journals replay before restart.
 
 ## Result and limits
 
-Implemented; TST-029..033 pass, **TST-034 owner approval is pending**. Locked
+TST-029..033 pass; **TST-034 is now owner-approved** as recorded above. Locked
 isolated restore and Release build passed with zero warnings. All **2,723 .NET /
 311 Python** tests pass (23 new managed, six Python). The first focused run found
 an assertion comparing immutable-array identity; corrected to compare its single
@@ -92,7 +98,7 @@ or check output. It never reads a BIN, decompilation or original executable.
 python tools/verification/verify_basic_skill_window.py --prepared scratch/basic-skill-111-prepared-a --prepared-repeat scratch/basic-skill-111-prepared-b --first scratch/basic-skill-111-native-a --repeat scratch/basic-skill-111-native-b --output scratch/basic-skill-111-audit-new
 ~~~
 
-## Owner interactive review (pending)
+## Owner interactive review guide
 
 1. Open the gallery or launch using prepared-a. Confirm the whole map, both cards,
    HP/PA/positions, action buttons and bottom hints are readable.

@@ -2,7 +2,22 @@
 
 ## Current handoff — 2026-10-26
 
-**ZOD-111 is implemented and awaits owner visual/physical-input approval.** The
+**ZOD-111 is complete by owner approval.** After the launch/review guide and
+capture gallery, the owner replied, "This looks good." TST-034 closes by owner
+acceptance; individual physical-input steps were not separately reported or
+agent-observed. No implementation/capture changes, new native launches or test
+reruns were needed to record approval. Last full validation remains 2,723 .NET /
+311 Python. Editor work and ZOD-106 remain deferred.
+
+**Recommended next: ZOD-112**, the bounded sword settled-facing source contract
+under ZOD-038. Recheck the known temporary-turn/restoration gap against fresh
+pinned decomp before changing code. Define subsequent-evasion/replay vectors and
+an explicit legacy-fixture migration policy; no new UI or save feature. See the
+[backlog scope](BACKLOG.md#zod-112--specify-the-bounded-swords-settled-facing-lifecycle).
+
+## ZOD-111 implementation checkpoint (historical)
+
+**ZOD-111 was implemented awaiting owner review at this checkpoint.** The
 manifest-verified authored Basic Skill battle now uses the existing native window:
 T/button targeting, arrows/Enter or pointer confirmation, Backspace cancellation,
 range/availability hints and HP/PA/position/push feedback. The compact view fits
