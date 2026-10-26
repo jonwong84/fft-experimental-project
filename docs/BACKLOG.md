@@ -40,6 +40,14 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Owner-directed architecture interlude (2026-10-25):** **ZOD-099 is complete**;
+resume ZOD-098. Engine and framework replacement are now explicit goals;
+[ADR 0006](adr/0006-replaceable-engine-and-framework-contracts.md) records the
+contract ownership and staged proof requirements. The
+[audit](architecture/zod-099-replacement-boundary-audit.md) selects ZOD-100's
+bounded engine proof and ZOD-101's framework contract specification; a full
+framework migration does not block prepared introduction work.
+
 **Current focus (2026-10-23):** ZOD-023 completes the bounded M1 headless start-to-result scenario;
 ZOD-025 adds the synthetic Windows view with live GPU/resize/close checks and explicit input/DPI limits.
 ZOD-027 traces the first ordinary Chocobo idle pose; ZOD-028 prepares and loads its static
@@ -1921,7 +1929,7 @@ original-duration claim. [Behavior](behavior/dark-screen-introduction.md),
 
 ### ZOD-098 — Prepare and preview the combined dark-screen introduction
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-097
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-097, ZOD-099
 
 **Scope:** Add the separately selected closed authored prepared profile, strict
 three-resource readiness, accepted-snapshot DarkScreen-before-display composition
@@ -1937,6 +1945,75 @@ Use a recorded finite native plan (at most seven Windows processes, 4096 ticks/
 prepared-only runs, old artifact/trace regressions and a new owner-reviewed gallery.
 Record human approval separately. No original BIN/C/emulator runtime dependency,
 original startup duration, new map renderer, CRT/audio policy or combat refactor.
+
+### ZOD-099 — Audit replaceable engine and framework contracts
+
+**Type:** Spike · **Priority:** P1 · **Status:** Complete · **Depends on:** ZOD-097
+
+**Result (2026-10-25):** [Boundary audit](architecture/zod-099-replacement-boundary-audit.md)
+pins managed baseline `4bda424`, inventories concrete project/type dependencies,
+and specifies `IFlatGridRange` plus independently owned immutable grid values,
+two provider graphs, shared conformance cases and explicit legacy limits. It
+identifies the two-unit command session as the bounded framework candidate and
+separates API, behavior, content/profile and save/replay compatibility. ZOD-100
+and ZOD-101 own the follow-ups below. No production interfaces/projects or
+replacement execution are added. Documentation checks only; the prior full
+validation remains 2,111 .NET / 269 Python tests. ZOD-098 is released.
+
+**Scope:** Inventory current consumers, project/type dependencies and public
+implementation leaks at both boundaries. Apply ADR 0006 to specify the smallest
+independent engine contract and a replacement proof, starting with the flat-grid
+facade candidate. Identify a bounded framework operation for a later proof.
+Distinguish application composition, internal introduction reuse, public values,
+private state, content schemas and persistence. No blanket interface extraction.
+
+**Acceptance criteria:** Pin the managed baseline and enumerate exact selected
+files/types. Specify the minimal API, value ownership, adapter/composition graph,
+validation and determinism semantics, version/profile implications and explicit
+non-goals. Define shared conformance cases and a build/run demonstration using
+an alternative implementation without the original implementation reference;
+a stand-in proves wiring only. Preserve existing behavior, Relay and reference
+guards. Create separately bounded implementation follow-ups with acceptance
+criteria; do not claim replacement from interfaces alone. No production type
+migration, source-rule translation or runtime plugin system is required by this
+spike. Its completion releases ZOD-098; wider migration is staged separately.
+
+### ZOD-100 — Prove the first implementation-independent engine contract
+
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-099
+
+**Scope:** Implement only the flat-grid contract/value assembly, Tessera adapter,
+synthetic alternative and common consumer/composition roots specified by the
+ZOD-099 audit. Preserve existing public engine/FFT APIs, RNG and Relay. This is
+one replacement proof, not a migration of all current Zodiac consumers.
+
+**Acceptance criteria:** Shared conformance cases pass against both providers;
+the same consumer source builds/runs under both compositions. The isolated
+alternative's evaluated references and fresh output exclude Tessera.Engine.
+Contract projects have no implementation references. Extend the narrow reference
+guard with positive and forbidden-reference checks; do not allow game references
+into Engine/Contracts. Locked restore, zero-warning Release build and all managed
+regressions pass. Record the exact proven scope and unconverted legacy callers;
+no full-engine replacement, source-rule or runtime-plugin claim.
+
+### ZOD-101 — Specify the bounded replaceable framework session
+
+**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-099
+
+**Scope:** Specify the independent two-unit command-session API selected by
+ZOD-099, its minimal observations/commands/results and content adapter boundary.
+Trace current lifecycle, validation/rejection order, RNG/probe behavior, restart,
+journaling and save/replay implications. No full campaign API or automatic
+interface extraction from implementation state.
+
+**Acceptance criteria:** Pin the managed baseline, name exact consumers/type
+leaks and define all selected signatures and value ownership without Engine or
+Framework implementation references. Specify capability/profile/version checks,
+shared behavior vectors and a fresh-output alternative build/run proof. Original
+compatibility and a wiring stand-in have separate evidence requirements. Create
+a bounded implementation ticket with regression criteria before production
+migration. No source-rule change, executable plugins or whole-game replacement
+claim is required by this spike.
 
 ## Authoring, extensions, and later goals
 

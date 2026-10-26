@@ -4,6 +4,9 @@ Naming follow-up (2026-10-25): the reusable engine is now Tessera Engine;
 Zodiac Framework names the FFT-specific rules layer. Current project identifiers
 are `Tessera.Engine`, `Zodiac.Framework`, `Zodiac.Content` and `Zodiac.AssetTool`/`.Cli`.
 The inward dependency rule below is preserved. See the [current architecture](../architecture/overview.md).
+Replacement follow-up (2026-10-25): [ADR 0006](0006-replaceable-engine-and-framework-contracts.md)
+adds independent contract/adapter boundaries as an owner-selected goal; existing
+assembly references are not yet migrated.
 
 - **Status:** Proposed for review
 - **Date:** 2026-10-20

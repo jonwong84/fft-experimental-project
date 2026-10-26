@@ -192,6 +192,14 @@ and ZOD-079/042/043/059/060 in the backlog; the active work order is unchanged.
 
 ## Proposed architecture
 
+Owner clarification (2026-10-25): support replacing Tessera Engine or Zodiac
+Framework through implementation-independent contracts and compatible adapters.
+[ADR 0006](docs/adr/0006-replaceable-engine-and-framework-contracts.md) defines
+the goal, current coupling and staged proofs. The completed
+[ZOD-099 audit](docs/architecture/zod-099-replacement-boundary-audit.md) selects
+the first bounded proof before implementation. This does not select runtime hot swapping or
+change existing schemas, references or compatibility behavior.
+
 The detailed, current proposal is in [`docs/architecture/overview.md`](docs/architecture/overview.md), with initial decisions in [`docs/adr/`](docs/adr/). It describes intended boundaries and explicitly distinguishes them from projects/services already implemented.
 
 The current project structure is intentionally small: `Zodiac.Framework` holds the initial domain/simulation types, `Zodiac.Content` loads prepared content, `Zodiac.AssetTool` and its CLI perform offline asset work, and `Fft.Client` is the composition root proof. Do not split `Zodiac.Framework` or add application/platform projects until a concrete boundary needs an independent assembly.

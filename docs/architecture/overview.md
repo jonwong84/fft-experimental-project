@@ -188,6 +188,24 @@ selects MonoGame DesktopGL, integrated by ZOD-025 in Client only. See the
 
 The dependency rule is inward: simulation code must not reference `Fft.Client`, graphics/audio/input packages, operating-system APIs, the BIN, or the C reference. Platform adapters implement interfaces owned by an inward-facing layer. The client is the composition root that chooses implementations and connects input, use cases, content, and presentation.
 
+### Engine and framework replacement
+
+The owner selected replacement of either implementation as an architectural goal
+on 2026-10-25. [ADR 0006](../adr/0006-replaceable-engine-and-framework-contracts.md)
+defines independent contracts, immutable boundary values and compatible adapters.
+The initial target is selection at application construction followed by a rebuild;
+runtime hot swapping is a separate decision. Concrete dependencies are permitted
+in composition roots and implementation adapters, while selected consumers depend
+on contract assemblies that do not reference the replaced implementation.
+
+The current direct references have not yet been migrated. The completed
+[ZOD-099 audit](zod-099-replacement-boundary-audit.md) selects a bounded first
+engine proof (ZOD-100) and framework contract specification (ZOD-101). ZOD-098
+remains the next implementation milestone; wider migration is staged separately.
+An internal introduction interface alone does not establish framework replacement.
+Behavior, content, save/replay and profile compatibility require explicit contracts
+and conformance checks in addition to interchangeable C# signatures.
+
 ## Responsibilities and contracts
 
 ### Tessera engine domain and simulation

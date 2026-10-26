@@ -1,5 +1,20 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Latest architecture direction (2026-10-25):** The owner wants the option to
+replace either Tessera Engine or Zodiac Framework. Accepted
+[ADR 0006](adr/0006-replaceable-engine-and-framework-contracts.md) distinguishes
+independent contract assemblies/immutable values from implementation types,
+compatible adapters and composition-root wiring. Replacement initially means
+rebuild after wiring; runtime hot swapping/plugins remain unselected. Direct
+references and production code are unchanged. The completed
+[ZOD-099 audit](architecture/zod-099-replacement-boundary-audit.md) specifies the
+first contract API, current consumers/type leaks and conformance cases; ZOD-100
+owns its engine proof and ZOD-101 the bounded framework contract specification.
+**Next: ZOD-098** resumes; these wider migration follow-ups are separate work.
+Its internal client introduction interface alone would not prove framework
+replacement. This documentation change reruns no implementation suites;
+ZOD-097 remains the last validation at **2,111 .NET / 269 Python tests**.
+
 **Latest implementation checkpoint (2026-10-25):** ZOD-097 adds the pure combined
 DarkScreen/general/Ready/release/synthetic-exit aggregate. One clock/consumer/
 ledger owns three stable retained tasks, event-before-worker polling, newborn

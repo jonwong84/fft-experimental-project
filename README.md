@@ -20,6 +20,10 @@ The naming migration replaces `Zodiac.Engine` with `Tessera.Engine`, `Fft.Core` 
 
 See the [architecture overview](docs/architecture/overview.md) and [ADR 0004](docs/adr/0004-zodiac-engine-and-fft-game-boundary.md) for the ownership boundary and intended direction.
 
+Replacing either engine or framework through independent contracts and compatible
+adapters is an architectural goal. [ADR 0006](docs/adr/0006-replaceable-engine-and-framework-contracts.md)
+records the staged approach; current assemblies are not yet interchangeable.
+
 ## What works today
 
 - **Playable synthetic battle:** control both units with mouse or keyboard; select, inspect legal moves/targets, move, attack, wait, advance turns and restart. HP, choices, rejections and the first-KO result are visible. [Controls and validation](docs/development/playable-battle.md).
