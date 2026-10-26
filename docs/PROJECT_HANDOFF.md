@@ -2,6 +2,42 @@
 
 ## Current handoff — 2026-10-26
 
+**ZOD-113 is complete.** The pure sword command retains incoming living-actor
+facing at the settled boundary. The reference checkout was freshly checked clean
+at 11464943bbdbd2a0af022d90cb7f10455cf911df, all 12 ZOD-112 fingerprints matched.
+No damage, current-action RNG, event/turn order or geometry-guard changes.
+
+New-policy schema-3 fixture replacements execute; all nine old sword v3 files
+remain byte-identical, strictly validate and report superseded/not-executed.
+An explicit manifest maps old IDs/hashes to new IDs. No in-memory assertion
+normalization or second buggy runtime algorithm. All eight old combat evidence
+files, both old saves, prepared content and earlier native files are unchanged.
+
+Locked isolated restore/zero-warning Release build pass; **2,804 .NET / 317 Python**
+tests pass (81 new managed, six Python). SFC-001..020 execute cardinal hit/miss,
+critical/KO/zero/cap, every draw budget, both actors/orders, pure probes, action
+orders, exact later evade/RNG, accepted/rejected prefix replay and fixture gates.
+All 13 old sword-save boundaries and six new misaligned-facing boundaries pass
+with fresh definitions. Saved facing remains authoritative. No format/profile
+version or ability-save support added; ZOD-106 remains deferred.
+
+Fourteen sword headless files repeat exactly against each other and a retained
+ZOD-111 build (RNG2473755763/22); four Basic Skill files repeat against each other
+and historical ZOD-110 output (RNG4200531631/58, 47 continuations). Two independent
+audits agree. New corrected two-tile results: raw journal RNG595337866/13;
+reachable saved scenario HP25/25, RNG2937909499/14. Generated files/TRX stay under
+ignored scratch/sword-facing-113-*. No new native/original/emulator execution;
+presentation code is unchanged. Older GPU reports remain historical.
+
+See [implementation/reproduction](behavior/sword-settled-facing-implementation.md)
+and [evidence](evidence/combat/sword-facing-implementation-v1.json).
+**Recommended next: ZOD-114**, a bounded flat sword critical-knockback source
+contract to assess safely removing the edge-only sword guard. Do not assume its
+draw order matches Throw Stone. Editor, battle checkpoints and broader combat
+remain outside that spike.
+
+## ZOD-112 source-contract checkpoint (historical)
+
 **ZOD-112 is complete; next ZOD-113 is Ready.** The
 [sword settled-facing contract](architecture/zod-112-sword-settled-facing.md)
 rechecks clean read-only reference 11464943bbdbd2a0af022d90cb7f10455cf911df.
@@ -540,7 +576,7 @@ independent per-tick cell/draw/display/barrier equations, variable authored dela
 maxima, replay and protected binding/VM/identity/clock checks. Existing workers,
 executors, engine/Content/client code and historical contracts are unchanged.
 Locked restore, zero-warning Release build and **2,111 .NET / 269 Python tests**
-pass (80 new managed). No prepared profile, render/Windows/battle-input bridge,
+pass (81 new managed). No prepared profile, render/Windows/battle-input bridge,
 native capture, emulator or original-duration claim. DSI-025..040 remain
 unexecuted. [Behavior](behavior/dark-screen-introduction.md),
 [executed metadata](evidence/events/dark-screen-intro-worker-v1.json).

@@ -6,6 +6,12 @@ checkout `C:\repositories\fft_decomp` HEAD verified as
 that revision. The [reference refresh](reference-refresh-2026-10-22.md) bridges
 the historical [attack trace](ordinary-physical-attack.md) to these source paths.
 
+**ZOD-113 correction (2026-10-26):** Settled actor facing now retains the incoming
+facing after hits and misses. See the [implementation/migration note](sword-settled-facing-implementation.md).
+New-policy v3 fixtures execute the correction; old v3 files remain unchanged as
+validated superseded history. Other arithmetic, guards and turn ordering below
+are unchanged.
+
 ## Implemented scope and content boundary
 
 `Zodiac.Framework.AttackBattleSimulator.Attack` is a pure, immediate, single-target sword
@@ -90,7 +96,8 @@ newly zero HP and increments unsigned-byte KO count (255 becomes 0). A living
 target at `HP <= floor(maxHP / 5)` becomes Critical. Resolved damage is the capped
 formula amount; the HP-changed event reports actual HP loss, which can be smaller.
 No HP-changed event is emitted for a miss or zero damage. An accepted miss still
-consumes the action and turns the actor toward the target.
+consumes the action. The returned settled actor retains its incoming facing;
+temporary presentation turning is not published as a simulation change.
 
 Draw-counter exhaustion returns `RandomDrawCountExhausted` atomically. Draws use a
 local immutable RNG word/count and publish only on success; the required budget
@@ -127,21 +134,22 @@ movement or establish complete original movement behavior.
 
 ## Executable fixtures and evidence limits
 
-**Source-review follow-up (ZOD-108, 2026-10-26):** At the same pinned reference
+**Historical source-review follow-up (ZOD-108, 2026-10-26):** At the same pinned reference
 revision, turn/controller.c::unit_facing_turn_to_target saves the incoming facing;
 reward_grant calls facing_all_after_attack_restore to restore living units.
-The existing managed sword action instead retains its attack-facing change,
+The then-existing managed sword action instead retained its attack-facing change,
 as recorded above. This is an identified settled-state fidelity gap under
 ZOD-038, not proven original behavior. ZOD-108 does not change the sword code,
 historical fixtures or evidence. The new Throw Stone contract preserves incoming
 facing at its settled command boundary; see
 [the source trace](../architecture/zod-108-throw-stone-action.md).
 
-**ZOD-112 contract follow-up (2026-10-26):** The completed
+**Historical ZOD-112 contract follow-up (2026-10-26):** The completed
 [settled-facing investigation](../architecture/zod-112-sword-settled-facing.md)
 pins the restoration boundary, exact later-evasion vectors and the historical
-fixture/save migration policy. The correction is not implemented here; ZOD-113
-owns it. Existing code, fixture files and earlier execution evidence remain intact.
+fixture/save migration policy. That investigation did not implement the correction;
+ZOD-113 subsequently implemented it as described above. Historical fixture files
+and earlier execution evidence remain intact.
 
 Fixture schema 3 replaces scenario `weaponIds` with explicit `weapons` records
 containing `id` and `power` for this closed profile. The test-only runner validates
@@ -155,7 +163,8 @@ descriptions still report not-executed, even if relabeled as scenarios; they lac
 an explicit executable weapon projection. Description-only schema 3 also remains
 not-executed. Historical evidence is not silently upgraded to execution evidence.
 
-New checked-in synthetic scenarios under `docs/fixtures/behavior/` cover:
+The original checked-in synthetic scenarios under `docs/fixtures/behavior/` covered
+the values below. New settled-facing replacements retain these same-action values:
 
 - Normal seed 1: damage 25, HP 50 to 25, six draws, state 2516284547.
 - Frontal miss seed 19: HP unchanged, four draws, state 2162199151.

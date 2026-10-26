@@ -64,7 +64,6 @@ public static class AttackBattleSimulator
             rng = draw.State;
             return draw.Value;
         }
-        BattleFacing facing = dx > 0 ? BattleFacing.East : dx < 0 ? BattleFacing.West : dy > 0 ? BattleFacing.North : BattleFacing.South;
         BattleFacing front = dx > 0 ? BattleFacing.West : dx < 0 ? BattleFacing.East : dy > 0 ? BattleFacing.South : BattleFacing.North;
         int classEvade = target.Facing == front ? target.ClassPhysicalEvade : 0;
         bool hit = true, critical = false;
@@ -92,7 +91,9 @@ public static class AttackBattleSimulator
         int hp = hit ? Math.Max(0, target.Hp - damage) : target.Hp;
         bool ko = target.Hp > 0 && hp == 0;
         AttackUnitState nextTarget = target.WithResult(hp, target.Facing, ko ? (target.KoCount + 1) & 255 : target.KoCount);
-        AttackUnitState nextActor = actor.WithResult(actor.Hp, facing, actor.KoCount);
+        // Presentation temporarily turns the actor; reward_grant restores living units before control returns.
+        // The closed profile cannot kill the actor, so publish only its incoming settled facing (ZOD-112).
+        AttackUnitState nextActor = actor.WithResult(actor.Hp, actor.Facing, actor.KoCount);
         var battle = new BattleState(action.State.Battle.Map, action.State.Battle.Units, rng);
         var turns = new TurnCycleState(action.State.Turns.Units, rng, action.State.Turns.Ticks, action.State.Turns.Phase);
         var next = new AttackBattleSnapshot(new(battle, turns), state.Combatants.Select(unit =>

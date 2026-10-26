@@ -8,13 +8,13 @@ using static Zodiac.Framework.Tests.Fixtures.MovementFixtureRunner;
 
 namespace Zodiac.Framework.Tests.Fixtures;
 
-// V2 preserves contract-only attacks. V3 supplies explicit weapon projections and executes attacks.
+// V2 preserves contract-only attacks. V3 executes only the explicit corrected settled-facing policy.
 internal static class AttackFixtureRunner
 {
     internal static Report Run(string json, string implementationRevision)
     {
         string id = "<invalid>", revision = "<invalid>", provenance = "{}";
-        const string policy = "fft:combat/bounded-sword-contract";
+        string policy = "fft:combat/bounded-sword-contract";
         try
         {
             Sha(JsonValue.Create(implementationRevision));
@@ -29,7 +29,9 @@ internal static class AttackFixtureRunner
             Shape(root["target"], "game edition region platform policyId");
             EqualLiteral(root["target"]!, "game", "FFT"); EqualLiteral(root["target"]!, "edition", "SCUS-94221");
             EqualLiteral(root["target"]!, "region", "North America"); EqualLiteral(root["target"]!, "platform", "PS1");
-            EqualLiteral(root["target"]!, "policyId", policy);
+            policy = Text(root["target"]!["policyId"]);
+            Require(policy == "fft:combat/bounded-sword-contract" ||
+                (version == 3 && policy == "fft:combat/bounded-sword-settled-facing-v1"), "Unsupported sword policy/schema combination");
             Shape(root["reference"], "decompCommit observedOn usedForExpectations");
             revision = Sha(root["reference"]!["decompCommit"]);
             Require(DateOnly.TryParseExact(Text(root["reference"]!["observedOn"]), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out _), "Invalid observedOn");
@@ -99,6 +101,8 @@ internal static class AttackFixtureRunner
                 _ = ReadState(group["state"]!, map, mapId, weapons);
                 foreach (var ev in Array(group["events"])) ValidateEvent(ev!);
             }
+            if (version == 3 && policy == "fft:combat/bounded-sword-contract")
+                return Result("not-executed", "Validated historical V3 fixture; superseded due to settled-facing gap (ZOD-112/113). No combat assertions executed.");
             if (execution == "description-only" || (version == 2 && hasAttack))
                 return Result("not-executed", "Validated contract; description-only/v2 attack fixtures do not execute combat assertions.");
             for (int i = 0; i < commands.Count; i++)

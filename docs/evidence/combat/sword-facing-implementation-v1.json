@@ -1,0 +1,630 @@
+{
+  "format": "fft.sword-facing-implementation-validation",
+  "schemaVersion": 1,
+  "ticket": "ZOD-113",
+  "validatedOn": "2026-10-26",
+  "status": "complete within the closed sword profile",
+  "managedBase": "ef02679e6afe9806011cdcfbb7e3c585b951ed5d",
+  "guide": "docs/behavior/sword-settled-facing-implementation.md",
+  "contract": "docs/evidence/combat/sword-facing-contract-v1.json",
+  "reference": {
+    "root": "C:/repositories/fft_decomp",
+    "revision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "freshlyCheckedClean": true,
+    "readOnly": true,
+    "all12ContractFileFingerprintsRecheckedBeforeTranslation": true
+  },
+  "correction": {
+    "actorResult": "Retain living actor incoming facing; no transient published turn.",
+    "currentActionDamageDrawsEventsAndGatesUnchanged": true,
+    "targetFacingUnchanged": true,
+    "sourceDeadActorBranchNotGeneralized": true,
+    "productionFilesChanged": [
+      "src/Zodiac.Framework/AttackBattleSimulator.cs"
+    ],
+    "newRuntimeDependencies": false,
+    "newFacingEvent": false,
+    "newSaveFormat": false,
+    "newProfileVersion": false
+  },
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuild": true,
+    "warnings": 0,
+    "managedPassed": 2804,
+    "pythonPassed": 317,
+    "newManaged": 81,
+    "newPython": 6,
+    "focusedPassed": 218,
+    "fullTrx": [
+      {
+        "path": "scratch/sword-facing-113-tests-final/sword-facing113-final_net10.0_20261026152819.trx",
+        "byteLength": 37862,
+        "sha256": "6e3be80dbb37a720c8a30dc32c77fe88e2201c3c74ba77c65b174860fe966ede"
+      },
+      {
+        "path": "scratch/sword-facing-113-tests-final/sword-facing113-final_net10.0_20261026152820.trx",
+        "byteLength": 313534,
+        "sha256": "4ce5571ffd391213bd13bc2691c60ef80354452a25764023a68afad12673f9a4"
+      },
+      {
+        "path": "scratch/sword-facing-113-tests-final/sword-facing113-final_net10.0_20261026152821.trx",
+        "byteLength": 1665479,
+        "sha256": "9d7dfad70070915e0e7733478e2e3527f01dff44cc7507582245d75e739c5dc8"
+      },
+      {
+        "path": "scratch/sword-facing-113-tests-final/sword-facing113-final_net10.0_20261026152829.trx",
+        "byteLength": 466579,
+        "sha256": "8b485ea562e9336f15ce5b7d2c0a5bc32e050513564634ac6de27d2c3aa6c980"
+      },
+      {
+        "path": "scratch/sword-facing-113-tests-final/sword-facing113-final_net10.0_20261026152833.trx",
+        "byteLength": 1174613,
+        "sha256": "9969206347330418cf1a6b856e1b6ac1876b417862cbe5a000e105c8cd38f2d0"
+      },
+      {
+        "path": "scratch/sword-facing-113-tests-final/sword-facing113-final_net10.0_20261026152835.trx",
+        "byteLength": 650132,
+        "sha256": "e252363cac5a510902314d17002ec65d6d80c43733175cd0c1cfa9c01125264a"
+      }
+    ],
+    "artifacts": "scratch/sword-facing-113-artifacts",
+    "pythonScratchTemp": "scratch/sword-facing-113-python-temp",
+    "nativeExecution": false,
+    "originalExecution": false
+  },
+  "behaviorVectors": {
+    "cardinalCases": 32,
+    "criticalKOZeroCapCases": 4,
+    "drawBudgetCases": 20,
+    "actorOrderProbeCases": 4,
+    "activeTurnCorrected": {
+      "hp": [
+        25,
+        25
+      ],
+      "rngWord": 595337866,
+      "rngCount": 13
+    },
+    "reachableScenarioCorrected": {
+      "hp": [
+        25,
+        25
+      ],
+      "rngWord": 2937909499,
+      "rngCount": 14,
+      "saveBoundaries": 6
+    },
+    "authoritativeSavedEastFacing": {
+      "finalActorHp": 50,
+      "rngWord": 836760821,
+      "rngCount": 12
+    },
+    "rejectedCommandsAtomic": true,
+    "bothRngCopiesMatched": true,
+    "prefixReplayMatched": true
+  },
+  "fixtureMigration": {
+    "policyId": "fft:combat/bounded-sword-settled-facing-v1",
+    "fixtureSchema": 3,
+    "supersession": {
+      "path": "docs/fixtures/behavior/sword-facing-supersession-v1.json",
+      "byteLength": 4321,
+      "sha256": "39e9b374ad5f7e76526da292a28504953ddc7158024c09d9438332771e48620c"
+    },
+    "replacementFixtures": [
+      {
+        "path": "docs/fixtures/behavior/sword-cap-ko-wrap.v3.settled-facing.json",
+        "byteLength": 15458,
+        "sha256": "14762926f47dc148059780fd616c8e0cfd55ba5a683f1558112f312357329029"
+      },
+      {
+        "path": "docs/fixtures/behavior/sword-critical.v3.settled-facing.json",
+        "byteLength": 15299,
+        "sha256": "4377f13118241f9a0f9fda4e34ee150252753afa4503a01556fec66ac5d3d04d"
+      },
+      {
+        "path": "docs/fixtures/behavior/sword-diagonal-rejected.v3.settled-facing.json",
+        "byteLength": 14532,
+        "sha256": "890e62c8e8d20192388a7f9b4d9a81a9cab6e4266d63a0f7c548eea80736946d"
+      },
+      {
+        "path": "docs/fixtures/behavior/sword-ko.v3.settled-facing.json",
+        "byteLength": 15423,
+        "sha256": "81b19df00c00e4937bc7c57e74d6906f66672be19365a267203edf7c1d6d06da"
+      },
+      {
+        "path": "docs/fixtures/behavior/sword-miss.v3.settled-facing.json",
+        "byteLength": 14925,
+        "sha256": "982c855fe46742a249f8a292e6bc814ece1a21f5f7bb604aacd7a9c1a2f597ff"
+      },
+      {
+        "path": "docs/fixtures/behavior/sword-move-attack.v3.settled-facing.json",
+        "byteLength": 20165,
+        "sha256": "ff68e40fb2f4565d5d3449e4947e945a3e4f81056a43f67f125b5bd8f17ae4d9"
+      },
+      {
+        "path": "docs/fixtures/behavior/sword-normal.v3.settled-facing.json",
+        "byteLength": 15102,
+        "sha256": "251ce10a87c6b1c093acbce060ec3a067c5f669999034c90f125a099cabd9fd6"
+      },
+      {
+        "path": "docs/fixtures/behavior/sword-side.v3.settled-facing.json",
+        "byteLength": 15099,
+        "sha256": "4183c6af72953005e3310aecb30409ba5652baae040d6e1d5212d13871e5c5e2"
+      },
+      {
+        "path": "docs/fixtures/behavior/sword-zero-pa.v3.settled-facing.json",
+        "byteLength": 15114,
+        "sha256": "a023b15fbb918d9817b9500c61e477f239050e3c98d2916762d0b6ef3d219637"
+      }
+    ],
+    "historicalV3Count": 9,
+    "explicitFacingCorrections": 8,
+    "historicalPolicyStatus": "strictly validated; superseded/not-executed",
+    "runtimeLegacyBugSwitch": false,
+    "inMemoryAssertionNormalization": false,
+    "historicalIdentityHashEncoding": "utf8-lf; checkout CRLF accepted only for file identity, never assertion rewriting"
+  },
+  "historicalFilesPreserved": [
+    {
+      "path": "docs/fixtures/behavior/sword-cap-ko-wrap.v3.source-derived.json",
+      "byteLength": 14214,
+      "sha256": "9a27a44e0ce960675cd75da7867fe1a7249ac5c32b61be4e492b77a7ff9c9c6d"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-critical.v3.source-derived.json",
+      "byteLength": 14060,
+      "sha256": "0afeb0d40c22ef4e713ea7d9b94d27e96df23c66ca826be418e970f2c2aaedec"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-diagonal-rejected.v3.source-derived.json",
+      "byteLength": 13320,
+      "sha256": "5f39927e11a470e4ce5af89ec6e06fcc7599ca77178c3f7d6ae87b4f7dfb2b22"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-ko.v3.source-derived.json",
+      "byteLength": 14179,
+      "sha256": "525da6b57f58c702d5829a7c840cd975c008867e2961bda41312b4133a980947"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-miss.v3.source-derived.json",
+      "byteLength": 13698,
+      "sha256": "a47886d6b6bc68dac3a61f09f4543298f1556761e7143be191297d25c0dc518f"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-move-attack.v3.source-derived.json",
+      "byteLength": 18729,
+      "sha256": "6416eba1dc567230cda110f1b941485fac45a18a4482fc27f45f020dbea4674d"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-normal.v3.source-derived.json",
+      "byteLength": 13869,
+      "sha256": "21c0a8645f3ce8780aeb9284cdea530866c93901b95108e5b75614766dbf54ae"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-side.v3.source-derived.json",
+      "byteLength": 13866,
+      "sha256": "f25091e0be16350a65bfa7e83afb2f14a4ed918dd771245eb923844a85885f7e"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-zero-pa.v3.source-derived.json",
+      "byteLength": 13881,
+      "sha256": "ddc7db3630e995b1cf1c4df94dfe5cc62f240eecff38038c027f32c517fef446"
+    },
+    {
+      "path": "docs/fixtures/saves/two-unit-active-v1.json",
+      "byteLength": 1335,
+      "sha256": "5d5bb9494821337743c1fd944cce072d68b3436856e58fd5ef3844e528c6843e"
+    },
+    {
+      "path": "docs/fixtures/saves/two-unit-active-v2.json",
+      "byteLength": 1384,
+      "sha256": "fc1151ef2bd01d70b9ea34e9c969a35a8f6e96eed04385bdf013ddc24bdc0e95"
+    },
+    {
+      "path": "docs/evidence/combat/accumulate-contract-v1.json",
+      "byteLength": 16914,
+      "sha256": "8772c17323d22066dc4e23c41871cff7ce2d33340c4f04307285968e795962d9"
+    },
+    {
+      "path": "docs/evidence/combat/accumulate-implementation-v1.json",
+      "byteLength": 17175,
+      "sha256": "630eae1a230f832117ebaf022194a70dd465dde8d059233c4f9d0e40ea1df7b0"
+    },
+    {
+      "path": "docs/evidence/combat/accumulate-window-v1.json",
+      "byteLength": 11348,
+      "sha256": "d0987721ec45cd9b5b4cf488a332f89013ca1e49d13afde02a5fcc8cf9568c3d"
+    },
+    {
+      "path": "docs/evidence/combat/throw-stone-content-v1.json",
+      "byteLength": 36714,
+      "sha256": "9c68df3d342fe2ffd6f28f977be4a269b5b452c5b921742dcd9edb9cfa5403e4"
+    },
+    {
+      "path": "docs/evidence/combat/throw-stone-contract-v1.json",
+      "byteLength": 20732,
+      "sha256": "ca3c40dc502240928b2039e7a2d6ba9d53ee931638f817a55c9be05c80d6e882"
+    },
+    {
+      "path": "docs/evidence/combat/throw-stone-implementation-v1.json",
+      "byteLength": 36563,
+      "sha256": "89ab4247f44d6d820072e8604b7ab8ede44193f5c9165be3c5f08a9493f57f6e"
+    },
+    {
+      "path": "docs/evidence/combat/throw-stone-window-v1.json",
+      "byteLength": 11341,
+      "sha256": "f1465d1bbc9b1c9b3309b2ed17b87acb73ac3789cab50c443f64debe1a195ea0"
+    },
+    {
+      "path": "docs/evidence/combat/sword-facing-contract-v1.json",
+      "byteLength": 29910,
+      "sha256": "8f5ff3d8c01c0a23f0cb6330d12b9f65c9f09686ef5957c037ac25bec65a8245"
+    }
+  ],
+  "headless": {
+    "managedProcesses": 5,
+    "retainedBaselineBuild": [
+      {
+        "path": "scratch/basic-skill-111-artifacts/bin/Fft.Client/release/Fft.Client.dll",
+        "byteLength": 406016,
+        "sha256": "eab479875b1ab2d948693a73dc2621e4abfde39cc189f59699509f3b42aa540c"
+      },
+      {
+        "path": "scratch/basic-skill-111-artifacts/bin/Fft.Client/release/Zodiac.Framework.dll",
+        "byteLength": 345088,
+        "sha256": "e1f2e53de760eb1eaa44bcf393948e1f18c75914f68c572bb31462480135ff85"
+      }
+    ],
+    "sword": {
+      "roots": [
+        "scratch/sword-facing-113-save-baseline",
+        "scratch/sword-facing-113-save-a",
+        "scratch/sword-facing-113-save-b"
+      ],
+      "all14FilesEqualToPriorBuild": true,
+      "checkpoints": 13,
+      "rngWord": 2473755763,
+      "rngCount": 22,
+      "profileVersion": 1,
+      "contentVersion": 1,
+      "files": [
+        {
+          "path": "scratch/sword-facing-113-save-a/check.json",
+          "byteLength": 415,
+          "sha256": "4fbf21a0a7a3655e9e9b6fda152d6fdd95ed5927bc9b5065ae111a5ac8c44870"
+        },
+        {
+          "path": "scratch/sword-facing-113-save-a/checkpoint-00.json",
+          "byteLength": 833,
+          "sha256": "15ecd3ed2f43a659603ec2bdbab558cb6fb49322c9c0cc767f0e9fb457aa0cf6"
+        },
+        {
+          "path": "scratch/sword-facing-113-save-a/checkpoint-01.json",
+          "byteLength": 863,
+          "sha256": "98fba1a9e11ae0cfbb225a24ec49657dc951193417b331365b18a4e715665e3b"
+        },
+        {
+          "path": "scratch/sword-facing-113-save-a/checkpoint-02.json",
+          "byteLength": 862,
+          "sha256": "c7401b9a1d348885fd0b8cbc3a186de8bc1e269107275bd05cf522b056e7639b"
+        },
+        {
+          "path": "scratch/sword-facing-113-save-a/checkpoint-03.json",
+          "byteLength": 846,
+          "sha256": "dfb79921a0e2a050611308e519760dbae1b896f31a18079539edd7443cfe82b8"
+        },
+        {
+          "path": "scratch/sword-facing-113-save-a/checkpoint-04.json",
+          "byteLength": 860,
+          "sha256": "b2651ad8365af1ce7b3e0b4633f5457d0ad0682f1bf02511ccb5a12dd7b7bf8b"
+        },
+        {
+          "path": "scratch/sword-facing-113-save-a/checkpoint-05.json",
+          "byteLength": 860,
+          "sha256": "4bb1c5f53bcdf090d2862d12ac178f003af0c62a0300d387fecfda70ba6d745b"
+        },
+        {
+          "path": "scratch/sword-facing-113-save-a/checkpoint-06.json",
+          "byteLength": 845,
+          "sha256": "29873cfe7d5a3edd999789cdc0dff5fbbb2bc8e32abe9fc421e6e528608a00e2"
+        },
+        {
+          "path": "scratch/sword-facing-113-save-a/checkpoint-07.json",
+          "byteLength": 862,
+          "sha256": "79998fbd13fe308b6444b4ad3c261e8b13403768993ff575beb4a43f030293ad"
+        },
+        {
+          "path": "scratch/sword-facing-113-save-a/checkpoint-08.json",
+          "byteLength": 861,
+          "sha256": "d5f50f84ff29367f504ed2f8c325823b7250a4ac3541567f202ad1975d84b25e"
+        },
+        {
+          "path": "scratch/sword-facing-113-save-a/checkpoint-09.json",
+          "byteLength": 846,
+          "sha256": "98e1fb4ebf1449bc927e4379e49b37eba52129f45cc0d07918531965e136738f"
+        },
+        {
+          "path": "scratch/sword-facing-113-save-a/checkpoint-10.json",
+          "byteLength": 862,
+          "sha256": "442c45a103e80d50edd715383cd81e76d4564e65c48b8ad5647c866b41335dd2"
+        },
+        {
+          "path": "scratch/sword-facing-113-save-a/checkpoint-11.json",
+          "byteLength": 861,
+          "sha256": "712bcc2a4ebecadaf9ff087a3e9c3d394526f921c5faaa486559738be8f74c0b"
+        },
+        {
+          "path": "scratch/sword-facing-113-save-a/checkpoint-12.json",
+          "byteLength": 844,
+          "sha256": "4bcbed890c9ebfeacd6da35136d8bdca7810fe31490d522f5982bab49646615f"
+        }
+      ]
+    },
+    "basicSkill": {
+      "roots": [
+        "scratch/throw-stone-110-headless-a",
+        "scratch/sword-facing-113-basic-a",
+        "scratch/sword-facing-113-basic-b"
+      ],
+      "all4FilesEqualToHistorical": true,
+      "commands": 46,
+      "continuations": 47,
+      "rngWord": 4200531631,
+      "rngCount": 58,
+      "files": [
+        {
+          "path": "scratch/sword-facing-113-basic-a/ability.package.json",
+          "byteLength": 432,
+          "sha256": "2fb9459f3f5e299c9c2ac325046f49f31e8c3fe9321f9d469aaa2f05ea75252c"
+        },
+        {
+          "path": "scratch/sword-facing-113-basic-a/check.json",
+          "byteLength": 136251,
+          "sha256": "ce316b2a760c55fa5826abbd2871135b4c39be69dde8847c274b75a67e3fe9a6"
+        },
+        {
+          "path": "scratch/sword-facing-113-basic-a/content.package.json",
+          "byteLength": 1267,
+          "sha256": "1e37ad82e0dbe2538ad9b14f05fca3eb80400934740f7f430799378d96b1c5d8"
+        },
+        {
+          "path": "scratch/sword-facing-113-basic-a/targeted.package.json",
+          "byteLength": 480,
+          "sha256": "0223b814828f7ba1dcfde557c5d731df5ede0dba13976b0d790f20fb09aa1dde"
+        }
+      ]
+    }
+  },
+  "audit": {
+    "script": {
+      "path": "tools/verification/verify_sword_facing.py",
+      "byteLength": 8532,
+      "sha256": "bd4be8765d3e4db34ff4d71ba2073689f81722cd3967dd73985695e8e1e8698c"
+    },
+    "reports": [
+      {
+        "path": "scratch/sword-facing-113-audit-final-a.json",
+        "byteLength": 894,
+        "sha256": "4ea3f373f6bc914d61eb6fbf8515a79e78ebf8069768b48a252fdbe84daadfc9"
+      },
+      {
+        "path": "scratch/sword-facing-113-audit-final-b.json",
+        "byteLength": 894,
+        "sha256": "4ea3f373f6bc914d61eb6fbf8515a79e78ebf8069768b48a252fdbe84daadfc9"
+      }
+    ],
+    "equal": true,
+    "oldPreparedFilesPreserved": 4,
+    "oldNativeFilesPreserved": 29,
+    "coverage": "Static migration/hashes and independent headless arithmetic; corrected behavior separately executed by managed suites"
+  },
+  "cases": [
+    {
+      "id": "SFC-001",
+      "ownerTicket": "ZOD-113",
+      "status": "executed",
+      "expectation": "All 16 cardinal direction/incoming-facing hit combinations retain actor facing with unchanged same-action damage/events/RNG.",
+      "evidence": [
+        "Source_contract_cardinals_preserve_both_facings_with_exact_damage_and_RNG (16 hits)"
+      ]
+    },
+    {
+      "id": "SFC-002",
+      "ownerTicket": "ZOD-113",
+      "status": "executed",
+      "expectation": "All 16 cardinal forced-miss combinations retain actor and target facing, four draws and Act consumption.",
+      "evidence": [
+        "Source_contract_cardinals_preserve_both_facings_with_exact_damage_and_RNG (16 misses)"
+      ]
+    },
+    {
+      "id": "SFC-003",
+      "ownerTicket": "ZOD-113",
+      "status": "executed",
+      "expectation": "Critical, zero power, capped damage and target KO retain actor facing and unchanged HP/status/KO arithmetic and events.",
+      "evidence": [
+        "KO_critical_zero_and_cap_preserve_actor_and_target_facing",
+        "Hp_clamp_Critical_integer_boundary_and_KO_byte_wrap"
+      ]
+    },
+    {
+      "id": "SFC-004",
+      "ownerTicket": "ZOD-113",
+      "status": "executed",
+      "expectation": "Target facing stays unchanged for supported hit, class-evade miss and KO; no generic dead-unit restoration rule.",
+      "evidence": [
+        "Source_contract_cardinals_preserve_both_facings_with_exact_damage_and_RNG",
+        "KO_critical_zero_and_cap_preserve_actor_and_target_facing"
+      ]
+    },
+    {
+      "id": "SFC-005",
+      "ownerTicket": "ZOD-113",
+      "status": "executed",
+      "expectation": "Incoming aligned facing stays unchanged; both actor IDs and reordered combatants behave equivalently.",
+      "evidence": [
+        "Both_actor_IDs_and_combatant_orders_preserve_incoming_facing_without_mutating_probes"
+      ]
+    },
+    {
+      "id": "SFC-006",
+      "ownerTicket": "ZOD-113",
+      "status": "executed",
+      "expectation": "Unknown/inactive/self/dead/used/out-of-range/unsupported commands preserve identity/state/facing/events/both RNG copies.",
+      "evidence": [
+        "Invalid_or_unsupported_commands_preserve_exact_input_and_emit_nothing"
+      ]
+    },
+    {
+      "id": "SFC-007",
+      "ownerTicket": "ZOD-113",
+      "status": "executed",
+      "expectation": "Four/six/seven-draw exhaustion boundaries reject atomically; sufficient budgets preserve draw order.",
+      "evidence": [
+        "Every_draw_exhaustion_boundary_preserves_state_and_facing (20 cases)"
+      ]
+    },
+    {
+      "id": "SFC-008",
+      "ownerTicket": "ZOD-113",
+      "status": "executed",
+      "expectation": "Act then Wait preserves facing, unused Move and CT refund/event order without extra RNG.",
+      "evidence": [
+        "Both_action_orders_and_Wait_preserve_attack_entry_facing_and_existing_event_order"
+      ]
+    },
+    {
+      "id": "SFC-009",
+      "ownerTicket": "ZOD-113",
+      "status": "executed",
+      "expectation": "Move then Act ends in existing event order while retaining attack-entry facing.",
+      "evidence": [
+        "Both_action_orders_and_Wait_preserve_attack_entry_facing_and_existing_event_order"
+      ]
+    },
+    {
+      "id": "SFC-010",
+      "ownerTicket": "ZOD-113",
+      "status": "executed",
+      "expectation": "Act then Move preserves settled facing through the existing wrapper; no new movement-facing or Wait-direction rule.",
+      "evidence": [
+        "Both_action_orders_and_Wait_preserve_attack_entry_facing_and_existing_event_order"
+      ]
+    },
+    {
+      "id": "SFC-011",
+      "ownerTicket": "ZOD-113",
+      "status": "executed",
+      "expectation": "Active-turn two-tile reverse attack hits25 at RNG595337866/count13 instead of old frontal miss at RNG180171308/count11.",
+      "evidence": [
+        "Restored_facing_changes_subsequent_evasion_and_every_journal_prefix_replays_exactly"
+      ]
+    },
+    {
+      "id": "SFC-012",
+      "ownerTicket": "ZOD-113",
+      "status": "executed",
+      "expectation": "Repeated pure probes on immutable input return identical state/events without publishing temporary facing.",
+      "evidence": [
+        "Both_actor_IDs_and_combatant_orders_preserve_incoming_facing_without_mutating_probes"
+      ]
+    },
+    {
+      "id": "SFC-013",
+      "ownerTicket": "ZOD-113",
+      "status": "executed",
+      "expectation": "Corrected accepted/rejected journals and every prefix/suffix replay match full state/events/RNG including KO terminal guards.",
+      "evidence": [
+        "Restored_facing_changes_subsequent_evasion_and_every_journal_prefix_replays_exactly",
+        "TwoUnitBattleScenarioTests terminal guards"
+      ]
+    },
+    {
+      "id": "SFC-014",
+      "ownerTicket": "ZOD-113",
+      "status": "executed",
+      "expectation": "New explicit test policy executes replacement fixtures with full snapshots and an explicit supersession map.",
+      "evidence": [
+        "Source_derived_v3_vectors_execute_and_repeat_with_complete_snapshots (nine replacements)"
+      ]
+    },
+    {
+      "id": "SFC-015",
+      "ownerTicket": "ZOD-113",
+      "status": "executed",
+      "expectation": "Nine historical sword v3 files and old combat evidence remain byte-identical; eight facing gaps declared; old policy validates as superseded/not-executed.",
+      "evidence": [
+        "Historical_v3_is_hash_preserved_validated_and_explicitly_superseded",
+        "verify_sword_facing.py",
+        "Historical_identity_hash_is_stable_under_Git_checkout_line_endings"
+      ]
+    },
+    {
+      "id": "SFC-016",
+      "ownerTicket": "ZOD-113",
+      "status": "executed",
+      "expectation": "Old schema-2 descriptions remain unexecuted; malformed fixtures reject; no expected-facing normalization or second buggy production algorithm.",
+      "evidence": [
+        "Historical_v3_is_hash_preserved_validated_and_explicitly_superseded",
+        "Attack_KO_contract_validates_without_claiming_execution_and_v1_remains_separate",
+        "V3_requires_explicit_unambiguous_supported_weapon_parameters"
+      ]
+    },
+    {
+      "id": "SFC-017",
+      "ownerTicket": "ZOD-113",
+      "status": "executed",
+      "expectation": "New-policy damage/facing/RNG/rejection mismatch negatives fail assertions; invalid policy/schema fails validation.",
+      "evidence": [
+        "Executed_attack_expectations_report_mismatches_including_outcome_and_rejection",
+        "Policy_must_be_explicit_and_compatible_with_schema"
+      ]
+    },
+    {
+      "id": "SFC-018",
+      "ownerTicket": "ZOD-113",
+      "status": "executed",
+      "expectation": "Both old sword-save files and all 13 built-in boundaries retain bytes and identical continuation with fresh definitions.",
+      "evidence": [
+        "Every_command_boundary_restores_full_state_and_identical_remaining_events (13 cases)",
+        "Versioned_synthetic_fixtures_resume_after_action_with_movement_still_available",
+        "Three identical 14-file headless save outputs including retained ZOD-111 build"
+      ]
+    },
+    {
+      "id": "SFC-019",
+      "ownerTicket": "ZOD-113",
+      "status": "executed",
+      "expectation": "Reachable AddCt two-tile scenario saves/restores at six boundaries via existing format, ending HP25/25 at RNG2937909499/count14; saved facing is authoritative.",
+      "evidence": [
+        "Every_reachable_misaligned_facing_boundary_restores_full_state_and_corrected_continuation (six cases)",
+        "Save_restores_authoritative_facing_instead_of_inferring_attack_history"
+      ]
+    },
+    {
+      "id": "SFC-020",
+      "ownerTicket": "ZOD-113",
+      "status": "executed",
+      "expectation": "Locked isolated build/full .NET/Python suites and repeated headless sword/ability checks pass; unrelated guards retained; no new UI or ability-save feature.",
+      "evidence": [
+        "Locked isolated zero-warning Release build",
+        "2804 .NET / 317 Python tests",
+        "Two identical independent audits; repeated headless output matches prior builds"
+      ]
+    }
+  ],
+  "limits": [
+    "Source-derived authored evidence; no new original/emulator/native or animation equivalence.",
+    "Existing sword adjacency and off-map-beyond-target guard remain, along with reaction/mount/multi-strike/Wait-direction exclusions.",
+    "Historical native reports remain historical; presentation code has no change.",
+    "Existing sword persistence alone is exercised; ability save/restore guards and ZOD-106 deferral remain intact.",
+    "Editor work remains deferred; generated outputs and TRX remain ignored scratch."
+  ],
+  "next": {
+    "ticket": "ZOD-114",
+    "status": "Ready (recommended next)",
+    "scope": "Source contract for flat sword critical knockback and safe geometry-gate relaxation"
+  }
+}

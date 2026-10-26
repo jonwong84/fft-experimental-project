@@ -28,7 +28,7 @@ public sealed class AttackBattleSimulatorTests
         Assert.Equal(actual.State.TurnBattle.Turns.RngState, actual.State.TurnBattle.Battle.RngState);
         Assert.True(actual.State.TurnBattle.Turns.Units[0].ActionTaken);
         Assert.True(actual.State.TurnBattle.Turns.Units[0].HasTurn);
-        Assert.Equal(BattleFacing.East, actual.State.Combatants[0].Facing);
+        Assert.Equal(BattleFacing.South, actual.State.Combatants[0].Facing);
         Assert.Equal(BattleFacing.South, before.Combatants[0].Facing);
         Assert.Equal(50, before.Combatants[1].Hp);
         Assert.Equal(new FftRandomState(seed, 0), before.TurnBattle.Turns.RngState);
@@ -85,16 +85,16 @@ public sealed class AttackBattleSimulatorTests
     }
 
     [Theory]
-    [InlineData(2, 1, BattleFacing.West, BattleFacing.East)]
-    [InlineData(0, 1, BattleFacing.East, BattleFacing.West)]
-    [InlineData(1, 2, BattleFacing.South, BattleFacing.North)]
-    [InlineData(1, 0, BattleFacing.North, BattleFacing.South)]
-    public void Each_cardinal_direction_turns_actor_and_checks_targets_front(int x, int y, BattleFacing front, BattleFacing actorFacing)
+    [InlineData(2, 1, BattleFacing.West)]
+    [InlineData(0, 1, BattleFacing.East)]
+    [InlineData(1, 2, BattleFacing.South)]
+    [InlineData(1, 0, BattleFacing.North)]
+    public void Each_cardinal_direction_preserves_settled_actor_and_checks_targets_front(int x, int y, BattleFacing front)
     {
         var actual = Attack(State(seed: 19, facing: front, targetPosition: new(x, y, 0)));
         Assert.True(actual.Accepted);
         Assert.False(actual.Events.OfType<AttackResolvedEvent>().Single().Hit);
-        Assert.Equal(actorFacing, actual.State.Combatants[0].Facing);
+        Assert.Equal(BattleFacing.South, actual.State.Combatants[0].Facing);
         Assert.Equal(new FftRandomState(2162199151, 4), actual.State.TurnBattle.Turns.RngState);
     }
 

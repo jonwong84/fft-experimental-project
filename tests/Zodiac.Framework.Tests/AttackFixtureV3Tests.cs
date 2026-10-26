@@ -1,4 +1,6 @@
 using System.Reflection;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.Json.Nodes;
 using Zodiac.Framework.Tests.Fixtures;
 using Xunit;
@@ -8,7 +10,7 @@ namespace Zodiac.Framework.Tests;
 public sealed class AttackFixtureV3Tests
 {
     private static readonly string Revision = typeof(BattleState).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()!.InformationalVersion.Split('+')[1][..40];
-    private static string Load(string name) => File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "sword-" + name + ".v3.source-derived.json"));
+    private static string Load(string name) => File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "sword-" + name + ".v3.settled-facing.json"));
 
     [Theory]
     [InlineData("normal")] [InlineData("miss")] [InlineData("critical")] [InlineData("ko")]
@@ -73,4 +75,43 @@ public sealed class AttackFixtureV3Tests
         var root = JsonNode.Parse(Load("normal"))!; root["execution"] = "description-only";
         Assert.Equal("not-executed", AttackFixtureRunner.Run(root.ToJsonString(), Revision).Status);
     }
+
+    [Theory]
+    [InlineData("normal")] [InlineData("miss")] [InlineData("critical")] [InlineData("ko")]
+    [InlineData("side")] [InlineData("zero-pa")] [InlineData("cap-ko-wrap")] [InlineData("diagonal-rejected")]
+    [InlineData("move-attack")]
+    public void Historical_v3_is_hash_preserved_validated_and_explicitly_superseded(string name)
+    {
+        var manifest = JsonNode.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "sword-facing-supersession-v1.json")))!;
+        var entry = manifest["fixtures"]!.AsArray().Single(row => row!["name"]!.GetValue<string>() == name)!;
+        string path = Path.Combine(AppContext.BaseDirectory, "Fixtures", "sword-" + name + ".v3.source-derived.json");
+        string json = File.ReadAllText(path);
+        Assert.Equal(entry["historicalSha256"]!.GetValue<string>(), HistoricalHash(json));
+        Assert.Equal(entry["historicalId"]!.GetValue<string>(), JsonNode.Parse(json)!["fixtureId"]!.GetValue<string>());
+        Assert.Equal(entry["replacementId"]!.GetValue<string>(), JsonNode.Parse(Load(name))!["fixtureId"]!.GetValue<string>());
+        var result = AttackFixtureRunner.Run(json, Revision);
+        Assert.Equal("not-executed", result.Status); Assert.Contains("superseded", result.Diagnostic);
+        Assert.Contains("settled-facing", result.Diagnostic);
+        var malformed = JsonNode.Parse(json)!; malformed["scenario"]!["weapons"]![0]!["power"] = 256;
+        Assert.Equal("invalid-fixture", AttackFixtureRunner.Run(malformed.ToJsonString(), Revision).Status);
+    }
+
+    [Theory] [InlineData("unknown")] [InlineData("legacy-schema")]
+    public void Policy_must_be_explicit_and_compatible_with_schema(string kind)
+    {
+        var root = JsonNode.Parse(Load("normal"))!;
+        if (kind == "unknown") root["target"]!["policyId"] = "fft:combat/unknown";
+        else root["schemaVersion"] = 2;
+        Assert.Equal("invalid-fixture", AttackFixtureRunner.Run(root.ToJsonString(), Revision).Status);
+    }
+
+    [Fact]
+    public void Historical_identity_hash_is_stable_under_Git_checkout_line_endings()
+    {
+        string lf = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "sword-normal.v3.source-derived.json"))
+            .Replace("\r\n", "\n", StringComparison.Ordinal);
+        Assert.Equal(HistoricalHash(lf), HistoricalHash(lf.Replace("\n", "\r\n", StringComparison.Ordinal)));
+    }
+    private static string HistoricalHash(string json) => Convert.ToHexStringLower(SHA256.HashData(
+        Encoding.UTF8.GetBytes(json.Replace("\r\n", "\n", StringComparison.Ordinal))));
 }
