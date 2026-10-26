@@ -2,6 +2,45 @@
 
 ## Current handoff — 2026-10-26
 
+**ZOD-117 is complete.** SwordAiFormulaProjection.Evaluate is a pure managed
+formula query for a legal current sword action under the explicit strict flat
+two-unit profile. It returns normal capped damage, separate hit percentage,
+projected target HP and advanced RNG without battle mutation or choice consumption.
+Partial evade projects full damage; certain evade returns a supported zero-accuracy
+outcome after four draws. AI's fixed midpoint never crits/pushes and its proc draws
+are skipped. Every rejection, including draw exhaustion, returns the incoming RNG
+and no outcome. Execution Attack APIs and all seven baseline files are unchanged.
+
+Fresh clean read-only reference remains 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Locked isolated restore/zero-warning Release build and **3,271 .NET / 342 Python**
+tests pass, including 227 new managed cases and all seven unchanged ZOD-116 sword
+vectors. Coverage includes 128 directional/facing/actor cases, raw endpoints, every
+four-draw budget, signed/HP/cap/zero boundaries, current PA after Accumulate, both
+choice orders, probe immutability and explicit composition of returned RNG after
+a discarded zero-accuracy outcome. One initial dead-target test had inconsistent
+HP/status; corrected before the final passing suite.
+
+Two source/history audits match 16 files / 71 functions, one verified metadata record,
+37 historical files and seven managed baseline files. Four managed headless CLI
+processes repeat 14 sword-save files and four Basic Skill files against historical
+outputs (RNG 2473755763/22 and 4200531631/58). Two legacy audits match, preserving
+four prepared and 29 historical native files. No native/original/emulator launch,
+asset capture, content activation or runtime dependency. TRX/reports/evidence
+builder stay ignored under scratch/sword-ai-117-* and scratch/build_sword_ai_117_evidence.py.
+
+See [API/source/reproduction](behavior/sword-ai-formula-projection.md) and
+[implementation evidence](evidence/ai/sword-formula-implementation-v1.json).
+**Recommended next: ZOD-118**, specify the bounded end-of-turn facing transition
+and completion lifecycle, covering explicit Wait and automatically ended Move+Act
+turns before production implementation. Original search/session/roster/policy,
+candidate clock/upkeep, authoritative decision RNG commit and the replaceable
+interface remain future work. The old 50 description vectors / 20 AIC unexecuted
+inventory retains its historical status; only seven formula vectors execute here.
+Formula four-draw totals are not whole-decision totals. Editor and ZOD-106 remain
+deferred.
+
+## ZOD-116 source/interface checkpoint (historical)
+
 **ZOD-116 is complete**, a source-stage/helper map and proposed replaceable C#
 decision contract. Fresh clean read-only decomp remains
 11464943bbdbd2a0af022d90cb7f10455cf911df. The map covers initialization/abilities,

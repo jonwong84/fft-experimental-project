@@ -44,6 +44,24 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Current completion (2026-10-26): ZOD-117 is complete**, a pure
+[ordinary-sword AI formula query](behavior/sword-ai-formula-projection.md).
+It returns normal damage, separate accuracy, projected HP and advanced RNG;
+certain evasion is a supported zero-accuracy outcome after four draws.
+Execution Attack and all seven managed baseline files remain byte-identical.
+Fresh clean read-only reference remains 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Locked restore/zero-warning Release build, **3,271 .NET / 342 Python tests** pass
+(227 new managed). Seven unchanged source vectors execute; repeated source/history
+and legacy artifact audits match. Four managed headless runs preserve 14 sword-save
+and four Basic Skill files. See [evidence](evidence/ai/sword-formula-implementation-v1.json).
+The full AI/interface and all 20 AIC production cases remain unimplemented;
+this is a formula-level draw budget. **Recommended next: ZOD-118**, the bounded
+end-of-turn facing transition contract. Search/session/roster/candidate-clock and
+movement composition remain separate dependencies. Editor work and ZOD-106 remain
+deferred.
+
+### ZOD-116 source/interface checkpoint (historical)
+
 **Current completion (2026-10-26): ZOD-116 is complete**, a
 [source-stage/helper map and proposed replaceable C# contract](architecture/zod-116-ai-decision-contract.md).
 The original AI projects candidates, ranks them, consumes decision RNG and emits
@@ -1555,7 +1573,7 @@ traced separately from deliberate host pacing. ZOD-106 remains deferred.
 
 ### ZOD-117 — Implement the bounded ordinary-sword AI formula projection
 
-**Type:** Feature · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-116
+**Type:** Feature · **Priority:** P3 · **Status:** Complete · **Depends on:** ZOD-116
 
 **Scope:** Recheck fresh pinned source/callers and implement a pure formula-level
 AI projection in Zodiac Framework for the existing closed ordinary sword domain.
@@ -1576,6 +1594,36 @@ and relevant full suites. Document where the formula result ends: candidate
 clock/upkeep, scoring/search enumeration, roster/policy, interface/session runner,
 Wait-facing and scenario/content/native/save/editor activation remain separate.
 No claim of a complete AI or whole-decision draw budget. ZOD-106 remains deferred.
+
+**Evidence (2026-10-26):** [API/source/reproduction](behavior/sword-ai-formula-projection.md)
+and [implementation evidence](evidence/ai/sword-formula-implementation-v1.json).
+227 new managed cases execute the seven source vectors, directional/raw/HP/PA/
+signed-envelope boundaries, exact budgets, atomic rejection, current battle PA,
+both action orders and pure repeated probes. All 3,271 .NET / 342 Python tests pass;
+execution, historical evidence, save/headless/prepared/native artifacts remain.
+Full AI/interface/search and candidate-clock are outside this completed scope.
+
+### ZOD-118 — Specify bounded end-of-turn facing and completion lifecycle
+
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-116, ZOD-117
+
+**Scope:** Freshly trace original Wait direction selection/application and the
+managed completion boundary. Specify a narrow immutable facing transition and
+its authorization/lifecycle for explicit Wait and automatic Move+Act completion.
+Separate source-chosen facing from presentation pauses and from a future selector.
+Record how a completed turn is identified without accepting a stale unit ID,
+changing CT twice or consuming decision RNG again. No broad turn-system rewrite.
+
+**Acceptance criteria:** Pin current read-only decomp revision and callers/data/
+ordering. Describe independently checkable cardinal/diagonal/hint/viability and
+post-movement/push cases, explicit versus automatic completion, both choice orders,
+unused-choice CT refunds, repeated/stale/mismatched completion and unsupported
+coincident/no-enemy chooser cases. Distinguish pure facing choice from authoritative
+application, including ended turns with no active actor; specify the minimum
+receipt/state needed before production code. Preserve existing Wait/Attack/Move/
+replay/save behavior and document compatibility limits. Produce one bounded
+implementation ticket; no production AI/interface/search, save format, scenario/
+native/editor activation, midbattle save work or timing-dependent simulation.
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 
