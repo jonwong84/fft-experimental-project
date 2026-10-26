@@ -14,6 +14,15 @@ ACTIONS = ('empty search', 'search restored', 'copy', 'field-specific Move error
            'valid Move', 'exact authored range', 'export', 'reopen',
            'failed export preserves output and draft', 'close canceled',
            'source preserved', 'finite time budget', 'discard closes editor')
+WORKSPACE_CAPTURES = ('source', 'source-abilities', 'create-copy', 'copy', 'invalid', 'ability-error',
+                     'abilities', 'reference', 'preview', 'reopened', 'package-details', 'export-error',
+                     'unsaved-cancel', 'resized', 'resized-abilities', 'unsaved-discard')
+WORKSPACE_ACTIONS = ('source job read-only', 'source ability catalog read-only', 'empty search', 'search restored',
+    'copy', 'field-specific Move error', 'separate workspaces', 'ability error routes independently',
+    'independent filters preserve job edits', 'ability filter preserves JP edit', 'original view remains unchanged',
+    'view switch retains draft', 'job reference navigates to ability', 'valid Move', 'exact authored range',
+    'export', 'reopen', 'failed export preserves output and draft', 'close canceled', 'source preserved',
+    'finite time budget', 'discard closes editor')
 
 
 def require(condition, message):
@@ -59,10 +68,11 @@ def verify(source_path, first, repeat):
     inventories = []
     for directory in (first, repeat):
         files = {path.name: path.read_bytes() for path in directory.iterdir() if path.is_file()}
-        require(set(files) == {name + '.png' for name in CAPTURES} | {'trace.json', 'authored-job.json'}, 'Unexpected/missing native output')
         trace = json.loads(files['trace.json'])
-        require(trace['format'] == 'fft.job-editor-native-check' and trace['schemaVersion'] == 1, 'Wrong report')
-        require(trace['steps'] == [dict(action=name, passed=True) for name in ACTIONS], 'Incomplete/reordered editor route')
+        require(trace['format'] == 'fft.job-editor-native-check' and trace['schemaVersion'] in (1, 2), 'Wrong report')
+        captures = WORKSPACE_CAPTURES if trace['schemaVersion'] == 2 else CAPTURES
+        require(set(files) == {name + '.png' for name in captures} | {'trace.json', 'authored-job.json'}, 'Unexpected/missing native output')
+        validate_route(trace)
         require(trace['sourceSha256'] == digest and trace['sourcePackage'] == source['packageId'], 'Source identity changed')
         job = validate_copy(source, json.loads(files['authored-job.json']))
         require(trace['sourceMove'] == job['baseMove'] and trace['authoredMove'] == 1 and
@@ -70,18 +80,29 @@ def verify(source_path, first, repeat):
         require(all(trace[key] is True for key in ('sourceUnchanged', 'exportedRoundTrip', 'failedExportPreserved',
                     'closeCancelPreserved', 'closeDiscardAccepted')), 'Missing preservation/close check')
         require(trace['captureKind'] == 'native DrawToBitmap; not desktop scanout or physical input', 'Unsupported presentation claim')
-        for name in CAPTURES:
+        for name in captures:
             with Image.open(directory / (name + '.png')) as image:
                 image.load()
-                require(image.width >= (400 if name.startswith('unsaved') else 1000) and image.height >= 150,
+                require(image.width >= (400 if name.startswith('unsaved') or name in ('create-copy', 'package-details') else 1000) and image.height >= 150,
                         'Unexpected native image size')
         inventories.append(files)
     require(inventories[0] == inventories[1], 'Repeated native outputs differ')
     return dict(format='fft.job-editor-audit', schemaVersion=1, passed=True,
-                sourceSha256=digest, exactRepeatedFiles=len(inventories[0]), nativeCapturesPerRun=len(CAPTURES),
+                sourceSha256=digest, exactRepeatedFiles=len(inventories[0]), nativeCapturesPerRun=len(captures),
+                separateWorkspaces=trace['schemaVersion'] == 2,
                 sourceMetadataPreserved=True, orderedReferenceClosurePreserved=True,
                 savedMove=2, savedJump=4, savedFirstAbilityJp=123, unsavedDraftMove=1,
                 physicalInputVerified=False, originalGameplayEquivalence=False)
+
+
+def validate_route(trace):
+    workspace = trace['schemaVersion'] == 2
+    require(trace['steps'] == [dict(action=name, passed=True) for name in (WORKSPACE_ACTIONS if workspace else ACTIONS)],
+            'Incomplete/reordered editor route')
+    if workspace:
+        require(all(trace[key] is True for key in ('separateWorkspaces', 'sourceFieldsReadOnly',
+                    'independentFiltersPreservedEdits', 'jobReferenceNavigatesToAbility', 'validationSelectsWorkspace',
+                    'viewSwitchPreservesDraft')), 'Missing workspace preservation/navigation check')
 
 
 def main():
@@ -95,10 +116,11 @@ def main():
     require(not args.output.exists() and not args.review.exists(), 'Refuse existing audit/review output')
     report = verify(args.source, args.first, args.repeat)
     cards = []
-    for name in CAPTURES:
+    captures = WORKSPACE_CAPTURES if report['separateWorkspaces'] else CAPTURES
+    for name in captures:
         encoded = base64.b64encode((args.first / (name + '.png')).read_bytes()).decode('ascii')
         cards.append(f'<section><h2>{html.escape(name.replace("-", " "))}</h2><img src="data:image/png;base64,{encoded}" alt="{name}"></section>')
-    page = '<!doctype html><meta charset="utf-8"><title>ZOD-047 editor review</title><style>body{font:16px system-ui;background:#edf0f5;color:#182535;max-width:1240px;margin:30px auto;padding:20px}section{background:white;padding:18px;margin:24px 0;border-radius:10px}img{max-width:100%;height:auto}h2{text-transform:capitalize}</style><h1>Job & ability editor • ZOD-047</h1><p>Native control renderings from the final programmed check. Review source/copy separation, numeric editing, validation, movement preview, reopened export, failed export and Cancel-first unsaved decisions. Physical keyboard/mouse, file dialogs and interactive review remain separate.</p>' + ''.join(cards)
+    page = '<!doctype html><meta charset="utf-8"><title>ZOD-047 editor review</title><style>body{font:16px system-ui;background:#edf0f5;color:#182535;max-width:1240px;margin:30px auto;padding:20px}section{background:white;padding:18px;margin:24px 0;border-radius:10px}img{max-width:100%;height:auto}h2{text-transform:capitalize}</style><h1>Jobs & Abilities workspaces • ZOD-047</h1><p>Native control renderings from the programmed check. Review independent searchable Jobs/Abilities pages, source/copy switching, related-record navigation, field-error routing, movement preview and shared package actions. Physical keyboard/mouse, file dialogs and owner approval remain separate.</p>' + ''.join(cards)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.review.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')

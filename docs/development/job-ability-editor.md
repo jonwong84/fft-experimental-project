@@ -1,5 +1,11 @@
 # ZOD-047 — First job/ability editor
 
+**Current revision:** The owner found this first UI rough and requested separate
+job/ability workspaces using FFTPatcher as a workflow reference. It was not
+approved. Use the [workspace revision and current launch/review guide](editor-workspaces.md).
+The contract, runs and gallery below are retained as historical first-implementation
+evidence; they do not describe the revised screen layout.
+
 Selected 2026-10-26 at managed `673bd62`. The reference checkout was read-only,
 clean at `11464943bbdbd2a0af022d90cb7f10455cf911df`. This milestone translates no
 new original rule or record field. ZOD-014/016/017/018 retain their historical

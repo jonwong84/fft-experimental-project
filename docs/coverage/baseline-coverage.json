@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-26",
   "edition": "SCUS-94221",
-  "managedCommit": "673bd624267ee9aac39c271e57bd5eb3a97716e3",
+  "managedCommit": "5c9ff93704d037c52651132e754ad183f6ea116e",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 2346,
-    "source": "docs/development/job-ability-editor.md",
+    "passed": 2349,
+    "source": "docs/development/editor-workspaces.md",
     "runForThisInventory": false
   },
   "statusDefinitions": {
@@ -3800,7 +3800,7 @@
       "ownerTicket": "ZOD-047",
       "ownerArea": "FFT content authoring and tools",
       "status": "partial",
-      "currentScope": "Typed metadata/sword schemas, shared import/export and validation, plus a native Windows job/ability editor for separate authored Move/Jump/JP copies and an existing-simulator movement preview; owner visual/manual review pending.",
+      "currentScope": "Shared typed metadata/import/export plus separate searchable Jobs/Abilities workspaces, source/copy views, related-record navigation and existing-simulator preview. Owner requested revision of the rough first UI; new visual/manual approval pending.",
       "referenceSources": [
         {
           "path": "include/fft/job.h",
@@ -3811,7 +3811,9 @@
         "docs/architecture/zod-016-content-packages.md",
         "docs/architecture/zod-014-typed-definitions.md",
         "docs/development/job-ability-editor.md",
-        "docs/evidence/authoring/job-ability-editor-v1.json"
+        "docs/evidence/authoring/job-ability-editor-v1.json",
+        "docs/development/editor-workspaces.md",
+        "docs/evidence/authoring/editor-workspaces-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Content/ContentPackages/ContentPackage.cs",
@@ -3826,22 +3828,22 @@
         },
         {
           "path": "tests/Zodiac.Content.Tests/JobEditorDocumentTests.cs",
-          "scope": "29 platform-neutral copy/reference/raw-metadata/validation/export/reopen/dirty/path/failure/movement regressions."
+          "scope": "32 editor model cases, including source/copied ability catalogs and preservation of invalid/multiple-record edits during browsing."
         },
         {
           "path": "tools/verification/verify_job_editor.py",
-          "scope": "Independent copied-source graph and exact repeated native image/JSON audit; no physical-input claim."
+          "scope": "Independent graph audit and 18 exact repeated native artifacts; 22 workspace/error/reference/filter/view/close checks; physical input remains separate."
         }
       ],
       "manualCheckpoint": {
         "status": "pending-editor-workflow",
-        "procedure": "Review final ZOD-047 gallery, then inspect original job, create/edit/export/reopen a separate copy, preview movement and check physical keyboard/mouse, native dialogs and Cancel-first close."
+        "procedure": "Review the new separate-workspace gallery and use its isolated launch command. Check independent Job/Ability edits/search/navigation, error routing, source/copy views, native dialogs and unsaved-close cancellation."
       },
       "openQuestions": [
         "Owner visual/manual editor approval, native dialog/physical-input/DPI/accessibility and clean-machine checks remain open.",
         "General text/graphics/script/audio authoring and broader undo/package workflows remain ZOD-048."
       ],
-      "nextAction": "Complete owner visual/manual ZOD-047 review before closing M3; broader authoring and deferred work remain separate."
+      "nextAction": "New ZOD-047 visual/manual review is pending; the rough first UI was not approved. Broader authoring/deferred work remain separate."
     }
   ]
 }

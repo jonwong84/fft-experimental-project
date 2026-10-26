@@ -237,6 +237,40 @@ public sealed class JobEditorDocumentTests : IDisposable
     {
         var document = new JobEditorDocument(Source()); document.CreateCopy(Job, Addon); return document;
     }
+
+    [Fact]
+    public void Ability_workspace_browses_full_source_catalog_and_only_copied_closure()
+    {
+        var document = NewDraft();
+        Assert.Equal(3, document.BrowseAbilities("", authored: false).Length);
+        Assert.Equal(2, document.BrowseAbilities("", authored: true).Length);
+        Assert.Empty(document.BrowseAbilities("unrelated", authored: true));
+        Assert.Equal("sample:ability/focus", Assert.Single(document.BrowseAbilities(" FOCUS ", false)).Id);
+        Assert.Equal("authored:ability/focus", Assert.Single(document.BrowseAbilities(" FOCUS ", true)).Id);
+    }
+
+    [Fact]
+    public void Independent_ability_browsing_preserves_invalid_job_and_ability_text()
+    {
+        var document = NewDraft(); document.EditMovement("unfinished", "3");
+        document.EditJp("authored:ability/focus", "pending");
+        Assert.Empty(document.BrowseAbilities("no match", true));
+        Assert.Single(document.BrowseAbilities("innate", false));
+        Assert.Equal("pending", Assert.Single(document.BrowseAbilities("focus", true)).JpCost);
+        Assert.Equal("unfinished", document.MoveText); Assert.True(document.IsDirty);
+        Assert.Equal("$.jobs[0].baseMove", Assert.Throws<ContentPackageValidationException>(() => document.Validate()).FieldPath);
+    }
+
+    [Fact]
+    public void Browsing_original_does_not_hide_or_apply_edits_to_another_copied_ability()
+    {
+        var document = NewDraft(); document.EditJp("authored:ability/focus", "123"); document.EditJp("authored:ability/innate", "456");
+        Assert.Equal("50", Assert.Single(document.BrowseAbilities("focus", false)).JpCost);
+        Assert.Equal("0", Assert.Single(document.BrowseAbilities("innate", false)).JpCost);
+        Assert.Equal("456", Assert.Single(document.BrowseAbilities("innate", true)).JpCost);
+        Assert.Equal("123", Assert.Single(document.BrowseAbilities("focus", true)).JpCost);
+        Assert.Equal(2, document.Validate().Abilities.Length);
+    }
     private static ContentPackage Source(bool stepping = false) => new("sample:package/recruits", "sample:profile/demo", ContentPackageKind.Baseline, null,
         [new(Job, new("sample:skillset/practice"), 1, 3, stepping, [B, A, B])],
         [new(new("sample:skillset/practice"), [new(3, A), new(1, null), new(9, A), new(8, B)])],

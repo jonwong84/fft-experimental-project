@@ -3,7 +3,7 @@
 Generated from `baseline-coverage.json` by `tools/verification/verify_baseline_coverage.py --write-view`.
 Edit the JSON, then regenerate this view. See [the inventory guide](README.md) for status/evidence rules.
 
-Target: **SCUS-94221**. Snapshot: 2026-10-26; managed base `673bd624267ee9aac39c271e57bd5eb3a97716e3`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+Target: **SCUS-94221**. Snapshot: 2026-10-26; managed base `5c9ff93704d037c52651132e754ad183f6ea116e`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 These entries are planning scopes, not a feature-completion percentage or a complete record/encounter catalog.
 
 ## Simulation
@@ -1254,9 +1254,9 @@ Next action: Do not make optional card import a dependency of native Windows Sav
 
 Status: **partial**; scope: **extension**; ticket: **ZOD-047**; owner area: FFT content authoring and tools.
 
-Typed metadata/sword schemas, shared import/export and validation, plus a native Windows job/ability editor for separate authored Move/Jump/JP copies and an existing-simulator movement preview; owner visual/manual review pending.
+Shared typed metadata/import/export plus separate searchable Jobs/Abilities workspaces, source/copy views, related-record navigation and existing-simulator preview. Owner requested revision of the rough first UI; new visual/manual approval pending.
 
-Evidence: [docs/architecture/zod-016-content-packages.md](../../docs/architecture/zod-016-content-packages.md), [docs/architecture/zod-014-typed-definitions.md](../../docs/architecture/zod-014-typed-definitions.md), [docs/development/job-ability-editor.md](../../docs/development/job-ability-editor.md), [docs/evidence/authoring/job-ability-editor-v1.json](../../docs/evidence/authoring/job-ability-editor-v1.json).
+Evidence: [docs/architecture/zod-016-content-packages.md](../../docs/architecture/zod-016-content-packages.md), [docs/architecture/zod-014-typed-definitions.md](../../docs/architecture/zod-014-typed-definitions.md), [docs/development/job-ability-editor.md](../../docs/development/job-ability-editor.md), [docs/evidence/authoring/job-ability-editor-v1.json](../../docs/evidence/authoring/job-ability-editor-v1.json), [docs/development/editor-workspaces.md](../../docs/development/editor-workspaces.md), [docs/evidence/authoring/editor-workspaces-v1.json](../../docs/evidence/authoring/editor-workspaces-v1.json).
 
 Source entry points (pinned revision above; not full traces): [include/fft/job.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/job.h).
 
@@ -1264,11 +1264,11 @@ Current implementation: [src/Zodiac.Content/ContentPackages/ContentPackage.cs](.
 
 Existing bounded checks: [tests/Zodiac.Content.Tests/ContentPackages/ContentPackageTests.cs](../../tests/Zodiac.Content.Tests/ContentPackages/ContentPackageTests.cs), [tests/Zodiac.Content.Tests/JobEditorDocumentTests.cs](../../tests/Zodiac.Content.Tests/JobEditorDocumentTests.cs), [tools/verification/verify_job_editor.py](../../tools/verification/verify_job_editor.py).
 
-Manual checkpoint (pending-editor-workflow): Review final ZOD-047 gallery, then inspect original job, create/edit/export/reopen a separate copy, preview movement and check physical keyboard/mouse, native dialogs and Cancel-first close.
+Manual checkpoint (pending-editor-workflow): Review the new separate-workspace gallery and use its isolated launch command. Check independent Job/Ability edits/search/navigation, error routing, source/copy views, native dialogs and unsaved-close cancellation.
 
 Remaining gaps:
 
 - Owner visual/manual editor approval, native dialog/physical-input/DPI/accessibility and clean-machine checks remain open.
 - General text/graphics/script/audio authoring and broader undo/package workflows remain ZOD-048.
 
-Next action: Complete owner visual/manual ZOD-047 review before closing M3; broader authoring and deferred work remain separate.
+Next action: New ZOD-047 visual/manual review is pending; the rough first UI was not approved. Broader authoring/deferred work remain separate.

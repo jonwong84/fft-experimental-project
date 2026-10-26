@@ -30,8 +30,10 @@ justifies it. Current assemblies are not yet interchangeable.
 - **First job/ability editor:** `Fft.Editor` opens prepared baseline metadata,
   creates a separate authored job/skillset/ability copy, edits Move/Jump/JP,
   validates/exports/reopens through shared APIs and compares movement through the
-  existing simulator. Repeated native checks pass; owner visual/manual review
-  is pending. [Launch and review](docs/development/job-ability-editor.md).
+  existing simulator. Separate Jobs/Abilities pages now provide independent
+  search, related-record navigation and shared package actions after owner
+  feedback on the first UI. Owner review remains pending.
+  [Current launch and review](docs/development/editor-workspaces.md).
 
 - **Authored world menu:** `--world-menu` opens Home/New/live Resume, read-only
   Party, travel and safe New/Exit decisions. Keyboard/mouse/controller routes

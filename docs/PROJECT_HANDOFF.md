@@ -2,6 +2,35 @@
 
 ## Current handoff — 2026-10-26
 
+**ZOD-047 UI revision implemented; owner review still pending.** The owner found
+the first editor rough and requested separate job and ability editing, considering
+FFTPatcher's workflow. That feedback is not approval. The revised editor now has
+separate Jobs/Abilities tabs with independent search/lists, Original/Authored
+views, job-reference navigation to abilities, dedicated movement preview and
+shared package actions. Hashes/raw bytes are in on-demand details; numeric
+fields and named read-only learning flags replace the mixed diagnostic panel.
+The copied single-job package contract/export format is unchanged.
+
+FFTPatcher was inspected at `26d45cc8c019194625f078398e0c6ef6b09c1a78` for general
+workflow patterns; no code/assets/layout resources were copied. See the
+[reference/contract/current launch guide](development/editor-workspaces.md) and
+[new evidence](evidence/authoring/editor-workspaces-v1.json). Final locked isolated
+restore, zero-warning build and **2,349 .NET / 293 Python tests** pass (3/2 new).
+Three native processes ran under the revised plan: one retained discovery run,
+then two final runs with 22 checks/16 images each; **18 files** repeat exactly.
+Independent metadata/reference audit passes. All original artifacts remain.
+
+The original editor process held its normal build DLLs. It and any unsaved owner
+edits were left untouched; the tested new build is under
+`scratch/editor-workspaces-047-artifacts/bin/Fft.Editor/release/`. **Next:** review
+`scratch/editor-workspaces-047-review/review.html`, then the new guide's physical
+workflow checklist using its isolated launch command. Do not use the old normal
+binary as evidence for this revision. Owner visual/manual gates, remote CI and
+clean-machine/DPI checks remain open. Deferred work remains deferred. Standing
+commit/push authorization applies to the validated revision.
+
+## First editor implementation (historical)
+
 **ZOD-047 is implemented; owner visual/manual review is pending.** The first
 Windows Forms job/ability editor opens a prepared read-only baseline, searches
 jobs and inspects linked metadata, copies one complete graph into a distinct

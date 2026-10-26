@@ -1,9 +1,24 @@
 import copy
 import unittest
-from verify_job_editor import validate_copy
+from verify_job_editor import validate_copy, validate_route, WORKSPACE_ACTIONS
 
 
 class EditorAuditTests(unittest.TestCase):
+    def workspace_trace(self):
+        return dict(schemaVersion=2, steps=[dict(action=name, passed=True) for name in WORKSPACE_ACTIONS],
+            separateWorkspaces=True, sourceFieldsReadOnly=True, independentFiltersPreservedEdits=True,
+            jobReferenceNavigatesToAbility=True, validationSelectsWorkspace=True, viewSwitchPreservesDraft=True)
+
+    def test_rejects_missing_reference_navigation(self):
+        trace = self.workspace_trace(); validate_route(trace)
+        trace['jobReferenceNavigatesToAbility'] = False
+        with self.assertRaisesRegex(ValueError, 'navigation'):
+            validate_route(trace)
+
+    def test_rejects_missing_workspace_error_routing_step(self):
+        trace = self.workspace_trace(); trace['steps'].pop(7)
+        with self.assertRaisesRegex(ValueError, 'route'):
+            validate_route(trace)
     def setUp(self):
         self.source = dict(format='fft.content-metadata', schemaVersion=1, packageId='sample:package/base',
             profileId='sample:profile/demo', kind='baseline', requiredBaselinePackageId=None,

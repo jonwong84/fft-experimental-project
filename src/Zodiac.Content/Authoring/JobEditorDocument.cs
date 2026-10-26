@@ -88,6 +88,16 @@ public sealed class JobEditorDocument
     public ImmutableArray<EditorAbility> Abilities => draft is null ? [] : draft["abilities"]!.AsArray()
         .Select(node => new EditorAbility(node!["id"]!.GetValue<string>(), Text(node["jpCost"]))).ToImmutableArray();
 
+    /// <summary>Browse learning records without validating or replacing an unfinished job/ability draft.</summary>
+    public ImmutableArray<EditorAbility> BrowseAbilities(string query, bool authored)
+    {
+        ArgumentNullException.ThrowIfNull(query);
+        IEnumerable<EditorAbility> records = authored ? Abilities : Source.Abilities.Select(ability =>
+            new EditorAbility(ability.Id.Value, ability.JpCost.ToString(CultureInfo.InvariantCulture)));
+        return records.Where(ability => ability.Id.Contains(query.Trim(), StringComparison.OrdinalIgnoreCase))
+            .OrderBy(ability => ability.Id, StringComparer.Ordinal).ToImmutableArray();
+    }
+
     public void EditMovement(string move, string jump)
     {
         RequireDraft();

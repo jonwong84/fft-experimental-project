@@ -44,6 +44,19 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Latest revision (2026-10-26): ZOD-047 separates Jobs and Abilities.** The owner
+found the first UI rough and requested FFTPatcher-inspired separation; no visual
+or interactive approval was given. The revised Windows editor has independent
+search/list pages, job-reference navigation, routed field validation, a separate
+movement-preview page and shared package actions/details. All **2,349 .NET / 293
+Python tests** pass; two final native runs repeat **18 files**, with 16 images
+and 22 checks each. One retained discovery run prompted numeric/flag polish.
+Review `scratch/editor-workspaces-047-review/review.html` and use the
+[current launch/manual guide](development/editor-workspaces.md). ZOD-047/M3 still
+await owner approval. This keeps the existing copied-package scope; broader
+ZOD-048 and deferred work remain separate. The previous editor process and any
+owner edits were preserved; this revision has a separate validated build folder.
+
 **Latest implementation (2026-10-26): ZOD-047 is implemented; owner review pending.**
 A separate Windows Forms editor searches/inspects prepared baseline jobs and
 linked abilities, copies one dependency graph into an authored namespace, edits
@@ -2182,6 +2195,14 @@ automatic interface extraction, executable plugins or whole-game replacement cla
 ### ZOD-047 — Build the first job/ability inspection and editing UI
 
 **Type:** Story · **Priority:** P2 · **Status:** Implemented; owner visual/manual review pending · **Depends on:** ZOD-016, ZOD-018
+
+**Owner-requested revision (2026-10-26):** The initial UI was not approved. The
+[workspace revision](development/editor-workspaces.md) studies pinned FFTPatcher
+category/list/inspector workflows and implements separate Jobs/Abilities pages,
+independent search, source/copy views, related-ability navigation and routed
+validation. Shared schemas/export protections remain. Full suites are now
+**2,349 .NET / 293 Python**; 18 final native artifacts repeat exactly. New visual
+and physical review remain pending; see the guide's isolated launch command.
 
 **Result (2026-10-26):** [Host decision, contract and launch guide](development/job-ability-editor.md)
 records the separate Windows Forms host, read-only baseline/namespace copy,
