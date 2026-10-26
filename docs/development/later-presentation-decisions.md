@@ -9,9 +9,15 @@ implementation scope.
 
 ## Original display proportions
 
-The owner wants an original presentation mode that accounts for the game's
-intended CRT/4:3 display proportions. A square-pixel, 1:1 raw framebuffer view is
-useful for inspecting raster output, but is not the requested final presentation.
+The owner wants the game's intended CRT/4:3 visual proportions preserved within
+a widescreen viewport (clarified and confirmed 2026-10-26). Text, sprites,
+environments and other rendered content retain their corrected appearance;
+the camera reveals additional scene area horizontally and the UI uses the wider
+layout while preserving those proportions. Aspect correction and widescreen
+composition work together. The requested result is not a completed 4:3 frame
+stretched across a widescreen display, or every individual asset forced into a
+4:3 rectangle. A square-pixel, 1:1 raw framebuffer view remains useful for
+inspecting raster output, but is not the requested final presentation.
 Investigate pixel-aspect correction and how it applies to each actual display
 mode, active image area, borders/overscan and scene type. Do not assume one
 horizontal stretch factor applies to all captured widths or PS1 display modes.
@@ -19,9 +25,11 @@ horizontal stretch factor applies to all captured widths or PS1 display modes.
 Keep raw capture coordinates and displayed proportions explicitly distinct.
 Preserve native-pixel diagnostic captures, then add separately identified display
 comparisons for the corrected presentation. Record any viewport transform and
-its inverse for picking/input. Original 4:3 presentation and the optional wider
-layout in ZOD-059 need distinct profiles; widening the camera/UI is a separate
-choice from correcting pixel aspect.
+its inverse for picking/input. Retain an original 4:3 reference profile alongside
+the widescreen composition in ZOD-059. Both may preserve CRT-correct content
+proportions; wider framing and UI layout are independent of the aspect correction.
+Exact mappings, camera limits and behavior for fixed scenes/cinematics still need
+investigation. This clarification selects no correction factor or renderer.
 
 ## Optional CRT shader
 
@@ -86,5 +94,6 @@ recordings remain local under ignored scratch; runtime uses prepared files.
 Return to these decisions much later, when representative battle/menu/effect
 scenes and the first source-traced audio slice can support useful comparisons.
 Start with a design record and bounded follow-up tickets, not simultaneous
-backend/shader/settings/audio implementation. The current next investigation
-remains the observed banner's native color discrepancy and its timing anchors.
+backend/shader/settings/audio implementation. The backlog owns the current queue;
+this clarification does not advance display work ahead of the navigation/save
+workflow or alter existing raw-pixel evidence and approved diagnostic galleries.

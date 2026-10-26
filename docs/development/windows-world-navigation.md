@@ -51,9 +51,29 @@ the full ZOD-042 UI epic remains open.
 
 ## Launch and manual review
 
+Open PowerShell in the repository and launch the already-built client:
+
 ```powershell
+Set-Location C:\repositories\fft-experimental-project
 dotnet run --project src/Fft.Client -c Release --no-build --no-restore -- --world-menu
 ```
+
+Manual route (owner confirmed these checks are not yet performed on 2026-10-26):
+
+1. With the keyboard, Enter starts New. Hold it briefly: the new checkpoint
+   should remain at funds 100/elapsed 42 until a fresh press. Release and press
+   Enter again to travel to Hill (funds 93/elapsed 53). Down/Enter opens Party.
+2. Escape returns to World, then Home. Resume returns to the same checkpoint.
+   Click entries with the mouse; test New's Cancel, then its explicit replacement
+   choice. Replacement starts Harbor again with funds 100/elapsed 42.
+3. Try the USB controller's D-pad/A/B. Check one action per press and that a
+   held button does not activate a second screen. The game's SDL mapping may
+   differ from RetroArch's controller configuration.
+4. Resize the window and click entries again. Switch to another window and back;
+   held controls should not trigger a menu action on reactivation.
+5. Use the window close button. Cancel should retain the session; closing again
+   and selecting Exit without saving should exit. Report any unexpected behavior
+   with the device, screen and action that triggered it.
 
 The window starts at Home. Enter starts the authored checkpoint; Enter again
 travels to Hill. Down/Enter opens Party. Escape goes back, then Home; Resume

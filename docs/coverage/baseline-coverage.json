@@ -3659,7 +3659,7 @@
       "ownerTicket": "ZOD-059",
       "ownerArea": "FFT compatibility/content composition",
       "status": "planned",
-      "currentScope": "Host resize/letterbox is a bounded facility; selectable geometry rendering resolution, widescreen camera/UI and replacements are not delivered.",
+      "currentScope": "Host resize/letterbox is a bounded facility; selectable geometry rendering resolution, widescreen camera/UI and replacements are not delivered. Owner clarification (2026-10-26): the desired widescreen viewport retains CRT-correct text/sprite/environment proportions, with additional horizontal camera coverage and wider UI layout. No implementation is selected by this clarification.",
       "referenceSources": [
         {
           "path": "src/battle/map/camera.c",
@@ -3672,7 +3672,8 @@
       ],
       "evidenceDocs": [
         "docs/architecture/overview.md",
-        "docs/development/prepared-scene.md"
+        "docs/development/prepared-scene.md",
+        "docs/development/later-presentation-decisions.md"
       ],
       "implementationPaths": [
         "src/Fft.Client/Presentation/SceneLayout.cs"
@@ -3685,12 +3686,12 @@
       ],
       "manualCheckpoint": {
         "status": "pending-original-observation",
-        "procedure": "Compare layout, camera, input mapping and unchanged simulation at each explicitly selected presentation option."
+        "procedure": "Compare CRT-correct content proportions inside the selected widescreen viewport, added horizontal framing, UI layout, inverse input mapping and unchanged simulation. Preserve original-reference/raw-pixel diagnostics."
       },
       "openQuestions": [
         "ZOD-059/060/062/063 remain future presentation-profile work. Required Windows interaction is tracked separately by COV-PRE-007 under ZOD-061; resize alone does not establish widescreen or higher-detail rendering."
       ],
-      "nextAction": "Keep aspect, resolution, extensible UI and replacement artwork distinct; coordinate their layouts/navigation with required ZOD-061 interaction."
+      "nextAction": "Retain CRT-correct content appearance and widescreen camera/UI composition as independent concerns that work together; investigate exact mappings and fixed scenes later under ZOD-079/059, coordinated with ZOD-061 interaction."
     },
     {
       "id": "COV-PRO-003",

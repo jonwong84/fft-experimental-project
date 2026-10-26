@@ -1190,9 +1190,9 @@ Next action: Complete ZOD-049 before integrating separately selected ZOD-051/052
 
 Status: **planned**; scope: **extension**; ticket: **ZOD-059**; owner area: FFT compatibility/content composition.
 
-Host resize/letterbox is a bounded facility; selectable geometry rendering resolution, widescreen camera/UI and replacements are not delivered.
+Host resize/letterbox is a bounded facility; selectable geometry rendering resolution, widescreen camera/UI and replacements are not delivered. Owner clarification (2026-10-26): the desired widescreen viewport retains CRT-correct text/sprite/environment proportions, with additional horizontal camera coverage and wider UI layout. No implementation is selected by this clarification.
 
-Evidence: [docs/architecture/overview.md](../../docs/architecture/overview.md), [docs/development/prepared-scene.md](../../docs/development/prepared-scene.md).
+Evidence: [docs/architecture/overview.md](../../docs/architecture/overview.md), [docs/development/prepared-scene.md](../../docs/development/prepared-scene.md), [docs/development/later-presentation-decisions.md](../../docs/development/later-presentation-decisions.md).
 
 Source entry points (pinned revision above; not full traces): [src/battle/map/camera.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/map/camera.c), [include/fft/render.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/render.h).
 
@@ -1200,13 +1200,13 @@ Current implementation: [src/Fft.Client/Presentation/SceneLayout.cs](../../src/F
 
 Existing bounded checks: [tests/Fft.Client.Tests/SceneLayoutTests.cs](../../tests/Fft.Client.Tests/SceneLayoutTests.cs).
 
-Manual checkpoint (pending-original-observation): Compare layout, camera, input mapping and unchanged simulation at each explicitly selected presentation option.
+Manual checkpoint (pending-original-observation): Compare CRT-correct content proportions inside the selected widescreen viewport, added horizontal framing, UI layout, inverse input mapping and unchanged simulation. Preserve original-reference/raw-pixel diagnostics.
 
 Remaining gaps:
 
 - ZOD-059/060/062/063 remain future presentation-profile work. Required Windows interaction is tracked separately by COV-PRE-007 under ZOD-061; resize alone does not establish widescreen or higher-detail rendering.
 
-Next action: Keep aspect, resolution, extensible UI and replacement artwork distinct; coordinate their layouts/navigation with required ZOD-061 interaction.
+Next action: Retain CRT-correct content appearance and widescreen camera/UI composition as independent concerns that work together; investigate exact mappings and fixed scenes later under ZOD-079/059, coordinated with ZOD-061 interaction.
 
 ### COV-PRO-003 — Planned custom knockback and other rule changes
 

@@ -2206,6 +2206,12 @@ discussion remains owned by ZOD-043. Details are in the
 [later presentation decisions](development/later-presentation-decisions.md).
 This planning entry does not change the active implementation queue.
 
+**Owner clarification (2026-10-26):** Preserve CRT/4:3 visual proportions for
+text, sprites, environments and other content inside a widescreen viewport.
+Wider camera framing and UI layout supply the extra horizontal area; aspect
+correction continues to preserve content proportions. Select no universal
+stretch factor or renderer now; implementation remains deferred.
+
 **Scope:** Record mode-aware original display mapping, diagnostic versus displayed
 captures, CRT options, rendering-path tradeoffs, resolution terminology and the
 Settings/persistence boundaries. Coordinate ZOD-042/043/053/059/060/061/063.
@@ -2234,8 +2240,13 @@ resize does not stretch the scene or alter simulation coordinates/ranges. Origin
 remain available. The same logical commands and seed produce identical gameplay outcomes across modes;
 framing and unsupported scenes have documented decisions and manual checks.
 
-**Later clarification:** Original CRT/4:3 pixel-aspect correction and optional CRT
-processing are separate from widescreen composition; coordinate ZOD-079.
+**Owner clarification (2026-10-26):** The widescreen viewport must preserve the
+CRT-correct appearance of text, sprites, environments and other rendered content.
+Show more scene area horizontally and adapt the UI layout while retaining those
+proportions. Pixel-aspect correction and wider composition are independent
+concerns that operate together; retain the original reference profile and
+raw-pixel diagnostics. Optional CRT processing remains a separate choice under
+ZOD-079. Fixed scenes/cinematics and exact correction mappings remain unresolved.
 
 ### ZOD-060 — Add selectable game-view rendering resolution
 

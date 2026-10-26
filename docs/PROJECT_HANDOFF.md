@@ -1,5 +1,15 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Owner display clarification (2026-10-26):** Preserve intended CRT/4:3 visual
+proportions for text, sprites, environments and other content inside a widescreen
+viewport. Use additional horizontal camera coverage and wider UI layout while
+retaining those proportions. Aspect correction and widescreen composition work
+together. [Later presentation notes](development/later-presentation-decisions.md)
+and ZOD-079/059 retain this direction without advancing their implementation.
+Raw-pixel evidence and the approved authored menu remain unchanged. The current
+next step is still ZOD-103's physical controls/native close/focus review before
+ZOD-069; the owner has confirmed visual approval only so far.
+
 **Owner visual approval (2026-10-26):** The owner approved ZOD-103's
 `scratch/world-menu-103-review/review.html`: "Looks good." Approval covers the
 displayed authored Home/World/Party and New/Exit confirmation gallery. Physical

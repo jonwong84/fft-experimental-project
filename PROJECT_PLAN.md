@@ -185,6 +185,14 @@ and sound effects. These remain deferred design topics, with evidence and
 implementation choices pending. See [the detailed notes](docs/development/later-presentation-decisions.md)
 and ZOD-079/042/043/059/060 in the backlog; the active work order is unchanged.
 
+**Owner clarification (2026-10-26):** The requested final composition uses a
+widescreen viewport with CRT-correct visual proportions for text, sprites,
+environments and other content. Reveal more scene area horizontally and adapt
+UI layout while preserving the corrected shapes. Keep pixel-aspect correction
+independent of viewport/camera width; retain original-reference and raw-pixel
+diagnostics. Correction factors, fixed-scene handling and implementation remain
+deferred under ZOD-079/059.
+
 - Whether every optional/special encounter must be completable in the first “complete game” acceptance, or whether those are tracked as a later completeness gate. Current recommendation: include them in the final baseline because the goal is a full original-game reimplementation.
 - Whether normalized assets should be packed into a local cache bundle or remain individual files. Start with ordinary files plus a manifest; bundle only if load-time or organization evidence justifies it.
 - Which compatibility defects should receive an opt-in fix. Default remains original behavior; do not let this block exact vanilla behavior work.

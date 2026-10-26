@@ -250,6 +250,13 @@ Higher-resolution mode should rasterize supported scene geometry at the selected
 
 Presentation options should preserve gameplay outcomes for the same logical commands and seed. Distinguish the original presentation/reference profile from explicitly selected enhancements and replacement asset packs. Device adapters translate keyboard, mouse and controller operations into the same application commands; remapping, prompts and navigation belong outside deterministic simulation. Higher output resolution alone does not create new source texture or movie detail.
 
+Owner clarification (2026-10-26): the requested widescreen viewport preserves
+the CRT-correct proportions of text, sprites, environments and other content.
+The camera reveals additional horizontal scene area and the UI uses the wider
+layout. Asset/display aspect correction remains independent of viewport width;
+both apply together in the requested widescreen presentation. Exact mappings
+and fixed-scene behavior remain later ZOD-079/059 decisions.
+
 The owner also intends to rework the UI itself for wider aspect ratios and native keyboard/mouse use.
 ZOD-059 and ZOD-061 should coordinate screen composition, menu/HUD placement, information density,
 direct mouse selection, keyboard focus/shortcuts and prompts. Concrete layouts and interaction choices
