@@ -19,6 +19,7 @@ if (args.Length == 1 && args[0] == "--battle") return WindowsPlayableBattleHost.
 if (args.Length == 2 && args[0] == "--battle-check") return WindowsPlayableBattleHost.Run(args[1]);
 if (args.Length > 0 && args[0] == "--prepared-scene") return WindowsPreparedSceneHost.Run(args);
 if (args.Length == 2 && args[0] == "--save-check") return BattleSaveCheck.Run(args[1]);
+if (args.Length == 2 && args[0] == "--basic-skill-check") return BasicSkillBattleCheck.Run(args[1]);
 if (args.Length == 2 && args[0] == "--world-save-check") return WorldCheckpointCheck.Run(args[1]);
 if (args.Length == 1 && args[0] == "--world-menu") return WindowsWorldMenuHost.Run();
 if (args.Length == 2 && args[0] == "--world-menu-check") return WindowsWorldMenuHost.Run(args[1]);

@@ -87,7 +87,7 @@ public static partial class TwoUnitBattleSave
 
     private static void EnsureSupportedProfile(TwoUnitBattleSaveProfile profile)
     {
-        if (profile.Definition.ImmediateAbilities is not null)
+        if (profile.Definition.ImmediateAbilities is not null || profile.Definition.TargetedAbilities is not null)
             throw new BattleSaveValidationException("Ability-enabled battles require current-PA persistence (ZOD-106); schema 1/2 cannot save or load this profile.");
     }
 

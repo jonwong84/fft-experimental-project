@@ -44,7 +44,21 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
-**Current completion (2026-10-26): ZOD-109 is complete.** Pure Throw Stone now has
+**Current completion (2026-10-26): ZOD-110 is complete.** Strict targeted-effect
+content/projection and verified Throw Stone import preserve historical metadata
+IDs and bytes. The combined authored Basic Skill scenario proves PA 5→6, ranged
+damage 6/12, knockback, first KO, restart and all terminal guards. Both two-file
+imports and four-file headless outputs repeat exactly across 46 commands and 47
+fresh-definition continuations. Independent audit checks six selected/22 historical
+records, six preserved old files, every ranged damage/push/RNG delta and final RNG.
+All **2,700 .NET / 305 Python tests** pass (92 new managed, six Python).
+See the [guide](development/basic-skill-content.md) and
+[evidence](evidence/combat/throw-stone-content-v1.json).
+**Next: ZOD-111 is Ready**, prepared Windows target controls and owner review.
+Ability-save/restore guards cover both profiles before file I/O; ZOD-106 and
+editor work remain deferred. No new native/original execution or save format.
+
+**Implementation checkpoint (2026-10-26): ZOD-109 is complete.** Pure Throw Stone now has
 an explicit targeted profile/grants/command, named arithmetic, physical evasion,
 current-PA damage and same-height one-tile knockback with exact seven/four draws.
 It preserves settled facings and the target's voluntary choices, handles
@@ -1197,7 +1211,15 @@ limits; run meaningful regressions and appropriate full implementation suites.
 
 ### ZOD-110 — Prepare Throw Stone content and a combined Basic Skill scenario
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-109
+**Type:** Story · **Priority:** P3 · **Status:** Complete · **Depends on:** ZOD-109
+
+**Result (2026-10-26):** TST-021..028 pass with strict companion/grant validation,
+six-record verified import, canonical metadata matching, combined action routing,
+first-KO/restart/continuation and both-profile save-preflight rejection.
+Two actual imports and headless checks repeat byte-for-byte; independent audit
+rechecks source/mappings/historical bytes and damage/knockback/RNG.
+All 2,700 .NET / 305 Python tests pass. See the
+[workflow/evidence](development/basic-skill-content.md); native controls remain ZOD-111.
 
 **Scope:** Add a separate closed targeted-effect companion and validated
 metadata/grant projection. Offline import verifies selected original records and
@@ -1213,7 +1235,7 @@ Run appropriate suites and independent import/evidence audit.
 
 ### ZOD-111 — Use Throw Stone through prepared Windows target controls
 
-**Type:** Story · **Priority:** P3 · **Status:** Waiting · **Depends on:** ZOD-110
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-110
 
 **Scope:** Expose the validated targeted action through the existing Windows
 battle router with select/confirm/cancel, range and availability feedback, and

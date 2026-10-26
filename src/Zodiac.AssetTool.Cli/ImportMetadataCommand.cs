@@ -16,13 +16,14 @@ public sealed class ImportMetadataCommand(string workspaceRoot)
         try
         {
             var options = new Dictionary<string, string>(StringComparer.Ordinal);
-            if (args.Length == 0 || args[0] is not ("import-metadata" or "import-sword" or "import-accumulate")) throw new ArgumentException("Expected import-metadata, import-sword or import-accumulate command.");
+            if (args.Length == 0 || args[0] is not ("import-metadata" or "import-sword" or "import-accumulate" or "import-throw-stone")) throw new ArgumentException("Expected import-metadata, import-sword, import-accumulate or import-throw-stone command.");
             bool swordMode = args[0] == "import-sword";
             bool accumulateMode = args[0] == "import-accumulate";
+            bool targetedMode = args[0] == "import-throw-stone";
             for (int i = 1; i < args.Length; i++)
             {
                 string key = args[i];
-                if ((key is not ("--exe" or "--output") && !((swordMode || accumulateMode) && key == "--metadata")) || i + 1 >= args.Length ||
+                if ((key is not ("--exe" or "--output") && !((swordMode || accumulateMode || targetedMode) && key == "--metadata")) || i + 1 >= args.Length ||
                     args[i + 1].StartsWith("--", StringComparison.Ordinal) || !options.TryAdd(key, args[++i]))
                     throw new ArgumentException($"Unknown, duplicate, or missing option: {key}");
             }
@@ -32,6 +33,7 @@ public sealed class ImportMetadataCommand(string workspaceRoot)
             string outputPath = ScratchPath(destination);
             string? metadataPath = options.TryGetValue("--metadata", out string? selected) ? ScratchPath(selected) : null;
             if (accumulateMode && metadataPath is null) throw new ArgumentException("import-accumulate requires --metadata.");
+            if (targetedMode && metadataPath is null) throw new ArgumentException("import-throw-stone requires --metadata.");
             if (File.Exists(outputPath) || Directory.Exists(outputPath))
                 throw new IOException("Output directory already exists; choose a fresh scratch destination.");
             if (inputPath.StartsWith(outputPath + Path.DirectorySeparatorChar, PathComparison))
@@ -41,12 +43,13 @@ public sealed class ImportMetadataCommand(string workspaceRoot)
             if (new FileInfo(inputPath).Length != OriginalMetadataImporter.ExecutableLength)
                 throw new InvalidDataException("Input has an unsupported executable byte length.");
             byte[] bytes = File.ReadAllBytes(inputPath);
-            OriginalMetadataImport? result = swordMode || accumulateMode ? null : OriginalMetadataImporter.ImportVerified(bytes);
+            OriginalMetadataImport? result = swordMode || accumulateMode || targetedMode ? null : OriginalMetadataImporter.ImportVerified(bytes);
             OriginalSwordImport? sword = swordMode ? OriginalSwordImporter.ImportVerified(bytes) : null;
             OriginalAccumulateImport? accumulate = accumulateMode ? OriginalAccumulateImporter.ImportVerified(bytes, ContentPackage.Load(metadataPath!)) : null;
+            OriginalThrowStoneImport? targeted = targetedMode ? OriginalThrowStoneImporter.ImportVerified(bytes, ContentPackage.Load(metadataPath!)) : null;
             SwordContentPackage? swordPackage = !swordMode || metadataPath is null ? null :
                 OriginalSwordContentExporter.CreatePackage(sword!, ContentPackage.Load(metadataPath));
-            string provenance = accumulateMode ? OriginalAccumulateImporter.ToJson(accumulate!) : swordMode ? OriginalSwordImporter.ToJson(sword!) : JsonSerializer.Serialize(new
+            string provenance = targetedMode ? OriginalThrowStoneImporter.ToJson(targeted!) : accumulateMode ? OriginalAccumulateImporter.ToJson(accumulate!) : swordMode ? OriginalSwordImporter.ToJson(sword!) : JsonSerializer.Serialize(new
             {
                 format = "fft.original-metadata-import", schemaVersion = 1,
                 targetEdition = "SCUS-94221", scope = "partial-learning-metadata",
@@ -64,10 +67,11 @@ public sealed class ImportMetadataCommand(string workspaceRoot)
             try
             {
                 Directory.CreateDirectory(staging);
-                if (!swordMode && !accumulateMode) result!.Package.Save(Path.Combine(staging, "content.package.json"));
+                if (!swordMode && !accumulateMode && !targetedMode) result!.Package.Save(Path.Combine(staging, "content.package.json"));
                 swordPackage?.Save(Path.Combine(staging, "sword.package.json"));
                 if (accumulateMode) File.WriteAllText(Path.Combine(staging, "ability.package.json"), accumulate!.Package.ToJson(), new UTF8Encoding(false));
-                File.WriteAllText(Path.Combine(staging, accumulateMode ? "ability.import.json" : swordMode ? "sword.import.json" : "import.provenance.json"), provenance.Replace("\r\n", "\n", StringComparison.Ordinal), new UTF8Encoding(false));
+                if (targetedMode) File.WriteAllText(Path.Combine(staging, "targeted.package.json"), targeted!.Package.ToJson(), new UTF8Encoding(false));
+                File.WriteAllText(Path.Combine(staging, targetedMode ? "targeted.import.json" : accumulateMode ? "ability.import.json" : swordMode ? "sword.import.json" : "import.provenance.json"), provenance.Replace("\r\n", "\n", StringComparison.Ordinal), new UTF8Encoding(false));
                 Directory.Move(staging, outputPath);
             }
             finally
@@ -81,22 +85,25 @@ public sealed class ImportMetadataCommand(string workspaceRoot)
                     File.Delete(Path.Combine(staging, "sword.package.json"));
                     File.Delete(Path.Combine(staging, "ability.package.json"));
                     File.Delete(Path.Combine(staging, "ability.import.json"));
+                    File.Delete(Path.Combine(staging, "targeted.package.json"));
+                    File.Delete(Path.Combine(staging, "targeted.import.json"));
                     Directory.Delete(staging);
                 }
             }
-            if (accumulateMode) output.WriteLine($"Imported supported Accumulate effect and {accumulate!.Records.Length} source records at {outputPath}; learned grants remain explicit.");
+            if (targetedMode) output.WriteLine($"Imported supported Throw Stone effect and {targeted!.Records.Length} source records at {outputPath}; historical metadata ID preserved; learned grants remain explicit.");
+            else if (accumulateMode) output.WriteLine($"Imported supported Accumulate effect and {accumulate!.Records.Length} source records at {outputPath}; learned grants remain explicit.");
             else if (swordMode) output.WriteLine($"Imported selected retail sword and Attack metadata: {sword!.Records.Length} source records at {outputPath}; " +
                 (swordPackage is null ? "metadata-only, no runtime package." : "validated schema2 sword.package.json exported; combat execution remains separate."));
             else output.WriteLine($"Imported {result!.Package.Jobs.Length} job, {result.Package.Skillsets.Length} skillset, " +
                 $"{result.Package.Abilities.Length} abilities; {result.Records.Length} source records preserved at {outputPath}.");
-            if (!accumulateMode)
+            if (!accumulateMode && !targetedMode)
                 foreach (string diagnostic in swordMode ? sword!.Diagnostics : result!.Diagnostics) output.WriteLine(diagnostic);
             return 0;
         }
         catch (ArgumentException exception)
         {
             error.WriteLine(exception.Message);
-            error.WriteLine("Usage: import-metadata|import-sword|import-accumulate --exe <scratch/SCUS_942.21> --output <fresh-scratch-directory> [--metadata <scratch/content.package.json> (required for import-accumulate, optional for import-sword)]");
+            error.WriteLine("Usage: import-metadata|import-sword|import-accumulate|import-throw-stone --exe <scratch/SCUS_942.21> --output <fresh-scratch-directory> [--metadata <scratch/content.package.json> (required for ability imports, optional for import-sword)]");
             return 2;
         }
         catch (Exception exception) when (exception is IOException or InvalidDataException or UnauthorizedAccessException or ContentPackageValidationException)

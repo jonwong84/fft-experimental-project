@@ -21,7 +21,7 @@ internal static class Program
             return new ExtractCommand(workspaceRoot).Run(args, Console.Out, Console.Error);
         }
 
-        if (args.Length > 0 && args[0] is "import-metadata" or "import-sword" or "import-accumulate")
+        if (args.Length > 0 && args[0] is "import-metadata" or "import-sword" or "import-accumulate" or "import-throw-stone")
             return new ImportMetadataCommand(workspaceRoot).Run(args, Console.Out, Console.Error);
 
         if (args.Length > 0 && args[0] == "prepare-accumulate-battle")

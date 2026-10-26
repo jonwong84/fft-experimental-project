@@ -2,6 +2,35 @@
 
 ## Current handoff — 2026-10-26
 
+**ZOD-110 is complete; next ZOD-111 is Ready.** New strict targeted-effect
+companion/projection, verified Throw Stone conversion and explicit authored
+Accumulate/Throw Stone scenario now compose the pure rules with first-KO lifecycle.
+The original stable ID remains fft.ps1:ability/source-0148. No historical
+metadata is renamed or rewritten; canonical selected metadata must match import.
+Both-profile/targeted-only save and restore guards reject before file I/O.
+
+Locked isolated restore/build pass with zero warnings; **2,700 .NET / 305 Python
+tests** pass (92 new managed, six Python). TST-021..028 are executed. Actual
+imports repeat both files; headless checks repeat all four files across 46
+commands and 47 fresh-definition prefix/suffix continuations. They prove PA6
+damage 6/12, six hits, three pushes, eight atomic rejections, first KO and restart.
+Independent Python audit checks all six selected records, 22 historical metadata
+records, six preserved metadata/sword/Accumulate files and exact ranged state/RNG
+deltas. Final RNG: 4200531631 / 58. Two final audit reports match.
+
+Read-only decomp was freshly checked clean at
+11464943bbdbd2a0af022d90cb7f10455cf911df. Raw imported data, diagnostics, failed/
+passing focused TRX and full suites stay under ignored scratch/throw-stone-110-*.
+See the [workflow/build/headless guide](development/basic-skill-content.md) and
+[evidence](evidence/combat/throw-stone-content-v1.json). Initial focused serializer
+failure was corrected to explicit mutable unit-state projection; final suites pass.
+No native window/original execution, new save format, project lock or editor work.
+Existing sword limits/facing discrepancy and authored-vs-original scope remain.
+ZOD-111 owns prepared manifest-based Windows target controls, its finite native
+plan and owner review. ZOD-106 battle checkpoints and editor work remain deferred.
+
+## ZOD-109 implementation checkpoint (historical)
+
 **ZOD-109 is complete; next ZOD-110 is Ready.** The pure Framework API now
 executes Throw Stone through a separate targeted command and closed immutable
 profile/grants. It implements Manhattan range 1..4, physical evade, PA-or-double-PA

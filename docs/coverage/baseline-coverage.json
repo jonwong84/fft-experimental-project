@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-26",
   "edition": "SCUS-94221",
-  "managedCommit": "8ea184dd7e476acdb64c854fd696ed73e652126c",
+  "managedCommit": "efdbfa91640054dba1097f8d7f163fb6242ec95a",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 2608,
-    "source": "docs/behavior/throw-stone-implementation.md",
+    "passed": 2700,
+    "source": "docs/development/basic-skill-content.md",
     "runForThisInventory": false
   },
   "statusDefinitions": {
@@ -229,7 +229,9 @@
         "docs/architecture/zod-108-throw-stone-action.md",
         "docs/evidence/combat/throw-stone-contract-v1.json",
         "docs/behavior/throw-stone-implementation.md",
-        "docs/evidence/combat/throw-stone-implementation-v1.json"
+        "docs/evidence/combat/throw-stone-implementation-v1.json",
+        "docs/development/basic-skill-content.md",
+        "docs/evidence/combat/throw-stone-content-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/AttackBattleSimulator.cs",
@@ -253,7 +255,7 @@
         "Other weapons, affinities, equipment evade, zodiac interactions, line of sight and area targets remain open.",
         "ZOD-108 identifies a settled-facing discrepancy: the authored sword retains attack-facing while the original restores a living actor saved facing; no runtime fix was made in this investigation."
       ],
-      "nextAction": "ZOD-109 pure Throw Stone is complete; implement ZOD-110 validated targeted content/import and combined Accumulate/Throw Stone authored scenario, then ZOD-111 Windows target controls. Retain ability-save guards; battle checkpoints and editor work remain deferred.",
+      "nextAction": "ZOD-110 targeted content/import and combined Basic Skill scenario are complete. Implement ZOD-111 prepared Windows target controls with a finite native plan and separate owner review. Retain both-profile save guards; battle checkpoints and editor work remain deferred.",
       "followUpTickets": [
         "ZOD-104",
         "ZOD-105",
@@ -269,7 +271,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
-      "currentScope": "Accumulate and its approved prepared controls remain. ZOD-109 adds pure Throw Stone range/evasion/current-PA damage/flat knockback with explicit profile/grants, exact RNG, settled facing and atomic replay; TST-001..020 pass. Targeted content/scenario/UI integration is still ZOD-110/111. Broader catalog/original observation remain open; battle checkpoints are deferred.",
+      "currentScope": "Accumulate controls remain owner-approved. Throw Stone pure rules now compose through strict targeted content/grants and first-KO lifecycle with Accumulate; TST-001..028 pass. Six-record verified import preserves source-0148 and historical bytes; repeated headless checks cover 46 commands/47 continuations. Windows target controls remain ZOD-111; broader original coverage remains open.",
       "referenceSources": [
         {
           "path": "src/battle/combat/formulas.c",
@@ -295,7 +297,9 @@
         "docs/architecture/zod-108-throw-stone-action.md",
         "docs/evidence/combat/throw-stone-contract-v1.json",
         "docs/behavior/throw-stone-implementation.md",
-        "docs/evidence/combat/throw-stone-implementation-v1.json"
+        "docs/evidence/combat/throw-stone-implementation-v1.json",
+        "docs/development/basic-skill-content.md",
+        "docs/evidence/combat/throw-stone-content-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/ImmediateAbilityBattle.cs",
@@ -304,7 +308,9 @@
         "src/Fft.Client/Presentation/AccumulateBattleHost.cs",
         "src/Zodiac.Content/BattleSetup/PreparedAccumulateBattle.cs",
         "src/Zodiac.Framework/ThrowStoneFormula.cs",
-        "src/Zodiac.Framework/TargetedAbilityBattle.cs"
+        "src/Zodiac.Framework/TargetedAbilityBattle.cs",
+        "src/Zodiac.Content/ContentPackages/TargetedAbilityContentPackage.cs",
+        "src/Zodiac.Content/Samples/SyntheticBasicSkillBattle.cs"
       ],
       "automatedChecks": [
         {
@@ -330,6 +336,14 @@
         {
           "path": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
           "scope": "149 executed source-derived pure arithmetic, RNG, geometry, grants, continuation and replay cases; no content/native/original equivalence claim."
+        },
+        {
+          "path": "tests/Zodiac.Content.Tests/BasicSkillScenarioTests.cs",
+          "scope": "Combined action/current-PA/first-KO/restart/continuation and save-guard checks."
+        },
+        {
+          "path": "tools/verification/verify_basic_skill_content.py",
+          "scope": "Independent verified input/record/historical-file and authored headless delta audit."
         }
       ],
       "manualCheckpoint": {
@@ -337,9 +351,9 @@
         "procedure": "Compare one selected original ability with exact target/stats/RNG preconditions."
       },
       "openQuestions": [
-        "Other formula families, equipment bonuses, statuses/reactions, progression/rewards, AI, charged actions, projectile obstruction/elevation/falling and original execution remain open. Targeted runtime composition is ZOD-110/111; battle checkpoints remain deferred."
+        "Original projectile obstruction/elevation/falling, other action families/modifiers, progression/rewards, AI and independent original observation remain open. ZOD-111 owns Windows controls; battle checkpoints remain deferred."
       ],
-      "nextAction": "ZOD-109 pure Throw Stone is complete; implement ZOD-110 validated targeted content/import and combined Accumulate/Throw Stone authored scenario, then ZOD-111 Windows target controls. Retain ability-save guards; battle checkpoints and editor work remain deferred.",
+      "nextAction": "ZOD-110 targeted content/import and combined Basic Skill scenario are complete. Implement ZOD-111 prepared Windows target controls with a finite native plan and separate owner review. Retain both-profile save guards; battle checkpoints and editor work remain deferred.",
       "followUpTickets": [
         "ZOD-104",
         "ZOD-105",
@@ -552,7 +566,7 @@
       "ownerTicket": "ZOD-039",
       "ownerArea": "Zodiac.Content definitions and offline import",
       "status": "partial",
-      "currentScope": "Typed metadata and selected Squire-family import remain. ZOD-105 adds a separate closed immediate-ability companion, validated learned-action grants and verified Accumulate conversion, preserving learning metadata.",
+      "currentScope": "Selected Squire metadata/sword/Accumulate imports remain. ZOD-110 adds a separate strict targeted-effect companion and verified Throw Stone conversion, preserving historical source-0148 and metadata bytes; explicit learned grants compose the authored combined scenario. Full catalog coverage remains open.",
       "referenceSources": [
         {
           "path": "include/fft/job.h",
@@ -576,13 +590,17 @@
         "docs/architecture/zod-108-throw-stone-action.md",
         "docs/evidence/combat/throw-stone-contract-v1.json",
         "docs/behavior/throw-stone-implementation.md",
-        "docs/evidence/combat/throw-stone-implementation-v1.json"
+        "docs/evidence/combat/throw-stone-implementation-v1.json",
+        "docs/development/basic-skill-content.md",
+        "docs/evidence/combat/throw-stone-content-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Content/Definitions/JobDefinition.cs",
         "src/Zodiac.AssetTool/OriginalMetadataRecords.cs",
         "src/Zodiac.Content/ContentPackages/ImmediateAbilityContentPackage.cs",
-        "src/Zodiac.Content/BattleSetup/ImmediateAbilityBattleSetup.cs"
+        "src/Zodiac.Content/BattleSetup/ImmediateAbilityBattleSetup.cs",
+        "src/Zodiac.AssetTool.Cli/OriginalThrowStoneImporter.cs",
+        "src/Zodiac.Content/BattleSetup/TargetedAbilityBattleSetup.cs"
       ],
       "automatedChecks": [
         {
@@ -605,7 +623,7 @@
       "openQuestions": [
         "Full catalog rows and field-to-runtime meaning are not enumerated; imported metadata does not imply executable effects."
       ],
-      "nextAction": "ZOD-109 pure Throw Stone is complete; implement ZOD-110 validated targeted content/import and combined Accumulate/Throw Stone authored scenario, then ZOD-111 Windows target controls. Retain ability-save guards; battle checkpoints and editor work remain deferred.",
+      "nextAction": "ZOD-110 targeted content/import and combined Basic Skill scenario are complete. Implement ZOD-111 prepared Windows target controls with a finite native plan and separate owner review. Retain both-profile save guards; battle checkpoints and editor work remain deferred.",
       "followUpTickets": [
         "ZOD-104",
         "ZOD-105"
