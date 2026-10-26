@@ -44,6 +44,21 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Selected gameplay milestone (2026-10-26): Accumulate under ZOD-038.**
+**ZOD-104 is complete** as a bounded source/data investigation and contract:
+verified generic Squire/Basic Skill membership, immediate self PA+1, cap 99,
+Act consumption and zero resolution draws in the closed supported profile.
+Two final offline reports repeat exactly, comparing 22 historical imported
+records plus menu/status rows and fingerprinting 17 source files. This is not
+original-game execution or a managed ability implementation. The
+[contract](architecture/zod-104-accumulate-action.md) and
+[32 unexecuted acceptance cases](evidence/combat/accumulate-contract-v1.json)
+identify current PA persistence as a prerequisite: existing battle saves omit PA.
+**Next: ZOD-105**, the pure content/action/scenario proof; then **ZOD-106** for
+save/replay continuation and **ZOD-107** for the existing Windows battle controls.
+Last implementation validation remains **2,349 .NET / 293 Python tests**, not
+rerun for this investigation. Editor work and other documented deferrals remain.
+
 **Owner direction (2026-10-26): limit further editor work.** A brief live
 inspection of the owner's loaded FFTPatcher v0.497.0 PSX session confirms useful
 Jobs / Skill Sets / Abilities separation, grouped fields and relationship links;
@@ -966,6 +981,76 @@ limits, source-edit workflow and refactoring criteria. This does not start a bro
 combat rewrite or change the active banner queue.
 
 **Acceptance criteria:** All baseline actions and required AI choices are mapped to implementation/fixtures or explicit unresolved entries; representative encounters validate state, RNG draw ordering, and rewards; mandatory enemy/ally turns can complete without player scripting. Record observed AI deviations separately from player-action correctness.
+
+### ZOD-104 — Trace and specify the first executable job ability
+
+**Type:** Spike · **Priority:** P3 · **Status:** Complete (source/data contract; implementation unexecuted) · **Depends on:** ZOD-017, ZOD-022, ZOD-023
+
+**Result (2026-10-26):** The [Accumulate contract](architecture/zod-104-accumulate-action.md)
+pins clean decomp `11464943bbdbd2a0af022d90cb7f10455cf911df` and verifies the
+prepared SCUS executable's exact hash/header. Rechecked 22 imported records and
+the default-menu/empty-status rows, then traced learned-slot selection, automatic
+self targeting, immediate preparation, formula 0x36, byte/signed arithmetic,
+base/equipment/effective PA, cap/no-change behavior and ordinary turn/RNG order.
+Two final offline reports match; 17 source files are fingerprinted. The
+[evidence](evidence/combat/accumulate-contract-v1.json) assigns 32 explicitly
+unexecuted cases to ZOD-105/106/107. No production code, schema, editor or native
+launch changes; no implementation suites rerun or original execution claimed.
+
+**Scope/acceptance:** Select one ability, document its traced behavior and supported
+domain, identify content/state/save/UI prerequisites, and define independently
+checkable implementation children. Original rewards, learning, equipment bonuses,
+AI and presentation equivalence remain outside the selected proof.
+
+### ZOD-105 — Prove the pure Accumulate content/action scenario
+
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-104
+
+**Scope:** Implement the closed immediate self PA+1 effect, validated companion
+content/projection and explicit unit grants in a separately identified authored
+scenario. Keep existing learning metadata and sword-only profiles intact. Current
+battle PA changes immutably and feeds subsequent sword damage. Enforce the
+reachable-PA-99 sword envelope before execution; no broad formula pipeline or
+editor changes. Existing save entry points must explicitly reject unsupported
+ability-enabled states until ZOD-106, including no-change-at-cap states.
+
+**Acceptance criteria:** ACC-001..020 pass with meaningful arithmetic, atomicity,
+turn, draw-count, grant/reference, repeat-use, preview and regression coverage.
+Original import validates the selected secondary/menu/status contract and retains
+raw provenance only under scratch; unsupported fields fail explicitly. Content
+round-trips deterministically. Existing sword fixtures/journals retain exact
+outcomes/RNG. Update behavior evidence and run appropriate locked build/suites.
+
+### ZOD-106 — Preserve boosted battle PA across checkpoints and replay
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting · **Depends on:** ZOD-105
+
+**Scope:** Add current PA to a new explicit ability-profile battle-save schema
+and permit only validated dynamic PA restoration. Preserve old sword-profile
+schema-2 writing and schema-1/2 reading; legacy documents do not select the new
+profile. Definitions/grants resolve from trusted prepared setup, never the save.
+Keep existing world checkpoint and slot formats unchanged.
+
+**Acceptance criteria:** ACC-021..027 pass: fresh-definition restored continuation
+matches uninterrupted state/events/damage/RNG, cap and choice flags persist,
+restart resets PA, legacy behavior is preserved, and malformed/semantically invalid
+or mismatched-profile saves fail without changing state/files. Use rehashed semantic
+negatives, not only hash-mismatch checks. Repeat accepted/rejected command journals;
+run appropriate build/suites and retain current save regression evidence.
+
+### ZOD-107 — Use Accumulate through the existing Windows battle controls
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting · **Depends on:** ZOD-105, ZOD-106
+
+**Scope:** A separate prepared ability-enabled battle launch exposes the granted
+self action, current PA, action availability and success/cap feedback through
+shared simulation commands. Retain existing battle controls and introduction,
+world and editor behavior. No editor expansion or original animation port.
+
+**Acceptance criteria:** ACC-028..032 pass with a finite native plan written before
+execution, repeated state/journal/save-continuation/capture checks and appropriate
+implementation suites. Owner visual/physical review remains separate from
+programmed controls. Report authored presentation and original fidelity limits.
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 

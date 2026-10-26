@@ -2,6 +2,36 @@
 
 ## Current handoff — 2026-10-26
 
+**ZOD-104 complete: Accumulate source/data contract; implementation next.**
+The owner selected the first executable job ability after deferring further
+editor work. The [contract](architecture/zod-104-accumulate-action.md) pins clean
+read-only decomp `11464943bbdbd2a0af022d90cb7f10455cf911df` and re-verifies the
+prepared SCUS executable. Accumulate is Basic Skill's first action: immediate,
+self PA+1, cap 99, Act consumed even at cap, zero resolution draws in the closed
+no-modifier profile. New readiness still uses the existing upkeep draw.
+Base/equipment/effective PA are distinct in the source; the first managed profile
+selects zero equipment PA bonus. Learned ownership is an explicit authored grant,
+not implied by skillset membership. Check the sword envelope at reachable PA 99.
+
+Two final offline reports (`scratch/accumulate-104-e/f/audit.json`) match exactly,
+rechecking all 22 historical imported records plus default-menu/empty-status data
+and fingerprinting 17 source files. Raw data/scripts/reports remain ignored under
+scratch; [committed evidence](evidence/combat/accumulate-contract-v1.json) contains
+identities and **32 unexecuted future cases**. No production code, schema, native
+launch or original execution; .NET/Python suites were not rerun. Last implementation
+validation remains **2,349 .NET / 293 Python tests**.
+
+**Next: ZOD-105**, pure validated content/grants/action/scenario proof, ACC-001..020.
+Then **ZOD-106**, battle PA persistence and replay continuation, ACC-021..027;
+existing saves omit PA and restore it as an immutable starting value. Retain old
+save/profile behavior and fail explicitly until the new profile can be saved.
+Finally **ZOD-107**, the separate prepared Windows battle controls/checks and
+owner review, ACC-028..032. No learning/reward/AI/equipment-bonus expansion or
+generic formula framework is selected. Editor/M3 review and all other documented
+deferrals stay open; they do not block this gameplay lane.
+
+## Editor disposition retained
+
 **Current owner direction: defer further editor UI work and review.** The owner
 does not want substantial editor work unless it advances the rest of the project.
 The brief [live FFTPatcher v0.497.0 reference](development/fftpatcher-desktop-reference.md)
@@ -10,8 +40,8 @@ Jobs, Skill Sets and Abilities have separate pages, grouped fields, navigation
 and reverse-use links. No fields or files were changed. This supersedes the
 initial v0.495/TLW reference suggestion. ZOD-047 remains implemented/unapproved,
 M3 stays open, and further UI polish/review waits for a concrete authoring need or
-owner request. **Next:** select a bounded gameplay/source/data milestone from the
-backlog; the deferred editor review does not block unrelated development. Last
+owner request. The selected gameplay lane is now ZOD-104/105/106/107 above;
+the deferred editor review does not block that development. Last
 implementation validation remains **2,349 .NET / 293 Python tests**; no suites or
 native editor checks were repeated for this documentation-only reference pass.
 

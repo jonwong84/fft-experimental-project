@@ -205,7 +205,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
-      "currentScope": "One range-1 neutral empty-proc sword with explicit effective stats, neutral zodiac and no equipment evade is executable.",
+      "currentScope": "One range-1 neutral empty-proc sword with explicit effective stats, neutral zodiac and no equipment evade is executable. ZOD-104 traces and specifies Accumulate; its content/action/save/host implementation remains unexecuted.",
       "referenceSources": [
         {
           "path": "src/battle/combat/targets.c",
@@ -221,7 +221,9 @@
         }
       ],
       "evidenceDocs": [
-        "docs/behavior/bounded-sword-implementation.md"
+        "docs/behavior/bounded-sword-implementation.md",
+        "docs/architecture/zod-104-accumulate-action.md",
+        "docs/evidence/combat/accumulate-contract-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/AttackBattleSimulator.cs",
@@ -244,7 +246,13 @@
       "openQuestions": [
         "Other weapons, affinities, equipment evade, zodiac interactions, line of sight and area targets remain open."
       ],
-      "nextAction": "Choose one additional action/target family under ZOD-038."
+      "nextAction": "Implement the bounded Accumulate proof in ZOD-105, then save/replay continuation in ZOD-106 and the Windows battle controls in ZOD-107. The source contract and 32 unexecuted cases are in ZOD-104.",
+      "followUpTickets": [
+        "ZOD-104",
+        "ZOD-105",
+        "ZOD-106",
+        "ZOD-107"
+      ]
     },
     {
       "id": "COV-SIM-006",
@@ -254,7 +262,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "absent",
-      "currentScope": "Metadata models/imports do not execute the original action catalog.",
+      "currentScope": "Metadata models/imports do not execute the original action catalog. ZOD-104 completes the bounded Accumulate source/data contract; implementation and independent original observation remain pending.",
       "referenceSources": [
         {
           "path": "src/battle/combat/formulas.c",
@@ -270,7 +278,9 @@
         }
       ],
       "evidenceDocs": [
-        "PROJECT_PLAN.md"
+        "PROJECT_PLAN.md",
+        "docs/architecture/zod-104-accumulate-action.md",
+        "docs/evidence/combat/accumulate-contract-v1.json"
       ],
       "implementationPaths": [],
       "automatedChecks": [],
@@ -281,7 +291,13 @@
       "openQuestions": [
         "Formula and action-family enumeration, arithmetic envelopes, MP costs, target rules and effects are not implemented."
       ],
-      "nextAction": "Inventory formula families before translating one bounded ability."
+      "nextAction": "Implement Accumulate through ZOD-105/106/107 using the ZOD-104 trace and unexecuted acceptance cases. Continue broader formula-family inventory separately.",
+      "followUpTickets": [
+        "ZOD-104",
+        "ZOD-105",
+        "ZOD-106",
+        "ZOD-107"
+      ]
     },
     {
       "id": "COV-SIM-007",
@@ -501,7 +517,8 @@
       ],
       "evidenceDocs": [
         "docs/behavior/original-metadata-import.md",
-        "docs/architecture/zod-014-typed-definitions.md"
+        "docs/architecture/zod-014-typed-definitions.md",
+        "docs/architecture/zod-104-accumulate-action.md"
       ],
       "implementationPaths": [
         "src/Zodiac.Content/Definitions/JobDefinition.cs",
@@ -524,7 +541,11 @@
       "openQuestions": [
         "Full catalog rows and field-to-runtime meaning are not enumerated; imported metadata does not imply executable effects."
       ],
-      "nextAction": "Expand one record family with full provenance and unsupported-field diagnostics."
+      "nextAction": "ZOD-105 adds a separate validated immediate-ability companion and explicit grants for Accumulate; preserve existing learning metadata and reject unsupported effects. Broader catalog expansion remains open.",
+      "followUpTickets": [
+        "ZOD-104",
+        "ZOD-105"
+      ]
     },
     {
       "id": "COV-CAT-002",

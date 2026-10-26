@@ -98,9 +98,9 @@ Next action: Break ZOD-037 into separate ordinary-geometry and special-mode chil
 
 Status: **partial**; scope: **baseline**; ticket: **ZOD-038**; owner area: Zodiac.Framework simulation.
 
-One range-1 neutral empty-proc sword with explicit effective stats, neutral zodiac and no equipment evade is executable.
+One range-1 neutral empty-proc sword with explicit effective stats, neutral zodiac and no equipment evade is executable. ZOD-104 traces and specifies Accumulate; its content/action/save/host implementation remains unexecuted.
 
-Evidence: [docs/behavior/bounded-sword-implementation.md](../../docs/behavior/bounded-sword-implementation.md).
+Evidence: [docs/behavior/bounded-sword-implementation.md](../../docs/behavior/bounded-sword-implementation.md), [docs/architecture/zod-104-accumulate-action.md](../../docs/architecture/zod-104-accumulate-action.md), [docs/evidence/combat/accumulate-contract-v1.json](../../docs/evidence/combat/accumulate-contract-v1.json).
 
 Source entry points (pinned revision above; not full traces): [src/battle/combat/targets.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/combat/targets.c), [src/battle/combat/resolution.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/combat/resolution.c), [src/battle/combat/formula_core.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/combat/formula_core.c).
 
@@ -114,15 +114,17 @@ Remaining gaps:
 
 - Other weapons, affinities, equipment evade, zodiac interactions, line of sight and area targets remain open.
 
-Next action: Choose one additional action/target family under ZOD-038.
+Next action: Implement the bounded Accumulate proof in ZOD-105, then save/replay continuation in ZOD-106 and the Windows battle controls in ZOD-107. The source contract and 32 unexecuted cases are in ZOD-104.
+
+Bounded follow-ups: ZOD-104, ZOD-105, ZOD-106, ZOD-107.
 
 ### COV-SIM-006 — Abilities, magic, recovery and action-formula catalog
 
 Status: **absent**; scope: **baseline**; ticket: **ZOD-038**; owner area: Zodiac.Framework simulation.
 
-Metadata models/imports do not execute the original action catalog.
+Metadata models/imports do not execute the original action catalog. ZOD-104 completes the bounded Accumulate source/data contract; implementation and independent original observation remain pending.
 
-Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md).
+Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-104-accumulate-action.md](../../docs/architecture/zod-104-accumulate-action.md), [docs/evidence/combat/accumulate-contract-v1.json](../../docs/evidence/combat/accumulate-contract-v1.json).
 
 Source entry points (pinned revision above; not full traces): [src/battle/combat/formulas.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/combat/formulas.c), [include/fft/formula.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/formula.h), [include/fft/ability.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/ability.h).
 
@@ -134,7 +136,9 @@ Remaining gaps:
 
 - Formula and action-family enumeration, arithmetic envelopes, MP costs, target rules and effects are not implemented.
 
-Next action: Inventory formula families before translating one bounded ability.
+Next action: Implement Accumulate through ZOD-105/106/107 using the ZOD-104 trace and unexecuted acceptance cases. Continue broader formula-family inventory separately.
+
+Bounded follow-ups: ZOD-104, ZOD-105, ZOD-106, ZOD-107.
 
 ### COV-SIM-007 — Status durations, triggers, reactions and supports
 
@@ -244,7 +248,7 @@ Status: **partial**; scope: **baseline**; ticket: **ZOD-039**; owner area: Zodia
 
 Typed metadata, reference validation and selected Squire-family original import exist.
 
-Evidence: [docs/behavior/original-metadata-import.md](../../docs/behavior/original-metadata-import.md), [docs/architecture/zod-014-typed-definitions.md](../../docs/architecture/zod-014-typed-definitions.md).
+Evidence: [docs/behavior/original-metadata-import.md](../../docs/behavior/original-metadata-import.md), [docs/architecture/zod-014-typed-definitions.md](../../docs/architecture/zod-014-typed-definitions.md), [docs/architecture/zod-104-accumulate-action.md](../../docs/architecture/zod-104-accumulate-action.md).
 
 Source entry points (pinned revision above; not full traces): [include/fft/job.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/job.h), [include/fft/skillset.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/skillset.h), [src/main/party.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/main/party.c).
 
@@ -258,7 +262,9 @@ Remaining gaps:
 
 - Full catalog rows and field-to-runtime meaning are not enumerated; imported metadata does not imply executable effects.
 
-Next action: Expand one record family with full provenance and unsupported-field diagnostics.
+Next action: ZOD-105 adds a separate validated immediate-ability companion and explicit grants for Accumulate; preserve existing learning metadata and reject unsupported effects. Broader catalog expansion remains open.
+
+Bounded follow-ups: ZOD-104, ZOD-105.
 
 ### COV-CAT-002 — Items, equipment and effective combat stats
 
