@@ -44,7 +44,14 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
-**Latest completion (2026-10-26):** **ZOD-098 is complete**. The owner approved
+**Latest completion (2026-10-26): ZOD-068 is complete.** The synthetic idle-world
+Save/Load service validates fresh-definition restore/continuation, migration,
+slots, stale/concurrent writers, safe publishing and explicit recovery. All
+2,267 .NET / 281 Python tests pass; repeated headless checks match 14 files.
+ZOD-069 still waits for minimal menu/navigation under ZOD-042. Select that bounded
+flow before adding slot UI; original campaign/RNG/card support remains separate.
+
+**Authored scene completion (2026-10-26):** **ZOD-098 is complete**. The owner approved
 `scratch/dark-screen-intro-098-review/review.html`: "Looks good to me."
 This closes the authored composition/battle-switch review, not original startup
 or duration equivalence. The implementation validation recorded below is unchanged.
@@ -112,9 +119,8 @@ following update. The existing synthetic effect-first adapter stays unchanged.
 Next implement **ZOD-081's ordered Core transaction**, then **ZOD-082's separate
 authored preloaded profile**. The 28 new contract expectations are specification-only;
 no opcode is admitted yet. ZOD-079 remains deferred.
-ZOD-068's synthetic world-checkpoint
-service remains an independent lane; ZOD-069's native Save/Load UI waits on that
-service and minimal client navigation. Original campaign support remains open.
+ZOD-068's synthetic world-checkpoint service is complete; ZOD-069's native
+Save/Load UI still waits on minimal client navigation. Original campaign support remains open.
 M2 is not complete yet.
 Independent asset/reference investigations can proceed in parallel when the owner selects their scope;
 give each agent distinct files and acceptance criteria. M1 does not imply complete FFT combat or presentation.
@@ -1100,7 +1106,18 @@ original-card interoperability remains optional. Can run alongside ZOD-064.
 
 ### ZOD-068 — Prove a synthetic world-checkpoint Save/Load service
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-035, ZOD-067
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-035, ZOD-067
+
+**Result (2026-10-26):** [Synthetic checkpoint proof](development/synthetic-world-checkpoint.md)
+adds an immutable authored world state and one deterministic travel command,
+strict schema-1/2 save migration and summary validation, ten safe slots,
+content-revision/lock protection, flushed atomic publishing, retained backups and
+confirmed candidate-only load/recovery. No user-directory writes or new UI.
+Locked restore, zero-warning Release build, **2,267 .NET / 281 Python tests** pass
+(94/3 new). Fault injection and real Windows sharing failure preserve state/files;
+two headless CLI checks repeat all **14 files**, independently audited against
+both invented fixtures. Original campaign/checkpoints/RNG/card support remains
+open. ZOD-069 still waits for the minimal ZOD-042 navigation flow.
 
 **Scope:** Define one small authored campaign profile and Core-owned immutable idle
 world checkpoint: stable route/location IDs, party/equipment, inventory/funds,

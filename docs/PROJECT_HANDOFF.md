@@ -1,6 +1,26 @@
 # Tessera / Zodiac / FFT Project Handoff
 
-**Latest implementation checkpoint (2026-10-26):** ZOD-098 implements the closed
+**Latest implementation checkpoint (2026-10-26): ZOD-068 complete.** A pure
+FFT-owned immutable synthetic idle-world checkpoint binds party/job/equipment,
+inventory/funds, date/progress, location/route and explicit elapsed seconds. Its
+invented travel command costs seven funds/eleven seconds with no RNG or clock.
+Content supplies strict schema-1/2 DTOs, canonical checksum, fresh-definition
+restore and derived summary checks. The application service uses ten safe slots,
+per-user default storage (not written during validation), expected-content
+revisions, per-slot locks, flushed sibling promotion/backups and confirmed
+candidate-only load. Explicit validated backup recovery preserves a damaged
+primary; no silent repair. Existing battle saves and introduction code are intact.
+Locked restore, zero-warning Release build and **2,267 .NET / 281 Python tests**
+pass (94/3 new). Injected publishing failures and real Windows sharing failure
+preserve live state/old files. Two headless runs repeat **14 files**, with an
+independent fixture/checksum/continuation/recovery audit. No original campaign,
+card/RNG continuation, graphics or UI claim. [Guide](development/synthetic-world-checkpoint.md),
+[evidence](evidence/saves/synthetic-world-checkpoint-v1.json).
+**Next:** scope minimal menu/navigation under ZOD-042 before ZOD-069's slot UI.
+ZOD-069 remains Waiting; renderer options, contracts and quirk corrections stay
+deferred. This proof does not complete campaign/save epics ZOD-041/053.
+
+**Previous implementation checkpoint (2026-10-26):** ZOD-098 implements the closed
 prepared combined DarkScreen/general/Ready introduction and existing battle
 handoff. All three resources validate before a window, graphics allocate before
 admission, and a fresh RGB5 checker composes dark then the active display. The

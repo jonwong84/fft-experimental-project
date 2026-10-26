@@ -27,6 +27,12 @@ justifies it. Current assemblies are not yet interchangeable.
 
 ## What works today
 
+- **Synthetic world Save/Load:** a small authored idle-world checkpoint supports
+  versioned saves, fresh-definition restore, validated slot summaries, stale-writer
+  protection and explicit backup recovery. Two headless checks repeat all 14
+  files. This is a persistence proof; original campaign and slot menus remain
+  future work. [Guide](docs/development/synthetic-world-checkpoint.md).
+
 - **Playable synthetic battle:** control both units with mouse or keyboard; select, inspect legal moves/targets, move, attack, wait, advance turns and restart. HP, choices, rejections and the first-KO result are visible. [Controls and validation](docs/development/playable-battle.md).
 - **Prepared introduction to battle:** an optional general-banner/Ready sequence hands off to that battle in one Windows host. Battle state stays frozen until the authored event exits; held inputs are baselined before commands become available. [Launch, review and validation](docs/development/introduction-battle-handoff.md).
 - **Deterministic headless battle:** the same supported scenario runs through typed commands, with reproducible state/RNG results and replay checks. [Scenario and rules](docs/behavior/two-unit-battle-scenario.md).

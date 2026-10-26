@@ -3,7 +3,7 @@
 Generated from `baseline-coverage.json` by `tools/verification/verify_baseline_coverage.py --write-view`.
 Edit the JSON, then regenerate this view. See [the inventory guide](README.md) for status/evidence rules.
 
-Target: **SCUS-94221**. Snapshot: 2026-10-26; managed base `182802a`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+Target: **SCUS-94221**. Snapshot: 2026-10-26; managed base `755dd37936ea6d81dc886771bb6819687d88d0f5`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 These entries are planning scopes, not a feature-completion percentage or a complete record/encounter catalog.
 
 ## Simulation
@@ -1013,15 +1013,17 @@ Next action: Carry its DTO/validation/atomic-write pattern into separately trace
 
 ### COV-SAV-002 — Campaign/party/inventory/world saves and content-version policy
 
-Status: **absent**; scope: **platform-replacement**; ticket: **ZOD-053**; owner area: FFT persistence/application and Windows storage.
+Status: **partial**; scope: **platform-replacement**; ticket: **ZOD-053**; owner area: FFT persistence/application and Windows storage.
 
-ZOD-067 maps source save families, lifetimes, restore order and entry paths; neither RNG stream is saved. No campaign serialization/restore runtime exists.
+ZOD-067 retains historical source save-family/lifetime/restore-order context. ZOD-068 proves only invented RNG-free idle-world state, fresh-definition restore, strict DTO/checksum/summary validation, schema-1 migration and next-command state/events. Original campaign serialization and RNG continuation remain unsupported.
 
-Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-067-campaign-save-state.md](../../docs/architecture/zod-067-campaign-save-state.md).
+Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-067-campaign-save-state.md](../../docs/architecture/zod-067-campaign-save-state.md), [docs/development/synthetic-world-checkpoint.md](../../docs/development/synthetic-world-checkpoint.md), [docs/evidence/saves/synthetic-world-checkpoint-v1.json](../../docs/evidence/saves/synthetic-world-checkpoint-v1.json).
 
 Source entry points (pinned revision above; not full traces): [include/fft/save.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/save.h), [src/main/save_state.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/main/save_state.c), [src/world/card_save.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/card_save.c).
 
-Automated baseline check: **none identified for this scope**; add a scenario regression when implementing the next action.
+Current implementation: [src/Zodiac.Framework/Campaign/WorldCheckpoint.cs](../../src/Zodiac.Framework/Campaign/WorldCheckpoint.cs), [src/Zodiac.Content/Samples/SyntheticWorldCheckpoint.cs](../../src/Zodiac.Content/Samples/SyntheticWorldCheckpoint.cs), [src/Zodiac.Content/Saves/WorldCheckpointSave.cs](../../src/Zodiac.Content/Saves/WorldCheckpointSave.cs).
+
+Existing bounded checks: [tests/Zodiac.Framework.Tests/WorldCheckpointTests.cs](../../tests/Zodiac.Framework.Tests/WorldCheckpointTests.cs), [tests/Zodiac.Content.Tests/Saves/WorldCheckpointSaveTests.cs](../../tests/Zodiac.Content.Tests/Saves/WorldCheckpointSaveTests.cs), [tools/verification/verify_world_checkpoint.py](../../tools/verification/verify_world_checkpoint.py).
 
 Manual checkpoint (pending-original-observation): Save/continue at selected legal campaign points and compare party, flags, inventories, calendar and RNG-sensitive behavior.
 
@@ -1029,29 +1031,31 @@ Remaining gaps:
 
 - Complete retail checkpoint enumeration, unmodeled fields/side content, original observations, content-version rules and explicit native RNG continuation/seed policy remain open.
 
-Next action: Implement ZOD-068's RNG-free synthetic world-checkpoint service; retain ZOD-053 for complete campaign scope.
+Next action: Retain ZOD-053 for original campaign fields, checkpoints, content compatibility and explicit RNG continuation policy; expose the bounded proof through ZOD-069 after minimal ZOD-042 navigation.
 
 Bounded follow-ups: ZOD-068, ZOD-069.
 
 ### COV-SAV-003 — Windows save storage, metadata, backups and recovery
 
-Status: **absent**; scope: **platform-replacement**; ticket: **ZOD-053**; owner area: FFT persistence/application and Windows storage.
+Status: **partial**; scope: **platform-replacement**; ticket: **ZOD-053**; owner area: FFT persistence/application and Windows storage.
 
-Caller-path atomic battle saves exist; ZOD-067 recommends per-user slots, derived metadata and validated explicit recovery. No slot service/catalog or backup workflow exists.
+ZOD-068 proves ten safe headless synthetic slots with a per-user default, validated metadata, content revisions and exclusive locks, flushed sibling promotion/backups, candidate-only confirmed load and explicit validated recovery. Injected publishing faults and actual Windows sharing failure preserve prior files/live state. No slot UI or full-system durability claim.
 
-Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-067-campaign-save-state.md](../../docs/architecture/zod-067-campaign-save-state.md).
+Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-067-campaign-save-state.md](../../docs/architecture/zod-067-campaign-save-state.md), [docs/development/synthetic-world-checkpoint.md](../../docs/development/synthetic-world-checkpoint.md), [docs/evidence/saves/synthetic-world-checkpoint-v1.json](../../docs/evidence/saves/synthetic-world-checkpoint-v1.json).
 
 Source entry points (pinned revision above; not full traces): [src/world/card_save.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/card_save.c), [include/fft/save.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/save.h).
 
-Automated baseline check: **none identified for this scope**; add a scenario regression when implementing the next action.
+Current implementation: [src/Zodiac.Content/Saves/WorldSaveSlotStore.cs](../../src/Zodiac.Content/Saves/WorldSaveSlotStore.cs), [src/Zodiac.Content/Saves/WorldCheckpointService.cs](../../src/Zodiac.Content/Saves/WorldCheckpointService.cs), [src/Fft.Client/WorldCheckpointCheck.cs](../../src/Fft.Client/WorldCheckpointCheck.cs).
 
-Manual checkpoint (pending-original-observation): Test overwrite/cancel, missing/corrupt files, access errors and recovery without losing the last valid save.
+Existing bounded checks: [tests/Zodiac.Content.Tests/Saves/WorldSaveSlotStoreTests.cs](../../tests/Zodiac.Content.Tests/Saves/WorldSaveSlotStoreTests.cs), [tests/Fft.Client.Tests/WorldCheckpointCheckTests.cs](../../tests/Fft.Client.Tests/WorldCheckpointCheckTests.cs), [tools/verification/verify_world_checkpoint.py](../../tools/verification/verify_world_checkpoint.py).
+
+Manual checkpoint (pending-original-observation): After ZOD-069 implements menus, review actual overwrite/discard/cancel/recovery decisions and error presentation. Headless storage failures and recovery are automated in ZOD-068.
 
 Remaining gaps:
 
-- Implement the proposed per-user slot contract and define backup/recovery, stale/concurrent overwrite behavior and content compatibility before exposing UI.
+- Native slot/menu presentation remains unimplemented; original campaign compatibility, broader storage environments and power-loss durability require later scope and evidence.
 
-Next action: Implement bounded slot/storage behavior in ZOD-068, then expose through ZOD-069.
+Next action: Scope minimal menu/navigation under ZOD-042 before ZOD-069's slot UI; retain ZOD-053 for full campaign persistence and broader storage validation.
 
 Bounded follow-ups: ZOD-068, ZOD-069.
 

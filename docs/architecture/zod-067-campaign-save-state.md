@@ -1,5 +1,10 @@
 # ZOD-067 — Campaign save state and original checkpoints
 
+Implementation follow-up (2026-10-26): [ZOD-068](../development/synthetic-world-checkpoint.md)
+now proves the selected synthetic idle-world Save/Load service. The original-game
+field/lifetime investigation below remains historical evidence; its original
+checkpoint, RNG and full campaign gaps are not closed by the synthetic proof.
+
 Date: 2026-10-23. Target: North American PS1 `SCUS-94221`.
 Read-only reference: `C:\repositories\fft_decomp`, verified HEAD
 `11464943bbdbd2a0af022d90cb7f10455cf911df`.

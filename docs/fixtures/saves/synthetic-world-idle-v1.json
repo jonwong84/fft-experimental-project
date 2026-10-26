@@ -1,0 +1,49 @@
+{
+  "format": "fft.synthetic-world-save",
+  "schemaVersion": 1,
+  "sha256": "58db8e360bafecd2453b8d048f522f87ba714a8c610af3ce283e7f45a40557a5",
+  "snapshot": {
+    "profileId": "sample:profile/world-checkpoint",
+    "profileVersion": 1,
+    "contentVersion": 1,
+    "routeId": "sample:route/world-idle",
+    "locationId": "sample:location/harbor",
+    "progressFlagId": "sample:progress/bridge-open",
+    "progress": true,
+    "funds": 100,
+    "month": 3,
+    "day": 14,
+    "elapsedSeconds": 42,
+    "party": [
+      {
+        "id": "sample:party/ada",
+        "jobId": "sample:job/courier",
+        "equippedItemId": "sample:item/training-blade"
+      },
+      {
+        "id": "sample:party/borin",
+        "jobId": "sample:job/courier",
+        "equippedItemId": null
+      }
+    ],
+    "inventory": [
+      {
+        "itemId": "sample:item/rations",
+        "quantity": 5
+      },
+      {
+        "itemId": "sample:item/training-blade",
+        "quantity": 2
+      }
+    ],
+    "summary": {
+      "locationId": "sample:location/harbor",
+      "partyCount": 2,
+      "funds": 100,
+      "month": 3,
+      "day": 14,
+      "elapsedSeconds": 42,
+      "progress": true
+    }
+  }
+}

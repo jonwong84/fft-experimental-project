@@ -1,6 +1,16 @@
-# Synthetic battle-save migration fixtures
+# Synthetic save migration fixtures
 
-These fixtures contain only invented `sample:*` content. They are independently
+The separate `synthetic-world-idle-v1.json` and `synthetic-world-idle-v2.json`
+fixtures also contain invented data only. They independently describe the
+ZOD-068 Harbor checkpoint: Ada/Borin, courier job, one equipped training blade,
+two carried blades, five rations, funds 100, month/day 3/14, progress true and
+elapsed seconds 42. The next authored trip reaches Hill with funds 93 and elapsed
+seconds 53. Schema 1 implicitly supports only idle-world/no-RNG; schema 2 names
+those capabilities. Checksums use compact DTO field order. No original card,
+campaign, script, BIN or prepared asset data appears in these fixtures. See the
+[world checkpoint proof](../../development/synthetic-world-checkpoint.md).
+
+The battle fixtures contain only invented `sample:*` content. They are independently
 specified projections of the fifth completed command in
 [`SyntheticTwoUnitBattle`](../../../src/Zodiac.Content/Samples/SyntheticTwoUnitBattle.cs),
 checked against the existing source-traced/synthetic scenario vectors. No bytes
