@@ -84,8 +84,15 @@ replays before any intentional rule change is introduced.
 
 Preserve the original formula implementation and its regression evidence when
 adding a custom variant. Select variants through an explicit FFT rules/content
-profile rather than silently changing original mode. The generic Zodiac engine
+profile rather than silently changing original mode. The generic Tessera Engine
 continues to own no FFT formula catalog or compatibility rules.
+
+Owner clarification (2026-10-25): correcting selected original quirks could make
+future modifications easier, but this is much later work under ZOD-070 after the
+affected compatibility baseline is established. Keep calculations readable and
+permit behavior-preserving refactors now; neither correcting a quirk nor adding
+an interface for every possible correction is a prerequisite for editable C#.
+No specific correction or revised behavior is selected by this note.
 
 ZOD-049 owns package/profile isolation and eventual save/replay bindings; algorithm
 changes need a rules/profile version identity so an old replay/save is not silently

@@ -2198,10 +2198,17 @@ Collect reports and candidate corrections in the [original bug catalog](KNOWN_BU
 Individual fixes and correction semantics remain unselected; this does not change
 the current implementation queue or original compatibility target.
 
+Owner clarification (2026-10-25): resolving some original quirks may make future
+modifications easier, but explore that much later after the affected behavior is
+understood and regression-tested. Readable managed code and behavior-preserving
+refactors can improve editability now without changing observable quirks. Do not
+make quirk correction or a speculative correction interface an early prerequisite.
+
 **Scope:** Once each affected system has a stable compatibility baseline, select
 individual bugs and create bounded source-traced correction tickets. Corrections
 belong to explicit FFT rules/profile options; preserve original behavior in the
-default compatibility profile. Do not put FFT-specific fixes in Zodiac.
+default compatibility profile. FFT-specific corrections belong to Zodiac Framework,
+not Tessera Engine.
 
 **Acceptance criteria:** Each selected correction records a reproducible original
 case, pinned source/evidence, intended changed behavior and regression checks for

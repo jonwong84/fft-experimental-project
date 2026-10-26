@@ -1,5 +1,12 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Later quirk corrections (owner clarification, 2026-10-25):** The owner sees
+potential for correcting original quirks to make future modifications easier,
+but wants to explore this much later. [ZOD-070](BACKLOG.md#zod-070--plan-and-implement-selected-original-game-bug-fixes)
+retains that work after affected baselines/profile isolation. Preserve observable
+original behavior now; readable C# and behavior-preserving refactors need not
+wait for corrections. No fix, correction API or queue change is selected.
+
 **Latest architecture direction (2026-10-25):** The owner wants the option to
 replace either Tessera Engine or Zodiac Framework. Accepted
 [ADR 0006](adr/0006-replaceable-engine-and-framework-contracts.md) records that goal
