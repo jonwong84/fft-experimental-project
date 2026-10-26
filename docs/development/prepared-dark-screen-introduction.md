@@ -96,11 +96,14 @@ focus handlers and post-handoff resize execute; pre/during/post snapshot resize
 layout checks are headless. No physical input or latency claim is made.
 
 [Executed evidence](../evidence/events/prepared-dark-screen-introduction-v1.json)
-maps DSI-025..039 to these checks. DSI-040 remains **pending owner approval** of
-`scratch/dark-screen-intro-098-review/review.html`. The player deliberately slows
-each authored tick to 80 ms and ends on the actual battle-start capture. Review
-entry, dark-under-general/Ready, hidden gaps, release tail and the battle switch.
-Historical contract flags and prior approvals remain unchanged.
+maps DSI-025..039 to these checks. The owner approved
+`scratch/dark-screen-intro-098-review/review.html` on 2026-10-26: **"Looks good to me."**
+This completes DSI-040 and ZOD-098. The player deliberately slows each authored
+tick to 80 ms and ends on the actual battle-start capture. Approval covers entry,
+dark-under-general/Ready, hidden gaps, release tail and the battle switch; it does
+not establish original startup/duration equivalence. This approval update reruns
+no implementation suites. The reviewed gallery bytes, historical contract flags
+and prior approvals remain unchanged.
 
 ## Reproducing the authored profile
 

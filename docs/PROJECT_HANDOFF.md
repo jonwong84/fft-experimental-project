@@ -15,10 +15,13 @@ remain intact. Twenty-seven final pre-window negatives pass. Programmed latch/fo
 resource recreation and battle resize are checked; no physical latency, forced
 GPU loss or original-duration claim. [Guide](development/prepared-dark-screen-introduction.md),
 [executed evidence](evidence/events/prepared-dark-screen-introduction-v1.json).
-**Next: owner review** of `scratch/dark-screen-intro-098-review/review.html`:
-entry, held dark under general/Ready, hidden gaps, release tail and battle switch.
-DSI-025..039 are executed; **DSI-040 is pending**. Do not infer approval from
-older galleries. ZOD-100/101 and quirk/rendering options remain deferred.
+The owner approved `scratch/dark-screen-intro-098-review/review.html` on
+2026-10-26: "Looks good to me." Approval covers the authored entry, held dark
+under general/Ready, hidden gaps, release tail and battle switch. **ZOD-098 is
+complete**, including DSI-040. This approval update reruns no implementation
+suites; counts above retain the implementation run. Original startup/duration
+and broader fidelity remain open. ZOD-100/101 and quirk/rendering options remain
+deferred; select subsequent work through the backlog.
 
 **Later quirk corrections (owner clarification, 2026-10-25):** The owner sees
 potential for correcting original quirks to make future modifications easier,

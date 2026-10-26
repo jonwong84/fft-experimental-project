@@ -44,9 +44,10 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
-**Current review (2026-10-26):** **ZOD-098 is implemented and awaits owner gallery
-approval** at `scratch/dark-screen-intro-098-review/review.html`. Automated/native
-checks pass; review the combined introduction and battle switch before closing it.
+**Latest completion (2026-10-26):** **ZOD-098 is complete**. The owner approved
+`scratch/dark-screen-intro-098-review/review.html`: "Looks good to me."
+This closes the authored composition/battle-switch review, not original startup
+or duration equivalence. The implementation validation recorded below is unchanged.
 
 **Owner-directed architecture interlude (2026-10-25):** **ZOD-099 is complete**.
 Engine and framework replacement are now explicit goals;
@@ -1938,7 +1939,7 @@ original-duration claim. [Behavior](behavior/dark-screen-introduction.md),
 
 ### ZOD-098 — Prepare and preview the combined dark-screen introduction
 
-**Type:** Story · **Priority:** P2 · **Status:** Implemented — awaiting owner review · **Depends on:** ZOD-097, ZOD-099
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-097, ZOD-099
 
 **Result (2026-10-26):** [Prepared integration](development/prepared-dark-screen-introduction.md)
 adds a separate closed authored descriptor/CLI, three-resource readiness, ordered
@@ -1948,7 +1949,9 @@ and combat/save rules remain unchanged. Locked restore, zero-warning Release bui
 produce **2,054 exact CPU/GPU/model frames**, six unchanged battle PNGs each,
 normal/repeat/prepared-only equality and 581 unchanged retained historical files.
 Twenty-seven final readiness negatives reject before window/output. DSI-025..039 have
-executed evidence; **DSI-040 awaits new owner approval** of the authored gallery.
+executed evidence; **DSI-040 is approved**. On 2026-10-26 the owner reviewed
+`scratch/dark-screen-intro-098-review/review.html`: "Looks good to me."
+This approval update reruns no implementation suites and retains the recorded counts.
 No original startup/duration, full renderer, CRT/audio or physical input claim.
 
 **Scope:** Add the separately selected closed authored prepared profile, strict

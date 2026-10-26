@@ -611,8 +611,15 @@
     },
     {
       "id": "DSI-040",
-      "executed": false,
-      "reason": "Separate owner visual approval pending"
+      "executed": true,
+      "layer": "manual",
+      "date": "2026-10-26",
+      "ownerQuote": "Looks good to me.",
+      "gallery": {
+        "localPath": "scratch/dark-screen-intro-098-review/review.html",
+        "bytes": 7230,
+        "sha256": "58c7f25ba66ce9f2d8721f9c228f35ac45bd89d2edfeaf111d93ecc0be7a7cdf"
+      }
     }
   ],
   "gallery": {
@@ -626,15 +633,24 @@
       "bytes": 33760,
       "sha256": "faa6c00f063f90dde9563f959cef879d7188cef7027b6fdc0ecc3b9de799df52"
     },
-    "ownerApproved": false,
+    "ownerApproved": true,
     "cadence": "80 ms per authored tick, deliberately slowed",
     "rawNativePixels": true,
-    "crtAspectCorrection": false
+    "crtAspectCorrection": false,
+    "ownerApprovalDate": "2026-10-26",
+    "ownerApprovalQuote": "Looks good to me.",
+    "approvalScope": "Authored entry, dark under general/Ready, hidden gaps, release tail and synthetic battle switch; no original startup/duration equivalence"
   },
   "limits": [
     "Authored composition, not original event playback or EventEnd",
     "No original startup duration or complete animation equivalence",
     "No new full renderer, CRT/audio policy, public replacement contract or combat/save change",
     "Historical approvals do not approve this composition"
-  ]
+  ],
+  "approvalUpdate": {
+    "date": "2026-10-26",
+    "managedBase": "692c6aa",
+    "implementationSuitesRerun": false,
+    "reviewedArtifactsModified": false
+  }
 }
