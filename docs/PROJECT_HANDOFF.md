@@ -1,5 +1,27 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Latest source/design checkpoint (2026-10-25):** ZOD-096 specifies the combined
+authored DarkScreen/general/Ready/release/synthetic-exit introduction and existing
+battle handoff. Nine operations share one clock/consumer/ledger, three retained
+tasks, event-before-worker polling, post-poll facts and full late rollback.
+Natural 60/60 logical births/release/exit are general56, Ready148, dark release218
+and battle availability275; these are future expectations, not executed combined
+C# or original duration measurements. Two frozen original DMA chains confirm
+DarkScreen before the active display; event401's camera gap is retained/excluded.
+Forty source files and fifteen resident ranges are fingerprinted; two offline
+reports repeat exactly. **269 Python tests pass** (14 new inspector checks).
+Production C# is unchanged; last full managed validation remains ZOD-095's
+**2,031 tests**, not rerun. Forty future implementation cases remain unexecuted:
+24 pure behavior and 16 prepared/host/manual cases. No new emulator/capture,
+combined displayed comparison, native run or visual approval is claimed.
+[Selected contract/refactors](architecture/zod-096-combined-dark-screen-introduction.md),
+[metadata](evidence/events/dark-screen-intro-source-v1.json),
+[future cases](evidence/events/dark-screen-intro-contract-v1.json).
+**Next: ZOD-097**, pure atomic combined behavior; **ZOD-098** then adds the closed
+prepared profile, Windows composition and battle/input bridge. Keep standalone
+APIs/traces and combat/save behavior unchanged. Standing commit/push permission
+applies to validated work.
+
 **Latest original comparison (2026-10-25):** ZOD-095 binds thirteen selected
 DarkScreen entry/hold/release scanouts to complete original counters, queued
 packets and two-earlier double-buffer history. Actual prepared C# geometry and

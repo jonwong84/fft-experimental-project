@@ -1855,7 +1855,7 @@ remaining gaps stay open. This approval update reruns no implementation suites.
 
 ### ZOD-096 — Specify the combined dark-screen introduction
 
-**Type:** Design task · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-095, ZOD-091
+**Type:** Design task · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-095, ZOD-091
 
 **Scope:** Select the bounded authored composition of entering/held DarkScreen,
 general banner, Ready, release/barrier and the existing battle ownership handoff.
@@ -1872,6 +1872,58 @@ closed prepared-profile boundaries and any narrowly required refactor. Record
 independently checkable automated cases and a finite native/owner-review plan;
 leave future implementation cases explicitly unexecuted. Do not claim original
 startup duration, missing DarkScreen endpoints or complete original event playback.
+
+**Result (2026-10-25):** Selected one nine-operation authored program, one clock/
+consumer/retained ledger, three task identities, event-before-worker polling,
+post-poll facts, full rollback and a gate requiring all workers terminal at
+synthetic exit. Frozen original DMA chains confirm DarkScreen before general/
+Ready; event401's extra camera gap is preserved and excluded from the authored
+program. Forty source files and fifteen resident ranges are fingerprinted; two
+offline audit reports repeat exactly. All 269 Python tests pass (14 new authored
+inspector checks); the prior full 2,031 .NET count is retained without rerun.
+No production code, original execution/capture or combined scanout/timing claim.
+Forty future cases remain explicitly unexecuted (24 ZOD-097; 16 ZOD-098).
+[Contract and refactor boundaries](architecture/zod-096-combined-dark-screen-introduction.md),
+[source metadata](evidence/events/dark-screen-intro-source-v1.json),
+[future cases](evidence/events/dark-screen-intro-contract-v1.json).
+
+### ZOD-097 — Implement the pure combined dark-screen introduction
+
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-096
+
+**Scope:** Implement the selected nine-operation typed aggregate using existing
+DarkScreen/general/Ready transitions and scene task/event phases. One pure
+transaction owns admission, clock, ledger, signals and synthetic exit/availability.
+Keep standalone programs/APIs/traces intact; no prepared profile or renderer yet.
+
+**Acceptance criteria:** Execute DSI-001..024 with independently checkable state/
+trace expectations, natural/zero/maximum/skip timelines, newborn and yield gaps,
+held-worker coexistence, three stable retained identities, shared budgets,
+protected bindings, deterministic replay and complete late-failure rollback.
+Retain terminal tombstones; gate on accepted exit with all three tasks terminal,
+never on rendering or a single worker's clear. Existing standalone no-match
+releases and all old behavior remain unchanged. Run required managed regressions
+and record separate executed evidence without changing historical future flags.
+Do not implement original event playback, loader duration, EventEnd or battle rules.
+
+### ZOD-098 — Prepare and preview the combined dark-screen introduction
+
+**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-097
+
+**Scope:** Add the separately selected closed authored prepared profile, strict
+three-resource readiness, accepted-snapshot DarkScreen-before-display composition
+and existing single-window battle/input ownership bridge. Reuse prepared math and
+artwork; standalone dark hold policy does not control the combined scene.
+
+**Acceptance criteria:** Execute DSI-025..040 at their declared automated/native/
+manual layers. Validate all schema/identity/provenance/readiness boundaries before
+logical admission/output. Preserve RGB5 component policies and ordered composition,
+render-independent replay, resource recreation and frozen battle/input ownership.
+Use a recorded finite native plan (at most seven Windows processes, 4096 ticks/
+120 seconds each), zero-tolerance CPU/GPU/independent-model checks, repeated and
+prepared-only runs, old artifact/trace regressions and a new owner-reviewed gallery.
+Record human approval separately. No original BIN/C/emulator runtime dependency,
+original startup duration, new map renderer, CRT/audio policy or combat refactor.
 
 ## Authoring, extensions, and later goals
 
