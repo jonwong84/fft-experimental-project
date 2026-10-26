@@ -44,6 +44,25 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Current completion (2026-10-26): ZOD-115 is complete.** The
+[explicit flat sword profile](behavior/flat-sword-knockback-implementation.md)
+admits interior attacks on certified open dry flat ground with exactly two units.
+Sword criticals push one tile when nonlethal and in bounds; both settled facings
+and target choices/CT remain. One damage core preserves the default edge-only API,
+four/six/seven draws and historical fixture/save/scenario behavior.
+Locked restore and zero-warning Release build pass; **3,044 .NET / 329 Python**
+tests pass (240 new managed). All 35 description vectors and SKB-001..020 execute.
+Two source/history audits and two legacy artifact audits match. Four managed
+headless CLI processes repeat 14 sword-save files and four Basic Skill files
+against historical outputs with exact state/events/RNG and continuations.
+No native/original launch, runtime C, content/native/save activation or editor work.
+See [evidence](evidence/combat/sword-knockback-implementation-v1.json).
+**Recommended next: ZOD-116**, the bounded original-AI Move/Attack/Wait source and
+replaceable-interface contract. Record missing inputs/rules before translation;
+do not substitute an invented heuristic. ZOD-106 and editor work remain deferred.
+
+### ZOD-114 source-contract checkpoint (historical)
+
 **Current completion (2026-10-26): ZOD-114 is complete**, a
 [flat sword knockback source contract](architecture/zod-114-flat-sword-knockback.md).
 Fresh clean read-only reference 11464943bbdbd2a0af022d90cb7f10455cf911df confirms
@@ -1157,7 +1176,7 @@ managed battle has no AI opponent. Read-only decomp at
 evaluation.c (candidate evaluation/simulation) and abilities.c (usable abilities).
 Translate a separately traced bounded subset into C#; do not execute C at runtime
 or claim the entire original AI is implemented. This records future direction;
-ZOD-114's sword investigation is complete; ZOD-115 is the next implementation.
+ZOD-114/115's sword contract and implementation are complete; ZOD-116 is next.
 
 **Owner AI extensibility direction (2026-10-26):** Translate the original decision
 algorithm into readable, source-traced C# behind a replaceable typed decision
@@ -1172,7 +1191,7 @@ ordering and resumable decision state before fixing the interface shape; do not
 assume one stateless call or a complete turn plan matches the source. Keep useful
 decision traces and deterministic scenario fixtures so implementations can be
 compared on identical inputs. No production interface, AI implementation, plugin
-loader or editor work is introduced by this direction; ZOD-115 remains next.
+loader or editor work is introduced by this direction; ZOD-116 remains next.
 
 ### ZOD-104 — Trace and specify the first executable job ability
 
@@ -1447,7 +1466,18 @@ water, additional units, reactions, animations, rewards, editor or save feature.
 
 ### ZOD-115 — Implement the opt-in flat sword critical knockback extension
 
-**Type:** Feature · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-114
+**Type:** Feature · **Priority:** P3 · **Status:** Complete (pure explicit profile; integration unactivated) · **Depends on:** ZOD-114
+
+**Result (2026-10-26):** [API/behavior/reproduction](behavior/flat-sword-knockback-implementation.md)
+and [evidence](evidence/combat/sword-knockback-implementation-v1.json) record the
+strict FlatSwordBattleProfile overload and settled SwordKnockbackEvent. One shared
+damage core retains the old default/guard. All SKB-001..020 and 35 historical
+description vectors execute without rewriting stored expectations. Fresh clean
+reference 11464943bbdbd2a0af022d90cb7f10455cf911df matches all 17 files/41 functions.
+Locked restore/zero-warning Release build and **3,044 .NET / 329 Python** tests pass
+(240 new managed). Repeated historical save/Basic Skill output and source/history
+audits agree; no presentation, original execution, content/scenario/save activation,
+format, dependency or editor change. ZOD-116 owns the next AI source/interface spike.
 
 **Scope:** Implement SKB-001..020 in the pure Zodiac Framework boundary using the
 ZOD-114 source contract, rechecking reference HEAD before translation. Add an
@@ -1467,6 +1497,31 @@ native/scenario/save activation, falls, slopes, water, extra units, reactions,
 rewards, editor or AI implementation in this milestone. After this proof, select
 the bounded original-AI Move/Attack/Wait source/interface mapping; content/native
 integration must receive its own finite scope before activation.
+
+### ZOD-116 — Map bounded original AI decisions and the replaceable C# interface
+
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-115
+
+**Scope:** Trace fresh pinned read-only decomp for original Move/ordinary-sword
+Attack/EndTurn decisions in a flat two-unit encounter. Start from battle/ai/turn.c,
+evaluation.c and abilities.c; follow required callers/data rather than replacing
+the original with an approach-and-attack heuristic. Map policy/team/unit inputs,
+ability and tile enumeration, Act-before-Move versus Move-before-Act, scoring,
+comparison/ties, candidate simulation, preview versus execution RNG, selected
+command lifecycle and suspended work. Include Wait-facing decisions and identify
+any mismatch with current managed Wait capabilities.
+
+**Acceptance criteria:** Produce pinned source findings, decision-stage/data and
+width/order maps, explicit unknowns and missing runtime inputs/rules, source-derived
+scenario vectors and an unexecuted implementation inventory. Recommend a typed
+replaceable C# decision contract in Zodiac Framework with explicit input, decision
+state, command and RNG transitions. Keep original behavior the default and custom
+policies explicitly selected; all commands use authoritative battle validation.
+Specify a bounded next implementation only when its dependencies are supported;
+otherwise split the concrete prerequisite without inventing behavior. No production
+AI/interface or native/content/save/editor activation in this spike. Brief enemy
+movement/action pauses remain presentation-only; original work scheduling must be
+traced separately from deliberate host pacing. ZOD-106 remains deferred.
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 

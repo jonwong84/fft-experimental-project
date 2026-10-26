@@ -2,6 +2,44 @@
 
 ## Current handoff — 2026-10-26
 
+**ZOD-115 is complete.** The pure Attack API has a strict FlatSwordBattleProfile
+overload for exactly two ordinary units on certified open dry flat lower ground.
+Critical nonlethal in-bounds hits push one tile; no Brave rolls or extra draws.
+Both incoming settled facings, target Move/Act/HasMoved/CT/speed and actor choice
+ordering remain. SwordKnockbackEvent is appended only on actual displacement.
+One shared damage core retains the old edge-only entry point/default. No content,
+scenario, native or save path selects the new profile yet.
+
+Fresh clean read-only reference remains 11464943bbdbd2a0af022d90cb7f10455cf911df;
+all 17 source files/41 functions matched before and after translation. Locked
+isolated restore and zero-warning Release build pass; **3,044 .NET / 329 Python**
+tests pass (240 new managed). All 35 unchanged description vectors and SKB-001..020
+execute, including 128 cardinal/facing/seed combinations, critical/bonus raw
+boundaries, every draw budget, zero-damage push, lethal/edge suppression, guards,
+target choices, action orders, displaced range, probes and prefix/suffix replay.
+The ZOD-114 contract retains its historical unexecuted inventory; new evidence
+owns the completed implementation mapping. Existing tests/fixtures are unchanged.
+
+Exactly four managed headless CLI processes ran. Fourteen sword-save files repeat
+against each other and ZOD-113 output (13 checkpoints, RNG2473755763/22); four
+Basic Skill files repeat against each other and ZOD-110 output (46 commands,
+47 continuations, RNG4200531631/58). Repeated source/history audits and legacy
+artifact audits agree, preserving 36 contract/historical files, four prepared
+files and 29 historical native files. No native/original/emulator launch, new
+capture, format or runtime dependency; editor and ZOD-106 remain deferred.
+Artifacts/TRX/reports and the evidence builder stay ignored under
+scratch/sword-knockback-115-* and scratch/build_sword_knockback_115_evidence.py.
+
+See [API/reproduction](behavior/flat-sword-knockback-implementation.md) and
+[implementation evidence](evidence/combat/sword-knockback-implementation-v1.json).
+**Recommended next: ZOD-116**, a bounded original-AI Move/Attack/Wait source and
+replaceable-interface contract. Trace candidate evaluation/order/ties, policy and
+unit inputs, preview/execution RNG, suspended state and Wait facing before fixing
+the C# contract. Identify unsupported prerequisites explicitly. No invented
+heuristic, production AI or new editor work is selected by that spike.
+
+## ZOD-114 source-contract checkpoint (historical)
+
 **ZOD-114 is complete**, a source/description contract for flat sword knockback.
 Fresh clean read-only reference is 11464943bbdbd2a0af022d90cb7f10455cf911df.
 Ordinary sword criticals directly attempt a push, without Throw Stone's Brave

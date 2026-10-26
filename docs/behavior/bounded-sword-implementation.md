@@ -12,6 +12,12 @@ New-policy v3 fixtures execute the correction; old v3 files remain unchanged as
 validated superseded history. Other arithmetic, guards and turn ordering below
 are unchanged.
 
+**ZOD-115 extension (2026-10-26):** An explicitly selected
+[FlatSwordBattleProfile overload](flat-sword-knockback-implementation.md) supports
+critical displacement on certified open two-unit flat ground. The original
+three-argument API and existing scenario/content/native/save selections retain
+the edge-only behavior described below. Both paths share the damage core.
+
 ## Implemented scope and content boundary
 
 `Zodiac.Framework.AttackBattleSimulator.Attack` is a pure, immediate, single-target sword
