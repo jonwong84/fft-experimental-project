@@ -44,6 +44,23 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Current completion (2026-10-26): ZOD-112 is complete.** The bounded sword
+[source contract](architecture/zod-112-sword-settled-facing.md) confirms temporary
+actor turning followed by living-unit restoration at the settled boundary. Fresh
+clean read-only decomp remains 11464943bbdbd2a0af022d90cb7f10455cf911df. Two final
+offline audits repeat exactly across 12 source files/29 functions, 32 cardinal
+vectors, boundary/restore branches and two subsequent-evasion continuations.
+Nine historical sword fixtures, two saves, seven combat evidence files and all
+inspected managed code are unchanged. Eight fixtures explicitly contain the old
+facing gap; preserve them as superseded historical evidence when implementing.
+**Next: ZOD-113 is Ready**, the pure correction and explicit fixture-policy
+migration. All 20 implementation cases remain unexecuted. No production/native
+change or test-suite rerun; last implementation result is 2,723 .NET / 311 Python.
+Existing save fields suffice; no new save format or battle-checkpoint feature.
+Editor and ZOD-106 remain deferred. See [evidence](evidence/combat/sword-facing-contract-v1.json).
+
+### ZOD-111 owner approval checkpoint (historical)
+
 **Owner approval (2026-10-26): ZOD-111 is complete.** After receiving the launch
 guide and capture gallery, the owner replied, "This looks good." This closes
 TST-034 by owner acceptance; individual physical-input steps were not separately
@@ -1279,7 +1296,16 @@ Battle-save persistence is not a prerequisite.
 
 ### ZOD-112 — Specify the bounded sword's settled facing lifecycle
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-111
+**Type:** Spike · **Priority:** P3 · **Status:** Complete (source/fixture contract; correction unimplemented) · **Depends on:** ZOD-111
+
+**Result (2026-10-26):** [Pinned trace and migration policy](architecture/zod-112-sword-settled-facing.md)
+and [evidence](evidence/combat/sword-facing-contract-v1.json) identify the living
+actor's incoming facing as the settled result for the closed sword profile.
+32 cardinal vectors and two continuation examples calculate the later hit/evade
+and RNG difference independently. Preserve old fixtures/evidence; select a new
+test policy ID for replacement executable fixtures. Existing sword save fields
+already store facing; direction-aligned built-in saves are expected unchanged
+and must be revalidated. No managed correction or new original/native execution.
 
 **Scope:** Recheck the ZOD-108 finding against fresh pinned read-only decomp HEAD:
 trace sword preparation, temporary actor turning, hit/miss/KO resolution and the
@@ -1297,6 +1323,29 @@ implementation ticket with explicit fixture-migration policy. No broader sword
 range/critical/knockback expansion, rewards/animation port, new native UI work,
 editor work or battle-save feature. Source-derived expectations remain distinct
 from original-game execution.
+
+### ZOD-113 — Correct settled sword facing and migrate executable fixtures
+
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-112
+
+**Scope:** Implement the [ZOD-112 contract](architecture/zod-112-sword-settled-facing.md)
+within the current closed pure sword API. Publish the living actor's incoming
+settled facing; retain target facing, rejection guards, same-action damage/RNG
+and turn/event ordering. New explicit test policy ID selects replacement
+executable fixtures; old v3 fixtures become validated superseded history without
+normalizing assertions or retaining a second buggy production algorithm.
+
+**Acceptance criteria:** SFC-001..020 pass with full state/events/RNG, all four
+directions/incoming facings, hit/miss/zero/critical/KO, action orders, atomic
+rejection/exhaustion, both actor IDs, pure probes and corrected multi-action replay.
+Verify the exact subsequent-evasion vectors, all 13 existing sword-save boundaries
+and six new reachable misaligned-facing save/replay boundaries using the existing
+format and fresh definitions. Preserve nine historical fixture files, two save
+files and historical combat evidence byte for byte, with explicit supersession
+mapping and new-policy strict parser/mismatch checks. Run locked isolated build,
+full .NET/Python suites and repeated headless scenarios. No editor, transient
+animation state, broader sword rules or ability-save support. New native work is
+not required if presentation is unchanged; historical captures remain historical.
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 

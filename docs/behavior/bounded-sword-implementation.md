@@ -137,6 +137,12 @@ historical fixtures or evidence. The new Throw Stone contract preserves incoming
 facing at its settled command boundary; see
 [the source trace](../architecture/zod-108-throw-stone-action.md).
 
+**ZOD-112 contract follow-up (2026-10-26):** The completed
+[settled-facing investigation](../architecture/zod-112-sword-settled-facing.md)
+pins the restoration boundary, exact later-evasion vectors and the historical
+fixture/save migration policy. The correction is not implemented here; ZOD-113
+owns it. Existing code, fixture files and earlier execution evidence remain intact.
+
 Fixture schema 3 replaces scenario `weaponIds` with explicit `weapons` records
 containing `id` and `power` for this closed profile. The test-only runner validates
 every command, definition, expected snapshot and event before replay. It compares

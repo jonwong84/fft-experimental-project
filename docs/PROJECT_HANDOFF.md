@@ -2,6 +2,41 @@
 
 ## Current handoff — 2026-10-26
 
+**ZOD-112 is complete; next ZOD-113 is Ready.** The
+[sword settled-facing contract](architecture/zod-112-sword-settled-facing.md)
+rechecks clean read-only reference 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Original presentation turns/saves facing, then restores living units before
+returning control. The managed sword currently keeps its temporary turn; correct
+the settled actor to its incoming facing within the existing closed profile.
+Dead restore branches, reactions, mounts and later Wait-direction choice must
+not be generalized into this narrow rule.
+
+Two final offline audits repeat exactly: 12 source files/29 functions, 32 cardinal
+vectors, three hit boundaries, five source restore branches and two continuation
+examples. In the active-turn example, corrected reverse attack hits25 and ends at
+595337866/13; old facing causes a miss at 180171308/11. A separately reachable
+AddCt scenario provides six existing-format save/replay boundaries, corrected
+2937909499/14 versus old 836760821/12. All implementation cases SFC-001..020 are
+unexecuted; these are source-derived/offline arithmetic, not original execution.
+
+Nine old sword v3 fixtures are unchanged; eight assert the old gap. ZOD-113 must
+preserve them and historical evidence, classify old-policy v3 as superseded and
+execute new-policy replacements without a second buggy runtime algorithm or
+assertion normalization. Existing schema-3 fixture shape and sword save schemas
+1/2 suffice. Direction-aligned built-in save bytes are expected unchanged; prove
+all 13 old boundaries plus the six new boundaries. Keep ability-save guards.
+See [evidence](evidence/combat/sword-facing-contract-v1.json) and the description-only
+[vector contract](fixtures/behavior/sword-settled-facing-contract-v1.json).
+
+No production/test/project changes, new native process or implementation-suite
+rerun. Last full implementation validation remains **2,723 .NET / 311 Python**.
+Ignored scratch/sword-facing-112-* and scratch/inspect_sword_facing_112.py retain
+audits; original fixtures, saves, seven combat evidence files and inspected managed
+code were checked unchanged. ZOD-111 remains owner-approved; editor and ZOD-106
+remain deferred. Recheck fresh decomp HEAD before ZOD-113 translation.
+
+## ZOD-111 owner approval checkpoint (historical)
+
 **ZOD-111 is complete by owner approval.** After the launch/review guide and
 capture gallery, the owner replied, "This looks good." TST-034 closes by owner
 acceptance; individual physical-input steps were not separately reported or
