@@ -14,6 +14,15 @@
 
 ## Current repository, verified
 
+- `Fft.Editor` is a separate Windows Forms presentation adapter for the
+  [bounded job/ability editing workflow](../development/job-ability-editor.md).
+  `Zodiac.Content.Authoring` owns its portable draft/copy/export/preview model,
+  reusing existing package validators, immutable definitions and battle setup.
+  The game client and deterministic Engine/Framework dependencies are unchanged;
+  general multi-domain authoring and public replacement contracts remain future
+  work. The editor cross-compiles with Windows targeting enabled and runs only
+  on Windows. Owner visual/manual workflow approval is pending.
+
 The [baseline coverage inventory](../coverage/README.md) records the current
 supported subsets, source/evidence, tests, manual checkpoints and remaining gaps.
 Its family-level entries are not a complete original record/encounter catalog.

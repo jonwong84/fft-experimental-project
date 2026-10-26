@@ -11,6 +11,15 @@ host and existing data/profile/save identities. See [the architecture overview](
 
 **Status:** Zodiac has a runnable .NET 10 console client, a headless Core library with immutable battle-map/state types and a typed movement transition proof of concept, an AssetTool that inventories/extracts ordinary files and emits a versioned asset manifest, and a separate Content library that verifies and loads prepared files by ID. The client can load one asset from a prepared content directory by ID and report its verified size; it is still only a command-line composition proof, not a game loop or renderer. The local `/scratch/` extraction contains 2,457 ordinary files with reference-matching SHA-256 hashes; no assets are checked into the repository. The transition simulator still uses simplified flat-grid movement; a separate terrain-cost policy now proves one bounded rule. Source-faithful movement/combat rules, campaign logic, broad asset decoding, authoring tools, and UI framework remain unimplemented.
 
+**Authoring checkpoint (2026-10-26):** ZOD-047 now implements the first separate
+Windows Forms job/ability editor over existing definitions, shared validation and
+export. Source metadata stays read-only; authored Move/Jump/JP edits can be
+reloaded and previewed through existing battle setup/movement. Native repeated
+checks pass; owner visual/manual review remains pending. See the
+[current handoff](docs/PROJECT_HANDOFF.md) for later implemented capabilities;
+the initial status paragraph above is historical. Broad content editing remains
+ZOD-048 and does not activate deferred architecture or presentation work.
+
 ## Executive summary
 
 At initial discovery, this checkout was an empty project scaffold, not the referenced decompilation: its tracked files were `.gitignore` and a 35-byte `README.md` containing only the repository name and `Test.`. Since then, it has gained a .NET solution, console bootstrap, Core library, and unit-test project. The configured remote is `jonwong84/fft-experimental-project`; the only observed commit at discovery was `Initial commit`. The local C decompilation remains a separate reference checkout.

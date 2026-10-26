@@ -27,6 +27,12 @@ justifies it. Current assemblies are not yet interchangeable.
 
 ## What works today
 
+- **First job/ability editor:** `Fft.Editor` opens prepared baseline metadata,
+  creates a separate authored job/skillset/ability copy, edits Move/Jump/JP,
+  validates/exports/reopens through shared APIs and compares movement through the
+  existing simulator. Repeated native checks pass; owner visual/manual review
+  is pending. [Launch and review](docs/development/job-ability-editor.md).
+
 - **Authored world menu:** `--world-menu` opens Home/New/live Resume, read-only
   Party, travel and safe New/Exit decisions. Keyboard/mouse/controller routes
   have headless and finite Windows checks. The owner approved the original
@@ -58,7 +64,7 @@ justifies it. Current assemblies are not yet interchangeable.
 
 The playable battle uses invented units, art and a small height-10 map. MAP003 remains a separate static inspection scene with its native terrain intact. Rendering that map does not expand the supported combat domain.
 
-Full original combat, campaign, AI, campaign save/load, audio, general animation playback and authoring UI remain future work. Selected banner/Ready/DarkScreen frames have exact original/emulator comparisons; the bounded source-derived and synthetic checks do not establish complete original-game equivalence. Original behavior is the default compatibility target, with intentional new mechanics and custom content kept separate.
+Full original combat, campaign, AI, campaign save/load, audio, general animation playback and broader authoring UI remain future work. Selected banner/Ready/DarkScreen frames have exact original/emulator comparisons; the bounded source-derived and synthetic checks do not establish complete original-game equivalence. Original behavior is the default compatibility target, with intentional new mechanics and custom content kept separate.
 
 ## Build, test and play
 

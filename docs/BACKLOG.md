@@ -44,6 +44,20 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Latest implementation (2026-10-26): ZOD-047 is implemented; owner review pending.**
+A separate Windows Forms editor searches/inspects prepared baseline jobs and
+linked abilities, copies one dependency graph into an authored namespace, edits
+Move/Jump/JP, shares package validation/export and previews existing movement.
+All **2,346 .NET / 291 Python tests** pass. One discovery run prompted a label
+layout correction; two final finite native runs repeat **11 files**, including
+nine native control images each. Source metadata/hash, reference order and
+failed-export preservation pass independent audit. Review
+`scratch/editor-047-review/review.html`, then use the
+[launch/manual guide](development/job-ability-editor.md). Physical controls,
+native dialogs and owner visual/manual approval remain pending. Broader ZOD-048
+authoring and all documented deferred work stay deferred; do not mark M3 complete
+before this bounded review closes.
+
 **Latest completion (2026-10-26): ZOD-069 is complete.** Native Save/Load adds two slot pages, validated
 primary/backup details, Cancel-first overwrite/discard/recovery, success/error
 and explicit refresh states. All **2,317 .NET / 287 Python tests** pass.
@@ -2167,7 +2181,18 @@ automatic interface extraction, executable plugins or whole-game replacement cla
 
 ### ZOD-047 — Build the first job/ability inspection and editing UI
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-016, ZOD-018
+**Type:** Story · **Priority:** P2 · **Status:** Implemented; owner visual/manual review pending · **Depends on:** ZOD-016, ZOD-018
+
+**Result (2026-10-26):** [Host decision, contract and launch guide](development/job-ability-editor.md)
+records the separate Windows Forms host, read-only baseline/namespace copy,
+supported Move/Jump/JP fields, shared validation/export and exact simulator-based
+movement preview. Twenty-nine new platform-neutral regressions pass; the full
+suite is **2,346 .NET / 291 Python** with a zero-warning Release build.
+One retained discovery run found a wrapped label; two final native runs repeat
+all eleven files and pass an independent source/copy/output audit. No new
+original rule, parser, combat formula, save schema or game-client source change.
+[Executed evidence](evidence/authoring/job-ability-editor-v1.json) distinguishes
+native control renderings from pending owner visual and physical workflow checks.
 
 **Scope:** Choose an editor host for a small search/select/edit/validate/export workflow over the established definitions. Start with the fields and linked ability references from the first content slice; choose the UI technology through a short decision if required.
 

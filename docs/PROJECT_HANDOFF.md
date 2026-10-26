@@ -2,6 +2,35 @@
 
 ## Current handoff — 2026-10-26
 
+**ZOD-047 is implemented; owner visual/manual review is pending.** The first
+Windows Forms job/ability editor opens a prepared read-only baseline, searches
+jobs and inspects linked metadata, copies one complete graph into a distinct
+authored namespace, edits Move/Jump/JP and delegates validation/composition/export
+to the existing content APIs. A fresh base-job/simulator movement preview compares
+source and authored reachability. Source/provenance and unrelated flags remain
+intact; failed validation/open/export preserves draft and existing files.
+
+Locked restore, zero-warning Release build and **2,346 .NET / 291 Python tests**
+pass (29/4 new). One successful discovery run exposed a wrapped label; the plan
+was revised before two final native runs, which repeat all **11 files** including
+nine native control images each. Independent audit verifies the unchanged source
+hash, copied graph/opaque fields and saved Move2/Jump4/JP123 versus unsaved Move1.
+Programmed native controls/modal checks are separate from physical input,
+file-dialog operation and owner approval. Review
+`scratch/editor-047-review/review.html` and follow the
+[launch/check guide](development/job-ability-editor.md);
+[executed metadata](evidence/authoring/job-ability-editor-v1.json) binds the evidence.
+**Next:** owner visual/manual editor check before closing ZOD-047/M3. Do not start
+broad ZOD-048, public contracts, display/settings/audio or quirk work from this
+implementation. The new `Fft.Editor` presentation adapter references Content;
+its portable authoring model is in `Zodiac.Content.Authoring`. Game-client,
+Framework/Engine production, existing package/save formats and locks are intact.
+The solution includes a Windows-targeting editor project with its own new lock;
+Linux cross-compilation/remote CI and clean-machine editor launch are unobserved.
+Standing commit/push permission applies to this validated implementation.
+
+## Previous completed milestone
+
 **ZOD-069 is complete.** After the interactive Save/Load launch/check instructions,
 the owner confirmed "It's good." Record the bounded slot workflow as passed by
 owner report, separately from the earlier gallery approval ("This appears to be

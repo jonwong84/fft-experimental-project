@@ -3,7 +3,7 @@
 Generated from `baseline-coverage.json` by `tools/verification/verify_baseline_coverage.py --write-view`.
 Edit the JSON, then regenerate this view. See [the inventory guide](README.md) for status/evidence rules.
 
-Target: **SCUS-94221**. Snapshot: 2026-10-26; managed base `d737098a633b76a7d5bf39a7be58bab4939edc44`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+Target: **SCUS-94221**. Snapshot: 2026-10-26; managed base `673bd624267ee9aac39c271e57bd5eb3a97716e3`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 These entries are planning scopes, not a feature-completion percentage or a complete record/encounter catalog.
 
 ## Simulation
@@ -1254,20 +1254,21 @@ Next action: Do not make optional card import a dependency of native Windows Sav
 
 Status: **partial**; scope: **extension**; ticket: **ZOD-047**; owner area: FFT content authoring and tools.
 
-Typed metadata/sword schemas, import/export and shared validation exist; no interactive job/ability editor.
+Typed metadata/sword schemas, shared import/export and validation, plus a native Windows job/ability editor for separate authored Move/Jump/JP copies and an existing-simulator movement preview; owner visual/manual review pending.
 
-Evidence: [docs/architecture/zod-016-content-packages.md](../../docs/architecture/zod-016-content-packages.md), [docs/architecture/zod-014-typed-definitions.md](../../docs/architecture/zod-014-typed-definitions.md).
+Evidence: [docs/architecture/zod-016-content-packages.md](../../docs/architecture/zod-016-content-packages.md), [docs/architecture/zod-014-typed-definitions.md](../../docs/architecture/zod-014-typed-definitions.md), [docs/development/job-ability-editor.md](../../docs/development/job-ability-editor.md), [docs/evidence/authoring/job-ability-editor-v1.json](../../docs/evidence/authoring/job-ability-editor-v1.json).
 
 Source entry points (pinned revision above; not full traces): [include/fft/job.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/job.h).
 
-Current implementation: [src/Zodiac.Content/ContentPackages/ContentPackage.cs](../../src/Zodiac.Content/ContentPackages/ContentPackage.cs), [src/Zodiac.AssetTool.Cli/ValidateContentCommand.cs](../../src/Zodiac.AssetTool.Cli/ValidateContentCommand.cs).
+Current implementation: [src/Zodiac.Content/ContentPackages/ContentPackage.cs](../../src/Zodiac.Content/ContentPackages/ContentPackage.cs), [src/Zodiac.AssetTool.Cli/ValidateContentCommand.cs](../../src/Zodiac.AssetTool.Cli/ValidateContentCommand.cs), [src/Zodiac.Content/Authoring/JobEditorDocument.cs](../../src/Zodiac.Content/Authoring/JobEditorDocument.cs), [src/Fft.Editor/JobEditorForm.cs](../../src/Fft.Editor/JobEditorForm.cs).
 
-Existing bounded checks: [tests/Zodiac.Content.Tests/ContentPackages/ContentPackageTests.cs](../../tests/Zodiac.Content.Tests/ContentPackages/ContentPackageTests.cs).
+Existing bounded checks: [tests/Zodiac.Content.Tests/ContentPackages/ContentPackageTests.cs](../../tests/Zodiac.Content.Tests/ContentPackages/ContentPackageTests.cs), [tests/Zodiac.Content.Tests/JobEditorDocumentTests.cs](../../tests/Zodiac.Content.Tests/JobEditorDocumentTests.cs), [tools/verification/verify_job_editor.py](../../tools/verification/verify_job_editor.py).
 
-Manual checkpoint (pending-editor-workflow): Inspect an original job, author a separate supported change, validate/export and use it in the supported battle path.
+Manual checkpoint (pending-editor-workflow): Review final ZOD-047 gallery, then inspect original job, create/edit/export/reopen a separate copy, preview movement and check physical keyboard/mouse, native dialogs and Cancel-first close.
 
 Remaining gaps:
 
-- Editor UI, draft/undo/unsaved-state handling and general text/graphics/script/audio authoring remain future work.
+- Owner visual/manual editor approval, native dialog/physical-input/DPI/accessibility and clean-machine checks remain open.
+- General text/graphics/script/audio authoring and broader undo/package workflows remain ZOD-048.
 
-Next action: ZOD-047 can start its first bounded job/ability editor; broader authoring remains ZOD-048.
+Next action: Complete owner visual/manual ZOD-047 review before closing M3; broader authoring and deferred work remain separate.
