@@ -11,6 +11,7 @@ if (args.Length > 0 && args[0] == "--ready") return ReadyPreview.Run(args);
 if (args.Length > 0 && args[0] == "--dark-screen") return DarkScreenPreview.Run(args);
 if (args.Length > 0 && args[0] == "--banner-ready-sequence") return BannerReadyPreview.Run(args);
 if (args.Length > 0 && args[0] == "--intro-battle") return IntroductionBattleHost.Run(args);
+if (args.Length > 0 && args[0] == "--dark-intro-battle") return DarkScreenIntroductionHost.Run(args);
 if (args.Length == 1 && args[0] == "--window") return WindowsBattleHost.Run();
 if (args.Length == 2 && args[0] == "--window-check") return WindowsBattleHost.Run(args[1]);
 if (args.Length == 1 && args[0] == "--battle") return WindowsPlayableBattleHost.Run();

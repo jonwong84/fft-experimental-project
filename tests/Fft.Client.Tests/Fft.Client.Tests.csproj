@@ -6,6 +6,7 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="../Support/AuthoredDarkScreenIntroduction.cs" Link="Support/AuthoredDarkScreenIntroduction.cs" />
     <Compile Include="../Support/AuthoredDarkScreen.cs" Link="Support/AuthoredDarkScreen.cs" />
     <Compile Include="../Support/AuthoredBannerReadySequence.cs" Link="Support/AuthoredBannerReadySequence.cs" />
     <Compile Include="../Support/AuthoredReady.cs" Link="Support/AuthoredReady.cs" />

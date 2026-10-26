@@ -1,5 +1,25 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Latest implementation checkpoint (2026-10-26):** ZOD-098 implements the closed
+prepared combined DarkScreen/general/Ready introduction and existing battle
+handoff. All three resources validate before a window, graphics allocate before
+admission, and a fresh RGB5 checker composes dark then the active display. The
+standalone dark timer is unused. A narrow internal client adapter shares the
+existing window/router/input latch while preserving the old typed intro API.
+Pure workers, combat/RNG/CT and save/replay schemas are unchanged. Locked restore,
+zero-warning Release build and **2,173 .NET / 278 Python tests** pass (62/9 new).
+Seven native scenarios finish within the recorded plan and yield **2,054 exact
+CPU/GPU/independent-model frames**; all match six retained battle PNGs. Repeated
+and prepared-only normal PNG/state/trace artifacts match, and 581 old files
+remain intact. Twenty-seven final pre-window negatives pass. Programmed latch/focus,
+resource recreation and battle resize are checked; no physical latency, forced
+GPU loss or original-duration claim. [Guide](development/prepared-dark-screen-introduction.md),
+[executed evidence](evidence/events/prepared-dark-screen-introduction-v1.json).
+**Next: owner review** of `scratch/dark-screen-intro-098-review/review.html`:
+entry, held dark under general/Ready, hidden gaps, release tail and battle switch.
+DSI-025..039 are executed; **DSI-040 is pending**. Do not infer approval from
+older galleries. ZOD-100/101 and quirk/rendering options remain deferred.
+
 **Later quirk corrections (owner clarification, 2026-10-25):** The owner sees
 potential for correcting original quirks to make future modifications easier,
 but wants to explore this much later. [ZOD-070](BACKLOG.md#zod-070--plan-and-implement-selected-original-game-bug-fixes)

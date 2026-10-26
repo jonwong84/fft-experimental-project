@@ -44,10 +44,22 @@ internal sealed partial class PlayableBattleWindow : Game
         Activated += HandleActivated; Deactivated += HandleDeactivated; graphics.DeviceReset += OnDeviceReset;
     }
 
+    public PlayableBattleWindow(string? checkDirectory, DarkScreenIntroductionSession prepared, DarkScreenIntroductionOptions options)
+        : this(checkDirectory)
+    {
+        preparedDarkIntroduction = prepared; darkIntroductionOptions = options;
+        Window.Title = "FFT - Authored dark-screen introduction to bounded battle | C skips / Esc closes";
+    }
+
     protected override void LoadContent()
     {
-        CreateResources(); // Every graphics resource exists before the introduction or battle is admitted.
-        introduction = preparedIntroduction is null ? null : IntroductionBattleSession.Start(preparedIntroduction);
+        if (preparedDarkIntroduction is not null)
+            introduction = new DarkWindowIntroduction(DarkScreenIntroductionBattleSession.Start(preparedDarkIntroduction, CreateResources));
+        else
+        {
+            CreateResources(); // Every graphics resource exists before the introduction or battle is admitted.
+            introduction = preparedIntroduction is null ? null : new BannerWindowIntroduction(IntroductionBattleSession.Start(preparedIntroduction));
+        }
         interaction = introduction?.Interaction ?? new(SyntheticTwoUnitBattle.Create());
         router = introduction?.Router ?? new(interaction);
         initialBattle = Snapshot(interaction.State); BaselineInput();
@@ -81,7 +93,7 @@ internal sealed partial class PlayableBattleWindow : Game
         }
         pawn.SetData(unit);
         scene = new RenderTarget2D(GraphicsDevice, SceneLayout.CanvasWidth, SceneLayout.CanvasHeight, false, SurfaceFormat.Color, DepthFormat.None);
-        if (preparedIntroduction is not null)
+        if (preparedIntroduction is not null || preparedDarkIntroduction is not null)
         {
             introTexture = new(GraphicsDevice, 256, 240);
             introTarget = new(GraphicsDevice, 256, 240, false, SurfaceFormat.Color, DepthFormat.None);
@@ -93,6 +105,8 @@ internal sealed partial class PlayableBattleWindow : Game
         if (UpdateIntroduction()) { base.Update(gameTime); return; }
         if (checkDirectory is not null)
         {
+            if (preparedDarkIntroduction is not null && checkWatch.Elapsed > TimeSpan.FromSeconds(120))
+                throw new InvalidOperationException("Combined introduction check exceeded 120 seconds.");
             if (checkStep < BattleUiCheckPlan.Inputs.Length && frames >= nextStepFrame)
             {
                 if (checkStep == 12)
@@ -310,7 +324,11 @@ internal sealed partial class PlayableBattleWindow : Game
         if (checkDirectory is null && IsActive) input.KeyDown(e.Key);
     }
     private void OnKeyUp(object? sender, InputKeyEventArgs e) => input.KeyUp(e.Key);
-    private void OnDeviceReset(object? sender, EventArgs e) { if (scene is not null) CreateResources(); }
+    private void OnDeviceReset(object? sender, EventArgs e)
+    {
+        if (scene is null) return;
+        if (introduction is null) CreateResources(); else introduction.Recreate(CreateResources);
+    }
     private void DisposeResources()
     {
         scene?.Dispose(); scene = null; pawn?.Dispose(); pawn = null; diamond?.Dispose(); diamond = null;

@@ -44,8 +44,12 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
-**Owner-directed architecture interlude (2026-10-25):** **ZOD-099 is complete**;
-resume ZOD-098. Engine and framework replacement are now explicit goals;
+**Current review (2026-10-26):** **ZOD-098 is implemented and awaits owner gallery
+approval** at `scratch/dark-screen-intro-098-review/review.html`. Automated/native
+checks pass; review the combined introduction and battle switch before closing it.
+
+**Owner-directed architecture interlude (2026-10-25):** **ZOD-099 is complete**.
+Engine and framework replacement are now explicit goals;
 [ADR 0006](adr/0006-replaceable-engine-and-framework-contracts.md) records the
 replacement goal and future proof requirements. The
 [audit](architecture/zod-099-replacement-boundary-audit.md) records current coupling.
@@ -1934,7 +1938,18 @@ original-duration claim. [Behavior](behavior/dark-screen-introduction.md),
 
 ### ZOD-098 — Prepare and preview the combined dark-screen introduction
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-097, ZOD-099
+**Type:** Story · **Priority:** P2 · **Status:** Implemented — awaiting owner review · **Depends on:** ZOD-097, ZOD-099
+
+**Result (2026-10-26):** [Prepared integration](development/prepared-dark-screen-introduction.md)
+adds a separate closed authored descriptor/CLI, three-resource readiness, ordered
+RGB5 composition and the existing single-window battle/input handoff. Pure workers
+and combat/save rules remain unchanged. Locked restore, zero-warning Release build,
+**2,173 .NET / 278 Python tests** pass (62/9 new). Seven bounded native runs
+produce **2,054 exact CPU/GPU/model frames**, six unchanged battle PNGs each,
+normal/repeat/prepared-only equality and 581 unchanged retained historical files.
+Twenty-seven final readiness negatives reject before window/output. DSI-025..039 have
+executed evidence; **DSI-040 awaits new owner approval** of the authored gallery.
+No original startup/duration, full renderer, CRT/audio or physical input claim.
 
 **Scope:** Add the separately selected closed authored prepared profile, strict
 three-resource readiness, accepted-snapshot DarkScreen-before-display composition

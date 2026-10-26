@@ -11,7 +11,10 @@ internal sealed partial class PlayableBattleWindow
 {
     private readonly BannerReadySession? preparedIntroduction;
     private readonly BannerReadyPreviewOptions? introductionOptions;
-    private IntroductionBattleSession? introduction;
+    private readonly DarkScreenIntroductionSession? preparedDarkIntroduction;
+    private readonly DarkScreenIntroductionOptions? darkIntroductionOptions;
+    private readonly System.Diagnostics.Stopwatch checkWatch = System.Diagnostics.Stopwatch.StartNew();
+    private IWindowIntroduction? introduction;
     private Texture2D? introTexture;
     private RenderTarget2D? introTarget;
     private long introPainted = -1;
@@ -25,19 +28,19 @@ internal sealed partial class PlayableBattleWindow
     }
     private bool UpdateIntroduction()
     {
-        if (introduction is null || introduction.Gate.BattleAvailable) return false;
+        if (introduction is null || introduction.BattleAvailable) return false;
+        if (preparedDarkIntroduction is not null && checkDirectory is not null && checkWatch.Elapsed > TimeSpan.FromSeconds(120))
+            throw new InvalidOperationException("Combined introduction exceeded 120 seconds.");
         if (checkDirectory is null && !IsActive) { input.ClearQueued(); return true; }
-        var state = introduction.Gate.Introduction;
         // Host cadence only: each accepted tick is presented before another is requested.
-        if (introPainted != state.Event.Tick) return true;
+        if (introPainted != introduction.Tick) return true;
         bool circle = false;
         while (input.TryTake(out var key)) circle |= key == Keys.C;
-        if (checkDirectory is not null) circle = introductionOptions!.CircleTicks.Contains(checked((int)state.Event.Tick + 1));
-        if (state.Event.Tick >= 4096) throw new InvalidOperationException("Introduction exceeded its finite tick budget.");
-        var result = introduction.AdvanceIntroduction(circle);
-        if (!result.Accepted) throw new InvalidOperationException("Introduction rejected: " + result.Rejection);
+        if (checkDirectory is not null) circle = (darkIntroductionOptions?.CircleTicks ?? introductionOptions!.CircleTicks).Contains(checked((int)introduction.Tick + 1));
+        if (introduction.Tick >= 4096) throw new InvalidOperationException("Introduction exceeded its finite tick budget.");
+        bool becameAvailable = introduction.Advance(circle);
         AssertFrozenBattle();
-        if (result.BattleBecameAvailable)
+        if (becameAvailable)
         {
             BaselineInput(); // Drop every queued intro press and baseline currently held physical buttons.
             if (checkDirectory is not null)
@@ -57,9 +60,9 @@ internal sealed partial class PlayableBattleWindow
     }
     private string OwnershipSnapshot() => JsonSerializer.Serialize(new
     {
-        gate = introduction?.Gate, introduction?.AvailabilityPublications, introduction?.AvailabilityTick,
+        gate = introduction?.Ownership, introduction?.AvailabilityPublications, introduction?.AvailabilityTick,
         battle = Snapshot(interaction.State), interaction.SelectedUnit, interaction.Mode, interaction.Journal, router.Cursor,
-        trace = introduction?.IntroductionTrace,
+        trace = introduction?.TraceMarker,
     });
     private void CheckFocusBoundary()
     {
@@ -85,35 +88,27 @@ internal sealed partial class PlayableBattleWindow
     private bool DrawIntroduction()
     {
         if (introduction is null) return false;
-        bool active = !introduction.Gate.BattleAvailable;
-        var state = introduction.Gate.Introduction;
-        if (!active && introPainted == state.Event.Tick) return false;
+        bool active = !introduction.BattleAvailable;
+        long tick = introduction.Tick;
+        if (!active && introPainted == tick) return false;
         string before = OwnershipSnapshot();
-        if (checkDirectory is not null && state.Event.Tick == 5 && !introResourcesRebuilt)
-        { CreateResources(); introResourcesRebuilt = true; }
-        if (checkDirectory is not null && state.Event.Tick == 6 && !introFocusChecked)
+        if (checkDirectory is not null && tick == 5 && !introResourcesRebuilt)
+        { introduction.Recreate(CreateResources); introResourcesRebuilt = true; }
+        if (checkDirectory is not null && tick == 6 && !introFocusChecked)
         { CheckFocusBoundary(); introFocusChecked = true; }
         AssertFrozenBattle();
-        byte[] pixels = introduction.ComposeIntroduction(); introTexture!.SetData(pixels);
+        byte[] pixels = introduction.Compose(); introTexture!.SetData(pixels);
         GraphicsDevice.SetRenderTarget(introTarget); GraphicsDevice.Clear(Color.Black);
         batch!.Begin(blendState: BlendState.Opaque, samplerState: SamplerState.PointClamp);
         batch.Draw(introTexture, Vector2.Zero, Color.White); batch.End(); GraphicsDevice.SetRenderTarget(null);
-        if (checkDirectory is not null && introPainted != state.Event.Tick)
+        if (checkDirectory is not null && introPainted != tick)
         {
             byte[] readback = new byte[pixels.Length]; introTarget!.GetData(readback);
             if (!pixels.AsSpan().SequenceEqual(readback)) throw new InvalidOperationException("Introduction GPU readback differs from CPU.");
-            string file = $"intro/tick-{state.Event.Tick:D3}.png";
+            string file = $"intro/tick-{tick:D3}.png";
             using (var stream = File.Create(Path.Combine(checkDirectory, file))) introTarget.SaveAsPng(stream, 256, 240);
-            introCaptures.Add(new
-            {
-                tick = state.Event.Tick, file, rgbaSha256 = Convert.ToHexStringLower(SHA256.HashData(pixels)),
-                stage = state.Ready is null ? "general" : "ready", general = state.General?.Phase.ToString(), ready = state.Ready?.ChildPhase.ToString(),
-                generalReveal = state.General?.RevealCompleted, generalHold = state.General?.HoldCompleted, generalHide = state.General?.HideCompleted,
-                readyScale = state.Ready?.DrawScale, totalTasks = state.Event.Tasks.TotalStarted, liveTasks = state.Event.Tasks.LiveTasks,
-                state.Event.Exited, battleAvailable = introduction.Gate.BattleAvailable,
-                battleSha256 = Convert.ToHexStringLower(SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(initialBattle))),
-                journalEntries = interaction.Journal.Length,
-            });
+            introCaptures.Add(introduction.Capture(file, Convert.ToHexStringLower(SHA256.HashData(pixels)),
+                Convert.ToHexStringLower(SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(initialBattle)))));
         }
         if (active)
         {
@@ -124,23 +119,24 @@ internal sealed partial class PlayableBattleWindow
             batch.Draw(introTarget!, new Rectangle((pp.BackBufferWidth - 256*scale)/2, (pp.BackBufferHeight - 240*scale)/2,
                 256*scale, 240*scale), Color.White); batch.End();
         }
-        introPainted = state.Event.Tick;
+        introPainted = tick;
         if (before != OwnershipSnapshot()) throw new InvalidOperationException("Introduction drawing changed ownership or simulation.");
         return active;
     }
 
     private object IntroductionReceipt(object battle)
     {
-        if (introduction is null || !introduction.Gate.BattleAvailable || introduction.AvailabilityPublications != 1 ||
+        if (introduction is null || !introduction.BattleAvailable || introduction.AvailabilityPublications != 1 ||
             introCaptures.Count != introduction.AvailabilityTick + 1 || !introResourcesRebuilt || !introFocusChecked || !battleFocusChecked || !heldInputChecked)
             throw new InvalidOperationException("Introduction check did not satisfy ownership/input/presentation boundaries.");
+        if (preparedDarkIntroduction is not null) return DarkIntroductionReceipt(battle);
         return new
         {
             format = "fft.introduction-battle-capture", schemaVersion = 1, definition = preparedIntroduction!.Definition,
             circleTicks = introductionOptions!.CircleTicks, captures = introCaptures,
             availabilityTick = introduction.AvailabilityTick, availabilityPublications = introduction.AvailabilityPublications,
-            initialBattle = JsonSerializer.Deserialize<JsonElement>(initialBattle), finalIntroduction = introduction.Gate,
-            introductionTraceSha256 = Convert.ToHexStringLower(SHA256.HashData(JsonSerializer.SerializeToUtf8Bytes(introduction.IntroductionTrace))),
+            initialBattle = JsonSerializer.Deserialize<JsonElement>(initialBattle), finalIntroduction = introduction.Ownership,
+            introductionTraceSha256 = Convert.ToHexStringLower(SHA256.HashData(JsonSerializer.SerializeToUtf8Bytes(introduction.Trace))),
             battleFrozenThroughHandoff = true, transitionSampleForwarded = false, rendererTaskAcknowledgments = 0,
             resourcesRebuiltDuringIntroduction = introResourcesRebuilt, focusDuringIntroduction = introFocusChecked,
             focusAfterHandoff = battleFocusChecked, heldInputBoundaryChecked = heldInputChecked,
@@ -149,4 +145,22 @@ internal sealed partial class PlayableBattleWindow
             scope = "Authored prepared introduction plus synthetic battle; no retail EventEnd, original startup or original control-timing equivalence",
         };
     }
+
+    private object DarkIntroductionReceipt(object battle) => new
+    {
+        format = "fft.dark-screen-introduction-battle-capture", schemaVersion = 1,
+        definition = preparedDarkIntroduction!.Definition, darkDefinition = preparedDarkIntroduction.Dark,
+        circleTicks = darkIntroductionOptions!.CircleTicks, captures = introCaptures,
+        availabilityTick = introduction!.AvailabilityTick, availabilityPublications = introduction.AvailabilityPublications,
+        initialBattle = JsonSerializer.Deserialize<JsonElement>(initialBattle), finalIntroduction = introduction.Ownership,
+        introductionTraceSha256 = Convert.ToHexStringLower(SHA256.HashData(JsonSerializer.SerializeToUtf8Bytes(introduction.Trace))),
+        battleFrozenThroughHandoff = true, transitionSampleForwarded = false, rendererTaskAcknowledgments = 0,
+        resourcesRebuiltDuringIntroduction = introResourcesRebuilt, focusDuringIntroduction = introFocusChecked,
+        focusAfterHandoff = battleFocusChecked, heldInputBoundaryChecked = heldInputChecked,
+        inputCheckScope = "Programmed production latch/focus calls; no physical input injection or latency claim",
+        cadence = "Authored explicit ticks, one per presented update; no original duration claim",
+        composition = "fresh-rgb5-checker/dark/general-or-ready", gpuReadbackPerformed = true,
+        elapsedSeconds = checkWatch.Elapsed.TotalSeconds, battle,
+        scope = "Authored combined introduction and synthetic battle; no retail EventEnd or original startup equivalence",
+    };
 }

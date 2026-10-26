@@ -39,6 +39,9 @@ internal static class Program
         if (args.Length > 0 && args[0] == "prepare-banner-ready-sequence")
             return new PrepareBannerReadySequenceCommand(workspaceRoot).Run(args, Console.Out, Console.Error);
 
+        if (args.Length > 0 && args[0] == "prepare-dark-screen-introduction")
+            return new PrepareDarkScreenIntroductionCommand(workspaceRoot).Run(args, Console.Out, Console.Error);
+
         if (args.Length > 0 && args[0] == "prepare-dark-screen")
             return new PrepareDarkScreenCommand(workspaceRoot).Run(args, Console.Out, Console.Error);
 
