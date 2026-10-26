@@ -580,7 +580,7 @@ Bounded follow-ups: ZOD-080, ZOD-081, ZOD-082, ZOD-083, ZOD-084, ZOD-085, ZOD-08
 
 Status: **absent**; scope: **baseline**; ticket: **ZOD-042**; owner area: Fft.Client presentation and application commands.
 
-No original title/new-game/continue/name/birthday shell. ZOD-102/103 provide only a separate authored Windows Home/New/live Resume/World/Party model/host, with finite input/render/replay checks; owner visual/physical-input review is pending. No-argument client still prints a bootstrap line.
+No original title/new-game/continue/name/birthday shell. ZOD-102/103 provide only a separate authored Windows Home/New/live Resume/World/Party model/host, with finite input/render/replay checks; owner gallery approval is recorded; physical-input review remains pending. No-argument client still prints a bootstrap line.
 
 Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/development/synthetic-world-navigation.md](../../docs/development/synthetic-world-navigation.md), [docs/evidence/navigation/synthetic-world-navigation-v1.json](../../docs/evidence/navigation/synthetic-world-navigation-v1.json), [docs/development/windows-world-navigation.md](../../docs/development/windows-world-navigation.md), [docs/evidence/navigation/windows-world-navigation-v1.json](../../docs/evidence/navigation/windows-world-navigation-v1.json).
 
@@ -596,7 +596,7 @@ Remaining gaps:
 
 - Original flow, assets, focus, input semantics and Windows presentation design are absent.
 
-Next action: Review ZOD-103 gallery and physical input/native close/focus, then ZOD-069. Retain original title, name/birthday, assets/flow and timing as separate baseline work.
+Next action: Complete ZOD-103 physical input/native close/focus checks, then ZOD-069. Owner gallery approval is recorded; original title/name/birthday, assets/flow and timing remain separate baseline work.
 
 Bounded follow-ups: ZOD-102, ZOD-103, ZOD-069.
 
@@ -686,7 +686,7 @@ Next action: Create a screen/operation inventory with text and asset dependencie
 
 Status: **absent**; scope: **platform-replacement**; ticket: **ZOD-042**; owner area: Fft.Client presentation and application commands.
 
-No player-facing slot UI. ZOD-068 supplies the synthetic service; ZOD-102/103 now provide authored native navigation and modal decisions with finite GPU/replay checks. ZOD-103 owner visual/physical-input review is pending before ZOD-069. Original availability remains unenumerated.
+No player-facing slot UI. ZOD-068 supplies the synthetic service; ZOD-102/103 now provide authored native navigation and modal decisions with finite GPU/replay checks. ZOD-103 owner visual approval is recorded; physical-input review remains pending before ZOD-069. Original availability remains unenumerated.
 
 Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-067-campaign-save-state.md](../../docs/architecture/zod-067-campaign-save-state.md), [docs/development/synthetic-world-navigation.md](../../docs/development/synthetic-world-navigation.md), [docs/evidence/navigation/synthetic-world-navigation-v1.json](../../docs/evidence/navigation/synthetic-world-navigation-v1.json), [docs/development/windows-world-navigation.md](../../docs/development/windows-world-navigation.md), [docs/evidence/navigation/windows-world-navigation-v1.json](../../docs/evidence/navigation/windows-world-navigation-v1.json).
 
@@ -698,9 +698,9 @@ Manual checkpoint (pending-original-observation): At legal original save locatio
 
 Remaining gaps:
 
-- Owner gallery and actual device/native close/focus checks remain pending; slot list/confirmation/error/recovery screens and original checkpoint availability need separate implementation/evidence.
+- Actual device/native close/focus checks remain pending; slot list/confirmation/error/recovery screens and original checkpoint availability need separate implementation/evidence.
 
-Next action: Finish ZOD-103 owner visual/physical-input review, then ZOD-069 slot list/confirmation/error/recovery screens using the existing service.
+Next action: Finish ZOD-103 physical-input/native close/focus checks, then ZOD-069 slot list/confirmation/error/recovery screens using the existing service.
 
 Bounded follow-ups: ZOD-068, ZOD-069, ZOD-102, ZOD-103.
 
@@ -883,7 +883,7 @@ Next action: Split mixed-sector decode from prepared-stream playback; keep BIN a
 
 Status: **partial**; scope: **platform-replacement**; ticket: **ZOD-061**; owner area: Fft.Client platform adapters.
 
-Synthetic and fixed prepared hosts run on Windows; bounded mouse/keyboard routing, resize mapping and programmed GPU checks exist. ZOD-103 adds a separate authored menu host with keyboard/mouse/controller press edges, focus/connection baselines, close-modal dispatch, full CPU/GPU target readback and resized pointer routes; owner visual and physical-input checks remain pending.
+Synthetic and fixed prepared hosts run on Windows; bounded mouse/keyboard routing, resize mapping and programmed GPU checks exist. ZOD-103 adds a separate authored menu host with keyboard/mouse/controller press edges, focus/connection baselines, close-modal dispatch, full CPU/GPU target readback and resized pointer routes; owner visual approval is recorded; physical-input checks remain pending.
 
 Evidence: [docs/development/windows-synthetic-host.md](../../docs/development/windows-synthetic-host.md), [docs/development/playable-battle.md](../../docs/development/playable-battle.md), [docs/development/windows-world-navigation.md](../../docs/development/windows-world-navigation.md), [docs/evidence/navigation/windows-world-navigation-v1.json](../../docs/evidence/navigation/windows-world-navigation-v1.json).
 
@@ -899,7 +899,7 @@ Remaining gaps:
 
 - Physical timing, controller/remapping/accessibility and mixed-monitor behavior are not fully validated.
 
-Next action: Review ZOD-103 physical keyboard/mouse/controller, native close/focus and gallery; retain remapping, accessibility, mixed-monitor DPI and device-loss scope under ZOD-061/later host work.
+Next action: Check ZOD-103 physical keyboard/mouse/controller and native close/focus; owner gallery approval is recorded. Retain remapping, accessibility, mixed-monitor DPI and device-loss scope under ZOD-061/later host work.
 
 Bounded follow-ups: ZOD-103, ZOD-069.
 
@@ -1061,7 +1061,7 @@ Remaining gaps:
 
 - Native slot/menu presentation remains unimplemented; original campaign compatibility, broader storage environments and power-loss durability require later scope and evidence.
 
-Next action: Finish ZOD-103 owner visual/physical-input review, then ZOD-069 slot UI; retain ZOD-053 for full campaign persistence and broader storage validation.
+Next action: Finish ZOD-103 physical-input/native close/focus review, then ZOD-069 slot UI; retain ZOD-053 for full campaign persistence and broader storage validation.
 
 Bounded follow-ups: ZOD-068, ZOD-069, ZOD-102, ZOD-103.
 

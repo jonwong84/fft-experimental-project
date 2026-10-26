@@ -64,9 +64,9 @@ Window close requests Exit confirmation; only Accept exits. Escape is Back.
 Nothing is saved by this host. Short presses entirely between polling samples
 can be missed; no held repeat or configurable bindings are claimed here.
 
-Owner review is pending for [the local gallery](../../scratch/world-menu-103-review/review.html)
-and actual keyboard/mouse/controller use, native close and actual focus loss/
-reactivation. Check Cancel-first decisions, retained session/Party details,
+The owner approved [the local gallery](../../scratch/world-menu-103-review/review.html)
+on 2026-10-26: "Looks good." Actual keyboard/mouse/controller use, native close
+and actual focus loss/reactivation remain pending. Check Cancel-first decisions, retained session/Party details,
 disabled Resume at fresh Home, and buttons after resizing. These manual checks
 are not represented by the synthetic connection/focus samples. Mixed-monitor
 DPI and forced device loss remain later validation scope.
@@ -93,7 +93,10 @@ final Hill/funds 93/elapsed 53, PNG hashes/palette/opacity and exact repeated
 **16 files**. No save directories exist. The gallery includes unchanged canvas
 captures after wide/tall resizes; it does not show a widescreen or CRT mode.
 Party and New-confirmation PNGs were inspected for legibility and layout by the
-implementation agent; owner visual approval remains pending.
+implementation agent. The owner subsequently approved the displayed gallery
+on 2026-10-26: "Looks good." This records visual approval only; physical controls,
+actual native close and focus remain unverified. No implementation suites or
+graphics runs were repeated and no reviewed artifacts changed for this approval.
 
 [Executed metadata](../evidence/navigation/windows-world-navigation-v1.json)
 binds implementation, tests, logs, TRX files, captures and local audit. Existing
@@ -113,4 +116,5 @@ python tools/verification/verify_world_menu.py --first scratch/menu-example-a --
 Check/audit/review outputs must be fresh. Check mode ignores actual device input
 in favor of its recorded samples and exits itself; normal mode is interactive.
 No package, Core/Content rule, save format, reference checkout or existing
-intro/battle implementation changes. ZOD-069 remains Waiting on ZOD-103's review.
+intro/battle implementation changes. ZOD-069 remains Waiting on ZOD-103's
+physical-input/native close/focus checks.

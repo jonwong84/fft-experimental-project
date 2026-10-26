@@ -1,5 +1,14 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Owner visual approval (2026-10-26):** The owner approved ZOD-103's
+`scratch/world-menu-103-review/review.html`: "Looks good." Approval covers the
+displayed authored Home/World/Party and New/Exit confirmation gallery. Physical
+keyboard/mouse/controller, actual native close and focus checks remain pending;
+ZOD-069 remains Waiting. No implementation suites or graphics runs were repeated,
+and reviewed artifacts are unchanged. Last implementation validation remains
+**2,300 .NET / 284 Python tests**. Next use the
+[interactive launch/check guide](development/windows-world-navigation.md).
+
 **Latest implementation checkpoint (2026-10-26): ZOD-103 implemented; owner visual
 and physical-input review pending.** `--world-menu` hosts the authored ZOD-102
 model in one Windows window; `--world-menu-check <new-directory>` runs its finite

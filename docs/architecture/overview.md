@@ -28,7 +28,7 @@ Its family-level entries are not a complete original record/encounter catalog.
   now proves the [synthetic checkpoint service](../development/synthetic-world-checkpoint.md).
   ZOD-102 adds its [authored application navigation model](../development/synthetic-world-navigation.md);
   the [ZOD-103 native host](../development/windows-world-navigation.md) now has
-  finite Windows checks and awaits owner visual/physical-input review before
+  finite Windows checks and owner visual approval; physical-input review remains before
   ZOD-069's slot UI. Full campaign persistence remains separate.
 - `Zodiac.Content.Events` validates/loads the [prepared synthetic conditional event](../development/prepared-scenario-event.md).
   AssetTool owns raw block inspection and the CLI assembly composes conversion.

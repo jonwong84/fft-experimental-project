@@ -1,8 +1,8 @@
 # ZOD-102 — Authored world-menu navigation
 
 Follow-up (2026-10-26): [ZOD-103's Windows host](windows-world-navigation.md)
-is implemented and validated with finite native checks; owner visual and
-physical-input review remains pending. The model validation below is historical.
+is implemented, validated with finite native checks and visually approved by the
+owner; physical-input review remains pending. The model validation below is historical.
 
 Selected 2026-10-26 at managed `d0f53cb`. Read-only reference HEAD:
 `11464943bbdbd2a0af022d90cb7f10455cf911df` (clean). This is the first bounded

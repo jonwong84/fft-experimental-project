@@ -29,8 +29,8 @@ justifies it. Current assemblies are not yet interchangeable.
 
 - **Authored world menu:** `--world-menu` opens Home/New/live Resume, read-only
   Party, travel and safe New/Exit decisions. Keyboard/mouse/controller routes
-  have headless and finite Windows checks; owner visual/physical-input review
-  is pending. Save/Load screens follow afterward.
+  have headless and finite Windows checks. The owner approved the gallery;
+  physical-input review remains pending. Save/Load screens follow afterward.
   [Launch and validation](docs/development/windows-world-navigation.md).
 
 - **Synthetic world Save/Load:** a small authored idle-world checkpoint supports

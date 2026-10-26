@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "ticket": "ZOD-103",
   "validatedOn": "2026-10-26",
-  "status": "implemented; owner visual and physical-input review pending",
+  "status": "implemented; owner visually approved; physical-input review pending",
   "managedBase": "164469cefc1fbd0989ed9b936e304b56fb2313b8",
   "guide": "docs/development/windows-world-navigation.md",
   "sourceContext": {
@@ -250,18 +250,29 @@
       "party.png",
       "confirm-new.png"
     ],
-    "ownerVisualApproval": false,
+    "ownerVisualApproval": true,
     "physicalKeyboardMouseControllerVerified": false,
     "actualOsCloseAndFocusVerified": false,
     "programmedCloseEventPipeline": true,
-    "programmedFocusAndConnectionSamples": true
+    "programmedFocusAndConnectionSamples": true,
+    "ownerApprovalDate": "2026-10-26",
+    "ownerApprovalQuote": "Looks good.",
+    "approvalScope": "Displayed authored Home/World/Party, New/Exit confirmations and closed-screen gallery; no physical input or original UI equivalence."
   },
   "limitations": [
     "No original UI, input timing, title assets or screen equivalence claim.",
     "Gallery shows the fixed authored canvas after resizing, not new aspect/CRT/resolution modes.",
     "Keyboard and mouse are polled; very short between-sample presses may be missed. No repeat/analog/binding configuration.",
     "Controller index one uses SDL D-pad/A/B mapping; RetroArch mapping is independent.",
-    "Physical input/native close/focus and owner visual review remain pending; mixed-monitor DPI and forced device loss are not covered.",
+    "Physical input/native close/focus remain pending; mixed-monitor DPI and forced device loss are not covered.",
     "Save/Load screens remain ZOD-069; original UI/campaign and ZOD-061 device breadth remain open."
-  ]
+  ],
+  "approvalUpdate": {
+    "date": "2026-10-26",
+    "managedBase": "0165ebcc0dcf1264304be7d9e6307902908412c9",
+    "implementationSuitesRerun": false,
+    "graphicsRunsRepeated": false,
+    "reviewedArtifactsModified": false,
+    "priorValidationMetadataSha256": "e651b24ab831ef07f08dd545ffc6daac22e7ef1b3400b283311cad5114bb679e"
+  }
 }
