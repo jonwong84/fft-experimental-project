@@ -2,6 +2,34 @@
 
 ## Current handoff — 2026-10-26
 
+**ZOD-109 is complete; next ZOD-110 is Ready.** The pure Framework API now
+executes Throw Stone through a separate targeted command and closed immutable
+profile/grants. It implements Manhattan range 1..4, physical evade, PA-or-double-PA
+damage, exact Brave-based knockback and seven/four draw order. Flat pushes preserve
+target choices/CT/facing; off-map and lethal cases suppress movement after drawing.
+Incoming settled actor facing is preserved. All rejections/exhaustion are atomic.
+
+Locked isolated restore and zero-warning Release build pass; **2,608 .NET / 299
+Python tests** pass (149 new managed cases). Executed TST-001..020 include source
+vectors, diagonal front/push ties, HP/KO boundaries, every exhaustion branch,
+both actor IDs, pure probes, actual post-push range checks, legal continuation
+and accepted/rejected journal replay. Both RNG copies agree. Full TRX/artifacts
+remain ignored under scratch/throw-stone-109-tests-full and
+scratch/throw-stone-109-artifacts. See the
+[API/behavior guide](behavior/throw-stone-implementation.md) and
+[new evidence](evidence/combat/throw-stone-implementation-v1.json).
+
+Read-only decomp was freshly rechecked clean at
+11464943bbdbd2a0af022d90cb7f10455cf911df before translation. No old runtime file,
+content package, project/lock, save format or native UI changed. The new API is
+not yet wired into TwoUnitBattleScenario or prepared content; ZOD-110 must compose
+it explicitly with Accumulate and retain unsupported ability-save guards.
+ZOD-111 owns later native controls/finite checks/owner review. No new native/
+original/emulator execution. Editor and ZOD-106 remain deferred; the known sword
+facing discrepancy is still documented and unchanged.
+
+## ZOD-108 source-contract checkpoint (historical)
+
 **ZOD-107 is complete by owner approval.** Following the launch guide/gallery, the
 owner replied, "Looks good. Let's keep going." Record ACC-032 as owner approval
 of the bounded review; individual physical-input steps were not separately

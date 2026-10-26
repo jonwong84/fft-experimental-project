@@ -44,6 +44,20 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Current completion (2026-10-26): ZOD-109 is complete.** Pure Throw Stone now has
+an explicit targeted profile/grants/command, named arithmetic, physical evasion,
+current-PA damage and same-height one-tile knockback with exact seven/four draws.
+It preserves settled facings and the target's voluntary choices, handles
+edge/lethal suppression and rejects invalid/exhausted actions atomically.
+All **2,608 .NET / 299 Python tests** pass (149 new managed cases), covering
+TST-001..020 and prior profiles. See the
+[behavior/API guide](behavior/throw-stone-implementation.md) and
+[executed evidence](evidence/combat/throw-stone-implementation-v1.json).
+**Next: ZOD-110 is Ready**, content/import and combined authored Basic Skill
+scenario; ZOD-111 Windows controls waits for it. No new native launch, original
+execution, content schema, save format or UI change. ZOD-106 and editor work
+remain deferred.
+
 **Owner approval (2026-10-26): ZOD-107 is complete.** After receiving the launch
 guide and gallery, the owner replied, "Looks good. Let's keep going." This closes
 ACC-032 by owner approval; individual physical-input steps were not separately
@@ -59,7 +73,8 @@ Brave-based one-tile knockback attempt: seven draws on a hit, four on a miss.
 Two offline reports repeat exactly, rechecking 22 imported records, six selected
 rows and 24 pinned source files. This is source-derived evidence, not original
 execution or a managed action. The [34 acceptance cases](evidence/combat/throw-stone-contract-v1.json)
-are all unexecuted. **Next: ZOD-109 is Ready**, the pure targeted-action proof;
+were all unexecuted at that contract checkpoint. The then-selected next task was
+ZOD-109, the pure targeted-action proof;
 then ZOD-110 content/import/scenario and ZOD-111 prepared Windows controls.
 Battle checkpoints, editor polish and other documented deferrals stay deferred.
 The trace also identifies the old authored sword's persistent attack facing as a
@@ -1158,7 +1173,14 @@ found fidelity gaps. Separate pure rules, prepared content and native review.
 
 ### ZOD-109 — Prove pure Throw Stone damage and flat knockback
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-108
+**Type:** Story · **Priority:** P3 · **Status:** Complete · **Depends on:** ZOD-108
+
+**Result (2026-10-26):** [Behavior/evidence](behavior/throw-stone-implementation.md)
+records the closed pure profile, exact damage/Brave/facing/range rules and atomic
+HP/knockback publication. All 2,608 .NET / 299 Python tests pass, adding 149 managed
+cases for TST-001..020. Existing sword/self-action/content/save/UI paths are unchanged.
+Content projection/scenario composition remains ZOD-110; no native check or
+independent original execution is claimed.
 
 **Scope:** Add ordinary named C# arithmetic, a closed targeted-action profile,
 explicit grants and a separate actor/ability/target command over immutable
@@ -1175,7 +1197,7 @@ limits; run meaningful regressions and appropriate full implementation suites.
 
 ### ZOD-110 — Prepare Throw Stone content and a combined Basic Skill scenario
 
-**Type:** Story · **Priority:** P3 · **Status:** Waiting · **Depends on:** ZOD-109
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-109
 
 **Scope:** Add a separate closed targeted-effect companion and validated
 metadata/grant projection. Offline import verifies selected original records and
