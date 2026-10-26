@@ -44,15 +44,16 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
-**Latest implementation (2026-10-26): ZOD-103 is visually approved;
-physical-input review remains pending.** The authored Windows world menu passes two
+**Latest completion (2026-10-26): ZOD-103 is complete.** The owner confirmed the
+manual keyboard/mouse/controller, resize, native close and focus checklist:
+"It's good." The authored Windows world menu passes two
 finite native runs, 51 samples/13 images each, with 16 exact repeated files and
 full CPU/GPU/headless matches. All **2,300 .NET / 284 Python tests** pass.
 The owner approved `scratch/world-menu-103-review/review.html`: "Looks good."
-Next perform the physical controls/native close/focus checks in the
-[launch/check guide](development/windows-world-navigation.md). ZOD-069 stays
-Waiting on those checks. No implementation suites rerun for this approval;
-no original UI fidelity or physical-device claim is made.
+**Next: ZOD-069 is Ready** for native Save/Load slot navigation through the
+existing checkpoint service. [Launch/check guide](development/windows-world-navigation.md).
+No implementation suites or agent-run graphics checks were repeated for the
+owner's manual report. Broader device support and original UI fidelity remain open.
 
 **Latest completion (2026-10-26): ZOD-102 is complete.** The authored world-menu
 application model proves Home/New/Resume, read-only Party, existing travel,
@@ -1188,7 +1189,7 @@ native/device checks as unexecuted.
 
 ### ZOD-103 — Host authored world-menu navigation on Windows
 
-**Type:** Story · **Priority:** P2 · **Status:** Implemented; owner visually approved; physical-input review pending · **Depends on:** ZOD-102
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-102
 
 **Result (2026-10-26):** [Windows host](development/windows-world-navigation.md)
 adds explicit world-menu launch/check routes, authored panels/font, shared
@@ -1198,9 +1199,12 @@ and match 13 CPU/GPU images each; all 16 repeated files match. Complete action/
 event/view replay and independent state/PNG audit pass. Zero-warning Release
 build and **2,300 .NET / 284 Python tests** pass (15/3 new). Programmed focus/close
 and controller samples do not prove physical input. The owner approved the gallery
-on 2026-10-26: "Looks good." Interactive controls/native close/focus checks remain
-pending; no implementation suites rerun or reviewed artifacts changed for this
-approval. [Executed evidence](evidence/navigation/windows-world-navigation-v1.json).
+on 2026-10-26: "Looks good." After receiving the five-step manual checklist, the
+owner confirmed "It's good." This completes the selected keyboard/mouse/controller,
+resize, close/cancel and focus checks as owner-reported observations. No measured
+latency, device identifiers, mixed-monitor DPI or forced-device-loss claim.
+No implementation suites or agent-run graphics checks were repeated, and reviewed
+artifacts are unchanged. [Executed evidence](evidence/navigation/windows-world-navigation-v1.json).
 
 **Parent:** ZOD-042. **Scope:** Bind the ZOD-102 model to one explicitly selected
 Windows host with synthetic labels/panels, keyboard/mouse/controller action
@@ -1217,7 +1221,7 @@ ZOD-042 epic and original party/job/equipment workflows stay open.
 
 ### ZOD-069 — Add native Windows Save/Load slot navigation
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-068, ZOD-103
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-068, ZOD-103
 
 **Scope:** After ZOD-068 and a minimal client screen/navigation flow under ZOD-042,
 add a slot list/details, Save/Load actions, overwrite/discard confirmation and

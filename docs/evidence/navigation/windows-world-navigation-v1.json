@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "ticket": "ZOD-103",
   "validatedOn": "2026-10-26",
-  "status": "implemented; owner visually approved; physical-input review pending",
+  "status": "complete for bounded authored host; owner visual and manual review recorded",
   "managedBase": "164469cefc1fbd0989ed9b936e304b56fb2313b8",
   "guide": "docs/development/windows-world-navigation.md",
   "sourceContext": {
@@ -251,20 +251,34 @@
       "confirm-new.png"
     ],
     "ownerVisualApproval": true,
-    "physicalKeyboardMouseControllerVerified": false,
-    "actualOsCloseAndFocusVerified": false,
+    "physicalKeyboardMouseControllerVerified": true,
+    "actualOsCloseAndFocusVerified": true,
     "programmedCloseEventPipeline": true,
     "programmedFocusAndConnectionSamples": true,
     "ownerApprovalDate": "2026-10-26",
     "ownerApprovalQuote": "Looks good.",
-    "approvalScope": "Displayed authored Home/World/Party, New/Exit confirmations and closed-screen gallery; no physical input or original UI equivalence."
+    "approvalScope": "Displayed authored Home/World/Party, New/Exit confirmations and closed-screen gallery; no physical input or original UI equivalence.",
+    "manualReview": {
+      "date": "2026-10-26",
+      "quote": "It's good.",
+      "evidenceKind": "owner-reported manual observation following the supplied five-step interactive checklist",
+      "checklist": "docs/development/windows-world-navigation.md#launch-and-manual-review",
+      "scope": [
+        "Keyboard navigation, fresh/held presses and travel/Party/back",
+        "Mouse navigation and New cancel/replace",
+        "USB controller D-pad/A/B and held-button behavior",
+        "Resize/pointer and focus/reactivation behavior",
+        "Native close, Cancel and confirmed Exit"
+      ],
+      "limits": "No raw manual capture, exact device/mapping identifier, measured timing, mixed-monitor DPI or forced-device-loss proof supplied."
+    }
   },
   "limitations": [
     "No original UI, input timing, title assets or screen equivalence claim.",
     "Gallery shows the fixed authored canvas after resizing, not new aspect/CRT/resolution modes.",
     "Keyboard and mouse are polled; very short between-sample presses may be missed. No repeat/analog/binding configuration.",
     "Controller index one uses SDL D-pad/A/B mapping; RetroArch mapping is independent.",
-    "Physical input/native close/focus remain pending; mixed-monitor DPI and forced device loss are not covered.",
+    "Bounded physical input/native close/focus are owner-reported; exact device mapping, measured timing, mixed-monitor DPI and forced device loss are not covered.",
     "Save/Load screens remain ZOD-069; original UI/campaign and ZOD-061 device breadth remain open."
   ],
   "approvalUpdate": {
@@ -274,5 +288,14 @@
     "graphicsRunsRepeated": false,
     "reviewedArtifactsModified": false,
     "priorValidationMetadataSha256": "e651b24ab831ef07f08dd545ffc6daac22e7ef1b3400b283311cad5114bb679e"
+  },
+  "manualReviewUpdate": {
+    "date": "2026-10-26",
+    "managedBase": "107b20b099b09dc3c611c850c89583c6d116a6ff",
+    "implementationSuitesRerun": false,
+    "agentGraphicsChecksRepeated": false,
+    "reviewedArtifactsModified": false,
+    "nextTicket": "ZOD-069",
+    "nextTicketStatus": "Ready"
   }
 }

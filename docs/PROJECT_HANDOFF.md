@@ -1,5 +1,16 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Owner manual review (2026-10-26): ZOD-103 complete.** After receiving the
+interactive five-step checklist, the owner confirmed "It's good." Record the
+keyboard/mouse/USB-controller, resize/click, native close/cancel/confirm and
+focus/reactivation checks as owner-reported manual observations. The separate
+gallery approval remains recorded. No measured latency, exact hardware/mapping,
+mixed-monitor DPI or forced device-loss validation is inferred. Implementation
+and reviewed captures are unchanged; no implementation suites or agent-run
+graphics checks were repeated. Last implementation validation remains
+**2,300 .NET / 284 Python tests**. **Next: ZOD-069 is Ready** for native slot
+Save/Load UI using ZOD-068's service. [Evidence](evidence/navigation/windows-world-navigation-v1.json).
+
 **Owner display clarification (2026-10-26):** Preserve intended CRT/4:3 visual
 proportions for text, sprites, environments and other content inside a widescreen
 viewport. Use additional horizontal camera coverage and wider UI layout while
