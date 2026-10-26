@@ -1,5 +1,25 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Latest implementation checkpoint (2026-10-25):** ZOD-097 adds the pure combined
+DarkScreen/general/Ready/release/synthetic-exit aggregate. One clock/consumer/
+ledger owns three stable retained tasks, event-before-worker polling, newborn
+input rules, same-tick release/final flash and complete late rollback. Availability
+requires accepted exit with every worker terminal; no battle command runs here.
+Natural 60/60, zero/zero, maximum 255/255 and the specified skip schedule exit at
+275/155/665/127. All 24 Core contract cases plus 56 extra boundaries pass, with
+independent per-tick cell/draw/display/barrier equations, variable authored delay
+maxima, replay and protected binding/VM/identity/clock checks. Existing workers,
+executors, engine/Content/client code and historical contracts are unchanged.
+Locked restore, zero-warning Release build and **2,111 .NET / 269 Python tests**
+pass (80 new managed). No prepared profile, render/Windows/battle-input bridge,
+native capture, emulator or original-duration claim. DSI-025..040 remain
+unexecuted. [Behavior](behavior/dark-screen-introduction.md),
+[executed metadata](evidence/events/dark-screen-intro-worker-v1.json).
+**Next: ZOD-098**, implement the selected closed prepared profile, three-resource
+readiness, ordered RGB5 composition and existing one-window battle/input handoff,
+with finite native/model checks and a new separately approved owner gallery.
+Standing commit/push permission applies to validated work.
+
 **Latest source/design checkpoint (2026-10-25):** ZOD-096 specifies the combined
 authored DarkScreen/general/Ready/release/synthetic-exit introduction and existing
 battle handoff. Nine operations share one clock/consumer/ledger, three retained

@@ -1889,7 +1889,7 @@ Forty future cases remain explicitly unexecuted (24 ZOD-097; 16 ZOD-098).
 
 ### ZOD-097 — Implement the pure combined dark-screen introduction
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-096
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-096
 
 **Scope:** Implement the selected nine-operation typed aggregate using existing
 DarkScreen/general/Ready transitions and scene task/event phases. One pure
@@ -1906,9 +1906,22 @@ releases and all old behavior remain unchanged. Run required managed regressions
 and record separate executed evidence without changing historical future flags.
 Do not implement original event playback, loader duration, EventEnd or battle rules.
 
+**Result (2026-10-25):** Implemented the focused pure aggregate without modifying
+existing workers/executors. One clock/consumer/ledger owns nine fixed operations,
+three retained tasks, birth/input gaps, same-tick release/final flash, post-poll
+facts and full late rollback. Availability requires accepted synthetic exit with
+all three terminal; post-exit calls reject. DSI-001..024 and 56 added boundaries
+pass. Independent cell/draw/display/barrier equations, variable authored delays,
+rollback/retry and complete state/trace replay are checked. Locked restore,
+zero-warning Release build, **2,111 .NET / 269 Python tests** pass (80 new managed).
+Historical future flags remain unchanged; DSI-025..040 remain ZOD-098 work.
+No prepared format, renderer, device/battle routing, native check, emulator or
+original-duration claim. [Behavior](behavior/dark-screen-introduction.md),
+[executed evidence](evidence/events/dark-screen-intro-worker-v1.json).
+
 ### ZOD-098 — Prepare and preview the combined dark-screen introduction
 
-**Type:** Story · **Priority:** P2 · **Status:** Waiting · **Depends on:** ZOD-097
+**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-097
 
 **Scope:** Add the separately selected closed authored prepared profile, strict
 three-resource readiness, accepted-snapshot DarkScreen-before-display composition

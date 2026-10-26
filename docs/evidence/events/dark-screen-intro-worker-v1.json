@@ -1,0 +1,526 @@
+{
+  "format": "fft.dark-screen-intro-worker-validation",
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "managedBase": "d2f790337efdbab67c9c334f27250c5127bfb5fc",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceRoot": "C:/repositories/fft_decomp",
+  "referenceClean": true,
+  "sourceEvidence": {
+    "localPath": "docs/evidence/events/dark-screen-intro-source-v1.json",
+    "bytes": 24596,
+    "sha256": "4a7cb6d800be703b64344db426dfa5bb08afa396f54ebb52d16b7c307c6e0c50"
+  },
+  "sourceFilesRechecked": 40,
+  "historicalContract": {
+    "localPath": "docs/evidence/events/dark-screen-intro-contract-v1.json",
+    "bytes": 17414,
+    "sha256": "f6ea147499da8f3689f2d6223d80b8f756ec550bef4863c8f4267908237c7cc1"
+  },
+  "historicalContractModified": false,
+  "fixtureCopy": {
+    "localPath": "tests/Zodiac.Framework.Tests/bin/Release/net10.0/Fixtures/dark-screen-intro-contract-v1.json",
+    "bytes": 17414,
+    "sha256": "f6ea147499da8f3689f2d6223d80b8f756ec550bef4863c8f4267908237c7cc1"
+  },
+  "implementation": [
+    {
+      "localPath": "src/Zodiac.Framework/Events/DarkScreenIntroduction.cs",
+      "bytes": 23193,
+      "sha256": "a8df58dda8a81f89cc4927a7d4a25dcb692669f7f5f63743e70ca6107c77b6ba"
+    },
+    {
+      "localPath": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs",
+      "bytes": 25155,
+      "sha256": "5b669b6a107a0d413ad4dc05d6fef32109f7c83edb8518e06ab5386f70733c15"
+    },
+    {
+      "localPath": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionBoundaryTests.cs",
+      "bytes": 9827,
+      "sha256": "bd1711eedd43c363e4a6e555dad0e70cf197229b35ea7ccacee3ea5b26bc7969"
+    },
+    {
+      "localPath": "tests/Zodiac.Framework.Tests/Zodiac.Framework.Tests.csproj",
+      "bytes": 2004,
+      "sha256": "acc512435491515213d08b925b4c6558527da7fd205447347fac3b8a8e050bf5"
+    }
+  ],
+  "scope": "Pure authored nine-operation composition using existing DarkScreen/general/Ready transitions, one clock/consumer/ledger, post-poll worker facts, full rollback and all-terminal synthetic-exit availability. No prepared profile or host integration.",
+  "logicalCheckpoints": {
+    "selectedMaximumAuthoredDelay": 41,
+    "natural60_60": {
+      "generalBirth": 56,
+      "generalClear": 147,
+      "readyBirth": 148,
+      "readyRelease": 208,
+      "readyChildClear": 216,
+      "readyDispatcherClear": 217,
+      "darkRelease": 218,
+      "firstReleaseTiles": 219,
+      "lastReleaseBody": 273,
+      "darkClear": 274,
+      "exitAndAvailability": 275
+    },
+    "zeroHoldsExit": 155,
+    "maximumHoldsExit": 665,
+    "skip": {
+      "circleTicks": [
+        1,
+        55,
+        56,
+        57,
+        59,
+        60
+      ],
+      "generalClear": 58,
+      "readyBirth": 59,
+      "readyRelease": 60,
+      "readyChildClear": 68,
+      "readyDispatcherClear": 69,
+      "darkRelease": 70,
+      "darkClear": 126,
+      "exitAndAvailability": 127
+    },
+    "originalDurationClaim": false
+  },
+  "caseMap": [
+    {
+      "id": "DSI-001",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-001\")"
+    },
+    {
+      "id": "DSI-002",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-002\")"
+    },
+    {
+      "id": "DSI-003",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-003\")"
+    },
+    {
+      "id": "DSI-004",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-004\")"
+    },
+    {
+      "id": "DSI-005",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-005\")"
+    },
+    {
+      "id": "DSI-006",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-006\")"
+    },
+    {
+      "id": "DSI-007",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-007\")"
+    },
+    {
+      "id": "DSI-008",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-008\")"
+    },
+    {
+      "id": "DSI-009",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-009\")"
+    },
+    {
+      "id": "DSI-010",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-010\")"
+    },
+    {
+      "id": "DSI-011",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-011\")"
+    },
+    {
+      "id": "DSI-012",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-012\")"
+    },
+    {
+      "id": "DSI-013",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-013\")"
+    },
+    {
+      "id": "DSI-014",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-014\")"
+    },
+    {
+      "id": "DSI-015",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-015\")"
+    },
+    {
+      "id": "DSI-016",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-016\")"
+    },
+    {
+      "id": "DSI-017",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-017\")"
+    },
+    {
+      "id": "DSI-018",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-018\")"
+    },
+    {
+      "id": "DSI-019",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-019\")"
+    },
+    {
+      "id": "DSI-020",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-020\")"
+    },
+    {
+      "id": "DSI-021",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-021\")"
+    },
+    {
+      "id": "DSI-022",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-022\")"
+    },
+    {
+      "id": "DSI-023",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-023\")"
+    },
+    {
+      "id": "DSI-024",
+      "executed": true,
+      "test": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs::Historical_core_contract_cases_execute",
+      "recordedPassedTest": "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Historical_core_contract_cases_execute(id: \"DSI-024\")"
+    }
+  ],
+  "pendingCases": [
+    {
+      "id": "DSI-025",
+      "executed": false,
+      "implementationTicket": "ZOD-098"
+    },
+    {
+      "id": "DSI-026",
+      "executed": false,
+      "implementationTicket": "ZOD-098"
+    },
+    {
+      "id": "DSI-027",
+      "executed": false,
+      "implementationTicket": "ZOD-098"
+    },
+    {
+      "id": "DSI-028",
+      "executed": false,
+      "implementationTicket": "ZOD-098"
+    },
+    {
+      "id": "DSI-029",
+      "executed": false,
+      "implementationTicket": "ZOD-098"
+    },
+    {
+      "id": "DSI-030",
+      "executed": false,
+      "implementationTicket": "ZOD-098"
+    },
+    {
+      "id": "DSI-031",
+      "executed": false,
+      "implementationTicket": "ZOD-098"
+    },
+    {
+      "id": "DSI-032",
+      "executed": false,
+      "implementationTicket": "ZOD-098"
+    },
+    {
+      "id": "DSI-033",
+      "executed": false,
+      "implementationTicket": "ZOD-098"
+    },
+    {
+      "id": "DSI-034",
+      "executed": false,
+      "implementationTicket": "ZOD-098"
+    },
+    {
+      "id": "DSI-035",
+      "executed": false,
+      "implementationTicket": "ZOD-098"
+    },
+    {
+      "id": "DSI-036",
+      "executed": false,
+      "implementationTicket": "ZOD-098"
+    },
+    {
+      "id": "DSI-037",
+      "executed": false,
+      "implementationTicket": "ZOD-098"
+    },
+    {
+      "id": "DSI-038",
+      "executed": false,
+      "implementationTicket": "ZOD-098"
+    },
+    {
+      "id": "DSI-039",
+      "executed": false,
+      "implementationTicket": "ZOD-098"
+    },
+    {
+      "id": "DSI-040",
+      "executed": false,
+      "implementationTicket": "ZOD-098"
+    }
+  ],
+  "boundaryChecks": {
+    "passed": 56,
+    "methods": [
+      "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Altered_event_or_ledger_cannot_bypass_the_closed_program",
+      "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Constructor_keeps_both_holds_in_unsigned_byte_domain",
+      "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Constructor_requires_one_shared_owner",
+      "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Default_and_null_definitions_or_identifiers_do_not_create_a_program",
+      "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Event_then_dark_then_dispatcher_then_child_trace_order_is_explicit",
+      "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Every_natural_snapshot_matches_independent_cell_display_and_barrier_equations",
+      "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Invalid_ready_binding_or_lifecycle_cannot_publish_progress",
+      "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Late_worker_publication_failure_preserves_entire_snapshot_and_retry_matches_clean_execution",
+      "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Other_conditions_are_not_admitted",
+      "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Parent_pump_budget_failures_roll_back_released_barrier_and_any_candidate_admission",
+      "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Pending_parent_allows_worker_progress_without_instruction_or_update_budget",
+      "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Pure_program_ID_bound_is_explicit_and_independent_of_future_descriptor_suffix_limit",
+      "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Resource_definition_program_and_owner_collisions_reject",
+      "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Terminal_task_facts_do_not_open_gate_before_synthetic_exit",
+      "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Unconsumed_circle_samples_do_not_appear_in_state_or_trace",
+      "Zodiac.Framework.Tests.DarkScreenIntroductionContractTests.Valid_authored_delay_maxima_do_not_turn_into_a_hardcoded_animation_timer"
+    ],
+    "scope": "Independent per-tick cell/draw/display/barrier equations; constructor/ID/owner/condition/hold guards, variable delay maxima, zero-budget worker ticks, late publication/parent-pump rollback/retry, ignored input equality, trace order, forged binding/lifecycle/VM/barrier rejection and final ownership."
+  },
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 2111,
+    "dotnetCounts": {
+      "Tessera.Engine.Tests": 24,
+      "Zodiac.AssetTool.Tests": 202,
+      "Zodiac.Framework.Tests": 805,
+      "Zodiac.AssetTool.Cli.Tests": 202,
+      "Zodiac.Content.Tests": 546,
+      "Fft.Client.Tests": 332
+    },
+    "newManagedTests": 80,
+    "executedContractCases": 24,
+    "additionalBoundaryTests": 56,
+    "pythonPassed": 269,
+    "newPythonTests": 0,
+    "logs": [
+      {
+        "localPath": "scratch/dark-screen-intro-097-restore.log",
+        "bytes": 82,
+        "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc"
+      },
+      {
+        "localPath": "scratch/dark-screen-intro-097-build.log",
+        "bytes": 1678,
+        "sha256": "9bd498c3a16ecc471727921b09bf67d48ec6b70980c74497bdff9ff65691ea39"
+      },
+      {
+        "localPath": "scratch/dark-screen-intro-097-tests.log",
+        "bytes": 2938,
+        "sha256": "64a8059415d06a38f29a8468e0be78801c4e0878f81e99c0f2e614c4dfbaa9cd"
+      },
+      {
+        "localPath": "scratch/dark-screen-intro-097-python.log",
+        "bytes": 1259,
+        "sha256": "0f38594d585d35626d7b759242ffd924fc303a8e840990c7897304e69b2a29ab"
+      }
+    ],
+    "trx": [
+      {
+        "localPath": "scratch/dark-screen-intro-097/full/Jonathan_DESKTOP-EXCALIB_2026-10-25_20_37_29_net10.0.trx",
+        "bytes": 36854,
+        "sha256": "3876ab52dfce2a9d05b92c414d69389215c935d0899240edb8e2d54668039ef1"
+      },
+      {
+        "localPath": "scratch/dark-screen-intro-097/full/Jonathan_DESKTOP-EXCALIB_2026-10-25_20_37_30_net10.0.trx",
+        "bytes": 299067,
+        "sha256": "41ffab9b2f674f07f00669c94b3d3d9811e6b297e25909995730d0da1ed0efea"
+      },
+      {
+        "localPath": "scratch/dark-screen-intro-097/full/Jonathan_DESKTOP-EXCALIB_2026-10-25_20_37_30_net10.0[1].trx",
+        "bytes": 1217883,
+        "sha256": "2cdde71b3bc4d0cdfd77e712b055f20d89edd818ccf2e0bd48f6e746fc1b1ad5"
+      },
+      {
+        "localPath": "scratch/dark-screen-intro-097/full/Jonathan_DESKTOP-EXCALIB_2026-10-25_20_37_30_net10.0[2].trx",
+        "bytes": 310418,
+        "sha256": "1dab5d39dee47e2996b2b2980a41adc2b97d2d3c894d2cf1e291d5720baa613f"
+      },
+      {
+        "localPath": "scratch/dark-screen-intro-097/full/Jonathan_DESKTOP-EXCALIB_2026-10-25_20_37_30_net10.0[3].trx",
+        "bytes": 791468,
+        "sha256": "a856bdcd55b929108cdea97f7872d96cdd1cf27ac669797bc2a26a63c62c4f2d"
+      },
+      {
+        "localPath": "scratch/dark-screen-intro-097/full/Jonathan_DESKTOP-EXCALIB_2026-10-25_20_37_30_net10.0[4].trx",
+        "bytes": 491176,
+        "sha256": "55ec69155afa4d959299ddeb3759fbc29cfd50c805c0d546ef185c1000f3362f"
+      }
+    ],
+    "summary": {
+      "localPath": "scratch/dark-screen-intro-097/validation-summary.json",
+      "bytes": 12635,
+      "sha256": "6dc832f89c8eafab3cb21e5e0e0e44e1e81e6e81cf967dc6737448bddad2c2c7"
+    }
+  },
+  "oldManagedSourcesUnchanged": [
+    {
+      "localPath": "src/Zodiac.Framework/Events/BannerReadySequence.cs",
+      "bytes": 12542,
+      "sha256": "42b30af452487ee4369f43ad63efaf6beed19a82cf6d2e9a28b9ad952da75b01"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/Events/DarkScreenExecutor.cs",
+      "bytes": 13494,
+      "sha256": "0b5e3451e28f6910005f5a96b0d9050432c66a78a0407cd564943ac00656ed0a"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/Events/DarkScreenState.cs",
+      "bytes": 6764,
+      "sha256": "c245a666f6da1c3e7a334812a4a0fbfce2768bcdb6eda80c82018d6111006451"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/Events/GeneralBannerState.cs",
+      "bytes": 4180,
+      "sha256": "2eeba3bad3c8ede4d190e04573bcd806f15a840b1e3116d9b97936bd030dcbc6"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/Events/ReadyDisplayState.cs",
+      "bytes": 4852,
+      "sha256": "f3b96a4b06e722de57c3b039fbdc4fcd071079a12cfc623ad99430a9081f35c6"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/Events/BattleIntroduction.cs",
+      "bytes": 2298,
+      "sha256": "a0c5df9542dfb5cd88698000b3343d52b40cf3a051db8028d6e289452a9982d1"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/Events/SceneEventExecutor.cs",
+      "bytes": 9005,
+      "sha256": "ff0535505a3274d529bc7310c77a44243149dce02410d6cfc06c9d6eba7cc006"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/Events/SceneTaskLedger.cs",
+      "bytes": 11160,
+      "sha256": "1bfcee91e7d6021d0bf29dc22eb11390c352253e9eaee3c6ef2b25d8ac762972"
+    },
+    {
+      "localPath": "src/Zodiac.Content/PreparedDarkScreen.cs",
+      "bytes": 6073,
+      "sha256": "e90fa2cc7fcfb0fb00490bcefaf18f0993bdaf1f253d0b696346eca7414a2083"
+    },
+    {
+      "localPath": "src/Zodiac.Content/Events/PreparedBannerReadySequence.cs",
+      "bytes": 3546,
+      "sha256": "a648e2f2fb9fdedb61f224c35a585accdb7becf1a67ea405d52a299eac1745b0"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/BannerReadyPreview.cs",
+      "bytes": 11813,
+      "sha256": "f69e9fca700a0bf9f24d5c455be2d3d2d5e0fc87a0d846e8f4fe7995f9cbe0ff"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/IntroductionBattleSession.cs",
+      "bytes": 4754,
+      "sha256": "a8d9951abb0e2937e4ac7a48d7bda261bb26422cf248eaebdb2c17a5745a73fa"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/PlayableBattleWindow.Introduction.cs",
+      "bytes": 9399,
+      "sha256": "8864a6705daaf85390e97c871fbb39a4cfb4536401a0d87bcd2e371b4269c861"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/FiveBitGeneralBannerPresentation.cs",
+      "bytes": 7649,
+      "sha256": "ec1722d0530fcc39de7369b2d3070798dccb489bdbf409cb0b1f74b56ba85bea"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/ReadyPresentation.cs",
+      "bytes": 6500,
+      "sha256": "5a7cda34c4fb94414a572de66f663c9238ccd6d333d25031021e69a915c888ca"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/DarkScreenPresentation.cs",
+      "bytes": 5380,
+      "sha256": "16aea6851d038582807e1920a2f3bc95748c6dc8ef0d68fff2b87a898e4e7332"
+    }
+  ],
+  "preservation": {
+    "existingExecutorsAndAPIsChanged": false,
+    "existingFrameworkContentClientEngineSourcesChanged": false,
+    "existingHistoricalEventEvidenceChanged": false,
+    "originalInputsAndStatesUnchanged": true,
+    "newDependencies": false
+  },
+  "runtimeBoundaries": {
+    "simulationUsesRendering": false,
+    "simulationUsesInputDevices": false,
+    "simulationUsesClock": false,
+    "simulationUsesFileIo": false,
+    "cReferenceRuntimeDependency": false,
+    "newOriginalCaptures": false,
+    "emulatorLaunched": false,
+    "nativeGpuChecksPerformed": false,
+    "actualBattleHostBridgeImplemented": false,
+    "preparedProfileImplemented": false,
+    "combinedOriginalPixelComparisonPerformed": false
+  },
+  "next": {
+    "ticket": "ZOD-098",
+    "remaining": "DSI-025..040: prepared schema/readiness, ordered RGB5 composition, Windows CPU/GPU/model checks, actual battle/input bridge and separately approved gallery."
+  },
+  "limits": [
+    "Source-derived managed transaction behavior is not original loading, display or physical input duration.",
+    "Original event4/401 playback, EventSpeed/EventEnd/camera behavior and battle/campaign lifecycle are excluded.",
+    "No combined render/Windows/battle-input integration or new visual approval in this pure milestone.",
+    "Missing original DarkScreen endpoints, broader styles/geometry, map/hardware/CRT/audio remain separate."
+  ]
+}
