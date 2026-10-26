@@ -2,6 +2,47 @@
 
 ## Current handoff — 2026-10-26
 
+**ZOD-118 is complete**, the source and managed design contract for end-of-turn
+facing. Original Move+Act can clear has_turn before final facing; the controller
+still routes through WaitDirection and its repeated turn_end call is a no-op.
+Existing managed Wait rejects the now-inactive actor. The proposed opt-in immutable
+wrapper holds a revision and internally issued pending-facing receipt bound to
+the full settled command result/lineage; it blocks further commands until facing
+is finalized once. Explicit WaitWithFacing applies one refund atomically; automatic
+completion finalizes facing only. No production wrapper or chooser was implemented.
+
+Fresh clean read-only decomp remains 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Twelve source files / 32 functions cover direction hints/encodings, tile viability,
+nearest/imminent selection, CT and controller settlement callers. Seventy offline
+vectors cover direction, viability, normalized chooser, clock-end and proposed
+completion-gate families; all 18 FTF production cases remain unexecuted. Seventeen
+new Python tests distinguish source outcomes, managed unsafe-case exclusions and
+design proposals. **359 Python tests pass**; repeated audit hashes are in the evidence.
+No C# changes or .NET rerun; last full implementation validation remains ZOD-117's
+3,271 .NET / 342 Python tests. Fifty-one historical and 13 managed baseline files
+are fingerprinted unchanged. No new native/headless/original/emulator launch.
+
+The chooser retries imminent targets, then tries nearest-any only once; ties keep
+the first original slot. Overlap/no-enemy lookups can read a leftover stack byte
+and stay explicitly unsupported. Original walking settles path heading, while
+managed Move preserves facing and retains no path. KeepCurrent therefore means
+the supplied managed settled facing; original movement composition remains open.
+The proposed first production chooser is limited to a certified single living enemy on
+the existing open flat two-unit profile, with coordinates below signed-byte wrap.
+General normalized team/status/imminence/terrain behavior is source-description
+work only. Receipt identity is in-memory authorization, not a save/AI continuation.
+
+See [contract/API proposal](architecture/zod-118-turn-facing-contract.md),
+[vectors](fixtures/behavior/turn-facing-contract-v1.json) and
+[evidence](evidence/ai/turn-facing-contract-v1.json). **Recommended next: ZOD-119**,
+implement the bounded opt-in facing wrapper/closed-enemy chooser and execute the
+18 FTF cases while preserving legacy paths. Full original AI/search/roster,
+candidate clock and authoritative decision RNG runner remain future work.
+Reports/builder stay ignored under scratch/turn-facing-118-* and
+scratch/build_turn_facing_118.py. Editor and ZOD-106 remain deferred.
+
+## ZOD-117 implementation checkpoint (historical)
+
 **ZOD-117 is complete.** SwordAiFormulaProjection.Evaluate is a pure managed
 formula query for a legal current sword action under the explicit strict flat
 two-unit profile. It returns normal capped damage, separate hit percentage,

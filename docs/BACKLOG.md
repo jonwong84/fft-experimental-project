@@ -44,6 +44,26 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Current completion (2026-10-26): ZOD-118 is complete**, the
+[end-of-turn facing/completion contract](architecture/zod-118-turn-facing-contract.md).
+Clock completion and facing publication are separate in the original, including
+automatic Move+Act completion. The proposal adds an opt-in immutable wrapper with
+an attributable pending-facing receipt, a barrier before the next command, atomic
+WaitWithFacing and facing-only completion after an ended turn. Existing managed
+Move does not publish original path heading; that limit is explicit.
+Fresh clean read-only reference remains 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Seventy offline descriptions cover five families; 18 FTF production cases remain
+unexecuted. Source outcomes, unsafe chooser admission limits and managed design
+proposals are classified separately. **359 Python tests pass** (17 new);
+repeated source/history audits are recorded in
+[evidence](evidence/ai/turn-facing-contract-v1.json). No production C# or .NET
+rerun; last full implementation validation remains 3,271 .NET / 342 Python.
+**Recommended next: ZOD-119**, implement the opt-in bounded facing wrapper and
+closed-enemy chooser. Full AI/roster/search/candidate clock/decision RNG and
+original path/facing composition remain separate. Editor and ZOD-106 stay deferred.
+
+### ZOD-117 implementation checkpoint (historical)
+
 **Current completion (2026-10-26): ZOD-117 is complete**, a pure
 [ordinary-sword AI formula query](behavior/sword-ai-formula-projection.md).
 It returns normal damage, separate accuracy, projected HP and advanced RNG;
@@ -1605,7 +1625,7 @@ Full AI/interface/search and candidate-clock are outside this completed scope.
 
 ### ZOD-118 — Specify bounded end-of-turn facing and completion lifecycle
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-116, ZOD-117
+**Type:** Spike · **Priority:** P3 · **Status:** Complete · **Depends on:** ZOD-116, ZOD-117
 
 **Scope:** Freshly trace original Wait direction selection/application and the
 managed completion boundary. Specify a narrow immutable facing transition and
@@ -1624,6 +1644,42 @@ receipt/state needed before production code. Preserve existing Wait/Attack/Move/
 replay/save behavior and document compatibility limits. Produce one bounded
 implementation ticket; no production AI/interface/search, save format, scenario/
 native/editor activation, midbattle save work or timing-dependent simulation.
+
+**Evidence (2026-10-26):** [Contract/reproduction](architecture/zod-118-turn-facing-contract.md),
+[source fingerprints](evidence/ai/turn-facing-contract-v1.json) and
+[70 description vectors / 18 unexecuted production cases](fixtures/behavior/turn-facing-contract-v1.json).
+Fresh pinned source confirms the late facing path, source repeat-turn_end no-op,
+enum mapping, viability/target order, overlapping/no-enemy stack-byte uncertainty
+and the existing managed movement-facing gap. The receipt/lifecycle is a managed
+proposal, with no production types, runtime behavior or save format introduced.
+
+### ZOD-119 — Implement bounded turn-facing completion and closed-enemy choice
+
+**Type:** Feature · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-118
+
+**Scope:** Freshly recheck ZOD-118 source/callers and implement its opt-in immutable
+Zodiac facing wrapper over the existing strict two-unit flat sword profile.
+Start from validated fresh AddCt setup; no arbitrary snapshot/receipt attachment.
+Delegate existing Advance/Move/Attack, capture automatic completion only after
+the full command settles, and block subsequent commands until facing completes.
+Implement typed Fixed/KeepCurrent/ChooseClosedEnemy choices, explicit atomic
+WaitWithFacing and receipt-authorized facing-only finalization. A chooser enemy
+must be explicitly certified; no team inference or new general AI roster.
+
+**Acceptance criteria:** Execute FTF-001..018 and admitted source direction/hint
+vectors. Cover both choice orders and actors/collection orders, actual displaced
+target coordinates, current battle stats and strict geometry/coordinate domain.
+Verify single CT refund/event, no repeated combat or RNG, same-facing receipt
+consumption, pending command barriers, missing/wrong/stale/cross-branch receipt
+rejection, revision exhaustion, zero facing draws at exhausted RNG and immutable
+prefix/suffix replay. Keep wrapper construction and receipt issuance controlled;
+retrying the returned authoritative state differs from replaying an old immutable
+input. Preserve all legacy APIs/fixtures/save/headless behavior and run locked
+build/full suites. KeepCurrent means supplied managed settled facing; do not
+invent a movement path heading or claim original path/search parity. General
+multi-unit terrain/status/imminence helpers remain outside this profile. No
+scenario/native/content/save/editor activation, production AI interface/session
+RNG runner or midbattle-save work. Editor and ZOD-106 remain deferred.
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 
