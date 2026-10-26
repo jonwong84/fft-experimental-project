@@ -3,7 +3,7 @@
 Generated from `baseline-coverage.json` by `tools/verification/verify_baseline_coverage.py --write-view`.
 Edit the JSON, then regenerate this view. See [the inventory guide](README.md) for status/evidence rules.
 
-Target: **SCUS-94221**. Snapshot: 2026-10-26; managed base `5c9ff93704d037c52651132e754ad183f6ea116e`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+Target: **SCUS-94221**. Snapshot: 2026-10-26; managed base `f35e055a31674d40146b959c1e341af97496e434`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 These entries are planning scopes, not a feature-completion percentage or a complete record/encounter catalog.
 
 ## Simulation
@@ -98,7 +98,7 @@ Next action: Break ZOD-037 into separate ordinary-geometry and special-mode chil
 
 Status: **partial**; scope: **baseline**; ticket: **ZOD-038**; owner area: Zodiac.Framework simulation.
 
-The bounded neutral sword remains executable. A separate ZOD-105 Accumulate profile changes current PA and feeds later sword damage with unchanged RNG order; ability-profile persistence and Windows controls remain pending.
+The bounded neutral sword remains executable. A separate ZOD-105 Accumulate profile changes current PA and feeds later sword damage with unchanged RNG order; ZOD-107 adds prepared Windows controls with owner review pending. Ability-profile persistence is deferred.
 
 Evidence: [docs/behavior/bounded-sword-implementation.md](../../docs/behavior/bounded-sword-implementation.md), [docs/architecture/zod-104-accumulate-action.md](../../docs/architecture/zod-104-accumulate-action.md), [docs/evidence/combat/accumulate-contract-v1.json](../../docs/evidence/combat/accumulate-contract-v1.json), [docs/behavior/accumulate-implementation.md](../../docs/behavior/accumulate-implementation.md), [docs/evidence/combat/accumulate-implementation-v1.json](../../docs/evidence/combat/accumulate-implementation-v1.json).
 
@@ -114,7 +114,7 @@ Remaining gaps:
 
 - Other weapons, affinities, equipment evade, zodiac interactions, line of sight and area targets remain open.
 
-Next action: ZOD-105 is complete for the closed Accumulate content/action proof; implement current-PA save/replay continuation in ZOD-106, then Windows controls in ZOD-107. Broader original coverage remains open.
+Next action: ZOD-107 Windows Accumulate controls are implemented; complete bounded owner visual/physical-input review. ZOD-106 battle checkpoints are deferred until a concrete debugging or selected suspension requirement. Broader original coverage remains open.
 
 Bounded follow-ups: ZOD-104, ZOD-105, ZOD-106, ZOD-107.
 
@@ -122,23 +122,23 @@ Bounded follow-ups: ZOD-104, ZOD-105, ZOD-106, ZOD-107.
 
 Status: **partial**; scope: **baseline**; ticket: **ZOD-038**; owner area: Zodiac.Framework simulation.
 
-ZOD-105 executes one immediate self PA+1 effect to cap 99 through a validated companion, explicit grants and pure two-unit commands. Broader action catalog, saves, UI and independent original observation remain open.
+ZOD-105 executes one immediate self PA+1 effect to cap 99 through a validated companion, explicit grants and pure two-unit commands. ZOD-107 exposes that action in prepared Windows controls; owner review is pending. Broader action catalog and independent original observation remain open; ability-profile persistence is deferred.
 
-Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-104-accumulate-action.md](../../docs/architecture/zod-104-accumulate-action.md), [docs/evidence/combat/accumulate-contract-v1.json](../../docs/evidence/combat/accumulate-contract-v1.json), [docs/behavior/accumulate-implementation.md](../../docs/behavior/accumulate-implementation.md), [docs/evidence/combat/accumulate-implementation-v1.json](../../docs/evidence/combat/accumulate-implementation-v1.json).
+Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-104-accumulate-action.md](../../docs/architecture/zod-104-accumulate-action.md), [docs/evidence/combat/accumulate-contract-v1.json](../../docs/evidence/combat/accumulate-contract-v1.json), [docs/behavior/accumulate-implementation.md](../../docs/behavior/accumulate-implementation.md), [docs/evidence/combat/accumulate-implementation-v1.json](../../docs/evidence/combat/accumulate-implementation-v1.json), [docs/development/accumulate-battle-controls.md](../../docs/development/accumulate-battle-controls.md), [docs/evidence/combat/accumulate-window-v1.json](../../docs/evidence/combat/accumulate-window-v1.json).
 
 Source entry points (pinned revision above; not full traces): [src/battle/combat/formulas.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/combat/formulas.c), [include/fft/formula.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/formula.h), [include/fft/ability.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/ability.h).
 
-Current implementation: [src/Zodiac.Framework/ImmediateAbilityBattle.cs](../../src/Zodiac.Framework/ImmediateAbilityBattle.cs), [src/Zodiac.Content/ContentPackages/ImmediateAbilityContentPackage.cs](../../src/Zodiac.Content/ContentPackages/ImmediateAbilityContentPackage.cs), [src/Zodiac.AssetTool.Cli/OriginalAccumulateImporter.cs](../../src/Zodiac.AssetTool.Cli/OriginalAccumulateImporter.cs).
+Current implementation: [src/Zodiac.Framework/ImmediateAbilityBattle.cs](../../src/Zodiac.Framework/ImmediateAbilityBattle.cs), [src/Zodiac.Content/ContentPackages/ImmediateAbilityContentPackage.cs](../../src/Zodiac.Content/ContentPackages/ImmediateAbilityContentPackage.cs), [src/Zodiac.AssetTool.Cli/OriginalAccumulateImporter.cs](../../src/Zodiac.AssetTool.Cli/OriginalAccumulateImporter.cs), [src/Fft.Client/Presentation/AccumulateBattleHost.cs](../../src/Fft.Client/Presentation/AccumulateBattleHost.cs), [src/Zodiac.Content/BattleSetup/PreparedAccumulateBattle.cs](../../src/Zodiac.Content/BattleSetup/PreparedAccumulateBattle.cs).
 
-Existing bounded checks: [tests/Zodiac.Framework.Tests/ImmediateAbilityBattleTests.cs](../../tests/Zodiac.Framework.Tests/ImmediateAbilityBattleTests.cs), [tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs](../../tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs), [tests/Zodiac.AssetTool.Cli.Tests/OriginalAccumulateImporterTests.cs](../../tests/Zodiac.AssetTool.Cli.Tests/OriginalAccumulateImporterTests.cs).
+Existing bounded checks: [tests/Zodiac.Framework.Tests/ImmediateAbilityBattleTests.cs](../../tests/Zodiac.Framework.Tests/ImmediateAbilityBattleTests.cs), [tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs](../../tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs), [tests/Zodiac.AssetTool.Cli.Tests/OriginalAccumulateImporterTests.cs](../../tests/Zodiac.AssetTool.Cli.Tests/OriginalAccumulateImporterTests.cs), [tests/Fft.Client.Tests/AccumulateBattleInteractionTests.cs](../../tests/Fft.Client.Tests/AccumulateBattleInteractionTests.cs), [tools/verification/verify_accumulate_window.py](../../tools/verification/verify_accumulate_window.py).
 
 Manual checkpoint (pending-original-observation): Compare one selected original ability with exact target/stats/RNG preconditions.
 
 Remaining gaps:
 
-- Other formula/action families, equipment bonuses, status/reaction interactions, progression/rewards, AI, charge/MP/targeting breadth and original execution remain open; new-profile persistence and Windows use are ZOD-106/107.
+- Other formula/action families, equipment bonuses, status/reaction interactions, progression/rewards, AI, charge/MP/targeting breadth and original execution remain open. ZOD-107 owner review is pending; ZOD-106 persistence is deferred.
 
-Next action: ZOD-105 is complete for the closed Accumulate content/action proof; implement current-PA save/replay continuation in ZOD-106, then Windows controls in ZOD-107. Broader original coverage remains open.
+Next action: ZOD-107 Windows Accumulate controls are implemented; complete bounded owner visual/physical-input review. ZOD-106 battle checkpoints are deferred until a concrete debugging or selected suspension requirement. Broader original coverage remains open.
 
 Bounded follow-ups: ZOD-104, ZOD-105, ZOD-106, ZOD-107.
 
@@ -264,7 +264,7 @@ Remaining gaps:
 
 - Full catalog rows and field-to-runtime meaning are not enumerated; imported metadata does not imply executable effects.
 
-Next action: ZOD-105 is complete for the closed Accumulate content/action proof; implement current-PA save/replay continuation in ZOD-106, then Windows controls in ZOD-107. Broader original coverage remains open.
+Next action: ZOD-107 Windows Accumulate controls are implemented; complete bounded owner visual/physical-input review. ZOD-106 battle checkpoints are deferred until a concrete debugging or selected suspension requirement. Broader original coverage remains open.
 
 Bounded follow-ups: ZOD-104, ZOD-105.
 

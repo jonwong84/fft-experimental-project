@@ -2,6 +2,35 @@
 
 ## Current handoff — 2026-10-26
 
+**ZOD-107 is implemented and awaits owner visual/physical-input review.** A
+separate hash-verified prepared authored battle uses the existing window/router:
+C or the Accumulate button performs the granted self action, shows current PA,
+availability and PA-change/cap feedback. No simulation rule or save schema changed.
+Locked isolated restore/build pass with zero warnings; **2,459 .NET / 299 Python
+tests** pass (21 new managed and 6 Python audit tests).
+
+Exactly two native check processes completed their finite 560-input routes:
+95 accepted ability uses (94 increases and one capped Act), four atomic rejections,
+Move after Act, later damage24, first KO, resize and restart to PA5. Each step's
+state/events matches typed headless execution; the full journal replays before
+restart. Three prepared files and sixteen native files (15 GPU PNGs and diagnostic
+JSON) repeat byte-for-byte. The independent audit checks deltas, RNG, inventory,
+hashes and capture dimensions; all captures were inspected. Physical keyboard/
+pointer operation, owner approval and original-game equivalence are not established.
+See the [launch/review guide](development/accumulate-battle-controls.md) and
+[evidence](evidence/combat/accumulate-window-v1.json). **Next: ACC-032 owner review**;
+do not mark ZOD-107 complete until approved.
+
+**Owner sequencing: ZOD-107 next; ZOD-106 deferred.** The owner accepted proceeding
+with gameplay after clarifying that battle saves were a development checkpoint
+proof. Keep the existing unsupported ability-save guard; resume ZOD-106 only for
+a concrete debugging/checkpoint or selected suspension requirement. The
+[ZOD-107 native plan](development/accumulate-battle-controls.md) replaces its
+save-continuation clause with in-memory replay/headless comparison. Accumulate PA
+remains temporary battle state. Editor review and other deferrals remain intact.
+
+## ZOD-105 implementation checkpoint (historical)
+
 **ZOD-105 complete; next ZOD-106.** Accumulate now has a separately versioned
 closed executable companion, explicit per-unit learned grants and pure immutable
 resolution in the existing two-unit lifecycle. It increases current PA by 1 to

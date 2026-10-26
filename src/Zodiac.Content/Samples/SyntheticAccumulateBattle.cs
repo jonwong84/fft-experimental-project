@@ -23,7 +23,19 @@ public static class SyntheticAccumulateBattle
     public static TwoUnitBattleDefinition Create(int physicalAttack = 5, int swordPower = 4, bool grantFirstUnit = true)
     {
         var metadata = Metadata();
-        var effects = Effects(metadata);
+        return Create(metadata, Effects(metadata), physicalAttack, swordPower, grantFirstUnit);
+    }
+
+    /// <summary>Composes the same authored scenario using explicitly loaded, validated companion definitions.</summary>
+    public static TwoUnitBattleDefinition Create(ContentPackage metadata, ImmediateAbilityContentPackage effects,
+        int physicalAttack = 5, int swordPower = 4, bool grantFirstUnit = true)
+    {
+        ArgumentNullException.ThrowIfNull(metadata);
+        ArgumentNullException.ThrowIfNull(effects);
+        effects.ValidateAgainst(metadata);
+        if (metadata.ProfileId != ProfileId || metadata.Jobs.Length != 1 || metadata.Skillsets.Length != 1 ||
+            metadata.Abilities.Length != 1 || effects.Abilities.Length != 1)
+            throw new NotSupportedException("The authored Accumulate scene requires one job, skillset, learning record and effect in its explicit profile.");
         var first = SyntheticTwoUnitBattle.FirstUnitId;
         var second = SyntheticTwoUnitBattle.SecondUnitId;
         var surface = new TerrainSurfaceId("sample:terrain/ground");
@@ -36,7 +48,7 @@ public static class SyntheticAccumulateBattle
         var battle = new AttackBattleSnapshot(new(setup.InitialState, turns),
             [Unit(first, physicalAttack, BattleFacing.East), Unit(second, 5, BattleFacing.West)]);
         var profile = ImmediateAbilityBattleSetup.CreateProfile(metadata, effects, setup,
-            grantFirstUnit ? [new(first, 0, AccumulateId)] : [], 0);
+            grantFirstUnit ? [new(first, 0, effects.Abilities[0].Id)] : [], 0);
         return new(new("sample:scenario/accumulate-battle"), first, second, battle, [new(weapon, swordPower)], profile);
 
         BaseJobUnitPlacement Placement(BattleUnitId id, TilePosition position) =>

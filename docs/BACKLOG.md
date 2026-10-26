@@ -44,6 +44,27 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Current result (2026-10-26): ZOD-107 implemented; owner review pending.** A
+separately prepared authored Windows battle exposes C / Accumulate, current PA,
+availability and success/cap feedback. All **2,459 .NET / 299 Python tests** pass.
+Two finite native checks match exactly across 560 inputs and 15 captures each,
+including legal repeat uses to PA99, zero resolution RNG draws, in-memory replay,
+resize, first KO and restart to PA5. See the
+[guide/review steps](development/accumulate-battle-controls.md) and
+[evidence](evidence/combat/accumulate-window-v1.json).
+**Next:** bounded owner visual/physical-input review (ACC-032); do not mark complete
+or automatically expand the editor. Original-game presentation equivalence remains
+unestablished.
+
+**Owner sequencing (2026-10-26): proceed with ZOD-107; defer ZOD-106.** Battle
+checkpoint persistence is a development proof, not a requirement for using
+Accumulate or for original campaign saves. Retain the ability-profile save guard.
+ZOD-106 waits for a concrete debugging/checkpoint need or explicitly selected
+battle suspension. ZOD-107 uses in-memory command/replay validation and the
+[pre-execution native plan](development/accumulate-battle-controls.md); its
+save-continuation clause is deferred with ZOD-106. Editor work and other documented
+deferrals remain in effect.
+
 **Latest completion (2026-10-26): ZOD-105 is complete.** The bounded Accumulate
 content/action/scenario proof adds an explicit immediate self PA+1 companion,
 validated learned grants and pure atomic resolution. PA caps at 99; a capped use
@@ -55,7 +76,8 @@ sword-only fixtures, journals and saves pass. Ability-enabled save/restore is
 explicitly rejected until its current PA can be preserved. See the
 [behavior/workflow](behavior/accumulate-implementation.md) and
 [evidence](evidence/combat/accumulate-implementation-v1.json).
-**Next: ZOD-106 is Ready**, save/replay continuation; ZOD-107 waits for it.
+The original next-task recommendation (ZOD-106 before ZOD-107) is superseded by
+the owner sequencing above.
 No Windows/editor/Engine production or package-lock changes; original execution,
 visual approval and broader combat fidelity remain separate. Deferred work stays deferred.
 
@@ -1046,7 +1068,12 @@ outcomes/RNG. Update behavior evidence and run appropriate locked build/suites.
 
 ### ZOD-106 — Preserve boosted battle PA across checkpoints and replay
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-105
+**Type:** Story · **Priority:** P3 · **Status:** Deferred · **Depends on:** ZOD-105
+
+**Trigger (owner sequencing, 2026-10-26):** Revisit when a concrete debugging/
+checkpoint need or an explicitly selected battle-suspension feature requires
+dynamic-PA persistence. Not a prerequisite for ability gameplay or original
+campaign saving. Keep the unsupported-profile guard until then.
 
 **Scope:** Add current PA to a new explicit ability-profile battle-save schema
 and permit only validated dynamic PA restoration. Preserve old sword-profile
@@ -1063,7 +1090,12 @@ run appropriate build/suites and retain current save regression evidence.
 
 ### ZOD-107 — Use Accumulate through the existing Windows battle controls
 
-**Type:** Story · **Priority:** P3 · **Status:** Waiting · **Depends on:** ZOD-105, ZOD-106
+**Type:** Story · **Priority:** P3 · **Status:** Implemented; owner review pending · **Depends on:** ZOD-105
+
+**Owner sequencing (2026-10-26):** ZOD-106 is deferred. Replace this slice's
+save-continuation check with in-memory command/headless/replay equality, preserving
+the save guard. Follow the [bounded native plan](development/accumulate-battle-controls.md)
+before launching; retain the owner visual/manual gate separately.
 
 **Scope:** A separate prepared ability-enabled battle launch exposes the granted
 self action, current PA, action availability and success/cap feedback through
@@ -1071,9 +1103,16 @@ shared simulation commands. Retain existing battle controls and introduction,
 world and editor behavior. No editor expansion or original animation port.
 
 **Acceptance criteria:** ACC-028..032 pass with a finite native plan written before
-execution, repeated state/journal/save-continuation/capture checks and appropriate
+execution, repeated state/journal/headless-continuation/capture checks and appropriate
 implementation suites. Owner visual/physical review remains separate from
 programmed controls. Report authored presentation and original fidelity limits.
+
+**Result (2026-10-26):** ACC-028..031 have executed automated coverage under the
+revised sequencing; ACC-032 is pending owner approval. Both 560-input native runs
+and prepared bundles repeat byte-for-byte. Independent audit checks all ability
+state deltas, RNG preservation, atomic rejections and 15 captures. Locked Release
+build has zero warnings; 2,459 .NET / 299 Python tests pass. Review instructions and
+limits are in the [guide](development/accumulate-battle-controls.md).
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Fft.Client.Presentation;
 
-public enum BattleUiAction { NextTurn, Move, Attack, Wait, Restart, SelectFirst, SelectSecond, SelectNext, Confirm, Cancel }
+public enum BattleUiAction { NextTurn, Move, Attack, Wait, Restart, SelectFirst, SelectSecond, SelectNext, Confirm, Cancel, Accumulate }
 public sealed record BattleUiButton(BattleUiAction Action, string Label, PixelRect Bounds);
 
 /// <summary>Authored UI/picking for the flat synthetic canvas. No original camera or movement rules.</summary>
@@ -17,6 +17,15 @@ public static class BattleUiLayout
         new BattleUiButton(BattleUiAction.Wait, "W  WAIT", new(728, 374, 208, 40)),
         new BattleUiButton(BattleUiAction.Restart, "R  RESTART", new(728, 438, 208, 40)),
     });
+
+    private static IReadOnlyList<BattleUiButton> AbilityButtons { get; } = Array.AsReadOnly(new[]
+    {
+        Buttons[0], Buttons[1], Buttons[2],
+        new BattleUiButton(BattleUiAction.Accumulate, "C  ACCUMULATE", new(728, 374, 208, 40)),
+        new BattleUiButton(BattleUiAction.Wait, "W  WAIT", new(728, 422, 208, 40)),
+        new BattleUiButton(BattleUiAction.Restart, "R  RESTART", new(728, 486, 208, 40)),
+    });
+    public static IReadOnlyList<BattleUiButton> ButtonsFor(bool hasSelfAbility) => hasSelfAbility ? AbilityButtons : Buttons;
 
     public static bool Contains(PixelRect r, PixelPoint p) => p.X >= r.X && p.Y >= r.Y &&
         p.X < (long)r.X + r.Width && p.Y < (long)r.Y + r.Height;
@@ -66,6 +75,7 @@ public sealed class BattleUiRouter(BattleInteraction interaction)
             case BattleUiAction.Move: Interaction.SetMode(BattleInteractionMode.Move); SynchronizeCursor(); break;
             case BattleUiAction.Attack: Interaction.SetMode(BattleInteractionMode.Attack); SynchronizeCursor(); break;
             case BattleUiAction.Wait: Interaction.Wait(); break;
+            case BattleUiAction.Accumulate: Interaction.UseSelfAbility(); break;
             case BattleUiAction.Restart: Interaction.Restart(); Cursor = new(0, 0, 0); break;
             case BattleUiAction.SelectFirst: Select(Interaction.State.Definition.FirstUnitId); break;
             case BattleUiAction.SelectSecond: Select(Interaction.State.Definition.SecondUnitId); break;
@@ -92,6 +102,7 @@ public sealed class BattleUiRouter(BattleInteraction interaction)
             case Keys.N: case Keys.Space: Action(BattleUiAction.NextTurn); break;
             case Keys.M: Action(BattleUiAction.Move); break;
             case Keys.A: Action(BattleUiAction.Attack); break;
+            case Keys.C: Action(BattleUiAction.Accumulate); break;
             case Keys.W: Action(BattleUiAction.Wait); break;
             case Keys.R: Action(BattleUiAction.Restart); break;
             case Keys.D1: Action(BattleUiAction.SelectFirst); break;
@@ -108,7 +119,7 @@ public sealed class BattleUiRouter(BattleInteraction interaction)
 
     public void Click(PixelPoint point)
     {
-        foreach (var button in BattleUiLayout.Buttons)
+        foreach (var button in BattleUiLayout.ButtonsFor(Interaction.HasSelfAbility))
             if (BattleUiLayout.Contains(button.Bounds, point)) { Action(button.Action); return; }
         for (int i = 0; i < 2; i++)
             if (BattleUiLayout.Contains(BattleUiLayout.CardBounds(i), point))

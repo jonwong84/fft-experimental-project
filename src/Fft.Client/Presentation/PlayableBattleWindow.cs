@@ -2,6 +2,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using Zodiac.Content.Samples;
+using Zodiac.Content.BattleSetup;
 using Zodiac.Framework;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -27,9 +28,12 @@ internal sealed partial class PlayableBattleWindow : Game
     private string? pendingCapture;
     public bool CheckCompleted { get; private set; }
 
-    public PlayableBattleWindow(string? checkDirectory, BannerReadySession? preparedIntroduction = null, BannerReadyPreviewOptions? introductionOptions = null)
+    public PlayableBattleWindow(string? checkDirectory, BannerReadySession? preparedIntroduction = null, BannerReadyPreviewOptions? introductionOptions = null,
+        PreparedAccumulateBattle? abilityBattle = null)
     {
         if ((preparedIntroduction is null) != (introductionOptions is null)) throw new ArgumentException("Introduction resources and options must be supplied together.");
+        if (abilityBattle is not null && preparedIntroduction is not null) throw new ArgumentException("Select either the authored ability battle or introduction.");
+        this.abilityBattle = abilityBattle;
         this.checkDirectory = checkDirectory; this.preparedIntroduction = preparedIntroduction; this.introductionOptions = introductionOptions;
         graphics = new GraphicsDeviceManager(this)
         {
@@ -40,6 +44,7 @@ internal sealed partial class PlayableBattleWindow : Game
         IsMouseVisible = true; Window.AllowUserResizing = true;
         Window.Title = preparedIntroduction is null ? "FFT - Bounded two-unit battle | local two player | Esc closes" :
             "FFT - Authored introduction to bounded battle | C skips / N next turn / Esc closes";
+        if (abilityBattle is not null) Window.Title = "FFT - Accumulate battle | C Accumulate / N next turn / Esc closes";
         Window.KeyDown += OnKeyDown; Window.KeyUp += OnKeyUp;
         Activated += HandleActivated; Deactivated += HandleDeactivated; graphics.DeviceReset += OnDeviceReset;
     }
@@ -60,9 +65,11 @@ internal sealed partial class PlayableBattleWindow : Game
             CreateResources(); // Every graphics resource exists before the introduction or battle is admitted.
             introduction = preparedIntroduction is null ? null : new BannerWindowIntroduction(IntroductionBattleSession.Start(preparedIntroduction));
         }
-        interaction = introduction?.Interaction ?? new(SyntheticTwoUnitBattle.Create());
+        interaction = introduction?.Interaction ?? (abilityBattle is null ? new(SyntheticTwoUnitBattle.Create()) :
+            new BattleInteraction(abilityBattle.Definition, abilityBattle.AbilityId));
         router = introduction?.Router ?? new(interaction);
         initialBattle = Snapshot(interaction.State); BaselineInput();
+        if (abilityBattle is not null && checkDirectory is not null) InitializeAbilityCheck();
         if (checkDirectory is not null)
         {
             Directory.CreateDirectory(checkDirectory);
@@ -105,6 +112,8 @@ internal sealed partial class PlayableBattleWindow : Game
         if (UpdateIntroduction()) { base.Update(gameTime); return; }
         if (checkDirectory is not null)
         {
+            if (abilityBattle is not null)
+            { UpdateAbilityCheck(); base.Update(gameTime); return; }
             if (preparedDarkIntroduction is not null && checkWatch.Elapsed > TimeSpan.FromSeconds(120))
                 throw new InvalidOperationException("Combined introduction check exceeded 120 seconds.");
             if (checkStep < BattleUiCheckPlan.Inputs.Length && frames >= nextStepFrame)
@@ -170,7 +179,9 @@ internal sealed partial class PlayableBattleWindow : Game
         if (Snapshot(interaction.State) != before) throw new InvalidOperationException("Drawing changed the battle state.");
         frames++;
         if (pendingCapture is not null) { Capture(pendingCapture); pendingCapture = null; }
-        if (checkDirectory is not null && checkStep == BattleUiCheckPlan.Inputs.Length && frames >= nextStepFrame)
+        if (abilityBattle is not null && checkDirectory is not null && checkStep == abilitySteps.Length && frames >= nextStepFrame)
+        { FinishAbilityCheck(); Exit(); }
+        else if (abilityBattle is null && checkDirectory is not null && checkStep == BattleUiCheckPlan.Inputs.Length && frames >= nextStepFrame)
         { FinishCheck(); Exit(); }
         base.Draw(gameTime);
     }
@@ -178,7 +189,7 @@ internal sealed partial class PlayableBattleWindow : Game
     private void DrawInterface()
     {
         var state = interaction.State; var turns = state.Battle.TurnBattle.Turns;
-        Text("BOUNDED BATTLE", 24, 24, 3, Color.White);
+        Text(abilityBattle is null ? "BOUNDED BATTLE" : "ACCUMULATE BATTLE", 24, 24, 3, Color.White);
         Text("CONTROL BOTH UNITS / FIRST KO WINS", 24, 64, 2, Muted);
         string status = state.WinnerId is { } winner ? $"{Name(winner)} WINS / FIRST KO" : interaction.Status;
         Text(status, 24, 110, 2, interaction.StatusIsError && state.WinnerId is null ? Gold : Color.White);
@@ -219,22 +230,25 @@ internal sealed partial class PlayableBattleWindow : Game
             Text($"{i + 1}  UNIT {Name(id)}", card.X + 12, card.Y + 10, 2, color);
             Text($"HP {body.Hp}/{body.MaxHp}", card.X + 12, card.Y + 36, 2, Color.White);
             Text($"CT {turn.Ct}", card.X + 12, card.Y + 60, 2, Muted);
+            if (interaction.HasSelfAbility) Text($"PA {body.PhysicalAttack}", card.X + 112, card.Y + 64, 1, color);
             Text($"MOVE {(turn.MovementTaken ? "USED" : "OPEN")}", card.X + 12, card.Y + 82, 1, Muted);
             Text($"ACT {(turn.ActionTaken ? "USED" : "OPEN")}", card.X + 12, card.Y + 100, 1, Muted);
         }
         Text("ACTIONS", 728, 198, 2, Color.White);
-        foreach (var button in BattleUiLayout.Buttons)
+        foreach (var button in BattleUiLayout.ButtonsFor(interaction.HasSelfAbility))
         {
             bool selected = button.Action == BattleUiAction.Move && interaction.Mode == BattleInteractionMode.Move ||
                 button.Action == BattleUiAction.Attack && interaction.Mode == BattleInteractionMode.Attack;
-            Fill(button.Bounds, selected ? new(46, 90, 121) : new(35, 49, 66));
+            bool unavailable = button.Action == BattleUiAction.Accumulate && !interaction.CanUseSelfAbility;
+            Fill(button.Bounds, selected ? new(46, 90, 121) : unavailable ? new(25, 32, 43) : new(35, 49, 66));
             Text(button.Label, button.Bounds.X + 12, button.Bounds.Y + 13, 2,
-                state.WinnerId is not null && button.Action != BattleUiAction.Restart ? Muted : Color.White);
+                unavailable || state.WinnerId is not null && button.Action != BattleUiAction.Restart ? Muted : Color.White);
         }
         Text(interaction.Mode == BattleInteractionMode.Move ? "BLUE LEGAL MOVES / WHITE CURSOR" :
             interaction.Mode == BattleInteractionMode.Attack ? "ORANGE LEGAL TARGETS / WHITE CURSOR" :
             "CLICK TO SELECT / FIRST KO ENDS BATTLE", 300, 478, 1, Muted);
         Text("CLICK UNIT OR CARD / TAB OR 1 2 SELECT", 24, 540, 2, Muted);
+        if (interaction.HasSelfAbility) Text(interaction.CanUseSelfAbility ? "C ACCUMULATE / SELF / ACT READY" : "C ACCUMULATE / ACT UNAVAILABLE", 300, 510, 1, Muted);
         Text("M MOVE / A ATTACK / ARROWS AIM / ENTER CONFIRM", 24, 568, 2, Muted);
         Text("W WAIT / N NEXT TURN / BACKSPACE CANCEL / ESC CLOSE", 24, 596, 2, Muted);
     }

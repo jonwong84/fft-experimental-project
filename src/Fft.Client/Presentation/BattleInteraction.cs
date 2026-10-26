@@ -10,6 +10,10 @@ public enum BattleInteractionMode { Inspect, Move, Attack }
 public sealed class BattleInteraction
 {
     private readonly TwoUnitBattleDefinition definition;
+    public AssetId? SelfAbilityId { get; }
+    public bool HasSelfAbility => SelfAbilityId is not null;
+    public bool CanUseSelfAbility => CanProbe && SelfAbilityId is { } ability &&
+        TwoUnitBattleScenario.Apply(State, new TwoUnitBattleCommand.UseAbility(SelectedUnit!.Value, ability)).Accepted;
     public TwoUnitBattleState State { get; private set; }
     public BattleUnitId? SelectedUnit { get; private set; }
     public BattleInteractionMode Mode { get; private set; }
@@ -18,10 +22,13 @@ public sealed class BattleInteraction
     public string Status { get; private set; } = "ADVANCE TO START";
     public bool StatusIsError { get; private set; }
 
-    public BattleInteraction(TwoUnitBattleDefinition definition)
+    public BattleInteraction(TwoUnitBattleDefinition definition, AssetId? selfAbilityId = null)
     {
         ArgumentNullException.ThrowIfNull(definition);
         this.definition = definition;
+        if (selfAbilityId is { } ability && (definition.ImmediateAbilities is null || !definition.ImmediateAbilities.Abilities.ContainsKey(ability)))
+            throw new ArgumentException("The self action must resolve an explicitly selected executable ability.", nameof(selfAbilityId));
+        SelfAbilityId = selfAbilityId;
         State = definition.Start();
     }
 
@@ -65,6 +72,13 @@ public sealed class BattleInteraction
     }
 
     public void Advance() => Submit(new TwoUnitBattleCommand.Advance());
+
+    public void UseSelfAbility()
+    {
+        if (SelfAbilityId is not { } ability) return;
+        if (SelectedUnit is not { } selected) { Status = "SELECT A UNIT FIRST"; StatusIsError = true; return; }
+        Submit(new TwoUnitBattleCommand.UseAbility(selected, ability));
+    }
 
     public void Wait()
     {
@@ -123,7 +137,11 @@ public sealed class BattleInteraction
         if (command is TwoUnitBattleCommand.Advance) SelectedUnit = State.Battle.TurnBattle.Turns.ActiveUnitId;
         if (State.WinnerId is { } winner) { Status = $"{Name(winner)} WINS / FIRST KO"; return; }
         var attack = result.Events.OfType<TwoUnitBattleTransitionEvent>().Select(ev => ev.Event).OfType<AttackResolvedEvent>().FirstOrDefault();
-        Status = attack is not null ? (attack.Hit ? $"HIT {attack.Damage} / {TurnStatus()}" : $"MISS / {TurnStatus()}")
+        var abilityResult = result.Events.OfType<TwoUnitBattleTransitionEvent>().Select(ev => ev.Event).OfType<ImmediateAbilityResolvedEvent>().FirstOrDefault();
+        Status = abilityResult is not null ? (abilityResult.PhysicalAttackBefore == abilityResult.PhysicalAttackAfter
+            ? $"ACCUMULATE / PA {abilityResult.PhysicalAttackAfter} MAX / {TurnStatus()}"
+            : $"ACCUMULATE / PA {abilityResult.PhysicalAttackBefore} TO {abilityResult.PhysicalAttackAfter} / {TurnStatus()}")
+            : attack is not null ? (attack.Hit ? $"HIT {attack.Damage} / {TurnStatus()}" : $"MISS / {TurnStatus()}")
             : command is TwoUnitBattleCommand.Move ? $"MOVED / {TurnStatus()}"
             : command is TwoUnitBattleCommand.Wait ? $"WAIT / {TurnStatus()}" : TurnStatus();
     }
