@@ -1,5 +1,24 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Latest implementation checkpoint (2026-10-26): ZOD-103 implemented; owner visual
+and physical-input review pending.** `--world-menu` hosts the authored ZOD-102
+model in one Windows window; `--world-menu-check <new-directory>` runs its finite
+programmed samples. Shared action edges, inactive/reactivated and hot-plug
+baselines, Cancel-first close decisions, resize-aware clicks and an opaque
+authored 960x640 presentation stay in Client. Engine/Framework/Content production,
+save formats and intro/battle implementations are unchanged.
+Locked restore, zero-warning Release build and **2,300 .NET / 284 Python tests**
+pass (15/3 new). Exactly two native processes each complete 51 samples/draws and
+13 CPU/GPU-identical images; 16 files repeat exactly. All action results/events/
+views match fresh headless replay. Independent PNG/state audit covers 15,974,400
+pixels and final Hill/funds 93/elapsed 53. No save directory was created.
+[Guide](development/windows-world-navigation.md),
+[evidence](evidence/navigation/windows-world-navigation-v1.json), local gallery
+`scratch/world-menu-103-review/review.html`. Agent inspected Party/New PNGs;
+owner approval, actual keyboard/mouse/controller, native close and focus checks
+remain pending. Programmed callbacks/samples do not replace them. ZOD-069 remains
+Waiting on this review; the original UI epic and wider device support stay open.
+
 **Latest implementation checkpoint (2026-10-26): ZOD-102 complete.** A closed
 client-owned authored world-menu model now handles Home/New/live Resume,
 read-only Party, existing checkpoint travel, parent focus and Cancel-first

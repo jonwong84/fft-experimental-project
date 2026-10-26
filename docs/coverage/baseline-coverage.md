@@ -3,7 +3,7 @@
 Generated from `baseline-coverage.json` by `tools/verification/verify_baseline_coverage.py --write-view`.
 Edit the JSON, then regenerate this view. See [the inventory guide](README.md) for status/evidence rules.
 
-Target: **SCUS-94221**. Snapshot: 2026-10-26; managed base `d0f53cbf0f470b4f3a51ba384898558f29cbe1a9`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+Target: **SCUS-94221**. Snapshot: 2026-10-26; managed base `164469cefc1fbd0989ed9b936e304b56fb2313b8`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 These entries are planning scopes, not a feature-completion percentage or a complete record/encounter catalog.
 
 ## Simulation
@@ -580,15 +580,15 @@ Bounded follow-ups: ZOD-080, ZOD-081, ZOD-082, ZOD-083, ZOD-084, ZOD-085, ZOD-08
 
 Status: **absent**; scope: **baseline**; ticket: **ZOD-042**; owner area: Fft.Client presentation and application commands.
 
-No original title/new-game/continue/name/birthday shell. ZOD-102 proves only an authored headless Home/New/live Resume/World/Party and confirmation model; no native host exists. No-argument client still prints a bootstrap line.
+No original title/new-game/continue/name/birthday shell. ZOD-102/103 provide only a separate authored Windows Home/New/live Resume/World/Party model/host, with finite input/render/replay checks; owner visual/physical-input review is pending. No-argument client still prints a bootstrap line.
 
-Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/development/synthetic-world-navigation.md](../../docs/development/synthetic-world-navigation.md), [docs/evidence/navigation/synthetic-world-navigation-v1.json](../../docs/evidence/navigation/synthetic-world-navigation-v1.json).
+Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/development/synthetic-world-navigation.md](../../docs/development/synthetic-world-navigation.md), [docs/evidence/navigation/synthetic-world-navigation-v1.json](../../docs/evidence/navigation/synthetic-world-navigation-v1.json), [docs/development/windows-world-navigation.md](../../docs/development/windows-world-navigation.md), [docs/evidence/navigation/windows-world-navigation-v1.json](../../docs/evidence/navigation/windows-world-navigation-v1.json).
 
 Source entry points (pinned revision above; not full traces): [src/open/title.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/open/title.c), [src/open/prologue.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/open/prologue.c), [src/world/name_entry.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/name_entry.c).
 
-Current implementation: [src/Fft.Client/Navigation/WorldMenuSession.cs](../../src/Fft.Client/Navigation/WorldMenuSession.cs).
+Current implementation: [src/Fft.Client/Navigation/WorldMenuSession.cs](../../src/Fft.Client/Navigation/WorldMenuSession.cs), [src/Fft.Client/Navigation/WorldMenuInput.cs](../../src/Fft.Client/Navigation/WorldMenuInput.cs), [src/Fft.Client/Presentation/WindowsWorldMenuHost.cs](../../src/Fft.Client/Presentation/WindowsWorldMenuHost.cs), [src/Fft.Client/Presentation/WorldMenuCheckPlan.cs](../../src/Fft.Client/Presentation/WorldMenuCheckPlan.cs), [src/Fft.Client/Presentation/WorldMenuPresentation.cs](../../src/Fft.Client/Presentation/WorldMenuPresentation.cs), [src/Fft.Client/Presentation/WorldMenuWindow.cs](../../src/Fft.Client/Presentation/WorldMenuWindow.cs).
 
-Existing bounded checks: [tests/Fft.Client.Tests/WorldMenuSessionTests.cs](../../tests/Fft.Client.Tests/WorldMenuSessionTests.cs).
+Existing bounded checks: [tests/Fft.Client.Tests/WorldMenuSessionTests.cs](../../tests/Fft.Client.Tests/WorldMenuSessionTests.cs), [tests/Fft.Client.Tests/WorldMenuHostTests.cs](../../tests/Fft.Client.Tests/WorldMenuHostTests.cs), [tools/verification/verify_world_menu.py](../../tools/verification/verify_world_menu.py).
 
 Manual checkpoint (pending-original-observation): Navigate title/new game/continue, confirm/cancel name and birthday.
 
@@ -596,7 +596,7 @@ Remaining gaps:
 
 - Original flow, assets, focus, input semantics and Windows presentation design are absent.
 
-Next action: Implement the separate authored Windows navigation host in ZOD-103 before ZOD-069. Retain original title/assets/flow, input timing and name/birthday as source-traced baseline work under ZOD-042.
+Next action: Review ZOD-103 gallery and physical input/native close/focus, then ZOD-069. Retain original title, name/birthday, assets/flow and timing as separate baseline work.
 
 Bounded follow-ups: ZOD-102, ZOD-103, ZOD-069.
 
@@ -686,9 +686,9 @@ Next action: Create a screen/operation inventory with text and asset dependencie
 
 Status: **absent**; scope: **platform-replacement**; ticket: **ZOD-042**; owner area: Fft.Client presentation and application commands.
 
-No player-facing slot UI. ZOD-068 supplies the tested synthetic checkpoint service; ZOD-102 supplies headless authored navigation and safe modal decisions. ZOD-103 native navigation is still required before ZOD-069. Complete original availability remains unenumerated.
+No player-facing slot UI. ZOD-068 supplies the synthetic service; ZOD-102/103 now provide authored native navigation and modal decisions with finite GPU/replay checks. ZOD-103 owner visual/physical-input review is pending before ZOD-069. Original availability remains unenumerated.
 
-Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-067-campaign-save-state.md](../../docs/architecture/zod-067-campaign-save-state.md), [docs/development/synthetic-world-navigation.md](../../docs/development/synthetic-world-navigation.md), [docs/evidence/navigation/synthetic-world-navigation-v1.json](../../docs/evidence/navigation/synthetic-world-navigation-v1.json).
+Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-067-campaign-save-state.md](../../docs/architecture/zod-067-campaign-save-state.md), [docs/development/synthetic-world-navigation.md](../../docs/development/synthetic-world-navigation.md), [docs/evidence/navigation/synthetic-world-navigation-v1.json](../../docs/evidence/navigation/synthetic-world-navigation-v1.json), [docs/development/windows-world-navigation.md](../../docs/development/windows-world-navigation.md), [docs/evidence/navigation/windows-world-navigation-v1.json](../../docs/evidence/navigation/windows-world-navigation-v1.json).
 
 Source entry points (pinned revision above; not full traces): [src/world/card_save.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/card_save.c), [include/fft/save.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/save.h), [src/event/card/entry.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/event/card/entry.c).
 
@@ -698,9 +698,9 @@ Manual checkpoint (pending-original-observation): At legal original save locatio
 
 Remaining gaps:
 
-- Native host/device/visual checks and slot list/confirmation/error/recovery screens remain unimplemented; original checkpoint availability needs separate source/observation evidence.
+- Owner gallery and actual device/native close/focus checks remain pending; slot list/confirmation/error/recovery screens and original checkpoint availability need separate implementation/evidence.
 
-Next action: Implement ZOD-103, then ZOD-069 using the existing service; full ZOD-042 completion is not the slot proof prerequisite.
+Next action: Finish ZOD-103 owner visual/physical-input review, then ZOD-069 slot list/confirmation/error/recovery screens using the existing service.
 
 Bounded follow-ups: ZOD-068, ZOD-069, ZOD-102, ZOD-103.
 
@@ -883,15 +883,15 @@ Next action: Split mixed-sector decode from prepared-stream playback; keep BIN a
 
 Status: **partial**; scope: **platform-replacement**; ticket: **ZOD-061**; owner area: Fft.Client platform adapters.
 
-Synthetic and fixed prepared hosts run on Windows; bounded mouse/keyboard routing, resize mapping and programmed GPU checks exist.
+Synthetic and fixed prepared hosts run on Windows; bounded mouse/keyboard routing, resize mapping and programmed GPU checks exist. ZOD-103 adds a separate authored menu host with keyboard/mouse/controller press edges, focus/connection baselines, close-modal dispatch, full CPU/GPU target readback and resized pointer routes; owner visual and physical-input checks remain pending.
 
-Evidence: [docs/development/windows-synthetic-host.md](../../docs/development/windows-synthetic-host.md), [docs/development/playable-battle.md](../../docs/development/playable-battle.md).
+Evidence: [docs/development/windows-synthetic-host.md](../../docs/development/windows-synthetic-host.md), [docs/development/playable-battle.md](../../docs/development/playable-battle.md), [docs/development/windows-world-navigation.md](../../docs/development/windows-world-navigation.md), [docs/evidence/navigation/windows-world-navigation-v1.json](../../docs/evidence/navigation/windows-world-navigation-v1.json).
 
 Source entry points (pinned revision above; not full traces): [include/fft/input.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/input.h), [src/world/screen/pad_input.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/screen/pad_input.c).
 
-Current implementation: [src/Fft.Client/Presentation/BattleInputLatch.cs](../../src/Fft.Client/Presentation/BattleInputLatch.cs), [src/Fft.Client/Presentation/SceneLayout.cs](../../src/Fft.Client/Presentation/SceneLayout.cs).
+Current implementation: [src/Fft.Client/Presentation/BattleInputLatch.cs](../../src/Fft.Client/Presentation/BattleInputLatch.cs), [src/Fft.Client/Presentation/SceneLayout.cs](../../src/Fft.Client/Presentation/SceneLayout.cs), [src/Fft.Client/Navigation/WorldMenuInput.cs](../../src/Fft.Client/Navigation/WorldMenuInput.cs), [src/Fft.Client/Presentation/WindowsWorldMenuHost.cs](../../src/Fft.Client/Presentation/WindowsWorldMenuHost.cs), [src/Fft.Client/Presentation/WorldMenuCheckPlan.cs](../../src/Fft.Client/Presentation/WorldMenuCheckPlan.cs), [src/Fft.Client/Presentation/WorldMenuPresentation.cs](../../src/Fft.Client/Presentation/WorldMenuPresentation.cs), [src/Fft.Client/Presentation/WorldMenuWindow.cs](../../src/Fft.Client/Presentation/WorldMenuWindow.cs).
 
-Existing bounded checks: [tests/Fft.Client.Tests/BattleUiInputTests.cs](../../tests/Fft.Client.Tests/BattleUiInputTests.cs), [tests/Fft.Client.Tests/SceneLayoutTests.cs](../../tests/Fft.Client.Tests/SceneLayoutTests.cs).
+Existing bounded checks: [tests/Fft.Client.Tests/BattleUiInputTests.cs](../../tests/Fft.Client.Tests/BattleUiInputTests.cs), [tests/Fft.Client.Tests/SceneLayoutTests.cs](../../tests/Fft.Client.Tests/SceneLayoutTests.cs), [tests/Fft.Client.Tests/WorldMenuHostTests.cs](../../tests/Fft.Client.Tests/WorldMenuHostTests.cs), [tools/verification/verify_world_menu.py](../../tools/verification/verify_world_menu.py).
 
 Manual checkpoint (pending-original-observation): Test physical keyboard/mouse/controller, focus, native drag/resize, mixed-DPI and resource reset on supported Windows hardware.
 
@@ -899,7 +899,9 @@ Remaining gaps:
 
 - Physical timing, controller/remapping/accessibility and mixed-monitor behavior are not fully validated.
 
-Next action: Preserve shared logical commands while expanding device/navigation coverage.
+Next action: Review ZOD-103 physical keyboard/mouse/controller, native close/focus and gallery; retain remapping, accessibility, mixed-monitor DPI and device-loss scope under ZOD-061/later host work.
+
+Bounded follow-ups: ZOD-103, ZOD-069.
 
 ## Assets
 
@@ -1059,7 +1061,7 @@ Remaining gaps:
 
 - Native slot/menu presentation remains unimplemented; original campaign compatibility, broader storage environments and power-loss durability require later scope and evidence.
 
-Next action: Implement ZOD-103 native navigation, then ZOD-069 slot UI; retain ZOD-053 for full campaign persistence and broader storage validation.
+Next action: Finish ZOD-103 owner visual/physical-input review, then ZOD-069 slot UI; retain ZOD-053 for full campaign persistence and broader storage validation.
 
 Bounded follow-ups: ZOD-068, ZOD-069, ZOD-102, ZOD-103.
 

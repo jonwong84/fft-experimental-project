@@ -27,10 +27,11 @@ justifies it. Current assemblies are not yet interchangeable.
 
 ## What works today
 
-- **Authored world navigation model:** Home/New/live Resume, read-only Party,
-  travel and safe New/Exit decisions have headless transition regressions. The
-  native menu host and Save/Load screens are the next steps.
-  [Scope and validation](docs/development/synthetic-world-navigation.md).
+- **Authored world menu:** `--world-menu` opens Home/New/live Resume, read-only
+  Party, travel and safe New/Exit decisions. Keyboard/mouse/controller routes
+  have headless and finite Windows checks; owner visual/physical-input review
+  is pending. Save/Load screens follow afterward.
+  [Launch and validation](docs/development/windows-world-navigation.md).
 
 - **Synthetic world Save/Load:** a small authored idle-world checkpoint supports
   versioned saves, fresh-definition restore, validated slot summaries, stale-writer

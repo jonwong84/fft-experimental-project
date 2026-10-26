@@ -19,6 +19,8 @@ if (args.Length == 2 && args[0] == "--battle-check") return WindowsPlayableBattl
 if (args.Length > 0 && args[0] == "--prepared-scene") return WindowsPreparedSceneHost.Run(args);
 if (args.Length == 2 && args[0] == "--save-check") return BattleSaveCheck.Run(args[1]);
 if (args.Length == 2 && args[0] == "--world-save-check") return WorldCheckpointCheck.Run(args[1]);
+if (args.Length == 1 && args[0] == "--world-menu") return WindowsWorldMenuHost.Run();
+if (args.Length == 2 && args[0] == "--world-menu-check") return WindowsWorldMenuHost.Run(args[1]);
 
 if (args.Length == 0)
 {
@@ -53,7 +55,7 @@ if (args.Length == 2 && args[0] == "--scenario" && args[1] == "two-unit-battle")
 
 if (args.Length != 4 || args[0] != "--content-root" || args[2] is not ("--asset-id" or "--sprite-pose" or "--map"))
 {
-    Console.Error.WriteLine("Usage: Fft.Client [--battle | --battle-check <new-directory> | --window | --window-check <new-directory> | --prepared-scene --map-root <directory> --pose-root <directory> [--check <new-directory>] | --scenario two-unit-battle | --save-check <new-directory> | --world-save-check <new-directory> | --content-root <directory> (--asset-id|--sprite-pose|--map) <namespace:path>]");
+    Console.Error.WriteLine("Usage: Fft.Client [--battle | --battle-check <new-directory> | --window | --window-check <new-directory> | --prepared-scene --map-root <directory> --pose-root <directory> [--check <new-directory>] | --scenario two-unit-battle | --save-check <new-directory> | --world-save-check <new-directory> | --world-menu | --world-menu-check <new-directory> | --content-root <directory> (--asset-id|--sprite-pose|--map) <namespace:path>]");
     return 2;
 }
 

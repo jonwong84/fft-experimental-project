@@ -44,6 +44,14 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Latest implementation (2026-10-26): ZOD-103 is implemented; owner visual and
+physical-input review pending.** The authored Windows world menu passes two
+finite native runs, 51 samples/13 images each, with 16 exact repeated files and
+full CPU/GPU/headless matches. All **2,300 .NET / 284 Python tests** pass.
+Review the [launch/check guide](development/windows-world-navigation.md) and
+`scratch/world-menu-103-review/review.html`. ZOD-069 stays Waiting on this review;
+no original UI fidelity or physical-device claim is made.
+
 **Latest completion (2026-10-26): ZOD-102 is complete.** The authored world-menu
 application model proves Home/New/Resume, read-only Party, existing travel,
 parent focus and safe New/Exit confirmation without storage operations. All
@@ -1178,7 +1186,17 @@ native/device checks as unexecuted.
 
 ### ZOD-103 — Host authored world-menu navigation on Windows
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-102
+**Type:** Story · **Priority:** P2 · **Status:** Implemented; owner visual and physical-input review pending · **Depends on:** ZOD-102
+
+**Result (2026-10-26):** [Windows host](development/windows-world-navigation.md)
+adds explicit world-menu launch/check routes, authored panels/font, shared
+keyboard/mouse/controller edges, focus/connection baselines, close confirmation
+and resize-aware clicks. Two native processes finish the finite 51-sample plan
+and match 13 CPU/GPU images each; all 16 repeated files match. Complete action/
+event/view replay and independent state/PNG audit pass. Zero-warning Release
+build and **2,300 .NET / 284 Python tests** pass (15/3 new). Programmed focus/close
+and controller samples do not prove physical input; owner gallery and interactive
+checks remain pending. [Executed evidence](evidence/navigation/windows-world-navigation-v1.json).
 
 **Parent:** ZOD-042. **Scope:** Bind the ZOD-102 model to one explicitly selected
 Windows host with synthetic labels/panels, keyboard/mouse/controller action

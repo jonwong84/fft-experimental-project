@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-26",
   "edition": "SCUS-94221",
-  "managedCommit": "d0f53cbf0f470b4f3a51ba384898558f29cbe1a9",
+  "managedCommit": "164469cefc1fbd0989ed9b936e304b56fb2313b8",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 2285,
-    "source": "docs/development/synthetic-world-navigation.md",
+    "passed": 2300,
+    "source": "docs/development/windows-world-navigation.md",
     "runForThisInventory": false
   },
   "statusDefinitions": {
@@ -1581,7 +1581,7 @@
       "ownerTicket": "ZOD-042",
       "ownerArea": "Fft.Client presentation and application commands",
       "status": "absent",
-      "currentScope": "No original title/new-game/continue/name/birthday shell. ZOD-102 proves only an authored headless Home/New/live Resume/World/Party and confirmation model; no native host exists. No-argument client still prints a bootstrap line.",
+      "currentScope": "No original title/new-game/continue/name/birthday shell. ZOD-102/103 provide only a separate authored Windows Home/New/live Resume/World/Party model/host, with finite input/render/replay checks; owner visual/physical-input review is pending. No-argument client still prints a bootstrap line.",
       "referenceSources": [
         {
           "path": "src/open/title.c",
@@ -1599,15 +1599,30 @@
       "evidenceDocs": [
         "PROJECT_PLAN.md",
         "docs/development/synthetic-world-navigation.md",
-        "docs/evidence/navigation/synthetic-world-navigation-v1.json"
+        "docs/evidence/navigation/synthetic-world-navigation-v1.json",
+        "docs/development/windows-world-navigation.md",
+        "docs/evidence/navigation/windows-world-navigation-v1.json"
       ],
       "implementationPaths": [
-        "src/Fft.Client/Navigation/WorldMenuSession.cs"
+        "src/Fft.Client/Navigation/WorldMenuSession.cs",
+        "src/Fft.Client/Navigation/WorldMenuInput.cs",
+        "src/Fft.Client/Presentation/WindowsWorldMenuHost.cs",
+        "src/Fft.Client/Presentation/WorldMenuCheckPlan.cs",
+        "src/Fft.Client/Presentation/WorldMenuPresentation.cs",
+        "src/Fft.Client/Presentation/WorldMenuWindow.cs"
       ],
       "automatedChecks": [
         {
           "path": "tests/Fft.Client.Tests/WorldMenuSessionTests.cs",
           "scope": "18 authored application navigation cases: focus, modal isolation, session preservation, travel/events and repeated logical script. No original title equivalence."
+        },
+        {
+          "path": "tests/Fft.Client.Tests/WorldMenuHostTests.cs",
+          "scope": "15 authored input/render/layout/finite-plan tests; no physical-device or original-title equivalence."
+        },
+        {
+          "path": "tools/verification/verify_world_menu.py",
+          "scope": "Independent native artifact/state/PNG audit, 26 images and 16 exact repeated files."
         }
       ],
       "manualCheckpoint": {
@@ -1617,7 +1632,7 @@
       "openQuestions": [
         "Original flow, assets, focus, input semantics and Windows presentation design are absent."
       ],
-      "nextAction": "Implement the separate authored Windows navigation host in ZOD-103 before ZOD-069. Retain original title/assets/flow, input timing and name/birthday as source-traced baseline work under ZOD-042.",
+      "nextAction": "Review ZOD-103 gallery and physical input/native close/focus, then ZOD-069. Retain original title, name/birthday, assets/flow and timing as separate baseline work.",
       "followUpTickets": [
         "ZOD-102",
         "ZOD-103",
@@ -1804,7 +1819,7 @@
       "ownerTicket": "ZOD-042",
       "ownerArea": "Fft.Client presentation and application commands",
       "status": "absent",
-      "currentScope": "No player-facing slot UI. ZOD-068 supplies the tested synthetic checkpoint service; ZOD-102 supplies headless authored navigation and safe modal decisions. ZOD-103 native navigation is still required before ZOD-069. Complete original availability remains unenumerated.",
+      "currentScope": "No player-facing slot UI. ZOD-068 supplies the synthetic service; ZOD-102/103 now provide authored native navigation and modal decisions with finite GPU/replay checks. ZOD-103 owner visual/physical-input review is pending before ZOD-069. Original availability remains unenumerated.",
       "referenceSources": [
         {
           "path": "src/world/card_save.c",
@@ -1823,7 +1838,9 @@
         "PROJECT_PLAN.md",
         "docs/architecture/zod-067-campaign-save-state.md",
         "docs/development/synthetic-world-navigation.md",
-        "docs/evidence/navigation/synthetic-world-navigation-v1.json"
+        "docs/evidence/navigation/synthetic-world-navigation-v1.json",
+        "docs/development/windows-world-navigation.md",
+        "docs/evidence/navigation/windows-world-navigation-v1.json"
       ],
       "implementationPaths": [],
       "automatedChecks": [],
@@ -1832,9 +1849,9 @@
         "procedure": "At legal original save locations, save/continue through Windows UI and test overwrite/cancel/failure recovery."
       },
       "openQuestions": [
-        "Native host/device/visual checks and slot list/confirmation/error/recovery screens remain unimplemented; original checkpoint availability needs separate source/observation evidence."
+        "Owner gallery and actual device/native close/focus checks remain pending; slot list/confirmation/error/recovery screens and original checkpoint availability need separate implementation/evidence."
       ],
-      "nextAction": "Implement ZOD-103, then ZOD-069 using the existing service; full ZOD-042 completion is not the slot proof prerequisite.",
+      "nextAction": "Finish ZOD-103 owner visual/physical-input review, then ZOD-069 slot list/confirmation/error/recovery screens using the existing service.",
       "followUpTickets": [
         "ZOD-068",
         "ZOD-069",
@@ -2595,7 +2612,7 @@
       "ownerTicket": "ZOD-061",
       "ownerArea": "Fft.Client platform adapters",
       "status": "partial",
-      "currentScope": "Synthetic and fixed prepared hosts run on Windows; bounded mouse/keyboard routing, resize mapping and programmed GPU checks exist.",
+      "currentScope": "Synthetic and fixed prepared hosts run on Windows; bounded mouse/keyboard routing, resize mapping and programmed GPU checks exist. ZOD-103 adds a separate authored menu host with keyboard/mouse/controller press edges, focus/connection baselines, close-modal dispatch, full CPU/GPU target readback and resized pointer routes; owner visual and physical-input checks remain pending.",
       "referenceSources": [
         {
           "path": "include/fft/input.h",
@@ -2608,11 +2625,18 @@
       ],
       "evidenceDocs": [
         "docs/development/windows-synthetic-host.md",
-        "docs/development/playable-battle.md"
+        "docs/development/playable-battle.md",
+        "docs/development/windows-world-navigation.md",
+        "docs/evidence/navigation/windows-world-navigation-v1.json"
       ],
       "implementationPaths": [
         "src/Fft.Client/Presentation/BattleInputLatch.cs",
-        "src/Fft.Client/Presentation/SceneLayout.cs"
+        "src/Fft.Client/Presentation/SceneLayout.cs",
+        "src/Fft.Client/Navigation/WorldMenuInput.cs",
+        "src/Fft.Client/Presentation/WindowsWorldMenuHost.cs",
+        "src/Fft.Client/Presentation/WorldMenuCheckPlan.cs",
+        "src/Fft.Client/Presentation/WorldMenuPresentation.cs",
+        "src/Fft.Client/Presentation/WorldMenuWindow.cs"
       ],
       "automatedChecks": [
         {
@@ -2622,6 +2646,14 @@
         {
           "path": "tests/Fft.Client.Tests/SceneLayoutTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Fft.Client.Tests/WorldMenuHostTests.cs",
+          "scope": "Authored device samples, resize mapping, immutable rendering and full finite-plan headless checks."
+        },
+        {
+          "path": "tools/verification/verify_world_menu.py",
+          "scope": "Two native processes, 51 samples/13 images each, 16 exact repeated files; physical input is explicitly unverified."
         }
       ],
       "manualCheckpoint": {
@@ -2631,7 +2663,11 @@
       "openQuestions": [
         "Physical timing, controller/remapping/accessibility and mixed-monitor behavior are not fully validated."
       ],
-      "nextAction": "Preserve shared logical commands while expanding device/navigation coverage."
+      "nextAction": "Review ZOD-103 physical keyboard/mouse/controller, native close/focus and gallery; retain remapping, accessibility, mixed-monitor DPI and device-loss scope under ZOD-061/later host work.",
+      "followUpTickets": [
+        "ZOD-103",
+        "ZOD-069"
+      ]
     },
     {
       "id": "COV-AST-001",
@@ -3000,7 +3036,7 @@
       "openQuestions": [
         "Native slot/menu presentation remains unimplemented; original campaign compatibility, broader storage environments and power-loss durability require later scope and evidence."
       ],
-      "nextAction": "Implement ZOD-103 native navigation, then ZOD-069 slot UI; retain ZOD-053 for full campaign persistence and broader storage validation.",
+      "nextAction": "Finish ZOD-103 owner visual/physical-input review, then ZOD-069 slot UI; retain ZOD-053 for full campaign persistence and broader storage validation.",
       "followUpTickets": [
         "ZOD-068",
         "ZOD-069",

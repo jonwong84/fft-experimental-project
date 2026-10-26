@@ -27,7 +27,9 @@ Its family-level entries are not a complete original record/encounter catalog.
   maps original campaign fields/checkpoints and unsaved RNG lifecycles. ZOD-068
   now proves the [synthetic checkpoint service](../development/synthetic-world-checkpoint.md).
   ZOD-102 adds its [authored application navigation model](../development/synthetic-world-navigation.md);
-  the native ZOD-103 host precedes ZOD-069's slot UI. Full campaign persistence remains separate.
+  the [ZOD-103 native host](../development/windows-world-navigation.md) now has
+  finite Windows checks and awaits owner visual/physical-input review before
+  ZOD-069's slot UI. Full campaign persistence remains separate.
 - `Zodiac.Content.Events` validates/loads the [prepared synthetic conditional event](../development/prepared-scenario-event.md).
   AssetTool owns raw block inspection and the CLI assembly composes conversion.
   ZOD-065 projects into `Zodiac.Framework.Events`: immutable normalized operations,

@@ -1,0 +1,267 @@
+{
+  "format": "fft.windows-world-navigation-validation",
+  "schemaVersion": 1,
+  "ticket": "ZOD-103",
+  "validatedOn": "2026-10-26",
+  "status": "implemented; owner visual and physical-input review pending",
+  "managedBase": "164469cefc1fbd0989ed9b936e304b56fb2313b8",
+  "guide": "docs/development/windows-world-navigation.md",
+  "sourceContext": {
+    "note": "docs/development/synthetic-world-navigation.md",
+    "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "freshReferenceHead": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "referenceClean": true,
+    "newOriginalRuleOrAssetTranslated": false
+  },
+  "sourceIdentities": [
+    {
+      "localPath": "src/Fft.Client/Navigation/WorldMenuInput.cs",
+      "bytes": 2316,
+      "sha256": "d593b08563d291f76027f25f39ccafd390d3b811603a8a3b97b32113951ce09f"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/WindowsWorldMenuHost.cs",
+      "bytes": 1112,
+      "sha256": "72d9392de36dee2862377279e14c3af0b018061a6ea9a7c53c0478ae171f7954"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/WorldMenuCheckPlan.cs",
+      "bytes": 3537,
+      "sha256": "3efcb117a5cc7a8725dc8a92b352601fcb9a19faa8f7d94f6357447fd10e81f1"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/WorldMenuPresentation.cs",
+      "bytes": 5160,
+      "sha256": "55161be68f5997943210b638627415d646f13db6c911e1ff8158cf950146bd95"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/WorldMenuWindow.cs",
+      "bytes": 11836,
+      "sha256": "c2eaf34990a2cd4cb87ce30572df6e40491bf4aeed57a2d401d997268403b290"
+    },
+    {
+      "localPath": "src/Fft.Client/Program.cs",
+      "bytes": 5254,
+      "sha256": "44ac42d9a13d15cf6d8e684625c5aac2d9ab4e8bdaeafccdb4862b68f4dee128"
+    },
+    {
+      "localPath": "tests/Fft.Client.Tests/WorldMenuHostTests.cs",
+      "bytes": 8716,
+      "sha256": "894dea4c2adbf4d4d8d3d3474c0af032bc73955b848dd3621a91e88c16f02bb4"
+    },
+    {
+      "localPath": "tools/verification/verify_world_menu.py",
+      "bytes": 8701,
+      "sha256": "b8ba751cf641ecad64223fae1ba175aeb475186b7f641d6171722473e3ee4fce"
+    },
+    {
+      "localPath": "tools/verification/test_world_menu.py",
+      "bytes": 1591,
+      "sha256": "3d5cd09c7baa0ea3d9f856b9265b1e7463cf44a14696bd4b46c29b68616bf3e2"
+    }
+  ],
+  "managed": {
+    "passed": 2300,
+    "newClientTests": 15,
+    "restore": "locked-mode",
+    "configuration": "Release",
+    "warnings": 0,
+    "errors": 0,
+    "assemblies": [
+      {
+        "assembly": "tessera.engine.tests.dll",
+        "passed": 24,
+        "trx": {
+          "localPath": "scratch/world-menu-103-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_02_30_44_net10.0.trx",
+          "bytes": 36854,
+          "sha256": "e032ab1169fab302504a31d5eee59b29cccfc3b1c28daf702994cdfcae0d7558"
+        }
+      },
+      {
+        "assembly": "fft.client.tests.dll",
+        "passed": 389,
+        "trx": {
+          "localPath": "scratch/world-menu-103-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_02_30_44_net10.0[1].trx",
+          "bytes": 575370,
+          "sha256": "0e721df384a03b1c364f9db5cfb3161a3cf5dc400bca006c8feaa4f485b9507c"
+        }
+      },
+      {
+        "assembly": "zodiac.assettool.tests.dll",
+        "passed": 202,
+        "trx": {
+          "localPath": "scratch/world-menu-103-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_02_30_45_net10.0.trx",
+          "bytes": 299067,
+          "sha256": "cda0cadcb38776daaf0cc1036e421406a748511b9c6cfc768d02bfad7f951adf"
+        }
+      },
+      {
+        "assembly": "zodiac.assettool.cli.tests.dll",
+        "passed": 211,
+        "trx": {
+          "localPath": "scratch/world-menu-103-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_02_30_45_net10.0[1].trx",
+          "bytes": 324268,
+          "sha256": "b7860bc0e8ec10c1b644bddacc7e3e77b6041b83a6d3560a097c416496a875bb"
+        }
+      },
+      {
+        "assembly": "zodiac.framework.tests.dll",
+        "passed": 830,
+        "trx": {
+          "localPath": "scratch/world-menu-103-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_02_30_45_net10.0[2].trx",
+          "bytes": 1255557,
+          "sha256": "528678517c1e1510339f65d96de71d402ff28a84eb0e0ade939236f0370d32b2"
+        }
+      },
+      {
+        "assembly": "zodiac.content.tests.dll",
+        "passed": 644,
+        "trx": {
+          "localPath": "scratch/world-menu-103-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_02_30_45_net10.0[3].trx",
+          "bytes": 938766,
+          "sha256": "d32a644a3ada875535393f720c6b967779ba9108dff723e90e747256236c7110"
+        }
+      }
+    ]
+  },
+  "python": {
+    "passed": 284,
+    "newTests": 3
+  },
+  "logs": [
+    {
+      "localPath": "scratch/world-menu-103-restore.log",
+      "bytes": 82,
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc"
+    },
+    {
+      "localPath": "scratch/world-menu-103-build.log",
+      "bytes": 1678,
+      "sha256": "534ee95bf96201b9dce4bea78a639a1e31be70cf60fd6b5910fe1b988a1f039c"
+    },
+    {
+      "localPath": "scratch/world-menu-103-focused.log",
+      "bytes": 1070,
+      "sha256": "2d303310e5e70d409ca9d7c830d5dc3082f52204cd7f1467c26b7aecf65f2dad"
+    },
+    {
+      "localPath": "scratch/world-menu-103-tests.log",
+      "bytes": 2899,
+      "sha256": "367ae488f51b6b8fae15a1e2d1e42b8313a7ae178e954f5b4dccb830921a5068"
+    },
+    {
+      "localPath": "scratch/world-menu-103-python.log",
+      "bytes": 1274,
+      "sha256": "8696450242729197baee80d578fbb60263b9678d0d8ae423a37a63c4b093357c"
+    },
+    {
+      "localPath": "scratch/world-menu-103-a.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "localPath": "scratch/world-menu-103-b.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "nativePlan": {
+    "recordedBeforeExecution": "docs/development/windows-world-navigation.md",
+    "allowedProcesses": 2,
+    "executedProcesses": 2,
+    "failedProcesses": 0,
+    "maximumDrawsPerProcess": 600,
+    "maximumSecondsPerProcess": 60,
+    "actualRuns": [
+      {
+        "label": "a",
+        "manifest": {
+          "localPath": "scratch/world-menu-103-a-files.json",
+          "bytes": 2765,
+          "sha256": "3050e8eb3f12fa9deab5aef34bdee27eef42bc5d998d3f5c63b35c51fb0cdb8f"
+        },
+        "frames": 51,
+        "samples": 51,
+        "captures": 13,
+        "report": {
+          "localPath": "scratch/world-menu-103-a/check.json",
+          "bytes": 2716,
+          "sha256": "15eddcf15692c3b0892c5c5d5b15463987ff3e58c93c68a2dcb73414b3b63a96"
+        },
+        "toolObservedSeconds": 3.195246
+      },
+      {
+        "label": "b",
+        "manifest": {
+          "localPath": "scratch/world-menu-103-b-files.json",
+          "bytes": 2765,
+          "sha256": "1be5389a4e3ea58a60b15d93d4775ffa93e8a5edc50d311a9267e2fc446a5d45"
+        },
+        "frames": 51,
+        "samples": 51,
+        "captures": 13,
+        "report": {
+          "localPath": "scratch/world-menu-103-b/check.json",
+          "bytes": 2716,
+          "sha256": "15eddcf15692c3b0892c5c5d5b15463987ff3e58c93c68a2dcb73414b3b63a96"
+        },
+        "toolObservedSeconds": 2.505426
+      }
+    ],
+    "noExtraGraphicsLaunches": true
+  },
+  "audit": {
+    "localPath": "scratch/world-menu-103-audit.json",
+    "bytes": 340,
+    "sha256": "8e0b73232768c16131b092e31f1ceaed4a81f0d0e164a7c4106548ea9f6ab71a"
+  },
+  "gallery": {
+    "localPath": "scratch/world-menu-103-review/review.html",
+    "bytes": 4304,
+    "sha256": "882b5b0b29e0167200941dabe9584e7ff19337daa3a6134b4e6400e8279d5dc4"
+  },
+  "results": {
+    "exactRepeatedFiles": 16,
+    "matchedImages": 26,
+    "matchedPixels": 15974400,
+    "gpuTargetMatchedCpu": true,
+    "allDispatchedResultsEventsAndViewsMatchedFreshReplay": true,
+    "independentAuthoredCheckpointAndEventAudit": true,
+    "actualBackbufferResizes": [
+      [
+        1280,
+        720
+      ],
+      [
+        720,
+        960
+      ]
+    ],
+    "resizedPointerRoutes": true,
+    "explicitResourceRecreationPreservedState": true,
+    "drawingPreservedState": true,
+    "saveDirectoriesCreated": false,
+    "finalLocation": "sample:location/hill",
+    "finalFunds": 93,
+    "finalElapsedSeconds": 53
+  },
+  "review": {
+    "agentInspected": [
+      "party.png",
+      "confirm-new.png"
+    ],
+    "ownerVisualApproval": false,
+    "physicalKeyboardMouseControllerVerified": false,
+    "actualOsCloseAndFocusVerified": false,
+    "programmedCloseEventPipeline": true,
+    "programmedFocusAndConnectionSamples": true
+  },
+  "limitations": [
+    "No original UI, input timing, title assets or screen equivalence claim.",
+    "Gallery shows the fixed authored canvas after resizing, not new aspect/CRT/resolution modes.",
+    "Keyboard and mouse are polled; very short between-sample presses may be missed. No repeat/analog/binding configuration.",
+    "Controller index one uses SDL D-pad/A/B mapping; RetroArch mapping is independent.",
+    "Physical input/native close/focus and owner visual review remain pending; mixed-monitor DPI and forced device loss are not covered.",
+    "Save/Load screens remain ZOD-069; original UI/campaign and ZOD-061 device breadth remain open."
+  ]
+}
