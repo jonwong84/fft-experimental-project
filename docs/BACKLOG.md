@@ -1131,6 +1131,16 @@ combat rewrite or change the active banner queue.
 
 **Acceptance criteria:** All baseline actions and required AI choices are mapped to implementation/fixtures or explicit unresolved entries; representative encounters validate state, RNG draw ordering, and rewards; mandatory enemy/ally turns can complete without player scripting. Record observed AI deviations separately from player-action correctness.
 
+**Owner AI pacing preference (2026-10-26):** Use brief presentation pauses between
+enemy movement and action in the proposed first AI skirmish. Pauses must not feed
+wall-clock time into deterministic decisions, battle state or RNG. The current
+managed battle has no AI opponent. Read-only decomp at
+11464943bbdbd2a0af022d90cb7f10455cf911df contains battle/ai/turn.c (command selection),
+evaluation.c (candidate evaluation/simulation) and abilities.c (usable abilities).
+Translate a separately traced bounded subset into C#; do not execute C at runtime
+or claim the entire original AI is implemented. This records future direction;
+ZOD-114 remains the next selected investigation.
+
 ### ZOD-104 — Trace and specify the first executable job ability
 
 **Type:** Spike · **Priority:** P3 · **Status:** Complete (source/data contract; implementation unexecuted) · **Depends on:** ZOD-017, ZOD-022, ZOD-023

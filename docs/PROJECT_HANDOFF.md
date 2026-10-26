@@ -36,6 +36,12 @@ contract to assess safely removing the edge-only sword guard. Do not assume its
 draw order matches Throw Stone. Editor, battle checkpoints and broader combat
 remain outside that spike.
 
+**Future AI preference (owner, 2026-10-26):** Brief pauses between enemy movement
+and action, handled by presentation without changing deterministic simulation/RNG.
+No AI opponent is implemented yet. The pinned decomp includes battle/ai/turn.c,
+evaluation.c and abilities.c for later bounded source study and C# translation;
+ZOD-114 remains next, and the C reference stays outside the runtime.
+
 ## ZOD-112 source-contract checkpoint (historical)
 
 **ZOD-112 is complete; next ZOD-113 is Ready.** The
