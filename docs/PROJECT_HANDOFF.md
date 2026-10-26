@@ -2,6 +2,38 @@
 
 ## Current handoff — 2026-10-26
 
+**ZOD-114 is complete**, a source/description contract for flat sword knockback.
+Fresh clean read-only reference is 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Ordinary sword criticals directly attempt a push, without Throw Stone's Brave
+contest. Miss/normal/critical still use four/six/seven draws; off-map suppression
+and lethal cancellation add none. Zero damage can push. Flat displacement keeps
+both incoming settled facings and the target's voluntary choices/CT.
+
+Two identical offline audits fingerprint 17 reference files/41 functions, verify
+35 vectors and preserve 42 managed/historical files. **329 Python tests pass**
+(12 new), including raw critical/bonus boundaries, signed envelope, exact streams,
+exhaustion and contract-tampering checks. One initial test expectation contained
+an incorrect seed57/count4 word; the independent closed-form recurrence confirmed
+3587663605 and the test was corrected before the passing full run. No .NET rerun;
+last full implementation validation remains ZOD-113's 2,804 .NET / 317 Python.
+No production/test C# files, old fixtures/saves/evidence, prepared assets or native
+captures changed. No native/original/emulator process or runtime guard relaxation.
+New reports and the one-off description builder stay ignored under
+scratch/sword-knockback-114-* and scratch/build_sword_knockback_114.py.
+
+See [contract/reproduction](architecture/zod-114-flat-sword-knockback.md),
+[evidence](evidence/combat/sword-knockback-contract-v1.json) and the description-only
+[vectors/implementation inventory](fixtures/behavior/sword-flat-knockback-contract-v1.json).
+All SKB-001..020 implementation cases remain unexecuted.
+**Recommended next: ZOD-115**, the strict explicit opt-in pure flat-sword extension.
+The current geometry validator admits blocked cells/upper layers and arbitrary
+surface IDs; simply deleting the edge-only guard would admit untraced behavior.
+Preserve the legacy entry point/default and historical results. Then select the
+bounded original-AI Move/Attack/Wait source/interface contract. Editor and ZOD-106
+remain deferred; source C stays outside the runtime.
+
+## ZOD-113 implementation checkpoint (historical)
+
 **ZOD-113 is complete.** The pure sword command retains incoming living-actor
 facing at the settled boundary. The reference checkout was freshly checked clean
 at 11464943bbdbd2a0af022d90cb7f10455cf911df, all 12 ZOD-112 fingerprints matched.
@@ -39,8 +71,9 @@ remain outside that spike.
 **Future AI preference (owner, 2026-10-26):** Brief pauses between enemy movement
 and action, handled by presentation without changing deterministic simulation/RNG.
 No AI opponent is implemented yet. The pinned decomp includes battle/ai/turn.c,
-evaluation.c and abilities.c for later bounded source study and C# translation;
-ZOD-114 remains next, and the C reference stays outside the runtime.
+evaluation.c and abilities.c for later bounded source study and C# translation.
+That checkpoint selected ZOD-114; the current queue now selects ZOD-115. The C
+reference stays outside the runtime.
 
 **Owner AI extensibility direction (2026-10-26):** Recover the original algorithm
 as readable C# behind a replaceable typed decision interface in Zodiac Framework.

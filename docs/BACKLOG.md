@@ -44,6 +44,24 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Current completion (2026-10-26): ZOD-114 is complete**, a
+[flat sword knockback source contract](architecture/zod-114-flat-sword-knockback.md).
+Fresh clean read-only reference 11464943bbdbd2a0af022d90cb7f10455cf911df confirms
+that ordinary sword criticals directly attempt displacement, without Brave rolls.
+Miss/normal/critical retain four/six/seven draws; lethal damage cancels a pending
+push and zero damage can still push. Settled facings and target choices/CT remain.
+Two identical offline audits verify 17 reference files/41 functions, 35 vectors
+and 42 preserved files; **329 Python tests pass** (12 new). No production change
+or original/native launch; last full .NET result remains 2,804 from ZOD-113.
+All SKB-001..020 production implementation cases remain unexecuted. See
+[evidence](evidence/combat/sword-knockback-contract-v1.json).
+**Recommended next: ZOD-115**, the strict opt-in pure flat-sword extension.
+Keep the old edge-only entry point and history. Bounded original-AI
+Move/Attack/Wait source/interface mapping follows validated attack support;
+editor work and ZOD-106 battle checkpoints remain deferred.
+
+### ZOD-113 implementation checkpoint (historical)
+
 **Current completion (2026-10-26): ZOD-113 is complete.** The pure sword command
 now retains the living actor's incoming settled facing. Current-action damage,
 events, RNG and guards stay intact; later facing-based evade now follows the
@@ -1139,7 +1157,7 @@ managed battle has no AI opponent. Read-only decomp at
 evaluation.c (candidate evaluation/simulation) and abilities.c (usable abilities).
 Translate a separately traced bounded subset into C#; do not execute C at runtime
 or claim the entire original AI is implemented. This records future direction;
-ZOD-114 remains the next selected investigation.
+ZOD-114's sword investigation is complete; ZOD-115 is the next implementation.
 
 **Owner AI extensibility direction (2026-10-26):** Translate the original decision
 algorithm into readable, source-traced C# behind a replaceable typed decision
@@ -1154,7 +1172,7 @@ ordering and resumable decision state before fixing the interface shape; do not
 assume one stateless call or a complete turn plan matches the source. Keep useful
 decision traces and deterministic scenario fixtures so implementations can be
 compared on identical inputs. No production interface, AI implementation, plugin
-loader or editor work is introduced by this direction; ZOD-114 remains next.
+loader or editor work is introduced by this direction; ZOD-115 remains next.
 
 ### ZOD-104 — Trace and specify the first executable job ability
 
@@ -1401,7 +1419,17 @@ not required if presentation is unchanged; historical captures remain historical
 
 ### ZOD-114 — Specify flat sword critical knockback and the geometry gate
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-113
+**Type:** Spike · **Priority:** P3 · **Status:** Complete (source/description contract; production unimplemented) · **Depends on:** ZOD-113
+
+**Result (2026-10-26):** [Source and bounded recommendation](architecture/zod-114-flat-sword-knockback.md)
+and [evidence](evidence/combat/sword-knockback-contract-v1.json) pin clean read-only
+11464943bbdbd2a0af022d90cb7f10455cf911df. Critical directly attempts a push;
+no Brave rolls. Exact four/six/seven draws, destination/lethal cancellation,
+zero-damage push and settled choice/facing effects are specified. Two identical
+offline audits verify 17 files/41 functions, 35 arithmetic vectors and 42 preserved
+files. All 329 Python tests pass (12 new); no .NET rerun or runtime/native change.
+SKB-001..020 remain unexecuted. The current geometry validator is insufficient
+to remove its edge-only guard globally: ZOD-115 must add strict explicit opt-in.
 
 **Scope:** Trace the next closed ordinary sword extension against fresh pinned
 read-only decomp: critical-triggered knockback on an open dry flat two-unit map.
@@ -1416,6 +1444,29 @@ and boundary vectors, an unexecuted implementation-case inventory and one bounde
 implementation recommendation. Preserve settled-facing correction and historical
 evidence. No guard relaxation or gameplay change in this spike; no falls, slopes,
 water, additional units, reactions, animations, rewards, editor or save feature.
+
+### ZOD-115 — Implement the opt-in flat sword critical knockback extension
+
+**Type:** Feature · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-114
+
+**Scope:** Implement SKB-001..020 in the pure Zodiac Framework boundary using the
+ZOD-114 source contract, rechecking reference HEAD before translation. Add an
+explicit ordinary-ground, two-unit, open flat lower-layer profile; preserve the
+old edge-only entry point/default. Retain the existing sword damage, signed-16
+gate, four/six/seven draws, settled facings and atomic rejection behavior. Publish
+one-tile nonlethal critical displacement without spending the target's choices.
+Avoid a second damage algorithm and do not reuse Throw Stone's Brave contest.
+
+**Acceptance criteria:** Execute the source/boundary vectors, every draw-budget
+branch, exact state/event/RNG invariants, both action orders, later range and
+accepted/rejected replay. Prove profile rejection before mutation for unsupported
+terrain, units and inputs. Preserve historical fixtures/evidence/saves and legacy
+headless results; run locked build and appropriate full suites. Specify the
+forced-position event and strict profile semantics in a behavior note. No content,
+native/scenario/save activation, falls, slopes, water, extra units, reactions,
+rewards, editor or AI implementation in this milestone. After this proof, select
+the bounded original-AI Move/Attack/Wait source/interface mapping; content/native
+integration must receive its own finite scope before activation.
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 
