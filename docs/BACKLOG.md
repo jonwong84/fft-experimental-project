@@ -44,17 +44,19 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
-**Latest implementation (2026-10-26): ZOD-069 is visually approved;
-interactive review remains pending.** Native Save/Load adds two slot pages, validated
+**Latest completion (2026-10-26): ZOD-069 is complete.** Native Save/Load adds two slot pages, validated
 primary/backup details, Cancel-first overwrite/discard/recovery, success/error
 and explicit refresh states. All **2,317 .NET / 287 Python tests** pass.
 Two finite native runs execute 140 samples/22 captures each, with complete
 CPU/GPU/replay matches and **51 exact repeated UI/storage files**. The owner
 approved `scratch/world-slots-069-review/review.html`: "This appears to be fine."
-Next use the [launch/manual guide](development/world-save-load-ui.md) for the
-interactive slot workflow. No implementation suites or agent-run graphics checks
-were repeated for approval. Prior navigation approval is retained separately;
-original campaign/save availability remains open.
+After the [launch/manual guide](development/world-save-load-ui.md), the owner
+separately confirmed the interactive slot check: "It's good." Record this as
+owner-reported manual observation. No implementation suites or agent-run graphics
+checks were repeated for approval. Prior navigation approval is retained separately;
+original campaign/save availability remains open. **Next:** select the next
+bounded milestone from the remaining backlog, breaking down an epic if needed;
+no follow-on implementation ticket has been selected. Deferred work stays deferred.
 
 **Latest completion (2026-10-26): ZOD-103 is complete.** The owner confirmed the
 manual keyboard/mouse/controller, resize, native close and focus checklist:
@@ -1233,7 +1235,7 @@ ZOD-042 epic and original party/job/equipment workflows stay open.
 
 ### ZOD-069 — Add native Windows Save/Load slot navigation
 
-**Type:** Story · **Priority:** P2 · **Status:** Implemented; owner visually approved; interactive review pending · **Depends on:** ZOD-068, ZOD-103
+**Type:** Story · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-068, ZOD-103
 
 **Result (2026-10-26):** [Slot UI](development/world-save-load-ui.md) delegates
 catalog/save/load/recovery to the existing service, freezes selected revisions,
@@ -1247,7 +1249,9 @@ headless replay and independent state/storage/PNG audit pass; 51 files repeat,
 and 32 prior navigation artifacts are unchanged. Existing-output/syntax gates
 reject before window construction. No actual user save folder was written by
 validation. The owner approved the gallery on 2026-10-26: "This appears to be fine."
-Manual slot keyboard/mouse/controller checks remain pending. No implementation
+The owner separately confirmed the interactive slot check after launch/check
+instructions: "It's good." Record the bounded workflow as passed by owner report;
+do not infer measured latency or exact device/mapping fidelity. No implementation
 suites or agent-run graphics checks were repeated and reviewed artifacts are
 unchanged. [Executed evidence](evidence/navigation/world-save-load-ui-v1.json).
 

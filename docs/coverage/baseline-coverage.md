@@ -580,7 +580,7 @@ Bounded follow-ups: ZOD-080, ZOD-081, ZOD-082, ZOD-083, ZOD-084, ZOD-085, ZOD-08
 
 Status: **absent**; scope: **baseline**; ticket: **ZOD-042**; owner area: Fft.Client presentation and application commands.
 
-No original title/new-game/continue/name/birthday shell. ZOD-102/103 provide only a separate authored Windows Home/New/live Resume/World/Party model/host, with finite input/render/replay checks; owner gallery approval is recorded; bounded manual controls/resize/close/focus checks are owner-reported as passed. No-argument client still prints a bootstrap line. ZOD-069 adds native Home Load/World Save/Load only for the authored checkpoint; its gallery is owner-approved and interactive slot review is pending and no original title/Continue semantics are claimed.
+No original title/new-game/continue/name/birthday shell. ZOD-102/103 provide only a separate authored Windows Home/New/live Resume/World/Party model/host, with finite input/render/replay checks; owner gallery approval is recorded; bounded manual controls/resize/close/focus checks are owner-reported as passed. No-argument client still prints a bootstrap line. ZOD-069 adds native Home Load/World Save/Load only for the authored checkpoint; its gallery and bounded interactive workflow have owner approval, and no original title/Continue semantics are claimed.
 
 Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/development/synthetic-world-navigation.md](../../docs/development/synthetic-world-navigation.md), [docs/evidence/navigation/synthetic-world-navigation-v1.json](../../docs/evidence/navigation/synthetic-world-navigation-v1.json), [docs/development/windows-world-navigation.md](../../docs/development/windows-world-navigation.md), [docs/evidence/navigation/windows-world-navigation-v1.json](../../docs/evidence/navigation/windows-world-navigation-v1.json), [docs/development/world-save-load-ui.md](../../docs/development/world-save-load-ui.md), [docs/evidence/navigation/world-save-load-ui-v1.json](../../docs/evidence/navigation/world-save-load-ui-v1.json).
 
@@ -596,7 +596,7 @@ Remaining gaps:
 
 - Original flow, assets, focus, input semantics and Windows presentation design are absent.
 
-Next action: Review the new ZOD-069 interactive slot workflow; retain original title/name/birthday, assets/flow and timing as separate baseline work.
+Next action: Retain original title/name/birthday, assets/flow and timing as separate baseline work under ZOD-042; ZOD-069 bounded owner review is complete.
 
 Bounded follow-ups: ZOD-102, ZOD-103, ZOD-069.
 
@@ -686,7 +686,7 @@ Next action: Create a screen/operation inventory with text and asset dependencie
 
 Status: **partial**; scope: **platform-replacement**; ticket: **ZOD-042**; owner area: Fft.Client presentation and application commands.
 
-ZOD-069 implements authored native five-slot pages, validated details, frozen revisions, overwrite/discard/recovery confirmations, success/error and refresh states through ZOD-068. Two native checks repeat 51 UI/storage files, preserve corrupt primary/backup data and match CPU/GPU/fresh replay. Owner gallery approval is recorded; interactive slot review is pending; original availability remains unenumerated.
+ZOD-069 implements authored native five-slot pages, validated details, frozen revisions, overwrite/discard/recovery confirmations, success/error and refresh states through ZOD-068. Two native checks repeat 51 UI/storage files, preserve corrupt primary/backup data and match CPU/GPU/fresh replay. Owner gallery approval and owner-reported bounded interactive approval are recorded; original availability remains unenumerated.
 
 Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-067-campaign-save-state.md](../../docs/architecture/zod-067-campaign-save-state.md), [docs/development/synthetic-world-navigation.md](../../docs/development/synthetic-world-navigation.md), [docs/evidence/navigation/synthetic-world-navigation-v1.json](../../docs/evidence/navigation/synthetic-world-navigation-v1.json), [docs/development/windows-world-navigation.md](../../docs/development/windows-world-navigation.md), [docs/evidence/navigation/windows-world-navigation-v1.json](../../docs/evidence/navigation/windows-world-navigation-v1.json), [docs/development/world-save-load-ui.md](../../docs/development/world-save-load-ui.md), [docs/evidence/navigation/world-save-load-ui-v1.json](../../docs/evidence/navigation/world-save-load-ui-v1.json).
 
@@ -696,13 +696,13 @@ Current implementation: [src/Fft.Client/Navigation/WorldMenuSession.cs](../../sr
 
 Existing bounded checks: [tests/Fft.Client.Tests/WorldSlotMenuTests.cs](../../tests/Fft.Client.Tests/WorldSlotMenuTests.cs), [tools/verification/verify_world_slots.py](../../tools/verification/verify_world_slots.py).
 
-Manual checkpoint (owner-visual-approved-interactive-slot-review-pending): Owner approved scratch/world-slots-069-review/review.html on 2026-10-26: "This appears to be fine." Next try Save/Load/cancel/overwrite/recovery with keyboard/mouse/controller, page/resize and close. Prior ZOD-103 navigation approval remains separate.
+Manual checkpoint (owner-reported-bounded-authored-slots): Owner approved the gallery on 2026-10-26: "This appears to be fine." After the interactive launch/check guide, owner separately confirmed "It's good." Record bounded slot interaction as passed by owner report; no measured latency or exact device/mapping fidelity. Prior ZOD-103 navigation approval remains separate.
 
 Remaining gaps:
 
-- Owner interactive slot checks and original checkpoint/save availability remain open; full campaign, PS1 cards and RNG continuation are unsupported.
+- Original checkpoint/save availability remains unenumerated; full campaign, PS1 cards and RNG continuation are unsupported.
 
-Next action: Complete owner interactive slot review after recorded gallery approval; retain original availability/full UI scope under ZOD-042/053.
+Next action: Retain original save availability/full UI scope under ZOD-042/053; ZOD-069 is complete within its authored scope.
 
 Bounded follow-ups: ZOD-068, ZOD-069, ZOD-102, ZOD-103.
 
@@ -885,7 +885,7 @@ Next action: Split mixed-sector decode from prepared-stream playback; keep BIN a
 
 Status: **partial**; scope: **platform-replacement**; ticket: **ZOD-061**; owner area: Fft.Client platform adapters.
 
-Synthetic and fixed prepared hosts run on Windows; bounded mouse/keyboard routing, resize mapping and programmed GPU checks exist. ZOD-103 adds a separate authored menu host with keyboard/mouse/controller press edges, focus/connection baselines, close-modal dispatch, full CPU/GPU target readback and resized pointer routes; owner visual approval is recorded; bounded keyboard/mouse/USB-controller, resize, native close and focus checks are owner-reported as passed. ZOD-069 extends the shared host/router to paged slot navigation and storage decisions; its native programmed checks pass, the owner approved its gallery, but interactive slot review is pending.
+Synthetic and fixed prepared hosts run on Windows; bounded mouse/keyboard routing, resize mapping and programmed GPU checks exist. ZOD-103 adds a separate authored menu host with keyboard/mouse/controller press edges, focus/connection baselines, close-modal dispatch, full CPU/GPU target readback and resized pointer routes; owner visual approval is recorded; bounded keyboard/mouse/USB-controller, resize, native close and focus checks are owner-reported as passed. ZOD-069 extends the shared host/router to paged slot navigation and storage decisions; its native programmed checks pass, the owner approved its gallery and separately reported the bounded interactive slot check passed.
 
 Evidence: [docs/development/windows-synthetic-host.md](../../docs/development/windows-synthetic-host.md), [docs/development/playable-battle.md](../../docs/development/playable-battle.md), [docs/development/windows-world-navigation.md](../../docs/development/windows-world-navigation.md), [docs/evidence/navigation/windows-world-navigation-v1.json](../../docs/evidence/navigation/windows-world-navigation-v1.json), [docs/development/world-save-load-ui.md](../../docs/development/world-save-load-ui.md), [docs/evidence/navigation/world-save-load-ui-v1.json](../../docs/evidence/navigation/world-save-load-ui-v1.json).
 
@@ -895,13 +895,13 @@ Current implementation: [src/Fft.Client/Presentation/BattleInputLatch.cs](../../
 
 Existing bounded checks: [tests/Fft.Client.Tests/BattleUiInputTests.cs](../../tests/Fft.Client.Tests/BattleUiInputTests.cs), [tests/Fft.Client.Tests/SceneLayoutTests.cs](../../tests/Fft.Client.Tests/SceneLayoutTests.cs), [tests/Fft.Client.Tests/WorldMenuHostTests.cs](../../tests/Fft.Client.Tests/WorldMenuHostTests.cs), [tools/verification/verify_world_menu.py](../../tools/verification/verify_world_menu.py), [tests/Fft.Client.Tests/WorldSlotMenuTests.cs](../../tests/Fft.Client.Tests/WorldSlotMenuTests.cs).
 
-Manual checkpoint (owner-reported-bounded-authored-host): Owner confirmed the ZOD-103 five-step interactive checklist on 2026-10-26: "It's good." This covers the selected authored host, not measured latency, exact mapping, mixed-monitor DPI or forced device loss.
+Manual checkpoint (owner-reported-bounded-authored-host): Owner confirmed the ZOD-103 five-step interactive checklist on 2026-10-26: "It's good." This covers the selected authored host, not measured latency, exact mapping, mixed-monitor DPI or forced device loss. ZOD-069 slot interaction was separately owner-approved after its launch/check guide on 2026-10-26: "It's good." See docs/evidence/navigation/world-save-load-ui-v1.json.
 
 Remaining gaps:
 
 - Physical timing, controller/remapping/accessibility and mixed-monitor behavior are not fully validated.
 
-Next action: Review ZOD-069 slot input/resize/close after gallery approval, separately from completed ZOD-103 navigation; retain wider ZOD-061 device scope.
+Next action: Retain wider ZOD-061 device scope; bounded ZOD-103 navigation and ZOD-069 slot owner reviews are complete.
 
 Bounded follow-ups: ZOD-103, ZOD-069.
 
@@ -1039,7 +1039,7 @@ Remaining gaps:
 
 - Complete retail checkpoint enumeration, unmodeled fields/side content, original observations, content-version rules and explicit native RNG continuation/seed policy remain open.
 
-Next action: Review ZOD-069 interactive Save/Load after gallery approval; retain ZOD-053 for original campaign fields/checkpoints, content compatibility and explicit RNG policy.
+Next action: Retain ZOD-053 for original campaign fields/checkpoints, content compatibility and explicit RNG policy; ZOD-069 bounded owner review is complete.
 
 Bounded follow-ups: ZOD-068, ZOD-069, ZOD-102, ZOD-103.
 
@@ -1047,7 +1047,7 @@ Bounded follow-ups: ZOD-068, ZOD-069, ZOD-102, ZOD-103.
 
 Status: **partial**; scope: **platform-replacement**; ticket: **ZOD-053**; owner area: FFT persistence/application and Windows storage.
 
-ZOD-068 proves ten safe headless synthetic slots with a per-user default, validated metadata, content revisions and exclusive locks, flushed sibling promotion/backups, candidate-only confirmed load and explicit validated recovery. Injected publishing faults and actual Windows sharing failure preserve prior files/live state. ZOD-069 now exposes the bounded native slot/recovery workflow with UI/storage/failure checks; owner gallery approval is recorded and interactive slot review is pending. No full-system durability claim.
+ZOD-068 proves ten safe headless synthetic slots with a per-user default, validated metadata, content revisions and exclusive locks, flushed sibling promotion/backups, candidate-only confirmed load and explicit validated recovery. Injected publishing faults and actual Windows sharing failure preserve prior files/live state. ZOD-069 now exposes the bounded native slot/recovery workflow with UI/storage/failure checks; owner gallery approval and owner-reported bounded interactive approval are recorded. No full-system durability claim.
 
 Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-067-campaign-save-state.md](../../docs/architecture/zod-067-campaign-save-state.md), [docs/development/synthetic-world-checkpoint.md](../../docs/development/synthetic-world-checkpoint.md), [docs/evidence/saves/synthetic-world-checkpoint-v1.json](../../docs/evidence/saves/synthetic-world-checkpoint-v1.json), [docs/development/world-save-load-ui.md](../../docs/development/world-save-load-ui.md), [docs/evidence/navigation/world-save-load-ui-v1.json](../../docs/evidence/navigation/world-save-load-ui-v1.json).
 
@@ -1057,13 +1057,13 @@ Current implementation: [src/Zodiac.Content/Saves/WorldSaveSlotStore.cs](../../s
 
 Existing bounded checks: [tests/Zodiac.Content.Tests/Saves/WorldSaveSlotStoreTests.cs](../../tests/Zodiac.Content.Tests/Saves/WorldSaveSlotStoreTests.cs), [tests/Fft.Client.Tests/WorldCheckpointCheckTests.cs](../../tests/Fft.Client.Tests/WorldCheckpointCheckTests.cs), [tools/verification/verify_world_checkpoint.py](../../tools/verification/verify_world_checkpoint.py), [tests/Fft.Client.Tests/WorldSlotMenuTests.cs](../../tests/Fft.Client.Tests/WorldSlotMenuTests.cs).
 
-Manual checkpoint (pending-original-observation): After ZOD-069 implements menus, review actual overwrite/discard/cancel/recovery decisions and error presentation. Headless storage failures and recovery are automated in ZOD-068.
+Manual checkpoint (owner-reported-bounded-authored-slots): Owner separately confirmed the bounded interactive slot check after launch/check instructions on 2026-10-26: "It's good." This covers the authored workflow only; original campaign compatibility and broader storage/power-loss validation remain open.
 
 Remaining gaps:
 
-- Interactive slot review, original campaign compatibility, broader storage environments and power-loss durability require later evidence; the bounded native slot UI is implemented.
+- Original campaign compatibility, broader storage environments and power-loss durability require later evidence; the bounded native slot UI and owner review are complete.
 
-Next action: Review ZOD-069 interactive slots after gallery approval; retain ZOD-053 for full campaign persistence and broader storage validation.
+Next action: Retain ZOD-053 for full campaign persistence and broader storage validation; bounded native slot UI and owner review are complete.
 
 Bounded follow-ups: ZOD-068, ZOD-069, ZOD-102, ZOD-103.
 

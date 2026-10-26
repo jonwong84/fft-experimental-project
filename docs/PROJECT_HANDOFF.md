@@ -1,5 +1,41 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+## Current handoff — 2026-10-26
+
+**ZOD-069 is complete.** After the interactive Save/Load launch/check instructions,
+the owner confirmed "It's good." Record the bounded slot workflow as passed by
+owner report, separately from the earlier gallery approval ("This appears to be
+fine."). No measured latency, exact device/mapping fidelity or broader original
+campaign support is inferred. [Guide](development/world-save-load-ui.md) and
+[evidence](evidence/navigation/world-save-load-ui-v1.json) retain the scope.
+
+Last implementation validation remains **2,317 .NET / 287 Python tests**,
+zero-warning Release build and two finite native checks with 51 exact repeated
+UI/storage files. No implementation suites or agent-run graphics checks were
+repeated for approval; reviewed artifacts are unchanged. The authored navigation,
+checkpoint service and native slot workflow are complete within their stated
+limits. Original title/campaign/save availability and broader device/storage
+validation remain open.
+
+**Next session:** Work in `C:\repositories\fft-experimental-project` on
+`feature/initial-development`. Read `AGENTS.md`, the [backlog](BACKLOG.md), this
+current handoff and the ZOD-069 guide/evidence, then inspect Git status and preserve
+existing changes. Select the next bounded milestone from the remaining backlog,
+breaking down an epic if needed. No follow-on implementation ticket has been
+selected; older next-task suggestions below are historical. The owner's standing
+instruction permits committing and pushing completed, validated work to GitHub.
+
+Retain Tessera Engine / Zodiac Framework / FFT Content ownership, readable and
+modifiable C#, original compatibility quirks and the prepared-files-only managed
+runtime. Public replacement contracts (ZOD-100/101), quirk fixes, CRT shaders,
+renderer/resolution/settings and audio work remain deferred. The agreed later
+display direction is CRT-correct content proportions inside a widescreen viewport,
+with added horizontal scene coverage and wider UI layout; see
+[later presentation decisions](development/later-presentation-decisions.md).
+Local original media and generated evidence remain ignored under `scratch/`.
+
+## Earlier checkpoints (historical)
+
 **Owner slot-gallery approval (2026-10-26):** The owner approved
 `scratch/world-slots-069-review/review.html`: "This appears to be fine."
 Approval covers the displayed slot pages/details, overwrite/load/recovery

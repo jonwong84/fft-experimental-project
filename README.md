@@ -36,7 +36,7 @@ justifies it. Current assemblies are not yet interchangeable.
 - **Native synthetic Save/Load UI:** the world menu now offers paged slots,
   validated primary/backup details, overwrite/discard confirmations, explicit
   recovery and refreshable errors. Repeated native UI/storage checks pass;
-  the owner approved the gallery; interactive slot review remains pending.
+  the owner approved the gallery and reported the bounded interactive slot check passed.
   [Launch and review](docs/development/world-save-load-ui.md).
 
 - **Synthetic world Save/Load:** a small authored idle-world checkpoint supports

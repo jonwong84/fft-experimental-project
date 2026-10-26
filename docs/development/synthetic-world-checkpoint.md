@@ -1,8 +1,8 @@
 # ZOD-068: Synthetic idle-world Save/Load
 
 Follow-up (2026-10-26): [ZOD-069](world-save-load-ui.md) now exposes this service
-through native slot screens. The owner approved the gallery; interactive slot
-review remains pending. The
+through native slot screens. The owner approved the gallery and reported the
+bounded interactive slot check passed; ZOD-069 is complete. The
 headless validation and limits below retain their historical scope.
 
 Entry: 2026-10-26, managed `755dd37936ea6d81dc886771bb6819687d88d0f5`.
