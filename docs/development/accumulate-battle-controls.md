@@ -57,7 +57,11 @@ regressions. No new original behavior or visual/timing equivalence is claimed.
 
 ## Implementation and validation result
 
-Implemented; owner visual/physical-input approval remains pending (ACC-032).
+Complete following owner approval (ACC-032), 2026-10-26: "Looks good. Let's keep
+going." The owner accepted the bounded review after receiving the launch guide
+and gallery. Individual physical-input steps were not separately reported or
+agent-observed. Implementation tests and native captures were not repeated for
+this approval; their limits below remain unchanged.
 The reference was rechecked clean/read-only at
 11464943bbdbd2a0af022d90cb7f10455cf911df before work; this slice translates no
 additional original rule. It uses ZOD-105 resolution and the existing input router.
@@ -128,7 +132,8 @@ physical-input review:
 The automated route covers the lengthy PA99 repeat-use/cap/KO cases; there is no
 need to repeat 94 boosts manually. Owner approval should cover readability and
 actual keyboard/pointer operation. Record approval separately; no approval is
-inferred from these tests. Editor work and battle suspension remain deferred.
+inferred from these tests. The owner's subsequent approval is recorded above.
+Editor work and battle suspension remain deferred.
 
 ## Reproduce the independent evidence audit
 

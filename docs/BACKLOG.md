@@ -44,7 +44,30 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
-**Current result (2026-10-26): ZOD-107 implemented; owner review pending.** A
+**Owner approval (2026-10-26): ZOD-107 is complete.** After receiving the launch
+guide and gallery, the owner replied, "Looks good. Let's keep going." This closes
+ACC-032 by owner approval; individual physical-input steps were not separately
+reported or agent-observed. The validated implementation/captures are unchanged.
+The next bounded source investigation, ZOD-108, is now complete below. Keep
+ZOD-106 and editor work deferred.
+
+**Next gameplay lane: Throw Stone under ZOD-038. ZOD-108 is complete.**
+The [source/data contract](architecture/zod-108-throw-stone-action.md) verifies
+Squire/Basic Skill slot 2, ability 148, range 4 and formula 0x37. On a clear flat
+two-unit scene it combines physical evasion, PA-or-double-PA damage and a
+Brave-based one-tile knockback attempt: seven draws on a hit, four on a miss.
+Two offline reports repeat exactly, rechecking 22 imported records, six selected
+rows and 24 pinned source files. This is source-derived evidence, not original
+execution or a managed action. The [34 acceptance cases](evidence/combat/throw-stone-contract-v1.json)
+are all unexecuted. **Next: ZOD-109 is Ready**, the pure targeted-action proof;
+then ZOD-110 content/import/scenario and ZOD-111 prepared Windows controls.
+Battle checkpoints, editor polish and other documented deferrals stay deferred.
+The trace also identifies the old authored sword's persistent attack facing as a
+settled-state fidelity gap; record it under ZOD-038 without silently changing
+legacy fixtures. Last implementation tests remain 2,459 .NET / 299 Python,
+not rerun for this source/documentation milestone.
+
+**Implementation checkpoint (2026-10-26): ZOD-107 implemented.** A
 separately prepared authored Windows battle exposes C / Accumulate, current PA,
 availability and success/cap feedback. All **2,459 .NET / 299 Python tests** pass.
 Two finite native checks match exactly across 560 inputs and 15 captures each,
@@ -52,9 +75,8 @@ including legal repeat uses to PA99, zero resolution RNG draws, in-memory replay
 resize, first KO and restart to PA5. See the
 [guide/review steps](development/accumulate-battle-controls.md) and
 [evidence](evidence/combat/accumulate-window-v1.json).
-**Next:** bounded owner visual/physical-input review (ACC-032); do not mark complete
-or automatically expand the editor. Original-game presentation equivalence remains
-unestablished.
+The owner subsequently approved the bounded review above. Original-game
+presentation equivalence remains unestablished.
 
 **Owner sequencing (2026-10-26): proceed with ZOD-107; defer ZOD-106.** Battle
 checkpoint persistence is a development proof, not a requirement for using
@@ -1090,7 +1112,7 @@ run appropriate build/suites and retain current save regression evidence.
 
 ### ZOD-107 — Use Accumulate through the existing Windows battle controls
 
-**Type:** Story · **Priority:** P3 · **Status:** Implemented; owner review pending · **Depends on:** ZOD-105
+**Type:** Story · **Priority:** P3 · **Status:** Complete · **Depends on:** ZOD-105
 
 **Owner sequencing (2026-10-26):** ZOD-106 is deferred. Replace this slice's
 save-continuation check with in-memory command/headless/replay equality, preserving
@@ -1108,11 +1130,78 @@ implementation suites. Owner visual/physical review remains separate from
 programmed controls. Report authored presentation and original fidelity limits.
 
 **Result (2026-10-26):** ACC-028..031 have executed automated coverage under the
-revised sequencing; ACC-032 is pending owner approval. Both 560-input native runs
+revised sequencing; ACC-032 was subsequently approved by the owner ("Looks good.
+Let's keep going."). No agent-observed physical-input claim is added. Both 560-input native runs
 and prepared bundles repeat byte-for-byte. Independent audit checks all ability
 state deltas, RNG preservation, atomic rejections and 15 captures. Locked Release
 build has zero warnings; 2,459 .NET / 299 Python tests pass. Review instructions and
 limits are in the [guide](development/accumulate-battle-controls.md).
+
+### ZOD-108 — Trace Throw Stone targeting, damage and flat knockback
+
+**Type:** Spike · **Priority:** P3 · **Status:** Complete (source/data contract) · **Depends on:** ZOD-105, ZOD-107
+
+**Result (2026-10-26):** The [contract](architecture/zod-108-throw-stone-action.md)
+pins clean read-only decomp 11464943bbdbd2a0af022d90cb7f10455cf911df, re-verifies
+the prepared SCUS executable and identifies six selected records, direct
+projectile targeting, physical evasion, formula arithmetic, seven/four draw order,
+Brave comparison, dominant-axis push with Y ties, lethal cancellation and settled
+facing restoration. Two offline audits repeat exactly; 22 prior imported records
+and 24 source identities are checked. The [evidence](evidence/combat/throw-stone-contract-v1.json)
+assigns 34 explicitly unexecuted cases to ZOD-109/110/111. No managed action,
+schema, new suite run, native launch or original execution is claimed.
+
+**Scope/acceptance:** Select a bounded targeted Basic Skill action and trace its
+source/callers/data/widths/order; define a clear flat two-unit domain and explicit
+unsupported projectile/terrain/status behavior. Preserve old profiles and record
+found fidelity gaps. Separate pure rules, prepared content and native review.
+
+### ZOD-109 — Prove pure Throw Stone damage and flat knockback
+
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-108
+
+**Scope:** Add ordinary named C# arithmetic, a closed targeted-action profile,
+explicit grants and a separate actor/ability/target command over immutable
+combat state. Admit only the traced open dry flat two-unit domain. Resolve
+physical evade, current-PA damage and same-height one-tile knockback with exact
+conditional RNG, preserving incoming settled facings and target voluntary choices.
+Retain self-action and sword behavior. No content import, save, Engine or UI work.
+
+**Acceptance criteria:** TST-001..020 pass, including range/facing ties, arithmetic
+boundaries, miss/hit draw order, Brave strict comparison, in-bounds/off-map push,
+lethal cancellation, Act/Move ordering, RNG exhaustion, replay and atomic rejects.
+Unsupported setups reject before publication. Record exact event order and source
+limits; run meaningful regressions and appropriate full implementation suites.
+
+### ZOD-110 — Prepare Throw Stone content and a combined Basic Skill scenario
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting · **Depends on:** ZOD-109
+
+**Scope:** Add a separate closed targeted-effect companion and validated
+metadata/grant projection. Offline import verifies selected original records and
+preserves raw provenance under scratch. Compose an authored two-unit scenario
+that explicitly grants Accumulate and Throw Stone, with unchanged old profiles.
+Keep the old sword domain guards and ability-save rejection; ZOD-106 is deferred.
+
+**Acceptance criteria:** TST-021..028 pass: strict parsing/reference/semantic
+negatives, edition/hash/record checks, repeated imports and historical metadata
+preservation, boosted ranged damage, first KO, restart and headless continuation.
+Unsupported ability saves reject before file I/O, including initial states.
+Run appropriate suites and independent import/evidence audit.
+
+### ZOD-111 — Use Throw Stone through prepared Windows target controls
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting · **Depends on:** ZOD-110
+
+**Scope:** Expose the validated targeted action through the existing Windows
+battle router with select/confirm/cancel, range and availability feedback, and
+HP/PA/position outcomes. No editor expansion or original projectile animation port.
+
+**Acceptance criteria:** TST-029..034 pass. Write a finite native plan before
+execution, compare every routed state/event/RNG with headless execution and replay,
+repeat prepared/capture outputs, inspect GPU images, and preserve render/resize/
+focus atomicity. Owner visual/physical-input approval remains a separate gate.
+Battle-save persistence is not a prerequisite.
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 

@@ -127,6 +127,16 @@ movement or establish complete original movement behavior.
 
 ## Executable fixtures and evidence limits
 
+**Source-review follow-up (ZOD-108, 2026-10-26):** At the same pinned reference
+revision, turn/controller.c::unit_facing_turn_to_target saves the incoming facing;
+reward_grant calls facing_all_after_attack_restore to restore living units.
+The existing managed sword action instead retains its attack-facing change,
+as recorded above. This is an identified settled-state fidelity gap under
+ZOD-038, not proven original behavior. ZOD-108 does not change the sword code,
+historical fixtures or evidence. The new Throw Stone contract preserves incoming
+facing at its settled command boundary; see
+[the source trace](../architecture/zod-108-throw-stone-action.md).
+
 Fixture schema 3 replaces scenario `weaponIds` with explicit `weapons` records
 containing `id` and `power` for this closed profile. The test-only runner validates
 every command, definition, expected snapshot and event before replay. It compares

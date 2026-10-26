@@ -2,6 +2,40 @@
 
 ## Current handoff — 2026-10-26
 
+**ZOD-107 is complete by owner approval.** Following the launch guide/gallery, the
+owner replied, "Looks good. Let's keep going." Record ACC-032 as owner approval
+of the bounded review; individual physical-input steps were not separately
+reported or agent-observed. No implementation/capture was changed or rerun for
+approval. ZOD-108, the Throw Stone source/data contract under ZOD-038, is now complete.
+Editor work and ZOD-106 battle checkpoints remain deferred.
+
+**Next: ZOD-109 is Ready — pure Throw Stone damage/flat knockback.** The
+[contract](architecture/zod-108-throw-stone-action.md) pins fresh clean read-only
+decomp 11464943bbdbd2a0af022d90cb7f10455cf911df and verifies the prepared SCUS
+executable, Squire/Basic Skill slot 2 and ability 148. It traces range 4, direct
+projectile validation, physical evade, PA-or-double-PA damage, Brave-based
+knockback, seven/four draw order, Y-axis push ties, lethal cancellation and
+settled facing restoration. The first proof is an open dry flat two-unit scene;
+obstructed/elevated projectiles, falls, extra units, reactions and rewards remain
+outside scope. Do not suppress knockback when a supported destination exists.
+
+Two final offline audits repeat byte-for-byte: 22 prior imported records, six
+selected records and 24 source fingerprints. Raw records/reports/scripts stay
+ignored under scratch/throw-stone-108-a/b and scratch/inspect_throw_stone_108.py.
+The [evidence](evidence/combat/throw-stone-contract-v1.json) records 34 unexecuted
+cases across ZOD-109 pure rules, ZOD-110 content/import/combined scenario, and
+ZOD-111 Windows controls/owner review. This is source-derived investigation;
+no runtime/schema changes, new implementation-suite run, native/original launch
+or equivalence claim. Last implementation result remains 2,459 .NET / 299 Python.
+
+The facing trace also identifies a current authored sword fidelity gap:
+the managed sword retains the attack-facing change, whereas the original living
+actor's saved facing is restored before returning control. Record the gap under
+ZOD-038; no sword code, historical fixture or prior evidence was rewritten here.
+The new Throw Stone settled result should preserve incoming facings.
+
+## ZOD-107 implementation checkpoint (historical)
+
 **ZOD-107 is implemented and awaits owner visual/physical-input review.** A
 separate hash-verified prepared authored battle uses the existing window/router:
 C or the Accumulate button performs the granted self action, shows current PA,

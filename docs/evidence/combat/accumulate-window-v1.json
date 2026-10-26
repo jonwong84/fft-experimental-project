@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "ticket": "ZOD-107",
   "validatedOn": "2026-10-26",
-  "status": "implemented; owner visual/physical-input approval pending",
+  "status": "complete with owner approval of bounded review",
   "managedBase": "f35e055a31674d40146b959c1e341af97496e434",
   "guide": "docs/development/accumulate-battle-controls.md",
   "reference": {
@@ -59,7 +59,7 @@
     },
     {
       "id": "ACC-032",
-      "status": "pending owner approval",
+      "status": "approved by owner",
       "scope": "Owner visual and physical keyboard/pointer review"
     }
   ],
@@ -94,7 +94,7 @@
     "repeatedAllBytesEqual": true,
     "capturesInspected": true,
     "physicalInputPerformed": false,
-    "ownerApproved": false,
+    "ownerApproved": true,
     "adapter": "AMD Radeon RX 6600",
     "runtime": ".NET 10.0.13"
   },
@@ -298,5 +298,14 @@
     "Native GPU render-target and programmed input routes; not desktop scanout or physical-input approval.",
     "Diagnostic JSON is not a save format or public persistent replay protocol.",
     "Campaign battle-end transfer, progression/rewards/AI, equipment PA bonuses and wider ability catalog remain open."
-  ]
+  ],
+  "ownerApproval": {
+    "recordedOn": "2026-10-26",
+    "statement": "Looks good. Let's keep going.",
+    "context": "After launch/manual guide and screenshot gallery were provided",
+    "scope": "Owner acceptance of bounded ZOD-107 review; no original equivalence",
+    "individualPhysicalStepsSeparatelyReported": false,
+    "agentObservedPhysicalInput": false,
+    "implementationAndCapturesRerun": false
+  }
 }

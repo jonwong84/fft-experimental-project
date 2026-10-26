@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-26",
   "edition": "SCUS-94221",
-  "managedCommit": "f35e055a31674d40146b959c1e341af97496e434",
+  "managedCommit": "119cb73",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -205,7 +205,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
-      "currentScope": "The bounded neutral sword remains executable. A separate ZOD-105 Accumulate profile changes current PA and feeds later sword damage with unchanged RNG order; ZOD-107 adds prepared Windows controls with owner review pending. Ability-profile persistence is deferred.",
+      "currentScope": "The bounded neutral sword remains executable. A separate ZOD-105 Accumulate profile changes current PA and feeds later sword damage with unchanged RNG order; ZOD-107 adds prepared Windows controls with owner approval. Ability-profile persistence is deferred.",
       "referenceSources": [
         {
           "path": "src/battle/combat/targets.c",
@@ -225,7 +225,9 @@
         "docs/architecture/zod-104-accumulate-action.md",
         "docs/evidence/combat/accumulate-contract-v1.json",
         "docs/behavior/accumulate-implementation.md",
-        "docs/evidence/combat/accumulate-implementation-v1.json"
+        "docs/evidence/combat/accumulate-implementation-v1.json",
+        "docs/architecture/zod-108-throw-stone-action.md",
+        "docs/evidence/combat/throw-stone-contract-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/AttackBattleSimulator.cs",
@@ -246,9 +248,10 @@
         "procedure": "Compare controlled original hit/miss/critical/damage and resulting facing/HP."
       },
       "openQuestions": [
-        "Other weapons, affinities, equipment evade, zodiac interactions, line of sight and area targets remain open."
+        "Other weapons, affinities, equipment evade, zodiac interactions, line of sight and area targets remain open.",
+        "ZOD-108 identifies a settled-facing discrepancy: the authored sword retains attack-facing while the original restores a living actor saved facing; no runtime fix was made in this investigation."
       ],
-      "nextAction": "ZOD-107 Windows Accumulate controls are implemented; complete bounded owner visual/physical-input review. ZOD-106 battle checkpoints are deferred until a concrete debugging or selected suspension requirement. Broader original coverage remains open.",
+      "nextAction": "ZOD-107 is owner-approved. ZOD-108 Throw Stone source/data contract is complete; implement ZOD-109 pure targeted damage/flat knockback, then ZOD-110 content and ZOD-111 controls. ZOD-106 battle checkpoints and editor work remain deferred.",
       "followUpTickets": [
         "ZOD-104",
         "ZOD-105",
@@ -264,7 +267,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
-      "currentScope": "ZOD-105 executes one immediate self PA+1 effect to cap 99 through a validated companion, explicit grants and pure two-unit commands. ZOD-107 exposes that action in prepared Windows controls; owner review is pending. Broader action catalog and independent original observation remain open; ability-profile persistence is deferred.",
+      "currentScope": "ZOD-105 executes immediate self PA+1 to cap 99; ZOD-107 prepared Windows controls have owner approval. ZOD-108 traces Throw Stone range/direct targeting, damage, RNG and flat knockback; its 34 implementation cases are unexecuted. Broader catalog and original observation remain open; ability-profile persistence is deferred.",
       "referenceSources": [
         {
           "path": "src/battle/combat/formulas.c",
@@ -286,7 +289,9 @@
         "docs/behavior/accumulate-implementation.md",
         "docs/evidence/combat/accumulate-implementation-v1.json",
         "docs/development/accumulate-battle-controls.md",
-        "docs/evidence/combat/accumulate-window-v1.json"
+        "docs/evidence/combat/accumulate-window-v1.json",
+        "docs/architecture/zod-108-throw-stone-action.md",
+        "docs/evidence/combat/throw-stone-contract-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/ImmediateAbilityBattle.cs",
@@ -322,14 +327,18 @@
         "procedure": "Compare one selected original ability with exact target/stats/RNG preconditions."
       },
       "openQuestions": [
-        "Other formula/action families, equipment bonuses, status/reaction interactions, progression/rewards, AI, charge/MP/targeting breadth and original execution remain open. ZOD-107 owner review is pending; ZOD-106 persistence is deferred."
+        "Other formula/action families, equipment bonuses, status/reaction interactions, progression/rewards, AI, charge/MP/targeting breadth and original execution remain open. Throw Stone runtime is ZOD-109/110/111; ZOD-106 persistence is deferred."
       ],
-      "nextAction": "ZOD-107 Windows Accumulate controls are implemented; complete bounded owner visual/physical-input review. ZOD-106 battle checkpoints are deferred until a concrete debugging or selected suspension requirement. Broader original coverage remains open.",
+      "nextAction": "ZOD-107 is owner-approved. ZOD-108 Throw Stone source/data contract is complete; implement ZOD-109 pure targeted damage/flat knockback, then ZOD-110 content and ZOD-111 controls. ZOD-106 battle checkpoints and editor work remain deferred.",
       "followUpTickets": [
         "ZOD-104",
         "ZOD-105",
         "ZOD-106",
-        "ZOD-107"
+        "ZOD-107",
+        "ZOD-108",
+        "ZOD-109",
+        "ZOD-110",
+        "ZOD-111"
       ]
     },
     {
@@ -553,7 +562,9 @@
         "docs/architecture/zod-014-typed-definitions.md",
         "docs/architecture/zod-104-accumulate-action.md",
         "docs/behavior/accumulate-implementation.md",
-        "docs/evidence/combat/accumulate-implementation-v1.json"
+        "docs/evidence/combat/accumulate-implementation-v1.json",
+        "docs/architecture/zod-108-throw-stone-action.md",
+        "docs/evidence/combat/throw-stone-contract-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Content/Definitions/JobDefinition.cs",
@@ -582,7 +593,7 @@
       "openQuestions": [
         "Full catalog rows and field-to-runtime meaning are not enumerated; imported metadata does not imply executable effects."
       ],
-      "nextAction": "ZOD-107 Windows Accumulate controls are implemented; complete bounded owner visual/physical-input review. ZOD-106 battle checkpoints are deferred until a concrete debugging or selected suspension requirement. Broader original coverage remains open.",
+      "nextAction": "ZOD-107 is owner-approved. ZOD-108 Throw Stone source/data contract is complete; implement ZOD-109 pure targeted damage/flat knockback, then ZOD-110 content and ZOD-111 controls. ZOD-106 battle checkpoints and editor work remain deferred.",
       "followUpTickets": [
         "ZOD-104",
         "ZOD-105"
