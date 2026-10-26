@@ -1141,6 +1141,21 @@ Translate a separately traced bounded subset into C#; do not execute C at runtim
 or claim the entire original AI is implemented. This records future direction;
 ZOD-114 remains the next selected investigation.
 
+**Owner AI extensibility direction (2026-10-26):** Translate the original decision
+algorithm into readable, source-traced C# behind a replaceable typed decision
+interface in Zodiac Framework. The original SCUS-94221 implementation remains the
+compatibility default; refined or alternative implementations are explicitly
+selected variants. This is a code contract, not a new editor UI requirement.
+The interface should receive explicit battle/definition inputs and return typed
+commands plus any explicit decision-state/RNG transition, without directly
+mutating live battle state. Existing authoritative rules validate and execute
+commands for every implementation. Trace original candidate simulation, RNG,
+ordering and resumable decision state before fixing the interface shape; do not
+assume one stateless call or a complete turn plan matches the source. Keep useful
+decision traces and deterministic scenario fixtures so implementations can be
+compared on identical inputs. No production interface, AI implementation, plugin
+loader or editor work is introduced by this direction; ZOD-114 remains next.
+
 ### ZOD-104 — Trace and specify the first executable job ability
 
 **Type:** Spike · **Priority:** P3 · **Status:** Complete (source/data contract; implementation unexecuted) · **Depends on:** ZOD-017, ZOD-022, ZOD-023

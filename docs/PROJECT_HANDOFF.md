@@ -42,6 +42,16 @@ No AI opponent is implemented yet. The pinned decomp includes battle/ai/turn.c,
 evaluation.c and abilities.c for later bounded source study and C# translation;
 ZOD-114 remains next, and the C reference stays outside the runtime.
 
+**Owner AI extensibility direction (2026-10-26):** Recover the original algorithm
+as readable C# behind a replaceable typed decision interface in Zodiac Framework.
+Original SCUS-94221 behavior stays the default; refinements and alternative
+implementations require explicit selection. All implementations submit commands
+through the same authoritative battle rules. Inputs, decision state and RNG
+transitions must be explicit and testable; source tracing must determine the
+contract before assuming stateless decisions or whole-turn plans. This is future
+code extensibility, without new editor UI or a runtime plugin system. See the
+expanded direction under ZOD-038; no interface or AI is implemented yet.
+
 ## ZOD-112 source-contract checkpoint (historical)
 
 **ZOD-112 is complete; next ZOD-113 is Ready.** The
