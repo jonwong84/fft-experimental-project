@@ -2,6 +2,49 @@
 
 ## Current handoff — 2026-10-26
 
+**ZOD-116 is complete**, a source-stage/helper map and proposed replaceable C#
+decision contract. Fresh clean read-only decomp remains
+11464943bbdbd2a0af022d90cb7f10455cf911df. The map covers initialization/abilities,
+roster/policy, movement scenarios, origin/aim enumeration, candidate projection,
+state score, rank and destination ties, randomized ranking, cached command/replan,
+resumable stages, decision RNG and late Wait-facing application. No production
+AI/interface was implemented and no complete encounter choices were executed.
+
+Important findings: ordinary AI sword formulas project full normal damage and a
+separate hit percentage, never the execution critical/push. Formula-level AI still
+consumes four real evasion draws; simulated upkeep and other decision branches
+add more. Snapshot restoration does not restore RNG. Ranked selection uses raw
+modulo100, unlike execution percentage scaling. Action ties keep the incumbent,
+destination ties take the last scanned tile. Wait chooses a facing after actions
+and movement, including automatically completed turns; current managed Wait lacks
+that boundary. Proposed IBattleDecisionPolicy.Step returns one command/facing
+request, explicit continuation and RNG progress, validated by an authoritative
+runner; original default and custom policy IDs remain distinct.
+
+The verified prepared SCUS_942.21 hash and eight-byte ability0 metadata confirm
+Attack's enemy/HP/physical/evadeable flags, with no stat-effect or random-use flag.
+Raw bytes remain ignored. Fifty offline vectors cover eight helper/stage families;
+all 20 AIC implementation cases remain unexecuted. Two final audits match across
+16 source files/71 functions, one metadata record, 37 historical and seven managed
+baseline files. **342 Python tests pass** (13 new), including independent literal
+rank/RNG/score/projection boundaries and metadata identity/bounds rejection.
+No C# changes or .NET rerun; last implementation validation remains
+3,044 .NET / 329 Python.
+No original/emulator/native launch, content activation or editor work. Generated
+reports/builder stay under ignored scratch/ai-decision-116-* and
+scratch/build_ai_116_contract.py. Editor and ZOD-106 remain deferred.
+
+See [source/interface contract](architecture/zod-116-ai-decision-contract.md),
+[description vectors](fixtures/behavior/ai-decision-contract-v1.json) and
+[evidence](evidence/ai/decision-contract-v1.json).
+**Recommended next: ZOD-117**, the pure formula-level ordinary-sword AI projection.
+Keep its four evasion draws and normal-damage/separate-accuracy result distinct
+from execution Attack. Full search requires further explicit roster/session RNG,
+movement/candidate-clock and turn-facing capabilities; do not invent a heuristic
+to bridge these gaps or claim the projection alone completes the AI.
+
+## ZOD-115 implementation checkpoint (historical)
+
 **ZOD-115 is complete.** The pure Attack API has a strict FlatSwordBattleProfile
 overload for exactly two ordinary units on certified open dry flat lower ground.
 Critical nonlethal in-bounds hits push one tile; no Brave rolls or extra draws.

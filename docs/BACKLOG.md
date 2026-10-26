@@ -44,6 +44,25 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Current completion (2026-10-26): ZOD-116 is complete**, a
+[source-stage/helper map and proposed replaceable C# contract](architecture/zod-116-ai-decision-contract.md).
+The original AI projects candidates, ranks them, consumes decision RNG and emits
+one command at a time; source evidence distinguishes execution formulas from AI
+projections, local tie rules, conditional randomization, post-Act replanning and
+late Wait facing. No AI/interface implementation or whole-encounter parity claim.
+Fifty helper/stage vectors cover eight families; 20 AIC production cases remain
+unexecuted. Fresh clean read-only reference remains
+11464943bbdbd2a0af022d90cb7f10455cf911df. Final offline audits repeat across
+16 files/71 functions, verified Attack metadata, 37 historical and seven managed
+baseline files. **342 Python tests pass** (13 new); no .NET rerun.
+Last full implementation result remains 3,044 .NET / 329 Python.
+**Recommended next: ZOD-117**, a pure formula-level ordinary-sword AI projection.
+Roster/policy/session RNG progress, original search/movement composition and
+end-of-turn facing remain required before a complete selector. Editor work and
+ZOD-106 battle checkpoints remain deferred. See [evidence](evidence/ai/decision-contract-v1.json).
+
+### ZOD-115 implementation checkpoint (historical)
+
 **Current completion (2026-10-26): ZOD-115 is complete.** The
 [explicit flat sword profile](behavior/flat-sword-knockback-implementation.md)
 admits interior attacks on certified open dry flat ground with exactly two units.
@@ -1176,7 +1195,7 @@ managed battle has no AI opponent. Read-only decomp at
 evaluation.c (candidate evaluation/simulation) and abilities.c (usable abilities).
 Translate a separately traced bounded subset into C#; do not execute C at runtime
 or claim the entire original AI is implemented. This records future direction;
-ZOD-114/115's sword contract and implementation are complete; ZOD-116 is next.
+ZOD-114/115's sword work and ZOD-116's AI mapping are complete; ZOD-117 is next.
 
 **Owner AI extensibility direction (2026-10-26):** Translate the original decision
 algorithm into readable, source-traced C# behind a replaceable typed decision
@@ -1191,7 +1210,7 @@ ordering and resumable decision state before fixing the interface shape; do not
 assume one stateless call or a complete turn plan matches the source. Keep useful
 decision traces and deterministic scenario fixtures so implementations can be
 compared on identical inputs. No production interface, AI implementation, plugin
-loader or editor work is introduced by this direction; ZOD-116 remains next.
+loader or editor work is introduced by this direction; ZOD-117 remains next.
 
 ### ZOD-104 — Trace and specify the first executable job ability
 
@@ -1500,7 +1519,18 @@ integration must receive its own finite scope before activation.
 
 ### ZOD-116 — Map bounded original AI decisions and the replaceable C# interface
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-115
+**Type:** Spike · **Priority:** P3 · **Status:** Complete (stage/helper map and proposed interface; production unimplemented) · **Depends on:** ZOD-115
+
+**Result (2026-10-26):** [Pinned algorithm map and contract sketch](architecture/zod-116-ai-decision-contract.md)
+and [evidence](evidence/ai/decision-contract-v1.json) distinguish AI formula
+projection, state scoring, probability/scan/tie ordering, cached command and
+post-Act replanning, suspended state, decision RNG and late Wait facing. Fifty
+offline helper/stage vectors and 20 unexecuted production cases are specified.
+Two final audits recheck 16 reference files/71 functions and the verified Attack
+metadata record, preserving 37 historical and seven managed baseline files.
+All **342 Python tests pass** (13 new); no production/.NET test rerun.
+No C# interface/AI, live rule, native/editor/save activation or original execution.
+ZOD-117 is the bounded projection prerequisite; full search and facing remain gaps.
 
 **Scope:** Trace fresh pinned read-only decomp for original Move/ordinary-sword
 Attack/EndTurn decisions in a flat two-unit encounter. Start from battle/ai/turn.c,
@@ -1522,6 +1552,30 @@ otherwise split the concrete prerequisite without inventing behavior. No product
 AI/interface or native/content/save/editor activation in this spike. Brief enemy
 movement/action pauses remain presentation-only; original work scheduling must be
 traced separately from deliberate host pacing. ZOD-106 remains deferred.
+
+### ZOD-117 — Implement the bounded ordinary-sword AI formula projection
+
+**Type:** Feature · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-116
+
+**Scope:** Recheck fresh pinned source/callers and implement a pure formula-level
+AI projection in Zodiac Framework for the existing closed ordinary sword domain.
+Keep execution Attack APIs unchanged. Return typed projected normal damage, HP,
+hit percentage and explicit advanced RNG; four physical evade draws still occur,
+while fixed midpoint critical and skipped execution proc add none. Use current
+stats and shared arithmetic only where both execution modes actually agree.
+This is neither expected-value damage nor a discarded seeded execution attack.
+
+**Acceptance criteria:** Execute the seven ZOD-116 projection vectors plus raw/HP/
+facing/zero/cap/signed-envelope boundaries. Verify exact four-draw budgets and
+atomic rejection/exhaustion, input immutability and repeated probes, both actor
+IDs/orders and current stats. Certain evade yields a zero-accuracy/nonvaluable
+projection after its four draws; distinguish it from unsupported setup and do
+not erase decision RNG when the future caller rejects that candidate. Preserve
+all existing execution/fixture/save/headless regressions and run locked build
+and relevant full suites. Document where the formula result ends: candidate
+clock/upkeep, scoring/search enumeration, roster/policy, interface/session runner,
+Wait-facing and scenario/content/native/save/editor activation remain separate.
+No claim of a complete AI or whole-decision draw budget. ZOD-106 remains deferred.
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 

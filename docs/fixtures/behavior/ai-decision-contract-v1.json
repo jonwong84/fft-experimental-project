@@ -1,0 +1,1287 @@
+{
+  "format": "fft.ai-decision-source-description",
+  "schemaVersion": 1,
+  "ticket": "ZOD-116",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "execution": "offline-helper-description",
+  "fullAiExecuted": false,
+  "productionInterfaceImplemented": false,
+  "vectors": [
+    {
+      "id": "decided-first",
+      "family": "rank",
+      "inputs": {
+        "first": {
+          "decided": 255,
+          "priority": -100,
+          "hit": 90,
+          "proximity": 5
+        },
+        "second": {
+          "decided": 0,
+          "priority": 10,
+          "hit": 90,
+          "proximity": 5
+        }
+      },
+      "expected": {
+        "comparison": 1,
+        "firstIsHigher": true
+      }
+    },
+    {
+      "id": "signed-priority",
+      "family": "rank",
+      "inputs": {
+        "first": {
+          "decided": 0,
+          "priority": -1,
+          "hit": 90,
+          "proximity": 5
+        },
+        "second": {
+          "decided": 0,
+          "priority": 0,
+          "hit": 90,
+          "proximity": 5
+        }
+      },
+      "expected": {
+        "comparison": -1,
+        "firstIsHigher": false
+      }
+    },
+    {
+      "id": "priority-before-hit",
+      "family": "rank",
+      "inputs": {
+        "first": {
+          "decided": 0,
+          "priority": 11,
+          "hit": 1,
+          "proximity": 5
+        },
+        "second": {
+          "decided": 0,
+          "priority": 10,
+          "hit": 90,
+          "proximity": 5
+        }
+      },
+      "expected": {
+        "comparison": 1,
+        "firstIsHigher": true
+      }
+    },
+    {
+      "id": "hit-before-proximity",
+      "family": "rank",
+      "inputs": {
+        "first": {
+          "decided": 0,
+          "priority": 10,
+          "hit": 91,
+          "proximity": 9
+        },
+        "second": {
+          "decided": 0,
+          "priority": 10,
+          "hit": 90,
+          "proximity": 5
+        }
+      },
+      "expected": {
+        "comparison": 1,
+        "firstIsHigher": true
+      }
+    },
+    {
+      "id": "lower-proximity",
+      "family": "rank",
+      "inputs": {
+        "first": {
+          "decided": 0,
+          "priority": 10,
+          "hit": 90,
+          "proximity": 4
+        },
+        "second": {
+          "decided": 0,
+          "priority": 10,
+          "hit": 90,
+          "proximity": 5
+        }
+      },
+      "expected": {
+        "comparison": 0,
+        "firstIsHigher": true
+      }
+    },
+    {
+      "id": "exact-tie-keeps-earlier",
+      "family": "rank",
+      "inputs": {
+        "first": {
+          "decided": 0,
+          "priority": 10,
+          "hit": 90,
+          "proximity": 5
+        },
+        "second": {
+          "decided": 0,
+          "priority": 10,
+          "hit": 90,
+          "proximity": 5
+        }
+      },
+      "expected": {
+        "comparison": 0,
+        "firstIsHigher": false
+      }
+    },
+    {
+      "id": "higher-proximity-loses",
+      "family": "rank",
+      "inputs": {
+        "first": {
+          "decided": 0,
+          "priority": 10,
+          "hit": 90,
+          "proximity": 6
+        },
+        "second": {
+          "decided": 0,
+          "priority": 10,
+          "hit": 90,
+          "proximity": 5
+        }
+      },
+      "expected": {
+        "comparison": 0,
+        "firstIsHigher": false
+      }
+    },
+    {
+      "id": "signed-pattern-ffff",
+      "family": "rank",
+      "inputs": {
+        "first": {
+          "decided": 0,
+          "priority": 65535,
+          "hit": 90,
+          "proximity": 5
+        },
+        "second": {
+          "decided": 0,
+          "priority": -2,
+          "hit": 90,
+          "proximity": 5
+        }
+      },
+      "expected": {
+        "comparison": 1,
+        "firstIsHigher": true
+      }
+    },
+    {
+      "id": "priority-tie-last",
+      "family": "destination",
+      "inputs": {
+        "order": "priority-first",
+        "limit": 9,
+        "tiles": [
+          {
+            "id": "x0",
+            "priority": 0,
+            "proximity": 5,
+            "distance": 2
+          },
+          {
+            "id": "x1",
+            "priority": 0,
+            "proximity": 5,
+            "distance": 2
+          }
+        ]
+      },
+      "expected": {
+        "selected": "x1"
+      }
+    },
+    {
+      "id": "distance-tie-last",
+      "family": "destination",
+      "inputs": {
+        "order": "distance-first",
+        "limit": 9,
+        "tiles": [
+          {
+            "id": "x0",
+            "priority": 0,
+            "proximity": 5,
+            "distance": 2
+          },
+          {
+            "id": "x1",
+            "priority": 0,
+            "proximity": 5,
+            "distance": 2
+          }
+        ]
+      },
+      "expected": {
+        "selected": "x1"
+      }
+    },
+    {
+      "id": "priority-before-distance",
+      "family": "destination",
+      "inputs": {
+        "order": "priority-first",
+        "limit": 9,
+        "tiles": [
+          {
+            "id": "x0",
+            "priority": -1,
+            "proximity": 9,
+            "distance": 5
+          },
+          {
+            "id": "x1",
+            "priority": 0,
+            "proximity": 0,
+            "distance": 1
+          }
+        ]
+      },
+      "expected": {
+        "selected": "x0"
+      }
+    },
+    {
+      "id": "distance-before-priority",
+      "family": "destination",
+      "inputs": {
+        "order": "distance-first",
+        "limit": 9,
+        "tiles": [
+          {
+            "id": "x0",
+            "priority": -1,
+            "proximity": 9,
+            "distance": 5
+          },
+          {
+            "id": "x1",
+            "priority": 0,
+            "proximity": 0,
+            "distance": 1
+          }
+        ]
+      },
+      "expected": {
+        "selected": "x1"
+      }
+    },
+    {
+      "id": "zero-slots-still-draw",
+      "family": "ranked-lottery",
+      "inputs": {
+        "seed": 1,
+        "chances": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "selected": null,
+        "fallback": false,
+        "rngWord": 2633739833,
+        "draws": 8,
+        "raw": [
+          16838,
+          5758,
+          10113,
+          17515,
+          31051,
+          5627,
+          23010,
+          7419
+        ]
+      }
+    },
+    {
+      "id": "certain-first",
+      "family": "ranked-lottery",
+      "inputs": {
+        "seed": 1,
+        "chances": [
+          100,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "selected": 0,
+        "fallback": false,
+        "rngWord": 1103527590,
+        "draws": 1,
+        "raw": [
+          16838
+        ]
+      }
+    },
+    {
+      "id": "ninety-first",
+      "family": "ranked-lottery",
+      "inputs": {
+        "seed": 1,
+        "chances": [
+          90,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "selected": 0,
+        "fallback": false,
+        "rngWord": 1103527590,
+        "draws": 1,
+        "raw": [
+          16838
+        ]
+      }
+    },
+    {
+      "id": "second-after-failure",
+      "family": "ranked-lottery",
+      "inputs": {
+        "seed": 1,
+        "chances": [
+          10,
+          90,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "selected": 1,
+        "fallback": false,
+        "rngWord": 2524885223,
+        "draws": 2,
+        "raw": [
+          16838,
+          5758
+        ]
+      }
+    },
+    {
+      "id": "failed-all-falls-back-first",
+      "family": "ranked-lottery",
+      "inputs": {
+        "seed": 1,
+        "chances": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "selected": 0,
+        "fallback": true,
+        "rngWord": 2633739833,
+        "draws": 8,
+        "raw": [
+          16838,
+          5758,
+          10113,
+          17515,
+          31051,
+          5627,
+          23010,
+          7419
+        ]
+      }
+    },
+    {
+      "id": "front-ten",
+      "family": "sword-formula-projection",
+      "inputs": {
+        "seed": 1,
+        "pa": 5,
+        "power": 5,
+        "hp": 50,
+        "evade": 10,
+        "front": true
+      },
+      "expected": {
+        "hitPercent": 90,
+        "damage": 25,
+        "hp": 25,
+        "critical": false,
+        "knockback": false,
+        "rngWord": 3295386429,
+        "resolutionDraws": 4,
+        "raw": [
+          16838,
+          5758,
+          10113,
+          17515
+        ]
+      }
+    },
+    {
+      "id": "execution-critical-seed-projects-normal",
+      "family": "sword-formula-projection",
+      "inputs": {
+        "seed": 57,
+        "pa": 5,
+        "power": 5,
+        "hp": 50,
+        "evade": 10,
+        "front": true
+      },
+      "expected": {
+        "hitPercent": 90,
+        "damage": 25,
+        "hp": 25,
+        "critical": false,
+        "knockback": false,
+        "rngWord": 3587663605,
+        "resolutionDraws": 4,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975
+        ]
+      }
+    },
+    {
+      "id": "side-clears-evade",
+      "family": "sword-formula-projection",
+      "inputs": {
+        "seed": 57,
+        "pa": 5,
+        "power": 5,
+        "hp": 50,
+        "evade": 100,
+        "front": false
+      },
+      "expected": {
+        "hitPercent": 100,
+        "damage": 25,
+        "hp": 25,
+        "critical": false,
+        "knockback": false,
+        "rngWord": 3587663605,
+        "resolutionDraws": 4,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975
+        ]
+      }
+    },
+    {
+      "id": "certain-evade-still-four-draws",
+      "family": "sword-formula-projection",
+      "inputs": {
+        "seed": 57,
+        "pa": 5,
+        "power": 5,
+        "hp": 50,
+        "evade": 100,
+        "front": true
+      },
+      "expected": {
+        "hitPercent": 0,
+        "damage": 0,
+        "hp": 50,
+        "critical": false,
+        "knockback": false,
+        "rngWord": 3587663605,
+        "resolutionDraws": 4,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975
+        ]
+      }
+    },
+    {
+      "id": "pa-zero-floor",
+      "family": "sword-formula-projection",
+      "inputs": {
+        "seed": 1,
+        "pa": 0,
+        "power": 5,
+        "hp": 50,
+        "evade": 10,
+        "front": true
+      },
+      "expected": {
+        "hitPercent": 90,
+        "damage": 5,
+        "hp": 45,
+        "critical": false,
+        "knockback": false,
+        "rngWord": 3295386429,
+        "resolutionDraws": 4,
+        "raw": [
+          16838,
+          5758,
+          10113,
+          17515
+        ]
+      }
+    },
+    {
+      "id": "power-zero",
+      "family": "sword-formula-projection",
+      "inputs": {
+        "seed": 1,
+        "pa": 5,
+        "power": 0,
+        "hp": 50,
+        "evade": 10,
+        "front": true
+      },
+      "expected": {
+        "hitPercent": 90,
+        "damage": 0,
+        "hp": 50,
+        "critical": false,
+        "knockback": false,
+        "rngWord": 3295386429,
+        "resolutionDraws": 4,
+        "raw": [
+          16838,
+          5758,
+          10113,
+          17515
+        ]
+      }
+    },
+    {
+      "id": "positive-cap",
+      "family": "sword-formula-projection",
+      "inputs": {
+        "seed": 1,
+        "pa": 255,
+        "power": 64,
+        "hp": 2000,
+        "evade": 10,
+        "front": true
+      },
+      "expected": {
+        "hitPercent": 90,
+        "damage": 999,
+        "hp": 1001,
+        "critical": false,
+        "knockback": false,
+        "rngWord": 3295386429,
+        "resolutionDraws": 4,
+        "raw": [
+          16838,
+          5758,
+          10113,
+          17515
+        ]
+      }
+    },
+    {
+      "id": "healthy-state",
+      "family": "state-score",
+      "inputs": {
+        "units": [
+          {
+            "hp": 50,
+            "maxHp": 50,
+            "status": "None",
+            "enemy": false,
+            "keptEquipmentSlots": 7
+          },
+          {
+            "hp": 50,
+            "maxHp": 50,
+            "status": "None",
+            "enemy": true,
+            "keptEquipmentSlots": 7
+          }
+        ]
+      },
+      "expected": {
+        "priority": 0
+      }
+    },
+    {
+      "id": "damage25-state",
+      "family": "state-score",
+      "inputs": {
+        "units": [
+          {
+            "hp": 50,
+            "maxHp": 50,
+            "status": "None",
+            "enemy": false,
+            "keptEquipmentSlots": 7
+          },
+          {
+            "hp": 25,
+            "maxHp": 50,
+            "status": "None",
+            "enemy": true,
+            "keptEquipmentSlots": 7
+          }
+        ]
+      },
+      "expected": {
+        "priority": 64
+      }
+    },
+    {
+      "id": "critical-state",
+      "family": "state-score",
+      "inputs": {
+        "units": [
+          {
+            "hp": 50,
+            "maxHp": 50,
+            "status": "None",
+            "enemy": false,
+            "keptEquipmentSlots": 7
+          },
+          {
+            "hp": 10,
+            "maxHp": 50,
+            "status": "Critical",
+            "enemy": true,
+            "keptEquipmentSlots": 7
+          }
+        ]
+      },
+      "expected": {
+        "priority": 135
+      }
+    },
+    {
+      "id": "dead-state",
+      "family": "state-score",
+      "inputs": {
+        "units": [
+          {
+            "hp": 50,
+            "maxHp": 50,
+            "status": "None",
+            "enemy": false,
+            "keptEquipmentSlots": 7
+          },
+          {
+            "hp": 0,
+            "maxHp": 50,
+            "status": "Dead",
+            "enemy": true,
+            "keptEquipmentSlots": 7
+          }
+        ]
+      },
+      "expected": {
+        "priority": 320
+      }
+    },
+    {
+      "id": "own-critical-state",
+      "family": "state-score",
+      "inputs": {
+        "units": [
+          {
+            "hp": 10,
+            "maxHp": 50,
+            "status": "Critical",
+            "enemy": false,
+            "keptEquipmentSlots": 7
+          },
+          {
+            "hp": 50,
+            "maxHp": 50,
+            "status": "None",
+            "enemy": true,
+            "keptEquipmentSlots": 7
+          }
+        ]
+      },
+      "expected": {
+        "priority": -135
+      }
+    },
+    {
+      "id": "move-before-act",
+      "family": "command-dispatch",
+      "inputs": {
+        "compactRecordsValid": true,
+        "decided": false,
+        "flagsUnchanged": false,
+        "moved": false,
+        "acted": false,
+        "actBeforeMove": false,
+        "sameTile": false,
+        "hasSkillset": true
+      },
+      "expected": {
+        "command": "Move",
+        "redecide": true
+      }
+    },
+    {
+      "id": "act-before-move",
+      "family": "command-dispatch",
+      "inputs": {
+        "compactRecordsValid": true,
+        "decided": false,
+        "flagsUnchanged": false,
+        "moved": false,
+        "acted": false,
+        "actBeforeMove": true,
+        "sameTile": false,
+        "hasSkillset": true
+      },
+      "expected": {
+        "command": "Act",
+        "redecide": true
+      }
+    },
+    {
+      "id": "already-moved-act",
+      "family": "command-dispatch",
+      "inputs": {
+        "compactRecordsValid": true,
+        "decided": true,
+        "flagsUnchanged": false,
+        "moved": true,
+        "acted": false,
+        "actBeforeMove": false,
+        "sameTile": false,
+        "hasSkillset": true
+      },
+      "expected": {
+        "command": "Act",
+        "redecide": false
+      }
+    },
+    {
+      "id": "post-act-replan-move",
+      "family": "command-dispatch",
+      "inputs": {
+        "compactRecordsValid": true,
+        "decided": true,
+        "flagsUnchanged": false,
+        "moved": false,
+        "acted": true,
+        "actBeforeMove": false,
+        "sameTile": false,
+        "hasSkillset": true
+      },
+      "expected": {
+        "command": "Move",
+        "redecide": true
+      }
+    },
+    {
+      "id": "post-act-same-tile-end",
+      "family": "command-dispatch",
+      "inputs": {
+        "compactRecordsValid": true,
+        "decided": true,
+        "flagsUnchanged": false,
+        "moved": false,
+        "acted": true,
+        "actBeforeMove": false,
+        "sameTile": true,
+        "hasSkillset": true
+      },
+      "expected": {
+        "command": "EndTurn",
+        "redecide": true
+      }
+    },
+    {
+      "id": "unchanged-flags-end",
+      "family": "command-dispatch",
+      "inputs": {
+        "compactRecordsValid": true,
+        "decided": true,
+        "flagsUnchanged": true,
+        "moved": false,
+        "acted": false,
+        "actBeforeMove": false,
+        "sameTile": false,
+        "hasSkillset": true
+      },
+      "expected": {
+        "command": "EndTurn",
+        "redecide": false
+      }
+    },
+    {
+      "id": "invalid-compact-end",
+      "family": "command-dispatch",
+      "inputs": {
+        "compactRecordsValid": false,
+        "decided": false,
+        "flagsUnchanged": false,
+        "moved": false,
+        "acted": false,
+        "actBeforeMove": false,
+        "sameTile": false,
+        "hasSkillset": true
+      },
+      "expected": {
+        "command": "EndTurn",
+        "redecide": false
+      }
+    },
+    {
+      "id": "face-south",
+      "family": "wait-facing",
+      "inputs": {
+        "hint": "ChooseAtWait",
+        "actor": [
+          2,
+          2
+        ],
+        "enemy": [
+          2,
+          1
+        ],
+        "current": "South",
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ]
+      },
+      "expected": {
+        "facing": "South"
+      }
+    },
+    {
+      "id": "face-west",
+      "family": "wait-facing",
+      "inputs": {
+        "hint": "ChooseAtWait",
+        "actor": [
+          2,
+          2
+        ],
+        "enemy": [
+          1,
+          2
+        ],
+        "current": "South",
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ]
+      },
+      "expected": {
+        "facing": "West"
+      }
+    },
+    {
+      "id": "face-north",
+      "family": "wait-facing",
+      "inputs": {
+        "hint": "ChooseAtWait",
+        "actor": [
+          2,
+          2
+        ],
+        "enemy": [
+          2,
+          3
+        ],
+        "current": "South",
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ]
+      },
+      "expected": {
+        "facing": "North"
+      }
+    },
+    {
+      "id": "face-east",
+      "family": "wait-facing",
+      "inputs": {
+        "hint": "ChooseAtWait",
+        "actor": [
+          2,
+          2
+        ],
+        "enemy": [
+          3,
+          2
+        ],
+        "current": "South",
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ]
+      },
+      "expected": {
+        "facing": "East"
+      }
+    },
+    {
+      "id": "face-southwest",
+      "family": "wait-facing",
+      "inputs": {
+        "hint": "ChooseAtWait",
+        "actor": [
+          2,
+          2
+        ],
+        "enemy": [
+          1,
+          1
+        ],
+        "current": "South",
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ]
+      },
+      "expected": {
+        "facing": "South"
+      }
+    },
+    {
+      "id": "face-northwest",
+      "family": "wait-facing",
+      "inputs": {
+        "hint": "ChooseAtWait",
+        "actor": [
+          2,
+          2
+        ],
+        "enemy": [
+          1,
+          3
+        ],
+        "current": "South",
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ]
+      },
+      "expected": {
+        "facing": "West"
+      }
+    },
+    {
+      "id": "face-northeast",
+      "family": "wait-facing",
+      "inputs": {
+        "hint": "ChooseAtWait",
+        "actor": [
+          2,
+          2
+        ],
+        "enemy": [
+          3,
+          3
+        ],
+        "current": "South",
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ]
+      },
+      "expected": {
+        "facing": "North"
+      }
+    },
+    {
+      "id": "face-southeast",
+      "family": "wait-facing",
+      "inputs": {
+        "hint": "ChooseAtWait",
+        "actor": [
+          2,
+          2
+        ],
+        "enemy": [
+          3,
+          1
+        ],
+        "current": "South",
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ]
+      },
+      "expected": {
+        "facing": "East"
+      }
+    },
+    {
+      "id": "blocked-enemy-keeps-current",
+      "family": "wait-facing",
+      "inputs": {
+        "hint": "ChooseAtWait",
+        "actor": [
+          2,
+          2
+        ],
+        "enemy": [
+          3,
+          2
+        ],
+        "current": "North",
+        "viable": [
+          "South",
+          "North"
+        ]
+      },
+      "expected": {
+        "facing": "North"
+      }
+    },
+    {
+      "id": "blocked-current-last-viable",
+      "family": "wait-facing",
+      "inputs": {
+        "hint": "ChooseAtWait",
+        "actor": [
+          2,
+          2
+        ],
+        "enemy": [
+          3,
+          2
+        ],
+        "current": "West",
+        "viable": [
+          "South",
+          "North"
+        ]
+      },
+      "expected": {
+        "facing": "North"
+      }
+    },
+    {
+      "id": "enemy-halves",
+      "family": "reach-randomization",
+      "inputs": {
+        "seed": 0,
+        "nonPlayerTeam": true,
+        "inReach": false,
+        "reach": 4
+      },
+      "expected": {
+        "reach": 2,
+        "draws": 1,
+        "rngWord": 12345
+      }
+    },
+    {
+      "id": "enemy-keeps",
+      "family": "reach-randomization",
+      "inputs": {
+        "seed": 1,
+        "nonPlayerTeam": true,
+        "inReach": false,
+        "reach": 4
+      },
+      "expected": {
+        "reach": 4,
+        "draws": 1,
+        "rngWord": 1103527590
+      }
+    },
+    {
+      "id": "player-team-no-roll",
+      "family": "reach-randomization",
+      "inputs": {
+        "seed": 0,
+        "nonPlayerTeam": false,
+        "inReach": false,
+        "reach": 4
+      },
+      "expected": {
+        "reach": 4,
+        "draws": 0,
+        "rngWord": 0
+      }
+    },
+    {
+      "id": "in-reach-no-roll",
+      "family": "reach-randomization",
+      "inputs": {
+        "seed": 0,
+        "nonPlayerTeam": true,
+        "inReach": true,
+        "reach": 4
+      },
+      "expected": {
+        "reach": 4,
+        "draws": 0,
+        "rngWord": 0
+      }
+    }
+  ],
+  "implementationCases": [
+    {
+      "id": "AIC-001",
+      "purpose": "Explicit normalized roster/policy/order inputs; original default and custom implementations selected by policy ID.",
+      "status": "unexecuted"
+    },
+    {
+      "id": "AIC-002",
+      "purpose": "Formula AI projection differs from execution: normal full damage, hit percentage separate, four real evade draws.",
+      "status": "unexecuted"
+    },
+    {
+      "id": "AIC-003",
+      "purpose": "No AI critical/proc/push for ordinary sword; zero PA/power/cap and certain evade branches.",
+      "status": "unexecuted"
+    },
+    {
+      "id": "AIC-004",
+      "purpose": "State score HP128/status/equipment51 arithmetic with signed-16 accumulation.",
+      "status": "unexecuted"
+    },
+    {
+      "id": "AIC-005",
+      "purpose": "Stable ability ordering and disabled Frog entry; exhaustive origin order and aim-tile consumption.",
+      "status": "unexecuted"
+    },
+    {
+      "id": "AIC-006",
+      "purpose": "Move-only baseline and three movement scenarios; original target propagation and actor occupied tile rules.",
+      "status": "unexecuted"
+    },
+    {
+      "id": "AIC-007",
+      "purpose": "Priority/hit/proximity comparison and exact-equality incumbent behavior.",
+      "status": "unexecuted"
+    },
+    {
+      "id": "AIC-008",
+      "purpose": "Destination and ranked-origin last-scanned ties; nearest-unit first-slot ties.",
+      "status": "unexecuted"
+    },
+    {
+      "id": "AIC-009",
+      "purpose": "Eight-slot ranked lottery uses raw modulo100; zero entries draw and all-failed fallback retained.",
+      "status": "unexecuted"
+    },
+    {
+      "id": "AIC-010",
+      "purpose": "Nonplayer out-of-reach modulo7 branch and conditional draw budget.",
+      "status": "unexecuted"
+    },
+    {
+      "id": "AIC-011",
+      "purpose": "Act-before-Move/Move-before-Act dispatch and cached next command; replan after Act.",
+      "status": "unexecuted"
+    },
+    {
+      "id": "AIC-012",
+      "purpose": "No-change progress guard ends instead of repeating rejected/unapplied commands.",
+      "status": "unexecuted"
+    },
+    {
+      "id": "AIC-013",
+      "purpose": "Incremental yielding preserves ordered candidate work/RNG and exact command results.",
+      "status": "unexecuted"
+    },
+    {
+      "id": "AIC-014",
+      "purpose": "Session invalidation/revision/command receipt and synchronized decision RNG commit are atomic.",
+      "status": "unexecuted"
+    },
+    {
+      "id": "AIC-015",
+      "purpose": "Wait direction name mapping, diagonal boundaries, viable-direction filtering and late selection.",
+      "status": "unexecuted"
+    },
+    {
+      "id": "AIC-016",
+      "purpose": "Explicit facing application after Wait or automatic Move+Act turn completion without extra CT refund.",
+      "status": "unexecuted"
+    },
+    {
+      "id": "AIC-017",
+      "purpose": "Dry flat two-enemy movement proof and source slot ordering are distinct from UI collection order.",
+      "status": "unexecuted"
+    },
+    {
+      "id": "AIC-018",
+      "purpose": "Source projection simulation clock/upkeep draws, refresh and move-only candidates are counted separately.",
+      "status": "unexecuted"
+    },
+    {
+      "id": "AIC-019",
+      "purpose": "Unsupported policies/status/geometry/undefined overlap reject explicitly; no invented fallback heuristic.",
+      "status": "unexecuted"
+    },
+    {
+      "id": "AIC-020",
+      "purpose": "Headless journals, candidate explanations and policy comparison fixtures; presentation pauses do not affect decisions.",
+      "status": "unexecuted"
+    }
+  ],
+  "limits": [
+    "Helper/stage scenarios only, not complete selected-turn outputs or original/emulator observations.",
+    "Scoring vectors take explicit post-simulation statuses; they do not implement status transitions.",
+    "Projection vectors count formula-level evasion only; candidate upkeep/refresh/search RNG is additional.",
+    "Supplied destination cells/viable facings are ordered inputs, not a pathfinding or terrain proof.",
+    "Wait overlap or absent-enemy stack-byte behavior remains unsupported and unresolved."
+  ]
+}
