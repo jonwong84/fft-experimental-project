@@ -3,7 +3,7 @@
 Generated from `baseline-coverage.json` by `tools/verification/verify_baseline_coverage.py --write-view`.
 Edit the JSON, then regenerate this view. See [the inventory guide](README.md) for status/evidence rules.
 
-Target: **SCUS-94221**. Snapshot: 2026-10-26; managed base `164469cefc1fbd0989ed9b936e304b56fb2313b8`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+Target: **SCUS-94221**. Snapshot: 2026-10-26; managed base `d737098a633b76a7d5bf39a7be58bab4939edc44`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 These entries are planning scopes, not a feature-completion percentage or a complete record/encounter catalog.
 
 ## Simulation
@@ -580,9 +580,9 @@ Bounded follow-ups: ZOD-080, ZOD-081, ZOD-082, ZOD-083, ZOD-084, ZOD-085, ZOD-08
 
 Status: **absent**; scope: **baseline**; ticket: **ZOD-042**; owner area: Fft.Client presentation and application commands.
 
-No original title/new-game/continue/name/birthday shell. ZOD-102/103 provide only a separate authored Windows Home/New/live Resume/World/Party model/host, with finite input/render/replay checks; owner gallery approval is recorded; bounded manual controls/resize/close/focus checks are owner-reported as passed. No-argument client still prints a bootstrap line.
+No original title/new-game/continue/name/birthday shell. ZOD-102/103 provide only a separate authored Windows Home/New/live Resume/World/Party model/host, with finite input/render/replay checks; owner gallery approval is recorded; bounded manual controls/resize/close/focus checks are owner-reported as passed. No-argument client still prints a bootstrap line. ZOD-069 adds native Home Load/World Save/Load only for the authored checkpoint; its owner review is pending and no original title/Continue semantics are claimed.
 
-Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/development/synthetic-world-navigation.md](../../docs/development/synthetic-world-navigation.md), [docs/evidence/navigation/synthetic-world-navigation-v1.json](../../docs/evidence/navigation/synthetic-world-navigation-v1.json), [docs/development/windows-world-navigation.md](../../docs/development/windows-world-navigation.md), [docs/evidence/navigation/windows-world-navigation-v1.json](../../docs/evidence/navigation/windows-world-navigation-v1.json).
+Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/development/synthetic-world-navigation.md](../../docs/development/synthetic-world-navigation.md), [docs/evidence/navigation/synthetic-world-navigation-v1.json](../../docs/evidence/navigation/synthetic-world-navigation-v1.json), [docs/development/windows-world-navigation.md](../../docs/development/windows-world-navigation.md), [docs/evidence/navigation/windows-world-navigation-v1.json](../../docs/evidence/navigation/windows-world-navigation-v1.json), [docs/development/world-save-load-ui.md](../../docs/development/world-save-load-ui.md), [docs/evidence/navigation/world-save-load-ui-v1.json](../../docs/evidence/navigation/world-save-load-ui-v1.json).
 
 Source entry points (pinned revision above; not full traces): [src/open/title.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/open/title.c), [src/open/prologue.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/open/prologue.c), [src/world/name_entry.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/name_entry.c).
 
@@ -596,7 +596,7 @@ Remaining gaps:
 
 - Original flow, assets, focus, input semantics and Windows presentation design are absent.
 
-Next action: Implement ZOD-069 slot navigation. ZOD-103 is complete for its authored host; original title/name/birthday, assets/flow and timing remain separate baseline work.
+Next action: Review the new ZOD-069 slot screens/workflow; retain original title/name/birthday, assets/flow and timing as separate baseline work.
 
 Bounded follow-ups: ZOD-102, ZOD-103, ZOD-069.
 
@@ -684,23 +684,25 @@ Next action: Create a screen/operation inventory with text and asset dependencie
 
 ### COV-UI-006 — Windows Save/Load interface and original save availability
 
-Status: **absent**; scope: **platform-replacement**; ticket: **ZOD-042**; owner area: Fft.Client presentation and application commands.
+Status: **partial**; scope: **platform-replacement**; ticket: **ZOD-042**; owner area: Fft.Client presentation and application commands.
 
-No player-facing slot UI. ZOD-068 supplies the synthetic service; ZOD-102/103 now provide authored native navigation and modal decisions with finite GPU/replay checks. ZOD-103 owner visual approval is recorded; the bounded manual controls/resize/close/focus checklist is owner-reported as passed; ZOD-069 is Ready. Original availability remains unenumerated.
+ZOD-069 implements authored native five-slot pages, validated details, frozen revisions, overwrite/discard/recovery confirmations, success/error and refresh states through ZOD-068. Two native checks repeat 51 UI/storage files, preserve corrupt primary/backup data and match CPU/GPU/fresh replay. Owner visual and interactive slot review is pending; original availability remains unenumerated.
 
-Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-067-campaign-save-state.md](../../docs/architecture/zod-067-campaign-save-state.md), [docs/development/synthetic-world-navigation.md](../../docs/development/synthetic-world-navigation.md), [docs/evidence/navigation/synthetic-world-navigation-v1.json](../../docs/evidence/navigation/synthetic-world-navigation-v1.json), [docs/development/windows-world-navigation.md](../../docs/development/windows-world-navigation.md), [docs/evidence/navigation/windows-world-navigation-v1.json](../../docs/evidence/navigation/windows-world-navigation-v1.json).
+Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-067-campaign-save-state.md](../../docs/architecture/zod-067-campaign-save-state.md), [docs/development/synthetic-world-navigation.md](../../docs/development/synthetic-world-navigation.md), [docs/evidence/navigation/synthetic-world-navigation-v1.json](../../docs/evidence/navigation/synthetic-world-navigation-v1.json), [docs/development/windows-world-navigation.md](../../docs/development/windows-world-navigation.md), [docs/evidence/navigation/windows-world-navigation-v1.json](../../docs/evidence/navigation/windows-world-navigation-v1.json), [docs/development/world-save-load-ui.md](../../docs/development/world-save-load-ui.md), [docs/evidence/navigation/world-save-load-ui-v1.json](../../docs/evidence/navigation/world-save-load-ui-v1.json).
 
 Source entry points (pinned revision above; not full traces): [src/world/card_save.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/card_save.c), [include/fft/save.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/save.h), [src/event/card/entry.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/event/card/entry.c).
 
-Automated baseline check: **none identified for this scope**; add a scenario regression when implementing the next action.
+Current implementation: [src/Fft.Client/Navigation/WorldMenuSession.cs](../../src/Fft.Client/Navigation/WorldMenuSession.cs), [src/Fft.Client/Navigation/WorldMenuSession.Slots.cs](../../src/Fft.Client/Navigation/WorldMenuSession.Slots.cs), [src/Fft.Client/Presentation/WorldMenuPresentation.cs](../../src/Fft.Client/Presentation/WorldMenuPresentation.cs), [src/Fft.Client/Presentation/WorldMenuWindow.cs](../../src/Fft.Client/Presentation/WorldMenuWindow.cs).
 
-Manual checkpoint (pending-original-observation): At legal original save locations, save/continue through Windows UI and test overwrite/cancel/failure recovery.
+Existing bounded checks: [tests/Fft.Client.Tests/WorldSlotMenuTests.cs](../../tests/Fft.Client.Tests/WorldSlotMenuTests.cs), [tools/verification/verify_world_slots.py](../../tools/verification/verify_world_slots.py).
+
+Manual checkpoint (pending-owner-slot-review): Review scratch/world-slots-069-review/review.html, then Save/Load/cancel/overwrite/recovery with keyboard/mouse/controller, page/resize and close. Prior ZOD-103 navigation approval is separate.
 
 Remaining gaps:
 
-- Slot list/confirmation/error/recovery screens and original checkpoint availability need separate implementation/evidence.
+- Owner slot visual/interactive checks and original checkpoint/save availability remain open; full campaign, PS1 cards and RNG continuation are unsupported.
 
-Next action: Implement ZOD-069 slot list/confirmation/error/recovery screens using the existing service and navigation host.
+Next action: Obtain owner gallery and interactive slot review; retain original availability/full UI scope under ZOD-042/053.
 
 Bounded follow-ups: ZOD-068, ZOD-069, ZOD-102, ZOD-103.
 
@@ -883,15 +885,15 @@ Next action: Split mixed-sector decode from prepared-stream playback; keep BIN a
 
 Status: **partial**; scope: **platform-replacement**; ticket: **ZOD-061**; owner area: Fft.Client platform adapters.
 
-Synthetic and fixed prepared hosts run on Windows; bounded mouse/keyboard routing, resize mapping and programmed GPU checks exist. ZOD-103 adds a separate authored menu host with keyboard/mouse/controller press edges, focus/connection baselines, close-modal dispatch, full CPU/GPU target readback and resized pointer routes; owner visual approval is recorded; bounded keyboard/mouse/USB-controller, resize, native close and focus checks are owner-reported as passed.
+Synthetic and fixed prepared hosts run on Windows; bounded mouse/keyboard routing, resize mapping and programmed GPU checks exist. ZOD-103 adds a separate authored menu host with keyboard/mouse/controller press edges, focus/connection baselines, close-modal dispatch, full CPU/GPU target readback and resized pointer routes; owner visual approval is recorded; bounded keyboard/mouse/USB-controller, resize, native close and focus checks are owner-reported as passed. ZOD-069 extends the shared host/router to paged slot navigation and storage decisions; its native programmed checks pass, but new slot owner review is pending.
 
-Evidence: [docs/development/windows-synthetic-host.md](../../docs/development/windows-synthetic-host.md), [docs/development/playable-battle.md](../../docs/development/playable-battle.md), [docs/development/windows-world-navigation.md](../../docs/development/windows-world-navigation.md), [docs/evidence/navigation/windows-world-navigation-v1.json](../../docs/evidence/navigation/windows-world-navigation-v1.json).
+Evidence: [docs/development/windows-synthetic-host.md](../../docs/development/windows-synthetic-host.md), [docs/development/playable-battle.md](../../docs/development/playable-battle.md), [docs/development/windows-world-navigation.md](../../docs/development/windows-world-navigation.md), [docs/evidence/navigation/windows-world-navigation-v1.json](../../docs/evidence/navigation/windows-world-navigation-v1.json), [docs/development/world-save-load-ui.md](../../docs/development/world-save-load-ui.md), [docs/evidence/navigation/world-save-load-ui-v1.json](../../docs/evidence/navigation/world-save-load-ui-v1.json).
 
 Source entry points (pinned revision above; not full traces): [include/fft/input.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/input.h), [src/world/screen/pad_input.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/screen/pad_input.c).
 
 Current implementation: [src/Fft.Client/Presentation/BattleInputLatch.cs](../../src/Fft.Client/Presentation/BattleInputLatch.cs), [src/Fft.Client/Presentation/SceneLayout.cs](../../src/Fft.Client/Presentation/SceneLayout.cs), [src/Fft.Client/Navigation/WorldMenuInput.cs](../../src/Fft.Client/Navigation/WorldMenuInput.cs), [src/Fft.Client/Presentation/WindowsWorldMenuHost.cs](../../src/Fft.Client/Presentation/WindowsWorldMenuHost.cs), [src/Fft.Client/Presentation/WorldMenuCheckPlan.cs](../../src/Fft.Client/Presentation/WorldMenuCheckPlan.cs), [src/Fft.Client/Presentation/WorldMenuPresentation.cs](../../src/Fft.Client/Presentation/WorldMenuPresentation.cs), [src/Fft.Client/Presentation/WorldMenuWindow.cs](../../src/Fft.Client/Presentation/WorldMenuWindow.cs).
 
-Existing bounded checks: [tests/Fft.Client.Tests/BattleUiInputTests.cs](../../tests/Fft.Client.Tests/BattleUiInputTests.cs), [tests/Fft.Client.Tests/SceneLayoutTests.cs](../../tests/Fft.Client.Tests/SceneLayoutTests.cs), [tests/Fft.Client.Tests/WorldMenuHostTests.cs](../../tests/Fft.Client.Tests/WorldMenuHostTests.cs), [tools/verification/verify_world_menu.py](../../tools/verification/verify_world_menu.py).
+Existing bounded checks: [tests/Fft.Client.Tests/BattleUiInputTests.cs](../../tests/Fft.Client.Tests/BattleUiInputTests.cs), [tests/Fft.Client.Tests/SceneLayoutTests.cs](../../tests/Fft.Client.Tests/SceneLayoutTests.cs), [tests/Fft.Client.Tests/WorldMenuHostTests.cs](../../tests/Fft.Client.Tests/WorldMenuHostTests.cs), [tools/verification/verify_world_menu.py](../../tools/verification/verify_world_menu.py), [tests/Fft.Client.Tests/WorldSlotMenuTests.cs](../../tests/Fft.Client.Tests/WorldSlotMenuTests.cs).
 
 Manual checkpoint (owner-reported-bounded-authored-host): Owner confirmed the ZOD-103 five-step interactive checklist on 2026-10-26: "It's good." This covers the selected authored host, not measured latency, exact mapping, mixed-monitor DPI or forced device loss.
 
@@ -899,7 +901,7 @@ Remaining gaps:
 
 - Physical timing, controller/remapping/accessibility and mixed-monitor behavior are not fully validated.
 
-Next action: Use the completed ZOD-103 host for ZOD-069; retain remapping, accessibility, mixed-monitor DPI and device-loss scope under ZOD-061/later host work.
+Next action: Review ZOD-069 slot input/resize/close and gallery separately from completed ZOD-103 navigation; retain wider ZOD-061 device scope.
 
 Bounded follow-ups: ZOD-103, ZOD-069.
 
@@ -1023,7 +1025,7 @@ Status: **partial**; scope: **platform-replacement**; ticket: **ZOD-053**; owner
 
 ZOD-067 retains historical source save-family/lifetime/restore-order context. ZOD-068 proves only invented RNG-free idle-world state, fresh-definition restore, strict DTO/checksum/summary validation, schema-1 migration and next-command state/events. Original campaign serialization and RNG continuation remain unsupported.
 
-Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-067-campaign-save-state.md](../../docs/architecture/zod-067-campaign-save-state.md), [docs/development/synthetic-world-checkpoint.md](../../docs/development/synthetic-world-checkpoint.md), [docs/evidence/saves/synthetic-world-checkpoint-v1.json](../../docs/evidence/saves/synthetic-world-checkpoint-v1.json).
+Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-067-campaign-save-state.md](../../docs/architecture/zod-067-campaign-save-state.md), [docs/development/synthetic-world-checkpoint.md](../../docs/development/synthetic-world-checkpoint.md), [docs/evidence/saves/synthetic-world-checkpoint-v1.json](../../docs/evidence/saves/synthetic-world-checkpoint-v1.json), [docs/development/world-save-load-ui.md](../../docs/development/world-save-load-ui.md), [docs/evidence/navigation/world-save-load-ui-v1.json](../../docs/evidence/navigation/world-save-load-ui-v1.json).
 
 Source entry points (pinned revision above; not full traces): [include/fft/save.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/save.h), [src/main/save_state.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/main/save_state.c), [src/world/card_save.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/card_save.c).
 
@@ -1037,7 +1039,7 @@ Remaining gaps:
 
 - Complete retail checkpoint enumeration, unmodeled fields/side content, original observations, content-version rules and explicit native RNG continuation/seed policy remain open.
 
-Next action: Retain ZOD-053 for original campaign fields/checkpoints, content compatibility and RNG policy. Expose the bounded proof through ZOD-069 after ZOD-103 native navigation.
+Next action: Review ZOD-069 authored Save/Load UI; retain ZOD-053 for original campaign fields/checkpoints, content compatibility and explicit RNG policy.
 
 Bounded follow-ups: ZOD-068, ZOD-069, ZOD-102, ZOD-103.
 
@@ -1045,15 +1047,15 @@ Bounded follow-ups: ZOD-068, ZOD-069, ZOD-102, ZOD-103.
 
 Status: **partial**; scope: **platform-replacement**; ticket: **ZOD-053**; owner area: FFT persistence/application and Windows storage.
 
-ZOD-068 proves ten safe headless synthetic slots with a per-user default, validated metadata, content revisions and exclusive locks, flushed sibling promotion/backups, candidate-only confirmed load and explicit validated recovery. Injected publishing faults and actual Windows sharing failure preserve prior files/live state. No slot UI or full-system durability claim.
+ZOD-068 proves ten safe headless synthetic slots with a per-user default, validated metadata, content revisions and exclusive locks, flushed sibling promotion/backups, candidate-only confirmed load and explicit validated recovery. Injected publishing faults and actual Windows sharing failure preserve prior files/live state. ZOD-069 now exposes the bounded native slot/recovery workflow with UI/storage/failure checks; owner review is pending. No full-system durability claim.
 
-Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-067-campaign-save-state.md](../../docs/architecture/zod-067-campaign-save-state.md), [docs/development/synthetic-world-checkpoint.md](../../docs/development/synthetic-world-checkpoint.md), [docs/evidence/saves/synthetic-world-checkpoint-v1.json](../../docs/evidence/saves/synthetic-world-checkpoint-v1.json).
+Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md), [docs/architecture/zod-067-campaign-save-state.md](../../docs/architecture/zod-067-campaign-save-state.md), [docs/development/synthetic-world-checkpoint.md](../../docs/development/synthetic-world-checkpoint.md), [docs/evidence/saves/synthetic-world-checkpoint-v1.json](../../docs/evidence/saves/synthetic-world-checkpoint-v1.json), [docs/development/world-save-load-ui.md](../../docs/development/world-save-load-ui.md), [docs/evidence/navigation/world-save-load-ui-v1.json](../../docs/evidence/navigation/world-save-load-ui-v1.json).
 
 Source entry points (pinned revision above; not full traces): [src/world/card_save.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/world/card_save.c), [include/fft/save.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/save.h).
 
-Current implementation: [src/Zodiac.Content/Saves/WorldSaveSlotStore.cs](../../src/Zodiac.Content/Saves/WorldSaveSlotStore.cs), [src/Zodiac.Content/Saves/WorldCheckpointService.cs](../../src/Zodiac.Content/Saves/WorldCheckpointService.cs), [src/Fft.Client/WorldCheckpointCheck.cs](../../src/Fft.Client/WorldCheckpointCheck.cs).
+Current implementation: [src/Zodiac.Content/Saves/WorldSaveSlotStore.cs](../../src/Zodiac.Content/Saves/WorldSaveSlotStore.cs), [src/Zodiac.Content/Saves/WorldCheckpointService.cs](../../src/Zodiac.Content/Saves/WorldCheckpointService.cs), [src/Fft.Client/WorldCheckpointCheck.cs](../../src/Fft.Client/WorldCheckpointCheck.cs), [src/Fft.Client/Navigation/WorldMenuSession.Slots.cs](../../src/Fft.Client/Navigation/WorldMenuSession.Slots.cs).
 
-Existing bounded checks: [tests/Zodiac.Content.Tests/Saves/WorldSaveSlotStoreTests.cs](../../tests/Zodiac.Content.Tests/Saves/WorldSaveSlotStoreTests.cs), [tests/Fft.Client.Tests/WorldCheckpointCheckTests.cs](../../tests/Fft.Client.Tests/WorldCheckpointCheckTests.cs), [tools/verification/verify_world_checkpoint.py](../../tools/verification/verify_world_checkpoint.py).
+Existing bounded checks: [tests/Zodiac.Content.Tests/Saves/WorldSaveSlotStoreTests.cs](../../tests/Zodiac.Content.Tests/Saves/WorldSaveSlotStoreTests.cs), [tests/Fft.Client.Tests/WorldCheckpointCheckTests.cs](../../tests/Fft.Client.Tests/WorldCheckpointCheckTests.cs), [tools/verification/verify_world_checkpoint.py](../../tools/verification/verify_world_checkpoint.py), [tests/Fft.Client.Tests/WorldSlotMenuTests.cs](../../tests/Fft.Client.Tests/WorldSlotMenuTests.cs).
 
 Manual checkpoint (pending-original-observation): After ZOD-069 implements menus, review actual overwrite/discard/cancel/recovery decisions and error presentation. Headless storage failures and recovery are automated in ZOD-068.
 
@@ -1061,7 +1063,7 @@ Remaining gaps:
 
 - Native slot/menu presentation remains unimplemented; original campaign compatibility, broader storage environments and power-loss durability require later scope and evidence.
 
-Next action: Implement ZOD-069 slot UI on the completed ZOD-103 host; retain ZOD-053 for full campaign persistence and broader storage validation.
+Next action: Review ZOD-069 gallery and interactive slots; retain ZOD-053 for full campaign persistence and broader storage validation.
 
 Bounded follow-ups: ZOD-068, ZOD-069, ZOD-102, ZOD-103.
 

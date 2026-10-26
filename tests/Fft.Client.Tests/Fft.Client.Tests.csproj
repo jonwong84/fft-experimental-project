@@ -6,6 +6,7 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="../../docs/fixtures/saves/synthetic-world-idle-v1.json" Link="Fixtures/Saves/synthetic-world-idle-v1.json" CopyToOutputDirectory="PreserveNewest" />
     <Compile Include="../Support/AuthoredDarkScreenIntroduction.cs" Link="Support/AuthoredDarkScreenIntroduction.cs" />
     <Compile Include="../Support/AuthoredDarkScreen.cs" Link="Support/AuthoredDarkScreen.cs" />
     <Compile Include="../Support/AuthoredBannerReadySequence.cs" Link="Support/AuthoredBannerReadySequence.cs" />

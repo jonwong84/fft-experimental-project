@@ -10,6 +10,7 @@ public static class WorldMenuPresentation
     public const uint Background = 0xff22150e, Panel = 0xff35281b, Ink = 0xfff4eee4,
         Muted = 0xffbaa291, Accent = 0xffe8ca52, Selected = 0xff70522d, Disabled = 0xff766858;
     public static PixelRect Button(int index) => new(32, 184 + index * 72, 300, 56);
+    public static PixelRect Button(int index, WorldMenuView view) => view.Screen == WorldMenuScreen.SlotList ? new(32, 184 + index * 36, 300, 32) : Button(index);
     public static uint[] Render(WorldMenuView view)
     {
         var pixels = new uint[Width * Height]; Array.Fill(pixels, Background);
@@ -20,15 +21,47 @@ public static class WorldMenuPresentation
         Fill(new(364, 184, 564, 328), Panel);
         for (int i = 0; i < view.Entries.Length; i++)
         {
-            var entry = view.Entries[i]; var bounds = Button(i);
+            var entry = view.Entries[i]; var bounds = Button(i, view);
             Fill(bounds, entry.Action == view.Focus ? Selected : Panel);
             if (entry.Action == view.Focus) Fill(new(bounds.X, bounds.Y, 4, bounds.Height), Accent);
-            Text(entry.Label, bounds.X + 16, bounds.Y + 20, entry.Label.Length > 23 ? 1 : 2, entry.Enabled ? Ink : Disabled);
+            Text(entry.Label, bounds.X + 16, bounds.Y + (bounds.Height < 40 ? 9 : 20), entry.Label.Length > 23 ? 1 : 2, entry.Enabled ? Ink : Disabled);
         }
         int line = 210;
         void Detail(string value, uint color = Ink) { Text(value, 388, line, 2, color); line += 32; }
         var state = view.Checkpoint;
-        if (view.Screen is WorldMenuScreen.ConfirmNew or WorldMenuScreen.ConfirmExit)
+        if (view.Slots is { } slots)
+        {
+            Detail(slots.Selected?.SlotId.Replace("slot-", "SLOT ", StringComparison.Ordinal) ?? "SELECT A SLOT", Accent);
+            if (view.Screen is WorldMenuScreen.ConfirmOverwrite or WorldMenuScreen.ConfirmLoad or WorldMenuScreen.ConfirmRecovery)
+            {
+                Detail(view.Screen switch { WorldMenuScreen.ConfirmOverwrite => "REPLACE THE SAVED CHECKPOINT",
+                    WorldMenuScreen.ConfirmLoad => "REPLACE THE LIVE SESSION", _ => "LOAD THE VALIDATED BACKUP" });
+                Detail("CANCEL KEEPS EVERYTHING", Accent);
+                Detail(view.Screen == WorldMenuScreen.ConfirmRecovery ? "PRIMARY FILE WILL BE PRESERVED" : "ACCEPT CONFIRMS THIS OPERATION", Muted);
+            }
+            else if (view.Screen is WorldMenuScreen.SlotError or WorldMenuScreen.SlotResult)
+            {
+                foreach (string text in Wrap(slots.Message, 42)) Detail(text, view.Screen == WorldMenuScreen.SlotError ? Accent : Ink);
+                Detail(view.Screen == WorldMenuScreen.SlotError ? "LIVE SESSION IS UNCHANGED" : "READY TO CONTINUE", Muted);
+                if (slots.NeedsRefresh) Detail("REFRESH BEFORE TRYING AGAIN", Accent);
+            }
+            else if (slots.Selected is { } slot)
+            {
+                Detail($"PRIMARY / {slot.Primary}"); Detail($"BACKUP / {slot.Backup}", Muted);
+                var summary = slot.Summary ?? slot.BackupSummary;
+                if (summary is not null)
+                {
+                    Detail($"{(summary.LocationId.EndsWith("/harbor", StringComparison.Ordinal) ? "HARBOR" : "HILL")} / PARTY {summary.PartyCount}", Accent);
+                    Detail($"FUNDS {summary.Funds} / TIME {summary.ElapsedSeconds} SEC");
+                    Detail($"DATE {summary.Month}/{summary.Day} / BRIDGE {(summary.Progress ? "OPEN" : "CLOSED")}", Muted);
+                    Detail($"{(slot.Summary is null ? "BACKUP" : "PRIMARY")} SCHEMA {slot.SourceSchemaVersion ?? slot.BackupSourceSchemaVersion}", Muted);
+                }
+                else Detail("NO VALIDATED SUMMARY", Muted);
+                if (slots.NeedsRefresh) Detail("REFRESH REQUIRED", Accent);
+                else if (view.Screen == WorldMenuScreen.SlotList) Detail($"PAGE {slots.Page + 1}/2", Accent);
+            }
+        }
+        else if (view.Screen is WorldMenuScreen.ConfirmNew or WorldMenuScreen.ConfirmExit)
         {
             Detail(view.Screen == WorldMenuScreen.ConfirmNew ? "REPLACE THE LIVE CHECKPOINT" : "EXIT WITHOUT SAVING", Accent);
             line += 16;
@@ -41,7 +74,7 @@ public static class WorldMenuPresentation
             Detail("START A SMALL WORLD SESSION", Accent); line += 16;
             Detail("TWO LOCATIONS / TWO PARTY MEMBERS");
             Detail("RESUME KEEPS THE LIVE CHECKPOINT");
-            Detail("SAVE AND LOAD SCREENS COME NEXT", Muted);
+            Detail(view.Entries.Any(e => e.Action == WorldMenuAction.OpenLoad) ? "LOAD RESTORES A SAVED CHECKPOINT" : "SAVE AND LOAD SCREENS COME NEXT", Muted);
         }
         else
         {
@@ -93,6 +126,20 @@ public static class WorldMenuPresentation
     public static string Title(WorldMenuScreen screen) => screen switch
     {
         WorldMenuScreen.Home => "HOME", WorldMenuScreen.World => "WORLD", WorldMenuScreen.Party => "PARTY",
-        WorldMenuScreen.ConfirmNew => "NEW CHECKPOINT", WorldMenuScreen.ConfirmExit => "EXIT SESSION", _ => "CLOSED",
+        WorldMenuScreen.ConfirmNew => "NEW CHECKPOINT", WorldMenuScreen.ConfirmExit => "EXIT SESSION",
+        WorldMenuScreen.SlotList => "SAVE AND LOAD / SLOTS", WorldMenuScreen.SlotDetails => "SLOT DETAILS",
+        WorldMenuScreen.ConfirmOverwrite => "CONFIRM OVERWRITE", WorldMenuScreen.ConfirmLoad => "CONFIRM LOAD",
+        WorldMenuScreen.ConfirmRecovery => "CONFIRM BACKUP RECOVERY", WorldMenuScreen.SlotResult => "OPERATION COMPLETE",
+        WorldMenuScreen.SlotError => "OPERATION FAILED", _ => "CLOSED",
     };
+    private static IEnumerable<string> Wrap(string message, int columns)
+    {
+        string line = "";
+        foreach (string word in message.Split(' ', StringSplitOptions.RemoveEmptyEntries))
+        {
+            if (line.Length > 0 && line.Length + word.Length + 1 > columns) { yield return line; line = ""; }
+            line = line.Length == 0 ? word : line + " " + word;
+        }
+        if (line.Length > 0) yield return line;
+    }
 }

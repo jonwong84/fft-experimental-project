@@ -1,5 +1,9 @@
 # ZOD-102 — Authored world-menu navigation
 
+Persistence follow-up (2026-10-26): [ZOD-069](world-save-load-ui.md) extends the
+normal interactive menu with explicit service-backed storage commands. The
+navigation-only model/check profile below retains its earlier no-I/O scope.
+
 Follow-up (2026-10-26): [ZOD-103's Windows host](windows-world-navigation.md)
 is complete with finite native checks, owner gallery approval and owner-reported
 manual controls/resize/close/focus checks. The model validation below is historical.

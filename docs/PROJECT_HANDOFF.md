@@ -1,5 +1,26 @@
 # Tessera / Zodiac / FFT Project Handoff
 
+**Latest implementation (2026-10-26): ZOD-069 implemented; owner review pending.**
+Normal `--world-menu` now enables Home Load and World Save/Load through ZOD-068's
+service. Two five-slot pages, validated primary/backup details, frozen revisions,
+Cancel-first overwrite/discard/recovery, success/error and explicit refresh
+preserve live state and recoverable files. Rendering/view access performs no
+storage operations. Existing navigation-only checks retain their prior profile.
+Locked restore, zero-warning Release build and **2,317 .NET / 287 Python tests**
+pass (17/3 new). Two native checks each complete 140 samples/draws and 22 exact
+CPU/GPU images (27,033,600 pixels total), six successful/three rejected storage
+operations and complete result/event/view replay. Independent state/PNG/storage
+audit verifies final Hill/funds 93/elapsed 53, preserved corrupt primary and saved
+recovery in slot 2. All 51 UI/storage files repeat exactly; 32 prior navigation
+artifacts remain intact. Two pre-window existing-output/syntax probes pass.
+No actual user save directory was written by validation. Normal explicit Save
+uses the documented per-user synthetic folder. [Guide](development/world-save-load-ui.md),
+[evidence](evidence/navigation/world-save-load-ui-v1.json), gallery
+`scratch/world-slots-069-review/review.html`. Owner visual and interactive slot
+checks are pending; ZOD-103 approval does not approve the new workflow. Original
+campaign/card/availability, wider device fidelity and deferred display work stay
+open. Engine/Framework/Content production, save schemas and package locks are intact.
+
 **Owner manual review (2026-10-26): ZOD-103 complete.** After receiving the
 interactive five-step checklist, the owner confirmed "It's good." Record the
 keyboard/mouse/USB-controller, resize/click, native close/cancel/confirm and

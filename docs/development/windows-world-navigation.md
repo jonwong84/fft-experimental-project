@@ -1,5 +1,9 @@
 # ZOD-103 — Windows authored world navigation
 
+Follow-up (2026-10-26): [ZOD-069](world-save-load-ui.md) now enables Save/Load in
+normal `--world-menu`. The navigation-only `--world-menu-check` keeps the earlier
+profile below; its approvals and captures retain their historical scope.
+
 Implementation entry: 2026-10-26, managed
 `164469cefc1fbd0989ed9b936e304b56fb2313b8`, clean working tree.
 The [ZOD-102 model and source context](synthetic-world-navigation.md) define
@@ -82,7 +86,8 @@ returns to the same live checkpoint. Home/New and Exit open confirmations with
 Cancel selected. Use Up/Down or click an entry. Controller navigation uses the
 first SDL-mapped controller's D-pad/A/B; RetroArch's mapping is independent.
 Window close requests Exit confirmation; only Accept exits. Escape is Back.
-Nothing is saved by this host. Short presses entirely between polling samples
+The navigation-only profile never writes saves; the new normal interactive
+profile saves only through explicit ZOD-069 actions. Short presses entirely between polling samples
 can be missed; no held repeat or configurable bindings are claimed here.
 
 The owner approved [the local gallery](../../scratch/world-menu-103-review/review.html)

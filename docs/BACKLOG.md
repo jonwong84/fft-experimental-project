@@ -44,6 +44,16 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Latest implementation (2026-10-26): ZOD-069 is implemented; owner visual and
+interactive review pending.** Native Save/Load adds two slot pages, validated
+primary/backup details, Cancel-first overwrite/discard/recovery, success/error
+and explicit refresh states. All **2,317 .NET / 287 Python tests** pass.
+Two finite native runs execute 140 samples/22 captures each, with complete
+CPU/GPU/replay matches and **51 exact repeated UI/storage files**. Review
+`scratch/world-slots-069-review/review.html` and the
+[launch/manual guide](development/world-save-load-ui.md). Prior navigation
+approval is retained separately; original campaign/save availability remains open.
+
 **Latest completion (2026-10-26): ZOD-103 is complete.** The owner confirmed the
 manual keyboard/mouse/controller, resize, native close and focus checklist:
 "It's good." The authored Windows world menu passes two
@@ -1221,7 +1231,21 @@ ZOD-042 epic and original party/job/equipment workflows stay open.
 
 ### ZOD-069 — Add native Windows Save/Load slot navigation
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-068, ZOD-103
+**Type:** Story · **Priority:** P2 · **Status:** Implemented; owner visual and interactive review pending · **Depends on:** ZOD-068, ZOD-103
+
+**Result (2026-10-26):** [Slot UI](development/world-save-load-ui.md) delegates
+catalog/save/load/recovery to the existing service, freezes selected revisions,
+preserves sessions on cancel/failure and requires refresh before retrying.
+Two five-slot pages expose only validated summaries and available operations;
+recovery preserves damaged primary bytes and supports saving to a new slot.
+Locked restore, zero-warning Release build and **2,317 .NET / 287 Python tests**
+pass (17/3 new). Exactly two native checks each complete 140 samples, 22 full
+CPU/GPU captures, six successful and three rejected storage operations. Complete
+headless replay and independent state/storage/PNG audit pass; 51 files repeat,
+and 32 prior navigation artifacts are unchanged. Existing-output/syntax gates
+reject before window construction. No actual user save folder was written by
+validation. Owner gallery and manual slot keyboard/mouse/controller checks remain
+pending. [Executed evidence](evidence/navigation/world-save-load-ui-v1.json).
 
 **Scope:** After ZOD-068 and a minimal client screen/navigation flow under ZOD-042,
 add a slot list/details, Save/Load actions, overwrite/discard confirmation and

@@ -2,7 +2,7 @@ namespace Fft.Client.Presentation;
 
 public static class WindowsWorldMenuHost
 {
-    public static int Run(string? checkDirectory = null)
+    public static int Run(string? checkDirectory = null, bool slotCheck = false)
     {
         if (!OperatingSystem.IsWindows()) { Console.Error.WriteLine("World menu currently supports Windows only."); return 1; }
         try
@@ -14,7 +14,7 @@ public static class WindowsWorldMenuHost
                 Directory.CreateDirectory(checkDirectory);
             }
             Environment.SetEnvironmentVariable("SDL_WINDOWS_DPI_AWARENESS", "permonitorv2");
-            using var window = new WorldMenuWindow(checkDirectory);
+            using var window = new WorldMenuWindow(checkDirectory, slotCheck);
             window.Run();
             if (checkDirectory is not null && !window.CheckCompleted) throw new InvalidOperationException("Menu check did not complete.");
             return 0;

@@ -4,7 +4,7 @@ using Fft.Client.Navigation;
 namespace Fft.Client.Presentation;
 
 public sealed record WorldMenuCheckStep(string Name, WorldMenuSample Sample, bool Capture = false,
-    bool Close = false, int Width = 0, int Height = 0, bool Recreate = false);
+    bool Close = false, int Width = 0, int Height = 0, bool Recreate = false, WorldSlotCheckMutation Mutation = WorldSlotCheckMutation.None);
 
 /// <summary>Finite synthetic device samples; physical device behavior remains a manual check.</summary>
 public static class WorldMenuCheckPlan

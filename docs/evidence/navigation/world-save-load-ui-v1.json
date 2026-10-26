@@ -1,0 +1,332 @@
+{
+  "format": "fft.world-save-load-ui-validation",
+  "schemaVersion": 1,
+  "ticket": "ZOD-069",
+  "validatedOn": "2026-10-26",
+  "status": "implemented; owner visual and interactive slot review pending",
+  "managedBase": "d737098a633b76a7d5bf39a7be58bab4939edc44",
+  "guide": "docs/development/world-save-load-ui.md",
+  "reference": {
+    "root": "C:/repositories/fft_decomp",
+    "revision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "clean": true,
+    "originalContext": "docs/architecture/zod-067-campaign-save-state.md",
+    "newOriginalRuleOrAssetTranslated": false
+  },
+  "sourceIdentities": [
+    {
+      "localPath": "src/Fft.Client/Navigation/WorldMenuSession.cs",
+      "bytes": 8206,
+      "sha256": "d81aecdbcb527ba3b2bde2b1da74f60e511e82a8823178b5cfae2aa69d258741"
+    },
+    {
+      "localPath": "src/Fft.Client/Navigation/WorldMenuSession.Slots.cs",
+      "bytes": 8707,
+      "sha256": "389b51d13b48abca5bcb62db888204414a265329ac5beaeac1b3e7a26d50247b"
+    },
+    {
+      "localPath": "src/Fft.Client/Navigation/WorldMenuInput.cs",
+      "bytes": 2322,
+      "sha256": "6a673271fab42764ebb87a9d9d36033291458dacce18246c539d871b49642603"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/WorldMenuPresentation.cs",
+      "bytes": 8635,
+      "sha256": "1f9a92ad27ea7a585ee6c001315bccaa1952a409d9dcd80a9f2a267c579c2b75"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/WorldMenuWindow.cs",
+      "bytes": 13203,
+      "sha256": "0d4391a41ade477ca5e6980734e899c8909090c9ea40f03a89f22da5dbae0acd"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/WindowsWorldMenuHost.cs",
+      "bytes": 1147,
+      "sha256": "1db07f00e68578735448d0f8ed6d2896f065a6c8da108959cdafc6c27694340b"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/WorldMenuCheckPlan.cs",
+      "bytes": 3600,
+      "sha256": "cf25a67b13ccc456c471f2abeea8b6e5a83e8dfa7d745b0ffe04f1f6eefc8e48"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/WorldSlotsCheckPlan.cs",
+      "bytes": 4321,
+      "sha256": "f2f178fcb9969d50278cacca0c977959226185c64505c971519b2ea0413ffa49"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/WorldSlotCheckFiles.cs",
+      "bytes": 1812,
+      "sha256": "982ba1e99580c8273ee6e6ba14dabb8b31e05858437a48d52ea8a5ab32acde10"
+    },
+    {
+      "localPath": "src/Fft.Client/Program.cs",
+      "bytes": 5409,
+      "sha256": "defdfa306c311a2d4e4edc0c9d46595c4ea3c0cdbaaf4fdf9d99682d88b21d3a"
+    },
+    {
+      "localPath": "tests/Fft.Client.Tests/WorldSlotMenuTests.cs",
+      "bytes": 17850,
+      "sha256": "5c58614f1a51d142d393088d253b761dc8598004e6c57c17475ffc5feecf539a"
+    },
+    {
+      "localPath": "tests/Fft.Client.Tests/Fft.Client.Tests.csproj",
+      "bytes": 3069,
+      "sha256": "0534b5ae4d70c66eddb703d08f3d804d6a478216af7acbd34ca62606a5bd6391"
+    },
+    {
+      "localPath": "tools/verification/verify_world_slots.py",
+      "bytes": 9740,
+      "sha256": "7d4bc778482b41e399d6335e5d544a6b1c3c20b8ca69277de42311c62a310e60"
+    },
+    {
+      "localPath": "tools/verification/test_world_slots.py",
+      "bytes": 1809,
+      "sha256": "f1aa87b25802a0d56c62c58e170df753d60bc260b8d438a0aeee5b3cd51c4093"
+    }
+  ],
+  "fixture": {
+    "localPath": "docs/fixtures/saves/synthetic-world-idle-v1.json",
+    "bytes": 1232,
+    "sha256": "8d20a569013f8c051a8982913f58a8f7436b9899e01166794f29f31415f5c4c2"
+  },
+  "managed": {
+    "passed": 2317,
+    "newClientTests": 17,
+    "restore": "locked-mode",
+    "configuration": "Release",
+    "warnings": 0,
+    "errors": 0,
+    "assemblies": [
+      {
+        "assembly": "tessera.engine.tests.dll",
+        "passed": 24,
+        "trx": {
+          "localPath": "scratch/world-slots-069-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_03_11_41_net10.0.trx",
+          "bytes": 36854,
+          "sha256": "cac5928d1854681274a9f60813c7de224084641bcd23e81fb33b626a7985b235"
+        }
+      },
+      {
+        "assembly": "fft.client.tests.dll",
+        "passed": 406,
+        "trx": {
+          "localPath": "scratch/world-slots-069-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_03_11_41_net10.0[1].trx",
+          "bytes": 599807,
+          "sha256": "4ee407f1c9a54f8677034fa9d7758173c1896dd5ad52ce61c7b3e36ec8b1c0df"
+        }
+      },
+      {
+        "assembly": "zodiac.assettool.tests.dll",
+        "passed": 202,
+        "trx": {
+          "localPath": "scratch/world-slots-069-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_03_11_42_net10.0.trx",
+          "bytes": 299067,
+          "sha256": "46bc25854a03fd50773c2d703042602a5d21fd23fe5250d1ba2465ef2a9075f8"
+        }
+      },
+      {
+        "assembly": "zodiac.assettool.cli.tests.dll",
+        "passed": 211,
+        "trx": {
+          "localPath": "scratch/world-slots-069-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_03_11_42_net10.0[1].trx",
+          "bytes": 324268,
+          "sha256": "7c3c4b416eb66f3150ff679cb66aa57a0fe2783a297c23c6557588e8fe709cb9"
+        }
+      },
+      {
+        "assembly": "zodiac.framework.tests.dll",
+        "passed": 830,
+        "trx": {
+          "localPath": "scratch/world-slots-069-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_03_11_42_net10.0[2].trx",
+          "bytes": 1255557,
+          "sha256": "6fdd8ab315065adb137e1b9b252464810248db93e574d82dff21066c37cd6e80"
+        }
+      },
+      {
+        "assembly": "zodiac.content.tests.dll",
+        "passed": 644,
+        "trx": {
+          "localPath": "scratch/world-slots-069-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_03_11_42_net10.0[3].trx",
+          "bytes": 938766,
+          "sha256": "f8dadfd6cd7da129ebecdf53b6ec03342ea96c338c5df525ca82a9c58785c3da"
+        }
+      }
+    ]
+  },
+  "python": {
+    "passed": 287,
+    "newTests": 3
+  },
+  "logs": [
+    {
+      "localPath": "scratch/world-slots-069-restore.log",
+      "bytes": 82,
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc"
+    },
+    {
+      "localPath": "scratch/world-slots-069-build.log",
+      "bytes": 1678,
+      "sha256": "c3849c0e1511afc6ad12d541d868f7f6636cbb6435a32748ff04584f6aca4d1c"
+    },
+    {
+      "localPath": "scratch/world-slots-069-focused.log",
+      "bytes": 1071,
+      "sha256": "7b2760651b9f771dc11b2895a073fa73ce0585d6df67b9dbc68645de5d70d554"
+    },
+    {
+      "localPath": "scratch/world-slots-069-tests.log",
+      "bytes": 2905,
+      "sha256": "ff6815de818e78e4b7d5552217ddf2971fe5bc94ebcaa912d696e3578f66dbac"
+    },
+    {
+      "localPath": "scratch/world-slots-069-python.log",
+      "bytes": 1277,
+      "sha256": "a16a52232e39c2b25c13bf8cac4bf4c35e5c255f1c5561aea7993cbc381fa438"
+    },
+    {
+      "localPath": "scratch/world-slots-069-a.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "localPath": "scratch/world-slots-069-b.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "localPath": "scratch/world-slots-069-existing-output.log",
+      "bytes": 63,
+      "sha256": "3791f8792510ef1ba50c98ca58ff83381476e558e45f46570dff9f449687849f"
+    },
+    {
+      "localPath": "scratch/world-slots-069-invalid-arguments.log",
+      "bytes": 465,
+      "sha256": "e0fff63459872fffc45294377c53bb2df003c4182f27c44fb8d19b4ac75e10de"
+    }
+  ],
+  "nativePlan": {
+    "recordedBeforeExecution": "docs/development/world-save-load-ui.md",
+    "allowedProcesses": 2,
+    "executedProcesses": 2,
+    "failedNativeAttempts": 0,
+    "maximumDrawsPerProcess": 1024,
+    "maximumSecondsPerProcess": 90,
+    "actualRuns": [
+      {
+        "label": "a",
+        "manifest": {
+          "localPath": "scratch/world-slots-069-a-files.json",
+          "bytes": 9101,
+          "sha256": "7ebeb6576dce316308b5b02aa71865507a5e7f853eedb79910e26b0edbc68ace"
+        },
+        "report": {
+          "localPath": "scratch/world-slots-069-a/check.json",
+          "bytes": 2692,
+          "sha256": "c8536dfb0f0b588c3aab53bb5d573be8674abe31bdd7140169241020477e0a6f"
+        },
+        "draws": 140,
+        "samples": 140,
+        "captures": 22,
+        "toolObservedSeconds": 5.5718573
+      },
+      {
+        "label": "b",
+        "manifest": {
+          "localPath": "scratch/world-slots-069-b-files.json",
+          "bytes": 9101,
+          "sha256": "ea0ffbad01782193abc15fb891e4547d0059a60cbf82ef78c80a4e5f23c60abb"
+        },
+        "report": {
+          "localPath": "scratch/world-slots-069-b/check.json",
+          "bytes": 2692,
+          "sha256": "c8536dfb0f0b588c3aab53bb5d573be8674abe31bdd7140169241020477e0a6f"
+        },
+        "draws": 140,
+        "samples": 140,
+        "captures": 22,
+        "toolObservedSeconds": 4.9761008
+      }
+    ],
+    "headlessPreWindowProbes": [
+      {
+        "case": "existing output",
+        "exitCode": 1
+      },
+      {
+        "case": "missing argument",
+        "exitCode": 2
+      }
+    ]
+  },
+  "audit": {
+    "localPath": "scratch/world-slots-069-audit.json",
+    "bytes": 453,
+    "sha256": "15e1a7ff426934336c057a24db09daa8c411365060a1e5745dcc8c41f1950936"
+  },
+  "gallery": {
+    "localPath": "scratch/world-slots-069-review/review.html",
+    "bytes": 7061,
+    "sha256": "dab1ffbc6912f2acbd4bfa97f67a85501b14c32879793a55d61c8c822d05e872"
+  },
+  "retainedNavigationArtifacts": {
+    "count": 32,
+    "unchanged": true,
+    "manifest": {
+      "localPath": "scratch/world-slots-069-retained-navigation-files.json",
+      "bytes": 5525,
+      "sha256": "c43f27e3a2f2f28a69eeb5297b04833b6a88df4b015bb47222be1c004b37e26f"
+    },
+    "sourceEvidenceHistorical": true
+  },
+  "results": {
+    "exactRepeatedFiles": 51,
+    "matchedImages": 44,
+    "matchedPixels": 27033600,
+    "completeResultEventViewReplay": true,
+    "successfulStorageOperationsPerProcess": 6,
+    "rejectedStorageOperationsPerProcess": 3,
+    "travelCommandsPerProcess": 2,
+    "failures": [
+      "stale overwrite",
+      "missing selected file",
+      "exclusive storage lock"
+    ],
+    "primaryCorruptionPreserved": true,
+    "explicitValidatedRecovery": true,
+    "recoveredCheckpointSavedToSlot02": true,
+    "viewAccessAndRenderingDoNotPerformIo": true,
+    "explicitRefreshRequiredAfterFailure": true,
+    "finalLocation": "sample:location/hill",
+    "finalFunds": 93,
+    "finalElapsedSeconds": 53,
+    "actualBackbufferResizes": [
+      [
+        1280,
+        720
+      ],
+      [
+        720,
+        960
+      ]
+    ],
+    "actualUserSaveDirectoryWritten": false
+  },
+  "review": {
+    "agentInspected": [
+      "corrupt-details.png",
+      "page-two.png",
+      "stale-error.png"
+    ],
+    "ownerVisualApproval": false,
+    "ownerInteractiveSlotApproval": false,
+    "previousNavigationApprovalRetainedSeparately": true
+  },
+  "limits": [
+    "Authored idle-world checkpoint only; original campaign/save availability, PS1 cards and RNG continuation remain unsupported.",
+    "Normal explicit Save uses the declared per-user synthetic folder. All automated writes and mutations used fresh check/test directories.",
+    "No Engine/Framework/Content production, save schema, package lock or battle/intro source changes.",
+    "Programmed UI/device samples are not physical input review; prior ZOD-103 owner approval does not approve these new screens.",
+    "No measured latency, mixed-monitor DPI, forced device loss, broader durability or CRT/widescreen implementation claim."
+  ]
+}

@@ -35,7 +35,7 @@ public sealed class WorldMenuInputRouter
         if (sample.Left && !before.Left && BattleUiLayout.CanvasPoint(sample.Pointer, clientWidth, clientHeight, backWidth, backHeight) is { } canvas)
         {
             for (int i = 0; i < view.Entries.Length; i++)
-                if (view.Entries[i].Enabled && BattleUiLayout.Contains(WorldMenuPresentation.Button(i), canvas))
+                if (view.Entries[i].Enabled && BattleUiLayout.Contains(WorldMenuPresentation.Button(i, view), canvas))
                     return new(Action: view.Entries[i].Action);
         }
         return null;

@@ -14,6 +14,9 @@ internal sealed class WorldMenuWindow : Game
 {
     private readonly GraphicsDeviceManager graphics;
     private readonly string? directory;
+    private readonly bool slotCheck;
+    private readonly WorldSlotCheckFiles? slotFiles;
+    private IReadOnlyList<WorldMenuCheckStep> CheckSteps => slotCheck ? WorldSlotsCheckPlan.Steps : WorldMenuCheckPlan.Steps;
     private readonly WorldMenuSession model, replay;
     private readonly WorldMenuInputRouter input = new();
     private readonly Stopwatch watch = Stopwatch.StartNew();
@@ -26,13 +29,17 @@ internal sealed class WorldMenuWindow : Game
     private string? capture;
     private bool permitExit, failed, closeQueued, waitingForDraw;
     public bool CheckCompleted { get; private set; }
-    public WorldMenuWindow(string? checkDirectory)
+    public WorldMenuWindow(string? checkDirectory, bool slotCheck = false)
     {
         directory = checkDirectory;
+        this.slotCheck = slotCheck;
         var profile = SyntheticWorldCheckpoint.CreateProfile();
-        model = new(new WorldSaveSlotStore(profile, directory is null ? null : Path.Combine(directory, "saves")));
+        var store = new WorldSaveSlotStore(profile, directory is null ? null : Path.Combine(directory, "saves"));
+        model = new(store, enableSaves: directory is null || slotCheck);
         var fresh = SyntheticWorldCheckpoint.CreateProfile();
-        replay = new(new WorldSaveSlotStore(fresh, directory is null ? null : Path.Combine(directory, "replay-saves")));
+        var replayStore = new WorldSaveSlotStore(fresh, directory is null ? null : Path.Combine(directory, "replay-saves"));
+        replay = new(replayStore, enableSaves: directory is null || slotCheck);
+        if (slotCheck) slotFiles = new(store, replayStore);
         graphics = new(this) { PreferredBackBufferWidth = 960, PreferredBackBufferHeight = 640 };
         Window.Title = "FFT / Authored world navigation"; Window.AllowUserResizing = true; IsMouseVisible = true;
         Activated += ActivatedWindow; Deactivated += DeactivatedWindow;
@@ -51,10 +58,11 @@ internal sealed class WorldMenuWindow : Game
         {
             if (directory is not null)
             {
-                if (watch.Elapsed > TimeSpan.FromSeconds(60) || frames >= 600) throw new InvalidOperationException("Menu check exceeded its finite budget.");
-                if (!waitingForDraw && step < WorldMenuCheckPlan.Steps.Length)
+                if (watch.Elapsed > TimeSpan.FromSeconds(slotCheck ? 90 : 60) || frames >= (slotCheck ? 1024 : 600)) throw new InvalidOperationException("Menu check exceeded its finite budget.");
+                if (!waitingForDraw && step < CheckSteps.Count)
                 {
-                    var current = WorldMenuCheckPlan.Steps[step++];
+                    var current = CheckSteps[step++];
+                    if (slotCheck) slotFiles!.Apply(current.Mutation);
                     if (current.Width > 0)
                     {
                         string before = Snapshot(); graphics.PreferredBackBufferWidth = current.Width; graphics.PreferredBackBufferHeight = current.Height;
@@ -79,7 +87,9 @@ internal sealed class WorldMenuWindow : Game
                         if (command is not null) result = Apply(command);
                     }
                     Require(Snapshot() == JsonSerializer.Serialize(replay.View), "Headless view replay differs.");
-                    trace.Add(new { current.Name, sample = raw, command, result, view = model.View,
+                    if (slotCheck) trace.Add(new { current.Name, mutation = current.Mutation, sample = raw, command, result, view = model.View,
+                        client = new[] { Window.ClientBounds.Width, Window.ClientBounds.Height }, backbuffer = BackSize() });
+                    else trace.Add(new { current.Name, sample = raw, command, result, view = model.View,
                         client = new[] { Window.ClientBounds.Width, Window.ClientBounds.Height }, backbuffer = BackSize() });
                     if (current.Capture) capture = current.Name;
                     waitingForDraw = true;
@@ -133,13 +143,18 @@ internal sealed class WorldMenuWindow : Game
             captures.Add(new { name = capture, sha256 = Convert.ToHexStringLower(SHA256.HashData(System.Runtime.InteropServices.MemoryMarshal.AsBytes(pixels.AsSpan()))),
                 viewport = fit, backbuffer = BackSize(), view = model.View }); capture = null;
         }
-        if (directory is not null && step == WorldMenuCheckPlan.Steps.Length)
+        if (directory is not null && step == CheckSteps.Count)
         {
             Require(model.View.Screen == WorldMenuScreen.Closed && model.View.Checkpoint!.Funds == 93 && model.View.Checkpoint.ElapsedSeconds == 53, "Unexpected final checkpoint.");
-            Require(!Directory.Exists(Path.Combine(directory, "saves")) && !Directory.Exists(Path.Combine(directory, "replay-saves")), "Navigation wrote saves.");
+            if (!slotCheck) Require(!Directory.Exists(Path.Combine(directory, "saves")) && !Directory.Exists(Path.Combine(directory, "replay-saves")), "Navigation wrote saves.");
+            else
+            {
+                Require(File.ReadAllText(Path.Combine(directory, "saves", "slot-01.json")) == "{\"corrupt\":true}", "Recovery repaired the damaged primary.");
+                Require(File.Exists(Path.Combine(directory, "saves", "slot-02.json")) && !File.Exists(Path.Combine(directory, "saves", "slot-03.json")) && !File.Exists(Path.Combine(directory, "saves", "slot-04.json")), "Unexpected check saves.");
+            }
             File.WriteAllText(Path.Combine(directory, "trace.json"), JsonSerializer.Serialize(trace, new JsonSerializerOptions { WriteIndented = true }));
             File.WriteAllText(Path.Combine(directory, "captures.json"), JsonSerializer.Serialize(captures, new JsonSerializerOptions { WriteIndented = true }));
-            File.WriteAllText(Path.Combine(directory, "check.json"), JsonSerializer.Serialize(new { format = "fft.windows-world-navigation-check", schemaVersion = 1,
+            File.WriteAllText(Path.Combine(directory, "check.json"), JsonSerializer.Serialize(new { format = slotCheck ? "fft.windows-world-slots-check" : "fft.windows-world-navigation-check", schemaVersion = 1,
                 passed = true, frames, steps = step, captures = captures.Count, cpuGpuMatched = true, headlessMatched = true, statePreservedByRendering = true,
                 adapter = GraphicsAdapter.DefaultAdapter.Description, final = model.View, physicalInputVerified = false }, new JsonSerializerOptions { WriteIndented = true }));
             CheckCompleted = true; permitExit = true; Exit();
@@ -186,7 +201,7 @@ internal sealed class WorldMenuWindow : Game
         if (disposing)
         {
             Activated -= ActivatedWindow; Deactivated -= DeactivatedWindow; Exiting -= ClosingWindow;
-            graphics.DeviceReset -= ResetDevice; DisposeResources();
+            graphics.DeviceReset -= ResetDevice; slotFiles?.Dispose(); DisposeResources();
         }
         base.Dispose(disposing);
     }

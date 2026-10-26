@@ -2,20 +2,26 @@ using System.Collections.Immutable;
 using Zodiac.Content.Samples;
 using Zodiac.Content.Saves;
 using Zodiac.Framework.Campaign;
+using System.Text.Json.Serialization;
 
 namespace Fft.Client.Navigation;
 
-public enum WorldMenuScreen { Home, World, Party, ConfirmNew, ConfirmExit, Closed }
-public enum WorldMenuAction { New, Resume, Exit, Travel, Party, Home, Back, Cancel, Accept }
+public enum WorldMenuScreen { Home, World, Party, ConfirmNew, ConfirmExit, Closed,
+    SlotList, SlotDetails, ConfirmOverwrite, ConfirmLoad, ConfirmRecovery, SlotResult, SlotError }
+public enum WorldMenuAction { New, Resume, Exit, Travel, Party, Home, Back, Cancel, Accept,
+    OpenSave, OpenLoad, SaveSelected, LoadSelected, RecoverBackup, Refresh, PreviousPage, NextPage, ContinueWorld,
+    Slot01, Slot02, Slot03, Slot04, Slot05, Slot06, Slot07, Slot08, Slot09, Slot10 }
 public enum WorldMenuInput { Up, Down, Confirm, Back }
 public sealed record WorldMenuEntry(WorldMenuAction Action, string Label, bool Enabled = true);
 public sealed record WorldMenuView(WorldMenuScreen Screen, ImmutableArray<WorldMenuEntry> Entries,
-    WorldMenuAction? Focus, WorldCheckpointState? Checkpoint, string Notice);
-public sealed record WorldMenuResult(bool Handled, WorldTravelResult? Travel = null);
+    WorldMenuAction? Focus, WorldCheckpointState? Checkpoint, string Notice,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] WorldMenuSlotView? Slots = null);
+public sealed record WorldMenuResult(bool Handled, WorldTravelResult? Travel = null,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] WorldSaveOperation? Operation = null);
 
-/// <summary>Authored application navigation. No device, clock, rendering or storage operations.</summary>
+/// <summary>Authored application navigation; explicit slot commands delegate storage to the checkpoint service.</summary>
 /// <remarks>One application owner submits logical actions. This is not the original title/menu flow.</remarks>
-public sealed class WorldMenuSession
+public sealed partial class WorldMenuSession
 {
     private WorldCheckpointService service;
     private readonly WorldCheckpointState newCheckpoint;
@@ -25,16 +31,17 @@ public sealed class WorldMenuSession
     private WorldMenuAction exitFocus;
     private string notice = "Authored world checkpoint. Resume uses this live session.";
 
-    public WorldMenuSession(WorldSaveSlotStore store, WorldCheckpointState? initial = null)
+    public WorldMenuSession(WorldSaveSlotStore store, WorldCheckpointState? initial = null, bool enableSaves = false)
     {
         ArgumentNullException.ThrowIfNull(store);
         if (store.Profile.Id != "sample:profile/world-checkpoint" || store.Profile.Version != 1 || store.Profile.ContentVersion != 1)
             throw new ArgumentException("The world menu supports only the authored checkpoint profile.", nameof(store));
         newCheckpoint = SyntheticWorldCheckpoint.Start(store.Profile);
         service = new(store, initial);
+        this.enableSaves = enableSaves;
     }
 
-    public WorldMenuView View => new(screen, Entries(), screen == WorldMenuScreen.Closed ? null : focus, service.Current, notice);
+    public WorldMenuView View => new(screen, Entries(), screen == WorldMenuScreen.Closed ? null : focus, service.Current, notice, SlotView());
 
     public WorldMenuResult Handle(WorldMenuInput input)
     {
@@ -43,6 +50,7 @@ public sealed class WorldMenuSession
         if (input == WorldMenuInput.Confirm) return Activate(focus);
         if (input == WorldMenuInput.Back)
         {
+            if (IsSlotScreen) return Activate(IsSlotConfirmation ? WorldMenuAction.Cancel : WorldMenuAction.Back);
             return screen switch
             {
                 WorldMenuScreen.Home => RequestExit(),
@@ -62,6 +70,7 @@ public sealed class WorldMenuSession
     {
         if (!Entries().Any(e => e.Action == action && e.Enabled)) return new(false);
         focus = action;
+        if (IsSlotScreen || action is WorldMenuAction.OpenSave or WorldMenuAction.OpenLoad) return ActivateSlot(action);
         switch (action)
         {
             case WorldMenuAction.New:
@@ -94,7 +103,8 @@ public sealed class WorldMenuSession
     /// <summary>A host close request is a modal decision; it never auto-saves or discards the live checkpoint.</summary>
     public WorldMenuResult RequestExit()
     {
-        if (screen is not (WorldMenuScreen.Home or WorldMenuScreen.World or WorldMenuScreen.Party)) return new(false);
+        if (screen is not (WorldMenuScreen.Home or WorldMenuScreen.World or WorldMenuScreen.Party or
+            WorldMenuScreen.SlotList or WorldMenuScreen.SlotDetails or WorldMenuScreen.SlotResult or WorldMenuScreen.SlotError)) return new(false);
         (exitOrigin, exitFocus) = (screen, focus);
         Show(WorldMenuScreen.ConfirmExit, WorldMenuAction.Cancel);
         return new(true);
@@ -109,7 +119,15 @@ public sealed class WorldMenuSession
         Show(WorldMenuScreen.World, WorldMenuAction.Travel);
     }
     private void Show(WorldMenuScreen target, WorldMenuAction selected) => (screen, focus) = (target, selected);
-    private ImmutableArray<WorldMenuEntry> Entries() => screen switch
+    private ImmutableArray<WorldMenuEntry> Entries()
+    {
+        if (IsSlotScreen) return SlotEntries();
+        var entries = NavigationEntries();
+        if (enableSaves && screen == WorldMenuScreen.Home) return entries.Add(new(WorldMenuAction.OpenLoad, "Load checkpoint"));
+        if (enableSaves && screen == WorldMenuScreen.World) return entries.Add(new(WorldMenuAction.OpenSave, "Save checkpoint")).Add(new(WorldMenuAction.OpenLoad, "Load checkpoint"));
+        return entries;
+    }
+    private ImmutableArray<WorldMenuEntry> NavigationEntries() => screen switch
     {
         WorldMenuScreen.Home => [new(WorldMenuAction.New, "New checkpoint"),
             new(WorldMenuAction.Resume, "Resume session", service.Current is not null), new(WorldMenuAction.Exit, "Exit")],
