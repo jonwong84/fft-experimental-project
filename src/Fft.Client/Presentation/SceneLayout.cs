@@ -31,20 +31,21 @@ public static class SceneLayout
         return new((outputWidth - width) / 2, (outputHeight - height) / 2, width, height);
     }
 
-    /// <summary>160x80 diamonds, with the map's geometric center at (480,340).
+    /// <summary>160x80 diamonds (64x32 in the compact view), centered at (480,340).
     /// Increasing X projects down/right; increasing Y projects down/left. This is an authored view.</summary>
-    public static PixelPoint TileCenter(int x, int y, int mapWidth, int mapDepth)
+    public static PixelPoint TileCenter(int x, int y, int mapWidth, int mapDepth, bool compact = false)
     {
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(mapWidth);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(mapDepth);
         if (x < 0 || x >= mapWidth) throw new ArgumentOutOfRangeException(nameof(x));
         if (y < 0 || y >= mapDepth) throw new ArgumentOutOfRangeException(nameof(y));
-        long centerX = 480 + 80L * ((long)x - y) - 40L * ((long)mapWidth - mapDepth);
-        long centerY = 340 + 40L * ((long)x + y) - 20L * ((long)mapWidth + mapDepth - 2);
+        int halfWidth = compact ? 32 : 80, halfHeight = compact ? 16 : 40;
+        long centerX = 480 + (long)halfWidth * ((long)x - y) - halfWidth / 2L * ((long)mapWidth - mapDepth);
+        long centerY = 340 + (long)halfHeight * ((long)x + y) - halfHeight / 2L * ((long)mapWidth + mapDepth - 2);
         return new(checked((int)centerX), checked((int)centerY));
     }
 
-    public static ImmutableArray<SceneUnit> Units(AttackBattleSnapshot snapshot)
+    public static ImmutableArray<SceneUnit> Units(AttackBattleSnapshot snapshot, bool compact = false)
     {
         ArgumentNullException.ThrowIfNull(snapshot);
         var battle = snapshot.TurnBattle.Battle;
@@ -53,7 +54,7 @@ public static class SceneLayout
             .ThenBy(unit => unit.Position.X)
             .ThenBy(unit => unit.Id.Value, StringComparer.Ordinal)
             .Select(unit => new SceneUnit(unit.Id,
-                TileCenter(unit.Position.X, unit.Position.Y, battle.Map.Width, battle.Map.Depth),
+                TileCenter(unit.Position.X, unit.Position.Y, battle.Map.Width, battle.Map.Depth, compact),
                 combatants[unit.Id].Hp, combatants[unit.Id].MaxHp))
             .ToImmutableArray();
     }

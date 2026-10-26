@@ -29,11 +29,13 @@ internal sealed partial class PlayableBattleWindow : Game
     public bool CheckCompleted { get; private set; }
 
     public PlayableBattleWindow(string? checkDirectory, BannerReadySession? preparedIntroduction = null, BannerReadyPreviewOptions? introductionOptions = null,
-        PreparedAccumulateBattle? abilityBattle = null)
+        PreparedAccumulateBattle? abilityBattle = null, PreparedBasicSkillBattle? basicSkillBattle = null)
     {
         if ((preparedIntroduction is null) != (introductionOptions is null)) throw new ArgumentException("Introduction resources and options must be supplied together.");
         if (abilityBattle is not null && preparedIntroduction is not null) throw new ArgumentException("Select either the authored ability battle or introduction.");
+        if (basicSkillBattle is not null && (abilityBattle is not null || preparedIntroduction is not null)) throw new ArgumentException("Select one prepared battle profile.");
         this.abilityBattle = abilityBattle;
+        this.basicSkillBattle = basicSkillBattle;
         this.checkDirectory = checkDirectory; this.preparedIntroduction = preparedIntroduction; this.introductionOptions = introductionOptions;
         graphics = new GraphicsDeviceManager(this)
         {
@@ -45,6 +47,7 @@ internal sealed partial class PlayableBattleWindow : Game
         Window.Title = preparedIntroduction is null ? "FFT - Bounded two-unit battle | local two player | Esc closes" :
             "FFT - Authored introduction to bounded battle | C skips / N next turn / Esc closes";
         if (abilityBattle is not null) Window.Title = "FFT - Accumulate battle | C Accumulate / N next turn / Esc closes";
+        if (basicSkillBattle is not null) Window.Title = "FFT - Basic Skill battle | C Accumulate / T Throw Stone / Esc closes";
         Window.KeyDown += OnKeyDown; Window.KeyUp += OnKeyUp;
         Activated += HandleActivated; Deactivated += HandleDeactivated; graphics.DeviceReset += OnDeviceReset;
     }
@@ -65,11 +68,12 @@ internal sealed partial class PlayableBattleWindow : Game
             CreateResources(); // Every graphics resource exists before the introduction or battle is admitted.
             introduction = preparedIntroduction is null ? null : new BannerWindowIntroduction(IntroductionBattleSession.Start(preparedIntroduction));
         }
-        interaction = introduction?.Interaction ?? (abilityBattle is null ? new(SyntheticTwoUnitBattle.Create()) :
+        interaction = introduction?.Interaction ?? (basicSkillBattle is not null ? new(basicSkillBattle.Definition, basicSkillBattle.SelfAbilityId, basicSkillBattle.TargetedAbilityId) : abilityBattle is null ? new(SyntheticTwoUnitBattle.Create()) :
             new BattleInteraction(abilityBattle.Definition, abilityBattle.AbilityId));
         router = introduction?.Router ?? new(interaction);
         initialBattle = Snapshot(interaction.State); BaselineInput();
         if (abilityBattle is not null && checkDirectory is not null) InitializeAbilityCheck();
+        if (basicSkillBattle is not null && checkDirectory is not null) InitializeBasicSkillCheck();
         if (checkDirectory is not null)
         {
             Directory.CreateDirectory(checkDirectory);
@@ -112,6 +116,8 @@ internal sealed partial class PlayableBattleWindow : Game
         if (UpdateIntroduction()) { base.Update(gameTime); return; }
         if (checkDirectory is not null)
         {
+            if (basicSkillBattle is not null)
+            { UpdateBasicSkillCheck(); base.Update(gameTime); return; }
             if (abilityBattle is not null)
             { UpdateAbilityCheck(); base.Update(gameTime); return; }
             if (preparedDarkIntroduction is not null && checkWatch.Elapsed > TimeSpan.FromSeconds(120))
@@ -179,9 +185,11 @@ internal sealed partial class PlayableBattleWindow : Game
         if (Snapshot(interaction.State) != before) throw new InvalidOperationException("Drawing changed the battle state.");
         frames++;
         if (pendingCapture is not null) { Capture(pendingCapture); pendingCapture = null; }
-        if (abilityBattle is not null && checkDirectory is not null && checkStep == abilitySteps.Length && frames >= nextStepFrame)
+        if (basicSkillBattle is not null && checkDirectory is not null && checkStep == basicSkillSteps.Length && frames >= nextStepFrame)
+        { FinishBasicSkillCheck(); Exit(); }
+        else if (abilityBattle is not null && checkDirectory is not null && checkStep == abilitySteps.Length && frames >= nextStepFrame)
         { FinishAbilityCheck(); Exit(); }
-        else if (abilityBattle is null && checkDirectory is not null && checkStep == BattleUiCheckPlan.Inputs.Length && frames >= nextStepFrame)
+        else if (basicSkillBattle is null && abilityBattle is null && checkDirectory is not null && checkStep == BattleUiCheckPlan.Inputs.Length && frames >= nextStepFrame)
         { FinishCheck(); Exit(); }
         base.Draw(gameTime);
     }
@@ -189,7 +197,7 @@ internal sealed partial class PlayableBattleWindow : Game
     private void DrawInterface()
     {
         var state = interaction.State; var turns = state.Battle.TurnBattle.Turns;
-        Text(abilityBattle is null ? "BOUNDED BATTLE" : "ACCUMULATE BATTLE", 24, 24, 3, Color.White);
+        Text(basicSkillBattle is not null ? "BASIC SKILL BATTLE" : abilityBattle is null ? "BOUNDED BATTLE" : "ACCUMULATE BATTLE", 24, 24, 3, Color.White);
         Text("CONTROL BOTH UNITS / FIRST KO WINS", 24, 64, 2, Muted);
         string status = state.WinnerId is { } winner ? $"{Name(winner)} WINS / FIRST KO" : interaction.Status;
         Text(status, 24, 110, 2, interaction.StatusIsError && state.WinnerId is null ? Gold : Color.White);
@@ -198,28 +206,33 @@ internal sealed partial class PlayableBattleWindow : Game
             turns.ActiveUnitId is { } active ? $"TURN {Name(active)} / TICK {turns.Ticks}" : $"NEXT TURN / TICK {turns.Ticks}", 24, 174, 2, Cyan);
         var map = state.Battle.TurnBattle.Battle.Map;
         var moves = interaction.Moves; var targets = interaction.Targets;
+        bool compact = interaction.HasTargetedAbility;
+        int halfWidth = compact ? 32 : 80, halfHeight = compact ? 16 : 40;
+        var rangedTargets = interaction.TargetedTargets; var range = interaction.TargetedRange;
         for (int depth = 0; depth < map.Width + map.Depth - 1; depth++)
         for (int x = 0; x < map.Width; x++)
         {
             int y = depth - x; if (y < 0 || y >= map.Depth) continue;
-            var tile = new TilePosition(x, y, 0); var c = SceneLayout.TileCenter(x, y, map.Width, map.Depth);
+            var tile = new TilePosition(x, y, 0); var c = SceneLayout.TileCenter(x, y, map.Width, map.Depth, compact);
             var target = state.Battle.TurnBattle.Battle.Units.FirstOrDefault(u => u.Position == tile);
             Color fill = interaction.Mode == BattleInteractionMode.Move && moves.Contains(tile) ? new(51, 130, 178)
+                : interaction.Mode == BattleInteractionMode.ThrowStone && target is not null && rangedTargets.Contains(target.Id) ? new(198, 101, 53)
+                : interaction.Mode == BattleInteractionMode.ThrowStone && range.Contains(tile) ? new(113, 91, 143)
                 : interaction.Mode == BattleInteractionMode.Attack && target is not null && targets.Contains(target.Id) ? new(168, 84, 53)
                 : (x + y) % 2 == 0 ? new(84, 120, 124) : new(103, 139, 129);
-            batch!.Draw(diamond!, new Rectangle(c.X - 80, c.Y - 32, 160, 80), new Color(28, 41, 53));
-            batch.Draw(diamond!, new Rectangle(c.X - 80, c.Y - 40, 160, 80), fill);
+            batch!.Draw(diamond!, new Rectangle(c.X - halfWidth, c.Y - halfHeight + 8, halfWidth * 2, halfHeight * 2), new Color(28, 41, 53));
+            batch.Draw(diamond!, new Rectangle(c.X - halfWidth, c.Y - halfHeight, halfWidth * 2, halfHeight * 2), fill);
             OutlineDiamond(c, new Color(40, 64, 74));
             if (router.Cursor == tile) OutlineDiamond(c, Color.White);
         }
-        foreach (var unit in SceneLayout.Units(state.Battle))
+        foreach (var unit in SceneLayout.Units(state.Battle, compact))
         {
             Color color = unit.Hp == 0 ? new(65, 73, 86) : unit.Id == state.Definition.FirstUnitId ? Cyan : Gold;
-            var rect = BattleUiLayout.UnitBounds(unit);
+            var rect = BattleUiLayout.UnitBounds(unit, compact);
             if (interaction.SelectedUnit == unit.Id)
                 OutlineDiamond(unit.Feet, Color.White);
             batch!.Draw(pawn!, new Rectangle(rect.X, rect.Y, rect.Width, rect.Height), color);
-            Text(unit.Hp == 0 ? "KO" : Name(unit.Id), unit.Feet.X - (unit.Hp == 0 ? 12 : 6), unit.Feet.Y - 48, 2, Color.White);
+            Text(unit.Hp == 0 ? "KO" : Name(unit.Id), unit.Feet.X - (unit.Hp == 0 ? 12 : 6), unit.Feet.Y - (compact ? 24 : 48), compact ? 1 : 2, Color.White);
         }
         for (int i = 0; i < 2; i++)
         {
@@ -231,24 +244,29 @@ internal sealed partial class PlayableBattleWindow : Game
             Text($"HP {body.Hp}/{body.MaxHp}", card.X + 12, card.Y + 36, 2, Color.White);
             Text($"CT {turn.Ct}", card.X + 12, card.Y + 60, 2, Muted);
             if (interaction.HasSelfAbility) Text($"PA {body.PhysicalAttack}", card.X + 112, card.Y + 64, 1, color);
-            Text($"MOVE {(turn.MovementTaken ? "USED" : "OPEN")}", card.X + 12, card.Y + 82, 1, Muted);
+            var position = state.Battle.TurnBattle.Battle.Units.Single(u => u.Id == id).Position;
+            Text($"MOVE {(turn.MovementTaken ? "USED" : "OPEN")}" + (compact ? $" / X{position.X} Y{position.Y}" : ""), card.X + 12, card.Y + 82, 1, Muted);
             Text($"ACT {(turn.ActionTaken ? "USED" : "OPEN")}", card.X + 12, card.Y + 100, 1, Muted);
         }
         Text("ACTIONS", 728, 198, 2, Color.White);
-        foreach (var button in BattleUiLayout.ButtonsFor(interaction.HasSelfAbility))
+        foreach (var button in BattleUiLayout.ButtonsFor(interaction.HasSelfAbility, compact))
         {
             bool selected = button.Action == BattleUiAction.Move && interaction.Mode == BattleInteractionMode.Move ||
-                button.Action == BattleUiAction.Attack && interaction.Mode == BattleInteractionMode.Attack;
-            bool unavailable = button.Action == BattleUiAction.Accumulate && !interaction.CanUseSelfAbility;
+                button.Action == BattleUiAction.Attack && interaction.Mode == BattleInteractionMode.Attack ||
+                button.Action == BattleUiAction.ThrowStone && interaction.Mode == BattleInteractionMode.ThrowStone;
+            bool unavailable = button.Action == BattleUiAction.Accumulate && !interaction.CanUseSelfAbility ||
+                button.Action == BattleUiAction.ThrowStone && !interaction.CanUseTargetedAbility;
             Fill(button.Bounds, selected ? new(46, 90, 121) : unavailable ? new(25, 32, 43) : new(35, 49, 66));
             Text(button.Label, button.Bounds.X + 12, button.Bounds.Y + 13, 2,
                 unavailable || state.WinnerId is not null && button.Action != BattleUiAction.Restart ? Muted : Color.White);
         }
         Text(interaction.Mode == BattleInteractionMode.Move ? "BLUE LEGAL MOVES / WHITE CURSOR" :
+            interaction.Mode == BattleInteractionMode.ThrowStone ? "PURPLE RANGE 1-4 / ORANGE LEGAL TARGET" :
             interaction.Mode == BattleInteractionMode.Attack ? "ORANGE LEGAL TARGETS / WHITE CURSOR" :
-            "CLICK TO SELECT / FIRST KO ENDS BATTLE", 300, 478, 1, Muted);
-        Text("CLICK UNIT OR CARD / TAB OR 1 2 SELECT", 24, 540, 2, Muted);
-        if (interaction.HasSelfAbility) Text(interaction.CanUseSelfAbility ? "C ACCUMULATE / SELF / ACT READY" : "C ACCUMULATE / ACT UNAVAILABLE", 300, 510, 1, Muted);
+            "CLICK TO SELECT / FIRST KO ENDS BATTLE", 300, compact ? 486 : 478, 1, Muted);
+        Text("CLICK UNIT OR CARD / TAB OR 1 2 SELECT", 24, compact ? 530 : 540, 2, Muted);
+        if (compact) Text(interaction.CanUseTargetedAbility ? "T THROW STONE / TARGET AVAILABLE" : "T THROW STONE / NO LEGAL TARGET", 300, 466, 1, Muted);
+        if (interaction.HasSelfAbility) Text(interaction.CanUseSelfAbility ? "C ACCUMULATE / SELF / ACT READY" : "C ACCUMULATE / ACT UNAVAILABLE", 300, compact ? 450 : 510, 1, Muted);
         Text("M MOVE / A ATTACK / ARROWS AIM / ENTER CONFIRM", 24, 568, 2, Muted);
         Text("W WAIT / N NEXT TURN / BACKSPACE CANCEL / ESC CLOSE", 24, 596, 2, Muted);
     }
@@ -257,7 +275,8 @@ internal sealed partial class PlayableBattleWindow : Game
     private void Fill(PixelRect r, Color color) => batch!.Draw(pixel!, new Rectangle(r.X, r.Y, r.Width, r.Height), color);
     private void OutlineDiamond(PixelPoint c, Color color)
     {
-        Vector2[] corners = [new(c.X, c.Y - 40), new(c.X + 80, c.Y), new(c.X, c.Y + 40), new(c.X - 80, c.Y)];
+        int w = interaction.HasTargetedAbility ? 32 : 80, h = interaction.HasTargetedAbility ? 16 : 40;
+        Vector2[] corners = [new(c.X, c.Y - h), new(c.X + w, c.Y), new(c.X, c.Y + h), new(c.X - w, c.Y)];
         for (int i = 0; i < 4; i++)
         {
             Vector2 delta = corners[(i + 1) % 4] - corners[i];

@@ -1,0 +1,240 @@
+{
+  "format": "fft.throw-stone-window-validation",
+  "schemaVersion": 1,
+  "ticket": "ZOD-111",
+  "validatedOn": "2026-10-26",
+  "status": "implemented; owner visual/physical-input review pending",
+  "managedBase": "f67adfdff405c40957cab02bbb1489bd70183191",
+  "guide": "docs/development/basic-skill-battle-controls.md",
+  "contract": "docs/evidence/combat/throw-stone-contract-v1.json",
+  "reference": {
+    "root": "C:/repositories/fft_decomp",
+    "revision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "freshlyCheckedClean": true,
+    "readOnly": true
+  },
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuild": true,
+    "warnings": 0,
+    "managedPassed": 2723,
+    "pythonPassed": 311,
+    "newManaged": 23,
+    "newPython": 6,
+    "fullTrx": "scratch/basic-skill-111-tests-full",
+    "artifacts": "scratch/basic-skill-111-artifacts",
+    "initialFocusedFailure": "One assertion selected immutable-array identity equality; corrected to compare single element. Failed/passing TRX preserved."
+  },
+  "native": {
+    "planRecordedBeforeExecution": true,
+    "processCount": 2,
+    "timeBudgetSecondsPerProcess": 30,
+    "inputBudget": 300,
+    "inputsPerProcess": 121,
+    "framesPerProcess": 137,
+    "preparedRoots": [
+      "scratch/basic-skill-111-prepared-a",
+      "scratch/basic-skill-111-prepared-b"
+    ],
+    "nativeRoots": [
+      "scratch/basic-skill-111-native-a",
+      "scratch/basic-skill-111-native-b"
+    ],
+    "preparedFilesRepeated": 4,
+    "nativeFilesRepeated": 29,
+    "capturesPerProcess": 28,
+    "allBytesEqual": true,
+    "everyStepHeadlessStateCommandAcceptanceEventsMatched": true,
+    "bothRngCopiesMatched": true,
+    "journalReplaysPerProcess": 2,
+    "drawPreservedState": true,
+    "resizePreservedStateAndHistory": true,
+    "programmedFocusBaselinePreservedStateAndHistory": true,
+    "physicalInputObserved": false,
+    "ownerApproved": false,
+    "originalExecution": false,
+    "originalEquivalence": false,
+    "throwStoneHits": 6,
+    "damageValues": [
+      6,
+      12
+    ],
+    "pushes": 3,
+    "atomicCommandRejections": 13,
+    "emptyTargetDoesNotSubmit": true,
+    "knockoutRng": {
+      "Value": 4200531631,
+      "DrawCount": 58
+    },
+    "finalRng": {
+      "Value": 1,
+      "DrawCount": 0
+    },
+    "finalSha256": "539bba6b8cd1400c7aab66c9d8a4a841c1674a911b3ce9e4f7aa1fe86a409484",
+    "adapter": "AMD Radeon RX 6600",
+    "runtime": ".NET 10.0.13",
+    "os": "Microsoft Windows 10.0.26200",
+    "backbuffer": [
+      1280,
+      720
+    ],
+    "gpuCaptureSize": [
+      960,
+      640
+    ],
+    "imageInspection": "All 28 images in four contact sheets; range also at full size. No clipping or overlap found.",
+    "gallery": "scratch/basic-skill-111-audit-a/review.html"
+  },
+  "audit": {
+    "script": "tools/verification/verify_basic_skill_window.py",
+    "reports": [
+      {
+        "path": "scratch/basic-skill-111-audit-a/audit.json",
+        "byteLength": 3042,
+        "sha256": "066934bb767ca029ddd3edc8411ea9720c7716630d33fc25445ec803ea2170f6"
+      },
+      {
+        "path": "scratch/basic-skill-111-audit-b/audit.json",
+        "byteLength": 3042,
+        "sha256": "066934bb767ca029ddd3edc8411ea9720c7716630d33fc25445ec803ea2170f6"
+      }
+    ],
+    "reportsEqual": true,
+    "independentChecks": [
+      "Prepared hash/length/content binding",
+      "Seven-draw damage/Brave/push and both RNG copies",
+      "PA/Act-only self effect",
+      "Atomic selection and rejection",
+      "Geometric range and grant/turn/Act/target availability",
+      "Exact inventories, repeated native bytes, PNG dimensions and restart presentation"
+    ],
+    "nativeFileHashes": {
+      "act-used.png": "a15a86eb63c89015bc6251b4218622f3a8d47231b294c3222dae594c6b058d95",
+      "boosted.png": "4b2575787ca50ea286ae92a921d8a94908c5772eb3520b7f97a50b486744e10e",
+      "cancelled.png": "bd7043afff078470e688dd1aac9ca2c71717b93ad33eb004af84f5ec082c8d93",
+      "check.json": "50a4e5cd46ba0af6e098ee4de808084372915b3c03f4c7707cf898ab390d31d3",
+      "empty-target.png": "ad920073b57cb9bb9cf6025eddc711857516eeac4b709f0735a64e28cb176f9d",
+      "inactive-rejected.png": "26c8ad46f88531c13ce7c34ec3df80bb5715a1f4f3546bc2472f25a5f4745d9c",
+      "moved.png": "ff849de788ed5523b4acc6f584223dba8e76264ba1d1c7cba230705b7a1988f0",
+      "no-grant.png": "f5869582ab11453977b5bbbfec31bce948cc758d33a701b7458080dcc28c7de9",
+      "not-ready.png": "4b8c0a3855dc75e2ca0689ec70651a4a3d6c7a976a38de4a6759e244535db359",
+      "out-of-range.png": "096beb387ae2ff18176a445dc0b9b5c9476f434a0a9592694df4550d7cd25554",
+      "range-restarted.png": "c0b3a0a4ce6ade506c2bfdee73723bdf185f27db40520c0f5dbd3939fffc1ef4",
+      "range.png": "0a555dcc3a339ab3245650437dda189a03ffade5bb701c084b44d805c9b2459e",
+      "ready.png": "bd7043afff078470e688dd1aac9ca2c71717b93ad33eb004af84f5ec082c8d93",
+      "restarted.png": "c0b3a0a4ce6ade506c2bfdee73723bdf185f27db40520c0f5dbd3939fffc1ef4",
+      "self-rejected.png": "d4d1e4a1142a47b2e51acc25f35f8a6bc96cf70516273e95bc7119b3f8e978d2",
+      "start.png": "c0b3a0a4ce6ade506c2bfdee73723bdf185f27db40520c0f5dbd3939fffc1ef4",
+      "stone-1.png": "ae1aa65949880401eeef59ed765569d260c1495d998d2f0d8c5f31f802ab1d72",
+      "stone-2.png": "6e10fee8508fd6d5b572d1c878a4bc3d91387f415436d72233c540f73937b00b",
+      "stone-3.png": "4498992d2ba2c0e5ca6136e7ba04a031617c12c847b1cc7b4a6235411c08f40b",
+      "stone-4.png": "12db4ca4142f5aa407347ae430f02fc9c2481958f90eb4c35587a7c45fdbaaee",
+      "stone-5.png": "c74011f076e50aed714f054998290dc59cfc09b16bdc7678fc7e6d82c873d62d",
+      "stone-6.png": "0d6fee2529e904cb2129fa6ea9057e09d580b824adc96466f5713802bd97b851",
+      "stone-act-used.png": "a15a86eb63c89015bc6251b4218622f3a8d47231b294c3222dae594c6b058d95",
+      "terminal-1.png": "2f0ddfa5a8ba308c5bb532486db7239434ed2d9752fd40f7840f8628007b1884",
+      "terminal-2.png": "eb1403f5eeed23f1ab35b3c5efa8a5457739ffb8a952a5a9e6640988edcdc2c5",
+      "terminal-3.png": "32aec56699f98fc101262b16c2e014be904dcc27a25ef08ec8ab6a9ce1ca12cd",
+      "terminal-4.png": "32aec56699f98fc101262b16c2e014be904dcc27a25ef08ec8ab6a9ce1ca12cd",
+      "terminal-5.png": "9af32a265b9f8bb9d625a395b4870e0fac6be6e7e1d5355ed005ac9a035fe9ab",
+      "terminal-6.png": "9af32a265b9f8bb9d625a395b4870e0fac6be6e7e1d5355ed005ac9a035fe9ab"
+    }
+  },
+  "preparedFiles": [
+    {
+      "path": "scratch/basic-skill-111-prepared-a/ability.package.json",
+      "byteLength": 432,
+      "sha256": "2fb9459f3f5e299c9c2ac325046f49f31e8c3fe9321f9d469aaa2f05ea75252c"
+    },
+    {
+      "path": "scratch/basic-skill-111-prepared-a/assets.manifest.json",
+      "byteLength": 717,
+      "sha256": "c5df4fe2adb7874d8f046f09daf48f6aeec0aaf5e7c563121d8b6e8b9cc74992"
+    },
+    {
+      "path": "scratch/basic-skill-111-prepared-a/content.package.json",
+      "byteLength": 1267,
+      "sha256": "1e37ad82e0dbe2538ad9b14f05fca3eb80400934740f7f430799378d96b1c5d8"
+    },
+    {
+      "path": "scratch/basic-skill-111-prepared-a/targeted.package.json",
+      "byteLength": 480,
+      "sha256": "0223b814828f7ba1dcfde557c5d731df5ede0dba13976b0d790f20fb09aa1dde"
+    }
+  ],
+  "cases": [
+    {
+      "id": "TST-029",
+      "ownerTicket": "ZOD-111",
+      "status": "executed",
+      "expectation": "Prepared launch validates bundle and fails unsupported content before creating a native window/output",
+      "evidence": [
+        "PrepareBasicSkillBattleTests (13 cases)",
+        "Host_rejects_invalid_syntax_without_launch",
+        "Missing_prepared_data_fails_before_output_creation"
+      ]
+    },
+    {
+      "id": "TST-030",
+      "ownerTicket": "ZOD-111",
+      "status": "executed",
+      "expectation": "Keyboard/pointer target, confirm, cancel and invalid input route through shared typed commands",
+      "evidence": [
+        "Finite_keyboard_pointer_plan_matches_each_headless_state_events_and_both_journal_replays",
+        "Targeting_cancel_and_repeated_probes_preserve_state_history_and_both_RNG_copies",
+        "Empty_self_inactive_and_used_targets_have_atomic_feedback"
+      ]
+    },
+    {
+      "id": "TST-031",
+      "ownerTicket": "ZOD-111",
+      "status": "executed",
+      "expectation": "HP/PA/position, range, availability and knockback-versus-no-push feedback are readable",
+      "evidence": [
+        "28 GPU captures inspected in four contact sheets; range at full size",
+        "Independent geometric-range/availability and PA6 damage/HP/push audit"
+      ]
+    },
+    {
+      "id": "TST-032",
+      "ownerTicket": "ZOD-111",
+      "status": "executed",
+      "expectation": "Finite planned native input matches headless/replay state/events/RNG; draw/resize/focus preserve state",
+      "evidence": [
+        "Exactly two 121-step native runs; every typed command/state/event/RNG compared",
+        "Two full journal replays, draw/resize atomicity, programmed focus callbacks and held-input baselines"
+      ]
+    },
+    {
+      "id": "TST-033",
+      "ownerTicket": "ZOD-111",
+      "status": "executed",
+      "expectation": "KO/restart and repeated prepared/native/capture artifacts pass independent audit and image inspection",
+      "evidence": [
+        "Four prepared files and 29 native files repeat byte-for-byte",
+        "Two matching independent audit reports; KO at RNG 4200531631/58 then restart to seed1/PA5",
+        "All GPU captures inspected"
+      ]
+    },
+    {
+      "id": "TST-034",
+      "ownerTicket": "ZOD-111",
+      "status": "owner-review-pending",
+      "expectation": "Owner visual and physical-input review approved separately from programmed controls",
+      "evidence": [
+        "Owner visual and physical-input approval not received for this milestone"
+      ]
+    }
+  ],
+  "limits": [
+    "Authored profile only; no original projectile animation or encounter equivalence.",
+    "Final lethal no-push is at map edge; nonlethal off-map suppression remains pure-rule evidence (Off_map_push_suppression_keeps_hit_and_all_seven_draws).",
+    "Programmed callbacks/baselines do not establish physical OS focus or owner approval.",
+    "Existing sword limits/facing discrepancy, unsupported ability save/restore guards, editor and ZOD-106 deferrals preserved."
+  ],
+  "next": {
+    "ticket": "ZOD-111",
+    "case": "TST-034",
+    "scope": "Owner visual and physical-input review; then select next bounded gameplay/source milestone"
+  }
+}

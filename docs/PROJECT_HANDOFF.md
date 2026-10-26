@@ -2,6 +2,32 @@
 
 ## Current handoff — 2026-10-26
 
+**ZOD-111 is implemented and awaits owner visual/physical-input approval.** The
+manifest-verified authored Basic Skill battle now uses the existing native window:
+T/button targeting, arrows/Enter or pointer confirmation, Backspace cancellation,
+range/availability hints and HP/PA/position/push feedback. The compact view fits
+all 35 tiles without changing the older view/layouts. No simulation rule changed.
+
+Locked isolated restore and zero-warning Release build passed; **2,723 .NET /
+311 Python** tests pass (23 new managed, six Python). Exactly two native processes
+passed 121 programmed inputs/137 frames each, every state/event/RNG comparison,
+two journal replays, resize, programmed focus baselining, first KO and restart.
+Four prepared files and 29 native files (28 PNGs/diagnostic JSON) repeat exactly;
+two independent audits match. All captures were inspected. Final lethal no-push
+is at the map edge; isolated nonlethal off-map suppression remains pure-rule
+evidence. Physical OS focus/input and owner approval remain unestablished.
+
+**Next: TST-034 owner review**, using the [launch/review guide](development/basic-skill-battle-controls.md)
+and [evidence](evidence/combat/throw-stone-window-v1.json). Keep ZOD-111 open until
+approval; then select the next bounded ZOD-038 gameplay/source milestone. No new
+editor work, save format, original execution or runtime C dependency. ZOD-106 and
+editor work remain deferred. Known sword limits/facing discrepancy are unchanged.
+Read-only reference was freshly checked clean at
+11464943bbdbd2a0af022d90cb7f10455cf911df. Generated diagnostics, prepared content,
+GPU captures and failed/passing TRX stay ignored under scratch/basic-skill-111-*.
+
+## ZOD-110 content checkpoint (historical)
+
 **ZOD-110 is complete; next ZOD-111 is Ready.** New strict targeted-effect
 companion/projection, verified Throw Stone conversion and explicit authored
 Accumulate/Throw Stone scenario now compose the pure rules with first-KO lifecycle.

@@ -44,6 +44,18 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Current implementation (2026-10-26): ZOD-111 awaits owner review.** Prepared
+Basic Skill Windows controls, range/availability, select/confirm/cancel and compact
+map view pass TST-029..033. All **2,723 .NET / 311 Python** tests pass; zero-warning
+isolated Release build. Exactly two native checks pass 121 inputs each with exact
+headless state/events/RNG, two journal replays, resize/focus baselining, KO/restart.
+Four prepared and 29 native files repeat; independent audits and image inspection
+pass. **Next: TST-034 visual/physical approval**, see the
+[launch/review guide](development/basic-skill-battle-controls.md). Editor and
+ZOD-106 remain deferred. Do not infer owner approval from programmed checks.
+
+### ZOD-110 completion checkpoint (historical)
+
 **Current completion (2026-10-26): ZOD-110 is complete.** Strict targeted-effect
 content/projection and verified Throw Stone import preserve historical metadata
 IDs and bytes. The combined authored Basic Skill scenario proves PA 5→6, ranged
@@ -1235,7 +1247,12 @@ Run appropriate suites and independent import/evidence audit.
 
 ### ZOD-111 — Use Throw Stone through prepared Windows target controls
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-110
+**Type:** Story · **Priority:** P3 · **Status:** Implemented; owner review pending · **Depends on:** ZOD-110
+
+TST-029..033 pass; TST-034 remains pending. See the
+[native plan/results/review guide](development/basic-skill-battle-controls.md) and
+[evidence](evidence/combat/throw-stone-window-v1.json). Programmed focus checks and
+agent image inspection do not establish physical-input or owner approval.
 
 **Scope:** Expose the validated targeted action through the existing Windows
 battle router with select/confirm/cancel, range and availability feedback, and

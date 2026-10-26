@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Fft.Client.Presentation;
 
-public enum BattleUiAction { NextTurn, Move, Attack, Wait, Restart, SelectFirst, SelectSecond, SelectNext, Confirm, Cancel, Accumulate }
+public enum BattleUiAction { NextTurn, Move, Attack, Wait, Restart, SelectFirst, SelectSecond, SelectNext, Confirm, Cancel, Accumulate, ThrowStone }
 public sealed record BattleUiButton(BattleUiAction Action, string Label, PixelRect Bounds);
 
 /// <summary>Authored UI/picking for the flat synthetic canvas. No original camera or movement rules.</summary>
@@ -25,7 +25,15 @@ public static class BattleUiLayout
         new BattleUiButton(BattleUiAction.Wait, "W  WAIT", new(728, 422, 208, 40)),
         new BattleUiButton(BattleUiAction.Restart, "R  RESTART", new(728, 486, 208, 40)),
     });
-    public static IReadOnlyList<BattleUiButton> ButtonsFor(bool hasSelfAbility) => hasSelfAbility ? AbilityButtons : Buttons;
+    private static IReadOnlyList<BattleUiButton> TargetedButtons { get; } = Array.AsReadOnly(new[]
+    {
+        Buttons[0], Buttons[1], Buttons[2], AbilityButtons[3],
+        new BattleUiButton(BattleUiAction.ThrowStone, "T  THROW STONE", new(728, 422, 208, 40)),
+        new BattleUiButton(BattleUiAction.Wait, "W  WAIT", new(728, 470, 208, 40)),
+        new BattleUiButton(BattleUiAction.Restart, "R  RESTART", new(728, 518, 208, 40)),
+    });
+    public static IReadOnlyList<BattleUiButton> ButtonsFor(bool hasSelfAbility, bool hasTargetedAbility = false) =>
+        hasTargetedAbility ? TargetedButtons : hasSelfAbility ? AbilityButtons : Buttons;
 
     public static bool Contains(PixelRect r, PixelPoint p) => p.X >= r.X && p.Y >= r.Y &&
         p.X < (long)r.X + r.Width && p.Y < (long)r.Y + r.Height;
@@ -42,10 +50,11 @@ public static class BattleUiLayout
             (int)((by - fit.Y) * SceneLayout.CanvasHeight / fit.Height));
     }
 
-    public static PixelRect UnitBounds(SceneUnit unit) => new(unit.Feet.X - 24, unit.Feet.Y - 72, 48, 72);
+    public static PixelRect UnitBounds(SceneUnit unit, bool compact = false) => compact ? new(unit.Feet.X - 12, unit.Feet.Y - 36, 24, 36)
+        : new(unit.Feet.X - 24, unit.Feet.Y - 72, 48, 72);
     public static PixelRect CardBounds(int index) => new(24, 220 + index * 142, 208, 126);
 
-    public static TilePosition? PickTile(PixelPoint point, BattleMapDefinition map)
+    public static TilePosition? PickTile(PixelPoint point, BattleMapDefinition map, bool compact = false)
     {
         // Frontmost diamond wins shared edges, consistent with terrain painter order.
         for (int depth = map.Width + map.Depth - 2; depth >= 0; depth--)
@@ -53,8 +62,9 @@ public static class BattleUiLayout
         {
             int y = depth - x;
             if (y < 0 || y >= map.Depth) continue;
-            var c = SceneLayout.TileCenter(x, y, map.Width, map.Depth);
-            if (Math.Abs((long)point.X - c.X) * 40 + Math.Abs((long)point.Y - c.Y) * 80 <= 3200)
+            var c = SceneLayout.TileCenter(x, y, map.Width, map.Depth, compact);
+            int halfWidth = compact ? 32 : 80, halfHeight = compact ? 16 : 40;
+            if (Math.Abs((long)point.X - c.X) * halfHeight + Math.Abs((long)point.Y - c.Y) * halfWidth <= halfWidth * halfHeight)
                 return new(x, y, 0);
         }
         return null;
@@ -76,6 +86,9 @@ public sealed class BattleUiRouter(BattleInteraction interaction)
             case BattleUiAction.Attack: Interaction.SetMode(BattleInteractionMode.Attack); SynchronizeCursor(); break;
             case BattleUiAction.Wait: Interaction.Wait(); break;
             case BattleUiAction.Accumulate: Interaction.UseSelfAbility(); break;
+            case BattleUiAction.ThrowStone:
+                if (Interaction.HasTargetedAbility) { Interaction.SetMode(BattleInteractionMode.ThrowStone); SynchronizeCursor(); }
+                break;
             case BattleUiAction.Restart: Interaction.Restart(); Cursor = new(0, 0, 0); break;
             case BattleUiAction.SelectFirst: Select(Interaction.State.Definition.FirstUnitId); break;
             case BattleUiAction.SelectSecond: Select(Interaction.State.Definition.SecondUnitId); break;
@@ -103,6 +116,7 @@ public sealed class BattleUiRouter(BattleInteraction interaction)
             case Keys.M: Action(BattleUiAction.Move); break;
             case Keys.A: Action(BattleUiAction.Attack); break;
             case Keys.C: Action(BattleUiAction.Accumulate); break;
+            case Keys.T: Action(BattleUiAction.ThrowStone); break;
             case Keys.W: Action(BattleUiAction.Wait); break;
             case Keys.R: Action(BattleUiAction.Restart); break;
             case Keys.D1: Action(BattleUiAction.SelectFirst); break;
@@ -119,19 +133,19 @@ public sealed class BattleUiRouter(BattleInteraction interaction)
 
     public void Click(PixelPoint point)
     {
-        foreach (var button in BattleUiLayout.ButtonsFor(Interaction.HasSelfAbility))
+        foreach (var button in BattleUiLayout.ButtonsFor(Interaction.HasSelfAbility, Interaction.HasTargetedAbility))
             if (BattleUiLayout.Contains(button.Bounds, point)) { Action(button.Action); return; }
         for (int i = 0; i < 2; i++)
             if (BattleUiLayout.Contains(BattleUiLayout.CardBounds(i), point))
             { Action(i == 0 ? BattleUiAction.SelectFirst : BattleUiAction.SelectSecond); return; }
         // Sprites extend above their floor diamond. Pick them front-to-back before the floor.
-        foreach (var unit in SceneLayout.Units(Interaction.State.Battle).Reverse())
-            if (BattleUiLayout.Contains(BattleUiLayout.UnitBounds(unit), point))
+        foreach (var unit in SceneLayout.Units(Interaction.State.Battle, Interaction.HasTargetedAbility).Reverse())
+            if (BattleUiLayout.Contains(BattleUiLayout.UnitBounds(unit, Interaction.HasTargetedAbility), point))
             {
                 var body = Interaction.State.Battle.TurnBattle.Battle.Units.Single(u => u.Id == unit.Id);
                 Cursor = body.Position; Interaction.ClickTile(Cursor); return;
             }
-        if (BattleUiLayout.PickTile(point, Interaction.State.Battle.TurnBattle.Battle.Map) is { } tile)
+        if (BattleUiLayout.PickTile(point, Interaction.State.Battle.TurnBattle.Battle.Map, Interaction.HasTargetedAbility) is { } tile)
         { Cursor = tile; Interaction.ClickTile(tile); }
     }
 

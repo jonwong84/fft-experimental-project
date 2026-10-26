@@ -4,7 +4,7 @@ using Zodiac.Framework;
 
 namespace Fft.Client.Presentation;
 
-public enum BattleInteractionMode { Inspect, Move, Attack }
+public enum BattleInteractionMode { Inspect, Move, Attack, ThrowStone }
 
 /// <summary>Presentation choices around pure scenario commands; no independent simulation rules.</summary>
 public sealed class BattleInteraction
@@ -12,6 +12,9 @@ public sealed class BattleInteraction
     private readonly TwoUnitBattleDefinition definition;
     public AssetId? SelfAbilityId { get; }
     public bool HasSelfAbility => SelfAbilityId is not null;
+    public AssetId? TargetedAbilityId { get; }
+    public bool HasTargetedAbility => TargetedAbilityId is not null;
+    public bool CanUseTargetedAbility => !TargetedTargets.IsEmpty;
     public bool CanUseSelfAbility => CanProbe && SelfAbilityId is { } ability &&
         TwoUnitBattleScenario.Apply(State, new TwoUnitBattleCommand.UseAbility(SelectedUnit!.Value, ability)).Accepted;
     public TwoUnitBattleState State { get; private set; }
@@ -22,13 +25,16 @@ public sealed class BattleInteraction
     public string Status { get; private set; } = "ADVANCE TO START";
     public bool StatusIsError { get; private set; }
 
-    public BattleInteraction(TwoUnitBattleDefinition definition, AssetId? selfAbilityId = null)
+    public BattleInteraction(TwoUnitBattleDefinition definition, AssetId? selfAbilityId = null, AssetId? targetedAbilityId = null)
     {
         ArgumentNullException.ThrowIfNull(definition);
         this.definition = definition;
         if (selfAbilityId is { } ability && (definition.ImmediateAbilities is null || !definition.ImmediateAbilities.Abilities.ContainsKey(ability)))
             throw new ArgumentException("The self action must resolve an explicitly selected executable ability.", nameof(selfAbilityId));
         SelfAbilityId = selfAbilityId;
+        if (targetedAbilityId is { } targeted && (definition.TargetedAbilities is null || !definition.TargetedAbilities.Abilities.ContainsKey(targeted)))
+            throw new ArgumentException("The targeted action must resolve an explicitly selected executable ability.", nameof(targetedAbilityId));
+        TargetedAbilityId = targetedAbilityId;
         State = definition.Start();
     }
 
@@ -46,12 +52,14 @@ public sealed class BattleInteraction
     public void SetMode(BattleInteractionMode mode)
     {
         if (!Enum.IsDefined(mode)) throw new ArgumentOutOfRangeException(nameof(mode));
+        if (mode == BattleInteractionMode.ThrowStone && !HasTargetedAbility) return;
         Mode = mode;
         StatusIsError = false;
         Status = mode switch
         {
             BattleInteractionMode.Move => "MOVE / CLICK DESTINATION",
             BattleInteractionMode.Attack => "ATTACK / CLICK TARGET",
+            BattleInteractionMode.ThrowStone => "THROW STONE / AIM THEN CONFIRM",
             _ => TurnStatus(),
         };
     }
@@ -68,6 +76,8 @@ public sealed class BattleInteraction
         if (SelectedUnit is not { } selected) { Status = "SELECT A UNIT FIRST"; StatusIsError = true; return; }
         if (Mode == BattleInteractionMode.Move) Submit(new TwoUnitBattleCommand.Move(selected, tile));
         else if (occupant is null) { Status = "NO TARGET ON TILE"; StatusIsError = true; }
+        else if (Mode == BattleInteractionMode.ThrowStone)
+            Submit(new TwoUnitBattleCommand.UseTargetedAbility(selected, TargetedAbilityId!.Value, occupant.Id));
         else Submit(new TwoUnitBattleCommand.Attack(selected, occupant.Id));
     }
 
@@ -115,6 +125,25 @@ public sealed class BattleInteraction
         .Where(unit => TwoUnitBattleScenario.Apply(State, new TwoUnitBattleCommand.Attack(SelectedUnit!.Value, unit.UnitId)).Accepted)
         .Select(unit => unit.UnitId).ToImmutableArray();
 
+    public ImmutableArray<BattleUnitId> TargetedTargets => !CanProbe || TargetedAbilityId is not { } ability ? [] : State.Battle.Combatants
+        .Where(unit => TwoUnitBattleScenario.Apply(State, new TwoUnitBattleCommand.UseTargetedAbility(SelectedUnit!.Value, ability, unit.UnitId)).Accepted)
+        .Select(unit => unit.UnitId).ToImmutableArray();
+
+    // Geometric range is a presentation hint; only the pure command decides legality.
+    public ImmutableArray<TilePosition> TargetedRange
+    {
+        get
+        {
+            if (TargetedAbilityId is not { } ability || SelectedUnit is not { } selected) return [];
+            var battle = State.Battle.TurnBattle.Battle;
+            var origin = battle.Units.Single(unit => unit.Id == selected).Position;
+            int range = definition.TargetedAbilities!.Abilities[ability].Range;
+            return Enumerable.Range(0, battle.Map.Depth).SelectMany(y => Enumerable.Range(0, battle.Map.Width)
+                .Where(x => Math.Abs(x - origin.X) + Math.Abs(y - origin.Y) is var distance && distance > 0 && distance <= range)
+                .Select(x => new TilePosition(x, y, origin.Layer))).ToImmutableArray();
+        }
+    }
+
     private bool CanProbe => State.Outcome == TwoUnitBattleOutcome.InProgress && SelectedUnit is { } selected
         && State.Battle.TurnBattle.Turns.ActiveUnitId == selected;
 
@@ -138,7 +167,10 @@ public sealed class BattleInteraction
         if (State.WinnerId is { } winner) { Status = $"{Name(winner)} WINS / FIRST KO"; return; }
         var attack = result.Events.OfType<TwoUnitBattleTransitionEvent>().Select(ev => ev.Event).OfType<AttackResolvedEvent>().FirstOrDefault();
         var abilityResult = result.Events.OfType<TwoUnitBattleTransitionEvent>().Select(ev => ev.Event).OfType<ImmediateAbilityResolvedEvent>().FirstOrDefault();
-        Status = abilityResult is not null ? (abilityResult.PhysicalAttackBefore == abilityResult.PhysicalAttackAfter
+        var stone = result.Events.OfType<TwoUnitBattleTransitionEvent>().Select(ev => ev.Event).OfType<ThrowStoneResolvedEvent>().FirstOrDefault();
+        bool pushed = result.Events.OfType<TwoUnitBattleTransitionEvent>().Any(ev => ev.Event is ThrowStoneKnockbackEvent);
+        Status = stone is not null ? (stone.Hit ? $"STONE HIT {stone.Damage} / {(pushed ? "PUSH" : "NO PUSH")} / {TurnStatus()}" : $"STONE MISS / {TurnStatus()}")
+            : abilityResult is not null ? (abilityResult.PhysicalAttackBefore == abilityResult.PhysicalAttackAfter
             ? $"ACCUMULATE / PA {abilityResult.PhysicalAttackAfter} MAX / {TurnStatus()}"
             : $"ACCUMULATE / PA {abilityResult.PhysicalAttackBefore} TO {abilityResult.PhysicalAttackAfter} / {TurnStatus()}")
             : attack is not null ? (attack.Hit ? $"HIT {attack.Damage} / {TurnStatus()}" : $"MISS / {TurnStatus()}")
