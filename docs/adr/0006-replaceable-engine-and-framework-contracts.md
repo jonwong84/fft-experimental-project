@@ -1,6 +1,6 @@
 # ADR 0006: Support engine and framework replacement through independent contracts
 
-- **Status:** Accepted direction; migration and replacement proofs pending
+- **Status:** Replacement goal accepted; contract/API/assembly design deferred
 - **Date:** 2026-10-25
 - **Owner direction:** The owner wants the option to replace Tessera Engine or
   Zodiac Framework, in addition to editing FFT formulas in C#.
@@ -36,6 +36,11 @@ It makes no decompilation, emulator, rendering or full-game equivalence claim.
 
 ## Decision
 
+Owner clarification (2026-10-25): it is too early to define broad engine or
+framework replacement contracts. Preserve replaceability as a design goal while
+continuing to discover real gameplay and application needs. The earlier concrete
+contract proposal was too prescriptive; it is not an approved API or assembly plan.
+
 Support replacing either implementation through a compatible adapter and a
 composition-root wiring change followed by a rebuild. The consuming rule or
 application code should remain unchanged for the supported contract. Replacing
@@ -43,10 +48,11 @@ both layers must also be possible without retaining an old implementation solely
 to obtain shared contract types. Runtime discovery, unloading, hot swapping and
 arbitrary executable plugins are separate, unselected capabilities.
 
-Independent contract assemblies will hold selected interfaces and their minimal
-immutable inputs, outputs, identities and diagnostics. `Tessera.Contracts` and
-`Zodiac.Contracts` are working assembly names, not existing projects or finalized
-public APIs. Extract them only with a bounded consumer and executable proof:
+If a replacement boundary later justifies an independent contract assembly, it
+can hold selected interfaces and their minimal immutable inputs, outputs,
+identities and diagnostics. No assembly names, splits or signatures are selected
+now. The following are constraints for that later design, not instructions to
+introduce contracts today:
 
 - Engine contracts describe game-neutral operations. Tessera or an alternative
   engine adapter implements them; Zodiac consumes them. FFT policy stays in
@@ -89,29 +95,30 @@ An alternative implementation claiming original mode must pass the same applicab
 behavior vectors and replay/order checks. A custom rules implementation needs an
 explicit distinct profile. A test stand-in proves wiring only, not FFT fidelity.
 
-## Incremental adoption
+## When to revisit
 
-1. The completed [ZOD-099 audit](../architecture/zod-099-replacement-boundary-audit.md)
-   names selected consumers and type leaks and specifies the smallest engine
-   replacement proof, expected reference graph and conformance cases before
-   moving production types.
-2. ZOD-100 implements the selected engine contract and two independently selectable
-   implementations/adapters in a separately bounded follow-up. Prove the same
-   consumer runs without the Tessera implementation reference in its alternate
-   configuration. Preserve the existing FFT facade behavior and Relay sample.
-3. ZOD-101 specifies one bounded framework operation and its independent contract.
-   A separately scoped implementation must prove its
-   consumer builds and runs with a replacement adapter and without the original
-   framework implementation. A whole-game framework contract remains incremental;
-   the current small battle does not define the full campaign API.
-4. Add reference guards and shared contract conformance tests as each boundary
-   becomes real. Do not weaken the current Tessera guard to permit game references.
+The completed [ZOD-099 audit](../architecture/zod-099-replacement-boundary-audit.md)
+records current coupling. It is useful evidence, not evidence that the current
+flat-grid or two-unit prototype defines a suitable public replacement API.
+ZOD-100 and ZOD-101 are deferred reminders, not Ready work.
+
+Revisit a bounded contract when a real second implementation, independent
+consumer/game, or demonstrated integration change needs substitution and the
+operation's semantics are understood. Document the concrete need first; reassess
+the candidate API rather than implementing the earlier sketch automatically.
+No existing ticket's completion alone activates this work.
+
+Then select the smallest useful boundary, prove that its actual consumer can use
+an alternative without referencing the replaced implementation, and run shared
+behavior/conformance checks. Add reference guards as a boundary becomes real.
+Preserve existing FFT behavior and Relay, and keep full-game scope separate from
+a bounded proof. Current ownership and determinism rules remain in force now.
 
 The ZOD-098 internal introduction adapter, if useful, is a client reuse mechanism.
 It is not by itself the framework replacement contract or a reason to expose
-intro worker types in a new public contracts assembly. ZOD-099 precedes ZOD-098
-as a bounded architecture spike; it does not require a whole-system migration
-before prepared introduction work can resume.
+intro worker types in a new public contracts assembly. Such a local interface can
+be justified by concrete client reuse without defining an engine/framework API.
+ZOD-098 proceeds without a replacement-contract prerequisite.
 
 Formula arithmetic remains readable C# with typed inputs/results. Preserve
 original arithmetic, conditional RNG and atomic resolution during extraction;

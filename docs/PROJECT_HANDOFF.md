@@ -2,15 +2,16 @@
 
 **Latest architecture direction (2026-10-25):** The owner wants the option to
 replace either Tessera Engine or Zodiac Framework. Accepted
-[ADR 0006](adr/0006-replaceable-engine-and-framework-contracts.md) distinguishes
-independent contract assemblies/immutable values from implementation types,
-compatible adapters and composition-root wiring. Replacement initially means
+[ADR 0006](adr/0006-replaceable-engine-and-framework-contracts.md) records that goal
+and future compatibility constraints. Owner clarification: it is too early to
+define broad replacement contracts. No API, assembly split or provider proof is
+selected; actual usage must establish the boundary first. Replacement initially means
 rebuild after wiring; runtime hot swapping/plugins remain unselected. Direct
 references and production code are unchanged. The completed
-[ZOD-099 audit](architecture/zod-099-replacement-boundary-audit.md) specifies the
-first contract API, current consumers/type leaks and conformance cases; ZOD-100
-owns its engine proof and ZOD-101 the bounded framework contract specification.
-**Next: ZOD-098** resumes; these wider migration follow-ups are separate work.
+[ZOD-099 audit](architecture/zod-099-replacement-boundary-audit.md) records current
+consumers/type dependencies; its earlier proposed API is withdrawn from the
+selected plan. ZOD-100/101 are deferred reminders with evidence triggers.
+**Next: ZOD-098** resumes without a replacement-contract prerequisite.
 Its internal client introduction interface alone would not prove framework
 replacement. This documentation change reruns no implementation suites;
 ZOD-097 remains the last validation at **2,111 .NET / 269 Python tests**.

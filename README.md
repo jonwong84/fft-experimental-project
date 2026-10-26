@@ -22,7 +22,8 @@ See the [architecture overview](docs/architecture/overview.md) and [ADR 0004](do
 
 Replacing either engine or framework through independent contracts and compatible
 adapters is an architectural goal. [ADR 0006](docs/adr/0006-replaceable-engine-and-framework-contracts.md)
-records the staged approach; current assemblies are not yet interchangeable.
+records that goal; public contract design is deferred until concrete usage
+justifies it. Current assemblies are not yet interchangeable.
 
 ## What works today
 

@@ -4,7 +4,7 @@ Date: 2026-10-25. Managed baseline:
 `4bda424c2f862661f6b8e244517c937a8baec432`.
 Implements the bounded audit selected by
 [ADR 0006](../adr/0006-replaceable-engine-and-framework-contracts.md).
-This is a design specification; all replacement demonstrations below are pending.
+This is a coupling audit; replacement contract design and demonstrations are deferred.
 No original rule is translated and no new decompilation revision is relied upon.
 
 ## Current consumers and coupling
@@ -42,55 +42,24 @@ The project references are Framework -> Engine, Content -> Framework, and Client
   allowlist. New contracts require a deliberate allowlist update and negative
   reference checks, not deletion of the guard.
 
-## Selected first proof: flat-grid operation
+## Deferred candidate: flat-grid operation
 
-ZOD-100 will introduce `Tessera.Contracts` for this one operation. Its proposed
-namespace/API is:
+The bounds-only operation is small enough to inspect, but that alone does not
+justify freezing a replacement API. The earlier proposed interface, duplicate
+grid values and contract project are withdrawn from the selected plan following
+the owner's timing clarification. No API, assembly name or alternate provider
+is selected. ZOD-100 is deferred until a real substitution need justifies a fresh
+design; a synthetic second algorithm alone is not that need.
 
-```csharp
-namespace Tessera.Contracts;
+If this operation is later chosen, preserve the existing public APIs and inspect
+the real consumers before deciding whether to move values, adapt them or change
+construction. A replacement proof must eventually use the same actual consumer
+under two compositions without stale/transitive implementation dependencies.
+Do not introduce mutable global provider selection for a static calling convention.
 
-public readonly record struct GridCell(int X, int Y, int Layer);
-// Sealed immutable value with validated positive constructor dimensions,
-// get-only Width/Depth/LayerCount and a half-open Contains(GridCell) predicate.
-public sealed record GridExtent { /* specified behavior below */ }
+## Existing behavior to preserve if this boundary changes
 
-public interface IFlatGridRange
-{
-    IReadOnlySet<GridCell> Calculate(GridExtent bounds, GridCell origin, int move);
-}
-```
-
-This is a proposed source API, not compilable production code. Distinct value
-names allow existing `Tessera.Engine.GridBounds/GridPosition` APIs and historical
-tests to remain unchanged. Their adapter performs explicit lossless integer
-conversion. Do not move the RNG interface, FFT positions or existing public types
-as part of this proof.
-
-`Tessera.Engine` supplies an instance adapter to its existing calculation. A
-synthetic alternative uses independently implemented Manhattan membership on
-bounded test grids, with wide intermediate arithmetic. Both implement the same
-contract. The alternative is verification/sample code, not a new production
-engine or an FFT movement implementation.
-
-Add one common sample consumer accepting `IFlatGridRange` through its constructor.
-It refers only to Contracts and uses contract values, with no engine-specific
-casts or defaults. Two separately built small composition roots instantiate that
-unchanged consumer: one references Tessera; the other references only Contracts,
-the common consumer and the synthetic alternative. The alternative graph/output
-must contain no Tessera.Engine project, assembly or transitive package dependency.
-Run from separate fresh output directories to exclude stale copied assemblies.
-The contract assembly itself must have no implementation/package references.
-
-This proves one neutral operation and consumer. It does not claim the existing
-Zodiac facade, Relay source, full engine or framework is already replaceable.
-Their migration requires explicit per-instance construction changes in a later
-bounded implementation; do not introduce mutable global provider selection to
-preserve a static calling convention.
-
-## Shared engine conformance cases
-
-Use the same tests against both providers, with independent membership expectations:
+These are observed managed prototype semantics, not a selected new public contract:
 
 - Positive extent dimensions; invalid width, depth and layer count rejected in
   that order with the corresponding constructor parameter name. Coordinates are
@@ -116,35 +85,25 @@ Existing `tests/Tessera.Engine.Tests/FlatGridMovementRangeTests.cs`,
 are baseline evidence to preserve, not new conformance executions. The proof
 must not change old test expectations to fit its new API.
 
-## Bounded framework candidate and follow-up
+## Deferred candidate: framework session
 
-ZOD-101 will specify a two-unit command-session contract before implementation.
-Its first consumers are a headless journal runner and, subsequently,
-`BattleInteraction`; it does not attempt a complete campaign/intro API.
-Required capabilities are explicit scenario/profile selection, observation,
-Advance/Move/Attack/Wait, non-mutating legal-action queries and fresh restart.
-Specify minimal immutable commands, observations, ordered events and rejection
-diagnostics in `Zodiac.Contracts`; do not return `TwoUnitBattleState`,
-`AttackBattleSnapshot`, mutable sessions' internals or engine values.
+The two-unit command session reveals current coupling, but it is too narrow to
+determine a stable framework replacement API. A headless journal consumer and
+`BattleInteraction` are possible later investigation points, not selected public
+contract consumers. ZOD-101 is deferred until a real alternate implementation or
+independent consumer makes the required boundary concrete.
 
-Current nested state access must be replaced with explicit observations needed
-for unit positions/HP, turn state, outcome, legal actions and presentation.
-Determine observable replay/RNG diagnostics separately from persistence of private
-state. The session adapter owns implementation state; projection must not consume
-live RNG. Rejected commands retain state and produce no effects, while the host
-can still journal attempts according to its current policy.
-
-The adapter may reference Zodiac Framework and existing Content to construct the
-selected synthetic setup. The common headless consumer must reference neither.
-An alternate adapter can demonstrate wiring without claiming source-compatible
-FFT rules. Exact command semantics, current rejection precedence, fixture cases,
-content translation and save/replay version policy need their own specification
-and separately bounded implementation ticket after that audit.
+A later investigation should identify the commands/observations its consumer
+needs, distinguish private execution state from portable values and consider
+content translation, rejection order, non-mutating probes, RNG, restart and
+save/replay compatibility. Do not project every current nested state type into
+a public contract merely because it exists today. An eventual wiring stand-in
+would not establish original-game fidelity.
 
 ## Versioning, exclusions and completion
 
-The initial engine operation has no persisted format, IDs or RNG. Its extraction
-must not change any `fft.*` schema or existing save/replay/profile identity.
+The current flat-grid operation has no persisted format, IDs or RNG. A later
+extraction must not silently change any `fft.*` schema or save/replay/profile identity.
 Framework replacement must bind explicit supported capability/contract versions
 and rules/content profiles; incompatible saves and unsupported capabilities fail
 clearly. Original-compatible providers must satisfy existing appropriate vectors,
@@ -157,9 +116,10 @@ Keep formula code readable and FFT-owned, separate calculation from resolution
 when combat work justifies it, and avoid executable plugin discovery, universal
 contexts, service locators, rendering/audio changes and broad type migration here.
 
-The audit is complete with this specification and the ZOD-100/101 follow-ups.
-ZOD-098 can resume with its bounded internal client adapter; neither the larger
-framework contract nor the first replacement implementation is a prerequisite.
+The current-coupling audit is complete; its earlier contract sketch is deferred,
+not an approved design. ZOD-100/101 retain future work identities but are not Ready.
+ZOD-098 can resume with a local client adapter if actual reuse justifies it;
+neither public replacement contracts nor a replacement implementation is a prerequisite.
 Documentation/link/whitespace checks are recorded for this change. No production
 code, contract assembly or replacement/conformance execution is added; the last
 implementation baseline remains ZOD-097's 2,111 .NET / 269 Python tests.

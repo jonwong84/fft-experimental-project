@@ -195,10 +195,11 @@ and ZOD-079/042/043/059/060 in the backlog; the active work order is unchanged.
 Owner clarification (2026-10-25): support replacing Tessera Engine or Zodiac
 Framework through implementation-independent contracts and compatible adapters.
 [ADR 0006](docs/adr/0006-replaceable-engine-and-framework-contracts.md) defines
-the goal, current coupling and staged proofs. The completed
-[ZOD-099 audit](docs/architecture/zod-099-replacement-boundary-audit.md) selects
-the first bounded proof before implementation. This does not select runtime hot swapping or
-change existing schemas, references or compatibility behavior.
+the goal, current coupling and future proof requirements. The completed
+[ZOD-099 audit](docs/architecture/zod-099-replacement-boundary-audit.md) records
+current dependencies. Owner clarification defers public contracts and assembly
+splits until concrete usage justifies them; ZOD-100/101 are not Ready work.
+This does not select runtime hot swapping or change schemas, references or behavior.
 
 The detailed, current proposal is in [`docs/architecture/overview.md`](docs/architecture/overview.md), with initial decisions in [`docs/adr/`](docs/adr/). It describes intended boundaries and explicitly distinguishes them from projects/services already implemented.
 

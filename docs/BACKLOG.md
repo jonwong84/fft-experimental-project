@@ -34,6 +34,10 @@ Priority expresses sequence, not whether a feature is mandatory. P3 includes req
 
 **Ready** means the task has a bounded starting scope and no unfinished backlog prerequisite. **Waiting** means named prerequisite tickets are unfinished. **Needs breakdown** means an epic must be divided into source-traced implementation tickets before coding. A research spike completes with findings, evidence, unknowns, and a recommendation; it does not require creating production abstractions.
 
+**Deferred** means the idea is retained but must not start until its stated
+evidence trigger is met and the scope is reassessed; completed prerequisites
+alone do not make it Ready.
+
 IDs stay stable when priorities change. No calendar estimates or story points are assigned: the source investigations and first implementations should establish a basis for estimating individual tasks. Dependencies below are planning assumptions to refine during the relevant spike. Within a priority, use the recommended queue and dependency order; a high-numbered Ready investigation can proceed alongside an earlier one when it does not edit the same files.
 
 For every implementation ticket: preserve the existing test suite, add meaningful regression coverage for new behavior, update its behavior/architecture note, and run the relevant build/tests. Record evidence as source-derived, executable-reference, emulator/original observation, or synthetic expectation. Source-derived expectations alone must not be called proven original-game equivalence. Maintain the managed runtime boundary, prepared-files-only runtime, immutable definitions/state separation, and original-mode isolation throughout.
@@ -43,10 +47,11 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 **Owner-directed architecture interlude (2026-10-25):** **ZOD-099 is complete**;
 resume ZOD-098. Engine and framework replacement are now explicit goals;
 [ADR 0006](adr/0006-replaceable-engine-and-framework-contracts.md) records the
-contract ownership and staged proof requirements. The
-[audit](architecture/zod-099-replacement-boundary-audit.md) selects ZOD-100's
-bounded engine proof and ZOD-101's framework contract specification; a full
-framework migration does not block prepared introduction work.
+replacement goal and future proof requirements. The
+[audit](architecture/zod-099-replacement-boundary-audit.md) records current coupling.
+Owner clarification defers ZOD-100/101: it is too early to select public contracts,
+assembly splits or replacement proofs without concrete usage. They are not in
+the active queue and do not block prepared introduction work.
 
 **Current focus (2026-10-23):** ZOD-023 completes the bounded M1 headless start-to-result scenario;
 ZOD-025 adds the synthetic Windows view with live GPU/resize/close checks and explicit input/DPI limits.
@@ -1952,68 +1957,64 @@ original startup duration, new map renderer, CRT/audio policy or combat refactor
 
 **Result (2026-10-25):** [Boundary audit](architecture/zod-099-replacement-boundary-audit.md)
 pins managed baseline `4bda424`, inventories concrete project/type dependencies,
-and specifies `IFlatGridRange` plus independently owned immutable grid values,
-two provider graphs, shared conformance cases and explicit legacy limits. It
-identifies the two-unit command session as the bounded framework candidate and
-separates API, behavior, content/profile and save/replay compatibility. ZOD-100
-and ZOD-101 own the follow-ups below. No production interfaces/projects or
+and distinguishes API, behavior, content/profile and save/replay compatibility.
+Following owner clarification, its proposed API/assembly split is withdrawn from
+the selected plan: current coupling is audited, but public contracts are premature.
+ZOD-100/101 are deferred candidates requiring concrete usage and a fresh scope
+decision before activation. No production interfaces/projects or
 replacement execution are added. Documentation checks only; the prior full
 validation remains 2,111 .NET / 269 Python tests. ZOD-098 is released.
 
 **Scope:** Inventory current consumers, project/type dependencies and public
-implementation leaks at both boundaries. Apply ADR 0006 to specify the smallest
-independent engine contract and a replacement proof, starting with the flat-grid
-facade candidate. Identify a bounded framework operation for a later proof.
+implementation leaks at both boundaries. Apply ADR 0006 to identify possible
+future boundaries without selecting a public API or contract assembly now.
 Distinguish application composition, internal introduction reuse, public values,
 private state, content schemas and persistence. No blanket interface extraction.
 
 **Acceptance criteria:** Pin the managed baseline and enumerate exact selected
-files/types. Specify the minimal API, value ownership, adapter/composition graph,
-validation and determinism semantics, version/profile implications and explicit
-non-goals. Define shared conformance cases and a build/run demonstration using
-an alternative implementation without the original implementation reference;
-a stand-in proves wiring only. Preserve existing behavior, Relay and reference
-guards. Create separately bounded implementation follow-ups with acceptance
-criteria; do not claim replacement from interfaces alone. No production type
+files/types. Record coupling, existing behavior to preserve, future version/profile
+implications and explicit non-goals. Define evidence triggers for revisiting
+contracts and distinguish wiring from behavioral compatibility. Preserve existing
+behavior, Relay and reference guards. Keep future work deferred until justified;
+do not claim replacement from interfaces alone. No production type
 migration, source-rule translation or runtime plugin system is required by this
 spike. Its completion releases ZOD-098; wider migration is staged separately.
 
-### ZOD-100 — Prove the first implementation-independent engine contract
+### ZOD-100 — Revisit an engine contract when substitution is needed
 
-**Type:** Story · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-099
+**Type:** Conditional spike · **Priority:** P3 · **Status:** Deferred · **Depends on:** ZOD-099
 
-**Scope:** Implement only the flat-grid contract/value assembly, Tessera adapter,
-synthetic alternative and common consumer/composition roots specified by the
-ZOD-099 audit. Preserve existing public engine/FFT APIs, RNG and Relay. This is
-one replacement proof, not a migration of all current Zodiac consumers.
+**Activation evidence:** A real second engine implementation, independent game/
+consumer or demonstrated integration change needs substitution, and the selected
+operation's semantics are understood. A synthetic duplicate algorithm alone is
+insufficient. Reassess scope explicitly; do not activate from ticket dependencies.
 
-**Acceptance criteria:** Shared conformance cases pass against both providers;
-the same consumer source builds/runs under both compositions. The isolated
-alternative's evaluated references and fresh output exclude Tessera.Engine.
-Contract projects have no implementation references. Extend the narrow reference
-guard with positive and forbidden-reference checks; do not allow game references
-into Engine/Contracts. Locked restore, zero-warning Release build and all managed
-regressions pass. Record the exact proven scope and unconverted legacy callers;
-no full-engine replacement, source-rule or runtime-plugin claim.
+**Scope on activation:** Study actual consumers and select the smallest useful
+boundary. No API, duplicate grid types, contract assembly name or adapter design
+is selected by ZOD-099. Preserve current behavior, RNG, Relay and ownership guards.
 
-### ZOD-101 — Specify the bounded replaceable framework session
+**Acceptance criteria:** Record the concrete need, consumer requirements, behavior
+and value ownership before proposing an API. Specify an implementation-independent
+proof with shared conformance cases and a real consumer, then create a separately
+bounded implementation ticket. No whole-engine replacement or runtime-plugin claim.
 
-**Type:** Spike · **Priority:** P2 · **Status:** Ready · **Depends on:** ZOD-099
+### ZOD-101 — Revisit a framework contract when usage establishes a boundary
 
-**Scope:** Specify the independent two-unit command-session API selected by
-ZOD-099, its minimal observations/commands/results and content adapter boundary.
-Trace current lifecycle, validation/rejection order, RNG/probe behavior, restart,
-journaling and save/replay implications. No full campaign API or automatic
-interface extraction from implementation state.
+**Type:** Conditional spike · **Priority:** P3 · **Status:** Deferred · **Depends on:** ZOD-099
 
-**Acceptance criteria:** Pin the managed baseline, name exact consumers/type
-leaks and define all selected signatures and value ownership without Engine or
-Framework implementation references. Specify capability/profile/version checks,
-shared behavior vectors and a fresh-output alternative build/run proof. Original
-compatibility and a wiring stand-in have separate evidence requirements. Create
-a bounded implementation ticket with regression criteria before production
-migration. No source-rule change, executable plugins or whole-game replacement
-claim is required by this spike.
+**Activation evidence:** A real alternate framework or independent application
+consumer needs substitution and enough behavior is implemented to understand the
+required boundary. The current two-unit prototype alone does not select that API.
+
+**Scope on activation:** Trace the actual consumer's commands, observations,
+content needs, lifecycle, rejection order, RNG/probe behavior and persistence.
+No public session API or contract assembly is selected now.
+
+**Acceptance criteria:** Pin the managed baseline, document the concrete need and
+type dependencies, then propose minimal contracts and version/profile semantics.
+Specify a replacement proof and compatibility cases before creating a bounded
+implementation ticket. Preserve readable C# formulas. No full campaign API,
+automatic interface extraction, executable plugins or whole-game replacement claim.
 
 ## Authoring, extensions, and later goals
 
