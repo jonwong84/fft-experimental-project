@@ -44,6 +44,26 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Current completion (2026-10-27): ZOD-122 is complete**, the
+[confirmed voluntary Move execution contract](architecture/zod-122-voluntary-move-contract.md).
+The proposed additive MoveAlongPath method rebuilds the current certified path,
+publishes real path-facing before Move/automatic completion, and binds receipts
+to the fully settled snapshot. It preserves preview placement and legacy APIs,
+rejects post-KO movement, and explicitly excludes post-move benefits/traps/pickups/
+charge cancellation and scripted effects. Existing pending facing-only Fixed/Keep
+completion and the authored first-KO terminal host remain separate boundaries.
+Fresh clean read-only reference remains 11464943bbdbd2a0af022d90cb7f10455cf911df.
+**396 Python tests pass** (18 new). Sixty vectors distinguish 26 source-derived
+descriptions from 34 managed proposals; all 18 VME production cases remain
+unexecuted. Two audits match 13 files / 33 functions, 82 historical artifacts and
+24 managed baseline files. No C# changes/.NET rerun; last implementation validation
+is 3,567 .NET / 378 Python. See [evidence](evidence/ai/voluntary-move-contract-v1.json).
+**Recommended next: ZOD-123**, implement this additive confirmed path Move boundary
+and execute VME-001..018. Full AI/candidate-clock/interface/general terrain remain
+future work. Owner editor drafts stay excluded; editor UI and ZOD-106 stay deferred.
+
+### ZOD-121 implementation checkpoint (historical)
+
 **Current completion (2026-10-26): ZOD-121 is complete**, the opt-in
 [certified flat ordinary movement query](behavior/flat-ordinary-movement.md).
 It returns ordered physical destinations/residuals, AI origins including stay,
@@ -1833,7 +1853,7 @@ artifacts and all prior APIs remain unchanged; owner editor drafts are excluded.
 
 ### ZOD-122 — Specify the bounded voluntary Move execution adapter
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-121, ZOD-119
+**Type:** Spike · **Priority:** P3 · **Status:** Complete · **Depends on:** ZOD-121, ZOD-119
 
 **Scope:** Freshly trace the original selected voluntary path through movement
 confirmation, settled tile/facing, Move choice consumption, automatic turn end
@@ -1853,6 +1873,48 @@ and a production implementation inventory, then one bounded implementation ticke
 Keep all existing APIs/fixtures unchanged during the spike. No full path animation,
 selector/candidate clock/interface/search/RNG runner, general terrain/status/mount
 breadth, save/native/editor activation or ZOD-106 work.
+
+**Evidence (2026-10-27):** [Contract/API/reproduction](architecture/zod-122-voluntary-move-contract.md),
+[60 classified vectors](fixtures/behavior/voluntary-move-contract-v1.json) and
+[pinned evidence](evidence/ai/voluntary-move-contract-v1.json). Eighteen new Python
+tests cover source confirmation/undo/heading/CT rules and normalized adapter/receipt
+proposals; all 396 Python tests pass. Two audits match 13 files / 33 functions,
+82 preserved artifacts and 24 managed baseline files. No production adapter or
+original-game equivalence is claimed; VME cases remain unexecuted. Existing
+query/facing/runtime code and editor drafts are unchanged. ZOD-123 is the bounded
+implementation follow-up.
+
+### ZOD-123 — Implement the confirmed flat path Move boundary
+
+**Type:** Feature · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-122
+
+**Scope:** Add FacingTurnBattle.MoveAlongPath, a new typed PathMoveResult and a
+VoluntaryPathCompletedEvent, using the current certified query and existing
+TurnCycle/receipt lifecycle. It represents an already confirmed ordinary Move;
+no tentative/cancel UI or caller-supplied path authorization. Keep existing Move
+APIs, policy values and legacy behavior unchanged.
+
+**Acceptance criteria:** Execute VME-001..018 in new implementation evidence,
+leaving the source fixture historical. Preserve pending/revision/actor/choice/
+profile/path validation precedence with exact input-state rejection, no events
+or partial path. Require current strict profile/cost1 and no unrepresented
+post-move effects. Publish actor position and selected real path heading before
+Move consumption and any automatic completion; bind receipt only to the fully
+settled snapshot/revision/lineage. Use one revision increment and zero RNG draws;
+retain unrelated fields/ticks. Test both actors/collection orders, both Move/Act
+orders, exact event/path/heading values, actual pushes/current occupancy, bad
+destinations, unsupported costs/geometry, pending barriers, counter limits,
+stale/cross-run/branch/earlier-turn receipts and immutable replay. FinishFacing
+must KeepCurrent at the new path heading without repeating Move/CT/RNG; same-face
+completion consumes once. Post-KO path Move rejects without expanding the query
+or bypassing first-KO host; existing pending Fixed/Keep completion remains valid.
+Run locked restore, zero-warning Release build and full .NET/Python suites,
+preserving existing APIs/tests/historical evidence and owner editor work.
+
+No activation in content/scenario/save/native/editor paths, full path animation/
+cancel flow, general post-move effects or corpse/death movement, AI preview
+mutation, candidate clock/search/roster/interface/decision RNG runner. Editor UI
+redesign and ZOD-106 remain deferred.
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 

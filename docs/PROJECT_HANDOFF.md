@@ -1,6 +1,46 @@
 # Tessera / Zodiac / FFT Project Handoff
 
-## Current handoff — 2026-10-26
+## Current handoff — 2026-10-27
+
+**ZOD-122 is complete**, the source/design contract for confirmed voluntary Move.
+Original walking writes path-facing and tile before confirmation consumes Move;
+the second choice can end the turn before later WaitDirection. The proposed
+additive FacingTurnBattle.MoveAlongPath rebuilds the current certified path and
+publishes position/real heading, Move choice and any turn-end together. Internal
+receipts bind the fully settled snapshot/revision/lineage. Existing Move APIs,
+phase-independent query and AI coordinate-only preview remain unchanged.
+
+Fresh clean read-only decomp remains 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Thirteen files / 33 functions cover confirmation/undo, post-move effects, clock,
+WaitDirection and preview. **396 Python tests pass** (18 new); 60 vectors separate
+26 source-derived normalized descriptions from 34 managed adapter proposals.
+All 18 VME production cases remain unexecuted. Two audits match 82 historical
+artifacts and 24 managed baseline files. No C# changes or .NET rerun; last
+implementation validation remains ZOD-121's 3,567 .NET / 378 Python tests.
+No new C/original/emulator/native/headless execution. Owner untracked editor
+Common classes remain untouched and excluded.
+
+Admission explicitly excludes unrepresented post-move effects, including
+Move-HP/MP/EXP/JP, traps/pickups, charge cancellation and scripted/map changes.
+Move after KO remains outside the two-living-opponent profile. Existing pending
+facing-only Fixed/Keep may finish after a lethal Attack; chooser needs a living
+enemy, and the authored first-KO scenario still rejects all later commands.
+That host policy is not a universal original victory rule. Counter behavior
+matches the current wrapper: using the last revision can leave pending at MAX;
+Finish then rejects exhaustion. No hidden reservation/wrap or receipt reuse.
+
+See [contract/API/reproduction](architecture/zod-122-voluntary-move-contract.md),
+[vectors](fixtures/behavior/voluntary-move-contract-v1.json) and
+[evidence](evidence/ai/voluntary-move-contract-v1.json). **Recommended next: ZOD-123**,
+implement the additive method/result/path event and execute VME-001..018. Validate
+command authority before query, reject atomically, settle heading before receipt,
+and retain exact existing FinishFacing/replay semantics. No legacy automatic
+activation, AI preview mutation, content/save/native/editor changes or general
+terrain/effects/death scheduling. AI search/roster/candidate-clock/decision RNG/
+interface remain future work; editor UI and ZOD-106 stay deferred. Reports:
+scratch/voluntary-move-122-*; builder scratch/build_voluntary_move_122.py.
+
+## ZOD-121 implementation checkpoint (historical)
 
 **ZOD-121 is complete.** FlatOrdinaryMovement.Evaluate is a pure opt-in geometry
 query over the existing AttackBattleSnapshot, with explicit stable-opponent and

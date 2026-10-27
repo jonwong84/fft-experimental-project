@@ -1,0 +1,2483 @@
+{
+  "format": "fft.voluntary-move-source-description",
+  "schemaVersion": 1,
+  "ticket": "ZOD-122",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "execution": "offline-source-and-proposed-adapter-description",
+  "productionImplemented": false,
+  "vectorCount": 60,
+  "vectors": [
+    {
+      "id": "east",
+      "family": "source-walk",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "packedSteps": [
+          0
+        ],
+        "incomingFacing": "West",
+        "actionExecute": false
+      },
+      "expected": {
+        "facing": "East",
+        "facingWritten": true,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "west",
+      "family": "source-walk",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "packedSteps": [
+          64
+        ],
+        "incomingFacing": "North",
+        "actionExecute": false
+      },
+      "expected": {
+        "facing": "West",
+        "facingWritten": true,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "north",
+      "family": "source-walk",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "packedSteps": [
+          192
+        ],
+        "incomingFacing": "South",
+        "actionExecute": false
+      },
+      "expected": {
+        "facing": "North",
+        "facingWritten": true,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "south",
+      "family": "source-walk",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "packedSteps": [
+          128
+        ],
+        "incomingFacing": "East",
+        "actionExecute": false
+      },
+      "expected": {
+        "facing": "South",
+        "facingWritten": true,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "diagonal-north-east",
+      "family": "source-walk",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "packedSteps": [
+          192,
+          0
+        ],
+        "incomingFacing": "West",
+        "actionExecute": false
+      },
+      "expected": {
+        "facing": "East",
+        "facingWritten": true,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "straight-east",
+      "family": "source-walk",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "packedSteps": [
+          0,
+          0,
+          0
+        ],
+        "incomingFacing": "South",
+        "actionExecute": false
+      },
+      "expected": {
+        "facing": "East",
+        "facingWritten": true,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "knockback-east-preserves",
+      "family": "source-walk",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "packedSteps": [
+          0
+        ],
+        "incomingFacing": "West",
+        "actionExecute": true
+      },
+      "expected": {
+        "facing": "West",
+        "facingWritten": false,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "knockback-south-preserves",
+      "family": "source-walk",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "packedSteps": [
+          128
+        ],
+        "incomingFacing": "North",
+        "actionExecute": true
+      },
+      "expected": {
+        "facing": "North",
+        "facingWritten": false,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "confirm-move-first",
+      "family": "source-confirm",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          1,
+          1
+        ],
+        "incomingFacing": "West",
+        "walkFacing": "East",
+        "ct": 15,
+        "acted": false,
+        "confirmed": true
+      },
+      "expected": {
+        "position": [
+          1,
+          1
+        ],
+        "facing": "East",
+        "moved": true,
+        "acted": false,
+        "ct": 15,
+        "hasTurn": true,
+        "order": [
+          "TileAndFacing",
+          "MoveTaken",
+          "PostMoveEvents"
+        ],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "confirm-after-act",
+      "family": "source-confirm",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          1,
+          1
+        ],
+        "incomingFacing": "West",
+        "walkFacing": "East",
+        "ct": 15,
+        "acted": true,
+        "confirmed": true
+      },
+      "expected": {
+        "position": [
+          1,
+          1
+        ],
+        "facing": "East",
+        "moved": true,
+        "acted": true,
+        "ct": 15,
+        "hasTurn": false,
+        "order": [
+          "TileAndFacing",
+          "MoveTaken",
+          "TurnEnd",
+          "PostMoveEvents"
+        ],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "confirm-after-act-cap60",
+      "family": "source-confirm",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          1,
+          1
+        ],
+        "incomingFacing": "West",
+        "walkFacing": "East",
+        "ct": 99,
+        "acted": true,
+        "confirmed": true
+      },
+      "expected": {
+        "position": [
+          1,
+          1
+        ],
+        "facing": "East",
+        "moved": true,
+        "acted": true,
+        "ct": 60,
+        "hasTurn": false,
+        "order": [
+          "TileAndFacing",
+          "MoveTaken",
+          "TurnEnd",
+          "PostMoveEvents"
+        ],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "move-first-retains-99",
+      "family": "source-confirm",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          1,
+          1
+        ],
+        "incomingFacing": "West",
+        "walkFacing": "East",
+        "ct": 99,
+        "acted": false,
+        "confirmed": true
+      },
+      "expected": {
+        "position": [
+          1,
+          1
+        ],
+        "facing": "East",
+        "moved": true,
+        "acted": false,
+        "ct": 99,
+        "hasTurn": true,
+        "order": [
+          "TileAndFacing",
+          "MoveTaken",
+          "PostMoveEvents"
+        ],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "cancel-restores-before-move",
+      "family": "source-confirm",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          1,
+          1
+        ],
+        "incomingFacing": "West",
+        "walkFacing": "East",
+        "ct": 15,
+        "acted": false,
+        "confirmed": false
+      },
+      "expected": {
+        "position": [
+          0,
+          0
+        ],
+        "facing": "West",
+        "moved": false,
+        "acted": false,
+        "ct": 15,
+        "hasTurn": true,
+        "order": [
+          "RestoreTileAndFacing"
+        ],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "cancel-after-act-keeps-choice",
+      "family": "source-confirm",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          1,
+          1
+        ],
+        "incomingFacing": "West",
+        "walkFacing": "East",
+        "ct": 15,
+        "acted": true,
+        "confirmed": false
+      },
+      "expected": {
+        "position": [
+          0,
+          0
+        ],
+        "facing": "West",
+        "moved": false,
+        "acted": true,
+        "ct": 15,
+        "hasTurn": true,
+        "order": [
+          "RestoreTileAndFacing"
+        ],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "unused-both",
+      "family": "source-clock",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "ct": 15,
+        "moved": false,
+        "acted": false,
+        "hasTurn": true
+      },
+      "expected": {
+        "ct": 55,
+        "hasTurn": false,
+        "moved": false,
+        "acted": false,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "unused-act",
+      "family": "source-clock",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "ct": 15,
+        "moved": true,
+        "acted": false,
+        "hasTurn": true
+      },
+      "expected": {
+        "ct": 35,
+        "hasTurn": false,
+        "moved": true,
+        "acted": false,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "unused-move",
+      "family": "source-clock",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "ct": 15,
+        "moved": false,
+        "acted": true,
+        "hasTurn": true
+      },
+      "expected": {
+        "ct": 35,
+        "hasTurn": false,
+        "moved": false,
+        "acted": true,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "both-used",
+      "family": "source-clock",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "ct": 15,
+        "moved": true,
+        "acted": true,
+        "hasTurn": true
+      },
+      "expected": {
+        "ct": 15,
+        "hasTurn": false,
+        "moved": true,
+        "acted": true,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "wait-cap",
+      "family": "source-clock",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "ct": 59,
+        "moved": false,
+        "acted": false,
+        "hasTurn": true
+      },
+      "expected": {
+        "ct": 60,
+        "hasTurn": false,
+        "moved": false,
+        "acted": false,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "both-used-cap",
+      "family": "source-clock",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "ct": 99,
+        "moved": true,
+        "acted": true,
+        "hasTurn": true
+      },
+      "expected": {
+        "ct": 60,
+        "hasTurn": false,
+        "moved": true,
+        "acted": true,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "repeat-end-no-refund",
+      "family": "source-clock",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "ct": 35,
+        "moved": true,
+        "acted": false,
+        "hasTurn": false
+      },
+      "expected": {
+        "ct": 35,
+        "hasTurn": false,
+        "moved": true,
+        "acted": false,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "repeat-end-no-cap",
+      "family": "source-clock",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "ct": 99,
+        "moved": true,
+        "acted": true,
+        "hasTurn": false
+      },
+      "expected": {
+        "ct": 99,
+        "hasTurn": false,
+        "moved": true,
+        "acted": true,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "preview-move",
+      "family": "source-preview",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          1,
+          1
+        ],
+        "facing": "West",
+        "movementTaken": false
+      },
+      "expected": {
+        "position": [
+          1,
+          1
+        ],
+        "facing": "West",
+        "movementTaken": true,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "preview-stay",
+      "family": "source-preview",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "facing": "North",
+        "movementTaken": false
+      },
+      "expected": {
+        "position": [
+          0,
+          0
+        ],
+        "facing": "North",
+        "movementTaken": false,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "preview-moved-stay",
+      "family": "source-preview",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "facing": "South",
+        "movementTaken": true
+      },
+      "expected": {
+        "position": [
+          0,
+          0
+        ],
+        "facing": "South",
+        "movementTaken": true,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "preview-post-push",
+      "family": "source-preview",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "origin": [
+          2,
+          2
+        ],
+        "destination": [
+          3,
+          2
+        ],
+        "facing": "South",
+        "movementTaken": false
+      },
+      "expected": {
+        "position": [
+          3,
+          2
+        ],
+        "facing": "South",
+        "movementTaken": true,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "proposed-move-first",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "revision": 10,
+        "knownActor": true,
+        "activeActor": true,
+        "moved": false,
+        "acted": false,
+        "actorLiving": true,
+        "enemyLiving": true,
+        "profileSupported": true,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            0
+          ],
+          "enemy": [
+            2,
+            2
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 57,
+        "rngCount": 500
+      },
+      "expected": {
+        "accepted": true,
+        "position": [
+          1,
+          1
+        ],
+        "facing": "East",
+        "moved": true,
+        "acted": false,
+        "ct": 15,
+        "hasTurn": true,
+        "revision": 11,
+        "pending": false,
+        "receiptBinding": null,
+        "events": [
+          "Movement",
+          "PathCompleted",
+          "MoveConsumed"
+        ],
+        "path": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "packedSteps": [
+          192,
+          0
+        ],
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "proposed-act-then-move",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "revision": 10,
+        "knownActor": true,
+        "activeActor": true,
+        "moved": false,
+        "acted": true,
+        "actorLiving": true,
+        "enemyLiving": true,
+        "profileSupported": true,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            0
+          ],
+          "enemy": [
+            2,
+            2
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 57,
+        "rngCount": 500
+      },
+      "expected": {
+        "accepted": true,
+        "position": [
+          1,
+          1
+        ],
+        "facing": "East",
+        "moved": true,
+        "acted": true,
+        "ct": 15,
+        "hasTurn": false,
+        "revision": 11,
+        "pending": true,
+        "receiptBinding": "FullySettledSnapshotAndLineage",
+        "events": [
+          "Movement",
+          "PathCompleted",
+          "MoveConsumed",
+          "TurnEnded"
+        ],
+        "path": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "packedSteps": [
+          192,
+          0
+        ],
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "proposed-act-then-move-cap60",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "revision": 10,
+        "knownActor": true,
+        "activeActor": true,
+        "moved": false,
+        "acted": true,
+        "actorLiving": true,
+        "enemyLiving": true,
+        "profileSupported": true,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            0
+          ],
+          "enemy": [
+            2,
+            2
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 99,
+        "rngWord": 57,
+        "rngCount": 500
+      },
+      "expected": {
+        "accepted": true,
+        "position": [
+          1,
+          1
+        ],
+        "facing": "East",
+        "moved": true,
+        "acted": true,
+        "ct": 60,
+        "hasTurn": false,
+        "revision": 11,
+        "pending": true,
+        "receiptBinding": "FullySettledSnapshotAndLineage",
+        "events": [
+          "Movement",
+          "PathCompleted",
+          "MoveConsumed",
+          "TurnEnded"
+        ],
+        "path": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "packedSteps": [
+          192,
+          0
+        ],
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "proposed-second-actor",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "revision": 10,
+        "knownActor": true,
+        "activeActor": true,
+        "moved": false,
+        "acted": false,
+        "actorLiving": true,
+        "enemyLiving": true,
+        "profileSupported": true,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            2,
+            2
+          ],
+          "enemy": [
+            0,
+            0
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 57,
+        "rngCount": 500,
+        "actorId": "B"
+      },
+      "expected": {
+        "accepted": true,
+        "position": [
+          1,
+          1
+        ],
+        "facing": "West",
+        "moved": true,
+        "acted": false,
+        "ct": 15,
+        "hasTurn": true,
+        "revision": 11,
+        "pending": false,
+        "receiptBinding": null,
+        "events": [
+          "Movement",
+          "PathCompleted",
+          "MoveConsumed"
+        ],
+        "path": [
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "packedSteps": [
+          128,
+          64
+        ],
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "reject-move-already-taken",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "revision": 10,
+        "knownActor": true,
+        "activeActor": true,
+        "moved": true,
+        "acted": false,
+        "actorLiving": true,
+        "enemyLiving": true,
+        "profileSupported": true,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            0
+          ],
+          "enemy": [
+            2,
+            2
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 57,
+        "rngCount": 500
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "MovementAlreadyTaken",
+        "unchanged": true,
+        "events": [],
+        "path": null,
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "reject-inactive",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "revision": 10,
+        "knownActor": true,
+        "activeActor": false,
+        "moved": false,
+        "acted": false,
+        "actorLiving": true,
+        "enemyLiving": true,
+        "profileSupported": true,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            0
+          ],
+          "enemy": [
+            2,
+            2
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 57,
+        "rngCount": 500
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "InactiveUnit",
+        "unchanged": true,
+        "events": [],
+        "path": null,
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "reject-unknown",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "revision": 10,
+        "knownActor": false,
+        "activeActor": true,
+        "moved": false,
+        "acted": false,
+        "actorLiving": true,
+        "enemyLiving": true,
+        "profileSupported": true,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            0
+          ],
+          "enemy": [
+            2,
+            2
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 57,
+        "rngCount": 500
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "UnknownUnit",
+        "unchanged": true,
+        "events": [],
+        "path": null,
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "reject-pending",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": true,
+        "revision": 10,
+        "knownActor": true,
+        "activeActor": true,
+        "moved": false,
+        "acted": false,
+        "actorLiving": true,
+        "enemyLiving": true,
+        "profileSupported": true,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            0
+          ],
+          "enemy": [
+            2,
+            2
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 57,
+        "rngCount": 500
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "FacingPending",
+        "unchanged": true,
+        "events": [],
+        "path": null,
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "reject-revision-exhausted",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "revision": 18446744073709551615,
+        "knownActor": true,
+        "activeActor": true,
+        "moved": false,
+        "acted": false,
+        "actorLiving": true,
+        "enemyLiving": true,
+        "profileSupported": true,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            0
+          ],
+          "enemy": [
+            2,
+            2
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 57,
+        "rngCount": 500
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "RevisionExhausted",
+        "unchanged": true,
+        "events": [],
+        "path": null,
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "reject-unsupported-profile",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "revision": 10,
+        "knownActor": true,
+        "activeActor": true,
+        "moved": false,
+        "acted": false,
+        "actorLiving": true,
+        "enemyLiving": true,
+        "profileSupported": false,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            0
+          ],
+          "enemy": [
+            2,
+            2
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 57,
+        "rngCount": 500
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "UnsupportedProfile",
+        "unchanged": true,
+        "events": [],
+        "path": null,
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "reject-dead-enemy",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "revision": 10,
+        "knownActor": true,
+        "activeActor": true,
+        "moved": false,
+        "acted": false,
+        "actorLiving": true,
+        "enemyLiving": false,
+        "profileSupported": true,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            0
+          ],
+          "enemy": [
+            2,
+            2
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 57,
+        "rngCount": 500
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "UnsupportedProfile",
+        "unchanged": true,
+        "events": [],
+        "path": null,
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "reject-dead-actor",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "revision": 10,
+        "knownActor": true,
+        "activeActor": true,
+        "moved": false,
+        "acted": false,
+        "actorLiving": false,
+        "enemyLiving": true,
+        "profileSupported": true,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            0
+          ],
+          "enemy": [
+            2,
+            2
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 57,
+        "rngCount": 500
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "UnsupportedProfile",
+        "unchanged": true,
+        "events": [],
+        "path": null,
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "reject-origin",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "revision": 10,
+        "knownActor": true,
+        "activeActor": true,
+        "moved": false,
+        "acted": false,
+        "actorLiving": true,
+        "enemyLiving": true,
+        "profileSupported": true,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            0
+          ],
+          "enemy": [
+            2,
+            2
+          ],
+          "destination": [
+            0,
+            0
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 57,
+        "rngCount": 500
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "InvalidDestination",
+        "unchanged": true,
+        "events": [],
+        "path": null,
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "reject-occupied",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "revision": 10,
+        "knownActor": true,
+        "activeActor": true,
+        "moved": false,
+        "acted": false,
+        "actorLiving": true,
+        "enemyLiving": true,
+        "profileSupported": true,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            0
+          ],
+          "enemy": [
+            2,
+            2
+          ],
+          "destination": [
+            2,
+            2
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 57,
+        "rngCount": 500
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "InvalidDestination",
+        "unchanged": true,
+        "events": [],
+        "path": null,
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "reject-over-budget",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "revision": 10,
+        "knownActor": true,
+        "activeActor": true,
+        "moved": false,
+        "acted": false,
+        "actorLiving": true,
+        "enemyLiving": true,
+        "profileSupported": true,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            0
+          ],
+          "enemy": [
+            2,
+            2
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "move": 1,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 57,
+        "rngCount": 500
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "InvalidDestination",
+        "unchanged": true,
+        "events": [],
+        "path": null,
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "proposed-detour-heading-south",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "revision": 10,
+        "knownActor": true,
+        "activeActor": true,
+        "moved": false,
+        "acted": false,
+        "actorLiving": true,
+        "enemyLiving": true,
+        "profileSupported": true,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            1
+          ],
+          "enemy": [
+            1,
+            1
+          ],
+          "destination": [
+            2,
+            1
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 57,
+        "rngCount": 500
+      },
+      "expected": {
+        "accepted": true,
+        "position": [
+          2,
+          1
+        ],
+        "facing": "South",
+        "moved": true,
+        "acted": false,
+        "ct": 15,
+        "hasTurn": true,
+        "revision": 11,
+        "pending": false,
+        "receiptBinding": null,
+        "events": [
+          "Movement",
+          "PathCompleted",
+          "MoveConsumed"
+        ],
+        "path": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "packedSteps": [
+          192,
+          0,
+          0,
+          128
+        ],
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "proposed-post-push-old-tile-free",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "revision": 10,
+        "knownActor": true,
+        "activeActor": true,
+        "moved": false,
+        "acted": true,
+        "actorLiving": true,
+        "enemyLiving": true,
+        "profileSupported": true,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            1
+          ],
+          "enemy": [
+            2,
+            1
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 57,
+        "rngCount": 500
+      },
+      "expected": {
+        "accepted": true,
+        "position": [
+          1,
+          1
+        ],
+        "facing": "East",
+        "moved": true,
+        "acted": true,
+        "ct": 15,
+        "hasTurn": false,
+        "revision": 11,
+        "pending": true,
+        "receiptBinding": "FullySettledSnapshotAndLineage",
+        "events": [
+          "Movement",
+          "PathCompleted",
+          "MoveConsumed",
+          "TurnEnded"
+        ],
+        "path": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "packedSteps": [
+          0
+        ],
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "proposed-post-push-new-tile-blocked",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "revision": 10,
+        "knownActor": true,
+        "activeActor": true,
+        "moved": false,
+        "acted": true,
+        "actorLiving": true,
+        "enemyLiving": true,
+        "profileSupported": true,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            1
+          ],
+          "enemy": [
+            2,
+            1
+          ],
+          "destination": [
+            2,
+            1
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 57,
+        "rngCount": 500
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "InvalidDestination",
+        "unchanged": true,
+        "events": [],
+        "path": null,
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "proposed-exhausted-rng-still-moves",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "revision": 10,
+        "knownActor": true,
+        "activeActor": true,
+        "moved": false,
+        "acted": false,
+        "actorLiving": true,
+        "enemyLiving": true,
+        "profileSupported": true,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            0
+          ],
+          "enemy": [
+            2,
+            2
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 4294967295,
+        "rngCount": 18446744073709551615
+      },
+      "expected": {
+        "accepted": true,
+        "position": [
+          1,
+          1
+        ],
+        "facing": "East",
+        "moved": true,
+        "acted": false,
+        "ct": 15,
+        "hasTurn": true,
+        "revision": 11,
+        "pending": false,
+        "receiptBinding": null,
+        "events": [
+          "Movement",
+          "PathCompleted",
+          "MoveConsumed"
+        ],
+        "path": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "packedSteps": [
+          192,
+          0
+        ],
+        "rngWord": 4294967295,
+        "rngCount": 18446744073709551615,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "proposed-last-revision-move",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "revision": 18446744073709551614,
+        "knownActor": true,
+        "activeActor": true,
+        "moved": false,
+        "acted": false,
+        "actorLiving": true,
+        "enemyLiving": true,
+        "profileSupported": true,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            0
+          ],
+          "enemy": [
+            2,
+            2
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 57,
+        "rngCount": 500
+      },
+      "expected": {
+        "accepted": true,
+        "position": [
+          1,
+          1
+        ],
+        "facing": "East",
+        "moved": true,
+        "acted": false,
+        "ct": 15,
+        "hasTurn": true,
+        "revision": 18446744073709551615,
+        "pending": false,
+        "receiptBinding": null,
+        "events": [
+          "Movement",
+          "PathCompleted",
+          "MoveConsumed"
+        ],
+        "path": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "packedSteps": [
+          192,
+          0
+        ],
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "proposed-last-revision-completes",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "revision": 18446744073709551614,
+        "knownActor": true,
+        "activeActor": true,
+        "moved": false,
+        "acted": true,
+        "actorLiving": true,
+        "enemyLiving": true,
+        "profileSupported": true,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            0
+          ],
+          "enemy": [
+            2,
+            2
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 57,
+        "rngCount": 500
+      },
+      "expected": {
+        "accepted": true,
+        "position": [
+          1,
+          1
+        ],
+        "facing": "East",
+        "moved": true,
+        "acted": true,
+        "ct": 15,
+        "hasTurn": false,
+        "revision": 18446744073709551615,
+        "pending": true,
+        "receiptBinding": "FullySettledSnapshotAndLineage",
+        "events": [
+          "Movement",
+          "PathCompleted",
+          "MoveConsumed",
+          "TurnEnded"
+        ],
+        "path": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "packedSteps": [
+          192,
+          0
+        ],
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "proposed-pending-precedes-all",
+      "family": "proposed-move",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": true,
+        "revision": 18446744073709551615,
+        "knownActor": false,
+        "activeActor": false,
+        "moved": true,
+        "acted": false,
+        "actorLiving": true,
+        "enemyLiving": true,
+        "profileSupported": false,
+        "route": {
+          "width": 3,
+          "depth": 3,
+          "origin": [
+            0,
+            0
+          ],
+          "enemy": [
+            2,
+            2
+          ],
+          "destination": [
+            1,
+            1
+          ],
+          "move": 4,
+          "jump": 0,
+          "moved": false
+        },
+        "ct": 15,
+        "rngWord": 57,
+        "rngCount": 500
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "FacingPending",
+        "unchanged": true,
+        "events": [],
+        "path": null,
+        "rngWord": 57,
+        "rngCount": 500,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "finish-keep-path-heading",
+      "family": "proposed-finish",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": true,
+        "identityMatches": true,
+        "snapshotMatches": true,
+        "lineageMatches": true,
+        "revisionMatches": true,
+        "actorMatches": true,
+        "active": false,
+        "revisionAvailable": true,
+        "choice": "KeepCurrent",
+        "currentFacing": "East",
+        "ct": 15,
+        "enemyLiving": true,
+        "actorPosition": [
+          1,
+          1
+        ],
+        "enemyPosition": [
+          2,
+          2
+        ]
+      },
+      "expected": {
+        "accepted": true,
+        "facing": "East",
+        "pending": false,
+        "ct": 15,
+        "events": [
+          "FacingSettled"
+        ],
+        "receiptConsumed": true,
+        "ctAppliedAgain": false,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "finish-fixed-north",
+      "family": "proposed-finish",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": true,
+        "identityMatches": true,
+        "snapshotMatches": true,
+        "lineageMatches": true,
+        "revisionMatches": true,
+        "actorMatches": true,
+        "active": false,
+        "revisionAvailable": true,
+        "choice": "North",
+        "currentFacing": "East",
+        "ct": 15,
+        "enemyLiving": true,
+        "actorPosition": [
+          1,
+          1
+        ],
+        "enemyPosition": [
+          2,
+          2
+        ]
+      },
+      "expected": {
+        "accepted": true,
+        "facing": "North",
+        "pending": false,
+        "ct": 15,
+        "events": [
+          "FacingSettled"
+        ],
+        "receiptConsumed": true,
+        "ctAppliedAgain": false,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "finish-same-face-consumes",
+      "family": "proposed-finish",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": true,
+        "identityMatches": true,
+        "snapshotMatches": true,
+        "lineageMatches": true,
+        "revisionMatches": true,
+        "actorMatches": true,
+        "active": false,
+        "revisionAvailable": true,
+        "choice": "East",
+        "currentFacing": "East",
+        "ct": 15,
+        "enemyLiving": true,
+        "actorPosition": [
+          1,
+          1
+        ],
+        "enemyPosition": [
+          2,
+          2
+        ]
+      },
+      "expected": {
+        "accepted": true,
+        "facing": "East",
+        "pending": false,
+        "ct": 15,
+        "events": [
+          "FacingSettled"
+        ],
+        "receiptConsumed": true,
+        "ctAppliedAgain": false,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "finish-no-pending",
+      "family": "proposed-finish",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": false,
+        "identityMatches": true,
+        "snapshotMatches": true,
+        "lineageMatches": true,
+        "revisionMatches": true,
+        "actorMatches": true,
+        "active": false,
+        "revisionAvailable": true,
+        "choice": "KeepCurrent",
+        "currentFacing": "East",
+        "ct": 15,
+        "enemyLiving": true,
+        "actorPosition": [
+          1,
+          1
+        ],
+        "enemyPosition": [
+          2,
+          2
+        ]
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "MissingCompletion",
+        "unchanged": true,
+        "events": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "finish-wrong-actor",
+      "family": "proposed-finish",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": true,
+        "identityMatches": true,
+        "snapshotMatches": true,
+        "lineageMatches": true,
+        "revisionMatches": true,
+        "actorMatches": false,
+        "active": false,
+        "revisionAvailable": true,
+        "choice": "KeepCurrent",
+        "currentFacing": "East",
+        "ct": 15,
+        "enemyLiving": true,
+        "actorPosition": [
+          1,
+          1
+        ],
+        "enemyPosition": [
+          2,
+          2
+        ]
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "WrongActor",
+        "unchanged": true,
+        "events": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "finish-wrong-identity",
+      "family": "proposed-finish",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": true,
+        "identityMatches": false,
+        "snapshotMatches": true,
+        "lineageMatches": true,
+        "revisionMatches": true,
+        "actorMatches": true,
+        "active": false,
+        "revisionAvailable": true,
+        "choice": "KeepCurrent",
+        "currentFacing": "East",
+        "ct": 15,
+        "enemyLiving": true,
+        "actorPosition": [
+          1,
+          1
+        ],
+        "enemyPosition": [
+          2,
+          2
+        ]
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "StaleCompletion",
+        "unchanged": true,
+        "events": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "finish-stale-snapshot",
+      "family": "proposed-finish",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": true,
+        "identityMatches": true,
+        "snapshotMatches": false,
+        "lineageMatches": true,
+        "revisionMatches": true,
+        "actorMatches": true,
+        "active": false,
+        "revisionAvailable": true,
+        "choice": "KeepCurrent",
+        "currentFacing": "East",
+        "ct": 15,
+        "enemyLiving": true,
+        "actorPosition": [
+          1,
+          1
+        ],
+        "enemyPosition": [
+          2,
+          2
+        ]
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "StaleCompletion",
+        "unchanged": true,
+        "events": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "finish-wrong-lineage",
+      "family": "proposed-finish",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": true,
+        "identityMatches": true,
+        "snapshotMatches": true,
+        "lineageMatches": false,
+        "revisionMatches": true,
+        "actorMatches": true,
+        "active": false,
+        "revisionAvailable": true,
+        "choice": "KeepCurrent",
+        "currentFacing": "East",
+        "ct": 15,
+        "enemyLiving": true,
+        "actorPosition": [
+          1,
+          1
+        ],
+        "enemyPosition": [
+          2,
+          2
+        ]
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "StaleCompletion",
+        "unchanged": true,
+        "events": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "finish-revision-exhausted",
+      "family": "proposed-finish",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": true,
+        "identityMatches": true,
+        "snapshotMatches": true,
+        "lineageMatches": true,
+        "revisionMatches": true,
+        "actorMatches": true,
+        "active": false,
+        "revisionAvailable": false,
+        "choice": "KeepCurrent",
+        "currentFacing": "East",
+        "ct": 15,
+        "enemyLiving": true,
+        "actorPosition": [
+          1,
+          1
+        ],
+        "enemyPosition": [
+          2,
+          2
+        ]
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "RevisionExhausted",
+        "unchanged": true,
+        "events": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "finish-bad-choice",
+      "family": "proposed-finish",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": true,
+        "identityMatches": true,
+        "snapshotMatches": true,
+        "lineageMatches": true,
+        "revisionMatches": true,
+        "actorMatches": true,
+        "active": false,
+        "revisionAvailable": true,
+        "choice": "Bad",
+        "currentFacing": "East",
+        "ct": 15,
+        "enemyLiving": true,
+        "actorPosition": [
+          1,
+          1
+        ],
+        "enemyPosition": [
+          2,
+          2
+        ]
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "UnsupportedFacing",
+        "unchanged": true,
+        "events": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "finish-still-active",
+      "family": "proposed-finish",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": true,
+        "identityMatches": true,
+        "snapshotMatches": true,
+        "lineageMatches": true,
+        "revisionMatches": true,
+        "actorMatches": true,
+        "active": true,
+        "revisionAvailable": true,
+        "choice": "KeepCurrent",
+        "currentFacing": "East",
+        "ct": 15,
+        "enemyLiving": true,
+        "actorPosition": [
+          1,
+          1
+        ],
+        "enemyPosition": [
+          2,
+          2
+        ]
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "InconsistentCompletion",
+        "unchanged": true,
+        "events": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "finish-after-KO-fixed",
+      "family": "proposed-finish",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "pending": true,
+        "identityMatches": true,
+        "snapshotMatches": true,
+        "lineageMatches": true,
+        "revisionMatches": true,
+        "actorMatches": true,
+        "active": false,
+        "revisionAvailable": true,
+        "choice": "South",
+        "currentFacing": "East",
+        "ct": 15,
+        "enemyLiving": false,
+        "actorPosition": [
+          1,
+          1
+        ],
+        "enemyPosition": [
+          2,
+          2
+        ]
+      },
+      "expected": {
+        "accepted": true,
+        "facing": "South",
+        "pending": false,
+        "ct": 15,
+        "events": [
+          "FacingSettled"
+        ],
+        "receiptConsumed": true,
+        "ctAppliedAgain": false,
+        "rngDraws": 0
+      }
+    }
+  ],
+  "implementationCases": [
+    {
+      "id": "VME-001",
+      "description": "Additive explicit path Move entry/result; no legacy method or policy activation",
+      "status": "unexecuted"
+    },
+    {
+      "id": "VME-002",
+      "description": "Pending barrier and revision guard precede command/query work; nulls are programmer errors",
+      "status": "unexecuted"
+    },
+    {
+      "id": "VME-003",
+      "description": "Known active actor and unused Move required; ActionTaken alone permits Move",
+      "status": "unexecuted"
+    },
+    {
+      "id": "VME-004",
+      "description": "Whole current certified movement profile and explicit cost1; reject unsupported/post-KO admission",
+      "status": "unexecuted"
+    },
+    {
+      "id": "VME-005",
+      "description": "Rebuild route from current snapshot; no caller path/cached outcome accepted as authority",
+      "status": "unexecuted"
+    },
+    {
+      "id": "VME-006",
+      "description": "Stay/occupied/outside/unreachable/over-budget requests reject with no partial result",
+      "status": "unexecuted"
+    },
+    {
+      "id": "VME-007",
+      "description": "Exact packed paths/heading for both actors, cardinal/diagonal/detour routes and collection orders",
+      "status": "unexecuted"
+    },
+    {
+      "id": "VME-008",
+      "description": "Publish position and real path-facing before Move choice and any completion event",
+      "status": "unexecuted"
+    },
+    {
+      "id": "VME-009",
+      "description": "Move-first retains active turn/no receipt; Act-first Move ends it and caps CT once",
+      "status": "unexecuted"
+    },
+    {
+      "id": "VME-010",
+      "description": "Fully settled snapshot/revision/lineage bound before issuing automatic facing receipt",
+      "status": "unexecuted"
+    },
+    {
+      "id": "VME-011",
+      "description": "Pending blocks all commands; same-face Finish consumes once; CT/RNG not repeated",
+      "status": "unexecuted"
+    },
+    {
+      "id": "VME-012",
+      "description": "Old/stale/cross-run/cross-branch/wrong actor/earlier-turn receipts cannot authorize completion",
+      "status": "unexecuted"
+    },
+    {
+      "id": "VME-013",
+      "description": "Post-push coordinates/current occupancy; KO does not widen query or bypass authored terminal host",
+      "status": "unexecuted"
+    },
+    {
+      "id": "VME-014",
+      "description": "Post-KO pending Fixed/Keep allowed as existing facing-only completion; chooser requires living enemy",
+      "status": "unexecuted"
+    },
+    {
+      "id": "VME-015",
+      "description": "Zero-draw Move works at exhausted RNG; all unrelated stats/ticks/profiles and opponent facing survive",
+      "status": "unexecuted"
+    },
+    {
+      "id": "VME-016",
+      "description": "Revision max rejects atomically; last available revision and subsequent Finish limits are explicit",
+      "status": "unexecuted"
+    },
+    {
+      "id": "VME-017",
+      "description": "Prefix/suffix replay and rejection preserve immutable state/events/path/receipt semantics",
+      "status": "unexecuted"
+    },
+    {
+      "id": "VME-018",
+      "description": "No original animation/cancel-preview/post-move effects/AI preview mutation; legacy artifacts and APIs preserved",
+      "status": "unexecuted"
+    }
+  ]
+}
