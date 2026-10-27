@@ -44,7 +44,30 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
-**Current completion (2026-10-27): ZOD-127 is complete**, the additive
+**Current completion (2026-10-27): ZOD-128 is complete**, the
+[supplied-candidate comparison contract](architecture/zod-128-ai-comparison-contract.md).
+Original comparison uses candidate marker 0, signed priority, independent hit,
+then strictly lower baseline foe proximity; exact ties retain the incumbent.
+The source cache counts only eligible imminent enemies, clips Manhattan distance
+at 10, writes scenario-0 reachable cells only and retains other old bytes. The
+actor delay is a byte derived after turn-start CT modulo, not assumed zero. The
+closed proposal builds private cache values on the original state, freshly scores
+incumbent then challenger with carried RNG, and never turns absent score into 0.
+Pair rejection rollback is an explicit managed proposal, distinct from original
+supported search behavior. **452 Python tests pass** (20 new); 60 classified
+vectors in 5 families and all 14 ACM cases remain description-only/unexecuted in
+production. Fresh clean reference remains
+11464943bbdbd2a0af022d90cb7f10455cf911df; final audits match at 12 files / 27
+functions, 110 preserved artifacts and 31 managed baselines. The old score audit
+also passes its two prepared metadata checks. No C# change or .NET rerun; last
+implementation validation remains ZOD-127's 3,957 .NET / 432 Python tests. See
+[evidence](evidence/ai/comparison-contract-v1.json). Existing APIs/evidence and
+owner editor drafts (Common/Ability/Item) stay untouched. **Recommended next:
+ZOD-129**, implement only this pair wrapper and execute ACM-001..014. No full
+search/list/lottery/policy/interface or authoritative RNG activation. Editor UI
+and ZOD-106 stay deferred.
+
+**ZOD-127 implementation checkpoint (historical):** the additive
 [closed sword scoring companion](behavior/sword-ai-candidate-scoring.md).
 It validates exact per-unit managed certificates, invokes ZOD-125 once and scores
 the fresh result with absolute signed priority, independent hit percent and full
@@ -2199,7 +2222,7 @@ ranking/policy/interface. Owner Common/Ability drafts remain untouched and exclu
 
 ### ZOD-128 — Specify supplied-candidate comparison and the proximity tie
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-116, ZOD-121, ZOD-127
+**Type:** Spike · **Priority:** P3 · **Status:** Done · **Depends on:** ZOD-116, ZOD-121, ZOD-127
 
 **Scope:** Trace the original comparison of two supplied ordinary sword candidates
 after scoring, including decided marker, signed priority, hit percent and the
@@ -2221,6 +2244,57 @@ implementation follow-up. Preserve old APIs/fixtures/evidence; no production
 comparator, general search/roster/rank list/lottery/policy/interface/decision runner,
 authoritative RNG commit, generic serializer, content/save/native/editor activation
 or C runtime. Editor UI and ZOD-106 remain deferred.
+
+**Evidence (2026-10-27):** [Contract](architecture/zod-128-ai-comparison-contract.md),
+[60 vectors](fixtures/behavior/ai-comparison-contract-v1.json) and
+[source/evidence audit](evidence/ai/comparison-contract-v1.json). Fresh clean
+11464943bbdbd2a0af022d90cb7f10455cf911df, 12 source files / 27 functions.
+Thirty-eight isolated source kernels and 22 normalized pair proposals distinguish
+candidate/chosen markers, signed rank/hit/proximity order, strict ties, byte delay,
+eligible foes, masked stale cache cells and diagnostic roster wrap. The closed
+pair computes baseline destination cache once, executes two fresh scores with
+carried RNG and keeps None distinct from zero. Normalized actor IDs/slot order,
+collection reversal, both orders, lethal cache, NotValuable and exact MAX/late
+atomic failure are covered as descriptions, not production execution. All 452
+Python tests pass (20 new); repeated final audits match with 110 preserved and
+31 managed files. Existing prepared score metadata still passes. No C#/.NET
+rerun, original/C/native execution or runtime activation. ACM-001..014 remain
+unexecuted; owner Common/Ability/Item drafts excluded. **Next: ZOD-129** below.
+
+### ZOD-129 — Implement supplied sword candidate pair comparison
+
+**Type:** Feature · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-128
+
+**Scope:** Add the opt-in SwordAiCandidateComparison companion over one original
+snapshot, same actor/opponent, nullable weapon, shared candidate/score profiles,
+explicit fresh decision-baseline certificate and supplied decision RNG. Build
+private foe proximity at both scenario-0-certified destinations, freshly score
+incumbent then challenger once each and return hypothetical comparison data.
+
+**Acceptance criteria:** Execute ACM-001..014 without rewriting the historical
+inventory. Reject unsupported certificates/identity pairs/movement geometry or
+unwritten destinations before score calls. Derive membership through existing
+FlatOrdinaryMovement and delay/eligibility from original living None/Critical
+CT/Speed/team facts, with source actor-byte semantics. Use marker 0, signed
+priority, independent hit, then strictly lower baseline proximity; equal ties
+retain incumbent. Use final destination for both orders and preserve initially
+living eligible foe even after projected KO/clock changes. No public cached score
+or proximity input, no score replay, sentinel-as-absence or fabricated zero score.
+Retain supported evaluation RNG through both calls, including losing/NotValuable
+outcomes; scoring/cache/comparison adds no extra draws. One score beats absence,
+two NotValuable returns NoScoredCandidate. First failure skips second; late second
+failure atomically rejects the pair with original pair RNG, no partial payload,
+failed index and original typed nested reason. Preserve replay/input/branch state,
+MAX budget, both actor identities/TieKey orders and reversed collections. Materialize
+normalized descriptions with real maps, ordinary profiles, front/back evade and
+same-weapon damage; do not pass normalized formula/membership claims as production
+inputs. Run locked restore, Release build, full .NET/Python and source/history/data
+audits. Preserve all old APIs/evidence and owner drafts.
+
+No enumeration, move-only baseline/ranked-list insertion, lottery, roster/policy,
+replaceable interface, authoritative decision RNG commit, commands/receipts,
+generic serializer, content/save/native/editor activation or C runtime. Editor
+UI and ZOD-106 remain deferred.
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 

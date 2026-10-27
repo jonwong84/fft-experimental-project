@@ -2,6 +2,49 @@
 
 ## Current handoff — 2026-10-27
 
+**ZOD-128 is complete.** The source/design contract compares two supplied sword
+candidates by marker, signed priority, independent hit and strictly lower foe
+proximity. Candidates use marker 0; chosen marker 255 occurs later. Exact ties
+keep the incumbent. Source cache eligibility requires a stable enemy acting no
+later than the actor, with out-of-play/restricting status checks. Actor delay is
+stored as a byte after CT has already been reduced at turn start; it is not zero
+just because the unit has the current turn. None/Critical ordinary delays fit
+0..100. Cache uses clipped Manhattan contribution, not raw distance; only scenario-0
+reachable cells are reset, so missing membership cannot imply zero.
+
+The proposed additive comparison wrapper takes original inputs and explicit fresh
+decision-baseline provenance, derives both valid destinations via unchanged flat
+movement, builds private baseline cache once, then freshly scores incumbent and
+challenger with forward decision RNG. Projected Dead/clock changes do not rebuild
+that baseline cache. No external score/cache input; no score replay or command
+authority. One Scored beats absence; two NotValuable has no retained candidate,
+with both streams' draws retained. Pair rejection returns original pair RNG and
+no partial payload, preserving failed index/reason; this is a managed unsupported/
+overflow transaction proposal, not original C search rewind behavior.
+
+Fresh clean read-only reference remains 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Twelve source files / 27 functions underpin 60 classified vectors: 38 isolated
+source kernels and 22 normalized pair descriptions. **452 Python tests pass**
+(20 new); final repeated source/history audits match with 110 preserved artifacts
+and 31 managed baselines. Old score/prepared-data audit also passes two metadata
+records. No C# change or .NET rerun; last implementation validation remains
+ZOD-127's **3,957 .NET / 432 Python tests**. ACM-001..014 remain unexecuted in
+production. No original/C/emulator/native execution or runtime activation. Owner
+Common/Ability drafts were present at entry; all Common/Ability/Item drafts,
+including additions since the prior milestone, are untouched and excluded.
+
+See [contract/reproduction](architecture/zod-128-ai-comparison-contract.md),
+[vectors](fixtures/behavior/ai-comparison-contract-v1.json) and
+[evidence](evidence/ai/comparison-contract-v1.json). **Recommended next: ZOD-129**,
+implement this pair wrapper only and execute ACM-001..014 with actual managed
+geometry/formula/identity adapters, including front/back hit variation and same
+weapon damage. No general search/list/lottery/roster/policy/interface or authoritative
+RNG commit yet. Editor UI and ZOD-106 remain deferred. Reports: scratch/ai-comparison-128-*;
+builder scratch/build_ai_comparison_128.py resets validation to pending and must
+be followed by evidence finalization after tests/audits.
+
+## ZOD-127 implementation checkpoint (historical)
+
 **ZOD-127 is complete.** SwordAiCandidateScoring.Evaluate validates explicit per-
 unit score facts, invokes unchanged ZOD-125 once, and scores the fresh projection.
 It returns absolute signed priority, independent positive hit percent and original
