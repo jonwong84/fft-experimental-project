@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-135 (source/design).** The supplied-scenario scan ZOD-131 is complete.
-There are 32 open tickets below. The 103 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-136 (implementation).** The baseline/list source trace ZOD-135 is complete.
+There are 32 open tickets below. The 104 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -27,23 +27,24 @@ provide detail. This file supersedes archived priorities and next-task advice.
   or old test counts here. Keep the handoff current rather than chronological.
 
 
-## Next bounded source/design milestone
+## Next bounded implementation milestone
 
-### ZOD-135 — Specify ordinary-sword movement baseline and ranked-list admission
+### ZOD-136 — Implement one certified movement-only AI baseline evaluation
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-131
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-135
 
-Trace how one ordinary Attack scan's best enters the original ranked action list.
-Pin movement-only baseline construction, fresh/inherited best ownership, insertion
-conditions/order, duplicate handling, capacity, numeric widths and any RNG work.
-Define the smallest certified C# follow-up using original inputs and private fresh
-evaluations. Keep score absence distinct from zero and existing scan RNG ownership intact.
-Deliver a source-backed contract, explicit limits and focused acceptance cases.
-Lottery, general scenario/ability/roster search, the decision interface, authoritative
-commands/RNG, native activation and editor work remain separate. Start from the
-[completed scan](behavior/sword-ai-candidate-scan.md) and recheck the reference HEAD.
+Project and score one supplied movement-only baseline destination from original
+two-opponent state, explicit source-context certificates and decision RNG. Validate
+the original destination/fresh score-cell provenance; preserve unused-ACT CT refunds,
+first-ready clock order, unchanged HP/status, absolute signed score and hit=100.
+Consume one upkeep draw and no sword-formula draws in the admitted effect-free slice.
+Reject unsupported/exhausted queries atomically; expose immutable hypothetical
+diagnostics without live state/RNG changes or trusted caller-populated outcomes.
 
-No production API or runtime activation is required for this investigation.
+Follow the [ZOD-135 contract and focused cases](architecture/zod-135-ai-rank-admission.md#smallest-implementation-follow-up-zod-136).
+Ranked-list composition follows separately after this helper is validated. Full
+scenario/ability search, lottery, decision interface, commands and native/editor
+activation remain outside this milestone. Recheck the read-only reference HEAD.
 
 ## Existing validation gates
 

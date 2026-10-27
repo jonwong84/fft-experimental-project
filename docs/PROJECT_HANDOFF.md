@@ -6,9 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-135: source/design ordinary-sword movement-baseline and ranked-list admission.**
-Trace how the [completed scan](behavior/sword-ai-candidate-scan.md) fits the original
-baseline/best/list lifecycle before selecting its next bounded C# contract.
+**ZOD-136: implement one certified movement-only AI baseline evaluation.**
+The [completed ZOD-135 source contract](architecture/zod-135-ai-rank-admission.md)
+pins baseline/best/list ownership. First implement a fresh supplied-destination
+baseline query with unused-ACT CT refund, one upkeep draw, absolute score and
+atomic failure. Require original scenario-0 destination/fresh score-cell provenance.
+Compose it with scans/private ranked slots in a later bounded milestone.
 
 Opt-in helpers now project, score, compare and scan candidates in one certified
 scenario. ZOD-131 preserves source emission order, evaluates each candidate once
@@ -26,6 +29,10 @@ managed roster size. The contract records the erratum without rewriting old evid
 
 - Latest implementation: ZOD-131, [scan API and evidence](behavior/sword-ai-candidate-scan.md).
   All ASN-001..016 have current coverage; historical proposal inventories stay unchanged.
+- Latest source/design: ZOD-135; four files / 21 functions verified at the clean
+  reference below. Eight focused offline rank/CT tests pass; full Python suite
+  **485 tests**. No C# changes or original/C execution in this milestone.
+  Source report: ignored `scratch/ai-rank-135-source-audit.json`.
 - Last complete validation: locked restore, zero-warning/error Release build,
   **3,608 .NET cases / 477 Python tests**, including 60 scan cases. Fresh source/
   data audit: 16 reference files, 55 functions, three prepared metadata records,

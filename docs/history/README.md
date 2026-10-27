@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 103 entries index completed bounded work; they do not mean the full game is complete.
+These 104 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -126,3 +126,4 @@ These 103 entries index completed bounded work; they do not mean the full game i
 - [ZOD-131 — Implement one-scenario ordinary sword candidate scan](../behavior/sword-ai-candidate-scan.md)
 - [ZOD-132 — Separate current behavioral tests from historical checkpoint audits](2026-10-27/BACKLOG.md#zod-132--separate-current-behavioral-tests-from-historical-checkpoint-audits)
 - [ZOD-133 — Consolidate repeated tests and retire obsolete milestone checks](2026-10-27/BACKLOG.md#zod-133--consolidate-repeated-tests-and-retire-obsolete-milestone-checks)
+- [ZOD-135 — Specify ordinary-sword movement baseline and ranked-list admission](../architecture/zod-135-ai-rank-admission.md)
