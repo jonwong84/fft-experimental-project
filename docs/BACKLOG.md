@@ -44,7 +44,26 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
-**Current completion (2026-10-27): ZOD-126 is complete**, the
+**Current completion (2026-10-27): ZOD-127 is complete**, the additive
+[closed sword scoring companion](behavior/sword-ai-candidate-scoring.md).
+It validates exact per-unit managed certificates, invokes ZOD-125 once and scores
+the fresh result with absolute signed priority, independent hit percent and full
+ordered contributions. Default/missing/unknown facts reject before projection;
+there is no external/cached outcome entry or additional score RNG/tick work.
+Locked restore, zero-warning/error Release build and **3,957 .NET / 432 Python
+tests pass**. All 14 ASC cases have coverage in 133 new managed cases across 15
+methods. Thirteen normalized proposals execute the wrapper; the MP proposal is
+rejected at existing live-model construction. Ten post-state kernels run in 40
+actor/order cases. Fresh clean reference remains
+11464943bbdbd2a0af022d90cb7f10455cf911df; source/data/history audits match at 11
+files / 14 functions. New [evidence](evidence/ai/score-implementation-v1.json)
+fingerprints 106 unchanged artifacts. Old APIs/fixtures/evidence and owner
+Common/Ability drafts remain untouched. **Recommended next: ZOD-128**, trace
+comparison of two supplied candidates and the original proximity tie before
+adding that stage. No full search/ranking/policy/interface/authoritative RNG
+activation; editor UI and ZOD-106 stay deferred.
+
+**ZOD-126 source/design checkpoint (historical):** the
 [closed candidate priority scoring contract](architecture/zod-126-ai-score-contract.md).
 Priority is the absolute allied-minus-hostile projected HP/status/equipment score;
 hit percent remains separate. Both non-monster units' seven unchanged equipment
@@ -2133,7 +2152,7 @@ historical artifacts remain untouched. **Next: ZOD-127** below.
 
 ### ZOD-127 — Implement closed sword candidate priority scoring
 
-**Type:** Implementation · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-126
+**Type:** Implementation · **Priority:** P3 · **Status:** Done · **Depends on:** ZOD-126
 
 **Scope:** Add the opt-in SwordAiCandidateScoring companion and immutable scoring
 certificate/result/contribution types from ZOD-126. Validate explicit stable human
@@ -2158,6 +2177,50 @@ repeated source/data/history audits. No comparison/ranking/lottery/search/roster
 policy/interface/authoritative decision runner or RNG commit, general statuses,
 content/save/native/editor activation or C runtime. Editor UI and ZOD-106 remain
 deferred.
+
+**Completion (2026-10-27):** The additive SwordAiCandidateScoring companion and
+immutable profile/certificate/result/contribution types implement the
+[closed behavior](behavior/sword-ai-candidate-scoring.md). Exact ClosedProfile
+facts are explicit managed assertions, not original flags. One fresh projection
+call site, no external-result entry and no score-stage RNG preserve provenance
+without old API changes. All 14 ASC cases pass in 133 new managed cases across 15
+methods; 13 normalized proposals execute the wrapper and the unrepresentable MP
+proposal is rejected by the existing model constructor. Ten isolated post-state
+kernels are materialized in 40 cases with explicit Dead-state adapters. Locked
+restore, zero-warning/error Release build and 3,957 .NET / 432 Python tests pass.
+A test factory collection-type build error was corrected; production unchanged.
+Focused133/full 3,957 executable cases pass. Three source/data/history audits match
+at 11 files / 14 functions, 101 historical and 29 managed baseline files plus two
+metadata records. New [evidence](evidence/ai/score-implementation-v1.json) fingerprints
+106 preserved artifacts and records actual coverage separately from old inventories.
+No original/C/native execution, command/scenario/content/save/editor activation or
+ranking/policy/interface. Owner Common/Ability drafts remain untouched and excluded.
+**Next: ZOD-128** below.
+
+### ZOD-128 — Specify supplied-candidate comparison and the proximity tie
+
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-116, ZOD-121, ZOD-127
+
+**Scope:** Trace the original comparison of two supplied ordinary sword candidates
+after scoring, including decided marker, signed priority, hit percent and the
+foe-proximity tie. Specify the bounded managed input/provenance/cache/RNG contract
+before implementing comparison. No enumeration or ranked-list/lottery/command
+selection activation.
+
+**Acceptance criteria:** Freshly pin callers, field widths/order, strict/equal
+behavior and required proximity-cache construction on the closed two-opponent
+flat profile. Keep candidate marker 0 distinct from the later chosen marker 255.
+Certify needed original relation/geometry/cache fields; do not substitute an
+untraced Manhattan-distance approximation. Separate comparison's own RNG needs
+from evaluation/cache creation, including carried draws for discarded candidates.
+Define how two fresh scored results, rejection and NotValuable are admitted,
+without trusting a forged record as command authority or ranking absent score 0.
+Cover actor/collection permutations, both action orders, equal priority/hit,
+proximity/equal ties, replay and atomicity with classified vectors and one bounded
+implementation follow-up. Preserve old APIs/fixtures/evidence; no production
+comparator, general search/roster/rank list/lottery/policy/interface/decision runner,
+authoritative RNG commit, generic serializer, content/save/native/editor activation
+or C runtime. Editor UI and ZOD-106 remain deferred.
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 

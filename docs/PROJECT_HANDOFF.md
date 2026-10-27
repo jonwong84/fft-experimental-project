@@ -2,6 +2,45 @@
 
 ## Current handoff — 2026-10-27
 
+**ZOD-127 is complete.** SwordAiCandidateScoring.Evaluate validates explicit per-
+unit score facts, invokes unchanged ZOD-125 once, and scores the fresh projection.
+It returns absolute signed priority, independent positive hit percent and original
+TieKey-order HP/status/equipment/signed/running contributions. The four managed
+assertions certify human classification, seven unchanged slots, stable opponents
+and zero current+baseline Golem. Exact ClosedProfile is required: missing/default/
+unknown/additional bits or identity mismatch reject before projection. MP 0 remains
+the existing live-model boundary. These are caller assertions for unrepresented
+original data; a sword ID never proves them.
+
+Rejected/NotValuable has no score. Projection rejection reasons and supported RNG
+progress are retained verbatim; scoring adds no draws/ticks/choices, even at MAX
+draw count. No cached/external result input, receipt, rank selection or live RNG
+commit. Lethal outcomes stay admitted with Dead equipment and corpse upkeep.
+
+Fresh clean read-only reference remains 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Locked restore, zero-warning/error Release build and **3,957 .NET / 432 Python
+tests pass**. All 14 ASC cases pass in 133 new cases across 15 methods. Thirteen
+normalized proposals execute the wrapper; the MP row fails at existing model
+construction. Ten post-state kernels are materialized in 40 actor/order cases.
+A test factory enumerable/list build error was fixed; production unchanged.
+Final focused 133/full 3,957 executable tests pass. Three source/data/history audits
+match at 11 files / 14 functions, 101 preserved and 29 managed baseline files plus
+two metadata records. New evidence fingerprints 106 unchanged historical artifacts;
+old inventories remain unchanged. No original/C/emulator/native execution or
+scenario/content/save/editor activation. Owner Common/Ability drafts stay untouched
+and excluded; SDK builds included them.
+
+See [API/reproduction](behavior/sword-ai-candidate-scoring.md) and
+[implementation evidence](evidence/ai/score-implementation-v1.json).
+**Recommended next: ZOD-128**, source/design the comparison of two supplied
+candidates and the original foe-proximity tie. Trace cache construction and RNG
+ownership without inventing distance shortcuts; no enumeration/rank-list/lottery/
+policy/interface/authoritative RNG activation yet. Editor UI and ZOD-106 remain
+deferred. Reports/TRX: scratch/ai-score-127-*; builder
+scratch/build_ai_score_127_evidence.py.
+
+## ZOD-126 source/design checkpoint (historical)
+
 **ZOD-126 is complete.** The closed candidate scoring source/design contract
 defines absolute projected allied-minus-hostile HP/status/equipment priority and
 independent hit percent. Seven unchanged entries contribute 357 per human even
