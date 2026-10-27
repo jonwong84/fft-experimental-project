@@ -2,6 +2,52 @@
 
 ## Current handoff — 2026-10-27
 
+**ZOD-123 is complete.** FacingTurnPathMovement.MoveAlongPath is the explicit
+confirmed path entry over existing FacingTurnState. It stages command/choice
+checks and the current certified query privately, then publishes actor tile and
+real path heading, movement/path events, Move choice and possible turn end as one
+immutable result. Pending receipts bind that fully settled snapshot, actor, new
+revision and existing lineage. Rejections retain exact input state with no events
+or partial path. RNG/ticks/unrelated fields remain unchanged; post-KO Move is
+outside the living-opponent profile. Existing FinishFacing handles path receipts.
+
+**API placement adjustment:** the source proposal named FacingTurnBattle.MoveAlongPath;
+the implementation uses the additive FacingTurnPathMovement companion to retain
+the original wrapper file and historical whole-file audit baselines unchanged.
+State/receipt/validation/event semantics are retained. No old method, policy enum,
+fixture, verifier or fingerprint was rewritten to mask a change.
+
+Fresh clean read-only reference remains 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Locked isolated restore and zero-warning/error Release build pass; **3,696 .NET /
+396 Python tests pass**, including 129 new managed cases across 17 methods.
+All 18 VME cases pass. Thirty-six cases execute nine positive normalized Move
+proposals, 12 execute completion proposals, and 34 execute 17 earlier selected
+paths for both actors. Public Move/Attack orders, actual pushes/KO, current path
+rebuilding, full receipt settlement, pending barriers, stale/cross-branch/run/
+earlier-turn receipts, same-face completion, limits and replay are covered.
+Focused and full runs passed on the first run. Source inventories stay historical.
+
+Two final source audits match the before report: 13 files / 33 functions, 82
+historical and 24 managed baseline files. New evidence fingerprints 88 unchanged
+artifacts. No original/C/emulator/native execution or additional manual headless
+proof; no content/scenario/save/editor activation. Three owner-authored untracked
+Common classes remain untouched and excluded; the SDK build included those drafts.
+No path animation/undo UI, generic movement effects, corpse/death scheduling or
+AI preview mutation. The source profile still requires caller certification for
+unrepresented post-move/script effects.
+
+See [API/reproduction](behavior/confirmed-path-movement.md) and
+[implementation evidence](evidence/ai/voluntary-move-implementation-v1.json).
+**Recommended next: ZOD-124**, source/design one supplied sword AI candidate's
+coordinate-only placement, turn-end/CT simulation and copy/restore/RNG ownership.
+Keep projected KO/status admission explicit and separate from real command/query
+limits; no search or policy activation yet. Full original AI/roster/decision RNG/
+interface and general terrain remain future work; editor UI and ZOD-106 stay
+deferred. Reports/builds/TRX: scratch/voluntary-move-123-*; builder
+scratch/build_voluntary_move_123_evidence.py.
+
+## ZOD-122 source/design checkpoint (historical)
+
 **ZOD-122 is complete**, the source/design contract for confirmed voluntary Move.
 Original walking writes path-facing and tile before confirmation consumes Move;
 the second choice can end the turn before later WaitDirection. The proposed

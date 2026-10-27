@@ -44,6 +44,27 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Current completion (2026-10-27): ZOD-123 is complete**, the additive
+[confirmed flat path Move boundary](behavior/confirmed-path-movement.md).
+Actual entry is FacingTurnPathMovement.MoveAlongPath: a companion preserves the
+existing FacingTurnBattle file and whole-file historical audits while retaining
+the designed state/receipt/validation/event contract. It rebuilds the current
+certified path, publishes real heading before Move completion, and issues receipts
+against the fully settled snapshot. Old Move/query/facing/scenario paths remain
+unchanged. Fresh clean decomp remains 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Locked restore, zero-warning Release build and **3,696 .NET / 396 Python tests
+pass** (129 new managed). All 18 VME cases pass; 36 cases execute nine positive
+Move proposals, 12 execute completion proposals, and 34 execute 17 earlier selected
+paths for both actors. Repeated source/history audits match; 88 artifacts are
+fingerprinted unchanged. See [evidence](evidence/ai/voluntary-move-implementation-v1.json).
+No original/C/native execution or scenario/content/save/editor activation. Owner
+editor drafts stay uncommitted. **Recommended next: ZOD-124**, source/design one
+closed sword AI candidate's coordinate-only placement and turn-end/CT boundary,
+including copy/restore and RNG ownership. Full search/roster/policy/interface and
+decision RNG runner remain separate; editor UI and ZOD-106 stay deferred.
+
+### ZOD-122 source/design checkpoint (historical)
+
 **Current completion (2026-10-27): ZOD-122 is complete**, the
 [confirmed voluntary Move execution contract](architecture/zod-122-voluntary-move-contract.md).
 The proposed additive MoveAlongPath method rebuilds the current certified path,
@@ -1886,7 +1907,7 @@ implementation follow-up.
 
 ### ZOD-123 — Implement the confirmed flat path Move boundary
 
-**Type:** Feature · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-122
+**Type:** Feature · **Priority:** P3 · **Status:** Complete · **Depends on:** ZOD-122
 
 **Scope:** Add FacingTurnBattle.MoveAlongPath, a new typed PathMoveResult and a
 VoluntaryPathCompletedEvent, using the current certified query and existing
@@ -1915,6 +1936,42 @@ No activation in content/scenario/save/native/editor paths, full path animation/
 cancel flow, general post-move effects or corpse/death movement, AI preview
 mutation, candidate clock/search/roster/interface/decision RNG runner. Editor UI
 redesign and ZOD-106 remain deferred.
+
+**Evidence (2026-10-27):** [API/reproduction](behavior/confirmed-path-movement.md)
+and [completed VME mapping](evidence/ai/voluntary-move-implementation-v1.json).
+All 18 cases pass in 129 new managed cases; full locked restore/zero-warning
+Release build and 3,696 .NET / 396 Python tests pass. Actual API placement is the
+additive FacingTurnPathMovement companion, preserving FacingTurnBattle and every
+legacy source baseline unchanged. Same contract, fresh paths and real heading
+before bound receipts; both public combat orders, push/KO, same-facing completion,
+counter limits, pending barriers and replay are covered. Two source audits match
+the before report at 13 files / 33 functions; 88 legacy/source artifacts are
+fingerprinted unchanged. No runtime activation outside the explicit entry; owner
+editor files and historical inventories remain untouched.
+
+### ZOD-124 — Specify one closed sword AI candidate's placement and clock boundary
+
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-117, ZOD-121, ZOD-123
+
+**Scope:** Trace one prevalidated ordinary sword candidate through original AI
+coordinate-only placement, action-projection result, simulated turn-end/CT work
+and restoration. Specify the state and RNG ownership needed to compose existing
+formula/movement queries into a bounded candidate evaluator. Work from a supplied
+candidate, keeping enumeration/ranking and authoritative execution outside scope.
+
+**Acceptance criteria:** Freshly pin read-only source, callers, copied/restored
+fields, arithmetic widths/order, scratch state and all random draws. Distinguish
+Move-before-Act and Act-before-Move, preserve AI preview's incoming facing, and
+identify which CT/choice/status/HP changes are hypothetical versus decision RNG
+progress that must survive a discarded candidate. Define projected Critical/KO,
+terminal/restricted/unsupported cases explicitly; do not silently drop candidates
+or apply the real movement query's living-opponent rule to projected outcomes.
+Produce independently checkable classified vectors, rejection/atomicity/replay
+contracts and one bounded implementation follow-up. No production candidate
+evaluator/clock, search/roster/policy/interface/decision runner, generic serializer,
+original runtime/C dependency, general terrain or native/content/save/editor
+activation. Existing APIs/fixtures/implementation evidence remain unchanged;
+editor UI and ZOD-106 stay deferred.
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 
