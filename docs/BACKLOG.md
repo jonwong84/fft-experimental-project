@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-140 (implementation).** The selection contract ZOD-139 is complete.
-There are 32 open tickets below. The 108 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-141 (source/design).** The hypothetical selector ZOD-140 is complete.
+There are 32 open tickets below. The 109 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -27,26 +27,25 @@ provide detail. This file supersedes archived priorities and next-task advice.
   or old test counts here. Keep the handoff current rather than chronological.
 
 
-## Next bounded implementation milestone
+## Next bounded source/design milestone
 
-### ZOD-140 — Select a hypothetical Attack or movement-only plan after fresh composition
+### ZOD-141 — Specify original movement-scenario derivation for one sword opponent
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-139
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-140
 
-Implement the [ZOD-139 contract and SLC-001..007](architecture/zod-139-ai-selection-contract.md).
-Own one fresh ZOD-138 composition, then stream the eight-slot source lottery:
-one or eight actual draws, modulo comparison, zero-hit visits and all-failed
-use-first behavior. Empty ranking returns MoveOnly at D0 with no additional
-draws/scoring. Preserve candidate order/target and deferred ChooseAtWait hint;
-do not apply projected damage or consume live choices.
+Trace a bounded original general-search movement branch for the existing flat
+two-opponent ordinary-sword slice. Derive scoring mask S and destinations D0/D1
+from original state/known target facts instead of requiring supplied cells. Pin
+target-distance/reach inputs, filtering/fallback, actor insertion timing, priority/
+proximity/distance/last-tie ordering, widths and any random reach roll. Resolve
+fresh versus unvisited score-grid provenance; choose the smallest supported branch.
 
-Require explicit terminal Attack entry, no Defend support and fresh ordinary
-selection-default certificates before any work. Return immutable plan/diagnostics;
-any composition/lottery failure returns original whole-query RNG with no partial
-output and typed nested reason/slot. No trusted cached-result inputs. Defend,
-general ability/scenario search, decision interface, command/facing execution,
-live RNG commitment and native/editor activation remain separate. Recheck the
-read-only reference HEAD.
+Use the [completed selector](behavior/sword-ai-selection.md) and existing flat
+movement distance queries. Define fresh composition/selection ownership without
+duplicate movement scoring or skipped RNG, with concise acceptance cases and
+explicit remaining source certificates. Full target/ability/roster search,
+Defend, decision interface, command/facing execution and native/editor activation
+remain separate. Recheck the read-only reference HEAD; no production API required.
 
 ## Existing validation gates
 

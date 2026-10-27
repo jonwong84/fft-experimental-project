@@ -6,20 +6,18 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-140: implement fresh hypothetical Attack/MoveOnly selection.**
-The [ZOD-139 contract](architecture/zod-139-ai-selection-contract.md) pins lottery
-and D0 fallback. A lone positive-hit Attack is selected after one or eight draws;
-empty ranking takes eight draws then MoveOnly. Require terminal Attack entry,
-NoDefendSupport and fresh ordinary defaults. SLC-001..007 remain unexecuted C#
-proposals. Preserve deferred facing and keep commands/live RNG separate.
+**ZOD-141: source/design original movement-scenario derivation.**
+The [completed selector](behavior/sword-ai-selection.md) returns a hypothetical
+Attack or MoveOnly plan. Next trace a bounded general-search branch to derive
+S/D0/D1 from original state/known target facts, preserving scoring/RNG order and
+fresh-cell provenance. Those inputs are still supplied and certified today.
 
-ZOD-138 evaluates supplied movement mask S, reuses D0's already-scored baseline,
-then scans Attack mask S union actor using D1 and the progressed RNG. It validates
-all admission before draws and owns original-state evaluations/cache/best/list.
-The certified fresh one-pass list admits zero/one real Attack into eight slots;
-inactive/NotValuable scans, strict ties, negative/zero scores, original KO cache
-and atomic rollback are covered. Standalone scan/baseline APIs remain unchanged.
-Returned diagnostics grant no command authority or live RNG commit.
+ZOD-140 privately owns one ZOD-138 composition and the source lottery. An admitted
+Attack is selected after one/eight draws; empty ranking takes eight then MoveOnly
+at D0. New terminal-entry/no-Defend/fresh-default certificates are required. Plans
+retain deferred ChooseAtWait; no projected damage, facing or commands execute.
+Failures restore whole-query RNG without partial output. Standalone APIs remain
+unchanged. Results grant no command authority or live RNG commit.
 
 Full AI search, general multi-entry ranking/lottery, replaceable decision interface, authoritative
 commands/RNG and presentation activation remain future work. Original UNIT_SLOT_COUNT
@@ -28,14 +26,14 @@ managed roster size. The contract records the erratum without rewriting old evid
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-138, [composition API and evidence](behavior/sword-ai-composition.md).
-  CMP-001..008 have current C# coverage through 46 focused cases. No runtime activation.
-- Latest source/design: ZOD-139; five offline lottery/fallback checks, no C# changes.
-- Most recent locked restore/zero-warning-error Release build and .NET validation:
-  **3,679 cases** (ZOD-138). Latest full Python suite: **496 tests** (ZOD-139).
+- Latest implementation: ZOD-140, [selector API and evidence](behavior/sword-ai-selection.md).
+  SLC-001..007 have current C# coverage through 27 focused cases. No runtime activation.
+- Complete validation: locked restore, zero-warning/error Release build,
+  **3,706 .NET cases / 496 Python tests**, including all 3,679 prior .NET cases.
   Fresh selection source audit: eight reference files / 31 functions, clean HEAD below.
   These bounded checks do not establish complete FFT equivalence.
-  Logs/TRX/reports: ignored `scratch/ai-composition-138-*` and `scratch/ai-selection-139-*`.
+  Current .NET results: ignored `scratch/ai-selection-140-final-trx/`;
+  build/test/source logs: `scratch/ai-selection-140-*`.
   No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
   introduction proofs and synthetic world Save/Load exist. Original campaign,

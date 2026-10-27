@@ -82,7 +82,8 @@ are ignored under `scratch/ai-composition-138-*`. No original/C execution or UI 
 Use standard [build/test commands](../development/test-maintenance.md#commands);
 focused filter after building: `FullyQualifiedName~SwordAiCompositionTests`.
 
-Next trace the source lottery and movement fallback for this composed slice,
-including their draw schedule and selected payload. Full scenario/ability search,
-replaceable decision interface, authoritative commands/RNG and native/editor
-activation remain future work. Editor UI and ZOD-106 remain deferred.
+[ZOD-140 selection](sword-ai-selection.md) now privately owns this composition,
+the source lottery and no-Defend movement fallback. This standalone query still
+stops at ranked admission. Full scenario/ability search, replaceable decision
+interface, authoritative commands/RNG and native/editor activation remain future
+work. Editor UI and ZOD-106 remain deferred.
