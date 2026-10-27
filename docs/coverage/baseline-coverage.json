@@ -3714,7 +3714,7 @@
       "ownerTicket": "ZOD-009",
       "ownerArea": "Development validation",
       "status": "slice-proven",
-      "currentScope": "Grid/bounds/RNG contracts are Zodiac-owned; FFT-specific rules and persistence remain separate, with build reference guard and Relay sample.",
+      "currentScope": "Tessera owns grid/bounds/RNG contracts; Zodiac owns FFT-specific rules and persistence. The build reference guard and Relay sample cover this bounded boundary. Link maintenance on 2026-10-27 replaces the retired prototype demonstration; this is not a full inventory status audit.",
       "referenceSources": [
         {
           "path": "include/fft/unit.h",
@@ -3732,8 +3732,8 @@
       ],
       "automatedChecks": [
         {
-          "path": "tests/Zodiac.Framework.Tests/EngineIndependenceTests.cs",
-          "scope": "Existing bounded checks only; see currentScope and linked evidence."
+          "path": "Directory.Build.targets",
+          "scope": "CheckTesseraProjectBoundary rejects evaluated/imported Zodiac or FFT project references during engine builds."
         },
         {
           "path": "tests/Tessera.Engine.Tests/RelayScenarioTests.cs",

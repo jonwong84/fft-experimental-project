@@ -153,4 +153,5 @@ Repeated `--addon <path>` options validate explicitly selected additions against
 - [Ready display trace](docs/architecture/zod-083-ready-display.md) and [ordered Ready aggregate](docs/development/ready-display-transactions.md): condition-0 dispatcher/child lifetime and 28 executed Core expectations.
 - [Ready presentation policy](docs/architecture/zod-085-ready-rendering.md) and [prepared Ready preview](docs/development/prepared-ready-event.md): separate four-corner RGB5 glyph rendering, strict readiness, 32 presentation expectations and finite prepared-only Windows checks; original displayed comparison remains open.
 - [Campaign save investigation](docs/architecture/zod-067-campaign-save-state.md): persistent fields, original save entry paths, RNG lifecycles and proposed native workflow.
-- [Project handoff](docs/PROJECT_HANDOFF.md): latest checkpoint followed by historical development context.
+- [Project handoff](docs/PROJECT_HANDOFF.md): current state, next work, constraints and last validation.
+- [Planning history](docs/history/README.md): completed-ticket index and archived backlog/handoffs.

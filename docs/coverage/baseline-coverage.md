@@ -1155,7 +1155,7 @@ Next action: Record job URLs and clean-machine environment/results before markin
 
 Status: **slice-proven**; scope: **platform-replacement**; ticket: **ZOD-009**; owner area: Development validation.
 
-Grid/bounds/RNG contracts are Zodiac-owned; FFT-specific rules and persistence remain separate, with build reference guard and Relay sample.
+Tessera owns grid/bounds/RNG contracts; Zodiac owns FFT-specific rules and persistence. The build reference guard and Relay sample cover this bounded boundary. Link maintenance on 2026-10-27 replaces the retired prototype demonstration; this is not a full inventory status audit.
 
 Evidence: [docs/adr/0004-zodiac-engine-and-fft-game-boundary.md](../../docs/adr/0004-zodiac-engine-and-fft-game-boundary.md), [samples/Relay/README.md](../../samples/Relay/README.md).
 
@@ -1163,7 +1163,7 @@ Source entry points (pinned revision above; not full traces): [include/fft/unit.
 
 Current implementation: [Directory.Build.targets](../../Directory.Build.targets), [src/Tessera.Engine/GridBounds.cs](../../src/Tessera.Engine/GridBounds.cs), [src/Tessera.Engine/IDeterministicRandom.cs](../../src/Tessera.Engine/IDeterministicRandom.cs).
 
-Existing bounded checks: [tests/Zodiac.Framework.Tests/EngineIndependenceTests.cs](../../tests/Zodiac.Framework.Tests/EngineIndependenceTests.cs), [tests/Tessera.Engine.Tests/RelayScenarioTests.cs](../../tests/Tessera.Engine.Tests/RelayScenarioTests.cs).
+Existing bounded checks: [Directory.Build.targets](../../Directory.Build.targets), [tests/Tessera.Engine.Tests/RelayScenarioTests.cs](../../tests/Tessera.Engine.Tests/RelayScenarioTests.cs).
 
 Manual checkpoint (pending-original-observation): Review dependency graph and run prepared/synthetic clients with reference tools/media unavailable.
 

@@ -9,6 +9,8 @@ from pathlib import Path, PurePosixPath
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "docs/coverage/baseline-coverage.json"
 VIEW = ROOT / "docs/coverage/baseline-coverage.md"
+# Resolve open headings and completed index links without loading chronological snapshots.
+TICKET_DOCUMENTS = ("docs/BACKLOG.md", "docs/history/README.md")
 DOMAINS = ("simulation", "catalog", "campaign", "screens", "presentation", "assets", "persistence", "validation", "profiles")
 SCOPES = {"baseline", "platform-replacement", "edition-audit", "extension", "optional-interoperability"}
 
@@ -42,7 +44,8 @@ def validate(data, reference_root=None):
     require(data["reference"]["readOnly"] is True, "Reference must remain read-only")
     require(type(data["lastRecordedTests"]["runForThisInventory"]) is bool, "Test-run provenance must be explicit")
     relative_file(ROOT, data["lastRecordedTests"]["source"])
-    tickets = set(re.findall(r"^### (ZOD-\d+) —", (ROOT / "docs/BACKLOG.md").read_text(encoding="utf-8"), re.M))
+    tickets = {ticket for document in TICKET_DOCUMENTS
+               for ticket in re.findall(r"^(?:### |- \[)(ZOD-\d+) —", (ROOT / document).read_text(encoding="utf-8"), re.M)}
     seen = set()
     fields = {"id", "domain", "title", "profileScope", "ownerTicket", "ownerArea", "status", "currentScope",
               "referenceSources", "evidenceDocs", "implementationPaths", "automatedChecks", "manualCheckpoint", "openQuestions", "nextAction"}

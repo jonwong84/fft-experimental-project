@@ -16,7 +16,9 @@ ticket for a bounded proof is marked complete.
 
 ## Evidence and scope
 
-Snapshot: 2026-10-23, managed base `7990b5d` (ZOD-035 committed), read-only reference
+The [JSON](baseline-coverage.json) and generated view record this inventory's
+snapshot date and managed base. They are a dated family-level inventory, not a
+fresh audit of every implemented feature. The recorded read-only reference is
 `11464943bbdbd2a0af022d90cb7f10455cf911df` in `C:\repositories\fft_decomp`.
 Source entry points identify where to investigate; only linked behavior notes with
 their own callers/data/arithmetic traces establish a supported rule. Older notes
@@ -24,9 +26,11 @@ retain their historical reference SHAs; this inventory does not silently revalid
 them against the current checkout. File paths and source comments alone do not
 establish full semantics, reachability or an implemented feature.
 
-The latest recorded .NET baseline is **954 passing tests** from ZOD-035. These
-documentation tasks do not rerun or enlarge that suite. The inventory has its own
-structural/link/source-path checks. Neither a source-derived test nor a matching
+The [current handoff](../PROJECT_HANDOFF.md) owns the latest validation result.
+The inventory has separate structural/link/source-path checks; ticket IDs resolve
+across the active backlog and completed-ticket index. On 2026-10-27, COV-VAL-004's retired
+prototype-test link was replaced with the surviving build guard; row statuses
+and remaining gaps were not re-audited. Neither a source-derived test nor a matching
 workstation capture establishes independent original-game equivalence. The BIOS
 RNG proof has separate supplied-BIOS executable evidence; its result does not
 establish all gameplay RNG ordering. ZOD-040 also identifies a separate event RNG.

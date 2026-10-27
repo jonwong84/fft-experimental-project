@@ -1,0 +1,127 @@
+# Planning history
+
+The active [backlog](../BACKLOG.md) and [handoff](../PROJECT_HANDOFF.md) own current work.
+
+## Snapshot — 2026-10-27
+
+Captured from `dedc95acdec0fc54b0eac2be672811ab719e5af2` before planning cleanup. The [old backlog](2026-10-27/BACKLOG.md)
+contains all 134 original ticket definitions and checkpoint narratives; the
+[old handoff](2026-10-27/PROJECT_HANDOFF.md) preserves the development history.
+Links have been rebased without changing the narrative. Old instructions,
+statuses and counts are historical; individual behavior/evidence documents
+retain their own provenance. Original pre-cleanup bytes are available from Git.
+
+## Keeping current documents small
+
+- Replace the handoff with current state, next work, blockers and validation.
+- Keep open ticket acceptance summaries in the backlog; link detailed designs.
+- Add completed-ticket evidence/commit links here rather than copying reports.
+- Archive significant transitions when useful; do not create full snapshots per task.
+- Historical audits use recorded Git snapshots, not current planning-file hashes.
+
+## Completed tickets
+
+These 102 entries index completed bounded work; they do not mean the full game is complete.
+
+- [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
+- [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
+- [ZOD-003 — Trace a minimal job and ability definition slice](2026-10-27/BACKLOG.md#zod-003--trace-a-minimal-job-and-ability-definition-slice)
+- [ZOD-004 — Trace one adjacent-step height/slope eligibility rule](2026-10-27/BACKLOG.md#zod-004--trace-one-adjacent-step-heightslope-eligibility-rule)
+- [ZOD-005 — Trace FFT RNG state, arithmetic, and call ordering](2026-10-27/BACKLOG.md#zod-005--trace-fft-rng-state-arithmetic-and-call-ordering)
+- [ZOD-007 — Extract the first useful Zodiac engine slice](2026-10-27/BACKLOG.md#zod-007--extract-the-first-useful-zodiac-engine-slice)
+- [ZOD-008 — Adapt the existing FFT transition to the engine slice](2026-10-27/BACKLOG.md#zod-008--adapt-the-existing-fft-transition-to-the-engine-slice)
+- [ZOD-009 — Prove engine independence with a neutral sample and dependency check](2026-10-27/BACKLOG.md#zod-009--prove-engine-independence-with-a-neutral-sample-and-dependency-check)
+- [ZOD-010 — Implement the selected adjacent-step geometry rule](2026-10-27/BACKLOG.md#zod-010--implement-the-selected-adjacent-step-geometry-rule)
+- [ZOD-011 — Add a deterministic scenario fixture runner](2026-10-27/BACKLOG.md#zod-011--add-a-deterministic-scenario-fixture-runner)
+- [ZOD-012 — Integrate the bounded terrain-cost policy explicitly](2026-10-27/BACKLOG.md#zod-012--integrate-the-bounded-terrain-cost-policy-explicitly)
+- [ZOD-013 — Implement explicit deterministic RNG state](2026-10-27/BACKLOG.md#zod-013--implement-explicit-deterministic-rng-state)
+- [ZOD-014 — Implement minimal typed job and ability definitions](2026-10-27/BACKLOG.md#zod-014--implement-minimal-typed-job-and-ability-definitions)
+- [ZOD-015 — Decide and prototype the editable content package format](2026-10-27/BACKLOG.md#zod-015--decide-and-prototype-the-editable-content-package-format)
+- [ZOD-016 — Build the shared content validator and C# authoring export](2026-10-27/BACKLOG.md#zod-016--build-the-shared-content-validator-and-c-authoring-export)
+- [ZOD-017 — Import and validate the selected original job/ability records](2026-10-27/BACKLOG.md#zod-017--import-and-validate-the-selected-original-jobability-records)
+- [ZOD-018 — Resolve content definitions into bounded battle units](2026-10-27/BACKLOG.md#zod-018--resolve-content-definitions-into-bounded-battle-units)
+- [ZOD-019 — Trace the smallest CT and turn-completion scenario](2026-10-27/BACKLOG.md#zod-019--trace-the-smallest-ct-and-turn-completion-scenario)
+- [ZOD-020 — Implement the bounded turn cycle and wait command](2026-10-27/BACKLOG.md#zod-020--implement-the-bounded-turn-cycle-and-wait-command)
+- [ZOD-021 — Trace one ordinary physical attack end to end](2026-10-27/BACKLOG.md#zod-021--trace-one-ordinary-physical-attack-end-to-end)
+- [ZOD-022 — Implement the selected attack and HP/KO transitions](2026-10-27/BACKLOG.md#zod-022--implement-the-selected-attack-and-hpko-transitions)
+- [ZOD-023 — Complete a reproducible two-unit battle scenario](2026-10-27/BACKLOG.md#zod-023--complete-a-reproducible-two-unit-battle-scenario)
+- [ZOD-024 — Select a Windows rendering/input stack using a bounded spike](2026-10-27/BACKLOG.md#zod-024--select-a-windows-renderinginput-stack-using-a-bounded-spike)
+- [ZOD-025 — Create the Windows host with a synthetic battle view](2026-10-27/BACKLOG.md#zod-025--create-the-windows-host-with-a-synthetic-battle-view)
+- [ZOD-026 — Establish an independent sprite/reference capture workflow](2026-10-27/BACKLOG.md#zod-026--establish-an-independent-spritereference-capture-workflow)
+- [ZOD-027 — Trace one sprite frame, palette, and animation selection path](2026-10-27/BACKLOG.md#zod-027--trace-one-sprite-frame-palette-and-animation-selection-path)
+- [ZOD-028 — Parse and prepare the selected sprite-frame slice](2026-10-27/BACKLOG.md#zod-028--parse-and-prepare-the-selected-sprite-frame-slice)
+- [ZOD-029 — Trace one battle map's geometry, terrain, and texture inputs](2026-10-27/BACKLOG.md#zod-029--trace-one-battle-maps-geometry-terrain-and-texture-inputs)
+- [ZOD-030 — Prepare and load the selected map slice](2026-10-27/BACKLOG.md#zod-030--prepare-and-load-the-selected-map-slice)
+- [ZOD-031 — Render one prepared map and unit pose](2026-10-27/BACKLOG.md#zod-031--render-one-prepared-map-and-unit-pose)
+- [ZOD-032 — Make the bounded battle playable through input and UI](2026-10-27/BACKLOG.md#zod-032--make-the-bounded-battle-playable-through-input-and-ui)
+- [ZOD-035 — Add a versioned save/load proof for the bounded scenario](2026-10-27/BACKLOG.md#zod-035--add-a-versioned-saveload-proof-for-the-bounded-scenario)
+- [ZOD-040 — Investigate event/script formats and community-tool interoperability](2026-10-27/BACKLOG.md#zod-040--investigate-eventscript-formats-and-community-tool-interoperability)
+- [ZOD-045 — Build the baseline feature/content coverage matrix](2026-10-27/BACKLOG.md#zod-045--build-the-baseline-featurecontent-coverage-matrix)
+- [ZOD-055 — Define the bounded executable sword content slice](2026-10-27/BACKLOG.md#zod-055--define-the-bounded-executable-sword-content-slice)
+- [ZOD-056 — Extend battle snapshots and fixtures for the bounded attack](2026-10-27/BACKLOG.md#zod-056--extend-battle-snapshots-and-fixtures-for-the-bounded-attack)
+- [ZOD-057 — Verify and import the selected retail sword and attack records](2026-10-27/BACKLOG.md#zod-057--verify-and-import-the-selected-retail-sword-and-attack-records)
+- [ZOD-058 — Represent the verified retail sword differences explicitly](2026-10-27/BACKLOG.md#zod-058--represent-the-verified-retail-sword-differences-explicitly)
+- [ZOD-064 — Decode one bounded PS1 scenario block into prepared event data](2026-10-27/BACKLOG.md#zod-064--decode-one-bounded-ps1-scenario-block-into-prepared-event-data)
+- [ZOD-065 — Execute the bounded conditional event deterministically](2026-10-27/BACKLOG.md#zod-065--execute-the-bounded-conditional-event-deterministically)
+- [ZOD-066 — Trace one real event's activation and completion prerequisites](2026-10-27/BACKLOG.md#zod-066--trace-one-real-events-activation-and-completion-prerequisites)
+- [ZOD-067 — Trace campaign save fields, lifetimes and legal checkpoints](2026-10-27/BACKLOG.md#zod-067--trace-campaign-save-fields-lifetimes-and-legal-checkpoints)
+- [ZOD-068 — Prove a synthetic world-checkpoint Save/Load service](2026-10-27/BACKLOG.md#zod-068--prove-a-synthetic-world-checkpoint-saveload-service)
+- [ZOD-069 — Add native Windows Save/Load slot navigation](2026-10-27/BACKLOG.md#zod-069--add-native-windows-saveload-slot-navigation)
+- [ZOD-071 — Prove one deterministic non-tutorial event frame wait](2026-10-27/BACKLOG.md#zod-071--prove-one-deterministic-non-tutorial-event-frame-wait)
+- [ZOD-072 — Define deterministic event task lifetimes and barrier contract](2026-10-27/BACKLOG.md#zod-072--define-deterministic-event-task-lifetimes-and-barrier-contract)
+- [ZOD-073 — Prove the scene task ledger and single barrier consumer](2026-10-27/BACKLOG.md#zod-073--prove-the-scene-task-ledger-and-single-barrier-consumer)
+- [ZOD-074 — Integrate task barriers into a separate synthetic event profile](2026-10-27/BACKLOG.md#zod-074--integrate-task-barriers-into-a-separate-synthetic-event-profile)
+- [ZOD-075 — Trace and select the first deterministic scene effect model](2026-10-27/BACKLOG.md#zod-075--trace-and-select-the-first-deterministic-scene-effect-model)
+- [ZOD-076 — Prove the logical general-banner effect and atomic scene adapter](2026-10-27/BACKLOG.md#zod-076--prove-the-logical-general-banner-effect-and-atomic-scene-adapter)
+- [ZOD-077 — Trace general-banner assets and the preparation/readiness boundary](2026-10-27/BACKLOG.md#zod-077--trace-general-banner-assets-and-the-preparationreadiness-boundary)
+- [ZOD-078 — Prepare and preview the bounded general banner](2026-10-27/BACKLOG.md#zod-078--prepare-and-preview-the-bounded-general-banner)
+- [ZOD-080 — Trace bounded DisplayConditions admission and update order](2026-10-27/BACKLOG.md#zod-080--trace-bounded-displayconditions-admission-and-update-order)
+- [ZOD-081 — Prove ordered event/banner transactions in Core](2026-10-27/BACKLOG.md#zod-081--prove-ordered-eventbanner-transactions-in-core)
+- [ZOD-082 — Prepare and execute the authored preloaded banner profile](2026-10-27/BACKLOG.md#zod-082--prepare-and-execute-the-authored-preloaded-banner-profile)
+- [ZOD-083 — Trace Ready display assets and dispatcher/child lifetime](2026-10-27/BACKLOG.md#zod-083--trace-ready-display-assets-and-dispatcherchild-lifetime)
+- [ZOD-084 — Prove the ordered Ready dispatcher/child aggregate](2026-10-27/BACKLOG.md#zod-084--prove-the-ordered-ready-dispatcherchild-aggregate)
+- [ZOD-085 — Select Ready glyph preparation and rendering policies](2026-10-27/BACKLOG.md#zod-085--select-ready-glyph-preparation-and-rendering-policies)
+- [ZOD-086 — Prepare and preview the authored Ready profile](2026-10-27/BACKLOG.md#zod-086--prepare-and-preview-the-authored-ready-profile)
+- [ZOD-087 — Validate displayed Ready glyphs against original references](2026-10-27/BACKLOG.md#zod-087--validate-displayed-ready-glyphs-against-original-references)
+- [ZOD-088 — Bind displayed Ready birth frames through interrupted checkpoints](2026-10-27/BACKLOG.md#zod-088--bind-displayed-ready-birth-frames-through-interrupted-checkpoints)
+- [ZOD-089 — Compose the prepared general-banner → Ready scene](2026-10-27/BACKLOG.md#zod-089--compose-the-prepared-general-banner--ready-scene)
+- [ZOD-090 — Trace Ready completion and battle-control ownership](2026-10-27/BACKLOG.md#zod-090--trace-ready-completion-and-battle-control-ownership)
+- [ZOD-091 — Hand the authored introduction to the playable battle](2026-10-27/BACKLOG.md#zod-091--hand-the-authored-introduction-to-the-playable-battle)
+- [ZOD-092 — Trace the original dark-screen transition worker](2026-10-27/BACKLOG.md#zod-092--trace-the-original-dark-screen-transition-worker)
+- [ZOD-093 — Implement the pure dark-screen worker and task proof](2026-10-27/BACKLOG.md#zod-093--implement-the-pure-dark-screen-worker-and-task-proof)
+- [ZOD-094 — Prepare and preview the bounded dark-screen transition](2026-10-27/BACKLOG.md#zod-094--prepare-and-preview-the-bounded-dark-screen-transition)
+- [ZOD-095 — Bind original dark-screen entry and release references](2026-10-27/BACKLOG.md#zod-095--bind-original-dark-screen-entry-and-release-references)
+- [ZOD-096 — Specify the combined dark-screen introduction](2026-10-27/BACKLOG.md#zod-096--specify-the-combined-dark-screen-introduction)
+- [ZOD-097 — Implement the pure combined dark-screen introduction](2026-10-27/BACKLOG.md#zod-097--implement-the-pure-combined-dark-screen-introduction)
+- [ZOD-098 — Prepare and preview the combined dark-screen introduction](2026-10-27/BACKLOG.md#zod-098--prepare-and-preview-the-combined-dark-screen-introduction)
+- [ZOD-099 — Audit replaceable engine and framework contracts](2026-10-27/BACKLOG.md#zod-099--audit-replaceable-engine-and-framework-contracts)
+- [ZOD-102 — Prove authored world-menu application navigation](2026-10-27/BACKLOG.md#zod-102--prove-authored-world-menu-application-navigation)
+- [ZOD-103 — Host authored world-menu navigation on Windows](2026-10-27/BACKLOG.md#zod-103--host-authored-world-menu-navigation-on-windows)
+- [ZOD-104 — Trace and specify the first executable job ability](2026-10-27/BACKLOG.md#zod-104--trace-and-specify-the-first-executable-job-ability)
+- [ZOD-105 — Prove the pure Accumulate content/action scenario](2026-10-27/BACKLOG.md#zod-105--prove-the-pure-accumulate-contentaction-scenario)
+- [ZOD-107 — Use Accumulate through the existing Windows battle controls](2026-10-27/BACKLOG.md#zod-107--use-accumulate-through-the-existing-windows-battle-controls)
+- [ZOD-108 — Trace Throw Stone targeting, damage and flat knockback](2026-10-27/BACKLOG.md#zod-108--trace-throw-stone-targeting-damage-and-flat-knockback)
+- [ZOD-109 — Prove pure Throw Stone damage and flat knockback](2026-10-27/BACKLOG.md#zod-109--prove-pure-throw-stone-damage-and-flat-knockback)
+- [ZOD-110 — Prepare Throw Stone content and a combined Basic Skill scenario](2026-10-27/BACKLOG.md#zod-110--prepare-throw-stone-content-and-a-combined-basic-skill-scenario)
+- [ZOD-111 — Use Throw Stone through prepared Windows target controls](2026-10-27/BACKLOG.md#zod-111--use-throw-stone-through-prepared-windows-target-controls)
+- [ZOD-112 — Specify the bounded sword's settled facing lifecycle](2026-10-27/BACKLOG.md#zod-112--specify-the-bounded-swords-settled-facing-lifecycle)
+- [ZOD-113 — Correct settled sword facing and migrate executable fixtures](2026-10-27/BACKLOG.md#zod-113--correct-settled-sword-facing-and-migrate-executable-fixtures)
+- [ZOD-114 — Specify flat sword critical knockback and the geometry gate](2026-10-27/BACKLOG.md#zod-114--specify-flat-sword-critical-knockback-and-the-geometry-gate)
+- [ZOD-115 — Implement the opt-in flat sword critical knockback extension](2026-10-27/BACKLOG.md#zod-115--implement-the-opt-in-flat-sword-critical-knockback-extension)
+- [ZOD-116 — Map bounded original AI decisions and the replaceable C# interface](2026-10-27/BACKLOG.md#zod-116--map-bounded-original-ai-decisions-and-the-replaceable-c-interface)
+- [ZOD-117 — Implement the bounded ordinary-sword AI formula projection](2026-10-27/BACKLOG.md#zod-117--implement-the-bounded-ordinary-sword-ai-formula-projection)
+- [ZOD-118 — Specify bounded end-of-turn facing and completion lifecycle](2026-10-27/BACKLOG.md#zod-118--specify-bounded-end-of-turn-facing-and-completion-lifecycle)
+- [ZOD-119 — Implement bounded turn-facing completion and closed-enemy choice](2026-10-27/BACKLOG.md#zod-119--implement-bounded-turn-facing-completion-and-closed-enemy-choice)
+- [ZOD-120 — Specify flat ordinary AI movement and path composition](2026-10-27/BACKLOG.md#zod-120--specify-flat-ordinary-ai-movement-and-path-composition)
+- [ZOD-121 — Implement the certified flat ordinary movement query](2026-10-27/BACKLOG.md#zod-121--implement-the-certified-flat-ordinary-movement-query)
+- [ZOD-122 — Specify the bounded voluntary Move execution adapter](2026-10-27/BACKLOG.md#zod-122--specify-the-bounded-voluntary-move-execution-adapter)
+- [ZOD-123 — Implement the confirmed flat path Move boundary](2026-10-27/BACKLOG.md#zod-123--implement-the-confirmed-flat-path-move-boundary)
+- [ZOD-124 — Specify one closed sword AI candidate's placement and clock boundary](2026-10-27/BACKLOG.md#zod-124--specify-one-closed-sword-ai-candidates-placement-and-clock-boundary)
+- [ZOD-125 — Implement one supplied closed sword AI candidate projection](2026-10-27/BACKLOG.md#zod-125--implement-one-supplied-closed-sword-ai-candidate-projection)
+- [ZOD-126 — Specify closed sword candidate priority scoring](2026-10-27/BACKLOG.md#zod-126--specify-closed-sword-candidate-priority-scoring)
+- [ZOD-127 — Implement closed sword candidate priority scoring](2026-10-27/BACKLOG.md#zod-127--implement-closed-sword-candidate-priority-scoring)
+- [ZOD-128 — Specify supplied-candidate comparison and the proximity tie](2026-10-27/BACKLOG.md#zod-128--specify-supplied-candidate-comparison-and-the-proximity-tie)
+- [ZOD-129 — Implement supplied sword candidate pair comparison](2026-10-27/BACKLOG.md#zod-129--implement-supplied-sword-candidate-pair-comparison)
+- [ZOD-130 — Specify ordinary sword candidate scan and evaluation ownership](2026-10-27/BACKLOG.md#zod-130--specify-ordinary-sword-candidate-scan-and-evaluation-ownership)
+- [ZOD-132 — Separate current behavioral tests from historical checkpoint audits](2026-10-27/BACKLOG.md#zod-132--separate-current-behavioral-tests-from-historical-checkpoint-audits)
+- [ZOD-133 — Consolidate repeated tests and retire obsolete milestone checks](2026-10-27/BACKLOG.md#zod-133--consolidate-repeated-tests-and-retire-obsolete-milestone-checks)
