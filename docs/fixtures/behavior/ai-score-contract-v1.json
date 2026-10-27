@@ -1,0 +1,2162 @@
+{
+  "format": "fft.ai-score-source-description",
+  "schemaVersion": 1,
+  "ticket": "ZOD-126",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "execution": "offline-source-and-proposed-wrapper-description",
+  "productionImplemented": false,
+  "vectorCount": 44,
+  "vectors": [
+    {
+      "id": "full",
+      "family": "source-unit",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "hp": 50,
+        "maxHp": 50,
+        "status": "None",
+        "monster": false,
+        "keptSlots": 7,
+        "slot": 0,
+        "enemy": false
+      },
+      "expected": {
+        "hpTerm": 128,
+        "statusTerm": 0,
+        "equipmentTerm": 357,
+        "unitTotal": 485
+      }
+    },
+    {
+      "id": "half",
+      "family": "source-unit",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "hp": 25,
+        "maxHp": 50,
+        "status": "None",
+        "monster": false,
+        "keptSlots": 7,
+        "slot": 0,
+        "enemy": false
+      },
+      "expected": {
+        "hpTerm": 64,
+        "statusTerm": 0,
+        "equipmentTerm": 357,
+        "unitTotal": 421
+      }
+    },
+    {
+      "id": "critical",
+      "family": "source-unit",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "hp": 10,
+        "maxHp": 50,
+        "status": "Critical",
+        "monster": false,
+        "keptSlots": 7,
+        "slot": 0,
+        "enemy": false
+      },
+      "expected": {
+        "hpTerm": 25,
+        "statusTerm": -32,
+        "equipmentTerm": 357,
+        "unitTotal": 350
+      }
+    },
+    {
+      "id": "dead",
+      "family": "source-unit",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "hp": 0,
+        "maxHp": 50,
+        "status": "Dead",
+        "monster": false,
+        "keptSlots": 7,
+        "slot": 0,
+        "enemy": false
+      },
+      "expected": {
+        "hpTerm": 0,
+        "statusTerm": -192,
+        "equipmentTerm": 357,
+        "unitTotal": 165
+      }
+    },
+    {
+      "id": "odd-at-critical",
+      "family": "source-unit",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "hp": 10,
+        "maxHp": 51,
+        "status": "Critical",
+        "monster": false,
+        "keptSlots": 7,
+        "slot": 0,
+        "enemy": false
+      },
+      "expected": {
+        "hpTerm": 25,
+        "statusTerm": -32,
+        "equipmentTerm": 357,
+        "unitTotal": 350
+      }
+    },
+    {
+      "id": "odd-above-critical",
+      "family": "source-unit",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "hp": 11,
+        "maxHp": 51,
+        "status": "None",
+        "monster": false,
+        "keptSlots": 7,
+        "slot": 0,
+        "enemy": false
+      },
+      "expected": {
+        "hpTerm": 27,
+        "statusTerm": 0,
+        "equipmentTerm": 357,
+        "unitTotal": 384
+      }
+    },
+    {
+      "id": "ushort-full",
+      "family": "source-unit",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "hp": 65535,
+        "maxHp": 65535,
+        "status": "None",
+        "monster": false,
+        "keptSlots": 7,
+        "slot": 0,
+        "enemy": false
+      },
+      "expected": {
+        "hpTerm": 128,
+        "statusTerm": 0,
+        "equipmentTerm": 357,
+        "unitTotal": 485
+      }
+    },
+    {
+      "id": "ushort-low",
+      "family": "source-unit",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "hp": 1,
+        "maxHp": 65535,
+        "status": "Critical",
+        "monster": false,
+        "keptSlots": 7,
+        "slot": 0,
+        "enemy": false
+      },
+      "expected": {
+        "hpTerm": 0,
+        "statusTerm": -32,
+        "equipmentTerm": 357,
+        "unitTotal": 325
+      }
+    },
+    {
+      "id": "minimum-maxhp",
+      "family": "source-unit",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "hp": 1,
+        "maxHp": 1,
+        "status": "None",
+        "monster": false,
+        "keptSlots": 7,
+        "slot": 0,
+        "enemy": false
+      },
+      "expected": {
+        "hpTerm": 128,
+        "statusTerm": 0,
+        "equipmentTerm": 357,
+        "unitTotal": 485
+      }
+    },
+    {
+      "id": "seven-empty-kept",
+      "family": "source-unit",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "hp": 50,
+        "maxHp": 50,
+        "status": "None",
+        "monster": false,
+        "keptSlots": 7,
+        "slot": 0,
+        "enemy": false,
+        "occupiedSlots": 0
+      },
+      "expected": {
+        "hpTerm": 128,
+        "statusTerm": 0,
+        "equipmentTerm": 357,
+        "unitTotal": 485
+      }
+    },
+    {
+      "id": "changed-one-slot",
+      "family": "source-unit",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "hp": 50,
+        "maxHp": 50,
+        "status": "None",
+        "monster": false,
+        "keptSlots": 6,
+        "slot": 0,
+        "enemy": false
+      },
+      "expected": {
+        "hpTerm": 128,
+        "statusTerm": 0,
+        "equipmentTerm": 306,
+        "unitTotal": 434
+      }
+    },
+    {
+      "id": "monster-not-human",
+      "family": "source-unit",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "hp": 50,
+        "maxHp": 50,
+        "status": "None",
+        "monster": true,
+        "keptSlots": 7,
+        "slot": 0,
+        "enemy": false
+      },
+      "expected": {
+        "hpTerm": 128,
+        "statusTerm": 0,
+        "equipmentTerm": 0,
+        "unitTotal": 128
+      }
+    },
+    {
+      "id": "balanced",
+      "family": "source-state",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "units": [
+          {
+            "hp": 50,
+            "maxHp": 50,
+            "status": "None",
+            "monster": false,
+            "keptSlots": 7,
+            "slot": 0,
+            "enemy": false
+          },
+          {
+            "hp": 50,
+            "maxHp": 50,
+            "status": "None",
+            "monster": false,
+            "keptSlots": 7,
+            "slot": 1,
+            "enemy": true
+          }
+        ]
+      },
+      "expected": {
+        "priority": 0,
+        "contributions": [
+          {
+            "slot": 0,
+            "hpTerm": 128,
+            "statusTerm": 0,
+            "equipmentTerm": 357,
+            "unitTotal": 485,
+            "signedContribution": 485,
+            "storedPriority": 485
+          },
+          {
+            "slot": 1,
+            "hpTerm": 128,
+            "statusTerm": 0,
+            "equipmentTerm": 357,
+            "unitTotal": 485,
+            "signedContribution": -485,
+            "storedPriority": 0
+          }
+        ],
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "normal-hit",
+      "family": "source-state",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "units": [
+          {
+            "hp": 50,
+            "maxHp": 50,
+            "status": "None",
+            "monster": false,
+            "keptSlots": 7,
+            "slot": 0,
+            "enemy": false
+          },
+          {
+            "hp": 25,
+            "maxHp": 50,
+            "status": "None",
+            "monster": false,
+            "keptSlots": 7,
+            "slot": 1,
+            "enemy": true
+          }
+        ]
+      },
+      "expected": {
+        "priority": 64,
+        "contributions": [
+          {
+            "slot": 0,
+            "hpTerm": 128,
+            "statusTerm": 0,
+            "equipmentTerm": 357,
+            "unitTotal": 485,
+            "signedContribution": 485,
+            "storedPriority": 485
+          },
+          {
+            "slot": 1,
+            "hpTerm": 64,
+            "statusTerm": 0,
+            "equipmentTerm": 357,
+            "unitTotal": 421,
+            "signedContribution": -421,
+            "storedPriority": 64
+          }
+        ],
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "critical-hit",
+      "family": "source-state",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "units": [
+          {
+            "hp": 50,
+            "maxHp": 50,
+            "status": "None",
+            "monster": false,
+            "keptSlots": 7,
+            "slot": 0,
+            "enemy": false
+          },
+          {
+            "hp": 10,
+            "maxHp": 50,
+            "status": "Critical",
+            "monster": false,
+            "keptSlots": 7,
+            "slot": 1,
+            "enemy": true
+          }
+        ]
+      },
+      "expected": {
+        "priority": 135,
+        "contributions": [
+          {
+            "slot": 0,
+            "hpTerm": 128,
+            "statusTerm": 0,
+            "equipmentTerm": 357,
+            "unitTotal": 485,
+            "signedContribution": 485,
+            "storedPriority": 485
+          },
+          {
+            "slot": 1,
+            "hpTerm": 25,
+            "statusTerm": -32,
+            "equipmentTerm": 357,
+            "unitTotal": 350,
+            "signedContribution": -350,
+            "storedPriority": 135
+          }
+        ],
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "lethal-hit",
+      "family": "source-state",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "units": [
+          {
+            "hp": 50,
+            "maxHp": 50,
+            "status": "None",
+            "monster": false,
+            "keptSlots": 7,
+            "slot": 0,
+            "enemy": false
+          },
+          {
+            "hp": 0,
+            "maxHp": 50,
+            "status": "Dead",
+            "monster": false,
+            "keptSlots": 7,
+            "slot": 1,
+            "enemy": true
+          }
+        ]
+      },
+      "expected": {
+        "priority": 320,
+        "contributions": [
+          {
+            "slot": 0,
+            "hpTerm": 128,
+            "statusTerm": 0,
+            "equipmentTerm": 357,
+            "unitTotal": 485,
+            "signedContribution": 485,
+            "storedPriority": 485
+          },
+          {
+            "slot": 1,
+            "hpTerm": 0,
+            "statusTerm": -192,
+            "equipmentTerm": 357,
+            "unitTotal": 165,
+            "signedContribution": -165,
+            "storedPriority": 320
+          }
+        ],
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "initial-actor-critical",
+      "family": "source-state",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "units": [
+          {
+            "hp": 10,
+            "maxHp": 50,
+            "status": "Critical",
+            "monster": false,
+            "keptSlots": 7,
+            "slot": 0,
+            "enemy": false
+          },
+          {
+            "hp": 50,
+            "maxHp": 50,
+            "status": "None",
+            "monster": false,
+            "keptSlots": 7,
+            "slot": 1,
+            "enemy": true
+          }
+        ]
+      },
+      "expected": {
+        "priority": -135,
+        "contributions": [
+          {
+            "slot": 0,
+            "hpTerm": 25,
+            "statusTerm": -32,
+            "equipmentTerm": 357,
+            "unitTotal": 350,
+            "signedContribution": 350,
+            "storedPriority": 350
+          },
+          {
+            "slot": 1,
+            "hpTerm": 128,
+            "statusTerm": 0,
+            "equipmentTerm": 357,
+            "unitTotal": 485,
+            "signedContribution": -485,
+            "storedPriority": -135
+          }
+        ],
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "actor-critical-after-hit",
+      "family": "source-state",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "units": [
+          {
+            "hp": 10,
+            "maxHp": 50,
+            "status": "Critical",
+            "monster": false,
+            "keptSlots": 7,
+            "slot": 0,
+            "enemy": false
+          },
+          {
+            "hp": 25,
+            "maxHp": 50,
+            "status": "None",
+            "monster": false,
+            "keptSlots": 7,
+            "slot": 1,
+            "enemy": true
+          }
+        ]
+      },
+      "expected": {
+        "priority": -71,
+        "contributions": [
+          {
+            "slot": 0,
+            "hpTerm": 25,
+            "statusTerm": -32,
+            "equipmentTerm": 357,
+            "unitTotal": 350,
+            "signedContribution": 350,
+            "storedPriority": 350
+          },
+          {
+            "slot": 1,
+            "hpTerm": 64,
+            "statusTerm": 0,
+            "equipmentTerm": 357,
+            "unitTotal": 421,
+            "signedContribution": -421,
+            "storedPriority": -71
+          }
+        ],
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "both-critical",
+      "family": "source-state",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "units": [
+          {
+            "hp": 10,
+            "maxHp": 50,
+            "status": "Critical",
+            "monster": false,
+            "keptSlots": 7,
+            "slot": 0,
+            "enemy": false
+          },
+          {
+            "hp": 10,
+            "maxHp": 50,
+            "status": "Critical",
+            "monster": false,
+            "keptSlots": 7,
+            "slot": 1,
+            "enemy": true
+          }
+        ]
+      },
+      "expected": {
+        "priority": 0,
+        "contributions": [
+          {
+            "slot": 0,
+            "hpTerm": 25,
+            "statusTerm": -32,
+            "equipmentTerm": 357,
+            "unitTotal": 350,
+            "signedContribution": 350,
+            "storedPriority": 350
+          },
+          {
+            "slot": 1,
+            "hpTerm": 25,
+            "statusTerm": -32,
+            "equipmentTerm": 357,
+            "unitTotal": 350,
+            "signedContribution": -350,
+            "storedPriority": 0
+          }
+        ],
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "minimum-closed-priority",
+      "family": "source-state",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "units": [
+          {
+            "hp": 1,
+            "maxHp": 65535,
+            "status": "Critical",
+            "monster": false,
+            "keptSlots": 7,
+            "slot": 0,
+            "enemy": false
+          },
+          {
+            "hp": 50,
+            "maxHp": 50,
+            "status": "None",
+            "monster": false,
+            "keptSlots": 7,
+            "slot": 1,
+            "enemy": true
+          }
+        ]
+      },
+      "expected": {
+        "priority": -160,
+        "contributions": [
+          {
+            "slot": 0,
+            "hpTerm": 0,
+            "statusTerm": -32,
+            "equipmentTerm": 357,
+            "unitTotal": 325,
+            "signedContribution": 325,
+            "storedPriority": 325
+          },
+          {
+            "slot": 1,
+            "hpTerm": 128,
+            "statusTerm": 0,
+            "equipmentTerm": 357,
+            "unitTotal": 485,
+            "signedContribution": -485,
+            "storedPriority": -160
+          }
+        ],
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "reverse-input-order",
+      "family": "source-state",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "units": [
+          {
+            "hp": 10,
+            "maxHp": 50,
+            "status": "Critical",
+            "monster": false,
+            "keptSlots": 7,
+            "slot": 1,
+            "enemy": true
+          },
+          {
+            "hp": 50,
+            "maxHp": 50,
+            "status": "None",
+            "monster": false,
+            "keptSlots": 7,
+            "slot": 0,
+            "enemy": false
+          }
+        ]
+      },
+      "expected": {
+        "priority": 135,
+        "contributions": [
+          {
+            "slot": 0,
+            "hpTerm": 128,
+            "statusTerm": 0,
+            "equipmentTerm": 357,
+            "unitTotal": 485,
+            "signedContribution": 485,
+            "storedPriority": 485
+          },
+          {
+            "slot": 1,
+            "hpTerm": 25,
+            "statusTerm": -32,
+            "equipmentTerm": 357,
+            "unitTotal": 350,
+            "signedContribution": -350,
+            "storedPriority": 135
+          }
+        ],
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "unequal-maxhp",
+      "family": "source-state",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "units": [
+          {
+            "hp": 25,
+            "maxHp": 50,
+            "status": "None",
+            "monster": false,
+            "keptSlots": 7,
+            "slot": 0,
+            "enemy": false
+          },
+          {
+            "hp": 50,
+            "maxHp": 100,
+            "status": "None",
+            "monster": false,
+            "keptSlots": 7,
+            "slot": 1,
+            "enemy": true
+          }
+        ]
+      },
+      "expected": {
+        "priority": 0,
+        "contributions": [
+          {
+            "slot": 0,
+            "hpTerm": 64,
+            "statusTerm": 0,
+            "equipmentTerm": 357,
+            "unitTotal": 421,
+            "signedContribution": 421,
+            "storedPriority": 421
+          },
+          {
+            "slot": 1,
+            "hpTerm": 64,
+            "statusTerm": 0,
+            "equipmentTerm": 357,
+            "unitTotal": 421,
+            "signedContribution": -421,
+            "storedPriority": 0
+          }
+        ],
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "hit-100",
+      "family": "source-hit",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "accuracies": [
+          100
+        ],
+        "valuable": true
+      },
+      "expected": {
+        "valuable": true,
+        "countedPairs": 1,
+        "baseHitPercent": 100,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "hit-50",
+      "family": "source-hit",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "accuracies": [
+          50
+        ],
+        "valuable": true
+      },
+      "expected": {
+        "valuable": true,
+        "countedPairs": 1,
+        "baseHitPercent": 50,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "hit-1",
+      "family": "source-hit",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "accuracies": [
+          1
+        ],
+        "valuable": true
+      },
+      "expected": {
+        "valuable": true,
+        "countedPairs": 1,
+        "baseHitPercent": 1,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "hit-zero",
+      "family": "source-hit",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "accuracies": [
+          0
+        ],
+        "valuable": true
+      },
+      "expected": {
+        "valuable": false,
+        "countedPairs": 0,
+        "baseHitPercent": null,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "different-original-team",
+      "family": "source-relation",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "actorCurrentTeam": 0,
+        "targetInitialTeam": 16,
+        "self": false
+      },
+      "expected": {
+        "enemy": true
+      }
+    },
+    {
+      "id": "same-original-team",
+      "family": "source-relation",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "actorCurrentTeam": 16,
+        "targetInitialTeam": 16,
+        "self": false
+      },
+      "expected": {
+        "enemy": false
+      }
+    },
+    {
+      "id": "initial-team-not-current-target",
+      "family": "source-relation",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "actorCurrentTeam": 32,
+        "targetInitialTeam": 16,
+        "self": false
+      },
+      "expected": {
+        "enemy": true
+      }
+    },
+    {
+      "id": "self-never-enemy",
+      "family": "source-relation",
+      "expectationKind": "source-derived-closed-kernel",
+      "inputs": {
+        "actorCurrentTeam": 0,
+        "targetInitialTeam": 16,
+        "self": true
+      },
+      "expected": {
+        "enemy": false
+      }
+    },
+    {
+      "id": "scored-normal",
+      "family": "proposed-scoring",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "candidate": {
+          "terminal": false,
+          "activeActor": true,
+          "acted": false,
+          "moved": false,
+          "profileSupported": true,
+          "placementAllowed": true,
+          "order": "MoveThenAct",
+          "origin": [
+            0,
+            0
+          ],
+          "destination": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "rngWord": 1,
+          "rngCount": 7,
+          "hitPercent": 100,
+          "damage": 25,
+          "actorCt": 15,
+          "actorSpeed": 5,
+          "actorSlot": 0,
+          "actorStatus": "None",
+          "targetCt": 95,
+          "targetSpeed": 5,
+          "targetStatus": "None",
+          "targetHp": 50,
+          "targetMaxHp": 50,
+          "deathCounter": 255,
+          "targetMoved": true,
+          "targetActed": true,
+          "elapsedTicks": 20
+        },
+        "profile": {
+          "idsMatch": true,
+          "stableOpponents": true,
+          "unchangedTeams": true,
+          "units": [
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            },
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            }
+          ]
+        },
+        "actorHp": 50,
+        "actorMaxHp": 50
+      },
+      "expected": {
+        "disposition": "Scored",
+        "reason": null,
+        "score": {
+          "priority": 64,
+          "hitPercent": 100,
+          "contributions": [
+            {
+              "slot": 0,
+              "hpTerm": 128,
+              "statusTerm": 0,
+              "equipmentTerm": 357,
+              "unitTotal": 485,
+              "signedContribution": 485,
+              "storedPriority": 485
+            },
+            {
+              "slot": 1,
+              "hpTerm": 64,
+              "statusTerm": 0,
+              "equipmentTerm": 357,
+              "unitTotal": 421,
+              "signedContribution": -421,
+              "storedPriority": 64
+            }
+          ]
+        },
+        "rngWord": 4182499122,
+        "rngCount": 12,
+        "projectionCalls": 1,
+        "additionalScoreDraws": 0,
+        "inputUnchanged": true
+      }
+    },
+    {
+      "id": "scored-partial",
+      "family": "proposed-scoring",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "candidate": {
+          "terminal": false,
+          "activeActor": true,
+          "acted": false,
+          "moved": false,
+          "profileSupported": true,
+          "placementAllowed": true,
+          "order": "MoveThenAct",
+          "origin": [
+            0,
+            0
+          ],
+          "destination": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "rngWord": 1,
+          "rngCount": 7,
+          "hitPercent": 50,
+          "damage": 25,
+          "actorCt": 15,
+          "actorSpeed": 5,
+          "actorSlot": 0,
+          "actorStatus": "None",
+          "targetCt": 95,
+          "targetSpeed": 5,
+          "targetStatus": "None",
+          "targetHp": 50,
+          "targetMaxHp": 50,
+          "deathCounter": 255,
+          "targetMoved": true,
+          "targetActed": true,
+          "elapsedTicks": 20
+        },
+        "profile": {
+          "idsMatch": true,
+          "stableOpponents": true,
+          "unchangedTeams": true,
+          "units": [
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            },
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            }
+          ]
+        },
+        "actorHp": 50,
+        "actorMaxHp": 50
+      },
+      "expected": {
+        "disposition": "Scored",
+        "reason": null,
+        "score": {
+          "priority": 64,
+          "hitPercent": 50,
+          "contributions": [
+            {
+              "slot": 0,
+              "hpTerm": 128,
+              "statusTerm": 0,
+              "equipmentTerm": 357,
+              "unitTotal": 485,
+              "signedContribution": 485,
+              "storedPriority": 485
+            },
+            {
+              "slot": 1,
+              "hpTerm": 64,
+              "statusTerm": 0,
+              "equipmentTerm": 357,
+              "unitTotal": 421,
+              "signedContribution": -421,
+              "storedPriority": 64
+            }
+          ]
+        },
+        "rngWord": 4182499122,
+        "rngCount": 12,
+        "projectionCalls": 1,
+        "additionalScoreDraws": 0,
+        "inputUnchanged": true
+      }
+    },
+    {
+      "id": "scored-critical",
+      "family": "proposed-scoring",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "candidate": {
+          "terminal": false,
+          "activeActor": true,
+          "acted": false,
+          "moved": false,
+          "profileSupported": true,
+          "placementAllowed": true,
+          "order": "MoveThenAct",
+          "origin": [
+            0,
+            0
+          ],
+          "destination": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "rngWord": 1,
+          "rngCount": 7,
+          "hitPercent": 100,
+          "damage": 40,
+          "actorCt": 15,
+          "actorSpeed": 5,
+          "actorSlot": 0,
+          "actorStatus": "None",
+          "targetCt": 95,
+          "targetSpeed": 5,
+          "targetStatus": "None",
+          "targetHp": 50,
+          "targetMaxHp": 50,
+          "deathCounter": 255,
+          "targetMoved": true,
+          "targetActed": true,
+          "elapsedTicks": 20
+        },
+        "profile": {
+          "idsMatch": true,
+          "stableOpponents": true,
+          "unchangedTeams": true,
+          "units": [
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            },
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            }
+          ]
+        },
+        "actorHp": 50,
+        "actorMaxHp": 50
+      },
+      "expected": {
+        "disposition": "Scored",
+        "reason": null,
+        "score": {
+          "priority": 135,
+          "hitPercent": 100,
+          "contributions": [
+            {
+              "slot": 0,
+              "hpTerm": 128,
+              "statusTerm": 0,
+              "equipmentTerm": 357,
+              "unitTotal": 485,
+              "signedContribution": 485,
+              "storedPriority": 485
+            },
+            {
+              "slot": 1,
+              "hpTerm": 25,
+              "statusTerm": -32,
+              "equipmentTerm": 357,
+              "unitTotal": 350,
+              "signedContribution": -350,
+              "storedPriority": 135
+            }
+          ]
+        },
+        "rngWord": 4182499122,
+        "rngCount": 12,
+        "projectionCalls": 1,
+        "additionalScoreDraws": 0,
+        "inputUnchanged": true
+      }
+    },
+    {
+      "id": "scored-ko",
+      "family": "proposed-scoring",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "candidate": {
+          "terminal": false,
+          "activeActor": true,
+          "acted": false,
+          "moved": false,
+          "profileSupported": true,
+          "placementAllowed": true,
+          "order": "MoveThenAct",
+          "origin": [
+            0,
+            0
+          ],
+          "destination": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "rngWord": 1,
+          "rngCount": 7,
+          "hitPercent": 100,
+          "damage": 50,
+          "actorCt": 15,
+          "actorSpeed": 5,
+          "actorSlot": 0,
+          "actorStatus": "None",
+          "targetCt": 95,
+          "targetSpeed": 5,
+          "targetStatus": "None",
+          "targetHp": 50,
+          "targetMaxHp": 50,
+          "deathCounter": 255,
+          "targetMoved": true,
+          "targetActed": true,
+          "elapsedTicks": 20
+        },
+        "profile": {
+          "idsMatch": true,
+          "stableOpponents": true,
+          "unchangedTeams": true,
+          "units": [
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            },
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            }
+          ]
+        },
+        "actorHp": 50,
+        "actorMaxHp": 50
+      },
+      "expected": {
+        "disposition": "Scored",
+        "reason": null,
+        "score": {
+          "priority": 320,
+          "hitPercent": 100,
+          "contributions": [
+            {
+              "slot": 0,
+              "hpTerm": 128,
+              "statusTerm": 0,
+              "equipmentTerm": 357,
+              "unitTotal": 485,
+              "signedContribution": 485,
+              "storedPriority": 485
+            },
+            {
+              "slot": 1,
+              "hpTerm": 0,
+              "statusTerm": -192,
+              "equipmentTerm": 357,
+              "unitTotal": 165,
+              "signedContribution": -165,
+              "storedPriority": 320
+            }
+          ]
+        },
+        "rngWord": 2516284547,
+        "rngCount": 13,
+        "projectionCalls": 1,
+        "additionalScoreDraws": 0,
+        "inputUnchanged": true
+      }
+    },
+    {
+      "id": "scored-critical-actor",
+      "family": "proposed-scoring",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "candidate": {
+          "terminal": false,
+          "activeActor": true,
+          "acted": false,
+          "moved": false,
+          "profileSupported": true,
+          "placementAllowed": true,
+          "order": "MoveThenAct",
+          "origin": [
+            0,
+            0
+          ],
+          "destination": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "rngWord": 1,
+          "rngCount": 7,
+          "hitPercent": 100,
+          "damage": 25,
+          "actorCt": 15,
+          "actorSpeed": 5,
+          "actorSlot": 0,
+          "actorStatus": "Critical",
+          "targetCt": 95,
+          "targetSpeed": 5,
+          "targetStatus": "None",
+          "targetHp": 50,
+          "targetMaxHp": 50,
+          "deathCounter": 255,
+          "targetMoved": true,
+          "targetActed": true,
+          "elapsedTicks": 20
+        },
+        "profile": {
+          "idsMatch": true,
+          "stableOpponents": true,
+          "unchangedTeams": true,
+          "units": [
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            },
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            }
+          ]
+        },
+        "actorHp": 10,
+        "actorMaxHp": 50
+      },
+      "expected": {
+        "disposition": "Scored",
+        "reason": null,
+        "score": {
+          "priority": -71,
+          "hitPercent": 100,
+          "contributions": [
+            {
+              "slot": 0,
+              "hpTerm": 25,
+              "statusTerm": -32,
+              "equipmentTerm": 357,
+              "unitTotal": 350,
+              "signedContribution": 350,
+              "storedPriority": 350
+            },
+            {
+              "slot": 1,
+              "hpTerm": 64,
+              "statusTerm": 0,
+              "equipmentTerm": 357,
+              "unitTotal": 421,
+              "signedContribution": -421,
+              "storedPriority": -71
+            }
+          ]
+        },
+        "rngWord": 4182499122,
+        "rngCount": 12,
+        "projectionCalls": 1,
+        "additionalScoreDraws": 0,
+        "inputUnchanged": true
+      }
+    },
+    {
+      "id": "not-valuable",
+      "family": "proposed-scoring",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "candidate": {
+          "terminal": false,
+          "activeActor": true,
+          "acted": false,
+          "moved": false,
+          "profileSupported": true,
+          "placementAllowed": true,
+          "order": "MoveThenAct",
+          "origin": [
+            0,
+            0
+          ],
+          "destination": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "rngWord": 1,
+          "rngCount": 7,
+          "hitPercent": 0,
+          "damage": 25,
+          "actorCt": 15,
+          "actorSpeed": 5,
+          "actorSlot": 0,
+          "actorStatus": "None",
+          "targetCt": 95,
+          "targetSpeed": 5,
+          "targetStatus": "None",
+          "targetHp": 50,
+          "targetMaxHp": 50,
+          "deathCounter": 255,
+          "targetMoved": true,
+          "targetActed": true,
+          "elapsedTicks": 20
+        },
+        "profile": {
+          "idsMatch": true,
+          "stableOpponents": true,
+          "unchangedTeams": true,
+          "units": [
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            },
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            }
+          ]
+        },
+        "actorHp": 50,
+        "actorMaxHp": 50
+      },
+      "expected": {
+        "disposition": "NotValuable",
+        "reason": null,
+        "score": null,
+        "rngWord": 3295386429,
+        "rngCount": 11,
+        "projectionCalls": 1,
+        "additionalScoreDraws": 0,
+        "inputUnchanged": true
+      }
+    },
+    {
+      "id": "projection-rejected",
+      "family": "proposed-scoring",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "candidate": {
+          "terminal": true,
+          "activeActor": true,
+          "acted": false,
+          "moved": false,
+          "profileSupported": true,
+          "placementAllowed": true,
+          "order": "MoveThenAct",
+          "origin": [
+            0,
+            0
+          ],
+          "destination": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "rngWord": 1,
+          "rngCount": 7,
+          "hitPercent": 100,
+          "damage": 25,
+          "actorCt": 15,
+          "actorSpeed": 5,
+          "actorSlot": 0,
+          "actorStatus": "None",
+          "targetCt": 95,
+          "targetSpeed": 5,
+          "targetStatus": "None",
+          "targetHp": 50,
+          "targetMaxHp": 50,
+          "deathCounter": 255,
+          "targetMoved": true,
+          "targetActed": true,
+          "elapsedTicks": 20
+        },
+        "profile": {
+          "idsMatch": true,
+          "stableOpponents": true,
+          "unchangedTeams": true,
+          "units": [
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            },
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            }
+          ]
+        },
+        "actorHp": 50,
+        "actorMaxHp": 50
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "ProjectionRejected",
+        "projectionReason": "TerminalInput",
+        "score": null,
+        "rngWord": 1,
+        "rngCount": 7,
+        "projectionCalls": 1,
+        "additionalScoreDraws": 0,
+        "inputUnchanged": true
+      }
+    },
+    {
+      "id": "unsupported-monster",
+      "family": "proposed-scoring",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "candidate": {
+          "terminal": false,
+          "activeActor": true,
+          "acted": false,
+          "moved": false,
+          "profileSupported": true,
+          "placementAllowed": true,
+          "order": "MoveThenAct",
+          "origin": [
+            0,
+            0
+          ],
+          "destination": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "rngWord": 1,
+          "rngCount": 7,
+          "hitPercent": 100,
+          "damage": 25,
+          "actorCt": 15,
+          "actorSpeed": 5,
+          "actorSlot": 0,
+          "actorStatus": "None",
+          "targetCt": 95,
+          "targetSpeed": 5,
+          "targetStatus": "None",
+          "targetHp": 50,
+          "targetMaxHp": 50,
+          "deathCounter": 255,
+          "targetMoved": true,
+          "targetActed": true,
+          "elapsedTicks": 20
+        },
+        "profile": {
+          "idsMatch": true,
+          "stableOpponents": true,
+          "unchangedTeams": true,
+          "units": [
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            },
+            {
+              "monster": true,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            }
+          ]
+        },
+        "actorHp": 50,
+        "actorMaxHp": 50
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "UnsupportedScoreProfile",
+        "score": null,
+        "projectionCalls": 0,
+        "rngWord": 1,
+        "rngCount": 7,
+        "additionalScoreDraws": 0,
+        "inputUnchanged": true
+      }
+    },
+    {
+      "id": "unsupported-equipment-change",
+      "family": "proposed-scoring",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "candidate": {
+          "terminal": false,
+          "activeActor": true,
+          "acted": false,
+          "moved": false,
+          "profileSupported": true,
+          "placementAllowed": true,
+          "order": "MoveThenAct",
+          "origin": [
+            0,
+            0
+          ],
+          "destination": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "rngWord": 1,
+          "rngCount": 7,
+          "hitPercent": 100,
+          "damage": 25,
+          "actorCt": 15,
+          "actorSpeed": 5,
+          "actorSlot": 0,
+          "actorStatus": "None",
+          "targetCt": 95,
+          "targetSpeed": 5,
+          "targetStatus": "None",
+          "targetHp": 50,
+          "targetMaxHp": 50,
+          "deathCounter": 255,
+          "targetMoved": true,
+          "targetActed": true,
+          "elapsedTicks": 20
+        },
+        "profile": {
+          "idsMatch": true,
+          "stableOpponents": true,
+          "unchangedTeams": true,
+          "units": [
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            },
+            {
+              "monster": false,
+              "keptSlots": 6,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            }
+          ]
+        },
+        "actorHp": 50,
+        "actorMaxHp": 50
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "UnsupportedScoreProfile",
+        "score": null,
+        "projectionCalls": 0,
+        "rngWord": 1,
+        "rngCount": 7,
+        "additionalScoreDraws": 0,
+        "inputUnchanged": true
+      }
+    },
+    {
+      "id": "unsupported-golem",
+      "family": "proposed-scoring",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "candidate": {
+          "terminal": false,
+          "activeActor": true,
+          "acted": false,
+          "moved": false,
+          "profileSupported": true,
+          "placementAllowed": true,
+          "order": "MoveThenAct",
+          "origin": [
+            0,
+            0
+          ],
+          "destination": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "rngWord": 1,
+          "rngCount": 7,
+          "hitPercent": 100,
+          "damage": 25,
+          "actorCt": 15,
+          "actorSpeed": 5,
+          "actorSlot": 0,
+          "actorStatus": "None",
+          "targetCt": 95,
+          "targetSpeed": 5,
+          "targetStatus": "None",
+          "targetHp": 50,
+          "targetMaxHp": 50,
+          "deathCounter": 255,
+          "targetMoved": true,
+          "targetActed": true,
+          "elapsedTicks": 20
+        },
+        "profile": {
+          "idsMatch": true,
+          "stableOpponents": true,
+          "unchangedTeams": true,
+          "units": [
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            },
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 1,
+              "baselineGolem": 0
+            }
+          ]
+        },
+        "actorHp": 50,
+        "actorMaxHp": 50
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "UnsupportedScoreProfile",
+        "score": null,
+        "projectionCalls": 0,
+        "rngWord": 1,
+        "rngCount": 7,
+        "additionalScoreDraws": 0,
+        "inputUnchanged": true
+      }
+    },
+    {
+      "id": "unsupported-old-golem",
+      "family": "proposed-scoring",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "candidate": {
+          "terminal": false,
+          "activeActor": true,
+          "acted": false,
+          "moved": false,
+          "profileSupported": true,
+          "placementAllowed": true,
+          "order": "MoveThenAct",
+          "origin": [
+            0,
+            0
+          ],
+          "destination": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "rngWord": 1,
+          "rngCount": 7,
+          "hitPercent": 100,
+          "damage": 25,
+          "actorCt": 15,
+          "actorSpeed": 5,
+          "actorSlot": 0,
+          "actorStatus": "None",
+          "targetCt": 95,
+          "targetSpeed": 5,
+          "targetStatus": "None",
+          "targetHp": 50,
+          "targetMaxHp": 50,
+          "deathCounter": 255,
+          "targetMoved": true,
+          "targetActed": true,
+          "elapsedTicks": 20
+        },
+        "profile": {
+          "idsMatch": true,
+          "stableOpponents": true,
+          "unchangedTeams": true,
+          "units": [
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            },
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 1
+            }
+          ]
+        },
+        "actorHp": 50,
+        "actorMaxHp": 50
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "UnsupportedScoreProfile",
+        "score": null,
+        "projectionCalls": 0,
+        "rngWord": 1,
+        "rngCount": 7,
+        "additionalScoreDraws": 0,
+        "inputUnchanged": true
+      }
+    },
+    {
+      "id": "unsupported-mp",
+      "family": "proposed-scoring",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "candidate": {
+          "terminal": false,
+          "activeActor": true,
+          "acted": false,
+          "moved": false,
+          "profileSupported": true,
+          "placementAllowed": true,
+          "order": "MoveThenAct",
+          "origin": [
+            0,
+            0
+          ],
+          "destination": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "rngWord": 1,
+          "rngCount": 7,
+          "hitPercent": 100,
+          "damage": 25,
+          "actorCt": 15,
+          "actorSpeed": 5,
+          "actorSlot": 0,
+          "actorStatus": "None",
+          "targetCt": 95,
+          "targetSpeed": 5,
+          "targetStatus": "None",
+          "targetHp": 50,
+          "targetMaxHp": 50,
+          "deathCounter": 255,
+          "targetMoved": true,
+          "targetActed": true,
+          "elapsedTicks": 20
+        },
+        "profile": {
+          "idsMatch": true,
+          "stableOpponents": true,
+          "unchangedTeams": true,
+          "units": [
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            },
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 1,
+              "golem": 0,
+              "baselineGolem": 0
+            }
+          ]
+        },
+        "actorHp": 50,
+        "actorMaxHp": 50
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "UnsupportedScoreProfile",
+        "score": null,
+        "projectionCalls": 0,
+        "rngWord": 1,
+        "rngCount": 7,
+        "additionalScoreDraws": 0,
+        "inputUnchanged": true
+      }
+    },
+    {
+      "id": "unsupported-team",
+      "family": "proposed-scoring",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "candidate": {
+          "terminal": false,
+          "activeActor": true,
+          "acted": false,
+          "moved": false,
+          "profileSupported": true,
+          "placementAllowed": true,
+          "order": "MoveThenAct",
+          "origin": [
+            0,
+            0
+          ],
+          "destination": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "rngWord": 1,
+          "rngCount": 7,
+          "hitPercent": 100,
+          "damage": 25,
+          "actorCt": 15,
+          "actorSpeed": 5,
+          "actorSlot": 0,
+          "actorStatus": "None",
+          "targetCt": 95,
+          "targetSpeed": 5,
+          "targetStatus": "None",
+          "targetHp": 50,
+          "targetMaxHp": 50,
+          "deathCounter": 255,
+          "targetMoved": true,
+          "targetActed": true,
+          "elapsedTicks": 20
+        },
+        "profile": {
+          "idsMatch": true,
+          "stableOpponents": false,
+          "unchangedTeams": true,
+          "units": [
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            },
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            }
+          ]
+        },
+        "actorHp": 50,
+        "actorMaxHp": 50
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "UnsupportedScoreProfile",
+        "score": null,
+        "projectionCalls": 0,
+        "rngWord": 1,
+        "rngCount": 7,
+        "additionalScoreDraws": 0,
+        "inputUnchanged": true
+      }
+    },
+    {
+      "id": "unsupported-identities",
+      "family": "proposed-scoring",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "candidate": {
+          "terminal": false,
+          "activeActor": true,
+          "acted": false,
+          "moved": false,
+          "profileSupported": true,
+          "placementAllowed": true,
+          "order": "MoveThenAct",
+          "origin": [
+            0,
+            0
+          ],
+          "destination": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "rngWord": 1,
+          "rngCount": 7,
+          "hitPercent": 100,
+          "damage": 25,
+          "actorCt": 15,
+          "actorSpeed": 5,
+          "actorSlot": 0,
+          "actorStatus": "None",
+          "targetCt": 95,
+          "targetSpeed": 5,
+          "targetStatus": "None",
+          "targetHp": 50,
+          "targetMaxHp": 50,
+          "deathCounter": 255,
+          "targetMoved": true,
+          "targetActed": true,
+          "elapsedTicks": 20
+        },
+        "profile": {
+          "idsMatch": false,
+          "stableOpponents": true,
+          "unchangedTeams": true,
+          "units": [
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            },
+            {
+              "monster": false,
+              "keptSlots": 7,
+              "mp": 0,
+              "maxMp": 0,
+              "golem": 0,
+              "baselineGolem": 0
+            }
+          ]
+        },
+        "actorHp": 50,
+        "actorMaxHp": 50
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "UnsupportedScoreProfile",
+        "score": null,
+        "projectionCalls": 0,
+        "rngWord": 1,
+        "rngCount": 7,
+        "additionalScoreDraws": 0,
+        "inputUnchanged": true
+      }
+    }
+  ],
+  "implementationCases": [
+    {
+      "id": "ASC-001",
+      "description": "Fresh projection once with supported human/unchanged-equipment/team certificate",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ASC-002",
+      "description": "HP128 floor, status weights and canonical 0/64/135/320 scores",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ASC-003",
+      "description": "Initial Critical actor and negative absolute priority, not damage improvement",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ASC-004",
+      "description": "Seven unchanged slots including empties cancel; no inference from weapon IDs",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ASC-005",
+      "description": "Reject monster, equipment changes, MP, present/baseline Golem and unstable teams",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ASC-006",
+      "description": "Forward positive accuracy separately; do not probability-weight state score",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ASC-007",
+      "description": "No score for NotValuable; retain four projection draws",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ASC-008",
+      "description": "No score for projection rejection; preserve reason and incoming RNG",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ASC-009",
+      "description": "No extra RNG draws or tick work at score stage, including MAX draw count",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ASC-010",
+      "description": "Source slot order stable across actor IDs and collection reversal",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ASC-011",
+      "description": "First-event clock/choice/pick data is not a direct score term",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ASC-012",
+      "description": "Projected Dead admitted; retain equipment term and do not infer campaign victory",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ASC-013",
+      "description": "No external/cached/forged outcome input; null/malformed profile guards",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ASC-014",
+      "description": "Replay/atomicity and input preservation, no rank/receipt/command authority",
+      "status": "unexecuted"
+    }
+  ]
+}

@@ -2,6 +2,44 @@
 
 ## Current handoff — 2026-10-27
 
+**ZOD-126 is complete.** The closed candidate scoring source/design contract
+defines absolute projected allied-minus-hostile HP/status/equipment priority and
+independent hit percent. Seven unchanged entries contribute 357 per human even
+when empty or Dead, then cancel between opponents. Source relations use cached
+actor current team vs target initial team, with self non-enemy; explicit stable
+opponent/human/equipment and current+baseline Golem certification is required.
+MP 0 is already a live-model boundary. Average maxHP caps at 255 rather than wrapping.
+
+The proposed additive SwordAiCandidateScoring wrapper takes original candidate/
+profiles/weapon/decision RNG, validates the scoring certificate and calls ZOD-125
+once. It scores only that fresh private projection, accepting no forged/external/
+cached outcome. Score adds zero RNG draws or clock/choice work and forwards the
+projection stream verbatim, including MAX count. Rejection/NotValuable has no
+score rather than priority 0. No rank, command, receipt or live RNG authority.
+
+Fresh clean read-only reference remains 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Eleven files / 14 functions and two hash-verified prepared records underpin 44
+classified vectors in 5 families. **432 Python tests pass** including 18 new tests;
+repeated source/data/history audits match at 101 historical and 29 managed baseline
+files. No C# change or .NET rerun: last implementation validation remains
+ZOD-125's 3,824 .NET / 414 Python tests. All 14 ASC production cases remain unexecuted.
+No original/C/emulator/native execution. Old APIs/fixtures/evidence and owner
+Common/Ability drafts remain untouched and excluded.
+
+See [contract/API/reproduction](architecture/zod-126-ai-score-contract.md),
+[vectors](fixtures/behavior/ai-score-contract-v1.json) and
+[evidence](evidence/ai/score-contract-v1.json). **Recommended next: ZOD-127**,
+implement the closed scoring companion and execute ASC-001..014. Preserve full
+unit contributions/rounding, initial Critical negative priority, lethal score,
+independent accuracy and zero extra score RNG. Profile failures precede projection;
+do not infer missing original flags from sword IDs or accept mutable-result claims.
+Enumeration/ranking/roster/policy/interface and authoritative RNG integration
+remain future work; editor UI and ZOD-106 remain deferred. Reports:
+scratch/ai-score-126-*; builder scratch/build_ai_score_126.py (resets validation
+to pending; final validation metadata was recorded separately).
+
+## ZOD-125 implementation checkpoint (historical)
+
 **ZOD-125 is complete.** SwordAiCandidateProjection.Evaluate projects one supplied
 sword actor/target/destination/order with explicit decision RNG. Its new profile
 certifies the ordinary effect-free canonical clock and matching sword/movement

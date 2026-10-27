@@ -44,7 +44,26 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
-**Current completion (2026-10-27): ZOD-125 is complete**, the additive
+**Current completion (2026-10-27): ZOD-126 is complete**, the
+[closed candidate priority scoring contract](architecture/zod-126-ai-score-contract.md).
+Priority is the absolute allied-minus-hostile projected HP/status/equipment score;
+hit percent remains separate. Both non-monster units' seven unchanged equipment
+entries, including empties, contribute 357 before cancelling. Human/team/equipment/
+current-and-baseline Golem facts need explicit admission; a sword ID is insufficient.
+The proposed additive wrapper validates that certificate, invokes ZOD-125 exactly
+once and scores its fresh result, accepting no external/cached outcome. Scoring
+adds zero draws and preserves the projection's RNG; absent scores never become 0.
+Fresh clean reference remains 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Eleven files / 14 functions, two prepared metadata records, 44 classified vectors
+and 101 historical artifacts are audited. **432 Python tests pass** (18 new);
+no C# change or .NET rerun. Last implementation validation remains ZOD-125's
+3,824 .NET / 414 Python tests. All 14 ASC production cases remain unexecuted. See
+[evidence](evidence/ai/score-contract-v1.json). **Recommended next: ZOD-127**,
+implement only this scoring companion and execute ASC-001..014. Full ranking/
+roster/policy/interface/authoritative RNG integration remain later work. Owner
+Common/Ability drafts are untouched; editor UI and ZOD-106 remain deferred.
+
+**ZOD-125 implementation checkpoint (historical):** the additive
 [supplied sword AI candidate projection](behavior/sword-ai-candidate-projection.md).
 The opt-in companion validates initial living movement, privately stages the
 correct action origin with explicit decision RNG, and returns separate immutable
@@ -2073,7 +2092,7 @@ Ability drafts remain untouched and excluded. **Next: ZOD-126** below.
 
 ### ZOD-126 — Specify closed sword candidate priority scoring
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-116, ZOD-125
+**Type:** Spike · **Priority:** P3 · **Status:** Done · **Depends on:** ZOD-116, ZOD-125
 
 **Scope:** Trace the original scoring stage after a supplied ordinary sword
 candidate's first-event projection. Specify a pure score query over ZOD-125's
@@ -2095,6 +2114,50 @@ one bounded implementation follow-up. Preserve existing APIs/evidence/fixtures;
 no scoring implementation, search/ranking/roster/policy/interface/decision runner,
 general status/content/save/native/editor activation or C runtime. Editor UI and
 ZOD-106 remain deferred.
+
+**Completion (2026-10-27):** [contract](architecture/zod-126-ai-score-contract.md),
+[vectors](fixtures/behavior/ai-score-contract-v1.json) and
+[evidence](evidence/ai/score-contract-v1.json) pin scoring callers, cached team
+relation, original slot order, HP floor/status weights, unchanged seven-slot human
+equipment terms, MP/Golem exclusions, average-maxHP cap, signed storage and hit
+accounting. Prepared Attack and command-menu metadata confirm zero stat-effect
+bonus and no throw-specific hit halving. The source absolute score is distinct
+from damage/improvement, including initial Critical negative scores. Fresh-wrapper
+provenance avoids trusting externally constructed ZOD-125 records; no old API
+change, hidden repeat projection or score-stage RNG is proposed. Forty-four rows
+in 5 families and 18 new offline tests pass; full 432 Python tests pass. Repeated
+source/data/history audits match at 11 files / 14 functions, 101 preserved and 29
+managed baseline files plus two metadata records. All 14 ASC cases stay unexecuted;
+no production scoring or original execution. No .NET rerun; owner drafts and
+historical artifacts remain untouched. **Next: ZOD-127** below.
+
+### ZOD-127 — Implement closed sword candidate priority scoring
+
+**Type:** Implementation · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-126
+
+**Scope:** Add the opt-in SwordAiCandidateScoring companion and immutable scoring
+certificate/result/contribution types from ZOD-126. Validate explicit stable human
+opponents, unchanged seven-slot equipment and zero current/baseline Golem/MP facts,
+then call the unchanged ZOD-125 projection once and score that fresh result.
+Accept original inputs and explicit decision RNG; no external/cached outcome input.
+
+**Acceptance criteria:** Execute ASC-001..014 with meaningful managed tests and
+separate new implementation evidence. Preserve integer HP128 floor, Dead−192 /
+Critical−32, 357 equipment terms and signed source order. Report absolute priority
+and independent positive hit percent, including negative initial-Critical cases
+and new KO without a living-target/victory shortcut. Unsupported score profile
+rejects before projection; forward projection rejection/NotValuable with no score
+and exact existing RNG progress. Score stage adds no draws/ticks/choices; a valid
+projection at MAX draw count still scores. Prove one fresh projection per wrapper
+call, full input preservation, collection/actor permutations, atomicity and replay.
+Known unsupported/unknown human/equipment/team/Golem facts must not default to
+support or be guessed from weapon IDs; do not extend the general MP/equipment model.
+Preserve old APIs/fixtures/evidence and add companions rather than changing audited
+files. Run locked restore, Release build, focused/full .NET and Python suites and
+repeated source/data/history audits. No comparison/ranking/lottery/search/roster/
+policy/interface/authoritative decision runner or RNG commit, general statuses,
+content/save/native/editor activation or C runtime. Editor UI and ZOD-106 remain
+deferred.
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 
