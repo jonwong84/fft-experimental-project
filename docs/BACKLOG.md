@@ -44,6 +44,26 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Current completion (2026-10-26): ZOD-119 is complete**, the opt-in
+[bounded facing wrapper and closed-enemy chooser](behavior/turn-facing-implementation.md).
+Explicit Wait applies one CT refund and facing atomically. Automatically ended
+Move+Act turns issue a receipt after full combat/movement settlement, block
+further commands and finalize facing without repeating CT/damage/RNG. Receipts
+bind actor, revision, exact settled snapshot and lineage; same-facing completion
+consumes authorization on the authoritative immutable state chain.
+Fresh clean read-only reference remains 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Locked restore/zero-warning Release build and **3,415 .NET / 359 Python tests**
+pass (144 new managed). All 18 FTF cases and 20 admitted source vector IDs execute.
+Repeated source/history and legacy artifact audits match; four managed headless
+runs preserve 14 sword-save and four Basic Skill files. Existing APIs/fixtures/
+scenario/save/native paths remain unchanged. See [evidence](evidence/ai/turn-facing-implementation-v1.json).
+**Recommended next: ZOD-120**, the bounded original flat AI movement/path
+composition contract. Current Move still has prototype legality and no original
+path heading. Full AI/search/roster/candidate-clock/decision RNG/interface remain
+separate work; editor and ZOD-106 stay deferred.
+
+### ZOD-118 source/design checkpoint (historical)
+
 **Current completion (2026-10-26): ZOD-118 is complete**, the
 [end-of-turn facing/completion contract](architecture/zod-118-turn-facing-contract.md).
 Clock completion and facing publication are separate in the original, including
@@ -1655,7 +1675,7 @@ proposal, with no production types, runtime behavior or save format introduced.
 
 ### ZOD-119 — Implement bounded turn-facing completion and closed-enemy choice
 
-**Type:** Feature · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-118
+**Type:** Feature · **Priority:** P3 · **Status:** Complete · **Depends on:** ZOD-118
 
 **Scope:** Freshly recheck ZOD-118 source/callers and implement its opt-in immutable
 Zodiac facing wrapper over the existing strict two-unit flat sword profile.
@@ -1680,6 +1700,37 @@ invent a movement path heading or claim original path/search parity. General
 multi-unit terrain/status/imminence helpers remain outside this profile. No
 scenario/native/content/save/editor activation, production AI interface/session
 RNG runner or midbattle-save work. Editor and ZOD-106 remain deferred.
+
+**Evidence (2026-10-26):** [API/reproduction](behavior/turn-facing-implementation.md)
+and [implementation mapping](evidence/ai/turn-facing-implementation-v1.json).
+All 18 FTF cases and 20 admitted source IDs execute in 144 new managed cases;
+3,415 .NET / 359 Python tests pass. Both completion paths, stale/cross-branch/
+earlier-turn receipts, exact settlement, pending barriers, CT/RNG/revision limits,
+current fields and immutable replay are covered. Legacy APIs and old evidence
+remain; no scenario/content/native/save activation or original path parity claim.
+
+### ZOD-120 — Specify flat ordinary AI movement and path composition
+
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-119
+
+**Scope:** Freshly source-trace the original movement, target-distance and selected
+path behavior needed by two ordinary opposing units on certified open dry flat
+lower ground. Follow callers from AI reachable/origin/destination enumeration
+through confirmed movement and settled heading. Compare existing managed movement
+prototypes against this precise domain before using them in an original selector.
+Keep general terrain/status/mount movement breadth outside this spike.
+
+**Acceptance criteria:** Pin the read-only revision, functions/data/widths/order
+and any random draws. Describe independently checkable reachable/stopping sets,
+enemy traversal/occupied destinations and detours, stay-at-origin candidates versus
+actual Move commands, target-distance propagation, scan/path tie ordering, both
+choice orders and paths from post-push coordinates. Include exact selected paths/
+final headings where source establishes them; record uncertainties and mismatches
+rather than infer heading from net displacement. Identify reusable managed rules
+and missing contracts, then produce one bounded implementation ticket. No broad
+movement rewrite, full AI/interface/search activation, new save format, native/
+editor work or midbattle saves. Preserve all existing evidence; ZOD-106 and editor
+redesign remain deferred.
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 

@@ -2,6 +2,51 @@
 
 ## Current handoff — 2026-10-26
 
+**ZOD-119 is complete.** FacingTurnBattle is an explicit opt-in immutable wrapper
+over the strict flat two-unit sword profile. It begins at healthy fresh AddCt
+with no elapsed ticks/choices, revision 0, and preserves the supplied RNG word/count
+since seeding. Typed Fixed/KeepCurrent/ChooseClosedEnemy choices use explicit enemy
+certification, current settled coordinates and name-based cardinal mapping.
+No inferred teams, general imminent roster or original path heading.
+
+Explicit WaitWithFacing publishes one legacy CT refund and one facing event.
+Automatic Move+Act completion mints a receipt only after the full settled command
+result, including HP/status/KO/push/RNG. Pending state blocks every further turn
+command until FinishFacing validates identity/actor/revision/snapshot/lineage and
+changes only facing. It consumes same-facing completion and rejects missing/stale/
+cross-branch/cross-run/earlier-turn receipts. Probes and zero-draw Wait/Finish work
+at exhausted RNG counts; revision overflow rejects before publication. Replay
+uses fresh internal receipts and no global consumed-token state.
+
+Fresh clean read-only reference remains 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Locked isolated restore and zero-warning Release build pass; **3,415 .NET / 359
+Python tests pass**, with 144 new managed cases. All 18 FTF implementation cases and
+20 admitted source vector IDs execute. The old ZOD-118 unexecuted inventory remains
+historical; new evidence owns the completed mapping. Initial focused failures
+shared unsupported zero-distance Move test setups; corrected before the final
+passing suite. A new friend-assembly metadata file enables internal counter-limit
+tests without a public snapshot/receipt injection API; existing C# files are unchanged.
+
+Two source/history audits match 12 files / 32 functions, 51 historical files and 13
+managed baseline files. Four managed headless CLI processes repeat 14 sword-save
+files (13 checkpoints, RNG 2473755763/22) and four Basic Skill files (46 commands,
+47 continuations, RNG 4200531631/58) against historical outputs. Two legacy audits
+match, preserving four prepared and 29 historical native files. No new native,
+original/emulator or C execution. No scenario/content/save/native path activates
+the wrapper; first-KO policy and death scheduling limits remain. Editor and
+ZOD-106 stay deferred.
+
+See [API/source/reproduction](behavior/turn-facing-implementation.md) and
+[implementation evidence](evidence/ai/turn-facing-implementation-v1.json).
+**Recommended next: ZOD-120**, specify original flat two-unit AI movement/path
+composition (enemy traversal/stay candidates/scan and path ties/final heading)
+before selecting a production movement rule for original AI. Search/roster/policy,
+candidate clock, authoritative decision RNG runner and IBattleDecisionPolicy
+implementation remain future work. TRX/reports/builder stay ignored under
+scratch/turn-facing-119-* and scratch/build_turn_facing_119_evidence.py.
+
+## ZOD-118 source/design checkpoint (historical)
+
 **ZOD-118 is complete**, the source and managed design contract for end-of-turn
 facing. Original Move+Act can clear has_turn before final facing; the controller
 still routes through WaitDirection and its repeated turn_end call is a no-op.
