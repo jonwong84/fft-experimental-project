@@ -2,6 +2,44 @@
 
 ## Current handoff — 2026-10-27
 
+**ZOD-125 is complete.** SwordAiCandidateProjection.Evaluate projects one supplied
+sword actor/target/destination/order with explicit decision RNG. Its new profile
+certifies the ordinary effect-free canonical clock and matching sword/movement
+profiles, baseline death counters and original slot order in stable TieKey.
+Movement admission runs on initial living state; the correct action origin is
+staged privately. Results are separate hypothetical data, with no active turn,
+events, command receipts or executable battle snapshot. Input/live RNG remains
+unchanged. Supported discard retains returned decision RNG; unsupported/late
+overflow rejection rolls back all staged draws. Zero accuracy is NotValuable.
+
+Both orders preserve incoming facing. New Critical/KO is admitted; corpses gain
+CT and consume upkeep draws without turn/death-counter decay. PickUnit precedes
+AddCt; cap/modulo/ties and selected choice resets remain source ordered. Projected
+KO never passes through a living-opponent validator or host first-KO terminal
+policy. No score, search, policy/interface or authoritative RNG commit is active.
+
+Fresh clean read-only reference remains 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Locked restore, zero-warning/error Release build and **3,824 .NET / 414 Python
+tests pass**. All 16 ACP cases pass in 128 new cases across 18 methods; 18 normalized
+candidate proposals are materialized with explicit map/certificate adapters.
+Initial focused 34 failures came from test snapshot JSON dictionary serialization;
+the helper was fixed, production unchanged, and focused 128/full 3,824 now pass.
+Three source/data/history audits match at 15 files / 31 functions, 92 preserved and
+27 managed baseline files plus one prepared status-table check. New evidence
+fingerprints 97 unchanged historical artifacts. Historical source inventories
+remain unchanged. No original/C/emulator/native execution or runtime activation.
+Owner Common/Ability drafts stay untouched and excluded; SDK build included them.
+
+See [API/reproduction](behavior/sword-ai-candidate-projection.md) and
+[implementation evidence](evidence/ai/candidate-implementation-v1.json).
+**Recommended next: ZOD-126**, source/design the closed candidate priority score
+and explicit human/equipment/team admission from the existing ZOD-116 mapping.
+Keep absolute state score and hit percent separate; no damage/probability shortcut
+or candidate ranking yet. Editor UI and ZOD-106 remain deferred. Reports/TRX:
+scratch/ai-candidate-125-*; builder scratch/build_ai_candidate_125_evidence.py.
+
+## ZOD-124 source/design checkpoint (historical)
+
 **ZOD-124 is complete.** The source/design contract for one supplied sword AI
 candidate covers both action/movement orders, coordinate-only placement preserving
 incoming facing, projected HP/Critical/Dead, turn-end CT, the first clock event,
