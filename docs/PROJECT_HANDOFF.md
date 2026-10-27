@@ -2,6 +2,44 @@
 
 ## Current handoff — 2026-10-26
 
+**ZOD-120 is complete**, the source/design contract for ordinary flat two-unit AI
+movement and selected paths. Living enemies block entry and equal-height jumping;
+physical range is the unit-cost cardinal graph ball with the enemy tile removed.
+Stay is an AI origin but is not a physical Move. Reverse target-distance propagation
+clears unit records and reduces to Manhattan on this certified rectangle; it is
+not the actor's occupied walking distance. Selected paths backtrace with previous
+direction preference, initially East, then E/N/W/S. Straight steps are not
+compressed. Original execution settles final step heading while AI placement
+changes coordinates without rotating facing. Post-push queries use current units.
+
+Fresh clean read-only reference remains 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Fifteen files / 42 functions and two prepared metadata records pin movement
+classes, caps, direction order, Natural default cost 1, callers and packed steps.
+All **378 Python tests pass** (19 new); independent graph distances, literal
+paths/headings and all predecessor-tie subsets/permutations supplement 48
+source-derived vectors in five families. Two audits match and preserve 68 historical
+and 21 managed baseline files. The first focused run hit the sandbox's default
+temporary-directory permissions; the full passing suite uses writable scratch/
+TEMP/TMP. No C# changes or .NET rerun: last implementation validation remains
+ZOD-119's 3,415 .NET / 359 Python tests. No new C/original/emulator/headless/native
+execution. Raw prepared assets and audit logs stay ignored under scratch/.
+
+See [source/design/reproduction](architecture/zod-120-flat-ai-movement-contract.md),
+[vectors](fixtures/behavior/flat-ai-movement-contract-v1.json) and
+[evidence](evidence/ai/flat-movement-contract-v1.json). **Recommended next: ZOD-121**,
+a pure opt-in certified flat movement query returning physical range, AI origins,
+reverse rows and exact path/packed steps/heading as data. Query geometry independently
+of command authority; require explicit cost1/stable-enemy certification and byte
+limits, bound maps to 1..16 for this compatibility profile. Do not switch the
+legacy Move or FacingTurnBattle paths, or rotate AI previews. A later execution
+adapter must settle real heading before completion receipts. All 18 FMP production
+cases remain unexecuted in the historical source fixture. Full AI search/roster/
+candidate clock/decision RNG/interface and general terrain remain future work.
+Editor and ZOD-106 stay deferred. Reports/builder: scratch/flat-movement-120-*
+and scratch/build_flat_movement_120.py.
+
+## ZOD-119 implementation checkpoint (historical)
+
 **ZOD-119 is complete.** FacingTurnBattle is an explicit opt-in immutable wrapper
 over the strict flat two-unit sword profile. It begins at healthy fresh AddCt
 with no elapsed ticks/choices, revision 0, and preserves the supplied RNG word/count

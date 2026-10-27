@@ -44,6 +44,26 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Current completion (2026-10-26): ZOD-120 is complete**, the
+[flat ordinary AI movement/path contract](architecture/zod-120-flat-ai-movement-contract.md).
+Living enemies block ordinary flat traversal, including horizontal jumps; legal
+detours can exceed Manhattan distance. AI origins add stay, reverse target
+distances clear unit occupancy, and exact path ties carry the previous backward
+direction (initially East). Executed walking settles its final step heading;
+AI simulation placement preserves facing. Existing managed movement APIs remain
+unchanged. Fresh clean reference is 11464943bbdbd2a0af022d90cb7f10455cf911df.
+**378 Python tests pass** (19 new), with 48 source-derived vectors / five families.
+Two matching audits check 15 files / 42 functions, 68 preserved files, 21 managed
+baseline files and two prepared metadata records. No C#/C/original execution or
+.NET rerun; last implementation validation remains 3,415 .NET / 359 Python.
+See [evidence](evidence/ai/flat-movement-contract-v1.json).
+**Recommended next: ZOD-121**, a pure opt-in certified flat movement/range/path
+query. All 18 FMP production cases remain unexecuted in the source artifact.
+Execution rotation/receipt integration, candidate clock, full AI search/roster/
+decision RNG/interface remain separate work. Editor and ZOD-106 stay deferred.
+
+### ZOD-119 implementation checkpoint (historical)
+
 **Current completion (2026-10-26): ZOD-119 is complete**, the opt-in
 [bounded facing wrapper and closed-enemy chooser](behavior/turn-facing-implementation.md).
 Explicit Wait applies one CT refund and facing atomically. Automatically ended
@@ -1711,7 +1731,7 @@ remain; no scenario/content/native/save activation or original path parity claim
 
 ### ZOD-120 — Specify flat ordinary AI movement and path composition
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-119
+**Type:** Spike · **Priority:** P3 · **Status:** Complete · **Depends on:** ZOD-119
 
 **Scope:** Freshly source-trace the original movement, target-distance and selected
 path behavior needed by two ordinary opposing units on certified open dry flat
@@ -1731,6 +1751,52 @@ and missing contracts, then produce one bounded implementation ticket. No broad
 movement rewrite, full AI/interface/search activation, new save format, native/
 editor work or midbattle saves. Preserve all existing evidence; ZOD-106 and editor
 redesign remain deferred.
+
+**Evidence (2026-10-26):** [Source/design contract](architecture/zod-120-flat-ai-movement-contract.md),
+[48 description vectors](fixtures/behavior/flat-ai-movement-contract-v1.json) and
+[pinned evidence](evidence/ai/flat-movement-contract-v1.json). Nineteen new Python
+tests cover literal selected paths/packed steps/headings, independent all-pairs
+graph distances, occupancy/detours, stay/choice flags, reverse rows, ties and
+post-push coordinates. All 378 Python tests pass. Repeated audits preserve
+68 historical and 21 managed baseline files and match 15 source files / 42
+functions plus two prepared metadata records at the clean pinned revision.
+Source descriptions do not establish executable original parity. No production
+movement, legacy activation, new C#/native/headless/original execution or .NET
+rerun. The bounded implementation follow-up is ZOD-121.
+
+### ZOD-121 — Implement the certified flat ordinary movement query
+
+**Type:** Feature · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-120
+
+**Scope:** Add a pure opt-in query for two living ordinary unmounted stable
+opponents on explicitly certified dry open flat lower ground with effective
+cost 1. Bound each dimension to 1..16 and source Move/Jump to bytes, applying
+caps 124/7. Query either actor from current settled coordinates. Return physical
+destinations/residuals, AI origins including stay, reverse target-distance rows,
+and an optional original selected adjacent path/packed steps/final execution
+heading. A moved flag filters AI origins only; command/phase authority is separate.
+
+**Acceptance criteria:** Execute FMP-001..018 in new implementation evidence
+without rewriting the historical ZOD-120 unexecuted inventory. Validate geometry,
+body/movement traits, explicit stable enemy relation and cost certification;
+reject missing costs/unsupported profiles rather than invent default semantics.
+Use typed unsupported/invalid-destination outcomes without partial publication.
+Check source byte caps, Move0, enemy traversal and detours/disconnected corridors,
+stay versus physical destinations, both actor identities, post-push current
+occupancy, whole selected reverse rows, deterministic y/x enumeration and exact
+backtrace ties/packed direction names. Compare actual managed prototype membership
+and exercise independent shortest-distance and literal path vectors. Queries are
+immutable/repeatable and consume no command/clock/RNG progress, including at an
+exhausted supplied RNG count. Return execution heading as data only; never rotate
+the battle or preview. Run locked restore, Release build and full .NET/Python
+tests while preserving legacy movement/facing APIs and historical evidence.
+
+No automatic movement policy selection, Move execution/facing-receipt adapter,
+scenario/content/save/native/editor activation, candidate clock, complete AI
+selector/search/roster/interface or general terrain/status/mount breadth. Editor
+redesign and ZOD-106 remain deferred. A later execution adapter must distinguish
+real path-facing publication from preview placement and settle facing before
+minting completion receipts.
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 
