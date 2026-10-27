@@ -85,10 +85,18 @@ public static class SwordAiCandidateScoring
             return new(SwordAiScoringDisposition.NotValuable, SwordAiScoringRejection.None, projection, null, projection.RngState);
 
         var outcome = projection.Outcome!;
+        return new(SwordAiScoringDisposition.Scored, SwordAiScoringRejection.None, projection,
+            ScoreFreshUnits(outcome.Units, outcome.TargetId, (byte)outcome.HitPercent), projection.RngState);
+    }
+
+    // Internal only: callers own a freshly validated private simulation, never a caller-populated public result.
+    internal static SwordAiCandidateScore ScoreFreshUnits(ImmutableArray<SwordAiProjectedUnit> units,
+        BattleUnitId targetId, byte hitPercent)
+    {
         short priority = 0;
-        var contributions = ImmutableArray.CreateBuilder<SwordAiUnitScoreContribution>(outcome.Units.Length);
+        var contributions = ImmutableArray.CreateBuilder<SwordAiUnitScoreContribution>(units.Length);
         // The trusted fresh projection supplies original TieKey order, consistent HP/status and only two units.
-        foreach (var unit in outcome.Units)
+        foreach (var unit in units)
         {
             int hp = unit.Hp * 128 / unit.MaxHp;
             int status = unit.Status switch
@@ -100,12 +108,11 @@ public static class SwordAiCandidateScoring
             };
             const int equipment = 7 * 51; // Equal unchanged human terms cancel only after each unit is scored.
             int total = hp + status + equipment;
-            bool enemy = unit.UnitId == outcome.TargetId;
+            bool enemy = unit.UnitId == targetId;
             int signed = enemy ? -total : total;
             priority = unchecked((short)(priority + signed)); // Source narrows after each unit; admitted final range -160..320.
             contributions.Add(new(unit.UnitId, unit.TieKey, enemy, hp, status, equipment, total, signed, priority));
         }
-        return new(SwordAiScoringDisposition.Scored, SwordAiScoringRejection.None, projection,
-            new(priority, (byte)outcome.HitPercent, contributions.ToImmutable()), projection.RngState);
+        return new(priority, hitPercent, contributions.ToImmutable());
     }
 }

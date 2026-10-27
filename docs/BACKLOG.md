@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-136 (implementation).** The baseline/list source trace ZOD-135 is complete.
-There are 32 open tickets below. The 104 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-137 (source/design).** The movement-only baseline ZOD-136 is complete.
+There are 32 open tickets below. The 105 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -27,24 +27,27 @@ provide detail. This file supersedes archived priorities and next-task advice.
   or old test counts here. Keep the handoff current rather than chronological.
 
 
-## Next bounded implementation milestone
+## Next bounded source/design milestone
 
-### ZOD-136 — Implement one certified movement-only AI baseline evaluation
+### ZOD-137 — Specify fresh baseline/Attack composition and ranked admission
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-135
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-136
 
-Project and score one supplied movement-only baseline destination from original
-two-opponent state, explicit source-context certificates and decision RNG. Validate
-the original destination/fresh score-cell provenance; preserve unused-ACT CT refunds,
-first-ready clock order, unchanged HP/status, absolute signed score and hit=100.
-Consume one upkeep draw and no sword-formula draws in the admitted effect-free slice.
-Reject unsupported/exhausted queries atomically; expose immutable hypothetical
-diagnostics without live state/RNG changes or trusted caller-populated outcomes.
+Define the smallest truthful composition of the fresh movement baseline and one
+ordinary Attack scan into original ranked admission. Trace the movement score-cell
+and RNG timeline through Attack entry: tile evaluations consume draws, while
+baseline seeding does not. Do not blindly chain one isolated baseline evaluation
+into a scan as a complete source search. Bound fresh-cell/context admission and
+own original state, private fresh evaluations/cache/best/list and atomic failure.
 
-Follow the [ZOD-135 contract and focused cases](architecture/zod-135-ai-rank-admission.md#smallest-implementation-follow-up-zod-136).
-Ranked-list composition follows separately after this helper is validated. Full
-scenario/ability search, lottery, decision interface, commands and native/editor
-activation remain outside this milestone. Recheck the read-only reference HEAD.
+Use the [baseline implementation](behavior/sword-ai-movement-baseline.md) and
+[ZOD-135 insertion trace](architecture/zod-135-ai-rank-admission.md#strict-admission-and-list-insertion).
+Pin strict baseline gating, zero versus absent score, stable ties/duplicates,
+eight-slot source capacity and real coverage limits of the two-opponent Attack
+slice. Deliver a concise contract/focused cases for its C# follow-up; no trusted
+caller-populated outcomes or production API are required here. Full scenario/
+ability search, lottery, decision interface, commands and native/editor activation
+remain separate. Recheck the read-only reference HEAD.
 
 ## Existing validation gates
 

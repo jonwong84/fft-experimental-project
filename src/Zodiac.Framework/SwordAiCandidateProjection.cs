@@ -133,39 +133,10 @@ public static class SwordAiCandidateProjection
                 isActor ? moved : turn.MovementTaken, isActor || turn.ActionTaken);
         }).ToArray();
 
-        var rng = formula.RngState;
-        var random = new FftBiosRandom();
-        ulong ticks = turns.Ticks, elapsed = 0;
-        var picks = ImmutableArray.CreateBuilder<SwordAiUpkeepPick>();
-        while (true)
-        {
-            int best = -1;
-            for (int i = 0; i < units.Length; i++)
-                if (units[i].Ct >= 100 && (best < 0 || units[i].Ct > units[best].Ct ||
-                    units[i].Ct == units[best].Ct && units[i].TieKey < units[best].TieKey)) best = i;
-            if (best >= 0)
-            {
-                var selected = units[best];
-                int remainder = selected.Ct % 100;
-                try
-                {
-                    var draw = random.Next(rng); rng = draw.State;
-                    picks.Add(new(selected.UnitId, selected.Ct, remainder, selected.Status == AttackUnitStatus.Dead, draw.Value));
-                }
-                catch (OverflowException) { return Reject(SwordAiCandidateRejection.RandomDrawCountExhausted); }
-                units[best] = selected with { Ct = remainder };
-                // In AI mode a corpse gets upkeep draws/modulo, but no turn or death-counter decay.
-                if (selected.Status == AttackUnitStatus.Dead) continue;
-                units[best] = units[best] with { MovementTaken = false, ActionTaken = false };
-                return new(SwordAiCandidateDisposition.Projected, SwordAiCandidateRejection.None,
-                    new(actor.UnitId, target.UnitId, formula.Outcome.HitPercent, formula.Outcome.NormalDamage, turnEndCt,
-                        units.ToImmutableArray(), selected.UnitId, elapsed, ticks, picks.ToImmutable()), rng);
-            }
-            // End-turn phases are effect-free under the explicit certificate. Check PickUnit before AddCt.
-            // A positive-speed living actor guarantees readiness within 100 additions, including after KO.
-            if (ticks == ulong.MaxValue) return Reject(SwordAiCandidateRejection.TickCountExhausted);
-            ticks++; elapsed++;
-            for (int i = 0; i < units.Length; i++) units[i] = units[i] with { Ct = Math.Min(254, units[i].Ct + units[i].Speed) };
-        }
+        var clockRejection = SwordAiSimulationClock.Advance(units, turns.Ticks, formula.RngState, out var clock);
+        if (clockRejection != SwordAiCandidateRejection.None) return Reject(clockRejection);
+        return new(SwordAiCandidateDisposition.Projected, SwordAiCandidateRejection.None,
+            new(actor.UnitId, target.UnitId, formula.Outcome.HitPercent, formula.Outcome.NormalDamage, turnEndCt,
+                clock!.Units, clock.MoveOpportunityUnitId, clock.ElapsedTicks, clock.Ticks, clock.UpkeepPicks), clock.RngState);
     }
 }
