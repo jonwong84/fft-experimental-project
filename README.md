@@ -83,6 +83,10 @@ dotnet test Fft.sln -c Release --no-build --no-restore
 dotnet run --project src/Fft.Client -c Release --no-build --no-restore -- --battle
 ```
 
+See [test maintenance and historical audits](docs/development/test-maintenance.md)
+for focused AI groups, extension coverage and reproduction of recorded evidence
+without freezing current code to historical hashes.
+
 In the playable window, `N` advances to the next turn, `M` selects Move, `A` selects Attack, `W` waits, and `R` restarts. Click units/cards and destinations/targets, or use the keyboard cursor. The player controls both units. See the [complete controls and example victory sequence](docs/development/playable-battle.md#controls).
 
 To run the headless script or the separate static synthetic window:

@@ -4,6 +4,7 @@ using Xunit;
 namespace Zodiac.Framework.Tests;
 
 /// <summary>Formula-only source-derived cases; no whole-AI or executable-reference equivalence claim.</summary>
+[Trait("Ruleset", "OriginalFft")]
 public sealed class SwordAiFormulaProjectionTests
 {
     private static readonly BattleUnitId A = new("sample:unit/a"), B = new("sample:unit/b");
@@ -115,6 +116,7 @@ public sealed class SwordAiFormulaProjectionTests
 
     [Theory] [InlineData(255, 64, true)] [InlineData(255, 65, false)]
     [InlineData(65, 254, true)] [InlineData(65, 255, false)]
+    [Trait("Coverage", "CurrentAdmission")]
     public void Signed_envelope_gate_precedes_draws_even_for_certain_evasion(int pa, int power, bool supported)
     {
         var state = State(pa: pa, evade: 100, count: ulong.MaxValue - 4); var result = Project(state, power);
@@ -146,6 +148,7 @@ public sealed class SwordAiFormulaProjectionTests
     }
 
     [Theory] [InlineData(false, false)] [InlineData(false, true)] [InlineData(true, false)] [InlineData(true, true)]
+    [Trait("Contract", "QueryIsolation")]
     public void Target_choice_flags_and_full_input_remain_unchanged(bool moved, bool acted)
     {
         var state = State(targetMoved: moved, targetActed: acted);
@@ -246,6 +249,7 @@ public sealed class SwordAiFormulaProjectionTests
     [InlineData("height")] [InlineData("half")] [InlineData("ceiling")] [InlineData("surface")]
     [InlineData("slope")] [InlineData("layer")] [InlineData("overlap")] [InlineData("third")]
     [InlineData("fly")] [InlineData("traits")] [InlineData("body")] [InlineData("blocked-upper")]
+    [Trait("Coverage", "CurrentAdmission")]
     public void Entire_certified_geometry_is_checked_before_rng(string geometry)
     {
         var state = State(geometry: geometry, count: ulong.MaxValue);

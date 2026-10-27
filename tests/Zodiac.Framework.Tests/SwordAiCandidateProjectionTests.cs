@@ -4,6 +4,7 @@ using Xunit;
 namespace Zodiac.Framework.Tests;
 
 /// <summary>Closed source-derived projection tests; no original-game or full-AI equivalence claim.</summary>
+[Trait("Ruleset", "OriginalFft")]
 public sealed class SwordAiCandidateProjectionTests
 {
     private static readonly BattleUnitId A = new("sample:unit/a"), B = new("sample:unit/b");
@@ -244,6 +245,7 @@ public sealed class SwordAiCandidateProjectionTests
     [Theory] [InlineData("blocked")] [InlineData("water")] [InlineData("height")] [InlineData("cost-two")]
     [InlineData("enemy-cost")] [InlineData("move256")] [InlineData("jump256")] [InlineData("fly")]
     [InlineData("traits")] [InlineData("body")] [InlineData("overlap")] [InlineData("large")]
+    [Trait("Coverage", "CurrentAdmission")]
     public void Unsupported_whole_profiles_reject_without_rng_or_fallback(string geometry)
     { Atomic(Project(State(geometry: geometry),rng: new(1,ulong.MaxValue)),SwordAiCandidateRejection.UnsupportedProfile,new(1,ulong.MaxValue)); }
 
@@ -252,6 +254,7 @@ public sealed class SwordAiCandidateProjectionTests
     { Atomic(Project(State(move: 1),new(A,B,new(x,y,layer),SwordAiCandidateOrder.MoveThenAct)),SwordAiCandidateRejection.InvalidCandidate); }
 
     [Fact]
+    [Trait("Coverage", "CurrentAdmission")]
     public void Weapon_and_signed_envelope_guards_precede_random_work_even_at_certain_evade()
     {
         var state = State(evade: 100,pa: 255);
@@ -262,6 +265,7 @@ public sealed class SwordAiCandidateProjectionTests
     }
 
     [Fact]
+    [Trait("Coverage", "CurrentAdmission")]
     public void Profile_requires_complete_matching_ground_opponents_and_baselines()
     {
         Assert.Throws<ArgumentNullException>(() => new SwordAiCandidateProfile(null!,Movement,[]));
@@ -277,6 +281,7 @@ public sealed class SwordAiCandidateProjectionTests
     }
 
     [Theory] [InlineData(false)] [InlineData(true)]
+    [Trait("Contract", "QueryIsolation")]
     public void Discard_carry_replay_and_independent_branches_have_no_hidden_random_or_live_mutation(bool noAccuracy)
     {
         var state = State(evade: noAccuracy ? 100 : 0); string before = Snapshot(state);

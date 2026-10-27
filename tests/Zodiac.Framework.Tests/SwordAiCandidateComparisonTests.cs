@@ -1,10 +1,10 @@
-using System.Reflection;
 using System.Text.Json;
 using Xunit;
 
 namespace Zodiac.Framework.Tests;
 
-/// <summary>Closed managed pair regressions and explicitly isolated source rank kernels; no original execution.</summary>
+/// <summary>Original-rule pair behavior through public queries; no original execution.</summary>
+[Trait("Ruleset", "OriginalFft")]
 public sealed class SwordAiCandidateComparisonTests
 {
     private static readonly BattleUnitId A = new("sample:unit/ramza"), B = new("sample:unit/delita");
@@ -18,18 +18,18 @@ public sealed class SwordAiCandidateComparisonTests
     {
         using var document = Contract();
         foreach (var row in document.RootElement.GetProperty("vectors").EnumerateArray().Where(r => r.GetProperty("family").GetString() == "proposed-pair"))
-        foreach (bool reverse in new[] { false, true }) yield return [row.GetProperty("id").GetString()!, reverse];
+            yield return [row.GetProperty("id").GetString()!];
     }
 
     [Theory] [MemberData(nameof(Proposals))]
-    public void Executes_22_normalized_pair_proposals_with_real_geometry_formula_and_both_collection_orders(string id, bool reverse)
+    public void Executes_normalized_pair_proposals_with_real_geometry_and_formula(string id)
     {
         using var document = Contract();
         var row = document.RootElement.GetProperty("vectors").EnumerateArray().Single(r => r.GetProperty("id").GetString() == id);
         var d = row.GetProperty("inputs"); var e = row.GetProperty("expected"); var descriptions = d.GetProperty("candidates");
         var scoring = descriptions[0].GetProperty("scoring"); var c = scoring.GetProperty("candidate");
         bool second = d.GetProperty("actorId").GetString() == "Delita";
-        var state = State(second: second, reverse: reverse || id == "pair-reverse-collection",
+        var state = State(second: second, reverse: id == "pair-reverse-collection",
             actorHp: scoring.GetProperty("actorHp").GetInt32(), actorMax: scoring.GetProperty("actorMaxHp").GetInt32(),
             hp: c.GetProperty("targetHp").GetInt32(), maxHp: c.GetProperty("targetMaxHp").GetInt32(),
             evade: 100 - descriptions.EnumerateArray().Min(r => r.GetProperty("scoring").GetProperty("candidate").GetProperty("hitPercent").GetInt32()),
@@ -89,37 +89,18 @@ public sealed class SwordAiCandidateComparisonTests
         }
     }
 
-    public static IEnumerable<object[]> RankKernels()
+    [Theory] [InlineData(false, 0)] [InlineData(false, 1)] [InlineData(true, 0)] [InlineData(true, 1)]
+    [Trait("Contract", "QueryIsolation")]
+    public void Collection_order_does_not_change_decision_or_mutate_either_input(bool second, int slot)
     {
-        using var document = Contract();
-        foreach (var row in document.RootElement.GetProperty("vectors").EnumerateArray().Where(r => r.GetProperty("family").GetString() == "source-rank"))
-            if (row.GetProperty("inputs").GetProperty("first").GetProperty("decided").GetInt32() == 0 &&
-                row.GetProperty("inputs").GetProperty("second").GetProperty("decided").GetInt32() == 0)
-                foreach (bool swap in new[] { false, true }) yield return [row.GetProperty("id").GetString()!, swap];
-    }
-
-    [Theory] [MemberData(nameof(RankKernels))]
-    public void Isolated_private_rank_kernel_matches_source_signed_priority_hit_and_strict_proximity(string id, bool swap)
-    {
-        using var document = Contract();
-        var row = document.RootElement.GetProperty("vectors").EnumerateArray().Single(r => r.GetProperty("id").GetString() == id);
-        var first = row.GetProperty("inputs").GetProperty(swap ? "second" : "first");
-        var second = row.GetProperty("inputs").GetProperty(swap ? "first" : "second");
-        // Diagnostic source kernel only: priorities outside -160..320 cannot enter the public closed pair.
-        var method = typeof(SwordAiCandidateComparison).GetMethod("Compare", BindingFlags.NonPublic | BindingFlags.Static)!;
-        var result = ((bool ChallengerIsHigher, SwordAiComparisonReason Reason))method.Invoke(null,
-            [(short)second.GetProperty("priority").GetInt32(), (byte)second.GetProperty("hit").GetInt32(), (byte)second.GetProperty("proximity").GetInt32(),
-             (short)first.GetProperty("priority").GetInt32(), (byte)first.GetProperty("hit").GetInt32(), (byte)first.GetProperty("proximity").GetInt32()])!;
-        bool expected = first.GetProperty("priority").GetInt32() > second.GetProperty("priority").GetInt32() ||
-            first.GetProperty("priority").GetInt32() == second.GetProperty("priority").GetInt32() &&
-            (first.GetProperty("hit").GetInt32() > second.GetProperty("hit").GetInt32() ||
-             first.GetProperty("hit").GetInt32() == second.GetProperty("hit").GetInt32() && first.GetProperty("proximity").GetInt32() < second.GetProperty("proximity").GetInt32());
-        Assert.Equal(expected, result.ChallengerIsHigher);
-        if (!swap) Assert.Equal(row.GetProperty("expected").GetProperty("firstIsHigher").GetBoolean(), result.ChallengerIsHigher);
-        var reason = first.GetProperty("priority").GetInt32() != second.GetProperty("priority").GetInt32() ? SwordAiComparisonReason.Priority :
-            first.GetProperty("hit").GetInt32() != second.GetProperty("hit").GetInt32() ? SwordAiComparisonReason.HitPercent :
-            first.GetProperty("proximity").GetInt32() != second.GetProperty("proximity").GetInt32() ? SwordAiComparisonReason.Proximity : SwordAiComparisonReason.Equal;
-        Assert.Equal(reason, result.Reason);
+        var original = State(second: second, slot: slot, evade: 50);
+        var reversed = State(second: second, slot: slot, evade: 50, reverse: true);
+        var before = Snapshot(original); var reversedBefore = Snapshot(reversed);
+        var incumbent = Candidate(second);
+        var challenger = Candidate(second, new(1, 1, 0), SwordAiCandidateOrder.ActThenMove);
+        var expected = Evaluate(original, incumbent, challenger);
+        Assert.Equal(Serialize(expected), Serialize(Evaluate(reversed, incumbent, challenger)));
+        Assert.Equal(before, Snapshot(original)); Assert.Equal(reversedBefore, Snapshot(reversed));
     }
 
     [Theory] [InlineData(50, 0, 0)] [InlineData(10, 0, -135)] [InlineData(10, 5, -71)]
@@ -236,6 +217,7 @@ public sealed class SwordAiCandidateComparisonTests
     }
 
     [Theory] [InlineData(0)] [InlineData(1)] [InlineData(2)] [InlineData(3)] [InlineData(4)] [InlineData(5)]
+    [Trait("Coverage", "CurrentAdmission")]
     public void Missing_default_false_or_mismatched_comparison_certificate_rejects_before_invalid_weapon_and_rng(int kind)
     {
         var profile = kind switch
@@ -266,6 +248,7 @@ public sealed class SwordAiCandidateComparisonTests
     }
 
     [Theory] [InlineData(0)] [InlineData(1)] [InlineData(2)] [InlineData(3)]
+    [Trait("Coverage", "CurrentAdmission")]
     public void Unsupported_geometry_and_initial_terminal_state_publish_no_cache(int kind)
     {
         var state = State(width: kind == 0 ? 17 : 3, height: kind == 1 ? 11 : 10, cost: kind == 2 ? 2 : 1, hp: kind == 3 ? 0 : 50);
@@ -273,6 +256,7 @@ public sealed class SwordAiCandidateComparisonTests
     }
 
     [Theory] [InlineData(0)] [InlineData(1)] [InlineData(16)] [InlineData(-1)]
+    [Trait("Coverage", "CurrentAdmission")]
     public void Unsupported_score_facts_preserve_original_typed_reason_and_no_partial_payload(int facts)
     {
         var profile = new SwordAiScoreProfile([new(A, (SwordAiScoreFacts)facts), new(B, SwordAiScoreFacts.ClosedProfile)]);
@@ -309,22 +293,19 @@ public sealed class SwordAiCandidateComparisonTests
     }
 
     [Fact]
-    public void Public_entry_accepts_original_inputs_only_nulls_are_programmer_errors_and_no_command_authority_is_created()
+    public void Null_arguments_and_unavailable_actions_have_explicit_failures()
     {
-        var method = Assert.Single(typeof(SwordAiCandidateComparison).GetMethods(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly));
-        Assert.Equal("Evaluate", method.Name);
-        Assert.Equal(new[] { typeof(AttackBattleSnapshot), typeof(SwordAiCandidate), typeof(SwordAiCandidate), typeof(BoundedSwordWeapon),
-            typeof(SwordAiCandidateProfile), typeof(SwordAiScoreProfile), typeof(SwordAiComparisonProfile), typeof(FftRandomState) }, method.GetParameters().Select(p => p.ParameterType));
-        var args = new object?[] { State(), Candidate(), Candidate(), new BoundedSwordWeapon(Weapon, 5), CandidateProfile, ScoreProfile, new SwordAiComparisonProfile(A, B, true), Decision };
-        foreach (int index in new[] { 0, 1, 2, 4, 5, 6 })
-        {
-            var copy = args.ToArray(); copy[index] = null;
-            Assert.IsType<ArgumentNullException>(Assert.Throws<TargetInvocationException>(() => method.Invoke(null, copy)).InnerException);
-        }
-        var noWeapon = args.ToArray(); noWeapon[3] = null;
-        var rejected = Assert.IsType<SwordAiComparisonResult>(method.Invoke(null, noWeapon));
+        var state = State(); var candidate = Candidate(); var weapon = new BoundedSwordWeapon(Weapon, 5);
+        var profile = new SwordAiComparisonProfile(A, B, true);
+        Assert.Throws<ArgumentNullException>(() => SwordAiCandidateComparison.Evaluate(null!, candidate, candidate, weapon, CandidateProfile, ScoreProfile, profile, Decision));
+        Assert.Throws<ArgumentNullException>(() => SwordAiCandidateComparison.Evaluate(state, null!, candidate, weapon, CandidateProfile, ScoreProfile, profile, Decision));
+        Assert.Throws<ArgumentNullException>(() => SwordAiCandidateComparison.Evaluate(state, candidate, null!, weapon, CandidateProfile, ScoreProfile, profile, Decision));
+        Assert.Throws<ArgumentNullException>(() => SwordAiCandidateComparison.Evaluate(state, candidate, candidate, weapon, null!, ScoreProfile, profile, Decision));
+        Assert.Throws<ArgumentNullException>(() => SwordAiCandidateComparison.Evaluate(state, candidate, candidate, weapon, CandidateProfile, null!, profile, Decision));
+        Assert.Throws<ArgumentNullException>(() => SwordAiCandidateComparison.Evaluate(state, candidate, candidate, weapon, CandidateProfile, ScoreProfile, null!, Decision));
+        var rejected = SwordAiCandidateComparison.Evaluate(state, candidate, candidate, null, CandidateProfile, ScoreProfile, profile, Decision);
         Failed(rejected, SwordAiComparisonRejection.EvaluationRejected); Assert.Equal(SwordAiCandidateRejection.UnsupportedProfile, rejected.ProjectionRejection);
-        var state = State(acted: true); var result = Evaluate(state);
+        var result = Evaluate(State(acted: true));
         Failed(result, SwordAiComparisonRejection.EvaluationRejected); Assert.Equal(SwordAiCandidateRejection.UnavailableAction, result.ProjectionRejection);
         var certificate = new SwordAiComparisonProfile(A, B); var certified = certificate with { FreshDecisionBaseline = true };
         Assert.False(certificate.FreshDecisionBaseline); Assert.True(certified.FreshDecisionBaseline);

@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 import unittest
 
-from verify_voluntary_move_contract import (FIXTURE, MAX, audit, calculate, confirm, proposed_finish,
+from verify_voluntary_move_contract import (FIXTURE, MAX, calculate, confirm, proposed_finish,
     proposed_move, validate, walk)
 from verify_flat_movement_contract import flat_route
 
@@ -20,12 +20,9 @@ class VoluntaryMoveContractTests(unittest.TestCase):
         row=self.vector(name)
         return calculate(row['family'],row['inputs'])
 
-    def test_inventory_history_and_baseline_without_C_or_managed_execution(self):
-        result=audit(ROOT,check_managed_baseline=True)
-        self.assertEqual((60,6,18,82,24),(result['vectors'],result['families'],result['implementationCasesUnexecuted'],
-                                        result['preservedFiles'],result['managedBaselineFilesChecked']))
-        self.assertEqual(0,result['referenceFunctionsChecked'])
-        for key in ('productionImplemented','fullAiExecuted','originalExecuted'):self.assertFalse(result[key])
+    def test_current_description_vectors_are_consistent(self):
+        result=validate(self.contract())
+        self.assertEqual((60,6,18),(result['vectors'],result['families'],result['implementationCasesUnexecuted']))
 
     def test_walk_uses_literal_source_byte_mapping_and_ACTION_EXECUTE_preserves_facing(self):
         for code,face in ((0,'East'),(64,'West'),(128,'South'),(192,'North')):

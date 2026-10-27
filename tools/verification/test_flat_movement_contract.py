@@ -7,7 +7,7 @@ import struct
 import tempfile
 import unittest
 
-from verify_flat_movement_contract import (FIXTURE, audit, calculate, flat_route,
+from verify_flat_movement_contract import (FIXTURE, calculate, flat_route,
     placement, preferred_predecessor, validate, verify_retail)
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -23,12 +23,10 @@ class FlatMovementContractTests(unittest.TestCase):
         row=self.vector(name)
         return calculate(row['family'],row['inputs'])
 
-    def test_inventory_history_and_managed_baseline_without_original_execution(self):
-        result=audit(ROOT,check_managed_baseline=True)
-        self.assertEqual((48,5,18,68,21),(result['vectors'],result['families'],
-            result['implementationCasesUnexecuted'],result['preservedFiles'],result['managedBaselineFilesChecked']))
-        self.assertEqual(0,result['referenceFunctionsChecked'])
-        for key in ('productionImplemented','fullAiExecuted','originalExecuted'):self.assertFalse(result[key])
+    def test_current_description_vectors_are_consistent(self):
+        result=validate(self.contract())
+        self.assertEqual((48,5,18),(result['vectors'],result['families'],
+            result['implementationCasesUnexecuted']))
 
     def test_zero_move_and_byte_caps_have_positive_origin_residual(self):
         zero=self.result('move-zero')

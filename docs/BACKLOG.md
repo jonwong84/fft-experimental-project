@@ -40,11 +40,23 @@ alone do not make it Ready.
 
 IDs stay stable when priorities change. No calendar estimates or story points are assigned: the source investigations and first implementations should establish a basis for estimating individual tasks. Dependencies below are planning assumptions to refine during the relevant spike. Within a priority, use the recommended queue and dependency order; a high-numbered Ready investigation can proceed alongside an earlier one when it does not edit the same files.
 
-For every implementation ticket: preserve the existing test suite, add meaningful regression coverage for new behavior, update its behavior/architecture note, and run the relevant build/tests. Record evidence as source-derived, executable-reference, emulator/original observation, or synthetic expectation. Source-derived expectations alone must not be called proven original-game equivalence. Maintain the managed runtime boundary, prepared-files-only runtime, immutable definitions/state separation, and original-mode isolation throughout.
+For every implementation ticket: preserve meaningful behavioral coverage, add regression checks for new behavior, update its behavior/architecture note, and run the relevant build/tests. Existing tests may be consolidated or revised when their contract changes deliberately; test count, private method structure and historical source hashes are not current correctness requirements. Follow the [test maintenance policy](development/test-maintenance.md). Record evidence as source-derived, executable-reference, emulator/original observation, or synthetic expectation. Source-derived expectations alone must not be called proven original-game equivalence. Maintain the managed runtime boundary, prepared-files-only runtime, immutable definitions/state separation, and original-mode isolation throughout.
 
 ## Recommended next queue
 
-**Current completion (2026-10-27): ZOD-130 is complete**, the
+**Current completion (2026-10-27): ZOD-132 is complete.** The owner prioritized
+test maintainability before more AI implementation. Routine source-description
+tests no longer freeze current files to historical hashes. Nine explicit audits
+run against their own recorded Git checkpoints, preserving the old manifests,
+fixtures and verifier code. AI tests use original-rules/admission/isolation labels;
+public-query regressions replace structural reflection checks and redundant
+collection-order permutations. See [policy, commands and coverage limits](development/test-maintenance.md).
+Locked restore, zero-warning/error Release build, **4,082 .NET / 477 Python tests**
+and all nine historical audits pass. Runtime behavior and owner drafts are untouched.
+**ZOD-131 remains the next feature ticket**, after the requested maintenance pause;
+no scan implementation started. Editor UI and ZOD-106 remain deferred.
+
+**ZOD-130 source/design checkpoint (historical):** the
 [one-scenario ordinary sword scan contract](architecture/zod-130-ai-scan-contract.md).
 Weapon-derived Attack is tile-targeted, range 1/AoE0/CT0, with exhaustive runtime
 policy. Cast origins are the supplied scenario mask intersected with target range;
@@ -2405,6 +2417,30 @@ frame/coroutine API. All 473 Python tests pass (21 new); repeated audits match a
 historical 26-foe wrap example is unreachable. No C#/.NET rerun, original/C/native
 execution or runtime activation. ASN-001..016 remain unexecuted production cases.
 Owner drafts preserved/excluded. **Next: ZOD-131** below.
+
+### ZOD-132 — Separate current behavioral tests from historical checkpoint audits
+
+**Type:** Maintenance · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-130
+
+**Owner priority:** Address test maintenance and extension friction before ZOD-131.
+
+**Delivered:** Routine inventory tests validate current descriptions without
+historical hashes. A separate Git snapshot runner executes nine unchanged
+source-description auditors with managed-baseline checks at their individual
+recorded commits. Tests cover checkout independence, owner draft preservation,
+corrupt history, missing history and export confinement. Four AI classes are
+labeled OriginalFft, selected guard cases CurrentAdmission, and selected state/
+replay checks QueryIsolation. All 22 public pair proposals remain; four focused
+collection-order cases replace repeated permutations. Private rank reflection
+tests and exact public API shape assertions are removed; public null/error checks
+and Python source kernels remain. The [maintenance guide](development/test-maintenance.md)
+explains extension coverage, evolving admission limits and the remaining coverage
+boundary. No runtime/AI interface/editor changes or historical evidence rewrites.
+
+**Validation:** Locked restore and Release build (zero warnings/errors), 613
+focused original-rule AI cases, **4,082 full .NET / 477 Python tests**, and nine
+historical audits pass. Counts report execution, not a target for future tickets.
+Owner definitions drafts are preserved and excluded from the commit.
 
 ### ZOD-131 — Implement one-scenario ordinary sword candidate scan
 

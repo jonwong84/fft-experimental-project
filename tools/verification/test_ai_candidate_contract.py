@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 import unittest
 
-from verify_ai_candidate_contract import (FIXTURE, MAX, audit, action_order, first_clock,
+from verify_ai_candidate_contract import (FIXTURE, MAX, action_order, first_clock,
     ownership, proposed_candidate, status_result, validate, verify_status_records)
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -17,12 +17,10 @@ class AiCandidateContractTests(unittest.TestCase):
 
     def data(self, name='stay'): return self.vector(name)['inputs']
 
-    def test_inventory_and_preserved_baseline_without_native_or_reference_execution(self):
-        result = audit(ROOT, check_managed_baseline=True)
-        self.assertEqual((44, 5, 16, 92, 27), tuple(result[k] for k in ('vectors','families',
-            'implementationCasesUnexecuted','preservedFiles','managedBaselineFilesChecked')))
-        for key in ('productionImplemented','fullAiExecuted','originalExecuted'): self.assertFalse(result[key])
-        self.assertEqual(0, result['referenceFunctionsChecked'])
+    def test_current_description_vectors_are_consistent(self):
+        result = validate(self.contract())
+        self.assertEqual((44, 5, 16), tuple(result[k] for k in ('vectors','families',
+            'implementationCasesUnexecuted')))
 
     def test_classification_duplicate_and_changed_vector_are_rejected(self):
         for mutation in ('classification','duplicate','expected'):

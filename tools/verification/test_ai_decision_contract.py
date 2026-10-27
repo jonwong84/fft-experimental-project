@@ -6,7 +6,7 @@ import struct
 import tempfile
 import unittest
 
-from verify_ai_decision_contract import FIXTURE, audit, calculate, direction, rank_compare, validate, verify_prepared_record
+from verify_ai_decision_contract import FIXTURE, calculate, direction, rank_compare, validate, verify_prepared_record
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -18,13 +18,10 @@ class AiDecisionContractTests(unittest.TestCase):
     def vector(self, name):
         return copy.deepcopy(next(row for row in self.contract()['vectors'] if row['id'] == name))
 
-    def test_all_helper_vectors_and_preserved_history_without_reference_checkout(self):
-        result = audit(ROOT)
-        self.assertEqual((50, 8, 20, 37), (result['vectors'], result['families'],
-                         result['implementationCasesUnexecuted'], result['preservedFiles']))
-        self.assertFalse(result['fullAiExecuted'])
-        self.assertFalse(result['productionInterfaceImplemented'])
-        self.assertEqual(0, result['managedBaselineFilesChecked'])
+    def test_current_description_vectors_are_consistent(self):
+        result = validate(self.contract())
+        self.assertEqual((50, 8, 20), (result['vectors'], result['families'],
+                         result['implementationCasesUnexecuted']))
 
     def test_exact_action_tie_keeps_incumbent_but_lower_proximity_wins(self):
         tie = self.vector('exact-tie-keeps-earlier')

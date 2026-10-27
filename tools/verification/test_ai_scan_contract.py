@@ -5,7 +5,7 @@ from pathlib import Path
 import unittest
 from unittest.mock import patch
 
-from verify_ai_scan_contract import (FIXTURE,EVIDENCE,MAX,CERTIFICATES,audit,calculate,proposed_scan,
+from verify_ai_scan_contract import (FIXTURE,EVIDENCE,MAX,CERTIFICATES,calculate,proposed_scan,
     source_policy,source_masks,source_resume,source_roster_bound,validate,verify_retail)
 from verify_ai_score_contract import proposed_scoring
 from verify_ai_decision_contract import draws
@@ -19,11 +19,8 @@ class AiScanContractTests(unittest.TestCase):
     def data(self,name='scan-four-origins'):return self.row(name)['inputs']
     def result(self,name):return self.row(name)['expected']
 
-    def test_inventory_and_preserved_managed_baseline_audit(self):
+    def test_current_description_vectors_are_consistent(self):
         self.assertEqual(dict(vectors=56,families=5,implementationCasesUnexecuted=16),validate(self.contract()))
-        r=audit(ROOT,check_managed_baseline=True)
-        self.assertEqual((119,33,0,0),(r['preservedFiles'],r['managedBaselineFilesChecked'],r['referenceFilesChecked'],r['retailRecordsChecked']))
-        for k in ('productionImplemented','fullAiExecuted','originalExecuted'):self.assertFalse(r[k])
 
     def test_corrupt_classification_expected_identity_and_execution_claims_are_rejected(self):
         for kind in ('classification','duplicate','expected','identity','implemented','case'):

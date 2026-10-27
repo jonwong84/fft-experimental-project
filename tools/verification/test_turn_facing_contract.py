@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 import unittest
 
-from verify_turn_facing_contract import (FIXTURE, MANAGED, audit, calculate, choose,
+from verify_turn_facing_contract import (FIXTURE, MANAGED, calculate, choose,
     clock_end, completion_gate, direction, validate, viability)
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -15,12 +15,10 @@ class TurnFacingContractTests(unittest.TestCase):
     def vector(self, name):
         return copy.deepcopy(next(row for row in self.contract()['vectors'] if row['id'] == name))
 
-    def test_all_vectors_and_history_without_C_or_prepared_data(self):
-        result = audit(ROOT)
-        self.assertEqual((70, 5, 18, 51), (result['vectors'], result['families'],
-            result['implementationCasesUnexecuted'], result['preservedFiles']))
-        self.assertEqual(0, result['referenceFunctionsChecked'])
-        self.assertFalse(result['productionImplemented'])
+    def test_current_description_vectors_are_consistent(self):
+        result = validate(self.contract())
+        self.assertEqual((70, 5, 18), (result['vectors'], result['families'],
+            result['implementationCasesUnexecuted']))
 
     def test_cardinals_diagonal_ties_and_names_are_literal(self):
         for target, face in [([2,0],'South'),([0,2],'West'),([2,4],'North'),([4,2],'East'),

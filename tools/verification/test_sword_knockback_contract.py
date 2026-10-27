@@ -4,7 +4,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from verify_sword_knockback_contract import (FIXTURE, audit, critical_roll, critical_xa,
+from verify_sword_knockback_contract import (FIXTURE, critical_roll, critical_xa,
                                            envelope_supported, fingerprint, resolve, validate_contract)
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -17,12 +17,9 @@ class SwordKnockbackContractTests(unittest.TestCase):
     def inputs(self, name='interior-East-North'):
         return copy.deepcopy(next(row['inputs'] for row in self.contract()['vectors'] if row['id'] == name))
 
-    def test_contract_and_preserved_history_audit_without_local_reference(self):
-        result = audit(ROOT)
-        self.assertEqual((35, 20, 34), (result['vectors'], result['implementationCasesUnexecuted'], result['preservedFiles']))
-        self.assertEqual(0, result['referenceFilesChecked'])
-        self.assertEqual(0, result['managedBaselineFilesChecked'])
-        self.assertFalse(result['productionImplementationExecuted'])
+    def test_current_description_vectors_are_consistent(self):
+        result = validate_contract(self.contract())
+        self.assertEqual((35, 20), (result['vectors'], result['implementationCasesUnexecuted']))
 
     def test_known_critical_stream_and_push(self):
         result = resolve(self.inputs())

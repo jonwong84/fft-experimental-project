@@ -1,10 +1,10 @@
-using System.Reflection;
 using System.Text.Json;
 using Xunit;
 
 namespace Zodiac.Framework.Tests;
 
 /// <summary>Source-derived closed score regressions; no full selector or original execution claim.</summary>
+[Trait("Ruleset", "OriginalFft")]
 public sealed class SwordAiCandidateScoringTests
 {
     private static readonly BattleUnitId A=new("sample:unit/a"), B=new("sample:unit/b");
@@ -205,6 +205,7 @@ public sealed class SwordAiCandidateScoringTests
     }
 
     [Theory] [MemberData(nameof(IncompleteFacts))]
+    [Trait("Coverage", "CurrentAdmission")]
     public void Missing_unknown_or_unsupported_certificates_reject_before_invalid_projection(bool second,SwordAiScoreFacts facts)
     {
         var p=new SwordAiScoreProfile([new(A,second?SwordAiScoreFacts.ClosedProfile:facts),new(B,second?facts:SwordAiScoreFacts.ClosedProfile)]);
@@ -243,21 +244,23 @@ public sealed class SwordAiCandidateScoringTests
     }
 
     [Fact]
-    public void Public_entry_accepts_original_inputs_only_and_nulls_are_programmer_errors()
+    public void Null_arguments_are_programmer_errors()
     {
-        var method=Assert.Single(typeof(SwordAiCandidateScoring).GetMethods(BindingFlags.Public|BindingFlags.Static|BindingFlags.DeclaredOnly));
-        Assert.Equal("Evaluate",method.Name);
-        Assert.Equal(new[]{typeof(AttackBattleSnapshot),typeof(SwordAiCandidate),typeof(BoundedSwordWeapon),
-            typeof(SwordAiCandidateProfile),typeof(SwordAiScoreProfile),typeof(FftRandomState)},method.GetParameters().Select(p=>p.ParameterType));
         var state=State();
         Assert.Throws<ArgumentNullException>(()=>SwordAiCandidateScoring.Evaluate(null!,Stay(),new(Weapon,5),CandidateProfile,ScoreProfile,Decision));
         Assert.Throws<ArgumentNullException>(()=>SwordAiCandidateScoring.Evaluate(state,null!,new(Weapon,5),CandidateProfile,ScoreProfile,Decision));
         Assert.Throws<ArgumentNullException>(()=>SwordAiCandidateScoring.Evaluate(state,Stay(),new(Weapon,5),null!,ScoreProfile,Decision));
         Assert.Throws<ArgumentNullException>(()=>SwordAiCandidateScoring.Evaluate(state,Stay(),new(Weapon,5),CandidateProfile,null!,Decision));
+    }
+
+    [Fact] [Trait("Coverage", "CurrentAdmission")]
+    public void Nonzero_MP_is_currently_unsupported()
+    {
         Assert.Throws<NotSupportedException>(()=>State(mp:1));Assert.Throws<NotSupportedException>(()=>State(maxMp:1));
     }
 
     [Theory] [InlineData(false)] [InlineData(true)]
+    [Trait("Contract", "QueryIsolation")]
     public void Replay_carry_and_independent_branches_preserve_live_state_and_input_profile(bool noAccuracy)
     {
         var state=State(evade:noAccuracy?100:0);var before=Snapshot(state);

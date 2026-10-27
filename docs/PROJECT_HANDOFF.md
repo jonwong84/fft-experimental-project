@@ -2,6 +2,32 @@
 
 ## Current handoff — 2026-10-27
 
+**ZOD-132 is complete.** The owner prioritized test maintenance before ZOD-131.
+Current correctness checks no longer freeze current source/test files to old
+managed hashes. The separate historical runner exports each of nine recorded
+Git checkpoints and runs its unchanged auditor with managed-baseline checks.
+Manifests, fixtures and old verifier code remain unchanged. Missing history fails
+explicitly; historical results do not claim current runtime or original execution.
+
+Four AI test classes are labeled OriginalFft; selected current-admission and
+query-isolation cases have focused filters. All 22 normalized public comparison
+proposals remain, with four focused identity/slot/collection-order cases replacing
+the second execution of every proposal. Private rank reflection and exact public
+method-count/signature assertions are removed; null/error behavior still executes
+through public calls. Broader source-only rank extrema remain Python coverage,
+not a claim of general managed rank support. See [policy and commands](development/test-maintenance.md).
+
+Locked restore and Release build (zero warnings/errors), **4,082 .NET / 477 Python
+tests**, 613 focused original-rule AI cases and all nine historical audits pass.
+Logs/TRX/reports: scratch/test-cleanup-*. No runtime/editor changes. Owner untracked
+definition drafts remain untouched and excluded. Fresh clean reference HEAD is
+11464943bbdbd2a0af022d90cb7f10455cf911df; no new gameplay rule was translated.
+
+**ZOD-131 remains queued**, with no implementation started. Pause here for owner
+review of the maintenance checkpoint. Editor UI and ZOD-106 remain deferred.
+
+## ZOD-130 source/design checkpoint (historical)
+
 **ZOD-130 is complete.** The source/design contract isolates an ordinary sword
 Attack scan in one supplied movement scenario. Attack uses weapon-derived tile
 targeting with range1/AoE0/CT0 and exhaustive policy. Cast origins intersect the

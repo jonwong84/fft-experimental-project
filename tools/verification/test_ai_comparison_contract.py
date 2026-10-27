@@ -6,7 +6,7 @@ from pathlib import Path
 import unittest
 from unittest.mock import patch
 
-from verify_ai_comparison_contract import (FIXTURE, audit, calculate, compare, delay, eligible,
+from verify_ai_comparison_contract import (FIXTURE, calculate, compare, delay, eligible,
     proximity, proposed_pair, validate, MAX)
 from verify_ai_score_contract import proposed_scoring
 from verify_ai_decision_contract import draws, signed16
@@ -20,12 +20,8 @@ class AiComparisonContractTests(unittest.TestCase):
     def data(self, name='pair-exact-tie'): return self.row(name)['inputs']
     def result(self, name): return self.row(name)['expected']
 
-    def test_inventory_audit_and_historical_baseline(self):
+    def test_current_description_vectors_are_consistent(self):
         self.assertEqual(dict(vectors=60, families=5, implementationCasesUnexecuted=14), validate(self.contract()))
-        r = audit(ROOT, check_managed_baseline=True)
-        self.assertEqual((110,31,0,0),(r['preservedFiles'],r['managedBaselineFilesChecked'],
-            r['referenceFilesChecked'],r['referenceFunctionsChecked']))
-        for k in ('productionImplemented','fullAiExecuted','originalExecuted'): self.assertFalse(r[k])
 
     def test_classification_inventory_expectations_and_execution_claims_fail_closed(self):
         for kind in ('classification','duplicate','expectation','execution','case'):

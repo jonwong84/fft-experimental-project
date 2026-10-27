@@ -5,7 +5,7 @@ import unittest
 from unittest.mock import patch
 
 from verify_ai_candidate_contract import proposed_candidate, MAX
-from verify_ai_score_contract import (FIXTURE, audit, calculate, enemy_relation, hit_accounting,
+from verify_ai_score_contract import (FIXTURE, calculate, enemy_relation, hit_accounting,
     proposed_scoring, signed16, state_score, unit_score, validate, verify_retail)
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -21,12 +21,10 @@ class AiScoreContractTests(unittest.TestCase):
     def result(self,name):
         row=self.vector(name); return calculate(row['family'],row['inputs'])
 
-    def test_inventory_and_immutable_history_without_source_or_managed_execution(self):
-        result=audit(ROOT,check_managed_baseline=True)
-        self.assertEqual((44,5,14,101,29),tuple(result[k] for k in ('vectors','families',
-            'implementationCasesUnexecuted','preservedFiles','managedBaselineFilesChecked')))
-        self.assertEqual(0,result['referenceFunctionsChecked'])
-        for k in ('productionImplemented','fullAiExecuted','originalExecuted'): self.assertFalse(result[k])
+    def test_current_description_vectors_are_consistent(self):
+        result=validate(self.contract())
+        self.assertEqual((44,5,14),tuple(result[k] for k in ('vectors','families',
+            'implementationCasesUnexecuted')))
 
     def test_classification_duplicate_changed_expected_and_claimed_execution_are_rejected(self):
         for mutation in ('classification','duplicate','expected','implemented'):
