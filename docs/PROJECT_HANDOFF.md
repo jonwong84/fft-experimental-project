@@ -6,10 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-139: source/design ranked lottery and movement fallback.**
-Trace selection after the [completed composition](behavior/sword-ai-composition.md),
-including zero-hit-slot draws, all-failed rolls, selected payload and no-Attack
-fallback. Define a fresh composed continuation; keep command authority separate.
+**ZOD-140: implement fresh hypothetical Attack/MoveOnly selection.**
+The [ZOD-139 contract](architecture/zod-139-ai-selection-contract.md) pins lottery
+and D0 fallback. A lone positive-hit Attack is selected after one or eight draws;
+empty ranking takes eight draws then MoveOnly. Require terminal Attack entry,
+NoDefendSupport and fresh ordinary defaults. SLC-001..007 remain unexecuted C#
+proposals. Preserve deferred facing and keep commands/live RNG separate.
 
 ZOD-138 evaluates supplied movement mask S, reuses D0's already-scored baseline,
 then scans Attack mask S union actor using D1 and the progressed RNG. It validates
@@ -28,11 +30,12 @@ managed roster size. The contract records the erratum without rewriting old evid
 
 - Latest implementation: ZOD-138, [composition API and evidence](behavior/sword-ai-composition.md).
   CMP-001..008 have current C# coverage through 46 focused cases. No runtime activation.
-- Complete validation: locked restore, zero-warning/error Release build,
-  **3,679 .NET cases / 491 Python tests**, including all 3,633 prior .NET cases.
-  Fresh source receipt audit: four reference files / 27 functions, clean HEAD below.
+- Latest source/design: ZOD-139; five offline lottery/fallback checks, no C# changes.
+- Most recent locked restore/zero-warning-error Release build and .NET validation:
+  **3,679 cases** (ZOD-138). Latest full Python suite: **496 tests** (ZOD-139).
+  Fresh selection source audit: eight reference files / 31 functions, clean HEAD below.
   These bounded checks do not establish complete FFT equivalence.
-  Logs/TRX/reports: ignored `scratch/ai-composition-138-*`.
+  Logs/TRX/reports: ignored `scratch/ai-composition-138-*` and `scratch/ai-selection-139-*`.
   No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
   introduction proofs and synthetic world Save/Load exist. Original campaign,

@@ -1,0 +1,133 @@
+{
+  "format": "fft.ai-selection-source-evidence",
+  "schemaVersion": 1,
+  "ticket": "ZOD-139",
+  "date": "2026-10-27",
+  "managedBaseRevision": "ec75ae3671111a3a92ee67bc2f3e345f2a6cb816",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "scope": "Terminal ordinary Attack lottery and no-Defend movement fallback after fresh composition",
+  "sourceReceipt": "docs/evidence/ai/composition-contract-v1.json",
+  "contract": "docs/architecture/zod-139-ai-selection-contract.md",
+  "additionalSourceFiles": [
+    {
+      "path": "include/fft/ability.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 34632,
+      "sha256": "530676861205ea3cf31cada08ffc927142db98af0ad2c986722ad83b069b9a2f"
+    },
+    {
+      "path": "include/fft/skillset.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 10251,
+      "sha256": "ff8564cfae7e4e64dd3dc289577f56ee3cba27c8a8f450491e2d6bf6182729ad"
+    },
+    {
+      "path": "include/fft/ai_decision.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9018,
+      "sha256": "a88a67152b5143b74121946b7dffd4c8b76b568d9947c828d6620014a741b02b"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    }
+  ],
+  "additionalSourceFunctions": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "fallback_select",
+      "startLine": 3156,
+      "endLine": 3171,
+      "normalizedLfSha256": "fad02f672586be9f22bb13f959623503a9e01f1b59e824e3d98007c8ff641f51"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_command_build",
+      "startLine": 131,
+      "endLine": 224,
+      "normalizedLfSha256": "b4a01ef870fceac6d31bc8ab370f0b4053aaee69fc3dd55d9b79c78a0975a5bf"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "status_imposed_select",
+      "startLine": 1881,
+      "endLine": 2006,
+      "normalizedLfSha256": "abf8fdec3b083e7f81ea180c8ac3e5d9532addf0f4958897691764bdcbea2658"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_wait_facing_choose",
+      "startLine": 170,
+      "endLine": 224,
+      "normalizedLfSha256": "624ba50d1d8f16aab68bd3aea5e941c06f73035123118d7d7336c04a0f483880"
+    }
+  ],
+  "productionImplemented": false,
+  "runtimeActivated": false,
+  "originalExecuted": false,
+  "cReferenceExecuted": false,
+  "managedSelectionExecuted": false,
+  "offlineChecks": "tools/verification/test_ai_selection_contract.py",
+  "expectationKind": "Isolated source lottery/fallback kernels and managed counter-rollback proposals; no fresh selector execution",
+  "sourceConstants": {
+    "AI_RANKED_ACTION_COUNT": 8,
+    "ABILITY_ID_SUPPORT_DEFEND": 479,
+    "SKILLSET_ID_DEFEND": 2,
+    "AI_DIRECTION_CHOOSE_AT_WAIT": 5,
+    "AI_ACTION_DECIDED": 255
+  },
+  "sourceFacts": {
+    "onePositiveEntry": "Selected after one or eight draws; first failure does not choose movement",
+    "emptyList": "Eight draws before fallback",
+    "fallback": "D0, move-first, Defend iff support479; no scoring/draws",
+    "loopBoundary": "All ability entries complete before ranked lottery",
+    "facing": "ChooseAtWait retained; actual facing and decided255/commands are later"
+  },
+  "managedAcceptanceCases": [
+    {
+      "id": "SLC-001",
+      "status": "unexecuted"
+    },
+    {
+      "id": "SLC-002",
+      "status": "unexecuted"
+    },
+    {
+      "id": "SLC-003",
+      "status": "unexecuted"
+    },
+    {
+      "id": "SLC-004",
+      "status": "unexecuted"
+    },
+    {
+      "id": "SLC-005",
+      "status": "unexecuted"
+    },
+    {
+      "id": "SLC-006",
+      "status": "unexecuted"
+    },
+    {
+      "id": "SLC-007",
+      "status": "unexecuted"
+    }
+  ],
+  "limits": [
+    "Terminal Attack entry and ordinary selected/current defaults require explicit source-context certification",
+    "Original support field absent; next managed slice requires NoDefendSupport",
+    "Supplied tail inputs are source-kernel diagnostics, not a public cached ranked-result API",
+    "No full ability/scenario search, command/facing execution, original runtime or live RNG commitment"
+  ],
+  "hashPurpose": "Read-only source receipt; no current managed file fingerprints or historical vector duplication",
+  "sourceWidths": {
+    "support": "u16 read into s32",
+    "skillset": "u8",
+    "coordinates": "u32",
+    "rankHit": "u8 read into s32",
+    "actionRecordBytes": 32
+  }
+}

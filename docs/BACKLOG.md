@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-139 (source/design).** The composition ZOD-138 is complete.
-There are 32 open tickets below. The 107 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-140 (implementation).** The selection contract ZOD-139 is complete.
+There are 32 open tickets below. The 108 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -27,24 +27,26 @@ provide detail. This file supersedes archived priorities and next-task advice.
   or old test counts here. Keep the handoff current rather than chronological.
 
 
-## Next bounded source/design milestone
+## Next bounded implementation milestone
 
-### ZOD-139 — Specify ranked lottery and movement fallback for the composed sword slice
+### ZOD-140 — Select a hypothetical Attack or movement-only plan after fresh composition
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-138
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-139
 
-Trace the next original selection boundary after the [completed composition](behavior/sword-ai-composition.md):
-ranked lottery for eight slots with zero/one admitted real Attack, then the
-no-Attack movement fallback. Pin every draw (including zero-hit slots), all-rolls-
-fail behavior, selected action payload/order/facing hints and any fallback work.
-Define the smallest fresh C# continuation owning composition/selection RNG and
-atomic failure; never trust caller-populated ranked outcomes or skip draws just
-because one entry appears certain to win. Keep real absence distinct from zero.
+Implement the [ZOD-139 contract and SLC-001..007](architecture/zod-139-ai-selection-contract.md).
+Own one fresh ZOD-138 composition, then stream the eight-slot source lottery:
+one or eight actual draws, modulo comparison, zero-hit visits and all-failed
+use-first behavior. Empty ranking returns MoveOnly at D0 with no additional
+draws/scoring. Preserve candidate order/target and deferred ChooseAtWait hint;
+do not apply projected damage or consume live choices.
 
-Deliver a concise source-backed contract and focused acceptance cases. Full
-scenario/ability/roster search, the replaceable decision interface, authoritative
-commands/RNG and native/editor activation remain separate. Recheck the read-only
-reference HEAD. No production API is required for this investigation.
+Require explicit terminal Attack entry, no Defend support and fresh ordinary
+selection-default certificates before any work. Return immutable plan/diagnostics;
+any composition/lottery failure returns original whole-query RNG with no partial
+output and typed nested reason/slot. No trusted cached-result inputs. Defend,
+general ability/scenario search, decision interface, command/facing execution,
+live RNG commitment and native/editor activation remain separate. Recheck the
+read-only reference HEAD.
 
 ## Existing validation gates
 
