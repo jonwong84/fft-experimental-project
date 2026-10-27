@@ -6,12 +6,13 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-137: specify fresh baseline/Attack composition and ranked admission.**
-The [completed baseline](behavior/sword-ai-movement-baseline.md) and
-[ZOD-135 source contract](architecture/zod-135-ai-rank-admission.md) establish
-isolated evaluation and list rules. Resolve the original movement score-cell/RNG
-timeline before composing fresh baseline, scan and private ranked slots. Source
-tile scoring consumes draws before Attack; baseline grid seeding consumes none.
+**ZOD-138: implement certified movement scoring/Attack ranked admission.**
+The [ZOD-137 contract](architecture/zod-137-ai-composition-contract.md) separates
+pre-scoring mask S from Attack mask A=S union actor. Evaluate every S cell, read
+D0's baseline without rescoring, then scan A/D1 with the progressed RNG. Require
+fresh source context/no intervening draws and an empty list; one pass admits at
+most one entry. Stop before lottery/fallback/commands. CMP-001..008 are unexecuted
+managed proposals for the next milestone.
 
 Opt-in helpers now project, score, compare and scan candidates in one certified
 scenario. ZOD-131 preserves source emission order, evaluates each candidate once
@@ -32,11 +33,13 @@ managed roster size. The contract records the erratum without rewriting old evid
 - Latest implementation: ZOD-136, [baseline API and evidence](behavior/sword-ai-movement-baseline.md).
   Attack/baseline now share an internal hypothetical clock and fresh-unit scorer;
   existing candidate API behavior is unchanged. 25 focused baseline cases pass.
-- Last complete validation: locked restore, zero-warning/error Release build,
-  **3,633 .NET cases / 485 Python tests**, including all 3,608 prior .NET cases.
-  Fresh source receipt audit: four reference files / 21 functions, clean HEAD below.
+- Latest source/design: ZOD-137; six offline mask/RNG-stage checks. No C# changes.
+- Most recent locked restore/zero-warning-error Release build and .NET validation:
+  **3,633 cases** (ZOD-136). Latest full Python suite: **491 tests** (ZOD-137).
+  Fresh source receipt audit: four reference files / 27 functions, clean HEAD below.
   These bounded checks do not establish complete FFT equivalence.
-  Logs/TRX/reports: ignored `scratch/ai-baseline-136-*`. No original/C execution or UI review.
+  Logs/reports: ignored `scratch/ai-baseline-136-*` and `scratch/ai-composition-137-*`.
+  No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
   introduction proofs and synthetic world Save/Load exist. Original campaign,
   full combat/content, audio and general AI remain incomplete. See the

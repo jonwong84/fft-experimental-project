@@ -1,0 +1,114 @@
+{
+  "format": "fft.ai-composition-source-evidence",
+  "schemaVersion": 1,
+  "ticket": "ZOD-137",
+  "date": "2026-10-27",
+  "managedBaseRevision": "7e775c1f82cb2c6bc072a250b1a14b93032300de",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "scope": "Certified general-search movement scoring prefix through one ordinary Attack ranked admission",
+  "productionImplemented": false,
+  "runtimeActivated": false,
+  "originalExecuted": false,
+  "cReferenceExecuted": false,
+  "managedCompositionExecuted": false,
+  "contract": "docs/architecture/zod-137-ai-composition-contract.md",
+  "sourceReceipt": "docs/evidence/ai/rank-admission-contract-v1.json",
+  "additionalSourceFunctions": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "keep_charging_select",
+      "startLine": 1245,
+      "endLine": 1302,
+      "normalizedLfSha256": "a56eebc71ab6e664e62a10f3ad667bd443767ebf82a1c343396abad8b1c2d70b"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_ability_entry_load",
+      "startLine": 974,
+      "endLine": 1131,
+      "normalizedLfSha256": "98619a79ae6c72e98affb0803445984e5291b27b130e0fb27394b73fccb4e832"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "target_active_units_select",
+      "startLine": 2278,
+      "endLine": 2325,
+      "normalizedLfSha256": "8971f84d2bc38ef004a86f44a3cad8fb31c77835114c9700f76384e3843da2d8"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "simulation_unit_state_save",
+      "startLine": 1906,
+      "endLine": 1958,
+      "normalizedLfSha256": "e0c523b4a8e1487ba06e267dd10d6aa6fa015a285a63a06a04b911f07dfa8f2c"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "simulation_unit_state_restore",
+      "startLine": 1966,
+      "endLine": 2011,
+      "normalizedLfSha256": "d195422db548f6b870a1df33d2de5a0b3525e6e9a1d13f0f6b0585d193cb4dfa"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_acting_unit_place",
+      "startLine": 2442,
+      "endLine": 2446,
+      "normalizedLfSha256": "0127d5cdd423a574e7f6d32ad494c445a2d77c24343bdccd599353a933ffec11"
+    }
+  ],
+  "offlineChecks": "tools/verification/test_ai_composition_contract.py",
+  "expectationKind": "source-derived-mask-and-stage-descriptions; Attack costs supplied, not freshly evaluated",
+  "sourceFacts": {
+    "movementMask": "Pre-insertion scenario 1 mask S",
+    "attackMask": "S union actor tile after scoring",
+    "baseline": "Already scored D0 cell; seed consumes zero draws",
+    "scenarioOneDestination": "Selected before actor insertion",
+    "admittedInterveningDraws": 0,
+    "moveOnlyDrawsPerCell": 1,
+    "rankedCapacity": 8,
+    "admittedRealEntriesMaximum": 1
+  },
+  "managedAcceptanceCases": [
+    {
+      "id": "CMP-001",
+      "status": "unexecuted"
+    },
+    {
+      "id": "CMP-002",
+      "status": "unexecuted"
+    },
+    {
+      "id": "CMP-003",
+      "status": "unexecuted"
+    },
+    {
+      "id": "CMP-004",
+      "status": "unexecuted"
+    },
+    {
+      "id": "CMP-005",
+      "status": "unexecuted"
+    },
+    {
+      "id": "CMP-006",
+      "status": "unexecuted"
+    },
+    {
+      "id": "CMP-007",
+      "status": "unexecuted"
+    },
+    {
+      "id": "CMP-008",
+      "status": "unexecuted"
+    }
+  ],
+  "limits": [
+    "Caller certifies source-selected mask/destinations and no intervening random work",
+    "Unvisited/stale-cell baselines and non-player out-of-reach reach roll excluded",
+    "Only zero/one real ranked entry; general capacity/tail/duplicate kernels remain source-only",
+    "No lottery/fallback/command choice, full scenario/ability search, native resume or live RNG commit"
+  ],
+  "hashPurpose": "Read-only source receipt only; no current managed file fingerprints or historical fixture duplication"
+}
