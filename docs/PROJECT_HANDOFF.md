@@ -2,6 +2,51 @@
 
 ## Current handoff — 2026-10-27
 
+**ZOD-129 is complete.** SwordAiCandidateComparison.Evaluate validates an explicit
+fresh original decision-baseline certificate and same actor/target pair, derives
+both scenario-0 destinations through unchanged flat movement, builds private
+baseline foe proximity, and freshly scores incumbent then challenger on the same
+original state with carried RNG. No public cached score/cache input or score
+replay. Markers stay 0; signed priority, independent hit and strictly lower
+proximity compare, with exact ties retaining the incumbent. Zero/negative scores
+are real; only one score beats absence, two NotValuable has no retained candidate.
+Comparison reasons and baseline delay/eligible foe/destination values are data.
+
+Failure has no partial Outcome/cache and returns original pair RNG with failed
+candidate index and original typed scoring/projection reason. This is the managed
+unsupported/exhaustion transaction rule, not original C search rewind. Supported
+losing/NotValuable evaluations keep their draws; cache/comparison adds zero draws
+or ticks even at MAX. Projected Dead and next-clock changes never rebuild the
+original cache. No commands/receipts, active state or authoritative RNG commit.
+
+Fresh clean read-only reference remains 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Locked restore, zero-warning/error Release build and **4,119 .NET / 452 Python
+tests pass**. All 14 ACM cases have coverage in 162 new managed cases across 18
+methods. All 22 normalized pair proposals run in 44 actual collection-order cases,
+with real 3x2 maps, Move4, same weapon damage and front/back evade. Ten marker-0
+rank kernels execute privately in both argument orders (20 cases); source chosen
+marker/roster wrap/other layers/status timers do not broaden public admission.
+First focused/full executable runs passed without corrections. Repeated source/
+history audits match at 12 files / 27 functions, 110 historical and 31 managed
+baseline files; new evidence fingerprints 115 unchanged artifacts. Prior score/
+prepared metadata audit passes two records. Owner Common/Ability/Item drafts are
+untouched/excluded; SDK builds included them. No original/C/emulator/native or
+additional manual presentation execution; no runtime/content/save/editor activation.
+A Status draft observed after validation is also preserved/excluded; test results
+describe the compiled snapshot before that observation.
+
+See [API/reproduction](behavior/sword-ai-candidate-comparison.md) and
+[implementation evidence](evidence/ai/comparison-implementation-v1.json).
+**Recommended next: ZOD-130**, source/design the ordinary sword candidate scan
+within one supplied movement scenario. Trace actual emission order and private
+evaluate-once score/RNG ownership; do not fold candidates by repeatedly calling
+ZOD-129, which would re-evaluate incumbents and consume extra draws. Full search/
+list/lottery/roster/policy/interface/authoritative RNG remain future work. Editor
+UI and ZOD-106 remain deferred. Logs/TRX: scratch/ai-comparison-129-*; evidence
+builder scratch/build_ai_comparison_129_evidence.py.
+
+## ZOD-128 source/design checkpoint (historical)
+
 **ZOD-128 is complete.** The source/design contract compares two supplied sword
 candidates by marker, signed priority, independent hit and strictly lower foe
 proximity. Candidates use marker 0; chosen marker 255 occurs later. Exact ties

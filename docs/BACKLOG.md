@@ -44,7 +44,31 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
-**Current completion (2026-10-27): ZOD-128 is complete**, the
+**Current completion (2026-10-27): ZOD-129 is complete**, the
+[supplied-pair comparison companion](behavior/sword-ai-candidate-comparison.md).
+It validates explicit fresh-baseline provenance and original movement membership,
+builds private baseline proximity, then freshly scores incumbent and challenger
+on the same original state with carried decision RNG. Candidate marker stays 0;
+signed priority, hit and strictly lower proximity determine improvement, with
+exact ties retaining the incumbent. No absent-score zero or external result/cache
+input. Losing/NotValuable outcomes retain draws; pair failure atomically restores
+incoming pair RNG and publishes no partial payload, with failed index and nested
+typed reason. Locked restore, zero-warning/error Release build and **4,119 .NET /
+452 Python tests pass**. All 14 ACM cases have coverage in 162 new managed cases
+across 18 methods; all 22 normalized pair proposals execute in 44 collection-order
+cases. Ten marker-0 source rank kernels run privately in both orders; chosen-marker
+and wider cache kernels remain source-only. Fresh clean reference remains
+11464943bbdbd2a0af022d90cb7f10455cf911df; repeated source/history audits match at
+12 files / 27 functions, 110 historical and 31 managed baselines. New
+[evidence](evidence/ai/comparison-implementation-v1.json) fingerprints 115 preserved
+artifacts. Old APIs/evidence and owner Common/Ability/Item drafts are untouched
+and excluded. **Recommended next: ZOD-130**, source/design the ordinary sword
+candidate scan within one supplied movement scenario, including emission order
+and evaluate-once RNG ownership. Repeated pair tournaments would re-evaluate an
+incumbent and consume extra draws. No enumeration/list/lottery/policy/interface
+or authoritative RNG activation yet; editor UI and ZOD-106 stay deferred.
+
+**ZOD-128 source/design checkpoint (historical):** the
 [supplied-candidate comparison contract](architecture/zod-128-ai-comparison-contract.md).
 Original comparison uses candidate marker 0, signed priority, independent hit,
 then strictly lower baseline foe proximity; exact ties retain the incumbent.
@@ -2263,7 +2287,7 @@ unexecuted; owner Common/Ability/Item drafts excluded. **Next: ZOD-129** below.
 
 ### ZOD-129 — Implement supplied sword candidate pair comparison
 
-**Type:** Feature · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-128
+**Type:** Feature · **Priority:** P3 · **Status:** Done · **Depends on:** ZOD-128
 
 **Scope:** Add the opt-in SwordAiCandidateComparison companion over one original
 snapshot, same actor/opponent, nullable weapon, shared candidate/score profiles,
@@ -2295,6 +2319,53 @@ No enumeration, move-only baseline/ranked-list insertion, lottery, roster/policy
 replaceable interface, authoritative decision RNG commit, commands/receipts,
 generic serializer, content/save/native/editor activation or C runtime. Editor
 UI and ZOD-106 remain deferred.
+
+**Evidence (2026-10-27):** [API/reproduction](behavior/sword-ai-candidate-comparison.md)
+and [completed ACM mapping](evidence/ai/comparison-implementation-v1.json).
+All 14 ACM cases have coverage in 162 new managed cases across 18 methods. All
+22 normalized proposals run actual geometry/formula/scoring in both collection
+orders; source-only chosen-marker/roster-wrap/other-layer/status-duration cases
+remain outside public admission. Private candidate-marker rank kernels retain
+signed-priority precedence even though the effect-free same-weapon pair's
+positive-hit scores agree. Early certificate/membership and late second score
+failure, exact MAX budgets, NotValuable and negative/zero scores, original foe
+eligibility after projected KO, both IDs/TieKeys and immutable replay are covered.
+Locked restore, zero-warning/error Release build and **4,119 .NET / 452 Python
+tests pass**; first focused/full executable runs passed. Fresh clean read-only
+11464943bbdbd2a0af022d90cb7f10455cf911df, repeated audits at 12 files / 27
+functions, 110 preserved and 31 managed baselines; new evidence preserves 115
+historical files. Existing score/prepared metadata checks pass. No original/C/
+native execution or runtime activation. Owner drafts excluded. **Next: ZOD-130**.
+
+### ZOD-130 — Specify ordinary sword candidate scan and evaluation ownership
+
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-116, ZOD-121, ZOD-129
+
+**Scope:** Trace candidate generation/evaluation for one ordinary Attack ability
+within one supplied movement scenario/destination on the certified two-opponent
+flat profile. Specify emitted origins/aims/orders and private incumbent/RNG
+ownership before adding a scan. No full decision search or command selection.
+
+**Acceptance criteria:** Freshly pin the source callers, original ability/AI-policy
+flags, mask construction, level/y/x ordering, own-origin and alternate-origin
+action-order branches, duplicate/stay behavior, source skip versus evaluated
+NotValuable, strict incumbent ties and suspension/resume boundaries. Determine
+which movement-scenario/targetability/ability facts can be derived and which need
+explicit certification; do not assume all reachable tiles are evaluated or trust
+caller-provided formula results. Define an evaluate-once scan over original state,
+with supported draws carried for every evaluated candidate even when discarded,
+and explicit unsupported/overflow atomicity. Preserve private fresh-score
+provenance without a public cached-result entry; repeated ZOD-129 pair calls must
+not add incumbent re-evaluation draws. Cover both actors, collection permutations,
+both orders, empty/filtered scans, ties, RNG replay/budgets and initially living
+baseline cache versus projected KO with classified vectors and one bounded
+implementation follow-up. Distinguish source descriptions from production or
+original execution. Preserve old APIs/fixtures/evidence and owner drafts.
+
+No production enumerator, general scenario/ability/roster search, move-only
+baseline/rank-list insertion, lottery, policy/interface/decision runner, command
+receipt or authoritative RNG commit, generic serializer, content/save/native/
+editor activation or C runtime. Editor UI and ZOD-106 remain deferred.
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 
