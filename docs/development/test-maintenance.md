@@ -22,7 +22,7 @@ implementation as alternatives become available. Expectations about the exact
 number/order of original draws belong to original-rule coverage; a custom AI can
 own a different deterministic draw schedule.
 
-The four `SwordAi*Tests` classes now use `Ruleset=OriginalFft`. Selected input
+The current `SwordAi*Tests` classes use `Ruleset=OriginalFft`. Selected input
 isolation/replay tests also use `Contract=QueryIsolation`. These labels identify
 the current AI pilot, not a classification of the whole repository and not an
 interface contract already executable against arbitrary implementations.

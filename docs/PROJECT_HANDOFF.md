@@ -6,16 +6,16 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-131: implement one certified ordinary-sword AI candidate scan.** No scan
-implementation has started. Read the [source/design contract](architecture/zod-130-ai-scan-contract.md),
-its ASN-001..016 cases and the [current test workflow](development/test-maintenance.md).
+**ZOD-135: source/design ordinary-sword movement-baseline and ranked-list admission.**
+Trace how the [completed scan](behavior/sword-ai-candidate-scan.md) fits the original
+baseline/best/list lifecycle before selecting its next bounded C# contract.
 
-Existing opt-in helpers project, score and compare supplied candidates. The scan
-must generate source-ordered candidates from one supplied scenario, evaluate each
-once on the original state, carry supported decision RNG and keep a private best.
-Preserve stay-once, duplicate final destinations, absent versus zero/negative
-scores, baseline cache after KO and atomic whole-query rejection. A repeated pair
-comparison tournament would re-evaluate incumbents and consume extra draws.
+Opt-in helpers now project, score, compare and scan candidates in one certified
+scenario. ZOD-131 preserves source emission order, evaluates each candidate once
+on original state, carries supported decision RNG and keeps a private best/cache.
+Empty/inactive scans still validate admission. Stay-once, duplicate destinations,
+score absence/zero/negative, baseline cache after KO and atomic whole-query failure
+are covered. Returned diagnostics grant no command authority or live RNG commit.
 
 Full AI search, ranked list/lottery, replaceable decision interface, authoritative
 commands/RNG and presentation activation remain future work. Original UNIT_SLOT_COUNT
@@ -24,12 +24,14 @@ managed roster size. The contract records the erratum without rewriting old evid
 
 ## Current implementation and validation
 
-- Latest runtime AI helper: ZOD-129, commit `5d3e757`; next scan design: ZOD-130,
-  commit `667ed46`. Test consolidation ZOD-133 is `a6c0b2b`; flag-policy base is `dedc95a`.
+- Latest implementation: ZOD-131, [scan API and evidence](behavior/sword-ai-candidate-scan.md).
+  All ASN-001..016 have current coverage; historical proposal inventories stay unchanged.
 - Last complete validation: locked restore, zero-warning/error Release build,
-  **3,548 .NET cases / 477 Python tests**, and nine historical checkpoint audits.
-  These are recorded results, not a new run or a claim of complete FFT equivalence.
-  Logs/TRX/reports: ignored `scratch/test-consolidation-*`.
+  **3,608 .NET cases / 477 Python tests**, including 60 scan cases. Fresh source/
+  data audit: 16 reference files, 55 functions, three prepared metadata records,
+  119 preserved artifacts and 33 managed files at the ZOD-130 snapshot.
+  These bounded checks do not establish complete FFT equivalence.
+  Logs/TRX/reports: ignored `scratch/ai-scan-131-*`. No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
   introduction proofs and synthetic world Save/Load exist. Original campaign,
   full combat/content, audio and general AI remain incomplete. See the

@@ -1,0 +1,166 @@
+{
+  "format": "fft.ai-scan-implementation-evidence",
+  "schemaVersion": 1,
+  "ticket": "ZOD-131",
+  "date": "2026-10-27",
+  "managedBaseRevision": "40a801d4a08fb0e7d7c573b52596541c0a84fc56",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "One certified two-opponent ordinary Attack scan over a supplied movement scenario",
+  "productionImplemented": true,
+  "runtimeActivated": false,
+  "authoritativeCommands": false,
+  "liveRngCommitted": false,
+  "originalExecuted": false,
+  "cReferenceExecuted": false,
+  "sourceContract": {
+    "path": "docs/architecture/zod-130-ai-scan-contract.md",
+    "hashEncoding": "utf8-lf",
+    "sha256": "d6187a64a191747aa5956b3a21f1b0f45c366aacaaf639592ac8651fc342896d",
+    "byteLength": 15839
+  },
+  "sourceFixture": {
+    "path": "docs/fixtures/behavior/ai-scan-contract-v1.json",
+    "hashEncoding": "utf8-lf",
+    "sha256": "ffce07ad71afeffbd21de88beffcdfb86b22ef5f3441012c7f2e4f1394d1c0d7",
+    "byteLength": 193882
+  },
+  "implementationSnapshot": [
+    {
+      "path": "src/Zodiac.Framework/SwordAiCandidateScan.cs",
+      "hashEncoding": "utf8-lf",
+      "sha256": "a29fb72d07630d866e0cc5f9568656abea38bc9c805d94f219592baa9a0a6ff3",
+      "byteLength": 10312
+    },
+    {
+      "path": "tests/Zodiac.Framework.Tests/SwordAiCandidateScanTests.cs",
+      "hashEncoding": "utf8-lf",
+      "sha256": "e26ab238a7a2791295fc543302fe4647a73c20b63c240f03e995141b2ff7572d",
+      "byteLength": 20258
+    },
+    {
+      "path": "docs/behavior/sword-ai-candidate-scan.md",
+      "hashEncoding": "utf8-lf",
+      "sha256": "08e51609e2e9486b18219c623c3bb2c936454e81f40796c0cd4f5bbe310feafd",
+      "byteLength": 7578
+    }
+  ],
+  "hashPurpose": "Historical implementation receipt only; routine tests do not freeze current files to these hashes",
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuild": true,
+    "buildWarnings": 0,
+    "buildErrors": 0,
+    "dotnetPassed": 3608,
+    "pythonPassed": 477,
+    "newScanCases": 60,
+    "normalizedDesignProposalsExecuted": 30,
+    "originalOracleExecuted": false
+  },
+  "historicalSourceAudit": {
+    "managedSnapshot": "667ed4688540069a924962ba59ad2f2ac723f320",
+    "passed": true,
+    "referenceClean": true,
+    "referenceFiles": 16,
+    "referenceFunctions": 55,
+    "preparedMetadataRecords": 3,
+    "preservedArtifacts": 119,
+    "historicalManagedFiles": 33,
+    "currentManagedExecution": false
+  },
+  "acceptance": [
+    {
+      "id": "ASN-001",
+      "status": "passed",
+      "primaryTest": "Each_source_context_certificate_is_required_even_when_the_target_is_inactive"
+    },
+    {
+      "id": "ASN-002",
+      "status": "passed",
+      "primaryTest": "Invalid_supplied_scenarios_reject_before_any_formula_or_rng_work"
+    },
+    {
+      "id": "ASN-003",
+      "status": "passed",
+      "primaryTest": "Source_design_scenarios_execute_through_real_movement_formula_clock_and_scoring"
+    },
+    {
+      "id": "ASN-004",
+      "status": "passed",
+      "primaryTest": "Original_slot_order_controls_contributions_independently_of_actor_identity_and_scan_order"
+    },
+    {
+      "id": "ASN-005",
+      "status": "passed",
+      "primaryTest": "Scenario_snapshots_caller_data_and_canonicalizes_emission_without_deduplicating_destinations"
+    },
+    {
+      "id": "ASN-006",
+      "status": "passed",
+      "primaryTest": "Scenario_snapshots_caller_data_and_canonicalizes_emission_without_deduplicating_destinations"
+    },
+    {
+      "id": "ASN-007",
+      "status": "passed",
+      "primaryTest": "Supported_empty_or_inactive_scan_needs_no_clock_or_rng_headroom"
+    },
+    {
+      "id": "ASN-008",
+      "status": "passed",
+      "primaryTest": "Empty_scan_still_validates_original_action_weapon_clock_and_geometry"
+    },
+    {
+      "id": "ASN-009",
+      "status": "passed",
+      "primaryTest": "Replays_and_branches_keep_original_state_and_carry_every_completed_evaluation"
+    },
+    {
+      "id": "ASN-010",
+      "status": "passed",
+      "primaryTest": "Source_design_scenarios_execute_through_real_movement_formula_clock_and_scoring"
+    },
+    {
+      "id": "ASN-011",
+      "status": "passed",
+      "primaryTest": "Source_design_scenarios_execute_through_real_movement_formula_clock_and_scoring"
+    },
+    {
+      "id": "ASN-012",
+      "status": "passed",
+      "primaryTest": "Source_design_scenarios_execute_through_real_movement_formula_clock_and_scoring"
+    },
+    {
+      "id": "ASN-013",
+      "status": "passed",
+      "primaryTest": "Replays_and_branches_keep_original_state_and_carry_every_completed_evaluation"
+    },
+    {
+      "id": "ASN-014",
+      "status": "passed",
+      "primaryTest": "Failure_after_completed_candidates_rolls_back_the_whole_query"
+    },
+    {
+      "id": "ASN-015",
+      "status": "passed",
+      "primaryTest": "Replays_and_branches_keep_original_state_and_carry_every_completed_evaluation"
+    },
+    {
+      "id": "ASN-016",
+      "status": "documented-and-audited",
+      "scope": "Prior fixtures/evidence unchanged; source resume remains traced only; new API synchronous, no scheduler conformance claim"
+    }
+  ],
+  "coverageLimits": [
+    "Source-designed expectations are not original-game execution equivalence",
+    "Distance-zero mask diagnostic remains source-only; the public query rejects the occupied enemy tile",
+    "Closed same-weapon scores do not exercise general signed-rank extrema or varying priority across candidates",
+    "No scenario generation, ranked-list insertion, lottery, replacement interface, authoritative decision or native UI activation"
+  ],
+  "logs": [
+    "scratch/ai-scan-131-restore.txt",
+    "scratch/ai-scan-131-build-final.txt",
+    "scratch/ai-scan-131-dotnet.txt",
+    "scratch/ai-scan-131-full-trx/",
+    "scratch/ai-scan-131-python.txt",
+    "scratch/ai-scan-131-source-audit.json"
+  ]
+}

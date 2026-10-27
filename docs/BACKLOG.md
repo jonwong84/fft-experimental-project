@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next implementation: ZOD-131.** Test-maintenance work ZOD-132/133 is complete.
-There are 32 open tickets below. The 102 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-135 (source/design).** The supplied-scenario scan ZOD-131 is complete.
+There are 32 open tickets below. The 103 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -27,23 +27,23 @@ provide detail. This file supersedes archived priorities and next-task advice.
   or old test counts here. Keep the handoff current rather than chronological.
 
 
-## Next bounded implementation
+## Next bounded source/design milestone
 
-### ZOD-131 — Implement one-scenario ordinary sword candidate scan
+### ZOD-135 — Specify ordinary-sword movement baseline and ranked-list admission
 
-**Type:** Feature · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-130
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-131
 
-Implement opt-in SwordAiCandidateScan for one certified ordinary-sword movement scenario.
-Follow the [scan contract](architecture/zod-130-ai-scan-contract.md) and execute ASN-001..016.
-Preserve source emission order, own-origin ActThenMove, distinct origins sharing a destination,
-fresh evaluate-once scoring, private best/cache and carried decision RNG. Keep
-empty/inactive/NotValuable outcomes distinct; validate admission even for empty scans.
-Whole-query failure is atomic and preserves typed reasons. No ranked-list/lottery, general
-search, AI interface, commands, resume scheduler or editor activation. Use the [current
-validation workflow](development/test-maintenance.md), with historical audits against recorded
-snapshots.
+Trace how one ordinary Attack scan's best enters the original ranked action list.
+Pin movement-only baseline construction, fresh/inherited best ownership, insertion
+conditions/order, duplicate handling, capacity, numeric widths and any RNG work.
+Define the smallest certified C# follow-up using original inputs and private fresh
+evaluations. Keep score absence distinct from zero and existing scan RNG ownership intact.
+Deliver a source-backed contract, explicit limits and focused acceptance cases.
+Lottery, general scenario/ability/roster search, the decision interface, authoritative
+commands/RNG, native activation and editor work remain separate. Start from the
+[completed scan](behavior/sword-ai-candidate-scan.md) and recheck the reference HEAD.
 
-[Detailed scope](history/2026-10-27/BACKLOG.md#zod-131--implement-one-scenario-ordinary-sword-candidate-scan).
+No production API or runtime activation is required for this investigation.
 
 ## Existing validation gates
 
