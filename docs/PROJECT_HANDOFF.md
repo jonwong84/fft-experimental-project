@@ -2,6 +2,40 @@
 
 ## Current handoff — 2026-10-27
 
+**ZOD-124 is complete.** The source/design contract for one supplied sword AI
+candidate covers both action/movement orders, coordinate-only placement preserving
+incoming facing, projected HP/Critical/Dead, turn-end CT, the first clock event,
+selected baseline copies/restoration and decision RNG ownership. The clock resumes
+PickUnit before AddCt. A projected corpse still gains CT and consumes upkeep draws
+before the next living ready event; death counters do not decay in simulation.
+No authored first-KO terminal policy is applied to that candidate. Zero accuracy
+is supported NotValuable with four draws; unsupported rejection consumes none.
+
+Fresh clean read-only decomp remains 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Fifteen files / 31 functions and hash-verified prepared status metadata underpin 44
+classified vectors in 5 families. **414 Python tests pass** including 18 new tests;
+repeated source/data/history audits match at 92 preserved and 27 managed baseline
+files. No C# change or .NET rerun: last implementation validation remains
+ZOD-123's 3,696 .NET / 396 Python tests. No original/C/emulator/native execution.
+All 16 ACP production cases remain unexecuted. Existing APIs/evidence/fixtures and
+owner-authored untracked Common and Ability drafts remain untouched and excluded.
+
+See [contract/API/reproduction](architecture/zod-124-ai-candidate-contract.md),
+[vectors](fixtures/behavior/ai-candidate-contract-v1.json) and
+[evidence](evidence/ai/candidate-contract-v1.json). **Recommended next: ZOD-125**,
+implement an opt-in SwordAiCandidateProjection companion and execute ACP-001..016.
+Validate original living movement and supported clock/status/slot certificates,
+stage the action origin privately, return a separate immutable hypothetical
+result and explicit decision RNG. Do not use real path heading/commands or pass
+projected KO through a living-target query. Keep initial terminal/restricted
+rejections, NotValuable and late atomic counter failure distinct. No score/search,
+generic clock, policy/interface or authoritative decision RNG commit yet. Editor
+UI and ZOD-106 remain deferred. Reports: scratch/ai-candidate-124-*; builder
+scratch/build_ai_candidate_124.py. It builds source fixtures/evidence and resets
+validation to pending; final validation metadata was finalized separately.
+
+## ZOD-123 implementation checkpoint (historical)
+
 **ZOD-123 is complete.** FacingTurnPathMovement.MoveAlongPath is the explicit
 confirmed path entry over existing FacingTurnState. It stages command/choice
 checks and the current certified query privately, then publishes actor tile and

@@ -44,7 +44,26 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
-**Current completion (2026-10-27): ZOD-123 is complete**, the additive
+**Current completion (2026-10-27): ZOD-124 is complete**, the
+[supplied sword AI candidate placement/clock contract](architecture/zod-124-ai-candidate-contract.md).
+Source order preserves preview facing, applies projected HP/Critical/Dead, ends
+the turn and runs the first clock event before restoring selected state. Dead
+units still participate in CT/upkeep draws during AI simulation; their death
+counters do not decay. PickUnit precedes AddCt. Candidate discard restores state
+while decision RNG progress survives. Unsupported rejection and zero-accuracy
+NotValuable are distinct. Fresh clean reference remains
+11464943bbdbd2a0af022d90cb7f10455cf911df. Fifteen source files / 31 functions,
+44 classified vectors, prepared status-table metadata and 92 preserved artifacts
+are audited. **414 Python tests pass** (18 new); no C# change or .NET rerun.
+Last implementation validation remains ZOD-123's 3,696 .NET / 396 Python tests.
+All 16 ACP production cases remain unexecuted. See
+[evidence](evidence/ai/candidate-contract-v1.json).
+**Recommended next: ZOD-125**, implement this opt-in supplied-candidate projection
+with explicit decision RNG and a separate hypothetical result, including lethal
+outcomes. No enumeration/ranking, general clock or authoritative decision runner.
+Owner editor drafts remain untouched; editor UI and ZOD-106 stay deferred.
+
+**ZOD-123 implementation checkpoint (historical):** the additive
 [confirmed flat path Move boundary](behavior/confirmed-path-movement.md).
 Actual entry is FacingTurnPathMovement.MoveAlongPath: a companion preserves the
 existing FacingTurnBattle file and whole-file historical audits while retaining
@@ -1951,7 +1970,7 @@ editor files and historical inventories remain untouched.
 
 ### ZOD-124 — Specify one closed sword AI candidate's placement and clock boundary
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-117, ZOD-121, ZOD-123
+**Type:** Spike · **Priority:** P3 · **Status:** Done · **Depends on:** ZOD-117, ZOD-121, ZOD-123
 
 **Scope:** Trace one prevalidated ordinary sword candidate through original AI
 coordinate-only placement, action-projection result, simulated turn-end/CT work
@@ -1972,6 +1991,51 @@ evaluator/clock, search/roster/policy/interface/decision runner, generic seriali
 original runtime/C dependency, general terrain or native/content/save/editor
 activation. Existing APIs/fixtures/implementation evidence remain unchanged;
 editor UI and ZOD-106 stay deferred.
+
+**Completion (2026-10-27):** [contract](architecture/zod-124-ai-candidate-contract.md),
+[vectors](fixtures/behavior/ai-candidate-contract-v1.json) and
+[evidence](evidence/ai/candidate-contract-v1.json) pin the fresh clean reference,
+placement callers, selected snapshot byte ranges, action/status application,
+canonical end-turn/first-event phases and RNG ownership. Dead/Critical CT behavior
+and Dead cancellation of Critical are checked against hash-verified prepared
+status metadata. Both orders, stay/prior Move, certain/partial evade, Critical/KO,
+CT ties/cap/modulo, dead upkeep draws, atomic limits and discard/carry/replay are
+covered by 44 descriptions in 5 families and 18 new offline tests. All 414 Python
+tests pass; repeated source/data/history audits match at 15 files / 31 functions,
+92 preserved artifacts and 27 managed baseline files. No production evaluator,
+score or original execution is claimed; 16 ACP cases stay unexecuted. No C# change
+or .NET rerun. Existing source contracts/fixtures/APIs and owner drafts remain
+unchanged. **Next: ZOD-125** below.
+
+### ZOD-125 — Implement one supplied closed sword AI candidate projection
+
+**Type:** Implementation · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-124
+
+**Scope:** Implement an additive, opt-in SwordAiCandidateProjection companion from
+the ZOD-124 contract. Accept one supplied actor/target/destination/order and explicit
+decision RNG over the certified ordinary flat two-unit profile. Validate movement
+against the original living state, stage the correct action origin privately,
+compose ZOD-117 formula output, and project HP/status, turn-end and the first
+effect-free clock event into a separate immutable result. No production score,
+search or authoritative command execution.
+
+**Acceptance criteria:** Execute ACP-001..016 with meaningful managed tests.
+Preserve incoming faces in both orders, prior Move/stay refund, four formula draws,
+full damage at positive partial accuracy and NotValuable zero accuracy. Admit a
+new KO, retain corpse CT/upkeep draws without death-counter decay, and never
+revalidate that projected state with the living-opponent movement guard. Pick
+before adding CT; preserve cap/modulo/original tie order and readiness choice
+reset/move-opportunity capture. Reject initial terminal/unsupported/restricted
+states and invalid candidates before draws; rollback late RNG/tick overflow.
+Inputs/events/receipts/live RNG remain unchanged; return explicit advanced decision
+RNG for supported candidates, deterministic replay and independent branches.
+Do not construct a command-authorizing battle snapshot from the hypothetical
+outcome. Keep old APIs, fixtures and historical evidence unchanged; use additive
+companions if needed to preserve existing audited files. Run locked restore,
+Release build, focused/full .NET and Python suites, repeated source/data/history
+audits and record the new evidence separately. No general scheduler, ranking,
+roster/policy/interface/decision runner, authoritative RNG commit, save/native/
+content/editor activation or C runtime. Editor UI and ZOD-106 remain deferred.
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 
