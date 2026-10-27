@@ -2,6 +2,28 @@
 
 ## Current handoff — 2026-10-27
 
+**ZOD-133 is complete.** The owner requested broader test consolidation before
+more features. The suite now runs **3,548 .NET cases (534 fewer)** from 1,074
+methods in 139 classes; ZOD-132 had 4,082 cases from 1,078 methods/141 classes.
+Distinct route/score/direction vectors run once, with focused identity/order
+checks. Formula/projection retain draw-prefix coverage; forwarding wrappers check
+their own transaction boundaries. Duplicate legacy sword arithmetic matrices,
+generated-record tests, a prototype independence demonstration, duplicate engine/
+adapter checks and non-AI public-surface freezes were removed. Legacy action-order
+and journal replay, save/content validation and receipt authority coverage remain.
+See [replacements, retired cases and limits](development/test-maintenance.md#zod-133-consolidation--2026-10-27).
+
+Locked restore, zero-warning/error Release build, **3,548 .NET / 477 Python tests**
+and all nine historical audits pass. New fixture setup/equality and moved-query
+expectation errors were corrected before the final full run. Reports: scratch/test-consolidation-*.
+Runtime, old evidence and owner drafts are untouched. Fresh clean reference HEAD:
+11464943bbdbd2a0af022d90cb7f10455cf911df. **ZOD-131 remains queued**, with no
+implementation started. Pause here for owner review; editor UI and ZOD-106 remain
+deferred. This is overlap removal, not a claim that all remaining tests must stay
+unchanged as the game grows.
+
+## ZOD-132 maintenance checkpoint (historical)
+
 **ZOD-132 is complete.** The owner prioritized test maintenance before ZOD-131.
 Current correctness checks no longer freeze current source/test files to old
 managed hashes. The separate historical runner exports each of nine recorded

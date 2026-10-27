@@ -44,7 +44,18 @@ For every implementation ticket: preserve meaningful behavioral coverage, add re
 
 ## Recommended next queue
 
-**Current completion (2026-10-27): ZOD-132 is complete.** The owner prioritized
+**Current completion (2026-10-27): ZOD-133 is complete.** Broader consolidation
+removed redundant identity/order/facing combinations, duplicate legacy arithmetic
+matrices, generated-record and prototype checks, and remaining non-AI API-shape
+freezes. Distinct source cases and targeted invariance/replay/authority/data
+validation remain. The suite runs **3,548 .NET cases (534 fewer)** from 1,074
+methods/139 classes; most reduction is redundant combinations, not independently
+written methods. Locked restore, zero-warning/error Release build, **477 Python
+tests** and nine historical audits pass. See [retirements and replacement coverage](development/test-maintenance.md#zod-133-consolidation--2026-10-27).
+Runtime/evidence and owner drafts are untouched. **ZOD-131 remains the next feature
+ticket**, after this maintenance review. Editor UI and ZOD-106 remain deferred.
+
+**ZOD-132 maintenance checkpoint (historical):** the owner prioritized
 test maintainability before more AI implementation. Routine source-description
 tests no longer freeze current files to historical hashes. Nine explicit audits
 run against their own recorded Git checkpoints, preserving the old manifests,
@@ -2441,6 +2452,28 @@ boundary. No runtime/AI interface/editor changes or historical evidence rewrites
 focused original-rule AI cases, **4,082 full .NET / 477 Python tests**, and nine
 historical audits pass. Counts report execution, not a target for future tickets.
 Owner definitions drafts are preserved and excluded from the commit.
+
+### ZOD-133 — Consolidate repeated tests and retire obsolete milestone checks
+
+**Type:** Maintenance · **Priority:** P2 · **Status:** Complete · **Depends on:** ZOD-132
+
+**Owner priority:** Consolidate overlapping tests and remove checks unlikely to
+serve the completed game before resuming AI feature work.
+
+**Delivered:** Source vector matrices run once per distinct case, with focused
+actor/order/facing invariance tests. RNG-prefix detail stays at the formula/
+projection layer; forwarding wrappers test their transaction boundaries. Duplicate
+legacy sword arithmetic coverage, generated-record tests, the prototype independence
+demonstration and its unused sample link, duplicate adapter arithmetic/error tests,
+and structural-only API restrictions are removed. Existing replay, original numeric
+boundaries, malformed-data, storage and receipt-authority checks remain. Historical
+fixtures/evidence/verifiers are unchanged. See the [replacement inventory and limits](development/test-maintenance.md#zod-133-consolidation--2026-10-27).
+
+**Validation:** Locked restore and zero-warning/error Release build, **3,548 .NET
+cases / 477 Python tests**, and all nine historical audits pass. Net reduction:
+534 executed cases (4,082 to 3,548), four methods (1,078 to 1,074), two classes
+(141 to 139). No test was marked skipped or moved into a loop to lower discovery
+counts. Runtime and owner drafts remain untouched; no ZOD-131 implementation began.
 
 ### ZOD-131 — Implement one-scenario ordinary sword candidate scan
 

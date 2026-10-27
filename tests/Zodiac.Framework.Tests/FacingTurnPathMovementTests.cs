@@ -1,4 +1,3 @@
-using System.Collections.Immutable;
 using System.Text.Json;
 using Xunit;
 
@@ -18,23 +17,22 @@ public sealed class FacingTurnPathMovementTests
         using var document = Contract("voluntary-move-contract-v1.json");
         foreach (var row in document.RootElement.GetProperty("vectors").EnumerateArray()
             .Where(r => r.GetProperty("family").GetString() == "proposed-move" && r.GetProperty("expected").GetProperty("accepted").GetBoolean()))
-        foreach (bool second in new[] { false, true }) foreach (bool reverse in new[] { false, true })
-            yield return [row.GetProperty("id").GetString()!, second, reverse];
+            yield return [row.GetProperty("id").GetString()!];
     }
 
     [Theory] [MemberData(nameof(PositiveProposals))]
-    public void Executes_nine_positive_ZOD122_proposals_with_both_actor_IDs_and_orders(string id, bool second, bool reverse)
+    public void Source_move_proposals_preserve_path_heading_choices_counters_and_receipts(string id)
     {
         using var document = Contract("voluntary-move-contract-v1.json");
         var row = document.RootElement.GetProperty("vectors").EnumerateArray().Single(r => r.GetProperty("id").GetString() == id);
         var input = row.GetProperty("inputs"); var route = input.GetProperty("route"); var expected = row.GetProperty("expected");
         ulong count = input.GetProperty("rngCount").GetUInt64(); uint word = input.GetProperty("rngWord").GetUInt32();
         // Invert one BIOS transition so public Advance delivers the vector's literal word/count.
-        var state = Active(second, reverse, route.GetProperty("width").GetInt32(), route.GetProperty("depth").GetInt32(),
+        var state = Active(false, false, route.GetProperty("width").GetInt32(), route.GetProperty("depth").GetInt32(),
             Point(route.GetProperty("origin")), Point(route.GetProperty("enemy")), route.GetProperty("move").GetInt32(),
             route.GetProperty("jump").GetInt32(), ct: input.GetProperty("ct").GetInt32(),
             seed: unchecked((word - 12345u) * 4005161829u), count: count - 1);
-        var actor = second ? B : A;
+        var actor = A;
         // Normalized source vectors supply an Act flag, not an executable attack. Public combat sequences are tested below.
         if (input.GetProperty("acted").GetBoolean()) state = MarkActForNormalizedVector(state, actor);
         state = Counters(state, input.GetProperty("revision").GetUInt64());
@@ -57,24 +55,55 @@ public sealed class FacingTurnPathMovementTests
         Assert.Equal(before, Snapshot(state));
     }
 
+    [Theory] [InlineData(false, false)] [InlineData(false, true)] [InlineData(true, false)] [InlineData(true, true)]
+    public void Actor_identity_and_collection_order_preserve_path_moves_before_and_after_Act(bool second, bool acted)
+    {
+        var state = Active(second: second, enemy: new(3, 2, 0));
+        var reversed = Active(second: second, enemy: new(3, 2, 0), reverse: true);
+        var actor = second ? B : A; var enemy = second ? A : B;
+        if (acted)
+        {
+            state = Accepted(FacingTurnBattle.Attack(state, new(actor, enemy), new(Weapon, 0)));
+            reversed = Accepted(FacingTurnBattle.Attack(reversed, new(actor, enemy), new(Weapon, 0)));
+        }
+        string before = Snapshot(state), reversedBefore = Snapshot(reversed);
+        var result = Move(state, actor, new(2, 3, 0)); var other = Move(reversed, actor, new(2, 3, 0));
+        var after = Accepted(result); var otherAfter = Accepted(other);
+        Assert.Equal(new TilePosition(2, 3, 0), Body(after, actor).Position);
+        Assert.True(Body(after, actor).HasMoved); Assert.Equal(acted, Turn(after, actor).ActionTaken);
+        Assert.Equal(!acted, Turn(after, actor).HasTurn);
+        Assert.Equal(acted, after.PendingFacing is not null);
+        AssertSamePathAndEvents(result, other);
+        Assert.Equal(after.Revision, otherAfter.Revision);
+        Assert.Equal(after.PendingFacing?.ActorId, otherAfter.PendingFacing?.ActorId);
+        foreach (var id in new[] { A, B })
+        {
+            Assert.Equal(Body(after, id).Position, Body(otherAfter, id).Position);
+            Assert.Equal(Body(after, id).HasMoved, Body(otherAfter, id).HasMoved);
+            Assert.Equal(Combat(after, id), Combat(otherAfter, id)); Assert.Equal(Turn(after, id), Turn(otherAfter, id));
+        }
+        Assert.Equal(after.Battle.TurnBattle.Turns.RngState, otherAfter.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(before, Snapshot(state)); Assert.Equal(reversedBefore, Snapshot(reversed));
+    }
+
     public static IEnumerable<object[]> SelectedPaths()
     {
         using var document = Contract("flat-ai-movement-contract-v1.json");
         foreach (var row in document.RootElement.GetProperty("vectors").EnumerateArray().Where(r =>
             r.GetProperty("family").GetString() == "flat-route" && r.GetProperty("expected").GetProperty("path").ValueKind != JsonValueKind.Null))
-        foreach (bool second in new[] { false, true }) yield return [row.GetProperty("id").GetString()!, second];
+            yield return [row.GetProperty("id").GetString()!];
     }
 
     [Theory] [MemberData(nameof(SelectedPaths))]
-    public void Executes_17_ZOD120_selected_paths_as_confirmed_commands(string id, bool second)
+    public void Selected_source_routes_execute_as_confirmed_commands(string id)
     {
         using var document = Contract("flat-ai-movement-contract-v1.json");
         var row = document.RootElement.GetProperty("vectors").EnumerateArray().Single(r => r.GetProperty("id").GetString() == id);
         var input = row.GetProperty("inputs"); var expected = row.GetProperty("expected");
-        var state = Active(second: second, width: input.GetProperty("width").GetInt32(), depth: input.GetProperty("depth").GetInt32(),
+        var state = Active(width: input.GetProperty("width").GetInt32(), depth: input.GetProperty("depth").GetInt32(),
             origin: Point(input.GetProperty("origin")), enemy: Point(input.GetProperty("enemy")),
             move: input.GetProperty("move").GetInt32(), jump: input.GetProperty("jump").GetInt32());
-        var actor = second ? B : A; string before = Snapshot(state);
+        var actor = A; string before = Snapshot(state);
         var result = Move(state, actor, Point(input.GetProperty("destination"))); var after = Accepted(result);
         Assert.Equal(expected.GetProperty("path").EnumerateArray().Select(Point), result.Path!.Tiles);
         Assert.Equal(expected.GetProperty("packedSteps").EnumerateArray().Select(v => v.GetByte()), result.Path.PackedSteps);
@@ -295,9 +324,7 @@ public sealed class FacingTurnPathMovementTests
         var prefix = MarkActForNormalizedVector(Active(), A); string before = Snapshot(prefix);
         var left = Move(prefix, A, new(3, 2, 0)); var right = Move(prefix, A, new(3, 2, 0));
         AssertEvents(prefix, left, A); AssertEvents(prefix, right, A);
-        Assert.Equal(left.Events.Select(e => e is VoluntaryPathCompletedEvent p ? JsonSerializer.Serialize(p) : e.ToString()),
-            right.Events.Select(e => e is VoluntaryPathCompletedEvent p ? JsonSerializer.Serialize(p) : e.ToString()));
-        Assert.Equal(JsonSerializer.Serialize(left.Path), JsonSerializer.Serialize(right.Path));
+        AssertSamePathAndEvents(left, right);
         Assert.Equal(Snapshot(left.State), Snapshot(right.State)); Assert.Equal(before, Snapshot(prefix));
         Assert.NotSame(left.State.PendingFacing, right.State.PendingFacing);
         var finishedLeft = Accepted(FacingTurnBattle.FinishFacing(left.State, A, left.State.PendingFacing, Keep));
@@ -321,16 +348,23 @@ public sealed class FacingTurnPathMovementTests
     }
 
     [Fact]
-    public void Legacy_Move_and_query_still_preserve_facing_and_cannot_accept_external_path_authority()
+    public void Legacy_Move_and_query_preserve_facing_while_path_commands_apply_heading()
     {
         var state = Active(); string before = Snapshot(state);
         var query = FlatOrdinaryMovement.Evaluate(state.Battle, A, Movement, new(3, 2, 0)); Assert.True(query.Accepted);
         Assert.Equal(BattleFacing.West, Combat(state, A).Facing); Assert.Equal(before, Snapshot(state));
         var legacy = Accepted(FacingTurnBattle.Move(state, new(A, new(3, 2, 0)))); Assert.Equal(BattleFacing.West, Combat(legacy, A).Facing);
         var current = Accepted(Move(state, A, new(3, 2, 0))); Assert.Equal(BattleFacing.East, Combat(current, A).Facing);
-        var method = typeof(FacingTurnPathMovement).GetMethod(nameof(FacingTurnPathMovement.MoveAlongPath))!;
-        Assert.Equal(new[] { typeof(FacingTurnState), typeof(MoveUnitCommand), typeof(FlatOrdinaryMovementProfile) }, method.GetParameters().Select(p => p.ParameterType));
-        Assert.Empty(typeof(FacingTurnState).GetConstructors()); Assert.Empty(typeof(FacingCompletionReceipt).GetConstructors());
+    }
+
+    private static void AssertSamePathAndEvents(PathMoveResult expected, PathMoveResult actual)
+    {
+        Assert.Equal(expected.Path!.Tiles.ToArray(), actual.Path!.Tiles.ToArray());
+        Assert.Equal(expected.Path.PackedSteps.ToArray(), actual.Path.PackedSteps.ToArray());
+        Assert.Equal(expected.Path.FinalHeading, actual.Path.FinalHeading);
+        // ImmutableArray record equality is storage identity; compare the path event by its payload instead.
+        Assert.Equal(expected.Events.Select(e => e is VoluntaryPathCompletedEvent p ? JsonSerializer.Serialize(p) : e.ToString()),
+            actual.Events.Select(e => e is VoluntaryPathCompletedEvent p ? JsonSerializer.Serialize(p) : e.ToString()));
     }
 
     private static JsonDocument Contract(string name) => JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", name)));

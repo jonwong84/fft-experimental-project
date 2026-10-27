@@ -18,18 +18,17 @@ public sealed class FacingTurnBattleTests
         foreach (var row in json.RootElement.GetProperty("vectors").EnumerateArray().Where(r =>
             r.GetProperty("family").GetString() == "direction" && r.GetProperty("expected").GetProperty("facing").GetString() != "Overlap" &&
             r.GetProperty("inputs").GetProperty("target")[0].GetInt32() < 128))
-        foreach (bool second in new[] { false, true })
-        foreach (bool reverse in new[] { false, true }) yield return [row.GetProperty("id").GetString()!, second, reverse];
+            yield return [row.GetProperty("id").GetString()!];
     }
 
     [Theory] [MemberData(nameof(Directions))]
-    public void Admitted_source_cardinal_and_diagonal_vectors_execute_for_both_actors_and_orders(string id, bool second, bool reverse)
+    public void Source_cardinal_and_diagonal_vectors_choose_and_settle_facing(string id)
     {
         using var json = Contract();
         var row = json.RootElement.GetProperty("vectors").EnumerateArray().Single(r => r.GetProperty("id").GetString() == id);
         var input = row.GetProperty("inputs"); var expected = row.GetProperty("expected");
-        var state = Active(second: second, reverse: reverse, actor: Point(input.GetProperty("origin")), target: Point(input.GetProperty("target")));
-        var actor = second ? B : A; var enemy = second ? A : B;
+        var state = Active(actor: Point(input.GetProperty("origin")), target: Point(input.GetProperty("target")));
+        var actor = A; var enemy = B;
         string before = Snapshot(state);
         var query = FacingTurnBattle.Probe(state, actor, new FacingChoice.ChooseClosedEnemy(enemy));
         Assert.True(query.Accepted); Assert.Equal((BattleFacing)expected.GetProperty("managedFacing").GetInt32(), query.Facing);
@@ -38,18 +37,39 @@ public sealed class FacingTurnBattleTests
         Assert.Equal(before, Snapshot(state)); Assert.Equal(state.Battle.TurnBattle.Turns.RngState, result.State.Battle.TurnBattle.Turns.RngState);
     }
 
+    [Theory] [InlineData(false)] [InlineData(true)]
+    public void Actor_identity_and_collection_order_preserve_facing_choice_and_settlement(bool second)
+    {
+        var state = Active(second: second); var reversed = Active(second: second, reverse: true);
+        string before = Snapshot(state), reversedBefore = Snapshot(reversed);
+        var actor = second ? B : A; var choice = new FacingChoice.ChooseClosedEnemy(second ? A : B);
+        var probe = FacingTurnBattle.Probe(state, actor, choice);
+        Assert.True(probe.Accepted); Assert.Equal(probe, FacingTurnBattle.Probe(reversed, actor, choice));
+        Assert.Equal(BattleFacing.East, probe.Facing);
+        var result = FacingTurnBattle.WaitWithFacing(state, actor, choice);
+        var other = FacingTurnBattle.WaitWithFacing(reversed, actor, choice);
+        var after = Accepted(result); var otherAfter = Accepted(other);
+        Assert.Equal(probe.Facing, Unit(after, actor).Facing);
+        Assert.Equal(new FacingSettledEvent(actor, Unit(state, actor).Facing, BattleFacing.East), result.Events[^1]);
+        Assert.Equal(result.Events.ToArray(), other.Events.ToArray());
+        Assert.Equal(after.Revision, otherAfter.Revision);
+        Assert.Equal(Unit(after, actor), Unit(otherAfter, actor));
+        Assert.Equal(Turn(after, actor), Turn(otherAfter, actor));
+        Assert.Equal(after.Battle.TurnBattle.Turns.RngState, otherAfter.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(before, Snapshot(state)); Assert.Equal(reversedBefore, Snapshot(reversed));
+    }
+
     public static IEnumerable<object[]> TypedFacings()
     {
         foreach (var face in Enum.GetValues<BattleFacing>())
-        foreach (bool second in new[] { false, true })
-        foreach (bool reverse in new[] { false, true }) yield return [face, second, reverse];
+            yield return [face];
     }
 
     [Theory] [MemberData(nameof(TypedFacings))]
-    public void Fixed_and_KeepCurrent_are_typed_and_need_no_legal_adjacent_move(BattleFacing face, bool second, bool reverse)
+    public void Fixed_and_KeepCurrent_need_no_legal_adjacent_move(BattleFacing face)
     {
-        var actor = second ? B : A;
-        var state = Active(second: second, reverse: reverse, actorFacing: face, actor: new(0, 0, 0), target: new(1, 0, 0));
+        var actor = A;
+        var state = Active(actorFacing: face, actor: new(0, 0, 0), target: new(1, 0, 0));
         Assert.Equal(face, FacingTurnBattle.Probe(state, actor, Keep).Facing);
         foreach (var requested in Enum.GetValues<BattleFacing>())
         {
@@ -432,7 +452,6 @@ public sealed class FacingTurnBattleTests
         Atomic(active, FacingTurnBattle.WaitWithFacing(active, A, new FacingChoice.Fixed((BattleFacing)99)), FacingTurnRejection.UnsupportedFacing);
         foreach (var enemy in new[] { A, new BattleUnitId("sample:unit/missing") })
             Atomic(active, FacingTurnBattle.WaitWithFacing(active, A, new FacingChoice.ChooseClosedEnemy(enemy)), FacingTurnRejection.UnsupportedFacing);
-        Assert.Empty(typeof(FacingTurnState).GetConstructors()); Assert.Empty(typeof(FacingCompletionReceipt).GetConstructors());
         Assert.Throws<ArgumentNullException>(() => FacingTurnBattle.Begin(null!, Profile));
         Assert.Throws<ArgumentNullException>(() => FacingTurnBattle.Begin(Setup(), null!));
         Assert.Throws<ArgumentNullException>(() => FacingTurnBattle.Advance(null!));

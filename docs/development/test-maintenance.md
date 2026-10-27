@@ -121,7 +121,7 @@ No runtime, rules-selection interface, editor or original behavior changed.
 Repository-wide test reorganization, further fixture/setup consolidation and
 maintenance of non-AI structural tests remain separate work.
 
-## Validation checkpoint — 2026-10-27
+## ZOD-132 validation checkpoint — 2026-10-27 (historical)
 
 Locked restore and Release build passed with zero warnings/errors. The focused
 OriginalFft AI group passed 613 cases; the full solution passed 4,082 .NET cases
@@ -137,3 +137,82 @@ The read-only reference checkout remained clean at
 no C/original execution or manual presentation review was performed, and owner
 untracked definition drafts were preserved. The .NET build included the drafts
 present during validation; they are excluded from this maintenance commit.
+
+## ZOD-133 consolidation — 2026-10-27
+
+The owner requested consolidation and removal of tests that would not serve the
+completed game. Inventory of the ZOD-132 TRX reports found 4,082 executed cases
+from 1,078 test methods in 141 classes. The largest repetitions crossed source
+vectors with actor identity, input collection order, unrelated facing and RNG
+seeds. The content/save/import/presentation groups contain distinct schema,
+corruption, storage and visual-model cases; those were not removed merely to
+reduce the total.
+
+The suite now executes **3,548 cases from 1,074 methods in 139 classes**, a net
+reduction of 534 cases (13.1%). This primarily removes redundant combinations,
+not hundreds of separately written methods. Excluded permutations have not been
+moved into loops or marked skipped. Existing scenario replays and independent
+graph checks still use their own intentional loops.
+
+The replacements and retirements are:
+
+- Formula projection keeps all 16 target-direction/target-facing combinations,
+  plus a separate four-case actor-facing invariance check. Its existing actor/
+  collection-order tests and literal seed vectors remain. Critical sword attacks
+  keep 32 target-facing/seed cases and a separate four-case actor-facing check.
+- All 24 flat route vectors, 12 admitted facing-direction vectors, nine positive
+  move proposals, 17 selected command paths and ten materialized score kernels
+  remain active once each. Focused identity/order checks cover both actors,
+  moved/unmoved queries, moves before/after Act, both candidate action orders,
+  and living/dead projections. These checks assert known locations, HP, scores,
+  choice flags and RNG counts as well as equality across permutations.
+  Path/event equality compares immutable-array
+  payloads instead of backing-storage identity; the replay test shares that check.
+- Formula and candidate projection retain every draw prefix for their distinct
+  schedules. Scoring checks zero, last insufficient, exact and spare budget for
+  living/lethal/NotValuable outcomes. Pair comparison checks failure in either
+  candidate, their boundary, exact fit and spare budget. Neither forwarding
+  wrapper repeats all inner formula prefixes. The explicit long corpse-upkeep,
+  tick-overflow, typed-rejection and replay cases remain.
+- `SwordSettledFacingTests` no longer repeats 32 legacy cardinal, four damage/
+  cap and 20 draw-prefix cases. Both sword overloads call `AttackCore`; current
+  arithmetic/facing coverage lives in `FlatSwordKnockbackTests` and
+  `AttackBattleSimulatorTests`, with off-map old/new overload equivalence checked
+  in the former. Legacy actor identity, both action orders and journal-prefix
+  replay remain in `SwordSettledFacingTests`. Its unused setup parameters were
+  removed. The old settled-facing fixture remains historical evidence rather
+  than a second active C# arithmetic matrix.
+- `TilePositionTests` tested generated positional-record accessors/equality,
+  without handwritten behavior. It was removed. `EngineIndependenceTests`
+  reran a deterministic Relay sample around unrelated FFT calculations; it did
+  not establish an assembly boundary. It and the now-unused Relay source link
+  were removed from the framework test project. Dedicated engine/sample coverage
+  remains in `Tessera.Engine.Tests`.
+- Four flat-grid arithmetic/error tests duplicated engine coverage. The two
+  Zodiac adapter tests retain parameter/validation-order, upper-layer coordinate
+  conversion and immutable-output checks.
+- Exact public method/signature/constructor-shape restrictions were removed from
+  facing, path, Ready and dark-screen tests. Structural-only DSI-015 is retired
+  from active .NET discovery; its original record is unchanged. Behavioral
+  missing-input, forged-binding, stale/cross-branch receipt, pending-state and
+  rollback tests remain, including reflection used to construct corrupt inputs.
+
+These changes remove overlap in combat, movement and obsolete milestone checks.
+They do not establish that all remaining tests are indispensable forever. Retire
+temporary admission checks with the APIs/profiles they protect when those change;
+do not preemptively stop checking a still-active implementation's safe failure.
+Add new rules and content against their own definitions/implementations, and
+expand shared contract coverage when a real alternative implementation exists.
+
+Locked restore, zero-warning/error Release build, **3,548 .NET / 477 Python tests**
+and all nine historical checkpoint audits pass. Validation caught setup/equality
+errors in the new path fixture and a mistaken moved-unit expectation in the new
+movement check. A moved unit still has physical geometry; only its AI origins
+collapse to the current tile. Those test errors were corrected without changing
+runtime behavior, then the full suite passed.
+Logs, TRX, the before/after inventory and audit report are under ignored
+`scratch/test-consolidation-*`. The reference stayed clean at
+`11464943bbdbd2a0af022d90cb7f10455cf911df`; no new gameplay rule was translated.
+Runtime, old evidence/fixtures/verifiers and owner definition drafts are unchanged.
+No original/C execution or presentation review was performed. No AI scan feature
+work was started during maintenance.

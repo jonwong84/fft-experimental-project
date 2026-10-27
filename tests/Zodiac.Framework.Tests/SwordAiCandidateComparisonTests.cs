@@ -164,11 +164,17 @@ public sealed class SwordAiCandidateComparisonTests
 
     public static IEnumerable<object[]> Budgets()
     {
-        foreach (int kind in new[] { 0, 1, 2 }) for (int remaining = 0; remaining <= 12; remaining++) yield return [kind, remaining];
+        // Cover failure in either candidate, exact fit and spare budget; projection owns inner draw prefixes.
+        foreach (int kind in new[] { 0, 1, 2 })
+        {
+            int each = kind == 2 ? 4 : kind == 1 ? 6 : 5;
+            foreach (int remaining in new[] { 0, each - 1, each, each * 2 - 1, each * 2, each * 2 + 1 })
+                yield return [kind, remaining];
+        }
     }
 
     [Theory] [MemberData(nameof(Budgets))]
-    public void Every_pair_budget_is_atomic_and_exact_MAX_success_needs_no_comparison_draw(int kind, int remaining)
+    public void Pair_budget_boundaries_are_atomic_and_comparison_adds_no_draws(int kind, int remaining)
     {
         bool notValuable = kind == 2; int each = notValuable ? 4 : kind == 1 ? 6 : 5;
         var state = State(evade: notValuable ? 100 : 0); var rng = new FftRandomState(1, ulong.MaxValue - (ulong)remaining);

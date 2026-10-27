@@ -75,27 +75,45 @@ public sealed class SwordAiCandidateProjectionTests
         Assert.Equal(clock.GetProperty("readySlot").GetInt32() == I("actorSlot") ? A : B,outcome.MoveOpportunityUnitId);
     }
 
+    [Theory]
+    [InlineData(false, SwordAiCandidateOrder.MoveThenAct)] [InlineData(false, SwordAiCandidateOrder.ActThenMove)]
+    [InlineData(true, SwordAiCandidateOrder.MoveThenAct)] [InlineData(true, SwordAiCandidateOrder.ActThenMove)]
+    [Trait("Contract", "QueryIsolation")]
+    public void Actor_identity_and_collection_order_preserve_both_action_orders(bool second, SwordAiCandidateOrder order)
+    {
+        var enemy = order == SwordAiCandidateOrder.MoveThenAct ? new TilePosition(0, 2, 0) : new(3, 2, 0);
+        var state = State(second: second, enemy: enemy);
+        var reversed = State(second: second, enemy: enemy, reverse: true);
+        string before = Snapshot(state), reversedBefore = Snapshot(reversed);
+        var candidate = new SwordAiCandidate(second ? B : A, second ? A : B, new(1, 2, 0), order);
+        var result = Project(state, candidate); Assert.Equal(candidate.ActorId, Projected(result).ActorId);
+        Assert.Equal(25, Unit(result.Outcome!, candidate.TargetId).Hp);
+        Assert.Equal(candidate.Destination, Unit(result.Outcome!, candidate.ActorId).Position);
+        Assert.Equal(Decision.DrawCount + 5ul, result.RngState.DrawCount);
+        Assert.Equal(Serialize(result), Serialize(Project(reversed, candidate)));
+        Assert.Equal(before, Snapshot(state)); Assert.Equal(reversedBefore, Snapshot(reversed));
+    }
+
     public static IEnumerable<object[]> OrdersAndFaces()
     {
         foreach (var order in Enum.GetValues<SwordAiCandidateOrder>())
         foreach (var facing in Enum.GetValues<BattleFacing>())
-        foreach (bool second in new[] { false,true })
-        foreach (bool reverse in new[] { false,true }) yield return [order,facing,second,reverse];
+            yield return [order,facing];
     }
 
     [Theory] [MemberData(nameof(OrdersAndFaces))]
-    public void Both_orders_and_all_faces_preserve_input_and_use_the_correct_formula_origin(
-        SwordAiCandidateOrder order, BattleFacing facing, bool second, bool reverse)
+    public void Both_action_orders_preserve_each_facing_and_use_the_correct_formula_origin(
+        SwordAiCandidateOrder order, BattleFacing facing)
     {
-        var actor = second ? B : A; var target = second ? A : B;
-        var state = State(second: second,reverse: reverse,facing: facing,enemy: new(4,4,0));
+        var actor = A; var target = B;
+        var state = State(facing: facing,enemy: new(4,4,0));
         string before = Snapshot(state);
         var candidate = new SwordAiCandidate(actor,target,new(1,2,0),order);
         // Neither action origin is adjacent to this enemy; both orders must reject before draws.
         var invalid = Project(state,candidate);
         Atomic(invalid,SwordAiCandidateRejection.OutOfRange);
         var enemy = order == SwordAiCandidateOrder.MoveThenAct ? new TilePosition(0,2,0) : new(3,2,0);
-        state = State(second: second,reverse: reverse,facing: facing,enemy: enemy);
+        state = State(facing: facing,enemy: enemy);
         before = Snapshot(state);
         var result = Project(state,candidate); var outcome = Projected(result);
         Assert.Equal(new(1,2,0),Unit(outcome,actor).Position); Assert.Equal(facing,Unit(outcome,actor).Facing);
@@ -195,9 +213,9 @@ public sealed class SwordAiCandidateProjectionTests
 
     public static IEnumerable<object[]> Budgets()
     {
-        foreach (int evade in new[] { 0,100 })
-        foreach (bool lethal in new[] { false,true })
-        for (int remaining=0; remaining<=6; remaining++) yield return [evade,lethal,remaining];
+        // Exhaust every prefix of each distinct draw schedule; zero accuracy never reaches lethal work.
+        foreach (var (evade, lethal, draws) in new[] { (0, false, 5), (0, true, 6), (100, false, 4) })
+        for (int remaining=0; remaining<=draws; remaining++) yield return [evade,lethal,remaining];
     }
 
     [Theory] [MemberData(nameof(Budgets))]

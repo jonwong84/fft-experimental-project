@@ -47,26 +47,32 @@ public sealed class SwordAiFormulaProjectionTests
     public static IEnumerable<object[]> Facings()
     {
         foreach (var target in new[] { new TilePosition(3, 2, 0), new(1, 2, 0), new(2, 3, 0), new(2, 1, 0) })
-        foreach (var actorFace in Enum.GetValues<BattleFacing>())
         foreach (var targetFace in Enum.GetValues<BattleFacing>())
-        foreach (bool secondActor in new[] { false, true }) yield return [target, actorFace, targetFace, secondActor];
+            yield return [target, targetFace];
     }
 
     [Theory] [MemberData(nameof(Facings))]
-    public void All_cardinal_facings_and_actor_IDs_use_target_front_only(TilePosition target, BattleFacing actorFace,
-        BattleFacing targetFace, bool secondActor)
+    public void Cardinal_target_facing_controls_front_evasion(TilePosition target, BattleFacing targetFace)
     {
         // Explicit table avoids reproducing the production directional expression.
         var fronts = new Dictionary<TilePosition, BattleFacing>
         { [new(3, 2, 0)] = BattleFacing.West, [new(1, 2, 0)] = BattleFacing.East,
           [new(2, 3, 0)] = BattleFacing.South, [new(2, 1, 0)] = BattleFacing.North };
-        var state = State(target: target, actorFacing: actorFace, targetFacing: targetFace,
-            secondActor: secondActor, reverse: secondActor, evade: 100);
+        var state = State(target: target, targetFacing: targetFace, evade: 100);
         string original = Snapshot(state);
-        var result = Project(state, secondActor: secondActor);
+        var result = Project(state);
         Assert.Equal(targetFace == fronts[target] ? new(0, 0, 50) : new SwordAiFormulaOutcome(100, 25, 25), result.Outcome);
         Assert.Equal(new FftRandomState(3587663605, 4), result.RngState);
         Assert.Equal(original, Snapshot(state));
+    }
+
+    [Theory] [InlineData(BattleFacing.East)] [InlineData(BattleFacing.North)]
+    [InlineData(BattleFacing.West)] [InlineData(BattleFacing.South)]
+    public void Actor_facing_does_not_change_the_target_evasion_or_projection(BattleFacing facing)
+    {
+        var state = State(actorFacing: facing); string before = Snapshot(state);
+        Assert.Equal(Project(State()), Project(state));
+        Assert.Equal(before, Snapshot(state));
     }
 
     [Theory]
@@ -95,21 +101,20 @@ public sealed class SwordAiFormulaProjectionTests
 
     public static IEnumerable<object[]> Budgets()
     {
-        foreach (uint seed in new[] { 1u, 57u })
-        foreach (int evade in new[] { 0, 10, 100 })
-        for (int remaining = 0; remaining <= 4; remaining++) yield return [seed, evade, remaining];
+        foreach (int evade in new[] { 0, 100 })
+        for (int remaining = 0; remaining <= 4; remaining++) yield return [evade, remaining];
     }
 
     [Theory] [MemberData(nameof(Budgets))]
-    public void Every_draw_budget_is_atomic_even_for_certain_evasion(uint seed, int evade, int remaining)
+    public void Every_formula_draw_prefix_is_atomic_even_for_certain_evasion(int evade, int remaining)
     {
-        var state = State(seed: seed, evade: evade, count: ulong.MaxValue - (ulong)remaining);
+        var state = State(seed: 57, evade: evade, count: ulong.MaxValue - (ulong)remaining);
         string original = Snapshot(state); var result = Project(state);
         if (remaining < 4) Atomic(state, result, AttackCommandRejection.RandomDrawCountExhausted);
         else
         {
             Assert.True(result.Accepted); Assert.NotNull(result.Outcome);
-            Assert.Equal(new FftRandomState(seed == 1 ? 3295386429u : 3587663605u, ulong.MaxValue), result.RngState);
+            Assert.Equal(new FftRandomState(3587663605u, ulong.MaxValue), result.RngState);
         }
         Assert.Equal(original, Snapshot(state));
     }

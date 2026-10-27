@@ -158,7 +158,6 @@ public sealed class DarkScreenContractTests
                 Assert.True(state.Event.Exited);
                 Task(state, DarkScreenPhase.Holding, SceneTaskClass.DarkScreenHold, 1);
                 Assert.Equal(DarkScreenDrawKind.Flash, state.Worker!.Draw.Kind);
-                Assert.DoesNotContain(typeof(DarkScreenExecutor).GetMethods().SelectMany(m => m.GetParameters()), p => p.ParameterType == typeof(bool));
                 break;
             }
             case "DSC-009":

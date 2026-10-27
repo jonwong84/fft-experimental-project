@@ -71,12 +71,11 @@ public sealed class SwordAiCandidateScoringTests
     {
         using var document=Contract();
         foreach(var row in document.RootElement.GetProperty("vectors").EnumerateArray().Where(r=>r.GetProperty("family").GetString()=="source-state"))
-        foreach(bool second in new[]{false,true})foreach(bool reverse in new[]{false,true})
-            yield return [row.GetProperty("id").GetString()!,second,reverse];
+            yield return [row.GetProperty("id").GetString()!];
     }
 
     [Theory] [MemberData(nameof(StateKernels))]
-    public void Materializes_ten_post_state_kernels_for_both_actor_IDs_and_collection_orders(string id,bool second,bool reverse)
+    public void Source_state_kernels_preserve_priority_and_each_unit_contribution(string id)
     {
         using var document=Contract();
         var row=document.RootElement.GetProperty("vectors").EnumerateArray().Single(r=>r.GetProperty("id").GetString()==id);
@@ -84,14 +83,30 @@ public sealed class SwordAiCandidateScoringTests
         var ally=units.Single(u=>!u.GetProperty("enemy").GetBoolean());var enemy=units.Single(u=>u.GetProperty("enemy").GetBoolean());
         int targetHp=enemy.GetProperty("hp").GetInt32();
         // A Dead scoring kernel is reached with pre-hit HP1 and a one-damage sword; initial Dead remains rejected.
-        var state=State(second:second,reverse:reverse,actorHp:ally.GetProperty("hp").GetInt32(),actorMax:ally.GetProperty("maxHp").GetInt32(),
+        var state=State(actorHp:ally.GetProperty("hp").GetInt32(),actorMax:ally.GetProperty("maxHp").GetInt32(),
             hp:targetHp==0?1:targetHp,maxHp:enemy.GetProperty("maxHp").GetInt32(),pa:1);
-        var result=Evaluate(state,second:second,power:targetHp==0?1:0);var score=Scored(result);
+        var result=Evaluate(state,power:targetHp==0?1:0);var score=Scored(result);
         Assert.Equal(row.GetProperty("expected").GetProperty("priority").GetInt32(),score.Priority);
         AssertContributions(score,row.GetProperty("expected").GetProperty("contributions"));
-        Assert.Equal(second?B:A,result.Projection!.Outcome!.ActorId);
+        Assert.Equal(A,result.Projection!.Outcome!.ActorId);
         Assert.Equal(new[]{0,1},score.Contributions.Select(u=>u.TieKey));
         Assert.Equal(new[]{false,true},score.Contributions.Select(u=>u.Enemy));
+    }
+
+    [Theory] [InlineData(false, false)] [InlineData(false, true)] [InlineData(true, false)] [InlineData(true, true)]
+    [Trait("Contract", "QueryIsolation")]
+    public void Actor_identity_and_collection_order_preserve_living_and_dead_score_contributions(bool second, bool lethal)
+    {
+        var state = State(second: second); var reversed = State(second: second, reverse: true);
+        var before = Snapshot(state); var reversedBefore = Snapshot(reversed);
+        var first = Evaluate(state, second: second, power: lethal ? 10 : 5);
+        var score = Scored(first); Assert.Equal(second ? B : A, first.Projection!.Outcome!.ActorId);
+        Assert.Equal(lethal ? 320 : 64, score.Priority); Assert.Equal(100, score.HitPercent);
+        Assert.False(score.Contributions.Single(u => u.UnitId == (second ? B : A)).Enemy);
+        Assert.True(score.Contributions.Single(u => u.UnitId == (second ? A : B)).Enemy);
+        Assert.Equal(lethal, first.Projection.Outcome.TargetKnockedOut);
+        Assert.Equal(Serialize(first), Serialize(Evaluate(reversed, second: second, power: lethal ? 10 : 5)));
+        Assert.Equal(before, Snapshot(state)); Assert.Equal(reversedBefore, Snapshot(reversed));
     }
 
     [Theory] [InlineData(50,50,0,0)] [InlineData(50,25,0,64)] [InlineData(50,10,0,135)]
@@ -171,12 +186,13 @@ public sealed class SwordAiCandidateScoringTests
 
     public static IEnumerable<object[]> Budgets()
     {
-        foreach(int evade in new[]{0,100})foreach(int power in new[]{5,10})
-        for(int remaining=0;remaining<=6;remaining++)yield return [evade,power,remaining];
+        // Projection owns draw-prefix arithmetic; this wrapper forwards failure and exact/spare success.
+        foreach (var (evade, power, draws) in new[] { (0, 5, 5), (0, 10, 6), (100, 5, 4) })
+        foreach (int remaining in new[] { 0, draws - 1, draws, draws + 1 }) yield return [evade,power,remaining];
     }
 
     [Theory] [MemberData(nameof(Budgets))]
-    public void Every_draw_budget_is_forwarded_atomically_and_scoring_fits_at_MAX(int evade,int power,int remaining)
+    public void Projection_budget_boundaries_are_forwarded_without_scoring_draws(int evade,int power,int remaining)
     {
         var state=State(evade:evade);var rng=new FftRandomState(1,ulong.MaxValue-(ulong)remaining);
         int draws=evade==100?4:power==10?6:5;var result=Evaluate(state,power:power,rng:rng);

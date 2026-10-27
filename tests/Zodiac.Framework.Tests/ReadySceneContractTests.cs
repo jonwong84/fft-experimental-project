@@ -210,8 +210,6 @@ public sealed class ReadySceneContractTests
             {
                 var state = Waiting();
                 Rejected(state, ReadySceneExecutor.AdvanceTick(state, null, [], 8), BannerSceneRejection.MissingCircleSample);
-                Assert.Equal(new[] { "AdvanceTick", "RunUntilBlocked", "StartNextEvent" }, typeof(ReadySceneExecutor).GetMethods(BindingFlags.Public | BindingFlags.Static).Select(m => m.Name).Order());
-                Assert.DoesNotContain(typeof(ReadySceneExecutor).GetMethods().SelectMany(m => m.GetParameters()), p => typeof(Delegate).IsAssignableFrom(p.ParameterType));
                 break;
             }
             case "RDY-028":

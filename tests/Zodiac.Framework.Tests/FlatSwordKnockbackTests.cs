@@ -57,28 +57,39 @@ public sealed class FlatSwordKnockbackTests
     {
         foreach (var (dx, dy, front) in new[] { (1, 0, BattleFacing.West), (0, 1, BattleFacing.South),
                      (-1, 0, BattleFacing.East), (0, -1, BattleFacing.North) })
-        foreach (var actorFacing in Enum.GetValues<BattleFacing>())
         foreach (var targetFacing in Enum.GetValues<BattleFacing>())
         foreach (uint seed in new[] { 1u, 57u })
-            yield return [dx, dy, front, actorFacing, targetFacing, seed];
+            yield return [dx, dy, front, targetFacing, seed];
     }
 
     [Theory] [MemberData(nameof(CardinalFacings))]
-    public void Both_incoming_facings_survive_all_cardinal_hits_misses_and_critical_pushes(int dx, int dy,
-        BattleFacing front, BattleFacing actorFacing, BattleFacing targetFacing, uint seed)
+    public void Cardinal_target_facing_controls_hits_misses_and_critical_pushes(int dx, int dy,
+        BattleFacing front, BattleFacing targetFacing, uint seed)
     {
         var target = new TilePosition(2 + dx, 2 + dy, 0);
         var before = State(seed: seed, actor: new(2, 2, 0), target: target,
-            actorFacing: actorFacing, targetFacing: targetFacing, evade: 100);
+            targetFacing: targetFacing, evade: 100);
         var result = Attack(before);
         bool hit = targetFacing != front, critical = hit && seed == 57;
         Assert.True(result.Accepted);
         Assert.Equal(new AttackResolvedEvent(A, B, hit, critical, hit ? critical ? 45 : 25 : 0), result.Events[1]);
         Assert.Equal(critical ? new(target.X + dx, target.Y + dy, 0) : target, Position(result.State, B));
-        Assert.Equal(actorFacing, Unit(result.State, A).Facing); Assert.Equal(targetFacing, Unit(result.State, B).Facing);
+        Assert.Equal(Unit(before, A).Facing, Unit(result.State, A).Facing); Assert.Equal(targetFacing, Unit(result.State, B).Facing);
         Assert.Equal(hit ? critical ? 7ul : 6ul : 4ul, result.State.TurnBattle.Turns.RngState.DrawCount);
         Assert.Equal(hit ? seed == 57 ? 3448561432u : 2516284547u : seed == 57 ? 3587663605u : 3295386429u,
             result.State.TurnBattle.Turns.RngState.Value);
+    }
+
+    [Theory] [InlineData(BattleFacing.East)] [InlineData(BattleFacing.North)]
+    [InlineData(BattleFacing.West)] [InlineData(BattleFacing.South)]
+    public void Critical_push_preserves_the_actor_facing(BattleFacing facing)
+    {
+        var before = State(actorFacing: facing); string original = Snapshot(before);
+        var result = Attack(before);
+        Assert.True(result.Accepted); Assert.Equal(facing, Unit(result.State, A).Facing);
+        Assert.Equal(new AttackResolvedEvent(A, B, true, true, 45), result.Events[1]);
+        Assert.Equal(new TilePosition(4, 2, 0), Position(result.State, B));
+        Assert.Equal(original, Snapshot(before));
     }
 
     [Fact]

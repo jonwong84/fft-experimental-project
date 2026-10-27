@@ -22,7 +22,6 @@
   <ItemGroup>
     <None Include="..\..\docs\fixtures\rng\scph5501-rng-vectors.json" Link="Fixtures\scph5501-rng-vectors.json" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\..\docs\fixtures\behavior\*.json" Link="Fixtures\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
-    <Compile Include="..\..\samples\Relay\RelayScenario.cs" Link="Samples\RelayScenario.cs" />
     <ProjectReference Include="..\..\src\Zodiac.Framework\Zodiac.Framework.csproj" />
   </ItemGroup>
 

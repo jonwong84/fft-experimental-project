@@ -14,12 +14,11 @@ public sealed class FlatOrdinaryMovementTests
     {
         using var contract = Contract();
         foreach (var row in contract.RootElement.GetProperty("vectors").EnumerateArray().Where(r => r.GetProperty("family").GetString() == "flat-route"))
-        foreach (bool second in new[] { false, true })
-        foreach (bool reverse in new[] { false, true }) yield return [row.GetProperty("id").GetString()!, second, reverse];
+            yield return [row.GetProperty("id").GetString()!];
     }
 
     [Theory] [MemberData(nameof(SourceVectors))]
-    public void Executes_24_ZOD120_routes_for_both_actors_and_collection_orders(string id, bool second, bool reverse)
+    public void Source_routes_preserve_reachability_residuals_distance_rows_and_selected_paths(string id)
     {
         using var contract = Contract();
         var row = contract.RootElement.GetProperty("vectors").EnumerateArray().Single(r => r.GetProperty("id").GetString() == id);
@@ -28,8 +27,8 @@ public sealed class FlatOrdinaryMovementTests
         var state = State(width: input.GetProperty("width").GetInt32(), depth: input.GetProperty("depth").GetInt32(),
             origin: Point(input.GetProperty("origin")), enemy: Point(input.GetProperty("enemy")),
             move: input.GetProperty("move").GetInt32(), jump: input.GetProperty("jump").GetInt32(),
-            moved: input.GetProperty("moved").GetBoolean(), acted: input.TryGetProperty("acted", out var acted) && acted.GetBoolean(), second: second, reverse: reverse);
-        string before = Snapshot(state); var actor = second ? B : A;
+            moved: input.GetProperty("moved").GetBoolean(), acted: input.TryGetProperty("acted", out var acted) && acted.GetBoolean());
+        string before = Snapshot(state); var actor = A;
         var result = FlatOrdinaryMovement.Evaluate(state, actor, Profile);
         var outcome = Accepted(result);
         Assert.Equal(expected.GetProperty("effectiveMove").GetInt32(), outcome.EffectiveMove);
@@ -60,6 +59,27 @@ public sealed class FlatOrdinaryMovementTests
         prototype.ExceptWith(outcome.PhysicalDestinations);
         Assert.True(prototype.SetEquals(expected.GetProperty("defaultPrototypeExtraDestinations").EnumerateArray().Select(Point)));
         Assert.Equal(before, Snapshot(state)); Assert.Equal(state.TurnBattle.Turns.RngState, result.RngState);
+    }
+
+    [Theory] [InlineData(false, false)] [InlineData(false, true)] [InlineData(true, false)] [InlineData(true, true)]
+    public void Actor_identity_and_collection_order_preserve_moved_and_unmoved_queries(bool second, bool moved)
+    {
+        var state = State(second: second, moved: moved);
+        var reversed = State(second: second, moved: moved, reverse: true);
+        string before = Snapshot(state), reversedBefore = Snapshot(reversed);
+        var actor = second ? B : A;
+        var result = FlatOrdinaryMovement.Evaluate(state, actor, Profile);
+        var outcome = Accepted(result);
+        Assert.Contains(new TilePosition(2, 2, 0), outcome.AiOrigins);
+        Assert.DoesNotContain(new TilePosition(4, 4, 0), outcome.AiOrigins);
+        Assert.Contains(new TilePosition(3, 2, 0), outcome.PhysicalDestinations);
+        if (moved) Assert.Equal(new TilePosition(2, 2, 0), Assert.Single(outcome.AiOrigins));
+        else Assert.Contains(new TilePosition(3, 2, 0), outcome.AiOrigins);
+        Assert.Equal(JsonSerializer.Serialize(result), JsonSerializer.Serialize(FlatOrdinaryMovement.Evaluate(reversed, actor, Profile)));
+        var occupied = new TilePosition(4, 4, 0);
+        Rejected(state, FlatOrdinaryMovement.Evaluate(state, actor, Profile, occupied), FlatMovementRejection.InvalidDestination);
+        Rejected(reversed, FlatOrdinaryMovement.Evaluate(reversed, actor, Profile, occupied), FlatMovementRejection.InvalidDestination);
+        Assert.Equal(before, Snapshot(state)); Assert.Equal(reversedBefore, Snapshot(reversed));
     }
 
     [Fact]
