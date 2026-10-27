@@ -22,6 +22,15 @@ implementation started. Pause here for owner review; editor UI and ZOD-106 remai
 deferred. This is overlap removal, not a claim that all remaining tests must stay
 unchanged as the game grows.
 
+**Owner content-model preference (2026-10-27):** Use named booleans for independent
+content flags; confine original byte/bit packing to import/export adapters unless
+measured storage/performance needs justify an internal packed representation with
+semantic accessors. Keep numeric fields/modes distinct and unknown source bits
+opaque. [Architecture policy](architecture/overview.md#content-flag-representation)
+and deferred ZOD-134 record incremental migration when a definition family is
+extended or ready for mapping. No runtime/schema/editor/draft change is made now;
+ZOD-131 remains the next feature ticket.
+
 ## ZOD-132 maintenance checkpoint (historical)
 
 **ZOD-132 is complete.** The owner prioritized test maintenance before ZOD-131.

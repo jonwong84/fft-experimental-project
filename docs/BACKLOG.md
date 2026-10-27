@@ -55,6 +55,12 @@ tests** and nine historical audits pass. See [retirements and replacement covera
 Runtime/evidence and owner drafts are untouched. **ZOD-131 remains the next feature
 ticket**, after this maintenance review. Editor UI and ZOD-106 remain deferred.
 
+**Owner direction (2026-10-27):** Independent content switches should eventually
+use named boolean properties, with original byte packing confined to adapters.
+See [the architecture policy](architecture/overview.md#content-flag-representation)
+and deferred ZOD-134. This is not a prerequisite for ZOD-131 or an instruction to
+change existing package schemas or owner drafts now.
+
 **ZOD-132 maintenance checkpoint (historical):** the owner prioritized
 test maintainability before more AI implementation. Routine source-description
 tests no longer freeze current files to historical hashes. Nine explicit audits
@@ -2474,6 +2480,33 @@ cases / 477 Python tests**, and all nine historical audits pass. Net reduction:
 534 executed cases (4,082 to 3,548), four methods (1,078 to 1,074), two classes
 (141 to 139). No test was marked skipped or moved into a loop to lower discovery
 counts. Runtime and owner drafts remain untouched; no ZOD-131 implementation began.
+
+### ZOD-134 — Migrate packed content flags to semantic boolean properties
+
+**Type:** Refactor · **Priority:** P4 · **Status:** Deferred · **Depends on:** ZOD-014, ZOD-016
+
+**Owner direction (2026-10-27):** Prefer readable boolean properties for independent
+job/ability/item and related content switches. Original packed representation
+must not impose bit-position/capacity constraints on authored extensions.
+
+**Revisit trigger:** A definition family is being extended or its verified flag
+mapping is ready for a bounded adapter/definition migration. Select that family
+and trace meanings/unknowns before implementation; no project-wide rewrite is
+required ahead of unrelated gameplay development. Preserve owner definition drafts.
+
+**Scope:** Move known independent switches into semantic boolean properties used
+by rules/editor code, with explicit byte/bit conversion at original-format I/O.
+Keep numeric values numeric and genuine modes typed; preserve unusual original
+combinations and unknown raw bits in import/provenance data. Decide versioning/
+migration explicitly for affected existing package shapes. Retain packed semantic
+storage only for a demonstrated performance/memory need, with readable accessors.
+
+**Acceptance criteria:** The selected family's rules/editor code uses named flags;
+known decoding/encoding and unknown-bit preservation have focused adapter coverage;
+original behavior and relevant replay cases still pass. New flags need no original
+bit assignment. No invented meaning for unknown bits, silent normalization of
+quirks, or change to the prepared-files-only runtime boundary. See the
+[architecture policy](architecture/overview.md#content-flag-representation).
 
 ### ZOD-131 — Implement one-scenario ordinary sword candidate scan
 

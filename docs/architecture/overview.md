@@ -12,6 +12,27 @@
 - Permit additional content and mechanics without imposing the original executable's fixed-size data limits.
 - Use the C decompilation and locally prepared game files as development references and import sources, never as runtime dependencies.
 
+## Content flag representation
+
+**Owner direction (2026-10-27):** Prefer named boolean properties for independent
+content switches in authored definitions and the semantic objects used by rules
+and editors. Original byte offsets, bit masks and combinations of bytes belong
+in explicit import/export adapters. Packed runtime storage needs a measured
+performance or memory reason and must retain readable semantic accessors.
+
+Keep genuine numeric values numeric. Use typed modes when the source establishes
+mutually exclusive alternatives; do not assume that independently stored bits
+are exclusive. Unknown source bits stay opaque in import/provenance data for
+lossless preservation, without inventing boolean meanings or runtime support.
+Preserve unusual original combinations and observable quirks during conversion.
+
+Migrate one definition family at a time as its semantics and adapters mature.
+Existing package formats remain versioned contracts; changes to their exported
+shape need an explicit migration/version decision. Verify known flag decoding,
+encoding, unknown-bit preservation and original behavior at the adapter boundary.
+This direction does not turn numeric byte fields into booleans or require an
+immediate project-wide refactor. ZOD-134 records the deferred implementation work.
+
 ## Current repository, verified
 
 - `Fft.Editor` is a separate Windows Forms presentation adapter for the
