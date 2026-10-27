@@ -2,6 +2,54 @@
 
 ## Current handoff — 2026-10-27
 
+**ZOD-130 is complete.** The source/design contract isolates an ordinary sword
+Attack scan in one supplied movement scenario. Attack uses weapon-derived tile
+targeting with range1/AoE0/CT0 and exhaustive policy. Cast origins intersect the
+scenario mask with the useful target's range; actual weapon range still filters
+aims. Layer/y/x order determines emission. At the actor origin, ActThenMove uses
+the chosen scenario destination at that position in the scan; other origins emit
+MoveThenAct. No synthesized second order at every tile or final-destination
+deduplication. A zero-accuracy evaluation consumes four draws and keeps the aim
+for later origins; original baseline state and foe cache remain stable after KO.
+
+Proposed SwordAiCandidateScan takes original inputs and explicit scenario/target/
+ordinary-policy/fresh-best provenance, validates existing admission even for empty
+scans, and freshly scores each emitted candidate once while carrying decision RNG.
+Private incumbent None corresponds to fresh source reset -32767 only within the
+closed score range; zero/negative scores remain real. No public cached-score input
+or repeated pair tournament. Supported discard keeps draws; whole-query rejection
+is the managed atomic rollback rule. Source nested resume/cursors are documented,
+but the proposed managed API is synchronous, with no VSync/frame/coroutine state.
+
+**Correction to ZOD-128:** source UNIT_SLOT_COUNT is 21, not 32. At most 20 enemy
+proximity contributions of at most10 total at most200. The historical 26-foe wrap
+example is not a valid original roster; old artifacts remain intact. ZOD-129's
+two-opponent implementation is unaffected. This does not impose a 21-unit table
+on managed runtime design.
+
+Fresh clean read-only reference remains 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Sixteen source files / 55 functions and three prepared metadata records support
+56 classified vectors: 22 isolated kernels, four source stage descriptions and
+30 normalized managed scan proposals. **473 Python tests pass** (21 new); repeated
+audits match at 119 preserved artifacts and 33 managed baselines. ASN-001..016
+remain unexecuted in production. No C#/.NET rerun; last implementation validation
+remains ZOD-129's **4,119 .NET / 452 Python tests**. No original/C/emulator/native
+execution, runtime activation or editor change. Owner definitions drafts remain
+untouched/excluded; source-only work did not rebuild them.
+
+See [contract/reproduction/erratum](architecture/zod-130-ai-scan-contract.md),
+[vectors](fixtures/behavior/ai-scan-contract-v1.json) and
+[evidence](evidence/ai/scan-contract-v1.json). **Recommended next: ZOD-131**,
+implement this one-scenario scan and execute ASN-001..016 using actual geometry/
+formula/clock/profile adapters. Retain private evaluate-once provenance, actual
+source ordering and every evaluation's RNG. General scenario/ability/roster search,
+rank-list/lottery/policy/interface/authoritative commands remain future work.
+Editor UI and ZOD-106 remain deferred. Logs/reports: scratch/ai-scan-130-*;
+builder scratch/build_ai_scan_130.py resets validation to pending and must be
+followed by final evidence metadata after suite and repeated audit completion.
+
+## ZOD-129 implementation checkpoint (historical)
+
 **ZOD-129 is complete.** SwordAiCandidateComparison.Evaluate validates an explicit
 fresh original decision-baseline certificate and same actor/target pair, derives
 both scenario-0 destinations through unchanged flat movement, builds private

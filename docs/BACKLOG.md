@@ -44,7 +44,31 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
-**Current completion (2026-10-27): ZOD-129 is complete**, the
+**Current completion (2026-10-27): ZOD-130 is complete**, the
+[one-scenario ordinary sword scan contract](architecture/zod-130-ai-scan-contract.md).
+Weapon-derived Attack is tile-targeted, range 1/AoE0/CT0, with exhaustive runtime
+policy. Cast origins are the supplied scenario mask intersected with target range;
+map order is layer/y/x. Actor-origin becomes ActThenMove to the scenario destination
+at that origin's scan position; other origins become MoveThenAct. Stay emits once
+and duplicate final destinations remain distinct. Zero accuracy still consumes
+four draws and leaves the aim for later origins. The proposed synchronous query
+keeps a fresh private incumbent and evaluates each emitted candidate once, carrying
+all supported draws. No repeated pair tournaments or public cached-score entry.
+Fresh clean reference remains 11464943bbdbd2a0af022d90cb7f10455cf911df; 16 files /
+55 functions and three prepared records support 56 classified vectors in 5
+families. **473 Python tests pass** (21 new); ASN-001..016 remain unexecuted in
+production. Repeated audits match with 119 historical artifacts and 33 managed
+baselines. No C#/.NET rerun; last implementation validation remains ZOD-129's
+4,119 .NET / 452 Python tests. See [evidence](evidence/ai/scan-contract-v1.json).
+**Correction:** original UNIT_SLOT_COUNT is 21, not 32; at most 20 enemy proximity
+terms total at most 200. ZOD-128's 26-foe wrap example is not an admissible original
+roster. Historical files remain intact, and ZOD-129's two-unit code is unaffected.
+Owner definitions drafts stay untouched/excluded. **Recommended next: ZOD-131**,
+implement only this certified one-scenario scan and execute ASN-001..016. General
+scenario/ability/roster search, rank list/lottery/policy/interface and authoritative
+RNG/command activation remain future work. Editor UI and ZOD-106 stay deferred.
+
+**ZOD-129 implementation checkpoint (historical):** the
 [supplied-pair comparison companion](behavior/sword-ai-candidate-comparison.md).
 It validates explicit fresh-baseline provenance and original movement membership,
 builds private baseline proximity, then freshly scores incumbent and challenger
@@ -2339,7 +2363,7 @@ native execution or runtime activation. Owner drafts excluded. **Next: ZOD-130**
 
 ### ZOD-130 — Specify ordinary sword candidate scan and evaluation ownership
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-116, ZOD-121, ZOD-129
+**Type:** Spike · **Priority:** P3 · **Status:** Done · **Depends on:** ZOD-116, ZOD-121, ZOD-129
 
 **Scope:** Trace candidate generation/evaluation for one ordinary Attack ability
 within one supplied movement scenario/destination on the certified two-opponent
@@ -2366,6 +2390,59 @@ No production enumerator, general scenario/ability/roster search, move-only
 baseline/rank-list insertion, lottery, policy/interface/decision runner, command
 receipt or authoritative RNG commit, generic serializer, content/save/native/
 editor activation or C runtime. Editor UI and ZOD-106 remain deferred.
+
+**Evidence (2026-10-27):** [Contract/erratum](architecture/zod-130-ai-scan-contract.md),
+[56 vectors](fixtures/behavior/ai-scan-contract-v1.json) and
+[source/evidence audit](evidence/ai/scan-contract-v1.json). Fresh clean pinned
+11464943bbdbd2a0af022d90cb7f10455cf911df; 16 files / 55 functions and three
+hash-verified prepared metadata records. Twenty-two isolated kernels, four source
+resume-stage descriptions and 30 normalized proposals establish tile targeting,
+weapon-derived range, source masks/order, actor-origin substitution, no destination
+deduplication, four-draw NotValuable continuation, original-state/RNG ownership and
+private fresh incumbent provenance. Source resume does not imply a new managed
+frame/coroutine API. All 473 Python tests pass (21 new); repeated audits match at
+119 preserved and 33 managed baselines. Original slot count corrected to 21;
+historical 26-foe wrap example is unreachable. No C#/.NET rerun, original/C/native
+execution or runtime activation. ASN-001..016 remain unexecuted production cases.
+Owner drafts preserved/excluded. **Next: ZOD-131** below.
+
+### ZOD-131 — Implement one-scenario ordinary sword candidate scan
+
+**Type:** Feature · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-130
+
+**Scope:** Add opt-in SwordAiCandidateScan over one original two-opponent snapshot,
+one explicitly certified supplied movement scenario and ordinary Attack pass,
+existing weapon/candidate/score/baseline profiles and explicit decision RNG.
+Generate source-ordered candidates and evaluate each once with a private incumbent.
+
+**Acceptance criteria:** Execute ASN-001..016 without rewriting historical
+inventories. Snapshot scenario mask/destination immutably; validate unique cells
+and nonempty destination membership against original FlatOrdinaryMovement AiOrigins.
+Empty mask requires null destination. Require explicit ordinary tile Attack,
+original scenario/target-selection, fresh best-reset and baseline certificates;
+validate existing living/action/clock/weapon/candidate/score admission even for
+empty or inactive scans. No implied support from asset IDs or unknown flags.
+Derive radius-one/AoE-zero masks and true weapon range on certified flat lower
+ground; source layer/y/x order emits own-origin ActThenMove to scenario destination
+and other origins MoveThenAct. Preserve stay-once, distinct origins sharing final
+destinations, target inactivity/filtered emptiness and supported NotValuable with
+four draws followed by later origins. Evaluate unchanged scoring once per emitted
+candidate on original state, carry all supported RNG, keep private best by signed
+priority/hit/strict baseline proximity and earliest exact tie. No public cached
+results/cache input, pair-query tournament or early stop on high/lethal scores.
+Preserve original foe/cache after projected KO, score absence versus zero/negative,
+both IDs/TieKeys/collections/orders, replay/input/branch integrity and exact-MAX
+budgets. Whole-query unsupported/late draw or tick failure returns original query
+RNG with no partial payload and failed emission index/nested typed reason. Return
+NoCandidates, NoScoredCandidate or hypothetical Scanned best; no command authority.
+Run locked restore, Release build, full .NET/Python and source/history/data audits.
+Preserve old APIs/fixtures/evidence and owner drafts; keep the 21-slot erratum clear
+without adding a fixed general managed roster table.
+
+No source VSync/frame-resume/checkpoint API, scenario generation, general ability/
+roster search, movement baseline/rank-list insertion, lottery, policy/interface/
+decision runner, authoritative RNG/commands, generic serializer, content/save/
+native/editor activation or C runtime. Editor UI and ZOD-106 remain deferred.
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 
