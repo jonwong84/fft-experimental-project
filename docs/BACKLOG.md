@@ -44,6 +44,28 @@ For every implementation ticket: preserve the existing test suite, add meaningfu
 
 ## Recommended next queue
 
+**Current completion (2026-10-26): ZOD-121 is complete**, the opt-in
+[certified flat ordinary movement query](behavior/flat-ordinary-movement.md).
+It returns ordered physical destinations/residuals, AI origins including stay,
+whole selected reverse-distance rows and optional exact adjacent path/packed
+steps/final heading. Explicit stable-opponent/ordinary-ground certification,
+source bytes, cost1 and whole-state geometry are checked. Any living actor can
+query any phase; moved flags filter AI origins only. No command/clock/facing/RNG
+mutation or legacy activation. Fresh clean decomp remains
+11464943bbdbd2a0af022d90cb7f10455cf911df. Locked restore/zero-warning Release
+build and **3,567 .NET / 378 Python tests pass** (152 new managed). All 18 FMP
+cases and 24 source IDs execute in new evidence; the historical fixture remains
+unchanged. Before/final audits match 15 files / 42 functions and two prepared
+metadata records. Seventy-eight legacy/source artifacts are fingerprinted
+unchanged. The owner's three untracked Common classes remain outside this change.
+See [implementation evidence](evidence/ai/flat-movement-implementation-v1.json).
+**Recommended next: ZOD-122**, specify an opt-in voluntary Move execution adapter,
+including real heading before completion receipts and post-KO admission. Query
+outputs currently grant no movement authority. General AI/search/candidate clock/
+decision RNG/interface remain future work; editor UI and ZOD-106 stay deferred.
+
+### ZOD-120 source/design checkpoint (historical)
+
 **Current completion (2026-10-26): ZOD-120 is complete**, the
 [flat ordinary AI movement/path contract](architecture/zod-120-flat-ai-movement-contract.md).
 Living enemies block ordinary flat traversal, including horizontal jumps; legal
@@ -1766,7 +1788,7 @@ rerun. The bounded implementation follow-up is ZOD-121.
 
 ### ZOD-121 — Implement the certified flat ordinary movement query
 
-**Type:** Feature · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-120
+**Type:** Feature · **Priority:** P3 · **Status:** Complete · **Depends on:** ZOD-120
 
 **Scope:** Add a pure opt-in query for two living ordinary unmounted stable
 opponents on explicitly certified dry open flat lower ground with effective
@@ -1797,6 +1819,40 @@ selector/search/roster/interface or general terrain/status/mount breadth. Editor
 redesign and ZOD-106 remain deferred. A later execution adapter must distinguish
 real path-facing publication from preview placement and settle facing before
 minting completion receipts.
+
+**Evidence (2026-10-26):** [API/reproduction](behavior/flat-ordinary-movement.md)
+and [completed FMP mapping](evidence/ai/flat-movement-implementation-v1.json).
+All 18 FMP cases pass; 96 managed cases execute all 24 admitted route IDs for
+both actors/collection orders. Independent all-pairs distances and exhaustive
+shortest-path ranking, real cost/adjacent/default prototype comparisons, actual
+sword push/current coordinates, profile rejection, exhausted RNG and preserved
+legacy facing cover the bounded query. Locked restore, zero-warning Release build
+and 3,567 .NET / 378 Python tests pass (152 new managed). No original/C/native
+execution, command activation, save or editor change. Seventy-eight historical
+artifacts and all prior APIs remain unchanged; owner editor drafts are excluded.
+
+### ZOD-122 — Specify the bounded voluntary Move execution adapter
+
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-121, ZOD-119
+
+**Scope:** Freshly trace the original selected voluntary path through movement
+confirmation, settled tile/facing, Move choice consumption, automatic turn end
+and WaitDirection. Design one explicit opt-in adapter over the new certified
+query and existing immutable facing boundary. Decide supported admission after
+an action, push or KO without silently expanding the two-living-opponent query.
+
+**Acceptance criteria:** Pin read-only revision, relevant source/callers/fields,
+publication order and any RNG. Specify current-state path rebuilding, active
+actor/consumed-choice/destination checks, atomic rejection, both Move/Act orders,
+path heading publication before completion receipts, receipt/snapshot lineage,
+and repeatable replay. Preserve original AI preview's coordinate-only placement
+and distinguish it from real movement. State explicit post-KO and profile limits,
+using the existing first-KO policy where applicable rather than inventing corpse
+traversal or broad death scheduling. Define independently checkable source vectors
+and a production implementation inventory, then one bounded implementation ticket.
+Keep all existing APIs/fixtures unchanged during the spike. No full path animation,
+selector/candidate clock/interface/search/RNG runner, general terrain/status/mount
+breadth, save/native/editor activation or ZOD-106 work.
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
 

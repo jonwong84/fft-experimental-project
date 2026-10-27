@@ -2,6 +2,49 @@
 
 ## Current handoff — 2026-10-26
 
+**ZOD-121 is complete.** FlatOrdinaryMovement.Evaluate is a pure opt-in geometry
+query over the existing AttackBattleSnapshot, with explicit stable-opponent and
+ordinary-ground certification. It validates the complete two-living-unit profile,
+source byte Move/Jump, explicit cost1 and 1..16 clear dry flat lower rectangle.
+It returns ordered physical destinations/residuals, AI origins including stay,
+whole selected reverse-distance rows, optional exact adjacent path/packed bytes
+and final execution heading as data. Both living actors may query any phase;
+MovementTaken filters AI origins only. Rejections have no partial outcome.
+RNG word/count, facing, combat stats, choices, clock and receipts are unchanged.
+
+Fresh clean read-only decomp remains 11464943bbdbd2a0af022d90cb7f10455cf911df.
+Locked isolated restore and zero-warning Release build pass; **3,567 .NET / 378
+Python tests pass**, including 152 new managed cases across 15 methods. All 18
+FMP cases and 24 admitted route IDs execute; 96 cases cover both actors and both
+collection orders. Independent Floyd-Warshall distances and exhaustive ranking
+of shortest paths, actual prototype comparisons, actual critical push/current
+positions, profile limits, exhausted RNG and preserved legacy facing are covered.
+The first focused run had 99 snapshot-helper serialization exceptions and one
+noncritical push seed; test fixtures were corrected before passing final runs.
+The ZOD-120 source fixture and its unexecuted statuses remain historical.
+
+Before/two final source audits match 15 files / 42 functions, 68 historical and
+21 managed baseline files plus two prepared metadata records. New implementation
+evidence fingerprints 78 unchanged legacy/source artifacts. No C#/API changes
+outside the new query and its tests; no original/C/emulator/native execution or
+additional manual headless proof. Existing Move and FacingTurnBattle paths still
+use their selected prototypes and preserve supplied facing. No content/scenario/
+save/editor activation. Three owner-authored untracked classes in
+src/Zodiac.Content/Definitions/Common were present on entry and remain excluded
+from this commit; the SDK solution build included those independent drafts.
+
+See [API/reproduction](behavior/flat-ordinary-movement.md) and
+[implementation evidence](evidence/ai/flat-movement-implementation-v1.json).
+**Recommended next: ZOD-122**, specify a bounded voluntary Move execution adapter:
+command authority/current-state path, settled heading before automatic completion
+receipts, both orders/replay/atomic rejection and explicit post-KO admission.
+AI preview placement must retain source facing preservation. Full selector/search/
+roster/candidate clock/decision RNG/interface and general terrain remain future
+work; editor UI redesign and ZOD-106 stay deferred. Reports/builds/TRX:
+scratch/flat-movement-121-*; builder scratch/build_flat_movement_121_evidence.py.
+
+## ZOD-120 source/design checkpoint (historical)
+
 **ZOD-120 is complete**, the source/design contract for ordinary flat two-unit AI
 movement and selected paths. Living enemies block entry and equal-height jumping;
 physical range is the unit-cost cardinal graph ball with the enemy tile removed.
