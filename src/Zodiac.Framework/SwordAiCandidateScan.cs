@@ -57,40 +57,12 @@ public static class SwordAiCandidateScan
             SwordAiCandidateRejection projectionReason = SwordAiCandidateRejection.None) =>
             new(SwordAiScanDisposition.Rejected, reason, index, scoreReason, projectionReason, null, decisionRng);
 
-        if (!scanProfile.OrdinaryAttackTilePolicy || !scanProfile.OriginalScenarioMask ||
-            !scanProfile.TargetSelectionMatchesBaseline || !scanProfile.FreshAbilityBestReset ||
-            !comparisonProfile.FreshDecisionBaseline || string.IsNullOrWhiteSpace(comparisonProfile.ActorId.Value) ||
-            string.IsNullOrWhiteSpace(comparisonProfile.TargetId.Value) || comparisonProfile.ActorId == comparisonProfile.TargetId)
-            return Reject(SwordAiScanRejection.UnsupportedScanProfile);
-        if (!scoreProfile.Supports(state, candidateProfile))
-            return Reject(SwordAiScanRejection.UnsupportedScanProfile, scoreReason: SwordAiScoringRejection.UnsupportedScoreProfile);
-
-        // Pure admission even for empty/inactive scans. No hypothetical placement, formula draw or clock work here.
+        var invalid = ValidateInputs(state, scenario, weapon, candidateProfile, scoreProfile, comparisonProfile, scanProfile, decisionRng);
+        if (invalid is not null) return invalid;
         var actorId = comparisonProfile.ActorId; var targetId = comparisonProfile.TargetId;
-        var actor = state.Combatants.FirstOrDefault(u => u.UnitId == actorId);
-        var target = state.Combatants.FirstOrDefault(u => u.UnitId == targetId);
-        if (actor is null) return Reject(SwordAiScanRejection.UnsupportedState, projectionReason: SwordAiCandidateRejection.UnknownActor);
-        if (target is null) return Reject(SwordAiScanRejection.UnsupportedState, projectionReason: SwordAiCandidateRejection.UnknownTarget);
-        if (state.Combatants.Any(u => u.Hp == 0))
-            return Reject(SwordAiScanRejection.UnsupportedState, projectionReason: SwordAiCandidateRejection.TerminalInput);
         var turns = state.TurnBattle.Turns;
         var actorTurn = turns.Units.Single(u => u.Id == actorId);
-        if (turns.Phase != TurnCyclePhase.UnitTurn || turns.ActiveUnitId != actorId || actorTurn.ActionTaken)
-            return Reject(SwordAiScanRejection.UnsupportedState, projectionReason: SwordAiCandidateRejection.UnavailableAction);
-        if (weapon is null || actor.RightHandWeaponId != weapon.Id ||
-            (2 * Math.Max(1, actor.PhysicalAttack) - 1) * weapon.Power > short.MaxValue)
-            return Reject(SwordAiScanRejection.UnsupportedState, projectionReason: SwordAiCandidateRejection.UnsupportedProfile);
-        try { candidateProfile.Sword.ValidateState(state); }
-        catch (Exception exception) when (exception is ArgumentException or NotSupportedException)
-        { return Reject(SwordAiScanRejection.UnsupportedState, projectionReason: SwordAiCandidateRejection.UnsupportedProfile); }
-        var movement = FlatOrdinaryMovement.Evaluate(state, actorId, candidateProfile.Movement);
-        if (!movement.Accepted)
-            return Reject(SwordAiScanRejection.UnsupportedState, projectionReason: SwordAiCandidateRejection.UnsupportedProfile);
-
         var mask = scenario.Origins.ToHashSet();
-        if (mask.Count != scenario.Origins.Length || !mask.IsSubsetOf(movement.Outcome!.AiOrigins) ||
-            (mask.Count == 0 ? scenario.Destination is not null : scenario.Destination is not { } destination || !mask.Contains(destination)))
-            return Reject(SwordAiScanRejection.InvalidScenario);
 
         state.TurnBattle.Battle.TryGetUnit(actorId, out var actorBody);
         state.TurnBattle.Battle.TryGetUnit(targetId, out var targetBody);
@@ -135,7 +107,54 @@ public static class SwordAiCandidateScan
             new(candidates, cache, retained), rng);
     }
 
-    private static bool IsHigher(SwordAiCandidateScore challenger, byte proximity, SwordAiCandidateScore incumbent, byte incumbentProximity)
+    // Pure admission reused before the composition evaluates any movement tile. No candidate/RNG work here.
+    internal static SwordAiScanResult? ValidateInputs(AttackBattleSnapshot state, SwordAiScanScenario scenario,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiComparisonProfile comparisonProfile, SwordAiScanProfile scanProfile, FftRandomState decisionRng)
+    {
+        SwordAiScanResult Reject(SwordAiScanRejection reason, SwordAiScoringRejection scoreReason = SwordAiScoringRejection.None,
+            SwordAiCandidateRejection projectionReason = SwordAiCandidateRejection.None) =>
+            new(SwordAiScanDisposition.Rejected, reason, null, scoreReason, projectionReason, null, decisionRng);
+
+        if (!scanProfile.OrdinaryAttackTilePolicy || !scanProfile.OriginalScenarioMask ||
+            !scanProfile.TargetSelectionMatchesBaseline || !scanProfile.FreshAbilityBestReset ||
+            !comparisonProfile.FreshDecisionBaseline || string.IsNullOrWhiteSpace(comparisonProfile.ActorId.Value) ||
+            string.IsNullOrWhiteSpace(comparisonProfile.TargetId.Value) || comparisonProfile.ActorId == comparisonProfile.TargetId)
+            return Reject(SwordAiScanRejection.UnsupportedScanProfile);
+        if (!scoreProfile.Supports(state, candidateProfile))
+            return Reject(SwordAiScanRejection.UnsupportedScanProfile, scoreReason: SwordAiScoringRejection.UnsupportedScoreProfile);
+
+        // Pure admission even for empty/inactive scans. No hypothetical placement, formula draw or clock work here.
+        var actorId = comparisonProfile.ActorId; var targetId = comparisonProfile.TargetId;
+        var actor = state.Combatants.FirstOrDefault(u => u.UnitId == actorId);
+        var target = state.Combatants.FirstOrDefault(u => u.UnitId == targetId);
+        if (actor is null) return Reject(SwordAiScanRejection.UnsupportedState, projectionReason: SwordAiCandidateRejection.UnknownActor);
+        if (target is null) return Reject(SwordAiScanRejection.UnsupportedState, projectionReason: SwordAiCandidateRejection.UnknownTarget);
+        if (state.Combatants.Any(u => u.Hp == 0))
+            return Reject(SwordAiScanRejection.UnsupportedState, projectionReason: SwordAiCandidateRejection.TerminalInput);
+        var turns = state.TurnBattle.Turns;
+        var actorTurn = turns.Units.Single(u => u.Id == actorId);
+        if (turns.Phase != TurnCyclePhase.UnitTurn || turns.ActiveUnitId != actorId || actorTurn.ActionTaken)
+            return Reject(SwordAiScanRejection.UnsupportedState, projectionReason: SwordAiCandidateRejection.UnavailableAction);
+        if (weapon is null || actor.RightHandWeaponId != weapon.Id ||
+            (2 * Math.Max(1, actor.PhysicalAttack) - 1) * weapon.Power > short.MaxValue)
+            return Reject(SwordAiScanRejection.UnsupportedState, projectionReason: SwordAiCandidateRejection.UnsupportedProfile);
+        try { candidateProfile.Sword.ValidateState(state); }
+        catch (Exception exception) when (exception is ArgumentException or NotSupportedException)
+        { return Reject(SwordAiScanRejection.UnsupportedState, projectionReason: SwordAiCandidateRejection.UnsupportedProfile); }
+        var movement = FlatOrdinaryMovement.Evaluate(state, actorId, candidateProfile.Movement);
+        if (!movement.Accepted)
+            return Reject(SwordAiScanRejection.UnsupportedState, projectionReason: SwordAiCandidateRejection.UnsupportedProfile);
+
+        var mask = scenario.Origins.ToHashSet();
+        if (mask.Count != scenario.Origins.Length || !mask.IsSubsetOf(movement.Outcome!.AiOrigins) ||
+            (mask.Count == 0 ? scenario.Destination is not null : scenario.Destination is not { } destination || !mask.Contains(destination)))
+            return Reject(SwordAiScanRejection.InvalidScenario);
+
+        return null;
+    }
+
+    internal static bool IsHigher(SwordAiCandidateScore challenger, byte proximity, SwordAiCandidateScore incumbent, byte incumbentProximity)
     {
         if (challenger.Priority != incumbent.Priority) return challenger.Priority > incumbent.Priority;
         if (challenger.HitPercent != incumbent.HitPercent) return challenger.HitPercent > incumbent.HitPercent;

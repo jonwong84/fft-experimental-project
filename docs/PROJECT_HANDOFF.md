@@ -6,39 +6,33 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-138: implement certified movement scoring/Attack ranked admission.**
-The [ZOD-137 contract](architecture/zod-137-ai-composition-contract.md) separates
-pre-scoring mask S from Attack mask A=S union actor. Evaluate every S cell, read
-D0's baseline without rescoring, then scan A/D1 with the progressed RNG. Require
-fresh source context/no intervening draws and an empty list; one pass admits at
-most one entry. Stop before lottery/fallback/commands. CMP-001..008 are unexecuted
-managed proposals for the next milestone.
+**ZOD-139: source/design ranked lottery and movement fallback.**
+Trace selection after the [completed composition](behavior/sword-ai-composition.md),
+including zero-hit-slot draws, all-failed rolls, selected payload and no-Attack
+fallback. Define a fresh composed continuation; keep command authority separate.
 
-Opt-in helpers now project, score, compare and scan candidates in one certified
-scenario. ZOD-131 preserves source emission order, evaluates each candidate once
-on original state, carries supported decision RNG and keeps a private best/cache.
-ZOD-136 evaluates one supplied movement-only baseline, preserves unused-ACT CT
-refunds/HP/status and returns a fresh absolute score with one upkeep draw.
-Empty/inactive scans still validate admission. Stay-once, duplicate destinations,
-score absence/zero/negative, baseline cache after KO and atomic whole-query failure
-are covered. Returned diagnostics grant no command authority or live RNG commit.
+ZOD-138 evaluates supplied movement mask S, reuses D0's already-scored baseline,
+then scans Attack mask S union actor using D1 and the progressed RNG. It validates
+all admission before draws and owns original-state evaluations/cache/best/list.
+The certified fresh one-pass list admits zero/one real Attack into eight slots;
+inactive/NotValuable scans, strict ties, negative/zero scores, original KO cache
+and atomic rollback are covered. Standalone scan/baseline APIs remain unchanged.
+Returned diagnostics grant no command authority or live RNG commit.
 
-Full AI search, ranked list/lottery, replaceable decision interface, authoritative
+Full AI search, general multi-entry ranking/lottery, replaceable decision interface, authoritative
 commands/RNG and presentation activation remain future work. Original UNIT_SLOT_COUNT
 is **21**; the old 26-foe wrap example is inadmissible. This does not select a fixed
 managed roster size. The contract records the erratum without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-136, [baseline API and evidence](behavior/sword-ai-movement-baseline.md).
-  Attack/baseline now share an internal hypothetical clock and fresh-unit scorer;
-  existing candidate API behavior is unchanged. 25 focused baseline cases pass.
-- Latest source/design: ZOD-137; six offline mask/RNG-stage checks. No C# changes.
-- Most recent locked restore/zero-warning-error Release build and .NET validation:
-  **3,633 cases** (ZOD-136). Latest full Python suite: **491 tests** (ZOD-137).
+- Latest implementation: ZOD-138, [composition API and evidence](behavior/sword-ai-composition.md).
+  CMP-001..008 have current C# coverage through 46 focused cases. No runtime activation.
+- Complete validation: locked restore, zero-warning/error Release build,
+  **3,679 .NET cases / 491 Python tests**, including all 3,633 prior .NET cases.
   Fresh source receipt audit: four reference files / 27 functions, clean HEAD below.
   These bounded checks do not establish complete FFT equivalence.
-  Logs/reports: ignored `scratch/ai-baseline-136-*` and `scratch/ai-composition-137-*`.
+  Logs/TRX/reports: ignored `scratch/ai-composition-138-*`.
   No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
   introduction proofs and synthetic world Save/Load exist. Original campaign,

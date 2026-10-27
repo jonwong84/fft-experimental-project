@@ -116,6 +116,7 @@ python scratch/scan-130-source/tools/verification/verify_ai_scan_contract.py --r
 
 No scenario/content/save/editor/runtime policy activation or owner draft edits.
 Original source resume ownership remains documented, with no native scheduling
-equivalence claim. Next investigate movement-baseline/ranked-list admission in
-ZOD-135; lottery, the replaceable decision interface and authoritative execution
-remain separate work. Editor UI and ZOD-106 remain deferred.
+equivalence claim. [ZOD-138 composition](sword-ai-composition.md) now owns movement
+scoring, fresh baseline reuse and one-pass ranked admission around this scan.
+Lottery, the replaceable decision interface and authoritative execution remain
+separate work. Editor UI and ZOD-106 remain deferred.

@@ -1,0 +1,53 @@
+{
+  "format": "fft.ai-composition-implementation-evidence",
+  "schemaVersion": 1,
+  "ticket": "ZOD-138",
+  "date": "2026-10-27",
+  "managedBaseRevision": "d402a79c1c7580b90db82cb093f8422793cfc75b",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "sourceContract": "docs/architecture/zod-137-ai-composition-contract.md",
+  "sourceReceipt": "docs/evidence/ai/composition-contract-v1.json",
+  "behaviorGuide": "docs/behavior/sword-ai-composition.md",
+  "implementation": "src/Zodiac.Framework/SwordAiComposition.cs",
+  "tests": "tests/Zodiac.Framework.Tests/SwordAiCompositionTests.cs",
+  "sharedAdmission": "src/Zodiac.Framework/SwordAiCandidateScan.cs",
+  "sharedMovementEvaluation": "src/Zodiac.Framework/SwordAiMovementBaseline.cs",
+  "productionImplemented": true,
+  "runtimeActivated": false,
+  "authoritativeCommands": false,
+  "liveRngCommitted": false,
+  "originalExecuted": false,
+  "cReferenceExecuted": false,
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuild": true,
+    "buildWarnings": 0,
+    "buildErrors": 0,
+    "dotnetPassed": 3679,
+    "pythonPassed": 491,
+    "newCompositionCases": 46,
+    "priorDotnetCasesPassed": 3633,
+    "sourceReceiptVerified": true,
+    "referenceClean": true,
+    "referenceFiles": 4,
+    "referenceFunctions": 27,
+    "logs": "scratch/ai-composition-138-*"
+  },
+  "managedAcceptance": {
+    "CMP-001": "Real movement prefix then four fresh Attack evaluations; cached baseline and literal RNG checkpoints",
+    "CMP-002": "Actor union once, stay/already-moved behavior and distinct D0/D1",
+    "CMP-003": "Non-attackable movement cells, inactive/no-origin and NotValuable scans retain required draws",
+    "CMP-004": "Strict equal-baseline rejection despite improved proximity; improving negative and real zero best admission",
+    "CMP-005": "Each context certificate, scoring mask/destination, geometry, weapon/envelope and action admission",
+    "CMP-006": "Movement and late Attack rollback, exact-MAX draw count and independent original tick clocks",
+    "CMP-007": "Source-order stay/duplicate destinations/strict ties, every lethal candidate uses original state and pre-KO proximity",
+    "CMP-008": "Both actor identities, collection/profile order, replay, explicit RNG carry and input/live-state isolation"
+  },
+  "limits": [
+    "Supplied masks and destinations rely on asserted source context; no scenario-generation or original observation proof",
+    "No intervening random work admitted; unvisited/stale baseline cells excluded",
+    "Fresh one-pass list admits zero/one real entry; multiple-insertion capacity behavior remains source-only",
+    "No lottery/fallback/command choice, full ability/roster search, native resume or gameplay activation"
+  ],
+  "receiptPolicy": "Identify implementation by the Git commit containing this evidence; no routine current-file hash freeze"
+}

@@ -44,9 +44,19 @@ public static class SwordAiMovementBaseline
         ArgumentNullException.ThrowIfNull(scoreProfile);
         ArgumentNullException.ThrowIfNull(baselineProfile);
         SwordAiMovementBaselineResult Reject(SwordAiMovementBaselineRejection reason) => new(false, reason, null, decisionRng);
-        if (!baselineProfile.OriginalScenarioZeroDestination || !baselineProfile.FreshSourceScoreCell ||
-            !baselineProfile.NormalScoring || !baselineProfile.CanonicalCoordinates)
+        if (!SupportsProfile(baselineProfile))
             return Reject(SwordAiMovementBaselineRejection.UnsupportedBaselineProfile);
+        return EvaluateFreshTile(state, request, candidateProfile, scoreProfile, decisionRng);
+    }
+
+    internal static bool SupportsProfile(SwordAiMovementBaselineProfile profile) =>
+        profile.OriginalScenarioZeroDestination && profile.FreshSourceScoreCell && profile.NormalScoring && profile.CanonicalCoordinates;
+
+    // The composition owns source-mask/context admission. Non-D0 cells do not assert they are scenario-0 destinations.
+    internal static SwordAiMovementBaselineResult EvaluateFreshTile(AttackBattleSnapshot state, SwordAiMovementBaselineRequest request,
+        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, FftRandomState decisionRng)
+    {
+        SwordAiMovementBaselineResult Reject(SwordAiMovementBaselineRejection reason) => new(false, reason, null, decisionRng);
         if (!scoreProfile.Supports(state, candidateProfile))
             return Reject(SwordAiMovementBaselineRejection.UnsupportedScoreProfile);
 

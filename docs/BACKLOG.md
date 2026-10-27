@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-138 (implementation).** The composition contract ZOD-137 is complete.
-There are 32 open tickets below. The 106 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-139 (source/design).** The composition ZOD-138 is complete.
+There are 32 open tickets below. The 107 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -27,25 +27,24 @@ provide detail. This file supersedes archived priorities and next-task advice.
   or old test counts here. Keep the handoff current rather than chronological.
 
 
-## Next bounded implementation milestone
+## Next bounded source/design milestone
 
-### ZOD-138 — Compose certified movement scoring, Attack scan and ranked admission
+### ZOD-139 — Specify ranked lottery and movement fallback for the composed sword slice
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-137
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-138
 
-Implement the [ZOD-137 contract and CMP-001..008](architecture/zod-137-ai-composition-contract.md):
-one original-state transaction from supplied pre-scoring mask S through ordinary
-Attack insertion. Evaluate every S tile once in source order, carry RNG, take D0's
-already-computed baseline, then scan A=S union actor with supplied D1. Validate
-D0/D1 in S and explicit no-intervening-RNG/fresh-list/source-context facts; preserve
-existing standalone APIs. Use a shared internal fresh movement-tile evaluator,
-not false scenario-0 assertions for other tiles or trusted public cached outcomes.
+Trace the next original selection boundary after the [completed composition](behavior/sword-ai-composition.md):
+ranked lottery for eight slots with zero/one admitted real Attack, then the
+no-Attack movement fallback. Pin every draw (including zero-hit slots), all-rolls-
+fail behavior, selected action payload/order/facing hints and any fallback work.
+Define the smallest fresh C# continuation owning composition/selection RNG and
+atomic failure; never trust caller-populated ranked outcomes or skip draws just
+because one entry appears certain to win. Keep real absence distinct from zero.
 
-Keep explicit absence/zero/negative scores, strict baseline/tail comparison and
-atomic whole-query failure. Return immutable diagnostics/private ranked results;
-this fresh one-pass subset admits only zero/one real entry into eight slots.
-No lottery, fallback/command choice, general scenario/ability search, decision
-interface or runtime/editor activation. Recheck the read-only reference HEAD.
+Deliver a concise source-backed contract and focused acceptance cases. Full
+scenario/ability/roster search, the replaceable decision interface, authoritative
+commands/RNG and native/editor activation remain separate. Recheck the read-only
+reference HEAD. No production API is required for this investigation.
 
 ## Existing validation gates
 

@@ -80,8 +80,8 @@ C:/repositories/fft_decomp --output <new scratch report>`.
 
 This query does not reproduce full scenario-scoring RNG costs. In the original,
 all visited movement tiles are scored before Attack scans; seeding the baseline
-from the grid adds no draw. A future composition must own that distinction rather
-than blindly chaining one isolated baseline query into a scan and claiming a
-complete original decision stream. Scenario generation, ranked list/lottery,
-replaceable decision interface, authoritative commands and runtime activation
-remain separate work.
+from the grid adds no draw. [ZOD-138 composition](sword-ai-composition.md) owns this
+distinction with an internal fresh movement-tile evaluator and a cached D0 cell;
+it does not call this public baseline query again after scoring the movement mask.
+Scenario generation, general ranked search/lottery, replaceable decision interface,
+authoritative commands and runtime activation remain separate work.
