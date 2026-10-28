@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-163 (implementation).** Fresh preparation and pure selection ZOD-162 is complete.
-There are 33 open tickets below. The 130 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-164 (implementation).** Fresh prepared command execution ZOD-163 is complete.
+There are 33 open tickets below. The 131 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,17 +29,18 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-163 — Execute a freshly prepared already-moved AI decision
+### ZOD-164 — Select and execute a freshly prepared out-of-reach Wait
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-162
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-163
 
-Add one opt-in closed NonBlue prepared-execution entry using the
-[fresh selector](behavior/sword-ai-prepared-selection.md) inside the existing
-Framework-owned command callback. Carry actual refresh/selection RNG into actual
-Attack or fallback Wait and publish one valid revision/receipt atomically.
-Preserve the existing post-prefix entry, trusted session boundary and explicit
-remaining policies. Verify command failures roll back the entire prefix, exact
-actual draw budgets, fallback/refunds and replay. No host activation or broad AI.
+Extend fresh NonBlue already-moved preparation through the source-traced
+[out-of-reach selector](architecture/zod-148-ai-out-of-reach-selection.md).
+Own one refresh/preparation and one out-of-reach selection; retain the post-score
+reach-adjustment RNG before the eight fallback rolls, then publish actual Wait
+through the existing Framework callback. Preserve explicit branch APIs and all
+remaining assertions. Verify exact eleven-draw budgets, counter/authority rollback,
+no invented Attack or movement, one refund/facing and immutable replay. No Blue
+preparation, Move-first continuation, new movement search or host activation.
 
 ## Existing validation gates
 

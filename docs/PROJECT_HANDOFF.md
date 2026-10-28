@@ -6,19 +6,20 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-163: execute a freshly prepared already-moved AI decision.**
-The [fresh selector](behavior/sword-ai-prepared-selection.md) owns NonBlue ordinary
-preparation and actual refresh-to-selection RNG. Add one opt-in prepared-execution
-entry inside the existing Framework callback, with actual Attack/Wait and atomic
-session/receipt publication. Preserve the existing post-prefix API and remaining
-source assertions; no host activation or general AI expansion.
+**ZOD-164: select and execute a freshly prepared out-of-reach Wait.**
+Reuse the traced NonBlue reach adjustment and eight-roll fallback after one owned
+refresh/preparation. The already-moved domain has only the actor origin, so publish
+actual Wait through the existing callback, with no Attack or movement command.
+Preserve explicit branch admission, remaining source assertions and whole-prefix
+rollback. No host activation or broader AI expansion.
 
 The [current executor](behavior/sword-ai-execution.md), now in `Zodiac.Framework.Ai`,
 derives one in-reach decision for a real Move-used/ACT-unused session. The
 [Framework-owned boundary](architecture/ai-command-boundary.md) invokes planning,
 verifies RNG continuity and publishes one Attack or Wait. AI cannot construct
-trusted sessions/receipts and has no production friend access. Selection starts
-at certified general-selection entry; earlier refresh work is not included.
+trusted sessions/receipts and has no production friend access. The original entry starts at certified general-selection entry; the new
+[prepared executor](behavior/sword-ai-prepared-execution.md) owns refresh/preparation
+and selection inside the same transaction.
 The original VSync callback also draws from BIOS RNG. Managed rendering/pauses add no
 gameplay draws; frame-interleaved retail stream equivalence remains explicitly unresolved.
 
@@ -41,14 +42,15 @@ managed roster size. The contract records the erratum without rewriting old evid
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-161/162, [fresh preparation](behavior/sword-ai-preparation.md)
-  and [prepared selection](behavior/sword-ai-prepared-selection.md). Fifteen managed
-  cases cover derived policy/delay facts, complete literal query schedules, fallback,
-  exact budgets and whole-prefix rollback. No live command authority or activation.
+- Latest implementation: ZOD-163, [prepared command execution](behavior/sword-ai-prepared-execution.md).
+  Shared actual-command publication preserves the old entry. Seven new managed
+  cases plus all existing AI tests pass (714 total); no AI build warnings/errors.
+  Complete prepared miss, actual critical/push/KO, fallback, authority and late
+  command rollback are covered. Logs: `scratch/ai-prepared-execution-163/`.
 - Latest source/design: ZOD-160, [preparation contract](architecture/zod-160-ai-preparation.md).
   Clean source audit checks 25 preparation functions plus inherited receipts
   (`scratch/ai-prepared-selection-162/source.json`); three offline scalar checks.
-- Batch validation: locked restore, zero-warning/error Release build,
+- Last full solution validation (ZOD-162): locked restore, zero-warning/error Release build,
   **3,878 .NET cases / 507 Python tests**, including the owner's content drafts.
   These bounded checks do not establish full original decision equivalence.
   Results/logs: ignored `scratch/ai-prepared-selection-162/` (seven full TRX files).

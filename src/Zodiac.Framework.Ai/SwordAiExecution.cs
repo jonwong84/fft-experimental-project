@@ -20,15 +20,21 @@ public sealed record SwordAiExecutionCommandFailure(FacingTurnRejection FacingRe
     FacingDecisionRejection DecisionRejection = FacingDecisionRejection.None);
 public sealed record SwordAiExecutionFailure(SwordAiExecutionRejection Reason, SwordAiExecutionStage Stage,
     FacingTurnRejection AuthorityRejection = FacingTurnRejection.None,
-    SwordAiExecutionSelectionFailure? SelectionFailure = null, SwordAiExecutionCommandFailure? CommandFailure = null);
+    SwordAiExecutionSelectionFailure? SelectionFailure = null, SwordAiExecutionCommandFailure? CommandFailure = null)
+{
+    public SwordAiPreparedSelectionFailure? PreparedSelectionFailure { get; init; }
+}
 public sealed record SwordAiExecutionOutcome(SwordAiDerivedSelectionOutcome Decision, FftRandomState DecisionRng,
-    SwordAiExecutedCommand Command, AttackUnitCommand? Attack, SwordAiWaitFacingOutcome? WaitFacing);
+    SwordAiExecutedCommand Command, AttackUnitCommand? Attack, SwordAiWaitFacingOutcome? WaitFacing)
+{
+    public SwordAiPreparationOutcome? Preparation { get; init; }
+}
 /// <summary>Rejection returns the identical input session, empty events and no partial decision/command.</summary>
 public sealed record SwordAiExecutionResult(bool Accepted, SwordAiExecutionFailure? Failure, SwordAiExecutionOutcome? Outcome,
     FacingTurnState State, ImmutableArray<AttackResultEvent> Events);
 
 /// <summary>One fresh in-reach decision and actual Attack or Wait after Move is already used.</summary>
-/// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df, ZOD-154/155. No refresh prefix, cached-plan executor or host activation.</remarks>
+/// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df, ZOD-154/155/163. No cached-plan executor or host activation.</remarks>
 public static class SwordAiExecution
 {
     public static SwordAiExecutionResult ExecuteAlreadyMoved(FacingTurnState state, BoundedSwordWeapon? weapon,
@@ -48,10 +54,61 @@ public static class SwordAiExecution
         ArgumentNullException.ThrowIfNull(waitProfile);
         ArgumentNullException.ThrowIfNull(endProfile);
         SwordAiExecutionResult Reject(SwordAiExecutionFailure failure) => new(false, failure, null, state, []);
-        if (!executionProfile.GeneralSelectionEntryContext || !waitProfile.OriginalAiChooseAtWaitContext ||
-            !waitProfile.EligibleOpponent || !endProfile.OrdinaryTurnEndContext)
+        if (!executionProfile.GeneralSelectionEntryContext)
             return Reject(new(SwordAiExecutionRejection.UnsupportedContext, SwordAiExecutionStage.Admission));
-        var actorId = comparisonProfile.ActorId;
+        return ExecuteCore(state, comparisonProfile.ActorId, comparisonProfile.TargetId, weapon, candidateProfile,
+            waitProfile, endProfile, (battle, rng) =>
+        {
+            var decision = SwordAiDerivedSelection.Evaluate(battle, weapon, candidateProfile, scoreProfile, comparisonProfile,
+                scenarioProfile, derivedProfile, selectionProfile, rng);
+            if (decision.Accepted) return new(decision.Outcome!, decision.RngState);
+            var failure = decision.Failure!;
+            var scan = failure.AdmissionFailure;
+            var reasons = new SwordAiExecutionSelectionFailure(failure.Reason, failure.Stage,
+                scan is null ? null : new(scan.Rejection, scan.FailedCandidateIndex, scan.ScoringRejection, scan.ProjectionRejection),
+                failure.ScenarioFailure, failure.CompositionFailure, failure.SelectionFailure);
+            return new(null, rng, Failure: new(SwordAiExecutionRejection.SelectionRejected,
+                SwordAiExecutionStage.Selection, SelectionFailure: reasons));
+        });
+    }
+
+    /// <summary>Own fresh NonBlue refresh/preparation/selection inside the Framework transaction, then execute Attack or Wait.</summary>
+    /// <remarks>No external decision RNG, cached outcome or general-selection-entry certificate is accepted.</remarks>
+    public static SwordAiExecutionResult ExecutePreparedAlreadyMoved(FacingTurnState state, SwordAiRefreshRequest request,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team,
+        SwordAiPreparedSelectionProfile selectionProfile, SwordAiWaitFacingProfile waitProfile, SwordAiWaitSettlementProfile endProfile)
+    {
+        ArgumentNullException.ThrowIfNull(state);
+        ArgumentNullException.ThrowIfNull(request);
+        ArgumentNullException.ThrowIfNull(candidateProfile);
+        ArgumentNullException.ThrowIfNull(scoreProfile);
+        ArgumentNullException.ThrowIfNull(refreshProfile);
+        ArgumentNullException.ThrowIfNull(preparationProfile);
+        ArgumentNullException.ThrowIfNull(selectionProfile);
+        ArgumentNullException.ThrowIfNull(waitProfile);
+        ArgumentNullException.ThrowIfNull(endProfile);
+        return ExecuteCore(state, request.ActorId, request.TargetId, weapon, candidateProfile, waitProfile, endProfile, (battle, rng) =>
+        {
+            var decision = SwordAiPreparedSelection.Evaluate(battle, request, weapon, candidateProfile, scoreProfile,
+                refreshProfile, preparationProfile, team, selectionProfile, rng);
+            return decision.Accepted ? new(decision.Outcome!.Decision, decision.RngState, decision.Outcome.Preparation)
+                : new(null, rng, Failure: new(SwordAiExecutionRejection.SelectionRejected, SwordAiExecutionStage.Selection)
+                    { PreparedSelectionFailure = decision.Failure });
+        });
+    }
+
+    private sealed record PlanningResult(SwordAiDerivedSelectionOutcome? Decision, FftRandomState RngState,
+        SwordAiPreparationOutcome? Preparation = null, SwordAiExecutionFailure? Failure = null);
+
+    // Both opt-in planners use identical session guards, plan admission and authoritative command publication.
+    private static SwordAiExecutionResult ExecuteCore(FacingTurnState state, BattleUnitId actorId, BattleUnitId targetId,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiWaitFacingProfile waitProfile,
+        SwordAiWaitSettlementProfile endProfile, Func<AttackBattleSnapshot, FftRandomState, PlanningResult> planner)
+    {
+        SwordAiExecutionResult Reject(SwordAiExecutionFailure failure) => new(false, failure, null, state, []);
+        if (!waitProfile.OriginalAiChooseAtWaitContext || !waitProfile.EligibleOpponent || !endProfile.OrdinaryTurnEndContext)
+            return Reject(new(SwordAiExecutionRejection.UnsupportedContext, SwordAiExecutionStage.Admission));
         var guard = FacingTurnBattle.ValidateWait(state, actorId);
         if (guard != FacingTurnRejection.None)
             return Reject(new(SwordAiExecutionRejection.AuthorityRejected, SwordAiExecutionStage.Admission, guard));
@@ -62,26 +119,20 @@ public static class SwordAiExecution
         SwordAiExecutionFailure? planningFailure = null;
         var execution = FacingDecisionBattle.Execute<SwordAiExecutionOutcome>(state, actorId, context =>
         {
-            var decision = SwordAiDerivedSelection.Evaluate(context.Battle, weapon, candidateProfile, scoreProfile, comparisonProfile,
-                scenarioProfile, derivedProfile, selectionProfile, context.RngState);
-            if (!decision.Accepted)
+            var decision = planner(context.Battle, context.RngState);
+            if (decision.Failure is not null)
             {
-                var failure = decision.Failure!;
-                var scan = failure.AdmissionFailure;
-                var reasons = new SwordAiExecutionSelectionFailure(failure.Reason, failure.Stage,
-                    scan is null ? null : new(scan.Rejection, scan.FailedCandidateIndex, scan.ScoringRejection, scan.ProjectionRejection),
-                    failure.ScenarioFailure, failure.CompositionFailure, failure.SelectionFailure);
-                planningFailure = new(SwordAiExecutionRejection.SelectionRejected, SwordAiExecutionStage.Selection, SelectionFailure: reasons);
+                planningFailure = decision.Failure;
                 return context.Reject<SwordAiExecutionOutcome>();
             }
-            var outcome = decision.Outcome!;
+            var outcome = decision.Decision!;
             var plan = outcome.Selection.Plan;
             context.Battle.TurnBattle.Battle.TryGetUnit(actorId, out var actor);
             var origin = actor!.Position;
             bool supportedPlan = plan.Kind switch
             {
                 SwordAiSelectedPlanKind.Attack => plan.Attack is { Candidate: var candidate } && candidate.ActorId == actorId &&
-                    candidate.TargetId == comparisonProfile.TargetId && candidate.Destination == origin,
+                    candidate.TargetId == targetId && candidate.Destination == origin,
                 SwordAiSelectedPlanKind.MoveOnly => plan.Attack is null,
                 _ => false
             };
@@ -92,11 +143,12 @@ public static class SwordAiExecution
             }
             if (plan.Kind == SwordAiSelectedPlanKind.Attack)
             {
-                var attack = new AttackUnitCommand(actorId, comparisonProfile.TargetId);
+                var attack = new AttackUnitCommand(actorId, targetId);
                 return context.PrepareAttack(attack, weapon, decision.RngState,
-                    new SwordAiExecutionOutcome(outcome, decision.RngState, SwordAiExecutedCommand.Attack, attack, null));
+                    new SwordAiExecutionOutcome(outcome, decision.RngState, SwordAiExecutedCommand.Attack, attack, null)
+                        { Preparation = decision.Preparation });
             }
-            var facing = SwordAiWaitFacing.Evaluate(context.Battle, actorId, comparisonProfile.TargetId,
+            var facing = SwordAiWaitFacing.Evaluate(context.Battle, actorId, targetId,
                 candidateProfile.Movement, waitProfile, decision.RngState);
             if (!facing.Accepted)
             {
@@ -106,7 +158,8 @@ public static class SwordAiExecution
                 return context.Reject<SwordAiExecutionOutcome>();
             }
             return context.PrepareWait(new FacingChoice.Fixed(facing.Outcome!.Facing), decision.RngState,
-                new SwordAiExecutionOutcome(outcome, decision.RngState, SwordAiExecutedCommand.Wait, null, facing.Outcome));
+                new SwordAiExecutionOutcome(outcome, decision.RngState, SwordAiExecutedCommand.Wait, null, facing.Outcome)
+                    { Preparation = decision.Preparation });
         });
         if (execution.Accepted) return new(true, null, execution.Diagnostic!, execution.State, execution.Events);
         if (planningFailure is not null) return Reject(planningFailure);

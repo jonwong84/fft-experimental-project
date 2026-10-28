@@ -453,7 +453,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "A separate AI assembly owns pure two-opponent ordinary-sword selection, a separate already-moved refresh query and execution orchestration. Refresh derives semantic flags, retains explicit policy booleans and consumes one hypothetical upkeep draw without changing live state. Framework invokes fresh selection planning, verifies RNG continuity and publishes one actual Attack or fallback Wait through existing session authority; AI cannot construct trusted sessions/receipts. A separate fresh NonBlue prepared selector now owns refresh RNG and derives closed policy/cache/focus facts before selection on restored state. Prepared-prefix command integration, full search/continuation and playable-host activation remain open.",
+      "currentScope": "A separate AI assembly owns pure two-opponent ordinary-sword selection, a separate already-moved refresh query and execution orchestration. Refresh derives semantic flags, retains explicit policy booleans and consumes one hypothetical upkeep draw without changing live state. Framework invokes fresh selection planning, verifies RNG continuity and publishes one actual Attack or fallback Wait through existing session authority; AI cannot construct trusted sessions/receipts. A separate fresh NonBlue prepared selector now owns refresh RNG and derives closed policy/cache/focus facts before selection on restored state. An in-reach prepared command entry now owns the fresh prefix inside the Framework transaction. Prepared out-of-reach Wait, full search/continuation and playable-host activation remain open.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -486,6 +486,7 @@
         "docs/architecture/zod-160-ai-preparation.md",
         "docs/behavior/sword-ai-preparation.md",
         "docs/behavior/sword-ai-prepared-selection.md",
+        "docs/behavior/sword-ai-prepared-execution.md",
         "docs/behavior/sword-ai-out-of-reach-scenario.md",
         "docs/behavior/sword-ai-out-of-reach-selection.md"
       ],
@@ -570,8 +571,8 @@
         "Full target/ability/roster search, out-of-reach execution and special policies, Defend, replacement interface, prepared-prefix command integration, Move-first continuation and post-ACT reselection remain open.",
         "Caller certificates still describe unrepresented original context. The fresh prepared selector covers only the certified NonBlue ordinary subset; Blue/special policies and source frame RNG remain outside it, and bounded vectors do not establish full original decision equivalence."
       ],
-      "nextAction": "Execute one fresh prepared already-moved decision through the existing Framework callback, carrying refresh/selection RNG into actual Attack/Wait with atomic session and receipt publication.",
-      "followUpTickets": ["ZOD-163"]
+      "nextAction": "Extend the fresh prepared NonBlue already-moved path through the existing out-of-reach selector and actual Wait, preserving the reach-adjustment draw, fallback lottery and atomic command boundary.",
+      "followUpTickets": ["ZOD-164"]
     },
     {
       "id": "COV-SIM-010",

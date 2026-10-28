@@ -37,7 +37,32 @@ internal static class SwordAiPreparationTestData
             new(reverse ? turns.Reverse() : turns, LiveRng, ticks, TurnCyclePhase.UnitTurn)), reverse ? combat.Reverse() : combat);
     }
     internal static string Serialize(object? value) => JsonSerializer.Serialize(value);
-    internal static string Snapshot(AttackBattleSnapshot state) => Serialize(new { state.Combatants, state.TurnBattle.Turns,
-        state.TurnBattle.Battle.Map, state.TurnBattle.Battle.RngState,
-        Bodies = state.TurnBattle.Battle.Units.Select(u => new { u.Id, u.Position, u.HasMoved, u.MovementProfile.Move }) });
+    internal static FacingTurnState Ready(int evade = 89, uint entryWord = 1, ulong count = 7,
+        bool second = false, bool reverse = false)
+    {
+        var actor = second ? B : A; var target = second ? A : B;
+        // Inverse BIOS step gives the requested entry only through an actual upkeep draw and a real Move.
+        var rng = new FftRandomState(unchecked((entryWord - 12345u) * 4005161829u), count - 1);
+        var movement = new UnitMovementProfile(1, 0, 6, UnitMovementMode.Normal, UnitMovementTraits.None,
+            [KeyValuePair.Create(Ground, new TerrainMovementCost(1))]);
+        BattleUnitState[] bodies = [new(actor, new(3, 1, 0), movement), new(target, new(1, 1, 0), movement)];
+        TurnUnitState[] turns = [new(actor, 5, 110, 2), new(target, 5, 90, 17)];
+        AttackUnitState Combat(BattleUnitId id, int evasion) => new(id, 50, 50, 0, 0, 5, evasion, 0, 0, 0, 70, 0,
+            BattleFacing.East, AttackUnitStatus.None, 0, Weapon);
+        var combat = new[] { Combat(actor, 0), Combat(target, evade) };
+        var tiles = Enumerable.Repeat(new BattleTile(Ground, 10), 15).ToArray();
+        var battle = new AttackBattleSnapshot(new(new(new(5, 3, 1, tiles), reverse ? bodies.Reverse() : bodies, rng),
+            new(reverse ? turns.Reverse() : turns, rng)), reverse ? combat.Reverse() : combat);
+        var ready = FacingTurnBattle.Advance(FacingTurnBattle.Begin(battle, new(Ground)));
+        if (!ready.Accepted) throw new InvalidOperationException("Synthetic upkeep setup failed.");
+        var moved = FacingTurnBattle.Move(ready.State, new(actor, new(2, 1, 0)));
+        return moved.Accepted ? moved.State : throw new InvalidOperationException("Synthetic Move setup failed.");
+    }
+
+    internal static string Snapshot(AttackBattleSnapshot state) => Serialize(new {
+        Combatants = state.Combatants.OrderBy(u => u.UnitId.Value),
+        Turns = state.TurnBattle.Turns.Units.OrderBy(u => u.Id.Value), state.TurnBattle.Turns.Phase,
+        state.TurnBattle.Turns.Ticks, state.TurnBattle.Battle.Map, state.TurnBattle.Battle.RngState,
+        TurnRng = state.TurnBattle.Turns.RngState,
+        Bodies = state.TurnBattle.Battle.Units.OrderBy(u => u.Id.Value).Select(u => new { u.Id, u.Position, u.HasMoved, u.MovementProfile.Move }) });
 }
