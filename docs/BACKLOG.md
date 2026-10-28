@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-156 (source/design).** Already-moved AI execution ZOD-155 is complete.
-There are 33 open tickets below. The 123 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-156 (source/design).** AI boundary/extraction ZOD-157/158 is complete.
+There are 33 open tickets below. The 125 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.

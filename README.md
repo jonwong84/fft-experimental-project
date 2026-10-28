@@ -9,7 +9,7 @@ The project is an early prototype. A bounded two-unit battle is playable, and on
 The design has three parts:
 
 - **Tessera Engine (`Tessera.Engine`):** reusable grid positions/bounds, movement and deterministic simulation contracts, independent of FFT rules, formats and assets.
-- **Zodiac Framework (`Zodiac.Framework`, `Zodiac.Content`):** FFT simulation rules, compatibility policies, definition schemas, prepared-file loading and runtime systems. `Zodiac.AssetTool` and `Zodiac.AssetTool.Cli` provide offline import/preparation tools.
+- **Zodiac Framework (`Zodiac.Framework`, `Zodiac.Framework.Ai`, `Zodiac.Content`):** FFT simulation rules, AI policies, definition schemas, prepared-file loading and runtime systems. AI depends on Framework through its controlled command boundary; Framework owns battle authority and has no AI dependency. `Zodiac.AssetTool` and `Zodiac.AssetTool.Cli` provide offline import/preparation tools.
 - **FFT Content:** particular definitions, scenarios and assets, including invented examples and locally prepared original data. Content packages are data; their schemas and loaders belong to Zodiac.
 
 Zodiac depends on Tessera; Tessera has no dependency on Zodiac or FFT. `Fft.Client` remains the FFT application host and composition root for rendering, input, UI and selected content. Simulation stays independent of graphics, input, wall-clock time and file I/O. Existing `fft.*` data formats, logical asset IDs, compatibility profiles and save schemas retain their identities.

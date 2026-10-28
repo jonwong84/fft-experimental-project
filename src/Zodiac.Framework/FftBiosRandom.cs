@@ -12,6 +12,7 @@ public readonly record struct FftRandomState(uint Value, ulong DrawCount);
 /// </remarks>
 public sealed class FftBiosRandom : IDeterministicRandom<FftRandomState>
 {
+    private const uint Multiplier = 0x41c64e6du, Increment = 0x3039u;
     public const string AlgorithmId = "fft.ps1:rng/bios-v3-us";
 
     /// <summary>Preserves all 32 seed bits and consumes no random output.</summary>
@@ -22,8 +23,28 @@ public sealed class FftBiosRandom : IDeterministicRandom<FftRandomState>
     public RandomDraw<FftRandomState> Next(FftRandomState state)
     {
         ulong drawCount = checked(state.DrawCount + 1);
-        uint value = unchecked(state.Value * 0x41c64e6du + 0x3039u);
+        uint value = unchecked(state.Value * Multiplier + Increment);
         uint output = (value >> 16) & 0x7fffu;
         return new RandomDraw<FftRandomState>(new FftRandomState(value, drawCount), output);
+    }
+
+    // Compose affine UInt32 transitions by exponentiation, without enumerating reported draws.
+    internal static bool IsForwardCheckpoint(FftRandomState before, FftRandomState after)
+    {
+        if (after.DrawCount < before.DrawCount) return false;
+        ulong remaining = after.DrawCount - before.DrawCount;
+        uint multiplier = Multiplier, increment = Increment, accumulatedMultiplier = 1, accumulatedIncrement = 0;
+        while (remaining != 0)
+        {
+            if ((remaining & 1) != 0)
+            {
+                accumulatedMultiplier = unchecked(accumulatedMultiplier * multiplier);
+                accumulatedIncrement = unchecked(accumulatedIncrement * multiplier + increment);
+            }
+            increment = unchecked((multiplier + 1) * increment);
+            multiplier = unchecked(multiplier * multiplier);
+            remaining >>= 1;
+        }
+        return unchecked(before.Value * accumulatedMultiplier + accumulatedIncrement) == after.Value;
     }
 }

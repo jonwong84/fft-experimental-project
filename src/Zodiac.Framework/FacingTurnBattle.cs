@@ -120,18 +120,21 @@ public static class FacingTurnBattle
         return resolved.Accepted ? Settle(state, state.Battle, actorId, resolved.Facing!.Value, []) : Reject(state, resolved.Rejection);
     }
 
-    // Shared with the opt-in AI adapter; preserve the legacy public guard ordering.
-    internal static FacingTurnRejection ValidateWait(FacingTurnState state, BattleUnitId actorId)
+    /// <summary>Read-only admission query; acceptance grants no state construction or command authority.</summary>
+    public static FacingTurnRejection ValidateWait(FacingTurnState state, BattleUnitId actorId)
     {
+        ArgumentNullException.ThrowIfNull(state);
         if (state.PendingFacing is not null) return FacingTurnRejection.FacingPending;
         if (!state.Battle.Combatants.Any(u => u.UnitId == actorId)) return FacingTurnRejection.UnknownActor;
         if (state.Battle.TurnBattle.Turns.ActiveUnitId != actorId) return FacingTurnRejection.InactiveActor;
         return state.Revision == ulong.MaxValue ? FacingTurnRejection.RevisionExhausted : FacingTurnRejection.None;
     }
 
-    internal static FacingTurnRejection ValidateCompletion(FacingTurnState state, BattleUnitId actorId,
+    /// <summary>Read-only query against an existing opaque receipt; never issues or consumes one.</summary>
+    public static FacingTurnRejection ValidateCompletion(FacingTurnState state, BattleUnitId actorId,
         FacingCompletionReceipt? receipt)
     {
+        ArgumentNullException.ThrowIfNull(state);
         if (state.PendingFacing is not { } pending) return FacingTurnRejection.MissingCompletion;
         if (!ReferenceEquals(receipt, pending) || !ReferenceEquals(pending.ExpectedBattle, state.Battle) ||
             !ReferenceEquals(pending.Lineage, state.Lineage) || pending.Revision != state.Revision)
@@ -181,8 +184,8 @@ public static class FacingTurnBattle
         }
     }
 
-    // Shared source scalar branches; callers own geometry/context admission, never cast source ordinals.
-    internal static BattleFacing? DirectionToward(TilePosition origin, TilePosition target)
+    /// <summary>Pure source scalar direction for certified coordinates; callers own geometry/context admission.</summary>
+    public static BattleFacing? DirectionToward(TilePosition origin, TilePosition target)
     {
         int dx = target.X - origin.X, dy = target.Y - origin.Y;
         int a = dy - dx, b = dy + dx;

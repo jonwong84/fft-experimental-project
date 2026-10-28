@@ -4,6 +4,12 @@ ZOD-155, 2026-10-28. Implements the [ZOD-154 contract](../architecture/zod-154-a
 against read-only clean fft_decomp **11464943bbdbd2a0af022d90cb7f10455cf911df**.
 [Implementation receipt](../evidence/ai/execution-implementation-v1.json).
 
+Current ownership after ZOD-158: implementation and namespace are
+`Zodiac.Framework.Ai`; Framework owns the [planning/command boundary](../architecture/ai-command-boundary.md).
+AI no longer constructs staged sessions or adopts RNG itself. The boundary
+invokes its fresh planning callback, verifies the RNG checkpoint and applies
+one command. The ZOD-155 results below retain their original provenance.
+
 `SwordAiExecution.ExecuteAlreadyMoved` takes an existing facing session, bounded
 weapon and the existing semantic selection/context profiles. It requires the
 active actor with Move used, ACT unused, no pending facing and revision room.

@@ -12,9 +12,12 @@ already-moved path: cached positions, transient flags, restored state, clock and
 Select a representable managed child before extending the executor's entry point.
 Keep wider continuation, special policies, frame fidelity and native activation separate.
 
-The [current executor](behavior/sword-ai-execution.md) privately derives one in-reach
-decision, adopts its RNG and executes Attack or Wait for a real Move-used/ACT-unused
-session. Selection starts at certified general-selection entry; earlier refresh work is not included.
+The [current executor](behavior/sword-ai-execution.md), now in `Zodiac.Framework.Ai`,
+derives one in-reach decision for a real Move-used/ACT-unused session. The
+[Framework-owned boundary](architecture/ai-command-boundary.md) invokes planning,
+verifies RNG continuity and publishes one Attack or Wait. AI cannot construct
+trusted sessions/receipts and has no production friend access. Selection starts
+at certified general-selection entry; earlier refresh work is not included.
 The original VSync callback also draws from BIOS RNG. Managed rendering/pauses add no
 gameplay draws; frame-interleaved retail stream equivalence remains explicitly unresolved.
 
@@ -35,17 +38,19 @@ managed roster size. The contract records the erratum without rewriting old evid
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-155, [already-moved AI execution and evidence](behavior/sword-ai-execution.md).
-  Fifteen new cases connect fresh selection/RNG to actual miss/damage/critical/KO or
-  fallback Wait. One command revision and fully settled Attack receipt; late failure
-  restores the whole session with reason-only diagnostics. Pure APIs remain unchanged.
+- Latest implementation: ZOD-157/158, [AI command boundary and assembly extraction](architecture/ai-command-boundary.md).
+  Fourteen AI files and 15 existing test files moved to their own projects/namespaces.
+  The existing 673 AI cases retain decisions, actual combat and RNG results. Seven
+  Framework transaction cases plus one dependency check cover the new boundary.
   No native/editor activation or original decision-equivalence claim.
 - Complete validation: locked restore, zero-warning/error Release build,
-  **3,836 .NET cases / 500 Python tests**. Pinned source audit rechecks inherited receipts,
-  six execution files/16 functions and three supplied tapes (`scratch/ai-execution-155/source.json`).
+  **3,845 .NET cases / 500 Python tests** (includes the owner's current content-limit
+  refactor). Pinned source audit rechecks inherited receipts, six execution files/16
+  functions and supplied tapes (`scratch/ai-assembly-extraction/source.json`).
+  All nine historical checkpoint audits also passed after the file moves.
   These bounded checks do not establish complete FFT equivalence.
-  Current .NET results: ignored `scratch/ai-execution-155-full-trx/`;
-  Latest Python log: `scratch/ai-execution-155/python.txt`. The current owner refactor/drafts
+  Current .NET results: ignored `scratch/ai-assembly-extraction/final-full-trx/`;
+  Latest Python log: `scratch/ai-assembly-extraction/python.txt`. The current owner refactor/drafts
   were included in the build and tests, excluded from the implementation commit.
   No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
@@ -60,8 +65,8 @@ managed roster size. The contract records the erratum without rewriting old evid
 
 - Continue in `C:/repositories/fft-experimental-project`, branch
   `feature/initial-development`; inspect Git status before editing. Preserve the
-  owner's tracked weapon/content-package/exporter/test refactor and untracked
-  WeaponDefinition plus Ability/Common/Item/Job/Status definition drafts. Exclude
+  owner's tracked weapon/job/content-package/editor/exporter/test refactor and
+  untracked configuration plus Ability/Common/Item/Job/Status definitions. Exclude
   them from unrelated commits. Last build includes drafts present at validation.
   Validated completed work may be committed/pushed.
 - Reference `C:/repositories/fft_decomp` is read-only. Last clean recorded HEAD:

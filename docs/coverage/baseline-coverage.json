@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-28",
   "edition": "SCUS-94221",
-  "managedCommit": "1838f2e3f4874a6dd3039cf64f0575d73e61838a",
+  "managedCommit": "dec35babc20bf0cf4ac7aa9b6c4948ea8739c9f7",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 3836,
-    "source": "docs/behavior/sword-ai-execution.md",
+    "passed": 3845,
+    "source": "docs/architecture/ai-command-boundary.md",
     "runForThisInventory": false
   },
   "statusDefinitions": {
@@ -451,9 +451,9 @@
       "title": "Enemy, ally and automatic-battle AI",
       "profileScope": "baseline",
       "ownerTicket": "ZOD-038",
-      "ownerArea": "Zodiac.Framework simulation",
+      "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "Pure two-opponent ordinary-sword queries derive movement and one first/terminal Attack lottery through explicit in/out-of-reach branches. An opt-in already-moved command boundary derives one fresh in-reach decision, privately adopts current RNG progress and executes real Attack or fallback Wait through existing facing-session authority. Earlier refresh, full search/continuation and playable-host activation remain open.",
+      "currentScope": "A separate AI assembly owns pure two-opponent ordinary-sword selection and already-moved execution orchestration. Framework invokes fresh planning, verifies RNG continuity and publishes one actual Attack or fallback Wait through existing session authority; AI cannot construct trusted sessions/receipts. Existing source decisions and RNG ordering are preserved. Earlier refresh, full search/continuation and playable-host activation remain open.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -480,39 +480,41 @@
         "docs/behavior/sword-ai-wait-facing.md",
         "docs/behavior/sword-ai-wait-settlement.md",
         "docs/behavior/sword-ai-execution.md",
+        "docs/architecture/ai-command-boundary.md",
         "docs/behavior/sword-ai-out-of-reach-scenario.md",
         "docs/behavior/sword-ai-out-of-reach-selection.md"
       ],
       "implementationPaths": [
-        "src/Zodiac.Framework/SwordAiMovementScenario.cs",
-        "src/Zodiac.Framework/SwordAiDerivedSelection.cs",
-        "src/Zodiac.Framework/SwordAiWaitFacing.cs",
-        "src/Zodiac.Framework/SwordAiWaitSettlement.cs",
-        "src/Zodiac.Framework/SwordAiExecution.cs"
+        "src/Zodiac.Framework.Ai/SwordAiMovementScenario.cs",
+        "src/Zodiac.Framework.Ai/SwordAiDerivedSelection.cs",
+        "src/Zodiac.Framework.Ai/SwordAiWaitFacing.cs",
+        "src/Zodiac.Framework.Ai/SwordAiWaitSettlement.cs",
+        "src/Zodiac.Framework.Ai/SwordAiExecution.cs",
+        "src/Zodiac.Framework/FacingDecision.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Zodiac.Framework.Tests/SwordAiMovementScenarioTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiMovementScenarioTests.cs",
           "scope": "Derived in-reach mask/destinations, signed source ordering, actual RNG/clock work, atomic failure and replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/SwordAiDerivedSelectionTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiDerivedSelectionTests.cs",
           "scope": "Fresh single-prefix composition/lottery, D0 fallback, source RNG vectors and whole-query rollback; no live decision execution."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/SwordAiOutOfReachScenarioTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiOutOfReachScenarioTests.cs",
           "scope": "Filtered S versus actor insertion, team-conditioned post-score RNG, exact destination vectors and atomic adjustment failure."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/SwordAiOutOfReachSelectionTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiOutOfReachSelectionTests.cs",
           "scope": "Fresh S score reuse with post-adjustment RNG, zero-candidate/eight-roll fallback, first-entry admission correction, exact budgets and whole-query rollback."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/SwordAiWaitFacingTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiWaitFacingTests.cs",
           "scope": "Source direction ties, actual settled positions/occupied neighbors, explicit context, zero RNG/ticks and query isolation."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/SwordAiWaitSettlementTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiWaitSettlementTests.cs",
           "scope": "Real active Wait and both automatic-completion orders, critical knockback, single refund/cap, exact receipt authority, atomic rejection and replay."
         },
         {
@@ -520,8 +522,16 @@
           "scope": "Offline supplied-prefix RNG tapes and source command guards only; no fresh selection, managed command transaction or original execution."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/SwordAiExecutionTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiExecutionTests.cs",
           "scope": "Fresh selection and actual command rolls, one revision/settled receipt, fallback refund, critical push/KO, exact draw limits, atomic reason-only failures and replay."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/FacingDecisionTests.cs",
+          "scope": "Invocation-bound proposals, closed contexts, verified RNG progression including full periods, late-command rollback and read-only input."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/DependencyBoundaryTests.cs",
+          "scope": "AI references rules without host/content or reverse Framework-to-AI dependency."
         }
       ],
       "manualCheckpoint": {

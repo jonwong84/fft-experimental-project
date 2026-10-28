@@ -14,6 +14,12 @@
 
 ## Gameplay RNG and presentation
 
+AI policy and orchestration live in `Zodiac.Framework.Ai`; their tests live in
+`Zodiac.Framework.Ai.Tests`. Shared rules and receipt/session construction stay
+in `Zodiac.Framework`. The [command boundary](ai-command-boundary.md) invokes a
+fresh planner, validates RNG continuity and publishes one accepted command
+atomically. There is no Framework-to-AI reference or production friend access.
+
 Decision scoring and actual combat share explicit gameplay RNG; restoring a
 hypothetical candidate does not erase its draws. Rendering, wall time and pauses
 must not advance that stream. The original VSync callback draws BIOS rand once

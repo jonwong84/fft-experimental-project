@@ -79,9 +79,9 @@ python -m unittest discover -s tools/verification -p 'test_*.py'
 For AI iteration, after building:
 
 ```powershell
-dotnet test tests/Zodiac.Framework.Tests/Zodiac.Framework.Tests.csproj -c Release --no-build --no-restore --filter 'Ruleset=OriginalFft'
-dotnet test tests/Zodiac.Framework.Tests/Zodiac.Framework.Tests.csproj -c Release --no-build --no-restore --filter 'Contract=QueryIsolation'
-dotnet test tests/Zodiac.Framework.Tests/Zodiac.Framework.Tests.csproj -c Release --no-build --no-restore --filter 'Coverage=CurrentAdmission'
+dotnet test tests/Zodiac.Framework.Ai.Tests/Zodiac.Framework.Ai.Tests.csproj -c Release --no-build --no-restore --filter 'Ruleset=OriginalFft'
+dotnet test tests/Zodiac.Framework.Ai.Tests/Zodiac.Framework.Ai.Tests.csproj -c Release --no-build --no-restore --filter 'Contract=QueryIsolation'
+dotnet test tests/Zodiac.Framework.Ai.Tests/Zodiac.Framework.Ai.Tests.csproj -c Release --no-build --no-restore --filter 'Coverage=CurrentAdmission'
 ```
 
 Historical verification is explicit and independent of those correctness runs:

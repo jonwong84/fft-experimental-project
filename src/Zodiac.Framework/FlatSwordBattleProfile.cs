@@ -19,8 +19,10 @@ public sealed class FlatSwordBattleProfile
         OrdinaryGroundSurface = ordinaryGroundSurface;
     }
 
-    internal void ValidateState(AttackBattleSnapshot state)
+    /// <summary>Validate the closed combat geometry; this does not construct state or execute a command.</summary>
+    public void ValidateState(AttackBattleSnapshot state)
     {
+        ArgumentNullException.ThrowIfNull(state);
         state.ValidateSupportedGeometry();
         if (state.Combatants.Length != 2)
             throw new NotSupportedException("Flat sword displacement requires exactly two ordinary units.");

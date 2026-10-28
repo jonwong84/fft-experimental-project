@@ -21,8 +21,10 @@ public sealed class FlatOrdinaryMovementProfile
         Ground = ground; FirstOpponent = firstOpponent; SecondOpponent = secondOpponent;
     }
 
-    internal bool Supports(AttackBattleSnapshot state)
+    /// <summary>Pure geometry/profile admission, without granting a movement transition.</summary>
+    public bool Supports(AttackBattleSnapshot state)
     {
+        ArgumentNullException.ThrowIfNull(state);
         var battle = state.TurnBattle.Battle;
         var map = battle.Map;
         if (map.Width > 16 || map.Depth > 16 || map.LayerCount != 1 || battle.Units.Count != 2
