@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-151 (implementation).** Wait-facing source/design ZOD-150 is complete.
-There are 33 open tickets below. The 118 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-152 (source/design).** Pure Wait-facing query ZOD-151 is complete.
+There are 33 open tickets below. The 119 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,16 +29,16 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-151 — Resolve deferred wait-facing for two settled ordinary opponents
+### ZOD-152 — Specify source-certified AI Wait settlement through existing receipts
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-150
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-151
 
-Implement the [ZOD-150 contract](architecture/zod-150-ai-wait-facing.md) as a pure
-settled-state query with explicit original AI ChooseAtWait/eligible-opponent facts.
-Preserve source cardinal/diagonal ties and semantic enum mapping; occupied target tiles
-do not block facing. Accept already-used ACT, consume zero RNG/ticks and preserve live
-state. Reject unsupported/no-enemy/overlap context without inventing stack-byte behavior.
-No cached plan authority, facing application, commands or host/editor activation.
+Trace the Wait caller's facing/stat publication and turn_end ordering, refund widths,
+automatic completion and guarded repeated end. Specify integration of the fresh resolver
+with existing FacingTurnState/WaitWithFacing/FinishFacing receipts, covering active Wait
+and already-ended pending facing without double refund or forged turn state. Preserve
+old APIs, current RNG and atomic failure; exclude no-enemy/overlap quirks and native
+presentation activation. Decide minimal internal reuse before implementing.
 
 ## Existing validation gates
 

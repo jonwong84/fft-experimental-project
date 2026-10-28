@@ -6,12 +6,11 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-151: implement a pure settled-state ordinary wait-facing query.**
-The [ZOD-150 contract](architecture/zod-150-ai-wait-facing.md) reduces two living
-eligible flat opponents to exact source cardinal/diagonal math. Require original
-AI ChooseAtWait and eligible-opponent facts, allow ACT already used, map enum
-names explicitly, consume no RNG/ticks. Overlap/no-enemy stack-read behavior is
-excluded, not fixed. Do not apply facing or run from hypothetical plan positions.
+**ZOD-152: source/design AI Wait settlement through the existing facing session.**
+The [pure resolver](behavior/sword-ai-wait-facing.md) now resolves active settled
+positions without applying facing. Trace ordinary turn_end and stat publication,
+then specify reuse of active Wait and completion receipts without double refund,
+invented active state or cached-plan authority. Keep native activation separate.
 
 The current pure queries derive S/D0/D1 for focused-opponent, ordinary-sword
 reach/policy facts and raw Move<=124 through explicit in/out-of-reach entries.
@@ -29,21 +28,17 @@ managed roster size. The contract records the erratum without rewriting old evid
 
 ## Current implementation and validation
 
-- Latest source checkpoint: ZOD-150; seven receipt files / 12 functions verified,
-  eight direction literals and 65,280 distinct position pairs checked offline.
-  No production C# or .NET rerun at this checkpoint. Managed Wait expectations
-  remain unexecuted. Report: `scratch/ai-wait-facing-150/source.json`.
-- Latest implementation: ZOD-149, [out-of-reach selector and evidence](behavior/sword-ai-out-of-reach-selection.md).
-  20 new cases; both derived entry points now require false-default FirstAttackEntry.
-  Certified in-reach vectors and legacy supplied APIs stay unchanged.
+- Latest implementation: ZOD-151, [pure Wait-facing query and evidence](behavior/sword-ai-wait-facing.md).
+  21 new cases; the source scalar is shared with existing facing-session choices.
+  Active actor only; completion-receipt integration follows separately.
   No native/editor activation or original decision-equivalence claim.
 - Complete validation: locked restore, zero-warning/error Release build,
-  **3,780 .NET cases / 496 Python tests**, including all 3,744 prior .NET cases.
-  Clean source audit: inherited selection/scenario receipts plus out-of-reach
-  extension (`scratch/ai-out-of-reach-149/source.json`).
+  **3,808 .NET cases / 496 Python tests**, including 3,787 prior local cases.
+  Clean source audit: inherited receipts plus Wait functions/directional proof
+  (`scratch/ai-wait-facing-151/source.json`).
   These bounded checks do not establish complete FFT equivalence.
-  Current .NET results: ignored `scratch/ai-out-of-reach-149-full-trx/`;
-  Latest Python log: `scratch/ai-wait-facing-150/python.txt`. The current owner refactor/drafts
+  Current .NET results: ignored `scratch/ai-wait-facing-151-full-trx/`;
+  Latest Python log: `scratch/ai-wait-facing-151/python.txt`. The current owner refactor/drafts
   were included in the build and tests, excluded from the implementation commit.
   No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/

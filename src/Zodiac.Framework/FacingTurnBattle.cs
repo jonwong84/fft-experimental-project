@@ -159,16 +159,23 @@ public static class FacingTurnBattle
                 if (enemy.Hp == 0) return ChoiceReject(FacingTurnRejection.NoLivingEnemy);
                 state.Battle.TurnBattle.Battle.TryGetUnit(actorId, out var from);
                 state.Battle.TurnBattle.Battle.TryGetUnit(enemy.UnitId, out var to);
-                int dx = to!.Position.X - from!.Position.X, dy = to.Position.Y - from.Position.Y;
                 // In the certified open flat rectangle the direction toward its only living enemy is viable,
                 // including edges/diagonals. Both source nearest modes select that same enemy; no status/team inference.
-                BattleFacing? face = dy - dx <= 0 && dy + dx < 0 ? BattleFacing.South
-                    : dy - dx > 0 && dy + dx <= 0 ? BattleFacing.West
-                    : dy - dx >= 0 && dy + dx > 0 ? BattleFacing.North
-                    : dy - dx < 0 && dy + dx >= 0 ? BattleFacing.East : null;
+                BattleFacing? face = DirectionToward(from!.Position, to!.Position);
                 return face is null ? ChoiceReject(FacingTurnRejection.UnsupportedFacing) : new(true, FacingTurnRejection.None, face);
             default: return ChoiceReject(FacingTurnRejection.UnsupportedFacing);
         }
+    }
+
+    // Shared source scalar branches; callers own geometry/context admission, never cast source ordinals.
+    internal static BattleFacing? DirectionToward(TilePosition origin, TilePosition target)
+    {
+        int dx = target.X - origin.X, dy = target.Y - origin.Y;
+        int a = dy - dx, b = dy + dx;
+        return a <= 0 && b < 0 ? BattleFacing.South
+            : a > 0 && b <= 0 ? BattleFacing.West
+            : a >= 0 && b > 0 ? BattleFacing.North
+            : a < 0 && b >= 0 ? BattleFacing.East : null;
     }
 
     private static FacingTurnResult Settle(FacingTurnState before, AttackBattleSnapshot battle,
