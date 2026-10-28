@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-154 (source/design).** Ordinary AI Wait settlement ZOD-153 is complete.
-There are 33 open tickets below. The 121 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-155 (implementation).** Decision-RNG contract ZOD-154 is complete.
+There are 33 open tickets below. The 122 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,17 +29,16 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-154 — Specify decision-RNG ownership before ordinary AI command execution
+### ZOD-155 — Execute one fresh already-moved ordinary AI decision
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-153
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-154
 
-Trace the original RNG stream from one fresh in-reach ordinary-sword decision through
-actual command execution and Wait. Distinguish hypothetical battle-state rollback from
-retained scoring/lottery draws; specify adoption of only freshly computed decision RNG
-inside existing session authority, command failure/replay and revision/receipt behavior.
-Use the [completed Wait adapter](behavior/sword-ai-wait-settlement.md) as the endpoint.
-Keep implementation, out-of-reach execution, full dispatch, native pacing and broad
-replacement contracts separate; choose one checkable execution child afterward.
+Implement the [ZOD-154 contract](architecture/zod-154-ai-execution-rng.md) on an active
+real facing session with Move used and ACT unused. Require certified general-selection
+entry; derive once from current RNG, adopt it privately into both snapshots and execute
+one actual Attack or fallback Wait. Publish one command revision and real settled receipt;
+late failure restores the original session without partial diagnostics. Preserve pure APIs.
+No cached-plan execution, refresh-prefix port, general continuation or native activation.
 
 ## Existing validation gates
 

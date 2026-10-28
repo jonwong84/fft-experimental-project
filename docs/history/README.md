@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 121 entries index completed bounded work; they do not mean the full game is complete.
+These 122 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -144,3 +144,4 @@ These 121 entries index completed bounded work; they do not mean the full game i
 - [ZOD-151 — Resolve deferred wait-facing for two settled ordinary opponents](../behavior/sword-ai-wait-facing.md)
 - [ZOD-152 — Specify source-certified AI Wait settlement through existing receipts](../architecture/zod-152-ai-wait-settlement.md)
 - [ZOD-153 — Apply source-certified AI Wait facing through existing receipts](../behavior/sword-ai-wait-settlement.md)
+- [ZOD-154 — Specify decision-RNG ownership before ordinary AI command execution](../architecture/zod-154-ai-execution-rng.md)

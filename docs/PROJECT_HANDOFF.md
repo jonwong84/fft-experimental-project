@@ -6,12 +6,16 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-154: source/design decision-RNG ownership before ordinary AI execution.**
-Trace one fresh in-reach sword decision through actual commands and
-[completed Wait settlement](behavior/sword-ai-wait-settlement.md). Specify retained
-scoring/lottery draws versus hypothetical state rollback, fresh-only RNG adoption
-inside existing authority, atomic failure and replay. Keep native activation,
-out-of-reach execution and broad replacement contracts separate.
+**ZOD-155: execute one fresh already-moved ordinary AI decision.**
+The [ZOD-154 contract](architecture/zod-154-ai-execution-rng.md) selects active Move-used/
+ACT-unused sessions: fresh in-reach selection, private RNG adoption and one real Attack
+or fallback Wait. Return the actual command revision/receipt; late failure restores the
+whole input. No cached plans, general continuation, refresh-prefix port or native activation.
+
+The contract traces retained candidate/lottery draws and post-ACT reselection. Existing
+selection starts at certified general-selection entry; earlier refresh work is not included.
+The original VSync callback also draws from BIOS RNG. Managed rendering/pauses add no
+gameplay draws; frame-interleaved retail stream equivalence remains explicitly unresolved.
 
 The current pure queries derive S/D0/D1 for focused-opponent, ordinary-sword
 reach/policy facts and raw Move<=124 through explicit in/out-of-reach entries.
@@ -35,13 +39,15 @@ managed roster size. The contract records the erratum without rewriting old evid
   completion receipts, with no double refund, RNG/ticks or damage replay.
   ZOD-151's public raw-snapshot query stays active-only; shared guards retain old APIs.
   No native/editor activation or original decision-equivalence claim.
-- Complete validation: locked restore, zero-warning/error Release build,
-  **3,821 .NET cases / 496 Python tests**. The batch added 34 focused .NET cases.
-  Clean source audit: inherited receipts plus Wait functions/directional proof
-  and three files/eight functions for settlement (`scratch/ai-wait-settlement-153/source.json`).
+- Latest source/design: ZOD-154, [execution-RNG contract](architecture/zod-154-ai-execution-rng.md).
+  Source audit extends prior receipts with six files/16 functions and three supplied-prefix
+  RNG tapes (`scratch/ai-execution-rng-154/source.json`). Four new offline Python checks
+  cover RNG retention, actual miss, command guards and a VSync draw; no C# execution added.
+- Last .NET validation (ZOD-153): locked restore, zero-warning/error Release build,
+  **3,821 cases**; not rerun for this source/design-only ticket. Latest Python: **500 tests**.
   These bounded checks do not establish complete FFT equivalence.
   Current .NET results: ignored `scratch/ai-wait-settlement-153-full-trx/`;
-  Latest Python log: `scratch/ai-wait-settlement-153/python.txt`. The current owner refactor/drafts
+  Latest Python log: `scratch/ai-execution-rng-154/python.txt`. The current owner refactor/drafts
   were included in the build and tests, excluded from the implementation commit.
   No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/

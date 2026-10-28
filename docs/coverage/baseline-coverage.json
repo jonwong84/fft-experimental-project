@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-28",
   "edition": "SCUS-94221",
-  "managedCommit": "4f7b26d22189f1156d777c7945bfb5f3c53cfee7",
+  "managedCommit": "b3894f0e5cfe150a1bf0d4bab6118074f7b8e3b5",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -50,6 +50,7 @@
       "evidenceDocs": [
         "docs/behavior/bios-rng-verification.md",
         "docs/behavior/rng-state-and-ordering.md",
+        "docs/architecture/zod-154-ai-execution-rng.md",
         "docs/architecture/zod-040-event-script-investigation.md"
       ],
       "implementationPaths": [
@@ -70,7 +71,8 @@
         "procedure": "Observe controlled original battle inputs and record incoming RNG state/draw order."
       },
       "openQuestions": [
-        "Whole-game consumers and seed lifecycles remain open; the event interpreter uses a separate RNG, whose algorithm/seed/order is not covered by the BIOS proof."
+        "Whole-game consumers and seed lifecycles remain open; the event interpreter uses a separate RNG, whose algorithm/seed/order is not covered by the BIOS proof.",
+        "Source VSync consumes BIOS rand once per frame. Managed rendering adds no gameplay draws; exact frame-interleaved retail stream equivalence remains unresolved."
       ],
       "nextAction": "Extend ordering traces one new rule/caller at a time."
     },
@@ -474,6 +476,7 @@
         "docs/architecture/zod-148-ai-out-of-reach-selection.md",
         "docs/architecture/zod-150-ai-wait-facing.md",
         "docs/architecture/zod-152-ai-wait-settlement.md",
+        "docs/architecture/zod-154-ai-execution-rng.md",
         "docs/behavior/sword-ai-wait-facing.md",
         "docs/behavior/sword-ai-wait-settlement.md",
         "docs/behavior/sword-ai-out-of-reach-scenario.md",
@@ -509,6 +512,10 @@
         {
           "path": "tests/Zodiac.Framework.Tests/SwordAiWaitSettlementTests.cs",
           "scope": "Real active Wait and both automatic-completion orders, critical knockback, single refund/cap, exact receipt authority, atomic rejection and replay."
+        },
+        {
+          "path": "tools/verification/test_ai_execution_contract.py",
+          "scope": "Offline supplied-prefix RNG tapes and source command guards only; no fresh selection, managed command transaction or original execution."
         }
       ],
       "manualCheckpoint": {
@@ -517,10 +524,10 @@
       },
       "openQuestions": [
         "Full target/ability/roster search, out-of-reach execution and special policies, Defend, replacement interface, selected-plan command execution and live decision RNG remain open.",
-        "Caller certificates still describe unrepresented original context; bounded source-derived synthetic vectors do not establish full original decision equivalence."
+        "Caller certificates still describe unrepresented original context. Earlier refresh/policy draws and source frame RNG are outside the derived selector; bounded vectors do not establish full original decision equivalence."
       ],
-      "nextAction": "Trace decision-RNG ownership for one fresh in-reach sword decision through actual commands and existing Wait settlement; specify fresh-only adoption, atomic failure and replay before selecting an execution child. Keep full dispatch/native activation separate.",
-      "followUpTickets": ["ZOD-154"]
+      "nextAction": "Implement one fresh already-moved in-reach decision plus actual Attack or fallback Wait, with private current-RNG adoption, one command revision and whole-input rollback. Keep refresh-prefix porting, general continuation and native activation separate.",
+      "followUpTickets": ["ZOD-155"]
     },
     {
       "id": "COV-SIM-010",

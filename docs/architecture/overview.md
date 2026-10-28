@@ -12,6 +12,15 @@
 - Permit additional content and mechanics without imposing the original executable's fixed-size data limits.
 - Use the C decompilation and locally prepared game files as development references and import sources, never as runtime dependencies.
 
+## Gameplay RNG and presentation
+
+Decision scoring and actual combat share explicit gameplay RNG; restoring a
+hypothetical candidate does not erase its draws. Rendering, wall time and pauses
+must not advance that stream. The original VSync callback draws BIOS rand once
+per frame, so this managed isolation boundary does not establish frame-interleaved
+retail RNG equivalence. [ZOD-154](zod-154-ai-execution-rng.md) records the pinned
+source, earlier refresh-prefix gap and bounded execution contract.
+
 ## Content flag representation
 
 **Owner direction (2026-10-27):** Prefer named boolean properties for independent
