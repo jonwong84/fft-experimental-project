@@ -6,12 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-144: source/design private derived-scenario composition/selection.**
-The [fresh scenario query](behavior/sword-ai-movement-scenario.md) now derives S/D0/D1
-for focused-opponent, ordinary-sword-reach/policy facts, raw Move<=124 and d<=Move+1.
-Specify its private continuation into Attack/lottery without duplicate movement
-scoring or public cached-result authority. Whole-query rollback and original
-supplied-scenario APIs must be preserved; no command/native activation.
+**ZOD-145: implement private derived-scenario composition/selection.**
+The [ZOD-144 contract](architecture/zod-144-ai-derived-selection.md) removes supplied
+S/D0/D1 inputs and derives their provenance. Keep remaining context facts explicit,
+preflight weapon/policy before movement, reuse only privately owned fresh scores
+through shared internal composition/lottery tails, and restore whole-query RNG
+after any later failure. No command/native activation or out-of-reach extension.
 
 ZOD-140 privately owns one ZOD-138 composition and the source lottery. An admitted
 Attack is selected after one/eight draws; empty ranking takes eight then MoveOnly
@@ -27,8 +27,8 @@ managed roster size. The contract records the erratum without rewriting old evid
 
 ## Current implementation and validation
 
-- Latest source checkpoint: ZOD-141, clean reference below; inherited selection audit
-  plus 11 inspected scenario functions passed (`scratch/ai-scenario-141/source.json`).
+- Latest source checkpoint: ZOD-144, clean reference below; inherited selection audit
+  plus 11 scenario functions rechecked (`scratch/ai-derived-selection-144/source.json`).
   No production change, original execution or .NET suite rerun for this checkpoint.
 - Latest implementation: ZOD-143, [movement-scenario API and evidence](behavior/sword-ai-movement-scenario.md).
   22 new focused cases; shared baseline admission extracted. No runtime activation.
