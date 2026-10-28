@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-28",
   "edition": "SCUS-94221",
-  "managedCommit": "4d96e38cf318ba4f5f6372c9a7749a4a2b5c48ab",
+  "managedCommit": "75bd34af753bc2b266b32d621367899fecf36ed5",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -469,6 +469,7 @@
       "evidenceDocs": [
         "docs/architecture/zod-141-ai-movement-scenario.md",
         "docs/architecture/zod-144-ai-derived-selection.md",
+        "docs/architecture/zod-146-ai-out-of-reach-scenario.md",
         "docs/behavior/sword-ai-derived-selection.md"
       ],
       "implementationPaths": [
@@ -493,8 +494,8 @@
         "Full target/ability/roster search, out-of-reach and special policies, Defend, replacement interface, command/facing execution and live RNG commitment remain open.",
         "Caller certificates still describe unrepresented original context; bounded source-derived synthetic vectors do not establish full original decision equivalence."
       ],
-      "nextAction": "Trace one bounded out-of-reach movement branch, including post-score team-conditioned reach RNG and cell provenance, before implementing it.",
-      "followUpTickets": ["ZOD-146"]
+      "nextAction": "Implement the source-traced standalone out-of-reach movement branch with explicit original Blue/NonBlue team context, post-score reach RNG and fresh-cell provenance; selector integration remains separate.",
+      "followUpTickets": ["ZOD-147"]
     },
     {
       "id": "COV-SIM-010",

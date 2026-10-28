@@ -6,11 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-146: source/design one bounded out-of-reach sword movement branch.**
-Trace filtering/fallback, team-conditioned post-score rand()%7 reach-halving,
-D1 selection/D0 copying, actor insertion and score/proximity-cell provenance.
-Pin source/team facts and private RNG ownership before implementation. Start
-from the [completed in-reach selector](behavior/sword-ai-derived-selection.md).
+**ZOD-147: implement one standalone out-of-reach sword movement branch.**
+The [ZOD-146 contract](architecture/zod-146-ai-out-of-reach-scenario.md) specifies
+S filtering, post-score rand()%7 reach-halving for original NonBlue team bits,
+D1 selection/D0 copy and fresh S versus later actor insertion. Blue/NonBlue is
+not player-control or opponent relation. Require a known team class, actual
+private prefix/RNG and atomic adjustment failure. Selector integration follows separately.
 
 The current pure query derives S/D0/D1 for focused-opponent, ordinary-sword
 reach/policy facts, raw Move<=124 and d<=Move+1. It evaluates movement once, reuses
@@ -27,6 +28,9 @@ managed roster size. The contract records the erratum without rewriting old evid
 
 ## Current implementation and validation
 
+- Latest source checkpoint: ZOD-146; clean pinned receipt and independent RNG
+  literals verified. OOR-001..006 are unexecuted managed proposals; no production
+  change or .NET rerun at this checkpoint. Audit: `scratch/ai-out-of-reach-146/final-source.json`.
 - Completed batch: ZOD-141/143/144/145. Latest implementation:
   [derived-scenario selector and evidence](behavior/sword-ai-derived-selection.md).
   22 scenario + 16 integration cases added; shared internal tails preserve old APIs.
@@ -37,7 +41,7 @@ managed roster size. The contract records the erratum without rewriting old evid
   11 inspected scenario functions (`scratch/ai-derived-selection-145-source.json`).
   These bounded checks do not establish complete FFT equivalence.
   Current .NET results: ignored `scratch/ai-derived-selection-145-full-trx/`;
-  Python log: `scratch/ai-derived-selection-145-python.txt`. The current owner refactor/drafts
+  Latest Python log: `scratch/ai-out-of-reach-146/python.txt`. The current owner refactor/drafts
   were included in the build and tests, excluded from the implementation commit.
   No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/

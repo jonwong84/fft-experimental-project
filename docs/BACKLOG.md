@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-146 (source/design).** Derived-scenario selection ZOD-145 is complete.
-There are 33 open tickets below. The 113 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-147 (implementation).** Out-of-reach source/design ZOD-146 is complete.
+There are 33 open tickets below. The 114 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,17 +29,17 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-146 — Specify a bounded out-of-reach sword movement branch
+### ZOD-147 — Derive a fresh out-of-reach ordinary-sword movement scenario
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-145
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-146
 
-Extend source study from the [in-reach derived selector](behavior/sword-ai-derived-selection.md)
-to one focused ordinary-sword out-of-reach branch. Trace distance filtering/no-match
-fallback, post-score team-conditioned rand()%7 reach-halving, D1 priority/distance
-fallback and D0 copying, actor insertion and fresh versus unvisited score/proximity
-cells. Pin widths, source team facts and exact RNG ownership; choose a bounded supported
-branch and acceptance cases before coding. No production API required. Full search,
-Defend, command/facing execution and native/editor activation remain separate.
+Implement the [ZOD-146 contract](architecture/zod-146-ai-out-of-reach-scenario.md) as
+an explicit standalone out-of-reach movement entry. Derive S, score it once, apply
+one post-score reach draw only for original NonBlue team bits, select D1 and copy
+D0, retaining S/A distinction and actual fresh-cell provenance. Reject Unknown team
+and wrong branch; report effective reach/raw adjustment/fallback with atomic draw/tick
+failure. Share helpers without changing in-reach behavior. Derived-selector integration,
+full search, commands and native/editor activation remain separate follow-ups.
 
 ## Existing validation gates
 
