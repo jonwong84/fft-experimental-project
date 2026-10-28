@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-160 (source/design).** Pure ordinary refresh ZOD-159 is complete.
-There are 33 open tickets below. The 127 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-161 (implementation).** Preparation trace ZOD-160 is complete.
+There are 33 open tickets below. The 128 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,17 +29,16 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-160 — Trace ordinary preparation between refresh and general selection
+### ZOD-161 — Derive closed ordinary preparation after fresh refresh
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-159
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-160
 
-Trace ability considerations, reachable-tile preparation, team/target policy and
-their dependencies on the earlier actor-delay cache for the closed already-moved
-two-opponent path. Relate the [refresh query](behavior/sword-ai-refresh.md) output
-to existing general-selection certificates; identify additional inputs and RNG
-work before specifying one managed child. Preserve current command authority and
-explicit entry certificates until fresh composition is proved. Broader search,
-continuation, special policies, frame fidelity and native activation stay separate.
+Implement the [preparation contract](architecture/zod-160-ai-preparation.md): own
+one fresh refresh, derive current-tile reachability, restored-state delays,
+NonBlue single-ally support policy and ordinary Attack focus/reach hints.
+Require explicit closed ability-list, special-behavior and clean-delay-cache facts.
+Return only diagnostics/RNG with atomic failure; no cached-result input, selection,
+command authority or native activation. Fresh selection composition is the next child.
 
 ## Existing validation gates
 

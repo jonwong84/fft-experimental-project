@@ -6,12 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-160: trace ordinary preparation between refresh and general selection.**
-The [pure refresh query](behavior/sword-ai-refresh.md) now derives flags and one
-hypothetical clock/upkeep draw for the closed already-moved context. Study later
-ability, reachable-tile and team/target policy preparation and the earlier delay
-cache before specifying fresh composition. Preserve current command authority and
-general-selection certificates until those remaining inputs and draws are proved.
+**ZOD-161: derive closed ordinary preparation after fresh refresh.**
+The [source contract](architecture/zod-160-ai-preparation.md) selects a NonBlue,
+already-moved two-opponent ordinary Attack-only path. Preparation adds no RNG
+after refresh and derives current-tile origin, restored-state delays and target/
+support hints. Explicit list, no-special-behavior and clean cached-delay facts
+remain mandatory. ZOD-162 will compose fresh preparation with pure selection.
 
 The [current executor](behavior/sword-ai-execution.md), now in `Zodiac.Framework.Ai`,
 derives one in-reach decision for a real Move-used/ACT-unused session. The
@@ -45,10 +45,10 @@ managed roster size. The contract records the erratum without rewriting old evid
   cases cover source vectors, HP thresholds, policies, counters and immutable replay.
   The [separate AI assembly and Framework transaction](architecture/ai-command-boundary.md)
   remain in place; no native/editor activation or original decision-equivalence claim.
-- Latest source/design: ZOD-156, [refresh-prefix contract](architecture/zod-156-ai-refresh-prefix.md).
-  Clean pinned audit checks three refresh files/18 functions and six closed clock
-  vectors, plus inherited receipts (rechecked: `scratch/ai-refresh-159/source.json`).
-  The six clock/counter vectors now also execute in the managed refresh tests.
+- Latest source/design: ZOD-160, [preparation contract](architecture/zod-160-ai-preparation.md).
+  Clean source audit checks 25 preparation functions plus inherited receipts
+  (`scratch/ai-preparation-160/source.json`); three focused Python checks pass.
+  No C# changed at this checkpoint; managed preparation/selection children remain.
 - ZOD-159 validation: locked restore, zero-warning/error Release build,
   **3,863 .NET cases / 504 Python tests**, including the owner's current content drafts.
   All nine historical checkpoint audits last passed at ZOD-158 after the file moves.
