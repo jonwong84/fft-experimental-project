@@ -100,10 +100,8 @@ public static class FacingTurnBattle
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(choice);
-        if (state.PendingFacing is not null) return Reject(state, FacingTurnRejection.FacingPending);
-        if (!state.Battle.Combatants.Any(u => u.UnitId == actorId)) return Reject(state, FacingTurnRejection.UnknownActor);
-        if (state.Battle.TurnBattle.Turns.ActiveUnitId != actorId) return Reject(state, FacingTurnRejection.InactiveActor);
-        if (state.Revision == ulong.MaxValue) return Reject(state, FacingTurnRejection.RevisionExhausted);
+        var guard = ValidateWait(state, actorId);
+        if (guard != FacingTurnRejection.None) return Reject(state, guard);
         var resolved = Resolve(state, actorId, choice);
         if (!resolved.Accepted) return Reject(state, resolved.Rejection);
         var wait = AttackBattleSimulator.Wait(state.Battle, actorId);
@@ -116,15 +114,31 @@ public static class FacingTurnBattle
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(choice);
-        if (state.PendingFacing is not { } pending) return Reject(state, FacingTurnRejection.MissingCompletion);
-        if (!ReferenceEquals(receipt, pending) || !ReferenceEquals(pending.ExpectedBattle, state.Battle) ||
-            !ReferenceEquals(pending.Lineage, state.Lineage) || pending.Revision != state.Revision)
-            return Reject(state, FacingTurnRejection.StaleCompletion);
-        if (actorId != pending.ActorId) return Reject(state, FacingTurnRejection.WrongActor);
-        if (state.Battle.TurnBattle.Turns.ActiveUnitId is not null) return Reject(state, FacingTurnRejection.InconsistentCompletion);
-        if (state.Revision == ulong.MaxValue) return Reject(state, FacingTurnRejection.RevisionExhausted);
+        var guard = ValidateCompletion(state, actorId, receipt);
+        if (guard != FacingTurnRejection.None) return Reject(state, guard);
         var resolved = Resolve(state, actorId, choice);
         return resolved.Accepted ? Settle(state, state.Battle, actorId, resolved.Facing!.Value, []) : Reject(state, resolved.Rejection);
+    }
+
+    // Shared with the opt-in AI adapter; preserve the legacy public guard ordering.
+    internal static FacingTurnRejection ValidateWait(FacingTurnState state, BattleUnitId actorId)
+    {
+        if (state.PendingFacing is not null) return FacingTurnRejection.FacingPending;
+        if (!state.Battle.Combatants.Any(u => u.UnitId == actorId)) return FacingTurnRejection.UnknownActor;
+        if (state.Battle.TurnBattle.Turns.ActiveUnitId != actorId) return FacingTurnRejection.InactiveActor;
+        return state.Revision == ulong.MaxValue ? FacingTurnRejection.RevisionExhausted : FacingTurnRejection.None;
+    }
+
+    internal static FacingTurnRejection ValidateCompletion(FacingTurnState state, BattleUnitId actorId,
+        FacingCompletionReceipt? receipt)
+    {
+        if (state.PendingFacing is not { } pending) return FacingTurnRejection.MissingCompletion;
+        if (!ReferenceEquals(receipt, pending) || !ReferenceEquals(pending.ExpectedBattle, state.Battle) ||
+            !ReferenceEquals(pending.Lineage, state.Lineage) || pending.Revision != state.Revision)
+            return FacingTurnRejection.StaleCompletion;
+        if (actorId != pending.ActorId) return FacingTurnRejection.WrongActor;
+        if (state.Battle.TurnBattle.Turns.ActiveUnitId is not null) return FacingTurnRejection.InconsistentCompletion;
+        return state.Revision == ulong.MaxValue ? FacingTurnRejection.RevisionExhausted : FacingTurnRejection.None;
     }
 
     private static FacingTurnResult Delegate(FacingTurnState state, Func<AttackBattleResult> apply)
@@ -189,7 +203,7 @@ public static class FacingTurnBattle
     }
 
     private static FacingChoiceResult ChoiceReject(FacingTurnRejection rejection) => new(false, rejection, null);
-    private static FacingTurnResult Reject(FacingTurnState state, FacingTurnRejection rejection) =>
+    internal static FacingTurnResult Reject(FacingTurnState state, FacingTurnRejection rejection) =>
         new(false, rejection, AttackCommandRejection.None, TurnCycleRejection.None, BattleTransitionRejection.None, state, []);
     private static FacingTurnResult DelegatedReject(FacingTurnState state, AttackBattleResult result) =>
         new(false, FacingTurnRejection.None, result.AttackRejection, result.TurnRejection, result.MovementRejection, state, []);

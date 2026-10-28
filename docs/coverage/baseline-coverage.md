@@ -3,7 +3,7 @@
 Generated from `baseline-coverage.json` by `tools/verification/verify_baseline_coverage.py --write-view`.
 Edit the JSON, then regenerate this view. See [the inventory guide](README.md) for status/evidence rules.
 
-Target: **SCUS-94221**. Snapshot: 2026-10-28; managed base `45123d96c03b7e5fd12e6ba95ac8cd5777d15796`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+Target: **SCUS-94221**. Snapshot: 2026-10-28; managed base `4f7b26d22189f1156d777c7945bfb5f3c53cfee7`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 These entries are planning scopes, not a feature-completion percentage or a complete record/encounter catalog.
 
 ## Simulation
@@ -187,26 +187,26 @@ Next action: Trace original behavior first; keep the planned knockback modificat
 
 Status: **partial**; scope: **baseline**; ticket: **ZOD-038**; owner area: Zodiac.Framework simulation.
 
-Pure opt-in two-opponent ordinary-sword queries derive movement cells/D0/D1 through explicit in/out-of-reach branches, score movement once, retain original Blue/NonBlue reach adjustment, scan one certified first/terminal Attack and run the original lottery/MoveOnly fallback. No AI policy executes in the playable sample; full search, resolved facing and command authority remain open.
+Pure opt-in two-opponent ordinary-sword queries derive movement cells/D0/D1, score one first/terminal Attack and run the original lottery/MoveOnly fallback through explicit in/out-of-reach branches. A separate fresh Wait-facing adapter uses existing active Wait or automatic-completion receipts without repeated refund/damage or RNG/ticks. Full search, selected-plan execution/live decision RNG and playable-host activation remain open.
 
-Evidence: [docs/architecture/zod-141-ai-movement-scenario.md](../../docs/architecture/zod-141-ai-movement-scenario.md), [docs/architecture/zod-144-ai-derived-selection.md](../../docs/architecture/zod-144-ai-derived-selection.md), [docs/architecture/zod-146-ai-out-of-reach-scenario.md](../../docs/architecture/zod-146-ai-out-of-reach-scenario.md), [docs/behavior/sword-ai-derived-selection.md](../../docs/behavior/sword-ai-derived-selection.md), [docs/architecture/zod-148-ai-out-of-reach-selection.md](../../docs/architecture/zod-148-ai-out-of-reach-selection.md), [docs/architecture/zod-150-ai-wait-facing.md](../../docs/architecture/zod-150-ai-wait-facing.md), [docs/behavior/sword-ai-out-of-reach-scenario.md](../../docs/behavior/sword-ai-out-of-reach-scenario.md), [docs/behavior/sword-ai-out-of-reach-selection.md](../../docs/behavior/sword-ai-out-of-reach-selection.md).
+Evidence: [docs/architecture/zod-141-ai-movement-scenario.md](../../docs/architecture/zod-141-ai-movement-scenario.md), [docs/architecture/zod-144-ai-derived-selection.md](../../docs/architecture/zod-144-ai-derived-selection.md), [docs/architecture/zod-146-ai-out-of-reach-scenario.md](../../docs/architecture/zod-146-ai-out-of-reach-scenario.md), [docs/behavior/sword-ai-derived-selection.md](../../docs/behavior/sword-ai-derived-selection.md), [docs/architecture/zod-148-ai-out-of-reach-selection.md](../../docs/architecture/zod-148-ai-out-of-reach-selection.md), [docs/architecture/zod-150-ai-wait-facing.md](../../docs/architecture/zod-150-ai-wait-facing.md), [docs/architecture/zod-152-ai-wait-settlement.md](../../docs/architecture/zod-152-ai-wait-settlement.md), [docs/behavior/sword-ai-wait-facing.md](../../docs/behavior/sword-ai-wait-facing.md), [docs/behavior/sword-ai-wait-settlement.md](../../docs/behavior/sword-ai-wait-settlement.md), [docs/behavior/sword-ai-out-of-reach-scenario.md](../../docs/behavior/sword-ai-out-of-reach-scenario.md), [docs/behavior/sword-ai-out-of-reach-selection.md](../../docs/behavior/sword-ai-out-of-reach-selection.md).
 
 Source entry points (pinned revision above; not full traces): [src/battle/ai/turn.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/ai/turn.c), [src/battle/ai/evaluation.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/ai/evaluation.c), [include/fft/ai.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/ai.h).
 
-Current implementation: [src/Zodiac.Framework/SwordAiMovementScenario.cs](../../src/Zodiac.Framework/SwordAiMovementScenario.cs), [src/Zodiac.Framework/SwordAiDerivedSelection.cs](../../src/Zodiac.Framework/SwordAiDerivedSelection.cs).
+Current implementation: [src/Zodiac.Framework/SwordAiMovementScenario.cs](../../src/Zodiac.Framework/SwordAiMovementScenario.cs), [src/Zodiac.Framework/SwordAiDerivedSelection.cs](../../src/Zodiac.Framework/SwordAiDerivedSelection.cs), [src/Zodiac.Framework/SwordAiWaitFacing.cs](../../src/Zodiac.Framework/SwordAiWaitFacing.cs), [src/Zodiac.Framework/SwordAiWaitSettlement.cs](../../src/Zodiac.Framework/SwordAiWaitSettlement.cs).
 
-Existing bounded checks: [tests/Zodiac.Framework.Tests/SwordAiMovementScenarioTests.cs](../../tests/Zodiac.Framework.Tests/SwordAiMovementScenarioTests.cs), [tests/Zodiac.Framework.Tests/SwordAiDerivedSelectionTests.cs](../../tests/Zodiac.Framework.Tests/SwordAiDerivedSelectionTests.cs), [tests/Zodiac.Framework.Tests/SwordAiOutOfReachScenarioTests.cs](../../tests/Zodiac.Framework.Tests/SwordAiOutOfReachScenarioTests.cs), [tests/Zodiac.Framework.Tests/SwordAiOutOfReachSelectionTests.cs](../../tests/Zodiac.Framework.Tests/SwordAiOutOfReachSelectionTests.cs).
+Existing bounded checks: [tests/Zodiac.Framework.Tests/SwordAiMovementScenarioTests.cs](../../tests/Zodiac.Framework.Tests/SwordAiMovementScenarioTests.cs), [tests/Zodiac.Framework.Tests/SwordAiDerivedSelectionTests.cs](../../tests/Zodiac.Framework.Tests/SwordAiDerivedSelectionTests.cs), [tests/Zodiac.Framework.Tests/SwordAiOutOfReachScenarioTests.cs](../../tests/Zodiac.Framework.Tests/SwordAiOutOfReachScenarioTests.cs), [tests/Zodiac.Framework.Tests/SwordAiOutOfReachSelectionTests.cs](../../tests/Zodiac.Framework.Tests/SwordAiOutOfReachSelectionTests.cs), [tests/Zodiac.Framework.Tests/SwordAiWaitFacingTests.cs](../../tests/Zodiac.Framework.Tests/SwordAiWaitFacingTests.cs), [tests/Zodiac.Framework.Tests/SwordAiWaitSettlementTests.cs](../../tests/Zodiac.Framework.Tests/SwordAiWaitSettlementTests.cs).
 
 Manual checkpoint (pending-original-observation): Observe selected mandatory AI turns and distinguish legal choices from exact policy matching.
 
 Remaining gaps:
 
-- Full target/ability/roster search, out-of-reach and special policies, Defend, replacement interface, command/facing execution and live RNG commitment remain open.
+- Full target/ability/roster search, out-of-reach execution and special policies, Defend, replacement interface, selected-plan command execution and live decision RNG remain open.
 - Caller certificates still describe unrepresented original context; bounded source-derived synthetic vectors do not establish full original decision equivalence.
 
-Next action: Implement the source-traced pure settled-state ChooseAtWait resolver for two living ordinary opponents, with semantic direction mapping, explicit context facts and zero RNG/ticks; live facing/command/host activation remain separate.
+Next action: Trace decision-RNG ownership for one fresh in-reach sword decision through actual commands and existing Wait settlement; specify fresh-only adoption, atomic failure and replay before selecting an execution child. Keep full dispatch/native activation separate.
 
-Bounded follow-ups: ZOD-151.
+Bounded follow-ups: ZOD-154.
 
 ### COV-SIM-010 — XP, JP, growth, learned abilities and job unlocks
 

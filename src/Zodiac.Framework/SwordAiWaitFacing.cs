@@ -18,7 +18,22 @@ public sealed record SwordAiWaitFacingResult(bool Accepted, SwordAiWaitFacingRej
 public static class SwordAiWaitFacing
 {
     public static SwordAiWaitFacingResult Evaluate(AttackBattleSnapshot state, BattleUnitId actorId, BattleUnitId targetId,
-        FlatOrdinaryMovementProfile movementProfile, SwordAiWaitFacingProfile waitProfile, FftRandomState rng)
+        FlatOrdinaryMovementProfile movementProfile, SwordAiWaitFacingProfile waitProfile, FftRandomState rng) =>
+        EvaluateCore(state, actorId, targetId, movementProfile, waitProfile, rng, requireActive: true);
+
+    // Only a real session completion can admit an ended turn. The public snapshot query stays active-only.
+    internal static SwordAiWaitFacingResult EvaluateAuthorizedCompletion(FacingTurnState state, BattleUnitId actorId,
+        BattleUnitId targetId, FacingCompletionReceipt? receipt, FlatOrdinaryMovementProfile movementProfile,
+        SwordAiWaitFacingProfile waitProfile)
+    {
+        var rng = state.Battle.TurnBattle.Turns.RngState;
+        if (FacingTurnBattle.ValidateCompletion(state, actorId, receipt) != FacingTurnRejection.None)
+            return new(false, SwordAiWaitFacingRejection.UnavailableTurn, null, rng);
+        return EvaluateCore(state.Battle, actorId, targetId, movementProfile, waitProfile, rng, requireActive: false);
+    }
+
+    private static SwordAiWaitFacingResult EvaluateCore(AttackBattleSnapshot state, BattleUnitId actorId, BattleUnitId targetId,
+        FlatOrdinaryMovementProfile movementProfile, SwordAiWaitFacingProfile waitProfile, FftRandomState rng, bool requireActive)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(movementProfile);
@@ -30,7 +45,9 @@ public static class SwordAiWaitFacing
         if (!battle.TryGetUnit(actorId, out var actor)) return Reject(SwordAiWaitFacingRejection.UnknownActor);
         if (actorId == targetId) return Reject(SwordAiWaitFacingRejection.InvalidTarget);
         if (!battle.TryGetUnit(targetId, out var target)) return Reject(SwordAiWaitFacingRejection.UnknownTarget);
-        if (state.TurnBattle.Turns.Phase != TurnCyclePhase.UnitTurn || state.TurnBattle.Turns.ActiveUnitId != actorId)
+        var turns = state.TurnBattle.Turns;
+        if (requireActive ? turns.Phase != TurnCyclePhase.UnitTurn || turns.ActiveUnitId != actorId
+            : turns.Phase != TurnCyclePhase.PickUnit || turns.ActiveUnitId is not null)
             return Reject(SwordAiWaitFacingRejection.UnavailableTurn);
         if (actor!.Position == target!.Position) return Reject(SwordAiWaitFacingRejection.OverlappingPositions);
         if (!movementProfile.Supports(state)) return Reject(SwordAiWaitFacingRejection.UnsupportedProfile);

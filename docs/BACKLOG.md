@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-153 (implementation).** Wait settlement contract ZOD-152 is complete.
-There are 33 open tickets below. The 120 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-154 (source/design).** Ordinary AI Wait settlement ZOD-153 is complete.
+There are 33 open tickets below. The 121 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,15 +29,17 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-153 — Apply source-certified AI Wait facing through existing receipts
+### ZOD-154 — Specify decision-RNG ownership before ordinary AI command execution
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-152
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-153
 
-Implement the [settlement contract](architecture/zod-152-ai-wait-settlement.md): fresh
-Wait-facing resolution through existing active Wait and pending completion authority.
-Require explicit ordinary source context; preserve CT/refund ordering, current RNG,
-atomic failure and old APIs. Validate real Move/Attack completion receipts, both orders,
-stale/foreign rejection and replay. No native activation or cached-plan authority.
+Trace the original RNG stream from one fresh in-reach ordinary-sword decision through
+actual command execution and Wait. Distinguish hypothetical battle-state rollback from
+retained scoring/lottery draws; specify adoption of only freshly computed decision RNG
+inside existing session authority, command failure/replay and revision/receipt behavior.
+Use the [completed Wait adapter](behavior/sword-ai-wait-settlement.md) as the endpoint.
+Keep implementation, out-of-reach execution, full dispatch, native pacing and broad
+replacement contracts separate; choose one checkable execution child afterward.
 
 ## Existing validation gates
 

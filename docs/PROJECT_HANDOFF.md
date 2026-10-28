@@ -6,11 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-153: implement AI Wait settlement through the existing facing session.**
-The [source contract](architecture/zod-152-ai-wait-settlement.md) specifies explicit
-active Wait versus receipt-authorized completion after both choices. Reuse the
-existing authority guards and fresh resolver, require ordinary turn-end context,
-and preserve current RNG and atomic failure. Keep native activation separate.
+**ZOD-154: source/design decision-RNG ownership before ordinary AI execution.**
+Trace one fresh in-reach sword decision through actual commands and
+[completed Wait settlement](behavior/sword-ai-wait-settlement.md). Specify retained
+scoring/lottery draws versus hypothetical state rollback, fresh-only RNG adoption
+inside existing authority, atomic failure and replay. Keep native activation,
+out-of-reach execution and broad replacement contracts separate.
 
 The current pure queries derive S/D0/D1 for focused-opponent, ordinary-sword
 reach/policy facts and raw Move<=124 through explicit in/out-of-reach entries.
@@ -21,28 +22,26 @@ entry, no-Defend and other source-context facts remain explicit; plans retain de
 ChooseAtWait. Failures restore whole-query RNG without partial output. Original
 supplied-scenario APIs stay unchanged; no command authority or live RNG commit.
 
-Full AI search, general multi-entry ranking/lottery, replaceable decision interface, authoritative
-commands/RNG and presentation activation remain future work. Original UNIT_SLOT_COUNT
+Full AI search, general multi-entry ranking/lottery, replaceable decision interface,
+selected-plan command execution/live decision RNG and presentation activation remain
+future work. Original UNIT_SLOT_COUNT
 is **21**; the old 26-foe wrap example is inadmissible. This does not select a fixed
 managed roster size. The contract records the erratum without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-151, [pure Wait-facing query and evidence](behavior/sword-ai-wait-facing.md).
-  21 new cases; the source scalar is shared with existing facing-session choices.
-  Active actor only; completion-receipt integration follows separately.
+- Latest implementation: ZOD-153, [ordinary AI Wait settlement and evidence](behavior/sword-ai-wait-settlement.md).
+  Thirteen new cases apply fresh facing through existing active Wait or pending
+  completion receipts, with no double refund, RNG/ticks or damage replay.
+  ZOD-151's public raw-snapshot query stays active-only; shared guards retain old APIs.
   No native/editor activation or original decision-equivalence claim.
-- Latest source/design: ZOD-152, [settlement contract](architecture/zod-152-ai-wait-settlement.md).
-  Clean pinned audit adds three source files/eight functions for refund, automatic
-  completion and facing publication (`scratch/ai-wait-settlement-152/source.json`).
-  Adapter acceptance proposals await ZOD-153; no production changes in this contract.
 - Complete validation: locked restore, zero-warning/error Release build,
-  **3,808 .NET cases / 496 Python tests**, including 3,787 prior local cases.
+  **3,821 .NET cases / 496 Python tests**. The batch added 34 focused .NET cases.
   Clean source audit: inherited receipts plus Wait functions/directional proof
-  (`scratch/ai-wait-facing-151/source.json`).
+  and three files/eight functions for settlement (`scratch/ai-wait-settlement-153/source.json`).
   These bounded checks do not establish complete FFT equivalence.
-  Current .NET results: ignored `scratch/ai-wait-facing-151-full-trx/`;
-  Latest Python log: `scratch/ai-wait-facing-151/python.txt`. The current owner refactor/drafts
+  Current .NET results: ignored `scratch/ai-wait-settlement-153-full-trx/`;
+  Latest Python log: `scratch/ai-wait-settlement-153/python.txt`. The current owner refactor/drafts
   were included in the build and tests, excluded from the implementation commit.
   No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
