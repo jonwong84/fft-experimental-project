@@ -6,13 +6,13 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-166: implement a pure ordinary command-dispatch query.**
-The [source contract](architecture/zod-165-ai-command-continuation.md) proves normal
-Move reuses the selected action without refresh/search, ACT requests reselection,
-and unchanged flags end the turn before either branch. Keep fresh selected-stage
-dispatch separate from earlier entry inspection. This child produces descriptive
-commands only; actual Move/opaque continuation authority and unmoved preparation
-remain later work. Existing prepared execution stays unchanged.
+**ZOD-167: design Framework-owned Move-first execution and continuation.**
+The [dispatch query](behavior/sword-ai-command-dispatch.md) now describes source
+command reuse without execution or RNG work. Specify a fresh-planner/real-path
+Move handoff with an opaque continuation bound to the exact returned session,
+then retained ACT/END without reselection. Preserve stale/replay guards and a
+committed Move on later failure; select one child before adding authority.
+Fresh unmoved preparation and host activation remain separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and new
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
@@ -43,21 +43,19 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-163/164, [prepared Attack/Wait](behavior/sword-ai-prepared-execution.md)
-  and [prepared out-of-reach Wait](behavior/sword-ai-prepared-out-of-reach.md).
-  Thirteen new managed cases cover complete literal streams, actual miss/critical/
-  push/KO, fallback/refunds, exact budgets, authority and whole-command rollback.
-  Explicit branch APIs and prior post-prefix behavior remain; no host activation.
+- Latest implementation: ZOD-166, [pure command dispatch](behavior/sword-ai-command-dispatch.md).
+  Separate entry/fresh-selected stages preserve no-progress precedence and retained
+  ACT/END after Move. Fifteen managed cases cover source vectors, actual path-move
+  reuse, payload/context rejection, MAX counters and both-identity/order replay.
+  No live continuation or command execution was added; prepared executors are unchanged.
 - Latest source/design: ZOD-165, [command-reuse contract](architecture/zod-165-ai-command-continuation.md).
-  Clean pinned audit checks nine files/25 continuation functions and ten source
-  branch vectors, plus inherited receipts (`scratch/ai-command-continuation-165/source.json`).
-  Three new offline checks pass; managed ZOD-166 cases remain unexecuted.
-- Last .NET validation (ZOD-164): locked restore, zero-warning/error Release build,
-  **3,891 .NET cases**, including the owner's content drafts; not rerun for this
-  source-only ticket. Latest full Python run: **510 tests**
-  (`scratch/ai-command-continuation-165/python.txt`).
+  Clean audit rechecks nine files/25 functions and ten source vectors plus inherited
+  receipts (`scratch/ai-command-dispatch-166/source.json`). Managed checks now execute
+  all vectors, rejecting the documented noncanonical marker outside this domain.
+- Validation: locked restore, zero-warning/error Release build,
+  **3,906 .NET cases / 510 Python tests**, including the owner's content drafts.
   These bounded checks do not establish full original decision equivalence.
-  Results/logs: ignored `scratch/ai-prepared-out-of-reach-164/` (seven full TRX files).
+  Results/logs: ignored `scratch/ai-command-dispatch-166/` (seven full TRX files).
   Owner refactor/drafts are excluded from AI commits. Nine historical checkpoint
   audits last passed at ZOD-158; unchanged historical snapshots were not rerun.
   No original/C execution or UI review.

@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-166 (implementation).** Command-continuation source trace ZOD-165 is complete.
-There are 33 open tickets below. The 133 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-167 (design).** Pure ordinary command dispatch ZOD-166 is complete.
+There are 33 open tickets below. The 134 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,19 +29,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-166 — Implement a pure ordinary command-dispatch query
+### ZOD-167 — Design Framework-owned Move-first execution and continuation
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-165
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-166, ZOD-158
 
-Implement the [command-reuse contract](architecture/zod-165-ai-command-continuation.md):
-separate pre-selection entry inspection from dispatch after fresh selection,
-classify SelectionRequired/Move/Attack/EndTurn and preserve no-progress precedence
-and normal command-recording semantics. Use explicit same-actor/compact/context
-facts and semantic selected data; no scoring, RNG/tick work or live command authority.
-Reject inconsistent/stale actor or selected payload data atomically; preserve input
-state and test reuse after Move, ACT reselection, fresh-stage ordering and source
-byte limits. Actual Move/opaque continuation authority and unmoved preparation
-remain subsequent work; do not accept these public query outputs as authorization.
+Specify one bounded real Move-first handoff using the [dispatch query](behavior/sword-ai-command-dispatch.md),
+existing fresh selection and confirmed-path movement. Framework must own fresh
+planning/RNG adoption and issue an opaque continuation only after successful Move,
+bound to exact returned snapshot/actor/revision/lineage. Define reuse without new
+selection, stale/replayed/cross-session rejection, later-command failure preserving
+published Move, and cancellation/Wait-facing rules. Select one implementation child
+and clear remaining source-entry certificates before adding API or authority.
+Keep fresh unmoved preparation, post-ACT reselection, saveable tokens, general
+replacement interfaces and host activation separate.
 
 ## Existing validation gates
 

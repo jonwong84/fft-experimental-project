@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-28",
   "edition": "SCUS-94221",
-  "managedCommit": "3c008f84d5fedacd6e40f3fe8ebffbd7e1412372",
+  "managedCommit": "c882977018ee685c3303a6f6ced4073b788a026a",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 3891,
-    "source": "docs/behavior/sword-ai-prepared-out-of-reach.md",
+    "passed": 3906,
+    "source": "docs/behavior/sword-ai-command-dispatch.md",
     "runForThisInventory": false
   },
   "statusDefinitions": {
@@ -453,7 +453,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "A separate AI assembly owns ordinary two-opponent pure selection and already-moved execution. Fresh NonBlue prepared entries own refresh, restored-state policy preparation and explicit in/out-of-reach selection inside the Framework callback. Actual Attack/Wait uses verified RNG adoption and existing revision/receipt authority; AI cannot construct trusted sessions. The out-of-reach path retains the post-score reach draw and eight-roll fallback. Move-first/post-ACT lifecycle, broader policies/search and playable-host activation remain open.",
+      "currentScope": "A separate AI assembly owns ordinary two-opponent pure selection and already-moved execution. Fresh NonBlue prepared entries own refresh, restored-state policy preparation and explicit in/out-of-reach selection inside the Framework callback. Actual Attack/Wait uses verified RNG adoption and existing revision/receipt authority; AI cannot construct trusted sessions. The out-of-reach path retains the post-score reach draw and eight-roll fallback. A separate pure command-dispatch query now models retained selected data, fresh-stage ordering and no-progress/reselection rules without live authority. Framework-owned Move-first continuation, post-ACT lifecycle, broader policies/search and playable-host activation remain open.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -489,6 +489,7 @@
         "docs/behavior/sword-ai-prepared-execution.md",
         "docs/behavior/sword-ai-prepared-out-of-reach.md",
         "docs/architecture/zod-165-ai-command-continuation.md",
+        "docs/behavior/sword-ai-command-dispatch.md",
         "docs/behavior/sword-ai-out-of-reach-scenario.md",
         "docs/behavior/sword-ai-out-of-reach-selection.md"
       ],
@@ -501,6 +502,7 @@
         "src/Zodiac.Framework.Ai/SwordAiRefresh.cs",
         "src/Zodiac.Framework.Ai/SwordAiPreparation.cs",
         "src/Zodiac.Framework.Ai/SwordAiPreparedSelection.cs",
+        "src/Zodiac.Framework.Ai/SwordAiCommandDispatch.cs",
         "src/Zodiac.Framework/FacingDecision.cs"
       ],
       "automatedChecks": [
@@ -569,6 +571,10 @@
           "scope": "Fresh out-of-reach pure composition and actual Wait, retained reach draw, empty scan/eight rolls, exact budgets and replay."
         },
         {
+          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiCommandDispatchTests.cs",
+          "scope": "Actual pure dispatch/entry ordering, retained ACT after real path movement, structural rejection and counter/input isolation; no live continuation authority."
+        },
+        {
           "path": "tools/verification/test_ai_command_continuation_contract.py",
           "scope": "Offline command-builder branch scalars, fresh-stage/no-progress ordering and exact decided-byte quirk; no managed continuation execution."
         },
@@ -585,8 +591,8 @@
         "Full target/ability/roster search, broader special policies, Defend, replacement interface, Move-first continuation and post-ACT reselection remain open.",
         "Caller certificates still describe unrepresented original context. The fresh prepared selector covers only the certified NonBlue ordinary subset; Blue/special policies and source frame RNG remain outside it, and bounded vectors do not establish full original decision equivalence."
       ],
-      "nextAction": "Implement a pure descriptive command-dispatch query with separate entry/fresh-selected stages, retained-choice reuse, no-progress precedence and explicit source context; no live continuation authority.",
-      "followUpTickets": ["ZOD-166"]
+      "nextAction": "Design one Framework-owned fresh Move-first transaction and exact-session opaque continuation, with retained-command reuse, stale/replay guards and no rollback of an earlier published Move.",
+      "followUpTickets": ["ZOD-167"]
     },
     {
       "id": "COV-SIM-010",

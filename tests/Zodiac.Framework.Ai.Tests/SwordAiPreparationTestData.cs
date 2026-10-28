@@ -21,13 +21,13 @@ internal static class SwordAiPreparationTestData
     }
     internal static AttackBattleSnapshot State(int ct = 15, int targetCt = 95, int speed = 5, int targetSpeed = 5,
         ulong ticks = 20, int hp = 50, int evade = 0, int move = 3, bool second = false, bool reverse = false,
-        bool moved = true, int distance = 1)
+        bool moved = true, int distance = 1, bool acted = false)
     {
         var actor = second ? B : A; var target = second ? A : B;
         var movement = new UnitMovementProfile(move, 0, 6, UnitMovementMode.Normal, UnitMovementTraits.None,
             [KeyValuePair.Create(Ground, new TerrainMovementCost(1))]);
         var bodies = new BattleUnitState[] { new(actor, new(1, 1, 0), movement, moved), new(target, new(1 + distance, 1, 0), movement, true) };
-        var turns = new TurnUnitState[] { new(actor, speed, ct, 2, true, moved, false), new(target, targetSpeed, targetCt, 17, false, true, true) };
+        var turns = new TurnUnitState[] { new(actor, speed, ct, 2, true, moved, acted), new(target, targetSpeed, targetCt, 17, false, true, true) };
         AttackUnitState Combat(BattleUnitId id, int current, int classEvade, BattleFacing facing) =>
             new(id, current, 50, 0, 0, 5, classEvade, 0, 0, 0, 70, 0, facing,
                 current <= 10 ? AttackUnitStatus.Critical : AttackUnitStatus.None, 0, Weapon);
