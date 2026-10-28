@@ -1,16 +1,17 @@
 # Tessera / Zodiac / FFT handoff
 
-Updated 2026-10-27. Read [AGENTS.md](../AGENTS.md), the [active backlog](BACKLOG.md)
+Updated 2026-10-28. Read [AGENTS.md](../AGENTS.md), the [active backlog](BACKLOG.md)
 and the selected task's design before editing. This file describes current state;
 [planning history](history/README.md) holds completed tickets and old checkpoints.
 
 ## Next work
 
-**ZOD-141: source/design original movement-scenario derivation.**
-The [completed selector](behavior/sword-ai-selection.md) returns a hypothetical
-Attack or MoveOnly plan. Next trace a bounded general-search branch to derive
-S/D0/D1 from original state/known target facts, preserving scoring/RNG order and
-fresh-cell provenance. Those inputs are still supplied and certified today.
+**ZOD-143: implement fresh in-reach ordinary-sword movement-scenario derivation.**
+The [ZOD-141 source contract](architecture/zod-141-ai-movement-scenario.md) selects
+focused-opponent, ordinary-sword-reach/policy facts, raw Move<=124 and d<=Move+1.
+S=R in this branch; derive D1 priority-first, D0 within d-1 with distance fallback,
+using actual private movement scores, signed packing and last-tile ties. No stale
+score cells or reach-halving roll are admitted. Selection integration follows separately.
 
 ZOD-140 privately owns one ZOD-138 composition and the source lottery. An admitted
 Attack is selected after one/eight draws; empty ranking takes eight then MoveOnly
@@ -26,6 +27,9 @@ managed roster size. The contract records the erratum without rewriting old evid
 
 ## Current implementation and validation
 
+- Latest source checkpoint: ZOD-141, clean reference below; inherited selection audit
+  plus 11 inspected scenario functions passed (`scratch/ai-scenario-141/source.json`).
+  No production change, original execution or .NET suite rerun for this checkpoint.
 - Latest implementation: ZOD-140, [selector API and evidence](behavior/sword-ai-selection.md).
   SLC-001..007 have current C# coverage through 27 focused cases. No runtime activation.
 - Complete validation: locked restore, zero-warning/error Release build,

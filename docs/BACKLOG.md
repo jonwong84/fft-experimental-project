@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-141 (source/design).** The hypothetical selector ZOD-140 is complete.
-There are 33 open tickets below. The 109 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-143 (implementation).** Movement-scenario source/design ZOD-141 is complete.
+There are 33 open tickets below. The 110 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -27,25 +27,18 @@ provide detail. This file supersedes archived priorities and next-task advice.
   or old test counts here. Keep the handoff current rather than chronological.
 
 
-## Next bounded source/design milestone
+## Next bounded milestone
 
-### ZOD-141 — Specify original movement-scenario derivation for one sword opponent
+### ZOD-143 — Derive a fresh in-reach ordinary-sword movement scenario
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-140
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-141
 
-Trace a bounded original general-search movement branch for the existing flat
-two-opponent ordinary-sword slice. Derive scoring mask S and destinations D0/D1
-from original state/known target facts instead of requiring supplied cells. Pin
-target-distance/reach inputs, filtering/fallback, actor insertion timing, priority/
-proximity/distance/last-tie ordering, widths and any random reach roll. Resolve
-fresh versus unvisited score-grid provenance; choose the smallest supported branch.
-
-Use the [completed selector](behavior/sword-ai-selection.md) and existing flat
-movement distance queries. Define fresh composition/selection ownership without
-duplicate movement scoring or skipped RNG, with concise acceptance cases and
-explicit remaining source certificates. Full target/ability/roster search,
-Defend, decision interface, command/facing execution and native/editor activation
-remain separate. Recheck the read-only reference HEAD; no production API required.
+Implement the [ZOD-141 contract](architecture/zod-141-ai-movement-scenario.md): derive S,
+D0/D1 from state and certified focused-target/reach/policy facts, score S once in source
+order, preserve signed packed comparison and last-tile ties, adjacency fallback, original
+ticks and private RNG. Require Move<=124 and in-reach; reject unsupported/stale branches
+atomically. Publish immutable source diagnostics without Attack/lottery/command execution.
+Keep public supplied-scenario APIs unchanged; later integration must reuse private scores.
 
 ## Existing validation gates
 
@@ -149,7 +142,7 @@ combinations and initialize custom Gravity/Poison to false for original inputs. 
 reference mapping, version/migrate the existing numeric element schema, and verify neutral,
 individual bits, combinations and JSON round trips. Preserve raw import provenance and
 explicit unsupported-runtime diagnostics; richer content must not silently activate
-unimplemented combat behavior. This does not reorder ZOD-141 or activate broad catalog import.
+unimplemented combat behavior. This does not reorder the AI milestones or activate broad catalog import.
 
 [Detailed scope](history/2026-10-27/BACKLOG.md#zod-039--expand-typed-definitions-and-import-to-the-baseline-catalog).
 

@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 109 entries index completed bounded work; they do not mean the full game is complete.
+These 110 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -132,3 +132,4 @@ These 109 entries index completed bounded work; they do not mean the full game i
 - [ZOD-138 — Compose certified movement scoring, Attack scan and ranked admission](../behavior/sword-ai-composition.md)
 - [ZOD-139 — Specify ranked lottery and movement fallback for the composed sword slice](../architecture/zod-139-ai-selection-contract.md)
 - [ZOD-140 — Select a hypothetical Attack or movement-only plan after fresh composition](../behavior/sword-ai-selection.md)
+- [ZOD-141 — Specify original movement-scenario derivation for one sword opponent](../architecture/zod-141-ai-movement-scenario.md)

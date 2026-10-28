@@ -1,0 +1,96 @@
+{
+  "format": "fft.ai-movement-scenario-source-evidence",
+  "schemaVersion": 1,
+  "ticket": "ZOD-141",
+  "date": "2026-10-28",
+  "managedBaseRevision": "095dba5fd9236260b2e319ac013983226da19f84",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "productionImplemented": false,
+  "runtimeActivated": false,
+  "originalExecuted": false,
+  "cReferenceExecuted": false,
+  "contract": "docs/architecture/zod-141-ai-movement-scenario.md",
+  "sourceReceipt": "docs/evidence/ai/selection-contract-v1.json",
+  "sourceFunctions": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "acting_unit_init",
+      "startLine": 231,
+      "endLine": 257,
+      "normalizedLfSha256": "a37e5edabf630b38b02bb72acb35f5a27c0ab64a0a4e821b660418b321ab2987"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ability_considerations_set",
+      "startLine": 607,
+      "endLine": 904,
+      "normalizedLfSha256": "6ee3cb512ac66ef6799dce7b4f78c549cc10d1eaa0a4fa7701e0fbf6bed4d21d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "target_reach_get",
+      "startLine": 1364,
+      "endLine": 1374,
+      "normalizedLfSha256": "33acf41d58bc2546f41f4afbb64ee638d12c4d570a76131c5dba31aaa946c685"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "scenarios_build",
+      "startLine": 1428,
+      "endLine": 1527,
+      "normalizedLfSha256": "c88507ca82b368c137075684feae35f9a9b3b44354955c9f111e5704b3fa4205"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "target_distance_grid_fill",
+      "startLine": 3181,
+      "endLine": 3231,
+      "normalizedLfSha256": "38bf70f5a7b043dec4319bab6b6e952acd137405baae62e251b9b3a4209bc8db"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "target_distance_tiles_filter",
+      "startLine": 1639,
+      "endLine": 1668,
+      "normalizedLfSha256": "095b677a92525af97a136423175e36020d53e6df0bf5a5fa7440078caaca16b7"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "destination_select",
+      "startLine": 1563,
+      "endLine": 1629,
+      "normalizedLfSha256": "ce1fca91677de2c3e4de8d7d295bc1b506a60989c80ea6d36e80dffdb2401f20"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "destination_with_nearest_fallback_select",
+      "startLine": 1548,
+      "endLine": 1552,
+      "normalizedLfSha256": "a872da14b2445b500548812ff6825495ae1979ce0c798081249c597e255b4bd3"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "destination_with_range_floor_select",
+      "startLine": 1535,
+      "endLine": 1542,
+      "normalizedLfSha256": "69a4560199e4b55ae29d10c1c993a3dd5b22698bd61d51e9e092f423eb39e5bc"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "foe_proximity_grid_fill",
+      "startLine": 3240,
+      "endLine": 3292,
+      "normalizedLfSha256": "4452983c86938f116afa90a47edea3a7a32d7b7c79578309104f046a0167c01d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "target_is_excluded_from_imminent_enemies",
+      "startLine": 3298,
+      "endLine": 3314,
+      "normalizedLfSha256": "06411bcace6b17d5c12aa65cf7a59e2a97b5ac0b67e5f2711954bff54020a0c3"
+    }
+  ],
+  "scope": "Focused in-reach ordinary sword; raw Move 0..124; fresh movement scoring and derived D0/D1",
+  "acceptanceStatus": "Unexecuted managed proposals in contract; follow-up ZOD-143"
+}
