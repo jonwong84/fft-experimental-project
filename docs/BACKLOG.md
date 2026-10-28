@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-149 (implementation).** Out-of-reach selection contract ZOD-148 is complete.
-There are 33 open tickets below. The 116 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-150 (source/design).** Out-of-reach selector ZOD-149 is complete.
+There are 33 open tickets below. The 117 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,16 +29,16 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-149 — Select a hypothetical plan from an out-of-reach sword scenario
+### ZOD-150 — Specify deferred wait-facing resolution for two ordinary opponents
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-148
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-149
 
-Implement the [ZOD-148 contract](architecture/zod-148-ai-out-of-reach-selection.md):
-privately own one out-of-reach scenario, reuse S scores with post-adjustment RNG through
-scan/lottery, and preserve S/A distinction plus adjustment diagnostics. Add false-default
-FirstAttackEntry admission to both derived APIs, correcting the missing prefix fact;
-retain legacy supplied APIs and all original result vectors for certified inputs.
-Verify actual draw budgets and whole-query failures. No live commands/host activation.
+Trace the original Wait caller, ChooseAtWait hint, directional math/ordinals,
+adjacent-tile viability and nearest-enemy admission on settled positions. Bound a
+pure query to two living ordinary flat opponents; record overlap/no-enemy stack-read
+quirks and unreachable fallback branches instead of fixing them. Separate control flag
+from team, source caches from current state, and diagnosis from authoritative facing
+application. Specify focused acceptance cases before coding; no host/command activation.
 
 ## Existing validation gates
 

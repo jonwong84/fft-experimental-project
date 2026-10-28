@@ -67,10 +67,12 @@ justifies it. Current assemblies are not yet interchangeable.
 - **Offline asset preparation:** verified ordinary-file extraction, bounded sprite/map conversion, hash-verified prepared loading and narrow typed content-package validation. [Map preparation](docs/development/prepared-map-slice.md), [sprite-pose preparation](docs/development/prepared-sprite-pose.md), [content packages](docs/architecture/zod-016-content-packages.md).
 
 - **Bounded original AI query:** an opt-in pure query derives movement cells and
-  destinations for one focused, in-reach ordinary-sword opponent, then scans a
-  terminal Attack and runs the original lottery/MoveOnly fallback. It keeps live
+  destinations for one focused ordinary-sword opponent through explicit in-reach
+  or out-of-reach branches, then scans a first/terminal Attack and runs the
+  original lottery/MoveOnly fallback. It keeps live
   state/RNG unchanged and remains separate from the playable host; full AI
-  search and command execution are open. [Behavior and limits](docs/behavior/sword-ai-derived-selection.md).
+  search and command execution are open. [In-reach limits](docs/behavior/sword-ai-derived-selection.md),
+  [out-of-reach behavior](docs/behavior/sword-ai-out-of-reach-selection.md).
 
 The playable battle uses invented units, art and a small height-10 map. MAP003 remains a separate static inspection scene with its native terrain intact. Rendering that map does not expand the supported combat domain.
 

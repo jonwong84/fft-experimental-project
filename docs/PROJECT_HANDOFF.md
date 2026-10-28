@@ -6,18 +6,17 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-149: implement out-of-reach selection and corrected ability-prefix admission.**
-The [ZOD-148 contract](architecture/zod-148-ai-out-of-reach-selection.md) specifies
-one private scenario/prefix and zero-candidate Attack/eight-roll D0 fallback.
-Require FirstAttackEntry (default false) on both derived entries: terminal Attack
-and an empty ranked list cannot prove earlier ability work consumed no RNG.
-Preserve certified original vectors and legacy supplied APIs; no host activation.
+**ZOD-150: source/design deferred wait-facing for two ordinary opponents.**
+Trace the original caller, hint, cardinal/diagonal math and tile/enemy viability
+on settled positions. Bound a pure query before implementing; keep overlap and
+no-enemy quirks visible, control separate from team, and facing application separate.
 
-The current pure query derives S/D0/D1 for focused-opponent, ordinary-sword
-reach/policy facts, raw Move<=124 and d<=Move+1. It evaluates movement once, reuses
-its private scores through one Attack scan/ranked admission, then runs the source
-lottery. Empty ranking takes eight draws then MoveOnly at D0. Source-context and
-terminal-entry/no-Defend/fresh-default facts remain explicit; plans retain deferred
+The current pure queries derive S/D0/D1 for focused-opponent, ordinary-sword
+reach/policy facts and raw Move<=124 through explicit in/out-of-reach entries.
+Movement is evaluated once; out-of-reach Blue/NonBlue adjustment runs afterward.
+Private scores/RNG feed one Attack scan/ranked admission then the source lottery.
+Empty ranking takes eight draws then MoveOnly at D0. FirstAttackEntry, terminal
+entry, no-Defend and other source-context facts remain explicit; plans retain deferred
 ChooseAtWait. Failures restore whole-query RNG without partial output. Original
 supplied-scenario APIs stay unchanged; no command authority or live RNG commit.
 
@@ -28,19 +27,17 @@ managed roster size. The contract records the erratum without rewriting old evid
 
 ## Current implementation and validation
 
-- Latest source checkpoint: ZOD-148; original ability-list/random-use ordering
-  rechecked, prefix admission erratum recorded. Audit: `scratch/ai-out-of-reach-148/source.json`.
-  No C# change or .NET rerun for this checkpoint.
-- Latest implementation: ZOD-147, [out-of-reach scenario and evidence](behavior/sword-ai-out-of-reach-scenario.md).
-  16 new cases execute OOR-001..006 and boundaries. Shared core preserves in-reach behavior.
+- Latest implementation: ZOD-149, [out-of-reach selector and evidence](behavior/sword-ai-out-of-reach-selection.md).
+  20 new cases; both derived entry points now require false-default FirstAttackEntry.
+  Certified in-reach vectors and legacy supplied APIs stay unchanged.
   No native/editor activation or original decision-equivalence claim.
 - Complete validation: locked restore, zero-warning/error Release build,
-  **3,760 .NET cases / 496 Python tests**, including all 3,744 prior .NET cases.
+  **3,780 .NET cases / 496 Python tests**, including all 3,744 prior .NET cases.
   Clean source audit: inherited selection/scenario receipts plus out-of-reach
-  extension (`scratch/ai-out-of-reach-147/source.json`).
+  extension (`scratch/ai-out-of-reach-149/source.json`).
   These bounded checks do not establish complete FFT equivalence.
-  Current .NET results: ignored `scratch/ai-out-of-reach-147-full-trx/`;
-  Latest Python log: `scratch/ai-out-of-reach-147/python.txt`. The current owner refactor/drafts
+  Current .NET results: ignored `scratch/ai-out-of-reach-149-full-trx/`;
+  Latest Python log: `scratch/ai-out-of-reach-149/python.txt`. The current owner refactor/drafts
   were included in the build and tests, excluded from the implementation commit.
   No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/

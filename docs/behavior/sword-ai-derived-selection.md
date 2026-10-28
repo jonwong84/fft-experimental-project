@@ -15,7 +15,10 @@ scores, intermediate RNG checkpoints or cached outcomes.
 NormalScoring, CanonicalCoordinates, OrdinaryAttackTilePolicy,
 TargetSelectionMatchesBaseline, FreshAbilityBestReset and FreshEmptyRankedList.
 Candidate/score context, fresh comparison, scenario's focused/reach/policy facts,
-and terminal Attack/no-Defend/fresh-selected defaults remain explicit. Mask and
+and terminal Attack/no-Defend/fresh-selected defaults remain explicit. Since ZOD-149,
+FirstAttackEntry (default false) is also required before movement: see the
+[ability-prefix correction](../architecture/zod-148-ai-out-of-reach-selection.md).
+The validation counts below describe the original ZOD-145 milestone. Mask and
 fresh-cell provenance and the lack of intervening random scenario work are now
 derived rather than asserted by the caller. These facts are still certificates,
 not a general decision system sourced automatically from imported content.

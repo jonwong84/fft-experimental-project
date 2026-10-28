@@ -12,7 +12,7 @@ public sealed class SwordAiDerivedSelectionTests
     private static readonly FftRandomState Decision = new(1, 7), Live = new(57, 100);
     private static readonly SwordAiCandidateProfile Candidate = new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 19)]);
     private static readonly SwordAiScoreProfile Score = new([new(A, SwordAiScoreFacts.ClosedProfile), new(B, SwordAiScoreFacts.ClosedProfile)]);
-    private static readonly SwordAiDerivedSelectionProfile Derived = new(true, true, true, true, true, true, true);
+    private static readonly SwordAiDerivedSelectionProfile Derived = new(true, true, true, true, true, true, true, FirstAttackEntry: true);
     private static readonly SwordAiSelectionProfile Selection = new(true, true, true);
     private static readonly SwordAiMovementScenarioProfile Scenario = new(true, true, true);
 
@@ -84,7 +84,8 @@ public sealed class SwordAiDerivedSelectionTests
         SwordAiDerivedSelectionProfile[] invalid =
         [ f.Derived with { NormalScoring = false }, f.Derived with { CanonicalCoordinates = false },
           f.Derived with { OrdinaryAttackTilePolicy = false }, f.Derived with { TargetSelectionMatchesBaseline = false },
-          f.Derived with { FreshAbilityBestReset = false }, f.Derived with { FreshEmptyRankedList = false } ];
+          f.Derived with { FreshAbilityBestReset = false }, f.Derived with { FreshEmptyRankedList = false },
+          f.Derived with { FirstAttackEntry = false } ];
         foreach (var profile in invalid) Rejected(f with { Derived = profile }, SwordAiDerivedSelectionStage.Admission);
         foreach (var profile in new[] { Selection with { TerminalAttackEntry = false }, Selection with { NoDefendSupport = false },
             Selection with { FreshOrdinarySelectionDefaults = false } })
