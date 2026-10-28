@@ -491,6 +491,7 @@
         "docs/architecture/zod-165-ai-command-continuation.md",
         "docs/behavior/sword-ai-command-dispatch.md",
         "docs/architecture/zod-167-move-continuation-boundary.md",
+        "docs/behavior/planned-move-continuation.md",
         "docs/behavior/sword-ai-out-of-reach-scenario.md",
         "docs/behavior/sword-ai-out-of-reach-selection.md"
       ],
@@ -592,8 +593,8 @@
         "Full target/ability/roster search, broader special policies, Defend, replacement interface, Move-first continuation and post-ACT reselection remain open.",
         "Caller certificates still describe unrepresented original context. The fresh prepared selector covers only the certified NonBlue ordinary subset; Blue/special policies and source frame RNG remain outside it, and bounded vectors do not establish full original decision equivalence."
       ],
-      "nextAction": "Implement the selected Framework-only planned path Move and frozen Attack/Wait continuation protocol with synthetic planners, exact returned-session binding, atomic per-step failure and immutable replay; no AI integration yet.",
-      "followUpTickets": ["ZOD-168"]
+      "nextAction": "Integrate one privately selected post-prefix in-reach AI Move-first decision through the Framework path-Move/frozen-continuation boundary; retain source certificates and actual per-step rollback.",
+      "followUpTickets": ["ZOD-169"]
     },
     {
       "id": "COV-SIM-010",

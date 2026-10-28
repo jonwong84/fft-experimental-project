@@ -6,14 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-168: implement Framework-owned planned Move and retained follow-up.**
-The [two-step design](architecture/zod-167-move-continuation-boundary.md) selects a
-fresh synchronous planner, private RNG adoption and actual confirmed-path Move.
-Only successful Move issues an exact-session opaque continuation. Follow-up uses
-frozen Attack/Wait intent/current RNG without another planner; failure preserves
-the committed Move. Same original state/token replay is allowed; cross-replay and
-newer-state use reject. Start with synthetic Framework planners; AI integration,
-fresh unmoved preparation and host activation stay separate.
+**ZOD-169: integrate one in-reach post-prefix AI Move-first decision.**
+The [Framework boundary](behavior/planned-move-continuation.md) now owns fresh
+planning, actual path Move and exact-session frozen Attack/Wait continuation.
+Connect privately owned selection and fresh dispatch to it, requiring an actual
+Move-first result. Keep explicit general-entry/source certificates; fresh unmoved
+preparation and host activation remain separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and new
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
@@ -44,16 +42,16 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-166, [pure command dispatch](behavior/sword-ai-command-dispatch.md).
-  Separate entry/fresh-selected stages preserve no-progress precedence and retained
-  ACT/END after Move. Fifteen managed cases cover source vectors, actual path-move
-  reuse, payload/context rejection, MAX counters and both-identity/order replay.
-  No live continuation or command execution was added; prepared executors are unchanged.
+- Latest implementation: ZOD-168, [planned Move boundary](behavior/planned-move-continuation.md).
+  Eight new cases plus all 1,437 Framework tests pass; Framework build has no
+  warnings/errors. Covers frozen follow-up, exact-state authority, per-step rollback,
+  deferred Wait, replay/cancellation and counters. Logs: `scratch/move-continuation-168/`.
+  Full solution results below are the prior ZOD-166 run, not rerun at this checkpoint.
 - Latest design: ZOD-167, [Move/continuation boundary](architecture/zod-167-move-continuation-boundary.md).
   Defines fresh proposal binding, real path movement, exact-state frozen follow-up,
   cancellation via explicit Wait, immutable replay and per-step failure/counters.
-  No production changes. Inherited pinned audit passed
-  (`scratch/ai-move-continuation-167/source.json`); new protocol cases await ZOD-168.
+  Boundary implemented by ZOD-168. Inherited pinned audit last passed
+  (`scratch/ai-move-continuation-167/source.json`); protocol cases now execute in Framework tests.
 - Last full validation (ZOD-166; not rerun for this design): locked restore,
   zero-warning/error Release build,
   **3,906 .NET cases / 510 Python tests**, including the owner's content drafts.
