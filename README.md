@@ -72,8 +72,10 @@ justifies it. Current assemblies are not yet interchangeable.
   original lottery/MoveOnly fallback. It keeps live
   state/RNG unchanged. An opt-in [Wait adapter](docs/behavior/sword-ai-wait-settlement.md)
   applies fresh facing through active Wait or automatic-completion receipts.
-  Full AI search, selected-plan execution/live decision RNG and playable-host
-  activation remain open. [In-reach limits](docs/behavior/sword-ai-derived-selection.md),
+  A separate [command boundary](docs/behavior/sword-ai-execution.md) executes one fresh
+  Attack or Wait after Move, retaining decision RNG. Full search, earlier refresh,
+  wider command continuation and playable-host activation remain open.
+  [In-reach limits](docs/behavior/sword-ai-derived-selection.md),
   [out-of-reach behavior](docs/behavior/sword-ai-out-of-reach-selection.md).
 
 The playable battle uses invented units, art and a small height-10 map. MAP003 remains a separate static inspection scene with its native terrain intact. Rendering that map does not expand the supported combat domain.

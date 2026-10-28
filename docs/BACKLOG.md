@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-155 (implementation).** Decision-RNG contract ZOD-154 is complete.
-There are 33 open tickets below. The 122 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-156 (source/design).** Already-moved AI execution ZOD-155 is complete.
+There are 33 open tickets below. The 123 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,16 +29,16 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-155 — Execute one fresh already-moved ordinary AI decision
+### ZOD-156 — Trace the ordinary AI refresh prefix before general selection
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-154
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-155
 
-Implement the [ZOD-154 contract](architecture/zod-154-ai-execution-rng.md) on an active
-real facing session with Move used and ACT unused. Require certified general-selection
-entry; derive once from current RNG, adopt it privately into both snapshots and execute
-one actual Attack or fallback Wait. Publish one command revision and real settled receipt;
-late failure restores the original session without partial diagnostics. Preserve pure APIs.
-No cached-plan execution, refresh-prefix port, general continuation or native activation.
+Trace decision_flags_refresh and its preceding workspace initialization for the ordinary
+two-opponent, already-moved path. Identify saved/restored fields, cached coordinates,
+transient status facts, simulated clock and actual RNG draws before general selection.
+Prove a representable closed context and specify its managed child without assuming this
+prefix is free or deriving missing flags from IDs. Preserve the [post-prefix executor](behavior/sword-ai-execution.md);
+keep wider command continuation, special policies, frame fidelity and native activation separate.
 
 ## Existing validation gates
 

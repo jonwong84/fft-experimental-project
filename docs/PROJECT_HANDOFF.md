@@ -6,14 +6,15 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-155: execute one fresh already-moved ordinary AI decision.**
-The [ZOD-154 contract](architecture/zod-154-ai-execution-rng.md) selects active Move-used/
-ACT-unused sessions: fresh in-reach selection, private RNG adoption and one real Attack
-or fallback Wait. Return the actual command revision/receipt; late failure restores the
-whole input. No cached plans, general continuation, refresh-prefix port or native activation.
+**ZOD-156: trace the ordinary AI refresh prefix before general selection.**
+Study preceding workspace initialization and decision_flags_refresh for the closed
+already-moved path: cached positions, transient flags, restored state, clock and draws.
+Select a representable managed child before extending the executor's entry point.
+Keep wider continuation, special policies, frame fidelity and native activation separate.
 
-The contract traces retained candidate/lottery draws and post-ACT reselection. Existing
-selection starts at certified general-selection entry; earlier refresh work is not included.
+The [current executor](behavior/sword-ai-execution.md) privately derives one in-reach
+decision, adopts its RNG and executes Attack or Wait for a real Move-used/ACT-unused
+session. Selection starts at certified general-selection entry; earlier refresh work is not included.
 The original VSync callback also draws from BIOS RNG. Managed rendering/pauses add no
 gameplay draws; frame-interleaved retail stream equivalence remains explicitly unresolved.
 
@@ -27,27 +28,24 @@ ChooseAtWait. Failures restore whole-query RNG without partial output. Original
 supplied-scenario APIs stay unchanged; no command authority or live RNG commit.
 
 Full AI search, general multi-entry ranking/lottery, replaceable decision interface,
-selected-plan command execution/live decision RNG and presentation activation remain
+wider command lifecycle/refresh-prefix integration and presentation activation remain
 future work. Original UNIT_SLOT_COUNT
 is **21**; the old 26-foe wrap example is inadmissible. This does not select a fixed
 managed roster size. The contract records the erratum without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-153, [ordinary AI Wait settlement and evidence](behavior/sword-ai-wait-settlement.md).
-  Thirteen new cases apply fresh facing through existing active Wait or pending
-  completion receipts, with no double refund, RNG/ticks or damage replay.
-  ZOD-151's public raw-snapshot query stays active-only; shared guards retain old APIs.
+- Latest implementation: ZOD-155, [already-moved AI execution and evidence](behavior/sword-ai-execution.md).
+  Fifteen new cases connect fresh selection/RNG to actual miss/damage/critical/KO or
+  fallback Wait. One command revision and fully settled Attack receipt; late failure
+  restores the whole session with reason-only diagnostics. Pure APIs remain unchanged.
   No native/editor activation or original decision-equivalence claim.
-- Latest source/design: ZOD-154, [execution-RNG contract](architecture/zod-154-ai-execution-rng.md).
-  Source audit extends prior receipts with six files/16 functions and three supplied-prefix
-  RNG tapes (`scratch/ai-execution-rng-154/source.json`). Four new offline Python checks
-  cover RNG retention, actual miss, command guards and a VSync draw; no C# execution added.
-- Last .NET validation (ZOD-153): locked restore, zero-warning/error Release build,
-  **3,821 cases**; not rerun for this source/design-only ticket. Latest Python: **500 tests**.
+- Complete validation: locked restore, zero-warning/error Release build,
+  **3,836 .NET cases / 500 Python tests**. Pinned source audit rechecks inherited receipts,
+  six execution files/16 functions and three supplied tapes (`scratch/ai-execution-155/source.json`).
   These bounded checks do not establish complete FFT equivalence.
-  Current .NET results: ignored `scratch/ai-wait-settlement-153-full-trx/`;
-  Latest Python log: `scratch/ai-execution-rng-154/python.txt`. The current owner refactor/drafts
+  Current .NET results: ignored `scratch/ai-execution-155-full-trx/`;
+  Latest Python log: `scratch/ai-execution-155/python.txt`. The current owner refactor/drafts
   were included in the build and tests, excluded from the implementation commit.
   No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/

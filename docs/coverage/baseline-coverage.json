@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-28",
   "edition": "SCUS-94221",
-  "managedCommit": "b3894f0e5cfe150a1bf0d4bab6118074f7b8e3b5",
+  "managedCommit": "1838f2e3f4874a6dd3039cf64f0575d73e61838a",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 3821,
-    "source": "docs/behavior/sword-ai-wait-settlement.md",
+    "passed": 3836,
+    "source": "docs/behavior/sword-ai-execution.md",
     "runForThisInventory": false
   },
   "statusDefinitions": {
@@ -453,7 +453,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
-      "currentScope": "Pure opt-in two-opponent ordinary-sword queries derive movement cells/D0/D1, score one first/terminal Attack and run the original lottery/MoveOnly fallback through explicit in/out-of-reach branches. A separate fresh Wait-facing adapter uses existing active Wait or automatic-completion receipts without repeated refund/damage or RNG/ticks. Full search, selected-plan execution/live decision RNG and playable-host activation remain open.",
+      "currentScope": "Pure two-opponent ordinary-sword queries derive movement and one first/terminal Attack lottery through explicit in/out-of-reach branches. An opt-in already-moved command boundary derives one fresh in-reach decision, privately adopts current RNG progress and executes real Attack or fallback Wait through existing facing-session authority. Earlier refresh, full search/continuation and playable-host activation remain open.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -479,6 +479,7 @@
         "docs/architecture/zod-154-ai-execution-rng.md",
         "docs/behavior/sword-ai-wait-facing.md",
         "docs/behavior/sword-ai-wait-settlement.md",
+        "docs/behavior/sword-ai-execution.md",
         "docs/behavior/sword-ai-out-of-reach-scenario.md",
         "docs/behavior/sword-ai-out-of-reach-selection.md"
       ],
@@ -486,7 +487,8 @@
         "src/Zodiac.Framework/SwordAiMovementScenario.cs",
         "src/Zodiac.Framework/SwordAiDerivedSelection.cs",
         "src/Zodiac.Framework/SwordAiWaitFacing.cs",
-        "src/Zodiac.Framework/SwordAiWaitSettlement.cs"
+        "src/Zodiac.Framework/SwordAiWaitSettlement.cs",
+        "src/Zodiac.Framework/SwordAiExecution.cs"
       ],
       "automatedChecks": [
         {
@@ -516,6 +518,10 @@
         {
           "path": "tools/verification/test_ai_execution_contract.py",
           "scope": "Offline supplied-prefix RNG tapes and source command guards only; no fresh selection, managed command transaction or original execution."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/SwordAiExecutionTests.cs",
+          "scope": "Fresh selection and actual command rolls, one revision/settled receipt, fallback refund, critical push/KO, exact draw limits, atomic reason-only failures and replay."
         }
       ],
       "manualCheckpoint": {
@@ -523,11 +529,11 @@
         "procedure": "Observe selected mandatory AI turns and distinguish legal choices from exact policy matching."
       },
       "openQuestions": [
-        "Full target/ability/roster search, out-of-reach execution and special policies, Defend, replacement interface, selected-plan command execution and live decision RNG remain open.",
+        "Full target/ability/roster search, out-of-reach execution and special policies, Defend, replacement interface, earlier refresh, Move-first continuation and post-ACT reselection remain open.",
         "Caller certificates still describe unrepresented original context. Earlier refresh/policy draws and source frame RNG are outside the derived selector; bounded vectors do not establish full original decision equivalence."
       ],
-      "nextAction": "Implement one fresh already-moved in-reach decision plus actual Attack or fallback Wait, with private current-RNG adoption, one command revision and whole-input rollback. Keep refresh-prefix porting, general continuation and native activation separate.",
-      "followUpTickets": ["ZOD-155"]
+      "nextAction": "Trace preceding workspace initialization and ordinary refresh-prefix simulation, including coordinates/status facts, restoration and actual draws; prove a representable context before extending the post-prefix execution boundary.",
+      "followUpTickets": ["ZOD-156"]
     },
     {
       "id": "COV-SIM-010",
