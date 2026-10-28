@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-28",
   "edition": "SCUS-94221",
-  "managedCommit": "dec35babc20bf0cf4ac7aa9b6c4948ea8739c9f7",
+  "managedCommit": "ba25bdad815f77a2437776dfb78010b4ed57266a",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -481,6 +481,7 @@
         "docs/behavior/sword-ai-wait-settlement.md",
         "docs/behavior/sword-ai-execution.md",
         "docs/architecture/ai-command-boundary.md",
+        "docs/architecture/zod-156-ai-refresh-prefix.md",
         "docs/behavior/sword-ai-out-of-reach-scenario.md",
         "docs/behavior/sword-ai-out-of-reach-selection.md"
       ],
@@ -532,6 +533,10 @@
         {
           "path": "tests/Zodiac.Framework.Ai.Tests/DependencyBoundaryTests.cs",
           "scope": "AI references rules without host/content or reverse Framework-to-AI dependency."
+        },
+        {
+          "path": "tools/verification/test_ai_refresh_contract.py",
+          "scope": "Offline closed refresh clock/flags, odd-HP boundaries, counter proposals and supplied downstream lottery illustration; no managed refresh execution."
         }
       ],
       "manualCheckpoint": {
@@ -542,8 +547,8 @@
         "Full target/ability/roster search, out-of-reach execution and special policies, Defend, replacement interface, earlier refresh, Move-first continuation and post-ACT reselection remain open.",
         "Caller certificates still describe unrepresented original context. Earlier refresh/policy draws and source frame RNG are outside the derived selector; bounded vectors do not establish full original decision equivalence."
       ],
-      "nextAction": "Trace preceding workspace initialization and ordinary refresh-prefix simulation, including coordinates/status facts, restoration and actual draws; prove a representable context before extending the post-prefix execution boundary.",
-      "followUpTickets": ["ZOD-156"]
+      "nextAction": "Implement one pure already-moved ordinary refresh query with explicit source/cache facts, retained policy booleans, derived flags, one private clock pass and atomic RNG failure; preserve current command/general-entry boundaries.",
+      "followUpTickets": ["ZOD-159"]
     },
     {
       "id": "COV-SIM-010",

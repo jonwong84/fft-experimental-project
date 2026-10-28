@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-156 (source/design).** AI boundary/extraction ZOD-157/158 is complete.
-There are 33 open tickets below. The 125 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-159 (implementation).** Refresh-prefix contract ZOD-156 is complete.
+There are 33 open tickets below. The 126 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,16 +29,16 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-156 — Trace the ordinary AI refresh prefix before general selection
+### ZOD-159 — Implement a pure ordinary AI refresh query
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-155
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-156, ZOD-158
 
-Trace decision_flags_refresh and its preceding workspace initialization for the ordinary
-two-opponent, already-moved path. Identify saved/restored fields, cached coordinates,
-transient status facts, simulated clock and actual RNG draws before general selection.
-Prove a representable closed context and specify its managed child without assuming this
-prefix is free or deriving missing flags from IDs. Preserve the [post-prefix executor](behavior/sword-ai-execution.md);
-keep wider command continuation, special policies, frame fidelity and native activation separate.
+Implement the [refresh contract](architecture/zod-156-ai-refresh-prefix.md) in
+Zodiac.Framework.Ai: active already-moved/unused-ACT two-opponent query, one private
+no-action clock pass, retained policy booleans and derived refresh-owned flags/RNG.
+Require fresh-entry, targetability and cached-MP context; preserve live state and
+whole-query rollback. No scoring, command commitment, general-entry certificate removal,
+later ability/policy initialization or native activation.
 
 ## Existing validation gates
 

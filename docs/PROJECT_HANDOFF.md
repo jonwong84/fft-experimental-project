@@ -6,11 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-156: trace the ordinary AI refresh prefix before general selection.**
-Study preceding workspace initialization and decision_flags_refresh for the closed
-already-moved path: cached positions, transient flags, restored state, clock and draws.
-Select a representable managed child before extending the executor's entry point.
-Keep wider continuation, special policies, frame fidelity and native activation separate.
+**ZOD-159: implement a pure ordinary AI refresh query.**
+The [ZOD-156 source contract](architecture/zod-156-ai-refresh-prefix.md) proves that
+fresh act-first/skillset-zero refresh skips movement and consumes one upkeep draw in
+the closed ordinary context. Return derived semantic flags and hypothetical clock/RNG;
+retain two explicit cached policy booleans per unit and require targetability/MP-cache
+facts. No scoring or live commit; preserve current selection/executor entry certificates.
 
 The [current executor](behavior/sword-ai-execution.md), now in `Zodiac.Framework.Ai`,
 derives one in-reach decision for a real Move-used/ACT-unused session. The
@@ -43,14 +44,17 @@ managed roster size. The contract records the erratum without rewriting old evid
   The existing 673 AI cases retain decisions, actual combat and RNG results. Seven
   Framework transaction cases plus one dependency check cover the new boundary.
   No native/editor activation or original decision-equivalence claim.
-- Complete validation: locked restore, zero-warning/error Release build,
-  **3,845 .NET cases / 500 Python tests** (includes the owner's current content-limit
-  refactor). Pinned source audit rechecks inherited receipts, six execution files/16
-  functions and supplied tapes (`scratch/ai-assembly-extraction/source.json`).
+- Latest source/design: ZOD-156, [refresh-prefix contract](architecture/zod-156-ai-refresh-prefix.md).
+  Clean pinned audit checks three refresh files/18 functions and six closed clock
+  vectors, plus inherited receipts (`scratch/ai-refresh-156/source.json`). Four new
+  offline Python checks; proposed managed query cases await ZOD-159.
+- Last .NET validation (ZOD-158): locked restore, zero-warning/error Release build,
+  **3,845 cases** including the owner's current content-limit refactor; not rerun for
+  this source/design-only ticket. Latest Python validation: **504 tests**.
   All nine historical checkpoint audits also passed after the file moves.
   These bounded checks do not establish complete FFT equivalence.
   Current .NET results: ignored `scratch/ai-assembly-extraction/final-full-trx/`;
-  Latest Python log: `scratch/ai-assembly-extraction/python.txt`. The current owner refactor/drafts
+  Latest Python log: `scratch/ai-refresh-156/python.txt`. The current owner refactor/drafts
   were included in the build and tests, excluded from the implementation commit.
   No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
