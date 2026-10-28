@@ -6,13 +6,14 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-167: design Framework-owned Move-first execution and continuation.**
-The [dispatch query](behavior/sword-ai-command-dispatch.md) now describes source
-command reuse without execution or RNG work. Specify a fresh-planner/real-path
-Move handoff with an opaque continuation bound to the exact returned session,
-then retained ACT/END without reselection. Preserve stale/replay guards and a
-committed Move on later failure; select one child before adding authority.
-Fresh unmoved preparation and host activation remain separate.
+**ZOD-168: implement Framework-owned planned Move and retained follow-up.**
+The [two-step design](architecture/zod-167-move-continuation-boundary.md) selects a
+fresh synchronous planner, private RNG adoption and actual confirmed-path Move.
+Only successful Move issues an exact-session opaque continuation. Follow-up uses
+frozen Attack/Wait intent/current RNG without another planner; failure preserves
+the committed Move. Same original state/token replay is allowed; cross-replay and
+newer-state use reject. Start with synthetic Framework planners; AI integration,
+fresh unmoved preparation and host activation stay separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and new
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
@@ -48,11 +49,13 @@ without rewriting old evidence.
   ACT/END after Move. Fifteen managed cases cover source vectors, actual path-move
   reuse, payload/context rejection, MAX counters and both-identity/order replay.
   No live continuation or command execution was added; prepared executors are unchanged.
-- Latest source/design: ZOD-165, [command-reuse contract](architecture/zod-165-ai-command-continuation.md).
-  Clean audit rechecks nine files/25 functions and ten source vectors plus inherited
-  receipts (`scratch/ai-command-dispatch-166/source.json`). Managed checks now execute
-  all vectors, rejecting the documented noncanonical marker outside this domain.
-- Validation: locked restore, zero-warning/error Release build,
+- Latest design: ZOD-167, [Move/continuation boundary](architecture/zod-167-move-continuation-boundary.md).
+  Defines fresh proposal binding, real path movement, exact-state frozen follow-up,
+  cancellation via explicit Wait, immutable replay and per-step failure/counters.
+  No production changes. Inherited pinned audit passed
+  (`scratch/ai-move-continuation-167/source.json`); new protocol cases await ZOD-168.
+- Last full validation (ZOD-166; not rerun for this design): locked restore,
+  zero-warning/error Release build,
   **3,906 .NET cases / 510 Python tests**, including the owner's content drafts.
   These bounded checks do not establish full original decision equivalence.
   Results/logs: ignored `scratch/ai-command-dispatch-166/` (seven full TRX files).

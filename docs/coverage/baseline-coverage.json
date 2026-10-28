@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-28",
   "edition": "SCUS-94221",
-  "managedCommit": "c882977018ee685c3303a6f6ced4073b788a026a",
+  "managedCommit": "0e38a59d5d04c67faa7749c01f2e6ceb12de1ce1",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -490,6 +490,7 @@
         "docs/behavior/sword-ai-prepared-out-of-reach.md",
         "docs/architecture/zod-165-ai-command-continuation.md",
         "docs/behavior/sword-ai-command-dispatch.md",
+        "docs/architecture/zod-167-move-continuation-boundary.md",
         "docs/behavior/sword-ai-out-of-reach-scenario.md",
         "docs/behavior/sword-ai-out-of-reach-selection.md"
       ],
@@ -591,8 +592,8 @@
         "Full target/ability/roster search, broader special policies, Defend, replacement interface, Move-first continuation and post-ACT reselection remain open.",
         "Caller certificates still describe unrepresented original context. The fresh prepared selector covers only the certified NonBlue ordinary subset; Blue/special policies and source frame RNG remain outside it, and bounded vectors do not establish full original decision equivalence."
       ],
-      "nextAction": "Design one Framework-owned fresh Move-first transaction and exact-session opaque continuation, with retained-command reuse, stale/replay guards and no rollback of an earlier published Move.",
-      "followUpTickets": ["ZOD-167"]
+      "nextAction": "Implement the selected Framework-only planned path Move and frozen Attack/Wait continuation protocol with synthetic planners, exact returned-session binding, atomic per-step failure and immutable replay; no AI integration yet.",
+      "followUpTickets": ["ZOD-168"]
     },
     {
       "id": "COV-SIM-010",

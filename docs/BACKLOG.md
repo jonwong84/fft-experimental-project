@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-167 (design).** Pure ordinary command dispatch ZOD-166 is complete.
-There are 33 open tickets below. The 134 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-168 (implementation).** Move/continuation boundary design ZOD-167 is complete.
+There are 33 open tickets below. The 135 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,19 +29,18 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-167 — Design Framework-owned Move-first execution and continuation
+### ZOD-168 — Implement Framework-owned planned Move and retained follow-up
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-166, ZOD-158
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-167
 
-Specify one bounded real Move-first handoff using the [dispatch query](behavior/sword-ai-command-dispatch.md),
-existing fresh selection and confirmed-path movement. Framework must own fresh
-planning/RNG adoption and issue an opaque continuation only after successful Move,
-bound to exact returned snapshot/actor/revision/lineage. Define reuse without new
-selection, stale/replayed/cross-session rejection, later-command failure preserving
-published Move, and cancellation/Wait-facing rules. Select one implementation child
-and clear remaining source-entry certificates before adding API or authority.
-Keep fresh unmoved preparation, post-ACT reselection, saveable tokens, general
-replacement interfaces and host activation separate.
+Implement the [two-step boundary](architecture/zod-167-move-continuation-boundary.md)
+in Framework with synthetic fresh planners: invocation-bound MoveThenAttack/Wait,
+verified private RNG adoption, actual confirmed-path Move, then an opaque exact-
+session continuation using frozen intent/current RNG. Preserve one revision per
+actual command, no token on failed Move, stale/cross-replay rejection and later
+failure retaining the committed Move. Cover deferred facing, explicit Wait
+abandonment, same-input deterministic replay and actual counter limits.
+No AI adapter, fresh unmoved preparation, post-ACT reselection or host activation.
 
 ## Existing validation gates
 
