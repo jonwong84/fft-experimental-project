@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-148 (source/design).** Out-of-reach movement query ZOD-147 is complete.
-There are 33 open tickets below. The 115 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-149 (implementation).** Out-of-reach selection contract ZOD-148 is complete.
+There are 33 open tickets below. The 116 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,16 +29,16 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-148 — Specify out-of-reach derived-selection ownership and ability-prefix facts
+### ZOD-149 — Select a hypothetical plan from an out-of-reach sword scenario
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-147
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-148
 
-Specify a private continuation from the [out-of-reach query](behavior/sword-ai-out-of-reach-scenario.md)
-through existing Attack scan/lottery with original team fact and adjustment RNG carried
-once. Trace why an empty ranked list does not prove no earlier ability work; distinguish
-terminal Attack from a certified skipped prefix. Define remaining admission facts,
-S/A provenance and whole-query failure/selection diagnostics before coding. Keep live
-commands, full ability search and native/editor activation separate.
+Implement the [ZOD-148 contract](architecture/zod-148-ai-out-of-reach-selection.md):
+privately own one out-of-reach scenario, reuse S scores with post-adjustment RNG through
+scan/lottery, and preserve S/A distinction plus adjustment diagnostics. Add false-default
+FirstAttackEntry admission to both derived APIs, correcting the missing prefix fact;
+retain legacy supplied APIs and all original result vectors for certified inputs.
+Verify actual draw budgets and whole-query failures. No live commands/host activation.
 
 ## Existing validation gates
 

@@ -6,11 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-148: specify out-of-reach derived-selection continuation and ability-prefix facts.**
-The [standalone out-of-reach query](behavior/sword-ai-out-of-reach-scenario.md) now
-derives S/D0/D1 and carries Blue/NonBlue post-score adjustment. Specify private
-selection ownership without rescoring; trace missing earlier-ability work versus
-terminal Attack/empty-list certificates. No commands or host activation.
+**ZOD-149: implement out-of-reach selection and corrected ability-prefix admission.**
+The [ZOD-148 contract](architecture/zod-148-ai-out-of-reach-selection.md) specifies
+one private scenario/prefix and zero-candidate Attack/eight-roll D0 fallback.
+Require FirstAttackEntry (default false) on both derived entries: terminal Attack
+and an empty ranked list cannot prove earlier ability work consumed no RNG.
+Preserve certified original vectors and legacy supplied APIs; no host activation.
 
 The current pure query derives S/D0/D1 for focused-opponent, ordinary-sword
 reach/policy facts, raw Move<=124 and d<=Move+1. It evaluates movement once, reuses
@@ -27,6 +28,9 @@ managed roster size. The contract records the erratum without rewriting old evid
 
 ## Current implementation and validation
 
+- Latest source checkpoint: ZOD-148; original ability-list/random-use ordering
+  rechecked, prefix admission erratum recorded. Audit: `scratch/ai-out-of-reach-148/source.json`.
+  No C# change or .NET rerun for this checkpoint.
 - Latest implementation: ZOD-147, [out-of-reach scenario and evidence](behavior/sword-ai-out-of-reach-scenario.md).
   16 new cases execute OOR-001..006 and boundaries. Shared core preserves in-reach behavior.
   No native/editor activation or original decision-equivalence claim.

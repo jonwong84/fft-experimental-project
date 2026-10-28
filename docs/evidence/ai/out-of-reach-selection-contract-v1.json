@@ -1,0 +1,26 @@
+{
+  "format": "fft.ai-out-of-reach-selection-contract-evidence",
+  "schemaVersion": 1,
+  "ticket": "ZOD-148",
+  "date": "2026-10-28",
+  "managedBaseRevision": "6f4e998d474230991c16828c1ce6f0c2944cbc01",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "sourceReceipt": "docs/evidence/ai/out-of-reach-scenario-contract-v1.json",
+  "sourceAudit": "scratch/ai-out-of-reach-148/source.json",
+  "contract": "docs/architecture/zod-148-ai-out-of-reach-selection.md",
+  "productionImplemented": false,
+  "runtimeActivated": false,
+  "originalExecuted": false,
+  "cReferenceExecuted": false,
+  "managedAcceptanceStatus": "Unexecuted proposals for ZOD-149",
+  "admissionErratum": "ZOD-144 did not separately certify that the terminal Attack was first; an empty ranked list does not prove no earlier RNG work. Require FirstAttackEntry on both derived entry points.",
+  "sourceSymbolsRechecked": ["general_select", "ability_list_evaluate", "ai_ability_outcome_evaluate", "scenarios_build", "ranked_select", "fallback_select"],
+  "rngCosts": { "movement": "one actual draw per S tile", "adjustmentBlue": 0, "adjustmentNonBlue": 1, "ordinaryAttackCandidates": 0, "lottery": 8 },
+  "independentRngVectors": [
+    { "seed": 1, "team": "Blue", "draws": 11, "word": 180171308 },
+    { "seed": 1, "team": "NonBlue", "draws": 12, "word": 836760821 },
+    { "seed": 19, "team": "Blue", "draws": 11, "word": 1844253734 },
+    { "seed": 19, "team": "NonBlue", "draws": 12, "word": 1165580391 }
+  ]
+}
