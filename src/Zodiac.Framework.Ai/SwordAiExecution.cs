@@ -28,6 +28,7 @@ public sealed record SwordAiExecutionOutcome(SwordAiDerivedSelectionOutcome Deci
     SwordAiExecutedCommand Command, AttackUnitCommand? Attack, SwordAiWaitFacingOutcome? WaitFacing)
 {
     public SwordAiPreparationOutcome? Preparation { get; init; }
+    public SwordAiOutOfReachSelectionOutcome? OutOfReach { get; init; }
 }
 /// <summary>Rejection returns the identical input session, empty events and no partial decision/command.</summary>
 public sealed record SwordAiExecutionResult(bool Accepted, SwordAiExecutionFailure? Failure, SwordAiExecutionOutcome? Outcome,
@@ -78,6 +79,21 @@ public static class SwordAiExecution
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team,
         SwordAiPreparedSelectionProfile selectionProfile, SwordAiWaitFacingProfile waitProfile, SwordAiWaitSettlementProfile endProfile)
+        => ExecutePreparedCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
+            team, selectionProfile, waitProfile, endProfile, outOfReach: false);
+
+    /// <summary>Fresh explicit out-of-reach preparation/selection and actual Wait after Move is already used.</summary>
+    public static SwordAiExecutionResult ExecutePreparedOutOfReachAlreadyMoved(FacingTurnState state, SwordAiRefreshRequest request,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team,
+        SwordAiPreparedSelectionProfile selectionProfile, SwordAiWaitFacingProfile waitProfile, SwordAiWaitSettlementProfile endProfile)
+        => ExecutePreparedCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
+            team, selectionProfile, waitProfile, endProfile, outOfReach: true);
+
+    private static SwordAiExecutionResult ExecutePreparedCore(FacingTurnState state, SwordAiRefreshRequest request,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team,
+        SwordAiPreparedSelectionProfile selectionProfile, SwordAiWaitFacingProfile waitProfile, SwordAiWaitSettlementProfile endProfile, bool outOfReach)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(request);
@@ -90,16 +106,20 @@ public static class SwordAiExecution
         ArgumentNullException.ThrowIfNull(endProfile);
         return ExecuteCore(state, request.ActorId, request.TargetId, weapon, candidateProfile, waitProfile, endProfile, (battle, rng) =>
         {
-            var decision = SwordAiPreparedSelection.Evaluate(battle, request, weapon, candidateProfile, scoreProfile,
-                refreshProfile, preparationProfile, team, selectionProfile, rng);
-            return decision.Accepted ? new(decision.Outcome!.Decision, decision.RngState, decision.Outcome.Preparation)
+            var decision = outOfReach
+                ? SwordAiPreparedSelection.EvaluateOutOfReach(battle, request, weapon, candidateProfile, scoreProfile,
+                    refreshProfile, preparationProfile, team, selectionProfile, rng)
+                : SwordAiPreparedSelection.Evaluate(battle, request, weapon, candidateProfile, scoreProfile,
+                    refreshProfile, preparationProfile, team, selectionProfile, rng);
+            return decision.Accepted ? new(decision.Outcome!.Decision, decision.RngState, decision.Outcome.Preparation, decision.Outcome.OutOfReach)
                 : new(null, rng, Failure: new(SwordAiExecutionRejection.SelectionRejected, SwordAiExecutionStage.Selection)
                     { PreparedSelectionFailure = decision.Failure });
         });
     }
 
     private sealed record PlanningResult(SwordAiDerivedSelectionOutcome? Decision, FftRandomState RngState,
-        SwordAiPreparationOutcome? Preparation = null, SwordAiExecutionFailure? Failure = null);
+        SwordAiPreparationOutcome? Preparation = null, SwordAiOutOfReachSelectionOutcome? OutOfReach = null,
+        SwordAiExecutionFailure? Failure = null);
 
     // Both opt-in planners use identical session guards, plan admission and authoritative command publication.
     private static SwordAiExecutionResult ExecuteCore(FacingTurnState state, BattleUnitId actorId, BattleUnitId targetId,
@@ -146,7 +166,7 @@ public static class SwordAiExecution
                 var attack = new AttackUnitCommand(actorId, targetId);
                 return context.PrepareAttack(attack, weapon, decision.RngState,
                     new SwordAiExecutionOutcome(outcome, decision.RngState, SwordAiExecutedCommand.Attack, attack, null)
-                        { Preparation = decision.Preparation });
+                        { Preparation = decision.Preparation, OutOfReach = decision.OutOfReach });
             }
             var facing = SwordAiWaitFacing.Evaluate(context.Battle, actorId, targetId,
                 candidateProfile.Movement, waitProfile, decision.RngState);
@@ -159,7 +179,7 @@ public static class SwordAiExecution
             }
             return context.PrepareWait(new FacingChoice.Fixed(facing.Outcome!.Facing), decision.RngState,
                 new SwordAiExecutionOutcome(outcome, decision.RngState, SwordAiExecutedCommand.Wait, null, facing.Outcome)
-                    { Preparation = decision.Preparation });
+                    { Preparation = decision.Preparation, OutOfReach = decision.OutOfReach });
         });
         if (execution.Accepted) return new(true, null, execution.Diagnostic!, execution.State, execution.Events);
         if (planningFailure is not null) return Reject(planningFailure);

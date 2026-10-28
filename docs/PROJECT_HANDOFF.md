@@ -6,20 +6,20 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-164: select and execute a freshly prepared out-of-reach Wait.**
-Reuse the traced NonBlue reach adjustment and eight-roll fallback after one owned
-refresh/preparation. The already-moved domain has only the actor origin, so publish
-actual Wait through the existing callback, with no Attack or movement command.
-Preserve explicit branch admission, remaining source assertions and whole-prefix
-rollback. No host activation or broader AI expansion.
+**ZOD-165: trace ordinary Move-first command continuation and selection reuse.**
+Study selected-action reuse, moved/acted guards, command history and actual RNG/
+facing authority after a real Move before selecting one managed child. The
+[already-moved prepared paths](behavior/sword-ai-prepared-out-of-reach.md) now cover
+closed NonBlue in/out-of-reach Attack/Wait. No continuation authority, broader
+policy or host activation is implied by this source/design task.
 
-The [current executor](behavior/sword-ai-execution.md), now in `Zodiac.Framework.Ai`,
-derives one in-reach decision for a real Move-used/ACT-unused session. The
-[Framework-owned boundary](architecture/ai-command-boundary.md) invokes planning,
-verifies RNG continuity and publishes one Attack or Wait. AI cannot construct
-trusted sessions/receipts and has no production friend access. The original entry starts at certified general-selection entry; the new
-[prepared executor](behavior/sword-ai-prepared-execution.md) owns refresh/preparation
-and selection inside the same transaction.
+The [original post-prefix executor](behavior/sword-ai-execution.md) and new
+[prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
+The [Framework-owned boundary](architecture/ai-command-boundary.md) invokes fresh
+planning, verifies RNG continuity and publishes one actual Attack or Wait. AI
+cannot construct trusted sessions/receipts and has no production friend access.
+Prepared entries own refresh/preparation and explicit in/out-of-reach selection
+inside that transaction; the old entry retains its general-selection certificate.
 The original VSync callback also draws from BIOS RNG. Managed rendering/pauses add no
 gameplay draws; frame-interleaved retail stream equivalence remains explicitly unresolved.
 
@@ -35,26 +35,26 @@ RNG without partial output. Original supplied-scenario APIs stay unchanged; no c
 authority or live RNG commit.
 
 Full AI search, general multi-entry ranking/lottery, replaceable decision interface,
-wider command lifecycle/refresh-prefix integration and presentation activation remain
-future work. Original UNIT_SLOT_COUNT
-is **21**; the old 26-foe wrap example is inadmissible. This does not select a fixed
-managed roster size. The contract records the erratum without rewriting old evidence.
+Move-first/post-ACT command lifecycle and presentation activation remain future
+work. Original UNIT_SLOT_COUNT is **21**; the old 26-foe wrap example is inadmissible.
+This does not select a fixed managed roster size. The contract records the erratum
+without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-163, [prepared command execution](behavior/sword-ai-prepared-execution.md).
-  Shared actual-command publication preserves the old entry. Seven new managed
-  cases plus all existing AI tests pass (714 total); no AI build warnings/errors.
-  Complete prepared miss, actual critical/push/KO, fallback, authority and late
-  command rollback are covered. Logs: `scratch/ai-prepared-execution-163/`.
+- Latest implementation: ZOD-163/164, [prepared Attack/Wait](behavior/sword-ai-prepared-execution.md)
+  and [prepared out-of-reach Wait](behavior/sword-ai-prepared-out-of-reach.md).
+  Thirteen new managed cases cover complete literal streams, actual miss/critical/
+  push/KO, fallback/refunds, exact budgets, authority and whole-command rollback.
+  Explicit branch APIs and prior post-prefix behavior remain; no host activation.
 - Latest source/design: ZOD-160, [preparation contract](architecture/zod-160-ai-preparation.md).
-  Clean source audit checks 25 preparation functions plus inherited receipts
-  (`scratch/ai-prepared-selection-162/source.json`); three offline scalar checks.
-- Last full solution validation (ZOD-162): locked restore, zero-warning/error Release build,
-  **3,878 .NET cases / 507 Python tests**, including the owner's content drafts.
+  Clean audit rechecks 25 preparation functions and inherited execution/out-of-reach
+  receipts (`scratch/ai-prepared-out-of-reach-164/source.json`).
+- Batch validation: locked restore, zero-warning/error Release build,
+  **3,891 .NET cases / 507 Python tests**, including the owner's content drafts.
   These bounded checks do not establish full original decision equivalence.
-  Results/logs: ignored `scratch/ai-prepared-selection-162/` (seven full TRX files).
-  Owner refactor/drafts are excluded from the AI commits. Nine historical checkpoint
+  Results/logs: ignored `scratch/ai-prepared-out-of-reach-164/` (seven full TRX files).
+  Owner refactor/drafts are excluded from AI commits. Nine historical checkpoint
   audits last passed at ZOD-158; unchanged historical snapshots were not rerun.
   No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/

@@ -12,13 +12,16 @@ public sealed record SwordAiPreparedSelectionFailure(SwordAiPreparedSelectionRej
     SwordAiPreparationRejection PreparationRejection = SwordAiPreparationRejection.None,
     SwordAiRefreshRejection RefreshRejection = SwordAiRefreshRejection.None,
     SwordAiDerivedSelectionRejection? SelectionRejection = null, SwordAiDerivedSelectionStage? SelectionStage = null);
-public sealed record SwordAiPreparedSelectionOutcome(SwordAiPreparationOutcome Preparation, SwordAiDerivedSelectionOutcome Decision);
+public sealed record SwordAiPreparedSelectionOutcome(SwordAiPreparationOutcome Preparation, SwordAiDerivedSelectionOutcome Decision)
+{
+    public SwordAiOutOfReachSelectionOutcome? OutOfReach { get; init; }
+}
 public sealed record SwordAiPreparedSelectionResult(bool Accepted, SwordAiPreparedSelectionFailure? Failure,
     SwordAiPreparedSelectionOutcome? Outcome, FftRandomState RngState);
 
-/// <summary>Fresh pure ordinary NonBlue preparation and in-reach selection, on the original live snapshot.</summary>
+/// <summary>Fresh pure ordinary NonBlue preparation and explicit in/out-of-reach selection on the original live snapshot.</summary>
 /// <remarks>
-/// Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-160/162.
+/// Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-160/162/164.
 /// Owns refresh provenance and its retained draw; no cached-result input, command authority or runtime activation.
 /// Existing post-prefix execution and its GeneralSelectionEntryContext remain separate.
 /// </remarks>
@@ -28,6 +31,21 @@ public static class SwordAiPreparedSelection
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
         SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, FftRandomState decisionRng)
+        => EvaluateCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
+            team, selectionProfile, decisionRng, outOfReach: false);
+
+    /// <summary>Explicit fresh out-of-reach branch; preserves the NonBlue post-movement adjustment before fallback.</summary>
+    public static SwordAiPreparedSelectionResult EvaluateOutOfReach(AttackBattleSnapshot state, SwordAiRefreshRequest request,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
+        SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, FftRandomState decisionRng)
+        => EvaluateCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
+            team, selectionProfile, decisionRng, outOfReach: true);
+
+    private static SwordAiPreparedSelectionResult EvaluateCore(AttackBattleSnapshot state, SwordAiRefreshRequest request,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
+        SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, FftRandomState decisionRng, bool outOfReach)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(request);
@@ -56,11 +74,22 @@ public static class SwordAiPreparedSelection
             selectionProfile.TargetSelectionMatchesBaseline, FreshAbilityBestReset: true, FreshEmptyRankedList: true, FirstAttackEntry: true);
         var selection = new SwordAiSelectionProfile(TerminalAttackEntry: true, selectionProfile.NoDefendSupport,
             FreshOrdinarySelectionDefaults: true);
-        var decision = SwordAiDerivedSelection.Evaluate(state, weapon, candidateProfile, scoreProfile, comparison,
-            scenario, derived, selection, preparation.RngState);
+        SwordAiDerivedSelectionResult decision;
+        SwordAiOutOfReachSelectionOutcome? reachOutcome = null;
+        if (outOfReach)
+        {
+            var result = SwordAiDerivedSelection.EvaluateOutOfReach(state, weapon, candidateProfile, scoreProfile, comparison,
+                scenario, derived, selection, team, preparation.RngState);
+            reachOutcome = result.Outcome;
+            decision = new(result.Accepted, result.Failure, result.Accepted
+                ? new(reachOutcome!.MovementScenario.MovementScenario, reachOutcome.Selection) : null, result.RngState);
+        }
+        else
+            decision = SwordAiDerivedSelection.Evaluate(state, weapon, candidateProfile, scoreProfile, comparison,
+                scenario, derived, selection, preparation.RngState);
         if (!decision.Accepted)
             return Reject(new(SwordAiPreparedSelectionRejection.SelectionRejected, SwordAiPreparedSelectionStage.Selection,
                 SelectionRejection: decision.Failure!.Reason, SelectionStage: decision.Failure.Stage));
-        return new(true, null, new(ready, decision.Outcome!), decision.RngState);
+        return new(true, null, new(ready, decision.Outcome!) { OutOfReach = reachOutcome }, decision.RngState);
     }
 }

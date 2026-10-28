@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-164 (implementation).** Fresh prepared command execution ZOD-163 is complete.
-There are 33 open tickets below. The 131 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-165 (source/design).** Prepared in/out-of-reach execution ZOD-163/164 is complete.
+There are 33 open tickets below. The 132 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,18 +29,18 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-164 — Select and execute a freshly prepared out-of-reach Wait
+### ZOD-165 — Trace ordinary Move-first command continuation and selection reuse
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-163
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-164
 
-Extend fresh NonBlue already-moved preparation through the source-traced
-[out-of-reach selector](architecture/zod-148-ai-out-of-reach-selection.md).
-Own one refresh/preparation and one out-of-reach selection; retain the post-score
-reach-adjustment RNG before the eight fallback rolls, then publish actual Wait
-through the existing Framework callback. Preserve explicit branch APIs and all
-remaining assertions. Verify exact eleven-draw budgets, counter/authority rollback,
-no invented Attack or movement, one refund/facing and immutable replay. No Blue
-preparation, Move-first continuation, new movement search or host activation.
+Trace original ai_command_build's selected-action reuse, moved/acted guards and
+command history for one ordinary two-opponent Move-first decision. Determine what
+survives a real Move, when refresh/reselection runs, and how actual RNG, target
+position and command/facing authority carry across the next invocation. Select one
+managed child and its atomic/stale-input acceptance cases before adding authority
+or a continuation API. Preserve the completed [already-moved prepared paths](behavior/sword-ai-prepared-out-of-reach.md);
+keep broad search, Blue policies, saveable tokens, replacement interfaces and
+host activation separate.
 
 ## Existing validation gates
 

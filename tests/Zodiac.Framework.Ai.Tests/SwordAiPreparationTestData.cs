@@ -38,7 +38,7 @@ internal static class SwordAiPreparationTestData
     }
     internal static string Serialize(object? value) => JsonSerializer.Serialize(value);
     internal static FacingTurnState Ready(int evade = 89, uint entryWord = 1, ulong count = 7,
-        bool second = false, bool reverse = false)
+        bool second = false, bool reverse = false, bool outOfReach = false)
     {
         var actor = second ? B : A; var target = second ? A : B;
         // Inverse BIOS step gives the requested entry only through an actual upkeep draw and a real Move.
@@ -55,7 +55,7 @@ internal static class SwordAiPreparationTestData
             new(reverse ? turns.Reverse() : turns, rng)), reverse ? combat.Reverse() : combat);
         var ready = FacingTurnBattle.Advance(FacingTurnBattle.Begin(battle, new(Ground)));
         if (!ready.Accepted) throw new InvalidOperationException("Synthetic upkeep setup failed.");
-        var moved = FacingTurnBattle.Move(ready.State, new(actor, new(2, 1, 0)));
+        var moved = FacingTurnBattle.Move(ready.State, new(actor, new(outOfReach ? 4 : 2, 1, 0)));
         return moved.Accepted ? moved.State : throw new InvalidOperationException("Synthetic Move setup failed.");
     }
 
