@@ -6,12 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-161: derive closed ordinary preparation after fresh refresh.**
-The [source contract](architecture/zod-160-ai-preparation.md) selects a NonBlue,
-already-moved two-opponent ordinary Attack-only path. Preparation adds no RNG
-after refresh and derives current-tile origin, restored-state delays and target/
-support hints. Explicit list, no-special-behavior and clean cached-delay facts
-remain mandatory. ZOD-162 will compose fresh preparation with pure selection.
+**ZOD-162: compose fresh preparation with pure ordinary selection.**
+The [preparation query](behavior/sword-ai-preparation.md) owns fresh refresh,
+adds no later draws and derives closed NonBlue delay/reach/focus/support facts.
+Carry actual preparation RNG into existing in-reach selection on restored live
+state; derive proved entry facts while retaining unknown policy assertions.
+No command integration or GeneralSelectionEntryContext removal in this child.
 
 The [current executor](behavior/sword-ai-execution.md), now in `Zodiac.Framework.Ai`,
 derives one in-reach decision for a real Move-used/ACT-unused session. The
@@ -39,12 +39,10 @@ managed roster size. The contract records the erratum without rewriting old evid
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-159, [pure ordinary refresh](behavior/sword-ai-refresh.md).
-  Direct private clock reuse, retained policy booleans, semantic flags and whole-query
-  rollback; no movement search, score or command/session authority. Eighteen managed
-  cases cover source vectors, HP thresholds, policies, counters and immutable replay.
-  The [separate AI assembly and Framework transaction](architecture/ai-command-boundary.md)
-  remain in place; no native/editor activation or original decision-equivalence claim.
+- Latest implementation: ZOD-161, [fresh ordinary preparation](behavior/sword-ai-preparation.md).
+  Eight new cases plus all existing AI tests pass (700 AI cases); AI build has no
+  warnings/errors. No command authority or live-state/RNG mutation. Logs:
+  `scratch/ai-preparation-161/`. Full solution counts below are the prior ZOD-159 run.
 - Latest source/design: ZOD-160, [preparation contract](architecture/zod-160-ai-preparation.md).
   Clean source audit checks 25 preparation functions plus inherited receipts
   (`scratch/ai-preparation-160/source.json`); three focused Python checks pass.

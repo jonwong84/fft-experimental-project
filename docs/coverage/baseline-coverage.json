@@ -484,6 +484,7 @@
         "docs/architecture/zod-156-ai-refresh-prefix.md",
         "docs/behavior/sword-ai-refresh.md",
         "docs/architecture/zod-160-ai-preparation.md",
+        "docs/behavior/sword-ai-preparation.md",
         "docs/behavior/sword-ai-out-of-reach-scenario.md",
         "docs/behavior/sword-ai-out-of-reach-selection.md"
       ],
@@ -494,6 +495,7 @@
         "src/Zodiac.Framework.Ai/SwordAiWaitSettlement.cs",
         "src/Zodiac.Framework.Ai/SwordAiExecution.cs",
         "src/Zodiac.Framework.Ai/SwordAiRefresh.cs",
+        "src/Zodiac.Framework.Ai/SwordAiPreparation.cs",
         "src/Zodiac.Framework/FacingDecision.cs"
       ],
       "automatedChecks": [
@@ -554,8 +556,8 @@
         "Full target/ability/roster search, out-of-reach execution and special policies, Defend, replacement interface, refresh-prefix integration, Move-first continuation and post-ACT reselection remain open.",
         "Caller certificates still describe unrepresented original context. Earlier refresh/policy draws and source frame RNG are outside the derived selector; bounded vectors do not establish full original decision equivalence."
       ],
-      "nextAction": "Implement the source-traced NonBlue ordinary preparation query owning one fresh refresh; retain explicit source-list/special-behavior/cache facts and no command authority.",
-      "followUpTickets": ["ZOD-161"]
+      "nextAction": "Compose fresh preparation and in-reach selection with actual carried RNG, proved entry facts and atomic rollback; retain unknown source policies and no command authority.",
+      "followUpTickets": ["ZOD-162"]
     },
     {
       "id": "COV-SIM-010",

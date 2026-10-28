@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-161 (implementation).** Preparation trace ZOD-160 is complete.
-There are 33 open tickets below. The 128 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-162 (implementation).** Fresh ordinary preparation ZOD-161 is complete.
+There are 33 open tickets below. The 129 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,16 +29,16 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-161 — Derive closed ordinary preparation after fresh refresh
+### ZOD-162 — Compose fresh preparation with pure ordinary selection
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-160
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-161
 
-Implement the [preparation contract](architecture/zod-160-ai-preparation.md): own
-one fresh refresh, derive current-tile reachability, restored-state delays,
-NonBlue single-ally support policy and ordinary Attack focus/reach hints.
-Require explicit closed ability-list, special-behavior and clean-delay-cache facts.
-Return only diagnostics/RNG with atomic failure; no cached-result input, selection,
-command authority or native activation. Fresh selection composition is the next child.
+Implement the [source contract](architecture/zod-160-ai-preparation.md): own one
+fresh preparation, carry its actual RNG into the existing in-reach selector on
+restored live state, and derive established focus/cache/ranking entry facts.
+Keep remaining scoring/tile/scenario/target-equivalence/no-Defend assertions explicit.
+No cached-result input or command activation. Failures return whole-query input
+RNG and no partial results; verify literal draw schedules, fallback and budgets.
 
 ## Existing validation gates
 
