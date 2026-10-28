@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-171 (source/design).** Explicit in/out-of-reach post-prefix Move-first execution is complete.
-There are 33 open tickets below. The 138 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-172 (implementation).** Fresh unmoved preparation trace/design ZOD-171 is complete.
+There are 33 open tickets below. The 139 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,16 +29,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-171 — Trace fresh unmoved AI preparation
+### ZOD-172 — Implement pure fresh unmoved AI refresh and preparation
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-170
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-171
 
-Trace the fresh unused-Move/unused-ACT refresh and preparation path against the
-pinned reference before extending already-moved APIs. Verify no-action CT refund,
-clock/restoration/RNG and full ordinary reachable tiles, then restored-state
-ability/team/focus preparation. Define a bounded pure child with source-derived
-clock and geometry vectors. Keep entry/cache/list certificates explicit; no
-production preparation, ACT-first/post-ACT execution or host activation here.
+Implement explicit unused-Move/unused-ACT refresh and NonBlue preparation entries
+from the [source/design](architecture/zod-171-ai-unmoved-preparation.md). Own one
+fresh refresh with min(60, liveCT+40), retain its one upkeep draw, then derive full
+ordinary reachable origins and policy/focus from the original live snapshot.
+Preserve existing already-moved API admission and current entry/cache/list/profile
+certificates. Verify source vectors, exact limits, rollback and identity/order
+isolation without copying shared flag/geometry matrices. Pure diagnostics/RNG only;
+prepared selection, live Move-first integration, ACT-first/post-ACT and host
+activation remain subsequent work.
 
 ## Existing validation gates
 
