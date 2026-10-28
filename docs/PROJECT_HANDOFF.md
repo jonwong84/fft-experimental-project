@@ -6,14 +6,13 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-174: integrate fresh prepared in-reach AI Move-first execution.**
-The [fresh unmoved selectors](behavior/sword-ai-unmoved-prepared-selection.md) now
-own preparation and explicit in/out-of-reach selection with whole-query rollback.
-Connect the in-reach entry privately inside Framework's planned Move callback,
-then reuse its frozen Attack/deferred Wait. This new entry owns its prefix instead
-of taking GeneralSelectionEntryContext; remaining source/policy facts persist.
-Fresh out-of-reach live integration, ACT-first/post-ACT and host activation remain
-subsequent work.
+**ZOD-175: integrate fresh prepared out-of-reach AI Move-first execution.**
+The [prepared in-reach entry](behavior/sword-ai-prepared-move-first.md) now owns
+refresh/preparation/selection inside Framework's real Move transaction and freezes
+Attack or deferred Wait. Extend the same path through explicit out-of-reach
+selection, retaining NonBlue adjustment/fallback RNG. No cached prefix/external
+RNG/general-entry certificate for this owned entry; remaining source facts persist.
+ACT-first/post-ACT and host activation remain subsequent work.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
@@ -38,7 +37,7 @@ pure queries grant no command authority or live RNG commit; execution adapters
 own that separate boundary.
 
 Full AI search, general multi-entry ranking/lottery, replaceable decision interface,
-fresh unmoved live integration, ACT-first/post-ACT command lifecycle
+fresh prepared out-of-reach live integration, ACT-first/post-ACT command lifecycle
 and presentation activation remain future work.
 Original UNIT_SLOT_COUNT is **21**; the old 26-foe wrap example is inadmissible.
 This does not select a fixed managed roster size. The contract records the erratum
@@ -46,18 +45,19 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-173, [fresh unmoved prepared selection](behavior/sword-ai-unmoved-prepared-selection.md).
-  Both explicit reach entries own preparation and feed its actual RNG into one
-  existing selection tail on original state. Six new scenarios cover literal full
-  streams, score reuse, fallback, counters, whole-query rollback and actor/order replay.
+- Latest implementation: ZOD-174, [fresh prepared in-reach Move-first execution](behavior/sword-ai-prepared-move-first.md).
+  One private planner owns the full prefix; all Move-first entries share dispatch,
+  real path publication and exact-session continuation. Five new scenarios cover
+  full hit/miss/Wait streams, actual CT, budgets, per-step failure and replay.
 - Latest design: ZOD-171, [unmoved preparation](architecture/zod-171-ai-unmoved-preparation.md),
   now implemented. Historical source receipts/fixtures remain unchanged.
-  Clean pinned audit: `scratch/ai-unmoved-selection-173/source.json` (14 unmoved
+  Clean pinned audit: `scratch/ai-prepared-move-174/source.json` (14 unmoved
   function anchors and inherited receipts).
 - Validation: locked restore, zero-warning/error Release build,
-  **3,935 .NET cases / 513 Python tests**, including the owner's content drafts.
+  **3,940 .NET cases**, including the owner's content drafts. Python is unchanged;
+  its last full run remains **513 tests at ZOD-173**.
   These bounded checks do not establish full original decision equivalence.
-  Logs/results: ignored `scratch/ai-unmoved-selection-173/` (seven full TRX files).
+  Logs/results: ignored `scratch/ai-prepared-move-174/` (seven full TRX files).
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.
   No original/C execution or UI review.

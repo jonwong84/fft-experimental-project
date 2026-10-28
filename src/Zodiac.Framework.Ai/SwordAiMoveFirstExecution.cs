@@ -6,10 +6,14 @@ public enum SwordAiMoveFirstRejection { UnsupportedContext, SelectionRejected, D
 /// <summary>Reason-only failures; no partial selection/dispatch or advanced RNG escapes a failed Move.</summary>
 public sealed record SwordAiMoveFirstFailure(SwordAiMoveFirstRejection Reason,
     SwordAiDerivedSelectionRejection? SelectionReason = null, SwordAiDerivedSelectionStage? SelectionStage = null,
-    SwordAiDispatchRejection DispatchReason = SwordAiDispatchRejection.None, FacingMoveRejection BoundaryReason = FacingMoveRejection.None);
+    SwordAiDispatchRejection DispatchReason = SwordAiDispatchRejection.None, FacingMoveRejection BoundaryReason = FacingMoveRejection.None)
+{
+    public SwordAiPreparedSelectionFailure? PreparedSelectionFailure { get; init; }
+}
 public sealed record SwordAiMoveFirstOutcome(SwordAiDerivedSelectionOutcome Decision, SwordAiDispatchOutcome Dispatch, FftRandomState DecisionRng)
 {
     public SwordAiOutOfReachSelectionOutcome? OutOfReach { get; init; }
+    public SwordAiPreparationOutcome? Preparation { get; init; }
 }
 public sealed record SwordAiMoveFirstResult(SwordAiMoveFirstFailure? Failure, FacingMoveResult<SwordAiMoveFirstOutcome> Move)
 {
@@ -21,10 +25,10 @@ public sealed record SwordAiMoveFirstResult(SwordAiMoveFirstFailure? Failure, Fa
     public SwordAiMoveFirstOutcome? Outcome => Move.Diagnostic;
 }
 
-/// <summary>Own one fresh explicit post-prefix selection and real Move-first handoff; follow-up stays in Framework.</summary>
+/// <summary>Own fresh selection and real Move-first handoff; follow-up stays in Framework.</summary>
 /// <remarks>
-/// Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-165/167/169/170.
-/// Explicit general-entry certificates remain: already-moved refresh/preparation cannot establish this unmoved entry.
+/// Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-165/167/169/170/174.
+/// Post-prefix entries retain their general-entry certificate. The prepared entry owns fresh unmoved preparation instead.
 /// No cached-plan input, ACT-first execution, automatic branch dispatch or host activation.
 /// </remarks>
 public static class SwordAiMoveFirstExecution
@@ -45,6 +49,27 @@ public static class SwordAiMoveFirstExecution
         => StartCore(state, weapon, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile, derivedProfile,
             selectionProfile, executionProfile, dispatchProfile, team);
 
+    /// <summary>Own fresh NonBlue unmoved preparation and in-reach selection inside the Framework Move transaction.</summary>
+    public static SwordAiMoveFirstResult StartPreparedInReach(FacingTurnState state, SwordAiRefreshRequest request,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team,
+        SwordAiPreparedSelectionProfile selectionProfile, SwordAiCommandDispatchProfile dispatchProfile)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        ArgumentNullException.ThrowIfNull(scoreProfile);
+        ArgumentNullException.ThrowIfNull(refreshProfile);
+        ArgumentNullException.ThrowIfNull(preparationProfile);
+        ArgumentNullException.ThrowIfNull(selectionProfile);
+        return ExecuteCore(state, request.ActorId, request.TargetId, weapon, candidateProfile, dispatchProfile, (battle, rng) =>
+        {
+            var decision = SwordAiPreparedSelection.EvaluateUnmoved(battle, request, weapon, candidateProfile, scoreProfile,
+                refreshProfile, preparationProfile, team, selectionProfile, rng);
+            return decision.Accepted
+                ? new(decision.Outcome!.Decision, decision.RngState, decision.Outcome.OutOfReach, decision.Outcome.Preparation)
+                : new(null, rng, Failure: new(SwordAiMoveFirstRejection.SelectionRejected) { PreparedSelectionFailure = decision.Failure });
+        });
+    }
+
     private static SwordAiMoveFirstResult StartCore(FacingTurnState state, BoundedSwordWeapon? weapon,
         SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
         SwordAiMovementScenarioProfile scenarioProfile, SwordAiDerivedSelectionProfile derivedProfile,
@@ -60,10 +85,40 @@ public static class SwordAiMoveFirstExecution
         ArgumentNullException.ThrowIfNull(selectionProfile);
         ArgumentNullException.ThrowIfNull(executionProfile);
         ArgumentNullException.ThrowIfNull(dispatchProfile);
-        SwordAiMoveFirstFailure? failure = null;
-        var result = FacingMoveDecisionBattle.ExecuteMove<SwordAiMoveFirstOutcome>(state, comparisonProfile.ActorId, context =>
+        return ExecuteCore(state, comparisonProfile.ActorId, comparisonProfile.TargetId, weapon, candidateProfile, dispatchProfile, (battle, rng) =>
         {
-            if (!executionProfile.GeneralSelectionEntryContext)
+            SwordAiOutOfReachSelectionOutcome? outOfReach = null;
+            SwordAiDerivedSelectionResult decision;
+            if (team is { } knownTeam)
+            {
+                var query = SwordAiDerivedSelection.EvaluateOutOfReach(battle, weapon, candidateProfile, scoreProfile,
+                    comparisonProfile, scenarioProfile, derivedProfile, selectionProfile, knownTeam, rng);
+                outOfReach = query.Outcome;
+                decision = new(query.Accepted, query.Failure, query.Accepted
+                    ? new(outOfReach!.MovementScenario.MovementScenario, outOfReach.Selection) : null, query.RngState);
+            }
+            else decision = SwordAiDerivedSelection.Evaluate(battle, weapon, candidateProfile, scoreProfile, comparisonProfile,
+                scenarioProfile, derivedProfile, selectionProfile, rng);
+            return decision.Accepted ? new(decision.Outcome, decision.RngState, outOfReach)
+                : new(null, rng, Failure: new(SwordAiMoveFirstRejection.SelectionRejected, decision.Failure!.Reason, decision.Failure.Stage));
+        }, executionProfile);
+    }
+
+    private sealed record PlanningResult(SwordAiDerivedSelectionOutcome? Decision, FftRandomState Rng,
+        SwordAiOutOfReachSelectionOutcome? OutOfReach = null, SwordAiPreparationOutcome? Preparation = null,
+        SwordAiMoveFirstFailure? Failure = null);
+
+    private static SwordAiMoveFirstResult ExecuteCore(FacingTurnState state, BattleUnitId actorId, BattleUnitId targetId,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiCommandDispatchProfile dispatchProfile,
+        Func<AttackBattleSnapshot, FftRandomState, PlanningResult> planner, SwordAiExecutionProfile? postPrefixProfile = null)
+    {
+        ArgumentNullException.ThrowIfNull(state);
+        ArgumentNullException.ThrowIfNull(candidateProfile);
+        ArgumentNullException.ThrowIfNull(dispatchProfile);
+        SwordAiMoveFirstFailure? failure = null;
+        var result = FacingMoveDecisionBattle.ExecuteMove<SwordAiMoveFirstOutcome>(state, actorId, context =>
+        {
+            if (postPrefixProfile is { GeneralSelectionEntryContext: false })
             {
                 failure = new(SwordAiMoveFirstRejection.UnsupportedContext);
                 return context.Reject<SwordAiMoveFirstOutcome>();
@@ -74,26 +129,15 @@ public static class SwordAiMoveFirstExecution
                 failure = new(SwordAiMoveFirstRejection.DispatchRejected, DispatchReason: SwordAiDispatchRejection.UnsupportedContext);
                 return context.Reject<SwordAiMoveFirstOutcome>();
             }
-            SwordAiOutOfReachSelectionOutcome? outOfReach = null;
-            SwordAiDerivedSelectionResult decision;
-            if (team is { } knownTeam)
+            var decision = planner(context.Battle, context.RngState);
+            if (decision.Failure is not null)
             {
-                var query = SwordAiDerivedSelection.EvaluateOutOfReach(context.Battle, weapon, candidateProfile, scoreProfile,
-                    comparisonProfile, scenarioProfile, derivedProfile, selectionProfile, knownTeam, context.RngState);
-                outOfReach = query.Outcome;
-                decision = new(query.Accepted, query.Failure, query.Accepted
-                    ? new(outOfReach!.MovementScenario.MovementScenario, outOfReach.Selection) : null, query.RngState);
-            }
-            else decision = SwordAiDerivedSelection.Evaluate(context.Battle, weapon, candidateProfile, scoreProfile, comparisonProfile,
-                scenarioProfile, derivedProfile, selectionProfile, context.RngState);
-            if (!decision.Accepted)
-            {
-                failure = new(SwordAiMoveFirstRejection.SelectionRejected, decision.Failure!.Reason, decision.Failure.Stage);
+                failure = decision.Failure;
                 return context.Reject<SwordAiMoveFirstOutcome>();
             }
-            var plan = decision.Outcome!.Selection.Plan;
+            var plan = decision.Decision!.Selection.Plan;
             var selected = new SwordAiDispatchSelection(plan.Kind, plan.ActorId, plan.Destination, plan.Attack?.Candidate);
-            var request = new SwordAiDispatchRequest(context.ActorId, comparisonProfile.TargetId, SwordAiDecisionMarker.Decided,
+            var request = new SwordAiDispatchRequest(context.ActorId, targetId, SwordAiDecisionMarker.Decided,
                 new(context.ActorId, false, false), selected);
             // This invocation actually completed selection; do not re-enter the earlier no-progress guard.
             var dispatch = SwordAiCommandDispatch.DispatchFreshSelection(context.Battle, request, candidateProfile.Movement,
@@ -108,12 +152,13 @@ public static class SwordAiMoveFirstExecution
                 failure = new(SwordAiMoveFirstRejection.MoveFirstRequired);
                 return context.Reject<SwordAiMoveFirstOutcome>();
             }
-            var diagnostic = new SwordAiMoveFirstOutcome(decision.Outcome, dispatch.Outcome, decision.RngState) { OutOfReach = outOfReach };
+            var diagnostic = new SwordAiMoveFirstOutcome(decision.Decision, dispatch.Outcome, decision.Rng)
+                { OutOfReach = decision.OutOfReach, Preparation = decision.Preparation };
             return plan.Kind == SwordAiSelectedPlanKind.Attack
                 ? context.PrepareMoveThenAttack(dispatch.Outcome.Move!, candidateProfile.Movement,
-                    new(context.ActorId, comparisonProfile.TargetId), weapon, decision.RngState, diagnostic)
+                    new(context.ActorId, targetId), weapon, decision.Rng, diagnostic)
                 : context.PrepareMoveThenWait(dispatch.Outcome.Move!, candidateProfile.Movement,
-                    new FacingChoice.ChooseClosedEnemy(comparisonProfile.TargetId), decision.RngState, diagnostic);
+                    new FacingChoice.ChooseClosedEnemy(targetId), decision.Rng, diagnostic);
         });
         if (!result.Accepted && failure is null) failure = new(SwordAiMoveFirstRejection.BoundaryRejected, BoundaryReason: result.Rejection);
         return new(failure, result);

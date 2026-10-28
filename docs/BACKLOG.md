@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-174 (implementation).** Fresh unmoved prepared in/out-of-reach selection ZOD-173 is complete.
-There are 33 open tickets below. The 141 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-175 (implementation).** Fresh prepared in-reach Move-first execution ZOD-174 is complete.
+There are 33 open tickets below. The 142 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,21 +29,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-174 — Integrate fresh prepared in-reach AI Move-first execution
+### ZOD-175 — Integrate fresh prepared out-of-reach AI Move-first execution
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-173
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-174
 
-Own the [fresh unmoved prepared in-reach selector](behavior/sword-ai-unmoved-prepared-selection.md)
-inside Framework's existing planned path-Move callback, then freeze its matching
-Attack or deferred Wait for Continue. No public cached plan, external decision
-RNG or GeneralSelectionEntryContext for this new owned-prefix entry; retain its
-remaining NonBlue/list/cache/policy and ordinary dispatch facts. Require an actual
-Move-first result and publish complete preparation/decision diagnostics only with
-successful Move. Verify literal decision-plus-command streams, fallback, exact
-budgets, per-step rollback and continuation replay/isolation. Preserve existing
-post-prefix and already-moved APIs. Fresh out-of-reach live integration,
-ACT-first/post-ACT execution, automatic branch routing and host activation remain
-subsequent work.
+Extend the [prepared Move-first adapter](behavior/sword-ai-prepared-move-first.md)
+with the owned unmoved out-of-reach selector in the same Framework transaction.
+Retain the NonBlue preparation restriction, actual post-score adjustment and
+eight-roll fallback stream, require real Move-first dispatch and freeze deferred
+Wait. Verify literal full streams, halving/distance fallback, exact limits,
+whole-Move rejection versus continuation failure and identity/order replay.
+No cached prefix, external RNG or GeneralSelectionEntryContext for this owned
+entry. Preserve old APIs/certificates; ACT-first/post-ACT, automatic branch routing
+and host activation remain separate.
 
 ## Existing validation gates
 
