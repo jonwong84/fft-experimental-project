@@ -132,7 +132,15 @@ Expand stable-ID definitions/imports across equipment, jobs/skillsets/abilities,
 units/monsters/statuses, formulas, encounters/ENTD, text, maps/animation, stores and campaign
 references. Account for every baseline field/reference or unresolved meaning. Authoring/runtime
 share validation; synthetic catalogs must expose accidental original-table limits. Apply named
-semantic flags as each family matures.
+semantic flags as each family matures. Add armor, accessory and consumable definitions
+alongside weapons; identify shared item metadata and family-specific data before selecting
+their structure. Keep owned quantities, equipped instances and battle use in state.
+
+Element mapping is one part of import expansion. Review the owner's remaining toggle groups
+as they are defined, trace each known property to its original field/bit and preserve unknown
+bits in adapters. Record custom-only toggles explicitly; decide defaults, validation and JSON
+migration per family before implementing its converter. Do not guess mappings for unfinished
+definitions or treat all toggle groups as elemental flags.
 
 Bounded import candidate after the owner's definition refactor settles: extend the existing
 selected-weapon importer/exporter to map the original eight element bits into immutable
