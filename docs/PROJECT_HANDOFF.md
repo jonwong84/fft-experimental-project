@@ -6,12 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-143: implement fresh in-reach ordinary-sword movement-scenario derivation.**
-The [ZOD-141 source contract](architecture/zod-141-ai-movement-scenario.md) selects
-focused-opponent, ordinary-sword-reach/policy facts, raw Move<=124 and d<=Move+1.
-S=R in this branch; derive D1 priority-first, D0 within d-1 with distance fallback,
-using actual private movement scores, signed packing and last-tile ties. No stale
-score cells or reach-halving roll are admitted. Selection integration follows separately.
+**ZOD-144: source/design private derived-scenario composition/selection.**
+The [fresh scenario query](behavior/sword-ai-movement-scenario.md) now derives S/D0/D1
+for focused-opponent, ordinary-sword-reach/policy facts, raw Move<=124 and d<=Move+1.
+Specify its private continuation into Attack/lottery without duplicate movement
+scoring or public cached-result authority. Whole-query rollback and original
+supplied-scenario APIs must be preserved; no command/native activation.
 
 ZOD-140 privately owns one ZOD-138 composition and the source lottery. An admitted
 Attack is selected after one/eight draws; empty ranking takes eight then MoveOnly
@@ -30,14 +30,15 @@ managed roster size. The contract records the erratum without rewriting old evid
 - Latest source checkpoint: ZOD-141, clean reference below; inherited selection audit
   plus 11 inspected scenario functions passed (`scratch/ai-scenario-141/source.json`).
   No production change, original execution or .NET suite rerun for this checkpoint.
-- Latest implementation: ZOD-140, [selector API and evidence](behavior/sword-ai-selection.md).
-  SLC-001..007 have current C# coverage through 27 focused cases. No runtime activation.
+- Latest implementation: ZOD-143, [movement-scenario API and evidence](behavior/sword-ai-movement-scenario.md).
+  22 new focused cases; shared baseline admission extracted. No runtime activation.
 - Complete validation: locked restore, zero-warning/error Release build,
-  **3,706 .NET cases / 496 Python tests**, including all 3,679 prior .NET cases.
+  **3,728 .NET cases / 496 Python tests**, including all 3,706 prior .NET cases.
   Fresh selection source audit: eight reference files / 31 functions, clean HEAD below.
   These bounded checks do not establish complete FFT equivalence.
-  Current .NET results: ignored `scratch/ai-selection-140-final-trx/`;
-  build/test/source logs: `scratch/ai-selection-140-*`.
+  Current .NET results: ignored `scratch/ai-scenario-143-full-trx/`;
+  Python log: `scratch/ai-scenario-143-python.txt`. The current owner refactor/drafts
+  were included in the build and tests, excluded from the implementation commit.
   No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
   introduction proofs and synthetic world Save/Load exist. Original campaign,

@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-143 (implementation).** Movement-scenario source/design ZOD-141 is complete.
-There are 33 open tickets below. The 110 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-144 (source/design).** Fresh movement-scenario query ZOD-143 is complete.
+There are 33 open tickets below. The 111 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,16 +29,16 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-143 — Derive a fresh in-reach ordinary-sword movement scenario
+### ZOD-144 — Specify derived-scenario composition and selection ownership
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-141
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-143
 
-Implement the [ZOD-141 contract](architecture/zod-141-ai-movement-scenario.md): derive S,
-D0/D1 from state and certified focused-target/reach/policy facts, score S once in source
-order, preserve signed packed comparison and last-tile ties, adjacency fallback, original
-ticks and private RNG. Require Move<=124 and in-reach; reject unsupported/stale branches
-atomically. Publish immutable source diagnostics without Attack/lottery/command execution.
-Keep public supplied-scenario APIs unchanged; later integration must reuse private scores.
+Specify private continuation from the [fresh scenario query](behavior/sword-ai-movement-scenario.md)
+through one Attack scan/ranked admission/lottery. Remove supplied S/D0/D1 inputs without
+duplicating movement evaluation or accepting public cached outcomes as authority. Define
+preflight and whole-query rollback/diagnostics; distinguish derived facts from remaining
+source-context certificates. Preserve old APIs and exclude out-of-reach branches, Defend,
+full search, authoritative commands and native/editor activation. Recheck source receipt.
 
 ## Existing validation gates
 

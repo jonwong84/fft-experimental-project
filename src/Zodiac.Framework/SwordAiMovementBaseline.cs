@@ -52,31 +52,44 @@ public static class SwordAiMovementBaseline
     internal static bool SupportsProfile(SwordAiMovementBaselineProfile profile) =>
         profile.OriginalScenarioZeroDestination && profile.FreshSourceScoreCell && profile.NormalScoring && profile.CanonicalCoordinates;
 
+    // Pure admission shared with scenario derivation; does not consume hypothetical ticks or draws.
+    internal static SwordAiMovementBaselineRejection ValidateInputs(AttackBattleSnapshot state,
+        SwordAiMovementBaselineRequest request, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile)
+    {
+        if (!scoreProfile.Supports(state, candidateProfile))
+            return SwordAiMovementBaselineRejection.UnsupportedScoreProfile;
+
+        var actor = state.Combatants.FirstOrDefault(u => u.UnitId == request.ActorId);
+        if (actor is null) return SwordAiMovementBaselineRejection.UnknownActor;
+        var target = state.Combatants.FirstOrDefault(u => u.UnitId == request.TargetId);
+        if (target is null) return SwordAiMovementBaselineRejection.UnknownTarget;
+        if (actor.UnitId == target.UnitId) return SwordAiMovementBaselineRejection.UnsupportedProfile;
+        if (state.Combatants.Any(u => u.Hp == 0)) return SwordAiMovementBaselineRejection.TerminalInput;
+        var turns = state.TurnBattle.Turns;
+        var actorTurn = turns.Units.Single(u => u.Id == actor.UnitId);
+        if (turns.Phase != TurnCyclePhase.UnitTurn || turns.ActiveUnitId != actor.UnitId || actorTurn.ActionTaken)
+            return SwordAiMovementBaselineRejection.UnavailableAction;
+        try { candidateProfile.Sword.ValidateState(state); }
+        catch (Exception exception) when (exception is ArgumentException or NotSupportedException)
+        { return SwordAiMovementBaselineRejection.UnsupportedProfile; }
+        var movement = FlatOrdinaryMovement.Evaluate(state, actor.UnitId, candidateProfile.Movement);
+        if (!movement.Accepted) return SwordAiMovementBaselineRejection.UnsupportedProfile;
+        if (!movement.Outcome!.AiOrigins.Contains(request.Destination))
+            return SwordAiMovementBaselineRejection.InvalidDestination;
+        return SwordAiMovementBaselineRejection.None;
+    }
+
     // The composition owns source-mask/context admission. Non-D0 cells do not assert they are scenario-0 destinations.
     internal static SwordAiMovementBaselineResult EvaluateFreshTile(AttackBattleSnapshot state, SwordAiMovementBaselineRequest request,
         SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, FftRandomState decisionRng)
     {
         SwordAiMovementBaselineResult Reject(SwordAiMovementBaselineRejection reason) => new(false, reason, null, decisionRng);
-        if (!scoreProfile.Supports(state, candidateProfile))
-            return Reject(SwordAiMovementBaselineRejection.UnsupportedScoreProfile);
-
-        var actor = state.Combatants.FirstOrDefault(u => u.UnitId == request.ActorId);
-        if (actor is null) return Reject(SwordAiMovementBaselineRejection.UnknownActor);
-        var target = state.Combatants.FirstOrDefault(u => u.UnitId == request.TargetId);
-        if (target is null) return Reject(SwordAiMovementBaselineRejection.UnknownTarget);
-        if (actor.UnitId == target.UnitId) return Reject(SwordAiMovementBaselineRejection.UnsupportedProfile);
-        if (state.Combatants.Any(u => u.Hp == 0)) return Reject(SwordAiMovementBaselineRejection.TerminalInput);
+        var invalid = ValidateInputs(state, request, candidateProfile, scoreProfile);
+        if (invalid != SwordAiMovementBaselineRejection.None) return Reject(invalid);
+        var actor = state.Combatants.Single(u => u.UnitId == request.ActorId);
+        var target = state.Combatants.Single(u => u.UnitId == request.TargetId);
         var turns = state.TurnBattle.Turns;
         var actorTurn = turns.Units.Single(u => u.Id == actor.UnitId);
-        if (turns.Phase != TurnCyclePhase.UnitTurn || turns.ActiveUnitId != actor.UnitId || actorTurn.ActionTaken)
-            return Reject(SwordAiMovementBaselineRejection.UnavailableAction);
-        try { candidateProfile.Sword.ValidateState(state); }
-        catch (Exception exception) when (exception is ArgumentException or NotSupportedException)
-        { return Reject(SwordAiMovementBaselineRejection.UnsupportedProfile); }
-        var movement = FlatOrdinaryMovement.Evaluate(state, actor.UnitId, candidateProfile.Movement);
-        if (!movement.Accepted) return Reject(SwordAiMovementBaselineRejection.UnsupportedProfile);
-        if (!movement.Outcome!.AiOrigins.Contains(request.Destination))
-            return Reject(SwordAiMovementBaselineRejection.InvalidDestination);
 
         var battle = state.TurnBattle.Battle;
         battle.TryGetUnit(actor.UnitId, out var body);
