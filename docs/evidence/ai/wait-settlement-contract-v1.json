@@ -1,0 +1,94 @@
+{
+  "format": "fft.ai-wait-settlement-contract-evidence",
+  "schemaVersion": 1,
+  "ticket": "ZOD-152",
+  "date": "2026-10-28",
+  "managedBaseRevision": "999d114dcd1927b831c73058e66c1c9d80bf2924",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "sourceReceipt": "docs/evidence/ai/wait-facing-contract-v1.json",
+  "contract": "docs/architecture/zod-152-ai-wait-settlement.md",
+  "additionalSourceFiles": [
+    {
+      "path": "src/battle/turn/clock.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40868,
+      "sha256": "f76188542c39818fa2ab478e42ef63b4eb0f2c1c2db5a74db4120ddbaf4cb8cb"
+    },
+    {
+      "path": "src/battle/units/placement.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 21907,
+      "sha256": "51d58903dfe661921b7817d4c2b7287670e381240e229917ca6990c006eff1b8"
+    },
+    {
+      "path": "include/fft/turn.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2844,
+      "sha256": "bf8eac9a51807894a645b9587c68323ab8c95411a176a0ccfbbfd752dfbfe6dd"
+    }
+  ],
+  "additionalSourceFunctions": [
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_end",
+      "startLine": 947,
+      "endLine": 974,
+      "normalizedLfSha256": "2071e4d41c2099741ca3ae787add5e7b731df488197b87a47ca84291a6ac268b"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_should_end",
+      "startLine": 979,
+      "endLine": 993,
+      "normalizedLfSha256": "e681268c0903794a2ff9b9de8f2b18b663bc565ea4a047e6f005e63bc6155e86"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_move_act_taken_set",
+      "startLine": 923,
+      "endLine": 940,
+      "normalizedLfSha256": "ab6508dce1e9e9ef352a27b22a0166a0526d1571fb059f969937605b630782d7"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_act_taken_set",
+      "startLine": 911,
+      "endLine": 913,
+      "normalizedLfSha256": "2e7ff86ef337d8518e041f9c75fee3baa524c575c33d2d7648dbdee014b71c72"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_move_taken_set",
+      "startLine": 917,
+      "endLine": 919,
+      "normalizedLfSha256": "33ab5c25886e5024d08162213229046ed8d7442ef11ca4db3363107098785b79"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "unit_facing_set_cardinal",
+      "startLine": 794,
+      "endLine": 828,
+      "normalizedLfSha256": "c1b5f150fac68caf14b96d2c6520efd3677d91c3096ae9e70a6c3f209552ac47"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "tile_position_with_partner_set",
+      "startLine": 3155,
+      "endLine": 3172,
+      "normalizedLfSha256": "56a97ad3a15e3e8a4c0d0c07d3f4c185eb5bdd7545411124ec699e6ca55acded"
+    },
+    {
+      "path": "src/battle/units/placement.c",
+      "symbol": "unit_set_tile_position",
+      "startLine": 428,
+      "endLine": 478,
+      "normalizedLfSha256": "d913dc5966724e9dc6ba44a877fedc3226af160924038aaf6a3a6e5ac0dc8c30"
+    }
+  ],
+  "productionImplemented": false,
+  "runtimeActivated": false,
+  "originalExecuted": false,
+  "cReferenceExecuted": false,
+  "managedAcceptanceStatus": "Unexecuted proposals for ZOD-153"
+}

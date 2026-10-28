@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-152 (source/design).** Pure Wait-facing query ZOD-151 is complete.
-There are 33 open tickets below. The 119 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-153 (implementation).** Wait settlement contract ZOD-152 is complete.
+There are 33 open tickets below. The 120 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,16 +29,15 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-152 — Specify source-certified AI Wait settlement through existing receipts
+### ZOD-153 — Apply source-certified AI Wait facing through existing receipts
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-151
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-152
 
-Trace the Wait caller's facing/stat publication and turn_end ordering, refund widths,
-automatic completion and guarded repeated end. Specify integration of the fresh resolver
-with existing FacingTurnState/WaitWithFacing/FinishFacing receipts, covering active Wait
-and already-ended pending facing without double refund or forged turn state. Preserve
-old APIs, current RNG and atomic failure; exclude no-enemy/overlap quirks and native
-presentation activation. Decide minimal internal reuse before implementing.
+Implement the [settlement contract](architecture/zod-152-ai-wait-settlement.md): fresh
+Wait-facing resolution through existing active Wait and pending completion authority.
+Require explicit ordinary source context; preserve CT/refund ordering, current RNG,
+atomic failure and old APIs. Validate real Move/Attack completion receipts, both orders,
+stale/foreign rejection and replay. No native activation or cached-plan authority.
 
 ## Existing validation gates
 

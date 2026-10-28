@@ -6,11 +6,11 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-152: source/design AI Wait settlement through the existing facing session.**
-The [pure resolver](behavior/sword-ai-wait-facing.md) now resolves active settled
-positions without applying facing. Trace ordinary turn_end and stat publication,
-then specify reuse of active Wait and completion receipts without double refund,
-invented active state or cached-plan authority. Keep native activation separate.
+**ZOD-153: implement AI Wait settlement through the existing facing session.**
+The [source contract](architecture/zod-152-ai-wait-settlement.md) specifies explicit
+active Wait versus receipt-authorized completion after both choices. Reuse the
+existing authority guards and fresh resolver, require ordinary turn-end context,
+and preserve current RNG and atomic failure. Keep native activation separate.
 
 The current pure queries derive S/D0/D1 for focused-opponent, ordinary-sword
 reach/policy facts and raw Move<=124 through explicit in/out-of-reach entries.
@@ -32,6 +32,10 @@ managed roster size. The contract records the erratum without rewriting old evid
   21 new cases; the source scalar is shared with existing facing-session choices.
   Active actor only; completion-receipt integration follows separately.
   No native/editor activation or original decision-equivalence claim.
+- Latest source/design: ZOD-152, [settlement contract](architecture/zod-152-ai-wait-settlement.md).
+  Clean pinned audit adds three source files/eight functions for refund, automatic
+  completion and facing publication (`scratch/ai-wait-settlement-152/source.json`).
+  Adapter acceptance proposals await ZOD-153; no production changes in this contract.
 - Complete validation: locked restore, zero-warning/error Release build,
   **3,808 .NET cases / 496 Python tests**, including 3,787 prior local cases.
   Clean source audit: inherited receipts plus Wait functions/directional proof

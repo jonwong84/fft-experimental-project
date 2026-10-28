@@ -28,7 +28,7 @@ def direction(target, origin):
     return 4
 
 
-def audit(reference):
+def audit(reference, settlement=False):
     report = audit_scenario_source(reference, out_of_reach=True)
     evidence = json.loads(EVIDENCE.read_text(encoding='utf-8'))
     require(evidence['referenceRevision'] == report['referenceRevision'], 'Wait reference revision')
@@ -53,16 +53,28 @@ def audit(reference):
                     'Directional neighbor must approach target')
             pairs += 1
     require(direction((5, 5), (5, 5)) == 4, 'Overlap direction; stack-dependent viability deliberately unresolved')
-    return dict(**report, waitSourceFiles=len(evidence['sourceFiles']), waitSourceFunctions=len(evidence['sourceFunctions']),
+    result = dict(**report, waitSourceFiles=len(evidence['sourceFiles']), waitSourceFunctions=len(evidence['sourceFunctions']),
                 directionVectors=len(evidence['directionVectors']), directionPairs=pairs, overlapViabilityResolved=False)
+    if settlement:
+        extension = json.loads((ROOT / 'docs/evidence/ai/wait-settlement-contract-v1.json').read_text(encoding='utf-8'))
+        require(extension['referenceRevision'] == report['referenceRevision'], 'Settlement reference revision')
+        for entry in extension['additionalSourceFiles']:
+            require(fingerprint(reference, entry['path']) == entry, 'Source mismatch: ' + entry['path'])
+        for entry in extension['additionalSourceFunctions']:
+            actual = function_fingerprint(reference / entry['path'], entry['symbol'])
+            require(actual['normalizedLfSha256'] == entry['normalizedLfSha256'], 'Function mismatch: ' + entry['symbol'])
+        result['settlementFiles'] = len(extension['additionalSourceFiles'])
+        result['settlementFunctions'] = len(extension['additionalSourceFunctions'])
+    return result
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--reference', type=Path, required=True)
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--settlement', action='store_true', help='Also audit the ZOD-152 settlement receipt')
     args = parser.parse_args()
-    report = audit(args.reference)
+    report = audit(args.reference, args.settlement)
     if args.output:
         with args.output.open('x', encoding='utf-8') as stream:
             json.dump(report, stream, indent=2)
