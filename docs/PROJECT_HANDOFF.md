@@ -6,10 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-150: source/design deferred wait-facing for two ordinary opponents.**
-Trace the original caller, hint, cardinal/diagonal math and tile/enemy viability
-on settled positions. Bound a pure query before implementing; keep overlap and
-no-enemy quirks visible, control separate from team, and facing application separate.
+**ZOD-151: implement a pure settled-state ordinary wait-facing query.**
+The [ZOD-150 contract](architecture/zod-150-ai-wait-facing.md) reduces two living
+eligible flat opponents to exact source cardinal/diagonal math. Require original
+AI ChooseAtWait and eligible-opponent facts, allow ACT already used, map enum
+names explicitly, consume no RNG/ticks. Overlap/no-enemy stack-read behavior is
+excluded, not fixed. Do not apply facing or run from hypothetical plan positions.
 
 The current pure queries derive S/D0/D1 for focused-opponent, ordinary-sword
 reach/policy facts and raw Move<=124 through explicit in/out-of-reach entries.
@@ -27,6 +29,10 @@ managed roster size. The contract records the erratum without rewriting old evid
 
 ## Current implementation and validation
 
+- Latest source checkpoint: ZOD-150; seven receipt files / 12 functions verified,
+  eight direction literals and 65,280 distinct position pairs checked offline.
+  No production C# or .NET rerun at this checkpoint. Managed Wait expectations
+  remain unexecuted. Report: `scratch/ai-wait-facing-150/source.json`.
 - Latest implementation: ZOD-149, [out-of-reach selector and evidence](behavior/sword-ai-out-of-reach-selection.md).
   20 new cases; both derived entry points now require false-default FirstAttackEntry.
   Certified in-reach vectors and legacy supplied APIs stay unchanged.
@@ -37,7 +43,7 @@ managed roster size. The contract records the erratum without rewriting old evid
   extension (`scratch/ai-out-of-reach-149/source.json`).
   These bounded checks do not establish complete FFT equivalence.
   Current .NET results: ignored `scratch/ai-out-of-reach-149-full-trx/`;
-  Latest Python log: `scratch/ai-out-of-reach-149/python.txt`. The current owner refactor/drafts
+  Latest Python log: `scratch/ai-wait-facing-150/python.txt`. The current owner refactor/drafts
   were included in the build and tests, excluded from the implementation commit.
   No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/

@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-150 (source/design).** Out-of-reach selector ZOD-149 is complete.
-There are 33 open tickets below. The 117 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-151 (implementation).** Wait-facing source/design ZOD-150 is complete.
+There are 33 open tickets below. The 118 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,16 +29,16 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-150 — Specify deferred wait-facing resolution for two ordinary opponents
+### ZOD-151 — Resolve deferred wait-facing for two settled ordinary opponents
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-149
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-150
 
-Trace the original Wait caller, ChooseAtWait hint, directional math/ordinals,
-adjacent-tile viability and nearest-enemy admission on settled positions. Bound a
-pure query to two living ordinary flat opponents; record overlap/no-enemy stack-read
-quirks and unreachable fallback branches instead of fixing them. Separate control flag
-from team, source caches from current state, and diagnosis from authoritative facing
-application. Specify focused acceptance cases before coding; no host/command activation.
+Implement the [ZOD-150 contract](architecture/zod-150-ai-wait-facing.md) as a pure
+settled-state query with explicit original AI ChooseAtWait/eligible-opponent facts.
+Preserve source cardinal/diagonal ties and semantic enum mapping; occupied target tiles
+do not block facing. Accept already-used ACT, consume zero RNG/ticks and preserve live
+state. Reject unsupported/no-enemy/overlap context without inventing stack-byte behavior.
+No cached plan authority, facing application, commands or host/editor activation.
 
 ## Existing validation gates
 

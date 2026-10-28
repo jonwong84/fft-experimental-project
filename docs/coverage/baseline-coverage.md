@@ -3,7 +3,7 @@
 Generated from `baseline-coverage.json` by `tools/verification/verify_baseline_coverage.py --write-view`.
 Edit the JSON, then regenerate this view. See [the inventory guide](README.md) for status/evidence rules.
 
-Target: **SCUS-94221**. Snapshot: 2026-10-28; managed base `2d993542944512e33f9bf191d52d0e0051b2e716`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+Target: **SCUS-94221**. Snapshot: 2026-10-28; managed base `45123d96c03b7e5fd12e6ba95ac8cd5777d15796`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 These entries are planning scopes, not a feature-completion percentage or a complete record/encounter catalog.
 
 ## Simulation
@@ -189,7 +189,7 @@ Status: **partial**; scope: **baseline**; ticket: **ZOD-038**; owner area: Zodia
 
 Pure opt-in two-opponent ordinary-sword queries derive movement cells/D0/D1 through explicit in/out-of-reach branches, score movement once, retain original Blue/NonBlue reach adjustment, scan one certified first/terminal Attack and run the original lottery/MoveOnly fallback. No AI policy executes in the playable sample; full search, resolved facing and command authority remain open.
 
-Evidence: [docs/architecture/zod-141-ai-movement-scenario.md](../../docs/architecture/zod-141-ai-movement-scenario.md), [docs/architecture/zod-144-ai-derived-selection.md](../../docs/architecture/zod-144-ai-derived-selection.md), [docs/architecture/zod-146-ai-out-of-reach-scenario.md](../../docs/architecture/zod-146-ai-out-of-reach-scenario.md), [docs/behavior/sword-ai-derived-selection.md](../../docs/behavior/sword-ai-derived-selection.md), [docs/architecture/zod-148-ai-out-of-reach-selection.md](../../docs/architecture/zod-148-ai-out-of-reach-selection.md), [docs/behavior/sword-ai-out-of-reach-scenario.md](../../docs/behavior/sword-ai-out-of-reach-scenario.md), [docs/behavior/sword-ai-out-of-reach-selection.md](../../docs/behavior/sword-ai-out-of-reach-selection.md).
+Evidence: [docs/architecture/zod-141-ai-movement-scenario.md](../../docs/architecture/zod-141-ai-movement-scenario.md), [docs/architecture/zod-144-ai-derived-selection.md](../../docs/architecture/zod-144-ai-derived-selection.md), [docs/architecture/zod-146-ai-out-of-reach-scenario.md](../../docs/architecture/zod-146-ai-out-of-reach-scenario.md), [docs/behavior/sword-ai-derived-selection.md](../../docs/behavior/sword-ai-derived-selection.md), [docs/architecture/zod-148-ai-out-of-reach-selection.md](../../docs/architecture/zod-148-ai-out-of-reach-selection.md), [docs/architecture/zod-150-ai-wait-facing.md](../../docs/architecture/zod-150-ai-wait-facing.md), [docs/behavior/sword-ai-out-of-reach-scenario.md](../../docs/behavior/sword-ai-out-of-reach-scenario.md), [docs/behavior/sword-ai-out-of-reach-selection.md](../../docs/behavior/sword-ai-out-of-reach-selection.md).
 
 Source entry points (pinned revision above; not full traces): [src/battle/ai/turn.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/ai/turn.c), [src/battle/ai/evaluation.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/ai/evaluation.c), [include/fft/ai.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/ai.h).
 
@@ -204,9 +204,9 @@ Remaining gaps:
 - Full target/ability/roster search, out-of-reach and special policies, Defend, replacement interface, command/facing execution and live RNG commitment remain open.
 - Caller certificates still describe unrepresented original context; bounded source-derived synthetic vectors do not establish full original decision equivalence.
 
-Next action: Trace deferred wait-facing resolution on settled positions for two living ordinary opponents before adding a pure resolver; live command and host activation remain separate.
+Next action: Implement the source-traced pure settled-state ChooseAtWait resolver for two living ordinary opponents, with semantic direction mapping, explicit context facts and zero RNG/ticks; live facing/command/host activation remain separate.
 
-Bounded follow-ups: ZOD-150.
+Bounded follow-ups: ZOD-151.
 
 ### COV-SIM-010 — XP, JP, growth, learned abilities and job unlocks
 
