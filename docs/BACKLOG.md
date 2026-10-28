@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-172 (implementation).** Fresh unmoved preparation trace/design ZOD-171 is complete.
-There are 33 open tickets below. The 139 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-173 (implementation).** Pure fresh unmoved refresh/preparation ZOD-172 is complete.
+There are 33 open tickets below. The 140 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,19 +29,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-172 — Implement pure fresh unmoved AI refresh and preparation
+### ZOD-173 — Compose fresh unmoved preparation with pure AI selection
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-171
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-172
 
-Implement explicit unused-Move/unused-ACT refresh and NonBlue preparation entries
-from the [source/design](architecture/zod-171-ai-unmoved-preparation.md). Own one
-fresh refresh with min(60, liveCT+40), retain its one upkeep draw, then derive full
-ordinary reachable origins and policy/focus from the original live snapshot.
-Preserve existing already-moved API admission and current entry/cache/list/profile
-certificates. Verify source vectors, exact limits, rollback and identity/order
-isolation without copying shared flag/geometry matrices. Pure diagnostics/RNG only;
-prepared selection, live Move-first integration, ACT-first/post-ACT and host
-activation remain subsequent work.
+Privately own the [fresh unmoved prefix](behavior/sword-ai-unmoved-preparation.md)
+and existing explicit in/out-of-reach selectors in new pure prepared entries.
+Carry the actual refresh draw into one movement-score/Attack-scan/lottery sequence
+on the original snapshot. Derive entry/focus/first-and-terminal-list facts from
+the owned preparation; retain remaining policy and NonBlue certificates. Accept
+no public cached preparation or geometry. Verify literal complete streams,
+fallback, exact limits, whole-query rollback and identity/order replay; preserve
+already-moved and post-prefix APIs. No command/session authority, live Move-first
+integration, ACT-first/post-ACT execution or host activation in this child.
 
 ## Existing validation gates
 

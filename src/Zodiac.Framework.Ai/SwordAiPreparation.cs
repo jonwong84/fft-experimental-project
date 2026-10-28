@@ -19,19 +19,34 @@ public sealed record SwordAiPreparationOutcome(SwordAiRefreshOutcome Refresh,
     ImmutableArray<SwordAiRefreshPolicy> Policies, TilePosition Origin, TilePosition FocusPosition,
     int ActorDelay, int TargetDelay, int EnemyAbilityReach, int AllyAbilityReach, byte FoeProximity,
     bool RetreatSupportAvailable, bool SingleEnemyRemaining, bool TargetActive,
-    bool ManualAutobattle, int RandomUseThreshold);
+    bool ManualAutobattle, int RandomUseThreshold)
+{
+    /// <summary>Owned restored-state origins from EvaluateUnmoved. The legacy already-moved entry leaves this empty.</summary>
+    public ImmutableArray<TilePosition> ReachableOrigins { get; init; } = [];
+}
 
 /// <summary>Failure returns original RNG with no partial refresh/preparation output.</summary>
 public sealed record SwordAiPreparationResult(bool Accepted, SwordAiPreparationRejection Rejection,
     SwordAiRefreshRejection RefreshRejection, SwordAiPreparationOutcome? Outcome, FftRandomState RngState);
 
 /// <summary>Fresh pure refresh and ordinary NonBlue preparation, without selection or command authority.</summary>
-/// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-160/161. Preparation adds no draws after refresh.</remarks>
+/// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-160/161/171/172. Preparation adds no draws after refresh.</remarks>
 public static class SwordAiPreparation
 {
     public static SwordAiPreparationResult Evaluate(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
         SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team, FftRandomState decisionRng)
+        => EvaluateCore(state, request, candidateProfile, scoreProfile, refreshProfile, preparationProfile, team, decisionRng, alreadyMoved: true);
+
+    /// <summary>Own fresh both-unused refresh and full ordinary reachability, then derive policy on restored live state.</summary>
+    public static SwordAiPreparationResult EvaluateUnmoved(AttackBattleSnapshot state, SwordAiRefreshRequest request,
+        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
+        SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team, FftRandomState decisionRng)
+        => EvaluateCore(state, request, candidateProfile, scoreProfile, refreshProfile, preparationProfile, team, decisionRng, alreadyMoved: false);
+
+    private static SwordAiPreparationResult EvaluateCore(AttackBattleSnapshot state, SwordAiRefreshRequest request,
+        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
+        SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team, FftRandomState decisionRng, bool alreadyMoved)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(request);
@@ -48,8 +63,18 @@ public static class SwordAiPreparation
         if (state.TurnBattle.Battle.TryGetUnit(request.ActorId, out var actor) && actor!.Move > 124)
             return Reject(SwordAiPreparationRejection.UnsupportedProfile);
 
-        var refresh = SwordAiRefresh.Evaluate(state, request, candidateProfile, scoreProfile, refreshProfile, decisionRng);
+        var refresh = alreadyMoved
+            ? SwordAiRefresh.Evaluate(state, request, candidateProfile, scoreProfile, refreshProfile, decisionRng)
+            : SwordAiRefresh.EvaluateUnmoved(state, request, candidateProfile, scoreProfile, refreshProfile, decisionRng);
         if (!refresh.Accepted) return Reject(SwordAiPreparationRejection.RefreshRejected, refresh.Rejection);
+        ImmutableArray<TilePosition> origins = [];
+        if (!alreadyMoved)
+        {
+            // TurnBattleState enforces HasMoved == MovementTaken. Never use refresh's hypothetical clock units.
+            var geometry = FlatOrdinaryMovement.Evaluate(state, request.ActorId, candidateProfile.Movement);
+            if (!geometry.Accepted) return Reject(SwordAiPreparationRejection.UnsupportedProfile);
+            origins = geometry.Outcome!.AiOrigins;
+        }
         var turns = state.TurnBattle.Turns.Units;
         static int Delay(TurnUnitState unit) => (Math.Max(0, 100 - unit.Ct) + unit.Speed - 1) / unit.Speed;
         int actorDelay = Delay(turns.Single(u => u.Id == request.ActorId));
@@ -66,6 +91,6 @@ public static class SwordAiPreparation
         return new(true, SwordAiPreparationRejection.None, SwordAiRefreshRejection.None,
             new(refresh.Outcome, policies, origin, focus, actorDelay, targetDelay, actor.Move + 1, actor.Move,
                 proximity, RetreatSupportAvailable: false, SingleEnemyRemaining: false, TargetActive: true,
-                ManualAutobattle: true, RandomUseThreshold: 0), refresh.RngState);
+                ManualAutobattle: true, RandomUseThreshold: 0) { ReachableOrigins = origins }, refresh.RngState);
     }
 }
