@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-170 (implementation).** In-reach post-prefix Move-first execution ZOD-169 is complete.
-There are 33 open tickets below. The 137 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-171 (source/design).** Explicit in/out-of-reach post-prefix Move-first execution is complete.
+There are 33 open tickets below. The 138 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,18 +29,16 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-170 — Integrate post-prefix out-of-reach AI Move-first fallback
+### ZOD-171 — Trace fresh unmoved AI preparation
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-169
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-170
 
-Extend the [Move-first adapter](behavior/sword-ai-move-first-execution.md) through
-one existing fresh out-of-reach selector, explicit known Blue/NonBlue team and
-fresh dispatch inside the same Framework callback. Preserve post-score reach
-adjustment and eight-roll fallback RNG, require a real Move-first result and
-freeze deferred Wait for its opaque continuation. Verify literal schedules,
-branch/context rejection, exact budgets and per-step rollback/replay. Retain
-post-prefix source certificates; no fresh unmoved preparation, ACT-first/post-ACT
-reselection, automatic branch dispatch or host activation.
+Trace the fresh unused-Move/unused-ACT refresh and preparation path against the
+pinned reference before extending already-moved APIs. Verify no-action CT refund,
+clock/restoration/RNG and full ordinary reachable tiles, then restored-state
+ability/team/focus preparation. Define a bounded pure child with source-derived
+clock and geometry vectors. Keep entry/cache/list certificates explicit; no
+production preparation, ACT-first/post-ACT execution or host activation here.
 
 ## Existing validation gates
 

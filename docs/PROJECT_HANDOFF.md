@@ -6,12 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-170: integrate post-prefix out-of-reach AI Move-first fallback.**
-Reuse the [Move-first adapter](behavior/sword-ai-move-first-execution.md), existing
-out-of-reach selector and explicit known team, retaining reach-adjustment/lottery
-RNG. Require a real Move-first result and continue its frozen Wait through
-Framework. Existing in-reach handoff is complete. Fresh unmoved preparation,
-ACT-first/post-ACT reselection and host activation remain separate.
+**ZOD-171: trace fresh unmoved AI preparation.**
+Both explicit post-prefix Move-first branches now use the Framework path Move and
+frozen continuation. Trace unused-Move refresh CT/clock/restoration and ordinary
+reachability before extending the fresh preparation APIs, which still require
+already-moved actors. Source/design only; ACT-first/post-ACT and host activation
+remain separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and new
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
@@ -35,7 +35,7 @@ RNG without partial output. Original supplied-scenario APIs stay unchanged; no c
 authority or live RNG commit.
 
 Full AI search, general multi-entry ranking/lottery, replaceable decision interface,
-fresh unmoved preparation, out-of-reach Move-first integration, ACT-first/post-ACT
+fresh unmoved preparation, ACT-first/post-ACT
 command lifecycle and presentation activation remain future work.
 Original UNIT_SLOT_COUNT is **21**; the old 26-foe wrap example is inadmissible.
 This does not select a fixed managed roster size. The contract records the erratum
@@ -43,18 +43,18 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-168/169, [Framework Move boundary](behavior/planned-move-continuation.md)
-  and [in-reach AI Move-first execution](behavior/sword-ai-move-first-execution.md).
-  Fourteen new managed cases cover fresh ownership/RNG, real path/heading, frozen
-  actual Attack/deferred Wait, exact-session tokens, per-step rollback and replay.
-  The AI adapter starts at certified post-prefix general selection; no host activation.
+- Latest implementation: ZOD-170, [out-of-reach Move-first execution](behavior/sword-ai-move-first-out-of-reach.md),
+  sharing the in-reach adapter and Framework exact-session continuation. Four new
+  scenario tests cover literal team streams, reach halving, exact budgets,
+  branch/context rejection, actual Move/Wait and continuation replay/isolation.
 - Latest design: ZOD-167, [two-step boundary](architecture/zod-167-move-continuation-boundary.md),
-  now implemented. Inherited pinned source audit passed
-  (`scratch/ai-move-first-169/source.json`). Existing original contracts remain historical.
+  implemented. Inherited pinned source audit passes at
+  `scratch/ai-move-first-170/source.json`. Historical contracts remain unchanged.
 - Validation: locked restore, zero-warning/error Release build,
-  **3,920 .NET cases / 510 Python tests**, including the owner's content drafts.
+  **3,924 .NET cases**, including the owner's content drafts. Last Python run:
+  **510 tests at ZOD-169**; no Python changed in ZOD-170.
   These bounded checks do not establish full original decision equivalence.
-  Results/logs: ignored `scratch/ai-move-first-169/` (seven full TRX files).
+  Results/logs: ignored `scratch/ai-move-first-170/` (seven full TRX files).
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.
   No original/C execution or UI review.
