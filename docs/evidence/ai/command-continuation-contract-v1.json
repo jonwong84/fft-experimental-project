@@ -1,0 +1,255 @@
+{
+  "format": "fft.ai-command-continuation-source-evidence",
+  "schemaVersion": 1,
+  "ticket": "ZOD-165",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "managedBaseRevision": "3c008f84d5fedacd6e40f3fe8ebffbd7e1412372",
+  "sourceReceipt": "docs/evidence/ai/preparation-contract-v1.json",
+  "additionalSourceFiles": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 147880,
+      "sha256": "5519c4550e9fea302ee4366848435b8131c7d3aef24f02462c7571d11bd1cd17"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 111880,
+      "sha256": "22555f06b061bc6f017f721998a5e44dfb3d4fa4c7284a2ee3367dfa27ce80ad"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 187246,
+      "sha256": "2792e2b861e8de4f4f996a5491dbacde0b96f77518a75cc4b8eebf2d6bc1557f"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40868,
+      "sha256": "f76188542c39818fa2ab478e42ef63b4eb0f2c1c2db5a74db4120ddbaf4cb8cb"
+    },
+    {
+      "path": "src/battle/units/placement.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 21907,
+      "sha256": "51d58903dfe661921b7817d4c2b7287670e381240e229917ca6990c006eff1b8"
+    },
+    {
+      "path": "src/battle/units/movement.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 109656,
+      "sha256": "e008ef1f59d1a01c52b41d535203765af519e6336952b884f6e90762a4050e0c"
+    },
+    {
+      "path": "include/fft/ai.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 25771,
+      "sha256": "fa7aabf5b4d21e3f42be7978c061fb859a52709a234e5b4205c5de5e2c8566b5"
+    },
+    {
+      "path": "include/fft/ai_decision.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9018,
+      "sha256": "a88a67152b5143b74121946b7dffd4c8b76b568d9947c828d6620014a741b02b"
+    },
+    {
+      "path": "include/fft/turn_command.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2166,
+      "sha256": "bff9d91a197c4e67bdbb633c8a034c0aa8c28ba8ac04e86cef68e199c7a64eb8"
+    }
+  ],
+  "additionalSourceFunctions": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_command_build",
+      "startLine": 131,
+      "endLine": 224,
+      "normalizedLfSha256": "b4a01ef870fceac6d31bc8ab370f0b4053aaee69fc3dd55d9b79c78a0975a5bf"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "acting_unit_init",
+      "startLine": 231,
+      "endLine": 257,
+      "normalizedLfSha256": "a37e5edabf630b38b02bb72acb35f5a27c0ab64a0a4e821b660418b321ab2987"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_action_rank_reset",
+      "startLine": 1225,
+      "endLine": 1232,
+      "normalizedLfSha256": "36b0c3d4fee5d8b9adef0a2a7bc1d8e757542f373ec6bc79cb19e0f94fedbcc5"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_selected_action_init",
+      "startLine": 257,
+      "endLine": 259,
+      "normalizedLfSha256": "7145147afde4387ae78f8377a7ca82ddd3aee8085229ea477eacbc199a6097af"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_triggered_trap_coords_store",
+      "startLine": 268,
+      "endLine": 286,
+      "normalizedLfSha256": "fab3ece1442368bb00aa54df92c8d74b023a354e5b0250afd8de9783dfcce88c"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "turn_next_event_start",
+      "startLine": 338,
+      "endLine": 381,
+      "normalizedLfSha256": "0d802a58c97e21e70a10b1c43c0f351ec0d68d57485d8a78961020554ef6f369"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "ai_command_enter",
+      "startLine": 420,
+      "endLine": 432,
+      "normalizedLfSha256": "df699a46b35a19301adaad11547840328a841b304c43acaea0a3ceba95a3240d"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "menu_action_dispatch",
+      "startLine": 495,
+      "endLine": 511,
+      "normalizedLfSha256": "ac58e8a5c1ca75ef883c569a27a4afa51b8f9d0735f1dca651b826ec827cca11"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_ai_command_update",
+      "startLine": 2665,
+      "endLine": 2768,
+      "normalizedLfSha256": "11c99d696f9f045abdb27800c9452d187368a1197d3249c793c5b94515da64e9"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_select_move_tile_update",
+      "startLine": 2878,
+      "endLine": 2937,
+      "normalizedLfSha256": "a799c95dfcf5fe2ce97c9e5021aca7df3a6cbc6e1d92dba381f700410b455199"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "move_confirm",
+      "startLine": 3067,
+      "endLine": 3095,
+      "normalizedLfSha256": "39e3103aa39d609ae0d0c13aa16de41865ceccc77352e4dcda7dd5b5ab61be35"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "move_start_post_events",
+      "startLine": 1014,
+      "endLine": 1030,
+      "normalizedLfSha256": "c3ba6f577bc7c25ea986070b37ba1095a02f3ddced59a05f9db787b7909ecb4b"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "move_start_next_post_event",
+      "startLine": 878,
+      "endLine": 1005,
+      "normalizedLfSha256": "677071c735ad75ba98f88540b1c590b50fcacba9e3b4ebf9d08df9f7907a7edf"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_post_move_events_update",
+      "startLine": 3259,
+      "endLine": 3341,
+      "normalizedLfSha256": "41c6e8a5e32177a0ff7f80124eaca00c21f52846e784772229b16d9215ba6bf3"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_after_command_update",
+      "startLine": 4133,
+      "endLine": 4150,
+      "normalizedLfSha256": "37a6003dc815cb2dd91db8a4513ffb2d969509f2580e171012e68d75209e254c"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_continue_turn_update",
+      "startLine": 4162,
+      "endLine": 4200,
+      "normalizedLfSha256": "b550d805d45f27da83b9718829849dc3c41996da4a91ee19876a32cfa3d0960c"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_wait_direction_enter",
+      "startLine": 1034,
+      "endLine": 1058,
+      "normalizedLfSha256": "a356903cb09ce880fb1c957b88630b1c26a0c1c2f6c84176b7f87463efbc6354"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_event_update",
+      "startLine": 4297,
+      "endLine": 4352,
+      "normalizedLfSha256": "f19e0df75404048bc2b5efb197b6e97c527fb7881ed06be5796d187dfb0f03b2"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_move_taken_set",
+      "startLine": 917,
+      "endLine": 919,
+      "normalizedLfSha256": "33ab5c25886e5024d08162213229046ed8d7442ef11ca4db3363107098785b79"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_move_act_taken_set",
+      "startLine": 923,
+      "endLine": 940,
+      "normalizedLfSha256": "ab6508dce1e9e9ef352a27b22a0166a0526d1571fb059f969937605b630782d7"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_should_end",
+      "startLine": 979,
+      "endLine": 993,
+      "normalizedLfSha256": "e681268c0903794a2ff9b9de8f2b18b663bc565ea4a047e6f005e63bc6155e86"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_is_over",
+      "startLine": 997,
+      "endLine": 1007,
+      "normalizedLfSha256": "54cefb6c873e7a4f3556cc0650d2d0cea964f1e8df26ccefe745c38668f80518"
+    },
+    {
+      "path": "src/battle/units/placement.c",
+      "symbol": "move_get_post_events",
+      "startLine": 484,
+      "endLine": 525,
+      "normalizedLfSha256": "14a2224b5751f5c7d85429ef4a28ba09f920102757a2ebd2525e29de8cbc92d6"
+    },
+    {
+      "path": "src/battle/units/placement.c",
+      "symbol": "move_get_ability_events",
+      "startLine": 529,
+      "endLine": 540,
+      "normalizedLfSha256": "3e26164c245c5434609d81e6a2727a4b6e5a32b25e586df0018df5b7e4ebb4e2"
+    },
+    {
+      "path": "src/battle/units/movement.c",
+      "symbol": "move_step_update",
+      "startLine": 2323,
+      "endLine": 2461,
+      "normalizedLfSha256": "d32fd23fc7b86ce0991bc03c9f1ddd16ca22c2bfff2acd2ec1941b4d6e9d5a34"
+    }
+  ],
+  "originalExecuted": false,
+  "cReferenceExecuted": false,
+  "productionImplemented": false,
+  "nextChild": "ZOD-166: pure ordinary command-dispatch query",
+  "managedAcceptanceStatus": "Unexecuted proposals; no Move/continuation authority is added",
+  "validation": {
+    "sourceAuditReport": "scratch/ai-command-continuation-165/source.json",
+    "pythonTestsPassed": 510,
+    "newPythonTests": 3,
+    "pythonLog": "scratch/ai-command-continuation-165/python.txt",
+    "dotnetRerun": false,
+    "lastDotnetTestsPassed": 3891,
+    "lastDotnetMilestone": "ZOD-164"
+  }
+}

@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-165 (source/design).** Prepared in/out-of-reach execution ZOD-163/164 is complete.
-There are 33 open tickets below. The 132 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-166 (implementation).** Command-continuation source trace ZOD-165 is complete.
+There are 33 open tickets below. The 133 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,18 +29,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-165 — Trace ordinary Move-first command continuation and selection reuse
+### ZOD-166 — Implement a pure ordinary command-dispatch query
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-164
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-165
 
-Trace original ai_command_build's selected-action reuse, moved/acted guards and
-command history for one ordinary two-opponent Move-first decision. Determine what
-survives a real Move, when refresh/reselection runs, and how actual RNG, target
-position and command/facing authority carry across the next invocation. Select one
-managed child and its atomic/stale-input acceptance cases before adding authority
-or a continuation API. Preserve the completed [already-moved prepared paths](behavior/sword-ai-prepared-out-of-reach.md);
-keep broad search, Blue policies, saveable tokens, replacement interfaces and
-host activation separate.
+Implement the [command-reuse contract](architecture/zod-165-ai-command-continuation.md):
+separate pre-selection entry inspection from dispatch after fresh selection,
+classify SelectionRequired/Move/Attack/EndTurn and preserve no-progress precedence
+and normal command-recording semantics. Use explicit same-actor/compact/context
+facts and semantic selected data; no scoring, RNG/tick work or live command authority.
+Reject inconsistent/stale actor or selected payload data atomically; preserve input
+state and test reuse after Move, ACT reselection, fresh-stage ordering and source
+byte limits. Actual Move/opaque continuation authority and unmoved preparation
+remain subsequent work; do not accept these public query outputs as authorization.
 
 ## Existing validation gates
 

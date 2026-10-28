@@ -6,12 +6,13 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-165: trace ordinary Move-first command continuation and selection reuse.**
-Study selected-action reuse, moved/acted guards, command history and actual RNG/
-facing authority after a real Move before selecting one managed child. The
-[already-moved prepared paths](behavior/sword-ai-prepared-out-of-reach.md) now cover
-closed NonBlue in/out-of-reach Attack/Wait. No continuation authority, broader
-policy or host activation is implied by this source/design task.
+**ZOD-166: implement a pure ordinary command-dispatch query.**
+The [source contract](architecture/zod-165-ai-command-continuation.md) proves normal
+Move reuses the selected action without refresh/search, ACT requests reselection,
+and unchanged flags end the turn before either branch. Keep fresh selected-stage
+dispatch separate from earlier entry inspection. This child produces descriptive
+commands only; actual Move/opaque continuation authority and unmoved preparation
+remain later work. Existing prepared execution stays unchanged.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and new
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
@@ -47,11 +48,14 @@ without rewriting old evidence.
   Thirteen new managed cases cover complete literal streams, actual miss/critical/
   push/KO, fallback/refunds, exact budgets, authority and whole-command rollback.
   Explicit branch APIs and prior post-prefix behavior remain; no host activation.
-- Latest source/design: ZOD-160, [preparation contract](architecture/zod-160-ai-preparation.md).
-  Clean audit rechecks 25 preparation functions and inherited execution/out-of-reach
-  receipts (`scratch/ai-prepared-out-of-reach-164/source.json`).
-- Batch validation: locked restore, zero-warning/error Release build,
-  **3,891 .NET cases / 507 Python tests**, including the owner's content drafts.
+- Latest source/design: ZOD-165, [command-reuse contract](architecture/zod-165-ai-command-continuation.md).
+  Clean pinned audit checks nine files/25 continuation functions and ten source
+  branch vectors, plus inherited receipts (`scratch/ai-command-continuation-165/source.json`).
+  Three new offline checks pass; managed ZOD-166 cases remain unexecuted.
+- Last .NET validation (ZOD-164): locked restore, zero-warning/error Release build,
+  **3,891 .NET cases**, including the owner's content drafts; not rerun for this
+  source-only ticket. Latest full Python run: **510 tests**
+  (`scratch/ai-command-continuation-165/python.txt`).
   These bounded checks do not establish full original decision equivalence.
   Results/logs: ignored `scratch/ai-prepared-out-of-reach-164/` (seven full TRX files).
   Owner refactor/drafts are excluded from AI commits. Nine historical checkpoint
