@@ -5,7 +5,7 @@ constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
 **Next bounded work: ZOD-141 (source/design).** The hypothetical selector ZOD-140 is complete.
-There are 32 open tickets below. The 109 completed tickets, prior checkpoints and
+There are 33 open tickets below. The 109 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -243,6 +243,24 @@ measured justification and readable accessors. New flags need no original bit as
 [Policy](architecture/overview.md#content-flag-representation).
 
 [Detailed scope](history/2026-10-27/BACKLOG.md#zod-134--migrate-packed-content-flags-to-semantic-boolean-properties).
+
+### ZOD-142 — Investigate Lion War event instruction upgrade compatibility
+
+**Type:** Conditional spike · **Priority:** P4 · **Status:** Deferred · **Depends on:** ZOD-040, ZOD-049, ZOD-051
+
+Activate when the selected Lion War target requires its event extensions or the owner
+explicitly selects this work. Owner reports Event Instructions Upgrade v1.377; verify
+the exact patch, sources, dependencies and script/compiler dialect before promising
+compatibility. Pin the inspected inputs and trace changed/new instructions and Event
+Conditional Triggers, including scheduling, ordering, repeat/interruption behavior and RNG.
+
+Specify explicit instruction profiles/versions, package requirements and unsupported-op
+diagnostics. Investigate memory/address operations as semantic managed-state access;
+original addresses must not become C# object pointers. Select one bounded compatibility
+proof with original-profile isolation and state/save/replay implications before implementing
+broader support. EVSP/TEST.EVT interoperability needs verified examples and remains an
+offline authoring/import concern, with no required original tool at runtime. This ticket
+does not activate a visual editor, general scripting engine or full TLW integration.
 
 ### ZOD-100 — Revisit an engine contract when substitution is needed
 
