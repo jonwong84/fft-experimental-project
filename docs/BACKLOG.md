@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-147 (implementation).** Out-of-reach source/design ZOD-146 is complete.
-There are 33 open tickets below. The 114 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-148 (source/design).** Out-of-reach movement query ZOD-147 is complete.
+There are 33 open tickets below. The 115 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,17 +29,16 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-147 — Derive a fresh out-of-reach ordinary-sword movement scenario
+### ZOD-148 — Specify out-of-reach derived-selection ownership and ability-prefix facts
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-146
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-147
 
-Implement the [ZOD-146 contract](architecture/zod-146-ai-out-of-reach-scenario.md) as
-an explicit standalone out-of-reach movement entry. Derive S, score it once, apply
-one post-score reach draw only for original NonBlue team bits, select D1 and copy
-D0, retaining S/A distinction and actual fresh-cell provenance. Reject Unknown team
-and wrong branch; report effective reach/raw adjustment/fallback with atomic draw/tick
-failure. Share helpers without changing in-reach behavior. Derived-selector integration,
-full search, commands and native/editor activation remain separate follow-ups.
+Specify a private continuation from the [out-of-reach query](behavior/sword-ai-out-of-reach-scenario.md)
+through existing Attack scan/lottery with original team fact and adjustment RNG carried
+once. Trace why an empty ranked list does not prove no earlier ability work; distinguish
+terminal Attack from a certified skipped prefix. Define remaining admission facts,
+S/A provenance and whole-query failure/selection diagnostics before coding. Keep live
+commands, full ability search and native/editor activation separate.
 
 ## Existing validation gates
 

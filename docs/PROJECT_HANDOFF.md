@@ -6,12 +6,11 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-147: implement one standalone out-of-reach sword movement branch.**
-The [ZOD-146 contract](architecture/zod-146-ai-out-of-reach-scenario.md) specifies
-S filtering, post-score rand()%7 reach-halving for original NonBlue team bits,
-D1 selection/D0 copy and fresh S versus later actor insertion. Blue/NonBlue is
-not player-control or opponent relation. Require a known team class, actual
-private prefix/RNG and atomic adjustment failure. Selector integration follows separately.
+**ZOD-148: specify out-of-reach derived-selection continuation and ability-prefix facts.**
+The [standalone out-of-reach query](behavior/sword-ai-out-of-reach-scenario.md) now
+derives S/D0/D1 and carries Blue/NonBlue post-score adjustment. Specify private
+selection ownership without rescoring; trace missing earlier-ability work versus
+terminal Attack/empty-list certificates. No commands or host activation.
 
 The current pure query derives S/D0/D1 for focused-opponent, ordinary-sword
 reach/policy facts, raw Move<=124 and d<=Move+1. It evaluates movement once, reuses
@@ -28,20 +27,16 @@ managed roster size. The contract records the erratum without rewriting old evid
 
 ## Current implementation and validation
 
-- Latest source checkpoint: ZOD-146; clean pinned receipt and independent RNG
-  literals verified. OOR-001..006 are unexecuted managed proposals; no production
-  change or .NET rerun at this checkpoint. Audit: `scratch/ai-out-of-reach-146/final-source.json`.
-- Completed batch: ZOD-141/143/144/145. Latest implementation:
-  [derived-scenario selector and evidence](behavior/sword-ai-derived-selection.md).
-  22 scenario + 16 integration cases added; shared internal tails preserve old APIs.
+- Latest implementation: ZOD-147, [out-of-reach scenario and evidence](behavior/sword-ai-out-of-reach-scenario.md).
+  16 new cases execute OOR-001..006 and boundaries. Shared core preserves in-reach behavior.
   No native/editor activation or original decision-equivalence claim.
 - Complete validation: locked restore, zero-warning/error Release build,
-  **3,744 .NET cases / 496 Python tests**, including all 3,706 prior .NET cases.
-  Clean source audit: inherited eight-file/31-function selection receipt plus
-  11 inspected scenario functions (`scratch/ai-derived-selection-145-source.json`).
+  **3,760 .NET cases / 496 Python tests**, including all 3,744 prior .NET cases.
+  Clean source audit: inherited selection/scenario receipts plus out-of-reach
+  extension (`scratch/ai-out-of-reach-147/source.json`).
   These bounded checks do not establish complete FFT equivalence.
-  Current .NET results: ignored `scratch/ai-derived-selection-145-full-trx/`;
-  Latest Python log: `scratch/ai-out-of-reach-146/python.txt`. The current owner refactor/drafts
+  Current .NET results: ignored `scratch/ai-out-of-reach-147-full-trx/`;
+  Latest Python log: `scratch/ai-out-of-reach-147/python.txt`. The current owner refactor/drafts
   were included in the build and tests, excluded from the implementation commit.
   No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
@@ -57,7 +52,7 @@ managed roster size. The contract records the erratum without rewriting old evid
 - Continue in `C:/repositories/fft-experimental-project`, branch
   `feature/initial-development`; inspect Git status before editing. Preserve the
   owner's tracked weapon/content-package/exporter/test refactor and untracked
-  WeaponDefinition plus Ability/Common/Item/Status definition drafts. Exclude
+  WeaponDefinition plus Ability/Common/Item/Job/Status definition drafts. Exclude
   them from unrelated commits. Last build includes drafts present at validation.
   Validated completed work may be committed/pushed.
 - Reference `C:/repositories/fft_decomp` is read-only. Last clean recorded HEAD:

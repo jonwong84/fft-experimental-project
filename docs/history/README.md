@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 114 entries index completed bounded work; they do not mean the full game is complete.
+These 115 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -137,3 +137,4 @@ These 114 entries index completed bounded work; they do not mean the full game i
 - [ZOD-144 — Specify derived-scenario composition and selection ownership](../architecture/zod-144-ai-derived-selection.md)
 - [ZOD-145 — Select a hypothetical plan from a freshly derived sword scenario](../behavior/sword-ai-derived-selection.md)
 - [ZOD-146 — Specify a bounded out-of-reach sword movement branch](../architecture/zod-146-ai-out-of-reach-scenario.md)
+- [ZOD-147 — Derive a fresh out-of-reach ordinary-sword movement scenario](../behavior/sword-ai-out-of-reach-scenario.md)

@@ -7,8 +7,8 @@ namespace Zodiac.Framework;
 public sealed record SwordAiMovementScenarioProfile(bool FocusedOpponent = false,
     bool OrdinarySwordReach = false, bool OrdinaryScenarioPolicy = false);
 
-public enum SwordAiMovementScenarioStage { Admission, Movement }
-public enum SwordAiMovementScenarioRejection { UnsupportedProfile, AdmissionRejected, OutOfReach, EvaluationRejected }
+public enum SwordAiMovementScenarioStage { Admission, Movement, ReachAdjustment }
+public enum SwordAiMovementScenarioRejection { UnsupportedProfile, AdmissionRejected, OutOfReach, EvaluationRejected, WrongBranch, RandomDrawCountExhausted }
 public sealed record SwordAiMovementScenarioFailure(SwordAiMovementScenarioRejection Reason,
     SwordAiMovementScenarioStage Stage, int? Index = null,
     SwordAiMovementBaselineRejection MovementReason = SwordAiMovementBaselineRejection.None);
@@ -20,23 +20,57 @@ public sealed record SwordAiMovementScenarioOutcome(SwordAiCompositionScenario S
 public sealed record SwordAiMovementScenarioResult(bool Accepted, SwordAiMovementScenarioFailure? Failure,
     SwordAiMovementScenarioOutcome? Outcome, FftRandomState RngState);
 
-/// <summary>Fresh, pure derivation of the focused in-reach ordinary-sword general-search movement branch.</summary>
-/// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-141/143. No Attack, lottery or command execution.</remarks>
+/// <summary>Original masked team class, independent of control, actor identity or opponent relation.</summary>
+public enum SwordAiScenarioTeam { Unknown, Blue, NonBlue }
+public sealed record SwordAiReachAdjustment(uint Raw, int Modulo, int Before, int After)
+{
+    public bool Halved => Modulo == 0;
+}
+public sealed record SwordAiOutOfReachScenarioOutcome(SwordAiMovementScenarioOutcome MovementScenario,
+    SwordAiScenarioTeam Team, int EffectiveReach, SwordAiReachAdjustment? ReachAdjustment, bool AttackUsedDistanceFallback);
+public sealed record SwordAiOutOfReachScenarioResult(bool Accepted, SwordAiMovementScenarioFailure? Failure,
+    SwordAiOutOfReachScenarioOutcome? Outcome, FftRandomState RngState);
+
+/// <summary>Fresh, pure derivation of explicit in-reach and out-of-reach focused ordinary-sword movement branches.</summary>
+/// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-141/143/146/147. No Attack, lottery or command execution.</remarks>
 public static class SwordAiMovementScenario
 {
     public static SwordAiMovementScenarioResult Evaluate(AttackBattleSnapshot state,
         SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
         SwordAiComparisonProfile comparisonProfile, SwordAiMovementScenarioProfile scenarioProfile, FftRandomState decisionRng)
+        => EvaluateCore(state, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile, decisionRng, null).Result;
+
+    /// <summary>Explicit out-of-reach branch; Blue skips, NonBlue draws once after movement scoring.</summary>
+    public static SwordAiOutOfReachScenarioResult EvaluateOutOfReach(AttackBattleSnapshot state,
+        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiComparisonProfile comparisonProfile, SwordAiMovementScenarioProfile scenarioProfile,
+        SwordAiScenarioTeam team, FftRandomState decisionRng)
+    {
+        var core = EvaluateCore(state, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile, decisionRng, team);
+        var result = core.Result;
+        return new(result.Accepted, result.Failure, result.Accepted
+            ? new(result.Outcome!, team, core.EffectiveReach, core.Adjustment, core.AttackFallback) : null, result.RngState);
+    }
+
+    private sealed record CoreResult(SwordAiMovementScenarioResult Result, int EffectiveReach = 0,
+        SwordAiReachAdjustment? Adjustment = null, bool AttackFallback = false);
+
+    private static CoreResult EvaluateCore(AttackBattleSnapshot state, SwordAiCandidateProfile candidateProfile,
+        SwordAiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
+        SwordAiMovementScenarioProfile scenarioProfile, FftRandomState decisionRng, SwordAiScenarioTeam? team)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(candidateProfile);
         ArgumentNullException.ThrowIfNull(scoreProfile);
         ArgumentNullException.ThrowIfNull(comparisonProfile);
         ArgumentNullException.ThrowIfNull(scenarioProfile);
-        SwordAiMovementScenarioResult Reject(SwordAiMovementScenarioRejection reason,
+        CoreResult Reject(SwordAiMovementScenarioRejection reason,
             SwordAiMovementScenarioStage stage = SwordAiMovementScenarioStage.Admission, int? index = null,
             SwordAiMovementBaselineRejection movementReason = SwordAiMovementBaselineRejection.None) =>
-            new(false, new(reason, stage, index, movementReason), null, decisionRng);
+            new(new(false, new(reason, stage, index, movementReason), null, decisionRng));
+        bool outOfReach = team is not null;
+        if (outOfReach && team is not (SwordAiScenarioTeam.Blue or SwordAiScenarioTeam.NonBlue))
+            return Reject(SwordAiMovementScenarioRejection.UnsupportedProfile);
         if (!scenarioProfile.FocusedOpponent || !scenarioProfile.OrdinarySwordReach || !scenarioProfile.OrdinaryScenarioPolicy ||
             !comparisonProfile.FreshDecisionBaseline)
             return Reject(SwordAiMovementScenarioRejection.UnsupportedProfile);
@@ -52,8 +86,10 @@ public static class SwordAiMovementScenario
         var geometry = FlatOrdinaryMovement.Evaluate(state, actor.Id, candidateProfile.Movement).Outcome!;
         byte Distance(TilePosition p) => geometry.TargetDistanceRows.Single(row => row.Y == p.Y).Distances[p.X];
         int distance = Distance(actor.Position), reach = actor.Move + 1;
-        if (distance > reach) return Reject(SwordAiMovementScenarioRejection.OutOfReach);
-        var origins = geometry.AiOrigins.Where(p => Distance(p) <= actor.Move + distance).ToImmutableArray();
+        if (!outOfReach && distance > reach) return Reject(SwordAiMovementScenarioRejection.OutOfReach);
+        if (outOfReach && distance <= reach) return Reject(SwordAiMovementScenarioRejection.WrongBranch);
+        int limit = outOfReach ? distance - 1 : actor.Move + distance;
+        var origins = geometry.AiOrigins.Where(p => Distance(p) <= limit).ToImmutableArray();
         if (origins.IsEmpty) origins = geometry.AiOrigins; // Original no-match filter copies scenario 0.
 
         var turns = state.TurnBattle.Turns.Units;
@@ -75,16 +111,42 @@ public static class SwordAiMovementScenario
             ordering.Add(new(tile, Distance(tile), proximity, unchecked((pattern << 16) + proximity)));
         }
         var values = ordering.ToImmutable();
-        TilePosition Select(IEnumerable<SwordAiMovementTileOrdering> cells, bool distanceFirst) =>
-            (distanceFirst
-                ? cells.OrderBy(c => c.TargetDistance).ThenBy(c => c.PackedScore)
-                : cells.OrderBy(c => c.PackedScore).ThenBy(c => c.TargetDistance))
-            .ThenByDescending(c => c.Tile.Layer).ThenByDescending(c => c.Tile.Y).ThenByDescending(c => c.Tile.X).First().Tile;
-        var d1 = Select(values, false);
-        var closer = values.Where(c => c.TargetDistance <= distance - 1).ToArray();
-        bool fallback = closer.Length == 0;
-        var d0 = Select(fallback ? values : closer, fallback);
+        int effectiveReach = reach;
+        SwordAiReachAdjustment? adjustment = null;
+        if (team == SwordAiScenarioTeam.NonBlue)
+        {
+            uint raw;
+            try { var draw = new FftBiosRandom().Next(rng); rng = draw.State; raw = draw.Value; }
+            catch (OverflowException)
+            { return Reject(SwordAiMovementScenarioRejection.RandomDrawCountExhausted, SwordAiMovementScenarioStage.ReachAdjustment); }
+            int modulo = (int)(raw % 7);
+            if (modulo == 0) effectiveReach /= 2;
+            adjustment = new(raw, modulo, reach, effectiveReach);
+        }
+        bool attackFallback = false, baselineFallback = false;
+        TilePosition d0, d1;
+        if (outOfReach)
+        {
+            var within = values.Where(c => c.TargetDistance <= effectiveReach).ToArray();
+            attackFallback = within.Length == 0;
+            d1 = Select(attackFallback ? values : within, attackFallback);
+            d0 = d1; // Source copies D1; it never runs the in-reach D0 chooser here.
+        }
+        else
+        {
+            d1 = Select(values, false);
+            var closer = values.Where(c => c.TargetDistance <= distance - 1).ToArray();
+            baselineFallback = closer.Length == 0;
+            d0 = Select(baselineFallback ? values : closer, baselineFallback);
+        }
         var scenario = new SwordAiCompositionScenario(origins, d0, d1);
-        return new(true, null, new(scenario, movement.ToImmutable(), origins.IndexOf(d0), values, distance, reach, fallback), rng);
+        return new(new(true, null, new(scenario, movement.ToImmutable(), origins.IndexOf(d0), values,
+            distance, reach, baselineFallback), rng), effectiveReach, adjustment, attackFallback);
     }
+
+    private static TilePosition Select(IEnumerable<SwordAiMovementTileOrdering> cells, bool distanceFirst) =>
+        (distanceFirst
+            ? cells.OrderBy(c => c.TargetDistance).ThenBy(c => c.PackedScore)
+            : cells.OrderBy(c => c.PackedScore).ThenBy(c => c.TargetDistance))
+        .ThenByDescending(c => c.Tile.Layer).ThenByDescending(c => c.Tile.Y).ThenByDescending(c => c.Tile.X).First().Tile;
 }
