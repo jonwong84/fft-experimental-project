@@ -38,14 +38,14 @@ internal static class SwordAiPreparationTestData
     }
     internal static string Serialize(object? value) => JsonSerializer.Serialize(value);
     internal static FacingTurnState Ready(int evade = 89, uint entryWord = 1, ulong count = 7,
-        bool second = false, bool reverse = false, bool outOfReach = false)
+        bool second = false, bool reverse = false, bool outOfReach = false, bool move = true, TilePosition? origin = null)
     {
         var actor = second ? B : A; var target = second ? A : B;
-        // Inverse BIOS step gives the requested entry only through an actual upkeep draw and a real Move.
+        // Inverse BIOS step gives the requested entry through an actual upkeep draw; legacy fixtures then Move.
         var rng = new FftRandomState(unchecked((entryWord - 12345u) * 4005161829u), count - 1);
         var movement = new UnitMovementProfile(1, 0, 6, UnitMovementMode.Normal, UnitMovementTraits.None,
             [KeyValuePair.Create(Ground, new TerrainMovementCost(1))]);
-        BattleUnitState[] bodies = [new(actor, new(3, 1, 0), movement), new(target, new(1, 1, 0), movement)];
+        BattleUnitState[] bodies = [new(actor, origin ?? new(3, 1, 0), movement), new(target, new(1, 1, 0), movement)];
         TurnUnitState[] turns = [new(actor, 5, 110, 2), new(target, 5, 90, 17)];
         AttackUnitState Combat(BattleUnitId id, int evasion) => new(id, 50, 50, 0, 0, 5, evasion, 0, 0, 0, 70, 0,
             BattleFacing.East, AttackUnitStatus.None, 0, Weapon);
@@ -55,6 +55,7 @@ internal static class SwordAiPreparationTestData
             new(reverse ? turns.Reverse() : turns, rng)), reverse ? combat.Reverse() : combat);
         var ready = FacingTurnBattle.Advance(FacingTurnBattle.Begin(battle, new(Ground)));
         if (!ready.Accepted) throw new InvalidOperationException("Synthetic upkeep setup failed.");
+        if (!move) return ready.State;
         var moved = FacingTurnBattle.Move(ready.State, new(actor, new(outOfReach ? 4 : 2, 1, 0)));
         return moved.Accepted ? moved.State : throw new InvalidOperationException("Synthetic Move setup failed.");
     }

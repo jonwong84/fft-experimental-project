@@ -6,12 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-169: integrate one in-reach post-prefix AI Move-first decision.**
-The [Framework boundary](behavior/planned-move-continuation.md) now owns fresh
-planning, actual path Move and exact-session frozen Attack/Wait continuation.
-Connect privately owned selection and fresh dispatch to it, requiring an actual
-Move-first result. Keep explicit general-entry/source certificates; fresh unmoved
-preparation and host activation remain separate.
+**ZOD-170: integrate post-prefix out-of-reach AI Move-first fallback.**
+Reuse the [Move-first adapter](behavior/sword-ai-move-first-execution.md), existing
+out-of-reach selector and explicit known team, retaining reach-adjustment/lottery
+RNG. Require a real Move-first result and continue its frozen Wait through
+Framework. Existing in-reach handoff is complete. Fresh unmoved preparation,
+ACT-first/post-ACT reselection and host activation remain separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and new
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
@@ -35,30 +35,28 @@ RNG without partial output. Original supplied-scenario APIs stay unchanged; no c
 authority or live RNG commit.
 
 Full AI search, general multi-entry ranking/lottery, replaceable decision interface,
-Move-first/post-ACT command lifecycle and presentation activation remain future
-work. Original UNIT_SLOT_COUNT is **21**; the old 26-foe wrap example is inadmissible.
+fresh unmoved preparation, out-of-reach Move-first integration, ACT-first/post-ACT
+command lifecycle and presentation activation remain future work.
+Original UNIT_SLOT_COUNT is **21**; the old 26-foe wrap example is inadmissible.
 This does not select a fixed managed roster size. The contract records the erratum
 without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-168, [planned Move boundary](behavior/planned-move-continuation.md).
-  Eight new cases plus all 1,437 Framework tests pass; Framework build has no
-  warnings/errors. Covers frozen follow-up, exact-state authority, per-step rollback,
-  deferred Wait, replay/cancellation and counters. Logs: `scratch/move-continuation-168/`.
-  Full solution results below are the prior ZOD-166 run, not rerun at this checkpoint.
-- Latest design: ZOD-167, [Move/continuation boundary](architecture/zod-167-move-continuation-boundary.md).
-  Defines fresh proposal binding, real path movement, exact-state frozen follow-up,
-  cancellation via explicit Wait, immutable replay and per-step failure/counters.
-  Boundary implemented by ZOD-168. Inherited pinned audit last passed
-  (`scratch/ai-move-continuation-167/source.json`); protocol cases now execute in Framework tests.
-- Last full validation (ZOD-166; not rerun for this design): locked restore,
-  zero-warning/error Release build,
-  **3,906 .NET cases / 510 Python tests**, including the owner's content drafts.
+- Latest implementation: ZOD-168/169, [Framework Move boundary](behavior/planned-move-continuation.md)
+  and [in-reach AI Move-first execution](behavior/sword-ai-move-first-execution.md).
+  Fourteen new managed cases cover fresh ownership/RNG, real path/heading, frozen
+  actual Attack/deferred Wait, exact-session tokens, per-step rollback and replay.
+  The AI adapter starts at certified post-prefix general selection; no host activation.
+- Latest design: ZOD-167, [two-step boundary](architecture/zod-167-move-continuation-boundary.md),
+  now implemented. Inherited pinned source audit passed
+  (`scratch/ai-move-first-169/source.json`). Existing original contracts remain historical.
+- Validation: locked restore, zero-warning/error Release build,
+  **3,920 .NET cases / 510 Python tests**, including the owner's content drafts.
   These bounded checks do not establish full original decision equivalence.
-  Results/logs: ignored `scratch/ai-command-dispatch-166/` (seven full TRX files).
-  Owner refactor/drafts are excluded from AI commits. Nine historical checkpoint
-  audits last passed at ZOD-158; unchanged historical snapshots were not rerun.
+  Results/logs: ignored `scratch/ai-move-first-169/` (seven full TRX files).
+  Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
+  checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.
   No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
   introduction proofs and synthetic world Save/Load exist. Original campaign,

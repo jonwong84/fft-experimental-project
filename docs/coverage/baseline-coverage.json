@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-28",
   "edition": "SCUS-94221",
-  "managedCommit": "0e38a59d5d04c67faa7749c01f2e6ceb12de1ce1",
+  "managedCommit": "73cb9699909ff9d2cbd621a5c1ca70a0cef953c7",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 3906,
-    "source": "docs/behavior/sword-ai-command-dispatch.md",
+    "passed": 3920,
+    "source": "docs/behavior/sword-ai-move-first-execution.md",
     "runForThisInventory": false
   },
   "statusDefinitions": {
@@ -453,7 +453,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "A separate AI assembly owns ordinary two-opponent pure selection and already-moved execution. Fresh NonBlue prepared entries own refresh, restored-state policy preparation and explicit in/out-of-reach selection inside the Framework callback. Actual Attack/Wait uses verified RNG adoption and existing revision/receipt authority; AI cannot construct trusted sessions. The out-of-reach path retains the post-score reach draw and eight-roll fallback. A separate pure command-dispatch query now models retained selected data, fresh-stage ordering and no-progress/reselection rules without live authority. Framework-owned Move-first continuation, post-ACT lifecycle, broader policies/search and playable-host activation remain open.",
+      "currentScope": "A separate AI assembly owns ordinary two-opponent selection and prepared already-moved Attack/Wait. A post-prefix in-reach Move-first adapter now privately selects/dispatches once inside the Framework planned path-Move callback, freezing actual Attack or deferred Wait in an exact-session opaque continuation. Framework verifies RNG adoption and owns both command revisions/receipts; later failure preserves committed Move. Source entry/policy facts remain explicit. Fresh unmoved preparation, out-of-reach Move-first integration, ACT-first/post-ACT lifecycle, broader search and host activation remain open.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -492,6 +492,7 @@
         "docs/behavior/sword-ai-command-dispatch.md",
         "docs/architecture/zod-167-move-continuation-boundary.md",
         "docs/behavior/planned-move-continuation.md",
+        "docs/behavior/sword-ai-move-first-execution.md",
         "docs/behavior/sword-ai-out-of-reach-scenario.md",
         "docs/behavior/sword-ai-out-of-reach-selection.md"
       ],
@@ -505,6 +506,8 @@
         "src/Zodiac.Framework.Ai/SwordAiPreparation.cs",
         "src/Zodiac.Framework.Ai/SwordAiPreparedSelection.cs",
         "src/Zodiac.Framework.Ai/SwordAiCommandDispatch.cs",
+        "src/Zodiac.Framework.Ai/SwordAiMoveFirstExecution.cs",
+        "src/Zodiac.Framework/FacingMoveDecision.cs",
         "src/Zodiac.Framework/FacingDecision.cs"
       ],
       "automatedChecks": [
@@ -573,6 +576,14 @@
           "scope": "Fresh out-of-reach pure composition and actual Wait, retained reach draw, empty scan/eight rolls, exact budgets and replay."
         },
         {
+          "path": "tests/Zodiac.Framework.Tests/FacingMoveDecisionTests.cs",
+          "scope": "Framework fresh Move proposal ownership, private RNG/path publication, exact-session frozen follow-up, rollback/cancellation/replay and counters."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiMoveFirstExecutionTests.cs",
+          "scope": "Privately selected post-prefix Move-first handoff, literal actual-command streams, deferred fallback Wait, counters and per-step isolation."
+        },
+        {
           "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiCommandDispatchTests.cs",
           "scope": "Actual pure dispatch/entry ordering, retained ACT after real path movement, structural rejection and counter/input isolation; no live continuation authority."
         },
@@ -590,11 +601,11 @@
         "procedure": "Observe selected mandatory AI turns and distinguish legal choices from exact policy matching."
       },
       "openQuestions": [
-        "Full target/ability/roster search, broader special policies, Defend, replacement interface, Move-first continuation and post-ACT reselection remain open.",
+        "Full target/ability/roster search, broader special policies, Defend, replacement interface, fresh unmoved preparation, out-of-reach Move-first integration and ACT-first/post-ACT reselection remain open.",
         "Caller certificates still describe unrepresented original context. The fresh prepared selector covers only the certified NonBlue ordinary subset; Blue/special policies and source frame RNG remain outside it, and bounded vectors do not establish full original decision equivalence."
       ],
-      "nextAction": "Integrate one privately selected post-prefix in-reach AI Move-first decision through the Framework path-Move/frozen-continuation boundary; retain source certificates and actual per-step rollback.",
-      "followUpTickets": ["ZOD-169"]
+      "nextAction": "Extend the post-prefix Move-first handoff through the existing out-of-reach selector and explicit team, retaining post-score adjustment/eight-roll fallback RNG and frozen deferred Wait.",
+      "followUpTickets": ["ZOD-170"]
     },
     {
       "id": "COV-SIM-010",

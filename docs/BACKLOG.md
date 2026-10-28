@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-169 (implementation).** Framework Move/continuation boundary ZOD-168 is complete.
-There are 33 open tickets below. The 136 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-170 (implementation).** In-reach post-prefix Move-first execution ZOD-169 is complete.
+There are 33 open tickets below. The 137 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,18 +29,18 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-169 — Integrate one in-reach post-prefix AI Move-first decision
+### ZOD-170 — Integrate post-prefix out-of-reach AI Move-first fallback
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-168
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-169
 
-Own existing fresh in-reach selection and DispatchFreshSelection inside the
-[Framework Move callback](behavior/planned-move-continuation.md). Require a real
-Move-first destination, freeze matching Attack or deferred Wait, and reuse only
-its opaque continuation afterward. Retain explicit post-prefix general-entry and
-remaining policy certificates; do not relabel already-moved preparation as fresh
-unmoved preparation. Verify complete RNG/actual-command schedules, fallback,
-whole-Move rollback versus later-command failure, stale/replay guards and counters.
-No public cached-plan input, ACT-first/out-of-reach dispatch or host activation.
+Extend the [Move-first adapter](behavior/sword-ai-move-first-execution.md) through
+one existing fresh out-of-reach selector, explicit known Blue/NonBlue team and
+fresh dispatch inside the same Framework callback. Preserve post-score reach
+adjustment and eight-roll fallback RNG, require a real Move-first result and
+freeze deferred Wait for its opaque continuation. Verify literal schedules,
+branch/context rejection, exact budgets and per-step rollback/replay. Retain
+post-prefix source certificates; no fresh unmoved preparation, ACT-first/post-ACT
+reselection, automatic branch dispatch or host activation.
 
 ## Existing validation gates
 
