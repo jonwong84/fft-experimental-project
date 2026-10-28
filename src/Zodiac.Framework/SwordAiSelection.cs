@@ -55,7 +55,7 @@ public static class SwordAiSelection
         ArgumentNullException.ThrowIfNull(compositionProfile);
         ArgumentNullException.ThrowIfNull(selectionProfile);
         SwordAiSelectionResult Reject(SwordAiSelectionFailure failure) => new(false, failure, null, decisionRng);
-        if (!selectionProfile.TerminalAttackEntry || !selectionProfile.NoDefendSupport || !selectionProfile.FreshOrdinarySelectionDefaults)
+        if (!SupportsProfile(selectionProfile))
             return Reject(new(SwordAiSelectionRejection.UnsupportedProfile, SwordAiSelectionStage.Admission));
 
         // Sole fresh composition call: public cached ranked results are never accepted as input.
@@ -65,6 +65,17 @@ public static class SwordAiSelection
             return Reject(new(SwordAiSelectionRejection.CompositionRejected, SwordAiSelectionStage.Composition,
                 CompositionFailure: composition.Failure));
 
+        return SelectFresh(composition, comparisonProfile.ActorId, scenario.BaselineDestination, decisionRng);
+    }
+
+    internal static bool SupportsProfile(SwordAiSelectionProfile profile) =>
+        profile.TerminalAttackEntry && profile.NoDefendSupport && profile.FreshOrdinarySelectionDefaults;
+
+    // Only fresh privately owned composition reaches this tail; no public cached-result entry.
+    internal static SwordAiSelectionResult SelectFresh(SwordAiCompositionResult composition,
+        BattleUnitId actorId, TilePosition baselineDestination, FftRandomState queryRng)
+    {
+        SwordAiSelectionResult Reject(SwordAiSelectionFailure failure) => new(false, failure, null, queryRng);
         var fresh = composition.Outcome!;
         var rng = composition.RngState;
         var random = new FftBiosRandom();
@@ -72,7 +83,7 @@ public static class SwordAiSelection
         SwordAiSelectionResult Complete(SwordAiScannedCandidate? attack, int? index, SwordAiSelectionReason reason)
         {
             var plan = attack is null
-                ? new SwordAiSelectedPlan(SwordAiSelectedPlanKind.MoveOnly, comparisonProfile.ActorId, scenario.BaselineDestination, null)
+                ? new SwordAiSelectedPlan(SwordAiSelectedPlanKind.MoveOnly, actorId, baselineDestination, null)
                 : new SwordAiSelectedPlan(SwordAiSelectedPlanKind.Attack, attack.Candidate.ActorId, attack.Candidate.Destination, attack);
             return new(true, null, new(fresh, composition.RngState, rolls.ToImmutable(), index, reason, plan), rng);
         }

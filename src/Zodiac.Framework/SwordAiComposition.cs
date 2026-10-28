@@ -99,7 +99,18 @@ public static class SwordAiComposition
             movement.Add(new(result.Outcome!, result.RngState));
             rng = result.RngState;
         }
-        var baseline = movement[baselineIndex].Outcome.Score; // Read the already-scored cell; no extra evaluation/draw.
+        return ContinueFromMovement(state, movement.ToImmutable(), baselineIndex, attackScenario, weapon,
+            candidateProfile, scoreProfile, comparisonProfile, scanProfile, rng, decisionRng);
+    }
+
+    // Entry points own fresh movement admission/evaluation. Never exposed as a cached-result API.
+    internal static SwordAiCompositionResult ContinueFromMovement(AttackBattleSnapshot state,
+        ImmutableArray<SwordAiScoredMovementTile> movement, int baselineIndex, SwordAiScanScenario attackScenario,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiComparisonProfile comparisonProfile, SwordAiScanProfile scanProfile, FftRandomState rng, FftRandomState queryRng)
+    {
+        SwordAiCompositionResult Reject(SwordAiCompositionFailure failure) => new(false, failure, null, queryRng);
+        var baseline = movement[baselineIndex].Outcome.Score; // Already-scored cell; no extra evaluation/draw.
         var scan = SwordAiCandidateScan.Evaluate(state, attackScenario, weapon, candidateProfile, scoreProfile,
             comparisonProfile, scanProfile, rng);
         if (scan.Disposition == SwordAiScanDisposition.Rejected)
@@ -112,7 +123,7 @@ public static class SwordAiComposition
         // Working best is scoped to this single insertion attempt and is discarded on every exit.
         if (scan.Outcome!.RetainedCandidateIndex is not { } bestIndex) admission = SwordAiAdmission.NoScoredCandidate;
         else admission = InsertFreshBest(scan.Outcome.Candidates[bestIndex], baseline, ranked);
-        return new(true, null, new(movement.ToImmutable(), baselineIndex, attackScenario, scan, admission, ranked.ToImmutableArray()), scan.RngState);
+        return new(true, null, new(movement, baselineIndex, attackScenario, scan, admission, ranked.ToImmutableArray()), scan.RngState);
     }
 
     private static SwordAiAdmission InsertFreshBest(SwordAiScannedCandidate best, SwordAiCandidateScore baseline,

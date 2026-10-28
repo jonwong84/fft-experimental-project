@@ -66,6 +66,12 @@ justifies it. Current assemblies are not yet interchangeable.
 - **Prepared original scene:** MAP003 and a held Chocobo pose render from prepared files with a fixed authored camera. Per-polygon palettes, native terrain placement and sprite piece order are preserved; lighting and depth behavior use documented approximations. [Scene guide and comparison limits](docs/development/prepared-scene.md).
 - **Offline asset preparation:** verified ordinary-file extraction, bounded sprite/map conversion, hash-verified prepared loading and narrow typed content-package validation. [Map preparation](docs/development/prepared-map-slice.md), [sprite-pose preparation](docs/development/prepared-sprite-pose.md), [content packages](docs/architecture/zod-016-content-packages.md).
 
+- **Bounded original AI query:** an opt-in pure query derives movement cells and
+  destinations for one focused, in-reach ordinary-sword opponent, then scans a
+  terminal Attack and runs the original lottery/MoveOnly fallback. It keeps live
+  state/RNG unchanged and remains separate from the playable host; full AI
+  search and command execution are open. [Behavior and limits](docs/behavior/sword-ai-derived-selection.md).
+
 The playable battle uses invented units, art and a small height-10 map. MAP003 remains a separate static inspection scene with its native terrain intact. Rendering that map does not expand the supported combat domain.
 
 Full original combat, campaign, AI, campaign save/load, audio, general animation playback and broader authoring UI remain future work. Selected banner/Ready/DarkScreen frames have exact original/emulator comparisons; the bounded source-derived and synthetic checks do not establish complete original-game equivalence. Original behavior is the default compatibility target, with intentional new mechanics and custom content kept separate.

@@ -3,7 +3,7 @@
 Generated from `baseline-coverage.json` by `tools/verification/verify_baseline_coverage.py --write-view`.
 Edit the JSON, then regenerate this view. See [the inventory guide](README.md) for status/evidence rules.
 
-Target: **SCUS-94221**. Snapshot: 2026-10-26; managed base `efdbfa91640054dba1097f8d7f163fb6242ec95a`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+Target: **SCUS-94221**. Snapshot: 2026-10-28; managed base `4d96e38cf318ba4f5f6372c9a7749a4a2b5c48ab`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 These entries are planning scopes, not a feature-completion percentage or a complete record/encounter catalog.
 
 ## Simulation
@@ -185,23 +185,28 @@ Next action: Trace original behavior first; keep the planned knockback modificat
 
 ### COV-SIM-009 — Enemy, ally and automatic-battle AI
 
-Status: **absent**; scope: **baseline**; ticket: **ZOD-038**; owner area: Zodiac.Framework simulation.
+Status: **partial**; scope: **baseline**; ticket: **ZOD-038**; owner area: Zodiac.Framework simulation.
 
-Playable sample controls both units locally; no AI policy executes.
+Pure opt-in two-opponent ordinary-sword query derives in-reach movement cells/D0/D1, scores movement once, scans one terminal Attack and runs the original lottery/MoveOnly fallback with explicit source-context certificates. No AI policy executes in the playable sample; full search and command authority remain open.
 
-Evidence: [PROJECT_PLAN.md](../../PROJECT_PLAN.md).
+Evidence: [docs/architecture/zod-141-ai-movement-scenario.md](../../docs/architecture/zod-141-ai-movement-scenario.md), [docs/architecture/zod-144-ai-derived-selection.md](../../docs/architecture/zod-144-ai-derived-selection.md), [docs/behavior/sword-ai-derived-selection.md](../../docs/behavior/sword-ai-derived-selection.md).
 
 Source entry points (pinned revision above; not full traces): [src/battle/ai/turn.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/ai/turn.c), [src/battle/ai/evaluation.c](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/ai/evaluation.c), [include/fft/ai.h](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/include/fft/ai.h).
 
-Automated baseline check: **none identified for this scope**; add a scenario regression when implementing the next action.
+Current implementation: [src/Zodiac.Framework/SwordAiMovementScenario.cs](../../src/Zodiac.Framework/SwordAiMovementScenario.cs), [src/Zodiac.Framework/SwordAiDerivedSelection.cs](../../src/Zodiac.Framework/SwordAiDerivedSelection.cs).
+
+Existing bounded checks: [tests/Zodiac.Framework.Tests/SwordAiMovementScenarioTests.cs](../../tests/Zodiac.Framework.Tests/SwordAiMovementScenarioTests.cs), [tests/Zodiac.Framework.Tests/SwordAiDerivedSelectionTests.cs](../../tests/Zodiac.Framework.Tests/SwordAiDerivedSelectionTests.cs).
 
 Manual checkpoint (pending-original-observation): Observe selected mandatory AI turns and distinguish legal choices from exact policy matching.
 
 Remaining gaps:
 
-- Decision families, scoring, tie/RNG ordering and special unit behavior remain unimplemented.
+- Full target/ability/roster search, out-of-reach and special policies, Defend, replacement interface, command/facing execution and live RNG commitment remain open.
+- Caller certificates still describe unrepresented original context; bounded source-derived synthetic vectors do not establish full original decision equivalence.
 
-Next action: Select one reproducible AI decision and its required action domain.
+Next action: Trace one bounded out-of-reach movement branch, including post-score team-conditioned reach RNG and cell provenance, before implementing it.
+
+Bounded follow-ups: ZOD-146.
 
 ### COV-SIM-010 — XP, JP, growth, learned abilities and job unlocks
 

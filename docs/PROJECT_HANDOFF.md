@@ -6,19 +6,19 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-145: implement private derived-scenario composition/selection.**
-The [ZOD-144 contract](architecture/zod-144-ai-derived-selection.md) removes supplied
-S/D0/D1 inputs and derives their provenance. Keep remaining context facts explicit,
-preflight weapon/policy before movement, reuse only privately owned fresh scores
-through shared internal composition/lottery tails, and restore whole-query RNG
-after any later failure. No command/native activation or out-of-reach extension.
+**ZOD-146: source/design one bounded out-of-reach sword movement branch.**
+Trace filtering/fallback, team-conditioned post-score rand()%7 reach-halving,
+D1 selection/D0 copying, actor insertion and score/proximity-cell provenance.
+Pin source/team facts and private RNG ownership before implementation. Start
+from the [completed in-reach selector](behavior/sword-ai-derived-selection.md).
 
-ZOD-140 privately owns one ZOD-138 composition and the source lottery. An admitted
-Attack is selected after one/eight draws; empty ranking takes eight then MoveOnly
-at D0. New terminal-entry/no-Defend/fresh-default certificates are required. Plans
-retain deferred ChooseAtWait; no projected damage, facing or commands execute.
-Failures restore whole-query RNG without partial output. Standalone APIs remain
-unchanged. Results grant no command authority or live RNG commit.
+The current pure query derives S/D0/D1 for focused-opponent, ordinary-sword
+reach/policy facts, raw Move<=124 and d<=Move+1. It evaluates movement once, reuses
+its private scores through one Attack scan/ranked admission, then runs the source
+lottery. Empty ranking takes eight draws then MoveOnly at D0. Source-context and
+terminal-entry/no-Defend/fresh-default facts remain explicit; plans retain deferred
+ChooseAtWait. Failures restore whole-query RNG without partial output. Original
+supplied-scenario APIs stay unchanged; no command authority or live RNG commit.
 
 Full AI search, general multi-entry ranking/lottery, replaceable decision interface, authoritative
 commands/RNG and presentation activation remain future work. Original UNIT_SLOT_COUNT
@@ -27,17 +27,17 @@ managed roster size. The contract records the erratum without rewriting old evid
 
 ## Current implementation and validation
 
-- Latest source checkpoint: ZOD-144, clean reference below; inherited selection audit
-  plus 11 scenario functions rechecked (`scratch/ai-derived-selection-144/source.json`).
-  No production change, original execution or .NET suite rerun for this checkpoint.
-- Latest implementation: ZOD-143, [movement-scenario API and evidence](behavior/sword-ai-movement-scenario.md).
-  22 new focused cases; shared baseline admission extracted. No runtime activation.
+- Completed batch: ZOD-141/143/144/145. Latest implementation:
+  [derived-scenario selector and evidence](behavior/sword-ai-derived-selection.md).
+  22 scenario + 16 integration cases added; shared internal tails preserve old APIs.
+  No native/editor activation or original decision-equivalence claim.
 - Complete validation: locked restore, zero-warning/error Release build,
-  **3,728 .NET cases / 496 Python tests**, including all 3,706 prior .NET cases.
-  Fresh selection source audit: eight reference files / 31 functions, clean HEAD below.
+  **3,744 .NET cases / 496 Python tests**, including all 3,706 prior .NET cases.
+  Clean source audit: inherited eight-file/31-function selection receipt plus
+  11 inspected scenario functions (`scratch/ai-derived-selection-145-source.json`).
   These bounded checks do not establish complete FFT equivalence.
-  Current .NET results: ignored `scratch/ai-scenario-143-full-trx/`;
-  Python log: `scratch/ai-scenario-143-python.txt`. The current owner refactor/drafts
+  Current .NET results: ignored `scratch/ai-derived-selection-145-full-trx/`;
+  Python log: `scratch/ai-derived-selection-145-python.txt`. The current owner refactor/drafts
   were included in the build and tests, excluded from the implementation commit.
   No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
@@ -51,10 +51,11 @@ managed roster size. The contract records the erratum without rewriting old evid
 ## Constraints and owner preferences
 
 - Continue in `C:/repositories/fft-experimental-project`, branch
-  `feature/initial-development`; inspect Git status before editing. Owner drafts
-  in the Ability, Common, Item and Status folders under `src/Zodiac.Content/Definitions/` are untracked:
-  preserve them and exclude them from unrelated commits. The last build included
-  drafts present during validation. Validated completed work may be committed/pushed.
+  `feature/initial-development`; inspect Git status before editing. Preserve the
+  owner's tracked weapon/content-package/exporter/test refactor and untracked
+  WeaponDefinition plus Ability/Common/Item/Status definition drafts. Exclude
+  them from unrelated commits. Last build includes drafts present at validation.
+  Validated completed work may be committed/pushed.
 - Reference `C:/repositories/fft_decomp` is read-only. Last clean recorded HEAD:
   `11464943bbdbd2a0af022d90cb7f10455cf911df`. Recheck before new source tracing.
   Runtime uses managed code/prepared files; BIN/extracted assets stay ignored.
@@ -77,6 +78,9 @@ managed roster size. The contract records the erratum without rewriting old evid
   Accumulate PA is battle-only; this does not block ability or campaign work.
 - **ZOD-100/101:** broad replacement contracts require a real alternate consumer
   or implementation. ZOD-134 semantic-flag work also remains deferred.
+- **ZOD-142:** Lion War event instruction upgrade investigation is deferred.
+  ZOD-039 owns remaining toggle mappings and armor/accessory/consumable definitions;
+  review the owner's evolving types before selecting an import child.
 - Remote Linux/Windows CI and clean-machine launch evidence remain open under
   ZOD-006/034; original comparison scope remains partial under ZOD-033.
   Later display/Settings options and original bug fixes retain owner sequencing.

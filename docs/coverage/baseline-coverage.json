@@ -1,9 +1,9 @@
 {
   "format": "fft.baseline-coverage",
   "schemaVersion": 1,
-  "updated": "2026-10-26",
+  "updated": "2026-10-28",
   "edition": "SCUS-94221",
-  "managedCommit": "efdbfa91640054dba1097f8d7f163fb6242ec95a",
+  "managedCommit": "4d96e38cf318ba4f5f6372c9a7749a4a2b5c48ab",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 2700,
-    "source": "docs/development/basic-skill-content.md",
+    "passed": 3744,
+    "source": "docs/behavior/sword-ai-derived-selection.md",
     "runForThisInventory": false
   },
   "statusDefinitions": {
@@ -450,8 +450,8 @@
       "profileScope": "baseline",
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework simulation",
-      "status": "absent",
-      "currentScope": "Playable sample controls both units locally; no AI policy executes.",
+      "status": "partial",
+      "currentScope": "Pure opt-in two-opponent ordinary-sword query derives in-reach movement cells/D0/D1, scores movement once, scans one terminal Attack and runs the original lottery/MoveOnly fallback with explicit source-context certificates. No AI policy executes in the playable sample; full search and command authority remain open.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -467,18 +467,34 @@
         }
       ],
       "evidenceDocs": [
-        "PROJECT_PLAN.md"
+        "docs/architecture/zod-141-ai-movement-scenario.md",
+        "docs/architecture/zod-144-ai-derived-selection.md",
+        "docs/behavior/sword-ai-derived-selection.md"
       ],
-      "implementationPaths": [],
-      "automatedChecks": [],
+      "implementationPaths": [
+        "src/Zodiac.Framework/SwordAiMovementScenario.cs",
+        "src/Zodiac.Framework/SwordAiDerivedSelection.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Zodiac.Framework.Tests/SwordAiMovementScenarioTests.cs",
+          "scope": "Derived in-reach mask/destinations, signed source ordering, actual RNG/clock work, atomic failure and replay."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/SwordAiDerivedSelectionTests.cs",
+          "scope": "Fresh single-prefix composition/lottery, D0 fallback, source RNG vectors and whole-query rollback; no live decision execution."
+        }
+      ],
       "manualCheckpoint": {
         "status": "pending-original-observation",
         "procedure": "Observe selected mandatory AI turns and distinguish legal choices from exact policy matching."
       },
       "openQuestions": [
-        "Decision families, scoring, tie/RNG ordering and special unit behavior remain unimplemented."
+        "Full target/ability/roster search, out-of-reach and special policies, Defend, replacement interface, command/facing execution and live RNG commitment remain open.",
+        "Caller certificates still describe unrepresented original context; bounded source-derived synthetic vectors do not establish full original decision equivalence."
       ],
-      "nextAction": "Select one reproducible AI decision and its required action domain."
+      "nextAction": "Trace one bounded out-of-reach movement branch, including post-score team-conditioned reach RNG and cell provenance, before implementing it.",
+      "followUpTickets": ["ZOD-146"]
     },
     {
       "id": "COV-SIM-010",
