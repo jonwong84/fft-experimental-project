@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-28",
   "edition": "SCUS-94221",
-  "managedCommit": "e51948354e75e9c6de88f8ae1430e3fd613c1ae3",
+  "managedCommit": "1f5ae55af846f1f54b6964dd8072dda82a9b684e",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 3929,
-    "source": "docs/behavior/sword-ai-unmoved-preparation.md",
+    "passed": 3935,
+    "source": "docs/behavior/sword-ai-unmoved-prepared-selection.md",
     "runForThisInventory": false
   },
   "statusDefinitions": {
@@ -453,7 +453,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "A separate AI assembly owns ordinary two-opponent selection and prepared already-moved Attack/Wait. A post-prefix explicit in/out-of-reach Move-first adapter now privately selects/dispatches once inside the Framework planned path-Move callback, freezing actual Attack or deferred Wait in an exact-session opaque continuation. Framework verifies RNG adoption and owns both command revisions/receipts; later failure preserves committed Move. Source entry/policy facts remain explicit. Explicit pure unmoved refresh/preparation now owns both unused-choice refunds, one retained upkeep draw and restored-state reachable origins/policy. Fresh unmoved selection/live integration, ACT-first/post-ACT lifecycle, broader search and host activation remain open.",
+      "currentScope": "A separate AI assembly owns closed two-opponent selection with fresh moved/unmoved preparation and explicit reach branches. Unmoved prepared queries atomically retain refresh, movement-score, post-score adjustment and lottery RNG on original snapshots. Framework owns trusted RNG adoption, revisions/receipts and real commands. Prepared already-moved Attack/Wait and certified post-prefix in/out-of-reach path Move with frozen Attack/Wait continuation execute. Fresh unmoved prepared selection is not yet wired to that Move boundary. Source/policy certificates remain explicit; ACT-first/post-ACT, broader search, replacement interface and host activation remain open.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -497,7 +497,8 @@
         "docs/behavior/sword-ai-out-of-reach-selection.md",
         "docs/behavior/sword-ai-move-first-out-of-reach.md",
         "docs/architecture/zod-171-ai-unmoved-preparation.md",
-        "docs/behavior/sword-ai-unmoved-preparation.md"
+        "docs/behavior/sword-ai-unmoved-preparation.md",
+        "docs/behavior/sword-ai-unmoved-prepared-selection.md"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/SwordAiMovementScenario.cs",
@@ -609,6 +610,10 @@
         {
           "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiUnmovedPreparationTests.cs",
           "scope": "Managed fresh unmoved clock/reach vectors, restored policy CT, explicit choice-entry guards, counter rollback and identity/order isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiUnmovedPreparedSelectionTests.cs",
+          "scope": "Managed full unmoved prefix/selection streams, S reuse and reach adjustment, deferred fallback, exact budgets, atomic failure and identity/order replay."
         }
       ],
       "manualCheckpoint": {
@@ -616,12 +621,12 @@
         "procedure": "Observe selected mandatory AI turns and distinguish legal choices from exact policy matching."
       },
       "openQuestions": [
-        "Full target/ability/roster search, broader special policies, Defend, replacement interface, fresh unmoved selection/live integration, ACT-first/post-ACT reselection remain open.",
+        "Full target/ability/roster search, broader special policies, Defend, replacement interface, fresh unmoved live integration, ACT-first/post-ACT reselection remain open.",
         "Caller certificates still describe unrepresented original context. The fresh prepared selector covers only the certified NonBlue ordinary subset; Blue/special policies and source frame RNG remain outside it, and bounded vectors do not establish full original decision equivalence."
       ],
-      "nextAction": "Compose the privately owned fresh unmoved prefix with explicit in/out-of-reach pure selection, retaining actual prefix RNG, remaining policy certificates and whole-query rollback.",
+      "nextAction": "Integrate the privately owned fresh unmoved in-reach prepared selector into Framework path-Move publication and its frozen Attack/Wait continuation, preserving per-step rollback and old entries.",
       "followUpTickets": [
-        "ZOD-173"
+        "ZOD-174"
       ]
     },
     {

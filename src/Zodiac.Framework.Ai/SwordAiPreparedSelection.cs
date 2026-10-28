@@ -21,7 +21,7 @@ public sealed record SwordAiPreparedSelectionResult(bool Accepted, SwordAiPrepar
 
 /// <summary>Fresh pure ordinary NonBlue preparation and explicit in/out-of-reach selection on the original live snapshot.</summary>
 /// <remarks>
-/// Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-160/162/164.
+/// Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-160/162/164/171/173.
 /// Owns refresh provenance and its retained draw; no cached-result input, command authority or runtime activation.
 /// Existing post-prefix execution and its GeneralSelectionEntryContext remain separate.
 /// </remarks>
@@ -32,7 +32,7 @@ public static class SwordAiPreparedSelection
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
         SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, FftRandomState decisionRng)
         => EvaluateCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
-            team, selectionProfile, decisionRng, outOfReach: false);
+            team, selectionProfile, decisionRng, outOfReach: false, alreadyMoved: true);
 
     /// <summary>Explicit fresh out-of-reach branch; preserves the NonBlue post-movement adjustment before fallback.</summary>
     public static SwordAiPreparedSelectionResult EvaluateOutOfReach(AttackBattleSnapshot state, SwordAiRefreshRequest request,
@@ -40,12 +40,29 @@ public static class SwordAiPreparedSelection
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
         SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, FftRandomState decisionRng)
         => EvaluateCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
-            team, selectionProfile, decisionRng, outOfReach: true);
+            team, selectionProfile, decisionRng, outOfReach: true, alreadyMoved: true);
+
+    /// <summary>Own one fresh both-unused preparation and in-reach selection; never adopt the diagnostic clock state.</summary>
+    public static SwordAiPreparedSelectionResult EvaluateUnmoved(AttackBattleSnapshot state, SwordAiRefreshRequest request,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
+        SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, FftRandomState decisionRng)
+        => EvaluateCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
+            team, selectionProfile, decisionRng, outOfReach: false, alreadyMoved: false);
+
+    /// <summary>Fresh both-unused preparation and explicit out-of-reach selection, including the post-score team draw.</summary>
+    public static SwordAiPreparedSelectionResult EvaluateOutOfReachUnmoved(AttackBattleSnapshot state, SwordAiRefreshRequest request,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
+        SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, FftRandomState decisionRng)
+        => EvaluateCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
+            team, selectionProfile, decisionRng, outOfReach: true, alreadyMoved: false);
 
     private static SwordAiPreparedSelectionResult EvaluateCore(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
-        SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, FftRandomState decisionRng, bool outOfReach)
+        SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, FftRandomState decisionRng,
+        bool outOfReach, bool alreadyMoved)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(request);
@@ -59,8 +76,11 @@ public static class SwordAiPreparedSelection
             !selectionProfile.OrdinaryAttackTilePolicy || !selectionProfile.TargetSelectionMatchesBaseline || !selectionProfile.NoDefendSupport)
             return Reject(new(SwordAiPreparedSelectionRejection.UnsupportedProfile, SwordAiPreparedSelectionStage.Admission));
 
-        var preparation = SwordAiPreparation.Evaluate(state, request, candidateProfile, scoreProfile,
-            refreshProfile, preparationProfile, team, decisionRng);
+        var preparation = alreadyMoved
+            ? SwordAiPreparation.Evaluate(state, request, candidateProfile, scoreProfile,
+                refreshProfile, preparationProfile, team, decisionRng)
+            : SwordAiPreparation.EvaluateUnmoved(state, request, candidateProfile, scoreProfile,
+                refreshProfile, preparationProfile, team, decisionRng);
         if (!preparation.Accepted)
             return Reject(new(SwordAiPreparedSelectionRejection.PreparationRejected, SwordAiPreparedSelectionStage.Preparation,
                 preparation.Rejection, preparation.RefreshRejection));

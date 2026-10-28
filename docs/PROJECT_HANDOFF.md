@@ -6,13 +6,14 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-173: compose fresh unmoved preparation with pure AI selection.**
-The [fresh unmoved prefix](behavior/sword-ai-unmoved-preparation.md) now owns both
-unused-choice refunds, one retained upkeep draw and full ordinary reachable
-origins with restored-state policy/focus. Compose it privately with the existing
-explicit in/out-of-reach selectors and validate complete streams. Preserve old
-entries and remaining NonBlue/policy certificates. Live Move-first integration,
-ACT-first/post-ACT and host activation remain subsequent work.
+**ZOD-174: integrate fresh prepared in-reach AI Move-first execution.**
+The [fresh unmoved selectors](behavior/sword-ai-unmoved-prepared-selection.md) now
+own preparation and explicit in/out-of-reach selection with whole-query rollback.
+Connect the in-reach entry privately inside Framework's planned Move callback,
+then reuse its frozen Attack/deferred Wait. This new entry owns its prefix instead
+of taking GeneralSelectionEntryContext; remaining source/policy facts persist.
+Fresh out-of-reach live integration, ACT-first/post-ACT and host activation remain
+subsequent work.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
@@ -28,8 +29,8 @@ The current pure queries derive S/D0/D1 for focused-opponent, ordinary-sword
 reach/policy facts and raw Move<=124 through explicit in/out-of-reach entries.
 Movement is evaluated once; out-of-reach Blue/NonBlue adjustment runs afterward.
 Private scores/RNG feed one Attack scan/ranked admission then the source lottery.
-Empty ranking takes eight draws then MoveOnly at D0. The already-moved prepared entry
-derives focus/cache/active-target and first/terminal-entry defaults; earlier direct
+Empty ranking takes eight draws then MoveOnly at D0. Prepared moved/unmoved entries
+derive focus/cache/active-target and first/terminal-entry defaults; earlier direct
 selector APIs retain their certificates. No-Defend and other unrepresented policy
 facts stay explicit; plans retain deferred ChooseAtWait. Failures restore whole-query
 RNG without partial output. Original supplied-scenario APIs stay unchanged. These
@@ -37,7 +38,7 @@ pure queries grant no command authority or live RNG commit; execution adapters
 own that separate boundary.
 
 Full AI search, general multi-entry ranking/lottery, replaceable decision interface,
-fresh unmoved selection/live integration, ACT-first/post-ACT command lifecycle
+fresh unmoved live integration, ACT-first/post-ACT command lifecycle
 and presentation activation remain future work.
 Original UNIT_SLOT_COUNT is **21**; the old 26-foe wrap example is inadmissible.
 This does not select a fixed managed roster size. The contract records the erratum
@@ -45,18 +46,18 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-172, [pure fresh unmoved preparation](behavior/sword-ai-unmoved-preparation.md).
-  Explicit unmoved refresh/preparation shares existing calculations while retaining
-  opposite admission for already-moved entries. Five new scenarios cover traced
-  CT/clock/reach, restored policy, exact limits, rejection and identity/order isolation.
+- Latest implementation: ZOD-173, [fresh unmoved prepared selection](behavior/sword-ai-unmoved-prepared-selection.md).
+  Both explicit reach entries own preparation and feed its actual RNG into one
+  existing selection tail on original state. Six new scenarios cover literal full
+  streams, score reuse, fallback, counters, whole-query rollback and actor/order replay.
 - Latest design: ZOD-171, [unmoved preparation](architecture/zod-171-ai-unmoved-preparation.md),
   now implemented. Historical source receipts/fixtures remain unchanged.
-  Clean pinned audit: `scratch/ai-unmoved-preparation-172/source.json` (14 unmoved
+  Clean pinned audit: `scratch/ai-unmoved-selection-173/source.json` (14 unmoved
   function anchors and inherited receipts).
 - Validation: locked restore, zero-warning/error Release build,
-  **3,929 .NET cases / 513 Python tests**, including the owner's content drafts.
+  **3,935 .NET cases / 513 Python tests**, including the owner's content drafts.
   These bounded checks do not establish full original decision equivalence.
-  Logs/results: ignored `scratch/ai-unmoved-preparation-172/` (seven full TRX files).
+  Logs/results: ignored `scratch/ai-unmoved-selection-173/` (seven full TRX files).
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.
   No original/C execution or UI review.
