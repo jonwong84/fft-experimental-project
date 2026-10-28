@@ -134,6 +134,15 @@ references. Account for every baseline field/reference or unresolved meaning. Au
 share validation; synthetic catalogs must expose accidental original-table limits. Apply named
 semantic flags as each family matures.
 
+Bounded import candidate after the owner's definition refactor settles: extend the existing
+selected-weapon importer/exporter to map the original eight element bits into immutable
+`ElementToggles` and prepared JSON. Derive Neutral from an empty set; retain multi-element
+combinations and initialize custom Gravity/Poison to false for original inputs. Pin the
+reference mapping, version/migrate the existing numeric element schema, and verify neutral,
+individual bits, combinations and JSON round trips. Preserve raw import provenance and
+explicit unsupported-runtime diagnostics; richer content must not silently activate
+unimplemented combat behavior. This does not reorder ZOD-141 or activate broad catalog import.
+
 [Detailed scope](history/2026-10-27/BACKLOG.md#zod-039--expand-typed-definitions-and-import-to-the-baseline-catalog).
 
 ### ZOD-041 — Implement campaign, encounters, events, and optional content
