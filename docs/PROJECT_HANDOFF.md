@@ -6,12 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-159: implement a pure ordinary AI refresh query.**
-The [ZOD-156 source contract](architecture/zod-156-ai-refresh-prefix.md) proves that
-fresh act-first/skillset-zero refresh skips movement and consumes one upkeep draw in
-the closed ordinary context. Return derived semantic flags and hypothetical clock/RNG;
-retain two explicit cached policy booleans per unit and require targetability/MP-cache
-facts. No scoring or live commit; preserve current selection/executor entry certificates.
+**ZOD-160: trace ordinary preparation between refresh and general selection.**
+The [pure refresh query](behavior/sword-ai-refresh.md) now derives flags and one
+hypothetical clock/upkeep draw for the closed already-moved context. Study later
+ability, reachable-tile and team/target policy preparation and the earlier delay
+cache before specifying fresh composition. Preserve current command authority and
+general-selection certificates until those remaining inputs and draws are proved.
 
 The [current executor](behavior/sword-ai-execution.md), now in `Zodiac.Framework.Ai`,
 derives one in-reach decision for a real Move-used/ACT-unused session. The
@@ -39,22 +39,22 @@ managed roster size. The contract records the erratum without rewriting old evid
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-157/158, [AI command boundary and assembly extraction](architecture/ai-command-boundary.md).
-  Fourteen AI files and 15 existing test files moved to their own projects/namespaces.
-  The existing 673 AI cases retain decisions, actual combat and RNG results. Seven
-  Framework transaction cases plus one dependency check cover the new boundary.
-  No native/editor activation or original decision-equivalence claim.
+- Latest implementation: ZOD-159, [pure ordinary refresh](behavior/sword-ai-refresh.md).
+  Direct private clock reuse, retained policy booleans, semantic flags and whole-query
+  rollback; no movement search, score or command/session authority. Eighteen managed
+  cases cover source vectors, HP thresholds, policies, counters and immutable replay.
+  The [separate AI assembly and Framework transaction](architecture/ai-command-boundary.md)
+  remain in place; no native/editor activation or original decision-equivalence claim.
 - Latest source/design: ZOD-156, [refresh-prefix contract](architecture/zod-156-ai-refresh-prefix.md).
   Clean pinned audit checks three refresh files/18 functions and six closed clock
-  vectors, plus inherited receipts (`scratch/ai-refresh-156/source.json`). Four new
-  offline Python checks; proposed managed query cases await ZOD-159.
-- Last .NET validation (ZOD-158): locked restore, zero-warning/error Release build,
-  **3,845 cases** including the owner's current content-limit refactor; not rerun for
-  this source/design-only ticket. Latest Python validation: **504 tests**.
-  All nine historical checkpoint audits also passed after the file moves.
+  vectors, plus inherited receipts (rechecked: `scratch/ai-refresh-159/source.json`).
+  The six clock/counter vectors now also execute in the managed refresh tests.
+- ZOD-159 validation: locked restore, zero-warning/error Release build,
+  **3,863 .NET cases / 504 Python tests**, including the owner's current content drafts.
+  All nine historical checkpoint audits last passed at ZOD-158 after the file moves.
   These bounded checks do not establish complete FFT equivalence.
-  Current .NET results: ignored `scratch/ai-assembly-extraction/final-full-trx/`;
-  Latest Python log: `scratch/ai-refresh-156/python.txt`. The current owner refactor/drafts
+  Current .NET results: ignored `scratch/ai-refresh-159/full-trx/`;
+  Latest Python log: `scratch/ai-refresh-159/python.txt`. The current owner refactor/drafts
   were included in the build and tests, excluded from the implementation commit.
   No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/

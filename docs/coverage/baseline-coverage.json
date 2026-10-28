@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-28",
   "edition": "SCUS-94221",
-  "managedCommit": "ba25bdad815f77a2437776dfb78010b4ed57266a",
+  "managedCommit": "9ab9176cd2fdf622babaf5d7194e7f9fe6cb1602",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -453,7 +453,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "A separate AI assembly owns pure two-opponent ordinary-sword selection and already-moved execution orchestration. Framework invokes fresh planning, verifies RNG continuity and publishes one actual Attack or fallback Wait through existing session authority; AI cannot construct trusted sessions/receipts. Existing source decisions and RNG ordering are preserved. Earlier refresh, full search/continuation and playable-host activation remain open.",
+      "currentScope": "A separate AI assembly owns pure two-opponent ordinary-sword selection, a separate already-moved refresh query and execution orchestration. Refresh derives semantic flags, retains explicit policy booleans and consumes one hypothetical upkeep draw without changing live state. Framework invokes fresh selection planning, verifies RNG continuity and publishes one actual Attack or fallback Wait through existing session authority; AI cannot construct trusted sessions/receipts. Refresh-to-selection preparation/integration, full search/continuation and playable-host activation remain open.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -482,6 +482,7 @@
         "docs/behavior/sword-ai-execution.md",
         "docs/architecture/ai-command-boundary.md",
         "docs/architecture/zod-156-ai-refresh-prefix.md",
+        "docs/behavior/sword-ai-refresh.md",
         "docs/behavior/sword-ai-out-of-reach-scenario.md",
         "docs/behavior/sword-ai-out-of-reach-selection.md"
       ],
@@ -491,6 +492,7 @@
         "src/Zodiac.Framework.Ai/SwordAiWaitFacing.cs",
         "src/Zodiac.Framework.Ai/SwordAiWaitSettlement.cs",
         "src/Zodiac.Framework.Ai/SwordAiExecution.cs",
+        "src/Zodiac.Framework.Ai/SwordAiRefresh.cs",
         "src/Zodiac.Framework/FacingDecision.cs"
       ],
       "automatedChecks": [
@@ -537,6 +539,10 @@
         {
           "path": "tools/verification/test_ai_refresh_contract.py",
           "scope": "Offline closed refresh clock/flags, odd-HP boundaries, counter proposals and supplied downstream lottery illustration; no managed refresh execution."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiRefreshTests.cs",
+          "scope": "Actual pure refresh clock/RNG/flags, retained policy booleans, source thresholds, counter failure and replay isolation; no live commitment."
         }
       ],
       "manualCheckpoint": {
@@ -544,11 +550,11 @@
         "procedure": "Observe selected mandatory AI turns and distinguish legal choices from exact policy matching."
       },
       "openQuestions": [
-        "Full target/ability/roster search, out-of-reach execution and special policies, Defend, replacement interface, earlier refresh, Move-first continuation and post-ACT reselection remain open.",
+        "Full target/ability/roster search, out-of-reach execution and special policies, Defend, replacement interface, refresh-prefix integration, Move-first continuation and post-ACT reselection remain open.",
         "Caller certificates still describe unrepresented original context. Earlier refresh/policy draws and source frame RNG are outside the derived selector; bounded vectors do not establish full original decision equivalence."
       ],
-      "nextAction": "Implement one pure already-moved ordinary refresh query with explicit source/cache facts, retained policy booleans, derived flags, one private clock pass and atomic RNG failure; preserve current command/general-entry boundaries.",
-      "followUpTickets": ["ZOD-159"]
+      "nextAction": "Trace remaining ability/reachable-tile and team/target policy preparation and earlier delay-cache dependencies before specifying fresh refresh-to-selection composition; preserve command authority and entry certificates.",
+      "followUpTickets": ["ZOD-160"]
     },
     {
       "id": "COV-SIM-010",

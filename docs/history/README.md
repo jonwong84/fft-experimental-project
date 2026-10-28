@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 126 entries index completed bounded work; they do not mean the full game is complete.
+These 127 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -149,3 +149,4 @@ These 126 entries index completed bounded work; they do not mean the full game i
 - [ZOD-156 — Trace the ordinary AI refresh prefix before general selection](../architecture/zod-156-ai-refresh-prefix.md)
 - [ZOD-157 — Design the Framework-owned AI command handoff](../architecture/ai-command-boundary.md#controlled-planning-transaction)
 - [ZOD-158 — Extract Zodiac.Framework.Ai and its tests](../architecture/ai-command-boundary.md)
+- [ZOD-159 — Implement a pure ordinary AI refresh query](../behavior/sword-ai-refresh.md)

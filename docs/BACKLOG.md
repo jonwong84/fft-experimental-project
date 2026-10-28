@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-159 (implementation).** Refresh-prefix contract ZOD-156 is complete.
-There are 33 open tickets below. The 126 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-160 (source/design).** Pure ordinary refresh ZOD-159 is complete.
+There are 33 open tickets below. The 127 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,16 +29,17 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-159 — Implement a pure ordinary AI refresh query
+### ZOD-160 — Trace ordinary preparation between refresh and general selection
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-156, ZOD-158
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-159
 
-Implement the [refresh contract](architecture/zod-156-ai-refresh-prefix.md) in
-Zodiac.Framework.Ai: active already-moved/unused-ACT two-opponent query, one private
-no-action clock pass, retained policy booleans and derived refresh-owned flags/RNG.
-Require fresh-entry, targetability and cached-MP context; preserve live state and
-whole-query rollback. No scoring, command commitment, general-entry certificate removal,
-later ability/policy initialization or native activation.
+Trace ability considerations, reachable-tile preparation, team/target policy and
+their dependencies on the earlier actor-delay cache for the closed already-moved
+two-opponent path. Relate the [refresh query](behavior/sword-ai-refresh.md) output
+to existing general-selection certificates; identify additional inputs and RNG
+work before specifying one managed child. Preserve current command authority and
+explicit entry certificates until fresh composition is proved. Broader search,
+continuation, special policies, frame fidelity and native activation stay separate.
 
 ## Existing validation gates
 
