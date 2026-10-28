@@ -6,13 +6,13 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-176: trace ordinary ACT-first and post-ACT reselection.**
-Both [fresh prepared Move-first branches](behavior/sword-ai-prepared-move-first-out-of-reach.md)
-now own their prefix and actual path-Move handoff to frozen Attack/deferred Wait.
-Trace actual ACT-first completion, remaining Move ownership and source-required
-fresh post-ACT search before designing the next boundary. Keep guard ordering,
-current post-ACT state/RNG and Framework authority explicit. Source/design only;
-broader search, replacement interfaces and host activation remain separate.
+**ZOD-177: execute one fresh prepared ACT-first Attack.**
+The [ACT-first trace/design](architecture/zod-176-ai-act-first.md) maps current
+Framework single-command authority: actual ACT leaves Move unused and no facing
+receipt on an ongoing turn. Own fresh preparation/selection and Attack dispatch
+inside that boundary, without issuing future Move authority. Post-ACT refresh/
+selection must later start from actual results/RNG; its usable-bit/reach ordering
+and D0=D1 differ from current pre-ACT helpers. Host activation stays separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
@@ -50,14 +50,17 @@ without rewriting old evidence.
   Private fresh prefix planning shares dispatch, real path publication and exact-
   session frozen continuation with existing post-prefix entries. Nine new scenarios
   cover complete command streams, actual CT/facing, per-step rollback and replay.
-- Latest design: ZOD-171, [unmoved preparation](architecture/zod-171-ai-unmoved-preparation.md),
-  now implemented. Historical source receipts/fixtures remain unchanged.
-  Clean pinned audit: `scratch/ai-prepared-move-175/source.json` (14 unmoved
-  function anchors and inherited receipts).
-- Validation: locked restore, zero-warning/error Release build,
-  **3,944 .NET cases / 513 Python tests**, including the owner's content drafts.
+- Latest design: ZOD-176, [ACT-first/post-ACT lifecycle](architecture/zod-176-ai-act-first.md).
+  Twenty source function anchors and nine offline branch/fact/tape descriptions
+  cover guard order, remaining choices, settled facing, post-ACT usable/reach facts
+  and supplied complete hit/miss streams. Managed ACT-first awaits ZOD-177.
+  Clean pinned audit: `scratch/ai-act-first-176/source.json` plus inherited receipts.
+- Validation: last full managed run remains ZOD-175's locked restore,
+  zero-warning/error Release build and **3,944 .NET cases**, including owner drafts.
+  No production C# changed for ZOD-176; full **516 Python tests** pass.
+  .NET logs: ignored `scratch/ai-prepared-move-175/` (seven full TRX files);
+  new Python/source logs: `scratch/ai-act-first-176/`.
   These bounded checks do not establish full original decision equivalence.
-  Logs/results: ignored `scratch/ai-prepared-move-175/` (seven full TRX files).
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.
   No original/C execution or UI review.

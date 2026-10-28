@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-28",
   "edition": "SCUS-94221",
-  "managedCommit": "93bc315acfb24d11b372f43d043f40b072ece092",
+  "managedCommit": "ab6aedf0fe6de3d05b48863b2628bd3dbc1afbad",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -500,7 +500,8 @@
         "docs/behavior/sword-ai-unmoved-preparation.md",
         "docs/behavior/sword-ai-unmoved-prepared-selection.md",
         "docs/behavior/sword-ai-prepared-move-first.md",
-        "docs/behavior/sword-ai-prepared-move-first-out-of-reach.md"
+        "docs/behavior/sword-ai-prepared-move-first-out-of-reach.md",
+        "docs/architecture/zod-176-ai-act-first.md"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/SwordAiMovementScenario.cs",
@@ -624,6 +625,10 @@
         {
           "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiPreparedMoveFirstOutOfReachTests.cs",
           "scope": "Owned out-of-reach prefix, literal halving/fallback Move/Wait streams, exact counters, explicit branch/context rejection and continuation replay/isolation."
+        },
+        {
+          "path": "tools/verification/test_ai_act_first_contract.py",
+          "scope": "Offline ACT-first supplied-cost tapes and post-ACT dispatch/CT/reach scalars; no managed ACT-first execution."
         }
       ],
       "manualCheckpoint": {
@@ -634,9 +639,9 @@
         "Full target/ability/roster search, broader special policies, Defend, replacement interface and ACT-first/post-ACT reselection remain open.",
         "Caller certificates still describe unrepresented original context. The fresh prepared selector covers only the certified NonBlue ordinary subset; Blue/special policies and source frame RNG remain outside it, and bounded vectors do not establish full original decision equivalence."
       ],
-      "nextAction": "Trace ordinary ACT-first execution, Framework remaining-Move authority and fresh post-ACT reselection, preserving original guard ordering and live RNG/state ownership before selecting a bounded child.",
+      "nextAction": "Execute one privately prepared ACT-first Attack through existing Framework command authority, leaving Move available and no future-Move token; preserve actual post-ACT state/RNG for later fresh selection.",
       "followUpTickets": [
-        "ZOD-176"
+        "ZOD-177"
       ]
     },
     {

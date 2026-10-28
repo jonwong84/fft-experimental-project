@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-176 (source/design).** Both fresh prepared Move-first reach branches ZOD-174/175 are complete.
-There are 33 open tickets below. The 143 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-177 (implementation).** ACT-first/post-ACT source trace ZOD-176 is complete.
+There are 33 open tickets below. The 144 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,20 +29,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-176 — Trace ordinary ACT-first and post-ACT reselection
+### ZOD-177 — Execute one fresh prepared ACT-first Attack
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-175
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-176
 
-Extend the [command lifecycle trace](architecture/zod-165-ai-command-continuation.md)
-for one ordinary two-opponent ACT-first turn. Trace actual ACT completion and
-remaining Move ownership, the no-progress guard before fresh post-ACT refresh,
-ability availability, movement scoring and later Move/Wait dispatch. Record
-restored-state versus live post-ACT inputs, actual RNG/counters and invalidation/
-terminal cases. Map existing Framework action/facing authority and design the
-smallest independently testable child, with pinned evidence/vectors. Do not reuse
-a frozen pre-ACT Move as a fresh decision or weaken current Move-first APIs.
-Source/design only; no new command authority, broad interface, host activation
-or unrelated deferred work.
+Implement the [ACT-first source/design](architecture/zod-176-ai-act-first.md)
+through Framework's existing single-command planner transaction. Own fresh
+unmoved in-reach preparation/selection and dispatch; require ActBeforeMove plus
+actual Attack dispatch. Execute only the current Attack, leaving Move available
+and no facing receipt on the ongoing turn. No frozen future Move, external RNG,
+cached prefix or general-entry certificate. Verify literal hit/miss streams,
+exact/short budgets, terminal actual results, rollback and actor/order isolation.
+Keep remaining source/NonBlue/policy facts and old APIs; fresh post-ACT prefix/
+selection and live continuation are subsequent work. No host activation.
 
 ## Existing validation gates
 
