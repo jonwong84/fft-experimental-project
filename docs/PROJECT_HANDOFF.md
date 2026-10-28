@@ -6,21 +6,22 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-175: integrate fresh prepared out-of-reach AI Move-first execution.**
-The [prepared in-reach entry](behavior/sword-ai-prepared-move-first.md) now owns
-refresh/preparation/selection inside Framework's real Move transaction and freezes
-Attack or deferred Wait. Extend the same path through explicit out-of-reach
-selection, retaining NonBlue adjustment/fallback RNG. No cached prefix/external
-RNG/general-entry certificate for this owned entry; remaining source facts persist.
-ACT-first/post-ACT and host activation remain subsequent work.
+**ZOD-176: trace ordinary ACT-first and post-ACT reselection.**
+Both [fresh prepared Move-first branches](behavior/sword-ai-prepared-move-first-out-of-reach.md)
+now own their prefix and actual path-Move handoff to frozen Attack/deferred Wait.
+Trace actual ACT-first completion, remaining Move ownership and source-required
+fresh post-ACT search before designing the next boundary. Keep guard ordering,
+current post-ACT state/RNG and Framework authority explicit. Source/design only;
+broader search, replacement interfaces and host activation remain separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
-The [Framework-owned boundary](architecture/ai-command-boundary.md) invokes fresh
-planning, verifies RNG continuity and publishes one actual Attack or Wait. AI
-cannot construct trusted sessions/receipts and has no production friend access.
+Framework owns [Attack/Wait transactions](architecture/ai-command-boundary.md) and
+[planned Move continuations](behavior/planned-move-continuation.md), verifying
+fresh planning/RNG before publishing commands. AI cannot construct trusted
+sessions/receipts and has no production friend access.
 Prepared entries own refresh/preparation and explicit in/out-of-reach selection
-inside that transaction; the old entry retains its general-selection certificate.
+inside those transactions; post-prefix entries retain their general-selection certificate.
 The original VSync callback also draws from BIOS RNG. Managed rendering/pauses add no
 gameplay draws; frame-interleaved retail stream equivalence remains explicitly unresolved.
 
@@ -37,27 +38,26 @@ pure queries grant no command authority or live RNG commit; execution adapters
 own that separate boundary.
 
 Full AI search, general multi-entry ranking/lottery, replaceable decision interface,
-fresh prepared out-of-reach live integration, ACT-first/post-ACT command lifecycle
-and presentation activation remain future work.
+ACT-first/post-ACT command lifecycle and presentation activation remain future work.
 Original UNIT_SLOT_COUNT is **21**; the old 26-foe wrap example is inadmissible.
 This does not select a fixed managed roster size. The contract records the erratum
 without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-174, [fresh prepared in-reach Move-first execution](behavior/sword-ai-prepared-move-first.md).
-  One private planner owns the full prefix; all Move-first entries share dispatch,
-  real path publication and exact-session continuation. Five new scenarios cover
-  full hit/miss/Wait streams, actual CT, budgets, per-step failure and replay.
+- Latest implementation: ZOD-174/175, [prepared in-reach execution](behavior/sword-ai-prepared-move-first.md)
+  and [prepared out-of-reach execution](behavior/sword-ai-prepared-move-first-out-of-reach.md).
+  Private fresh prefix planning shares dispatch, real path publication and exact-
+  session frozen continuation with existing post-prefix entries. Nine new scenarios
+  cover complete command streams, actual CT/facing, per-step rollback and replay.
 - Latest design: ZOD-171, [unmoved preparation](architecture/zod-171-ai-unmoved-preparation.md),
   now implemented. Historical source receipts/fixtures remain unchanged.
-  Clean pinned audit: `scratch/ai-prepared-move-174/source.json` (14 unmoved
+  Clean pinned audit: `scratch/ai-prepared-move-175/source.json` (14 unmoved
   function anchors and inherited receipts).
 - Validation: locked restore, zero-warning/error Release build,
-  **3,940 .NET cases**, including the owner's content drafts. Python is unchanged;
-  its last full run remains **513 tests at ZOD-173**.
+  **3,944 .NET cases / 513 Python tests**, including the owner's content drafts.
   These bounded checks do not establish full original decision equivalence.
-  Logs/results: ignored `scratch/ai-prepared-move-174/` (seven full TRX files).
+  Logs/results: ignored `scratch/ai-prepared-move-175/` (seven full TRX files).
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.
   No original/C execution or UI review.

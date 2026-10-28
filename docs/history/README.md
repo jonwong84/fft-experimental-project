@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 142 entries index completed bounded work; they do not mean the full game is complete.
+These 143 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -165,3 +165,4 @@ These 142 entries index completed bounded work; they do not mean the full game i
 - [ZOD-172 — Implement pure fresh unmoved AI refresh and preparation](../behavior/sword-ai-unmoved-preparation.md)
 - [ZOD-173 — Compose fresh unmoved preparation with pure AI selection](../behavior/sword-ai-unmoved-prepared-selection.md)
 - [ZOD-174 — Integrate fresh prepared in-reach AI Move-first execution](../behavior/sword-ai-prepared-move-first.md)
+- [ZOD-175 — Integrate fresh prepared out-of-reach AI Move-first execution](../behavior/sword-ai-prepared-move-first-out-of-reach.md)

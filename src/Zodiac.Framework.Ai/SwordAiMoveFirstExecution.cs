@@ -27,8 +27,8 @@ public sealed record SwordAiMoveFirstResult(SwordAiMoveFirstFailure? Failure, Fa
 
 /// <summary>Own fresh selection and real Move-first handoff; follow-up stays in Framework.</summary>
 /// <remarks>
-/// Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-165/167/169/170/174.
-/// Post-prefix entries retain their general-entry certificate. The prepared entry owns fresh unmoved preparation instead.
+/// Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-165/167/169/170/174/175.
+/// Post-prefix entries retain their general-entry certificate. Prepared entries own fresh unmoved preparation instead.
 /// No cached-plan input, ACT-first execution, automatic branch dispatch or host activation.
 /// </remarks>
 public static class SwordAiMoveFirstExecution
@@ -54,6 +54,21 @@ public static class SwordAiMoveFirstExecution
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team,
         SwordAiPreparedSelectionProfile selectionProfile, SwordAiCommandDispatchProfile dispatchProfile)
+        => StartPreparedCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
+            team, selectionProfile, dispatchProfile, outOfReach: false);
+
+    /// <summary>Own fresh NonBlue unmoved preparation and explicit out-of-reach selection, then move and retain Wait.</summary>
+    public static SwordAiMoveFirstResult StartPreparedOutOfReach(FacingTurnState state, SwordAiRefreshRequest request,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team,
+        SwordAiPreparedSelectionProfile selectionProfile, SwordAiCommandDispatchProfile dispatchProfile)
+        => StartPreparedCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
+            team, selectionProfile, dispatchProfile, outOfReach: true);
+
+    private static SwordAiMoveFirstResult StartPreparedCore(FacingTurnState state, SwordAiRefreshRequest request,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team,
+        SwordAiPreparedSelectionProfile selectionProfile, SwordAiCommandDispatchProfile dispatchProfile, bool outOfReach)
     {
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(scoreProfile);
@@ -62,8 +77,11 @@ public static class SwordAiMoveFirstExecution
         ArgumentNullException.ThrowIfNull(selectionProfile);
         return ExecuteCore(state, request.ActorId, request.TargetId, weapon, candidateProfile, dispatchProfile, (battle, rng) =>
         {
-            var decision = SwordAiPreparedSelection.EvaluateUnmoved(battle, request, weapon, candidateProfile, scoreProfile,
-                refreshProfile, preparationProfile, team, selectionProfile, rng);
+            var decision = outOfReach
+                ? SwordAiPreparedSelection.EvaluateOutOfReachUnmoved(battle, request, weapon, candidateProfile, scoreProfile,
+                    refreshProfile, preparationProfile, team, selectionProfile, rng)
+                : SwordAiPreparedSelection.EvaluateUnmoved(battle, request, weapon, candidateProfile, scoreProfile,
+                    refreshProfile, preparationProfile, team, selectionProfile, rng);
             return decision.Accepted
                 ? new(decision.Outcome!.Decision, decision.RngState, decision.Outcome.OutOfReach, decision.Outcome.Preparation)
                 : new(null, rng, Failure: new(SwordAiMoveFirstRejection.SelectionRejected) { PreparedSelectionFailure = decision.Failure });

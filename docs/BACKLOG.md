@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-175 (implementation).** Fresh prepared in-reach Move-first execution ZOD-174 is complete.
-There are 33 open tickets below. The 142 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-176 (source/design).** Both fresh prepared Move-first reach branches ZOD-174/175 are complete.
+There are 33 open tickets below. The 143 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,19 +29,20 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-175 — Integrate fresh prepared out-of-reach AI Move-first execution
+### ZOD-176 — Trace ordinary ACT-first and post-ACT reselection
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-174
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-175
 
-Extend the [prepared Move-first adapter](behavior/sword-ai-prepared-move-first.md)
-with the owned unmoved out-of-reach selector in the same Framework transaction.
-Retain the NonBlue preparation restriction, actual post-score adjustment and
-eight-roll fallback stream, require real Move-first dispatch and freeze deferred
-Wait. Verify literal full streams, halving/distance fallback, exact limits,
-whole-Move rejection versus continuation failure and identity/order replay.
-No cached prefix, external RNG or GeneralSelectionEntryContext for this owned
-entry. Preserve old APIs/certificates; ACT-first/post-ACT, automatic branch routing
-and host activation remain separate.
+Extend the [command lifecycle trace](architecture/zod-165-ai-command-continuation.md)
+for one ordinary two-opponent ACT-first turn. Trace actual ACT completion and
+remaining Move ownership, the no-progress guard before fresh post-ACT refresh,
+ability availability, movement scoring and later Move/Wait dispatch. Record
+restored-state versus live post-ACT inputs, actual RNG/counters and invalidation/
+terminal cases. Map existing Framework action/facing authority and design the
+smallest independently testable child, with pinned evidence/vectors. Do not reuse
+a frozen pre-ACT Move as a fresh decision or weaken current Move-first APIs.
+Source/design only; no new command authority, broad interface, host activation
+or unrelated deferred work.
 
 ## Existing validation gates
 
