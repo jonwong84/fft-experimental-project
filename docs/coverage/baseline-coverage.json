@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-28",
   "edition": "SCUS-94221",
-  "managedCommit": "9ab9176cd2fdf622babaf5d7194e7f9fe6cb1602",
+  "managedCommit": "9af81795b5c5ccad5889356a2cae50ec28c01b9f",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 3845,
-    "source": "docs/architecture/ai-command-boundary.md",
+    "passed": 3878,
+    "source": "docs/behavior/sword-ai-prepared-selection.md",
     "runForThisInventory": false
   },
   "statusDefinitions": {
@@ -453,7 +453,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "A separate AI assembly owns pure two-opponent ordinary-sword selection, a separate already-moved refresh query and execution orchestration. Refresh derives semantic flags, retains explicit policy booleans and consumes one hypothetical upkeep draw without changing live state. Framework invokes fresh selection planning, verifies RNG continuity and publishes one actual Attack or fallback Wait through existing session authority; AI cannot construct trusted sessions/receipts. Refresh-to-selection preparation/integration, full search/continuation and playable-host activation remain open.",
+      "currentScope": "A separate AI assembly owns pure two-opponent ordinary-sword selection, a separate already-moved refresh query and execution orchestration. Refresh derives semantic flags, retains explicit policy booleans and consumes one hypothetical upkeep draw without changing live state. Framework invokes fresh selection planning, verifies RNG continuity and publishes one actual Attack or fallback Wait through existing session authority; AI cannot construct trusted sessions/receipts. A separate fresh NonBlue prepared selector now owns refresh RNG and derives closed policy/cache/focus facts before selection on restored state. Prepared-prefix command integration, full search/continuation and playable-host activation remain open.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -485,6 +485,7 @@
         "docs/behavior/sword-ai-refresh.md",
         "docs/architecture/zod-160-ai-preparation.md",
         "docs/behavior/sword-ai-preparation.md",
+        "docs/behavior/sword-ai-prepared-selection.md",
         "docs/behavior/sword-ai-out-of-reach-scenario.md",
         "docs/behavior/sword-ai-out-of-reach-selection.md"
       ],
@@ -496,6 +497,7 @@
         "src/Zodiac.Framework.Ai/SwordAiExecution.cs",
         "src/Zodiac.Framework.Ai/SwordAiRefresh.cs",
         "src/Zodiac.Framework.Ai/SwordAiPreparation.cs",
+        "src/Zodiac.Framework.Ai/SwordAiPreparedSelection.cs",
         "src/Zodiac.Framework/FacingDecision.cs"
       ],
       "automatedChecks": [
@@ -546,6 +548,18 @@
         {
           "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiRefreshTests.cs",
           "scope": "Actual pure refresh clock/RNG/flags, retained policy booleans, source thresholds, counter failure and replay isolation; no live commitment."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiPreparationTests.cs",
+          "scope": "Closed NonBlue policy, restored-state delays and fresh refresh ownership with no additional draws."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiPreparedSelectionTests.cs",
+          "scope": "Fresh preparation-to-selection literal schedules, fallback, exact budgets, reason-only failure and immutable replay."
+        },
+        {
+          "path": "tools/verification/test_ai_preparation_contract.py",
+          "scope": "Offline source preparation scalars; no C or managed execution."
         }
       ],
       "manualCheckpoint": {
@@ -553,11 +567,11 @@
         "procedure": "Observe selected mandatory AI turns and distinguish legal choices from exact policy matching."
       },
       "openQuestions": [
-        "Full target/ability/roster search, out-of-reach execution and special policies, Defend, replacement interface, refresh-prefix integration, Move-first continuation and post-ACT reselection remain open.",
-        "Caller certificates still describe unrepresented original context. Earlier refresh/policy draws and source frame RNG are outside the derived selector; bounded vectors do not establish full original decision equivalence."
+        "Full target/ability/roster search, out-of-reach execution and special policies, Defend, replacement interface, prepared-prefix command integration, Move-first continuation and post-ACT reselection remain open.",
+        "Caller certificates still describe unrepresented original context. The fresh prepared selector covers only the certified NonBlue ordinary subset; Blue/special policies and source frame RNG remain outside it, and bounded vectors do not establish full original decision equivalence."
       ],
-      "nextAction": "Compose fresh preparation and in-reach selection with actual carried RNG, proved entry facts and atomic rollback; retain unknown source policies and no command authority.",
-      "followUpTickets": ["ZOD-162"]
+      "nextAction": "Execute one fresh prepared already-moved decision through the existing Framework callback, carrying refresh/selection RNG into actual Attack/Wait with atomic session and receipt publication.",
+      "followUpTickets": ["ZOD-163"]
     },
     {
       "id": "COV-SIM-010",

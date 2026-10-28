@@ -6,12 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-162: compose fresh preparation with pure ordinary selection.**
-The [preparation query](behavior/sword-ai-preparation.md) owns fresh refresh,
-adds no later draws and derives closed NonBlue delay/reach/focus/support facts.
-Carry actual preparation RNG into existing in-reach selection on restored live
-state; derive proved entry facts while retaining unknown policy assertions.
-No command integration or GeneralSelectionEntryContext removal in this child.
+**ZOD-163: execute a freshly prepared already-moved AI decision.**
+The [fresh selector](behavior/sword-ai-prepared-selection.md) owns NonBlue ordinary
+preparation and actual refresh-to-selection RNG. Add one opt-in prepared-execution
+entry inside the existing Framework callback, with actual Attack/Wait and atomic
+session/receipt publication. Preserve the existing post-prefix API and remaining
+source assertions; no host activation or general AI expansion.
 
 The [current executor](behavior/sword-ai-execution.md), now in `Zodiac.Framework.Ai`,
 derives one in-reach decision for a real Move-used/ACT-unused session. The
@@ -26,10 +26,12 @@ The current pure queries derive S/D0/D1 for focused-opponent, ordinary-sword
 reach/policy facts and raw Move<=124 through explicit in/out-of-reach entries.
 Movement is evaluated once; out-of-reach Blue/NonBlue adjustment runs afterward.
 Private scores/RNG feed one Attack scan/ranked admission then the source lottery.
-Empty ranking takes eight draws then MoveOnly at D0. FirstAttackEntry, terminal
-entry, no-Defend and other source-context facts remain explicit; plans retain deferred
-ChooseAtWait. Failures restore whole-query RNG without partial output. Original
-supplied-scenario APIs stay unchanged; no command authority or live RNG commit.
+Empty ranking takes eight draws then MoveOnly at D0. The new prepared entry
+derives focus/cache/active-target and first/terminal-entry defaults; earlier direct
+selector APIs retain their certificates. No-Defend and other unrepresented policy
+facts stay explicit; plans retain deferred ChooseAtWait. Failures restore whole-query
+RNG without partial output. Original supplied-scenario APIs stay unchanged; no command
+authority or live RNG commit.
 
 Full AI search, general multi-entry ranking/lottery, replaceable decision interface,
 wider command lifecycle/refresh-prefix integration and presentation activation remain
@@ -39,21 +41,19 @@ managed roster size. The contract records the erratum without rewriting old evid
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-161, [fresh ordinary preparation](behavior/sword-ai-preparation.md).
-  Eight new cases plus all existing AI tests pass (700 AI cases); AI build has no
-  warnings/errors. No command authority or live-state/RNG mutation. Logs:
-  `scratch/ai-preparation-161/`. Full solution counts below are the prior ZOD-159 run.
+- Latest implementation: ZOD-161/162, [fresh preparation](behavior/sword-ai-preparation.md)
+  and [prepared selection](behavior/sword-ai-prepared-selection.md). Fifteen managed
+  cases cover derived policy/delay facts, complete literal query schedules, fallback,
+  exact budgets and whole-prefix rollback. No live command authority or activation.
 - Latest source/design: ZOD-160, [preparation contract](architecture/zod-160-ai-preparation.md).
   Clean source audit checks 25 preparation functions plus inherited receipts
-  (`scratch/ai-preparation-160/source.json`); three focused Python checks pass.
-  No C# changed at this checkpoint; managed preparation/selection children remain.
-- ZOD-159 validation: locked restore, zero-warning/error Release build,
-  **3,863 .NET cases / 504 Python tests**, including the owner's current content drafts.
-  All nine historical checkpoint audits last passed at ZOD-158 after the file moves.
-  These bounded checks do not establish complete FFT equivalence.
-  Current .NET results: ignored `scratch/ai-refresh-159/full-trx/`;
-  Latest Python log: `scratch/ai-refresh-159/python.txt`. The current owner refactor/drafts
-  were included in the build and tests, excluded from the implementation commit.
+  (`scratch/ai-prepared-selection-162/source.json`); three offline scalar checks.
+- Batch validation: locked restore, zero-warning/error Release build,
+  **3,878 .NET cases / 507 Python tests**, including the owner's content drafts.
+  These bounded checks do not establish full original decision equivalence.
+  Results/logs: ignored `scratch/ai-prepared-selection-162/` (seven full TRX files).
+  Owner refactor/drafts are excluded from the AI commits. Nine historical checkpoint
+  audits last passed at ZOD-158; unchanged historical snapshots were not rerun.
   No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
   introduction proofs and synthetic world Save/Load exist. Original campaign,
