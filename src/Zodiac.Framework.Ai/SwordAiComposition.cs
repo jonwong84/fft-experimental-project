@@ -131,7 +131,7 @@ public static class SwordAiComposition
     {
         var score = best.Evaluation.Score!;
         // Markers are 0, baseline hit=100, candidate hit<=100: rank-only gate requires greater signed priority.
-        if (score.Priority <= baseline.Priority) return SwordAiAdmission.NotAboveBaseline;
+        if (AiCandidateRank.Compare(score, baseline) != AiRankOrder.Above) return SwordAiAdmission.NotAboveBaseline;
         bool HigherThan(SwordAiScannedCandidate? entry) => entry is null ||
             SwordAiCandidateScan.IsHigher(score, best.Proximity, entry.Evaluation.Score!, entry.Proximity);
         if (!HigherThan(ranked[^1])) return SwordAiAdmission.NotAboveBaseline;

@@ -6,11 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-189: compare one fresh Throw Stone candidate with a movement baseline.**
-[Fresh absolute scoring](behavior/throw-stone-ai-scoring.md) now reuses the same
-source HP/status/equipment terms as Attack with separate accuracy/no extra RNG.
-Own a certified movement-only baseline for the same ability profile and one
-candidate in source order; preserve legacy admission and explicit source facts.
+**ZOD-190: trace one Throw Stone origin and target scan.**
+[Fresh baseline comparison](behavior/throw-stone-ai-baseline-comparison.md) now
+owns move-only scoring then one candidate with carried private RNG and explicit
+source facts, preserving Attack admission. Trace entry/usefulness, reach/aim
+masks, origin/target ordering and reset/RNG provenance before implementing a
+scan; Throw Stone's policy must not inherit Attack's range1 assumptions.
 General list search/ranking and live ability authority remain separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
@@ -47,20 +48,20 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-186/187/188, [Throw Stone formula](behavior/throw-stone-ai-formula.md),
-  [candidate](behavior/throw-stone-ai-candidate.md) and [absolute score](behavior/throw-stone-ai-scoring.md).
-  Shared read-only grant/geometry validation, neutral simulation/clock and score
-  certificates/arithmetic serve both action families. Fourteen new scenarios
-  cover literal results, source ordering, KO, budgets, typed failure and replay.
+- Latest implementation: ZOD-189, [fresh Throw Stone/baseline comparison](behavior/throw-stone-ai-baseline-comparison.md).
+  Shared movement-only internals and marker-zero rank comparison serve both
+  action families; legacy Attack admission stays intact. Six new scenarios
+  cover above/equal/below, separate accuracy, source-order RNG, refunds/range,
+  NotValuable, KO, budgets, typed atomic failure and replay.
 - Latest investigation: ZOD-185, [ability-entry iteration](architecture/zod-185-ai-ability-iteration.md).
   Cursor/resume, static-versus-runtime usage flags, per-entry/shared state and
   retained ranks/RNG are pinned. Throw Stone's primitives are now implemented;
   Accumulate's random usefulness/stat-score differences remain separate.
-  Clean audit: `scratch/ai-throw-stone-186-188/source.json` (12 files/29 functions,
+  Clean audit: `scratch/ai-throw-stone-comparison-189/source.json` (12 files/29 functions,
   inherited receipts and hash-verified prepared semantic facts).
 - Validation: locked restore, zero-warning/error Release build,
-  **4,000 .NET cases / 519 Python tests**, including 813 AI cases and owner content drafts.
-  Logs/results: ignored `scratch/ai-throw-stone-186-188/`; `full-trx/` has seven full TRX files.
+  **4,006 .NET cases / 519 Python tests**, including 819 AI cases and owner content drafts.
+  Logs/results: ignored `scratch/ai-throw-stone-comparison-189/`; `full-trx/` has seven full TRX files.
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

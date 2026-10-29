@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-189 (implementation).** Fresh absolute Throw Stone scoring ZOD-188 is complete.
-There are 33 open tickets below. The 156 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-190 (source investigation).** Fresh Throw Stone/baseline comparison ZOD-189 is complete.
+There are 33 open tickets below. The 157 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,19 +29,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-189 — Compare one fresh Throw Stone candidate with a movement baseline
+### ZOD-190 — Trace one Throw Stone origin and target scan
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-188
+**Type:** Investigation · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-189
 
-Own a certified movement-only baseline and one fresh
-[Throw Stone candidate score](behavior/throw-stone-ai-scoring.md) in source order.
-Factor shared movement-only internals for the same ability profile without
-imposing sword ownership; preserve legacy Attack admission. Keep explicit
-fresh source-cell/scenario-zero/normal-coordinate facts and rank above/equal/
-below ordering with separate accuracy. Carry actual private RNG, including
-NotValuable and late failure, without cached outcomes. Check literal results,
-budgets and replay; no scan/list traversal, ranked insertion, lottery, live
-authority, broad interface or host/editor activation.
+Pin the read-only reference and trace Throw Stone's entry/usefulness gates,
+origin/target ordering, reach and aim masks, ACT-first destination and Move-first
+cases, reset/cache provenance and RNG carried through skips/NotValuable/ties.
+Separate range from projectile/target eligibility and identify which facts the
+current closed two-opponent model can derive versus must certify. Build a small
+literal contract and choose an implementable scan child using the existing
+[fresh score/baseline query](behavior/throw-stone-ai-baseline-comparison.md).
+Do not copy Attack's range1 tile policy without source evidence. No managed
+scan, broad list/ranking/lottery port, live authority or host/editor activation.
 
 ## Existing validation gates
 

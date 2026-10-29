@@ -101,35 +101,14 @@ public static class SwordAiMovementBaseline
         SwordAiMovementBaselineResult Reject(SwordAiMovementBaselineRejection reason) => new(false, reason, null, decisionRng);
         var invalid = ValidateInputs(state, request, candidateProfile, scoreProfile, alreadyActed);
         if (invalid != SwordAiMovementBaselineRejection.None) return Reject(invalid);
-        var actor = state.Combatants.Single(u => u.UnitId == request.ActorId);
-        var target = state.Combatants.Single(u => u.UnitId == request.TargetId);
-        var turns = state.TurnBattle.Turns;
-        var actorTurn = turns.Units.Single(u => u.Id == actor.UnitId);
-
-        var battle = state.TurnBattle.Battle;
-        battle.TryGetUnit(actor.UnitId, out var body);
-        bool moved = actorTurn.MovementTaken || request.Destination != body!.Position;
-        // Source turn_end uses u16 arithmetic before the byte store; refund only genuinely unused choices.
-        int turnEndCt = Math.Min(60, actorTurn.Ct + (actorTurn.ActionTaken ? 0 : 20) + (moved ? 0 : 20));
-        var units = turns.Units.OrderBy(u => u.TieKey).Select(turn =>
-        {
-            var combat = state.Combatants.Single(u => u.UnitId == turn.Id);
-            battle.TryGetUnit(turn.Id, out var unitBody);
-            bool isActor = turn.Id == actor.UnitId;
-            return new AiProjectedUnit(turn.Id, isActor ? request.Destination : unitBody!.Position, combat.Facing,
-                combat.Hp, combat.MaxHp, combat.Status, candidateProfile.Units.Single(u => u.UnitId == turn.Id).DeathCounter,
-                turn.Speed, turn.TieKey, isActor ? turnEndCt : turn.Ct,
-                isActor ? moved : turn.MovementTaken, turn.ActionTaken);
-        }).ToArray();
-
-        var clockRejection = AiSimulationClock.Advance(units, turns.Ticks, decisionRng, out var clock);
-        if (clockRejection != AiSimulationClockRejection.None)
-            return Reject(clockRejection == AiSimulationClockRejection.RandomDrawCountExhausted
+        var result = AiMovementSimulation.Evaluate(state, request.ActorId, request.TargetId,
+            request.Destination, candidateProfile.Units, decisionRng);
+        if (result.Rejection != AiSimulationClockRejection.None)
+            return Reject(result.Rejection == AiSimulationClockRejection.RandomDrawCountExhausted
                 ? SwordAiMovementBaselineRejection.RandomDrawCountExhausted : SwordAiMovementBaselineRejection.TickCountExhausted);
-        var score = AiCandidateScoring.ScoreFreshUnits(clock!.Units, target.UnitId, 100);
-        // Negating into the source u16 tile grid and back to s16 preserves this closed -160..160 score.
+        var outcome = result.Outcome!;
         return new(true, SwordAiMovementBaselineRejection.None,
-            new(actor.UnitId, target.UnitId, request.Destination, turnEndCt, clock.Units,
-                clock.MoveOpportunityUnitId, clock.ElapsedTicks, clock.Ticks, clock.UpkeepPicks, score), clock.RngState);
+            new(outcome.ActorId, outcome.TargetId, outcome.Destination, outcome.TurnEndCt, outcome.Units,
+                outcome.MoveOpportunityUnitId, outcome.ElapsedTicks, outcome.Ticks, outcome.UpkeepPicks, outcome.Score), result.RngState);
     }
 }
