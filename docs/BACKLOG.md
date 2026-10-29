@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-206 (AI implementation).** Frozen targeted ACT after Move ZOD-205 is complete.
-There are 34 open tickets below. The 172 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-207 (AI implementation).** Fresh in-reach pair Move-first execution ZOD-206 is complete.
+There are 34 open tickets below. The 173 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,20 +29,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-206 — Execute a fresh in-reach pair Move-first decision
+### ZOD-207 — Execute a fresh known-score out-of-reach pair Move-first decision
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-205, ZOD-198
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-206, ZOD-202
 
-Own [fresh in-reach pair selection](behavior/attack-throw-stone-ai-prepared-selection.md)
-inside the [confirmed-Move transaction](behavior/targeted-move-continuation.md).
-Derive source dispatch and require an actual Move-first destination. Map typed
-Attack/Throw Stone/MoveOnly to frozen Attack/targeted ACT/Wait proposals; retain
-decision RNG exactly once and actual path/heading. Continue using Framework's
-exact-session token, current RNG and actual rules, never cached query results.
-Check literal commands/costs, rejection of ACT-first/wrong branch, failed Move,
-late ACT failure, exact budgets and replay. Preserve remaining source assertions.
-No ACT-first or out-of-reach adapter, pair post-ACT reselection, broad interface
-or host/editor activation in this child.
+Own [known-score out-of-reach selection](behavior/attack-throw-stone-ai-out-of-reach-selection.md)
+inside the [fresh Move-first execution path](behavior/attack-throw-stone-ai-move-first-execution.md).
+Share typed dispatch/proposal handling where useful without accepting public cached
+results. Preserve full source masks/provenance, filtered scoring and the post-score
+reach draw; reject every unknown cast key and non-Move plan. Retain actual path,
+one RNG adoption and exact-session follow-up authority. Check range4/5, halving/
+fallback, literal real outcomes/costs, exact/late budgets and replay while keeping
+existing in-reach behavior. No guessed priority, actor rescore, ACT-first adapter,
+pair post-ACT reselection, broad interface or host/editor activation.
 
 ## Existing validation gates
 

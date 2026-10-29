@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 172 entries index completed bounded work; they do not mean the full game is complete.
+These 173 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -195,3 +195,4 @@ These 172 entries index completed bounded work; they do not mean the full game i
 - [ZOD-203 — Trace and design the authoritative Throw Stone command handoff](../architecture/zod-203-throw-stone-command-boundary.md)
 - [ZOD-204 — Add a Framework-owned targeted-ability ACT transaction](../behavior/targeted-ability-decision.md)
 - [ZOD-205 — Retain a targeted ACT across a confirmed Move](../behavior/targeted-move-continuation.md)
+- [ZOD-206 — Execute a fresh in-reach pair Move-first decision](../behavior/attack-throw-stone-ai-move-first-execution.md)
