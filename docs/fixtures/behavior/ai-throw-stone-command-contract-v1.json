@@ -1,0 +1,401 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-203",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "kind": "supplied-command-checkpoint-descriptions",
+  "notes": [
+    "First checkpoint is retained from the ZOD-202 normal Move1/distance5 pair selection; later variants are supplied boundary witnesses, not claims of fresh selections with modified stats.",
+    "Closed seven/four resolution draws only: no grants, transaction, movement, turns, facing receipts, original execution or C# execution.",
+    "Rollback vector is planned managed atomic policy, not source C rewind."
+  ],
+  "vectors": [
+    {
+      "id": "retained-pair-checkpoint-real-damage-and-push",
+      "input": {
+        "word": 3210001534,
+        "count": 16,
+        "pa": 5,
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70,
+        "actor": [
+          2,
+          1
+        ],
+        "target": [
+          6,
+          1
+        ],
+        "mapSize": [
+          8,
+          8
+        ],
+        "targetFacing": "West"
+      },
+      "expected": {
+        "accepted": true,
+        "rng": [
+          3297241969,
+          23
+        ],
+        "outcome": {
+          "hit": true,
+          "damage": 5,
+          "hp": 45,
+          "attempted": true,
+          "destination": [
+            7,
+            1
+          ],
+          "raw": [
+            4086,
+            2749,
+            12767,
+            9084,
+            12060,
+            32225,
+            17543
+          ]
+        }
+      }
+    },
+    {
+      "id": "supplied-front-evade100-four-draw-miss",
+      "input": {
+        "word": 3210001534,
+        "count": 16,
+        "pa": 5,
+        "hp": 50,
+        "classEvade": 100,
+        "actorBrave": 70,
+        "targetBrave": 70,
+        "actor": [
+          2,
+          1
+        ],
+        "target": [
+          6,
+          1
+        ],
+        "mapSize": [
+          8,
+          8
+        ],
+        "targetFacing": "West"
+      },
+      "expected": {
+        "accepted": true,
+        "rng": [
+          595337866,
+          20
+        ],
+        "outcome": {
+          "hit": false,
+          "damage": 0,
+          "hp": 50,
+          "attempted": false,
+          "destination": [
+            6,
+            1
+          ],
+          "raw": [
+            4086,
+            2749,
+            12767,
+            9084
+          ]
+        }
+      }
+    },
+    {
+      "id": "lethal-hit-retains-all-seven-draws-but-cancels-push",
+      "input": {
+        "word": 3210001534,
+        "count": 16,
+        "pa": 5,
+        "hp": 5,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70,
+        "actor": [
+          2,
+          1
+        ],
+        "target": [
+          6,
+          1
+        ],
+        "mapSize": [
+          8,
+          8
+        ],
+        "targetFacing": "West"
+      },
+      "expected": {
+        "accepted": true,
+        "rng": [
+          3297241969,
+          23
+        ],
+        "outcome": {
+          "hit": true,
+          "damage": 5,
+          "hp": 0,
+          "attempted": true,
+          "destination": [
+            6,
+            1
+          ],
+          "raw": [
+            4086,
+            2749,
+            12767,
+            9084,
+            12060,
+            32225,
+            17543
+          ]
+        }
+      }
+    },
+    {
+      "id": "edge-cancels-displacement-without-refunding-draws",
+      "input": {
+        "word": 3210001534,
+        "count": 16,
+        "pa": 5,
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70,
+        "actor": [
+          3,
+          1
+        ],
+        "target": [
+          7,
+          1
+        ],
+        "mapSize": [
+          8,
+          8
+        ],
+        "targetFacing": "West"
+      },
+      "expected": {
+        "accepted": true,
+        "rng": [
+          3297241969,
+          23
+        ],
+        "outcome": {
+          "hit": true,
+          "damage": 5,
+          "hp": 45,
+          "attempted": true,
+          "destination": [
+            7,
+            1
+          ],
+          "raw": [
+            4086,
+            2749,
+            12767,
+            9084,
+            12060,
+            32225,
+            17543
+          ]
+        }
+      }
+    },
+    {
+      "id": "diagonal-Y-tie-push",
+      "input": {
+        "word": 3210001534,
+        "count": 16,
+        "pa": 5,
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70,
+        "actor": [
+          2,
+          2
+        ],
+        "target": [
+          4,
+          4
+        ],
+        "mapSize": [
+          8,
+          8
+        ],
+        "targetFacing": "South"
+      },
+      "expected": {
+        "accepted": true,
+        "rng": [
+          3297241969,
+          23
+        ],
+        "outcome": {
+          "hit": true,
+          "damage": 5,
+          "hp": 45,
+          "attempted": true,
+          "destination": [
+            4,
+            5
+          ],
+          "raw": [
+            4086,
+            2749,
+            12767,
+            9084,
+            12060,
+            32225,
+            17543
+          ]
+        }
+      }
+    },
+    {
+      "id": "Brave-scaled-comparison-can-reject-push",
+      "input": {
+        "word": 3210001534,
+        "count": 16,
+        "pa": 5,
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 10,
+        "targetBrave": 100,
+        "actor": [
+          2,
+          1
+        ],
+        "target": [
+          6,
+          1
+        ],
+        "mapSize": [
+          8,
+          8
+        ],
+        "targetFacing": "West"
+      },
+      "expected": {
+        "accepted": true,
+        "rng": [
+          3297241969,
+          23
+        ],
+        "outcome": {
+          "hit": true,
+          "damage": 5,
+          "hp": 45,
+          "attempted": false,
+          "destination": [
+            6,
+            1
+          ],
+          "raw": [
+            4086,
+            2749,
+            12767,
+            9084,
+            12060,
+            32225,
+            17543
+          ]
+        }
+      }
+    },
+    {
+      "id": "exact-seven-draw-budget",
+      "input": {
+        "word": 3210001534,
+        "count": 18446744073709551608,
+        "pa": 5,
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70,
+        "actor": [
+          2,
+          1
+        ],
+        "target": [
+          6,
+          1
+        ],
+        "mapSize": [
+          8,
+          8
+        ],
+        "targetFacing": "West"
+      },
+      "expected": {
+        "accepted": true,
+        "rng": [
+          3297241969,
+          18446744073709551615
+        ],
+        "outcome": {
+          "hit": true,
+          "damage": 5,
+          "hp": 45,
+          "attempted": true,
+          "destination": [
+            7,
+            1
+          ],
+          "raw": [
+            4086,
+            2749,
+            12767,
+            9084,
+            12060,
+            32225,
+            17543
+          ]
+        }
+      }
+    },
+    {
+      "id": "one-draw-short-proposed-command-rollback",
+      "input": {
+        "word": 3210001534,
+        "count": 18446744073709551609,
+        "pa": 5,
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70,
+        "actor": [
+          2,
+          1
+        ],
+        "target": [
+          6,
+          1
+        ],
+        "mapSize": [
+          8,
+          8
+        ],
+        "targetFacing": "West"
+      },
+      "expected": {
+        "accepted": false,
+        "rng": [
+          3210001534,
+          18446744073709551609
+        ],
+        "outcome": null
+      }
+    }
+  ]
+}

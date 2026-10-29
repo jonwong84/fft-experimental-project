@@ -91,7 +91,8 @@ bounded source-traced children alongside combat, movement and content completion
 do not repeatedly rebuild ranking/selection for each new family. These eight
 areas are a roadmap, not eight already-sized tickets or a promise of strict
 serial execution. Select new children through the backlog and keep deferred work
-deferred. ZOD-203 remains the immediate next milestone.
+deferred. The [ZOD-203 handoff design](../architecture/zod-203-throw-stone-command-boundary.md)
+selects ZOD-204's Framework-only targeted ACT transaction as the immediate next step.
 
 Original-AI completion means it can control applicable original encounters and
 automatic units using the required actions, targeting, policies, movement and

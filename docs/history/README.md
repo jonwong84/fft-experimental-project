@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 169 entries index completed bounded work; they do not mean the full game is complete.
+These 170 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -192,3 +192,4 @@ These 169 entries index completed bounded work; they do not mean the full game i
 - [ZOD-199 — Trace out-of-reach pair scenarios and original-origin score provenance](../architecture/zod-199-pair-out-of-reach.md)
 - [ZOD-200 — Derive out-of-reach pair scenarios with explicit score provenance](../behavior/attack-throw-stone-ai-out-of-reach-scenarios.md)
 - [ZOD-202 — Select a fresh out-of-reach pair when all cast scores are known](../behavior/attack-throw-stone-ai-out-of-reach-selection.md)
+- [ZOD-203 — Trace and design the authoritative Throw Stone command handoff](../architecture/zod-203-throw-stone-command-boundary.md)

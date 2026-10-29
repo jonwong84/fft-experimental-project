@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-203 (source/design investigation).** Known-score out-of-reach selection ZOD-202 is complete.
-There are 34 open tickets below. The 169 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-204 (Framework implementation).** Throw Stone command-boundary design ZOD-203 is complete.
+There are 34 open tickets below. The 170 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,19 +29,18 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-203 — Trace and design the authoritative Throw Stone command handoff
+### ZOD-204 — Add a Framework-owned targeted-ability ACT transaction
 
-**Type:** Investigation · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-202, ZOD-158, ZOD-111
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-203
 
-Follow the [pure pair selection](behavior/attack-throw-stone-ai-out-of-reach-selection.md)
-into actual commands using pinned source and managed transaction/targeted-ability paths.
-Distinguish AI midpoint/no-knockback projection from execution accuracy, damage,
-knockback and RNG. Specify ownership for fresh selection, proposal binding, RNG
-adoption, Move-first/ACT-first ordering, continuation, actual path/facing receipts,
-revision and atomic rejection. Reuse the Framework/AI boundary; select one bounded
-implementation child with meaningful vectors before coding. Keep unknown-score
-restrictions and explicit policy facts. No runtime implementation, generic list/status
-expansion, broad replacement interface or host/editor activation in this investigation.
+Implement the [selected Framework-only child](architecture/zod-203-throw-stone-command-boundary.md#selected-child--zod-204):
+invocation-bound targeted command/profile proposals in the existing decision transaction,
+forward RNG validation and a FacingTurnBattle delegate to actual Throw Stone rules.
+Preserve actor/choice/grant/range validation, atomic rollback, synchronized RNG and
+post-resolution receipt/revision semantics. Check real four/seven-draw results, KO/push,
+both choice states, stale proposals, exact/short budgets and late failure with few
+behavioral scenarios. No AI adapter, Move continuation, pair post-ACT reselection,
+generic action/interface expansion or host/editor activation in this child.
 
 ## Existing validation gates
 

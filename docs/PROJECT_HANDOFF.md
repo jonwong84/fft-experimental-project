@@ -6,14 +6,13 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-203: trace and design the authoritative Throw Stone command handoff.**
-[Known-score out-of-reach selection](behavior/attack-throw-stone-ai-out-of-reach-selection.md)
-now owns the pure preparation/scenario/scan/rank/lottery pipeline, alongside the
-in-reach entry. Design fresh Framework-owned adoption/commands and actual receipts,
-separating AI projection from real accuracy/damage/knockback/RNG. Choose a bounded
-implementation child before coding; no runtime authority or activation in this study.
-An unwritten actor score within range4 still rejects. Full source masks/provenance
-remain diagnostic; unknown retained/event workspace history and general lists stay open.
+**ZOD-204: add a Framework-owned targeted-ability ACT transaction.**
+The [source/design investigation](architecture/zod-203-throw-stone-command-boundary.md)
+selects invocation-bound targeted proposals, RNG adoption and a facing-session delegate
+to existing actual Throw Stone rules. Keep complete-result receipt/revision binding and
+atomic rejection. Stop before AI adapters, Move continuation or post-ACT pair reselection.
+Pure pair selection remains separate from authority; unknown scores within range4
+still reject. Retained/event workspace history and general lists stay open.
 
 The [AI completion roadmap](development/ai-completion-roadmap.md) preserves the
 remaining breadth, integration, compatibility and replaceability goals. Use it
@@ -58,15 +57,16 @@ without rewriting old evidence.
   scan mask. Full source masks/provenance and one owned prefix/reach draw survive;
   range4 unknown actors reject. Six scenarios cover plans, costs, budgets and replay.
   [In-reach selection](behavior/attack-throw-stone-ai-prepared-selection.md) retains its behavior.
-- Latest investigation: ZOD-199, [out-of-reach provenance](architecture/zod-199-pair-out-of-reach.md).
-  Twelve files/24 functions plus inherited receipts pin mask order, retained
-  score cells and shared event/status aliasing. Nine supplied descriptions cover
-  prior-cell witnesses, range4/5, fallback and RNG; no original execution or
-  numerical initial/retained cache value is claimed.
-- Validation: locked restore, zero-warning/error Release rebuild and
-  **4,054 .NET cases** (867 AI, including owner drafts), **529 Python tests** and
-  pinned source/prepared audit passed. Logs and seven full TRX files: ignored
-  `scratch/ai-pair-out-of-reach-202/`; Python passed with normal temp access.
+- Latest investigation: ZOD-203, [Throw Stone authority](architecture/zod-203-throw-stone-command-boundary.md).
+  Ten source files/21 functions and fourteen managed study snapshots distinguish
+  prediction from real resolution, dispatch/reselection and per-command transactions.
+  Eight supplied checkpoint descriptions cover four/seven draws and push/KO/rollback;
+  proposed authority acceptance awaits ZOD-204, not simulated transactions.
+- Validation: runtime unchanged; last locked restore, clean Release rebuild and
+  **4,054 .NET cases** (867 AI, including owner drafts) are ZOD-202, with seven
+  full TRX files in ignored `scratch/ai-pair-out-of-reach-202/full-trx/`.
+  ZOD-203 passed **532 Python tests** and the pinned source/prepared audit;
+  reports: ignored `scratch/ai-throw-stone-command-203/`.
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.
