@@ -60,6 +60,10 @@ activation, original refresh prefix or broad replacement contract is introduced.
 The existing concrete planner provides the consumer needed for this boundary.
 ZOD-156 remains the next original-behavior investigation after extraction.
 
+The later [ZOD-183 post-ACT design](zod-183-post-act-command-boundary.md) proposes
+a narrow turn-ending path Move extension to this same transaction, with actual
+receipt/facing settlement. That entry is not implemented; ZOD-184 owns it.
+
 ## Implementation validation
 
 Fourteen source files and 15 existing test files moved into the AI projects.

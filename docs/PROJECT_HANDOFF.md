@@ -6,12 +6,13 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-183: design Framework-owned post-ACT Move/END handoff.**
-[Post-ACT selection](behavior/sword-ai-post-act-selection.md) now owns scenarios
-and the eight empty-rank rolls, returning movement-only D0 with no Attack scan.
-Design a narrow fresh-planner transaction for actual completed Move or same-tile
-END. Use actual completion receipts/facing; the Move-first continuation assumes
-unused ACT and is unsuitable. Preserve current actor/RNG authority and atomicity.
+**ZOD-184: execute one fresh post-ACT Move/END decision.**
+The [handoff design](architecture/zod-183-post-act-command-boundary.md) extends
+the existing Framework planning transaction with a turn-ending path Move and
+immediate actual-receipt facing settlement; same-tile END uses Wait. Add explicit
+fresh in/out-of-reach AI adapters over implemented post-ACT selection. Preserve
+atomic post-ACT rollback, current actor/RNG authority and legacy command behavior.
+This live entry is designed, not implemented; Move-first continuations stay separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
@@ -48,9 +49,10 @@ without rewriting old evidence.
   Owned preparation/scenarios plus eight zero-hit rolls yield MoveOnly at D0.
   Nine scenario tests across ZOD-181/182 cover masks/streams, no Attack scan,
   Critical/knockback, exact budgets, late rollback and actor/order replay.
-- Latest design: ZOD-176, [ACT-first/post-ACT lifecycle](architecture/zod-176-ai-act-first.md).
-  ACT-first execution and pure post-ACT selection are implemented; live handoff
-  remains separate. Historical source descriptions are unchanged.
+- Latest design: ZOD-183, [post-ACT Move/END command boundary](architecture/zod-183-post-act-command-boundary.md).
+  Framework owns fresh proposals, RNG adoption, actual paths and receipt-bound
+  facing; no Move-first token is issued after ACT. Live implementation is ZOD-184.
+  The [ZOD-176 source lifecycle](architecture/zod-176-ai-act-first.md) is unchanged.
   Clean pinned audit: `scratch/ai-post-act-181-183/source.json`
   (20 ACT-first anchors plus inherited receipts).
 - Validation: locked restore, zero-warning/error Release build,

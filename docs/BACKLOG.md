@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-183 (design).** Fresh post-ACT movement-only selection ZOD-182 is complete.
-There are 33 open tickets below. The 150 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-184 (implementation).** Post-ACT command handoff design ZOD-183 is complete.
+There are 33 open tickets below. The 151 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,18 +29,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-183 — Design Framework-owned post-ACT Move/END handoff
+### ZOD-184 — Execute one fresh post-ACT Move/END decision
 
-**Type:** Design · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-182, ZOD-168
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-183
 
-Map [post-ACT selection](behavior/sword-ai-post-act-selection.md) through fresh
-dispatch to one actual Move or END. Keep planner invocation/RNG adoption in
-Framework; a real ACT-used Move ends the turn and needs its actual completion
-receipt/facing, not a Move-first continuation. Specify same-tile settlement,
-exact revision budgets, all-or-nothing failure after adopted RNG, and the rule
-that a later failure never rewinds the already published Attack. Record the
-smallest existing-boundary extension and a bounded implementation child. No
-production changes, broad interface, cached-result authority or host activation.
+Implement the [post-ACT command design](architecture/zod-183-post-act-command-boundary.md):
+extend the existing invocation-bound Framework transaction with an ACT-used
+turn-ending path Move and immediate actual-receipt facing settlement. Retain
+Attack/Wait behavior and the separate Move-first continuation. Add explicit
+fresh in/out-of-reach AI execution entries owning selection/dispatch once;
+same-tile END uses Wait. Verify current actor/choices, both RNG copies, exact
+revision budgets, actual path/receipt/facing, literal streams, late rollback and
+actor/order replay without rewinding a prior published Attack. No public cached
+plan/RNG/callback input, second selector, clock advance, broad interface or host activation.
 
 ## Existing validation gates
 
