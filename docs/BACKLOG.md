@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-195 (source investigation).** Fresh two-entry selection ZOD-194 is complete.
-There are 33 open tickets below. The 162 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-196 (implementation).** Pair preparation investigation ZOD-195 is complete.
+There are 33 open tickets below. The 163 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,17 +29,17 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-195 — Trace fresh preparation for the Attack and Throw Stone pair
+### ZOD-196 — Prepare a fresh both-unused Attack and Throw Stone pair
 
-**Type:** Investigation · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-194
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-195
 
-Pin source and trace the [terminal pair's](behavior/attack-throw-stone-ai-selection.md)
-fresh preparation: aggregate reach/MP/evasion policy, active target selection,
-prepared entry usage and masks/D0/D1. Identify which existing single-Attack
-preparation assumptions need bounded two-entry equivalents; separate derivable
-facts from required certificates. Check literal summaries/source ordering/RNG,
-then choose one implementation child. No general list/status port, blocked-path
-search, live authority, replacement interface or presentation activation.
+Implement the [fresh preparation child](architecture/zod-195-pair-preparation.md#selected-child--zod-196).
+Admit matching ordinary profiles, sword and both units' Throw Stone grants; own
+fresh NonBlue refresh and restored-state reachability/policy. Derive initialized
+versus usable summaries, actor entry toggles, ranged facts and original delays/
+focus/active target. Keep exact-list/no-special/clean-cache facts explicit; preserve
+legacy admission and atomic failure/RNG. Check literals, budgets and replay.
+No D0/D1/scenario derivation, scans, lottery, live authority or activation.
 
 ## Existing validation gates
 

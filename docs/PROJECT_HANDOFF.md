@@ -6,11 +6,11 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-195: trace fresh preparation for the Attack and Throw Stone pair.**
-[Fresh pair selection](behavior/attack-throw-stone-ai-selection.md) owns one
-prefix, both scans/ranks and terminal lottery. Trace two-entry aggregate reach,
-MP/evasion policy, usage, active targets and masks/D0/D1 before deriving them;
-current source certificates remain explicit. Choose one bounded implementation.
+**ZOD-196: prepare a fresh both-unused Attack and Throw Stone pair.**
+The [preparation contract](architecture/zod-195-pair-preparation.md) separates
+three initialized entries from two usable ones, derives evasion modifier2,
+Move+1 minimum enemy reach and ranged policy. Own refresh/restored-state policy
+before implementing the pair's ranged D0/scenario branch in later work.
 General list search/ranking and live ability authority remain separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
@@ -52,11 +52,12 @@ without rewriting old evidence.
   proximity cache serves both source-ordered scans; ranks retain both typed
   payloads. Shared lottery supports second-slot/all-failed/empty fallback.
   Eleven new scenarios cover literals, budgets, failure, source facts and replay.
-- Latest investigation: ZOD-192, [shared-prefix pair design](architecture/zod-192-two-entry-ai.md).
-  Four files/ten functions plus inherited scan/cursor/rank receipts are pinned.
-  Five isolated supplied rank/cost descriptions cover retention, ties, accuracy,
-  NotValuable and baseline admission; they do not execute the managed AI.
-  Clean source/prepared audit: `scratch/ai-two-entry-192-194/source-194.json`.
+- Latest investigation: ZOD-195, [pair preparation](architecture/zod-195-pair-preparation.md).
+  Five files/18 functions plus inherited receipts and Frog semantic facts are
+  pinned. Four isolated summaries cover initialization, usage, reach and ranged
+  D0 bounds; they do not execute a managed preparation or derive scored destinations.
+  All 526 Python tests and clean source/prepared audit pass; ignored logs/report:
+  `scratch/ai-pair-preparation-195-196/`. Runtime validation below remains ZOD-194's.
 - Validation: locked restore, zero-warning/error Release build,
   **4,024 .NET cases / 524 Python tests**, including 837 AI cases and owner content drafts.
   Logs/results: ignored `scratch/ai-two-entry-192-194/`; `full-trx/` has seven full TRX files.
