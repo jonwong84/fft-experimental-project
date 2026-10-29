@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-28",
   "edition": "SCUS-94221",
-  "managedCommit": "3bf0a187a020e5c1ee92aa996a0357ddbf8c4c01",
+  "managedCommit": "fe704580ae0489b6b6450f5c9f686dfb9741d295",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 3953,
-    "source": "docs/behavior/sword-ai-post-act-refresh.md",
+    "passed": 3958,
+    "source": "docs/behavior/sword-ai-post-act-preparation.md",
     "runForThisInventory": false
   },
   "statusDefinitions": {
@@ -453,7 +453,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "A separate AI assembly owns closed two-opponent selection with moved/unmoved preparation and explicit reach branches. Framework owns RNG adoption and actual commands: prepared Move-first and ACT-first execute with existing revision/receipt authority. An explicit pure post-ACT refresh now uses actual ACT-used/Move-unused state, only the unused-Move refund and retained one-draw clock. It grants no command authority. Post-ACT preparation/scoring/search/live continuation, broader policies/search, replacement interface and host activation remain open.",
+      "currentScope": "A separate AI assembly owns closed two-opponent selection with moved/unmoved preparation and explicit reach branches. Framework owns RNG adoption and actual prepared Move-first/ACT-first commands. Pure post-ACT refresh/preparation now uses actual ACT-used/Move-unused state and retained one-draw refresh, deriving full origins/policy and unusable actor Attack while preserving Move+1 reach. It grants no command authority. Post-ACT scoring/search/live continuation, broader policies/search, replacement interface and host activation remain open.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -503,7 +503,8 @@
         "docs/behavior/sword-ai-prepared-move-first-out-of-reach.md",
         "docs/architecture/zod-176-ai-act-first.md",
         "docs/behavior/sword-ai-act-first-execution.md",
-        "docs/behavior/sword-ai-post-act-refresh.md"
+        "docs/behavior/sword-ai-post-act-refresh.md",
+        "docs/behavior/sword-ai-post-act-preparation.md"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/SwordAiMovementScenario.cs",
@@ -640,6 +641,10 @@
         {
           "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiPostActRefreshTests.cs",
           "scope": "Actual post-ACT input/RNG refresh, choice-mode and source guards, terminal rejection, exact counters and immutable replay."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiPostActPreparationTests.cs",
+          "scope": "Owned post-ACT refresh, reach-before-usable ordering, actual knockback/Critical focus and geometry, exact limits, rejection and replay isolation."
         }
       ],
       "manualCheckpoint": {
@@ -647,12 +652,12 @@
         "procedure": "Observe selected mandatory AI turns and distinguish legal choices from exact policy matching."
       },
       "openQuestions": [
-        "Full target/ability/roster search, broader special policies, Defend, replacement interface and post-ACT preparation/scoring/selection/live continuation remain open.",
+        "Full target/ability/roster search, broader special policies, Defend, replacement interface and post-ACT scoring/selection/live continuation remain open.",
         "Caller certificates still describe unrepresented original context. The fresh prepared selector covers only the certified NonBlue ordinary subset; Blue/special policies and source frame RNG remain outside it, and bounded vectors do not establish full original decision equivalence."
       ],
-      "nextAction": "Own fresh post-ACT refresh in pure NonBlue preparation, deriving restored-state reachability/policy and unusable actor Attack while preserving reach and whole-query isolation.",
+      "nextAction": "Implement one explicit pure post-ACT move-only tile simulation/score, retaining actual state/RNG and only unused-Move refunds while preserving pre-ACT baseline admission.",
       "followUpTickets": [
-        "ZOD-179"
+        "ZOD-180"
       ]
     },
     {

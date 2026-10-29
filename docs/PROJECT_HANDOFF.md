@@ -6,13 +6,13 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-179: implement pure fresh post-ACT preparation.**
-The [post-ACT refresh entry](behavior/sword-ai-post-act-refresh.md) now supports
-active Move-unused/ACT-used input with only the unused-Move refund. Own that
-refresh, derive ordinary reachability/policy from actual restored post-ACT state,
-and retain Move+1 reach while exposing unusable actor Attack. Keep explicit source/
-cache/list/NonBlue facts. Post-ACT scoring/search/live handoff and host activation
-remain separate.
+**ZOD-180: implement pure post-ACT move-only tile scoring.**
+[Fresh post-ACT preparation](behavior/sword-ai-post-act-preparation.md) now owns
+refresh and restored-state reachability/policy, exposing unusable actor Attack
+while retaining Move+1 reach. Add one explicit fresh tile scoring entry using
+actual ACT-used state/RNG: no unused-ACT refund, only unused-Move refund when
+staying. Keep old baseline admission and source score/geometry certificates.
+Scenario/lottery and live post-ACT handoff remain subsequent work.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
@@ -25,7 +25,7 @@ inside those transactions; post-prefix entries retain their general-selection ce
 The original VSync callback also draws from BIOS RNG. Managed rendering/pauses add no
 gameplay draws; frame-interleaved retail stream equivalence remains explicitly unresolved.
 
-The current pure queries derive S/D0/D1 for focused-opponent, ordinary-sword
+The current pre-ACT pure queries derive S/D0/D1 for focused-opponent, ordinary-sword
 reach/policy facts and raw Move<=124 through explicit in/out-of-reach entries.
 Movement is evaluated once; out-of-reach Blue/NonBlue adjustment runs afterward.
 Private scores/RNG feed one Attack scan/ranked admission then the source lottery.
@@ -38,25 +38,26 @@ pure queries grant no command authority or live RNG commit; execution adapters
 own that separate boundary.
 
 Full AI search, general multi-entry ranking/lottery, replaceable decision interface,
-post-ACT preparation/scoring/selection/live continuation and presentation activation remain future work.
+post-ACT scoring/selection/live continuation and presentation activation remain future work.
 Original UNIT_SLOT_COUNT is **21**; the old 26-foe wrap example is inadmissible.
 This does not select a fixed managed roster size. The contract records the erratum
 without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-178, [pure fresh post-ACT refresh](behavior/sword-ai-post-act-refresh.md).
-  One shared flag/clock implementation now has explicit choice-mode admission and
-  actual unused-choice refunds. Four new scenarios cover real hit/miss inputs,
-  exact limits, source/choice guards, terminal rejection and immutable replay.
+- Latest implementation: ZOD-178/179, [post-ACT refresh](behavior/sword-ai-post-act-refresh.md)
+  and [post-ACT preparation](behavior/sword-ai-post-act-preparation.md). Explicit
+  ACT-used entries preserve actual state/RNG, full origins and reach-before-usable
+  ordering. Nine new scenarios cover real combat/knockback/Critical inputs, source/
+  choice guards, exact limits, no partial failure and actor/order replay.
 - Latest design: ZOD-176, [ACT-first/post-ACT lifecycle](architecture/zod-176-ai-act-first.md).
-  ACT-first execution and post-ACT refresh are implemented; later stages remain separate. Historical
-  source descriptions are unchanged. Clean pinned audit:
-  `scratch/ai-post-act-refresh-178/source.json` (20 ACT-first anchors plus inherited receipts).
+  ACT-first execution and post-ACT prefix are implemented; scoring/search/live
+  continuation remain separate. Historical source descriptions are unchanged.
+  Clean pinned audit: `scratch/ai-post-act-preparation-179/source.json`
+  (20 ACT-first anchors plus inherited receipts).
 - Validation: locked restore, zero-warning/error Release build,
-  **3,953 .NET cases**, including owner content drafts. Python is unchanged;
-  its last full run remains **516 tests at ZOD-177**.
-  Logs/results: ignored `scratch/ai-post-act-refresh-178/` (seven full TRX files).
+  **3,958 .NET cases / 516 Python tests**, including owner content drafts.
+  Logs/results: ignored `scratch/ai-post-act-preparation-179/` (seven full TRX files).
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

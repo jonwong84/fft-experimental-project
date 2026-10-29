@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-179 (implementation).** Pure fresh post-ACT refresh ZOD-178 is complete.
-There are 33 open tickets below. The 146 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-180 (implementation).** Pure fresh post-ACT refresh/preparation ZOD-178/179 is complete.
+There are 33 open tickets below. The 147 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,18 +29,20 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-179 — Implement pure fresh post-ACT preparation
+### ZOD-180 — Implement pure post-ACT move-only tile scoring
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-178
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-179
 
-Own [post-ACT refresh](behavior/sword-ai-post-act-refresh.md), then derive full
-ordinary reachable origins and restored-state NonBlue policy/focus/delays. Preserve
-Move+1 enemy reach computed before usable is cleared, but expose the actor's
-ordinary Attack as unusable. Retain source/list/cache/team certificates, no extra
-draws after refresh and whole-query failure. Verify real post-ACT HP/positions,
-critical knockback, exact limits, old-entry isolation and actor/order replay.
-No cached prefix, fabricated ACT-unused state, scoring/selection/live commitment
-or host activation; preserve existing preparation APIs.
+Extend the [post-ACT source contract](architecture/zod-176-ai-act-first.md) through
+one fresh certified move-only tile simulation/absolute score. Add an explicit
+ACT-used/Move-unused entry while preserving pre-ACT baseline admission. Use actual
+post-ACT HP/status/positions/RNG and existing ordinary geometry/scoring facts.
+A real hypothetical move ends at min(60, liveCT); staying refunds unused Move
+only. Retain the actual private clock draw and no formula/action draws. Verify
+literal stay/move clocks and scores, real post-ACT input, exact limits, atomic
+failure and actor/order replay without duplicating shared score matrices.
+No cached projection, fabricated ACT-unused snapshot, scenario/lottery or live
+command; broader search/interfaces and host activation remain separate.
 
 ## Existing validation gates
 

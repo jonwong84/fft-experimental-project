@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 146 entries index completed bounded work; they do not mean the full game is complete.
+These 147 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -169,3 +169,4 @@ These 146 entries index completed bounded work; they do not mean the full game i
 - [ZOD-176 — Trace ordinary ACT-first and post-ACT reselection](../architecture/zod-176-ai-act-first.md)
 - [ZOD-177 — Execute one fresh prepared ACT-first Attack](../behavior/sword-ai-act-first-execution.md)
 - [ZOD-178 — Implement pure fresh post-ACT refresh](../behavior/sword-ai-post-act-refresh.md)
+- [ZOD-179 — Implement pure fresh post-ACT preparation](../behavior/sword-ai-post-act-preparation.md)
