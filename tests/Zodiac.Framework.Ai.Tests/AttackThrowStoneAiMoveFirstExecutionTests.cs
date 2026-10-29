@@ -150,11 +150,11 @@ public sealed class AttackThrowStoneAiMoveFirstExecutionTests
     private static AttackThrowStoneAiMoveFirstFailure Atomic(FacingTurnState state, AttackThrowStoneAiMoveFirstResult result, AttackThrowStoneAiMoveFirstRejection reason)
     { Assert.False(result.Accepted); Assert.Same(state, result.State); Assert.Empty(result.Events); Assert.Null(result.Path);
         Assert.Null(result.Continuation); Assert.Null(result.Outcome); Assert.Equal(reason, result.Failure!.Reason); return result.Failure; }
-    private static FacingTurnState Ready(ulong count = 7, int evade = 0, int hp = 50, int move = 3, bool left = false,
-        TilePosition? target = null, bool second = false, bool reverse = false)
+    internal static FacingTurnState Ready(ulong count = 7, int evade = 0, int hp = 50, int move = 3, bool left = false,
+        TilePosition? target = null, bool second = false, bool reverse = false, uint entryWord = 1)
     {
         var actor = second ? B : A; var peer = second ? A : B;
-        var rng = new FftRandomState(unchecked((1u - 12345u) * 4005161829u), count - 1);
+        var rng = new FftRandomState(unchecked((entryWord - 12345u) * 4005161829u), count - 1);
         var movement = new UnitMovementProfile(left ? 1 : move, 0, 6, UnitMovementMode.Normal, UnitMovementTraits.None,
             [KeyValuePair.Create(Ground, new TerrainMovementCost(1))]);
         var map = new BattleMapDefinition(8, 8, 1, Enumerable.Repeat(new BattleTile(Ground, 10), 64).ToArray());

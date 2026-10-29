@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-207 (AI implementation).** Fresh in-reach pair Move-first execution ZOD-206 is complete.
-There are 34 open tickets below. The 173 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-208 (AI implementation).** Known-score out-of-reach Move-first execution ZOD-207 is complete.
+There are 34 open tickets below. The 174 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,19 +29,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-207 — Execute a fresh known-score out-of-reach pair Move-first decision
+### ZOD-208 — Execute a fresh in-reach pair ACT-first decision
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-206, ZOD-202
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-207, ZOD-204
 
-Own [known-score out-of-reach selection](behavior/attack-throw-stone-ai-out-of-reach-selection.md)
-inside the [fresh Move-first execution path](behavior/attack-throw-stone-ai-move-first-execution.md).
-Share typed dispatch/proposal handling where useful without accepting public cached
-results. Preserve full source masks/provenance, filtered scoring and the post-score
-reach draw; reject every unknown cast key and non-Move plan. Retain actual path,
-one RNG adoption and exact-session follow-up authority. Check range4/5, halving/
-fallback, literal real outcomes/costs, exact/late budgets and replay while keeping
-existing in-reach behavior. No guessed priority, actor rescore, ACT-first adapter,
-pair post-ACT reselection, broad interface or host/editor activation.
+Own [fresh in-reach pair selection](behavior/attack-throw-stone-ai-prepared-selection.md)
+inside the Framework [ACT transaction](behavior/targeted-ability-decision.md).
+Require both unused choices and ACT-first typed Attack/Throw Stone; derive dispatch
+without cached results, then adopt decision RNG once and apply the actual command.
+Return real effects and unused-Move state, not a token to execute predicted D1.
+Check literal plans/commands/draws, prediction versus real damage/push/KO, Move-first/
+wrong-branch rejection, exact/late budgets, rollback and replay. Preserve remaining
+source assertions. No post-ACT move/reselection, out-of-reach ACT-first adapter,
+generic interface or host/editor activation in this child.
 
 ## Existing validation gates
 

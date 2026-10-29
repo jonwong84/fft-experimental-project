@@ -6,12 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-207: execute a fresh known-score out-of-reach pair Move-first decision.**
-The [in-reach adapter](behavior/attack-throw-stone-ai-move-first-execution.md) now
-owns fresh pair selection/typed dispatch inside confirmed Move and retains real
-ACT/Wait through Framework. Add the explicit safe out-of-reach branch, preserving
-source mask/provenance, post-score reach draw and one adoption. Unknown cast keys
-still reject. Stop before ACT-first or pair post-ACT reselection; retained/event
+**ZOD-208: execute a fresh in-reach pair ACT-first decision.**
+Both [Move-first branches](behavior/attack-throw-stone-ai-out-of-reach-move-first.md)
+now own fresh selection and Framework authority. Add in-reach ACT-first Attack/
+Throw Stone through the existing decision transaction, adopting RNG once and
+returning actual effects with unused Move. Stop before post-ACT movement or
+reselection; predicted D1 is not authority. Unknown cast keys, retained/event
 workspace history and general lists stay open.
 
 The [AI completion roadmap](development/ai-completion-roadmap.md) preserves the
@@ -52,20 +52,20 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-206, [fresh in-reach pair execution](behavior/attack-throw-stone-ai-move-first-execution.md).
-  One owned query maps typed Attack/Throw Stone/MoveOnly to actual Move and frozen
-  follow-up. Framework adopts RNG once and binds real results. Six scenarios cover
-  literal costs, predicted-versus-real KO, failure, budgets and replay.
-  ACT-first/out-of-reach pair adapters and post-ACT reselection remain separate.
+- Latest implementation: ZOD-207, [known-score out-of-reach execution](behavior/attack-throw-stone-ai-out-of-reach-move-first.md).
+  Explicit branches share private dispatch/proposal handling and retain distinct
+  typed diagnostics. Full source masks/provenance and the reach draw survive;
+  unknown cast keys reject. Six new scenarios cover effects, budgets and replay.
+  ACT-first pair adapters and post-ACT reselection remain separate.
 - Latest investigation: ZOD-203, [Throw Stone authority](architecture/zod-203-throw-stone-command-boundary.md).
   Ten source files/21 functions and fourteen managed study snapshots distinguish
   prediction from real resolution, dispatch/reselection and per-command transactions.
   Eight supplied checkpoint descriptions cover four/seven draws and push/KO/rollback;
   those descriptions do not execute the Framework transactions validated by ZOD-204.
 - Validation: locked restore, zero-warning/error Release rebuild,
-  **4,073 .NET cases** (1,455 Framework, 873 AI, including owner drafts),
+  **4,079 .NET cases** (1,455 Framework, 879 AI, including owner drafts),
   **532 Python tests** and pinned source/prepared audit passed. Logs and seven
-  full TRX files: ignored `scratch/ai-pair-move-first-206/`.
+  full TRX files: ignored `scratch/ai-pair-out-of-reach-move-207/`.
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

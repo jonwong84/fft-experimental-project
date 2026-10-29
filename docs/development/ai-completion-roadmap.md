@@ -17,10 +17,11 @@ The pair's [in-reach](../behavior/attack-throw-stone-ai-prepared-selection.md) a
 [known-score out-of-reach](../behavior/attack-throw-stone-ai-out-of-reach-selection.md)
 entries produce hypothetical selections. A fresh
 [in-reach Move-first adapter](../behavior/attack-throw-stone-ai-move-first-execution.md)
-now connects pair selection to authoritative commands; other entry paths remain pending.
+and [known-score out-of-reach entry](../behavior/attack-throw-stone-ai-out-of-reach-move-first.md)
+now connect pair selection to authoritative commands; ACT-first paths remain pending.
 Framework's [targeted ACT transaction](../behavior/targeted-ability-decision.md)
 and [targeted Move continuation](../behavior/targeted-move-continuation.md) now
-exist; out-of-reach/ACT-first pair adapters and pair post-ACT reselection remain work.
+exist; ACT-first pair adapters and pair post-ACT reselection remain work.
 
 These are bounded implementations: ordinary flat geometry, two opponents,
 restricted lists/statuses and explicit assertions about unrepresented context.
@@ -97,8 +98,8 @@ do not repeatedly rebuild ranking/selection for each new family. These eight
 areas are a roadmap, not eight already-sized tickets or a promise of strict
 serial execution. Select new children through the backlog and keep deferred work
 deferred. The [ZOD-203 handoff design](../architecture/zod-203-throw-stone-command-boundary.md)
-led to the completed ZOD-204/205 authority primitives and ZOD-206's in-reach
-pair Move-first adapter. ZOD-207 adds its explicit known-score out-of-reach entry next.
+led to the completed ZOD-204/205 authority primitives and ZOD-206/207 Move-first
+entries. ZOD-208's in-reach pair ACT-first execution is the immediate next step.
 
 Original-AI completion means it can control applicable original encounters and
 automatic units using the required actions, targeting, policies, movement and
