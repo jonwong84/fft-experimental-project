@@ -20,6 +20,8 @@ public sealed record AttackThrowStoneAiOutOfReachScenarioOutcome(AttackThrowSton
 /// <summary>Failure exposes reasons only and restores incoming whole-query RNG, including after partial private work.</summary>
 public sealed record AttackThrowStoneAiOutOfReachScenarioResult(bool Accepted, AttackThrowStoneAiScenarioFailure? Failure,
     AttackThrowStoneAiOutOfReachScenarioOutcome? Outcome, FftRandomState RngState);
+internal sealed record AttackThrowStoneAiOutOfReachScenarioCore(AttackThrowStoneAiOutOfReachScenarioResult Result,
+    AiMovementPrefixOutcome? Prefix = null);
 
 /// <summary>Own fresh NonBlue pair preparation, full proximity, filtered scores and out-of-reach D0=D1.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-199/200.
@@ -30,13 +32,22 @@ public static class AttackThrowStoneAiOutOfReachScenario
         AssetId throwStoneAbilityId, BoundedSwordWeapon? weapon, SwordAiCandidateProfile attackProfile,
         ThrowStoneAiCandidateProfile throwStoneProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
         AttackThrowStoneAiPreparationProfile preparationProfile, AttackThrowStoneAiScenarioProfile scenarioProfile,
+        SwordAiScenarioTeam team, FftRandomState decisionRng) =>
+        EvaluateFresh(state, request, throwStoneAbilityId, weapon, attackProfile, throwStoneProfile, scoreProfile, refreshProfile,
+            preparationProfile, scenarioProfile, team, decisionRng).Result;
+
+    // Only an owning query receives this freshly evaluated prefix; public diagnostics cannot be supplied back.
+    internal static AttackThrowStoneAiOutOfReachScenarioCore EvaluateFresh(AttackBattleSnapshot state, SwordAiRefreshRequest request,
+        AssetId throwStoneAbilityId, BoundedSwordWeapon? weapon, SwordAiCandidateProfile attackProfile,
+        ThrowStoneAiCandidateProfile throwStoneProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
+        AttackThrowStoneAiPreparationProfile preparationProfile, AttackThrowStoneAiScenarioProfile scenarioProfile,
         SwordAiScenarioTeam team, FftRandomState decisionRng)
     {
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(request); ArgumentNullException.ThrowIfNull(attackProfile);
         ArgumentNullException.ThrowIfNull(throwStoneProfile); ArgumentNullException.ThrowIfNull(scoreProfile);
         ArgumentNullException.ThrowIfNull(refreshProfile); ArgumentNullException.ThrowIfNull(preparationProfile);
         ArgumentNullException.ThrowIfNull(scenarioProfile);
-        AttackThrowStoneAiOutOfReachScenarioResult Reject(AttackThrowStoneAiScenarioFailure failure) => new(false, failure, null, decisionRng);
+        AttackThrowStoneAiOutOfReachScenarioCore Reject(AttackThrowStoneAiScenarioFailure failure) => new(new(false, failure, null, decisionRng));
         if (!scenarioProfile.NormalScoring || !scenarioProfile.CanonicalCoordinates || !scenarioProfile.NoOtherScenarioOverrides)
             return Reject(new(AttackThrowStoneAiScenarioStage.Admission, AttackThrowStoneAiScenarioRejection.UnsupportedProfile));
         var preparation = AttackThrowStoneAiPreparation.Evaluate(state, request, throwStoneAbilityId, weapon, attackProfile,
@@ -73,8 +84,10 @@ public static class AttackThrowStoneAiOutOfReachScenario
         var scenario1 = common.ReachableOrigins.Where(p => written.ContainsKey(p) || p == common.Origin).ToImmutableArray();
         var cells = common.ReachableOrigins.Select(p => new AiMovementCellProvenance(p, prefix.Proximity.Destinations[p],
             written.TryGetValue(p, out short priority) ? priority : null)).ToImmutableArray();
-        return new(true, null, new(ready, scored, scenario1, scenario2, prefix.Movement, cells,
-            destination, destination, scored.IndexOf(destination), distance, reach, effective,
-            new(raw, modulo, reach, effective), filterFallback, destinationFallback), rng);
+        int baselineIndex = scored.IndexOf(destination);
+        prefix = prefix with { BaselineIndex = baselineIndex };
+        return new(new(true, null, new(ready, scored, scenario1, scenario2, prefix.Movement, cells,
+            destination, destination, baselineIndex, distance, reach, effective,
+            new(raw, modulo, reach, effective), filterFallback, destinationFallback), rng), prefix);
     }
 }

@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-202 (implementation).** Out-of-reach pair scenarios ZOD-200 are complete.
-There are 34 open tickets below. The 168 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-203 (source/design investigation).** Known-score out-of-reach selection ZOD-202 is complete.
+There are 34 open tickets below. The 169 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,19 +29,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-202 — Select a fresh out-of-reach pair when all cast scores are known
+### ZOD-203 — Trace and design the authoritative Throw Stone command handoff
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-200
+**Type:** Investigation · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-202, ZOD-158, ZOD-111
 
-Compose [fresh out-of-reach scenarios](behavior/attack-throw-stone-ai-out-of-reach-scenarios.md)
-with Attack/Throw Stone ranking and lottery only where every actual cast key is
-fresh or proved unread. Reject unwritten actor origins within Throw Stone range;
-prove range filtering before adapting scan masks. Retain full source diagnostics,
-one owned prefix and post-score reach draw, legacy fresh-cell admission and remaining
-path/scoring/no-Defend assertions. Check literal plans/costs, range4/5, Move0,
-halving/fallback, exact/late budgets, atomic failure and replay. No guessed/zeroed
-priority, actor rescore, cached prior-memory input, general list/status port,
-live authority, replacement interface or activation.
+Follow the [pure pair selection](behavior/attack-throw-stone-ai-out-of-reach-selection.md)
+into actual commands using pinned source and managed transaction/targeted-ability paths.
+Distinguish AI midpoint/no-knockback projection from execution accuracy, damage,
+knockback and RNG. Specify ownership for fresh selection, proposal binding, RNG
+adoption, Move-first/ACT-first ordering, continuation, actual path/facing receipts,
+revision and atomic rejection. Reuse the Framework/AI boundary; select one bounded
+implementation child with meaningful vectors before coding. Keep unknown-score
+restrictions and explicit policy facts. No runtime implementation, generic list/status
+expansion, broad replacement interface or host/editor activation in this investigation.
 
 ## Existing validation gates
 
