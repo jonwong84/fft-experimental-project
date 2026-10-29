@@ -6,11 +6,11 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-192: design shared-prefix Attack and Throw Stone ranking.**
-The [prepared Throw Stone scan](behavior/throw-stone-ai-scan.md) owns movement
-scores and one clear candidate, including consume-after-NotValuable. Specify
-one shared prefix and two source-ordered entries with retained ranks/RNG,
-per-entry resets and typed hypothetical payloads before implementing composition.
+**ZOD-193: rank fresh Attack and Throw Stone after one movement prefix.**
+The [two-entry design](architecture/zod-192-two-entry-ai.md) owns scores/D0/proximity
+once, source-ordered fresh scans, retained ranks and per-entry best reset.
+ZOD-194 then adds pure terminal-pair selection through shared lottery arithmetic.
+Both keep typed hypothetical payloads and explicit source certificates.
 General list search/ranking and live ability authority remain separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
@@ -52,12 +52,12 @@ without rewriting old evidence.
   D0 is not rescored. Explicit source masks/usage/best-reset/path facts remain.
   Seven new scenarios cover ordering, ACT-first substitution, ties, range/empty
   scans, no retry at zero accuracy, KO, budgets, atomic failure and replay.
-- Latest investigation: ZOD-190, [Throw Stone scan](architecture/zod-190-throw-stone-ai-scan.md).
-  Runtime consume-aim differs from static flags; ranked origins use signed score,
-  proximity, then later coordinates. Zero accuracy consumes aim without retry.
-  Source receipt pins seven files/28 functions plus inherited contracts and
-  prepared semantic facts; seven isolated descriptions do not execute the game.
-  Clean audit: `scratch/ai-throw-stone-scan-190-191/source-191.json`.
+- Latest investigation: ZOD-192, [shared-prefix pair design](architecture/zod-192-two-entry-ai.md).
+  Four files/ten functions plus inherited scan/cursor/rank receipts are pinned.
+  Five isolated supplied rank/cost descriptions cover retention, ties, accuracy,
+  NotValuable and baseline admission; they do not execute the managed AI.
+  All 524 Python tests and clean source/prepared audit pass; ignored logs/report:
+  `scratch/ai-two-entry-192-194/`. Runtime validation below remains ZOD-191's.
 - Validation: locked restore, zero-warning/error Release build,
   **4,013 .NET cases / 522 Python tests**, including 826 AI cases and owner content drafts.
   Logs/results: ignored `scratch/ai-throw-stone-scan-190-191/`; `full-trx/` has seven full TRX files.

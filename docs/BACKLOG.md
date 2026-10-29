@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-192 (bounded design).** Fresh prepared Throw Stone scanning ZOD-191 is complete.
-There are 33 open tickets below. The 159 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-193 (implementation).** Shared-prefix design ZOD-192 is complete.
+There are 33 open tickets below. The 160 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,18 +29,17 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-192 — Design shared-prefix Attack and Throw Stone ranking
+### ZOD-193 — Rank fresh Attack and Throw Stone entries after one movement prefix
 
-**Type:** Investigation · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-191
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-192
 
-Specify a pure two-entry composition using the [fresh Throw Stone scan](behavior/throw-stone-ai-scan.md)
-and existing Attack scan. Recheck source cursor order and shared/per-entry
-mask, target-setting, best-reset and rank state. Own movement scoring/D0/proximity
-once, carry actual RNG through both entries and retain earlier ranked actions.
-Define typed action payloads without broad replacement interfaces or executable
-authority; preserve legacy admission. Use literal two-entry rank/tie/NotValuable
-examples and select a bounded implementation child. No generic list port,
-lottery/live execution, blocked trajectories, scenario derivation or UI activation.
+Implement the [shared-prefix design](architecture/zod-192-two-entry-ai.md#zod-193-fresh-two-entry-ranking).
+Admit matching family profiles and source order; score movement/D0/proximity once,
+then freshly scan Attack and Throw Stone with actual carried RNG and per-entry
+best reset. Preserve eight source slots, strict baseline admission and earlier
+complete ties, using closed typed hypothetical payloads. Check literals, profile
+mismatch, NotValuable, late failure and replay. No cached results, general list
+port, lottery, authority, scenario derivation or activation.
 
 ## Existing validation gates
 
