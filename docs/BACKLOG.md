@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-186 (implementation).** Ability-entry investigation ZOD-185 is complete; Throw Stone is selected.
-There are 33 open tickets below. The 153 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-187 (implementation).** Pure Throw Stone formula projection ZOD-186 is complete.
+There are 33 open tickets below. The 154 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,19 +29,18 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-186 — Implement pure Throw Stone AI formula projection
+### ZOD-187 — Project one hypothetical Throw Stone Move/ACT candidate
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-185
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-186
 
-Implement the [ZOD-185 Throw Stone contract](architecture/zod-185-ai-ability-iteration.md)
-as a pure non-execution formula/target-result query. Reuse explicit executable
-grants and pure geometry/profile admission. Preserve range1..4/diagonal-facing
-rules, current effective PA, separate accuracy/full midpoint damage and exactly
-four evasion draws; no AI knockback or live damage RNG. Verify zero accuracy,
-exact exhaustion, typed rejection, both actor/order replay and live input/RNG
-isolation. Use semantic boolean facts and retain existing Attack APIs; no CT
-clock, list/candidate traversal, ranking, selection, authority, broad interface
-or host/editor activation in this child.
+Own one fresh [Throw Stone formula projection](behavior/throw-stone-ai-formula.md)
+from the supplied ACT-before-Move or Move-before-ACT origin, then the existing
+effect-free hypothetical clock. Certify movement on the original living baseline;
+retain four formula draws plus real upkeep draws, current PA/HP and no knockback.
+Use neutral names for genuinely shared simulation diagnostics, preserving Attack
+behavior. Verify CT/refunds, zero accuracy, KO/corpse ordering, exact budgets,
+atomic rejection and actor/order replay. No scoring, scan, selection, live
+authority, general interface or host/editor activation.
 
 ## Existing validation gates
 

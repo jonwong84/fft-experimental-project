@@ -98,27 +98,15 @@ public static class TargetedAbilityBattleSimulator
     public static AttackBattleResult Apply(AttackBattleSnapshot state, UseTargetedAbilityCommand command, TargetedAbilityBattleProfile profile)
     {
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(command); ArgumentNullException.ThrowIfNull(profile);
-        var actor = state.Combatants.FirstOrDefault(unit => unit.UnitId == command.ActorId);
-        if (actor is null) return Reject(AttackCommandRejection.UnknownActor);
-        var target = state.Combatants.FirstOrDefault(unit => unit.UnitId == command.TargetId);
-        if (target is null) return Reject(AttackCommandRejection.UnknownTarget);
-        if (state.TurnBattle.Turns.ActiveUnitId != actor.UnitId) return Reject(AttackCommandRejection.InactiveActor);
-        if (state.TurnBattle.Turns.Units.Single(unit => unit.Id == actor.UnitId).ActionTaken)
-            return Reject(AttackCommandRejection.ActionAlreadyTaken);
-        if (actor.UnitId == target.UnitId) return Reject(AttackCommandRejection.SelfTarget);
-        if (target.Status == AttackUnitStatus.Dead) return Reject(AttackCommandRejection.DeadTarget);
-        if (!profile.Abilities.TryGetValue(command.AbilityId, out var ability)) return Reject(AttackCommandRejection.UnknownAbility);
-        if (!profile.Units.TryGetValue(actor.UnitId, out var grant) || !grant.Abilities.Contains(ability.Id))
-            return Reject(AttackCommandRejection.AbilityNotGranted);
-        try { profile.ValidateState(state); }
-        catch (Exception exception) when (exception is ArgumentException or NotSupportedException)
-        { return Reject(AttackCommandRejection.UnsupportedSetup); }
-
+        var invalid = ValidateCommand(state, command, profile);
+        if (invalid != AttackCommandRejection.None) return Reject(invalid);
+        var actor = state.Combatants.Single(unit => unit.UnitId == command.ActorId);
+        var target = state.Combatants.Single(unit => unit.UnitId == command.TargetId);
+        var ability = profile.Abilities[command.AbilityId];
         state.TurnBattle.Battle.TryGetUnit(actor.UnitId, out var actorBody);
         state.TurnBattle.Battle.TryGetUnit(target.UnitId, out var targetBody);
         TilePosition from = actorBody!.Position, to = targetBody!.Position;
         long dx = (long)to.X - from.X, dy = (long)to.Y - from.Y;
-        if (Math.Abs(dx) + Math.Abs(dy) > ability.Range) return Reject(AttackCommandRejection.OutOfRange);
         var action = TurnBattleSimulator.ConfirmAct(state.TurnBattle, actor.UnitId);
         if (!action.Accepted) return new(false, AttackCommandRejection.None, action.TurnRejection, action.MovementRejection, state, []);
 
@@ -131,7 +119,7 @@ public static class TargetedAbilityBattleSimulator
         int damage = 0;
         try
         {
-            int classEvade = IsFront(dx, dy, target.Facing) ? target.ClassPhysicalEvade : 0;
+            int classEvade = ThrowStoneFormula.IsFront(dx, dy, target.Facing) ? target.ClassPhysicalEvade : 0;
             foreach (int evade in new[] { 0, 0, 0, classEvade })
                 if (Draw() * 100 / 32768 < evade) { hit = false; break; }
             if (hit)
@@ -174,10 +162,33 @@ public static class TargetedAbilityBattleSimulator
             new(false, reason, TurnCycleRejection.None, BattleTransitionRejection.None, state, []);
     }
 
-    private static bool IsFront(long dx, long dy, BattleFacing facing)
+    /// <summary>Read-only current-command admission shared by execution and AI projection; grants no authority.</summary>
+    public static AttackCommandRejection ValidateCommand(AttackBattleSnapshot state, UseTargetedAbilityCommand command,
+        TargetedAbilityBattleProfile profile)
     {
-        bool horizontal = dx > 0 && facing == BattleFacing.West || dx < 0 && facing == BattleFacing.East;
-        bool vertical = dy > 0 && facing == BattleFacing.South || dy < 0 && facing == BattleFacing.North;
-        return Math.Abs(dx) > Math.Abs(dy) ? horizontal : Math.Abs(dy) > Math.Abs(dx) ? vertical : horizontal || vertical;
+        ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(command); ArgumentNullException.ThrowIfNull(profile);
+        var actor = state.Combatants.FirstOrDefault(unit => unit.UnitId == command.ActorId);
+        if (actor is null) return AttackCommandRejection.UnknownActor;
+        var target = state.Combatants.FirstOrDefault(unit => unit.UnitId == command.TargetId);
+        if (target is null) return AttackCommandRejection.UnknownTarget;
+        if (state.TurnBattle.Turns.ActiveUnitId != actor.UnitId) return AttackCommandRejection.InactiveActor;
+        if (state.TurnBattle.Turns.Units.Single(unit => unit.Id == actor.UnitId).ActionTaken)
+            return AttackCommandRejection.ActionAlreadyTaken;
+        if (actor.UnitId == target.UnitId) return AttackCommandRejection.SelfTarget;
+        if (target.Status == AttackUnitStatus.Dead) return AttackCommandRejection.DeadTarget;
+        if (!profile.Abilities.TryGetValue(command.AbilityId, out var ability)) return AttackCommandRejection.UnknownAbility;
+        if (!profile.Units.TryGetValue(actor.UnitId, out var grant) || !grant.Abilities.Contains(ability.Id))
+            return AttackCommandRejection.AbilityNotGranted;
+        try { profile.ValidateState(state); }
+        catch (Exception exception) when (exception is ArgumentException or NotSupportedException)
+        { return AttackCommandRejection.UnsupportedSetup; }
+
+        state.TurnBattle.Battle.TryGetUnit(actor.UnitId, out var actorBody);
+        state.TurnBattle.Battle.TryGetUnit(target.UnitId, out var targetBody);
+        TilePosition from = actorBody!.Position, to = targetBody!.Position;
+        long dx = (long)to.X - from.X, dy = (long)to.Y - from.Y;
+        if (Math.Abs(dx) + Math.Abs(dy) > ability.Range) return AttackCommandRejection.OutOfRange;
+        return AttackCommandRejection.None;
     }
+
 }

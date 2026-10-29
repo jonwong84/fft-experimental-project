@@ -6,12 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-186: implement pure Throw Stone AI formula projection.**
-[ZOD-185](architecture/zod-185-ai-ability-iteration.md) selects an existing
-executable non-Attack ability. Its AI path uses full midpoint damage (2×current
-PA) with separate accuracy, four retained evasion draws and no knockback. Reuse
-explicit grants/pure geometry validation; stop before CT/candidate/list/ranking
-work. Preserve the implemented Attack lifecycle, live authority and deferred work.
+**ZOD-187: project one hypothetical Throw Stone Move/ACT candidate.**
+[Formula projection](behavior/throw-stone-ai-formula.md) now shares actual grant/
+geometry admission while using separate accuracy, full midpoint damage, four
+evasion draws and no knockback. Own that fresh query at the candidate's cast
+origin, then the existing effect-free clock. Reuse neutral shared diagnostics;
+scoring, general list search and live authority remain separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
@@ -47,11 +47,11 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-184, [live post-ACT Move/END](behavior/sword-ai-post-act-execution.md).
-  Framework owns invocation-bound turn-ending paths and actual-receipt facing;
-  explicit AI in/out-of-reach adapters own fresh selection/dispatch once. Ten
-  scenarios cover literal complete flows, stay/out-of-reach, current authority,
-  exact budgets, late rollback and Critical/knockback actor/order replay.
+- Latest implementation: ZOD-186, [Throw Stone AI formula](behavior/throw-stone-ai-formula.md).
+  Shared read-only current-command/grant/geometry validation preserves execution.
+  Five scenarios cover literal midpoint/accuracy/RNG, diagonals, exact exhaustion,
+  typed admission and replay. All 804 AI cases and Framework regressions pass;
+  logs are in `scratch/ai-throw-stone-186-188/`.
 - Latest investigation: ZOD-185, [ability-entry iteration](architecture/zod-185-ai-ability-iteration.md).
   Cursor/resume, static-versus-runtime usage flags, per-entry/shared state and
   retained ranks/RNG are pinned. Throw Stone is the next child; Accumulate's
