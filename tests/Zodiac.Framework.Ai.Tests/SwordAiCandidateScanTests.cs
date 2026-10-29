@@ -262,7 +262,7 @@ public sealed class SwordAiCandidateScanTests
         var snapshot = new AttackBattleSnapshot(new(new(new(width, depth, 1, Enumerable.Repeat(new BattleTile(Ground, 10), width * depth).ToArray()),
             bodies, LiveRng), new(turns, LiveRng, state.GetProperty("ticks").GetUInt64(), active ? TurnCyclePhase.UnitTurn : TurnCyclePhase.PickUnit)), combatants);
         var candidateProfile = new SwordAiCandidateProfile(new(Ground), new(Ground, actor, target),
-            units.Select(u => new SwordAiUnitBaseline(UnitId(u), u.GetProperty("deathCounter").GetByte())));
+            units.Select(u => new AiUnitBaseline(UnitId(u), u.GetProperty("deathCounter").GetByte())));
         var score = new SwordAiScoreProfile(units.Select(u => new SwordAiScoreUnitCertificate(UnitId(u), Flag("scoreProfileClosed") ? SwordAiScoreFacts.ClosedProfile : SwordAiScoreFacts.None)));
         var scenario = data.GetProperty("scenario"); var dest = scenario.GetProperty("destination");
         return new(snapshot, new(scenario.GetProperty("origins").EnumerateArray().Select(Point), dest.ValueKind == JsonValueKind.Null ? null : Point(dest)),

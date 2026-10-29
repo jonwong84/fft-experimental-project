@@ -90,7 +90,7 @@ public static class SwordAiCandidateScoring
     }
 
     // Internal only: callers own a freshly validated private simulation, never a caller-populated public result.
-    internal static SwordAiCandidateScore ScoreFreshUnits(ImmutableArray<SwordAiProjectedUnit> units,
+    internal static SwordAiCandidateScore ScoreFreshUnits(ImmutableArray<AiProjectedUnit> units,
         BattleUnitId targetId, byte hitPercent)
     {
         short priority = 0;

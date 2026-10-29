@@ -174,7 +174,7 @@ public sealed class SwordAiCandidateProjectionTests
         Assert.Equal(0ul,outcome.ElapsedTicks); Assert.Equal(ulong.MaxValue,outcome.Ticks);
         Assert.Equal(B,outcome.MoveOpportunityUnitId); Assert.Equal(ct%100,Unit(outcome,B).Ct);
         Assert.Equal(35,Unit(outcome,A).Ct); Assert.False(Unit(outcome,B).MovementTaken); Assert.False(Unit(outcome,B).ActionTaken);
-        Assert.Equal(new SwordAiUpkeepPick(B,ct,ct%100,false,31051),Assert.Single(outcome.UpkeepPicks));
+        Assert.Equal(new AiUpkeepPick(B,ct,ct%100,false,31051),Assert.Single(outcome.UpkeepPicks));
     }
 
     [Theory] [InlineData(0,false)] [InlineData(1,false)] [InlineData(0,true)] [InlineData(1,true)]
@@ -289,7 +289,7 @@ public sealed class SwordAiCandidateProjectionTests
         Assert.Throws<ArgumentNullException>(() => new SwordAiCandidateProfile(null!,Movement,[]));
         Assert.Throws<ArgumentNullException>(() => new SwordAiCandidateProfile(Sword,null!,[]));
         Assert.Throws<ArgumentNullException>(() => new SwordAiCandidateProfile(Sword,Movement,null!));
-        foreach (var units in new SwordAiUnitBaseline[][] { [],[new(A,255)],[new(A,255),new(A,255)],[new(A,255),null!],
+        foreach (var units in new AiUnitBaseline[][] { [],[new(A,255)],[new(A,255),new(A,255)],[new(A,255),null!],
             [new(A,255),new(new("sample:unit/unknown"),255)] })
             Assert.Throws<ArgumentException>(() => new SwordAiCandidateProfile(Sword,Movement,units));
         Assert.Throws<ArgumentException>(() => new SwordAiCandidateProfile(new(new("sample:terrain/other")),Movement,[new(A,255),new(B,255)]));
@@ -326,7 +326,7 @@ public sealed class SwordAiCandidateProjectionTests
     private static SwordAiCandidate Stay() => new(A,B,new(2,2,0),SwordAiCandidateOrder.MoveThenAct);
     private static SwordAiCandidateResult Project(AttackBattleSnapshot state,SwordAiCandidate? candidate=null,int power=5,FftRandomState? rng=null)
         => SwordAiCandidateProjection.Evaluate(state,candidate ?? Stay(),new(Weapon,power),Profile,rng ?? Decision);
-    private static SwordAiProjectedUnit Unit(SwordAiCandidateOutcome outcome,BattleUnitId id) => outcome.Units.Single(u => u.UnitId == id);
+    private static AiProjectedUnit Unit(SwordAiCandidateOutcome outcome,BattleUnitId id) => outcome.Units.Single(u => u.UnitId == id);
     private static SwordAiCandidateOutcome Projected(SwordAiCandidateResult result)
     { Assert.Equal(SwordAiCandidateDisposition.Projected,result.Disposition); Assert.Equal(SwordAiCandidateRejection.None,result.Rejection); return Assert.IsType<SwordAiCandidateOutcome>(result.Outcome); }
     private static void Atomic(SwordAiCandidateResult result,SwordAiCandidateRejection rejection,FftRandomState? rng=null,bool accepted=false)

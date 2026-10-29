@@ -6,9 +6,6 @@ public enum SwordAiCandidateOrder { MoveThenAct, ActThenMove }
 public sealed record SwordAiCandidate(BattleUnitId ActorId, BattleUnitId TargetId,
     TilePosition Destination, SwordAiCandidateOrder Order);
 
-/// <summary>Original selected-state death counter, absent from the ordinary live clock model.</summary>
-public sealed record SwordAiUnitBaseline(BattleUnitId UnitId, byte DeathCounter);
-
 /// <summary>Explicit opt-in certificate for the ZOD-124 ordinary candidate and effect-free clock boundary.</summary>
 /// <remarks>
 /// The caller certifies original UNIT_TURN/resume PICK_UNIT/current actor, original slot order in TieKey,
@@ -20,10 +17,10 @@ public sealed class SwordAiCandidateProfile
 {
     public FlatSwordBattleProfile Sword { get; }
     public FlatOrdinaryMovementProfile Movement { get; }
-    public ImmutableArray<SwordAiUnitBaseline> Units { get; }
+    public ImmutableArray<AiUnitBaseline> Units { get; }
 
     public SwordAiCandidateProfile(FlatSwordBattleProfile sword, FlatOrdinaryMovementProfile movement,
-        IEnumerable<SwordAiUnitBaseline> units)
+        IEnumerable<AiUnitBaseline> units)
     {
         ArgumentNullException.ThrowIfNull(sword);
         ArgumentNullException.ThrowIfNull(movement);
@@ -44,14 +41,9 @@ public enum SwordAiCandidateRejection
     InvalidCandidate, OutOfRange, RandomDrawCountExhausted, TickCountExhausted
 }
 
-/// <summary>Hypothetical data only; no active turn, command receipt or executable battle snapshot.</summary>
-public sealed record SwordAiProjectedUnit(BattleUnitId UnitId, TilePosition Position, BattleFacing Facing,
-    int Hp, int MaxHp, AttackUnitStatus Status, byte DeathCounter, int Speed, int TieKey, int Ct,
-    bool MovementTaken, bool ActionTaken);
-public sealed record SwordAiUpkeepPick(BattleUnitId UnitId, int CtBefore, int CtAfter, bool Dead, uint RawRoll);
 public sealed record SwordAiCandidateOutcome(BattleUnitId ActorId, BattleUnitId TargetId, int HitPercent,
-    int NormalDamage, int TurnEndCt, ImmutableArray<SwordAiProjectedUnit> Units,
-    BattleUnitId MoveOpportunityUnitId, ulong ElapsedTicks, ulong Ticks, ImmutableArray<SwordAiUpkeepPick> UpkeepPicks)
+    int NormalDamage, int TurnEndCt, ImmutableArray<AiProjectedUnit> Units,
+    BattleUnitId MoveOpportunityUnitId, ulong ElapsedTicks, ulong Ticks, ImmutableArray<AiUpkeepPick> UpkeepPicks)
 {
     public bool TargetKnockedOut => Units.Single(u => u.UnitId == TargetId).Status == AttackUnitStatus.Dead;
 }
@@ -119,22 +111,13 @@ public static class SwordAiCandidateProjection
 
         bool moved = actorTurn.MovementTaken || candidate.Destination != body!.Position;
         int turnEndCt = Math.Min(60, actorTurn.Ct + (moved ? 0 : 20)); // Act always consumed here.
-        // Stable source slot order, independent of all input collection orders.
-        var units = turns.Units.OrderBy(u => u.TieKey).Select(turn =>
-        {
-            var combat = state.Combatants.Single(u => u.UnitId == turn.Id);
-            battle.TryGetUnit(turn.Id, out var unitBody);
-            bool isActor = turn.Id == actor.UnitId;
-            int hp = isActor ? combat.Hp : formula.Outcome.TargetHp;
-            var status = hp == 0 ? AttackUnitStatus.Dead : hp <= combat.MaxHp / 5 ? AttackUnitStatus.Critical : AttackUnitStatus.None;
-            return new SwordAiProjectedUnit(turn.Id, isActor ? candidate.Destination : unitBody!.Position, combat.Facing,
-                hp, combat.MaxHp, status, hp == 0 ? (byte)3 : profile.Units.Single(u => u.UnitId == turn.Id).DeathCounter,
-                turn.Speed, turn.TieKey, isActor ? turnEndCt : turn.Ct,
-                isActor ? moved : turn.MovementTaken, isActor || turn.ActionTaken);
-        }).ToArray();
+        var units = AiCandidateState.CreateUnits(state, actor.UnitId, candidate.Destination,
+            formula.Outcome.TargetHp, turnEndCt, moved, profile.Units);
 
-        var clockRejection = SwordAiSimulationClock.Advance(units, turns.Ticks, formula.RngState, out var clock);
-        if (clockRejection != SwordAiCandidateRejection.None) return Reject(clockRejection);
+        var clockRejection = AiSimulationClock.Advance(units, turns.Ticks, formula.RngState, out var clock);
+        if (clockRejection != AiSimulationClockRejection.None)
+            return Reject(clockRejection == AiSimulationClockRejection.RandomDrawCountExhausted
+                ? SwordAiCandidateRejection.RandomDrawCountExhausted : SwordAiCandidateRejection.TickCountExhausted);
         return new(SwordAiCandidateDisposition.Projected, SwordAiCandidateRejection.None,
             new(actor.UnitId, target.UnitId, formula.Outcome.HitPercent, formula.Outcome.NormalDamage, turnEndCt,
                 clock!.Units, clock.MoveOpportunityUnitId, clock.ElapsedTicks, clock.Ticks, clock.UpkeepPicks), clock.RngState);

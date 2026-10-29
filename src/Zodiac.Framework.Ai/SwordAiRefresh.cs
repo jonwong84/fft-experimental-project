@@ -27,8 +27,8 @@ public sealed record SwordAiRefreshedUnit(BattleUnitId UnitId, bool Enemy, bool 
 /// <summary>Hypothetical diagnostics, not an executable state, score or general-selection entry certificate.</summary>
 public sealed record SwordAiRefreshOutcome(BattleUnitId ActorId, BattleUnitId TargetId,
     ImmutableArray<SwordAiRefreshedUnit> RefreshedUnits, int TurnEndCt,
-    ImmutableArray<SwordAiProjectedUnit> Units, BattleUnitId MoveOpportunityUnitId,
-    ulong ElapsedTicks, ulong Ticks, ImmutableArray<SwordAiUpkeepPick> UpkeepPicks);
+    ImmutableArray<AiProjectedUnit> Units, BattleUnitId MoveOpportunityUnitId,
+    ulong ElapsedTicks, ulong Ticks, ImmutableArray<AiUpkeepPick> UpkeepPicks);
 
 /// <summary>Rejected queries return the incoming RNG and no partial flags or clock result.</summary>
 public sealed record SwordAiRefreshResult(bool Accepted, SwordAiRefreshRejection Rejection,
@@ -100,14 +100,14 @@ public static class SwordAiRefresh
         {
             var combat = state.Combatants.Single(u => u.UnitId == turn.Id);
             battle.TryGetUnit(turn.Id, out var body);
-            return new SwordAiProjectedUnit(turn.Id, body!.Position, combat.Facing,
+            return new AiProjectedUnit(turn.Id, body!.Position, combat.Facing,
                 combat.Hp, combat.MaxHp, combat.Status, candidateProfile.Units.Single(u => u.UnitId == turn.Id).DeathCounter,
                 turn.Speed, turn.TieKey, turn.Id == actor.UnitId ? turnEndCt : turn.Ct,
                 turn.MovementTaken, turn.ActionTaken);
         }).ToArray();
-        var rejection = SwordAiSimulationClock.Advance(units, turns.Ticks, decisionRng, out var clock);
-        if (rejection != SwordAiCandidateRejection.None)
-            return Reject(rejection == SwordAiCandidateRejection.RandomDrawCountExhausted
+        var rejection = AiSimulationClock.Advance(units, turns.Ticks, decisionRng, out var clock);
+        if (rejection != AiSimulationClockRejection.None)
+            return Reject(rejection == AiSimulationClockRejection.RandomDrawCountExhausted
                 ? SwordAiRefreshRejection.RandomDrawCountExhausted : SwordAiRefreshRejection.TickCountExhausted);
 
         // Source rebuilds HP facts before simulation and transient status/Considered after it.

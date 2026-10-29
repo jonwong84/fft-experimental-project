@@ -15,7 +15,8 @@ These are source-derived managed checks, not original-game execution equivalence
 ## Admission and explicit certification
 
 Construct `SwordAiCandidateProfile` from matching existing flat sword/movement
-profiles and exactly one `SwordAiUnitBaseline` death-counter byte per opponent.
+profiles and exactly one `AiUnitBaseline` death-counter byte per opponent (shared
+diagnostic naming extracted in ZOD-187).
 The immutable profile certifies original UNIT_TURN/resume PICK_UNIT/current actor,
 original slot order represented by the existing stable `TieKey`, and no charges,
 mimes, timed status/upkeep/terrain/script effects, restrictions, immortality,

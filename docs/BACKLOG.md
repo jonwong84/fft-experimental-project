@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-187 (implementation).** Pure Throw Stone formula projection ZOD-186 is complete.
-There are 33 open tickets below. The 154 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-188 (implementation).** Throw Stone candidate projection ZOD-187 is complete.
+There are 33 open tickets below. The 155 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,18 +29,17 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-187 — Project one hypothetical Throw Stone Move/ACT candidate
+### ZOD-188 — Score one freshly projected Throw Stone candidate
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-186
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-187
 
-Own one fresh [Throw Stone formula projection](behavior/throw-stone-ai-formula.md)
-from the supplied ACT-before-Move or Move-before-ACT origin, then the existing
-effect-free hypothetical clock. Certify movement on the original living baseline;
-retain four formula draws plus real upkeep draws, current PA/HP and no knockback.
-Use neutral names for genuinely shared simulation diagnostics, preserving Attack
-behavior. Verify CT/refunds, zero accuracy, KO/corpse ordering, exact budgets,
-atomic rejection and actor/order replay. No scoring, scan, selection, live
-authority, general interface or host/editor activation.
+Own one fresh [Throw Stone candidate projection](behavior/throw-stone-ai-candidate.md)
+then apply existing allied-minus-enemy HP/status/equipment scoring with signed
+source narrowing and separate accuracy. Share neutral score certificates and
+arithmetic with Attack; do not duplicate a score matrix or trust cached public
+outcomes. Verify normal/Critical/KO scores, NotValuable, exact RNG retention,
+typed profile/projection failure and actor/order replay. No baseline comparison,
+scan/list traversal, ranking, lottery, live authority or host/editor activation.
 
 ## Existing validation gates
 

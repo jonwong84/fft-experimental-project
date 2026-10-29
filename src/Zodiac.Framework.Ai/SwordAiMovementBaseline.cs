@@ -18,9 +18,9 @@ public enum SwordAiMovementBaselineRejection
 
 /// <summary>Immutable hypothetical data only; no active turn, executable command or live RNG commitment.</summary>
 public sealed record SwordAiMovementBaselineOutcome(BattleUnitId ActorId, BattleUnitId TargetId,
-    TilePosition Destination, int TurnEndCt, ImmutableArray<SwordAiProjectedUnit> Units,
+    TilePosition Destination, int TurnEndCt, ImmutableArray<AiProjectedUnit> Units,
     BattleUnitId MoveOpportunityUnitId, ulong ElapsedTicks, ulong Ticks,
-    ImmutableArray<SwordAiUpkeepPick> UpkeepPicks, SwordAiCandidateScore Score);
+    ImmutableArray<AiUpkeepPick> UpkeepPicks, SwordAiCandidateScore Score);
 
 /// <summary>Rejected queries return the incoming decision RNG and no partial outcome.</summary>
 public sealed record SwordAiMovementBaselineResult(bool Accepted, SwordAiMovementBaselineRejection Rejection,
@@ -116,15 +116,15 @@ public static class SwordAiMovementBaseline
             var combat = state.Combatants.Single(u => u.UnitId == turn.Id);
             battle.TryGetUnit(turn.Id, out var unitBody);
             bool isActor = turn.Id == actor.UnitId;
-            return new SwordAiProjectedUnit(turn.Id, isActor ? request.Destination : unitBody!.Position, combat.Facing,
+            return new AiProjectedUnit(turn.Id, isActor ? request.Destination : unitBody!.Position, combat.Facing,
                 combat.Hp, combat.MaxHp, combat.Status, candidateProfile.Units.Single(u => u.UnitId == turn.Id).DeathCounter,
                 turn.Speed, turn.TieKey, isActor ? turnEndCt : turn.Ct,
                 isActor ? moved : turn.MovementTaken, turn.ActionTaken);
         }).ToArray();
 
-        var clockRejection = SwordAiSimulationClock.Advance(units, turns.Ticks, decisionRng, out var clock);
-        if (clockRejection != SwordAiCandidateRejection.None)
-            return Reject(clockRejection == SwordAiCandidateRejection.RandomDrawCountExhausted
+        var clockRejection = AiSimulationClock.Advance(units, turns.Ticks, decisionRng, out var clock);
+        if (clockRejection != AiSimulationClockRejection.None)
+            return Reject(clockRejection == AiSimulationClockRejection.RandomDrawCountExhausted
                 ? SwordAiMovementBaselineRejection.RandomDrawCountExhausted : SwordAiMovementBaselineRejection.TickCountExhausted);
         var score = SwordAiCandidateScoring.ScoreFreshUnits(clock!.Units, target.UnitId, 100);
         // Negating into the source u16 tile grid and back to s16 preserves this closed -160..160 score.

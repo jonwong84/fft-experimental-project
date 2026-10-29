@@ -59,7 +59,7 @@ retains signed narrowing after each source-ordered unit.
 ## Implementation and validation
 
 Attack and movement-only evaluations share an internal
-[`SwordAiSimulationClock`](../../src/Zodiac.Framework/SwordAiSimulationClock.cs)
+[`AiSimulationClock`](../../src/Zodiac.Framework.Ai/AiSimulationClock.cs)
 and fresh-unit scoring routine. Their action preparation remains distinct: no
 fake zero-damage Attack is used. Neither routine accepts public cached outcomes
 as trusted input. Existing candidate APIs retain their behavior and RNG schedule.

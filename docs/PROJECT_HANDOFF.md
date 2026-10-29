@@ -6,12 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-187: project one hypothetical Throw Stone Move/ACT candidate.**
-[Formula projection](behavior/throw-stone-ai-formula.md) now shares actual grant/
-geometry admission while using separate accuracy, full midpoint damage, four
-evasion draws and no knockback. Own that fresh query at the candidate's cast
-origin, then the existing effect-free clock. Reuse neutral shared diagnostics;
-scoring, general list search and live authority remain separate.
+**ZOD-188: score one freshly projected Throw Stone candidate.**
+[Candidate projection](behavior/throw-stone-ai-candidate.md) now owns formula and
+shared effect-free clock from the correct Move/ACT origin. Apply the same
+source HP/status/equipment scoring with separate accuracy and no extra RNG;
+reuse neutral score certificates/arithmetic. Comparison, general list search
+and live authority remain separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
@@ -47,10 +47,10 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-186, [Throw Stone AI formula](behavior/throw-stone-ai-formula.md).
-  Shared read-only current-command/grant/geometry validation preserves execution.
-  Five scenarios cover literal midpoint/accuracy/RNG, diagonals, exact exhaustion,
-  typed admission and replay. All 804 AI cases and Framework regressions pass;
+- Latest implementation: ZOD-187, [Throw Stone candidate projection](behavior/throw-stone-ai-candidate.md).
+  Fresh formula/clock uses correct origin, unused-Move refund and actual source
+  KO/upkeep rules. Neutral simulation diagnostics/state/clock now serve both
+  Attack and Throw Stone. Five new scenarios pass with all 809 AI cases;
   logs are in `scratch/ai-throw-stone-186-188/`.
 - Latest investigation: ZOD-185, [ability-entry iteration](architecture/zod-185-ai-ability-iteration.md).
   Cursor/resume, static-versus-runtime usage flags, per-entry/shared state and

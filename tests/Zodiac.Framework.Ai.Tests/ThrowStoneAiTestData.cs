@@ -10,6 +10,10 @@ internal static class ThrowStoneAiTestData
     internal static readonly FftRandomState Decision = new(1, 7), Live = new(57, 100);
     internal static TargetedAbilityBattleProfile AbilityProfile(bool granted = true) => new(Ground, [new(Stone)],
         [new(A, granted ? [Stone] : [], 0), new(B, [Stone], 0)]);
+    internal static ThrowStoneAiCandidateProfile CandidateProfile(bool granted = true) =>
+        new(AbilityProfile(granted), new(Ground, A, B), [new(A, 255), new(B, 19)]);
+    internal static ThrowStoneAiCandidate Candidate(TilePosition? destination = null, bool actBeforeMove = true, bool second = false) =>
+        new(second ? B : A, Stone, second ? A : B, destination ?? new(1, 1, 0), actBeforeMove);
     internal static AttackBattleSnapshot State(TilePosition? target = null, int pa = 5, int hp = 50, int maxHp = 50,
         int evade = 0, BattleFacing facing = BattleFacing.West, bool moved = false, bool acted = false,
         bool active = true, bool second = false, bool reverse = false, bool badGround = false,
