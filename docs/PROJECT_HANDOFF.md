@@ -6,12 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-199: trace out-of-reach pair scenarios and original-origin score provenance.**
-[Prepared in-reach selection](behavior/attack-throw-stone-ai-prepared-selection.md)
-now owns the entire pure prefix/scenario/rank/lottery query without rescoring.
-Before extending it, trace filtered masks, post-score reach adjustment and any
-actor score cell read after the original tile is added. Do not assume freshness
-or zero for an unwritten source cell; choose a source-checkable child.
+**ZOD-200: derive out-of-reach pair scenarios with explicit score provenance.**
+The [source study](architecture/zod-199-pair-out-of-reach.md) confirms an added
+original cast origin can have fresh proximity but retained priority, including
+shared event/status bytes. Own filtered scoring/reach adjustment/D0=D1 and report
+written/unwritten cells; stop before scans or selection that could read unknown
+priority. Never assume zero or add an actor score/draw to repair provenance.
 General list search/ranking and live ability authority remain separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
@@ -54,14 +54,16 @@ without rewriting old evidence.
   scans/ranks/lottery. Established source facts are derived; scenario/path/scoring/
   no-Defend facts remain explicit. Twelve new scenarios cover literals, legacy
   policy, full costs, budgets, atomic failure and replay.
-- Latest investigation: ZOD-195, [pair preparation](architecture/zod-195-pair-preparation.md).
-  Five files/18 functions plus inherited receipts and Frog semantic facts are
-  pinned. Four isolated summaries cover initialization, usage, reach and ranged
-  D0 bounds; they do not execute a managed preparation or derive scored destinations.
-  Clean source/prepared audit, including menu dispatch: `scratch/ai-pair-scenarios-197-198/source-final.json`.
-- Validation: locked restore, zero-warning/error Release build,
-  **4,042 .NET cases / 526 Python tests**, including 855 AI cases and owner content drafts.
-  Logs/results: ignored `scratch/ai-pair-scenarios-197-198/`; `full-trx/` has seven full TRX files.
+- Latest investigation: ZOD-199, [out-of-reach provenance](architecture/zod-199-pair-out-of-reach.md).
+  Twelve files/24 functions plus inherited receipts pin mask order, retained
+  score cells and shared event/status aliasing. Nine supplied descriptions cover
+  prior-cell witnesses, range4/5, fallback and RNG; no original execution or
+  numerical initial/retained cache value is claimed.
+- Validation: runtime unchanged; last locked restore/clean Release build and
+  **4,042 .NET cases** (855 AI, including owner drafts) are ZOD-198, with seven
+  TRX files in ignored `scratch/ai-pair-scenarios-197-198/full-trx/`.
+  ZOD-199 passed **529 Python tests** and the pinned source/prepared-data audit;
+  reports are in ignored `scratch/ai-pair-out-of-reach-199/`.
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-199 (source investigation).** Prepared in-reach pair selection ZOD-198 is complete.
-There are 33 open tickets below. The 166 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-200 (implementation).** Out-of-reach provenance study ZOD-199 is complete.
+There are 33 open tickets below. The 167 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,19 +29,18 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-199 — Trace out-of-reach pair scenarios and original-origin score provenance
+### ZOD-200 — Derive out-of-reach pair scenarios with explicit score provenance
 
-**Type:** Investigation · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-198
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-199
 
-Extend the [prepared pair](behavior/attack-throw-stone-ai-prepared-selection.md)
-trace to the explicit out-of-reach branch: filtered score/scenario masks, no-match
-fallback, NonBlue post-score reach-halving draw and D0=D1. Track score/proximity
-initialization, writes and retained cells when the actor is added after scoring,
-especially when Throw Stone can still cast from that original tile. Determine
-whether a fresh score is available; never assume zero or silently rescore an
-unwritten cell. Record uncertainty/quirks, literal provenance/RNG descriptions
-and select a bounded implementable child. No runtime port, cached-result shortcut,
-live authority, general list/status expansion, replacement interface or activation.
+Implement the [scenario-only child](architecture/zod-199-pair-out-of-reach.md#selected-child--zod-200)
+after fresh NonBlue pair preparation. Own full M0 proximity, filtered scoring,
+post-score reach adjustment and D0=D1; preserve no-match fallback and pre-actor-OR
+scenario2. Distinguish scored and added-unwritten origins explicitly without
+reading, zeroing or rescoring an unknown priority. Check literal masks/destinations,
+range4/5, halving/RNG order, budgets and replay. Keep policy assertions and legacy
+fresh-cell admission. No cached prior-memory input, action scans/ranks/lottery,
+general list/status port, live authority, replacement interface or activation.
 
 ## Existing validation gates
 
