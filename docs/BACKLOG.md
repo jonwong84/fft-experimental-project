@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-191 (implementation).** Throw Stone scan investigation ZOD-190 is complete.
-There are 33 open tickets below. The 158 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-192 (bounded design).** Fresh prepared Throw Stone scanning ZOD-191 is complete.
+There are 33 open tickets below. The 159 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,19 +29,18 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-191 — Scan one prepared Throw Stone scenario with fresh movement scores
+### ZOD-192 — Design shared-prefix Attack and Throw Stone ranking
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-190
+**Type:** Investigation · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-191
 
-Implement the [source-traced scan child](architecture/zod-190-throw-stone-ai-scan.md#selected-child-zod-191).
-Own fresh supplied movement-mask scores, signed priority/proximity keys and one
-prepared Throw Stone origin/candidate, carrying actual private RNG. Keep source
-mask/D0/D1/prepared-entry/best-reset/clear-path facts explicit; no cached outcomes.
-Preserve ACT-first substitution, Move-first, range4/5, later-origin ties and
-consume-after-NotValuable. Inactive/empty results retain prefix work; late failure
-rolls back. Check literal budgets, KO and replay; reuse shared internals and
-preserve Attack admission. No blocked-path traversal, broader list/ranking/lottery,
-live authority, replacement interface or host/editor activation.
+Specify a pure two-entry composition using the [fresh Throw Stone scan](behavior/throw-stone-ai-scan.md)
+and existing Attack scan. Recheck source cursor order and shared/per-entry
+mask, target-setting, best-reset and rank state. Own movement scoring/D0/proximity
+once, carry actual RNG through both entries and retain earlier ranked actions.
+Define typed action payloads without broad replacement interfaces or executable
+authority; preserve legacy admission. Use literal two-entry rank/tie/NotValuable
+examples and select a bounded implementation child. No generic list port,
+lottery/live execution, blocked trajectories, scenario derivation or UI activation.
 
 ## Existing validation gates
 

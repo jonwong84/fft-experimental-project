@@ -40,9 +40,26 @@ public static class ThrowStoneAiBaselineComparison
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(candidate);
         ArgumentNullException.ThrowIfNull(candidateProfile); ArgumentNullException.ThrowIfNull(scoreProfile);
         ArgumentNullException.ThrowIfNull(baselineProfile);
-        ThrowStoneAiBaselineComparisonResult Reject(ThrowStoneAiBaselineComparisonRejection reason,
+        var invalid = ValidateInputs(state, baselineDestination, candidate, candidateProfile, scoreProfile, baselineProfile);
+        if (invalid is not null) return new(false, invalid, null, decisionRng);
+        var baseline = AiMovementSimulation.Evaluate(state, candidate.ActorId, candidate.TargetId, baselineDestination,
+            candidateProfile.Units, decisionRng);
+        if (baseline.Rejection != AiSimulationClockRejection.None)
+            return new(false, new(ThrowStoneAiBaselineComparisonStage.Baseline,
+                baseline.Rejection == AiSimulationClockRejection.RandomDrawCountExhausted
+                    ? ThrowStoneAiBaselineComparisonRejection.RandomDrawCountExhausted
+                    : ThrowStoneAiBaselineComparisonRejection.TickCountExhausted), null, decisionRng);
+        return ContinueFromBaseline(state, candidate, candidateProfile, scoreProfile, baseline.Outcome!, baseline.RngState, decisionRng);
+    }
+
+    // Pure shared admission. Fresh compositions own all masks before they call the movement kernel.
+    internal static ThrowStoneAiBaselineComparisonFailure? ValidateInputs(AttackBattleSnapshot state, TilePosition baselineDestination,
+        ThrowStoneAiCandidate candidate, ThrowStoneAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
+        ThrowStoneAiBaselineProfile baselineProfile)
+    {
+        static ThrowStoneAiBaselineComparisonFailure Reject(ThrowStoneAiBaselineComparisonRejection reason,
             AttackCommandRejection ability = AttackCommandRejection.None) =>
-            new(false, new(ThrowStoneAiBaselineComparisonStage.Baseline, reason, ability), null, decisionRng);
+            new(ThrowStoneAiBaselineComparisonStage.Baseline, reason, ability);
         if (!baselineProfile.OriginalScenarioZeroDestination || !baselineProfile.FreshSourceScoreCell ||
             !baselineProfile.NormalScoring || !baselineProfile.CanonicalCoordinates)
             return Reject(ThrowStoneAiBaselineComparisonRejection.UnsupportedBaselineProfile);
@@ -70,21 +87,22 @@ public static class ThrowStoneAiBaselineComparison
         if (!movement.Outcome!.AiOrigins.Contains(baselineDestination))
             return Reject(ThrowStoneAiBaselineComparisonRejection.InvalidBaselineDestination);
 
-        var baseline = AiMovementSimulation.Evaluate(state, actor.UnitId, target.UnitId, baselineDestination,
-            candidateProfile.Units, decisionRng);
-        if (baseline.Rejection != AiSimulationClockRejection.None)
-            return Reject(baseline.Rejection == AiSimulationClockRejection.RandomDrawCountExhausted
-                ? ThrowStoneAiBaselineComparisonRejection.RandomDrawCountExhausted
-                : ThrowStoneAiBaselineComparisonRejection.TickCountExhausted);
+        return null;
+    }
 
+    // Only fresh owning queries can reach this continuation; no public cached-result entry point.
+    internal static ThrowStoneAiBaselineComparisonResult ContinueFromBaseline(AttackBattleSnapshot state, ThrowStoneAiCandidate candidate,
+        ThrowStoneAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, AiMovementBaselineOutcome baseline,
+        FftRandomState rng, FftRandomState queryRng)
+    {
         // No hypothetical unit state leaks between evaluations. Only their actual private RNG is carried.
-        var evaluation = ThrowStoneAiCandidateScoring.Evaluate(state, candidate, candidateProfile, scoreProfile, baseline.RngState);
+        var evaluation = ThrowStoneAiCandidateScoring.Evaluate(state, candidate, candidateProfile, scoreProfile, rng);
         if (evaluation.Disposition == AiScoringDisposition.Rejected)
             return new(false, new(ThrowStoneAiBaselineComparisonStage.Candidate,
                 ThrowStoneAiBaselineComparisonRejection.CandidateRejected,
                 evaluation.Projection?.FormulaRejection ?? AttackCommandRejection.None,
-                evaluation.Rejection, evaluation.Projection?.Rejection ?? ThrowStoneAiCandidateRejection.None), null, decisionRng);
-        AiRankOrder? rank = evaluation.Score is { } score ? AiCandidateRank.Compare(score, baseline.Outcome!.Score) : null;
-        return new(true, null, new(baseline.Outcome!, evaluation, rank), evaluation.RngState);
+                evaluation.Rejection, evaluation.Projection?.Rejection ?? ThrowStoneAiCandidateRejection.None), null, queryRng);
+        AiRankOrder? rank = evaluation.Score is { } score ? AiCandidateRank.Compare(score, baseline.Score) : null;
+        return new(true, null, new(baseline, evaluation, rank), evaluation.RngState);
     }
 }

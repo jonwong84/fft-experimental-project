@@ -6,11 +6,11 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-191: scan one prepared Throw Stone scenario with fresh movement scores.**
-The [scan contract](architecture/zod-190-throw-stone-ai-scan.md) establishes ranked
-origin keys, later-coordinate ties and consume-after-NotValuable. Own the fresh
-movement prefix then one clear candidate; retain explicit masks/D0/D1/prepared
-usage/best-reset/direct-path facts. No cached outcomes or D0 rescore.
+**ZOD-192: design shared-prefix Attack and Throw Stone ranking.**
+The [prepared Throw Stone scan](behavior/throw-stone-ai-scan.md) owns movement
+scores and one clear candidate, including consume-after-NotValuable. Specify
+one shared prefix and two source-ordered entries with retained ranks/RNG,
+per-entry resets and typed hypothetical payloads before implementing composition.
 General list search/ranking and live ability authority remain separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
@@ -47,21 +47,20 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-189, [fresh Throw Stone/baseline comparison](behavior/throw-stone-ai-baseline-comparison.md).
-  Shared movement-only internals and marker-zero rank comparison serve both
-  action families; legacy Attack admission stays intact. Six new scenarios
-  cover above/equal/below, separate accuracy, source-order RNG, refunds/range,
-  NotValuable, KO, budgets, typed atomic failure and replay.
+- Latest implementation: ZOD-191, [prepared Throw Stone scan](behavior/throw-stone-ai-scan.md).
+  Fresh map-order movement scores feed ranked-origin selection and one candidate;
+  D0 is not rescored. Explicit source masks/usage/best-reset/path facts remain.
+  Seven new scenarios cover ordering, ACT-first substitution, ties, range/empty
+  scans, no retry at zero accuracy, KO, budgets, atomic failure and replay.
 - Latest investigation: ZOD-190, [Throw Stone scan](architecture/zod-190-throw-stone-ai-scan.md).
   Runtime consume-aim differs from static flags; ranked origins use signed score,
   proximity, then later coordinates. Zero accuracy consumes aim without retry.
   Source receipt pins seven files/28 functions plus inherited contracts and
   prepared semantic facts; seven isolated descriptions do not execute the game.
-  All 522 Python tests and clean audit pass; logs/source-190.json are in ignored
-  `scratch/ai-throw-stone-scan-190-191/`. Runtime validation below remains ZOD-189's.
+  Clean audit: `scratch/ai-throw-stone-scan-190-191/source-191.json`.
 - Validation: locked restore, zero-warning/error Release build,
-  **4,006 .NET cases / 519 Python tests**, including 819 AI cases and owner content drafts.
-  Logs/results: ignored `scratch/ai-throw-stone-comparison-189/`; `full-trx/` has seven full TRX files.
+  **4,013 .NET cases / 522 Python tests**, including 826 AI cases and owner content drafts.
+  Logs/results: ignored `scratch/ai-throw-stone-scan-190-191/`; `full-trx/` has seven full TRX files.
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

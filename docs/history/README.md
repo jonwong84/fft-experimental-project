@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 158 entries index completed bounded work; they do not mean the full game is complete.
+These 159 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -181,3 +181,4 @@ These 158 entries index completed bounded work; they do not mean the full game i
 - [ZOD-188 — Score one freshly projected Throw Stone candidate](../behavior/throw-stone-ai-scoring.md)
 - [ZOD-189 — Compare one fresh Throw Stone candidate with a movement baseline](../behavior/throw-stone-ai-baseline-comparison.md)
 - [ZOD-190 — Trace one Throw Stone origin and target scan](../architecture/zod-190-throw-stone-ai-scan.md)
+- [ZOD-191 — Scan one prepared Throw Stone scenario with fresh movement scores](../behavior/throw-stone-ai-scan.md)
