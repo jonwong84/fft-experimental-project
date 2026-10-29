@@ -41,6 +41,12 @@ are exclusive. Unknown source bits stay opaque in import/provenance data for
 lossless preservation, without inventing boolean meanings or runtime support.
 Preserve unusual original combinations and observable quirks during conversion.
 
+[ZOD-201](../BACKLOG.md#zod-201--resolve-unknown-content-flags-and-simplify-authored-data)
+will investigate unknown flags as original content is mapped to readable packages.
+Opaque import/provenance preservation does not require exposing unknown flags in
+authored definitions or runtime objects. Decide omission from those models with
+source/behavior evidence and explicit schema/round-trip implications.
+
 Migrate one definition family at a time as its semantics and adapters mature.
 Existing package formats remain versioned contracts; changes to their exported
 shape need an explicit migration/version decision. Verify known flag decoding,

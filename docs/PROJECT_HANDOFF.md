@@ -106,6 +106,9 @@ without rewriting old evidence.
   Accumulate PA is battle-only; this does not block ability or campaign work.
 - **ZOD-100/101:** broad replacement contracts require a real alternate consumer
   or implementation. ZOD-134 semantic-flag work also remains deferred.
+- **ZOD-201:** investigate unknown flags as original content is mapped to readable
+  packages; decide semantic names, compatibility needs and evidence-backed omission.
+  Keep unresolved raw values in offline provenance pending that decision.
 - **ZOD-142:** Lion War event instruction upgrade investigation is deferred.
   ZOD-039 owns remaining toggle mappings and armor/accessory/consumable definitions;
   review the owner's evolving types before selecting an import child.

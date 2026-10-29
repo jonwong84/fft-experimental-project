@@ -5,7 +5,7 @@ constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
 **Next bounded work: ZOD-200 (implementation).** Out-of-reach provenance study ZOD-199 is complete.
-There are 33 open tickets below. The 167 completed tickets, prior checkpoints and
+There are 34 open tickets below. The 167 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -255,6 +255,23 @@ measured justification and readable accessors. New flags need no original bit as
 [Policy](architecture/overview.md#content-flag-representation).
 
 [Detailed scope](history/2026-10-27/BACKLOG.md#zod-134--migrate-packed-content-flags-to-semantic-boolean-properties).
+
+### ZOD-201 — Resolve unknown content flags and simplify authored data
+
+**Type:** Investigation · **Priority:** P4 · **Status:** Deferred · **Depends on:** ZOD-039, ZOD-134
+
+Revisit as original content families are mapped into human-readable packages, before
+finalizing their schemas. Inventory unresolved flags and trace their reads/writes in
+the pinned reference, original values and relevant mod usage. Distinguish understood
+gameplay switches, unused/reserved bits and genuinely unresolved behavior; absence from
+current managed code alone does not prove a flag unused.
+
+Give meaningful flags named semantic properties. Determine which flags can be omitted
+from authored definitions/runtime and which still need compatibility handling. Preserve
+unresolved raw values in offline import/provenance data while investigating; clean game
+objects need not carry opaque flags. Document evidence for each removal, original-behavior
+checks, and package migration/round-trip implications. Do not discard observable behavior
+for schema cleanliness. This is later research, not an immediate flag migration.
 
 ### ZOD-142 — Investigate Lion War event instruction upgrade compatibility
 
