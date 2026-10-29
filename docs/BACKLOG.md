@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-181 (implementation).** Pure fresh post-ACT tile scoring ZOD-180 is complete.
-There are 33 open tickets below. The 148 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-182 (implementation).** Fresh post-ACT movement scenarios ZOD-181 are complete.
+There are 33 open tickets below. The 149 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,19 +29,18 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-181 — Derive pure fresh post-ACT movement scenarios
+### ZOD-182 — Select the fresh post-ACT movement-only fallback
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-179, ZOD-180
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-181
 
-Compose [post-ACT preparation](behavior/sword-ai-post-act-preparation.md) and
-[tile scoring](behavior/sword-ai-post-act-movement-scoring.md) into explicit
-fresh in/out-of-reach movement-scenario entries. Preserve actual ACT-used state,
-source-mask order/partition and one clock draw per scored tile; apply NonBlue
-adjustment after scoring, then the source's ACT-used D0-copy-D1 rule. Carry the
-owned refresh/scoring RNG without re-evaluation. Keep legacy pre-ACT admission,
-source/cache/team certificates, exact limits, atomic failure and actor/order
-replay. No Attack scan/ranking/lottery, cached outcomes, live command or host
-activation; those and broad interfaces remain separate work.
+Own [fresh post-ACT scenarios](behavior/sword-ai-post-act-scenarios.md), derive
+the closed ordinary list's unusable Attack and fresh empty ranking, then consume
+the original eight zero-hit lottery rolls before MoveOnly at D0. Require explicit
+no-Defend support; preserve source defaults, in/out-of-reach branch choice and
+the actual decision stream. Reuse the existing lottery tail without an Attack
+scan, fake ACT-unused state or cached-result input. Check literal streams,
+late rollback and actor/order replay. Live Move/END publication and facing need
+a separately designed Framework boundary; no host activation or broad interfaces.
 
 ## Existing validation gates
 

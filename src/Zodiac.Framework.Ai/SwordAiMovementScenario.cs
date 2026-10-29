@@ -45,8 +45,26 @@ public static class SwordAiMovementScenario
         SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
         SwordAiComparisonProfile comparisonProfile, SwordAiMovementScenarioProfile scenarioProfile,
         SwordAiScenarioTeam team, FftRandomState decisionRng)
+        => EvaluateReachCore(state, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile, team, decisionRng, false);
+
+    // Only the owned fresh post-ACT preparation wrapper supplies these derived entry facts.
+    internal static SwordAiMovementScenarioResult EvaluateAfterAct(AttackBattleSnapshot state,
+        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiComparisonProfile comparisonProfile, SwordAiMovementScenarioProfile scenarioProfile, FftRandomState decisionRng)
+        => EvaluateCore(state, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile, decisionRng, null, alreadyActed: true).Result;
+
+    internal static SwordAiOutOfReachScenarioResult EvaluateOutOfReachAfterAct(AttackBattleSnapshot state,
+        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiComparisonProfile comparisonProfile, SwordAiMovementScenarioProfile scenarioProfile,
+        SwordAiScenarioTeam team, FftRandomState decisionRng)
+        => EvaluateReachCore(state, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile, team, decisionRng, true);
+
+    private static SwordAiOutOfReachScenarioResult EvaluateReachCore(AttackBattleSnapshot state,
+        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiComparisonProfile comparisonProfile, SwordAiMovementScenarioProfile scenarioProfile,
+        SwordAiScenarioTeam team, FftRandomState decisionRng, bool alreadyActed)
     {
-        var core = EvaluateCore(state, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile, decisionRng, team);
+        var core = EvaluateCore(state, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile, decisionRng, team, alreadyActed);
         var result = core.Result;
         return new(result.Accepted, result.Failure, result.Accepted
             ? new(result.Outcome!, team, core.EffectiveReach, core.Adjustment, core.AttackFallback) : null, result.RngState);
@@ -57,7 +75,7 @@ public static class SwordAiMovementScenario
 
     private static CoreResult EvaluateCore(AttackBattleSnapshot state, SwordAiCandidateProfile candidateProfile,
         SwordAiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
-        SwordAiMovementScenarioProfile scenarioProfile, FftRandomState decisionRng, SwordAiScenarioTeam? team)
+        SwordAiMovementScenarioProfile scenarioProfile, FftRandomState decisionRng, SwordAiScenarioTeam? team, bool alreadyActed = false)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(candidateProfile);
@@ -78,7 +96,7 @@ public static class SwordAiMovementScenario
         if (!battle.TryGetUnit(comparisonProfile.ActorId, out var actor))
             return Reject(SwordAiMovementScenarioRejection.AdmissionRejected, movementReason: SwordAiMovementBaselineRejection.UnknownActor);
         var invalid = SwordAiMovementBaseline.ValidateInputs(state,
-            new(comparisonProfile.ActorId, comparisonProfile.TargetId, actor!.Position), candidateProfile, scoreProfile);
+            new(comparisonProfile.ActorId, comparisonProfile.TargetId, actor!.Position), candidateProfile, scoreProfile, alreadyActed);
         if (invalid != SwordAiMovementBaselineRejection.None)
             return Reject(SwordAiMovementScenarioRejection.AdmissionRejected, movementReason: invalid);
         // Source reach adds RAW Move; admit only where it equals the spread's effective Move cap.
@@ -101,7 +119,7 @@ public static class SwordAiMovementScenario
         foreach (var tile in origins) // Existing geometry emits layer/y/x.
         {
             var evaluation = SwordAiMovementBaseline.EvaluateFreshTile(state,
-                new(actor.Id, comparisonProfile.TargetId, tile), candidateProfile, scoreProfile, rng);
+                new(actor.Id, comparisonProfile.TargetId, tile), candidateProfile, scoreProfile, rng, alreadyActed);
             if (!evaluation.Accepted)
                 return Reject(SwordAiMovementScenarioRejection.EvaluationRejected, SwordAiMovementScenarioStage.Movement,
                     movement.Count, evaluation.Rejection);
@@ -135,9 +153,13 @@ public static class SwordAiMovementScenario
         else
         {
             d1 = Select(values, false);
-            var closer = values.Where(c => c.TargetDistance <= distance - 1).ToArray();
-            baselineFallback = closer.Length == 0;
-            d0 = Select(baselineFallback ? values : closer, baselineFallback);
+            if (alreadyActed) d0 = d1; // Source ACT-used branch skips the stricter D0 chooser.
+            else
+            {
+                var closer = values.Where(c => c.TargetDistance <= distance - 1).ToArray();
+                baselineFallback = closer.Length == 0;
+                d0 = Select(baselineFallback ? values : closer, baselineFallback);
+            }
         }
         var scenario = new SwordAiCompositionScenario(origins, d0, d1);
         return new(new(true, null, new(scenario, movement.ToImmutable(), origins.IndexOf(d0), values,

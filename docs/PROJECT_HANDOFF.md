@@ -6,13 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-181: derive pure fresh post-ACT movement scenarios.**
-[Post-ACT preparation](behavior/sword-ai-post-act-preparation.md) owns refresh and
-restored-state reachability/policy; [tile scoring](behavior/sword-ai-post-act-movement-scoring.md)
-now uses actual ACT-used state/RNG with no ACT refund. Compose fresh in/out-of-reach
-movement masks, source ordering, NonBlue adjustment and ACT-used D0-copy-D1.
-Preserve old entry admission and source certificates. Empty-action selection/
-lottery and live post-ACT handoff remain subsequent work.
+**ZOD-182: select the fresh post-ACT movement-only fallback.**
+[Post-ACT scenarios](behavior/sword-ai-post-act-scenarios.md) now own preparation,
+source-ordered tile scoring, NonBlue adjustment and ACT-used D0-copy-D1. Add the
+eight empty-ranking lottery rolls and no-Defend MoveOnly fallback without an
+Attack scan. Preserve actual state/RNG, branch admission and whole-query rollback.
+Live Move/END publication and facing need a separate Framework boundary design.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
@@ -38,24 +37,24 @@ pure queries grant no command authority or live RNG commit; execution adapters
 own that separate boundary.
 
 Full AI search, general multi-entry ranking/lottery, replaceable decision interface,
-post-ACT scenario derivation/selection/live continuation and presentation activation remain future work.
+post-ACT selection/live continuation and presentation activation remain future work.
 Original UNIT_SLOT_COUNT is **21**; the old 26-foe wrap example is inadmissible.
 This does not select a fixed managed roster size. The contract records the erratum
 without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-180, [post-ACT movement tile scoring](behavior/sword-ai-post-act-movement-scoring.md).
-  Explicit ACT-used/Move-unused entry preserves legacy admission, uses actual
-  combat state and refunds only unused Move. Six new scenarios cover literal
-  clocks/scores/streams, Critical/knockback, exact limits, atomic failure and
-  actor/order replay while sharing existing clock/scoring coverage.
+- Latest implementation: ZOD-181, [fresh post-ACT movement scenarios](behavior/sword-ai-post-act-scenarios.md).
+  Owned preparation and tile scoring preserve actual state and source order;
+  NonBlue adjustment follows scoring and D0 copies D1. Five new scenarios cover
+  literal masks/streams, Critical/knockback, exact budgets, late rollback and replay.
 - Latest design: ZOD-176, [ACT-first/post-ACT lifecycle](architecture/zod-176-ai-act-first.md).
   ACT-first execution, post-ACT prefix and single-tile scoring are implemented; search/live
   continuation remain separate. Historical source descriptions are unchanged.
   Clean pinned audit: `scratch/ai-post-act-scoring-180/source.json`
   (20 ACT-first anchors plus inherited receipts).
-- Validation: locked restore, zero-warning/error Release build,
+- ZOD-181 validation: locked restore, clean Release build and all **790 AI cases**
+  passed; logs/TRX are in `scratch/ai-post-act-181-183/`. Last full baseline:
   **3,967 .NET cases / 516 Python tests**, including owner content drafts.
   Logs/results: ignored `scratch/ai-post-act-scoring-180/` (`full-trx/` has seven full TRX files).
   These bounded checks do not establish full original decision equivalence.
