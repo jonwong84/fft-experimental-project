@@ -6,12 +6,11 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-190: trace one Throw Stone origin and target scan.**
-[Fresh baseline comparison](behavior/throw-stone-ai-baseline-comparison.md) now
-owns move-only scoring then one candidate with carried private RNG and explicit
-source facts, preserving Attack admission. Trace entry/usefulness, reach/aim
-masks, origin/target ordering and reset/RNG provenance before implementing a
-scan; Throw Stone's policy must not inherit Attack's range1 assumptions.
+**ZOD-191: scan one prepared Throw Stone scenario with fresh movement scores.**
+The [scan contract](architecture/zod-190-throw-stone-ai-scan.md) establishes ranked
+origin keys, later-coordinate ties and consume-after-NotValuable. Own the fresh
+movement prefix then one clear candidate; retain explicit masks/D0/D1/prepared
+usage/best-reset/direct-path facts. No cached outcomes or D0 rescore.
 General list search/ranking and live ability authority remain separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
@@ -53,12 +52,13 @@ without rewriting old evidence.
   action families; legacy Attack admission stays intact. Six new scenarios
   cover above/equal/below, separate accuracy, source-order RNG, refunds/range,
   NotValuable, KO, budgets, typed atomic failure and replay.
-- Latest investigation: ZOD-185, [ability-entry iteration](architecture/zod-185-ai-ability-iteration.md).
-  Cursor/resume, static-versus-runtime usage flags, per-entry/shared state and
-  retained ranks/RNG are pinned. Throw Stone's primitives are now implemented;
-  Accumulate's random usefulness/stat-score differences remain separate.
-  Clean audit: `scratch/ai-throw-stone-comparison-189/source.json` (12 files/29 functions,
-  inherited receipts and hash-verified prepared semantic facts).
+- Latest investigation: ZOD-190, [Throw Stone scan](architecture/zod-190-throw-stone-ai-scan.md).
+  Runtime consume-aim differs from static flags; ranked origins use signed score,
+  proximity, then later coordinates. Zero accuracy consumes aim without retry.
+  Source receipt pins seven files/28 functions plus inherited contracts and
+  prepared semantic facts; seven isolated descriptions do not execute the game.
+  All 522 Python tests and clean audit pass; logs/source-190.json are in ignored
+  `scratch/ai-throw-stone-scan-190-191/`. Runtime validation below remains ZOD-189's.
 - Validation: locked restore, zero-warning/error Release build,
   **4,006 .NET cases / 519 Python tests**, including 819 AI cases and owner content drafts.
   Logs/results: ignored `scratch/ai-throw-stone-comparison-189/`; `full-trx/` has seven full TRX files.
