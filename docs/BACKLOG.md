@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-182 (implementation).** Fresh post-ACT movement scenarios ZOD-181 are complete.
-There are 33 open tickets below. The 149 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-183 (design).** Fresh post-ACT movement-only selection ZOD-182 is complete.
+There are 33 open tickets below. The 150 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,18 +29,18 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-182 — Select the fresh post-ACT movement-only fallback
+### ZOD-183 — Design Framework-owned post-ACT Move/END handoff
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-181
+**Type:** Design · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-182, ZOD-168
 
-Own [fresh post-ACT scenarios](behavior/sword-ai-post-act-scenarios.md), derive
-the closed ordinary list's unusable Attack and fresh empty ranking, then consume
-the original eight zero-hit lottery rolls before MoveOnly at D0. Require explicit
-no-Defend support; preserve source defaults, in/out-of-reach branch choice and
-the actual decision stream. Reuse the existing lottery tail without an Attack
-scan, fake ACT-unused state or cached-result input. Check literal streams,
-late rollback and actor/order replay. Live Move/END publication and facing need
-a separately designed Framework boundary; no host activation or broad interfaces.
+Map [post-ACT selection](behavior/sword-ai-post-act-selection.md) through fresh
+dispatch to one actual Move or END. Keep planner invocation/RNG adoption in
+Framework; a real ACT-used Move ends the turn and needs its actual completion
+receipt/facing, not a Move-first continuation. Specify same-tile settlement,
+exact revision budgets, all-or-nothing failure after adopted RNG, and the rule
+that a later failure never rewinds the already published Attack. Record the
+smallest existing-boundary extension and a bounded implementation child. No
+production changes, broad interface, cached-result authority or host activation.
 
 ## Existing validation gates
 

@@ -31,6 +31,11 @@ public sealed record SwordAiSelectionOutcome(SwordAiCompositionOutcome Compositi
 public sealed record SwordAiSelectionResult(bool Accepted, SwordAiSelectionFailure? Failure,
     SwordAiSelectionOutcome? Outcome, FftRandomState RngState);
 
+internal sealed record SwordAiRankedLotteryOutcome(ImmutableArray<SwordAiLotteryRoll> Rolls, int? SelectedIndex,
+    SwordAiSelectionReason Reason, SwordAiSelectedPlan Plan);
+internal sealed record SwordAiRankedLotteryResult(bool Accepted, SwordAiSelectionFailure? Failure,
+    SwordAiRankedLotteryOutcome? Outcome, FftRandomState RngState);
+
 /// <summary>Fresh ordinary Attack/MoveOnly selection after one privately owned movement/Attack composition.</summary>
 /// <remarks>
 /// Source: decomp 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-139/140.
@@ -75,23 +80,34 @@ public static class SwordAiSelection
     internal static SwordAiSelectionResult SelectFresh(SwordAiCompositionResult composition,
         BattleUnitId actorId, TilePosition baselineDestination, FftRandomState queryRng)
     {
-        SwordAiSelectionResult Reject(SwordAiSelectionFailure failure) => new(false, failure, null, queryRng);
         var fresh = composition.Outcome!;
-        var rng = composition.RngState;
+        var selected = SelectFreshRanks(fresh.RankedActions, actorId, baselineDestination, composition.RngState, queryRng);
+        return selected.Accepted
+            ? new(true, null, new(fresh, composition.RngState, selected.Outcome!.Rolls, selected.Outcome.SelectedIndex,
+                selected.Outcome.Reason, selected.Outcome.Plan), selected.RngState)
+            : new(false, selected.Failure, null, queryRng);
+    }
+
+    // Only fresh privately owned lists reach this tail, including post-ACT's structurally empty eight slots.
+    internal static SwordAiRankedLotteryResult SelectFreshRanks(ImmutableArray<SwordAiScannedCandidate?> ranked,
+        BattleUnitId actorId, TilePosition baselineDestination, FftRandomState entryRng, FftRandomState queryRng)
+    {
+        SwordAiRankedLotteryResult Reject(SwordAiSelectionFailure failure) => new(false, failure, null, queryRng);
+        var rng = entryRng;
         var random = new FftBiosRandom();
         var rolls = ImmutableArray.CreateBuilder<SwordAiLotteryRoll>();
-        SwordAiSelectionResult Complete(SwordAiScannedCandidate? attack, int? index, SwordAiSelectionReason reason)
+        SwordAiRankedLotteryResult Complete(SwordAiScannedCandidate? attack, int? index, SwordAiSelectionReason reason)
         {
             var plan = attack is null
                 ? new SwordAiSelectedPlan(SwordAiSelectedPlanKind.MoveOnly, actorId, baselineDestination, null)
                 : new SwordAiSelectedPlan(SwordAiSelectedPlanKind.Attack, attack.Candidate.ActorId, attack.Candidate.Destination, attack);
-            return new(true, null, new(fresh, composition.RngState, rolls.ToImmutable(), index, reason, plan), rng);
+            return new(true, null, new(rolls.ToImmutable(), index, reason, plan), rng);
         }
 
-        // The composition owns eight slots, with zero/one real action at slot 0 in this admitted domain.
-        for (int i = 0; i < fresh.RankedActions.Length; i++)
+        // Fresh lists have eight slots, with zero/one real action at slot 0 in this admitted domain.
+        for (int i = 0; i < ranked.Length; i++)
         {
-            var entry = fresh.RankedActions[i];
+            var entry = ranked[i];
             int chance = entry?.Evaluation.Score!.HitPercent ?? 0;
             uint raw;
             try { var draw = random.Next(rng); rng = draw.State; raw = draw.Value; }
@@ -103,7 +119,7 @@ public static class SwordAiSelection
             if (passed) return Complete(entry!, i, SwordAiSelectionReason.FirstRoll);
         }
         // A positive-hit first entry survives all failed rolls; movement fallback is only for an empty list.
-        return fresh.RankedActions[0] is { } first
+        return ranked[0] is { } first
             ? Complete(first, 0, SwordAiSelectionReason.AllRollsFailedUseFirst)
             : Complete(null, null, SwordAiSelectionReason.MovementFallback);
     }
