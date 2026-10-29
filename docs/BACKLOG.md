@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-193 (implementation).** Shared-prefix design ZOD-192 is complete.
-There are 33 open tickets below. The 160 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-194 (implementation).** Fresh two-entry ranking ZOD-193 is complete.
+There are 33 open tickets below. The 161 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,17 +29,17 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-193 — Rank fresh Attack and Throw Stone entries after one movement prefix
+### ZOD-194 — Select a fresh terminal Attack and Throw Stone pair
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-192
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-193
 
-Implement the [shared-prefix design](architecture/zod-192-two-entry-ai.md#zod-193-fresh-two-entry-ranking).
-Admit matching family profiles and source order; score movement/D0/proximity once,
-then freshly scan Attack and Throw Stone with actual carried RNG and per-entry
-best reset. Preserve eight source slots, strict baseline admission and earlier
-complete ties, using closed typed hypothetical payloads. Check literals, profile
-mismatch, NotValuable, late failure and replay. No cached results, general list
-port, lottery, authority, scenario derivation or activation.
+Own the [fresh pair ranking](behavior/attack-throw-stone-ai-ranking.md), then shared
+original lottery arithmetic under terminal-entry/no-Defend/fresh-default facts.
+Return typed hypothetical Attack/Throw Stone/MoveOnly plans with deferred facing;
+carry actual RNG and roll back the whole query on late lottery exhaustion.
+Factor the existing Attack lottery without changing public result semantics.
+Check second-slot selection, all-failed first fallback, empty fallback, exact
+budgets and replay. No cached rank input, authority, general list port or UI activation.
 
 ## Existing validation gates
 

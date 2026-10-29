@@ -6,11 +6,10 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-193: rank fresh Attack and Throw Stone after one movement prefix.**
-The [two-entry design](architecture/zod-192-two-entry-ai.md) owns scores/D0/proximity
-once, source-ordered fresh scans, retained ranks and per-entry best reset.
-ZOD-194 then adds pure terminal-pair selection through shared lottery arithmetic.
-Both keep typed hypothetical payloads and explicit source certificates.
+**ZOD-194: select a fresh terminal Attack and Throw Stone pair.**
+The [fresh two-entry ranking](behavior/attack-throw-stone-ai-ranking.md) owns one
+prefix/cache and both scans with typed payloads. Add shared lottery arithmetic
+under terminal-entry/no-Defend/fresh-default facts; keep command authority separate.
 General list search/ranking and live ability authority remain separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
@@ -47,11 +46,10 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-191, [prepared Throw Stone scan](behavior/throw-stone-ai-scan.md).
-  Fresh map-order movement scores feed ranked-origin selection and one candidate;
-  D0 is not rescored. Explicit source masks/usage/best-reset/path facts remain.
-  Seven new scenarios cover ordering, ACT-first substitution, ties, range/empty
-  scans, no retry at zero accuracy, KO, budgets, atomic failure and replay.
+- Latest implementation: ZOD-193, [fresh two-entry ranking](behavior/attack-throw-stone-ai-ranking.md).
+  Movement scores/D0/proximity run once; Attack then Throw Stone retain RNG/ranks
+  with per-entry best. Six new scenarios and all 832 AI cases pass with clean
+  locked restore/Release build. Logs: `scratch/ai-two-entry-192-194/`.
 - Latest investigation: ZOD-192, [shared-prefix pair design](architecture/zod-192-two-entry-ai.md).
   Four files/ten functions plus inherited scan/cursor/rank receipts are pinned.
   Five isolated supplied rank/cost descriptions cover retention, ties, accuracy,

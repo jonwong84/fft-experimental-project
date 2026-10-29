@@ -33,15 +33,9 @@ public enum ThrowStoneAiScanRejection { UnsupportedScanProfile, InvalidScenario,
 public sealed record ThrowStoneAiScanFailure(ThrowStoneAiScanStage Stage, ThrowStoneAiScanRejection Reason,
     int? MovementIndex = null, ThrowStoneAiBaselineComparisonFailure? Detail = null);
 
-public sealed record ThrowStoneAiScoredMovementTile(AiMovementBaselineOutcome Outcome, byte Proximity, FftRandomState RngState)
-{
-    /// <summary>The source stores the absolute movement score negated in a signed16 cell.</summary>
-    public short TilePriority => unchecked((short)-Outcome.Score.Priority);
-    public int OriginKey => TilePriority * 65536 + Proximity;
-}
 public sealed record ThrowStoneAiScannedCandidate(TilePosition Origin, TilePosition TargetPanel,
     ThrowStoneAiCandidate Candidate, ThrowStoneAiScoringResult Evaluation);
-public sealed record ThrowStoneAiScanOutcome(ImmutableArray<ThrowStoneAiScoredMovementTile> Movement, int BaselineIndex,
+public sealed record ThrowStoneAiScanOutcome(ImmutableArray<AiScoredMovementTile> Movement, int BaselineIndex,
     ThrowStoneAiScannedCandidate? Candidate, AiRankOrder? Rank)
 {
     public AiMovementBaselineOutcome Baseline => Movement[BaselineIndex].Outcome;
@@ -63,6 +57,23 @@ public static class ThrowStoneAiCandidateScan
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(request); ArgumentNullException.ThrowIfNull(scenario);
         ArgumentNullException.ThrowIfNull(candidateProfile); ArgumentNullException.ThrowIfNull(scoreProfile);
         ArgumentNullException.ThrowIfNull(baselineProfile); ArgumentNullException.ThrowIfNull(scanProfile);
+        var invalid = ValidateInputs(state, request, scenario, candidateProfile, scoreProfile, baselineProfile, scanProfile, decisionRng);
+        if (invalid is not null) return invalid;
+        var prefix = AiMovementPrefix.Evaluate(state, request.ActorId, request.TargetId, scenario.ScoredOrigins,
+            scenario.BaselineDestination, candidateProfile.Units, decisionRng);
+        if (prefix.Rejection != AiSimulationClockRejection.None)
+            return new(ThrowStoneAiScanDisposition.Rejected, new(ThrowStoneAiScanStage.Movement, ThrowStoneAiScanRejection.EvaluationRejected,
+                prefix.FailedIndex, new(ThrowStoneAiBaselineComparisonStage.Baseline,
+                    prefix.Rejection == AiSimulationClockRejection.RandomDrawCountExhausted
+                        ? ThrowStoneAiBaselineComparisonRejection.RandomDrawCountExhausted : ThrowStoneAiBaselineComparisonRejection.TickCountExhausted)), null, decisionRng);
+        return ContinueFromMovement(state, request, scenario, candidateProfile, scoreProfile, scanProfile,
+            prefix.Outcome!, prefix.RngState, decisionRng);
+    }
+
+    internal static ThrowStoneAiScanResult? ValidateInputs(AttackBattleSnapshot state, ThrowStoneAiScanRequest request,
+        ThrowStoneAiScanScenario scenario, ThrowStoneAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
+        ThrowStoneAiBaselineProfile baselineProfile, ThrowStoneAiScanProfile scanProfile, FftRandomState decisionRng)
+    {
         ThrowStoneAiScanResult Reject(ThrowStoneAiScanStage stage, ThrowStoneAiScanRejection reason,
             int? index = null, ThrowStoneAiBaselineComparisonFailure? detail = null) =>
             new(ThrowStoneAiScanDisposition.Rejected, new(stage, reason, index, detail), null, decisionRng);
@@ -83,27 +94,19 @@ public static class ThrowStoneAiCandidateScan
             !scoredMask.IsSubsetOf(movement.Outcome!.AiOrigins))
             return Reject(ThrowStoneAiScanStage.Admission, ThrowStoneAiScanRejection.InvalidScenario);
 
-        var turns = state.TurnBattle.Turns.Units;
-        static int Delay(TurnUnitState unit) => (Math.Max(0, 100 - unit.Ct) + unit.Speed - 1) / unit.Speed;
-        bool imminent = Delay(turns.Single(u => u.Id == request.TargetId)) <= Delay(turns.Single(u => u.Id == request.ActorId));
+        return null;
+    }
+
+    // Internal fresh ownership only: shared prefix is never a public cached-result input.
+    internal static ThrowStoneAiScanResult ContinueFromMovement(AttackBattleSnapshot state, ThrowStoneAiScanRequest request,
+        ThrowStoneAiScanScenario scenario, ThrowStoneAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
+        ThrowStoneAiScanProfile scanProfile, AiMovementPrefixOutcome prefix, FftRandomState rng, FftRandomState queryRng)
+    {
+        var tiles = prefix.Movement; int baselineIndex = prefix.BaselineIndex;
+        var scenarioMask = scenario.ScenarioOrigins.ToHashSet();
         var battle = state.TurnBattle.Battle;
         battle.TryGetUnit(request.TargetId, out var target); battle.TryGetUnit(request.ActorId, out var actor);
         var targetPosition = target!.Position; var actorPosition = actor!.Position;
-        var scored = ImmutableArray.CreateBuilder<ThrowStoneAiScoredMovementTile>(scoredMask.Count);
-        int baselineIndex = -1;
-        var rng = decisionRng;
-        foreach (var destination in scoredMask.OrderBy(p => p.Layer).ThenBy(p => p.Y).ThenBy(p => p.X))
-        {
-            var result = AiMovementSimulation.Evaluate(state, request.ActorId, request.TargetId, destination, candidateProfile.Units, rng);
-            if (result.Rejection != AiSimulationClockRejection.None)
-                return Reject(ThrowStoneAiScanStage.Movement, ThrowStoneAiScanRejection.EvaluationRejected, scored.Count,
-                    new(ThrowStoneAiBaselineComparisonStage.Baseline, result.Rejection == AiSimulationClockRejection.RandomDrawCountExhausted
-                        ? ThrowStoneAiBaselineComparisonRejection.RandomDrawCountExhausted : ThrowStoneAiBaselineComparisonRejection.TickCountExhausted));
-            byte proximity = imminent ? (byte)Math.Max(0, 10 - Math.Abs(targetPosition.X - destination.X) - Math.Abs(targetPosition.Y - destination.Y)) : (byte)0;
-            if (destination == scenario.BaselineDestination) baselineIndex = scored.Count;
-            scored.Add(new(result.Outcome!, proximity, result.RngState)); rng = result.RngState;
-        }
-        var tiles = scored.ToImmutable();
         // origin_next_take uses >= while walking layer/y/x ascending: later coordinates win a complete key tie.
         // Instant CT does not exclude an otherwise active enemy, even if its turn is already ready.
         var selected = scanProfile.TargetActive ? tiles.Where(t => scenarioMask.Contains(t.Outcome.Destination) &&
@@ -118,9 +121,10 @@ public static class ThrowStoneAiCandidateScan
             actFirst ? scenario.ActFirstDestination : origin, actFirst);
         // One clear evaluated aim is consumed even for NotValuable; never retry a second origin or rescore D0.
         var comparison = ThrowStoneAiBaselineComparison.ContinueFromBaseline(state, candidate, candidateProfile, scoreProfile,
-            tiles[baselineIndex].Outcome, rng, decisionRng);
+            tiles[baselineIndex].Outcome, rng, queryRng);
         if (!comparison.Accepted)
-            return Reject(ThrowStoneAiScanStage.Candidate, ThrowStoneAiScanRejection.EvaluationRejected, detail: comparison.Failure);
+            return new(ThrowStoneAiScanDisposition.Rejected, new(ThrowStoneAiScanStage.Candidate,
+                ThrowStoneAiScanRejection.EvaluationRejected, Detail: comparison.Failure), null, queryRng);
         var evaluation = comparison.Outcome!.Candidate;
         return new(evaluation.Disposition == AiScoringDisposition.NotValuable ? ThrowStoneAiScanDisposition.NotValuable : ThrowStoneAiScanDisposition.Scored,
             null, new(tiles, baselineIndex, new(origin, targetPosition, candidate, evaluation), comparison.Outcome.Rank), comparison.RngState);

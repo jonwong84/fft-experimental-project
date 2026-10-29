@@ -52,28 +52,26 @@ public static class SwordAiCandidateScan
         ArgumentNullException.ThrowIfNull(scoreProfile);
         ArgumentNullException.ThrowIfNull(comparisonProfile);
         ArgumentNullException.ThrowIfNull(scanProfile);
-        SwordAiScanResult Reject(SwordAiScanRejection reason, int? index = null,
-            AiScoringRejection scoreReason = AiScoringRejection.None,
-            SwordAiCandidateRejection projectionReason = SwordAiCandidateRejection.None) =>
-            new(SwordAiScanDisposition.Rejected, reason, index, scoreReason, projectionReason, null, decisionRng);
-
         var invalid = ValidateInputs(state, scenario, weapon, candidateProfile, scoreProfile, comparisonProfile, scanProfile, decisionRng);
         if (invalid is not null) return invalid;
+        var proximity = AiProximityCache.Create(state, comparisonProfile.ActorId, comparisonProfile.TargetId, scenario.Origins);
+        return EvaluateFresh(state, scenario, weapon, candidateProfile, scoreProfile, comparisonProfile, scanProfile, proximity, decisionRng);
+    }
+
+    // Owning compositions have already admitted original state/masks and freshly derived this cache.
+    internal static SwordAiScanResult EvaluateFresh(AttackBattleSnapshot state, SwordAiScanScenario scenario,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
+        SwordAiComparisonProfile comparisonProfile, SwordAiScanProfile scanProfile, AiProximityCache proximity, FftRandomState decisionRng)
+    {
+        SwordAiScanResult Reject(SwordAiScanRejection reason, int? index, AiScoringRejection scoreReason,
+            SwordAiCandidateRejection projectionReason) =>
+            new(SwordAiScanDisposition.Rejected, reason, index, scoreReason, projectionReason, null, decisionRng);
         var actorId = comparisonProfile.ActorId; var targetId = comparisonProfile.TargetId;
-        var turns = state.TurnBattle.Turns;
-        var actorTurn = turns.Units.Single(u => u.Id == actorId);
         var mask = scenario.Origins.ToHashSet();
 
         state.TurnBattle.Battle.TryGetUnit(actorId, out var actorBody);
         state.TurnBattle.Battle.TryGetUnit(targetId, out var targetBody);
         var targetPosition = targetBody!.Position;
-        // The ordinary profile guarantees living positive-Speed units and delays in 0..100.
-        static int Delay(TurnUnitState unit) => (Math.Max(0, 100 - unit.Ct) + unit.Speed - 1) / unit.Speed;
-        byte actorDelay = (byte)Delay(actorTurn);
-        int targetDelay = Delay(turns.Units.Single(u => u.Id == targetId));
-        bool eligible = targetDelay <= actorDelay;
-        var proximity = mask.ToDictionary(p => p, p => eligible
-            ? (byte)Math.Max(0, 10 - Math.Abs(targetPosition.X - p.X) - Math.Abs(targetPosition.Y - p.Y)) : (byte)0);
         var evaluated = ImmutableArray.CreateBuilder<SwordAiScannedCandidate>();
         var rng = decisionRng;
         int? retained = null; // Equivalent to fresh source reset only within this certified score range.
@@ -90,7 +88,7 @@ public static class SwordAiCandidateScan
             if (score.Disposition == AiScoringDisposition.Rejected)
                 return Reject(SwordAiScanRejection.EvaluationRejected, evaluated.Count, score.Rejection,
                     score.Projection?.Rejection ?? SwordAiCandidateRejection.None);
-            var current = new SwordAiScannedCandidate(origin, targetPosition, candidate, score, proximity[candidate.Destination]);
+            var current = new SwordAiScannedCandidate(origin, targetPosition, candidate, score, proximity.Destinations[candidate.Destination]);
             evaluated.Add(current);
             rng = score.RngState; // All supported evaluations retain draws, including zero accuracy and losing scores.
             if (score.Score is { } challenger && (retained is null || IsHigher(challenger, current.Proximity,
@@ -99,7 +97,7 @@ public static class SwordAiCandidateScan
         }
 
         var candidates = evaluated.ToImmutable();
-        var cache = new SwordAiComparisonCache(actorDelay, targetDelay, eligible ? targetId : null,
+        var cache = new SwordAiComparisonCache(proximity.ActorDelay, proximity.TargetDelay, proximity.EligibleEnemyId,
             candidates.Select(c => new SwordAiDestinationProximity(c.Candidate.Destination, c.Proximity)).ToImmutableArray());
         return new(candidates.IsEmpty ? SwordAiScanDisposition.NoCandidates : retained is null
                 ? SwordAiScanDisposition.NoScoredCandidate : SwordAiScanDisposition.Scanned,
