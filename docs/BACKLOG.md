@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-185 (source investigation).** Live post-ACT Move/END ZOD-184 is complete.
-There are 33 open tickets below. The 152 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-186 (implementation).** Ability-entry investigation ZOD-185 is complete; Throw Stone is selected.
+There are 33 open tickets below. The 153 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,19 +29,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-185 — Trace ordinary ability-list iteration beyond the Attack pilot
+### ZOD-186 — Implement pure Throw Stone AI formula projection
 
-**Type:** Source investigation · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-184
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-185
 
-The [ordinary Attack lifecycle](behavior/sword-ai-post-act-execution.md) now has
-explicit command paths. Pin the read-only reference and trace one transition
-between ordinary ability-list entries: cursor/termination, usable/skip behavior,
-entry-local resets, shared masks/baselines/ranks, arithmetic and retained RNG.
-Choose one next non-Attack ability-search child from source evidence, preferring
-an existing executable ability when suitable. Record required semantic flag/
-projection support and literal descriptions before porting it. Preserve the
-closed Attack APIs and authority boundary; no bulk translation, new gameplay,
-broad replacement interface, UI/editor work or host activation in this ticket.
+Implement the [ZOD-185 Throw Stone contract](architecture/zod-185-ai-ability-iteration.md)
+as a pure non-execution formula/target-result query. Reuse explicit executable
+grants and pure geometry/profile admission. Preserve range1..4/diagonal-facing
+rules, current effective PA, separate accuracy/full midpoint damage and exactly
+four evasion draws; no AI knockback or live damage RNG. Verify zero accuracy,
+exact exhaustion, typed rejection, both actor/order replay and live input/RNG
+isolation. Use semantic boolean facts and retain existing Attack APIs; no CT
+clock, list/candidate traversal, ranking, selection, authority, broad interface
+or host/editor activation in this child.
 
 ## Existing validation gates
 

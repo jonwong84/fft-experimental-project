@@ -6,13 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-185: trace ordinary ability-list iteration beyond the Attack pilot.**
-The [closed ordinary command lifecycle](behavior/sword-ai-post-act-execution.md)
-now covers pre-ACT/Move-first and post-ACT Move/END with settled facing. Pin and
-trace one ordinary ability-entry transition, including usable/skip logic,
-entry-local resets, shared masks/baselines/ranks and RNG. Select one next
-non-Attack child from evidence; broader search remains incomplete. No host/editor
-activation or general replacement interface is implied.
+**ZOD-186: implement pure Throw Stone AI formula projection.**
+[ZOD-185](architecture/zod-185-ai-ability-iteration.md) selects an existing
+executable non-Attack ability. Its AI path uses full midpoint damage (2×current
+PA) with separate accuracy, four retained evasion draws and no knockback. Reuse
+explicit grants/pure geometry validation; stop before CT/candidate/list/ranking
+work. Preserve the implemented Attack lifecycle, live authority and deferred work.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
@@ -53,15 +52,17 @@ without rewriting old evidence.
   explicit AI in/out-of-reach adapters own fresh selection/dispatch once. Ten
   scenarios cover literal complete flows, stay/out-of-reach, current authority,
   exact budgets, late rollback and Critical/knockback actor/order replay.
-- Latest design: ZOD-183, [post-ACT Move/END command boundary](architecture/zod-183-post-act-command-boundary.md).
-  Framework owns fresh proposals, RNG adoption, actual paths and receipt-bound
-  facing; no Move-first token is issued after ACT. Implemented by ZOD-184.
-  The [ZOD-176 source lifecycle](architecture/zod-176-ai-act-first.md) is unchanged.
-  Clean pinned audit: `scratch/ai-post-act-execution-184/source.json`
-  (20 ACT-first anchors plus inherited receipts).
-- Validation: locked restore, zero-warning/error Release build,
-  **3,986 .NET cases / 516 Python tests**, including all 799 AI cases and owner content drafts.
-  Logs/results: ignored `scratch/ai-post-act-execution-184/` (`full-trx/` has seven full TRX files).
+- Latest investigation: ZOD-185, [ability-entry iteration](architecture/zod-185-ai-ability-iteration.md).
+  Cursor/resume, static-versus-runtime usage flags, per-entry/shared state and
+  retained ranks/RNG are pinned. Throw Stone is the next child; Accumulate's
+  random usefulness/stat-score differences remain separate. No runtime change.
+  Clean audit: `scratch/ai-ability-iteration-185/source.json` (12 files/29 functions,
+  inherited receipts and hash-verified prepared semantic facts).
+- Source validation: **519 Python tests** and pinned source/data audit passed;
+  logs are in ignored `scratch/ai-ability-iteration-185/`. No new managed execution.
+  Last managed validation remains ZOD-184: locked restore, clean Release build,
+  **3,986 .NET cases**, including 799 AI cases and owner content drafts;
+  `scratch/ai-post-act-execution-184/full-trx/` has seven full TRX files.
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.
