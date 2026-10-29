@@ -28,7 +28,7 @@ public sealed record SwordAiMovementBaselineResult(bool Accepted, SwordAiMovemen
 
 /// <summary>Fresh move-only simulation/absolute scoring of one certified original baseline tile.</summary>
 /// <remarks>
-/// Source: decomp 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-135/136.
+/// Source: decomp 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-135/136/176/180.
 /// This isolated evaluation consumes one upkeep draw, not the full original scenario search's RNG schedule.
 /// No weapon formula, scenario generation, cached-outcome input, ranking, lottery or runtime activation.
 /// </remarks>
@@ -37,6 +37,18 @@ public static class SwordAiMovementBaseline
     public static SwordAiMovementBaselineResult Evaluate(AttackBattleSnapshot state, SwordAiMovementBaselineRequest request,
         SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
         SwordAiMovementBaselineProfile baselineProfile, FftRandomState decisionRng)
+        => EvaluateCore(state, request, candidateProfile, scoreProfile, baselineProfile, decisionRng, alreadyActed: false);
+
+    /// <summary>Fresh post-ACT tile score with Move unused; staying refunds Move only, moving refunds neither choice.</summary>
+    /// <remarks>Uses actual post-ACT state/RNG, retaining the same source-cell/geometry/scoring certificates.</remarks>
+    public static SwordAiMovementBaselineResult EvaluateAfterAct(AttackBattleSnapshot state, SwordAiMovementBaselineRequest request,
+        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiMovementBaselineProfile baselineProfile, FftRandomState decisionRng)
+        => EvaluateCore(state, request, candidateProfile, scoreProfile, baselineProfile, decisionRng, alreadyActed: true);
+
+    private static SwordAiMovementBaselineResult EvaluateCore(AttackBattleSnapshot state, SwordAiMovementBaselineRequest request,
+        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiMovementBaselineProfile baselineProfile, FftRandomState decisionRng, bool alreadyActed)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(request);
@@ -46,7 +58,7 @@ public static class SwordAiMovementBaseline
         SwordAiMovementBaselineResult Reject(SwordAiMovementBaselineRejection reason) => new(false, reason, null, decisionRng);
         if (!SupportsProfile(baselineProfile))
             return Reject(SwordAiMovementBaselineRejection.UnsupportedBaselineProfile);
-        return EvaluateFreshTile(state, request, candidateProfile, scoreProfile, decisionRng);
+        return EvaluateFreshTile(state, request, candidateProfile, scoreProfile, decisionRng, alreadyActed);
     }
 
     internal static bool SupportsProfile(SwordAiMovementBaselineProfile profile) =>
@@ -54,7 +66,8 @@ public static class SwordAiMovementBaseline
 
     // Pure admission shared with scenario derivation; does not consume hypothetical ticks or draws.
     internal static SwordAiMovementBaselineRejection ValidateInputs(AttackBattleSnapshot state,
-        SwordAiMovementBaselineRequest request, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile)
+        SwordAiMovementBaselineRequest request, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        bool alreadyActed = false)
     {
         if (!scoreProfile.Supports(state, candidateProfile))
             return SwordAiMovementBaselineRejection.UnsupportedScoreProfile;
@@ -67,7 +80,8 @@ public static class SwordAiMovementBaseline
         if (state.Combatants.Any(u => u.Hp == 0)) return SwordAiMovementBaselineRejection.TerminalInput;
         var turns = state.TurnBattle.Turns;
         var actorTurn = turns.Units.Single(u => u.Id == actor.UnitId);
-        if (turns.Phase != TurnCyclePhase.UnitTurn || turns.ActiveUnitId != actor.UnitId || actorTurn.ActionTaken)
+        if (turns.Phase != TurnCyclePhase.UnitTurn || turns.ActiveUnitId != actor.UnitId ||
+            actorTurn.ActionTaken != alreadyActed || alreadyActed && actorTurn.MovementTaken)
             return SwordAiMovementBaselineRejection.UnavailableAction;
         try { candidateProfile.Sword.ValidateState(state); }
         catch (Exception exception) when (exception is ArgumentException or NotSupportedException)
@@ -81,10 +95,11 @@ public static class SwordAiMovementBaseline
 
     // The composition owns source-mask/context admission. Non-D0 cells do not assert they are scenario-0 destinations.
     internal static SwordAiMovementBaselineResult EvaluateFreshTile(AttackBattleSnapshot state, SwordAiMovementBaselineRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, FftRandomState decisionRng)
+        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, FftRandomState decisionRng,
+        bool alreadyActed = false)
     {
         SwordAiMovementBaselineResult Reject(SwordAiMovementBaselineRejection reason) => new(false, reason, null, decisionRng);
-        var invalid = ValidateInputs(state, request, candidateProfile, scoreProfile);
+        var invalid = ValidateInputs(state, request, candidateProfile, scoreProfile, alreadyActed);
         if (invalid != SwordAiMovementBaselineRejection.None) return Reject(invalid);
         var actor = state.Combatants.Single(u => u.UnitId == request.ActorId);
         var target = state.Combatants.Single(u => u.UnitId == request.TargetId);
@@ -94,7 +109,8 @@ public static class SwordAiMovementBaseline
         var battle = state.TurnBattle.Battle;
         battle.TryGetUnit(actor.UnitId, out var body);
         bool moved = actorTurn.MovementTaken || request.Destination != body!.Position;
-        int turnEndCt = Math.Min(60, actorTurn.Ct + 20 + (moved ? 0 : 20)); // ACT remains unused.
+        // Source turn_end uses u16 arithmetic before the byte store; refund only genuinely unused choices.
+        int turnEndCt = Math.Min(60, actorTurn.Ct + (actorTurn.ActionTaken ? 0 : 20) + (moved ? 0 : 20));
         var units = turns.Units.OrderBy(u => u.TieKey).Select(turn =>
         {
             var combat = state.Combatants.Single(u => u.UnitId == turn.Id);

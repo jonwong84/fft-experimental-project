@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-180 (implementation).** Pure fresh post-ACT refresh/preparation ZOD-178/179 is complete.
-There are 33 open tickets below. The 147 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-181 (implementation).** Pure fresh post-ACT tile scoring ZOD-180 is complete.
+There are 33 open tickets below. The 148 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,20 +29,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-180 — Implement pure post-ACT move-only tile scoring
+### ZOD-181 — Derive pure fresh post-ACT movement scenarios
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-179
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-179, ZOD-180
 
-Extend the [post-ACT source contract](architecture/zod-176-ai-act-first.md) through
-one fresh certified move-only tile simulation/absolute score. Add an explicit
-ACT-used/Move-unused entry while preserving pre-ACT baseline admission. Use actual
-post-ACT HP/status/positions/RNG and existing ordinary geometry/scoring facts.
-A real hypothetical move ends at min(60, liveCT); staying refunds unused Move
-only. Retain the actual private clock draw and no formula/action draws. Verify
-literal stay/move clocks and scores, real post-ACT input, exact limits, atomic
-failure and actor/order replay without duplicating shared score matrices.
-No cached projection, fabricated ACT-unused snapshot, scenario/lottery or live
-command; broader search/interfaces and host activation remain separate.
+Compose [post-ACT preparation](behavior/sword-ai-post-act-preparation.md) and
+[tile scoring](behavior/sword-ai-post-act-movement-scoring.md) into explicit
+fresh in/out-of-reach movement-scenario entries. Preserve actual ACT-used state,
+source-mask order/partition and one clock draw per scored tile; apply NonBlue
+adjustment after scoring, then the source's ACT-used D0-copy-D1 rule. Carry the
+owned refresh/scoring RNG without re-evaluation. Keep legacy pre-ACT admission,
+source/cache/team certificates, exact limits, atomic failure and actor/order
+replay. No Attack scan/ranking/lottery, cached outcomes, live command or host
+activation; those and broad interfaces remain separate work.
 
 ## Existing validation gates
 
