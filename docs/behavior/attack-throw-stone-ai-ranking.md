@@ -39,16 +39,16 @@ or arbitrary ability-list traversal is introduced.
 Literal case: actor(1,1), target(2,1), HP50, PA5, CT15/95, ticks20, mask={(0,1),
 (1,1)}, D0=D1=(1,1), sword power2. Prefix draws16838/5758; Attack then ends at
 RNG `(3655513600,14)`, Throw Stone at `(836760821,19)` from initial `(1,7)`.
-The total is exactly2+5+5 draws. Both project target HP40 independently, scoring26.
+The total is exactly 2+5+5 draws. Both project target HP40 independently, scoring26.
 Throw Stone at(0,1) has proximity8 and inserts before Attack's proximity9.
 Sword power1 scores13, power4 scores52. A single actor-origin mask gives equal
 priority/accuracy/proximity and keeps Attack then Throw Stone without deduplication.
 
 Six scenario tests cover those literals, stronger entries/ties, NotValuable,
 inactive scans, exact normal/KO budgets, prefix/first/second-entry failures,
-profile mismatch and actor/mask/order replay. All832 AI cases, locked restore
-and a zero-warning/error Release build pass. All524 Python checks/source audit
-passed at ZOD-192; last full solution test count is ZOD-191's4,013. Logs:
+profile mismatch and actor/mask/order replay. All 832 AI cases, locked restore
+and a zero-warning/error Release build pass. All 524 Python checks/source audit
+passed at ZOD-192; last full solution test count is ZOD-191's 4,013. Logs:
 ignored `scratch/ai-two-entry-192-194/`. Owner drafts participate in the build
 and remain excluded from these commits. No original/C execution or UI review.
 

@@ -6,10 +6,11 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-194: select a fresh terminal Attack and Throw Stone pair.**
-The [fresh two-entry ranking](behavior/attack-throw-stone-ai-ranking.md) owns one
-prefix/cache and both scans with typed payloads. Add shared lottery arithmetic
-under terminal-entry/no-Defend/fresh-default facts; keep command authority separate.
+**ZOD-195: trace fresh preparation for the Attack and Throw Stone pair.**
+[Fresh pair selection](behavior/attack-throw-stone-ai-selection.md) owns one
+prefix, both scans/ranks and terminal lottery. Trace two-entry aggregate reach,
+MP/evasion policy, usage, active targets and masks/D0/D1 before deriving them;
+current source certificates remain explicit. Choose one bounded implementation.
 General list search/ranking and live ability authority remain separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
@@ -46,19 +47,19 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-193, [fresh two-entry ranking](behavior/attack-throw-stone-ai-ranking.md).
-  Movement scores/D0/proximity run once; Attack then Throw Stone retain RNG/ranks
-  with per-entry best. Six new scenarios and all 832 AI cases pass with clean
-  locked restore/Release build. Logs: `scratch/ai-two-entry-192-194/`.
+- Latest implementation: ZOD-193/194, [pair ranking](behavior/attack-throw-stone-ai-ranking.md)
+  and [selection](behavior/attack-throw-stone-ai-selection.md). One fresh prefix/
+  proximity cache serves both source-ordered scans; ranks retain both typed
+  payloads. Shared lottery supports second-slot/all-failed/empty fallback.
+  Eleven new scenarios cover literals, budgets, failure, source facts and replay.
 - Latest investigation: ZOD-192, [shared-prefix pair design](architecture/zod-192-two-entry-ai.md).
   Four files/ten functions plus inherited scan/cursor/rank receipts are pinned.
   Five isolated supplied rank/cost descriptions cover retention, ties, accuracy,
   NotValuable and baseline admission; they do not execute the managed AI.
-  All 524 Python tests and clean source/prepared audit pass; ignored logs/report:
-  `scratch/ai-two-entry-192-194/`. Runtime validation below remains ZOD-191's.
+  Clean source/prepared audit: `scratch/ai-two-entry-192-194/source-194.json`.
 - Validation: locked restore, zero-warning/error Release build,
-  **4,013 .NET cases / 522 Python tests**, including 826 AI cases and owner content drafts.
-  Logs/results: ignored `scratch/ai-throw-stone-scan-190-191/`; `full-trx/` has seven full TRX files.
+  **4,024 .NET cases / 524 Python tests**, including 837 AI cases and owner content drafts.
+  Logs/results: ignored `scratch/ai-two-entry-192-194/`; `full-trx/` has seven full TRX files.
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

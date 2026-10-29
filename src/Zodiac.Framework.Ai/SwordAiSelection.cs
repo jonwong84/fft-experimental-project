@@ -92,35 +92,22 @@ public static class SwordAiSelection
     internal static SwordAiRankedLotteryResult SelectFreshRanks(ImmutableArray<SwordAiScannedCandidate?> ranked,
         BattleUnitId actorId, TilePosition baselineDestination, FftRandomState entryRng, FftRandomState queryRng)
     {
-        SwordAiRankedLotteryResult Reject(SwordAiSelectionFailure failure) => new(false, failure, null, queryRng);
-        var rng = entryRng;
-        var random = new FftBiosRandom();
-        var rolls = ImmutableArray.CreateBuilder<SwordAiLotteryRoll>();
-        SwordAiRankedLotteryResult Complete(SwordAiScannedCandidate? attack, int? index, SwordAiSelectionReason reason)
+        var lottery = AiRankedLottery.Evaluate(ranked.Select(a => a?.Evaluation.Score!.HitPercent ?? (byte)0).ToImmutableArray(), entryRng);
+        if (!lottery.Accepted)
+            return new(false, new(SwordAiSelectionRejection.RandomDrawCountExhausted, SwordAiSelectionStage.Lottery,
+                lottery.FailedIndex), null, queryRng);
+        var selected = lottery.Outcome!;
+        var attack = selected.SelectedIndex is { } index ? ranked[index] : null;
+        var plan = attack is null
+            ? new SwordAiSelectedPlan(SwordAiSelectedPlanKind.MoveOnly, actorId, baselineDestination, null)
+            : new SwordAiSelectedPlan(SwordAiSelectedPlanKind.Attack, attack.Candidate.ActorId, attack.Candidate.Destination, attack);
+        var reason = selected.Reason switch
         {
-            var plan = attack is null
-                ? new SwordAiSelectedPlan(SwordAiSelectedPlanKind.MoveOnly, actorId, baselineDestination, null)
-                : new SwordAiSelectedPlan(SwordAiSelectedPlanKind.Attack, attack.Candidate.ActorId, attack.Candidate.Destination, attack);
-            return new(true, null, new(rolls.ToImmutable(), index, reason, plan), rng);
-        }
-
-        // Fresh lists have eight slots, with zero/one real action at slot 0 in this admitted domain.
-        for (int i = 0; i < ranked.Length; i++)
-        {
-            var entry = ranked[i];
-            int chance = entry?.Evaluation.Score!.HitPercent ?? 0;
-            uint raw;
-            try { var draw = random.Next(rng); rng = draw.State; raw = draw.Value; }
-            catch (OverflowException)
-            { return Reject(new(SwordAiSelectionRejection.RandomDrawCountExhausted, SwordAiSelectionStage.Lottery, i)); }
-            int modulo = (int)(raw % 100);
-            bool passed = modulo < chance;
-            rolls.Add(new(i, raw, modulo, chance, passed)); // Zero-hit slots consume real draws too.
-            if (passed) return Complete(entry!, i, SwordAiSelectionReason.FirstRoll);
-        }
-        // A positive-hit first entry survives all failed rolls; movement fallback is only for an empty list.
-        return ranked[0] is { } first
-            ? Complete(first, 0, SwordAiSelectionReason.AllRollsFailedUseFirst)
-            : Complete(null, null, SwordAiSelectionReason.MovementFallback);
+            AiLotteryReason.FirstRoll => SwordAiSelectionReason.FirstRoll,
+            AiLotteryReason.AllRollsFailedUseFirst => SwordAiSelectionReason.AllRollsFailedUseFirst,
+            _ => SwordAiSelectionReason.MovementFallback
+        };
+        var rolls = selected.Rolls.Select(r => new SwordAiLotteryRoll(r.Slot, r.Raw, r.Modulo, r.HitPercent, r.Passed)).ToImmutableArray();
+        return new(true, null, new(rolls, selected.SelectedIndex, reason, plan), lottery.RngState);
     }
 }

@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-194 (implementation).** Fresh two-entry ranking ZOD-193 is complete.
-There are 33 open tickets below. The 161 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-195 (source investigation).** Fresh two-entry selection ZOD-194 is complete.
+There are 33 open tickets below. The 162 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,17 +29,17 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-194 — Select a fresh terminal Attack and Throw Stone pair
+### ZOD-195 — Trace fresh preparation for the Attack and Throw Stone pair
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-193
+**Type:** Investigation · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-194
 
-Own the [fresh pair ranking](behavior/attack-throw-stone-ai-ranking.md), then shared
-original lottery arithmetic under terminal-entry/no-Defend/fresh-default facts.
-Return typed hypothetical Attack/Throw Stone/MoveOnly plans with deferred facing;
-carry actual RNG and roll back the whole query on late lottery exhaustion.
-Factor the existing Attack lottery without changing public result semantics.
-Check second-slot selection, all-failed first fallback, empty fallback, exact
-budgets and replay. No cached rank input, authority, general list port or UI activation.
+Pin source and trace the [terminal pair's](behavior/attack-throw-stone-ai-selection.md)
+fresh preparation: aggregate reach/MP/evasion policy, active target selection,
+prepared entry usage and masks/D0/D1. Identify which existing single-Attack
+preparation assumptions need bounded two-entry equivalents; separate derivable
+facts from required certificates. Check literal summaries/source ordering/RNG,
+then choose one implementation child. No general list/status port, blocked-path
+search, live authority, replacement interface or presentation activation.
 
 ## Existing validation gates
 
