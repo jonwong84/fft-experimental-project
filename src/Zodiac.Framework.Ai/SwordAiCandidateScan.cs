@@ -32,7 +32,7 @@ public sealed record SwordAiScanOutcome(ImmutableArray<SwordAiScannedCandidate> 
 /// <summary>Rejected scans publish no partial payload and return the original query RNG.</summary>
 /// <remarks>Atomic unsupported/exhaustion rollback is managed policy, not original C search rewind.</remarks>
 public sealed record SwordAiScanResult(SwordAiScanDisposition Disposition, SwordAiScanRejection Rejection,
-    int? FailedCandidateIndex, SwordAiScoringRejection ScoringRejection, SwordAiCandidateRejection ProjectionRejection,
+    int? FailedCandidateIndex, AiScoringRejection ScoringRejection, SwordAiCandidateRejection ProjectionRejection,
     SwordAiScanOutcome? Outcome, FftRandomState RngState);
 
 /// <summary>Pure, synchronous enumeration and fresh scoring of one certified ordinary-sword scenario.</summary>
@@ -43,7 +43,7 @@ public sealed record SwordAiScanResult(SwordAiScanDisposition Disposition, Sword
 public static class SwordAiCandidateScan
 {
     public static SwordAiScanResult Evaluate(AttackBattleSnapshot state, SwordAiScanScenario scenario,
-        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiComparisonProfile comparisonProfile, SwordAiScanProfile scanProfile, FftRandomState decisionRng)
     {
         ArgumentNullException.ThrowIfNull(state);
@@ -53,7 +53,7 @@ public static class SwordAiCandidateScan
         ArgumentNullException.ThrowIfNull(comparisonProfile);
         ArgumentNullException.ThrowIfNull(scanProfile);
         SwordAiScanResult Reject(SwordAiScanRejection reason, int? index = null,
-            SwordAiScoringRejection scoreReason = SwordAiScoringRejection.None,
+            AiScoringRejection scoreReason = AiScoringRejection.None,
             SwordAiCandidateRejection projectionReason = SwordAiCandidateRejection.None) =>
             new(SwordAiScanDisposition.Rejected, reason, index, scoreReason, projectionReason, null, decisionRng);
 
@@ -87,7 +87,7 @@ public static class SwordAiCandidateScan
             var candidate = new SwordAiCandidate(actorId, targetId, actFirst ? scenario.Destination!.Value : origin,
                 actFirst ? SwordAiCandidateOrder.ActThenMove : SwordAiCandidateOrder.MoveThenAct);
             var score = SwordAiCandidateScoring.Evaluate(state, candidate, weapon, candidateProfile, scoreProfile, rng);
-            if (score.Disposition == SwordAiScoringDisposition.Rejected)
+            if (score.Disposition == AiScoringDisposition.Rejected)
                 return Reject(SwordAiScanRejection.EvaluationRejected, evaluated.Count, score.Rejection,
                     score.Projection?.Rejection ?? SwordAiCandidateRejection.None);
             var current = new SwordAiScannedCandidate(origin, targetPosition, candidate, score, proximity[candidate.Destination]);
@@ -103,16 +103,16 @@ public static class SwordAiCandidateScan
             candidates.Select(c => new SwordAiDestinationProximity(c.Candidate.Destination, c.Proximity)).ToImmutableArray());
         return new(candidates.IsEmpty ? SwordAiScanDisposition.NoCandidates : retained is null
                 ? SwordAiScanDisposition.NoScoredCandidate : SwordAiScanDisposition.Scanned,
-            SwordAiScanRejection.None, null, SwordAiScoringRejection.None, SwordAiCandidateRejection.None,
+            SwordAiScanRejection.None, null, AiScoringRejection.None, SwordAiCandidateRejection.None,
             new(candidates, cache, retained), rng);
     }
 
     // Pure admission reused before the composition evaluates any movement tile. No candidate/RNG work here.
     internal static SwordAiScanResult? ValidateInputs(AttackBattleSnapshot state, SwordAiScanScenario scenario,
-        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiComparisonProfile comparisonProfile, SwordAiScanProfile scanProfile, FftRandomState decisionRng)
     {
-        SwordAiScanResult Reject(SwordAiScanRejection reason, SwordAiScoringRejection scoreReason = SwordAiScoringRejection.None,
+        SwordAiScanResult Reject(SwordAiScanRejection reason, AiScoringRejection scoreReason = AiScoringRejection.None,
             SwordAiCandidateRejection projectionReason = SwordAiCandidateRejection.None) =>
             new(SwordAiScanDisposition.Rejected, reason, null, scoreReason, projectionReason, null, decisionRng);
 
@@ -122,7 +122,7 @@ public static class SwordAiCandidateScan
             string.IsNullOrWhiteSpace(comparisonProfile.TargetId.Value) || comparisonProfile.ActorId == comparisonProfile.TargetId)
             return Reject(SwordAiScanRejection.UnsupportedScanProfile);
         if (!scoreProfile.Supports(state, candidateProfile))
-            return Reject(SwordAiScanRejection.UnsupportedScanProfile, scoreReason: SwordAiScoringRejection.UnsupportedScoreProfile);
+            return Reject(SwordAiScanRejection.UnsupportedScanProfile, scoreReason: AiScoringRejection.UnsupportedScoreProfile);
 
         // Pure admission even for empty/inactive scans. No hypothetical placement, formula draw or clock work here.
         var actorId = comparisonProfile.ActorId; var targetId = comparisonProfile.TargetId;
@@ -154,7 +154,7 @@ public static class SwordAiCandidateScan
         return null;
     }
 
-    internal static bool IsHigher(SwordAiCandidateScore challenger, byte proximity, SwordAiCandidateScore incumbent, byte incumbentProximity)
+    internal static bool IsHigher(AiCandidateScore challenger, byte proximity, AiCandidateScore incumbent, byte incumbentProximity)
     {
         if (challenger.Priority != incumbent.Priority) return challenger.Priority > incumbent.Priority;
         if (challenger.HitPercent != incumbent.HitPercent) return challenger.HitPercent > incumbent.HitPercent;

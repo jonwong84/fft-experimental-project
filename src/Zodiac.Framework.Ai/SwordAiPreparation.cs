@@ -36,25 +36,25 @@ public sealed record SwordAiPreparationResult(bool Accepted, SwordAiPreparationR
 public static class SwordAiPreparation
 {
     public static SwordAiPreparationResult Evaluate(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
         SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team, FftRandomState decisionRng)
         => EvaluateCore(state, request, candidateProfile, scoreProfile, refreshProfile, preparationProfile, team, decisionRng, alreadyMoved: true);
 
     /// <summary>Own fresh both-unused refresh and full ordinary reachability, then derive policy on restored live state.</summary>
     public static SwordAiPreparationResult EvaluateUnmoved(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
         SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team, FftRandomState decisionRng)
         => EvaluateCore(state, request, candidateProfile, scoreProfile, refreshProfile, preparationProfile, team, decisionRng, alreadyMoved: false);
 
     /// <summary>Own fresh post-ACT refresh and derive reachability/policy from actual restored state, with Attack unusable.</summary>
     public static SwordAiPreparationResult EvaluateAfterAct(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
         SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team, FftRandomState decisionRng)
         => EvaluateCore(state, request, candidateProfile, scoreProfile, refreshProfile, preparationProfile, team, decisionRng,
             alreadyMoved: false, alreadyActed: true);
 
     private static SwordAiPreparationResult EvaluateCore(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
         SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team, FftRandomState decisionRng,
         bool alreadyMoved, bool alreadyActed = false)
     {

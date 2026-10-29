@@ -12,7 +12,7 @@ public sealed class SwordAiMovementBaselineTests
     private static readonly TilePosition Origin = new(1, 1, 0), Destination = new(2, 1, 0);
     private static readonly FftRandomState Decision = new(1, 200), LiveRng = new(57, 100);
     private static readonly SwordAiCandidateProfile CandidateProfile = new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 19)]);
-    private static readonly SwordAiScoreProfile ScoreProfile = new([new(A, SwordAiScoreFacts.ClosedProfile), new(B, SwordAiScoreFacts.ClosedProfile)]);
+    private static readonly AiScoreProfile ScoreProfile = new([new(A, AiScoreFacts.ClosedProfile), new(B, AiScoreFacts.ClosedProfile)]);
     private static readonly SwordAiMovementBaselineProfile Profile = new(true, true, true, true);
 
     [Theory]
@@ -131,7 +131,7 @@ public sealed class SwordAiMovementBaselineTests
             SwordAiMovementBaselineRejection.UnknownTarget);
         Atomic(SwordAiMovementBaseline.Evaluate(State(), new(A, A, Origin), CandidateProfile, ScoreProfile, Profile, Decision),
             SwordAiMovementBaselineRejection.UnsupportedProfile);
-        var score = new SwordAiScoreProfile([new(A, SwordAiScoreFacts.None), new(B, SwordAiScoreFacts.ClosedProfile)]);
+        var score = new AiScoreProfile([new(A, AiScoreFacts.None), new(B, AiScoreFacts.ClosedProfile)]);
         Atomic(SwordAiMovementBaseline.Evaluate(State(), new(A, B, Origin), CandidateProfile, score, Profile, Decision),
             SwordAiMovementBaselineRejection.UnsupportedScoreProfile);
     }

@@ -11,7 +11,7 @@ public sealed class SwordAiCandidateScoringTests
     private static readonly AssetId Weapon=new("sample:item/plain-sword");
     private static readonly TerrainSurfaceId Ground=new("sample:terrain/ordinary-ground");
     private static readonly SwordAiCandidateProfile CandidateProfile=new(new(Ground),new(Ground,A,B),[new(A,255),new(B,19)]);
-    private static readonly SwordAiScoreProfile ScoreProfile=new([new(A,SwordAiScoreFacts.ClosedProfile),new(B,SwordAiScoreFacts.ClosedProfile)]);
+    private static readonly AiScoreProfile ScoreProfile=new([new(A,AiScoreFacts.ClosedProfile),new(B,AiScoreFacts.ClosedProfile)]);
     private static readonly FftRandomState Decision=new(1,7);
 
     public static IEnumerable<object[]> Proposals()
@@ -36,14 +36,14 @@ public sealed class SwordAiCandidateScoringTests
         var state=State(actorHp:d.GetProperty("actorHp").GetInt32(),actorMax:d.GetProperty("actorMaxHp").GetInt32(),
             hp:c.GetProperty("terminal").GetBoolean()?0:c.GetProperty("targetHp").GetInt32(),maxHp:c.GetProperty("targetMaxHp").GetInt32(),
             evade:100-c.GetProperty("hitPercent").GetInt32());
-        var certificates=new List<SwordAiScoreUnitCertificate>();
+        var certificates=new List<AiScoreUnitCertificate>();
         for(int i=0;i<2;i++)
         {
-            var unit=p.GetProperty("units")[i];var facts=SwordAiScoreFacts.ClosedProfile;
-            if(unit.GetProperty("monster").GetBoolean())facts&=~SwordAiScoreFacts.NonMonster;
-            if(unit.GetProperty("keptSlots").GetInt32()!=7)facts&=~SwordAiScoreFacts.AllSevenEquipmentSlotsUnchanged;
-            if(!p.GetProperty("stableOpponents").GetBoolean()||!p.GetProperty("unchangedTeams").GetBoolean())facts&=~SwordAiScoreFacts.StableOpponents;
-            if(unit.GetProperty("golem").GetInt32()!=0||unit.GetProperty("baselineGolem").GetInt32()!=0)facts&=~SwordAiScoreFacts.ZeroCurrentAndBaselineGolem;
+            var unit=p.GetProperty("units")[i];var facts=AiScoreFacts.ClosedProfile;
+            if(unit.GetProperty("monster").GetBoolean())facts&=~AiScoreFacts.NonMonster;
+            if(unit.GetProperty("keptSlots").GetInt32()!=7)facts&=~AiScoreFacts.AllSevenEquipmentSlotsUnchanged;
+            if(!p.GetProperty("stableOpponents").GetBoolean()||!p.GetProperty("unchangedTeams").GetBoolean())facts&=~AiScoreFacts.StableOpponents;
+            if(unit.GetProperty("golem").GetInt32()!=0||unit.GetProperty("baselineGolem").GetInt32()!=0)facts&=~AiScoreFacts.ZeroCurrentAndBaselineGolem;
             var unitId=i==0?A:B;
             if(i==1&&!p.GetProperty("idsMatch").GetBoolean())unitId=new("sample:unit/other");
             certificates.Add(new(unitId,facts));
@@ -51,16 +51,16 @@ public sealed class SwordAiCandidateScoringTests
         var result=Evaluate(state,power:c.GetProperty("damage").GetInt32()/5,scoreProfile:new(certificates));
         Assert.Equal(e.GetProperty("disposition").GetString(),result.Disposition.ToString());
         Assert.Equal(new FftRandomState(e.GetProperty("rngWord").GetUInt32(),e.GetProperty("rngCount").GetUInt64()),result.RngState);
-        if(result.Disposition==SwordAiScoringDisposition.Rejected)
+        if(result.Disposition==AiScoringDisposition.Rejected)
         {
             Assert.Equal(e.GetProperty("reason").GetString(),result.Rejection.ToString());Assert.Null(result.Score);
-            if(result.Rejection==SwordAiScoringRejection.ProjectionRejected)
+            if(result.Rejection==AiScoringRejection.ProjectionRejected)
                 Assert.Equal(e.GetProperty("projectionReason").GetString(),result.Projection!.Rejection.ToString());
             else Assert.Null(result.Projection);
             return;
         }
-        Assert.Equal(SwordAiScoringRejection.None,result.Rejection);Assert.NotNull(result.Projection);
-        if(result.Disposition==SwordAiScoringDisposition.NotValuable){Assert.Null(result.Score);return;}
+        Assert.Equal(AiScoringRejection.None,result.Rejection);Assert.NotNull(result.Projection);
+        if(result.Disposition==AiScoringDisposition.NotValuable){Assert.Null(result.Score);return;}
         var expected=e.GetProperty("score");var score=Scored(result);
         Assert.Equal(expected.GetProperty("priority").GetInt32(),score.Priority);
         Assert.Equal(expected.GetProperty("hitPercent").GetInt32(),score.HitPercent);
@@ -134,7 +134,7 @@ public sealed class SwordAiCandidateScoringTests
         var result=Evaluate(State(evade:evade));
         if(percent==0)
         {
-            Assert.Equal(SwordAiScoringDisposition.NotValuable,result.Disposition);Assert.Null(result.Score);
+            Assert.Equal(AiScoringDisposition.NotValuable,result.Disposition);Assert.Null(result.Score);
             Assert.Equal(SwordAiCandidateDisposition.NotValuable,result.Projection!.Disposition);
             Assert.Equal(new FftRandomState(3295386429,11),result.RngState);
         }
@@ -200,7 +200,7 @@ public sealed class SwordAiCandidateScoringTests
         { Forwarded(result,SwordAiCandidateRejection.RandomDrawCountExhausted,rng); }
         else
         {
-            Assert.Equal(evade==100?SwordAiScoringDisposition.NotValuable:SwordAiScoringDisposition.Scored,result.Disposition);
+            Assert.Equal(evade==100?AiScoringDisposition.NotValuable:AiScoringDisposition.Scored,result.Disposition);
             Assert.Equal(rng.DrawCount+(ulong)draws,result.RngState.DrawCount);
             Assert.Equal(result.Projection!.RngState,result.RngState);
         }
@@ -217,14 +217,14 @@ public sealed class SwordAiCandidateScoringTests
     public static IEnumerable<object[]> IncompleteFacts()
     {
         foreach(bool second in new[]{false,true})
-        foreach(int flags in new[]{0,1,2,4,8,14,13,11,7,31,128,-1})yield return [second,(SwordAiScoreFacts)flags];
+        foreach(int flags in new[]{0,1,2,4,8,14,13,11,7,31,128,-1})yield return [second,(AiScoreFacts)flags];
     }
 
     [Theory] [MemberData(nameof(IncompleteFacts))]
     [Trait("Coverage", "CurrentAdmission")]
-    public void Missing_unknown_or_unsupported_certificates_reject_before_invalid_projection(bool second,SwordAiScoreFacts facts)
+    public void Missing_unknown_or_unsupported_certificates_reject_before_invalid_projection(bool second,AiScoreFacts facts)
     {
-        var p=new SwordAiScoreProfile([new(A,second?SwordAiScoreFacts.ClosedProfile:facts),new(B,second?facts:SwordAiScoreFacts.ClosedProfile)]);
+        var p=new AiScoreProfile([new(A,second?AiScoreFacts.ClosedProfile:facts),new(B,second?facts:AiScoreFacts.ClosedProfile)]);
         var rng=new FftRandomState(1,ulong.MaxValue);
         Unsupported(Evaluate(State(hp:0),scoreProfile:p,rng:rng),rng);
         Unsupported(SwordAiCandidateScoring.Evaluate(State(),Stay(),null,CandidateProfile,p,rng),rng);
@@ -233,15 +233,15 @@ public sealed class SwordAiCandidateScoringTests
     [Fact]
     public void Score_profile_identity_and_roster_certificates_must_match_before_projection()
     {
-        var c=new BattleUnitId("sample:unit/c");var wrong=new SwordAiScoreProfile([new(A,SwordAiScoreFacts.ClosedProfile),new(c,SwordAiScoreFacts.ClosedProfile)]);
+        var c=new BattleUnitId("sample:unit/c");var wrong=new AiScoreProfile([new(A,AiScoreFacts.ClosedProfile),new(c,AiScoreFacts.ClosedProfile)]);
         Unsupported(Evaluate(State(),scoreProfile:wrong));
         var cp=new SwordAiCandidateProfile(new(Ground),new(Ground,A,c),[new(A,255),new(c,19)]);
         Unsupported(SwordAiCandidateScoring.Evaluate(State(),Stay(),new(Weapon,5),cp,ScoreProfile,Decision));
-        Assert.Throws<ArgumentNullException>(()=>new SwordAiScoreProfile(null!));
-        foreach(var units in new SwordAiScoreUnitCertificate[][] {[],[new(A,SwordAiScoreFacts.ClosedProfile)],
-            [new(A,SwordAiScoreFacts.ClosedProfile),new(A,SwordAiScoreFacts.ClosedProfile)],
-            [new(A,SwordAiScoreFacts.ClosedProfile),null!], [new(default,SwordAiScoreFacts.ClosedProfile),new(B,SwordAiScoreFacts.ClosedProfile)]})
-            Assert.Throws<ArgumentException>(()=>new SwordAiScoreProfile(units));
+        Assert.Throws<ArgumentNullException>(()=>new AiScoreProfile(null!));
+        foreach(var units in new AiScoreUnitCertificate[][] {[],[new(A,AiScoreFacts.ClosedProfile)],
+            [new(A,AiScoreFacts.ClosedProfile),new(A,AiScoreFacts.ClosedProfile)],
+            [new(A,AiScoreFacts.ClosedProfile),null!], [new(default,AiScoreFacts.ClosedProfile),new(B,AiScoreFacts.ClosedProfile)]})
+            Assert.Throws<ArgumentException>(()=>new AiScoreProfile(units));
     }
 
     [Fact]
@@ -284,28 +284,28 @@ public sealed class SwordAiCandidateScoringTests
         for(int i=0;i<4;i++)Assert.Equal(Serialize(result),Serialize(Evaluate(state)));
         Assert.NotEqual(result.RngState,branch.RngState);Assert.Equal(result.RngState.DrawCount+(noAccuracy?4ul:5ul),branch.RngState.DrawCount);
         Assert.Equal(before,Snapshot(state));Assert.Equal(new FftRandomState(57,100),state.TurnBattle.Turns.RngState);
-        var list=new List<SwordAiScoreUnitCertificate>{new(A,SwordAiScoreFacts.ClosedProfile),new(B,SwordAiScoreFacts.ClosedProfile)};
-        var profile=new SwordAiScoreProfile(list);list[0]=new(A,SwordAiScoreFacts.None);
-        Assert.Equal(SwordAiScoreFacts.ClosedProfile,profile.Units[0].Facts);
+        var list=new List<AiScoreUnitCertificate>{new(A,AiScoreFacts.ClosedProfile),new(B,AiScoreFacts.ClosedProfile)};
+        var profile=new AiScoreProfile(list);list[0]=new(A,AiScoreFacts.None);
+        Assert.Equal(AiScoreFacts.ClosedProfile,profile.Units[0].Facts);
         Assert.Equal(Serialize(result),Serialize(Evaluate(state,scoreProfile:profile)));
     }
 
     private static JsonDocument Contract()=>JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"Fixtures","ai-score-contract-v1.json")));
     private static SwordAiCandidate Stay(bool second=false)=>new(second?B:A,second?A:B,new(2,2,0),SwordAiCandidateOrder.MoveThenAct);
     private static SwordAiScoringResult Evaluate(AttackBattleSnapshot state,bool second=false,int power=5,SwordAiCandidate? candidate=null,
-        SwordAiScoreProfile? scoreProfile=null,FftRandomState? rng=null)=>SwordAiCandidateScoring.Evaluate(state,candidate??Stay(second),
+        AiScoreProfile? scoreProfile=null,FftRandomState? rng=null)=>SwordAiCandidateScoring.Evaluate(state,candidate??Stay(second),
             new(Weapon,power),CandidateProfile,scoreProfile??ScoreProfile,rng??Decision);
-    private static SwordAiCandidateScore Scored(SwordAiScoringResult result)
-    { Assert.Equal(SwordAiScoringDisposition.Scored,result.Disposition);Assert.Equal(SwordAiScoringRejection.None,result.Rejection);
+    private static AiCandidateScore Scored(SwordAiScoringResult result)
+    { Assert.Equal(AiScoringDisposition.Scored,result.Disposition);Assert.Equal(AiScoringRejection.None,result.Rejection);
         Assert.Equal(SwordAiCandidateDisposition.Projected,result.Projection!.Disposition);Assert.Equal(result.Projection.RngState,result.RngState);
-        return Assert.IsType<SwordAiCandidateScore>(result.Score); }
+        return Assert.IsType<AiCandidateScore>(result.Score); }
     private static void Unsupported(SwordAiScoringResult result,FftRandomState? rng=null)
-    { Assert.Equal(SwordAiScoringDisposition.Rejected,result.Disposition);Assert.Equal(SwordAiScoringRejection.UnsupportedScoreProfile,result.Rejection);
+    { Assert.Equal(AiScoringDisposition.Rejected,result.Disposition);Assert.Equal(AiScoringRejection.UnsupportedScoreProfile,result.Rejection);
         Assert.Null(result.Score);Assert.Null(result.Projection);Assert.Equal(rng??Decision,result.RngState); }
     private static void Forwarded(SwordAiScoringResult result,SwordAiCandidateRejection reason,FftRandomState? rng=null)
-    { Assert.Equal(SwordAiScoringDisposition.Rejected,result.Disposition);Assert.Equal(SwordAiScoringRejection.ProjectionRejected,result.Rejection);
+    { Assert.Equal(AiScoringDisposition.Rejected,result.Disposition);Assert.Equal(AiScoringRejection.ProjectionRejected,result.Rejection);
         Assert.Null(result.Score);Assert.Equal(reason,result.Projection!.Rejection);Assert.Equal(rng??Decision,result.RngState);Assert.Equal(result.Projection.RngState,result.RngState); }
-    private static void AssertContributions(SwordAiCandidateScore score,JsonElement rows)
+    private static void AssertContributions(AiCandidateScore score,JsonElement rows)
     {
         foreach(var e in rows.EnumerateArray())
         {

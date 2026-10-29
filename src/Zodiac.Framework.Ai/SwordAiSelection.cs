@@ -45,7 +45,7 @@ internal sealed record SwordAiRankedLotteryResult(bool Accepted, SwordAiSelectio
 public static class SwordAiSelection
 {
     public static SwordAiSelectionResult Evaluate(AttackBattleSnapshot state, SwordAiCompositionScenario scenario,
-        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiComparisonProfile comparisonProfile, SwordAiMovementBaselineProfile baselineProfile,
         SwordAiScanProfile scanProfile, SwordAiCompositionProfile compositionProfile,
         SwordAiSelectionProfile selectionProfile, FftRandomState decisionRng)

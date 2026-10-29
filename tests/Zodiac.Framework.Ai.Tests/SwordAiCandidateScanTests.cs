@@ -69,7 +69,7 @@ public sealed class SwordAiCandidateScanTests
             if (e.GetProperty("score").ValueKind == JsonValueKind.Null) Assert.Null(a.Evaluation.Score);
             else
             {
-                var score = Assert.IsType<SwordAiCandidateScore>(a.Evaluation.Score); var s = e.GetProperty("score");
+                var score = Assert.IsType<AiCandidateScore>(a.Evaluation.Score); var s = e.GetProperty("score");
                 Assert.Equal(s.GetProperty("priority").GetInt32(), score.Priority);
                 Assert.Equal(s.GetProperty("hitPercent").GetInt32(), score.HitPercent);
                 foreach (var contribution in s.GetProperty("contributions").EnumerateArray())
@@ -168,7 +168,7 @@ public sealed class SwordAiCandidateScanTests
         var f = FrameFor() with { Decision = new(1, ulong.MaxValue - (ulong)budget) };
         var result = Rejected(f, SwordAiScanRejection.EvaluationRejected);
         Assert.Equal(failedIndex, result.FailedCandidateIndex);
-        Assert.Equal(SwordAiScoringRejection.ProjectionRejected, result.ScoringRejection);
+        Assert.Equal(AiScoringRejection.ProjectionRejected, result.ScoringRejection);
         Assert.Equal(SwordAiCandidateRejection.RandomDrawCountExhausted, result.ProjectionRejection);
     }
 
@@ -234,7 +234,7 @@ public sealed class SwordAiCandidateScanTests
     }
 
     private sealed record Frame(AttackBattleSnapshot State, SwordAiScanScenario Scenario, BoundedSwordWeapon? Weapon,
-        SwordAiCandidateProfile Candidate, SwordAiScoreProfile Score, SwordAiComparisonProfile Comparison,
+        SwordAiCandidateProfile Candidate, AiScoreProfile Score, SwordAiComparisonProfile Comparison,
         SwordAiScanProfile Profile, FftRandomState Decision);
     private static JsonNode Data() => JsonNode.Parse(Case("scan-four-origins").GetProperty("inputs").GetRawText())!;
     private static Frame FrameFor() => Materialize(Case("scan-four-origins").GetProperty("inputs"));
@@ -263,7 +263,7 @@ public sealed class SwordAiCandidateScanTests
             bodies, LiveRng), new(turns, LiveRng, state.GetProperty("ticks").GetUInt64(), active ? TurnCyclePhase.UnitTurn : TurnCyclePhase.PickUnit)), combatants);
         var candidateProfile = new SwordAiCandidateProfile(new(Ground), new(Ground, actor, target),
             units.Select(u => new AiUnitBaseline(UnitId(u), u.GetProperty("deathCounter").GetByte())));
-        var score = new SwordAiScoreProfile(units.Select(u => new SwordAiScoreUnitCertificate(UnitId(u), Flag("scoreProfileClosed") ? SwordAiScoreFacts.ClosedProfile : SwordAiScoreFacts.None)));
+        var score = new AiScoreProfile(units.Select(u => new AiScoreUnitCertificate(UnitId(u), Flag("scoreProfileClosed") ? AiScoreFacts.ClosedProfile : AiScoreFacts.None)));
         var scenario = data.GetProperty("scenario"); var dest = scenario.GetProperty("destination");
         return new(snapshot, new(scenario.GetProperty("origins").EnumerateArray().Select(Point), dest.ValueKind == JsonValueKind.Null ? null : Point(dest)),
             new(Weapon, data.GetProperty("weaponPower").GetInt32()), candidateProfile, score,
@@ -275,7 +275,7 @@ public sealed class SwordAiCandidateScanTests
     private static SwordAiScanOutcome Success(SwordAiScanResult result)
     {
         Assert.NotEqual(SwordAiScanDisposition.Rejected, result.Disposition); Assert.Equal(SwordAiScanRejection.None, result.Rejection);
-        Assert.Null(result.FailedCandidateIndex); Assert.Equal(SwordAiScoringRejection.None, result.ScoringRejection);
+        Assert.Null(result.FailedCandidateIndex); Assert.Equal(AiScoringRejection.None, result.ScoringRejection);
         Assert.Equal(SwordAiCandidateRejection.None, result.ProjectionRejection);
         return Assert.IsType<SwordAiScanOutcome>(result.Outcome);
     }

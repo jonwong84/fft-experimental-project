@@ -34,7 +34,7 @@ public sealed record SwordAiMoveFirstResult(SwordAiMoveFirstFailure? Failure, Fa
 public static class SwordAiMoveFirstExecution
 {
     public static SwordAiMoveFirstResult StartInReach(FacingTurnState state, BoundedSwordWeapon? weapon,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
         SwordAiMovementScenarioProfile scenarioProfile, SwordAiDerivedSelectionProfile derivedProfile,
         SwordAiSelectionProfile selectionProfile, SwordAiExecutionProfile executionProfile, SwordAiCommandDispatchProfile dispatchProfile)
         => StartCore(state, weapon, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile, derivedProfile,
@@ -42,7 +42,7 @@ public static class SwordAiMoveFirstExecution
 
     /// <summary>Explicit out-of-reach branch with known source team; freezes deferred Wait after an actual Move.</summary>
     public static SwordAiMoveFirstResult StartOutOfReach(FacingTurnState state, BoundedSwordWeapon? weapon,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
         SwordAiMovementScenarioProfile scenarioProfile, SwordAiDerivedSelectionProfile derivedProfile,
         SwordAiSelectionProfile selectionProfile, SwordAiExecutionProfile executionProfile,
         SwordAiCommandDispatchProfile dispatchProfile, SwordAiScenarioTeam team)
@@ -51,7 +51,7 @@ public static class SwordAiMoveFirstExecution
 
     /// <summary>Own fresh NonBlue unmoved preparation and in-reach selection inside the Framework Move transaction.</summary>
     public static SwordAiMoveFirstResult StartPreparedInReach(FacingTurnState state, SwordAiRefreshRequest request,
-        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team,
         SwordAiPreparedSelectionProfile selectionProfile, SwordAiCommandDispatchProfile dispatchProfile)
         => StartPreparedCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
@@ -59,14 +59,14 @@ public static class SwordAiMoveFirstExecution
 
     /// <summary>Own fresh NonBlue unmoved preparation and explicit out-of-reach selection, then move and retain Wait.</summary>
     public static SwordAiMoveFirstResult StartPreparedOutOfReach(FacingTurnState state, SwordAiRefreshRequest request,
-        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team,
         SwordAiPreparedSelectionProfile selectionProfile, SwordAiCommandDispatchProfile dispatchProfile)
         => StartPreparedCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
             team, selectionProfile, dispatchProfile, outOfReach: true);
 
     private static SwordAiMoveFirstResult StartPreparedCore(FacingTurnState state, SwordAiRefreshRequest request,
-        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team,
         SwordAiPreparedSelectionProfile selectionProfile, SwordAiCommandDispatchProfile dispatchProfile, bool outOfReach)
     {
@@ -89,7 +89,7 @@ public static class SwordAiMoveFirstExecution
     }
 
     private static SwordAiMoveFirstResult StartCore(FacingTurnState state, BoundedSwordWeapon? weapon,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
         SwordAiMovementScenarioProfile scenarioProfile, SwordAiDerivedSelectionProfile derivedProfile,
         SwordAiSelectionProfile selectionProfile, SwordAiExecutionProfile executionProfile,
         SwordAiCommandDispatchProfile dispatchProfile, SwordAiScenarioTeam? team)

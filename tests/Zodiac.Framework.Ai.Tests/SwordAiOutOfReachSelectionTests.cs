@@ -11,7 +11,7 @@ public sealed class SwordAiOutOfReachSelectionTests
     private static readonly AssetId Weapon = new("sample:item/plain-sword");
     private static readonly FftRandomState Decision = new(1, 7), Live = new(57, 100);
     private static readonly SwordAiCandidateProfile Candidate = new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 19)]);
-    private static readonly SwordAiScoreProfile Score = new([new(A, SwordAiScoreFacts.ClosedProfile), new(B, SwordAiScoreFacts.ClosedProfile)]);
+    private static readonly AiScoreProfile Score = new([new(A, AiScoreFacts.ClosedProfile), new(B, AiScoreFacts.ClosedProfile)]);
     private static readonly SwordAiMovementScenarioProfile Scenario = new(true, true, true);
     private static readonly SwordAiDerivedSelectionProfile Derived = new(true, true, true, true, true, true, true, FirstAttackEntry: true);
     private static readonly SwordAiSelectionProfile Selection = new(true, true, true);

@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-188 (implementation).** Throw Stone candidate projection ZOD-187 is complete.
-There are 33 open tickets below. The 155 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-189 (implementation).** Fresh absolute Throw Stone scoring ZOD-188 is complete.
+There are 33 open tickets below. The 156 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,17 +29,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-188 — Score one freshly projected Throw Stone candidate
+### ZOD-189 — Compare one fresh Throw Stone candidate with a movement baseline
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-187
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-188
 
-Own one fresh [Throw Stone candidate projection](behavior/throw-stone-ai-candidate.md)
-then apply existing allied-minus-enemy HP/status/equipment scoring with signed
-source narrowing and separate accuracy. Share neutral score certificates and
-arithmetic with Attack; do not duplicate a score matrix or trust cached public
-outcomes. Verify normal/Critical/KO scores, NotValuable, exact RNG retention,
-typed profile/projection failure and actor/order replay. No baseline comparison,
-scan/list traversal, ranking, lottery, live authority or host/editor activation.
+Own a certified movement-only baseline and one fresh
+[Throw Stone candidate score](behavior/throw-stone-ai-scoring.md) in source order.
+Factor shared movement-only internals for the same ability profile without
+imposing sword ownership; preserve legacy Attack admission. Keep explicit
+fresh source-cell/scenario-zero/normal-coordinate facts and rank above/equal/
+below ordering with separate accuracy. Carry actual private RNG, including
+NotValuable and late failure, without cached outcomes. Check literal results,
+budgets and replay; no scan/list traversal, ranked insertion, lottery, live
+authority, broad interface or host/editor activation.
 
 ## Existing validation gates
 

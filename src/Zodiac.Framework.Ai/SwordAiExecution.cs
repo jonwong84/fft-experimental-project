@@ -10,7 +10,7 @@ public enum SwordAiExecutedCommand { Attack, Wait }
 
 /// <summary>Reason-only scan diagnostics; no hypothetical outcome or intermediate RNG escapes a failed command.</summary>
 public sealed record SwordAiExecutionScanFailure(SwordAiScanRejection Reason, int? CandidateIndex,
-    SwordAiScoringRejection ScoringReason, SwordAiCandidateRejection ProjectionReason);
+    AiScoringRejection ScoringReason, SwordAiCandidateRejection ProjectionReason);
 public sealed record SwordAiExecutionSelectionFailure(SwordAiDerivedSelectionRejection Reason, SwordAiDerivedSelectionStage Stage,
     SwordAiExecutionScanFailure? AdmissionFailure, SwordAiMovementScenarioFailure? ScenarioFailure,
     SwordAiCompositionFailure? CompositionFailure, SwordAiSelectionFailure? SelectionFailure);
@@ -39,7 +39,7 @@ public sealed record SwordAiExecutionResult(bool Accepted, SwordAiExecutionFailu
 public static class SwordAiExecution
 {
     public static SwordAiExecutionResult ExecuteAlreadyMoved(FacingTurnState state, BoundedSwordWeapon? weapon,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
         SwordAiMovementScenarioProfile scenarioProfile, SwordAiDerivedSelectionProfile derivedProfile,
         SwordAiSelectionProfile selectionProfile, SwordAiExecutionProfile executionProfile,
         SwordAiWaitFacingProfile waitProfile, SwordAiWaitSettlementProfile endProfile)
@@ -76,7 +76,7 @@ public static class SwordAiExecution
     /// <summary>Own fresh NonBlue refresh/preparation/selection inside the Framework transaction, then execute Attack or Wait.</summary>
     /// <remarks>No external decision RNG, cached outcome or general-selection-entry certificate is accepted.</remarks>
     public static SwordAiExecutionResult ExecutePreparedAlreadyMoved(FacingTurnState state, SwordAiRefreshRequest request,
-        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team,
         SwordAiPreparedSelectionProfile selectionProfile, SwordAiWaitFacingProfile waitProfile, SwordAiWaitSettlementProfile endProfile)
         => ExecutePreparedCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
@@ -84,14 +84,14 @@ public static class SwordAiExecution
 
     /// <summary>Fresh explicit out-of-reach preparation/selection and actual Wait after Move is already used.</summary>
     public static SwordAiExecutionResult ExecutePreparedOutOfReachAlreadyMoved(FacingTurnState state, SwordAiRefreshRequest request,
-        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team,
         SwordAiPreparedSelectionProfile selectionProfile, SwordAiWaitFacingProfile waitProfile, SwordAiWaitSettlementProfile endProfile)
         => ExecutePreparedCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
             team, selectionProfile, waitProfile, endProfile, outOfReach: true);
 
     private static SwordAiExecutionResult ExecutePreparedCore(FacingTurnState state, SwordAiRefreshRequest request,
-        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team,
         SwordAiPreparedSelectionProfile selectionProfile, SwordAiWaitFacingProfile waitProfile, SwordAiWaitSettlementProfile endProfile, bool outOfReach)
     {

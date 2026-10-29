@@ -28,7 +28,7 @@ public enum SwordAiAdmission { NoScoredCandidate, NotAboveBaseline, Admitted }
 
 public sealed record SwordAiCompositionFailure(SwordAiCompositionRejection Reason, SwordAiCompositionStage Stage,
     int? Index = null, SwordAiMovementBaselineRejection MovementReason = SwordAiMovementBaselineRejection.None,
-    SwordAiScanRejection ScanReason = SwordAiScanRejection.None, SwordAiScoringRejection ScoringReason = SwordAiScoringRejection.None,
+    SwordAiScanRejection ScanReason = SwordAiScanRejection.None, AiScoringRejection ScoringReason = AiScoringRejection.None,
     SwordAiCandidateRejection ProjectionReason = SwordAiCandidateRejection.None);
 public sealed record SwordAiScoredMovementTile(SwordAiMovementBaselineOutcome Outcome, FftRandomState RngState);
 
@@ -53,7 +53,7 @@ public sealed record SwordAiCompositionResult(bool Accepted, SwordAiCompositionF
 public static class SwordAiComposition
 {
     public static SwordAiCompositionResult Evaluate(AttackBattleSnapshot state, SwordAiCompositionScenario scenario,
-        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiComparisonProfile comparisonProfile, SwordAiMovementBaselineProfile baselineProfile,
         SwordAiScanProfile scanProfile, SwordAiCompositionProfile compositionProfile, FftRandomState decisionRng)
     {
@@ -106,7 +106,7 @@ public static class SwordAiComposition
     // Entry points own fresh movement admission/evaluation. Never exposed as a cached-result API.
     internal static SwordAiCompositionResult ContinueFromMovement(AttackBattleSnapshot state,
         ImmutableArray<SwordAiScoredMovementTile> movement, int baselineIndex, SwordAiScanScenario attackScenario,
-        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiComparisonProfile comparisonProfile, SwordAiScanProfile scanProfile, FftRandomState rng, FftRandomState queryRng)
     {
         SwordAiCompositionResult Reject(SwordAiCompositionFailure failure) => new(false, failure, null, queryRng);
@@ -126,7 +126,7 @@ public static class SwordAiComposition
         return new(true, null, new(movement, baselineIndex, attackScenario, scan, admission, ranked.ToImmutableArray()), scan.RngState);
     }
 
-    private static SwordAiAdmission InsertFreshBest(SwordAiScannedCandidate best, SwordAiCandidateScore baseline,
+    private static SwordAiAdmission InsertFreshBest(SwordAiScannedCandidate best, AiCandidateScore baseline,
         SwordAiScannedCandidate?[] ranked)
     {
         var score = best.Evaluation.Score!;

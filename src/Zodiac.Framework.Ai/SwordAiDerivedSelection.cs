@@ -29,7 +29,7 @@ public sealed record SwordAiOutOfReachSelectionResult(bool Accepted, SwordAiDeri
 public static class SwordAiDerivedSelection
 {
     public static SwordAiDerivedSelectionResult Evaluate(AttackBattleSnapshot state, BoundedSwordWeapon? weapon,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
         SwordAiMovementScenarioProfile scenarioProfile, SwordAiDerivedSelectionProfile derivedProfile,
         SwordAiSelectionProfile selectionProfile, FftRandomState decisionRng)
         => EvaluateCore(state, weapon, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile,
@@ -37,7 +37,7 @@ public static class SwordAiDerivedSelection
 
     /// <summary>Out-of-reach scenario plus one privately owned scan/lottery, retaining post-score team adjustment.</summary>
     public static SwordAiOutOfReachSelectionResult EvaluateOutOfReach(AttackBattleSnapshot state, BoundedSwordWeapon? weapon,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
         SwordAiMovementScenarioProfile scenarioProfile, SwordAiDerivedSelectionProfile derivedProfile,
         SwordAiSelectionProfile selectionProfile, SwordAiScenarioTeam team, FftRandomState decisionRng)
     {
@@ -51,7 +51,7 @@ public static class SwordAiDerivedSelection
     private sealed record CoreResult(SwordAiDerivedSelectionResult Result, SwordAiOutOfReachScenarioOutcome? OutOfReach = null);
 
     private static CoreResult EvaluateCore(AttackBattleSnapshot state, BoundedSwordWeapon? weapon,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
         SwordAiMovementScenarioProfile scenarioProfile, SwordAiDerivedSelectionProfile derivedProfile,
         SwordAiSelectionProfile selectionProfile, FftRandomState decisionRng, SwordAiScenarioTeam? team)
     {

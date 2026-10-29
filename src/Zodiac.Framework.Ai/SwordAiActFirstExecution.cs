@@ -23,7 +23,7 @@ public sealed record SwordAiActFirstResult(SwordAiActFirstFailure? Failure, Faci
 public static class SwordAiActFirstExecution
 {
     public static SwordAiActFirstResult StartPreparedInReach(FacingTurnState state, SwordAiRefreshRequest request,
-        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team,
         SwordAiPreparedSelectionProfile selectionProfile, SwordAiCommandDispatchProfile dispatchProfile)
     {

@@ -12,10 +12,10 @@ public sealed class SwordAiCompositionTests
     private static readonly TilePosition Actor = new(2, 1, 0), Top = new(1, 0, 0), Left = new(0, 1, 0), Bottom = new(1, 2, 0);
     private static readonly FftRandomState Decision = new(1, 7), LiveRng = new(57, 100);
     private static readonly SwordAiCandidateProfile CandidateProfile = new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 19)]);
-    private static readonly SwordAiScoreProfile ScoreProfile = new([new(A, SwordAiScoreFacts.ClosedProfile), new(B, SwordAiScoreFacts.ClosedProfile)]);
+    private static readonly AiScoreProfile ScoreProfile = new([new(A, AiScoreFacts.ClosedProfile), new(B, AiScoreFacts.ClosedProfile)]);
 
     private sealed record Frame(AttackBattleSnapshot State, SwordAiCompositionScenario Scenario, BoundedSwordWeapon? Weapon,
-        SwordAiCandidateProfile Candidate, SwordAiScoreProfile Score, SwordAiComparisonProfile Comparison,
+        SwordAiCandidateProfile Candidate, AiScoreProfile Score, SwordAiComparisonProfile Comparison,
         SwordAiMovementBaselineProfile Baseline, SwordAiScanProfile Scan, SwordAiCompositionProfile Profile, FftRandomState Rng);
     private static Frame Setup(AttackBattleSnapshot? state = null, bool second = false) => new(state ?? State(),
         new([Bottom, Top, Left], Bottom, Top), new(Weapon, 5), CandidateProfile, ScoreProfile,
@@ -131,7 +131,7 @@ public sealed class SwordAiCompositionTests
             9 => f with { Scan = f.Scan with { TargetSelectionMatchesBaseline = false } },
             10 => f with { Scan = f.Scan with { FreshAbilityBestReset = false } },
             11 => f with { Comparison = f.Comparison with { FreshDecisionBaseline = false } },
-            _ => f with { Score = new([new(A, SwordAiScoreFacts.None), new(B, SwordAiScoreFacts.ClosedProfile)]) }
+            _ => f with { Score = new([new(A, AiScoreFacts.None), new(B, AiScoreFacts.ClosedProfile)]) }
         };
         var failure = Rejected(f, SwordAiCompositionStage.Admission);
         Assert.Equal(missing < 7 ? SwordAiCompositionRejection.UnsupportedProfile : SwordAiCompositionRejection.AdmissionRejected, failure.Reason);

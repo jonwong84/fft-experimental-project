@@ -19,21 +19,21 @@ public sealed record SwordAiPostActScenarioResult(bool Accepted, SwordAiPostActS
 public static class SwordAiPostActScenarios
 {
     public static SwordAiPostActScenarioResult EvaluateInReach(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
         SwordAiScenarioTeam team, SwordAiPostActScenarioProfile scenarioProfile, FftRandomState decisionRng)
         => EvaluateCore(state, request, candidateProfile, scoreProfile, refreshProfile, preparationProfile, team,
             scenarioProfile, decisionRng, outOfReach: false);
 
     public static SwordAiPostActScenarioResult EvaluateOutOfReach(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
         SwordAiScenarioTeam team, SwordAiPostActScenarioProfile scenarioProfile, FftRandomState decisionRng)
         => EvaluateCore(state, request, candidateProfile, scoreProfile, refreshProfile, preparationProfile, team,
             scenarioProfile, decisionRng, outOfReach: true);
 
     private static SwordAiPostActScenarioResult EvaluateCore(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
         SwordAiScenarioTeam team, SwordAiPostActScenarioProfile scenarioProfile, FftRandomState decisionRng, bool outOfReach)
     {

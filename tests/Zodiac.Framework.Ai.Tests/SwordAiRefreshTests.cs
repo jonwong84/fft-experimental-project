@@ -12,7 +12,7 @@ public sealed class SwordAiRefreshTests
     private static readonly AssetId Weapon = new("sample:item/plain-sword");
     private static readonly FftRandomState Decision = new(1, 7), LiveRng = new(57, 100);
     private static readonly SwordAiCandidateProfile Candidate = new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 19)]);
-    private static readonly SwordAiScoreProfile Score = new([new(A, SwordAiScoreFacts.ClosedProfile), new(B, SwordAiScoreFacts.ClosedProfile)]);
+    private static readonly AiScoreProfile Score = new([new(A, AiScoreFacts.ClosedProfile), new(B, AiScoreFacts.ClosedProfile)]);
     private static readonly SwordAiRefreshProfile Profile = new(true, true, true);
     private static readonly ImmutableArray<SwordAiRefreshPolicy> Policies = [new(A, true, false), new(B, false, true)];
 
@@ -146,7 +146,7 @@ public sealed class SwordAiRefreshTests
         Atomic(SwordAiRefresh.Evaluate(State(), new(unknown, B, Policies), Candidate, Score, Profile, Decision), SwordAiRefreshRejection.UnknownActor);
         Atomic(SwordAiRefresh.Evaluate(State(), new(A, unknown, Policies), Candidate, Score, Profile, Decision), SwordAiRefreshRejection.UnknownTarget);
         Atomic(SwordAiRefresh.Evaluate(State(), new(A, A, Policies), Candidate, Score, Profile, Decision), SwordAiRefreshRejection.UnsupportedProfile);
-        var score = new SwordAiScoreProfile([new(A, SwordAiScoreFacts.None), new(B, SwordAiScoreFacts.ClosedProfile)]);
+        var score = new AiScoreProfile([new(A, AiScoreFacts.None), new(B, AiScoreFacts.ClosedProfile)]);
         Atomic(SwordAiRefresh.Evaluate(State(), new(A, B, Policies), Candidate, score, Profile, Decision), SwordAiRefreshRejection.UnsupportedScoreProfile);
     }
 

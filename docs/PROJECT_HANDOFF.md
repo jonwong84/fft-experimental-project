@@ -6,12 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-188: score one freshly projected Throw Stone candidate.**
-[Candidate projection](behavior/throw-stone-ai-candidate.md) now owns formula and
-shared effect-free clock from the correct Move/ACT origin. Apply the same
-source HP/status/equipment scoring with separate accuracy and no extra RNG;
-reuse neutral score certificates/arithmetic. Comparison, general list search
-and live authority remain separate.
+**ZOD-189: compare one fresh Throw Stone candidate with a movement baseline.**
+[Fresh absolute scoring](behavior/throw-stone-ai-scoring.md) now reuses the same
+source HP/status/equipment terms as Attack with separate accuracy/no extra RNG.
+Own a certified movement-only baseline for the same ability profile and one
+candidate in source order; preserve legacy admission and explicit source facts.
+General list search/ranking and live ability authority remain separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
@@ -47,22 +47,20 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-187, [Throw Stone candidate projection](behavior/throw-stone-ai-candidate.md).
-  Fresh formula/clock uses correct origin, unused-Move refund and actual source
-  KO/upkeep rules. Neutral simulation diagnostics/state/clock now serve both
-  Attack and Throw Stone. Five new scenarios pass with all 809 AI cases;
-  logs are in `scratch/ai-throw-stone-186-188/`.
+- Latest implementation: ZOD-186/187/188, [Throw Stone formula](behavior/throw-stone-ai-formula.md),
+  [candidate](behavior/throw-stone-ai-candidate.md) and [absolute score](behavior/throw-stone-ai-scoring.md).
+  Shared read-only grant/geometry validation, neutral simulation/clock and score
+  certificates/arithmetic serve both action families. Fourteen new scenarios
+  cover literal results, source ordering, KO, budgets, typed failure and replay.
 - Latest investigation: ZOD-185, [ability-entry iteration](architecture/zod-185-ai-ability-iteration.md).
   Cursor/resume, static-versus-runtime usage flags, per-entry/shared state and
-  retained ranks/RNG are pinned. Throw Stone is the next child; Accumulate's
-  random usefulness/stat-score differences remain separate. No runtime change.
-  Clean audit: `scratch/ai-ability-iteration-185/source.json` (12 files/29 functions,
+  retained ranks/RNG are pinned. Throw Stone's primitives are now implemented;
+  Accumulate's random usefulness/stat-score differences remain separate.
+  Clean audit: `scratch/ai-throw-stone-186-188/source.json` (12 files/29 functions,
   inherited receipts and hash-verified prepared semantic facts).
-- Source validation: **519 Python tests** and pinned source/data audit passed;
-  logs are in ignored `scratch/ai-ability-iteration-185/`. No new managed execution.
-  Last managed validation remains ZOD-184: locked restore, clean Release build,
-  **3,986 .NET cases**, including 799 AI cases and owner content drafts;
-  `scratch/ai-post-act-execution-184/full-trx/` has seven full TRX files.
+- Validation: locked restore, zero-warning/error Release build,
+  **4,000 .NET cases / 519 Python tests**, including 813 AI cases and owner content drafts.
+  Logs/results: ignored `scratch/ai-throw-stone-186-188/`; `full-trx/` has seven full TRX files.
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

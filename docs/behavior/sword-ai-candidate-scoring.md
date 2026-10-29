@@ -15,8 +15,8 @@ source-derived managed validation, not original-game execution equivalence.
 
 ## Explicit certificate
 
-`SwordAiScoreProfile` snapshots exactly two distinct valid unit certificates.
-Each `SwordAiScoreUnitCertificate` contains stable ID and `SwordAiScoreFacts`:
+`AiScoreProfile` snapshots exactly two distinct valid unit certificates.
+Each `AiScoreUnitCertificate` contains stable ID and `AiScoreFacts`:
 
 - `NonMonster` certifies the original non-monster unit classification.
 - `AllSevenEquipmentSlotsUnchanged` covers every baseline/current serialized
@@ -37,9 +37,9 @@ responsibility. A future importer must derive these assertions from actual data.
 The existing `AttackUnitState` constructor enforces MP=maxMP=0; it is not expanded.
 
 ```csharp
-var scoreProfile = new SwordAiScoreProfile([
-    new(actorId, SwordAiScoreFacts.ClosedProfile),
-    new(targetId, SwordAiScoreFacts.ClosedProfile)
+var scoreProfile = new AiScoreProfile([
+    new(actorId, AiScoreFacts.ClosedProfile),
+    new(targetId, AiScoreFacts.ClosedProfile)
 ]);
 var result = SwordAiCandidateScoring.Evaluate(original, candidate, weapon,
     candidateProfile, scoreProfile, decisionRng);

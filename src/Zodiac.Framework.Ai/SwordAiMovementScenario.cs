@@ -36,31 +36,31 @@ public sealed record SwordAiOutOfReachScenarioResult(bool Accepted, SwordAiMovem
 public static class SwordAiMovementScenario
 {
     public static SwordAiMovementScenarioResult Evaluate(AttackBattleSnapshot state,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiComparisonProfile comparisonProfile, SwordAiMovementScenarioProfile scenarioProfile, FftRandomState decisionRng)
         => EvaluateCore(state, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile, decisionRng, null).Result;
 
     /// <summary>Explicit out-of-reach branch; Blue skips, NonBlue draws once after movement scoring.</summary>
     public static SwordAiOutOfReachScenarioResult EvaluateOutOfReach(AttackBattleSnapshot state,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiComparisonProfile comparisonProfile, SwordAiMovementScenarioProfile scenarioProfile,
         SwordAiScenarioTeam team, FftRandomState decisionRng)
         => EvaluateReachCore(state, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile, team, decisionRng, false);
 
     // Only the owned fresh post-ACT preparation wrapper supplies these derived entry facts.
     internal static SwordAiMovementScenarioResult EvaluateAfterAct(AttackBattleSnapshot state,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiComparisonProfile comparisonProfile, SwordAiMovementScenarioProfile scenarioProfile, FftRandomState decisionRng)
         => EvaluateCore(state, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile, decisionRng, null, alreadyActed: true).Result;
 
     internal static SwordAiOutOfReachScenarioResult EvaluateOutOfReachAfterAct(AttackBattleSnapshot state,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiComparisonProfile comparisonProfile, SwordAiMovementScenarioProfile scenarioProfile,
         SwordAiScenarioTeam team, FftRandomState decisionRng)
         => EvaluateReachCore(state, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile, team, decisionRng, true);
 
     private static SwordAiOutOfReachScenarioResult EvaluateReachCore(AttackBattleSnapshot state,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiComparisonProfile comparisonProfile, SwordAiMovementScenarioProfile scenarioProfile,
         SwordAiScenarioTeam team, FftRandomState decisionRng, bool alreadyActed)
     {
@@ -74,7 +74,7 @@ public static class SwordAiMovementScenario
         SwordAiReachAdjustment? Adjustment = null, bool AttackFallback = false);
 
     private static CoreResult EvaluateCore(AttackBattleSnapshot state, SwordAiCandidateProfile candidateProfile,
-        SwordAiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
+        AiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
         SwordAiMovementScenarioProfile scenarioProfile, FftRandomState decisionRng, SwordAiScenarioTeam? team, bool alreadyActed = false)
     {
         ArgumentNullException.ThrowIfNull(state);

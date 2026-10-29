@@ -20,7 +20,7 @@ public enum SwordAiMovementBaselineRejection
 public sealed record SwordAiMovementBaselineOutcome(BattleUnitId ActorId, BattleUnitId TargetId,
     TilePosition Destination, int TurnEndCt, ImmutableArray<AiProjectedUnit> Units,
     BattleUnitId MoveOpportunityUnitId, ulong ElapsedTicks, ulong Ticks,
-    ImmutableArray<AiUpkeepPick> UpkeepPicks, SwordAiCandidateScore Score);
+    ImmutableArray<AiUpkeepPick> UpkeepPicks, AiCandidateScore Score);
 
 /// <summary>Rejected queries return the incoming decision RNG and no partial outcome.</summary>
 public sealed record SwordAiMovementBaselineResult(bool Accepted, SwordAiMovementBaselineRejection Rejection,
@@ -35,19 +35,19 @@ public sealed record SwordAiMovementBaselineResult(bool Accepted, SwordAiMovemen
 public static class SwordAiMovementBaseline
 {
     public static SwordAiMovementBaselineResult Evaluate(AttackBattleSnapshot state, SwordAiMovementBaselineRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiMovementBaselineProfile baselineProfile, FftRandomState decisionRng)
         => EvaluateCore(state, request, candidateProfile, scoreProfile, baselineProfile, decisionRng, alreadyActed: false);
 
     /// <summary>Fresh post-ACT tile score with Move unused; staying refunds Move only, moving refunds neither choice.</summary>
     /// <remarks>Uses actual post-ACT state/RNG, retaining the same source-cell/geometry/scoring certificates.</remarks>
     public static SwordAiMovementBaselineResult EvaluateAfterAct(AttackBattleSnapshot state, SwordAiMovementBaselineRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiMovementBaselineProfile baselineProfile, FftRandomState decisionRng)
         => EvaluateCore(state, request, candidateProfile, scoreProfile, baselineProfile, decisionRng, alreadyActed: true);
 
     private static SwordAiMovementBaselineResult EvaluateCore(AttackBattleSnapshot state, SwordAiMovementBaselineRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiMovementBaselineProfile baselineProfile, FftRandomState decisionRng, bool alreadyActed)
     {
         ArgumentNullException.ThrowIfNull(state);
@@ -66,7 +66,7 @@ public static class SwordAiMovementBaseline
 
     // Pure admission shared with scenario derivation; does not consume hypothetical ticks or draws.
     internal static SwordAiMovementBaselineRejection ValidateInputs(AttackBattleSnapshot state,
-        SwordAiMovementBaselineRequest request, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiMovementBaselineRequest request, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         bool alreadyActed = false)
     {
         if (!scoreProfile.Supports(state, candidateProfile))
@@ -95,7 +95,7 @@ public static class SwordAiMovementBaseline
 
     // The composition owns source-mask/context admission. Non-D0 cells do not assert they are scenario-0 destinations.
     internal static SwordAiMovementBaselineResult EvaluateFreshTile(AttackBattleSnapshot state, SwordAiMovementBaselineRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, FftRandomState decisionRng,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, FftRandomState decisionRng,
         bool alreadyActed = false)
     {
         SwordAiMovementBaselineResult Reject(SwordAiMovementBaselineRejection reason) => new(false, reason, null, decisionRng);
@@ -126,7 +126,7 @@ public static class SwordAiMovementBaseline
         if (clockRejection != AiSimulationClockRejection.None)
             return Reject(clockRejection == AiSimulationClockRejection.RandomDrawCountExhausted
                 ? SwordAiMovementBaselineRejection.RandomDrawCountExhausted : SwordAiMovementBaselineRejection.TickCountExhausted);
-        var score = SwordAiCandidateScoring.ScoreFreshUnits(clock!.Units, target.UnitId, 100);
+        var score = AiCandidateScoring.ScoreFreshUnits(clock!.Units, target.UnitId, 100);
         // Negating into the source u16 tile grid and back to s16 preserves this closed -160..160 score.
         return new(true, SwordAiMovementBaselineRejection.None,
             new(actor.UnitId, target.UnitId, request.Destination, turnEndCt, clock.Units,

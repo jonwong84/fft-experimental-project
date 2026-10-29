@@ -10,7 +10,7 @@ internal static class SwordAiPreparationTestData
     internal static readonly AssetId Weapon = new("sample:item/plain-sword");
     internal static readonly FftRandomState Rng = new(1, 7), LiveRng = new(57, 100);
     internal static readonly SwordAiCandidateProfile Candidate = new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 19)]);
-    internal static readonly SwordAiScoreProfile Score = new([new(A, SwordAiScoreFacts.ClosedProfile), new(B, SwordAiScoreFacts.ClosedProfile)]);
+    internal static readonly AiScoreProfile Score = new([new(A, AiScoreFacts.ClosedProfile), new(B, AiScoreFacts.ClosedProfile)]);
     internal static readonly SwordAiRefreshProfile Refresh = new(true, true, true);
     internal static readonly SwordAiPreparationProfile Preparation = new(true, true, true);
     internal static SwordAiRefreshRequest Request(bool second = false, bool cachedSupport = false, bool reverse = false)

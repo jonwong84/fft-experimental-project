@@ -11,7 +11,7 @@ public sealed class SwordAiMovementScenarioTests
     private static readonly BattleUnitId A = new("sample:unit/a"), B = new("sample:unit/b");
     private static readonly FftRandomState Decision = new(1, 7), Live = new(57, 100);
     private static readonly SwordAiCandidateProfile Candidate = new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 19)]);
-    private static readonly SwordAiScoreProfile Score = new([new(A, SwordAiScoreFacts.ClosedProfile), new(B, SwordAiScoreFacts.ClosedProfile)]);
+    private static readonly AiScoreProfile Score = new([new(A, AiScoreFacts.ClosedProfile), new(B, AiScoreFacts.ClosedProfile)]);
     private static readonly SwordAiMovementScenarioProfile Profile = new(true, true, true);
 
     [Theory] [InlineData(95, 2, 2)] [InlineData(0, 2, 1)]
@@ -82,7 +82,7 @@ public sealed class SwordAiMovementScenarioTests
     {
         var state = State(origin: kind == "out-of-reach" ? new(4, 1, 0) : null,
             move: kind == "move-cap" ? 125 : 1, acted: kind == "acted", height: kind == "geometry" ? 11 : 10);
-        var score = kind == "score" ? new SwordAiScoreProfile([new(A, SwordAiScoreFacts.None), new(B, SwordAiScoreFacts.None)]) : Score;
+        var score = kind == "score" ? new AiScoreProfile([new(A, AiScoreFacts.None), new(B, AiScoreFacts.None)]) : Score;
         var rng = new FftRandomState(1, ulong.MaxValue);
         var result = SwordAiMovementScenario.Evaluate(state, Candidate, score,
             new(kind == "unknown-actor" ? new("missing:actor") : A, kind == "unknown-target" ? new("missing:target") : B, true), Profile, rng);

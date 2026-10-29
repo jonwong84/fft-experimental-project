@@ -12,10 +12,10 @@ public sealed class SwordAiSelectionTests
     private static readonly TilePosition Actor = new(2, 1, 0), Top = new(1, 0, 0), Bottom = new(1, 2, 0);
     private static readonly FftRandomState Decision = new(1, 7), LiveRng = new(57, 100);
     private static readonly SwordAiCandidateProfile Candidate = new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 19)]);
-    private static readonly SwordAiScoreProfile Score = new([new(A, SwordAiScoreFacts.ClosedProfile), new(B, SwordAiScoreFacts.ClosedProfile)]);
+    private static readonly AiScoreProfile Score = new([new(A, AiScoreFacts.ClosedProfile), new(B, AiScoreFacts.ClosedProfile)]);
 
     private sealed record Frame(AttackBattleSnapshot State, SwordAiCompositionScenario Scenario, BoundedSwordWeapon? Weapon,
-        SwordAiCandidateProfile Candidate, SwordAiScoreProfile Score, SwordAiComparisonProfile Comparison,
+        SwordAiCandidateProfile Candidate, AiScoreProfile Score, SwordAiComparisonProfile Comparison,
         SwordAiMovementBaselineProfile Baseline, SwordAiScanProfile Scan, SwordAiCompositionProfile Composition,
         SwordAiSelectionProfile Profile, FftRandomState Rng);
     private static Frame Setup(AttackBattleSnapshot? state = null, bool second = false)

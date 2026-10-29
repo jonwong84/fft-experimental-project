@@ -28,7 +28,7 @@ public sealed record SwordAiPreparedSelectionResult(bool Accepted, SwordAiPrepar
 public static class SwordAiPreparedSelection
 {
     public static SwordAiPreparedSelectionResult Evaluate(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
         SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, FftRandomState decisionRng)
         => EvaluateCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
@@ -36,7 +36,7 @@ public static class SwordAiPreparedSelection
 
     /// <summary>Explicit fresh out-of-reach branch; preserves the NonBlue post-movement adjustment before fallback.</summary>
     public static SwordAiPreparedSelectionResult EvaluateOutOfReach(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
         SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, FftRandomState decisionRng)
         => EvaluateCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
@@ -44,7 +44,7 @@ public static class SwordAiPreparedSelection
 
     /// <summary>Own one fresh both-unused preparation and in-reach selection; never adopt the diagnostic clock state.</summary>
     public static SwordAiPreparedSelectionResult EvaluateUnmoved(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
         SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, FftRandomState decisionRng)
         => EvaluateCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
@@ -52,14 +52,14 @@ public static class SwordAiPreparedSelection
 
     /// <summary>Fresh both-unused preparation and explicit out-of-reach selection, including the post-score team draw.</summary>
     public static SwordAiPreparedSelectionResult EvaluateOutOfReachUnmoved(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
         SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, FftRandomState decisionRng)
         => EvaluateCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
             team, selectionProfile, decisionRng, outOfReach: true, alreadyMoved: false);
 
     private static SwordAiPreparedSelectionResult EvaluateCore(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
         SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, FftRandomState decisionRng,
         bool outOfReach, bool alreadyMoved)

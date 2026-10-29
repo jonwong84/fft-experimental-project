@@ -25,21 +25,21 @@ public sealed record SwordAiPostActExecutionResult(SwordAiPostActExecutionFailur
 public static class SwordAiPostActExecution
 {
     public static SwordAiPostActExecutionResult ExecuteInReach(FacingTurnState state, SwordAiRefreshRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
         SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team, SwordAiPostActScenarioProfile scenarioProfile,
         SwordAiPostActSelectionProfile selectionProfile, SwordAiCommandDispatchProfile dispatchProfile)
         => ExecuteCore(state, request, candidateProfile, scoreProfile, refreshProfile, preparationProfile, team,
             scenarioProfile, selectionProfile, dispatchProfile, outOfReach: false);
 
     public static SwordAiPostActExecutionResult ExecuteOutOfReach(FacingTurnState state, SwordAiRefreshRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
         SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team, SwordAiPostActScenarioProfile scenarioProfile,
         SwordAiPostActSelectionProfile selectionProfile, SwordAiCommandDispatchProfile dispatchProfile)
         => ExecuteCore(state, request, candidateProfile, scoreProfile, refreshProfile, preparationProfile, team,
             scenarioProfile, selectionProfile, dispatchProfile, outOfReach: true);
 
     private static SwordAiPostActExecutionResult ExecuteCore(FacingTurnState state, SwordAiRefreshRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
         SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team, SwordAiPostActScenarioProfile scenarioProfile,
         SwordAiPostActSelectionProfile selectionProfile, SwordAiCommandDispatchProfile dispatchProfile, bool outOfReach)
     {

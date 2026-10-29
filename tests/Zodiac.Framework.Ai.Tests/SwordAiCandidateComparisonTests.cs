@@ -11,7 +11,7 @@ public sealed class SwordAiCandidateComparisonTests
     private static readonly TerrainSurfaceId Ground = new("sample:terrain/ordinary-ground");
     private static readonly AssetId Weapon = new("sample:item/plain-sword");
     private static readonly SwordAiCandidateProfile CandidateProfile = new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 255)]);
-    private static readonly SwordAiScoreProfile ScoreProfile = new([new(A, SwordAiScoreFacts.ClosedProfile), new(B, SwordAiScoreFacts.ClosedProfile)]);
+    private static readonly AiScoreProfile ScoreProfile = new([new(A, AiScoreFacts.ClosedProfile), new(B, AiScoreFacts.ClosedProfile)]);
     private static readonly FftRandomState Decision = new(1, 7);
 
     public static IEnumerable<object[]> Proposals()
@@ -49,8 +49,8 @@ public sealed class SwordAiCandidateComparisonTests
         var profile = new SwordAiComparisonProfile(second ? B : A, second ? A : B, d.GetProperty("freshDecisionBaseline").GetBoolean());
         if (!d.GetProperty("sameActorAndTarget").GetBoolean()) profile = profile with { TargetId = new("sample:unit/other") };
         var facts = scoring.GetProperty("profile").GetProperty("units").EnumerateArray().Any(u => u.GetProperty("monster").GetBoolean())
-            ? SwordAiScoreFacts.ClosedProfile & ~SwordAiScoreFacts.NonMonster : SwordAiScoreFacts.ClosedProfile;
-        var scoreProfile = new SwordAiScoreProfile([new(A, facts), new(B, facts)]);
+            ? AiScoreFacts.ClosedProfile & ~AiScoreFacts.NonMonster : AiScoreFacts.ClosedProfile;
+        var scoreProfile = new AiScoreProfile([new(A, facts), new(B, facts)]);
         var rng = new FftRandomState(d.GetProperty("rngWord").GetUInt32(), d.GetProperty("rngCount").GetUInt64());
         var result = Evaluate(state, Materialize(0), Materialize(1), c.GetProperty("damage").GetInt32() / 5,
             rng: rng, comparisonProfile: profile, scoreProfile: scoreProfile);
@@ -184,7 +184,7 @@ public sealed class SwordAiCandidateComparisonTests
         {
             Failed(result, SwordAiComparisonRejection.EvaluationRejected, rng);
             Assert.Equal(remaining < each ? 0 : 1, result.FailedCandidateIndex);
-            Assert.Equal(SwordAiScoringRejection.ProjectionRejected, result.ScoringRejection);
+            Assert.Equal(AiScoringRejection.ProjectionRejected, result.ScoringRejection);
             Assert.Equal(SwordAiCandidateRejection.RandomDrawCountExhausted, result.ProjectionRejection);
         }
         else
@@ -206,7 +206,7 @@ public sealed class SwordAiCandidateComparisonTests
         Assert.Equal(absent == 2 ? 15ul : 16ul, result.RngState.DrawCount);
         Assert.Equal(absent == 2 ? SwordAiComparisonReason.NeitherScored : absent == 0 ? SwordAiComparisonReason.ChallengerOnly : SwordAiComparisonReason.IncumbentOnly, outcome.Reason);
         foreach (var c in outcome.Candidates)
-            if (c.Evaluation.Disposition == SwordAiScoringDisposition.NotValuable) Assert.Null(c.Evaluation.Score);
+            if (c.Evaluation.Disposition == AiScoringDisposition.NotValuable) Assert.Null(c.Evaluation.Score);
         if (absent != 2) Assert.Equal(actorHp == 10 ? -71 : power == 0 ? 0 : 64,
             outcome.Candidates[outcome.RetainedCandidateIndex!.Value].Evaluation.Score!.Priority);
     }
@@ -265,10 +265,10 @@ public sealed class SwordAiCandidateComparisonTests
     [Trait("Coverage", "CurrentAdmission")]
     public void Unsupported_score_facts_preserve_original_typed_reason_and_no_partial_payload(int facts)
     {
-        var profile = new SwordAiScoreProfile([new(A, (SwordAiScoreFacts)facts), new(B, SwordAiScoreFacts.ClosedProfile)]);
+        var profile = new AiScoreProfile([new(A, (AiScoreFacts)facts), new(B, AiScoreFacts.ClosedProfile)]);
         var result = Evaluate(State(), scoreProfile: profile);
         Failed(result, SwordAiComparisonRejection.EvaluationRejected); Assert.Equal(0, result.FailedCandidateIndex);
-        Assert.Equal(SwordAiScoringRejection.UnsupportedScoreProfile, result.ScoringRejection); Assert.Equal(SwordAiCandidateRejection.None, result.ProjectionRejection);
+        Assert.Equal(AiScoringRejection.UnsupportedScoreProfile, result.ScoringRejection); Assert.Equal(SwordAiCandidateRejection.None, result.ProjectionRejection);
     }
 
     [Theory] [InlineData(false)] [InlineData(true)]
@@ -277,7 +277,7 @@ public sealed class SwordAiCandidateComparisonTests
         var challenger = invalidOrder ? Candidate() with { Order = (SwordAiCandidateOrder)99 } : Candidate(destination: new(0, 1, 0));
         var result = Evaluate(State(), challenger: challenger);
         Failed(result, SwordAiComparisonRejection.EvaluationRejected); Assert.Equal(1, result.FailedCandidateIndex);
-        Assert.Equal(SwordAiScoringRejection.ProjectionRejected, result.ScoringRejection);
+        Assert.Equal(AiScoringRejection.ProjectionRejected, result.ScoringRejection);
         Assert.Equal(invalidOrder ? SwordAiCandidateRejection.InvalidCandidate : SwordAiCandidateRejection.OutOfRange, result.ProjectionRejection);
     }
 
@@ -322,13 +322,13 @@ public sealed class SwordAiCandidateComparisonTests
     private static SwordAiCandidate Candidate(bool second = false, TilePosition? destination = null, SwordAiCandidateOrder order = SwordAiCandidateOrder.MoveThenAct) =>
         new(second ? B : A, second ? A : B, destination ?? new(0, 0, 0), order);
     private static SwordAiComparisonResult Evaluate(AttackBattleSnapshot state, SwordAiCandidate? incumbent = null, SwordAiCandidate? challenger = null,
-        int power = 5, FftRandomState? rng = null, SwordAiComparisonProfile? comparisonProfile = null, SwordAiScoreProfile? scoreProfile = null) =>
+        int power = 5, FftRandomState? rng = null, SwordAiComparisonProfile? comparisonProfile = null, AiScoreProfile? scoreProfile = null) =>
         SwordAiCandidateComparison.Evaluate(state, incumbent ?? Candidate(), challenger ?? Candidate(), new(Weapon, power), CandidateProfile,
             scoreProfile ?? ScoreProfile, comparisonProfile ?? new((incumbent ?? Candidate()).ActorId, (incumbent ?? Candidate()).TargetId, true), rng ?? Decision);
     private static SwordAiComparisonOutcome Success(SwordAiComparisonResult result)
     {
         Assert.NotEqual(SwordAiComparisonDisposition.Rejected, result.Disposition); Assert.Equal(SwordAiComparisonRejection.None, result.Rejection);
-        Assert.Null(result.FailedCandidateIndex); Assert.Equal(SwordAiScoringRejection.None, result.ScoringRejection); Assert.Equal(SwordAiCandidateRejection.None, result.ProjectionRejection);
+        Assert.Null(result.FailedCandidateIndex); Assert.Equal(AiScoringRejection.None, result.ScoringRejection); Assert.Equal(SwordAiCandidateRejection.None, result.ProjectionRejection);
         var outcome = Assert.IsType<SwordAiComparisonOutcome>(result.Outcome); Assert.Equal(2, outcome.Candidates.Length);
         Assert.All(outcome.Candidates, c => Assert.Equal(0, c.DecidedMarker)); Assert.Equal(outcome.Candidates[1].Evaluation.RngState, result.RngState);
         return outcome;

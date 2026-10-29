@@ -43,25 +43,25 @@ public sealed record SwordAiRefreshResult(bool Accepted, SwordAiRefreshRejection
 public static class SwordAiRefresh
 {
     public static SwordAiRefreshResult Evaluate(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, FftRandomState decisionRng)
         => EvaluateCore(state, request, candidateProfile, scoreProfile, refreshProfile, decisionRng, alreadyMoved: true);
 
     /// <summary>Fresh refresh with Move and ACT unused; the hypothetical turn refunds both choices before capping CT.</summary>
     public static SwordAiRefreshResult EvaluateUnmoved(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, FftRandomState decisionRng)
         => EvaluateCore(state, request, candidateProfile, scoreProfile, refreshProfile, decisionRng, alreadyMoved: false);
 
     /// <summary>Fresh admitted post-ACT refresh with Move unused; only the unused-Move refund applies.</summary>
     /// <remarks>ACT used alone does not establish FreshRefreshEntry or prove the source no-progress guard passed.</remarks>
     public static SwordAiRefreshResult EvaluateAfterAct(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, FftRandomState decisionRng)
         => EvaluateCore(state, request, candidateProfile, scoreProfile, refreshProfile, decisionRng, alreadyMoved: false, alreadyActed: true);
 
     private static SwordAiRefreshResult EvaluateCore(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, FftRandomState decisionRng, bool alreadyMoved, bool alreadyActed = false)
     {
         ArgumentNullException.ThrowIfNull(state);

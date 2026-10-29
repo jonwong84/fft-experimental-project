@@ -19,21 +19,21 @@ public sealed record SwordAiPostActSelectionResult(bool Accepted, SwordAiPostAct
 public static class SwordAiPostActSelection
 {
     public static SwordAiPostActSelectionResult EvaluateInReach(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team,
         SwordAiPostActScenarioProfile scenarioProfile, SwordAiPostActSelectionProfile selectionProfile, FftRandomState decisionRng)
         => EvaluateCore(state, request, candidateProfile, scoreProfile, refreshProfile, preparationProfile, team,
             scenarioProfile, selectionProfile, decisionRng, outOfReach: false);
 
     public static SwordAiPostActSelectionResult EvaluateOutOfReach(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team,
         SwordAiPostActScenarioProfile scenarioProfile, SwordAiPostActSelectionProfile selectionProfile, FftRandomState decisionRng)
         => EvaluateCore(state, request, candidateProfile, scoreProfile, refreshProfile, preparationProfile, team,
             scenarioProfile, selectionProfile, decisionRng, outOfReach: true);
 
     private static SwordAiPostActSelectionResult EvaluateCore(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team,
         SwordAiPostActScenarioProfile scenarioProfile, SwordAiPostActSelectionProfile selectionProfile,
         FftRandomState decisionRng, bool outOfReach)

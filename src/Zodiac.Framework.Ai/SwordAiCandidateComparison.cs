@@ -31,7 +31,7 @@ public sealed record SwordAiComparisonOutcome(ImmutableArray<SwordAiComparedCand
 /// <summary>Failure has no partial payload and returns the original pair RNG, including a late second failure.</summary>
 /// <remarks>Pair rollback is a managed unsupported/exhaustion policy, not original C search rewind behavior.</remarks>
 public sealed record SwordAiComparisonResult(SwordAiComparisonDisposition Disposition, SwordAiComparisonRejection Rejection,
-    int? FailedCandidateIndex, SwordAiScoringRejection ScoringRejection, SwordAiCandidateRejection ProjectionRejection,
+    int? FailedCandidateIndex, AiScoringRejection ScoringRejection, SwordAiCandidateRejection ProjectionRejection,
     SwordAiComparisonOutcome? Outcome, FftRandomState RngState);
 
 /// <summary>Pure opt-in comparison of an incumbent and challenger, freshly scored on the same original state.</summary>
@@ -43,7 +43,7 @@ public static class SwordAiCandidateComparison
 {
     public static SwordAiComparisonResult Evaluate(AttackBattleSnapshot state, SwordAiCandidate incumbent,
         SwordAiCandidate challenger, BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile,
-        SwordAiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile, FftRandomState decisionRng)
+        AiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile, FftRandomState decisionRng)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(incumbent);
@@ -52,7 +52,7 @@ public static class SwordAiCandidateComparison
         ArgumentNullException.ThrowIfNull(scoreProfile);
         ArgumentNullException.ThrowIfNull(comparisonProfile);
         SwordAiComparisonResult Reject(SwordAiComparisonRejection reason, int? index = null,
-            SwordAiScoringRejection scoreReason = SwordAiScoringRejection.None,
+            AiScoringRejection scoreReason = AiScoringRejection.None,
             SwordAiCandidateRejection projectionReason = SwordAiCandidateRejection.None) =>
             new(SwordAiComparisonDisposition.Rejected, reason, index, scoreReason, projectionReason, null, decisionRng);
 
@@ -94,7 +94,7 @@ public static class SwordAiCandidateComparison
         {
             // Exactly one fresh score per candidate, both on original state; only decision RNG is carried.
             var result = SwordAiCandidateScoring.Evaluate(state, candidate, weapon, candidateProfile, scoreProfile, rng);
-            if (result.Disposition == SwordAiScoringDisposition.Rejected)
+            if (result.Disposition == AiScoringDisposition.Rejected)
                 return Reject(SwordAiComparisonRejection.EvaluationRejected, evaluated.Count, result.Rejection,
                     result.Projection?.Rejection ?? SwordAiCandidateRejection.None);
             evaluated.Add(new(candidate, result));
@@ -116,7 +116,7 @@ public static class SwordAiCandidateComparison
             reason = comparison.Reason;
         }
         return new(retained is null ? SwordAiComparisonDisposition.NoScoredCandidate : SwordAiComparisonDisposition.Compared,
-            SwordAiComparisonRejection.None, null, SwordAiScoringRejection.None, SwordAiCandidateRejection.None,
+            SwordAiComparisonRejection.None, null, AiScoringRejection.None, SwordAiCandidateRejection.None,
             new(evaluated.ToImmutable(), cache, retained, reason), rng);
     }
 
