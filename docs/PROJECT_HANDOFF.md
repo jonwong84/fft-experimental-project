@@ -15,6 +15,10 @@ implementation child before coding; no runtime authority or activation in this s
 An unwritten actor score within range4 still rejects. Full source masks/provenance
 remain diagnostic; unknown retained/event workspace history and general lists stay open.
 
+The [AI completion roadmap](development/ai-completion-roadmap.md) preserves the
+remaining breadth, integration, compatibility and replaceability goals. Use it
+when selecting later children; the backlog still owns work order and deferral.
+
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
 Framework owns [Attack/Wait/turn-ending Move transactions](architecture/ai-command-boundary.md) and

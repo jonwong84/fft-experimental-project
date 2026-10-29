@@ -118,6 +118,9 @@ decision traces and compare implementations on identical inputs. Brief enemy pre
 pauses remain outside simulation/time/RNG. [Formula
 direction](development/editable-combat-formulas.md).
 
+The [AI completion roadmap](development/ai-completion-roadmap.md) preserves the eight
+remaining work areas, dependencies and completion criteria; select bounded children here.
+
 [Detailed scope](history/2026-10-27/BACKLOG.md#zod-038--complete-combat-formulas-targeting-rewards-and-ai).
 
 ### ZOD-039 — Expand typed definitions and import to the baseline catalog
