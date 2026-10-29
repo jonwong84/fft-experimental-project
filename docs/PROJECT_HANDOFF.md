@@ -6,17 +6,17 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-184: execute one fresh post-ACT Move/END decision.**
-The [handoff design](architecture/zod-183-post-act-command-boundary.md) extends
-the existing Framework planning transaction with a turn-ending path Move and
-immediate actual-receipt facing settlement; same-tile END uses Wait. Add explicit
-fresh in/out-of-reach AI adapters over implemented post-ACT selection. Preserve
-atomic post-ACT rollback, current actor/RNG authority and legacy command behavior.
-This live entry is designed, not implemented; Move-first continuations stay separate.
+**ZOD-185: trace ordinary ability-list iteration beyond the Attack pilot.**
+The [closed ordinary command lifecycle](behavior/sword-ai-post-act-execution.md)
+now covers pre-ACT/Move-first and post-ACT Move/END with settled facing. Pin and
+trace one ordinary ability-entry transition, including usable/skip logic,
+entry-local resets, shared masks/baselines/ranks and RNG. Select one next
+non-Attack child from evidence; broader search remains incomplete. No host/editor
+activation or general replacement interface is implied.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
-Framework owns [Attack/Wait transactions](architecture/ai-command-boundary.md) and
+Framework owns [Attack/Wait/turn-ending Move transactions](architecture/ai-command-boundary.md) and
 [planned Move continuations](behavior/planned-move-continuation.md), verifying
 fresh planning/RNG before publishing commands. AI cannot construct trusted
 sessions/receipts and has no production friend access.
@@ -37,27 +37,31 @@ RNG without partial output. Original supplied-scenario APIs stay unchanged. Thes
 pure queries grant no command authority or live RNG commit; execution adapters
 own that separate boundary.
 
-Full AI search, general multi-entry ranking/lottery, replaceable decision interface,
-post-ACT live handoff and presentation activation remain future work.
+Post-ACT execution now privately owns selection/dispatch, adopts verified RNG,
+and commits either a confirmed path plus actual-receipt facing, or same-tile END.
+It stops after settlement without a Move-first token, extra Attack or clock advance.
+Full AI search, general multi-entry ranking/lottery, replaceable decision interface
+and presentation activation remain future work.
 Original UNIT_SLOT_COUNT is **21**; the old 26-foe wrap example is inadmissible.
 This does not select a fixed managed roster size. The contract records the erratum
 without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-182, [fresh post-ACT selection](behavior/sword-ai-post-act-selection.md).
-  Owned preparation/scenarios plus eight zero-hit rolls yield MoveOnly at D0.
-  Nine scenario tests across ZOD-181/182 cover masks/streams, no Attack scan,
-  Critical/knockback, exact budgets, late rollback and actor/order replay.
+- Latest implementation: ZOD-184, [live post-ACT Move/END](behavior/sword-ai-post-act-execution.md).
+  Framework owns invocation-bound turn-ending paths and actual-receipt facing;
+  explicit AI in/out-of-reach adapters own fresh selection/dispatch once. Ten
+  scenarios cover literal complete flows, stay/out-of-reach, current authority,
+  exact budgets, late rollback and Critical/knockback actor/order replay.
 - Latest design: ZOD-183, [post-ACT Move/END command boundary](architecture/zod-183-post-act-command-boundary.md).
   Framework owns fresh proposals, RNG adoption, actual paths and receipt-bound
-  facing; no Move-first token is issued after ACT. Live implementation is ZOD-184.
+  facing; no Move-first token is issued after ACT. Implemented by ZOD-184.
   The [ZOD-176 source lifecycle](architecture/zod-176-ai-act-first.md) is unchanged.
-  Clean pinned audit: `scratch/ai-post-act-181-183/source.json`
+  Clean pinned audit: `scratch/ai-post-act-execution-184/source.json`
   (20 ACT-first anchors plus inherited receipts).
 - Validation: locked restore, zero-warning/error Release build,
-  **3,976 .NET cases / 516 Python tests**, including all 794 AI cases and owner content drafts.
-  Logs/results: ignored `scratch/ai-post-act-181-183/` (`full-trx/` has seven full TRX files).
+  **3,986 .NET cases / 516 Python tests**, including all 799 AI cases and owner content drafts.
+  Logs/results: ignored `scratch/ai-post-act-execution-184/` (`full-trx/` has seven full TRX files).
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

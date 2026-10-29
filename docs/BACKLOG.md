@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-184 (implementation).** Post-ACT command handoff design ZOD-183 is complete.
-There are 33 open tickets below. The 151 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-185 (source investigation).** Live post-ACT Move/END ZOD-184 is complete.
+There are 33 open tickets below. The 152 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,19 +29,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-184 — Execute one fresh post-ACT Move/END decision
+### ZOD-185 — Trace ordinary ability-list iteration beyond the Attack pilot
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-183
+**Type:** Source investigation · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-184
 
-Implement the [post-ACT command design](architecture/zod-183-post-act-command-boundary.md):
-extend the existing invocation-bound Framework transaction with an ACT-used
-turn-ending path Move and immediate actual-receipt facing settlement. Retain
-Attack/Wait behavior and the separate Move-first continuation. Add explicit
-fresh in/out-of-reach AI execution entries owning selection/dispatch once;
-same-tile END uses Wait. Verify current actor/choices, both RNG copies, exact
-revision budgets, actual path/receipt/facing, literal streams, late rollback and
-actor/order replay without rewinding a prior published Attack. No public cached
-plan/RNG/callback input, second selector, clock advance, broad interface or host activation.
+The [ordinary Attack lifecycle](behavior/sword-ai-post-act-execution.md) now has
+explicit command paths. Pin the read-only reference and trace one transition
+between ordinary ability-list entries: cursor/termination, usable/skip behavior,
+entry-local resets, shared masks/baselines/ranks, arithmetic and retained RNG.
+Choose one next non-Attack ability-search child from source evidence, preferring
+an existing executable ability when suitable. Record required semantic flag/
+projection support and literal descriptions before porting it. Preserve the
+closed Attack APIs and authority boundary; no bulk translation, new gameplay,
+broad replacement interface, UI/editor work or host activation in this ticket.
 
 ## Existing validation gates
 

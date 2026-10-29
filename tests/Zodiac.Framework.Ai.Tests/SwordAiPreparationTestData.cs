@@ -38,12 +38,12 @@ internal static class SwordAiPreparationTestData
     }
     internal static string Serialize(object? value) => JsonSerializer.Serialize(value);
     internal static FacingTurnState Ready(int evade = 89, uint entryWord = 1, ulong count = 7,
-        bool second = false, bool reverse = false, bool outOfReach = false, bool move = true, TilePosition? origin = null)
+        bool second = false, bool reverse = false, bool outOfReach = false, bool move = true, TilePosition? origin = null, int movePoints = 1)
     {
         var actor = second ? B : A; var target = second ? A : B;
         // Inverse BIOS step gives the requested entry through an actual upkeep draw; legacy fixtures then Move.
         var rng = new FftRandomState(unchecked((entryWord - 12345u) * 4005161829u), count - 1);
-        var movement = new UnitMovementProfile(1, 0, 6, UnitMovementMode.Normal, UnitMovementTraits.None,
+        var movement = new UnitMovementProfile(movePoints, 0, 6, UnitMovementMode.Normal, UnitMovementTraits.None,
             [KeyValuePair.Create(Ground, new TerrainMovementCost(1))]);
         BattleUnitState[] bodies = [new(actor, origin ?? new(3, 1, 0), movement), new(target, new(1, 1, 0), movement)];
         TurnUnitState[] turns = [new(actor, 5, 110, 2), new(target, 5, 90, 17)];
@@ -60,9 +60,9 @@ internal static class SwordAiPreparationTestData
         return moved.Accepted ? moved.State : throw new InvalidOperationException("Synthetic Move setup failed.");
     }
 
-    internal static FacingTurnState AfterAct(int evade = 0, int power = 5, bool second = false, bool reverse = false, uint entryWord = 1)
+    internal static FacingTurnState AfterAct(int evade = 0, int power = 5, bool second = false, bool reverse = false, uint entryWord = 1, ulong count = 7)
     {
-        var ready = Ready(evade: evade, entryWord: entryWord, second: second, reverse: reverse, move: false, origin: new(2, 1, 0));
+        var ready = Ready(evade: evade, entryWord: entryWord, count: count, second: second, reverse: reverse, move: false, origin: new(2, 1, 0));
         var result = SwordAiActFirstExecution.StartPreparedInReach(ready, Request(second, reverse: reverse), new(Weapon, power),
             Candidate, Score, Refresh, Preparation, SwordAiScenarioTeam.NonBlue, new(true, true, true, true, true, true),
             new(true, true, true, true));

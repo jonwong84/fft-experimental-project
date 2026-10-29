@@ -16,8 +16,8 @@ AI namespaces become `Zodiac.Framework.Ai` / `.Tests`.
 
 Framework invokes a synchronous planner once after checking the active actor,
 pending facing and revision. A new context exposes that exact immutable battle,
-actor and incoming RNG. Only that context can prepare an opaque Attack, Wait or
-rejection. Context preparation closes when the callback returns or throws.
+actor and incoming RNG. Only that context can prepare an opaque Attack, Wait,
+turn-ending Move or rejection. Context preparation closes when the callback returns or throws.
 
 The returned decision must belong to this invocation. A cached decision from an
 older invocation rejects even on an identical immutable input. Callers cannot
@@ -36,12 +36,13 @@ reported draw. A replacement policy may intentionally consume a different count.
 Only then does Framework stage RNG into both snapshot copies, retaining profile,
 lineage and revision, and delegate the actual command to existing rules. Actor
 identity is rechecked. Decision/adoption adds no revision or clock event; an
-accepted command retains the existing single revision increment and fully
-settled receipt publication. Rejected operations publish the original session,
+Attack/Wait retains its existing revision behavior. The post-ACT turn-ending
+Move uses two increments for actual path and receipt-bound facing settlement.
+Rejected operations publish the original session,
 empty events and no success diagnostics, including late command failure.
 
 AI's existing context admission and reason-only failure mapping stay in AI.
-For fallback Wait, AI resolves fresh facing against the same settled snapshot;
+For legacy fallback Wait, AI resolves fresh facing against the same settled snapshot;
 Framework applies the fixed facing through its ordinary Wait command. Standalone
 AI Wait/receipt adapters retain their behavior. Read-only validation queries may
 be public; their results do not grant command authority.
@@ -60,9 +61,11 @@ activation, original refresh prefix or broad replacement contract is introduced.
 The existing concrete planner provides the consumer needed for this boundary.
 ZOD-156 remains the next original-behavior investigation after extraction.
 
-The later [ZOD-183 post-ACT design](zod-183-post-act-command-boundary.md) proposes
-a narrow turn-ending path Move extension to this same transaction, with actual
-receipt/facing settlement. That entry is not implemented; ZOD-184 owns it.
+The [ZOD-183 post-ACT design](zod-183-post-act-command-boundary.md) is implemented
+by [ZOD-184](../behavior/sword-ai-post-act-execution.md): the same transaction owns
+an ACT-used turn-ending path Move and immediate actual-receipt facing settlement.
+Deferred semantic facing resolves at the destination. Late failure discards the
+whole private Move/facing transaction, preserving the published post-ACT input.
 
 ## Implementation validation
 

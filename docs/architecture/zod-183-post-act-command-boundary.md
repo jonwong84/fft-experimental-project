@@ -1,6 +1,8 @@
 # ZOD-183 — Framework-owned post-ACT Move/END handoff
 
-Design completed 2026-10-29; **the new command entry is not implemented**.
+Design completed 2026-10-29; implemented by
+[ZOD-184](../behavior/sword-ai-post-act-execution.md). The design below retains
+its original prospective acceptance criteria; the implementation note records results.
 Read-only clean fft_decomp `11464943bbdbd2a0af022d90cb7f10455cf911df`;
 managed base `6bc2a90`. Builds on [fresh post-ACT selection](../behavior/sword-ai-post-act-selection.md),
 the [controlled planning transaction](ai-command-boundary.md) and
