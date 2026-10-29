@@ -6,9 +6,9 @@ namespace Zodiac.Framework.Tests;
 [Trait("Ruleset", "OriginalFft")]
 public sealed class TargetedAbilityDecisionTests
 {
-    private static readonly BattleUnitId A = new("sample:unit/a"), B = new("sample:unit/b");
-    private static readonly AssetId Stone = new("sample:ability/throw-stone");
-    private static readonly TerrainSurfaceId Ground = new("sample:terrain/ordinary-ground");
+    internal static readonly BattleUnitId A = new("sample:unit/a"), B = new("sample:unit/b");
+    internal static readonly AssetId Stone = new("sample:ability/throw-stone");
+    internal static readonly TerrainSurfaceId Ground = new("sample:terrain/ordinary-ground");
 
     [Fact]
     public void Fresh_planner_adopts_only_RNG_then_uses_real_current_PA_damage_push_or_four_draw_miss()
@@ -169,9 +169,9 @@ public sealed class TargetedAbilityDecisionTests
         }
     }
 
-    private static TargetedAbilityBattleProfile Profile(bool granted = true, TerrainSurfaceId? ground = null) =>
+    internal static TargetedAbilityBattleProfile Profile(bool granted = true, TerrainSurfaceId? ground = null) =>
         new(ground ?? Ground, [new(Stone)], [new(A, granted ? [Stone] : [], 0), new(B, granted ? [Stone] : [], 0)]);
-    private static FftRandomState PlanRng(FftRandomState rng)
+    internal static FftRandomState PlanRng(FftRandomState rng)
     { for (int i = 0; i < 8; i++) rng = new FftBiosRandom().Next(rng).State; return rng; }
     private static FacingDecisionResult<string> Cast(FacingTurnState state, UseTargetedAbilityCommand? command = null,
         TargetedAbilityBattleProfile? profile = null)
@@ -183,8 +183,8 @@ public sealed class TargetedAbilityDecisionTests
     private static void Atomic(FacingTurnState state, FacingDecisionResult<string> result, FacingDecisionRejection reason)
     { Assert.False(result.Accepted); Assert.Equal(reason, result.Rejection); Assert.Same(state, result.State);
         Assert.Empty(result.Events); Assert.Null(result.Diagnostic); Assert.Null(result.Path); }
-    private static TilePosition Position(FacingTurnState state, BattleUnitId id) => state.Battle.TurnBattle.Battle.Units.Single(u => u.Id == id).Position;
-    private static string Snapshot(FacingTurnState state) => JsonSerializer.Serialize(new {
+    internal static TilePosition Position(FacingTurnState state, BattleUnitId id) => state.Battle.TurnBattle.Battle.Units.Single(u => u.Id == id).Position;
+    internal static string Snapshot(FacingTurnState state) => JsonSerializer.Serialize(new {
         state.Revision, Combat = state.Battle.Combatants.OrderBy(u => u.UnitId.Value),
         Turns = state.Battle.TurnBattle.Turns.Units.OrderBy(u => u.Id.Value), state.Battle.TurnBattle.Turns.Phase,
         state.Battle.TurnBattle.Turns.RngState, state.Battle.TurnBattle.Turns.Ticks,
@@ -192,7 +192,7 @@ public sealed class TargetedAbilityDecisionTests
             .Select(u => new { u.Id, u.Position, u.HasMoved, u.Move }) });
     private static FacingTurnState Moved(FacingTurnState state)
     { var moved = FacingTurnPathMovement.MoveAlongPath(state, new(A, new(3, 1, 0)), new(Ground, A, B)); Assert.True(moved.Accepted); return moved.State; }
-    private static FacingTurnState Ready(ulong count = 7, int pa = 5, int evade = 0, int hp = 50,
+    internal static FacingTurnState Ready(ulong count = 7, int pa = 5, int evade = 0, int hp = 50,
         TilePosition? target = null, bool second = false, bool reverse = false)
     {
         var actor = second ? B : A; var enemy = second ? A : B; var rng = new FftRandomState(1, count);

@@ -2,7 +2,7 @@ using System.Collections.Immutable;
 
 namespace Zodiac.Framework;
 
-internal enum FacingMoveIntentKind { Rejected, Attack, Wait }
+internal enum FacingMoveIntentKind { Rejected, Attack, Wait, TargetedAbility }
 
 /// <summary>An invocation-bound planned path Move and frozen follow-up; only the live context can issue one.</summary>
 public sealed class FacingMoveDecision<T>
@@ -14,12 +14,16 @@ public sealed class FacingMoveDecision<T>
     internal AttackUnitCommand? Attack { get; }
     internal BoundedSwordWeapon? Weapon { get; }
     internal FacingChoice? Facing { get; }
+    internal UseTargetedAbilityCommand? TargetedAbility { get; }
+    internal TargetedAbilityBattleProfile? AbilityProfile { get; }
     internal FftRandomState Rng { get; }
     internal T? Diagnostic { get; }
     internal FacingMoveDecision(FacingMoveDecisionContext owner, FacingMoveIntentKind kind, FftRandomState rng,
         T? diagnostic, MoveUnitCommand? move = null, FlatOrdinaryMovementProfile? profile = null,
-        AttackUnitCommand? attack = null, BoundedSwordWeapon? weapon = null, FacingChoice? facing = null)
-    { Owner = owner; Kind = kind; Rng = rng; Diagnostic = diagnostic; Move = move; Profile = profile; Attack = attack; Weapon = weapon; Facing = facing; }
+        AttackUnitCommand? attack = null, BoundedSwordWeapon? weapon = null, FacingChoice? facing = null,
+        UseTargetedAbilityCommand? targetedAbility = null, TargetedAbilityBattleProfile? abilityProfile = null)
+    { Owner = owner; Kind = kind; Rng = rng; Diagnostic = diagnostic; Move = move; Profile = profile; Attack = attack; Weapon = weapon; Facing = facing;
+        TargetedAbility = targetedAbility; AbilityProfile = abilityProfile; }
 }
 
 public sealed class FacingMoveDecisionContext
@@ -46,6 +50,16 @@ public sealed class FacingMoveDecisionContext
         CheckOpen(); ArgumentNullException.ThrowIfNull(move); ArgumentNullException.ThrowIfNull(profile); ArgumentNullException.ThrowIfNull(facing);
         return new(this, FacingMoveIntentKind.Wait, rng, diagnostic, move, profile, facing: facing);
     }
+
+    /// <summary>Freeze a targeted ACT across one confirmed Move; actual range is checked on continuation.</summary>
+    public FacingMoveDecision<T> PrepareMoveThenTargetedAbility<T>(MoveUnitCommand move, FlatOrdinaryMovementProfile profile,
+        UseTargetedAbilityCommand command, TargetedAbilityBattleProfile abilityProfile, FftRandomState rng, T diagnostic)
+    {
+        CheckOpen(); ArgumentNullException.ThrowIfNull(move); ArgumentNullException.ThrowIfNull(profile);
+        ArgumentNullException.ThrowIfNull(command); ArgumentNullException.ThrowIfNull(abilityProfile);
+        return new(this, FacingMoveIntentKind.TargetedAbility, rng, diagnostic, move, profile,
+            targetedAbility: command, abilityProfile: abilityProfile);
+    }
 }
 
 /// <summary>Opaque in-memory follow-up authority bound to one exact, fully settled Move result; not a save token.</summary>
@@ -60,10 +74,13 @@ public sealed class FacingMoveContinuation
     internal AttackUnitCommand? Attack { get; }
     internal BoundedSwordWeapon? Weapon { get; }
     internal FacingChoice? Facing { get; }
+    internal UseTargetedAbilityCommand? TargetedAbility { get; }
+    internal TargetedAbilityBattleProfile? AbilityProfile { get; }
     internal FacingMoveContinuation(FacingTurnState state, BattleUnitId actorId, FacingMoveIntentKind kind,
-        AttackUnitCommand? attack, BoundedSwordWeapon? weapon, FacingChoice? facing)
+        AttackUnitCommand? attack, BoundedSwordWeapon? weapon, FacingChoice? facing,
+        UseTargetedAbilityCommand? targetedAbility = null, TargetedAbilityBattleProfile? abilityProfile = null)
     { ExpectedState = state; ExpectedBattle = state.Battle; ActorId = actorId; Revision = state.Revision; Lineage = state.Lineage;
-        Kind = kind; Attack = attack; Weapon = weapon; Facing = facing; }
+        Kind = kind; Attack = attack; Weapon = weapon; Facing = facing; TargetedAbility = targetedAbility; AbilityProfile = abilityProfile; }
 }
 
 public enum FacingMoveRejection
@@ -84,8 +101,8 @@ public sealed record FacingMoveContinueResult(FacingMoveRejection Rejection, Fac
     public ImmutableArray<AttackResultEvent> Events => Transition.Events;
 }
 
-/// <summary>Framework-owned fresh planning, actual path Move and exact-session retained Attack/Wait.</summary>
-/// <remarks>ZOD-167/168. Each published command is atomic; follow-up failure never rewinds a successful Move.</remarks>
+/// <summary>Framework-owned fresh planning, actual path Move and exact-session retained Attack/targeted ACT/Wait.</summary>
+/// <remarks>ZOD-167/168/205. Each published command is atomic; follow-up failure never rewinds a successful Move.</remarks>
 public static class FacingMoveDecisionBattle
 {
     public static FacingMoveResult<T> ExecuteMove<T>(FacingTurnState state, BattleUnitId actorId,
@@ -105,7 +122,8 @@ public static class FacingMoveDecisionBattle
         finally { context.Close(); }
         if (decision is null || !ReferenceEquals(decision.Owner, context)) return Reject(FacingMoveRejection.InvalidDecision);
         if (decision.Kind == FacingMoveIntentKind.Rejected) return Reject(FacingMoveRejection.DecisionRejected);
-        if (decision.Move!.UnitId != actorId || !ValidFollowup(context.Battle, actorId, decision.Kind, decision.Attack, decision.Facing))
+        if (decision.Move!.UnitId != actorId || !ValidFollowup(context.Battle, actorId, decision.Kind, decision.Attack, decision.Facing,
+                decision.TargetedAbility, decision.AbilityProfile))
             return Reject(FacingMoveRejection.InvalidIntent);
         if (!FftBiosRandom.IsForwardCheckpoint(context.RngState, decision.Rng)) return Reject(FacingMoveRejection.InvalidRandomProgress);
 
@@ -115,7 +133,8 @@ public static class FacingMoveDecisionBattle
         var staged = new FacingTurnState(new(new(battle, turns), state.Battle.Combatants), state.Profile, state.Revision, null, state.Lineage);
         var moved = FacingTurnPathMovement.MoveAlongPath(staged, decision.Move, decision.Profile!);
         if (!moved.Accepted) return Reject(FacingMoveRejection.MoveRejected, moved.FacingRejection, moved.TurnRejection, moved.PathRejection);
-        var continuation = new FacingMoveContinuation(moved.State, actorId, decision.Kind, decision.Attack, decision.Weapon, decision.Facing);
+        var continuation = new FacingMoveContinuation(moved.State, actorId, decision.Kind, decision.Attack, decision.Weapon, decision.Facing,
+            decision.TargetedAbility, decision.AbilityProfile);
         return new(FacingMoveRejection.None, FacingTurnRejection.None, TurnCycleRejection.None, FlatMovementRejection.None,
             moved.State, moved.Events, moved.Path, continuation, decision.Diagnostic);
     }
@@ -134,20 +153,28 @@ public static class FacingMoveDecisionBattle
         if (guard != FacingTurnRejection.None) return Reject(FacingMoveRejection.AuthorityRejected, guard);
         var turn = state.Battle.TurnBattle.Turns.Units.Single(u => u.Id == actorId);
         if (!turn.MovementTaken || turn.ActionTaken) return Reject(FacingMoveRejection.UnavailableChoices);
-        var result = continuation.Kind == FacingMoveIntentKind.Attack
-            ? FacingTurnBattle.Attack(state, continuation.Attack!, continuation.Weapon)
-            : FacingTurnBattle.WaitWithFacing(state, actorId, continuation.Facing!);
+        var result = continuation.Kind switch
+        {
+            FacingMoveIntentKind.Attack => FacingTurnBattle.Attack(state, continuation.Attack!, continuation.Weapon),
+            FacingMoveIntentKind.TargetedAbility => FacingTurnBattle.UseTargetedAbility(state, continuation.TargetedAbility!, continuation.AbilityProfile!),
+            _ => FacingTurnBattle.WaitWithFacing(state, actorId, continuation.Facing!)
+        };
         return result.Accepted ? new(FacingMoveRejection.None, result)
             : new(FacingMoveRejection.CommandRejected, result with { State = state, Events = [] });
     }
 
     private static bool ValidFollowup(AttackBattleSnapshot state, BattleUnitId actorId, FacingMoveIntentKind kind,
-        AttackUnitCommand? attack, FacingChoice? facing)
+        AttackUnitCommand? attack, FacingChoice? facing, UseTargetedAbilityCommand? targetedAbility, TargetedAbilityBattleProfile? abilityProfile)
     {
         bool KnownEnemy(BattleUnitId target) => target != actorId && state.Combatants.Any(u => u.UnitId == target && u.Hp > 0);
         return kind switch
         {
             FacingMoveIntentKind.Attack => attack is not null && attack.ActorId == actorId && KnownEnemy(attack.TargetId),
+            // Original range may be false before Move. All other admission must already hold; real range is rechecked after Move.
+            FacingMoveIntentKind.TargetedAbility => targetedAbility is not null && abilityProfile is not null &&
+                targetedAbility.ActorId == actorId && KnownEnemy(targetedAbility.TargetId) &&
+                TargetedAbilityBattleSimulator.ValidateCommand(state, targetedAbility, abilityProfile) is
+                    AttackCommandRejection.None or AttackCommandRejection.OutOfRange,
             FacingMoveIntentKind.Wait => facing switch
             {
                 FacingChoice.Fixed choice => Enum.IsDefined(choice.Facing),

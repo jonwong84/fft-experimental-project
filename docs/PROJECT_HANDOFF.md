@@ -6,13 +6,13 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-205: retain a targeted ACT across a confirmed Move.**
-The [targeted-ability transaction](behavior/targeted-ability-decision.md) now owns
-actual ACT/RNG adoption and complete-result receipts. Extend the existing Move
-proposal/token with a frozen targeted command/profile, adopting RNG once and
-continuing on actual post-Move state. Failed ACT preserves the committed Move.
-Stop before AI adapters or post-ACT pair reselection. Unknown scores within range4
-still reject; retained/event workspace history and general lists stay open.
+**ZOD-206: execute a fresh in-reach pair Move-first decision.**
+The [targeted Move continuation](behavior/targeted-move-continuation.md) now freezes
+actual ACT after a confirmed path. Own fresh pair selection inside that transaction,
+derive dispatch and map typed Attack/Throw Stone/MoveOnly proposals without cached
+results or repeated RNG adoption. Stop before ACT-first/out-of-reach adapters or
+pair post-ACT reselection. Unknown scores within range4 still reject; retained/event
+workspace history and general lists stay open.
 
 The [AI completion roadmap](development/ai-completion-roadmap.md) preserves the
 remaining breadth, integration, compatibility and replaceability goals. Use it
@@ -52,20 +52,20 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-204, [targeted ACT authority](behavior/targeted-ability-decision.md).
-  Invocation-bound command/profile proposals use actual Throw Stone rules, atomic
-  RNG adoption and complete-result receipts. Seven scenarios cover four/seven
-  actual draws, PA/push/KO, stale authority, budgets, rollback and replay.
-  Pure pair AI selection remains separate from this Framework primitive.
+- Latest implementation: ZOD-205, [targeted Move continuation](behavior/targeted-move-continuation.md).
+  An immutable command/profile survives confirmed Move; Continue accepts only the
+  exact session/actor/token and uses current RNG. Failed ACT preserves committed
+  Move. Six scenarios cover actual effects, stale authority, budgets and replay.
+  Fresh pair AI selection remains separate from this Framework primitive.
 - Latest investigation: ZOD-203, [Throw Stone authority](architecture/zod-203-throw-stone-command-boundary.md).
   Ten source files/21 functions and fourteen managed study snapshots distinguish
   prediction from real resolution, dispatch/reselection and per-command transactions.
   Eight supplied checkpoint descriptions cover four/seven draws and push/KO/rollback;
   those descriptions do not execute the Framework transactions validated by ZOD-204.
 - Validation: locked restore, zero-warning/error Release rebuild,
-  **4,061 .NET cases** (1,449 Framework, 867 AI, including owner drafts),
+  **4,067 .NET cases** (1,455 Framework, 867 AI, including owner drafts),
   **532 Python tests** and pinned source/prepared audit passed. Logs and seven
-  full TRX files: ignored `scratch/targeted-ability-decision-204/`.
+  full TRX files: ignored `scratch/targeted-move-continuation-205/`.
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

@@ -22,6 +22,10 @@ callback returns or throws. [ZOD-204](../behavior/targeted-ability-decision.md)
 adds targeted ACT with its distinct immutable ability/grant profile; actual
 resolution and complete-result receipt creation stay in Framework.
 
+[ZOD-205](../behavior/targeted-move-continuation.md) extends the existing Move
+proposal/continuation with frozen targeted ACT, preserving exact-session binding
+and per-command atomicity. Failed follow-up never rewinds a published Move.
+
 The returned decision must belong to this invocation. A cached decision from an
 older invocation rejects even on an identical immutable input. Callers cannot
 construct decisions, trusted sessions or completion receipts. This guarantees

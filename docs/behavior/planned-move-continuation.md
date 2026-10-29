@@ -5,6 +5,10 @@ implemented in Framework, without an AI reference or changes to existing APIs.
 Original behavior remains pinned to read-only fft_decomp
 `11464943bbdbd2a0af022d90cb7f10455cf911df` through the linked source contracts.
 
+[ZOD-205](targeted-move-continuation.md) additionally supports frozen targeted ACT
+using the same transaction/token. The original Attack/Wait behavior described
+below remains unchanged.
+
 FacingMoveDecisionBattle.ExecuteMove validates active ownership, both unused
 choices and revision room before invoking one synchronous planner. The context
 issues only invocation-bound MoveThenAttack/Wait proposals. Ownership, structural
