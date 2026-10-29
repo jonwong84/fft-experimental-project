@@ -83,6 +83,15 @@ public static class FacingTurnBattle
         return Delegate(state, () => AttackBattleSimulator.Attack(state.Battle, command, weapon, state.Profile));
     }
 
+    /// <summary>Apply actual targeted-ability rules; completion binds the full damage/KO/displacement result.</summary>
+    /// <remarks>ZOD-203/204, reference 11464943bbdbd2a0af022d90cb7f10455cf911df. No AI projection or automatic facing.</remarks>
+    public static FacingTurnResult UseTargetedAbility(FacingTurnState state, UseTargetedAbilityCommand command,
+        TargetedAbilityBattleProfile profile)
+    {
+        ArgumentNullException.ThrowIfNull(command); ArgumentNullException.ThrowIfNull(profile);
+        return Delegate(state, () => TargetedAbilityBattleSimulator.Apply(state.Battle, command, profile));
+    }
+
     /// <summary>Pure query for the current active or pending actor. It consumes neither revision nor receipt, even at counter limits.</summary>
     public static FacingChoiceResult Probe(FacingTurnState state, BattleUnitId actorId, FacingChoice choice)
     {

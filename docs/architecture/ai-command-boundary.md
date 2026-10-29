@@ -16,8 +16,11 @@ AI namespaces become `Zodiac.Framework.Ai` / `.Tests`.
 
 Framework invokes a synchronous planner once after checking the active actor,
 pending facing and revision. A new context exposes that exact immutable battle,
-actor and incoming RNG. Only that context can prepare an opaque Attack, Wait,
-turn-ending Move or rejection. Context preparation closes when the callback returns or throws.
+actor and incoming RNG. Only that context can prepare an opaque Attack, targeted
+ACT, Wait, turn-ending Move or rejection. Context preparation closes when the
+callback returns or throws. [ZOD-204](../behavior/targeted-ability-decision.md)
+adds targeted ACT with its distinct immutable ability/grant profile; actual
+resolution and complete-result receipt creation stay in Framework.
 
 The returned decision must belong to this invocation. A cached decision from an
 older invocation rejects even on an identical immutable input. Callers cannot

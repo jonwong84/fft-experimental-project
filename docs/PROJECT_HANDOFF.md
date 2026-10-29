@@ -6,13 +6,13 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-204: add a Framework-owned targeted-ability ACT transaction.**
-The [source/design investigation](architecture/zod-203-throw-stone-command-boundary.md)
-selects invocation-bound targeted proposals, RNG adoption and a facing-session delegate
-to existing actual Throw Stone rules. Keep complete-result receipt/revision binding and
-atomic rejection. Stop before AI adapters, Move continuation or post-ACT pair reselection.
-Pure pair selection remains separate from authority; unknown scores within range4
-still reject. Retained/event workspace history and general lists stay open.
+**ZOD-205: retain a targeted ACT across a confirmed Move.**
+The [targeted-ability transaction](behavior/targeted-ability-decision.md) now owns
+actual ACT/RNG adoption and complete-result receipts. Extend the existing Move
+proposal/token with a frozen targeted command/profile, adopting RNG once and
+continuing on actual post-Move state. Failed ACT preserves the committed Move.
+Stop before AI adapters or post-ACT pair reselection. Unknown scores within range4
+still reject; retained/event workspace history and general lists stay open.
 
 The [AI completion roadmap](development/ai-completion-roadmap.md) preserves the
 remaining breadth, integration, compatibility and replaceability goals. Use it
@@ -20,7 +20,7 @@ when selecting later children; the backlog still owns work order and deferral.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
-Framework owns [Attack/Wait/turn-ending Move transactions](architecture/ai-command-boundary.md) and
+Framework owns [Attack/targeted ACT/Wait/turn-ending Move transactions](architecture/ai-command-boundary.md) and
 [planned Move continuations](behavior/planned-move-continuation.md), verifying
 fresh planning/RNG before publishing commands. AI cannot construct trusted
 sessions/receipts and has no production friend access.
@@ -52,21 +52,20 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-202, [out-of-reach selection](behavior/attack-throw-stone-ai-out-of-reach-selection.md).
-  Range filtering proves which unwritten cells cannot be read before adapting the
-  scan mask. Full source masks/provenance and one owned prefix/reach draw survive;
-  range4 unknown actors reject. Six scenarios cover plans, costs, budgets and replay.
-  [In-reach selection](behavior/attack-throw-stone-ai-prepared-selection.md) retains its behavior.
+- Latest implementation: ZOD-204, [targeted ACT authority](behavior/targeted-ability-decision.md).
+  Invocation-bound command/profile proposals use actual Throw Stone rules, atomic
+  RNG adoption and complete-result receipts. Seven scenarios cover four/seven
+  actual draws, PA/push/KO, stale authority, budgets, rollback and replay.
+  Pure pair AI selection remains separate from this Framework primitive.
 - Latest investigation: ZOD-203, [Throw Stone authority](architecture/zod-203-throw-stone-command-boundary.md).
   Ten source files/21 functions and fourteen managed study snapshots distinguish
   prediction from real resolution, dispatch/reselection and per-command transactions.
   Eight supplied checkpoint descriptions cover four/seven draws and push/KO/rollback;
-  proposed authority acceptance awaits ZOD-204, not simulated transactions.
-- Validation: runtime unchanged; last locked restore, clean Release rebuild and
-  **4,054 .NET cases** (867 AI, including owner drafts) are ZOD-202, with seven
-  full TRX files in ignored `scratch/ai-pair-out-of-reach-202/full-trx/`.
-  ZOD-203 passed **532 Python tests** and the pinned source/prepared audit;
-  reports: ignored `scratch/ai-throw-stone-command-203/`.
+  those descriptions do not execute the Framework transactions validated by ZOD-204.
+- Validation: locked restore, zero-warning/error Release rebuild,
+  **4,061 .NET cases** (1,449 Framework, 867 AI, including owner drafts),
+  **532 Python tests** and pinned source/prepared audit passed. Logs and seven
+  full TRX files: ignored `scratch/targeted-ability-decision-204/`.
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

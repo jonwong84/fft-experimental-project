@@ -16,6 +16,8 @@ execution, Move-first/ACT-first continuation and post-ACT movement/settlement.
 The pair's [in-reach](../behavior/attack-throw-stone-ai-prepared-selection.md) and
 [known-score out-of-reach](../behavior/attack-throw-stone-ai-out-of-reach-selection.md)
 entries currently produce hypothetical selections, not authoritative ability commands.
+Framework's [targeted ACT transaction](../behavior/targeted-ability-decision.md)
+now exists; fresh pair AI execution adapters and targeted Move continuations remain next work.
 
 These are bounded implementations: ordinary flat geometry, two opponents,
 restricted lists/statuses and explicit assertions about unrepresented context.
@@ -92,7 +94,8 @@ do not repeatedly rebuild ranking/selection for each new family. These eight
 areas are a roadmap, not eight already-sized tickets or a promise of strict
 serial execution. Select new children through the backlog and keep deferred work
 deferred. The [ZOD-203 handoff design](../architecture/zod-203-throw-stone-command-boundary.md)
-selects ZOD-204's Framework-only targeted ACT transaction as the immediate next step.
+led to the completed ZOD-204 transaction; ZOD-205's frozen targeted ACT across
+confirmed Move is the immediate next step.
 
 Original-AI completion means it can control applicable original encounters and
 automatic units using the required actions, targeting, policies, movement and

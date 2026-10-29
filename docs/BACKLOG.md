@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-204 (Framework implementation).** Throw Stone command-boundary design ZOD-203 is complete.
-There are 34 open tickets below. The 170 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-205 (Framework implementation).** Targeted-ability ACT transaction ZOD-204 is complete.
+There are 34 open tickets below. The 171 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,18 +29,20 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-204 — Add a Framework-owned targeted-ability ACT transaction
+### ZOD-205 — Retain a targeted ACT across a confirmed Move
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-203
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-204
 
-Implement the [selected Framework-only child](architecture/zod-203-throw-stone-command-boundary.md#selected-child--zod-204):
-invocation-bound targeted command/profile proposals in the existing decision transaction,
-forward RNG validation and a FacingTurnBattle delegate to actual Throw Stone rules.
-Preserve actor/choice/grant/range validation, atomic rollback, synchronized RNG and
-post-resolution receipt/revision semantics. Check real four/seven-draw results, KO/push,
-both choice states, stale proposals, exact/short budgets and late failure with few
-behavioral scenarios. No AI adapter, Move continuation, pair post-ACT reselection,
-generic action/interface expansion or host/editor activation in this child.
+Extend existing Framework Move proposals/continuations using the
+[targeted ACT transaction](behavior/targeted-ability-decision.md) and
+[ZOD-203 design](architecture/zod-203-throw-stone-command-boundary.md).
+Freeze a typed command/profile, adopt decision RNG once, publish a real confirmed
+path/heading, then execute actual ACT on current post-Move RNG. Bind continuation
+to exact state/battle, actor, revision and lineage; accept no replacement payload,
+cached plan or second adoption. Failed follow-up preserves the committed Move.
+Check settled receipts, stale/replayed intents, grants/range, exact/late draw and
+revision budgets, deterministic retry and input isolation with few scenarios.
+No AI adapter, post-ACT pair reselection, generic interface or host/editor activation.
 
 ## Existing validation gates
 
