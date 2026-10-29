@@ -6,13 +6,13 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-178: implement pure fresh post-ACT refresh.**
-The [prepared ACT-first executor](behavior/sword-ai-act-first-execution.md) now
-publishes one actual Attack, leaving Move unused and no facing receipt on the
-ongoing turn. Add an explicit refresh entry for that actual post-ACT snapshot/RNG,
-with only the unused-Move CT refund and no live commitment. FreshRefreshEntry
-still certifies that the early no-progress guard was passed; ACT-used alone is not
-that proof. Post-ACT preparation/search/live handoff and host activation stay separate.
+**ZOD-179: implement pure fresh post-ACT preparation.**
+The [post-ACT refresh entry](behavior/sword-ai-post-act-refresh.md) now supports
+active Move-unused/ACT-used input with only the unused-Move refund. Own that
+refresh, derive ordinary reachability/policy from actual restored post-ACT state,
+and retain Move+1 reach while exposing unusable actor Attack. Keep explicit source/
+cache/list/NonBlue facts. Post-ACT scoring/search/live handoff and host activation
+remain separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
@@ -38,24 +38,25 @@ pure queries grant no command authority or live RNG commit; execution adapters
 own that separate boundary.
 
 Full AI search, general multi-entry ranking/lottery, replaceable decision interface,
-post-ACT refresh/selection/live continuation and presentation activation remain future work.
+post-ACT preparation/scoring/selection/live continuation and presentation activation remain future work.
 Original UNIT_SLOT_COUNT is **21**; the old 26-foe wrap example is inadmissible.
 This does not select a fixed managed roster size. The contract records the erratum
 without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-177, [fresh prepared ACT-first Attack](behavior/sword-ai-act-first-execution.md).
-  One Framework command transaction owns selection/dispatch and actual combat,
-  with Move left available and no future-Move authority. Five new scenarios cover
-  complete hit/miss streams, exact budgets/rollback, actual KO and actor/order replay.
+- Latest implementation: ZOD-178, [pure fresh post-ACT refresh](behavior/sword-ai-post-act-refresh.md).
+  One shared flag/clock implementation now has explicit choice-mode admission and
+  actual unused-choice refunds. Four new scenarios cover real hit/miss inputs,
+  exact limits, source/choice guards, terminal rejection and immutable replay.
 - Latest design: ZOD-176, [ACT-first/post-ACT lifecycle](architecture/zod-176-ai-act-first.md).
-  Its ACT-only child is implemented; post-ACT stages remain separate. Historical
+  ACT-first execution and post-ACT refresh are implemented; later stages remain separate. Historical
   source descriptions are unchanged. Clean pinned audit:
-  `scratch/ai-act-first-177/source.json` (20 ACT-first anchors plus inherited receipts).
+  `scratch/ai-post-act-refresh-178/source.json` (20 ACT-first anchors plus inherited receipts).
 - Validation: locked restore, zero-warning/error Release build,
-  **3,949 .NET cases / 516 Python tests**, including owner content drafts.
-  Logs/results: ignored `scratch/ai-act-first-177/` (seven full TRX files).
+  **3,953 .NET cases**, including owner content drafts. Python is unchanged;
+  its last full run remains **516 tests at ZOD-177**.
+  Logs/results: ignored `scratch/ai-post-act-refresh-178/` (seven full TRX files).
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

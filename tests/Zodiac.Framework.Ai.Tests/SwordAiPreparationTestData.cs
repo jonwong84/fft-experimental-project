@@ -60,6 +60,15 @@ internal static class SwordAiPreparationTestData
         return moved.Accepted ? moved.State : throw new InvalidOperationException("Synthetic Move setup failed.");
     }
 
+    internal static FacingTurnState AfterAct(int evade = 0, int power = 5, bool second = false, bool reverse = false, uint entryWord = 1)
+    {
+        var ready = Ready(evade: evade, entryWord: entryWord, second: second, reverse: reverse, move: false, origin: new(2, 1, 0));
+        var result = SwordAiActFirstExecution.StartPreparedInReach(ready, Request(second, reverse: reverse), new(Weapon, power),
+            Candidate, Score, Refresh, Preparation, SwordAiScenarioTeam.NonBlue, new(true, true, true, true, true, true),
+            new(true, true, true, true));
+        return result.Accepted ? result.State : throw new InvalidOperationException("Synthetic ACT-first setup failed.");
+    }
+
     internal static string Snapshot(AttackBattleSnapshot state) => Serialize(new {
         Combatants = state.Combatants.OrderBy(u => u.UnitId.Value),
         Turns = state.TurnBattle.Turns.Units.OrderBy(u => u.Id.Value), state.TurnBattle.Turns.Phase,

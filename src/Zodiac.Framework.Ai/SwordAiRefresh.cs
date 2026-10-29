@@ -34,9 +34,9 @@ public sealed record SwordAiRefreshOutcome(BattleUnitId ActorId, BattleUnitId Ta
 public sealed record SwordAiRefreshResult(bool Accepted, SwordAiRefreshRejection Rejection,
     SwordAiRefreshOutcome? Outcome, FftRandomState RngState);
 
-/// <summary>Pure fresh refresh for two living ordinary opponents before ACT, with explicit Move availability.</summary>
+/// <summary>Pure fresh refresh for two living ordinary opponents, with explicit turn-choice entry modes.</summary>
 /// <remarks>
-/// Source: decomp 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-156/159/171/172.
+/// Source: decomp 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-156/159/171/172/176/178.
 /// Act-first/skillset-zero skips movement and action simulation. One private clock call consumes one upkeep draw.
 /// No command commitment, scoring, earlier delay-cache derivation or later ability/team policy initialization.
 /// </remarks>
@@ -53,9 +53,16 @@ public static class SwordAiRefresh
         SwordAiRefreshProfile refreshProfile, FftRandomState decisionRng)
         => EvaluateCore(state, request, candidateProfile, scoreProfile, refreshProfile, decisionRng, alreadyMoved: false);
 
+    /// <summary>Fresh admitted post-ACT refresh with Move unused; only the unused-Move refund applies.</summary>
+    /// <remarks>ACT used alone does not establish FreshRefreshEntry or prove the source no-progress guard passed.</remarks>
+    public static SwordAiRefreshResult EvaluateAfterAct(AttackBattleSnapshot state, SwordAiRefreshRequest request,
+        SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
+        SwordAiRefreshProfile refreshProfile, FftRandomState decisionRng)
+        => EvaluateCore(state, request, candidateProfile, scoreProfile, refreshProfile, decisionRng, alreadyMoved: false, alreadyActed: true);
+
     private static SwordAiRefreshResult EvaluateCore(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         SwordAiCandidateProfile candidateProfile, SwordAiScoreProfile scoreProfile,
-        SwordAiRefreshProfile refreshProfile, FftRandomState decisionRng, bool alreadyMoved)
+        SwordAiRefreshProfile refreshProfile, FftRandomState decisionRng, bool alreadyMoved, bool alreadyActed = false)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(request);
@@ -79,7 +86,7 @@ public static class SwordAiRefresh
         var turns = state.TurnBattle.Turns;
         var actorTurn = turns.Units.Single(u => u.Id == actor.UnitId);
         if (turns.Phase != TurnCyclePhase.UnitTurn || turns.ActiveUnitId != actor.UnitId ||
-            actorTurn.MovementTaken != alreadyMoved || actorTurn.ActionTaken)
+            actorTurn.MovementTaken != alreadyMoved || actorTurn.ActionTaken != alreadyActed)
             return Reject(SwordAiRefreshRejection.UnavailableAction);
         try { candidateProfile.Sword.ValidateState(state); }
         catch (Exception exception) when (exception is ArgumentException or NotSupportedException)
@@ -87,7 +94,7 @@ public static class SwordAiRefresh
         if (!candidateProfile.Movement.Supports(state)) return Reject(SwordAiRefreshRejection.UnsupportedProfile);
 
         // Source turn_end adds each unused-choice refund in u16, then caps before storing byte CT.
-        int turnEndCt = Math.Min(60, actorTurn.Ct + 20 + (actorTurn.MovementTaken ? 0 : 20));
+        int turnEndCt = Math.Min(60, actorTurn.Ct + (actorTurn.ActionTaken ? 0 : 20) + (actorTurn.MovementTaken ? 0 : 20));
         var battle = state.TurnBattle.Battle;
         var units = turns.Units.OrderBy(u => u.TieKey).Select(turn =>
         {
