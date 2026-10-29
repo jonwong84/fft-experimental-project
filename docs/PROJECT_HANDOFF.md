@@ -6,13 +6,14 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-208: execute a fresh in-reach pair ACT-first decision.**
-Both [Move-first branches](behavior/attack-throw-stone-ai-out-of-reach-move-first.md)
-now own fresh selection and Framework authority. Add in-reach ACT-first Attack/
-Throw Stone through the existing decision transaction, adopting RNG once and
-returning actual effects with unused Move. Stop before post-ACT movement or
-reselection; predicted D1 is not authority. Unknown cast keys, retained/event
-workspace history and general lists stay open.
+**ZOD-209: trace pair post-ACT movement and settlement from actual results.**
+The [in-reach ACT-first adapter](behavior/attack-throw-stone-ai-act-first-execution.md)
+now owns fresh selection and real Attack/Throw Stone, leaving Move unused.
+Study pair-specific re-entry, refresh/list preparation, movement and settlement
+after actual hit/miss/push/KO, then select one bounded implementation child.
+The Attack-only certificate cannot substitute for a pair list; predicted D1
+is not authority. Terminal policy, ACT-first out-of-reach entry, unknown cast
+keys, retained/event workspace history and general lists stay open.
 
 The [AI completion roadmap](development/ai-completion-roadmap.md) preserves the
 remaining breadth, integration, compatibility and replaceability goals. Use it
@@ -41,7 +42,7 @@ RNG without partial output. Original supplied-scenario APIs stay unchanged. Thes
 pure queries grant no command authority or live RNG commit; execution adapters
 own that separate boundary.
 
-Post-ACT execution now privately owns selection/dispatch, adopts verified RNG,
+Attack-only post-ACT execution privately owns selection/dispatch, adopts verified RNG,
 and commits either a confirmed path plus actual-receipt facing, or same-tile END.
 It stops after settlement without a Move-first token, extra Attack or clock advance.
 Full AI search, general multi-entry ranking/lottery, replaceable decision interface
@@ -52,20 +53,20 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-207, [known-score out-of-reach execution](behavior/attack-throw-stone-ai-out-of-reach-move-first.md).
-  Explicit branches share private dispatch/proposal handling and retain distinct
-  typed diagnostics. Full source masks/provenance and the reach draw survive;
-  unknown cast keys reject. Six new scenarios cover effects, budgets and replay.
-  ACT-first pair adapters and post-ACT reselection remain separate.
+- Latest implementation: ZOD-208, [fresh in-reach ACT-first execution](behavior/attack-throw-stone-ai-act-first-execution.md).
+  Own fresh pair selection inside Framework's ACT transaction; adopt RNG once
+  and publish real Attack/Stone effects, retaining unused Move. No automatic
+  movement/END or facing receipt. Six scenarios cover hit/miss/push/KO, budgets,
+  complete rollback and replay. Pair post-ACT reselection remains separate.
 - Latest investigation: ZOD-203, [Throw Stone authority](architecture/zod-203-throw-stone-command-boundary.md).
   Ten source files/21 functions and fourteen managed study snapshots distinguish
   prediction from real resolution, dispatch/reselection and per-command transactions.
   Eight supplied checkpoint descriptions cover four/seven draws and push/KO/rollback;
   those descriptions do not execute the Framework transactions validated by ZOD-204.
 - Validation: locked restore, zero-warning/error Release rebuild,
-  **4,079 .NET cases** (1,455 Framework, 879 AI, including owner drafts),
+  **4,085 .NET cases** (1,455 Framework, 885 AI, including owner drafts),
   **532 Python tests** and pinned source/prepared audit passed. Logs and seven
-  full TRX files: ignored `scratch/ai-pair-out-of-reach-move-207/`.
+  full TRX files: ignored `scratch/ai-pair-act-first-208/`.
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

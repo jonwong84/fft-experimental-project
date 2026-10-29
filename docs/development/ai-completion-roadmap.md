@@ -18,10 +18,13 @@ The pair's [in-reach](../behavior/attack-throw-stone-ai-prepared-selection.md) a
 entries produce hypothetical selections. A fresh
 [in-reach Move-first adapter](../behavior/attack-throw-stone-ai-move-first-execution.md)
 and [known-score out-of-reach entry](../behavior/attack-throw-stone-ai-out-of-reach-move-first.md)
-now connect pair selection to authoritative commands; ACT-first paths remain pending.
+now connect pair selection to authoritative commands. A fresh
+[in-reach ACT-first adapter](../behavior/attack-throw-stone-ai-act-first-execution.md)
+also applies real Attack/Throw Stone and leaves Move unused; predicted D1
+grants no authority after that ACT.
 Framework's [targeted ACT transaction](../behavior/targeted-ability-decision.md)
 and [targeted Move continuation](../behavior/targeted-move-continuation.md) now
-exist; ACT-first pair adapters and pair post-ACT reselection remain work.
+exist; ACT-first out-of-reach entry and pair post-ACT reselection remain work.
 
 These are bounded implementations: ordinary flat geometry, two opponents,
 restricted lists/statuses and explicit assertions about unrepresented context.
@@ -31,12 +34,13 @@ read-only reference revision before new tracing. Test count is not a completion 
 
 ## Remaining work areas
 
-1. **Connect ability decisions to authoritative commands.** ZOD-203 first traces
-   and designs Throw Stone's handoff. Follow with bounded implementation of fresh
-   selection/RNG adoption, actual command validation and execution, Move-first/
-   ACT-first ordering, continuation, actual movement/facing receipts and turn
-   completion. AI midpoint/no-knockback predictions must stay separate from real
-   accuracy, damage, knockback and execution draws. Reuse the existing
+1. **Complete ability decisions through authoritative commands.** Throw Stone's
+   handoff now supports both Move-first branches and in-reach ACT-first. Trace
+   pair-specific post-ACT refresh/preparation, unused movement and settlement
+   from actual results; then implement bounded children. Add the remaining
+   ACT-first out-of-reach entry with its explicit score-provenance limits.
+   AI midpoint/no-knockback predictions must stay separate from real accuracy,
+   damage, knockback and execution draws. Reuse the existing
    [Framework/AI boundary](../architecture/ai-command-boundary.md).
 
 2. **Expand roster, ability and target search.** Derive available entries from
@@ -98,8 +102,10 @@ do not repeatedly rebuild ranking/selection for each new family. These eight
 areas are a roadmap, not eight already-sized tickets or a promise of strict
 serial execution. Select new children through the backlog and keep deferred work
 deferred. The [ZOD-203 handoff design](../architecture/zod-203-throw-stone-command-boundary.md)
-led to the completed ZOD-204/205 authority primitives and ZOD-206/207 Move-first
-entries. ZOD-208's in-reach pair ACT-first execution is the immediate next step.
+led to the completed ZOD-204/205 authority primitives, ZOD-206/207 Move-first
+entries and ZOD-208 in-reach ACT-first execution. ZOD-209's pair post-ACT source/
+design study is the immediate next step; the Attack-only list certificate is
+insufficient for this pair.
 
 Original-AI completion means it can control applicable original encounters and
 automatic units using the required actions, targeting, policies, movement and
