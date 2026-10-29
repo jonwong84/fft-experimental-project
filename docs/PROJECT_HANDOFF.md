@@ -6,12 +6,13 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-200: derive out-of-reach pair scenarios with explicit score provenance.**
-The [source study](architecture/zod-199-pair-out-of-reach.md) confirms an added
-original cast origin can have fresh proximity but retained priority, including
-shared event/status bytes. Own filtered scoring/reach adjustment/D0=D1 and report
-written/unwritten cells; stop before scans or selection that could read unknown
-priority. Never assume zero or add an actor score/draw to repair provenance.
+**ZOD-202: select a fresh out-of-reach pair when all cast scores are known.**
+[Out-of-reach scenarios](behavior/attack-throw-stone-ai-out-of-reach-scenarios.md)
+now own preparation/full proximity/filtered scoring/reach adjustment/D0=D1, with
+explicit written/unwritten priorities. Compose scans/ranking/lottery only where
+every cast key is fresh or proved unread; reject an unwritten actor within range4.
+Never assume zero or add an actor score/draw to repair provenance. Preserve full
+source masks, including possible final-scenario overlap at the actor.
 General list search/ranking and live ability authority remain separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
@@ -48,22 +49,20 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-197/198, [in-reach scenarios](behavior/attack-throw-stone-ai-scenarios.md)
-  and [prepared selection](behavior/attack-throw-stone-ai-prepared-selection.md).
-  One fresh preparation/movement prefix derives ranged D0/D1 then serves both
-  scans/ranks/lottery. Established source facts are derived; scenario/path/scoring/
-  no-Defend facts remain explicit. Twelve new scenarios cover literals, legacy
-  policy, full costs, budgets, atomic failure and replay.
+- Latest implementation: ZOD-200, [out-of-reach scenarios](behavior/attack-throw-stone-ai-out-of-reach-scenarios.md).
+  Full reachable proximity and filtered priority writes remain distinct. Post-score
+  reach halving, D0=D1, fallback and source mask overlap are derived without reading
+  unknown cells. Six scenarios cover literals, provenance, budgets and replay.
+  [In-reach selection](behavior/attack-throw-stone-ai-prepared-selection.md) remains unchanged.
 - Latest investigation: ZOD-199, [out-of-reach provenance](architecture/zod-199-pair-out-of-reach.md).
   Twelve files/24 functions plus inherited receipts pin mask order, retained
   score cells and shared event/status aliasing. Nine supplied descriptions cover
   prior-cell witnesses, range4/5, fallback and RNG; no original execution or
   numerical initial/retained cache value is claimed.
-- Validation: runtime unchanged; last locked restore/clean Release build and
-  **4,042 .NET cases** (855 AI, including owner drafts) are ZOD-198, with seven
-  TRX files in ignored `scratch/ai-pair-scenarios-197-198/full-trx/`.
-  ZOD-199 passed **529 Python tests** and the pinned source/prepared-data audit;
-  reports are in ignored `scratch/ai-pair-out-of-reach-199/`.
+- Validation: locked restore, zero-warning/error Release rebuild and
+  **4,048 .NET cases** (861 AI, including owner drafts), **529 Python tests** and
+  pinned source/prepared audit passed. Logs and seven full TRX files: ignored
+  `scratch/ai-pair-out-of-reach-200/`; Python passed with normal temp access.
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

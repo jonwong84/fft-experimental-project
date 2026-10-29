@@ -5,8 +5,8 @@ namespace Zodiac.Framework.Ai;
 /// <summary>Unrepresented source facts; other overrides exclude stay-near, reflected and crystal behavior, allowing derived ranged policy.</summary>
 public sealed record AttackThrowStoneAiScenarioProfile(bool NormalScoring = false, bool CanonicalCoordinates = false,
     bool NoOtherScenarioOverrides = false);
-public enum AttackThrowStoneAiScenarioStage { Admission, Preparation, Branch, Movement }
-public enum AttackThrowStoneAiScenarioRejection { UnsupportedProfile, PreparationRejected, OutOfReach, MovementRejected }
+public enum AttackThrowStoneAiScenarioStage { Admission, Preparation, Branch, Movement, ReachAdjustment }
+public enum AttackThrowStoneAiScenarioRejection { UnsupportedProfile, PreparationRejected, OutOfReach, MovementRejected, InReach, RandomDrawCountExhausted }
 public sealed record AttackThrowStoneAiScenarioFailure(AttackThrowStoneAiScenarioStage Stage, AttackThrowStoneAiScenarioRejection Reason,
     AttackThrowStoneAiPreparationFailure? PreparationFailure = null, int? MovementIndex = null,
     SwordAiMovementBaselineRejection MovementReason = SwordAiMovementBaselineRejection.None);
@@ -79,7 +79,7 @@ public static class AttackThrowStoneAiMovementScenario
         return new(new(true, null, new(ready, scenario, prefix.Movement, baselineIndex, distance, reach, bound, fallback), evaluated.RngState), prefix);
     }
 
-    private static TilePosition Select(ImmutableArray<AiScoredMovementTile> cells, Func<TilePosition, int> distance, bool distanceFirst) =>
+    internal static TilePosition Select(ImmutableArray<AiScoredMovementTile> cells, Func<TilePosition, int> distance, bool distanceFirst) =>
         (distanceFirst ? cells.OrderBy(c => distance(c.Outcome.Destination)).ThenBy(c => c.OriginKey)
             : cells.OrderBy(c => c.OriginKey).ThenBy(c => distance(c.Outcome.Destination)))
         .ThenByDescending(c => c.Outcome.Destination.Layer).ThenByDescending(c => c.Outcome.Destination.Y)

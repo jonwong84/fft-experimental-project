@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-200 (implementation).** Out-of-reach provenance study ZOD-199 is complete.
-There are 34 open tickets below. The 167 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-202 (implementation).** Out-of-reach pair scenarios ZOD-200 are complete.
+There are 34 open tickets below. The 168 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,18 +29,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-200 — Derive out-of-reach pair scenarios with explicit score provenance
+### ZOD-202 — Select a fresh out-of-reach pair when all cast scores are known
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-199
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-200
 
-Implement the [scenario-only child](architecture/zod-199-pair-out-of-reach.md#selected-child--zod-200)
-after fresh NonBlue pair preparation. Own full M0 proximity, filtered scoring,
-post-score reach adjustment and D0=D1; preserve no-match fallback and pre-actor-OR
-scenario2. Distinguish scored and added-unwritten origins explicitly without
-reading, zeroing or rescoring an unknown priority. Check literal masks/destinations,
-range4/5, halving/RNG order, budgets and replay. Keep policy assertions and legacy
-fresh-cell admission. No cached prior-memory input, action scans/ranks/lottery,
-general list/status port, live authority, replacement interface or activation.
+Compose [fresh out-of-reach scenarios](behavior/attack-throw-stone-ai-out-of-reach-scenarios.md)
+with Attack/Throw Stone ranking and lottery only where every actual cast key is
+fresh or proved unread. Reject unwritten actor origins within Throw Stone range;
+prove range filtering before adapting scan masks. Retain full source diagnostics,
+one owned prefix and post-score reach draw, legacy fresh-cell admission and remaining
+path/scoring/no-Defend assertions. Check literal plans/costs, range4/5, Move0,
+halving/fallback, exact/late budgets, atomic failure and replay. No guessed/zeroed
+priority, actor rescore, cached prior-memory input, general list/status port,
+live authority, replacement interface or activation.
 
 ## Existing validation gates
 

@@ -36,10 +36,12 @@ internal sealed record AiMovementPrefixResult(AiSimulationClockRejection Rejecti
 internal static class AiMovementPrefix
 {
     internal static AiMovementPrefixResult Evaluate(AttackBattleSnapshot state, BattleUnitId actorId, BattleUnitId targetId,
-        IEnumerable<TilePosition> origins, TilePosition? baselineDestination, ImmutableArray<AiUnitBaseline> units, FftRandomState decisionRng)
+        IEnumerable<TilePosition> origins, TilePosition? baselineDestination, ImmutableArray<AiUnitBaseline> units, FftRandomState decisionRng,
+        IEnumerable<TilePosition>? proximityOrigins = null)
     {
         var ordered = origins.OrderBy(p => p.Layer).ThenBy(p => p.Y).ThenBy(p => p.X).ToArray();
-        var proximity = AiProximityCache.Create(state, actorId, targetId, ordered);
+        // Source proximity covers scenario0 before scenario1 filtering; only the latter receives priority writes.
+        var proximity = AiProximityCache.Create(state, actorId, targetId, proximityOrigins ?? ordered);
         var movement = ImmutableArray.CreateBuilder<AiScoredMovementTile>(ordered.Length);
         int baselineIndex = -1;
         var rng = decisionRng;
