@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-198 (implementation).** Fresh in-reach pair scenarios ZOD-197 are complete.
-There are 33 open tickets below. The 165 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-199 (source investigation).** Prepared in-reach pair selection ZOD-198 is complete.
+There are 33 open tickets below. The 166 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,18 +29,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-198 — Select a fresh prepared in-reach Attack and Throw Stone pair
+### ZOD-199 — Trace out-of-reach pair scenarios and original-origin score provenance
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-197
+**Type:** Investigation · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-198
 
-Own the [fresh in-reach scenario](behavior/attack-throw-stone-ai-scenarios.md),
-then privately continue pair scans/ranking/lottery with the existing fresh prefix
-and actual carried RNG. Derive source mask/D0/D1/prepared-entry/active-target/
-best-reset/terminal facts from owned work; retain normal-coordinate, remaining
-scenario policy, clear-direct-path and no-Defend assertions. No rescoring or public
-cached input. Preserve supplied-scenario APIs and atomic whole-query failure.
-Check literal plans/RNG, late budgets and replay. No out-of-reach path, live
-authority, general list/status port, replacement interface or UI activation.
+Extend the [prepared pair](behavior/attack-throw-stone-ai-prepared-selection.md)
+trace to the explicit out-of-reach branch: filtered score/scenario masks, no-match
+fallback, NonBlue post-score reach-halving draw and D0=D1. Track score/proximity
+initialization, writes and retained cells when the actor is added after scoring,
+especially when Throw Stone can still cast from that original tile. Determine
+whether a fresh score is available; never assume zero or silently rescore an
+unwritten cell. Record uncertainty/quirks, literal provenance/RNG descriptions
+and select a bounded implementable child. No runtime port, cached-result shortcut,
+live authority, general list/status expansion, replacement interface or activation.
 
 ## Existing validation gates
 

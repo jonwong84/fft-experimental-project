@@ -41,14 +41,21 @@ public static class AttackThrowStoneAiSelection
         if (!composition.Accepted)
             return new(false, new(AttackThrowStoneAiSelectionStage.Composition, AttackThrowStoneAiSelectionRejection.CompositionRejected,
                 CompositionFailure: composition.Failure), null, decisionRng);
+        return SelectFresh(composition, request.ActorId, scenario.BaselineDestination, decisionRng);
+    }
+
+    // Internal owning queries reuse fresh ranks, never caller-populated public outcomes.
+    internal static AttackThrowStoneAiSelectionResult SelectFresh(AttackThrowStoneAiCompositionResult composition,
+        BattleUnitId actorId, TilePosition baselineDestination, FftRandomState queryRng)
+    {
         var fresh = composition.Outcome!;
         var lottery = AiRankedLottery.Evaluate(fresh.RankedActions.Select(a => a?.Score.HitPercent ?? (byte)0).ToImmutableArray(), composition.RngState);
         if (!lottery.Accepted)
             return new(false, new(AttackThrowStoneAiSelectionStage.Lottery, AttackThrowStoneAiSelectionRejection.RandomDrawCountExhausted,
-                lottery.FailedIndex), null, decisionRng);
+                lottery.FailedIndex), null, queryRng);
         var selected = lottery.Outcome!;
         var action = selected.SelectedIndex is { } index ? fresh.RankedActions[index] : null;
-        var plan = new AttackThrowStoneAiSelectedPlan(request.ActorId, action?.Destination ?? scenario.BaselineDestination, action);
+        var plan = new AttackThrowStoneAiSelectedPlan(actorId, action?.Destination ?? baselineDestination, action);
         return new(true, null, new(fresh, composition.RngState, selected.Rolls, selected.SelectedIndex, selected.Reason, plan), lottery.RngState);
     }
 }

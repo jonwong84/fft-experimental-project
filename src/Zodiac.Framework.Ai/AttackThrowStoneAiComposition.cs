@@ -61,6 +61,21 @@ public static class AttackThrowStoneAiComposition
         ArgumentNullException.ThrowIfNull(profile); ArgumentNullException.ThrowIfNull(profile.Attack); ArgumentNullException.ThrowIfNull(profile.ThrowStone);
         ArgumentNullException.ThrowIfNull(profile.Score); ArgumentNullException.ThrowIfNull(profile.AttackScan);
         ArgumentNullException.ThrowIfNull(profile.ThrowStoneScan); ArgumentNullException.ThrowIfNull(profile.Baseline);
+        var invalid = ValidateInputs(state, request, scenario, weapon, profile, decisionRng);
+        if (invalid is not null) return invalid;
+        AttackThrowStoneAiCompositionResult Reject(AttackThrowStoneAiFailure failure) => new(false, failure, null, decisionRng);
+        var prefix = AiMovementPrefix.Evaluate(state, request.ActorId, request.TargetId, scenario.ScoredOrigins,
+            scenario.BaselineDestination, profile.ThrowStone.Units, decisionRng);
+        if (prefix.Rejection != AiSimulationClockRejection.None)
+            return Reject(new(AttackThrowStoneAiStage.Movement, AttackThrowStoneAiRejection.MovementRejected, prefix.FailedIndex,
+                MovementReason: prefix.Rejection == AiSimulationClockRejection.RandomDrawCountExhausted
+                    ? SwordAiMovementBaselineRejection.RandomDrawCountExhausted : SwordAiMovementBaselineRejection.TickCountExhausted));
+        return ContinueFromMovement(state, request, scenario, weapon, profile, prefix.Outcome!, prefix.RngState, decisionRng);
+    }
+
+    internal static AttackThrowStoneAiCompositionResult? ValidateInputs(AttackBattleSnapshot state, ThrowStoneAiScanRequest request,
+        ThrowStoneAiScanScenario scenario, BoundedSwordWeapon? weapon, AttackThrowStoneAiProfile profile, FftRandomState decisionRng)
+    {
         AttackThrowStoneAiCompositionResult Reject(AttackThrowStoneAiFailure failure) => new(false, failure, null, decisionRng);
         if (!profile.SourceAttackThenThrowStone || !profile.FreshEmptyRankedList)
             return Reject(new(AttackThrowStoneAiStage.Admission, AttackThrowStoneAiRejection.UnsupportedProfile));
@@ -78,15 +93,20 @@ public static class AttackThrowStoneAiComposition
         if (stoneInvalid is not null)
             return Reject(new(AttackThrowStoneAiStage.Admission, AttackThrowStoneAiRejection.ThrowStoneRejected, ThrowStoneFailure: stoneInvalid.Failure));
 
-        var prefix = AiMovementPrefix.Evaluate(state, request.ActorId, request.TargetId, scenario.ScoredOrigins,
-            scenario.BaselineDestination, profile.ThrowStone.Units, decisionRng);
-        if (prefix.Rejection != AiSimulationClockRejection.None)
-            return Reject(new(AttackThrowStoneAiStage.Movement, AttackThrowStoneAiRejection.MovementRejected, prefix.FailedIndex,
-                MovementReason: prefix.Rejection == AiSimulationClockRejection.RandomDrawCountExhausted
-                    ? SwordAiMovementBaselineRejection.RandomDrawCountExhausted : SwordAiMovementBaselineRejection.TickCountExhausted));
-        var fresh = prefix.Outcome!;
+        return null;
+    }
+
+    // Owning entries supply only a private fresh prefix; no cached-result public overload exists.
+    internal static AttackThrowStoneAiCompositionResult ContinueFromMovement(AttackBattleSnapshot state, ThrowStoneAiScanRequest request,
+        ThrowStoneAiScanScenario scenario, BoundedSwordWeapon? weapon, AttackThrowStoneAiProfile profile,
+        AiMovementPrefixOutcome fresh, FftRandomState rng, FftRandomState queryRng)
+    {
+        AttackThrowStoneAiCompositionResult Reject(AttackThrowStoneAiFailure failure) => new(false, failure, null, queryRng);
+        var comparisonProfile = new SwordAiComparisonProfile(request.ActorId, request.TargetId, profile.ThrowStoneScan.FreshDecisionBaseline);
+        var attackScenario = new SwordAiScanScenario(scenario.ScenarioOrigins,
+            scenario.ScenarioOrigins.IsEmpty ? null : scenario.ActFirstDestination);
         var attack = SwordAiCandidateScan.EvaluateFresh(state, attackScenario, weapon, profile.Attack, profile.Score,
-            comparisonProfile, profile.AttackScan, fresh.Proximity, prefix.RngState);
+            comparisonProfile, profile.AttackScan, fresh.Proximity, rng);
         if (attack.Disposition == SwordAiScanDisposition.Rejected) return Reject(AttackFailure(AttackThrowStoneAiStage.Attack, attack));
         // Source capacity is a compatibility behavior, independent of authored content/roster sizes.
         var ranked = new AttackThrowStoneAiAction?[8];
@@ -94,7 +114,7 @@ public static class AttackThrowStoneAiComposition
             ? Insert(new AttackThrowStoneAiAttack(attack.Outcome.Candidates[best]), fresh.Movement[fresh.BaselineIndex].Outcome.Score, ranked) : null;
         // Each scan owns a fresh working best. Only original units, prefix/cache and actual RNG cross entries.
         var stone = ThrowStoneAiCandidateScan.ContinueFromMovement(state, request, scenario, profile.ThrowStone, profile.Score,
-            profile.ThrowStoneScan, fresh, attack.RngState, decisionRng);
+            profile.ThrowStoneScan, fresh, attack.RngState, queryRng);
         if (stone.Disposition == ThrowStoneAiScanDisposition.Rejected)
             return Reject(new(AttackThrowStoneAiStage.ThrowStone, AttackThrowStoneAiRejection.ThrowStoneRejected, ThrowStoneFailure: stone.Failure));
         int? stoneIndex = stone.Outcome!.Candidate is { Evaluation.Score: not null } candidate
