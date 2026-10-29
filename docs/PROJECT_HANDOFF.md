@@ -6,11 +6,11 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-196: prepare a fresh both-unused Attack and Throw Stone pair.**
-The [preparation contract](architecture/zod-195-pair-preparation.md) separates
-three initialized entries from two usable ones, derives evasion modifier2,
-Move+1 minimum enemy reach and ranged policy. Own refresh/restored-state policy
-before implementing the pair's ranged D0/scenario branch in later work.
+**ZOD-197: derive fresh in-reach movement scenarios for the prepared pair.**
+[Fresh pair preparation](behavior/attack-throw-stone-ai-preparation.md) now owns
+refresh and restored-state policy. Own one movement prefix and derive masks/D0/D1
+with the ranged distance bound, preserving remaining source-policy certificates.
+The old Attack-only scenario assertion cannot certify this ranged pair.
 General list search/ranking and live ability authority remain separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
@@ -47,20 +47,19 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-193/194, [pair ranking](behavior/attack-throw-stone-ai-ranking.md)
-  and [selection](behavior/attack-throw-stone-ai-selection.md). One fresh prefix/
-  proximity cache serves both source-ordered scans; ranks retain both typed
-  payloads. Shared lottery supports second-slot/all-failed/empty fallback.
-  Eleven new scenarios cover literals, budgets, failure, source facts and replay.
+- Latest implementation: ZOD-196, [fresh pair preparation](behavior/attack-throw-stone-ai-preparation.md).
+  Shared refresh/restored-policy internals retain original state and one private
+  draw. Summaries distinguish three initialized/two usable entries, evasion2,
+  actor usage toggles, ranged facts, minimum reach and full ordinary reachability.
+  Six new scenarios cover literals, guards, budgets, policy and replay.
 - Latest investigation: ZOD-195, [pair preparation](architecture/zod-195-pair-preparation.md).
   Five files/18 functions plus inherited receipts and Frog semantic facts are
   pinned. Four isolated summaries cover initialization, usage, reach and ranged
   D0 bounds; they do not execute a managed preparation or derive scored destinations.
-  All 526 Python tests and clean source/prepared audit pass; ignored logs/report:
-  `scratch/ai-pair-preparation-195-196/`. Runtime validation below remains ZOD-194's.
+  Clean source/prepared audit, including menu dispatch: `scratch/ai-pair-preparation-195-196/source-final.json`.
 - Validation: locked restore, zero-warning/error Release build,
-  **4,024 .NET cases / 524 Python tests**, including 837 AI cases and owner content drafts.
-  Logs/results: ignored `scratch/ai-two-entry-192-194/`; `full-trx/` has seven full TRX files.
+  **4,030 .NET cases / 526 Python tests**, including 843 AI cases and owner content drafts.
+  Logs/results: ignored `scratch/ai-pair-preparation-195-196/`; `full-trx/` has seven full TRX files.
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

@@ -64,9 +64,7 @@ public static class AttackThrowStoneAiComposition
         AttackThrowStoneAiCompositionResult Reject(AttackThrowStoneAiFailure failure) => new(false, failure, null, decisionRng);
         if (!profile.SourceAttackThenThrowStone || !profile.FreshEmptyRankedList)
             return Reject(new(AttackThrowStoneAiStage.Admission, AttackThrowStoneAiRejection.UnsupportedProfile));
-        if (profile.Attack.Movement.Ground != profile.ThrowStone.Movement.Ground ||
-            profile.AttackScan.TargetActive != profile.ThrowStoneScan.TargetActive ||
-            !profile.Attack.Units.OrderBy(u => u.UnitId.Value).SequenceEqual(profile.ThrowStone.Units.OrderBy(u => u.UnitId.Value)))
+        if (!ProfilesMatch(profile.Attack, profile.ThrowStone) || profile.AttackScan.TargetActive != profile.ThrowStoneScan.TargetActive)
             return Reject(new(AttackThrowStoneAiStage.Admission, AttackThrowStoneAiRejection.MismatchedProfiles));
 
         var comparisonProfile = new SwordAiComparisonProfile(request.ActorId, request.TargetId, profile.ThrowStoneScan.FreshDecisionBaseline);
@@ -105,6 +103,10 @@ public static class AttackThrowStoneAiComposition
         return new(true, null, new(fresh.Movement, fresh.BaselineIndex, attack.Outcome, stone.Outcome,
             ranked.ToImmutableArray(), attackIndex, stoneIndex), stone.RngState);
     }
+
+    internal static bool ProfilesMatch(SwordAiCandidateProfile attack, ThrowStoneAiCandidateProfile stone) =>
+        attack.Movement.Ground == stone.Movement.Ground &&
+        attack.Units.OrderBy(u => u.UnitId.Value).SequenceEqual(stone.Units.OrderBy(u => u.UnitId.Value));
 
     private static AttackThrowStoneAiFailure AttackFailure(AttackThrowStoneAiStage stage, SwordAiScanResult result) =>
         new(stage, AttackThrowStoneAiRejection.AttackRejected, result.FailedCandidateIndex, result.Rejection,

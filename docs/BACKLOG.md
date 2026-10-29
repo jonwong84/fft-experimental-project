@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-196 (implementation).** Pair preparation investigation ZOD-195 is complete.
-There are 33 open tickets below. The 163 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-197 (implementation).** Fresh pair preparation ZOD-196 is complete.
+There are 33 open tickets below. The 164 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,17 +29,18 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-196 — Prepare a fresh both-unused Attack and Throw Stone pair
+### ZOD-197 — Derive fresh in-reach movement scenarios for the prepared pair
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-195
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-196
 
-Implement the [fresh preparation child](architecture/zod-195-pair-preparation.md#selected-child--zod-196).
-Admit matching ordinary profiles, sword and both units' Throw Stone grants; own
-fresh NonBlue refresh and restored-state reachability/policy. Derive initialized
-versus usable summaries, actor entry toggles, ranged facts and original delays/
-focus/active target. Keep exact-list/no-special/clean-cache facts explicit; preserve
-legacy admission and atomic failure/RNG. Check literals, budgets and replay.
-No D0/D1/scenario derivation, scans, lottery, live authority or activation.
+Own [fresh pair preparation](behavior/attack-throw-stone-ai-preparation.md) and one
+movement-score/proximity prefix; derive in-reach masks/D0/D1 with the source's
+ranged D0 bound max(3,distance-1), minimum enemy reach Move+1 and later-coordinate
+ties. Keep stay-near/reflection/crystal and other unrepresented policy facts
+explicit. Reuse fresh work internally without accepting public cached results;
+preserve legacy Attack scenario admission and atomic whole-query RNG failure.
+Check literal destinations, budgets and replay. No out-of-reach branch, selection
+lottery, live authority, general list/status port or presentation activation.
 
 ## Existing validation gates
 

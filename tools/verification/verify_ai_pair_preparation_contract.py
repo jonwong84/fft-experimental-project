@@ -50,6 +50,10 @@ def validate(fixture):
 def frog_facts(path):
     prepared_facts(path)  # Exact edition/hash check before reading this additional record.
     data = path.read_bytes(); ability = 367
+    # target/main.yaml at the pinned clean revision: g_command_menu_types_by_skillset.
+    # Verify Frog really takes the table loader; Attack dispatches through the weapon summary.
+    menus = 0x80065cb4 - 0x80010000 + 0x800
+    require([data[menus + skillset] for skillset in (1, 5, 169)] == [8, 0, 0], 'Attack/Basic Skill/Frog menu dispatch')
     primary = 0x8005ebf0 + ability * 8 - 0x80010000 + 0x800
     secondary = 0x8005fbf0 + ability * 14 - 0x80010000 + 0x800
     word = int.from_bytes(data[primary + 4:primary + 8], 'little')

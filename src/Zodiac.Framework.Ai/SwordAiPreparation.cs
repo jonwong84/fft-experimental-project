@@ -79,12 +79,22 @@ public static class SwordAiPreparation
             ? SwordAiRefresh.Evaluate(state, request, candidateProfile, scoreProfile, refreshProfile, decisionRng)
             : SwordAiRefresh.EvaluateUnmoved(state, request, candidateProfile, scoreProfile, refreshProfile, decisionRng);
         if (!refresh.Accepted) return Reject(SwordAiPreparationRejection.RefreshRejected, refresh.Rejection);
+        var restored = DeriveRestoredState(state, request, candidateProfile, refresh.Outcome!, alreadyMoved);
+        if (restored is null) return Reject(SwordAiPreparationRejection.UnsupportedProfile);
+        return new(true, SwordAiPreparationRejection.None, SwordAiRefreshRejection.None, restored, refresh.RngState);
+    }
+
+    // Shared by fresh owning queries whose minimum enemy ability range is one. No list assertion is manufactured here.
+    internal static SwordAiPreparationOutcome? DeriveRestoredState(AttackBattleSnapshot state, SwordAiRefreshRequest request,
+        SwordAiCandidateProfile candidateProfile, SwordAiRefreshOutcome refresh, bool alreadyMoved)
+    {
+        state.TurnBattle.Battle.TryGetUnit(request.ActorId, out var actor);
         ImmutableArray<TilePosition> origins = [];
         if (!alreadyMoved)
         {
             // TurnBattleState enforces HasMoved == MovementTaken. Never use refresh's hypothetical clock units.
             var geometry = FlatOrdinaryMovement.Evaluate(state, request.ActorId, candidateProfile.Movement);
-            if (!geometry.Accepted) return Reject(SwordAiPreparationRejection.UnsupportedProfile);
+            if (!geometry.Accepted) return null;
             origins = geometry.Outcome!.AiOrigins;
         }
         var turns = state.TurnBattle.Turns.Units;
@@ -99,12 +109,11 @@ public static class SwordAiPreparation
         int distance = Math.Abs(focus.X - origin.X) + Math.Abs(focus.Y - origin.Y);
         byte proximity = targetDelay <= actorDelay ? (byte)Math.Max(0, 10 - distance) : (byte)0;
         // One ally cannot provide retreat support. NonBlue sets the actor's policy unless already set.
-        var policies = refresh.Outcome!.RefreshedUnits.Select(u => new SwordAiRefreshPolicy(u.UnitId,
+        var policies = refresh.RefreshedUnits.Select(u => new SwordAiRefreshPolicy(u.UnitId,
             u.ConserveCt, u.UnitId == request.ActorId || u.TeamSupportUnavailable)).ToImmutableArray();
-        return new(true, SwordAiPreparationRejection.None, SwordAiRefreshRejection.None,
-            new(refresh.Outcome, policies, origin, focus, actorDelay, targetDelay, actor.Move + 1, actor.Move,
-                proximity, RetreatSupportAvailable: false, SingleEnemyRemaining: false, TargetActive: true,
-                ManualAutobattle: true, RandomUseThreshold: 0)
-                { ReachableOrigins = origins, ActorAttackUsable = !actorTurn.ActionTaken }, refresh.RngState);
+        return new(refresh, policies, origin, focus, actorDelay, targetDelay, actor.Move + 1, actor.Move,
+            proximity, RetreatSupportAvailable: false, SingleEnemyRemaining: false, TargetActive: true,
+            ManualAutobattle: true, RandomUseThreshold: 0)
+            { ReachableOrigins = origins, ActorAttackUsable = !actorTurn.ActionTaken };
     }
 }

@@ -12,9 +12,11 @@ internal static class AttackThrowStoneAiTestData
         new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 19)]), CandidateProfile(),
         new([new(A, AiScoreFacts.ClosedProfile), new(B, AiScoreFacts.ClosedProfile)]),
         new(active, true, true, true, true), new(active, true, true, true, true, true, true, true), new(true, true, true, true), true, true);
-    internal static AttackBattleSnapshot Battle(int hp = 50, int evade = 0, bool second = false, bool reverse = false, ulong ticks = 20)
+    internal static AttackBattleSnapshot Battle(int hp = 50, int evade = 0, bool second = false, bool reverse = false, ulong ticks = 20,
+        int move = 3, int ct = 15, int targetCt = 95, bool moved = false, bool acted = false, TilePosition? target = null)
     {
-        var state = State(target: new(2, 1, 0), hp: hp, evade: evade, second: second, reverse: reverse, ticks: ticks);
+        var state = State(target: target ?? new(2, 1, 0), hp: hp, evade: evade, second: second, reverse: reverse, ticks: ticks,
+            move: move, ct: ct, targetCt: targetCt, moved: moved, acted: acted);
         var actor = second ? B : A;
         return new(state.TurnBattle, state.Combatants.Select(u => new AttackUnitState(u.UnitId, u.Hp, u.MaxHp, u.Mp, u.MaxMp,
             u.PhysicalAttack, u.ClassPhysicalEvade, u.RightHandEvade, u.LeftHandEvade, u.AccessoryEvade, u.Brave,
