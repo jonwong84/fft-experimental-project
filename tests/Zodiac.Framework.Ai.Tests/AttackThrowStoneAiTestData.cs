@@ -7,6 +7,8 @@ internal static class AttackThrowStoneAiTestData
     internal static readonly AssetId Sword = new("sample:item/plain-sword");
     internal static readonly TilePosition Origin = new(1, 1, 0), Far = new(0, 1, 0);
     internal static ThrowStoneAiScanRequest Request(bool second = false) => new(second ? B : A, Stone, second ? A : B);
+    internal static SwordAiRefreshRequest FreshRequest(bool second = false) =>
+        new(second ? B : A, second ? A : B, [new(A, false, false), new(B, false, false)]);
     internal static ThrowStoneAiScanScenario Scenario() => new([Origin, Far], [Origin, Far], Origin, Origin);
     internal static AttackThrowStoneAiProfile Profile(bool active = true) => new(
         new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 19)]), CandidateProfile(),

@@ -6,11 +6,11 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-197: derive fresh in-reach movement scenarios for the prepared pair.**
-[Fresh pair preparation](behavior/attack-throw-stone-ai-preparation.md) now owns
-refresh and restored-state policy. Own one movement prefix and derive masks/D0/D1
-with the ranged distance bound, preserving remaining source-policy certificates.
-The old Attack-only scenario assertion cannot certify this ranged pair.
+**ZOD-198: select a fresh prepared in-reach Attack and Throw Stone pair.**
+[Fresh scenarios](behavior/attack-throw-stone-ai-scenarios.md) now own preparation,
+movement scores/proximity and ranged D0/D1. Continue scans/ranking/lottery with
+that private prefix, deriving established facts while preserving remaining
+scenario/path/no-Defend assertions. No second refresh or movement scoring.
 General list search/ranking and live ability authority remain separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
@@ -47,11 +47,10 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-196, [fresh pair preparation](behavior/attack-throw-stone-ai-preparation.md).
-  Shared refresh/restored-policy internals retain original state and one private
-  draw. Summaries distinguish three initialized/two usable entries, evasion2,
-  actor usage toggles, ranged facts, minimum reach and full ordinary reachability.
-  Six new scenarios cover literals, guards, budgets, policy and replay.
+- Latest implementation: ZOD-197, [fresh in-reach pair scenarios](behavior/attack-throw-stone-ai-scenarios.md).
+  One preparation and movement prefix derives masks/D0/D1 with the ranged bound.
+  Six new scenarios and all 849 AI cases pass with a clean locked restore/build
+  and source/prepared audit. Logs: `scratch/ai-pair-scenarios-197-198/`.
 - Latest investigation: ZOD-195, [pair preparation](architecture/zod-195-pair-preparation.md).
   Five files/18 functions plus inherited receipts and Frog semantic facts are
   pinned. Four isolated summaries cover initialization, usage, reach and ranged
