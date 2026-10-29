@@ -6,13 +6,13 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-177: execute one fresh prepared ACT-first Attack.**
-The [ACT-first trace/design](architecture/zod-176-ai-act-first.md) maps current
-Framework single-command authority: actual ACT leaves Move unused and no facing
-receipt on an ongoing turn. Own fresh preparation/selection and Attack dispatch
-inside that boundary, without issuing future Move authority. Post-ACT refresh/
-selection must later start from actual results/RNG; its usable-bit/reach ordering
-and D0=D1 differ from current pre-ACT helpers. Host activation stays separate.
+**ZOD-178: implement pure fresh post-ACT refresh.**
+The [prepared ACT-first executor](behavior/sword-ai-act-first-execution.md) now
+publishes one actual Attack, leaving Move unused and no facing receipt on the
+ongoing turn. Add an explicit refresh entry for that actual post-ACT snapshot/RNG,
+with only the unused-Move CT refund and no live commitment. FreshRefreshEntry
+still certifies that the early no-progress guard was passed; ACT-used alone is not
+that proof. Post-ACT preparation/search/live handoff and host activation stay separate.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
@@ -38,28 +38,24 @@ pure queries grant no command authority or live RNG commit; execution adapters
 own that separate boundary.
 
 Full AI search, general multi-entry ranking/lottery, replaceable decision interface,
-ACT-first/post-ACT command lifecycle and presentation activation remain future work.
+post-ACT refresh/selection/live continuation and presentation activation remain future work.
 Original UNIT_SLOT_COUNT is **21**; the old 26-foe wrap example is inadmissible.
 This does not select a fixed managed roster size. The contract records the erratum
 without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-174/175, [prepared in-reach execution](behavior/sword-ai-prepared-move-first.md)
-  and [prepared out-of-reach execution](behavior/sword-ai-prepared-move-first-out-of-reach.md).
-  Private fresh prefix planning shares dispatch, real path publication and exact-
-  session frozen continuation with existing post-prefix entries. Nine new scenarios
-  cover complete command streams, actual CT/facing, per-step rollback and replay.
+- Latest implementation: ZOD-177, [fresh prepared ACT-first Attack](behavior/sword-ai-act-first-execution.md).
+  One Framework command transaction owns selection/dispatch and actual combat,
+  with Move left available and no future-Move authority. Five new scenarios cover
+  complete hit/miss streams, exact budgets/rollback, actual KO and actor/order replay.
 - Latest design: ZOD-176, [ACT-first/post-ACT lifecycle](architecture/zod-176-ai-act-first.md).
-  Twenty source function anchors and nine offline branch/fact/tape descriptions
-  cover guard order, remaining choices, settled facing, post-ACT usable/reach facts
-  and supplied complete hit/miss streams. Managed ACT-first awaits ZOD-177.
-  Clean pinned audit: `scratch/ai-act-first-176/source.json` plus inherited receipts.
-- Validation: last full managed run remains ZOD-175's locked restore,
-  zero-warning/error Release build and **3,944 .NET cases**, including owner drafts.
-  No production C# changed for ZOD-176; full **516 Python tests** pass.
-  .NET logs: ignored `scratch/ai-prepared-move-175/` (seven full TRX files);
-  new Python/source logs: `scratch/ai-act-first-176/`.
+  Its ACT-only child is implemented; post-ACT stages remain separate. Historical
+  source descriptions are unchanged. Clean pinned audit:
+  `scratch/ai-act-first-177/source.json` (20 ACT-first anchors plus inherited receipts).
+- Validation: locked restore, zero-warning/error Release build,
+  **3,949 .NET cases / 516 Python tests**, including owner content drafts.
+  Logs/results: ignored `scratch/ai-act-first-177/` (seven full TRX files).
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

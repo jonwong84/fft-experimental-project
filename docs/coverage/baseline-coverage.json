@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-10-28",
   "edition": "SCUS-94221",
-  "managedCommit": "ab6aedf0fe6de3d05b48863b2628bd3dbc1afbad",
+  "managedCommit": "2f3fbf79a3f7dacb709e2dd367389f5e7b4409cb",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 3944,
-    "source": "docs/behavior/sword-ai-prepared-move-first-out-of-reach.md",
+    "passed": 3949,
+    "source": "docs/behavior/sword-ai-act-first-execution.md",
     "runForThisInventory": false
   },
   "statusDefinitions": {
@@ -453,7 +453,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "A separate AI assembly owns closed two-opponent selection with fresh moved/unmoved preparation and explicit reach branches. Framework owns trusted RNG adoption, revisions/receipts and real commands. Prepared already-moved Attack/Wait and certified post-prefix in/out-of-reach Move-first execute. Fresh prepared in/out-of-reach Move-first now owns the full prefix inside Framework and freezes actual Attack or deferred Wait without reselection after Move. Source/policy certificates stay explicit; ACT-first/post-ACT, broader search, replacement interface and host activation remain open.",
+      "currentScope": "A separate AI assembly owns closed two-opponent selection with moved/unmoved preparation and explicit reach branches. Framework owns trusted RNG adoption, revisions/receipts and real commands. Prepared already-moved Attack/Wait and fresh prepared in/out-of-reach Move-first execute, with exact-session frozen Attack/deferred Wait. Fresh prepared in-reach ACT-first now executes one actual Attack, leaving Move unused and no future-Move authority. Post-prefix entries retain their certificates. Post-ACT refresh/search/live continuation, broader policies/search, replacement interface and host activation remain open.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -501,7 +501,8 @@
         "docs/behavior/sword-ai-unmoved-prepared-selection.md",
         "docs/behavior/sword-ai-prepared-move-first.md",
         "docs/behavior/sword-ai-prepared-move-first-out-of-reach.md",
-        "docs/architecture/zod-176-ai-act-first.md"
+        "docs/architecture/zod-176-ai-act-first.md",
+        "docs/behavior/sword-ai-act-first-execution.md"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/SwordAiMovementScenario.cs",
@@ -515,7 +516,8 @@
         "src/Zodiac.Framework.Ai/SwordAiCommandDispatch.cs",
         "src/Zodiac.Framework.Ai/SwordAiMoveFirstExecution.cs",
         "src/Zodiac.Framework/FacingMoveDecision.cs",
-        "src/Zodiac.Framework/FacingDecision.cs"
+        "src/Zodiac.Framework/FacingDecision.cs",
+        "src/Zodiac.Framework.Ai/SwordAiActFirstExecution.cs"
       ],
       "automatedChecks": [
         {
@@ -629,6 +631,10 @@
         {
           "path": "tools/verification/test_ai_act_first_contract.py",
           "scope": "Offline ACT-first supplied-cost tapes and post-ACT dispatch/CT/reach scalars; no managed ACT-first execution."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiActFirstExecutionTests.cs",
+          "scope": "Actual fresh prepared ACT-first hit/miss streams, unused Move/no receipt, source guard descriptions, exact counters, atomic rollback, actual KO and replay isolation."
         }
       ],
       "manualCheckpoint": {
@@ -636,12 +642,12 @@
         "procedure": "Observe selected mandatory AI turns and distinguish legal choices from exact policy matching."
       },
       "openQuestions": [
-        "Full target/ability/roster search, broader special policies, Defend, replacement interface and ACT-first/post-ACT reselection remain open.",
+        "Full target/ability/roster search, broader special policies, Defend, replacement interface and post-ACT refresh/selection/live continuation remain open.",
         "Caller certificates still describe unrepresented original context. The fresh prepared selector covers only the certified NonBlue ordinary subset; Blue/special policies and source frame RNG remain outside it, and bounded vectors do not establish full original decision equivalence."
       ],
-      "nextAction": "Execute one privately prepared ACT-first Attack through existing Framework command authority, leaving Move available and no future-Move token; preserve actual post-ACT state/RNG for later fresh selection.",
+      "nextAction": "Implement an explicit pure fresh post-ACT refresh entry over actual ACT-used/Move-unused state and RNG, with only the unused-Move refund and preserved pre-ACT API admission.",
       "followUpTickets": [
-        "ZOD-177"
+        "ZOD-178"
       ]
     },
     {

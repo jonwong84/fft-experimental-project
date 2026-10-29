@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-177 (implementation).** ACT-first/post-ACT source trace ZOD-176 is complete.
-There are 33 open tickets below. The 144 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-178 (implementation).** Fresh prepared ACT-first Attack ZOD-177 is complete.
+There are 33 open tickets below. The 145 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,19 +29,20 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-177 — Execute one fresh prepared ACT-first Attack
+### ZOD-178 — Implement pure fresh post-ACT refresh
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-176
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-177
 
-Implement the [ACT-first source/design](architecture/zod-176-ai-act-first.md)
-through Framework's existing single-command planner transaction. Own fresh
-unmoved in-reach preparation/selection and dispatch; require ActBeforeMove plus
-actual Attack dispatch. Execute only the current Attack, leaving Move available
-and no facing receipt on the ongoing turn. No frozen future Move, external RNG,
-cached prefix or general-entry certificate. Verify literal hit/miss streams,
-exact/short budgets, terminal actual results, rollback and actor/order isolation.
-Keep remaining source/NonBlue/policy facts and old APIs; fresh post-ACT prefix/
-selection and live continuation are subsequent work. No host activation.
+Implement the [post-ACT refresh contract](architecture/zod-176-ai-act-first.md)
+for active Move-unused/ACT-used ordinary actors. Share existing flag/private-clock
+logic while retaining opposite pre-ACT entry admission. Use actual post-ACT state
+and supplied hypothetical RNG, min(60, liveCT+20) with only the unused-Move refund,
+then restore all live state. Keep explicit FreshRefreshEntry/cache/targetability
+facts: ACT used alone does not prove the early no-progress guard passed. Verify
+real post-ACT inputs, exact draw/tick limits, no partial failure and identity/order
+isolation without duplicating existing flag matrices. Pure diagnostics/RNG only;
+post-ACT preparation/scoring/selection and live handoff remain subsequent work.
+No fabricated ACT-unused snapshot, broad interface or host activation.
 
 ## Existing validation gates
 
