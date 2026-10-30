@@ -13,8 +13,16 @@ public sealed class SwordAiActFirstExecutionTests
     [Fact]
     public void Full_hit_and_low_hit_miss_match_ACT_first_tapes_and_leave_Move_available_without_a_receipt()
     {
+        // Each row supplies target class evasion (%) and the expected planning RNG, actual Attack RNG and hit result.
+        // "Word" is the full 32-bit internal RNG state; "count" is the cumulative number of draws consumed.
+        // Ready starts both scenarios at (word: 1, count: 7). Only evade changes the setup; the other fields are expectations.
+        // Planning includes hypothetical evaluation and the selection lottery; actual resolution consumes further draws.
+        // The full-accuracy lottery stops at its first roll; the low-accuracy case visits all eight slots.
         foreach (var (evade, decisionWord, decisionCount, actualWord, actualCount, hit) in new[] {
-            (0, 180171308u, 18ul, 3791773014u, 24ul, true), (89, 3535774167u, 25ul, 2473755763u, 29ul, false) })
+            // 0% evasion, 100% hit chance: 11 planning draws (7 -> 18), then 6 actual draws for a 25-damage hit (18 -> 24).
+            (0, 180171308u, 18ul, 3791773014u, 24ul, true),
+            // 89% evasion, 11% hit chance: 18 planning draws (7 -> 25), then 4 actual evasion draws for a miss (25 -> 29).
+            (89, 3535774167u, 25ul, 2473755763u, 29ul, false) })
         {
             var state = Ready(evade: evade, move: false, origin: new(2, 1, 0)); var before = Snapshot(state.Battle);
             var result = Start(state); var o = Success(result); var plan = o.Selection.Decision.Selection.Plan;
