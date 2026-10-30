@@ -9,6 +9,7 @@ public sealed record AttackThrowStoneAiPreparationProfile(bool BothInitializedAt
 public enum AttackThrowStoneAiEntryKind { Attack, ThrowStone }
 public sealed record AttackThrowStoneAiInitializedStatistics(int EntryCount, int SilenceQuarterShare, int MpQuarterShare,
     int EvadeQuarterShare, int HighestMpCost, int? LowestPaidMpCost);
+/// <summary>First-pass counts/ranged facts before the actor-only action-taken usability clear.</summary>
 public sealed record AttackThrowStoneAiPreparedUnit(BattleUnitId UnitId, AttackThrowStoneAiInitializedStatistics Initialized,
     int UsableHarmfulAbilities, int UsableHelpfulAbilities, bool HasRangedAbility, bool CanHealAllies);
 public sealed record AttackThrowStoneAiPreparedEntry(AttackThrowStoneAiEntryKind Kind, int Range, int Area, int Ct, int MpCost,
@@ -29,8 +30,8 @@ public sealed record AttackThrowStoneAiPreparationFailure(AttackThrowStoneAiPrep
 public sealed record AttackThrowStoneAiPreparationResult(bool Accepted, AttackThrowStoneAiPreparationFailure? Failure,
     AttackThrowStoneAiPreparationOutcome? Outcome, FftRandomState RngState);
 
-/// <summary>Fresh both-unused NonBlue refresh and pair preparation, using original state after the private refresh clock.</summary>
-/// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-195/196.
+/// <summary>Fresh NonBlue pair preparation with explicit pre-ACT or post-ACT entry, using restored actual state.</summary>
+/// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-195/196/209/211.
 /// No cached results, ranged D0/scenario derivation, candidate scoring/selection, authority or live RNG adoption.</remarks>
 public static class AttackThrowStoneAiPreparation
 {
@@ -43,19 +44,9 @@ public static class AttackThrowStoneAiPreparation
         ArgumentNullException.ThrowIfNull(throwStoneProfile); ArgumentNullException.ThrowIfNull(scoreProfile);
         ArgumentNullException.ThrowIfNull(refreshProfile); ArgumentNullException.ThrowIfNull(preparationProfile);
         AttackThrowStoneAiPreparationResult Reject(AttackThrowStoneAiPreparationRejection reason,
-            AttackCommandRejection ability = AttackCommandRejection.None, SwordAiRefreshRejection refresh = SwordAiRefreshRejection.None) =>
-            new(false, new(reason, ability, refresh), null, decisionRng);
-        if (!preparationProfile.BothInitializedAttackThrowStoneLists || !preparationProfile.NoSpecialBehavior || !preparationProfile.CleanActorDelayCache)
-            return Reject(AttackThrowStoneAiPreparationRejection.UnsupportedProfile);
-        if (team != SwordAiScenarioTeam.NonBlue) return Reject(AttackThrowStoneAiPreparationRejection.UnsupportedTeam);
-        if (!AttackThrowStoneAiComposition.ProfilesMatch(attackProfile, throwStoneProfile))
-            return Reject(AttackThrowStoneAiPreparationRejection.MismatchedProfiles);
-        if (state.TurnBattle.Battle.TryGetUnit(request.ActorId, out var body) && body!.Move > 124)
-            return Reject(AttackThrowStoneAiPreparationRejection.UnsupportedProfile);
-        var actor = state.Combatants.FirstOrDefault(u => u.UnitId == request.ActorId);
-        if (actor is null || weapon is null || actor.RightHandWeaponId != weapon.Id ||
-            (2 * Math.Max(1, actor.PhysicalAttack) - 1) * weapon.Power > short.MaxValue)
-            return Reject(AttackThrowStoneAiPreparationRejection.UnsupportedAttack);
+            AttackCommandRejection ability = AttackCommandRejection.None) => new(false, new(reason, ability), null, decisionRng);
+        var admission = ValidatePreparation(state, request, weapon, attackProfile, throwStoneProfile, preparationProfile, team);
+        if (admission is not null) return new(false, admission, null, decisionRng);
         // Only pure command admission is queried. Original-tile range is not a preparation requirement.
         var ability = TargetedAbilityBattleSimulator.ValidateCommand(state,
             new(request.ActorId, throwStoneAbilityId, request.TargetId), throwStoneProfile.Ability);
@@ -65,17 +56,66 @@ public static class AttackThrowStoneAiPreparation
             return Reject(AttackThrowStoneAiPreparationRejection.AbilityRejected, AttackCommandRejection.AbilityNotGranted);
 
         var refresh = SwordAiRefresh.EvaluateUnmoved(state, request, attackProfile, scoreProfile, refreshProfile, decisionRng);
-        if (!refresh.Accepted) return Reject(AttackThrowStoneAiPreparationRejection.RefreshRejected, refresh: refresh.Rejection);
+        return CompletePreparation(state, request, attackProfile, refresh, decisionRng);
+    }
+
+    /// <summary>Own one fresh ACT-used/Move-unused refresh and pair preparation; no movement scoring or command authority.</summary>
+    /// <remarks>Selection assertions are not consumed here. FreshRefreshEntry still certifies the earlier source no-progress guard.</remarks>
+    public static AttackThrowStoneAiPreparationResult EvaluateAfterAct(AttackBattleSnapshot state,
+        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, FftRandomState decisionRng)
+    {
+        AttackThrowStoneAiSelectionPipeline.ValidateInputs(state, request, configuration);
+        var admission = ValidatePreparation(state, request.Turn, request.Weapon, configuration.Attack, configuration.ThrowStone,
+            configuration.Preparation, configuration.Team);
+        if (admission is not null) return new(false, admission, null, decisionRng);
+        // Content/grants/setup are needed even though executing another ACT is unavailable.
+        // Do not ignore ActionAlreadyTaken from ValidateCommand: it returns before these checks.
+        var setup = TargetedAbilityBattleSimulator.ValidateAbilitySetup(state, request.Turn.ActorId,
+            request.ThrowStoneAbilityId, configuration.ThrowStone.Ability);
+        if (setup != AttackCommandRejection.None)
+            return new(false, new(AttackThrowStoneAiPreparationRejection.AbilityRejected, setup), null, decisionRng);
+        if (!configuration.ThrowStone.Ability.Units.TryGetValue(request.Turn.TargetId, out var peer) ||
+            !peer.Abilities.Contains(request.ThrowStoneAbilityId))
+            return new(false, new(AttackThrowStoneAiPreparationRejection.AbilityRejected, AttackCommandRejection.AbilityNotGranted), null, decisionRng);
+        var refresh = SwordAiRefresh.EvaluateAfterAct(state, request.Turn, configuration.Attack, configuration.Scoring,
+            configuration.Refresh, decisionRng);
+        return CompletePreparation(state, request.Turn, configuration.Attack, refresh, decisionRng);
+    }
+
+    private static AttackThrowStoneAiPreparationFailure? ValidatePreparation(AttackBattleSnapshot state, SwordAiRefreshRequest request,
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile attackProfile, ThrowStoneAiCandidateProfile throwStoneProfile,
+        AttackThrowStoneAiPreparationProfile preparationProfile, SwordAiScenarioTeam team)
+    {
+        if (!preparationProfile.BothInitializedAttackThrowStoneLists || !preparationProfile.NoSpecialBehavior || !preparationProfile.CleanActorDelayCache)
+            return new(AttackThrowStoneAiPreparationRejection.UnsupportedProfile);
+        if (team != SwordAiScenarioTeam.NonBlue) return new(AttackThrowStoneAiPreparationRejection.UnsupportedTeam);
+        if (!AttackThrowStoneAiComposition.ProfilesMatch(attackProfile, throwStoneProfile))
+            return new(AttackThrowStoneAiPreparationRejection.MismatchedProfiles);
+        if (state.TurnBattle.Battle.TryGetUnit(request.ActorId, out var body) && body!.Move > 124)
+            return new(AttackThrowStoneAiPreparationRejection.UnsupportedProfile);
+        var actor = state.Combatants.FirstOrDefault(u => u.UnitId == request.ActorId);
+        if (actor is null || weapon is null || actor.RightHandWeaponId != weapon.Id ||
+            (2 * Math.Max(1, actor.PhysicalAttack) - 1) * weapon.Power > short.MaxValue)
+            return new(AttackThrowStoneAiPreparationRejection.UnsupportedAttack);
+        return null;
+    }
+
+    private static AttackThrowStoneAiPreparationResult CompletePreparation(AttackBattleSnapshot state, SwordAiRefreshRequest request,
+        SwordAiCandidateProfile attackProfile, SwordAiRefreshResult refresh, FftRandomState decisionRng)
+    {
+        if (!refresh.Accepted)
+            return new(false, new(AttackThrowStoneAiPreparationRejection.RefreshRejected, RefreshRejection: refresh.Rejection), null, decisionRng);
         var common = SwordAiPreparation.DeriveRestoredState(state, request, attackProfile, refresh.Outcome!, alreadyMoved: false);
-        if (common is null) return Reject(AttackThrowStoneAiPreparationRejection.RestoredPolicyRejected);
+        if (common is null) return new(false, new(AttackThrowStoneAiPreparationRejection.RestoredPolicyRejected), null, decisionRng);
         // Initialization includes unusable Frog Attack: two evadeable of three entries, no Silence or paid MP.
         var statistics = new AttackThrowStoneAiInitializedStatistics(3, 0, 0, 2, 0, null);
         var units = state.TurnBattle.Turns.Units.OrderBy(u => u.TieKey).Select(u =>
             new AttackThrowStoneAiPreparedUnit(u.Id, statistics, 2, 0, HasRangedAbility: true, CanHealAllies: false)).ToImmutableArray();
         // These are actor second-pass toggles only; do not invent a refreshed consume-aim policy for the peer.
+        bool usable = common.ActorAttackUsable; // Both ordinary entries share the actor's action-taken clear, after reach/counts.
         ImmutableArray<AttackThrowStoneAiPreparedEntry> entries = [
-            new(AttackThrowStoneAiEntryKind.Attack, 1, 0, 0, 0, true, true, false, false),
-            new(AttackThrowStoneAiEntryKind.ThrowStone, 4, 0, 0, 0, true, false, false, true)];
+            new(AttackThrowStoneAiEntryKind.Attack, 1, 0, 0, 0, usable, true, false, false),
+            new(AttackThrowStoneAiEntryKind.ThrowStone, 4, 0, 0, 0, usable, false, false, true)];
         return new(true, null, new(common, units, entries, EnemyHarmfulAbilityCount: 2, EnemyPhysicalAbilityCount: 2), refresh.RngState);
     }
 }

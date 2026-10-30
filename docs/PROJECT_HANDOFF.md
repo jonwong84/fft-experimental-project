@@ -1,19 +1,18 @@
 # Tessera / Zodiac / FFT handoff
 
-Updated 2026-10-29. Read [AGENTS.md](../AGENTS.md), the [active backlog](BACKLOG.md)
+Updated 2026-10-30. Read [AGENTS.md](../AGENTS.md), the [active backlog](BACKLOG.md)
 and the selected task's design before editing. This file describes current state;
 [planning history](history/README.md) holds completed tickets and old checkpoints.
 
 ## Next work
 
-**ZOD-211: implement pure fresh pair post-ACT preparation.**
-The [in-reach ACT-first adapter](behavior/attack-throw-stone-ai-act-first-execution.md)
-now owns fresh selection and real Attack/Throw Stone, leaving Move unused.
-The [ZOD-209 study](architecture/zod-209-pair-post-act.md) traces the remaining
-flow. Reuse post-ACT refresh, derive pair summaries/reaches before clearing both
-actor entries, and validate content/grants independently of live ACT availability.
-Stop before movement/scenarios/selection. Predicted D1 is not authority;
-terminal input remains explicitly unsupported. ACT-first out-of-reach entry, unknown cast
+**ZOD-213: derive fresh pair post-ACT movement scenarios.**
+[Fresh preparation](behavior/attack-throw-stone-ai-post-act-preparation.md) now
+uses actual post-ACT state, retains pair summaries/reaches and clears both actor
+entries. Own that prefix and shared movement-only scoring through explicit reach
+branches, D0=D1 and source mask/tie/reach-draw ordering. Stop before scans/lottery/
+dispatch/execution; predicted pre-ACT D1 is not authority. Terminal input remains
+explicitly unsupported. ACT-first out-of-reach entry, unknown cast
 keys, retained/event workspace history and general lists stay open.
 
 The [original AI algorithm guide](architecture/original-ai-algorithm.md) maps
@@ -57,24 +56,21 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-210, [pair-selection cleanup](development/ai-pair-selection-refactor.md).
-  Both selectors share admission/composition/lottery handling, with separate
-  scenario/provenance rules and unchanged typed results. Immutable request/
-  configuration records replace twelve-argument selection/execution entries.
-  Existing assertions are unchanged; no tests added or removed. ZOD-208's real
-  ACT-first effects and unused Move remain; pair post-ACT selection is still open.
+- Latest implementation: ZOD-211, [pair post-ACT preparation](behavior/attack-throw-stone-ai-post-act-preparation.md).
+  Reuses post-ACT refresh/restored state and result construction. Shared pure
+  setup validation checks grants/geometry/PA without authorizing another ACT;
+  live command guards retain their order. Five scenario families cover actual
+  effects, content/choice guards, budgets and replay. Pair movement/selection is still open.
 - Latest investigation: ZOD-212, [unified source algorithm guide](architecture/original-ai-algorithm.md).
   Ten chapters map initialization, policy precedence, search/evaluation, simulation,
   ranking/lottery, commands and RNG. The source index covers 105 core functions,
   eight external boundaries and 11 direct core rand sites at the pinned revision.
   Structural completeness is not full behavioral equivalence or implementation.
-  [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed next-child design.
-- Runtime validation at ZOD-210: locked restore, zero-warning/error Release rebuild,
-  **4,085 .NET cases** (1,455 Framework, 885 AI, including owner drafts),
-  seven full TRX files: ignored `scratch/ai-pair-selection-refactor-210/`.
-  ZOD-212 changes no managed source/tests; **534 Python tests**, guide inventory/
-  link/source audit and malformed-index checks pass in ignored `scratch/ai-algorithm-guide-212/`.
-  The source/prepared-data audit last passed at ZOD-209 in `scratch/ai-pair-post-act-study-209/`.
+  [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design.
+- Validation: locked restore, zero-warning/error Release builds,
+  **4,090 .NET cases** (1,455 Framework, 890 AI, including owner drafts),
+  **534 Python tests**, pinned post-ACT source/prepared-data and guide audits pass.
+  Logs and seven full TRX files: ignored `scratch/ai-pair-post-act-preparation-211/`.
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

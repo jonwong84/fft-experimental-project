@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-211 (AI implementation).** Unified AI algorithm guide ZOD-212 is complete.
-There are 34 open tickets below. The 178 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-213 (AI implementation).** Fresh pair post-ACT preparation ZOD-211 is complete.
+There are 34 open tickets below. The 179 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,18 +29,18 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-211 — Prepare a fresh post-ACT Attack and Throw Stone pair
+### ZOD-213 — Derive fresh post-ACT pair movement scenarios
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-209, ZOD-210, ZOD-178, ZOD-196
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-211, ZOD-209, ZOD-180
 
-Implement the [post-ACT preparation design](architecture/zod-209-pair-post-act.md)
-with explicit ACT-used/Move-unused admission and cohesive request/configuration.
-Reuse fresh post-ACT refresh and restored-state derivation; separate content/grant
-checks from live ACT validation without weakening either. Return pair summaries,
-ranged/minimum-reach facts and both actor entries unusable, with actual restored
-focus/geometry. Preserve certificates, rollback and current limits. Check actual
-hit/miss/push, terminal/choice rejection, exact/exhausted budgets and replay.
-Stop before movement scoring/scenarios, lottery, dispatch, execution or host work.
+Own [fresh pair post-ACT preparation](behavior/attack-throw-stone-ai-post-act-preparation.md)
+and movement-only scoring through shared post-ACT kernels. Keep explicit in/out-of-reach
+entries, D0=D1, original masks/provenance, source ordering/ties and the NonBlue reach
+draw after out-of-reach scoring. Use actual state, without a cached prefix or false
+Attack-only scenario certificate. Check real hit/miss/push, stay/Move0, branch and
+source admission, exact/exhausted budgets, replay and whole-query rollback. Keep
+unwritten priorities explicit; no action scan, lottery, dispatch, authority or host
+activation in this child. Terminal and retained/event-memory policy remain deferred.
 
 ## Existing validation gates
 

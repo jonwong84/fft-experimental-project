@@ -176,18 +176,30 @@ public static class TargetedAbilityBattleSimulator
             return AttackCommandRejection.ActionAlreadyTaken;
         if (actor.UnitId == target.UnitId) return AttackCommandRejection.SelfTarget;
         if (target.Status == AttackUnitStatus.Dead) return AttackCommandRejection.DeadTarget;
-        if (!profile.Abilities.TryGetValue(command.AbilityId, out var ability)) return AttackCommandRejection.UnknownAbility;
-        if (!profile.Units.TryGetValue(actor.UnitId, out var grant) || !grant.Abilities.Contains(ability.Id))
-            return AttackCommandRejection.AbilityNotGranted;
-        try { profile.ValidateState(state); }
-        catch (Exception exception) when (exception is ArgumentException or NotSupportedException)
-        { return AttackCommandRejection.UnsupportedSetup; }
+        var setup = ValidateAbilitySetup(state, actor.UnitId, command.AbilityId, profile);
+        if (setup != AttackCommandRejection.None) return setup;
 
         state.TurnBattle.Battle.TryGetUnit(actor.UnitId, out var actorBody);
         state.TurnBattle.Battle.TryGetUnit(target.UnitId, out var targetBody);
         TilePosition from = actorBody!.Position, to = targetBody!.Position;
         long dx = (long)to.X - from.X, dy = (long)to.Y - from.Y;
-        if (Math.Abs(dx) + Math.Abs(dy) > ability.Range) return AttackCommandRejection.OutOfRange;
+        if (Math.Abs(dx) + Math.Abs(dy) > profile.Abilities[command.AbilityId].Range) return AttackCommandRejection.OutOfRange;
+        return AttackCommandRejection.None;
+    }
+
+    /// <summary>Check an actor's ability binding and the bounded battle setup independently of turn availability and target range.</summary>
+    /// <remarks>Pure setup admission for preparation queries. This does not authorize an ACT; ValidateCommand retains its choice/target guards.</remarks>
+    public static AttackCommandRejection ValidateAbilitySetup(AttackBattleSnapshot state, BattleUnitId actorId, AssetId abilityId,
+        TargetedAbilityBattleProfile profile)
+    {
+        ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(profile);
+        if (!state.Combatants.Any(unit => unit.UnitId == actorId)) return AttackCommandRejection.UnknownActor;
+        if (!profile.Abilities.TryGetValue(abilityId, out var ability)) return AttackCommandRejection.UnknownAbility;
+        if (!profile.Units.TryGetValue(actorId, out var grant) || !grant.Abilities.Contains(ability.Id))
+            return AttackCommandRejection.AbilityNotGranted;
+        try { profile.ValidateState(state); }
+        catch (Exception exception) when (exception is ArgumentException or NotSupportedException)
+        { return AttackCommandRejection.UnsupportedSetup; }
         return AttackCommandRejection.None;
     }
 

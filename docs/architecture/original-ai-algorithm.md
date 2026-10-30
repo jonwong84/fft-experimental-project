@@ -104,10 +104,11 @@ actor. Never generalize one nearest-enemy filter to all target searches.
 
 **Implemented, bounded:** shared refresh and restored-state preparation for two
 ordinary living opponents; Attack-only moved/unmoved/post-ACT entries and fresh
-pre-ACT Attack/Throw Stone preparation. See [refresh](zod-156-ai-refresh-prefix.md),
+pre-ACT and [post-ACT Attack/Throw Stone preparation](../behavior/attack-throw-stone-ai-post-act-preparation.md).
+See [refresh](zod-156-ai-refresh-prefix.md),
 [pair preparation](zod-195-pair-preparation.md) and [post-ACT pair study](zod-209-pair-post-act.md).
 Full list construction, teams, status timing and special policies are **mapped,
-unported**; ZOD-211 remains the next pair post-ACT implementation child.
+unported**; pair post-ACT movement scenarios remain the next implementation child.
 
 ## 3. Policy precedence
 
@@ -389,12 +390,11 @@ managed objects replace their byte storage.
 Use `verify_ai_algorithm_guide.py --reference C:/repositories/fft_decomp --output
 <new scratch report>` to check the pinned inventory, chapter links, source-symbol
 coverage and direct RNG sites. This is a source/document audit, not original/C
-execution or a new AI oracle. Managed source/tests are unchanged by ZOD-212;
-the last implementation validation remains ZOD-210's clean Release build and
-4,085 .NET cases. The 534 Python tests also pass at this documentation checkpoint.
-Reports for this guide are in ignored `scratch/ai-algorithm-guide-212/`.
+execution or a new AI oracle. The [handoff](../PROJECT_HANDOFF.md) records current
+implementation validation; the original guide inventory reports remain in
+ignored `scratch/ai-algorithm-guide-212/`.
 
-The implementation sequence remains ZOD-211 and subsequent bounded children.
+The next implementation is ZOD-213 pair post-ACT movement scenarios.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use
 the supported domain and a real consumer, rather than exposing the entire
