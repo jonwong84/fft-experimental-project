@@ -6,13 +6,14 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-209: trace pair post-ACT movement and settlement from actual results.**
+**ZOD-211: implement pure fresh pair post-ACT preparation.**
 The [in-reach ACT-first adapter](behavior/attack-throw-stone-ai-act-first-execution.md)
 now owns fresh selection and real Attack/Throw Stone, leaving Move unused.
-Study pair-specific re-entry, refresh/list preparation, movement and settlement
-after actual hit/miss/push/KO, then select one bounded implementation child.
-The Attack-only certificate cannot substitute for a pair list; predicted D1
-is not authority. Terminal policy, ACT-first out-of-reach entry, unknown cast
+The [ZOD-209 study](architecture/zod-209-pair-post-act.md) traces the remaining
+flow. Reuse post-ACT refresh, derive pair summaries/reaches before clearing both
+actor entries, and validate content/grants independently of live ACT availability.
+Stop before movement/scenarios/selection. Predicted D1 is not authority;
+terminal input remains explicitly unsupported. ACT-first out-of-reach entry, unknown cast
 keys, retained/event workspace history and general lists stay open.
 
 The [AI completion roadmap](development/ai-completion-roadmap.md) preserves the
@@ -59,15 +60,16 @@ without rewriting old evidence.
   configuration records replace twelve-argument selection/execution entries.
   Existing assertions are unchanged; no tests added or removed. ZOD-208's real
   ACT-first effects and unused Move remain; pair post-ACT selection is still open.
-- Latest investigation: ZOD-203, [Throw Stone authority](architecture/zod-203-throw-stone-command-boundary.md).
-  Ten source files/21 functions and fourteen managed study snapshots distinguish
-  prediction from real resolution, dispatch/reselection and per-command transactions.
-  Eight supplied checkpoint descriptions cover four/seven draws and push/KO/rollback;
-  those descriptions do not execute the Framework transactions validated by ZOD-204.
-- Validation: locked restore, zero-warning/error Release rebuild,
+- Latest investigation: ZOD-209, [pair post-ACT flow](architecture/zod-209-pair-post-act.md).
+  Five files/22 functions trace choice re-entry, pair summaries before usability
+  clear, D0=D1, skipped action evaluation, empty lottery and existing settlement.
+  Six supplied descriptions cover actual-input refresh facts, push branch change,
+  KO admission and no-progress; they do not execute a full pair post-ACT query.
+- Runtime validation at ZOD-210: locked restore, zero-warning/error Release rebuild,
   **4,085 .NET cases** (1,455 Framework, 885 AI, including owner drafts),
-  **532 Python tests** and pinned source/prepared audit passed. Logs and seven
-  full TRX files: ignored `scratch/ai-pair-selection-refactor-210/`.
+  seven full TRX files: ignored `scratch/ai-pair-selection-refactor-210/`.
+  ZOD-209 changes no managed source/tests; **534 Python tests** and the pinned source/
+  prepared audit pass in ignored `scratch/ai-pair-post-act-study-209/`.
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

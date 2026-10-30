@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-209 (AI source/design).** Owner-requested pair-selection cleanup ZOD-210 is complete.
-There are 34 open tickets below. The 176 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-211 (AI implementation).** Pair post-ACT source/design ZOD-209 is complete.
+There are 34 open tickets below. The 177 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,19 +29,18 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-209 — Trace pair post-ACT movement and settlement from actual results
+### ZOD-211 — Prepare a fresh post-ACT Attack and Throw Stone pair
 
-**Type:** Investigation · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-208, ZOD-203, ZOD-184
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-209, ZOD-210, ZOD-178, ZOD-196
 
-Trace fresh ACT-used/Move-unused re-entry after the [actual pair ACT](behavior/attack-throw-stone-ai-act-first-execution.md).
-Establish pair list preparation, unusable actor actions, enemy reach/ranged hints,
-focus/distance and policy facts after hit/miss/push/KO. Map refresh, movement scoring,
-D0/D1, dispatch/no-progress guards and Wait/facing settlement to reusable existing
-machinery. Record terminal/KO policy as supported or explicitly unresolved; never
-invent a living target or reuse predicted D1 as authority. Pin source and provide
-independently checkable witnesses, then select one bounded implementation child.
-Do not substitute the Attack-only post-ACT certificate. No runtime implementation,
-out-of-reach ACT-first entry, generic interface or host/editor activation here.
+Implement the [post-ACT preparation design](architecture/zod-209-pair-post-act.md)
+with explicit ACT-used/Move-unused admission and cohesive request/configuration.
+Reuse fresh post-ACT refresh and restored-state derivation; separate content/grant
+checks from live ACT validation without weakening either. Return pair summaries,
+ranged/minimum-reach facts and both actor entries unusable, with actual restored
+focus/geometry. Preserve certificates, rollback and current limits. Check actual
+hit/miss/push, terminal/choice rejection, exact/exhausted budgets and replay.
+Stop before movement scoring/scenarios, lottery, dispatch, execution or host work.
 
 ## Existing validation gates
 

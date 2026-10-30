@@ -40,9 +40,10 @@ read-only reference revision before new tracing. Test count is not a completion 
 ## Remaining work areas
 
 1. **Complete ability decisions through authoritative commands.** Throw Stone's
-   handoff now supports both Move-first branches and in-reach ACT-first. Trace
-   pair-specific post-ACT refresh/preparation, unused movement and settlement
-   from actual results; then implement bounded children. Add the remaining
+   handoff now supports both Move-first branches and in-reach ACT-first. The
+   [post-ACT study](../architecture/zod-209-pair-post-act.md) traces pair-specific
+   refresh/preparation, unused movement and settlement from actual results;
+   implement its bounded children next. Add the remaining
    ACT-first out-of-reach entry with its explicit score-provenance limits.
    AI midpoint/no-knockback predictions must stay separate from real accuracy,
    damage, knockback and execution draws. Reuse the existing
@@ -108,9 +109,10 @@ areas are a roadmap, not eight already-sized tickets or a promise of strict
 serial execution. Select new children through the backlog and keep deferred work
 deferred. The [ZOD-203 handoff design](../architecture/zod-203-throw-stone-command-boundary.md)
 led to the completed ZOD-204/205 authority primitives, ZOD-206/207 Move-first
-entries and ZOD-208 in-reach ACT-first execution. ZOD-209's pair post-ACT source/
-design study is the immediate next step; the Attack-only list certificate is
-insufficient for this pair.
+entries and ZOD-208 in-reach ACT-first execution. ZOD-209's pair post-ACT study
+selects ZOD-211 pure fresh preparation as the immediate next step; the Attack-only
+list certificate is insufficient for this pair. Reuse shared kernels for later
+movement/selection/settlement rather than duplicating the pipeline.
 
 Original-AI completion means it can control applicable original encounters and
 automatic units using the required actions, targeting, policies, movement and
