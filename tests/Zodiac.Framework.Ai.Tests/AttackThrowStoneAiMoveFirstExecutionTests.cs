@@ -22,8 +22,7 @@ public sealed class AttackThrowStoneAiMoveFirstExecutionTests
         Assert.Equal(new[] { new TilePosition(1, 1, 0), new(1, 2, 0), new(1, 3, 0), new(1, 4, 0) }, moved.Path!.Tiles.ToArray());
         Assert.Equal(BattleFacing.North, moved.Path.FinalHeading); Assert.Equal(state.Revision + 1, moved.State.Revision);
         Assert.Equal(50, moved.State.Battle.Combatants.Single(u => u.UnitId == B).Hp); Assert.Empty(moved.Events.OfType<ThrowStoneResolvedEvent>());
-        var p = Profile(); var pure = AttackThrowStoneAiPreparedSelection.Evaluate(state.Battle, FreshRequest(), Stone, new(Sword, 1),
-            p.Attack, p.ThrowStone, p.Score, new(true, true, true), new(true, true, true), Selection, SwordAiScenarioTeam.NonBlue,
+        var pure = AttackThrowStoneAiPreparedSelection.Evaluate(state.Battle, new(FreshRequest(), Stone, new(Sword, 1)), SelectionConfiguration(Selection),
             state.Battle.TurnBattle.Turns.RngState);
         Assert.True(pure.Accepted); Assert.Equal(Serialize(pure.Outcome), Serialize(o.Decision)); Assert.Equal(pure.RngState, o.DecisionRng);
         var act = FacingMoveDecisionBattle.Continue(moved.State, A, moved.Continuation); Assert.True(act.Accepted);
@@ -141,8 +140,8 @@ public sealed class AttackThrowStoneAiMoveFirstExecutionTests
         SwordAiCommandDispatchProfile? dispatch = null, AttackThrowStoneAiPreparedSelectionProfile? selection = null,
         SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue)
     {
-        var p = Profile(); return AttackThrowStoneAiMoveFirstExecution.StartInReach(state, request ?? FreshRequest(), Stone, new(Sword, power),
-            p.Attack, p.ThrowStone, p.Score, new(true, true, true), new(true, true, true), selection ?? Selection, team, dispatch ?? Dispatch);
+        return AttackThrowStoneAiMoveFirstExecution.StartInReach(state, new(request ?? FreshRequest(), Stone, new(Sword, power)),
+            SelectionConfiguration(selection ?? Selection, team), dispatch ?? Dispatch);
     }
     private static AttackThrowStoneAiMoveFirstOutcome Success(AttackThrowStoneAiMoveFirstResult result)
     { Assert.True(result.Accepted, Serialize(result.Failure)); Assert.Null(result.Failure); Assert.NotNull(result.Continuation);

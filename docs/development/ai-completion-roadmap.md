@@ -26,6 +26,11 @@ Framework's [targeted ACT transaction](../behavior/targeted-ability-decision.md)
 and [targeted Move continuation](../behavior/targeted-move-continuation.md) now
 exist; ACT-first out-of-reach entry and pair post-ACT reselection remain work.
 
+The [ZOD-210 cleanup](ai-pair-selection-refactor.md) shares pair admission and
+composition/lottery handling while retaining separate scenario/provenance rules.
+Immutable request/configuration records simplify selection and execution inputs;
+this introduces no broader replacement contract or behavior change.
+
 These are bounded implementations: ordinary flat geometry, two opponents,
 restricted lists/statuses and explicit assertions about unrepresented context.
 They do not establish general original-game AI equivalence. Existing source

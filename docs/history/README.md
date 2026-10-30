@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 175 entries index completed bounded work; they do not mean the full game is complete.
+These 176 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -198,3 +198,4 @@ These 175 entries index completed bounded work; they do not mean the full game i
 - [ZOD-206 — Execute a fresh in-reach pair Move-first decision](../behavior/attack-throw-stone-ai-move-first-execution.md)
 - [ZOD-207 — Execute a fresh known-score out-of-reach pair Move-first decision](../behavior/attack-throw-stone-ai-out-of-reach-move-first.md)
 - [ZOD-208 — Execute a fresh in-reach pair ACT-first decision](../behavior/attack-throw-stone-ai-act-first-execution.md)
+- [ZOD-210 — Consolidate pair-selection orchestration and inputs](../development/ai-pair-selection-refactor.md)

@@ -22,18 +22,14 @@ public sealed record AttackThrowStoneAiActFirstResult(AttackThrowStoneAiActFirst
 /// No cached decision, post-ACT Move token/reselection, out-of-reach entry or host activation.</remarks>
 public static class AttackThrowStoneAiActFirstExecution
 {
-    public static AttackThrowStoneAiActFirstResult StartInReach(FacingTurnState state, SwordAiRefreshRequest request,
-        AssetId throwStoneAbilityId, BoundedSwordWeapon? weapon, SwordAiCandidateProfile attackProfile,
-        ThrowStoneAiCandidateProfile throwStoneProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
-        AttackThrowStoneAiPreparationProfile preparationProfile, AttackThrowStoneAiPreparedSelectionProfile selectionProfile,
-        SwordAiScenarioTeam team, SwordAiCommandDispatchProfile dispatchProfile)
+    public static AttackThrowStoneAiActFirstResult StartInReach(FacingTurnState state, AttackThrowStoneAiSelectionRequest request,
+        AttackThrowStoneAiSelectionConfiguration configuration, SwordAiCommandDispatchProfile dispatchProfile)
     {
-        ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(request); ArgumentNullException.ThrowIfNull(attackProfile);
-        ArgumentNullException.ThrowIfNull(throwStoneProfile); ArgumentNullException.ThrowIfNull(scoreProfile);
-        ArgumentNullException.ThrowIfNull(refreshProfile); ArgumentNullException.ThrowIfNull(preparationProfile);
-        ArgumentNullException.ThrowIfNull(selectionProfile); ArgumentNullException.ThrowIfNull(dispatchProfile);
+        ArgumentNullException.ThrowIfNull(state);
+        AttackThrowStoneAiSelectionPipeline.ValidateInputs(state.Battle, request, configuration);
+        ArgumentNullException.ThrowIfNull(dispatchProfile);
         AttackThrowStoneAiActFirstFailure? failure = null;
-        var result = FacingDecisionBattle.Execute<AttackThrowStoneAiActFirstOutcome>(state, request.ActorId, context =>
+        var result = FacingDecisionBattle.Execute<AttackThrowStoneAiActFirstOutcome>(state, request.Turn.ActorId, context =>
         {
             var actor = context.Battle.TurnBattle.Turns.Units.Single(u => u.Id == context.ActorId);
             if (actor.MovementTaken || actor.ActionTaken)
@@ -47,8 +43,7 @@ public static class AttackThrowStoneAiActFirstExecution
                 failure = new(AttackThrowStoneAiActFirstRejection.UnsupportedDispatchContext);
                 return context.Reject<AttackThrowStoneAiActFirstOutcome>();
             }
-            var selection = AttackThrowStoneAiPreparedSelection.Evaluate(context.Battle, request, throwStoneAbilityId, weapon,
-                attackProfile, throwStoneProfile, scoreProfile, refreshProfile, preparationProfile, selectionProfile, team, context.RngState);
+            var selection = AttackThrowStoneAiPreparedSelection.Evaluate(context.Battle, request, configuration, context.RngState);
             if (!selection.Accepted)
             {
                 failure = new(AttackThrowStoneAiActFirstRejection.SelectionRejected, selection.Failure);
@@ -65,10 +60,10 @@ public static class AttackThrowStoneAiActFirstExecution
             return plan.Action switch
             {
                 AttackThrowStoneAiAttack attack => context.PrepareAttack(new(attack.Value.Candidate.ActorId, attack.Value.Candidate.TargetId),
-                    weapon, selection.RngState, diagnostic),
+                    request.Weapon, selection.RngState, diagnostic),
                 AttackThrowStoneAiStone stone => context.PrepareTargetedAbility(
                     new(stone.Value.Candidate.ActorId, stone.Value.Candidate.AbilityId, stone.Value.Candidate.TargetId),
-                    throwStoneProfile.Ability, selection.RngState, diagnostic),
+                    configuration.ThrowStone.Ability, selection.RngState, diagnostic),
                 _ => throw new InvalidOperationException("Unsupported private pair action.")
             };
         });

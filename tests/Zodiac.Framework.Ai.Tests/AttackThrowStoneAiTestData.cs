@@ -14,6 +14,12 @@ internal static class AttackThrowStoneAiTestData
         new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 19)]), CandidateProfile(),
         new([new(A, AiScoreFacts.ClosedProfile), new(B, AiScoreFacts.ClosedProfile)]),
         new(active, true, true, true, true), new(active, true, true, true, true, true, true, true), new(true, true, true, true), true, true);
+    internal static AttackThrowStoneAiSelectionConfiguration SelectionConfiguration(
+        AttackThrowStoneAiPreparedSelectionProfile selection, SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue)
+    {
+        var p = Profile();
+        return new(p.Attack, p.ThrowStone, p.Score, new(true, true, true), new(true, true, true), selection, team);
+    }
     internal static AttackBattleSnapshot Battle(int hp = 50, int evade = 0, bool second = false, bool reverse = false, ulong ticks = 20,
         int move = 3, int ct = 15, int targetCt = 95, bool moved = false, bool acted = false, TilePosition? target = null)
     {

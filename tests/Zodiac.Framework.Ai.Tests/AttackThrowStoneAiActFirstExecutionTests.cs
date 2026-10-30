@@ -24,8 +24,7 @@ public sealed class AttackThrowStoneAiActFirstExecutionTests
         Assert.Equal(new FftRandomState(995405759, 49), result.State.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(40, result.State.Battle.Combatants.Single(u => u.UnitId == B).Hp); OpenMove(state, result.State);
         Assert.Equal(Origin, Position(result.State, A)); Assert.NotEqual(o.Decision.Selection.Plan.Destination, Position(result.State, A));
-        var p = Profile(); var pure = AttackThrowStoneAiPreparedSelection.Evaluate(state.Battle, FreshRequest(), Stone, new(Sword, 2),
-            p.Attack, p.ThrowStone, p.Score, new(true, true, true), new(true, true, true), Selection, SwordAiScenarioTeam.NonBlue,
+        var pure = AttackThrowStoneAiPreparedSelection.Evaluate(state.Battle, new(FreshRequest(), Stone, new(Sword, 2)), SelectionConfiguration(Selection),
             state.Battle.TurnBattle.Turns.RngState);
         Assert.True(pure.Accepted); Assert.Equal(Serialize(pure.Outcome), Serialize(o.Decision)); Assert.Equal(pure.RngState, o.DecisionRng);
         Assert.Equal(FacingTurnRejection.MissingCompletion,
@@ -132,8 +131,8 @@ public sealed class AttackThrowStoneAiActFirstExecutionTests
         SwordAiCommandDispatchProfile? dispatch = null, AttackThrowStoneAiPreparedSelectionProfile? selection = null,
         SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue)
     {
-        var p = Profile(); return AttackThrowStoneAiActFirstExecution.StartInReach(state, request ?? FreshRequest(), Stone, new(Sword, power),
-            p.Attack, p.ThrowStone, p.Score, new(true, true, true), new(true, true, true), selection ?? Selection, team, dispatch ?? Dispatch);
+        return AttackThrowStoneAiActFirstExecution.StartInReach(state, new(request ?? FreshRequest(), Stone, new(Sword, power)),
+            SelectionConfiguration(selection ?? Selection, team), dispatch ?? Dispatch);
     }
     private static AttackThrowStoneAiActFirstOutcome Success(AttackThrowStoneAiActFirstResult result)
     { Assert.True(result.Accepted, Serialize(result.Failure)); Assert.Null(result.Failure); Assert.Null(result.Execution.Path);

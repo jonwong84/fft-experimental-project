@@ -149,8 +149,8 @@ public sealed class AttackThrowStoneAiOutOfReachSelectionTests
         SwordAiRefreshRequest? request = null, AttackThrowStoneAiPreparedSelectionProfile? profile = null,
         SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue, FftRandomState? rng = null)
     {
-        var p = Profile(); return AttackThrowStoneAiOutOfReachSelection.Evaluate(state, request ?? FreshRequest(), Stone, new(Sword, 2),
-            p.Attack, p.ThrowStone, p.Score, new(true, true, true), new(true, true, true), profile ?? Selection, team, rng ?? Decision);
+        return AttackThrowStoneAiOutOfReachSelection.Evaluate(state, new(request ?? FreshRequest(), Stone, new(Sword, 2)),
+            SelectionConfiguration(profile ?? Selection, team), rng ?? Decision);
     }
     private static AttackThrowStoneAiOutOfReachSelectionOutcome Success(AttackThrowStoneAiOutOfReachSelectionResult result)
     { Assert.True(result.Accepted, Serialize(result.Failure)); Assert.Null(result.Failure); return Assert.IsType<AttackThrowStoneAiOutOfReachSelectionOutcome>(result.Outcome); }

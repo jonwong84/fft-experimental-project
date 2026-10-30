@@ -14,23 +14,16 @@ public sealed record AttackThrowStoneAiOutOfReachSelectionResult(bool Accepted, 
 /// No prior-memory inputs, actor rescore, cached results, command authority or live RNG adoption.</remarks>
 public static class AttackThrowStoneAiOutOfReachSelection
 {
-    public static AttackThrowStoneAiOutOfReachSelectionResult Evaluate(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        AssetId throwStoneAbilityId, BoundedSwordWeapon? weapon, SwordAiCandidateProfile attackProfile,
-        ThrowStoneAiCandidateProfile throwStoneProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
-        AttackThrowStoneAiPreparationProfile preparationProfile, AttackThrowStoneAiPreparedSelectionProfile selectionProfile,
-        SwordAiScenarioTeam team, FftRandomState decisionRng)
+    public static AttackThrowStoneAiOutOfReachSelectionResult Evaluate(AttackBattleSnapshot state,
+        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, FftRandomState decisionRng)
     {
-        ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(request); ArgumentNullException.ThrowIfNull(attackProfile);
-        ArgumentNullException.ThrowIfNull(throwStoneProfile); ArgumentNullException.ThrowIfNull(scoreProfile);
-        ArgumentNullException.ThrowIfNull(refreshProfile); ArgumentNullException.ThrowIfNull(preparationProfile);
-        ArgumentNullException.ThrowIfNull(selectionProfile);
         AttackThrowStoneAiOutOfReachSelectionResult Reject(AttackThrowStoneAiPreparedSelectionFailure failure) => new(false, failure, null, decisionRng);
-        if (!selectionProfile.NormalScoring || !selectionProfile.CanonicalCoordinates || !selectionProfile.NoOtherScenarioOverrides ||
-            !selectionProfile.ClearDirectTrajectories || !selectionProfile.NoDefendSupport)
-            return Reject(new(AttackThrowStoneAiPreparedSelectionStage.Admission, AttackThrowStoneAiPreparedSelectionRejection.UnsupportedProfile));
-        var scenario = AttackThrowStoneAiOutOfReachScenario.EvaluateFresh(state, request, throwStoneAbilityId, weapon, attackProfile,
-            throwStoneProfile, scoreProfile, refreshProfile, preparationProfile,
-            new(selectionProfile.NormalScoring, selectionProfile.CanonicalCoordinates, selectionProfile.NoOtherScenarioOverrides), team, decisionRng);
+        var admission = AttackThrowStoneAiSelectionPipeline.Admit(state, request, configuration);
+        if (admission is not null) return Reject(admission);
+        var policy = configuration.Selection;
+        var scenario = AttackThrowStoneAiOutOfReachScenario.EvaluateFresh(state, request.Turn, request.ThrowStoneAbilityId, request.Weapon,
+            configuration.Attack, configuration.ThrowStone, configuration.Scoring, configuration.Refresh, configuration.Preparation,
+            new(policy.NormalScoring, policy.CanonicalCoordinates, policy.NoOtherScenarioOverrides), configuration.Team, decisionRng);
         if (!scenario.Result.Accepted)
             return Reject(new(AttackThrowStoneAiPreparedSelectionStage.Scenario, AttackThrowStoneAiPreparedSelectionRejection.ScenarioRejected,
                 ScenarioFailure: scenario.Result.Failure));
@@ -45,23 +38,9 @@ public static class AttackThrowStoneAiOutOfReachSelection
         var written = fresh.ScoreMask.ToHashSet();
         var scanOrigins = fresh.Scenario1.Where(written.Contains).ToImmutableArray();
         var scanScenario = new ThrowStoneAiScanScenario(fresh.ScoreMask, scanOrigins, fresh.BaselineDestination, fresh.ActFirstDestination);
-        var profile = AttackThrowStoneAiPreparedSelection.CreateCompositionProfile(fresh.Preparation,
-            attackProfile, throwStoneProfile, scoreProfile, selectionProfile);
-        var scanRequest = new ThrowStoneAiScanRequest(request.ActorId, throwStoneAbilityId, request.TargetId);
-        var invalid = AttackThrowStoneAiComposition.ValidateInputs(state, scanRequest, scanScenario, weapon, profile, decisionRng);
-        if (invalid is not null)
-            return Reject(new(AttackThrowStoneAiPreparedSelectionStage.Composition, AttackThrowStoneAiPreparedSelectionRejection.CompositionRejected,
-                CompositionFailure: invalid.Failure));
-        // The reach draw is already included in scenario RNG; the private prefix is reused, never reconstructed from public diagnostics.
-        var composition = AttackThrowStoneAiComposition.ContinueFromMovement(state, scanRequest, scanScenario, weapon, profile,
-            scenario.Prefix!, scenario.Result.RngState, decisionRng);
-        if (!composition.Accepted)
-            return Reject(new(AttackThrowStoneAiPreparedSelectionStage.Composition, AttackThrowStoneAiPreparedSelectionRejection.CompositionRejected,
-                CompositionFailure: composition.Failure));
-        var selected = AttackThrowStoneAiSelection.SelectFresh(composition, request.ActorId, fresh.BaselineDestination, decisionRng);
-        if (!selected.Accepted)
-            return Reject(new(AttackThrowStoneAiPreparedSelectionStage.Selection, AttackThrowStoneAiPreparedSelectionRejection.SelectionRejected,
-                SelectionFailure: selected.Failure));
+        var selected = AttackThrowStoneAiSelectionPipeline.Continue(state, request, configuration, fresh.Preparation,
+            scanScenario, scenario.Prefix!, scenario.Result.RngState, decisionRng);
+        if (!selected.Accepted) return Reject(selected.Failure!);
         return new(true, null, new(fresh, scanOrigins, selected.Outcome!), selected.RngState);
     }
 }

@@ -53,11 +53,12 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-208, [fresh in-reach ACT-first execution](behavior/attack-throw-stone-ai-act-first-execution.md).
-  Own fresh pair selection inside Framework's ACT transaction; adopt RNG once
-  and publish real Attack/Stone effects, retaining unused Move. No automatic
-  movement/END or facing receipt. Six scenarios cover hit/miss/push/KO, budgets,
-  complete rollback and replay. Pair post-ACT reselection remains separate.
+- Latest implementation: ZOD-210, [pair-selection cleanup](development/ai-pair-selection-refactor.md).
+  Both selectors share admission/composition/lottery handling, with separate
+  scenario/provenance rules and unchanged typed results. Immutable request/
+  configuration records replace twelve-argument selection/execution entries.
+  Existing assertions are unchanged; no tests added or removed. ZOD-208's real
+  ACT-first effects and unused Move remain; pair post-ACT selection is still open.
 - Latest investigation: ZOD-203, [Throw Stone authority](architecture/zod-203-throw-stone-command-boundary.md).
   Ten source files/21 functions and fourteen managed study snapshots distinguish
   prediction from real resolution, dispatch/reselection and per-command transactions.
@@ -66,7 +67,7 @@ without rewriting old evidence.
 - Validation: locked restore, zero-warning/error Release rebuild,
   **4,085 .NET cases** (1,455 Framework, 885 AI, including owner drafts),
   **532 Python tests** and pinned source/prepared audit passed. Logs and seven
-  full TRX files: ignored `scratch/ai-pair-act-first-208/`.
+  full TRX files: ignored `scratch/ai-pair-selection-refactor-210/`.
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

@@ -112,8 +112,8 @@ public sealed class AttackThrowStoneAiPreparedSelectionTests
         SwordAiRefreshRequest? request = null, AttackThrowStoneAiPreparedSelectionProfile? profile = null,
         SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue, FftRandomState? rng = null)
     {
-        var p = Profile(); return AttackThrowStoneAiPreparedSelection.Evaluate(state, request ?? FreshRequest(), Stone, new(Sword, power),
-            p.Attack, p.ThrowStone, p.Score, new(true, true, true), new(true, true, true), profile ?? Selection, team, rng ?? Decision);
+        return AttackThrowStoneAiPreparedSelection.Evaluate(state, new(request ?? FreshRequest(), Stone, new(Sword, power)),
+            SelectionConfiguration(profile ?? Selection, team), rng ?? Decision);
     }
     private static AttackThrowStoneAiPreparedSelectionOutcome Success(AttackThrowStoneAiPreparedSelectionResult result)
     { Assert.True(result.Accepted, Serialize(result.Failure)); Assert.Null(result.Failure); return Assert.IsType<AttackThrowStoneAiPreparedSelectionOutcome>(result.Outcome); }

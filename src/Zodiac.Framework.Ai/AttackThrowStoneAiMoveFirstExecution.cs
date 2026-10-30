@@ -36,34 +36,26 @@ public sealed record AttackThrowStoneAiOutOfReachMoveFirstResult(AttackThrowSton
 /// No cached plans, unknown cast scores, ACT-first execution, post-ACT reselection or host activation.</remarks>
 public static class AttackThrowStoneAiMoveFirstExecution
 {
-    public static AttackThrowStoneAiMoveFirstResult StartInReach(FacingTurnState state, SwordAiRefreshRequest request,
-        AssetId throwStoneAbilityId, BoundedSwordWeapon? weapon, SwordAiCandidateProfile attackProfile,
-        ThrowStoneAiCandidateProfile throwStoneProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
-        AttackThrowStoneAiPreparationProfile preparationProfile, AttackThrowStoneAiPreparedSelectionProfile selectionProfile,
-        SwordAiScenarioTeam team, SwordAiCommandDispatchProfile dispatchProfile)
+    public static AttackThrowStoneAiMoveFirstResult StartInReach(FacingTurnState state, AttackThrowStoneAiSelectionRequest request,
+        AttackThrowStoneAiSelectionConfiguration configuration, SwordAiCommandDispatchProfile dispatchProfile)
     {
-        var result = StartCore<AttackThrowStoneAiPreparedSelectionOutcome, AttackThrowStoneAiMoveFirstOutcome>(state, request, weapon,
-            attackProfile, throwStoneProfile, scoreProfile, refreshProfile, preparationProfile, selectionProfile, dispatchProfile,
+        var result = StartCore<AttackThrowStoneAiPreparedSelectionOutcome, AttackThrowStoneAiMoveFirstOutcome>(state, request,
+            configuration, dispatchProfile,
             (battle, rng) => {
-                var selected = AttackThrowStoneAiPreparedSelection.Evaluate(battle, request, throwStoneAbilityId, weapon,
-                    attackProfile, throwStoneProfile, scoreProfile, refreshProfile, preparationProfile, selectionProfile, team, rng);
+                var selected = AttackThrowStoneAiPreparedSelection.Evaluate(battle, request, configuration, rng);
                 return new(selected.Accepted, selected.Outcome, selected.Outcome?.Selection, selected.Outcome?.MovementScenario.Preparation.Common.Origin ?? default,
                     selected.RngState, selected.Failure);
             }, (decision, move, rng) => new(decision, move, rng));
         return new(result.Failure, result.Move);
     }
 
-    public static AttackThrowStoneAiOutOfReachMoveFirstResult StartOutOfReach(FacingTurnState state, SwordAiRefreshRequest request,
-        AssetId throwStoneAbilityId, BoundedSwordWeapon? weapon, SwordAiCandidateProfile attackProfile,
-        ThrowStoneAiCandidateProfile throwStoneProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
-        AttackThrowStoneAiPreparationProfile preparationProfile, AttackThrowStoneAiPreparedSelectionProfile selectionProfile,
-        SwordAiScenarioTeam team, SwordAiCommandDispatchProfile dispatchProfile)
+    public static AttackThrowStoneAiOutOfReachMoveFirstResult StartOutOfReach(FacingTurnState state, AttackThrowStoneAiSelectionRequest request,
+        AttackThrowStoneAiSelectionConfiguration configuration, SwordAiCommandDispatchProfile dispatchProfile)
     {
-        var result = StartCore<AttackThrowStoneAiOutOfReachSelectionOutcome, AttackThrowStoneAiOutOfReachMoveFirstOutcome>(state, request, weapon,
-            attackProfile, throwStoneProfile, scoreProfile, refreshProfile, preparationProfile, selectionProfile, dispatchProfile,
+        var result = StartCore<AttackThrowStoneAiOutOfReachSelectionOutcome, AttackThrowStoneAiOutOfReachMoveFirstOutcome>(state, request,
+            configuration, dispatchProfile,
             (battle, rng) => {
-                var selected = AttackThrowStoneAiOutOfReachSelection.Evaluate(battle, request, throwStoneAbilityId, weapon,
-                    attackProfile, throwStoneProfile, scoreProfile, refreshProfile, preparationProfile, selectionProfile, team, rng);
+                var selected = AttackThrowStoneAiOutOfReachSelection.Evaluate(battle, request, configuration, rng);
                 return new(selected.Accepted, selected.Outcome, selected.Outcome?.Selection, selected.Outcome?.MovementScenario.Preparation.Common.Origin ?? default,
                     selected.RngState, selected.Failure);
             }, (decision, move, rng) => new(decision, move, rng));
@@ -74,18 +66,15 @@ public static class AttackThrowStoneAiMoveFirstExecution
     private sealed record FreshSelection<T>(bool Accepted, T? Detail, AttackThrowStoneAiSelectionOutcome? Selection, TilePosition Origin,
         FftRandomState Rng, AttackThrowStoneAiPreparedSelectionFailure? Failure) where T : class;
     private static (AttackThrowStoneAiMoveFirstFailure? Failure, FacingMoveResult<TOutcome> Move) StartCore<TDecision, TOutcome>(
-        FacingTurnState state, SwordAiRefreshRequest request, BoundedSwordWeapon? weapon, SwordAiCandidateProfile attackProfile,
-        ThrowStoneAiCandidateProfile throwStoneProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
-        AttackThrowStoneAiPreparationProfile preparationProfile, AttackThrowStoneAiPreparedSelectionProfile selectionProfile,
+        FacingTurnState state, AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration,
         SwordAiCommandDispatchProfile dispatchProfile, Func<AttackBattleSnapshot, FftRandomState, FreshSelection<TDecision>> select,
         Func<TDecision, MoveUnitCommand, FftRandomState, TOutcome> describe) where TDecision : class
     {
-        ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(request); ArgumentNullException.ThrowIfNull(attackProfile);
-        ArgumentNullException.ThrowIfNull(throwStoneProfile); ArgumentNullException.ThrowIfNull(scoreProfile);
-        ArgumentNullException.ThrowIfNull(refreshProfile); ArgumentNullException.ThrowIfNull(preparationProfile);
-        ArgumentNullException.ThrowIfNull(selectionProfile); ArgumentNullException.ThrowIfNull(dispatchProfile);
+        ArgumentNullException.ThrowIfNull(state);
+        AttackThrowStoneAiSelectionPipeline.ValidateInputs(state.Battle, request, configuration);
+        ArgumentNullException.ThrowIfNull(dispatchProfile);
         AttackThrowStoneAiMoveFirstFailure? failure = null;
-        var result = FacingMoveDecisionBattle.ExecuteMove<TOutcome>(state, request.ActorId, context =>
+        var result = FacingMoveDecisionBattle.ExecuteMove<TOutcome>(state, request.Turn.ActorId, context =>
         {
             if (!dispatchProfile.InitializedActorContext || !dispatchProfile.PresentCompactRecords ||
                 !dispatchProfile.CanonicalCoordinates || !dispatchProfile.OrdinaryContinuation)
@@ -111,12 +100,12 @@ public static class AttackThrowStoneAiMoveFirstExecution
             var diagnostic = describe(selection.Detail!, move, selection.Rng);
             return plan.Action switch
             {
-                AttackThrowStoneAiAttack attack => context.PrepareMoveThenAttack(move, attackProfile.Movement,
-                    new(attack.Value.Candidate.ActorId, attack.Value.Candidate.TargetId), weapon, selection.Rng, diagnostic),
-                AttackThrowStoneAiStone stone => context.PrepareMoveThenTargetedAbility(move, attackProfile.Movement,
+                AttackThrowStoneAiAttack attack => context.PrepareMoveThenAttack(move, configuration.Attack.Movement,
+                    new(attack.Value.Candidate.ActorId, attack.Value.Candidate.TargetId), request.Weapon, selection.Rng, diagnostic),
+                AttackThrowStoneAiStone stone => context.PrepareMoveThenTargetedAbility(move, configuration.Attack.Movement,
                     new(stone.Value.Candidate.ActorId, stone.Value.Candidate.AbilityId, stone.Value.Candidate.TargetId),
-                    throwStoneProfile.Ability, selection.Rng, diagnostic),
-                _ => context.PrepareMoveThenWait(move, attackProfile.Movement, new FacingChoice.ChooseClosedEnemy(request.TargetId),
+                    configuration.ThrowStone.Ability, selection.Rng, diagnostic),
+                _ => context.PrepareMoveThenWait(move, configuration.Attack.Movement, new FacingChoice.ChooseClosedEnemy(request.Turn.TargetId),
                     selection.Rng, diagnostic)
             };
         });
