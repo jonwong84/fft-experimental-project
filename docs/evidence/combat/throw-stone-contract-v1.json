@@ -1,0 +1,661 @@
+{
+  "format": "fft.throw-stone-investigation-contract",
+  "schemaVersion": 1,
+  "ticket": "ZOD-108",
+  "recordedOn": "2026-10-26",
+  "status": "source/data investigation complete; implementation unexecuted",
+  "managedBase": "119cb73",
+  "guide": "docs/architecture/zod-108-throw-stone-action.md",
+  "reference": {
+    "root": "C:/repositories/fft_decomp",
+    "revision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "clean": true,
+    "readOnly": true
+  },
+  "sourceIdentities": [
+    {
+      "path": "include/fft/ability.h",
+      "gitBlob": "22a376d2811b8d645ecb0ac539743fdbbb7494be",
+      "checkoutBytes": 35432,
+      "checkoutSha256": "12fa216274fe08572b248107369044b47ccc40e1206e7db16d5822c1c5bfc6d2"
+    },
+    {
+      "path": "include/fft/action.h",
+      "gitBlob": "bf586cd4bfe67704a274e3f6487486f0560453c6",
+      "checkoutBytes": 15283,
+      "checkoutSha256": "f4ad0b2f25e3e6d1fc1a8a8361cc39a718dd886d5197a31bce641117c190b8b8"
+    },
+    {
+      "path": "include/fft/command.h",
+      "gitBlob": "e22544a5422d8eee7a95a6b54e552a2e23c2e236",
+      "checkoutBytes": 16920,
+      "checkoutSha256": "7535086064f2bb7642f122401dfb8bb43050b98c9f71023a92111d4d6d2e737b"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "gitBlob": "97f67bfc915ea72bb9ee4b53eb150779795fabb1",
+      "checkoutBytes": 32808,
+      "checkoutSha256": "939da0ee31959de0b3eef3c8c815b439d14c2d941f989d976f29efeef22e5905"
+    },
+    {
+      "path": "include/fft/status.h",
+      "gitBlob": "59934587510d1e7e364033e7fdb4ca4f0e85c338",
+      "checkoutBytes": 11942,
+      "checkoutSha256": "a780bb1b1f1e711c391231bd9aec607757f121fe9dd2267320f21f6aca70da85"
+    },
+    {
+      "path": "include/fft/move.h",
+      "gitBlob": "1fd52b987da345eabeced36fb01f8ac17e75d7c8",
+      "checkoutBytes": 11731,
+      "checkoutSha256": "1d0ca513fe4f1b84dc698c759016af0624e0731b9f59ccbaa4c686d2b22b13f6"
+    },
+    {
+      "path": "include/fft/projectile.h",
+      "gitBlob": "d69855e97d4f826b66aca771ee55cddd64e41050",
+      "checkoutBytes": 936,
+      "checkoutSha256": "57f12fd1014d6c2052b5fa58fedc88418bf44d84e2eb9a869ffaa31ffdab432d"
+    },
+    {
+      "path": "include/fft/random.h",
+      "gitBlob": "4c03824810ff951cb468df756d67d5944e430252",
+      "checkoutBytes": 766,
+      "checkoutSha256": "b62dc42b0a3bf3d4041beecc49607eeda5a3a92db19b31da088244e31a4d56c1"
+    },
+    {
+      "path": "include/psx/types.h",
+      "gitBlob": "3d21bb7cb3dd8c4abb38ae7f73d82ced835f2cea",
+      "checkoutBytes": 214,
+      "checkoutSha256": "fdcffcdb66717fbdccc1e3667de6e5a24638fdf0e23cd48731b04cca7d4fc7ca"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "gitBlob": "a437be0544f96b798f4c9b075ff2f3bf15fca76c",
+      "checkoutBytes": 56097,
+      "checkoutSha256": "654eb10f59d51776f591382d009824468e1d05db8772691a2d551be717af4365"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "gitBlob": "a4a20f68871f1cc852f21d84ef3a1786fd89038b",
+      "checkoutBytes": 47370,
+      "checkoutSha256": "e4be8d12a6b2c146056cac3e2624df79b7b3fad5db47c02094e663b6e6681387"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "gitBlob": "b41f49ffd44f2f8e52daa252a0834d5794529e0e",
+      "checkoutBytes": 41403,
+      "checkoutSha256": "0ce1d80048aa34769466ab470319de991ef58bebfc98ebcc33098ab8a402c328"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "gitBlob": "b192a22fed6c57c69e0cce8f583e947845a8b5eb",
+      "checkoutBytes": 24512,
+      "checkoutSha256": "2730850280790b0ee1c0b464589dac739be33da6b43faf17ff8443e3bda1c80b"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "gitBlob": "42c675e73a7bf02f44fb87e046c3609b85e02cab",
+      "checkoutBytes": 83006,
+      "checkoutSha256": "2e4cbd150c2e3a41557a8a2f111e6d12cbebd7c6b64a5cc4240fed9bc416b164"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "gitBlob": "6d3fffb65982abc2b3c9f811e3e4c14990bc2663",
+      "checkoutBytes": 87662,
+      "checkoutSha256": "70ea706441e8d01f392d7f1c74669d18866ac1ca086e3d75ab12fc331974f9ea"
+    },
+    {
+      "path": "src/battle/combat/targets.c",
+      "gitBlob": "781f40b90ea7aaad99b9fcb90e31c5b1501eb5bb",
+      "checkoutBytes": 71345,
+      "checkoutSha256": "4da02d876955207fdf876ffe6789be9bed6bfcf990cef267ce93c4d0a597c88f"
+    },
+    {
+      "path": "src/battle/effects/projectile.c",
+      "gitBlob": "5fc57ea567a8098921ff1d5ca08e87eb1cf3003e",
+      "checkoutBytes": 30054,
+      "checkoutSha256": "a44d53a26a3803d8ca99d13f0a5a2a964b07546aab1122852baf2ef3f5383ea1"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "gitBlob": "022fb682c6ee49969a56abb7c7266863e3b7f424",
+      "checkoutBytes": 191808,
+      "checkoutSha256": "838c419938cdd610c14fa8e1cc578a1c76c949394bf1ea08449b526e74912933"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "gitBlob": "b0ae1eedcefbb836740f7e210799f2dbd5f2b151",
+      "checkoutBytes": 41903,
+      "checkoutSha256": "8d96a9971e6d7165132227c77647f87f4a28f45744adbaaabfe1abb7a9342941"
+    },
+    {
+      "path": "src/battle/menu/ability_choices.c",
+      "gitBlob": "da138987de27181de4e8eb306f93d59b6342b93e",
+      "checkoutBytes": 34025,
+      "checkoutSha256": "6e9b9810b03251c9f288bcf0fca25eac2aaaf8cf26cbf70a2f9c93ed02e6acc4"
+    },
+    {
+      "path": "src/battle/units/movement.c",
+      "gitBlob": "080130a882c179962d36f0fb784b602424ba058d",
+      "checkoutBytes": 112229,
+      "checkoutSha256": "8fb9f5c6169ffca2e6dfef528de335d7c16d0c8b90cdb6ba46469e4af3a548d3"
+    },
+    {
+      "path": "src/battle/units/animation_policy.c",
+      "gitBlob": "a2822b82143d700392d1582f286fce634bce4659",
+      "checkoutBytes": 40348,
+      "checkoutSha256": "7689f14779f6264eabd981f34f374890d0ebd65e39d9c906ce46d3ea8360269c"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "gitBlob": "6ae17df372aaaaaece1c226fd77141446458ac22",
+      "checkoutBytes": 16311,
+      "checkoutSha256": "d17147259db338a396354c3f5c7166e31b7a3e578869a36099abb0f45961ab26"
+    },
+    {
+      "path": "target/main.yaml",
+      "gitBlob": "1f3f49eda90423ab181ca1b68804a9db7d4b51e9",
+      "checkoutBytes": 136443,
+      "checkoutSha256": "a35f69fd3fe8eedd33a5d340e1c655f222dcbb17858cdba24da55c898df9fb88"
+    }
+  ],
+  "input": {
+    "path": "scratch/all-data-extraction/SCUS_942.21",
+    "byteLength": 356352,
+    "sha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562"
+  },
+  "selectedAbility": {
+    "id": 148,
+    "job": 74,
+    "skillset": 5,
+    "slot": 2,
+    "range": 4,
+    "area": 0,
+    "formula": 55,
+    "y": 2,
+    "chargeTicks": 0,
+    "mpCost": 0,
+    "effect": "closed physical damage and flat knockback"
+  },
+  "selectedRecords": [
+    {
+      "name": "job74",
+      "virtualAddress": 2147884696,
+      "fileOffset": 337560,
+      "byteLength": 48,
+      "sha256": "7d7946a6ea6f51ee5647cd5ecbe069fae6e004b4a4a81cf082b118c640876c9c"
+    },
+    {
+      "name": "humanSkillset5",
+      "virtualAddress": 2147896081,
+      "fileOffset": 348945,
+      "byteLength": 25,
+      "sha256": "2aa594c430fa15af22087c09e7d501b715186fcd0e0b25d01e579f82c97cc272"
+    },
+    {
+      "name": "ability148",
+      "virtualAddress": 2147872912,
+      "fileOffset": 325776,
+      "byteLength": 8,
+      "sha256": "5a4e468c04890b7d93d090cd8b12d2a661a84e7534f094e94734a0180f9ae479"
+    },
+    {
+      "name": "abilitySecondary148",
+      "virtualAddress": 2147877896,
+      "fileOffset": 330760,
+      "byteLength": 14,
+      "sha256": "11a3d6116efc43ded1b79558971087a01842392e27d5a76453d36cad457444dd"
+    },
+    {
+      "name": "menuType5",
+      "virtualAddress": 2147900601,
+      "fileOffset": 353465,
+      "byteLength": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "name": "statusInfliction0",
+      "virtualAddress": 2147893188,
+      "fileOffset": 346052,
+      "byteLength": 6,
+      "sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44"
+    }
+  ],
+  "offlineValidation": {
+    "importedRecordsCompared": 22,
+    "selectedRecords": 6,
+    "sourceFiles": 24,
+    "reports": [
+      {
+        "localPath": "scratch/throw-stone-108-a/audit.json",
+        "bytes": 11112,
+        "sha256": "73adf18c45f80629bd59165b4fd23fecd5833e6331c8ae44fd004d97e1aa07c0"
+      },
+      {
+        "localPath": "scratch/throw-stone-108-b/audit.json",
+        "bytes": 11112,
+        "sha256": "73adf18c45f80629bd59165b4fd23fecd5833e6331c8ae44fd004d97e1aa07c0"
+      }
+    ],
+    "repeatedReportsByteIdentical": true,
+    "auditScript": {
+      "localPath": "scratch/inspect_throw_stone_108.py",
+      "bytes": 6543,
+      "sha256": "6e21a7481e9f6b8c2eed212b9957777fd9237a06dd9bfc40aabb4c4c5d35d8d2"
+    },
+    "boundaryVectorClassification": "source-derived arithmetic observations only",
+    "damageVectors": [
+      {
+        "pa": 1,
+        "raw": 0,
+        "expected": 1
+      },
+      {
+        "pa": 1,
+        "raw": 16383,
+        "expected": 1
+      },
+      {
+        "pa": 1,
+        "raw": 16384,
+        "expected": 2
+      },
+      {
+        "pa": 1,
+        "raw": 32767,
+        "expected": 2
+      },
+      {
+        "pa": 5,
+        "raw": 0,
+        "expected": 5
+      },
+      {
+        "pa": 5,
+        "raw": 16383,
+        "expected": 5
+      },
+      {
+        "pa": 5,
+        "raw": 16384,
+        "expected": 10
+      },
+      {
+        "pa": 5,
+        "raw": 32767,
+        "expected": 10
+      },
+      {
+        "pa": 6,
+        "raw": 0,
+        "expected": 6
+      },
+      {
+        "pa": 6,
+        "raw": 16383,
+        "expected": 6
+      },
+      {
+        "pa": 6,
+        "raw": 16384,
+        "expected": 12
+      },
+      {
+        "pa": 6,
+        "raw": 32767,
+        "expected": 12
+      },
+      {
+        "pa": 99,
+        "raw": 0,
+        "expected": 99
+      },
+      {
+        "pa": 99,
+        "raw": 16383,
+        "expected": 99
+      },
+      {
+        "pa": 99,
+        "raw": 16384,
+        "expected": 198
+      },
+      {
+        "pa": 99,
+        "raw": 32767,
+        "expected": 198
+      }
+    ],
+    "braveVectors": [
+      {
+        "attackerBrave": 70,
+        "targetBrave": 70,
+        "attackerRaw": 0,
+        "targetRaw": 0,
+        "attackerThreshold": 0,
+        "targetRoll": 0,
+        "expectedAttempt": false
+      },
+      {
+        "attackerBrave": 70,
+        "targetBrave": 70,
+        "attackerRaw": 32767,
+        "targetRaw": 32767,
+        "attackerThreshold": 69,
+        "targetRoll": 69,
+        "expectedAttempt": false
+      },
+      {
+        "attackerBrave": 70,
+        "targetBrave": 70,
+        "attackerRaw": 32767,
+        "targetRaw": 0,
+        "attackerThreshold": 69,
+        "targetRoll": 0,
+        "expectedAttempt": true
+      },
+      {
+        "attackerBrave": 70,
+        "targetBrave": 70,
+        "attackerRaw": 0,
+        "targetRaw": 32767,
+        "attackerThreshold": 0,
+        "targetRoll": 69,
+        "expectedAttempt": false
+      },
+      {
+        "attackerBrave": 100,
+        "targetBrave": 10,
+        "attackerRaw": 32767,
+        "targetRaw": 32767,
+        "attackerThreshold": 99,
+        "targetRoll": 9,
+        "expectedAttempt": true
+      },
+      {
+        "attackerBrave": 10,
+        "targetBrave": 100,
+        "attackerRaw": 32767,
+        "targetRaw": 32767,
+        "attackerThreshold": 9,
+        "targetRoll": 99,
+        "expectedAttempt": false
+      }
+    ],
+    "rawDataCommitted": false,
+    "referenceCodeInvoked": false,
+    "originalExecuted": false,
+    "managedActionExecuted": false,
+    "nativeLaunched": false
+  },
+  "firstProfile": {
+    "units": 2,
+    "map": "open dry flat targetable/stoppable height-10 lower-layer rectangle",
+    "physicalAttack": [
+      1,
+      99
+    ],
+    "brave": [
+      10,
+      100
+    ],
+    "classEvade": [
+      0,
+      100
+    ],
+    "equipmentEvade": 0,
+    "equipmentPaBonus": 0,
+    "zodiac": "same-sign neutral",
+    "mp": 0,
+    "rangeMetric": "Manhattan 1..4",
+    "targets": "occupied panels only; immediate unit-target subset",
+    "hitDraws": 7,
+    "missDraws": 4,
+    "knockback": "one tile, dominant axis, Y tie; suppress off-map or lethal",
+    "settledFacing": "preserve incoming actor/target facing after original restoration boundary",
+    "unsupported": [
+      "terrain/projectile obstruction",
+      "other layers/heights",
+      "fall damage",
+      "extra units",
+      "mounts",
+      "status/support/reaction modifiers",
+      "equipment PA bonuses",
+      "empty target tiles",
+      "rewards/progression",
+      "original projectile animation"
+    ]
+  },
+  "cases": [
+    {
+      "id": "TST-001",
+      "ownerTicket": "ZOD-109",
+      "status": "unexecuted",
+      "expectation": "Admit occupied target at cardinal distance 1 and 4; range derives from selected effect"
+    },
+    {
+      "id": "TST-002",
+      "ownerTicket": "ZOD-109",
+      "status": "unexecuted",
+      "expectation": "Admit diagonal Manhattan distance at most 4; reject distance 5 atomically"
+    },
+    {
+      "id": "TST-003",
+      "ownerTicket": "ZOD-109",
+      "status": "unexecuted",
+      "expectation": "Reject unknown/self/dead target, inactive actor and spent Act with identical state/events/RNG"
+    },
+    {
+      "id": "TST-004",
+      "ownerTicket": "ZOD-109",
+      "status": "unexecuted",
+      "expectation": "Reject ungranted or unresolved ability without substituting a self effect or sword"
+    },
+    {
+      "id": "TST-005",
+      "ownerTicket": "ZOD-109",
+      "status": "unexecuted",
+      "expectation": "PA 1/5/6/99 and raw 0/16383/16384/32767 give exact PA-or-double-PA damage"
+    },
+    {
+      "id": "TST-006",
+      "ownerTicket": "ZOD-109",
+      "status": "unexecuted",
+      "expectation": "Front class evade 0 and 100 consume four ordered zero-equipment/class draws"
+    },
+    {
+      "id": "TST-007",
+      "ownerTicket": "ZOD-109",
+      "status": "unexecuted",
+      "expectation": "Side/back clear class evade while retaining all four draws"
+    },
+    {
+      "id": "TST-008",
+      "ownerTicket": "ZOD-109",
+      "status": "unexecuted",
+      "expectation": "On diagonal offsets either actor-facing axis counts as front; other facings clear class evade"
+    },
+    {
+      "id": "TST-009",
+      "ownerTicket": "ZOD-109",
+      "status": "unexecuted",
+      "expectation": "Hit consumes seven draws in evade/damage/attacker-Brave/target-Brave order; no critical or proc"
+    },
+    {
+      "id": "TST-010",
+      "ownerTicket": "ZOD-109",
+      "status": "unexecuted",
+      "expectation": "Brave comparisons use separately scaled draws and strict less-than; equality fails"
+    },
+    {
+      "id": "TST-011",
+      "ownerTicket": "ZOD-109",
+      "status": "unexecuted",
+      "expectation": "In-bounds flat push moves one tile away on the dominant axis in all four directions"
+    },
+    {
+      "id": "TST-012",
+      "ownerTicket": "ZOD-109",
+      "status": "unexecuted",
+      "expectation": "Y wins exact diagonal knockback ties; do not derive this from visual facing"
+    },
+    {
+      "id": "TST-013",
+      "ownerTicket": "ZOD-109",
+      "status": "unexecuted",
+      "expectation": "Off-map destination suppresses displacement while preserving damage and all seven draws"
+    },
+    {
+      "id": "TST-014",
+      "ownerTicket": "ZOD-109",
+      "status": "unexecuted",
+      "expectation": "Lethal damage cancels push after draws; exact HP/Dead and byte KO-count wrapping"
+    },
+    {
+      "id": "TST-015",
+      "ownerTicket": "ZOD-109",
+      "status": "unexecuted",
+      "expectation": "HP Critical threshold and nonlethal push preserve incoming settled actor/target facing"
+    },
+    {
+      "id": "TST-016",
+      "ownerTicket": "ZOD-109",
+      "status": "unexecuted",
+      "expectation": "Both action orders use existing Act/refund rules; push preserves target CT/speed/choices/HasMoved"
+    },
+    {
+      "id": "TST-017",
+      "ownerTicket": "ZOD-109",
+      "status": "unexecuted",
+      "expectation": "Draw-count exhaustion is atomic on hit and miss with exact branch budgets"
+    },
+    {
+      "id": "TST-018",
+      "ownerTicket": "ZOD-109",
+      "status": "unexecuted",
+      "expectation": "Repeated live availability/preview probes preserve live RNG, state, choices and history"
+    },
+    {
+      "id": "TST-019",
+      "ownerTicket": "ZOD-109",
+      "status": "unexecuted",
+      "expectation": "Accepted/rejected journals replay all state/events; both RNG copies stay synchronized"
+    },
+    {
+      "id": "TST-020",
+      "ownerTicket": "ZOD-109",
+      "status": "unexecuted",
+      "expectation": "Unsupported geometry/status/profile and post-KO commands reject; old self/sword fixtures remain exact"
+    },
+    {
+      "id": "TST-021",
+      "ownerTicket": "ZOD-110",
+      "status": "unexecuted",
+      "expectation": "Targeted companion strict fields/versions/duplicate IDs/budgets and deterministic round trips"
+    },
+    {
+      "id": "TST-022",
+      "ownerTicket": "ZOD-110",
+      "status": "unexecuted",
+      "expectation": "Job/skillset/learning/effect references and explicit per-unit learned grants validate together"
+    },
+    {
+      "id": "TST-023",
+      "ownerTicket": "ZOD-110",
+      "status": "unexecuted",
+      "expectation": "Original import verifies edition/hash/header/mappings and all six selected records"
+    },
+    {
+      "id": "TST-024",
+      "ownerTicket": "ZOD-110",
+      "status": "unexecuted",
+      "expectation": "Two imports repeat exactly and preserve all prior selected metadata bytes/provenance"
+    },
+    {
+      "id": "TST-025",
+      "ownerTicket": "ZOD-110",
+      "status": "unexecuted",
+      "expectation": "Rehashed wrong flags/formula/range/charge/MP/status/dependency/slot records reject without output"
+    },
+    {
+      "id": "TST-026",
+      "ownerTicket": "ZOD-110",
+      "status": "unexecuted",
+      "expectation": "Authored combined Accumulate/Throw Stone scenario proves boosted PA damage and first-KO lifecycle"
+    },
+    {
+      "id": "TST-027",
+      "ownerTicket": "ZOD-110",
+      "status": "unexecuted",
+      "expectation": "New profile saves/restores reject before file I/O even at initial/no-change states; legacy paths preserved"
+    },
+    {
+      "id": "TST-028",
+      "ownerTicket": "ZOD-110",
+      "status": "unexecuted",
+      "expectation": "Fresh-definition restart restores PA/HP/positions/RNG/grants; headless continuation repeatable"
+    },
+    {
+      "id": "TST-029",
+      "ownerTicket": "ZOD-111",
+      "status": "unexecuted",
+      "expectation": "Prepared launch validates bundle and fails unsupported content before creating a native window/output"
+    },
+    {
+      "id": "TST-030",
+      "ownerTicket": "ZOD-111",
+      "status": "unexecuted",
+      "expectation": "Keyboard/pointer target, confirm, cancel and invalid input route through shared typed commands"
+    },
+    {
+      "id": "TST-031",
+      "ownerTicket": "ZOD-111",
+      "status": "unexecuted",
+      "expectation": "HP/PA/position, range, availability and knockback-versus-no-push feedback are readable"
+    },
+    {
+      "id": "TST-032",
+      "ownerTicket": "ZOD-111",
+      "status": "unexecuted",
+      "expectation": "Finite planned native input matches headless/replay state/events/RNG; draw/resize/focus preserve state"
+    },
+    {
+      "id": "TST-033",
+      "ownerTicket": "ZOD-111",
+      "status": "unexecuted",
+      "expectation": "KO/restart and repeated prepared/native/capture artifacts pass independent audit and image inspection"
+    },
+    {
+      "id": "TST-034",
+      "ownerTicket": "ZOD-111",
+      "status": "unexecuted",
+      "expectation": "Owner visual and physical-input review approved separately from programmed controls"
+    }
+  ],
+  "existingFidelityFinding": {
+    "area": "ZOD-038 bounded sword settled facing",
+    "implementation": "retains attack facing",
+    "tracedSource": "reward_grant restores living actor saved attack_facing",
+    "disposition": "documented; code and historical fixtures unchanged"
+  },
+  "sequencing": {
+    "next": "ZOD-109",
+    "after": [
+      "ZOD-110",
+      "ZOD-111"
+    ],
+    "battleCheckpoints": "ZOD-106 remains deferred",
+    "editor": "remains deferred",
+    "saveGuard": "retain unsupported ability-profile save/restore rejection"
+  },
+  "lastImplementationValidation": {
+    "sourceTicket": "ZOD-107",
+    "managedPassed": 2459,
+    "pythonPassed": 299,
+    "rerunForThisInvestigation": false
+  },
+  "limits": [
+    "Source/data trace and offline arithmetic are not independently executed original-game equivalence.",
+    "No new production code, content schema, tests or native runtime action in ZOD-108.",
+    "All 34 implementation cases are deliberately unexecuted; later evidence must record actual runs."
+  ]
+}

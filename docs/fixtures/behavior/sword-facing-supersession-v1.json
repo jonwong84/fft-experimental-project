@@ -1,0 +1,82 @@
+{
+  "format": "fft.sword-facing-supersession",
+  "schemaVersion": 1,
+  "ticket": "ZOD-113",
+  "historicalPolicy": "fft:combat/bounded-sword-contract",
+  "replacementPolicy": "fft:combat/bounded-sword-settled-facing-v1",
+  "fixtures": [
+    {
+      "name": "cap-ko-wrap",
+      "historicalPath": "docs/fixtures/behavior/sword-cap-ko-wrap.v3.source-derived.json",
+      "historicalId": "fixture:combat/sword-cap-ko-wrap-v3",
+      "historicalSha256": "9a27a44e0ce960675cd75da7867fe1a7249ac5c32b61be4e492b77a7ff9c9c6d",
+      "replacementPath": "docs/fixtures/behavior/sword-cap-ko-wrap.v3.settled-facing.json",
+      "replacementId": "fixture:combat/sword-cap-ko-wrap-settled-facing-v1"
+    },
+    {
+      "name": "critical",
+      "historicalPath": "docs/fixtures/behavior/sword-critical.v3.source-derived.json",
+      "historicalId": "fixture:combat/sword-critical-v3",
+      "historicalSha256": "0afeb0d40c22ef4e713ea7d9b94d27e96df23c66ca826be418e970f2c2aaedec",
+      "replacementPath": "docs/fixtures/behavior/sword-critical.v3.settled-facing.json",
+      "replacementId": "fixture:combat/sword-critical-settled-facing-v1"
+    },
+    {
+      "name": "diagonal-rejected",
+      "historicalPath": "docs/fixtures/behavior/sword-diagonal-rejected.v3.source-derived.json",
+      "historicalId": "fixture:combat/sword-diagonal-rejected-v3",
+      "historicalSha256": "5f39927e11a470e4ce5af89ec6e06fcc7599ca77178c3f7d6ae87b4f7dfb2b22",
+      "replacementPath": "docs/fixtures/behavior/sword-diagonal-rejected.v3.settled-facing.json",
+      "replacementId": "fixture:combat/sword-diagonal-rejected-settled-facing-v1"
+    },
+    {
+      "name": "ko",
+      "historicalPath": "docs/fixtures/behavior/sword-ko.v3.source-derived.json",
+      "historicalId": "fixture:combat/sword-ko-v3",
+      "historicalSha256": "525da6b57f58c702d5829a7c840cd975c008867e2961bda41312b4133a980947",
+      "replacementPath": "docs/fixtures/behavior/sword-ko.v3.settled-facing.json",
+      "replacementId": "fixture:combat/sword-ko-settled-facing-v1"
+    },
+    {
+      "name": "miss",
+      "historicalPath": "docs/fixtures/behavior/sword-miss.v3.source-derived.json",
+      "historicalId": "fixture:combat/sword-miss-v3",
+      "historicalSha256": "a47886d6b6bc68dac3a61f09f4543298f1556761e7143be191297d25c0dc518f",
+      "replacementPath": "docs/fixtures/behavior/sword-miss.v3.settled-facing.json",
+      "replacementId": "fixture:combat/sword-miss-settled-facing-v1"
+    },
+    {
+      "name": "move-attack",
+      "historicalPath": "docs/fixtures/behavior/sword-move-attack.v3.source-derived.json",
+      "historicalId": "fixture:combat/sword-move-attack-v3",
+      "historicalSha256": "6416eba1dc567230cda110f1b941485fac45a18a4482fc27f45f020dbea4674d",
+      "replacementPath": "docs/fixtures/behavior/sword-move-attack.v3.settled-facing.json",
+      "replacementId": "fixture:combat/sword-move-attack-settled-facing-v1"
+    },
+    {
+      "name": "normal",
+      "historicalPath": "docs/fixtures/behavior/sword-normal.v3.source-derived.json",
+      "historicalId": "fixture:combat/sword-normal-v3",
+      "historicalSha256": "21c0a8645f3ce8780aeb9284cdea530866c93901b95108e5b75614766dbf54ae",
+      "replacementPath": "docs/fixtures/behavior/sword-normal.v3.settled-facing.json",
+      "replacementId": "fixture:combat/sword-normal-settled-facing-v1"
+    },
+    {
+      "name": "side",
+      "historicalPath": "docs/fixtures/behavior/sword-side.v3.source-derived.json",
+      "historicalId": "fixture:combat/sword-side-v3",
+      "historicalSha256": "f25091e0be16350a65bfa7e83afb2f14a4ed918dd771245eb923844a85885f7e",
+      "replacementPath": "docs/fixtures/behavior/sword-side.v3.settled-facing.json",
+      "replacementId": "fixture:combat/sword-side-settled-facing-v1"
+    },
+    {
+      "name": "zero-pa",
+      "historicalPath": "docs/fixtures/behavior/sword-zero-pa.v3.source-derived.json",
+      "historicalId": "fixture:combat/sword-zero-pa-v3",
+      "historicalSha256": "ddc7db3630e995b1cf1c4df94dfe5cc62f240eecff38038c027f32c517fef446",
+      "replacementPath": "docs/fixtures/behavior/sword-zero-pa.v3.settled-facing.json",
+      "replacementId": "fixture:combat/sword-zero-pa-settled-facing-v1"
+    }
+  ],
+  "historicalHashEncoding": "utf8-lf"
+}

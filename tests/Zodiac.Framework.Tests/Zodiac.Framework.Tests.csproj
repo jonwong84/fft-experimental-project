@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\docs\evidence\events\dark-screen-intro-contract-v1.json" Link="Fixtures\dark-screen-intro-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\docs\evidence\events\dark-screen-contract-v1.json" Link="Fixtures\dark-screen-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\docs\evidence\events\ready-display-contract-v1.json" Link="Fixtures\ready-display-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\docs\evidence\events\banner-opcode-admission-contract-v1.json" Link="Fixtures\banner-opcode-admission-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\docs\evidence\events\task-barrier-contract-v1.json" Link="Fixtures\task-barrier-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\docs\evidence\events\general-banner-effect-contract-v1.json" Link="Fixtures\general-banner-effect-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\docs\fixtures\rng\scph5501-rng-vectors.json" Link="Fixtures\scph5501-rng-vectors.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\docs\fixtures\behavior\*.json" Link="Fixtures\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <ProjectReference Include="..\..\src\Zodiac.Framework\Zodiac.Framework.csproj" />
+  </ItemGroup>
+
+</Project>

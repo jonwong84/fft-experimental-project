@@ -1,0 +1,758 @@
+{
+  "format": "fft.ready-presentation-contract-expectations",
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "managedBase": "68c97dd87fdba4307d4299c0633bdc78c9d98431",
+  "specificationOnly": true,
+  "executed": false,
+  "policy": "ready-glyph-rgb5-v1",
+  "implementationTicket": "ZOD-086",
+  "defaultSetup": {
+    "scene": "one authored preloaded condition-0 Ready aggregate",
+    "canvas": [
+      256,
+      240
+    ],
+    "artwork": "six synthetic valid glyph rectangles unless explicitly source-study evidence",
+    "background": "opaque RGB5 checker or explicit opaque zero-padded RGB5 RGBA",
+    "state": "point, modulated, average on STP, dither off, zero texture window, mask off, full local clip",
+    "presentationReads": "accepted snapshots only; no task completion acknowledgments"
+  },
+  "evidencePolicy": "Future independently authored assertions. Numeric vectors are hand-authored and checked offline; no runtime renderer or original Ready scanout comparison executes here.",
+  "cases": [
+    {
+      "id": "RPR-001",
+      "title": "Packed pixel order",
+      "given": {
+        "packedBytes": [
+          33,
+          240
+        ]
+      },
+      "expected": {
+        "unpackedIndices": [
+          1,
+          2,
+          0,
+          15
+        ]
+      }
+    },
+    {
+      "id": "RPR-002",
+      "title": "Ready coordinate normalization differs from general",
+      "given": {
+        "source": [
+          224,
+          0,
+          16,
+          24,
+          -86,
+          -22
+        ]
+      },
+      "expected": {
+        "screen": [
+          42,
+          98,
+          16,
+          24
+        ],
+        "uv": [
+          224,
+          0,
+          16,
+          24
+        ],
+        "sourceVSubtract128": false
+      }
+    },
+    {
+      "id": "RPR-003",
+      "title": "Offline slices and selection are bounded",
+      "given": {
+        "requiredBytes": {
+          "image": 26624,
+          "quads": 72,
+          "colors": 120,
+          "range": 2,
+          "paletteRect": 8
+        }
+      },
+      "expected": {
+        "rejectTruncation": true,
+        "rejectRangeOtherThanZeroSix": true,
+        "rejectWrongImagePaletteOrSourceHashes": true,
+        "noUploadSuffix": true
+      }
+    },
+    {
+      "id": "RPR-004",
+      "title": "Strict six-glyph geometry",
+      "given": {
+        "sourceIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "widthsAllowed": [
+          16,
+          17
+        ],
+        "height": 24
+      },
+      "expected": {
+        "rejectDuplicateOrMissingIndices": true,
+        "rejectInvalidXYOrUV": true,
+        "rejectWrappedFarU": true,
+        "noCropOrTripletFields": true
+      }
+    },
+    {
+      "id": "RPR-005",
+      "title": "Bank 2 and four independent corners",
+      "given": {
+        "image": 0,
+        "paletteBank": 2,
+        "paletteOffset": 25664,
+        "cornerOrder": [
+          "TL",
+          "TR",
+          "BL",
+          "BR"
+        ]
+      },
+      "expected": {
+        "paletteBytes": 32,
+        "preserveFourRGBs": true,
+        "ignoreColorPrefixAndCodeBytes": true,
+        "noGeneralTpageTable": true
+      }
+    },
+    {
+      "id": "RPR-006",
+      "title": "Scale byte corners before interpolation",
+      "given": {
+        "channels": [
+          148,
+          255,
+          129
+        ],
+        "scales": [
+          48,
+          48,
+          116
+        ]
+      },
+      "expected": {
+        "scaledChannels": [
+          55,
+          95,
+          116
+        ],
+        "roundToNearest": false,
+        "scaleFramebufferInstead": false
+      }
+    },
+    {
+      "id": "RPR-007",
+      "title": "Four-corner first and second triangles",
+      "given": {
+        "corners": [
+          0,
+          64,
+          128,
+          255
+        ],
+        "width": 16,
+        "height": 24,
+        "samples": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            12,
+            6
+          ],
+          [
+            15,
+            23
+          ]
+        ]
+      },
+      "expected": {
+        "channels": [
+          0,
+          48,
+          80,
+          239
+        ],
+        "triangleSeeds": [
+          "TL",
+          "BL"
+        ],
+        "bilinear": false
+      }
+    },
+    {
+      "id": "RPR-008",
+      "title": "Falling slopes truncate toward zero",
+      "given": {
+        "corners": [
+          255,
+          128,
+          64,
+          0
+        ],
+        "width": 16,
+        "height": 24,
+        "samples": [
+          [
+            0,
+            0
+          ],
+          [
+            15,
+            23
+          ]
+        ]
+      },
+      "expected": {
+        "channels": [
+          255,
+          9
+        ],
+        "floatingPointInterpolation": false
+      }
+    },
+    {
+      "id": "RPR-009",
+      "title": "Shared diagonal belongs to second triangle",
+      "given": {
+        "width": 16,
+        "height": 24,
+        "row": 6,
+        "columns": [
+          11,
+          12
+        ]
+      },
+      "expected": {
+        "triangles": [
+          "first",
+          "second"
+        ],
+        "corners": [
+          0,
+          64,
+          128,
+          255
+        ],
+        "channels": [
+          76,
+          80
+        ],
+        "doubleBlend": false
+      }
+    },
+    {
+      "id": "RPR-010",
+      "title": "Half-open full rectangle coverage",
+      "given": {
+        "width": 16,
+        "height": 24
+      },
+      "expected": {
+        "coveredPixels": 384,
+        "lastSample": [
+          15,
+          23
+        ],
+        "rightAndBottomEdgesExcluded": true,
+        "eachPixelShadedOnce": true
+      }
+    },
+    {
+      "id": "RPR-011",
+      "title": "One-to-one point texture sampling",
+      "given": {
+        "uv": [
+          48,
+          24
+        ],
+        "width": 17,
+        "height": 24,
+        "localSample": [
+          16,
+          23
+        ]
+      },
+      "expected": {
+        "atlasSample": [
+          64,
+          47
+        ],
+        "atlasRowStride": 256,
+        "uvWrap": false,
+        "filtering": false
+      }
+    },
+    {
+      "id": "RPR-012",
+      "title": "Transparency is the palette word",
+      "given": {
+        "paletteWord": 0,
+        "paletteIndex": 7,
+        "background5": [
+          31,
+          15,
+          1
+        ]
+      },
+      "expected": {
+        "output5": [
+          31,
+          15,
+          1
+        ],
+        "indexZeroSpecialCase": false
+      }
+    },
+    {
+      "id": "RPR-013",
+      "title": "STP-clear nonzero words replace opaquely",
+      "given": {
+        "paletteWord": 31,
+        "paletteIndex": 0,
+        "scaledCornersRGB": [
+          128,
+          128,
+          128
+        ],
+        "background5": [
+          1,
+          2,
+          3
+        ]
+      },
+      "expected": {
+        "output5": [
+          31,
+          0,
+          0
+        ],
+        "averageApplied": false
+      }
+    },
+    {
+      "id": "RPR-014",
+      "title": "STP-black is visible average material",
+      "given": {
+        "paletteWord": 32768,
+        "background5": [
+          31,
+          15,
+          1
+        ]
+      },
+      "expected": {
+        "output5": [
+          15,
+          7,
+          0
+        ],
+        "discarded": false
+      }
+    },
+    {
+      "id": "RPR-015",
+      "title": "Average rounds the joint sum once",
+      "given": {
+        "backgroundSourcePairs": [
+          [
+            1,
+            1
+          ],
+          [
+            31,
+            0
+          ],
+          [
+            31,
+            31
+          ],
+          [
+            0,
+            31
+          ]
+        ]
+      },
+      "expected": {
+        "output5": [
+          1,
+          15,
+          31,
+          15
+        ],
+        "separatelyHalveOperands": false
+      }
+    },
+    {
+      "id": "RPR-016",
+      "title": "Modulate and quantize before blending",
+      "given": {
+        "textureColorPairs": [
+          [
+            31,
+            55
+          ],
+          [
+            31,
+            148
+          ],
+          [
+            17,
+            128
+          ]
+        ],
+        "dither": false
+      },
+      "expected": {
+        "source5": [
+          13,
+          31,
+          17
+        ],
+        "scanout8": [
+          104,
+          248,
+          136
+        ],
+        "bitReplication": false
+      }
+    },
+    {
+      "id": "RPR-017",
+      "title": "Every draw has explicit supported state",
+      "given": {
+        "policy": "ready-glyph-rgb5-v1",
+        "dither": false,
+        "textureWindow": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "maskSet": false,
+        "maskEvaluate": false
+      },
+      "expected": {
+        "rejectDitherOnOrMissingState": true,
+        "rejectMaskOrTextureWindowOverrides": true,
+        "noInheritedGpuState": true,
+        "validOriginDoesNotChangePixels": true
+      }
+    },
+    {
+      "id": "RPR-018",
+      "title": "Ordering-table traversal is reversed",
+      "given": {
+        "sourceSubmission": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "expected": {
+        "drawOrder": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "immediateModeSupported": false,
+        "interleavedEffectsSupported": false
+      }
+    },
+    {
+      "id": "RPR-019",
+      "title": "Accepted birth and release select full glyphs",
+      "given": {
+        "hold0BirthScale": 128,
+        "hold60BirthScale": 48,
+        "earlyReleaseScale": 128
+      },
+      "expected": {
+        "drawsPerNonemptySnapshot": 6,
+        "fullGeometry": true,
+        "newbornDoubleStep": false,
+        "rendererConsumesCircle": false
+      }
+    },
+    {
+      "id": "RPR-020",
+      "title": "Empty extra yield does not cache prior draw",
+      "given": {
+        "releaseTick": 1,
+        "inspectTicks": [
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "expected": {
+        "drawScales": [
+          56,
+          null,
+          null,
+          null
+        ],
+        "drawCounts": [
+          6,
+          0,
+          0,
+          0
+        ],
+        "childTerminalAt": 9,
+        "dispatcherTerminalAt": 10
+      }
+    },
+    {
+      "id": "RPR-021",
+      "title": "Snapshot reads and resource rebuilds are pure",
+      "given": {
+        "readsPerTick": [
+          0,
+          1,
+          9
+        ],
+        "rebuildResources": true
+      },
+      "expected": {
+        "sameLogicalStateAndCompleteTrace": true,
+        "rendererCompletionAcknowledgments": 0,
+        "noClockOrTaskMutation": true
+      }
+    },
+    {
+      "id": "RPR-022",
+      "title": "Closed prepared metadata schema",
+      "given": {
+        "format": "fft.ready-artwork",
+        "schemaVersion": 1,
+        "maxBytes": 32768,
+        "maxDepth": 12
+      },
+      "expected": {
+        "rejectUnknownDuplicateNullMissingFields": true,
+        "rejectWrongTypesOrFractions": true,
+        "rejectBadIdsCountsVersionsFormats": true,
+        "strictProvenance": true
+      }
+    },
+    {
+      "id": "RPR-023",
+      "title": "Prepared payload verification precedes scene",
+      "given": {
+        "indicesBytes": 51200,
+        "paletteBytes": 32,
+        "indexRange": [
+          0,
+          15
+        ]
+      },
+      "expected": {
+        "rejectWrongLengthHashOrIndices": true,
+        "immutableLoadedData": true,
+        "tasksOnFailure": 0,
+        "sceneOnFailure": false
+      }
+    },
+    {
+      "id": "RPR-024",
+      "title": "Profiles remain separate",
+      "given": {
+        "unsupported": [
+          "fft.general-banner",
+          "old-event-profiles",
+          "condition-1",
+          "retail-event-4",
+          "retail-event-401"
+        ]
+      },
+      "expected": {
+        "rejectReadyThroughLegacyProfiles": true,
+        "rejectUnsupportedEvenUnreachable": true,
+        "readyUnsignedOperandsPreserved": true
+      }
+    },
+    {
+      "id": "RPR-025",
+      "title": "Offline output and source guards",
+      "given": {
+        "inputs": [
+          "verified-import-manifest",
+          "BONUS.BIN",
+          "REQUIRE.OUT"
+        ],
+        "output": "fresh-root-only"
+      },
+      "expected": {
+        "wrongEditionHashOrRangesRejected": true,
+        "preserveExistingOutputs": true,
+        "safeManifestPaths": true,
+        "noPartialPublish": true
+      }
+    },
+    {
+      "id": "RPR-026",
+      "title": "All resources ready before logical admission",
+      "given": {
+        "failAt": [
+          "event-load",
+          "artwork-load",
+          "logical-binding",
+          "gpu-resource-creation"
+        ]
+      },
+      "expected": {
+        "noSceneOnAnyFailure": true,
+        "tasksAllocated": 0,
+        "ticksConsumed": 0,
+        "noSuccessReceipt": true,
+        "originalLoaderDelayEmulated": false
+      }
+    },
+    {
+      "id": "RPR-027",
+      "title": "Finite repeatable prepared host",
+      "given": {
+        "holds": [
+          0,
+          1,
+          60,
+          255
+        ],
+        "circleCases": [
+          "none",
+          "first-sample",
+          "during-fade-in",
+          "after-release"
+        ]
+      },
+      "expected": {
+        "repeatReceiptsStateTraceAndPNGs": true,
+        "cpuGpuReadbackExact": true,
+        "readFrequencyDoesNotChangeReplay": true,
+        "retainedTerminalState": true
+      }
+    },
+    {
+      "id": "RPR-028",
+      "title": "Background input is explicit opaque RGB5",
+      "given": {
+        "dimensions": [
+          256,
+          240
+        ],
+        "format": "rgba8-zero-padded-rgb5",
+        "alpha": 255
+      },
+      "expected": {
+        "rejectWrongLengthAlphaOrLowBits": true,
+        "preserveInputBytes": true,
+        "nullDrawLeavesBackground": true,
+        "defaultCheckerIsSynthetic": true
+      }
+    },
+    {
+      "id": "RPR-029",
+      "title": "Queued observations do not assert displayed pixels",
+      "given": {
+        "sourceFrames": [
+          9003,
+          9110
+        ],
+        "queuedScales": [
+          48,
+          128
+        ]
+      },
+      "expected": {
+        "independentHistories": true,
+        "pairedDurationVerified": false,
+        "readyScanoutComparisonPerformed": false,
+        "originalFidelityEstablished": false
+      }
+    },
+    {
+      "id": "RPR-030",
+      "title": "Legacy general outputs stay stable",
+      "given": {
+        "legacyPolicies": [
+          "rgb8",
+          "rgb5"
+        ]
+      },
+      "expected": {
+        "schemasAndProfilesUnchanged": true,
+        "repeatLegacyArtifacts": true,
+        "noGeneralCropPaletteOrBlendReinterpretation": true
+      }
+    },
+    {
+      "id": "RPR-031",
+      "title": "Checked selected arithmetic and provenance",
+      "given": {
+        "channelRange": [
+          0,
+          255
+        ],
+        "scaleRange": [
+          48,
+          128
+        ],
+        "widths": [
+          16,
+          17
+        ],
+        "height": 24,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df"
+      },
+      "expected": {
+        "scaleProductMax": 32640,
+        "crossNumeratorTimes4096Max": 25067520,
+        "signed32IntermediatesFit": true,
+        "unsupportedDomainRejected": true
+      }
+    },
+    {
+      "id": "RPR-032",
+      "title": "Runtime uses prepared files only",
+      "given": {
+        "sourceFilesUnavailableAfterPreparation": true
+      },
+      "expected": {
+        "preparedPreviewRuns": true,
+        "runtimeBINOrReferenceReads": 0,
+        "nativeCodeDependency": false,
+        "newRendererImplementationRequiredInZOD086": true
+      }
+    }
+  ]
+}

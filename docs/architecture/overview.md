@@ -1,0 +1,369 @@
+# Architecture overview
+
+**Product names agreed 2026-10-25:** **Tessera Engine** supplies reusable grid, terrain, movement and simulation machinery; **Zodiac Framework** supplies FFT-specific rules and runtime systems; **FFT Content** supplies particular game definitions and prepared assets. The corresponding projects/namespaces are now `Tessera.Engine`, `Zodiac.Framework`, `Zodiac.Content` and `Zodiac.AssetTool`/`.Cli`; `Fft.Client` remains the FFT application host.
+
+**Status:** Proposed architecture for review. The repository is still an early prototype; the diagrams below describe intended dependency boundaries, not a claim that these projects or services already exist.
+
+## Goals
+
+- Build Tessera as a reusable C#/.NET tactical-game engine, Zodiac as its FFT rules framework, and the North American PS1 release (`SCUS-94221`) as the first complete game/content set.
+- Keep compatibility behavior observable and testable, including quirks that affect play.
+- Keep the original simulation deterministic and independent of presentation and operating-system services.
+- Permit additional content and mechanics without imposing the original executable's fixed-size data limits.
+- Use the C decompilation and locally prepared game files as development references and import sources, never as runtime dependencies.
+
+## Gameplay RNG and presentation
+
+AI policy and orchestration live in `Zodiac.Framework.Ai`; their tests live in
+`Zodiac.Framework.Ai.Tests`. Shared rules and receipt/session construction stay
+in `Zodiac.Framework`. The [command boundary](ai-command-boundary.md) invokes a
+fresh planner, validates RNG continuity and publishes one accepted command
+atomically. There is no Framework-to-AI reference or production friend access.
+
+The [original AI algorithm guide](original-ai-algorithm.md) maps the pinned C
+source from initialization through policy selection, evaluation, scoring and
+command settlement. It distinguishes source structure from bounded managed
+coverage and unresolved compatibility behavior.
+
+Decision scoring and actual combat share explicit gameplay RNG; restoring a
+hypothetical candidate does not erase its draws. Rendering, wall time and pauses
+must not advance that stream. The original VSync callback draws BIOS rand once
+per frame, so this managed isolation boundary does not establish frame-interleaved
+retail RNG equivalence. [ZOD-154](zod-154-ai-execution-rng.md) records the pinned
+source, earlier refresh-prefix gap and bounded execution contract.
+
+## Content flag representation
+
+**Owner direction (2026-10-27):** Prefer named boolean properties for independent
+content switches in authored definitions and the semantic objects used by rules
+and editors. Original byte offsets, bit masks and combinations of bytes belong
+in explicit import/export adapters. Packed runtime storage needs a measured
+performance or memory reason and must retain readable semantic accessors.
+
+Keep genuine numeric values numeric. Use typed modes when the source establishes
+mutually exclusive alternatives; do not assume that independently stored bits
+are exclusive. Unknown source bits stay opaque in import/provenance data for
+lossless preservation, without inventing boolean meanings or runtime support.
+Preserve unusual original combinations and observable quirks during conversion.
+
+[ZOD-201](../BACKLOG.md#zod-201--resolve-unknown-content-flags-and-simplify-authored-data)
+will investigate unknown flags as original content is mapped to readable packages.
+Opaque import/provenance preservation does not require exposing unknown flags in
+authored definitions or runtime objects. Decide omission from those models with
+source/behavior evidence and explicit schema/round-trip implications.
+
+Migrate one definition family at a time as its semantics and adapters mature.
+Existing package formats remain versioned contracts; changes to their exported
+shape need an explicit migration/version decision. Verify known flag decoding,
+encoding, unknown-bit preservation and original behavior at the adapter boundary.
+This direction does not turn numeric byte fields into booleans or require an
+immediate project-wide refactor. ZOD-134 records the deferred implementation work.
+
+## Current repository, verified
+
+- `Fft.Editor` is a separate Windows Forms presentation adapter for the
+  [bounded job/ability editing workflow](../development/job-ability-editor.md).
+  `Zodiac.Content.Authoring` owns its portable draft/copy/export/preview model,
+  reusing existing package validators, immutable definitions and battle setup.
+  The game client and deterministic Engine/Framework dependencies are unchanged;
+  general multi-domain authoring and public replacement contracts remain future
+  work. The editor cross-compiles with Windows targeting enabled and runs only
+  on Windows. Owner visual/manual workflow approval is pending.
+
+The [baseline coverage inventory](../coverage/README.md) records the current
+supported subsets, source/evidence, tests, manual checkpoints and remaining gaps.
+Its family-level entries are not a complete original record/encounter catalog.
+
+- `Zodiac.Framework` contains common identifiers/value types, map data types, a typed battle transition proof, and flat-grid movement policies (one prototype and one bounded terrain-cost slice).
+- `Zodiac.Content` loads a versioned manifest and hash-verified loose files by logical asset ID,
+  including the bounded prepared static sprite pose and frozen MAP003 scene/terrain. It references `Zodiac.Framework`, without original-format parsers.
+- `Zodiac.Content.Saves` owns the [bounded save DTO/codec and file adapter](../development/two-unit-battle-saves.md).
+  Core restores snapshots against selected definitions without I/O; Client supplies
+  a headless proof. The [ZOD-067 investigation](zod-067-campaign-save-state.md)
+  maps original campaign fields/checkpoints and unsaved RNG lifecycles. ZOD-068
+  now proves the [synthetic checkpoint service](../development/synthetic-world-checkpoint.md).
+  ZOD-102 adds its [authored application navigation model](../development/synthetic-world-navigation.md);
+  the [ZOD-103 native host](../development/windows-world-navigation.md) now has
+  finite Windows checks plus owner visual and bounded manual-input approval.
+  [ZOD-069's slot UI](../development/world-save-load-ui.md) now has finite
+  Save/Load/recovery/error checks, owner gallery approval and an owner-reported
+  bounded interactive slot check. Full campaign
+  persistence remains separate.
+- `Zodiac.Content.Events` validates/loads the [prepared synthetic conditional event](../development/prepared-scenario-event.md).
+  AssetTool owns raw block inspection and the CLI assembly composes conversion.
+  ZOD-065 projects into `Zodiac.Framework.Events`: immutable normalized operations,
+  instruction state/traces and pure bounded Step/Run execution. Content-to-Core
+  dependencies remain one-way. [Execution limits](../behavior/conditional-event-execution.md)
+  exclude EventEnd, scene lifecycle, timing, RNG and campaign integration.
+  ZOD-071 adds a [separate explicit-tick wait profile](../behavior/timed-event-waits.md),
+  composing private conditional validation/transitions with immutable timed state.
+  Pending counts and caller-supplied ticks stay in FFT Core; host pacing stays outside it.
+  [ZOD-066](zod-066-battle-start-event.md) traces original common BattleStart and
+  names the missing camera/task/banner/lifecycle capabilities; it adds no playback.
+  Original camera operand mutation must remain distinct from immutable definitions.
+  [ZOD-072](zod-072-event-task-contract.md) selects a scene-owned task ledger and
+  explicit barrier protocol, independently of interpreter lifetime. ZOD-073 now
+  [implements the pure ledger/barrier proof](../behavior/scene-task-barriers.md)
+  with stable instances/revisions, live scene-wide polling, explicit ordered facts
+  and atomic failures. ZOD-074 [integrates E5 in a separate BATTLE synthetic profile](../behavior/scene-event-barriers.md):
+  immutable combined VM/ledger state, one shared tick, same-tick resumption,
+  ordered traces and atomic rollback. Scene tasks survive interpreter exit/restart.
+  Actual worker algorithms remain unimplemented. [ZOD-075](zod-075-general-banner-effect.md)
+  selects condition 8's post-readiness logical banner lifecycle and explicit Circle
+  input as the first effect model. ZOD-076 now [implements the logical banner driver
+  and atomic scene adapter](../behavior/general-banner-effect.md), generating its
+  own managed task completion/cancellation from explicit logical samples. Other
+  tasks remain authored facts. [ZOD-077](zod-077-general-banner-assets.md) now traces
+  banner-0 pixels/palette/geometry and specifies a preload boundary with an
+  explicit RGB8 presentation policy. ZOD-078 owns prepared conversion/loading and
+  the bounded CPU preview; original startup and opcode admission remain open.
+- `Zodiac.AssetTool` and `Zodiac.AssetTool.Cli` handle offline image inventory, extraction, narrow unit `.SPR`
+  decoding, selected SHP/SEQ pose preparation and bounded GNS/mesh/indexed-texture conversion.
+  The CLI composes the tools; no full animation interpreter exists.
+- `Fft.Client` can load a prepared asset, run the deterministic synthetic two-unit battle headlessly,
+  and open a MonoGame Windows view of its immutable starting snapshot or a fixed prepared
+  MAP003/Chocobo scene. A separate local two-unit battle UI sends validated commands to
+  the supported M1 scenario; the prepared scene remains static.
+- Tests exist for the current projects, including pure client layout tests. The synthetic graphics
+  host has separate Windows checks; no complete campaign runtime, audio adapter or campaign save system exists yet.
+
+The architecture should evolve from this shape without splitting projects just for conceptual neatness. Add a new assembly when it creates a useful dependency boundary or an independently testable responsibility.
+
+The completed [ZOD-001 ownership audit](zod-001-type-ownership.md) classifies every current Core type and recommends a bounds-only flat cardinal range calculation as the first engine slice, accessed through an FFT-owned facade. This is a documented extraction plan; the current assemblies and behavior remain unchanged.
+
+Implementation update (2026-10-22): ZOD-007/008 now provide that bounds-only engine calculation and FFT facade integration. ZOD-009's [Relay sample](../../samples/Relay/README.md) runs the calculation with invented content, and a build target enforces the current engine project-reference boundary. These satisfy the bounded M0 engine demonstration; the broader architecture below remains a target, not implemented battle/campaign functionality.
+
+Implementation update (2026-10-23): [ZOD-023](../behavior/two-unit-battle-scenario.md) completes bounded
+M1 headless battle integration with an explicit synthetic first-KO objective, immutable restart/replay and
+terminal-command rejection. FFT owns the lifecycle and rule composition, Content owns the invented setup/script,
+and Client owns console output. Full FFT combat/campaign remain separate work.
+
+Implementation update (2026-10-23): [ZOD-025](../development/windows-synthetic-host.md) adds the
+MonoGame DesktopGL host in Client only. It renders a fixed synthetic snapshot without simulation
+transitions or original assets. Live GPU/resize/close checks and headless layout tests passed;
+mixed-DPI, physical input and prepared-map/sprite rendering remain bounded follow-up work.
+
+Implementation update (2026-10-23): [ZOD-028](../development/prepared-sprite-pose.md) prepares the
+source-traced Chocobo static pose as manifest-addressable metadata and RGBA data. Runtime Content
+loads that representation without AssetTool/original-format dependencies. Prepared scene rendering
+still awaits the selected map pipeline; deterministic simulation is unchanged.
+
+Discovery update (2026-10-23): [ZOD-029](zod-029-map003-source-map.md) selects MAP003's day/dry
+base scene and a four-cell alignment checkpoint. Its source terrain, indexed texture/palette,
+geometry and frozen presentation metadata remain distinct preparation responsibilities for ZOD-030.
+The existing bounded combat profile must not force source heights or flags to be rewritten.
+
+Implementation update (2026-10-23): [ZOD-030](../development/prepared-map-slice.md) now prepares
+that scene as manifest-addressable geometry, indexed texture/palette data, frozen presentation
+metadata and two dense terrain layers. Content validates/loads it and projects normalized
+terrain into Core without original-format parsing. Native heights and opaque provenance remain
+intact. Client has a headless map-load check; ZOD-031 still owns prepared scene rendering.
+
+Implementation update (2026-10-23): [ZOD-031](../development/prepared-scene.md) renders that
+map and pose with a fixed authored camera, per-polygon palette selection, point-sampled
+opaque cutout and modern depth. A source-derived terrain/quad alignment checkpoint and
+synthetic tests cover transforms, strip coverage and piece order. Neutral lighting and
+modern depth are explicit approximations; independent original comparison remains ZOD-026/033.
+All rendering/resource lifetime and presentation timing stay in Client. Core/Engine,
+simulation rules, prepared formats, project references and package locks are unchanged.
+
+Implementation update (2026-10-23): [ZOD-032](../development/playable-battle.md) adds
+mouse/keyboard selection, legal highlights, Move/Attack/Wait/Advance, status and restart
+for the synthetic M1 scenario. Client owns input routing and a command journal; Core
+accepts/rejects every attempted battle command and supplies immutable results. Highlight
+probes discard pure result snapshots, preserving live RNG/state. Programmed Windows
+play, headless script and journal replay agree, including after a resize. No new battle
+rules, original-content combat integration or graphics/input dependency enters Core/Engine.
+
+## Target dependency shape
+
+### Product boundaries agreed with the owner
+
+The intended product has three conceptual parts:
+
+- **Tessera Engine:** reusable grid, terrain, movement and deterministic simulation facilities, separated from presentation, input and authoring adapters.
+- **Zodiac Framework:** FFT rules, runtime systems, definition schemas, validators and supported script/action/condition execution. Existing `Zodiac.Framework` and parts of `Zodiac.Content` implement this responsibility today.
+- **FFT Content:** original or authored jobs, abilities, equipment, maps, campaigns, event scripts, menu declarations, graphics and music, supplied through prepared content packages.
+
+The owner approved these product names on 2026-10-25, superseding the earlier Zodiac-engine/FFT-framework terminology, then requested the matching project/namespace migration. They identify ownership boundaries rather than three required assemblies. Immutable definition models and schema code belong to Zodiac, while particular records belong to FFT Content. Running battle/campaign state is distinct from both. Another game can use Tessera directly with its own rules, or use Zodiac when it wants those mechanics. Further ownership extraction and assembly splits remain separate behavior/design work.
+
+Content management should eventually support adding, replacing, organizing, validating and previewing music, graphics, maps, scripted events and conditions. Packages associate records/assets by stable logical IDs and explicit dependencies; import provenance and original baseline content remain preserved. Original event decoding, deterministic interpretation, authoring UI and arbitrary custom executable behavior remain separate decisions (ZOD-040/043/047/048/049/050).
+
+A menu entry can be declarative content selecting a framework-defined typed action and supported availability condition. Adding a title option for an existing StartCampaign action should require only content; a new operation also requires its handler. Package contributions need explicit target menus, stable entry IDs, deterministic placement and conflict/missing-reference diagnostics. This is a future contract investigated by ZOD-062, not an implemented menu or general scripting API.
+
+```mermaid
+flowchart TD
+    Client[Windows client and composition root]
+    App[Application use cases]
+    Engine[Tessera Engine contracts and deterministic simulation]
+    FftGame[Zodiac Framework rules and compatibility profile]
+    FftData[FFT Content definitions and prepared assets]
+    Win[Windows platform adapters]
+    Tool[Authoring and asset-import tools]
+    Files[(Prepared files and save files)]
+
+    Client --> App
+    Client --> Win
+    App --> FftGame
+    App --> Engine
+    FftGame --> Engine
+    FftGame --> FftData
+    Win -. implements ports defined inward .-> App
+    Tool --> FftData
+    FftData --> Files
+```
+
+Zodiac depends on Tessera's reusable contracts; Tessera must not depend on FFT types, assets, formulas, IDs or campaign scripts. Zodiac defines the rules and schemas used by FFT Content; the host binds particular content packages to those systems. These are target ownership boundaries, not a claim that today's assembly graph already matches the product names.
+
+### Current identifiers and naming migration
+
+- `Tessera.Engine` replaces `Zodiac.Engine`, including its test project and namespaces. It owns the existing reusable engine slice and the neutral Relay sample's contracts.
+- `Zodiac.Framework` replaces `Fft.Core`; `Zodiac.Content` replaces `Fft.Content`; `Zodiac.AssetTool` / `.Cli` replace `Fft.AssetTool` / `.Cli`, including their tests and namespaces. These are mechanical identity changes with their existing responsibilities retained.
+- `Fft.Client` remains the FFT host; `Fft.sln` remains the solution. Content schema/loader code is in Zodiac; particular game definitions and prepared assets are FFT Content. No asset ID, data format, compatibility-profile ID or save schema is renamed.
+- Project references enforce ownership: Tessera may not reference Zodiac or FFT-specific projects. `CheckTesseraProjectBoundary` preserves the narrow engine allowlist.
+- Assign a type to the Tessera responsibility only when its meaning and behavior are independent of FFT. FFT formulas, PS1 compatibility policies, job/ability/item schemas and FFT asset formats belong to Zodiac's game-specific responsibility; concrete records/assets belong to FFT Content.
+- Keep further ownership/behavior changes separate from this naming migration. Historical evidence retains its recorded identities; current source links and commands use the renamed projects.
+
+Extract proven reusable responsibilities from the mixed prototype into the Tessera-owned slice over time. Shared asset-service abstractions belong there only when a concrete reusable use case requires them. The agreed product names do not broaden the current engine extraction scope.
+
+### Tessera Engine responsibility
+
+- Provide reusable deterministic tactical simulation primitives and contracts: map/grid topology, spatial positions, runtime-state boundaries, commands/transitions, turn-scheduling hooks, action/targeting abstractions, movement/range policy contracts, status/effect application points, deterministic random-state interfaces, simulation events, and replay/logging seams.
+- Keep behavior neutral where different games reasonably vary. Rules should be selected or supplied through explicit policies/profiles rather than FFT-specific branches in the engine.
+- Provide content package and asset-service abstractions without embedding FFT identifiers, binary layouts, jobs, abilities, formulas, or copyrighted assets.
+- Keep rendering, input, audio, storage, and operating-system specifics in adapters or host applications.
+- Aim for a small tactical engine, not an all-purpose framework. Add abstractions when another concrete use case demonstrates value.
+
+### Zodiac Framework and FFT Content responsibility
+
+- Own FFT concepts and compatibility behavior: jobs and JP, abilities/skill sets, items/equipment, statuses, FFT formula implementations, progression, CT/turn semantics, map terrain meanings, encounters, battle/campaign/event scripts, localization, and PS1-specific asset conversion/selection.
+- Translate validated FFT definitions and imported source data into Tessera runtime contracts through Zodiac's rules. Preserve exact compatibility semantics in an explicit PS1 profile; isolate later Lion War/WotL additions in a separate profile/content set.
+- Keep a trace from important FFT rules/data fields to the pinned decomp source and, where available, original/emulator observations and regression fixtures.
+- Keep the asset importer FFT-aware. The engine consumes prepared logical assets or game-provided rendering data, never raw BIN sectors.
+
+This boundary is conceptual first. `Zodiac.Framework` currently contains FFT-flavored map and movement models and is not yet a clean reusable engine package. Generalize or move a type only when its engine-level contract is understood and an FFT adapter can preserve behavior. Keep project/namespace renames separate from behavior changes.
+
+`Zodiac.Framework` is the current home for FFT simulation; the proven reusable bounds-only slice lives in
+`Tessera.Engine`. Further assembly splits should follow demonstrated seams. An application project
+remains a future option when concrete use cases require it. [ADR 0005](../adr/0005-windows-rendering-and-input-stack.md)
+selects MonoGame DesktopGL, integrated by ZOD-025 in Client only. See the
+[host note](../development/windows-synthetic-host.md) for executed checks and remaining DPI/device/input limits.
+
+The dependency rule is inward: simulation code must not reference `Fft.Client`, graphics/audio/input packages, operating-system APIs, the BIN, or the C reference. Platform adapters implement interfaces owned by an inward-facing layer. The client is the composition root that chooses implementations and connects input, use cases, content, and presentation.
+
+### Engine and framework replacement
+
+The owner selected replacement of either implementation as an architectural goal
+on 2026-10-25. [ADR 0006](../adr/0006-replaceable-engine-and-framework-contracts.md)
+records the replacement goal and constraints for a future contract/adapter design.
+The initial target is selection at application construction followed by a rebuild;
+runtime hot swapping is a separate decision. Concrete dependencies are permitted
+in composition roots and implementation adapters, while selected consumers depend
+on contract assemblies that do not reference the replaced implementation.
+
+The current direct references have not yet been migrated. The completed
+[ZOD-099 audit](zod-099-replacement-boundary-audit.md) records current coupling.
+The owner clarified that public contract design is premature: ZOD-100/101 are
+deferred until real usage justifies a boundary. No API or contract assembly is
+selected now. ZOD-098 remains the next implementation milestone.
+An internal introduction interface alone does not establish framework replacement.
+Behavior, content, save/replay and profile compatibility require explicit contracts
+and conformance checks in addition to interchangeable C# signatures.
+
+## Responsibilities and contracts
+
+### Tessera engine domain and simulation
+
+- Own reusable stable/runtime identity contracts, simulation state/transition abstractions, deterministic random state, generic tactical policies, and simulation events. It must not own FFT job definitions, formula tables, story state, campaign data, or PS1 binary layouts.
+- Represent play as explicit inputs to a transition: current state plus a command and RNG state produce a new state, result/events, and updated RNG state.
+- Avoid file I/O, wall-clock reads, global randomness, rendering, audio, and direct input polling.
+- Use collections sized by content and explicit validation/resource budgets. Preserve original limits only when they affect compatibility or are an intentional safety limit.
+- Record arithmetic width, rounding, RNG draw order, and update ordering where they affect observed behavior.
+
+Commands express requested actions; the simulation validates them. Events describe accepted state changes for presentation, logs, and tests. They are not a second authority that can mutate simulation state. Start with simple typed C# models; do not introduce a generic ECS, event sourcing framework, or plugin bus until a concrete need appears.
+
+### Content definitions and runtime state
+
+- Keep immutable, validated game-specific definitions (FFT jobs, abilities, items, maps, encounters, campaign data) separate from mutable runtime instances (unit HP/MP, status, equipment, turn state, and story flags). Their models and rules belong to Zodiac, their particular records to FFT Content, and neither belongs to Tessera's generic engine responsibility.
+- Give definitions stable, namespaced IDs. Validate cross-references and schema versions when loading a package rather than failing during a battle.
+- Layer original-compatible content and additions explicitly. Do not overwrite or silently alter baseline definitions when loading an extension pack.
+- Keep save data as a versioned persistence contract made from stable IDs and explicit state DTOs, not a serialized in-memory object graph. Define migrations when save format becomes necessary.
+
+### Asset import and runtime access
+
+- `Zodiac.AssetTool` is an offline import/validation tool. It may inspect the user's local BIN and emit prepared files/manifests under ignored `/scratch/` during development.
+- The running client loads prepared files by logical asset ID through `Zodiac.Content`; it does not open the BIN or invoke the extractor.
+- Keep source assets, converted outputs, and manifests reproducible. Test parsers/decoders with synthetic inputs and source-traced vectors; keep copyrighted game-derived bytes local.
+- Rendering consumes decoded content through a narrow asset/content boundary. It should not contain gameplay rules or ISO parsing.
+
+### Application, platform, and presentation
+
+- Application use cases coordinate requests such as starting a battle, issuing a simulation command, loading campaign data, and saving. They do not implement game rules or draw pixels.
+- Platform adapters own Windows windowing, graphics, audio, controller/keyboard input, file locations, and OS timing. MonoGame DesktopGL now hosts the synthetic Windows view; broader adapters remain future work.
+- Presentation translates input into application commands and turns state/events into view models or render submissions. It never writes battle state directly.
+- Keep the simulation executable headlessly in tests and command-line tools.
+
+The owner also wants native Windows presentation/input enhancements investigated: widescreen, higher-resolution rendering/textures, keyboard/mouse and controller support. These are future requirements (ZOD-059/060/061/063), with stack capabilities considered during ZOD-024. The higher-resolution video goal means rendering the game view at a selectable resolution, for example 1920 x 1080 on a landscape display (the owner's 1080 x 1920 example is assumed to have dimensions reversed). It does not request movie replacement/upscaling. Widescreen camera/viewport and UI layout, internal rendering resolution and source/replacement texture detail remain separate concerns.
+
+Higher-resolution mode should rasterize supported scene geometry at the selected internal resolution rather than only enlarge a completed low-resolution frame. Original sprites/textures retain their source detail and use an explicit sampling policy; replacement artwork is a separate content capability and is not a prerequisite for higher-resolution rendering. Resolution and aspect ratio are independent settings: an original-aspect presentation may use letterboxing/pillarboxing, while widescreen requires the camera/UI work in ZOD-059.
+
+Presentation options should preserve gameplay outcomes for the same logical commands and seed. Distinguish the original presentation/reference profile from explicitly selected enhancements and replacement asset packs. Device adapters translate keyboard, mouse and controller operations into the same application commands; remapping, prompts and navigation belong outside deterministic simulation. Higher output resolution alone does not create new source texture or movie detail.
+
+Owner clarification (2026-10-26): the requested widescreen viewport preserves
+the CRT-correct proportions of text, sprites, environments and other content.
+The camera reveals additional horizontal scene area and the UI uses the wider
+layout. Asset/display aspect correction remains independent of viewport width;
+both apply together in the requested widescreen presentation. Exact mappings
+and fixed-scene behavior remain later ZOD-079/059 decisions.
+
+The owner also intends to rework the UI itself for wider aspect ratios and native keyboard/mouse use.
+ZOD-059 and ZOD-061 should coordinate screen composition, menu/HUD placement, information density,
+direct mouse selection, keyboard focus/shortcuts and prompts. Concrete layouts and interaction choices
+come after representative battle/menu workflows exist. Keep this an explicit Windows presentation option
+alongside the original reference presentation; UI changes consume the same validated gameplay commands
+and remain outside deterministic simulation. This records future design intent, not implementation now.
+
+### Extensions and The Lion War
+
+- Start extensions with validated, versioned declarative content packages and a typed set of supported actions/effects.
+- Keep the PS1-compatible campaign/profile as the baseline. Enable extra jobs, items, characters, maps, encounters, campaigns, or mechanics through explicit profiles/package layers.
+- Treat The Lion War as a distinct compatibility/content profile after selecting its exact variant and feature scope. Preserve provenance and identify intentional deviations from the PS1 baseline.
+- Defer arbitrary managed-assembly plugins and general-purpose scripting. If data and typed effects cannot express required campaign behavior, design a deterministic sandbox with versioned APIs and explicit permissions.
+
+## Behavioral validation
+
+Use several independent kinds of evidence; none alone proves full equivalence:
+
+1. Unit tests for arithmetic, edge cases, and source-traced rule vectors.
+2. Deterministic replay tests: same initial state, commands, and random seed produce identical state and event traces.
+3. Scenario regressions with recorded preconditions, inputs, expected transitions, and reference decomp commit.
+4. Differential checks against executable source-derived or emulator-observed outputs when a suitable oracle exists.
+5. Separate visual checks with fixed game state/frame captures, image diffs, and manual review. Do not treat screenshot similarity as a substitute for simulation tests.
+6. Content validation and decode tests that do not require the BIN; real-asset integration checks remain local under `/scratch/`.
+
+Tests should state whether the expected value comes from direct source tracing, an executing oracle, an emulator capture, or an assumption. The decomp's machine-code matching checks establish a different property than the C# behavior tests.
+
+The initial state/command/event contract and its explicitly simplified movement policy are recorded in [`../battle-transition-poc.md`](../battle-transition-poc.md).
+
+The terrain and unit movement input model, including its source mapping and unimplemented pieces, is documented in [`../behavior/movement-inputs.md`](../behavior/movement-inputs.md).
+
+## Deferred decisions and open questions
+
+- Production audio/input coverage and Windows deployment format beyond the synthetic MonoGame host.
+- Whether turn/campaign runtime eventually warrants separate `Fft.Simulation` and `Fft.Application` assemblies.
+- Complete campaign save schema, broader content/package migration policy, and backup behavior.
+  ZOD-035 selects only the bounded two-unit contract and synthetic migration above.
+- Package archive format, signing/trust policy, conflict resolution, and hot reload needs.
+- Script language and sandbox policy, if declarative mechanics prove insufficient.
+- Exact The Lion War variant, revision, imported features, and intentional rule changes.
+- Which original/emulator observations are available for validating behavior beyond static decompilation.
+
+Resolve these only when a milestone has concrete requirements that depend on them.
+
+Discovery update (2026-10-23): [ZOD-040](zod-040-event-script-investigation.md)
+separates event/scenario/location/presentation script families and recommends
+offline decoding followed by a pure FFT-owned conditional-event executor.
+ZOD-064/065/066 own the bounded follow-ups. No FFT opcode/variable bank enters
+Tessera, and no event interpreter is implemented by this investigation.
+ZOD-067 traces logical campaign save fields and original save availability before
+expanding ZOD-035's snapshot contract or adding the Windows Save/Load interface.

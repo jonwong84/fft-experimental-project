@@ -1,0 +1,2 @@
+# Optional development oracle only; never used by the .NET game/build/test runtime.
+unicorn==2.1.4

@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="../../docs/fixtures/saves/synthetic-world-idle-v1.json" Link="Fixtures/Saves/synthetic-world-idle-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <Compile Include="../Support/AuthoredDarkScreenIntroduction.cs" Link="Support/AuthoredDarkScreenIntroduction.cs" />
+    <Compile Include="../Support/AuthoredDarkScreen.cs" Link="Support/AuthoredDarkScreen.cs" />
+    <Compile Include="../Support/AuthoredBannerReadySequence.cs" Link="Support/AuthoredBannerReadySequence.cs" />
+    <Compile Include="../Support/AuthoredReady.cs" Link="Support/AuthoredReady.cs" />
+    <None Include="../../docs/evidence/events/ready-presentation-contract-v1.json" Link="Fixtures/ready-presentation-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../docs/evidence/events/ready-display-contract-v1.json" Link="Fixtures/ready-display-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../docs/evidence/events/ready-rendering-source-v1.json" Link="Fixtures/ready-rendering-source-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <Compile Include="../Support/AuthoredGeneralBanner.cs" Link="Support/AuthoredGeneralBanner.cs" />
+    <Compile Include="../Support/AuthoredOrderedBannerEvent.cs" Link="Support/AuthoredOrderedBannerEvent.cs" />
+    <None Include="../../docs/evidence/events/banner-opcode-admission-contract-v1.json" Link="Fixtures/banner-opcode-admission-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../docs/evidence/events/general-banner-presentation-contract-v1.json" Link="Fixtures/general-banner-presentation-contract-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../docs/evidence/visual/original-banner-continuation-v1.json" Link="Fixtures/original-banner-continuation-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../docs/evidence/visual/early-banner-reveal-v1.json" Link="Fixtures/early-banner-reveal-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../docs/evidence/visual/original-banner-circle-reveal-v1.json" Link="Fixtures/original-banner-circle-reveal-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../docs/evidence/visual/original-banner-circle-hold-v1.json" Link="Fixtures/original-banner-circle-hold-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../docs/evidence/visual/original-banner-circle-hide-v1.json" Link="Fixtures/original-banner-circle-hide-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <ProjectReference Include="..\..\src\Fft.Client\Fft.Client.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,20 @@
+{
+  "format": "fft.ai-derived-selection-contract-evidence",
+  "schemaVersion": 1,
+  "ticket": "ZOD-144",
+  "date": "2026-10-28",
+  "managedBaseRevision": "35b846710535a2a49bd0547a39fa39645e2c8edd",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "sourceReceipt": "docs/evidence/ai/movement-scenario-contract-v1.json",
+  "sourceAudit": "scratch/ai-derived-selection-144/source.json",
+  "contract": "docs/architecture/zod-144-ai-derived-selection.md",
+  "productionImplemented": false,
+  "runtimeActivated": false,
+  "originalExecuted": false,
+  "cReferenceExecuted": false,
+  "managedAcceptanceStatus": "Unexecuted proposals; implementation follow-up ZOD-145",
+  "ownership": "One private scenario evaluation; shared internal composition and lottery tails; no public cached inputs",
+  "derivedFacts": ["S/A provenance", "D0/D1", "fresh baseline cell", "no intervening scenario RNG in this branch"],
+  "remainingFacts": ["focused opponent", "ordinary sword reach", "ordinary scenario policy", "fresh comparison context", "normal scoring", "canonical source coordinates", "known target active", "ordinary Attack tile policy", "target selection matches baseline", "fresh ability best reset", "fresh empty ranked list", "terminal Attack", "no Defend support", "fresh ordinary selected defaults"]
+}

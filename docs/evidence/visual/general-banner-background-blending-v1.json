@@ -1,0 +1,933 @@
+{
+  "format": "fft.general-banner-background-blending-evidence",
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "managedBase": "56300cc",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "edition": "SCUS-94221",
+  "evidenceKind": "controlled-original-palette-probe-and-actual-managed-cpu-composition",
+  "controlledProbe": true,
+  "unalteredRetailBackgroundCapture": false,
+  "originalFidelityEstablished": false,
+  "timingComparisonPerformed": false,
+  "partialBannerPixelsCompared": false,
+  "generalTriangleRasterizationEstablished": false,
+  "managedMapRenderingCompared": false,
+  "sourceBindings": {
+    "loader": "src/event/require/screen_support.c::conditions_load_banner_image",
+    "quadBuilder": "src/event/require/conditions.c::conditions_show_general",
+    "clut": 16344,
+    "vramPaletteX": 384,
+    "vramPaletteY": 255,
+    "bothBanksAndAllSixQuadsVerified": true,
+    "paletteMatchesPreparedBank": 4,
+    "sourceThumbnailRetainedUnchanged": true
+  },
+  "entryStateSha256": "133b893188d0abe7909725f910496b74bad9cfc85733cb38d76fece03048901a",
+  "intervention": {
+    "vramByteOffset": 523008,
+    "wordCount": 16,
+    "byteCount": 32,
+    "changedCoreBytes": 30,
+    "onlySelectedPaletteChanged": true,
+    "entryCoreSha256": "305e4ebdabb6abf041917076ab774d11568b5205a8216dabaf1984d6a439d8b1",
+    "probeCoreSha256": "d89cd2265ff149ff845b2e84ec9a62402615986d0761eee9e0ac442db519dd7d"
+  },
+  "sourcePlan": {
+    "localPath": "scratch/banner-033-comparison-plan/plan.json",
+    "bytes": 2247,
+    "sha256": "58a12df650a711c3128fc260490510f8a02ad1817cc47411e3c23567b04308a1"
+  },
+  "captureProfile": {
+    "localPath": "scratch/retroarch-reference/profile.json",
+    "bytes": 2287,
+    "sha256": "2179365bc1b2ea9643a835ebfa461ee12940841ba023ee1c05e9ee11002dcadf"
+  },
+  "reports": [
+    {
+      "localPath": "scratch/banner-background-c/report.json",
+      "bytes": 21757,
+      "sha256": "c3c1dfff121499d446b54bddfbb4bdb3e59b667595ade20ab18b2a9b441ba95f"
+    },
+    {
+      "localPath": "scratch/banner-background-d/report.json",
+      "bytes": 21757,
+      "sha256": "a2e23e526bf633c094deb8a6abf72fa03d19622b492b551a921cc359e567f7ad"
+    }
+  ],
+  "taskObservation": {
+    "slot": 3,
+    "savedReturnAddress": 2149358296,
+    "phase": "Holding",
+    "phaseCounter": 9,
+    "logicalTick": 29,
+    "revealCompleted": 20,
+    "holdCompleted": 9,
+    "hideCompleted": 0,
+    "taskRunning": true,
+    "taskId": 56,
+    "draws": [
+      {
+        "PieceIndex": 0,
+        "CropTop": 0,
+        "VisibleRows": 31
+      },
+      {
+        "PieceIndex": 1,
+        "CropTop": 0,
+        "VisibleRows": 31
+      },
+      {
+        "PieceIndex": 2,
+        "CropTop": 0,
+        "VisibleRows": 31
+      },
+      {
+        "PieceIndex": 3,
+        "CropTop": 0,
+        "VisibleRows": 31
+      },
+      {
+        "PieceIndex": 4,
+        "CropTop": 0,
+        "VisibleRows": 31
+      },
+      {
+        "PieceIndex": 5,
+        "CropTop": 0,
+        "VisibleRows": 31
+      }
+    ]
+  },
+  "stateIsolation": {
+    "nonGpuSubsystemsUnchanged": true,
+    "nonGpuSubsystems": {
+      "MAIN": true,
+      "CPU": true,
+      "GTE": true,
+      "DMA": true,
+      "TIMER": true,
+      "SIO": true,
+      "CDC": true,
+      "MDEC": true,
+      "SPU": true,
+      "FIO": true,
+      "FIODEV2": true,
+      "FIODEV3": true,
+      "FIODEV4": true,
+      "FIODEV5": true,
+      "FIODEV6": true,
+      "FIODEV7": true,
+      "FIOMC0": true,
+      "FIOMC0_DT": true,
+      "FIOMC1": true,
+      "FIOMC2": true,
+      "FIOMC3": true,
+      "FIOMC4": true,
+      "FIOMC5": true,
+      "FIOMC6": true,
+      "FIOMC7": true,
+      "FIOTAP0": true,
+      "FIOTAP1": true,
+      "IRQ": true
+    },
+    "gpuRegistersUnchanged": true,
+    "mainRamSha256": "d4f68a333c97c5030ea75124f773a6cf583d802c238b0c520800da8a5fde5ab7",
+    "originalSubsystemSha256": {
+      "MAIN": "c0256cb2134c62b3dabe2748b5c3dbbd250a3f4b9ff9ecd84b703f6f18d27930",
+      "CPU": "3b323ba3a40b82415627d8715e8ba3effe07c84f81e62e31100f953d1ba22ff0",
+      "GTE": "b22082a9f49ce06feea018e6d17e9a3ee92a7b730a0f0d3398c6da7a596e5725",
+      "DMA": "21fbedf8236377d9859eb2aa5b6c012a7c5c6a114c610e9da554b83e0604ec01",
+      "TIMER": "4dbf340b5c5bbbbb9f0860fb36533019ec7b6e660a11ef7a26fed3bcba5e9b3f",
+      "SIO": "600e337e98a5c5be9a34fc6472001f8d97b51fb10e5a9f523c77f25e9e046e38",
+      "CDC": "93ab41e849a948dfeaabfb8e5662980c824dbefa9a1e1d65c86b78e72025c460",
+      "MDEC": "cf5dd6806ca68036477250ec16fb55cfbe9f8fe19678bd29952caf953d109ed9",
+      "GPU": "32c9be0882d75d33cb43ab6661a23d1f88d1a01d25206bcf1e3f0f25f860a46d",
+      "SPU": "f72f665560819670cdf66e880ed4cbb96a79da1ad4732fd1e76ccbd8eab1b841",
+      "FIO": "b5480a584852a4e41ed3550e8b4f44aae9597c538f4c2139f821b9739a9c12f3",
+      "FIODEV2": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+      "FIODEV3": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+      "FIODEV4": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+      "FIODEV5": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+      "FIODEV6": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+      "FIODEV7": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+      "FIOMC0": "9ef30c5cf048289e72d016b48ce0f0b347adc04636947e513280fb49219fde2b",
+      "FIOMC0_DT": "7ad8242ec75df5c2c28073760d4935be9a05603da1130a1b934c662d752794e5",
+      "FIOMC1": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+      "FIOMC2": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+      "FIOMC3": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+      "FIOMC4": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+      "FIOMC5": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+      "FIOMC6": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+      "FIOMC7": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+      "FIOTAP0": "7774df2236760f8f8176cca226eafc266f03e1dcd0f236fc79acc9f3a13f489f",
+      "FIOTAP1": "7774df2236760f8f8176cca226eafc266f03e1dcd0f236fc79acc9f3a13f489f",
+      "IRQ": "5851bb4958100a423edfdfed954cd6a9aae4f3f2b8632794966226d0b77ec97c"
+    },
+    "probeSubsystemSha256": {
+      "MAIN": "c0256cb2134c62b3dabe2748b5c3dbbd250a3f4b9ff9ecd84b703f6f18d27930",
+      "CPU": "3b323ba3a40b82415627d8715e8ba3effe07c84f81e62e31100f953d1ba22ff0",
+      "GTE": "b22082a9f49ce06feea018e6d17e9a3ee92a7b730a0f0d3398c6da7a596e5725",
+      "DMA": "21fbedf8236377d9859eb2aa5b6c012a7c5c6a114c610e9da554b83e0604ec01",
+      "TIMER": "4dbf340b5c5bbbbb9f0860fb36533019ec7b6e660a11ef7a26fed3bcba5e9b3f",
+      "SIO": "600e337e98a5c5be9a34fc6472001f8d97b51fb10e5a9f523c77f25e9e046e38",
+      "CDC": "93ab41e849a948dfeaabfb8e5662980c824dbefa9a1e1d65c86b78e72025c460",
+      "MDEC": "cf5dd6806ca68036477250ec16fb55cfbe9f8fe19678bd29952caf953d109ed9",
+      "GPU": "4998912c5b542e39c4f79c6b83c3dcd07ad7674fe7048ebe256d9fe42c990124",
+      "SPU": "f72f665560819670cdf66e880ed4cbb96a79da1ad4732fd1e76ccbd8eab1b841",
+      "FIO": "b5480a584852a4e41ed3550e8b4f44aae9597c538f4c2139f821b9739a9c12f3",
+      "FIODEV2": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+      "FIODEV3": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+      "FIODEV4": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+      "FIODEV5": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+      "FIODEV6": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+      "FIODEV7": "7165304d48a28606fd55a3fbdc2da3b234e43f85c1b5e300695fc5f4fbcd3020",
+      "FIOMC0": "9ef30c5cf048289e72d016b48ce0f0b347adc04636947e513280fb49219fde2b",
+      "FIOMC0_DT": "7ad8242ec75df5c2c28073760d4935be9a05603da1130a1b934c662d752794e5",
+      "FIOMC1": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+      "FIOMC2": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+      "FIOMC3": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+      "FIOMC4": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+      "FIOMC5": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+      "FIOMC6": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+      "FIOMC7": "f2e6b811c574606c0ec7988cbd9596068b7bcf7bc66e176d35135b6ece9e4b6a",
+      "FIOTAP0": "7774df2236760f8f8176cca226eafc266f03e1dcd0f236fc79acc9f3a13f489f",
+      "FIOTAP1": "7774df2236760f8f8176cca226eafc266f03e1dcd0f236fc79acc9f3a13f489f",
+      "IRQ": "5851bb4958100a423edfdfed954cd6a9aae4f3f2b8632794966226d0b77ec97c"
+    }
+  },
+  "metrics": {
+    "fullCanvas": {
+      "pixels": 61440,
+      "changedPixels": 0,
+      "minOriginalMinusManaged": [
+        0,
+        0,
+        0
+      ],
+      "maxOriginalMinusManaged": [
+        0,
+        0,
+        0
+      ],
+      "maxAbsoluteDelta": [
+        0,
+        0,
+        0
+      ],
+      "sumAbsoluteDelta": [
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        0,
+        0,
+        256,
+        240
+      ],
+      "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+      "exactEquality": true
+    },
+    "touched": {
+      "pixels": 3128,
+      "changedPixels": 0,
+      "minOriginalMinusManaged": [
+        0,
+        0,
+        0
+      ],
+      "maxOriginalMinusManaged": [
+        0,
+        0,
+        0
+      ],
+      "maxAbsoluteDelta": [
+        0,
+        0,
+        0
+      ],
+      "sumAbsoluteDelta": [
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        36,
+        27,
+        203,
+        46
+      ],
+      "sampleMaskSha256": "821f7e1767d9d0afe7abbfd3bc0a23798655cfe80c1f6f045d775aed852c03dc",
+      "exactEquality": true
+    },
+    "backgroundSensitive": {
+      "pixels": 1551,
+      "changedPixels": 0,
+      "minOriginalMinusManaged": [
+        0,
+        0,
+        0
+      ],
+      "maxOriginalMinusManaged": [
+        0,
+        0,
+        0
+      ],
+      "maxAbsoluteDelta": [
+        0,
+        0,
+        0
+      ],
+      "sumAbsoluteDelta": [
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        36,
+        27,
+        203,
+        46
+      ],
+      "sampleMaskSha256": "734993e1748826a7ed75dda27e45f3b1419d792af3a6c40399d9ca94ac853e60",
+      "exactEquality": true
+    },
+    "foregroundInvariant": {
+      "pixels": 1577,
+      "changedPixels": 0,
+      "minOriginalMinusManaged": [
+        0,
+        0,
+        0
+      ],
+      "maxOriginalMinusManaged": [
+        0,
+        0,
+        0
+      ],
+      "maxAbsoluteDelta": [
+        0,
+        0,
+        0
+      ],
+      "sumAbsoluteDelta": [
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        37,
+        28,
+        201,
+        44
+      ],
+      "sampleMaskSha256": "ec18470571e922ff79e5185db536cdf933a39c2f0bcd44576ad9c3ad892b90db",
+      "exactEquality": true
+    },
+    "pythonModel": {
+      "pixels": 61440,
+      "changedPixels": 0,
+      "minOriginalMinusManaged": [
+        0,
+        0,
+        0
+      ],
+      "maxOriginalMinusManaged": [
+        0,
+        0,
+        0
+      ],
+      "maxAbsoluteDelta": [
+        0,
+        0,
+        0
+      ],
+      "sumAbsoluteDelta": [
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        0,
+        0,
+        256,
+        240
+      ],
+      "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+      "exactEquality": true
+    },
+    "probeOutsideBanner": {
+      "pixels": 58312,
+      "changedPixels": 0,
+      "minOriginalMinusManaged": [
+        0,
+        0,
+        0
+      ],
+      "maxOriginalMinusManaged": [
+        0,
+        0,
+        0
+      ],
+      "maxAbsoluteDelta": [
+        0,
+        0,
+        0
+      ],
+      "sumAbsoluteDelta": [
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        0,
+        0,
+        256,
+        240
+      ],
+      "sampleMaskSha256": "5d4856f684e1bb31c676509823108080b67179579b08f3a090edc518c01b5780",
+      "exactEquality": true
+    },
+    "probeChangedBannerPixels": 3128
+  },
+  "failures": [],
+  "drawStateTrace": {
+    "format": "fft.banner-draw-state-trace",
+    "schemaVersion": 1,
+    "sourceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "evidence": "frozen RAM DMA-chain reconstruction; not live command execution",
+    "renderBuffer": 2148517212,
+    "otag": 2147838744,
+    "root": 2147840276,
+    "dmaNodes": 755,
+    "nonemptyPackets": 371,
+    "mainRamSha256": "883458064886d3e5a48027d49a48142cdc8ba70fb62670e079a0559d05dccd64",
+    "banners": [
+      {
+        "pieceIndex": 0,
+        "packetAddress": 313032,
+        "bank": 0,
+        "precedingMode": {
+          "address": 1929696,
+          "command": 3774873606,
+          "ditherEnabled": false
+        }
+      },
+      {
+        "pieceIndex": 1,
+        "packetAddress": 313084,
+        "bank": 0,
+        "precedingMode": {
+          "address": 1929696,
+          "command": 3774873606,
+          "ditherEnabled": false
+        }
+      },
+      {
+        "pieceIndex": 2,
+        "packetAddress": 313136,
+        "bank": 0,
+        "precedingMode": {
+          "address": 1929696,
+          "command": 3774873606,
+          "ditherEnabled": false
+        }
+      },
+      {
+        "pieceIndex": 3,
+        "packetAddress": 313188,
+        "bank": 0,
+        "precedingMode": {
+          "address": 1929696,
+          "command": 3774873606,
+          "ditherEnabled": false
+        }
+      },
+      {
+        "pieceIndex": 4,
+        "packetAddress": 313240,
+        "bank": 0,
+        "precedingMode": {
+          "address": 1929696,
+          "command": 3774873606,
+          "ditherEnabled": false
+        }
+      },
+      {
+        "pieceIndex": 5,
+        "packetAddress": 313292,
+        "bank": 0,
+        "precedingMode": {
+          "address": 1929696,
+          "command": 3774873606,
+          "ditherEnabled": false
+        }
+      }
+    ],
+    "writerSymbol": "g_conditions_burst_draw_modes[1]",
+    "initializer": "src/event/require/entry_dark_screen.c::require_dark_screen_entrypoint",
+    "enqueue": "gfx_append_gpu_primitive_to_secondary_otag; reverse head insertion",
+    "universalBannerDitherDefaultEstablished": false,
+    "originalEvent401Verified": false
+  },
+  "tools": [
+    {
+      "localPath": "tools/verification/compare_banner_background.py",
+      "bytes": 20841,
+      "sha256": "80146522ef8086abd2f5f7bd0cd6ddf1eb17bc5a17a43a899a224df5a7d6b8e7"
+    },
+    {
+      "localPath": "tools/verification/analyze_banner_precision.py",
+      "bytes": 11397,
+      "sha256": "63d262fa2374dec4114ec2a6577c8c6071456696d538cafa30594be7e882052e"
+    },
+    {
+      "localPath": "tools/verification/capture_banner_continuation.py",
+      "bytes": 15599,
+      "sha256": "01219dd92df23f9112cbf1d9a7d10850c7e3a28c4944c68b67b8e9202e44a0ed"
+    },
+    {
+      "localPath": "tools/verification/compare_observed_banner.py",
+      "bytes": 16541,
+      "sha256": "e5de625712f74373c1beace5ea394e3744c9f500a57700a4287c3fd5e88d80fa"
+    },
+    {
+      "localPath": "tools/verification/compare_visual_checkpoints.py",
+      "bytes": 13970,
+      "sha256": "3ee039e9a767c491d2b44b9889b7d3512262d456e51cf34017945b5e84e3210b"
+    },
+    {
+      "localPath": "tools/verification/prepare_retroarch_reference.py",
+      "bytes": 11773,
+      "sha256": "3bf0e6ffb79f0e12afaf8f4ba6da030034d18de828baee9bd5ae8220c9d365b0"
+    },
+    {
+      "localPath": "tools/verification/trace_banner_draw_state.py",
+      "bytes": 5610,
+      "sha256": "f26eecf3ba0988be80d2db30646a6b128d7675b3171126b794635780faa56635"
+    },
+    {
+      "localPath": "tools/verification/verify_retroarch_boot.py",
+      "bytes": 6352,
+      "sha256": "17fb0868304ea1b44481a78f5aedda211b6438460486f26a11e5c69dd9266390"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/FiveBitGeneralBannerPresentation.cs",
+      "bytes": 6721,
+      "sha256": "9ca71f7f8ed122f09f192abb2f13b40696c272d073d072b983935468a2318108"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/GeneralBannerPresentation.cs",
+      "bytes": 5586,
+      "sha256": "f522659e2fbb579e491cc13004d05f21a9b51149c717b75710b712c7cbc0cc92"
+    },
+    {
+      "localPath": "tools/banner-blend-check/Program.cs",
+      "bytes": 3590,
+      "sha256": "55e7634c8a322cd264952262acbf414755c05058d01ee972afd684e7483cfe19"
+    },
+    {
+      "localPath": "tools/banner-blend-check/BannerBlendCheck.csproj",
+      "bytes": 341,
+      "sha256": "d8f66aad44a1ae0598c7b397b866bfecc3e17fdb580229d6648e15aad884a3a2"
+    },
+    {
+      "localPath": "tools/banner-blend-check/packages.lock.json",
+      "bytes": 1727,
+      "sha256": "708db45326f43e9da43e33c94fb8879e2591db7b89bcc2285d618c90bfc9f8b3"
+    }
+  ],
+  "repeatValidation": {
+    "artifacts": [
+      {
+        "artifact": "original/frame.png",
+        "first": {
+          "localPath": "scratch/banner-background-c/original/frame.png",
+          "bytes": 43055,
+          "sha256": "acb90b782245b4c781214639ff1637000d5c8dc880579989a524b5433894e299"
+        },
+        "second": {
+          "localPath": "scratch/banner-background-d/original/frame.png",
+          "bytes": 43055,
+          "sha256": "acb90b782245b4c781214639ff1637000d5c8dc880579989a524b5433894e299"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "probe/frame.png",
+        "first": {
+          "localPath": "scratch/banner-background-c/probe/frame.png",
+          "bytes": 38636,
+          "sha256": "89468272ae8e78180fef2fd8d123b6cbc1300f8446b67f5ac07f8feff4082307"
+        },
+        "second": {
+          "localPath": "scratch/banner-background-d/probe/frame.png",
+          "bytes": 38636,
+          "sha256": "89468272ae8e78180fef2fd8d123b6cbc1300f8446b67f5ac07f8feff4082307"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "original/states/fft-clean-base-game.state.auto",
+        "first": {
+          "localPath": "scratch/banner-background-c/original/states/fft-clean-base-game.state.auto",
+          "bytes": 1499357,
+          "sha256": "040c0863acd8c2c30153ec8f57355fe0d6aff0439ffed09a539b17d48ccd12d6"
+        },
+        "second": {
+          "localPath": "scratch/banner-background-d/original/states/fft-clean-base-game.state.auto",
+          "bytes": 1499357,
+          "sha256": "040c0863acd8c2c30153ec8f57355fe0d6aff0439ffed09a539b17d48ccd12d6"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "probe/states/fft-clean-base-game.state.auto",
+        "first": {
+          "localPath": "scratch/banner-background-c/probe/states/fft-clean-base-game.state.auto",
+          "bytes": 1492776,
+          "sha256": "bf5697d6cc14b0063f1e38607bf3c43c27a426919299dbc335f40bff2e1d9671"
+        },
+        "second": {
+          "localPath": "scratch/banner-background-d/probe/states/fft-clean-base-game.state.auto",
+          "bytes": 1492776,
+          "sha256": "bf5697d6cc14b0063f1e38607bf3c43c27a426919299dbc335f40bff2e1d9671"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "native/composed.rgba",
+        "first": {
+          "localPath": "scratch/banner-background-c/native/composed.rgba",
+          "bytes": 245760,
+          "sha256": "5adeb2766c54c67859f2cacef8d1deae56dcd5c9eb83bb3dcad327b14f7e1f7c"
+        },
+        "second": {
+          "localPath": "scratch/banner-background-d/native/composed.rgba",
+          "bytes": 245760,
+          "sha256": "5adeb2766c54c67859f2cacef8d1deae56dcd5c9eb83bb3dcad327b14f7e1f7c"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "native/check.json",
+        "first": {
+          "localPath": "scratch/banner-background-c/native/check.json",
+          "bytes": 1330,
+          "sha256": "ecbd8d4e69b1a174a866b43520d5c06143b7bd2e55b50a5731c1f3ac8c9c93cc"
+        },
+        "second": {
+          "localPath": "scratch/banner-background-d/native/check.json",
+          "bytes": 1330,
+          "sha256": "ecbd8d4e69b1a174a866b43520d5c06143b7bd2e55b50a5731c1f3ac8c9c93cc"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "probe.state",
+        "first": {
+          "localPath": "scratch/banner-background-c/probe.state",
+          "bytes": 1528901,
+          "sha256": "be56358b89a75f454a155510bebff58ee87ebc6b559e938ce4a9811638e59570"
+        },
+        "second": {
+          "localPath": "scratch/banner-background-d/probe.state",
+          "bytes": 1528901,
+          "sha256": "be56358b89a75f454a155510bebff58ee87ebc6b559e938ce4a9811638e59570"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "background.rgba",
+        "first": {
+          "localPath": "scratch/banner-background-c/background.rgba",
+          "bytes": 245760,
+          "sha256": "d0c560c952f33cea3a76fea5230dbc8264ebe757fb538784b2c14823954b2ff3"
+        },
+        "second": {
+          "localPath": "scratch/banner-background-d/background.rgba",
+          "bytes": 245760,
+          "sha256": "d0c560c952f33cea3a76fea5230dbc8264ebe757fb538784b2c14823954b2ff3"
+        },
+        "byteIdentical": true
+      },
+      {
+        "artifact": "review.html",
+        "first": {
+          "localPath": "scratch/banner-background-c/review.html",
+          "bytes": 158582,
+          "sha256": "b46a6590be4bd38068118268a6698c73d8e553e06b35517eac2757c040a31ed5"
+        },
+        "second": {
+          "localPath": "scratch/banner-background-d/review.html",
+          "bytes": 158582,
+          "sha256": "b46a6590be4bd38068118268a6698c73d8e553e06b35517eac2757c040a31ed5"
+        },
+        "byteIdentical": true
+      }
+    ],
+    "metricsIdentical": true,
+    "stateIsolationIdentical": true,
+    "wholeReportBytesCompared": false
+  },
+  "defaultCheckerRegression": {
+    "cpuGpuReadbackPassed": true,
+    "all16FilesIdentical": true,
+    "files": [
+      {
+        "file": "check.json",
+        "legacy": {
+          "localPath": "scratch/banner-five-bit-a/check.json",
+          "bytes": 20798,
+          "sha256": "0c41cbc9a8749d0d1ce265189f0a4368c41250473d2d3f476d8af176cfc60f27"
+        },
+        "fresh": {
+          "localPath": "scratch/banner-background-checker-regression/check.json",
+          "bytes": 20798,
+          "sha256": "0c41cbc9a8749d0d1ce265189f0a4368c41250473d2d3f476d8af176cfc60f27"
+        },
+        "byteIdentical": true
+      },
+      {
+        "file": "tick-000.png",
+        "legacy": {
+          "localPath": "scratch/banner-five-bit-a/tick-000.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        "fresh": {
+          "localPath": "scratch/banner-background-checker-regression/tick-000.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        "byteIdentical": true
+      },
+      {
+        "file": "tick-001.png",
+        "legacy": {
+          "localPath": "scratch/banner-five-bit-a/tick-001.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        "fresh": {
+          "localPath": "scratch/banner-background-checker-regression/tick-001.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        "byteIdentical": true
+      },
+      {
+        "file": "tick-002.png",
+        "legacy": {
+          "localPath": "scratch/banner-five-bit-a/tick-002.png",
+          "bytes": 2884,
+          "sha256": "e96392a21e1ff850a6c84c6d44b4cd2f5439c8c3c17efdc1f0933741735db3be"
+        },
+        "fresh": {
+          "localPath": "scratch/banner-background-checker-regression/tick-002.png",
+          "bytes": 2884,
+          "sha256": "e96392a21e1ff850a6c84c6d44b4cd2f5439c8c3c17efdc1f0933741735db3be"
+        },
+        "byteIdentical": true
+      },
+      {
+        "file": "tick-005.png",
+        "legacy": {
+          "localPath": "scratch/banner-five-bit-a/tick-005.png",
+          "bytes": 6758,
+          "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+        },
+        "fresh": {
+          "localPath": "scratch/banner-background-checker-regression/tick-005.png",
+          "bytes": 6758,
+          "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+        },
+        "byteIdentical": true
+      },
+      {
+        "file": "tick-009.png",
+        "legacy": {
+          "localPath": "scratch/banner-five-bit-a/tick-009.png",
+          "bytes": 6758,
+          "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+        },
+        "fresh": {
+          "localPath": "scratch/banner-background-checker-regression/tick-009.png",
+          "bytes": 6758,
+          "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+        },
+        "byteIdentical": true
+      },
+      {
+        "file": "tick-010.png",
+        "legacy": {
+          "localPath": "scratch/banner-five-bit-a/tick-010.png",
+          "bytes": 6758,
+          "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+        },
+        "fresh": {
+          "localPath": "scratch/banner-background-checker-regression/tick-010.png",
+          "bytes": 6758,
+          "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+        },
+        "byteIdentical": true
+      },
+      {
+        "file": "tick-011.png",
+        "legacy": {
+          "localPath": "scratch/banner-five-bit-a/tick-011.png",
+          "bytes": 6758,
+          "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+        },
+        "fresh": {
+          "localPath": "scratch/banner-background-checker-regression/tick-011.png",
+          "bytes": 6758,
+          "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+        },
+        "byteIdentical": true
+      },
+      {
+        "file": "tick-014.png",
+        "legacy": {
+          "localPath": "scratch/banner-five-bit-a/tick-014.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        "fresh": {
+          "localPath": "scratch/banner-background-checker-regression/tick-014.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        "byteIdentical": true
+      },
+      {
+        "file": "tick-020.png",
+        "legacy": {
+          "localPath": "scratch/banner-five-bit-a/tick-020.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        "fresh": {
+          "localPath": "scratch/banner-background-checker-regression/tick-020.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        "byteIdentical": true
+      },
+      {
+        "file": "tick-080.png",
+        "legacy": {
+          "localPath": "scratch/banner-five-bit-a/tick-080.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        "fresh": {
+          "localPath": "scratch/banner-background-checker-regression/tick-080.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        "byteIdentical": true
+      },
+      {
+        "file": "tick-081.png",
+        "legacy": {
+          "localPath": "scratch/banner-five-bit-a/tick-081.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        "fresh": {
+          "localPath": "scratch/banner-background-checker-regression/tick-081.png",
+          "bytes": 9458,
+          "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+        },
+        "byteIdentical": true
+      },
+      {
+        "file": "tick-082.png",
+        "legacy": {
+          "localPath": "scratch/banner-five-bit-a/tick-082.png",
+          "bytes": 8929,
+          "sha256": "4422b8644d3ef9e09ab62280dd3ed1bb9a8b0e89caa733c6e6cd2dc2646968ac"
+        },
+        "fresh": {
+          "localPath": "scratch/banner-background-checker-regression/tick-082.png",
+          "bytes": 8929,
+          "sha256": "4422b8644d3ef9e09ab62280dd3ed1bb9a8b0e89caa733c6e6cd2dc2646968ac"
+        },
+        "byteIdentical": true
+      },
+      {
+        "file": "tick-085.png",
+        "legacy": {
+          "localPath": "scratch/banner-five-bit-a/tick-085.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        "fresh": {
+          "localPath": "scratch/banner-background-checker-regression/tick-085.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        "byteIdentical": true
+      },
+      {
+        "file": "tick-090.png",
+        "legacy": {
+          "localPath": "scratch/banner-five-bit-a/tick-090.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        "fresh": {
+          "localPath": "scratch/banner-background-checker-regression/tick-090.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        "byteIdentical": true
+      },
+      {
+        "file": "tick-091.png",
+        "legacy": {
+          "localPath": "scratch/banner-five-bit-a/tick-091.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        "fresh": {
+          "localPath": "scratch/banner-background-checker-regression/tick-091.png",
+          "bytes": 2763,
+          "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+        },
+        "byteIdentical": true
+      }
+    ]
+  },
+  "manualReview": {
+    "agent": "Original and actual C# views visually identical; controlled middle view removes both lines with battle intact.",
+    "owner": "accepted",
+    "ownerReviewDate": "2026-10-24",
+    "ownerStatement": "The original and C# views look identical to me.",
+    "ownerReviewScope": "Visual agreement of the displayed full-visible original and C# composition; remaining timing, scene rendering and event-reachability gaps stay open.",
+    "reviewArtifact": {
+      "localPath": "scratch/banner-background-c/review.html",
+      "bytes": 158582,
+      "sha256": "b46a6590be4bd38068118268a6698c73d8e553e06b35517eac2757c040a31ed5"
+    }
+  },
+  "validation": {
+    "managedPassed": 1450,
+    "newClientCases": 14,
+    "pythonPassed": 104,
+    "newPythonCases": 12,
+    "releaseBuildWarnings": 0,
+    "mainSolutionLockedRestorePassed": true,
+    "developerHostLockedRestorePassed": true,
+    "developerHostBuildWarnings": 0
+  },
+  "limits": [
+    "One full-visible dither-off axis-aligned six-piece banner and one isolated software-emulator frame.",
+    "Controlled background is from an intentionally altered state copy; 58,312 pixels are inherited, not managed scene rendering.",
+    "No partial reveal/hide pixel timing, loading/input latency, physical Circle replay or original event-401 reachability.",
+    "Actual background composition uses the CPU host; default checker retains its separate GPU readback check.",
+    "No original media, state, RAM, decoded artwork or pixel arrays are committed."
+  ]
+}

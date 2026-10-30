@@ -1,0 +1,462 @@
+{
+  "format": "fft.editor-workspaces-validation",
+  "schemaVersion": 1,
+  "ticket": "ZOD-047",
+  "validatedOn": "2026-10-26",
+  "status": "owner-requested UI revision implemented; new owner visual/manual approval pending",
+  "managedBase": "5c9ff93704d037c52651132e754ad183f6ea116e",
+  "guide": "docs/development/editor-workspaces.md",
+  "reference": {
+    "root": "C:/repositories/fft_decomp",
+    "revision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "inspection": "Historical first-implementation observation; not re-inspected for this UI revision.",
+    "inspectedForThisRevision": false,
+    "readOnly": true,
+    "newOriginalRuleOrRecordFieldTranslated": false,
+    "historicalContexts": [
+      "docs/behavior/original-metadata-import.md",
+      "docs/behavior/base-job-battle-setup.md"
+    ]
+  },
+  "sourceIdentities": [
+    {
+      "localPath": "Fft.sln",
+      "bytes": 16878,
+      "sha256": "5c1d85f3d64ae61793dcdd160eab7013f92bf1992d2ff7288daff8811c529104"
+    },
+    {
+      "localPath": "src/Fft.Editor/Fft.Editor.csproj",
+      "bytes": 455,
+      "sha256": "032c5b357f6591dae14c005e58b050c30e7b6c9659b008eff80d99e6714c1fc2"
+    },
+    {
+      "localPath": "src/Fft.Editor/packages.lock.json",
+      "bytes": 438,
+      "sha256": "4b82e769e64f31ee35c64d4dc1fd25f4b4cfb5f505cae04c3c61c40f231279e5"
+    },
+    {
+      "localPath": "src/Fft.Editor/Program.cs",
+      "bytes": 1625,
+      "sha256": "9100b69bfb355a756cd7ad8c37bbb3ef6a3b8dd1d6f65550220f74cb16062788"
+    },
+    {
+      "localPath": "src/Fft.Editor/JobEditorForm.cs",
+      "bytes": 36274,
+      "sha256": "749cacfa1836885e71b4e9a5dda2d65eac2139ca8cba8ff9f5f3bc4d50784868"
+    },
+    {
+      "localPath": "src/Fft.Editor/MovementPreviewPanel.cs",
+      "bytes": 1710,
+      "sha256": "bd97f565bba8793d567f3853d49d3858f60d47c1c69195196b5a833c35bfc983"
+    },
+    {
+      "localPath": "src/Fft.Editor/EditorNativeCheck.cs",
+      "bytes": 7766,
+      "sha256": "ba3e22af36c9d00c129ac7c995518053545d96d6f5a06860bf7da3162c672e92"
+    },
+    {
+      "localPath": "src/Zodiac.Content/Authoring/JobEditorDocument.cs",
+      "bytes": 11731,
+      "sha256": "56c86511abfac3735e2cd2ccfcaa284cb8b5f494e5c29bcf0439c4fdaa201129"
+    },
+    {
+      "localPath": "tests/Zodiac.Content.Tests/JobEditorDocumentTests.cs",
+      "bytes": 15964,
+      "sha256": "c903b5273f33f1350b78b8d752298f5b6b72431f221dd5f13bd3748b9a8173af"
+    },
+    {
+      "localPath": "tools/verification/verify_job_editor.py",
+      "bytes": 8774,
+      "sha256": "090708f75de7b50be29991869063110ccaf44a953af2e69028cc7713844a8639"
+    },
+    {
+      "localPath": "tools/verification/test_job_editor.py",
+      "bytes": 3290,
+      "sha256": "6caeb39d7711c09f94e4c560b103989bbda21e2d8a6a5b6efef03bbd92379020"
+    }
+  ],
+  "sourceInput": {
+    "localPath": "scratch/imported-squire-check-a/content.package.json",
+    "bytes": 5150,
+    "sha256": "62d7a4c41e163f6f5d7514f3ef900cc51ac9724afd26255ac665f2f8d7438435"
+  },
+  "managed": {
+    "passed": 2349,
+    "newContentTests": 3,
+    "totalEditorContentTests": 32,
+    "restore": "locked-mode; isolated artifacts",
+    "configuration": "Release",
+    "warnings": 0,
+    "errors": 0,
+    "assemblies": [
+      {
+        "assembly": "Zodiac.Content.Tests.dll",
+        "passed": 676,
+        "failed": 0,
+        "trx": {
+          "localPath": "scratch/editor-workspaces-047-tests/Jonathan_DESKTOP-EXCALIB_2026-10-26_07_56_34_net10.0.trx",
+          "bytes": 1019990,
+          "sha256": "187faf62f0f2f01aa21191d0438aef13fe7bd836c0d1ce96c723023e79364f35"
+        }
+      },
+      {
+        "assembly": "Tessera.Engine.Tests.dll",
+        "passed": 24,
+        "failed": 0,
+        "trx": {
+          "localPath": "scratch/editor-workspaces-047-tests/Jonathan_DESKTOP-EXCALIB_2026-10-26_07_56_35_net10.0.trx",
+          "bytes": 38102,
+          "sha256": "b6f315356dfd2baf310b8bdf1892b2c13eda92a531f415eabdde54c7c8c575ef"
+        }
+      },
+      {
+        "assembly": "Zodiac.AssetTool.Tests.dll",
+        "passed": 202,
+        "failed": 0,
+        "trx": {
+          "localPath": "scratch/editor-workspaces-047-tests/Jonathan_DESKTOP-EXCALIB_2026-10-26_07_56_35_net10.0[1].trx",
+          "bytes": 309571,
+          "sha256": "b315b58712e25dc2c94236c9ac15d96416da7f054dfa9e8d7f935b95f3491a9a"
+        }
+      },
+      {
+        "assembly": "Zodiac.Framework.Tests.dll",
+        "passed": 830,
+        "failed": 0,
+        "trx": {
+          "localPath": "scratch/editor-workspaces-047-tests/Jonathan_DESKTOP-EXCALIB_2026-10-26_07_56_35_net10.0[2].trx",
+          "bytes": 1295961,
+          "sha256": "edea09d9a0c9a2cee3f2251c6d16a8b8c92e817cd64a26e12a043768052cd62a"
+        }
+      },
+      {
+        "assembly": "Zodiac.AssetTool.Cli.Tests.dll",
+        "passed": 211,
+        "failed": 0,
+        "trx": {
+          "localPath": "scratch/editor-workspaces-047-tests/Jonathan_DESKTOP-EXCALIB_2026-10-26_07_56_36_net10.0.trx",
+          "bytes": 335240,
+          "sha256": "e1126eacfafb61b8bedde529a074ffa3d32bc018569cb981f04a0a0de61d0297"
+        }
+      },
+      {
+        "assembly": "Fft.Client.Tests.dll",
+        "passed": 406,
+        "failed": 0,
+        "trx": {
+          "localPath": "scratch/editor-workspaces-047-tests/Jonathan_DESKTOP-EXCALIB_2026-10-26_07_56_36_net10.0[1].trx",
+          "bytes": 619775,
+          "sha256": "24208fe5d1f773dc7bf2527e6ad5657309707b5ddae1b788542f49c8f7a1b67e"
+        }
+      }
+    ],
+    "buildRoot": "scratch/editor-workspaces-047-artifacts",
+    "originalRunningEditorTerminated": false
+  },
+  "python": {
+    "passed": 293,
+    "newTests": 2,
+    "runtime": "bundled codex-primary-runtime Python with existing image dependencies"
+  },
+  "logs": [
+    {
+      "localPath": "scratch/editor-workspaces-047-restore.log",
+      "bytes": 1523,
+      "sha256": "ed4e0beec88d8753820f36ba9102fdd26821256e666159d2a27a01f5d7121d29"
+    },
+    {
+      "localPath": "scratch/editor-workspaces-047-final-build.log",
+      "bytes": 2138,
+      "sha256": "71af0c0eaaeaa03b83c084a115cb69cba05a3c82ad4501d5946a30a0ca0f6235"
+    },
+    {
+      "localPath": "scratch/editor-workspaces-047-tests.log",
+      "bytes": 3100,
+      "sha256": "2a062b204e5b28360f6307028e5ef13fcde9561288e0c8753ba8f977d9f17af0"
+    },
+    {
+      "localPath": "scratch/editor-workspaces-047-python.log",
+      "bytes": 1283,
+      "sha256": "4df941d4512e2f05139c3e36edd912999bc259c51b81a93ed11828c76f3e93c0"
+    }
+  ],
+  "nativePlan": {
+    "recordedBeforeExecution": "docs/development/editor-workspaces.md",
+    "originalBudget": 2,
+    "revisedBeforeAdditionalRuns": true,
+    "revisedBudget": 3,
+    "executedProcesses": 3,
+    "failedNativeProcesses": 0,
+    "maximumSecondsPerProcess": 30,
+    "discoveryRun": "scratch/editor-workspaces-047-a",
+    "discoveryLayoutIsFinal": false,
+    "revisionReason": "Successful discovery exposed overly wide numeric fields and diagnostic-style flags; fix numeric width, search labels and named read-only flags.",
+    "finalRuns": [
+      "scratch/editor-workspaces-047-b",
+      "scratch/editor-workspaces-047-c"
+    ],
+    "capturesPerFinalRun": 16,
+    "behaviorChecksPerFinalRun": 22,
+    "captureKind": "native DrawToBitmap; no desktop scanout, GPU or physical-input claim",
+    "artifacts": [
+      {
+        "localPath": "scratch/editor-workspaces-047-b/abilities.png",
+        "bytes": 40009,
+        "sha256": "cef06e8f9dd68f2865c162b5289f6b664196f8d865de29130778c638ed03a8e9"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-b/ability-error.png",
+        "bytes": 39346,
+        "sha256": "607adf9a0aff5cd159ab13aceee8dadeaad30f4a7e73aca6ab2e11961c1131f1"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-b/authored-job.json",
+        "bytes": 5265,
+        "sha256": "24117078300c187c2bacc111c346d5bc58b24be36b31814620d0c14f7cdb8b14"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-b/copy.png",
+        "bytes": 46920,
+        "sha256": "56b47bd101ef2e728326c0c7cd4ea1e902e21a2ae244c5cbefeeedf4126bfa57"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-b/create-copy.png",
+        "bytes": 8829,
+        "sha256": "4dd3eb04dc35ac05642bd6e807309a7b936f993b905b963c8ebb6d1ff372b6f1"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-b/export-error.png",
+        "bytes": 46246,
+        "sha256": "eaa4e657c7482f4190c1e51ad22b37bd81314f58ee1cd59d5e833470b6904277"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-b/invalid.png",
+        "bytes": 46696,
+        "sha256": "7659e6f2cba00a94640bedd5deee77c31fc68df5d220955934918e7badd16337"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-b/package-details.png",
+        "bytes": 24920,
+        "sha256": "eb7399b3134867784356d9b60f53e63f96232f6a86cce6a7c65cf365317b9fda"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-b/preview.png",
+        "bytes": 44313,
+        "sha256": "54e850d594970d79b3e2aeadf9c2f061b36388c10c33fde059c48a863e0d99e0"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-b/reference.png",
+        "bytes": 39333,
+        "sha256": "75a7d67af473f9df935fc5fc9592f8c6d9c68dcb3aa1a1806c24df8679970899"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-b/reopened.png",
+        "bytes": 46306,
+        "sha256": "f7c9c7ef246fbfad1004ff0d52afa9fb46be94655afbd229a8adc084386bd2a7"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-b/resized-abilities.png",
+        "bytes": 35692,
+        "sha256": "c02ecf46d3498b95f646a641de4dad52c5e8bb9b46c5f85e526bff708891ce44"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-b/resized.png",
+        "bytes": 38246,
+        "sha256": "01b94769a4cc17eb9929ab45537e40feb4841ac2b75e96adb7c873ade14ff9db"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-b/source-abilities.png",
+        "bytes": 38920,
+        "sha256": "d55347768744cbc681d041f123bc60db516bc152ab46ab938da6bbfb96edaca9"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-b/source.png",
+        "bytes": 46961,
+        "sha256": "8fbf7b70ca56745dc021ce59f281614042c3facebeb91017c73458ef84a5b3ad"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-b/trace.json",
+        "bytes": 2545,
+        "sha256": "41295c44d137d6950193d7736283f9800a1c9c9aa1cac0e7e75c3bcb36d8cf1d"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-b/unsaved-cancel.png",
+        "bytes": 6524,
+        "sha256": "77e6699c0dbce650c04c4fb41b00026c60ad57137a322afb0866279df0a8b088"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-b/unsaved-discard.png",
+        "bytes": 6524,
+        "sha256": "77e6699c0dbce650c04c4fb41b00026c60ad57137a322afb0866279df0a8b088"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-c/abilities.png",
+        "bytes": 40009,
+        "sha256": "cef06e8f9dd68f2865c162b5289f6b664196f8d865de29130778c638ed03a8e9"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-c/ability-error.png",
+        "bytes": 39346,
+        "sha256": "607adf9a0aff5cd159ab13aceee8dadeaad30f4a7e73aca6ab2e11961c1131f1"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-c/authored-job.json",
+        "bytes": 5265,
+        "sha256": "24117078300c187c2bacc111c346d5bc58b24be36b31814620d0c14f7cdb8b14"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-c/copy.png",
+        "bytes": 46920,
+        "sha256": "56b47bd101ef2e728326c0c7cd4ea1e902e21a2ae244c5cbefeeedf4126bfa57"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-c/create-copy.png",
+        "bytes": 8829,
+        "sha256": "4dd3eb04dc35ac05642bd6e807309a7b936f993b905b963c8ebb6d1ff372b6f1"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-c/export-error.png",
+        "bytes": 46246,
+        "sha256": "eaa4e657c7482f4190c1e51ad22b37bd81314f58ee1cd59d5e833470b6904277"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-c/invalid.png",
+        "bytes": 46696,
+        "sha256": "7659e6f2cba00a94640bedd5deee77c31fc68df5d220955934918e7badd16337"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-c/package-details.png",
+        "bytes": 24920,
+        "sha256": "eb7399b3134867784356d9b60f53e63f96232f6a86cce6a7c65cf365317b9fda"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-c/preview.png",
+        "bytes": 44313,
+        "sha256": "54e850d594970d79b3e2aeadf9c2f061b36388c10c33fde059c48a863e0d99e0"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-c/reference.png",
+        "bytes": 39333,
+        "sha256": "75a7d67af473f9df935fc5fc9592f8c6d9c68dcb3aa1a1806c24df8679970899"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-c/reopened.png",
+        "bytes": 46306,
+        "sha256": "f7c9c7ef246fbfad1004ff0d52afa9fb46be94655afbd229a8adc084386bd2a7"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-c/resized-abilities.png",
+        "bytes": 35692,
+        "sha256": "c02ecf46d3498b95f646a641de4dad52c5e8bb9b46c5f85e526bff708891ce44"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-c/resized.png",
+        "bytes": 38246,
+        "sha256": "01b94769a4cc17eb9929ab45537e40feb4841ac2b75e96adb7c873ade14ff9db"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-c/source-abilities.png",
+        "bytes": 38920,
+        "sha256": "d55347768744cbc681d041f123bc60db516bc152ab46ab938da6bbfb96edaca9"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-c/source.png",
+        "bytes": 46961,
+        "sha256": "8fbf7b70ca56745dc021ce59f281614042c3facebeb91017c73458ef84a5b3ad"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-c/trace.json",
+        "bytes": 2545,
+        "sha256": "41295c44d137d6950193d7736283f9800a1c9c9aa1cac0e7e75c3bcb36d8cf1d"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-c/unsaved-cancel.png",
+        "bytes": 6524,
+        "sha256": "77e6699c0dbce650c04c4fb41b00026c60ad57137a322afb0866279df0a8b088"
+      },
+      {
+        "localPath": "scratch/editor-workspaces-047-c/unsaved-discard.png",
+        "bytes": 6524,
+        "sha256": "77e6699c0dbce650c04c4fb41b00026c60ad57137a322afb0866279df0a8b088"
+      }
+    ]
+  },
+  "audit": {
+    "localPath": "scratch/editor-workspaces-047-audit.json",
+    "bytes": 514,
+    "sha256": "9a8d39b9207d4350eec4e26133498f5cd21b2d59e2c3f01a1eaca99c52040f5e"
+  },
+  "gallery": {
+    "localPath": "scratch/editor-workspaces-047-review/review.html",
+    "bytes": 743189,
+    "sha256": "addb82ac45c3610be4d05bb2c38d73a35a85a8018ebcbf37dee5f0e8dc3c0c88"
+  },
+  "results": {
+    "format": "fft.job-editor-audit",
+    "schemaVersion": 1,
+    "passed": true,
+    "sourceSha256": "62d7a4c41e163f6f5d7514f3ef900cc51ac9724afd26255ac665f2f8d7438435",
+    "exactRepeatedFiles": 18,
+    "nativeCapturesPerRun": 16,
+    "separateWorkspaces": true,
+    "sourceMetadataPreserved": true,
+    "orderedReferenceClosurePreserved": true,
+    "savedMove": 2,
+    "savedJump": 4,
+    "savedFirstAbilityJp": 123,
+    "unsavedDraftMove": 1,
+    "physicalInputVerified": false,
+    "originalGameplayEquivalence": false
+  },
+  "review": {
+    "agentInspected": [
+      "copy.png",
+      "abilities.png",
+      "invalid.png",
+      "ability-error.png",
+      "resized.png",
+      "resized-abilities.png"
+    ],
+    "firstUiOwnerApproved": false,
+    "ownerVisualApproval": false,
+    "ownerInteractiveApproval": false,
+    "pending": [
+      "New workspace gallery approval",
+      "Physical keyboard/mouse/text/tab/resize workflow",
+      "Native dialogs/cancel/export/reopen/close review"
+    ]
+  },
+  "limits": [
+    "One copied job/dependency package, with separate Job and Ability workspaces. Ability-only package creation remains unsupported.",
+    "Move/Jump/JP remain the only editable fields; flags/raw bytes are preserved read-only; numeric fallback names derive from stable IDs.",
+    "No new original rule/record, schema, package lock, Engine/Framework/game-client production change.",
+    "Original editor remains open; normal build DLLs were locked, so validated binaries are in a separate artifacts directory.",
+    "Owner visual/manual, remote CI/Linux, clean-machine/DPI/accessibility remain open; deferred work stays deferred."
+  ],
+  "ownerFeedback": {
+    "firstUiApproved": false,
+    "request": "Separate job editing from ability editing; consider FFTPatcher as a workflow reference."
+  },
+  "communityReference": {
+    "repository": "Glain/FFTPatcher",
+    "revision": "26d45cc8c019194625f078398e0c6ef6b09c1a78",
+    "license": "GPLv3; reviewed designer headers GPLv3-or-later",
+    "copiedCodeOrAssets": false,
+    "scope": "Category tabs, record list and inspector workflow study only; no patch/ISO interoperability.",
+    "files": [
+      "readme.txt",
+      "Editors/FFTPatchEditor.Designer.cs",
+      "Editors/Job/AllJobsEditor.Designer.cs",
+      "COPYING"
+    ]
+  },
+  "retainedFirstImplementation": {
+    "metadata": {
+      "localPath": "docs/evidence/authoring/job-ability-editor-v1.json",
+      "bytes": 13874,
+      "sha256": "90c0115f64861c6bf8b3a48fb75107caa059dff7b15e8ffd1eb6fcec6453932d"
+    },
+    "retainedNativeFiles": 22,
+    "allHistoricalArtifactsMatch": true
+  }
+}

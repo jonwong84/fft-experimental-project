@@ -1,0 +1,26 @@
+{
+  "schemaVersion":1,"ticket":"ZOD-192","referenceRevision":"11464943bbdbd2a0af022d90cb7f10455cf911df","productionImplemented":false,
+  "scope":"Isolated supplied ranks and evaluation draw costs; not a managed scan, runtime cost oracle or original/C execution.",
+  "vectors":[
+    {"id":"earlier-stronger-rank-survives-second-entry","input":{"seed":1,"prefixDraws":2,"baseline":{"decided":0,"priority":0,"hit":100},"entries":[
+      {"kind":"Attack","draws":5,"best":{"payload":"attack","decided":0,"priority":26,"hit":100,"proximity":7}},
+      {"kind":"ThrowStone","draws":5,"best":{"payload":"stone","decided":0,"priority":13,"hit":100,"proximity":6}}]},
+      "expected":{"rngAfterStages":[[2524885223,2],[3655513600,7],[836760821,12]],"ranked":["attack","stone"],"insertionIndices":[0,1],"rankDraws":0}},
+    {"id":"equal-rank-retains-earlier-action-without-deduplication","input":{"seed":1,"prefixDraws":2,"baseline":{"decided":0,"priority":0,"hit":100},"entries":[
+      {"kind":"Attack","draws":5,"best":{"payload":"attack","decided":0,"priority":26,"hit":100,"proximity":7}},
+      {"kind":"ThrowStone","draws":5,"best":{"payload":"stone","decided":0,"priority":26,"hit":100,"proximity":7}}]},
+      "expected":{"rngAfterStages":[[2524885223,2],[3655513600,7],[836760821,12]],"ranked":["attack","stone"],"insertionIndices":[0,1],"rankDraws":0}},
+    {"id":"later-better-accuracy-inserts-before-earlier-action","input":{"seed":1,"prefixDraws":2,"baseline":{"decided":0,"priority":0,"hit":100},"entries":[
+      {"kind":"Attack","draws":5,"best":{"payload":"attack","decided":0,"priority":26,"hit":25,"proximity":6}},
+      {"kind":"ThrowStone","draws":5,"best":{"payload":"stone","decided":0,"priority":26,"hit":100,"proximity":7}}]},
+      "expected":{"rngAfterStages":[[2524885223,2],[3655513600,7],[836760821,12]],"ranked":["stone","attack"],"insertionIndices":[0,0],"rankDraws":0}},
+    {"id":"NotValuable-keeps-draws-but-does-not-reinsert-prior-best","input":{"seed":1,"prefixDraws":2,"baseline":{"decided":0,"priority":0,"hit":100},"entries":[
+      {"kind":"Attack","draws":5,"best":{"payload":"attack","decided":0,"priority":26,"hit":100,"proximity":7}},
+      {"kind":"ThrowStone","draws":4,"best":null}]},
+      "expected":{"rngAfterStages":[[2524885223,2],[3655513600,7],[180171308,11]],"ranked":["attack"],"insertionIndices":[0,null],"rankDraws":0}},
+    {"id":"equal-baseline-is-not-admitted","input":{"seed":1,"prefixDraws":2,"baseline":{"decided":0,"priority":31,"hit":100},"entries":[
+      {"kind":"Attack","draws":5,"best":{"payload":"attack","decided":0,"priority":31,"hit":100,"proximity":7}},
+      {"kind":"ThrowStone","draws":5,"best":{"payload":"stone","decided":0,"priority":31,"hit":25,"proximity":6}}]},
+      "expected":{"rngAfterStages":[[2524885223,2],[3655513600,7],[836760821,12]],"ranked":[],"insertionIndices":[null,null],"rankDraws":0}}
+  ]
+}

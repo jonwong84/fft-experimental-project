@@ -1,0 +1,759 @@
+{
+  "format": "fft.behavior-fixture",
+  "schemaVersion": 2,
+  "fixtureId": "fixture:combat/turn-snapshot-v2",
+  "execution": "scenario",
+  "purpose": "Preserve explicit combat inputs while replaying existing movement and turns; no attack execution.",
+  "target": {
+    "game": "FFT",
+    "edition": "SCUS-94221",
+    "region": "North America",
+    "platform": "PS1",
+    "policyId": "fft:combat/bounded-sword-contract"
+  },
+  "reference": {
+    "decompCommit": "611b504d25d4a9b03fab8023d7dbea75fe381d5d",
+    "observedOn": "2026-10-22",
+    "usedForExpectations": true
+  },
+  "evidence": [
+    {
+      "id": "managed-contract",
+      "kind": "synthetic-expectation",
+      "confidence": "specified",
+      "claim": "Specified identities, snapshot fields, typed results and ordered managed events.",
+      "sources": [
+        {
+          "path": "src/Zodiac.Framework/BattleSimulator.cs",
+          "symbol": "BattleSimulator.Apply",
+          "revision": "7e92284b7fd929a718d157e16a520edd9c4caba8"
+        }
+      ],
+      "limitations": [
+        "Synthetic setup; no original-game execution."
+      ]
+    },
+    {
+      "id": "turn-trace",
+      "kind": "source-derived",
+      "confidence": "source-traced",
+      "claim": "CT refund20 and ready-peer selection before another tick; one upkeep draw.",
+      "sources": [
+        {
+          "path": "src/battle/turn_order.c",
+          "symbol": "turn_run_clock",
+          "revision": "611b504d25d4a9b03fab8023d7dbea75fe381d5d"
+        }
+      ],
+      "limitations": [
+        "Static source expectations, not an executing turn oracle."
+      ]
+    }
+  ],
+  "preconditions": [
+    "Healthy unrestricted units, supplied effective stats and dry flat map."
+  ],
+  "exclusions": [
+    "Combat effects, modifiers, death scheduling and original UI flow."
+  ],
+  "unknowns": [
+    "Complete original-game stream integration."
+  ],
+  "scenario": {
+    "weaponIds": [
+      "sample:item/plain-sword"
+    ],
+    "initialState": {
+      "map": {
+        "id": "sample:map/arena",
+        "width": 3,
+        "depth": 3,
+        "layerCount": 1,
+        "tiles": [
+          {
+            "movementFlags": [],
+            "ceilingDepth": 0,
+            "surface": "sample:terrain/ground",
+            "halfHeight": 0,
+            "waterDepth": 0,
+            "slope": {
+              "west": 0,
+              "east": 0,
+              "south": 0,
+              "north": 0
+            },
+            "height": 10
+          },
+          {
+            "movementFlags": [],
+            "ceilingDepth": 0,
+            "surface": "sample:terrain/ground",
+            "halfHeight": 0,
+            "waterDepth": 0,
+            "slope": {
+              "west": 0,
+              "east": 0,
+              "south": 0,
+              "north": 0
+            },
+            "height": 10
+          },
+          {
+            "movementFlags": [],
+            "ceilingDepth": 0,
+            "surface": "sample:terrain/ground",
+            "halfHeight": 0,
+            "waterDepth": 0,
+            "slope": {
+              "west": 0,
+              "east": 0,
+              "south": 0,
+              "north": 0
+            },
+            "height": 10
+          },
+          {
+            "movementFlags": [],
+            "ceilingDepth": 0,
+            "surface": "sample:terrain/ground",
+            "halfHeight": 0,
+            "waterDepth": 0,
+            "slope": {
+              "west": 0,
+              "east": 0,
+              "south": 0,
+              "north": 0
+            },
+            "height": 10
+          },
+          {
+            "movementFlags": [],
+            "ceilingDepth": 0,
+            "surface": "sample:terrain/ground",
+            "halfHeight": 0,
+            "waterDepth": 0,
+            "slope": {
+              "west": 0,
+              "east": 0,
+              "south": 0,
+              "north": 0
+            },
+            "height": 10
+          },
+          {
+            "movementFlags": [],
+            "ceilingDepth": 0,
+            "surface": "sample:terrain/ground",
+            "halfHeight": 0,
+            "waterDepth": 0,
+            "slope": {
+              "west": 0,
+              "east": 0,
+              "south": 0,
+              "north": 0
+            },
+            "height": 10
+          },
+          {
+            "movementFlags": [],
+            "ceilingDepth": 0,
+            "surface": "sample:terrain/ground",
+            "halfHeight": 0,
+            "waterDepth": 0,
+            "slope": {
+              "west": 0,
+              "east": 0,
+              "south": 0,
+              "north": 0
+            },
+            "height": 10
+          },
+          {
+            "movementFlags": [],
+            "ceilingDepth": 0,
+            "surface": "sample:terrain/ground",
+            "halfHeight": 0,
+            "waterDepth": 0,
+            "slope": {
+              "west": 0,
+              "east": 0,
+              "south": 0,
+              "north": 0
+            },
+            "height": 10
+          },
+          {
+            "movementFlags": [],
+            "ceilingDepth": 0,
+            "surface": "sample:terrain/ground",
+            "halfHeight": 0,
+            "waterDepth": 0,
+            "slope": {
+              "west": 0,
+              "east": 0,
+              "south": 0,
+              "north": 0
+            },
+            "height": 10
+          }
+        ]
+      },
+      "units": [
+        {
+          "id": "sample:unit/attacker",
+          "movementProfile": {
+            "move": 1,
+            "mode": "Normal",
+            "terrainCosts": [],
+            "traits": [],
+            "bodyHeight": 6,
+            "jump": 2
+          },
+          "position": {
+            "x": 1,
+            "y": 1,
+            "layer": 0
+          },
+          "hasMoved": false
+        },
+        {
+          "id": "sample:unit/defender",
+          "movementProfile": {
+            "move": 1,
+            "mode": "Normal",
+            "terrainCosts": [],
+            "traits": [],
+            "bodyHeight": 6,
+            "jump": 2
+          },
+          "position": {
+            "x": 2,
+            "y": 1,
+            "layer": 0
+          },
+          "hasMoved": false
+        }
+      ],
+      "rngState": {
+        "algorithmId": "fft.ps1:rng/bios-v3-us",
+        "value": 1,
+        "drawCount": 0
+      },
+      "turns": {
+        "ticks": 0,
+        "phase": "UnitTurn",
+        "units": [
+          {
+            "id": "sample:unit/attacker",
+            "speed": 10,
+            "tieKey": 0,
+            "hasTurn": true,
+            "movementTaken": false,
+            "actionTaken": false,
+            "ct": 0
+          },
+          {
+            "id": "sample:unit/defender",
+            "speed": 10,
+            "tieKey": 1,
+            "hasTurn": false,
+            "movementTaken": false,
+            "actionTaken": false,
+            "ct": 100
+          }
+        ]
+      },
+      "combatants": [
+        {
+          "zodiacSign": 0,
+          "hp": 50,
+          "status": "None",
+          "koCount": 0,
+          "maxHp": 50,
+          "mp": 0,
+          "classPhysicalEvade": 10,
+          "rightHandEvade": 0,
+          "accessoryEvade": 0,
+          "maxMp": 0,
+          "facing": "East",
+          "unitId": "sample:unit/attacker",
+          "leftHandEvade": 0,
+          "physicalAttack": 5,
+          "rightHandWeaponId": "sample:item/plain-sword",
+          "brave": 70
+        },
+        {
+          "zodiacSign": 0,
+          "hp": 50,
+          "status": "None",
+          "koCount": 0,
+          "maxHp": 50,
+          "mp": 0,
+          "classPhysicalEvade": 10,
+          "rightHandEvade": 0,
+          "accessoryEvade": 0,
+          "maxMp": 0,
+          "facing": "West",
+          "unitId": "sample:unit/defender",
+          "leftHandEvade": 0,
+          "physicalAttack": 5,
+          "rightHandWeaponId": null,
+          "brave": 70
+        }
+      ]
+    },
+    "commands": [
+      {
+        "index": 0,
+        "kind": "move-unit",
+        "unitId": "sample:unit/attacker",
+        "destination": {
+          "x": 0,
+          "y": 1,
+          "layer": 0
+        }
+      },
+      {
+        "index": 1,
+        "kind": "wait",
+        "unitId": "sample:unit/attacker"
+      },
+      {
+        "index": 2,
+        "kind": "advance"
+      }
+    ]
+  },
+  "sourceCases": [],
+  "expectations": [
+    {
+      "commandIndex": 0,
+      "assertions": [
+        {
+          "evidenceIds": [
+            "managed-contract"
+          ],
+          "accepted": true,
+          "kind": "result",
+          "turnRejection": "None",
+          "movementRejection": "None",
+          "attackRejection": "None",
+          "attackOutcome": "none"
+        },
+        {
+          "stateRelation": "new-instance",
+          "evidenceIds": [
+            "managed-contract",
+            "turn-trace"
+          ],
+          "events": [
+            {
+              "from": {
+                "x": 1,
+                "y": 1,
+                "layer": 0
+              },
+              "to": {
+                "x": 0,
+                "y": 1,
+                "layer": 0
+              },
+              "kind": "unit-moved",
+              "unitId": "sample:unit/attacker"
+            },
+            {
+              "choice": "ConfirmMove",
+              "kind": "choice-consumed",
+              "unitId": "sample:unit/attacker"
+            }
+          ],
+          "kind": "state-and-events",
+          "state": {
+            "units": [
+              {
+                "id": "sample:unit/attacker",
+                "movementProfile": {
+                  "move": 1,
+                  "mode": "Normal",
+                  "terrainCosts": [],
+                  "traits": [],
+                  "bodyHeight": 6,
+                  "jump": 2
+                },
+                "position": {
+                  "x": 0,
+                  "y": 1,
+                  "layer": 0
+                },
+                "hasMoved": true
+              },
+              {
+                "id": "sample:unit/defender",
+                "movementProfile": {
+                  "move": 1,
+                  "mode": "Normal",
+                  "terrainCosts": [],
+                  "traits": [],
+                  "bodyHeight": 6,
+                  "jump": 2
+                },
+                "position": {
+                  "x": 2,
+                  "y": 1,
+                  "layer": 0
+                },
+                "hasMoved": false
+              }
+            ],
+            "rngState": {
+              "algorithmId": "fft.ps1:rng/bios-v3-us",
+              "value": 1,
+              "drawCount": 0
+            },
+            "turns": {
+              "ticks": 0,
+              "phase": "UnitTurn",
+              "units": [
+                {
+                  "id": "sample:unit/attacker",
+                  "speed": 10,
+                  "tieKey": 0,
+                  "hasTurn": true,
+                  "movementTaken": true,
+                  "actionTaken": false,
+                  "ct": 0
+                },
+                {
+                  "id": "sample:unit/defender",
+                  "speed": 10,
+                  "tieKey": 1,
+                  "hasTurn": false,
+                  "movementTaken": false,
+                  "actionTaken": false,
+                  "ct": 100
+                }
+              ]
+            },
+            "combatants": [
+              {
+                "zodiacSign": 0,
+                "hp": 50,
+                "status": "None",
+                "koCount": 0,
+                "maxHp": 50,
+                "mp": 0,
+                "classPhysicalEvade": 10,
+                "rightHandEvade": 0,
+                "accessoryEvade": 0,
+                "maxMp": 0,
+                "facing": "East",
+                "unitId": "sample:unit/attacker",
+                "leftHandEvade": 0,
+                "physicalAttack": 5,
+                "rightHandWeaponId": "sample:item/plain-sword",
+                "brave": 70
+              },
+              {
+                "zodiacSign": 0,
+                "hp": 50,
+                "status": "None",
+                "koCount": 0,
+                "maxHp": 50,
+                "mp": 0,
+                "classPhysicalEvade": 10,
+                "rightHandEvade": 0,
+                "accessoryEvade": 0,
+                "maxMp": 0,
+                "facing": "West",
+                "unitId": "sample:unit/defender",
+                "leftHandEvade": 0,
+                "physicalAttack": 5,
+                "rightHandWeaponId": null,
+                "brave": 70
+              }
+            ],
+            "mapId": "sample:map/arena"
+          }
+        }
+      ]
+    },
+    {
+      "commandIndex": 1,
+      "assertions": [
+        {
+          "evidenceIds": [
+            "managed-contract"
+          ],
+          "accepted": true,
+          "kind": "result",
+          "turnRejection": "None",
+          "movementRejection": "None",
+          "attackRejection": "None",
+          "attackOutcome": "none"
+        },
+        {
+          "stateRelation": "new-instance",
+          "evidenceIds": [
+            "managed-contract",
+            "turn-trace"
+          ],
+          "events": [
+            {
+              "ctBefore": 0,
+              "ctAfter": 20,
+              "kind": "turn-ended",
+              "unitId": "sample:unit/attacker"
+            }
+          ],
+          "kind": "state-and-events",
+          "state": {
+            "units": [
+              {
+                "id": "sample:unit/attacker",
+                "movementProfile": {
+                  "move": 1,
+                  "mode": "Normal",
+                  "terrainCosts": [],
+                  "traits": [],
+                  "bodyHeight": 6,
+                  "jump": 2
+                },
+                "position": {
+                  "x": 0,
+                  "y": 1,
+                  "layer": 0
+                },
+                "hasMoved": true
+              },
+              {
+                "id": "sample:unit/defender",
+                "movementProfile": {
+                  "move": 1,
+                  "mode": "Normal",
+                  "terrainCosts": [],
+                  "traits": [],
+                  "bodyHeight": 6,
+                  "jump": 2
+                },
+                "position": {
+                  "x": 2,
+                  "y": 1,
+                  "layer": 0
+                },
+                "hasMoved": false
+              }
+            ],
+            "rngState": {
+              "algorithmId": "fft.ps1:rng/bios-v3-us",
+              "value": 1,
+              "drawCount": 0
+            },
+            "turns": {
+              "ticks": 0,
+              "phase": "PickUnit",
+              "units": [
+                {
+                  "id": "sample:unit/attacker",
+                  "speed": 10,
+                  "tieKey": 0,
+                  "hasTurn": false,
+                  "movementTaken": true,
+                  "actionTaken": false,
+                  "ct": 20
+                },
+                {
+                  "id": "sample:unit/defender",
+                  "speed": 10,
+                  "tieKey": 1,
+                  "hasTurn": false,
+                  "movementTaken": false,
+                  "actionTaken": false,
+                  "ct": 100
+                }
+              ]
+            },
+            "combatants": [
+              {
+                "zodiacSign": 0,
+                "hp": 50,
+                "status": "None",
+                "koCount": 0,
+                "maxHp": 50,
+                "mp": 0,
+                "classPhysicalEvade": 10,
+                "rightHandEvade": 0,
+                "accessoryEvade": 0,
+                "maxMp": 0,
+                "facing": "East",
+                "unitId": "sample:unit/attacker",
+                "leftHandEvade": 0,
+                "physicalAttack": 5,
+                "rightHandWeaponId": "sample:item/plain-sword",
+                "brave": 70
+              },
+              {
+                "zodiacSign": 0,
+                "hp": 50,
+                "status": "None",
+                "koCount": 0,
+                "maxHp": 50,
+                "mp": 0,
+                "classPhysicalEvade": 10,
+                "rightHandEvade": 0,
+                "accessoryEvade": 0,
+                "maxMp": 0,
+                "facing": "West",
+                "unitId": "sample:unit/defender",
+                "leftHandEvade": 0,
+                "physicalAttack": 5,
+                "rightHandWeaponId": null,
+                "brave": 70
+              }
+            ],
+            "mapId": "sample:map/arena"
+          }
+        }
+      ]
+    },
+    {
+      "commandIndex": 2,
+      "assertions": [
+        {
+          "evidenceIds": [
+            "managed-contract"
+          ],
+          "accepted": true,
+          "kind": "result",
+          "turnRejection": "None",
+          "movementRejection": "None",
+          "attackRejection": "None",
+          "attackOutcome": "none"
+        },
+        {
+          "stateRelation": "new-instance",
+          "evidenceIds": [
+            "managed-contract",
+            "turn-trace"
+          ],
+          "events": [
+            {
+              "ctBefore": 100,
+              "ctAfter": 0,
+              "upkeepRoll": 16838,
+              "kind": "unit-ready",
+              "unitId": "sample:unit/defender"
+            }
+          ],
+          "kind": "state-and-events",
+          "state": {
+            "units": [
+              {
+                "id": "sample:unit/attacker",
+                "movementProfile": {
+                  "move": 1,
+                  "mode": "Normal",
+                  "terrainCosts": [],
+                  "traits": [],
+                  "bodyHeight": 6,
+                  "jump": 2
+                },
+                "position": {
+                  "x": 0,
+                  "y": 1,
+                  "layer": 0
+                },
+                "hasMoved": true
+              },
+              {
+                "id": "sample:unit/defender",
+                "movementProfile": {
+                  "move": 1,
+                  "mode": "Normal",
+                  "terrainCosts": [],
+                  "traits": [],
+                  "bodyHeight": 6,
+                  "jump": 2
+                },
+                "position": {
+                  "x": 2,
+                  "y": 1,
+                  "layer": 0
+                },
+                "hasMoved": false
+              }
+            ],
+            "rngState": {
+              "algorithmId": "fft.ps1:rng/bios-v3-us",
+              "value": 1103527590,
+              "drawCount": 1
+            },
+            "turns": {
+              "ticks": 0,
+              "phase": "UnitTurn",
+              "units": [
+                {
+                  "id": "sample:unit/attacker",
+                  "speed": 10,
+                  "tieKey": 0,
+                  "hasTurn": false,
+                  "movementTaken": true,
+                  "actionTaken": false,
+                  "ct": 20
+                },
+                {
+                  "id": "sample:unit/defender",
+                  "speed": 10,
+                  "tieKey": 1,
+                  "hasTurn": true,
+                  "movementTaken": false,
+                  "actionTaken": false,
+                  "ct": 0
+                }
+              ]
+            },
+            "combatants": [
+              {
+                "zodiacSign": 0,
+                "hp": 50,
+                "status": "None",
+                "koCount": 0,
+                "maxHp": 50,
+                "mp": 0,
+                "classPhysicalEvade": 10,
+                "rightHandEvade": 0,
+                "accessoryEvade": 0,
+                "maxMp": 0,
+                "facing": "East",
+                "unitId": "sample:unit/attacker",
+                "leftHandEvade": 0,
+                "physicalAttack": 5,
+                "rightHandWeaponId": "sample:item/plain-sword",
+                "brave": 70
+              },
+              {
+                "zodiacSign": 0,
+                "hp": 50,
+                "status": "None",
+                "koCount": 0,
+                "maxHp": 50,
+                "mp": 0,
+                "classPhysicalEvade": 10,
+                "rightHandEvade": 0,
+                "accessoryEvade": 0,
+                "maxMp": 0,
+                "facing": "West",
+                "unitId": "sample:unit/defender",
+                "leftHandEvade": 0,
+                "physicalAttack": 5,
+                "rightHandWeaponId": null,
+                "brave": 70
+              }
+            ],
+            "mapId": "sample:map/arena"
+          }
+        }
+      ]
+    }
+  ],
+  "captures": []
+}

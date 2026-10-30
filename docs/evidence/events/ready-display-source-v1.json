@@ -1,0 +1,245 @@
+{
+  "format": "fft.ready-display-source-analysis",
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "managedBase": "d10ca2630b5080e9ea1f67da0dd49e548fdde813",
+  "referencePathsClean": true,
+  "sourcePaths": [
+    "src/battle/event/interpreter.c",
+    "src/lib/event/scene/menu_overlays.c",
+    "src/event/require/entry_conditions.c",
+    "src/event/require/conditions.c",
+    "src/event/require/screen_support.c",
+    "src/event/require/party_changes.c",
+    "src/event/require/entry_dark_screen.c",
+    "src/lib/event/script/control.c",
+    "src/lib/thread/scheduler.c",
+    "include/fft/after_battle.h",
+    "include/fft/script_instruction.h",
+    "include/fft/thread.h",
+    "include/psx/libgpu.h",
+    "target/event.yaml",
+    "target/battle.yaml"
+  ],
+  "studyScript": {
+    "localPath": "scratch/trace-ready-source.py",
+    "bytes": 6830,
+    "sha256": "6a2cd98745451316901e117a0c6ea35207bc77a77d03ed259484b9c2357f7692"
+  },
+  "reports": [
+    {
+      "localPath": "scratch/ready-source-083-g/report.json",
+      "bytes": 15965,
+      "sha256": "eb031e71ef2c4dac8e2ebc80affcbc1e109b6ff22516a184aab8bf05503a2951"
+    },
+    {
+      "localPath": "scratch/ready-source-083-h/report.json",
+      "bytes": 15965,
+      "sha256": "eb031e71ef2c4dac8e2ebc80affcbc1e109b6ff22516a184aab8bf05503a2951"
+    }
+  ],
+  "inputs": [
+    {
+      "localPath": "scratch/all-data-extraction/EVENT/REQUIRE.OUT",
+      "bytes": 127684,
+      "sha256": "97112c50c0b037b2cb5c9d93ae9e2a7506b582c5edbd86a1debfb7ab8e777630"
+    },
+    {
+      "localPath": "scratch/all-data-extraction/EVENT/BONUS.BIN",
+      "bytes": 958464,
+      "sha256": "c5d881b1fb62c04d1d7f0e5238faff4131676165c08e35b5cadb68b21c89165f"
+    },
+    {
+      "localPath": "scratch/all-data-extraction/EVENT/TEST.EVT",
+      "bytes": 4096000,
+      "sha256": "107b109254ccbb150aca7baf336b632837b22e340677e2b9e746ac61b3de4405"
+    }
+  ],
+  "assetSelection": {
+    "image": 0,
+    "imageRange": {
+      "fileOffset": 0,
+      "bytes": 26624,
+      "sha256": "5ba6d5c56bbffa7a4c1bdaea392fcf08f265f545588ccc28496462b63d521ea4"
+    },
+    "paletteBank": 2,
+    "paletteOffset": 25664,
+    "paletteSha256": "06ab76ecb265e6f4a40d0abf00812d2ac0f2817c4d20c80b69a502c2978b3256",
+    "paletteRect": [
+      384,
+      254,
+      64,
+      2
+    ],
+    "clut": 16282,
+    "tpage": 6,
+    "selectedRange": [
+      0,
+      6
+    ],
+    "ranges": [
+      {
+        "address": 2149389628,
+        "fileOffset": 75068,
+        "bytes": 2,
+        "sha256": "40d88127d4d31a3891f41598eeed41174e5bc89b1eb9bbd66a8cbfc09956a3fd"
+      },
+      {
+        "address": 2149388008,
+        "fileOffset": 73448,
+        "bytes": 72,
+        "sha256": "d683d8cf6f60818ad871f1e5a2dc3338e9541530bbba6c4dfc59ea21ed10168c"
+      },
+      {
+        "address": 2149389640,
+        "fileOffset": 75080,
+        "bytes": 120,
+        "sha256": "6e49be7cf5a0f2156e1e865289df2ba4305eae1a9bd9717c226a0e484bea4961"
+      },
+      {
+        "address": 2149384304,
+        "fileOffset": 69744,
+        "bytes": 8,
+        "sha256": "f83702f2efe22401f556e941c19d84fc387c944a3b7c77de8abaa225ef2ee849"
+      }
+    ]
+  },
+  "geometrySummary": {
+    "glyphCount": 6,
+    "widths": [
+      16,
+      17
+    ],
+    "height": 24,
+    "screenBounds": [
+      42,
+      98,
+      224,
+      122
+    ],
+    "sampledAtlasRows": [
+      0,
+      47
+    ],
+    "material": "semi-transparent page 6, ABR 0 average on STP texels",
+    "colors": "all four RGB corners; nonseparable gradients; floor channel*scale/128 before GPU modulation"
+  },
+  "code": [
+    {
+      "symbol": "conditions_special_thread",
+      "address": 2149359532,
+      "fileOffset": 44972,
+      "bytes": 1688,
+      "sha256": "ac96742eb4a60b7889e6f5093d0211f46d1efecde99e788c168303a48c5e02ce"
+    },
+    {
+      "symbol": "require_conditions_entrypoint",
+      "address": 2149363668,
+      "fileOffset": 49108,
+      "bytes": 392,
+      "sha256": "5daba3919c5bcdeb01c189f145ee30d788d1fd7a5f531caf763dc7233bfc500e"
+    },
+    {
+      "symbol": "input_wait_frames_or_skip",
+      "address": 2149333924,
+      "fileOffset": 19364,
+      "bytes": 108,
+      "sha256": "0a5f70e3ab9123be15c716df228b9159fc826deea3af916141918e7ec862200a"
+    },
+    {
+      "symbol": "gfx_init_poly_gt4_array_32",
+      "address": 2149354808,
+      "fileOffset": 40248,
+      "bytes": 292,
+      "sha256": "f259cec1a6ecdc8c38eda15b979367e22ed8046a483578189703a2acb88431d0"
+    },
+    {
+      "symbol": "conditions_show_ready_bugged",
+      "address": 2149338820,
+      "fileOffset": 24260,
+      "bytes": 124,
+      "sha256": "a81f2c639ae71f983c606eebc75ddb3955f5aae62a4a237070e698516ab2dec5"
+    }
+  ],
+  "observations": [
+    {
+      "state": {
+        "localPath": "scratch/banner-circle-hold-exit-a/first/states/fft-clean-base-game.state.auto",
+        "bytes": 1492949,
+        "sha256": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+      },
+      "sourceFrame": 9003,
+      "eventId": 4,
+      "eventOffset": 813,
+      "attributedDisplayOffset": 810,
+      "rawBlockSha256": "528875cb3cde1eb84c709f8b2de9afb41478041710b134a0ede075ae34d1bef7",
+      "eventSlot": 1,
+      "dispatcherSlot": 3,
+      "childSlot": 4,
+      "dispatcherCondition": 0,
+      "dispatcherArgument": 60,
+      "dispatcherTask": 56,
+      "childTask": 0,
+      "queuedScales": [
+        48
+      ],
+      "ordering": [
+        5,
+        4,
+        3,
+        2,
+        1,
+        0
+      ],
+      "drawModes": [
+        3774873606
+      ],
+      "selectedTextureNibblesMatch": true,
+      "paletteBank2Matches": true,
+      "sourceGeometryMatches": true
+    },
+    {
+      "state": {
+        "localPath": "scratch/banner-pre-anchor-a/frames-600/states/fft-clean-base-game.state.auto",
+        "bytes": 1496316,
+        "sha256": "bb7e1aedd9c646e17f28d5071910ab658d316858ba978eb75d1211b232ef5475"
+      },
+      "sourceFrame": 9110,
+      "eventId": 4,
+      "eventOffset": 813,
+      "attributedDisplayOffset": 810,
+      "rawBlockSha256": "528875cb3cde1eb84c709f8b2de9afb41478041710b134a0ede075ae34d1bef7",
+      "eventSlot": 1,
+      "dispatcherSlot": 3,
+      "childSlot": 4,
+      "dispatcherCondition": 0,
+      "dispatcherArgument": 60,
+      "dispatcherTask": 56,
+      "childTask": 0,
+      "queuedScales": [
+        128
+      ],
+      "ordering": [
+        5,
+        4,
+        3,
+        2,
+        1,
+        0
+      ],
+      "drawModes": [
+        3774873606
+      ],
+      "selectedTextureNibblesMatch": true,
+      "paletteBank2Matches": true,
+      "sourceGeometryMatches": true
+    }
+  ],
+  "limits": [
+    "Two independent retained capture histories, not a paired timing continuation.",
+    "Queued packets and resident VRAM only; no new scanout comparison or animation-duration measurement.",
+    "No original instructions/emulator executed; no managed/runtime/profile changes."
+  ],
+  "registerCaution": "At fade-in yield 0x801ca440, saved s3 is the next scale: the preceding jal thread_yield has addiu s3,s3,8 in its delay slot. Source-frame 9003 stores 56 but its six queued glyphs use 48. Hold yield 0x801ca524 uses constant scale 128; saved s3 is not its draw scale."
+}

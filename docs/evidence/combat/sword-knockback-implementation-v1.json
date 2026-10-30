@@ -1,0 +1,662 @@
+{
+  "format": "fft.sword-flat-knockback-implementation-validation",
+  "schemaVersion": 1,
+  "ticket": "ZOD-115",
+  "validatedOn": "2026-10-26",
+  "status": "Complete within explicit pure flat two-unit profile",
+  "managedBase": "dd6210acae25711444aae5dc3a8cb970da741768",
+  "guide": "docs/behavior/flat-sword-knockback-implementation.md",
+  "reference": {
+    "root": "C:/repositories/fft_decomp",
+    "revision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "freshlyCheckedClean": true,
+    "readOnly": true,
+    "contract": "docs/evidence/combat/sword-knockback-contract-v1.json",
+    "filesRechecked": 17,
+    "functionsRechecked": 41,
+    "managedBaselineFilesCheckedBeforeTranslation": 8
+  },
+  "production": {
+    "files": [
+      "src/Zodiac.Framework/AttackBattleSimulator.cs",
+      "src/Zodiac.Framework/FlatSwordBattleProfile.cs"
+    ],
+    "api": "AttackBattleSimulator.Attack(state, command, weapon, FlatSwordBattleProfile)",
+    "rulesId": "fft:rules/sword-flat-knockback-v1",
+    "explicitOrdinaryGroundCertification": true,
+    "sharedDamageCore": true,
+    "defaultEdgeOnlyUnchanged": true,
+    "noBraveRolls": true,
+    "draws": {
+      "miss": 4,
+      "normalHit": 6,
+      "criticalHit": 7
+    },
+    "newEvent": "SwordKnockbackEvent, appended only on actual displacement",
+    "runtimeCDependency": false,
+    "newDependencies": false,
+    "scenarioContentNativeSaveActivation": false
+  },
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuild": true,
+    "warnings": 0,
+    "errors": 0,
+    "managedPassed": 3044,
+    "newManaged": 240,
+    "pythonPassed": 329,
+    "newPython": 0,
+    "focusedPassedBeforeFinalTwoGuardCases": 523,
+    "fullTrx": [
+      {
+        "path": "scratch/sword-knockback-115-tests-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_18_05_10_net10.0.trx",
+        "byteLength": 38006,
+        "sha256": "5831804455a75ea16ed3c924c61f55af38e122498648be477a6ee9f66ef77d10"
+      },
+      {
+        "path": "scratch/sword-knockback-115-tests-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_18_05_10_net10.0[1].trx",
+        "byteLength": 314770,
+        "sha256": "5c9f2a3f9e14071fb4aa91df37adf5bdce189c6266861ec41096ea3870ae62ef"
+      },
+      {
+        "path": "scratch/sword-knockback-115-tests-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_18_05_10_net10.0[2].trx",
+        "byteLength": 2066486,
+        "sha256": "8bdb7bcd9acf4c071d4a710cf0b32bb41e6373195a5f95899d3ae1d58eb3d782"
+      },
+      {
+        "path": "scratch/sword-knockback-115-tests-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_18_05_10_net10.0[3].trx",
+        "byteLength": 1179047,
+        "sha256": "eab677c97f8936e7e51a8024a33a2787820b13ae2b59b02d3561bab9352e2962"
+      },
+      {
+        "path": "scratch/sword-knockback-115-tests-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_18_05_11_net10.0.trx",
+        "byteLength": 468349,
+        "sha256": "8098ff01f20a1893d7c5380f6d5f8ad0ed36c7c11e84d0da16082e585dd19d15"
+      },
+      {
+        "path": "scratch/sword-knockback-115-tests-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_18_05_11_net10.0[1].trx",
+        "byteLength": 652568,
+        "sha256": "190428902480785af3dfef4af67d3407d8a9d2f12244f4e467f739a24adb4705"
+      }
+    ],
+    "executedDescriptionVectors": 35,
+    "cardinalFacingSeedCombinations": 128,
+    "implementationCases": [
+      {
+        "id": "SKB-001",
+        "status": "passed",
+        "purpose": "Explicit opt-in open-ground profile; legacy edge-only API and fixtures unchanged.",
+        "testClass": "Zodiac.Framework.Tests.FlatSwordKnockbackTests",
+        "methods": [
+          "Legacy_entry_point_still_rejects_interior_even_when_the_selected_seed_is_noncritical",
+          "Strict_profile_rejects_blocked_upper_layer_that_legacy_edge_geometry_admits"
+        ],
+        "matchedManagedCases": 2,
+        "additionalRegressionEvidence": null
+      },
+      {
+        "id": "SKB-002",
+        "status": "passed",
+        "purpose": "Critical push in four cardinal directions and all incoming actor/target facings.",
+        "testClass": "Zodiac.Framework.Tests.FlatSwordKnockbackTests",
+        "methods": [
+          "Both_incoming_facings_survive_all_cardinal_hits_misses_and_critical_pushes"
+        ],
+        "matchedManagedCases": 128,
+        "additionalRegressionEvidence": null
+      },
+      {
+        "id": "SKB-003",
+        "status": "passed",
+        "purpose": "Normal hit and front/side/back evade behavior with exact four/six/seven draws.",
+        "testClass": "Zodiac.Framework.Tests.FlatSwordKnockbackTests",
+        "methods": [
+          "Executes_all_35_source_contract_vectors_without_rewriting_historical_expectations",
+          "Both_incoming_facings_survive_all_cardinal_hits_misses_and_critical_pushes"
+        ],
+        "matchedManagedCases": 163,
+        "additionalRegressionEvidence": null
+      },
+      {
+        "id": "SKB-004",
+        "status": "passed",
+        "purpose": "Critical threshold raw 1310/1311 and bonus threshold/endpoints; no Brave draws.",
+        "testClass": "Zodiac.Framework.Tests.FlatSwordKnockbackTests",
+        "methods": [
+          "Critical_threshold_1310_1311_retains_original_draw_branch",
+          "Critical_bonus_threshold_and_endpoints_keep_the_seventh_proc_draw",
+          "Executes_all_35_source_contract_vectors_without_rewriting_historical_expectations"
+        ],
+        "matchedManagedCases": 41,
+        "additionalRegressionEvidence": null
+      },
+      {
+        "id": "SKB-005",
+        "status": "passed",
+        "purpose": "All four off-map edges suppress displacement without altering damage/RNG.",
+        "testClass": "Zodiac.Framework.Tests.FlatSwordKnockbackTests",
+        "methods": [
+          "Executes_all_35_source_contract_vectors_without_rewriting_historical_expectations",
+          "Offmap_profile_result_is_exactly_the_legacy_result_with_same_state_and_events"
+        ],
+        "matchedManagedCases": 36,
+        "additionalRegressionEvidence": null
+      },
+      {
+        "id": "SKB-006",
+        "status": "passed",
+        "purpose": "Damage equal to HP and exceeding HP cancel pending displacement; survive-one pushes.",
+        "testClass": "Zodiac.Framework.Tests.FlatSwordKnockbackTests",
+        "methods": [
+          "Lethal_equality_cancels_position_after_all_draws_and_wraps_KO_byte"
+        ],
+        "matchedManagedCases": 3,
+        "additionalRegressionEvidence": null
+      },
+      {
+        "id": "SKB-007",
+        "status": "passed",
+        "purpose": "Zero-power critical pushes; PA zero floors XA to one; positive damage caps at 999.",
+        "testClass": "Zodiac.Framework.Tests.FlatSwordKnockbackTests",
+        "methods": [
+          "Zero_PA_zero_power_and_cap_preserve_push_and_no_damage_means_no_HP_event"
+        ],
+        "matchedManagedCases": 3,
+        "additionalRegressionEvidence": null
+      },
+      {
+        "id": "SKB-008",
+        "status": "passed",
+        "purpose": "Worst signed-16 product gate rejects unsupported setup before drawing.",
+        "testClass": "Zodiac.Framework.Tests.FlatSwordKnockbackTests",
+        "methods": [
+          "Signed16_gate_rejects_before_draw_even_for_normal_hit_seed"
+        ],
+        "matchedManagedCases": 1,
+        "additionalRegressionEvidence": null
+      },
+      {
+        "id": "SKB-009",
+        "status": "passed",
+        "purpose": "Miss and normal/critical branches consume only their exact remaining draw budgets.",
+        "testClass": "Zodiac.Framework.Tests.FlatSwordKnockbackTests",
+        "methods": [
+          "Every_draw_budget_rejects_atomically_or_finishes_at_ulong_max"
+        ],
+        "matchedManagedCases": 20,
+        "additionalRegressionEvidence": null
+      },
+      {
+        "id": "SKB-010",
+        "status": "passed",
+        "purpose": "Every insufficient draw budget rejects with identical state/events and both RNG copies.",
+        "testClass": "Zodiac.Framework.Tests.FlatSwordKnockbackTests",
+        "methods": [
+          "Every_draw_budget_rejects_atomically_or_finishes_at_ulong_max"
+        ],
+        "matchedManagedCases": 20,
+        "additionalRegressionEvidence": null
+      },
+      {
+        "id": "SKB-011",
+        "status": "passed",
+        "purpose": "Actor and target retain incoming settled facing after push, miss, zero damage and KO.",
+        "testClass": "Zodiac.Framework.Tests.FlatSwordKnockbackTests",
+        "methods": [
+          "Both_incoming_facings_survive_all_cardinal_hits_misses_and_critical_pushes",
+          "Executes_all_35_source_contract_vectors_without_rewriting_historical_expectations"
+        ],
+        "matchedManagedCases": 163,
+        "additionalRegressionEvidence": null
+      },
+      {
+        "id": "SKB-012",
+        "status": "passed",
+        "purpose": "Target voluntary HasMoved/Move/Act flags, CT, speed and movement profile are preserved.",
+        "testClass": "Zodiac.Framework.Tests.FlatSwordKnockbackTests",
+        "methods": [
+          "Forced_position_preserves_targets_full_turn_and_movement_profile"
+        ],
+        "matchedManagedCases": 4,
+        "additionalRegressionEvidence": null
+      },
+      {
+        "id": "SKB-013",
+        "status": "passed",
+        "purpose": "Act-then-Move and Move-then-Act retain source-traced choice/event ordering.",
+        "testClass": "Zodiac.Framework.Tests.FlatSwordKnockbackTests",
+        "methods": [
+          "Act_Move_and_Move_Act_keep_choice_and_event_order"
+        ],
+        "matchedManagedCases": 2,
+        "additionalRegressionEvidence": null
+      },
+      {
+        "id": "SKB-014",
+        "status": "passed",
+        "purpose": "Recompute attack and movement range from pushed positions; old adjacent target now out of range.",
+        "testClass": "Zodiac.Framework.Tests.FlatSwordKnockbackTests",
+        "methods": [
+          "Subsequent_target_turn_rechecks_attack_and_move_range_from_pushed_position"
+        ],
+        "matchedManagedCases": 1,
+        "additionalRegressionEvidence": null
+      },
+      {
+        "id": "SKB-015",
+        "status": "passed",
+        "purpose": "Accepted/rejected command replay and discarded pure probes preserve input state and RNG.",
+        "testClass": "Zodiac.Framework.Tests.FlatSwordKnockbackTests",
+        "methods": [
+          "Both_actor_IDs_and_collection_orders_have_identical_pure_results",
+          "Command_replay_compares_every_accepted_and_rejected_prefix_and_suffix"
+        ],
+        "matchedManagedCases": 5,
+        "additionalRegressionEvidence": null
+      },
+      {
+        "id": "SKB-016",
+        "status": "passed",
+        "purpose": "Reject blocked/untargetable/cannot-stop, non-ground, water, slope, height/ceiling/layer setups atomically.",
+        "testClass": "Zodiac.Framework.Tests.FlatSwordKnockbackTests",
+        "methods": [
+          "Unsupported_geometry_anywhere_rejects_before_rng_or_Act",
+          "Strict_profile_rejects_blocked_upper_layer_that_legacy_edge_geometry_admits"
+        ],
+        "matchedManagedCases": 17,
+        "additionalRegressionEvidence": null
+      },
+      {
+        "id": "SKB-017",
+        "status": "passed",
+        "purpose": "Reject extra/overlapping units, modified movement, invalid actors/targets/weapons and noncardinal range.",
+        "testClass": "Zodiac.Framework.Tests.FlatSwordKnockbackTests",
+        "methods": [
+          "Unsupported_geometry_anywhere_rejects_before_rng_or_Act",
+          "Invalid_commands_remain_atomic_and_do_not_reach_an_exhausted_rng",
+          "Profile_and_programmer_null_errors_are_explicit"
+        ],
+        "matchedManagedCases": 28,
+        "additionalRegressionEvidence": null
+      },
+      {
+        "id": "SKB-018",
+        "status": "passed",
+        "purpose": "Successful empty 19-percent proc does not cancel the critical push or add draws.",
+        "testClass": "Zodiac.Framework.Tests.FlatSwordKnockbackTests",
+        "methods": [
+          "Executes_all_35_source_contract_vectors_without_rewriting_historical_expectations"
+        ],
+        "matchedManagedCases": 35,
+        "additionalRegressionEvidence": null
+      },
+      {
+        "id": "SKB-019",
+        "status": "passed",
+        "purpose": "Position event only on actual push, after existing resolution/HP/status/KO events; no voluntary Move event.",
+        "testClass": "Zodiac.Framework.Tests.FlatSwordKnockbackTests",
+        "methods": [
+          "Event_sequences_distinguish_normal_critical_zero_damage_and_lethal_results",
+          "Act_Move_and_Move_Act_keep_choice_and_event_order"
+        ],
+        "matchedManagedCases": 3,
+        "additionalRegressionEvidence": null
+      },
+      {
+        "id": "SKB-020",
+        "status": "passed",
+        "purpose": "Existing historical fixtures/saves/content and headless regressions remain unchanged under legacy selection.",
+        "testClass": "Zodiac.Framework.Tests.FlatSwordKnockbackTests",
+        "methods": [
+          "Offmap_profile_result_is_exactly_the_legacy_result_with_same_state_and_events"
+        ],
+        "matchedManagedCases": 1,
+        "additionalRegressionEvidence": "Full suites and repeated legacy headless audits"
+      }
+    ]
+  },
+  "legacyHeadless": {
+    "processes": 4,
+    "saveBaseline": "scratch/sword-facing-113-save-a",
+    "saveRoots": [
+      "scratch/sword-knockback-115-save-a",
+      "scratch/sword-knockback-115-save-b"
+    ],
+    "saveFilesEqualToHistorical": 14,
+    "saveCheckpoints": 13,
+    "saveRng": {
+      "word": 2473755763,
+      "drawCount": 22
+    },
+    "basicBaseline": "scratch/throw-stone-110-headless-a",
+    "basicRoots": [
+      "scratch/sword-knockback-115-basic-a",
+      "scratch/sword-knockback-115-basic-b"
+    ],
+    "basicFilesEqualToHistorical": 4,
+    "basicCommands": 46,
+    "basicContinuations": 47,
+    "basicRng": {
+      "word": 4200531631,
+      "drawCount": 58
+    },
+    "preparedFilesPreserved": 4,
+    "historicalNativeFilesPreserved": 29
+  },
+  "audits": {
+    "sourceBefore": {
+      "path": "scratch/sword-knockback-115-source-before.json",
+      "byteLength": 358,
+      "sha256": "48357b281a17cf6dbe1e73c733f2ac19af88bf53845fa59371f6e2cceb28a529"
+    },
+    "repeatedSource": [
+      {
+        "path": "scratch/sword-knockback-115-source-after-a.json",
+        "byteLength": 358,
+        "sha256": "47a15a147d05fb6e8656d0fdb8118afb2b32ea9f887d8bf7bb9d2e72eeb92662"
+      },
+      {
+        "path": "scratch/sword-knockback-115-source-after-b.json",
+        "byteLength": 358,
+        "sha256": "47a15a147d05fb6e8656d0fdb8118afb2b32ea9f887d8bf7bb9d2e72eeb92662"
+      }
+    ],
+    "repeatedLegacy": [
+      {
+        "path": "scratch/sword-knockback-115-legacy-audit-a.json",
+        "byteLength": 894,
+        "sha256": "4ea3f373f6bc914d61eb6fbf8515a79e78ebf8069768b48a252fdbe84daadfc9"
+      },
+      {
+        "path": "scratch/sword-knockback-115-legacy-audit-b.json",
+        "byteLength": 894,
+        "sha256": "4ea3f373f6bc914d61eb6fbf8515a79e78ebf8069768b48a252fdbe84daadfc9"
+      }
+    ],
+    "sourceToolHistoricalUnexecutedInventoryRetained": true,
+    "legacyResult": {
+      "format": "fft.sword-facing-implementation-audit",
+      "schemaVersion": 1,
+      "passed": true,
+      "historicalFilesPreserved": 18,
+      "replacementFixtures": 9,
+      "explicitFacingCorrections": 8,
+      "swordSaveFilesEqualToPriorBuild": 14,
+      "basicSkillFilesEqualToHistorical": 4,
+      "oldPreparedFilesPreserved": 4,
+      "oldNativeFilesPreserved": 29,
+      "swordRng": {
+        "Value": 2473755763,
+        "DrawCount": 22
+      },
+      "basicSkillRng": {
+        "Value": 4200531631,
+        "DrawCount": 58
+      },
+      "sourceContractSha256": "8f5ff3d8c01c0a23f0cb6330d12b9f65c9f09686ef5957c037ac25bec65a8245",
+      "supersessionSha256": "39e9b374ad5f7e76526da292a28504953ddc7158024c09d9438332771e48620c",
+      "managedCorrectionCoverage": "Reported separately in implementation evidence and full-suite TRX",
+      "limits": "Artifact/independent arithmetic audit plus managed tests; no new native/original execution"
+    }
+  },
+  "preservedFiles": [
+    {
+      "path": "docs/evidence/combat/accumulate-contract-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 16914,
+      "sha256": "8772c17323d22066dc4e23c41871cff7ce2d33340c4f04307285968e795962d9"
+    },
+    {
+      "path": "docs/evidence/combat/accumulate-implementation-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 17175,
+      "sha256": "630eae1a230f832117ebaf022194a70dd465dde8d059233c4f9d0e40ea1df7b0"
+    },
+    {
+      "path": "docs/evidence/combat/accumulate-window-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11348,
+      "sha256": "d0987721ec45cd9b5b4cf488a332f89013ca1e49d13afde02a5fcc8cf9568c3d"
+    },
+    {
+      "path": "docs/evidence/combat/sword-facing-contract-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 29049,
+      "sha256": "38fd3916fe721c1abcc5dcccfa65153aab778c49590fc4b15fc7b45dc9a3862a"
+    },
+    {
+      "path": "docs/evidence/combat/sword-facing-implementation-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 24589,
+      "sha256": "e66f66317b60940c7035364b76fd3035ad1fac478bb20d7b5bd0021b0fd5de90"
+    },
+    {
+      "path": "docs/evidence/combat/throw-stone-content-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 36714,
+      "sha256": "9c68df3d342fe2ffd6f28f977be4a269b5b452c5b921742dcd9edb9cfa5403e4"
+    },
+    {
+      "path": "docs/evidence/combat/throw-stone-contract-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 20732,
+      "sha256": "ca3c40dc502240928b2039e7a2d6ba9d53ee931638f817a55c9be05c80d6e882"
+    },
+    {
+      "path": "docs/evidence/combat/throw-stone-implementation-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 36563,
+      "sha256": "89ab4247f44d6d820072e8604b7ab8ede44193f5c9165be3c5f08a9493f57f6e"
+    },
+    {
+      "path": "docs/evidence/combat/throw-stone-window-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11087,
+      "sha256": "aafe464983cdae890706b9b2e1d715fbb601f2ba76aa8f6a197403a37ef28ab3"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-cap-ko-wrap.v3.settled-facing.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14931,
+      "sha256": "5fb6cef745faf4aef4ba07ef39036ceed95fac8a518ba40534a1d74d7ea333e2"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-cap-ko-wrap.v3.source-derived.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14214,
+      "sha256": "9a27a44e0ce960675cd75da7867fe1a7249ac5c32b61be4e492b77a7ff9c9c6d"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-critical.v3.settled-facing.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14777,
+      "sha256": "fdf11e72bc22422da3dd401c57ccba1f7eca26072a4966042be8c18812c58dd3"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-critical.v3.source-derived.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14060,
+      "sha256": "0afeb0d40c22ef4e713ea7d9b94d27e96df23c66ca826be418e970f2c2aaedec"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-diagonal-rejected.v3.settled-facing.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14036,
+      "sha256": "4902ed4c15d3afbac1dad17949cd71843c2afcbba57adea573dd42f5cdafe2c8"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-diagonal-rejected.v3.source-derived.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 13320,
+      "sha256": "5f39927e11a470e4ce5af89ec6e06fcc7599ca77178c3f7d6ae87b4f7dfb2b22"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-facing-supersession-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4239,
+      "sha256": "f9993b85a240fd7a28e17d6963f11944c02fb7a858e7517a42baca3ab62c08dd"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-ko.v2.source-description.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 13145,
+      "sha256": "797ed540677441fe30ed20daf7a69652f78f70d37bae7a0217b9a598ef85b481"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-ko.v3.settled-facing.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14896,
+      "sha256": "683560e77aa4dec91114b8fda3ce293dc9492df58ec66eb2b38bbf63e56e9224"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-ko.v3.source-derived.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14179,
+      "sha256": "525da6b57f58c702d5829a7c840cd975c008867e2961bda41312b4133a980947"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-miss.v3.settled-facing.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14415,
+      "sha256": "78bebb42d46aa8a5751ecb216d18fc0f725c987816fed54cd59bb47dc53d981c"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-miss.v3.source-derived.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 13698,
+      "sha256": "a47886d6b6bc68dac3a61f09f4543298f1556761e7143be191297d25c0dc518f"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-move-attack.v3.settled-facing.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 19477,
+      "sha256": "f25bd3e03ec8d464da5c1bc548d38cd75ce310a96018cb2994970cc43e3b4561"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-move-attack.v3.source-derived.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 18729,
+      "sha256": "6416eba1dc567230cda110f1b941485fac45a18a4482fc27f45f020dbea4674d"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-normal.v3.settled-facing.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14586,
+      "sha256": "155b6a0ffff730012f3513c778d0708c94bb59b60bb0ec49201b2ce10898aa97"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-normal.v3.source-derived.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 13869,
+      "sha256": "21c0a8645f3ce8780aeb9284cdea530866c93901b95108e5b75614766dbf54ae"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-settled-facing-contract-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 25854,
+      "sha256": "04f1c5e0d44cc277f4abc6d2fc3482d2c7d876015a3b6ec5c7f007ebb53f4144"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-side.v3.settled-facing.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14583,
+      "sha256": "9b15a726c245f63bc2054624f0ae8285ec563b2c1d326f572536a584714316e7"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-side.v3.source-derived.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 13866,
+      "sha256": "f25091e0be16350a65bfa7e83afb2f14a4ed918dd771245eb923844a85885f7e"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-zero-pa.v3.settled-facing.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14598,
+      "sha256": "b587f246759b1121f977539a924520d7185137b96b78d777a36f8abb85b7849c"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-zero-pa.v3.source-derived.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 13881,
+      "sha256": "ddc7db3630e995b1cf1c4df94dfe5cc62f240eecff38038c027f32c517fef446"
+    },
+    {
+      "path": "docs/fixtures/saves/synthetic-world-idle-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1183,
+      "sha256": "9b78f5bbcb673432d2f6f21606371676e213d1d56329af39cba81a7b4076c78c"
+    },
+    {
+      "path": "docs/fixtures/saves/synthetic-world-idle-v2.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1247,
+      "sha256": "14d4d12de0d219734cff2f89c7cb8fead11292ea93a55867c221fdd81757c6cf"
+    },
+    {
+      "path": "docs/fixtures/saves/two-unit-active-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1284,
+      "sha256": "412a97103d5ebeea25bf38767a20ccb9d2bafc12f855a7c931efbabf54d7d4e7"
+    },
+    {
+      "path": "docs/fixtures/saves/two-unit-active-v2.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1332,
+      "sha256": "b6f24ab8f2df2b81e9c00d33cdad0b50e2024411b88bcc0ee5ddad7c90719d95"
+    },
+    {
+      "path": "docs/evidence/combat/sword-knockback-contract-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 26139,
+      "sha256": "5d3a028ae350e4fa5835cb5c28c56889aa2c1acd419c65393df47b303ea47211"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-flat-knockback-contract-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 41231,
+      "sha256": "eaced192831cae40be113417eb687895444ee0fa0b904ea6d3235b63b1ee30a5"
+    }
+  ],
+  "sourceDerivedBonusSeeds": [
+    {
+      "seed": 1772728485,
+      "sixthRaw": 0,
+      "damage": 25,
+      "word": 3429651764
+    },
+    {
+      "seed": 1713073460,
+      "sixthRaw": 6553,
+      "damage": 25,
+      "word": 962748671
+    },
+    {
+      "seed": 475580580,
+      "sixthRaw": 6554,
+      "damage": 30,
+      "word": 1802140207
+    },
+    {
+      "seed": 862737717,
+      "sixthRaw": 32767,
+      "damage": 45,
+      "word": 442776580
+    }
+  ],
+  "limits": {
+    "nativeOrOriginalExecution": false,
+    "completeOriginalEquivalence": false,
+    "supported": "Pure direct API only, exactly two ordinary units, certified open dry flat lower-layer ground, neutral ordinary sword.",
+    "deferred": [
+      "Content/scenario/native/save activation",
+      "General terrain/layers/falls/water/extra units",
+      "Reactions/status procs/rewards/animation",
+      "Editor",
+      "ZOD-106 battle checkpoints"
+    ]
+  },
+  "next": {
+    "ticket": "ZOD-116",
+    "scope": "Bounded original-AI Move/Attack/Wait source/interface contract; no invented heuristic or production AI yet."
+  }
+}

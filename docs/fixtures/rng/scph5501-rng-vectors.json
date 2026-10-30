@@ -1,0 +1,691 @@
+{
+  "format": "fft.bios-rng-vectors",
+  "schemaVersion": 1,
+  "fixtureId": "fixture:rng/scph5501-v3-us",
+  "targetEdition": "SCUS-94221",
+  "biosVersion": "US v3.0 1996-11-18 (SCPH-5501/5503/7003 identification)",
+  "biosByteLength": 524288,
+  "biosSha256": "11052b6499e466bbf0a709b1f9cb6834a9418e66680387912451e971cf8a1fef",
+  "biosMd5": "490f666e1afb15b7362b406ed1cea246",
+  "decompCommit": "611b504d25d4a9b03fab8023d7dbea75fe381d5d",
+  "evidenceKind": "executable-reference",
+  "confidence": "independently-observed",
+  "scope": "Actual supplied ROM instructions executed by a general MIPS CPU emulator under controlled RAM; not original hardware or full FFT execution.",
+  "stateEncoding": "unsigned 32-bit word, full seed retained; output unsigned 15-bit integer",
+  "algorithm": {
+    "multiplierHex": "41c64e6d",
+    "incrementHex": "00003039",
+    "stateModuloBits": 32,
+    "outputShift": 16,
+    "outputMaskHex": "00007fff"
+  },
+  "entryPoints": {
+    "randRomOffsetHex": "00002200",
+    "randVirtualHex": "bfc02200",
+    "srandRomOffsetHex": "00002230",
+    "srandVirtualHex": "bfc02230",
+    "a0TableRomOffsetHex": "00004300",
+    "stateVirtualHex": "a0009010",
+    "statePhysicalHex": "00009010"
+  },
+  "oracle": {
+    "harness": "tools/verification/verify_bios_rng.py",
+    "harnessSha256": "38900df1cd18156a502d4cae3861476faaa9e4d8cac929b025f0101095981b48",
+    "unicornVersion": "2.1.4",
+    "pythonVersion": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "cpuModel": "MIPS32 4KC, little endian; not cycle-accurate PS1 hardware",
+    "entry": "A0 vector at 0x000000a0, selectors 0x2f/0x30",
+    "rawCapturePath": "scratch/behavior/bios-rng/scph5501-oracle.json",
+    "rawCaptureSha256": "53d36570ab7281c71430dd38b4eeb7ec4a49f903d364ddb6f11ee50c5fd52d4b",
+    "rawCaptureByteLength": 18422,
+    "reseedChecksPassed": true,
+    "limitations": [
+      "Controlled RAM image and copied dispatch tables; no full BIOS boot or game execution",
+      "Fresh CPU per isolated call; only the observed persistent state word is threaded between calls",
+      "MIPS32 architectural execution of this MIPS-I subset; no cycle timing or general PS1 CPU equivalence",
+      "Other BIOS revisions, game seed/draw history, devices and whole-command ordering not executed"
+    ]
+  },
+  "cases": [
+    {
+      "caseId": "seed-00000000",
+      "seed": 0,
+      "seedState": 0,
+      "seedInstructionCount": 14,
+      "draws": [
+        {
+          "draw": 1,
+          "stateBefore": 0,
+          "stateAfter": 12345,
+          "value": 0,
+          "multiplyExceeds32Bits": false,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 2,
+          "stateBefore": 12345,
+          "stateAfter": 3554416254,
+          "value": 21468,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 3,
+          "stateBefore": 3554416254,
+          "stateAfter": 2802067423,
+          "value": 9988,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 4,
+          "stateBefore": 2802067423,
+          "stateAfter": 3596950572,
+          "value": 22117,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 5,
+          "stateBefore": 3596950572,
+          "stateAfter": 229283573,
+          "value": 3498,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 6,
+          "stateBefore": 229283573,
+          "stateAfter": 3256818826,
+          "value": 16927,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 7,
+          "stateBefore": 3256818826,
+          "stateAfter": 1051550459,
+          "value": 16045,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 8,
+          "stateBefore": 1051550459,
+          "stateAfter": 3441282840,
+          "value": 19741,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        }
+      ]
+    },
+    {
+      "caseId": "seed-00000001",
+      "seed": 1,
+      "seedState": 1,
+      "seedInstructionCount": 14,
+      "draws": [
+        {
+          "draw": 1,
+          "stateBefore": 1,
+          "stateAfter": 1103527590,
+          "value": 16838,
+          "multiplyExceeds32Bits": false,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 2,
+          "stateBefore": 1103527590,
+          "stateAfter": 2524885223,
+          "value": 5758,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 3,
+          "stateBefore": 2524885223,
+          "stateAfter": 662824084,
+          "value": 10113,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 4,
+          "stateBefore": 662824084,
+          "stateAfter": 3295386429,
+          "value": 17515,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 5,
+          "stateBefore": 3295386429,
+          "stateAfter": 4182499122,
+          "value": 31051,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 6,
+          "stateBefore": 4182499122,
+          "stateAfter": 2516284547,
+          "value": 5627,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 7,
+          "stateBefore": 2516284547,
+          "stateAfter": 3655513600,
+          "value": 23010,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 8,
+          "stateBefore": 3655513600,
+          "stateAfter": 2633739833,
+          "value": 7419,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        }
+      ]
+    },
+    {
+      "caseId": "seed-7fffffff",
+      "seed": 2147483647,
+      "seedState": 2147483647,
+      "seedInstructionCount": 14,
+      "draws": [
+        {
+          "draw": 1,
+          "stateBefore": 2147483647,
+          "stateAfter": 1043980748,
+          "value": 15929,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 2,
+          "stateBefore": 1043980748,
+          "stateAfter": 2436463637,
+          "value": 4409,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 3,
+          "stateBefore": 2436463637,
+          "stateAfter": 2793827114,
+          "value": 9862,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 4,
+          "stateBefore": 2793827114,
+          "stateAfter": 1751031067,
+          "value": 26718,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 5,
+          "stateBefore": 1751031067,
+          "stateAfter": 2718518968,
+          "value": 8713,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 6,
+          "stateBefore": 2718518968,
+          "stateAfter": 1849869457,
+          "value": 28226,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 7,
+          "stateBefore": 1849869457,
+          "stateAfter": 595070966,
+          "value": 9080,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 8,
+          "stateBefore": 595070966,
+          "stateAfter": 2101342199,
+          "value": 32063,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        }
+      ]
+    },
+    {
+      "caseId": "seed-80000000",
+      "seed": 2147483648,
+      "seedState": 2147483648,
+      "seedInstructionCount": 14,
+      "draws": [
+        {
+          "draw": 1,
+          "stateBefore": 2147483648,
+          "stateAfter": 2147495993,
+          "value": 0,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 2,
+          "stateBefore": 2147495993,
+          "stateAfter": 1406932606,
+          "value": 21468,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 3,
+          "stateBefore": 1406932606,
+          "stateAfter": 654583775,
+          "value": 9988,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 4,
+          "stateBefore": 654583775,
+          "stateAfter": 1449466924,
+          "value": 22117,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 5,
+          "stateBefore": 1449466924,
+          "stateAfter": 2376767221,
+          "value": 3498,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 6,
+          "stateBefore": 2376767221,
+          "stateAfter": 1109335178,
+          "value": 16927,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 7,
+          "stateBefore": 1109335178,
+          "stateAfter": 3199034107,
+          "value": 16045,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 8,
+          "stateBefore": 3199034107,
+          "stateAfter": 1293799192,
+          "value": 19741,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        }
+      ]
+    },
+    {
+      "caseId": "seed-ffffffff",
+      "seed": 4294967295,
+      "seedState": 4294967295,
+      "seedInstructionCount": 14,
+      "draws": [
+        {
+          "draw": 1,
+          "stateBefore": 4294967295,
+          "stateAfter": 3191464396,
+          "value": 15929,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 2,
+          "stateBefore": 3191464396,
+          "stateAfter": 288979989,
+          "value": 4409,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 3,
+          "stateBefore": 288979989,
+          "stateAfter": 646343466,
+          "value": 9862,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 4,
+          "stateBefore": 646343466,
+          "stateAfter": 3898514715,
+          "value": 26718,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 5,
+          "stateBefore": 3898514715,
+          "stateAfter": 571035320,
+          "value": 8713,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 6,
+          "stateBefore": 571035320,
+          "stateAfter": 3997353105,
+          "value": 28226,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 7,
+          "stateBefore": 3997353105,
+          "stateAfter": 2742554614,
+          "value": 9080,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 8,
+          "stateBefore": 2742554614,
+          "stateAfter": 4248825847,
+          "value": 32063,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        }
+      ]
+    },
+    {
+      "caseId": "seed-12345678",
+      "seed": 305419896,
+      "seedState": 305419896,
+      "seedInstructionCount": 14,
+      "draws": [
+        {
+          "draw": 1,
+          "stateBefore": 305419896,
+          "stateAfter": 191992145,
+          "value": 2929,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 2,
+          "stateBefore": 191992145,
+          "stateAfter": 1866972598,
+          "value": 28487,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 3,
+          "stateBefore": 1866972598,
+          "stateAfter": 773679799,
+          "value": 11805,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 4,
+          "stateBefore": 773679799,
+          "stateAfter": 2576638500,
+          "value": 6548,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 5,
+          "stateBefore": 2576638500,
+          "stateAfter": 2783768973,
+          "value": 9708,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 6,
+          "stateBefore": 2783768973,
+          "stateAfter": 2005532482,
+          "value": 30601,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 7,
+          "stateBefore": 2005532482,
+          "stateAfter": 546569043,
+          "value": 8339,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 8,
+          "stateBefore": 546569043,
+          "stateAfter": 1791458448,
+          "value": 27335,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        }
+      ]
+    },
+    {
+      "caseId": "seed-fc77a683",
+      "seed": 4235699843,
+      "seedState": 4235699843,
+      "seedInstructionCount": 14,
+      "draws": [
+        {
+          "draw": 1,
+          "stateBefore": 4235699843,
+          "stateAfter": 0,
+          "value": 0,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": true,
+          "instructionCount": 23
+        },
+        {
+          "draw": 2,
+          "stateBefore": 0,
+          "stateAfter": 12345,
+          "value": 0,
+          "multiplyExceeds32Bits": false,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 3,
+          "stateBefore": 12345,
+          "stateAfter": 3554416254,
+          "value": 21468,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 4,
+          "stateBefore": 3554416254,
+          "stateAfter": 2802067423,
+          "value": 9988,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 5,
+          "stateBefore": 2802067423,
+          "stateAfter": 3596950572,
+          "value": 22117,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 6,
+          "stateBefore": 3596950572,
+          "stateAfter": 229283573,
+          "value": 3498,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 7,
+          "stateBefore": 229283573,
+          "stateAfter": 3256818826,
+          "value": 16927,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 8,
+          "stateBefore": 3256818826,
+          "stateAfter": 1051550459,
+          "value": 16045,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        }
+      ]
+    },
+    {
+      "caseId": "seed-0dbdbb1e",
+      "seed": 230538014,
+      "seedState": 230538014,
+      "seedInstructionCount": 14,
+      "draws": [
+        {
+          "draw": 1,
+          "stateBefore": 230538014,
+          "stateAfter": 4294967295,
+          "value": 32767,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 2,
+          "stateBefore": 4294967295,
+          "stateAfter": 3191464396,
+          "value": 15929,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 3,
+          "stateBefore": 3191464396,
+          "stateAfter": 288979989,
+          "value": 4409,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 4,
+          "stateBefore": 288979989,
+          "stateAfter": 646343466,
+          "value": 9862,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 5,
+          "stateBefore": 646343466,
+          "stateAfter": 3898514715,
+          "value": 26718,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 6,
+          "stateBefore": 3898514715,
+          "stateAfter": 571035320,
+          "value": 8713,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 7,
+          "stateBefore": 571035320,
+          "stateAfter": 3997353105,
+          "value": 28226,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        },
+        {
+          "draw": 8,
+          "stateBefore": 3997353105,
+          "stateAfter": 2742554614,
+          "value": 9080,
+          "multiplyExceeds32Bits": true,
+          "additionExceeds32Bits": false,
+          "instructionCount": 23
+        }
+      ]
+    }
+  ]
+}

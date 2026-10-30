@@ -1,0 +1,1267 @@
+{
+  "format": "fft.sword-facing-contract",
+  "schemaVersion": 1,
+  "evidenceKind": "source-derived plus independently calculated authored vectors",
+  "decompRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "execution": "description-only; not an fft.behavior-fixture",
+  "implementationExecuted": false,
+  "common": {
+    "mapSize": [
+      3,
+      3,
+      1
+    ],
+    "flatHeight": 10,
+    "bodyHeight": 6,
+    "actorHp": 50,
+    "targetMaxHp": 50,
+    "physicalAttack": 5,
+    "weaponPower": 5,
+    "actorActiveCt": 0,
+    "targetReadyCt": 100,
+    "mp": 0,
+    "equipmentEvades": [
+      0,
+      0,
+      0
+    ],
+    "sameZodiac": true,
+    "modifiers": [],
+    "rngDrawCount": 0
+  },
+  "cardinalVectors": [
+    {
+      "id": "east-east-hit",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        2,
+        1,
+        0
+      ],
+      "actorFacing": "East",
+      "targetFacing": "West",
+      "targetClassEvade": 10,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "East",
+        "targetFacing": "West",
+        "targetHp": 25,
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 2516284547,
+        "draws": 6
+      },
+      "legacyActorFacing": "East",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "east-east-miss",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        2,
+        1,
+        0
+      ],
+      "actorFacing": "East",
+      "targetFacing": "West",
+      "targetClassEvade": 100,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "East",
+        "targetFacing": "West",
+        "targetHp": 50,
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "rngWord": 3295386429,
+        "draws": 4
+      },
+      "legacyActorFacing": "East",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "east-north-hit",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        2,
+        1,
+        0
+      ],
+      "actorFacing": "North",
+      "targetFacing": "West",
+      "targetClassEvade": 10,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "targetHp": 25,
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 2516284547,
+        "draws": 6
+      },
+      "legacyActorFacing": "East",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "east-north-miss",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        2,
+        1,
+        0
+      ],
+      "actorFacing": "North",
+      "targetFacing": "West",
+      "targetClassEvade": 100,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "targetHp": 50,
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "rngWord": 3295386429,
+        "draws": 4
+      },
+      "legacyActorFacing": "East",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "east-west-hit",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        2,
+        1,
+        0
+      ],
+      "actorFacing": "West",
+      "targetFacing": "West",
+      "targetClassEvade": 10,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "West",
+        "targetFacing": "West",
+        "targetHp": 25,
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 2516284547,
+        "draws": 6
+      },
+      "legacyActorFacing": "East",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "east-west-miss",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        2,
+        1,
+        0
+      ],
+      "actorFacing": "West",
+      "targetFacing": "West",
+      "targetClassEvade": 100,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "West",
+        "targetFacing": "West",
+        "targetHp": 50,
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "rngWord": 3295386429,
+        "draws": 4
+      },
+      "legacyActorFacing": "East",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "east-south-hit",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        2,
+        1,
+        0
+      ],
+      "actorFacing": "South",
+      "targetFacing": "West",
+      "targetClassEvade": 10,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "South",
+        "targetFacing": "West",
+        "targetHp": 25,
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 2516284547,
+        "draws": 6
+      },
+      "legacyActorFacing": "East",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "east-south-miss",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        2,
+        1,
+        0
+      ],
+      "actorFacing": "South",
+      "targetFacing": "West",
+      "targetClassEvade": 100,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "South",
+        "targetFacing": "West",
+        "targetHp": 50,
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "rngWord": 3295386429,
+        "draws": 4
+      },
+      "legacyActorFacing": "East",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "west-east-hit",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        0,
+        1,
+        0
+      ],
+      "actorFacing": "East",
+      "targetFacing": "East",
+      "targetClassEvade": 10,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "East",
+        "targetFacing": "East",
+        "targetHp": 25,
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 2516284547,
+        "draws": 6
+      },
+      "legacyActorFacing": "West",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "west-east-miss",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        0,
+        1,
+        0
+      ],
+      "actorFacing": "East",
+      "targetFacing": "East",
+      "targetClassEvade": 100,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "East",
+        "targetFacing": "East",
+        "targetHp": 50,
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "rngWord": 3295386429,
+        "draws": 4
+      },
+      "legacyActorFacing": "West",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "west-north-hit",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        0,
+        1,
+        0
+      ],
+      "actorFacing": "North",
+      "targetFacing": "East",
+      "targetClassEvade": 10,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "North",
+        "targetFacing": "East",
+        "targetHp": 25,
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 2516284547,
+        "draws": 6
+      },
+      "legacyActorFacing": "West",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "west-north-miss",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        0,
+        1,
+        0
+      ],
+      "actorFacing": "North",
+      "targetFacing": "East",
+      "targetClassEvade": 100,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "North",
+        "targetFacing": "East",
+        "targetHp": 50,
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "rngWord": 3295386429,
+        "draws": 4
+      },
+      "legacyActorFacing": "West",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "west-west-hit",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        0,
+        1,
+        0
+      ],
+      "actorFacing": "West",
+      "targetFacing": "East",
+      "targetClassEvade": 10,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "West",
+        "targetFacing": "East",
+        "targetHp": 25,
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 2516284547,
+        "draws": 6
+      },
+      "legacyActorFacing": "West",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "west-west-miss",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        0,
+        1,
+        0
+      ],
+      "actorFacing": "West",
+      "targetFacing": "East",
+      "targetClassEvade": 100,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "West",
+        "targetFacing": "East",
+        "targetHp": 50,
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "rngWord": 3295386429,
+        "draws": 4
+      },
+      "legacyActorFacing": "West",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "west-south-hit",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        0,
+        1,
+        0
+      ],
+      "actorFacing": "South",
+      "targetFacing": "East",
+      "targetClassEvade": 10,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "South",
+        "targetFacing": "East",
+        "targetHp": 25,
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 2516284547,
+        "draws": 6
+      },
+      "legacyActorFacing": "West",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "west-south-miss",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        0,
+        1,
+        0
+      ],
+      "actorFacing": "South",
+      "targetFacing": "East",
+      "targetClassEvade": 100,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "South",
+        "targetFacing": "East",
+        "targetHp": 50,
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "rngWord": 3295386429,
+        "draws": 4
+      },
+      "legacyActorFacing": "West",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "north-east-hit",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        1,
+        2,
+        0
+      ],
+      "actorFacing": "East",
+      "targetFacing": "South",
+      "targetClassEvade": 10,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "East",
+        "targetFacing": "South",
+        "targetHp": 25,
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 2516284547,
+        "draws": 6
+      },
+      "legacyActorFacing": "North",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "north-east-miss",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        1,
+        2,
+        0
+      ],
+      "actorFacing": "East",
+      "targetFacing": "South",
+      "targetClassEvade": 100,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "East",
+        "targetFacing": "South",
+        "targetHp": 50,
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "rngWord": 3295386429,
+        "draws": 4
+      },
+      "legacyActorFacing": "North",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "north-north-hit",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        1,
+        2,
+        0
+      ],
+      "actorFacing": "North",
+      "targetFacing": "South",
+      "targetClassEvade": 10,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "North",
+        "targetFacing": "South",
+        "targetHp": 25,
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 2516284547,
+        "draws": 6
+      },
+      "legacyActorFacing": "North",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "north-north-miss",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        1,
+        2,
+        0
+      ],
+      "actorFacing": "North",
+      "targetFacing": "South",
+      "targetClassEvade": 100,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "North",
+        "targetFacing": "South",
+        "targetHp": 50,
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "rngWord": 3295386429,
+        "draws": 4
+      },
+      "legacyActorFacing": "North",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "north-west-hit",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        1,
+        2,
+        0
+      ],
+      "actorFacing": "West",
+      "targetFacing": "South",
+      "targetClassEvade": 10,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "West",
+        "targetFacing": "South",
+        "targetHp": 25,
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 2516284547,
+        "draws": 6
+      },
+      "legacyActorFacing": "North",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "north-west-miss",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        1,
+        2,
+        0
+      ],
+      "actorFacing": "West",
+      "targetFacing": "South",
+      "targetClassEvade": 100,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "West",
+        "targetFacing": "South",
+        "targetHp": 50,
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "rngWord": 3295386429,
+        "draws": 4
+      },
+      "legacyActorFacing": "North",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "north-south-hit",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        1,
+        2,
+        0
+      ],
+      "actorFacing": "South",
+      "targetFacing": "South",
+      "targetClassEvade": 10,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "South",
+        "targetFacing": "South",
+        "targetHp": 25,
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 2516284547,
+        "draws": 6
+      },
+      "legacyActorFacing": "North",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "north-south-miss",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        1,
+        2,
+        0
+      ],
+      "actorFacing": "South",
+      "targetFacing": "South",
+      "targetClassEvade": 100,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "South",
+        "targetFacing": "South",
+        "targetHp": 50,
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "rngWord": 3295386429,
+        "draws": 4
+      },
+      "legacyActorFacing": "North",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "south-east-hit",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        1,
+        0,
+        0
+      ],
+      "actorFacing": "East",
+      "targetFacing": "North",
+      "targetClassEvade": 10,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "East",
+        "targetFacing": "North",
+        "targetHp": 25,
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 2516284547,
+        "draws": 6
+      },
+      "legacyActorFacing": "South",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "south-east-miss",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        1,
+        0,
+        0
+      ],
+      "actorFacing": "East",
+      "targetFacing": "North",
+      "targetClassEvade": 100,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "East",
+        "targetFacing": "North",
+        "targetHp": 50,
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "rngWord": 3295386429,
+        "draws": 4
+      },
+      "legacyActorFacing": "South",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "south-north-hit",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        1,
+        0,
+        0
+      ],
+      "actorFacing": "North",
+      "targetFacing": "North",
+      "targetClassEvade": 10,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "North",
+        "targetFacing": "North",
+        "targetHp": 25,
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 2516284547,
+        "draws": 6
+      },
+      "legacyActorFacing": "South",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "south-north-miss",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        1,
+        0,
+        0
+      ],
+      "actorFacing": "North",
+      "targetFacing": "North",
+      "targetClassEvade": 100,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "North",
+        "targetFacing": "North",
+        "targetHp": 50,
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "rngWord": 3295386429,
+        "draws": 4
+      },
+      "legacyActorFacing": "South",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "south-west-hit",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        1,
+        0,
+        0
+      ],
+      "actorFacing": "West",
+      "targetFacing": "North",
+      "targetClassEvade": 10,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "West",
+        "targetFacing": "North",
+        "targetHp": 25,
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 2516284547,
+        "draws": 6
+      },
+      "legacyActorFacing": "South",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "south-west-miss",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        1,
+        0,
+        0
+      ],
+      "actorFacing": "West",
+      "targetFacing": "North",
+      "targetClassEvade": 100,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "West",
+        "targetFacing": "North",
+        "targetHp": 50,
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "rngWord": 3295386429,
+        "draws": 4
+      },
+      "legacyActorFacing": "South",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "south-south-hit",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        1,
+        0,
+        0
+      ],
+      "actorFacing": "South",
+      "targetFacing": "North",
+      "targetClassEvade": 10,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "South",
+        "targetFacing": "North",
+        "targetHp": 25,
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 2516284547,
+        "draws": 6
+      },
+      "legacyActorFacing": "South",
+      "implementationStatus": "unexecuted"
+    },
+    {
+      "id": "south-south-miss",
+      "actorPosition": [
+        1,
+        1,
+        0
+      ],
+      "targetPosition": [
+        1,
+        0,
+        0
+      ],
+      "actorFacing": "South",
+      "targetFacing": "North",
+      "targetClassEvade": 100,
+      "seed": 1,
+      "expected": {
+        "actorFacing": "South",
+        "targetFacing": "North",
+        "targetHp": 50,
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "rngWord": 3295386429,
+        "draws": 4
+      },
+      "legacyActorFacing": "South",
+      "implementationStatus": "unexecuted"
+    }
+  ],
+  "boundaryVectors": [
+    {
+      "id": "target-ko",
+      "seed": 1,
+      "targetHp": 25,
+      "power": 5,
+      "expected": {
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 2516284547,
+        "draws": 6,
+        "actorFacing": "South",
+        "targetFacing": "West",
+        "targetHp": 0,
+        "targetStatus": "Dead"
+      }
+    },
+    {
+      "id": "critical",
+      "seed": 57,
+      "targetHp": 50,
+      "power": 5,
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "rngWord": 3448561432,
+        "draws": 7,
+        "actorFacing": "South",
+        "targetFacing": "West",
+        "targetHp": 5,
+        "targetStatus": "Critical"
+      }
+    },
+    {
+      "id": "zero-power",
+      "seed": 1,
+      "targetHp": 50,
+      "power": 0,
+      "expected": {
+        "hit": true,
+        "critical": false,
+        "damage": 0,
+        "rngWord": 2516284547,
+        "draws": 6,
+        "actorFacing": "South",
+        "targetFacing": "West",
+        "targetHp": 50,
+        "targetStatus": "None"
+      }
+    }
+  ],
+  "sourceRestoreBranches": [
+    {
+      "id": "living-saved",
+      "alive": true,
+      "current": 3072,
+      "saved": 0,
+      "expectedFacing": 0,
+      "expectedSaved": -1
+    },
+    {
+      "id": "living-no-saved",
+      "alive": true,
+      "current": 3072,
+      "saved": -1,
+      "expectedFacing": 3072,
+      "expectedSaved": -1
+    },
+    {
+      "id": "dead-saved",
+      "alive": false,
+      "current": 3072,
+      "saved": 0,
+      "expectedFacing": 3072,
+      "expectedSaved": -1
+    },
+    {
+      "id": "dead-no-saved",
+      "alive": false,
+      "current": 1024,
+      "saved": -1,
+      "expectedFacing": 1024,
+      "expectedSaved": -1
+    },
+    {
+      "id": "first-save-retained",
+      "alive": true,
+      "current": 3072,
+      "saved": 1024,
+      "expectedFacing": 1024,
+      "expectedSaved": -1
+    }
+  ],
+  "continuation": {
+    "mapSize": [
+      2,
+      1,
+      1
+    ],
+    "positions": {
+      "A": [
+        0,
+        0,
+        0
+      ],
+      "B": [
+        1,
+        0,
+        0
+      ]
+    },
+    "facings": {
+      "A": "West",
+      "B": "West"
+    },
+    "classEvades": {
+      "A": 100,
+      "B": 0
+    },
+    "hp": {
+      "A": 50,
+      "B": 50
+    },
+    "pa": 5,
+    "power": 5,
+    "seed": 1,
+    "count": 0,
+    "ticks": 0,
+    "ct": {
+      "A": 0,
+      "B": 100
+    },
+    "active": "A",
+    "commands": [
+      "Attack(A,B)",
+      "Wait(A)",
+      "Advance",
+      "Attack(B,A)"
+    ],
+    "afterFirst": {
+      "result": {
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 2516284547,
+        "draws": 6
+      },
+      "AHP": 50,
+      "BHP": 25,
+      "correctedAFacing": "West",
+      "legacyAFacing": "East"
+    },
+    "afterWait": {
+      "ACt": 20,
+      "rngWord": 2516284547,
+      "drawCount": 6
+    },
+    "afterReadiness": {
+      "active": "B",
+      "BCt": 0,
+      "raw": 23010,
+      "rngWord": 3655513600,
+      "drawCount": 7,
+      "ticks": 0
+    },
+    "correctedFinal": {
+      "result": {
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 595337866,
+        "draws": 6
+      },
+      "AHP": 25,
+      "BHP": 25,
+      "AFacing": "West",
+      "BFacing": "West",
+      "rngWord": 595337866,
+      "drawCount": 13
+    },
+    "legacyFinal": {
+      "result": {
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "rngWord": 180171308,
+        "draws": 4
+      },
+      "AHP": 50,
+      "BHP": 25,
+      "AFacing": "East",
+      "BFacing": "West",
+      "rngWord": 180171308,
+      "drawCount": 11
+    },
+    "implementationStatus": "unexecuted; arithmetic comparison only"
+  },
+  "scenarioSaveContinuation": {
+    "mapSize": [
+      2,
+      1,
+      1
+    ],
+    "positions": {
+      "A": [
+        0,
+        0,
+        0
+      ],
+      "B": [
+        1,
+        0,
+        0
+      ]
+    },
+    "initialPhase": "AddCt",
+    "initialCt": {
+      "A": 90,
+      "B": 90
+    },
+    "speed": 10,
+    "seed": 1,
+    "initialFacings": {
+      "A": "West",
+      "B": "West"
+    },
+    "classEvades": {
+      "A": 100,
+      "B": 0
+    },
+    "hp": 50,
+    "pa": 5,
+    "power": 5,
+    "commands": [
+      "Advance",
+      "Attack(A,B)",
+      "Wait(A)",
+      "Advance",
+      "Attack(B,A)"
+    ],
+    "checkpoints": 6,
+    "afterFirstReadiness": {
+      "active": "A",
+      "ticks": 1,
+      "ACt": 0,
+      "BCt": 100,
+      "rngWord": 1103527590,
+      "drawCount": 1
+    },
+    "afterFirstAttack": {
+      "result": {
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 3655513600,
+        "draws": 6
+      },
+      "AFacing": "West",
+      "BHP": 25,
+      "rngWord": 3655513600,
+      "drawCount": 7
+    },
+    "afterSecondReadiness": {
+      "active": "B",
+      "ticks": 1,
+      "ACt": 20,
+      "BCt": 0,
+      "rngWord": 2633739833,
+      "drawCount": 8
+    },
+    "correctedFinal": {
+      "result": {
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "rngWord": 2937909499,
+        "draws": 6
+      },
+      "AHP": 25,
+      "BHP": 25,
+      "rngWord": 2937909499,
+      "drawCount": 14
+    },
+    "legacyFinal": {
+      "result": {
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "rngWord": 836760821,
+        "draws": 4
+      },
+      "AHP": 50,
+      "BHP": 25,
+      "rngWord": 836760821,
+      "drawCount": 12
+    },
+    "implementationStatus": "unexecuted; reachable AddCt setup for existing scenario/save APIs"
+  },
+  "limits": [
+    "No C/original/emulator or new managed implementation execution.",
+    "Dead restore branches are source-only; actor death/reactions/mounts/continued attacks outside current profile.",
+    "Wait direction selection is excluded; no deliberate new facing is chosen in the continuation."
+  ]
+}

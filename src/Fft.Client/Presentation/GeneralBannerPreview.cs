@@ -1,0 +1,223 @@
+using System.Collections.Immutable;
+using System.Security.Cryptography;
+using System.Text.Json;
+using Zodiac.Content;
+using Zodiac.Framework;
+using Zodiac.Framework.Events;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+
+namespace Fft.Client.Presentation;
+
+public static class GeneralBannerPreview
+{
+    public static readonly AssetId BannerId = new("fft.ps1-us:banner/general-0");
+    public static BannerSceneState Start(LoadedGeneralBanner artwork, int hold = 60)
+    {
+        artwork.Definition.Validate();
+        var definition = artwork.Definition.ToLogicalDefinition(hold);
+        var program = new SceneEventProgram(new("sample:banner-preview/program"),
+            [new(4, SceneTaskClass.ConditionDisplay), new(new ConditionalEventInstruction(7, ConditionalEventOperation.Exit))]);
+        var scene = BannerSceneState.Create(program.Start(new(0, 0, 0, 0), SceneTaskState.Create(new("sample:banner-preview/scene")), new("sample:banner-preview/consumer")));
+        var attached = BannerSceneExecutor.AttachBanner(scene, definition, new("sample:banner-preview/owner"));
+        if (!attached.Accepted) throw new InvalidOperationException(attached.Diagnostic);
+        var run = BannerSceneExecutor.RunUntilBlocked(attached.State, 1);
+        if (!run.Accepted) throw new InvalidOperationException(run.Diagnostic);
+        return run.State;
+    }
+
+    public static int Run(string[] args)
+    {
+        try
+        {
+            var options = BannerPreviewOptions.Parse(args);
+            if (!OperatingSystem.IsWindows()) throw new PlatformNotSupportedException("Banner window currently supports Windows only.");
+            // No scene or task exists until both prepared files and GPU resources have loaded successfully.
+            var banner = PreparedGeneralBanner.Load(LooseAssetStore.Load(options.ContentRoot), BannerId);
+            string? check = CheckPath(options.CheckRoot);
+            using var window = new GeneralBannerWindow(banner, check, options);
+            window.Run();
+            if (check is not null && !window.CheckCompleted) throw new InvalidOperationException("Banner check did not finish.");
+            return 0;
+        }
+        catch (Exception e)
+        { Console.Error.WriteLine("Banner preview failed: " + e.Message); return 1; }
+    }
+
+    internal static string? CheckPath(string? root)
+    {
+        if (root is null) return null;
+        string check = Path.GetFullPath(root), scratch = Path.GetFullPath("scratch") + Path.DirectorySeparatorChar;
+        if (!check.StartsWith(scratch, StringComparison.OrdinalIgnoreCase) || Directory.Exists(check) || File.Exists(check))
+            throw new IOException("Check output must be a fresh directory beneath repository scratch/.");
+        for (string? at = check; at is not null; at = Path.GetDirectoryName(at))
+            if (Directory.Exists(at) && (File.GetAttributes(at) & FileAttributes.ReparsePoint) != 0)
+                throw new IOException("Reparse-point capture output is unsupported.");
+        return check;
+    }
+}
+
+/// <summary>The host samples explicit logical commands. Draw/rebuild only repaint the accepted snapshot.</summary>
+internal sealed class GeneralBannerWindow : Game
+{
+    private readonly LoadedGeneralBanner banner;
+    private readonly string? check;
+    private readonly BannerPreviewOptions options;
+    private readonly GraphicsDeviceManager graphics;
+    private SpriteBatch? batch;
+    private Texture2D? texture;
+    private RenderTarget2D? target;
+    private BannerSceneState? state;
+    private readonly OrderedBannerSession? orderedSession;
+    private OrderedBannerState? orderedState;
+    private readonly List<BannerSceneTrace> orderedTrace = [];
+    private long? workerClearTick;
+    private long? eventExitTick;
+    private long SceneTick => orderedState?.Event.Tick ?? state!.Event.Tick;
+    private GeneralBannerState? Banner => orderedState?.Banner ?? state?.Banner;
+    private bool Finished => orderedState is not null ? orderedState.Event.Exited && (Banner is null || Banner.IsTerminal) : Banner!.IsTerminal;
+    private KeyboardState previous;
+    private long painted = -1;
+    private bool rebuild;
+    private readonly List<object> captures = [];
+    private static readonly HashSet<long> CaptureTicks = [0, 1, 2, 5, 9, 10, 11, 14, 20, 80, 81, 82, 85, 90, 91];
+    public bool CheckCompleted { get; private set; }
+
+    internal GeneralBannerWindow(LoadedGeneralBanner banner, string? check, BannerPreviewOptions options, OrderedBannerSession? orderedSession = null)
+    {
+        this.banner = banner; this.check = check; this.options = options;
+        this.orderedSession = orderedSession;
+        graphics = new(this) { PreferredBackBufferWidth = 768, PreferredBackBufferHeight = 720, SynchronizeWithVerticalRetrace = true };
+        Window.Title = options.FiveBit ? $"General banner | bounded RGB5, dither {(options.Dither == true ? "on" : "off")} | Space tick, C Circle tick, Esc close" :
+            "General banner | modern RGB8 preview | Space tick, C Circle tick, Esc close";
+        Window.AllowUserResizing = true;
+        if (orderedSession is not null) Window.Title = "Authored ordered banner | preloaded | Space tick, C Circle tick, Esc close";
+        graphics.DeviceReset += (_, _) => rebuild = true;
+        IsMouseVisible = true;
+    }
+
+    protected override void LoadContent()
+    {
+        CreateResources();
+        if (check is not null) Directory.CreateDirectory(check);
+        if (orderedSession is null) state = GeneralBannerPreview.Start(banner);
+        else
+        {
+            var started = orderedSession.Start(new("sample:ordered-banner/scene"), new("sample:ordered-banner/consumer"));
+            if (!started.Accepted) throw new InvalidOperationException(started.Diagnostic);
+            orderedState = started.State;
+            if (orderedState.Event.Exited) eventExitTick = orderedState.Event.Tick;
+            orderedTrace.AddRange(started.Trace);
+        }
+        Console.WriteLine(options.FiveBit ? FiveBitGeneralBannerPresentation.Policy : GeneralBannerPresentation.Policy);
+    }
+
+    private void CreateResources()
+    {
+        target?.Dispose(); texture?.Dispose(); batch?.Dispose();
+        batch = new(GraphicsDevice); texture = new(GraphicsDevice, 256, 240);
+        target = new(GraphicsDevice, 256, 240, false, SurfaceFormat.Color, DepthFormat.None);
+        rebuild = false;
+    }
+
+    protected override void Update(GameTime gameTime)
+    {
+        var keys = Keyboard.GetState();
+        if (keys.IsKeyDown(Keys.Escape)) Exit();
+        bool advance = check is not null ? (state is not null || orderedState is not null) && painted == SceneTick && !CheckCompleted :
+            (keys.IsKeyDown(Keys.Space) && previous.IsKeyUp(Keys.Space)) || (keys.IsKeyDown(Keys.C) && previous.IsKeyUp(Keys.C));
+        if (advance && !rebuild && (state is not null || orderedState is not null) && !Finished)
+        {
+            if (orderedState is not null)
+            {
+                if (check is not null && SceneTick >= 4096) throw new InvalidOperationException("Ordered banner check exceeded its 4096-tick budget.");
+                var result = OrderedBannerExecutor.AdvanceTick(orderedState, check is null && keys.IsKeyDown(Keys.C), [], ConditionalEventProgram.MaxInstructions);
+                if (!result.Accepted) throw new InvalidOperationException(result.Diagnostic);
+                orderedState = result.State;
+                orderedTrace.AddRange(result.Trace);
+                if (Banner?.IsTerminal == true) workerClearTick ??= SceneTick;
+                if (orderedState.Event.Exited) eventExitTick ??= SceneTick;
+            }
+            else
+            {
+                var result = BannerSceneExecutor.AdvanceTick(state!, check is null && keys.IsKeyDown(Keys.C), [], 1);
+                if (!result.Accepted) throw new InvalidOperationException(result.Diagnostic);
+                state = result.State;
+            }
+        }
+        previous = keys;
+        base.Update(gameTime);
+    }
+
+    protected override void Draw(GameTime gameTime)
+    {
+        if ((state is null && orderedState is null) || Window.ClientBounds.Width <= 0 || Window.ClientBounds.Height <= 0) return;
+        if (rebuild) CreateResources(); // Rebuild never changes state or supplies terminal facts.
+        var projection = Banner is { } snapshot ? GeneralBannerPresentation.Project(snapshot) : ImmutableArray<BannerDraw>.Empty;
+        // The preview explicitly supplies state for each draw; it does not infer game GPU state.
+        var rasterDraws = projection.Select(g => new BannerRasterDraw(g, new(options.Dither == true, 0, 0))).ToImmutableArray();
+        byte[] rgba = options.FiveBit ? FiveBitGeneralBannerPresentation.Compose(banner, rasterDraws) : GeneralBannerPresentation.Compose(banner, projection);
+        texture!.SetData(rgba);
+        GraphicsDevice.SetRenderTarget(target);
+        GraphicsDevice.Clear(Color.Black);
+        batch!.Begin(blendState: BlendState.Opaque, samplerState: SamplerState.PointClamp);
+        batch.Draw(texture, Vector2.Zero, Color.White);
+        batch.End();
+        GraphicsDevice.SetRenderTarget(null);
+        if (check is not null && painted != SceneTick && (CaptureTicks.Contains(SceneTick) ||
+            (orderedState is not null && (Finished || workerClearTick == SceneTick || Banner?.StartTick == SceneTick))))
+        {
+            var readback = new byte[rgba.Length]; target!.GetData(readback);
+            if (!rgba.AsSpan().SequenceEqual(readback)) throw new InvalidOperationException("GPU point/opaque output differs from CPU canvas.");
+            string file = $"tick-{SceneTick:D3}.png";
+            using (var stream = File.Create(Path.Combine(check, file))) target.SaveAsPng(stream, 256, 240);
+            if (options.FiveBit)
+                captures.Add(new { tick = SceneTick, phase = Banner?.Phase.ToString() ?? "NotAdmitted", file,
+                    rgbaSha256 = Convert.ToHexStringLower(SHA256.HashData(rgba)), pieces = projection,
+                    drawStates = rasterDraws.Select(d => new { pieceIndex = d.Geometry.PieceIndex, ditherEnabled = d.State.DitherEnabled,
+                        framebufferX = d.State.FramebufferX, framebufferY = d.State.FramebufferY }).ToArray() });
+            else captures.Add(new { tick = SceneTick, phase = Banner?.Phase.ToString() ?? "NotAdmitted", file,
+                rgbaSha256 = Convert.ToHexStringLower(SHA256.HashData(rgba)), pieces = projection });
+        }
+        GraphicsDevice.Clear(Color.Black);
+        int scale = Math.Max(1, Math.Min(Window.ClientBounds.Width / 256, Window.ClientBounds.Height / 240));
+        batch.Begin(blendState: BlendState.Opaque, samplerState: SamplerState.PointClamp);
+        batch.Draw(target!, new Rectangle((Window.ClientBounds.Width - 256 * scale) / 2, (Window.ClientBounds.Height - 240 * scale) / 2, 256 * scale, 240 * scale), Color.White);
+        batch.End();
+        painted = SceneTick;
+        if (check is not null && Finished && !CheckCompleted)
+        {
+            object receipt = orderedState is not null ? new
+            {
+                format = "fft.ordered-banner-capture", schemaVersion = 1, profile = Zodiac.Content.Events.PreparedOrderedBannerEvent.Profile,
+                eventId = orderedSession!.Definition.Id.Value, source = orderedSession.Definition.Source,
+                artworkId = orderedSession.Definition.ArtworkId.Value, ownerId = orderedSession.Definition.OwnerId.Value,
+                precision = options.FiveBit ? "five-bit" : "rgb8", ditherEnabled = options.Dither,
+                policy = options.FiveBit ? FiveBitGeneralBannerPresentation.Policy : GeneralBannerPresentation.Policy,
+                completionTick = SceneTick, workerClearTick, eventExitTick, captures, finalState = orderedState,
+                traceSha256 = Convert.ToHexStringLower(SHA256.HashData(JsonSerializer.SerializeToUtf8Bytes(orderedTrace))),
+                rendererTaskAcknowledgments = 0, originalComparison = "not performed",
+                domain = "authored preloaded post-readiness; no original startup duration or physical display latency claim",
+            } : options.FiveBit ? (object)new
+            {
+                format = "fft.general-banner-native-capture", schemaVersion = 1, precision = "five-bit",
+                policy = FiveBitGeneralBannerPresentation.Policy, ditherEnabled = options.Dither!.Value,
+                framebufferOrigin = new[] { 0, 0 }, referenceRevision = banner.Definition.Source.ReferenceRevision,
+                completionTick = SceneTick, phase = Banner!.Phase.ToString(), captures,
+                originalComparison = "pending", rendererTaskAcknowledgments = 0,
+            } : (object)new
+            {
+                policy = GeneralBannerPresentation.Policy, referenceRevision = banner.Definition.Source.ReferenceRevision,
+                completionTick = SceneTick, phase = Banner!.Phase.ToString(), captures,
+                originalComparison = "pending", rendererTaskAcknowledgments = 0,
+            };
+            File.WriteAllText(Path.Combine(check, "check.json"), JsonSerializer.Serialize(receipt, new JsonSerializerOptions { WriteIndented = true }) + "\n");
+            CheckCompleted = true; Exit();
+        }
+        base.Draw(gameTime);
+    }
+
+    protected override void UnloadContent()
+    { target?.Dispose(); texture?.Dispose(); batch?.Dispose(); base.UnloadContent(); }
+}

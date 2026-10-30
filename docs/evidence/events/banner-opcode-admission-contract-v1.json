@@ -1,0 +1,653 @@
+{
+  "format": "fft.banner-opcode-admission-contract-expectations",
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "managedBase": "07431935a64890db4524ae0be223a9c688392d21",
+  "specificationOnly": true,
+  "executed": false,
+  "proofId": "sample:ordered-banner-opcode-contract/v1",
+  "proposedProfile": "sample:event-profile/non-tutorial-speed1-preloaded-banner-ordered-v1",
+  "evidencePolicy": "Independently authored expectations; no runtime fixture, implemented reducer or original event replay.",
+  "defaultSetup": {
+    "sceneRunId": "sample:scene/ordered-banner-a",
+    "ownerId": "sample:owner/a",
+    "consumerId": "sample:consumer/a",
+    "artworkId": "sample:art/general-banner-0",
+    "condition": 8,
+    "hold": 60,
+    "preloaded": true,
+    "tick": 0,
+    "variables": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "program": "Display(8,H) at 4; E5(56) at 7; D4 synthetic exit at 10; DB unreachable search sentinel at 12",
+    "instructionBudget": 8192,
+    "updateBudget": 64,
+    "unmanagedFacts": [],
+    "circleSample": false,
+    "start": "Create scene then RunUntilBlocked; admission, first yield and barrier entry consume no tick"
+  },
+  "tickPhases": [
+    "Validate candidate and increment clock",
+    "Poll/resume old VM suspension using prior worker facts",
+    "Pump VM and admit any new managed instance",
+    "Apply post-VM unmanaged facts in supplied order",
+    "Advance previously existing managed effect; newborn stays at first yield",
+    "Append driver terminal fact if any",
+    "Publish all state/trace atomically"
+  ],
+  "timing": {
+    "naturalWorkerClear": "start + H + 31",
+    "waitingParentResume": "start + H + 32",
+    "circleExtraActiveYield": "press tick",
+    "circleWorkerClear": "press tick + 1",
+    "circleWaitingParentResume": "press tick + 2"
+  },
+  "scope": {
+    "coreCaseIds": [
+      "BOP-001",
+      "BOP-002",
+      "BOP-003",
+      "BOP-004",
+      "BOP-005",
+      "BOP-006",
+      "BOP-007",
+      "BOP-008",
+      "BOP-009",
+      "BOP-010",
+      "BOP-011",
+      "BOP-012",
+      "BOP-013",
+      "BOP-014",
+      "BOP-015",
+      "BOP-016",
+      "BOP-017",
+      "BOP-018",
+      "BOP-019",
+      "BOP-020",
+      "BOP-021",
+      "BOP-022",
+      "BOP-023",
+      "BOP-024",
+      "BOP-025",
+      "BOP-026",
+      "BOP-027"
+    ],
+    "contentHostCaseIds": [
+      "BOP-028"
+    ]
+  },
+  "cases": [
+    {
+      "id": "BOP-001",
+      "title": "Asynchronous birth without an implicit wait",
+      "layer": "Core",
+      "given": {},
+      "commands": [
+        "RunUntilBlocked at T=0, budgets 3 instructions / 1 update"
+      ],
+      "expected": {
+        "tick": 0,
+        "taskSequence": 1,
+        "taskRevision": 0,
+        "effectPhase": "Revealing",
+        "progress": [
+          0,
+          0,
+          0
+        ],
+        "startTick": 0,
+        "waitingAt": 7,
+        "barrier": "Pending",
+        "nextOffset": 10,
+        "circleConsumed": false,
+        "updates": 1,
+        "instructions": 2
+      }
+    },
+    {
+      "id": "BOP-002",
+      "title": "Natural hold 0",
+      "layer": "Core",
+      "given": {
+        "hold": 0
+      },
+      "commands": [
+        "Run default setup",
+        "Advance false Circle through parent exit"
+      ],
+      "expected": {
+        "effectClearedAt": 31,
+        "parentResumedAt": 32,
+        "progress": [
+          20,
+          0,
+          10
+        ],
+        "exitCause": "Natural",
+        "barrierAtClear": "Pending",
+        "terminalRevision": 1
+      }
+    },
+    {
+      "id": "BOP-003",
+      "title": "Natural hold 60",
+      "layer": "Core",
+      "given": {
+        "hold": 60
+      },
+      "commands": [
+        "Run default setup",
+        "Advance false Circle through parent exit"
+      ],
+      "expected": {
+        "effectClearedAt": 91,
+        "parentResumedAt": 92,
+        "progress": [
+          20,
+          60,
+          10
+        ],
+        "exitCause": "Natural",
+        "barrierAtClear": "Pending",
+        "terminalRevision": 1
+      }
+    },
+    {
+      "id": "BOP-004",
+      "title": "Natural hold 255",
+      "layer": "Core",
+      "given": {
+        "hold": 255
+      },
+      "commands": [
+        "Run default setup",
+        "Advance false Circle through parent exit"
+      ],
+      "expected": {
+        "effectClearedAt": 286,
+        "parentResumedAt": 287,
+        "progress": [
+          20,
+          255,
+          10
+        ],
+        "exitCause": "Natural",
+        "barrierAtClear": "Pending",
+        "terminalRevision": 1
+      }
+    },
+    {
+      "id": "BOP-005",
+      "title": "First reveal skip",
+      "layer": "Core",
+      "given": {},
+      "commands": [
+        "Run default setup",
+        "Circle true only at tick 1; false on other ticks"
+      ],
+      "expected": {
+        "extraActiveExitYieldAt": 1,
+        "effectClearedAt": 2,
+        "parentResumedAt": 3,
+        "progress": [
+          0,
+          0,
+          0
+        ],
+        "exitCause": "CircleSkipped",
+        "barrierAtClear": "Pending"
+      }
+    },
+    {
+      "id": "BOP-006",
+      "title": "Reveal skip after five iterations",
+      "layer": "Core",
+      "given": {},
+      "commands": [
+        "Run default setup",
+        "Circle true only at tick 6; false on other ticks"
+      ],
+      "expected": {
+        "extraActiveExitYieldAt": 6,
+        "effectClearedAt": 7,
+        "parentResumedAt": 8,
+        "progress": [
+          5,
+          0,
+          0
+        ],
+        "exitCause": "CircleSkipped",
+        "barrierAtClear": "Pending"
+      }
+    },
+    {
+      "id": "BOP-007",
+      "title": "First hold skip",
+      "layer": "Core",
+      "given": {},
+      "commands": [
+        "Run default setup",
+        "Circle true only at tick 21; false on other ticks"
+      ],
+      "expected": {
+        "extraActiveExitYieldAt": 21,
+        "effectClearedAt": 22,
+        "parentResumedAt": 23,
+        "progress": [
+          20,
+          0,
+          0
+        ],
+        "exitCause": "CircleSkipped",
+        "barrierAtClear": "Pending"
+      }
+    },
+    {
+      "id": "BOP-008",
+      "title": "Hold skip after one hold iteration",
+      "layer": "Core",
+      "given": {},
+      "commands": [
+        "Run default setup",
+        "Circle true only at tick 22; false on other ticks"
+      ],
+      "expected": {
+        "extraActiveExitYieldAt": 22,
+        "effectClearedAt": 23,
+        "parentResumedAt": 24,
+        "progress": [
+          20,
+          1,
+          0
+        ],
+        "exitCause": "CircleSkipped",
+        "barrierAtClear": "Pending"
+      }
+    },
+    {
+      "id": "BOP-009",
+      "title": "Circle during hide is ignored",
+      "layer": "Core",
+      "given": {},
+      "commands": [
+        "Run default setup",
+        "Circle true only at tick 82"
+      ],
+      "expected": {
+        "progressAt82": [
+          20,
+          60,
+          2
+        ],
+        "phaseAt82": "Hiding",
+        "effectClearedAt": 91,
+        "parentResumedAt": 92,
+        "exitCause": "Natural"
+      }
+    },
+    {
+      "id": "BOP-010",
+      "title": "Zero hold has no deferred Circle skip",
+      "layer": "Core",
+      "given": {
+        "hold": 0
+      },
+      "commands": [
+        "Run default setup",
+        "Circle true only at tick 21"
+      ],
+      "expected": {
+        "progressAt21": [
+          20,
+          0,
+          1
+        ],
+        "phaseAt21": "Hiding",
+        "effectClearedAt": 31,
+        "parentResumedAt": 32,
+        "exitCause": "Natural"
+      }
+    },
+    {
+      "id": "BOP-011",
+      "title": "Birth after frame-wait resumption does not double-step",
+      "layer": "Core",
+      "given": {
+        "program": "F1(1) at 4; Display(8,60) at 7; E5(56) at 10; D4 at 13; DB at 15"
+      },
+      "commands": [
+        "RunUntilBlocked at 0",
+        "AdvanceTick 1 with Circle true",
+        "AdvanceTick 2 with Circle false"
+      ],
+      "expected": {
+        "startTick": 1,
+        "progressAt1": [
+          0,
+          0,
+          0
+        ],
+        "progressAt2": [
+          1,
+          0,
+          0
+        ],
+        "barrierEnteredAt": 1,
+        "noDeferredSkip": true,
+        "effectClearedAt": 92,
+        "parentResumedAt": 93
+      }
+    },
+    {
+      "id": "BOP-012",
+      "title": "No matching worker still requires a barrier yield",
+      "layer": "Core",
+      "given": {
+        "program": "E5(56) at 4; D4 at 7; DB at 9; no admission"
+      },
+      "commands": [
+        "RunUntilBlocked at 0",
+        "AdvanceTick 1 with false Circle"
+      ],
+      "expected": {
+        "barrierPendingAt0": true,
+        "parentResumedAt": 1,
+        "totalTasks": 0
+      }
+    },
+    {
+      "id": "BOP-013",
+      "title": "Sequential empty barriers cannot share a poll",
+      "layer": "Core",
+      "given": {
+        "program": "E5(56) at 4; E5(56) at 7; D4 at 10; DB at 12; no admission"
+      },
+      "commands": [
+        "RunUntilBlocked at 0",
+        "AdvanceTick 1",
+        "AdvanceTick 2"
+      ],
+      "expected": {
+        "waitingAtAfter1": 7,
+        "firstReleasedAt": 1,
+        "secondReleasedAt": 2,
+        "parentResumedAt": 2
+      }
+    },
+    {
+      "id": "BOP-014",
+      "title": "Other owners in class 56 delay the same barrier",
+      "layer": "Core",
+      "given": {
+        "otherOwnerRunningConditionTask": true
+      },
+      "commands": [
+        "Run default setup",
+        "Other owner supplies Complete in post-VM batch at tick 92"
+      ],
+      "expected": {
+        "managedEffectClearedAt": 91,
+        "parentStillWaitingAt92": true,
+        "parentResumedAt": 93,
+        "liveMembership": "all owners"
+      }
+    },
+    {
+      "id": "BOP-015",
+      "title": "Terminal worker facts are not visible retroactively",
+      "layer": "Core",
+      "given": {},
+      "commands": [
+        "Run default setup",
+        "Advance through tick 91",
+        "Advance tick 92"
+      ],
+      "expected": {
+        "taskTerminalAt91": true,
+        "barrierAt91": "Pending",
+        "vmStillWaitingAt91": true,
+        "barrierReleasedAt": 92
+      }
+    },
+    {
+      "id": "BOP-016",
+      "title": "A post-poll Start does not re-block released parent",
+      "layer": "Core",
+      "given": {},
+      "commands": [
+        "Run default setup through 91",
+        "Advance 92 with an unmanaged class-56 Start in post-VM batch"
+      ],
+      "expected": {
+        "parentExitedAt": 92,
+        "barrier": "Released",
+        "newUnmanagedTaskLive": true,
+        "pastPollRepeated": false
+      }
+    },
+    {
+      "id": "BOP-017",
+      "title": "Arithmetic failure after tentative admission rolls back the call",
+      "layer": "Core",
+      "given": {
+        "program": "Display; AddImmediate overflowing proof variable; E5; D4; DB",
+        "variable0": 65535
+      },
+      "commands": [
+        "RunUntilBlocked with sufficient budgets"
+      ],
+      "expected": {
+        "rejected": true,
+        "exactInputStateReturned": true,
+        "trace": [],
+        "nextSequence": 1,
+        "totalTasks": 0
+      }
+    },
+    {
+      "id": "BOP-018",
+      "title": "Instruction exhaustion rolls back tentative admission",
+      "layer": "Core",
+      "given": {},
+      "commands": [
+        "RunUntilBlocked with instructionBudget 1, updateBudget 1"
+      ],
+      "expected": {
+        "rejected": true,
+        "reason": "InstructionBudgetExceeded",
+        "exactInputStateReturned": true,
+        "trace": [],
+        "totalTasks": 0
+      }
+    },
+    {
+      "id": "BOP-019",
+      "title": "One cumulative update budget covers generated completion",
+      "layer": "Core",
+      "given": {
+        "atTick": 90
+      },
+      "commands": [
+        "Advance 91 with 32 unmanaged Starts followed by their 32 Completions and updateBudget 64; generated managed Complete would be fact 65"
+      ],
+      "expected": {
+        "rejected": true,
+        "exactInputStateReturned": true,
+        "tick": 90,
+        "progress": [
+          20,
+          60,
+          10
+        ],
+        "effectPhase": "ExitYield",
+        "trace": []
+      }
+    },
+    {
+      "id": "BOP-020",
+      "title": "Later completions cannot free capacity for earlier admission",
+      "layer": "Core",
+      "given": {
+        "liveTasks": 64,
+        "program": "F1(1); Display; E5; D4; DB",
+        "state": "blocked before F1 resumes at tick 1"
+      },
+      "commands": [
+        "Advance tick 1 with a valid unmanaged Complete in the post-VM batch; admission would occur earlier in the same call"
+      ],
+      "expected": {
+        "rejected": true,
+        "reason": "LiveTaskLimitExceeded",
+        "exactInputStateReturned": true,
+        "trace": [],
+        "laterFactsReordered": false
+      }
+    },
+    {
+      "id": "BOP-021",
+      "title": "Missing or mismatched ready binding cannot admit a task",
+      "layer": "Core",
+      "given": {
+        "readyBinding": "missing or wrong logical artwork/owner identity"
+      },
+      "commands": [
+        "Create/run the selected ordered scene boundary"
+      ],
+      "expected": {
+        "rejected": true,
+        "noTaskAllocated": true,
+        "noTickConsumed": true,
+        "noIdentityConsumed": true
+      }
+    },
+    {
+      "id": "BOP-022",
+      "title": "External facts cannot forge managed lifetime",
+      "layer": "Core",
+      "given": {},
+      "commands": [
+        "Supply Phase/Complete/Cancel naming the managed task, once live and once terminal"
+      ],
+      "expected": {
+        "rejected": true,
+        "exactInputStateReturned": true,
+        "trace": [],
+        "terminalRecordProtected": true
+      }
+    },
+    {
+      "id": "BOP-023",
+      "title": "Interpreter exit/restart retains scene-owned worker",
+      "layer": "Core",
+      "given": {
+        "program": "Display at 4; D4 at 7; DB at 9"
+      },
+      "commands": [
+        "Run at 0, exiting VM without a barrier",
+        "Start fresh consumer with E5(56), preserving scene state",
+        "Advance false Circle"
+      ],
+      "expected": {
+        "oldConsumerExitedAt": 0,
+        "managedTaskRetained": true,
+        "clockReset": false,
+        "sameTaskId": true,
+        "effectClearedAt": 91,
+        "newConsumerResumedAt": 92
+      }
+    },
+    {
+      "id": "BOP-024",
+      "title": "A retained terminal instance prevents second admission",
+      "layer": "Core",
+      "given": {
+        "firstBannerTerminal": true,
+        "newConsumer": true
+      },
+      "commands": [
+        "Reach DisplayConditions again in the same scene run"
+      ],
+      "expected": {
+        "rejected": true,
+        "exactInputStateReturned": true,
+        "newManagedTaskAllocated": false
+      }
+    },
+    {
+      "id": "BOP-025",
+      "title": "Render omission/repetition cannot change replay",
+      "layer": "Core",
+      "given": {},
+      "commands": [
+        "Replay the same accepted command history with normal draws, omitted draws and repeated snapshots"
+      ],
+      "expected": {
+        "vmStateEqual": true,
+        "effectStateEqual": true,
+        "taskStateEqual": true,
+        "traceEqual": true,
+        "identitiesEqual": true
+      }
+    },
+    {
+      "id": "BOP-026",
+      "title": "Acknowledged owner cancellation is post-VM and distinct from Circle",
+      "layer": "Core",
+      "given": {},
+      "commands": [
+        "Run default setup",
+        "Advance 1 with false Circle and valid owner cancellation",
+        "Advance 2"
+      ],
+      "expected": {
+        "effectCancelledAt": 1,
+        "taskCancelledAt": 1,
+        "parentResumedAt": 2,
+        "exitCause": "OwnerAcknowledgedCancellation",
+        "barrierAt1": "Pending"
+      }
+    },
+    {
+      "id": "BOP-027",
+      "title": "Checked counter and identity overflow reject atomically",
+      "layer": "Core",
+      "given": {
+        "counter": "tick or task sequence at maximum representable value"
+      },
+      "commands": [
+        "Request the corresponding tick/admission operation"
+      ],
+      "expected": {
+        "rejected": true,
+        "exactInputStateReturned": true,
+        "trace": [],
+        "wrappedCounter": false
+      }
+    },
+    {
+      "id": "BOP-028",
+      "title": "Separate profile, byte operands and readiness/provenance gates",
+      "layer": "Content/host (ZOD-082)",
+      "given": {
+        "profile": "proposed new profile only"
+      },
+      "commands": [
+        "Prepare/load authored raw and processed fixtures with condition 8 and holds 0,1,60,255",
+        "Reject old profiles, WORLD/tutorial/speed changes, condition 0/7/9, >1 display record, invalid holds, unknown records even unreachable, retail provenance, event 4 and event 401",
+        "Fail prepared artwork/resource loading before scene creation"
+      ],
+      "expected": {
+        "holdDecodedAsUnsignedByte": true,
+        "conditionDecodedSeparately": true,
+        "oldProfilesUnchanged": true,
+        "noSceneOnReadinessFailure": true,
+        "noRetailAdmission": true
+      }
+    }
+  ]
+}

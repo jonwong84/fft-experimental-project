@@ -1,0 +1,7314 @@
+{
+  "format": "fft.flat-ai-movement-source-description",
+  "schemaVersion": 1,
+  "ticket": "ZOD-120",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "execution": "offline-closed-domain-description",
+  "productionImplemented": false,
+  "domain": "Exactly two living ordinary unmounted stable opponents; body6; lower dry flat height10; certified effective cost1; rectangle1..16",
+  "vectorCount": 48,
+  "vectors": [
+    {
+      "id": "move-zero",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "origin": [
+          2,
+          2
+        ],
+        "enemy": [
+          4,
+          4
+        ],
+        "destination": [
+          3,
+          2
+        ],
+        "move": 0,
+        "jump": 0,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 0,
+        "originRemainingRange": 1,
+        "jumpHalf": 0,
+        "remainingRanges": [
+          {
+            "tile": [
+              2,
+              2
+            ],
+            "remaining": 1
+          }
+        ],
+        "physicalDestinations": [],
+        "aiOrigins": [
+          [
+            2,
+            2
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 2,
+            "values": [
+              6,
+              5,
+              4,
+              3,
+              2
+            ]
+          }
+        ],
+        "path": null,
+        "packedSteps": null,
+        "executionFinalHeading": null,
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "east-one",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "origin": [
+          2,
+          2
+        ],
+        "enemy": [
+          4,
+          4
+        ],
+        "destination": [
+          3,
+          2
+        ],
+        "move": 1,
+        "jump": 0,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 1,
+        "originRemainingRange": 2,
+        "jumpHalf": 0,
+        "remainingRanges": [
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              1,
+              2
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              2,
+              2
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              3,
+              2
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              2,
+              3
+            ],
+            "remaining": 1
+          }
+        ],
+        "physicalDestinations": [
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "aiOrigins": [
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 1,
+            "values": [
+              7,
+              6,
+              5,
+              4,
+              3
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              6,
+              5,
+              4,
+              3,
+              2
+            ]
+          },
+          {
+            "y": 3,
+            "values": [
+              5,
+              4,
+              3,
+              2,
+              1
+            ]
+          }
+        ],
+        "path": [
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ]
+        ],
+        "packedSteps": [
+          0
+        ],
+        "executionFinalHeading": "East",
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "west-one",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "origin": [
+          2,
+          2
+        ],
+        "enemy": [
+          4,
+          4
+        ],
+        "destination": [
+          1,
+          2
+        ],
+        "move": 1,
+        "jump": 0,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 1,
+        "originRemainingRange": 2,
+        "jumpHalf": 0,
+        "remainingRanges": [
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              1,
+              2
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              2,
+              2
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              3,
+              2
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              2,
+              3
+            ],
+            "remaining": 1
+          }
+        ],
+        "physicalDestinations": [
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "aiOrigins": [
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 1,
+            "values": [
+              7,
+              6,
+              5,
+              4,
+              3
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              6,
+              5,
+              4,
+              3,
+              2
+            ]
+          },
+          {
+            "y": 3,
+            "values": [
+              5,
+              4,
+              3,
+              2,
+              1
+            ]
+          }
+        ],
+        "path": [
+          [
+            2,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "packedSteps": [
+          64
+        ],
+        "executionFinalHeading": "West",
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "north-one",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "origin": [
+          2,
+          2
+        ],
+        "enemy": [
+          4,
+          4
+        ],
+        "destination": [
+          2,
+          3
+        ],
+        "move": 1,
+        "jump": 0,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 1,
+        "originRemainingRange": 2,
+        "jumpHalf": 0,
+        "remainingRanges": [
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              1,
+              2
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              2,
+              2
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              3,
+              2
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              2,
+              3
+            ],
+            "remaining": 1
+          }
+        ],
+        "physicalDestinations": [
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "aiOrigins": [
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 1,
+            "values": [
+              7,
+              6,
+              5,
+              4,
+              3
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              6,
+              5,
+              4,
+              3,
+              2
+            ]
+          },
+          {
+            "y": 3,
+            "values": [
+              5,
+              4,
+              3,
+              2,
+              1
+            ]
+          }
+        ],
+        "path": [
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "packedSteps": [
+          192
+        ],
+        "executionFinalHeading": "North",
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "south-one",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "origin": [
+          2,
+          2
+        ],
+        "enemy": [
+          4,
+          4
+        ],
+        "destination": [
+          2,
+          1
+        ],
+        "move": 1,
+        "jump": 0,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 1,
+        "originRemainingRange": 2,
+        "jumpHalf": 0,
+        "remainingRanges": [
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              1,
+              2
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              2,
+              2
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              3,
+              2
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              2,
+              3
+            ],
+            "remaining": 1
+          }
+        ],
+        "physicalDestinations": [
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "aiOrigins": [
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 1,
+            "values": [
+              7,
+              6,
+              5,
+              4,
+              3
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              6,
+              5,
+              4,
+              3,
+              2
+            ]
+          },
+          {
+            "y": 3,
+            "values": [
+              5,
+              4,
+              3,
+              2,
+              1
+            ]
+          }
+        ],
+        "path": [
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "packedSteps": [
+          128
+        ],
+        "executionFinalHeading": "South",
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "straight-uncompressed",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "origin": [
+          0,
+          2
+        ],
+        "enemy": [
+          4,
+          4
+        ],
+        "destination": [
+          3,
+          2
+        ],
+        "move": 4,
+        "jump": 0,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 4,
+        "originRemainingRange": 5,
+        "jumpHalf": 0,
+        "remainingRanges": [
+          {
+            "tile": [
+              0,
+              0
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              2,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              3,
+              1
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              2
+            ],
+            "remaining": 5
+          },
+          {
+            "tile": [
+              1,
+              2
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              2,
+              2
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              3,
+              2
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              4,
+              2
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              3
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              1,
+              3
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              3
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              3,
+              3
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              4
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              1,
+              4
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              2,
+              4
+            ],
+            "remaining": 1
+          }
+        ],
+        "physicalDestinations": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ]
+        ],
+        "aiOrigins": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 0,
+            "values": [
+              8,
+              7,
+              6,
+              5,
+              4
+            ]
+          },
+          {
+            "y": 1,
+            "values": [
+              7,
+              6,
+              5,
+              4,
+              3
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              6,
+              5,
+              4,
+              3,
+              2
+            ]
+          },
+          {
+            "y": 3,
+            "values": [
+              5,
+              4,
+              3,
+              2,
+              1
+            ]
+          },
+          {
+            "y": 4,
+            "values": [
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          }
+        ],
+        "path": [
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ]
+        ],
+        "packedSteps": [
+          0,
+          0,
+          0
+        ],
+        "executionFinalHeading": "East",
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "diagonal-ne",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "origin": [
+          2,
+          2
+        ],
+        "enemy": [
+          4,
+          4
+        ],
+        "destination": [
+          3,
+          3
+        ],
+        "move": 4,
+        "jump": 0,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 4,
+        "originRemainingRange": 5,
+        "jumpHalf": 0,
+        "remainingRanges": [
+          {
+            "tile": [
+              0,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              2,
+              0
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              3,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              4,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              3,
+              1
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              4,
+              1
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              0,
+              2
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              1,
+              2
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              2,
+              2
+            ],
+            "remaining": 5
+          },
+          {
+            "tile": [
+              3,
+              2
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              4,
+              2
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              0,
+              3
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              1,
+              3
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              3
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              3,
+              3
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              4,
+              3
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              0,
+              4
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              1,
+              4
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              2,
+              4
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              3,
+              4
+            ],
+            "remaining": 2
+          }
+        ],
+        "physicalDestinations": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "aiOrigins": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 0,
+            "values": [
+              8,
+              7,
+              6,
+              5,
+              4
+            ]
+          },
+          {
+            "y": 1,
+            "values": [
+              7,
+              6,
+              5,
+              4,
+              3
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              6,
+              5,
+              4,
+              3,
+              2
+            ]
+          },
+          {
+            "y": 3,
+            "values": [
+              5,
+              4,
+              3,
+              2,
+              1
+            ]
+          },
+          {
+            "y": 4,
+            "values": [
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          }
+        ],
+        "path": [
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ]
+        ],
+        "packedSteps": [
+          192,
+          0
+        ],
+        "executionFinalHeading": "East",
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "diagonal-nw",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "origin": [
+          2,
+          2
+        ],
+        "enemy": [
+          4,
+          4
+        ],
+        "destination": [
+          1,
+          3
+        ],
+        "move": 4,
+        "jump": 0,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 4,
+        "originRemainingRange": 5,
+        "jumpHalf": 0,
+        "remainingRanges": [
+          {
+            "tile": [
+              0,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              2,
+              0
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              3,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              4,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              3,
+              1
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              4,
+              1
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              0,
+              2
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              1,
+              2
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              2,
+              2
+            ],
+            "remaining": 5
+          },
+          {
+            "tile": [
+              3,
+              2
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              4,
+              2
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              0,
+              3
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              1,
+              3
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              3
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              3,
+              3
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              4,
+              3
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              0,
+              4
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              1,
+              4
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              2,
+              4
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              3,
+              4
+            ],
+            "remaining": 2
+          }
+        ],
+        "physicalDestinations": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "aiOrigins": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 0,
+            "values": [
+              8,
+              7,
+              6,
+              5,
+              4
+            ]
+          },
+          {
+            "y": 1,
+            "values": [
+              7,
+              6,
+              5,
+              4,
+              3
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              6,
+              5,
+              4,
+              3,
+              2
+            ]
+          },
+          {
+            "y": 3,
+            "values": [
+              5,
+              4,
+              3,
+              2,
+              1
+            ]
+          },
+          {
+            "y": 4,
+            "values": [
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          }
+        ],
+        "path": [
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            1,
+            3
+          ]
+        ],
+        "packedSteps": [
+          192,
+          64
+        ],
+        "executionFinalHeading": "West",
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "diagonal-sw",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "origin": [
+          2,
+          2
+        ],
+        "enemy": [
+          4,
+          4
+        ],
+        "destination": [
+          1,
+          1
+        ],
+        "move": 4,
+        "jump": 0,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 4,
+        "originRemainingRange": 5,
+        "jumpHalf": 0,
+        "remainingRanges": [
+          {
+            "tile": [
+              0,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              2,
+              0
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              3,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              4,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              3,
+              1
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              4,
+              1
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              0,
+              2
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              1,
+              2
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              2,
+              2
+            ],
+            "remaining": 5
+          },
+          {
+            "tile": [
+              3,
+              2
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              4,
+              2
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              0,
+              3
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              1,
+              3
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              3
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              3,
+              3
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              4,
+              3
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              0,
+              4
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              1,
+              4
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              2,
+              4
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              3,
+              4
+            ],
+            "remaining": 2
+          }
+        ],
+        "physicalDestinations": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "aiOrigins": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 0,
+            "values": [
+              8,
+              7,
+              6,
+              5,
+              4
+            ]
+          },
+          {
+            "y": 1,
+            "values": [
+              7,
+              6,
+              5,
+              4,
+              3
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              6,
+              5,
+              4,
+              3,
+              2
+            ]
+          },
+          {
+            "y": 3,
+            "values": [
+              5,
+              4,
+              3,
+              2,
+              1
+            ]
+          },
+          {
+            "y": 4,
+            "values": [
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          }
+        ],
+        "path": [
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "packedSteps": [
+          128,
+          64
+        ],
+        "executionFinalHeading": "West",
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "diagonal-se",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "origin": [
+          2,
+          2
+        ],
+        "enemy": [
+          4,
+          4
+        ],
+        "destination": [
+          3,
+          1
+        ],
+        "move": 4,
+        "jump": 0,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 4,
+        "originRemainingRange": 5,
+        "jumpHalf": 0,
+        "remainingRanges": [
+          {
+            "tile": [
+              0,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              2,
+              0
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              3,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              4,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              3,
+              1
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              4,
+              1
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              0,
+              2
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              1,
+              2
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              2,
+              2
+            ],
+            "remaining": 5
+          },
+          {
+            "tile": [
+              3,
+              2
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              4,
+              2
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              0,
+              3
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              1,
+              3
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              3
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              3,
+              3
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              4,
+              3
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              0,
+              4
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              1,
+              4
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              2,
+              4
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              3,
+              4
+            ],
+            "remaining": 2
+          }
+        ],
+        "physicalDestinations": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "aiOrigins": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 0,
+            "values": [
+              8,
+              7,
+              6,
+              5,
+              4
+            ]
+          },
+          {
+            "y": 1,
+            "values": [
+              7,
+              6,
+              5,
+              4,
+              3
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              6,
+              5,
+              4,
+              3,
+              2
+            ]
+          },
+          {
+            "y": 3,
+            "values": [
+              5,
+              4,
+              3,
+              2,
+              1
+            ]
+          },
+          {
+            "y": 4,
+            "values": [
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          }
+        ],
+        "path": [
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            3,
+            1
+          ]
+        ],
+        "packedSteps": [
+          0,
+          128
+        ],
+        "executionFinalHeading": "South",
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "long-diagonal-ne",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "origin": [
+          0,
+          0
+        ],
+        "enemy": [
+          4,
+          4
+        ],
+        "destination": [
+          2,
+          2
+        ],
+        "move": 4,
+        "jump": 0,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 4,
+        "originRemainingRange": 5,
+        "jumpHalf": 0,
+        "remainingRanges": [
+          {
+            "tile": [
+              0,
+              0
+            ],
+            "remaining": 5
+          },
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              2,
+              0
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              3,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              4,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              3,
+              1
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              2
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              1,
+              2
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              2,
+              2
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              3
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              1,
+              3
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              4
+            ],
+            "remaining": 1
+          }
+        ],
+        "physicalDestinations": [
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "aiOrigins": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 0,
+            "values": [
+              8,
+              7,
+              6,
+              5,
+              4
+            ]
+          },
+          {
+            "y": 1,
+            "values": [
+              7,
+              6,
+              5,
+              4,
+              3
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              6,
+              5,
+              4,
+              3,
+              2
+            ]
+          },
+          {
+            "y": 3,
+            "values": [
+              5,
+              4,
+              3,
+              2,
+              1
+            ]
+          },
+          {
+            "y": 4,
+            "values": [
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          }
+        ],
+        "path": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "packedSteps": [
+          192,
+          192,
+          0,
+          0
+        ],
+        "executionFinalHeading": "East",
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "enemy-detour-outside-budget",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 3,
+        "depth": 3,
+        "origin": [
+          0,
+          1
+        ],
+        "enemy": [
+          1,
+          1
+        ],
+        "destination": [
+          2,
+          1
+        ],
+        "move": 2,
+        "jump": 0,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 2,
+        "originRemainingRange": 3,
+        "jumpHalf": 0,
+        "remainingRanges": [
+          {
+            "tile": [
+              0,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              0,
+              2
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              1,
+              2
+            ],
+            "remaining": 1
+          }
+        ],
+        "physicalDestinations": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "aiOrigins": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 0,
+            "values": [
+              2,
+              1,
+              2
+            ]
+          },
+          {
+            "y": 1,
+            "values": [
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              2,
+              1,
+              2
+            ]
+          }
+        ],
+        "path": null,
+        "packedSteps": null,
+        "executionFinalHeading": null,
+        "defaultPrototypeExtraDestinations": [
+          [
+            2,
+            1
+          ]
+        ],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "enemy-detour-at-budget",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 3,
+        "depth": 3,
+        "origin": [
+          0,
+          1
+        ],
+        "enemy": [
+          1,
+          1
+        ],
+        "destination": [
+          2,
+          1
+        ],
+        "move": 4,
+        "jump": 0,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 4,
+        "originRemainingRange": 5,
+        "jumpHalf": 0,
+        "remainingRanges": [
+          {
+            "tile": [
+              0,
+              0
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "remaining": 5
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              2
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              1,
+              2
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              2
+            ],
+            "remaining": 2
+          }
+        ],
+        "physicalDestinations": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "aiOrigins": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 0,
+            "values": [
+              2,
+              1,
+              2
+            ]
+          },
+          {
+            "y": 1,
+            "values": [
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              2,
+              1,
+              2
+            ]
+          }
+        ],
+        "path": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "packedSteps": [
+          192,
+          0,
+          0,
+          128
+        ],
+        "executionFinalHeading": "South",
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "one-row-enemy-disconnects",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 5,
+        "depth": 1,
+        "origin": [
+          0,
+          0
+        ],
+        "enemy": [
+          1,
+          0
+        ],
+        "destination": [
+          2,
+          0
+        ],
+        "move": 255,
+        "jump": 255,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 124,
+        "originRemainingRange": 125,
+        "jumpHalf": 3,
+        "remainingRanges": [
+          {
+            "tile": [
+              0,
+              0
+            ],
+            "remaining": 125
+          }
+        ],
+        "physicalDestinations": [],
+        "aiOrigins": [
+          [
+            0,
+            0
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 0,
+            "values": [
+              1,
+              0,
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "path": null,
+        "packedSteps": null,
+        "executionFinalHeading": null,
+        "defaultPrototypeExtraDestinations": [
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "occupied-destination",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "origin": [
+          2,
+          2
+        ],
+        "enemy": [
+          4,
+          4
+        ],
+        "destination": [
+          4,
+          4
+        ],
+        "move": 8,
+        "jump": 0,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 8,
+        "originRemainingRange": 9,
+        "jumpHalf": 0,
+        "remainingRanges": [
+          {
+            "tile": [
+              0,
+              0
+            ],
+            "remaining": 5
+          },
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "remaining": 6
+          },
+          {
+            "tile": [
+              2,
+              0
+            ],
+            "remaining": 7
+          },
+          {
+            "tile": [
+              3,
+              0
+            ],
+            "remaining": 6
+          },
+          {
+            "tile": [
+              4,
+              0
+            ],
+            "remaining": 5
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "remaining": 6
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "remaining": 7
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "remaining": 8
+          },
+          {
+            "tile": [
+              3,
+              1
+            ],
+            "remaining": 7
+          },
+          {
+            "tile": [
+              4,
+              1
+            ],
+            "remaining": 6
+          },
+          {
+            "tile": [
+              0,
+              2
+            ],
+            "remaining": 7
+          },
+          {
+            "tile": [
+              1,
+              2
+            ],
+            "remaining": 8
+          },
+          {
+            "tile": [
+              2,
+              2
+            ],
+            "remaining": 9
+          },
+          {
+            "tile": [
+              3,
+              2
+            ],
+            "remaining": 8
+          },
+          {
+            "tile": [
+              4,
+              2
+            ],
+            "remaining": 7
+          },
+          {
+            "tile": [
+              0,
+              3
+            ],
+            "remaining": 6
+          },
+          {
+            "tile": [
+              1,
+              3
+            ],
+            "remaining": 7
+          },
+          {
+            "tile": [
+              2,
+              3
+            ],
+            "remaining": 8
+          },
+          {
+            "tile": [
+              3,
+              3
+            ],
+            "remaining": 7
+          },
+          {
+            "tile": [
+              4,
+              3
+            ],
+            "remaining": 6
+          },
+          {
+            "tile": [
+              0,
+              4
+            ],
+            "remaining": 5
+          },
+          {
+            "tile": [
+              1,
+              4
+            ],
+            "remaining": 6
+          },
+          {
+            "tile": [
+              2,
+              4
+            ],
+            "remaining": 7
+          },
+          {
+            "tile": [
+              3,
+              4
+            ],
+            "remaining": 6
+          }
+        ],
+        "physicalDestinations": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "aiOrigins": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 0,
+            "values": [
+              8,
+              7,
+              6,
+              5,
+              4
+            ]
+          },
+          {
+            "y": 1,
+            "values": [
+              7,
+              6,
+              5,
+              4,
+              3
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              6,
+              5,
+              4,
+              3,
+              2
+            ]
+          },
+          {
+            "y": 3,
+            "values": [
+              5,
+              4,
+              3,
+              2,
+              1
+            ]
+          },
+          {
+            "y": 4,
+            "values": [
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          }
+        ],
+        "path": null,
+        "packedSteps": null,
+        "executionFinalHeading": null,
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "stay-is-not-physical-move",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "origin": [
+          2,
+          2
+        ],
+        "enemy": [
+          4,
+          4
+        ],
+        "destination": [
+          2,
+          2
+        ],
+        "move": 4,
+        "jump": 0,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 4,
+        "originRemainingRange": 5,
+        "jumpHalf": 0,
+        "remainingRanges": [
+          {
+            "tile": [
+              0,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              2,
+              0
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              3,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              4,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              3,
+              1
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              4,
+              1
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              0,
+              2
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              1,
+              2
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              2,
+              2
+            ],
+            "remaining": 5
+          },
+          {
+            "tile": [
+              3,
+              2
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              4,
+              2
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              0,
+              3
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              1,
+              3
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              3
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              3,
+              3
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              4,
+              3
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              0,
+              4
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              1,
+              4
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              2,
+              4
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              3,
+              4
+            ],
+            "remaining": 2
+          }
+        ],
+        "physicalDestinations": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "aiOrigins": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 0,
+            "values": [
+              8,
+              7,
+              6,
+              5,
+              4
+            ]
+          },
+          {
+            "y": 1,
+            "values": [
+              7,
+              6,
+              5,
+              4,
+              3
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              6,
+              5,
+              4,
+              3,
+              2
+            ]
+          },
+          {
+            "y": 3,
+            "values": [
+              5,
+              4,
+              3,
+              2,
+              1
+            ]
+          },
+          {
+            "y": 4,
+            "values": [
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          }
+        ],
+        "path": null,
+        "packedSteps": null,
+        "executionFinalHeading": null,
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "moved-origin-only",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "origin": [
+          2,
+          2
+        ],
+        "enemy": [
+          4,
+          4
+        ],
+        "destination": [
+          2,
+          2
+        ],
+        "move": 4,
+        "jump": 0,
+        "moved": true
+      },
+      "expected": {
+        "effectiveMove": 4,
+        "originRemainingRange": 5,
+        "jumpHalf": 0,
+        "remainingRanges": [
+          {
+            "tile": [
+              0,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              2,
+              0
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              3,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              4,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              3,
+              1
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              4,
+              1
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              0,
+              2
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              1,
+              2
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              2,
+              2
+            ],
+            "remaining": 5
+          },
+          {
+            "tile": [
+              3,
+              2
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              4,
+              2
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              0,
+              3
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              1,
+              3
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              3
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              3,
+              3
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              4,
+              3
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              0,
+              4
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              1,
+              4
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              2,
+              4
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              3,
+              4
+            ],
+            "remaining": 2
+          }
+        ],
+        "physicalDestinations": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "aiOrigins": [
+          [
+            2,
+            2
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 2,
+            "values": [
+              6,
+              5,
+              4,
+              3,
+              2
+            ]
+          }
+        ],
+        "path": null,
+        "packedSteps": null,
+        "executionFinalHeading": null,
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "acted-false-does-not-shrink-range",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "origin": [
+          2,
+          2
+        ],
+        "enemy": [
+          4,
+          4
+        ],
+        "destination": [
+          3,
+          2
+        ],
+        "move": 4,
+        "jump": 0,
+        "moved": false,
+        "acted": false
+      },
+      "expected": {
+        "effectiveMove": 4,
+        "originRemainingRange": 5,
+        "jumpHalf": 0,
+        "remainingRanges": [
+          {
+            "tile": [
+              0,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              2,
+              0
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              3,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              4,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              3,
+              1
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              4,
+              1
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              0,
+              2
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              1,
+              2
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              2,
+              2
+            ],
+            "remaining": 5
+          },
+          {
+            "tile": [
+              3,
+              2
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              4,
+              2
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              0,
+              3
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              1,
+              3
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              3
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              3,
+              3
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              4,
+              3
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              0,
+              4
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              1,
+              4
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              2,
+              4
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              3,
+              4
+            ],
+            "remaining": 2
+          }
+        ],
+        "physicalDestinations": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "aiOrigins": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 0,
+            "values": [
+              8,
+              7,
+              6,
+              5,
+              4
+            ]
+          },
+          {
+            "y": 1,
+            "values": [
+              7,
+              6,
+              5,
+              4,
+              3
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              6,
+              5,
+              4,
+              3,
+              2
+            ]
+          },
+          {
+            "y": 3,
+            "values": [
+              5,
+              4,
+              3,
+              2,
+              1
+            ]
+          },
+          {
+            "y": 4,
+            "values": [
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          }
+        ],
+        "path": [
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ]
+        ],
+        "packedSteps": [
+          0
+        ],
+        "executionFinalHeading": "East",
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "acted-true-does-not-shrink-range",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "origin": [
+          2,
+          2
+        ],
+        "enemy": [
+          4,
+          4
+        ],
+        "destination": [
+          3,
+          2
+        ],
+        "move": 4,
+        "jump": 0,
+        "moved": false,
+        "acted": true
+      },
+      "expected": {
+        "effectiveMove": 4,
+        "originRemainingRange": 5,
+        "jumpHalf": 0,
+        "remainingRanges": [
+          {
+            "tile": [
+              0,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              2,
+              0
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              3,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              4,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              3,
+              1
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              4,
+              1
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              0,
+              2
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              1,
+              2
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              2,
+              2
+            ],
+            "remaining": 5
+          },
+          {
+            "tile": [
+              3,
+              2
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              4,
+              2
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              0,
+              3
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              1,
+              3
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              3
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              3,
+              3
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              4,
+              3
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              0,
+              4
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              1,
+              4
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              2,
+              4
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              3,
+              4
+            ],
+            "remaining": 2
+          }
+        ],
+        "physicalDestinations": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "aiOrigins": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 0,
+            "values": [
+              8,
+              7,
+              6,
+              5,
+              4
+            ]
+          },
+          {
+            "y": 1,
+            "values": [
+              7,
+              6,
+              5,
+              4,
+              3
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              6,
+              5,
+              4,
+              3,
+              2
+            ]
+          },
+          {
+            "y": 3,
+            "values": [
+              5,
+              4,
+              3,
+              2,
+              1
+            ]
+          },
+          {
+            "y": 4,
+            "values": [
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          }
+        ],
+        "path": [
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ]
+        ],
+        "packedSteps": [
+          0
+        ],
+        "executionFinalHeading": "East",
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "jump-cap-does-not-pass-enemy",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 3,
+        "depth": 3,
+        "origin": [
+          0,
+          1
+        ],
+        "enemy": [
+          1,
+          1
+        ],
+        "destination": [
+          2,
+          1
+        ],
+        "move": 4,
+        "jump": 255,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 4,
+        "originRemainingRange": 5,
+        "jumpHalf": 3,
+        "remainingRanges": [
+          {
+            "tile": [
+              0,
+              0
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              0
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "remaining": 5
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              2
+            ],
+            "remaining": 4
+          },
+          {
+            "tile": [
+              1,
+              2
+            ],
+            "remaining": 3
+          },
+          {
+            "tile": [
+              2,
+              2
+            ],
+            "remaining": 2
+          }
+        ],
+        "physicalDestinations": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "aiOrigins": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 0,
+            "values": [
+              2,
+              1,
+              2
+            ]
+          },
+          {
+            "y": 1,
+            "values": [
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              2,
+              1,
+              2
+            ]
+          }
+        ],
+        "path": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "packedSteps": [
+          192,
+          0,
+          0,
+          128
+        ],
+        "executionFinalHeading": "South",
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "move-cap-124",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 3,
+        "depth": 3,
+        "origin": [
+          0,
+          0
+        ],
+        "enemy": [
+          2,
+          2
+        ],
+        "destination": [
+          2,
+          1
+        ],
+        "move": 124,
+        "jump": 7,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 124,
+        "originRemainingRange": 125,
+        "jumpHalf": 3,
+        "remainingRanges": [
+          {
+            "tile": [
+              0,
+              0
+            ],
+            "remaining": 125
+          },
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "remaining": 124
+          },
+          {
+            "tile": [
+              2,
+              0
+            ],
+            "remaining": 123
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "remaining": 124
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "remaining": 123
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "remaining": 122
+          },
+          {
+            "tile": [
+              0,
+              2
+            ],
+            "remaining": 123
+          },
+          {
+            "tile": [
+              1,
+              2
+            ],
+            "remaining": 122
+          }
+        ],
+        "physicalDestinations": [
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "aiOrigins": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 0,
+            "values": [
+              4,
+              3,
+              2
+            ]
+          },
+          {
+            "y": 1,
+            "values": [
+              3,
+              2,
+              1
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              2,
+              1,
+              0
+            ]
+          }
+        ],
+        "path": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "packedSteps": [
+          192,
+          0,
+          0
+        ],
+        "executionFinalHeading": "East",
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "move-cap-255",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 3,
+        "depth": 3,
+        "origin": [
+          0,
+          0
+        ],
+        "enemy": [
+          2,
+          2
+        ],
+        "destination": [
+          2,
+          1
+        ],
+        "move": 255,
+        "jump": 255,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 124,
+        "originRemainingRange": 125,
+        "jumpHalf": 3,
+        "remainingRanges": [
+          {
+            "tile": [
+              0,
+              0
+            ],
+            "remaining": 125
+          },
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "remaining": 124
+          },
+          {
+            "tile": [
+              2,
+              0
+            ],
+            "remaining": 123
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "remaining": 124
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "remaining": 123
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "remaining": 122
+          },
+          {
+            "tile": [
+              0,
+              2
+            ],
+            "remaining": 123
+          },
+          {
+            "tile": [
+              1,
+              2
+            ],
+            "remaining": 122
+          }
+        ],
+        "physicalDestinations": [
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "aiOrigins": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 0,
+            "values": [
+              4,
+              3,
+              2
+            ]
+          },
+          {
+            "y": 1,
+            "values": [
+              3,
+              2,
+              1
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              2,
+              1,
+              0
+            ]
+          }
+        ],
+        "path": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "packedSteps": [
+          192,
+          0,
+          0
+        ],
+        "executionFinalHeading": "East",
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "pre-push-current-enemy",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 5,
+        "depth": 3,
+        "origin": [
+          0,
+          1
+        ],
+        "enemy": [
+          1,
+          1
+        ],
+        "destination": [
+          1,
+          1
+        ],
+        "move": 1,
+        "jump": 0,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 1,
+        "originRemainingRange": 2,
+        "jumpHalf": 0,
+        "remainingRanges": [
+          {
+            "tile": [
+              0,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              0,
+              2
+            ],
+            "remaining": 1
+          }
+        ],
+        "physicalDestinations": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "aiOrigins": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 0,
+            "values": [
+              2,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "y": 1,
+            "values": [
+              1,
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              2,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ],
+        "path": null,
+        "packedSteps": null,
+        "executionFinalHeading": null,
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "post-push-old-tile-is-free",
+      "family": "flat-route",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "width": 5,
+        "depth": 3,
+        "origin": [
+          0,
+          1
+        ],
+        "enemy": [
+          2,
+          1
+        ],
+        "destination": [
+          1,
+          1
+        ],
+        "move": 1,
+        "jump": 0,
+        "moved": false
+      },
+      "expected": {
+        "effectiveMove": 1,
+        "originRemainingRange": 2,
+        "jumpHalf": 0,
+        "remainingRanges": [
+          {
+            "tile": [
+              0,
+              0
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "remaining": 2
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "remaining": 1
+          },
+          {
+            "tile": [
+              0,
+              2
+            ],
+            "remaining": 1
+          }
+        ],
+        "physicalDestinations": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "aiOrigins": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "targetDistanceRows": [
+          {
+            "y": 0,
+            "values": [
+              3,
+              2,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "y": 1,
+            "values": [
+              2,
+              1,
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "y": 2,
+            "values": [
+              3,
+              2,
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "path": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "packedSteps": [
+          0
+        ],
+        "executionFinalHeading": "East",
+        "defaultPrototypeExtraDestinations": [],
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "initial-east-preference",
+      "family": "path-tie",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "preferred": "East",
+        "eligible": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ]
+      },
+      "expected": {
+        "selected": "East"
+      }
+    },
+    {
+      "id": "east-absent-first-north",
+      "family": "path-tie",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "preferred": "East",
+        "eligible": [
+          "South",
+          "West",
+          "North"
+        ]
+      },
+      "expected": {
+        "selected": "North"
+      }
+    },
+    {
+      "id": "continue-south-over-east",
+      "family": "path-tie",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "preferred": "South",
+        "eligible": [
+          "East",
+          "South"
+        ]
+      },
+      "expected": {
+        "selected": "South"
+      }
+    },
+    {
+      "id": "south-absent-first-east",
+      "family": "path-tie",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "preferred": "South",
+        "eligible": [
+          "North",
+          "East"
+        ]
+      },
+      "expected": {
+        "selected": "East"
+      }
+    },
+    {
+      "id": "continue-west-over-north",
+      "family": "path-tie",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "preferred": "West",
+        "eligible": [
+          "North",
+          "West"
+        ]
+      },
+      "expected": {
+        "selected": "West"
+      }
+    },
+    {
+      "id": "continue-north-over-east",
+      "family": "path-tie",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "preferred": "North",
+        "eligible": [
+          "East",
+          "North"
+        ]
+      },
+      "expected": {
+        "selected": "North"
+      }
+    },
+    {
+      "id": "no-predecessor",
+      "family": "path-tie",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "preferred": "East",
+        "eligible": []
+      },
+      "expected": {
+        "selected": null
+      }
+    },
+    {
+      "id": "only-south",
+      "family": "path-tie",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "preferred": "West",
+        "eligible": [
+          "South"
+        ]
+      },
+      "expected": {
+        "selected": "South"
+      }
+    },
+    {
+      "id": "preview-ne-keeps-west",
+      "family": "simulation-placement",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          1,
+          1
+        ],
+        "facing": "West",
+        "movementTaken": false
+      },
+      "expected": {
+        "position": [
+          1,
+          1
+        ],
+        "facing": "West",
+        "movementTaken": true,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "preview-south-keeps-north",
+      "family": "simulation-placement",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "origin": [
+          2,
+          2
+        ],
+        "destination": [
+          2,
+          1
+        ],
+        "facing": "North",
+        "movementTaken": false
+      },
+      "expected": {
+        "position": [
+          2,
+          1
+        ],
+        "facing": "North",
+        "movementTaken": true,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "preview-stay-no-move",
+      "family": "simulation-placement",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "origin": [
+          2,
+          2
+        ],
+        "destination": [
+          2,
+          2
+        ],
+        "facing": "East",
+        "movementTaken": false
+      },
+      "expected": {
+        "position": [
+          2,
+          2
+        ],
+        "facing": "East",
+        "movementTaken": false,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "preview-stay-preserves-prior-move",
+      "family": "simulation-placement",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "origin": [
+          2,
+          2
+        ],
+        "destination": [
+          2,
+          2
+        ],
+        "facing": "South",
+        "movementTaken": true
+      },
+      "expected": {
+        "position": [
+          2,
+          2
+        ],
+        "facing": "South",
+        "movementTaken": true,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "move-before-act-first",
+      "family": "dispatch",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "compactRecordsValid": true,
+        "decided": true,
+        "flagsUnchanged": false,
+        "acted": false,
+        "moved": false,
+        "actBeforeMove": false,
+        "sameTile": false,
+        "hasSkillset": true
+      },
+      "expected": {
+        "command": "Move",
+        "redecide": false
+      }
+    },
+    {
+      "id": "move-before-act-after-move",
+      "family": "dispatch",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "compactRecordsValid": true,
+        "decided": true,
+        "flagsUnchanged": false,
+        "acted": false,
+        "moved": true,
+        "actBeforeMove": false,
+        "sameTile": false,
+        "hasSkillset": true
+      },
+      "expected": {
+        "command": "Act",
+        "redecide": false
+      }
+    },
+    {
+      "id": "act-before-move-first",
+      "family": "dispatch",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "compactRecordsValid": true,
+        "decided": true,
+        "flagsUnchanged": false,
+        "acted": false,
+        "moved": false,
+        "actBeforeMove": true,
+        "sameTile": false,
+        "hasSkillset": true
+      },
+      "expected": {
+        "command": "Act",
+        "redecide": false
+      }
+    },
+    {
+      "id": "act-before-move-after-act",
+      "family": "dispatch",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "compactRecordsValid": true,
+        "decided": true,
+        "flagsUnchanged": false,
+        "acted": true,
+        "moved": false,
+        "actBeforeMove": true,
+        "sameTile": false,
+        "hasSkillset": true
+      },
+      "expected": {
+        "command": "Move",
+        "redecide": true
+      }
+    },
+    {
+      "id": "stay-dispatch-skips-move",
+      "family": "dispatch",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "compactRecordsValid": true,
+        "decided": true,
+        "flagsUnchanged": false,
+        "acted": false,
+        "moved": false,
+        "actBeforeMove": false,
+        "sameTile": true,
+        "hasSkillset": true
+      },
+      "expected": {
+        "command": "Act",
+        "redecide": false
+      }
+    },
+    {
+      "id": "both-choices-consumed-end",
+      "family": "dispatch",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "compactRecordsValid": true,
+        "decided": true,
+        "flagsUnchanged": false,
+        "acted": true,
+        "moved": true,
+        "actBeforeMove": false,
+        "sameTile": false,
+        "hasSkillset": true
+      },
+      "expected": {
+        "command": "EndTurn",
+        "redecide": true
+      }
+    },
+    {
+      "id": "destination-last-x-on-tie",
+      "family": "destination",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "order": "priority-first",
+        "limit": 4,
+        "tiles": [
+          {
+            "id": "right",
+            "layer": 0,
+            "x": 2,
+            "y": 0,
+            "priority": 0,
+            "proximity": 2,
+            "distance": 1
+          },
+          {
+            "id": "left",
+            "layer": 0,
+            "x": 0,
+            "y": 0,
+            "priority": 0,
+            "proximity": 2,
+            "distance": 1
+          }
+        ]
+      },
+      "expected": {
+        "selected": "right"
+      }
+    },
+    {
+      "id": "destination-last-y-on-tie",
+      "family": "destination",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "order": "distance-first",
+        "limit": 4,
+        "tiles": [
+          {
+            "id": "top",
+            "layer": 0,
+            "x": 0,
+            "y": 2,
+            "priority": 0,
+            "proximity": 2,
+            "distance": 1
+          },
+          {
+            "id": "bottom",
+            "layer": 0,
+            "x": 2,
+            "y": 0,
+            "priority": 0,
+            "proximity": 2,
+            "distance": 1
+          }
+        ]
+      },
+      "expected": {
+        "selected": "top"
+      }
+    },
+    {
+      "id": "destination-priority-before-distance",
+      "family": "destination",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "order": "priority-first",
+        "limit": 4,
+        "tiles": [
+          {
+            "id": "closer",
+            "layer": 0,
+            "x": 0,
+            "y": 0,
+            "priority": 1,
+            "proximity": 2,
+            "distance": 1
+          },
+          {
+            "id": "priority",
+            "layer": 0,
+            "x": 1,
+            "y": 0,
+            "priority": 0,
+            "proximity": 2,
+            "distance": 3
+          }
+        ]
+      },
+      "expected": {
+        "selected": "priority"
+      }
+    },
+    {
+      "id": "destination-distance-before-priority",
+      "family": "destination",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "order": "distance-first",
+        "limit": 4,
+        "tiles": [
+          {
+            "id": "closer",
+            "layer": 0,
+            "x": 0,
+            "y": 0,
+            "priority": 1,
+            "proximity": 2,
+            "distance": 1
+          },
+          {
+            "id": "priority",
+            "layer": 0,
+            "x": 1,
+            "y": 0,
+            "priority": 0,
+            "proximity": 2,
+            "distance": 3
+          }
+        ]
+      },
+      "expected": {
+        "selected": "closer"
+      }
+    },
+    {
+      "id": "destination-limit-is-inclusive",
+      "family": "destination",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "order": "priority-first",
+        "limit": 2,
+        "tiles": [
+          {
+            "id": "edge",
+            "layer": 0,
+            "x": 0,
+            "y": 0,
+            "priority": 0,
+            "proximity": 2,
+            "distance": 2
+          },
+          {
+            "id": "excluded",
+            "layer": 0,
+            "x": 1,
+            "y": 0,
+            "priority": -1,
+            "proximity": 2,
+            "distance": 3
+          }
+        ]
+      },
+      "expected": {
+        "selected": "edge"
+      }
+    },
+    {
+      "id": "destination-empty-within-limit",
+      "family": "destination",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "order": "priority-first",
+        "limit": 0,
+        "tiles": [
+          {
+            "id": "excluded",
+            "layer": 0,
+            "x": 0,
+            "y": 0,
+            "priority": 0,
+            "proximity": 2,
+            "distance": 1
+          }
+        ]
+      },
+      "expected": {
+        "selected": null
+      }
+    }
+  ],
+  "implementationCases": [
+    {
+      "id": "FMP-001",
+      "description": "Explicit certified closed profile; reject unsupported geometry, statuses, teams, cost and widths",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FMP-002",
+      "description": "Move byte cap124, positive residual Move+1 and Move0 boundary",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FMP-003",
+      "description": "Enemy cannot be entered, stopped on, or jumped over at equal height",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FMP-004",
+      "description": "Detour distance and disconnected one-row/one-column maps",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FMP-005",
+      "description": "Physical destinations omit origin; AI origins include it",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FMP-006",
+      "description": "Already-moved AI query has only origin; acted flag does not restrict movement",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FMP-007",
+      "description": "Reverse distance ignores all units and uses Manhattan only in this certified domain",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FMP-008",
+      "description": "Distance rows include every x for nonempty origin rows and omit untouched rows",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FMP-009",
+      "description": "Deterministic lower-layer y/x output independent of collection insertion order",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FMP-010",
+      "description": "Backtrace ties prefer previous direction, initially East, otherwise E/N/W/S",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FMP-011",
+      "description": "Four cardinal and diagonal exact selected paths, including continuity across ties",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FMP-012",
+      "description": "One packed byte per step, explicit direction mapping, no straight-run compression",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FMP-013",
+      "description": "Execution heading returned separately; query and AI placement never rotate snapshot",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FMP-014",
+      "description": "Stay, occupied and unreachable path requests have no physical path",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FMP-015",
+      "description": "Jump byte cap7 with no extra reach or path fallback in the closed domain",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FMP-016",
+      "description": "Both actors and post-push current coordinates; no stale cached occupancy",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FMP-017",
+      "description": "Pure repeatable immutable query with zero helper RNG draws and no command/clock mutation",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FMP-018",
+      "description": "Compare real managed prototypes and replay source vectors without activating any legacy path",
+      "status": "unexecuted"
+    }
+  ]
+}

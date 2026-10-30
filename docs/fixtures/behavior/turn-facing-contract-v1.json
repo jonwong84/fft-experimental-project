@@ -1,0 +1,1946 @@
+{
+  "format": "fft.turn-facing-source-description",
+  "schemaVersion": 1,
+  "ticket": "ZOD-118",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "execution": "offline-source-and-proposed-lifecycle-description",
+  "productionImplemented": false,
+  "vectorCount": 70,
+  "vectors": [
+    {
+      "id": "south",
+      "family": "direction",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "origin": [
+          2,
+          2
+        ],
+        "target": [
+          2,
+          0
+        ]
+      },
+      "expected": {
+        "facing": "South",
+        "managedFacing": 3
+      }
+    },
+    {
+      "id": "west",
+      "family": "direction",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "origin": [
+          2,
+          2
+        ],
+        "target": [
+          0,
+          2
+        ]
+      },
+      "expected": {
+        "facing": "West",
+        "managedFacing": 2
+      }
+    },
+    {
+      "id": "north",
+      "family": "direction",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "origin": [
+          2,
+          2
+        ],
+        "target": [
+          2,
+          4
+        ]
+      },
+      "expected": {
+        "facing": "North",
+        "managedFacing": 1
+      }
+    },
+    {
+      "id": "east",
+      "family": "direction",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "origin": [
+          2,
+          2
+        ],
+        "target": [
+          4,
+          2
+        ]
+      },
+      "expected": {
+        "facing": "East",
+        "managedFacing": 0
+      }
+    },
+    {
+      "id": "diagonal-sw",
+      "family": "direction",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "origin": [
+          2,
+          2
+        ],
+        "target": [
+          1,
+          1
+        ]
+      },
+      "expected": {
+        "facing": "South",
+        "managedFacing": 3
+      }
+    },
+    {
+      "id": "diagonal-nw",
+      "family": "direction",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "origin": [
+          2,
+          2
+        ],
+        "target": [
+          1,
+          3
+        ]
+      },
+      "expected": {
+        "facing": "West",
+        "managedFacing": 2
+      }
+    },
+    {
+      "id": "diagonal-ne",
+      "family": "direction",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "origin": [
+          2,
+          2
+        ],
+        "target": [
+          3,
+          3
+        ]
+      },
+      "expected": {
+        "facing": "North",
+        "managedFacing": 1
+      }
+    },
+    {
+      "id": "diagonal-se",
+      "family": "direction",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "origin": [
+          2,
+          2
+        ],
+        "target": [
+          3,
+          1
+        ]
+      },
+      "expected": {
+        "facing": "East",
+        "managedFacing": 0
+      }
+    },
+    {
+      "id": "south-side-of-sw",
+      "family": "direction",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "origin": [
+          2,
+          2
+        ],
+        "target": [
+          1,
+          0
+        ]
+      },
+      "expected": {
+        "facing": "South",
+        "managedFacing": 3
+      }
+    },
+    {
+      "id": "west-side-of-sw",
+      "family": "direction",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "origin": [
+          2,
+          2
+        ],
+        "target": [
+          0,
+          1
+        ]
+      },
+      "expected": {
+        "facing": "West",
+        "managedFacing": 2
+      }
+    },
+    {
+      "id": "north-side-of-ne",
+      "family": "direction",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "origin": [
+          2,
+          2
+        ],
+        "target": [
+          3,
+          4
+        ]
+      },
+      "expected": {
+        "facing": "North",
+        "managedFacing": 1
+      }
+    },
+    {
+      "id": "east-side-of-ne",
+      "family": "direction",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "origin": [
+          2,
+          2
+        ],
+        "target": [
+          4,
+          3
+        ]
+      },
+      "expected": {
+        "facing": "East",
+        "managedFacing": 0
+      }
+    },
+    {
+      "id": "overlap",
+      "family": "direction",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "origin": [
+          2,
+          2
+        ],
+        "target": [
+          2,
+          2
+        ]
+      },
+      "expected": {
+        "facing": "Overlap",
+        "managedFacing": null
+      }
+    },
+    {
+      "id": "signed-byte-wrap-is-not-wide-east",
+      "family": "direction",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "origin": [
+          127,
+          2
+        ],
+        "target": [
+          128,
+          2
+        ]
+      },
+      "expected": {
+        "facing": "West",
+        "managedFacing": 2
+      }
+    },
+    {
+      "id": "flat-all-directions",
+      "family": "viability",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "x": 2,
+        "y": 2,
+        "sourceHeight": 10,
+        "adjacent": [
+          {
+            "height": 10,
+            "blocked": false
+          },
+          {
+            "height": 10,
+            "blocked": false
+          },
+          {
+            "height": 10,
+            "blocked": false
+          },
+          {
+            "height": 10,
+            "blocked": false
+          }
+        ]
+      },
+      "expected": {
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ],
+        "allBlockedFallback": false
+      }
+    },
+    {
+      "id": "rise-two-admitted",
+      "family": "viability",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "x": 2,
+        "y": 2,
+        "sourceHeight": 10,
+        "adjacent": [
+          {
+            "height": 12,
+            "blocked": false
+          },
+          {
+            "height": 10,
+            "blocked": false
+          },
+          {
+            "height": 10,
+            "blocked": false
+          },
+          {
+            "height": 10,
+            "blocked": false
+          }
+        ]
+      },
+      "expected": {
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ],
+        "allBlockedFallback": false
+      }
+    },
+    {
+      "id": "rise-three-rejected",
+      "family": "viability",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "x": 2,
+        "y": 2,
+        "sourceHeight": 10,
+        "adjacent": [
+          {
+            "height": 13,
+            "blocked": false
+          },
+          {
+            "height": 10,
+            "blocked": false
+          },
+          {
+            "height": 10,
+            "blocked": false
+          },
+          {
+            "height": 10,
+            "blocked": false
+          }
+        ]
+      },
+      "expected": {
+        "viable": [
+          "West",
+          "North",
+          "East"
+        ],
+        "allBlockedFallback": false
+      }
+    },
+    {
+      "id": "unrestricted-descent",
+      "family": "viability",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "x": 2,
+        "y": 2,
+        "sourceHeight": 255,
+        "adjacent": [
+          {
+            "height": 0,
+            "blocked": false
+          },
+          {
+            "height": 0,
+            "blocked": false
+          },
+          {
+            "height": 0,
+            "blocked": false
+          },
+          {
+            "height": 0,
+            "blocked": false
+          }
+        ]
+      },
+      "expected": {
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ],
+        "allBlockedFallback": false
+      }
+    },
+    {
+      "id": "blocked-south",
+      "family": "viability",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "x": 2,
+        "y": 2,
+        "sourceHeight": 10,
+        "adjacent": [
+          {
+            "height": 10,
+            "blocked": true
+          },
+          {
+            "height": 10,
+            "blocked": false
+          },
+          {
+            "height": 10,
+            "blocked": false
+          },
+          {
+            "height": 10,
+            "blocked": false
+          }
+        ]
+      },
+      "expected": {
+        "viable": [
+          "West",
+          "North",
+          "East"
+        ],
+        "allBlockedFallback": false
+      }
+    },
+    {
+      "id": "occupied-untargetable-cannot-stop-still-viable",
+      "family": "viability",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "x": 2,
+        "y": 2,
+        "sourceHeight": 10,
+        "adjacent": [
+          {
+            "height": 10,
+            "blocked": false,
+            "occupied": true,
+            "untargetable": true,
+            "cannotStop": true
+          },
+          {
+            "height": 10,
+            "blocked": false,
+            "occupied": true,
+            "untargetable": true,
+            "cannotStop": true
+          },
+          {
+            "height": 10,
+            "blocked": false,
+            "occupied": true,
+            "untargetable": true,
+            "cannotStop": true
+          },
+          {
+            "height": 10,
+            "blocked": false,
+            "occupied": true,
+            "untargetable": true,
+            "cannotStop": true
+          }
+        ]
+      },
+      "expected": {
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ],
+        "allBlockedFallback": false
+      }
+    },
+    {
+      "id": "half-slope-depth-ignored",
+      "family": "viability",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "x": 2,
+        "y": 2,
+        "sourceHeight": 10,
+        "adjacent": [
+          {
+            "height": 12,
+            "blocked": false,
+            "halfHeight": 1,
+            "waterDepth": 9,
+            "slope": 15
+          },
+          {
+            "height": 12,
+            "blocked": false,
+            "halfHeight": 1,
+            "waterDepth": 9,
+            "slope": 15
+          },
+          {
+            "height": 12,
+            "blocked": false,
+            "halfHeight": 1,
+            "waterDepth": 9,
+            "slope": 15
+          },
+          {
+            "height": 12,
+            "blocked": false,
+            "halfHeight": 1,
+            "waterDepth": 9,
+            "slope": 15
+          }
+        ]
+      },
+      "expected": {
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ],
+        "allBlockedFallback": false
+      }
+    },
+    {
+      "id": "corner-byte-underflow",
+      "family": "viability",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "x": 0,
+        "y": 0,
+        "sourceHeight": 10,
+        "adjacent": [
+          {
+            "height": 10,
+            "blocked": false
+          },
+          {
+            "height": 10,
+            "blocked": false
+          },
+          {
+            "height": 10,
+            "blocked": false
+          },
+          {
+            "height": 10,
+            "blocked": false
+          }
+        ]
+      },
+      "expected": {
+        "viable": [
+          "North",
+          "East"
+        ],
+        "allBlockedFallback": false
+      }
+    },
+    {
+      "id": "all-four-blocked-restores-four",
+      "family": "viability",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "width": 5,
+        "depth": 5,
+        "x": 2,
+        "y": 2,
+        "sourceHeight": 10,
+        "adjacent": [
+          {
+            "height": 10,
+            "blocked": true
+          },
+          {
+            "height": 10,
+            "blocked": true
+          },
+          {
+            "height": 10,
+            "blocked": true
+          },
+          {
+            "height": 10,
+            "blocked": true
+          }
+        ]
+      },
+      "expected": {
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ],
+        "allBlockedFallback": true
+      }
+    },
+    {
+      "id": "one-tile-map-restores-four",
+      "family": "viability",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "width": 1,
+        "depth": 1,
+        "x": 0,
+        "y": 0,
+        "sourceHeight": 10,
+        "adjacent": [
+          {
+            "height": 10,
+            "blocked": false
+          },
+          {
+            "height": 10,
+            "blocked": false
+          },
+          {
+            "height": 10,
+            "blocked": false
+          },
+          {
+            "height": 10,
+            "blocked": false
+          }
+        ]
+      },
+      "expected": {
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ],
+        "allBlockedFallback": true
+      }
+    },
+    {
+      "id": "fixed-south-ignores-viability",
+      "family": "chooser",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "actor": [
+          2,
+          2
+        ],
+        "current": "North",
+        "hint": "South",
+        "viable": [],
+        "enemies": []
+      },
+      "expected": {
+        "supported": true,
+        "facing": "South",
+        "managedFacing": 3,
+        "visited": []
+      }
+    },
+    {
+      "id": "fixed-west-ignores-viability",
+      "family": "chooser",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "actor": [
+          2,
+          2
+        ],
+        "current": "North",
+        "hint": "West",
+        "viable": [],
+        "enemies": []
+      },
+      "expected": {
+        "supported": true,
+        "facing": "West",
+        "managedFacing": 2,
+        "visited": []
+      }
+    },
+    {
+      "id": "fixed-north-ignores-viability",
+      "family": "chooser",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "actor": [
+          2,
+          2
+        ],
+        "current": "North",
+        "hint": "North",
+        "viable": [],
+        "enemies": []
+      },
+      "expected": {
+        "supported": true,
+        "facing": "North",
+        "managedFacing": 1,
+        "visited": []
+      }
+    },
+    {
+      "id": "fixed-east-ignores-viability",
+      "family": "chooser",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "actor": [
+          2,
+          2
+        ],
+        "current": "North",
+        "hint": "East",
+        "viable": [],
+        "enemies": []
+      },
+      "expected": {
+        "supported": true,
+        "facing": "East",
+        "managedFacing": 0,
+        "visited": []
+      }
+    },
+    {
+      "id": "keep-current-without-enemy",
+      "family": "chooser",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "actor": [
+          2,
+          2
+        ],
+        "current": "North",
+        "hint": "KeepCurrent",
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ],
+        "enemies": []
+      },
+      "expected": {
+        "supported": true,
+        "facing": "North",
+        "managedFacing": 1,
+        "visited": []
+      }
+    },
+    {
+      "id": "one-enemy-east",
+      "family": "chooser",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "actor": [
+          2,
+          2
+        ],
+        "current": "North",
+        "hint": "ChooseAtWait",
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ],
+        "enemies": [
+          {
+            "slot": 1,
+            "position": [
+              4,
+              2
+            ],
+            "imminent": true,
+            "eligible": true
+          }
+        ]
+      },
+      "expected": {
+        "supported": true,
+        "facing": "East",
+        "managedFacing": 0,
+        "visited": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "post-move-uses-settled-origin",
+      "family": "chooser",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "actor": [
+          4,
+          3
+        ],
+        "current": "North",
+        "hint": "ChooseAtWait",
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ],
+        "enemies": [
+          {
+            "slot": 1,
+            "position": [
+              4,
+              2
+            ],
+            "imminent": true,
+            "eligible": true
+          }
+        ]
+      },
+      "expected": {
+        "supported": true,
+        "facing": "South",
+        "managedFacing": 3,
+        "visited": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "post-push-uses-settled-enemy",
+      "family": "chooser",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "actor": [
+          2,
+          2
+        ],
+        "current": "North",
+        "hint": "ChooseAtWait",
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ],
+        "enemies": [
+          {
+            "slot": 1,
+            "position": [
+              4,
+              4
+            ],
+            "imminent": true,
+            "eligible": true
+          }
+        ]
+      },
+      "expected": {
+        "supported": true,
+        "facing": "North",
+        "managedFacing": 1,
+        "visited": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "nearest-tie-first-original-slot",
+      "family": "chooser",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "actor": [
+          2,
+          2
+        ],
+        "current": "North",
+        "hint": "ChooseAtWait",
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ],
+        "enemies": [
+          {
+            "slot": 9,
+            "position": [
+              4,
+              2
+            ],
+            "imminent": true,
+            "eligible": true
+          },
+          {
+            "slot": 2,
+            "position": [
+              0,
+              2
+            ],
+            "imminent": true,
+            "eligible": true
+          }
+        ]
+      },
+      "expected": {
+        "supported": true,
+        "facing": "West",
+        "managedFacing": 2,
+        "visited": [
+          2
+        ]
+      }
+    },
+    {
+      "id": "imminent-before-nearer-any",
+      "family": "chooser",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "actor": [
+          2,
+          2
+        ],
+        "current": "North",
+        "hint": "ChooseAtWait",
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ],
+        "enemies": [
+          {
+            "slot": 1,
+            "position": [
+              3,
+              2
+            ],
+            "imminent": false,
+            "eligible": true
+          },
+          {
+            "slot": 2,
+            "position": [
+              2,
+              0
+            ],
+            "imminent": true,
+            "eligible": true
+          }
+        ]
+      },
+      "expected": {
+        "supported": true,
+        "facing": "South",
+        "managedFacing": 3,
+        "visited": [
+          2
+        ]
+      }
+    },
+    {
+      "id": "retry-imminent-after-bad-direction",
+      "family": "chooser",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "actor": [
+          2,
+          2
+        ],
+        "current": "North",
+        "hint": "ChooseAtWait",
+        "viable": [
+          "North",
+          "West"
+        ],
+        "enemies": [
+          {
+            "slot": 1,
+            "position": [
+              3,
+              2
+            ],
+            "imminent": true,
+            "eligible": true
+          },
+          {
+            "slot": 2,
+            "position": [
+              2,
+              4
+            ],
+            "imminent": true,
+            "eligible": true
+          }
+        ]
+      },
+      "expected": {
+        "supported": true,
+        "facing": "North",
+        "managedFacing": 1,
+        "visited": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "id": "any-search-reconsiders-rejected-imminent",
+      "family": "chooser",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "actor": [
+          2,
+          2
+        ],
+        "current": "North",
+        "hint": "ChooseAtWait",
+        "viable": [
+          "North",
+          "West"
+        ],
+        "enemies": [
+          {
+            "slot": 1,
+            "position": [
+              3,
+              2
+            ],
+            "imminent": true,
+            "eligible": true
+          },
+          {
+            "slot": 2,
+            "position": [
+              0,
+              2
+            ],
+            "imminent": false,
+            "eligible": true
+          }
+        ]
+      },
+      "expected": {
+        "supported": true,
+        "facing": "North",
+        "managedFacing": 1,
+        "visited": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "any-nearest-once-then-current",
+      "family": "chooser",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "actor": [
+          2,
+          2
+        ],
+        "current": "North",
+        "hint": "ChooseAtWait",
+        "viable": [
+          "North",
+          "West"
+        ],
+        "enemies": [
+          {
+            "slot": 1,
+            "position": [
+              3,
+              2
+            ],
+            "imminent": false,
+            "eligible": true
+          },
+          {
+            "slot": 2,
+            "position": [
+              0,
+              2
+            ],
+            "imminent": false,
+            "eligible": true
+          }
+        ]
+      },
+      "expected": {
+        "supported": true,
+        "facing": "North",
+        "managedFacing": 1,
+        "visited": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "any-nearest-once-then-last-source-direction",
+      "family": "chooser",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "actor": [
+          2,
+          2
+        ],
+        "current": "South",
+        "hint": "ChooseAtWait",
+        "viable": [
+          "East",
+          "West"
+        ],
+        "enemies": [
+          {
+            "slot": 1,
+            "position": [
+              2,
+              3
+            ],
+            "imminent": false,
+            "eligible": true
+          },
+          {
+            "slot": 2,
+            "position": [
+              0,
+              2
+            ],
+            "imminent": false,
+            "eligible": true
+          }
+        ]
+      },
+      "expected": {
+        "supported": true,
+        "facing": "East",
+        "managedFacing": 0,
+        "visited": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "all-blocked-normalization",
+      "family": "chooser",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "actor": [
+          2,
+          2
+        ],
+        "current": "North",
+        "hint": "ChooseAtWait",
+        "viable": [],
+        "enemies": [
+          {
+            "slot": 1,
+            "position": [
+              4,
+              2
+            ],
+            "imminent": true,
+            "eligible": true
+          }
+        ]
+      },
+      "expected": {
+        "supported": true,
+        "facing": "East",
+        "managedFacing": 0,
+        "visited": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "dead-hidden-or-inert-normalized-out",
+      "family": "chooser",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "actor": [
+          2,
+          2
+        ],
+        "current": "North",
+        "hint": "ChooseAtWait",
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ],
+        "enemies": [
+          {
+            "slot": 1,
+            "position": [
+              3,
+              2
+            ],
+            "imminent": true,
+            "eligible": false
+          },
+          {
+            "slot": 2,
+            "position": [
+              0,
+              2
+            ],
+            "imminent": true,
+            "eligible": true
+          }
+        ]
+      },
+      "expected": {
+        "supported": true,
+        "facing": "West",
+        "managedFacing": 2,
+        "visited": [
+          2
+        ]
+      }
+    },
+    {
+      "id": "no-enemy-overlap-sentinel",
+      "family": "chooser",
+      "expectationKind": "managed-admission-boundary",
+      "inputs": {
+        "actor": [
+          2,
+          2
+        ],
+        "current": "North",
+        "hint": "ChooseAtWait",
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ],
+        "enemies": []
+      },
+      "expected": {
+        "supported": false,
+        "reason": "NoEnemyStackByte",
+        "visited": []
+      }
+    },
+    {
+      "id": "coincident-imminent-lookup",
+      "family": "chooser",
+      "expectationKind": "managed-admission-boundary",
+      "inputs": {
+        "actor": [
+          2,
+          2
+        ],
+        "current": "North",
+        "hint": "ChooseAtWait",
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ],
+        "enemies": [
+          {
+            "slot": 1,
+            "position": [
+              2,
+              2
+            ],
+            "imminent": true,
+            "eligible": true
+          }
+        ]
+      },
+      "expected": {
+        "supported": false,
+        "reason": "OverlapStackByte",
+        "visited": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "coincident-any-lookup",
+      "family": "chooser",
+      "expectationKind": "managed-admission-boundary",
+      "inputs": {
+        "actor": [
+          2,
+          2
+        ],
+        "current": "North",
+        "hint": "ChooseAtWait",
+        "viable": [
+          "South",
+          "West",
+          "North",
+          "East"
+        ],
+        "enemies": [
+          {
+            "slot": 1,
+            "position": [
+              2,
+              2
+            ],
+            "imminent": false,
+            "eligible": true
+          }
+        ]
+      },
+      "expected": {
+        "supported": false,
+        "reason": "OverlapStackByte",
+        "visited": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "wait-unused-both",
+      "family": "clock-end",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "ct": 15,
+        "moved": false,
+        "acted": false,
+        "hasTurn": true
+      },
+      "expected": {
+        "ct": 55,
+        "hasTurn": false,
+        "moved": false,
+        "acted": false,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "wait-move-only",
+      "family": "clock-end",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "ct": 15,
+        "moved": true,
+        "acted": false,
+        "hasTurn": true
+      },
+      "expected": {
+        "ct": 35,
+        "hasTurn": false,
+        "moved": true,
+        "acted": false,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "wait-act-only",
+      "family": "clock-end",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "ct": 15,
+        "moved": false,
+        "acted": true,
+        "hasTurn": true
+      },
+      "expected": {
+        "ct": 35,
+        "hasTurn": false,
+        "moved": false,
+        "acted": true,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "automatic-both",
+      "family": "clock-end",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "ct": 15,
+        "moved": true,
+        "acted": true,
+        "hasTurn": true
+      },
+      "expected": {
+        "ct": 15,
+        "hasTurn": false,
+        "moved": true,
+        "acted": true,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "wait-cap",
+      "family": "clock-end",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "ct": 59,
+        "moved": false,
+        "acted": false,
+        "hasTurn": true
+      },
+      "expected": {
+        "ct": 60,
+        "hasTurn": false,
+        "moved": false,
+        "acted": false,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "already-ended-no-second-refund",
+      "family": "clock-end",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "ct": 55,
+        "moved": false,
+        "acted": false,
+        "hasTurn": false
+      },
+      "expected": {
+        "ct": 55,
+        "hasTurn": false,
+        "moved": false,
+        "acted": false,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "automatic-ended-no-extra-CT",
+      "family": "clock-end",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "ct": 15,
+        "moved": true,
+        "acted": true,
+        "hasTurn": false
+      },
+      "expected": {
+        "ct": 15,
+        "hasTurn": false,
+        "moved": true,
+        "acted": true,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "active-high-remainder-cap",
+      "family": "clock-end",
+      "expectationKind": "source-derived",
+      "inputs": {
+        "ct": 99,
+        "moved": true,
+        "acted": true,
+        "hasTurn": true
+      },
+      "expected": {
+        "ct": 60,
+        "hasTurn": false,
+        "moved": true,
+        "acted": true,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "auto-complete-then-facing",
+      "family": "completion-gate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "command": "FinishFacing",
+        "pending": true,
+        "active": false,
+        "receiptMatches": true,
+        "actorMatches": true,
+        "revisionAvailable": true,
+        "choiceSupported": true
+      },
+      "expected": {
+        "accepted": true,
+        "operation": "FacingOnly",
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "explicit-wait-and-facing",
+      "family": "completion-gate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "command": "WaitWithFacing",
+        "pending": false,
+        "active": true,
+        "receiptMatches": true,
+        "actorMatches": true,
+        "revisionAvailable": true,
+        "choiceSupported": true
+      },
+      "expected": {
+        "accepted": true,
+        "operation": "WaitThenFacing",
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "duplicate-after-receipt-consumed",
+      "family": "completion-gate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "command": "FinishFacing",
+        "pending": false,
+        "active": false,
+        "receiptMatches": true,
+        "actorMatches": true,
+        "revisionAvailable": true,
+        "choiceSupported": true
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "MissingCompletion"
+      }
+    },
+    {
+      "id": "unattributed-ended-snapshot",
+      "family": "completion-gate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "command": "FinishFacing",
+        "pending": false,
+        "active": false,
+        "receiptMatches": false,
+        "actorMatches": true,
+        "revisionAvailable": true,
+        "choiceSupported": true
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "MissingCompletion"
+      }
+    },
+    {
+      "id": "stale-revision-or-cross-branch-receipt",
+      "family": "completion-gate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "command": "FinishFacing",
+        "pending": true,
+        "active": false,
+        "receiptMatches": false,
+        "actorMatches": true,
+        "revisionAvailable": true,
+        "choiceSupported": true
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "StaleCompletion"
+      }
+    },
+    {
+      "id": "pending-wrong-actor",
+      "family": "completion-gate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "command": "FinishFacing",
+        "pending": true,
+        "active": false,
+        "receiptMatches": true,
+        "actorMatches": false,
+        "revisionAvailable": true,
+        "choiceSupported": true
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "WrongActor"
+      }
+    },
+    {
+      "id": "pending-inconsistent-active-turn",
+      "family": "completion-gate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "command": "FinishFacing",
+        "pending": true,
+        "active": true,
+        "receiptMatches": true,
+        "actorMatches": true,
+        "revisionAvailable": true,
+        "choiceSupported": true
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "InconsistentCompletion"
+      }
+    },
+    {
+      "id": "finish-counter-exhausted",
+      "family": "completion-gate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "command": "FinishFacing",
+        "pending": true,
+        "active": false,
+        "receiptMatches": true,
+        "actorMatches": true,
+        "revisionAvailable": false,
+        "choiceSupported": true
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "RevisionExhausted"
+      }
+    },
+    {
+      "id": "unsupported-choice-preserves-pending",
+      "family": "completion-gate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "command": "FinishFacing",
+        "pending": true,
+        "active": false,
+        "receiptMatches": true,
+        "actorMatches": true,
+        "revisionAvailable": true,
+        "choiceSupported": false
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "UnsupportedFacing"
+      }
+    },
+    {
+      "id": "pending-blocks-advance",
+      "family": "completion-gate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "command": "Advance",
+        "pending": true,
+        "active": false,
+        "receiptMatches": true,
+        "actorMatches": true,
+        "revisionAvailable": true,
+        "choiceSupported": true
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "FacingPending"
+      }
+    },
+    {
+      "id": "pending-blocks-move",
+      "family": "completion-gate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "command": "Move",
+        "pending": true,
+        "active": false,
+        "receiptMatches": true,
+        "actorMatches": true,
+        "revisionAvailable": true,
+        "choiceSupported": true
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "FacingPending"
+      }
+    },
+    {
+      "id": "pending-blocks-act",
+      "family": "completion-gate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "command": "Act",
+        "pending": true,
+        "active": false,
+        "receiptMatches": true,
+        "actorMatches": true,
+        "revisionAvailable": true,
+        "choiceSupported": true
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "FacingPending"
+      }
+    },
+    {
+      "id": "pending-blocks-waitwithfacing",
+      "family": "completion-gate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "command": "WaitWithFacing",
+        "pending": true,
+        "active": false,
+        "receiptMatches": true,
+        "actorMatches": true,
+        "revisionAvailable": true,
+        "choiceSupported": true
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "FacingPending"
+      }
+    },
+    {
+      "id": "settled-allows-next-advance",
+      "family": "completion-gate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "command": "Advance",
+        "pending": false,
+        "active": false,
+        "receiptMatches": true,
+        "actorMatches": true,
+        "revisionAvailable": true,
+        "choiceSupported": true
+      },
+      "expected": {
+        "accepted": true,
+        "operation": "Delegate"
+      }
+    },
+    {
+      "id": "ordinary-active-move-delegates",
+      "family": "completion-gate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "command": "Move",
+        "pending": false,
+        "active": true,
+        "receiptMatches": true,
+        "actorMatches": true,
+        "revisionAvailable": true,
+        "choiceSupported": true
+      },
+      "expected": {
+        "accepted": true,
+        "operation": "Delegate"
+      }
+    },
+    {
+      "id": "wait-inactive-rejects",
+      "family": "completion-gate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "command": "WaitWithFacing",
+        "pending": false,
+        "active": false,
+        "receiptMatches": true,
+        "actorMatches": true,
+        "revisionAvailable": true,
+        "choiceSupported": true
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "InactiveActor"
+      }
+    },
+    {
+      "id": "wait-wrong-actor",
+      "family": "completion-gate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "command": "WaitWithFacing",
+        "pending": false,
+        "active": true,
+        "receiptMatches": true,
+        "actorMatches": false,
+        "revisionAvailable": true,
+        "choiceSupported": true
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "WrongActor"
+      }
+    },
+    {
+      "id": "wait-counter-exhausted",
+      "family": "completion-gate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "command": "WaitWithFacing",
+        "pending": false,
+        "active": true,
+        "receiptMatches": true,
+        "actorMatches": true,
+        "revisionAvailable": false,
+        "choiceSupported": true
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "RevisionExhausted"
+      }
+    },
+    {
+      "id": "wait-unsupported-before-refund",
+      "family": "completion-gate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "command": "WaitWithFacing",
+        "pending": false,
+        "active": true,
+        "receiptMatches": true,
+        "actorMatches": true,
+        "revisionAvailable": true,
+        "choiceSupported": false
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "UnsupportedFacing"
+      }
+    }
+  ],
+  "implementationCases": [
+    {
+      "id": "FTF-001",
+      "description": "Typed cardinal hints map by name, including source/managed enum differences",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FTF-002",
+      "description": "ChooseAtWait uses current settled actor and living certified opponent coordinates",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FTF-003",
+      "description": "Exact diagonal ties and cardinal directions across actor IDs and collection orders",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FTF-004",
+      "description": "KeepCurrent preserves supplied settled facing; no inferred path heading",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FTF-005",
+      "description": "No-enemy/coincident chooser is explicitly unsupported; explicit hints remain separate",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FTF-006",
+      "description": "Strict two-unit flat profile and no arbitrary snapshot/receipt attachment",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FTF-007",
+      "description": "Explicit Wait with neither/one choice unused refunds CT once with cap60",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FTF-008",
+      "description": "Move-Act automatic completion mints pending receipt only after full attack settlement",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FTF-009",
+      "description": "Act-Move automatic completion mints pending receipt after full move settlement",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FTF-010",
+      "description": "Facing-only finalize after automatic completion changes no CT/choices/clock/RNG",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FTF-011",
+      "description": "Pending receipt blocks Advance, Move, Act and another Wait",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FTF-012",
+      "description": "Missing/stale/wrong actor/cross-branch receipt rejects atomically",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FTF-013",
+      "description": "Repeated same-facing completion consumes authorization once on authoritative chain",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FTF-014",
+      "description": "Immutable probes/replay recreate receipts; replaying old input is not global consumption",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FTF-015",
+      "description": "Revision exhaustion and unsupported choice preserve input and pending receipt",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FTF-016",
+      "description": "Post-push target and current battle PA/HP/facing/KO state preserved by facing application",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FTF-017",
+      "description": "Zero new RNG at ulong max for chooser/Wait/finalize; existing delegated draws preserved",
+      "status": "unexecuted"
+    },
+    {
+      "id": "FTF-018",
+      "description": "Legacy fixtures/execution/save/headless regressions unchanged; no production activation",
+      "status": "unexecuted"
+    }
+  ]
+}

@@ -1,0 +1,1103 @@
+{
+  "format": "fft.banner-triangle-color-evidence",
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "managedCommit": "dd38c49",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "historicalEvidence": {
+    "localPath": "docs/evidence/visual/early-banner-reveal-v1.json",
+    "bytes": 51846,
+    "sha256": "64fc4ab2ea6cd49325df917ca818e556aea5e9c17ea1b22d600d68294b531ca9"
+  },
+  "sourceStudy": {
+    "repository": "https://github.com/libretro/beetle-psx-libretro",
+    "revision": "dda8cf71d420b1972d92324a5edecf2b92b1ec92",
+    "installedDllSourceIdentityEstablished": false,
+    "files": [
+      {
+        "repositoryPath": "mednafen/psx/gpu_polygon.c",
+        "url": "https://raw.githubusercontent.com/libretro/beetle-psx-libretro/dda8cf71d420b1972d92324a5edecf2b92b1ec92/mednafen/psx/gpu_polygon.c",
+        "identity": {
+          "localPath": "scratch/banner-precision-sources/gpu_polygon.c",
+          "bytes": 84883,
+          "sha256": "aa5caec17c678cc5d28321bbb7f2cc4fabd2c4689850bf8feae2d9b0aa423af2"
+        }
+      },
+      {
+        "repositoryPath": "mednafen/psx/gpu_common.h",
+        "url": "https://raw.githubusercontent.com/libretro/beetle-psx-libretro/dda8cf71d420b1972d92324a5edecf2b92b1ec92/mednafen/psx/gpu_common.h",
+        "identity": {
+          "localPath": "scratch/banner-precision-sources/gpu_common.h",
+          "bytes": 52055,
+          "sha256": "2fbe5496c2c700941d012e374857e8579f8b2fa6712ccc60ad85417b2bfe7c42"
+        }
+      },
+      {
+        "repositoryPath": "mednafen/psx/gpu_uv_phase.h",
+        "url": "https://raw.githubusercontent.com/libretro/beetle-psx-libretro/dda8cf71d420b1972d92324a5edecf2b92b1ec92/mednafen/psx/gpu_uv_phase.h",
+        "identity": {
+          "localPath": "scratch/banner-color-anchor-study/gpu_uv_phase.h",
+          "bytes": 1943,
+          "sha256": "13653f13e577a304774f252cc03e7f91da78774da5fd8d7f74216f4e5c285080"
+        }
+      }
+    ],
+    "fftSourceFiles": [
+      "src/event/require/conditions.c",
+      "include/psx/libgpu.h"
+    ],
+    "originalGeneralFunction": {
+      "address": 2149355392,
+      "bytes": 4132,
+      "sha256": "231240f68206f06c842633bd08d76cb806eaac8b3e032ba673417f590ed12607"
+    },
+    "fixedPointFractionBits": 12,
+    "postPaddingBits": 12,
+    "colorBias": 2048,
+    "triangles": [
+      {
+        "vertices": [
+          "TL",
+          "TR",
+          "BL"
+        ],
+        "seed": "TL"
+      },
+      {
+        "vertices": [
+          "TR",
+          "BL",
+          "BR"
+        ],
+        "seed": "BL"
+      }
+    ],
+    "secondTrianglePredicate": "column * height >= width * (height - row)",
+    "verticalStep": "trunc((bottom - top) * 4096 / height)",
+    "firstTriangle": "(top * 4096 + 2048 + step * row) >> 12",
+    "secondTriangle": "(bottom * 4096 + 2048 + step * (row - height)) >> 12",
+    "example": {
+      "top": 10,
+      "bottom": 120,
+      "width": 232,
+      "height": 24,
+      "row": 6,
+      "step": 18773,
+      "diagonalColumn": 174,
+      "topSeedColor": 37,
+      "bottomSeedColor": 38,
+      "textureChannel": 31,
+      "firstScanout": 64,
+      "secondScanout": 72
+    }
+  },
+  "checkpoints": [
+    {
+      "displayedLogicalTick": 1,
+      "frontendFrames": 6,
+      "exact": true,
+      "affectedSamples": 0,
+      "visibleArtworkCompared": false,
+      "artworkExactEquality": null,
+      "fullCanvasChangedPixels": 0,
+      "changedFromPrevious": 0,
+      "minCorrectedMinusPrevious": [
+        0,
+        0,
+        0
+      ],
+      "maxCorrectedMinusPrevious": [
+        0,
+        0,
+        0
+      ],
+      "allIsolationScanoutModelFootprintChecksPass": true
+    },
+    {
+      "displayedLogicalTick": 2,
+      "frontendFrames": 8,
+      "exact": true,
+      "affectedSamples": 27,
+      "visibleArtworkCompared": true,
+      "artworkExactEquality": true,
+      "fullCanvasChangedPixels": 0,
+      "changedFromPrevious": 0,
+      "minCorrectedMinusPrevious": [
+        0,
+        0,
+        0
+      ],
+      "maxCorrectedMinusPrevious": [
+        0,
+        0,
+        0
+      ],
+      "allIsolationScanoutModelFootprintChecksPass": true
+    },
+    {
+      "displayedLogicalTick": 3,
+      "frontendFrames": 10,
+      "exact": true,
+      "affectedSamples": 1090,
+      "visibleArtworkCompared": true,
+      "artworkExactEquality": true,
+      "fullCanvasChangedPixels": 0,
+      "changedFromPrevious": 0,
+      "minCorrectedMinusPrevious": [
+        0,
+        0,
+        0
+      ],
+      "maxCorrectedMinusPrevious": [
+        0,
+        0,
+        0
+      ],
+      "allIsolationScanoutModelFootprintChecksPass": true
+    },
+    {
+      "displayedLogicalTick": 4,
+      "frontendFrames": 12,
+      "exact": true,
+      "affectedSamples": 1879,
+      "visibleArtworkCompared": true,
+      "artworkExactEquality": true,
+      "fullCanvasChangedPixels": 0,
+      "changedFromPrevious": 21,
+      "minCorrectedMinusPrevious": [
+        0,
+        0,
+        0
+      ],
+      "maxCorrectedMinusPrevious": [
+        0,
+        0,
+        8
+      ],
+      "allIsolationScanoutModelFootprintChecksPass": true
+    },
+    {
+      "displayedLogicalTick": 5,
+      "frontendFrames": 14,
+      "exact": true,
+      "affectedSamples": 1879,
+      "visibleArtworkCompared": true,
+      "artworkExactEquality": true,
+      "fullCanvasChangedPixels": 0,
+      "changedFromPrevious": 0,
+      "minCorrectedMinusPrevious": [
+        0,
+        0,
+        0
+      ],
+      "maxCorrectedMinusPrevious": [
+        0,
+        0,
+        0
+      ],
+      "allIsolationScanoutModelFootprintChecksPass": true
+    },
+    {
+      "displayedLogicalTick": 9,
+      "frontendFrames": 22,
+      "exact": true,
+      "affectedSamples": 1879,
+      "visibleArtworkCompared": true,
+      "artworkExactEquality": true,
+      "fullCanvasChangedPixels": 0,
+      "changedFromPrevious": 0,
+      "minCorrectedMinusPrevious": [
+        0,
+        0,
+        0
+      ],
+      "maxCorrectedMinusPrevious": [
+        0,
+        0,
+        0
+      ],
+      "allIsolationScanoutModelFootprintChecksPass": true
+    },
+    {
+      "displayedLogicalTick": 10,
+      "frontendFrames": 24,
+      "exact": true,
+      "affectedSamples": 1879,
+      "visibleArtworkCompared": true,
+      "artworkExactEquality": true,
+      "fullCanvasChangedPixels": 0,
+      "changedFromPrevious": 0,
+      "minCorrectedMinusPrevious": [
+        0,
+        0,
+        0
+      ],
+      "maxCorrectedMinusPrevious": [
+        0,
+        0,
+        0
+      ],
+      "allIsolationScanoutModelFootprintChecksPass": true
+    },
+    {
+      "displayedLogicalTick": 11,
+      "frontendFrames": 26,
+      "exact": true,
+      "affectedSamples": 1879,
+      "visibleArtworkCompared": true,
+      "artworkExactEquality": true,
+      "fullCanvasChangedPixels": 0,
+      "changedFromPrevious": 0,
+      "minCorrectedMinusPrevious": [
+        0,
+        0,
+        0
+      ],
+      "maxCorrectedMinusPrevious": [
+        0,
+        0,
+        0
+      ],
+      "allIsolationScanoutModelFootprintChecksPass": true
+    },
+    {
+      "displayedLogicalTick": 12,
+      "frontendFrames": 28,
+      "exact": true,
+      "affectedSamples": 2083,
+      "visibleArtworkCompared": true,
+      "artworkExactEquality": true,
+      "fullCanvasChangedPixels": 0,
+      "changedFromPrevious": 0,
+      "minCorrectedMinusPrevious": [
+        0,
+        0,
+        0
+      ],
+      "maxCorrectedMinusPrevious": [
+        0,
+        0,
+        0
+      ],
+      "allIsolationScanoutModelFootprintChecksPass": true
+    },
+    {
+      "displayedLogicalTick": 13,
+      "frontendFrames": 30,
+      "exact": true,
+      "affectedSamples": 2989,
+      "visibleArtworkCompared": true,
+      "artworkExactEquality": true,
+      "fullCanvasChangedPixels": 0,
+      "changedFromPrevious": 14,
+      "minCorrectedMinusPrevious": [
+        0,
+        0,
+        0
+      ],
+      "maxCorrectedMinusPrevious": [
+        0,
+        0,
+        8
+      ],
+      "allIsolationScanoutModelFootprintChecksPass": true
+    },
+    {
+      "displayedLogicalTick": 14,
+      "frontendFrames": 32,
+      "exact": true,
+      "affectedSamples": 3128,
+      "visibleArtworkCompared": true,
+      "artworkExactEquality": true,
+      "fullCanvasChangedPixels": 0,
+      "changedFromPrevious": 0,
+      "minCorrectedMinusPrevious": [
+        0,
+        0,
+        0
+      ],
+      "maxCorrectedMinusPrevious": [
+        0,
+        0,
+        0
+      ],
+      "allIsolationScanoutModelFootprintChecksPass": true
+    }
+  ],
+  "totalAffectedTemporalSamples": 18712,
+  "exactFrames": 11,
+  "changedTemporalSamples": 35,
+  "originalCapturesReused": true,
+  "comparisonEmulatorLaunched": false,
+  "repeatedCorrectedOutputs": {
+    "firstReport": {
+      "localPath": "scratch/banner-triangle-colors-a/report.json",
+      "bytes": 96395,
+      "sha256": "4b91906557d1b2e390ab8f351d7fc538ac484397317ba5f670b3c08b14e0b57e"
+    },
+    "secondReport": {
+      "localPath": "scratch/banner-triangle-colors-b/report.json",
+      "bytes": 96395,
+      "sha256": "0e9ef69fa9da52da59a4f7297ec9755f697fd421bbcc8b4b29ac425605435fb2"
+    },
+    "artifactCount": 57,
+    "firstRoot": "scratch/banner-triangle-colors-a",
+    "secondRoot": "scratch/banner-triangle-colors-b",
+    "rule": "Replace firstRoot with secondRoot in each path; corresponding bytes and hashes are equal.",
+    "artifacts": [
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-006/original.png",
+        "bytes": 36281,
+        "sha256": "7a37d21c6656509a3c1b2d532f94d0a9de012b7d0efcc03d77a34f82ceeae28f"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-006/background.png",
+        "bytes": 36281,
+        "sha256": "7a37d21c6656509a3c1b2d532f94d0a9de012b7d0efcc03d77a34f82ceeae28f"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-006/background.rgba",
+        "bytes": 245760,
+        "sha256": "4afdd8bb66e4b6ba7f449de3800409c792a0455cd9df4546ea5d8927d30d070b"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-006/native.png",
+        "bytes": 36281,
+        "sha256": "7a37d21c6656509a3c1b2d532f94d0a9de012b7d0efcc03d77a34f82ceeae28f"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/native/tick-001.rgba",
+        "bytes": 245760,
+        "sha256": "4afdd8bb66e4b6ba7f449de3800409c792a0455cd9df4546ea5d8927d30d070b"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-008/original.png",
+        "bytes": 36463,
+        "sha256": "1b11e60db8dfe234457bcff6b7df05bb30b6f6f7034ab123875e4fa6f4f47884"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-008/background.png",
+        "bytes": 36373,
+        "sha256": "7d19258f44b89a4c0513b96071d4cc1b205125197287a513577b5da7b2e12d4e"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-008/background.rgba",
+        "bytes": 245760,
+        "sha256": "9ba7a865ff56f9f6781ece4e5bcb21e857209d302fc73f6d481cac8898a7df4b"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-008/native.png",
+        "bytes": 36463,
+        "sha256": "1b11e60db8dfe234457bcff6b7df05bb30b6f6f7034ab123875e4fa6f4f47884"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/native/tick-002.rgba",
+        "bytes": 245760,
+        "sha256": "36eedd377e3133ec7be50045ce4d7640ccad3f304f35fd49e15b85a0943ab0ff"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-010/original.png",
+        "bytes": 38059,
+        "sha256": "724a260a8892a8fb43111b07c5c4744579715c43e8ca7bd791072e335efd8819"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-010/background.png",
+        "bytes": 36577,
+        "sha256": "d33c5c8419942196bd56c0d0a0d099a8ce04cec205c45127e64b3f70ecf2971f"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-010/background.rgba",
+        "bytes": 245760,
+        "sha256": "70c37c278c5446c693529b07c330ac95a1f069d19d163a7b0b744bef63a849f6"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-010/native.png",
+        "bytes": 38059,
+        "sha256": "724a260a8892a8fb43111b07c5c4744579715c43e8ca7bd791072e335efd8819"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/native/tick-003.rgba",
+        "bytes": 245760,
+        "sha256": "de3a2a250b9de649f8cf4d96b6680029c8fe2f40fc94527ae1e15b66b99a6fae"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-012/original.png",
+        "bytes": 39279,
+        "sha256": "4b4ef52410c13da6371cd777cacee86b59265477b90078b405212e4ee7d5b8de"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-012/background.png",
+        "bytes": 36491,
+        "sha256": "1f17ce8e9bc6867e6e0d3f109e0beb900cdee308281b51072898a1a0972727db"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-012/background.rgba",
+        "bytes": 245760,
+        "sha256": "f46abd31a1e7b72dd6125ff92cfbc522d37b6c80c3a5208ee1e0d6e0eff7a605"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-012/native.png",
+        "bytes": 39279,
+        "sha256": "4b4ef52410c13da6371cd777cacee86b59265477b90078b405212e4ee7d5b8de"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/native/tick-004.rgba",
+        "bytes": 245760,
+        "sha256": "82161e881ca9987659d7f9f4f50435bb51165f3735eab82ac51510490fdade5c"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-014/original.png",
+        "bytes": 38961,
+        "sha256": "16b196a6ecfae7fdd93d3dca6d41b5b25c74a4ce2c6cd9c48a45c51e89270ae4"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-014/background.png",
+        "bytes": 36302,
+        "sha256": "f3a75a066291ff87cc3e10ce36b1abd297fcee760a1ba0fa0c1f9fc1452ea535"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-014/background.rgba",
+        "bytes": 245760,
+        "sha256": "3de3ce470fb8628231241436b8e80b3eb38ece8a6e3f2da7ace88f7ed3fc4827"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-014/native.png",
+        "bytes": 38961,
+        "sha256": "16b196a6ecfae7fdd93d3dca6d41b5b25c74a4ce2c6cd9c48a45c51e89270ae4"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/native/tick-005.rgba",
+        "bytes": 245760,
+        "sha256": "e677a1ef64c8c8ede2bf67f5e403ccb4425af9ea9e36cdceb88ee369f6956222"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-022/original.png",
+        "bytes": 39142,
+        "sha256": "ec7dcf893464cc99ed9d51027d30d098a261b476e3a896acba8400cf7e31abf7"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-022/background.png",
+        "bytes": 36465,
+        "sha256": "fc5d84bc4e1994da8c8d48e0a7660b3900d6de194c8d5f7e5c6c66dd5fcd4dcd"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-022/background.rgba",
+        "bytes": 245760,
+        "sha256": "d8663a06ffbb3e76830fc2efdc1344aacdd32dd120164a69e5227e39c7bc1e52"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-022/native.png",
+        "bytes": 39142,
+        "sha256": "ec7dcf893464cc99ed9d51027d30d098a261b476e3a896acba8400cf7e31abf7"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/native/tick-009.rgba",
+        "bytes": 245760,
+        "sha256": "7897151cf341967c01336e41f80ab20ae508b62758193998470681de2a6a3a8e"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-024/original.png",
+        "bytes": 39225,
+        "sha256": "949049cd0deb73294c1e69657bca27f25700c9661fce54b9ebcb0f9c9c823c1e"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-024/background.png",
+        "bytes": 36584,
+        "sha256": "76ed698010c3fd5248b198bc89aaeafddb2ce846660f724eec63a167e13f22f6"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-024/background.rgba",
+        "bytes": 245760,
+        "sha256": "7785513ddd2284695688955f45bdf3a962f79ba1295100ece77c3c2c21f6661c"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-024/native.png",
+        "bytes": 39225,
+        "sha256": "949049cd0deb73294c1e69657bca27f25700c9661fce54b9ebcb0f9c9c823c1e"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/native/tick-010.rgba",
+        "bytes": 245760,
+        "sha256": "01b8eb44d72dcb80807133546624e670453a3e1fbd519e8d39270aca4dd1ab12"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-026/original.png",
+        "bytes": 39126,
+        "sha256": "30430dcc4524ff57771381f2026d1b0297cdf80adfe495ed3d399de7dba86478"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-026/background.png",
+        "bytes": 36506,
+        "sha256": "196a765131b69023d4f02d1aeff49e8d18d810cae067f497527fd62beb85527b"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-026/background.rgba",
+        "bytes": 245760,
+        "sha256": "f5300c0d48005c92cc63cf0814bfd5f8429a786c120910308bf94c7210653529"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-026/native.png",
+        "bytes": 39126,
+        "sha256": "30430dcc4524ff57771381f2026d1b0297cdf80adfe495ed3d399de7dba86478"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/native/tick-011.rgba",
+        "bytes": 245760,
+        "sha256": "d2efa405c6a14f1e815f355d5a47742159f4a64cd3481c91d5e8b5896a84cd71"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-028/original.png",
+        "bytes": 39475,
+        "sha256": "0370b53844134ff67278286aefe9ebf0983a937c7acd58d20954776cbff85c41"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-028/background.png",
+        "bytes": 36473,
+        "sha256": "af4f8dfdb967fb51c0fa560ec4c57d6740643bf63a516512d6641bf32fe6027c"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-028/background.rgba",
+        "bytes": 245760,
+        "sha256": "a2c908b353230ace9ff6ffde9f83d6d574e29e5382ae8702d0c4d1492f50b88f"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-028/native.png",
+        "bytes": 39475,
+        "sha256": "0370b53844134ff67278286aefe9ebf0983a937c7acd58d20954776cbff85c41"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/native/tick-012.rgba",
+        "bytes": 245760,
+        "sha256": "1e91e0383aaee6cc84412647e38bc4148435c9f32428212554856dbc6831553f"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-030/original.png",
+        "bytes": 40669,
+        "sha256": "ac80def64725602b7f7d4df0912650d38c215df9adb0dc8a8c71a933d673c87b"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-030/background.png",
+        "bytes": 36518,
+        "sha256": "9ddcbe093e0af09bcb5d3c9055c40f13a5cfb6daea62a62bbd8d81737391cd08"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-030/background.rgba",
+        "bytes": 245760,
+        "sha256": "46beda215ea23f1cfd13fc14007db1ecfb6d84b410d2ffb9cf3c0eb6df0a43d5"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-030/native.png",
+        "bytes": 40669,
+        "sha256": "ac80def64725602b7f7d4df0912650d38c215df9adb0dc8a8c71a933d673c87b"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/native/tick-013.rgba",
+        "bytes": 245760,
+        "sha256": "1c61b4e2fd66210507a181baac0e17da2a4db5d3e421699a6dcd3332ff584495"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-032/original.png",
+        "bytes": 40981,
+        "sha256": "6b82e35bbc193851fa4caef00d25f70670c4c024ed9cab38b14de52563c308f6"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-032/background.png",
+        "bytes": 36644,
+        "sha256": "1426fe61e23393d3d2028576bf6640e862bb473c00b6f195c2fddfd2713cc7fa"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-032/background.rgba",
+        "bytes": 245760,
+        "sha256": "2f51744b6e76666e5cd7ef9fa63ce57283d59b415f14a077354536a732f906f3"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/frame-032/native.png",
+        "bytes": 40981,
+        "sha256": "6b82e35bbc193851fa4caef00d25f70670c4c024ed9cab38b14de52563c308f6"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/native/tick-014.rgba",
+        "bytes": 245760,
+        "sha256": "aa71fff9e8768dd4f6ed88e28190bcab13d3a5ded0cc7c94feca4552fe08a7eb"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/native/check.json",
+        "bytes": 9836,
+        "sha256": "3cb96f6b23c5819474b2a5e67df8b4db633368b0694169680e8204c793dbf276"
+      },
+      {
+        "localPath": "scratch/banner-triangle-colors-a/review.html",
+        "bytes": 5113,
+        "sha256": "6299effd343780d9bb279a5ff7135f730cff82206aad8b6b64fa18481f41dc18"
+      }
+    ],
+    "comparisonRecordsIdentical": true
+  },
+  "preservedExactRegressions": [
+    {
+      "byteIdentical": true,
+      "files": [
+        {
+          "original": {
+            "localPath": "scratch/banner-hide-c/native/check.json",
+            "bytes": 5564,
+            "sha256": "a6dc18e93ae61c985e136da454c19da025afe1dbb75b3b831f2b9a9e2b362010"
+          },
+          "current": {
+            "localPath": "scratch/banner-triangle-hide-check/check.json",
+            "bytes": 5564,
+            "sha256": "a6dc18e93ae61c985e136da454c19da025afe1dbb75b3b831f2b9a9e2b362010"
+          }
+        },
+        {
+          "original": {
+            "localPath": "scratch/banner-hide-c/native/tick-081.rgba",
+            "bytes": 245760,
+            "sha256": "41cd8609f45ab0534fc6df0ad69b799158a4c9dcddccc27a1d67011598bc9fb3"
+          },
+          "current": {
+            "localPath": "scratch/banner-triangle-hide-check/tick-081.rgba",
+            "bytes": 245760,
+            "sha256": "41cd8609f45ab0534fc6df0ad69b799158a4c9dcddccc27a1d67011598bc9fb3"
+          }
+        },
+        {
+          "original": {
+            "localPath": "scratch/banner-hide-c/native/tick-082.rgba",
+            "bytes": 245760,
+            "sha256": "3c5dc601e630b1ef6089e9c44b114a5a3e067751fb4c7cc6f6f38f7c71602176"
+          },
+          "current": {
+            "localPath": "scratch/banner-triangle-hide-check/tick-082.rgba",
+            "bytes": 245760,
+            "sha256": "3c5dc601e630b1ef6089e9c44b114a5a3e067751fb4c7cc6f6f38f7c71602176"
+          }
+        },
+        {
+          "original": {
+            "localPath": "scratch/banner-hide-c/native/tick-083.rgba",
+            "bytes": 245760,
+            "sha256": "724b7e053a7a1c8110b6c09a138356b8c468dfebf45ce4fc36c9fc1adbafa76a"
+          },
+          "current": {
+            "localPath": "scratch/banner-triangle-hide-check/tick-083.rgba",
+            "bytes": 245760,
+            "sha256": "724b7e053a7a1c8110b6c09a138356b8c468dfebf45ce4fc36c9fc1adbafa76a"
+          }
+        },
+        {
+          "original": {
+            "localPath": "scratch/banner-hide-c/native/tick-084.rgba",
+            "bytes": 245760,
+            "sha256": "40debbc2e3ce69546142ed4056432302dbe383525615d3716c05a230bc6afaab"
+          },
+          "current": {
+            "localPath": "scratch/banner-triangle-hide-check/tick-084.rgba",
+            "bytes": 245760,
+            "sha256": "40debbc2e3ce69546142ed4056432302dbe383525615d3716c05a230bc6afaab"
+          }
+        },
+        {
+          "original": {
+            "localPath": "scratch/banner-hide-c/native/tick-085.rgba",
+            "bytes": 245760,
+            "sha256": "41e7d17b7bdcf341d08335da651d2108bc190c1d37c92a8ccfa0449301af8846"
+          },
+          "current": {
+            "localPath": "scratch/banner-triangle-hide-check/tick-085.rgba",
+            "bytes": 245760,
+            "sha256": "41e7d17b7bdcf341d08335da651d2108bc190c1d37c92a8ccfa0449301af8846"
+          }
+        }
+      ]
+    },
+    {
+      "byteIdentical": true,
+      "files": [
+        {
+          "original": {
+            "localPath": "scratch/banner-background-c/native/check.json",
+            "bytes": 1330,
+            "sha256": "ecbd8d4e69b1a174a866b43520d5c06143b7bd2e55b50a5731c1f3ac8c9c93cc"
+          },
+          "current": {
+            "localPath": "scratch/banner-triangle-hold-check/check.json",
+            "bytes": 1330,
+            "sha256": "ecbd8d4e69b1a174a866b43520d5c06143b7bd2e55b50a5731c1f3ac8c9c93cc"
+          }
+        },
+        {
+          "original": {
+            "localPath": "scratch/banner-background-c/native/composed.rgba",
+            "bytes": 245760,
+            "sha256": "5adeb2766c54c67859f2cacef8d1deae56dcd5c9eb83bb3dcad327b14f7e1f7c"
+          },
+          "current": {
+            "localPath": "scratch/banner-triangle-hold-check/composed.rgba",
+            "bytes": 245760,
+            "sha256": "5adeb2766c54c67859f2cacef8d1deae56dcd5c9eb83bb3dcad327b14f7e1f7c"
+          }
+        }
+      ]
+    }
+  ],
+  "windowsValidation": {
+    "report": {
+      "localPath": "scratch/banner-triangle-windows-check/report.json",
+      "bytes": 733,
+      "sha256": "b125172c47b8ddfb6863aa0bfb5df8da7521b32d0f2a63998b66c23494bfd3dc"
+    },
+    "captures": [
+      {
+        "label": "five-bit-a",
+        "captureRoot": "scratch/banner-triangle-windows-five-bit-a",
+        "pngCount": 15,
+        "previousPngsByteIdentical": true,
+        "receiptDifference": "declared policy text only"
+      },
+      {
+        "label": "five-bit-b",
+        "captureRoot": "scratch/banner-triangle-windows-five-bit-b",
+        "pngCount": 15,
+        "previousPngsByteIdentical": true,
+        "receiptDifference": "declared policy text only"
+      },
+      {
+        "label": "rgb8",
+        "captureRoot": "scratch/banner-triangle-windows-rgb8",
+        "pngCount": 15,
+        "previousPngsByteIdentical": true,
+        "receiptDifference": "none"
+      }
+    ],
+    "artifacts": [
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-a/check.json",
+        "bytes": 20809,
+        "sha256": "45726b9037b96cd81aa438e0cbc2ec85c236c15a771492e0ed655800b9a765e0"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-a/tick-000.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-a/tick-001.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-a/tick-002.png",
+        "bytes": 2884,
+        "sha256": "e96392a21e1ff850a6c84c6d44b4cd2f5439c8c3c17efdc1f0933741735db3be"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-a/tick-005.png",
+        "bytes": 6758,
+        "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-a/tick-009.png",
+        "bytes": 6758,
+        "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-a/tick-010.png",
+        "bytes": 6758,
+        "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-a/tick-011.png",
+        "bytes": 6758,
+        "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-a/tick-014.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-a/tick-020.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-a/tick-080.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-a/tick-081.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-a/tick-082.png",
+        "bytes": 8929,
+        "sha256": "4422b8644d3ef9e09ab62280dd3ed1bb9a8b0e89caa733c6e6cd2dc2646968ac"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-a/tick-085.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-a/tick-090.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-a/tick-091.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-b/check.json",
+        "bytes": 20809,
+        "sha256": "45726b9037b96cd81aa438e0cbc2ec85c236c15a771492e0ed655800b9a765e0"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-b/tick-000.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-b/tick-001.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-b/tick-002.png",
+        "bytes": 2884,
+        "sha256": "e96392a21e1ff850a6c84c6d44b4cd2f5439c8c3c17efdc1f0933741735db3be"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-b/tick-005.png",
+        "bytes": 6758,
+        "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-b/tick-009.png",
+        "bytes": 6758,
+        "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-b/tick-010.png",
+        "bytes": 6758,
+        "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-b/tick-011.png",
+        "bytes": 6758,
+        "sha256": "682efe1349767f8d87666313ffe1e84d9619b03e272c60e3f4bd82e9ef4b2dd0"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-b/tick-014.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-b/tick-020.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-b/tick-080.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-b/tick-081.png",
+        "bytes": 9458,
+        "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-b/tick-082.png",
+        "bytes": 8929,
+        "sha256": "4422b8644d3ef9e09ab62280dd3ed1bb9a8b0e89caa733c6e6cd2dc2646968ac"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-b/tick-085.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-b/tick-090.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-five-bit-b/tick-091.png",
+        "bytes": 2763,
+        "sha256": "34ae219cb1e141207d95417ca6b79cd0294b79c983d78a373ddf88a0b0653c8b"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-rgb8/check.json",
+        "bytes": 10533,
+        "sha256": "d8d8ed74a3c72edaa8169595cea1b6b46b3e6d899aeb04c454b5ae691e074ae8"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-rgb8/tick-000.png",
+        "bytes": 2763,
+        "sha256": "be198436d145cddca1c1f857f336609b66d5205547c735ecf3c23493bca44553"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-rgb8/tick-001.png",
+        "bytes": 2763,
+        "sha256": "be198436d145cddca1c1f857f336609b66d5205547c735ecf3c23493bca44553"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-rgb8/tick-002.png",
+        "bytes": 2885,
+        "sha256": "1009901f7ca92b3184f82d3a2540b2bd856e649c66713d96141710cad45f10fe"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-rgb8/tick-005.png",
+        "bytes": 7260,
+        "sha256": "be05746971c82c838a896f4332a910507760c220816ff7852853fc7db67791f0"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-rgb8/tick-009.png",
+        "bytes": 7260,
+        "sha256": "be05746971c82c838a896f4332a910507760c220816ff7852853fc7db67791f0"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-rgb8/tick-010.png",
+        "bytes": 7260,
+        "sha256": "be05746971c82c838a896f4332a910507760c220816ff7852853fc7db67791f0"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-rgb8/tick-011.png",
+        "bytes": 7260,
+        "sha256": "be05746971c82c838a896f4332a910507760c220816ff7852853fc7db67791f0"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-rgb8/tick-014.png",
+        "bytes": 10189,
+        "sha256": "c76dd1042fd3ea64e84a3d4fa7c9d7f2ee1ae844def11eabe3b7e9068412a719"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-rgb8/tick-020.png",
+        "bytes": 10189,
+        "sha256": "c76dd1042fd3ea64e84a3d4fa7c9d7f2ee1ae844def11eabe3b7e9068412a719"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-rgb8/tick-080.png",
+        "bytes": 10189,
+        "sha256": "c76dd1042fd3ea64e84a3d4fa7c9d7f2ee1ae844def11eabe3b7e9068412a719"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-rgb8/tick-081.png",
+        "bytes": 10189,
+        "sha256": "c76dd1042fd3ea64e84a3d4fa7c9d7f2ee1ae844def11eabe3b7e9068412a719"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-rgb8/tick-082.png",
+        "bytes": 9350,
+        "sha256": "52b8d9e5f88c48203b326725fede4f91b0d95b1e9d0b96a82c775468cddcd74f"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-rgb8/tick-085.png",
+        "bytes": 2763,
+        "sha256": "be198436d145cddca1c1f857f336609b66d5205547c735ecf3c23493bca44553"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-rgb8/tick-090.png",
+        "bytes": 2763,
+        "sha256": "be198436d145cddca1c1f857f336609b66d5205547c735ecf3c23493bca44553"
+      },
+      {
+        "localPath": "scratch/banner-triangle-windows-rgb8/tick-091.png",
+        "bytes": 2763,
+        "sha256": "be198436d145cddca1c1f857f336609b66d5205547c735ecf3c23493bca44553"
+      }
+    ],
+    "fiveBitRunsByteIdentical": true,
+    "new24RowFramesIncludedInGpuSchedule": false
+  },
+  "tools": [
+    {
+      "localPath": "tools/verification/verify_banner_triangle_colors.py",
+      "bytes": 8806,
+      "sha256": "0445ed39d9c76257539e5dfd87a39a9540b140f86cffe603e809f36be4e17f1e"
+    },
+    {
+      "localPath": "tools/verification/compare_banner_reveal.py",
+      "bytes": 16029,
+      "sha256": "049fa35a25d8a14c9b69f15ebd88227d9cadbbefe61a30af87ada3adf8d67bcb"
+    },
+    {
+      "localPath": "tools/verification/analyze_banner_precision.py",
+      "bytes": 11968,
+      "sha256": "0721ef12c3d54fd4a2d8c69ee3b942dc40bff1cef3e6737275ad5e0912341bf2"
+    },
+    {
+      "localPath": "tools/verification/compare_banner_background.py",
+      "bytes": 20947,
+      "sha256": "11447cb28f4dbe3fbecdb59c118cf05098939deecd41e00a616cf72ac1008c29"
+    },
+    {
+      "localPath": "tools/verification/compare_banner_hide.py",
+      "bytes": 21845,
+      "sha256": "9a375e7dfa44fd18404d1f2fd8eabd31db5a166dded4ef25432b1d50fec56c28"
+    },
+    {
+      "localPath": "tools/verification/capture_banner_continuation.py",
+      "bytes": 16116,
+      "sha256": "d9d973d970f8ebfdf9bf9b5907022a8c9ff70cdb6e26d955b9734c8a08cf269c"
+    },
+    {
+      "localPath": "tools/verification/trace_banner_draw_state.py",
+      "bytes": 6618,
+      "sha256": "15f44edd29c87f43ae0824c92e3b415deec58e6bd80c2b0ab487f7d4d3afdd9a"
+    },
+    {
+      "localPath": "tools/verification/compare_observed_banner.py",
+      "bytes": 16702,
+      "sha256": "50d1ce4be252cb10b3820293170965a599046aa267ca56040f7ba29e5bff7911"
+    },
+    {
+      "localPath": "tools/verification/compare_visual_checkpoints.py",
+      "bytes": 13970,
+      "sha256": "3ee039e9a767c491d2b44b9889b7d3512262d456e51cf34017945b5e84e3210b"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/FiveBitGeneralBannerPresentation.cs",
+      "bytes": 7646,
+      "sha256": "ae328e2decb54df81bdb555895c71b923a0b6bc1192d65faf480b00bf895e2af"
+    },
+    {
+      "localPath": "tools/banner-blend-check/Program.cs",
+      "bytes": 8824,
+      "sha256": "144152c134f9c98cafd2f8ed31c072696fe6c89938980a53734df9873f87b1dd"
+    }
+  ],
+  "validation": {
+    "managedPassed": 1486,
+    "newManagedClientCases": 20,
+    "pythonPassed": 135,
+    "newPythonCases": 5,
+    "releaseBuildWarnings": 0,
+    "developerHostBuildWarnings": 0,
+    "lockedRestoresPassed": true
+  },
+  "manualReview": {
+    "owner": "accepted",
+    "ownerReviewDate": "2026-10-24",
+    "ownerStatement": "Looks good to me.",
+    "reviewArtifact": {
+      "localPath": "scratch/banner-triangle-colors-a/review.html",
+      "bytes": 5113,
+      "sha256": "6299effd343780d9bb279a5ff7135f730cff82206aad8b6b64fa18481f41dc18"
+    },
+    "scope": "Visual acceptance of the corrected early-reveal gallery. Physical Circle input, original event identity and wider rasterizer/scene fidelity remain open."
+  },
+  "limits": [
+    "Selected native axis-aligned six-piece banner only; no general triangle/rasterizer or original hardware equivalence.",
+    "Empty reveal 1 has no artwork sample success; exactEquality=null and background preservation remains checked.",
+    "Full-canvas equality includes inherited controlled original backgrounds; no managed scene-rendering proof.",
+    "GPU schedule retains its old fifteen checkpoints, excluding reveal 4/13; actual C# CPU comparison verifies those corrected frames.",
+    "Physical Circle input, original event identity and complete BattleStart integration remain open.",
+    "No simulation, loading, input, content/save schema or dependency graph changes."
+  ]
+}

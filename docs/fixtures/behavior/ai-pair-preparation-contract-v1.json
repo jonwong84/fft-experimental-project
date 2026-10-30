@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-195",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "scope": "Closed initialized-list summary and source D0 bound only; no refresh, reachability spread, scored destination or full AI execution.",
+  "vectors": [
+    {
+      "id": "pair-minimum-reach-and-ranged-floor",
+      "input": {
+        "move": 3,
+        "ct": 15,
+        "speed": 5,
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "distance": 3,
+        "acted": false
+      },
+      "expected": {
+        "initializedEntries": 3,
+        "usableEntriesBeforeActClear": 2,
+        "silenceModifier": 0,
+        "mpModifier": 0,
+        "evadeModifier": 2,
+        "highestMpCost": 0,
+        "lowestMpCost": 255,
+        "enemyHarmful": 2,
+        "hasRangedAbility": true,
+        "attackExhaustive": true,
+        "attackConsumeAim": false,
+        "throwStoneExhaustive": false,
+        "throwStoneConsumeAim": true,
+        "randomUseThreshold": 0,
+        "preparationDraws": 0,
+        "actorDelay": 17,
+        "targetDelay": 1,
+        "enemyReach": 4,
+        "allyReach": 3,
+        "attackUsable": true,
+        "throwStoneUsable": true,
+        "d0DistanceLimit": 3
+      }
+    },
+    {
+      "id": "out-of-reach-does-not-use-ranged-floor",
+      "input": {
+        "move": 3,
+        "ct": 15,
+        "speed": 5,
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "distance": 5,
+        "acted": false
+      },
+      "expected": {
+        "initializedEntries": 3,
+        "usableEntriesBeforeActClear": 2,
+        "silenceModifier": 0,
+        "mpModifier": 0,
+        "evadeModifier": 2,
+        "highestMpCost": 0,
+        "lowestMpCost": 255,
+        "enemyHarmful": 2,
+        "hasRangedAbility": true,
+        "attackExhaustive": true,
+        "attackConsumeAim": false,
+        "throwStoneExhaustive": false,
+        "throwStoneConsumeAim": true,
+        "randomUseThreshold": 0,
+        "preparationDraws": 0,
+        "actorDelay": 17,
+        "targetDelay": 1,
+        "enemyReach": 4,
+        "allyReach": 3,
+        "attackUsable": true,
+        "throwStoneUsable": true,
+        "d0DistanceLimit": null
+      }
+    },
+    {
+      "id": "zero-move-ready-peer-and-late-actor-CT",
+      "input": {
+        "move": 0,
+        "ct": 99,
+        "speed": 50,
+        "targetCt": 100,
+        "targetSpeed": 5,
+        "distance": 1,
+        "acted": false
+      },
+      "expected": {
+        "initializedEntries": 3,
+        "usableEntriesBeforeActClear": 2,
+        "silenceModifier": 0,
+        "mpModifier": 0,
+        "evadeModifier": 2,
+        "highestMpCost": 0,
+        "lowestMpCost": 255,
+        "enemyHarmful": 2,
+        "hasRangedAbility": true,
+        "attackExhaustive": true,
+        "attackConsumeAim": false,
+        "throwStoneExhaustive": false,
+        "throwStoneConsumeAim": true,
+        "randomUseThreshold": 0,
+        "preparationDraws": 0,
+        "actorDelay": 1,
+        "targetDelay": 0,
+        "enemyReach": 1,
+        "allyReach": 0,
+        "attackUsable": true,
+        "throwStoneUsable": true,
+        "d0DistanceLimit": 3
+      }
+    },
+    {
+      "id": "reach-computed-before-post-ACT-usability-clear",
+      "input": {
+        "move": 124,
+        "ct": 0,
+        "speed": 1,
+        "targetCt": 0,
+        "targetSpeed": 1,
+        "distance": 2,
+        "acted": true
+      },
+      "expected": {
+        "initializedEntries": 3,
+        "usableEntriesBeforeActClear": 2,
+        "silenceModifier": 0,
+        "mpModifier": 0,
+        "evadeModifier": 2,
+        "highestMpCost": 0,
+        "lowestMpCost": 255,
+        "enemyHarmful": 2,
+        "hasRangedAbility": true,
+        "attackExhaustive": true,
+        "attackConsumeAim": false,
+        "throwStoneExhaustive": false,
+        "throwStoneConsumeAim": true,
+        "randomUseThreshold": 0,
+        "preparationDraws": 0,
+        "actorDelay": 100,
+        "targetDelay": 100,
+        "enemyReach": 125,
+        "allyReach": 124,
+        "attackUsable": false,
+        "throwStoneUsable": false,
+        "d0DistanceLimit": null
+      }
+    }
+  ]
+}

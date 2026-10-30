@@ -1,0 +1,134 @@
+{
+  "format": "fft.ai-unmoved-preparation-source-evidence",
+  "schemaVersion": 1,
+  "ticket": "ZOD-171",
+  "date": "2026-10-28",
+  "managedBaseRevision": "b29a418683d1be6315964ef16fd54834adc4ad15",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "sourceReceipt": "docs/evidence/ai/command-continuation-contract-v1.json",
+  "contract": "docs/architecture/zod-171-ai-unmoved-preparation.md",
+  "fixture": "docs/fixtures/behavior/ai-unmoved-preparation-contract-v1.json",
+  "additionalSourceFiles": [
+    {
+      "path": "src/battle/map/move_range.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 112855,
+      "sha256": "eab2f2f9f7074a9d8114636f0c048786410a3d6940ef5a357eb263ca39c85228"
+    },
+    {
+      "path": "include/fft/turn.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2844,
+      "sha256": "bf8eac9a51807894a645b9587c68323ab8c95411a176a0ccfbbfd752dfbfe6dd"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_command_build",
+      "startLine": 131,
+      "endLine": 224,
+      "normalizedLfSha256": "b4a01ef870fceac6d31bc8ab370f0b4053aaee69fc3dd55d9b79c78a0975a5bf"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "acting_unit_init",
+      "startLine": 231,
+      "endLine": 257,
+      "normalizedLfSha256": "a37e5edabf630b38b02bb72acb35f5a27c0ab64a0a4e821b660418b321ab2987"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "decision_flags_refresh",
+      "startLine": 270,
+      "endLine": 323,
+      "normalizedLfSha256": "b64660e3cd084717a39ff0bbd764421152e45a21e458d466bf4b4b51bab204fb"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ability_considerations_set",
+      "startLine": 607,
+      "endLine": 904,
+      "normalizedLfSha256": "6ee3cb512ac66ef6799dce7b4f78c549cc10d1eaa0a4fa7701e0fbf6bed4d21d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "reachable_tiles_build",
+      "startLine": 478,
+      "endLine": 593,
+      "normalizedLfSha256": "157ef55cbc96b187ff8cbf4e959f61e81994c0486a987d0fabf1c8482171c438"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "decision_team_targeting_flags_update",
+      "startLine": 332,
+      "endLine": 379,
+      "normalizedLfSha256": "4d08f71f328f1e043aa2fc808757cb4eda2b2d32cbdd647bb60339880a02dce7"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "decision_target_consideration_init",
+      "startLine": 388,
+      "endLine": 453,
+      "normalizedLfSha256": "bb3d550f249476e7ca4d9820520dca32abdba7b01ba5b3d5916a0baafeb01ec3"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_action_simulate_and_score",
+      "startLine": 1442,
+      "endLine": 1728,
+      "normalizedLfSha256": "9415274d3b38d3e7afe51922914355e40ff6bad7bccb9bc861bbbfae6894bcd4"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "simulation_unit_state_save",
+      "startLine": 1906,
+      "endLine": 1958,
+      "normalizedLfSha256": "e0c523b4a8e1487ba06e267dd10d6aa6fa015a285a63a06a04b911f07dfa8f2c"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "simulation_unit_state_restore",
+      "startLine": 1966,
+      "endLine": 2011,
+      "normalizedLfSha256": "d195422db548f6b870a1df33d2de5a0b3525e6e9a1d13f0f6b0585d193cb4dfa"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_end",
+      "startLine": 947,
+      "endLine": 974,
+      "normalizedLfSha256": "2071e4d41c2099741ca3ae787add5e7b731df488197b87a47ca84291a6ac268b"
+    },
+    {
+      "path": "src/battle/map/move_range.c",
+      "symbol": "move_range_build",
+      "startLine": 583,
+      "endLine": 631,
+      "normalizedLfSha256": "b5115bad6a345f0d82fcd9475554de27447a9c1c450353d64571bd9b60cfffb9"
+    },
+    {
+      "path": "src/battle/map/move_range.c",
+      "symbol": "spread_frontier_flags_set",
+      "startLine": 660,
+      "endLine": 780,
+      "normalizedLfSha256": "6eb4c7aa01c8dd78e2aeee8048c78720d9ebd8756085381003bab55538563984"
+    },
+    {
+      "path": "src/battle/map/move_range.c",
+      "symbol": "range_tile_flags_set",
+      "startLine": 788,
+      "endLine": 859,
+      "normalizedLfSha256": "bcfea6eb928d855308d7fb5312f712766d2c74d88f7c94cf5d2589aa81a9ddc8"
+    }
+  ],
+  "execution": "source-study-and-offline-scalars-only",
+  "productionImplemented": false
+}

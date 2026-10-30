@@ -1,0 +1,281 @@
+{
+  "format": "fft.behavior-fixture",
+  "schemaVersion": 1,
+  "fixtureId": "fixture:movement/map-boundary",
+  "execution": "description-only",
+  "purpose": "Static coordinate-guard vectors with a separately synthetic managed rejection projection.",
+  "target": {
+    "game": "FFT",
+    "edition": "SCUS-94221",
+    "region": "North America",
+    "platform": "PS1",
+    "policyId": "fft:movement/flat-grid-prototype"
+  },
+  "reference": {
+    "decompCommit": "611b504d25d4a9b03fab8023d7dbea75fe381d5d",
+    "observedOn": "2026-10-22",
+    "usedForExpectations": true
+  },
+  "evidence": [
+    {
+      "id": "coordinate-guard",
+      "kind": "source-derived",
+      "confidence": "source-traced",
+      "claim": "The signed x/y coordinate guard returns 1 outside width/depth and 0 inside; its caller only propagates candidates when the guard returns 0.",
+      "sources": [
+        {
+          "path": "src/battle/move_range.c",
+          "symbol": "move_spread_check_tile_coordinates",
+          "revision": "611b504d25d4a9b03fab8023d7dbea75fe381d5d"
+        },
+        {
+          "path": "src/battle/move_range.c",
+          "symbol": "move_spread_check_one_tile_around",
+          "revision": "611b504d25d4a9b03fab8023d7dbea75fe381d5d"
+        }
+      ],
+      "limitations": [
+        "Static source inspection only. Return 0 permits later checks; it does not prove reachability. No C routine was executed.",
+        "Layer, geometry, units and all later propagation checks are excluded."
+      ]
+    },
+    {
+      "id": "prototype-transition",
+      "kind": "synthetic-expectation",
+      "confidence": "specified",
+      "claim": "The flat prototype accepts one cardinal step, preserves the input, sets HasMoved and emits one event; rejected unreachable commands preserve state and emit nothing.",
+      "sources": [
+        {
+          "path": "src/Zodiac.Framework/BattleSimulator.cs",
+          "symbol": "BattleSimulator.Apply",
+          "revision": "7361eb767f46d94de6d5c56e7ae4f6dd31245c02"
+        },
+        {
+          "path": "src/Zodiac.Framework/BattleUnitState.cs",
+          "symbol": "BattleUnitState.MoveTo",
+          "revision": "7361eb767f46d94de6d5c56e7ae4f6dd31245c02"
+        }
+      ],
+      "limitations": [
+        "Managed prototype contract only; no original-game execution or observation."
+      ]
+    }
+  ],
+  "preconditions": [
+    "Single unmoved unit; explicit flat synthetic map; no RNG."
+  ],
+  "exclusions": [
+    "PS1 movement equivalence",
+    "Terrain-aware movement",
+    "CT, combat, campaign, path reconstruction"
+  ],
+  "unknowns": [
+    "No executable-reference or original observation is available for this record.",
+    "The source guard does not establish the managed rejection enum, snapshot identity or event model."
+  ],
+  "scenario": {
+    "initialState": {
+      "map": {
+        "id": "fixture:map/two-tiles",
+        "width": 2,
+        "depth": 1,
+        "layerCount": 1,
+        "tiles": [
+          {
+            "surface": "base:terrain/unclassified",
+            "height": 0,
+            "halfHeight": 0,
+            "waterDepth": 0,
+            "slope": {
+              "east": 0,
+              "west": 0,
+              "south": 0,
+              "north": 0
+            },
+            "ceilingDepth": 0,
+            "movementFlags": []
+          },
+          {
+            "surface": "base:terrain/unclassified",
+            "height": 0,
+            "halfHeight": 0,
+            "waterDepth": 0,
+            "slope": {
+              "east": 0,
+              "west": 0,
+              "south": 0,
+              "north": 0
+            },
+            "ceilingDepth": 0,
+            "movementFlags": []
+          }
+        ]
+      },
+      "units": [
+        {
+          "id": "fixture:unit/mover",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "layer": 0
+          },
+          "hasMoved": false,
+          "movementProfile": {
+            "move": 1,
+            "jump": 0,
+            "bodyHeight": 6,
+            "mode": "Normal",
+            "traits": [],
+            "terrainCosts": []
+          }
+        }
+      ],
+      "rngState": null
+    },
+    "commands": [
+      {
+        "index": 0,
+        "kind": "move-unit",
+        "unitId": "fixture:unit/mover",
+        "destination": {
+          "x": -1,
+          "y": 0,
+          "layer": 0
+        }
+      }
+    ]
+  },
+  "sourceCases": [
+    {
+      "id": "case-0",
+      "function": "move_spread_check_tile_coordinates",
+      "inputs": {
+        "work_x": -1,
+        "work_y": 0,
+        "terrain_width": 2,
+        "terrain_depth": 1
+      },
+      "expectedReturn": 1,
+      "evidenceIds": [
+        "coordinate-guard"
+      ]
+    },
+    {
+      "id": "case-1",
+      "function": "move_spread_check_tile_coordinates",
+      "inputs": {
+        "work_x": 0,
+        "work_y": -1,
+        "terrain_width": 2,
+        "terrain_depth": 1
+      },
+      "expectedReturn": 1,
+      "evidenceIds": [
+        "coordinate-guard"
+      ]
+    },
+    {
+      "id": "case-2",
+      "function": "move_spread_check_tile_coordinates",
+      "inputs": {
+        "work_x": 2,
+        "work_y": 0,
+        "terrain_width": 2,
+        "terrain_depth": 1
+      },
+      "expectedReturn": 1,
+      "evidenceIds": [
+        "coordinate-guard"
+      ]
+    },
+    {
+      "id": "case-3",
+      "function": "move_spread_check_tile_coordinates",
+      "inputs": {
+        "work_x": 0,
+        "work_y": 1,
+        "terrain_width": 2,
+        "terrain_depth": 1
+      },
+      "expectedReturn": 1,
+      "evidenceIds": [
+        "coordinate-guard"
+      ]
+    },
+    {
+      "id": "case-4",
+      "function": "move_spread_check_tile_coordinates",
+      "inputs": {
+        "work_x": 0,
+        "work_y": 0,
+        "terrain_width": 2,
+        "terrain_depth": 1
+      },
+      "expectedReturn": 0,
+      "evidenceIds": [
+        "coordinate-guard"
+      ]
+    },
+    {
+      "id": "case-5",
+      "function": "move_spread_check_tile_coordinates",
+      "inputs": {
+        "work_x": 1,
+        "work_y": 0,
+        "terrain_width": 2,
+        "terrain_depth": 1
+      },
+      "expectedReturn": 0,
+      "evidenceIds": [
+        "coordinate-guard"
+      ]
+    }
+  ],
+  "expectations": [
+    {
+      "commandIndex": 0,
+      "assertions": [
+        {
+          "kind": "result",
+          "accepted": false,
+          "rejection": "DestinationNotReachable",
+          "evidenceIds": [
+            "prototype-transition"
+          ]
+        },
+        {
+          "kind": "state-and-events",
+          "stateRelation": "same-instance",
+          "state": {
+            "mapId": "fixture:map/two-tiles",
+            "units": [
+              {
+                "id": "fixture:unit/mover",
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "layer": 0
+                },
+                "hasMoved": false,
+                "movementProfile": {
+                  "move": 1,
+                  "jump": 0,
+                  "bodyHeight": 6,
+                  "mode": "Normal",
+                  "traits": [],
+                  "terrainCosts": []
+                }
+              }
+            ],
+            "rngState": null
+          },
+          "events": [],
+          "evidenceIds": [
+            "prototype-transition"
+          ]
+        }
+      ]
+    }
+  ],
+  "captures": []
+}
