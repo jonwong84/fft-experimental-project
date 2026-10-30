@@ -10,9 +10,10 @@ public enum AttackThrowStoneAiScenarioRejection { UnsupportedProfile, Preparatio
 public sealed record AttackThrowStoneAiScenarioFailure(AttackThrowStoneAiScenarioStage Stage, AttackThrowStoneAiScenarioRejection Reason,
     AttackThrowStoneAiPreparationFailure? PreparationFailure = null, int? MovementIndex = null,
     SwordAiMovementBaselineRejection MovementReason = SwordAiMovementBaselineRejection.None);
+/// <summary>BaselineDistanceLimit is absent when post-ACT copies D1; existing pre-ACT entries retain their derived bound.</summary>
 public sealed record AttackThrowStoneAiMovementScenarioOutcome(AttackThrowStoneAiPreparationOutcome Preparation,
     ThrowStoneAiScanScenario Scenario, ImmutableArray<AiScoredMovementTile> Movement, int BaselineIndex,
-    int TargetDistance, int TargetReach, int BaselineDistanceLimit, bool BaselineUsedDistanceFallback);
+    int TargetDistance, int TargetReach, int? BaselineDistanceLimit, bool BaselineUsedDistanceFallback);
 /// <summary>Failure exposes no partial preparation/scenario/cache and restores incoming whole-query RNG.</summary>
 public sealed record AttackThrowStoneAiMovementScenarioResult(bool Accepted, AttackThrowStoneAiScenarioFailure? Failure,
     AttackThrowStoneAiMovementScenarioOutcome? Outcome, FftRandomState RngState);
@@ -47,6 +48,15 @@ public static class AttackThrowStoneAiMovementScenario
             return Reject(new(AttackThrowStoneAiScenarioStage.Admission, AttackThrowStoneAiScenarioRejection.UnsupportedProfile));
         var preparation = AttackThrowStoneAiPreparation.Evaluate(state, request, throwStoneAbilityId, weapon, attackProfile,
             throwStoneProfile, scoreProfile, refreshProfile, preparationProfile, team, decisionRng);
+        return ContinueFromPreparation(state, request, attackProfile, throwStoneProfile, preparation, decisionRng);
+    }
+
+    // Both owning entries supply only their own fresh preparation; this is not a public cached-result input.
+    internal static AttackThrowStoneAiScenarioCore ContinueFromPreparation(AttackBattleSnapshot state, SwordAiRefreshRequest request,
+        SwordAiCandidateProfile attackProfile, ThrowStoneAiCandidateProfile throwStoneProfile,
+        AttackThrowStoneAiPreparationResult preparation, FftRandomState decisionRng)
+    {
+        AttackThrowStoneAiScenarioCore Reject(AttackThrowStoneAiScenarioFailure failure) => new(new(false, failure, null, decisionRng));
         if (!preparation.Accepted)
             return Reject(new(AttackThrowStoneAiScenarioStage.Preparation, AttackThrowStoneAiScenarioRejection.PreparationRejected, preparation.Failure));
         var ready = preparation.Outcome!; var common = ready.Common;
@@ -65,12 +75,17 @@ public static class AttackThrowStoneAiMovementScenario
                     ? SwordAiMovementBaselineRejection.RandomDrawCountExhausted : SwordAiMovementBaselineRejection.TickCountExhausted));
         var prefix = evaluated.Outcome!;
         var d1 = Select(prefix.Movement, Distance, distanceFirst: false);
-        int bound = distance - 1;
-        if (ready.Units.Single(u => u.UnitId == request.ActorId).HasRangedAbility &&
-            common.Refresh.RefreshedUnits.Single(u => u.UnitId == request.TargetId).Enemy) bound = Math.Max(3, bound);
-        var within = prefix.Movement.Where(c => Distance(c.Outcome.Destination) <= bound).ToImmutableArray();
-        bool fallback = within.IsEmpty;
-        var d0 = Select(fallback ? prefix.Movement : within, Distance, distanceFirst: fallback);
+        int? bound = null; bool fallback = false; var d0 = d1;
+        // Source post-ACT copies D1 to D0; ranged floor policy is considered only before ACT.
+        if (common.ActorAttackUsable)
+        {
+            bound = distance - 1;
+            if (ready.Units.Single(u => u.UnitId == request.ActorId).HasRangedAbility &&
+                common.Refresh.RefreshedUnits.Single(u => u.UnitId == request.TargetId).Enemy) bound = Math.Max(3, bound.Value);
+            var within = prefix.Movement.Where(c => Distance(c.Outcome.Destination) <= bound.Value).ToImmutableArray();
+            fallback = within.IsEmpty;
+            d0 = Select(fallback ? prefix.Movement : within, Distance, distanceFirst: fallback);
+        }
         int baselineIndex = prefix.Movement.Select(m => m.Outcome.Destination).ToImmutableArray().IndexOf(d0);
         prefix = prefix with { BaselineIndex = baselineIndex };
         // In this open flat profile the in-reach filter contains every reachable tile by the triangle bound.

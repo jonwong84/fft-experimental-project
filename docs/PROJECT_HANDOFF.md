@@ -6,12 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-213: derive fresh pair post-ACT movement scenarios.**
-[Fresh preparation](behavior/attack-throw-stone-ai-post-act-preparation.md) now
-uses actual post-ACT state, retains pair summaries/reaches and clears both actor
-entries. Own that prefix and shared movement-only scoring through explicit reach
-branches, D0=D1 and source mask/tie/reach-draw ordering. Stop before scans/lottery/
-dispatch/execution; predicted pre-ACT D1 is not authority. Terminal input remains
+**ZOD-214: select a fresh pair post-ACT movement-only fallback.**
+[Fresh scenarios](behavior/attack-throw-stone-ai-post-act-scenarios.md) now own
+preparation and shared movement scoring with D0=D1, both reach branches and full
+source masks/provenance. Own this query and eight empty lottery slots, require
+no-Defend support, and return a pure MoveOnly plan with deferred facing. Stop
+before dispatch/execution; predicted pre-ACT D1 is not authority. Terminal input remains
 explicitly unsupported. ACT-first out-of-reach entry, unknown cast
 keys, retained/event workspace history and general lists stay open.
 
@@ -56,11 +56,11 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-211, [pair post-ACT preparation](behavior/attack-throw-stone-ai-post-act-preparation.md).
-  Reuses post-ACT refresh/restored state and result construction. Shared pure
-  setup validation checks grants/geometry/PA without authorizing another ACT;
-  live command guards retain their order. Five scenario families cover actual
-  effects, content/choice guards, budgets and replay. Pair movement/selection is still open.
+- Latest implementation: ZOD-213, [pair post-ACT scenarios](behavior/attack-throw-stone-ai-post-act-scenarios.md).
+  Shares existing pair scenario continuations and move-only clocks/scoring.
+  ACT-used in-reach copies D1; out-of-reach preserves full masks, null priorities
+  and post-score reach draws. Five new scenario families plus legacy scenarios
+  cover literals, budgets, late tick rollback and replay. Selection is still open.
 - Latest investigation: ZOD-212, [unified source algorithm guide](architecture/original-ai-algorithm.md).
   Ten chapters map initialization, policy precedence, search/evaluation, simulation,
   ranking/lottery, commands and RNG. The source index covers 105 core functions,
@@ -68,9 +68,9 @@ without rewriting old evidence.
   Structural completeness is not full behavioral equivalence or implementation.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design.
 - Validation: locked restore, zero-warning/error Release builds,
-  **4,090 .NET cases** (1,455 Framework, 890 AI, including owner drafts),
+  **4,095 .NET cases** (1,455 Framework, 895 AI, including owner drafts),
   **534 Python tests**, pinned post-ACT source/prepared-data and guide audits pass.
-  Logs and seven full TRX files: ignored `scratch/ai-pair-post-act-preparation-211/`.
+  Logs and seven full TRX files: ignored `scratch/ai-pair-post-act-213-214/` (213 reports).
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

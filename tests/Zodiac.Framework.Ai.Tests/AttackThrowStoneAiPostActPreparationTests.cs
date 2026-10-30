@@ -160,7 +160,7 @@ public sealed class AttackThrowStoneAiPostActPreparationTests
         }
     }
 
-    private static FacingTurnState Act(FacingTurnState state, int power = 2, SwordAiRefreshRequest? request = null)
+    internal static FacingTurnState Act(FacingTurnState state, int power = 2, SwordAiRefreshRequest? request = null)
     {
         var result = AttackThrowStoneAiActFirstExecution.StartInReach(state, new(request ?? FreshRequest(), Stone, new(Sword, power)),
             SelectionConfiguration(new(true, true, true, true, true)), new(true, true, true, true));

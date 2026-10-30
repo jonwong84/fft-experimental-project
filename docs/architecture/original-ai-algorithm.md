@@ -108,7 +108,7 @@ pre-ACT and [post-ACT Attack/Throw Stone preparation](../behavior/attack-throw-s
 See [refresh](zod-156-ai-refresh-prefix.md),
 [pair preparation](zod-195-pair-preparation.md) and [post-ACT pair study](zod-209-pair-post-act.md).
 Full list construction, teams, status timing and special policies are **mapped,
-unported**; pair post-ACT movement scenarios remain the next implementation child.
+unported**; pair post-ACT movement-only selection remains the next implementation child.
 
 ## 3. Policy precedence
 
@@ -211,7 +211,9 @@ restores saved charge/status state, and compares ranks. It can suspend between
 those phases. This is not a blanket instruction to cancel or preserve charges.
 
 **Implemented, bounded:** ordinary flat movement/scoring and explicit reach
-branches, including the two-family pre-ACT pair. Charging, terrain breadth and
+branches, including the two-family pre-ACT pair and
+[post-ACT pair scenarios](../behavior/attack-throw-stone-ai-post-act-scenarios.md).
+Charging, terrain breadth and
 special scenario overrides remain **mapped, unported**. Unknown original-origin
 priority values and retained/event alias history remain **unresolved** where
 actually read; see [out-of-reach provenance](zod-199-pair-out-of-reach.md).
@@ -394,7 +396,7 @@ execution or a new AI oracle. The [handoff](../PROJECT_HANDOFF.md) records curre
 implementation validation; the original guide inventory reports remain in
 ignored `scratch/ai-algorithm-guide-212/`.
 
-The next implementation is ZOD-213 pair post-ACT movement scenarios.
+The next implementation is ZOD-214 pair post-ACT movement-only selection.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use
 the supported domain and a real consumer, rather than exposing the entire

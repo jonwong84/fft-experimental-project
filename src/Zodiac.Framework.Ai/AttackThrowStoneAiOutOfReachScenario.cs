@@ -52,6 +52,15 @@ public static class AttackThrowStoneAiOutOfReachScenario
             return Reject(new(AttackThrowStoneAiScenarioStage.Admission, AttackThrowStoneAiScenarioRejection.UnsupportedProfile));
         var preparation = AttackThrowStoneAiPreparation.Evaluate(state, request, throwStoneAbilityId, weapon, attackProfile,
             throwStoneProfile, scoreProfile, refreshProfile, preparationProfile, team, decisionRng);
+        return ContinueFromPreparation(state, request, attackProfile, throwStoneProfile, preparation, decisionRng);
+    }
+
+    // Reuse scoring, masks, provenance and the post-score reach draw after either owning entry's fresh preparation.
+    internal static AttackThrowStoneAiOutOfReachScenarioCore ContinueFromPreparation(AttackBattleSnapshot state, SwordAiRefreshRequest request,
+        SwordAiCandidateProfile attackProfile, ThrowStoneAiCandidateProfile throwStoneProfile,
+        AttackThrowStoneAiPreparationResult preparation, FftRandomState decisionRng)
+    {
+        AttackThrowStoneAiOutOfReachScenarioCore Reject(AttackThrowStoneAiScenarioFailure failure) => new(new(false, failure, null, decisionRng));
         if (!preparation.Accepted)
             return Reject(new(AttackThrowStoneAiScenarioStage.Preparation, AttackThrowStoneAiScenarioRejection.PreparationRejected, preparation.Failure));
         var ready = preparation.Outcome!; var common = ready.Common;
