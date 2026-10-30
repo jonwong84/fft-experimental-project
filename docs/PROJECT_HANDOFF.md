@@ -16,6 +16,9 @@ Stop before movement/scenarios/selection. Predicted D1 is not authority;
 terminal input remains explicitly unsupported. ACT-first out-of-reach entry, unknown cast
 keys, retained/event workspace history and general lists stay open.
 
+The [original AI algorithm guide](architecture/original-ai-algorithm.md) maps
+policy precedence and all core source functions, with bounded implementation
+coverage and unresolved behavior marked. Start there for the overall algorithm.
 The [AI completion roadmap](development/ai-completion-roadmap.md) preserves the
 remaining breadth, integration, compatibility and replaceability goals. Use it
 when selecting later children; the backlog still owns work order and deferral.
@@ -60,16 +63,18 @@ without rewriting old evidence.
   configuration records replace twelve-argument selection/execution entries.
   Existing assertions are unchanged; no tests added or removed. ZOD-208's real
   ACT-first effects and unused Move remain; pair post-ACT selection is still open.
-- Latest investigation: ZOD-209, [pair post-ACT flow](architecture/zod-209-pair-post-act.md).
-  Five files/22 functions trace choice re-entry, pair summaries before usability
-  clear, D0=D1, skipped action evaluation, empty lottery and existing settlement.
-  Six supplied descriptions cover actual-input refresh facts, push branch change,
-  KO admission and no-progress; they do not execute a full pair post-ACT query.
+- Latest investigation: ZOD-212, [unified source algorithm guide](architecture/original-ai-algorithm.md).
+  Ten chapters map initialization, policy precedence, search/evaluation, simulation,
+  ranking/lottery, commands and RNG. The source index covers 105 core functions,
+  eight external boundaries and 11 direct core rand sites at the pinned revision.
+  Structural completeness is not full behavioral equivalence or implementation.
+  [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed next-child design.
 - Runtime validation at ZOD-210: locked restore, zero-warning/error Release rebuild,
   **4,085 .NET cases** (1,455 Framework, 885 AI, including owner drafts),
   seven full TRX files: ignored `scratch/ai-pair-selection-refactor-210/`.
-  ZOD-209 changes no managed source/tests; **534 Python tests** and the pinned source/
-  prepared audit pass in ignored `scratch/ai-pair-post-act-study-209/`.
+  ZOD-212 changes no managed source/tests; **534 Python tests**, guide inventory/
+  link/source audit and malformed-index checks pass in ignored `scratch/ai-algorithm-guide-212/`.
+  The source/prepared-data audit last passed at ZOD-209 in `scratch/ai-pair-post-act-study-209/`.
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

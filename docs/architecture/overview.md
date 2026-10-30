@@ -20,6 +20,11 @@ in `Zodiac.Framework`. The [command boundary](ai-command-boundary.md) invokes a
 fresh planner, validates RNG continuity and publishes one accepted command
 atomically. There is no Framework-to-AI reference or production friend access.
 
+The [original AI algorithm guide](original-ai-algorithm.md) maps the pinned C
+source from initialization through policy selection, evaluation, scoring and
+command settlement. It distinguishes source structure from bounded managed
+coverage and unresolved compatibility behavior.
+
 Decision scoring and actual combat share explicit gameplay RNG; restoring a
 hypothetical candidate does not erase its draws. Rendering, wall time and pauses
 must not advance that stream. The original VSync callback draws BIOS rand once

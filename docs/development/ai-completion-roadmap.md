@@ -6,6 +6,10 @@ work areas. The [backlog](../BACKLOG.md) owns selected work/order; the
 [handoff](../PROJECT_HANDOFF.md) owns current implementation and validation.
 Update this roadmap as areas close; do not append ticket-by-ticket history here.
 
+The [original AI algorithm guide](../architecture/original-ai-algorithm.md) owns
+the unified source map, policy precedence and documented implementation gaps.
+Use it to place each bounded child within the overall algorithm.
+
 ## Current foundation
 
 `Zodiac.Framework.Ai` owns a source-traced prepare → evaluate movement/actions →
