@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 180 entries index completed bounded work; they do not mean the full game is complete.
+These 181 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -203,3 +203,4 @@ These 180 entries index completed bounded work; they do not mean the full game i
 - [ZOD-211 — Prepare a fresh post-ACT Attack and Throw Stone pair](../behavior/attack-throw-stone-ai-post-act-preparation.md)
 - [ZOD-212 — Document the unified original AI algorithm and source index](../architecture/original-ai-algorithm.md)
 - [ZOD-213 — Derive fresh post-ACT pair movement scenarios](../behavior/attack-throw-stone-ai-post-act-scenarios.md)
+- [ZOD-214 — Select a fresh post-ACT pair movement-only fallback](../behavior/attack-throw-stone-ai-post-act-selection.md)

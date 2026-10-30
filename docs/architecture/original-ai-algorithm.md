@@ -108,7 +108,7 @@ pre-ACT and [post-ACT Attack/Throw Stone preparation](../behavior/attack-throw-s
 See [refresh](zod-156-ai-refresh-prefix.md),
 [pair preparation](zod-195-pair-preparation.md) and [post-ACT pair study](zod-209-pair-post-act.md).
 Full list construction, teams, status timing and special policies are **mapped,
-unported**; pair post-ACT movement-only selection remains the next implementation child.
+unported**; pair post-ACT command execution remains the next implementation child.
 
 ## 3. Policy precedence
 
@@ -310,7 +310,8 @@ This is not a normalized weighted lottery. `fallback_select` chooses the scenari
 destination with move-first and either Defend or skillset zero according to support.
 
 **Implemented, bounded:** shared ranking/lottery, ordinary/pair admission and
-explicit no-Defend fallback. General policy-specific multi-pass rankings and full
+explicit no-Defend fallback, including [pair post-ACT selection](../behavior/attack-throw-stone-ai-post-act-selection.md).
+General policy-specific multi-pass rankings and full
 Defend support remain **mapped, unported**. Original eight slots are compatibility
 behavior, not a proposed custom-content capacity.
 
@@ -396,7 +397,7 @@ execution or a new AI oracle. The [handoff](../PROJECT_HANDOFF.md) records curre
 implementation validation; the original guide inventory reports remain in
 ignored `scratch/ai-algorithm-guide-212/`.
 
-The next implementation is ZOD-214 pair post-ACT movement-only selection.
+The next implementation is ZOD-215 pair post-ACT command execution and settlement.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use
 the supported domain and a real consumer, rather than exposing the entire

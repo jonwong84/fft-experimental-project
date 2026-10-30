@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-214 (AI implementation).** Fresh pair post-ACT movement scenarios ZOD-213 are complete.
-There are 34 open tickets below. The 180 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-215 (AI implementation).** Fresh pair post-ACT selection ZOD-214 is complete.
+There are 34 open tickets below. The 181 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,18 +29,18 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-214 — Select a fresh post-ACT pair movement-only fallback
+### ZOD-215 — Execute a fresh post-ACT pair Move or END decision
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-213, ZOD-209, ZOD-182
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-214, ZOD-209, ZOD-184
 
-Own [fresh post-ACT pair scenarios](behavior/attack-throw-stone-ai-post-act-scenarios.md)
-through explicit reach branches, then the existing lottery over eight fresh empty
-slots. Derive empty actions from the closed prepared list; do not scan another ACT
-or read unknown cast keys. Require explicit NoDefendSupport and return a pure
-MoveOnly plan at D0 with deferred facing. Check literal draws/plans, full masks,
-actual effects, branch/source admission, late lottery exhaustion, replay and whole-query
-rollback. No cached scenario/rank input, live RNG adoption, dispatch, command authority
-or host activation. Terminal and retained/event-memory policy remain deferred.
+Own [fresh pair post-ACT selection](behavior/attack-throw-stone-ai-post-act-selection.md)
+inside the existing Framework decision transaction through explicit reach entries.
+Require the current active actor with ACT used/Move unused and truthful dispatch
+context; adopt verified RNG once, apply turn-ending Move or same-tile Wait, and
+settle facing using actual placement/receipt. Check real path/CT/facing/revision,
+RNG, source/choice/terminal guards, late rollback and replay. No cached plan,
+predicted pre-ACT D1, extra ACT/clock advance, Move-first token, trusted-state
+constructor, new replacement interface or host activation. Preserve deferred work.
 
 ## Existing validation gates
 

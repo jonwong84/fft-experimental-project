@@ -129,10 +129,10 @@ public sealed class AttackThrowStoneAiPostActScenarioTests
     }
 
     internal static AttackThrowStoneAiSelectionConfiguration Configuration() => SelectionConfiguration(new(true, true, true));
-    internal static AttackBattleSnapshot Pushed(int move, int originalTargetX)
+    internal static AttackBattleSnapshot Pushed(int move, int originalTargetX, bool second = false, bool reverse = false)
     {
-        var result = FacingTurnBattle.UseTargetedAbility(Ready(move: move, target: new(originalTargetX, 1, 0), entryWord: 2711922929, count: 20),
-            new(A, Stone, B), Profile().ThrowStone.Ability);
+        var result = FacingTurnBattle.UseTargetedAbility(Ready(move: move, target: new(originalTargetX, 1, 0), entryWord: 2711922929, count: 20,
+            second: second, reverse: reverse), new(second ? B : A, Stone, second ? A : B), Profile().ThrowStone.Ability);
         Assert.True(result.Accepted); Assert.Single(result.Events.OfType<ThrowStoneKnockbackEvent>()); return result.State.Battle;
     }
     internal static AttackThrowStoneAiPostActScenarioResult Evaluate(AttackBattleSnapshot state, bool outside = false, int weaponPower = 2,
