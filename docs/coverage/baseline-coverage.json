@@ -54,15 +54,15 @@
         "docs/architecture/zod-040-event-script-investigation.md"
       ],
       "implementationPaths": [
-        "src/Zodiac.Framework/FftBiosRandom.cs"
+        "src/Zodiac.Framework/Random/RandomStateGenerator.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Zodiac.Framework.Tests/FftBiosRandomTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Random/RandomStateGeneratorTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/RandomReplayRunnerTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Random/RandomReplayRunnerTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         }
       ],
@@ -507,43 +507,43 @@
         "docs/behavior/sword-ai-post-act-preparation.md"
       ],
       "implementationPaths": [
-        "src/Zodiac.Framework.Ai/SwordAiMovementScenario.cs",
-        "src/Zodiac.Framework.Ai/SwordAiDerivedSelection.cs",
-        "src/Zodiac.Framework.Ai/SwordAiWaitFacing.cs",
-        "src/Zodiac.Framework.Ai/SwordAiWaitSettlement.cs",
-        "src/Zodiac.Framework.Ai/SwordAiExecution.cs",
-        "src/Zodiac.Framework.Ai/SwordAiRefresh.cs",
-        "src/Zodiac.Framework.Ai/SwordAiPreparation.cs",
-        "src/Zodiac.Framework.Ai/SwordAiPreparedSelection.cs",
-        "src/Zodiac.Framework.Ai/SwordAiCommandDispatch.cs",
-        "src/Zodiac.Framework.Ai/SwordAiMoveFirstExecution.cs",
+        "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
+        "src/Zodiac.Framework.Ai/Sword/SwordAiDerivedSelection.cs",
+        "src/Zodiac.Framework.Ai/Sword/SwordAiWaitFacing.cs",
+        "src/Zodiac.Framework.Ai/Sword/SwordAiWaitSettlement.cs",
+        "src/Zodiac.Framework.Ai/Sword/SwordAiExecution.cs",
+        "src/Zodiac.Framework.Ai/Sword/SwordAiRefresh.cs",
+        "src/Zodiac.Framework.Ai/Sword/SwordAiPreparation.cs",
+        "src/Zodiac.Framework.Ai/Sword/SwordAiPreparedSelection.cs",
+        "src/Zodiac.Framework.Ai/Sword/SwordAiCommandDispatch.cs",
+        "src/Zodiac.Framework.Ai/Sword/SwordAiMoveFirstExecution.cs",
         "src/Zodiac.Framework/FacingMoveDecision.cs",
         "src/Zodiac.Framework/FacingDecision.cs",
-        "src/Zodiac.Framework.Ai/SwordAiActFirstExecution.cs"
+        "src/Zodiac.Framework.Ai/Sword/SwordAiActFirstExecution.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiMovementScenarioTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiMovementScenarioTests.cs",
           "scope": "Derived in-reach mask/destinations, signed source ordering, actual RNG/clock work, atomic failure and replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiDerivedSelectionTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiDerivedSelectionTests.cs",
           "scope": "Fresh single-prefix composition/lottery, D0 fallback, source RNG vectors and whole-query rollback; no live decision execution."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiOutOfReachScenarioTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiOutOfReachScenarioTests.cs",
           "scope": "Filtered S versus actor insertion, team-conditioned post-score RNG, exact destination vectors and atomic adjustment failure."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiOutOfReachSelectionTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiOutOfReachSelectionTests.cs",
           "scope": "Fresh S score reuse with post-adjustment RNG, zero-candidate/eight-roll fallback, first-entry admission correction, exact budgets and whole-query rollback."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiWaitFacingTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiWaitFacingTests.cs",
           "scope": "Source direction ties, actual settled positions/occupied neighbors, explicit context, zero RNG/ticks and query isolation."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiWaitSettlementTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiWaitSettlementTests.cs",
           "scope": "Real active Wait and both automatic-completion orders, critical knockback, single refund/cap, exact receipt authority, atomic rejection and replay."
         },
         {
@@ -551,7 +551,7 @@
           "scope": "Offline supplied-prefix RNG tapes and source command guards only; no fresh selection, managed command transaction or original execution."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiExecutionTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiExecutionTests.cs",
           "scope": "Fresh selection and actual command rolls, one revision/settled receipt, fallback refund, critical push/KO, exact draw limits, atomic reason-only failures and replay."
         },
         {
@@ -559,7 +559,7 @@
           "scope": "Invocation-bound proposals, closed contexts, verified RNG progression including full periods, late-command rollback and read-only input."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/DependencyBoundaryTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Shared/DependencyBoundaryTests.cs",
           "scope": "AI references rules without host/content or reverse Framework-to-AI dependency."
         },
         {
@@ -567,23 +567,23 @@
           "scope": "Offline closed refresh clock/flags, odd-HP boundaries, counter proposals and supplied downstream lottery illustration; no managed refresh execution."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiRefreshTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiRefreshTests.cs",
           "scope": "Actual pure refresh clock/RNG/flags, retained policy booleans, source thresholds, counter failure and replay isolation; no live commitment."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiPreparationTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiPreparationTests.cs",
           "scope": "Closed NonBlue policy, restored-state delays and fresh refresh ownership with no additional draws."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiPreparedSelectionTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiPreparedSelectionTests.cs",
           "scope": "Fresh preparation-to-selection literal schedules, fallback, exact budgets, reason-only failure and immutable replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiPreparedExecutionTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiPreparedExecutionTests.cs",
           "scope": "Fresh in-reach prefix inside the actual command boundary, complete streams, real combat/receipts, late rollback and replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiPreparedOutOfReachTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiPreparedOutOfReachTests.cs",
           "scope": "Fresh out-of-reach pure composition and actual Wait, retained reach draw, empty scan/eight rolls, exact budgets and replay."
         },
         {
@@ -591,11 +591,11 @@
           "scope": "Framework fresh Move proposal ownership, private RNG/path publication, exact-session frozen follow-up, rollback/cancellation/replay and counters."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiMoveFirstExecutionTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiMoveFirstExecutionTests.cs",
           "scope": "Privately selected post-prefix Move-first handoff, literal actual-command streams, deferred fallback Wait, counters and per-step isolation."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiCommandDispatchTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiCommandDispatchTests.cs",
           "scope": "Actual pure dispatch/entry ordering, retained ACT after real path movement, structural rejection and counter/input isolation; no live continuation authority."
         },
         {
@@ -607,7 +607,7 @@
           "scope": "Offline source preparation scalars; no C or managed execution."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiMoveFirstOutOfReachTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiMoveFirstOutOfReachTests.cs",
           "scope": "Actual explicit team Move/Wait streams, reach halving, exact budgets, branch rejection and continuation isolation."
         },
         {
@@ -615,19 +615,19 @@
           "scope": "Offline unused-choice refresh clock, restored policy CT and full ordinary reach descriptions; no managed unmoved preparation execution."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiUnmovedPreparationTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiUnmovedPreparationTests.cs",
           "scope": "Managed fresh unmoved clock/reach vectors, restored policy CT, explicit choice-entry guards, counter rollback and identity/order isolation."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiUnmovedPreparedSelectionTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiUnmovedPreparedSelectionTests.cs",
           "scope": "Managed full unmoved prefix/selection streams, S reuse and reach adjustment, deferred fallback, exact budgets, atomic failure and identity/order replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiPreparedMoveFirstTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiPreparedMoveFirstTests.cs",
           "scope": "Owned fresh prepared prefix, literal actual Move/Attack/Wait streams, per-step rollback, cancellation, exact budgets and replay isolation."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiPreparedMoveFirstOutOfReachTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiPreparedMoveFirstOutOfReachTests.cs",
           "scope": "Owned out-of-reach prefix, literal halving/fallback Move/Wait streams, exact counters, explicit branch/context rejection and continuation replay/isolation."
         },
         {
@@ -635,15 +635,15 @@
           "scope": "Offline ACT-first supplied-cost tapes and post-ACT dispatch/CT/reach scalars; no managed ACT-first execution."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiActFirstExecutionTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiActFirstExecutionTests.cs",
           "scope": "Actual fresh prepared ACT-first hit/miss streams, unused Move/no receipt, source guard descriptions, exact counters, atomic rollback, actual KO and replay isolation."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiPostActRefreshTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiPostActRefreshTests.cs",
           "scope": "Actual post-ACT input/RNG refresh, choice-mode and source guards, terminal rejection, exact counters and immutable replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/SwordAiPostActPreparationTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiPostActPreparationTests.cs",
           "scope": "Owned post-ACT refresh, reach-before-usable ordering, actual knockback/Critical focus and geometry, exact limits, rejection and replay isolation."
         }
       ],
@@ -3908,7 +3908,7 @@
       "implementationPaths": [
         "Directory.Build.targets",
         "src/Tessera.Engine/GridBounds.cs",
-        "src/Tessera.Engine/IDeterministicRandom.cs"
+        "src/Tessera.Engine/Interfaces/IDeterministicRandom.cs"
       ],
       "automatedChecks": [
         {

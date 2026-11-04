@@ -7,7 +7,7 @@ Implemented 2026-10-29 against clean read-only fft_decomp
 
 ## Entry and source ordering
 
-[`SwordAiMovementBaseline.EvaluateAfterAct`](../../src/Zodiac.Framework.Ai/SwordAiMovementBaseline.cs)
+[`SwordAiMovementBaseline.EvaluateAfterAct`](../../src/Zodiac.Framework.Ai/Sword/SwordAiMovementBaseline.cs)
 accepts the actual `AttackBattleSnapshot`, actor/target/destination, existing
 candidate/score/baseline certificates and explicit hypothetical decision RNG.
 It requires the active actor's ACT used and Move unused. Original `Evaluate`
