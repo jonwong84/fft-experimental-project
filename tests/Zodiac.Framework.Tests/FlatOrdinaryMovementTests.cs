@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Xunit;
 
@@ -358,7 +359,7 @@ public sealed class FlatOrdinaryMovementTests
             var c = new BattleUnitId("sample:unit/c"); bodies.Add(new(c, new(0, 0, 0), Movement(false)));
             turns.Add(new(c, 10, 0, 2)); combat.Add(Combat(c, 50, BattleFacing.East));
         }
-        var rng = new FftRandomState(seed, count);
+        var rng = new RandomState(seed, count);
         return new(new(new(new(width, depth, layers, tiles), reverse ? bodies.AsEnumerable().Reverse() : bodies, rng),
             new(reverse ? turns.AsEnumerable().Reverse() : turns, rng, ticks, phase)), reverse ? combat.AsEnumerable().Reverse() : combat);
     }

@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Globalization;
 using System.Collections.Immutable;
 using System.Text;
@@ -168,9 +169,9 @@ internal static class AttackFixtureRunner
     internal static AttackBattleSnapshot ReadState(JsonNode node, BattleMapDefinition map, string mapId, string[] weapons)
     {
         Shape(node, "mapId units rngState turns combatants"); Require(StableId(node["mapId"]) == mapId, "Unknown map ID");
-        var rng = node["rngState"]!; Shape(rng, "algorithmId value drawCount"); EqualLiteral(rng, "algorithmId", FftBiosRandom.AlgorithmId);
+        var rng = node["rngState"]!; Shape(rng, "algorithmId value drawCount"); EqualLiteral(rng, "algorithmId", RandomStateGenerator.AlgorithmId);
         ulong word = Unsigned(rng["value"]); Require(word <= uint.MaxValue, "RNG word exceeds UInt32");
-        var random = new FftRandomState((uint)word, Unsigned(rng["drawCount"]));
+        var random = new RandomState((uint)word, Unsigned(rng["drawCount"]));
         var battle = new BattleState(map, Array(node["units"]).Select(Unit), random);
         var turn = node["turns"]!; Shape(turn, "ticks phase units");
         var turns = new TurnCycleState(Array(turn["units"]).Select(u =>
@@ -192,7 +193,7 @@ internal static class AttackFixtureRunner
     internal static JsonNode Snapshot(AttackBattleSnapshot state, string mapId)
     {
         var result = MovementFixtureRunner.Snapshot(state.TurnBattle.Battle, mapId);
-        result["rngState"]!["algorithmId"] = FftBiosRandom.AlgorithmId;
+        result["rngState"]!["algorithmId"] = RandomStateGenerator.AlgorithmId;
         result["turns"] = JsonSerializer.SerializeToNode(new { ticks = state.TurnBattle.Turns.Ticks, phase = state.TurnBattle.Turns.Phase.ToString(),
             units = state.TurnBattle.Turns.Units.Select(u => new { id = u.Id.Value, speed = u.Speed, ct = u.Ct, tieKey = u.TieKey, hasTurn = u.HasTurn, movementTaken = u.MovementTaken, actionTaken = u.ActionTaken }) });
         result["combatants"] = JsonSerializer.SerializeToNode(state.Combatants.Select(u => new { unitId = u.UnitId.Value, hp = u.Hp, maxHp = u.MaxHp, mp = u.Mp, maxMp = u.MaxMp,

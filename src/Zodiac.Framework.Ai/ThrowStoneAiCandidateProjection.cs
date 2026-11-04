@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -35,7 +36,7 @@ public sealed record ThrowStoneAiCandidateOutcome(BattleUnitId ActorId, AssetId 
     int HitPercent, int NormalDamage, int TurnEndCt, ImmutableArray<AiProjectedUnit> Units,
     BattleUnitId MoveOpportunityUnitId, ulong ElapsedTicks, ulong Ticks, ImmutableArray<AiUpkeepPick> UpkeepPicks);
 public sealed record ThrowStoneAiCandidateResult(ThrowStoneAiCandidateDisposition Disposition,
-    ThrowStoneAiCandidateRejection Rejection, ThrowStoneAiCandidateOutcome? Outcome, FftRandomState RngState)
+    ThrowStoneAiCandidateRejection Rejection, ThrowStoneAiCandidateOutcome? Outcome, RandomState RngState)
 {
     public AttackCommandRejection FormulaRejection { get; init; }
 }
@@ -45,7 +46,7 @@ public sealed record ThrowStoneAiCandidateResult(ThrowStoneAiCandidateDispositio
 public static class ThrowStoneAiCandidateProjection
 {
     public static ThrowStoneAiCandidateResult Evaluate(AttackBattleSnapshot state, ThrowStoneAiCandidate candidate,
-        ThrowStoneAiCandidateProfile profile, FftRandomState decisionRng)
+        ThrowStoneAiCandidateProfile profile, RandomState decisionRng)
     {
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(candidate); ArgumentNullException.ThrowIfNull(profile);
         ThrowStoneAiCandidateResult Reject(ThrowStoneAiCandidateRejection reason, AttackCommandRejection formula = AttackCommandRejection.None) =>

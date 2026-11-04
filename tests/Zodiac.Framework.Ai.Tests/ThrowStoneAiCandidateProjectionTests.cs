@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.ThrowStoneAiTestData;
 
@@ -14,7 +15,7 @@ public sealed class ThrowStoneAiCandidateProjectionTests
             var state = State(); var before = Snapshot(state); var destination = move ? new TilePosition(2, 1, 0) : new(1, 1, 0);
             var result = Evaluate(state, Candidate(destination)); var o = Success(result);
             Assert.Equal((100, 10, move ? 15 : 35), (o.HitPercent, o.NormalDamage, o.TurnEndCt));
-            Assert.Equal(new FftRandomState(4182499122, 12), result.RngState);
+            Assert.Equal(new RandomState(4182499122, 12), result.RngState);
             Assert.Equal((B, 1ul, 21ul), (o.MoveOpportunityUnitId, o.ElapsedTicks, o.Ticks));
             Assert.Equal(31051u, Assert.Single(o.UpkeepPicks).RawRoll);
             var actor = o.Units.Single(u => u.UnitId == A); var target = o.Units.Single(u => u.UnitId == B);
@@ -43,9 +44,9 @@ public sealed class ThrowStoneAiCandidateProjectionTests
     {
         var zero = Evaluate(State(evade: 100, ticks: ulong.MaxValue));
         Assert.Equal(ThrowStoneAiCandidateDisposition.NotValuable, zero.Disposition); Assert.Null(zero.Outcome);
-        Assert.Equal(new FftRandomState(3295386429, 11), zero.RngState);
+        Assert.Equal(new RandomState(3295386429, 11), zero.RngState);
         var state = State(hp: 10); var before = Snapshot(state); var result = Evaluate(state); var o = Success(result);
-        Assert.Equal(new FftRandomState(2516284547, 13), result.RngState);
+        Assert.Equal(new RandomState(2516284547, 13), result.RngState);
         Assert.Equal(new[] { B, A }, o.UpkeepPicks.Select(p => p.UnitId)); Assert.Equal(new[] { true, false }, o.UpkeepPicks.Select(p => p.Dead));
         Assert.Equal(13ul, o.ElapsedTicks); Assert.Equal(33ul, o.Ticks);
         var target = o.Units.Single(u => u.UnitId == B);
@@ -56,7 +57,7 @@ public sealed class ThrowStoneAiCandidateProjectionTests
     [Fact]
     public void Exact_budgets_and_late_clock_failure_return_no_partial_candidate_or_RNG()
     {
-        var state = State(ticks: ulong.MaxValue - 1); var last = new FftRandomState(1, ulong.MaxValue - 5);
+        var state = State(ticks: ulong.MaxValue - 1); var last = new RandomState(1, ulong.MaxValue - 5);
         var fits = Evaluate(state, rng: last); Assert.Equal(ulong.MaxValue, Success(fits).Ticks); Assert.Equal(ulong.MaxValue, fits.RngState.DrawCount);
         var shortBudget = last with { DrawCount = ulong.MaxValue - 4 }; var before = Snapshot(state);
         Atomic(Evaluate(state, rng: shortBudget), ThrowStoneAiCandidateRejection.RandomDrawCountExhausted, shortBudget);
@@ -84,12 +85,12 @@ public sealed class ThrowStoneAiCandidateProjectionTests
     }
 
     internal static ThrowStoneAiCandidateResult Evaluate(AttackBattleSnapshot state, ThrowStoneAiCandidate? candidate = null,
-        ThrowStoneAiCandidateProfile? profile = null, FftRandomState? rng = null) =>
+        ThrowStoneAiCandidateProfile? profile = null, RandomState? rng = null) =>
         ThrowStoneAiCandidateProjection.Evaluate(state, candidate ?? Candidate(), profile ?? CandidateProfile(), rng ?? Decision);
     private static ThrowStoneAiCandidateOutcome Success(ThrowStoneAiCandidateResult result)
     { Assert.Equal(ThrowStoneAiCandidateDisposition.Projected, result.Disposition); Assert.Equal(ThrowStoneAiCandidateRejection.None, result.Rejection);
         return Assert.IsType<ThrowStoneAiCandidateOutcome>(result.Outcome); }
-    private static void Atomic(ThrowStoneAiCandidateResult result, ThrowStoneAiCandidateRejection reason, FftRandomState? rng = null)
+    private static void Atomic(ThrowStoneAiCandidateResult result, ThrowStoneAiCandidateRejection reason, RandomState? rng = null)
     { Assert.Equal(ThrowStoneAiCandidateDisposition.Rejected, result.Disposition); Assert.Equal(reason, result.Rejection);
         Assert.Null(result.Outcome); Assert.Equal(rng ?? Decision, result.RngState); }
 }

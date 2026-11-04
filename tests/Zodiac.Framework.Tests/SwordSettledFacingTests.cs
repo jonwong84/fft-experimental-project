@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Zodiac.Framework.Tests.Fixtures;
 using Xunit;
 
@@ -54,9 +55,9 @@ public sealed class SwordSettledFacingTests
         Assert.Equal(4,results.Count(r=>r.Accepted)); Assert.Equal(3,results.Count(r=>!r.Accepted));
         Assert.Equal(25,Unit(state,A).Hp); Assert.Equal(25,Unit(state,B).Hp);
         Assert.Equal(BattleFacing.West,Unit(state,A).Facing); Assert.Equal(BattleFacing.West,Unit(state,B).Facing);
-        Assert.Equal(new FftRandomState(595337866,13),state.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(595337866,13),state.TurnBattle.Turns.RngState);
         Assert.Equal(state.TurnBattle.Turns.RngState,state.TurnBattle.Battle.RngState);
-        Assert.Equal(new FftRandomState(3655513600,7),results[4].State.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(3655513600,7),results[4].State.TurnBattle.Turns.RngState);
         Assert.Equal(23010u,Assert.IsType<TurnReadyEvent>(Assert.IsType<TurnBattleClockEvent>(Assert.IsType<AttackTurnBattleEvent>(Assert.Single(results[4].Events)).Event).Event).UpkeepRoll);
         for(int prefix=0;prefix<=commands.Length;prefix++)
         {
@@ -72,7 +73,7 @@ public sealed class SwordSettledFacingTests
             }
             Assert.Equal(Snapshot(state),Snapshot(replay));
         }
-        Assert.Equal(new FftRandomState(1,0),start.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(1,0),start.TurnBattle.Turns.RngState);
     }
 
     private static AttackBattleResult Apply(AttackBattleSnapshot state,TwoUnitBattleCommand command)=>command switch
@@ -91,7 +92,7 @@ public sealed class SwordSettledFacingTests
     {
         var actor=actorSecond?B:A; var target=actorSecond?A:B;
         var map=new BattleMapDefinition(twoTiles?2:3,twoTiles?1:3,1,Enumerable.Repeat(new BattleTile(10),twoTiles?2:9).ToArray());
-        var rng=new FftRandomState(1,0);
+        var rng=new RandomState(1,0);
         var bodies=new[]{new BattleUnitState(actor,actorPosition??(twoTiles?new(0,0,0):new(1,1,0)),1),new BattleUnitState(target,twoTiles?new(1,0,0):new(2,1,0),1)};
         var turns=new TurnCycleState([new(actor,10,0,0,true),new(target,10,100,1)],rng,phase:TurnCyclePhase.UnitTurn);
         var combatants=new[]{new AttackUnitState(actor,50,50,0,0,5,actorEvade,0,0,0,70,0,incoming,AttackUnitStatus.None,0,Weapon),

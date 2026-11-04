@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Fft.Client.Presentation;
 using Fft.Tests.Support;
@@ -121,7 +122,7 @@ public sealed class DarkScreenIntroductionSessionTests : IDisposable
             if (step.Click is { } click) Assert.True(session.Click(click));
         }
         Assert.Equal(14, session.Journal.Length);
-        Assert.Equal(new Zodiac.Framework.FftRandomState(2473755763, 22), session.Battle.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new Zodiac.Framework.Random.RandomState(2473755763, 22), session.Battle.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(BattleSummary(BattleUiCheckPlan.Expected()), BattleSummary(session.Battle));
         var terminal = session.State; Assert.True(session.Key(Keys.R)); Assert.Empty(session.Journal); Assert.Same(terminal, session.State);
     }

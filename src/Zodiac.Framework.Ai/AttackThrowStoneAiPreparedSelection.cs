@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 namespace Zodiac.Framework.Ai;
 
 /// <summary>Remaining source facts absent from fresh preparation/scenario data; all require explicit opt-in.</summary>
@@ -12,7 +13,7 @@ public sealed record AttackThrowStoneAiPreparedSelectionOutcome(AttackThrowStone
     AttackThrowStoneAiSelectionOutcome Selection);
 /// <summary>Failure publishes no partial preparation/masks/ranks/plan and restores original whole-query RNG.</summary>
 public sealed record AttackThrowStoneAiPreparedSelectionResult(bool Accepted, AttackThrowStoneAiPreparedSelectionFailure? Failure,
-    AttackThrowStoneAiPreparedSelectionOutcome? Outcome, FftRandomState RngState);
+    AttackThrowStoneAiPreparedSelectionOutcome? Outcome, RandomState RngState);
 
 /// <summary>Fresh both-unused NonBlue in-reach pair decision, owning preparation, scenarios, both scans and lottery exactly once.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-195/198.
@@ -20,7 +21,7 @@ public sealed record AttackThrowStoneAiPreparedSelectionResult(bool Accepted, At
 public static class AttackThrowStoneAiPreparedSelection
 {
     public static AttackThrowStoneAiPreparedSelectionResult Evaluate(AttackBattleSnapshot state,
-        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, FftRandomState decisionRng)
+        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, RandomState decisionRng)
     {
         AttackThrowStoneAiPreparedSelectionResult Reject(AttackThrowStoneAiPreparedSelectionFailure failure) => new(false, failure, null, decisionRng);
         var admission = AttackThrowStoneAiSelectionPipeline.Admit(state, request, configuration);

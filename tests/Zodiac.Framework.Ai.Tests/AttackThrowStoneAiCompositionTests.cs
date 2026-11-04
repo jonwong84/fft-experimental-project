@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.AttackThrowStoneAiTestData;
 using static Zodiac.Framework.Ai.Tests.ThrowStoneAiTestData;
@@ -31,10 +32,10 @@ public sealed class AttackThrowStoneAiCompositionTests
         var state = Battle(); var before = Snapshot(state); var result = Evaluate(state); var outcome = Success(result);
         Assert.Equal(new[] { Far, Origin }, outcome.Movement.Select(m => m.Outcome.Destination));
         Assert.Equal(new ulong[] { 8, 9 }, outcome.Movement.Select(m => m.RngState.DrawCount));
-        Assert.Equal(new FftRandomState(2524885223, 9), outcome.Movement[^1].RngState);
+        Assert.Equal(new RandomState(2524885223, 9), outcome.Movement[^1].RngState);
         var attack = Assert.Single(outcome.Attack.Candidates);
-        Assert.Equal(new FftRandomState(3655513600, 14), attack.Evaluation.RngState);
-        Assert.Equal(new FftRandomState(836760821, 19), result.RngState); // 2 + 5 + 5; no second prefix or D0 rescore.
+        Assert.Equal(new RandomState(3655513600, 14), attack.Evaluation.RngState);
+        Assert.Equal(new RandomState(836760821, 19), result.RngState); // 2 + 5 + 5; no second prefix or D0 rescore.
         Assert.Equal(40, attack.Evaluation.Projection!.Outcome!.Units.Single(u => u.UnitId == B).Hp);
         Assert.Equal(40, outcome.ThrowStone.Candidate!.Evaluation.Projection!.Outcome!.Units.Single(u => u.UnitId == B).Hp);
         Assert.Equal(before, Snapshot(state));
@@ -48,12 +49,12 @@ public sealed class AttackThrowStoneAiCompositionTests
         var result = Evaluate(Battle(evade: 100), scenario: scenario); var outcome = Success(result);
         Assert.IsType<AttackThrowStoneAiAttack>(outcome.RankedActions[0]); Assert.All(outcome.RankedActions.Skip(1), Assert.Null);
         Assert.Equal(AiScoringDisposition.NotValuable, outcome.ThrowStone.Candidate!.Evaluation.Disposition);
-        Assert.Null(outcome.ThrowStoneInsertionIndex); Assert.Equal(new FftRandomState(836760821, 19), result.RngState);
+        Assert.Null(outcome.ThrowStoneInsertionIndex); Assert.Equal(new RandomState(836760821, 19), result.RngState);
         result = Evaluate(Battle(evade: 100)); outcome = Success(result);
-        Assert.All(outcome.RankedActions, Assert.Null); Assert.Equal(new FftRandomState(267834847, 17), result.RngState);
+        Assert.All(outcome.RankedActions, Assert.Null); Assert.Equal(new RandomState(267834847, 17), result.RngState);
         result = Evaluate(profile: Profile(active: false)); outcome = Success(result);
         Assert.All(outcome.RankedActions, Assert.Null); Assert.Empty(outcome.Attack.Candidates); Assert.Null(outcome.ThrowStone.Candidate);
-        Assert.Equal(new FftRandomState(2524885223, 9), result.RngState);
+        Assert.Equal(new RandomState(2524885223, 9), result.RngState);
     }
 
     [Fact]
@@ -61,16 +62,16 @@ public sealed class AttackThrowStoneAiCompositionTests
     {
         foreach (var (hp, draws) in new[] { (50, 12ul), (10, 14ul) })
         {
-            var rng = new FftRandomState(1, ulong.MaxValue - draws); var result = Evaluate(Battle(hp: hp), rng: rng);
+            var rng = new RandomState(1, ulong.MaxValue - draws); var result = Evaluate(Battle(hp: hp), rng: rng);
             var outcome = Success(result); Assert.Equal(ulong.MaxValue, result.RngState.DrawCount);
             Assert.All(outcome.RankedActions.Take(2), action => Assert.NotNull(action));
             var shortBudget = rng with { DrawCount = rng.DrawCount + 1 };
             var failure = Atomic(Evaluate(Battle(hp: hp), rng: shortBudget), AttackThrowStoneAiStage.ThrowStone, shortBudget);
             Assert.Equal(ThrowStoneAiCandidateRejection.RandomDrawCountExhausted, failure.ThrowStoneFailure!.Detail!.CandidateRejection);
         }
-        var prefixBudget = new FftRandomState(1, ulong.MaxValue - 1);
+        var prefixBudget = new RandomState(1, ulong.MaxValue - 1);
         Assert.Equal(1, Atomic(Evaluate(rng: prefixBudget), AttackThrowStoneAiStage.Movement, prefixBudget).Index);
-        var attackBudget = new FftRandomState(1, ulong.MaxValue - 6);
+        var attackBudget = new RandomState(1, ulong.MaxValue - 6);
         Assert.Equal(SwordAiCandidateRejection.RandomDrawCountExhausted,
             Atomic(Evaluate(rng: attackBudget), AttackThrowStoneAiStage.Attack, attackBudget).ProjectionReason);
         Assert.Equal(SwordAiMovementBaselineRejection.TickCountExhausted,
@@ -108,7 +109,7 @@ public sealed class AttackThrowStoneAiCompositionTests
 
     internal static AttackThrowStoneAiCompositionOutcome Success(AttackThrowStoneAiCompositionResult result)
     { Assert.True(result.Accepted, Serialize(result.Failure)); Assert.Null(result.Failure); return Assert.IsType<AttackThrowStoneAiCompositionOutcome>(result.Outcome); }
-    private static AttackThrowStoneAiFailure Atomic(AttackThrowStoneAiCompositionResult result, AttackThrowStoneAiStage stage, FftRandomState? rng = null)
+    private static AttackThrowStoneAiFailure Atomic(AttackThrowStoneAiCompositionResult result, AttackThrowStoneAiStage stage, RandomState? rng = null)
     { Assert.False(result.Accepted); Assert.Null(result.Outcome); Assert.Equal(rng ?? Decision, result.RngState);
         var failure = Assert.IsType<AttackThrowStoneAiFailure>(result.Failure); Assert.Equal(stage, failure.Stage); return failure; }
 }

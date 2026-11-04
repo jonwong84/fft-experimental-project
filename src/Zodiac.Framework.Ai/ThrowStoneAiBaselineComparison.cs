@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 namespace Zodiac.Framework.Ai;
 
 /// <summary>Unrepresented original baseline provenance; reachability and ability IDs cannot establish these facts.</summary>
@@ -24,7 +25,7 @@ public sealed record ThrowStoneAiBaselineComparisonOutcome(AiMovementBaselineOut
 /// <summary>Failure exposes reasons only and restores whole-query RNG, including a late candidate failure.</summary>
 /// <remarks>Rollback is managed unsupported/exhaustion policy, not an original search rewind.</remarks>
 public sealed record ThrowStoneAiBaselineComparisonResult(bool Accepted, ThrowStoneAiBaselineComparisonFailure? Failure,
-    ThrowStoneAiBaselineComparisonOutcome? Outcome, FftRandomState RngState);
+    ThrowStoneAiBaselineComparisonOutcome? Outcome, RandomState RngState);
 
 /// <summary>Own one certified fresh move-only baseline, then one fresh supplied Throw Stone candidate on original state.</summary>
 /// <remarks>
@@ -35,7 +36,7 @@ public static class ThrowStoneAiBaselineComparison
 {
     public static ThrowStoneAiBaselineComparisonResult Evaluate(AttackBattleSnapshot state, TilePosition baselineDestination,
         ThrowStoneAiCandidate candidate, ThrowStoneAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
-        ThrowStoneAiBaselineProfile baselineProfile, FftRandomState decisionRng)
+        ThrowStoneAiBaselineProfile baselineProfile, RandomState decisionRng)
     {
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(candidate);
         ArgumentNullException.ThrowIfNull(candidateProfile); ArgumentNullException.ThrowIfNull(scoreProfile);
@@ -93,7 +94,7 @@ public static class ThrowStoneAiBaselineComparison
     // Only fresh owning queries can reach this continuation; no public cached-result entry point.
     internal static ThrowStoneAiBaselineComparisonResult ContinueFromBaseline(AttackBattleSnapshot state, ThrowStoneAiCandidate candidate,
         ThrowStoneAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, AiMovementBaselineOutcome baseline,
-        FftRandomState rng, FftRandomState queryRng)
+        RandomState rng, RandomState queryRng)
     {
         // No hypothetical unit state leaks between evaluations. Only their actual private RNG is carried.
         var evaluation = ThrowStoneAiCandidateScoring.Evaluate(state, candidate, candidateProfile, scoreProfile, rng);

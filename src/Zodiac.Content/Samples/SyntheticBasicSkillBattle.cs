@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 using Zodiac.Content.BattleSetup;
 using Zodiac.Content.ContentPackages;
@@ -41,7 +42,7 @@ public static class SyntheticBasicSkillBattle
             self.Abilities[0].Id != Accumulate || targeted.Abilities[0].Id != ThrowStone)
             throw new NotSupportedException("Select the closed authored Basic Skill metadata and companions explicitly.");
         var map = new BattleMapDefinition(7, 5, 1, Enumerable.Repeat(new BattleTile(Ground, 10), 35).ToArray());
-        var rng = FftBiosRandom.Seed(1);
+        var rng = RandomStateGenerator.Seed(1);
         var setup = BaseJobBattleSetup.Create(new(metadata.Jobs, metadata.Skillsets, metadata.Abilities), map,
             [Placement(First, new(1, 2, 0)), Placement(Second, new(3, 2, 0))], rng);
         var turns = new TurnCycleState([new(First, 10, 0, 0), new(Second, 10, 0, 1)], rng);

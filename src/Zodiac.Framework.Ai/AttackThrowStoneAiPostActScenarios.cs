@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -14,7 +15,7 @@ public sealed record AttackThrowStoneAiPostActScenarioOutcome(AttackThrowStoneAi
 }
 /// <summary>Failure hides the entire owned preparation/scoring prefix and restores incoming query RNG.</summary>
 public sealed record AttackThrowStoneAiPostActScenarioResult(bool Accepted, AttackThrowStoneAiScenarioFailure? Failure,
-    AttackThrowStoneAiPostActScenarioOutcome? Outcome, FftRandomState RngState);
+    AttackThrowStoneAiPostActScenarioOutcome? Outcome, RandomState RngState);
 
 /// <summary>Own fresh pair post-ACT preparation and movement-only scenarios through shared source kernels.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-209/211/213.
@@ -22,15 +23,15 @@ public sealed record AttackThrowStoneAiPostActScenarioResult(bool Accepted, Atta
 public static class AttackThrowStoneAiPostActScenarios
 {
     public static AttackThrowStoneAiPostActScenarioResult EvaluateInReach(AttackBattleSnapshot state,
-        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, FftRandomState decisionRng) =>
+        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, RandomState decisionRng) =>
         EvaluateCore(state, request, configuration, decisionRng, outOfReach: false);
 
     public static AttackThrowStoneAiPostActScenarioResult EvaluateOutOfReach(AttackBattleSnapshot state,
-        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, FftRandomState decisionRng) =>
+        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, RandomState decisionRng) =>
         EvaluateCore(state, request, configuration, decisionRng, outOfReach: true);
 
     private static AttackThrowStoneAiPostActScenarioResult EvaluateCore(AttackBattleSnapshot state,
-        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, FftRandomState decisionRng, bool outOfReach)
+        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, RandomState decisionRng, bool outOfReach)
     {
         AttackThrowStoneAiSelectionPipeline.ValidateInputs(state, request, configuration);
         AttackThrowStoneAiPostActScenarioResult Reject(AttackThrowStoneAiScenarioFailure failure) => new(false, failure, null, decisionRng);

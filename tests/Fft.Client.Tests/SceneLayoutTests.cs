@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Fft.Client.Presentation;
 using Zodiac.Framework;
 using Xunit;
@@ -65,7 +66,7 @@ public sealed class SceneLayoutTests
         var surface = new TerrainSurfaceId("sample:terrain/ground");
         var map = new BattleMapDefinition(2, 2, 1, Enumerable.Repeat(new BattleTile(surface, 10), 4).ToArray());
         BattleUnitId back = new("sample:unit/back"), left = new("sample:unit/left"), right = new("sample:unit/right");
-        var rng = new FftRandomState(0xfedcba98, 42);
+        var rng = new RandomState(0xfedcba98, 42);
         var bodies = new[] { new BattleUnitState(right, new(1, 0, 0), 1),
             new BattleUnitState(left, new(0, 1, 0), 1), new BattleUnitState(back, new(0, 0, 0), 1) };
         var battle = new BattleState(map, bodies, rng);

@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Xunit;
 
@@ -45,7 +46,7 @@ public sealed class FlatSwordKnockbackTests
         Assert.Equal(Position(before, A), Position(result.State, A));
         Assert.Equal(Face(expected.GetProperty("actorFacing")), Unit(result.State, A).Facing);
         Assert.Equal(Face(expected.GetProperty("targetFacing")), Unit(result.State, B).Facing);
-        Assert.Equal(new FftRandomState(expected.GetProperty("rngWord").GetUInt32(), expected.GetProperty("drawCount").GetUInt64()),
+        Assert.Equal(new RandomState(expected.GetProperty("rngWord").GetUInt32(), expected.GetProperty("drawCount").GetUInt64()),
             result.State.TurnBattle.Turns.RngState);
         Assert.Equal(result.State.TurnBattle.Turns.RngState, result.State.TurnBattle.Battle.RngState);
         Assert.Equal(expected.GetProperty("moved").GetBoolean() ? 1 : 0, result.Events.OfType<SwordKnockbackEvent>().Count());
@@ -120,7 +121,7 @@ public sealed class FlatSwordKnockbackTests
     {
         var result = Attack(State(seed: seed, hp: 100));
         Assert.Equal(new AttackResolvedEvent(A, B, true, true, damage), result.Events[1]);
-        Assert.Equal(new FftRandomState(word, 7), result.State.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(word, 7), result.State.TurnBattle.Turns.RngState);
         Assert.Single(result.Events.OfType<SwordKnockbackEvent>());
     }
 
@@ -131,7 +132,7 @@ public sealed class FlatSwordKnockbackTests
         Assert.Equal(finalHp, Unit(result.State, B).Hp);
         Assert.Equal(finalHp == 0 ? 0 : 255, Unit(result.State, B).KoCount);
         Assert.Equal(moved ? new(4, 2, 0) : new TilePosition(3, 2, 0), Position(result.State, B));
-        Assert.Equal(new FftRandomState(3448561432, 7), result.State.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(3448561432, 7), result.State.TurnBattle.Turns.RngState);
         Assert.Equal(moved ? 1 : 0, result.Events.OfType<SwordKnockbackEvent>().Count());
         Assert.Equal(finalHp == 0 ? AttackUnitStatus.Dead : AttackUnitStatus.Critical, Unit(result.State, B).Status);
     }
@@ -375,7 +376,7 @@ public sealed class FlatSwordKnockbackTests
         bool targetMoved = false, bool targetActed = false, bool secondActor = false, bool reverse = false, string? geometry = null)
     {
         var actorId = secondActor ? B : A; var targetId = secondActor ? A : B;
-        var rng = new FftRandomState(seed, count); int layers = geometry is "layer" or "blocked-upper" ? 2 : 1;
+        var rng = new RandomState(seed, count); int layers = geometry is "layer" or "blocked-upper" ? 2 : 1;
         var tiles = Enumerable.Repeat(new BattleTile(Ground, 10), width * depth * layers).ToArray();
         if (geometry == "blocked-upper")
             for (int i = width * depth; i < tiles.Length; i++)

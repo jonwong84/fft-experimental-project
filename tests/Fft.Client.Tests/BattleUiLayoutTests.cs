@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Fft.Client.Presentation;
 using Zodiac.Content.Samples;
 using Zodiac.Framework;
@@ -100,7 +101,7 @@ public sealed class BattleUiLayoutTests
         router.Click(new(480, 320));
         Assert.True(interaction.LastResult!.Accepted);
         Assert.Equal(25, interaction.State.Battle.Combatants.Single(unit => unit.UnitId == SyntheticTwoUnitBattle.SecondUnitId).Hp);
-        Assert.Equal(new FftRandomState(3655513600, 7), interaction.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(3655513600, 7), interaction.State.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(BattleInteractionMode.Inspect, interaction.Mode);
         before = interaction.State;
         ClickButton(router, BattleUiAction.Move); router.Click(new(480, 300));
@@ -137,7 +138,7 @@ public sealed class BattleUiLayoutTests
         ClickButton(router, BattleUiAction.Restart);
         Assert.Empty(interaction.Journal); Assert.Null(interaction.SelectedUnit); Assert.Null(interaction.LastResult);
         Assert.Equal(new TilePosition(0, 0, 0), router.Cursor);
-        Assert.Equal(new FftRandomState(1, 0), interaction.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(1, 0), interaction.State.Battle.TurnBattle.Turns.RngState);
     }
 
     private static void ClickButton(BattleUiRouter router, BattleUiAction action)

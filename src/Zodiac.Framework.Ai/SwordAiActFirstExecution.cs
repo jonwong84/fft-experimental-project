@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -9,7 +10,7 @@ public sealed record SwordAiActFirstFailure(SwordAiActFirstRejection Reason,
     FacingDecisionRejection BoundaryReason = FacingDecisionRejection.None);
 /// <summary>The selected future destination is diagnostic only; it grants no post-ACT Move authority.</summary>
 public sealed record SwordAiActFirstOutcome(SwordAiPreparedSelectionOutcome Selection, SwordAiDispatchOutcome Dispatch,
-    FftRandomState DecisionRng);
+    RandomState DecisionRng);
 public sealed record SwordAiActFirstResult(SwordAiActFirstFailure? Failure, FacingDecisionResult<SwordAiActFirstOutcome> Execution)
 {
     public bool Accepted => Execution.Accepted;

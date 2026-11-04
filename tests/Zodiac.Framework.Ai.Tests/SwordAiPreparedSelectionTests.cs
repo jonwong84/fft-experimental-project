@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.SwordAiPreparationTestData;
 
@@ -14,10 +15,10 @@ public sealed class SwordAiPreparedSelectionTests
     public void Fresh_prefix_retains_exact_refresh_movement_formula_and_lottery_schedule(int evade, uint word, ulong count, int rolls)
     {
         var state = State(evade: evade); var result = Evaluate(state); var o = Success(result);
-        Assert.Equal(new FftRandomState(word, count), result.RngState);
+        Assert.Equal(new RandomState(word, count), result.RngState);
         Assert.Equal(16838u, Assert.Single(o.Preparation.Refresh.UpkeepPicks).RawRoll);
         Assert.Equal(5758u, Assert.Single(o.Decision.MovementScenario.Movement).Outcome.UpkeepPicks[0].RawRoll);
-        Assert.Equal(new FftRandomState(3655513600, 14), o.Decision.Selection.LotteryEntryRng);
+        Assert.Equal(new RandomState(3655513600, 14), o.Decision.Selection.LotteryEntryRng);
         Assert.Equal(rolls, o.Decision.Selection.Lottery.Length);
         Assert.Equal(7419u, o.Decision.Selection.Lottery[0].Raw); // First lottery draw after the retained refresh prefix.
         Assert.Equal(SwordAiSelectedPlanKind.Attack, o.Decision.Selection.Plan.Kind);
@@ -60,18 +61,18 @@ public sealed class SwordAiPreparedSelectionTests
     public void Required_draw_budget_is_exact_and_any_late_failure_rolls_back_the_whole_prefix()
     {
         var state = State();
-        var start = new FftRandomState(1, ulong.MaxValue - 8);
+        var start = new RandomState(1, ulong.MaxValue - 8);
         Assert.Equal(ulong.MaxValue, Evaluate(state, rng: start).RngState.DrawCount);
         foreach (int available in new[] { 0, 1, 2, 7 })
         {
-            var rng = new FftRandomState(1, ulong.MaxValue - (ulong)available);
+            var rng = new RandomState(1, ulong.MaxValue - (ulong)available);
             var result = Evaluate(state, rng: rng);
             Assert.False(result.Accepted); Assert.Null(result.Outcome); Assert.Equal(rng, result.RngState);
             Assert.Equal(available == 0 ? SwordAiPreparedSelectionStage.Preparation : SwordAiPreparedSelectionStage.Selection, result.Failure!.Stage);
         }
         var lowAccuracy = State(evade: 89);
         Assert.Equal(ulong.MaxValue, Evaluate(lowAccuracy, rng: new(1, ulong.MaxValue - 15)).RngState.DrawCount);
-        var lotteryRng = new FftRandomState(1, ulong.MaxValue - 14);
+        var lotteryRng = new RandomState(1, ulong.MaxValue - 14);
         var lotteryFailure = Evaluate(lowAccuracy, rng: lotteryRng);
         Assert.Equal(SwordAiDerivedSelectionStage.Lottery, lotteryFailure.Failure!.SelectionStage);
         Assert.Null(lotteryFailure.Outcome); Assert.Equal(lotteryRng, lotteryFailure.RngState);
@@ -101,7 +102,7 @@ public sealed class SwordAiPreparedSelectionTests
 
     private static SwordAiPreparedSelectionResult Evaluate(AttackBattleSnapshot state, BoundedSwordWeapon? weapon = null,
         SwordAiRefreshRequest? request = null, SwordAiPreparedSelectionProfile? profile = null,
-        SwordAiPreparationProfile? preparation = null, SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue, FftRandomState? rng = null) =>
+        SwordAiPreparationProfile? preparation = null, SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue, RandomState? rng = null) =>
         SwordAiPreparedSelection.Evaluate(state, request ?? Request(), weapon ?? new(Weapon, 5), Candidate, Score, Refresh,
             preparation ?? Preparation, team, profile ?? Profile, rng ?? Rng);
     private static SwordAiPreparedSelectionOutcome Success(SwordAiPreparedSelectionResult result)

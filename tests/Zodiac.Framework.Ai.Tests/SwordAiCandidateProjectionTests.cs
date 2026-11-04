@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Xunit;
 
@@ -13,7 +14,7 @@ public sealed class SwordAiCandidateProjectionTests
     private static readonly FlatSwordBattleProfile Sword = new(Ground);
     private static readonly FlatOrdinaryMovementProfile Movement = new(Ground, A, B);
     private static readonly SwordAiCandidateProfile Profile = new(Sword, Movement, [new(A, 255), new(B, 19)]);
-    private static readonly FftRandomState Decision = new(1, 7);
+    private static readonly RandomState Decision = new(1, 7);
 
     public static IEnumerable<object[]> Proposals()
     {
@@ -45,11 +46,11 @@ public sealed class SwordAiCandidateProjectionTests
             targetMoved: Flag("targetMoved"), targetActed: Flag("targetActed"), ticks: d.GetProperty("elapsedTicks").GetUInt64(),
             geometry: Flag("profileSupported") ? null : "cost-two");
         var candidate = new SwordAiCandidate(A,B,Flag("placementAllowed") ? destination : new(99,99,0),order);
-        var rng = new FftRandomState(d.GetProperty("rngWord").GetUInt32(),d.GetProperty("rngCount").GetUInt64());
+        var rng = new RandomState(d.GetProperty("rngWord").GetUInt32(),d.GetProperty("rngCount").GetUInt64());
         var profile = new SwordAiCandidateProfile(Sword,Movement,[new(A,255),new(B,(byte)I("deathCounter"))]);
         var result = SwordAiCandidateProjection.Evaluate(state,candidate,new(Weapon,I("damage")/5),profile,rng);
         Assert.Equal(e.GetProperty("disposition").GetString(),result.Disposition.ToString());
-        Assert.Equal(new FftRandomState(e.GetProperty("rngWord").GetUInt32(),e.GetProperty("rngCount").GetUInt64()),result.RngState);
+        Assert.Equal(new RandomState(e.GetProperty("rngWord").GetUInt32(),e.GetProperty("rngCount").GetUInt64()),result.RngState);
         if (result.Disposition == SwordAiCandidateDisposition.Rejected)
         { Assert.Null(result.Outcome); Assert.Equal(e.GetProperty("reason").GetString(),result.Rejection.ToString()); return; }
         Assert.Equal(SwordAiCandidateRejection.None,result.Rejection);
@@ -119,7 +120,7 @@ public sealed class SwordAiCandidateProjectionTests
         Assert.Equal(new(1,2,0),Unit(outcome,actor).Position); Assert.Equal(facing,Unit(outcome,actor).Facing);
         Assert.Equal(BattleFacing.East,Unit(outcome,target).Facing);
         Assert.Equal(25,Unit(outcome,target).Hp); Assert.Equal(15,outcome.TurnEndCt);
-        Assert.Equal(before,Snapshot(state)); Assert.Equal(new FftRandomState(57,100),state.TurnBattle.Turns.RngState);
+        Assert.Equal(before,Snapshot(state)); Assert.Equal(new RandomState(57,100),state.TurnBattle.Turns.RngState);
     }
 
     [Theory] [InlineData(false,35)] [InlineData(true,15)]
@@ -158,12 +159,12 @@ public sealed class SwordAiCandidateProjectionTests
         if (hit == 0)
         {
             Assert.Equal(SwordAiCandidateDisposition.NotValuable,result.Disposition); Assert.Null(result.Outcome);
-            Assert.Equal(SwordAiCandidateRejection.None,result.Rejection); Assert.Equal(new FftRandomState(3295386429,11),result.RngState);
+            Assert.Equal(SwordAiCandidateRejection.None,result.Rejection); Assert.Equal(new RandomState(3295386429,11),result.RngState);
         }
         else
         {
             Assert.Equal(hit,Projected(result).HitPercent); Assert.Equal(25,Unit(result.Outcome!,B).Hp);
-            Assert.Equal(new FftRandomState(4182499122,12),result.RngState);
+            Assert.Equal(new RandomState(4182499122,12),result.RngState);
         }
     }
 
@@ -221,7 +222,7 @@ public sealed class SwordAiCandidateProjectionTests
     [Theory] [MemberData(nameof(Budgets))]
     public void Every_formula_and_upkeep_draw_budget_rejects_atomically_or_fits_exactly(int evade,bool lethal,int remaining)
     {
-        var state = State(evade: evade); var decision = new FftRandomState(1,ulong.MaxValue-(ulong)remaining);
+        var state = State(evade: evade); var decision = new RandomState(1,ulong.MaxValue-(ulong)remaining);
         var result = Project(state,power: lethal ? 10 : 5,rng: decision);
         int needed = evade == 100 ? 4 : lethal ? 6 : 5;
         if (remaining < needed) Atomic(result,SwordAiCandidateRejection.RandomDrawCountExhausted,decision);
@@ -307,7 +308,7 @@ public sealed class SwordAiCandidateProjectionTests
         Assert.Equal(Serialize(first),Serialize(Project(state))); Assert.NotEqual(first.RngState,second.RngState);
         Assert.Equal(first.RngState.DrawCount+(noAccuracy ? 4ul : 5ul),second.RngState.DrawCount);
         for (int i=0;i<4;i++) Assert.Equal(Serialize(first),Serialize(Project(state)));
-        Assert.Equal(before,Snapshot(state)); Assert.Equal(new FftRandomState(57,100),state.TurnBattle.Turns.RngState);
+        Assert.Equal(before,Snapshot(state)); Assert.Equal(new RandomState(57,100),state.TurnBattle.Turns.RngState);
         Assert.Equal(20ul,state.TurnBattle.Turns.Ticks);
     }
 
@@ -324,19 +325,19 @@ public sealed class SwordAiCandidateProjectionTests
 
     private static JsonDocument Contract() => JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"Fixtures","ai-candidate-contract-v1.json")));
     private static SwordAiCandidate Stay() => new(A,B,new(2,2,0),SwordAiCandidateOrder.MoveThenAct);
-    private static SwordAiCandidateResult Project(AttackBattleSnapshot state,SwordAiCandidate? candidate=null,int power=5,FftRandomState? rng=null)
+    private static SwordAiCandidateResult Project(AttackBattleSnapshot state,SwordAiCandidate? candidate=null,int power=5,RandomState? rng=null)
         => SwordAiCandidateProjection.Evaluate(state,candidate ?? Stay(),new(Weapon,power),Profile,rng ?? Decision);
     private static AiProjectedUnit Unit(SwordAiCandidateOutcome outcome,BattleUnitId id) => outcome.Units.Single(u => u.UnitId == id);
     private static SwordAiCandidateOutcome Projected(SwordAiCandidateResult result)
     { Assert.Equal(SwordAiCandidateDisposition.Projected,result.Disposition); Assert.Equal(SwordAiCandidateRejection.None,result.Rejection); return Assert.IsType<SwordAiCandidateOutcome>(result.Outcome); }
-    private static void Atomic(SwordAiCandidateResult result,SwordAiCandidateRejection rejection,FftRandomState? rng=null,bool accepted=false)
+    private static void Atomic(SwordAiCandidateResult result,SwordAiCandidateRejection rejection,RandomState? rng=null,bool accepted=false)
     {
         if (accepted) { Projected(result); return; }
         Assert.Equal(SwordAiCandidateDisposition.Rejected,result.Disposition); Assert.Equal(rejection,result.Rejection);
         Assert.Null(result.Outcome); Assert.Equal(rng ?? Decision,result.RngState);
     }
-    private static FftRandomState Advance(FftRandomState rng,int count)
-    { for (int i=0;i<count;i++) rng=new FftBiosRandom().Next(rng).State; return rng; }
+    private static RandomState Advance(RandomState rng,int count)
+    { for (int i=0;i<count;i++) rng=new RandomStateGenerator().Next(rng).State; return rng; }
     private static string Serialize(object value) => JsonSerializer.Serialize(value);
     private static string Snapshot(AttackBattleSnapshot state) => Serialize(new { state.Combatants,state.TurnBattle.Turns,
         state.TurnBattle.Battle.Map,state.TurnBattle.Battle.RngState,
@@ -351,7 +352,7 @@ public sealed class SwordAiCandidateProjectionTests
         bool targetMoved=true,bool targetActed=true,ulong ticks=20,string? geometry=null)
     {
         var actor=second ? B : A; var target=second ? A : B;
-        var rng=new FftRandomState(57,100); int width=geometry == "large" ? 17 : 5;
+        var rng=new RandomState(57,100); int width=geometry == "large" ? 17 : 5;
         var tiles=Enumerable.Repeat(new BattleTile(Ground,10),width*5).ToArray();
         tiles[^1]=geometry switch { "blocked" => new(Ground,10,movementFlags: BattleTileMovementFlags.Blocked),
             "water" => new(Ground,10,waterDepth: 1), "height" => new(Ground,11), _ => tiles[^1] };

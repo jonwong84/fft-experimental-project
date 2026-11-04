@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.ThrowStoneAiTestData;
 
@@ -25,7 +26,7 @@ public sealed class ThrowStoneAiCandidateScanTests
         Assert.Equal(Far, selected.Origin); Assert.Equal(Far, selected.Candidate.Destination); Assert.False(selected.Candidate.ActBeforeMove);
         Assert.Equal(AiRankOrder.Above, outcome.Rank); Assert.Equal(26, selected.Evaluation.Score!.Priority);
         Assert.Equal(7419u, Assert.Single(selected.Evaluation.Projection!.Outcome!.UpkeepPicks).RawRoll);
-        Assert.Equal(new FftRandomState(2633739833, 15), result.RngState); // Three prefix + four evasion + one upkeep.
+        Assert.Equal(new RandomState(2633739833, 15), result.RngState); // Three prefix + four evasion + one upkeep.
         Assert.All(outcome.Movement, tile => Assert.Equal(50, tile.Outcome.Units.Single(u => u.UnitId == B).Hp));
         var independent = ThrowStoneAiCandidateScoring.Evaluate(state, selected.Candidate, CandidateProfile(), Score, new(662824084, 10));
         Assert.Equal(Serialize(independent), Serialize(selected.Evaluation));
@@ -62,7 +63,7 @@ public sealed class ThrowStoneAiCandidateScanTests
             var result = Evaluate(state, scan, profile: profile); outcome = Success(result);
             Assert.Equal(ThrowStoneAiScanDisposition.NoCandidates, result.Disposition);
             Assert.Null(outcome.Candidate); Assert.Null(outcome.Rank);
-            Assert.Equal(new FftRandomState(2524885223, 9), result.RngState); Assert.Equal(2, outcome.Movement.Length);
+            Assert.Equal(new RandomState(2524885223, 9), result.RngState); Assert.Equal(2, outcome.Movement.Length);
         }
     }
 
@@ -76,7 +77,7 @@ public sealed class ThrowStoneAiCandidateScanTests
         Assert.Equal(ThrowStoneAiScanDisposition.NotValuable, result.Disposition);
         Assert.Equal(zeroFront, outcome.Candidate!.Origin); Assert.Null(outcome.Candidate.Evaluation.Score); Assert.Null(outcome.Rank);
         Assert.Null(outcome.Candidate.Evaluation.Projection!.Outcome);
-        Assert.Equal(new FftRandomState(3655513600, 14), result.RngState); // Three prefix + four evasion; no candidate clock.
+        Assert.Equal(new RandomState(3655513600, 14), result.RngState); // Three prefix + four evasion; no candidate clock.
         var otherAngle = ThrowStoneAiCandidateScoring.Evaluate(state, Candidate(behind, actBeforeMove: false), CandidateProfile(), Score, Decision);
         Assert.Equal(AiScoringDisposition.Scored, otherAngle.Disposition); Assert.Equal(100, otherAngle.Score!.HitPercent);
     }
@@ -86,9 +87,9 @@ public sealed class ThrowStoneAiCandidateScanTests
     {
         foreach (var (hp, evade, draws, word) in new[] { (50, 0, 8ul, 2633739833u), (10, 0, 9ul, 3210001534u), (50, 100, 7ul, 3655513600u) })
         {
-            var rng = new FftRandomState(1, ulong.MaxValue - draws);
+            var rng = new RandomState(1, ulong.MaxValue - draws);
             var result = Evaluate(State(hp: hp, evade: evade), rng: rng); var outcome = Success(result);
-            Assert.Equal(new FftRandomState(word, ulong.MaxValue), result.RngState);
+            Assert.Equal(new RandomState(word, ulong.MaxValue), result.RngState);
             if (hp == 10)
             {
                 Assert.Equal(320, outcome.Candidate!.Evaluation.Score!.Priority);
@@ -99,7 +100,7 @@ public sealed class ThrowStoneAiCandidateScanTests
             var failure = Atomic(Evaluate(State(hp: hp, evade: evade), rng: shortBudget), ThrowStoneAiScanStage.Candidate, shortBudget);
             Assert.Equal(ThrowStoneAiCandidateRejection.RandomDrawCountExhausted, failure.Detail!.CandidateRejection);
         }
-        var prefixBudget = new FftRandomState(1, ulong.MaxValue - 1);
+        var prefixBudget = new RandomState(1, ulong.MaxValue - 1);
         var prefix = Atomic(Evaluate(State(), rng: prefixBudget), ThrowStoneAiScanStage.Movement, prefixBudget);
         Assert.Equal(1, prefix.MovementIndex); Assert.Equal(ThrowStoneAiBaselineComparisonRejection.RandomDrawCountExhausted, prefix.Detail!.Reason);
         var twoTiles = new ThrowStoneAiScanScenario([Origin, Near], [Origin, Near], Origin, Near);
@@ -147,13 +148,13 @@ public sealed class ThrowStoneAiCandidateScanTests
     }
 
     private static ThrowStoneAiScanResult Evaluate(AttackBattleSnapshot state, ThrowStoneAiScanScenario? scenario = null,
-        ThrowStoneAiScanProfile? profile = null, FftRandomState? rng = null, bool second = false,
+        ThrowStoneAiScanProfile? profile = null, RandomState? rng = null, bool second = false,
         ThrowStoneAiBaselineProfile? baseline = null, ThrowStoneAiCandidateProfile? candidateProfile = null) =>
         ThrowStoneAiCandidateScan.Evaluate(state, new(second ? B : A, Stone, second ? A : B), scenario ?? Scenario(),
             candidateProfile ?? CandidateProfile(), Score, baseline ?? Baseline, profile ?? Profile, rng ?? Decision);
     private static ThrowStoneAiScanOutcome Success(ThrowStoneAiScanResult result)
     { Assert.NotEqual(ThrowStoneAiScanDisposition.Rejected, result.Disposition); Assert.Null(result.Failure); return Assert.IsType<ThrowStoneAiScanOutcome>(result.Outcome); }
-    private static ThrowStoneAiScanFailure Atomic(ThrowStoneAiScanResult result, ThrowStoneAiScanStage stage, FftRandomState? rng = null)
+    private static ThrowStoneAiScanFailure Atomic(ThrowStoneAiScanResult result, ThrowStoneAiScanStage stage, RandomState? rng = null)
     { Assert.Equal(ThrowStoneAiScanDisposition.Rejected, result.Disposition); Assert.Null(result.Outcome); Assert.Equal(rng ?? Decision, result.RngState);
         var failure = Assert.IsType<ThrowStoneAiScanFailure>(result.Failure); Assert.Equal(stage, failure.Stage); return failure; }
 }

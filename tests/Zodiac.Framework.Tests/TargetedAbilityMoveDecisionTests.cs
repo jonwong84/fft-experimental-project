@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Tests.TargetedAbilityDecisionTests;
 
@@ -21,7 +22,7 @@ public sealed class TargetedAbilityMoveDecisionTests
                 calls++; return c.PrepareMoveThenTargetedAbility(new(A, Destination), Movement, new(A, Stone, B), Profile(), PlanRng(c.RngState), "frozen");
             });
             var token = Success(moved); Assert.Equal("frozen", moved.Diagnostic); Assert.Equal(1, calls);
-            Assert.Equal(new FftRandomState(3210001534, 16), moved.State.Battle.TurnBattle.Turns.RngState);
+            Assert.Equal(new RandomState(3210001534, 16), moved.State.Battle.TurnBattle.Turns.RngState);
             Assert.Equal(moved.State.Battle.TurnBattle.Turns.RngState, moved.State.Battle.TurnBattle.Battle.RngState);
             Assert.Equal(new[] { new TilePosition(2, 1, 0), Destination }, moved.Path!.Tiles.ToArray());
             Assert.Equal(BattleFacing.East, moved.Path.FinalHeading); Assert.Equal(Destination, Position(moved.State, A));
@@ -31,7 +32,7 @@ public sealed class TargetedAbilityMoveDecisionTests
             Assert.Equal(new ThrowStoneResolvedEvent(A, Stone, B, hit, hit ? 5 : 0, hit), Assert.Single(act.Events.OfType<ThrowStoneResolvedEvent>()));
             Assert.Equal(hit ? hp - 5 : hp, act.State.Battle.Combatants.Single(u => u.UnitId == B).Hp);
             Assert.Equal(new TilePosition(pushed ? 7 : targetX, 1, 0), Position(act.State, B));
-            Assert.Equal(new FftRandomState(word, count), act.State.Battle.TurnBattle.Turns.RngState);
+            Assert.Equal(new RandomState(word, count), act.State.Battle.TurnBattle.Turns.RngState);
             Assert.Equal(act.State.Battle.TurnBattle.Turns.RngState, act.State.Battle.TurnBattle.Battle.RngState);
             Assert.Equal(moved.State.Revision + 1, act.State.Revision); Assert.Null(act.State.Battle.TurnBattle.Turns.ActiveUnitId);
             var receipt = Assert.IsType<FacingCompletionReceipt>(act.State.PendingFacing);
@@ -71,7 +72,7 @@ public sealed class TargetedAbilityMoveDecisionTests
         var tooFar = Move(Ready(target: new(7, 1, 0)), destination: new(1, 1, 0)); var farToken = Success(tooFar);
         var range = FacingMoveDecisionBattle.Continue(tooFar.State, A, farToken);
         AtomicAct(tooFar.State, range, AttackCommandRejection.OutOfRange); Assert.Equal(new TilePosition(1, 1, 0), Position(range.State, A));
-        Assert.Equal(new FftRandomState(3210001534, 16), range.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(3210001534, 16), range.State.Battle.TurnBattle.Turns.RngState);
         // Planning and Move fit exactly; actual ACT fails on its final draw. The published Move must survive.
         var moved = Move(Ready(count: ulong.MaxValue - 15)); var token = Success(moved); string before = Snapshot(moved.State);
         foreach (int attempt in new[] { 1, 2 })

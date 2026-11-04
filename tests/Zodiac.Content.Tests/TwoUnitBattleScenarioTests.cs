@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Zodiac.Content.Samples;
 using Zodiac.Framework;
@@ -33,7 +34,7 @@ public sealed class TwoUnitBattleScenarioTests
             Assert.True(result.Accepted);
             Assert.Equal(before, Snapshot(state));
             Assert.NotSame(state, result.State);
-            Assert.Equal(new FftRandomState(words[i], draws[i]), result.State.Battle.TurnBattle.Turns.RngState);
+            Assert.Equal(new RandomState(words[i], draws[i]), result.State.Battle.TurnBattle.Turns.RngState);
             Assert.Equal(result.State.Battle.TurnBattle.Turns.RngState, result.State.Battle.TurnBattle.Battle.RngState);
             Assert.Equal(ticks[i], result.State.Battle.TurnBattle.Turns.Ticks);
             Assert.Equal(hpA[i], Combat(result.State, A).Hp); Assert.Equal(hpB[i], Combat(result.State, B).Hp);
@@ -74,7 +75,7 @@ public sealed class TwoUnitBattleScenarioTests
         var first = Replay(definition.Start());
         var restarted = definition.Start();
         Assert.NotSame(first.Final, restarted);
-        Assert.Equal(new FftRandomState(1, 0), restarted.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(1, 0), restarted.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(0ul, restarted.Battle.TurnBattle.Turns.Ticks);
         Assert.All(restarted.Battle.Combatants, unit => Assert.Equal(50, unit.Hp));
         var second = Replay(restarted);
@@ -134,7 +135,7 @@ public sealed class TwoUnitBattleScenarioTests
             var next = TwoUnitBattleScenario.Apply(state, valid); Assert.True(next.Accepted); state = next.State;
         }
         Assert.Equal(TwoUnitBattleOutcome.FirstUnitWon, state.Outcome);
-        Assert.Equal(new FftRandomState(2473755763, 22), state.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(2473755763, 22), state.Battle.TurnBattle.Turns.RngState);
     }
 
     [Fact]
@@ -149,7 +150,7 @@ public sealed class TwoUnitBattleScenarioTests
         foreach (var command in SyntheticTwoUnitBattle.Commands.Take(5))
         { result = TwoUnitBattleScenario.Apply(state, command); Assert.True(result.Accepted); state = result.State; }
         Assert.Equal(TwoUnitBattleOutcome.SecondUnitWon, state.Outcome); Assert.Equal(B, state.WinnerId);
-        Assert.Equal(new FftRandomState(2937909499, 14), state.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(2937909499, 14), state.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(new TwoUnitBattleCompletedEvent(basis.Id, B, A), result!.Events[^1]);
     }
 

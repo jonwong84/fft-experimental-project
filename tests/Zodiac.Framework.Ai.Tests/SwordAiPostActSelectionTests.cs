@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.SwordAiPreparationTestData;
 
@@ -18,13 +19,13 @@ public sealed class SwordAiPostActSelectionTests
             Assert.Equal(new TilePosition(2, 2, 0), o.Plan.Destination); Assert.Equal(SwordAiWaitFacingHint.ChooseAtWait, o.Plan.WaitFacingHint);
             var scenarios = SwordAiPostActScenarioTests.Evaluate(state);
             Assert.Equal(Serialize(scenarios.Outcome), Serialize(o.Scenarios)); Assert.Equal(scenarios.RngState, o.LotteryEntryRng);
-            Assert.Equal(new FftRandomState(word, count), result.RngState);
+            Assert.Equal(new RandomState(word, count), result.RngState);
             Assert.Equal(first, o.Lottery[0].Raw); Assert.Equal(last, o.Lottery[^1].Raw);
             Assert.Equal(Enumerable.Range(0, 8), o.Lottery.Select(roll => roll.Slot));
             var rng = o.LotteryEntryRng;
             foreach (var roll in o.Lottery)
             {
-                var draw = new FftBiosRandom().Next(rng); rng = draw.State;
+                var draw = new RandomStateGenerator().Next(rng); rng = draw.State;
                 Assert.Equal(draw.Value, roll.Raw); Assert.Equal((int)(roll.Raw % 100), roll.Modulo);
                 Assert.Equal(0, roll.HitPercent); Assert.False(roll.Passed);
             }
@@ -37,7 +38,7 @@ public sealed class SwordAiPostActSelectionTests
     {
         var state = State(moved: false, acted: true, move: 1, distance: 3); var result = Evaluate(state, outOfReach: true, rng: Rng);
         var o = Success(result); Assert.Equal(new TilePosition(2, 1, 0), o.Plan.Destination);
-        Assert.Equal(new FftRandomState(180171308, 18), result.RngState);
+        Assert.Equal(new RandomState(180171308, 18), result.RngState);
         Assert.Equal(10113u, o.Scenarios.OutOfReach!.ReachAdjustment!.Raw);
         Assert.Equal(17515u, o.Lottery[0].Raw); Assert.Equal(2749u, o.Lottery[^1].Raw);
         var zero = State(moved: false, acted: true, move: 0, distance: 1);
@@ -48,7 +49,7 @@ public sealed class SwordAiPostActSelectionTests
     [Fact]
     public void Exact_full_budget_and_last_roll_failure_are_atomic_and_no_Defend_remains_explicit()
     {
-        var state = AfterAct().Battle; var last = new FftRandomState(state.TurnBattle.Turns.RngState.Value, ulong.MaxValue - 13);
+        var state = AfterAct().Battle; var last = new RandomState(state.TurnBattle.Turns.RngState.Value, ulong.MaxValue - 13);
         var fits = Evaluate(state, rng: last); Success(fits); Assert.Equal(ulong.MaxValue, fits.RngState.DrawCount);
         var shortBudget = last with { DrawCount = ulong.MaxValue - 12 }; var before = Snapshot(state);
         var failed = Evaluate(state, rng: shortBudget); Atomic(failed, SwordAiPostActSelectionRejection.LotteryRejected, shortBudget);
@@ -77,13 +78,13 @@ public sealed class SwordAiPostActSelectionTests
     }
 
     internal static SwordAiPostActSelectionResult Evaluate(AttackBattleSnapshot state, bool outOfReach = false,
-        bool second = false, SwordAiPostActSelectionProfile? profile = null, FftRandomState? rng = null) => outOfReach
+        bool second = false, SwordAiPostActSelectionProfile? profile = null, RandomState? rng = null) => outOfReach
         ? SwordAiPostActSelection.EvaluateOutOfReach(state, Request(second), Candidate, Score, Refresh, Preparation,
             SwordAiScenarioTeam.NonBlue, SwordAiPostActScenarioTests.Profile, profile ?? new(true), rng ?? state.TurnBattle.Turns.RngState)
         : SwordAiPostActSelection.EvaluateInReach(state, Request(second), Candidate, Score, Refresh, Preparation,
             SwordAiScenarioTeam.NonBlue, SwordAiPostActScenarioTests.Profile, profile ?? new(true), rng ?? state.TurnBattle.Turns.RngState);
     private static SwordAiPostActSelectionOutcome Success(SwordAiPostActSelectionResult result)
     { Assert.True(result.Accepted, Serialize(result)); Assert.Null(result.Failure); return Assert.IsType<SwordAiPostActSelectionOutcome>(result.Outcome); }
-    private static void Atomic(SwordAiPostActSelectionResult result, SwordAiPostActSelectionRejection reason, FftRandomState rng)
+    private static void Atomic(SwordAiPostActSelectionResult result, SwordAiPostActSelectionRejection reason, RandomState rng)
     { Assert.False(result.Accepted); Assert.Equal(reason, result.Failure!.Reason); Assert.Null(result.Outcome); Assert.Equal(rng, result.RngState); }
 }

@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Zodiac.Framework;
 using Xunit;
 
@@ -17,7 +18,7 @@ public sealed class TurnCycleTests
     [InlineData(254, 255, 1, 254, 54)]
     public void Source_tick_threshold_and_cap_vectors(int ct, int speed, ulong ticks, int readyCt, int remainder)
     {
-        var input = new TurnCycleState([new(A, speed, ct, 0)], FftBiosRandom.Seed(1));
+        var input = new TurnCycleState([new(A, speed, ct, 0)], RandomStateGenerator.Seed(1));
         TurnCycleResult result = TurnCycle.Advance(input);
         Assert.True(result.Accepted);
         Assert.Equal(ticks, result.State.Ticks);
@@ -26,11 +27,11 @@ public sealed class TurnCycleTests
         Assert.Equal(remainder, ready.CtAfterSelection);
         Assert.Equal(remainder, result.State.Units[0].Ct);
         Assert.Equal((int)ticks, result.Events.OfType<TurnClockAdvancedEvent>().Count());
-        Assert.Equal(new FftRandomState(0x41c67ea6, 1), result.State.RngState);
+        Assert.Equal(new RandomState(0x41c67ea6, 1), result.State.RngState);
         Assert.Equal(16838u, ready.UpkeepRoll);
         Assert.Equal(ct, input.Units[0].Ct);
         Assert.Equal(0UL, input.Ticks);
-        Assert.Equal(FftBiosRandom.Seed(1), input.RngState);
+        Assert.Equal(RandomStateGenerator.Seed(1), input.RngState);
     }
 
     [Theory]
@@ -41,7 +42,7 @@ public sealed class TurnCycleTests
     public void Source_ready_modulo_vectors_select_without_an_extra_tick(int ct, int remainder)
     {
         var input = new TurnCycleState([new(A, 10, ct, 0, movementTaken: true, actionTaken: true)],
-            FftBiosRandom.Seed(1), ticks: 123, phase: TurnCyclePhase.PickUnit);
+            RandomStateGenerator.Seed(1), ticks: 123, phase: TurnCyclePhase.PickUnit);
         var result = TurnCycle.Advance(input);
         Assert.Equal(123UL, result.State.Ticks);
         Assert.IsType<TurnReadyEvent>(Assert.Single(result.Events));
@@ -67,7 +68,7 @@ public sealed class TurnCycleTests
     public void Initial_AddCt_and_peer_recheck_PickUnit_are_distinct_phases()
     {
         var unit = new TurnUnitState(A, 10, 100, 0);
-        var firstTick = TurnCycle.Advance(new([unit], FftBiosRandom.Seed(1)));
+        var firstTick = TurnCycle.Advance(new([unit], RandomStateGenerator.Seed(1)));
         var peerPick = TurnCycle.Advance(Pick([unit]));
         Assert.Equal(1UL, firstTick.State.Ticks);
         Assert.Equal(10, firstTick.State.Units[0].Ct);
@@ -148,13 +149,13 @@ public sealed class TurnCycleTests
     [Fact]
     public void Counter_exhaustion_is_atomic_but_ready_peer_does_not_require_another_tick()
     {
-        var tickExhausted = new TurnCycleState([new(A, 1, 0, 0)], FftBiosRandom.Seed(1), ulong.MaxValue, TurnCyclePhase.PickUnit);
+        var tickExhausted = new TurnCycleState([new(A, 1, 0, 0)], RandomStateGenerator.Seed(1), ulong.MaxValue, TurnCyclePhase.PickUnit);
         AssertRejected(tickExhausted, TurnCycle.Advance(tickExhausted), TurnCycleRejection.TickCountExhausted);
-        var nearExhausted = new TurnCycleState([new(A, 1, 0, 0)], FftBiosRandom.Seed(1), ulong.MaxValue - 1);
+        var nearExhausted = new TurnCycleState([new(A, 1, 0, 0)], RandomStateGenerator.Seed(1), ulong.MaxValue - 1);
         AssertRejected(nearExhausted, TurnCycle.Advance(nearExhausted), TurnCycleRejection.TickCountExhausted);
         var rngExhausted = new TurnCycleState([new(A, 10, 100, 0)], new(1, ulong.MaxValue), phase: TurnCyclePhase.PickUnit);
         AssertRejected(rngExhausted, TurnCycle.Advance(rngExhausted), TurnCycleRejection.RandomDrawCountExhausted);
-        var ready = new TurnCycleState([new(A, 10, 100, 0)], FftBiosRandom.Seed(1), ulong.MaxValue, TurnCyclePhase.PickUnit);
+        var ready = new TurnCycleState([new(A, 10, 100, 0)], RandomStateGenerator.Seed(1), ulong.MaxValue, TurnCyclePhase.PickUnit);
         var result = TurnCycle.Advance(ready);
         Assert.True(result.Accepted);
         Assert.Equal(ulong.MaxValue, result.State.Ticks);
@@ -164,7 +165,7 @@ public sealed class TurnCycleTests
     [Fact]
     public void Two_unit_source_sequence_replays_explicit_state_events_and_five_upkeep_draws()
     {
-        var initial = new TurnCycleState([new(A, 10, 0, 0), new(B, 10, 0, 1)], FftBiosRandom.Seed(1));
+        var initial = new TurnCycleState([new(A, 10, 0, 0), new(B, 10, 0, 1)], RandomStateGenerator.Seed(1));
         TurnCycleResult[] first = Replay(initial);
         TurnCycleResult[] second = Replay(initial);
         for (int i = 0; i < first.Length; i++)
@@ -187,9 +188,9 @@ public sealed class TurnCycleTests
         for (int i = 0; i < expectedCt.Length; i++)
             Assert.Equal(expectedCt[i], first[i].State.Units.Select(unit => unit.Ct));
         Assert.Equal(new[] { 0, 100 }, first[^1].State.Units.Select(unit => unit.Ct));
-        Assert.Equal(new FftRandomState(4182499122, 5), first[^1].State.RngState);
+        Assert.Equal(new RandomState(4182499122, 5), first[^1].State.RngState);
         Assert.Equal(0UL, initial.Ticks);
-        Assert.Equal(FftBiosRandom.Seed(1), initial.RngState);
+        Assert.Equal(RandomStateGenerator.Seed(1), initial.RngState);
         Assert.All(initial.Units, unit => { Assert.Equal(0, unit.Ct); Assert.False(unit.HasTurn); });
     }
 
@@ -214,9 +215,9 @@ public sealed class TurnCycleTests
         Assert.Throws<ArgumentException>(() => Pick([new(A, 10, 0, 0), new(A, 10, 0, 1)]));
         Assert.Throws<ArgumentException>(() => Pick([new(A, 10, 0, 0), new(B, 10, 0, 0)]));
         Assert.Throws<ArgumentException>(() => Pick([new(A, 10, 0, 0, true)]));
-        Assert.Throws<ArgumentException>(() => new TurnCycleState([new(A, 10, 0, 0)], FftBiosRandom.Seed(1), phase: TurnCyclePhase.UnitTurn));
-        Assert.Throws<ArgumentException>(() => new TurnCycleState([new(A, 10, 0, 0, true), new(B, 10, 0, 1, true)], FftBiosRandom.Seed(1), phase: TurnCyclePhase.UnitTurn));
-        Assert.Throws<ArgumentOutOfRangeException>(() => new TurnCycleState([new(A, 10, 0, 0)], FftBiosRandom.Seed(1), phase: (TurnCyclePhase)999));
+        Assert.Throws<ArgumentException>(() => new TurnCycleState([new(A, 10, 0, 0)], RandomStateGenerator.Seed(1), phase: TurnCyclePhase.UnitTurn));
+        Assert.Throws<ArgumentException>(() => new TurnCycleState([new(A, 10, 0, 0, true), new(B, 10, 0, 1, true)], RandomStateGenerator.Seed(1), phase: TurnCyclePhase.UnitTurn));
+        Assert.Throws<ArgumentOutOfRangeException>(() => new TurnCycleState([new(A, 10, 0, 0)], RandomStateGenerator.Seed(1), phase: (TurnCyclePhase)999));
         var list = new List<TurnUnitState> { new(A, 10, 0, 0) };
         var state = Pick(list);
         list.Clear();
@@ -244,7 +245,7 @@ public sealed class TurnCycleTests
         void Step(BattleUnitId? id = null, TurnCommandKind kind = default)
         {
             TurnUnitState[] before = state.Units.ToArray();
-            FftRandomState rngBefore = state.RngState;
+            RandomState rngBefore = state.RngState;
             TurnCycleResult result = id is { } unit ? TurnCycle.Apply(state, new(unit, kind)) : TurnCycle.Advance(state);
             Assert.True(result.Accepted);
             Assert.Equal(before, state.Units.ToArray());
@@ -256,8 +257,8 @@ public sealed class TurnCycleTests
     }
 
     private static TurnCycleState Active() => new([new(A, 10, 5, 0, true), new(B, 10, 10, 1)],
-        new FftRandomState(0xfedcba98, 123), 456, TurnCyclePhase.UnitTurn);
-    private static TurnCycleState Pick(IEnumerable<TurnUnitState> units) => new(units, FftBiosRandom.Seed(1), phase: TurnCyclePhase.PickUnit);
+        new RandomState(0xfedcba98, 123), 456, TurnCyclePhase.UnitTurn);
+    private static TurnCycleState Pick(IEnumerable<TurnUnitState> units) => new(units, RandomStateGenerator.Seed(1), phase: TurnCyclePhase.PickUnit);
     private static void AssertRejected(TurnCycleState input, TurnCycleRejection rejection) =>
         AssertRejected(input, TurnCycle.Apply(input, new(A, TurnCommandKind.Wait)), rejection);
     private static void AssertRejected(TurnCycleState input, TurnCycleResult result, TurnCycleRejection rejection)

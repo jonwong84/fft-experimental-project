@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 using System.Text.Json;
 using Xunit;
@@ -10,7 +11,7 @@ public sealed class SwordAiRefreshTests
     private static readonly BattleUnitId A = new("sample:unit/a"), B = new("sample:unit/b");
     private static readonly TerrainSurfaceId Ground = new("sample:terrain/ordinary-ground");
     private static readonly AssetId Weapon = new("sample:item/plain-sword");
-    private static readonly FftRandomState Decision = new(1, 7), LiveRng = new(57, 100);
+    private static readonly RandomState Decision = new(1, 7), LiveRng = new(57, 100);
     private static readonly SwordAiCandidateProfile Candidate = new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 19)]);
     private static readonly AiScoreProfile Score = new([new(A, AiScoreFacts.ClosedProfile), new(B, AiScoreFacts.ClosedProfile)]);
     private static readonly SwordAiRefreshProfile Profile = new(true, true, true);
@@ -34,10 +35,10 @@ public sealed class SwordAiRefreshTests
         var state = State(ct: actor.GetProperty("ct").GetInt32(), peerCt: peer.GetProperty("ct").GetInt32(),
             speed: actor.GetProperty("speed").GetInt32(), peerSpeed: peer.GetProperty("speed").GetInt32(),
             ticks: input.GetProperty("ticks").GetUInt64(), reverse: true);
-        var rng = new FftRandomState(input.GetProperty("word").GetUInt32(), input.GetProperty("count").GetUInt64());
+        var rng = new RandomState(input.GetProperty("word").GetUInt32(), input.GetProperty("count").GetUInt64());
         var before = Snapshot(state); var result = Evaluate(state, rng: rng);
         Assert.Equal(before, Snapshot(state));
-        Assert.Equal(new FftRandomState(expected.GetProperty("word").GetUInt32(), expected.GetProperty("count").GetUInt64()), result.RngState);
+        Assert.Equal(new RandomState(expected.GetProperty("word").GetUInt32(), expected.GetProperty("count").GetUInt64()), result.RngState);
         if (!expected.GetProperty("accepted").GetBoolean())
         {
             Atomic(result, id.StartsWith("draw-", StringComparison.Ordinal)
@@ -96,8 +97,8 @@ public sealed class SwordAiRefreshTests
                 policies: Policies.Reverse().ToImmutableArray())));
             var outcome = Success(result);
             Assert.Equal(second ? A : B, outcome.RefreshedUnits.Single(u => u.Enemy).UnitId);
-            Assert.Equal(new FftRandomState(1103527590, 8), result.RngState);
-            Assert.Equal(new FftBiosRandom().Next(result.RngState).State, Evaluate(state, second: second, rng: result.RngState).RngState);
+            Assert.Equal(new RandomState(1103527590, 8), result.RngState);
+            Assert.Equal(new RandomStateGenerator().Next(result.RngState).State, Evaluate(state, second: second, rng: result.RngState).RngState);
             Assert.Equal(before, Snapshot(state));
             Assert.Equal(LiveRng, state.TurnBattle.Battle.RngState); Assert.Equal(LiveRng, state.TurnBattle.Turns.RngState);
             foreach (var unit in outcome.Units)
@@ -151,14 +152,14 @@ public sealed class SwordAiRefreshTests
     }
 
     private static SwordAiRefreshResult Evaluate(AttackBattleSnapshot state, bool second = false,
-        FftRandomState? rng = null, SwordAiRefreshProfile? profile = null, ImmutableArray<SwordAiRefreshPolicy>? policies = null) =>
+        RandomState? rng = null, SwordAiRefreshProfile? profile = null, ImmutableArray<SwordAiRefreshPolicy>? policies = null) =>
         SwordAiRefresh.Evaluate(state, new(second ? B : A, second ? A : B, policies ?? Policies), Candidate, Score, profile ?? Profile, rng ?? Decision);
     private static SwordAiRefreshOutcome Success(SwordAiRefreshResult result)
     {
         Assert.True(result.Accepted); Assert.Equal(SwordAiRefreshRejection.None, result.Rejection);
         return Assert.IsType<SwordAiRefreshOutcome>(result.Outcome);
     }
-    private static void Atomic(SwordAiRefreshResult result, SwordAiRefreshRejection reason, FftRandomState? rng = null)
+    private static void Atomic(SwordAiRefreshResult result, SwordAiRefreshRejection reason, RandomState? rng = null)
     {
         Assert.False(result.Accepted); Assert.Equal(reason, result.Rejection);
         Assert.Null(result.Outcome); Assert.Equal(rng ?? Decision, result.RngState);

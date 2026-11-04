@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -5,7 +6,7 @@ namespace Zodiac.Framework.Ai;
 /// <summary>No score for rejected or NotValuable inputs. A retained projection is fresh from this invocation.</summary>
 /// <remarks>The score stage adds no RNG progress; the complete wrapper returns the projection's stream verbatim.</remarks>
 public sealed record SwordAiScoringResult(AiScoringDisposition Disposition, AiScoringRejection Rejection,
-    SwordAiCandidateResult? Projection, AiCandidateScore? Score, FftRandomState RngState);
+    SwordAiCandidateResult? Projection, AiCandidateScore? Score, RandomState RngState);
 
 /// <summary>Pure opt-in absolute state scoring of one freshly projected ordinary sword candidate.</summary>
 /// <remarks>
@@ -16,7 +17,7 @@ public static class SwordAiCandidateScoring
 {
     public static SwordAiScoringResult Evaluate(AttackBattleSnapshot state, SwordAiCandidate candidate,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
-        FftRandomState decisionRng)
+        RandomState decisionRng)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(candidate);

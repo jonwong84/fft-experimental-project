@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Xunit;
 
@@ -114,7 +115,7 @@ public sealed class FacingMoveDecisionTests
     public void Invalid_intent_RNG_or_authority_never_publishes_the_staged_session()
     {
         var state = Active(); var before = Snapshot(state); var rng = state.Battle.TurnBattle.Turns.RngState;
-        foreach (var bad in new[] { new FftRandomState(rng.Value ^ 1, rng.DrawCount), new FftRandomState(rng.Value, rng.DrawCount - 1) })
+        foreach (var bad in new[] { new RandomState(rng.Value ^ 1, rng.DrawCount), new RandomState(rng.Value, rng.DrawCount - 1) })
             Atomic(state, FacingMoveDecisionBattle.ExecuteMove(state, A, c =>
                 c.PrepareMoveThenWait(new(A, Destination), Profile, new FacingChoice.KeepCurrent(), bad, "bad")), FacingMoveRejection.InvalidRandomProgress);
         Atomic(state, FacingMoveDecisionBattle.ExecuteMove(state, A, c =>
@@ -145,14 +146,14 @@ public sealed class FacingMoveDecisionTests
     private static void Atomic(FacingTurnState state, FacingMoveResult<string> result, FacingMoveRejection reason)
     { Assert.False(result.Accepted); Assert.Equal(reason, result.Rejection); Assert.Same(state, result.State); Assert.Empty(result.Events);
         Assert.Null(result.Path); Assert.Null(result.Continuation); Assert.Null(result.Diagnostic); }
-    private static FftRandomState Draw(FftRandomState state, int count)
-    { for (int i = 0; i < count; i++) state = new FftBiosRandom().Next(state).State; return state; }
+    private static RandomState Draw(RandomState state, int count)
+    { for (int i = 0; i < count; i++) state = new RandomStateGenerator().Next(state).State; return state; }
     private static string Snapshot(FacingTurnState state) => JsonSerializer.Serialize(new { state.Revision, state.Battle.Combatants,
         state.Battle.TurnBattle.Turns, state.Battle.TurnBattle.Battle.RngState,
         Bodies = state.Battle.TurnBattle.Battle.Units.Select(u => new { u.Id, u.Position, u.HasMoved }) });
     private static FacingTurnState Active(ulong count = 7, TilePosition? enemy = null)
     {
-        var rng = new FftRandomState(1, count - 1);
+        var rng = new RandomState(1, count - 1);
         var movement = new UnitMovementProfile(3, 0, 6, UnitMovementMode.Normal, UnitMovementTraits.None,
             [KeyValuePair.Create(Ground, new TerrainMovementCost(1))]);
         var map = new BattleMapDefinition(5, 4, 1, Enumerable.Repeat(new BattleTile(Ground, 10), 20).ToArray());

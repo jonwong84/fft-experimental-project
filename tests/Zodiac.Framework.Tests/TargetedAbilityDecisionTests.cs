@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Xunit;
 
@@ -20,14 +21,14 @@ public sealed class TargetedAbilityDecisionTests
             var state = Ready(pa: pa, evade: evade); string before = Snapshot(state); int calls = 0;
             var result = FacingDecisionBattle.Execute(state, A, context => {
                 calls++; Assert.Same(state.Battle, context.Battle);
-                var planned = PlanRng(context.RngState); Assert.Equal(new FftRandomState(3210001534, 16), planned);
+                var planned = PlanRng(context.RngState); Assert.Equal(new RandomState(3210001534, 16), planned);
                 return context.PrepareTargetedAbility(new(A, Stone, B), Profile(), planned, "fresh");
             });
             Assert.True(result.Accepted); Assert.Equal(1, calls); Assert.Equal("fresh", result.Diagnostic);
             Assert.Equal(new ThrowStoneResolvedEvent(A, Stone, B, hit, damage, pushed), Assert.Single(result.Events.OfType<ThrowStoneResolvedEvent>()));
             Assert.Equal(50 - damage, result.State.Battle.Combatants.Single(u => u.UnitId == B).Hp);
             Assert.Equal(new TilePosition(pushed ? 7 : 6, 1, 0), Position(result.State, B));
-            Assert.Equal(new FftRandomState(word, count), result.State.Battle.TurnBattle.Turns.RngState);
+            Assert.Equal(new RandomState(word, count), result.State.Battle.TurnBattle.Turns.RngState);
             Assert.Equal(result.State.Battle.TurnBattle.Turns.RngState, result.State.Battle.TurnBattle.Battle.RngState);
             Assert.Equal(state.Revision + 1, result.State.Revision); Assert.Null(result.State.PendingFacing);
             var actor = result.State.Battle.TurnBattle.Turns.Units.Single(u => u.Id == A);
@@ -50,7 +51,7 @@ public sealed class TargetedAbilityDecisionTests
             Assert.Same(result.State.Battle, receipt.ExpectedBattle); Assert.Equal(result.State.Revision, receipt.Revision);
             Assert.Equal(hp - 5, receipt.ExpectedBattle.Combatants.Single(u => u.UnitId == B).Hp);
             Assert.Equal(new TilePosition(pushed ? 7 : targetX, 1, 0), Position(result.State, B));
-            Assert.Equal(new FftRandomState(3297241969, 23), result.State.Battle.TurnBattle.Turns.RngState);
+            Assert.Equal(new RandomState(3297241969, 23), result.State.Battle.TurnBattle.Turns.RngState);
             Assert.Null(result.State.Battle.TurnBattle.Turns.ActiveUnitId);
             Assert.Equal(15, result.State.Battle.TurnBattle.Turns.Units.Single(u => u.Id == A).Ct);
             Assert.Equal(hp == 5, result.State.Battle.Combatants.Single(u => u.UnitId == B).Status == AttackUnitStatus.Dead);
@@ -171,8 +172,8 @@ public sealed class TargetedAbilityDecisionTests
 
     internal static TargetedAbilityBattleProfile Profile(bool granted = true, TerrainSurfaceId? ground = null) =>
         new(ground ?? Ground, [new(Stone)], [new(A, granted ? [Stone] : [], 0), new(B, granted ? [Stone] : [], 0)]);
-    internal static FftRandomState PlanRng(FftRandomState rng)
-    { for (int i = 0; i < 8; i++) rng = new FftBiosRandom().Next(rng).State; return rng; }
+    internal static RandomState PlanRng(RandomState rng)
+    { for (int i = 0; i < 8; i++) rng = new RandomStateGenerator().Next(rng).State; return rng; }
     private static FacingDecisionResult<string> Cast(FacingTurnState state, UseTargetedAbilityCommand? command = null,
         TargetedAbilityBattleProfile? profile = null)
     {
@@ -195,7 +196,7 @@ public sealed class TargetedAbilityDecisionTests
     internal static FacingTurnState Ready(ulong count = 7, int pa = 5, int evade = 0, int hp = 50,
         TilePosition? target = null, bool second = false, bool reverse = false)
     {
-        var actor = second ? B : A; var enemy = second ? A : B; var rng = new FftRandomState(1, count);
+        var actor = second ? B : A; var enemy = second ? A : B; var rng = new RandomState(1, count);
         var map = new BattleMapDefinition(8, 8, 1, Enumerable.Repeat(new BattleTile(Ground, 10), 64).ToArray());
         var movement = new UnitMovementProfile(3, 0, 6, UnitMovementMode.Normal, UnitMovementTraits.None,
             [KeyValuePair.Create(Ground, new TerrainMovementCost(1))]);

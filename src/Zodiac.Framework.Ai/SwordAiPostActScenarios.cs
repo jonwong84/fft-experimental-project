@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 namespace Zodiac.Framework.Ai;
 
 /// <summary>Remaining source facts; fresh preparation derives focus, reach, cache and restored geometry.</summary>
@@ -12,7 +13,7 @@ public sealed record SwordAiPostActScenarioFailure(SwordAiPostActScenarioRejecti
 public sealed record SwordAiPostActScenarioOutcome(SwordAiPreparationOutcome Preparation,
     SwordAiMovementScenarioOutcome MovementScenario, SwordAiOutOfReachScenarioOutcome? OutOfReach);
 public sealed record SwordAiPostActScenarioResult(bool Accepted, SwordAiPostActScenarioFailure? Failure,
-    SwordAiPostActScenarioOutcome? Outcome, FftRandomState RngState);
+    SwordAiPostActScenarioOutcome? Outcome, RandomState RngState);
 
 /// <summary>Own fresh post-ACT preparation and source-ordered movement scoring; no Attack scan or lottery.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-176/181. No cached outcomes or command authority.</remarks>
@@ -21,21 +22,21 @@ public static class SwordAiPostActScenarios
     public static SwordAiPostActScenarioResult EvaluateInReach(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
-        SwordAiScenarioTeam team, SwordAiPostActScenarioProfile scenarioProfile, FftRandomState decisionRng)
+        SwordAiScenarioTeam team, SwordAiPostActScenarioProfile scenarioProfile, RandomState decisionRng)
         => EvaluateCore(state, request, candidateProfile, scoreProfile, refreshProfile, preparationProfile, team,
             scenarioProfile, decisionRng, outOfReach: false);
 
     public static SwordAiPostActScenarioResult EvaluateOutOfReach(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
-        SwordAiScenarioTeam team, SwordAiPostActScenarioProfile scenarioProfile, FftRandomState decisionRng)
+        SwordAiScenarioTeam team, SwordAiPostActScenarioProfile scenarioProfile, RandomState decisionRng)
         => EvaluateCore(state, request, candidateProfile, scoreProfile, refreshProfile, preparationProfile, team,
             scenarioProfile, decisionRng, outOfReach: true);
 
     private static SwordAiPostActScenarioResult EvaluateCore(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
-        SwordAiScenarioTeam team, SwordAiPostActScenarioProfile scenarioProfile, FftRandomState decisionRng, bool outOfReach)
+        SwordAiScenarioTeam team, SwordAiPostActScenarioProfile scenarioProfile, RandomState decisionRng, bool outOfReach)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(request);

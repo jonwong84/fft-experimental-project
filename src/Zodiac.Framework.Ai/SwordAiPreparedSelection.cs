@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 namespace Zodiac.Framework.Ai;
 
 /// <summary>Remaining policy assertions; fresh cache, focus, active-target and ranking-entry facts are derived.</summary>
@@ -17,7 +18,7 @@ public sealed record SwordAiPreparedSelectionOutcome(SwordAiPreparationOutcome P
     public SwordAiOutOfReachSelectionOutcome? OutOfReach { get; init; }
 }
 public sealed record SwordAiPreparedSelectionResult(bool Accepted, SwordAiPreparedSelectionFailure? Failure,
-    SwordAiPreparedSelectionOutcome? Outcome, FftRandomState RngState);
+    SwordAiPreparedSelectionOutcome? Outcome, RandomState RngState);
 
 /// <summary>Fresh pure ordinary NonBlue preparation and explicit in/out-of-reach selection on the original live snapshot.</summary>
 /// <remarks>
@@ -30,7 +31,7 @@ public static class SwordAiPreparedSelection
     public static SwordAiPreparedSelectionResult Evaluate(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
-        SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, FftRandomState decisionRng)
+        SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, RandomState decisionRng)
         => EvaluateCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
             team, selectionProfile, decisionRng, outOfReach: false, alreadyMoved: true);
 
@@ -38,7 +39,7 @@ public static class SwordAiPreparedSelection
     public static SwordAiPreparedSelectionResult EvaluateOutOfReach(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
-        SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, FftRandomState decisionRng)
+        SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, RandomState decisionRng)
         => EvaluateCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
             team, selectionProfile, decisionRng, outOfReach: true, alreadyMoved: true);
 
@@ -46,7 +47,7 @@ public static class SwordAiPreparedSelection
     public static SwordAiPreparedSelectionResult EvaluateUnmoved(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
-        SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, FftRandomState decisionRng)
+        SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, RandomState decisionRng)
         => EvaluateCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
             team, selectionProfile, decisionRng, outOfReach: false, alreadyMoved: false);
 
@@ -54,14 +55,14 @@ public static class SwordAiPreparedSelection
     public static SwordAiPreparedSelectionResult EvaluateOutOfReachUnmoved(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
-        SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, FftRandomState decisionRng)
+        SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, RandomState decisionRng)
         => EvaluateCore(state, request, weapon, candidateProfile, scoreProfile, refreshProfile, preparationProfile,
             team, selectionProfile, decisionRng, outOfReach: true, alreadyMoved: false);
 
     private static SwordAiPreparedSelectionResult EvaluateCore(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiRefreshProfile refreshProfile, SwordAiPreparationProfile preparationProfile,
-        SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, FftRandomState decisionRng,
+        SwordAiScenarioTeam team, SwordAiPreparedSelectionProfile selectionProfile, RandomState decisionRng,
         bool outOfReach, bool alreadyMoved)
     {
         ArgumentNullException.ThrowIfNull(state);

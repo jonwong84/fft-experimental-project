@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.SwordAiPreparationTestData;
 
@@ -19,7 +20,7 @@ public sealed class SwordAiPreparedMoveFirstOutOfReachTests
             var moved = Start(state); var o = Success(moved);
             var prep = Assert.IsType<SwordAiPreparationOutcome>(o.Preparation);
             var detail = Assert.IsType<SwordAiOutOfReachSelectionOutcome>(o.OutOfReach);
-            Assert.Equal(new FftRandomState(word, 18), o.DecisionRng);
+            Assert.Equal(new RandomState(word, 18), o.DecisionRng);
             Assert.Equal(55, prep.Refresh.TurnEndCt); Assert.Single(prep.Refresh.UpkeepPicks);
             Assert.Equal(4, prep.ReachableOrigins.Length); Assert.Single(o.Decision.MovementScenario.Movement);
             Assert.Equal(raw, detail.MovementScenario.ReachAdjustment!.Raw);

@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -24,7 +25,7 @@ public sealed record SwordAiMovementBaselineOutcome(BattleUnitId ActorId, Battle
 
 /// <summary>Rejected queries return the incoming decision RNG and no partial outcome.</summary>
 public sealed record SwordAiMovementBaselineResult(bool Accepted, SwordAiMovementBaselineRejection Rejection,
-    SwordAiMovementBaselineOutcome? Outcome, FftRandomState RngState);
+    SwordAiMovementBaselineOutcome? Outcome, RandomState RngState);
 
 /// <summary>Fresh move-only simulation/absolute scoring of one certified original baseline tile.</summary>
 /// <remarks>
@@ -36,19 +37,19 @@ public static class SwordAiMovementBaseline
 {
     public static SwordAiMovementBaselineResult Evaluate(AttackBattleSnapshot state, SwordAiMovementBaselineRequest request,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
-        SwordAiMovementBaselineProfile baselineProfile, FftRandomState decisionRng)
+        SwordAiMovementBaselineProfile baselineProfile, RandomState decisionRng)
         => EvaluateCore(state, request, candidateProfile, scoreProfile, baselineProfile, decisionRng, alreadyActed: false);
 
     /// <summary>Fresh post-ACT tile score with Move unused; staying refunds Move only, moving refunds neither choice.</summary>
     /// <remarks>Uses actual post-ACT state/RNG, retaining the same source-cell/geometry/scoring certificates.</remarks>
     public static SwordAiMovementBaselineResult EvaluateAfterAct(AttackBattleSnapshot state, SwordAiMovementBaselineRequest request,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
-        SwordAiMovementBaselineProfile baselineProfile, FftRandomState decisionRng)
+        SwordAiMovementBaselineProfile baselineProfile, RandomState decisionRng)
         => EvaluateCore(state, request, candidateProfile, scoreProfile, baselineProfile, decisionRng, alreadyActed: true);
 
     private static SwordAiMovementBaselineResult EvaluateCore(AttackBattleSnapshot state, SwordAiMovementBaselineRequest request,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
-        SwordAiMovementBaselineProfile baselineProfile, FftRandomState decisionRng, bool alreadyActed)
+        SwordAiMovementBaselineProfile baselineProfile, RandomState decisionRng, bool alreadyActed)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(request);
@@ -95,7 +96,7 @@ public static class SwordAiMovementBaseline
 
     // The composition owns source-mask/context admission. Non-D0 cells do not assert they are scenario-0 destinations.
     internal static SwordAiMovementBaselineResult EvaluateFreshTile(AttackBattleSnapshot state, SwordAiMovementBaselineRequest request,
-        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, FftRandomState decisionRng,
+        SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, RandomState decisionRng,
         bool alreadyActed = false)
     {
         SwordAiMovementBaselineResult Reject(SwordAiMovementBaselineRejection reason) => new(false, reason, null, decisionRng);

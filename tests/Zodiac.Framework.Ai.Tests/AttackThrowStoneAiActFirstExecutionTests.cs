@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.AttackThrowStoneAiTestData;
@@ -16,12 +17,12 @@ public sealed class AttackThrowStoneAiActFirstExecutionTests
     public void Fresh_Attack_executes_at_original_origin_and_diagnostic_D1_grants_no_future_Move()
     {
         var state = Ready(); string before = Snapshot(state.Battle); var result = Start(state, power: 2); var o = Success(result);
-        Assert.Equal(new FftRandomState(3397090333, 43), o.DecisionRng);
+        Assert.Equal(new RandomState(3397090333, 43), o.DecisionRng);
         Assert.Equal(AttackThrowStoneAiPlanKind.Attack, o.Decision.Selection.Plan.Kind); Assert.True(o.Decision.Selection.Plan.ActBeforeMove);
         Assert.Equal(new TilePosition(1, 4, 0), o.Decision.Selection.Plan.Destination);
         Assert.Equal(new AttackResolvedEvent(A, B, true, false, 10), Assert.Single(result.Events.OfType<AttackResolvedEvent>()));
         Assert.Empty(result.Events.OfType<ThrowStoneResolvedEvent>());
-        Assert.Equal(new FftRandomState(995405759, 49), result.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(995405759, 49), result.State.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(40, result.State.Battle.Combatants.Single(u => u.UnitId == B).Hp); OpenMove(state, result.State);
         Assert.Equal(Origin, Position(result.State, A)); Assert.NotEqual(o.Decision.Selection.Plan.Destination, Position(result.State, A));
         var pure = AttackThrowStoneAiPreparedSelection.Evaluate(state.Battle, new(FreshRequest(), Stone, new(Sword, 2)), SelectionConfiguration(Selection),
@@ -43,10 +44,10 @@ public sealed class AttackThrowStoneAiActFirstExecutionTests
         {
             var state = Ready(move: 0, evade: evade, entryWord: seed); string before = Snapshot(state.Battle);
             var result = Start(state); var o = Success(result); Assert.Equal(AttackThrowStoneAiPlanKind.ThrowStone, o.Decision.Selection.Plan.Kind);
-            Assert.Equal(new FftRandomState(word, count), o.DecisionRng);
+            Assert.Equal(new RandomState(word, count), o.DecisionRng);
             Assert.Equal(new ThrowStoneResolvedEvent(A, Stone, B, hit, damage, push), Assert.Single(result.Events.OfType<ThrowStoneResolvedEvent>()));
             Assert.Empty(result.Events.OfType<AttackResolvedEvent>());
-            Assert.Equal(new FftRandomState(finalWord, finalCount), result.State.Battle.TurnBattle.Turns.RngState);
+            Assert.Equal(new RandomState(finalWord, finalCount), result.State.Battle.TurnBattle.Turns.RngState);
             Assert.Equal(50 - damage, result.State.Battle.Combatants.Single(u => u.UnitId == B).Hp);
             Assert.Equal(new TilePosition(push ? 3 : 2, 1, 0), Position(result.State, B)); OpenMove(state, result.State);
             Assert.Equal(Origin, Position(result.State, A)); Assert.Equal(before, Snapshot(state.Battle));
@@ -58,11 +59,11 @@ public sealed class AttackThrowStoneAiActFirstExecutionTests
     {
         var state = Ready(move: 0, hp: 10); var result = Start(state); var o = Success(result);
         Assert.Equal(AttackThrowStoneAiPlanKind.ThrowStone, o.Decision.Selection.Plan.Kind);
-        Assert.Equal(new FftRandomState(2937909499, 21), o.DecisionRng);
+        Assert.Equal(new RandomState(2937909499, 21), o.DecisionRng);
         Assert.Equal(new ThrowStoneResolvedEvent(A, Stone, B, true, 10, false), Assert.Single(result.Events.OfType<ThrowStoneResolvedEvent>()));
         Assert.Equal(AttackUnitStatus.Dead, result.State.Battle.Combatants.Single(u => u.UnitId == B).Status);
         Assert.Equal(1, result.State.Battle.Combatants.Single(u => u.UnitId == B).KoCount);
-        Assert.Equal(new FftRandomState(3914758370, 28), result.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(3914758370, 28), result.State.Battle.TurnBattle.Turns.RngState);
         OpenMove(state, result.State); Assert.Equal(new TilePosition(2, 1, 0), Position(result.State, B));
         Atomic(result.State, Start(result.State), AttackThrowStoneAiActFirstRejection.UnavailableChoices);
     }

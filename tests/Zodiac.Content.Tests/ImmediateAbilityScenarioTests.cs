@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Zodiac.Content.BattleSetup;
@@ -43,7 +44,7 @@ public sealed class ImmediateAbilityScenarioTests
         Assert.Equal(26, result.State.Battle.Combatants[1].Hp);
         Assert.Equal(rng.DrawCount + 6, result.State.Battle.TurnBattle.Turns.RngState.DrawCount);
         var independent = rng;
-        for (int i = 0; i < 6; i++) independent = new FftBiosRandom().Next(independent).State;
+        for (int i = 0; i < 6; i++) independent = new RandomStateGenerator().Next(independent).State;
         Assert.Equal(independent, result.State.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(6, result.State.Battle.Combatants[0].PhysicalAttack);
         // A fresh unboosted actor with the same RNG/turn/geometry uses PA5 => damage20.
@@ -293,7 +294,7 @@ public sealed class ImmediateAbilityScenarioTests
         var map = new BattleMapDefinition(2, 2, 1, Enumerable.Repeat(new BattleTile(surface, 10), 4).ToArray());
         return BaseJobBattleSetup.Create(new(metadata.Jobs, metadata.Skillsets, metadata.Abilities), map,
             [new(A, metadata.Jobs[0].Id, new(0, 0, 0), 6, [new(surface, new(1))]),
-             new(B, metadata.Jobs[0].Id, new(1, 1, 0), 6, [new(surface, new(1))])], FftBiosRandom.Seed(1));
+             new(B, metadata.Jobs[0].Id, new(1, 1, 0), 6, [new(surface, new(1))])], RandomStateGenerator.Seed(1));
     }
 
     private static TwoUnitBattleState Accepted(TwoUnitBattleState state, TwoUnitBattleCommand command)

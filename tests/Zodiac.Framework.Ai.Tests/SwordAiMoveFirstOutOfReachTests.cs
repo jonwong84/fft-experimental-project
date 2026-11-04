@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.SwordAiPreparationTestData;
 
@@ -32,7 +33,7 @@ public sealed class SwordAiMoveFirstOutOfReachTests
             Assert.Equal(8, o.Decision.Selection.Lottery.Length);
             Assert.Equal(SwordAiSelectedPlanKind.MoveOnly, o.Decision.Selection.Plan.Kind);
             Assert.Equal(SwordAiWaitFacingHint.ChooseAtWait, o.Decision.Selection.Plan.WaitFacingHint);
-            Assert.Equal(new FftRandomState(vector.Word, vector.Count), o.DecisionRng);
+            Assert.Equal(new RandomState(vector.Word, vector.Count), o.DecisionRng);
             Assert.Equal(new TilePosition(3, 1, 0), moved.Path!.Tiles[^1]);
             Assert.Equal(BattleFacing.West, moved.Path.FinalHeading);
             Assert.Equal(state.Revision + 1, moved.State.Revision);

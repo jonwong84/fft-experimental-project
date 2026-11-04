@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.SwordAiPreparationTestData;
 
@@ -15,9 +16,9 @@ public sealed class SwordAiPreparedExecutionTests
     {
         var state = Ready(); var before = Snapshot(state.Battle); var result = Execute(state); var o = Success(result);
         Assert.NotNull(o.Preparation); Assert.Equal(16838u, Assert.Single(o.Preparation.Refresh.UpkeepPicks).RawRoll);
-        Assert.Equal(new FftRandomState(2111915288, 22), o.DecisionRng);
+        Assert.Equal(new RandomState(2111915288, 22), o.DecisionRng);
         Assert.Equal(8, o.Decision.Selection.Lottery.Length);
-        Assert.Equal(new FftRandomState(3794901700, 26), result.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(3794901700, 26), result.State.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(new AttackResolvedEvent(A, B, false, false, 0), Assert.Single(result.Events.OfType<AttackResolvedEvent>()));
         Assert.Equal(50, result.State.Battle.Combatants.Single(u => u.UnitId == B).Hp);
         Assert.Equal(25, o.Decision.Selection.Plan.Attack!.Evaluation.Projection!.Outcome!.Units.Single(u => u.UnitId == B).Hp);
@@ -33,7 +34,7 @@ public sealed class SwordAiPreparedExecutionTests
     {
         var state = Ready(evade: 0); var attack = Execute(state); var o = Success(attack);
         Assert.Equal(SwordAiExecutedCommand.Attack, o.Command); Receipt(state, attack.State);
-        Assert.Equal(new FftRandomState(2633739833, 15), o.DecisionRng);
+        Assert.Equal(new RandomState(2633739833, 15), o.DecisionRng);
         Assert.True(Assert.Single(attack.Events.OfType<AttackResolvedEvent>()).Hit);
         Assert.Equal(15, attack.State.Battle.TurnBattle.Turns.Units.Single(u => u.Id == A).Ct);
         var wait = Execute(state, power: 0); var fallback = Success(wait);

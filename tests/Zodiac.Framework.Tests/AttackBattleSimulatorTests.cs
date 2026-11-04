@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 
 namespace Zodiac.Framework.Tests;
@@ -24,14 +25,14 @@ public sealed class AttackBattleSimulatorTests
         Assert.Equal(new AttackResolvedEvent(A, B, hit, critical, damage), actual.Events.OfType<AttackResolvedEvent>().Single());
         var target = actual.State.Combatants[1];
         Assert.Equal(hp, target.Hp); Assert.Equal(status, target.Status);
-        Assert.Equal(new FftRandomState(word, draws), actual.State.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(word, draws), actual.State.TurnBattle.Turns.RngState);
         Assert.Equal(actual.State.TurnBattle.Turns.RngState, actual.State.TurnBattle.Battle.RngState);
         Assert.True(actual.State.TurnBattle.Turns.Units[0].ActionTaken);
         Assert.True(actual.State.TurnBattle.Turns.Units[0].HasTurn);
         Assert.Equal(BattleFacing.South, actual.State.Combatants[0].Facing);
         Assert.Equal(BattleFacing.South, before.Combatants[0].Facing);
         Assert.Equal(50, before.Combatants[1].Hp);
-        Assert.Equal(new FftRandomState(seed, 0), before.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(seed, 0), before.TurnBattle.Turns.RngState);
         Assert.Equal(actual.Events.ToArray(), Attack(before).Events.ToArray());
     }
 
@@ -95,7 +96,7 @@ public sealed class AttackBattleSimulatorTests
         Assert.True(actual.Accepted);
         Assert.False(actual.Events.OfType<AttackResolvedEvent>().Single().Hit);
         Assert.Equal(BattleFacing.South, actual.State.Combatants[0].Facing);
-        Assert.Equal(new FftRandomState(2162199151, 4), actual.State.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(2162199151, 4), actual.State.TurnBattle.Turns.RngState);
     }
 
     [Fact]
@@ -212,7 +213,7 @@ public sealed class AttackBattleSimulatorTests
         int koCount = 0, int pa = 5, int classEvade = 10, bool moved = false, int ct = 0, bool acted = false,
         bool dead = false, TilePosition? targetPosition = null, int width = 3, int depth = 3, bool unarmed = false, bool water = false, ulong count = 0)
     {
-        var rng = new FftRandomState(seed, count);
+        var rng = new RandomState(seed, count);
         var tiles = Enumerable.Repeat(new BattleTile(10), width * depth).ToArray();
         if (water) tiles[0] = new BattleTile(new TerrainSurfaceId("sample:terrain/ground"), 10, 0, 1, default);
         var map = new BattleMapDefinition(width, depth, 1, tiles);

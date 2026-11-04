@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Zodiac.Content.BattleSetup;
 using Zodiac.Content.ContentPackages;
 using Zodiac.Content.Definitions;
@@ -40,7 +41,7 @@ public static class SyntheticAccumulateBattle
         var second = SyntheticTwoUnitBattle.SecondUnitId;
         var surface = new TerrainSurfaceId("sample:terrain/ground");
         var map = new BattleMapDefinition(2, 2, 1, Enumerable.Repeat(new BattleTile(surface, 10), 4).ToArray());
-        var rng = FftBiosRandom.Seed(1);
+        var rng = RandomStateGenerator.Seed(1);
         var setup = BaseJobBattleSetup.Create(new(metadata.Jobs, metadata.Skillsets, metadata.Abilities), map,
             [Placement(first, new(0, 0, 0)), Placement(second, new(1, 1, 0))], rng);
         var turns = new TurnCycleState([new(first, 10, 0, 0), new(second, 10, 0, 1)], rng);

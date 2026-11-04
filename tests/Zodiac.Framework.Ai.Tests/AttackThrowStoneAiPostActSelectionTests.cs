@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.AttackThrowStoneAiTestData;
@@ -18,20 +19,20 @@ public sealed class AttackThrowStoneAiPostActSelectionTests
         // Words are internal RNG state and counts are cumulative. No attack or formula is evaluated during this query.
         var cases = new[] {
             new { Name = "Attack hit / move", State = Act(Ready()).Battle, Outside = false, Power = 2,
-                Destination = new TilePosition(1, 4, 0), ScenarioRng = new FftRandomState(2240736910, 64),
-                FinalRng = new FftRandomState(1223573862, 72), FirstRoll = 31327u, LastRoll = 18670u },
+                Destination = new TilePosition(1, 4, 0), ScenarioRng = new RandomState(2240736910, 64),
+                FinalRng = new RandomState(1223573862, 72), FirstRoll = 31327u, LastRoll = 18670u },
             new { Name = "Stone hit / stay", State = Act(Ready(move: 0), power: 1).Battle, Outside = false, Power = 1,
-                Destination = Origin, ScenarioRng = new FftRandomState(2473755763, 29),
-                FinalRng = new FftRandomState(3834121963, 37), FirstRoll = 20495u, LastRoll = 25736u },
+                Destination = Origin, ScenarioRng = new RandomState(2473755763, 29),
+                FinalRng = new RandomState(3834121963, 37), FirstRoll = 20495u, LastRoll = 25736u },
             new { Name = "Stone miss / stay", State = Act(Ready(move: 0, evade: 75), power: 1).Battle, Outside = false, Power = 1,
-                Destination = Origin, ScenarioRng = new FftRandomState(1969681615, 33),
-                FinalRng = new FftRandomState(1448521415, 41), FirstRoll = 17031u, LastRoll = 22102u },
+                Destination = Origin, ScenarioRng = new RandomState(1969681615, 33),
+                FinalRng = new RandomState(1448521415, 41), FirstRoll = 17031u, LastRoll = 22102u },
             new { Name = "Stone push / stay", State = Act(Ready(move: 0, entryWord: 20), power: 1).Battle, Outside = true, Power = 1,
-                Destination = Origin, ScenarioRng = new FftRandomState(2438815311, 30),
-                FinalRng = new FftRandomState(713082951, 38), FirstRoll = 22423u, LastRoll = 10880u },
+                Destination = Origin, ScenarioRng = new RandomState(2438815311, 30),
+                FinalRng = new RandomState(713082951, 38), FirstRoll = 22423u, LastRoll = 10880u },
             new { Name = "Stone far push / move", State = Pushed(move: 3, originalTargetX: 5), Outside = true, Power = 2,
-                Destination = new TilePosition(3, 2, 0), ScenarioRng = new FftRandomState(2000392299, 34),
-                FinalRng = new FftRandomState(1073193443, 42), FirstRoll = 18463u, LastRoll = 16375u } };
+                Destination = new TilePosition(3, 2, 0), ScenarioRng = new RandomState(2000392299, 34),
+                FinalRng = new RandomState(1073193443, 42), FirstRoll = 18463u, LastRoll = 16375u } };
         foreach (var example in cases)
         {
             string before = Snapshot(example.State);
@@ -57,7 +58,7 @@ public sealed class AttackThrowStoneAiPostActSelectionTests
         Assert.Equal(4, o.Scenarios.TargetDistance); Assert.Null(o.Scenarios.Cells.Single(c => c.Tile == Origin).WrittenPriority);
         Assert.Contains(Origin, o.Scenarios.Scenario1); Assert.Contains(Origin, o.Scenarios.Scenario2);
         Assert.All(o.Scenarios.Preparation.ActorEntries, e => Assert.False(e.Usable));
-        Assert.Equal(new TilePosition(2, 1, 0), o.Plan.Destination); Assert.Equal(new FftRandomState(713082951, 38), result.RngState);
+        Assert.Equal(new TilePosition(2, 1, 0), o.Plan.Destination); Assert.Equal(new RandomState(713082951, 38), result.RngState);
         Assert.False(Config().Selection.ClearDirectTrajectories); // No trajectory certificate is manufactured for skipped actions.
         var noDefend = Config() with { Selection = Config().Selection with { NoDefendSupport = false } };
         Assert.Equal(AttackThrowStoneAiPostActSelectionRejection.UnsupportedProfile,
@@ -126,13 +127,13 @@ public sealed class AttackThrowStoneAiPostActSelectionTests
     private static AttackThrowStoneAiSelectionConfiguration Config() => Configuration() with {
         Selection = Configuration().Selection with { NoDefendSupport = true } };
     private static AttackThrowStoneAiPostActSelectionResult Select(AttackBattleSnapshot state, bool outside = false, int weaponPower = 2,
-        AttackThrowStoneAiSelectionRequest? request = null, AttackThrowStoneAiSelectionConfiguration? configuration = null, FftRandomState? rng = null) =>
+        AttackThrowStoneAiSelectionRequest? request = null, AttackThrowStoneAiSelectionConfiguration? configuration = null, RandomState? rng = null) =>
         outside ? AttackThrowStoneAiPostActSelection.EvaluateOutOfReach(state, request ?? new(FreshRequest(), Stone, new(Sword, weaponPower)),
             configuration ?? Config(), rng ?? state.TurnBattle.Turns.RngState) :
             AttackThrowStoneAiPostActSelection.EvaluateInReach(state, request ?? new(FreshRequest(), Stone, new(Sword, weaponPower)),
                 configuration ?? Config(), rng ?? state.TurnBattle.Turns.RngState);
     private static AttackThrowStoneAiPostActSelectionOutcome Success(AttackThrowStoneAiPostActSelectionResult result)
     { Assert.True(result.Accepted, Serialize(result.Failure)); Assert.Null(result.Failure); return Assert.IsType<AttackThrowStoneAiPostActSelectionOutcome>(result.Outcome); }
-    private static AttackThrowStoneAiPostActSelectionFailure Atomic(AttackBattleSnapshot state, AttackThrowStoneAiPostActSelectionResult result, FftRandomState? rng = null)
+    private static AttackThrowStoneAiPostActSelectionFailure Atomic(AttackBattleSnapshot state, AttackThrowStoneAiPostActSelectionResult result, RandomState? rng = null)
     { Assert.False(result.Accepted); Assert.Null(result.Outcome); Assert.Equal(rng ?? state.TurnBattle.Turns.RngState, result.RngState); return Assert.IsType<AttackThrowStoneAiPostActSelectionFailure>(result.Failure); }
 }

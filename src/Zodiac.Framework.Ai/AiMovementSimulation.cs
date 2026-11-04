@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -9,14 +10,14 @@ public sealed record AiMovementBaselineOutcome(BattleUnitId ActorId, BattleUnitI
     ImmutableArray<AiUpkeepPick> UpkeepPicks, AiCandidateScore Score);
 
 internal sealed record AiMovementSimulationResult(AiSimulationClockRejection Rejection,
-    AiMovementBaselineOutcome? Outcome, FftRandomState RngState);
+    AiMovementBaselineOutcome? Outcome, RandomState RngState);
 
 /// <summary>Shared move-only arithmetic after action-family admission. Never consumes ACT.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-135/189.</remarks>
 internal static class AiMovementSimulation
 {
     internal static AiMovementSimulationResult Evaluate(AttackBattleSnapshot state, BattleUnitId actorId,
-        BattleUnitId targetId, TilePosition destination, ImmutableArray<AiUnitBaseline> baselines, FftRandomState decisionRng)
+        BattleUnitId targetId, TilePosition destination, ImmutableArray<AiUnitBaseline> baselines, RandomState decisionRng)
     {
         var turns = state.TurnBattle.Turns;
         var actorTurn = turns.Units.Single(u => u.Id == actorId);

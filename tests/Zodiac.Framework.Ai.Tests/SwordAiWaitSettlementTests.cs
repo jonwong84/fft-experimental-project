@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Xunit;
 
@@ -209,7 +210,7 @@ public sealed class SwordAiWaitSettlementTests
     private static FacingTurnState Active(int speed = 20, uint seed = 1, ulong draws = 7,
         BattleFacing facing = BattleFacing.West, bool second = false, bool reverse = false, bool wide = false)
     {
-        var actor = second ? B : A; var target = second ? A : B; var rng = new FftRandomState(seed, draws);
+        var actor = second ? B : A; var target = second ? A : B; var rng = new RandomState(seed, draws);
         int width = wide ? 6 : 4, depth = wide ? 5 : 3;
         var map = new BattleMapDefinition(width, depth, 1, Enumerable.Repeat(new BattleTile(Ground, 10), width * depth).ToArray());
         var movement = new UnitMovementProfile(3, 2, 6, UnitMovementMode.Normal, UnitMovementTraits.None,

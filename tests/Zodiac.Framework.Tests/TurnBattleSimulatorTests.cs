@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Zodiac.Framework;
 using Xunit;
 
@@ -119,7 +120,7 @@ public sealed class TurnBattleSimulatorTests
     {
         var original = Initial();
         BattleState battle = original.Battle;
-        if (invalid == "rng") battle = new(battle.Map, battle.Units, new FftRandomState(2, 0));
+        if (invalid == "rng") battle = new(battle.Map, battle.Units, new RandomState(2, 0));
         if (invalid == "missing-rng") battle = new(battle.Map, battle.Units);
         if (invalid == "count") battle = new(battle.Map, battle.Units.Take(1), battle.RngState);
         if (invalid == "ids") battle = new(battle.Map, new[] { battle.Units[0],
@@ -174,7 +175,7 @@ public sealed class TurnBattleSimulatorTests
     private static TurnBattleState Initial()
     {
         var map = new BattleMapDefinition(5, 1, 1, Enumerable.Repeat(new BattleTile(10), 5).ToArray());
-        var rng = FftBiosRandom.Seed(1);
+        var rng = RandomStateGenerator.Seed(1);
         var battle = new BattleState(map, new[] { new BattleUnitState(A, new(0, 0, 0), 2), new(B, new(4, 0, 0), 2) }, rng);
         var turns = new TurnCycleState(new[] { new TurnUnitState(A, 10, 0, 0), new(B, 10, 0, 1) }, rng);
         return new(battle, turns);

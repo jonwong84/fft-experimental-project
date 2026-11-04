@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -19,7 +20,7 @@ public sealed record AttackThrowStoneAiOutOfReachScenarioOutcome(AttackThrowSton
     bool FilterUsedReachableFallback, bool DestinationUsedDistanceFallback);
 /// <summary>Failure exposes reasons only and restores incoming whole-query RNG, including after partial private work.</summary>
 public sealed record AttackThrowStoneAiOutOfReachScenarioResult(bool Accepted, AttackThrowStoneAiScenarioFailure? Failure,
-    AttackThrowStoneAiOutOfReachScenarioOutcome? Outcome, FftRandomState RngState);
+    AttackThrowStoneAiOutOfReachScenarioOutcome? Outcome, RandomState RngState);
 internal sealed record AttackThrowStoneAiOutOfReachScenarioCore(AttackThrowStoneAiOutOfReachScenarioResult Result,
     AiMovementPrefixOutcome? Prefix = null);
 
@@ -32,7 +33,7 @@ public static class AttackThrowStoneAiOutOfReachScenario
         AssetId throwStoneAbilityId, BoundedSwordWeapon? weapon, SwordAiCandidateProfile attackProfile,
         ThrowStoneAiCandidateProfile throwStoneProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
         AttackThrowStoneAiPreparationProfile preparationProfile, AttackThrowStoneAiScenarioProfile scenarioProfile,
-        SwordAiScenarioTeam team, FftRandomState decisionRng) =>
+        SwordAiScenarioTeam team, RandomState decisionRng) =>
         EvaluateFresh(state, request, throwStoneAbilityId, weapon, attackProfile, throwStoneProfile, scoreProfile, refreshProfile,
             preparationProfile, scenarioProfile, team, decisionRng).Result;
 
@@ -41,7 +42,7 @@ public static class AttackThrowStoneAiOutOfReachScenario
         AssetId throwStoneAbilityId, BoundedSwordWeapon? weapon, SwordAiCandidateProfile attackProfile,
         ThrowStoneAiCandidateProfile throwStoneProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
         AttackThrowStoneAiPreparationProfile preparationProfile, AttackThrowStoneAiScenarioProfile scenarioProfile,
-        SwordAiScenarioTeam team, FftRandomState decisionRng)
+        SwordAiScenarioTeam team, RandomState decisionRng)
     {
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(request); ArgumentNullException.ThrowIfNull(attackProfile);
         ArgumentNullException.ThrowIfNull(throwStoneProfile); ArgumentNullException.ThrowIfNull(scoreProfile);
@@ -58,7 +59,7 @@ public static class AttackThrowStoneAiOutOfReachScenario
     // Reuse scoring, masks, provenance and the post-score reach draw after either owning entry's fresh preparation.
     internal static AttackThrowStoneAiOutOfReachScenarioCore ContinueFromPreparation(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         SwordAiCandidateProfile attackProfile, ThrowStoneAiCandidateProfile throwStoneProfile,
-        AttackThrowStoneAiPreparationResult preparation, FftRandomState decisionRng)
+        AttackThrowStoneAiPreparationResult preparation, RandomState decisionRng)
     {
         AttackThrowStoneAiOutOfReachScenarioCore Reject(AttackThrowStoneAiScenarioFailure failure) => new(new(false, failure, null, decisionRng));
         if (!preparation.Accepted)
@@ -78,8 +79,8 @@ public static class AttackThrowStoneAiOutOfReachScenario
                 MovementIndex: evaluated.FailedIndex, MovementReason: evaluated.Rejection == AiSimulationClockRejection.RandomDrawCountExhausted
                     ? SwordAiMovementBaselineRejection.RandomDrawCountExhausted : SwordAiMovementBaselineRejection.TickCountExhausted));
         var prefix = evaluated.Outcome!;
-        uint raw; FftRandomState rng;
-        try { var draw = new FftBiosRandom().Next(evaluated.RngState); raw = draw.Value; rng = draw.State; }
+        uint raw; RandomState rng;
+        try { var draw = new RandomStateGenerator().Next(evaluated.RngState); raw = draw.Value; rng = draw.State; }
         catch (OverflowException)
         { return Reject(new(AttackThrowStoneAiScenarioStage.ReachAdjustment, AttackThrowStoneAiScenarioRejection.RandomDrawCountExhausted)); }
         int modulo = (int)(raw % 7), effective = modulo == 0 ? reach / 2 : reach;

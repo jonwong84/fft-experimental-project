@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Xunit;
 
@@ -50,7 +51,7 @@ public sealed class FacingTurnPathMovementTests
         Assert.Equal(expected.GetProperty("acted").GetBoolean(), Turn(after, actor).ActionTaken);
         Assert.Equal(expected.GetProperty("revision").GetUInt64(), after.Revision);
         Assert.Equal(expected.GetProperty("pending").GetBoolean(), after.PendingFacing is not null);
-        Assert.Equal(new FftRandomState(word, count), after.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(word, count), after.Battle.TurnBattle.Turns.RngState);
         AssertEvents(state, result, actor); AssertUnrelated(state, after, actor);
         Assert.Equal(before, Snapshot(state));
     }
@@ -134,7 +135,7 @@ public sealed class FacingTurnPathMovementTests
         Assert.Same(pending.Battle, receipt.ExpectedBattle); Assert.Same(pending.Lineage, receipt.Lineage);
         Assert.Equal(pending.Revision, receipt.Revision); Assert.Equal(actor, receipt.ActorId);
         Assert.Equal(5, Combat(pending, enemy).Hp); Assert.Equal(new TilePosition(4, 2, 0), Body(pending, enemy).Position);
-        Assert.Equal(new FftRandomState(3448561432, 8), pending.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(3448561432, 8), pending.Battle.TurnBattle.Turns.RngState);
         var keep = FacingTurnBattle.FinishFacing(pending, actor, receipt, Keep); var finished = Accepted(keep);
         Assert.Equal(Combat(pending, actor).Facing, Combat(finished, actor).Facing);
         Assert.Same(pending.Battle.TurnBattle, finished.Battle.TurnBattle);
@@ -466,7 +467,7 @@ public sealed class FacingTurnPathMovementTests
             var c = new BattleUnitId("sample:unit/c"); bodies.Add(new(c, new(0, 0, 0), Profile(false)));
             turns.Add(new(c, 10, 0, 2)); combat.Add(Combatant(c, BattleFacing.East));
         }
-        var rng = new FftRandomState(seed, count);
+        var rng = new RandomState(seed, count);
         return new(new(new(new(width, depth, layers, tiles), reverse ? bodies.AsEnumerable().Reverse() : bodies, rng),
             new(reverse ? turns.AsEnumerable().Reverse() : turns, rng)), reverse ? combat.AsEnumerable().Reverse() : combat);
     }

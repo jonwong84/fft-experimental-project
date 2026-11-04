@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework;
@@ -113,7 +114,7 @@ public static class TargetedAbilityBattleSimulator
         var rng = state.TurnBattle.Turns.RngState;
         uint Draw()
         {
-            var draw = new FftBiosRandom().Next(rng); rng = draw.State; return draw.Value;
+            var draw = new RandomStateGenerator().Next(rng); rng = draw.State; return draw.Value;
         }
         bool hit = true, attempted = false;
         int damage = 0;

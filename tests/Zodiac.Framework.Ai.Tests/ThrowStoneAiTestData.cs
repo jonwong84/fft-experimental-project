@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 
 namespace Zodiac.Framework.Ai.Tests;
@@ -7,7 +8,7 @@ internal static class ThrowStoneAiTestData
     internal static readonly BattleUnitId A = new("sample:unit/a"), B = new("sample:unit/b");
     internal static readonly AssetId Stone = new("sample:ability/throw-stone");
     internal static readonly TerrainSurfaceId Ground = new("sample:terrain/ordinary-ground");
-    internal static readonly FftRandomState Decision = new(1, 7), Live = new(57, 100);
+    internal static readonly RandomState Decision = new(1, 7), Live = new(57, 100);
     internal static TargetedAbilityBattleProfile AbilityProfile(bool granted = true) => new(Ground, [new(Stone)],
         [new(A, granted ? [Stone] : [], 0), new(B, [Stone], 0)]);
     internal static ThrowStoneAiCandidateProfile CandidateProfile(bool granted = true) =>

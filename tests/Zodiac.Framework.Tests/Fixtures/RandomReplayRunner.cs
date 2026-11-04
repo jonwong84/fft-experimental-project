@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Zodiac.Framework;
 using Tessera.Engine;
 
@@ -8,14 +9,14 @@ internal static class RandomReplayRunner
 {
     internal sealed record Report(bool Passed, int? DrawIndex, string? Field, string Diagnostic);
 
-    internal static Report Run(FftRandomState initial, IReadOnlyList<RandomDraw<FftRandomState>> expected)
+    internal static Report Run(RandomState initial, IReadOnlyList<RandomDraw<RandomState>> expected)
     {
-        var random = new FftBiosRandom();
-        FftRandomState state = initial;
+        var random = new RandomStateGenerator();
+        RandomState state = initial;
         for (int i = 0; i < expected.Count; i++)
         {
-            RandomDraw<FftRandomState> actual = random.Next(state);
-            RandomDraw<FftRandomState> wanted = expected[i];
+            RandomDraw<RandomState> actual = random.Next(state);
+            RandomDraw<RandomState> wanted = expected[i];
             if (wanted.State.Value != actual.State.Value)
                 return Mismatch(i, "state.value", wanted.State.Value, actual.State.Value);
             if (wanted.Value != actual.Value)
@@ -24,7 +25,7 @@ internal static class RandomReplayRunner
                 return Mismatch(i, "state.drawCount", wanted.State.DrawCount, actual.State.DrawCount);
             state = actual.State;
         }
-        return new(true, null, null, $"Matched {expected.Count} ordered draws for {FftBiosRandom.AlgorithmId}.");
+        return new(true, null, null, $"Matched {expected.Count} ordered draws for {RandomStateGenerator.AlgorithmId}.");
     }
 
     private static Report Mismatch<T>(int drawIndex, string field, T expected, T actual) =>

@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 namespace Zodiac.Framework.Ai;
 
 /// <summary>The two admitted source markers; other nonzero source bytes have different guard semantics and reject.</summary>
@@ -29,7 +30,7 @@ public sealed record SwordAiDispatchOutcome(SwordAiDispatchKind Kind, MoveUnitCo
     public bool RecordCommand => RecordedChoices is not null;
 }
 public sealed record SwordAiDispatchResult(bool Accepted, SwordAiDispatchRejection Rejection,
-    SwordAiDispatchOutcome? Outcome, FftRandomState RngState);
+    SwordAiDispatchOutcome? Outcome, RandomState RngState);
 
 /// <summary>Pure ordinary command-builder classification; no selection, path execution or live continuation authority.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-165/166. Adds no RNG/tick/revision work.</remarks>

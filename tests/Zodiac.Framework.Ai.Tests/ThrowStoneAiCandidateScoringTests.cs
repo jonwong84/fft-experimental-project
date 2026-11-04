@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.ThrowStoneAiTestData;
 
@@ -30,7 +31,7 @@ public sealed class ThrowStoneAiCandidateScoringTests
         var result = Evaluate(State(evade: 100, ticks: ulong.MaxValue));
         Assert.Equal(AiScoringDisposition.NotValuable, result.Disposition); Assert.Null(result.Score);
         Assert.Equal(ThrowStoneAiCandidateDisposition.NotValuable, result.Projection!.Disposition);
-        Assert.Equal(new FftRandomState(3295386429, 11), result.RngState);
+        Assert.Equal(new RandomState(3295386429, 11), result.RngState);
         var unsupported = new AiScoreProfile([new(A, AiScoreFacts.None), new(B, AiScoreFacts.ClosedProfile)]);
         result = Evaluate(State(), profile: unsupported);
         Assert.Equal(AiScoringDisposition.Rejected, result.Disposition); Assert.Equal(AiScoringRejection.UnsupportedScoreProfile, result.Rejection);
@@ -40,7 +41,7 @@ public sealed class ThrowStoneAiCandidateScoringTests
     [Fact]
     public void Exact_budget_and_late_projection_failure_publish_no_score_or_progressed_RNG()
     {
-        var last = new FftRandomState(1, ulong.MaxValue - 5); var fits = Evaluate(State(), rng: last); Success(fits);
+        var last = new RandomState(1, ulong.MaxValue - 5); var fits = Evaluate(State(), rng: last); Success(fits);
         Assert.Equal(ulong.MaxValue, fits.RngState.DrawCount);
         var shortBudget = last with { DrawCount = ulong.MaxValue - 4 };
         var result = Evaluate(State(), rng: shortBudget);
@@ -66,7 +67,7 @@ public sealed class ThrowStoneAiCandidateScoringTests
     }
 
     private static ThrowStoneAiScoringResult Evaluate(AttackBattleSnapshot state, ThrowStoneAiCandidate? candidate = null,
-        AiScoreProfile? profile = null, FftRandomState? rng = null) =>
+        AiScoreProfile? profile = null, RandomState? rng = null) =>
         ThrowStoneAiCandidateScoring.Evaluate(state, candidate ?? Candidate(), CandidateProfile(), profile ?? Score, rng ?? Decision);
     private static AiCandidateScore Success(ThrowStoneAiScoringResult result)
     { Assert.Equal(AiScoringDisposition.Scored, result.Disposition); Assert.Equal(AiScoringRejection.None, result.Rejection);

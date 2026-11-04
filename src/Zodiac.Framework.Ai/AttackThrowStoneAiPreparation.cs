@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -28,7 +29,7 @@ public sealed record AttackThrowStoneAiPreparationFailure(AttackThrowStoneAiPrep
     AttackCommandRejection AbilityRejection = AttackCommandRejection.None, SwordAiRefreshRejection RefreshRejection = SwordAiRefreshRejection.None);
 /// <summary>Failure returns reasons only, no partial preparation, and original whole-query RNG.</summary>
 public sealed record AttackThrowStoneAiPreparationResult(bool Accepted, AttackThrowStoneAiPreparationFailure? Failure,
-    AttackThrowStoneAiPreparationOutcome? Outcome, FftRandomState RngState);
+    AttackThrowStoneAiPreparationOutcome? Outcome, RandomState RngState);
 
 /// <summary>Fresh NonBlue pair preparation with explicit pre-ACT or post-ACT entry, using restored actual state.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-195/196/209/211.
@@ -38,7 +39,7 @@ public static class AttackThrowStoneAiPreparation
     public static AttackThrowStoneAiPreparationResult Evaluate(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         AssetId throwStoneAbilityId, BoundedSwordWeapon? weapon, SwordAiCandidateProfile attackProfile,
         ThrowStoneAiCandidateProfile throwStoneProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
-        AttackThrowStoneAiPreparationProfile preparationProfile, SwordAiScenarioTeam team, FftRandomState decisionRng)
+        AttackThrowStoneAiPreparationProfile preparationProfile, SwordAiScenarioTeam team, RandomState decisionRng)
     {
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(request); ArgumentNullException.ThrowIfNull(attackProfile);
         ArgumentNullException.ThrowIfNull(throwStoneProfile); ArgumentNullException.ThrowIfNull(scoreProfile);
@@ -62,7 +63,7 @@ public static class AttackThrowStoneAiPreparation
     /// <summary>Own one fresh ACT-used/Move-unused refresh and pair preparation; no movement scoring or command authority.</summary>
     /// <remarks>Selection assertions are not consumed here. FreshRefreshEntry still certifies the earlier source no-progress guard.</remarks>
     public static AttackThrowStoneAiPreparationResult EvaluateAfterAct(AttackBattleSnapshot state,
-        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, FftRandomState decisionRng)
+        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, RandomState decisionRng)
     {
         AttackThrowStoneAiSelectionPipeline.ValidateInputs(state, request, configuration);
         var admission = ValidatePreparation(state, request.Turn, request.Weapon, configuration.Attack, configuration.ThrowStone,
@@ -101,7 +102,7 @@ public static class AttackThrowStoneAiPreparation
     }
 
     private static AttackThrowStoneAiPreparationResult CompletePreparation(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        SwordAiCandidateProfile attackProfile, SwordAiRefreshResult refresh, FftRandomState decisionRng)
+        SwordAiCandidateProfile attackProfile, SwordAiRefreshResult refresh, RandomState decisionRng)
     {
         if (!refresh.Accepted)
             return new(false, new(AttackThrowStoneAiPreparationRejection.RefreshRejected, RefreshRejection: refresh.Rejection), null, decisionRng);

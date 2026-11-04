@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Xunit;
 
@@ -33,13 +34,13 @@ public sealed class SwordAiFormulaProjectionTests
         Assert.True(result.Accepted); Assert.Equal(AttackCommandRejection.None, result.Rejection);
         Assert.Equal(new(expected.GetProperty("hitPercent").GetInt32(), expected.GetProperty("damage").GetInt32(),
             expected.GetProperty("hp").GetInt32()), result.Outcome);
-        Assert.Equal(new FftRandomState(expected.GetProperty("rngWord").GetUInt32(),
+        Assert.Equal(new RandomState(expected.GetProperty("rngWord").GetUInt32(),
             expected.GetProperty("resolutionDraws").GetUInt64()), result.RngState);
         // Literal raw streams independently constrain the four BIOS transitions used by the query.
         var rng = state.TurnBattle.Turns.RngState;
         foreach (var raw in expected.GetProperty("raw").EnumerateArray())
         {
-            var draw = new FftBiosRandom().Next(rng); Assert.Equal(raw.GetUInt32(), draw.Value); rng = draw.State;
+            var draw = new RandomStateGenerator().Next(rng); Assert.Equal(raw.GetUInt32(), draw.Value); rng = draw.State;
         }
         Assert.Equal(rng, result.RngState);
     }
@@ -62,7 +63,7 @@ public sealed class SwordAiFormulaProjectionTests
         string original = Snapshot(state);
         var result = Project(state);
         Assert.Equal(targetFace == fronts[target] ? new(0, 0, 50) : new SwordAiFormulaOutcome(100, 25, 25), result.Outcome);
-        Assert.Equal(new FftRandomState(3587663605, 4), result.RngState);
+        Assert.Equal(new RandomState(3587663605, 4), result.RngState);
         Assert.Equal(original, Snapshot(state));
     }
 
@@ -114,7 +115,7 @@ public sealed class SwordAiFormulaProjectionTests
         else
         {
             Assert.True(result.Accepted); Assert.NotNull(result.Outcome);
-            Assert.Equal(new FftRandomState(3587663605u, ulong.MaxValue), result.RngState);
+            Assert.Equal(new RandomState(3587663605u, ulong.MaxValue), result.RngState);
         }
         Assert.Equal(original, Snapshot(state));
     }
@@ -143,12 +144,12 @@ public sealed class SwordAiFormulaProjectionTests
     public void Fourth_evade_raw_endpoints_do_not_create_random_AI_misses(uint seed, uint finalWord, uint raw)
     {
         // Seeds obtained by four inverse BIOS LCG steps from literal final words 0 and 0x7fff0000.
-        var rng = new FftRandomState(seed, 0);
+        var rng = new RandomState(seed, 0);
         uint fourth = 0;
-        for (int i = 0; i < 4; i++) { var draw = new FftBiosRandom().Next(rng); rng = draw.State; fourth = draw.Value; }
+        for (int i = 0; i < 4; i++) { var draw = new RandomStateGenerator().Next(rng); rng = draw.State; fourth = draw.Value; }
         Assert.Equal(raw, fourth);
         var result = Project(State(seed: seed));
-        Assert.Equal(new FftRandomState(finalWord, 4), result.RngState);
+        Assert.Equal(new RandomState(finalWord, 4), result.RngState);
         Assert.Equal(new(90, 25, 25), result.Outcome);
     }
 
@@ -193,9 +194,9 @@ public sealed class SwordAiFormulaProjectionTests
         var next = state.WithTurnBattle(new(new(state.TurnBattle.Battle.Map, state.TurnBattle.Battle.Units, first.RngState),
             new(state.TurnBattle.Turns.Units, first.RngState, state.TurnBattle.Turns.Ticks, state.TurnBattle.Turns.Phase)));
         var second = Project(next);
-        Assert.Equal(new FftRandomState(361004401, 8), second.RngState);
+        Assert.Equal(new RandomState(361004401, 8), second.RngState);
         Assert.Equal(first.Outcome, second.Outcome);
-        Assert.Equal(new FftRandomState(57, 0), state.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(57, 0), state.TurnBattle.Turns.RngState);
     }
 
     [Fact]
@@ -210,19 +211,19 @@ public sealed class SwordAiFormulaProjectionTests
         Assert.True(attack.Accepted); Assert.Null(attack.State.TurnBattle.Turns.ActiveUnitId);
         Assert.Equal(new AttackResolvedEvent(A, B, true, true, 45), Assert.Single(attack.Events.OfType<AttackResolvedEvent>()));
         Assert.Single(attack.Events.OfType<SwordKnockbackEvent>());
-        Assert.Equal(new FftRandomState(3448561432, 7), attack.State.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(3448561432, 7), attack.State.TurnBattle.Turns.RngState);
     }
 
     [Fact]
     public void Query_before_Act_then_Move_preserves_choices_and_nonzero_rng_count()
     {
         var state = State(seed: 1, count: 15);
-        Assert.Equal(new FftRandomState(3295386429, 19), Project(state).RngState);
+        Assert.Equal(new RandomState(3295386429, 19), Project(state).RngState);
         var attack = AttackBattleSimulator.Attack(state, new(A, B), new(Weapon, 5), Profile);
         Assert.True(attack.Accepted); Assert.Equal(A, attack.State.TurnBattle.Turns.ActiveUnitId);
         var move = AttackBattleSimulator.Move(attack.State, new(A, new(2, 3, 0)));
         Assert.True(move.Accepted); Assert.Null(move.State.TurnBattle.Turns.ActiveUnitId);
-        Assert.Equal(new FftRandomState(2516284547, 21), move.State.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(2516284547, 21), move.State.TurnBattle.Turns.RngState);
     }
 
     [Fact]
@@ -291,7 +292,7 @@ public sealed class SwordAiFormulaProjectionTests
         bool targetMoved = false, bool targetActed = false, bool secondActor = false, bool reverse = false, string? geometry = null)
     {
         var actorId = secondActor ? B : A; var targetId = secondActor ? A : B;
-        var rng = new FftRandomState(seed, count); int layers = geometry is "layer" or "blocked-upper" ? 2 : 1;
+        var rng = new RandomState(seed, count); int layers = geometry is "layer" or "blocked-upper" ? 2 : 1;
         var tiles = Enumerable.Repeat(new BattleTile(Ground, 10), width * depth * layers).ToArray();
         if (geometry == "blocked-upper")
             for (int i = width * depth; i < tiles.Length; i++)

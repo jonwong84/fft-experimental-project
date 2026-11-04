@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.ThrowStoneAiTestData;
 
@@ -16,7 +17,7 @@ public sealed class ThrowStoneAiFormulaProjectionTests
             var state = State(pa: pa, hp: hp, maxHp: Math.Max(50, hp), evade: evade); var before = Snapshot(state);
             var result = Evaluate(state); var o = Success(result);
             Assert.Equal(new(hit, damage, remaining), o); Assert.Equal(hit != 0, o.HasAccuracy);
-            Assert.Equal(new FftRandomState(3295386429, 11), result.RngState);
+            Assert.Equal(new RandomState(3295386429, 11), result.RngState);
             Assert.Equal(before, Snapshot(state)); Assert.Null(state.Combatants[0].RightHandWeaponId);
         }
     }
@@ -35,7 +36,7 @@ public sealed class ThrowStoneAiFormulaProjectionTests
     [Fact]
     public void Exactly_four_draws_fit_at_MAX_and_partial_evasion_failure_is_atomic()
     {
-        var state = State(); var before = Snapshot(state); var last = new FftRandomState(1, ulong.MaxValue - 4);
+        var state = State(); var before = Snapshot(state); var last = new RandomState(1, ulong.MaxValue - 4);
         var fits = Evaluate(state, rng: last); Success(fits); Assert.Equal(ulong.MaxValue, fits.RngState.DrawCount);
         var shortBudget = last with { DrawCount = ulong.MaxValue - 3 };
         Atomic(Evaluate(state, rng: shortBudget), AttackCommandRejection.RandomDrawCountExhausted, shortBudget);
@@ -66,17 +67,17 @@ public sealed class ThrowStoneAiFormulaProjectionTests
             Assert.Equal(result, Evaluate(State(second: second, reverse: true), second: second));
             Assert.Equal(result, Evaluate(state, second: second));
             var rng = result.RngState;
-            for (int i = 0; i < 4; i++) rng = new FftBiosRandom().Next(rng).State;
+            for (int i = 0; i < 4; i++) rng = new RandomStateGenerator().Next(rng).State;
             Assert.Equal(rng, Evaluate(state, second: second, rng: result.RngState).RngState);
             Assert.Equal(before, Snapshot(state));
         }
     }
 
     private static ThrowStoneAiFormulaResult Evaluate(AttackBattleSnapshot state, bool second = false,
-        TargetedAbilityBattleProfile? profile = null, FftRandomState? rng = null) =>
+        TargetedAbilityBattleProfile? profile = null, RandomState? rng = null) =>
         ThrowStoneAiFormulaProjection.Evaluate(state, Command(second), profile ?? AbilityProfile(), rng ?? Decision);
     private static ThrowStoneAiFormulaOutcome Success(ThrowStoneAiFormulaResult result)
     { Assert.True(result.Accepted, Serialize(result)); Assert.Equal(AttackCommandRejection.None, result.Rejection); return Assert.IsType<ThrowStoneAiFormulaOutcome>(result.Outcome); }
-    private static void Atomic(ThrowStoneAiFormulaResult result, AttackCommandRejection reason, FftRandomState? rng = null)
+    private static void Atomic(ThrowStoneAiFormulaResult result, AttackCommandRejection reason, RandomState? rng = null)
     { Assert.False(result.Accepted); Assert.Equal(reason, result.Rejection); Assert.Null(result.Outcome); Assert.Equal(rng ?? Decision, result.RngState); }
 }

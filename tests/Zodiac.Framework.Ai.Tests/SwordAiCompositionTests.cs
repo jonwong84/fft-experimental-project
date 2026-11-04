@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Xunit;
 
@@ -10,13 +11,13 @@ public sealed class SwordAiCompositionTests
     private static readonly AssetId Weapon = new("sample:item/plain-sword");
     private static readonly BattleUnitId A = new("sample:unit/a"), B = new("sample:unit/b");
     private static readonly TilePosition Actor = new(2, 1, 0), Top = new(1, 0, 0), Left = new(0, 1, 0), Bottom = new(1, 2, 0);
-    private static readonly FftRandomState Decision = new(1, 7), LiveRng = new(57, 100);
+    private static readonly RandomState Decision = new(1, 7), LiveRng = new(57, 100);
     private static readonly SwordAiCandidateProfile CandidateProfile = new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 19)]);
     private static readonly AiScoreProfile ScoreProfile = new([new(A, AiScoreFacts.ClosedProfile), new(B, AiScoreFacts.ClosedProfile)]);
 
     private sealed record Frame(AttackBattleSnapshot State, SwordAiCompositionScenario Scenario, BoundedSwordWeapon? Weapon,
         SwordAiCandidateProfile Candidate, AiScoreProfile Score, SwordAiComparisonProfile Comparison,
-        SwordAiMovementBaselineProfile Baseline, SwordAiScanProfile Scan, SwordAiCompositionProfile Profile, FftRandomState Rng);
+        SwordAiMovementBaselineProfile Baseline, SwordAiScanProfile Scan, SwordAiCompositionProfile Profile, RandomState Rng);
     private static Frame Setup(AttackBattleSnapshot? state = null, bool second = false) => new(state ?? State(),
         new([Bottom, Top, Left], Bottom, Top), new(Weapon, 5), CandidateProfile, ScoreProfile,
         new(second ? B : A, second ? A : B, true), new(true, true, true, true), new(true, true, true, true, true), new(true, true, true), Decision);
@@ -32,8 +33,8 @@ public sealed class SwordAiCompositionTests
         Assert.Equal(new[] { Top, Left, Bottom }, outcome.Movement.Select(m => m.Outcome.Destination));
         Assert.Equal(new[] { Top, Left, Actor, Bottom }, outcome.AttackScenario.Origins);
         Assert.Equal(2, outcome.BaselineIndex); Assert.Same(outcome.Movement[2], outcome.Baseline);
-        Assert.Equal(new FftRandomState(662824084, 10), outcome.Movement[^1].RngState);
-        Assert.Equal(new FftRandomState(1343201072, 30), result.RngState);
+        Assert.Equal(new RandomState(662824084, 10), outcome.Movement[^1].RngState);
+        Assert.Equal(new RandomState(1343201072, 30), result.RngState);
         Assert.Equal(new ulong[] { 8, 9, 10 }, outcome.Movement.Select(m => m.RngState.DrawCount));
         Assert.All(outcome.Movement, m =>
         {

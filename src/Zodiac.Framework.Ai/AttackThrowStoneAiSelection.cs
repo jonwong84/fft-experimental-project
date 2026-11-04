@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -18,11 +19,11 @@ public sealed record AttackThrowStoneAiSelectedPlan(BattleUnitId ActorId, TilePo
 }
 public sealed record AttackThrowStoneAiSelectionFailure(AttackThrowStoneAiSelectionStage Stage, AttackThrowStoneAiSelectionRejection Reason,
     int? LotteryIndex = null, AttackThrowStoneAiFailure? CompositionFailure = null);
-public sealed record AttackThrowStoneAiSelectionOutcome(AttackThrowStoneAiCompositionOutcome Composition, FftRandomState LotteryEntryRng,
+public sealed record AttackThrowStoneAiSelectionOutcome(AttackThrowStoneAiCompositionOutcome Composition, RandomState LotteryEntryRng,
     ImmutableArray<AiLotteryRoll> Lottery, int? SelectedRankedIndex, AiLotteryReason Reason, AttackThrowStoneAiSelectedPlan Plan);
 /// <summary>Hypothetical result only. Failure publishes no partial ranks/rolls/plan and restores whole-query RNG.</summary>
 public sealed record AttackThrowStoneAiSelectionResult(bool Accepted, AttackThrowStoneAiSelectionFailure? Failure,
-    AttackThrowStoneAiSelectionOutcome? Outcome, FftRandomState RngState);
+    AttackThrowStoneAiSelectionOutcome? Outcome, RandomState RngState);
 
 /// <summary>Own fresh pair ranking, then one terminal source lottery and typed hypothetical plan.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-192/194.
@@ -31,7 +32,7 @@ public static class AttackThrowStoneAiSelection
 {
     public static AttackThrowStoneAiSelectionResult Evaluate(AttackBattleSnapshot state, ThrowStoneAiScanRequest request,
         ThrowStoneAiScanScenario scenario, BoundedSwordWeapon? weapon, AttackThrowStoneAiProfile profile,
-        AttackThrowStoneAiSelectionProfile selectionProfile, FftRandomState decisionRng)
+        AttackThrowStoneAiSelectionProfile selectionProfile, RandomState decisionRng)
     {
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(request); ArgumentNullException.ThrowIfNull(scenario);
         ArgumentNullException.ThrowIfNull(profile); ArgumentNullException.ThrowIfNull(selectionProfile);
@@ -46,7 +47,7 @@ public static class AttackThrowStoneAiSelection
 
     // Internal owning queries reuse fresh ranks, never caller-populated public outcomes.
     internal static AttackThrowStoneAiSelectionResult SelectFresh(AttackThrowStoneAiCompositionResult composition,
-        BattleUnitId actorId, TilePosition baselineDestination, FftRandomState queryRng)
+        BattleUnitId actorId, TilePosition baselineDestination, RandomState queryRng)
     {
         var fresh = composition.Outcome!;
         var lottery = AiRankedLottery.Evaluate(fresh.RankedActions.Select(a => a?.Score.HitPercent ?? (byte)0).ToImmutableArray(), composition.RngState);

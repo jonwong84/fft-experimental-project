@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Xunit;
 
@@ -138,7 +139,7 @@ public sealed class FacingTurnBattleTests
         Assert.Same(pending.Battle, receipt.ExpectedBattle);
         Assert.Equal(5, Unit(pending, target).Hp); Assert.Equal(AttackUnitStatus.Critical, Unit(pending, target).Status);
         Assert.Equal(new TilePosition(4, 2, 0), Position(pending, target));
-        Assert.Equal(new FftRandomState(3448561432, 8), pending.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(3448561432, 8), pending.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(15, Turn(pending, actor).Ct);
         string before = Snapshot(pending);
         var finish = FacingTurnBattle.FinishFacing(pending, actor, receipt, new FacingChoice.ChooseClosedEnemy(target));
@@ -400,9 +401,9 @@ public sealed class FacingTurnBattleTests
     public void Begin_preserves_preexisting_RNG_progress_instead_of_starting_a_new_stream()
     {
         var start = FacingTurnBattle.Begin(Setup(count: 500), Profile);
-        Assert.Equal(new FftRandomState(601690112, 500), start.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(601690112, 500), start.Battle.TurnBattle.Turns.RngState);
         var active = Accepted(FacingTurnBattle.Advance(start));
-        Assert.Equal(new FftRandomState(57, 501), active.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(57, 501), active.Battle.TurnBattle.Turns.RngState);
         var exhausted = FacingTurnBattle.Begin(Setup(count: ulong.MaxValue), Profile);
         var result = FacingTurnBattle.Advance(exhausted);
         Assert.False(result.Accepted); Assert.Same(exhausted, result.State);
@@ -486,7 +487,7 @@ public sealed class FacingTurnBattleTests
         var battle = state.Battle;
         if (draws is { } count)
         {
-            var rng = new FftRandomState(battle.TurnBattle.Turns.RngState.Value, count);
+            var rng = new RandomState(battle.TurnBattle.Turns.RngState.Value, count);
             battle = new(new(new(battle.TurnBattle.Battle.Map, battle.TurnBattle.Battle.Units, rng),
                 new(battle.TurnBattle.Turns.Units, rng, battle.TurnBattle.Turns.Ticks, battle.TurnBattle.Turns.Phase)), battle.Combatants);
         }
@@ -510,7 +511,7 @@ public sealed class FacingTurnBattleTests
         bool targetMoved = false, bool targetActed = false, string? geometry = null)
     {
         var actorId = second ? B : A; var targetId = second ? A : B;
-        var rng = new FftRandomState(seed, count); int layers = geometry is "layer" or "blocked-upper" ? 2 : 1;
+        var rng = new RandomState(seed, count); int layers = geometry is "layer" or "blocked-upper" ? 2 : 1;
         var tiles = Enumerable.Repeat(new BattleTile(Ground, 10), width * depth * layers).ToArray();
         if (geometry == "blocked-upper")
             for (int i = width * depth; i < tiles.Length; i++)

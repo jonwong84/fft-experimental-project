@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Xunit;
 
@@ -9,7 +10,7 @@ public sealed class SwordAiOutOfReachScenarioTests
     private static readonly TerrainSurfaceId Ground = new("sample:terrain/ordinary-ground");
     private static readonly BattleUnitId A = new("sample:unit/a"), B = new("sample:unit/b");
     private static readonly AssetId Weapon = new("sample:item/plain-sword");
-    private static readonly FftRandomState Decision = new(1, 7), Live = new(57, 100);
+    private static readonly RandomState Decision = new(1, 7), Live = new(57, 100);
     private static readonly SwordAiCandidateProfile Candidate = new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 19)]);
     private static readonly AiScoreProfile Score = new([new(A, AiScoreFacts.ClosedProfile), new(B, AiScoreFacts.ClosedProfile)]);
     private static readonly SwordAiMovementScenarioProfile Profile = new(true, true, true);
@@ -31,7 +32,7 @@ public sealed class SwordAiOutOfReachScenarioTests
         Assert.Equal(m.Scenario.AttackDestination, m.Scenario.BaselineDestination);
         Assert.Equal(destination - 3, m.BaselineIndex); Assert.False(m.BaselineUsedDistanceFallback);
         Assert.False(o.AttackUsedDistanceFallback); Assert.Equal(team, o.Team);
-        Assert.Equal(new FftRandomState(word, count), result.RngState);
+        Assert.Equal(new RandomState(word, count), result.RngState);
         Assert.Equal(new ulong[] { 8, 9, 10 }, m.Movement.Select(v => v.RngState.DrawCount));
         Assert.All(m.Movement, v => { Assert.Equal(21ul, v.Outcome.Ticks); Assert.Equal(0, v.Outcome.Score.Priority); });
         Assert.Equal(5, m.TargetDistance); Assert.Equal(4, m.TargetReach);
@@ -75,7 +76,7 @@ public sealed class SwordAiOutOfReachScenarioTests
     [Trait("Coverage", "CurrentAdmission")]
     public void Unknown_team_is_rejected_before_any_evaluation(SwordAiScenarioTeam team)
     {
-        var rng = new FftRandomState(1, ulong.MaxValue); var result = Evaluate(State(), team, rng);
+        var rng = new RandomState(1, ulong.MaxValue); var result = Evaluate(State(), team, rng);
         Atomic(result, rng, SwordAiMovementScenarioStage.Admission);
         Assert.Equal(SwordAiMovementScenarioRejection.UnsupportedProfile, result.Failure!.Reason);
     }
@@ -83,7 +84,7 @@ public sealed class SwordAiOutOfReachScenarioTests
     [Fact] [Trait("Coverage", "CurrentAdmission")]
     public void Branch_boundary_and_unknown_source_context_do_not_fall_through_to_another_search()
     {
-        var rng = new FftRandomState(1, ulong.MaxValue);
+        var rng = new RandomState(1, ulong.MaxValue);
         var boundary = Evaluate(State(origin: new(5, 0, 0)), SwordAiScenarioTeam.NonBlue, rng);
         Atomic(boundary, rng, SwordAiMovementScenarioStage.Admission);
         Assert.Equal(SwordAiMovementScenarioRejection.WrongBranch, boundary.Failure!.Reason);
@@ -98,7 +99,7 @@ public sealed class SwordAiOutOfReachScenarioTests
     [Fact]
     public void Post_score_adjustment_failure_discards_completed_cells_while_Blue_needs_no_reserved_draw()
     {
-        var rng = new FftRandomState(1, ulong.MaxValue - 3);
+        var rng = new RandomState(1, ulong.MaxValue - 3);
         var failed = Evaluate(State(), SwordAiScenarioTeam.NonBlue, rng);
         Atomic(failed, rng, SwordAiMovementScenarioStage.ReachAdjustment);
         Assert.Equal(SwordAiMovementScenarioRejection.RandomDrawCountExhausted, failed.Failure!.Reason);
@@ -132,11 +133,11 @@ public sealed class SwordAiOutOfReachScenarioTests
     }
 
     private static SwordAiOutOfReachScenarioResult Evaluate(AttackBattleSnapshot state, SwordAiScenarioTeam team,
-        FftRandomState? rng = null, bool second = false) => SwordAiMovementScenario.EvaluateOutOfReach(state,
+        RandomState? rng = null, bool second = false) => SwordAiMovementScenario.EvaluateOutOfReach(state,
             Candidate, Score, new(second ? B : A, second ? A : B, true), Profile, team, rng ?? Decision);
     private static SwordAiOutOfReachScenarioOutcome Success(SwordAiOutOfReachScenarioResult result)
     { Assert.True(result.Accepted, result.Failure?.ToString()); Assert.Null(result.Failure); return Assert.IsType<SwordAiOutOfReachScenarioOutcome>(result.Outcome); }
-    private static void Atomic(SwordAiOutOfReachScenarioResult result, FftRandomState rng, SwordAiMovementScenarioStage stage)
+    private static void Atomic(SwordAiOutOfReachScenarioResult result, RandomState rng, SwordAiMovementScenarioStage stage)
     { Assert.False(result.Accepted); Assert.Null(result.Outcome); Assert.Equal(rng, result.RngState); Assert.Equal(stage, result.Failure!.Stage); }
     private static string Snapshot(AttackBattleSnapshot state) => JsonSerializer.Serialize(new { state.Combatants, state.TurnBattle.Turns,
         Units = state.TurnBattle.Battle.Units.Select(u => new { u.Id, u.Position, u.HasMoved }) });

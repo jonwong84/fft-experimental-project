@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -16,7 +17,7 @@ public sealed record AttackThrowStoneAiMovementScenarioOutcome(AttackThrowStoneA
     int TargetDistance, int TargetReach, int? BaselineDistanceLimit, bool BaselineUsedDistanceFallback);
 /// <summary>Failure exposes no partial preparation/scenario/cache and restores incoming whole-query RNG.</summary>
 public sealed record AttackThrowStoneAiMovementScenarioResult(bool Accepted, AttackThrowStoneAiScenarioFailure? Failure,
-    AttackThrowStoneAiMovementScenarioOutcome? Outcome, FftRandomState RngState);
+    AttackThrowStoneAiMovementScenarioOutcome? Outcome, RandomState RngState);
 internal sealed record AttackThrowStoneAiScenarioCore(AttackThrowStoneAiMovementScenarioResult Result, AiMovementPrefixOutcome? Prefix = null);
 
 /// <summary>Own fresh both-unused NonBlue pair preparation and one in-reach movement prefix; derive D0/D1 with ranged policy.</summary>
@@ -28,7 +29,7 @@ public static class AttackThrowStoneAiMovementScenario
         AssetId throwStoneAbilityId, BoundedSwordWeapon? weapon, SwordAiCandidateProfile attackProfile,
         ThrowStoneAiCandidateProfile throwStoneProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
         AttackThrowStoneAiPreparationProfile preparationProfile, AttackThrowStoneAiScenarioProfile scenarioProfile,
-        SwordAiScenarioTeam team, FftRandomState decisionRng) =>
+        SwordAiScenarioTeam team, RandomState decisionRng) =>
         EvaluateFresh(state, request, throwStoneAbilityId, weapon, attackProfile, throwStoneProfile, scoreProfile, refreshProfile,
             preparationProfile, scenarioProfile, team, decisionRng).Result;
 
@@ -37,7 +38,7 @@ public static class AttackThrowStoneAiMovementScenario
         AssetId throwStoneAbilityId, BoundedSwordWeapon? weapon, SwordAiCandidateProfile attackProfile,
         ThrowStoneAiCandidateProfile throwStoneProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
         AttackThrowStoneAiPreparationProfile preparationProfile, AttackThrowStoneAiScenarioProfile scenarioProfile,
-        SwordAiScenarioTeam team, FftRandomState decisionRng)
+        SwordAiScenarioTeam team, RandomState decisionRng)
     {
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(request); ArgumentNullException.ThrowIfNull(attackProfile);
         ArgumentNullException.ThrowIfNull(throwStoneProfile); ArgumentNullException.ThrowIfNull(scoreProfile);
@@ -54,7 +55,7 @@ public static class AttackThrowStoneAiMovementScenario
     // Both owning entries supply only their own fresh preparation; this is not a public cached-result input.
     internal static AttackThrowStoneAiScenarioCore ContinueFromPreparation(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         SwordAiCandidateProfile attackProfile, ThrowStoneAiCandidateProfile throwStoneProfile,
-        AttackThrowStoneAiPreparationResult preparation, FftRandomState decisionRng)
+        AttackThrowStoneAiPreparationResult preparation, RandomState decisionRng)
     {
         AttackThrowStoneAiScenarioCore Reject(AttackThrowStoneAiScenarioFailure failure) => new(new(false, failure, null, decisionRng));
         if (!preparation.Accepted)

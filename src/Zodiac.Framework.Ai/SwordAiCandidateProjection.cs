@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -51,14 +52,14 @@ public sealed record SwordAiCandidateOutcome(BattleUnitId ActorId, BattleUnitId 
 /// <summary>Rejected returns the incoming decision RNG. NotValuable retains four formula draws but has no outcome.</summary>
 /// <remarks>Discard hypothetical data freely; the decision owner must explicitly carry supported evaluation RNG.</remarks>
 public sealed record SwordAiCandidateResult(SwordAiCandidateDisposition Disposition, SwordAiCandidateRejection Rejection,
-    SwordAiCandidateOutcome? Outcome, FftRandomState RngState);
+    SwordAiCandidateOutcome? Outcome, RandomState RngState);
 
 /// <summary>Pure projection of one supplied ordinary sword candidate; no enumeration, score or live decision execution.</summary>
 /// <remarks>Source: decomp 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-124/125.</remarks>
 public static class SwordAiCandidateProjection
 {
     public static SwordAiCandidateResult Evaluate(AttackBattleSnapshot state, SwordAiCandidate candidate,
-        BoundedSwordWeapon? weapon, SwordAiCandidateProfile profile, FftRandomState decisionRng)
+        BoundedSwordWeapon? weapon, SwordAiCandidateProfile profile, RandomState decisionRng)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(candidate);

@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.SwordAiPreparationTestData;
 
@@ -15,7 +16,7 @@ public sealed class SwordAiPostActPreparationTests
             var state = AfterAct(evade: evade).Battle; var before = Snapshot(state); var result = Evaluate(state); var o = Success(result);
             var refresh = SwordAiRefresh.EvaluateAfterAct(state, Request(), Candidate, Score, Refresh, state.TurnBattle.Turns.RngState);
             Assert.True(refresh.Accepted); Assert.Equal(Serialize(refresh.Outcome), Serialize(o.Refresh));
-            Assert.Equal(refresh.RngState, result.RngState); Assert.Equal(new FftRandomState(word, count), result.RngState);
+            Assert.Equal(refresh.RngState, result.RngState); Assert.Equal(new RandomState(word, count), result.RngState);
             Assert.False(o.ActorAttackUsable); Assert.Equal((2, 1), (o.EnemyAbilityReach, o.AllyAbilityReach));
             Assert.Equal((17, 1, (byte)9), (o.ActorDelay, o.TargetDelay, o.FoeProximity));
             Assert.Equal(40, o.Refresh.Units.Single(u => u.UnitId == A).Ct); Assert.Equal(0, o.Refresh.Units.Single(u => u.UnitId == B).Ct);
@@ -35,7 +36,7 @@ public sealed class SwordAiPostActPreparationTests
         Assert.Equal(new TilePosition(0, 1, 0), o.FocusPosition); // Actual critical pushes target from x1 to x0.
         Assert.Equal(5, o.ReachableOrigins.Length); Assert.Contains(new TilePosition(1, 1, 0), o.ReachableOrigins);
         Assert.Equal((byte)8, o.FoeProximity); Assert.False(o.ActorAttackUsable); Assert.Equal(2, o.EnemyAbilityReach);
-        Assert.Equal(new FftBiosRandom().Next(pushed.TurnBattle.Turns.RngState).State, result.RngState);
+        Assert.Equal(new RandomStateGenerator().Next(pushed.TurnBattle.Turns.RngState).State, result.RngState);
         Assert.Equal(before, Snapshot(pushed));
         var critical = AfterAct(power: 8).Battle; var hp = Success(Evaluate(critical));
         Assert.Equal(10, hp.Refresh.Units.Single(u => u.UnitId == B).Hp);
@@ -47,7 +48,7 @@ public sealed class SwordAiPostActPreparationTests
     [Fact]
     public void No_draws_follow_refresh_including_MAX_and_zero_Move_while_failures_hide_the_whole_prefix()
     {
-        var state = AfterAct().Battle; var last = new FftRandomState(state.TurnBattle.Turns.RngState.Value, ulong.MaxValue - 1);
+        var state = AfterAct().Battle; var last = new RandomState(state.TurnBattle.Turns.RngState.Value, ulong.MaxValue - 1);
         var fits = Evaluate(state, rng: last); Success(fits); Assert.Equal(ulong.MaxValue, fits.RngState.DrawCount);
         var exhausted = last with { DrawCount = ulong.MaxValue };
         Atomic(Evaluate(state, rng: exhausted), SwordAiPreparationRejection.RefreshRejected, SwordAiRefreshRejection.RandomDrawCountExhausted, exhausted);
@@ -89,20 +90,20 @@ public sealed class SwordAiPostActPreparationTests
             Assert.Equal(Serialize(result), Serialize(Evaluate(state, Request(second))));
             Assert.Equal(Serialize(result), Serialize(Evaluate(AfterAct(second: second, reverse: true).Battle, Request(second, reverse: true))));
             var carried = Evaluate(state, Request(second), rng: result.RngState); Success(carried);
-            Assert.Equal(new FftBiosRandom().Next(result.RngState).State, carried.RngState); Assert.Equal(before, Snapshot(state));
+            Assert.Equal(new RandomStateGenerator().Next(result.RngState).State, carried.RngState); Assert.Equal(before, Snapshot(state));
         }
     }
 
     private static SwordAiPreparationResult Evaluate(AttackBattleSnapshot state, SwordAiRefreshRequest? request = null,
         SwordAiPreparationProfile? profile = null, SwordAiRefreshProfile? refresh = null,
-        SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue, FftRandomState? rng = null) =>
+        SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue, RandomState? rng = null) =>
         SwordAiPreparation.EvaluateAfterAct(state, request ?? Request(), Candidate, Score, refresh ?? Refresh,
             profile ?? Preparation, team, rng ?? state.TurnBattle.Turns.RngState);
     private static SwordAiPreparationOutcome Success(SwordAiPreparationResult result)
     { Assert.True(result.Accepted, Serialize(result)); Assert.Equal(SwordAiPreparationRejection.None, result.Rejection);
         return Assert.IsType<SwordAiPreparationOutcome>(result.Outcome); }
     private static void Atomic(SwordAiPreparationResult result, SwordAiPreparationRejection reason,
-        SwordAiRefreshRejection refresh = SwordAiRefreshRejection.None, FftRandomState? rng = null)
+        SwordAiRefreshRejection refresh = SwordAiRefreshRejection.None, RandomState? rng = null)
     { Assert.False(result.Accepted); Assert.Equal(reason, result.Rejection); Assert.Equal(refresh, result.RefreshRejection);
         Assert.Null(result.Outcome); Assert.Equal(rng ?? Rng, result.RngState); }
 }

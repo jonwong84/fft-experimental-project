@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Zodiac.Content.BattleSetup;
 using Zodiac.Content.ContentPackages;
 using Zodiac.Content.Definitions;
@@ -16,7 +17,7 @@ public sealed class AttackBattleSetupTests
         new(id, hp, 50, 0, 0, pa, 10, 0, 0, 0, 70, zodiac, BattleFacing.East, status, 0, weapon);
     private static TurnBattleState State(uint seed = uint.MaxValue, ulong count = 77)
     {
-        var rng = new FftRandomState(seed, count);
+        var rng = new RandomState(seed, count);
         var map = new BattleMapDefinition(3, 3, 1, Enumerable.Repeat(new BattleTile(10), 9).ToArray());
         return new(new(map, [new(A, new(1, 1, 0), 1), new(B, new(2, 1, 0), 1)], rng),
             new([new(A, 10, 0, 0, true), new(B, 10, 100, 1)], rng, phase: TurnCyclePhase.UnitTurn));

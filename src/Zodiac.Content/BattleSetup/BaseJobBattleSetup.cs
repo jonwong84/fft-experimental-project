@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 using Zodiac.Content.Definitions;
 using Zodiac.Framework;
@@ -48,7 +49,7 @@ public sealed class BaseJobBattleSetup
     /// Body height and terrain costs are supplied scenario inputs, not computed retail stats.
     /// </summary>
     public static BaseJobBattleSetup Create(DefinitionCatalog catalog, BattleMapDefinition map,
-        IEnumerable<BaseJobUnitPlacement> placements, FftRandomState? rngState = null)
+        IEnumerable<BaseJobUnitPlacement> placements, RandomState? rngState = null)
     {
         ArgumentNullException.ThrowIfNull(catalog);
         ArgumentNullException.ThrowIfNull(map);

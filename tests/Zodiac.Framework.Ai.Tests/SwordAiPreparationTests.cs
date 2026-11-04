@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.SwordAiPreparationTestData;
 
@@ -11,7 +12,7 @@ public sealed class SwordAiPreparationTests
     {
         var state = State(hp: 10); var request = Request(cachedSupport: cachedSupport);
         var result = Evaluate(state, request); var o = Success(result);
-        Assert.Equal(new FftRandomState(1103527590, 8), result.RngState);
+        Assert.Equal(new RandomState(1103527590, 8), result.RngState);
         Assert.Equal(cachedSupport, o.Refresh.RefreshedUnits.Single(u => u.UnitId == A).TeamSupportUnavailable);
         Assert.Equal(new SwordAiRefreshPolicy(A, true, true), o.Policies.Single(p => p.UnitId == A));
         Assert.Equal(new SwordAiRefreshPolicy(B, false, false), o.Policies.Single(p => p.UnitId == B));
@@ -50,9 +51,9 @@ public sealed class SwordAiPreparationTests
     [Fact]
     public void Final_available_refresh_draw_succeeds_and_failures_return_original_RNG_without_partial_preparation()
     {
-        var last = new FftRandomState(1, ulong.MaxValue - 1);
+        var last = new RandomState(1, ulong.MaxValue - 1);
         Assert.Equal(ulong.MaxValue, Evaluate(State(), rng: last).RngState.DrawCount);
-        var exhausted = new FftRandomState(1, ulong.MaxValue);
+        var exhausted = new RandomState(1, ulong.MaxValue);
         var failed = Evaluate(State(), rng: exhausted);
         Assert.False(failed.Accepted); Assert.Null(failed.Outcome); Assert.Equal(exhausted, failed.RngState);
         Assert.Equal(SwordAiRefreshRejection.RandomDrawCountExhausted, failed.RefreshRejection);
@@ -77,7 +78,7 @@ public sealed class SwordAiPreparationTests
         Assert.Equal(SwordAiRefreshRejection.UnavailableAction, bad.RefreshRejection);
     }
     private static SwordAiPreparationResult Evaluate(AttackBattleSnapshot state, SwordAiRefreshRequest? request = null,
-        SwordAiPreparationProfile? profile = null, SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue, FftRandomState? rng = null) =>
+        SwordAiPreparationProfile? profile = null, SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue, RandomState? rng = null) =>
         SwordAiPreparation.Evaluate(state, request ?? Request(), Candidate, Score, Refresh, profile ?? Preparation, team, rng ?? Rng);
     private static SwordAiPreparationOutcome Success(SwordAiPreparationResult result)
     {

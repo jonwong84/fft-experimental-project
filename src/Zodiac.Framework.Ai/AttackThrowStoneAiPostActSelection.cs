@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -6,25 +7,25 @@ public enum AttackThrowStoneAiPostActSelectionRejection { UnsupportedProfile, Sc
 public sealed record AttackThrowStoneAiPostActSelectionFailure(AttackThrowStoneAiPostActSelectionRejection Reason,
     AttackThrowStoneAiScenarioFailure? ScenarioFailure = null, int? FailedLotteryIndex = null);
 public sealed record AttackThrowStoneAiPostActSelectionOutcome(AttackThrowStoneAiPostActScenarioOutcome Scenarios,
-    FftRandomState LotteryEntryRng, ImmutableArray<AiLotteryRoll> Lottery, AiLotteryReason Reason, AttackThrowStoneAiSelectedPlan Plan);
+    RandomState LotteryEntryRng, ImmutableArray<AiLotteryRoll> Lottery, AiLotteryReason Reason, AttackThrowStoneAiSelectedPlan Plan);
 /// <summary>Failure hides all private preparation/scenarios/rolls/plan and restores original query RNG.</summary>
 public sealed record AttackThrowStoneAiPostActSelectionResult(bool Accepted, AttackThrowStoneAiPostActSelectionFailure? Failure,
-    AttackThrowStoneAiPostActSelectionOutcome? Outcome, FftRandomState RngState);
+    AttackThrowStoneAiPostActSelectionOutcome? Outcome, RandomState RngState);
 
 /// <summary>Own fresh pair post-ACT scenarios and the empty-ranking movement fallback, without an action scan or authority.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-209/213/214. No cached scenario/rank input or live RNG adoption.</remarks>
 public static class AttackThrowStoneAiPostActSelection
 {
     public static AttackThrowStoneAiPostActSelectionResult EvaluateInReach(AttackBattleSnapshot state,
-        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, FftRandomState decisionRng) =>
+        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, RandomState decisionRng) =>
         EvaluateCore(state, request, configuration, decisionRng, outOfReach: false);
 
     public static AttackThrowStoneAiPostActSelectionResult EvaluateOutOfReach(AttackBattleSnapshot state,
-        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, FftRandomState decisionRng) =>
+        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, RandomState decisionRng) =>
         EvaluateCore(state, request, configuration, decisionRng, outOfReach: true);
 
     private static AttackThrowStoneAiPostActSelectionResult EvaluateCore(AttackBattleSnapshot state,
-        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, FftRandomState decisionRng, bool outOfReach)
+        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, RandomState decisionRng, bool outOfReach)
     {
         AttackThrowStoneAiSelectionPipeline.ValidateInputs(state, request, configuration);
         AttackThrowStoneAiPostActSelectionResult Reject(AttackThrowStoneAiPostActSelectionFailure failure) => new(false, failure, null, decisionRng);

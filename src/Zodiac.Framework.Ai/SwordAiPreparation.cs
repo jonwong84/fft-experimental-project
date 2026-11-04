@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -29,7 +30,7 @@ public sealed record SwordAiPreparationOutcome(SwordAiRefreshOutcome Refresh,
 
 /// <summary>Failure returns original RNG with no partial refresh/preparation output.</summary>
 public sealed record SwordAiPreparationResult(bool Accepted, SwordAiPreparationRejection Rejection,
-    SwordAiRefreshRejection RefreshRejection, SwordAiPreparationOutcome? Outcome, FftRandomState RngState);
+    SwordAiRefreshRejection RefreshRejection, SwordAiPreparationOutcome? Outcome, RandomState RngState);
 
 /// <summary>Fresh pure refresh and ordinary NonBlue preparation, without selection or command authority.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-160/161/171/172/176/179. Preparation adds no draws after refresh.</remarks>
@@ -37,25 +38,25 @@ public static class SwordAiPreparation
 {
     public static SwordAiPreparationResult Evaluate(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
-        SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team, FftRandomState decisionRng)
+        SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team, RandomState decisionRng)
         => EvaluateCore(state, request, candidateProfile, scoreProfile, refreshProfile, preparationProfile, team, decisionRng, alreadyMoved: true);
 
     /// <summary>Own fresh both-unused refresh and full ordinary reachability, then derive policy on restored live state.</summary>
     public static SwordAiPreparationResult EvaluateUnmoved(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
-        SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team, FftRandomState decisionRng)
+        SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team, RandomState decisionRng)
         => EvaluateCore(state, request, candidateProfile, scoreProfile, refreshProfile, preparationProfile, team, decisionRng, alreadyMoved: false);
 
     /// <summary>Own fresh post-ACT refresh and derive reachability/policy from actual restored state, with Attack unusable.</summary>
     public static SwordAiPreparationResult EvaluateAfterAct(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
-        SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team, FftRandomState decisionRng)
+        SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team, RandomState decisionRng)
         => EvaluateCore(state, request, candidateProfile, scoreProfile, refreshProfile, preparationProfile, team, decisionRng,
             alreadyMoved: false, alreadyActed: true);
 
     private static SwordAiPreparationResult EvaluateCore(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
-        SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team, FftRandomState decisionRng,
+        SwordAiPreparationProfile preparationProfile, SwordAiScenarioTeam team, RandomState decisionRng,
         bool alreadyMoved, bool alreadyActed = false)
     {
         ArgumentNullException.ThrowIfNull(state);

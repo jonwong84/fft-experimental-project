@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework;
@@ -58,7 +59,7 @@ public sealed record FlatMovementOutcome(int EffectiveMove, int JumpHalf,
     ImmutableArray<TilePosition> PhysicalDestinations, ImmutableArray<FlatMovementResidual> RemainingRanges,
     ImmutableArray<TilePosition> AiOrigins, ImmutableArray<FlatMovementDistanceRow> TargetDistanceRows, FlatMovementPath? Path);
 /// <summary>Rejections return no partial outcome. Every result carries the unchanged input RNG.</summary>
-public sealed record FlatMovementQueryResult(bool Accepted, FlatMovementRejection Rejection, FlatMovementOutcome? Outcome, FftRandomState RngState);
+public sealed record FlatMovementQueryResult(bool Accepted, FlatMovementRejection Rejection, FlatMovementOutcome? Outcome, RandomState RngState);
 
 /// <summary>Pure opt-in geometry query for the certified open flat two-living-opponent profile.</summary>
 /// <remarks>

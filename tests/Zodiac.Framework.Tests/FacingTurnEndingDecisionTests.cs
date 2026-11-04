@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 
 namespace Zodiac.Framework.Tests;
@@ -14,7 +15,7 @@ public sealed class FacingTurnEndingDecisionTests
     [Fact]
     public void Verified_RNG_path_and_actual_receipt_settle_once_at_the_destination()
     {
-        var state = AfterAct(); var rng = new FftBiosRandom().Next(state.Battle.TurnBattle.Turns.RngState).State; int calls = 0;
+        var state = AfterAct(); var rng = new RandomStateGenerator().Next(state.Battle.TurnBattle.Turns.RngState).State; int calls = 0;
         var result = FacingDecisionBattle.Execute(state, A, c =>
         { calls++; return c.PrepareTurnEndingMove(Move, Movement, Facing, rng, "complete"); });
         Assert.True(result.Accepted); Assert.Equal(1, calls); Assert.Equal("complete", result.Diagnostic);
@@ -67,7 +68,7 @@ public sealed class FacingTurnEndingDecisionTests
     [Fact]
     public void Late_path_and_facing_failures_discard_adopted_RNG_events_path_and_diagnostics()
     {
-        var state = AfterAct(); var original = state.Battle.TurnBattle.Turns.RngState; var rng = new FftBiosRandom().Next(original).State;
+        var state = AfterAct(); var original = state.Battle.TurnBattle.Turns.RngState; var rng = new RandomStateGenerator().Next(original).State;
         var path = FacingDecisionBattle.Execute(state, A, c => c.PrepareTurnEndingMove(new(A, new(1, 1, 0)), Movement, Facing, rng, "private"));
         Atomic(state, path, FacingDecisionRejection.CommandRejected); Assert.Equal(FlatMovementRejection.InvalidDestination, path.PathRejection);
         var facing = FacingDecisionBattle.Execute(state, A, c => c.PrepareTurnEndingMove(Move, Movement,
@@ -85,7 +86,7 @@ public sealed class FacingTurnEndingDecisionTests
         Assert.True(moved.Accepted); Assert.Equal(ulong.MaxValue, moved.State.Revision);
         var shortBudget = Revision(actual, ulong.MaxValue - 1);
         var failed = FacingDecisionBattle.Execute(shortBudget, A, c => c.PrepareTurnEndingMove(Move, Movement, Facing,
-            new FftBiosRandom().Next(c.RngState).State, "private"));
+            new RandomStateGenerator().Next(c.RngState).State, "private"));
         Atomic(shortBudget, failed, FacingDecisionRejection.CommandRejected);
         Assert.Equal(FacingTurnRejection.RevisionExhausted, failed.Transition.FacingRejection);
         var wait = FacingDecisionBattle.Execute(shortBudget, A, c => c.PrepareWait(Facing, c.RngState, "wait"));
@@ -106,7 +107,7 @@ public sealed class FacingTurnEndingDecisionTests
     }
     private static FacingTurnState Ready()
     {
-        var rng = new FftRandomState(unchecked((1u - 12345u) * 4005161829u), 6);
+        var rng = new RandomState(unchecked((1u - 12345u) * 4005161829u), 6);
         var movement = new UnitMovementProfile(2, 0, 6, UnitMovementMode.Normal, UnitMovementTraits.None,
             [KeyValuePair.Create(Ground, new TerrainMovementCost(1))]);
         var map = new BattleMapDefinition(5, 3, 1, Enumerable.Repeat(new BattleTile(Ground, 10), 15).ToArray());

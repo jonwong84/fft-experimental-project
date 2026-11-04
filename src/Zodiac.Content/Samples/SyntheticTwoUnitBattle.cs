@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 using Zodiac.Content.BattleSetup;
 using Zodiac.Content.ContentPackages;
@@ -31,7 +32,7 @@ public static class SyntheticTwoUnitBattle
         var profile = new UnitMovementProfile(1, 2, 6, UnitMovementMode.Normal, UnitMovementTraits.None,
             [new(surface, new TerrainMovementCost(1))]);
         var map = new BattleMapDefinition(2, 2, 1, Enumerable.Repeat(new BattleTile(surface, 10), 4).ToArray());
-        var rng = FftBiosRandom.Seed(1);
+        var rng = RandomStateGenerator.Seed(1);
         var battle = new BattleState(map, [new(first, new(0, 0, 0), profile), new(second, new(1, 1, 0), profile)], rng);
         var turns = new TurnCycleState([new(first, 10, 0, 0), new(second, 10, 0, 1)], rng);
         var setup = AttackBattleSetup.Create(new(battle, turns),

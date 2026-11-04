@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework;
@@ -14,12 +15,12 @@ public enum TurnCyclePhase
 public sealed class TurnCycleState
 {
     public ImmutableArray<TurnUnitState> Units { get; }
-    public FftRandomState RngState { get; }
+    public RandomState RngState { get; }
     public ulong Ticks { get; }
     public TurnCyclePhase Phase { get; }
     public BattleUnitId? ActiveUnitId { get; }
 
-    public TurnCycleState(IEnumerable<TurnUnitState> units, FftRandomState rngState,
+    public TurnCycleState(IEnumerable<TurnUnitState> units, RandomState rngState,
         ulong ticks = 0, TurnCyclePhase phase = TurnCyclePhase.AddCt)
     {
         ArgumentNullException.ThrowIfNull(units);

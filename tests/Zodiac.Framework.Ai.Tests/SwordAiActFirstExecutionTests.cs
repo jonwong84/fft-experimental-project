@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.SwordAiPreparationTestData;
 
@@ -26,14 +27,14 @@ public sealed class SwordAiActFirstExecutionTests
         {
             var state = Ready(evade: evade, move: false, origin: new(2, 1, 0)); var before = Snapshot(state.Battle);
             var result = Start(state); var o = Success(result); var plan = o.Selection.Decision.Selection.Plan;
-            Assert.Equal(new FftRandomState(decisionWord, decisionCount), o.DecisionRng);
+            Assert.Equal(new RandomState(decisionWord, decisionCount), o.DecisionRng);
             Assert.Equal(4, o.Selection.Preparation.ReachableOrigins.Length);
             Assert.Equal(4, o.Selection.Decision.MovementScenario.Movement.Length);
             Assert.Equal(16838u, Assert.Single(o.Selection.Preparation.Refresh.UpkeepPicks).RawRoll);
             Assert.True(plan.ActBeforeMove); Assert.Equal(SwordAiDispatchKind.Attack, o.Dispatch.Kind); Assert.Null(o.Dispatch.Move);
             Assert.Equal(new SwordAiSavedChoices(A, false, false), o.Dispatch.RecordedChoices);
             Assert.Equal(new AttackResolvedEvent(A, B, hit, false, hit ? 25 : 0), Assert.Single(result.Events.OfType<AttackResolvedEvent>()));
-            Assert.Equal(new FftRandomState(actualWord, actualCount), result.State.Battle.TurnBattle.Turns.RngState);
+            Assert.Equal(new RandomState(actualWord, actualCount), result.State.Battle.TurnBattle.Turns.RngState);
             Assert.Equal(result.State.Battle.TurnBattle.Turns.RngState, result.State.Battle.TurnBattle.Battle.RngState);
             Assert.Equal(hit ? 25 : 50, result.State.Battle.Combatants.Single(u => u.UnitId == B).Hp);
             var actor = result.State.Battle.TurnBattle.Turns.Units.Single(u => u.Id == A);
@@ -117,7 +118,7 @@ public sealed class SwordAiActFirstExecutionTests
             Success(first); Success(replay); Success(reversed);
             Assert.Equal(Serialize(first.Outcome), Serialize(replay.Outcome)); Assert.Equal(Serialize(first.Outcome), Serialize(reversed.Outcome));
             Assert.Equal(Snapshot(first.State.Battle), Snapshot(replay.State.Battle)); Assert.Equal(Snapshot(first.State.Battle), Snapshot(reversed.State.Battle));
-            Assert.Equal(before, Snapshot(state.Battle)); Assert.Equal(new FftRandomState(1, 7), state.Battle.TurnBattle.Turns.RngState);
+            Assert.Equal(before, Snapshot(state.Battle)); Assert.Equal(new RandomState(1, 7), state.Battle.TurnBattle.Turns.RngState);
         }
     }
 

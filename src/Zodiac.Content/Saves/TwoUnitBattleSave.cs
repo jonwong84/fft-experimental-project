@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -42,7 +43,7 @@ public static partial class TwoUnitBattleSave
                 turn.Ct, turn.MovementTaken, turn.ActionTaken);
         }).ToArray();
         var snapshot = new SnapshotDto(profile.Id, profile.Version, profile.ContentVersion, state.Definition.Id.Value,
-            FftBiosRandom.AlgorithmId, new(turns.Ticks, PhaseText(turns.Phase), turns.ActiveUnitId?.Value,
+            RandomStateGenerator.AlgorithmId, new(turns.Ticks, PhaseText(turns.Phase), turns.ActiveUnitId?.Value,
                 turns.RngState.Value, turns.RngState.DrawCount, OutcomeText(state.Outcome), units));
         string json = JsonSerializer.Serialize(new Envelope<SnapshotDto>(Format, SchemaVersion, Hash(snapshot), snapshot), JsonOptions) + "\n";
         if (Encoding.UTF8.GetByteCount(json) > MaxJsonBytes) throw new BattleSaveValidationException("Save exceeds its JSON byte budget.");
@@ -74,7 +75,7 @@ public static partial class TwoUnitBattleSave
                 var envelope = JsonSerializer.Deserialize<Envelope<LegacySnapshotDto>>(json, JsonOptions)!;
                 ValidateEnvelope(envelope); // Verify legacy bytes/fields before migration.
                 var old = envelope.Snapshot;
-                snapshot = new(old.ProfileId, old.ProfileVersion, old.ContentVersion, old.ScenarioId, FftBiosRandom.AlgorithmId, old.Battle);
+                snapshot = new(old.ProfileId, old.ProfileVersion, old.ContentVersion, old.ScenarioId, RandomStateGenerator.AlgorithmId, old.Battle);
             }
             else throw new BattleSaveValidationException($"Unsupported save schema version {version}; supported versions are 1 and {SchemaVersion}.");
             return new(Restore(profile, snapshot), version);
@@ -105,7 +106,7 @@ public static partial class TwoUnitBattleSave
         if (saved.ProfileId != profile.Id || saved.ProfileVersion != profile.Version || saved.ContentVersion != profile.ContentVersion)
             throw new BattleSaveValidationException("Save content profile ID/version or content version does not match the selected profile.");
         if (saved.ScenarioId != profile.Definition.Id.Value) throw new BattleSaveValidationException("Save scenario ID is not the selected definition.");
-        if (saved.RngAlgorithmId != FftBiosRandom.AlgorithmId) throw new BattleSaveValidationException("Unsupported RNG algorithm ID.");
+        if (saved.RngAlgorithmId != RandomStateGenerator.AlgorithmId) throw new BattleSaveValidationException("Unsupported RNG algorithm ID.");
         var data = saved.Battle;
         if (data.Units.Length != 2 || data.Units.Any(unit => unit is null))
             throw new BattleSaveValidationException("Save requires exactly two nonnull units.");
@@ -118,7 +119,7 @@ public static partial class TwoUnitBattleSave
         BattleUnitId? active = data.ActiveUnitId is null ? null : new(CheckId(data.ActiveUnitId));
         var initial = profile.Definition.InitialBattle;
         if (active is { } id && !byId.ContainsKey(id)) throw new BattleSaveValidationException("Active unit ID is missing from the save.");
-        var rng = new FftRandomState(data.RngWord, data.RngDrawCount);
+        var rng = new RandomState(data.RngWord, data.RngDrawCount);
         var movement = new List<BattleUnitState>();
         var turns = new List<TurnUnitState>();
         var combatants = new List<AttackUnitState>();

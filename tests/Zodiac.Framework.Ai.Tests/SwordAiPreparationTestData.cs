@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 using System.Text.Json;
 
@@ -8,7 +9,7 @@ internal static class SwordAiPreparationTestData
     internal static readonly BattleUnitId A = new("sample:unit/a"), B = new("sample:unit/b");
     internal static readonly TerrainSurfaceId Ground = new("sample:terrain/ordinary-ground");
     internal static readonly AssetId Weapon = new("sample:item/plain-sword");
-    internal static readonly FftRandomState Rng = new(1, 7), LiveRng = new(57, 100);
+    internal static readonly RandomState Rng = new(1, 7), LiveRng = new(57, 100);
     internal static readonly SwordAiCandidateProfile Candidate = new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 19)]);
     internal static readonly AiScoreProfile Score = new([new(A, AiScoreFacts.ClosedProfile), new(B, AiScoreFacts.ClosedProfile)]);
     internal static readonly SwordAiRefreshProfile Refresh = new(true, true, true);
@@ -42,7 +43,7 @@ internal static class SwordAiPreparationTestData
     {
         var actor = second ? B : A; var target = second ? A : B;
         // Inverse BIOS step gives the requested entry through an actual upkeep draw; legacy fixtures then Move.
-        var rng = new FftRandomState(unchecked((entryWord - 12345u) * 4005161829u), count - 1);
+        var rng = new RandomState(unchecked((entryWord - 12345u) * 4005161829u), count - 1);
         var movement = new UnitMovementProfile(movePoints, 0, 6, UnitMovementMode.Normal, UnitMovementTraits.None,
             [KeyValuePair.Create(Ground, new TerrainMovementCost(1))]);
         BattleUnitState[] bodies = [new(actor, origin ?? new(3, 1, 0), movement), new(target, new(1, 1, 0), movement)];

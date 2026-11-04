@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Zodiac.Framework;
 using Xunit;
 
@@ -14,7 +15,7 @@ public sealed class BattleRandomStateTests
     [InlineData(BattleMovementPolicy.OrdinaryAdjacentStepPrototype)]
     public void Movement_replays_preserve_full_rng_state_and_count_without_mutating_inputs(BattleMovementPolicy policy)
     {
-        var rng = new FftRandomState(0xfedcba98u, 0xfedcba9876543210UL);
+        var rng = new RandomState(0xfedcba98u, 0xfedcba9876543210UL);
         BattleState initial = State(rng);
         BattleTransitionResult[] first = Replay(initial, policy);
         BattleTransitionResult[] repeated = Replay(initial, policy);
@@ -45,7 +46,7 @@ public sealed class BattleRandomStateTests
     [InlineData(BattleMovementPolicy.OrdinaryAdjacentStepPrototype)]
     public void Movement_does_not_attempt_a_draw_even_when_counter_is_exhausted(BattleMovementPolicy policy)
     {
-        var rng = new FftRandomState(uint.MaxValue, ulong.MaxValue);
+        var rng = new RandomState(uint.MaxValue, ulong.MaxValue);
         foreach (BattleTransitionResult result in Replay(State(rng), policy))
             Assert.Equal(rng, result.State.RngState);
     }
@@ -73,7 +74,7 @@ public sealed class BattleRandomStateTests
         foreach (MoveUnitCommand command in commands)
         {
             BattleUnitState[] unitsBefore = state.Units.ToArray();
-            FftRandomState? rngBefore = state.RngState;
+            RandomState? rngBefore = state.RngState;
             BattleTransitionResult result = BattleSimulator.Apply(state, command, policy);
             Assert.Equal(unitsBefore, state.Units.ToArray());
             Assert.Equal(rngBefore, state.RngState);
@@ -95,7 +96,7 @@ public sealed class BattleRandomStateTests
         return results.ToArray();
     }
 
-    private static BattleState State(FftRandomState? rng)
+    private static BattleState State(RandomState? rng)
     {
         var surface = new TerrainSurfaceId("fixture:terrain/ground");
         var map = new BattleMapDefinition(3, 2, 1, Enumerable.Repeat(new BattleTile(surface, 0), 6).ToArray());

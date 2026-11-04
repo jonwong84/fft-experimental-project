@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Fft.Client.Presentation;
 using Zodiac.Content.Samples;
@@ -26,7 +27,7 @@ public sealed class BattleInteractionTests
             Assert.Equal(BattleInteractionMode.Inspect, ui.Mode);
         }
         Assert.Equal(TwoUnitBattleOutcome.FirstUnitWon, ui.State.Outcome);
-        Assert.Equal(new FftRandomState(2473755763, 22), ui.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(2473755763, 22), ui.State.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(SyntheticTwoUnitBattle.Commands.ToArray(), ui.Journal.ToArray());
         var replay = definition.Start();
         foreach (var command in ui.Journal) replay = TwoUnitBattleScenario.Apply(replay, command).State;

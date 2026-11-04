@@ -1,9 +1,10 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
 
 /// <summary>Fresh hypothetical movement score and source origin key; never accepted as trusted query input.</summary>
-public sealed record AiScoredMovementTile(AiMovementBaselineOutcome Outcome, byte Proximity, FftRandomState RngState)
+public sealed record AiScoredMovementTile(AiMovementBaselineOutcome Outcome, byte Proximity, RandomState RngState)
 {
     public short TilePriority => unchecked((short)-Outcome.Score.Priority);
     public int OriginKey => TilePriority * 65536 + Proximity;
@@ -30,13 +31,13 @@ internal sealed record AiProximityCache(byte ActorDelay, int TargetDelay, Battle
 internal sealed record AiMovementPrefixOutcome(ImmutableArray<AiScoredMovementTile> Movement,
     int BaselineIndex, AiProximityCache Proximity);
 internal sealed record AiMovementPrefixResult(AiSimulationClockRejection Rejection, int? FailedIndex,
-    AiMovementPrefixOutcome? Outcome, FftRandomState RngState);
+    AiMovementPrefixOutcome? Outcome, RandomState RngState);
 
 /// <summary>Shared prefix after family admission; source map order and one original proximity cache.</summary>
 internal static class AiMovementPrefix
 {
     internal static AiMovementPrefixResult Evaluate(AttackBattleSnapshot state, BattleUnitId actorId, BattleUnitId targetId,
-        IEnumerable<TilePosition> origins, TilePosition? baselineDestination, ImmutableArray<AiUnitBaseline> units, FftRandomState decisionRng,
+        IEnumerable<TilePosition> origins, TilePosition? baselineDestination, ImmutableArray<AiUnitBaseline> units, RandomState decisionRng,
         IEnumerable<TilePosition>? proximityOrigins = null)
     {
         var ordered = origins.OrderBy(p => p.Layer).ThenBy(p => p.Y).ThenBy(p => p.X).ToArray();

@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Xunit;
 
@@ -8,7 +9,7 @@ public sealed class SwordAiWaitFacingTests
 {
     private static readonly BattleUnitId A = new("sample:unit/a"), B = new("sample:unit/b");
     private static readonly TerrainSurfaceId Ground = new("sample:terrain/ordinary-ground");
-    private static readonly FftRandomState Rng = new(19, ulong.MaxValue), Live = new(57, 100);
+    private static readonly RandomState Rng = new(19, ulong.MaxValue), Live = new(57, 100);
     private static readonly FlatOrdinaryMovementProfile Movement = new(Ground, A, B);
     private static readonly SwordAiWaitFacingProfile Profile = new(true, true);
 

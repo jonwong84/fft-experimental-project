@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework;
@@ -9,7 +10,7 @@ public sealed class FacingDecision<T>
 {
     internal FacingDecisionContext Owner { get; }
     internal FacingDecisionKind Kind { get; }
-    internal FftRandomState Rng { get; }
+    internal RandomState Rng { get; }
     internal AttackUnitCommand? Attack { get; }
     internal BoundedSwordWeapon? Weapon { get; }
     internal FacingChoice? Facing { get; }
@@ -18,7 +19,7 @@ public sealed class FacingDecision<T>
     internal UseTargetedAbilityCommand? TargetedAbility { get; }
     internal TargetedAbilityBattleProfile? AbilityProfile { get; }
     internal T? Diagnostic { get; }
-    internal FacingDecision(FacingDecisionContext owner, FacingDecisionKind kind, FftRandomState rng,
+    internal FacingDecision(FacingDecisionContext owner, FacingDecisionKind kind, RandomState rng,
         T? diagnostic, AttackUnitCommand? attack = null, BoundedSwordWeapon? weapon = null, FacingChoice? facing = null,
         MoveUnitCommand? move = null, FlatOrdinaryMovementProfile? movementProfile = null,
         UseTargetedAbilityCommand? targetedAbility = null, TargetedAbilityBattleProfile? abilityProfile = null)
@@ -32,21 +33,21 @@ public sealed class FacingDecisionContext
     private bool closed;
     public AttackBattleSnapshot Battle { get; }
     public BattleUnitId ActorId { get; }
-    public FftRandomState RngState => Battle.TurnBattle.Turns.RngState;
+    public RandomState RngState => Battle.TurnBattle.Turns.RngState;
     internal FacingDecisionContext(AttackBattleSnapshot battle, BattleUnitId actorId) { Battle = battle; ActorId = actorId; }
     internal void Close() => closed = true;
     private void CheckOpen()
     { if (closed) throw new InvalidOperationException("The planning invocation has ended."); }
     public FacingDecision<T> Reject<T>()
     { CheckOpen(); return new(this, FacingDecisionKind.Rejected, RngState, default); }
-    public FacingDecision<T> PrepareAttack<T>(AttackUnitCommand command, BoundedSwordWeapon? weapon, FftRandomState rng, T diagnostic)
+    public FacingDecision<T> PrepareAttack<T>(AttackUnitCommand command, BoundedSwordWeapon? weapon, RandomState rng, T diagnostic)
     { CheckOpen(); ArgumentNullException.ThrowIfNull(command); return new(this, FacingDecisionKind.Attack, rng, diagnostic, command, weapon); }
-    public FacingDecision<T> PrepareWait<T>(FacingChoice facing, FftRandomState rng, T diagnostic)
+    public FacingDecision<T> PrepareWait<T>(FacingChoice facing, RandomState rng, T diagnostic)
     { CheckOpen(); ArgumentNullException.ThrowIfNull(facing); return new(this, FacingDecisionKind.Wait, rng, diagnostic, facing: facing); }
 
     /// <summary>Prepare one actual targeted ACT; grants/range and current choices are revalidated by Framework.</summary>
     public FacingDecision<T> PrepareTargetedAbility<T>(UseTargetedAbilityCommand command, TargetedAbilityBattleProfile profile,
-        FftRandomState rng, T diagnostic)
+        RandomState rng, T diagnostic)
     {
         CheckOpen(); ArgumentNullException.ThrowIfNull(command); ArgumentNullException.ThrowIfNull(profile);
         return new(this, FacingDecisionKind.TargetedAbility, rng, diagnostic, targetedAbility: command, abilityProfile: profile);
@@ -54,7 +55,7 @@ public sealed class FacingDecisionContext
 
     /// <summary>Prepare an ACT-used/Move-unused confirmed path and settle its actual completion facing atomically.</summary>
     public FacingDecision<T> PrepareTurnEndingMove<T>(MoveUnitCommand command, FlatOrdinaryMovementProfile profile,
-        FacingChoice facing, FftRandomState rng, T diagnostic)
+        FacingChoice facing, RandomState rng, T diagnostic)
     {
         CheckOpen(); ArgumentNullException.ThrowIfNull(command); ArgumentNullException.ThrowIfNull(profile); ArgumentNullException.ThrowIfNull(facing);
         return new(this, FacingDecisionKind.TurnEndingMove, rng, diagnostic, facing: facing, move: command, movementProfile: profile);
@@ -92,7 +93,7 @@ public static class FacingDecisionBattle
         finally { context.Close(); }
         if (decision is null || !ReferenceEquals(decision.Owner, context)) return Reject(FacingDecisionRejection.InvalidDecision);
         if (decision.Kind == FacingDecisionKind.Rejected) return Reject(FacingDecisionRejection.DecisionRejected);
-        if (!FftBiosRandom.IsForwardCheckpoint(context.RngState, decision.Rng)) return Reject(FacingDecisionRejection.InvalidRandomProgress);
+        if (!RandomStateGenerator.IsForwardCheckpoint(context.RngState, decision.Rng)) return Reject(FacingDecisionRejection.InvalidRandomProgress);
         if (decision.Kind == FacingDecisionKind.Attack && decision.Attack!.ActorId != actorId)
             return Reject(FacingDecisionRejection.AuthorityRejected, FacingTurnBattle.Reject(state, FacingTurnRejection.WrongActor));
         if (decision.Kind == FacingDecisionKind.TargetedAbility && decision.TargetedAbility!.ActorId != actorId)

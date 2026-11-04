@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Xunit;
 
@@ -9,14 +10,14 @@ public sealed class SwordAiOutOfReachSelectionTests
     private static readonly TerrainSurfaceId Ground = new("sample:terrain/ordinary-ground");
     private static readonly BattleUnitId A = new("sample:unit/a"), B = new("sample:unit/b");
     private static readonly AssetId Weapon = new("sample:item/plain-sword");
-    private static readonly FftRandomState Decision = new(1, 7), Live = new(57, 100);
+    private static readonly RandomState Decision = new(1, 7), Live = new(57, 100);
     private static readonly SwordAiCandidateProfile Candidate = new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 19)]);
     private static readonly AiScoreProfile Score = new([new(A, AiScoreFacts.ClosedProfile), new(B, AiScoreFacts.ClosedProfile)]);
     private static readonly SwordAiMovementScenarioProfile Scenario = new(true, true, true);
     private static readonly SwordAiDerivedSelectionProfile Derived = new(true, true, true, true, true, true, true, FirstAttackEntry: true);
     private static readonly SwordAiSelectionProfile Selection = new(true, true, true);
     private sealed record Frame(AttackBattleSnapshot State, BoundedSwordWeapon? Weapon, SwordAiScenarioTeam Team,
-        SwordAiComparisonProfile Comparison, SwordAiDerivedSelectionProfile Derived, SwordAiSelectionProfile Selection, FftRandomState Rng);
+        SwordAiComparisonProfile Comparison, SwordAiDerivedSelectionProfile Derived, SwordAiSelectionProfile Selection, RandomState Rng);
     private static Frame Setup(AttackBattleSnapshot? state = null, bool second = false) => new(state ?? State(), new(Weapon, 5),
         SwordAiScenarioTeam.NonBlue, new(second ? B : A, second ? A : B, true), Derived, Selection, Decision);
     private static SwordAiOutOfReachSelectionResult Evaluate(Frame f) => SwordAiDerivedSelection.EvaluateOutOfReach(f.State,
@@ -46,7 +47,7 @@ public sealed class SwordAiOutOfReachSelectionTests
         Assert.Equal(new TilePosition(destination, 0, 0), o.Selection.Plan.Destination);
         Assert.Equal(m.Scenario.BaselineDestination, o.Selection.Plan.Destination);
         Assert.Equal(SwordAiWaitFacingHint.ChooseAtWait, o.Selection.Plan.WaitFacingHint);
-        Assert.Equal(new FftRandomState(word, count), result.RngState);
+        Assert.Equal(new RandomState(word, count), result.RngState);
         Assert.Equal(team == SwordAiScenarioTeam.Blue ? 10ul : 11ul, o.Selection.LotteryEntryRng.DrawCount);
         if (team == SwordAiScenarioTeam.Blue) Assert.Equal(c.Movement[^1].RngState, o.Selection.LotteryEntryRng);
         else

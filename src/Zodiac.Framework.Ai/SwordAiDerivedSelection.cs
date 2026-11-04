@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -14,12 +15,12 @@ public sealed record SwordAiDerivedSelectionFailure(SwordAiDerivedSelectionRejec
 public sealed record SwordAiDerivedSelectionOutcome(SwordAiMovementScenarioOutcome MovementScenario, SwordAiSelectionOutcome Selection);
 /// <summary>Failure returns original whole-query RNG with no partial scenario/composition/lottery/plan.</summary>
 public sealed record SwordAiDerivedSelectionResult(bool Accepted, SwordAiDerivedSelectionFailure? Failure,
-    SwordAiDerivedSelectionOutcome? Outcome, FftRandomState RngState);
+    SwordAiDerivedSelectionOutcome? Outcome, RandomState RngState);
 
 public sealed record SwordAiOutOfReachSelectionOutcome(SwordAiOutOfReachScenarioOutcome MovementScenario,
     SwordAiSelectionOutcome Selection);
 public sealed record SwordAiOutOfReachSelectionResult(bool Accepted, SwordAiDerivedSelectionFailure? Failure,
-    SwordAiOutOfReachSelectionOutcome? Outcome, FftRandomState RngState);
+    SwordAiOutOfReachSelectionOutcome? Outcome, RandomState RngState);
 
 /// <summary>Fresh explicit focused-sword movement branch through one first/terminal Attack pass and source lottery.</summary>
 /// <remarks>
@@ -31,7 +32,7 @@ public static class SwordAiDerivedSelection
     public static SwordAiDerivedSelectionResult Evaluate(AttackBattleSnapshot state, BoundedSwordWeapon? weapon,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
         SwordAiMovementScenarioProfile scenarioProfile, SwordAiDerivedSelectionProfile derivedProfile,
-        SwordAiSelectionProfile selectionProfile, FftRandomState decisionRng)
+        SwordAiSelectionProfile selectionProfile, RandomState decisionRng)
         => EvaluateCore(state, weapon, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile,
             derivedProfile, selectionProfile, decisionRng, null).Result;
 
@@ -39,7 +40,7 @@ public static class SwordAiDerivedSelection
     public static SwordAiOutOfReachSelectionResult EvaluateOutOfReach(AttackBattleSnapshot state, BoundedSwordWeapon? weapon,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
         SwordAiMovementScenarioProfile scenarioProfile, SwordAiDerivedSelectionProfile derivedProfile,
-        SwordAiSelectionProfile selectionProfile, SwordAiScenarioTeam team, FftRandomState decisionRng)
+        SwordAiSelectionProfile selectionProfile, SwordAiScenarioTeam team, RandomState decisionRng)
     {
         var core = EvaluateCore(state, weapon, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile,
             derivedProfile, selectionProfile, decisionRng, team);
@@ -53,7 +54,7 @@ public static class SwordAiDerivedSelection
     private static CoreResult EvaluateCore(AttackBattleSnapshot state, BoundedSwordWeapon? weapon,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
         SwordAiMovementScenarioProfile scenarioProfile, SwordAiDerivedSelectionProfile derivedProfile,
-        SwordAiSelectionProfile selectionProfile, FftRandomState decisionRng, SwordAiScenarioTeam? team)
+        SwordAiSelectionProfile selectionProfile, RandomState decisionRng, SwordAiScenarioTeam? team)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(candidateProfile);
@@ -79,7 +80,7 @@ public static class SwordAiDerivedSelection
                 AdmissionFailure: invalid));
 
         SwordAiMovementScenarioOutcome fresh;
-        FftRandomState movementRng;
+        RandomState movementRng;
         SwordAiOutOfReachScenarioOutcome? outOfReach = null;
         if (team is { } sourceTeam)
         {

@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.SwordAiPreparationTestData;
@@ -22,13 +23,13 @@ public sealed class SwordAiUnmovedPreparationTests
             var state = State(ct: actor.GetProperty("ct").GetInt32(), targetCt: target.GetProperty("ct").GetInt32(),
                 speed: actor.GetProperty("speed").GetInt32(), targetSpeed: target.GetProperty("speed").GetInt32(),
                 ticks: input.GetProperty("ticks").GetUInt64(), moved: false, reverse: units[0].GetProperty("id").GetString() == "b");
-            var rng = new FftRandomState(input.GetProperty("word").GetUInt32(), input.GetProperty("count").GetUInt64());
+            var rng = new RandomState(input.GetProperty("word").GetUInt32(), input.GetProperty("count").GetUInt64());
             var before = Snapshot(state);
             var refresh = SwordAiRefresh.EvaluateUnmoved(state, Request(), Candidate, Score, Refresh, rng);
             var preparation = Evaluate(state, rng: rng);
             Assert.Equal(expected.GetProperty("accepted").GetBoolean(), refresh.Accepted);
             Assert.Equal(refresh.Accepted, preparation.Accepted);
-            var final = new FftRandomState(expected.GetProperty("word").GetUInt32(), expected.GetProperty("count").GetUInt64());
+            var final = new RandomState(expected.GetProperty("word").GetUInt32(), expected.GetProperty("count").GetUInt64());
             Assert.Equal(final, refresh.RngState); Assert.Equal(final, preparation.RngState);
             if (refresh.Accepted)
             {
@@ -66,7 +67,7 @@ public sealed class SwordAiUnmovedPreparationTests
             Assert.Equal(expected, o.ReachableOrigins);
             Assert.Equal((move + 1, move), (o.EnemyAbilityReach, o.AllyAbilityReach));
             Assert.Equal((new TilePosition(3, 1, 0), new TilePosition(1, 1, 0)), (o.Origin, o.FocusPosition));
-            Assert.Equal(new FftRandomState(1103527590, 8), result.RngState);
+            Assert.Equal(new RandomState(1103527590, 8), result.RngState);
             Assert.Equal(55, o.Refresh.TurnEndCt); Assert.Equal(60, o.Refresh.Units.Single(u => u.UnitId == A).Ct);
             Assert.Equal((17, 1, (byte)8), (o.ActorDelay, o.TargetDelay, o.FoeProximity));
             Assert.Equal(before, Snapshot(state));
@@ -133,7 +134,7 @@ public sealed class SwordAiUnmovedPreparationTests
             Assert.Equal(Serialize(result), Serialize(Evaluate(state, request)));
             Assert.Equal(Serialize(result), Serialize(Evaluate(State(moved: false, second: second, reverse: true, distance: 2), Request(second, reverse: true))));
             Assert.Equal(request.TargetId, o.Refresh.RefreshedUnits.Single(u => u.Enemy).UnitId);
-            Assert.Equal(new FftRandomState(2524885223, 9), Evaluate(state, request, rng: result.RngState).RngState);
+            Assert.Equal(new RandomState(2524885223, 9), Evaluate(state, request, rng: result.RngState).RngState);
             Assert.Equal(before, Snapshot(state));
             Assert.Equal(LiveRng, state.TurnBattle.Turns.RngState); Assert.Equal(LiveRng, state.TurnBattle.Battle.RngState);
         }
@@ -141,7 +142,7 @@ public sealed class SwordAiUnmovedPreparationTests
 
     private static SwordAiPreparationResult Evaluate(AttackBattleSnapshot state, SwordAiRefreshRequest? request = null,
         SwordAiPreparationProfile? profile = null, SwordAiRefreshProfile? refresh = null,
-        SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue, FftRandomState? rng = null) =>
+        SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue, RandomState? rng = null) =>
         SwordAiPreparation.EvaluateUnmoved(state, request ?? Request(), Candidate, Score, refresh ?? Refresh,
             profile ?? Preparation, team, rng ?? Rng);
     private static SwordAiPreparationOutcome Success(SwordAiPreparationResult result)

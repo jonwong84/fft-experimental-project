@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.AttackThrowStoneAiTestData;
@@ -21,7 +22,7 @@ public sealed class AttackThrowStoneAiPreparationTests
         Assert.Equal((55, 1ul, 21ul, B), (common.Refresh.TurnEndCt, common.Refresh.ElapsedTicks, common.Refresh.Ticks, common.Refresh.MoveOpportunityUnitId));
         Assert.Equal(60, common.Refresh.Units.Single(u => u.UnitId == A).Ct);
         Assert.Equal((17, 1, 4, 3, (byte)9), (common.ActorDelay, common.TargetDelay, common.EnemyAbilityReach, common.AllyAbilityReach, common.FoeProximity));
-        Assert.Equal(new FftRandomState(1103527590, 8), result.RngState);
+        Assert.Equal(new RandomState(1103527590, 8), result.RngState);
         Assert.All(outcome.Units, unit => {
             Assert.Equal(new AttackThrowStoneAiInitializedStatistics(3, 0, 0, 2, 0, null), unit.Initialized);
             Assert.Equal((2, 0, true, false), (unit.UsableHarmfulAbilities, unit.UsableHelpfulAbilities, unit.HasRangedAbility, unit.CanHealAllies));
@@ -65,7 +66,7 @@ public sealed class AttackThrowStoneAiPreparationTests
     [Fact]
     public void One_draw_exact_budget_and_tick_exhaustion_publish_no_partial_preparation_or_progressed_RNG()
     {
-        var last = new FftRandomState(1, ulong.MaxValue - 1); var fits = Prepare(Battle(), rng: last); Success(fits);
+        var last = new RandomState(1, ulong.MaxValue - 1); var fits = Prepare(Battle(), rng: last); Success(fits);
         Assert.Equal(ulong.MaxValue, fits.RngState.DrawCount);
         var exhausted = last with { DrawCount = ulong.MaxValue };
         Assert.Equal(SwordAiRefreshRejection.RandomDrawCountExhausted,
@@ -122,7 +123,7 @@ public sealed class AttackThrowStoneAiPreparationTests
 
     private static AttackThrowStoneAiPreparationResult Prepare(AttackBattleSnapshot state, SwordAiRefreshRequest? request = null,
         AttackThrowStoneAiPreparationProfile? preparation = null, SwordAiRefreshProfile? refresh = null,
-        ThrowStoneAiCandidateProfile? stone = null, SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue, FftRandomState? rng = null)
+        ThrowStoneAiCandidateProfile? stone = null, SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue, RandomState? rng = null)
     {
         var p = Profile(); return AttackThrowStoneAiPreparation.Evaluate(state, request ?? RefreshRequest(), Stone, new(Sword, 2),
             p.Attack, stone ?? p.ThrowStone, p.Score, refresh ?? Refresh, preparation ?? Preparation, team, rng ?? Decision);
@@ -130,7 +131,7 @@ public sealed class AttackThrowStoneAiPreparationTests
     private static AttackThrowStoneAiPreparationOutcome Success(AttackThrowStoneAiPreparationResult result)
     { Assert.True(result.Accepted, Serialize(result.Failure)); Assert.Null(result.Failure); return Assert.IsType<AttackThrowStoneAiPreparationOutcome>(result.Outcome); }
     private static AttackThrowStoneAiPreparationFailure Atomic(AttackThrowStoneAiPreparationResult result,
-        AttackThrowStoneAiPreparationRejection reason, FftRandomState? rng = null)
+        AttackThrowStoneAiPreparationRejection reason, RandomState? rng = null)
     { Assert.False(result.Accepted); Assert.Null(result.Outcome); Assert.Equal(rng ?? Decision, result.RngState);
         var failure = Assert.IsType<AttackThrowStoneAiPreparationFailure>(result.Failure); Assert.Equal(reason, failure.Reason); return failure; }
 }

@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.SwordAiPreparationTestData;
 
@@ -18,7 +19,7 @@ public sealed class SwordAiPreparedMoveFirstTests
         {
             var state = Ready(evade: evade, move: false); var before = Snapshot(state.Battle);
             var moved = Start(state); var o = Success(moved); var prep = Assert.IsType<SwordAiPreparationOutcome>(o.Preparation);
-            Assert.Equal(new FftRandomState(decisionWord, decisionCount), o.DecisionRng);
+            Assert.Equal(new RandomState(decisionWord, decisionCount), o.DecisionRng);
             Assert.Equal(16838u, Assert.Single(prep.Refresh.UpkeepPicks).RawRoll); Assert.Equal(55, prep.Refresh.TurnEndCt);
             Assert.Equal(60, prep.Refresh.Units.Single(u => u.UnitId == A).Ct);
             Assert.Equal(5, prep.ReachableOrigins.Length); Assert.Equal(5, o.Decision.MovementScenario.Movement.Length);
@@ -32,7 +33,7 @@ public sealed class SwordAiPreparedMoveFirstTests
             Assert.Equal(o.DecisionRng, moved.State.Battle.TurnBattle.Battle.RngState);
             var next = FacingMoveDecisionBattle.Continue(moved.State, A, moved.Continuation); Assert.True(next.Accepted);
             Assert.Equal(new AttackResolvedEvent(A, B, hit, false, hit ? 25 : 0), Assert.Single(next.Events.OfType<AttackResolvedEvent>()));
-            Assert.Equal(new FftRandomState(actualWord, actualCount), next.State.Battle.TurnBattle.Turns.RngState);
+            Assert.Equal(new RandomState(actualWord, actualCount), next.State.Battle.TurnBattle.Turns.RngState);
             Assert.Equal(hit ? 25 : 50, next.State.Battle.Combatants.Single(u => u.UnitId == B).Hp);
             Assert.Equal(moved.State.Revision + 1, next.State.Revision);
             Assert.True(FacingTurnBattle.FinishFacing(next.State, A, next.State.PendingFacing, new FacingChoice.ChooseClosedEnemy(B)).Accepted);

@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Zodiac.Framework;
 using Xunit;
 
@@ -107,7 +108,7 @@ public sealed class ImmediateAbilityBattleTests
 
     private static AttackBattleSnapshot State(int pa = 5, bool moved = false, bool acted = false, ulong count = 0, bool water = false)
     {
-        var rng = new FftRandomState(1, count);
+        var rng = new RandomState(1, count);
         var tiles = Enumerable.Repeat(new BattleTile(10), 4).ToArray();
         if (water) tiles[0] = new(new TerrainSurfaceId("sample:terrain/ground"), 10, 0, 1, default);
         var map = new BattleMapDefinition(2, 2, 1, tiles);

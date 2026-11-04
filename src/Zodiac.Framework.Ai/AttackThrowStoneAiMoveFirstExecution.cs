@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -7,7 +8,7 @@ public enum AttackThrowStoneAiMoveFirstRejection { UnsupportedDispatchContext, S
 public sealed record AttackThrowStoneAiMoveFirstFailure(AttackThrowStoneAiMoveFirstRejection Reason,
     AttackThrowStoneAiPreparedSelectionFailure? SelectionFailure = null, FacingMoveRejection BoundaryReason = FacingMoveRejection.None);
 public sealed record AttackThrowStoneAiMoveFirstOutcome(AttackThrowStoneAiPreparedSelectionOutcome Decision,
-    MoveUnitCommand Move, FftRandomState DecisionRng);
+    MoveUnitCommand Move, RandomState DecisionRng);
 public sealed record AttackThrowStoneAiMoveFirstResult(AttackThrowStoneAiMoveFirstFailure? Failure,
     FacingMoveResult<AttackThrowStoneAiMoveFirstOutcome> Move)
 {
@@ -19,7 +20,7 @@ public sealed record AttackThrowStoneAiMoveFirstResult(AttackThrowStoneAiMoveFir
     public AttackThrowStoneAiMoveFirstOutcome? Outcome => Move.Diagnostic;
 }
 public sealed record AttackThrowStoneAiOutOfReachMoveFirstOutcome(AttackThrowStoneAiOutOfReachSelectionOutcome Decision,
-    MoveUnitCommand Move, FftRandomState DecisionRng);
+    MoveUnitCommand Move, RandomState DecisionRng);
 public sealed record AttackThrowStoneAiOutOfReachMoveFirstResult(AttackThrowStoneAiMoveFirstFailure? Failure,
     FacingMoveResult<AttackThrowStoneAiOutOfReachMoveFirstOutcome> Move)
 {
@@ -64,11 +65,11 @@ public static class AttackThrowStoneAiMoveFirstExecution
 
     // Only the two owning entry points supply these fresh selectors. No public delegate or cached-result input exists.
     private sealed record FreshSelection<T>(bool Accepted, T? Detail, AttackThrowStoneAiSelectionOutcome? Selection, TilePosition Origin,
-        FftRandomState Rng, AttackThrowStoneAiPreparedSelectionFailure? Failure) where T : class;
+        RandomState Rng, AttackThrowStoneAiPreparedSelectionFailure? Failure) where T : class;
     private static (AttackThrowStoneAiMoveFirstFailure? Failure, FacingMoveResult<TOutcome> Move) StartCore<TDecision, TOutcome>(
         FacingTurnState state, AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration,
-        SwordAiCommandDispatchProfile dispatchProfile, Func<AttackBattleSnapshot, FftRandomState, FreshSelection<TDecision>> select,
-        Func<TDecision, MoveUnitCommand, FftRandomState, TOutcome> describe) where TDecision : class
+        SwordAiCommandDispatchProfile dispatchProfile, Func<AttackBattleSnapshot, RandomState, FreshSelection<TDecision>> select,
+        Func<TDecision, MoveUnitCommand, RandomState, TOutcome> describe) where TDecision : class
     {
         ArgumentNullException.ThrowIfNull(state);
         AttackThrowStoneAiSelectionPipeline.ValidateInputs(state.Battle, request, configuration);

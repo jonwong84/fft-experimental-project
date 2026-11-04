@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -9,7 +10,7 @@ public sealed record SwordAiPostActExecutionFailure(SwordAiPostActExecutionRejec
     SwordAiDispatchRejection DispatchRejection = SwordAiDispatchRejection.None,
     FacingDecisionRejection BoundaryRejection = FacingDecisionRejection.None);
 public sealed record SwordAiPostActExecutionOutcome(SwordAiPostActSelectionOutcome Selection,
-    SwordAiDispatchOutcome Dispatch, FftRandomState DecisionRng);
+    SwordAiDispatchOutcome Dispatch, RandomState DecisionRng);
 public sealed record SwordAiPostActExecutionResult(SwordAiPostActExecutionFailure? Failure,
     FacingDecisionResult<SwordAiPostActExecutionOutcome> Execution)
 {

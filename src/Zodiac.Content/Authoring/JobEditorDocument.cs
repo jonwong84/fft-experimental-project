@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 using System.Globalization;
 using System.Security.Cryptography;
@@ -200,7 +201,7 @@ public sealed class JobEditorDocument
         ImmutableArray<TilePosition> Range(DefinitionCatalog catalog, JobId id)
         {
             var setup = BaseJobBattleSetup.Create(catalog, map,
-                [new(unit, id, new(4, 4, 0), 6, [new(surface, new(1))])], new FftRandomState(1, 0));
+                [new(unit, id, new(4, 4, 0), 6, [new(surface, new(1))])], new RandomState(1, 0));
             return Enumerable.Range(0, 81).Select(index => new TilePosition(index % 9, index / 9, 0))
                 .Where(position => BattleSimulator.Apply(setup.InitialState, new MoveUnitCommand(unit, position),
                     BattleMovementPolicy.TerrainCostPrototype).Accepted).ToImmutableArray();

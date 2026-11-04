@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.SwordAiPreparationTestData;
 
@@ -16,13 +17,13 @@ public sealed class SwordAiUnmovedPreparedSelectionTests
         {
             var state = Ready(evade: evade, move: false).Battle; var before = Snapshot(state);
             var result = Evaluate(state); var o = Success(result);
-            Assert.Null(o.OutOfReach); Assert.Equal(new FftRandomState(word, count), result.RngState);
+            Assert.Null(o.OutOfReach); Assert.Equal(new RandomState(word, count), result.RngState);
             Assert.Equal(55, o.Preparation.Refresh.TurnEndCt);
             Assert.Equal(16838u, Assert.Single(o.Preparation.Refresh.UpkeepPicks).RawRoll);
             Assert.Equal(5, o.Preparation.ReachableOrigins.Length);
             Assert.Equal(new[] { 5758u, 10113u, 17515u, 31051u, 5627u },
                 o.Decision.MovementScenario.Movement.Select(c => Assert.Single(c.Outcome.UpkeepPicks).RawRoll));
-            Assert.Equal(new FftRandomState(180171308, 18), o.Decision.Selection.LotteryEntryRng);
+            Assert.Equal(new RandomState(180171308, 18), o.Decision.Selection.LotteryEntryRng);
             Assert.Equal(12767u, o.Decision.Selection.Lottery[0].Raw); Assert.Equal(rolls, o.Decision.Selection.Lottery.Length);
             Assert.Equal(evade == 0 ? SwordAiSelectionReason.FirstRoll : SwordAiSelectionReason.AllRollsFailedUseFirst,
                 o.Decision.Selection.Reason);
@@ -45,7 +46,7 @@ public sealed class SwordAiUnmovedPreparedSelectionTests
     public void Empty_ranking_retains_real_scan_work_and_eight_rolls_then_deferred_Move_only_fallback()
     {
         var state = Ready(evade: 0, move: false).Battle; var result = Evaluate(state, power: 0); var o = Success(result);
-        Assert.Equal(new FftRandomState(3794901700, 26), result.RngState);
+        Assert.Equal(new RandomState(3794901700, 26), result.RngState);
         Assert.Equal(5, o.Decision.MovementScenario.Movement.Length);
         Assert.All(o.Decision.Selection.Composition.RankedActions, Assert.Null);
         Assert.Equal(8, o.Decision.Selection.Lottery.Length);
@@ -65,7 +66,7 @@ public sealed class SwordAiUnmovedPreparedSelectionTests
             var state = Ready(move: false, origin: new(4, 1, 0)).Battle;
             var result = Evaluate(state, outOfReach: true, rng: new(seed, 7)); var o = Success(result);
             var detail = Assert.IsType<SwordAiOutOfReachSelectionOutcome>(o.OutOfReach);
-            Assert.Equal(new FftRandomState(word, 18), result.RngState);
+            Assert.Equal(new RandomState(word, 18), result.RngState);
             Assert.Equal(4, o.Preparation.ReachableOrigins.Length); // Full spread, not filtered/scored S.
             var cell = Assert.Single(o.Decision.MovementScenario.Movement);
             Assert.Equal(new TilePosition(3, 1, 0), cell.Outcome.Destination);
@@ -94,7 +95,7 @@ public sealed class SwordAiUnmovedPreparedSelectionTests
             Assert.Equal(ulong.MaxValue, Evaluate(state, outOfReach: far, rng: new(1, ulong.MaxValue - (ulong)cost)).RngState.DrawCount);
             foreach (int available in far ? new[] { 0, 1, 2, 3, 10 } : new[] { 0, 1, 6, 11 })
             {
-                var rng = new FftRandomState(1, ulong.MaxValue - (ulong)available);
+                var rng = new RandomState(1, ulong.MaxValue - (ulong)available);
                 var failure = Atomic(Evaluate(state, outOfReach: far, rng: rng),
                     available == 0 ? SwordAiPreparedSelectionStage.Preparation : SwordAiPreparedSelectionStage.Selection, rng);
                 if (available == 0) Assert.Equal(SwordAiRefreshRejection.RandomDrawCountExhausted, failure.RefreshRejection);
@@ -149,13 +150,13 @@ public sealed class SwordAiUnmovedPreparedSelectionTests
 
     private static SwordAiPreparedSelectionResult Evaluate(AttackBattleSnapshot state, int power = 5,
         SwordAiRefreshRequest? request = null, SwordAiPreparedSelectionProfile? profile = null, SwordAiPreparationProfile? preparation = null,
-        SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue, FftRandomState? rng = null, bool outOfReach = false, BoundedSwordWeapon? weapon = null) =>
+        SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue, RandomState? rng = null, bool outOfReach = false, BoundedSwordWeapon? weapon = null) =>
         outOfReach ? SwordAiPreparedSelection.EvaluateOutOfReachUnmoved(state, request ?? Request(), weapon ?? new(Weapon, power), Candidate, Score,
             Refresh, preparation ?? Preparation, team, profile ?? Profile, rng ?? Rng)
         : SwordAiPreparedSelection.EvaluateUnmoved(state, request ?? Request(), weapon ?? new(Weapon, power), Candidate, Score,
             Refresh, preparation ?? Preparation, team, profile ?? Profile, rng ?? Rng);
     private static SwordAiPreparedSelectionOutcome Success(SwordAiPreparedSelectionResult result)
     { Assert.True(result.Accepted, Serialize(result.Failure)); Assert.Null(result.Failure); return Assert.IsType<SwordAiPreparedSelectionOutcome>(result.Outcome); }
-    private static SwordAiPreparedSelectionFailure Atomic(SwordAiPreparedSelectionResult result, SwordAiPreparedSelectionStage stage, FftRandomState? rng = null)
+    private static SwordAiPreparedSelectionFailure Atomic(SwordAiPreparedSelectionResult result, SwordAiPreparedSelectionStage stage, RandomState? rng = null)
     { Assert.False(result.Accepted); Assert.Equal(stage, result.Failure!.Stage); Assert.Null(result.Outcome); Assert.Equal(rng ?? Rng, result.RngState); return result.Failure; }
 }

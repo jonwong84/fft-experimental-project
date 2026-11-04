@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -41,7 +42,7 @@ public sealed class TwoUnitBattleSaveTests
             uninterrupted = expected.State; resumed = actual.State;
         }
         Assert.Equal(TwoUnitBattleOutcome.FirstUnitWon, resumed.Outcome);
-        Assert.Equal(new FftRandomState(2473755763, 22), resumed.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(2473755763, 22), resumed.Battle.TurnBattle.Turns.RngState);
         var rejected = TwoUnitBattleScenario.Apply(resumed, new TwoUnitBattleCommand.Advance());
         Assert.False(rejected.Accepted); Assert.Equal(TwoUnitBattleRejection.AlreadyCompleted, rejected.ScenarioRejection);
         Assert.Same(resumed, rejected.State); Assert.Empty(rejected.Events);
@@ -79,7 +80,7 @@ public sealed class TwoUnitBattleSaveTests
         Assert.True(b.HasTurn); Assert.True(b.ActionTaken); Assert.False(b.MovementTaken);
         string current = TwoUnitBattleSave.ToJson(profile, loaded.State);
         Assert.Equal(2, JsonNode.Parse(current)!["schemaVersion"]!.GetValue<int>());
-        Assert.Contains(FftBiosRandom.AlgorithmId, current);
+        Assert.Contains(RandomStateGenerator.AlgorithmId, current);
         Assert.Equal(Snapshot(loaded.State), Snapshot(TwoUnitBattleSave.ReadJson(profile, current).State));
     }
 
@@ -208,7 +209,7 @@ public sealed class TwoUnitBattleSaveTests
         battle["rngWord"] = uint.MaxValue; Rehash(root);
         var state = TwoUnitBattleSave.ReadJson(profile, root.ToJsonString()).State;
         Assert.Equal(ulong.MaxValue, state.Battle.TurnBattle.Turns.Ticks);
-        Assert.Equal(new FftRandomState(uint.MaxValue, ulong.MaxValue), state.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(uint.MaxValue, ulong.MaxValue), state.Battle.TurnBattle.Turns.RngState);
         string json = TwoUnitBattleSave.ToJson(profile, state);
         foreach (string field in new[] { "initialBattle", "movementProfile", "maxHp", "physicalAttack", "weapons", "tieKey", "speed", "journal", "$type" })
             Assert.DoesNotContain($"\"{field}\"", json);

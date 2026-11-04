@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Zodiac.Content.BattleSetup;
 using Zodiac.Content.Definitions;
 using Zodiac.Framework;
@@ -19,7 +20,7 @@ public sealed class BaseJobBattleSetupTests
     public void Two_units_share_definitions_but_keep_independent_immutable_battle_state_and_rng()
     {
         DefinitionCatalog catalog = Catalog();
-        var rng = new FftRandomState(0x80000000u, 17);
+        var rng = new RandomState(0x80000000u, 17);
         BaseJobBattleSetup setup = BaseJobBattleSetup.Create(catalog, Map(),
             new[] { Placement(A, new(0, 0, 0)), Placement(B, new(4, 0, 0)) }, rng);
         Assert.Equal(2, setup.Definitions.Length);

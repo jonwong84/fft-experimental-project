@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -6,7 +7,7 @@ internal enum AiSimulationClockRejection { None, RandomDrawCountExhausted, TickC
 
 internal sealed record AiClockOutcome(ImmutableArray<AiProjectedUnit> Units,
     BattleUnitId MoveOpportunityUnitId, ulong ElapsedTicks, ulong Ticks,
-    ImmutableArray<AiUpkeepPick> UpkeepPicks, FftRandomState RngState);
+    ImmutableArray<AiUpkeepPick> UpkeepPicks, RandomState RngState);
 
 /// <summary>Private clock shared by fresh, certified hypothetical evaluations; never accepts public cached results.</summary>
 internal static class AiSimulationClock
@@ -14,11 +15,11 @@ internal static class AiSimulationClock
     // Source: decomp 11464943bbdbd2a0af022d90cb7f10455cf911df, turn/clock.c and ai/evaluation.c.
     // Mutates only the caller's private unit array. Rejection publishes no partial outcome or RNG.
     internal static AiSimulationClockRejection Advance(AiProjectedUnit[] units, ulong ticks,
-        FftRandomState decisionRng, out AiClockOutcome? outcome)
+        RandomState decisionRng, out AiClockOutcome? outcome)
     {
         outcome = null;
         var rng = decisionRng;
-        var random = new FftBiosRandom();
+        var random = new RandomStateGenerator();
         ulong elapsed = 0;
         var picks = ImmutableArray.CreateBuilder<AiUpkeepPick>();
         while (true)

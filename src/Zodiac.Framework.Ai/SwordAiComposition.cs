@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -30,7 +31,7 @@ public sealed record SwordAiCompositionFailure(SwordAiCompositionRejection Reaso
     int? Index = null, SwordAiMovementBaselineRejection MovementReason = SwordAiMovementBaselineRejection.None,
     SwordAiScanRejection ScanReason = SwordAiScanRejection.None, AiScoringRejection ScoringReason = AiScoringRejection.None,
     SwordAiCandidateRejection ProjectionReason = SwordAiCandidateRejection.None);
-public sealed record SwordAiScoredMovementTile(SwordAiMovementBaselineOutcome Outcome, FftRandomState RngState);
+public sealed record SwordAiScoredMovementTile(SwordAiMovementBaselineOutcome Outcome, RandomState RngState);
 
 /// <summary>Eight source slots with explicit empties; this one-pass subset admits at most one real action.</summary>
 public sealed record SwordAiCompositionOutcome(ImmutableArray<SwordAiScoredMovementTile> Movement, int BaselineIndex,
@@ -42,7 +43,7 @@ public sealed record SwordAiCompositionOutcome(ImmutableArray<SwordAiScoredMovem
 
 /// <summary>Rejection publishes no partial evaluations/cache/list and restores the incoming hypothetical RNG.</summary>
 public sealed record SwordAiCompositionResult(bool Accepted, SwordAiCompositionFailure? Failure,
-    SwordAiCompositionOutcome? Outcome, FftRandomState RngState);
+    SwordAiCompositionOutcome? Outcome, RandomState RngState);
 
 /// <summary>Pure opt-in source-ordered movement prefix, one ordinary Attack scan and ranked admission.</summary>
 /// <remarks>
@@ -55,7 +56,7 @@ public static class SwordAiComposition
     public static SwordAiCompositionResult Evaluate(AttackBattleSnapshot state, SwordAiCompositionScenario scenario,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiComparisonProfile comparisonProfile, SwordAiMovementBaselineProfile baselineProfile,
-        SwordAiScanProfile scanProfile, SwordAiCompositionProfile compositionProfile, FftRandomState decisionRng)
+        SwordAiScanProfile scanProfile, SwordAiCompositionProfile compositionProfile, RandomState decisionRng)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(scenario);
@@ -107,7 +108,7 @@ public static class SwordAiComposition
     internal static SwordAiCompositionResult ContinueFromMovement(AttackBattleSnapshot state,
         ImmutableArray<SwordAiScoredMovementTile> movement, int baselineIndex, SwordAiScanScenario attackScenario,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
-        SwordAiComparisonProfile comparisonProfile, SwordAiScanProfile scanProfile, FftRandomState rng, FftRandomState queryRng)
+        SwordAiComparisonProfile comparisonProfile, SwordAiScanProfile scanProfile, RandomState rng, RandomState queryRng)
     {
         SwordAiCompositionResult Reject(SwordAiCompositionFailure failure) => new(false, failure, null, queryRng);
         var baseline = movement[baselineIndex].Outcome.Score; // Already-scored cell; no extra evaluation/draw.

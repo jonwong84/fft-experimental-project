@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Xunit;
 
@@ -12,7 +13,7 @@ public sealed class SwordAiCandidateComparisonTests
     private static readonly AssetId Weapon = new("sample:item/plain-sword");
     private static readonly SwordAiCandidateProfile CandidateProfile = new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 255)]);
     private static readonly AiScoreProfile ScoreProfile = new([new(A, AiScoreFacts.ClosedProfile), new(B, AiScoreFacts.ClosedProfile)]);
-    private static readonly FftRandomState Decision = new(1, 7);
+    private static readonly RandomState Decision = new(1, 7);
 
     public static IEnumerable<object[]> Proposals()
     {
@@ -51,11 +52,11 @@ public sealed class SwordAiCandidateComparisonTests
         var facts = scoring.GetProperty("profile").GetProperty("units").EnumerateArray().Any(u => u.GetProperty("monster").GetBoolean())
             ? AiScoreFacts.ClosedProfile & ~AiScoreFacts.NonMonster : AiScoreFacts.ClosedProfile;
         var scoreProfile = new AiScoreProfile([new(A, facts), new(B, facts)]);
-        var rng = new FftRandomState(d.GetProperty("rngWord").GetUInt32(), d.GetProperty("rngCount").GetUInt64());
+        var rng = new RandomState(d.GetProperty("rngWord").GetUInt32(), d.GetProperty("rngCount").GetUInt64());
         var result = Evaluate(state, Materialize(0), Materialize(1), c.GetProperty("damage").GetInt32() / 5,
             rng: rng, comparisonProfile: profile, scoreProfile: scoreProfile);
         Assert.Equal(e.GetProperty("disposition").GetString(), result.Disposition.ToString());
-        Assert.Equal(new FftRandomState(e.GetProperty("rngWord").GetUInt32(), e.GetProperty("rngCount").GetUInt64()), result.RngState);
+        Assert.Equal(new RandomState(e.GetProperty("rngWord").GetUInt32(), e.GetProperty("rngCount").GetUInt64()), result.RngState);
         Assert.Equal(before, Snapshot(state));
         if (result.Disposition == SwordAiComparisonDisposition.Rejected)
         {
@@ -79,7 +80,7 @@ public sealed class SwordAiCandidateComparisonTests
         {
             var expected = e.GetProperty("evaluations")[i]; var actual = outcome.Candidates[i].Evaluation;
             Assert.Equal(expected.GetProperty("disposition").GetString(), actual.Disposition.ToString());
-            Assert.Equal(new FftRandomState(expected.GetProperty("rngWord").GetUInt32(), expected.GetProperty("rngCount").GetUInt64()), actual.RngState);
+            Assert.Equal(new RandomState(expected.GetProperty("rngWord").GetUInt32(), expected.GetProperty("rngCount").GetUInt64()), actual.RngState);
             if (expected.GetProperty("score").ValueKind == JsonValueKind.Null) Assert.Null(actual.Score);
             else
             {
@@ -159,7 +160,7 @@ public sealed class SwordAiCandidateComparisonTests
         Assert.Equal(B, outcome.Cache.EligibleEnemyId); Assert.All(outcome.Cache.Destinations, c => Assert.Equal(9, c.Value));
         Assert.All(outcome.Candidates, c => { Assert.Equal(320, c.Evaluation.Score!.Priority); Assert.True(c.Evaluation.Projection!.Outcome!.TargetKnockedOut); });
         Assert.Equal(before, Snapshot(state)); Assert.Equal(50, state.Combatants.Single(u => u.UnitId == B).Hp);
-        Assert.Equal(new FftRandomState(57, 100), state.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(57, 100), state.TurnBattle.Turns.RngState);
     }
 
     public static IEnumerable<object[]> Budgets()
@@ -177,7 +178,7 @@ public sealed class SwordAiCandidateComparisonTests
     public void Pair_budget_boundaries_are_atomic_and_comparison_adds_no_draws(int kind, int remaining)
     {
         bool notValuable = kind == 2; int each = notValuable ? 4 : kind == 1 ? 6 : 5;
-        var state = State(evade: notValuable ? 100 : 0); var rng = new FftRandomState(1, ulong.MaxValue - (ulong)remaining);
+        var state = State(evade: notValuable ? 100 : 0); var rng = new RandomState(1, ulong.MaxValue - (ulong)remaining);
         var candidate = notValuable ? Candidate(destination: new(2, 0, 0)) : Candidate();
         var result = Evaluate(state, candidate, candidate, kind == 1 ? 10 : 5, rng: rng);
         if (remaining < each * 2)
@@ -231,7 +232,7 @@ public sealed class SwordAiCandidateComparisonTests
             0 => new SwordAiComparisonProfile(A, B), 1 => new(A, B, false), 2 => new(default, B, true),
             3 => new(A, default, true), 4 => new(A, A, true), _ => new(B, A, true)
         };
-        var rng = new FftRandomState(1, ulong.MaxValue);
+        var rng = new RandomState(1, ulong.MaxValue);
         var result = SwordAiCandidateComparison.Evaluate(State(), Candidate(), Candidate(), null, CandidateProfile, ScoreProfile, profile, rng);
         Failed(result, SwordAiComparisonRejection.UnsupportedComparisonProfile, rng); Assert.Null(result.FailedCandidateIndex);
     }
@@ -248,7 +249,7 @@ public sealed class SwordAiCandidateComparisonTests
     {
         var state = State(moved: kind == 4);
         var tile = kind switch { 0 => new TilePosition(1, 0, 0), 1 => new(-1, 0, 0), 2 => new(0, 0, 1), 3 => new(5, 0, 0), _ => new(0, 1, 0) };
-        var rng = new FftRandomState(1, ulong.MaxValue);
+        var rng = new RandomState(1, ulong.MaxValue);
         var result = SwordAiCandidateComparison.Evaluate(state, Candidate(), Candidate(destination: tile), null, CandidateProfile, ScoreProfile, new(A, B, true), rng);
         Failed(result, SwordAiComparisonRejection.InvalidCacheDestination, rng); Assert.Equal(1, result.FailedCandidateIndex);
     }
@@ -322,7 +323,7 @@ public sealed class SwordAiCandidateComparisonTests
     private static SwordAiCandidate Candidate(bool second = false, TilePosition? destination = null, SwordAiCandidateOrder order = SwordAiCandidateOrder.MoveThenAct) =>
         new(second ? B : A, second ? A : B, destination ?? new(0, 0, 0), order);
     private static SwordAiComparisonResult Evaluate(AttackBattleSnapshot state, SwordAiCandidate? incumbent = null, SwordAiCandidate? challenger = null,
-        int power = 5, FftRandomState? rng = null, SwordAiComparisonProfile? comparisonProfile = null, AiScoreProfile? scoreProfile = null) =>
+        int power = 5, RandomState? rng = null, SwordAiComparisonProfile? comparisonProfile = null, AiScoreProfile? scoreProfile = null) =>
         SwordAiCandidateComparison.Evaluate(state, incumbent ?? Candidate(), challenger ?? Candidate(), new(Weapon, power), CandidateProfile,
             scoreProfile ?? ScoreProfile, comparisonProfile ?? new((incumbent ?? Candidate()).ActorId, (incumbent ?? Candidate()).TargetId, true), rng ?? Decision);
     private static SwordAiComparisonOutcome Success(SwordAiComparisonResult result)
@@ -333,7 +334,7 @@ public sealed class SwordAiCandidateComparisonTests
         Assert.All(outcome.Candidates, c => Assert.Equal(0, c.DecidedMarker)); Assert.Equal(outcome.Candidates[1].Evaluation.RngState, result.RngState);
         return outcome;
     }
-    private static void Failed(SwordAiComparisonResult result, SwordAiComparisonRejection reason, FftRandomState? rng = null)
+    private static void Failed(SwordAiComparisonResult result, SwordAiComparisonRejection reason, RandomState? rng = null)
     { Assert.Equal(SwordAiComparisonDisposition.Rejected, result.Disposition); Assert.Equal(reason, result.Rejection); Assert.Null(result.Outcome); Assert.Equal(rng ?? Decision, result.RngState); }
     private static string Serialize(object? value) => JsonSerializer.Serialize(value);
     private static string Snapshot(AttackBattleSnapshot s) => Serialize(new { s.Combatants, s.TurnBattle.Turns, s.TurnBattle.Battle.Map, s.TurnBattle.Battle.RngState,
@@ -344,7 +345,7 @@ public sealed class SwordAiCandidateComparisonTests
         TilePosition? origin = null, TilePosition? enemy = null, bool moved = false, bool acted = false,
         int width = 3, int depth = 2, int move = 4, int height = 10, int cost = 1)
     {
-        var actor = second ? B : A; var target = second ? A : B; var rng = new FftRandomState(57, 100);
+        var actor = second ? B : A; var target = second ? A : B; var rng = new RandomState(57, 100);
         var movement = new UnitMovementProfile(move, 0, 6, UnitMovementMode.Normal, UnitMovementTraits.None,
             [KeyValuePair.Create(Ground, new TerrainMovementCost(cost))]);
         var bodies = new[] { new BattleUnitState(actor, origin ?? new(0, 0, 0), movement, moved), new BattleUnitState(target, enemy ?? new(1, 0, 0), movement, true) };

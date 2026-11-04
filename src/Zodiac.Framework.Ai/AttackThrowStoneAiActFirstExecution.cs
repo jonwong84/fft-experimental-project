@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -7,7 +8,7 @@ public enum AttackThrowStoneAiActFirstRejection { UnavailableChoices, Unsupporte
 public sealed record AttackThrowStoneAiActFirstFailure(AttackThrowStoneAiActFirstRejection Reason,
     AttackThrowStoneAiPreparedSelectionFailure? SelectionFailure = null, FacingDecisionRejection BoundaryReason = FacingDecisionRejection.None);
 /// <summary>Predicted movement destination is diagnostic only; it authorizes no post-ACT Move.</summary>
-public sealed record AttackThrowStoneAiActFirstOutcome(AttackThrowStoneAiPreparedSelectionOutcome Decision, FftRandomState DecisionRng);
+public sealed record AttackThrowStoneAiActFirstOutcome(AttackThrowStoneAiPreparedSelectionOutcome Decision, RandomState DecisionRng);
 public sealed record AttackThrowStoneAiActFirstResult(AttackThrowStoneAiActFirstFailure? Failure,
     FacingDecisionResult<AttackThrowStoneAiActFirstOutcome> Execution)
 {

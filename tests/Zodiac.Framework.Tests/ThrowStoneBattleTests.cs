@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Xunit;
 
@@ -50,7 +51,7 @@ public sealed class ThrowStoneBattleTests
         var result = Apply(before);
         Assert.True(result.Accepted);
         Assert.Equal(new ThrowStoneResolvedEvent(A, Stone, B, hit, damage, push), result.Events[1]);
-        Assert.Equal(new FftRandomState(word, draws), result.State.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(word, draws), result.State.TurnBattle.Turns.RngState);
         Assert.Equal(result.State.TurnBattle.Turns.RngState, result.State.TurnBattle.Battle.RngState);
         Assert.Equal(50 - damage, result.State.Combatants[1].Hp);
         Assert.Equal(push ? new(4, 2, 0) : new TilePosition(3, 2, 0), Position(result.State, B));
@@ -129,7 +130,7 @@ public sealed class ThrowStoneBattleTests
         Assert.Equal(40, result.State.Combatants[1].Hp);
         Assert.Equal(new(tx,ty,0), Position(result.State,B));
         Assert.Empty(result.Events.OfType<ThrowStoneKnockbackEvent>());
-        Assert.Equal(new FftRandomState(273505290,7), result.State.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(273505290,7), result.State.TurnBattle.Turns.RngState);
     }
 
     [Theory]
@@ -139,7 +140,7 @@ public sealed class ThrowStoneBattleTests
     {
         var result = Apply(State(seed:3, maximum:maxHp, ko:255));
         Assert.Equal(hp,result.State.Combatants[1].Hp); Assert.Equal(status,result.State.Combatants[1].Status);
-        Assert.Equal(new FftRandomState(273505290,7),result.State.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(273505290,7),result.State.TurnBattle.Turns.RngState);
         if (hp == 0)
         {
             Assert.Equal(0,result.State.Combatants[1].KoCount);
@@ -359,7 +360,7 @@ public sealed class ThrowStoneBattleTests
         TilePosition? actor=null,TilePosition? target=null,int maximum=50,int ko=0,ulong count=0,
         bool moved=false,bool acted=false,bool targetMoved=false,bool targetActed=false,bool dead=false,string? geometry=null)
     {
-        var rng=new FftRandomState(seed,count);
+        var rng=new RandomState(seed,count);
         var tiles=Enumerable.Repeat(new BattleTile(Ground,10),49*(geometry=="layer"?2:1)).ToArray();
         tiles[^1]=geometry switch
         {

@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 
 namespace Zodiac.Framework.Tests;
@@ -15,12 +16,12 @@ public sealed class FacingDecisionTests
         var result = FacingDecisionBattle.Execute(state, A, context =>
         {
             calls++; Assert.Same(state.Battle, context.Battle); Assert.Equal(A, context.ActorId);
-            var after = new FftBiosRandom().Next(context.RngState).State;
+            var after = new RandomStateGenerator().Next(context.RngState).State;
             return context.PrepareWait(new FacingChoice.Fixed(BattleFacing.North), after, "fresh");
         });
         Assert.True(result.Accepted); Assert.Equal(1, calls); Assert.Equal("fresh", result.Diagnostic);
         Assert.Equal(state.Revision + 1, result.State.Revision); Assert.Null(result.State.PendingFacing);
-        Assert.Equal(new FftBiosRandom().Next(state.Battle.TurnBattle.Turns.RngState).State, result.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomStateGenerator().Next(state.Battle.TurnBattle.Turns.RngState).State, result.State.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(result.State.Battle.TurnBattle.Turns.RngState, result.State.Battle.TurnBattle.Battle.RngState);
         Assert.Equal(state.Battle.TurnBattle.Turns.Ticks, result.State.Battle.TurnBattle.Turns.Ticks);
         Assert.Equal(55, result.State.Battle.TurnBattle.Turns.Units.Single(u => u.Id == A).Ct);
@@ -62,9 +63,9 @@ public sealed class FacingDecisionTests
     public void Invalid_RNG_words_or_backward_counts_never_reach_execution()
     {
         var state = Active(); var rng = state.Battle.TurnBattle.Turns.RngState;
-        foreach (var invalid in new[] { new FftRandomState(rng.Value ^ 1, rng.DrawCount),
-            new FftRandomState(rng.Value, rng.DrawCount - 1),
-            new FftRandomState(new FftBiosRandom().Next(rng).State.Value ^ 1, rng.DrawCount + 1) })
+        foreach (var invalid in new[] { new RandomState(rng.Value ^ 1, rng.DrawCount),
+            new RandomState(rng.Value, rng.DrawCount - 1),
+            new RandomState(new RandomStateGenerator().Next(rng).State.Value ^ 1, rng.DrawCount + 1) })
             Atomic(state, FacingDecisionBattle.Execute(state, A, c => c.PrepareWait(new FacingChoice.KeepCurrent(), invalid, "bad")),
                 FacingDecisionRejection.InvalidRandomProgress);
     }
@@ -74,7 +75,7 @@ public sealed class FacingDecisionTests
     {
         var state = Active(ulong.MaxValue - 2);
         var result = FacingDecisionBattle.Execute(state, A, c => c.PrepareAttack(new(A, B), new(Weapon, 5),
-            new FftBiosRandom().Next(c.RngState).State, "not published"));
+            new RandomStateGenerator().Next(c.RngState).State, "not published"));
         Atomic(state, result, FacingDecisionRejection.CommandRejected);
         Assert.Equal(AttackCommandRejection.RandomDrawCountExhausted, result.Transition.AttackRejection);
         Assert.Equal(ulong.MaxValue - 1, state.Battle.TurnBattle.Turns.RngState.DrawCount);
@@ -93,14 +94,14 @@ public sealed class FacingDecisionTests
     [Fact]
     public void Logarithmic_checkpoint_verification_matches_draws_and_full_generator_periods()
     {
-        var initial = new FftRandomState(0x80000001, 123); var actual = initial;
-        Assert.True(FftBiosRandom.IsForwardCheckpoint(initial, initial));
-        for (int i = 0; i < 10000; i++) actual = new FftBiosRandom().Next(actual).State;
-        Assert.True(FftBiosRandom.IsForwardCheckpoint(initial, actual));
+        var initial = new RandomState(0x80000001, 123); var actual = initial;
+        Assert.True(RandomStateGenerator.IsForwardCheckpoint(initial, initial));
+        for (int i = 0; i < 10000; i++) actual = new RandomStateGenerator().Next(actual).State;
+        Assert.True(RandomStateGenerator.IsForwardCheckpoint(initial, actual));
         // Odd increment and multiplier == 1 mod4 give the UInt32 LCG its full 2^32 period.
-        Assert.True(FftBiosRandom.IsForwardCheckpoint(initial, new(initial.Value, initial.DrawCount + (1UL << 32))));
-        Assert.True(FftBiosRandom.IsForwardCheckpoint(new(1, 0), new(3945894376, ulong.MaxValue)));
-        Assert.False(FftBiosRandom.IsForwardCheckpoint(new(1, 0), new(1, ulong.MaxValue)));
+        Assert.True(RandomStateGenerator.IsForwardCheckpoint(initial, new(initial.Value, initial.DrawCount + (1UL << 32))));
+        Assert.True(RandomStateGenerator.IsForwardCheckpoint(new(1, 0), new(3945894376, ulong.MaxValue)));
+        Assert.False(RandomStateGenerator.IsForwardCheckpoint(new(1, 0), new(1, ulong.MaxValue)));
     }
 
     private static void Atomic(FacingTurnState state, FacingDecisionResult<string> result, FacingDecisionRejection reason)
@@ -109,7 +110,7 @@ public sealed class FacingDecisionTests
 
     private static FacingTurnState Active(ulong count = 7)
     {
-        var rng = new FftRandomState(1, count);
+        var rng = new RandomState(1, count);
         var map = new BattleMapDefinition(4, 3, 1, Enumerable.Repeat(new BattleTile(Ground, 10), 12).ToArray());
         var movement = new UnitMovementProfile(3, 2, 6, UnitMovementMode.Normal, UnitMovementTraits.None, []);
         var battle = new BattleState(map, [new(A, new(1, 1, 0), movement), new(B, new(2, 1, 0), movement)], rng);

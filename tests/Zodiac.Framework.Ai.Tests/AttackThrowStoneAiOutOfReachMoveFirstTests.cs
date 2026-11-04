@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.AttackThrowStoneAiTestData;
@@ -26,7 +27,7 @@ public sealed class AttackThrowStoneAiOutOfReachMoveFirstTests
             Assert.Equal(new AiMovementCellProvenance(Origin, 5, null), scenario.Cells.Single(c => c.Tile == Origin));
             Assert.DoesNotContain(Origin, o.Decision.ScanOrigins); Assert.DoesNotContain(scenario.Movement, m => m.Outcome.Destination == Origin);
             Assert.Equal(move == 1 ? 1 : 5, scenario.Movement.Length);
-            Assert.Equal(destination, o.Move.Destination); Assert.Equal(new FftRandomState(decisionWord, decisionCount), o.DecisionRng);
+            Assert.Equal(destination, o.Move.Destination); Assert.Equal(new RandomState(decisionWord, decisionCount), o.DecisionRng);
             Assert.Equal(o.DecisionRng, moved.State.Battle.TurnBattle.Turns.RngState); Assert.Equal(o.DecisionRng, moved.State.Battle.TurnBattle.Battle.RngState);
             Assert.Equal(destination, moved.Path!.Tiles[^1]); Assert.Equal(Origin, moved.Path.Tiles[0]);
             Assert.Equal(moved.Path.FinalHeading, moved.State.Battle.Combatants.Single(u => u.UnitId == A).Facing);
@@ -38,7 +39,7 @@ public sealed class AttackThrowStoneAiOutOfReachMoveFirstTests
             Assert.Equal(new ThrowStoneResolvedEvent(A, Stone, B, true, damage, push), Assert.Single(act.Events.OfType<ThrowStoneResolvedEvent>()));
             Assert.Equal(50 - damage, act.State.Battle.Combatants.Single(u => u.UnitId == B).Hp);
             Assert.Equal(push ? new TilePosition(7, 1, 0) : Target, act.State.Battle.TurnBattle.Battle.Units.Single(u => u.Id == B).Position);
-            Assert.Equal(new FftRandomState(actualWord, actualCount), act.State.Battle.TurnBattle.Turns.RngState);
+            Assert.Equal(new RandomState(actualWord, actualCount), act.State.Battle.TurnBattle.Turns.RngState);
             Assert.Equal(state.Revision + 2, act.State.Revision); Assert.Same(act.State.Battle, act.State.PendingFacing!.ExpectedBattle);
             var faced = FacingTurnBattle.FinishFacing(act.State, A, act.State.PendingFacing, new FacingChoice.ChooseClosedEnemy(B));
             Assert.True(faced.Accepted); Assert.Equal(act.State.Battle.TurnBattle, faced.State.Battle.TurnBattle);
@@ -52,16 +53,16 @@ public sealed class AttackThrowStoneAiOutOfReachMoveFirstTests
         var half = Start(Ready(move: 1, target: Target, entryWord: 20)); var h = Success(half);
         Assert.Equal(new SwordAiReachAdjustment(12502, 0, 2, 1), h.Decision.MovementScenario.ReachAdjustment);
         Assert.True(h.Decision.MovementScenario.DestinationUsedDistanceFallback); Assert.Equal(Right, h.Move.Destination);
-        Assert.Equal(new FftRandomState(143664818, 9), Assert.Single(h.Decision.MovementScenario.Movement).RngState);
-        Assert.Equal(new FftRandomState(4007910005, 16), h.DecisionRng);
+        Assert.Equal(new RandomState(143664818, 9), Assert.Single(h.Decision.MovementScenario.Movement).RngState);
+        Assert.Equal(new RandomState(4007910005, 16), h.DecisionRng);
         var act = FacingMoveDecisionBattle.Continue(half.State, A, half.Continuation); Assert.True(act.Accepted);
         Assert.Equal(new ThrowStoneResolvedEvent(A, Stone, B, true, 10, false), Assert.Single(act.Events.OfType<ThrowStoneResolvedEvent>()));
-        Assert.Equal(new FftRandomState(3660420676, 23), act.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(3660420676, 23), act.State.Battle.TurnBattle.Turns.RngState);
         foreach (var (target, evade, word, count) in new[] { (new TilePosition(7,1,0), 0, 180171308u, 18ul), (Target, 100, 2111915288u, 22ul) })
         {
             var moved = Start(Ready(move: 1, target: target, evade: evade)); var o = Success(moved);
             Assert.Equal(AttackThrowStoneAiPlanKind.MoveOnly, o.Decision.Selection.Plan.Kind); Assert.Equal(Right, o.Move.Destination);
-            Assert.Equal(8, o.Decision.Selection.Lottery.Length); Assert.Equal(new FftRandomState(word, count), o.DecisionRng);
+            Assert.Equal(8, o.Decision.Selection.Lottery.Length); Assert.Equal(new RandomState(word, count), o.DecisionRng);
             var ended = FacingMoveDecisionBattle.Continue(moved.State, A, moved.Continuation); Assert.True(ended.Accepted);
             Assert.Equal(o.DecisionRng, ended.State.Battle.TurnBattle.Turns.RngState); Assert.Null(ended.State.PendingFacing);
             Assert.Equal(35, ended.State.Battle.TurnBattle.Turns.Units.Single(u => u.Id == A).Ct);
@@ -125,12 +126,12 @@ public sealed class AttackThrowStoneAiOutOfReachMoveFirstTests
     public void Real_KO_settles_damage_and_no_push_before_receipt_and_fixed_facing()
     {
         var moved = Start(Ready(move: 1, target: Target, hp: 5)); var o = Success(moved);
-        Assert.Equal(new FftRandomState(267834847, 17), o.DecisionRng);
+        Assert.Equal(new RandomState(267834847, 17), o.DecisionRng);
         var act = FacingMoveDecisionBattle.Continue(moved.State, A, moved.Continuation); Assert.True(act.Accepted);
         Assert.Equal(new ThrowStoneResolvedEvent(A, Stone, B, true, 10, false), Assert.Single(act.Events.OfType<ThrowStoneResolvedEvent>()));
         Assert.Equal(AttackUnitStatus.Dead, act.State.Battle.Combatants.Single(u => u.UnitId == B).Status);
         Assert.Equal(Target, act.State.Battle.TurnBattle.Battle.Units.Single(u => u.Id == B).Position);
-        Assert.Equal(new FftRandomState(3791773014, 24), act.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(3791773014, 24), act.State.Battle.TurnBattle.Turns.RngState);
         Assert.Same(act.State.Battle, act.State.PendingFacing!.ExpectedBattle);
         Assert.True(FacingTurnBattle.FinishFacing(act.State, A, act.State.PendingFacing, new FacingChoice.Fixed(BattleFacing.East)).Accepted);
     }

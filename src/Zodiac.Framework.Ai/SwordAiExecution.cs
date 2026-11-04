@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -24,7 +25,7 @@ public sealed record SwordAiExecutionFailure(SwordAiExecutionRejection Reason, S
 {
     public SwordAiPreparedSelectionFailure? PreparedSelectionFailure { get; init; }
 }
-public sealed record SwordAiExecutionOutcome(SwordAiDerivedSelectionOutcome Decision, FftRandomState DecisionRng,
+public sealed record SwordAiExecutionOutcome(SwordAiDerivedSelectionOutcome Decision, RandomState DecisionRng,
     SwordAiExecutedCommand Command, AttackUnitCommand? Attack, SwordAiWaitFacingOutcome? WaitFacing)
 {
     public SwordAiPreparationOutcome? Preparation { get; init; }
@@ -117,14 +118,14 @@ public static class SwordAiExecution
         });
     }
 
-    private sealed record PlanningResult(SwordAiDerivedSelectionOutcome? Decision, FftRandomState RngState,
+    private sealed record PlanningResult(SwordAiDerivedSelectionOutcome? Decision, RandomState RngState,
         SwordAiPreparationOutcome? Preparation = null, SwordAiOutOfReachSelectionOutcome? OutOfReach = null,
         SwordAiExecutionFailure? Failure = null);
 
     // Both opt-in planners use identical session guards, plan admission and authoritative command publication.
     private static SwordAiExecutionResult ExecuteCore(FacingTurnState state, BattleUnitId actorId, BattleUnitId targetId,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiWaitFacingProfile waitProfile,
-        SwordAiWaitSettlementProfile endProfile, Func<AttackBattleSnapshot, FftRandomState, PlanningResult> planner)
+        SwordAiWaitSettlementProfile endProfile, Func<AttackBattleSnapshot, RandomState, PlanningResult> planner)
     {
         SwordAiExecutionResult Reject(SwordAiExecutionFailure failure) => new(false, failure, null, state, []);
         if (!waitProfile.OriginalAiChooseAtWaitContext || !waitProfile.EligibleOpponent || !endProfile.OrdinaryTurnEndContext)

@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Xunit;
 
@@ -25,9 +26,9 @@ public sealed class SwordAiExecutionTests
         uint selectedWord, ulong selectedCount, uint finalWord, ulong finalCount, int lotteryDraws)
     {
         var state = Ready(evade: evade); var before = Snapshot(state);
-        Assert.Equal(new FftRandomState(1, 7), state.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(1, 7), state.Battle.TurnBattle.Turns.RngState);
         var result = Execute(state); var o = Success(result);
-        Assert.Equal(new FftRandomState(selectedWord, selectedCount), o.DecisionRng);
+        Assert.Equal(new RandomState(selectedWord, selectedCount), o.DecisionRng);
         Assert.Equal(lotteryDraws, o.Decision.Selection.Lottery.Length);
         Assert.Equal(new SwordAiLotteryRoll(0, 23010, 10, 100 - evade, evade == 89), o.Decision.Selection.Lottery[0]);
         var projection = o.Decision.Selection.Plan.Attack!.Evaluation.Projection!.Outcome!;
@@ -35,7 +36,7 @@ public sealed class SwordAiExecutionTests
         Assert.Equal(SwordAiExecutedCommand.Attack, o.Command); Assert.Equal(new AttackUnitCommand(A, B), o.Attack);
         Assert.Null(o.WaitFacing); Assert.Equal(new AttackResolvedEvent(A, B, false, false, 0), Assert.Single(result.Events.OfType<AttackResolvedEvent>()));
         Assert.Equal(50, Unit(result.State, B).Hp); Assert.Equal(15, Turn(result.State, A).Ct);
-        Assert.Equal(new FftRandomState(finalWord, finalCount), result.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(finalWord, finalCount), result.State.Battle.TurnBattle.Turns.RngState);
         ReceiptAndClock(state, result.State); Assert.Equal(before, Snapshot(state));
         var receipt = result.State.PendingFacing;
         var finish = SwordAiWaitSettlement.Finish(result.State, A, B, receipt, Candidate.Movement, Wait, End);
@@ -54,7 +55,7 @@ public sealed class SwordAiExecutionTests
         Assert.Equal(SwordAiExecutedCommand.Wait, o.Command); Assert.Null(o.Attack); Assert.NotNull(o.WaitFacing);
         Assert.Equal(SwordAiSelectionReason.MovementFallback, o.Decision.Selection.Reason);
         Assert.Equal(8, o.Decision.Selection.Lottery.Length);
-        Assert.Equal(new FftRandomState(word, count), o.DecisionRng);
+        Assert.Equal(new RandomState(word, count), o.DecisionRng);
         Assert.Equal(o.DecisionRng, result.State.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(35, Turn(result.State, A).Ct); Assert.True(Turn(result.State, A).MovementTaken);
         Assert.False(Turn(result.State, A).ActionTaken); Assert.Null(result.State.PendingFacing);
@@ -68,7 +69,7 @@ public sealed class SwordAiExecutionTests
     public void Successful_noncritical_attack_runs_real_combat_after_selection()
     {
         var state = Ready(evade: 0); var result = Execute(state); var o = Success(result);
-        Assert.Equal(new FftRandomState(3655513600, 14), o.DecisionRng);
+        Assert.Equal(new RandomState(3655513600, 14), o.DecisionRng);
         Assert.Equal(new AttackResolvedEvent(A, B, true, false, 25), Assert.Single(result.Events.OfType<AttackResolvedEvent>()));
         Assert.Equal(25, Unit(result.State, B).Hp); Assert.Equal(20ul, result.State.Battle.TurnBattle.Turns.RngState.DrawCount);
         ReceiptAndClock(state, result.State);
@@ -78,8 +79,8 @@ public sealed class SwordAiExecutionTests
     public void Actual_critical_push_or_KO_is_published_before_the_completion_receipt(int power, int damage, int hp)
     {
         var state = Ready(evade: 0, entryWord: 73); var result = Execute(state, power: power); var o = Success(result);
-        Assert.Equal(new FftRandomState(2162298728, 14), o.DecisionRng);
-        Assert.Equal(new FftRandomState(916350979, 21), result.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(2162298728, 14), o.DecisionRng);
+        Assert.Equal(new RandomState(916350979, 21), result.State.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(new AttackResolvedEvent(A, B, true, true, damage), Assert.Single(result.Events.OfType<AttackResolvedEvent>()));
         Assert.Equal(hp, Unit(result.State, B).Hp); ReceiptAndClock(state, result.State);
         if (hp > 0)
@@ -237,7 +238,7 @@ public sealed class SwordAiExecutionTests
         var actor = second ? B : A; var target = second ? A : B;
         // Inverse BIOS step: Advance's actual upkeep draw reaches the authored entry word/count.
         uint setupWord = unchecked((entryWord - 12345u) * 4005161829u);
-        var rng = new FftRandomState(setupWord, count - 1);
+        var rng = new RandomState(setupWord, count - 1);
         var map = new BattleMapDefinition(5, 3, 1, Enumerable.Repeat(new BattleTile(Ground, 10), 15).ToArray());
         var movement = new UnitMovementProfile(1, 0, 6, UnitMovementMode.Normal, UnitMovementTraits.None,
             [KeyValuePair.Create(Ground, new TerrainMovementCost(1))]);

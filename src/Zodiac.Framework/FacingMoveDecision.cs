@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework;
@@ -16,9 +17,9 @@ public sealed class FacingMoveDecision<T>
     internal FacingChoice? Facing { get; }
     internal UseTargetedAbilityCommand? TargetedAbility { get; }
     internal TargetedAbilityBattleProfile? AbilityProfile { get; }
-    internal FftRandomState Rng { get; }
+    internal RandomState Rng { get; }
     internal T? Diagnostic { get; }
-    internal FacingMoveDecision(FacingMoveDecisionContext owner, FacingMoveIntentKind kind, FftRandomState rng,
+    internal FacingMoveDecision(FacingMoveDecisionContext owner, FacingMoveIntentKind kind, RandomState rng,
         T? diagnostic, MoveUnitCommand? move = null, FlatOrdinaryMovementProfile? profile = null,
         AttackUnitCommand? attack = null, BoundedSwordWeapon? weapon = null, FacingChoice? facing = null,
         UseTargetedAbilityCommand? targetedAbility = null, TargetedAbilityBattleProfile? abilityProfile = null)
@@ -31,7 +32,7 @@ public sealed class FacingMoveDecisionContext
     private bool closed;
     public AttackBattleSnapshot Battle { get; }
     public BattleUnitId ActorId { get; }
-    public FftRandomState RngState => Battle.TurnBattle.Turns.RngState;
+    public RandomState RngState => Battle.TurnBattle.Turns.RngState;
     internal FacingMoveDecisionContext(AttackBattleSnapshot battle, BattleUnitId actorId) { Battle = battle; ActorId = actorId; }
     internal void Close() => closed = true;
     private void CheckOpen()
@@ -39,13 +40,13 @@ public sealed class FacingMoveDecisionContext
     public FacingMoveDecision<T> Reject<T>()
     { CheckOpen(); return new(this, FacingMoveIntentKind.Rejected, RngState, default); }
     public FacingMoveDecision<T> PrepareMoveThenAttack<T>(MoveUnitCommand move, FlatOrdinaryMovementProfile profile,
-        AttackUnitCommand attack, BoundedSwordWeapon? weapon, FftRandomState rng, T diagnostic)
+        AttackUnitCommand attack, BoundedSwordWeapon? weapon, RandomState rng, T diagnostic)
     {
         CheckOpen(); ArgumentNullException.ThrowIfNull(move); ArgumentNullException.ThrowIfNull(profile); ArgumentNullException.ThrowIfNull(attack);
         return new(this, FacingMoveIntentKind.Attack, rng, diagnostic, move, profile, attack, weapon);
     }
     public FacingMoveDecision<T> PrepareMoveThenWait<T>(MoveUnitCommand move, FlatOrdinaryMovementProfile profile,
-        FacingChoice facing, FftRandomState rng, T diagnostic)
+        FacingChoice facing, RandomState rng, T diagnostic)
     {
         CheckOpen(); ArgumentNullException.ThrowIfNull(move); ArgumentNullException.ThrowIfNull(profile); ArgumentNullException.ThrowIfNull(facing);
         return new(this, FacingMoveIntentKind.Wait, rng, diagnostic, move, profile, facing: facing);
@@ -53,7 +54,7 @@ public sealed class FacingMoveDecisionContext
 
     /// <summary>Freeze a targeted ACT across one confirmed Move; actual range is checked on continuation.</summary>
     public FacingMoveDecision<T> PrepareMoveThenTargetedAbility<T>(MoveUnitCommand move, FlatOrdinaryMovementProfile profile,
-        UseTargetedAbilityCommand command, TargetedAbilityBattleProfile abilityProfile, FftRandomState rng, T diagnostic)
+        UseTargetedAbilityCommand command, TargetedAbilityBattleProfile abilityProfile, RandomState rng, T diagnostic)
     {
         CheckOpen(); ArgumentNullException.ThrowIfNull(move); ArgumentNullException.ThrowIfNull(profile);
         ArgumentNullException.ThrowIfNull(command); ArgumentNullException.ThrowIfNull(abilityProfile);
@@ -125,7 +126,7 @@ public static class FacingMoveDecisionBattle
         if (decision.Move!.UnitId != actorId || !ValidFollowup(context.Battle, actorId, decision.Kind, decision.Attack, decision.Facing,
                 decision.TargetedAbility, decision.AbilityProfile))
             return Reject(FacingMoveRejection.InvalidIntent);
-        if (!FftBiosRandom.IsForwardCheckpoint(context.RngState, decision.Rng)) return Reject(FacingMoveRejection.InvalidRandomProgress);
+        if (!RandomStateGenerator.IsForwardCheckpoint(context.RngState, decision.Rng)) return Reject(FacingMoveRejection.InvalidRandomProgress);
 
         var old = state.Battle.TurnBattle;
         var battle = new BattleState(old.Battle.Map, old.Battle.Units, decision.Rng);

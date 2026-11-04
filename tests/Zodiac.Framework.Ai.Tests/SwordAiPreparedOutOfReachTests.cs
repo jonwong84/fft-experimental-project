@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.SwordAiPreparationTestData;
 
@@ -25,7 +26,7 @@ public sealed class SwordAiPreparedOutOfReachTests
         Assert.All(detail.Selection.Composition.RankedActions, entry => Assert.Null(entry));
         Assert.Equal(8, detail.Selection.Lottery.Length); Assert.All(detail.Selection.Lottery, roll => Assert.Equal(0, roll.HitPercent));
         Assert.Equal(10ul, detail.Selection.LotteryEntryRng.DrawCount);
-        Assert.Equal(new FftRandomState(finalWord, 18), o.DecisionRng);
+        Assert.Equal(new RandomState(finalWord, 18), o.DecisionRng);
         Assert.Equal(o.DecisionRng, result.State.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(o.DecisionRng, result.State.Battle.TurnBattle.Battle.RngState);
         Assert.Equal(SwordAiExecutedCommand.Wait, o.Command); Assert.Null(o.Attack); Assert.Null(result.State.PendingFacing);
@@ -102,7 +103,7 @@ public sealed class SwordAiPreparedOutOfReachTests
             Assert.Equal(first.Events.ToArray(), other.Events.ToArray()); Assert.Equal(before, Snapshot(state.Battle));
         }
     }
-    private static SwordAiPreparedSelectionResult Query(AttackBattleSnapshot state, SwordAiRefreshRequest request, FftRandomState rng) =>
+    private static SwordAiPreparedSelectionResult Query(AttackBattleSnapshot state, SwordAiRefreshRequest request, RandomState rng) =>
         SwordAiPreparedSelection.EvaluateOutOfReach(state, request, new(Weapon, 5), Candidate, Score, Refresh, Preparation,
             SwordAiScenarioTeam.NonBlue, Selection, rng);
     private static SwordAiExecutionResult Execute(FacingTurnState state, SwordAiRefreshRequest? request = null,

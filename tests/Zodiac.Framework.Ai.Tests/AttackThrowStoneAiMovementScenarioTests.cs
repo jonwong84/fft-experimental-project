@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.AttackThrowStoneAiTestData;
@@ -23,7 +24,7 @@ public sealed class AttackThrowStoneAiMovementScenarioTests
             Assert.Equal(d0, outcome.Scenario.BaselineDestination); Assert.Equal(d1, outcome.Scenario.ActFirstDestination);
             Assert.Equal(move + 1, outcome.TargetReach); Assert.Equal(Math.Max(3, outcome.TargetDistance - 1), outcome.BaselineDistanceLimit);
             Assert.Equal(d0, outcome.Movement[outcome.BaselineIndex].Outcome.Destination); Assert.False(outcome.BaselineUsedDistanceFallback);
-            Assert.Equal(new FftRandomState(word, 7 + draws), result.RngState);
+            Assert.Equal(new RandomState(word, 7 + draws), result.RngState);
             Assert.Equal((int)draws - 1, outcome.Movement.Length); // Source costs in these literal geometries, not an authoring-size limit.
             Assert.Equal(outcome.Scenario.ScoredOrigins, outcome.Scenario.ScenarioOrigins);
             Assert.All(outcome.Movement, m => { Assert.Equal(0, m.Outcome.Score.Priority); Assert.False(m.Outcome.Units.Single(u => u.UnitId == A).ActionTaken); });
@@ -38,7 +39,7 @@ public sealed class AttackThrowStoneAiMovementScenarioTests
         Assert.Equal(new TilePosition(2, 2, 0), outcome.Scenario.BaselineDestination);
         Assert.Equal(new TilePosition(2, 2, 0), outcome.Scenario.ActFirstDestination);
         Assert.Equal((17, 20), (outcome.Preparation.Common.ActorDelay, outcome.Preparation.Common.TargetDelay));
-        Assert.Equal(new FftRandomState(2111915288, 22), result.RngState);
+        Assert.Equal(new RandomState(2111915288, 22), result.RngState);
     }
 
     [Fact]
@@ -46,7 +47,7 @@ public sealed class AttackThrowStoneAiMovementScenarioTests
     {
         var state = Battle(); var p = Profile(); var pair = Success(Derive(state));
         var sword = SwordAiMovementScenario.Evaluate(state, p.Attack, p.Score, new(A, B, true), new(true, true, true),
-            new FftBiosRandom().Next(Decision).State);
+            new RandomStateGenerator().Next(Decision).State);
         Assert.True(sword.Accepted); Assert.True(sword.Outcome!.BaselineUsedDistanceFallback);
         Assert.Equal(new TilePosition(2, 2, 0), sword.Outcome.Scenario.BaselineDestination);
         Assert.Equal(new TilePosition(1, 3, 0), pair.Scenario.BaselineDestination);
@@ -56,7 +57,7 @@ public sealed class AttackThrowStoneAiMovementScenarioTests
     [Fact]
     public void Exact_and_late_draw_or_tick_failure_publish_no_partial_preparation_or_mask()
     {
-        var rng = new FftRandomState(1, ulong.MaxValue - 15); var fits = Derive(Battle(), rng: rng); Success(fits);
+        var rng = new RandomState(1, ulong.MaxValue - 15); var fits = Derive(Battle(), rng: rng); Success(fits);
         Assert.Equal(ulong.MaxValue, fits.RngState.DrawCount);
         var shortBudget = rng with { DrawCount = rng.DrawCount + 1 };
         var failure = Atomic(Derive(Battle(), rng: shortBudget), AttackThrowStoneAiScenarioStage.Movement, shortBudget);
@@ -97,7 +98,7 @@ public sealed class AttackThrowStoneAiMovementScenarioTests
     }
 
     internal static AttackThrowStoneAiMovementScenarioResult Derive(AttackBattleSnapshot state, SwordAiRefreshRequest? request = null,
-        AttackThrowStoneAiScenarioProfile? profile = null, SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue, FftRandomState? rng = null)
+        AttackThrowStoneAiScenarioProfile? profile = null, SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue, RandomState? rng = null)
     {
         var p = Profile(); return AttackThrowStoneAiMovementScenario.Evaluate(state, request ?? FreshRequest(), Stone, new(Sword, 2),
             p.Attack, p.ThrowStone, p.Score, new(true, true, true), new(true, true, true), profile ?? ScenarioProfile, team, rng ?? Decision);
@@ -105,7 +106,7 @@ public sealed class AttackThrowStoneAiMovementScenarioTests
     internal static AttackThrowStoneAiMovementScenarioOutcome Success(AttackThrowStoneAiMovementScenarioResult result)
     { Assert.True(result.Accepted, Serialize(result.Failure)); Assert.Null(result.Failure); return Assert.IsType<AttackThrowStoneAiMovementScenarioOutcome>(result.Outcome); }
     private static AttackThrowStoneAiScenarioFailure Atomic(AttackThrowStoneAiMovementScenarioResult result,
-        AttackThrowStoneAiScenarioStage stage, FftRandomState? rng = null)
+        AttackThrowStoneAiScenarioStage stage, RandomState? rng = null)
     { Assert.False(result.Accepted); Assert.Null(result.Outcome); Assert.Equal(rng ?? Decision, result.RngState);
         var failure = Assert.IsType<AttackThrowStoneAiScenarioFailure>(result.Failure); Assert.Equal(stage, failure.Stage); return failure; }
 }

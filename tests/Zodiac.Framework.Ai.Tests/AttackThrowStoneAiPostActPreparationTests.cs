@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.AttackThrowStoneAiTestData;
@@ -17,13 +18,13 @@ public sealed class AttackThrowStoneAiPostActPreparationTests
         // Counts are cumulative; words are the full internal RNG state, not individual random rolls.
         var cases = new[] {
             new { Name = "Attack hit", Move = 3, Power = 2, Evade = 0, Seed = 1u, Hp = 40, Target = new TilePosition(2, 1, 0),
-                ActRng = new FftRandomState(995405759, 49), RefreshRng = new FftRandomState(2102736524, 50) },
+                ActRng = new RandomState(995405759, 49), RefreshRng = new RandomState(2102736524, 50) },
             new { Name = "Stone hit", Move = 0, Power = 1, Evade = 0, Seed = 1u, Hp = 40, Target = new TilePosition(2, 1, 0),
-                ActRng = new FftRandomState(3823029677, 27), RefreshRng = new FftRandomState(3914758370, 28) },
+                ActRng = new RandomState(3823029677, 27), RefreshRng = new RandomState(3914758370, 28) },
             new { Name = "Stone miss", Move = 0, Power = 1, Evade = 75, Seed = 1u, Hp = 50, Target = new TilePosition(2, 1, 0),
-                ActRng = new FftRandomState(675780521, 31), RefreshRng = new FftRandomState(744964398, 32) },
+                ActRng = new RandomState(675780521, 31), RefreshRng = new RandomState(744964398, 32) },
             new { Name = "Stone push", Move = 0, Power = 1, Evade = 0, Seed = 20u, Hp = 40, Target = new TilePosition(3, 1, 0),
-                ActRng = new FftRandomState(2928661168, 27), RefreshRng = new FftRandomState(3381560617, 28) } };
+                ActRng = new RandomState(2928661168, 27), RefreshRng = new RandomState(3381560617, 28) } };
         foreach (var example in cases)
         {
             var state = Act(Ready(move: example.Move, evade: example.Evade, entryWord: example.Seed), example.Power).Battle;
@@ -127,8 +128,8 @@ public sealed class AttackThrowStoneAiPostActPreparationTests
     public void One_draw_and_tick_boundaries_preserve_the_published_ACT_and_hide_all_failed_preparation()
     {
         var state = Act(Ready()).Battle; string before = Snapshot(state);
-        var exact = new FftRandomState(1, ulong.MaxValue - 1);
-        Assert.Equal(new FftRandomState(1103527590, ulong.MaxValue), Prepare(state, rng: exact).RngState);
+        var exact = new RandomState(1, ulong.MaxValue - 1);
+        Assert.Equal(new RandomState(1103527590, ulong.MaxValue), Prepare(state, rng: exact).RngState);
         Success(Prepare(state, rng: exact));
         var exhausted = exact with { DrawCount = ulong.MaxValue };
         Assert.Equal(SwordAiRefreshRejection.RandomDrawCountExhausted,
@@ -167,13 +168,13 @@ public sealed class AttackThrowStoneAiPostActPreparationTests
         Assert.True(result.Accepted, Serialize(result.Failure)); return result.State;
     }
     private static AttackThrowStoneAiPreparationResult Prepare(AttackBattleSnapshot state, int weaponPower = 2,
-        AttackThrowStoneAiSelectionRequest? request = null, AttackThrowStoneAiSelectionConfiguration? configuration = null, FftRandomState? rng = null) =>
+        AttackThrowStoneAiSelectionRequest? request = null, AttackThrowStoneAiSelectionConfiguration? configuration = null, RandomState? rng = null) =>
         AttackThrowStoneAiPreparation.EvaluateAfterAct(state, request ?? new(FreshRequest(), Stone, new(Sword, weaponPower)),
             configuration ?? SelectionConfiguration(new()), rng ?? state.TurnBattle.Turns.RngState);
     private static AttackThrowStoneAiPreparationOutcome Success(AttackThrowStoneAiPreparationResult result)
     { Assert.True(result.Accepted, Serialize(result.Failure)); Assert.Null(result.Failure); return Assert.IsType<AttackThrowStoneAiPreparationOutcome>(result.Outcome); }
     private static AttackThrowStoneAiPreparationFailure Atomic(AttackBattleSnapshot state, AttackThrowStoneAiPreparationResult result,
-        AttackThrowStoneAiPreparationRejection reason, FftRandomState? rng = null)
+        AttackThrowStoneAiPreparationRejection reason, RandomState? rng = null)
     { Assert.False(result.Accepted); Assert.Null(result.Outcome); Assert.Equal(rng ?? state.TurnBattle.Turns.RngState, result.RngState);
         Assert.Equal(reason, result.Failure!.Reason); return result.Failure; }
     private static AttackBattleSnapshot WithPa(AttackBattleSnapshot state, BattleUnitId id, int pa) => new(state.TurnBattle,

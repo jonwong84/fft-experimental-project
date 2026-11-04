@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -32,7 +33,7 @@ public sealed record SwordAiComparisonOutcome(ImmutableArray<SwordAiComparedCand
 /// <remarks>Pair rollback is a managed unsupported/exhaustion policy, not original C search rewind behavior.</remarks>
 public sealed record SwordAiComparisonResult(SwordAiComparisonDisposition Disposition, SwordAiComparisonRejection Rejection,
     int? FailedCandidateIndex, AiScoringRejection ScoringRejection, SwordAiCandidateRejection ProjectionRejection,
-    SwordAiComparisonOutcome? Outcome, FftRandomState RngState);
+    SwordAiComparisonOutcome? Outcome, RandomState RngState);
 
 /// <summary>Pure opt-in comparison of an incumbent and challenger, freshly scored on the same original state.</summary>
 /// <remarks>
@@ -43,7 +44,7 @@ public static class SwordAiCandidateComparison
 {
     public static SwordAiComparisonResult Evaluate(AttackBattleSnapshot state, SwordAiCandidate incumbent,
         SwordAiCandidate challenger, BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile,
-        AiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile, FftRandomState decisionRng)
+        AiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile, RandomState decisionRng)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(incumbent);

@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 namespace Zodiac.Framework.Ai;
 
 public sealed record ThrowStoneAiFormulaOutcome(int HitPercent, int NormalDamage, int TargetHp)
@@ -5,14 +6,14 @@ public sealed record ThrowStoneAiFormulaOutcome(int HitPercent, int NormalDamage
     public bool HasAccuracy => HitPercent != 0;
 }
 public sealed record ThrowStoneAiFormulaResult(bool Accepted, AttackCommandRejection Rejection,
-    ThrowStoneAiFormulaOutcome? Outcome, FftRandomState RngState);
+    ThrowStoneAiFormulaOutcome? Outcome, RandomState RngState);
 
 /// <summary>Pure non-execution Throw Stone result; separate accuracy, midpoint damage and four real evasion draws.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-185/186. No knockback, live command or clock.</remarks>
 public static class ThrowStoneAiFormulaProjection
 {
     public static ThrowStoneAiFormulaResult Evaluate(AttackBattleSnapshot state, UseTargetedAbilityCommand command,
-        TargetedAbilityBattleProfile profile, FftRandomState decisionRng)
+        TargetedAbilityBattleProfile profile, RandomState decisionRng)
     {
         var invalid = TargetedAbilityBattleSimulator.ValidateCommand(state, command, profile);
         if (invalid != AttackCommandRejection.None) return new(false, invalid, null, decisionRng);
@@ -25,7 +26,7 @@ public static class ThrowStoneAiFormulaProjection
         var rng = decisionRng;
         try
         {
-            var random = new FftBiosRandom();
+            var random = new RandomStateGenerator();
             for (int source = 0; source < 4; source++) rng = random.Next(rng).State;
         }
         catch (OverflowException) { return new(false, AttackCommandRejection.RandomDrawCountExhausted, null, decisionRng); }

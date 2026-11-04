@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -43,7 +44,7 @@ public sealed record ThrowStoneAiScanOutcome(ImmutableArray<AiScoredMovementTile
 
 /// <summary>Failure publishes reasons only and restores whole-query RNG, including late prefix/candidate failures.</summary>
 public sealed record ThrowStoneAiScanResult(ThrowStoneAiScanDisposition Disposition, ThrowStoneAiScanFailure? Failure,
-    ThrowStoneAiScanOutcome? Outcome, FftRandomState RngState);
+    ThrowStoneAiScanOutcome? Outcome, RandomState RngState);
 
 /// <summary>Pure fresh movement prefix and one prepared Throw Stone scan in certified clear two-opponent geometry.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-190/191. No cached input, scenario derivation,
@@ -52,7 +53,7 @@ public static class ThrowStoneAiCandidateScan
 {
     public static ThrowStoneAiScanResult Evaluate(AttackBattleSnapshot state, ThrowStoneAiScanRequest request,
         ThrowStoneAiScanScenario scenario, ThrowStoneAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
-        ThrowStoneAiBaselineProfile baselineProfile, ThrowStoneAiScanProfile scanProfile, FftRandomState decisionRng)
+        ThrowStoneAiBaselineProfile baselineProfile, ThrowStoneAiScanProfile scanProfile, RandomState decisionRng)
     {
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(request); ArgumentNullException.ThrowIfNull(scenario);
         ArgumentNullException.ThrowIfNull(candidateProfile); ArgumentNullException.ThrowIfNull(scoreProfile);
@@ -72,7 +73,7 @@ public static class ThrowStoneAiCandidateScan
 
     internal static ThrowStoneAiScanResult? ValidateInputs(AttackBattleSnapshot state, ThrowStoneAiScanRequest request,
         ThrowStoneAiScanScenario scenario, ThrowStoneAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
-        ThrowStoneAiBaselineProfile baselineProfile, ThrowStoneAiScanProfile scanProfile, FftRandomState decisionRng)
+        ThrowStoneAiBaselineProfile baselineProfile, ThrowStoneAiScanProfile scanProfile, RandomState decisionRng)
     {
         ThrowStoneAiScanResult Reject(ThrowStoneAiScanStage stage, ThrowStoneAiScanRejection reason,
             int? index = null, ThrowStoneAiBaselineComparisonFailure? detail = null) =>
@@ -100,7 +101,7 @@ public static class ThrowStoneAiCandidateScan
     // Internal fresh ownership only: shared prefix is never a public cached-result input.
     internal static ThrowStoneAiScanResult ContinueFromMovement(AttackBattleSnapshot state, ThrowStoneAiScanRequest request,
         ThrowStoneAiScanScenario scenario, ThrowStoneAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
-        ThrowStoneAiScanProfile scanProfile, AiMovementPrefixOutcome prefix, FftRandomState rng, FftRandomState queryRng)
+        ThrowStoneAiScanProfile scanProfile, AiMovementPrefixOutcome prefix, RandomState rng, RandomState queryRng)
     {
         var tiles = prefix.Movement; int baselineIndex = prefix.BaselineIndex;
         var scenarioMask = scenario.ScenarioOrigins.ToHashSet();

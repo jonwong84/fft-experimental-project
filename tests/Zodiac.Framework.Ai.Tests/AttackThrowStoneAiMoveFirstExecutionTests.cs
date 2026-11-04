@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.AttackThrowStoneAiTestData;
@@ -15,7 +16,7 @@ public sealed class AttackThrowStoneAiMoveFirstExecutionTests
     public void Fresh_Stone_selection_adopts_one_full_pipeline_then_real_Move_and_ACT_use_actual_damage_without_replanning()
     {
         var state = Ready(); string before = Snapshot(state.Battle); var moved = Start(state); var o = Success(moved);
-        Assert.Equal(new FftRandomState(3397090333, 43), o.DecisionRng); Assert.Equal(o.DecisionRng, moved.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(3397090333, 43), o.DecisionRng); Assert.Equal(o.DecisionRng, moved.State.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(o.DecisionRng, moved.State.Battle.TurnBattle.Battle.RngState);
         Assert.Equal(AttackThrowStoneAiPlanKind.ThrowStone, o.Decision.Selection.Plan.Kind);
         Assert.False(o.Decision.Selection.Plan.ActBeforeMove); Assert.Equal(new TilePosition(1, 4, 0), o.Move.Destination);
@@ -27,7 +28,7 @@ public sealed class AttackThrowStoneAiMoveFirstExecutionTests
         Assert.True(pure.Accepted); Assert.Equal(Serialize(pure.Outcome), Serialize(o.Decision)); Assert.Equal(pure.RngState, o.DecisionRng);
         var act = FacingMoveDecisionBattle.Continue(moved.State, A, moved.Continuation); Assert.True(act.Accepted);
         Assert.Equal(new ThrowStoneResolvedEvent(A, Stone, B, true, 5, false), Assert.Single(act.Events.OfType<ThrowStoneResolvedEvent>()));
-        Assert.Equal(new FftRandomState(2102736524, 50), act.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(2102736524, 50), act.State.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(45, act.State.Battle.Combatants.Single(u => u.UnitId == B).Hp);
         Assert.Same(act.State.Battle, act.State.PendingFacing!.ExpectedBattle); Assert.Equal(state.Revision + 2, act.State.Revision);
         var faced = FacingTurnBattle.FinishFacing(act.State, A, act.State.PendingFacing, new FacingChoice.ChooseClosedEnemy(B));
@@ -40,14 +41,14 @@ public sealed class AttackThrowStoneAiMoveFirstExecutionTests
     {
         var attack = Start(Ready(left: true), power: 5); var a = Success(attack);
         Assert.Equal(AttackThrowStoneAiPlanKind.Attack, a.Decision.Selection.Plan.Kind);
-        Assert.Equal(new TilePosition(2, 1, 0), a.Move.Destination); Assert.Equal(new FftRandomState(3791773014, 24), a.DecisionRng);
+        Assert.Equal(new TilePosition(2, 1, 0), a.Move.Destination); Assert.Equal(new RandomState(3791773014, 24), a.DecisionRng);
         var actual = FacingMoveDecisionBattle.Continue(attack.State, A, attack.Continuation); Assert.True(actual.Accepted);
         Assert.Single(actual.Events.OfType<AttackResolvedEvent>()); Assert.Empty(actual.Events.OfType<ThrowStoneResolvedEvent>());
         Assert.Equal(25, actual.State.Battle.Combatants.Single(u => u.UnitId == B).Hp);
-        Assert.Equal(new FftRandomState(1343201072, 30), actual.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(1343201072, 30), actual.State.Battle.TurnBattle.Turns.RngState);
         var wait = Start(Ready(left: true, evade: 100)); var w = Success(wait);
         Assert.Equal(AttackThrowStoneAiPlanKind.MoveOnly, w.Decision.Selection.Plan.Kind); Assert.Equal(8, w.Decision.Selection.Lottery.Length);
-        Assert.Equal(new TilePosition(3, 2, 0), w.Move.Destination); Assert.Equal(new FftRandomState(2473755763, 29), w.DecisionRng);
+        Assert.Equal(new TilePosition(3, 2, 0), w.Move.Destination); Assert.Equal(new RandomState(2473755763, 29), w.DecisionRng);
         var ended = FacingMoveDecisionBattle.Continue(wait.State, A, wait.Continuation); Assert.True(ended.Accepted);
         Assert.Equal(w.DecisionRng, ended.State.Battle.TurnBattle.Turns.RngState); Assert.Null(ended.State.PendingFacing);
         Assert.Equal(35, ended.State.Battle.TurnBattle.Turns.Units.Single(u => u.Id == A).Ct);
@@ -62,13 +63,13 @@ public sealed class AttackThrowStoneAiMoveFirstExecutionTests
         Assert.Equal(AttackThrowStoneAiPlanKind.ThrowStone, o.Decision.Selection.Plan.Kind);
         var predicted = o.Decision.Selection.Composition.ThrowStone.Candidate!.Evaluation.Projection!.Outcome!;
         Assert.Equal(AttackUnitStatus.Dead, predicted.Units.Single(u => u.UnitId == B).Status);
-        Assert.Equal(new FftRandomState(835903122, 44), o.DecisionRng);
+        Assert.Equal(new RandomState(835903122, 44), o.DecisionRng);
         var real = FacingMoveDecisionBattle.Continue(moved.State, A, moved.Continuation); Assert.True(real.Accepted);
         Assert.Equal(new ThrowStoneResolvedEvent(A, Stone, B, true, 5, true), Assert.Single(real.Events.OfType<ThrowStoneResolvedEvent>()));
         Assert.Equal(5, real.State.Battle.Combatants.Single(u => u.UnitId == B).Hp);
         Assert.NotEqual(AttackUnitStatus.Dead, real.State.Battle.Combatants.Single(u => u.UnitId == B).Status);
         Assert.Equal(new TilePosition(2, 0, 0), real.State.Battle.TurnBattle.Battle.Units.Single(u => u.Id == B).Position);
-        Assert.Equal(new FftRandomState(271520213, 51), real.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(271520213, 51), real.State.Battle.TurnBattle.Turns.RngState);
         Assert.Same(real.State.Battle, real.State.PendingFacing!.ExpectedBattle);
     }
 
@@ -153,7 +154,7 @@ public sealed class AttackThrowStoneAiMoveFirstExecutionTests
         TilePosition? target = null, bool second = false, bool reverse = false, uint entryWord = 1)
     {
         var actor = second ? B : A; var peer = second ? A : B;
-        var rng = new FftRandomState(unchecked((entryWord - 12345u) * 4005161829u), count - 1);
+        var rng = new RandomState(unchecked((entryWord - 12345u) * 4005161829u), count - 1);
         var movement = new UnitMovementProfile(left ? 1 : move, 0, 6, UnitMovementMode.Normal, UnitMovementTraits.None,
             [KeyValuePair.Create(Ground, new TerrainMovementCost(1))]);
         var map = new BattleMapDefinition(8, 8, 1, Enumerable.Repeat(new BattleTile(Ground, 10), 64).ToArray());

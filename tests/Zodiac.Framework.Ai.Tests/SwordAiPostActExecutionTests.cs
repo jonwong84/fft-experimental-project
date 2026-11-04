@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.SwordAiPreparationTestData;
 
@@ -12,7 +13,7 @@ public sealed class SwordAiPostActExecutionTests
         foreach (var (evade, word, count, hp) in new[] { (0, 3834121963u, 37ul, 25), (89, 3776134388u, 42ul, 50) })
         {
             var state = AfterAct(evade: evade); var before = Snapshot(state.Battle); var result = Execute(state); var o = Success(result);
-            Assert.Equal(new FftRandomState(word, count), o.DecisionRng);
+            Assert.Equal(new RandomState(word, count), o.DecisionRng);
             Assert.Equal(o.DecisionRng, result.State.Battle.TurnBattle.Turns.RngState);
             Assert.Equal(o.DecisionRng, result.State.Battle.TurnBattle.Battle.RngState);
             Assert.Equal(SwordAiDispatchKind.Move, o.Dispatch.Kind); Assert.Equal(new SwordAiSavedChoices(A, false, true), o.Dispatch.RecordedChoices);

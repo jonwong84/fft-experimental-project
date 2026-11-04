@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Xunit;
@@ -9,7 +10,7 @@ public sealed class SwordAiCandidateScanTests
 {
     private static readonly TerrainSurfaceId Ground = new("sample:terrain/ordinary-ground");
     private static readonly AssetId Weapon = new("sample:item/plain-sword");
-    private static readonly FftRandomState LiveRng = new(57, 100);
+    private static readonly RandomState LiveRng = new(57, 100);
     private static BattleUnitId Id(string value) => new("sample:unit/" + value);
     private static TilePosition Point(JsonElement value) => new(value[0].GetInt32(), value[1].GetInt32(), 0);
     private static JsonElement Case(string id)
@@ -31,7 +32,7 @@ public sealed class SwordAiCandidateScanTests
         var row = Case(id); var expected = row.GetProperty("expected"); var frame = Materialize(row.GetProperty("inputs"));
         string before = Snapshot(frame.State); var result = Scan(frame);
         Assert.Equal(expected.GetProperty("disposition").GetString(), result.Disposition.ToString());
-        Assert.Equal(new FftRandomState(expected.GetProperty("rngWord").GetUInt32(), expected.GetProperty("rngCount").GetUInt64()), result.RngState);
+        Assert.Equal(new RandomState(expected.GetProperty("rngWord").GetUInt32(), expected.GetProperty("rngCount").GetUInt64()), result.RngState);
         Assert.Equal(before, Snapshot(frame.State));
         if (result.Disposition == SwordAiScanDisposition.Rejected)
         {
@@ -63,7 +64,7 @@ public sealed class SwordAiCandidateScanTests
             Assert.Equal(candidate.GetProperty("order").GetString(), a.Candidate.Order.ToString());
             Assert.Equal(frame.Comparison.ActorId, a.Candidate.ActorId); Assert.Equal(frame.Comparison.TargetId, a.Candidate.TargetId);
             Assert.Equal(e.GetProperty("disposition").GetString(), a.Evaluation.Disposition.ToString());
-            Assert.Equal(new FftRandomState(e.GetProperty("rngWord").GetUInt32(), e.GetProperty("rngCount").GetUInt64()), a.Evaluation.RngState);
+            Assert.Equal(new RandomState(e.GetProperty("rngWord").GetUInt32(), e.GetProperty("rngCount").GetUInt64()), a.Evaluation.RngState);
             Assert.Equal(e.GetProperty("proximity").GetInt32(), a.Proximity);
             Assert.Equal(new(a.Candidate.Destination, a.Proximity), actual.Cache.Destinations[i]);
             if (e.GetProperty("score").ValueKind == JsonValueKind.Null) Assert.Null(a.Evaluation.Score);
@@ -235,7 +236,7 @@ public sealed class SwordAiCandidateScanTests
 
     private sealed record Frame(AttackBattleSnapshot State, SwordAiScanScenario Scenario, BoundedSwordWeapon? Weapon,
         SwordAiCandidateProfile Candidate, AiScoreProfile Score, SwordAiComparisonProfile Comparison,
-        SwordAiScanProfile Profile, FftRandomState Decision);
+        SwordAiScanProfile Profile, RandomState Decision);
     private static JsonNode Data() => JsonNode.Parse(Case("scan-four-origins").GetProperty("inputs").GetRawText())!;
     private static Frame FrameFor() => Materialize(Case("scan-four-origins").GetProperty("inputs"));
     private static Frame Materialize(JsonElement data)

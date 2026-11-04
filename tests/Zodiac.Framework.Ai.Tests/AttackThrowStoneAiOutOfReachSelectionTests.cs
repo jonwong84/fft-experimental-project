@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.AttackThrowStoneAiTestData;
@@ -29,16 +30,16 @@ public sealed class AttackThrowStoneAiOutOfReachSelectionTests
             Assert.Equal(AttackThrowStoneAiPlanKind.ThrowStone, selected.Plan.Kind); Assert.False(selected.Plan.ActBeforeMove);
             Assert.True(selected.Plan.ChooseFacingAtWait); Assert.Equal(0, selected.SelectedRankedIndex);
             Assert.Equal((26, (byte)100), (selected.Plan.Action!.Score.Priority, selected.Plan.Action.Score.HitPercent));
-            Assert.Equal(new FftRandomState(prefixWord, prefixDraws), selected.Composition.Movement[^1].RngState);
-            Assert.Equal(new FftRandomState(lotteryWord, lotteryDraws), selected.LotteryEntryRng);
+            Assert.Equal(new RandomState(prefixWord, prefixDraws), selected.Composition.Movement[^1].RngState);
+            Assert.Equal(new RandomState(lotteryWord, lotteryDraws), selected.LotteryEntryRng);
             Assert.Equal(new AiLotteryRoll(0, raw, (int)(raw % 100), 100, true), Assert.Single(selected.Lottery));
-            Assert.Equal(new FftRandomState(finalWord, finalDraws), result.RngState);
+            Assert.Equal(new RandomState(finalWord, finalDraws), result.RngState);
             Assert.Equal(Serialize(value.MovementScenario.Movement), Serialize(selected.Composition.Movement));
             Assert.Equal(value.MovementScenario.BaselineIndex, selected.Composition.BaselineIndex);
         }
         var half = Select(Battle(move: 1, target: FarTarget), rng: new(20, 7)); var halved = Success(half);
         Assert.True(halved.MovementScenario.ReachAdjustment.Halved); Assert.True(halved.MovementScenario.DestinationUsedDistanceFallback);
-        Assert.Equal(Right, halved.Selection.Plan.Destination); Assert.Equal(new FftRandomState(4007910005, 16), half.RngState);
+        Assert.Equal(Right, halved.Selection.Plan.Destination); Assert.Equal(new RandomState(4007910005, 16), half.RngState);
     }
 
     [Fact]
@@ -51,11 +52,11 @@ public sealed class AttackThrowStoneAiOutOfReachSelectionTests
             Assert.Equal(new[] { Origin }, value.ScanOrigins); Assert.Empty(value.MovementScenario.Scenario2);
             Assert.True(value.Selection.Plan.ActBeforeMove); Assert.Equal(Origin, value.Selection.Plan.Destination);
             Assert.Equal(AttackThrowStoneAiPlanKind.ThrowStone, value.Selection.Plan.Kind);
-            Assert.Equal(new FftRandomState(3210001534, 16), result.RngState);
+            Assert.Equal(new RandomState(3210001534, 16), result.RngState);
         }
         var ko = Select(Battle(move: 0, target: new(4, 1, 0), hp: 10));
         Assert.Equal(320, Success(ko).Selection.Plan.Action!.Score.Priority);
-        Assert.Equal(new FftRandomState(267834847, 17), ko.RngState);
+        Assert.Equal(new RandomState(267834847, 17), ko.RngState);
         var zero = Success(Select(Battle(move: 0, target: new(4, 1, 0)), rng: new(20, 7)));
         Assert.Equal(0, zero.MovementScenario.EffectiveReach); Assert.True(zero.Selection.Plan.ActBeforeMove);
     }
@@ -66,17 +67,17 @@ public sealed class AttackThrowStoneAiOutOfReachSelectionTests
         var none = Select(Battle(move: 1, target: new(7, 1, 0))); var empty = Success(none).Selection;
         Assert.Null(empty.Composition.ThrowStone.Candidate); Assert.Equal(AiLotteryReason.MovementFallback, empty.Reason);
         Assert.Equal(AttackThrowStoneAiPlanKind.MoveOnly, empty.Plan.Kind); Assert.Equal(Right, empty.Plan.Destination);
-        Assert.Equal(new FftRandomState(662824084, 10), empty.LotteryEntryRng); Assert.Equal(8, empty.Lottery.Length);
-        Assert.Equal(new FftRandomState(180171308, 18), none.RngState);
+        Assert.Equal(new RandomState(662824084, 10), empty.LotteryEntryRng); Assert.Equal(8, empty.Lottery.Length);
+        Assert.Equal(new RandomState(180171308, 18), none.RngState);
         var inaccurate = Select(Battle(move: 1, target: FarTarget, evade: 100)); var zero = Success(inaccurate).Selection;
         Assert.Equal(AiScoringDisposition.NotValuable, zero.Composition.ThrowStone.Candidate!.Evaluation.Disposition);
         Assert.All(zero.Composition.RankedActions, Assert.Null); Assert.Null(zero.Plan.Action);
         Assert.Equal(AttackThrowStoneAiPlanKind.MoveOnly, zero.Plan.Kind); Assert.Equal(Right, zero.Plan.Destination);
-        Assert.Equal(new FftRandomState(2111915288, 22), inaccurate.RngState);
+        Assert.Equal(new RandomState(2111915288, 22), inaccurate.RngState);
         var failed = Select(Battle(move: 0, target: new(4, 1, 0), evade: 75), rng: new(20, 7)); var low = Success(failed).Selection;
         Assert.Equal(AiLotteryReason.AllRollsFailedUseFirst, low.Reason); Assert.Equal(8, low.Lottery.Length);
         Assert.Equal(AttackThrowStoneAiPlanKind.ThrowStone, low.Plan.Kind); Assert.True(low.Plan.ActBeforeMove);
-        Assert.Equal(new FftRandomState(3660420676, 23), failed.RngState);
+        Assert.Equal(new RandomState(3660420676, 23), failed.RngState);
     }
 
     [Fact]
@@ -88,13 +89,13 @@ public sealed class AttackThrowStoneAiOutOfReachSelectionTests
             (1, new TilePosition(7,1,0), 50, 0, 1u, 11ul, 7) })
         {
             var state = Battle(move: move, target: target, hp: hp, evade: evade); var before = Snapshot(state);
-            var rng = new FftRandomState(seed, ulong.MaxValue - draws); var fits = Select(state, rng: rng); Success(fits);
+            var rng = new RandomState(seed, ulong.MaxValue - draws); var fits = Select(state, rng: rng); Success(fits);
             Assert.Equal(ulong.MaxValue, fits.RngState.DrawCount);
             var shortBudget = rng with { DrawCount = rng.DrawCount + 1 };
             var failure = Atomic(Select(state, rng: shortBudget), AttackThrowStoneAiPreparedSelectionStage.Selection, shortBudget);
             Assert.Equal(slot, failure.SelectionFailure!.LotteryIndex); Assert.Equal(before, Snapshot(state));
         }
-        var formulaBudget = new FftRandomState(1, ulong.MaxValue - 6);
+        var formulaBudget = new RandomState(1, ulong.MaxValue - 6);
         var formula = Atomic(Select(Battle(move: 1, target: FarTarget), rng: formulaBudget),
             AttackThrowStoneAiPreparedSelectionStage.Composition, formulaBudget);
         Assert.Equal(AttackThrowStoneAiStage.ThrowStone, formula.CompositionFailure!.Stage);
@@ -102,7 +103,7 @@ public sealed class AttackThrowStoneAiOutOfReachSelectionTests
         var tick = Atomic(Select(Battle(move: 1, target: FarTarget, hp: 10, ticks: ulong.MaxValue - 1)),
             AttackThrowStoneAiPreparedSelectionStage.Composition);
         Assert.Equal(ThrowStoneAiCandidateRejection.TickCountExhausted, tick.CompositionFailure!.ThrowStoneFailure!.Detail!.CandidateRejection);
-        var reachBudget = new FftRandomState(1, ulong.MaxValue - 2);
+        var reachBudget = new RandomState(1, ulong.MaxValue - 2);
         Assert.Equal(AttackThrowStoneAiScenarioStage.ReachAdjustment,
             Atomic(Select(Battle(move: 1, target: FarTarget), rng: reachBudget), AttackThrowStoneAiPreparedSelectionStage.Scenario,
                 reachBudget).ScenarioFailure!.Stage);
@@ -147,7 +148,7 @@ public sealed class AttackThrowStoneAiOutOfReachSelectionTests
 
     private static AttackThrowStoneAiOutOfReachSelectionResult Select(AttackBattleSnapshot state,
         SwordAiRefreshRequest? request = null, AttackThrowStoneAiPreparedSelectionProfile? profile = null,
-        SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue, FftRandomState? rng = null)
+        SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue, RandomState? rng = null)
     {
         return AttackThrowStoneAiOutOfReachSelection.Evaluate(state, new(request ?? FreshRequest(), Stone, new(Sword, 2)),
             SelectionConfiguration(profile ?? Selection, team), rng ?? Decision);
@@ -155,7 +156,7 @@ public sealed class AttackThrowStoneAiOutOfReachSelectionTests
     private static AttackThrowStoneAiOutOfReachSelectionOutcome Success(AttackThrowStoneAiOutOfReachSelectionResult result)
     { Assert.True(result.Accepted, Serialize(result.Failure)); Assert.Null(result.Failure); return Assert.IsType<AttackThrowStoneAiOutOfReachSelectionOutcome>(result.Outcome); }
     private static AttackThrowStoneAiPreparedSelectionFailure Atomic(AttackThrowStoneAiOutOfReachSelectionResult result,
-        AttackThrowStoneAiPreparedSelectionStage stage, FftRandomState? rng = null)
+        AttackThrowStoneAiPreparedSelectionStage stage, RandomState? rng = null)
     { Assert.False(result.Accepted); Assert.Null(result.Outcome); Assert.Equal(rng ?? Decision, result.RngState);
         var failure = Assert.IsType<AttackThrowStoneAiPreparedSelectionFailure>(result.Failure); Assert.Equal(stage, failure.Stage); return failure; }
 }

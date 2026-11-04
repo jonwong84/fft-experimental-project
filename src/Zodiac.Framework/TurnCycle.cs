@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 namespace Zodiac.Framework;
 
 /// <summary>The bounded FFT-owned ordinary CT clock and confirmed turn-choice transitions.</summary>
@@ -46,7 +47,7 @@ public static class TurnCycle
                 TurnUnitState selected = units[best];
                 int remainder = selected.Ct % 100;
                 // The source calls upkeep after CT modulo, even with no visible status effect.
-                var draw = new FftBiosRandom().Next(state.RngState);
+                var draw = new RandomStateGenerator().Next(state.RngState);
                 units[best] = selected.Update(remainder, true, false, false);
                 events.Add(new TurnReadyEvent(selected.Id, selected.Ct, remainder, draw.Value));
                 return TurnCycleResult.Accept(new TurnCycleState(units, draw.State, ticks, TurnCyclePhase.UnitTurn), events);

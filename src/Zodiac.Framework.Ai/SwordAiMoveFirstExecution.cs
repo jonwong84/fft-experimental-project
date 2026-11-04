@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -10,7 +11,7 @@ public sealed record SwordAiMoveFirstFailure(SwordAiMoveFirstRejection Reason,
 {
     public SwordAiPreparedSelectionFailure? PreparedSelectionFailure { get; init; }
 }
-public sealed record SwordAiMoveFirstOutcome(SwordAiDerivedSelectionOutcome Decision, SwordAiDispatchOutcome Dispatch, FftRandomState DecisionRng)
+public sealed record SwordAiMoveFirstOutcome(SwordAiDerivedSelectionOutcome Decision, SwordAiDispatchOutcome Dispatch, RandomState DecisionRng)
 {
     public SwordAiOutOfReachSelectionOutcome? OutOfReach { get; init; }
     public SwordAiPreparationOutcome? Preparation { get; init; }
@@ -122,13 +123,13 @@ public static class SwordAiMoveFirstExecution
         }, executionProfile);
     }
 
-    private sealed record PlanningResult(SwordAiDerivedSelectionOutcome? Decision, FftRandomState Rng,
+    private sealed record PlanningResult(SwordAiDerivedSelectionOutcome? Decision, RandomState Rng,
         SwordAiOutOfReachSelectionOutcome? OutOfReach = null, SwordAiPreparationOutcome? Preparation = null,
         SwordAiMoveFirstFailure? Failure = null);
 
     private static SwordAiMoveFirstResult ExecuteCore(FacingTurnState state, BattleUnitId actorId, BattleUnitId targetId,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, SwordAiCommandDispatchProfile dispatchProfile,
-        Func<AttackBattleSnapshot, FftRandomState, PlanningResult> planner, SwordAiExecutionProfile? postPrefixProfile = null)
+        Func<AttackBattleSnapshot, RandomState, PlanningResult> planner, SwordAiExecutionProfile? postPrefixProfile = null)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(candidateProfile);

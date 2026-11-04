@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -25,16 +26,16 @@ public sealed record SwordAiSelectedPlan(SwordAiSelectedPlanKind Kind, BattleUni
     public bool ActBeforeMove => Attack?.Candidate.Order == SwordAiCandidateOrder.ActThenMove;
 }
 
-public sealed record SwordAiSelectionOutcome(SwordAiCompositionOutcome Composition, FftRandomState LotteryEntryRng,
+public sealed record SwordAiSelectionOutcome(SwordAiCompositionOutcome Composition, RandomState LotteryEntryRng,
     ImmutableArray<SwordAiLotteryRoll> Lottery, int? SelectedRankedIndex, SwordAiSelectionReason Reason, SwordAiSelectedPlan Plan);
 /// <summary>Failures return the incoming whole-query RNG and no partial composition, lottery or plan.</summary>
 public sealed record SwordAiSelectionResult(bool Accepted, SwordAiSelectionFailure? Failure,
-    SwordAiSelectionOutcome? Outcome, FftRandomState RngState);
+    SwordAiSelectionOutcome? Outcome, RandomState RngState);
 
 internal sealed record SwordAiRankedLotteryOutcome(ImmutableArray<SwordAiLotteryRoll> Rolls, int? SelectedIndex,
     SwordAiSelectionReason Reason, SwordAiSelectedPlan Plan);
 internal sealed record SwordAiRankedLotteryResult(bool Accepted, SwordAiSelectionFailure? Failure,
-    SwordAiRankedLotteryOutcome? Outcome, FftRandomState RngState);
+    SwordAiRankedLotteryOutcome? Outcome, RandomState RngState);
 
 /// <summary>Fresh ordinary Attack/MoveOnly selection after one privately owned movement/Attack composition.</summary>
 /// <remarks>
@@ -48,7 +49,7 @@ public static class SwordAiSelection
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiComparisonProfile comparisonProfile, SwordAiMovementBaselineProfile baselineProfile,
         SwordAiScanProfile scanProfile, SwordAiCompositionProfile compositionProfile,
-        SwordAiSelectionProfile selectionProfile, FftRandomState decisionRng)
+        SwordAiSelectionProfile selectionProfile, RandomState decisionRng)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(scenario);
@@ -78,7 +79,7 @@ public static class SwordAiSelection
 
     // Only fresh privately owned composition reaches this tail; no public cached-result entry.
     internal static SwordAiSelectionResult SelectFresh(SwordAiCompositionResult composition,
-        BattleUnitId actorId, TilePosition baselineDestination, FftRandomState queryRng)
+        BattleUnitId actorId, TilePosition baselineDestination, RandomState queryRng)
     {
         var fresh = composition.Outcome!;
         var selected = SelectFreshRanks(fresh.RankedActions, actorId, baselineDestination, composition.RngState, queryRng);
@@ -90,7 +91,7 @@ public static class SwordAiSelection
 
     // Only fresh privately owned lists reach this tail, including post-ACT's structurally empty eight slots.
     internal static SwordAiRankedLotteryResult SelectFreshRanks(ImmutableArray<SwordAiScannedCandidate?> ranked,
-        BattleUnitId actorId, TilePosition baselineDestination, FftRandomState entryRng, FftRandomState queryRng)
+        BattleUnitId actorId, TilePosition baselineDestination, RandomState entryRng, RandomState queryRng)
     {
         var lottery = AiRankedLottery.Evaluate(ranked.Select(a => a?.Evaluation.Score!.HitPercent ?? (byte)0).ToImmutableArray(), entryRng);
         if (!lottery.Accepted)

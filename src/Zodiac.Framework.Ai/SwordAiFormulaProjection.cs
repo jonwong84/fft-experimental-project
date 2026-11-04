@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 namespace Zodiac.Framework.Ai;
 
 /// <summary>A formula outcome, before candidate clock advancement or AI scoring.</summary>
@@ -12,7 +13,7 @@ public sealed record SwordAiFormulaOutcome(int HitPercent, int NormalDamage, int
 /// <summary>Successful evaluation may have zero accuracy. Rejection returns no outcome and the incoming RNG.</summary>
 /// <remarks>Accepted RNG progress belongs to the decision even if its candidate is later discarded.</remarks>
 public sealed record SwordAiFormulaResult(bool Accepted, AttackCommandRejection Rejection,
-    SwordAiFormulaOutcome? Outcome, FftRandomState RngState);
+    SwordAiFormulaOutcome? Outcome, RandomState RngState);
 
 /// <summary>Pure ordinary-sword AI formula query over the explicitly selected two-unit flat profile.</summary>
 /// <remarks>
@@ -63,7 +64,7 @@ public static class SwordAiFormulaProjection
         try
         {
             // evade_source_roll draws before its execution-state gate, including zero/certain evades.
-            var random = new FftBiosRandom();
+            var random = new RandomStateGenerator();
             for (int source = 0; source < 4; source++) rng = random.Next(rng).State;
         }
         catch (OverflowException) { return Reject(AttackCommandRejection.RandomDrawCountExhausted); }

@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.SwordAiPreparationTestData;
 
@@ -16,7 +17,7 @@ public sealed class SwordAiMoveFirstExecutionTests
     public void Fresh_selection_and_dispatch_commit_real_Move_then_retained_Attack_without_reselection()
     {
         var state = Ready(evade: 0, move: false); var before = Snapshot(state.Battle); var moved = Start(state); var o = Success(moved);
-        Assert.Equal(new FftRandomState(180171308, 18), o.DecisionRng);
+        Assert.Equal(new RandomState(180171308, 18), o.DecisionRng);
         Assert.Equal(5, o.Decision.MovementScenario.Movement.Length);
         Assert.False(o.Decision.Selection.Plan.ActBeforeMove); Assert.Equal(SwordAiDispatchKind.Move, o.Dispatch.Kind);
         Assert.Equal(new TilePosition(2, 1, 0), o.Decision.Selection.Plan.Destination);
@@ -28,7 +29,7 @@ public sealed class SwordAiMoveFirstExecutionTests
         Assert.Equal(Serialize(decision.Outcome), Serialize(o.Decision)); Assert.Equal(decision.RngState, o.DecisionRng);
         var next = FacingMoveDecisionBattle.Continue(moved.State, A, moved.Continuation); Assert.True(next.Accepted);
         Assert.Equal(new AttackResolvedEvent(A, B, true, false, 25), Assert.Single(next.Events.OfType<AttackResolvedEvent>()));
-        Assert.Equal(new FftRandomState(3791773014, 24), next.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(3791773014, 24), next.State.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(25, next.State.Battle.Combatants.Single(u => u.UnitId == B).Hp);
         Assert.Equal(moved.State.Revision + 1, next.State.Revision); Assert.NotNull(next.State.PendingFacing);
         Assert.Equal(before, Snapshot(state.Battle)); Assert.Equal(state.Battle.TurnBattle.Turns.Ticks, next.State.Battle.TurnBattle.Turns.Ticks);
@@ -38,10 +39,10 @@ public sealed class SwordAiMoveFirstExecutionTests
     public void Low_accuracy_lottery_and_actual_miss_use_the_retained_stream_instead_of_new_preparation()
     {
         var state = Ready(move: false); var moved = Start(state); var o = Success(moved);
-        Assert.Equal(new FftRandomState(3535774167, 25), o.DecisionRng); Assert.Equal(8, o.Decision.Selection.Lottery.Length);
+        Assert.Equal(new RandomState(3535774167, 25), o.DecisionRng); Assert.Equal(8, o.Decision.Selection.Lottery.Length);
         var next = FacingMoveDecisionBattle.Continue(moved.State, A, moved.Continuation); Assert.True(next.Accepted);
         Assert.Equal(new AttackResolvedEvent(A, B, false, false, 0), Assert.Single(next.Events.OfType<AttackResolvedEvent>()));
-        Assert.Equal(new FftRandomState(2473755763, 29), next.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(2473755763, 29), next.State.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(50, next.State.Battle.Combatants.Single(u => u.UnitId == B).Hp);
     }
 

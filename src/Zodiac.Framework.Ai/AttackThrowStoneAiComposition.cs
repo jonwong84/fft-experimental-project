@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -47,7 +48,7 @@ public sealed record AttackThrowStoneAiCompositionOutcome(ImmutableArray<AiScore
 }
 /// <summary>Failure has no partial prefix, scan or ranks and restores incoming whole-query RNG.</summary>
 public sealed record AttackThrowStoneAiCompositionResult(bool Accepted, AttackThrowStoneAiFailure? Failure,
-    AttackThrowStoneAiCompositionOutcome? Outcome, FftRandomState RngState);
+    AttackThrowStoneAiCompositionOutcome? Outcome, RandomState RngState);
 
 /// <summary>Fresh movement prefix followed by exactly two certified entries and retained source ranks.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-192/193.
@@ -55,7 +56,7 @@ public sealed record AttackThrowStoneAiCompositionResult(bool Accepted, AttackTh
 public static class AttackThrowStoneAiComposition
 {
     public static AttackThrowStoneAiCompositionResult Evaluate(AttackBattleSnapshot state, ThrowStoneAiScanRequest request,
-        ThrowStoneAiScanScenario scenario, BoundedSwordWeapon? weapon, AttackThrowStoneAiProfile profile, FftRandomState decisionRng)
+        ThrowStoneAiScanScenario scenario, BoundedSwordWeapon? weapon, AttackThrowStoneAiProfile profile, RandomState decisionRng)
     {
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(request); ArgumentNullException.ThrowIfNull(scenario);
         ArgumentNullException.ThrowIfNull(profile); ArgumentNullException.ThrowIfNull(profile.Attack); ArgumentNullException.ThrowIfNull(profile.ThrowStone);
@@ -74,7 +75,7 @@ public static class AttackThrowStoneAiComposition
     }
 
     internal static AttackThrowStoneAiCompositionResult? ValidateInputs(AttackBattleSnapshot state, ThrowStoneAiScanRequest request,
-        ThrowStoneAiScanScenario scenario, BoundedSwordWeapon? weapon, AttackThrowStoneAiProfile profile, FftRandomState decisionRng)
+        ThrowStoneAiScanScenario scenario, BoundedSwordWeapon? weapon, AttackThrowStoneAiProfile profile, RandomState decisionRng)
     {
         AttackThrowStoneAiCompositionResult Reject(AttackThrowStoneAiFailure failure) => new(false, failure, null, decisionRng);
         if (!profile.SourceAttackThenThrowStone || !profile.FreshEmptyRankedList)
@@ -99,7 +100,7 @@ public static class AttackThrowStoneAiComposition
     // Owning entries supply only a private fresh prefix; no cached-result public overload exists.
     internal static AttackThrowStoneAiCompositionResult ContinueFromMovement(AttackBattleSnapshot state, ThrowStoneAiScanRequest request,
         ThrowStoneAiScanScenario scenario, BoundedSwordWeapon? weapon, AttackThrowStoneAiProfile profile,
-        AiMovementPrefixOutcome fresh, FftRandomState rng, FftRandomState queryRng)
+        AiMovementPrefixOutcome fresh, RandomState rng, RandomState queryRng)
     {
         AttackThrowStoneAiCompositionResult Reject(AttackThrowStoneAiFailure failure) => new(false, failure, null, queryRng);
         var comparisonProfile = new SwordAiComparisonProfile(request.ActorId, request.TargetId, profile.ThrowStoneScan.FreshDecisionBaseline);

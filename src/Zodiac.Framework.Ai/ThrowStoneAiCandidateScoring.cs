@@ -1,14 +1,15 @@
+using Zodiac.Framework.Random;
 namespace Zodiac.Framework.Ai;
 
 public sealed record ThrowStoneAiScoringResult(AiScoringDisposition Disposition, AiScoringRejection Rejection,
-    ThrowStoneAiCandidateResult? Projection, AiCandidateScore? Score, FftRandomState RngState);
+    ThrowStoneAiCandidateResult? Projection, AiCandidateScore? Score, RandomState RngState);
 
 /// <summary>Own one fresh Throw Stone candidate and apply shared absolute source scoring without additional RNG.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-185/188. No cached outcome, comparison, scan or authority.</remarks>
 public static class ThrowStoneAiCandidateScoring
 {
     public static ThrowStoneAiScoringResult Evaluate(AttackBattleSnapshot state, ThrowStoneAiCandidate candidate,
-        ThrowStoneAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, FftRandomState decisionRng)
+        ThrowStoneAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, RandomState decisionRng)
     {
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(candidate);
         ArgumentNullException.ThrowIfNull(candidateProfile); ArgumentNullException.ThrowIfNull(scoreProfile);

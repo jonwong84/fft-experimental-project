@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Fft.Client.Presentation;
 using Zodiac.Content.Samples;
@@ -43,12 +44,12 @@ public sealed class BattleUiInputTests
         Assert.Equal(TurnCycleRejection.TurnAlreadyActive, rejected[0].TurnRejection);
         Assert.Equal(TwoUnitBattleRejection.AlreadyCompleted, rejected[1].ScenarioRejection);
         Assert.Equal(Summary(BattleUiCheckPlan.Expected()), Summary(ui.State));
-        Assert.Equal(new FftRandomState(2473755763, 22), ui.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(2473755763, 22), ui.State.Battle.TurnBattle.Turns.RngState);
         var terminal = ui.State;
         router.Key(Keys.R);
         Assert.Empty(ui.Journal); Assert.Null(ui.SelectedUnit);
         Assert.Equal(TwoUnitBattleOutcome.InProgress, ui.State.Outcome);
-        Assert.Equal(new FftRandomState(1, 0), ui.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(1, 0), ui.State.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(TwoUnitBattleOutcome.FirstUnitWon, terminal.Outcome);
     }
 

@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -7,7 +8,7 @@ public sealed record AttackThrowStoneAiOutOfReachSelectionOutcome(AttackThrowSto
     ImmutableArray<TilePosition> ScanOrigins, AttackThrowStoneAiSelectionOutcome Selection);
 /// <summary>Failure publishes reasons only and restores whole-query RNG, including after private masks/ranks/rolls.</summary>
 public sealed record AttackThrowStoneAiOutOfReachSelectionResult(bool Accepted, AttackThrowStoneAiPreparedSelectionFailure? Failure,
-    AttackThrowStoneAiOutOfReachSelectionOutcome? Outcome, FftRandomState RngState);
+    AttackThrowStoneAiOutOfReachSelectionOutcome? Outcome, RandomState RngState);
 
 /// <summary>Own fresh NonBlue out-of-reach pair selection only when every cast key is fresh or proved unread.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-199/200/202.
@@ -15,7 +16,7 @@ public sealed record AttackThrowStoneAiOutOfReachSelectionResult(bool Accepted, 
 public static class AttackThrowStoneAiOutOfReachSelection
 {
     public static AttackThrowStoneAiOutOfReachSelectionResult Evaluate(AttackBattleSnapshot state,
-        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, FftRandomState decisionRng)
+        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, RandomState decisionRng)
     {
         AttackThrowStoneAiOutOfReachSelectionResult Reject(AttackThrowStoneAiPreparedSelectionFailure failure) => new(false, failure, null, decisionRng);
         var admission = AttackThrowStoneAiSelectionPipeline.Admit(state, request, configuration);

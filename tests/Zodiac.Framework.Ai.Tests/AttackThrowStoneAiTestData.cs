@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using static Zodiac.Framework.Ai.Tests.ThrowStoneAiTestData;
 
 namespace Zodiac.Framework.Ai.Tests;
@@ -31,7 +32,7 @@ internal static class AttackThrowStoneAiTestData
             u.ZodiacSign, u.Facing, u.Status, u.KoCount, u.UnitId == actor ? Sword : u.RightHandWeaponId)));
     }
     internal static AttackThrowStoneAiCompositionResult Evaluate(AttackBattleSnapshot? state = null, int power = 2,
-        ThrowStoneAiScanScenario? scenario = null, AttackThrowStoneAiProfile? profile = null, FftRandomState? rng = null, bool second = false) =>
+        ThrowStoneAiScanScenario? scenario = null, AttackThrowStoneAiProfile? profile = null, RandomState? rng = null, bool second = false) =>
         AttackThrowStoneAiComposition.Evaluate(state ?? Battle(second: second), Request(second), scenario ?? Scenario(),
             new(Sword, power), profile ?? Profile(), rng ?? Decision);
 }

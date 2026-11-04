@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -33,7 +34,7 @@ public sealed record SwordAiScanOutcome(ImmutableArray<SwordAiScannedCandidate> 
 /// <remarks>Atomic unsupported/exhaustion rollback is managed policy, not original C search rewind.</remarks>
 public sealed record SwordAiScanResult(SwordAiScanDisposition Disposition, SwordAiScanRejection Rejection,
     int? FailedCandidateIndex, AiScoringRejection ScoringRejection, SwordAiCandidateRejection ProjectionRejection,
-    SwordAiScanOutcome? Outcome, FftRandomState RngState);
+    SwordAiScanOutcome? Outcome, RandomState RngState);
 
 /// <summary>Pure, synchronous enumeration and fresh scoring of one certified ordinary-sword scenario.</summary>
 /// <remarks>
@@ -44,7 +45,7 @@ public static class SwordAiCandidateScan
 {
     public static SwordAiScanResult Evaluate(AttackBattleSnapshot state, SwordAiScanScenario scenario,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
-        SwordAiComparisonProfile comparisonProfile, SwordAiScanProfile scanProfile, FftRandomState decisionRng)
+        SwordAiComparisonProfile comparisonProfile, SwordAiScanProfile scanProfile, RandomState decisionRng)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(scenario);
@@ -61,7 +62,7 @@ public static class SwordAiCandidateScan
     // Owning compositions have already admitted original state/masks and freshly derived this cache.
     internal static SwordAiScanResult EvaluateFresh(AttackBattleSnapshot state, SwordAiScanScenario scenario,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
-        SwordAiComparisonProfile comparisonProfile, SwordAiScanProfile scanProfile, AiProximityCache proximity, FftRandomState decisionRng)
+        SwordAiComparisonProfile comparisonProfile, SwordAiScanProfile scanProfile, AiProximityCache proximity, RandomState decisionRng)
     {
         SwordAiScanResult Reject(SwordAiScanRejection reason, int? index, AiScoringRejection scoreReason,
             SwordAiCandidateRejection projectionReason) =>
@@ -108,7 +109,7 @@ public static class SwordAiCandidateScan
     // Pure admission reused before the composition evaluates any movement tile. No candidate/RNG work here.
     internal static SwordAiScanResult? ValidateInputs(AttackBattleSnapshot state, SwordAiScanScenario scenario,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
-        SwordAiComparisonProfile comparisonProfile, SwordAiScanProfile scanProfile, FftRandomState decisionRng)
+        SwordAiComparisonProfile comparisonProfile, SwordAiScanProfile scanProfile, RandomState decisionRng)
     {
         SwordAiScanResult Reject(SwordAiScanRejection reason, AiScoringRejection scoreReason = AiScoringRejection.None,
             SwordAiCandidateRejection projectionReason = SwordAiCandidateRejection.None) =>

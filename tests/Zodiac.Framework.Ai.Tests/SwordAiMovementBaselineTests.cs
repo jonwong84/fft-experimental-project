@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Xunit;
 
@@ -10,7 +11,7 @@ public sealed class SwordAiMovementBaselineTests
     private static readonly BattleUnitId A = new("sample:unit/a"), B = new("sample:unit/b");
     private static readonly AssetId Weapon = new("sample:item/plain-sword");
     private static readonly TilePosition Origin = new(1, 1, 0), Destination = new(2, 1, 0);
-    private static readonly FftRandomState Decision = new(1, 200), LiveRng = new(57, 100);
+    private static readonly RandomState Decision = new(1, 200), LiveRng = new(57, 100);
     private static readonly SwordAiCandidateProfile CandidateProfile = new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 19)]);
     private static readonly AiScoreProfile ScoreProfile = new([new(A, AiScoreFacts.ClosedProfile), new(B, AiScoreFacts.ClosedProfile)]);
     private static readonly SwordAiMovementBaselineProfile Profile = new(true, true, true, true);
@@ -27,7 +28,7 @@ public sealed class SwordAiMovementBaselineTests
         Assert.Equal(alreadyMoved || change, actor.MovementTaken); Assert.False(actor.ActionTaken);
         Assert.Equal(change ? Destination : Origin, actor.Position);
         Assert.Equal(0ul, outcome.ElapsedTicks); Assert.Equal(B, outcome.MoveOpportunityUnitId);
-        Assert.Equal(new FftRandomState(1103527590, 201), result.RngState);
+        Assert.Equal(new RandomState(1103527590, 201), result.RngState);
         Assert.Equal(16838u, Assert.Single(outcome.UpkeepPicks).RawRoll);
     }
 
@@ -90,7 +91,7 @@ public sealed class SwordAiMovementBaselineTests
         Assert.Equal(Serialize(result), Serialize(Evaluate(State(second: true, hp: 10, reverse: true), second: true)));
         Assert.Equal(Serialize(result), Serialize(Evaluate(state, second: true)));
         var next = Evaluate(state, second: true, rng: result.RngState);
-        Assert.Equal(new FftBiosRandom().Next(result.RngState).State, next.RngState);
+        Assert.Equal(new RandomStateGenerator().Next(result.RngState).State, next.RngState);
         Assert.Equal(before, Snapshot(state)); Assert.Equal(LiveRng, state.TurnBattle.Battle.RngState);
         Assert.Equal(LiveRng, state.TurnBattle.Turns.RngState); Assert.Equal(7ul, state.TurnBattle.Turns.Ticks);
     }
@@ -139,9 +140,9 @@ public sealed class SwordAiMovementBaselineTests
     [Fact]
     public void Exactly_one_draw_fits_at_MAX_and_exhaustion_returns_no_partial_outcome()
     {
-        var fits = new FftRandomState(1, ulong.MaxValue - 1);
+        var fits = new RandomState(1, ulong.MaxValue - 1);
         Assert.Equal(ulong.MaxValue, Evaluate(State(), rng: fits).RngState.DrawCount);
-        var exhausted = new FftRandomState(1, ulong.MaxValue);
+        var exhausted = new RandomState(1, ulong.MaxValue);
         Atomic(Evaluate(State(), rng: exhausted), SwordAiMovementBaselineRejection.RandomDrawCountExhausted, exhausted);
     }
 
@@ -158,7 +159,7 @@ public sealed class SwordAiMovementBaselineTests
     }
 
     private static SwordAiMovementBaselineResult Evaluate(AttackBattleSnapshot state, TilePosition? destination = null,
-        bool second = false, SwordAiMovementBaselineProfile? profile = null, FftRandomState? rng = null) =>
+        bool second = false, SwordAiMovementBaselineProfile? profile = null, RandomState? rng = null) =>
         SwordAiMovementBaseline.Evaluate(state, new(second ? B : A, second ? A : B, destination ?? Destination),
             CandidateProfile, ScoreProfile, profile ?? Profile, rng ?? Decision);
     private static SwordAiMovementBaselineOutcome Success(SwordAiMovementBaselineResult result)
@@ -166,7 +167,7 @@ public sealed class SwordAiMovementBaselineTests
         Assert.True(result.Accepted); Assert.Equal(SwordAiMovementBaselineRejection.None, result.Rejection);
         return Assert.IsType<SwordAiMovementBaselineOutcome>(result.Outcome);
     }
-    private static void Atomic(SwordAiMovementBaselineResult result, SwordAiMovementBaselineRejection reason, FftRandomState? rng = null)
+    private static void Atomic(SwordAiMovementBaselineResult result, SwordAiMovementBaselineRejection reason, RandomState? rng = null)
     {
         Assert.False(result.Accepted); Assert.Equal(reason, result.Rejection);
         Assert.Null(result.Outcome); Assert.Equal(rng ?? Decision, result.RngState);

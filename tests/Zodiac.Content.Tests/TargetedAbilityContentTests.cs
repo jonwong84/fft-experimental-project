@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json.Nodes;
 using Zodiac.Content.BattleSetup;
 using Zodiac.Content.ContentPackages;
@@ -142,6 +143,6 @@ public sealed class TargetedAbilityContentTests
         var map=new BattleMapDefinition(7,5,1,Enumerable.Repeat(new BattleTile(ground,10),35).ToArray());
         return BaseJobBattleSetup.Create(new(metadata.Jobs,metadata.Skillsets,metadata.Abilities),map,
             [new(SyntheticBasicSkillBattle.First,metadata.Jobs[0].Id,new(1,2,0),6,[new(ground,new(1))]),
-             new(SyntheticBasicSkillBattle.Second,metadata.Jobs[0].Id,new(3,2,0),6,[new(ground,new(1))])],FftBiosRandom.Seed(1));
+             new(SyntheticBasicSkillBattle.Second,metadata.Jobs[0].Id,new(3,2,0),6,[new(ground,new(1))])],RandomStateGenerator.Seed(1));
     }
 }

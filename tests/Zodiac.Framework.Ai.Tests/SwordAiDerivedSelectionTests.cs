@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Xunit;
 
@@ -9,7 +10,7 @@ public sealed class SwordAiDerivedSelectionTests
     private static readonly TerrainSurfaceId Ground = new("sample:terrain/ordinary-ground");
     private static readonly AssetId Weapon = new("sample:item/plain-sword");
     private static readonly BattleUnitId A = new("sample:unit/a"), B = new("sample:unit/b");
-    private static readonly FftRandomState Decision = new(1, 7), Live = new(57, 100);
+    private static readonly RandomState Decision = new(1, 7), Live = new(57, 100);
     private static readonly SwordAiCandidateProfile Candidate = new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 19)]);
     private static readonly AiScoreProfile Score = new([new(A, AiScoreFacts.ClosedProfile), new(B, AiScoreFacts.ClosedProfile)]);
     private static readonly SwordAiDerivedSelectionProfile Derived = new(true, true, true, true, true, true, true, FirstAttackEntry: true);
@@ -17,7 +18,7 @@ public sealed class SwordAiDerivedSelectionTests
     private static readonly SwordAiMovementScenarioProfile Scenario = new(true, true, true);
 
     private sealed record Frame(AttackBattleSnapshot State, BoundedSwordWeapon? Weapon, SwordAiComparisonProfile Comparison,
-        SwordAiDerivedSelectionProfile Derived, SwordAiSelectionProfile Selection, SwordAiMovementScenarioProfile Scenario, FftRandomState Rng);
+        SwordAiDerivedSelectionProfile Derived, SwordAiSelectionProfile Selection, SwordAiMovementScenarioProfile Scenario, RandomState Rng);
     private static Frame Setup(AttackBattleSnapshot? state = null, bool second = false) => new(state ?? State(), new(Weapon, 5),
         new(second ? B : A, second ? A : B, true), Derived, Selection, Scenario, Decision);
     private static SwordAiDerivedSelectionResult Evaluate(Frame f) => SwordAiDerivedSelection.Evaluate(f.State, f.Weapon,
@@ -54,8 +55,8 @@ public sealed class SwordAiDerivedSelectionTests
         uint word, ulong count, int rolls)
     {
         var f = Setup(State(evade: evade)); var result = Evaluate(f); var o = Success(result).Selection;
-        Assert.Equal(new FftRandomState(2516284547, 13), o.LotteryEntryRng);
-        Assert.Equal(new FftRandomState(word, count), result.RngState);
+        Assert.Equal(new RandomState(2516284547, 13), o.LotteryEntryRng);
+        Assert.Equal(new RandomState(word, count), result.RngState);
         Assert.Equal(reason, o.Reason); Assert.Equal(rolls, o.Lottery.Length);
         Assert.Equal(new SwordAiLotteryRoll(0, 23010, 10, 100 - evade, evade == 89), o.Lottery[0]);
         Assert.Equal(SwordAiSelectedPlanKind.Attack, o.Plan.Kind); Assert.True(o.Plan.ActBeforeMove);

@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 namespace Zodiac.Framework.Ai;
 
 /// <summary>Per-decision actor/target policy, ability identity and equipped weapon; no cached query or authority.</summary>
@@ -16,7 +17,7 @@ public sealed record AttackThrowStoneAiSelectionConfiguration(SwordAiCandidatePr
 internal static class AttackThrowStoneAiSelectionPipeline
 {
     internal sealed record Result(AttackThrowStoneAiPreparedSelectionFailure? Failure,
-        AttackThrowStoneAiSelectionOutcome? Outcome, FftRandomState RngState)
+        AttackThrowStoneAiSelectionOutcome? Outcome, RandomState RngState)
     {
         public bool Accepted => Failure is null;
     }
@@ -49,7 +50,7 @@ internal static class AttackThrowStoneAiSelectionPipeline
 
     internal static Result Continue(AttackBattleSnapshot state, AttackThrowStoneAiSelectionRequest request,
         AttackThrowStoneAiSelectionConfiguration configuration, AttackThrowStoneAiPreparationOutcome preparation,
-        ThrowStoneAiScanScenario scenario, AiMovementPrefixOutcome prefix, FftRandomState scenarioRng, FftRandomState queryRng)
+        ThrowStoneAiScanScenario scenario, AiMovementPrefixOutcome prefix, RandomState scenarioRng, RandomState queryRng)
     {
         Result Reject(AttackThrowStoneAiPreparedSelectionFailure failure) => new(failure, null, queryRng);
         var profile = CreateCompositionProfile(preparation, configuration);

@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Zodiac.Content.Saves;
 using Zodiac.Framework;
@@ -32,7 +33,7 @@ public sealed class SwordFacingSaveTests
             source=expected.State; resumed=actual.State;
         }
         Assert.Equal(new[]{25,25},resumed.Battle.Combatants.Select(unit=>unit.Hp).ToArray());
-        Assert.Equal(new FftRandomState(2937909499,14),resumed.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(2937909499,14),resumed.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(resumed.Battle.TurnBattle.Turns.RngState,resumed.Battle.TurnBattle.Battle.RngState);
         Assert.Equal(1ul,resumed.Battle.TurnBattle.Turns.Ticks);
         Assert.Equal(20,resumed.Battle.TurnBattle.Turns.Units.Single(unit=>unit.Id==A).Ct);
@@ -54,7 +55,7 @@ public sealed class SwordFacingSaveTests
         var attack=Apply(restored,Commands[4]);
         Assert.False(Assert.Single(attack.Events.OfType<TwoUnitBattleTransitionEvent>().Select(ev=>ev.Event).OfType<AttackResolvedEvent>()).Hit);
         Assert.Equal(50,attack.State.Battle.Combatants.Single(unit=>unit.UnitId==A).Hp);
-        Assert.Equal(new FftRandomState(836760821,12),attack.State.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(836760821,12),attack.State.Battle.TurnBattle.Turns.RngState);
     }
 
     private static TwoUnitBattleResult Apply(TwoUnitBattleState state,TwoUnitBattleCommand command)
@@ -69,7 +70,7 @@ public sealed class SwordFacingSaveTests
         var ground=new TerrainSurfaceId("sample:terrain/facing-ground");
         var map=new BattleMapDefinition(2,1,1,[new(ground,10),new(ground,10)]);
         var movement=new UnitMovementProfile(1,2,6,UnitMovementMode.Normal,UnitMovementTraits.None,[new(ground,new TerrainMovementCost(1))]);
-        var rng=FftBiosRandom.Seed(1);
+        var rng=RandomStateGenerator.Seed(1);
         var battle=new BattleState(map,[new(A,new(0,0,0),movement),new(B,new(1,0,0),movement)],rng);
         var turns=new TurnCycleState([new(A,10,90,0),new(B,10,90,1)],rng);
         var snapshot=new AttackBattleSnapshot(new(battle,turns),[Unit(A,100),Unit(B,0)]);

@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.SwordAiPreparationTestData;
@@ -153,7 +154,7 @@ public sealed class SwordAiCommandDispatchTests
     private static JsonDocument Fixture() => JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "ai-command-continuation-contract-v1.json")));
     private static AttackBattleSnapshot WithMaxCounters(AttackBattleSnapshot state)
     {
-        var old = state.TurnBattle; var rng = new FftRandomState(57, ulong.MaxValue);
+        var old = state.TurnBattle; var rng = new RandomState(57, ulong.MaxValue);
         return new(new(new(old.Battle.Map, old.Battle.Units, rng), new(old.Turns.Units, rng, ulong.MaxValue, old.Turns.Phase)), state.Combatants);
     }
 }

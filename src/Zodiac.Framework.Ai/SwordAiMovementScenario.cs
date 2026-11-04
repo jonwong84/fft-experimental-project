@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
@@ -18,7 +19,7 @@ public sealed record SwordAiMovementScenarioOutcome(SwordAiCompositionScenario S
     ImmutableArray<SwordAiMovementTileOrdering> Ordering, int TargetDistance, int TargetReach, bool BaselineUsedDistanceFallback);
 /// <summary>Failure publishes no partial scenario/evaluations and returns the incoming decision RNG.</summary>
 public sealed record SwordAiMovementScenarioResult(bool Accepted, SwordAiMovementScenarioFailure? Failure,
-    SwordAiMovementScenarioOutcome? Outcome, FftRandomState RngState);
+    SwordAiMovementScenarioOutcome? Outcome, RandomState RngState);
 
 /// <summary>Original masked team class, independent of control, actor identity or opponent relation.</summary>
 public enum SwordAiScenarioTeam { Unknown, Blue, NonBlue }
@@ -29,7 +30,7 @@ public sealed record SwordAiReachAdjustment(uint Raw, int Modulo, int Before, in
 public sealed record SwordAiOutOfReachScenarioOutcome(SwordAiMovementScenarioOutcome MovementScenario,
     SwordAiScenarioTeam Team, int EffectiveReach, SwordAiReachAdjustment? ReachAdjustment, bool AttackUsedDistanceFallback);
 public sealed record SwordAiOutOfReachScenarioResult(bool Accepted, SwordAiMovementScenarioFailure? Failure,
-    SwordAiOutOfReachScenarioOutcome? Outcome, FftRandomState RngState);
+    SwordAiOutOfReachScenarioOutcome? Outcome, RandomState RngState);
 
 /// <summary>Fresh, pure derivation of explicit in-reach and out-of-reach focused ordinary-sword movement branches.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-141/143/146/147. No Attack, lottery or command execution.</remarks>
@@ -37,32 +38,32 @@ public static class SwordAiMovementScenario
 {
     public static SwordAiMovementScenarioResult Evaluate(AttackBattleSnapshot state,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
-        SwordAiComparisonProfile comparisonProfile, SwordAiMovementScenarioProfile scenarioProfile, FftRandomState decisionRng)
+        SwordAiComparisonProfile comparisonProfile, SwordAiMovementScenarioProfile scenarioProfile, RandomState decisionRng)
         => EvaluateCore(state, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile, decisionRng, null).Result;
 
     /// <summary>Explicit out-of-reach branch; Blue skips, NonBlue draws once after movement scoring.</summary>
     public static SwordAiOutOfReachScenarioResult EvaluateOutOfReach(AttackBattleSnapshot state,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiComparisonProfile comparisonProfile, SwordAiMovementScenarioProfile scenarioProfile,
-        SwordAiScenarioTeam team, FftRandomState decisionRng)
+        SwordAiScenarioTeam team, RandomState decisionRng)
         => EvaluateReachCore(state, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile, team, decisionRng, false);
 
     // Only the owned fresh post-ACT preparation wrapper supplies these derived entry facts.
     internal static SwordAiMovementScenarioResult EvaluateAfterAct(AttackBattleSnapshot state,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
-        SwordAiComparisonProfile comparisonProfile, SwordAiMovementScenarioProfile scenarioProfile, FftRandomState decisionRng)
+        SwordAiComparisonProfile comparisonProfile, SwordAiMovementScenarioProfile scenarioProfile, RandomState decisionRng)
         => EvaluateCore(state, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile, decisionRng, null, alreadyActed: true).Result;
 
     internal static SwordAiOutOfReachScenarioResult EvaluateOutOfReachAfterAct(AttackBattleSnapshot state,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiComparisonProfile comparisonProfile, SwordAiMovementScenarioProfile scenarioProfile,
-        SwordAiScenarioTeam team, FftRandomState decisionRng)
+        SwordAiScenarioTeam team, RandomState decisionRng)
         => EvaluateReachCore(state, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile, team, decisionRng, true);
 
     private static SwordAiOutOfReachScenarioResult EvaluateReachCore(AttackBattleSnapshot state,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
         SwordAiComparisonProfile comparisonProfile, SwordAiMovementScenarioProfile scenarioProfile,
-        SwordAiScenarioTeam team, FftRandomState decisionRng, bool alreadyActed)
+        SwordAiScenarioTeam team, RandomState decisionRng, bool alreadyActed)
     {
         var core = EvaluateCore(state, candidateProfile, scoreProfile, comparisonProfile, scenarioProfile, decisionRng, team, alreadyActed);
         var result = core.Result;
@@ -75,7 +76,7 @@ public static class SwordAiMovementScenario
 
     private static CoreResult EvaluateCore(AttackBattleSnapshot state, SwordAiCandidateProfile candidateProfile,
         AiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
-        SwordAiMovementScenarioProfile scenarioProfile, FftRandomState decisionRng, SwordAiScenarioTeam? team, bool alreadyActed = false)
+        SwordAiMovementScenarioProfile scenarioProfile, RandomState decisionRng, SwordAiScenarioTeam? team, bool alreadyActed = false)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(candidateProfile);
@@ -134,7 +135,7 @@ public static class SwordAiMovementScenario
         if (team == SwordAiScenarioTeam.NonBlue)
         {
             uint raw;
-            try { var draw = new FftBiosRandom().Next(rng); rng = draw.State; raw = draw.Value; }
+            try { var draw = new RandomStateGenerator().Next(rng); rng = draw.State; raw = draw.Value; }
             catch (OverflowException)
             { return Reject(SwordAiMovementScenarioRejection.RandomDrawCountExhausted, SwordAiMovementScenarioStage.ReachAdjustment); }
             int modulo = (int)(raw % 7);

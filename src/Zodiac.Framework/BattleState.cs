@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Collections.ObjectModel;
 
 namespace Zodiac.Framework;
@@ -8,7 +9,7 @@ public sealed class BattleState
     private readonly ReadOnlyCollection<BattleUnitState> _units;
     private readonly Dictionary<BattleUnitId, int> _unitIndexes;
 
-    public BattleState(BattleMapDefinition map, IEnumerable<BattleUnitState> units, FftRandomState? rngState = null)
+    public BattleState(BattleMapDefinition map, IEnumerable<BattleUnitState> units, RandomState? rngState = null)
     {
         ArgumentNullException.ThrowIfNull(map);
         ArgumentNullException.ThrowIfNull(units);
@@ -38,7 +39,7 @@ public sealed class BattleState
     public BattleMapDefinition Map { get; }
 
     /// <summary>Explicit RNG snapshot; null means this scenario has not selected a random stream.</summary>
-    public FftRandomState? RngState { get; }
+    public RandomState? RngState { get; }
 
     public IReadOnlyList<BattleUnitState> Units => _units;
 

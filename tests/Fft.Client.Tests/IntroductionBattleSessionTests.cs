@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using System.Text.Json;
 using Fft.Client.Presentation;
 using Fft.Tests.Support;
@@ -122,7 +123,7 @@ public sealed class IntroductionBattleSessionTests : IDisposable
             Assert.Equal(Summary(old.State), Summary(session.Battle)); Assert.Equal(old.Journal.ToArray(), session.Journal.ToArray());
         }
         Assert.Equal(14, session.Journal.Length); Assert.Equal(Summary(BattleUiCheckPlan.Expected()), Summary(session.Battle));
-        Assert.Equal(new FftRandomState(2473755763, 22), session.Battle.Battle.TurnBattle.Turns.RngState);
+        Assert.Equal(new RandomState(2473755763, 22), session.Battle.Battle.TurnBattle.Turns.RngState);
         var intro = session.Gate; Assert.True(session.Key(Keys.R)); Assert.Same(intro, session.Gate);
         Assert.Empty(session.Journal); Assert.Equal(1, session.AvailabilityPublications); Assert.Null(session.SelectedUnit);
     }

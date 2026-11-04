@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.SwordAiPreparationTestData;
 
@@ -20,12 +21,12 @@ public sealed class SwordAiPostActScenarioTests
             Assert.Equal(new TilePosition(2, 2, 0), scenario.Scenario.AttackDestination);
             Assert.Equal(scenario.Scenario.AttackDestination, scenario.Scenario.BaselineDestination);
             Assert.False(scenario.BaselineUsedDistanceFallback); Assert.Equal(3, scenario.BaselineIndex); Assert.Null(o.OutOfReach);
-            Assert.Equal(new FftRandomState(word, count), result.RngState);
+            Assert.Equal(new RandomState(word, count), result.RngState);
             var rng = state.TurnBattle.Turns.RngState;
-            rng = new FftBiosRandom().Next(rng).State; // The one owned refresh precedes cell scoring.
+            rng = new RandomStateGenerator().Next(rng).State; // The one owned refresh precedes cell scoring.
             foreach (var tile in scenario.Movement)
             {
-                rng = new FftBiosRandom().Next(rng).State; Assert.Equal(rng, tile.RngState);
+                rng = new RandomStateGenerator().Next(rng).State; Assert.Equal(rng, tile.RngState);
                 Assert.Equal(score, tile.Outcome.Score.Priority);
                 Assert.Equal(tile.Outcome.Destination == new TilePosition(2, 1, 0) ? 35 : 15, tile.Outcome.TurnEndCt);
             }
@@ -41,17 +42,17 @@ public sealed class SwordAiPostActScenarioTests
         var state = State(moved: false, acted: true, move: 1, distance: 3);
         foreach (var (seed, halved) in new[] { (1u, false), (20u, true) })
         {
-            var rng = new FftRandomState(seed, 7); var result = Evaluate(state, outOfReach: true, rng: rng); var o = Success(result);
+            var rng = new RandomState(seed, 7); var result = Evaluate(state, outOfReach: true, rng: rng); var o = Success(result);
             Assert.Equal(new TilePosition(2, 1, 0), Assert.Single(o.MovementScenario.Scenario.MovementOrigins));
             var reach = Assert.IsType<SwordAiOutOfReachScenarioOutcome>(o.OutOfReach);
             var adjustment = Assert.IsType<SwordAiReachAdjustment>(reach.ReachAdjustment);
             Assert.Equal(halved, adjustment.Halved); Assert.Equal(2, adjustment.Before); Assert.Equal(halved ? 1 : 2, reach.EffectiveReach);
             Assert.Equal(halved, reach.AttackUsedDistanceFallback);
             Assert.Equal(o.MovementScenario.Scenario.AttackDestination, o.MovementScenario.Scenario.BaselineDestination);
-            var afterRefresh = new FftBiosRandom().Next(rng).State;
-            var afterCell = new FftBiosRandom().Next(afterRefresh).State;
+            var afterRefresh = new RandomStateGenerator().Next(rng).State;
+            var afterCell = new RandomStateGenerator().Next(afterRefresh).State;
             Assert.Equal(afterCell, o.MovementScenario.Movement[0].RngState);
-            var final = new FftBiosRandom().Next(afterCell); Assert.Equal(final.State, result.RngState); Assert.Equal(final.Value, adjustment.Raw);
+            var final = new RandomStateGenerator().Next(afterCell); Assert.Equal(final.State, result.RngState); Assert.Equal(final.Value, adjustment.Raw);
         }
     }
 
@@ -70,7 +71,7 @@ public sealed class SwordAiPostActScenarioTests
     [Fact]
     public void Exact_owned_budgets_and_late_clock_or_reach_failure_hide_all_prefix_work()
     {
-        var state = AfterAct().Battle; var last = new FftRandomState(state.TurnBattle.Turns.RngState.Value, ulong.MaxValue - 5);
+        var state = AfterAct().Battle; var last = new RandomState(state.TurnBattle.Turns.RngState.Value, ulong.MaxValue - 5);
         Assert.Equal(ulong.MaxValue, Evaluate(state, rng: last).RngState.DrawCount);
         var shortBudget = last with { DrawCount = ulong.MaxValue - 4 };
         var failed = Evaluate(state, rng: shortBudget); Atomic(failed, SwordAiPostActScenarioRejection.ScenarioRejected, shortBudget);
@@ -107,13 +108,13 @@ public sealed class SwordAiPostActScenarioTests
     }
 
     internal static SwordAiPostActScenarioResult Evaluate(AttackBattleSnapshot state, bool outOfReach = false,
-        bool second = false, SwordAiPostActScenarioProfile? profile = null, FftRandomState? rng = null) => outOfReach
+        bool second = false, SwordAiPostActScenarioProfile? profile = null, RandomState? rng = null) => outOfReach
         ? SwordAiPostActScenarios.EvaluateOutOfReach(state, Request(second), Candidate, Score, Refresh, Preparation,
             SwordAiScenarioTeam.NonBlue, profile ?? Profile, rng ?? state.TurnBattle.Turns.RngState)
         : SwordAiPostActScenarios.EvaluateInReach(state, Request(second), Candidate, Score, Refresh, Preparation,
             SwordAiScenarioTeam.NonBlue, profile ?? Profile, rng ?? state.TurnBattle.Turns.RngState);
     private static SwordAiPostActScenarioOutcome Success(SwordAiPostActScenarioResult result)
     { Assert.True(result.Accepted, Serialize(result)); Assert.Null(result.Failure); return Assert.IsType<SwordAiPostActScenarioOutcome>(result.Outcome); }
-    private static void Atomic(SwordAiPostActScenarioResult result, SwordAiPostActScenarioRejection reason, FftRandomState rng)
+    private static void Atomic(SwordAiPostActScenarioResult result, SwordAiPostActScenarioRejection reason, RandomState rng)
     { Assert.False(result.Accepted); Assert.Equal(reason, result.Failure!.Reason); Assert.Null(result.Outcome); Assert.Equal(rng, result.RngState); }
 }

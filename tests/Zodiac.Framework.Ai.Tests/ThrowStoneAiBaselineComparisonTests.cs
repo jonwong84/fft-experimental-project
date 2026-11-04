@@ -1,3 +1,4 @@
+using Zodiac.Framework.Random;
 using Xunit;
 using static Zodiac.Framework.Ai.Tests.ThrowStoneAiTestData;
 
@@ -27,7 +28,7 @@ public sealed class ThrowStoneAiBaselineComparisonTests
             Assert.Equal((1ul, 21ul, B), (outcome.Baseline.ElapsedTicks, outcome.Baseline.Ticks, outcome.Baseline.MoveOpportunityUnitId));
             Assert.Equal(16838u, Assert.Single(outcome.Baseline.UpkeepPicks).RawRoll);
             Assert.Equal(5627u, Assert.Single(outcome.Candidate.Projection!.Outcome!.UpkeepPicks).RawRoll);
-            Assert.Equal(new FftRandomState(2516284547, 13), result.RngState);
+            Assert.Equal(new RandomState(2516284547, 13), result.RngState);
             // Independently fresh candidate starts after precisely the baseline's one draw, on original units.
             var candidate = ThrowStoneAiCandidateScoring.Evaluate(state, Candidate(), CandidateProfile(), Score,
                 new(1103527590, 8));
@@ -64,8 +65,8 @@ public sealed class ThrowStoneAiBaselineComparisonTests
         Assert.Equal(0ul, outcome.Baseline.ElapsedTicks); Assert.Equal(ulong.MaxValue, outcome.Baseline.Ticks);
         Assert.Equal(AiScoringDisposition.NotValuable, outcome.Candidate.Disposition);
         Assert.Null(outcome.Candidate.Score); Assert.Null(outcome.Candidate.Projection!.Outcome); Assert.Null(outcome.Rank);
-        Assert.Equal(new FftRandomState(4182499122, 12), result.RngState);
-        var shortBudget = new FftRandomState(1, ulong.MaxValue - 4);
+        Assert.Equal(new RandomState(4182499122, 12), result.RngState);
+        var shortBudget = new RandomState(1, ulong.MaxValue - 4);
         var failure = Atomic(Evaluate(State(evade: 100), rng: shortBudget), ThrowStoneAiBaselineComparisonStage.Candidate, shortBudget);
         Assert.Equal(ThrowStoneAiCandidateRejection.RandomDrawCountExhausted, failure.CandidateRejection);
     }
@@ -76,8 +77,8 @@ public sealed class ThrowStoneAiBaselineComparisonTests
         foreach (var (hp, evade, draws, expectedWord) in new[] {
             (50, 0, 6ul, 2516284547u), (10, 0, 7ul, 3655513600u), (50, 100, 5ul, 4182499122u) })
         {
-            var rng = new FftRandomState(1, ulong.MaxValue - draws); var result = Evaluate(State(hp: hp, evade: evade), rng: rng);
-            var outcome = Success(result); Assert.Equal(new FftRandomState(expectedWord, ulong.MaxValue), result.RngState);
+            var rng = new RandomState(1, ulong.MaxValue - draws); var result = Evaluate(State(hp: hp, evade: evade), rng: rng);
+            var outcome = Success(result); Assert.Equal(new RandomState(expectedWord, ulong.MaxValue), result.RngState);
             if (hp == 10)
             {
                 Assert.Equal(AiRankOrder.Above, outcome.Rank); Assert.Equal(320, outcome.Candidate.Score!.Priority);
@@ -91,7 +92,7 @@ public sealed class ThrowStoneAiBaselineComparisonTests
                 ThrowStoneAiBaselineComparisonStage.Candidate, shortBudget);
             Assert.Equal(ThrowStoneAiCandidateRejection.RandomDrawCountExhausted, failure.CandidateRejection);
         }
-        var exhausted = new FftRandomState(1, ulong.MaxValue);
+        var exhausted = new RandomState(1, ulong.MaxValue);
         Assert.Equal(ThrowStoneAiBaselineComparisonRejection.RandomDrawCountExhausted,
             Atomic(Evaluate(State(), rng: exhausted), ThrowStoneAiBaselineComparisonStage.Baseline, exhausted).Reason);
         Assert.Equal(ThrowStoneAiBaselineComparisonRejection.TickCountExhausted,
@@ -142,14 +143,14 @@ public sealed class ThrowStoneAiBaselineComparisonTests
     }
 
     private static ThrowStoneAiBaselineComparisonResult Evaluate(AttackBattleSnapshot state, ThrowStoneAiCandidate? candidate = null,
-        TilePosition? baseline = null, ThrowStoneAiBaselineProfile? profile = null, FftRandomState? rng = null,
+        TilePosition? baseline = null, ThrowStoneAiBaselineProfile? profile = null, RandomState? rng = null,
         AiScoreProfile? score = null, ThrowStoneAiCandidateProfile? candidateProfile = null) =>
         ThrowStoneAiBaselineComparison.Evaluate(state, baseline ?? Origin, candidate ?? Candidate(), candidateProfile ?? CandidateProfile(),
             score ?? Score, profile ?? Profile, rng ?? Decision);
     private static ThrowStoneAiBaselineComparisonOutcome Success(ThrowStoneAiBaselineComparisonResult result)
     { Assert.True(result.Accepted, Serialize(result.Failure)); Assert.Null(result.Failure); return Assert.IsType<ThrowStoneAiBaselineComparisonOutcome>(result.Outcome); }
     private static ThrowStoneAiBaselineComparisonFailure Atomic(ThrowStoneAiBaselineComparisonResult result,
-        ThrowStoneAiBaselineComparisonStage stage, FftRandomState? rng = null)
+        ThrowStoneAiBaselineComparisonStage stage, RandomState? rng = null)
     { Assert.False(result.Accepted); Assert.Null(result.Outcome); Assert.Equal(rng ?? Decision, result.RngState);
         var failure = Assert.IsType<ThrowStoneAiBaselineComparisonFailure>(result.Failure); Assert.Equal(stage, failure.Stage); return failure; }
 }
