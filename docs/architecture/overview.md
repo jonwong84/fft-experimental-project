@@ -57,7 +57,10 @@ Existing package formats remain versioned contracts; changes to their exported
 shape need an explicit migration/version decision. Verify known flag decoding,
 encoding, unknown-bit preservation and original behavior at the adapter boundary.
 This direction does not turn numeric byte fields into booleans or require an
-immediate project-wide refactor. ZOD-134 records the deferred implementation work.
+immediate project-wide refactor. ZOD-134 records the partial learning/current-sword
+migration and remaining deferred work. Unused owner-authored
+[definition drafts](../development/content-definition-drafts.md) remain preserved;
+`AbilityToggles` consolidation is explicitly deferred.
 
 ## Current repository, verified
 

@@ -252,7 +252,17 @@ persist beyond battle.
 
 ### ZOD-134 — Migrate packed content flags to semantic boolean properties
 
-**Type:** Refactor · **Priority:** P4 · **Status:** Deferred · **Depends on:** ZOD-014, ZOD-016
+**Type:** Refactor · **Priority:** P4 · **Status:** Partial; remaining families deferred · **Depends on:** ZOD-014, ZOD-016
+
+Owner-requested ability learning flags now use immutable booleans; original packing stays
+in the offline adapter, unresolved bit 4 remains opaque, and package v1 is unchanged.
+[Implementation and mapping](architecture/zod-014-typed-definitions.md#definitions-and-preserved-values).
+Weapon behavior and elements also use immutable semantic records while retaining
+the supported sword domain and unchanged schemas 1/2; see the
+[weapon mapping](behavior/retail-sword-representation.md). The unused
+[definition drafts](development/content-definition-drafts.md), including
+`AbilityToggles`, are preserved unchanged. The owner explicitly deferred their
+consolidation on 2026-11-04.
 
 Revisit when a definition family is being extended or its verified flag mapping is ready.
 Prefer named booleans for independent switches; keep packed original bytes in import/export

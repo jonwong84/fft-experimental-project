@@ -56,6 +56,23 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
+- Content maintenance (ZOD-134, learning and current sword fields): renamed
+  `AbilityMetadataDefinition` now stores immutable boolean learning switches.
+  Packed type flags/enum are removed; offline adapters own original packing.
+  Classification stays numeric, unresolved bit 4 stays opaque, AI bytes and JSON
+  v1 are unchanged. [Mapping](architecture/zod-014-typed-definitions.md#definitions-and-preserved-values).
+  `WeaponDefinition` now owns immutable weapon behavior/element records with
+  original encoding in adapters; schemas 1/2 and the supported sword domain stay
+  unchanged. [Weapon mapping](behavior/retail-sword-representation.md).
+- Job content: sealed `JobStats` retains constructor-validated Move/Jump and
+  construction-only growth/multiplier/evade initialization. Immutable per-game
+  limits are passed through package/editor validation. Additional stats remain
+  scaffolding outside metadata v1 and gameplay. [Limits](development/content-limits.md).
+- Owner-draft cleanup: active content work and import-order cleanup are committed
+  separately. Nine unused [definition drafts](development/content-definition-drafts.md)
+  are preserved byte-for-byte and tracked as deferred scaffolding. The owner
+  explicitly left `AbilityToggles` consolidation for later; it is not wired into
+  current metadata, the editor or rules. Other unimplemented flag families stay deferred.
 - Latest implementation: [ZOD-240–242 fresh Basic Skill command](behavior/basic-skill-ai-command-execution.md)
   shares one selection owner across ACT-first, Move-first, same-tile empty END
   and unified fresh dispatch. Framework's existing confirmed paths and frozen
@@ -99,14 +116,15 @@ without rewriting old evidence.
 - Validation: locked restore and zero-warning/error full Release build pass;
   **4,198 .NET cases** (1,467 Framework, 986 AI, including owner drafts),
   **539 Python tests**, source/prepared-data and algorithm-guide audits pass.
-  Thirteen new cases cover retained actual Attack/Stone/Wait, exact/short budgets,
-  late failure/retry, exact token binding, END refunds/cap, unified dispatch,
-  source guards and both teams/actor identities. Logs, reports and seven full
-  TRX files are under ignored `scratch/basic-skill-command-240-242/`.
+  Latest rerun validates the content cleanup, including the accepted JobStats
+  initialization change and preserved drafts. The exact staged metadata snapshot
+  also builds independently. Logs, reports and seven full TRX files are under
+  ignored `scratch/content-cleanup/`; the preceding AI cases remain documented
+  under `scratch/basic-skill-command-240-242/`.
   Python uses repository-pinned Pillow 12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow 13.0.0 triggers six existing version guards; WindowsApps Python
-  is unavailable. Owner drafts remain excluded from this commit. Nine historical
+  is unavailable. Owner code drafts are now tracked; no original assets are staged. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.
   No original/C execution, host/editor activation or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
@@ -136,7 +154,8 @@ without rewriting old evidence.
   correctness contracts. Keep original and custom expectations scoped appropriately.
 - [Content flag policy](architecture/overview.md#content-flag-representation): named
   booleans for independent semantic flags, original byte packing in adapters,
-  unknown bits preserved. ZOD-134 migrates one family when ready, not a broad rewrite.
+  unknown bits preserved. ZOD-134's learning/current-sword families are migrated; extend other
+  families only when their mapping is ready or the owner requests it.
 
 ## Deferred and unresolved gates
 
@@ -146,7 +165,7 @@ without rewriting old evidence.
 - **Battle checkpoints ZOD-106:** wait for a concrete debugging/suspension need.
   Accumulate PA is battle-only; this does not block ability or campaign work.
 - **ZOD-100/101:** broad replacement contracts require a real alternate consumer
-  or implementation. ZOD-134 semantic-flag work also remains deferred.
+  or implementation. Remaining ZOD-134 semantic-flag families stay deferred.
 - **ZOD-201:** investigate unknown flags as original content is mapped to readable
   packages; decide semantic names, compatibility needs and evidence-backed omission.
   Keep unresolved raw values in offline provenance pending that decision.
