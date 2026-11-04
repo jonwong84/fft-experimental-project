@@ -157,8 +157,10 @@ serial execution. Select new children through the backlog and keep deferred work
 deferred. The pair now supports one fresh command entry, complete headless turns
 and the certified Blue branch through shared Framework authority. Three-entry
 turns now include actual self ACT, derived scenarios and explicit retained
-priority knowledge and content-backed canonical lists. Next ZOD-264 traces
-variable supported-action lists through preparation/search. Broader control/low-HP/terminal policies remain separate.
+priority knowledge and content-backed canonical lists. ZOD-264 now traces
+variable supported-action lists through preparation/search. ZOD-265 next
+implements a separate pure variable-list preparation entry while leaving
+canonical search/command guards intact. Broader control/low-HP/terminal policies remain separate.
 A certificate for one closed ability list cannot stand in for another list.
 
 Original-AI completion means it can control applicable original encounters and

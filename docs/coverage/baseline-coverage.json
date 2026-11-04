@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-04",
   "edition": "SCUS-94221",
-  "managedCommit": "bdd7572d369c4282ecd23f1085f9c477d0459550",
+  "managedCommit": "414d84a99a2581837e85a12e98b6bc7da1265e96",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -13,7 +13,7 @@
   "lastRecordedTests": {
     "passed": 4272,
     "source": "docs/behavior/content-backed-ai-lists.md",
-    "runForThisInventory": true
+    "runForThisInventory": false
   },
   "statusDefinitions": {
     "partial": "A stated subset exists; full row remains open.",
@@ -539,7 +539,10 @@
         "docs/architecture/zod-261-usable-ability-lists.md",
         "docs/behavior/content-backed-ai-lists.md",
         "docs/evidence/ai/usable-ability-lists-source-v1.json",
-        "docs/evidence/ai/usable-ability-lists-implementation-v1.json"
+        "docs/evidence/ai/usable-ability-lists-implementation-v1.json",
+        "docs/architecture/zod-264-variable-action-lists.md",
+        "docs/evidence/ai/variable-list-contract-v1.json",
+        "docs/fixtures/behavior/ai-variable-list-contract-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -771,6 +774,10 @@
         {
           "path": "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiContentListTests.cs",
           "scope": "Content metadata/effect/known-slot binding, canonical preparation/grant parity, static-motion distinction, actual self/post-ACT and workspace recovery."
+        },
+        {
+          "path": "tools/verification/test_ai_variable_list_contract.py",
+          "scope": "Source-only supplied list arithmetic, occurrence cursor/resume and rank/raw tapes; 16 descriptions and malformed/tampered claims, not managed runtime or a decision RNG-cost oracle."
         }
       ],
       "manualCheckpoint": {
@@ -783,9 +790,9 @@
         "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
         "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Trace variable supported-action lists through per-unit summaries, reach, shared entry traversal/ranks and terminal defaults before selecting one bounded consumer extension.",
+      "nextAction": "Implement ZOD-265 separate pure preparation for owned variable supported-action lists, respecting per-occurrence counts, asymmetric peer threats, share128/threshold77 plus lowest-ally clearing, grant distinctions and reach-before-ACT-clear; preserve canonical consumers.",
       "followUpTickets": [
-        "ZOD-264"
+        "ZOD-265"
       ]
     },
     {

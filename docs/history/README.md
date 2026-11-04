@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 230 entries index completed bounded work; they do not mean the full game is complete.
+These 231 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -253,3 +253,4 @@ These 230 entries index completed bounded work; they do not mean the full game i
 - [ZOD-261 — Trace content-derived usable lists for supported actions](../architecture/zod-261-usable-ability-lists.md)
 - [ZOD-262 — Build immutable semantic ordinary human AI lists](../behavior/content-backed-ai-lists.md#owned-semantic-list-construction--zod-262)
 - [ZOD-263 — Bind content-backed lists into canonical fresh preparation](../behavior/content-backed-ai-lists.md#outer-content-setup-and-fresh-preparation--zod-263)
+- [ZOD-264 — Trace variable supported-action lists through preparation and search](../architecture/zod-264-variable-action-lists.md)

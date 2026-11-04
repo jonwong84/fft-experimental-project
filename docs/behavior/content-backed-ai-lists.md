@@ -102,8 +102,9 @@ full TRX reports are in ignored `scratch/ability-lists-261-263/`. Follow the
 [existing Python/Pillow setup](accumulate-ai.md#validation). Historical checkpoint
 snapshots were not rerun. No original behavioral equivalence or UI review claim.
 
-Next ZOD-264 traces variable supported-action lists through preparation/search
-before broadening the four-entry consumer. General learning rows, special
+The subsequent [ZOD-264 study](../architecture/zod-264-variable-action-lists.md)
+selects separate variable-list preparation as ZOD-265. This runtime consumer
+retains its four-entry guard and original validation checkpoint. General learning rows, special
 menus, full rosters/effects/maps/policies, terminal encounter routing and frame
 RNG remain separate. Owner drafts including AbilityToggles, further editor work,
 replacement interfaces and ZOD-106 stay deferred and unchanged.

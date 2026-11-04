@@ -1,0 +1,687 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-264",
+  "kind": "isolated-source-descriptions",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "scope": "Supplied ordinary lists, opaque entry completions/resume points and candidate rank/raw tapes; no scenarios, formulas, clocks, RNG-cost oracle or runtime execution.",
+  "vectors": [
+    {
+      "id": "summary-canonical",
+      "kind": "preparation",
+      "input": {
+        "actor": [
+          "Attack",
+          "Accumulate",
+          "ThrowStone",
+          "FrogAttack"
+        ],
+        "peer": [
+          "Attack",
+          "Accumulate",
+          "ThrowStone",
+          "FrogAttack"
+        ],
+        "move": 3,
+        "actionTaken": false
+      },
+      "expected": {
+        "actor": {
+          "initialized": 4,
+          "evadeQuarter": 2,
+          "harmful": 2,
+          "helpful": 1,
+          "ranged": true
+        },
+        "peer": {
+          "initialized": 4,
+          "evadeQuarter": 2,
+          "harmful": 2,
+          "helpful": 1,
+          "ranged": true
+        },
+        "actorHelpfulShare": 42,
+        "firstPassMostlySupport": false,
+        "finalActorMostlySupport": false,
+        "peerMostlySupport": null,
+        "enemyHarmful": 2,
+        "enemyPhysical": 2,
+        "enemyReach": 4,
+        "allyReach": 3,
+        "rangedDistanceFloor": 3,
+        "randomUseThreshold": 0,
+        "evaluatedActions": [
+          "Attack",
+          "Accumulate",
+          "ThrowStone"
+        ]
+      }
+    },
+    {
+      "id": "summary-no-self",
+      "kind": "preparation",
+      "input": {
+        "actor": [
+          "Attack",
+          "ThrowStone",
+          "FrogAttack"
+        ],
+        "peer": [
+          "Attack",
+          "Accumulate",
+          "ThrowStone",
+          "FrogAttack"
+        ],
+        "move": 3,
+        "actionTaken": false
+      },
+      "expected": {
+        "actor": {
+          "initialized": 3,
+          "evadeQuarter": 2,
+          "harmful": 2,
+          "helpful": 0,
+          "ranged": true
+        },
+        "peer": {
+          "initialized": 4,
+          "evadeQuarter": 2,
+          "harmful": 2,
+          "helpful": 1,
+          "ranged": true
+        },
+        "actorHelpfulShare": 0,
+        "firstPassMostlySupport": false,
+        "finalActorMostlySupport": false,
+        "peerMostlySupport": null,
+        "enemyHarmful": 2,
+        "enemyPhysical": 2,
+        "enemyReach": 4,
+        "allyReach": 3,
+        "rangedDistanceFloor": 3,
+        "randomUseThreshold": 0,
+        "evaluatedActions": [
+          "Attack",
+          "ThrowStone"
+        ]
+      }
+    },
+    {
+      "id": "summary-no-stone",
+      "kind": "preparation",
+      "input": {
+        "actor": [
+          "Attack",
+          "Accumulate",
+          "FrogAttack"
+        ],
+        "peer": [
+          "Attack",
+          "FrogAttack"
+        ],
+        "move": 3,
+        "actionTaken": false
+      },
+      "expected": {
+        "actor": {
+          "initialized": 3,
+          "evadeQuarter": 1,
+          "harmful": 1,
+          "helpful": 1,
+          "ranged": false
+        },
+        "peer": {
+          "initialized": 2,
+          "evadeQuarter": 2,
+          "harmful": 1,
+          "helpful": 0,
+          "ranged": false
+        },
+        "actorHelpfulShare": 64,
+        "firstPassMostlySupport": false,
+        "finalActorMostlySupport": false,
+        "peerMostlySupport": null,
+        "enemyHarmful": 1,
+        "enemyPhysical": 1,
+        "enemyReach": 4,
+        "allyReach": 3,
+        "rangedDistanceFloor": null,
+        "randomUseThreshold": 0,
+        "evaluatedActions": [
+          "Attack",
+          "Accumulate"
+        ]
+      }
+    },
+    {
+      "id": "summary-self-heavy",
+      "kind": "preparation",
+      "input": {
+        "actor": [
+          "Attack",
+          "Accumulate",
+          "Accumulate",
+          "FrogAttack"
+        ],
+        "peer": [
+          "Attack",
+          "ThrowStone",
+          "ThrowStone",
+          "FrogAttack"
+        ],
+        "move": 3,
+        "actionTaken": false
+      },
+      "expected": {
+        "actor": {
+          "initialized": 4,
+          "evadeQuarter": 1,
+          "harmful": 1,
+          "helpful": 2,
+          "ranged": false
+        },
+        "peer": {
+          "initialized": 4,
+          "evadeQuarter": 3,
+          "harmful": 3,
+          "helpful": 0,
+          "ranged": true
+        },
+        "actorHelpfulShare": 85,
+        "firstPassMostlySupport": true,
+        "finalActorMostlySupport": false,
+        "peerMostlySupport": null,
+        "enemyHarmful": 3,
+        "enemyPhysical": 3,
+        "enemyReach": 4,
+        "allyReach": 3,
+        "rangedDistanceFloor": null,
+        "randomUseThreshold": 0,
+        "evaluatedActions": [
+          "Attack",
+          "Accumulate",
+          "Accumulate"
+        ]
+      }
+    },
+    {
+      "id": "summary-no-learned-actions",
+      "kind": "preparation",
+      "input": {
+        "actor": [
+          "Attack",
+          "FrogAttack"
+        ],
+        "peer": [
+          "Attack",
+          "FrogAttack"
+        ],
+        "move": 3,
+        "actionTaken": false
+      },
+      "expected": {
+        "actor": {
+          "initialized": 2,
+          "evadeQuarter": 2,
+          "harmful": 1,
+          "helpful": 0,
+          "ranged": false
+        },
+        "peer": {
+          "initialized": 2,
+          "evadeQuarter": 2,
+          "harmful": 1,
+          "helpful": 0,
+          "ranged": false
+        },
+        "actorHelpfulShare": 0,
+        "firstPassMostlySupport": false,
+        "finalActorMostlySupport": false,
+        "peerMostlySupport": null,
+        "enemyHarmful": 1,
+        "enemyPhysical": 1,
+        "enemyReach": 4,
+        "allyReach": 3,
+        "rangedDistanceFloor": null,
+        "randomUseThreshold": 0,
+        "evaluatedActions": [
+          "Attack"
+        ]
+      }
+    },
+    {
+      "id": "summary-post-act",
+      "kind": "preparation",
+      "input": {
+        "actor": [
+          "Attack",
+          "Accumulate",
+          "ThrowStone",
+          "FrogAttack"
+        ],
+        "peer": [
+          "Attack",
+          "Accumulate",
+          "ThrowStone",
+          "FrogAttack"
+        ],
+        "move": 3,
+        "actionTaken": true
+      },
+      "expected": {
+        "actor": {
+          "initialized": 4,
+          "evadeQuarter": 2,
+          "harmful": 2,
+          "helpful": 1,
+          "ranged": true
+        },
+        "peer": {
+          "initialized": 4,
+          "evadeQuarter": 2,
+          "harmful": 2,
+          "helpful": 1,
+          "ranged": true
+        },
+        "actorHelpfulShare": 42,
+        "firstPassMostlySupport": false,
+        "finalActorMostlySupport": false,
+        "peerMostlySupport": null,
+        "enemyHarmful": 2,
+        "enemyPhysical": 2,
+        "enemyReach": 4,
+        "allyReach": 3,
+        "rangedDistanceFloor": 3,
+        "randomUseThreshold": 0,
+        "evaluatedActions": []
+      }
+    },
+    {
+      "id": "cursor-no-self",
+      "kind": "cursor",
+      "input": {
+        "entries": [
+          "Attack",
+          "ThrowStone",
+          "FrogAttack"
+        ],
+        "actionTaken": false,
+        "resuming": false,
+        "startIndex": 0,
+        "suspendCurrent": false,
+        "currentCommand": "None"
+      },
+      "expected": {
+        "loaded": [
+          0,
+          1,
+          2
+        ],
+        "completed": [
+          0,
+          1,
+          2
+        ],
+        "usable": [
+          0,
+          1
+        ],
+        "selfPasses": [],
+        "cursor": 3,
+        "suspended": false,
+        "terminalCommand": "ThrowStone"
+      }
+    },
+    {
+      "id": "cursor-no-stone",
+      "kind": "cursor",
+      "input": {
+        "entries": [
+          "Attack",
+          "Accumulate",
+          "FrogAttack"
+        ],
+        "actionTaken": false,
+        "resuming": false,
+        "startIndex": 0,
+        "suspendCurrent": false,
+        "currentCommand": "None"
+      },
+      "expected": {
+        "loaded": [
+          0,
+          1,
+          2
+        ],
+        "completed": [
+          0,
+          1,
+          2
+        ],
+        "usable": [
+          0,
+          1
+        ],
+        "selfPasses": [
+          1
+        ],
+        "cursor": 3,
+        "suspended": false,
+        "terminalCommand": "Accumulate"
+      }
+    },
+    {
+      "id": "cursor-repeated-self",
+      "kind": "cursor",
+      "input": {
+        "entries": [
+          "Attack",
+          "Accumulate",
+          "Accumulate",
+          "FrogAttack"
+        ],
+        "actionTaken": false,
+        "resuming": false,
+        "startIndex": 0,
+        "suspendCurrent": false,
+        "currentCommand": "None"
+      },
+      "expected": {
+        "loaded": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "completed": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "usable": [
+          0,
+          1,
+          2
+        ],
+        "selfPasses": [
+          1,
+          2
+        ],
+        "cursor": 4,
+        "suspended": false,
+        "terminalCommand": "Accumulate"
+      }
+    },
+    {
+      "id": "cursor-reordered",
+      "kind": "cursor",
+      "input": {
+        "entries": [
+          "Attack",
+          "ThrowStone",
+          "Accumulate",
+          "FrogAttack"
+        ],
+        "actionTaken": false,
+        "resuming": false,
+        "startIndex": 0,
+        "suspendCurrent": false,
+        "currentCommand": "None"
+      },
+      "expected": {
+        "loaded": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "completed": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "usable": [
+          0,
+          1,
+          2
+        ],
+        "selfPasses": [
+          2
+        ],
+        "cursor": 4,
+        "suspended": false,
+        "terminalCommand": "Accumulate"
+      }
+    },
+    {
+      "id": "cursor-post-act",
+      "kind": "cursor",
+      "input": {
+        "entries": [
+          "Attack",
+          "Accumulate",
+          "ThrowStone",
+          "FrogAttack"
+        ],
+        "actionTaken": true,
+        "resuming": false,
+        "startIndex": 0,
+        "suspendCurrent": false,
+        "currentCommand": "None"
+      },
+      "expected": {
+        "loaded": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "completed": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "usable": [],
+        "selfPasses": [],
+        "cursor": 4,
+        "suspended": false,
+        "terminalCommand": "None"
+      }
+    },
+    {
+      "id": "cursor-resume-suspends",
+      "kind": "cursor",
+      "input": {
+        "entries": [
+          "Attack",
+          "Accumulate",
+          "ThrowStone",
+          "FrogAttack"
+        ],
+        "actionTaken": false,
+        "resuming": true,
+        "startIndex": 1,
+        "suspendCurrent": true,
+        "currentCommand": "Accumulate"
+      },
+      "expected": {
+        "loaded": [],
+        "completed": [],
+        "usable": [],
+        "selfPasses": [],
+        "cursor": 1,
+        "suspended": true,
+        "terminalCommand": "Accumulate"
+      }
+    },
+    {
+      "id": "cursor-resume-completes",
+      "kind": "cursor",
+      "input": {
+        "entries": [
+          "Attack",
+          "Accumulate",
+          "ThrowStone",
+          "FrogAttack"
+        ],
+        "actionTaken": false,
+        "resuming": true,
+        "startIndex": 1,
+        "suspendCurrent": false,
+        "currentCommand": "Accumulate"
+      },
+      "expected": {
+        "loaded": [
+          2,
+          3
+        ],
+        "completed": [
+          1,
+          2,
+          3
+        ],
+        "usable": [
+          1,
+          2
+        ],
+        "selfPasses": [],
+        "cursor": 4,
+        "suspended": false,
+        "terminalCommand": "ThrowStone"
+      }
+    },
+    {
+      "id": "duplicate-ranked-slots",
+      "kind": "rankTape",
+      "input": {
+        "baselinePriority": 0,
+        "candidates": [
+          {
+            "id": "stone-1",
+            "kind": "ThrowStone",
+            "priority": 26,
+            "hit": 3,
+            "proximity": 8
+          },
+          {
+            "id": "stone-2",
+            "kind": "ThrowStone",
+            "priority": 26,
+            "hit": 3,
+            "proximity": 8
+          }
+        ],
+        "raws": [
+          99,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "ranked": [
+          "stone-1",
+          "stone-2"
+        ],
+        "insertionIndices": [
+          0,
+          1
+        ],
+        "selected": "stone-2",
+        "lotteryDraws": 2,
+        "reason": "FirstRoll",
+        "additionalRankDraws": 0
+      }
+    },
+    {
+      "id": "proximity-cannot-beat-baseline",
+      "kind": "rankTape",
+      "input": {
+        "baselinePriority": 0,
+        "candidates": [
+          {
+            "id": "same-score",
+            "kind": "Attack",
+            "priority": 0,
+            "hit": 100,
+            "proximity": 0
+          }
+        ],
+        "raws": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "ranked": [],
+        "insertionIndices": [
+          null
+        ],
+        "selected": null,
+        "lotteryDraws": 8,
+        "reason": "MovementFallback",
+        "additionalRankDraws": 0
+      }
+    },
+    {
+      "id": "all-rolls-failed-retains-first",
+      "kind": "rankTape",
+      "input": {
+        "baselinePriority": 0,
+        "candidates": [
+          {
+            "id": "stone-1",
+            "kind": "ThrowStone",
+            "priority": 26,
+            "hit": 3,
+            "proximity": 8
+          },
+          {
+            "id": "stone-2",
+            "kind": "ThrowStone",
+            "priority": 26,
+            "hit": 3,
+            "proximity": 8
+          }
+        ],
+        "raws": [
+          99,
+          99,
+          99,
+          99,
+          99,
+          99,
+          99,
+          99
+        ]
+      },
+      "expected": {
+        "ranked": [
+          "stone-1",
+          "stone-2"
+        ],
+        "insertionIndices": [
+          0,
+          1
+        ],
+        "selected": "stone-1",
+        "lotteryDraws": 8,
+        "reason": "AllRollsFailedUseFirst",
+        "additionalRankDraws": 0
+      }
+    }
+  ]
+}

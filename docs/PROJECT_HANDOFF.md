@@ -6,15 +6,15 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-264: trace variable supported-action lists through preparation/search.**
-[ZOD-261–263](behavior/content-backed-ai-lists.md) now construct semantic human
-lists from explicit known/action slots and bind existing metadata/effects through
-Content setup. Canonical fresh preparation derives list summaries/actor policy
-and reaches from owned lists, replacing BothInitializedLists for this entry.
-Search still rejects other shapes/order before refresh; next trace variable
-supported lists before selecting a bounded consumer extension. Preserve source
-order/duplicates, explicit learning/context gaps, streams and priority recovery.
-General menus/learning/rosters/maps/policies, terminal routing, UI and saves remain separate.
+**ZOD-265: separate pure preparation for variable supported-action lists.**
+[ZOD-264](architecture/zod-264-variable-action-lists.md) traces initialized versus
+usable occurrence counts, asymmetric peer threats, helpful share128/threshold77
+and lowest-ally clearing, missing/repeated entry passes and terminal context.
+Sixteen isolated source descriptions and three Python regressions support the
+selected child. Implement only the new preparation owner before/after ACT;
+retain old canonical list guards and search/command/history/recovery APIs.
+Missing AI entries do not prove missing gameplay grants. Preserve explicit
+learning/context gaps and remaining deferred breadth/UI/save work.
 
 The [original AI algorithm guide](architecture/original-ai-algorithm.md) maps
 policy precedence and all core source functions, with bounded implementation
@@ -74,7 +74,7 @@ without rewriting old evidence.
   are preserved byte-for-byte and tracked as deferred scaffolding. The owner
   explicitly left `AbilityToggles` consolidation for later; it is not wired into
   current metadata, the editor or rules. Other unimplemented flag families stay deferred.
-- Latest implementation: [ZOD-262/263 content-backed lists](behavior/content-backed-ai-lists.md)
+- Latest runtime implementation (unchanged by source-only ZOD-264): [ZOD-262/263 content-backed lists](behavior/content-backed-ai-lists.md)
   add immutable source-ordered human lists with explicit known-state input,
   preserved duplicate entries and unusable Frog initialization. Content setup
   validates metadata/effect bindings and supplies semantic AI data. Canonical
@@ -113,13 +113,16 @@ without rewriting old evidence.
   explicit player-control flag clear, HP*128/maxHP>=45 and no NonBlue reach draw.
   Existing Attack/Stone scoring/selection/execution and both teams are preserved;
   terminal routing and Blue low-HP/player-controlled policies remain open.
-- Latest source study: [ZOD-261](architecture/zod-261-usable-ability-lists.md)
-  pins 11 functions across seven files plus prepared AI facts for slot/list
-  construction, learning lookup, initialized denominators and runtime policy.
-  Full known-bit/menu/eligibility state remains explicit, not inferred from jobs.
-  [ZOD-255](architecture/zod-255-priority-workspace.md) retains source priority
-  lifetime/event aliases; [ZOD-249](architecture/zod-249-three-entry-scenarios.md)
-  and [ZOD-247](architecture/zod-247-three-entry-turn.md) retain scenario/command ownership.
+- Latest source study: [ZOD-264](architecture/zod-264-variable-action-lists.md)
+  pins 31 functions across nine files and checks 16 isolated list/cursor/rank
+  descriptions. Duplicates consume separate passes and may occupy separate
+  ranked slots; absent self skips its usefulness pass. Terminal usable command
+  depends on list order, so the Stone-terminal assertion cannot be generalized.
+  Source helpful share uses128/threshold77 plus the lowest-ally override; the
+  existing canonical helper must not be broadened by removing its guard.
+  [ZOD-261](architecture/zod-261-usable-ability-lists.md) retains construction/
+  known-slot evidence; [ZOD-255](architecture/zod-255-priority-workspace.md) and
+  [ZOD-249](architecture/zod-249-three-entry-scenarios.md) retain history/scenarios.
 - Organization: AI source/tests use Shared, Sword, ThrowStone, AttackThrowStone,
   Accumulate and BasicSkill folders with stable namespaces; [layout](development/ai-source-layout.md).
   Owner RNG migration is completed as `Zodiac.Framework.Random.RandomStateGenerator`
@@ -133,14 +136,14 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore and zero-warning/error full Release build pass;
-  **4,272 .NET cases** (1,467 Framework, 1,060 AI), **539 Python tests**,
-  pinned-source/prepared-data, algorithm-guide and coverage checks pass.
-  Twelve new AI cases cover list order/holes/duplicates, initialized shares,
-  explicit known/disabled/unsupported actions, content identity/grants, static
-  motion separation, canonical before/after-ACT parity, literal self turns and
-  retained-priority recovery. The unchanged dependency boundary case also passes.
-  Logs and seven full TRX reports are under ignored `scratch/ability-lists-261-263/`.
+- Validation: ZOD-264 is source/tooling/documentation only; all **542 Python
+  tests** (three new), pinned source/prepared-data, guide and coverage checks pass.
+  Reports are under ignored `scratch/variable-lists-264/`. Managed source/tests/
+  project files are unchanged and .NET was not rerun for this ticket. Last full
+  managed validation remains ZOD-263: locked restore, zero-warning/error Release
+  build and **4,272 .NET cases** (1,467 Framework, 1,060 AI), including canonical
+  content binding and unchanged dependency boundary. Its seven full TRX reports
+  remain under ignored `scratch/ability-lists-261-263/`.
   Python uses repository-pinned Pillow 12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow 13.0.0 triggers six existing version guards; WindowsApps Python
