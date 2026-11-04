@@ -97,6 +97,10 @@ unchanged. There is no public selector delegate, cached-result input, session/
 receipt constructor, production friend access or new Framework implementation.
 Existing pair and derived sword executors remain supported.
 
+[ZOD-248](basic-skill-ai-turn-execution.md) now composes this first-command API
+with actual post-ACT selection/settlement or retained continuation/facing into
+a complete supplied-scenario turn, preserving per-command progress on rejection.
+
 This is a fresh-command entry, not a complete-turn executor. After ACT-first,
 predicted D1 is still only a diagnostic: actual boosted PA and effects must feed
 fresh post-ACT preparation before any later Move/END. Spent choices reject here.

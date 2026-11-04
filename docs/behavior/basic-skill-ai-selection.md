@@ -104,7 +104,8 @@ ACT-first selections through Framework-owned actual rules.
 [ZOD-240–242](basic-skill-ai-command-execution.md) add Move-first/empty END and
 unified fresh command dispatch through the same authority.
 [ZOD-243–246](basic-skill-ai-post-act.md) also derive post-ACT movement and settle
-the remaining Move/END. Pre-ACT scenario derivation and full original policy/roster/map
+the remaining Move/END. [ZOD-248](basic-skill-ai-turn-execution.md) also composes
+complete supplied-scenario turns with exact recovery. Pre-ACT scenario derivation and full original policy/roster/map
 breadth remain open. Host/editor activation, battle saves and
 original-frame RNG equivalence remain deferred/unresolved; boosted PA stays
 battle-only. No C/original execution or presentation review was performed.

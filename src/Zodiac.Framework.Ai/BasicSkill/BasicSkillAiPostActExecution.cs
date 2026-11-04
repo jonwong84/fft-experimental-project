@@ -18,18 +18,21 @@ public sealed record BasicSkillAiPostActExecutionResult(BasicSkillAiPostActExecu
     public BasicSkillAiPostActExecutionOutcome? Outcome => Execution.Diagnostic;
 }
 
-/// <summary>Fresh explicit in/out-of-reach post-ACT selection, actual remaining Move/END and facing settlement.</summary>
-/// <remarks>ZOD-243/246. Uses actual boosted state, Framework authority and per-command rollback; no additional ACT,
+/// <summary>Fresh post-ACT selection with derived or explicit reach, actual remaining Move/END and facing settlement.</summary>
+/// <remarks>ZOD-243/246/247/248. Uses actual boosted state, Framework authority and per-command rollback; no additional ACT,
 /// frozen Move-first token, clock advance or public cached decision input.</remarks>
 public static class BasicSkillAiPostActExecution
 {
+    public static BasicSkillAiPostActExecutionResult Execute(FacingTurnState state, AccumulateAiPreparationRequest request,
+        BasicSkillAiPostActConfiguration configuration, SwordAiCommandDispatchProfile dispatch) => ExecuteCore(state, request, configuration, dispatch, null);
+
     public static BasicSkillAiPostActExecutionResult ExecuteInReach(FacingTurnState state, AccumulateAiPreparationRequest request,
         BasicSkillAiPostActConfiguration configuration, SwordAiCommandDispatchProfile dispatch) => ExecuteCore(state, request, configuration, dispatch, false);
     public static BasicSkillAiPostActExecutionResult ExecuteOutOfReach(FacingTurnState state, AccumulateAiPreparationRequest request,
         BasicSkillAiPostActConfiguration configuration, SwordAiCommandDispatchProfile dispatch) => ExecuteCore(state, request, configuration, dispatch, true);
 
     private static BasicSkillAiPostActExecutionResult ExecuteCore(FacingTurnState state, AccumulateAiPreparationRequest request,
-        BasicSkillAiPostActConfiguration configuration, SwordAiCommandDispatchProfile dispatch, bool outside)
+        BasicSkillAiPostActConfiguration configuration, SwordAiCommandDispatchProfile dispatch, bool? outside)
     {
         ArgumentNullException.ThrowIfNull(state); BasicSkillAiPostActSelection.ValidateArguments(state.Battle, request, configuration);
         ArgumentNullException.ThrowIfNull(dispatch);
@@ -40,9 +43,11 @@ public static class BasicSkillAiPostActExecution
             { failure = new(BasicSkillAiPostActExecutionRejection.UnavailableChoices); return context.Reject<BasicSkillAiPostActExecutionOutcome>(); }
             if (!dispatch.InitializedActorContext || !dispatch.PresentCompactRecords || !dispatch.CanonicalCoordinates || !dispatch.OrdinaryContinuation)
             { failure = new(BasicSkillAiPostActExecutionRejection.UnsupportedDispatchContext); return context.Reject<BasicSkillAiPostActExecutionOutcome>(); }
-            var selection = outside
-                ? BasicSkillAiPostActSelection.EvaluateOutOfReach(context.Battle, request, configuration, context.RngState)
-                : BasicSkillAiPostActSelection.EvaluateInReach(context.Battle, request, configuration, context.RngState);
+            var selection = outside switch {
+                true => BasicSkillAiPostActSelection.EvaluateOutOfReach(context.Battle, request, configuration, context.RngState),
+                false => BasicSkillAiPostActSelection.EvaluateInReach(context.Battle, request, configuration, context.RngState),
+                null => BasicSkillAiPostActSelection.Evaluate(context.Battle, request, configuration, context.RngState)
+            };
             if (!selection.Accepted)
             { failure = new(BasicSkillAiPostActExecutionRejection.SelectionRejected, selection.Failure); return context.Reject<BasicSkillAiPostActExecutionOutcome>(); }
             var plan = selection.Outcome!.Plan;

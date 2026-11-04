@@ -17,8 +17,9 @@ family. Source and test projects use matching folders:
   Fresh Move/ACT/END execution owns one selection inside the Framework transaction,
   including actual self PA and retained Attack/Stone/Wait continuations. Post-ACT
   preparation, derived explicit reach branches and remaining Move/END settlement
-  also reuse shared kernels. Pre-ACT scenario derivation, automatic post-ACT reach
-  routing and complete three-entry turns remain separate work.
+  also reuse shared kernels. Complete supplied-scenario turns add automatic
+  post-ACT reach and exact partial-progress recovery. Pre-ACT scenario derivation
+  and broader original search remain separate work.
 
 Namespaces remain `Zodiac.Framework.Ai` and `Zodiac.Framework.Ai.Tests`; moving
 a file adds no dependency or access. The assembly still references Framework,

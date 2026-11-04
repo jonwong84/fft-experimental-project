@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 213 entries index completed bounded work; they do not mean the full game is complete.
+These 215 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -236,3 +236,5 @@ These 213 entries index completed bounded work; they do not mean the full game i
 - [ZOD-244 — Prepare fresh three-entry post-ACT state](../behavior/basic-skill-ai-post-act.md#fresh-preparation--zod-244)
 - [ZOD-245 — Derive post-ACT movement scenarios and empty selection](../behavior/basic-skill-ai-post-act.md#derived-movement-and-empty-selection--zod-245)
 - [ZOD-246 — Execute post-ACT movement and facing settlement](../behavior/basic-skill-ai-post-act.md#actual-remaining-command--zod-246)
+- [ZOD-247 — Trace complete three-entry headless-turn orchestration and recovery](../architecture/zod-247-three-entry-turn.md)
+- [ZOD-248 — Complete supplied-scenario three-entry turns with exact recovery](../behavior/basic-skill-ai-turn-execution.md)

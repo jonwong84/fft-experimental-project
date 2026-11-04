@@ -97,8 +97,9 @@ python tools/verification/verify_ai_accumulate_contract.py --reference C:/reposi
 [ZOD-240–242](basic-skill-ai-command-execution.md) now reuse the existing tokens
 for three-entry Move-first, empty END and unified fresh dispatch.
 [ZOD-243–246](basic-skill-ai-post-act.md) add post-ACT preparation, derived explicit
-reach branches and actual settlement. Pre-ACT scenario derivation and complete
-three-entry turns remain separate. The current
+reach branches and actual settlement. [ZOD-248](basic-skill-ai-turn-execution.md)
+now composes complete supplied-scenario three-entry turns with recovery.
+Pre-ACT scenario derivation remains separate. The current
 effect-free Accumulate entry retains ACT-first on its complete tie; adding a
 frozen self-Move token needs a concrete supported consumer. Reuse existing
 Attack/targeted ACT/Wait continuations for Move-first adapters. No host/editor activation or battle-save

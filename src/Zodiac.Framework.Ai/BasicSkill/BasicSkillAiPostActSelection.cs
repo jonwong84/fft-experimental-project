@@ -18,10 +18,14 @@ public sealed record BasicSkillAiPostActResult(bool Accepted, BasicSkillAiPostAc
     BasicSkillAiPostActOutcome? Outcome, RandomState RngState);
 
 /// <summary>Fresh three-entry post-ACT preparation, derived movement scenarios and empty-ranking fallback.</summary>
-/// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-243–245. No cached inputs, action scan,
+/// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-243–245/247/248. No cached inputs, action scan,
 /// usefulness coin, pre-ACT scenario derivation or live command authority.</remarks>
 public static class BasicSkillAiPostActSelection
 {
+    /// <summary>Derive reach from one freshly prepared actual post-ACT state, then select exactly one movement branch.</summary>
+    public static BasicSkillAiPostActResult Evaluate(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,
+        BasicSkillAiPostActConfiguration configuration, RandomState decisionRng) => EvaluateCore(state, request, configuration, decisionRng, null);
+
     public static BasicSkillAiPostActResult EvaluateInReach(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,
         BasicSkillAiPostActConfiguration configuration, RandomState decisionRng) => EvaluateCore(state, request, configuration, decisionRng, false);
 
@@ -29,7 +33,7 @@ public static class BasicSkillAiPostActSelection
         BasicSkillAiPostActConfiguration configuration, RandomState decisionRng) => EvaluateCore(state, request, configuration, decisionRng, true);
 
     private static BasicSkillAiPostActResult EvaluateCore(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,
-        BasicSkillAiPostActConfiguration configuration, RandomState decisionRng, bool outside)
+        BasicSkillAiPostActConfiguration configuration, RandomState decisionRng, bool? outside)
     {
         ValidateArguments(state, request, configuration);
         BasicSkillAiPostActResult Reject(BasicSkillAiPostActFailure failure) => new(false, failure, null, decisionRng);
@@ -40,12 +44,20 @@ public static class BasicSkillAiPostActSelection
         var p = configuration.Preparation;
         var preparation = AccumulateAiPreparation.EvaluateAfterAct(state, request, p, decisionRng);
         if (!preparation.Accepted) return Reject(new(BasicSkillAiPostActStage.Preparation, Preparation: preparation.Failure));
+        if (outside is null)
+        {
+            // Pure geometry adds no draw. Branch on prepared reach before the later NonBlue halving roll.
+            var geometry = FlatOrdinaryMovement.Evaluate(state, request.Turn.ActorId, p.Attack.Movement).Outcome!;
+            var common = preparation.Outcome!.Common;
+            int distance = geometry.TargetDistanceRows.Single(r => r.Y == common.Origin.Y).Distances[common.Origin.X];
+            outside = distance > common.EnemyAbilityReach;
+        }
         // The closed three-entry preparation derives minimum enemy range1. These kernels require no Attack-only list.
         var comparison = new SwordAiComparisonProfile(request.Turn.ActorId, request.Turn.TargetId, true);
         var movementProfile = new SwordAiMovementScenarioProfile(true, true, true);
         SwordAiMovementScenarioResult movement;
         SwordAiOutOfReachScenarioOutcome? reach = null;
-        if (outside)
+        if (outside.Value)
         {
             var selected = SwordAiMovementScenario.EvaluateOutOfReachAfterAct(state, p.Attack, p.Scoring,
                 comparison, movementProfile, p.Team, preparation.RngState);

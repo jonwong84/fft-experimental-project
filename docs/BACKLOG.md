@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-247 (trace complete three-entry headless-turn orchestration and recovery).** Fresh post-ACT preparation, derived movement/empty selection and actual settlement ZOD-243–246 are complete.
-There are 34 open tickets below. The 213 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-249 (trace three-entry pre-ACT scenario derivation and score provenance).** Complete supplied-scenario three-entry turns, automatic post-ACT reach and exact recovery ZOD-247/248 are complete.
+There are 34 open tickets below. The 215 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,21 +29,21 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-247 — Trace complete three-entry headless-turn orchestration and recovery
+### ZOD-249 — Trace three-entry pre-ACT scenario derivation and score provenance
 
-**Type:** Research · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-224, ZOD-242, ZOD-246
+**Type:** Research · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-233, ZOD-248
 
-Trace a complete supplied-scenario Attack/Accumulate/Throw Stone turn through
-fresh first-command dispatch, retained Move-first ACT/Wait or actual ACT-first
-effects, fresh post-ACT reach routing, remaining Move/END and facing settlement.
-Compare the complete pair-turn owner before selecting bounded children. Own
-exactly one post-ACT preparation when deriving in/out-of-reach; keep public
-explicit-branch APIs and all old streams. Define recovery at each published
-command, late facing failure and terminal/KO boundaries, preserving actual
-boosted PA, RNG, session/lineage/revision and pending tokens/receipts without
-replaying an accepted ACT. Include both admitted teams and same-tile/Move routes.
-Pre-ACT S/D0/D1 provenance stays supplied; general search, broader policies,
-host/editor activation and battle saves remain separate. ZOD-106 stays deferred.
+Trace source-ordered pre-ACT movement masks, D0/D1 selection, actor insertion,
+retained score/cast-priority provenance and reach policy for the closed
+Attack/Accumulate/Throw Stone list. Compare existing pair scenario and known-score
+owners before selecting bounded children that remove supplied S/D0/D1 assertions.
+Preserve the self coin/clock order, independent candidates, shared ranks and
+both admitted teams. Identify written versus retained cells explicitly; never
+invent zero cast keys, erase workspace history or silently fix source quirks.
+Keep existing supplied-scenario complete turns, pair APIs, actual state/RNG,
+rollback and recovery unchanged. General lists/maps/rosters, broader policies,
+terminal encounter routing, host/editor activation and battle saves remain
+separate. ZOD-106 stays deferred; PA remains battle-only.
 
 ## Existing validation gates
 

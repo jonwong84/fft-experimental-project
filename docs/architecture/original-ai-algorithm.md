@@ -422,8 +422,11 @@ exact-session continuations for Move-first, add same-tile empty END and share
 one fresh Move/ACT/END dispatch owner.
 [ZOD-243–246](../behavior/basic-skill-ai-post-act.md) add fresh post-ACT preparation,
 derived in/out-of-reach movement, empty selection and actual settlement from
-boosted state. Next is ZOD-247: trace complete headless-turn orchestration and
-recovery. Pre-ACT scenario derivation and full original search breadth remain separate.
+boosted state. [ZOD-247/248](../behavior/basic-skill-ai-turn-execution.md) now
+compose complete supplied-scenario turns with automatic single-preparation
+post-ACT reach and exact partial-progress recovery. Next is ZOD-249: trace
+pre-ACT scenario derivation and score provenance. Full original search breadth
+remains separate.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use
 the supported domain and a real consumer, rather than exposing the entire

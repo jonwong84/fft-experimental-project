@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-248",
+  "date": "2026-11-04",
+  "kind": "managed-complete-three-entry-turn",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "68b108a8940f3c22ad3ad1c1fb137aec50f2a45f",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/three-entry-turn-source-v1.json",
+  "design": "docs/behavior/basic-skill-ai-turn-execution.md",
+  "implementationPaths": [
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiPostActSelection.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiPostActExecution.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiTurnExecution.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiTurnExecutionTests.cs"
+  ],
+  "newFrameworkImplementation": false,
+  "newProductionFriendAccess": false,
+  "newPublicSessionOrReceiptConstructors": false,
+  "behavior": {
+    "postActPreparationsPerDecision": 1,
+    "preActScenario": "supplied known-score S/D0/D1",
+    "automaticPostActReach": true,
+    "stages": [
+      "FirstCommand",
+      "RetainedCommand",
+      "PostActCommand",
+      "FinishFacing"
+    ],
+    "recovery": "exact immutable partial session; failed stage only",
+    "resumesPublishOnlyNewEventsAndDecisions": true,
+    "wholeTurnRollback": false,
+    "clockAdvance": false,
+    "newSelfMoveToken": false,
+    "terminalPolicy": false
+  },
+  "vectors": {
+    "self": {
+      "word": 995405759,
+      "count": 49,
+      "pa": 6,
+      "ct": 15,
+      "decisions": 2
+    },
+    "attackActFirst": {
+      "word": 2058258651,
+      "count": 53,
+      "hp": 40,
+      "ct": 15
+    },
+    "stoneActFirst": {
+      "word": 995405759,
+      "count": 49,
+      "hp": 45,
+      "ct": 15
+    },
+    "stoneMoveFirst": {
+      "word": 3791773014,
+      "count": 24,
+      "hp": 40,
+      "ct": 15
+    },
+    "attackMoveFirst": {
+      "word": 1343201072,
+      "count": 30,
+      "hp": 40,
+      "ct": 15
+    },
+    "empty": {
+      "word": 836760821,
+      "count": 19,
+      "moveCt": 35,
+      "endCt": 55
+    },
+    "cap": {
+      "incomingWord": 5,
+      "word": 736722860,
+      "count": 22,
+      "pa": 99,
+      "ct": 35
+    }
+  },
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4221,
+    "frameworkPassed": 1467,
+    "aiPassed": 1009,
+    "newAiCases": 10,
+    "pythonPassed": 539,
+    "trxReports": 7,
+    "sourcePreparedAudit": true,
+    "algorithmGuideAudit": true,
+    "coverageAudit": true,
+    "reports": "scratch\\three-entry-turn-247-248/",
+    "ownerDraftsUnchanged": true
+  },
+  "boundaries": [
+    "supplied pre-ACT scenarios and existing source assertions",
+    "living closed two-unit profile with explicit terminal failures",
+    "no general original search/policies/rosters/maps, host/editor activation or battle saves",
+    "original frame RNG unresolved"
+  ],
+  "originalExecuted": false,
+  "cExecuted": false
+}

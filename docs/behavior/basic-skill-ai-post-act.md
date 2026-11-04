@@ -64,8 +64,9 @@ owned preparation/scenario/lottery and returns the whole query's incoming RNG.
 
 These are derived **post-ACT** scenarios. The existing fresh pre-ACT three-entry
 composition still needs caller-supplied known-score S/D0/D1 provenance. The new
-queries require the caller to choose the truthful in/out-of-reach entry; automatic
-reach routing and complete turn orchestration remain separate work.
+explicit queries require the caller to choose the truthful reach entry.
+[ZOD-248](basic-skill-ai-turn-execution.md) adds automatic reach through one
+preparation and composes these operations into complete supplied-scenario turns.
 
 ## Actual remaining command — ZOD-246
 
@@ -137,8 +138,9 @@ python tools/verification/verify_ai_algorithm_guide.py --reference C:/repositori
 python tools/verification/verify_ai_accumulate_contract.py --reference C:/repositories/fft_decomp --prepared scratch/all-data-extraction/SCUS_942.21
 ```
 
-ZOD-247 next traces complete headless-turn orchestration and recovery, including
-single-preparation reach routing. Broader policies/rosters/maps, pre-ACT scenario
+[ZOD-247/248](basic-skill-ai-turn-execution.md) now trace and implement complete
+headless-turn orchestration, recovery and single-preparation reach routing.
+Broader policies/rosters/maps, pre-ACT scenario
 derivation, terminal encounter routing and host/editor activation remain separate.
 ZOD-106 stays deferred and PA stays battle-only. Original VSync/frame RNG remains
 unresolved. Preserved owner definition drafts, including AbilityToggles, are

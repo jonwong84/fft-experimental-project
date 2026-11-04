@@ -57,8 +57,11 @@ shares one selection owner across ACT-first, Move-first and same-tile empty END,
 reusing frozen Attack/Stone/Wait tokens.
 [Post-ACT movement and settlement](../behavior/basic-skill-ai-post-act.md) now
 derive both explicit reach branches from actual boosted state, with cleared
-actor entries and the empty lottery. Pre-ACT scenario derivation, automatic
-post-ACT reach routing and complete three-entry turns remain open.
+actor entries and the empty lottery.
+[Complete three-entry turns](../behavior/basic-skill-ai-turn-execution.md) now
+add automatic post-ACT reach with one preparation and exact-session recovery
+across published commands. Pre-ACT scenario derivation, broader original
+policies/rosters/maps and independent compatibility validation remain open.
 
 The [ZOD-210 cleanup](ai-pair-selection-refactor.md) shares pair admission and
 composition/lottery handling while retaining separate scenario/provenance rules.

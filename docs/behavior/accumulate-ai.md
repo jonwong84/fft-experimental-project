@@ -91,7 +91,8 @@ self-ACT boundary and fresh ACT-first adapter.
 [ZOD-240–242](basic-skill-ai-command-execution.md) share fresh Move/ACT/END dispatch
 and existing frozen continuations. [ZOD-243–246](basic-skill-ai-post-act.md) add
 fresh post-ACT preparation, derived movement/empty selection and settlement from
-actual boosted state. Complete turns remain separate. ZOD-106, editor
+actual boosted state. [ZOD-248](basic-skill-ai-turn-execution.md) now composes
+complete supplied-scenario turns with recovery. ZOD-106, editor
 and host activation stay deferred; boosted PA remains battle-only.
 
 ## Validation
