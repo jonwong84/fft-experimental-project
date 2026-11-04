@@ -85,7 +85,8 @@ Use existing movement and rank machinery; do not create another lottery.
 This entry is independently checkable integration of the map-target path, not
 the entire three-action search. Ranking alongside Attack/Stone requires source
 order Attack → Accumulate → Throw Stone and privately retained ranks/RNG; that
-composition is a later ticket. Real self-ACT dispatch and Move continuations
+composition is now implemented by [ZOD-234–236](basic-skill-ai-selection.md) for
+supplied known-score scenarios. Real self-ACT dispatch and Move continuations
 also require separately selected Framework transaction work. ZOD-106, editor
 and host activation stay deferred; boosted PA remains battle-only.
 

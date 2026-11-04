@@ -48,8 +48,10 @@ Source/tests are [grouped by family](ai-source-layout.md) with stable namespaces
 [Accumulate AI](../behavior/accumulate-ai.md) now has pure PA projection/scoring,
 certified Attack/Accumulate/Throw Stone preparation, a separate source-order
 usefulness filter and one isolated map-target entry against a supplied movement
-baseline. Shared clocks/scoring/rank comparisons remain the owners. Full
-three-action composition and authoritative self-ACT dispatch are still open.
+baseline. Shared clocks/scoring/rank comparisons remain the owners. Three-entry
+[supplied-scenario composition and terminal selection](../behavior/basic-skill-ai-selection.md)
+now reuse these owners in source order. Derived three-entry scenarios and
+authoritative self-ACT dispatch are still open.
 
 The [ZOD-210 cleanup](ai-pair-selection-refactor.md) shares pair admission and
 composition/lottery handling while retaining separate scenario/provenance rules.

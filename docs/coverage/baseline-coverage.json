@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-04",
   "edition": "SCUS-94221",
-  "managedCommit": "525974b3ebede803d9797220801f3c393c26a76b",
+  "managedCommit": "4aa131433bdf2f5a0e4b64e4f30b845a9267159f",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 4156,
-    "source": "docs/behavior/accumulate-ai.md",
+    "passed": 4169,
+    "source": "docs/behavior/basic-skill-ai-selection.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -453,7 +453,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "Closed ordinary sword and Attack/Throw Stone selection, both admitted teams, complete pair turns and per-command recovery exist. Accumulate adds pure self PA projection/scoring, certified three-action-list preparation/usefulness and isolated map-target evaluation against a supplied move baseline. Combined three-entry search, self-command authority, broader policies/rosters and host activation remain open; these bounded checks do not establish full original decision equivalence.",
+      "currentScope": "Closed ordinary sword and Attack/Throw Stone selection, both admitted teams, complete pair turns and per-command recovery exist. Accumulate has pure PA/usefulness rules; three-entry supplied-scenario composition now owns one preparation/movement prefix, source-order Attack/Accumulate/Throw Stone ranks and terminal lottery plans. Derived three-entry scenarios, real self-command authority, broader policies/rosters and host activation remain open; bounded checks do not establish full original decision equivalence.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -509,7 +509,11 @@
         "docs/behavior/blue-attack-throw-stone-ai.md",
         "docs/architecture/zod-229-accumulate-ai.md",
         "docs/behavior/accumulate-ai.md",
-        "docs/evidence/ai/accumulate-implementation-v1.json"
+        "docs/evidence/ai/accumulate-implementation-v1.json",
+        "docs/architecture/zod-233-three-entry-ai.md",
+        "docs/behavior/basic-skill-ai-selection.md",
+        "docs/evidence/ai/three-entry-source-v1.json",
+        "docs/evidence/ai/three-entry-implementation-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -529,7 +533,11 @@
         "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiCandidateScoring.cs",
         "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiMapEntry.cs",
         "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiPreparation.cs",
-        "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiUsefulness.cs"
+        "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiUsefulness.cs",
+        "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiEntryEvaluation.cs",
+        "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiComposition.cs",
+        "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiSelection.cs",
+        "src/Zodiac.Framework.Ai/Shared/AiRankedInsertion.cs"
       ],
       "automatedChecks": [
         {
@@ -671,6 +679,14 @@
         {
           "path": "tests/Zodiac.Framework.Ai.Tests/Accumulate/AccumulateAiUsefulnessTests.cs",
           "scope": "Source-traced bounded Accumulate projection/preparation/usefulness/map-entry behavior, literal streams and atomic rollback."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiCompositionTests.cs",
+          "scope": "Fresh source-order composition and terminal lottery with literal tapes, cross-entry isolation, supplied-score guards and late whole-query rollback."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiSelectionTests.cs",
+          "scope": "Fresh source-order composition and terminal lottery with literal tapes, cross-entry isolation, supplied-score guards and late whole-query rollback."
         }
       ],
       "manualCheckpoint": {
@@ -678,13 +694,13 @@
         "procedure": "Observe selected mandatory AI turns and distinguish legal choices from exact policy matching."
       },
       "openQuestions": [
-        "Combined Attack/Accumulate/Throw Stone source-order search and authoritative self-ACT integration remain open.",
+        "Derived three-entry scenarios and authoritative Accumulate self-ACT/continuation integration remain open.",
         "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
         "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Design one shared movement/scoring prefix and privately retained ranks/RNG for the three source-order entries, preserving unknown-priority provenance and existing pair paths.",
+      "nextAction": "Trace the original self-action dispatch and define a minimal invocation-bound Framework self-ACT branch before adapting fresh three-entry selection.",
       "followUpTickets": [
-        "ZOD-233"
+        "ZOD-237"
       ]
     },
     {

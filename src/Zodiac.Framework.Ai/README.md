@@ -12,7 +12,9 @@ family. Source and test projects use matching folders:
   movement/scenario branches, ranking/selection and actual command adapters.
 - `Accumulate/`: self PA projection/scoring, certified three-action-list
   preparation, a separate usefulness filter and an isolated map-target entry.
-  These pure queries do not yet compose three-action selection or self-ACT commands.
+- `BasicSkill/`: supplied-scenario Attack/Accumulate/Throw Stone composition and
+  terminal selection using those shared entry/score/rank/lottery owners.
+  Derived scenarios and actual self-ACT commands remain separate work.
 
 Namespaces remain `Zodiac.Framework.Ai` and `Zodiac.Framework.Ai.Tests`; moving
 a file adds no dependency or access. The assembly still references Framework,

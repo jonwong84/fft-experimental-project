@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 199 entries index completed bounded work; they do not mean the full game is complete.
+These 203 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -222,3 +222,7 @@ These 199 entries index completed bounded work; they do not mean the full game i
 - [ZOD-230 — Project and score one supplied Accumulate self candidate](../behavior/accumulate-ai.md#supplied-projection-and-scoring--zod-230)
 - [ZOD-231 — Prepare certified Accumulate lists and source-order usefulness](../behavior/accumulate-ai.md#fresh-closed-list-preparation-and-usefulness--zod-231)
 - [ZOD-232 — Evaluate an isolated Accumulate map-target entry](../behavior/accumulate-ai.md#one-map-target-entry-against-a-supplied-movement-baseline--zod-232)
+- [ZOD-233 — Design shared three-entry AI search composition](../architecture/zod-233-three-entry-ai.md)
+- [ZOD-234 — Share private rank insertion and Accumulate entry evaluation](../behavior/basic-skill-ai-selection.md#shared-entry-and-rank-owners--zod-234)
+- [ZOD-235 — Compose a fresh supplied-scenario Attack/Accumulate/Throw Stone search](../behavior/basic-skill-ai-selection.md#fresh-supplied-scenario-composition--zod-235)
+- [ZOD-236 — Select a terminal three-entry plan through the source lottery](../behavior/basic-skill-ai-selection.md#terminal-lottery-and-typed-plan--zod-236)

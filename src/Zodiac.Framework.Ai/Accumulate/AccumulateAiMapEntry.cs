@@ -42,30 +42,14 @@ public static class AccumulateAiMapEntry
             configuration.Accumulate.Units, preparation.RngState);
         if (baseline.Rejection != AiSimulationClockRejection.None)
             return Reject(new(AccumulateAiMapEntryStage.Movement, Projection: ClockReason(baseline.Rejection)));
-        // Filtering belongs to the entry, once, before either origin. Never feed a public cached gate to scoring.
-        var usefulness = AccumulateAiUsefulness.FilterFresh(state, turn.ActorId, new(true, true, common.TargetActive), baseline.RngState);
-        if (!usefulness.Accepted) return Reject(new(AccumulateAiMapEntryStage.Usefulness, Usefulness: usefulness.Rejection));
-        var candidates = ImmutableArray.CreateBuilder<AccumulateAiScoringResult>();
-        var rng = usefulness.RngState;
-        int? best = null;
-        if (usefulness.Outcome!.SelfUseful)
-        {
-            int originCount = request.Destination == common.Origin ? 1 : 2;
-            for (int i = 0; i < originCount; i++)
-            {
-                var candidate = new AccumulateAiCandidate(turn.ActorId, request.Preparation.AbilityId, turn.TargetId,
-                    request.Destination, ActBeforeMove: i == 0, SelfActiveAndUseful: true);
-                var result = AccumulateAiCandidateScoring.Evaluate(state, candidate, configuration.Accumulate, configuration.Scoring, rng);
-                if (result.Disposition != AiScoringDisposition.Scored)
-                    return Reject(new(AccumulateAiMapEntryStage.Candidate, i, Projection: result.Projection?.Rejection ?? AccumulateAiCandidateRejection.UnsupportedProfile));
-                // Both orders have the same final tile/proximity. Complete rank ties retain ACT-first.
-                if (best is null || AiCandidateRank.Compare(result.Score!, candidates[best.Value].Score!) == AiRankOrder.Above)
-                    best = i;
-                candidates.Add(result); rng = result.RngState;
-            }
-        }
-        var comparison = best is { } index ? AiCandidateRank.Compare(candidates[index].Score!, baseline.Outcome!.Score) : (AiRankOrder?)null;
-        return new(true, null, new(preparation.Outcome, baseline.Outcome!, usefulness.Outcome, candidates.ToImmutable(), best, comparison), rng);
+        var evaluation = AccumulateAiEntryEvaluation.Evaluate(state, turn.ActorId, turn.TargetId, request.Preparation.AbilityId,
+            request.Destination, configuration.Accumulate, configuration.Scoring, common.TargetActive, baseline.RngState);
+        if (evaluation.Failure is not null) return Reject(evaluation.Failure);
+        var entry = evaluation.Outcome!;
+        var comparison = entry.BestCandidateIndex is { } index
+            ? AiCandidateRank.Compare(entry.Candidates[index].Score!, baseline.Outcome!.Score) : (AiRankOrder?)null;
+        return new(true, null, new(preparation.Outcome, baseline.Outcome!, entry.Usefulness, entry.Candidates,
+            entry.BestCandidateIndex, comparison), evaluation.RngState);
     }
 
     private static AccumulateAiCandidateRejection ClockReason(AiSimulationClockRejection reason) =>

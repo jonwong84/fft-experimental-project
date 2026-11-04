@@ -260,7 +260,9 @@ their own helpers rather than one uniform origin×target loop.
 **Implemented, bounded:** ordinary sword and Throw Stone projections/scans, their
 shared prefix and pair ranking, plus [Accumulate self projection, closed-list
 preparation/usefulness and isolated map-target evaluation](../behavior/accumulate-ai.md).
-Three-action search composition remains open. Full roster/list traversal, other ability effects,
+[Three-entry supplied-scenario composition](../behavior/basic-skill-ai-selection.md)
+and terminal selection now retain shared prefix/ranks/RNG in source order.
+Derived three-entry scenarios remain open. Full roster/list traversal, other ability effects,
 Math, reflection, delayed area targeting and complex maps remain **mapped, unported**.
 The [iteration study](zod-185-ai-ability-iteration.md) and
 [Throw Stone scan study](zod-190-throw-stone-ai-scan.md) provide detailed subset traces.
@@ -411,9 +413,11 @@ ignored `scratch/ai-algorithm-guide-212/`.
 The [ZOD-229 Accumulate study](zod-229-accumulate-ai.md) traces retail map-target
 routing, usefulness draws, PA projection/restoration and allied stat-hit scoring.
 ZOD-230–232 implement that bounded self projection, closed preparation/usefulness
-and an isolated map-target entry against a supplied move baseline. The next study
-is ZOD-233: shared three-entry search composition, preserving prior ranks/RNG and
-explicit source scenario provenance before real self-command work.
+and an isolated map-target entry against a supplied move baseline.
+ZOD-233–236 now trace and implement supplied-scenario three-entry composition
+and terminal selection with shared private owners. The next study is ZOD-237:
+authoritative Accumulate self-ACT handoff. Derived three-entry scenarios and
+full original search breadth remain separate from that authority boundary.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use
 the supported domain and a real consumer, rather than exposing the entire

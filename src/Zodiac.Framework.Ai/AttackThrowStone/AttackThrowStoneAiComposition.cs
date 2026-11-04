@@ -134,17 +134,5 @@ public static class AttackThrowStoneAiComposition
             result.ScoringRejection, result.ProjectionRejection);
 
     private static int? Insert(AttackThrowStoneAiAction best, AiCandidateScore baseline, AttackThrowStoneAiAction?[] ranked)
-    {
-        if (AiCandidateRank.Compare(best.Score, baseline) != AiRankOrder.Above) return null;
-        bool Higher(AttackThrowStoneAiAction? entry) => entry is null || AiCandidateRank.Compare(best.Score, entry.Score) is AiRankOrder.Above ||
-            AiCandidateRank.Compare(best.Score, entry.Score) == AiRankOrder.Equal && best.Proximity < entry.Proximity;
-        if (!Higher(ranked[^1])) return null;
-        for (int i = 0; i < ranked.Length; i++)
-        {
-            if (!Higher(ranked[i])) continue;
-            for (int j = ranked.Length - 1; j > i; j--) ranked[j] = ranked[j - 1];
-            ranked[i] = best; return i;
-        }
-        return null;
-    }
+        => AiRankedInsertion.Insert(best, baseline, ranked, a => a.Score, a => a.Proximity);
 }

@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-234",
+    "ZOD-235",
+    "ZOD-236"
+  ],
+  "date": "2026-11-04",
+  "kind": "managed-three-entry-ai-implementation",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "4aa131433bdf2f5a0e4b64e4f30b845a9267159f",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/three-entry-source-v1.json",
+  "design": "docs/behavior/basic-skill-ai-selection.md",
+  "implementationPaths": [
+    "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiEntryEvaluation.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiComposition.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiSelection.cs",
+    "src/Zodiac.Framework.Ai/Shared/AiRankedInsertion.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiCompositionTests.cs",
+    "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiSelectionTests.cs"
+  ],
+  "unchangedPublicEntryRegressions": [
+    "AttackThrowStoneAiComposition",
+    "AccumulateAiMapEntry"
+  ],
+  "literalSuppliedStream": {
+    "seed": 1,
+    "drawCount": 7,
+    "phases": [
+      [
+        "refresh",
+        1
+      ],
+      [
+        "movement",
+        2
+      ],
+      [
+        "Attack",
+        5
+      ],
+      [
+        "AccumulateCoin",
+        1
+      ],
+      [
+        "AccumulateOrigins",
+        2
+      ],
+      [
+        "ThrowStone",
+        5
+      ],
+      [
+        "lottery",
+        3
+      ]
+    ],
+    "coinRaw": 16212,
+    "ranked": [
+      "Attack",
+      "ThrowStone",
+      "Accumulate"
+    ],
+    "priorities": [
+      26,
+      26,
+      3
+    ],
+    "hitPercentages": [
+      3,
+      3,
+      100
+    ],
+    "lotteryRaw": [
+      25089,
+      21183,
+      25137
+    ],
+    "selectedSlot": 2,
+    "finalWord": 3794901700,
+    "finalDrawCount": 26
+  },
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4169,
+    "aiPassed": 965,
+    "priorAiCasesAfterExtraction": 952,
+    "newAiCases": 13,
+    "pythonPassed": 539,
+    "trxReports": 7,
+    "reports": "scratch/basic-skill-ai-233-236/",
+    "sourcePreparedAudit": true,
+    "algorithmGuideAudit": true,
+    "ownerDraftsIncludedInValidation": true,
+    "ownerDraftsExcludedFromCommit": true
+  },
+  "boundaries": [
+    "supplied known-score S/D0/D1, not derived three-entry scenarios",
+    "explicit fresh general/terminal/no-Defend source assertions",
+    "no public cached-result or command authority",
+    "no actual self ACT, Move continuation, host/editor activation or battle saves"
+  ],
+  "originalExecuted": false,
+  "cExecuted": false
+}
