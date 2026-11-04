@@ -16,7 +16,7 @@ public sealed record AttackThrowStoneAiPreparedSelectionOutcome(AttackThrowStone
 public sealed record AttackThrowStoneAiPreparedSelectionResult(bool Accepted, AttackThrowStoneAiPreparedSelectionFailure? Failure,
     AttackThrowStoneAiPreparedSelectionOutcome? Outcome, RandomState RngState);
 
-/// <summary>Fresh both-unused NonBlue in-reach pair decision, owning preparation, scenarios, both scans and lottery exactly once.</summary>
+/// <summary>Fresh both-unused in-reach pair decision, owning preparation, scenarios, both scans and lottery exactly once.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-195/198.
 /// Hypothetical only: no cached inputs, out-of-reach branch, command/session authority or live RNG adoption.</remarks>
 public static class AttackThrowStoneAiPreparedSelection

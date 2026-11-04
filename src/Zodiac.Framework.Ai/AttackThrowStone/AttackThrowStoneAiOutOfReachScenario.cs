@@ -16,7 +16,7 @@ public sealed record AttackThrowStoneAiOutOfReachScenarioOutcome(AttackThrowSton
     ImmutableArray<TilePosition> ScoreMask, ImmutableArray<TilePosition> Scenario1, ImmutableArray<TilePosition> Scenario2,
     ImmutableArray<AiScoredMovementTile> Movement, ImmutableArray<AiMovementCellProvenance> Cells,
     TilePosition BaselineDestination, TilePosition ActFirstDestination, int BaselineIndex,
-    int TargetDistance, int TargetReach, int EffectiveReach, SwordAiReachAdjustment ReachAdjustment,
+    int TargetDistance, int TargetReach, int EffectiveReach, SwordAiReachAdjustment? ReachAdjustment,
     bool FilterUsedReachableFallback, bool DestinationUsedDistanceFallback);
 /// <summary>Failure exposes reasons only and restores incoming whole-query RNG, including after partial private work.</summary>
 public sealed record AttackThrowStoneAiOutOfReachScenarioResult(bool Accepted, AttackThrowStoneAiScenarioFailure? Failure,
@@ -24,7 +24,7 @@ public sealed record AttackThrowStoneAiOutOfReachScenarioResult(bool Accepted, A
 internal sealed record AttackThrowStoneAiOutOfReachScenarioCore(AttackThrowStoneAiOutOfReachScenarioResult Result,
     AiMovementPrefixOutcome? Prefix = null);
 
-/// <summary>Own fresh NonBlue pair preparation, full proximity, filtered scores and out-of-reach D0=D1.</summary>
+/// <summary>Own fresh pair preparation, full proximity, filtered scores and team-specific out-of-reach D0=D1.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-199/200.
 /// No unknown priority reads, cached inputs, scans, lottery, command authority or live RNG adoption.</remarks>
 public static class AttackThrowStoneAiOutOfReachScenario
@@ -79,11 +79,17 @@ public static class AttackThrowStoneAiOutOfReachScenario
                 MovementIndex: evaluated.FailedIndex, MovementReason: evaluated.Rejection == AiSimulationClockRejection.RandomDrawCountExhausted
                     ? SwordAiMovementBaselineRejection.RandomDrawCountExhausted : SwordAiMovementBaselineRejection.TickCountExhausted));
         var prefix = evaluated.Outcome!;
-        uint raw; RandomState rng;
-        try { var draw = new RandomStateGenerator().Next(evaluated.RngState); raw = draw.Value; rng = draw.State; }
-        catch (OverflowException)
-        { return Reject(new(AttackThrowStoneAiScenarioStage.ReachAdjustment, AttackThrowStoneAiScenarioRejection.RandomDrawCountExhausted)); }
-        int modulo = (int)(raw % 7), effective = modulo == 0 ? reach / 2 : reach;
+        var rng = evaluated.RngState;
+        int effective = reach; SwordAiReachAdjustment? adjustment = null;
+        if (ready.Team == SwordAiScenarioTeam.NonBlue)
+        {
+            uint raw;
+            try { var draw = new RandomStateGenerator().Next(rng); raw = draw.Value; rng = draw.State; }
+            catch (OverflowException)
+            { return Reject(new(AttackThrowStoneAiScenarioStage.ReachAdjustment, AttackThrowStoneAiScenarioRejection.RandomDrawCountExhausted)); }
+            int modulo = (int)(raw % 7); effective = modulo == 0 ? reach / 2 : reach;
+            adjustment = new(raw, modulo, reach, effective);
+        }
         var within = prefix.Movement.Where(m => Distance(m.Outcome.Destination) <= effective).ToImmutableArray();
         bool destinationFallback = within.IsEmpty;
         var destination = AttackThrowStoneAiMovementScenario.Select(destinationFallback ? prefix.Movement : within,
@@ -98,6 +104,6 @@ public static class AttackThrowStoneAiOutOfReachScenario
         prefix = prefix with { BaselineIndex = baselineIndex };
         return new(new(true, null, new(ready, scored, scenario1, scenario2, prefix.Movement, cells,
             destination, destination, baselineIndex, distance, reach, effective,
-            new(raw, modulo, reach, effective), filterFallback, destinationFallback), rng), prefix);
+            adjustment, filterFallback, destinationFallback), rng), prefix);
     }
 }

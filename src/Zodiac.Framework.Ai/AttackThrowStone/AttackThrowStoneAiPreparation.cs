@@ -4,9 +4,10 @@ using Zodiac.Framework.Random;
 namespace Zodiac.Framework.Ai;
 
 /// <summary>Both initialized human lists are ordinary Attack, learned Throw Stone, non-Frog Frog Attack, terminator.</summary>
-/// <remarks>Also certifies no other effects/costs/list entries, no special configured behavior and a clean early actor-delay cache.</remarks>
+/// <remarks>Also certifies no other effects/costs/list entries, no special configured behavior and a clean early actor-delay cache.
+/// BlueAiControlled means the source PLAYER_CONTROLLED flag is clear; automatic input alone does not establish that fact.</remarks>
 public sealed record AttackThrowStoneAiPreparationProfile(bool BothInitializedAttackThrowStoneLists = false,
-    bool NoSpecialBehavior = false, bool CleanActorDelayCache = false);
+    bool NoSpecialBehavior = false, bool CleanActorDelayCache = false, bool BlueAiControlled = false);
 public enum AttackThrowStoneAiEntryKind { Attack, ThrowStone }
 public sealed record AttackThrowStoneAiInitializedStatistics(int EntryCount, int SilenceQuarterShare, int MpQuarterShare,
     int EvadeQuarterShare, int HighestMpCost, int? LowestPaidMpCost);
@@ -20,7 +21,10 @@ public sealed record AttackThrowStoneAiPreparedEntry(AttackThrowStoneAiEntryKind
 /// <remarks>No scored masks/D0/D1, candidate scan, plan or general-selection entry certificate is produced.</remarks>
 public sealed record AttackThrowStoneAiPreparationOutcome(SwordAiPreparationOutcome Common,
     ImmutableArray<AttackThrowStoneAiPreparedUnit> Units, ImmutableArray<AttackThrowStoneAiPreparedEntry> ActorEntries,
-    int EnemyHarmfulAbilityCount, int EnemyPhysicalAbilityCount);
+    int EnemyHarmfulAbilityCount, int EnemyPhysicalAbilityCount)
+{
+    public SwordAiScenarioTeam Team { get; init; } = SwordAiScenarioTeam.NonBlue;
+}
 public enum AttackThrowStoneAiPreparationRejection
 {
     UnsupportedProfile, UnsupportedTeam, MismatchedProfiles, UnsupportedAttack, AbilityRejected, RefreshRejected, RestoredPolicyRejected
@@ -31,7 +35,7 @@ public sealed record AttackThrowStoneAiPreparationFailure(AttackThrowStoneAiPrep
 public sealed record AttackThrowStoneAiPreparationResult(bool Accepted, AttackThrowStoneAiPreparationFailure? Failure,
     AttackThrowStoneAiPreparationOutcome? Outcome, RandomState RngState);
 
-/// <summary>Fresh NonBlue pair preparation with explicit pre-ACT or post-ACT entry, using restored actual state.</summary>
+/// <summary>Fresh pair preparation for NonBlue or the certified Blue AI-control branch, before or after ACT.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-195/196/209/211.
 /// No cached results, ranged D0/scenario derivation, candidate scoring/selection, authority or live RNG adoption.</remarks>
 public static class AttackThrowStoneAiPreparation
@@ -57,7 +61,7 @@ public static class AttackThrowStoneAiPreparation
             return Reject(AttackThrowStoneAiPreparationRejection.AbilityRejected, AttackCommandRejection.AbilityNotGranted);
 
         var refresh = SwordAiRefresh.EvaluateUnmoved(state, request, attackProfile, scoreProfile, refreshProfile, decisionRng);
-        return CompletePreparation(state, request, attackProfile, refresh, decisionRng);
+        return CompletePreparation(state, request, attackProfile, refresh, decisionRng, team);
     }
 
     /// <summary>Own one fresh ACT-used/Move-unused refresh and pair preparation; no movement scoring or command authority.</summary>
@@ -80,7 +84,7 @@ public static class AttackThrowStoneAiPreparation
             return new(false, new(AttackThrowStoneAiPreparationRejection.AbilityRejected, AttackCommandRejection.AbilityNotGranted), null, decisionRng);
         var refresh = SwordAiRefresh.EvaluateAfterAct(state, request.Turn, configuration.Attack, configuration.Scoring,
             configuration.Refresh, decisionRng);
-        return CompletePreparation(state, request.Turn, configuration.Attack, refresh, decisionRng);
+        return CompletePreparation(state, request.Turn, configuration.Attack, refresh, decisionRng, configuration.Team);
     }
 
     private static AttackThrowStoneAiPreparationFailure? ValidatePreparation(AttackBattleSnapshot state, SwordAiRefreshRequest request,
@@ -89,12 +93,18 @@ public static class AttackThrowStoneAiPreparation
     {
         if (!preparationProfile.BothInitializedAttackThrowStoneLists || !preparationProfile.NoSpecialBehavior || !preparationProfile.CleanActorDelayCache)
             return new(AttackThrowStoneAiPreparationRejection.UnsupportedProfile);
-        if (team != SwordAiScenarioTeam.NonBlue) return new(AttackThrowStoneAiPreparationRejection.UnsupportedTeam);
+        if (team is not (SwordAiScenarioTeam.NonBlue or SwordAiScenarioTeam.Blue) ||
+            team == SwordAiScenarioTeam.Blue && !preparationProfile.BlueAiControlled)
+            return new(AttackThrowStoneAiPreparationRejection.UnsupportedTeam);
         if (!AttackThrowStoneAiComposition.ProfilesMatch(attackProfile, throwStoneProfile))
             return new(AttackThrowStoneAiPreparationRejection.MismatchedProfiles);
         if (state.TurnBattle.Battle.TryGetUnit(request.ActorId, out var body) && body!.Move > 124)
             return new(AttackThrowStoneAiPreparationRejection.UnsupportedProfile);
         var actor = state.Combatants.FirstOrDefault(u => u.UnitId == request.ActorId);
+        // Blue AI-controlled source switches to healer/crystal targeting below floor(HP*128/maxHP)==45.
+        // That search is outside this focused-opponent profile. Control is an explicit assertion, never inferred from IDs.
+        if (team == SwordAiScenarioTeam.Blue && actor is not null && actor.Hp * 128 / actor.MaxHp < 45)
+            return new(AttackThrowStoneAiPreparationRejection.UnsupportedProfile);
         if (actor is null || weapon is null || actor.RightHandWeaponId != weapon.Id ||
             (2 * Math.Max(1, actor.PhysicalAttack) - 1) * weapon.Power > short.MaxValue)
             return new(AttackThrowStoneAiPreparationRejection.UnsupportedAttack);
@@ -102,11 +112,11 @@ public static class AttackThrowStoneAiPreparation
     }
 
     private static AttackThrowStoneAiPreparationResult CompletePreparation(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        SwordAiCandidateProfile attackProfile, SwordAiRefreshResult refresh, RandomState decisionRng)
+        SwordAiCandidateProfile attackProfile, SwordAiRefreshResult refresh, RandomState decisionRng, SwordAiScenarioTeam team)
     {
         if (!refresh.Accepted)
             return new(false, new(AttackThrowStoneAiPreparationRejection.RefreshRejected, RefreshRejection: refresh.Rejection), null, decisionRng);
-        var common = SwordAiPreparation.DeriveRestoredState(state, request, attackProfile, refresh.Outcome!, alreadyMoved: false);
+        var common = SwordAiPreparation.DeriveRestoredState(state, request, attackProfile, refresh.Outcome!, alreadyMoved: false, team: team);
         if (common is null) return new(false, new(AttackThrowStoneAiPreparationRejection.RestoredPolicyRejected), null, decisionRng);
         // Initialization includes unusable Frog Attack: two evadeable of three entries, no Silence or paid MP.
         var statistics = new AttackThrowStoneAiInitializedStatistics(3, 0, 0, 2, 0, null);
@@ -117,6 +127,6 @@ public static class AttackThrowStoneAiPreparation
         ImmutableArray<AttackThrowStoneAiPreparedEntry> entries = [
             new(AttackThrowStoneAiEntryKind.Attack, 1, 0, 0, 0, usable, true, false, false),
             new(AttackThrowStoneAiEntryKind.ThrowStone, 4, 0, 0, 0, usable, false, false, true)];
-        return new(true, null, new(common, units, entries, EnemyHarmfulAbilityCount: 2, EnemyPhysicalAbilityCount: 2), refresh.RngState);
+        return new(true, null, new(common, units, entries, EnemyHarmfulAbilityCount: 2, EnemyPhysicalAbilityCount: 2) { Team = team }, refresh.RngState);
     }
 }

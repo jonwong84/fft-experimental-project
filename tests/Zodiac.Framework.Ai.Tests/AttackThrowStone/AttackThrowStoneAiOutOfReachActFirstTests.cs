@@ -28,7 +28,7 @@ public sealed class AttackThrowStoneAiOutOfReachActFirstTests
             Assert.Equal(AttackThrowStoneAiPlanKind.ThrowStone,o.Decision.Selection.Plan.Kind);
             Assert.Equal(new ThrowStoneResolvedEvent(A,Stone,B,true,example.Damage,example.Push),Assert.Single(result.Events.OfType<ThrowStoneResolvedEvent>()));
             Assert.Equal(example.Hp-example.Damage,result.State.Battle.Combatants.Single(u=>u.UnitId==B).Hp);
-            Assert.Equal(example.Seed==20, o.Decision.MovementScenario.ReachAdjustment.Halved);
+            Assert.Equal(example.Seed==20, o.Decision.MovementScenario.ReachAdjustment!.Halved);
             var actor=result.State.Battle.TurnBattle.Turns.Units.Single(u=>u.Id==A);
             Assert.True(actor.HasTurn);Assert.True(actor.ActionTaken);Assert.False(actor.MovementTaken);Assert.Equal(15,actor.Ct);
             Assert.Null(result.State.PendingFacing);Assert.Equal(state.Revision+1,result.State.Revision);

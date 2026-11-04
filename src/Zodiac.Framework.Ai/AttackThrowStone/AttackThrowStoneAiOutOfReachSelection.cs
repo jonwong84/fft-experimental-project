@@ -10,7 +10,7 @@ public sealed record AttackThrowStoneAiOutOfReachSelectionOutcome(AttackThrowSto
 public sealed record AttackThrowStoneAiOutOfReachSelectionResult(bool Accepted, AttackThrowStoneAiPreparedSelectionFailure? Failure,
     AttackThrowStoneAiOutOfReachSelectionOutcome? Outcome, RandomState RngState);
 
-/// <summary>Own fresh NonBlue out-of-reach pair selection only when every cast key is fresh or proved unread.</summary>
+/// <summary>Own fresh out-of-reach pair selection only when every cast key is fresh or proved unread.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-199/200/202.
 /// No prior-memory inputs, actor rescore, cached results, command authority or live RNG adoption.</remarks>
 public static class AttackThrowStoneAiOutOfReachSelection

@@ -38,7 +38,7 @@ public sealed class AttackThrowStoneAiOutOfReachSelectionTests
             Assert.Equal(value.MovementScenario.BaselineIndex, selected.Composition.BaselineIndex);
         }
         var half = Select(Battle(move: 1, target: FarTarget), rng: new(20, 7)); var halved = Success(half);
-        Assert.True(halved.MovementScenario.ReachAdjustment.Halved); Assert.True(halved.MovementScenario.DestinationUsedDistanceFallback);
+        Assert.True(halved.MovementScenario.ReachAdjustment!.Halved); Assert.True(halved.MovementScenario.DestinationUsedDistanceFallback);
         Assert.Equal(Right, halved.Selection.Plan.Destination); Assert.Equal(new RandomState(4007910005, 16), half.RngState);
     }
 

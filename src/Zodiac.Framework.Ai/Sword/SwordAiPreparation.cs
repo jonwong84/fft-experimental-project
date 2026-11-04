@@ -87,7 +87,8 @@ public static class SwordAiPreparation
 
     // Shared by fresh owning queries whose minimum enemy ability range is one. No list assertion is manufactured here.
     internal static SwordAiPreparationOutcome? DeriveRestoredState(AttackBattleSnapshot state, SwordAiRefreshRequest request,
-        SwordAiCandidateProfile candidateProfile, SwordAiRefreshOutcome refresh, bool alreadyMoved)
+        SwordAiCandidateProfile candidateProfile, SwordAiRefreshOutcome refresh, bool alreadyMoved,
+        SwordAiScenarioTeam team = SwordAiScenarioTeam.NonBlue)
     {
         state.TurnBattle.Battle.TryGetUnit(request.ActorId, out var actor);
         ImmutableArray<TilePosition> origins = [];
@@ -109,9 +110,9 @@ public static class SwordAiPreparation
         var focus = target!.Position;
         int distance = Math.Abs(focus.X - origin.X) + Math.Abs(focus.Y - origin.Y);
         byte proximity = targetDelay <= actorDelay ? (byte)Math.Max(0, 10 - distance) : (byte)0;
-        // One ally cannot provide retreat support. NonBlue sets the actor's policy unless already set.
+        // One ally cannot provide retreat support. NonBlue sets the actor's bit; Blue preserves all retained policies.
         var policies = refresh.RefreshedUnits.Select(u => new SwordAiRefreshPolicy(u.UnitId,
-            u.ConserveCt, u.UnitId == request.ActorId || u.TeamSupportUnavailable)).ToImmutableArray();
+            u.ConserveCt, (team == SwordAiScenarioTeam.NonBlue && u.UnitId == request.ActorId) || u.TeamSupportUnavailable)).ToImmutableArray();
         return new(refresh, policies, origin, focus, actorDelay, targetDelay, actor.Move + 1, actor.Move,
             proximity, RetreatSupportAvailable: false, SingleEnemyRemaining: false, TargetActive: true,
             ManualAutobattle: true, RandomUseThreshold: 0)

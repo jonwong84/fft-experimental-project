@@ -20,7 +20,7 @@ public sealed record AttackThrowStoneAiMovementScenarioResult(bool Accepted, Att
     AttackThrowStoneAiMovementScenarioOutcome? Outcome, RandomState RngState);
 internal sealed record AttackThrowStoneAiScenarioCore(AttackThrowStoneAiMovementScenarioResult Result, AiMovementPrefixOutcome? Prefix = null);
 
-/// <summary>Own fresh both-unused NonBlue pair preparation and one in-reach movement prefix; derive D0/D1 with ranged policy.</summary>
+/// <summary>Own fresh both-unused pair preparation and one in-reach movement prefix; derive D0/D1 with ranged policy.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-195/197.
 /// No cached inputs, out-of-reach adjustment, action scans, lottery, authority or live RNG adoption.</remarks>
 public static class AttackThrowStoneAiMovementScenario
