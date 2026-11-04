@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-262",
+    "ZOD-263"
+  ],
+  "date": "2026-11-04",
+  "kind": "managed-content-backed-ordinary-human-ai-lists",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "bdd7572d369c4282ecd23f1085f9c477d0459550",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/usable-ability-lists-source-v1.json",
+  "design": "docs/behavior/content-backed-ai-lists.md",
+  "implementationPaths": [
+    "src/Zodiac.Content/BattleSetup/OrdinaryHumanAiAbilityListSetup.cs",
+    "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiPreparation.cs",
+    "src/Zodiac.Framework.Ai/Shared/AiHumanAbilityLists.cs"
+  ],
+  "projectFiles": [
+    "src/Zodiac.Content/Zodiac.Content.csproj",
+    "tests/Zodiac.Framework.Ai.Tests/Zodiac.Framework.Ai.Tests.csproj"
+  ],
+  "lockFiles": [
+    "src/Fft.Client/packages.lock.json",
+    "src/Fft.Editor/packages.lock.json",
+    "src/Zodiac.AssetTool.Cli/packages.lock.json",
+    "src/Zodiac.Content/packages.lock.json",
+    "tests/Fft.Client.Tests/packages.lock.json",
+    "tests/Zodiac.AssetTool.Cli.Tests/packages.lock.json",
+    "tests/Zodiac.Content.Tests/packages.lock.json",
+    "tests/Zodiac.Framework.Ai.Tests/packages.lock.json"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Ai.Tests/Shared/AiHumanAbilityListTests.cs",
+    "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiContentListTests.cs"
+  ],
+  "behavior": {
+    "entryOrder": [
+      "Attack",
+      "eligible known primary slots",
+      "eligible known secondary slots",
+      "FrogAttack"
+    ],
+    "deduplication": false,
+    "knownState": "explicit resolved slots; no inference from job/cost/learning flags",
+    "rawAiBytesDecodedAt": "Content setup boundary only",
+    "eligibleUnsupportedAction": "reject",
+    "initializationDenominatorIncludesFrog": true,
+    "staticMotionIsRuntimeConsume": false,
+    "canonicalConsumer": [
+      "Attack",
+      "Accumulate",
+      "ThrowStone",
+      "FrogAttack"
+    ],
+    "otherConsumerShapes": "UnsupportedList before refresh",
+    "oldListCertificate": "replaced by owned data when supplied; invalid data cannot be bypassed",
+    "exactExecutableGrantsRequired": true,
+    "postActReachBeforeUsableClear": true,
+    "sharedPreparationAndSearchOwners": true,
+    "newRngDraws": false,
+    "newCommandAuthority": false
+  },
+  "dependencies": {
+    "outer": "Zodiac.Content -> Zodiac.Framework.Ai -> Zodiac.Framework",
+    "aiReferencesContent": false,
+    "frameworkReferencesAi": false,
+    "externalPackageChanges": false,
+    "hostActivation": false
+  },
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4272,
+    "frameworkPassed": 1467,
+    "aiPassed": 1060,
+    "newAiCases": 12,
+    "pythonPassed": 539,
+    "trxReports": 7,
+    "sourcePreparedAudit": true,
+    "listSourceFingerprints": true,
+    "algorithmGuideAudit": true,
+    "coverageAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/ability-lists-261-263/"
+  },
+  "boundaries": [
+    "ordinary human default menus and clean source context remain explicit",
+    "original 16 action positions interpreted only by Content compatibility adapter",
+    "production consumer remains canonical four-entry shape",
+    "full career learning/menus/rosters/effects/maps/policies, terminal routing and original frame RNG remain open",
+    "no editor activation, owner flag consolidation, broad interfaces or battle-save work"
+  ],
+  "originalExecuted": false,
+  "cExecuted": false
+}

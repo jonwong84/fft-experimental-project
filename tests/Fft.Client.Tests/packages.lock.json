@@ -111,15 +111,19 @@
       "fft.client": {
         "type": "Project",
         "dependencies": {
+          "MonoGame.Framework.DesktopGL": "[3.8.6, )",
           "Zodiac.Content": "[1.0.0, )",
-          "Zodiac.Framework": "[1.0.0, )",
-          "MonoGame.Framework.DesktopGL": "[3.8.6, )"
+          "Zodiac.Framework": "[1.0.0, )"
         }
+      },
+      "tessera.engine": {
+        "type": "Project"
       },
       "zodiac.content": {
         "type": "Project",
         "dependencies": {
-          "Zodiac.Framework": "[1.0.0, )"
+          "Zodiac.Framework": "[1.0.0, )",
+          "Zodiac.Framework.Ai": "[1.0.0, )"
         }
       },
       "zodiac.framework": {
@@ -128,8 +132,11 @@
           "Tessera.Engine": "[1.0.0, )"
         }
       },
-      "tessera.engine": {
-        "type": "Project"
+      "zodiac.framework.ai": {
+        "type": "Project",
+        "dependencies": {
+          "Zodiac.Framework": "[1.0.0, )"
+        }
       },
       "MonoGame.Framework.DesktopGL": {
         "type": "CentralTransitive",

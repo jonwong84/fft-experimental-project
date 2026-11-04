@@ -65,8 +65,10 @@ now share pair movement ownership, derive S/D0/D1 and prove cast keys written
 or unread. [Retained priority knowledge](../behavior/ai-priority-workspace.md)
 now carries owned writes through range3/4 queries, commands and complete turns.
 Unknown/event-written values remain unknown and unmodeled workspace use forgets
-knowledge. Broader original lists/policies/rosters/maps and independent
-validation remain open.
+knowledge. [Content-backed list construction](../behavior/content-backed-ai-lists.md)
+now preserves source slots/order/duplicates and explicit known state, with an
+outer setup adapter and canonical four-entry preparation consumer. Broader
+list traversal/policies/rosters/maps and independent validation remain open.
 
 The [ZOD-210 cleanup](ai-pair-selection-refactor.md) shares pair admission and
 composition/lottery handling while retaining separate scenario/provenance rules.
@@ -155,8 +157,8 @@ serial execution. Select new children through the backlog and keep deferred work
 deferred. The pair now supports one fresh command entry, complete headless turns
 and the certified Blue branch through shared Framework authority. Three-entry
 turns now include actual self ACT, derived scenarios and explicit retained
-priority knowledge. Next ZOD-261 studies content-derived usable lists for the
-supported actions. Broader control/low-HP/terminal policies remain separate.
+priority knowledge and content-backed canonical lists. Next ZOD-264 traces
+variable supported-action lists through preparation/search. Broader control/low-HP/terminal policies remain separate.
 A certificate for one closed ability list cannot stand in for another list.
 
 Original-AI completion means it can control applicable original encounters and

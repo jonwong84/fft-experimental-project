@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-261 (trace content-derived usable ability lists for the supported actions).** Retained priority knowledge, range3/4 selection, actual commands and complete turns ZOD-255–260 are complete within explicit history/invalidation boundaries.
-There are 34 open tickets below. The 227 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-264 (trace variable supported-action lists through preparation and search).** Content-backed ordinary list construction and canonical fresh preparation ZOD-261–263 are complete; broader list shapes remain explicitly unsupported by the search consumer.
+There are 34 open tickets below. The 230 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,21 +29,21 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-261 — Trace content-derived usable ability lists for the supported actions
+### ZOD-264 — Trace variable supported-action lists through preparation and search
 
-**Type:** Research · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-185, ZOD-260
+**Type:** Research · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-185, ZOD-233, ZOD-263
 
-Trace original usable-list construction, entry order/terminators, primary and
-secondary skillsets, equipment/item/learned grants, hardcoded status entries,
-usage flags and per-unit summaries. Compare current prepared grants/content
-with the certified Attack/Accumulate/Throw Stone lists; distinguish facts that
-can be derived now from missing job/learning/equipment state. Select a bounded
-content-backed child for supported actions without fabricating absent facts
-or imposing original list capacities as managed catalog limits. Preserve
-source order, one preparation/movement owner, ranking/lottery, typed commands,
-priority knowledge/invalidation and exact recovery. Full rosters, other effects,
-broader policies/maps and terminal routing remain separate. Host/editor,
-replacement interfaces and ZOD-106 stay deferred; PA remains battle-only.
+Trace missing/repeated/reordered supported actions through initialization,
+per-unit usability/summaries, minimum reach, entry traversal, shared ranks and
+terminal lottery/defaults. Use owned semantic/content lists as the concrete
+input; current preparation still admits only Attack/self/Stone/Frog. Select
+one bounded variable-list child rather than silently reorder, deduplicate,
+skip unsupported entries or call an absent self usefulness pass. Preserve one
+refresh/movement owner, actual-state candidate isolation, priority history,
+command authority, post-ACT clearing and exact partial recovery. General
+learning rows/menus/rosters/effects/maps/policies and terminal encounter routing
+remain separate. Owner flag drafts, host/editor, replacement interfaces and
+ZOD-106 stay deferred; PA remains battle-only.
 
 ## Existing validation gates
 

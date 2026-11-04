@@ -2,13 +2,17 @@
   "version": 2,
   "dependencies": {
     "net10.0": {
+      "tessera.engine": {
+        "type": "Project"
+      },
       "zodiac.assettool": {
         "type": "Project"
       },
       "zodiac.content": {
         "type": "Project",
         "dependencies": {
-          "Zodiac.Framework": "[1.0.0, )"
+          "Zodiac.Framework": "[1.0.0, )",
+          "Zodiac.Framework.Ai": "[1.0.0, )"
         }
       },
       "zodiac.framework": {
@@ -17,8 +21,11 @@
           "Tessera.Engine": "[1.0.0, )"
         }
       },
-      "tessera.engine": {
-        "type": "Project"
+      "zodiac.framework.ai": {
+        "type": "Project",
+        "dependencies": {
+          "Zodiac.Framework": "[1.0.0, )"
+        }
       }
     }
   }

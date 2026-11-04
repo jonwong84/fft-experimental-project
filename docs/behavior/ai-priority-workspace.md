@@ -133,7 +133,8 @@ reports are under ignored `scratch/priority-workspace-255-260/`. Follow the
 [existing Python/Pillow setup](accumulate-ai.md#validation). Historical checkpoint
 snapshots were not rerun; no original behavioral equivalence claim is added.
 
-Next ZOD-261 studies content-derived usable lists for the supported actions.
+[ZOD-261–263](content-backed-ai-lists.md) subsequently add content-backed ordinary
+lists and canonical preparation while retaining this knowledge/recovery owner.
 Arbitrary event/loader memory remains unknown. Full policies/rosters/maps,
 terminal encounter routing, frame RNG and host/editor activation remain
 separate. ZOD-106 and owner definition drafts, including AbilityToggles, remain

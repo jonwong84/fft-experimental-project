@@ -12,7 +12,11 @@ public sealed record AccumulateAiPreparationRequest(SwordAiRefreshRequest Turn, 
     AssetId ThrowStoneAbilityId, BoundedSwordWeapon? Weapon);
 public sealed record AccumulateAiPreparationConfiguration(SwordAiCandidateProfile Attack, ThrowStoneAiCandidateProfile ThrowStone,
     AccumulateAiCandidateProfile Accumulate, AiScoreProfile Scoring, SwordAiRefreshProfile Refresh,
-    AccumulateAiPreparationProfile Preparation, SwordAiScenarioTeam Team);
+    AccumulateAiPreparationProfile Preparation, SwordAiScenarioTeam Team)
+{
+    /// <summary>Optional owned content-backed lists. When present they replace, and cannot be bypassed by, BothInitializedLists.</summary>
+    public AiHumanAbilityLists? AbilityLists { get; init; }
+}
 public enum AccumulateAiEntryKind { Attack, Accumulate, ThrowStone }
 public sealed record AccumulateAiPreparedEntry(AccumulateAiEntryKind Kind, int Range, bool Usable,
     bool ExhaustiveOriginScan, bool ForceConsumeAim, bool ConsumeEvaluatedAimTiles);
@@ -23,7 +27,7 @@ public sealed record AccumulateAiPreparationOutcome(SwordAiPreparationOutcome Co
     ImmutableArray<AccumulateAiPreparedUnit> Units, ImmutableArray<AccumulateAiPreparedEntry> ActorEntries,
     int EnemyHarmfulCount, int EnemyPhysicalCount);
 public enum AccumulateAiPreparationRejection { None, UnsupportedProfile, UnsupportedTeam, MismatchedProfiles,
-    UnsupportedAttack, AbilityRejected, RefreshRejected }
+    UnsupportedAttack, AbilityRejected, RefreshRejected, UnsupportedList }
 public sealed record AccumulateAiPreparationFailure(AccumulateAiPreparationRejection Reason,
     AccumulateAiCandidateRejection AccumulateReason = AccumulateAiCandidateRejection.None,
     AttackCommandRejection ThrowStoneReason = AttackCommandRejection.None,
@@ -51,8 +55,10 @@ public static class AccumulateAiPreparation
         ValidateArguments(state, request, configuration);
         AccumulateAiPreparationResult Reject(AccumulateAiPreparationFailure failure) => new(false, failure, null, decisionRng);
         var p = configuration.Preparation;
-        if (!p.BothInitializedLists || !p.NoSpecialBehavior || !p.CleanActorDelayCache)
+        if ((configuration.AbilityLists is null && !p.BothInitializedLists) || !p.NoSpecialBehavior || !p.CleanActorDelayCache)
             return Reject(new(AccumulateAiPreparationRejection.UnsupportedProfile));
+        if (configuration.AbilityLists is { } lists && !ListsMatch(state, request, configuration, lists))
+            return Reject(new(AccumulateAiPreparationRejection.UnsupportedList));
         var team = configuration.Team;
         if (team is not (SwordAiScenarioTeam.NonBlue or SwordAiScenarioTeam.Blue) || team == SwordAiScenarioTeam.Blue && !p.BlueAiControlled)
             return Reject(new(AccumulateAiPreparationRejection.UnsupportedTeam));
@@ -93,12 +99,44 @@ public static class AccumulateAiPreparation
         // Four initialized entries, including unusable Frog Attack. Accumulate only changes the denominator/helpful count.
         var units = state.TurnBattle.Turns.Units.OrderBy(u => u.TieKey).Select(u =>
             // Source updates helpful-share policy for allies only. The peer's retained bit is unrepresented.
+            configuration.AbilityLists is { } supplied ? Summary(u.Id, supplied.Units[u.Id], turn.ActorId) :
             new AccumulateAiPreparedUnit(u.Id, 4, 2, 0, 0, 2, 1, true, false, u.Id == turn.ActorId ? false : null)).ToImmutableArray();
-        ImmutableArray<AccumulateAiPreparedEntry> entries = [
+        ImmutableArray<AccumulateAiPreparedEntry> entries = configuration.AbilityLists is { } owned
+            ? owned.Units[turn.ActorId].Entries.Where(e => e.OrdinaryUsable).Select(e => new AccumulateAiPreparedEntry(
+                e.Kind == AiHumanAbilityKind.Attack ? AccumulateAiEntryKind.Attack : e.Kind == AiHumanAbilityKind.Accumulate ? AccumulateAiEntryKind.Accumulate : AccumulateAiEntryKind.ThrowStone,
+                e.Range, !alreadyActed, e.ExhaustiveOriginScan, e.ForceConsumeAim, e.Kind != AiHumanAbilityKind.Attack)).ToImmutableArray() : [
             new(AccumulateAiEntryKind.Attack, 1, !alreadyActed, true, false, false),
             new(AccumulateAiEntryKind.Accumulate, 0, !alreadyActed, false, true, true),
             new(AccumulateAiEntryKind.ThrowStone, 4, !alreadyActed, false, false, true)];
-        return new(true, null, new(common, team, units, entries, 2, 2), refresh.RngState);
+        if (configuration.AbilityLists is not null)
+        {
+            // Reach is derived before ACT-used clears actor usability, just as the source's second pass does.
+            var source = configuration.AbilityLists.Units[turn.ActorId].Entries;
+            common = common with { EnemyAbilityReach = body.Move + source.Where(e => e.Harmful).Min(e => e.Range),
+                AllyAbilityReach = body.Move + source.Where(e => e.Helpful).Min(e => e.Range) };
+        }
+        int harmful = units.Single(u => u.UnitId == turn.TargetId).HarmfulCount;
+        return new(true, null, new(common, team, units, entries, harmful, harmful), refresh.RngState);
+    }
+
+    private static AccumulateAiPreparedUnit Summary(BattleUnitId id, AiHumanInitializedList list, BattleUnitId actorId) =>
+        new(id, list.InitializedEntryCount, list.EvadeQuarterShare, list.SilenceQuarterShare, list.MpQuarterShare,
+            list.HarmfulCount, list.HelpfulCount, list.HasRangedAbility, false,
+            id == actorId ? list.HelpfulCount * 4 / (list.HelpfulCount + list.HarmfulCount) >= 2 : null);
+
+    private static bool ListsMatch(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,
+        AccumulateAiPreparationConfiguration configuration, AiHumanAbilityLists lists)
+    {
+        if (lists.Units.Count != state.Combatants.Length) return false;
+        foreach (var unit in state.Combatants)
+        {
+            if (!lists.Units.TryGetValue(unit.UnitId, out var list) ||
+                !list.Entries.Select(e => e.Kind).SequenceEqual(new[] { AiHumanAbilityKind.Attack, AiHumanAbilityKind.Accumulate, AiHumanAbilityKind.ThrowStone, AiHumanAbilityKind.FrogAttack }) ||
+                list.Entries[1].AbilityId != request.AbilityId || list.Entries[2].AbilityId != request.ThrowStoneAbilityId ||
+                !configuration.Accumulate.Ability.Units.TryGetValue(unit.UnitId, out var self) || !self.Abilities.SetEquals([request.AbilityId]) ||
+                !configuration.ThrowStone.Ability.Units.TryGetValue(unit.UnitId, out var stone) || !stone.Abilities.SetEquals([request.ThrowStoneAbilityId])) return false;
+        }
+        return true;
     }
 
     internal static void ValidateArguments(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,

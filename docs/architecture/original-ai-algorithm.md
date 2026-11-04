@@ -107,7 +107,9 @@ ordinary living opponents; Attack-only moved/unmoved/post-ACT entries and fresh
 pre-ACT and [post-ACT Attack/Throw Stone preparation](../behavior/attack-throw-stone-ai-post-act-preparation.md).
 See [refresh](zod-156-ai-refresh-prefix.md),
 [pair preparation](zod-195-pair-preparation.md) and [post-ACT pair study](zod-209-pair-post-act.md).
-Full list construction, teams, status timing and special policies are **mapped,
+[Bounded content-backed human lists](../behavior/content-backed-ai-lists.md) now
+construct supported default-menu actions and supply canonical preparation.
+Full list traversal, teams, status timing and special policies remain **mapped,
 unported**. Pair post-ACT command execution now uses fresh pair preparation;
 the [certified Blue AI-controlled branch](../behavior/blue-attack-throw-stone-ai.md)
 shares it while retaining control/HP boundaries and team-specific policies.
@@ -433,8 +435,11 @@ reuse composition/lottery and command/turn owners. Unwritten cast keys reject
 unless proved unread in the stateless entry. [ZOD-255–260](../behavior/ai-priority-workspace.md)
 trace their lifecycle and carry owned priority writes through range3/4 queries,
 actual commands and complete recovery. Unknown startup/event values remain
-unknown; unmodeled workspace use forgets knowledge. Next ZOD-261 traces usable
-list derivation for supported actions. Full original search breadth remains separate.
+unknown; unmodeled workspace use forgets knowledge.
+[ZOD-261–263](../behavior/content-backed-ai-lists.md) now build semantic ordinary
+human lists and bind metadata/effects into canonical preparation. Known-slot
+state remains explicit; other list shapes reject before refresh. Next ZOD-264
+traces variable supported-action traversal. Full original search breadth remains separate.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use
 the supported domain and a real consumer, rather than exposing the entire

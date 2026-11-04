@@ -4,8 +4,8 @@ ZOD-219 groups the current bounded implementations by their supported decision
 family. Source and test projects use matching folders:
 
 - `Shared/`: hypothetical clocks/state, movement prefix, scoring, ranking and
-  lottery kernels and immutable retained-priority knowledge. These serve more
-  than one family.
+  lottery kernels, immutable retained-priority knowledge and semantic ordinary
+  human ability-list construction. These serve more than one family.
 - `Sword/`: the original ordinary-sword pilot, its preparation, scenarios,
   scans, selection and execution adapters.
 - `ThrowStone/`: one Throw Stone formula/candidate/scan, used by pair selection.
@@ -29,7 +29,11 @@ family. Source and test projects use matching folders:
 
 Namespaces remain `Zodiac.Framework.Ai` and `Zodiac.Framework.Ai.Tests`; moving
 a file adds no dependency or access. The assembly still references Framework,
-and Framework does not reference AI. Folders describe current code ownership,
+and Framework does not reference AI. Content's outer battle-setup adapter now
+references AI to supply semantic lists from immutable metadata and explicit
+known slots; AI never references Content or performs file I/O. Canonical list
+preparation replaces its legacy list assertion, while general list shapes still
+reject. Folders describe current code ownership,
 not permanent original-game table limits. `SwordAi` names still identify the
 restricted sword implementation; moving them is not a claim of general weapon
 support. Avoid adding a folder for each ticket or duplicating shared kernels

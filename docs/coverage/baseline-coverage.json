@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-04",
   "edition": "SCUS-94221",
-  "managedCommit": "00d0fef7425648cf8ce2dedd108ed30940c09a42",
+  "managedCommit": "bdd7572d369c4282ecd23f1085f9c477d0459550",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 4260,
-    "source": "docs/behavior/ai-priority-workspace.md",
+    "passed": 4272,
+    "source": "docs/behavior/content-backed-ai-lists.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -453,7 +453,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "Closed ordinary sword and Attack/Throw Stone selection, both admitted teams and complete pair turns exist. Three-entry supplied/derived scenarios, selection and actual commands compose complete headless turns with automatic post-ACT reach and exact recovery. Optional immutable priority knowledge records only owned writes, resolves range3/4 cast keys with fresh proximity and preserves accepted history through commands/recovery. Unknown startup/event values still reject when read; unmodeled workspace use forgets knowledge. General lists/policies/rosters/maps, terminal routing, original evidence and host activation remain open.",
+      "currentScope": "Closed sword/pair and three-entry supplied/derived complete turns, both admitted teams, actual commands and exact recovery exist. Optional priority knowledge resolves only owned retained writes. Semantic ordinary human lists now preserve slot/source order, duplicates, explicit known/AI eligibility and Frog initialization. An outer Content adapter supplies validated lists to canonical four-entry preparation, deriving summaries/policy/reach and checking exact grants. Other list shapes, general learning/menus/rosters/policies/maps, terminal routing, original evidence and host activation remain open.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -535,7 +535,11 @@
         "docs/architecture/zod-255-priority-workspace.md",
         "docs/behavior/ai-priority-workspace.md",
         "docs/evidence/ai/priority-workspace-source-v1.json",
-        "docs/evidence/ai/priority-workspace-implementation-v1.json"
+        "docs/evidence/ai/priority-workspace-implementation-v1.json",
+        "docs/architecture/zod-261-usable-ability-lists.md",
+        "docs/behavior/content-backed-ai-lists.md",
+        "docs/evidence/ai/usable-ability-lists-source-v1.json",
+        "docs/evidence/ai/usable-ability-lists-implementation-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -571,7 +575,9 @@
         "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiScenarios.cs",
         "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiDerivedComposition.cs",
         "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiDerivedSelection.cs",
-        "src/Zodiac.Framework.Ai/Shared/AiPriorityWorkspace.cs"
+        "src/Zodiac.Framework.Ai/Shared/AiPriorityWorkspace.cs",
+        "src/Zodiac.Framework.Ai/Shared/AiHumanAbilityLists.cs",
+        "src/Zodiac.Content/BattleSetup/OrdinaryHumanAiAbilityListSetup.cs"
       ],
       "automatedChecks": [
         {
@@ -757,6 +763,14 @@
         {
           "path": "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiPriorityWorkspaceExecutionTests.cs",
           "scope": "Owned retained-priority writes, fresh proximity/signed/tie ordering, range3/4 queries, unknown/map/invalidation, NotValuable aim consumption, transactional actual commands and complete recovery with literal streams."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/Shared/AiHumanAbilityListTests.cs",
+          "scope": "Semantic list order/holes/duplicates, initialized denominator, known versus disabled/unsupported, immutable branches and context guards."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiContentListTests.cs",
+          "scope": "Content metadata/effect/known-slot binding, canonical preparation/grant parity, static-motion distinction, actual self/post-ACT and workspace recovery."
         }
       ],
       "manualCheckpoint": {
@@ -764,13 +778,14 @@
         "procedure": "Observe selected mandatory AI turns and distinguish legal choices from exact policy matching."
       },
       "openQuestions": [
+        "Owned content-backed lists are accepted only in the canonical four-entry preparation shape; variable traversal, learning rows and special menus remain unported.",
         "Knowledge starts unknown, records only owned writes and must forget after unmodeled workspace use; numerical startup/event/loader history and frame-interleaved RNG remain unresolved.",
         "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
         "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Trace usable ability-list construction against current grants/content, selecting a supported-action derivation child while recording missing job/learning/equipment facts and preserving existing history/command owners.",
+      "nextAction": "Trace variable supported-action lists through per-unit summaries, reach, shared entry traversal/ranks and terminal defaults before selecting one bounded consumer extension.",
       "followUpTickets": [
-        "ZOD-261"
+        "ZOD-264"
       ]
     },
     {

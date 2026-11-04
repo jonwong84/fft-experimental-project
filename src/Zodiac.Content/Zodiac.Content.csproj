@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Zodiac.Framework\Zodiac.Framework.csproj" />
+    <ProjectReference Include="..\Zodiac.Framework.Ai\Zodiac.Framework.Ai.csproj" />
   </ItemGroup>
 
 </Project>
