@@ -1,9 +1,9 @@
-using Zodiac.Framework.Random;
 using System.Collections.Immutable;
+using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework;
 
-internal enum FacingDecisionKind { Rejected, Attack, Wait, TurnEndingMove, TargetedAbility }
+internal enum FacingDecisionKind { Rejected, Attack, Wait, TurnEndingMove, TargetedAbility, PlannedMove }
 
 /// <summary>An opaque proposal issued by one planning invocation; never a battle-state or receipt factory.</summary>
 public sealed class FacingDecision<T>
@@ -18,13 +18,15 @@ public sealed class FacingDecision<T>
     internal FlatOrdinaryMovementProfile? MovementProfile { get; }
     internal UseTargetedAbilityCommand? TargetedAbility { get; }
     internal TargetedAbilityBattleProfile? AbilityProfile { get; }
+    internal FacingMoveDecision<T>? PlannedMove { get; }
     internal T? Diagnostic { get; }
     internal FacingDecision(FacingDecisionContext owner, FacingDecisionKind kind, RandomState rng,
         T? diagnostic, AttackUnitCommand? attack = null, BoundedSwordWeapon? weapon = null, FacingChoice? facing = null,
         MoveUnitCommand? move = null, FlatOrdinaryMovementProfile? movementProfile = null,
-        UseTargetedAbilityCommand? targetedAbility = null, TargetedAbilityBattleProfile? abilityProfile = null)
+        UseTargetedAbilityCommand? targetedAbility = null, TargetedAbilityBattleProfile? abilityProfile = null,
+        FacingMoveDecision<T>? plannedMove = null)
     { Owner = owner; Kind = kind; Rng = rng; Diagnostic = diagnostic; Attack = attack; Weapon = weapon; Facing = facing;
-        Move = move; MovementProfile = movementProfile; TargetedAbility = targetedAbility; AbilityProfile = abilityProfile; }
+        Move = move; MovementProfile = movementProfile; TargetedAbility = targetedAbility; AbilityProfile = abilityProfile; PlannedMove = plannedMove; }
 }
 
 /// <summary>Read-only planning input with invocation-bound proposal factories; valid only during the callback.</summary>
@@ -34,8 +36,10 @@ public sealed class FacingDecisionContext
     public AttackBattleSnapshot Battle { get; }
     public BattleUnitId ActorId { get; }
     public RandomState RngState => Battle.TurnBattle.Turns.RngState;
-    internal FacingDecisionContext(AttackBattleSnapshot battle, BattleUnitId actorId) { Battle = battle; ActorId = actorId; }
-    internal void Close() => closed = true;
+    internal FacingMoveDecisionContext MoveContext { get; }
+    internal FacingDecisionContext(AttackBattleSnapshot battle, BattleUnitId actorId)
+    { Battle = battle; ActorId = actorId; MoveContext = new(battle, actorId); }
+    internal void Close() { closed = true; MoveContext.Close(); }
     private void CheckOpen()
     { if (closed) throw new InvalidOperationException("The planning invocation has ended."); }
     public FacingDecision<T> Reject<T>()
@@ -60,6 +64,30 @@ public sealed class FacingDecisionContext
         CheckOpen(); ArgumentNullException.ThrowIfNull(command); ArgumentNullException.ThrowIfNull(profile); ArgumentNullException.ThrowIfNull(facing);
         return new(this, FacingDecisionKind.TurnEndingMove, rng, diagnostic, facing: facing, move: command, movementProfile: profile);
     }
+
+    public FacingDecision<T> PrepareMoveThenAttack<T>(MoveUnitCommand move, FlatOrdinaryMovementProfile profile,
+        AttackUnitCommand attack, BoundedSwordWeapon? weapon, RandomState rng, T diagnostic)
+    {
+        CheckOpen();
+        return Wrap(MoveContext.PrepareMoveThenAttack(move, profile, attack, weapon, rng, diagnostic));
+    }
+
+    public FacingDecision<T> PrepareMoveThenTargetedAbility<T>(MoveUnitCommand move, FlatOrdinaryMovementProfile profile,
+        UseTargetedAbilityCommand command, TargetedAbilityBattleProfile abilityProfile, RandomState rng, T diagnostic)
+    {
+        CheckOpen();
+        return Wrap(MoveContext.PrepareMoveThenTargetedAbility(move, profile, command, abilityProfile, rng, diagnostic));
+    }
+
+    public FacingDecision<T> PrepareMoveThenWait<T>(MoveUnitCommand move, FlatOrdinaryMovementProfile profile,
+        FacingChoice facing, RandomState rng, T diagnostic)
+    {
+        CheckOpen();
+        return Wrap(MoveContext.PrepareMoveThenWait(move, profile, facing, rng, diagnostic));
+    }
+
+    private FacingDecision<T> Wrap<T>(FacingMoveDecision<T> move) =>
+        new(this, FacingDecisionKind.PlannedMove, move.Rng, move.Diagnostic, plannedMove: move);
 }
 
 public enum FacingDecisionRejection { None, AuthorityRejected, DecisionRejected, InvalidDecision, InvalidRandomProgress, CommandRejected, UnavailableChoices }
@@ -70,6 +98,8 @@ public sealed record FacingDecisionResult<T>(FacingDecisionRejection Rejection, 
     public ImmutableArray<AttackResultEvent> Events => Transition.Events;
     public FlatMovementPath? Path { get; init; }
     public FlatMovementRejection PathRejection { get; init; }
+    public FacingMoveContinuation? Continuation { get; init; }
+    public FacingMoveRejection MoveRejection { get; init; }
 }
 
 /// <summary>Framework-owned fresh planning, RNG continuity and one authoritative command transaction.</summary>
@@ -93,6 +123,23 @@ public static class FacingDecisionBattle
         finally { context.Close(); }
         if (decision is null || !ReferenceEquals(decision.Owner, context)) return Reject(FacingDecisionRejection.InvalidDecision);
         if (decision.Kind == FacingDecisionKind.Rejected) return Reject(FacingDecisionRejection.DecisionRejected);
+        if (decision.Kind == FacingDecisionKind.PlannedMove)
+        {
+            // The same private planner issued this Move proposal. Reuse existing validation/adoption/path/token machinery.
+            var moved = FacingMoveDecisionBattle.ApplyFreshMove(state, actorId, context.MoveContext, decision.PlannedMove!);
+            var transition = new FacingTurnResult(moved.Accepted, moved.FacingRejection, AttackCommandRejection.None,
+                moved.TurnRejection, BattleTransitionRejection.None, moved.State, moved.Events);
+            var rejection = moved.Rejection switch
+            {
+                FacingMoveRejection.None => FacingDecisionRejection.None,
+                FacingMoveRejection.InvalidRandomProgress => FacingDecisionRejection.InvalidRandomProgress,
+                FacingMoveRejection.InvalidDecision => FacingDecisionRejection.InvalidDecision,
+                FacingMoveRejection.UnavailableChoices => FacingDecisionRejection.UnavailableChoices,
+                _ => FacingDecisionRejection.CommandRejected
+            };
+            return new(rejection, transition, moved.Diagnostic) { Path = moved.Path, PathRejection = moved.PathRejection,
+                Continuation = moved.Continuation, MoveRejection = moved.Rejection };
+        }
         if (!RandomStateGenerator.IsForwardCheckpoint(context.RngState, decision.Rng)) return Reject(FacingDecisionRejection.InvalidRandomProgress);
         if (decision.Kind == FacingDecisionKind.Attack && decision.Attack!.ActorId != actorId)
             return Reject(FacingDecisionRejection.AuthorityRejected, FacingTurnBattle.Reject(state, FacingTurnRejection.WrongActor));

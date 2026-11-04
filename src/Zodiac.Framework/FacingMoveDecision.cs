@@ -1,5 +1,5 @@
-using Zodiac.Framework.Random;
 using System.Collections.Immutable;
+using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework;
 
@@ -121,8 +121,22 @@ public static class FacingMoveDecisionBattle
         FacingMoveDecision<T> decision;
         try { decision = planner(context); }
         finally { context.Close(); }
+        return ApplyFreshMove(state, actorId, context, decision);
+    }
+
+    // Both Framework entry points supply the context belonging to their own just-completed callback.
+    // No second planner, public cached-proposal entry or new token authority is introduced.
+    internal static FacingMoveResult<T> ApplyFreshMove<T>(FacingTurnState state, BattleUnitId actorId,
+        FacingMoveDecisionContext context, FacingMoveDecision<T> decision)
+    {
+        FacingMoveResult<T> Reject(FacingMoveRejection reason, FacingTurnRejection facing = FacingTurnRejection.None,
+            TurnCycleRejection turn = TurnCycleRejection.None, FlatMovementRejection path = FlatMovementRejection.None) =>
+            new(reason, facing, turn, path, state, [], null, null, default);
         if (decision is null || !ReferenceEquals(decision.Owner, context)) return Reject(FacingMoveRejection.InvalidDecision);
+        if (!ReferenceEquals(context.Battle, state.Battle) || context.ActorId != actorId) return Reject(FacingMoveRejection.InvalidDecision);
         if (decision.Kind == FacingMoveIntentKind.Rejected) return Reject(FacingMoveRejection.DecisionRejected);
+        var actor = state.Battle.TurnBattle.Turns.Units.Single(u => u.Id == actorId);
+        if (actor.MovementTaken || actor.ActionTaken) return Reject(FacingMoveRejection.UnavailableChoices);
         if (decision.Move!.UnitId != actorId || !ValidFollowup(context.Battle, actorId, decision.Kind, decision.Attack, decision.Facing,
                 decision.TargetedAbility, decision.AbilityProfile))
             return Reject(FacingMoveRejection.InvalidIntent);
