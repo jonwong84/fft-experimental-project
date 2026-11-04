@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-229 (Accumulate AI source study).** Complete pair turns and bounded Blue support ZOD-224–228 are complete.
-There are 34 open tickets below. The 195 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-230 (supplied Accumulate AI projection/scoring).** The ZOD-229 source study is complete; pair turns and bounded Blue support remain intact.
+There are 34 open tickets below. The 196 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,19 +29,21 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-229 — Trace Accumulate AI usefulness, projection and scoring
+### ZOD-230 — Project and score one supplied Accumulate self candidate
 
-**Type:** Investigation · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-105, ZOD-185, ZOD-228
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-105, ZOD-185, ZOD-229
 
-Trace the original Accumulate list/usage setup, self targeting, usefulness coin,
-hypothetical PA change and absolute/ranked scoring, including caller order,
-arithmetic widths, draws and state restoration. Compare with implemented actual
-Accumulate rules and the current HP/status-only candidate model; identify required
-data and authority changes before translating. Pin the read-only reference and
-record independently checkable descriptions, then select one bounded child.
-Preserve Attack/Stone and both admitted team paths. No bulk ability port, guessed
-score, cached-plan authority, host/editor activation or battle-save dependency;
-ZOD-106 remains deferred and Accumulate PA remains battle-only.
+Implement the [selected pure candidate child](architecture/zod-229-accumulate-ai.md#required-changes-and-selected-child)
+after usefulness filtering: explicit learned immediate self PA+1, two living
+opponents, flat/effect-free zero-bonus domain, either actor and both orders.
+Privately project PA, choices and existing hypothetical clock; derive source +3
+stat-hit credit and hit100 before fresh absolute scoring. Preserve immutable
+inputs, rollback and Attack/Stone plus both admitted team paths. Cover PA cap,
+negative absolute scores, literal RNG/clock boundaries and replay. No per-candidate
+usefulness coin, list/search admission, new command authority, cached-plan input,
+host/editor activation or battle-save dependency. ZOD-106 remains deferred and
+boosted PA remains battle-only. Later list/usefulness and command children need
+separate selection; do not rebuild ranking or port broad abilities.
 
 ## Existing validation gates
 

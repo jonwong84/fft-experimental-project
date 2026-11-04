@@ -405,7 +405,10 @@ execution or a new AI oracle. The [handoff](../PROJECT_HANDOFF.md) records curre
 implementation validation; the original guide inventory reports remain in
 ignored `scratch/ai-algorithm-guide-212/`.
 
-The next study is ZOD-229: Accumulate AI usefulness, projection and scoring.
+The [ZOD-229 Accumulate study](zod-229-accumulate-ai.md) traces retail map-target
+routing, usefulness draws, PA projection/restoration and allied stat-hit scoring.
+The next bounded child is ZOD-230: one supplied self candidate after usefulness
+filtering, without list/search or command integration.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use
 the supported domain and a real consumer, rather than exposing the entire
