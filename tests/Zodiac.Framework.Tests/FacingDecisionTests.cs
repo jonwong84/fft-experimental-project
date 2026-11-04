@@ -1,5 +1,5 @@
-using Zodiac.Framework.Random;
 using Xunit;
+using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework.Tests;
 

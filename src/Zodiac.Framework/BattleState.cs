@@ -1,5 +1,5 @@
-using Zodiac.Framework.Random;
 using System.Collections.ObjectModel;
+using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework;
 

@@ -1,4 +1,3 @@
-using Zodiac.Framework.Random;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -7,6 +6,7 @@ using Zodiac.Content.Samples;
 using Zodiac.Content.Saves;
 using Zodiac.Framework;
 using Xunit;
+using Zodiac.Framework.Random;
 
 namespace Zodiac.Content.Tests.Saves;
 

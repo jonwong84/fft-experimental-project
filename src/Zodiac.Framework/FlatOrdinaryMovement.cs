@@ -1,5 +1,5 @@
-using Zodiac.Framework.Random;
 using System.Collections.Immutable;
+using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework;
 
