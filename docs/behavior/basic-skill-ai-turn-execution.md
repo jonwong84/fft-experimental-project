@@ -122,8 +122,9 @@ python tools/verification/verify_ai_algorithm_guide.py --reference C:/repositori
 python tools/verification/verify_ai_accumulate_contract.py --reference C:/repositories/fft_decomp --prepared scratch/all-data-extraction/SCUS_942.21
 ```
 
-The next ZOD-249 study traces pre-ACT scenario derivation and retained score-cell
-provenance before selecting another bounded implementation. Full original
+[ZOD-249–254](derived-basic-skill-ai.md) subsequently add a separate derived
+pre-ACT entry and complete turns within written-or-unread priority guards.
+The supplied entry and this checkpoint's validation remain unchanged. Full original
 lists/rosters/maps/policies, terminal encounter routing, replacement contracts,
 host/editor activation and original frame/VSync RNG remain separate. ZOD-106
 stays deferred; PA remains battle-only. Owner definition drafts, including

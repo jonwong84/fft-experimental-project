@@ -16,7 +16,7 @@ public sealed record BasicSkillAiSelectedPlan(BattleUnitId ActorId, TilePosition
     public bool ActBeforeMove => Action?.ActBeforeMove ?? false;
     public bool ChooseFacingAtWait => true;
 }
-public enum BasicSkillAiSelectionStage { Admission, Composition, Lottery }
+public enum BasicSkillAiSelectionStage { Admission, Composition, Lottery, Scenarios, Provenance }
 public sealed record BasicSkillAiSelectionFailure(BasicSkillAiSelectionStage Stage, BasicSkillAiFailure? Composition = null, int? LotteryIndex = null);
 public sealed record BasicSkillAiSelectionOutcome(BasicSkillAiCompositionOutcome Composition, RandomState LotteryEntryRng,
     ImmutableArray<AiLotteryRoll> Lottery, int? SelectedRankedIndex, AiLotteryReason Reason, BasicSkillAiSelectedPlan Plan);
@@ -36,13 +36,19 @@ public static class BasicSkillAiSelection
         if (!selection.TerminalThrowStoneEntry || !selection.NoDefendSupport || !selection.FreshOrdinarySelectionDefaults)
             return new(false, new(BasicSkillAiSelectionStage.Admission), null, decisionRng);
         var composition = BasicSkillAiComposition.Evaluate(state, request, scenario, profile, decisionRng);
+        return SelectFresh(composition, request.Turn.ActorId, scenario.BaselineDestination, decisionRng);
+    }
+
+    internal static BasicSkillAiSelectionResult SelectFresh(BasicSkillAiCompositionResult composition, BattleUnitId actorId,
+        TilePosition baselineDestination, RandomState decisionRng)
+    {
         if (!composition.Accepted) return new(false, new(BasicSkillAiSelectionStage.Composition, composition.Failure), null, decisionRng);
         var fresh = composition.Outcome!;
         var lottery = AiRankedLottery.Evaluate(fresh.RankedActions.Select(a => a?.Score.HitPercent ?? (byte)0).ToImmutableArray(), composition.RngState);
         if (!lottery.Accepted) return new(false, new(BasicSkillAiSelectionStage.Lottery, LotteryIndex: lottery.FailedIndex), null, decisionRng);
         var chosen = lottery.Outcome!;
         var action = chosen.SelectedIndex is { } i ? fresh.RankedActions[i] : null;
-        var plan = new BasicSkillAiSelectedPlan(request.Turn.ActorId, action?.Destination ?? scenario.BaselineDestination, action);
+        var plan = new BasicSkillAiSelectedPlan(actorId, action?.Destination ?? baselineDestination, action);
         return new(true, null, new(fresh, composition.RngState, chosen.Rolls, chosen.SelectedIndex, chosen.Reason, plan), lottery.RngState);
     }
 }

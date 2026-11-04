@@ -20,11 +20,20 @@ public sealed record BasicSkillAiCommandResult(BasicSkillAiCommandFailure? Failu
     public BasicSkillAiCommandOutcome? Outcome => Execution.Diagnostic;
 }
 
-/// <summary>Own one fresh supplied-scenario selection and dispatch its first actual Move, ACT or END.</summary>
-/// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-240–242. Both choices must be unused.
-/// No cached plan input, derived scenario, post-ACT reselection, complete turn or host activation.</remarks>
+/// <summary>Own one fresh supplied or derived scenario selection and dispatch its first actual Move, ACT or END.</summary>
+/// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-240–242/253. Both choices must be unused.
+/// No cached plan input, post-ACT reselection, complete turn or host activation.</remarks>
 public static class BasicSkillAiCommandExecution
 {
+    /// <summary>Derive the fresh scenario and provenance-safe selection inside Framework before issuing one actual command.</summary>
+    public static BasicSkillAiCommandResult ExecuteDerived(FacingTurnState state, AccumulateAiPreparationRequest request,
+        BasicSkillAiDerivedProfile profile, BasicSkillAiSelectionProfile selection, SwordAiCommandDispatchProfile dispatch)
+    {
+        var result = BasicSkillAiCommandPipeline.ExecuteDerived(state, request, profile, selection, dispatch,
+            (decision, rng, kind) => new BasicSkillAiCommandOutcome(decision, rng, kind));
+        return new(result.Failure, result.Execution);
+    }
+
     public static BasicSkillAiCommandResult Execute(FacingTurnState state, AccumulateAiPreparationRequest request,
         ThrowStoneAiScanScenario scenario, BasicSkillAiProfile profile, BasicSkillAiSelectionProfile selection,
         SwordAiCommandDispatchProfile dispatch) => ExecuteMode(state, request, scenario, profile, selection, dispatch, BasicSkillAiDispatchMode.Any);
@@ -51,6 +60,28 @@ internal static class BasicSkillAiCommandPipeline
     {
         ArgumentNullException.ThrowIfNull(state); BasicSkillAiComposition.ValidateArguments(state.Battle, request, scenario, profile);
         ArgumentNullException.ThrowIfNull(selection); ArgumentNullException.ThrowIfNull(dispatch);
+        return ExecuteFresh(state, request, profile.Preparation, dispatch, mode,
+            (battle, rng) => BasicSkillAiSelection.Evaluate(battle, request, scenario, profile, selection, rng), describe);
+    }
+
+    internal static (BasicSkillAiCommandFailure? Failure, FacingDecisionResult<T> Execution) ExecuteDerived<T>(
+        FacingTurnState state, AccumulateAiPreparationRequest request, BasicSkillAiDerivedProfile profile,
+        BasicSkillAiSelectionProfile selection, SwordAiCommandDispatchProfile dispatch,
+        Func<BasicSkillAiSelectionOutcome, RandomState, BasicSkillAiCommandKind, T> describe)
+    {
+        ArgumentNullException.ThrowIfNull(state); BasicSkillAiDerivedComposition.ValidateArguments(state.Battle, request, profile);
+        ArgumentNullException.ThrowIfNull(selection); ArgumentNullException.ThrowIfNull(dispatch);
+        return ExecuteFresh(state, request, profile.Preparation, dispatch, BasicSkillAiDispatchMode.Any,
+            (battle, rng) => BasicSkillAiDerivedSelection.ForCommand(BasicSkillAiDerivedSelection.Evaluate(battle, request, profile, selection, rng)), describe);
+    }
+
+    // Only the two owning factories supply selectors. Both reuse the same context, guards, dispatch and typed proposals.
+    private static (BasicSkillAiCommandFailure? Failure, FacingDecisionResult<T> Execution) ExecuteFresh<T>(
+        FacingTurnState state, AccumulateAiPreparationRequest request, AccumulateAiPreparationConfiguration preparation,
+        SwordAiCommandDispatchProfile dispatch, BasicSkillAiDispatchMode mode,
+        Func<AttackBattleSnapshot, RandomState, BasicSkillAiSelectionResult> select,
+        Func<BasicSkillAiSelectionOutcome, RandomState, BasicSkillAiCommandKind, T> describe)
+    {
         BasicSkillAiCommandFailure? failure = null;
         var result = FacingDecisionBattle.Execute<T>(state, request.Turn.ActorId, context => {
             var actor = context.Battle.TurnBattle.Turns.Units.Single(u => u.Id == context.ActorId);
@@ -58,7 +89,7 @@ internal static class BasicSkillAiCommandPipeline
             { failure = new(BasicSkillAiCommandRejection.UnavailableChoices); return context.Reject<T>(); }
             if (!dispatch.InitializedActorContext || !dispatch.PresentCompactRecords || !dispatch.CanonicalCoordinates || !dispatch.OrdinaryContinuation)
             { failure = new(BasicSkillAiCommandRejection.UnsupportedDispatchContext); return context.Reject<T>(); }
-            var selected = BasicSkillAiSelection.Evaluate(context.Battle, request, scenario, profile, selection, context.RngState);
+            var selected = select(context.Battle, context.RngState);
             if (!selected.Accepted)
             { failure = new(BasicSkillAiCommandRejection.SelectionRejected, selected.Failure); return context.Reject<T>(); }
             var plan = selected.Outcome!.Plan;
@@ -79,13 +110,13 @@ internal static class BasicSkillAiCommandPipeline
             if (kind == BasicSkillAiCommandKind.Move)
             {
                 var move = new MoveUnitCommand(context.ActorId, plan.Destination);
-                var movement = profile.Preparation.Attack.Movement;
+                var movement = preparation.Attack.Movement;
                 return plan.Action switch {
                     BasicSkillAiAttack attack => context.PrepareMoveThenAttack(move, movement,
                         new(attack.Value.Candidate.ActorId, attack.Value.Candidate.TargetId), request.Weapon, selected.RngState, diagnostic),
                     BasicSkillAiStone stone => context.PrepareMoveThenTargetedAbility(move, movement,
                         new(stone.Value.Candidate.ActorId, stone.Value.Candidate.AbilityId, stone.Value.Candidate.TargetId),
-                        profile.Preparation.ThrowStone.Ability, selected.RngState, diagnostic),
+                        preparation.ThrowStone.Ability, selected.RngState, diagnostic),
                     null => context.PrepareMoveThenWait(move, movement, facing, selected.RngState, diagnostic),
                     _ => throw new InvalidOperationException("The closed self entry must retain ACT-first on its complete tie.")
                 };
@@ -94,9 +125,9 @@ internal static class BasicSkillAiCommandPipeline
                 BasicSkillAiAttack attack => context.PrepareAttack(new(attack.Value.Candidate.ActorId, attack.Value.Candidate.TargetId),
                     request.Weapon, selected.RngState, diagnostic),
                 BasicSkillAiStone stone => context.PrepareTargetedAbility(new(stone.Value.Candidate.ActorId, stone.Value.Candidate.AbilityId,
-                    stone.Value.Candidate.TargetId), profile.Preparation.ThrowStone.Ability, selected.RngState, diagnostic),
+                    stone.Value.Candidate.TargetId), preparation.ThrowStone.Ability, selected.RngState, diagnostic),
                 BasicSkillAiAccumulate self => context.PrepareImmediateAbility(new(self.ActorId, self.Value.Projection!.Outcome!.Candidate.AbilityId),
-                    profile.Preparation.Accumulate.Ability, selected.RngState, diagnostic),
+                    preparation.Accumulate.Ability, selected.RngState, diagnostic),
                 null => context.PrepareWait(facing, selected.RngState, diagnostic),
                 _ => throw new InvalidOperationException("Unsupported privately selected action.")
             };

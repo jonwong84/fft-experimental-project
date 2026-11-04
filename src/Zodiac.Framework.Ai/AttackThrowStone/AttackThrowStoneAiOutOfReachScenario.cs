@@ -3,13 +3,6 @@ using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework.Ai;
 
-/// <summary>Fresh proximity for a scenario0 cell. Null priority means no write in this decision, never an inferred zero.</summary>
-/// <remarks>Retained source contents may include event/status staging; their value and history are not modeled here.</remarks>
-public sealed record AiMovementCellProvenance(TilePosition Tile, byte Proximity, short? WrittenPriority)
-{
-    public bool PriorityWritten => WrittenPriority.HasValue;
-}
-
 /// <summary>Diagnostic masks remain distinct from fresh-cell scan scenarios: final scenarios may overlap at the actor.</summary>
 /// <remarks>No prior-memory value, action scan, ranked candidate or plan is produced.</remarks>
 public sealed record AttackThrowStoneAiOutOfReachScenarioOutcome(AttackThrowStoneAiPreparationOutcome Preparation,
@@ -64,46 +57,14 @@ public static class AttackThrowStoneAiOutOfReachScenario
         AttackThrowStoneAiOutOfReachScenarioCore Reject(AttackThrowStoneAiScenarioFailure failure) => new(new(false, failure, null, decisionRng));
         if (!preparation.Accepted)
             return Reject(new(AttackThrowStoneAiScenarioStage.Preparation, AttackThrowStoneAiScenarioRejection.PreparationRejected, preparation.Failure));
-        var ready = preparation.Outcome!; var common = ready.Common;
-        var geometry = FlatOrdinaryMovement.Evaluate(state, request.ActorId, attackProfile.Movement).Outcome!;
-        int Distance(TilePosition tile) => geometry.TargetDistanceRows.Single(r => r.Y == tile.Y).Distances[tile.X];
-        int distance = Distance(common.Origin), reach = common.EnemyAbilityReach;
-        if (distance <= reach) return Reject(new(AttackThrowStoneAiScenarioStage.Branch, AttackThrowStoneAiScenarioRejection.InReach));
-        var scored = common.ReachableOrigins.Where(p => Distance(p) <= distance - 1).ToImmutableArray();
-        bool filterFallback = scored.IsEmpty;
-        if (filterFallback) scored = common.ReachableOrigins;
-        var evaluated = AiMovementPrefix.Evaluate(state, request.ActorId, request.TargetId, scored, null, throwStoneProfile.Units,
-            preparation.RngState, proximityOrigins: common.ReachableOrigins);
-        if (evaluated.Rejection != AiSimulationClockRejection.None)
-            return Reject(new(AttackThrowStoneAiScenarioStage.Movement, AttackThrowStoneAiScenarioRejection.MovementRejected,
-                MovementIndex: evaluated.FailedIndex, MovementReason: evaluated.Rejection == AiSimulationClockRejection.RandomDrawCountExhausted
-                    ? SwordAiMovementBaselineRejection.RandomDrawCountExhausted : SwordAiMovementBaselineRejection.TickCountExhausted));
-        var prefix = evaluated.Outcome!;
-        var rng = evaluated.RngState;
-        int effective = reach; SwordAiReachAdjustment? adjustment = null;
-        if (ready.Team == SwordAiScenarioTeam.NonBlue)
-        {
-            uint raw;
-            try { var draw = new RandomStateGenerator().Next(rng); raw = draw.Value; rng = draw.State; }
-            catch (OverflowException)
-            { return Reject(new(AttackThrowStoneAiScenarioStage.ReachAdjustment, AttackThrowStoneAiScenarioRejection.RandomDrawCountExhausted)); }
-            int modulo = (int)(raw % 7); effective = modulo == 0 ? reach / 2 : reach;
-            adjustment = new(raw, modulo, reach, effective);
-        }
-        var within = prefix.Movement.Where(m => Distance(m.Outcome.Destination) <= effective).ToImmutableArray();
-        bool destinationFallback = within.IsEmpty;
-        var destination = AttackThrowStoneAiMovementScenario.Select(destinationFallback ? prefix.Movement : within,
-            Distance, distanceFirst: destinationFallback);
-        // Source scenario2 is built before actor insertion; it can overlap final scenario1 at that unwritten origin.
-        var written = prefix.Movement.ToImmutableDictionary(m => m.Outcome.Destination, m => m.TilePriority);
-        var scenario2 = common.ReachableOrigins.Where(p => !written.ContainsKey(p)).ToImmutableArray();
-        var scenario1 = common.ReachableOrigins.Where(p => written.ContainsKey(p) || p == common.Origin).ToImmutableArray();
-        var cells = common.ReachableOrigins.Select(p => new AiMovementCellProvenance(p, prefix.Proximity.Destinations[p],
-            written.TryGetValue(p, out short priority) ? priority : null)).ToImmutableArray();
-        int baselineIndex = scored.IndexOf(destination);
-        prefix = prefix with { BaselineIndex = baselineIndex };
-        return new(new(true, null, new(ready, scored, scenario1, scenario2, prefix.Movement, cells,
-            destination, destination, baselineIndex, distance, reach, effective,
-            adjustment, filterFallback, destinationFallback), rng), prefix);
+        var ready = preparation.Outcome!;
+        var result = AiMovementScenarios.Evaluate(state, request, attackProfile, throwStoneProfile.Units, ready.Common,
+            ready.Team, ready.Units.Single(u => u.UnitId == request.ActorId).HasRangedAbility,
+            preparation.RngState, decisionRng, outside: true);
+        if (!result.Accepted) return Reject(result.Failure!);
+        var m = result.Outcome!;
+        return new(new(true, null, new(ready, m.ScoreMask, m.Scenario1, m.Scenario2, m.Movement, m.Cells,
+            m.BaselineDestination, m.ActFirstDestination, m.BaselineIndex, m.TargetDistance, m.TargetReach, m.EffectiveReach,
+            m.ReachAdjustment, m.FilterUsedReachableFallback, m.DestinationUsedDistanceFallback), result.RngState), result.Prefix);
     }
 }

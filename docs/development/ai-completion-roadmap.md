@@ -60,8 +60,10 @@ derive both explicit reach branches from actual boosted state, with cleared
 actor entries and the empty lottery.
 [Complete three-entry turns](../behavior/basic-skill-ai-turn-execution.md) now
 add automatic post-ACT reach with one preparation and exact-session recovery
-across published commands. Pre-ACT scenario derivation, broader original
-policies/rosters/maps and independent compatibility validation remain open.
+across published commands. [Derived pre-ACT scenarios and turns](../behavior/derived-basic-skill-ai.md)
+now share pair movement ownership, derive S/D0/D1 and prove cast keys written
+or unread. Unwritten cast priorities still reject; their retained lifecycle,
+broader original policies/rosters/maps and independent validation remain open.
 
 The [ZOD-210 cleanup](ai-pair-selection-refactor.md) shares pair admission and
 composition/lottery handling while retaining separate scenario/provenance rules.

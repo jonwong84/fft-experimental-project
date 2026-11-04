@@ -60,44 +60,18 @@ public static class AttackThrowStoneAiMovementScenario
         AttackThrowStoneAiScenarioCore Reject(AttackThrowStoneAiScenarioFailure failure) => new(new(false, failure, null, decisionRng));
         if (!preparation.Accepted)
             return Reject(new(AttackThrowStoneAiScenarioStage.Preparation, AttackThrowStoneAiScenarioRejection.PreparationRejected, preparation.Failure));
-        var ready = preparation.Outcome!; var common = ready.Common;
-        // Original geometry was already admitted by owned preparation. Read source-equivalent distance rows on restored state.
-        var geometry = FlatOrdinaryMovement.Evaluate(state, request.ActorId, attackProfile.Movement).Outcome!;
-        int Distance(TilePosition tile) => geometry.TargetDistanceRows.Single(r => r.Y == tile.Y).Distances[tile.X];
-        int distance = Distance(common.Origin), reach = common.EnemyAbilityReach;
-        if (distance > reach) return Reject(new(AttackThrowStoneAiScenarioStage.Branch, AttackThrowStoneAiScenarioRejection.OutOfReach));
-        var origins = common.ReachableOrigins.Where(p => Distance(p) <= common.AllyAbilityReach + distance).ToImmutableArray();
-        if (origins.IsEmpty) origins = common.ReachableOrigins; // Source no-match filter restores scenario0.
-        // D0 is unknown until scores exist; no provisional destination is asserted to be the baseline.
-        var evaluated = AiMovementPrefix.Evaluate(state, request.ActorId, request.TargetId, origins, null, throwStoneProfile.Units, preparation.RngState);
-        if (evaluated.Rejection != AiSimulationClockRejection.None)
-            return Reject(new(AttackThrowStoneAiScenarioStage.Movement, AttackThrowStoneAiScenarioRejection.MovementRejected,
-                MovementIndex: evaluated.FailedIndex, MovementReason: evaluated.Rejection == AiSimulationClockRejection.RandomDrawCountExhausted
-                    ? SwordAiMovementBaselineRejection.RandomDrawCountExhausted : SwordAiMovementBaselineRejection.TickCountExhausted));
-        var prefix = evaluated.Outcome!;
-        var d1 = Select(prefix.Movement, Distance, distanceFirst: false);
-        int? bound = null; bool fallback = false; var d0 = d1;
-        // Source post-ACT copies D1 to D0; ranged floor policy is considered only before ACT.
-        if (common.ActorAttackUsable)
-        {
-            bound = distance - 1;
-            if (ready.Units.Single(u => u.UnitId == request.ActorId).HasRangedAbility &&
-                common.Refresh.RefreshedUnits.Single(u => u.UnitId == request.TargetId).Enemy) bound = Math.Max(3, bound.Value);
-            var within = prefix.Movement.Where(c => Distance(c.Outcome.Destination) <= bound.Value).ToImmutableArray();
-            fallback = within.IsEmpty;
-            d0 = Select(fallback ? prefix.Movement : within, Distance, distanceFirst: fallback);
-        }
-        int baselineIndex = prefix.Movement.Select(m => m.Outcome.Destination).ToImmutableArray().IndexOf(d0);
-        prefix = prefix with { BaselineIndex = baselineIndex };
-        // In this open flat profile the in-reach filter contains every reachable tile by the triangle bound.
-        // Adding the actor after source D0/D1 selection therefore leaves the scenario mask unchanged.
-        var scenario = new ThrowStoneAiScanScenario(origins, origins, d0, d1);
-        return new(new(true, null, new(ready, scenario, prefix.Movement, baselineIndex, distance, reach, bound, fallback), evaluated.RngState), prefix);
+        var ready = preparation.Outcome!;
+        var result = AiMovementScenarios.Evaluate(state, request, attackProfile, throwStoneProfile.Units, ready.Common,
+            ready.Team, ready.Units.Single(u => u.UnitId == request.ActorId).HasRangedAbility,
+            preparation.RngState, decisionRng, outside: false);
+        if (!result.Accepted) return Reject(result.Failure!);
+        var m = result.Outcome!;
+        // The admitted in-reach triangle bound covers all M0. Retain the legacy shared fresh-mask identity as well as its values.
+        var scenario = new ThrowStoneAiScanScenario(m.ScoreMask, m.ScoreMask, m.BaselineDestination, m.ActFirstDestination);
+        return new(new(true, null, new(ready, scenario, m.Movement, m.BaselineIndex, m.TargetDistance, m.TargetReach,
+            m.BaselineDistanceLimit, m.DestinationUsedDistanceFallback), result.RngState), result.Prefix);
     }
 
     internal static TilePosition Select(ImmutableArray<AiScoredMovementTile> cells, Func<TilePosition, int> distance, bool distanceFirst) =>
-        (distanceFirst ? cells.OrderBy(c => distance(c.Outcome.Destination)).ThenBy(c => c.OriginKey)
-            : cells.OrderBy(c => c.OriginKey).ThenBy(c => distance(c.Outcome.Destination)))
-        .ThenByDescending(c => c.Outcome.Destination.Layer).ThenByDescending(c => c.Outcome.Destination.Y)
-        .ThenByDescending(c => c.Outcome.Destination.X).First().Outcome.Destination;
+        AiMovementScenarios.Select(cells, distance, distanceFirst);
 }

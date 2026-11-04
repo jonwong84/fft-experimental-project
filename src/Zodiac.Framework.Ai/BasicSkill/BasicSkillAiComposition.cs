@@ -72,38 +72,62 @@ public static class BasicSkillAiComposition
     {
         ValidateArguments(state, request, scenario, profile);
         BasicSkillAiCompositionResult Reject(BasicSkillAiFailure failure) => new(false, failure, null, decisionRng);
-        if (!profile.SourceGeneralEntry || !profile.SourceAttackAccumulateThrowStoneOrder || !profile.FreshEmptyRankedList ||
-            !profile.AttackScan.TargetActive || !profile.ThrowStoneScan.TargetActive)
-            return Reject(new(BasicSkillAiStage.Admission));
+        if (!SupportsProfile(profile)) return Reject(new(BasicSkillAiStage.Admission));
         var p = profile.Preparation;
         var preparation = AccumulateAiPreparation.Evaluate(state, request, p, decisionRng);
         if (!preparation.Accepted) return Reject(new(BasicSkillAiStage.Preparation, Preparation: preparation.Failure));
+        var admission = ValidateScans(state, request, scenario, profile, decisionRng);
+        if (admission is not null) return Reject(admission);
         var turn = request.Turn;
-        var comparison = new SwordAiComparisonProfile(turn.ActorId, turn.TargetId, profile.ThrowStoneScan.FreshDecisionBaseline);
-        var attackScenario = new SwordAiScanScenario(scenario.ScenarioOrigins, scenario.ScenarioOrigins.IsEmpty ? null : scenario.ActFirstDestination);
-        var attackAdmission = SwordAiCandidateScan.ValidateInputs(state, attackScenario, request.Weapon, p.Attack, p.Scoring,
-            comparison, profile.AttackScan, decisionRng);
-        if (attackAdmission is not null) return Reject(AttackFailure(BasicSkillAiStage.Admission, attackAdmission));
-        var stoneRequest = new ThrowStoneAiScanRequest(turn.ActorId, request.ThrowStoneAbilityId, turn.TargetId);
-        var stoneAdmission = ThrowStoneAiCandidateScan.ValidateInputs(state, stoneRequest, scenario, p.ThrowStone, p.Scoring,
-            profile.Baseline, profile.ThrowStoneScan, decisionRng);
-        if (stoneAdmission is not null) return Reject(new(BasicSkillAiStage.Admission, ThrowStone: stoneAdmission.Failure));
         var prefix = AiMovementPrefix.Evaluate(state, turn.ActorId, turn.TargetId, scenario.ScoredOrigins,
             scenario.BaselineDestination, p.Accumulate.Units, preparation.RngState);
         if (prefix.Rejection != AiSimulationClockRejection.None)
             return Reject(new(BasicSkillAiStage.Movement, prefix.FailedIndex, Movement: prefix.Rejection == AiSimulationClockRejection.RandomDrawCountExhausted
                 ? SwordAiMovementBaselineRejection.RandomDrawCountExhausted : SwordAiMovementBaselineRejection.TickCountExhausted));
-        var fresh = prefix.Outcome!;
+        return ContinueFromMovement(state, request, scenario, profile, preparation.Outcome!, prefix.Outcome!, prefix.RngState, decisionRng);
+    }
+
+    internal static bool SupportsProfile(BasicSkillAiProfile profile) =>
+        profile.SourceGeneralEntry && profile.SourceAttackAccumulateThrowStoneOrder && profile.FreshEmptyRankedList &&
+        profile.AttackScan.TargetActive && profile.ThrowStoneScan.TargetActive;
+
+    internal static BasicSkillAiFailure? ValidateScans(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,
+        ThrowStoneAiScanScenario scenario, BasicSkillAiProfile profile, RandomState decisionRng)
+    {
+        var p = profile.Preparation;
+        var turn = request.Turn;
+        var comparison = new SwordAiComparisonProfile(turn.ActorId, turn.TargetId, profile.ThrowStoneScan.FreshDecisionBaseline);
+        var attackScenario = new SwordAiScanScenario(scenario.ScenarioOrigins, scenario.ScenarioOrigins.IsEmpty ? null : scenario.ActFirstDestination);
+        var attackAdmission = SwordAiCandidateScan.ValidateInputs(state, attackScenario, request.Weapon, p.Attack, p.Scoring,
+            comparison, profile.AttackScan, decisionRng);
+        if (attackAdmission is not null) return AttackFailure(BasicSkillAiStage.Admission, attackAdmission);
+        var stoneRequest = new ThrowStoneAiScanRequest(turn.ActorId, request.ThrowStoneAbilityId, turn.TargetId);
+        var stoneAdmission = ThrowStoneAiCandidateScan.ValidateInputs(state, stoneRequest, scenario, p.ThrowStone, p.Scoring,
+            profile.Baseline, profile.ThrowStoneScan, decisionRng);
+        if (stoneAdmission is not null) return new(BasicSkillAiStage.Admission, ThrowStone: stoneAdmission.Failure);
+        return null;
+    }
+
+    // Only owning entries supply their own freshly admitted preparation/prefix. Public diagnostics cannot enter here.
+    internal static BasicSkillAiCompositionResult ContinueFromMovement(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,
+        ThrowStoneAiScanScenario scenario, BasicSkillAiProfile profile, AccumulateAiPreparationOutcome preparation,
+        AiMovementPrefixOutcome fresh, RandomState rng, RandomState decisionRng)
+    {
+        BasicSkillAiCompositionResult Reject(BasicSkillAiFailure failure) => new(false, failure, null, decisionRng);
+        var p = profile.Preparation; var turn = request.Turn;
+        var comparison = new SwordAiComparisonProfile(turn.ActorId, turn.TargetId, profile.ThrowStoneScan.FreshDecisionBaseline);
+        var attackScenario = new SwordAiScanScenario(scenario.ScenarioOrigins, scenario.ScenarioOrigins.IsEmpty ? null : scenario.ActFirstDestination);
+        var stoneRequest = new ThrowStoneAiScanRequest(turn.ActorId, request.ThrowStoneAbilityId, turn.TargetId);
         var baseline = fresh.Movement[fresh.BaselineIndex].Outcome.Score;
         var ranked = new BasicSkillAiAction?[8]; // Original ranked capacity; not a managed catalog limit.
         int? Insert(BasicSkillAiAction best) => AiRankedInsertion.Insert(best, baseline, ranked, a => a.Score, a => a.Proximity);
         var attack = SwordAiCandidateScan.EvaluateFresh(state, attackScenario, request.Weapon, p.Attack, p.Scoring,
-            comparison, profile.AttackScan, fresh.Proximity, prefix.RngState);
+            comparison, profile.AttackScan, fresh.Proximity, rng);
         if (attack.Disposition == SwordAiScanDisposition.Rejected) return Reject(AttackFailure(BasicSkillAiStage.Attack, attack));
         int? attackIndex = attack.Outcome!.RetainedCandidateIndex is { } a ? Insert(new BasicSkillAiAttack(attack.Outcome.Candidates[a])) : null;
         // Actual state never changes. Only RNG and the private ranked slots cross entry boundaries.
         var self = AccumulateAiEntryEvaluation.Evaluate(state, turn.ActorId, turn.TargetId, request.AbilityId,
-            scenario.ActFirstDestination, p.Accumulate, p.Scoring, preparation.Outcome!.Common.TargetActive, attack.RngState);
+            scenario.ActFirstDestination, p.Accumulate, p.Scoring, preparation.Common.TargetActive, attack.RngState);
         if (self.Failure is not null) return Reject(new(BasicSkillAiStage.Accumulate, Accumulate: self.Failure));
         int? selfIndex = self.Outcome!.BestCandidateIndex is { } s
             ? Insert(new BasicSkillAiAccumulate(self.Outcome.Candidates[s], fresh.Proximity.Destinations[scenario.ActFirstDestination])) : null;
@@ -112,7 +136,7 @@ public static class BasicSkillAiComposition
         if (stone.Disposition == ThrowStoneAiScanDisposition.Rejected) return Reject(new(BasicSkillAiStage.ThrowStone, ThrowStone: stone.Failure));
         int? stoneIndex = stone.Outcome!.Candidate is { Evaluation.Score: not null } c
             ? Insert(new BasicSkillAiStone(c, fresh.Proximity.Destinations[c.Candidate.Destination])) : null;
-        return new(true, null, new(preparation.Outcome, fresh.Movement, fresh.BaselineIndex, attack.Outcome, self.Outcome,
+        return new(true, null, new(preparation, fresh.Movement, fresh.BaselineIndex, attack.Outcome, self.Outcome,
             stone.Outcome, ranked.ToImmutableArray(), attackIndex, selfIndex, stoneIndex), stone.RngState);
     }
 

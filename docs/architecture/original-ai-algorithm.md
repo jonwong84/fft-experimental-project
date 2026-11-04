@@ -424,9 +424,12 @@ one fresh Move/ACT/END dispatch owner.
 derived in/out-of-reach movement, empty selection and actual settlement from
 boosted state. [ZOD-247/248](../behavior/basic-skill-ai-turn-execution.md) now
 compose complete supplied-scenario turns with automatic single-preparation
-post-ACT reach and exact partial-progress recovery. Next is ZOD-249: trace
-pre-ACT scenario derivation and score provenance. Full original search breadth
-remains separate.
+post-ACT reach and exact partial-progress recovery.
+[ZOD-249–254](../behavior/derived-basic-skill-ai.md) now derive fresh pre-ACT
+S/D0/D1 and explicit score provenance through the shared pair kernel, then
+reuse composition/lottery and command/turn owners. Unwritten cast keys reject
+unless proved unread; ZOD-255 traces their retained lifecycle and concrete
+range3/4 consumer. Full original search breadth remains separate.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use
 the supported domain and a real consumer, rather than exposing the entire

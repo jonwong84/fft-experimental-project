@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-249 (trace three-entry pre-ACT scenario derivation and score provenance).** Complete supplied-scenario three-entry turns, automatic post-ACT reach and exact recovery ZOD-247/248 are complete.
-There are 34 open tickets below. The 215 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-255 (trace retained cast-priority lifecycle and a bounded consumer).** Fresh derived three-entry scenarios, selection, actual commands and complete turns ZOD-249–254 are complete within explicit provenance guards.
+There are 34 open tickets below. The 221 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,21 +29,22 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-249 — Trace three-entry pre-ACT scenario derivation and score provenance
+### ZOD-255 — Trace retained cast-priority lifecycle and a bounded consumer
 
-**Type:** Research · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-233, ZOD-248
+**Type:** Research · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-199, ZOD-254
 
-Trace source-ordered pre-ACT movement masks, D0/D1 selection, actor insertion,
-retained score/cast-priority provenance and reach policy for the closed
-Attack/Accumulate/Throw Stone list. Compare existing pair scenario and known-score
-owners before selecting bounded children that remove supplied S/D0/D1 assertions.
-Preserve the self coin/clock order, independent candidates, shared ranks and
-both admitted teams. Identify written versus retained cells explicitly; never
-invent zero cast keys, erase workspace history or silently fix source quirks.
-Keep existing supplied-scenario complete turns, pair APIs, actual state/RNG,
-rollback and recovery unchanged. General lists/maps/rosters, broader policies,
-terminal encounter routing, host/editor activation and battle saves remain
-separate. ZOD-106 stays deferred; PA remains battle-only.
+Trace initialization, lifetime, writes and event/status aliases of source cast
+priority cells, including decision/turn boundaries. Use the newly rejected
+three-entry out-of-reach range3/4 cases as the concrete consumer. Compare the
+existing retained-cell study and current fresh proximity/nullable priority
+model before selecting an independently checkable implementation child.
+Determine which history can be represented faithfully and what must remain
+unknown. Do not assume zero, reuse an arbitrary previous score, rescore actor
+insertion or expose general original workspace memory by default. Preserve
+existing derived/supplied APIs, per-command RNG, rollback and exact recovery.
+Pin the read-only source revision. General lists/maps/rosters/policies,
+terminal encounter routing, replacement interfaces and host/editor activation
+remain separate. ZOD-106 stays deferred; PA remains battle-only.
 
 ## Existing validation gates
 
