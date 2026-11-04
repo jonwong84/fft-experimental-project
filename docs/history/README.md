@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 196 entries index completed bounded work; they do not mean the full game is complete.
+These 199 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -219,3 +219,6 @@ These 196 entries index completed bounded work; they do not mean the full game i
 - [ZOD-227 — Derive Blue pair movement without the NonBlue reach draw](../behavior/blue-attack-throw-stone-ai.md#movement--zod-227)
 - [ZOD-228 — Validate Blue selection and complete turn execution](../behavior/blue-attack-throw-stone-ai.md#selection-and-complete-turns--zod-228)
 - [ZOD-229 — Trace Accumulate AI usefulness, PA projection and scoring](../architecture/zod-229-accumulate-ai.md)
+- [ZOD-230 — Project and score one supplied Accumulate self candidate](../behavior/accumulate-ai.md#supplied-projection-and-scoring--zod-230)
+- [ZOD-231 — Prepare certified Accumulate lists and source-order usefulness](../behavior/accumulate-ai.md#fresh-closed-list-preparation-and-usefulness--zod-231)
+- [ZOD-232 — Evaluate an isolated Accumulate map-target entry](../behavior/accumulate-ai.md#one-map-target-entry-against-a-supplied-movement-baseline--zod-232)

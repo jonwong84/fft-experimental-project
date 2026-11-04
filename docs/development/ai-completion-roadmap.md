@@ -45,6 +45,12 @@ shares these owners, with explicit source control/HP admission and no NonBlue
 reach-adjustment draw. Broader Blue policies remain open.
 Source/tests are [grouped by family](ai-source-layout.md) with stable namespaces.
 
+[Accumulate AI](../behavior/accumulate-ai.md) now has pure PA projection/scoring,
+certified Attack/Accumulate/Throw Stone preparation, a separate source-order
+usefulness filter and one isolated map-target entry against a supplied movement
+baseline. Shared clocks/scoring/rank comparisons remain the owners. Full
+three-action composition and authoritative self-ACT dispatch are still open.
+
 The [ZOD-210 cleanup](ai-pair-selection-refactor.md) shares pair admission and
 composition/lottery handling while retaining separate scenario/provenance rules.
 Immutable request/configuration records simplify selection and execution inputs;

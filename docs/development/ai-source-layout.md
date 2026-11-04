@@ -1,7 +1,7 @@
 # AI file organization — ZOD-219
 
 Reorganized 2026-11-04. The [source map](../../src/Zodiac.Framework.Ai/README.md)
-describes the four family folders and their mirrored test layout. The RNG tests
+describes the family folders and their mirrored test layout. The RNG tests
 now sit in `tests/Zodiac.Framework.Tests/Random/`, with the generator test file
 named `RandomStateGeneratorTests.cs`. Current coverage and Markdown links follow
 the moves. Existing evidence JSON and archived planning retain their original

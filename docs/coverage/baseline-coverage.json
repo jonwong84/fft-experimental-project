@@ -1,9 +1,9 @@
 {
   "format": "fft.baseline-coverage",
   "schemaVersion": 1,
-  "updated": "2026-10-28",
+  "updated": "2026-11-04",
   "edition": "SCUS-94221",
-  "managedCommit": "fe704580ae0489b6b6450f5c9f686dfb9741d295",
+  "managedCommit": "525974b3ebede803d9797220801f3c393c26a76b",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,9 +11,9 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 3958,
-    "source": "docs/behavior/sword-ai-post-act-preparation.md",
-    "runForThisInventory": false
+    "passed": 4156,
+    "source": "docs/behavior/accumulate-ai.md",
+    "runForThisInventory": true
   },
   "statusDefinitions": {
     "partial": "A stated subset exists; full row remains open.",
@@ -453,7 +453,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "A separate AI assembly owns closed two-opponent selection with moved/unmoved preparation and explicit reach branches. Framework owns RNG adoption and actual prepared Move-first/ACT-first commands. Pure post-ACT refresh/preparation now uses actual ACT-used/Move-unused state and retained one-draw refresh, deriving full origins/policy and unusable actor Attack while preserving Move+1 reach. It grants no command authority. Post-ACT scoring/search/live continuation, broader policies/search, replacement interface and host activation remain open.",
+      "currentScope": "Closed ordinary sword and Attack/Throw Stone selection, both admitted teams, complete pair turns and per-command recovery exist. Accumulate adds pure self PA projection/scoring, certified three-action-list preparation/usefulness and isolated map-target evaluation against a supplied move baseline. Combined three-entry search, self-command authority, broader policies/rosters and host activation remain open; these bounded checks do not establish full original decision equivalence.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -504,7 +504,12 @@
         "docs/architecture/zod-176-ai-act-first.md",
         "docs/behavior/sword-ai-act-first-execution.md",
         "docs/behavior/sword-ai-post-act-refresh.md",
-        "docs/behavior/sword-ai-post-act-preparation.md"
+        "docs/behavior/sword-ai-post-act-preparation.md",
+        "docs/behavior/attack-throw-stone-ai-turn-execution.md",
+        "docs/behavior/blue-attack-throw-stone-ai.md",
+        "docs/architecture/zod-229-accumulate-ai.md",
+        "docs/behavior/accumulate-ai.md",
+        "docs/evidence/ai/accumulate-implementation-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -519,7 +524,12 @@
         "src/Zodiac.Framework.Ai/Sword/SwordAiMoveFirstExecution.cs",
         "src/Zodiac.Framework/FacingMoveDecision.cs",
         "src/Zodiac.Framework/FacingDecision.cs",
-        "src/Zodiac.Framework.Ai/Sword/SwordAiActFirstExecution.cs"
+        "src/Zodiac.Framework.Ai/Sword/SwordAiActFirstExecution.cs",
+        "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiCandidateProjection.cs",
+        "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiCandidateScoring.cs",
+        "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiMapEntry.cs",
+        "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiPreparation.cs",
+        "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiUsefulness.cs"
       ],
       "automatedChecks": [
         {
@@ -645,6 +655,22 @@
         {
           "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiPostActPreparationTests.cs",
           "scope": "Owned post-ACT refresh, reach-before-usable ordering, actual knockback/Critical focus and geometry, exact limits, rejection and replay isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/Accumulate/AccumulateAiCandidateTests.cs",
+          "scope": "Source-traced bounded Accumulate projection/preparation/usefulness/map-entry behavior, literal streams and atomic rollback."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/Accumulate/AccumulateAiMapEntryTests.cs",
+          "scope": "Source-traced bounded Accumulate projection/preparation/usefulness/map-entry behavior, literal streams and atomic rollback."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/Accumulate/AccumulateAiPreparationTests.cs",
+          "scope": "Source-traced bounded Accumulate projection/preparation/usefulness/map-entry behavior, literal streams and atomic rollback."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/Accumulate/AccumulateAiUsefulnessTests.cs",
+          "scope": "Source-traced bounded Accumulate projection/preparation/usefulness/map-entry behavior, literal streams and atomic rollback."
         }
       ],
       "manualCheckpoint": {
@@ -652,12 +678,13 @@
         "procedure": "Observe selected mandatory AI turns and distinguish legal choices from exact policy matching."
       },
       "openQuestions": [
-        "Full target/ability/roster search, broader special policies, Defend, replacement interface and post-ACT scoring/selection/live continuation remain open.",
-        "Caller certificates still describe unrepresented original context. The fresh prepared selector covers only the certified NonBlue ordinary subset; Blue/special policies and source frame RNG remain outside it, and bounded vectors do not establish full original decision equivalence."
+        "Combined Attack/Accumulate/Throw Stone source-order search and authoritative self-ACT integration remain open.",
+        "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
+        "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Implement one explicit pure post-ACT move-only tile simulation/score, retaining actual state/RNG and only unused-Move refunds while preserving pre-ACT baseline admission.",
+      "nextAction": "Design one shared movement/scoring prefix and privately retained ranks/RNG for the three source-order entries, preserving unknown-priority provenance and existing pair paths.",
       "followUpTickets": [
-        "ZOD-180"
+        "ZOD-233"
       ]
     },
     {

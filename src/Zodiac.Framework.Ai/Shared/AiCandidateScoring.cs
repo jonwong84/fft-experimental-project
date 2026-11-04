@@ -62,9 +62,10 @@ internal static class AiCandidateScoring
 {
     // Internal only: callers own a freshly validated private simulation, never a caller-populated public result.
     internal static AiCandidateScore ScoreFreshUnits(ImmutableArray<AiProjectedUnit> units,
-        BattleUnitId targetId, byte hitPercent)
+        BattleUnitId targetId, byte hitPercent, short initialPriority = 0)
     {
-        short priority = 0;
+        // Source strike accounting precedes absolute state terms. Only fresh private effect owners supply it.
+        short priority = initialPriority;
         var contributions = ImmutableArray.CreateBuilder<AiUnitScoreContribution>(units.Length);
         // The trusted fresh projection supplies original TieKey order, consistent HP/status and only two units.
         foreach (var unit in units)
@@ -81,7 +82,7 @@ internal static class AiCandidateScoring
             int total = hp + status + equipment;
             bool enemy = unit.UnitId == targetId;
             int signed = enemy ? -total : total;
-            priority = unchecked((short)(priority + signed)); // Source narrows after each unit; admitted final range -160..320.
+            priority = unchecked((short)(priority + signed)); // Source narrows after every unit, after any strike credit.
             contributions.Add(new(unit.UnitId, unit.TieKey, enemy, hp, status, equipment, total, signed, priority));
         }
         return new(priority, hitPercent, contributions.ToImmutable());

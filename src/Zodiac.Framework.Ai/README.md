@@ -10,6 +10,9 @@ family. Source and test projects use matching folders:
 - `ThrowStone/`: one Throw Stone formula/candidate/scan, used by pair selection.
 - `AttackThrowStone/`: the closed two-entry list, shared pair preparation,
   movement/scenario branches, ranking/selection and actual command adapters.
+- `Accumulate/`: self PA projection/scoring, certified three-action-list
+  preparation, a separate usefulness filter and an isolated map-target entry.
+  These pure queries do not yet compose three-action selection or self-ACT commands.
 
 Namespaces remain `Zodiac.Framework.Ai` and `Zodiac.Framework.Ai.Tests`; moving
 a file adds no dependency or access. The assembly still references Framework,

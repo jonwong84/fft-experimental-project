@@ -7,6 +7,11 @@ Source study, 2026-11-04. Managed base: `6212323` (full revision in the
 that revision; the manifest fingerprints 12 files and 41 function bodies.
 No original or C program was executed. This study changes no managed runtime.
 
+Implementation follow-up: [ZOD-230–232](../behavior/accumulate-ai.md) now provide
+the selected pure candidate, closed preparation/usefulness and isolated map
+entry. Descriptions below retain the study's managed baseline; the follow-up
+owns current implementation, tests and remaining integration boundaries.
+
 ## Retail data selects a special route
 
 Accumulate is ability 146 (`0x92`), Basic Skill 5 slot 0, formula `0x36`, Y=1.
