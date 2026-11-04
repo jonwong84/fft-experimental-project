@@ -16,7 +16,7 @@ internal sealed class ContentPackagePrototype
     internal string? RequiredBaselinePackageId { get; }
     internal ImmutableArray<JobDefinition> Jobs { get; }
     internal ImmutableArray<SkillsetDefinition> Skillsets { get; }
-    internal ImmutableArray<AbilityDefinition> Abilities { get; }
+    internal ImmutableArray<AbilityMetadataDefinition> Abilities { get; }
 
     private ContentPackagePrototype(JsonElement root)
     {
@@ -99,7 +99,7 @@ internal sealed class ContentPackagePrototype
     {
         Fields(node, "job", "id", "primarySkillsetId", "baseMove", "baseJump", "steppingStone", "innateAbilityIds");
         return new JobDefinition(new JobId(Text(node, "id")), new SkillsetId(Text(node, "primarySkillsetId")),
-            Number(node, "baseMove"), Number(node, "baseJump"), Boolean(node, "steppingStone"),
+            new(Number(node, "baseMove"), Number(node, "baseJump")), Boolean(node, "steppingStone"),
             Array(node, "innateAbilityIds").Select(id => new AbilityId(String(id, "innateAbilityIds"))));
     }
 
@@ -115,31 +115,27 @@ internal sealed class ContentPackagePrototype
         }));
     }
 
-    private static AbilityDefinition ReadAbility(JsonElement node)
+    private static AbilityMetadataDefinition ReadAbility(JsonElement node)
     {
         Fields(node, "ability", "id", "jpCost", "learnOnHitRateRaw", "serializedClassRaw", "flags", "unknownTypeBitsRaw", "aiFlagsRaw");
         int rawClass = Number(node, "serializedClassRaw");
         int unknown = Number(node, "unknownTypeBitsRaw");
         if (rawClass is < 0 or > 15 || unknown is not (0 or 0x10))
             throw new InvalidDataException("serializedClassRaw must be 0..15; unknownTypeBitsRaw must be 0 or 16.");
-        int raw = rawClass | unknown;
         var seen = new HashSet<string>(StringComparer.Ordinal);
         foreach (JsonElement flag in Array(node, "flags"))
         {
             string name = String(flag, "flags");
             if (!seen.Add(name)) throw new InvalidDataException($"Duplicate named flag '{name}'.");
-            raw |= name switch
-            {
-                "learn-on-hit" => 0x20,
-                "show-name" => 0x40,
-                "cannot-learn-with-jp" => 0x80,
-                _ => throw new InvalidDataException($"Unknown named flag '{name}'."),
-            };
+            if (name is not ("learn-on-hit" or "show-name" or "cannot-learn-with-jp"))
+                throw new InvalidDataException($"Unknown named flag '{name}'.");
         }
 
-        return new AbilityDefinition(new AbilityId(Text(node, "id")), Number(node, "jpCost"),
-            Number(node, "learnOnHitRateRaw"), (byte)raw,
-            Array(node, "aiFlagsRaw").Select(value => Byte(value, "aiFlagsRaw")));
+        return new AbilityMetadataDefinition(new AbilityId(Text(node, "id")), Number(node, "jpCost"),
+            Number(node, "learnOnHitRateRaw"), rawClass,
+            Array(node, "aiFlagsRaw").Select(value => Byte(value, "aiFlagsRaw")),
+            learnOnHit: seen.Contains("learn-on-hit"), showName: seen.Contains("show-name"),
+            canLearnWithJp: !seen.Contains("cannot-learn-with-jp"), unknownTypeBit4: unknown != 0);
     }
 
     internal string Write()
@@ -160,8 +156,8 @@ internal sealed class ContentPackagePrototype
                 writer.WriteStartObject();
                 writer.WriteString("id", job.Id.Value);
                 writer.WriteString("primarySkillsetId", job.PrimarySkillsetId.Value);
-                writer.WriteNumber("baseMove", job.BaseMove);
-                writer.WriteNumber("baseJump", job.BaseJump);
+                writer.WriteNumber("baseMove", job.JobStats.BaseMove);
+                writer.WriteNumber("baseJump", job.JobStats.BaseJump);
                 writer.WriteBoolean("steppingStone", job.SteppingStone);
                 writer.WriteStartArray("innateAbilityIds");
                 foreach (AbilityId id in job.InnateAbilityIds) writer.WriteStringValue(id.Value);
@@ -187,7 +183,7 @@ internal sealed class ContentPackagePrototype
             }
             writer.WriteEndArray();
             writer.WriteStartArray("abilities");
-            foreach (AbilityDefinition ability in Abilities.OrderBy(ability => ability.Id.Value, StringComparer.Ordinal))
+            foreach (AbilityMetadataDefinition ability in Abilities.OrderBy(ability => ability.Id.Value, StringComparer.Ordinal))
             {
                 writer.WriteStartObject();
                 writer.WriteString("id", ability.Id.Value);
@@ -199,7 +195,7 @@ internal sealed class ContentPackagePrototype
                 if (ability.ShowName) writer.WriteStringValue("show-name");
                 if (!ability.CanLearnWithJp) writer.WriteStringValue("cannot-learn-with-jp");
                 writer.WriteEndArray();
-                writer.WriteNumber("unknownTypeBitsRaw", ability.UnknownTypeFlags);
+                writer.WriteNumber("unknownTypeBitsRaw", ability.UnknownTypeBit4 ? 16 : 0);
                 writer.WriteStartArray("aiFlagsRaw");
                 foreach (byte flag in ability.AiFlagsRaw) writer.WriteNumberValue(flag);
                 writer.WriteEndArray();

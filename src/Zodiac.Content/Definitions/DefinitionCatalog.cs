@@ -7,15 +7,15 @@ public sealed class DefinitionCatalog
 {
     private readonly ImmutableDictionary<JobId, JobDefinition> jobsById;
     private readonly ImmutableDictionary<SkillsetId, SkillsetDefinition> skillsetsById;
-    private readonly ImmutableDictionary<AbilityId, AbilityDefinition> abilitiesById;
+    private readonly ImmutableDictionary<AbilityId, AbilityMetadataDefinition> abilitiesById;
 
     /// <summary>Jobs in supplied order; ordering does not establish identity.</summary>
     public ImmutableArray<JobDefinition> Jobs { get; }
     public ImmutableArray<SkillsetDefinition> Skillsets { get; }
-    public ImmutableArray<AbilityDefinition> Abilities { get; }
+    public ImmutableArray<AbilityMetadataDefinition> Abilities { get; }
 
     public DefinitionCatalog(IEnumerable<JobDefinition> jobs, IEnumerable<SkillsetDefinition> skillsets,
-        IEnumerable<AbilityDefinition> abilities)
+        IEnumerable<AbilityMetadataDefinition> abilities)
     {
         ArgumentNullException.ThrowIfNull(jobs);
         ArgumentNullException.ThrowIfNull(skillsets);
@@ -57,7 +57,7 @@ public sealed class DefinitionCatalog
 
     public JobDefinition GetJob(JobId id) => jobsById[id];
     public SkillsetDefinition GetSkillset(SkillsetId id) => skillsetsById[id];
-    public AbilityDefinition GetAbility(AbilityId id) => abilitiesById[id];
+    public AbilityMetadataDefinition GetAbility(AbilityId id) => abilitiesById[id];
 
     private static ImmutableDictionary<TKey, TValue> Index<TKey, TValue>(ImmutableArray<TValue> entries,
         Func<TValue, TKey> getId, string kind) where TKey : notnull where TValue : class

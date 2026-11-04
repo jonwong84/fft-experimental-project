@@ -11,6 +11,28 @@ public sealed class OriginalAccumulateImporterTests
     private static int Offset(uint address) => checked((int)(address - 0x80010000 + 0x800));
 
     [Fact]
+    public void Companion_import_matches_all_boolean_flag_combinations_and_rejects_each_changed_source_bit()
+    {
+        byte[] image = Image();
+        int typeOffset = Offset(0x8005ebf0 + 146 * 8) + 3;
+        for (int flags = 0; flags < 16; flags++)
+        {
+            byte original = (byte)((flags << 4) | 1);
+            image[typeOffset] = original;
+            var metadata = OriginalMetadataImporter.DecodeSelection(image).Package;
+            metadata = ContentPackage.ReadJson(metadata.ToJson());
+            OriginalAccumulateImporter.DecodeSelection(image, metadata).Package.ValidateAgainst(metadata);
+            foreach (byte mask in new byte[] { 0x10, 0x20, 0x40, 0x80 })
+            {
+                image[typeOffset] = (byte)(original ^ mask);
+                Assert.Contains("learning records", Assert.Throws<InvalidDataException>(() =>
+                    OriginalAccumulateImporter.DecodeSelection(image, metadata)).Message);
+                image[typeOffset] = original;
+            }
+        }
+    }
+
+    [Fact]
     public void Explicit_supported_export_preserves_all_records_and_never_certifies_synthetic_edition()
     {
         byte[] image = Image(); byte[] original = image.ToArray();

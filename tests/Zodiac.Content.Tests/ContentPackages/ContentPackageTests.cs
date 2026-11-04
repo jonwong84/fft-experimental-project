@@ -42,15 +42,19 @@ public sealed class ContentPackageTests
             Assert.Equal(authored.ToJson(), runtime.ToJson());
             DefinitionCatalog catalog = ContentPackage.Compose(runtime);
             JobDefinition job = Assert.Single(catalog.Jobs);
-            Assert.Equal(3, job.BaseMove);
-            Assert.Equal(2, job.BaseJump);
+            Assert.Equal(3, job.JobStats.BaseMove);
+            Assert.Equal(2, job.JobStats.BaseJump);
             Assert.True(job.SteppingStone);
             Assert.Equal(2, job.InnateAbilityIds.Length);
             Assert.Equal(new[] { 9, 0 }, Assert.Single(catalog.Skillsets).Slots.Select(slot => slot.Slot));
             Assert.Null(catalog.Skillsets[0].Slots[1].AbilityId);
-            AbilityDefinition ability = Assert.Single(catalog.Abilities);
+            AbilityMetadataDefinition ability = Assert.Single(catalog.Abilities);
             Assert.Equal(65535, ability.JpCost);
-            Assert.Equal(255, ability.TypeFlagsRaw);
+            Assert.Equal(15, ability.SerializedClassRaw);
+            Assert.True(ability.LearnOnHit);
+            Assert.True(ability.ShowName);
+            Assert.False(ability.CanLearnWithJp);
+            Assert.True(ability.UnknownTypeBit4);
             Assert.Equal(255, ability.LearnOnHitRateRaw);
             Assert.Equal(new byte[] { 255, 128, 1, 66 }, ability.AiFlagsRaw);
             Assert.EndsWith("\n", runtime.ToJson());
@@ -79,17 +83,24 @@ public sealed class ContentPackageTests
         Assert.Equal(new[] { 9, 0 }, ContentPackage.ReadJson(output).Skillsets[0].Slots.Select(slot => slot.Slot));
     }
 
-    [Fact]
-    public void Every_raw_type_byte_survives_production_export_and_load()
+    [Theory]
+    [InlineData(1, false, false, true, false)]
+    [InlineData(1, true, false, true, false)]
+    [InlineData(1, false, true, true, false)]
+    [InlineData(15, true, true, false, true)]
+    [InlineData(0, false, false, false, true)]
+    public void Authored_boolean_flags_and_opaque_class_survive_export_and_load(
+        int serializedClass, bool learnOnHit, bool showName, bool canLearn, bool unknown)
     {
-        for (int raw = 0; raw <= 255; raw++)
-        {
-            ContentPackage source = Authored();
-            var ability = new AbilityDefinition(source.Abilities[0].Id, 7, 9, (byte)raw, new byte[] { 1, 2, 3, 4 });
-            var package = new ContentPackage(source.PackageId, source.ProfileId, source.Kind, null,
-                source.Jobs, source.Skillsets, new[] { ability });
-            Assert.Equal((byte)raw, ContentPackage.ReadJson(package.ToJson()).Abilities[0].TypeFlagsRaw);
-        }
+        ContentPackage source = Authored();
+        var ability = new AbilityMetadataDefinition(source.Abilities[0].Id, 7, 9, serializedClass, [1, 2, 3, 4],
+            learnOnHit: learnOnHit, showName: showName, canLearnWithJp: canLearn, unknownTypeBit4: unknown);
+        var package = new ContentPackage(source.PackageId, source.ProfileId, source.Kind, null,
+            source.Jobs, source.Skillsets, [ability]);
+        var loaded = Assert.Single(ContentPackage.ReadJson(package.ToJson()).Abilities);
+        Assert.Equal((serializedClass, learnOnHit, showName, canLearn, unknown),
+            (loaded.SerializedClassRaw, loaded.LearnOnHit, loaded.ShowName, loaded.CanLearnWithJp, loaded.UnknownTypeBit4));
+        Assert.Equal(package.ToJson(), ContentPackage.ReadJson(package.ToJson()).ToJson());
     }
 
     [Fact]
@@ -155,6 +166,28 @@ public sealed class ContentPackageTests
             File.WriteAllText(path, oversized, new System.Text.UTF8Encoding(false));
             Assert.True(new FileInfo(path).Length > ContentPackage.MaxJsonBytes);
             Assert.Throws<ContentPackageValidationException>(() => ContentPackage.Load(path));
+        }
+        finally { DeleteTempDirectory(directory); }
+    }
+
+    [Fact]
+    public void Extended_job_values_round_trip_and_explicit_load_limits_keep_field_diagnostics()
+    {
+        var root = JsonNode.Parse(Authored().ToJson())!;
+        root["jobs"]![0]!["baseMove"] = 512; root["jobs"]![0]!["baseJump"] = 256;
+        var package = ContentPackage.ReadJson(root.ToJsonString());
+        Assert.Equal(512, package.Jobs[0].JobStats.BaseMove);
+        Assert.Equal(256, package.Jobs[0].JobStats.BaseJump);
+        string json = package.ToJson();
+        Assert.Equal(json, ContentPackage.ReadJson(json, new(512, 256)).ToJson());
+        Assert.Equal("$.jobs[0].baseMove", Assert.Throws<ContentPackageValidationException>(() => ContentPackage.ReadJson(json, new(511, 256))).FieldPath);
+        Assert.Equal("$.jobs[0].baseJump", Assert.Throws<ContentPackageValidationException>(() => ContentPackage.ReadJson(json, new(512, 255))).FieldPath);
+        string directory = TempDirectory();
+        try
+        {
+            string path = Path.Combine(directory, "extended.json"); package.Save(path);
+            Assert.Equal(json, ContentPackage.Load(path, new(512, 256)).ToJson());
+            Assert.Equal("$.jobs[0].baseJump", Assert.Throws<ContentPackageValidationException>(() => ContentPackage.Load(path, new(512, 255))).FieldPath);
         }
         finally { DeleteTempDirectory(directory); }
     }
@@ -260,11 +293,12 @@ public sealed class ContentPackageTests
 
     private static ContentPackage Authored() => new("sample.base:package/recruits", "sample:profile/metadata",
         ContentPackageKind.Baseline, null,
-        new[] { new JobDefinition(new("sample.base:job/recruit"), new("sample.base:skillset/practice"), 3, 2, true,
+        new[] { new JobDefinition(new("sample.base:job/recruit"), new("sample.base:skillset/practice"), new(3, 2), true,
             new AbilityId[] { new("sample.base:ability/focus"), new("sample.base:ability/focus") }) },
         new[] { new SkillsetDefinition(new("sample.base:skillset/practice"),
             new[] { new SkillsetSlot(9, new AbilityId("sample.base:ability/focus")), new SkillsetSlot(0, null) }) },
-        new[] { new AbilityDefinition(new("sample.base:ability/focus"), 65535, 255, 255, new byte[] { 255, 128, 1, 66 }) });
+        new[] { new AbilityMetadataDefinition(new("sample.base:ability/focus"), 65535, 255, 15, new byte[] { 255, 128, 1, 66 },
+            learnOnHit: true, showName: true, canLearnWithJp: false, unknownTypeBit4: true) });
 
     private static JsonObject Parse() => JsonNode.Parse(Synthetic)!.AsObject();
     private static JsonObject Addon()

@@ -42,7 +42,7 @@ public static class OriginalAccumulateImporter
         var learning = metadata.Abilities.SingleOrDefault(value => value.Id.Value == AbilityId);
         if (declaredJob?.PrimarySkillsetId.Value != skillset?.Id.Value || skillset is null ||
             !skillset.Slots.Any(slot => slot.Slot == 0 && slot.AbilityId?.Value == AbilityId) || learning is null ||
-            learning.JpCost != primary.JpCost || learning.LearnOnHitRateRaw != primary.LearnRate || learning.TypeFlagsRaw != primary.TypeFlags ||
+            learning.JpCost != primary.JpCost || learning.LearnOnHitRateRaw != primary.LearnRate || OriginalAbilityMetadataAdapter.EncodeTypeFlags(learning) != primary.TypeFlags ||
             !learning.AiFlagsRaw.SequenceEqual(primary.AiFlags))
             throw new InvalidDataException("Selected metadata does not match the Accumulate job/slot/learning records.");
         var package = new ImmediateAbilityContentPackage("fft.ps1:package/accumulate-effect", metadata.ProfileId, metadata.PackageId,

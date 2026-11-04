@@ -67,7 +67,7 @@ public sealed class ValidateContentCommandTests
     }
 
     private static ContentPackage Synthetic() => new("sample:package/recruits", "sample:profile/metadata", ContentPackageKind.Baseline, null,
-        new[] { new JobDefinition(new("sample:job/recruit"), new("sample:skillset/practice"), 3, 2, false, []) },
+        new[] { new JobDefinition(new("sample:job/recruit"), new("sample:skillset/practice"), new(3, 2), false, []) },
         new[] { new SkillsetDefinition(new("sample:skillset/practice"), [new(0, new AbilityId("sample:ability/focus"))]) },
-        new[] { new AbilityDefinition(new("sample:ability/focus"), 25, 0, 0x41, [0, 0, 0, 0]) });
+        new[] { new AbilityMetadataDefinition(new("sample:ability/focus"), 25, 0, 1, [0, 0, 0, 0], showName: true) });
 }

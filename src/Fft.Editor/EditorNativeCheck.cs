@@ -62,7 +62,7 @@ internal static class EditorNativeCheck
             Require(form.Workspaces.SelectedIndex == 1 && ((string)form.Abilities.SelectedItem!).StartsWith("editor.demo:", StringComparison.Ordinal), "job reference navigates to ability");
             Capture(form, "reference"); form.Workspaces.SelectedIndex = 0; form.JobPages.SelectedIndex = 1;
             form.ValidateButton.PerformClick(); form.PreviewButton.PerformClick();
-            Require(document.Validate().Jobs[0].BaseMove == 2, "valid Move");
+            Require(document.Validate().Jobs[0].JobStats.BaseMove == 2, "valid Move");
             Require(document.Preview().AuthoredReachable.Length == 12, "exact authored range");
             Capture(form, "preview");
             form.CheckDetailsDialog = dialog => { Capture(dialog, "package-details"); dialog.Close(); };
@@ -93,8 +93,8 @@ internal static class EditorNativeCheck
             {
                 format = "fft.job-editor-native-check", schemaVersion = 2,
                 sourceSha256 = hash, sourcePackage = document.Source.PackageId,
-                steps = trace, sourceMove = document.SourceJob!.BaseMove,
-                authoredMove = document.Validate().Jobs[0].BaseMove,
+                steps = trace, sourceMove = document.SourceJob!.JobStats.BaseMove,
+                authoredMove = document.Validate().Jobs[0].JobStats.BaseMove,
                 savedMove = 2, savedJump = 4, savedJp = document.Abilities.Length > 0 ? 123 : (int?)null,
                 sourceUnchanged = true, exportedRoundTrip = true, failedExportPreserved = true,
                 closeCancelPreserved = true, closeDiscardAccepted = true,

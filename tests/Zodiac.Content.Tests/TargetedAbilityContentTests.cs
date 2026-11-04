@@ -1,4 +1,3 @@
-using Zodiac.Framework.Random;
 using System.Text.Json.Nodes;
 using Zodiac.Content.BattleSetup;
 using Zodiac.Content.ContentPackages;
@@ -6,6 +5,7 @@ using Zodiac.Content.Definitions;
 using Zodiac.Content.Samples;
 using Zodiac.Framework;
 using Xunit;
+using Zodiac.Framework.Random;
 
 namespace Zodiac.Content.Tests;
 
@@ -87,7 +87,7 @@ public sealed class TargetedAbilityContentTests
         var original=Metadata(); var p=Package();
         var metadata=kind=="missing"?new ContentPackage(original.PackageId,original.ProfileId,ContentPackageKind.Baseline,null,[],[],[]):
             kind=="class"?new ContentPackage(original.PackageId,original.ProfileId,ContentPackageKind.Baseline,null,original.Jobs,original.Skillsets,
-                original.Abilities.Select(a=>a.Id==SyntheticBasicSkillBattle.ThrowStone?new AbilityDefinition(a.Id,0,0,7,new byte[4]):a)):original;
+                original.Abilities.Select(a=>a.Id==SyntheticBasicSkillBattle.ThrowStone?new AbilityMetadataDefinition(a.Id,0,0,7,new byte[4]):a)):original;
         var selected=new TargetedAbilityContentPackage(p.PackageId,kind=="profile"?"sample:profile/wrong":p.ProfileId,
             kind=="dependency"?"sample:package/wrong":p.RequiredMetadataPackageId,p.Abilities);
         Assert.Throws<ContentPackageValidationException>(()=>selected.ValidateAgainst(metadata));

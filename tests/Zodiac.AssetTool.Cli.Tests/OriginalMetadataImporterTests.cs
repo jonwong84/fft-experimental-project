@@ -1,5 +1,6 @@
 using System.Buffers.Binary;
 using Zodiac.AssetTool.Cli;
+using Zodiac.Content.ContentPackages;
 using Xunit;
 
 namespace Zodiac.AssetTool.Cli.Tests;
@@ -10,6 +11,23 @@ public sealed class OriginalMetadataImporterTests
     private const int SkillsetOffset = 0x55294 + 5 * 25;
 
     [Fact]
+    public void Every_original_type_byte_maps_to_boolean_metadata_and_survives_package_round_trip()
+    {
+        byte[] image = Synthetic();
+        int typeOffset = Offset(0x8005ebf0u + 146 * 8) + 3;
+        for (int raw = 0; raw <= 255; raw++)
+        {
+            image[typeOffset] = (byte)raw;
+            var package = OriginalMetadataImporter.DecodeSelection(image).Package;
+            var imported = package.Abilities.Single(ability => ability.Id.Value == "fft.ps1:ability/accumulate");
+            var loaded = ContentPackage.ReadJson(package.ToJson()).Abilities.Single(ability => ability.Id == imported.Id);
+            var expected = (raw & 15, (raw & 0x20) != 0, (raw & 0x40) != 0, (raw & 0x80) == 0, (raw & 0x10) != 0);
+            Assert.Equal(expected, (imported.SerializedClassRaw, imported.LearnOnHit, imported.ShowName, imported.CanLearnWithJp, imported.UnknownTypeBit4));
+            Assert.Equal(expected, (loaded.SerializedClassRaw, loaded.LearnOnHit, loaded.ShowName, loaded.CanLearnWithJp, loaded.UnknownTypeBit4));
+        }
+    }
+
+    [Fact]
     public void Synthetic_selection_maps_raw_widths_ordered_slots_and_distinct_learning_definitions()
     {
         byte[] image = Synthetic();
@@ -17,8 +35,8 @@ public sealed class OriginalMetadataImporterTests
         var job = Assert.Single(result.Package.Jobs);
         Assert.Equal("fft.ps1:job/squire", job.Id.Value);
         Assert.Equal("fft.ps1:skillset/basic-skill", job.PrimarySkillsetId.Value);
-        Assert.Equal(255, job.BaseMove);
-        Assert.Equal(127, job.BaseJump);
+        Assert.Equal(255, job.JobStats.BaseMove);
+        Assert.Equal(127, job.JobStats.BaseJump);
         Assert.True(job.SteppingStone);
         Assert.Equal(new[] { "fft.ps1:ability/source-0486", "fft.ps1:ability/source-0486" },
             job.InnateAbilityIds.Select(id => id.Value));
@@ -33,7 +51,11 @@ public sealed class OriginalMetadataImporterTests
         var ability = Assert.Single(result.Package.Abilities.Where(a => a.Id.Value == "fft.ps1:ability/accumulate"));
         Assert.Equal(65535, ability.JpCost);
         Assert.Equal(255, ability.LearnOnHitRateRaw);
-        Assert.Equal(255, ability.TypeFlagsRaw);
+        Assert.Equal(15, ability.SerializedClassRaw);
+        Assert.True(ability.LearnOnHit);
+        Assert.True(ability.ShowName);
+        Assert.False(ability.CanLearnWithJp);
+        Assert.True(ability.UnknownTypeBit4);
         Assert.Equal(new byte[] { 1, 128, 255, 17 }, ability.AiFlagsRaw);
         Assert.Contains(result.Diagnostics, message => message.Contains("unknown type flag 0x10", StringComparison.Ordinal));
         Assert.Contains(result.Diagnostics, message => message.Contains("unused low skillset flag bits 0x03", StringComparison.Ordinal));

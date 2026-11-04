@@ -1,8 +1,8 @@
-using Zodiac.Framework.Random;
 using Zodiac.Content.BattleSetup;
 using Zodiac.Content.ContentPackages;
 using Zodiac.Content.Definitions;
 using Zodiac.Framework;
+using Zodiac.Framework.Random;
 
 namespace Zodiac.Content.Samples;
 
@@ -13,7 +13,7 @@ public static class SyntheticAccumulateBattle
     public static AbilityId AccumulateId => new("sample:ability/accumulate");
 
     public static ContentPackage Metadata() => new("sample:package/accumulate-metadata", ProfileId, ContentPackageKind.Baseline, null,
-        [new(new("sample:job/trainee"), new("sample:skillset/basic"), 1, 2, false, [])],
+        [new(new("sample:job/trainee"), new("sample:skillset/basic"), new(1, 2), false, [])],
         [new(new("sample:skillset/basic"), [new(0, AccumulateId)])],
         [new(AccumulateId, 123, 37, 1, new byte[4])]);
 

@@ -7,6 +7,7 @@ using Zodiac.Content.ContentPackages;
 using Zodiac.Content.Definitions;
 using Zodiac.Content.BattleSetup;
 using Zodiac.Framework;
+using Zodiac.Content.Configuration;
 
 namespace Zodiac.Content.Authoring;
 
@@ -15,6 +16,7 @@ public sealed class JobEditorDocument
 {
     private JsonObject? draft;
     private string? cleanDraft;
+    public JobStatLimits Limits { get; }
     public ContentPackage Source { get; }
     public string? SourcePath { get; }
     public string SourceSha256 { get; }
@@ -28,27 +30,29 @@ public sealed class JobEditorDocument
     public string JumpText => Text(JobNode?["baseJump"]);
     private JsonObject? JobNode => draft?["jobs"]?.AsArray()[0]?.AsObject();
 
-    public JobEditorDocument(ContentPackage source) : this(source, null, null) { }
+    public JobEditorDocument(ContentPackage source, JobStatLimits? jobStatLimits = null) : this(source, null, null, jobStatLimits) { }
 
-    private JobEditorDocument(ContentPackage source, string? path, string? hash)
+    private JobEditorDocument(ContentPackage source, string? path, string? hash, JobStatLimits? jobStatLimits)
     {
         ArgumentNullException.ThrowIfNull(source);
         if (source.Kind != ContentPackageKind.Baseline)
             throw new ArgumentException("Open a baseline package before creating an authored copy.", nameof(source));
         ContentPackage.Compose(source);
+        Limits = jobStatLimits ?? JobStatLimits.Default;
+        _ = ContentPackage.ReadJson(source.ToJson(), Limits);
         Source = source;
         SourcePath = path;
         SourceSha256 = hash ?? Convert.ToHexStringLower(SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(source.ToJson())));
     }
 
-    public static JobEditorDocument OpenSource(string path)
+    public static JobEditorDocument OpenSource(string path, JobStatLimits? jobStatLimits = null)
     {
         string full = Path.GetFullPath(path);
         RejectReparsePath(full);
         // Hold a read-only sharing lease across both parsing and hashing.
         using var stream = new FileStream(full, FileMode.Open, FileAccess.Read, FileShare.Read);
-        ContentPackage source = ContentPackage.Load(full);
-        return new(source, full, Convert.ToHexStringLower(SHA256.HashData(stream)));
+        ContentPackage source = ContentPackage.Load(full, jobStatLimits);
+        return new(source, full, Convert.ToHexStringLower(SHA256.HashData(stream)), jobStatLimits);
     }
 
     public ImmutableArray<JobDefinition> Search(string query) => Source.Jobs
@@ -76,14 +80,16 @@ public sealed class JobEditorDocument
         var referenced = skillset.Slots.Where(slot => slot.AbilityId.HasValue).Select(slot => slot.AbilityId!.Value)
             .Concat(job.InnateAbilityIds).ToHashSet();
         var copy = new ContentPackage(packageId, Source.ProfileId, ContentPackageKind.Addon, Source.PackageId,
-            [new(new(Remap(job.Id.Value)), new(Remap(skillset.Id.Value)), job.BaseMove, job.BaseJump,
+            [new(new(Remap(job.Id.Value)), new(Remap(skillset.Id.Value)), job.JobStats,
                 job.SteppingStone, job.InnateAbilityIds.Select(id => new AbilityId(Remap(id.Value))))],
             [new(new(Remap(skillset.Id.Value)), skillset.Slots.Select(slot => new SkillsetSlot(slot.Slot,
                 slot.AbilityId is { } id ? new AbilityId(Remap(id.Value)) : null)))],
-            Source.Abilities.Where(ability => referenced.Contains(ability.Id)).Select(ability => new AbilityDefinition(
-                new(Remap(ability.Id.Value)), ability.JpCost, ability.LearnOnHitRateRaw, ability.TypeFlagsRaw, ability.AiFlagsRaw)));
+            Source.Abilities.Where(ability => referenced.Contains(ability.Id)).Select(ability => new AbilityMetadataDefinition(
+                new(Remap(ability.Id.Value)), ability.JpCost, ability.LearnOnHitRateRaw, ability.SerializedClassRaw, ability.AiFlagsRaw,
+                learnOnHit: ability.LearnOnHit, showName: ability.ShowName, canLearnWithJp: ability.CanLearnWithJp,
+                unknownTypeBit4: ability.UnknownTypeBit4)));
         // Round-trip enforces wire budgets and field-path diagnostics on generated identities too.
-        return ContentPackage.ReadJson(copy.ToJson());
+        return ContentPackage.ReadJson(copy.ToJson(), Limits);
     }
 
     public ImmutableArray<EditorAbility> Abilities => draft is null ? [] : draft["abilities"]!.AsArray()
@@ -116,7 +122,7 @@ public sealed class JobEditorDocument
     public ContentPackage Validate()
     {
         RequireDraft();
-        ContentPackage package = ContentPackage.ReadJson(draft!.ToJsonString());
+        ContentPackage package = ContentPackage.ReadJson(draft!.ToJsonString(), Limits);
         ContentPackage.Compose(Source, package);
         return package;
     }
@@ -134,21 +140,21 @@ public sealed class JobEditorDocument
     /// <summary>Reopen only this editor's supported copy shape; arbitrary packages remain readable via other tools.</summary>
     public void OpenCopy(JobId sourceJobId, string path)
     {
-        ContentPackage package = ContentPackage.Load(path);
+        ContentPackage package = ContentPackage.Load(path, Limits);
         ContentPackage.Compose(Source, package);
         JobDefinition job = Source.Jobs.Single(value => value.Id == sourceJobId);
         ContentPackage template = Copy(job, package.PackageId);
         JsonObject expected = JsonNode.Parse(template.ToJson())!.AsObject();
         if (package.Jobs.Length != 1) throw ShapeError();
-        expected["jobs"]![0]!["baseMove"] = package.Jobs[0].BaseMove;
-        expected["jobs"]![0]!["baseJump"] = package.Jobs[0].BaseJump;
+        expected["jobs"]![0]!["baseMove"] = package.Jobs[0].JobStats.BaseMove;
+        expected["jobs"]![0]!["baseJump"] = package.Jobs[0].JobStats.BaseJump;
         foreach (JsonNode? node in expected["abilities"]!.AsArray())
         {
-            AbilityDefinition? ability = package.Abilities.FirstOrDefault(value => value.Id.Value == node!["id"]!.GetValue<string>());
+            AbilityMetadataDefinition? ability = package.Abilities.FirstOrDefault(value => value.Id.Value == node!["id"]!.GetValue<string>());
             if (ability is null) throw ShapeError();
             node!["jpCost"] = ability.JpCost;
         }
-        if (ContentPackage.ReadJson(expected.ToJsonString()).ToJson() != package.ToJson()) throw ShapeError();
+        if (ContentPackage.ReadJson(expected.ToJsonString(), Limits).ToJson() != package.ToJson()) throw ShapeError();
         SetDraft(job, package, Path.GetFullPath(path), dirty: false);
     }
 
@@ -206,7 +212,7 @@ public sealed class JobEditorDocument
                 .Where(position => BattleSimulator.Apply(setup.InitialState, new MoveUnitCommand(unit, position),
                     BattleMovementPolicy.TerrainCostPrototype).Accepted).ToImmutableArray();
         }
-        return new(original.BaseMove, package.Jobs[0].BaseMove, package.Jobs[0].BaseJump,
+        return new(original.JobStats.BaseMove, package.Jobs[0].JobStats.BaseMove, package.Jobs[0].JobStats.BaseJump,
             Range(ContentPackage.Compose(Source), original.Id), Range(ContentPackage.Compose(Source, package), package.Jobs[0].Id));
     }
 

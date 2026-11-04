@@ -51,7 +51,7 @@ The list filter masks are action `0x01`, reaction `0x02`, movement `0x04`, suppo
 
 ## Minimum ability record map
 
-`include/fft/ability.h::ability_data_t` asserts eight bytes. Candidate ability 146 starts at table-relative byte 1168 (`0x490`). Proposed `AbilityDefinition` contains identity and only the following learning metadata, with no effect execution promise:
+`include/fft/ability.h::ability_data_t` asserts eight bytes. Candidate ability 146 starts at table-relative byte 1168 (`0x490`). Proposed `AbilityMetadataDefinition` contains identity and only the following learning metadata, with no effect execution promise:
 
 - **`0x00..0x01`, `jp_cost`:** unsigned 16-bit, 0..65535; proposed `jpCost`. Preserve raw value even if it exceeds a unit's normal JP cap. `formation_ability_learn_list` in `src/world/ability_lists.c` deducts cost from the unit's job JP after confirmation.
 - **`0x02`, `learn_rate`:** unsigned byte, 0..255; proposed `learnOnHitRateRaw`. Header describes an out-of-100 roll; do not clamp imported byte values to 100. It is not a generic job-learning success percentage. The selected slice does not implement learn-on-hit.

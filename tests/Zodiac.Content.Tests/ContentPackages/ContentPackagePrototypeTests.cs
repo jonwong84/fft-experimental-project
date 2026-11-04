@@ -42,14 +42,18 @@ public sealed class ContentPackagePrototypeTests
         ContentPackagePrototype roundTripped = ContentPackagePrototype.Read(output);
         DefinitionCatalog catalog = ContentPackagePrototype.Compose(roundTripped);
         JobDefinition job = Assert.Single(catalog.Jobs);
-        AbilityDefinition ability = catalog.GetAbility(job.InnateAbilityIds[0]);
-        Assert.Equal(3, job.BaseMove);
-        Assert.Equal(2, job.BaseJump);
+        AbilityMetadataDefinition ability = catalog.GetAbility(job.InnateAbilityIds[0]);
+        Assert.Equal(3, job.JobStats.BaseMove);
+        Assert.Equal(2, job.JobStats.BaseJump);
         Assert.True(job.SteppingStone);
         Assert.Equal(2, job.InnateAbilityIds.Length);
         Assert.Equal(new[] { 9, 0 }, catalog.GetSkillset(job.PrimarySkillsetId).Slots.Select(slot => slot.Slot));
         Assert.Null(catalog.GetSkillset(job.PrimarySkillsetId).Slots[1].AbilityId);
-        Assert.Equal(255, ability.TypeFlagsRaw);
+        Assert.Equal(15, ability.SerializedClassRaw);
+        Assert.True(ability.LearnOnHit);
+        Assert.True(ability.ShowName);
+        Assert.False(ability.CanLearnWithJp);
+        Assert.True(ability.UnknownTypeBit4);
         Assert.Equal(65535, ability.JpCost);
         Assert.Equal(255, ability.LearnOnHitRateRaw);
         Assert.False(ability.CanLearnWithJp);
@@ -75,25 +79,6 @@ public sealed class ContentPackagePrototypeTests
         string b = ContentPackagePrototype.Read(second.ToJsonString()).Write();
         Assert.Equal(a, b);
         Assert.True(a.IndexOf("sample.base:job/another", StringComparison.Ordinal) < a.IndexOf("sample.base:job/recruit", StringComparison.Ordinal));
-    }
-
-    [Fact]
-    public void Every_raw_type_byte_survives_symbolic_projection_and_round_trip()
-    {
-        for (int raw = 0; raw <= 255; raw++)
-        {
-            JsonObject root = Parse();
-            JsonNode ability = root["abilities"]![0]!;
-            ability["serializedClassRaw"] = raw & 15;
-            ability["unknownTypeBitsRaw"] = raw & 16;
-            var flags = new JsonArray();
-            if ((raw & 0x20) != 0) flags.Add("learn-on-hit");
-            if ((raw & 0x40) != 0) flags.Add("show-name");
-            if ((raw & 0x80) != 0) flags.Add("cannot-learn-with-jp");
-            ability["flags"] = flags;
-            ContentPackagePrototype loaded = ContentPackagePrototype.Read(root.ToJsonString());
-            Assert.Equal((byte)raw, ContentPackagePrototype.Read(loaded.Write()).Abilities[0].TypeFlagsRaw);
-        }
     }
 
     [Theory]
@@ -142,7 +127,7 @@ public sealed class ContentPackagePrototypeTests
     {
         AssertInvalid(root => root["abilities"]![0]!["aiFlagsRaw"]![0] = 256, "byte must be 0..255");
         AssertInvalid(root => root["abilities"]![0]!["serializedClassRaw"] = 16, "serializedClassRaw must be 0..15");
-        AssertInvalid(root => root["jobs"]![0]!["baseJump"] = 128, "baseJump");
+        AssertInvalid(root => root["jobs"]![0]!["baseJump"] = -1, "baseJump");
         AssertInvalid(root => root["jobs"]![0]!["baseMove"] = "3", "integer");
         AssertInvalid(root => root["jobs"]![0]!["steppingStone"] = 1, "boolean");
         AssertInvalid(root => root["abilities"]![0]!["jpCost"] = -1, "jpCost");

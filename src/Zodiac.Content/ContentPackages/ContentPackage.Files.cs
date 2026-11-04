@@ -1,4 +1,5 @@
 using System.Text;
+using Zodiac.Content.Configuration;
 
 namespace Zodiac.Content.ContentPackages;
 
@@ -7,7 +8,9 @@ public sealed partial class ContentPackage
     private static readonly UTF8Encoding StrictUtf8 = new(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
 
     /// <summary>Reads a bounded UTF-8 package file. File access failures remain ordinary I/O exceptions.</summary>
-    public static ContentPackage Load(string path)
+    public static ContentPackage Load(string path) => Load(path, JobStatLimits.Default);
+
+    public static ContentPackage Load(string path, JobStatLimits? jobStatLimits)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(path);
         using var input = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
@@ -22,7 +25,7 @@ public sealed partial class ContentPackage
                 throw new ContentPackageValidationException(null, null, "$", $"File exceeds {MaxJsonBytes} UTF-8 bytes.");
             bytes.Write(chunk, 0, count);
         }
-        try { return ReadJson(StrictUtf8.GetString(bytes.GetBuffer(), 0, (int)bytes.Length)); }
+        try { return ReadJson(StrictUtf8.GetString(bytes.GetBuffer(), 0, (int)bytes.Length), jobStatLimits); }
         catch (DecoderFallbackException exception)
         {
             throw new ContentPackageValidationException(null, null, "$", "File is not valid UTF-8.", exception);

@@ -63,7 +63,7 @@ public sealed class BaseJobBattleSetupTests
         Assert.Equal(3, fast.InitialState.Units[0].MovementProfile.Move);
         Assert.Equal(7, fast.InitialState.Units[0].MovementProfile.Jump);
         Assert.False(fast.InitialState.Units[0].HasMoved);
-        Assert.Equal(1, slow.Definitions[0].Job.BaseMove);
+        Assert.Equal(1, slow.Definitions[0].Job.JobStats.BaseMove);
     }
 
     [Fact]
@@ -90,7 +90,7 @@ public sealed class BaseJobBattleSetupTests
         Assert.Throws<ArgumentException>(() => new DefinitionCatalog(new[] { job },
             Array.Empty<SkillsetDefinition>(), Catalog().Abilities));
         Assert.Throws<ArgumentException>(() => new DefinitionCatalog(new[] { job },
-            Catalog().Skillsets, Array.Empty<AbilityDefinition>()));
+            Catalog().Skillsets, Array.Empty<AbilityMetadataDefinition>()));
     }
 
     [Fact]
@@ -155,7 +155,7 @@ public sealed class BaseJobBattleSetupTests
         new(5, 1, 1, new[] { new BattleTile(Ground, 10, movementFlags: originFlags), new(Ground, 10),
             new(Ground, 10), new(Ground, 10), new(Ground, 10) });
     private static DefinitionCatalog Catalog(int move = 2, int jump = 3, bool steppingStone = false) =>
-        new(new[] { new JobDefinition(Recruit, Practice, move, jump, steppingStone, new[] { Innate, Focus }) },
+        new(new[] { new JobDefinition(Recruit, Practice, new(move, jump), steppingStone, new[] { Innate, Focus }) },
             new[] { new SkillsetDefinition(Practice, new[] { new SkillsetSlot(0, Focus), new(1, null), new(2, Focus) }) },
-            new[] { new AbilityDefinition(Focus, 7, 0, 1, new byte[4]), new(Innate, 9, 0, 1, new byte[4]) });
+            new[] { new AbilityMetadataDefinition(Focus, 7, 0, 1, new byte[4]), new(Innate, 9, 0, 1, new byte[4]) });
 }

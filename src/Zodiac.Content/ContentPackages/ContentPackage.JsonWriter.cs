@@ -25,8 +25,8 @@ public sealed partial class ContentPackage
                 writer.WriteStartObject();
                 writer.WriteString("id", job.Id.Value);
                 writer.WriteString("primarySkillsetId", job.PrimarySkillsetId.Value);
-                writer.WriteNumber("baseMove", job.BaseMove);
-                writer.WriteNumber("baseJump", job.BaseJump);
+                writer.WriteNumber("baseMove", job.JobStats.BaseMove);
+                writer.WriteNumber("baseJump", job.JobStats.BaseJump);
                 writer.WriteBoolean("steppingStone", job.SteppingStone);
                 writer.WriteStartArray("innateAbilityIds");
                 foreach (AbilityId id in job.InnateAbilityIds) writer.WriteStringValue(id.Value);
@@ -52,7 +52,7 @@ public sealed partial class ContentPackage
             }
             writer.WriteEndArray();
             writer.WriteStartArray("abilities");
-            foreach (AbilityDefinition ability in Abilities.OrderBy(ability => ability.Id.Value, StringComparer.Ordinal))
+            foreach (AbilityMetadataDefinition ability in Abilities.OrderBy(ability => ability.Id.Value, StringComparer.Ordinal))
             {
                 writer.WriteStartObject();
                 writer.WriteString("id", ability.Id.Value);
@@ -64,7 +64,7 @@ public sealed partial class ContentPackage
                 if (ability.ShowName) writer.WriteStringValue("show-name");
                 if (!ability.CanLearnWithJp) writer.WriteStringValue("cannot-learn-with-jp");
                 writer.WriteEndArray();
-                writer.WriteNumber("unknownTypeBitsRaw", ability.UnknownTypeFlags);
+                writer.WriteNumber("unknownTypeBitsRaw", ability.UnknownTypeBit4 ? 16 : 0);
                 writer.WriteStartArray("aiFlagsRaw");
                 foreach (byte flag in ability.AiFlagsRaw) writer.WriteNumberValue(flag);
                 writer.WriteEndArray();

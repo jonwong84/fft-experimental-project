@@ -20,7 +20,7 @@ own state; changing a separately created authored catalog cannot alter old snaps
 
 The mapping is deliberately narrow:
 
-- Job `BaseMove` becomes movement-profile Move, and `BaseJump` becomes Jump.
+- Job `JobStats.BaseMove` becomes movement-profile Move, and `JobStats.BaseJump` becomes Jump.
   `src/main/party.c::unit_copy_job_data` copies Move and masks packed Jump with
   `JOB_JUMP_VALUE_MASK`; the importer already separates the value and stepping-stone
   flag. These are source-traced base values, not equipment-adjusted effective values.

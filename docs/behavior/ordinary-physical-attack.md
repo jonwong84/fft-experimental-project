@@ -106,7 +106,7 @@ Each vector resets to the complete configuration above unless overridden. All RN
 
 ## Required child work before ZOD-022
 
-The existing minimal `AbilityDefinition`/`JobDefinition` cannot execute this attack. Add bounded FFT-owned schema/fixtures rather than a general formula interpreter:
+The existing minimal `AbilityMetadataDefinition`/`JobDefinition` cannot execute this attack. Add bounded FFT-owned schema/fixtures rather than a general formula interpreter:
 
 1. A typed item/weapon identity and immutable supported weapon definition: item category/type, range-shape flags, formula selector, power, evade, element, proc/status reference. Validate the restricted sword profile explicitly. Supply Attack command/menu identity, ability0 behavior and an empty status record without claiming unverified imported rows. Preserve unknown original bytes in the import envelope.
 2. Effective unit combat state/profile: PA, class/equipment evades, facing, current/maxHP, MP as required, zodiac identity, statuses/affinities and absence checks, active/turn/action/movement flags, KO count and explicit RNG state. Definition metadata stays separate from mutable unit state; generic engine contracts must not acquire FFT formulas or PS1 flag layouts.

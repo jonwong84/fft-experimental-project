@@ -1,12 +1,15 @@
 using System.Text;
 using System.Text.Json;
 using Zodiac.Content.Definitions;
+using Zodiac.Content.Configuration;
 
 namespace Zodiac.Content.ContentPackages;
 
 public sealed partial class ContentPackage
 {
-    public static ContentPackage ReadJson(string json)
+    public static ContentPackage ReadJson(string json) => ReadJson(json, JobStatLimits.Default);
+
+    public static ContentPackage ReadJson(string json, JobStatLimits? jobStatLimits)
     {
         if (json is null) throw new ContentPackageValidationException(null, null, "$", "JSON is required.");
         if (json.Length > MaxJsonBytes || Encoding.UTF8.GetByteCount(json) > MaxJsonBytes)
@@ -14,7 +17,7 @@ public sealed partial class ContentPackage
         try
         {
             using JsonDocument document = JsonDocument.Parse(json, new JsonDocumentOptions { MaxDepth = MaxJsonDepth });
-            return new PackageJsonReader(document.RootElement).Read();
+            return new PackageJsonReader(document.RootElement, jobStatLimits ?? JobStatLimits.Default).Read();
         }
         catch (JsonException exception)
         {
@@ -27,11 +30,13 @@ public sealed partial class ContentPackage
         private readonly JsonElement root;
         private readonly string? packageId;
         private readonly PackageJsonValidation validation;
+        private readonly JobStatLimits jobStatLimits;
         private int referenceCount;
 
-        internal PackageJsonReader(JsonElement root)
+        internal PackageJsonReader(JsonElement root, JobStatLimits jobStatLimits)
         {
             this.root = root;
+            this.jobStatLimits = jobStatLimits;
             packageId = GuessString(root, "packageId");
             validation = new PackageJsonValidation(packageId);
         }
@@ -60,7 +65,7 @@ public sealed partial class ContentPackage
             var skillsets = new List<SkillsetDefinition>();
             foreach (JsonElement skillset in Array(root.GetProperty("skillsets"), null, "$.skillsets", MaxDefinitionsPerKind))
                 skillsets.Add(ReadSkillset(skillset, $"$.skillsets[{skillsets.Count}]"));
-            var abilities = new List<AbilityDefinition>();
+            var abilities = new List<AbilityMetadataDefinition>();
             foreach (JsonElement ability in Array(root.GetProperty("abilities"), null, "$.abilities", MaxDefinitionsPerKind))
                 abilities.Add(ReadAbility(ability, $"$.abilities[{abilities.Count}]"));
             return new ContentPackage(package, profile, kind, required, jobs, skillsets, abilities);
@@ -73,8 +78,8 @@ public sealed partial class ContentPackage
             string id = Id(node.GetProperty("id"), record, path + ".id");
             var primary = new SkillsetId(Id(node.GetProperty("primarySkillsetId"), id, path + ".primarySkillsetId"));
             CountReferences(1, id, path + ".primarySkillsetId");
-            int move = Integer(node.GetProperty("baseMove"), id, path + ".baseMove", 0, 255);
-            int jump = Integer(node.GetProperty("baseJump"), id, path + ".baseJump", 0, 127);
+            int move = Integer(node.GetProperty("baseMove"), id, path + ".baseMove", 0, jobStatLimits.MaxMove);
+            int jump = Integer(node.GetProperty("baseJump"), id, path + ".baseJump", 0, jobStatLimits.MaxJump);
             JsonElement stepping = node.GetProperty("steppingStone");
             if (stepping.ValueKind is not (JsonValueKind.True or JsonValueKind.False))
                 throw Failure(id, path + ".steppingStone", "Expected a boolean.");
@@ -82,7 +87,7 @@ public sealed partial class ContentPackage
             foreach (JsonElement innate in Array(node.GetProperty("innateAbilityIds"), id, path + ".innateAbilityIds", MaxInnatesPerJob))
                 innates.Add(new AbilityId(Id(innate, id, $"{path}.innateAbilityIds[{innates.Count}]")));
             CountReferences(innates.Count, id, path + ".innateAbilityIds");
-            return new JobDefinition(new JobId(id), primary, move, jump, stepping.GetBoolean(), innates);
+            return new JobDefinition(new JobId(id), primary, new(move, jump, jobStatLimits), stepping.GetBoolean(), innates);
         }
 
         private SkillsetDefinition ReadSkillset(JsonElement node, string path)
@@ -106,17 +111,16 @@ public sealed partial class ContentPackage
             return new SkillsetDefinition(new SkillsetId(id), slots);
         }
 
-        private AbilityDefinition ReadAbility(JsonElement node, string path)
+        private AbilityMetadataDefinition ReadAbility(JsonElement node, string path)
         {
             string? record = GuessString(node, "id");
             Fields(node, record, path, "id", "jpCost", "learnOnHitRateRaw", "serializedClassRaw", "flags", "unknownTypeBitsRaw", "aiFlagsRaw");
             string id = Id(node.GetProperty("id"), record, path + ".id");
             int cost = Integer(node.GetProperty("jpCost"), id, path + ".jpCost", 0, 65535);
             int rate = Integer(node.GetProperty("learnOnHitRateRaw"), id, path + ".learnOnHitRateRaw", 0, 255);
-            int raw = Integer(node.GetProperty("serializedClassRaw"), id, path + ".serializedClassRaw", 0, 15);
+            int serializedClass = Integer(node.GetProperty("serializedClassRaw"), id, path + ".serializedClassRaw", 0, 15);
             int unknown = Integer(node.GetProperty("unknownTypeBitsRaw"), id, path + ".unknownTypeBitsRaw", 0, 16);
             if (unknown is not (0 or 16)) throw Failure(id, path + ".unknownTypeBitsRaw", "Only opaque bit 0x10 (0 or 16) is permitted.");
-            raw |= unknown;
             var flags = new HashSet<string>(StringComparer.Ordinal);
             int flagIndex = 0;
             foreach (JsonElement flag in Array(node.GetProperty("flags"), id, path + ".flags", 3))
@@ -124,13 +128,8 @@ public sealed partial class ContentPackage
                 string flagPath = $"{path}.flags[{flagIndex++}]";
                 string name = Text(flag, id, flagPath);
                 if (!flags.Add(name)) throw Failure(id, flagPath, $"Duplicate named flag '{name}'.");
-                raw |= name switch
-                {
-                    "learn-on-hit" => 0x20,
-                    "show-name" => 0x40,
-                    "cannot-learn-with-jp" => 0x80,
-                    _ => throw Failure(id, flagPath, $"Unknown named flag '{name}'."),
-                };
+                if (name is not ("learn-on-hit" or "show-name" or "cannot-learn-with-jp"))
+                    throw Failure(id, flagPath, $"Unknown named flag '{name}'.");
             }
             JsonElement ai = node.GetProperty("aiFlagsRaw");
             JsonElement.ArrayEnumerator aiValues = Array(ai, id, path + ".aiFlagsRaw", 4);
@@ -138,7 +137,9 @@ public sealed partial class ContentPackage
             var aiBytes = new List<byte>();
             foreach (JsonElement value in aiValues)
                 aiBytes.Add((byte)Integer(value, id, $"{path}.aiFlagsRaw[{aiBytes.Count}]", 0, 255));
-            return new AbilityDefinition(new AbilityId(id), cost, rate, (byte)raw, aiBytes);
+            return new AbilityMetadataDefinition(new AbilityId(id), cost, rate, serializedClass, aiBytes,
+                learnOnHit: flags.Contains("learn-on-hit"), showName: flags.Contains("show-name"),
+                canLearnWithJp: !flags.Contains("cannot-learn-with-jp"), unknownTypeBit4: unknown != 0);
         }
 
         private void CountReferences(int count, string record, string path)

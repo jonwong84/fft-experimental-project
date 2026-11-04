@@ -1,9 +1,9 @@
-using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 using Zodiac.Content.BattleSetup;
 using Zodiac.Content.ContentPackages;
 using Zodiac.Content.Definitions;
 using Zodiac.Framework;
+using Zodiac.Framework.Random;
 
 namespace Zodiac.Content.Samples;
 
@@ -18,7 +18,7 @@ public static class SyntheticBasicSkillBattle
     public static TerrainSurfaceId Ground => new("sample:terrain/ordinary-ground");
 
     public static ContentPackage Metadata() => new("sample:package/basic-skill-metadata", ProfileId, ContentPackageKind.Baseline, null,
-        [new(new("sample:job/trainee"), new("sample:skillset/basic"), 2, 2, false, [])],
+        [new(new("sample:job/trainee"), new("sample:skillset/basic"), new(2, 2), false, [])],
         [new(new("sample:skillset/basic"), [new(0, Accumulate), new(2, ThrowStone)])],
         [new(Accumulate, 123, 37, 1, new byte[4]), new(ThrowStone, 90, 80, 1, new byte[4])]);
     public static ImmediateAbilityContentPackage SelfEffects(ContentPackage metadata) =>

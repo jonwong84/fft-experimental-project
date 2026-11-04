@@ -43,7 +43,7 @@ public static class OriginalThrowStoneImporter
         if (declaredJob?.PrimarySkillsetId.Value != skillset?.Id.Value || skillset is null ||
             !skillset.Slots.Any(slot => slot.Slot == 2 && slot.AbilityId?.Value == AbilityId) || learning is null ||
             learning.JpCost != primary.JpCost || learning.LearnOnHitRateRaw != primary.LearnRate ||
-            learning.TypeFlagsRaw != primary.TypeFlags || !learning.AiFlagsRaw.SequenceEqual(primary.AiFlags))
+            OriginalAbilityMetadataAdapter.EncodeTypeFlags(learning) != primary.TypeFlags || !learning.AiFlagsRaw.SequenceEqual(primary.AiFlags))
             throw new InvalidDataException("Selected metadata differs from the Throw Stone job/slot/learning records.");
         // Compare the whole canonical dependency, including job fields and other slots; never rewrite it.
         if (metadata.ToJson() != OriginalMetadataImporter.DecodeSelection(executable).Package.ToJson())

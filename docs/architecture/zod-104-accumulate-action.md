@@ -53,7 +53,7 @@ that a unit has learned the ability.** The first authored battle must explicitly
 grant this action to its actor; a learning/job progression system is outside scope.
 The shared content adapter must validate that the grant resolves an action-slot
 member and an executable effect, rather than inferring execution from a name or
-learning-only `AbilityDefinition`.
+learning-only `AbilityMetadataDefinition`.
 
 `src/battle/combat/targets.c::target_range_set_for_action` returns no manual
 targeting for Auto + range 0 without Weapon Range.

@@ -31,8 +31,11 @@ public sealed class JobEditorDocumentTests : IDisposable
         Assert.Equal(new int[] { 3, 1, 9, 8 }, copy.Skillsets[0].Slots.Select(slot => slot.Slot));
         Assert.Equal(new string?[] { "authored:ability/focus", null, "authored:ability/focus", "authored:ability/innate" }, copy.Skillsets[0].Slots.Select(slot => slot.AbilityId?.Value));
         Assert.Equal(2, copy.Abilities.Length); // An unrelated source ability is not copied.
-        AbilityDefinition focus = copy.Abilities.Single(ability => ability.Id.Value == "authored:ability/focus");
-        Assert.Equal(0xf7, focus.TypeFlagsRaw); Assert.Equal(177, focus.LearnOnHitRateRaw);
+        AbilityMetadataDefinition focus = copy.Abilities.Single(ability => ability.Id.Value == "authored:ability/focus");
+        Assert.Equal(7, focus.SerializedClassRaw);
+        Assert.True(focus.LearnOnHit); Assert.True(focus.ShowName);
+        Assert.False(focus.CanLearnWithJp); Assert.True(focus.UnknownTypeBit4);
+        Assert.Equal(177, focus.LearnOnHitRateRaw);
         Assert.Equal(new byte[] { 0, 17, 128, 255 }, focus.AiFlagsRaw);
         Assert.True(document.IsDirty); Assert.Null(document.ExportPath);
         Assert.Equal("sample:job/recruit", source.Jobs[0].Id.Value);
@@ -50,13 +53,12 @@ public sealed class JobEditorDocumentTests : IDisposable
     [Theory]
     [InlineData("invalid", "2", ".baseMove")]
     [InlineData("-1", "2", ".baseMove")]
-    [InlineData("256", "2", ".baseMove")]
     [InlineData("1.5", "2", ".baseMove")]
     [InlineData("1e2", "2", ".baseMove")]
     [InlineData("", "2", ".baseMove")]
     [InlineData("2147483648", "2", ".baseMove")]
     [InlineData("2", "-1", ".baseJump")]
-    [InlineData("2", "128", ".baseJump")]
+    [InlineData("2", "2147483648", ".baseJump")]
     [InlineData("2", "no", ".baseJump")]
     public void Invalid_numeric_draft_is_preserved_with_shared_field_diagnostic(string move, string jump, string field)
     {
@@ -64,7 +66,7 @@ public sealed class JobEditorDocumentTests : IDisposable
         ContentPackageValidationException error = Assert.Throws<ContentPackageValidationException>(() => document.Validate());
         Assert.EndsWith(field, error.FieldPath); Assert.Equal("authored:job/recruit", error.RecordId);
         Assert.Equal(move, document.MoveText); Assert.Equal(jump, document.JumpText);
-        Assert.True(document.IsDirty); Assert.Equal(1, document.Source.Jobs[0].BaseMove);
+        Assert.True(document.IsDirty); Assert.Equal(1, document.Source.Jobs[0].JobStats.BaseMove);
     }
 
     [Theory]
@@ -83,10 +85,26 @@ public sealed class JobEditorDocumentTests : IDisposable
     [Theory]
     [InlineData("0", "0", "0")]
     [InlineData("255", "127", "65535")]
+    [InlineData("512", "256", "65535")]
     public void Supported_metadata_boundaries_round_trip(string move, string jump, string jp)
     {
         var document = NewDraft(); document.EditMovement(move, jump); document.EditJp("authored:ability/focus", jp);
         string json = document.Validate().ToJson(); Assert.Equal(json, ContentPackage.ReadJson(json).ToJson());
+    }
+
+    [Fact]
+    public void Editor_uses_its_explicit_content_limits_without_changing_other_documents()
+    {
+        var limited = new JobEditorDocument(Source(), new(maxMove: 10, maxJump: 8));
+        limited.CreateCopy(Job, "authored:package/recruits");
+        limited.EditMovement("10", "8");
+        Assert.Equal(10, limited.Validate().Jobs[0].JobStats.BaseMove);
+        limited.EditMovement("11", "8");
+        Assert.Equal("$.jobs[0].baseMove", Assert.Throws<ContentPackageValidationException>(() => limited.Validate()).FieldPath);
+        limited.EditMovement("10", "9");
+        Assert.Equal("$.jobs[0].baseJump", Assert.Throws<ContentPackageValidationException>(() => limited.Validate()).FieldPath);
+        var extended = NewDraft(); extended.EditMovement("512", "256");
+        Assert.Equal(512, extended.Validate().Jobs[0].JobStats.BaseMove);
     }
 
     [Fact]
@@ -227,7 +245,7 @@ public sealed class JobEditorDocumentTests : IDisposable
     public void Empty_skillset_and_no_ability_closure_are_supported()
     {
         var source = new ContentPackage("sample:package/empty", "sample:profile/demo", ContentPackageKind.Baseline, null,
-            [new(Job, new("sample:skillset/empty"), 0, 0, false, [])],
+            [new(Job, new("sample:skillset/empty"), new(0, 0), false, [])],
             [new(new("sample:skillset/empty"), [new(0, null)])], []);
         var document = new JobEditorDocument(source); document.CreateCopy(Job, Addon);
         Assert.Empty(document.Abilities); Assert.Empty(document.Preview().AuthoredReachable);
@@ -272,8 +290,10 @@ public sealed class JobEditorDocumentTests : IDisposable
         Assert.Equal(2, document.Validate().Abilities.Length);
     }
     private static ContentPackage Source(bool stepping = false) => new("sample:package/recruits", "sample:profile/demo", ContentPackageKind.Baseline, null,
-        [new(Job, new("sample:skillset/practice"), 1, 3, stepping, [B, A, B])],
+        [new(Job, new("sample:skillset/practice"), new(1, 3), stepping, [B, A, B])],
         [new(new("sample:skillset/practice"), [new(3, A), new(1, null), new(9, A), new(8, B)])],
-        [new(A, 50, 177, 0xf7, [0, 17, 128, 255]), new(B, 0, 0, 0x10, [255, 0, 0, 1]),
+        [new(A, 50, 177, 7, [0, 17, 128, 255],
+            learnOnHit: true, showName: true, canLearnWithJp: false, unknownTypeBit4: true),
+            new(B, 0, 0, 0, [255, 0, 0, 1], unknownTypeBit4: true),
             new(new("sample:ability/unrelated"), 1, 0, 0, [0, 0, 0, 0])]);
 }

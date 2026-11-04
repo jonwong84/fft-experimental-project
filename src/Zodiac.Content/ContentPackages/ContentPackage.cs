@@ -24,11 +24,11 @@ public sealed partial class ContentPackage
     public string? RequiredBaselinePackageId { get; }
     public ImmutableArray<JobDefinition> Jobs { get; }
     public ImmutableArray<SkillsetDefinition> Skillsets { get; }
-    public ImmutableArray<AbilityDefinition> Abilities { get; }
+    public ImmutableArray<AbilityMetadataDefinition> Abilities { get; }
 
     public ContentPackage(string packageId, string profileId, ContentPackageKind kind,
         string? requiredBaselinePackageId, IEnumerable<JobDefinition> jobs,
-        IEnumerable<SkillsetDefinition> skillsets, IEnumerable<AbilityDefinition> abilities)
+        IEnumerable<SkillsetDefinition> skillsets, IEnumerable<AbilityMetadataDefinition> abilities)
     {
         PackageId = ValidateId(packageId, packageId, null, "$.packageId");
         ProfileId = ValidateId(profileId, PackageId, null, "$.profileId");

@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using Zodiac.Content.Definitions.Job;
 
 namespace Zodiac.Content.Definitions;
 
@@ -7,18 +8,20 @@ public sealed class JobDefinition
 {
     public JobId Id { get; }
     public SkillsetId PrimarySkillsetId { get; }
-    public int BaseMove { get; }
-    public int BaseJump { get; }
+    public JobStats JobStats { get; }
     public bool SteppingStone { get; }
     public ImmutableArray<AbilityId> InnateAbilityIds { get; }
 
-    public JobDefinition(JobId id, SkillsetId primarySkillsetId, int baseMove, int baseJump,
-        bool steppingStone, IEnumerable<AbilityId> innateAbilityIds)
+    public JobDefinition(
+        JobId id,
+        SkillsetId primarySkillsetId,
+        JobStats jobStats,
+        bool steppingStone,
+        IEnumerable<AbilityId> innateAbilityIds)
     {
         DefinitionValidation.RequiredId(id.Value, nameof(id));
         DefinitionValidation.RequiredId(primarySkillsetId.Value, nameof(primarySkillsetId));
-        DefinitionValidation.Range(baseMove, byte.MaxValue, nameof(baseMove));
-        DefinitionValidation.Range(baseJump, 0x7f, nameof(baseJump));
+        ArgumentNullException.ThrowIfNull(jobStats);
         ArgumentNullException.ThrowIfNull(innateAbilityIds);
         ImmutableArray<AbilityId> innates = innateAbilityIds.ToImmutableArray();
         foreach (AbilityId innate in innates)
@@ -28,8 +31,7 @@ public sealed class JobDefinition
 
         Id = id;
         PrimarySkillsetId = primarySkillsetId;
-        BaseMove = baseMove;
-        BaseJump = baseJump;
+        JobStats = jobStats;
         SteppingStone = steppingStone;
         InnateAbilityIds = innates;
     }

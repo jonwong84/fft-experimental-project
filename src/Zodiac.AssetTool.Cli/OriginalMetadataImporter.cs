@@ -41,13 +41,13 @@ public static class OriginalMetadataImporter
         if (job.Innates.Any(id => id >= 512))
             throw new InvalidDataException("Squire innate ability reference exceeds the primary ability table (0..511).");
 
-        var abilities = new List<AbilityDefinition>();
+        var abilities = new List<AbilityMetadataDefinition>();
         foreach (ushort index in slots.Concat(job.Innates).Where(id => id != 0).Distinct().Order())
         {
             string id = AbilityName(index);
             OriginalAbilityRecord ability = OriginalMetadataRecords.DecodeAbility(
                 Read("g_ability_data", 0x8005ebf0, 8, index, id));
-            abilities.Add(new(new(id), ability.JpCost, ability.LearnRate, ability.TypeFlags, ability.AiFlags));
+            abilities.Add(OriginalAbilityMetadataAdapter.ToDefinition(new(id), ability));
             // Secondary effects are preserved as opaque records, never interpreted as battle-ready abilities.
             (string table, uint address, int stride, int relativeIndex) = index switch
             {
@@ -69,7 +69,7 @@ public static class OriginalMetadataImporter
         diagnostics.Add($"{jobId}: equipment, growths, class evade, status sets, affinity and presentation fields remain opaque; all 48 source bytes preserved.");
         if ((skillsetBytes[2] & 3) != 0)
             diagnostics.Add($"{skillsetId}: unused low skillset flag bits 0x{skillsetBytes[2] & 3:x2} preserved.");
-        var definition = new JobDefinition(new(jobId), new(skillsetId), job.Move, job.JumpRaw & 0x7f,
+        var definition = new JobDefinition(new(jobId), new(skillsetId), new(job.Move, job.JumpRaw & 0x7f),
             (job.JumpRaw & 0x80) != 0, job.Innates.Where(id => id != 0).Select(id => new AbilityId(AbilityName(id))));
         var skillset = new SkillsetDefinition(new(skillsetId), slots.Select((id, slot) =>
             new SkillsetSlot(slot, id == 0 ? null : new AbilityId(AbilityName(id)))));

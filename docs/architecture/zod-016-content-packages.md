@@ -4,7 +4,7 @@ Date: 2026-10-22. `Zodiac.Content.ContentPackages` now implements the strict JSO
 
 ## Public API and validation stages
 
-`ContentPackage` accepts package/profile IDs, `ContentPackageKind.Baseline` or `.Addon`, nullable required baseline package ID, and collections of the existing immutable `JobDefinition`, `SkillsetDefinition` and `AbilityDefinition`. Get-only properties expose these values and immutable snapshots of each collection. Definitions remain owned by `Zodiac.Content`; Zodiac does not learn FFT content formats or call these file APIs.
+`ContentPackage` accepts package/profile IDs, `ContentPackageKind.Baseline` or `.Addon`, nullable required baseline package ID, and collections of the existing immutable `JobDefinition`, `SkillsetDefinition` and `AbilityMetadataDefinition`. Get-only properties expose these values and immutable snapshots of each collection. Definitions remain owned by `Zodiac.Content`; Zodiac does not learn FFT content formats or call these file APIs.
 
 - `ReadJson(string)` reads the strict v1 format into typed definitions and validates the package.
 - `Load(string)` performs a bounded, strict UTF-8 file read and calls the same reader.
@@ -18,7 +18,7 @@ A baseline must have a null dependency and resolve all its references without ad
 
 The only version accepted is `format: "fft.content-metadata"`, `schemaVersion: 1`. Missing fields, unknown fields, unknown/case-changed flag names, repeated named flags, duplicate JSON properties, wrong primitive/container types, invalid stable IDs, out-of-width integers and unsupported versions fail closed. Integer fields do not accept numeric strings, fractions or exponential notation. Explicit null is legal only for the baseline dependency and empty skillset ability slots. Slots and repeated innate references retain their order.
 
-Known flag names represent bits `0x20`, `0x40` and `0x80`; `unknownTypeBitsRaw` preserves only unnamed bit `0x10`, while `serializedClassRaw` preserves the low nibble. This retains the entire original primary type byte without pretending an unrecognized named instruction is supported. AI flag bytes remain opaque. Source indices and complete original record bytes remain separate future importer/provenance concerns, as described by [ZOD-003](../behavior/job-ability-slice.md), pinned to decomp `611b504d25d4a9b03fab8023d7dbea75fe381d5d`. This task introduces no new source-behavior equivalence claim.
+Known flag names represent original bits `0x20`, `0x40` and `0x80`; `unknownTypeBitsRaw` preserves only unnamed bit `0x10`, while `serializedClassRaw` preserves the low nibble. In memory, learning switches are stored as booleans (`LearnOnHit`, `ShowName`, positive `CanLearnWithJp`), and `UnknownTypeBit4` is an opaque boolean. JSON adapters map these directly to the existing v1 fields without reconstructing a packed type byte. Existing files need no migration. AI flag bytes remain opaque. Source indices and complete original record bytes remain separate importer/provenance concerns, as described by [ZOD-003](../behavior/job-ability-slice.md), pinned to decomp `611b504d25d4a9b03fab8023d7dbea75fe381d5d`. The [current flag mapping](zod-014-typed-definitions.md#definitions-and-preserved-values) records the later reference recheck; this refactor introduces no new source-behavior equivalence claim.
 
 ## Diagnostics
 
@@ -65,9 +65,9 @@ var abilityId = new AbilityId("sample:ability/focus");
 var skillsetId = new SkillsetId("sample:skillset/practice");
 var package = new ContentPackage(
     "sample:package/recruits", "sample:profile/metadata", ContentPackageKind.Baseline, null,
-    [new JobDefinition(new JobId("sample:job/recruit"), skillsetId, 3, 2, false, [])],
+    [new JobDefinition(new JobId("sample:job/recruit"), skillsetId, new(3, 2), false, [])],
     [new SkillsetDefinition(skillsetId, [new SkillsetSlot(0, abilityId)])],
-    [new AbilityDefinition(abilityId, 25, 0, 0x41, [0, 0, 0, 0])]);
+    [new AbilityMetadataDefinition(abilityId, 25, 0, 1, [0, 0, 0, 0], showName: true)]);
 package.Save("content.package.json");
 ```
 

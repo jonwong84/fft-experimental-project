@@ -1,7 +1,7 @@
-using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 using Zodiac.Content.Definitions;
 using Zodiac.Framework;
+using Zodiac.Framework.Random;
 
 namespace Zodiac.Content.BattleSetup;
 
@@ -30,7 +30,7 @@ public sealed class BaseJobUnitPlacement
 
 /// <summary>Immutable definition references; evolving unit state is held separately in BattleState.</summary>
 public sealed record BattleUnitDefinitionBinding(BattleUnitId UnitId, JobDefinition Job,
-    SkillsetDefinition PrimarySkillset, ImmutableArray<AbilityDefinition> Abilities);
+    SkillsetDefinition PrimarySkillset, ImmutableArray<AbilityMetadataDefinition> Abilities);
 
 /// <summary>Validated initial battle and resolved definition bindings for the base-job-only prototype.</summary>
 public sealed class BaseJobBattleSetup
@@ -79,7 +79,7 @@ public sealed class BaseJobBattleSetup
                 throw new NotSupportedException($"Job '{job.Id}' requires stepping-stone movement, which this setup does not implement.");
             if (placement.BodyHeight != 6)
                 throw new NotSupportedException($"Unit '{placement.UnitId}' requires explicit ordinary body height 6 for this prototype.");
-            var profile = new UnitMovementProfile(job.BaseMove, job.BaseJump, placement.BodyHeight,
+            var profile = new UnitMovementProfile(job.JobStats.BaseMove, job.JobStats.BaseJump, placement.BodyHeight,
                 UnitMovementMode.Normal, UnitMovementTraits.None, placement.TerrainCosts);
             for (int layer = 0; layer < map.LayerCount; layer++)
             for (int y = 0; y < map.Depth; y++)
@@ -93,7 +93,7 @@ public sealed class BaseJobBattleSetup
                 throw new ArgumentException($"Unit '{placement.UnitId}' cannot occupy its configured starting terrain.", nameof(placements));
 
             SkillsetDefinition skillset = catalog.GetSkillset(job.PrimarySkillsetId);
-            ImmutableArray<AbilityDefinition> abilities = skillset.Slots.Where(slot => slot.AbilityId is not null)
+            ImmutableArray<AbilityMetadataDefinition> abilities = skillset.Slots.Where(slot => slot.AbilityId is not null)
                 .Select(slot => slot.AbilityId!.Value).Concat(job.InnateAbilityIds).Distinct()
                 .Select(catalog.GetAbility).ToImmutableArray();
             bindings.Add(new(placement.UnitId, job, skillset, abilities));

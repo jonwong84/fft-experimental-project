@@ -275,16 +275,16 @@ internal sealed partial class JobEditorForm : Form
         JobDefinition job = Document.Source.Jobs.Single(value => value.Id == id);
         SkillsetDefinition skillset = Document.Source.Skillsets.Single(value => value.Id == job.PrimarySkillsetId);
         jobTitle.Text = RecordName(id.Value);
-        jobComparison.Text = $"{(EditingDraft ? "Authored copy" : "Original • read-only")}  |  Original Move {job.BaseMove} / Jump {job.BaseJump}  |  {RecordName(skillset.Id.Value)}";
+        jobComparison.Text = $"{(EditingDraft ? "Authored copy" : "Original • read-only")}  |  Original Move {job.JobStats.BaseMove} / Jump {job.JobStats.BaseJump}  |  {RecordName(skillset.Id.Value)}";
         bool wasBinding = binding; binding = true;
-        MoveBox.Text = EditingDraft ? Document.MoveText : job.BaseMove.ToString(System.Globalization.CultureInfo.InvariantCulture);
-        JumpBox.Text = EditingDraft ? Document.JumpText : job.BaseJump.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        MoveBox.Text = EditingDraft ? Document.MoveText : job.JobStats.BaseMove.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        JumpBox.Text = EditingDraft ? Document.JumpText : job.JobStats.BaseJump.ToString(System.Globalization.CultureInfo.InvariantCulture);
         binding = wasBinding;
         string CurrentId(string value) => EditingDraft ? Document.PackageId.Split(':')[0] + value[value.IndexOf(':')..] : value;
         foreach (SkillsetSlot slot in skillset.Slots)
             References.Rows.Add("Skill set", slot.Slot, slot.AbilityId is { } reference ? RecordName(reference.Value) : "(empty)", slot.AbilityId is { } ability ? CurrentId(ability.Value) : "");
         foreach (AbilityId ability in job.InnateAbilityIds) References.Rows.Add("Innate", "—", RecordName(ability.Value), CurrentId(ability.Value));
-        sourceDetails.Text = $"SOURCE • {job.Id}  |  Move {job.BaseMove} / Jump {job.BaseJump} / Stepping stone {job.SteppingStone}\r\nSkillset {skillset.Id}\r\n" +
+        sourceDetails.Text = $"SOURCE • {job.Id}  |  Move {job.JobStats.BaseMove} / Jump {job.JobStats.BaseJump} / Stepping stone {job.SteppingStone}\r\nSkillset {skillset.Id}\r\n" +
             string.Join("; ", skillset.Slots.Select(slot => $"{slot.Slot}: {slot.AbilityId?.Value ?? "empty"}")) +
             $"\r\nInnates: {string.Join(", ", job.InnateAbilityIds)}";
         UpdateEnabled();
@@ -326,11 +326,11 @@ internal sealed partial class JobEditorForm : Form
             {
                 // Use immutable source metadata even when the current draft has invalid numeric text.
                 string sourceId = EditingDraft ? Document.Source.PackageId.Split(':')[0] + id[id.IndexOf(':')..] : id;
-                AbilityDefinition ability = Document.Source.Abilities.Single(value => value.Id.Value == sourceId);
+                AbilityMetadataDefinition ability = Document.Source.Abilities.Single(value => value.Id.Value == sourceId);
                 abilityTitle.Text = RecordName(id);
                 abilityComparison.Text = $"{(EditingDraft ? "Authored copy" : "Original • read-only")}  |  Original: {ability.JpCost} JP";
                 abilityDetails.Text = $"Read-only learning flags\r\nLearn on hit: {ability.LearnOnHit}   •   Show name: {ability.ShowName}   •   Can learn with JP: {ability.CanLearnWithJp}\r\nLearn-on-hit rate (raw): {ability.LearnOnHitRateRaw}";
-                abilityDetails.Tag = $"{id}\r\nType 0x{ability.TypeFlagsRaw:X2}; unknown 0x{ability.UnknownTypeFlags:X2}; AI {string.Join(" ", ability.AiFlagsRaw.Select(value => value.ToString("X2")))}";
+                abilityDetails.Tag = $"{id}\r\nSerialized class {ability.SerializedClassRaw}; unresolved bit 4: {ability.UnknownTypeBit4}; AI {string.Join(" ", ability.AiFlagsRaw.Select(value => value.ToString("X2")))}";
                 learnOnHitFlag.Checked = ability.LearnOnHit; showNameFlag.Checked = ability.ShowName; canLearnFlag.Checked = ability.CanLearnWithJp;
                 learnRate.Text = $"Learn-on-hit rate (raw): {ability.LearnOnHitRateRaw}";
             }

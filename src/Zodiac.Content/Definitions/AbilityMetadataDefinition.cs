@@ -2,37 +2,29 @@ using System.Collections.Immutable;
 
 namespace Zodiac.Content.Definitions;
 
-/// <summary>Confirmed high bits of the PS1 primary ability type byte. These do not classify an ability's effects.</summary>
-[Flags]
-public enum AbilityLearningFlags : byte
-{
-    None = 0,
-    LearnOnHit = 0x20,
-    ShowName = 0x40,
-    CannotLearnWithJp = 0x80,
-}
-
 /// <summary>Immutable learning metadata only; this definition does not supply an executable combat effect.</summary>
-public sealed class AbilityDefinition
+public sealed class AbilityMetadataDefinition
 {
     public AbilityId Id { get; }
     public int JpCost { get; }
     public int LearnOnHitRateRaw { get; }
-    public byte TypeFlagsRaw { get; }
-    public int SerializedClassRaw => TypeFlagsRaw & 0x0f;
-    public byte UnknownTypeFlags => (byte)(TypeFlagsRaw & 0x10);
-    public AbilityLearningFlags LearningFlags => (AbilityLearningFlags)(TypeFlagsRaw & 0xe0);
-    public bool LearnOnHit => (LearningFlags & AbilityLearningFlags.LearnOnHit) != 0;
-    public bool ShowName => (LearningFlags & AbilityLearningFlags.ShowName) != 0;
-    public bool CanLearnWithJp => (LearningFlags & AbilityLearningFlags.CannotLearnWithJp) == 0;
+    /// <summary>Original serialized classification, not an executable effect or the ID-range classification.</summary>
+    public int SerializedClassRaw { get; }
+    public bool LearnOnHit { get; }
+    public bool ShowName { get; }
+    public bool CanLearnWithJp { get; }
+    /// <summary>Unresolved original bit 4, preserved without assigning it gameplay meaning.</summary>
+    public bool UnknownTypeBit4 { get; }
     public ImmutableArray<byte> AiFlagsRaw { get; }
 
-    public AbilityDefinition(AbilityId id, int jpCost, int learnOnHitRateRaw, byte typeFlagsRaw,
-        IEnumerable<byte> aiFlagsRaw)
+    public AbilityMetadataDefinition(AbilityId id, int jpCost, int learnOnHitRateRaw, int serializedClassRaw,
+        IEnumerable<byte> aiFlagsRaw, bool learnOnHit = false, bool showName = false,
+        bool canLearnWithJp = true, bool unknownTypeBit4 = false)
     {
         DefinitionValidation.RequiredId(id.Value, nameof(id));
         DefinitionValidation.Range(jpCost, ushort.MaxValue, nameof(jpCost));
         DefinitionValidation.Range(learnOnHitRateRaw, byte.MaxValue, nameof(learnOnHitRateRaw));
+        DefinitionValidation.Range(serializedClassRaw, 15, nameof(serializedClassRaw));
         ArgumentNullException.ThrowIfNull(aiFlagsRaw);
         ImmutableArray<byte> flags = aiFlagsRaw.ToImmutableArray();
         if (flags.Length != 4)
@@ -43,7 +35,11 @@ public sealed class AbilityDefinition
         Id = id;
         JpCost = jpCost;
         LearnOnHitRateRaw = learnOnHitRateRaw;
-        TypeFlagsRaw = typeFlagsRaw;
+        SerializedClassRaw = serializedClassRaw;
+        LearnOnHit = learnOnHit;
+        ShowName = showName;
+        CanLearnWithJp = canLearnWithJp;
+        UnknownTypeBit4 = unknownTypeBit4;
         AiFlagsRaw = flags;
     }
 }
