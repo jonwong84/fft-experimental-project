@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 190 entries index completed bounded work; they do not mean the full game is complete.
+These 195 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -213,3 +213,8 @@ These 190 entries index completed bounded work; they do not mean the full game i
 - [ZOD-221 — Design one fresh pair command entry](../architecture/zod-221-fresh-pair-command-entry.md)
 - [ZOD-222 — Allow one decision callback to choose a planned Move](../behavior/facing-decision-planned-move.md)
 - [ZOD-223 — Execute one fresh pair command with derived reach and order](../behavior/attack-throw-stone-ai-command-execution.md)
+- [ZOD-224 — Compose a bounded complete pair turn through the unified entry](../behavior/attack-throw-stone-ai-turn-execution.md)
+- [ZOD-225 — Trace bounded Blue-team pair policy](../architecture/zod-225-blue-pair-policy.md)
+- [ZOD-226 — Prepare the certified Blue AI-controlled pair](../behavior/blue-attack-throw-stone-ai.md#preparation--zod-226)
+- [ZOD-227 — Derive Blue pair movement without the NonBlue reach draw](../behavior/blue-attack-throw-stone-ai.md#movement--zod-227)
+- [ZOD-228 — Validate Blue selection and complete turn execution](../behavior/blue-attack-throw-stone-ai.md#selection-and-complete-turns--zod-228)

@@ -57,7 +57,8 @@ ignored `scratch/ai-command-entry-221-223/`. Owner content/editor drafts
 participated in validation and remain excluded from these commits. No C/original
 execution or UI review is claimed.
 
-The next bounded step is composing a complete headless living-pair turn from
-this entry, retained continuation and actual facing receipt, with explicit
-partial-progress recovery. Host/editor activation, complete original AI,
+[ZOD-224](attack-throw-stone-ai-turn-execution.md) composes a complete headless
+living-pair turn from this entry, retained continuation and actual facing
+receipt, with explicit partial-progress recovery. [Bounded Blue support](blue-attack-throw-stone-ai.md)
+reuses the same owners. Host/editor activation, complete original AI,
 terminal battle policy and broad replacement interfaces remain outside scope.

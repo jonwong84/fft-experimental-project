@@ -6,13 +6,11 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-224: compose one complete headless living-pair turn.** The
-[single command entry](behavior/attack-throw-stone-ai-command-execution.md) now
-derives reach/order from one private preparation/selection and applies one actual
-command. Compose it with retained continuation and actual facing receipt; return
-explicit partial progress/recovery on later failure. Preserve source assertions,
-unknown cast-priority and terminal restrictions. No undo of published commands,
-next-turn clock advance, host/editor activation or broad replacement interface.
+**ZOD-229: trace Accumulate AI usefulness, projection and scoring.** Actual
+Accumulate already exists; its hypothetical stat change and usefulness draws need
+source study before expanding the HP/status-only candidate model. Select one
+bounded child without rebuilding ranking or inventing scores. Preserve pair
+execution, unknown-priority/terminal restrictions and deferred battle saves.
 
 The [original AI algorithm guide](architecture/original-ai-algorithm.md) maps
 policy precedence and all core source functions, with bounded implementation
@@ -55,11 +53,12 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-222/223 add [planned Move from one callback](behavior/facing-decision-planned-move.md)
-  and the [single pair command entry](behavior/attack-throw-stone-ai-command-execution.md).
-  One preparation derives reach, then shared kernels select and route actual
-  Move-first/ACT-first/END or post-ACT movement. Existing continuation/receipt
-  authority and per-command recovery are reused; terminal routing stays unsupported.
+- Latest implementation: ZOD-224 adds [complete headless pair turns](behavior/attack-throw-stone-ai-turn-execution.md)
+  with exact partial-progress recovery, using the single fresh command entry and
+  existing continuation/receipt authority. ZOD-226–228 add [bounded Blue support](behavior/blue-attack-throw-stone-ai.md):
+  explicit source player-control flag clear, HP*128/maxHP>=45, retained policy
+  bits and no NonBlue reach-adjustment draw. Both teams reuse scoring/selection/
+  execution. Terminal routing and Blue low-HP/player-controlled policies stay open.
 - Organization: ZOD-219 groups AI source/tests into Shared, Sword, ThrowStone
   and AttackThrowStone folders with stable namespaces; [layout](development/ai-source-layout.md).
   Owner RNG migration is completed as `Zodiac.Framework.Random.RandomStateGenerator`
@@ -71,11 +70,12 @@ without rewriting old evidence.
   eight external boundaries and 11 direct core rand sites at the pinned revision.
   Structural completeness is not full behavioral equivalence or implementation.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
-  [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch.
+  [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
+  [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
 - Validation: locked restore, zero-warning/error Release builds,
-  **4,122 .NET cases** (1,459 Framework, 918 AI, including owner drafts),
+  **4,132 .NET cases** (1,459 Framework, 928 AI, including owner drafts),
   **534 Python tests**, pinned post-ACT source/prepared-data and guide audits pass.
-  Reports and seven full TRX files: ignored `scratch/ai-command-entry-221-223/`.
+  Reports and seven full TRX files: ignored `scratch/ai-turn-blue-224-228/`.
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

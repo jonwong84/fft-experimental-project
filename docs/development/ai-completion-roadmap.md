@@ -38,8 +38,11 @@ and [selection](../behavior/attack-throw-stone-ai-post-act-selection.md) also re
 shared kernels. [Same-tile fallback END](../behavior/attack-throw-stone-ai-fallback-execution.md)
 also exists. [Composed command checks](ai-pair-command-flows.md) cover actual
 turn flows and recovery. The [single command entry](../behavior/attack-throw-stone-ai-command-execution.md)
-now derives reach/order through one private preparation and selection; complete
-headless turn composition is next.
+now derives reach/order through one private preparation and selection.
+[Complete headless turns](../behavior/attack-throw-stone-ai-turn-execution.md) compose
+it with exact continuation/receipt recovery. [Bounded Blue support](../behavior/blue-attack-throw-stone-ai.md)
+shares these owners, with explicit source control/HP admission and no NonBlue
+reach-adjustment draw. Broader Blue policies remain open.
 Source/tests are [grouped by family](ai-source-layout.md) with stable namespaces.
 
 The [ZOD-210 cleanup](ai-pair-selection-refactor.md) shares pair admission and
@@ -62,7 +65,8 @@ read-only reference revision before new tracing. Test count is not a completion 
    Fresh preparation/scenarios/selection and authoritative post-ACT movement/
    settlement are implemented, with explicit score-provenance limits and
    unsupported terminal routing. The single fresh command entry is implemented;
-   compose complete headless turns, then expand real turn/controller coverage.
+   complete headless turns and the admitted Blue branch now share its authority.
+   Expand ability evaluation and real turn/controller coverage next.
    AI midpoint/no-knockback predictions must stay separate from real accuracy,
    damage, knockback and execution draws. Reuse the existing
    [Framework/AI boundary](../architecture/ai-command-boundary.md).
@@ -125,15 +129,11 @@ bounded source-traced children alongside combat, movement and content completion
 do not repeatedly rebuild ranking/selection for each new family. These eight
 areas are a roadmap, not eight already-sized tickets or a promise of strict
 serial execution. Select new children through the backlog and keep deferred work
-deferred. The [ZOD-203 handoff design](../architecture/zod-203-throw-stone-command-boundary.md)
-led to the completed ZOD-204/205 authority primitives, ZOD-206/207 Move-first
-entries and ZOD-208 in-reach ACT-first execution. ZOD-209's pair post-ACT study
-led to ZOD-211 preparation, ZOD-213 movement scenarios and ZOD-214 selection.
-ZOD-215/217/218 complete explicit post-ACT, out-of-reach ACT-first and same-tile
-END entries; ZOD-220 validates composed flows. ZOD-221/222/223 deliver one owning
-fresh command entry through existing Framework transactions, preserving one
-private selection and per-command recovery. ZOD-224 composes complete headless
-turns. The Attack-only list/scenario certificate cannot stand in for a pair.
+deferred. The pair now supports one fresh command entry, complete headless turns
+and the certified Blue branch through shared Framework authority. The next child,
+ZOD-229, studies Accumulate's usefulness, hypothetical PA change and scoring
+before extending the candidate model. Broader control/low-HP/terminal policies
+remain separate. The Attack-only list/scenario certificate cannot stand in for a pair.
 
 Original-AI completion means it can control applicable original encounters and
 automatic units using the required actions, targeting, policies, movement and

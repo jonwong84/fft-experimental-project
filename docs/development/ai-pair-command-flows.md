@@ -18,6 +18,10 @@ advanced RNG; actual rules continue from the verified decision checkpoint.
 
 The recommended [single fresh command entry](../behavior/attack-throw-stone-ai-command-execution.md)
 now derives reach and command order internally from one preparation/selection.
+The [complete-turn driver](../behavior/attack-throw-stone-ai-turn-execution.md)
+composes it with continuation/receipt settlement and exact partial-progress
+recovery. Its admitted NonBlue and [Blue profiles](../behavior/blue-attack-throw-stone-ai.md)
+share these command paths.
 It accepts the same four inputs and returns the actual state, events, path and
 retained continuation when applicable. The explicit phase adapters below remain
 supported. Their original integration tests select fixed admitted scenarios;
@@ -94,6 +98,6 @@ Owner content/editor drafts participate in validation and remain excluded from
 these commits. No original/C execution or interactive UI review is claimed.
 
 This review led to the single fresh pair command entry under ZOD-221–223.
-ZOD-224 composes complete headless turns from that entry and the existing retained
-continuation/facing receipt, preserving explicit partial progress on failure.
+ZOD-224 now composes complete headless turns from that entry and the existing
+retained continuation/facing receipt, preserving explicit partial progress on failure.
 The broad engine replacement contracts under ZOD-100/101 remain deferred.

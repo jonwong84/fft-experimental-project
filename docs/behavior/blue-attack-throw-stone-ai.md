@@ -45,3 +45,37 @@ restores the whole query. Post-ACT Blue uses the same no-draw policy and D0=D1.
 Preparation and movement support landed together so selection could not admit
 Blue with a NonBlue draw schedule. Two scenario families check the source
 streams, in-reach equality, pre/post-ACT behavior, budgets and preserved provenance.
+
+## Selection and complete turns — ZOD-228
+
+Existing pair selectors, single-command dispatch and the complete-turn driver
+reuse the expanded preparation/scenario owners. There is no separate Blue
+candidate, rank, lottery, command or recovery implementation. Actual damage,
+misses and push continue from the changed decision stream through Framework.
+
+The word1/count7 witnesses are:
+
+- In-reach Stone Move-first is unchanged: full settled turn ends `(2102736524,50)`.
+- Move1/distance5 out-of-reach Stone Move-first ends `(2111915288,22)`, one
+  draw earlier than the corresponding NonBlue path.
+- Move0/distance3 ACT-first Stone then fresh movement-only END ends `(744964398,32)`.
+- Move0/distance5 empty END costs10 draws, ending `(267834847,17)` with both
+  unused-choice refunds.
+
+Two integration families cover these literals, actual settled state/events,
+CT/RNG, both actor identities/reordered replay, unknown range-four cast-key
+rejection, exact full-turn budgets and late retained-ACT failure/recovery.
+Combined focused TRX: ignored `scratch/ai-turn-blue-224-228/final-focused-trx/`.
+
+The opt-in Blue control assertion is not a general team/control model. Broader
+automatic policies, low-HP focus, retained event/workspace history, terminal
+battle handling and host activation remain open. Rendering and brief presentation
+pauses still add no simulation time or gameplay RNG.
+
+Locked restore, zero-warning/error Release rebuild, all 4,132 .NET cases
+(928 AI, 1,459 Framework), all 534 Python tests, current coverage and pinned
+source/prepared-data plus algorithm-guide audits pass. Ten new .NET scenario
+families cover this batch. Reports and seven full TRX files are under ignored
+`scratch/ai-turn-blue-224-228/`. Owner content/editor drafts participated in
+validation and remain excluded from these commits. No C/original execution or
+UI review is claimed.

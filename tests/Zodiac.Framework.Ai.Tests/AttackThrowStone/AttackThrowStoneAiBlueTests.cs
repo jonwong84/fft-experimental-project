@@ -87,6 +87,47 @@ public sealed class AttackThrowStoneAiBlueTests
         Assert.Equal(new RandomState(2524885223,9),after.RngState);Assert.All(after.Outcome.Preparation.ActorEntries,e=>Assert.False(e.Usable));
     }
 
+    [Fact]
+    public void Blue_complete_turns_reuse_the_shared_command_driver_with_independent_literal_streams()
+    {
+        // Blue out-of-reach skips the NonBlue adjustment draw; real ACT continues from that changed stream.
+        foreach(var example in new[]{
+            new{Name="In-reach Move-first",State=Ready(),Power=1,Rng=new RandomState(2102736524,50),Decisions=1,Ct=15},
+            new{Name="Out-of-reach Move-first",State=Ready(move:1,target:new(6,1,0)),Power=1,Rng=new RandomState(2111915288,22),Decisions=1,Ct=15},
+            new{Name="Out-of-reach ACT-first",State=Ready(move:0,target:new(4,1,0)),Power=2,Rng=new RandomState(744964398,32),Decisions=2,Ct=35},
+            new{Name="Same-tile END",State=Ready(move:0,target:new(6,1,0)),Power=2,Rng=new RandomState(267834847,17),Decisions=1,Ct=55}})
+        {
+            string before=Snapshot(example.State.Battle);var result=AttackThrowStoneAiTurnExecutionTests.Run(example.State,example.Power,configuration:Config());
+            Assert.True(result.Completed,Serialize(result.Failure));Assert.Null(result.Recovery);Assert.Equal(example.Decisions,result.Decisions.Length);
+            Assert.Equal(example.Rng,result.State.Battle.TurnBattle.Turns.RngState);Assert.Equal(example.Rng,result.State.Battle.TurnBattle.Battle.RngState);
+            Assert.Equal(example.Ct,result.State.Battle.TurnBattle.Turns.Units.Single(u=>u.Id==A).Ct);Assert.Null(result.State.PendingFacing);
+            Assert.Single(result.Events.OfType<FacingSettledEvent>());Assert.Equal(before,Snapshot(example.State.Battle));
+        }
+    }
+
+    [Fact] [Trait("Contract", "QueryIsolation")]
+    public void Blue_provenance_replay_and_partial_recovery_keep_the_existing_authority_boundaries()
+    {
+        foreach(bool second in new[]{false,true})
+        {
+            var input=Ready(move:1,target:new(6,1,0),second:second);var request=FreshRequest(second);string before=Snapshot(input.Battle);
+            var first=AttackThrowStoneAiTurnExecutionTests.Run(input,1,request,Config());Assert.True(first.Completed);
+            var reordered=AttackThrowStoneAiTurnExecutionTests.Run(Ready(move:1,target:new(6,1,0),second:second,reverse:true),1,
+                request with{Policies=request.Policies.Reverse().ToImmutableArray()},Config());Assert.True(reordered.Completed);
+            Assert.Equal(Snapshot(first.State.Battle),Snapshot(reordered.State.Battle));Assert.Equal(Serialize(first.Events),Serialize(reordered.Events));
+            Assert.Equal(before,Snapshot(input.Battle));
+        }
+        var unknown=Ready(move:1,target:new(4,1,0));var rejected=AttackThrowStoneAiTurnExecutionTests.Run(unknown,configuration:Config());
+        Assert.False(rejected.Completed);Assert.Same(unknown,rejected.State);Assert.Empty(rejected.Events);
+        Assert.Equal(AttackThrowStoneAiPreparedSelectionRejection.UnwrittenCastPriority,rejected.Failure!.CommandFailure!.BeforeActFailure!.Reason);
+        var exact=AttackThrowStoneAiTurnExecutionTests.Run(Ready(move:1,target:new(6,1,0),count:ulong.MaxValue-15),1,configuration:Config());
+        Assert.True(exact.Completed);Assert.Equal(ulong.MaxValue,exact.State.Battle.TurnBattle.Turns.RngState.DrawCount);
+        var shortTurn=AttackThrowStoneAiTurnExecutionTests.Run(Ready(move:1,target:new(6,1,0),count:ulong.MaxValue-14),1,configuration:Config());
+        Assert.False(shortTurn.Completed);Assert.Equal(AttackThrowStoneAiTurnStage.RetainedCommand,shortTurn.Failure!.Stage);
+        var retry=AttackThrowStoneAiTurnExecution.Resume(shortTurn.State,shortTurn.Recovery!);
+        Assert.False(retry.Completed);Assert.Same(shortTurn.State,retry.State);Assert.Empty(retry.Events);Assert.Empty(retry.Decisions);
+    }
+
     private static AttackThrowStoneAiSelectionConfiguration Config()=>SelectionConfiguration(Selection,SwordAiScenarioTeam.Blue) with{
         Preparation=new(true,true,true,BlueAiControlled:true)};
     private static AttackThrowStoneAiPreparationResult Prepare(AttackBattleSnapshot state,SwordAiRefreshRequest? request=null,

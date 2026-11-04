@@ -108,7 +108,9 @@ pre-ACT and [post-ACT Attack/Throw Stone preparation](../behavior/attack-throw-s
 See [refresh](zod-156-ai-refresh-prefix.md),
 [pair preparation](zod-195-pair-preparation.md) and [post-ACT pair study](zod-209-pair-post-act.md).
 Full list construction, teams, status timing and special policies are **mapped,
-unported**. Pair post-ACT command execution now uses fresh pair preparation.
+unported**. Pair post-ACT command execution now uses fresh pair preparation;
+the [certified Blue AI-controlled branch](../behavior/blue-attack-throw-stone-ai.md)
+shares it while retaining control/HP boundaries and team-specific policies.
 
 ## 3. Policy precedence
 
@@ -336,8 +338,9 @@ Pair ACT-first now has [both reach entries](../behavior/attack-throw-stone-ai-ou
 plus [fresh same-tile fallback END](../behavior/attack-throw-stone-ai-fallback-execution.md).
 The [single pair command entry](../behavior/attack-throw-stone-ai-command-execution.md)
 derives reach/order from one fresh preparation and routes actual commands.
-Complete turn composition, terminal battle routing and full host activation remain
-work. See [command boundary](ai-command-boundary.md) and
+[Complete headless pair turns](../behavior/attack-throw-stone-ai-turn-execution.md)
+now compose these commands with exact partial-progress recovery. Terminal battle
+routing and full host activation remain work. See [command boundary](ai-command-boundary.md) and
 [composed pair flows](../development/ai-pair-command-flows.md). The source's incremental frame
 suspension is not a save-file feature or a managed command authority mechanism.
 
@@ -402,7 +405,7 @@ execution or a new AI oracle. The [handoff](../PROJECT_HANDOFF.md) records curre
 implementation validation; the original guide inventory reports remain in
 ignored `scratch/ai-algorithm-guide-212/`.
 
-The next implementation is ZOD-224: compose one complete headless living-pair turn.
+The next study is ZOD-229: Accumulate AI usefulness, projection and scoring.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use
 the supported domain and a real consumer, rather than exposing the entire

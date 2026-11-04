@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-224 (AI turn composition).** The single fresh pair command entry ZOD-221–223 is complete.
-There are 34 open tickets below. The 190 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-229 (Accumulate AI source study).** Complete pair turns and bounded Blue support ZOD-224–228 are complete.
+There are 34 open tickets below. The 195 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,19 +29,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-224 — Compose a bounded complete pair turn through the unified entry
+### ZOD-229 — Trace Accumulate AI usefulness, projection and scoring
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-223, ZOD-220
+**Type:** Investigation · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-105, ZOD-185, ZOD-228
 
-Compose the [single fresh command entry](behavior/attack-throw-stone-ai-command-execution.md),
-exact retained continuation and actual facing receipt into one headless living-pair
-turn driver. Derive the next step from actual results without manual reach/order
-selection or speculative retries. Return settled state/events on completion and
-explicit partial progress/recovery data on failure; never undo a published Move
-or ACT. Preserve source fresh-entry assertions, unknown cast-key and terminal
-restrictions. Check Move-first, ACT-first/post-ACT, empty fallback, replay and late
-failure recovery. No next-turn clock advance, host/editor activation, generic
-replacement contract, cached-plan authority or new terminal battle policy.
+Trace the original Accumulate list/usage setup, self targeting, usefulness coin,
+hypothetical PA change and absolute/ranked scoring, including caller order,
+arithmetic widths, draws and state restoration. Compare with implemented actual
+Accumulate rules and the current HP/status-only candidate model; identify required
+data and authority changes before translating. Pin the read-only reference and
+record independently checkable descriptions, then select one bounded child.
+Preserve Attack/Stone and both admitted team paths. No bulk ability port, guessed
+score, cached-plan authority, host/editor activation or battle-save dependency;
+ZOD-106 remains deferred and Accumulate PA remains battle-only.
 
 ## Existing validation gates
 

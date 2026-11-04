@@ -23,6 +23,10 @@ Production entry points are in the family's execution files. Pure selectors
 return diagnostics and plans; they grant no command, receipt or RNG authority.
 `AttackThrowStoneAiCommandExecution` owns one fresh pair decision and derives
 reach/order internally. Earlier explicit-entry adapters remain supported.
+`AttackThrowStoneAiTurnExecution` composes a complete admitted living-pair turn
+and exposes exact partial-progress recovery. NonBlue and explicitly certified
+Blue AI-controlled profiles share these owners; Blue low-HP and player-controlled
+policies remain unsupported.
 Framework owns current-session validation, verified RNG adoption, actual rules,
 paths, continuations and facing receipts. The RNG implementation lives under
 `Zodiac.Framework/Random`; its generic contract is under
