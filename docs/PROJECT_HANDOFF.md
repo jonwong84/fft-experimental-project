@@ -1,19 +1,19 @@
 # Tessera / Zodiac / FFT handoff
 
-Updated 2026-10-30. Read [AGENTS.md](../AGENTS.md), the [active backlog](BACKLOG.md)
+Updated 2026-11-04. Read [AGENTS.md](../AGENTS.md), the [active backlog](BACKLOG.md)
 and the selected task's design before editing. This file describes current state;
 [planning history](history/README.md) holds completed tickets and old checkpoints.
 
 ## Next work
 
-**ZOD-215: execute a fresh pair post-ACT Move or END decision.**
-[Fresh selection](behavior/attack-throw-stone-ai-post-act-selection.md) now owns
-scenarios and eight empty lottery slots, returning MoveOnly with deferred facing.
-Own that query in Framework's existing turn-ending Move/Wait transaction, adopt
-verified RNG once and settle from actual placement. No cached plan, extra ACT,
-continuation token or host activation; predicted pre-ACT D1 is not authority. Terminal input remains
-explicitly unsupported. ACT-first out-of-reach entry, unknown cast
-keys, retained/event workspace history and general lists stay open.
+**ZOD-221: design one fresh pair command entry.** The
+[command-flow review](development/ai-pair-command-flows.md) validates explicit
+Move-first, ACT-first, same-tile END and fresh post-ACT movement/settlement.
+Design routing of one private selection through existing Framework authorities,
+removing manual command-entry selection without duplicate refresh/scoring or
+probe/retry. Preserve per-command failure recovery, exact continuations/receipts,
+unknown cast-priority and terminal restrictions. No cached-plan authority,
+whole-turn rollback, broad replacement interface or host activation.
 
 The [original AI algorithm guide](architecture/original-ai-algorithm.md) maps
 policy precedence and all core source functions, with bounded implementation
@@ -45,8 +45,8 @@ RNG without partial output. Original supplied-scenario APIs stay unchanged. Thes
 pure queries grant no command authority or live RNG commit; execution adapters
 own that separate boundary.
 
-Attack-only post-ACT execution privately owns selection/dispatch, adopts verified RNG,
-and commits either a confirmed path plus actual-receipt facing, or same-tile END.
+Attack-only and pair post-ACT execution privately own selection/dispatch, adopt verified RNG,
+and commit either a confirmed path plus actual-receipt facing, or same-tile END.
 It stops after settlement without a Move-first token, extra Attack or clock advance.
 Full AI search, general multi-entry ranking/lottery, replaceable decision interface
 and presentation activation remain future work.
@@ -56,21 +56,28 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-213/214, [scenarios](behavior/attack-throw-stone-ai-post-act-scenarios.md)
-  and [selection](behavior/attack-throw-stone-ai-post-act-selection.md). Shared
-  scenario/clock/scoring kernels preserve masks, null priorities and D0=D1; eight
-  empty slots produce a pure deferred-facing MoveOnly plan. Nine new scenario
-  families cover actual effects, budgets, late rollback and replay. Execution is still open.
-- Latest investigation: ZOD-212, [unified source algorithm guide](architecture/original-ai-algorithm.md).
+- Latest implementation: ZOD-215/217/218 complete explicit pair
+  [post-ACT Move/END](behavior/attack-throw-stone-ai-post-act-execution.md),
+  [out-of-reach ACT-first](behavior/attack-throw-stone-ai-out-of-reach-act-first.md)
+  and [same-tile fallback END](behavior/attack-throw-stone-ai-fallback-execution.md).
+  ZOD-220 checks composed actual command flows, knockback branch changes and
+  recovery without undoing a published Move/ACT. Terminal routing stays unsupported.
+- Organization: ZOD-219 groups AI source/tests into Shared, Sword, ThrowStone
+  and AttackThrowStone folders with stable namespaces; [layout](development/ai-source-layout.md).
+  Owner RNG migration is completed as `Zodiac.Framework.Random.RandomStateGenerator`
+  / `RandomState`, with generic Tessera contract under Interfaces. Arithmetic,
+  output, counters and persisted algorithm ID are unchanged.
+- Algorithm reference: ZOD-212, [unified source algorithm guide](architecture/original-ai-algorithm.md).
   Ten chapters map initialization, policy precedence, search/evaluation, simulation,
   ranking/lottery, commands and RNG. The source index covers 105 core functions,
   eight external boundaries and 11 direct core rand sites at the pinned revision.
   Structural completeness is not full behavioral equivalence or implementation.
-  [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design.
+  [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
+  [ZOD-216](architecture/zod-216-pair-act-and-end.md) traces remaining ACT/END entries.
 - Validation: locked restore, zero-warning/error Release builds,
-  **4,099 .NET cases** (1,455 Framework, 899 AI, including owner drafts),
+  **4,113 .NET cases** (1,455 Framework, 913 AI, including owner drafts),
   **534 Python tests**, pinned post-ACT source/prepared-data and guide audits pass.
-  Logs and two sets of seven full TRX files: ignored `scratch/ai-pair-post-act-213-214/`.
+  Logs and full TRX checkpoints: ignored `scratch/ai-pair-execution-215-220/`.
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

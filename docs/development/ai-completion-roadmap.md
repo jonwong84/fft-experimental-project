@@ -28,12 +28,17 @@ also applies real Attack/Throw Stone and leaves Move unused; predicted D1
 grants no authority after that ACT.
 Framework's [targeted ACT transaction](../behavior/targeted-ability-decision.md)
 and [targeted Move continuation](../behavior/targeted-move-continuation.md) now
-exist; ACT-first out-of-reach entry and pair post-ACT execution remain work.
+exist; [out-of-reach ACT-first](../behavior/attack-throw-stone-ai-out-of-reach-act-first.md)
+and [pair post-ACT execution](../behavior/attack-throw-stone-ai-post-act-execution.md)
+now reuse those authorities.
 The pair's [post-ACT preparation](../behavior/attack-throw-stone-ai-post-act-preparation.md)
 now reuses fresh refresh and derives retained summaries with both actor entries
 unusable. [Post-ACT movement scenarios](../behavior/attack-throw-stone-ai-post-act-scenarios.md)
 and [selection](../behavior/attack-throw-stone-ai-post-act-selection.md) also reuse
-shared kernels; actual movement/settlement is still pending.
+shared kernels. [Same-tile fallback END](../behavior/attack-throw-stone-ai-fallback-execution.md)
+also exists. [Composed command checks](ai-pair-command-flows.md) cover actual
+turn flows and recovery; a single owning command entry remains a design task.
+Source/tests are [grouped by family](ai-source-layout.md) with stable namespaces.
 
 The [ZOD-210 cleanup](ai-pair-selection-refactor.md) shares pair admission and
 composition/lottery handling while retaining separate scenario/provenance rules.
@@ -49,12 +54,13 @@ read-only reference revision before new tracing. Test count is not a completion 
 ## Remaining work areas
 
 1. **Complete ability decisions through authoritative commands.** Throw Stone's
-   handoff now supports both Move-first branches and in-reach ACT-first. The
+   handoff now supports both Move-first and ACT-first reach branches. The
    [post-ACT study](../architecture/zod-209-pair-post-act.md) traces pair-specific
    refresh/preparation, unused movement and settlement from actual results.
-   Fresh preparation/scenarios/selection are implemented; authoritative post-ACT
-   movement/settlement follows through existing transactions. Add the remaining
-   ACT-first out-of-reach entry with its explicit score-provenance limits.
+   Fresh preparation/scenarios/selection and authoritative post-ACT movement/
+   settlement are implemented, with explicit score-provenance limits and
+   unsupported terminal routing. Design a single fresh command entry without
+   repeating selection, then expand real turn/controller coverage.
    AI midpoint/no-knockback predictions must stay separate from real accuracy,
    damage, knockback and execution draws. Reuse the existing
    [Framework/AI boundary](../architecture/ai-command-boundary.md).
@@ -121,9 +127,11 @@ deferred. The [ZOD-203 handoff design](../architecture/zod-203-throw-stone-comma
 led to the completed ZOD-204/205 authority primitives, ZOD-206/207 Move-first
 entries and ZOD-208 in-reach ACT-first execution. ZOD-209's pair post-ACT study
 led to ZOD-211 preparation, ZOD-213 movement scenarios and ZOD-214 selection.
-ZOD-215 actual post-ACT movement/settlement is the immediate next step; reuse
-existing Framework transactions without duplicating authority or accepting
-cached plans. The Attack-only list/scenario certificate cannot stand in for a pair.
+ZOD-215/217/218 complete explicit post-ACT, out-of-reach ACT-first and same-tile
+END entries; ZOD-220 validates composed flows. ZOD-221 designs one owning fresh
+command entry through existing Framework transactions, preserving one private
+selection and per-command recovery. The Attack-only list/scenario certificate
+cannot stand in for a pair.
 
 Original-AI completion means it can control applicable original encounters and
 automatic units using the required actions, targeting, policies, movement and

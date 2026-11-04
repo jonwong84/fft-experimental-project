@@ -108,7 +108,7 @@ pre-ACT and [post-ACT Attack/Throw Stone preparation](../behavior/attack-throw-s
 See [refresh](zod-156-ai-refresh-prefix.md),
 [pair preparation](zod-195-pair-preparation.md) and [post-ACT pair study](zod-209-pair-post-act.md).
 Full list construction, teams, status timing and special policies are **mapped,
-unported**; pair post-ACT command execution remains the next implementation child.
+unported**. Pair post-ACT command execution now uses fresh pair preparation.
 
 ## 3. Policy precedence
 
@@ -330,10 +330,13 @@ directions, falling back to current/last viable facing. An overlap direction can
 read beyond the four-byte viability array; its retail value remains **unresolved**.
 
 **Implemented, bounded:** Framework-owned real commands, RNG adoption, exact-state
-continuations and completion/facing receipts; Attack-only post-ACT settlement.
-Pair post-ACT execution, terminal battle routing and full host activation remain
+continuations and completion/facing receipts; Attack-only and
+[pair post-ACT settlement](../behavior/attack-throw-stone-ai-post-act-execution.md).
+Pair ACT-first now has [both reach entries](../behavior/attack-throw-stone-ai-out-of-reach-act-first.md),
+plus [fresh same-tile fallback END](../behavior/attack-throw-stone-ai-fallback-execution.md).
+Single-entry routing, terminal battle routing and full host activation remain
 work. See [command boundary](ai-command-boundary.md) and
-[pair post-ACT flow](zod-209-pair-post-act.md). The source's incremental frame
+[composed pair flows](../development/ai-pair-command-flows.md). The source's incremental frame
 suspension is not a save-file feature or a managed command authority mechanism.
 
 ## 9. RNG, suspended work and observable quirks
@@ -397,7 +400,7 @@ execution or a new AI oracle. The [handoff](../PROJECT_HANDOFF.md) records curre
 implementation validation; the original guide inventory reports remain in
 ignored `scratch/ai-algorithm-guide-212/`.
 
-The next implementation is ZOD-215 pair post-ACT command execution and settlement.
+The next design is ZOD-221: one fresh pair command entry without repeated selection.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use
 the supported domain and a real consumer, rather than exposing the entire

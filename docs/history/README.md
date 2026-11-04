@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 181 entries index completed bounded work; they do not mean the full game is complete.
+These 187 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -204,3 +204,9 @@ These 181 entries index completed bounded work; they do not mean the full game i
 - [ZOD-212 — Document the unified original AI algorithm and source index](../architecture/original-ai-algorithm.md)
 - [ZOD-213 — Derive fresh post-ACT pair movement scenarios](../behavior/attack-throw-stone-ai-post-act-scenarios.md)
 - [ZOD-214 — Select a fresh post-ACT pair movement-only fallback](../behavior/attack-throw-stone-ai-post-act-selection.md)
+- [ZOD-215 — Execute a fresh post-ACT pair Move or END decision](../behavior/attack-throw-stone-ai-post-act-execution.md)
+- [ZOD-216 — Trace remaining pair ACT and END dispatch entries](../architecture/zod-216-pair-act-and-end.md)
+- [ZOD-217 — Execute a fresh known-score out-of-reach pair ACT-first decision](../behavior/attack-throw-stone-ai-out-of-reach-act-first.md)
+- [ZOD-218 — Execute a fresh same-tile pair fallback END](../behavior/attack-throw-stone-ai-fallback-execution.md)
+- [ZOD-219 — Organize AI source and tests by decision family](../development/ai-source-layout.md)
+- [ZOD-220 — Validate composed pair command flows and recovery](../development/ai-pair-command-flows.md)
