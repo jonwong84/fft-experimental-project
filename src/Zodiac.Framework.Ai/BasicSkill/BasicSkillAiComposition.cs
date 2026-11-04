@@ -92,7 +92,8 @@ public static class BasicSkillAiComposition
         profile.AttackScan.TargetActive && profile.ThrowStoneScan.TargetActive;
 
     internal static BasicSkillAiFailure? ValidateScans(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,
-        ThrowStoneAiScanScenario scenario, BasicSkillAiProfile profile, RandomState decisionRng)
+        ThrowStoneAiScanScenario scenario, BasicSkillAiProfile profile, RandomState decisionRng,
+        ImmutableArray<AiCastOriginPriority> castOrigins = default)
     {
         var p = profile.Preparation;
         var turn = request.Turn;
@@ -103,7 +104,7 @@ public static class BasicSkillAiComposition
         if (attackAdmission is not null) return AttackFailure(BasicSkillAiStage.Admission, attackAdmission);
         var stoneRequest = new ThrowStoneAiScanRequest(turn.ActorId, request.ThrowStoneAbilityId, turn.TargetId);
         var stoneAdmission = ThrowStoneAiCandidateScan.ValidateInputs(state, stoneRequest, scenario, p.ThrowStone, p.Scoring,
-            profile.Baseline, profile.ThrowStoneScan, decisionRng);
+            profile.Baseline, profile.ThrowStoneScan, decisionRng, castOrigins);
         if (stoneAdmission is not null) return new(BasicSkillAiStage.Admission, ThrowStone: stoneAdmission.Failure);
         return null;
     }
@@ -111,7 +112,8 @@ public static class BasicSkillAiComposition
     // Only owning entries supply their own freshly admitted preparation/prefix. Public diagnostics cannot enter here.
     internal static BasicSkillAiCompositionResult ContinueFromMovement(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,
         ThrowStoneAiScanScenario scenario, BasicSkillAiProfile profile, AccumulateAiPreparationOutcome preparation,
-        AiMovementPrefixOutcome fresh, RandomState rng, RandomState decisionRng)
+        AiMovementPrefixOutcome fresh, RandomState rng, RandomState decisionRng,
+        ImmutableArray<AiCastOriginPriority> castOrigins = default)
     {
         BasicSkillAiCompositionResult Reject(BasicSkillAiFailure failure) => new(false, failure, null, decisionRng);
         var p = profile.Preparation; var turn = request.Turn;
@@ -132,7 +134,7 @@ public static class BasicSkillAiComposition
         int? selfIndex = self.Outcome!.BestCandidateIndex is { } s
             ? Insert(new BasicSkillAiAccumulate(self.Outcome.Candidates[s], fresh.Proximity.Destinations[scenario.ActFirstDestination])) : null;
         var stone = ThrowStoneAiCandidateScan.ContinueFromMovement(state, stoneRequest, scenario, p.ThrowStone, p.Scoring,
-            profile.ThrowStoneScan, fresh, self.RngState, decisionRng);
+            profile.ThrowStoneScan, fresh, self.RngState, decisionRng, castOrigins);
         if (stone.Disposition == ThrowStoneAiScanDisposition.Rejected) return Reject(new(BasicSkillAiStage.ThrowStone, ThrowStone: stone.Failure));
         int? stoneIndex = stone.Outcome!.Candidate is { Evaluation.Score: not null } c
             ? Insert(new BasicSkillAiStone(c, fresh.Proximity.Destinations[c.Candidate.Destination])) : null;

@@ -4,7 +4,8 @@ ZOD-219 groups the current bounded implementations by their supported decision
 family. Source and test projects use matching folders:
 
 - `Shared/`: hypothetical clocks/state, movement prefix, scoring, ranking and
-  lottery kernels. These serve more than one family.
+  lottery kernels and immutable retained-priority knowledge. These serve more
+  than one family.
 - `Sword/`: the original ordinary-sword pilot, its preparation, scenarios,
   scans, selection and execution adapters.
 - `ThrowStone/`: one Throw Stone formula/candidate/scan, used by pair selection.
@@ -20,7 +21,10 @@ family. Source and test projects use matching folders:
   also reuse shared kernels. Supplied and derived complete turns share automatic
   post-ACT reach and exact partial-progress recovery. The derived entry owns
   pre-ACT S/D0/D1 through Shared/AiMovementScenarios and rejects unknown cast
-  priorities unless proved unread. Retained priority history and broader search
+  priorities unless proved unread. Workspace-aware entries can also resolve
+  priorities from earlier owned writes, preserving unknowns and conservative
+  forgetting. They publish knowledge with accepted queries/commands and freeze
+  it in exact turn recovery. Arbitrary event/loader history and broader search
   remain separate work.
 
 Namespaces remain `Zodiac.Framework.Ai` and `Zodiac.Framework.Ai.Tests`; moving

@@ -73,7 +73,8 @@ public static class ThrowStoneAiCandidateScan
 
     internal static ThrowStoneAiScanResult? ValidateInputs(AttackBattleSnapshot state, ThrowStoneAiScanRequest request,
         ThrowStoneAiScanScenario scenario, ThrowStoneAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
-        ThrowStoneAiBaselineProfile baselineProfile, ThrowStoneAiScanProfile scanProfile, RandomState decisionRng)
+        ThrowStoneAiBaselineProfile baselineProfile, ThrowStoneAiScanProfile scanProfile, RandomState decisionRng,
+        ImmutableArray<AiCastOriginPriority> castOrigins = default)
     {
         ThrowStoneAiScanResult Reject(ThrowStoneAiScanStage stage, ThrowStoneAiScanRejection reason,
             int? index = null, ThrowStoneAiBaselineComparisonFailure? detail = null) =>
@@ -88,11 +89,13 @@ public static class ThrowStoneAiCandidateScan
         if (invalid is not null) return Reject(ThrowStoneAiScanStage.Admission, ThrowStoneAiScanRejection.AdmissionRejected, detail: invalid);
         var scoredMask = scenario.ScoredOrigins.ToHashSet(); var scenarioMask = scenario.ScenarioOrigins.ToHashSet();
         var movement = FlatOrdinaryMovement.Evaluate(state, request.ActorId, candidateProfile.Movement);
+        // Only the closed owning composition supplies resolved source keys. Public scans retain fresh-only admission.
+        var knownMask = scoredMask.Union(castOrigins.IsDefault ? [] : castOrigins.Select(c => c.Tile)).ToHashSet();
         if (scoredMask.Count == 0 || scoredMask.Count != scenario.ScoredOrigins.Length ||
             scenarioMask.Count != scenario.ScenarioOrigins.Length || !scoredMask.Contains(scenario.BaselineDestination) ||
-            !scoredMask.Contains(scenario.ActFirstDestination) || !scenarioMask.IsSubsetOf(scoredMask) ||
+            !scoredMask.Contains(scenario.ActFirstDestination) || !scenarioMask.IsSubsetOf(knownMask) ||
             scenarioMask.Count != 0 && !scenarioMask.Contains(scenario.ActFirstDestination) ||
-            !scoredMask.IsSubsetOf(movement.Outcome!.AiOrigins))
+            !scoredMask.IsSubsetOf(movement.Outcome!.AiOrigins) || !scenarioMask.IsSubsetOf(movement.Outcome.AiOrigins))
             return Reject(ThrowStoneAiScanStage.Admission, ThrowStoneAiScanRejection.InvalidScenario);
 
         return null;
@@ -101,7 +104,8 @@ public static class ThrowStoneAiCandidateScan
     // Internal fresh ownership only: shared prefix is never a public cached-result input.
     internal static ThrowStoneAiScanResult ContinueFromMovement(AttackBattleSnapshot state, ThrowStoneAiScanRequest request,
         ThrowStoneAiScanScenario scenario, ThrowStoneAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
-        ThrowStoneAiScanProfile scanProfile, AiMovementPrefixOutcome prefix, RandomState rng, RandomState queryRng)
+        ThrowStoneAiScanProfile scanProfile, AiMovementPrefixOutcome prefix, RandomState rng, RandomState queryRng,
+        ImmutableArray<AiCastOriginPriority> castOrigins = default)
     {
         var tiles = prefix.Movement; int baselineIndex = prefix.BaselineIndex;
         var scenarioMask = scenario.ScenarioOrigins.ToHashSet();
@@ -110,13 +114,15 @@ public static class ThrowStoneAiCandidateScan
         var targetPosition = target!.Position; var actorPosition = actor!.Position;
         // origin_next_take uses >= while walking layer/y/x ascending: later coordinates win a complete key tie.
         // Instant CT does not exclude an otherwise active enemy, even if its turn is already ready.
-        var selected = scanProfile.TargetActive ? tiles.Where(t => scenarioMask.Contains(t.Outcome.Destination) &&
-                Math.Abs(t.Outcome.Destination.X - targetPosition.X) + Math.Abs(t.Outcome.Destination.Y - targetPosition.Y) <= 4)
-            .OrderBy(t => t.OriginKey).ThenByDescending(t => t.Outcome.Destination.Layer)
-            .ThenByDescending(t => t.Outcome.Destination.Y).ThenByDescending(t => t.Outcome.Destination.X).FirstOrDefault() : null;
+        var keys = castOrigins.IsDefault ? tiles.Select(t => new AiCastOriginPriority(t.Outcome.Destination,
+            t.TilePriority, t.Proximity, AiCastPriorityProvenance.Fresh)) : castOrigins;
+        var selected = scanProfile.TargetActive ? keys.Where(t => scenarioMask.Contains(t.Tile) &&
+                Math.Abs(t.Tile.X - targetPosition.X) + Math.Abs(t.Tile.Y - targetPosition.Y) <= 4)
+            .OrderBy(t => t.OriginKey).ThenByDescending(t => t.Tile.Layer)
+            .ThenByDescending(t => t.Tile.Y).ThenByDescending(t => t.Tile.X).FirstOrDefault() : null;
         if (selected is null)
             return new(ThrowStoneAiScanDisposition.NoCandidates, null, new(tiles, baselineIndex, null, null), rng);
-        var origin = selected.Outcome.Destination;
+        var origin = selected.Tile;
         bool actFirst = origin == actorPosition;
         var candidate = new ThrowStoneAiCandidate(request.ActorId, request.AbilityId, request.TargetId,
             actFirst ? scenario.ActFirstDestination : origin, actFirst);

@@ -7,6 +7,8 @@ public sealed record BasicSkillAiDerivedSelectionOutcome(BasicSkillAiScenarioOut
     ImmutableArray<TilePosition> ScanOrigins, BasicSkillAiSelectionOutcome Selection);
 public sealed record BasicSkillAiDerivedSelectionResult(bool Accepted, BasicSkillAiDerivedFailure? Failure,
     BasicSkillAiDerivedSelectionOutcome? Outcome, RandomState RngState);
+public sealed record BasicSkillAiWorkspaceSelectionResult(BasicSkillAiDerivedSelectionResult Query,
+    AiPriorityWorkspace Workspace, ImmutableArray<AiCastOriginPriority> CastOrigins);
 
 /// <summary>Privately derive provenance-safe ranks and run the existing terminal lottery exactly once.</summary>
 /// <remarks>ZOD-249/252. No cached inputs, public score assertions, command authority or live RNG adoption.</remarks>
@@ -15,17 +17,28 @@ public static class BasicSkillAiDerivedSelection
     public static BasicSkillAiDerivedSelectionResult Evaluate(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,
         BasicSkillAiDerivedProfile profile, BasicSkillAiSelectionProfile selection, RandomState decisionRng)
     {
+        ArgumentNullException.ThrowIfNull(state);
+        return EvaluateWithWorkspace(state, request, profile, selection,
+            AiPriorityWorkspace.StartUnknown(state.TurnBattle.Battle.Map), decisionRng).Query;
+    }
+
+    public static BasicSkillAiWorkspaceSelectionResult EvaluateWithWorkspace(AttackBattleSnapshot state,
+        AccumulateAiPreparationRequest request, BasicSkillAiDerivedProfile profile, BasicSkillAiSelectionProfile selection,
+        AiPriorityWorkspace workspace, RandomState decisionRng)
+    {
         BasicSkillAiDerivedComposition.ValidateArguments(state, request, profile); ArgumentNullException.ThrowIfNull(selection);
-        BasicSkillAiDerivedSelectionResult Reject(BasicSkillAiDerivedFailure failure) => new(false, failure, null, decisionRng);
+        ArgumentNullException.ThrowIfNull(workspace); workspace.ValidateMap(state);
+        BasicSkillAiWorkspaceSelectionResult Reject(BasicSkillAiDerivedFailure failure) => new(new(false, failure, null, decisionRng), workspace, []);
         if (!selection.TerminalThrowStoneEntry || !selection.NoDefendSupport || !selection.FreshOrdinarySelectionDefaults)
             return Reject(new(BasicSkillAiDerivedStage.Admission));
-        var composition = BasicSkillAiDerivedComposition.Evaluate(state, request, profile, decisionRng);
+        var owned = BasicSkillAiDerivedComposition.EvaluateWithWorkspace(state, request, profile, workspace, decisionRng);
+        var composition = owned.Query;
         if (!composition.Accepted) return Reject(composition.Failure!);
         var fresh = composition.Outcome!;
         var selected = BasicSkillAiSelection.SelectFresh(new(true, null, fresh.Composition, composition.RngState),
             request.Turn.ActorId, fresh.Scenarios.Movement.BaselineDestination, decisionRng);
         if (!selected.Accepted) return Reject(new(BasicSkillAiDerivedStage.Lottery, LotteryIndex: selected.Failure!.LotteryIndex));
-        return new(true, null, new(fresh.Scenarios, fresh.ScanOrigins, selected.Outcome!), selected.RngState);
+        return new(new(true, null, new(fresh.Scenarios, fresh.ScanOrigins, selected.Outcome!), selected.RngState), owned.Workspace, owned.CastOrigins);
     }
 
     // The live command owner keeps its existing result shape. New stages distinguish provenance/scenario rejection.

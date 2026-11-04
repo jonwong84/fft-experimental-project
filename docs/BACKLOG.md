@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-255 (trace retained cast-priority lifecycle and a bounded consumer).** Fresh derived three-entry scenarios, selection, actual commands and complete turns ZOD-249–254 are complete within explicit provenance guards.
-There are 34 open tickets below. The 221 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-261 (trace content-derived usable ability lists for the supported actions).** Retained priority knowledge, range3/4 selection, actual commands and complete turns ZOD-255–260 are complete within explicit history/invalidation boundaries.
+There are 34 open tickets below. The 227 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,22 +29,21 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-255 — Trace retained cast-priority lifecycle and a bounded consumer
+### ZOD-261 — Trace content-derived usable ability lists for the supported actions
 
-**Type:** Research · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-199, ZOD-254
+**Type:** Research · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-185, ZOD-260
 
-Trace initialization, lifetime, writes and event/status aliases of source cast
-priority cells, including decision/turn boundaries. Use the newly rejected
-three-entry out-of-reach range3/4 cases as the concrete consumer. Compare the
-existing retained-cell study and current fresh proximity/nullable priority
-model before selecting an independently checkable implementation child.
-Determine which history can be represented faithfully and what must remain
-unknown. Do not assume zero, reuse an arbitrary previous score, rescore actor
-insertion or expose general original workspace memory by default. Preserve
-existing derived/supplied APIs, per-command RNG, rollback and exact recovery.
-Pin the read-only source revision. General lists/maps/rosters/policies,
-terminal encounter routing, replacement interfaces and host/editor activation
-remain separate. ZOD-106 stays deferred; PA remains battle-only.
+Trace original usable-list construction, entry order/terminators, primary and
+secondary skillsets, equipment/item/learned grants, hardcoded status entries,
+usage flags and per-unit summaries. Compare current prepared grants/content
+with the certified Attack/Accumulate/Throw Stone lists; distinguish facts that
+can be derived now from missing job/learning/equipment state. Select a bounded
+content-backed child for supported actions without fabricating absent facts
+or imposing original list capacities as managed catalog limits. Preserve
+source order, one preparation/movement owner, ranking/lottery, typed commands,
+priority knowledge/invalidation and exact recovery. Full rosters, other effects,
+broader policies/maps and terminal routing remain separate. Host/editor,
+replacement interfaces and ZOD-106 stay deferred; PA remains battle-only.
 
 ## Existing validation gates
 

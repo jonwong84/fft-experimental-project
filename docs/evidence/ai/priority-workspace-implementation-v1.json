@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-256",
+    "ZOD-257",
+    "ZOD-258",
+    "ZOD-259",
+    "ZOD-260"
+  ],
+  "date": "2026-11-04",
+  "kind": "managed-owned-retained-priority-knowledge",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "00d0fef7425648cf8ce2dedd108ed30940c09a42",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/priority-workspace-source-v1.json",
+  "design": "docs/behavior/ai-priority-workspace.md",
+  "implementationPaths": [
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiCommandExecution.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiComposition.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiDerivedComposition.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiDerivedSelection.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiScenarios.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiTurnExecution.cs",
+    "src/Zodiac.Framework.Ai/Shared/AiPriorityWorkspace.cs",
+    "src/Zodiac.Framework.Ai/ThrowStone/ThrowStoneAiCandidateScan.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiPriorityWorkspaceQueryTests.cs",
+    "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiPriorityWorkspaceExecutionTests.cs"
+  ],
+  "newFrameworkImplementation": false,
+  "newProductionFriendAccess": false,
+  "newPublicSessionOrReceiptConstructors": false,
+  "behavior": {
+    "initialKnowledge": "unknown",
+    "scope": "immutable map-bound tile knowledge; caller owns branch with state/RNG",
+    "numericSeeding": false,
+    "diagnosticImport": false,
+    "freshWrite": "signed16 negated absolute movement score",
+    "writeMask": "current S only",
+    "unmodeledWorkspaceUse": "Forget all knowledge; does not clear retail memory",
+    "differentMap": "argument error; start unknown",
+    "sessionLineageBinding": false,
+    "freshProximity": true,
+    "actorRescored": false,
+    "unwrittenRead": "requires known retained priority or atomic Provenance rejection",
+    "castOrder": "signed16 priority *65536 + fresh byte proximity, later coordinate tie",
+    "notValuableAimConsumed": true,
+    "oldStatelessApisPreserved": true,
+    "queryRollback": "incoming RNG and exact original workspace",
+    "actualCommandRollback": "original workspace unless actual command accepted",
+    "postActWrites": "only accepted fresh movement decision",
+    "retainedActAndFacingWrites": false,
+    "recovery": "exact partial session, frozen workspace, failed stage only",
+    "wholeTurnRollback": false,
+    "clockAdvance": false,
+    "hostActivation": false
+  },
+  "vectors": {
+    "priorHpDifference": {
+      "storedPriorities": [
+        -26,
+        0,
+        26
+      ],
+      "source": "owned fresh queries, not numerical seeds or observed retail history"
+    },
+    "range3Query": {
+      "incomingWord": 1,
+      "incomingCount": 7,
+      "scoreMask": [
+        [
+          2,
+          1,
+          0
+        ]
+      ],
+      "freshStoredPriority": 0,
+      "actorProximity": 7,
+      "scoredProximity": 8,
+      "word": 267834847,
+      "count": 17,
+      "negativeOrZeroRetainedActor": "ACT-first",
+      "positiveRetainedActor": "Move-first"
+    },
+    "actFirstComplete": {
+      "word": 3008955749,
+      "count": 35,
+      "hp": 40,
+      "ct": 15,
+      "decisions": 2,
+      "postActStoredPriority": -26
+    },
+    "moveFirstComplete": {
+      "word": 3791773014,
+      "count": 24,
+      "hp": 40,
+      "ct": 15,
+      "decisions": 1,
+      "storedPriority": 0
+    }
+  },
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4260,
+    "frameworkPassed": 1467,
+    "aiPassed": 1048,
+    "newAiCases": 18,
+    "pythonPassed": 539,
+    "trxReports": 7,
+    "sourcePreparedAudit": true,
+    "pairSourcePreparedAudit": true,
+    "prioritySourceFingerprints": true,
+    "algorithmGuideAudit": true,
+    "coverageAudit": true,
+    "reports": "scratch/priority-workspace-255-260/",
+    "ownerDraftsUnchanged": true
+  },
+  "boundaries": [
+    "caller must thread correct branch and forget after unmodeled writer",
+    "no arbitrary event/status/loader memory reconstruction or numerical defaults",
+    "closed ordinary two-unit profiles and explicit policy facts",
+    "no general original lists/rosters/maps/policies, terminal routing, host/editor activation or battle save",
+    "original frame/VSync RNG unresolved"
+  ],
+  "originalExecuted": false,
+  "cExecuted": false
+}

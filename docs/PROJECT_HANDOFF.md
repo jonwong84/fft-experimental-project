@@ -6,14 +6,15 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-255: trace retained cast-priority lifecycle and a bounded consumer.**
-[ZOD-249–254](behavior/derived-basic-skill-ai.md) now derive fresh pre-ACT
-S/D0/D1 and written/unwritten cells, compose source-order actions, select and
-execute complete turns through existing command/recovery owners. Unknown cast
-keys remain explicit rejection; range3/4 out-of-reach cases now provide a
-concrete consumer for the next history/alias study. Preserve old APIs/streams
-and never invent defaults or rescore actor insertion. Broader search/policies,
-terminal encounter routing, UI and battle saves remain separate.
+**ZOD-261: trace content-derived usable ability lists for supported actions.**
+[ZOD-255–260](behavior/ai-priority-workspace.md) now carry immutable priority
+knowledge from owned writes through queries, actual commands and complete turn
+recovery. Known retained actor keys admit range3/4; unknowns still reject.
+Start unknown for each battle/map and forget after unmodeled event/status or
+workspace use. Next replace bounded list assertions where actual grants/content
+support derivation, while recording missing job/learning/equipment facts.
+Preserve old APIs/streams, history boundaries and exact recovery. Broader
+rosters/policies/maps, terminal routing, UI and battle saves remain separate.
 
 The [original AI algorithm guide](architecture/original-ai-algorithm.md) maps
 policy precedence and all core source functions, with bounded implementation
@@ -73,12 +74,16 @@ without rewriting old evidence.
   are preserved byte-for-byte and tracked as deferred scaffolding. The owner
   explicitly left `AbilityToggles` consolidation for later; it is not wired into
   current metadata, the editor or rules. Other unimplemented flag families stay deferred.
-- Latest implementation: [ZOD-250–254 derived three-entry turns](behavior/derived-basic-skill-ai.md)
-  share the existing pair scenario kernel and derive pre-ACT masks/destinations
-  through one preparation/movement evaluation. Provenance guards admit written
-  or proved-unread cast cells, preserving unknown priority rejection. Fresh
-  composition/lottery, actual first command and complete turns reuse existing
-  owners and opaque exact-state recovery. Supplied APIs/results remain supported.
+- Latest implementation: [ZOD-256–260 priority knowledge](behavior/ai-priority-workspace.md)
+  starts unknown and records only owned scenario writes. Fresh cells override
+  history; retained signed priority uses fresh proximity. Resolved range3/4
+  searches share existing scans/ranks/lottery and actual command owners.
+  Whole-query/command failure preserves incoming knowledge; complete turns and
+  exact recovery retain accepted writes, including fresh post-ACT movement.
+  No numeric seeding, source-memory reconstruction or live host activation.
+- [ZOD-250–254 derived three-entry turns](behavior/derived-basic-skill-ai.md)
+  retain the shared pair scenario kernel, one preparation/movement evaluation,
+  written-or-unread stateless guards and complete command/recovery ownership.
 - [ZOD-248 supplied-scenario complete turns](behavior/basic-skill-ai-turn-execution.md)
   retain automatic post-ACT reach, published progress and terminal failure boundaries.
 - [ZOD-244–246 three-entry post-ACT](behavior/basic-skill-ai-post-act.md) retains
@@ -103,12 +108,13 @@ without rewriting old evidence.
   explicit player-control flag clear, HP*128/maxHP>=45 and no NonBlue reach draw.
   Existing Attack/Stone scoring/selection/execution and both teams are preserved;
   terminal routing and Blue low-HP/player-controlled policies remain open.
-- Latest source study: [ZOD-249](architecture/zod-249-three-entry-scenarios.md)
-  pins 35 functions across eight files for source masks, actor insertion,
-  written/retained priority and safe cast-key reads. [ZOD-247](architecture/zod-247-three-entry-turn.md)
-  retains complete turn/recovery evidence; [ZOD-243](architecture/zod-243-three-entry-post-act.md),
-  [self-ACT](architecture/zod-237-self-act-command.md) and
-  [Accumulate](architecture/zod-229-accumulate-ai.md) retain actual PA/entry evidence.
+- Latest source study: [ZOD-255](architecture/zod-255-priority-workspace.md)
+  pins 37 functions across ten files for partial initialization, source score
+  writes, signed cast keys and event status aliases. Unknown startup/event
+  values are not inferred. [ZOD-249](architecture/zod-249-three-entry-scenarios.md)
+  retains mask/actor insertion evidence; [ZOD-247](architecture/zod-247-three-entry-turn.md),
+  [post-ACT](architecture/zod-243-three-entry-post-act.md) and
+  [self-ACT](architecture/zod-237-self-act-command.md) retain command ownership.
 - Organization: AI source/tests use Shared, Sword, ThrowStone, AttackThrowStone,
   Accumulate and BasicSkill folders with stable namespaces; [layout](development/ai-source-layout.md).
   Owner RNG migration is completed as `Zodiac.Framework.Random.RandomStateGenerator`
@@ -123,12 +129,13 @@ without rewriting old evidence.
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
 - Validation: locked restore and zero-warning/error full Release build pass;
-  **4,242 .NET cases** (1,467 Framework, 1,030 AI), **539 Python tests**,
+  **4,260 .NET cases** (1,467 Framework, 1,048 AI), **539 Python tests**,
   pinned-source/prepared-data, algorithm-guide and coverage checks pass.
-  Twenty-one new AI cases cover derived masks/provenance and supplied parity,
-  source-order streams, actual self/Attack/Stone/empty/cap turns, exact/late budgets,
-  all recovery stages, terminal boundaries and both teams/identities/orders.
-  Logs and seven full TRX reports are under ignored `scratch/derived-basic-skill-249-254/`.
+  Eighteen new AI cases cover owned/retained signed keys, fresh proximity/ties,
+  NotValuable aim consumption, history overwrite/invalidation/map binding,
+  literal query/actual streams, exact budgets, all recovery stages, terminal
+  boundaries and old API parity with both teams/actors.
+  Logs and seven full TRX reports are under ignored `scratch/priority-workspace-255-260/`.
   Python uses repository-pinned Pillow 12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow 13.0.0 triggers six existing version guards; WindowsApps Python

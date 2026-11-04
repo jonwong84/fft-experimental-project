@@ -62,8 +62,11 @@ actor entries and the empty lottery.
 add automatic post-ACT reach with one preparation and exact-session recovery
 across published commands. [Derived pre-ACT scenarios and turns](../behavior/derived-basic-skill-ai.md)
 now share pair movement ownership, derive S/D0/D1 and prove cast keys written
-or unread. Unwritten cast priorities still reject; their retained lifecycle,
-broader original policies/rosters/maps and independent validation remain open.
+or unread. [Retained priority knowledge](../behavior/ai-priority-workspace.md)
+now carries owned writes through range3/4 queries, commands and complete turns.
+Unknown/event-written values remain unknown and unmodeled workspace use forgets
+knowledge. Broader original lists/policies/rosters/maps and independent
+validation remain open.
 
 The [ZOD-210 cleanup](ai-pair-selection-refactor.md) shares pair admission and
 composition/lottery handling while retaining separate scenario/provenance rules.
@@ -150,10 +153,11 @@ do not repeatedly rebuild ranking/selection for each new family. These eight
 areas are a roadmap, not eight already-sized tickets or a promise of strict
 serial execution. Select new children through the backlog and keep deferred work
 deferred. The pair now supports one fresh command entry, complete headless turns
-and the certified Blue branch through shared Framework authority. The next child,
-ZOD-229, studies Accumulate's usefulness, hypothetical PA change and scoring
-before extending the candidate model. Broader control/low-HP/terminal policies
-remain separate. The Attack-only list/scenario certificate cannot stand in for a pair.
+and the certified Blue branch through shared Framework authority. Three-entry
+turns now include actual self ACT, derived scenarios and explicit retained
+priority knowledge. Next ZOD-261 studies content-derived usable lists for the
+supported actions. Broader control/low-HP/terminal policies remain separate.
+A certificate for one closed ability list cannot stand in for another list.
 
 Original-AI completion means it can control applicable original encounters and
 automatic units using the required actions, targeting, policies, movement and

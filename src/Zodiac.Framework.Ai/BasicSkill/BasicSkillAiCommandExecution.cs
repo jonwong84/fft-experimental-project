@@ -9,6 +9,7 @@ public enum BasicSkillAiCommandRejection { UnavailableChoices, UnsupportedDispat
 public sealed record BasicSkillAiCommandFailure(BasicSkillAiCommandRejection Reason,
     BasicSkillAiSelectionFailure? Selection = null, FacingDecisionRejection Boundary = FacingDecisionRejection.None);
 public sealed record BasicSkillAiCommandOutcome(BasicSkillAiSelectionOutcome Decision, RandomState DecisionRng, BasicSkillAiCommandKind Kind);
+public sealed record BasicSkillAiWorkspaceCommandResult(BasicSkillAiCommandResult Command, AiPriorityWorkspace Workspace);
 public sealed record BasicSkillAiCommandResult(BasicSkillAiCommandFailure? Failure,
     FacingDecisionResult<BasicSkillAiCommandOutcome> Execution)
 {
@@ -25,6 +26,11 @@ public sealed record BasicSkillAiCommandResult(BasicSkillAiCommandFailure? Failu
 /// No cached plan input, post-ACT reselection, complete turn or host activation.</remarks>
 public static class BasicSkillAiCommandExecution
 {
+    /// <summary>Publish successor priority knowledge only with the accepted actual command.</summary>
+    public static BasicSkillAiWorkspaceCommandResult ExecuteWithWorkspace(FacingTurnState state, AccumulateAiPreparationRequest request,
+        BasicSkillAiDerivedProfile profile, BasicSkillAiSelectionProfile selection, SwordAiCommandDispatchProfile dispatch,
+        AiPriorityWorkspace workspace) => BasicSkillAiCommandPipeline.ExecuteWithWorkspace(state, request, profile, selection, dispatch, workspace);
+
     /// <summary>Derive the fresh scenario and provenance-safe selection inside Framework before issuing one actual command.</summary>
     public static BasicSkillAiCommandResult ExecuteDerived(FacingTurnState state, AccumulateAiPreparationRequest request,
         BasicSkillAiDerivedProfile profile, BasicSkillAiSelectionProfile selection, SwordAiCommandDispatchProfile dispatch)
@@ -53,6 +59,23 @@ internal enum BasicSkillAiDispatchMode { Any, ActFirst, MoveFirst, SameTileEnd }
 // Only owning entry points call this private selection pipeline; public callers cannot supply a selector or plan.
 internal static class BasicSkillAiCommandPipeline
 {
+    internal static BasicSkillAiWorkspaceCommandResult ExecuteWithWorkspace(FacingTurnState state,
+        AccumulateAiPreparationRequest request, BasicSkillAiDerivedProfile profile, BasicSkillAiSelectionProfile selection,
+        SwordAiCommandDispatchProfile dispatch, AiPriorityWorkspace workspace)
+    {
+        ArgumentNullException.ThrowIfNull(state); BasicSkillAiDerivedComposition.ValidateArguments(state.Battle, request, profile);
+        ArgumentNullException.ThrowIfNull(selection); ArgumentNullException.ThrowIfNull(dispatch);
+        ArgumentNullException.ThrowIfNull(workspace); workspace.ValidateMap(state.Battle);
+        var successor = workspace;
+        var result = ExecuteFresh(state, request, profile.Preparation, dispatch, BasicSkillAiDispatchMode.Any,
+            (battle, rng) => {
+                var query = BasicSkillAiDerivedSelection.EvaluateWithWorkspace(battle, request, profile, selection, workspace, rng);
+                successor = query.Workspace;
+                return BasicSkillAiDerivedSelection.ForCommand(query.Query);
+            }, (decision, rng, kind) => new BasicSkillAiCommandOutcome(decision, rng, kind));
+        return new(new(result.Failure, result.Execution), result.Execution.Accepted ? successor : workspace);
+    }
+
     internal static (BasicSkillAiCommandFailure? Failure, FacingDecisionResult<T> Execution) Execute<T>(
         FacingTurnState state, AccumulateAiPreparationRequest request, ThrowStoneAiScanScenario scenario,
         BasicSkillAiProfile profile, BasicSkillAiSelectionProfile selection, SwordAiCommandDispatchProfile dispatch,
@@ -75,7 +98,7 @@ internal static class BasicSkillAiCommandPipeline
             (battle, rng) => BasicSkillAiDerivedSelection.ForCommand(BasicSkillAiDerivedSelection.Evaluate(battle, request, profile, selection, rng)), describe);
     }
 
-    // Only the two owning factories supply selectors. Both reuse the same context, guards, dispatch and typed proposals.
+    // Only closed owning factories supply selectors. All share context, guards, dispatch and typed proposals.
     private static (BasicSkillAiCommandFailure? Failure, FacingDecisionResult<T> Execution) ExecuteFresh<T>(
         FacingTurnState state, AccumulateAiPreparationRequest request, AccumulateAiPreparationConfiguration preparation,
         SwordAiCommandDispatchProfile dispatch, BasicSkillAiDispatchMode mode,

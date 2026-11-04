@@ -125,8 +125,9 @@ reports are in ignored `scratch/derived-basic-skill-249-254/`. Use the
 [existing reproduction and Python/Pillow setup](accumulate-ai.md#validation).
 Historical checkpoint snapshots were not rerun. No host/editor or UI review.
 
-ZOD-255 next traces retained cast-priority lifecycle and its concrete bounded
-consumer. Unknown keys remain rejected pending source-backed representation.
+[ZOD-255–260](ai-priority-workspace.md) subsequently add optional owned priority
+knowledge for the concrete range3/4 consumer. This stateless entry retains its
+unknown-key rejection and original validation checkpoint.
 General lists/maps/rosters/policies, terminal encounter routing, replaceable
 interfaces, frame/VSync RNG and host activation remain separate. ZOD-106 stays
 deferred; boosted PA is battle-only. All owner definition drafts, including

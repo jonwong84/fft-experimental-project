@@ -8,11 +8,21 @@ public sealed record BasicSkillAiScenarioOutcome(AccumulateAiPreparationOutcome 
 public sealed record BasicSkillAiScenarioResult(bool Accepted, BasicSkillAiScenarioFailure? Failure,
     BasicSkillAiScenarioOutcome? Outcome, RandomState RngState);
 internal sealed record BasicSkillAiScenarioCore(BasicSkillAiScenarioResult Result, AiMovementPrefixOutcome? Prefix = null);
+public sealed record BasicSkillAiWorkspaceScenarioResult(BasicSkillAiScenarioResult Query, AiPriorityWorkspace Workspace);
 
 /// <summary>Own fresh three-entry preparation and derived ordinary movement, preserving unknown cells without reading them.</summary>
 /// <remarks>ZOD-249/250. No public cached prefixes, action scans, prior memory, lottery or command authority.</remarks>
 public static class BasicSkillAiScenarios
 {
+    public static BasicSkillAiWorkspaceScenarioResult EvaluateWithWorkspace(AttackBattleSnapshot state,
+        AccumulateAiPreparationRequest request, AccumulateAiPreparationConfiguration configuration,
+        AttackThrowStoneAiScenarioProfile profile, AiPriorityWorkspace workspace, RandomState decisionRng)
+    {
+        ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(workspace); workspace.ValidateMap(state);
+        var query = Evaluate(state, request, configuration, profile, decisionRng);
+        return new(query, query.Accepted ? workspace.Write(query.Outcome!.Movement.Movement) : workspace);
+    }
+
     public static BasicSkillAiScenarioResult Evaluate(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,
         AccumulateAiPreparationConfiguration configuration, AttackThrowStoneAiScenarioProfile profile, RandomState decisionRng) =>
         EvaluateFresh(state, request, configuration, profile, decisionRng).Result;

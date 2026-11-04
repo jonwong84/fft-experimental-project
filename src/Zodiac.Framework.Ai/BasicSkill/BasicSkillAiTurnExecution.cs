@@ -31,7 +31,10 @@ public abstract record BasicSkillAiTurnDecision
 // Frozen only by the two closed owning factories; no public selector/decision callback is accepted.
 internal sealed record BasicSkillAiTurnInputs(AccumulateAiPreparationRequest Request,
     BasicSkillAiPostActConfiguration AfterAct, SwordAiCommandDispatchProfile Dispatch,
-    Func<FacingTurnState, BasicSkillAiCommandResult> First);
+    Func<FacingTurnState, AiPriorityWorkspace?, BasicSkillAiTurnFirstResult> First, AiPriorityWorkspace? Workspace = null);
+internal sealed record BasicSkillAiTurnFirstResult(BasicSkillAiCommandResult Command, AiPriorityWorkspace? Workspace);
+internal sealed record BasicSkillAiTurnRun(BasicSkillAiTurnResult Turn, AiPriorityWorkspace? Workspace);
+public sealed record BasicSkillAiWorkspaceTurnResult(BasicSkillAiTurnResult Turn, AiPriorityWorkspace Workspace);
 
 /// <summary>Opaque in-memory cursor bound to exact partial progress and frozen inputs; not a save or new Framework authority.</summary>
 public sealed class BasicSkillAiTurnRecovery
@@ -57,16 +60,31 @@ public sealed record BasicSkillAiTurnResult(FacingTurnState State, ImmutableArra
 /// speculative retry, next-turn clock, terminal policy, cached-plan input or host activation.</remarks>
 public static class BasicSkillAiTurnExecution
 {
+    public static BasicSkillAiWorkspaceTurnResult ExecuteWithWorkspace(FacingTurnState state, AccumulateAiPreparationRequest request,
+        BasicSkillAiDerivedTurnConfiguration configuration, SwordAiCommandDispatchProfile dispatch, AiPriorityWorkspace workspace)
+    {
+        ArgumentNullException.ThrowIfNull(workspace);
+        var result = Run(state, DerivedInputs(state, request, configuration, dispatch, workspace), BasicSkillAiTurnStage.FirstCommand, null);
+        return new(result.Turn, result.Workspace!);
+    }
+
     public static BasicSkillAiTurnResult ExecuteDerived(FacingTurnState state, AccumulateAiPreparationRequest request,
-        BasicSkillAiDerivedTurnConfiguration configuration, SwordAiCommandDispatchProfile dispatch)
+        BasicSkillAiDerivedTurnConfiguration configuration, SwordAiCommandDispatchProfile dispatch) =>
+        Run(state, DerivedInputs(state, request, configuration, dispatch, null), BasicSkillAiTurnStage.FirstCommand, null).Turn;
+
+    private static BasicSkillAiTurnInputs DerivedInputs(FacingTurnState state, AccumulateAiPreparationRequest request,
+        BasicSkillAiDerivedTurnConfiguration configuration, SwordAiCommandDispatchProfile dispatch, AiPriorityWorkspace? workspace)
     {
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(configuration);
         BasicSkillAiDerivedComposition.ValidateArguments(state.Battle, request, configuration.BeforeAct);
         ArgumentNullException.ThrowIfNull(configuration.Selection); ArgumentNullException.ThrowIfNull(configuration.PostActScenarios);
         ArgumentNullException.ThrowIfNull(dispatch);
-        return Run(state, new(request, configuration.AfterAct, dispatch,
-            current => BasicSkillAiCommandExecution.ExecuteDerived(current, request, configuration.BeforeAct, configuration.Selection, dispatch)),
-            BasicSkillAiTurnStage.FirstCommand, null);
+        workspace?.ValidateMap(state.Battle);
+        return new(request, configuration.AfterAct, dispatch, (current, history) => {
+            if (history is null) return new(BasicSkillAiCommandExecution.ExecuteDerived(current, request, configuration.BeforeAct, configuration.Selection, dispatch), null);
+            var first = BasicSkillAiCommandExecution.ExecuteWithWorkspace(current, request, configuration.BeforeAct, configuration.Selection, dispatch, history);
+            return new(first.Command, first.Workspace);
+        }, workspace);
     }
 
     public static BasicSkillAiTurnResult Execute(FacingTurnState state, AccumulateAiPreparationRequest request,
@@ -77,8 +95,8 @@ public static class BasicSkillAiTurnExecution
         ArgumentNullException.ThrowIfNull(configuration.Selection); ArgumentNullException.ThrowIfNull(configuration.PostActScenarios);
         ArgumentNullException.ThrowIfNull(dispatch);
         return Run(state, new(request, configuration.AfterAct, dispatch,
-            current => BasicSkillAiCommandExecution.Execute(current, request, scenario, configuration.BeforeAct, configuration.Selection, dispatch)),
-            BasicSkillAiTurnStage.FirstCommand, null);
+            (current, history) => new(BasicSkillAiCommandExecution.Execute(current, request, scenario, configuration.BeforeAct, configuration.Selection, dispatch), history)),
+            BasicSkillAiTurnStage.FirstCommand, null).Turn;
     }
 
     public static BasicSkillAiTurnResult Resume(FacingTurnState state, BasicSkillAiTurnRecovery recovery)
@@ -86,25 +104,38 @@ public static class BasicSkillAiTurnExecution
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(recovery);
         if (!ReferenceEquals(state, recovery.ExpectedState))
             return new(state, [], [], new(BasicSkillAiTurnStage.RecoveryBinding), null);
-        return Run(state, recovery.Inputs, recovery.NextStep, recovery.Continuation);
+        return Run(state, recovery.Inputs, recovery.NextStep, recovery.Continuation).Turn;
     }
 
-    private static BasicSkillAiTurnResult Run(FacingTurnState state, BasicSkillAiTurnInputs inputs,
+    public static BasicSkillAiWorkspaceTurnResult ResumeWithWorkspace(FacingTurnState state, BasicSkillAiTurnRecovery recovery)
+    {
+        ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(recovery);
+        if (recovery.Inputs.Workspace is not { } workspace)
+            throw new ArgumentException("Recovery belongs to an entry without priority workspace state.", nameof(recovery));
+        if (!ReferenceEquals(state, recovery.ExpectedState))
+            return new(new(state, [], [], new(BasicSkillAiTurnStage.RecoveryBinding), null), workspace);
+        var result = Run(state, recovery.Inputs, recovery.NextStep, recovery.Continuation);
+        return new(result.Turn, result.Workspace!);
+    }
+
+    private static BasicSkillAiTurnRun Run(FacingTurnState state, BasicSkillAiTurnInputs inputs,
         BasicSkillAiTurnStage stage, FacingMoveContinuation? continuation)
     {
         var request = inputs.Request;
+        var workspace = inputs.Workspace;
         var events = ImmutableArray.CreateBuilder<AttackResultEvent>();
         var decisions = ImmutableArray.CreateBuilder<BasicSkillAiTurnDecision>();
-        BasicSkillAiTurnResult Failed(BasicSkillAiTurnFailure failure) => new(state, events.ToImmutable(), decisions.ToImmutable(), failure,
-            new(state, stage, inputs, continuation));
+        BasicSkillAiTurnRun Failed(BasicSkillAiTurnFailure failure) => new(new(state, events.ToImmutable(), decisions.ToImmutable(), failure,
+            new(state, stage, inputs with { Workspace = workspace }, continuation)), workspace);
         // Each success consumes a choice, ends the turn or settles its actual receipt. Rejection never retries in this call.
         while (true)
         {
             switch (stage)
             {
                 case BasicSkillAiTurnStage.FirstCommand:
-                    var first = inputs.First(state);
+                    var owned = inputs.First(state, workspace); var first = owned.Command;
                     if (!first.Accepted) return Failed(new(stage, FirstFailure: first.Failure));
+                    workspace = owned.Workspace;
                     state = first.State; events.AddRange(first.Events); decisions.Add(new BasicSkillAiTurnDecision.BeforeAct(first.Outcome!));
                     continuation = first.Continuation;
                     break;
@@ -116,6 +147,7 @@ public static class BasicSkillAiTurnExecution
                 case BasicSkillAiTurnStage.PostActCommand:
                     var post = BasicSkillAiPostActExecution.Execute(state, request, inputs.AfterAct, inputs.Dispatch);
                     if (!post.Accepted) return Failed(new(stage, PostActFailure: post.Failure));
+                    workspace = workspace?.Write(post.Outcome!.Selection.MovementScenario.Movement);
                     state = post.State; events.AddRange(post.Events); decisions.Add(new BasicSkillAiTurnDecision.AfterAct(post.Outcome!));
                     break;
                 case BasicSkillAiTurnStage.FinishFacing:
@@ -129,7 +161,7 @@ public static class BasicSkillAiTurnExecution
             if (continuation is not null) stage = BasicSkillAiTurnStage.RetainedCommand;
             else if (state.PendingFacing is not null) stage = BasicSkillAiTurnStage.FinishFacing;
             else if (state.Battle.TurnBattle.Turns.ActiveUnitId == request.Turn.ActorId) stage = BasicSkillAiTurnStage.PostActCommand;
-            else return new(state, events.ToImmutable(), decisions.ToImmutable(), null, null);
+            else return new(new(state, events.ToImmutable(), decisions.ToImmutable(), null, null), workspace);
         }
     }
 }

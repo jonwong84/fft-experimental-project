@@ -262,7 +262,9 @@ shared prefix and pair ranking, plus [Accumulate self projection, closed-list
 preparation/usefulness and isolated map-target evaluation](../behavior/accumulate-ai.md).
 [Three-entry supplied-scenario composition](../behavior/basic-skill-ai-selection.md)
 and terminal selection now retain shared prefix/ranks/RNG in source order.
-Derived three-entry scenarios remain open. Full roster/list traversal, other ability effects,
+Derived three-entry scenarios and explicit owned priority knowledge now share
+these owners within the [bounded history domain](../behavior/ai-priority-workspace.md).
+Full roster/list traversal, other ability effects,
 Math, reflection, delayed area targeting and complex maps remain **mapped, unported**.
 The [iteration study](zod-185-ai-ability-iteration.md) and
 [Throw Stone scan study](zod-190-throw-stone-ai-scan.md) provide detailed subset traces.
@@ -428,8 +430,11 @@ post-ACT reach and exact partial-progress recovery.
 [ZOD-249–254](../behavior/derived-basic-skill-ai.md) now derive fresh pre-ACT
 S/D0/D1 and explicit score provenance through the shared pair kernel, then
 reuse composition/lottery and command/turn owners. Unwritten cast keys reject
-unless proved unread; ZOD-255 traces their retained lifecycle and concrete
-range3/4 consumer. Full original search breadth remains separate.
+unless proved unread in the stateless entry. [ZOD-255–260](../behavior/ai-priority-workspace.md)
+trace their lifecycle and carry owned priority writes through range3/4 queries,
+actual commands and complete recovery. Unknown startup/event values remain
+unknown; unmodeled workspace use forgets knowledge. Next ZOD-261 traces usable
+list derivation for supported actions. Full original search breadth remains separate.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use
 the supported domain and a real consumer, rather than exposing the entire
