@@ -14,7 +14,8 @@ family. Source and test projects use matching folders:
   preparation, a separate usefulness filter and an isolated map-target entry.
 - `BasicSkill/`: supplied-scenario Attack/Accumulate/Throw Stone composition and
   terminal selection using those shared entry/score/rank/lottery owners.
-  Derived scenarios and actual self-ACT commands remain separate work.
+  Fresh ACT-first execution owns selection inside the Framework transaction,
+  including actual self PA. Derived scenarios and Move-first/complete turns remain separate work.
 
 Namespaces remain `Zodiac.Framework.Ai` and `Zodiac.Framework.Ai.Tests`; moving
 a file adds no dependency or access. The assembly still references Framework,
@@ -32,6 +33,9 @@ reach/order internally. Earlier explicit-entry adapters remain supported.
 and exposes exact partial-progress recovery. NonBlue and explicitly certified
 Blue AI-controlled profiles share these owners; Blue low-HP and player-controlled
 policies remain unsupported.
+`BasicSkillAiActFirstExecution` owns fresh supplied-scenario selection and one
+actual Attack/Throw Stone/Accumulate ACT in the same Framework callback. It
+issues no predicted-D1 Move or continuation; both choices must initially be unused.
 Framework owns current-session validation, verified RNG adoption, actual rules,
 paths, continuations and facing receipts. The RNG implementation lives under
 `Zodiac.Framework/Random`; its generic contract is under

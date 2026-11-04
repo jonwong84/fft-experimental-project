@@ -3,7 +3,7 @@ using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework;
 
-internal enum FacingDecisionKind { Rejected, Attack, Wait, TurnEndingMove, TargetedAbility, PlannedMove }
+internal enum FacingDecisionKind { Rejected, Attack, Wait, TurnEndingMove, TargetedAbility, PlannedMove, ImmediateAbility }
 
 /// <summary>An opaque proposal issued by one planning invocation; never a battle-state or receipt factory.</summary>
 public sealed class FacingDecision<T>
@@ -19,14 +19,18 @@ public sealed class FacingDecision<T>
     internal UseTargetedAbilityCommand? TargetedAbility { get; }
     internal TargetedAbilityBattleProfile? AbilityProfile { get; }
     internal FacingMoveDecision<T>? PlannedMove { get; }
+    internal UseImmediateAbilityCommand? ImmediateAbility { get; }
+    internal ImmediateAbilityBattleProfile? ImmediateProfile { get; }
     internal T? Diagnostic { get; }
     internal FacingDecision(FacingDecisionContext owner, FacingDecisionKind kind, RandomState rng,
         T? diagnostic, AttackUnitCommand? attack = null, BoundedSwordWeapon? weapon = null, FacingChoice? facing = null,
         MoveUnitCommand? move = null, FlatOrdinaryMovementProfile? movementProfile = null,
         UseTargetedAbilityCommand? targetedAbility = null, TargetedAbilityBattleProfile? abilityProfile = null,
-        FacingMoveDecision<T>? plannedMove = null)
+        FacingMoveDecision<T>? plannedMove = null, UseImmediateAbilityCommand? immediateAbility = null,
+        ImmediateAbilityBattleProfile? immediateProfile = null)
     { Owner = owner; Kind = kind; Rng = rng; Diagnostic = diagnostic; Attack = attack; Weapon = weapon; Facing = facing;
-        Move = move; MovementProfile = movementProfile; TargetedAbility = targetedAbility; AbilityProfile = abilityProfile; PlannedMove = plannedMove; }
+        Move = move; MovementProfile = movementProfile; TargetedAbility = targetedAbility; AbilityProfile = abilityProfile; PlannedMove = plannedMove;
+        ImmediateAbility = immediateAbility; ImmediateProfile = immediateProfile; }
 }
 
 /// <summary>Read-only planning input with invocation-bound proposal factories; valid only during the callback.</summary>
@@ -55,6 +59,14 @@ public sealed class FacingDecisionContext
     {
         CheckOpen(); ArgumentNullException.ThrowIfNull(command); ArgumentNullException.ThrowIfNull(profile);
         return new(this, FacingDecisionKind.TargetedAbility, rng, diagnostic, targetedAbility: command, abilityProfile: profile);
+    }
+
+    /// <summary>Prepare one actual self ACT; Framework revalidates current actor, grants, effect and choices.</summary>
+    public FacingDecision<T> PrepareImmediateAbility<T>(UseImmediateAbilityCommand command, ImmediateAbilityBattleProfile profile,
+        RandomState rng, T diagnostic)
+    {
+        CheckOpen(); ArgumentNullException.ThrowIfNull(command); ArgumentNullException.ThrowIfNull(profile);
+        return new(this, FacingDecisionKind.ImmediateAbility, rng, diagnostic, immediateAbility: command, immediateProfile: profile);
     }
 
     /// <summary>Prepare an ACT-used/Move-unused confirmed path and settle its actual completion facing atomically.</summary>
@@ -145,6 +157,8 @@ public static class FacingDecisionBattle
             return Reject(FacingDecisionRejection.AuthorityRejected, FacingTurnBattle.Reject(state, FacingTurnRejection.WrongActor));
         if (decision.Kind == FacingDecisionKind.TargetedAbility && decision.TargetedAbility!.ActorId != actorId)
             return Reject(FacingDecisionRejection.AuthorityRejected, FacingTurnBattle.Reject(state, FacingTurnRejection.WrongActor));
+        if (decision.Kind == FacingDecisionKind.ImmediateAbility && decision.ImmediateAbility!.ActorId != actorId)
+            return Reject(FacingDecisionRejection.AuthorityRejected, FacingTurnBattle.Reject(state, FacingTurnRejection.WrongActor));
         if (decision.Kind == FacingDecisionKind.TurnEndingMove)
         {
             if (decision.Move!.UnitId != actorId)
@@ -174,6 +188,7 @@ public static class FacingDecisionBattle
         {
             FacingDecisionKind.Attack => FacingTurnBattle.Attack(staged, decision.Attack!, decision.Weapon),
             FacingDecisionKind.TargetedAbility => FacingTurnBattle.UseTargetedAbility(staged, decision.TargetedAbility!, decision.AbilityProfile!),
+            FacingDecisionKind.ImmediateAbility => FacingTurnBattle.UseImmediateAbility(staged, decision.ImmediateAbility!, decision.ImmediateProfile!),
             _ => FacingTurnBattle.WaitWithFacing(staged, actorId, decision.Facing!)
         };
         return result.Accepted ? new(FacingDecisionRejection.None, result, decision.Diagnostic)

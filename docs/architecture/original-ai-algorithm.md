@@ -415,9 +415,11 @@ routing, usefulness draws, PA projection/restoration and allied stat-hit scoring
 ZOD-230–232 implement that bounded self projection, closed preparation/usefulness
 and an isolated map-target entry against a supplied move baseline.
 ZOD-233–236 now trace and implement supplied-scenario three-entry composition
-and terminal selection with shared private owners. The next study is ZOD-237:
-authoritative Accumulate self-ACT handoff. Derived three-entry scenarios and
-full original search breadth remain separate from that authority boundary.
+and terminal selection with shared private owners. ZOD-237–239 add the
+[authoritative self-ACT handoff and fresh ACT-first executor](../behavior/immediate-self-act.md).
+Next is ZOD-240: three-entry Move-first execution through existing exact-session
+continuations. Derived scenarios, post-ACT work and full original search breadth
+remain separate.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use
 the supported domain and a real consumer, rather than exposing the entire

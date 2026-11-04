@@ -99,8 +99,9 @@ python tools/verification/verify_ai_algorithm_guide.py --reference C:/repositori
 python tools/verification/verify_ai_accumulate_contract.py --reference C:/repositories/fft_decomp --prepared scratch/all-data-extraction/SCUS_942.21
 ```
 
-Derived three-entry scenarios, full original policy/roster/map breadth and real
-self-ACT/Move continuation authority remain open. The next selected study is the
-authoritative self-action handoff. Host/editor activation, battle saves and
+The [ZOD-237–239 self-action handoff](immediate-self-act.md) now executes fresh
+ACT-first selections through Framework-owned actual rules. Derived three-entry
+scenarios, Move-first/post-ACT execution and full original policy/roster/map
+breadth remain open. Host/editor activation, battle saves and
 original-frame RNG equivalence remain deferred/unresolved; boosted PA stays
 battle-only. No C/original execution or presentation review was performed.

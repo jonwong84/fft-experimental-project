@@ -50,8 +50,9 @@ certified Attack/Accumulate/Throw Stone preparation, a separate source-order
 usefulness filter and one isolated map-target entry against a supplied movement
 baseline. Shared clocks/scoring/rank comparisons remain the owners. Three-entry
 [supplied-scenario composition and terminal selection](../behavior/basic-skill-ai-selection.md)
-now reuse these owners in source order. Derived three-entry scenarios and
-authoritative self-ACT dispatch are still open.
+now reuse these owners in source order. [Actual ACT-first execution](../behavior/immediate-self-act.md)
+also uses the Framework-owned self-action transaction. Derived scenarios,
+three-entry Move-first/post-ACT execution and complete turns remain open.
 
 The [ZOD-210 cleanup](ai-pair-selection-refactor.md) shares pair admission and
 composition/lottery handling while retaining separate scenario/provenance rules.

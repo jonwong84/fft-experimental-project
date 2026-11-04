@@ -92,6 +92,15 @@ public static class FacingTurnBattle
         return Delegate(state, () => TargetedAbilityBattleSimulator.Apply(state.Battle, command, profile));
     }
 
+    /// <summary>Apply actual self PA rules; any completion receipt binds the fully resolved PA result.</summary>
+    /// <remarks>ZOD-237/238, reference 11464943bbdbd2a0af022d90cb7f10455cf911df. No AI projection or automatic facing.</remarks>
+    public static FacingTurnResult UseImmediateAbility(FacingTurnState state, UseImmediateAbilityCommand command,
+        ImmediateAbilityBattleProfile profile)
+    {
+        ArgumentNullException.ThrowIfNull(command); ArgumentNullException.ThrowIfNull(profile);
+        return Delegate(state, () => ImmediateAbilityBattleSimulator.Apply(state.Battle, command, profile));
+    }
+
     /// <summary>Pure query for the current active or pending actor. It consumes neither revision nor receipt, even at counter limits.</summary>
     public static FacingChoiceResult Probe(FacingTurnState state, BattleUnitId actorId, FacingChoice choice)
     {

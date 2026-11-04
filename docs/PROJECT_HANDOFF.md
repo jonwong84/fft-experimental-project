@@ -6,13 +6,14 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-237: trace and design authoritative Accumulate self-ACT handoff.**
-[ZOD-233–236](behavior/basic-skill-ai-selection.md) add shared private rank/entry
-owners, fresh supplied-scenario Attack → Accumulate → Throw Stone composition
-and terminal source lottery selection. Next define the Framework-owned self-ACT
-boundary and select one implementation child; public plans remain hypothetical.
-Preserve both admitted teams, old pair APIs, score-provenance restrictions and
-deferred battle saves. Derived three-entry scenarios are still separate work.
+**ZOD-240: execute fresh three-entry Move-first decisions.**
+[ZOD-237–239](behavior/immediate-self-act.md) add the invocation-bound immediate
+self-ACT transaction and fresh supplied-scenario ACT-first execution. Next reuse
+confirmed-path/frozen Attack, targeted-ACT and Wait continuations for selected
+Move-first decisions. The closed Accumulate entry retains ACT-first, so a new
+frozen self-Move token has no current consumer. Preserve both teams, known-score
+provenance, old pair APIs and per-command rollback. Derived scenarios/post-ACT
+work, complete turns, UI activation and battle saves remain separate.
 
 The [original AI algorithm guide](architecture/original-ai-algorithm.md) maps
 policy precedence and all core source functions, with bounded implementation
@@ -23,7 +24,7 @@ when selecting later children; the backlog still owns work order and deferral.
 
 The [original post-prefix executor](behavior/sword-ai-execution.md) and already-moved
 [prepared executor](behavior/sword-ai-prepared-execution.md) live in Zodiac.Framework.Ai.
-Framework owns [Attack/targeted ACT/Wait/turn-ending Move transactions](architecture/ai-command-boundary.md) and
+Framework owns [Attack/targeted and self ACT/Wait/turn-ending Move transactions](architecture/ai-command-boundary.md) and
 [planned Move continuations](behavior/planned-move-continuation.md), verifying
 fresh planning/RNG before publishing commands. AI cannot construct trusted
 sessions/receipts and has no production friend access.
@@ -55,13 +56,16 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: [ZOD-233–236 three-entry AI](behavior/basic-skill-ai-selection.md)
-  owns one fresh preparation/movement prefix, then Attack, the Accumulate coin/
-  independent self candidates, and Throw Stone in source order. Shared private
-  rank insertion and the existing lottery return typed hypothetical plans.
-  Losing candidates retain RNG; projected PA/HP never carry into later entries.
-  Supplied known-score S/D0/D1 and general-entry assertions remain required.
-  Real self-ACT/continuation authority and derived scenarios remain open.
+- Latest implementation: [ZOD-238/239 actual self ACT](behavior/immediate-self-act.md)
+  adds a context-bound self-command/profile proposal, actual rules delegate,
+  zero-resolution-draw PA+1/cap handling and full-result receipt binding.
+  Fresh three-entry ACT-first execution owns selection inside the Framework
+  callback, applies actual Attack/Stone/self rules and leaves Move unused.
+  It adopts no projected units/PA/CT and issues no predicted-D1 Move/token.
+- [ZOD-233–236 three-entry AI](behavior/basic-skill-ai-selection.md) owns one fresh
+  preparation/movement prefix, source-order ranks and terminal lottery. Supplied
+  known-score S/D0/D1/general-entry assertions remain required; derived scenarios
+  and three-entry Move-first/post-ACT/complete-turn execution remain open.
 - [ZOD-230–232 Accumulate foundation](behavior/accumulate-ai.md) retains self PA
   arithmetic, +3/hit100 even at PA99, closed preparation/usefulness and the old
   isolated entry. Pair/map-entry APIs now share the extracted private owners;
@@ -71,11 +75,12 @@ without rewriting old evidence.
   explicit player-control flag clear, HP*128/maxHP>=45 and no NonBlue reach draw.
   Existing Attack/Stone scoring/selection/execution and both teams are preserved;
   terminal routing and Blue low-HP/player-controlled policies remain open.
-- Latest source study: [ZOD-233](architecture/zod-233-three-entry-ai.md) pins 13
-  source functions, strict baseline/rank/proximity ordering, restored candidate
-  state and retained RNG, supplied score provenance and a literal 19-draw case
-  selecting Accumulate after two failed damage rolls. The earlier
-  [ZOD-229](architecture/zod-229-accumulate-ai.md) pins retail PA/usefulness rules.
+- Latest source study: [ZOD-237](architecture/zod-237-self-act-command.md) pins 19
+  functions across eight files for selected dispatch, auto self targeting,
+  actual PA/Act/turn-end semantics and zero actual draws. It selects the two
+  implemented children without changing saved-state or presentation scope.
+  [ZOD-233](architecture/zod-233-three-entry-ai.md) retains the three-entry stream;
+  [ZOD-229](architecture/zod-229-accumulate-ai.md) owns PA/usefulness evidence.
 - Organization: AI source/tests use Shared, Sword, ThrowStone, AttackThrowStone,
   Accumulate and BasicSkill folders with stable namespaces; [layout](development/ai-source-layout.md).
   Owner RNG migration is completed as `Zodiac.Framework.Random.RandomStateGenerator`
@@ -90,12 +95,12 @@ without rewriting old evidence.
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
 - Validation: locked restore and zero-warning/error full Release build pass;
-  **4,169 .NET cases** (1,459 Framework, 965 AI, including owner drafts),
+  **4,185 .NET cases** (1,467 Framework, 973 AI, including owner drafts),
   **539 Python tests**, source/prepared-data and algorithm-guide audits pass.
-  Thirteen new AI cases cover shared-prefix/entry ordering, literal rank/lottery
-  streams, first/later success, eight-slot fallbacks, cross-entry isolation,
-  exact/late failures, both teams/identities and replay. Logs, source reports
-  and seven full TRX files are under ignored `scratch/basic-skill-ai-233-236/`.
+  Sixteen new cases cover actual PA/cap/zero draws, receipts and proposal guards,
+  fresh self/Attack/Stone execution, later boosted damage, KO, exact/late failures
+  and both teams/actor identities. Logs, source reports and seven full TRX files
+  are under ignored `scratch/self-act-237-239/`.
   Python uses repository-pinned Pillow 12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow 13.0.0 triggers six existing version guards; WindowsApps Python

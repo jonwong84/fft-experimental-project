@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-237 (authoritative Accumulate self-ACT study).** Shared three-entry search design, private owner extraction, supplied-scenario composition and terminal selection ZOD-233–236 are complete.
-There are 34 open tickets below. The 203 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-240 (fresh three-entry Move-first execution).** The self-ACT source study, Framework transaction and fresh ACT-first executor ZOD-237–239 are complete.
+There are 34 open tickets below. The 206 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,21 +29,21 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-237 — Trace and design authoritative Accumulate self-ACT handoff
+### ZOD-240 — Execute fresh three-entry Move-first decisions
 
-**Type:** Investigation · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-105, ZOD-175, ZOD-236
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-205, ZOD-222, ZOD-236, ZOD-239
 
-Trace original selected self-action dispatch, actor targeting, immediate PA+1,
-Act/Move/turn-end ordering, draws and restoration. Compare the actual immediate
-ability simulator with Framework-owned facing decisions/continuations; specify
-an invocation-bound self-ACT branch with fresh RNG verification, explicit grants
-and effect/profile validation. Select one bounded Framework implementation child
-before adapting [three-entry selection](behavior/basic-skill-ai-selection.md).
-Keep actual PA separate from hypothetical outcomes and reject public cached
-plans/results as authority. Preserve Attack/Stone, both admitted teams and
-per-command rollback. Derived three-entry scenarios remain separate; no host/
-editor activation or battle-save dependency. ZOD-106 stays deferred and boosted
-PA stays battle-only.
+Own one fresh supplied-scenario three-entry selection inside the existing
+Framework callback, and route a selected Move-first Attack/Throw Stone or
+different-tile MoveOnly through current confirmed-path and frozen Attack/
+targeted-ACT/Wait continuations. Validate exact returned session, actor, lineage,
+revision and per-command retry behavior. Adopt decision RNG once; preserve a
+published Move if the retained follow-up fails. Reject ACT-first/same-tile
+entries without partial output; keep known-score provenance, both admitted
+teams and old pair paths. The current Accumulate entry retains ACT-first on its
+complete tie, so do not add an unused frozen self-Move token. Derived scenarios,
+post-ACT reselection, complete turns and host/editor activation remain separate.
+ZOD-106 stays deferred; boosted PA remains battle-only.
 
 ## Existing validation gates
 

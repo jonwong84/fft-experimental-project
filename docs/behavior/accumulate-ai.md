@@ -86,8 +86,9 @@ This entry is independently checkable integration of the map-target path, not
 the entire three-action search. Ranking alongside Attack/Stone requires source
 order Attack → Accumulate → Throw Stone and privately retained ranks/RNG; that
 composition is now implemented by [ZOD-234–236](basic-skill-ai-selection.md) for
-supplied known-score scenarios. Real self-ACT dispatch and Move continuations
-also require separately selected Framework transaction work. ZOD-106, editor
+supplied known-score scenarios. [ZOD-238/239](immediate-self-act.md) add the real
+self-ACT boundary and fresh ACT-first adapter. Move-first/post-ACT integration
+remains separate work. ZOD-106, editor
 and host activation stay deferred; boosted PA remains battle-only.
 
 ## Validation

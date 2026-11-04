@@ -17,10 +17,15 @@ AI namespaces become `Zodiac.Framework.Ai` / `.Tests`.
 Framework invokes a synchronous planner once after checking the active actor,
 pending facing and revision. A new context exposes that exact immutable battle,
 actor and incoming RNG. Only that context can prepare an opaque Attack, targeted
-ACT, Wait, turn-ending Move or rejection. Context preparation closes when the
+ACT, immediate self ACT, Wait, turn-ending Move or rejection. Context preparation closes when the
 callback returns or throws. [ZOD-204](../behavior/targeted-ability-decision.md)
 adds targeted ACT with its distinct immutable ability/grant profile; actual
 resolution and complete-result receipt creation stay in Framework.
+
+[ZOD-238/239](../behavior/immediate-self-act.md) add the distinct immediate
+self-command/profile branch and a fresh three-entry ACT-first executor. Actual
+PA publication uses the existing self-action simulator, adds zero resolution
+draws and binds any completion receipt to the final boosted state.
 
 [ZOD-205](../behavior/targeted-move-continuation.md) extends the existing Move
 proposal/continuation with frozen targeted ACT, preserving exact-session binding
