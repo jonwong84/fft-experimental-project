@@ -26,33 +26,15 @@ public static class BasicSkillAiActFirstExecution
         ThrowStoneAiScanScenario scenario, BasicSkillAiProfile profile, BasicSkillAiSelectionProfile selection,
         SwordAiCommandDispatchProfile dispatch)
     {
-        ArgumentNullException.ThrowIfNull(state); BasicSkillAiComposition.ValidateArguments(state.Battle, request, scenario, profile);
-        ArgumentNullException.ThrowIfNull(selection); ArgumentNullException.ThrowIfNull(dispatch);
-        BasicSkillAiActFirstFailure? failure = null;
-        var result = FacingDecisionBattle.Execute<BasicSkillAiActFirstOutcome>(state, request.Turn.ActorId, context => {
-            var actor = context.Battle.TurnBattle.Turns.Units.Single(u => u.Id == context.ActorId);
-            if (actor.MovementTaken || actor.ActionTaken)
-            { failure = new(BasicSkillAiActFirstRejection.UnavailableChoices); return context.Reject<BasicSkillAiActFirstOutcome>(); }
-            if (!dispatch.InitializedActorContext || !dispatch.PresentCompactRecords || !dispatch.CanonicalCoordinates || !dispatch.OrdinaryContinuation)
-            { failure = new(BasicSkillAiActFirstRejection.UnsupportedDispatchContext); return context.Reject<BasicSkillAiActFirstOutcome>(); }
-            var selected = BasicSkillAiSelection.Evaluate(context.Battle, request, scenario, profile, selection, context.RngState);
-            if (!selected.Accepted)
-            { failure = new(BasicSkillAiActFirstRejection.SelectionRejected, selected.Failure); return context.Reject<BasicSkillAiActFirstOutcome>(); }
-            var plan = selected.Outcome!.Plan;
-            if (!plan.ActBeforeMove || plan.Action is null)
-            { failure = new(BasicSkillAiActFirstRejection.ActFirstRequired); return context.Reject<BasicSkillAiActFirstOutcome>(); }
-            var diagnostic = new BasicSkillAiActFirstOutcome(selected.Outcome, selected.RngState);
-            return plan.Action switch {
-                BasicSkillAiAttack attack => context.PrepareAttack(new(attack.Value.Candidate.ActorId, attack.Value.Candidate.TargetId),
-                    request.Weapon, selected.RngState, diagnostic),
-                BasicSkillAiStone stone => context.PrepareTargetedAbility(new(stone.Value.Candidate.ActorId, stone.Value.Candidate.AbilityId,
-                    stone.Value.Candidate.TargetId), profile.Preparation.ThrowStone.Ability, selected.RngState, diagnostic),
-                BasicSkillAiAccumulate self => context.PrepareImmediateAbility(new(self.ActorId, self.Value.Projection!.Outcome!.Candidate.AbilityId),
-                    profile.Preparation.Accumulate.Ability, selected.RngState, diagnostic),
-                _ => throw new InvalidOperationException("Unsupported privately selected action.")
-            };
-        });
-        if (!result.Accepted && failure is null) failure = new(BasicSkillAiActFirstRejection.BoundaryRejected, Boundary: result.Rejection);
-        return new(failure, result);
+        var result = BasicSkillAiCommandPipeline.Execute(state, request, scenario, profile, selection, dispatch,
+            BasicSkillAiDispatchMode.ActFirst, (decision, rng, _) => new BasicSkillAiActFirstOutcome(decision, rng));
+        var failure = result.Failure is { } f ? new BasicSkillAiActFirstFailure(f.Reason switch {
+            BasicSkillAiCommandRejection.UnavailableChoices => BasicSkillAiActFirstRejection.UnavailableChoices,
+            BasicSkillAiCommandRejection.UnsupportedDispatchContext => BasicSkillAiActFirstRejection.UnsupportedDispatchContext,
+            BasicSkillAiCommandRejection.SelectionRejected => BasicSkillAiActFirstRejection.SelectionRejected,
+            BasicSkillAiCommandRejection.DispatchMismatch => BasicSkillAiActFirstRejection.ActFirstRequired,
+            _ => BasicSkillAiActFirstRejection.BoundaryRejected
+        }, f.Selection, f.Boundary) : null;
+        return new(failure, result.Execution);
     }
 }

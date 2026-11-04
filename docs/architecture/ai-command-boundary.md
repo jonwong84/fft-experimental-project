@@ -27,6 +27,11 @@ self-command/profile branch and a fresh three-entry ACT-first executor. Actual
 PA publication uses the existing self-action simulator, adds zero resolution
 draws and binds any completion receipt to the final boosted state.
 
+[ZOD-240–242](../behavior/basic-skill-ai-command-execution.md) reuse the same
+callback for supplied-scenario three-entry Move-first, same-tile empty END and
+unified fresh dispatch. Existing exact-session frozen Attack/targeted-ACT/Wait
+continuations remain the owners; no frozen self token or new authority is added.
+
 [ZOD-205](../behavior/targeted-move-continuation.md) extends the existing Move
 proposal/continuation with frozen targeted ACT, preserving exact-session binding
 and per-command atomicity. Failed follow-up never rewinds a published Move.

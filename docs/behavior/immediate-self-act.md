@@ -94,11 +94,11 @@ python tools/verification/verify_ai_algorithm_guide.py --reference C:/repositori
 python tools/verification/verify_ai_accumulate_contract.py --reference C:/repositories/fft_decomp --prepared scratch/all-data-extraction/SCUS_942.21
 ```
 
-Move-first three-entry execution, derived scenarios, post-ACT preparation/
-movement and complete three-entry turns remain separate children. The current
+[ZOD-240–242](basic-skill-ai-command-execution.md) now reuse the existing tokens
+for three-entry Move-first, empty END and unified fresh dispatch. Derived scenarios,
+post-ACT preparation/movement and complete three-entry turns remain separate. The current
 effect-free Accumulate entry retains ACT-first on its complete tie; adding a
 frozen self-Move token needs a concrete supported consumer. Reuse existing
-Attack/targeted ACT/Wait continuations for the next Move-first adapter instead
-of adding an unused self continuation. No host/editor activation or battle-save
+Attack/targeted ACT/Wait continuations for Move-first adapters. No host/editor activation or battle-save
 feature is selected. ZOD-106 stays deferred and PA remains battle-only. Original
 frame RNG and broader retail-equivalence claims remain unresolved.

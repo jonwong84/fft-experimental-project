@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-04",
   "edition": "SCUS-94221",
-  "managedCommit": "e51c1faaab2fdcbee49b570d3b0f234025962496",
+  "managedCommit": "54faaa722c11d2ebadbaf28a457e1353630dc11b",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 4185,
-    "source": "docs/behavior/immediate-self-act.md",
+    "passed": 4198,
+    "source": "docs/behavior/basic-skill-ai-command-execution.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -453,7 +453,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "Closed ordinary sword and Attack/Throw Stone selection, both admitted teams, complete pair turns and per-command recovery exist. Three-entry supplied-scenario preparation/ranking/lottery and fresh ACT-first execution now use Framework-owned actual Attack, Throw Stone and self PA rules. Derived scenarios, three-entry Move-first/post-ACT/complete turns, broader policies/rosters and host activation remain open; bounded checks do not establish full original decision equivalence.",
+      "currentScope": "Closed ordinary sword and Attack/Throw Stone selection, both admitted teams, complete pair turns and per-command recovery exist. Three-entry supplied-scenario preparation/ranking/lottery and fresh Move/ACT/END execution now share one selection owner and use Framework actual rules and exact-session frozen Attack/Stone/Wait continuations. Derived scenarios, three-entry post-ACT/complete turns, broader policies/rosters and host activation remain open; bounded checks do not establish full original decision equivalence.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -517,7 +517,9 @@
         "docs/architecture/zod-237-self-act-command.md",
         "docs/behavior/immediate-self-act.md",
         "docs/evidence/ai/self-act-source-v1.json",
-        "docs/evidence/ai/self-act-implementation-v1.json"
+        "docs/evidence/ai/self-act-implementation-v1.json",
+        "docs/behavior/basic-skill-ai-command-execution.md",
+        "docs/evidence/ai/basic-skill-command-implementation-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -542,7 +544,10 @@
         "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiComposition.cs",
         "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiSelection.cs",
         "src/Zodiac.Framework.Ai/Shared/AiRankedInsertion.cs",
-        "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiActFirstExecution.cs"
+        "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiActFirstExecution.cs",
+        "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiCommandExecution.cs",
+        "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiMoveFirstExecution.cs",
+        "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiSameTileEndExecution.cs"
       ],
       "automatedChecks": [
         {
@@ -700,6 +705,10 @@
         {
           "path": "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiActFirstExecutionTests.cs",
           "scope": "Actual invocation-bound self ACT and fresh three-entry execution: zero draws/cap, exact receipts, authority guards, real effects and rollback."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiCommandExecutionTests.cs",
+          "scope": "Fresh Move/ACT/END dispatch, exact RNG budgets, frozen actual follow-ups and binding, late failure recovery, END refunds/cap, both teams and replay."
         }
       ],
       "manualCheckpoint": {
@@ -707,13 +716,13 @@
         "procedure": "Observe selected mandatory AI turns and distinguish legal choices from exact policy matching."
       },
       "openQuestions": [
-        "Three-entry Move-first/post-ACT/complete-turn execution and derived scenarios remain open.",
+        "Three-entry post-ACT preparation/execution from actual boosted state, complete turns and derived scenarios remain open.",
         "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
         "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Reuse existing confirmed-path and frozen Attack/targeted-ACT/Wait continuations for fresh three-entry Move-first selections, with per-command recovery and exact session binding.",
+      "nextAction": "Trace three-entry post-ACT refresh/list/preparation from actual PA/damage/displacement and remaining choices before selecting bounded implementation children; compare current pair owners.",
       "followUpTickets": [
-        "ZOD-240"
+        "ZOD-243"
       ]
     },
     {

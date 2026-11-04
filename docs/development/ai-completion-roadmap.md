@@ -51,8 +51,11 @@ usefulness filter and one isolated map-target entry against a supplied movement
 baseline. Shared clocks/scoring/rank comparisons remain the owners. Three-entry
 [supplied-scenario composition and terminal selection](../behavior/basic-skill-ai-selection.md)
 now reuse these owners in source order. [Actual ACT-first execution](../behavior/immediate-self-act.md)
-also uses the Framework-owned self-action transaction. Derived scenarios,
-three-entry Move-first/post-ACT execution and complete turns remain open.
+also uses the Framework-owned self-action transaction.
+[Fresh command dispatch](../behavior/basic-skill-ai-command-execution.md) now
+shares one selection owner across ACT-first, Move-first and same-tile empty END,
+reusing frozen Attack/Stone/Wait tokens. Derived scenarios, post-ACT execution
+from actual boosted state and complete three-entry turns remain open.
 
 The [ZOD-210 cleanup](ai-pair-selection-refactor.md) shares pair admission and
 composition/lottery handling while retaining separate scenario/provenance rules.

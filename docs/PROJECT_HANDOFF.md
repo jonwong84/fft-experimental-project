@@ -6,14 +6,14 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-240: execute fresh three-entry Move-first decisions.**
-[ZOD-237–239](behavior/immediate-self-act.md) add the invocation-bound immediate
-self-ACT transaction and fresh supplied-scenario ACT-first execution. Next reuse
-confirmed-path/frozen Attack, targeted-ACT and Wait continuations for selected
-Move-first decisions. The closed Accumulate entry retains ACT-first, so a new
-frozen self-Move token has no current consumer. Preserve both teams, known-score
-provenance, old pair APIs and per-command rollback. Derived scenarios/post-ACT
-work, complete turns, UI activation and battle saves remain separate.
+**ZOD-243: trace three-entry post-ACT preparation from actual boosted state.**
+[ZOD-240–242](behavior/basic-skill-ai-command-execution.md) now execute fresh
+supplied-scenario Move-first, same-tile empty END and unified Move/ACT/END dispatch.
+Next trace post-ACT refresh/list/preparation and movement-only selection from
+actual PA/damage/displacement, then choose bounded children by comparing current
+pair owners. Predicted D1 still grants no post-ACT Move authority. Preserve both
+teams, known-score provenance, existing APIs and per-command recovery. Derived
+scenarios, complete turns, broader policies, UI and battle saves remain separate.
 
 The [original AI algorithm guide](architecture/original-ai-algorithm.md) maps
 policy precedence and all core source functions, with bounded implementation
@@ -56,16 +56,18 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: [ZOD-238/239 actual self ACT](behavior/immediate-self-act.md)
-  adds a context-bound self-command/profile proposal, actual rules delegate,
-  zero-resolution-draw PA+1/cap handling and full-result receipt binding.
-  Fresh three-entry ACT-first execution owns selection inside the Framework
-  callback, applies actual Attack/Stone/self rules and leaves Move unused.
-  It adopts no projected units/PA/CT and issues no predicted-D1 Move/token.
+- Latest implementation: [ZOD-240–242 fresh Basic Skill command](behavior/basic-skill-ai-command-execution.md)
+  shares one selection owner across ACT-first, Move-first, same-tile empty END
+  and unified fresh dispatch. Framework's existing confirmed paths and frozen
+  Attack/Stone/Wait tokens retain exact-state binding and per-command recovery.
+  Actual rules own effects, refunds and facing; no frozen self token was added.
+- [ZOD-238/239 actual self ACT](behavior/immediate-self-act.md) retains context-bound
+  self-command/profile proposals, zero-resolution-draw PA+1/cap and full-result
+  receipt binding. ACT-first leaves Move unused and adopts no projected PA/CT.
 - [ZOD-233–236 three-entry AI](behavior/basic-skill-ai-selection.md) owns one fresh
   preparation/movement prefix, source-order ranks and terminal lottery. Supplied
   known-score S/D0/D1/general-entry assertions remain required; derived scenarios
-  and three-entry Move-first/post-ACT/complete-turn execution remain open.
+  and post-ACT/complete-turn execution remain open.
 - [ZOD-230–232 Accumulate foundation](behavior/accumulate-ai.md) retains self PA
   arithmetic, +3/hit100 even at PA99, closed preparation/usefulness and the old
   isolated entry. Pair/map-entry APIs now share the extracted private owners;
@@ -95,12 +97,12 @@ without rewriting old evidence.
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
 - Validation: locked restore and zero-warning/error full Release build pass;
-  **4,185 .NET cases** (1,467 Framework, 973 AI, including owner drafts),
+  **4,198 .NET cases** (1,467 Framework, 986 AI, including owner drafts),
   **539 Python tests**, source/prepared-data and algorithm-guide audits pass.
-  Sixteen new cases cover actual PA/cap/zero draws, receipts and proposal guards,
-  fresh self/Attack/Stone execution, later boosted damage, KO, exact/late failures
-  and both teams/actor identities. Logs, source reports and seven full TRX files
-  are under ignored `scratch/self-act-237-239/`.
+  Thirteen new cases cover retained actual Attack/Stone/Wait, exact/short budgets,
+  late failure/retry, exact token binding, END refunds/cap, unified dispatch,
+  source guards and both teams/actor identities. Logs, reports and seven full
+  TRX files are under ignored `scratch/basic-skill-command-240-242/`.
   Python uses repository-pinned Pillow 12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow 13.0.0 triggers six existing version guards; WindowsApps Python

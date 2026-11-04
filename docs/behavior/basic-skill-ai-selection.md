@@ -100,8 +100,10 @@ python tools/verification/verify_ai_accumulate_contract.py --reference C:/reposi
 ```
 
 The [ZOD-237–239 self-action handoff](immediate-self-act.md) now executes fresh
-ACT-first selections through Framework-owned actual rules. Derived three-entry
-scenarios, Move-first/post-ACT execution and full original policy/roster/map
+ACT-first selections through Framework-owned actual rules.
+[ZOD-240–242](basic-skill-ai-command-execution.md) add Move-first/empty END and
+unified fresh command dispatch through the same authority. Derived three-entry
+scenarios, post-ACT execution and full original policy/roster/map
 breadth remain open. Host/editor activation, battle saves and
 original-frame RNG equivalence remain deferred/unresolved; boosted PA stays
 battle-only. No C/original execution or presentation review was performed.

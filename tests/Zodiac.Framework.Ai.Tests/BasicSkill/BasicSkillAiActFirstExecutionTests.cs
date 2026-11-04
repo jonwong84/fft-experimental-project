@@ -150,17 +150,4 @@ public sealed class BasicSkillAiActFirstExecutionTests
         Assert.Equal(actorId, after.Battle.TurnBattle.Turns.ActiveUnitId); Assert.Equal(before.Revision + 1, after.Revision);
         Assert.Equal(before.Battle.TurnBattle.Turns.Ticks, after.Battle.TurnBattle.Turns.Ticks); Assert.Null(after.PendingFacing);
     }
-    private static FacingTurnState Ready(ulong count = 7, uint word = 1, int pa = 5, int evade = 97,
-        TilePosition? target = null, bool second = false, bool reverse = false)
-    {
-        var template = Battle(evade: evade, pa: pa, target: target, second: second, reverse: reverse);
-        var actor = second ? B : A;
-        var rng = new RandomState(unchecked((word - 12345u) * 4005161829u), count - 1);
-        var old = template.TurnBattle;
-        var bodies = old.Battle.Units.Select(u => new BattleUnitState(u.Id, u.Position, u.MovementProfile));
-        var turns = old.Turns.Units.Select(u => new TurnUnitState(u.Id, u.Speed, u.Id == actor ? 110 : 90, u.TieKey));
-        var initial = FacingTurnBattle.Begin(new(new(new(old.Battle.Map, bodies, rng), new(turns, rng)), template.Combatants), new(Ground));
-        var ready = FacingTurnBattle.Advance(initial); Assert.True(ready.Accepted);
-        Assert.Equal(new RandomState(word, count), ready.State.Battle.TurnBattle.Turns.RngState); return ready.State;
-    }
 }

@@ -14,8 +14,9 @@ family. Source and test projects use matching folders:
   preparation, a separate usefulness filter and an isolated map-target entry.
 - `BasicSkill/`: supplied-scenario Attack/Accumulate/Throw Stone composition and
   terminal selection using those shared entry/score/rank/lottery owners.
-  Fresh ACT-first execution owns selection inside the Framework transaction,
-  including actual self PA. Derived scenarios and Move-first/complete turns remain separate work.
+  Fresh Move/ACT/END execution owns one selection inside the Framework transaction,
+  including actual self PA and retained Attack/Stone/Wait continuations. Derived
+  scenarios, post-ACT preparation and complete three-entry turns remain separate work.
 
 Namespaces remain `Zodiac.Framework.Ai` and `Zodiac.Framework.Ai.Tests`; moving
 a file adds no dependency or access. The assembly still references Framework,

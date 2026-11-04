@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 206 entries index completed bounded work; they do not mean the full game is complete.
+These 209 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -229,3 +229,6 @@ These 206 entries index completed bounded work; they do not mean the full game i
 - [ZOD-237 — Trace and design authoritative Accumulate self-ACT handoff](../architecture/zod-237-self-act-command.md)
 - [ZOD-238 — Add the Framework-owned immediate self-ACT transaction](../behavior/immediate-self-act.md#framework-transaction--zod-238)
 - [ZOD-239 — Execute fresh three-entry ACT-first decisions](../behavior/immediate-self-act.md#fresh-three-entry-act-first-execution--zod-239)
+- [ZOD-240 — Execute fresh three-entry Move-first decisions](../behavior/basic-skill-ai-command-execution.md#move-first--zod-240)
+- [ZOD-241 — Execute fresh same-tile empty three-entry END](../behavior/basic-skill-ai-command-execution.md#same-tile-empty-end--zod-241)
+- [ZOD-242 — Unify fresh three-entry command dispatch](../behavior/basic-skill-ai-command-execution.md#unified-fresh-command--zod-242)
