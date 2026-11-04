@@ -25,6 +25,14 @@ public static class AttackThrowStoneAiOutOfReachSelection
         var scenario = AttackThrowStoneAiOutOfReachScenario.EvaluateFresh(state, request.Turn, request.ThrowStoneAbilityId, request.Weapon,
             configuration.Attack, configuration.ThrowStone, configuration.Scoring, configuration.Refresh, configuration.Preparation,
             new(policy.NormalScoring, policy.CanonicalCoordinates, policy.NoOtherScenarioOverrides), configuration.Team, decisionRng);
+        return CompleteFresh(state, request, configuration, scenario, decisionRng);
+    }
+
+    internal static AttackThrowStoneAiOutOfReachSelectionResult CompleteFresh(AttackBattleSnapshot state,
+        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration,
+        AttackThrowStoneAiOutOfReachScenarioCore scenario, RandomState decisionRng)
+    {
+        AttackThrowStoneAiOutOfReachSelectionResult Reject(AttackThrowStoneAiPreparedSelectionFailure failure) => new(false, failure, null, decisionRng);
         if (!scenario.Result.Accepted)
             return Reject(new(AttackThrowStoneAiPreparedSelectionStage.Scenario, AttackThrowStoneAiPreparedSelectionRejection.ScenarioRejected,
                 ScenarioFailure: scenario.Result.Failure));

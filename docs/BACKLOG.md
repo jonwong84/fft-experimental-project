@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-221 (AI command-entry design).** Pair execution gaps and file organization ZOD-215–220 are complete.
-There are 34 open tickets below. The 187 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-224 (AI turn composition).** The single fresh pair command entry ZOD-221–223 is complete.
+There are 34 open tickets below. The 190 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,19 +29,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-221 — Design one fresh pair command entry
+### ZOD-224 — Compose a bounded complete pair turn through the unified entry
 
-**Type:** Design · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-215, ZOD-217, ZOD-218, ZOD-220
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-223, ZOD-220
 
-The [composed command review](development/ai-pair-command-flows.md) exposes manual
-reach/command entry selection as the next integration gap. Trace original dispatch
-and design one owning entry that routes a single private fresh selection to actual
-Move-first, ACT-first or same-tile END through Framework authority. Account for
-reach derivation without repeating refresh/scoring, post-ACT re-entry, exact
-continuation/receipt binding and per-command rollback. Preserve unknown-key and
-terminal restrictions. Select one implementation child with behavioral acceptance;
-do not implement a probe/retry router, cached-plan API, whole-turn transaction,
-new trusted-state constructor, broad replacement interface or host activation.
+Compose the [single fresh command entry](behavior/attack-throw-stone-ai-command-execution.md),
+exact retained continuation and actual facing receipt into one headless living-pair
+turn driver. Derive the next step from actual results without manual reach/order
+selection or speculative retries. Return settled state/events on completion and
+explicit partial progress/recovery data on failure; never undo a published Move
+or ACT. Preserve source fresh-entry assertions, unknown cast-key and terminal
+restrictions. Check Move-first, ACT-first/post-ACT, empty fallback, replay and late
+failure recovery. No next-turn clock advance, host/editor activation, generic
+replacement contract, cached-plan authority or new terminal battle policy.
 
 ## Existing validation gates
 

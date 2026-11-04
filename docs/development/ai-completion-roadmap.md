@@ -37,7 +37,9 @@ unusable. [Post-ACT movement scenarios](../behavior/attack-throw-stone-ai-post-a
 and [selection](../behavior/attack-throw-stone-ai-post-act-selection.md) also reuse
 shared kernels. [Same-tile fallback END](../behavior/attack-throw-stone-ai-fallback-execution.md)
 also exists. [Composed command checks](ai-pair-command-flows.md) cover actual
-turn flows and recovery; a single owning command entry remains a design task.
+turn flows and recovery. The [single command entry](../behavior/attack-throw-stone-ai-command-execution.md)
+now derives reach/order through one private preparation and selection; complete
+headless turn composition is next.
 Source/tests are [grouped by family](ai-source-layout.md) with stable namespaces.
 
 The [ZOD-210 cleanup](ai-pair-selection-refactor.md) shares pair admission and
@@ -59,8 +61,8 @@ read-only reference revision before new tracing. Test count is not a completion 
    refresh/preparation, unused movement and settlement from actual results.
    Fresh preparation/scenarios/selection and authoritative post-ACT movement/
    settlement are implemented, with explicit score-provenance limits and
-   unsupported terminal routing. Design a single fresh command entry without
-   repeating selection, then expand real turn/controller coverage.
+   unsupported terminal routing. The single fresh command entry is implemented;
+   compose complete headless turns, then expand real turn/controller coverage.
    AI midpoint/no-knockback predictions must stay separate from real accuracy,
    damage, knockback and execution draws. Reuse the existing
    [Framework/AI boundary](../architecture/ai-command-boundary.md).
@@ -128,10 +130,10 @@ led to the completed ZOD-204/205 authority primitives, ZOD-206/207 Move-first
 entries and ZOD-208 in-reach ACT-first execution. ZOD-209's pair post-ACT study
 led to ZOD-211 preparation, ZOD-213 movement scenarios and ZOD-214 selection.
 ZOD-215/217/218 complete explicit post-ACT, out-of-reach ACT-first and same-tile
-END entries; ZOD-220 validates composed flows. ZOD-221 designs one owning fresh
-command entry through existing Framework transactions, preserving one private
-selection and per-command recovery. The Attack-only list/scenario certificate
-cannot stand in for a pair.
+END entries; ZOD-220 validates composed flows. ZOD-221/222/223 deliver one owning
+fresh command entry through existing Framework transactions, preserving one
+private selection and per-command recovery. ZOD-224 composes complete headless
+turns. The Attack-only list/scenario certificate cannot stand in for a pair.
 
 Original-AI completion means it can control applicable original encounters and
 automatic units using the required actions, targeting, policies, movement and

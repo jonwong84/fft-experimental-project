@@ -39,6 +39,14 @@ public static class AttackThrowStoneAiPostActScenarios
         if (!policy.NormalScoring || !policy.CanonicalCoordinates || !policy.NoOtherScenarioOverrides)
             return Reject(new(AttackThrowStoneAiScenarioStage.Admission, AttackThrowStoneAiScenarioRejection.UnsupportedProfile));
         var preparation = AttackThrowStoneAiPreparation.EvaluateAfterAct(state, request, configuration, decisionRng);
+        return ContinueFromPreparation(state, request, configuration, preparation, decisionRng, outOfReach);
+    }
+
+    internal static AttackThrowStoneAiPostActScenarioResult ContinueFromPreparation(AttackBattleSnapshot state,
+        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration,
+        AttackThrowStoneAiPreparationResult preparation, RandomState decisionRng, bool outOfReach)
+    {
+        AttackThrowStoneAiPostActScenarioResult Reject(AttackThrowStoneAiScenarioFailure failure) => new(false, failure, null, decisionRng);
         if (outOfReach)
         {
             var result = AttackThrowStoneAiOutOfReachScenario.ContinueFromPreparation(state, request.Turn,

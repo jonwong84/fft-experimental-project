@@ -34,6 +34,13 @@ public static class AttackThrowStoneAiPostActSelection
         var scenarios = outOfReach
             ? AttackThrowStoneAiPostActScenarios.EvaluateOutOfReach(state, request, configuration, decisionRng)
             : AttackThrowStoneAiPostActScenarios.EvaluateInReach(state, request, configuration, decisionRng);
+        return CompleteFresh(request, scenarios, decisionRng);
+    }
+
+    internal static AttackThrowStoneAiPostActSelectionResult CompleteFresh(AttackThrowStoneAiSelectionRequest request,
+        AttackThrowStoneAiPostActScenarioResult scenarios, RandomState decisionRng)
+    {
+        AttackThrowStoneAiPostActSelectionResult Reject(AttackThrowStoneAiPostActSelectionFailure failure) => new(false, failure, null, decisionRng);
         if (!scenarios.Accepted)
             return Reject(new(AttackThrowStoneAiPostActSelectionRejection.ScenariosRejected, scenarios.Failure));
         // Owned closed-list preparation clears both actor entries after ACT; non-Frog Frog Attack was already unusable.

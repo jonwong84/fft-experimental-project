@@ -6,14 +6,13 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-221: design one fresh pair command entry.** The
-[command-flow review](development/ai-pair-command-flows.md) validates explicit
-Move-first, ACT-first, same-tile END and fresh post-ACT movement/settlement.
-Design routing of one private selection through existing Framework authorities,
-removing manual command-entry selection without duplicate refresh/scoring or
-probe/retry. Preserve per-command failure recovery, exact continuations/receipts,
-unknown cast-priority and terminal restrictions. No cached-plan authority,
-whole-turn rollback, broad replacement interface or host activation.
+**ZOD-224: compose one complete headless living-pair turn.** The
+[single command entry](behavior/attack-throw-stone-ai-command-execution.md) now
+derives reach/order from one private preparation/selection and applies one actual
+command. Compose it with retained continuation and actual facing receipt; return
+explicit partial progress/recovery on later failure. Preserve source assertions,
+unknown cast-priority and terminal restrictions. No undo of published commands,
+next-turn clock advance, host/editor activation or broad replacement interface.
 
 The [original AI algorithm guide](architecture/original-ai-algorithm.md) maps
 policy precedence and all core source functions, with bounded implementation
@@ -56,12 +55,11 @@ without rewriting old evidence.
 
 ## Current implementation and validation
 
-- Latest implementation: ZOD-215/217/218 complete explicit pair
-  [post-ACT Move/END](behavior/attack-throw-stone-ai-post-act-execution.md),
-  [out-of-reach ACT-first](behavior/attack-throw-stone-ai-out-of-reach-act-first.md)
-  and [same-tile fallback END](behavior/attack-throw-stone-ai-fallback-execution.md).
-  ZOD-220 checks composed actual command flows, knockback branch changes and
-  recovery without undoing a published Move/ACT. Terminal routing stays unsupported.
+- Latest implementation: ZOD-222/223 add [planned Move from one callback](behavior/facing-decision-planned-move.md)
+  and the [single pair command entry](behavior/attack-throw-stone-ai-command-execution.md).
+  One preparation derives reach, then shared kernels select and route actual
+  Move-first/ACT-first/END or post-ACT movement. Existing continuation/receipt
+  authority and per-command recovery are reused; terminal routing stays unsupported.
 - Organization: ZOD-219 groups AI source/tests into Shared, Sword, ThrowStone
   and AttackThrowStone folders with stable namespaces; [layout](development/ai-source-layout.md).
   Owner RNG migration is completed as `Zodiac.Framework.Random.RandomStateGenerator`
@@ -73,11 +71,11 @@ without rewriting old evidence.
   eight external boundaries and 11 direct core rand sites at the pinned revision.
   Structural completeness is not full behavioral equivalence or implementation.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
-  [ZOD-216](architecture/zod-216-pair-act-and-end.md) traces remaining ACT/END entries.
+  [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch.
 - Validation: locked restore, zero-warning/error Release builds,
-  **4,113 .NET cases** (1,455 Framework, 913 AI, including owner drafts),
+  **4,122 .NET cases** (1,459 Framework, 918 AI, including owner drafts),
   **534 Python tests**, pinned post-ACT source/prepared-data and guide audits pass.
-  Logs and full TRX checkpoints: ignored `scratch/ai-pair-execution-215-220/`.
+  Reports and seven full TRX files: ignored `scratch/ai-command-entry-221-223/`.
   These bounded checks do not establish full original decision equivalence.
   Owner refactor/drafts are excluded from AI/Framework commits. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.

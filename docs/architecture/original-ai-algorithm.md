@@ -334,7 +334,9 @@ continuations and completion/facing receipts; Attack-only and
 [pair post-ACT settlement](../behavior/attack-throw-stone-ai-post-act-execution.md).
 Pair ACT-first now has [both reach entries](../behavior/attack-throw-stone-ai-out-of-reach-act-first.md),
 plus [fresh same-tile fallback END](../behavior/attack-throw-stone-ai-fallback-execution.md).
-Single-entry routing, terminal battle routing and full host activation remain
+The [single pair command entry](../behavior/attack-throw-stone-ai-command-execution.md)
+derives reach/order from one fresh preparation and routes actual commands.
+Complete turn composition, terminal battle routing and full host activation remain
 work. See [command boundary](ai-command-boundary.md) and
 [composed pair flows](../development/ai-pair-command-flows.md). The source's incremental frame
 suspension is not a save-file feature or a managed command authority mechanism.
@@ -400,7 +402,7 @@ execution or a new AI oracle. The [handoff](../PROJECT_HANDOFF.md) records curre
 implementation validation; the original guide inventory reports remain in
 ignored `scratch/ai-algorithm-guide-212/`.
 
-The next design is ZOD-221: one fresh pair command entry without repeated selection.
+The next implementation is ZOD-224: compose one complete headless living-pair turn.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use
 the supported domain and a real consumer, rather than exposing the entire

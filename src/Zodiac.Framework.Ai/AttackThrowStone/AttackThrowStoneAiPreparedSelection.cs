@@ -31,6 +31,14 @@ public static class AttackThrowStoneAiPreparedSelection
         var scenario = AttackThrowStoneAiMovementScenario.EvaluateFresh(state, request.Turn, request.ThrowStoneAbilityId, request.Weapon,
             configuration.Attack, configuration.ThrowStone, configuration.Scoring, configuration.Refresh, configuration.Preparation,
             new(policy.NormalScoring, policy.CanonicalCoordinates, policy.NoOtherScenarioOverrides), configuration.Team, decisionRng);
+        return CompleteFresh(state, request, configuration, scenario, decisionRng);
+    }
+
+    internal static AttackThrowStoneAiPreparedSelectionResult CompleteFresh(AttackBattleSnapshot state,
+        AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration,
+        AttackThrowStoneAiScenarioCore scenario, RandomState decisionRng)
+    {
+        AttackThrowStoneAiPreparedSelectionResult Reject(AttackThrowStoneAiPreparedSelectionFailure failure) => new(false, failure, null, decisionRng);
         if (!scenario.Result.Accepted)
             return Reject(new(AttackThrowStoneAiPreparedSelectionStage.Scenario, AttackThrowStoneAiPreparedSelectionRejection.ScenarioRejected,
                 ScenarioFailure: scenario.Result.Failure));

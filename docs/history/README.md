@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 187 entries index completed bounded work; they do not mean the full game is complete.
+These 190 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -210,3 +210,6 @@ These 187 entries index completed bounded work; they do not mean the full game i
 - [ZOD-218 — Execute a fresh same-tile pair fallback END](../behavior/attack-throw-stone-ai-fallback-execution.md)
 - [ZOD-219 — Organize AI source and tests by decision family](../development/ai-source-layout.md)
 - [ZOD-220 — Validate composed pair command flows and recovery](../development/ai-pair-command-flows.md)
+- [ZOD-221 — Design one fresh pair command entry](../architecture/zod-221-fresh-pair-command-entry.md)
+- [ZOD-222 — Allow one decision callback to choose a planned Move](../behavior/facing-decision-planned-move.md)
+- [ZOD-223 — Execute one fresh pair command with derived reach and order](../behavior/attack-throw-stone-ai-command-execution.md)

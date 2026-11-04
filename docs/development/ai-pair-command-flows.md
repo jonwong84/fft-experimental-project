@@ -16,13 +16,13 @@ dispatch profile. The selected entry owns its pure selection inside Framework's
 fresh planning callback. Pass neither a precomputed plan nor an externally
 advanced RNG; actual rules continue from the verified decision checkpoint.
 
-Current adapters require the caller to select an explicit reach/command entry.
-For this profile, focus distance versus prepared Move+1 distinguishes initial
-reach; status and other policies can change the original general case. The
-integration tests choose entries from fixed admitted scenarios, not from retrying
-adapters until one succeeds. Selection diagnostics are observational and do not
-authorize commands. A future single-entry dispatcher must route one private
-selection without querying twice or treating arbitrary failures as another branch.
+The recommended [single fresh command entry](../behavior/attack-throw-stone-ai-command-execution.md)
+now derives reach and command order internally from one preparation/selection.
+It accepts the same four inputs and returns the actual state, events, path and
+retained continuation when applicable. The explicit phase adapters below remain
+supported. Their original integration tests select fixed admitted scenarios;
+callers must not retry adapters until one succeeds. Selection diagnostics are
+observational and never authorize commands.
 
 ## Move-first
 
@@ -93,8 +93,7 @@ files are under ignored `scratch/ai-pair-execution-215-220/220-full-trx/`.
 Owner content/editor drafts participate in validation and remain excluded from
 these commits. No original/C execution or interactive UI review is claimed.
 
-This review exposes a useful next milestone: design one fresh pair command
-entry that routes a single private selection through the existing authorities.
-It should replace manual entry selection without a cached-plan API, speculative
-retry or whole-turn rollback. It does not require the broad engine replacement
-contracts deferred under ZOD-100/101.
+This review led to the single fresh pair command entry under ZOD-221–223.
+ZOD-224 composes complete headless turns from that entry and the existing retained
+continuation/facing receipt, preserving explicit partial progress on failure.
+The broad engine replacement contracts under ZOD-100/101 remain deferred.
