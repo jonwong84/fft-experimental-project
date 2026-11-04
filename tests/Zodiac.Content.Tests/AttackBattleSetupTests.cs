@@ -2,6 +2,8 @@ using Zodiac.Framework.Random;
 using Zodiac.Content.BattleSetup;
 using Zodiac.Content.ContentPackages;
 using Zodiac.Content.Definitions;
+using Zodiac.Content.Definitions.Common;
+using Zodiac.Content.Definitions.Item;
 using Zodiac.Framework;
 using Xunit;
 
@@ -12,7 +14,7 @@ public sealed class AttackBattleSetupTests
     private static readonly BattleUnitId A = new("sample:unit/a"), B = new("sample:unit/b");
     private static ContentPackage Metadata(string profile = "sample:profile/attack") => new("sample:package/metadata", profile, ContentPackageKind.Baseline, null, [], [], []);
     private static SwordContentPackage Swords(int power = 5, int evade = 0) => new("sample:package/swords", "sample:profile/attack", "sample:package/metadata",
-        [new SwordDefinition(new("sample:item/sword"), SwordWeaponType.Sword, 1, power, SwordDamageFormula.WeaponDamage, SwordTargetingFlags.Striking, evade, SwordElement.Neutral, new(128, new byte[5]))]);
+        [new WeaponDefinition(new("sample:item/sword"), WeaponType.Sword, 1, power, SwordDamageFormula.WeaponDamage, new() { Striking = true }, evade, new ElementToggles(), new(128, new byte[5]))]);
     private static AttackUnitState Unit(BattleUnitId id, AssetId? weapon = null, int pa = 5, int hp = 50, AttackUnitStatus status = AttackUnitStatus.None, int zodiac = 0) =>
         new(id, hp, 50, 0, 0, pa, 10, 0, 0, 0, 70, zodiac, BattleFacing.East, status, 0, weapon);
     private static TurnBattleState State(uint seed = uint.MaxValue, ulong count = 77)
@@ -59,9 +61,9 @@ public sealed class AttackBattleSetupTests
     [Fact]
     public void Explicit_v2_keeps_raw_weapon_evade_without_granting_Weapon_Guard_or_support_abilities()
     {
-        var sword = new SwordDefinition(new("sample:item/sword"), SwordWeaponType.Sword, 1, 7,
-            SwordDamageFormula.WeaponDamage, SwordTargetingFlags.Striking, 9, SwordElement.Neutral,
-            new(SwordEmptyProcMode.None, new byte[5]), (SwordCapabilityFlags)14);
+        var sword = new WeaponDefinition(new("sample:item/sword"), WeaponType.Sword, 1, 7,
+            SwordDamageFormula.WeaponDamage, new() { Striking = true, DualWield = true, Doublehand = true, Throwable = true }, 9, new ElementToggles(),
+            new(SwordEmptyProcMode.None, new byte[5]));
         var package = new SwordContentPackage("sample:package/swords", "sample:profile/attack", "sample:package/metadata", [sword], 2);
         var state = State();
         var snapshot = AttackBattleSetup.Create(state, [Unit(A, new("sample:item/sword")), Unit(B)], package, Metadata());
@@ -88,8 +90,8 @@ public sealed class AttackBattleSetupTests
     public void Selected_content_executes_without_activating_capabilities_or_mutating_packages(int version, int power, int damage)
     {
         var package = version == 1 ? Swords(power) : new SwordContentPackage("sample:package/swords", "sample:profile/attack", "sample:package/metadata",
-            [new(new("sample:item/sword"), SwordWeaponType.Sword, 1, power, SwordDamageFormula.WeaponDamage,
-                SwordTargetingFlags.Striking, 9, SwordElement.Neutral, new(SwordEmptyProcMode.None, new byte[5]), (SwordCapabilityFlags)14)], 2);
+            [new(new("sample:item/sword"), WeaponType.Sword, 1, power, SwordDamageFormula.WeaponDamage,
+                new() { Striking = true, DualWield = true, Doublehand = true, Throwable = true }, 9, new ElementToggles(), new(SwordEmptyProcMode.None, new byte[5]))], 2);
         var metadata = Metadata();
         string before = package.ToJson(), metadataBefore = metadata.ToJson();
         var setup = AttackBattleSetup.Create(State(1, 0), [Unit(A, new("sample:item/sword")), Unit(B)], package, metadata);

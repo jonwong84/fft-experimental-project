@@ -19,11 +19,29 @@ the legacy package constructor fails. Metadata packages and fixture versions are
 
 Schema 2 requires separate numeric `targetingFlags` and `capabilityFlags` on every
 sword. Targeting remains Striking 0x80. Supported capabilities are Throwable 0x02,
-TwoHandsCompatible 0x04 and TwoSwordsCompatible 0x08; `RawWeaponFlags` reconstructs
-their OR with targeting. ForcedTwoHands 0x01, alternate targeting and unknown bits
+TwoHandsCompatible 0x04 and TwoSwordsCompatible 0x08; the package/import adapters
+map these packed values to the semantic definition. ForcedTwoHands 0x01, alternate targeting and unknown bits
 fail explicitly. The enum meanings come from the `WEAPON_FLAG_*` constants in `include/fft/item.h`.
 Compatibility with an ability never grants that ability to a unit: Throw, Two
 Hands and Two Swords mechanics are outside this profile.
+
+The current managed model uses immutable `WeaponDefinition.Behavior`
+(`WeaponBehaviorToggles`), combining targeting and capability switches in one
+record. `Striking`, `Throwable`, `Doublehand` and `DualWield` replace the former
+flag enums; packing stays in adapters. All eight named switches are retained,
+while the existing sword profile still rejects Lunging, Direct, Arc and
+ForcedDoublehand rather than activating unsupported behavior. Schemas 1/2 keep
+their original numeric fields and values. The mapping was rechecked against
+`include/fft/item.h::weapon_flag_e` at reference revision
+`11464943bbdbd2a0af022d90cb7f10455cf911df` on 2026-10-28.
+
+`WeaponDefinition.WeaponElement` now uses immutable `ElementToggles`. All switches
+off derives Neutral; there is no stored Neutral switch. Original element bits
+map through `ability.h::element_flags_e` at that same rechecked revision; original
+zero maps to an empty toggle record, with custom Gravity/Poison false. The current
+sword profile and schemas 1/2 still admit only neutral elements and serialize
+`"element": 0`. Nonzero source bits and custom elements fail explicitly rather
+than being dropped. Elemental combat and a broader JSON schema remain later work.
 
 An explicit `SwordEmptyProcMode` constructor supports None 0 or AllOrNothing 128
 only, with exactly five zero status bytes. The existing integer constructor keeps

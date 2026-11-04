@@ -30,7 +30,7 @@ supports healthy and resulting Critical units; Dead is a representable result.
 power. It means an already validated range-1 Striking, formula-1, neutral,
 empty-proc sword, not an arbitrary original equipment record. The content adapter
 `AttackBattleSetup.ResolveWeapon` validates the selected package dependency and
-legacy evade restriction, then projects the selected immutable `SwordDefinition`.
+legacy evade restriction, then projects the selected immutable `WeaponDefinition`.
 Schema 2's raw evade/capabilities/proc mode stay in the content definition and are
 not activated or rewritten by projection. Both empty proc modes have the same
 bounded HP effect and draw count; full status execution remains unsupported.

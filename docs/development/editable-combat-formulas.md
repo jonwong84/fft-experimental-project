@@ -18,9 +18,9 @@ immutable state/events. Its source trace and strict limits are in
 [bounded sword implementation](../behavior/bounded-sword-implementation.md).
 It is not a general implementation of every weapon/ability formula.
 
-`src/Zodiac.Content/Definitions/SwordDefinition.cs` stores validated immutable sword
+`src/Zodiac.Content/Definitions/WeaponDefinition.cs` stores validated immutable sword
 data, including power and the supported formula selector. The Core projection is
-`BoundedSwordWeapon`. `AbilityDefinition.cs` currently describes learning metadata;
+`BoundedSwordWeapon`. `AbilityMetadataDefinition.cs` currently describes learning metadata;
 it does not yet supply executable ability effects. Do not describe a complete
 editable formula catalog as already implemented.
 

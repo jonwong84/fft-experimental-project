@@ -1,10 +1,12 @@
-using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 using Zodiac.Content.BattleSetup;
 using Zodiac.Content.ContentPackages;
 using Zodiac.Content.Definitions;
+using Zodiac.Content.Definitions.Common;
+using Zodiac.Content.Definitions.Item;
 using Zodiac.Framework;
 using Zodiac.Content.Saves;
+using Zodiac.Framework.Random;
 
 namespace Zodiac.Content.Samples;
 
@@ -26,8 +28,8 @@ public static class SyntheticTwoUnitBattle
         var metadata = new ContentPackage("sample:package/two-unit-metadata", ProfileId,
             ContentPackageKind.Baseline, null, [], [], []);
         var swords = new SwordContentPackage("sample:package/two-unit-swords", metadata.ProfileId, metadata.PackageId,
-            [new(new(weaponId.Value), SwordWeaponType.Sword, 1, 5, SwordDamageFormula.WeaponDamage,
-                SwordTargetingFlags.Striking, 0, SwordElement.Neutral, new(128, new byte[5]))]);
+            [new(new(weaponId.Value), WeaponType.Sword, 1, 5, SwordDamageFormula.WeaponDamage,
+                new WeaponBehaviorToggles { Striking = true }, 0, new ElementToggles(), new(128, new byte[5]))]);
         var surface = new TerrainSurfaceId("sample:terrain/ground");
         var profile = new UnitMovementProfile(1, 2, 6, UnitMovementMode.Normal, UnitMovementTraits.None,
             [new(surface, new TerrainMovementCost(1))]);

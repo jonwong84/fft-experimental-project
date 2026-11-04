@@ -1,6 +1,8 @@
 using System.Text.Json.Nodes;
 using Zodiac.Content.ContentPackages;
 using Zodiac.Content.Definitions;
+using Zodiac.Content.Definitions.Common;
+using Zodiac.Content.Definitions.Item;
 using Xunit;
 
 namespace Zodiac.Content.Tests.Packages;
@@ -20,9 +22,9 @@ public sealed class SwordContentPackageTests
     {
         var bytes = new byte[5];
         var effect = new EmptySwordAddedEffect(128, bytes);
-        var sword = new SwordDefinition(new WeaponId("sample:item/plain-sword"), SwordWeaponType.Sword,
-            1, 5, SwordDamageFormula.WeaponDamage, SwordTargetingFlags.Striking, 0, SwordElement.Neutral, effect);
-        var source = new List<SwordDefinition> { sword };
+        var sword = new WeaponDefinition(new WeaponId("sample:item/plain-sword"), WeaponType.Sword,
+            1, 5, SwordDamageFormula.WeaponDamage, new() { Striking = true }, 0, new ElementToggles(), effect);
+        var source = new List<WeaponDefinition> { sword };
         var package = new SwordContentPackage("sample:package/swords", "sample:profile/attack", "sample:package/metadata", source);
         source.Clear(); bytes[0] = 255;
         ContentPackage metadata = Metadata();
@@ -31,6 +33,11 @@ public sealed class SwordContentPackageTests
         Assert.Equal(previous, metadata.ToJson());
         Assert.Equal(package.ToJson(), SwordContentPackage.ReadJson(Sample).ToJson());
         SwordContentPackage reloaded = SwordContentPackage.ReadJson(package.ToJson());
+        Assert.Equal(WeaponType.Sword, Assert.Single(reloaded.Swords).Type);
+        Assert.Equal(new ElementToggles(), reloaded.Swords[0].WeaponElement);
+        Assert.True(reloaded.Swords[0].WeaponElement.Neutral);
+        Assert.Equal(3, JsonNode.Parse(package.ToJson())!["swords"]![0]!["type"]!.GetValue<int>());
+        Assert.Equal(0, JsonNode.Parse(package.ToJson())!["swords"]![0]!["element"]!.GetValue<int>());
         Assert.Equal(package.ToJson(), reloaded.ToJson());
         Assert.Equal(new byte[5], Assert.Single(reloaded.Swords).AddedEffect.StatusesRaw);
         Assert.EndsWith("\n", reloaded.ToJson());
@@ -86,12 +93,40 @@ public sealed class SwordContentPackageTests
         Assert.Throws<ArgumentOutOfRangeException>(() => new EmptySwordAddedEffect(0, new byte[5]));
         Assert.Throws<ArgumentException>(() => new EmptySwordAddedEffect(128, new byte[4]));
         Assert.Throws<ArgumentException>(() => new EmptySwordAddedEffect(128, new byte[] { 0, 0, 1, 0, 0 }));
-        Assert.Throws<ArgumentException>(() => new SwordDefinition(default, SwordWeaponType.Sword, 1, 5,
-            SwordDamageFormula.WeaponDamage, SwordTargetingFlags.Striking, 0, SwordElement.Neutral, new(128, new byte[5])));
-        var error = Assert.Throws<ArgumentOutOfRangeException>(() => new SwordDefinition(new("sample:item/sword"),
-            SwordWeaponType.Sword, 1, 5, (SwordDamageFormula)2, SwordTargetingFlags.Striking, 0,
-            SwordElement.Neutral, new(128, new byte[5])));
+        Assert.Throws<ArgumentException>(() => new WeaponDefinition(default, WeaponType.Sword, 1, 5,
+            SwordDamageFormula.WeaponDamage, new() { Striking = true }, 0, new ElementToggles(), new(128, new byte[5])));
+        var error = Assert.Throws<ArgumentOutOfRangeException>(() => new WeaponDefinition(new("sample:item/sword"),
+            WeaponType.Sword, 1, 5, (SwordDamageFormula)2, new() { Striking = true }, 0,
+            new ElementToggles(), new(128, new byte[5])));
         Assert.Equal("formula", error.ParamName);
+    }
+
+    [Fact]
+    public void Direct_behavior_requires_the_current_supported_sword_profile_without_dropping_switches()
+    {
+        WeaponDefinition Create(WeaponBehaviorToggles behavior) => new(new("sample:item/sword"), WeaponType.Sword, 1, 5,
+            SwordDamageFormula.WeaponDamage, behavior, 0, new ElementToggles(), new(128, new byte[5]));
+        Assert.Throws<ArgumentNullException>(() => Create(null!));
+        foreach (var unsupported in new[] { new WeaponBehaviorToggles(), new() { Striking = true, Lunging = true },
+            new() { Striking = true, Direct = true }, new() { Striking = true, Arc = true }, new() { Striking = true, ForcedDoublehand = true } })
+            Assert.Equal("behavior", Assert.Throws<ArgumentOutOfRangeException>(() => Create(unsupported)).ParamName);
+    }
+
+    [Fact]
+    public void Current_sword_profile_requires_non_null_neutral_elements_including_custom_switches()
+    {
+        WeaponDefinition Create(ElementToggles elements) => new(new("sample:item/sword"), WeaponType.Sword, 1, 5,
+            SwordDamageFormula.WeaponDamage, new() { Striking = true }, 0, elements, new(128, new byte[5]));
+        Assert.Throws<ArgumentNullException>(() => Create(null!));
+        Assert.True(Create(new ElementToggles()).WeaponElement.Neutral);
+        foreach (var elements in new[] { new ElementToggles { Fire = true }, new() { Ice = true },
+            new() { Lightning = true }, new() { Wind = true }, new() { Earth = true }, new() { Water = true },
+            new() { Holy = true }, new() { Dark = true }, new() { Gravity = true }, new() { Poison = true },
+            new() { Fire = true, Ice = true } })
+        {
+            Assert.False(elements.Neutral);
+            Assert.Equal("weaponElement", Assert.Throws<ArgumentOutOfRangeException>(() => Create(elements)).ParamName);
+        }
     }
 
     [Fact]
@@ -188,8 +223,10 @@ public sealed class SwordContentPackageTests
     }
 
     [Theory]
-    [InlineData(0, 0)] [InlineData(2, 128)] [InlineData(4, 0)] [InlineData(8, 128)] [InlineData(14, 0)]
-    public void V2_preserves_capabilities_raw_evade_and_empty_proc_without_normalization(int capabilities, int proc)
+    [InlineData(0, 0, false, false, false)] [InlineData(2, 128, true, false, false)]
+    [InlineData(4, 0, false, true, false)] [InlineData(8, 128, false, false, true)] [InlineData(14, 0, true, true, true)]
+    public void V2_preserves_capabilities_raw_evade_and_empty_proc_without_normalization(
+        int capabilities, int proc, bool throwable, bool doublehand, bool dualWield)
     {
         var root = Parse(); root["schemaVersion"] = 2;
         var row = root["swords"]![0]!;
@@ -197,8 +234,10 @@ public sealed class SwordContentPackageTests
         row["addedEffect"]!["typeRaw"] = proc;
         var package = SwordContentPackage.ReadJson(root.ToJsonString());
         var sword = Assert.Single(package.Swords);
-        Assert.Equal(128 | capabilities, sword.RawWeaponFlags);
-        Assert.Equal(128, (int)sword.TargetingFlags);
+        Assert.Equivalent(new WeaponBehaviorToggles { Striking = true, Throwable = throwable, Doublehand = doublehand, DualWield = dualWield }, sword.Behavior, strict: true);
+        var exported = JsonNode.Parse(package.ToJson())!["swords"]![0]!;
+        Assert.Equal(128, exported["targetingFlags"]!.GetValue<int>());
+        Assert.Equal(capabilities, exported["capabilityFlags"]!.GetValue<int>());
         Assert.Equal(9, sword.Evade);
         Assert.Equal(proc, sword.AddedEffect.TypeRaw);
         Assert.Equal(package.ToJson(), SwordContentPackage.ReadJson(package.ToJson()).ToJson());

@@ -3,6 +3,8 @@ using System.Text.Json.Nodes;
 using Zodiac.AssetTool.Cli;
 using Zodiac.AssetTool;
 using Zodiac.Content.ContentPackages;
+using Zodiac.Content.Definitions.Common;
+using Zodiac.Content.Definitions.Item;
 using System.Collections.Immutable;
 using Xunit;
 
@@ -94,15 +96,22 @@ public sealed class OriginalSwordImporterTests
         Assert.Contains("scratch", error.ToString()); Assert.Empty(output.ToString()); Assert.False(Directory.Exists(root));
     }
 
-    [Fact]
-    public void Explicit_export_maps_invented_data_losslessly_and_preserves_raw_import_records()
+    [Theory]
+    [InlineData(128, false, false, false)] [InlineData(130, true, false, false)]
+    [InlineData(132, false, true, false)] [InlineData(136, false, false, true)] [InlineData(142, true, true, true)]
+    public void Explicit_export_maps_invented_data_losslessly_and_preserves_raw_import_records(
+        int flags, bool throwable, bool doublehand, bool dualWield)
     {
-        var source = SupportedSelection();
+        var source = SupportedSelection((byte)flags);
         string raw = OriginalSwordImporter.ToJson(source);
         var package = OriginalSwordContentExporter.CreatePackage(source, Metadata());
         var sword = Assert.Single(package.Swords);
         Assert.Equal(2, package.Version);
-        Assert.Equal(source.Weapon.Flags, sword.RawWeaponFlags);
+        Assert.Equivalent(new WeaponBehaviorToggles { Striking = true, Throwable = throwable, Doublehand = doublehand, DualWield = dualWield }, sword.Behavior, strict: true);
+        Assert.Equal(new ElementToggles(), sword.WeaponElement);
+        Assert.True(sword.WeaponElement.Neutral);
+        var encoded = JsonNode.Parse(package.ToJson())!["swords"]![0]!;
+        Assert.Equal(flags, encoded["targetingFlags"]!.GetValue<int>() | encoded["capabilityFlags"]!.GetValue<int>());
         Assert.Equal(source.Weapon.Power, sword.Power);
         Assert.Equal(source.Weapon.Evade, sword.Evade);
         Assert.Equal(source.Proc.Type, sword.AddedEffect.TypeRaw);
@@ -111,6 +120,17 @@ public sealed class OriginalSwordImporterTests
         Assert.Null(source.VerifiedInputSha256); // Mapping never certifies an unverified input.
         Assert.Equal(package.ToJson(), SwordContentPackage.ReadJson(package.ToJson()).ToJson());
         Assert.Throws<InvalidDataException>(() => OriginalSwordContentExporter.ExportVerified(Synthetic(), Metadata()));
+    }
+
+    [Fact]
+    public void Every_nonzero_original_element_bit_is_rejected_instead_of_becoming_neutral()
+    {
+        var source = SupportedSelection();
+        for (int bit = 0; bit < 8; bit++)
+        {
+            var elemental = source with { Weapon = source.Weapon with { Element = (byte)(1 << bit) } };
+            Assert.Throws<ArgumentOutOfRangeException>(() => OriginalSwordContentExporter.CreatePackage(elemental, Metadata()));
+        }
     }
 
     [Theory]
@@ -136,7 +156,7 @@ public sealed class OriginalSwordImporterTests
         else Assert.Throws<InvalidDataException>(Export);
     }
 
-    private static OriginalSwordImport SupportedSelection() => OriginalSwordImporter.DecodeSelection(Synthetic()) with
+    private static OriginalSwordImport SupportedSelection(byte flags = 132) => OriginalSwordImporter.DecodeSelection(Synthetic(flags)) with
     {
         Attributes = ImmutableArray.CreateRange(new byte[25]),
     };
@@ -144,14 +164,14 @@ public sealed class OriginalSwordImporterTests
     private static ContentPackage Metadata(string id = OriginalSwordContentExporter.MetadataPackageId) =>
         new(id, OriginalSwordContentExporter.ProfileId, ContentPackageKind.Baseline, null, [], [], []);
 
-    private static byte[] Synthetic()
+    private static byte[] Synthetic(byte flags = 132)
     {
         var image = new byte[OriginalMetadataImporter.ExecutableLength];
         "PS-X EXE"u8.CopyTo(image); BinaryPrimitives.WriteUInt32LittleEndian(image.AsSpan(0x18), 0x80010000);
         BinaryPrimitives.WriteUInt32LittleEndian(image.AsSpan(0x1c), (uint)image.Length - 0x800);
         new byte[] { 0, 12, 1, 128, 19, 3, 254, 0, 52, 18, 1, 253 }.CopyTo(image, Offset(0x80062eb8 + 19 * 12));
         // Deliberately invented values, not a copy of the retail weapon row.
-        new byte[] { 1, 132, 1, 171, 7, 9, 0, 3 }.CopyTo(image, Offset(0x80063ab8 + 19 * 8));
+        new byte[] { 1, flags, 1, 171, 7, 9, 0, 3 }.CopyTo(image, Offset(0x80063ab8 + 19 * 8));
         Enumerable.Range(0, 25).Select(i => (byte)i).ToArray().CopyTo(image, Offset(0x800642c4));
         new byte[] { 255, 255, 255, 255, 1, 2, 3, 4 }.CopyTo(image, Offset(0x8005ebf0));
         Enumerable.Range(0, 14).Select(i => (byte)i).ToArray().CopyTo(image, Offset(0x8005fbf0));

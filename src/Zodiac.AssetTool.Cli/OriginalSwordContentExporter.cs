@@ -1,5 +1,7 @@
 using Zodiac.Content.ContentPackages;
 using Zodiac.Content.Definitions;
+using Zodiac.Content.Definitions.Common;
+using Zodiac.Content.Definitions.Item;
 
 namespace Zodiac.AssetTool.Cli;
 
@@ -33,11 +35,34 @@ public static class OriginalSwordContentExporter
         if (selection.Proc.Type is not (0 or 128))
             throw new InvalidDataException("Unsupported proc mode.");
         // Constructors reject unsupported range/formula/element and nonempty/malformed status data.
-        var sword = new SwordDefinition(new WeaponId(OriginalSwordImporter.WeaponId), SwordWeaponType.Sword,
-            source.Range, source.Power, (SwordDamageFormula)source.Formula, SwordTargetingFlags.Striking,
-            source.Evade, (SwordElement)source.Element,
-            new EmptySwordAddedEffect((SwordEmptyProcMode)selection.Proc.Type, selection.Proc.Statuses),
-            (SwordCapabilityFlags)(source.Flags & 0x0e));
+        // item.h::weapon_flag_e, reference 11464943bbdbd2a0af022d90cb7f10455cf911df.
+        var behavior = new WeaponBehaviorToggles
+        {
+            Striking = (source.Flags & 0x80) != 0,
+            Lunging = (source.Flags & 0x40) != 0,
+            Direct = (source.Flags & 0x20) != 0,
+            Arc = (source.Flags & 0x10) != 0,
+            DualWield = (source.Flags & 0x08) != 0,
+            Doublehand = (source.Flags & 0x04) != 0,
+            Throwable = (source.Flags & 0x02) != 0,
+            ForcedDoublehand = (source.Flags & 0x01) != 0,
+        };
+        // ability.h::element_flags_e at the same pinned revision; zero means all toggles off.
+        var elements = new ElementToggles
+        {
+            Fire = (source.Element & 0x80) != 0,
+            Lightning = (source.Element & 0x40) != 0,
+            Ice = (source.Element & 0x20) != 0,
+            Wind = (source.Element & 0x10) != 0,
+            Earth = (source.Element & 0x08) != 0,
+            Water = (source.Element & 0x04) != 0,
+            Holy = (source.Element & 0x02) != 0,
+            Dark = (source.Element & 0x01) != 0,
+        };
+        var sword = new WeaponDefinition(new WeaponId(OriginalSwordImporter.WeaponId), WeaponType.Sword,
+            source.Range, source.Power, (SwordDamageFormula)source.Formula, behavior,
+            source.Evade, elements,
+            new EmptySwordAddedEffect((SwordEmptyProcMode)selection.Proc.Type, selection.Proc.Statuses));
         var package = new SwordContentPackage("fft.ps1:package/broad-sword", ProfileId, MetadataPackageId,
             [sword], SwordContentPackage.CurrentSchemaVersion);
         package.ValidateAgainst(metadata);

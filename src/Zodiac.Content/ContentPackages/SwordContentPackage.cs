@@ -2,6 +2,8 @@ using System.Collections.Immutable;
 using System.Text;
 using System.Text.Json;
 using Zodiac.Content.Definitions;
+using Zodiac.Content.Definitions.Common;
+using Zodiac.Content.Definitions.Item;
 
 namespace Zodiac.Content.ContentPackages;
 
@@ -15,14 +17,14 @@ public sealed partial class SwordContentPackage
     public string PackageId { get; }
     public string ProfileId { get; }
     public string RequiredMetadataPackageId { get; }
-    public ImmutableArray<SwordDefinition> Swords { get; }
+    public ImmutableArray<WeaponDefinition> Swords { get; }
 
     public SwordContentPackage(string packageId, string profileId, string requiredMetadataPackageId,
-        IEnumerable<SwordDefinition> swords)
+        IEnumerable<WeaponDefinition> swords)
         : this(packageId, profileId, requiredMetadataPackageId, swords, SchemaVersion) { }
 
     public SwordContentPackage(string packageId, string profileId, string requiredMetadataPackageId,
-        IEnumerable<SwordDefinition> swords, int version)
+        IEnumerable<WeaponDefinition> swords, int version)
     {
         var validation = new PackageJsonValidation(packageId);
         if (version is not (1 or 2))
@@ -34,10 +36,10 @@ public sealed partial class SwordContentPackage
         if (PackageId == RequiredMetadataPackageId)
             throw validation.Failure(null, "$.requiredMetadataPackageId", "A sword layer must have its own distinct package ID.");
         if (swords is null) throw validation.Failure(null, "$.swords", "Definition collection is required.");
-        var values = ImmutableArray.CreateBuilder<SwordDefinition>();
+        var values = ImmutableArray.CreateBuilder<WeaponDefinition>();
         var ids = new HashSet<WeaponId>();
         string owner = PackageId[..PackageId.IndexOf(':')];
-        foreach (SwordDefinition sword in swords)
+        foreach (WeaponDefinition sword in swords)
         {
             string path = $"$.swords[{values.Count}].id";
             if (values.Count == ContentPackage.MaxDefinitionsPerKind)
@@ -47,7 +49,7 @@ public sealed partial class SwordContentPackage
             if (id[..id.IndexOf(':')] != owner)
                 throw validation.Failure(id, path, $"Definition must belong to package namespace '{owner}'.");
             if (!ids.Add(sword.Id)) throw validation.Failure(id, path, $"Duplicate sword ID '{id}'.");
-            if (version == 1 && (sword.CapabilityFlags != SwordCapabilityFlags.None || sword.AddedEffect.TypeRaw != 128))
+            if (version == 1 && (LegacyCapabilityFlags(sword.Behavior) != 0 || sword.AddedEffect.TypeRaw != 128))
                 throw validation.Failure(id, $"$.swords[{values.Count}]", "Schema 1 requires no capability flags and empty proc type 128; select schema 2 explicitly.");
             values.Add(sword);
         }
@@ -87,7 +89,7 @@ public sealed partial class SwordContentPackage
             string package = v.Id(root.GetProperty("packageId"), null, "$.packageId");
             string profile = v.Id(root.GetProperty("profileId"), null, "$.profileId");
             string dependency = v.Id(root.GetProperty("requiredMetadataPackageId"), null, "$.requiredMetadataPackageId");
-            var swords = new List<SwordDefinition>();
+            var swords = new List<WeaponDefinition>();
             foreach (JsonElement node in v.Array(root.GetProperty("swords"), null, "$.swords", ContentPackage.MaxDefinitionsPerKind))
                 swords.Add(ReadSword(node, $"$.swords[{swords.Count}]", v, version));
             return new SwordContentPackage(package, profile, dependency, swords, version);
@@ -98,7 +100,7 @@ public sealed partial class SwordContentPackage
         }
     }
 
-    private static SwordDefinition ReadSword(JsonElement node, string path, PackageJsonValidation v, int version)
+    private static WeaponDefinition ReadSword(JsonElement node, string path, PackageJsonValidation v, int version)
     {
         string? record = PackageJsonValidation.GuessString(node, "id");
         if (version == 1)
@@ -106,7 +108,8 @@ public sealed partial class SwordContentPackage
         else
             v.Fields(node, record, path, "id", "type", "range", "power", "formula", "targetingFlags", "capabilityFlags", "evade", "element", "addedEffect");
         string id = v.Id(node.GetProperty("id"), record, path + ".id");
-        int type = v.Integer(node.GetProperty("type"), id, path + ".type", 3, 3);
+        // Schema 1/2 encode Sword as 3 independently of the semantic enum's ordering.
+        _ = v.Integer(node.GetProperty("type"), id, path + ".type", 3, 3);
         int range = v.Integer(node.GetProperty("range"), id, path + ".range", 1, 1);
         int power = v.Integer(node.GetProperty("power"), id, path + ".power", 0, 255);
         int formula = v.Integer(node.GetProperty("formula"), id, path + ".formula", 1, 1);
@@ -115,7 +118,7 @@ public sealed partial class SwordContentPackage
         if ((capabilities & ~0x0e) != 0)
             throw v.Failure(id, path + ".capabilityFlags", "Unsupported sword capability bits.");
         int evade = v.Integer(node.GetProperty("evade"), id, path + ".evade", 0, 255);
-        int element = v.Integer(node.GetProperty("element"), id, path + ".element", 0, 0);
+        _ = v.Integer(node.GetProperty("element"), id, path + ".element", 0, 0);
         string effectPath = path + ".addedEffect";
         JsonElement effect = node.GetProperty("addedEffect");
         v.Fields(effect, id, effectPath, "typeRaw", "statusesRaw");
@@ -128,10 +131,34 @@ public sealed partial class SwordContentPackage
         var raw = new List<byte>();
         foreach (JsonElement entry in entries)
             raw.Add((byte)v.Integer(entry, id, $"{effectPath}.statusesRaw[{raw.Count}]", 0, 0));
-        return new SwordDefinition(new WeaponId(id), (SwordWeaponType)type, range, power,
-            (SwordDamageFormula)formula, (SwordTargetingFlags)flags, evade, (SwordElement)element,
-            new EmptySwordAddedEffect((SwordEmptyProcMode)effectType, raw), (SwordCapabilityFlags)capabilities);
+        return new WeaponDefinition(new WeaponId(id), WeaponType.Sword, range, power,
+            (SwordDamageFormula)formula, ReadLegacyBehavior(flags, capabilities), evade, new ElementToggles(),
+            new EmptySwordAddedEffect((SwordEmptyProcMode)effectType, raw));
     }
+
+    // Original/package bit packing belongs to this versioned adapter, not the semantic definition.
+    private static WeaponBehaviorToggles ReadLegacyBehavior(int targetingFlags, int capabilityFlags) => new()
+    {
+        Striking = (targetingFlags & 0x80) != 0,
+        Lunging = (targetingFlags & 0x40) != 0,
+        Direct = (targetingFlags & 0x20) != 0,
+        Arc = (targetingFlags & 0x10) != 0,
+        DualWield = (capabilityFlags & 0x08) != 0,
+        Doublehand = (capabilityFlags & 0x04) != 0,
+        Throwable = (capabilityFlags & 0x02) != 0,
+        ForcedDoublehand = (capabilityFlags & 0x01) != 0,
+    };
+
+    private static int LegacyTargetingFlags(WeaponBehaviorToggles behavior) =>
+        (behavior.Striking ? 0x80 : 0) | (behavior.Lunging ? 0x40 : 0) |
+        (behavior.Direct ? 0x20 : 0) | (behavior.Arc ? 0x10 : 0);
+
+    private static int LegacyCapabilityFlags(WeaponBehaviorToggles behavior) =>
+        (behavior.DualWield ? 0x08 : 0) | (behavior.Doublehand ? 0x04 : 0) |
+        (behavior.Throwable ? 0x02 : 0) | (behavior.ForcedDoublehand ? 0x01 : 0);
+
+    private static int LegacyElement(ElementToggles elements) => elements.Neutral ? 0
+        : throw new NotSupportedException("Sword package schemas 1/2 support only neutral elements.");
 
     public string ToJson()
     {
@@ -145,18 +172,18 @@ public sealed partial class SwordContentPackage
             writer.WriteString("profileId", ProfileId);
             writer.WriteString("requiredMetadataPackageId", RequiredMetadataPackageId);
             writer.WriteStartArray("swords");
-            foreach (SwordDefinition sword in Swords.OrderBy(sword => sword.Id.Value, StringComparer.Ordinal))
+            foreach (WeaponDefinition sword in Swords.OrderBy(sword => sword.Id.Value, StringComparer.Ordinal))
             {
                 writer.WriteStartObject();
                 writer.WriteString("id", sword.Id.Value);
-                writer.WriteNumber("type", (byte)sword.Type);
+                writer.WriteNumber("type", 3); // Existing sword package schema ID, not a WeaponType ordinal.
                 writer.WriteNumber("range", sword.Range);
                 writer.WriteNumber("power", sword.Power);
                 writer.WriteNumber("formula", (byte)sword.Formula);
-                writer.WriteNumber("targetingFlags", (byte)sword.TargetingFlags);
-                if (Version == 2) writer.WriteNumber("capabilityFlags", (byte)sword.CapabilityFlags);
+                writer.WriteNumber("targetingFlags", LegacyTargetingFlags(sword.Behavior));
+                if (Version == 2) writer.WriteNumber("capabilityFlags", LegacyCapabilityFlags(sword.Behavior));
                 writer.WriteNumber("evade", sword.Evade);
-                writer.WriteNumber("element", (byte)sword.Element);
+                writer.WriteNumber("element", LegacyElement(sword.WeaponElement));
                 writer.WriteStartObject("addedEffect");
                 writer.WriteNumber("typeRaw", sword.AddedEffect.TypeRaw);
                 writer.WriteStartArray("statusesRaw");
