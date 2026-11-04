@@ -54,8 +54,11 @@ now reuse these owners in source order. [Actual ACT-first execution](../behavior
 also uses the Framework-owned self-action transaction.
 [Fresh command dispatch](../behavior/basic-skill-ai-command-execution.md) now
 shares one selection owner across ACT-first, Move-first and same-tile empty END,
-reusing frozen Attack/Stone/Wait tokens. Derived scenarios, post-ACT execution
-from actual boosted state and complete three-entry turns remain open.
+reusing frozen Attack/Stone/Wait tokens.
+[Post-ACT movement and settlement](../behavior/basic-skill-ai-post-act.md) now
+derive both explicit reach branches from actual boosted state, with cleared
+actor entries and the empty lottery. Pre-ACT scenario derivation, automatic
+post-ACT reach routing and complete three-entry turns remain open.
 
 The [ZOD-210 cleanup](ai-pair-selection-refactor.md) shares pair admission and
 composition/lottery handling while retaining separate scenario/provenance rules.

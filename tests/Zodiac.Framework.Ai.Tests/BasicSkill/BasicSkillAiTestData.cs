@@ -26,13 +26,15 @@ internal static class BasicSkillAiTestData
         ThrowStoneAiScanScenario? scenario = null, RandomState? rng = null, bool second = false) =>
         BasicSkillAiComposition.Evaluate(state, SelfData.Request(second), scenario ?? Scenario(), profile ?? Profile(), rng ?? Decision);
     internal static FacingTurnState Ready(ulong count = 7, uint word = 1, int pa = 5, int evade = 97,
-        TilePosition? target = null, bool second = false, bool reverse = false, int ct = 15)
+        TilePosition? target = null, bool second = false, bool reverse = false, int ct = 15, int move = 3)
     {
         var template = Battle(evade: evade, pa: pa, target: target, second: second, reverse: reverse);
         var actor = second ? B : A;
         var rng = new RandomState(unchecked((word - 12345u) * 4005161829u), count - 1);
         var old = template.TurnBattle;
-        var bodies = old.Battle.Units.Select(u => new BattleUnitState(u.Id, u.Position, u.MovementProfile));
+        var bodies = old.Battle.Units.Select(u => new BattleUnitState(u.Id, u.Position,
+            u.Id == actor ? new UnitMovementProfile(move, u.MovementProfile.Jump, u.MovementProfile.BodyHeight,
+                u.MovementProfile.Mode, u.MovementProfile.Traits, u.MovementProfile.TerrainCosts) : u.MovementProfile));
         var turns = old.Turns.Units.Select(u => new TurnUnitState(u.Id, u.Speed, u.Id == actor ? ct + 95 : 90, u.TieKey));
         var initial = FacingTurnBattle.Begin(new(new(new(old.Battle.Map, bodies, rng), new(turns, rng)), template.Combatants), new(Ground));
         var ready = FacingTurnBattle.Advance(initial); Assert.True(ready.Accepted);

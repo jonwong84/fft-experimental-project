@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-243 (trace three-entry post-ACT preparation).** Fresh supplied-scenario Move-first, same-tile END and unified command dispatch ZOD-240–242 are complete.
-There are 34 open tickets below. The 209 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-247 (trace complete three-entry headless-turn orchestration and recovery).** Fresh post-ACT preparation, derived movement/empty selection and actual settlement ZOD-243–246 are complete.
+There are 34 open tickets below. The 213 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,22 +29,21 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-243 — Trace three-entry post-ACT preparation from actual boosted state
+### ZOD-247 — Trace complete three-entry headless-turn orchestration and recovery
 
-**Type:** Research · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-209, ZOD-239, ZOD-242
+**Type:** Research · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-224, ZOD-242, ZOD-246
 
-Trace the fresh post-ACT refresh/list/preparation and movement-only dispatch for
-Attack/Accumulate/Throw Stone after an actual ACT, including actual boosted PA,
-target damage/displacement, retained helpful/harmful and reach summaries, unusable
-actor entries, cached delay, remaining choices and RNG order. Compare existing
-pair post-ACT owners before selecting bounded implementation children; keep
-supplied known-score provenance distinct from derived S/D0/D1. Include PA99,
-empty movement, KO/terminal admission and both supported teams without silently
-expanding broader policies. Preserve existing pair/ACT-first/Move-first APIs,
-per-command recovery and original quirks. Predicted pre-ACT D1 grants no Move
-authority. Complete three-entry turns, host/editor activation, general scenario
-derivation and broad original policy/roster work remain separate. ZOD-106 stays
-deferred; boosted PA remains battle-only.
+Trace a complete supplied-scenario Attack/Accumulate/Throw Stone turn through
+fresh first-command dispatch, retained Move-first ACT/Wait or actual ACT-first
+effects, fresh post-ACT reach routing, remaining Move/END and facing settlement.
+Compare the complete pair-turn owner before selecting bounded children. Own
+exactly one post-ACT preparation when deriving in/out-of-reach; keep public
+explicit-branch APIs and all old streams. Define recovery at each published
+command, late facing failure and terminal/KO boundaries, preserving actual
+boosted PA, RNG, session/lineage/revision and pending tokens/receipts without
+replaying an accepted ACT. Include both admitted teams and same-tile/Move routes.
+Pre-ACT S/D0/D1 provenance stays supplied; general search, broader policies,
+host/editor activation and battle saves remain separate. ZOD-106 stays deferred.
 
 ## Existing validation gates
 

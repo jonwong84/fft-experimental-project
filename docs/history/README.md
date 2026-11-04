@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 209 entries index completed bounded work; they do not mean the full game is complete.
+These 213 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -232,3 +232,7 @@ These 209 entries index completed bounded work; they do not mean the full game i
 - [ZOD-240 — Execute fresh three-entry Move-first decisions](../behavior/basic-skill-ai-command-execution.md#move-first--zod-240)
 - [ZOD-241 — Execute fresh same-tile empty three-entry END](../behavior/basic-skill-ai-command-execution.md#same-tile-empty-end--zod-241)
 - [ZOD-242 — Unify fresh three-entry command dispatch](../behavior/basic-skill-ai-command-execution.md#unified-fresh-command--zod-242)
+- [ZOD-243 — Trace three-entry post-ACT preparation from actual boosted state](../architecture/zod-243-three-entry-post-act.md)
+- [ZOD-244 — Prepare fresh three-entry post-ACT state](../behavior/basic-skill-ai-post-act.md#fresh-preparation--zod-244)
+- [ZOD-245 — Derive post-ACT movement scenarios and empty selection](../behavior/basic-skill-ai-post-act.md#derived-movement-and-empty-selection--zod-245)
+- [ZOD-246 — Execute post-ACT movement and facing settlement](../behavior/basic-skill-ai-post-act.md#actual-remaining-command--zod-246)

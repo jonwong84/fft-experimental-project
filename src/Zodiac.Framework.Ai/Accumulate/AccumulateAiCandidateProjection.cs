@@ -71,9 +71,9 @@ public static class AccumulateAiCandidateProjection
                 clock.ElapsedTicks, clock.Ticks, clock.UpkeepPicks), clock.RngState);
     }
 
-    // Pure family admission also serves fresh preparation, before the source usefulness filter exists.
+    // Pure family admission also serves fresh preparation, independently of live ACT execution and usefulness.
     internal static AccumulateAiCandidateRejection Validate(AttackBattleSnapshot state, AccumulateAiCandidate candidate,
-        AccumulateAiCandidateProfile profile)
+        AccumulateAiCandidateProfile profile, bool alreadyActed = false)
     {
         var actor = state.Combatants.FirstOrDefault(u => u.UnitId == candidate.ActorId);
         if (actor is null) return AccumulateAiCandidateRejection.UnknownActor;
@@ -83,7 +83,8 @@ public static class AccumulateAiCandidateProjection
         if (state.Combatants.Any(u => u.Hp == 0)) return AccumulateAiCandidateRejection.TerminalInput;
         var turns = state.TurnBattle.Turns;
         var turn = turns.Units.Single(u => u.Id == actor.UnitId);
-        if (turns.Phase != TurnCyclePhase.UnitTurn || turns.ActiveUnitId != actor.UnitId || turn.ActionTaken)
+        if (turns.Phase != TurnCyclePhase.UnitTurn || turns.ActiveUnitId != actor.UnitId ||
+            turn.ActionTaken != alreadyActed || alreadyActed && turn.MovementTaken)
             return AccumulateAiCandidateRejection.UnavailableAction;
         if (!profile.Units.Select(u => u.UnitId).ToHashSet().SetEquals(state.Combatants.Select(u => u.UnitId)) ||
             state.Combatants.Any(u => u.PhysicalAttack is < 1 or > 99)) return AccumulateAiCandidateRejection.UnsupportedProfile;

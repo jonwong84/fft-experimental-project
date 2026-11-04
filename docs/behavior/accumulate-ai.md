@@ -89,7 +89,9 @@ composition is now implemented by [ZOD-234–236](basic-skill-ai-selection.md) f
 supplied known-score scenarios. [ZOD-238/239](immediate-self-act.md) add the real
 self-ACT boundary and fresh ACT-first adapter.
 [ZOD-240–242](basic-skill-ai-command-execution.md) share fresh Move/ACT/END dispatch
-and existing frozen continuations. Post-ACT integration remains separate. ZOD-106, editor
+and existing frozen continuations. [ZOD-243–246](basic-skill-ai-post-act.md) add
+fresh post-ACT preparation, derived movement/empty selection and settlement from
+actual boosted state. Complete turns remain separate. ZOD-106, editor
 and host activation stay deferred; boosted PA remains battle-only.
 
 ## Validation

@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-244",
+    "ZOD-245",
+    "ZOD-246"
+  ],
+  "date": "2026-11-04",
+  "kind": "managed-three-entry-post-act",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "c5dab730d8044f70153b34a244624ace223d57be",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/three-entry-post-act-source-v1.json",
+  "design": "docs/behavior/basic-skill-ai-post-act.md",
+  "implementationPaths": [
+    "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiCandidateProjection.cs",
+    "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiPreparation.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiPostActSelection.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiPostActExecution.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiPostActTests.cs",
+    "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiTestData.cs"
+  ],
+  "newFrameworkImplementation": false,
+  "newProductionFriendAccess": false,
+  "newPublicSessionOrReceiptConstructors": false,
+  "behavior": {
+    "freshPreparationPerQuery": 1,
+    "refreshDraws": 1,
+    "actorUsableEntries": 0,
+    "selfUsefulnessDraws": 0,
+    "actionScans": 0,
+    "lotteryDraws": 8,
+    "postActD0EqualsD1": true,
+    "nonBlueOutOfReachAdjustment": "one draw after movement scoring",
+    "blueAdjustmentDraws": 0,
+    "command": "turn-ending confirmed Move plus facing, or same-tile Wait",
+    "continuationToken": false,
+    "clockAdvance": false,
+    "rollback": "preserve already published ACT and boosted PA"
+  },
+  "vectors": {
+    "directSelf": {
+      "incomingWord": 1,
+      "incomingCount": 7,
+      "pa": 6,
+      "refreshWord": 1103527590,
+      "refreshCount": 8,
+      "movementTiles": 14,
+      "lotteryEntryWord": 2111915288,
+      "lotteryEntryCount": 22,
+      "finalWord": 1343201072,
+      "finalCount": 30,
+      "destination": [
+        1,
+        4,
+        0
+      ],
+      "ct": 15
+    },
+    "sameTile": {
+      "finalWord": 267834847,
+      "finalCount": 17,
+      "ct": 35
+    },
+    "nonBlueOutOfReach": {
+      "finalWord": 180171308,
+      "finalCount": 18,
+      "reachRaw": 10113
+    },
+    "blueOutOfReach": {
+      "finalWord": 267834847,
+      "finalCount": 17
+    },
+    "freshSelfThenPostAct": {
+      "actWord": 3794901700,
+      "actCount": 26,
+      "finalWord": 995405759,
+      "finalCount": 49,
+      "pa": 6
+    }
+  },
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4211,
+    "frameworkPassed": 1467,
+    "aiPassed": 999,
+    "newAiCases": 13,
+    "pythonPassed": 539,
+    "trxReports": 7,
+    "sourcePreparedAudit": true,
+    "algorithmGuideAudit": true,
+    "coverageAudit": true,
+    "reports": "scratch\\three-entry-post-act-243-246/",
+    "ownerDefinitionDraftsUnchanged": true
+  },
+  "boundaries": [
+    "explicit in/out-of-reach entries; no automatic reach routing or complete-turn runner",
+    "living closed two-unit lists and existing source assertions",
+    "pre-ACT known-score scenarios still supplied",
+    "no broader policies, terminal encounter routing, host/editor activation or battle saves"
+  ],
+  "originalExecuted": false,
+  "cExecuted": false
+}

@@ -6,14 +6,14 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-243: trace three-entry post-ACT preparation from actual boosted state.**
-[ZOD-240–242](behavior/basic-skill-ai-command-execution.md) now execute fresh
-supplied-scenario Move-first, same-tile empty END and unified Move/ACT/END dispatch.
-Next trace post-ACT refresh/list/preparation and movement-only selection from
-actual PA/damage/displacement, then choose bounded children by comparing current
-pair owners. Predicted D1 still grants no post-ACT Move authority. Preserve both
-teams, known-score provenance, existing APIs and per-command recovery. Derived
-scenarios, complete turns, broader policies, UI and battle saves remain separate.
+**ZOD-247: trace complete three-entry headless-turn orchestration and recovery.**
+[ZOD-243–246](behavior/basic-skill-ai-post-act.md) now own fresh post-ACT
+preparation, derived explicit in/out-of-reach movement, empty selection and
+actual remaining Move/END/facing from boosted state. Next compare complete pair
+turn ownership, single-preparation automatic reach routing and recovery before
+selecting bounded children. Preserve actual effects and accepted command progress.
+Pre-ACT known-score S/D0/D1 remains supplied; broader search/policies, UI and battle
+saves remain separate.
 
 The [original AI algorithm guide](architecture/original-ai-algorithm.md) maps
 policy precedence and all core source functions, with bounded implementation
@@ -73,18 +73,21 @@ without rewriting old evidence.
   are preserved byte-for-byte and tracked as deferred scaffolding. The owner
   explicitly left `AbilityToggles` consolidation for later; it is not wired into
   current metadata, the editor or rules. Other unimplemented flag families stay deferred.
-- Latest implementation: [ZOD-240–242 fresh Basic Skill command](behavior/basic-skill-ai-command-execution.md)
-  shares one selection owner across ACT-first, Move-first, same-tile empty END
-  and unified fresh dispatch. Framework's existing confirmed paths and frozen
-  Attack/Stone/Wait tokens retain exact-state binding and per-command recovery.
-  Actual rules own effects, refunds and facing; no frozen self token was added.
+- Latest implementation: [ZOD-244–246 three-entry post-ACT](behavior/basic-skill-ai-post-act.md)
+  shares preparation admission, retains first-pass harmful/helpful/reach summaries
+  and clears every actor action. Existing lower kernels derive movement and the
+  empty lottery, with no self coin/action scan. Framework settles actual Move/END
+  from boosted state with per-command rollback and no extra ACT/token/tick.
+- [ZOD-240–242 fresh Basic Skill command](behavior/basic-skill-ai-command-execution.md)
+  shares one pre-ACT selection owner across ACT-first, Move-first, empty END and
+  unified dispatch. Existing frozen Attack/Stone/Wait tokens retain exact binding.
 - [ZOD-238/239 actual self ACT](behavior/immediate-self-act.md) retains context-bound
   self-command/profile proposals, zero-resolution-draw PA+1/cap and full-result
   receipt binding. ACT-first leaves Move unused and adopts no projected PA/CT.
 - [ZOD-233–236 three-entry AI](behavior/basic-skill-ai-selection.md) owns one fresh
   preparation/movement prefix, source-order ranks and terminal lottery. Supplied
   known-score S/D0/D1/general-entry assertions remain required; derived scenarios
-  and post-ACT/complete-turn execution remain open.
+  and complete-turn orchestration remain open. Explicit post-ACT branches now exist.
 - [ZOD-230–232 Accumulate foundation](behavior/accumulate-ai.md) retains self PA
   arithmetic, +3/hit100 even at PA99, closed preparation/usefulness and the old
   isolated entry. Pair/map-entry APIs now share the extracted private owners;
@@ -94,12 +97,11 @@ without rewriting old evidence.
   explicit player-control flag clear, HP*128/maxHP>=45 and no NonBlue reach draw.
   Existing Attack/Stone scoring/selection/execution and both teams are preserved;
   terminal routing and Blue low-HP/player-controlled policies remain open.
-- Latest source study: [ZOD-237](architecture/zod-237-self-act-command.md) pins 19
-  functions across eight files for selected dispatch, auto self targeting,
-  actual PA/Act/turn-end semantics and zero actual draws. It selects the two
-  implemented children without changing saved-state or presentation scope.
-  [ZOD-233](architecture/zod-233-three-entry-ai.md) retains the three-entry stream;
-  [ZOD-229](architecture/zod-229-accumulate-ai.md) owns PA/usefulness evidence.
+- Latest source study: [ZOD-243](architecture/zod-243-three-entry-post-act.md)
+  pins 25 functions across seven files for post-ACT counts/clearing, actual PA,
+  movement/empty selection and settlement. [ZOD-237](architecture/zod-237-self-act-command.md)
+  retains the actual self-action boundary; [ZOD-233](architecture/zod-233-three-entry-ai.md)
+  and [ZOD-229](architecture/zod-229-accumulate-ai.md) retain pre-ACT entry evidence.
 - Organization: AI source/tests use Shared, Sword, ThrowStone, AttackThrowStone,
   Accumulate and BasicSkill folders with stable namespaces; [layout](development/ai-source-layout.md).
   Owner RNG migration is completed as `Zodiac.Framework.Random.RandomStateGenerator`
@@ -114,17 +116,18 @@ without rewriting old evidence.
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
 - Validation: locked restore and zero-warning/error full Release build pass;
-  **4,198 .NET cases** (1,467 Framework, 986 AI, including owner drafts),
-  **539 Python tests**, source/prepared-data and algorithm-guide audits pass.
-  Latest rerun validates the content cleanup, including the accepted JobStats
-  initialization change and preserved drafts. The exact staged metadata snapshot
-  also builds independently. Logs, reports and seven full TRX files are under
-  ignored `scratch/content-cleanup/`; the preceding AI cases remain documented
-  under `scratch/basic-skill-command-240-242/`.
+  **4,211 .NET cases** (1,467 Framework, 999 AI), **539 Python tests**,
+  pinned-source/prepared-data, algorithm-guide and coverage checks pass.
+  Thirteen new AI cases cover actual boost/cap/damage/push, cleared entries,
+  retained summaries/grants, derived reach branches/RNG, empty lottery, Move/END,
+  exact budgets, late facing rollback and both teams/actor identities. Logs and
+  seven full TRX files are under ignored `scratch/three-entry-post-act-243-246/`.
   Python uses repository-pinned Pillow 12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow 13.0.0 triggers six existing version guards; WindowsApps Python
-  is unavailable. Owner code drafts are now tracked; no original assets are staged. Nine historical
+  is unavailable. The preceding cleanup is committed/pushed with all owner code
+  preserved; reports remain under `scratch/content-cleanup/`. AbilityToggles and
+  other unused definition drafts are unchanged by this AI work. Nine historical
   checkpoint audits last passed at ZOD-158; unchanged snapshots were not rerun.
   No original/C execution, host/editor activation or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/

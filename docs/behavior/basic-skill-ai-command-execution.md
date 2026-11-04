@@ -100,8 +100,9 @@ Existing pair and derived sword executors remain supported.
 This is a fresh-command entry, not a complete-turn executor. After ACT-first,
 predicted D1 is still only a diagnostic: actual boosted PA and effects must feed
 fresh post-ACT preparation before any later Move/END. Spent choices reject here.
-The next ticket, ZOD-243, traces that preparation and selects bounded children.
-Supplied S/D0/D1 known-score provenance remains required; general scenario
+[ZOD-243–246](basic-skill-ai-post-act.md) now implement that separate post-ACT
+preparation, derived movement/selection and authoritative settlement. Supplied
+pre-ACT S/D0/D1 known-score provenance remains required; general scenario
 derivation, broader policies/rosters, terminal encounter routing, replaceable
 decision interface and host/editor activation remain separate. ZOD-106 stays
 deferred; boosted PA remains battle-only.
