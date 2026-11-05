@@ -123,3 +123,14 @@ None255. `MagicEvadeValues.Class` is always0. It does no lookup, I/O, status wor
 or RNG. Two focused Framework cases pass all eight literal descriptions and the
 null-input guard; existing rules/tests/fixtures remain unchanged. This milestone
 does not claim a new full .NET run. Logs: `scratch/magic-evasion-342-347/focused-344.log`.
+
+## ZOD-345
+
+`MagicEvasion.Prepare` now produces opaque `MagicEvadePrepared` work from the
+loaded contributions and explicit `MagicEvadeModifiers`. It preserves the magic
+source order and reports Abandon as diagnostic data; no status or reaction is
+published. Its constructors prevent callers from fabricating a zero base hit or
+nonzero class evade. Four cumulative focused Framework cases pass the eight
+loads and15 preparations plus null guards; two cases are new for this child.
+Prior inputs and item labels remain immutable. No RNG is consumed. Logs:
+`scratch/magic-evasion-342-347/focused-345.log`.
