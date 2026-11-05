@@ -38,19 +38,14 @@ public static class RosterAiCastOrigins
             var origins = entry.Usable && entry.Source.Harmful
                 ? AiRosterCastGeometry.Origins(m.Scenario1, enemies, entry.Source.Range)
                 : ImmutableArray<TilePosition>.Empty;
-            var keys = ImmutableArray.CreateBuilder<AiCastOriginPriority>();
+            ImmutableArray<AiCastOriginPriority> keys = [];
             if (entry.Usable && entry.Source.Kind == AiHumanAbilityKind.ThrowStone)
-                foreach (var tile in origins)
-                {
-                    var cell = m.Cells.Single(c => c.Tile == tile); short value;
-                    if (cell.WrittenPriority is { } fresh) value = fresh;
-                    else if (!workspace.KnownPriorities.TryGetValue(tile, out value))
-                        return Reject(new(RosterAiCastOriginRejection.UnknownPriority, OccurrenceIndex: entry.Index, MissingTile: tile));
-                    keys.Add(new(tile, value, cell.Proximity, cell.PriorityWritten ? AiCastPriorityProvenance.Fresh : AiCastPriorityProvenance.Retained));
-                }
+            {
+                keys = AiRosterCastGeometry.BindRanked(m, origins, workspace, out var missing);
+                if (missing is not null) return Reject(new(RosterAiCastOriginRejection.UnknownPriority, OccurrenceIndex: entry.Index, MissingTile: missing));
+            }
             // Diagnostics report the complete initial ranking, not a claim that every origin is ultimately evaluated.
-            occurrences.Add(new(entry, origins, keys.OrderBy(k => k.OriginKey).ThenByDescending(k => k.Tile.Layer)
-                .ThenByDescending(k => k.Tile.Y).ThenByDescending(k => k.Tile.X).ToImmutableArray()));
+            occurrences.Add(new(entry, origins, keys));
         }
         var successor = workspace.Write(m.Movement.Select(t => KeyValuePair.Create(t.Outcome.Destination, t.TilePriority)));
         return new(true, null, new(m, occurrences.ToImmutable()), prefix.RngState, successor);

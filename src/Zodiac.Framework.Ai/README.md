@@ -35,7 +35,9 @@ family. Source and test projects use matching folders:
   with real typed grants and shared formula/state/clock/scoring; computed
   trajectories now exist as `RosterAiDirectTrajectory`, using explicit complete
   sprite heights and exact SDK normalization/samples across all occupants.
-  Fresh ranked Stone search remains open.
+  `RosterThrowStoneAiEntry` now owns one fresh selected ranked Stone occurrence
+  with computed blockage, consumed aims and transactional workspace/RNG.
+  Full roster list composition/selection remains open.
 - `ThrowStone/`: one Throw Stone formula/candidate/scan, used by pair selection.
 - `AttackThrowStone/`: the closed two-entry list, shared pair preparation,
   movement/scenario branches, ranking/selection and actual command adapters.

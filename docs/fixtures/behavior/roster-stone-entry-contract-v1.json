@@ -1,0 +1,1680 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-301",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "notes": [
+    "Independent composed source descriptions; no managed/original/C execution.",
+    "One fresh prefix and selected structural Stone occurrence; other entries are not evaluated."
+  ],
+  "vectors": [
+    {
+      "id": "actor-origin-one-clear-evaluated-aim",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 0,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              4,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "occurrence": 1,
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "skipped": false,
+        "ranked": [
+          [
+            1,
+            1
+          ]
+        ],
+        "aims": [
+          "b"
+        ],
+        "origins": [
+          [
+            1,
+            1
+          ]
+        ],
+        "visits": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "clear": true,
+            "candidate": 0,
+            "remainingAims": 0,
+            "word": 2633739833,
+            "count": 15
+          }
+        ],
+        "candidates": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "destination": [
+              1,
+              1
+            ],
+            "actFirst": true,
+            "disposition": "Scored",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 7,
+            "word": 2633739833,
+            "count": 15
+          }
+        ],
+        "best": 0,
+        "comparison": "Above",
+        "remainingOrigins": 0,
+        "remainingAims": 0,
+        "word": 2633739833,
+        "count": 15
+      }
+    },
+    {
+      "id": "ranked-last-origin-tie-consumes-before-other-origins",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "occurrence": 1,
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "skipped": false,
+        "ranked": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "aims": [
+          "b"
+        ],
+        "origins": [
+          [
+            0,
+            1
+          ]
+        ],
+        "visits": [
+          {
+            "origin": [
+              0,
+              1
+            ],
+            "target": "b",
+            "clear": true,
+            "candidate": 0,
+            "remainingAims": 0,
+            "word": 267834847,
+            "count": 17
+          }
+        ],
+        "candidates": [
+          {
+            "origin": [
+              0,
+              1
+            ],
+            "target": "b",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": false,
+            "disposition": "Scored",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 7,
+            "word": 267834847,
+            "count": 17
+          }
+        ],
+        "best": 0,
+        "comparison": "Above",
+        "remainingOrigins": 3,
+        "remainingAims": 0,
+        "word": 267834847,
+        "count": 17
+      }
+    },
+    {
+      "id": "blocked-first-origin-retries-aim-without-draws",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "d",
+            "order": 3,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "occurrence": 1,
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "skipped": false,
+        "ranked": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "aims": [
+          "b"
+        ],
+        "origins": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "visits": [
+          {
+            "origin": [
+              0,
+              1
+            ],
+            "target": "b",
+            "clear": false,
+            "candidate": null,
+            "remainingAims": 1,
+            "word": 3295386429,
+            "count": 11
+          },
+          {
+            "origin": [
+              1,
+              0
+            ],
+            "target": "b",
+            "clear": true,
+            "candidate": 0,
+            "remainingAims": 0,
+            "word": 3210001534,
+            "count": 16
+          }
+        ],
+        "candidates": [
+          {
+            "origin": [
+              1,
+              0
+            ],
+            "target": "b",
+            "destination": [
+              1,
+              0
+            ],
+            "actFirst": false,
+            "disposition": "Scored",
+            "priority": 996,
+            "hit": 100,
+            "proximity": 7,
+            "word": 3210001534,
+            "count": 16
+          }
+        ],
+        "best": 0,
+        "comparison": "Above",
+        "remainingOrigins": 1,
+        "remainingAims": 0,
+        "word": 3210001534,
+        "count": 16
+      }
+    },
+    {
+      "id": "blocked-then-zero-accuracy-consumes-aim",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 100,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "d",
+            "order": 3,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "occurrence": 1,
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "skipped": false,
+        "ranked": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "aims": [
+          "b"
+        ],
+        "origins": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "visits": [
+          {
+            "origin": [
+              0,
+              1
+            ],
+            "target": "b",
+            "clear": false,
+            "candidate": null,
+            "remainingAims": 1,
+            "word": 3295386429,
+            "count": 11
+          },
+          {
+            "origin": [
+              1,
+              0
+            ],
+            "target": "b",
+            "clear": true,
+            "candidate": 0,
+            "remainingAims": 0,
+            "word": 2633739833,
+            "count": 15
+          }
+        ],
+        "candidates": [
+          {
+            "origin": [
+              1,
+              0
+            ],
+            "target": "b",
+            "destination": [
+              1,
+              0
+            ],
+            "actFirst": false,
+            "disposition": "NotValuable",
+            "priority": null,
+            "hit": null,
+            "proximity": 7,
+            "word": 2633739833,
+            "count": 15
+          }
+        ],
+        "best": null,
+        "comparison": null,
+        "remainingOrigins": 1,
+        "remainingAims": 0,
+        "word": 2633739833,
+        "count": 15
+      }
+    },
+    {
+      "id": "all-blocked-leaves-aim-after-origin-exhaustion",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 0,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              5,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "occurrence": 1,
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "skipped": false,
+        "ranked": [
+          [
+            1,
+            1
+          ]
+        ],
+        "aims": [
+          "b"
+        ],
+        "origins": [
+          [
+            1,
+            1
+          ]
+        ],
+        "visits": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "clear": false,
+            "candidate": null,
+            "remainingAims": 1,
+            "word": 662824084,
+            "count": 10
+          }
+        ],
+        "candidates": [],
+        "best": null,
+        "comparison": null,
+        "remainingOrigins": 0,
+        "remainingAims": 1,
+        "word": 662824084,
+        "count": 10
+      }
+    },
+    {
+      "id": "unknown-actor-origin-priority-rolls-back-prefix",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              5,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "occurrence": 1,
+        "retained": []
+      },
+      "expected": {
+        "rejection": "UnknownPriority",
+        "tile": [
+          1,
+          1
+        ],
+        "word": 1,
+        "count": 7
+      }
+    },
+    {
+      "id": "post-act-skips-before-invocation",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 0,
+            "moved": false,
+            "acted": true,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              4,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "occurrence": 1,
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "skipped": true,
+        "ranked": [],
+        "aims": [],
+        "origins": [],
+        "visits": [],
+        "candidates": [],
+        "best": null,
+        "comparison": null,
+        "remainingOrigins": 0,
+        "remainingAims": 0,
+        "word": 662824084,
+        "count": 10
+      }
+    },
+    {
+      "id": "already-moved-has-one-act-first-origin",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 0,
+            "moved": true,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              4,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "occurrence": 1,
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "skipped": false,
+        "ranked": [
+          [
+            1,
+            1
+          ]
+        ],
+        "aims": [
+          "b"
+        ],
+        "origins": [
+          [
+            1,
+            1
+          ]
+        ],
+        "visits": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "clear": true,
+            "candidate": 0,
+            "remainingAims": 0,
+            "word": 2633739833,
+            "count": 15
+          }
+        ],
+        "candidates": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "destination": [
+              1,
+              1
+            ],
+            "actFirst": true,
+            "disposition": "Scored",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 7,
+            "word": 2633739833,
+            "count": 15
+          }
+        ],
+        "best": 0,
+        "comparison": "Above",
+        "remainingOrigins": 0,
+        "remainingAims": 0,
+        "word": 2633739833,
+        "count": 15
+      }
+    },
+    {
+      "id": "selected-duplicate-does-not-run-previous-occurrence",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 0,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone",
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              4,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "occurrence": 2,
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "skipped": false,
+        "ranked": [
+          [
+            1,
+            1
+          ]
+        ],
+        "aims": [
+          "b"
+        ],
+        "origins": [
+          [
+            1,
+            1
+          ]
+        ],
+        "visits": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "clear": true,
+            "candidate": 0,
+            "remainingAims": 0,
+            "word": 2633739833,
+            "count": 15
+          }
+        ],
+        "candidates": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "destination": [
+              1,
+              1
+            ],
+            "actFirst": true,
+            "disposition": "Scored",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 7,
+            "word": 2633739833,
+            "count": 15
+          }
+        ],
+        "best": 0,
+        "comparison": "Above",
+        "remainingOrigins": 0,
+        "remainingAims": 0,
+        "word": 2633739833,
+        "count": 15
+      }
+    },
+    {
+      "id": "projected-ko-does-not-remove-next-trajectory-blocker",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 0,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 5,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 2,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "d",
+            "order": 3,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 100,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 0,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "occurrence": 1,
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "skipped": false,
+        "ranked": [
+          [
+            1,
+            1
+          ]
+        ],
+        "aims": [
+          "b",
+          "c"
+        ],
+        "origins": [
+          [
+            1,
+            1
+          ]
+        ],
+        "visits": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "clear": true,
+            "candidate": 0,
+            "remainingAims": 1,
+            "word": 3655513600,
+            "count": 14
+          },
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "c",
+            "clear": false,
+            "candidate": null,
+            "remainingAims": 1,
+            "word": 3655513600,
+            "count": 14
+          }
+        ],
+        "candidates": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "destination": [
+              1,
+              1
+            ],
+            "actFirst": true,
+            "disposition": "Scored",
+            "priority": 320,
+            "hit": 100,
+            "proximity": 17,
+            "word": 3655513600,
+            "count": 14
+          }
+        ],
+        "best": 0,
+        "comparison": "Above",
+        "remainingOrigins": 0,
+        "remainingAims": 1,
+        "word": 3655513600,
+        "count": 14
+      }
+    },
+    {
+      "id": "map-aim-order-restores-prior-target-hp-before-next-score",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 0,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 5,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 2,
+            "tile": [
+              1,
+              0
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "d",
+            "order": 3,
+            "team": 1,
+            "tile": [
+              0,
+              1
+            ],
+            "ct": 100,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 0,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "occurrence": 1,
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "skipped": false,
+        "ranked": [
+          [
+            1,
+            1
+          ]
+        ],
+        "aims": [
+          "c",
+          "b"
+        ],
+        "origins": [
+          [
+            1,
+            1
+          ]
+        ],
+        "visits": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "c",
+            "clear": true,
+            "candidate": 0,
+            "remainingAims": 1,
+            "word": 3655513600,
+            "count": 14
+          },
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "clear": true,
+            "candidate": 1,
+            "remainingAims": 0,
+            "word": 836760821,
+            "count": 19
+          }
+        ],
+        "candidates": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "c",
+            "destination": [
+              1,
+              1
+            ],
+            "actFirst": true,
+            "disposition": "Scored",
+            "priority": 174,
+            "hit": 100,
+            "proximity": 18,
+            "word": 3655513600,
+            "count": 14
+          },
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "destination": [
+              1,
+              1
+            ],
+            "actFirst": true,
+            "disposition": "Scored",
+            "priority": 320,
+            "hit": 100,
+            "proximity": 18,
+            "word": 836760821,
+            "count": 19
+          }
+        ],
+        "best": 1,
+        "comparison": "Above",
+        "remainingOrigins": 0,
+        "remainingAims": 0,
+        "word": 836760821,
+        "count": 19
+      }
+    }
+  ]
+}

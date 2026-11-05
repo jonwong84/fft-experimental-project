@@ -39,11 +39,8 @@ public static class RosterThrowStoneAiCandidate
         if (candidate.ActorId == candidate.TargetId) return Reject(RosterThrowStoneAiCandidateRejection.InvalidCandidate);
         int team = simulation.Battle.Units[candidate.ActorId].StableTeam;
         if (simulation.Battle.Units[candidate.TargetId].StableTeam == team) return Reject(RosterThrowStoneAiCandidateRejection.TargetNotEnemy);
-        if (ability.OrdinaryGroundSurface != simulation.Battle.Ground || ability.Units.Count != simulation.Battle.Units.Count ||
-            !ability.Units.Keys.ToHashSet().SetEquals(simulation.Battle.Units.Keys) || state.Combatants.Any(u => u.PhysicalAttack is < 1 or > 99))
-            return Reject(RosterThrowStoneAiCandidateRejection.UnsupportedProfile);
-        if (!ability.Abilities.ContainsKey(candidate.AbilityId)) return Reject(RosterThrowStoneAiCandidateRejection.UnknownAbility);
-        if (!ability.Units[candidate.ActorId].Abilities.Contains(candidate.AbilityId)) return Reject(RosterThrowStoneAiCandidateRejection.AbilityNotGranted);
+        var setup = ValidateAbility(state, candidate.ActorId, candidate.AbilityId, ability, simulation);
+        if (setup != RosterThrowStoneAiCandidateRejection.None) return Reject(setup);
         // Legal endpoints belong to the initial living roster, before a projected KO changes occupancy.
         var movement = FlatRosterMovement.Evaluate(state, candidate.ActorId, simulation.Battle);
         if (!movement.Accepted) return Reject(RosterThrowStoneAiCandidateRejection.UnsupportedProfile);
@@ -52,6 +49,28 @@ public static class RosterThrowStoneAiCandidate
         var origin = candidate.ActBeforeMove ? actor.Position : candidate.Destination;
         var targetPosition = old.Battle.Units.Single(u => u.Id == candidate.TargetId).Position;
         if (AiRosterNearest.Distance(origin, targetPosition) is < 1 or > 4) return Reject(RosterThrowStoneAiCandidateRejection.OutOfRange);
+        return EvaluateFresh(state, candidate, simulation, rng);
+    }
+
+    internal static RosterThrowStoneAiCandidateRejection ValidateAbility(AttackBattleSnapshot state, BattleUnitId actorId, AssetId abilityId,
+        TargetedAbilityBattleProfile ability, RosterAiSimulationProfile simulation)
+    {
+        if (ability.OrdinaryGroundSurface != simulation.Battle.Ground || ability.Units.Count != simulation.Battle.Units.Count ||
+            !ability.Units.Keys.ToHashSet().SetEquals(simulation.Battle.Units.Keys) || state.Combatants.Any(u => u.PhysicalAttack is < 1 or > 99))
+            return RosterThrowStoneAiCandidateRejection.UnsupportedProfile;
+        if (!ability.Abilities.ContainsKey(abilityId)) return RosterThrowStoneAiCandidateRejection.UnknownAbility;
+        return ability.Units[actorId].Abilities.Contains(abilityId) ? RosterThrowStoneAiCandidateRejection.None : RosterThrowStoneAiCandidateRejection.AbilityNotGranted;
+    }
+
+    // Fresh entry ownership only: admitted initial roster, effect/grant, legal destination, range and computed clear trajectory.
+    internal static RosterThrowStoneAiCandidateResult EvaluateFresh(AttackBattleSnapshot state, ThrowStoneAiCandidate candidate,
+        RosterAiSimulationProfile simulation, RandomState rng)
+    {
+        RosterThrowStoneAiCandidateResult Reject(RosterThrowStoneAiCandidateRejection reason) => new(AiScoringDisposition.Rejected, reason, null, null, rng);
+        var turn = state.TurnBattle.Turns.Units.Single(u => u.Id == candidate.ActorId);
+        int team = simulation.Battle.Units[candidate.ActorId].StableTeam;
+        var old = state.TurnBattle; var actor = old.Battle.Units.Single(u => u.Id == candidate.ActorId);
+        var origin = candidate.ActBeforeMove ? actor.Position : candidate.Destination;
         var bodies = old.Battle.Units.Select(u => u.Id == candidate.ActorId ? new BattleUnitState(u.Id, origin, u.MovementProfile, u.HasMoved) : u);
         var staged = new AttackBattleSnapshot(new(new(old.Battle.Map, bodies, rng),
             new(old.Turns.Units, rng, old.Turns.Ticks, old.Turns.Phase)), state.Combatants);

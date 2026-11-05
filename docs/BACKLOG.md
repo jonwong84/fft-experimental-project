@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-301 (evaluate one fresh ranked roster Throw Stone occurrence).** ZOD-299/300 resolve SDK rounding and compute direct trajectories against every initial occupant using explicit sprite heights. Full-list selection remains separate.
-There are 34 open tickets below. The 267 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-302 (trace full supported roster list composition and selection).** ZOD-301 owns one fresh selected ranked Stone occurrence with computed blockage, consumed aims and transactional priorities/RNG. Full-list selection remains separate.
+There are 34 open tickets below. The 268 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,25 +29,22 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-301 — Evaluate one fresh ranked roster Throw Stone occurrence
+### ZOD-302 — Trace full supported roster list composition and selection
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-296, ZOD-298, ZOD-300
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-293, ZOD-296, ZOD-301
 
-Own one fresh general prefix and a selected structural Throw Stone occurrence,
-with derived usable/enemy targets, exact typed effect/grant admission and complete
-sprite metadata. Reuse shared cast-key binding, candidate formula/state/clock/
-scoring, computed trajectory and strict candidate rank. Resolve all selected
-entry's initial priority reads from fresh or retained knowledge; unentered
-occurrences must not gate it. Walk ranked origins (last map tie), then remaining
-aims in map order, using actor-origin ACT-first/D1 substitution. Blocked shots
-take no draws and retain the aim; clear evaluated aims consume even at zero
-accuracy or losing rank. Stop at exhausted origin or aim count. Restore all
-candidate state while chaining RNG; whole-query failures publish no partial
-workspace/result/RNG. Compare the best against owned D0 without full-list
-insertion/lottery or command authority. Record independent end-to-end source
-tapes before coding. Preserve pair guards and all existing deferrals. See
-[trajectory design](architecture/zod-299-roster-stone-trajectory.md) and
-[ranked search trace](architecture/zod-297-roster-stone-search.md).
+Pin the read-only source and trace one fresh general prefix through structural
+Attack/self/Stone/Frog occurrences, repeated IDs/order, each actual usefulness/
+target/trajectory pass, per-entry best/rank reset, insertion against D0, source
+lottery and successful priority publication. Reuse private fresh owners rather
+than calling independently refreshed public queries. Trace self coin placement
+after preparation and its effect on later geometry/formula/upkeep RNG. Preserve
+unknown selected-entry priorities, all-peer restoration, projected KO blockers,
+post-ACT empty list and whole-query rollback. Record independent composed tapes
+and select bounded managed children before coding. Full roster commands/turns,
+other abilities/policies/statuses/maps, complete corpse lifecycle, automatic
+facing, terminal/frame RNG, host/editor, owner drafts, replacement interfaces
+and ZOD-106 remain separate/deferred. See [fresh Stone](behavior/roster-throw-stone-ai-entry.md).
 
 ## Existing validation gates
 
