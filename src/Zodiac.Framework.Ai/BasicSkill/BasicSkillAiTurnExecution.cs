@@ -158,10 +158,9 @@ public static class BasicSkillAiTurnExecution
                     break;
                 default: throw new InvalidOperationException("Unexpected private turn stage.");
             }
-            if (continuation is not null) stage = BasicSkillAiTurnStage.RetainedCommand;
-            else if (state.PendingFacing is not null) stage = BasicSkillAiTurnStage.FinishFacing;
-            else if (state.Battle.TurnBattle.Turns.ActiveUnitId == request.Turn.ActorId) stage = BasicSkillAiTurnStage.PostActCommand;
-            else return new(new(state, events.ToImmutable(), decisions.ToImmutable(), null, null), workspace);
+            var next = AiTurnProgress.Next(state, request.Turn.ActorId, continuation);
+            if (next is null) return new(new(state, events.ToImmutable(), decisions.ToImmutable(), null, null), workspace);
+            stage = next.Value;
         }
     }
 }

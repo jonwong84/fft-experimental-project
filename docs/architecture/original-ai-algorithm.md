@@ -438,11 +438,13 @@ actual commands and complete recovery. Unknown startup/event values remain
 unknown; unmodeled workspace use forgets knowledge.
 [ZOD-261–263](../behavior/content-backed-ai-lists.md) now build semantic ordinary
 human lists and bind metadata/effects into canonical preparation. Known-slot
-state remains explicit; other list shapes reject before refresh. ZOD-264 now
-traces variable supported-action traversal, per-occurrence ranking and terminal
-context. Its [ZOD-264 design](zod-264-variable-action-lists.md) now selects ZOD-265,
-a separate pure preparation owner; canonical runtime guards remain unchanged.
-Full original search breadth remains separate.
+state remains explicit. The canonical consumer retains its four-entry guard.
+[ZOD-264](zod-264-variable-action-lists.md) traces variable occurrence/rank/terminal
+context; [ZOD-265–270](../behavior/variable-basic-skill-ai.md) add separate owned
+preparation, shared movement, per-occurrence search/lottery and actual complete
+turns with exact recovery. Cast-key reads depend on present actions; missing AI
+entries do not imply missing gameplay grants. ZOD-271 next traces general roster
+focus/target search. Full original search breadth remains separate.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use
 the supported domain and a real consumer, rather than exposing the entire

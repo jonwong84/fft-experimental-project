@@ -55,7 +55,7 @@ public sealed class AiHumanInitializedList
 
 /// <summary>Owned initialized list data; only this builder can construct it. No RNG, plan or command authority.</summary>
 /// <remarks>ZOD-261/262. This semantic representation imposes no original storage capacity on catalogs or units.
-/// The current preparation consumer independently admits only its canonical four-entry shape.</remarks>
+/// Canonical and variable-list preparation consumers independently enforce their supported shapes.</remarks>
 public sealed class AiHumanAbilityLists
 {
     public ImmutableDictionary<BattleUnitId, AiHumanInitializedList> Units { get; }

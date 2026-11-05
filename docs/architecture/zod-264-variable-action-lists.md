@@ -162,3 +162,11 @@ Reproduce the new study with:
 python -m unittest discover -s tools/verification -p 'test_ai_variable_list_contract.py'
 python tools/verification/verify_ai_variable_list_contract.py --reference C:/repositories/fft_decomp --output scratch/variable-lists-264/new-source-report.json
 ```
+
+## Implemented follow-up
+
+[ZOD-265–270](../behavior/variable-basic-skill-ai.md) now implement the separate
+owned variable-list preparation and subsequent shared scenarios, occurrence
+composition/lottery, actual command and complete-turn/recovery milestones. Old
+canonical guards remain intact. This study's source-only descriptions and
+historical validation remain unchanged.

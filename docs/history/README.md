@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 231 entries index completed bounded work; they do not mean the full game is complete.
+These 237 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -254,3 +254,9 @@ These 231 entries index completed bounded work; they do not mean the full game i
 - [ZOD-262 — Build immutable semantic ordinary human AI lists](../behavior/content-backed-ai-lists.md#owned-semantic-list-construction--zod-262)
 - [ZOD-263 — Bind content-backed lists into canonical fresh preparation](../behavior/content-backed-ai-lists.md#outer-content-setup-and-fresh-preparation--zod-263)
 - [ZOD-264 — Trace variable supported-action lists through preparation and search](../architecture/zod-264-variable-action-lists.md)
+- [ZOD-265 — Prepare owned variable supported-action lists](../behavior/variable-basic-skill-ai.md#owned-preparation--zod-265)
+- [ZOD-266 — Derive shared fresh variable-list movement scenarios](../behavior/variable-basic-skill-ai.md#shared-fresh-scenarios--zod-266)
+- [ZOD-267 — Compose supported occurrences with range-aware provenance](../behavior/variable-basic-skill-ai.md#occurrence-composition--zod-267)
+- [ZOD-268 — Select variable-list plans with occurrence identity](../behavior/variable-basic-skill-ai.md#terminal-selection--zod-268)
+- [ZOD-269 — Execute actual fresh variable-list commands](../behavior/variable-basic-skill-ai.md#actual-first-command--zod-269)
+- [ZOD-270 — Complete variable-list turns and exact recovery](../behavior/variable-basic-skill-ai.md#complete-turns-and-recovery--zod-270)

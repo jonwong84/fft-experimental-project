@@ -32,8 +32,15 @@ a file adds no dependency or access. The assembly still references Framework,
 and Framework does not reference AI. Content's outer battle-setup adapter now
 references AI to supply semantic lists from immutable metadata and explicit
 known slots; AI never references Content or performs file I/O. Canonical list
-preparation replaces its legacy list assertion, while general list shapes still
-reject. Folders describe current code ownership,
+preparation replaces its legacy list assertion while retaining its four-entry
+guard. Separate `BasicSkillAiListPreparation`/`Scenarios`/`Composition`/`Selection`
+owners admit missing/repeated/reordered supported self/Stone occurrences.
+`BasicSkillAiListCommandExecution` and `BasicSkillAiListTurnExecution` privately
+own fresh selection, actual typed proposals, post-ACT settlement and exact-session
+recovery. They reuse entry/movement/rank/lottery, Framework continuation/facing
+and common stage-routing owners; no public cached plan grants authority.
+See the [variable-list boundary](../../docs/behavior/variable-basic-skill-ai.md).
+General actions/rosters/maps/policies remain open. Folders describe current code ownership,
 not permanent original-game table limits. `SwordAi` names still identify the
 restricted sword implementation; moving them is not a claim of general weapon
 support. Avoid adding a folder for each ticket or duplicating shared kernels

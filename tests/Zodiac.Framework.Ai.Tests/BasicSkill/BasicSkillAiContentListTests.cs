@@ -137,6 +137,19 @@ public sealed class BasicSkillAiContentListTests
     }
 
     [Fact]
+    public void AI_disabled_self_metadata_can_feed_the_variable_owner_without_removing_gameplay_grants()
+    {
+        var state = Ready(move: 0, evade: 0); var lists = Lists(Content(state, selfFlags: [0, 0, 0, 0]));
+        var configuration = Configuration(lists);
+        var result = BasicSkillAiListTurnExecution.Execute(state, SelfData.Request(),
+            new(new(configuration, new(true, true, true), true, true, true), new(true, true)), Dispatch);
+        Assert.True(result.Completed, result.Failure?.ToString());
+        Assert.All(result.Decisions, d => Assert.DoesNotContain(d.Outcome.Selection.Composition.Entries,
+            e => e.Entry.Source.Kind == AiHumanAbilityKind.Accumulate));
+        Assert.Equal(5, result.State.Battle.Combatants.Single(u => u.UnitId == A).PhysicalAttack);
+    }
+
+    [Fact]
     public void Owned_lists_flow_through_retained_priority_recovery_without_new_refresh_or_lost_history()
     {
         var state = Ready(move: 1, evade: 0, target: new(4, 1, 0), count: ulong.MaxValue - 16);

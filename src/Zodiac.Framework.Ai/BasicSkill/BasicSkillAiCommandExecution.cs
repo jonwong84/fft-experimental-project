@@ -118,44 +118,53 @@ internal static class BasicSkillAiCommandPipeline
             var plan = selected.Outcome!.Plan;
             var origin = context.Battle.TurnBattle.Battle.Units.Single(u => u.Id == context.ActorId).Position;
             // ai_command_build after fresh selection. The saved-choice no-progress guard ran earlier in source.
-            var kind = !plan.ActBeforeMove && plan.Destination != origin ? BasicSkillAiCommandKind.Move : plan.Action switch {
-                BasicSkillAiAttack => BasicSkillAiCommandKind.Attack,
-                BasicSkillAiStone => BasicSkillAiCommandKind.ThrowStone,
-                BasicSkillAiAccumulate => BasicSkillAiCommandKind.Accumulate,
-                _ => BasicSkillAiCommandKind.End
-            };
+            var kind = Kind(plan, origin);
             if (mode == BasicSkillAiDispatchMode.ActFirst && (!plan.ActBeforeMove || plan.Action is null) ||
                 mode == BasicSkillAiDispatchMode.MoveFirst && kind != BasicSkillAiCommandKind.Move ||
                 mode == BasicSkillAiDispatchMode.SameTileEnd && kind != BasicSkillAiCommandKind.End)
             { failure = new(BasicSkillAiCommandRejection.DispatchMismatch); return context.Reject<T>(); }
             var diagnostic = describe(selected.Outcome, selected.RngState, kind);
-            var facing = new FacingChoice.ChooseClosedEnemy(request.Turn.TargetId);
-            if (kind == BasicSkillAiCommandKind.Move)
-            {
-                var move = new MoveUnitCommand(context.ActorId, plan.Destination);
-                var movement = preparation.Attack.Movement;
-                return plan.Action switch {
-                    BasicSkillAiAttack attack => context.PrepareMoveThenAttack(move, movement,
-                        new(attack.Value.Candidate.ActorId, attack.Value.Candidate.TargetId), request.Weapon, selected.RngState, diagnostic),
-                    BasicSkillAiStone stone => context.PrepareMoveThenTargetedAbility(move, movement,
-                        new(stone.Value.Candidate.ActorId, stone.Value.Candidate.AbilityId, stone.Value.Candidate.TargetId),
-                        preparation.ThrowStone.Ability, selected.RngState, diagnostic),
-                    null => context.PrepareMoveThenWait(move, movement, facing, selected.RngState, diagnostic),
-                    _ => throw new InvalidOperationException("The closed self entry must retain ACT-first on its complete tie.")
-                };
-            }
-            return plan.Action switch {
-                BasicSkillAiAttack attack => context.PrepareAttack(new(attack.Value.Candidate.ActorId, attack.Value.Candidate.TargetId),
-                    request.Weapon, selected.RngState, diagnostic),
-                BasicSkillAiStone stone => context.PrepareTargetedAbility(new(stone.Value.Candidate.ActorId, stone.Value.Candidate.AbilityId,
-                    stone.Value.Candidate.TargetId), preparation.ThrowStone.Ability, selected.RngState, diagnostic),
-                BasicSkillAiAccumulate self => context.PrepareImmediateAbility(new(self.ActorId, self.Value.Projection!.Outcome!.Candidate.AbilityId),
-                    preparation.Accumulate.Ability, selected.RngState, diagnostic),
-                null => context.PrepareWait(facing, selected.RngState, diagnostic),
-                _ => throw new InvalidOperationException("Unsupported privately selected action.")
-            };
+            return Prepare(context, request, preparation, plan, selected.RngState, diagnostic, kind);
         });
         if (!result.Accepted && failure is null) failure = new(BasicSkillAiCommandRejection.BoundaryRejected, Boundary: result.Rejection);
         return (failure, result);
     }
+
+    internal static BasicSkillAiCommandKind Kind(BasicSkillAiSelectedPlan plan, TilePosition origin) =>
+        !plan.ActBeforeMove && plan.Destination != origin ? BasicSkillAiCommandKind.Move : plan.Action switch {
+            BasicSkillAiAttack => BasicSkillAiCommandKind.Attack, BasicSkillAiStone => BasicSkillAiCommandKind.ThrowStone,
+            BasicSkillAiAccumulate => BasicSkillAiCommandKind.Accumulate, _ => BasicSkillAiCommandKind.End };
+
+    // Only fresh owning callbacks call this mapper; no public diagnostic/plan can enter an invocation as authority.
+    internal static FacingDecision<T> Prepare<T>(FacingDecisionContext context, AccumulateAiPreparationRequest request,
+        AccumulateAiPreparationConfiguration preparation, BasicSkillAiSelectedPlan plan, RandomState decisionRng,
+        T diagnostic, BasicSkillAiCommandKind kind)
+    {
+        var facing = new FacingChoice.ChooseClosedEnemy(request.Turn.TargetId);
+        if (kind == BasicSkillAiCommandKind.Move)
+        {
+            var move = new MoveUnitCommand(context.ActorId, plan.Destination);
+            var movement = preparation.Attack.Movement;
+            return plan.Action switch {
+                BasicSkillAiAttack attack => context.PrepareMoveThenAttack(move, movement,
+                    new(attack.Value.Candidate.ActorId, attack.Value.Candidate.TargetId), request.Weapon, decisionRng, diagnostic),
+                BasicSkillAiStone stone => context.PrepareMoveThenTargetedAbility(move, movement,
+                    new(stone.Value.Candidate.ActorId, stone.Value.Candidate.AbilityId, stone.Value.Candidate.TargetId),
+                    preparation.ThrowStone.Ability, decisionRng, diagnostic),
+                null => context.PrepareMoveThenWait(move, movement, facing, decisionRng, diagnostic),
+                _ => throw new InvalidOperationException("The closed self entry must retain ACT-first on its complete tie.")
+            };
+        }
+        return plan.Action switch {
+            BasicSkillAiAttack attack => context.PrepareAttack(new(attack.Value.Candidate.ActorId, attack.Value.Candidate.TargetId),
+                request.Weapon, decisionRng, diagnostic),
+            BasicSkillAiStone stone => context.PrepareTargetedAbility(new(stone.Value.Candidate.ActorId, stone.Value.Candidate.AbilityId,
+                stone.Value.Candidate.TargetId), preparation.ThrowStone.Ability, decisionRng, diagnostic),
+            BasicSkillAiAccumulate self => context.PrepareImmediateAbility(new(self.ActorId, self.Value.Projection!.Outcome!.Candidate.AbilityId),
+                preparation.Accumulate.Ability, decisionRng, diagnostic),
+            null => context.PrepareWait(facing, decisionRng, diagnostic),
+            _ => throw new InvalidOperationException("Unsupported privately selected action.")
+        };
+    }
+
 }

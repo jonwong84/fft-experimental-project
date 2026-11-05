@@ -75,9 +75,23 @@ public static class AccumulateAiCandidateProjection
     internal static AccumulateAiCandidateRejection Validate(AttackBattleSnapshot state, AccumulateAiCandidate candidate,
         AccumulateAiCandidateProfile profile, bool alreadyActed = false)
     {
-        var actor = state.Combatants.FirstOrDefault(u => u.UnitId == candidate.ActorId);
+        var invalid = ValidateState(state, candidate.ActorId, candidate.OpponentId, profile, alreadyActed);
+        if (invalid != AccumulateAiCandidateRejection.None) return invalid;
+        if (!profile.Ability.Abilities.ContainsKey(candidate.AbilityId)) return AccumulateAiCandidateRejection.UnknownAbility;
+        if (!profile.Ability.Units[candidate.ActorId].Abilities.Contains(candidate.AbilityId)) return AccumulateAiCandidateRejection.AbilityNotGranted;
+        var movement = FlatOrdinaryMovement.Evaluate(state, candidate.ActorId, profile.Movement);
+        if (!movement.Accepted) return AccumulateAiCandidateRejection.UnsupportedProfile;
+        return movement.Outcome!.AiOrigins.Contains(candidate.Destination)
+            ? AccumulateAiCandidateRejection.None : AccumulateAiCandidateRejection.InvalidCandidate;
+    }
+
+    // Shared state admission does not pretend an absent action is being invoked.
+    internal static AccumulateAiCandidateRejection ValidateState(AttackBattleSnapshot state, BattleUnitId actorId,
+        BattleUnitId opponentId, AccumulateAiCandidateProfile profile, bool alreadyActed)
+    {
+        var actor = state.Combatants.FirstOrDefault(u => u.UnitId == actorId);
         if (actor is null) return AccumulateAiCandidateRejection.UnknownActor;
-        var opponent = state.Combatants.FirstOrDefault(u => u.UnitId == candidate.OpponentId);
+        var opponent = state.Combatants.FirstOrDefault(u => u.UnitId == opponentId);
         if (opponent is null) return AccumulateAiCandidateRejection.UnknownOpponent;
         if (actor.UnitId == opponent.UnitId) return AccumulateAiCandidateRejection.InvalidCandidate;
         if (state.Combatants.Any(u => u.Hp == 0)) return AccumulateAiCandidateRejection.TerminalInput;
@@ -88,11 +102,6 @@ public static class AccumulateAiCandidateProjection
             return AccumulateAiCandidateRejection.UnavailableAction;
         if (!profile.Units.Select(u => u.UnitId).ToHashSet().SetEquals(state.Combatants.Select(u => u.UnitId)) ||
             state.Combatants.Any(u => u.PhysicalAttack is < 1 or > 99)) return AccumulateAiCandidateRejection.UnsupportedProfile;
-        if (!profile.Ability.Abilities.ContainsKey(candidate.AbilityId)) return AccumulateAiCandidateRejection.UnknownAbility;
-        if (!profile.Ability.Units[actor.UnitId].Abilities.Contains(candidate.AbilityId)) return AccumulateAiCandidateRejection.AbilityNotGranted;
-        var movement = FlatOrdinaryMovement.Evaluate(state, actor.UnitId, profile.Movement);
-        if (!movement.Accepted) return AccumulateAiCandidateRejection.UnsupportedProfile;
-        return movement.Outcome!.AiOrigins.Contains(candidate.Destination)
-            ? AccumulateAiCandidateRejection.None : AccumulateAiCandidateRejection.InvalidCandidate;
+        return AccumulateAiCandidateRejection.None;
     }
 }

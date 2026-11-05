@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-265 (prepare variable supported-action lists through a separate pure entry).** ZOD-264 traces variable-list summaries, occurrence traversal, shared ranks and terminal context; current runtime consumers retain their canonical guards.
-There are 34 open tickets below. The 231 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-271 (trace general roster focus and target search).** ZOD-265–270 complete variable supported-action lists through shared preparation, movement, occurrence evaluation, lottery, actual commands and recoverable turns. Broader roster/search work needs a pinned source study before implementation.
+There are 34 open tickets below. The 237 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,24 +29,24 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-265 — Prepare variable supported-action lists through a separate pure entry
+### ZOD-271 — Trace general roster focus and target search
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-263, ZOD-264
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-264, ZOD-270
 
-Implement the [source-selected variable-list preparation child](architecture/zod-264-variable-action-lists.md#concrete-managed-gaps-and-selected-child--zod-265).
-Require owned ordinary human lists, the existing two-opponent/sword/effect
-state domain and explicit remaining source facts. Derive ordered occurrence
-policy, initialized versus usable summaries, peer threats, minimum reaches and
-common refresh/focus from missing/repeated/reordered supported self/Stone
-entries. Respect source compatibility extent, helpful share128/threshold77 and
-lowest-ally clearing. Validate grants for listed actions without interpreting
-omitted AI entries as absent gameplay grants. Factor state admission from
-invoking absent actions. Own one refresh before/after ACT, preserve whole-query
-rollback, source counts/reach-before-clear and replay for both teams/actors.
-Stop before movement scoring/search/lottery/commands; existing canonical APIs,
-list guards and history/recovery stay unchanged. General learning/menus/
-rosters/effects/maps/policies, terminal routing, host/editor, replacement
-interfaces, owner flag drafts and ZOD-106 remain separate or deferred.
+Pin and inspect the read-only reference before broadening the current two-opponent
+domain. Trace focus selection, in-play/active-target membership, ally/enemy
+classification, source roster and target traversal/ties, restored hypothetical
+state, proximity/threat aggregation and workspace/RNG ordering. Map assumptions
+in current refresh, movement, scoring and entry owners against authoritative
+Framework roster/command limits. Distinguish source storage extents from managed
+catalog/roster capacity and identify unsupported status/control/terminal paths.
+Produce independently checkable descriptions and select one concrete incremental
+managed child with prerequisite changes; do not weaken pair guards or approximate
+multi-target rules by repeated standalone queries. General effects/maps/policies,
+host/editor work, broad replacement interfaces, owner drafts, frame RNG and
+ZOD-106 remain separate/deferred. See the
+[current variable-list boundary](behavior/variable-basic-skill-ai.md#validation-and-limits)
+and [AI roadmap](development/ai-completion-roadmap.md).
 
 ## Existing validation gates
 
