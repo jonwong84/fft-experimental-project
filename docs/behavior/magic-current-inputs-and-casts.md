@@ -72,3 +72,17 @@ to the existing amount enum. Three focused managed cases pass33 literal relation
 and unknown-sign guards, including both independent sex bits, monster precedence,
 reverse differences and Serpentarius. The existing arithmetic and source fixtures
 are unchanged. Logs: `scratch/magic-inputs-348-357/focused-349.log`.
+
+## ZOD-350
+
+`MagicCurrentUnit` captures immutable current-byte/stat/status/support/affinity and
+resolved equipment facts. It does not extend the sword state or perform stat
+refresh. `FaithMagicInputs.Project` derives amount, element, Undead and evade
+inputs, taking strengthening by intersection and Chicken/Frog once. Healing
+ignores damage weather and equipment. Unsupported ordinary actor/target status,
+Fire/Oil, Earth/Float/rider and inconsistent same-ID context return no projection.
+Missing required facts and unknown enums throw; no field is synthesized from IDs.
+Don't Act additionally disables the supplied action-unrestricted fact. No live
+state, RNG or command is changed. Five cumulative focused cases pass33 relations,
+12 projections and self-target/immutability/argument guards; two cases are new.
+Logs: `scratch/magic-inputs-348-357/focused-350.log`.
