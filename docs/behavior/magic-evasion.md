@@ -113,3 +113,13 @@ MP/charge, live stats/equipment extraction, prepared spell grants, target geomet
 (including the agreed future cone), actual commands/HP/status publication, magic
 AI activation, owner drafts, JobStats, host/editor, automatic facing, broader
 corpse/Golem/terminal/frame RNG, broad interfaces and ZOD-106 remain deferred.
+
+## ZOD-344
+
+`MagicEvasion.Load` now accepts immutable resolved slot/type/byte facts and returns
+opaque `MagicEvadeContributions`. Monsters and wrong types contribute zero;
+the independent item labels retain weapon preference, including item0 versus
+None255. `MagicEvadeValues.Class` is always0. It does no lookup, I/O, status work
+or RNG. Two focused Framework cases pass all eight literal descriptions and the
+null-input guard; existing rules/tests/fixtures remain unchanged. This milestone
+does not claim a new full .NET run. Logs: `scratch/magic-evasion-342-347/focused-344.log`.

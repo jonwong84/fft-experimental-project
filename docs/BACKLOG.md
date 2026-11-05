@@ -4,13 +4,13 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-344 (load magic evasion contributions and blocking-item labels).**
+**Next bounded work: ZOD-345 (prepare magic evasion status modifiers).**
 [Magic evasion and entry](behavior/magic-evasion.md) records the pinned trace and
-completed bounded children: ZOD-342. Magic
+completed bounded children: ZOD-342, ZOD-344. Magic
 uses its own equipment/status chain, real ordered draws even in AI/preview, and
 source hit-versus-accuracy facts. Shared formula arithmetic and geometry remain
 independent; no live publication, commands or magic AI activation is inferred.
-There are 37 open tickets below. The 310 completed tickets, prior checkpoints and
+There are 36 open tickets below. The 311 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -34,17 +34,9 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-344 — Load magic evasion contributions and blocking-item labels
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-342
-
-Implement immutable magic equipment contribution loading from resolved primary-type and byte facts. Monsters have no equipment evade; class contribution remains zero. Preserve independent blocking-item labels including weapon preference and None255 versus item0. No status, RNG, import or live extraction. Use the traced literal descriptions. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
-Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/
-deferred. See the [source and boundaries](behavior/magic-evasion.md).
-
 ### ZOD-345 — Prepare magic evasion status modifiers
 
-**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-344
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-344
 
 Implement magic-only Transparent, Abandon/classified restriction, target status clearing and Defending order. Preserve stacked base-hit halvings and Abandon result diagnostics despite contribution clears. No physical Dark/Concentrate/facing/weather behavior or live status mutation. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
 Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/

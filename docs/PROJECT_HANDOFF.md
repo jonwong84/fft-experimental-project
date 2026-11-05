@@ -6,8 +6,8 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-344: load magic evasion contributions and blocking-item labels.**
-[Magic evasion](behavior/magic-evasion.md) records completed ZOD-342
+**ZOD-345: prepare magic evasion status modifiers.**
+[Magic evasion](behavior/magic-evasion.md) records completed ZOD-342, ZOD-344
 from clean source `11464943bbdbd2a0af022d90cb7f10455cf911df` (13 files/21 functions).
 The damage0x08 chain differs from healing0x0C's bypass; physical evasion helpers
 must not be imported wholesale. Preserve real ordered evade draws in AI/preview,

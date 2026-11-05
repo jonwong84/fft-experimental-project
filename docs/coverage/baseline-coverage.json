@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-05",
   "edition": "SCUS-94221",
-  "managedCommit": "c1fcf1a",
+  "managedCommit": "285c25c",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -616,7 +616,7 @@
       "openQuestions": [
         "Original projectile obstruction/elevation/falling, other action families/modifiers, progression/rewards, AI and independent original observation remain open. ZOD-111 owns Windows controls; battle checkpoints remain deferred."
       ],
-      "nextAction": "ZOD-344: load magic evasion contributions and blocking-item labels. Preserve separate resource/live-stat/target/command and magic AI activation work.",
+      "nextAction": "ZOD-345: prepare magic evasion status modifiers. Preserve separate resource/live-stat/target/command and magic AI activation work.",
       "followUpTickets": [
         "ZOD-104",
         "ZOD-105",

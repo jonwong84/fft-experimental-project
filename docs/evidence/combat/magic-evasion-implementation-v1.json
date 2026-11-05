@@ -1,7 +1,8 @@
 {
   "schemaVersion": 1,
   "tickets": [
-    "ZOD-342"
+    "ZOD-342",
+    "ZOD-344"
   ],
   "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
   "referenceClean": true,
@@ -14,6 +15,12 @@
       "ticket": "ZOD-342",
       "managedBaseRevision": "c1fcf1ad11d85d753eb31cf7603371f9c24221b6",
       "validation": "47 descriptions / 8 new Python tests; full Python643; managed code unchanged",
+      "reports": "scratch/magic-evasion-342-347/"
+    },
+    {
+      "ticket": "ZOD-344",
+      "managedBaseRevision": "285c25ca576ae42b6339aa91b555ca9ecb643e08",
+      "validation": "2 focused Framework cases / 8 literal loads; Release compilation passed",
       "reports": "scratch/magic-evasion-342-347/"
     }
   ]
