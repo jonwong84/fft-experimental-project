@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-342"
+  ],
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "behavior": "docs/behavior/magic-evasion.md",
+  "sourceReceipt": "docs/evidence/combat/magic-evasion-source-v1.json",
+  "milestones": [
+    {
+      "ticket": "ZOD-342",
+      "managedBaseRevision": "c1fcf1ad11d85d753eb31cf7603371f9c24221b6",
+      "validation": "47 descriptions / 8 new Python tests; full Python643; managed code unchanged",
+      "reports": "scratch/magic-evasion-342-347/"
+    }
+  ]
+}

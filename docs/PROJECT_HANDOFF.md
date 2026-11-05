@@ -6,7 +6,15 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-342: trace magical evasion and pre-formula admission for0x08/0x0C.**
+**ZOD-344: load magic evasion contributions and blocking-item labels.**
+[Magic evasion](behavior/magic-evasion.md) records completed ZOD-342
+from clean source `11464943bbdbd2a0af022d90cb7f10455cf911df` (13 files/21 functions).
+The damage0x08 chain differs from healing0x0C's bypass; physical evasion helpers
+must not be imported wholesale. Preserve real ordered evade draws in AI/preview,
+secondary execution Evadeable, Abandon diagnostics and hit-versus-rounded-accuracy
+branch facts. Selected children retain explicit fresh/no-earlier-effects and
+finalizer admission; no spell command, live HP/status/RNG adoption or magic AI.
+
 [ZOD-343](development/shared-magic-calculation.md) now provides the single
 `FaithMagicFormula.ResolveAfterHit(request, rng)` calculation entry from explicit
 amount/element/target/mode/profile inputs through finalized result data and
@@ -16,7 +24,7 @@ commands and magic AI remain separate. Future formulas and targeting shapes are
 independent selections. The owner-specified cone has centered forward rows of
 1/3/5 tiles, excluding the actor, rotated with attack direction; its geometry is
 recorded for later work and is not activated. Current limits and deferred gates
-remain in force. This owner-selected refactor preceded the still-open ZOD-342.
+remain in force. The subsequent evasion trace is now complete.
 
 [ZOD-341](behavior/magic-result-finalization.md) now finalizes explicitly living,
 non-Petrify/Wall, no-Golem, empty-status HP work. It preserves signed fields and
@@ -233,7 +241,8 @@ without rewriting old evidence.
   cases** (1,577 Framework, 1,217 AI, 838 Content, 328 CLI) pass. Five new Framework
   cases exercise20 unchanged composed descriptions through raw formula inputs,
   ordered target/RNG continuation around rejection, input isolation, healing
-  context bypass and argument guards. All **635 Python tests** pass unchanged.
+  context bypass and argument guards. All **643 Python tests** now pass, including eight new evasion-description cases.
+  Managed code is unchanged for ZOD-342; the .NET count is the last full run.
   Pinned finalization (eight files/15 functions), Faith/element and prepared-data
   checks, guide, coverage and local links pass. Seven TRX reports/logs are under
   ignored `scratch/magic-consolidation-343/`.
