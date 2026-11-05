@@ -30,7 +30,10 @@ Tessera interface moved to `Interfaces/` without a namespace change. Constants,
 output bits, counter width, checkpoint arithmetic and persisted algorithm ID
 are unchanged. Unrelated content/editor drafts remain outside these commits.
 
+Framework now has its own [responsibility-based layout](framework-source-layout.md)
+with matching tests and unchanged namespaces.
+
 Continue to group files by a useful behavior family or shared responsibility.
 Do not create a project, namespace or abstraction just to reduce a folder's
-file count. Broader Framework/content reorganization can be selected separately
+file count. Further Framework/content reorganization can be selected separately
 as those areas mature; their evolving owner definitions are preserved.

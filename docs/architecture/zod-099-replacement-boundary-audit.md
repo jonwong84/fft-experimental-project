@@ -14,7 +14,7 @@ The project references are Framework -> Engine, Content -> Framework, and Client
 
 - `src/Tessera.Engine/GridPosition.cs`, `GridBounds.cs` and
   `FlatGridMovementRange.cs` define the bounds-only calculation and its values.
-  `src/Zodiac.Framework/FlatGridMovementRange.cs` validates the FFT map and
+  `src/Zodiac.Framework/Battle/Movement/FlatGridMovementRange.cs` validates the FFT map and
   directly constructs/calls those types. `BattleSimulator.cs` consumes that FFT
   facade. Neither static entry point supports per-instance provider selection.
 - `src/Tessera.Engine/IDeterministicRandom.cs` also owns `RandomDraw<TState>`.
@@ -29,7 +29,7 @@ The project references are Framework -> Engine, Content -> Framework, and Client
 - `src/Fft.Client/Presentation/BattleInteraction.cs` consumes
   `TwoUnitBattleDefinition`, nested `TwoUnitBattleState`, command/result types,
   positions and unit IDs. It directly invokes `TwoUnitBattleScenario.Apply` for
-  commands and legal-action probes. `src/Zodiac.Framework/TwoUnitBattleScenario.cs`
+  commands and legal-action probes. `src/Zodiac.Framework/Battle/State/TwoUnitBattleScenario.cs`
   owns this bounded lifecycle and exposes implementation snapshots/definitions.
   `Presentation/IntroductionBattleSession.cs` adds typed worker/gate/trace state.
   Wrapping either class in an interface would retain those type dependencies.
@@ -81,7 +81,7 @@ These are observed managed prototype semantics, not a selected new public contra
   managed regressions. Current prototype behavior is not PS1 movement fidelity.
 
 Existing `tests/Tessera.Engine.Tests/FlatGridMovementRangeTests.cs`,
-`GridBoundsTests.cs` and `tests/Zodiac.Framework.Tests/FlatGridMovementRangeTests.cs`
+`GridBoundsTests.cs` and `tests/Zodiac.Framework.Tests/Battle/Movement/FlatGridMovementRangeTests.cs`
 are baseline evidence to preserve, not new conformance executions. The proof
 must not change old test expectations to fit its new API.
 

@@ -128,7 +128,7 @@ cleanup remains separate from logical completion authority.
 
 ## Independent evidence and validation
 
-[GeneralBannerContractTests](../../tests/Zodiac.Framework.Tests/GeneralBannerContractTests.cs)
+[GeneralBannerContractTests](../../tests/Zodiac.Framework.Tests/Events/GeneralBannerContractTests.cs)
 execute all 24 preimplementation
 [authored cases](../evidence/events/general-banner-effect-contract-v1.json).
 Inputs come from that historical specification. Full effect/ledger/VM checkpoint
@@ -137,7 +137,7 @@ and identical replay are checked. The source JSON retains `executed: false` as
 its original evidence classification; the regressions are the separate executed
 implementation evidence. No original/emulator oracle is claimed.
 
-[BannerSceneBoundaryTests](../../tests/Zodiac.Framework.Tests/BannerSceneBoundaryTests.cs)
+[BannerSceneBoundaryTests](../../tests/Zodiac.Framework.Tests/Events/BannerSceneBoundaryTests.cs)
 add 47 cases: input/ID/budget/command gates, retained active/terminal lifecycle,
 managed-update authority, cancellation, shared acknowledgment budgets, live and
 tombstone capacity, failed allocation/skip rollback, mixed F1/E5 timing and checked

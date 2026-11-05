@@ -70,7 +70,7 @@ identity, revision or clock failure in any phase discards all candidate work.
 
 ## Regressions and validation
 
-[OrderedBannerContractTests](../../tests/Zodiac.Framework.Tests/OrderedBannerContractTests.cs)
+[OrderedBannerContractTests](../../tests/Zodiac.Framework.Tests/Events/OrderedBannerContractTests.cs)
 loads the unchanged [preimplementation expectations](../evidence/events/banner-opcode-admission-contract-v1.json)
 and executes every Core case, `BOP-001` through `BOP-027`. Their original
 `specificationOnly` / `executed: false` flags describe that historical artifact;

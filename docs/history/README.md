@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 297 entries index completed bounded work; they do not mean the full game is complete.
+These 298 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -321,3 +321,5 @@ These 297 entries index completed bounded work; they do not mean the full game i
 - [ZOD-330 — Author verified ability AI behavior with named flags](../behavior/readable-ai-authoring.md)
 
 - [ZOD-331 — Consolidate AI decision, command and turn ownership](../development/ai-refactor-331.md)
+
+- [ZOD-332 — Organize Framework source and tests by responsibility](../development/framework-source-layout.md)

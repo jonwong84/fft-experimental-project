@@ -119,7 +119,7 @@ assert every combined snapshot and ordered trace field against independently
 authored expectations, then replay the full explicit command history against a
 fresh definition. Hash-verified loose-file loading, corruption/ID mismatch and
 execution after deleting prepared files are also checked.
-[SceneEventExecutorTests](../../tests/Zodiac.Framework.Tests/SceneEventExecutorTests.cs)
+[SceneEventExecutorTests](../../tests/Zodiac.Framework.Tests/Events/SceneEventExecutorTests.cs)
 cover each empty selector's mandatory yield, multi-owner/new matches, mixed and
 sequential waits, 1/60/32767-frame boundaries, cancellation, exact traces, forward
 branches, scene retention/restart and typed atomic failures. Resumption failures

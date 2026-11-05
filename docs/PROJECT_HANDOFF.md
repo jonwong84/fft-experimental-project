@@ -10,7 +10,10 @@ and the selected task's design before editing. This file describes current state
 The owner-requested [ZOD-331 focused AI refactor](development/ai-refactor-331.md) is complete. The public roster path is
 `AiDecisionMaker` → `AiCommandExecutor` → `AiTurnController`, with shared immutable
 configuration. Lower-level pilot/query owners remain tested internally. No new
-gameplay breadth or host activation was added. Resume content work with this API.
+gameplay breadth or host activation was added.
+[ZOD-332](development/framework-source-layout.md) now groups Framework source and
+tests by responsibility, with unchanged namespaces/APIs and identical C# bytes.
+Resume content work with this API and the new [source map](../src/Zodiac.Framework/README.md).
 
 [ZOD-330](behavior/readable-ai-authoring.md) now makes named AI booleans and
 structured area-shape flags authoritative in AbilityMetadataDefinition. Static
@@ -182,17 +185,18 @@ without rewriting old evidence.
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
 - Validation: locked restore, zero-warning/error Release build and **4,531 .NET
-  cases** (1,521 Framework, 1,217 AI, 833 Content), including one new external
-  public-AI-pipeline case, pass. All
-  **596 Python tests**, pinned source/prepared-data, algorithm-guide, local-link
-  and coverage checks pass. Seven full TRX reports/logs are under ignored
-  `scratch/ai-refactor-331/`.
+  cases** (1,521 Framework, 1,217 AI, 833 Content), including the external
+  public-AI-pipeline case from ZOD-331, pass unchanged after the folder moves. All
+  **596 Python tests**, local-link and coverage checks pass. Pinned
+  source/prepared-data and algorithm-guide audits last passed at ZOD-331; their
+  inputs are unchanged by this folder-only cleanup. Seven full TRX reports/logs are under ignored
+  `scratch/framework-layout-332/`.
   Python uses repository-pinned Pillow 12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow 13.0.0 triggers six existing version guards; WindowsApps Python
   is unavailable. All nine owner drafts remain unchanged, including AbilityToggles.
-  AI now has three public orchestration owners, shared configuration and internal
-  specialized evaluators; existing behavior assertions and source fixtures are unchanged.
+  All 104 moved Framework/test files match the prior revision byte-for-byte;
+  existing behavior assertions, fixtures and namespaces are unchanged.
   No host/editor activation, project/lock/package/dependency changes.
   Nine historical checkpoint audits last passed at ZOD-158; unchanged snapshots
   were not rerun. No original/C execution, host/editor activation or UI review.

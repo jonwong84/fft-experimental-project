@@ -95,7 +95,7 @@ external Phase/Complete/Cancel, including newborn predicted identities and retai
 tombstones. Late arithmetic, counter, capacity, authority or budget failures roll
 back all tentative event/child/dispatcher/task/clock/trace changes.
 
-[ReadySceneContractTests](../../tests/Zodiac.Framework.Tests/ReadySceneContractTests.cs)
+[ReadySceneContractTests](../../tests/Zodiac.Framework.Tests/Events/ReadySceneContractTests.cs)
 loads and executes all 28 Core cases, RDY-001..028, from the unchanged
 [preimplementation contract](../evidence/events/ready-display-contract-v1.json).
 Its original `specificationOnly` / `executed: false` flags remain historical.

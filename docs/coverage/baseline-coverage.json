@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-05",
   "edition": "SCUS-94221",
-  "managedCommit": "b4617e0",
+  "managedCommit": "78df755",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -12,7 +12,7 @@
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
     "passed": 4531,
-    "source": "docs/development/ai-refactor-331.md",
+    "source": "docs/development/framework-source-layout.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -99,16 +99,16 @@
         "docs/behavior/ct-turn-implementation.md"
       ],
       "implementationPaths": [
-        "src/Zodiac.Framework/TurnCycle.cs",
-        "src/Zodiac.Framework/TurnBattleState.cs"
+        "src/Zodiac.Framework/Battle/Turns/TurnCycle.cs",
+        "src/Zodiac.Framework/Battle/Turns/TurnBattleState.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Zodiac.Framework.Tests/TurnCycleTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Turns/TurnCycleTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/TurnBattleSimulatorTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Turns/TurnBattleSimulatorTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         }
       ],
@@ -150,34 +150,34 @@
         "docs/fixtures/behavior/roster-combat-contract-v1.json"
       ],
       "implementationPaths": [
-        "src/Zodiac.Framework/OrdinaryAdjacentStepRange.cs",
-        "src/Zodiac.Framework/FlatRosterBattleProfile.cs",
-        "src/Zodiac.Framework/FlatRosterMovement.cs",
-        "src/Zodiac.Framework/FlatRosterPathMovement.cs",
-        "src/Zodiac.Framework/ConfirmedPathMovement.cs",
-        "src/Zodiac.Framework/RosterFacingTurnBattle.cs",
-        "src/Zodiac.Framework/FacingReceiptRules.cs",
-        "src/Zodiac.Framework/FlatOrdinaryMovement.cs",
-        "src/Zodiac.Framework/FlatSwordBattleProfile.cs",
-        "src/Zodiac.Framework/AttackBattleSimulator.cs",
-        "src/Zodiac.Framework/FacingTurnPathMovement.cs",
-        "src/Zodiac.Framework/FacingTurnBattle.cs"
+        "src/Zodiac.Framework/Battle/Movement/OrdinaryAdjacentStepRange.cs",
+        "src/Zodiac.Framework/Battle/Combat/FlatRosterBattleProfile.cs",
+        "src/Zodiac.Framework/Battle/Movement/FlatRosterMovement.cs",
+        "src/Zodiac.Framework/Battle/Movement/FlatRosterPathMovement.cs",
+        "src/Zodiac.Framework/Battle/Movement/ConfirmedPathMovement.cs",
+        "src/Zodiac.Framework/Battle/Turns/RosterFacingTurnBattle.cs",
+        "src/Zodiac.Framework/Battle/Turns/FacingReceiptRules.cs",
+        "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovement.cs",
+        "src/Zodiac.Framework/Battle/Combat/FlatSwordBattleProfile.cs",
+        "src/Zodiac.Framework/Battle/Combat/AttackBattleSimulator.cs",
+        "src/Zodiac.Framework/Battle/Movement/FacingTurnPathMovement.cs",
+        "src/Zodiac.Framework/Battle/Turns/FacingTurnBattle.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Zodiac.Framework.Tests/OrdinaryAdjacentStepTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Movement/OrdinaryAdjacentStepTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/TerrainAwareMovementRangeTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Movement/TerrainAwareMovementRangeTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/FlatRosterCombatTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/FlatRosterCombatTests.cs",
           "scope": "Literal roster ally transit/occupied endpoints/paths and sword occupancy/RNG; source extents, ownership, pair parity, bystanders and atomic failure."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/RosterFacingTurnTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Turns/RosterFacingTurnTests.cs",
           "scope": "Actual three-unit Move/ACT/Wait flows, final-state receipt binding, explicit facing, late failure/KO progress and immutable replay."
         },
         {
@@ -222,25 +222,25 @@
         "docs/fixtures/behavior/roster-combat-contract-v1.json"
       ],
       "implementationPaths": [
-        "src/Zodiac.Framework/FlatRosterBattleProfile.cs",
-        "src/Zodiac.Framework/FlatRosterMovement.cs",
-        "src/Zodiac.Framework/FlatRosterPathMovement.cs",
-        "src/Zodiac.Framework/ConfirmedPathMovement.cs",
-        "src/Zodiac.Framework/RosterFacingTurnBattle.cs",
-        "src/Zodiac.Framework/FacingReceiptRules.cs",
-        "src/Zodiac.Framework/FlatOrdinaryMovement.cs",
-        "src/Zodiac.Framework/FlatSwordBattleProfile.cs",
-        "src/Zodiac.Framework/AttackBattleSimulator.cs",
-        "src/Zodiac.Framework/FacingTurnPathMovement.cs",
-        "src/Zodiac.Framework/FacingTurnBattle.cs"
+        "src/Zodiac.Framework/Battle/Combat/FlatRosterBattleProfile.cs",
+        "src/Zodiac.Framework/Battle/Movement/FlatRosterMovement.cs",
+        "src/Zodiac.Framework/Battle/Movement/FlatRosterPathMovement.cs",
+        "src/Zodiac.Framework/Battle/Movement/ConfirmedPathMovement.cs",
+        "src/Zodiac.Framework/Battle/Turns/RosterFacingTurnBattle.cs",
+        "src/Zodiac.Framework/Battle/Turns/FacingReceiptRules.cs",
+        "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovement.cs",
+        "src/Zodiac.Framework/Battle/Combat/FlatSwordBattleProfile.cs",
+        "src/Zodiac.Framework/Battle/Combat/AttackBattleSimulator.cs",
+        "src/Zodiac.Framework/Battle/Movement/FacingTurnPathMovement.cs",
+        "src/Zodiac.Framework/Battle/Turns/FacingTurnBattle.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Zodiac.Framework.Tests/FlatRosterCombatTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/FlatRosterCombatTests.cs",
           "scope": "Literal roster ally transit/occupied endpoints/paths and sword occupancy/RNG; source extents, ownership, pair parity, bystanders and atomic failure."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/RosterFacingTurnTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Turns/RosterFacingTurnTests.cs",
           "scope": "Actual three-unit Move/ACT/Wait flows, final-state receipt binding, explicit facing, late failure/KO progress and immutable replay."
         },
         {
@@ -304,37 +304,37 @@
         "docs/evidence/ai/roster-live-stone-implementation-v1.json"
       ],
       "implementationPaths": [
-        "src/Zodiac.Framework/AttackBattleSimulator.cs",
-        "src/Zodiac.Framework/PhysicalWeaponEvasion.cs",
-        "src/Zodiac.Framework/FlatRosterBattleProfile.cs",
-        "src/Zodiac.Framework/FlatRosterMovement.cs",
-        "src/Zodiac.Framework/FlatRosterPathMovement.cs",
-        "src/Zodiac.Framework/ConfirmedPathMovement.cs",
-        "src/Zodiac.Framework/RosterFacingTurnBattle.cs",
-        "src/Zodiac.Framework/FacingReceiptRules.cs",
-        "src/Zodiac.Framework/FlatOrdinaryMovement.cs",
-        "src/Zodiac.Framework/FlatSwordBattleProfile.cs",
-        "src/Zodiac.Framework/FacingTurnPathMovement.cs",
-        "src/Zodiac.Framework/FacingTurnBattle.cs",
-        "src/Zodiac.Framework/FlatRosterDirectTrajectory.cs",
-        "src/Zodiac.Framework/TargetedAbilityBattle.cs",
+        "src/Zodiac.Framework/Battle/Combat/AttackBattleSimulator.cs",
+        "src/Zodiac.Framework/Battle/Combat/PhysicalWeaponEvasion.cs",
+        "src/Zodiac.Framework/Battle/Combat/FlatRosterBattleProfile.cs",
+        "src/Zodiac.Framework/Battle/Movement/FlatRosterMovement.cs",
+        "src/Zodiac.Framework/Battle/Movement/FlatRosterPathMovement.cs",
+        "src/Zodiac.Framework/Battle/Movement/ConfirmedPathMovement.cs",
+        "src/Zodiac.Framework/Battle/Turns/RosterFacingTurnBattle.cs",
+        "src/Zodiac.Framework/Battle/Turns/FacingReceiptRules.cs",
+        "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovement.cs",
+        "src/Zodiac.Framework/Battle/Combat/FlatSwordBattleProfile.cs",
+        "src/Zodiac.Framework/Battle/Movement/FacingTurnPathMovement.cs",
+        "src/Zodiac.Framework/Battle/Turns/FacingTurnBattle.cs",
+        "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectory.cs",
+        "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattle.cs",
         "src/Zodiac.Framework.Ai/Shared/RosterAiDirectTrajectory.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Zodiac.Framework.Tests/AttackBattleSimulatorTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/AttackBattleSimulatorTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/AttackFixtureV3Tests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/AttackFixtureV3Tests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/FlatRosterCombatTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/FlatRosterCombatTests.cs",
           "scope": "Literal roster ally transit/occupied endpoints/paths and sword occupancy/RNG; source extents, ownership, pair parity, bystanders and atomic failure."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/RosterFacingTurnTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Turns/RosterFacingTurnTests.cs",
           "scope": "Actual three-unit Move/ACT/Wait flows, final-state receipt binding, explicit facing, late failure/KO progress and immutable replay."
         },
         {
@@ -342,15 +342,15 @@
           "scope": "Eleven isolated source-only movement/sword descriptions, input preservation, original-domain and tampered-claim checks; no original/C/managed execution."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/FlatRosterDirectTrajectoryTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Movement/FlatRosterDirectTrajectoryTests.cs",
           "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/RosterThrowStoneTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/RosterThrowStoneTests.cs",
           "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/RosterTargetedAbilitySessionTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Commands/RosterTargetedAbilitySessionTests.cs",
           "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
         },
         {
@@ -431,24 +431,24 @@
         "docs/fixtures/behavior/dash-contract-v1.json"
       ],
       "implementationPaths": [
-        "src/Zodiac.Framework/ImmediateAbilityBattle.cs",
+        "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattle.cs",
         "src/Zodiac.Content/ContentPackages/ImmediateAbilityContentPackage.cs",
         "src/Zodiac.AssetTool.Cli/OriginalAccumulateImporter.cs",
         "src/Fft.Client/Presentation/AccumulateBattleHost.cs",
         "src/Zodiac.Content/BattleSetup/PreparedAccumulateBattle.cs",
-        "src/Zodiac.Framework/ThrowStoneFormula.cs",
-        "src/Zodiac.Framework/TargetedAbilityBattle.cs",
+        "src/Zodiac.Framework/Battle/Combat/ThrowStoneFormula.cs",
+        "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattle.cs",
         "src/Zodiac.Content/ContentPackages/TargetedAbilityContentPackage.cs",
         "src/Zodiac.Content/Samples/SyntheticBasicSkillBattle.cs",
-        "src/Zodiac.Framework/RosterFacingTurnBattle.cs",
-        "src/Zodiac.Framework/FlatRosterDirectTrajectory.cs",
+        "src/Zodiac.Framework/Battle/Turns/RosterFacingTurnBattle.cs",
+        "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectory.cs",
         "src/Zodiac.Framework.Ai/Shared/RosterAiDirectTrajectory.cs",
-        "src/Zodiac.Framework/DashFormula.cs",
-        "src/Zodiac.Framework/DashAbilityBattle.cs"
+        "src/Zodiac.Framework/Battle/Combat/DashFormula.cs",
+        "src/Zodiac.Framework/Battle/Combat/DashAbilityBattle.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Zodiac.Framework.Tests/ImmediateAbilityBattleTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/ImmediateAbilityBattleTests.cs",
           "scope": "Executed closed Accumulate proof and negatives; not complete original ability compatibility."
         },
         {
@@ -468,7 +468,7 @@
           "scope": "Repeated native/prepared output audit; not physical-input approval."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/ThrowStoneBattleTests.cs",
           "scope": "149 executed source-derived pure arithmetic, RNG, geometry, grants, continuation and replay cases; no content/native/original equivalence claim."
         },
         {
@@ -480,7 +480,7 @@
           "scope": "Independent verified input/record/historical-file and authored headless delta audit."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/RosterImmediateAbilityTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/RosterImmediateAbilityTests.cs",
           "scope": "Eight actual source vectors, both actual orders, real foreign receipts, grant/setup/revision atomicity, retained accepted Move, no-RNG peer preservation and kernel parity."
         },
         {
@@ -492,15 +492,15 @@
           "scope": "Pinned 26 files/79 functions, eight actual self settlement descriptions and managed boundary review paths; no original/C/managed execution."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/FlatRosterDirectTrajectoryTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Movement/FlatRosterDirectTrajectoryTests.cs",
           "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/RosterThrowStoneTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/RosterThrowStoneTests.cs",
           "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/RosterTargetedAbilitySessionTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Commands/RosterTargetedAbilitySessionTests.cs",
           "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
         },
         {
@@ -512,7 +512,7 @@
           "scope": "Pinned83 functions/27 files and independent actual descriptions; no original/C/managed execution."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/DashAbilityTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/DashAbilityTests.cs",
           "scope": "Exact formula/results, grants/range/choice/late RNG, verified ACT and frozen Move/facing/retry."
         },
         {
@@ -617,28 +617,28 @@
         "docs/evidence/ai/roster-live-stone-implementation-v1.json"
       ],
       "implementationPaths": [
-        "src/Zodiac.Framework/FlatRosterBattleProfile.cs",
-        "src/Zodiac.Framework/FlatRosterMovement.cs",
-        "src/Zodiac.Framework/FlatRosterPathMovement.cs",
-        "src/Zodiac.Framework/ConfirmedPathMovement.cs",
-        "src/Zodiac.Framework/RosterFacingTurnBattle.cs",
-        "src/Zodiac.Framework/FacingReceiptRules.cs",
-        "src/Zodiac.Framework/FlatOrdinaryMovement.cs",
-        "src/Zodiac.Framework/FlatSwordBattleProfile.cs",
-        "src/Zodiac.Framework/AttackBattleSimulator.cs",
-        "src/Zodiac.Framework/FacingTurnPathMovement.cs",
-        "src/Zodiac.Framework/FacingTurnBattle.cs",
-        "src/Zodiac.Framework/FlatRosterDirectTrajectory.cs",
-        "src/Zodiac.Framework/TargetedAbilityBattle.cs",
+        "src/Zodiac.Framework/Battle/Combat/FlatRosterBattleProfile.cs",
+        "src/Zodiac.Framework/Battle/Movement/FlatRosterMovement.cs",
+        "src/Zodiac.Framework/Battle/Movement/FlatRosterPathMovement.cs",
+        "src/Zodiac.Framework/Battle/Movement/ConfirmedPathMovement.cs",
+        "src/Zodiac.Framework/Battle/Turns/RosterFacingTurnBattle.cs",
+        "src/Zodiac.Framework/Battle/Turns/FacingReceiptRules.cs",
+        "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovement.cs",
+        "src/Zodiac.Framework/Battle/Combat/FlatSwordBattleProfile.cs",
+        "src/Zodiac.Framework/Battle/Combat/AttackBattleSimulator.cs",
+        "src/Zodiac.Framework/Battle/Movement/FacingTurnPathMovement.cs",
+        "src/Zodiac.Framework/Battle/Turns/FacingTurnBattle.cs",
+        "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectory.cs",
+        "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattle.cs",
         "src/Zodiac.Framework.Ai/Shared/RosterAiDirectTrajectory.cs"
       ],
       "automatedChecks": [
         {
-          "path": "tests/Zodiac.Framework.Tests/FlatRosterCombatTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/FlatRosterCombatTests.cs",
           "scope": "Literal roster ally transit/occupied endpoints/paths and sword occupancy/RNG; source extents, ownership, pair parity, bystanders and atomic failure."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/RosterFacingTurnTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Turns/RosterFacingTurnTests.cs",
           "scope": "Actual three-unit Move/ACT/Wait flows, final-state receipt binding, explicit facing, late failure/KO progress and immutable replay."
         },
         {
@@ -646,15 +646,15 @@
           "scope": "Eleven isolated source-only movement/sword descriptions, input preservation, original-domain and tampered-claim checks; no original/C/managed execution."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/FlatRosterDirectTrajectoryTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Movement/FlatRosterDirectTrajectoryTests.cs",
           "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/RosterThrowStoneTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/RosterThrowStoneTests.cs",
           "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/RosterTargetedAbilitySessionTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Commands/RosterTargetedAbilitySessionTests.cs",
           "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
         },
         {
@@ -880,8 +880,8 @@
         "src/Zodiac.Framework.Ai/Sword/SwordAiPreparedSelection.cs",
         "src/Zodiac.Framework.Ai/Sword/SwordAiCommandDispatch.cs",
         "src/Zodiac.Framework.Ai/Sword/SwordAiMoveFirstExecution.cs",
-        "src/Zodiac.Framework/FacingMoveDecision.cs",
-        "src/Zodiac.Framework/FacingDecision.cs",
+        "src/Zodiac.Framework/Battle/Commands/FacingMoveDecision.cs",
+        "src/Zodiac.Framework/Battle/Commands/FacingDecision.cs",
         "src/Zodiac.Framework.Ai/Sword/SwordAiActFirstExecution.cs",
         "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiCandidateProjection.cs",
         "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiCandidateScoring.cs",
@@ -919,17 +919,17 @@
         "src/Zodiac.Framework.Ai/Shared/AiRosterProximity.cs",
         "src/Zodiac.Framework.Ai/Shared/AiOrdinaryPairRoster.cs",
         "src/Zodiac.Framework.Ai/Shared/AiMovementPrefix.cs",
-        "src/Zodiac.Framework/FlatRosterBattleProfile.cs",
-        "src/Zodiac.Framework/FlatRosterMovement.cs",
-        "src/Zodiac.Framework/FlatRosterPathMovement.cs",
-        "src/Zodiac.Framework/ConfirmedPathMovement.cs",
-        "src/Zodiac.Framework/RosterFacingTurnBattle.cs",
-        "src/Zodiac.Framework/FacingReceiptRules.cs",
-        "src/Zodiac.Framework/FlatOrdinaryMovement.cs",
-        "src/Zodiac.Framework/FlatSwordBattleProfile.cs",
-        "src/Zodiac.Framework/AttackBattleSimulator.cs",
-        "src/Zodiac.Framework/FacingTurnPathMovement.cs",
-        "src/Zodiac.Framework/FacingTurnBattle.cs",
+        "src/Zodiac.Framework/Battle/Combat/FlatRosterBattleProfile.cs",
+        "src/Zodiac.Framework/Battle/Movement/FlatRosterMovement.cs",
+        "src/Zodiac.Framework/Battle/Movement/FlatRosterPathMovement.cs",
+        "src/Zodiac.Framework/Battle/Movement/ConfirmedPathMovement.cs",
+        "src/Zodiac.Framework/Battle/Turns/RosterFacingTurnBattle.cs",
+        "src/Zodiac.Framework/Battle/Turns/FacingReceiptRules.cs",
+        "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovement.cs",
+        "src/Zodiac.Framework/Battle/Combat/FlatSwordBattleProfile.cs",
+        "src/Zodiac.Framework/Battle/Combat/AttackBattleSimulator.cs",
+        "src/Zodiac.Framework/Battle/Movement/FacingTurnPathMovement.cs",
+        "src/Zodiac.Framework/Battle/Turns/FacingTurnBattle.cs",
         "src/Zodiac.Framework.Ai/Shared/RosterAiRefresh.cs",
         "src/Zodiac.Framework.Ai/Shared/RosterAiPreparation.cs",
         "src/Zodiac.Framework.Ai/Shared/RosterAiMovementBaseline.cs",
@@ -952,12 +952,12 @@
         "src/Zodiac.Framework.Ai/Shared/RosterAiDirectTrajectory.cs",
         "src/Zodiac.Framework.Ai/ThrowStone/RosterThrowStoneAiEntry.cs",
         "src/Zodiac.Framework.Ai/Decision/AiDecisionMaker.cs",
-        "src/Zodiac.Framework/FlatRosterDirectTrajectory.cs",
-        "src/Zodiac.Framework/TargetedAbilityBattle.cs",
-        "src/Zodiac.Framework/RosterDecision.cs",
-        "src/Zodiac.Framework/RosterPlannedMove.cs",
-        "src/Zodiac.Framework/RosterMoveContinuation.cs",
-        "src/Zodiac.Framework/ImmediateAbilityBattle.cs",
+        "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectory.cs",
+        "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattle.cs",
+        "src/Zodiac.Framework/Battle/Commands/RosterDecision.cs",
+        "src/Zodiac.Framework/Battle/Commands/RosterPlannedMove.cs",
+        "src/Zodiac.Framework/Battle/Commands/RosterMoveContinuation.cs",
+        "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattle.cs",
         "src/Zodiac.Framework.Ai/Execution/AiCommandExecutor.cs",
         "src/Zodiac.Framework.Ai/Execution/AiTurnController.cs",
         "src/Zodiac.Framework.Ai/Dash/RosterDashAiCandidate.cs",
@@ -1009,7 +1009,7 @@
           "scope": "Fresh selection and actual command rolls, one revision/settled receipt, fallback refund, critical push/KO, exact draw limits, atomic reason-only failures and replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/FacingDecisionTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Commands/FacingDecisionTests.cs",
           "scope": "Invocation-bound proposals, closed contexts, verified RNG progression including full periods, late-command rollback and read-only input."
         },
         {
@@ -1041,7 +1041,7 @@
           "scope": "Fresh out-of-reach pure composition and actual Wait, retained reach draw, empty scan/eight rolls, exact budgets and replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/FacingMoveDecisionTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Commands/FacingMoveDecisionTests.cs",
           "scope": "Framework fresh Move proposal ownership, private RNG/path publication, exact-session frozen follow-up, rollback/cancellation/replay and counters."
         },
         {
@@ -1125,7 +1125,7 @@
           "scope": "Fresh source-order composition and terminal lottery with literal tapes, cross-entry isolation, supplied-score guards and late whole-query rollback."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/ImmediateAbilityDecisionTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Commands/ImmediateAbilityDecisionTests.cs",
           "scope": "Actual invocation-bound self ACT and fresh three-entry execution: zero draws/cap, exact receipts, authority guards, real effects and rollback."
         },
         {
@@ -1201,11 +1201,11 @@
           "scope": "Pinned read-only source fingerprints and seventeen isolated descriptions; not full refresh, a status simulator or original behavioral equivalence."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/FlatRosterCombatTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/FlatRosterCombatTests.cs",
           "scope": "Literal roster ally transit/occupied endpoints/paths and sword occupancy/RNG; source extents, ownership, pair parity, bystanders and atomic failure."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/RosterFacingTurnTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Turns/RosterFacingTurnTests.cs",
           "scope": "Actual three-unit Move/ACT/Wait flows, final-state receipt binding, explicit facing, late failure/KO progress and immutable replay."
         },
         {
@@ -1321,7 +1321,7 @@
           "scope": "Pinned 26 files/73 functions and twelve composed source tapes; no original/C/managed execution."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/RosterImmediateAbilityTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/RosterImmediateAbilityTests.cs",
           "scope": "Eight actual source vectors, both actual orders, real foreign receipts, grant/setup/revision atomicity, retained accepted Move, no-RNG peer preservation and kernel parity."
         },
         {
@@ -1333,15 +1333,15 @@
           "scope": "Pinned 26 files/79 functions, eight actual self settlement descriptions and managed boundary review paths; no original/C/managed execution."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/FlatRosterDirectTrajectoryTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Movement/FlatRosterDirectTrajectoryTests.cs",
           "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/RosterThrowStoneTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/RosterThrowStoneTests.cs",
           "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/RosterTargetedAbilitySessionTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Commands/RosterTargetedAbilitySessionTests.cs",
           "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
         },
         {
@@ -1353,15 +1353,15 @@
           "scope": "Pinned83 functions/27 files and independent actual descriptions; no original/C/managed execution."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/RosterDecisionTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Commands/RosterDecisionTests.cs",
           "scope": "Closed/foreign/cached proposal, exact/large checkpoint, actual parity, post-ACT atomic facing, planned Move setup/path/token, late retained failure, cancellation, replay and exact-session checks."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/RosterPlannedMoveTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Commands/RosterPlannedMoveTests.cs",
           "scope": "Closed/foreign/cached proposal, exact/large checkpoint, actual parity, post-ACT atomic facing, planned Move setup/path/token, late retained failure, cancellation, replay and exact-session checks."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/RosterMoveContinuationTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Commands/RosterMoveContinuationTests.cs",
           "scope": "Closed/foreign/cached proposal, exact/large checkpoint, actual parity, post-ACT atomic facing, planned Move setup/path/token, late retained failure, cancellation, replay and exact-session checks."
         },
         {
@@ -2431,7 +2431,7 @@
           "scope": "Strict synthetic JSON/provenance/offset validation and immutable records."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/ConditionalEventExecutorTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/ConditionalEventExecutorTests.cs",
           "scope": "Source-derived synthetic exact instruction/state traces, dirty variables, replay, immutable boundaries, arithmetic and budget rollback; no original oracle."
         },
         {
@@ -2439,7 +2439,7 @@
           "scope": "Authored hash-verified prepared file to Core projection/execution, unchanged schema, D0/D1/D4 landings; no original script/asset."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/TimedEventExecutorTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/TimedEventExecutorTests.cs",
           "scope": "Source-derived synthetic zero/one/60/max waits, sequential boundaries, batch replay, admission and atomic tick/instruction/arithmetic rejection."
         },
         {
@@ -2451,15 +2451,15 @@
           "scope": "Signed synthetic F1 decode, raw/processed boundary/hash agreement, profile/unsupported gates and D0/D4 wait landing."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/SceneTaskContractTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/SceneTaskContractTests.cs",
           "scope": "All 17 preimplementation cases execute against independently authored full snapshots/ordered traces and identical replay; source-derived/native-policy evidence, not original observations."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/SceneTaskLedgerTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/SceneTaskLedgerTests.cs",
           "scope": "40 phase/resource/failure boundary cases: all active classes, cancellation/completion, live/current polling, tombstones/capacity, IDs, typed error precedence, atomic allocation and checked counter exhaustion."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/SceneEventExecutorTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/SceneEventExecutorTests.cs",
           "scope": "27 cases: mandatory yields, all empty selectors, F1/E5 sequencing, multi-owner live polling, cancellation, atomic continuation/task/budget failure and retained scene lifecycle."
         },
         {
@@ -2471,11 +2471,11 @@
           "scope": "19 cases: unsigned E5 decoding/unsupported high-byte selectors, old-profile isolation, literal raw/processed hash/offset agreement, D0-to-D4 barrier landing and explicit opcode-78 rejection across all old exports."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/GeneralBannerContractTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/GeneralBannerContractTests.cs",
           "scope": "All 24 preimplementation banner cases execute: full logical effect/ledger/VM checkpoints, ordered trace fields, exact failures/immutability and identical replay; no original observation."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/BannerSceneBoundaryTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/BannerSceneBoundaryTests.cs",
           "scope": "47 cases: input/ID/budget gates, managed completion authority, live/tombstone capacity, cancellation, retained active/terminal lifecycle, mixed F1/E5 rollback and checked clock/binding failures."
         },
         {
@@ -2499,7 +2499,7 @@
           "scope": "Eleven authored event-identity checks: current/cache/unique payload match, marker/relocation, instruction boundary/opcode, saved wait/stack/caller/worker, packed flag addressing, parser framing, active yield ordinal and fingerprint/output guards."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/OrderedBannerContractTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/OrderedBannerContractTests.cs",
           "scope": "27 authored Core contract cases plus 33 boundary regressions: event-before-worker timing, typed admission, lifetime, rollback, budgets, counters, identity authority and deterministic replay."
         },
         {
@@ -2515,7 +2515,7 @@
           "scope": "12 cases: BOP-028 prepared composition, failed-readiness no-scene boundary, explicit precision and actual RGB8/RGB5 rendering-independent state/trace replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/ReadySceneContractTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/ReadySceneContractTests.cs",
           "scope": "28 authored Core cases and 25 boundaries: ordered dispatcher/child timing, first-yield draws, Circle, lifetime, authority, shared budgets, checked counters, rollback and complete deterministic replay; no renderer or original timing observation."
         },
         {
@@ -2543,7 +2543,7 @@
           "scope": "13 authored IRQ save/restore, live COP0/TCB/callback/event, closed instruction site, old-classifier rejection, stack/environment and CPU receipt boundary checks; no original bytes or emulator."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/BannerReadySequenceTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/BannerReadySequenceTests.cs",
           "scope": "Combined authored scene: source-ordered handoff, budgets/bindings, strict preparation/loading, readiness, policy composition and rendering-independent replay."
         },
         {
@@ -2567,7 +2567,7 @@
           "scope": "Eleven authored structural/field-width inspector checks only; no original EventEnd execution or future integration cases."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/BattleIntroductionTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/BattleIntroductionTests.cs",
           "scope": "Authored event-exit ownership, worker gaps, rollback and replay; no retail EventEnd."
         },
         {
@@ -2583,7 +2583,7 @@
           "scope": "Fourteen authored offline source/math/holding-inspector checks; no original media in tests, runtime C# implementation or executed future DSC contract cases."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/DarkScreenContractTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/DarkScreenContractTests.cs",
           "scope": "58 authored pure worker/transaction checks, including logical DSC-001..024 portions, independent full-cell counter/draw expectations, replay, ownership and late rollback. No actual prepared conversion, renderer or original pixels."
         },
         {
@@ -2615,11 +2615,11 @@
           "scope": "Fourteen authored original-command-shape and queued-DMA layer/material/order inspector checks only; no original media, emulator or future combined C# cases execute in these unit tests."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/DarkScreenIntroductionContractTests.cs",
           "scope": "Executes all 24 historical Core DSI cases with independent source-derived cell/draw/display/barrier equations and exact timeline/rollback/replay checks; historical flags remain unchanged. No prepared/renderer/host or original-duration proof."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionBoundaryTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/DarkScreenIntroductionBoundaryTests.cs",
           "scope": "56 additional managed boundaries: closed constructor/IDs/conditions/owners/holds, variable authored delays, zero-budget progress, late rollback/retry, ignored input, trace order, forged lifecycle/VM/ledger binding and all-terminal exit gate."
         },
         {
@@ -3314,7 +3314,7 @@
           "scope": "Eleven authored event-identity checks: current/cache/unique payload match, marker/relocation, instruction boundary/opcode, saved wait/stack/caller/worker, packed flag addressing, parser framing, active yield ordinal and fingerprint/output guards."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/OrderedBannerContractTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/OrderedBannerContractTests.cs",
           "scope": "27 authored Core contract cases plus 33 boundary regressions: event-before-worker timing, typed admission, lifetime, rollback, budgets, counters, identity authority and deterministic replay."
         },
         {
@@ -3330,7 +3330,7 @@
           "scope": "12 cases: BOP-028 prepared composition, failed-readiness no-scene boundary, explicit precision and actual RGB8/RGB5 rendering-independent state/trace replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/ReadySceneContractTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/ReadySceneContractTests.cs",
           "scope": "28 authored Core cases and 25 boundaries: ordered dispatcher/child timing, first-yield draws, Circle, lifetime, authority, shared budgets, checked counters, rollback and complete deterministic replay; no renderer or original timing observation."
         },
         {
@@ -3358,7 +3358,7 @@
           "scope": "13 authored IRQ save/restore, live COP0/TCB/callback/event, closed instruction site, old-classifier rejection, stack/environment and CPU receipt boundary checks; no original bytes or emulator."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/BannerReadySequenceTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/BannerReadySequenceTests.cs",
           "scope": "Combined authored scene: source-ordered handoff, budgets/bindings, strict preparation/loading, readiness, policy composition and rendering-independent replay."
         },
         {
@@ -3382,7 +3382,7 @@
           "scope": "Eleven authored structural/field-width inspector checks only; no original EventEnd execution or future integration cases."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/BattleIntroductionTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/BattleIntroductionTests.cs",
           "scope": "Authored event-exit ownership, worker gaps, rollback and replay; no retail EventEnd."
         },
         {
@@ -3398,7 +3398,7 @@
           "scope": "Fourteen authored offline source/math/holding-inspector checks; no original media in tests, runtime C# implementation or executed future DSC contract cases."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/DarkScreenContractTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/DarkScreenContractTests.cs",
           "scope": "58 authored pure worker/transaction checks, including logical DSC-001..024 portions, independent full-cell counter/draw expectations, replay, ownership and late rollback. No actual prepared conversion, renderer or original pixels."
         },
         {
@@ -3430,11 +3430,11 @@
           "scope": "Fourteen authored original-command-shape and queued-DMA layer/material/order inspector checks only; no original media, emulator or future combined C# cases execute in these unit tests."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/DarkScreenIntroductionContractTests.cs",
           "scope": "Executes all 24 historical Core DSI cases with independent source-derived cell/draw/display/barrier equations and exact timeline/rollback/replay checks; historical flags remain unchanged. No prepared/renderer/host or original-duration proof."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionBoundaryTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/DarkScreenIntroductionBoundaryTests.cs",
           "scope": "56 additional managed boundaries: closed constructor/IDs/conditions/owners/holds, variable authored delays, zero-budget progress, late rollback/retry, ignored input, trace order, forged lifecycle/VM/ledger binding and all-terminal exit gate."
         },
         {
@@ -4078,7 +4078,7 @@
       ],
       "automatedChecks": [
         {
-          "path": "tests/Zodiac.Framework.Tests/WorldCheckpointTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Campaign/WorldCheckpointTests.cs",
           "scope": "Invented checkpoint limits, identities, ownership and deterministic continuation."
         },
         {
@@ -4206,7 +4206,7 @@
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/AttackFixtureV3Tests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/AttackFixtureV3Tests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
         }
       ],
@@ -4490,7 +4490,7 @@
           "scope": "Eleven authored event-identity checks: current/cache/unique payload match, marker/relocation, instruction boundary/opcode, saved wait/stack/caller/worker, packed flag addressing, parser framing, active yield ordinal and fingerprint/output guards."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/OrderedBannerContractTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/OrderedBannerContractTests.cs",
           "scope": "27 authored Core contract cases plus 33 boundary regressions: event-before-worker timing, typed admission, lifetime, rollback, budgets, counters, identity authority and deterministic replay."
         },
         {
@@ -4506,7 +4506,7 @@
           "scope": "12 cases: BOP-028 prepared composition, failed-readiness no-scene boundary, explicit precision and actual RGB8/RGB5 rendering-independent state/trace replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/ReadySceneContractTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/ReadySceneContractTests.cs",
           "scope": "28 authored Core cases and 25 boundaries: ordered dispatcher/child timing, first-yield draws, Circle, lifetime, authority, shared budgets, checked counters, rollback and complete deterministic replay; no renderer or original timing observation."
         },
         {
@@ -4534,7 +4534,7 @@
           "scope": "13 authored IRQ save/restore, live COP0/TCB/callback/event, closed instruction site, old-classifier rejection, stack/environment and CPU receipt boundary checks; no original bytes or emulator."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/BannerReadySequenceTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/BannerReadySequenceTests.cs",
           "scope": "Combined authored scene: source-ordered handoff, budgets/bindings, strict preparation/loading, readiness, policy composition and rendering-independent replay."
         },
         {
@@ -4558,7 +4558,7 @@
           "scope": "Eleven authored structural/field-width inspector checks only; no original EventEnd execution or future integration cases."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/BattleIntroductionTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/BattleIntroductionTests.cs",
           "scope": "Authored event-exit ownership, worker gaps, rollback and replay; no retail EventEnd."
         },
         {
@@ -4574,7 +4574,7 @@
           "scope": "Fourteen authored offline source/math/holding-inspector checks; no original media in tests, runtime C# implementation or executed future DSC contract cases."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/DarkScreenContractTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/DarkScreenContractTests.cs",
           "scope": "58 authored pure worker/transaction checks, including logical DSC-001..024 portions, independent full-cell counter/draw expectations, replay, ownership and late rollback. No actual prepared conversion, renderer or original pixels."
         },
         {
@@ -4606,11 +4606,11 @@
           "scope": "Fourteen authored original-command-shape and queued-DMA layer/material/order inspector checks only; no original media, emulator or future combined C# cases execute in these unit tests."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/DarkScreenIntroductionContractTests.cs",
           "scope": "Executes all 24 historical Core DSI cases with independent source-derived cell/draw/display/barrier equations and exact timeline/rollback/replay checks; historical flags remain unchanged. No prepared/renderer/host or original-duration proof."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionBoundaryTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Events/DarkScreenIntroductionBoundaryTests.cs",
           "scope": "56 additional managed boundaries: closed constructor/IDs/conditions/owners/holds, variable authored delays, zero-budget progress, late rollback/retry, ignored input, trace order, forged lifecycle/VM/ledger binding and all-terminal exit gate."
         },
         {

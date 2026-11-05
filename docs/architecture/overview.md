@@ -12,6 +12,8 @@
 - Permit additional content and mechanics without imposing the original executable's fixed-size data limits.
 - Use the C decompilation and locally prepared game files as development references and import sources, never as runtime dependencies.
 
+Framework source and tests are grouped by responsibility; the [source map](../../src/Zodiac.Framework/README.md) and [ZOD-332 move note](../development/framework-source-layout.md) describe the current layout. Battle namespaces and APIs remain unchanged.
+
 ## Gameplay RNG and presentation
 
 AI policy and orchestration live in `Zodiac.Framework.Ai`; their tests live in

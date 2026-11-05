@@ -6,7 +6,8 @@ constraints; [architecture](architecture/overview.md) owns design direction;
 
 **Next bounded work: ZOD-329 (bind prepared Dash content and semantic AI setup).** ZOD-330 makes named semantic AI traits authoritative for C# authoring, with lossless original import/export compatibility. ZOD-326–328 supply supported metadata consumers; incompatible policy edits remain explicit.
 The owner-requested [ZOD-331 focused AI refactor](development/ai-refactor-331.md) is complete; the supported roster API is now `AiDecisionMaker`, `AiCommandExecutor` and `AiTurnController`. Continue with ZOD-329 after this cleanup.
-There are 34 open tickets below. The 297 completed tickets, prior checkpoints and
+[ZOD-332](development/framework-source-layout.md) also groups Framework and its tests by responsibility, preserving namespaces and behavior.
+There are 34 open tickets below. The 298 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.

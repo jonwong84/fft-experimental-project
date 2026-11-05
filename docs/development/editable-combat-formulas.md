@@ -11,7 +11,7 @@ to make ordinary source edits possible.
 
 ## Current implementation
 
-`src/Zodiac.Framework/AttackBattleSimulator.cs` already implements the bounded sword attack
+`src/Zodiac.Framework/Battle/Combat/AttackBattleSimulator.cs` already implements the bounded sword attack
 in C#. It currently combines validation, targeting/facing, ordered evade draws,
 critical calculation, the damage expression, the proc draw and publication of
 immutable state/events. Its source trace and strict limits are in

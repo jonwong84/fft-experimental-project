@@ -113,7 +113,7 @@ argument exceptions before any running snapshot is returned.
 
 ## Regression evidence and verification
 
-[Core regressions](../../tests/Zodiac.Framework.Tests/ConditionalEventExecutorTests.cs)
+[Core regressions](../../tests/Zodiac.Framework.Tests/Events/ConditionalEventExecutorTests.cs)
 independently author the full expected per-instruction before/after/next-offset
 traces for inputs 0, 1, 2 and 65,535 with initial values `(7,8,input,9)`. They check
 Step/Run agreement, unchanged inputs, exact replay, continuation, equality bounds,

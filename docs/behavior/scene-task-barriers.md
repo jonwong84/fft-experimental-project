@@ -116,7 +116,7 @@ logical completion tick. No production completion adapter exists in this slice.
 
 ## Evidence and regression results
 
-[SceneTaskContractTests](../../tests/Zodiac.Framework.Tests/SceneTaskContractTests.cs) loads
+[SceneTaskContractTests](../../tests/Zodiac.Framework.Tests/Events/SceneTaskContractTests.cs) loads
 the exact 17 preimplementation [ZOD-072 cases](../evidence/events/task-barrier-contract-v1.json).
 Setup uses public accepted updates rather than a restore API. Independently authored
 C# expectations assert complete snapshots, every ordered trace field, rejection
@@ -124,7 +124,7 @@ identity/index/accounting and replay of the whole command history. The original 
 remains a historical, specification-only artifact with `executed: false`; these
 tests are the separate implementation evidence, not an original-game oracle.
 
-[SceneTaskLedgerTests](../../tests/Zodiac.Framework.Tests/SceneTaskLedgerTests.cs) adds 40
+[SceneTaskLedgerTests](../../tests/Zodiac.Framework.Tests/Events/SceneTaskLedgerTests.cs) adds 40
 cases covering every active class, completion/cancellation, dark-screen transition
 guards, terminal duplicates, same-batch starts/revisions, multi-owner live polling,
 released/ready boundaries, malformed/default payloads, IDs and selectors, budget
