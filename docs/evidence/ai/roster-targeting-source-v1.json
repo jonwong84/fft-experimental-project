@@ -1,0 +1,247 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-271",
+  "date": "2026-11-04",
+  "kind": "roster-targeting-source-study",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "95e25fe97dd9a1025d8b36aa1cd8596da92b79ca",
+  "design": "docs/architecture/zod-271-roster-targeting.md",
+  "fixture": "docs/fixtures/behavior/ai-roster-targeting-contract-v1.json",
+  "sourceFiles": [
+    {
+      "path": "src/battle/ai/abilities.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 20079,
+      "sha256": "42b793235173dbc98e77249df6488eed3708ef3c60c9d10520557fc9636c6862"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 147880,
+      "sha256": "5519c4550e9fea302ee4366848435b8131c7d3aef24f02462c7571d11bd1cd17"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 111880,
+      "sha256": "22555f06b061bc6f017f721998a5e44dfb3d4fa4c7284a2ee3367dfa27ce80ad"
+    },
+    {
+      "path": "include/fft/ai.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 25771,
+      "sha256": "fa7aabf5b4d21e3f42be7978c061fb859a52709a234e5b4205c5de5e2c8566b5"
+    },
+    {
+      "path": "include/fft/ai_decision.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9018,
+      "sha256": "a88a67152b5143b74121946b7dffd4c8b76b568d9947c828d6620014a741b02b"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/status.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11673,
+      "sha256": "deeaeec02add8b9db7cca91c99517706033b18385ca433d32f1998d9d62e0e83"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/ai/abilities.c",
+      "symbol": "ai_workspace_init",
+      "startLine": 29,
+      "endLine": 74,
+      "normalizedLfSha256": "2208b5bf8bac19466d27d5ba279bc7c13a0647518bb6c842de903c0b44364a29"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_command_build",
+      "startLine": 131,
+      "endLine": 224,
+      "normalizedLfSha256": "b4a01ef870fceac6d31bc8ab370f0b4053aaee69fc3dd55d9b79c78a0975a5bf"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "acting_unit_init",
+      "startLine": 231,
+      "endLine": 257,
+      "normalizedLfSha256": "a37e5edabf630b38b02bb72acb35f5a27c0ab64a0a4e821b660418b321ab2987"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "decision_flags_refresh",
+      "startLine": 270,
+      "endLine": 323,
+      "normalizedLfSha256": "b64660e3cd084717a39ff0bbd764421152e45a21e458d466bf4b4b51bab204fb"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "decision_team_targeting_flags_update",
+      "startLine": 332,
+      "endLine": 379,
+      "normalizedLfSha256": "4d08f71f328f1e043aa2fc808757cb4eda2b2d32cbdd647bb60339880a02dce7"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "decision_target_consideration_init",
+      "startLine": 388,
+      "endLine": 453,
+      "normalizedLfSha256": "bb3d550f249476e7ca4d9820520dca32abdba7b01ba5b3d5916a0baafeb01ec3"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "decision_target_focus",
+      "startLine": 458,
+      "endLine": 464,
+      "normalizedLfSha256": "2b6fb46f22ea01aa17f709b04abca666da7314119f60ae3fe8714040c444561d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "action_select",
+      "startLine": 1155,
+      "endLine": 1218,
+      "normalizedLfSha256": "7f3f380a6b32eebacd4d7537ac5b1e54cd9304c4f90ee5298b4ca4c7291203c8"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "general_select",
+      "startLine": 1311,
+      "endLine": 1356,
+      "normalizedLfSha256": "f6674dc7574a0aae432eda2fedcc799774bc099a049d0c48a52e599d134fe2fb"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ability_considerations_set",
+      "startLine": 607,
+      "endLine": 904,
+      "normalizedLfSha256": "6ee3cb512ac66ef6799dce7b4f78c549cc10d1eaa0a4fa7701e0fbf6bed4d21d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ability_list_evaluate",
+      "startLine": 2330,
+      "endLine": 2351,
+      "normalizedLfSha256": "16fc81e0a64d57f4a205adb82a1079f4a5b7e3e0d73ea077aa6e9ae65475743b"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "target_is_out_of_play",
+      "startLine": 1672,
+      "endLine": 1679,
+      "normalizedLfSha256": "fc098f0d5d2ce3c64eb0d5d0d83bc974f355433d5aab0d7dbe1af96c28c2f981"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_target_is_untargetable",
+      "startLine": 1686,
+      "endLine": 1713,
+      "normalizedLfSha256": "9637259eec334dfd321b0bd33394f504e55f72f965128c9912383b2984294c14"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "target_active_units_select",
+      "startLine": 2278,
+      "endLine": 2325,
+      "normalizedLfSha256": "8971f84d2bc38ef004a86f44a3cad8fb31c77835114c9700f76384e3843da2d8"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_target_find_nearest",
+      "startLine": 3036,
+      "endLine": 3096,
+      "normalizedLfSha256": "6850f511caed7f4bd91a5a01ee5bb9a53fb94e5f728e97ca3878fa9a0b5bb84d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_unit_distance_calculate",
+      "startLine": 3099,
+      "endLine": 3107,
+      "normalizedLfSha256": "49541e0186b66284281209ca5f5e5330d97d3f92485e85cbcdf18a1445522974"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "foe_proximity_grid_fill",
+      "startLine": 3240,
+      "endLine": 3292,
+      "normalizedLfSha256": "4452983c86938f116afa90a47edea3a7a32d7b7c79578309104f046a0167c01d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "target_is_excluded_from_imminent_enemies",
+      "startLine": 3298,
+      "endLine": 3314,
+      "normalizedLfSha256": "06411bcace6b17d5c12aa65cf7a59e2a97b5ac0b67e5f2711954bff54020a0c3"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_unit_turn_delay_calculate",
+      "startLine": 3394,
+      "endLine": 3431,
+      "normalizedLfSha256": "abda23c263216d91e3146f5d4b8e0314e299c49d0b5d627bd1d5f6c89a26ae10"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_action_simulate_and_score",
+      "startLine": 1442,
+      "endLine": 1728,
+      "normalizedLfSha256": "9415274d3b38d3e7afe51922914355e40ff6bad7bccb9bc861bbbfae6894bcd4"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "simulation_unit_state_save",
+      "startLine": 1906,
+      "endLine": 1958,
+      "normalizedLfSha256": "e0c523b4a8e1487ba06e267dd10d6aa6fa015a285a63a06a04b911f07dfa8f2c"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "simulation_unit_state_restore",
+      "startLine": 1966,
+      "endLine": 2011,
+      "normalizedLfSha256": "d195422db548f6b870a1df33d2de5a0b3525e6e9a1d13f0f6b0585d193cb4dfa"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_status_is_active_through_delay",
+      "startLine": 2321,
+      "endLine": 2344,
+      "normalizedLfSha256": "9ab84e86d29fb0e00c171e4d9b71e3c52a37743d8d03bdc5c2b5521f8e15da8d"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_ability_outcome_evaluate",
+      "startLine": 311,
+      "endLine": 467,
+      "normalizedLfSha256": "ef236fb9f5cb2ed53870489b054483c7227e76c62c6fcb7d1b6f3c1f1b126f68"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "useful_targets_filter",
+      "startLine": 2015,
+      "endLine": 2031,
+      "normalizedLfSha256": "299bc384c97e93ab71b5f9c8951ffae4b11c427174e6f54f4d1c0c6a9ab83954"
+    }
+  ],
+  "originalSlots": 21,
+  "compactRecords": 16,
+  "managedRosterCapacityIsSourceExtent": false,
+  "actorDelayStorage": "u8 captured before refresh",
+  "targetDelayArithmetic": "s32",
+  "proximityStorage": "u8",
+  "selectedChildren": [
+    "ZOD-272",
+    "ZOD-273",
+    "ZOD-274",
+    "ZOD-275",
+    "ZOD-276"
+  ],
+  "originalExecuted": false,
+  "cExecuted": false
+}

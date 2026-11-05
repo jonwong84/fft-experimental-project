@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-271 (trace general roster focus and target search).** ZOD-265–270 complete variable supported-action lists through shared preparation, movement, occurrence evaluation, lottery, actual commands and recoverable turns. Broader roster/search work needs a pinned source study before implementation.
-There are 34 open tickets below. The 237 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-277 (trace multi-unit ordinary movement and sword-command boundaries).** ZOD-271–276 establish shared roster eligibility, eligible-enemy focus, active masks and proximity queries, now consumed by existing admitted pair preparation. Actual multi-unit combat/search still needs authoritative prerequisites.
+There are 34 open tickets below. The 243 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,24 +29,24 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-271 — Trace general roster focus and target search
+### ZOD-277 — Trace multi-unit ordinary movement and sword-command boundaries
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-264, ZOD-270
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-271, ZOD-276
 
-Pin and inspect the read-only reference before broadening the current two-opponent
-domain. Trace focus selection, in-play/active-target membership, ally/enemy
-classification, source roster and target traversal/ties, restored hypothetical
-state, proximity/threat aggregation and workspace/RNG ordering. Map assumptions
-in current refresh, movement, scoring and entry owners against authoritative
-Framework roster/command limits. Distinguish source storage extents from managed
-catalog/roster capacity and identify unsupported status/control/terminal paths.
-Produce independently checkable descriptions and select one concrete incremental
-managed child with prerequisite changes; do not weaken pair guards or approximate
-multi-target rules by repeated standalone queries. General effects/maps/policies,
-host/editor work, broad replacement interfaces, owner drafts, frame RNG and
-ZOD-106 remain separate/deferred. See the
-[current variable-list boundary](behavior/variable-basic-skill-ai.md#validation-and-limits)
-and [AI roadmap](development/ai-completion-roadmap.md).
+Pin and inspect the read-only reference before expanding actual combat beyond
+two ordinary opponents. Trace walkable occupancy and ally/enemy traversal,
+destination/path ordering, source unit lookup, single-target ordinary sword
+resolution, critical displacement into other units, KO/turn/event ordering and
+the command/facing/continuation callers. Map current Framework two-unit guards
+against a concrete three-unit scenario; distinguish scheduling support from
+legal movement/combat and original slot/compact extents from managed capacity.
+Select one bounded authoritative prerequisite with independent vectors and
+rollback/replay checks. Reuse the
+[roster targeting foundation](behavior/ai-roster-targeting.md); do not emulate
+multi-unit effects with repeated pair snapshots or weaken guards before their
+rules are represented. Full AI refresh/team/ability/scoring/target traversal,
+other maps/statuses/policies, terminal routing, host/editor, replacement
+interfaces, owner drafts, frame RNG and ZOD-106 remain separate/deferred.
 
 ## Existing validation gates
 

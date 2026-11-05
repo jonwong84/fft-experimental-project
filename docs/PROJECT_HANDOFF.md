@@ -6,17 +6,17 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-271: trace general roster focus and target search.**
-[ZOD-265–270](behavior/variable-basic-skill-ai.md) now execute owned variable
-supported-action lists from preparation through complete recoverable turns.
-Missing/repeated/reordered self/Stone entries preserve source-order coins,
-aim passes, ranks and actual command ownership. The domain still has two living
-opponents. Pin the reference and trace focus, membership, target traversal,
-proximity/threat aggregation, restored state and workspace/RNG ordering before
-broadening that domain; select one independently checkable managed child.
-Keep canonical guards and explicit remaining context. General effects/maps/
-policies, terminal routing, host/editor, replacement interfaces, frame RNG,
-owner drafts and ZOD-106 remain separate/deferred.
+**ZOD-277: trace multi-unit ordinary movement and sword-command boundaries.**
+[ZOD-271–276](behavior/ai-roster-targeting.md) establish immutable roster facts,
+separate live/cached eligibility, nearest eligible-enemy focus, complete active
+masks and imminent-enemy proximity writes. Existing pair preparation/proximity
+now consume these shared owners, preserving actual turns and recovery. Actual
+combat/movement admission still requires two ordinary opponents. Trace source
+occupancy/path/lookup, sword displacement/KO and controller/continuation/facing
+order before selecting a concrete authoritative three-unit prerequisite.
+Full AI refresh/team/ability/scoring/target traversal and other maps/statuses/
+policies remain open. Keep terminal routing, host/editor, replacement interfaces,
+frame RNG, owner drafts and ZOD-106 separate/deferred.
 
 The [original AI algorithm guide](architecture/original-ai-algorithm.md) maps
 policy precedence and all core source functions, with bounded implementation
@@ -76,16 +76,21 @@ without rewriting old evidence.
   are preserved byte-for-byte and tracked as deferred scaffolding. The owner
   explicitly left `AbilityToggles` consolidation for later; it is not wired into
   current metadata, the editor or rules. Other unimplemented flag families stay deferred.
-- Latest runtime implementation: [ZOD-265–270 variable supported lists](behavior/variable-basic-skill-ai.md)
-  own preparation/scenarios, per-occurrence composition/lottery and actual commands/
-  complete turns. Lists preserve missing/repeated/reordered self/Stone semantics,
-  grant inclusion, asymmetric peer threats, share128/lowest-ally clearing, ranged
-  D0 presence and range 1 versus 4 cast-key reads. Existing entry/rank/lottery,
-  Framework proposals/continuations/facing and shared stage routing remain owners.
-  Post-ACT uses actual state with cleared entries and one fresh empty decision;
-  exact-session recovery retains accepted progress/priority knowledge. Canonical
-  APIs/guards/results stay supported. No project/package/lock changes or new
-  authority/access boundaries. Content-disabled AI actions retain gameplay grants.
+- Latest targeting foundation: [ZOD-272–276 roster queries](behavior/ai-roster-targeting.md)
+  own ordered semantic live/decision facts without a fixed roster capacity.
+  Live untargetability, cached out-of-play, active ability targets and imminent
+  enemies remain distinct. Eligible-enemy nearest search preserves first-slot
+  ties, dead/Reraise filtering and actor fallback. Active masks retain Confusion,
+  actor exclusion and signed default-mode behavior; proximity sums only scenario0
+  writes against the cached actor byte. Full status timing stays explicitly resolved.
+  An internal adapter now supplies these owners from admitted pair live state;
+  no two-unit guard, command authority, API, draw stream or recovery boundary changes.
+- [ZOD-265–270 variable supported lists](behavior/variable-basic-skill-ai.md)
+  retain preparation/scenarios, per-occurrence composition/lottery and actual
+  complete turns. Missing/repeated/reordered self/Stone entries preserve source
+  passes/ranks, grant inclusion, asymmetric threats and action-dependent cast keys.
+  Post-ACT uses actual state with cleared entries and one fresh empty decision.
+  Exact-session recovery retains accepted progress and priority knowledge.
 - [ZOD-262/263 content-backed lists](behavior/content-backed-ai-lists.md) retain
   immutable source slots/order/duplicates, explicit known state, unusable Frog
   initialization and outer metadata/effect binding. Content references AI for
@@ -120,14 +125,16 @@ without rewriting old evidence.
   explicit player-control flag clear, HP*128/maxHP>=45 and no NonBlue reach draw.
   Existing Attack/Stone scoring/selection/execution and both teams are preserved;
   terminal routing and Blue low-HP/player-controlled policies remain open.
-- Latest source extension: [ZOD-265–270 design](architecture/zod-265-variable-search-extension.md)
-  pins 42 functions across 14 files, combining [ZOD-264](architecture/zod-264-variable-action-lists.md)
-  list/search evidence with existing controller/clock boundaries. The 16 isolated
-  list descriptions remain source-only, not a full RNG-cost oracle. Terminal usable
-  command kind is derived from occurrence traversal; no universal Stone assertion.
-  [ZOD-261](architecture/zod-261-usable-ability-lists.md) retains construction/known-slot
-  evidence; [ZOD-255](architecture/zod-255-priority-workspace.md) and
-  [ZOD-249](architecture/zod-249-three-entry-scenarios.md) retain history/scenarios.
+- Latest source study: [ZOD-271 roster targeting](architecture/zod-271-roster-targeting.md)
+  pins 25 functions across seven files and 17 isolated source descriptions. It
+  records current-versus-initial team classification, retained cache/live differences,
+  distinct nearest/active/imminent filters, restoration and byte delay/proximity
+  arithmetic. Source slot extent21 and compact extent16 are not managed capacities.
+  Wider read-only queries do not authorize full-roster commands. The prior
+  [ZOD-265–270 design](architecture/zod-265-variable-search-extension.md),
+  [ZOD-264 list study](architecture/zod-264-variable-action-lists.md),
+  [ZOD-255 workspace](architecture/zod-255-priority-workspace.md) and
+  [ZOD-249 scenarios](architecture/zod-249-three-entry-scenarios.md) retain their evidence.
 - Organization: AI source/tests use Shared, Sword, ThrowStone, AttackThrowStone,
   Accumulate and BasicSkill folders with stable namespaces; [layout](development/ai-source-layout.md).
   Owner RNG migration is completed as `Zodiac.Framework.Random.RandomStateGenerator`
@@ -141,15 +148,16 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore, zero-warning/error Release build and **4,298 .NET
-  cases** (1,467 Framework, 1,086 AI), including 26 new AI cases, pass. All
-  **542 Python tests**, pinned source/prepared-data, variable-list descriptions,
-  algorithm-guide and coverage checks pass. Seven full TRX reports and logs are
-  under ignored `scratch/variable-search-265-270/`.
+- Validation: locked restore, zero-warning/error Release build and **4,309 .NET
+  cases** (1,467 Framework, 1,097 AI), including 11 new AI cases, pass. All
+  **545 Python tests**, pinned roster/prepared-data, algorithm-guide, local-link
+  and coverage checks pass. Seven full TRX reports and logs are under ignored
+  `scratch/roster-targeting-271-276/`.
   Python uses repository-pinned Pillow 12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow 13.0.0 triggers six existing version guards; WindowsApps Python
-  is unavailable. Owner content/drafts remain unchanged, including AbilityToggles.
+  is unavailable. All nine owner drafts remain unchanged, including AbilityToggles.
+  No project/lock/package, Framework, Content or host/editor source changes.
   Nine historical checkpoint audits last passed at ZOD-158; unchanged snapshots
   were not rerun. No original/C execution, host/editor activation or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/

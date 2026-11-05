@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-04",
   "edition": "SCUS-94221",
-  "managedCommit": "1136eec0a7cff27a1d61cee506e50a5bafcd0ad9",
+  "managedCommit": "95e25fe97dd9a1025d8b36aa1cd8596da92b79ca",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 4298,
-    "source": "docs/behavior/variable-basic-skill-ai.md",
+    "passed": 4309,
+    "source": "docs/behavior/ai-roster-targeting.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -453,7 +453,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "Closed sword/pair and three-entry turns remain supported. Owned semantic lists now carry missing/repeated/reordered supported self/Stone occurrences through separate preparation, shared movement, per-occurrence search/lottery and actual complete recoverable turns. Content binding preserves explicit known/AI eligibility, grant distinctions and Frog initialization. Priority knowledge resolves only owned writes; range1 versus4 reads depend on present actions. General learning/menus/rosters/policies/maps, terminal routing, original evidence and host activation remain open.",
+      "currentScope": "Closed sword/pair and variable supported-action complete turns remain supported, with priority knowledge and Content-backed lists. Shared read-only roster facts now separate live/cached eligibility, eligible-enemy nearest focus, active masks and imminent proximity across explicit resolved units. Existing pair preparation/proximity consume these owners without changing admission or streams. General roster refresh/team/ability/scoring/target traversal, actual multi-unit combat, other policies/maps, terminal routing, original evidence and host activation remain open.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -546,7 +546,12 @@
         "docs/architecture/zod-265-variable-search-extension.md",
         "docs/behavior/variable-basic-skill-ai.md",
         "docs/evidence/ai/variable-search-source-v1.json",
-        "docs/evidence/ai/variable-search-implementation-v1.json"
+        "docs/evidence/ai/variable-search-implementation-v1.json",
+        "docs/architecture/zod-271-roster-targeting.md",
+        "docs/behavior/ai-roster-targeting.md",
+        "docs/evidence/ai/roster-targeting-source-v1.json",
+        "docs/fixtures/behavior/ai-roster-targeting-contract-v1.json",
+        "docs/evidence/ai/roster-targeting-implementation-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -591,7 +596,13 @@
         "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListSelection.cs",
         "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListCommandExecution.cs",
         "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListTurnExecution.cs",
-        "src/Zodiac.Framework.Ai/Shared/AiTurnProgress.cs"
+        "src/Zodiac.Framework.Ai/Shared/AiTurnProgress.cs",
+        "src/Zodiac.Framework.Ai/Shared/AiTargetRoster.cs",
+        "src/Zodiac.Framework.Ai/Shared/AiRosterNearest.cs",
+        "src/Zodiac.Framework.Ai/Shared/AiRosterActiveTargets.cs",
+        "src/Zodiac.Framework.Ai/Shared/AiRosterProximity.cs",
+        "src/Zodiac.Framework.Ai/Shared/AiOrdinaryPairRoster.cs",
+        "src/Zodiac.Framework.Ai/Shared/AiMovementPrefix.cs"
       ],
       "automatedChecks": [
         {
@@ -801,6 +812,22 @@
         {
           "path": "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiListExecutionTests.cs",
           "scope": "Variable owned lists: missing/repeated/reordered occurrences, grants, summaries, shared scenarios, action-dependent cast keys, independent entry passes/ranks, literal streams, actual commands, post-ACT and exact recovery."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/Shared/AiRosterTargetingTests.cs",
+          "scope": "Seventeen authored source descriptions plus immutable roster facts, current/initial teams, first-order nearest ties, complete active masks, proximity sums/masks/delays, invalid facts and capacity boundaries."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/Shared/AiRosterPairIntegrationTests.cs",
+          "scope": "Pair moved/unmoved/post-ACT restored CT and literal refresh streams for both actor/order identities; read-only broader roster does not bypass authoritative two-unit guards."
+        },
+        {
+          "path": "tools/verification/test_ai_roster_targeting_contract.py",
+          "scope": "Independent source-only roster descriptions, input preservation, live/cache/ordering/timing boundaries and malformed/tampered claims; no original/C/managed execution."
+        },
+        {
+          "path": "tools/verification/verify_ai_roster_targeting_contract.py",
+          "scope": "Pinned read-only source fingerprints and seventeen isolated descriptions; not full refresh, a status simulator or original behavioral equivalence."
         }
       ],
       "manualCheckpoint": {
@@ -808,14 +835,14 @@
         "procedure": "Observe selected mandatory AI turns and distinguish legal choices from exact policy matching."
       },
       "openQuestions": [
-        "Variable supported self/Stone occurrence lists are implemented in a separate owner; general learning, special menus, other action kinds and full roster/target traversal remain unported.",
+        "Shared roster eligibility/focus/active/proximity queries accept resolved source facts; full roster refresh/team/ability/scoring/target effects and authoritative multi-unit movement/combat remain unported.",
         "Knowledge starts unknown, records only owned writes and must forget after unmodeled workspace use; numerical startup/event/loader history and frame-interleaved RNG remain unresolved.",
         "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
         "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Trace ZOD-271 general roster focus and target search: membership/order/ties, proximity/threat aggregation, restored state and workspace/RNG boundaries; select an incremental managed child before broadening pair guards.",
+      "nextAction": "Trace ZOD-277 multi-unit ordinary movement and sword-command boundaries: occupancy/path/lookup, displacement/KO and command/facing/continuation order; select one bounded authoritative prerequisite before broadening two-unit guards.",
       "followUpTickets": [
-        "ZOD-271"
+        "ZOD-277"
       ]
     },
     {

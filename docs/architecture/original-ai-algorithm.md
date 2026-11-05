@@ -109,8 +109,10 @@ See [refresh](zod-156-ai-refresh-prefix.md),
 [pair preparation](zod-195-pair-preparation.md) and [post-ACT pair study](zod-209-pair-post-act.md).
 [Bounded content-backed human lists](../behavior/content-backed-ai-lists.md) now
 construct supported default-menu actions and supply canonical preparation.
-Full list traversal, teams, status timing and special policies remain **mapped,
-unported**. Pair post-ACT command execution now uses fresh pair preparation;
+[Roster targeting queries](../behavior/ai-roster-targeting.md) now implement
+separate membership, eligible-enemy nearest focus, active masks and proximity
+over resolved facts. Full roster refresh/list/effect traversal, teams, status
+timing and special policies remain **mapped, unported**. Pair post-ACT command execution now uses fresh pair preparation;
 the [certified Blue AI-controlled branch](../behavior/blue-attack-throw-stone-ai.md)
 shares it while retaining control/HP boundaries and team-specific policies.
 
@@ -443,8 +445,14 @@ state remains explicit. The canonical consumer retains its four-entry guard.
 context; [ZOD-265–270](../behavior/variable-basic-skill-ai.md) add separate owned
 preparation, shared movement, per-occurrence search/lottery and actual complete
 turns with exact recovery. Cast-key reads depend on present actions; missing AI
-entries do not imply missing gameplay grants. ZOD-271 next traces general roster
-focus/target search. Full original search breadth remains separate.
+entries do not imply missing gameplay grants.
+[ZOD-271–276](../behavior/ai-roster-targeting.md) now separate roster live/cached
+eligibility, eligible-enemy nearest focus, active masks and imminent proximity.
+These read-only kernels consume resolved source facts and also serve admitted
+pair preparation/proximity without broader command admission. Other nearest
+modes and full-roster refresh/team/ability/effect traversal remain open. ZOD-277
+next traces authoritative multi-unit movement/sword prerequisites. Full original
+search breadth remains separate.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use
 the supported domain and a real consumer, rather than exposing the entire

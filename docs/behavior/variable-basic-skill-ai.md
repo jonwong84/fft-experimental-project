@@ -138,7 +138,8 @@ snapshots and UI were not rerun.
 
 The domain remains two living ordinary opponents, supported sword/self/Stone
 effects, flat maps, admitted Blue/NonBlue policy and explicit missing context.
-General roster focus/target search is the next source study, ZOD-271. Broader
+The [ZOD-271–276 follow-up](ai-roster-targeting.md) now supplies shared read-only
+roster targeting queries and pair consumers; full-roster command/search remains open. Broader
 learning/menus/effects/maps/policies, Defend, terminal encounter routing, original
 frame/VSync RNG and host activation remain open. Owner definition drafts,
 AbilityToggles consolidation, editor work, replacement interfaces and ZOD-106

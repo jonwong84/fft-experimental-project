@@ -5,7 +5,12 @@ family. Source and test projects use matching folders:
 
 - `Shared/`: hypothetical clocks/state, movement prefix, scoring, ranking and
   lottery kernels, immutable retained-priority knowledge and semantic ordinary
-  human ability-list construction. These serve more than one family.
+  human ability-list construction. Ordered roster projections separate live/
+  cached membership, eligible-enemy nearest focus, active target masks and
+  imminent-enemy proximity writes. Existing admitted pair preparation/proximity
+  consumes these shared queries; wider read-only inputs grant no command authority.
+  See [roster targeting](../../docs/behavior/ai-roster-targeting.md).
+  These serve more than one family.
 - `Sword/`: the original ordinary-sword pilot, its preparation, scenarios,
   scans, selection and execution adapters.
 - `ThrowStone/`: one Throw Stone formula/candidate/scan, used by pair selection.

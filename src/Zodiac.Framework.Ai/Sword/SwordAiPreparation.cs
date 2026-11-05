@@ -99,22 +99,20 @@ public static class SwordAiPreparation
             if (!geometry.Accepted) return null;
             origins = geometry.Outcome!.AiOrigins;
         }
-        var turns = state.TurnBattle.Turns.Units;
-        static int Delay(TurnUnitState unit) => (Math.Max(0, 100 - unit.Ct) + unit.Speed - 1) / unit.Speed;
-        var actorTurn = turns.Single(u => u.Id == request.ActorId);
-        int actorDelay = Delay(actorTurn);
-        int targetDelay = Delay(turns.Single(u => u.Id == request.TargetId));
-        var battle = state.TurnBattle.Battle;
-        battle.TryGetUnit(request.TargetId, out var target);
+        var roster = AiOrdinaryPairRoster.Create(state, request.ActorId, request.TargetId);
+        var nearest = AiRosterNearest.FindEligibleEnemy(roster, roster.Units.Select(u => u.UnitId));
+        var active = AiRosterActiveTargets.Select(roster, AiRosterTargetFilter.Any);
+        var actorTurn = state.TurnBattle.Turns.Units.Single(u => u.Id == request.ActorId);
+        int actorDelay = roster.ById[request.ActorId].TurnDelay;
+        int targetDelay = roster.ById[request.TargetId].TurnDelay;
         var origin = actor!.Position;
-        var focus = target!.Position;
-        int distance = Math.Abs(focus.X - origin.X) + Math.Abs(focus.Y - origin.Y);
-        byte proximity = targetDelay <= actorDelay ? (byte)Math.Max(0, 10 - distance) : (byte)0;
+        var focus = roster.ById[nearest.TargetId].Position;
+        byte proximity = AiRosterProximity.Evaluate(roster, [origin]).WrittenValues[origin];
         // One ally cannot provide retreat support. NonBlue sets the actor's bit; Blue preserves all retained policies.
         var policies = refresh.RefreshedUnits.Select(u => new SwordAiRefreshPolicy(u.UnitId,
             u.ConserveCt, (team == SwordAiScenarioTeam.NonBlue && u.UnitId == request.ActorId) || u.TeamSupportUnavailable)).ToImmutableArray();
         return new(refresh, policies, origin, focus, actorDelay, targetDelay, actor.Move + 1, actor.Move,
-            proximity, RetreatSupportAvailable: false, SingleEnemyRemaining: false, TargetActive: true,
+            proximity, RetreatSupportAvailable: false, SingleEnemyRemaining: false, TargetActive: active.UnitActive[request.TargetId],
             ManualAutobattle: true, RandomUseThreshold: 0)
             { ReachableOrigins = origins, ActorAttackUsable = !actorTurn.ActionTaken };
     }

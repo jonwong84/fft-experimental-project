@@ -70,8 +70,12 @@ now preserves source slots/order/duplicates and explicit known state, with an
 outer setup adapter and canonical four-entry preparation consumer.
 [Variable supported lists](../behavior/variable-basic-skill-ai.md) now own
 missing/repeated/reordered self/Stone preparation, shared movement, per-occurrence
-evaluation/lottery and actual complete recoverable turns. General roster/target
-search, other lists/policies/maps and independent validation remain open.
+evaluation/lottery and actual complete recoverable turns.
+[Roster targeting queries](../behavior/ai-roster-targeting.md) now supply ordered
+live/cache membership, eligible-enemy nearest focus, active masks and imminent
+proximity over resolved facts, shared with admitted pair preparation. Full roster
+refresh/team/ability/effect traversal, other policies/maps and independent
+validation remain open; actual multi-unit combat still needs authoritative prerequisites.
 
 The [ZOD-210 cleanup](ai-pair-selection-refactor.md) shares pair admission and
 composition/lottery handling while retaining separate scenario/provenance rules.
@@ -162,8 +166,9 @@ and the certified Blue branch through shared Framework authority. Three-entry
 turns now include actual self ACT, derived scenarios and explicit retained
 priority knowledge and content-backed lists. ZOD-265–270 now carry variable
 supported-action occurrences through shared search, actual commands and complete
-turn recovery, retaining canonical guards. ZOD-271 next traces general roster
-focus and target search before selecting an incremental managed child. Broader
+turn recovery, retaining canonical guards. ZOD-271–276 now provide shared roster
+targeting queries, while actual commands retain two-unit admission. ZOD-277 next
+traces multi-unit ordinary movement and sword-command prerequisites. Broader
 control/low-HP/terminal policies remain separate.
 A certificate for one closed ability list cannot stand in for another list.
 

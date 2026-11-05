@@ -16,16 +16,10 @@ internal sealed record AiProximityCache(byte ActorDelay, int TargetDelay, Battle
     internal static AiProximityCache Create(AttackBattleSnapshot state, BattleUnitId actorId,
         BattleUnitId targetId, IEnumerable<TilePosition> destinations)
     {
-        static int Delay(TurnUnitState unit) => (Math.Max(0, 100 - unit.Ct) + unit.Speed - 1) / unit.Speed;
-        var turns = state.TurnBattle.Turns.Units;
-        byte actorDelay = (byte)Delay(turns.Single(u => u.Id == actorId));
-        int targetDelay = Delay(turns.Single(u => u.Id == targetId));
-        bool eligible = targetDelay <= actorDelay;
-        state.TurnBattle.Battle.TryGetUnit(targetId, out var target);
-        var position = target!.Position;
-        var proximity = destinations.Distinct().ToImmutableDictionary(p => p, p => eligible
-            ? (byte)Math.Max(0, 10 - Math.Abs(position.X - p.X) - Math.Abs(position.Y - p.Y)) : (byte)0);
-        return new(actorDelay, targetDelay, eligible ? targetId : null, proximity);
+        var roster = AiOrdinaryPairRoster.Create(state, actorId, targetId);
+        var proximity = AiRosterProximity.Evaluate(roster, destinations);
+        return new(roster.CachedActorDelay, roster.ById[targetId].TurnDelay,
+            proximity.TargetableEnemies.Contains(targetId) ? targetId : null, proximity.WrittenValues);
     }
 }
 internal sealed record AiMovementPrefixOutcome(ImmutableArray<AiScoredMovementTile> Movement,

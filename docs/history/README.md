@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 237 entries index completed bounded work; they do not mean the full game is complete.
+These 243 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -260,3 +260,9 @@ These 237 entries index completed bounded work; they do not mean the full game i
 - [ZOD-268 — Select variable-list plans with occurrence identity](../behavior/variable-basic-skill-ai.md#terminal-selection--zod-268)
 - [ZOD-269 — Execute actual fresh variable-list commands](../behavior/variable-basic-skill-ai.md#actual-first-command--zod-269)
 - [ZOD-270 — Complete variable-list turns and exact recovery](../behavior/variable-basic-skill-ai.md#complete-turns-and-recovery--zod-270)
+- [ZOD-271 — Trace general roster focus and target search](../architecture/zod-271-roster-targeting.md)
+- [ZOD-272 — Own ordered roster facts and separate live/cached membership](../behavior/ai-roster-targeting.md#owned-facts-and-membership--zod-272)
+- [ZOD-273 — Select the source-order nearest eligible enemy](../behavior/ai-roster-targeting.md#eligible-enemy-nearest-search--zod-273)
+- [ZOD-274 — Rebuild active ability target flags](../behavior/ai-roster-targeting.md#active-ability-targets--zod-274)
+- [ZOD-275 — Derive roster imminent-enemy proximity writes](../behavior/ai-roster-targeting.md#proximity-writes--zod-275)
+- [ZOD-276 — Consume roster targeting through existing pair owners](../behavior/ai-roster-targeting.md#existing-pair-consumers--zod-276)
