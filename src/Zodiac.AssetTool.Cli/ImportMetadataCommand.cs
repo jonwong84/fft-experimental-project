@@ -1,6 +1,7 @@
 using System.Text;
 using System.Text.Json;
 using Zodiac.Content.ContentPackages;
+using Zodiac.Content.Definitions;
 
 namespace Zodiac.AssetTool.Cli;
 
@@ -16,10 +17,11 @@ public sealed class ImportMetadataCommand(string workspaceRoot)
         try
         {
             var options = new Dictionary<string, string>(StringComparer.Ordinal);
-            if (args.Length == 0 || args[0] is not ("import-metadata" or "import-sword" or "import-accumulate" or "import-throw-stone")) throw new ArgumentException("Expected import-metadata, import-sword, import-accumulate or import-throw-stone command.");
+            if (args.Length == 0 || args[0] is not ("import-metadata" or "import-sword" or "import-accumulate" or "import-throw-stone" or "import-dash")) throw new ArgumentException("Expected import-metadata, import-sword, import-accumulate or import-throw-stone/import-dash command.");
             bool swordMode = args[0] == "import-sword";
             bool accumulateMode = args[0] == "import-accumulate";
-            bool targetedMode = args[0] == "import-throw-stone";
+            bool targetedMode = args[0] is "import-throw-stone" or "import-dash";
+            var targetedEffect = args[0] == "import-dash" ? TargetedAbilityEffect.DashFlat : TargetedAbilityEffect.ThrowStoneFlat;
             for (int i = 1; i < args.Length; i++)
             {
                 string key = args[i];
@@ -33,7 +35,7 @@ public sealed class ImportMetadataCommand(string workspaceRoot)
             string outputPath = ScratchPath(destination);
             string? metadataPath = options.TryGetValue("--metadata", out string? selected) ? ScratchPath(selected) : null;
             if (accumulateMode && metadataPath is null) throw new ArgumentException("import-accumulate requires --metadata.");
-            if (targetedMode && metadataPath is null) throw new ArgumentException("import-throw-stone requires --metadata.");
+            if (targetedMode && metadataPath is null) throw new ArgumentException($"{args[0]} requires --metadata.");
             if (File.Exists(outputPath) || Directory.Exists(outputPath))
                 throw new IOException("Output directory already exists; choose a fresh scratch destination.");
             if (inputPath.StartsWith(outputPath + Path.DirectorySeparatorChar, PathComparison))
@@ -46,10 +48,10 @@ public sealed class ImportMetadataCommand(string workspaceRoot)
             OriginalMetadataImport? result = swordMode || accumulateMode || targetedMode ? null : OriginalMetadataImporter.ImportVerified(bytes);
             OriginalSwordImport? sword = swordMode ? OriginalSwordImporter.ImportVerified(bytes) : null;
             OriginalAccumulateImport? accumulate = accumulateMode ? OriginalAccumulateImporter.ImportVerified(bytes, ContentPackage.Load(metadataPath!)) : null;
-            OriginalThrowStoneImport? targeted = targetedMode ? OriginalThrowStoneImporter.ImportVerified(bytes, ContentPackage.Load(metadataPath!)) : null;
+            OriginalTargetedAbilityImport? targeted = targetedMode ? OriginalTargetedAbilityImporter.ImportVerified(bytes, ContentPackage.Load(metadataPath!), targetedEffect) : null;
             SwordContentPackage? swordPackage = !swordMode || metadataPath is null ? null :
                 OriginalSwordContentExporter.CreatePackage(sword!, ContentPackage.Load(metadataPath));
-            string provenance = targetedMode ? OriginalThrowStoneImporter.ToJson(targeted!) : accumulateMode ? OriginalAccumulateImporter.ToJson(accumulate!) : swordMode ? OriginalSwordImporter.ToJson(sword!) : JsonSerializer.Serialize(new
+            string provenance = targetedMode ? OriginalTargetedAbilityImporter.ToJson(targeted!) : accumulateMode ? OriginalAccumulateImporter.ToJson(accumulate!) : swordMode ? OriginalSwordImporter.ToJson(sword!) : JsonSerializer.Serialize(new
             {
                 format = "fft.original-metadata-import", schemaVersion = 1,
                 targetEdition = "SCUS-94221", scope = "partial-learning-metadata",
@@ -90,7 +92,7 @@ public sealed class ImportMetadataCommand(string workspaceRoot)
                     Directory.Delete(staging);
                 }
             }
-            if (targetedMode) output.WriteLine($"Imported supported Throw Stone effect and {targeted!.Records.Length} source records at {outputPath}; historical metadata ID preserved; learned grants remain explicit.");
+            if (targetedMode) output.WriteLine($"Imported supported {(targetedEffect == TargetedAbilityEffect.DashFlat ? "Dash" : "Throw Stone")} effect and {targeted!.Records.Length} source records at {outputPath}; historical metadata ID preserved; learned grants remain explicit.");
             else if (accumulateMode) output.WriteLine($"Imported supported Accumulate effect and {accumulate!.Records.Length} source records at {outputPath}; learned grants remain explicit.");
             else if (swordMode) output.WriteLine($"Imported selected retail sword and Attack metadata: {sword!.Records.Length} source records at {outputPath}; " +
                 (swordPackage is null ? "metadata-only, no runtime package." : "validated schema2 sword.package.json exported; combat execution remains separate."));
@@ -103,7 +105,7 @@ public sealed class ImportMetadataCommand(string workspaceRoot)
         catch (ArgumentException exception)
         {
             error.WriteLine(exception.Message);
-            error.WriteLine("Usage: import-metadata|import-sword|import-accumulate|import-throw-stone --exe <scratch/SCUS_942.21> --output <fresh-scratch-directory> [--metadata <scratch/content.package.json> (required for ability imports, optional for import-sword)]");
+            error.WriteLine("Usage: import-metadata|import-sword|import-accumulate|import-throw-stone|import-dash --exe <scratch/SCUS_942.21> --output <fresh-scratch-directory> [--metadata <scratch/content.package.json> (required for ability imports, optional for import-sword)]");
             return 2;
         }
         catch (Exception exception) when (exception is IOException or InvalidDataException or UnauthorizedAccessException or ContentPackageValidationException)

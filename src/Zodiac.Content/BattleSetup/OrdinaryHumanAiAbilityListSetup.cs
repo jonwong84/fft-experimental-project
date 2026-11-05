@@ -34,6 +34,11 @@ public static class OrdinaryHumanAiAbilityListSetup
 
     public static AiHumanAbilityLists Create(ContentPackage metadata, ImmediateAbilityContentPackage immediate,
         TargetedAbilityContentPackage targeted, BaseJobBattleSetup setup, IEnumerable<OrdinaryHumanAiUnitSelection> selections,
+        AiHumanAbilityListProfile profile) => Create(metadata, immediate, targeted, null, setup, selections, profile);
+
+    public static AiHumanAbilityLists Create(ContentPackage metadata, ImmediateAbilityContentPackage immediate,
+        TargetedAbilityContentPackage targeted, TargetedAbilityContentPackage? dash,
+        BaseJobBattleSetup setup, IEnumerable<OrdinaryHumanAiUnitSelection> selections,
         AiHumanAbilityListProfile profile)
     {
         ArgumentNullException.ThrowIfNull(metadata); ArgumentNullException.ThrowIfNull(immediate);
@@ -42,6 +47,17 @@ public static class OrdinaryHumanAiAbilityListSetup
         if (immediate.Abilities.Length != 1 || targeted.Abilities.Length != 1 || immediate.Abilities[0].Id == targeted.Abilities[0].Id)
             throw new NotSupportedException("Select one self PA+1 and one distinct Throw Stone effect binding.");
         var self = immediate.Abilities[0].Id; var stone = targeted.Abilities[0].Id;
+        if (targeted.Abilities[0].Effect != TargetedAbilityEffect.ThrowStoneFlat)
+            throw new NotSupportedException("The Stone binding must select ThrowStoneFlat.");
+        AbilityId? dashId = null;
+        if (dash is not null)
+        {
+            dash.ValidateAgainst(metadata);
+            if (dash.Abilities.Length != 1 || dash.Abilities[0].Effect != TargetedAbilityEffect.DashFlat ||
+                dash.Abilities[0].Id == self || dash.Abilities[0].Id == stone)
+                throw new NotSupportedException("Select one distinct DashFlat effect binding.");
+            dashId = dash.Abilities[0].Id;
+        }
         var skills = metadata.Skillsets.ToDictionary(s => s.Id); var abilities = metadata.Abilities.ToDictionary(a => a.Id);
         var selected = new Dictionary<BattleUnitId, OrdinaryHumanAiUnitSelection>();
         foreach (var selection in selections)
@@ -75,7 +91,8 @@ public static class OrdinaryHumanAiAbilityListSetup
                     bool learned = known.Contains((definition.Id, slot.Slot));
                     if (slot.AbilityId is not { } id) return new AiHumanActionSlot(slot.Slot, null, AiHumanAbilityKind.Unsupported, false, false);
                     var data = abilities[id]; bool usable = data.UsableByAi;
-                    var kind = id == self ? AiHumanAbilityKind.Accumulate : id == stone ? AiHumanAbilityKind.ThrowStone : AiHumanAbilityKind.Unsupported;
+                    var kind = id == self ? AiHumanAbilityKind.Accumulate : id == stone ? AiHumanAbilityKind.ThrowStone :
+                        id == dashId ? AiHumanAbilityKind.Dash : AiHumanAbilityKind.Unsupported;
                     if (learned && usable && kind != AiHumanAbilityKind.Unsupported)
                     {
                         if (data.HasUnresolvedAiFlags)

@@ -516,5 +516,9 @@ now trace content/AI binding and feed immutable static metadata traits into
 supported lists, preserving working-policy separation and unsupported-edit
 guards. [ZOD-330](../behavior/readable-ai-authoring.md) now makes named booleans
 and structured shape traits primary for authoring, retaining version1 package
-and original import/export compatibility. ZOD-329 next binds prepared Dash
-content/effect grants. No automatic-facing/corpse/terminal/host gate is activated.
+and original import/export compatibility. [ZOD-329](../development/dash-content-binding.md)
+now binds prepared Dash effects, grants and AI setup, preserving the distinct
+primary AI/secondary combat evasion flags. [ZOD-333](../architecture/ability-effect-families.md)
+now inventories shared formulas and data/targeting/presentation boundaries.
+ZOD-334 next traces shared Faith magic before selecting a managed spell slice.
+No automatic-facing/corpse/terminal/host gate is activated.

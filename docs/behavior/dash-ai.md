@@ -1,5 +1,14 @@
 # Dash AI preparation, search and actual turns — ZOD-321–325
 
+[ZOD-329 prepared binding](../development/dash-content-binding.md) clarifies the
+primary/secondary evasion distinction: retail Dash's primary AI Evadeable bit is
+set and contributes to list shares; its secondary combat Evadeable bit is clear.
+The earlier explicitly authored semantic defaults and fixture compositions below
+retain their original inputs (primary AI Evadeable false). They remain regressions
+for those inputs, rather than exact retail list-summary evidence. Imported content
+now carries the real primary trait without changing non-evadeable Dash damage,
+search or actual resolution. Historical receipts/fixture expectations are retained.
+
 Implemented from `4e94271`, following the [Dash source study](../architecture/zod-317-dash.md)
 and [actual rule/authority](dash-actual.md). Read-only reference remains clean at
 `11464943bbdbd2a0af022d90cb7f10455cf911df`. The

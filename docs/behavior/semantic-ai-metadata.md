@@ -43,4 +43,7 @@ Initial ZOD-327/328 validation: locked restore, zero-warning/error Release build
 Framework, 1,217 AI, 823 Content), **596 Python tests**, pinned source/guide,
 coverage/link and owner-draft audits pass. See
 [receipt](../evidence/ai/ai-behavior-implementation-v1.json); ignored logs under
-`scratch/ai-flags-326-328/`. ZOD-329 next binds prepared Dash content and grants.
+`scratch/ai-flags-326-328/`. [ZOD-329](../development/dash-content-binding.md)
+now binds Dash content/grants. Its primary AI Evadeable flag is admitted for
+list summaries independently of its non-evadeable secondary combat effect;
+earlier authored defaults and other policy guards remain supported.

@@ -85,7 +85,12 @@ public sealed class AiHumanAbilityLists
                     if (slot.Kind is not (AiHumanAbilityKind.Accumulate or AiHumanAbilityKind.ThrowStone or AiHumanAbilityKind.Dash))
                         throw new NotSupportedException("An eligible unsupported action cannot be omitted from the AI list.");
                     var behavior = slot.Behavior ?? AiAbilityBehaviorDefaults.ForKind(slot.Kind);
-                    if (behavior != AiAbilityBehaviorDefaults.ForKind(slot.Kind))
+                    var supported = AiAbilityBehaviorDefaults.ForKind(slot.Kind);
+                    // Dash's retail primary AI flag contributes to list shares even though its
+                    // secondary combat flags disable actual evasion. Both authored AI-share values
+                    // use the existing summary arithmetic; neither changes the Dash effect rule.
+                    if (slot.Kind == AiHumanAbilityKind.Dash) supported = supported with { Evadeable = behavior.Evadeable };
+                    if (behavior != supported)
                         throw new NotSupportedException("The selected ability's AI targeting/search traits exceed its supported evaluator.");
                     entries.Add(new(slot.Kind, slot.AbilityId, source, skillset.Id, slot.Slot) { Behavior = behavior });
                 }

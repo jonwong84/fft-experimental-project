@@ -6,27 +6,28 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-329: bind prepared Dash content and semantic AI setup.**
-The owner-requested [ZOD-331 focused AI refactor](development/ai-refactor-331.md) is complete. The public roster path is
-`AiDecisionMaker` → `AiCommandExecutor` → `AiTurnController`, with shared immutable
-configuration. Lower-level pilot/query owners remain tested internally. No new
-gameplay breadth or host activation was added.
-[ZOD-332](development/framework-source-layout.md) now groups Framework source and
-tests by responsibility, with unchanged namespaces/APIs and identical C# bytes.
-Resume content work with this API and the new [source map](../src/Zodiac.Framework/README.md).
+**ZOD-334: trace the shared Faith-based 0x08/0x0C magic pipeline and select its first managed slice.**
+[ZOD-333](architecture/ability-effect-families.md) maps100 formula dispatch slots,
+82 distinct raw formula values across368 ordinary secondary slots, menu overrides,
+shared parameters and explicit exceptions. The full generated catalog stays under
+ignored scratch. Use shared effect handlers and data, with targeting/result and
+presentation separate. Full source-family inventory is not a completed rules port.
 
-[ZOD-330](behavior/readable-ai-authoring.md) now makes named AI booleans and
-structured area-shape flags authoritative in AbilityMetadataDefinition. Static
-usable/motion values and unresolved residual bits are immutable. Original input
-uses an explicit factory; raw bytes are a generated compatibility view. Version1
-JSON/imports/companion checks remain lossless. Editor copies and authored AI
-fixtures use the semantic constructor. [ZOD-326–328](behavior/semantic-ai-metadata.md)
-still supply list target/evasion/Silence/trajectory/physical consumers and strict
-supported-evaluator guards. Existing types need no imported byte guesses during
-authoring. Next bind the prepared Dash effect/grants through this same path.
-Full configurable policy variants remain future work. Owner toggle drafts,
-JobStats, host/editor activation, automatic facing, full corpse/terminal/frame
-RNG, broad interfaces and ZOD-106 remain separate/deferred.
+[ZOD-329](development/dash-content-binding.md) now imports verified Dash into the
+existing targeted schema1 companion and binds explicit learned grants and known
+AI slots. Stone's previous output/API remains compatible through a shared importer.
+Retail Dash's primary AI Evadeable trait contributes to list summaries while its
+secondary combat flags still disable evasion. Actual effects remain authoritative:
+AI uses midpoint damage; real Dash uses three draws. Both turn orders and missing
+grant rejection pass through the public roster API.
+
+[ZOD-330](behavior/readable-ai-authoring.md) keeps named traits authoritative in
+AbilityMetadataDefinition. [ZOD-331](development/ai-refactor-331.md) supplies
+AiDecisionMaker/AiCommandExecutor/AiTurnController and shared immutable configuration;
+[ZOD-332](development/framework-source-layout.md) organizes Framework source/tests
+with unchanged namespaces. Owner toggle drafts, JobStats, host/editor activation,
+automatic facing, full corpse/terminal/frame RNG, broad interfaces and ZOD-106
+remain separate/deferred.
 
 The [original AI algorithm guide](architecture/original-ai-algorithm.md) maps
 policy precedence and all core source functions, with bounded implementation
@@ -184,22 +185,21 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore, zero-warning/error Release build and **4,531 .NET
-  cases** (1,521 Framework, 1,217 AI, 833 Content), including the external
-  public-AI-pipeline case from ZOD-331, pass unchanged after the folder moves. All
-  **596 Python tests**, local-link and coverage checks pass. Pinned
-  source/prepared-data and algorithm-guide audits last passed at ZOD-331; their
-  inputs are unchanged by this folder-only cleanup. Seven full TRX reports/logs are under ignored
-  `scratch/framework-layout-332/`.
-  Python uses repository-pinned Pillow 12.3.0 from ignored
+- Validation: locked restore, zero-warning/error Release build and **4,562 .NET
+  cases** (1,521 Framework, 1,217 AI, 838 Content, 328 CLI), including31 new
+  Content/CLI cases, pass. All **603 Python tests** pass, including seven formula
+  inventory cases. Pinned-source/prepared Dash and formula inventory, guide,
+  coverage and local-link audits pass. Verified prepared Dash import succeeds;
+  the saved Stone package/provenance remain byte-identical. Seven full TRX reports
+  and logs are under ignored `scratch/dash-content-329/`; inventory/Python reports
+  are under `scratch/effect-families-333/`.
+  Python uses repository-pinned Pillow12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
-  Bundled Pillow 13.0.0 triggers six existing version guards; WindowsApps Python
+  Bundled Pillow13.0.0 triggers six existing version guards; WindowsApps Python
   is unavailable. All nine owner drafts remain unchanged, including AbilityToggles.
-  All 104 moved Framework/test files match the prior revision byte-for-byte;
-  existing behavior assertions, fixtures and namespaces are unchanged.
-  No host/editor activation, project/lock/package/dependency changes.
+  No Framework rules, project/lock/dependency changes or host/editor activation.
   Nine historical checkpoint audits last passed at ZOD-158; unchanged snapshots
-  were not rerun. No original/C execution, host/editor activation or UI review.
+  were not rerun. No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
   introduction proofs and synthetic world Save/Load exist. Original campaign,
   full combat/content, audio and general AI remain incomplete. See the

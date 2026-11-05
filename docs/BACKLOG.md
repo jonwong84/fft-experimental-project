@@ -4,10 +4,12 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-329 (bind prepared Dash content and semantic AI setup).** ZOD-330 makes named semantic AI traits authoritative for C# authoring, with lossless original import/export compatibility. ZOD-326–328 supply supported metadata consumers; incompatible policy edits remain explicit.
-The owner-requested [ZOD-331 focused AI refactor](development/ai-refactor-331.md) is complete; the supported roster API is now `AiDecisionMaker`, `AiCommandExecutor` and `AiTurnController`. Continue with ZOD-329 after this cleanup.
-[ZOD-332](development/framework-source-layout.md) also groups Framework and its tests by responsibility, preserving namespaces and behavior.
-There are 34 open tickets below. The 298 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-334 (trace the shared Faith-based magic pipeline).**
+[ZOD-329](development/dash-content-binding.md) binds prepared Dash effects, explicit
+grants and semantic AI setup through the public roster path. [ZOD-333](architecture/ability-effect-families.md)
+inventories formula reuse and the data/targeting/presentation boundaries. Expand
+shared effect families with explicit parameters and validated exceptions.
+There are 34 open tickets below. The 300 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,19 +33,20 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-329 — Bind prepared Dash content and semantic AI setup
+### ZOD-334 — Trace shared Faith-based magic and select the first managed slice
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-325, ZOD-328
+**Type:** Investigation · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-329, ZOD-333
 
-Add one source-traced prepared Dash effect definition/package and explicit
-learned-grant/setup binding. Feed decoded primary AI traits through the existing
-owned semantic lists; do not infer executable effects or learning from an ID or
-AI flags. Preserve current self/Stone schemas/adapters, authored overrides and
-public pair guards. Validate Dash range/Y/charge/MP/secondary flags against its
-pinned prepared record, including non-evadeable actual3 draws versus AI midpoint.
-Use deterministic content-to-command scenarios. Owner drafts, JobStats mutability,
-host/editor, automatic facing, full corpse/terminal/frame RNG, broad interfaces
-and ZOD-106 remain separate/deferred. See [binding study](architecture/zod-326-ai-behavior-metadata.md).
+Trace formula0x08/0x0C and their shared helpers/callers/data at the pinned reference:
+MA/Faith representation, widths and truncation, modifier/element/undead/evasion
+order, status/reaction hooks, charging/MP and area/vertical targeting. Separate
+actual and hypothetical RNG/results. Define reusable arithmetic, effect parameters
+and targeting/result boundaries, then select the smallest independently testable
+managed child with literal source vectors. Account for representative Fire/Cure
+tiers through data rather than one class per spell. This investigation does not
+activate general spell support or a broad interface. Owner drafts, JobStats,
+host/editor, automatic facing, corpse/terminal/frame RNG and ZOD-106 remain deferred.
+See the [formula-family inventory](architecture/ability-effect-families.md).
 
 ## Existing validation gates
 

@@ -1,5 +1,9 @@
 # ZOD-110 — Throw Stone content and combined Basic Skill scenario
 
+[ZOD-329](dash-content-binding.md) also binds prepared Dash through the same
+targeted package shape and shared offline importer; its actual rule/grant profile
+stays explicit. The older closed Basic Skill sample below remains unchanged.
+
 Date: 2026-10-26. Managed base efdbfa9, clean on entry. Read-only reference
 C:\repositories\fft_decomp was freshly rechecked clean at
 11464943bbdbd2a0af022d90cb7f10455cf911df before conversion. The

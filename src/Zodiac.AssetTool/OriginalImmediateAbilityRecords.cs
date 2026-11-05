@@ -22,4 +22,13 @@ public static class OriginalImmediateAbilityRecords
             record.X != 0 || record.Y != 1 || record.StatusInflictionId != 0 || record.ChargeTicks != 0 || record.MpCost != 0)
             throw new InvalidDataException("Unsupported Accumulate effect, parameter, targeting, flags, status, charge or MP cost.");
     }
+
+    public static void ValidateDash(OriginalImmediateAbilityRecord record)
+    {
+        ArgumentNullException.ThrowIfNull(record);
+        if (record.Range != 1 || record.Area != 0 || record.Vertical != 1 || record.Flags1 != 9 || record.Flags2 != 17 ||
+            record.Flags3 != 0 || record.Flags4 != 0 || record.Element != 0 || record.Formula != 0x37 ||
+            record.X != 0 || record.Y != 4 || record.StatusInflictionId != 0 || record.ChargeTicks != 0 || record.MpCost != 0)
+            throw new InvalidDataException("Unsupported Dash effect, flags, targeting, status, charge or MP cost.");
+    }
 }

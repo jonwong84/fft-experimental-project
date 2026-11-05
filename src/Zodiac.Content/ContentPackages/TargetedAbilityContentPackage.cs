@@ -71,13 +71,20 @@ public sealed class TargetedAbilityContentPackage
                 string? id = PackageJsonValidation.GuessString(node, "id");
                 v.Fields(node, id, path, "id", "effect", "target", "range", "maximumDamageMultiplier", "chargeTicks", "mpCost");
                 id = v.Id(node.GetProperty("id"), id, path + ".id");
-                if (v.Text(node.GetProperty("effect"), id, path + ".effect") != "throw-stone-flat") throw v.Failure(id, path + ".effect", "Unsupported effect.");
+                var effect = v.Text(node.GetProperty("effect"), id, path + ".effect") switch
+                {
+                    "throw-stone-flat" => TargetedAbilityEffect.ThrowStoneFlat,
+                    "dash-flat" => TargetedAbilityEffect.DashFlat,
+                    _ => throw v.Failure(id, path + ".effect", "Unsupported effect."),
+                };
                 if (v.Text(node.GetProperty("target"), id, path + ".target") != "occupied-unit") throw v.Failure(id, path + ".target", "Only the immediate occupied-unit subset is supported.");
-                int range = v.Integer(node.GetProperty("range"), id, path + ".range", 4, 4);
-                int maximum = v.Integer(node.GetProperty("maximumDamageMultiplier"), id, path + ".maximumDamageMultiplier", 2, 2);
+                int expectedRange = effect == TargetedAbilityEffect.DashFlat ? 1 : 4;
+                int expectedMaximum = effect == TargetedAbilityEffect.DashFlat ? 4 : 2;
+                int range = v.Integer(node.GetProperty("range"), id, path + ".range", expectedRange, expectedRange);
+                int maximum = v.Integer(node.GetProperty("maximumDamageMultiplier"), id, path + ".maximumDamageMultiplier", expectedMaximum, expectedMaximum);
                 int charge = v.Integer(node.GetProperty("chargeTicks"), id, path + ".chargeTicks", 0, 0);
                 int mp = v.Integer(node.GetProperty("mpCost"), id, path + ".mpCost", 0, 0);
-                abilities.Add(new(new(id), TargetedAbilityEffect.ThrowStoneFlat, range, maximum, charge, mp));
+                abilities.Add(new(new(id), effect, range, maximum, charge, mp));
             }
             return new(v.Id(root.GetProperty("packageId"), null, "$.packageId"), v.Id(root.GetProperty("profileId"), null, "$.profileId"),
                 v.Id(root.GetProperty("requiredMetadataPackageId"), null, "$.requiredMetadataPackageId"), abilities);
@@ -92,7 +99,7 @@ public sealed class TargetedAbilityContentPackage
         {
             format = Format, schemaVersion = SchemaVersion, packageId = PackageId, profileId = ProfileId, requiredMetadataPackageId = RequiredMetadataPackageId,
             abilities = Abilities.OrderBy(ability => ability.Id.Value, StringComparer.Ordinal).Select(ability => new
-            { id = ability.Id.Value, effect = "throw-stone-flat", target = "occupied-unit", range = ability.Range,
+            { id = ability.Id.Value, effect = ability.Effect == TargetedAbilityEffect.DashFlat ? "dash-flat" : "throw-stone-flat", target = "occupied-unit", range = ability.Range,
               maximumDamageMultiplier = ability.MaximumDamageMultiplier, chargeTicks = ability.ChargeTicks, mpCost = ability.MpCost }),
         }, new JsonSerializerOptions { WriteIndented = true, NewLine = "\n" }) + "\n";
         if (Encoding.UTF8.GetByteCount(json) > ContentPackage.MaxJsonBytes) throw new ContentPackageValidationException(PackageId, null, "$", "Serialized package is oversized.");

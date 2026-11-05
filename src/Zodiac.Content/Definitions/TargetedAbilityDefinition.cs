@@ -1,6 +1,6 @@
 namespace Zodiac.Content.Definitions;
 
-public enum TargetedAbilityEffect { ThrowStoneFlat = 1 }
+public enum TargetedAbilityEffect { ThrowStoneFlat = 1, DashFlat = 2 }
 
 /// <summary>Closed immediate occupied-unit damage/flat-knockback definition, separate from learning metadata.</summary>
 public sealed class TargetedAbilityDefinition
@@ -16,8 +16,14 @@ public sealed class TargetedAbilityDefinition
         int maximumDamageMultiplier, int chargeTicks, int mpCost)
     {
         DefinitionValidation.RequiredId(id.Value, nameof(id));
-        if (effect != TargetedAbilityEffect.ThrowStoneFlat || range != 4 || maximumDamageMultiplier != 2 || chargeTicks != 0 || mpCost != 0)
-            throw new NotSupportedException("Only immediate zero-MP range-4 Throw Stone with Y=2 is supported.");
+        bool supported = effect switch
+        {
+            TargetedAbilityEffect.ThrowStoneFlat => range == 4 && maximumDamageMultiplier == 2,
+            TargetedAbilityEffect.DashFlat => range == 1 && maximumDamageMultiplier == 4,
+            _ => false,
+        };
+        if (!supported || chargeTicks != 0 || mpCost != 0)
+            throw new NotSupportedException("Select immediate zero-MP flat Throw Stone (range4/Y2) or Dash (range1/Y4).");
         Id = id; Effect = effect; Range = range; MaximumDamageMultiplier = maximumDamageMultiplier; ChargeTicks = chargeTicks; MpCost = mpCost;
     }
 }

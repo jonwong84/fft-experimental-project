@@ -57,6 +57,11 @@ able to preserve unsupported original values.
 
 ## Dash content gap and next child
 
+This gap is now closed by [ZOD-329](../development/dash-content-binding.md). The
+original scope below records the pre-binding state. Retail primary AI Evadeable
+and secondary combat evasion flags are distinct and both are preserved.
+
+
 Actual Dash and its AI entry exist, but `TargetedAbilityEffect` and its prepared
 package currently bind only ThrowStoneFlat. The Content AI adapter accepts one
 self effect and one Stone effect; its explicit known slots are separate from

@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-05",
   "edition": "SCUS-94221",
-  "managedCommit": "78df755",
+  "managedCommit": "3f194e6",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 4531,
-    "source": "docs/development/framework-source-layout.md",
+    "passed": 4562,
+    "source": "docs/development/dash-content-binding.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -683,7 +683,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "Existing pair/variable-list command and complete-turn drivers retain guards, priority knowledge and streams. Roster general preparation/scenarios, cast-priority provenance and fresh exhaustive supported Attack/self/Stone list ranking/lottery share private formulas, clocks, projections, geometry and scoring while restoring all peers. Exact Framework flat direct trajectories use complete sprite heights and SDK normalization; actual roster Stone resolves live interception and all-occupant landing. Framework owns invocation-bound proposals, full-word/count RNG verification, actual command transactions and exact-state frozen Move follow-ups. Fresh supported roster AI dispatch now runs selection inside that boundary, publishing priority knowledge only with actual progress. Bounded complete-turn routing and exact-session recovery compose retained commands, fresh post-ACT and explicit facing without advancing the next clock. ACT-first KO can stop at the deferred corpse query guard with real progress retained; Move-first KO can settle its real receipt. Other policies/abilities/maps, full corpse/terminal/frame RNG, original evidence and host activation remain open. Eighteen real turns now verify multi-actor commands, clocks, ready-peer order, all-peer state/RNG and retained priorities; Dash now joins supported roster semantic preparation, isolated midpoint projection, ranked range1 search, full-list ranking/lottery and actual dispatch through existing verified proposals/frozen Move. Six further real Dash/Accumulate turns verify shared priority/RNG history. Its non-evadeable rule uses zero hypothetical effect draws, compared with three actual damage/Brave draws; legacy pair guards remain. Immutable semantic AI traits now derive from preserved primary bytes and feed owned list target/evasion/Silence/trajectory/physical summaries. Static fourth-byte facts stay separate from working usage. Unsupported edited combinations reject; package schema/raw preservation and owner drafts remain unchanged. Prepared Dash effect/grant binding remains next. ZOD-330 now makes named boolean AI traits and structured area-shape combinations authoritative for C# authoring, with generated original-byte exports, explicit import factory, preserved unknown residuals and unchanged version1 packages. ZOD-331 consolidates the supported public roster path as AiDecisionMaker/AiCommandExecutor/AiTurnController with shared immutable configuration; older pilot owners remain tested internally. Specialized behavior, rejection ordering and RNG/workspace/receipt authority are unchanged.",
+      "currentScope": "Existing pair/variable-list command and complete-turn drivers retain guards, priority knowledge and streams. Roster general preparation/scenarios, cast-priority provenance and fresh exhaustive supported Attack/self/Stone list ranking/lottery share private formulas, clocks, projections, geometry and scoring while restoring all peers. Exact Framework flat direct trajectories use complete sprite heights and SDK normalization; actual roster Stone resolves live interception and all-occupant landing. Framework owns invocation-bound proposals, full-word/count RNG verification, actual command transactions and exact-state frozen Move follow-ups. Fresh supported roster AI dispatch now runs selection inside that boundary, publishing priority knowledge only with actual progress. Bounded complete-turn routing and exact-session recovery compose retained commands, fresh post-ACT and explicit facing without advancing the next clock. ACT-first KO can stop at the deferred corpse query guard with real progress retained; Move-first KO can settle its real receipt. Other policies/abilities/maps, full corpse/terminal/frame RNG, original evidence and host activation remain open. Eighteen real turns now verify multi-actor commands, clocks, ready-peer order, all-peer state/RNG and retained priorities; Dash now joins supported roster semantic preparation, isolated midpoint projection, ranked range1 search, full-list ranking/lottery and actual dispatch through existing verified proposals/frozen Move. Six further real Dash/Accumulate turns verify shared priority/RNG history. Its non-evadeable rule uses zero hypothetical effect draws, compared with three actual damage/Brave draws; legacy pair guards remain. Immutable semantic AI traits now derive from preserved primary bytes and feed owned list target/evasion/Silence/trajectory/physical summaries. Static fourth-byte facts stay separate from working usage. Unsupported edited combinations reject; package schema/raw preservation and owner drafts remain unchanged. Prepared Dash binding is implemented by ZOD-329. ZOD-330 now makes named boolean AI traits and structured area-shape combinations authoritative for C# authoring, with generated original-byte exports, explicit import factory, preserved unknown residuals and unchanged version1 packages. ZOD-331 consolidates the supported public roster path as AiDecisionMaker/AiCommandExecutor/AiTurnController with shared immutable configuration; older pilot owners remain tested internally. Specialized behavior, rejection ordering and RNG/workspace/receipt authority are unchanged. ZOD-329 adds prepared Dash to targeted schema1, shared verified import, explicit effect-specific learned grants and metadata-backed AI lists. Primary AI evasion share remains independent of secondary combat evasion. ZOD-333 inventories shared formula families and menu/targeting/presentation exceptions; it implements no further formula.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -867,7 +867,11 @@
         "docs/behavior/readable-ai-authoring.md",
         "docs/evidence/ai/readable-ai-authoring-v1.json",
         "docs/development/ai-refactor-331.md",
-        "docs/evidence/ai/ai-refactor-implementation-v1.json"
+        "docs/evidence/ai/ai-refactor-implementation-v1.json",
+        "docs/development/dash-content-binding.md",
+        "docs/evidence/combat/dash-content-implementation-v1.json",
+        "docs/architecture/ability-effect-families.md",
+        "docs/evidence/combat/ability-formula-source-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -973,7 +977,11 @@
         "src/Zodiac.Framework.Ai/Execution/AiCommand.cs",
         "src/Zodiac.Framework.Ai/Execution/AiTurn.cs",
         "src/Zodiac.Framework.Ai/Shared/AiDamageHypothesis.cs",
-        "src/Zodiac.Framework.Ai/Shared/AiPreparationTypes.cs"
+        "src/Zodiac.Framework.Ai/Shared/AiPreparationTypes.cs",
+        "src/Zodiac.Content/Definitions/TargetedAbilityDefinition.cs",
+        "src/Zodiac.Content/ContentPackages/TargetedAbilityContentPackage.cs",
+        "src/Zodiac.Content/BattleSetup/TargetedAbilityBattleSetup.cs",
+        "src/Zodiac.AssetTool.Cli/OriginalTargetedAbilityImporter.cs"
       ],
       "automatedChecks": [
         {
@@ -1423,6 +1431,14 @@
         {
           "path": "tests/Zodiac.Content.Tests/PublicAiPipelineTests.cs",
           "scope": "External assembly without AI friend access: pure decision, fresh actual command and complete turn share one configuration; input restoration, decision versus actual RNG, damage and explicit facing are checked."
+        },
+        {
+          "path": "tests/Zodiac.AssetTool.Cli.Tests/TargetedAbilityImportTests.cs",
+          "scope": "All14 Dash secondary fields, canonical dependency/provenance, failed publication, imported public ACT-first/Move-first turns and explicit grants; three actual effect draws versus midpoint AI and primary AI evasion shares."
+        },
+        {
+          "path": "tools/verification/inventory_ability_formulas.py",
+          "scope": "Pinned10 source files/17 functions,100 dispatch slots and verified368 secondary rows; generated catalog confined to scratch; no C execution or managed rule expansion."
         }
       ],
       "manualCheckpoint": {
@@ -1526,7 +1542,7 @@
       "ownerTicket": "ZOD-039",
       "ownerArea": "Zodiac.Content definitions and offline import",
       "status": "partial",
-      "currentScope": "Selected Squire metadata/sword/Accumulate imports remain. ZOD-110 adds a separate strict targeted-effect companion and verified Throw Stone conversion, preserving historical source-0148 and metadata bytes; explicit learned grants compose the authored combined scenario. Full catalog coverage remains open. Immutable semantic AI traits now derive from preserved primary bytes and feed owned list target/evasion/Silence/trajectory/physical summaries. Static fourth-byte facts stay separate from working usage. Unsupported edited combinations reject; package schema/raw preservation and owner drafts remain unchanged. Prepared Dash effect/grant binding remains next. ZOD-330 now makes named boolean AI traits and structured area-shape combinations authoritative for C# authoring, with generated original-byte exports, explicit import factory, preserved unknown residuals and unchanged version1 packages.",
+      "currentScope": "Selected Squire metadata/sword/Accumulate imports remain. ZOD-110 adds a separate strict targeted-effect companion and verified Throw Stone conversion, preserving historical source-0148 and metadata bytes; explicit learned grants compose the authored combined scenario. Full catalog coverage remains open. Immutable semantic AI traits now derive from preserved primary bytes and feed owned list target/evasion/Silence/trajectory/physical summaries. Static fourth-byte facts stay separate from working usage. Unsupported edited combinations reject; package schema/raw preservation and owner drafts remain unchanged. Prepared Dash binding is implemented by ZOD-329. ZOD-330 now makes named boolean AI traits and structured area-shape combinations authoritative for C# authoring, with generated original-byte exports, explicit import factory, preserved unknown residuals and unchanged version1 packages. ZOD-329 adds prepared Dash to targeted schema1, shared verified import, explicit effect-specific learned grants and metadata-backed AI lists. Primary AI evasion share remains independent of secondary combat evasion. ZOD-333 inventories shared formula families and menu/targeting/presentation exceptions; it implements no further formula.",
       "referenceSources": [
         {
           "path": "include/fft/job.h",
@@ -1559,7 +1575,11 @@
         "docs/fixtures/behavior/ai-behavior-contract-v1.json",
         "docs/evidence/ai/ai-behavior-implementation-v1.json",
         "docs/behavior/readable-ai-authoring.md",
-        "docs/evidence/ai/readable-ai-authoring-v1.json"
+        "docs/evidence/ai/readable-ai-authoring-v1.json",
+        "docs/development/dash-content-binding.md",
+        "docs/evidence/combat/dash-content-implementation-v1.json",
+        "docs/architecture/ability-effect-families.md",
+        "docs/evidence/combat/ability-formula-source-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Content/Definitions/JobDefinition.cs",
@@ -1573,7 +1593,10 @@
         "src/Zodiac.Content/Definitions/AbilityMetadataDefinition.cs",
         "src/Zodiac.Content/BattleSetup/OrdinaryHumanAiAbilityListSetup.cs",
         "src/Zodiac.AssetTool.Cli/OriginalAbilityMetadataAdapter.cs",
-        "src/Zodiac.Content/Authoring/JobEditorDocument.cs"
+        "src/Zodiac.Content/Authoring/JobEditorDocument.cs",
+        "src/Zodiac.Content/Definitions/TargetedAbilityDefinition.cs",
+        "src/Zodiac.Content/ContentPackages/TargetedAbilityContentPackage.cs",
+        "src/Zodiac.AssetTool.Cli/OriginalTargetedAbilityImporter.cs"
       ],
       "automatedChecks": [
         {
@@ -1603,6 +1626,14 @@
         {
           "path": "tests/Zodiac.Content.Tests/Definitions/AbilityAiBehaviorTests.cs",
           "scope": "Named authoring, literal original Stone/area encoding, all1,024 byte patterns through semantic construction/legacy JSON, invalid shape/residual rejection;37 prior vectors remain equal."
+        },
+        {
+          "path": "tests/Zodiac.AssetTool.Cli.Tests/TargetedAbilityImportTests.cs",
+          "scope": "All14 Dash secondary fields, canonical dependency/provenance, failed publication, imported public ACT-first/Move-first turns and explicit grants; three actual effect draws versus midpoint AI and primary AI evasion shares."
+        },
+        {
+          "path": "tools/verification/inventory_ability_formulas.py",
+          "scope": "Pinned10 source files/17 functions,100 dispatch slots and verified368 secondary rows; generated catalog confined to scratch; no C execution or managed rule expansion."
         }
       ],
       "manualCheckpoint": {

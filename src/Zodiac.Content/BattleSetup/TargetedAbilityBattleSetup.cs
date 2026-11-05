@@ -12,8 +12,25 @@ public static class TargetedAbilityBattleSetup
     public static TargetedAbilityBattleProfile CreateProfile(ContentPackage metadata, TargetedAbilityContentPackage effects,
         BaseJobBattleSetup setup, IEnumerable<LearnedTargetedAbilityGrant> grants, TerrainSurfaceId ordinaryGroundSurface, int equipmentPhysicalAttackBonus)
     {
+        var units = ResolveGrants(metadata, effects, setup, grants, equipmentPhysicalAttackBonus, TargetedAbilityEffect.ThrowStoneFlat);
+        return new(ordinaryGroundSurface, effects.Abilities.Select(ability => new BoundedThrowStoneAbility(new(ability.Id.Value))), units);
+    }
+
+    /// <summary>Explicit flat Dash binding; AI metadata and known slots never grant an actual action.</summary>
+    public static DashAbilityBattleProfile CreateDashProfile(ContentPackage metadata, TargetedAbilityContentPackage effects,
+        BaseJobBattleSetup setup, IEnumerable<LearnedTargetedAbilityGrant> grants, TerrainSurfaceId ordinaryGroundSurface, int equipmentPhysicalAttackBonus)
+    {
+        var units = ResolveGrants(metadata, effects, setup, grants, equipmentPhysicalAttackBonus, TargetedAbilityEffect.DashFlat);
+        return new(ordinaryGroundSurface, effects.Abilities.Select(ability => new BoundedDashAbility(new(ability.Id.Value))), units);
+    }
+
+    private static IEnumerable<TargetedAbilityUnitGrant> ResolveGrants(ContentPackage metadata, TargetedAbilityContentPackage effects,
+        BaseJobBattleSetup setup, IEnumerable<LearnedTargetedAbilityGrant> grants, int equipmentPhysicalAttackBonus, TargetedAbilityEffect expectedEffect)
+    {
         ArgumentNullException.ThrowIfNull(effects); ArgumentNullException.ThrowIfNull(setup); ArgumentNullException.ThrowIfNull(grants);
         effects.ValidateAgainst(metadata);
+        if (effects.Abilities.Any(ability => ability.Effect != expectedEffect))
+            throw new NotSupportedException("Select only effects for the requested actual rule binding.");
         if (equipmentPhysicalAttackBonus != 0) throw new NotSupportedException("Only zero equipment PA bonus is supported.");
         var units = setup.Definitions.ToDictionary(binding => binding.UnitId);
         foreach (var binding in units.Values)
@@ -33,7 +50,6 @@ public static class TargetedAbilityBattleSetup
                 throw new ArgumentException("Grant must resolve a unit, explicit action slot and supported targeted effect.", nameof(grants));
             if (!selected[grant.UnitId].Add(grant.AbilityId)) throw new ArgumentException("Duplicate learned action grant.", nameof(grants));
         }
-        return new(ordinaryGroundSurface, effects.Abilities.Select(ability => new BoundedThrowStoneAbility(new(ability.Id.Value))),
-            units.Keys.Select(id => new TargetedAbilityUnitGrant(id, selected[id].Select(ability => new AssetId(ability.Value)), equipmentPhysicalAttackBonus)));
+        return units.Keys.Select(id => new TargetedAbilityUnitGrant(id, selected[id].Select(ability => new AssetId(ability.Value)), equipmentPhysicalAttackBonus)).ToArray();
     }
 }

@@ -15,6 +15,30 @@ public sealed class TargetedAbilityContentTests
     private static TargetedAbilityContentPackage Package() => SyntheticBasicSkillBattle.TargetedEffects(Metadata());
 
     [Fact]
+    public void Dash_uses_the_same_package_shape_with_distinct_closed_parameters()
+    {
+        var stone = Package(); string original = stone.ToJson();
+        var dash = new TargetedAbilityContentPackage(stone.PackageId,stone.ProfileId,stone.RequiredMetadataPackageId,
+            [new(SyntheticBasicSkillBattle.ThrowStone,TargetedAbilityEffect.DashFlat,1,4,0,0)]);
+        string json = dash.ToJson();
+        Assert.Equal(json,TargetedAbilityContentPackage.ReadJson(json).ToJson());
+        Assert.Equal(TargetedAbilityContentPackage.SchemaVersion,JsonNode.Parse(json)!["schemaVersion"]!.GetValue<int>());
+        Assert.Equal(original,stone.ToJson());
+        Assert.Equal(TargetedAbilityEffect.DashFlat,Assert.Single(dash.Abilities).Effect);
+        Assert.Contains("\"dash-flat\"",json); Assert.DoesNotContain("\"throw-stone-flat\"",json);
+    }
+
+    [Theory] [InlineData("range",4)] [InlineData("maximumDamageMultiplier",2)]
+    [InlineData("chargeTicks",1)] [InlineData("mpCost",1)]
+    public void Dash_parameters_cannot_silently_select_the_Stone_or_charged_effect(string field,int value)
+    {
+        var stone = Package(); var dash = new TargetedAbilityContentPackage(stone.PackageId,stone.ProfileId,stone.RequiredMetadataPackageId,
+            [new(SyntheticBasicSkillBattle.ThrowStone,TargetedAbilityEffect.DashFlat,1,4,0,0)]);
+        var json = JsonNode.Parse(dash.ToJson())!; json["abilities"]![0]![field] = value;
+        Assert.Throws<ContentPackageValidationException>(() => TargetedAbilityContentPackage.ReadJson(json.ToJsonString()));
+    }
+
+    [Fact]
     public void Companion_round_trip_is_sorted_independent_and_does_not_modify_learning_metadata()
     {
         var metadata = Metadata(); string before = metadata.ToJson();
