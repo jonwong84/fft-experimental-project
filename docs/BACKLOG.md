@@ -4,12 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-358 (Trace shared ordinary spell targeting geometry).**
-[Current magic inputs and casts](behavior/magic-current-inputs-and-casts.md)
-records completed ZOD-348–357. Current-input, resource/timing and supplied-order cast queries now preserve
-source arithmetic, context and candidate RNG/state. MP is proposed once at
-resolution readiness; geometry and live publication remain separate.
-There are 34 open tickets below. The 324 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-359 (Select source spell height layers).**
+[Ordinary spell targeting](behavior/ordinary-spell-targeting.md) records completed
+ZOD-358. Geometry remains independent of arithmetic and live publication.
+There are 37 open tickets below. The 325 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -33,17 +31,37 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-358 — Trace shared ordinary spell targeting geometry
+### ZOD-359 — Select source spell height layers
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-357
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-358
 
-Trace original range, area, vertical and execution-shape data and target iteration
-order before selecting a targeting implementation child. Keep arithmetic independent
-of geometry and record the future custom cone separately. No target finder or
-command activation in the trace. Owner drafts, JobStats, host/editor, automatic
-facing, full corpse/
-Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/
-deferred. See the [source and boundaries](behavior/magic-current-inputs-and-casts.md).
+Implement half-step reference narrowing and exact two-sheet vertical selection, including sentinel and TopDown quirks. See [scope and deferrals](behavior/ordinary-spell-targeting.md).
+Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
+status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
+
+### ZOD-360 — Build ordinary spell range and area panels
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-359
+
+Implement certified ordinary blue range and green map-aim area footprints; preserve phase-specific collision and self flags. See [scope and deferrals](behavior/ordinary-spell-targeting.md).
+Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
+status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
+
+### ZOD-361 — Select spell occupants in source order
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-360
+
+Apply source team panel mutations and occupant eligibility in certified source order; preserve shared-panel and nearest-tie quirks. See [scope and deferrals](behavior/ordinary-spell-targeting.md).
+Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
+status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
+
+### ZOD-362 — Resolve ready magic casts from map geometry
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-361
+
+Bind geometry to the ready spell definition and derive ordered targets for the shared cast query, preserving one MP proposal and atomic RNG rollback. See [scope and deferrals](behavior/ordinary-spell-targeting.md).
+Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
+status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
 
 ## Existing validation gates
 

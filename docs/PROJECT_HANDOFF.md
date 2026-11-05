@@ -6,20 +6,16 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-358: Trace shared ordinary spell targeting geometry.**
-[Current magic inputs and casts](behavior/magic-current-inputs-and-casts.md)
-records completed ZOD-348–357. `FaithMagicInputs` now projects current effective MA/current Faith and named
-status/support/identity/element facts without widening the sword state. Exact
-zodiac sex-bit/monster/Serpentarius behavior and existing arithmetic are preserved.
-`MagicResources` proposes source MP admission/recorded cost; `MagicCharge` keeps
-actual setup distinct from the original AI wrong-support-bit/floor/raw-byte
-quirk and queries one blocked/allowed counter step. `MagicCastQuery` prepares one
-ready Default-menu non-Mime strike and resolves a supplied certified target order.
-MP is proposed once per cast, at resolution readiness, with full private target/
-RNG rollback on failure and self-target post-cost normalization. Input MP is
-pre-spend; preparation performs no source action-state bookkeeping or live store.
-Geometry, complete scheduling, HP/MP/status publication, commands, grants/import
-and magic AI activation remain separate. The future1/3/5 cone is still unimplemented.
+**ZOD-359: Select source spell height layers.**
+[Ordinary spell targeting](behavior/ordinary-spell-targeting.md) records completed
+ZOD-358 at clean reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+Keep blue selectable aims separate from green resolution areas. Preserve narrowed
+reference height, blocked sentinels, initial/current team distinctions and source
+roster order. Shared magic arithmetic and prepared one-cost casts remain owners
+of calculation and candidate MP/RNG. Geometry grants no live state authority.
+Unit-follow, special shapes, commands, full scheduling and magic AI remain separate.
+Future custom forward1/3/5 cone is recorded, not implemented. Owner drafts and
+JobStats remain preserved; documented deferred gates still apply.
 
 [Magic evasion](behavior/magic-evasion.md) records completed ZOD-342, ZOD-344, ZOD-345, ZOD-346, ZOD-347
 from clean source `11464943bbdbd2a0af022d90cb7f10455cf911df` (13 files/21 functions).

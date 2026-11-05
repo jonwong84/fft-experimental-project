@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "milestones": [
+    {
+      "ticket": "ZOD-358",
+      "managedBaseRevision": "a1b6c1200f3dd675b50d78f86f20ded608bb574c",
+      "validation": "8 Python checks passed; pinned 11-file/21-function source audit and 55 descriptions passed; no managed implementation yet.",
+      "reports": "scratch/spell-targeting-358-362/"
+    }
+  ]
+}
