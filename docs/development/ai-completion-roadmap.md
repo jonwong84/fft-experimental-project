@@ -196,8 +196,10 @@ roster Stone candidate. ZOD-299/300 now compute direct trajectories
 with explicit heights and exact SDK normalization. ZOD-301 implements one
 fresh ranked Stone occurrence with computed blockage and consumed aims;
 ZOD-302/303 now implement full supported roster list selection through
-one prefix, stable ranking and source lottery. ZOD-304 next traces roster
-command/turn integration prerequisites.
+one prefix, stable ranking and source lottery. ZOD-304/305 map roster
+command/turn integration prerequisites
+and expose the existing actual self kernel through roster sessions. ZOD-306
+next traces live Stone interception and knockback admission.
 Broader control/low-HP/terminal policies remain separate.
 A certificate for one closed ability list cannot stand in for another list.
 

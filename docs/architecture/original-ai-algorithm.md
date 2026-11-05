@@ -487,7 +487,9 @@ trajectories with explicit heights and exact SDK normalization. ZOD-301
 now has one fresh ranked Stone occurrence with computed blockage and consumed
 aims. [ZOD-302/303](../behavior/roster-basic-skill-ai-selection.md) now compose
 one full supported roster list, stable rank insertion and source lottery.
-ZOD-304 next traces authoritative roster command/turn integration.
+[ZOD-304/305](../behavior/roster-immediate-ability-session.md) trace execution
+prerequisites and expose actual self abilities through roster sessions. ZOD-306
+next traces live Stone interception/knockback before its runtime child.
 Full original search breadth remains separate.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use

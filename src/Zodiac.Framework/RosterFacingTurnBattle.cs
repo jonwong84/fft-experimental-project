@@ -36,6 +36,10 @@ public static class RosterFacingTurnBattle
     public static RosterFacingResult Attack(RosterFacingTurnState state, AttackUnitCommand command, BoundedSwordWeapon? weapon) =>
         Apply(state, () => AttackBattleSimulator.AttackRoster(state.Battle, command, weapon, state.Profile));
 
+    /// <summary>Actual granted self PA+1 through the existing complete-roster kernel and session publisher; no decision RNG or AI authority.</summary>
+    public static RosterFacingResult UseImmediateAbility(RosterFacingTurnState state, UseImmediateAbilityCommand command,
+        ImmediateAbilityBattleProfile profile) => Apply(state, () => ImmediateAbilityBattleSimulator.Apply(state.Battle, command, profile));
+
     public static RosterFacingResult Move(RosterFacingTurnState state, MoveUnitCommand command)
     {
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(command);

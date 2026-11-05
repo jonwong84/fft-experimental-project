@@ -6,18 +6,19 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-304: trace authoritative roster AI command and turn integration.**
-[ZOD-302/303](behavior/roster-basic-skill-ai-selection.md) own a complete supported
-roster decision through one fresh general prefix, structural Attack/self/Stone/
-Frog traversal, per-occurrence coins/geometry/effects, stable eight-slot insertion
-and one source lottery. Private fresh owners restore all hypotheses and chain
-RNG. Late failures restore original workspace/RNG; only successful selection
-publishes fresh priority writes. Post-ACT empty rankings still draw eight times.
-Next trace missing actual roster abilities and existing Framework sessions/
-receipts before selecting execution children. Existing pair guards stay intact.
-Full roster AI commands/turns, other policies/statuses/maps, complete corpse
-lifecycle, automatic facing, terminal/frame RNG, host/editor, owner drafts,
-replacement interfaces and ZOD-106 remain separate/deferred.
+**ZOD-306: trace actual roster Stone interception, knockback and admission.**
+[ZOD-304](architecture/zod-304-roster-ai-execution.md) maps authoritative
+integration prerequisites. [ZOD-305](behavior/roster-immediate-ability-session.md)
+exposes the already roster-capable actual self effect through existing session
+publication/receipts, preserving peers/RNG and actual Move/ACT settlement.
+Live Stone still has a pair guard. Its projectile query includes the intended
+target and may intercept another unit, unlike AI's boolean; trace clear-path
+admission/interception and all-occupant landing before its runtime child.
+Framework must not reference AI: a real second geometry consumer should share
+the lower-layer kernel rather than duplicate it. Verified roster decision RNG,
+continuations, first/post-ACT dispatch and exact-session recovery follow later.
+Automatic facing, full corpse lifecycle, terminal/frame RNG, host/editor,
+owner drafts, replacement interfaces and ZOD-106 remain separate/deferred.
 
 The [original AI algorithm guide](architecture/original-ai-algorithm.md) maps
 policy precedence and all core source functions, with bounded implementation
@@ -158,12 +159,11 @@ without rewriting old evidence.
   explicit player-control flag clear, HP*128/maxHP>=45 and no NonBlue reach draw.
   Existing Attack/Stone scoring/selection/execution and both teams are preserved;
   terminal routing and Blue low-HP/player-controlled policies remain open.
-- Latest source trace: [ZOD-302 roster list](architecture/zod-302-roster-list-selection.md)
-  pins 73 functions across 26 files. Twelve independent composed tapes cover
-  entry order/coins, duplicate passes, eight-slot capacity/ties, partial-hit
-  lottery/fallback, post-ACT empty ranks, PA99 and restored multi-target state.
-  Prior entry/trajectory receipts and prepared SDK factor proof retain their
-  provenance, including the corrected ZOD-297 SDK filename-search mistake.
+- Latest source trace: [ZOD-304 execution prerequisites](architecture/zod-304-roster-ai-execution.md)
+  pins 79 functions across 26 files and reviews existing authoritative session/
+  proposal/continuation owners. Eight independent actual self vectors separate
+  PA/choice/CT/no-RNG settlement from AI score credits. Existing full-list,
+  entry/trajectory and prepared SDK factor evidence retains its provenance.
 - Organization: AI source/tests use Shared, Sword, ThrowStone, AttackThrowStone,
   Accumulate and BasicSkill folders with stable namespaces; [layout](development/ai-source-layout.md).
   Owner RNG migration is completed as `Zodiac.Framework.Random.RandomStateGenerator`
@@ -177,16 +177,17 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore, zero-warning/error Release build and **4,396 .NET
-  cases** (1,483 Framework, 1,168 AI), including four new AI cases, pass. All
-  **575 Python tests**, pinned source/prepared-data, algorithm-guide, local-link
+- Validation: locked restore, zero-warning/error Release build and **4,400 .NET
+  cases** (1,487 Framework, 1,168 AI), including four new Framework cases, pass. All
+  **578 Python tests**, pinned source/prepared-data, algorithm-guide, local-link
   and coverage checks pass. Seven full TRX reports/logs are under ignored
-  `scratch/roster-list-302-303/`.
+  `scratch/roster-execution-304-305/`.
   Python uses repository-pinned Pillow 12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow 13.0.0 triggers six existing version guards; WindowsApps Python
   is unavailable. All nine owner drafts remain unchanged, including AbilityToggles.
-  No Framework/Content/host/editor or project/lock/package/dependency changes.
+  Framework adds only the roster session self wrapper; no Content/host/editor
+  or project/lock/package/dependency changes.
   Nine historical checkpoint audits last passed at ZOD-158; unchanged snapshots
   were not rerun. No original/C execution, host/editor activation or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/

@@ -1,0 +1,152 @@
+{
+  "ticket": "ZOD-304",
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "vectors": [
+    {
+      "id": "pa-1-move-False-ct-15",
+      "input": {
+        "pa": 1,
+        "moved": false,
+        "ct": 15
+      },
+      "expected": {
+        "pa": 2,
+        "actCt": 15,
+        "endCt": 35,
+        "pendingAfterAct": false,
+        "paChanged": true,
+        "actionTaken": true,
+        "draws": 0,
+        "peersChanged": false
+      }
+    },
+    {
+      "id": "pa-5-move-False-ct-15",
+      "input": {
+        "pa": 5,
+        "moved": false,
+        "ct": 15
+      },
+      "expected": {
+        "pa": 6,
+        "actCt": 15,
+        "endCt": 35,
+        "pendingAfterAct": false,
+        "paChanged": true,
+        "actionTaken": true,
+        "draws": 0,
+        "peersChanged": false
+      }
+    },
+    {
+      "id": "pa-98-move-False-ct-15",
+      "input": {
+        "pa": 98,
+        "moved": false,
+        "ct": 15
+      },
+      "expected": {
+        "pa": 99,
+        "actCt": 15,
+        "endCt": 35,
+        "pendingAfterAct": false,
+        "paChanged": true,
+        "actionTaken": true,
+        "draws": 0,
+        "peersChanged": false
+      }
+    },
+    {
+      "id": "pa-99-move-False-ct-15",
+      "input": {
+        "pa": 99,
+        "moved": false,
+        "ct": 15
+      },
+      "expected": {
+        "pa": 99,
+        "actCt": 15,
+        "endCt": 35,
+        "pendingAfterAct": false,
+        "paChanged": false,
+        "actionTaken": true,
+        "draws": 0,
+        "peersChanged": false
+      }
+    },
+    {
+      "id": "pa-5-move-True-ct-15",
+      "input": {
+        "pa": 5,
+        "moved": true,
+        "ct": 15
+      },
+      "expected": {
+        "pa": 6,
+        "actCt": 15,
+        "endCt": 15,
+        "pendingAfterAct": true,
+        "paChanged": true,
+        "actionTaken": true,
+        "draws": 0,
+        "peersChanged": false
+      }
+    },
+    {
+      "id": "pa-99-move-True-ct-15",
+      "input": {
+        "pa": 99,
+        "moved": true,
+        "ct": 15
+      },
+      "expected": {
+        "pa": 99,
+        "actCt": 15,
+        "endCt": 15,
+        "pendingAfterAct": true,
+        "paChanged": false,
+        "actionTaken": true,
+        "draws": 0,
+        "peersChanged": false
+      }
+    },
+    {
+      "id": "pa-5-move-True-ct-85",
+      "input": {
+        "pa": 5,
+        "moved": true,
+        "ct": 85
+      },
+      "expected": {
+        "pa": 6,
+        "actCt": 60,
+        "endCt": 60,
+        "pendingAfterAct": true,
+        "paChanged": true,
+        "actionTaken": true,
+        "draws": 0,
+        "peersChanged": false
+      }
+    },
+    {
+      "id": "pa-99-move-False-ct-85",
+      "input": {
+        "pa": 99,
+        "moved": false,
+        "ct": 85
+      },
+      "expected": {
+        "pa": 99,
+        "actCt": 85,
+        "endCt": 60,
+        "pendingAfterAct": false,
+        "paChanged": false,
+        "actionTaken": true,
+        "draws": 0,
+        "peersChanged": false
+      }
+    }
+  ]
+}

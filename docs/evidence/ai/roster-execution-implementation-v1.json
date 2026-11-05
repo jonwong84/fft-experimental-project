@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-304",
+    "ZOD-305"
+  ],
+  "date": "2026-11-05",
+  "kind": "actual-roster-self-session-wrapper-and-execution-prerequisites",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "ad34551",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/roster-execution-source-v1.json",
+  "design": "docs/architecture/zod-304-roster-ai-execution.md",
+  "behavior": "docs/behavior/roster-immediate-ability-session.md",
+  "sourceFixture": "docs/fixtures/behavior/roster-execution-contract-v1.json",
+  "implementationPaths": [
+    "src/Zodiac.Framework/RosterFacingTurnBattle.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Tests/RosterImmediateAbilityTests.cs"
+  ],
+  "invariants": [
+    "existing actual complete-roster self kernel reused through existing opaque session Apply/Publish/receipt owner; no effect or pair admission broadened",
+    "real grant and complete zero-bonus bindings, PA1..99 cap, no RNG, all peers retained, actual Move/ACT/refund ordering",
+    "revision/pending/grant/setup failures leave current session unchanged; earlier accepted Move retained; foreign receipt cannot settle",
+    "pure AI plans still grant no execution/RNG authority; actual Stone interception and verified roster decision/continuation/turn boundaries remain separate"
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4400,
+    "frameworkPassed": 1487,
+    "aiPassed": 1168,
+    "newFrameworkCases": 4,
+    "pythonPassed": 578,
+    "newPythonCases": 3,
+    "trxReports": 7,
+    "sourceFiles": 26,
+    "sourceFunctions": 79,
+    "sourceDescriptions": 8,
+    "algorithmGuideAudit": true,
+    "localLinkAudit": true,
+    "coverageAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/roster-execution-304-305/"
+  },
+  "dependencyChanges": false,
+  "newProductionFriendAccess": false,
+  "originalExecuted": false,
+  "cExecuted": false
+}
