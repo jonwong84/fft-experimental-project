@@ -5,7 +5,8 @@
     "ZOD-349",
     "ZOD-350",
     "ZOD-351",
-    "ZOD-352"
+    "ZOD-352",
+    "ZOD-353"
   ],
   "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
   "referenceClean": true,
@@ -45,6 +46,12 @@
       "ticket": "ZOD-352",
       "managedBaseRevision": "a789f350a8ba1ee1ed9cc4ab863d457c45837e73",
       "validation": "Eight focused Python cases / 59 resource and charge descriptions; source12/10 clean",
+      "reports": "scratch/magic-inputs-348-357/"
+    },
+    {
+      "ticket": "ZOD-353",
+      "managedBaseRevision": "882a2eb5b8a536ece37305c199ea3159f7e674fb",
+      "validation": "Two focused Framework cases /32 literal MP checks, guards and immutable inputs; Release compilation passed",
       "reports": "scratch/magic-inputs-348-357/"
     }
   ]

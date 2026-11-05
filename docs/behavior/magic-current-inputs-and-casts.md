@@ -139,3 +139,15 @@ inactive/frozen/mounted/dead states and the original unreachable Sleep branch;
 the bounded helper takes the already-classified predicate and does not repair it.
 It will emit no event, advance no global clock, and perform no repeated Song/Dance
 or terminal/status work.
+
+## ZOD-353
+
+`MagicResources.EvaluateMp` now returns source block reason, recorded cost and
+candidate MP after certified action-state bookkeeping. It distinguishes accepted
+query context from a source-unusable action. Default/Monster/Charge/Other are
+explicit menu classifications, not inferred formula identities. The original
+signed ID0..367 branch is a compatibility rule rather than a managed catalog cap.
+`SubtractionPerformed` means the source store runs, including cost0; it does not
+mean MP changed. Two focused cases pass all32 literal MP descriptions, immutable
+input and argument/bookkeeping guards. No MP or status is published. Logs:
+`scratch/magic-inputs-348-357/focused-353.log`.

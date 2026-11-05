@@ -4,12 +4,12 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-353 (Evaluate source MP admission and candidate consumption).**
+**Next bounded work: ZOD-354 (Calculate ordinary spell charge setup).**
 [Current magic inputs and casts](behavior/magic-current-inputs-and-casts.md)
-records completed ZOD-348–352. Read current effective MA/current Faith;
+records completed ZOD-348–353. Read current effective MA/current Faith;
 preserve typed shared calculations, explicit context and candidate RNG/state.
 Scheduling, resource consumption and target calculations have separate owners.
-There are 38 open tickets below. The 319 completed tickets, prior checkpoints and
+There are 37 open tickets below. The 320 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -33,17 +33,9 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-353 — Evaluate source MP admission and candidate consumption
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-352
-
-Implement ordinary MP checks as a pure query, including restriction/Frog/Silence order, menu/Mime bypasses, Half MP floors, signed MP reads, recorded cost and preview versus AI/execute candidate subtraction. Do not perform action-state bookkeeping or publish state. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
-Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/
-deferred. See the [source and boundaries](behavior/magic-current-inputs-and-casts.md).
-
 ### ZOD-354 — Calculate ordinary spell charge setup
 
-**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-353
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-353
 
 Implement low-seven-bit CT, Short Charge ceiling, Non-Charge and Persevere bypass from explicit source facts. Scheduling result data only; no MP spend, status/turn publication or AI activation. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
 Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/
