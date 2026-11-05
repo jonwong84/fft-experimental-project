@@ -450,12 +450,14 @@ entries do not imply missing gameplay grants.
 eligibility, eligible-enemy nearest focus, active masks and imminent proximity.
 These read-only kernels consume resolved source facts and also serve admitted
 pair preparation/proximity without broader command admission. Other nearest
-modes and full-roster refresh/team/ability/effect traversal remain open.
+modes and full-roster ability/effect traversal remain open.
 [ZOD-277–282](../behavior/flat-roster-combat.md) add actual roster movement,
 selected sword resolution and explicit-facing sessions through shared Framework
-kernels. Existing AI drivers remain pair-bounded; ZOD-283 next traces ordinary
-roster refresh/team policy and hypothetical simulation. Full original search
-breadth remains separate.
+kernels. [ZOD-283–286](../behavior/roster-ai-preparation.md) add separate fresh
+ordinary-roster refresh, supported-list/team preparation and isolated movement
+scores through shared private clocks/projections/scoring. Existing AI command
+drivers remain pair-bounded; ZOD-287 next traces roster general-search admission,
+focus and movement scenarios. Full original search breadth remains separate.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use
 the supported domain and a real consumer, rather than exposing the entire

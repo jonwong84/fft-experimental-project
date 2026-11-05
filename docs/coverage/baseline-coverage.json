@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-04",
   "edition": "SCUS-94221",
-  "managedCommit": "ac83f9a978e52fce124fcf68d29a96799f5634f2",
+  "managedCommit": "5b25945d09af258d002e8af6c7d665f8fef64397",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 4325,
-    "source": "docs/behavior/flat-roster-combat.md",
+    "passed": 4335,
+    "source": "docs/behavior/roster-ai-preparation.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -568,7 +568,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "Closed sword/pair and variable supported-action complete turns remain supported, with priority knowledge and Content-backed lists. Shared read-only roster facts now separate live/cached eligibility, eligible-enemy nearest focus, active masks and imminent proximity across explicit resolved units. Existing pair preparation/proximity consume these owners without changing admission or streams. General roster refresh/team/ability/scoring/target traversal, other actual multi-unit effects, other policies/maps, terminal routing, original evidence and host activation remain open. ZOD-277–282 now supply source-bounded actual roster movement/sword/explicit-facing prerequisites; existing AI drivers remain pair-bounded.",
+      "currentScope": "Existing pair/variable-list AI turns retain their guards, priority knowledge, Content-backed lists and actual command/recovery streams. Shared roster targeting and actual movement/sword/facing prerequisites exist. Separate roster queries now own fresh whole-roster refresh, supported-list summaries/team flags on restored state and an isolated legal move score through shared private clock/projection/scoring kernels. General policy/focus/scenarios, action/effect/target search, corpse lifecycle, other maps/statuses, terminal routing, original evidence and host activation remain open.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -671,7 +671,12 @@
         "docs/behavior/flat-roster-combat.md",
         "docs/evidence/combat/roster-combat-source-v1.json",
         "docs/evidence/combat/roster-combat-implementation-v1.json",
-        "docs/fixtures/behavior/roster-combat-contract-v1.json"
+        "docs/fixtures/behavior/roster-combat-contract-v1.json",
+        "docs/architecture/zod-283-roster-preparation.md",
+        "docs/behavior/roster-ai-preparation.md",
+        "docs/evidence/ai/roster-preparation-source-v1.json",
+        "docs/fixtures/behavior/roster-preparation-contract-v1.json",
+        "docs/evidence/ai/roster-preparation-implementation-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -733,7 +738,12 @@
         "src/Zodiac.Framework/FlatSwordBattleProfile.cs",
         "src/Zodiac.Framework/AttackBattleSimulator.cs",
         "src/Zodiac.Framework/FacingTurnPathMovement.cs",
-        "src/Zodiac.Framework/FacingTurnBattle.cs"
+        "src/Zodiac.Framework/FacingTurnBattle.cs",
+        "src/Zodiac.Framework.Ai/Shared/RosterAiRefresh.cs",
+        "src/Zodiac.Framework.Ai/Shared/RosterAiPreparation.cs",
+        "src/Zodiac.Framework.Ai/Shared/RosterAiMovementBaseline.cs",
+        "src/Zodiac.Framework.Ai/Shared/AiMovementSimulation.cs",
+        "src/Zodiac.Framework.Ai/Shared/AiCandidateScoring.cs"
       ],
       "automatedChecks": [
         {
@@ -971,6 +981,18 @@
         {
           "path": "tools/verification/test_roster_combat_contract.py",
           "scope": "Eleven isolated source-only movement/sword descriptions, input preservation, original-domain and tampered-claim checks; no original/C/managed execution."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/Shared/RosterAiPreparationTests.cs",
+          "scope": "Thirteen literal source descriptions plus roster refresh/preparation/move-score parity, source ordering/team signs, retained flags, counts/reach, context/extent/budget boundaries, restored targets and immutable replay."
+        },
+        {
+          "path": "tools/verification/test_roster_preparation_contract.py",
+          "scope": "Independent source-only living-roster clock/team/score descriptions, input preservation and malformed/tampered claims; no original/C/managed execution."
+        },
+        {
+          "path": "tools/verification/verify_roster_preparation_contract.py",
+          "scope": "Pinned read-only source fingerprints and thirteen isolated descriptions; not full original AI or frame RNG equivalence."
         }
       ],
       "manualCheckpoint": {
@@ -978,14 +1000,14 @@
         "procedure": "Observe selected mandatory AI turns and distinguish legal choices from exact policy matching."
       },
       "openQuestions": [
-        "Shared targeting queries and actual roster movement/sword/facing prerequisites exist, but full roster refresh/team/ability/scoring/target enumeration and automatic facing remain unported.",
+        "Pure living-roster refresh, supported-list/team preparation and isolated movement scoring now exist; general focus/policy/scenarios and full action/effect/target traversal still need bounded owners.",
         "Knowledge starts unknown, records only owned writes and must forget after unmodeled workspace use; numerical startup/event/loader history and frame-interleaved RNG remain unresolved.",
         "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
         "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Trace ZOD-283 fresh ordinary-roster AI preparation, cached actor delay, hypothetical clocks/restoration, per-unit scoring, team support and usable-list summaries; select an incremental child without weakening pair guards.",
+      "nextAction": "Trace ZOD-287 roster general-search policy admission, focus and movement scenarios, respecting support/Critical/MostlySupport/Blue/special branches, priority provenance and shared fresh prefix ordering.",
       "followUpTickets": [
-        "ZOD-283"
+        "ZOD-287"
       ]
     },
     {

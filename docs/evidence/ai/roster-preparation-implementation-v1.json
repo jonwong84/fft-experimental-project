@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-284",
+    "ZOD-285",
+    "ZOD-286"
+  ],
+  "date": "2026-11-04",
+  "kind": "managed-ordinary-roster-preparation-and-movement-scoring",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "5b25945d09af258d002e8af6c7d665f8fef64397",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/roster-preparation-source-v1.json",
+  "design": "docs/architecture/zod-283-roster-preparation.md",
+  "behavior": "docs/behavior/roster-ai-preparation.md",
+  "sourceFixture": "docs/fixtures/behavior/roster-preparation-contract-v1.json",
+  "implementationPaths": [
+    "src/Zodiac.Framework.Ai/Shared/RosterAiRefresh.cs",
+    "src/Zodiac.Framework.Ai/Shared/RosterAiPreparation.cs",
+    "src/Zodiac.Framework.Ai/Shared/RosterAiMovementBaseline.cs",
+    "src/Zodiac.Framework.Ai/Shared/AiMovementSimulation.cs",
+    "src/Zodiac.Framework.Ai/Shared/AiCandidateScoring.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Ai.Tests/Shared/RosterAiPreparationTests.cs",
+    "tests/Zodiac.Framework.Ai.Tests/Shared/RosterAiTestData.cs"
+  ],
+  "invariants": [
+    "owned complete roster/source-order baselines; effect-free living positive-Speed/MP0 simulation; runtime AI compact extent16 without catalog capacity",
+    "fresh refresh owns one whole-roster clock, pre-refresh actor byte, exact retained policy rows and known target/cache/MP facts",
+    "source ready-before-add, highest CT/first-slot tie, modulo/upkeep/choice resets; incoming live state is restored and never published as hypothetical state",
+    "all-enemy occurrence threats, helpful share128/threshold77, first minimum ally clearing and unknown retained enemy support flag",
+    "actor policy/reach before post-ACT usability clear; preparation actor raw Move<=124; no gameplay grant inference or self coin",
+    "support early-exit counts remain null; non-Blue propagation differs from Blue; single-enemy hint only on support success",
+    "target roster derives restored live state, not diagnostic simulated CT",
+    "one isolated legal move baseline through shared private projection/clock/scoring; all unit terms/signs in source order; no hypothetical facing rotation",
+    "no cached public simulation/plan input, false pair certificate, command authority or change to old pair API/guards/streams"
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4335,
+    "frameworkPassed": 1483,
+    "aiPassed": 1107,
+    "newAiCases": 10,
+    "pythonPassed": 551,
+    "newPythonCases": 3,
+    "trxReports": 7,
+    "sourceFiles": 7,
+    "sourceFunctions": 17,
+    "sourceDescriptions": 13,
+    "sourcePreparedAudit": true,
+    "algorithmGuideAudit": true,
+    "localLinkAudit": true,
+    "coverageAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/roster-preparation-283-286/"
+  },
+  "boundaries": [
+    "living None/Critical ordinary stable teams on strict flat ground; no charges/upkeep/script/terrain/mime effects",
+    "summary-only lists do not validate executable grants/effect bindings; no source focus/policy/scenario selection or action search",
+    "ZOD-287 next traces roster general-search admission, focus and movement scenarios",
+    "existing command drivers stay pair-bounded; corpse lifecycle, other statuses/maps/policies, automatic facing, terminal routing and original frame RNG remain open",
+    "owner drafts/editor, host activation, broad replacement interfaces and ZOD-106 deferred"
+  ],
+  "dependencyChanges": false,
+  "newProductionFriendAccess": false,
+  "originalExecuted": false,
+  "cExecuted": false
+}

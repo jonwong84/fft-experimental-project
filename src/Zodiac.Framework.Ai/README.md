@@ -10,6 +10,12 @@ family. Source and test projects use matching folders:
   imminent-enemy proximity writes. Existing admitted pair preparation/proximity
   consumes these shared queries; wider read-only inputs grant no command authority.
   See [roster targeting](../../docs/behavior/ai-roster-targeting.md).
+  `RosterAiRefresh`/`Preparation` own fresh whole-roster clocks, supported-list
+  summaries, retained team policy and restored target facts. The isolated
+  `RosterAiMovementBaseline` uses shared private projection/clock/absolute score
+  kernels without inventing a pair target or accepting cached simulations.
+  [Boundaries](../../docs/behavior/roster-ai-preparation.md) remain explicit;
+  general focus/scenarios/action search and live roster AI commands are future work.
   These serve more than one family.
 - `Sword/`: the original ordinary-sword pilot, its preparation, scenarios,
   scans, selection and execution adapters.

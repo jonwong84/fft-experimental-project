@@ -79,7 +79,10 @@ validation remain open. [Actual roster commands](../behavior/flat-roster-combat.
 now support ordinary living-roster ally transit/empty endpoints, selected sword
 resolution and explicit-facing settlement through shared kernels. Existing AI
 profiles/drivers still require two opponents; corpse movement/death scheduling
-and general roster AI preparation/scoring remain unimplemented.
+remain unimplemented. [Pure roster preparation](../behavior/roster-ai-preparation.md)
+now owns one fresh whole-roster refresh, supported-list/team flags and an isolated
+legal move score through shared clock/projection/scoring owners. General policy,
+focus/scenario and action/target search still require separate work.
 
 The [ZOD-210 cleanup](ai-pair-selection-refactor.md) shares pair admission and
 composition/lottery handling while retaining separate scenario/provenance rules.
@@ -172,9 +175,10 @@ priority knowledge and content-backed lists. ZOD-265–270 now carry variable
 supported-action occurrences through shared search, actual commands and complete
 turn recovery, retaining canonical guards. ZOD-271–276 now provide shared roster
 targeting queries. ZOD-277–282 add source-bounded actual roster movement/sword/
-explicit-facing commands without weakening old pair admission. ZOD-283 next
-traces ordinary-roster AI preparation and hypothetical simulation. Broader
-control/low-HP/terminal policies remain separate.
+explicit-facing commands without weakening old pair admission. ZOD-283–286
+add pure roster refresh, summaries/team flags and isolated movement scoring.
+ZOD-287 next traces general-search policy admission, focus and movement scenarios.
+Broader control/low-HP/terminal policies remain separate.
 A certificate for one closed ability list cannot stand in for another list.
 
 Original-AI completion means it can control applicable original encounters and

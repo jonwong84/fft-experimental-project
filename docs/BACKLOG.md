@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-283 (trace ordinary-roster AI preparation and hypothetical simulation).** ZOD-277–282 add source-bounded actual roster movement, sword resolution and explicit facing/receipt settlement through shared kernels. Existing AI drivers retain their two-opponent guards; broader AI preparation/search needs a pinned source study.
-There are 34 open tickets below. The 249 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-287 (trace roster general-search admission, focus and movement scenarios).** ZOD-283–286 add fresh whole-roster refresh, supported-list/team preparation and isolated movement scoring through shared kernels. Existing AI command drivers retain their two-unit guards; roster policy/scenario/action search remains separate.
+There are 34 open tickets below. The 253 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,24 +29,24 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-283 — Trace ordinary-roster AI preparation and hypothetical simulation
+### ZOD-287 — Trace roster general-search admission, focus and movement scenarios
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-276, ZOD-282
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-284, ZOD-285, ZOD-286
 
-Pin the read-only reference and trace fresh ordinary living-roster refresh,
-pre-refresh actor cache, hypothetical clocks/restoration, per-unit scoring,
-team-support/lowest-ally policy and usable-list threat/reach summaries. Map
-the existing shared targeting queries and new authoritative roster profile
-against AI's two-unit preparation/simulation/scoring assumptions. Record source
-slot/compact/movement extents separately and select one incremental managed
-child with literal multi-unit clock/RNG/support vectors. Reuse existing owners;
-do not simulate a roster with repeated pair snapshots or admit unrepresented
-effects by weakening old guards. Full ability/target traversal, corpse movement/
-death scheduling, other statuses/maps/policies, automatic facing, terminal
-routing, frame RNG, host/editor, owner drafts, broad replacement interfaces
-and ZOD-106 remain separate/deferred. See the
-[actual roster boundary](behavior/flat-roster-combat.md) and
-[targeting foundation](behavior/ai-roster-targeting.md).
+Pin the read-only reference and trace policy precedence from the new roster
+preparation facts into ordinary general search. Distinguish support-enabled
+Critical retreat, non-Blue MostlySupport/FadingLife, healthy AI Blue, direct
+control and special behavior; do not infer manual/general admission from team
+alone. Trace focus/active membership, reach and target distances, source movement
+scenario masks/destinations, cast-priority writes/unknowns and RNG ordering across
+multiple allies/enemies. Reuse the shared roster refresh/preparation/scoring and
+targeting owners. Produce independent vectors and select one bounded managed
+child without admitting arbitrary supplied cached results or weakening pair
+guards. Full action/effect/target traversal, corpse movement/death scheduling,
+other statuses/maps/policies, automatic facing, terminal routing, frame RNG,
+host/editor, owner drafts, replacement interfaces and ZOD-106 remain separate/
+deferred. See [roster preparation](behavior/roster-ai-preparation.md) and the
+[AI roadmap](development/ai-completion-roadmap.md).
 
 ## Existing validation gates
 

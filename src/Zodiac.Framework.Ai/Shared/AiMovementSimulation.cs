@@ -19,6 +19,25 @@ internal static class AiMovementSimulation
     internal static AiMovementSimulationResult Evaluate(AttackBattleSnapshot state, BattleUnitId actorId,
         BattleUnitId targetId, TilePosition destination, ImmutableArray<AiUnitBaseline> baselines, RandomState decisionRng)
     {
+        var projected = AiMoveOnlyProjection.Evaluate(state, actorId, destination, baselines, decisionRng);
+        if (projected.Rejection != AiSimulationClockRejection.None) return new(projected.Rejection, null, decisionRng);
+        var clock = projected.Clock!;
+        var score = AiCandidateScoring.ScoreFreshUnits(clock.Units, targetId, 100);
+        return new(AiSimulationClockRejection.None,
+            new(actorId, targetId, destination, projected.TurnEndCt, clock.Units, clock.MoveOpportunityUnitId,
+                clock.ElapsedTicks, clock.Ticks, clock.UpkeepPicks, score), clock.RngState);
+    }
+}
+
+internal sealed record AiMoveOnlyProjectionResult(AiSimulationClockRejection Rejection, int TurnEndCt,
+    AiClockOutcome? Clock, RandomState RngState);
+
+/// <summary>Shared fresh private move/skillset-zero projection; callers own admission, scoring and interpretation.</summary>
+internal static class AiMoveOnlyProjection
+{
+    internal static AiMoveOnlyProjectionResult Evaluate(AttackBattleSnapshot state, BattleUnitId actorId,
+        TilePosition destination, ImmutableArray<AiUnitBaseline> baselines, RandomState decisionRng)
+    {
         var turns = state.TurnBattle.Turns;
         var actorTurn = turns.Units.Single(u => u.Id == actorId);
         var battle = state.TurnBattle.Battle;
@@ -37,11 +56,7 @@ internal static class AiMovementSimulation
                 isActor ? moved : turn.MovementTaken, turn.ActionTaken);
         }).ToArray();
         var rejection = AiSimulationClock.Advance(units, turns.Ticks, decisionRng, out var clock);
-        if (rejection != AiSimulationClockRejection.None) return new(rejection, null, decisionRng);
-        var score = AiCandidateScoring.ScoreFreshUnits(clock!.Units, targetId, 100);
-        // Negating into the source u16 grid and back to s16 preserves this closed score.
-        return new(AiSimulationClockRejection.None,
-            new(actorId, targetId, destination, turnEndCt, clock.Units, clock.MoveOpportunityUnitId,
-                clock.ElapsedTicks, clock.Ticks, clock.UpkeepPicks, score), clock.RngState);
+        return rejection != AiSimulationClockRejection.None ? new(rejection, turnEndCt, null, decisionRng)
+            : new(rejection, turnEndCt, clock, clock!.RngState);
     }
 }

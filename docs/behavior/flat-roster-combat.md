@@ -125,8 +125,9 @@ including AbilityToggles, remain unchanged; no project/lock/package/dependency
 changes or host/editor activation.
 
 These actual-command prerequisites do not broaden the existing two-opponent AI
-queries/turn drivers. ZOD-283 next traces ordinary-roster AI refresh, team policy
-and hypothetical simulation before choosing a concrete managed child. Full AI
+queries/turn drivers. The [ZOD-283–286 follow-up](roster-ai-preparation.md) now
+adds separate pure roster refresh, list/team preparation and isolated movement
+scoring; policy/scenario/action search remains unimplemented. Full AI
 ability/target traversal/scoring, corpse movement/death scheduling, statuses/maps/
 other policies, automatic facing, terminal routing and frame RNG remain open.
 Owner drafts/editor work, broad replacement interfaces and ZOD-106 stay deferred.
