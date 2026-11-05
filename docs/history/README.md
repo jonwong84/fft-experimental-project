@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 322 entries index completed bounded work; they do not mean the full game is complete.
+These 323 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -366,3 +366,5 @@ These 322 entries index completed bounded work; they do not mean the full game i
 - [ZOD-354 — Calculate ordinary spell charge setup](../behavior/magic-current-inputs-and-casts.md#zod-354)
 
 - [ZOD-355 — Query one deterministic charge countdown step](../behavior/magic-current-inputs-and-casts.md#zod-355)
+
+- [ZOD-356 — Prepare a certified ready magic cast once](../behavior/magic-current-inputs-and-casts.md#zod-356)

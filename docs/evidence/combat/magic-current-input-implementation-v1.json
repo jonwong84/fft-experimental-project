@@ -8,7 +8,8 @@
     "ZOD-352",
     "ZOD-353",
     "ZOD-354",
-    "ZOD-355"
+    "ZOD-355",
+    "ZOD-356"
   ],
   "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
   "referenceClean": true,
@@ -66,6 +67,12 @@
       "ticket": "ZOD-355",
       "managedBaseRevision": "90445ad4cd7eff9bbb6e53f326a2061f3ac31cc3",
       "validation": "Five cumulative resource cases / all59 descriptions, one new countdown case; Release compilation passed",
+      "reports": "scratch/magic-inputs-348-357/"
+    },
+    {
+      "ticket": "ZOD-356",
+      "managedBaseRevision": "92a5f66f561b77022664ed9306d954ac53602108",
+      "validation": "Six focused ready-cast cases, one-time cost, modes, source blocks and readiness guards; Release compilation passed",
       "reports": "scratch/magic-inputs-348-357/"
     }
   ]

@@ -171,3 +171,25 @@ their bits. It does not select a ready unit, reset the counter after resolution,
 repeat performances, emit events or advance the global clock. Five cumulative
 resource cases pass all59 descriptions; one counter case is new. Logs:
 `scratch/magic-inputs-348-357/focused-355.log`.
+
+## ZOD-356
+
+`MagicCastQuery.PrepareReady` now creates opaque immutable `PreparedMagicCast`
+data only after positive resolution-readiness, completed action-state bookkeeping,
+no-Hamedo, fresh-result and one ordinary Default-menu strike certificates. This
+accepts a completed positive-CT spell; it does not confuse raw CT with remaining
+delay or spend MP while scheduling. Mime, Persevere, unsupported actor states,
+nonordinary IDs and uncertified result work are excluded. Existing represented
+Charging/Performing/Defending states must already be clear; unrepresented Jump
+and source bookkeeping fields must also be certified by the caller. No implicit
+KEEP_PERFORMING or unit mutation occurs here.
+
+The cast definition has a stable logical ID and explicit compatible formula/cost/
+charge parameters. It is query input, not a new runtime importer or a complete
+spell catalog. Source ID1..367 is an original compatibility branch only. A source
+MP block returns its recorded cost/candidate unchanged MP without a prepared cast;
+unsupported query context returns neither. An affordable action proposes MP once,
+including AI scratch subtraction and preview's unchanged MP. Six focused cases
+pass mode, readiness, block-detail and immutable-input/argument checks. Logs:
+`scratch/magic-inputs-348-357/focused-356.log`. A prepared proposal grants no live
+command authority and must not be adopted independently of later validation.

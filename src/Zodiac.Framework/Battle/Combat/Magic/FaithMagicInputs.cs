@@ -53,7 +53,7 @@ public static class FaithMagicInputs
     public static MagicInputProjectionResult Project(MagicCurrentUnit caster, MagicCurrentUnit target,
         FaithMagicSpell spell, MagicDamageWeather weather)
     {
-        Validate(caster); Validate(target); ArgumentNullException.ThrowIfNull(spell);
+        ValidateCurrentUnit(caster); ValidateCurrentUnit(target); ArgumentNullException.ThrowIfNull(spell);
         if (!Enum.IsDefined(spell.Kind)) throw new ArgumentOutOfRangeException(nameof(spell));
         if (spell.Kind == FaithMagicAmountKind.Damage && !Enum.IsDefined(weather)) throw new ArgumentOutOfRangeException(nameof(weather));
         if (Unsupported(caster.Statuses) || Unsupported(target.Statuses) ||
@@ -79,7 +79,7 @@ public static class FaithMagicInputs
     }
 
     private static bool Unsupported(MagicCurrentStatuses s) => s.Dead || s.Petrify || s.Wall;
-    private static void Validate(MagicCurrentUnit unit)
+    internal static void ValidateCurrentUnit(MagicCurrentUnit unit)
     {
         ArgumentNullException.ThrowIfNull(unit); ArgumentNullException.ThrowIfNull(unit.Statuses);
         ArgumentNullException.ThrowIfNull(unit.Supports);

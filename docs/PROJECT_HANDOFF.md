@@ -6,9 +6,9 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-356: Prepare a certified ready magic cast once.**
+**ZOD-357: Resolve ordered immediate cast targets with one MP charge.**
 [Current magic inputs and casts](behavior/magic-current-inputs-and-casts.md)
-records completed ZOD-348–355. Current effective MA and current Faith are
+records completed ZOD-348–356. Current effective MA and current Faith are
 distinct from base/equipment MA and original Faith. Keep snapshots immutable,
 source classification/rounding/order explicit, and all state/RNG adoption outside
 pure queries. Resource/charge children preserve scheduling versus MP spending.
