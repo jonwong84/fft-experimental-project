@@ -87,5 +87,6 @@ commands or activate magic AI. [ZOD-341](magic-result-finalization.md) now adds
 bounded living-target/empty-status result finalization, carrying special-effect/
 accuracy facts and source upper999 caps. Full corpse/Golem/status behavior remains
 outside that domain. [Magic evasion and fresh formula entry](magic-evasion.md) are now implemented;
-ZOD-348 next traces live MA/Faith inputs. Owner drafts, JobStats, host/editor, automatic facing,
+[Current-input and ready-cast queries](magic-current-inputs-and-casts.md) now
+compose these owners; ZOD-358 next traces original targeting geometry. Owner drafts, JobStats, host/editor, automatic facing,
 corpse/terminal/frame RNG, broad interfaces and ZOD-106 remain deferred.

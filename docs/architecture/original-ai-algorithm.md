@@ -530,6 +530,9 @@ conditional-proc decision/RNG step. These do not add spell commands or AI entrie
 empty-status/living-target result finalization with caps and retained effect types.
 [ZOD-342/344–347](../behavior/magic-evasion.md) now add bounded magic evasion and
 fresh formula entry, including real mode-specific draws and whole-query rollback.
-ZOD-348 next traces live MA/Faith inputs; resource/target/command and magic AI
-integration remain separate.
+[ZOD-348–357](../behavior/magic-current-inputs-and-casts.md) now project current
+MA/Faith and named facts, preserve distinct actual/AI timing, query MP and charge
+steps, and resolve supplied ready-cast targets with one cost and whole-query
+rollback. ZOD-358 next traces original targeting geometry; commands, state
+publication and magic AI activation remain separate.
 No automatic-facing/corpse/terminal/host gate is activated.

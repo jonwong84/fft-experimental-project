@@ -1,3 +1,5 @@
+using Zodiac.Framework.Random;
+
 namespace Zodiac.Framework;
 
 public enum MagicZodiacSign
@@ -39,7 +41,7 @@ public sealed record FaithMagicCurrentRequest(MagicCurrentUnit Caster, MagicCurr
 public static class FaithMagicInputs
 {
     /// <summary>Resolve a current immutable pair with the existing shared formula; no live state or RNG adoption.</summary>
-    public static FaithMagicResolutionResult Resolve(FaithMagicCurrentRequest request, Zodiac.Framework.Random.RandomState rng)
+    public static FaithMagicResolutionResult Resolve(FaithMagicCurrentRequest request, RandomState rng)
     {
         ArgumentNullException.ThrowIfNull(request);
         if (!Enum.IsDefined(request.Mode)) throw new ArgumentOutOfRangeException(nameof(request));

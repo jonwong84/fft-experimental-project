@@ -98,6 +98,6 @@ ignored logs: `scratch/magic-finalization-341/`.
 This completes bounded result data. MP/charge, live MA/Faith, full status/corpse/
 Golem/terminal behavior, targeting, spell commands and magic AI activation still
 need separate work. [Magic evasion and fresh formula entry](magic-evasion.md) now
-compose these existing rules under explicit admission. **Next ZOD-348:** trace
-live MA/Faith inputs before selecting a snapshot projection. Owner drafts, JobStats, host/editor, automatic facing,
+compose these existing rules under explicit admission. [Current-input and ready-cast queries](magic-current-inputs-and-casts.md) now reuse
+this owner. **Next ZOD-358:** trace original targeting geometry. Owner drafts, JobStats, host/editor, automatic facing,
 frame RNG, broad interfaces and ZOD-106 remain deferred.

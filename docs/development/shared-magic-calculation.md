@@ -76,7 +76,8 @@ ignored logs: `scratch/magic-consolidation-343/`.
 
 [ZOD-342/344–347](../behavior/magic-evasion.md) now add `FaithMagicFormula.Resolve`
 before evasion under fresh/nonzero/no-earlier-effects certificates, while retaining
-this already-hit entry unchanged. Target geometry remains independent. ZOD-348
-next traces live MA/Faith inputs before selecting a snapshot projection. Owner drafts, JobStats, host/editor,
+this already-hit entry unchanged. Target geometry remains independent. [ZOD-348–357](../behavior/magic-current-inputs-and-casts.md) now project current
+inputs and compose MP/timing/supplied-target cast queries. ZOD-358 next traces
+original targeting geometry. Owner drafts, JobStats, host/editor,
 automatic facing, full corpse/Golem/terminal/status/frame RNG, broad interfaces,
 resource/target/command integration and ZOD-106 remain separate/deferred.

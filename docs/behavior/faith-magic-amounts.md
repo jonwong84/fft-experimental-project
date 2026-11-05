@@ -72,4 +72,5 @@ No original/C execution, host/editor activation or manual UI checkpoint applies.
 path and raw routing. This original API and its strict neutral certificate remain
 unchanged. [ZOD-340](magic-conditional-proc.md) now handles bounded proc decisions;
 [ZOD-341](magic-result-finalization.md) now finalizes bounded result data; [Magic evasion and fresh formula entry](magic-evasion.md) are now implemented;
-ZOD-348 next traces live MA/Faith inputs. Other documented deferrals remain.
+[Current-input and ready-cast queries](magic-current-inputs-and-casts.md) now
+compose these owners; ZOD-358 next traces original targeting geometry. Other documented deferrals remain.

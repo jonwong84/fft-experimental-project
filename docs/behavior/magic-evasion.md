@@ -214,7 +214,7 @@ links and preservation audits pass. Seven TRX reports and logs are under ignored
 `scratch/magic-evasion-342-347/`.
 [Implementation receipt](../evidence/combat/magic-evasion-implementation-v1.json).
 
-**Next ZOD-348:** trace live MA/Faith and consumed status/support/modifier inputs,
-then select the smallest snapshot projection. The completed entry still accepts
-explicit resolved inputs and grants no command, HP/status mutation or live RNG
-authority. Cone geometry and the other documented deferrals remain separate.
+[ZOD-348–357](magic-current-inputs-and-casts.md) now project current inputs and
+compose MP/timing/supplied-target cast queries while preserving these APIs.
+**Next ZOD-358:** trace original targeting geometry. These remain pure results
+without command, HP/status mutation or live RNG authority. Cone geometry and the other documented deferrals remain separate.

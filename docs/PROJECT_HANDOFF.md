@@ -6,13 +6,20 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-357: Resolve ordered immediate cast targets with one MP charge.**
+**ZOD-358: Trace shared ordinary spell targeting geometry.**
 [Current magic inputs and casts](behavior/magic-current-inputs-and-casts.md)
-records completed ZOD-348–356. Current effective MA and current Faith are
-distinct from base/equipment MA and original Faith. Keep snapshots immutable,
-source classification/rounding/order explicit, and all state/RNG adoption outside
-pure queries. Resource/charge children preserve scheduling versus MP spending.
-No original target geometry, spell commands, live state or magic AI activation.
+records completed ZOD-348–357. `FaithMagicInputs` now projects current effective MA/current Faith and named
+status/support/identity/element facts without widening the sword state. Exact
+zodiac sex-bit/monster/Serpentarius behavior and existing arithmetic are preserved.
+`MagicResources` proposes source MP admission/recorded cost; `MagicCharge` keeps
+actual setup distinct from the original AI wrong-support-bit/floor/raw-byte
+quirk and queries one blocked/allowed counter step. `MagicCastQuery` prepares one
+ready Default-menu non-Mime strike and resolves a supplied certified target order.
+MP is proposed once per cast, at resolution readiness, with full private target/
+RNG rollback on failure and self-target post-cost normalization. Input MP is
+pre-spend; preparation performs no source action-state bookkeeping or live store.
+Geometry, complete scheduling, HP/MP/status publication, commands, grants/import
+and magic AI activation remain separate. The future1/3/5 cone is still unimplemented.
 
 [Magic evasion](behavior/magic-evasion.md) records completed ZOD-342, ZOD-344, ZOD-345, ZOD-346, ZOD-347
 from clean source `11464943bbdbd2a0af022d90cb7f10455cf911df` (13 files/21 functions).
@@ -249,22 +256,21 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore, zero-warning/error Release build and **4,630 .NET
-  cases** (1,589 Framework, 1,217 AI, 838 Content, 328 CLI) pass. Twelve new managed
-  cases exercise47 equipment/preparation/roll and24 composed entry descriptions,
-  scope/argument guards, exact private RNG rollback and immutable query replay.
-  All **649 Python tests** pass, including14 new independent description/order/
-  boundary/tamper cases. Pinned13-file/21-function evasion/entry, prior Faith/
-  element/proc/finalization, prepared empty-status/four-Fire-tier, guide, coverage
-  and local-link checks pass. Seven TRX reports/logs are under ignored
-  `scratch/magic-evasion-342-347/`.
+- Validation: locked restore, zero-warning/error Release build and **4,652 .NET
+  cases** (1,611 Framework, 1,217 AI, 838 Content, 328 CLI) pass. Twenty-two new
+  managed cases exercise128 new compatibility/current-input/MP/charge/cast
+  descriptions, scope/argument guards and pure replay. All **673 Python tests**
+  pass, including24 new independent source-description cases. Current-input
+  source12/16 and resource source12/10, prior magic/prepared-data, guide, coverage,
+  local-link and preservation checks pass. Seven TRX reports/logs are under
+  ignored `scratch/magic-inputs-348-357/`.
   Prepared Dash/Stone import checks remain at ZOD-329; their code/input is unchanged.
   Python uses repository-pinned Pillow12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow13.0.0 triggers six existing version guards; WindowsApps Python
   is unavailable. All nine owner drafts remain unchanged, including AbilityToggles.
-  No existing rules/state/content/AI/fixture expectations, project/lock/dependency
-  changes or host/editor activation. The pure magic helpers use the existing verified
+  All pre-batch C# code/tests/fixtures and content/AI/host remain unchanged,
+  with no project/lock/dependency changes or host/editor activation. The pure magic helpers use the existing verified
   generator; it does not broaden actual combat/turn/command behavior.
   Nine historical checkpoint audits last passed at ZOD-158; unchanged snapshots
   were not rerun. No original/C execution or UI review.

@@ -36,7 +36,7 @@ public static class MagicResources
             return Result(MagicMpBlock.Frog);
         if (s.OriginalAbilityId is >= 0 and < 368)
         {
-            if (s.Menu is MagicResourceMenu.Default or MagicResourceMenu.Monster && s.AffectedBySilence && a.Silence)
+            if ((s.Menu is MagicResourceMenu.Default or MagicResourceMenu.Monster) && s.AffectedBySilence && a.Silence)
                 return Result(MagicMpBlock.Silenced);
             if (s.Menu == MagicResourceMenu.Default && !a.IsMime)
             {

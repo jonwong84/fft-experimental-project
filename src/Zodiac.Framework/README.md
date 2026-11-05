@@ -18,6 +18,10 @@ Content supplies immutable definitions and prepared data through outer adapters.
   [FaithMagicFormula.Resolve and MagicEvasion](../../docs/behavior/magic-evasion.md)
   add certified nonzero-ability entry with ordered magic evade work. Both return
   pure result data without spell commands or live publication; targeting remains separate.
+  [FaithMagicInputs, MagicResources, MagicCharge and MagicCastQuery](../../docs/behavior/magic-current-inputs-and-casts.md)
+  add current immutable stat projection, source resource/timing queries and one-cost
+  supplied-order ready-cast results. They do not broaden sword state, discover
+  targets, advance the clock or publish battle state.
 - `Battle/Turns/`: CT, turn progression, facing, completion receipts and settlement.
 - `Battle/Commands/`: invocation-bound decision transactions, frozen follow-ups
   and retained Move continuations.

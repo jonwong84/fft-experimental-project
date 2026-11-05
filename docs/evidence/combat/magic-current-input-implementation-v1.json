@@ -9,7 +9,8 @@
     "ZOD-353",
     "ZOD-354",
     "ZOD-355",
-    "ZOD-356"
+    "ZOD-356",
+    "ZOD-357"
   ],
   "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
   "referenceClean": true,
@@ -74,6 +75,54 @@
       "managedBaseRevision": "92a5f66f561b77022664ed9306d954ac53602108",
       "validation": "Six focused ready-cast cases, one-time cost, modes, source blocks and readiness guards; Release compilation passed",
       "reports": "scratch/magic-inputs-348-357/"
+    },
+    {
+      "ticket": "ZOD-357",
+      "managedBaseRevision": "808078c249df0b6851b5fc1802f50717038af3d1",
+      "validation": "90 focused magic cases; three new cast cases /13 literal casts; full .NET4652 and Python673, zero-warning Release",
+      "reports": "scratch/magic-inputs-348-357/"
     }
+  ],
+  "validation": {
+    "dotnetPassed": 4652,
+    "frameworkPassed": 1611,
+    "aiPassed": 1217,
+    "contentPassed": 838,
+    "cliPassed": 328,
+    "pythonPassed": 673,
+    "newFrameworkCases": 22,
+    "newPythonCases": 24,
+    "compatibilityDescriptions": 33,
+    "projectionDescriptions": 12,
+    "currentQueryDescriptions": 11,
+    "mpDescriptions": 32,
+    "setupDescriptions": 10,
+    "aiDelayDescriptions": 7,
+    "tickDescriptions": 10,
+    "castDescriptions": 13,
+    "currentSourceFiles": 12,
+    "currentSourceFunctions": 16,
+    "resourceSourceFiles": 12,
+    "resourceSourceFunctions": 10,
+    "lockedRestore": true,
+    "releaseWarnings": 0,
+    "releaseErrors": 0,
+    "trxReports": 7,
+    "sourcePreparedAudits": true,
+    "algorithmGuideAudit": true,
+    "coverageAudit": true,
+    "localLinkAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/magic-inputs-348-357/"
+  },
+  "invariants": [
+    "current effective MA/current Faith copied without recomputing base/equipment or original Faith",
+    "source zodiac table and independent identity bits, strengthening intersection and named current facts preserved",
+    "MP is proposed once at ready resolution, never by charge scheduling or per-target calculation",
+    "restriction/Frog/Silence order, cost-before-budget failure, signed16 MP read and preview/AI store semantics retained",
+    "execution and original AI candidate charge quirks remain distinct; no global clock/event or frame RNG activation",
+    "source-valid pure results and candidate state/RNG only; unsupported context/counter failure returns no aggregate proposal",
+    "all pre-batch C# code/tests/fixtures, owner drafts, JobStats, content/AI/host/project/dependency code unchanged",
+    "no geometry, live publication, command/AI activation, full status/corpse/scheduler/terminal work or universal interfaces"
   ]
 }

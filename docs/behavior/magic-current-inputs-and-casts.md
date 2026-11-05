@@ -193,3 +193,55 @@ including AI scratch subtraction and preview's unchanged MP. Six focused cases
 pass mode, readiness, block-detail and immutable-input/argument checks. Logs:
 `scratch/magic-inputs-348-357/focused-356.log`. A prepared proposal grants no live
 command authority and must not be adopted independently of later validation.
+Input MP is the pre-spend snapshot for this action; resolution readiness does not
+mean the source MP subtraction has already run.
+
+## ZOD-357
+
+`MagicCastQuery.ResolveTargets` now evaluates an immutable, explicitly supplied
+nonempty target order using one prepared ready-cast cost. Eligibility/order and
+no-earlier-target-effects certificates are mandatory; discovery, original panel
+ordering and geometry are still external. Unique stable unit IDs are checked,
+without sorting, silently deduplicating or imposing the original fixed roster
+capacity. Duplicate and empty lists remain outside this query's selected domain;
+this does not claim original zero-target MP behavior.
+
+All per-target calculations use the shared current-input/formula owner, with
+the original mode-specific RNG stream continued in caller order. A consistent
+self-target snapshot is privately normalized to the post-cost MP proposal;
+conflicting self data rejects. Preview proposes unchanged MP while retaining
+evade draws; AI proposes one scratch MP subtraction. An actual evade miss does
+not refund cost. This is one certified ordinary Default-menu strike, not a
+multi-strike, reflection, reaction or target-selection implementation.
+
+Accepted output contains immutable target frames/diagnostics, one candidate MP/
+recorded cost and the final candidate RNG. Unsupported later target context or
+counter exhaustion discards **all** private target results and exposes neither
+an MP proposal nor an intermediate stream. That is managed query atomicity, not
+an instruction to refund already-published retail MP. No state is published by
+preparation or resolution. The resulting data is not a trusted command receipt.
+
+[13 further literal cast descriptions](../fixtures/behavior/magic-cast-contract-v1.json)
+cover one-cost multi-target behavior, reversed supplied order, all three modes,
+early miss, late context/counter failure, duplicate/empty/uncertified lists,
+self-healing at counter exhaustion, and Half MP once. Three new managed cases
+also check replay/input isolation and conflicting self data; all90 focused magic
+cases pass. Eight new Python cases independently check the composed descriptions.
+
+Full ten-ticket validation: locked restore, zero-warning/error Release build,
+**4,652 .NET tests** (1,611 Framework, 1,217 AI, 838 Content, 328 CLI) and **673
+Python tests**. There are22 new managed cases and24 new Python cases, with128
+new source descriptions. Current-input source12/16 and resource source12/10,
+prepared empty-status/four-Fire-tier, prior Faith/element/proc/finalizer, algorithm
+guide, coverage, local links and preservation checks pass. All pre-batch C# code,
+tests/fixtures, owner drafts, JobStats, content/AI/host/project/dependency code
+remain unchanged. Source receipts preserve their original pins and provenance.
+Seven TRX reports and logs: `scratch/magic-inputs-348-357/`.
+[Implementation receipt](../evidence/combat/magic-current-input-implementation-v1.json).
+
+**Next ZOD-358:** trace original range/area/vertical targeting and target iteration
+before selecting a geometry child. The agreed future nine-tile1/3/5 cone remains
+a separate owner requirement. Actual state publication, commands, spell grants/
+import, full scheduler/status/corpse/terminal/frame RNG, AI activation, host/editor,
+automatic facing, broad interfaces, owner drafts, JobStats and ZOD-106 remain
+separate/deferred.
