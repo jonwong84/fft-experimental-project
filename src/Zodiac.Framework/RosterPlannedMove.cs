@@ -65,6 +65,16 @@ public sealed partial class RosterDecisionContext
         PlannedMove(move, ActorId, _ => facing is { } f && !Enum.IsDefined(f) ? AttackCommandRejection.UnsupportedSetup : AttackCommandRejection.None,
             state => RosterFacingTurnBattle.WaitWithFacing(state, ActorId, facing), rng, diagnostic);
 
+    public RosterDecision<T> PrepareMoveThenDashAbility<T>(MoveUnitCommand move, UseTargetedAbilityCommand command,
+        DashAbilityBattleProfile profile, RandomState rng, T diagnostic)
+    {
+        CheckOpen(); ArgumentNullException.ThrowIfNull(command); ArgumentNullException.ThrowIfNull(profile);
+        return PlannedMove(move, command.ActorId, state => {
+            var target = KnownLivingTarget(state, command.TargetId);
+            return target != AttackCommandRejection.None ? target : DashAbilityBattleSimulator.ValidateAbilitySetup(state, command.ActorId, command.AbilityId, profile, Profile);
+        }, state => RosterFacingTurnBattle.UseDashAbility(state, command, profile), rng, diagnostic);
+    }
+
     private AttackCommandRejection KnownLivingTarget(AttackBattleSnapshot state, BattleUnitId target)
     {
         if (target == ActorId) return AttackCommandRejection.SelfTarget;

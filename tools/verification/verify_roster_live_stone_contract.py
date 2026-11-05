@@ -11,7 +11,7 @@ EVIDENCE=ROOT/'docs/evidence/ai/roster-live-stone-source-v1.json'
 
 def describe(data):
     d=copy.deepcopy(data);units=d['units'];actor=next(u for u in units if u['id']==d['actor']);intended=next(u for u in units if u['id']==d['target'])
-    require(all(1<=u['pa']<=99 and 10<=u['brave']<=100 and 1<=u['hp']<=50 and 0<=u['evade']<=100 and 0<=u['ko']<=255 for u in units),'Bound live facts')
+    require(all(1<=u['pa']<=99 and 10<=u['brave']<=100 and 1<=u['hp']<=65535 and 0<=u['evade']<=100 and 0<=u['ko']<=255 for u in units),'Bound live facts')
     path=trajectory(dict(d,origin=actor['tile']),include_target=True,max_units=21)
     require(path['clear'] or path['blocker'] is not None,'Flat occupied target resolution')
     target=next(u for u in units if u['id']==(intended['id'] if path['clear'] else path['blocker']))

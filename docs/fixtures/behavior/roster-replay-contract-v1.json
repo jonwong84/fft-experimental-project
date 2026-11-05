@@ -1,0 +1,2640 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-316",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "notes": [
+    "Independent source compositions with explicit real PICK_UNIT/CT/upkeep boundaries; no encounter terminal policy."
+  ],
+  "vectors": [
+    {
+      "id": "three-actors-mixed-supported-lists",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 500,
+            "maxHp": 500,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 100,
+            "hp": 500,
+            "maxHp": 500,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 100,
+            "hp": 500,
+            "maxHp": 500,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "turns": 6,
+      "expected": [
+        {
+          "actor": "a",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "Attack",
+                "occurrence": 0,
+                "entryWord": 1,
+                "entryCount": 7,
+                "word": 267834847,
+                "count": 17
+              },
+              {
+                "afterAct": true,
+                "kind": "Move",
+                "occurrence": null,
+                "entryWord": 3297241969,
+                "entryCount": 23,
+                "word": 3008955749,
+                "count": 35
+              }
+            ],
+            "commands": [
+              "Attack",
+              "Move"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  0,
+                  1
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 15,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  2,
+                  1
+                ],
+                "hp": 490,
+                "pa": 5,
+                "ct": 100,
+                "moved": false,
+                "acted": false,
+                "face": "West",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  1,
+                  2
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 100,
+                "moved": false,
+                "acted": false,
+                "face": "South",
+                "ko": 0
+              }
+            ],
+            "word": 3008955749,
+            "count": 35,
+            "ticks": 1,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  0
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  0,
+                  1
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -488
+              }
+            ]
+          },
+          "clock": {
+            "ticks": 0,
+            "atTick": 1,
+            "actor": "b",
+            "before": 100,
+            "ct": 0,
+            "raw": 19882,
+            "word": 1303003706,
+            "count": 36
+          }
+        },
+        {
+          "actor": "b",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "Move",
+                "occurrence": 0,
+                "entryWord": 1303003706,
+                "entryCount": 36,
+                "word": 2054802212,
+                "count": 58
+              }
+            ],
+            "commands": [
+              "Move",
+              "RetainedAttack",
+              "FinishFacing"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  0,
+                  1
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 15,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  2,
+                  2
+                ],
+                "hp": 490,
+                "pa": 5,
+                "ct": 0,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  1,
+                  2
+                ],
+                "hp": 490,
+                "pa": 5,
+                "ct": 100,
+                "moved": false,
+                "acted": false,
+                "face": "South",
+                "ko": 0
+              }
+            ],
+            "word": 2240736910,
+            "count": 64,
+            "ticks": 1,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  0
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  2,
+                  0
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  0,
+                  1
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  2,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  3,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  2,
+                  2
+                ],
+                "priority": 488
+              }
+            ]
+          },
+          "clock": {
+            "ticks": 0,
+            "atTick": 1,
+            "actor": "c",
+            "before": 100,
+            "ct": 0,
+            "raw": 31327,
+            "word": 4200531631,
+            "count": 65
+          }
+        },
+        {
+          "actor": "c",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "Attack",
+                "occurrence": 0,
+                "entryWord": 4200531631,
+                "entryCount": 65,
+                "word": 1495896251,
+                "count": 85
+              },
+              {
+                "afterAct": true,
+                "kind": "Move",
+                "occurrence": null,
+                "entryWord": 493907821,
+                "entryCount": 91,
+                "word": 3819596486,
+                "count": 104
+              }
+            ],
+            "commands": [
+              "Attack",
+              "Move"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  0,
+                  1
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 15,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  2,
+                  2
+                ],
+                "hp": 480,
+                "pa": 5,
+                "ct": 0,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  1,
+                  3
+                ],
+                "hp": 490,
+                "pa": 5,
+                "ct": 0,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              }
+            ],
+            "word": 3819596486,
+            "count": 104,
+            "ticks": 1,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  0
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  2,
+                  0
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  0,
+                  1
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  2,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  3,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  0,
+                  2
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  1,
+                  2
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  2,
+                  2
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  1,
+                  3
+                ],
+                "priority": -488
+              }
+            ]
+          },
+          "clock": {
+            "ticks": 17,
+            "atTick": 18,
+            "actor": "a",
+            "before": 100,
+            "ct": 0,
+            "raw": 14139,
+            "word": 3074161287,
+            "count": 105
+          }
+        },
+        {
+          "actor": "a",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "Move",
+                "occurrence": null,
+                "entryWord": 3074161287,
+                "entryCount": 105,
+                "word": 470157467,
+                "count": 117
+              }
+            ],
+            "commands": [
+              "Move",
+              "RetainedEnd"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  0,
+                  2
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 20,
+                "moved": true,
+                "acted": false,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  2,
+                  2
+                ],
+                "hp": 480,
+                "pa": 5,
+                "ct": 85,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  1,
+                  3
+                ],
+                "hp": 490,
+                "pa": 5,
+                "ct": 85,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              }
+            ],
+            "word": 470157467,
+            "count": 117,
+            "ticks": 18,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  0
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  2,
+                  0
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  0,
+                  1
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  2,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  3,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  0,
+                  2
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  1,
+                  2
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  2,
+                  2
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  1,
+                  3
+                ],
+                "priority": -488
+              }
+            ]
+          },
+          "clock": {
+            "ticks": 3,
+            "atTick": 21,
+            "actor": "b",
+            "before": 100,
+            "ct": 0,
+            "raw": 18451,
+            "word": 3356693560,
+            "count": 118
+          }
+        },
+        {
+          "actor": "b",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "Move",
+                "occurrence": 0,
+                "entryWord": 3356693560,
+                "entryCount": 118,
+                "word": 1023081650,
+                "count": 140
+              }
+            ],
+            "commands": [
+              "Move",
+              "RetainedAttack",
+              "FinishFacing"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  0,
+                  2
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 35,
+                "moved": true,
+                "acted": false,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  2,
+                  3
+                ],
+                "hp": 480,
+                "pa": 5,
+                "ct": 0,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  1,
+                  3
+                ],
+                "hp": 480,
+                "pa": 5,
+                "ct": 100,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              }
+            ],
+            "word": 1024943020,
+            "count": 146,
+            "ticks": 21,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  0
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  2,
+                  0
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  0,
+                  1
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  2,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  3,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  0,
+                  2
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  1,
+                  2
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  2,
+                  2
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  3,
+                  2
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  1,
+                  3
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  2,
+                  3
+                ],
+                "priority": 488
+              }
+            ]
+          },
+          "clock": {
+            "ticks": 0,
+            "atTick": 21,
+            "actor": "c",
+            "before": 100,
+            "ct": 0,
+            "raw": 26204,
+            "word": 3864791157,
+            "count": 147
+          }
+        },
+        {
+          "actor": "c",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "Attack",
+                "occurrence": 0,
+                "entryWord": 3864791157,
+                "entryCount": 147,
+                "word": 1243475898,
+                "count": 164
+              },
+              {
+                "afterAct": true,
+                "kind": "Move",
+                "occurrence": null,
+                "entryWord": 1468890740,
+                "entryCount": 170,
+                "word": 2224273656,
+                "count": 182
+              }
+            ],
+            "commands": [
+              "Attack",
+              "Move"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  0,
+                  2
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 35,
+                "moved": true,
+                "acted": false,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  2,
+                  3
+                ],
+                "hp": 470,
+                "pa": 5,
+                "ct": 0,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  0,
+                  3
+                ],
+                "hp": 480,
+                "pa": 5,
+                "ct": 0,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              }
+            ],
+            "word": 2224273656,
+            "count": 182,
+            "ticks": 21,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  0
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  2,
+                  0
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  0,
+                  1
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  2,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  3,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  0,
+                  2
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  1,
+                  2
+                ],
+                "priority": -487
+              },
+              {
+                "tile": [
+                  2,
+                  2
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  3,
+                  2
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  0,
+                  3
+                ],
+                "priority": -487
+              },
+              {
+                "tile": [
+                  1,
+                  3
+                ],
+                "priority": -487
+              },
+              {
+                "tile": [
+                  2,
+                  3
+                ],
+                "priority": 488
+              }
+            ]
+          },
+          "clock": null
+        }
+      ]
+    },
+    {
+      "id": "retained-Stone-and-shared-priorities",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 500,
+            "maxHp": 500,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 100,
+            "hp": 500,
+            "maxHp": 500,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 100,
+            "hp": 500,
+            "maxHp": 500,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "turns": 6,
+      "expected": [
+        {
+          "actor": "a",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "Move",
+                "occurrence": 2,
+                "entryWord": 1,
+                "entryCount": 7,
+                "word": 3535774167,
+                "count": 25
+              }
+            ],
+            "commands": [
+              "Move",
+              "RetainedStone",
+              "FinishFacing"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  0,
+                  1
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 15,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  3,
+                  1
+                ],
+                "hp": 490,
+                "pa": 5,
+                "ct": 100,
+                "moved": false,
+                "acted": false,
+                "face": "West",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  1,
+                  2
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 100,
+                "moved": false,
+                "acted": false,
+                "face": "South",
+                "ko": 0
+              }
+            ],
+            "word": 744964398,
+            "count": 32,
+            "ticks": 1,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  0
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  0,
+                  1
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  2,
+                  1
+                ],
+                "priority": -485
+              }
+            ]
+          },
+          "clock": {
+            "ticks": 0,
+            "atTick": 1,
+            "actor": "b",
+            "before": 100,
+            "ct": 0,
+            "raw": 30054,
+            "word": 1969681615,
+            "count": 33
+          }
+        },
+        {
+          "actor": "b",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "Move",
+                "occurrence": null,
+                "entryWord": 1969681615,
+                "entryCount": 33,
+                "word": 3397090333,
+                "count": 43
+              }
+            ],
+            "commands": [
+              "Move",
+              "RetainedEnd"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  0,
+                  1
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 15,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  2,
+                  1
+                ],
+                "hp": 490,
+                "pa": 5,
+                "ct": 20,
+                "moved": true,
+                "acted": false,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  1,
+                  2
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 100,
+                "moved": false,
+                "acted": false,
+                "face": "South",
+                "ko": 0
+              }
+            ],
+            "word": 3397090333,
+            "count": 43,
+            "ticks": 1,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  0
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  0,
+                  1
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  2,
+                  1
+                ],
+                "priority": 488
+              }
+            ]
+          },
+          "clock": {
+            "ticks": 0,
+            "atTick": 1,
+            "actor": "c",
+            "before": 100,
+            "ct": 0,
+            "raw": 12754,
+            "word": 835903122,
+            "count": 44
+          }
+        },
+        {
+          "actor": "c",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "Self",
+                "occurrence": 1,
+                "entryWord": 835903122,
+                "entryCount": 44,
+                "word": 1228891816,
+                "count": 70
+              },
+              {
+                "afterAct": true,
+                "kind": "Move",
+                "occurrence": null,
+                "entryWord": 1228891816,
+                "entryCount": 70,
+                "word": 3269224778,
+                "count": 84
+              }
+            ],
+            "commands": [
+              "Self",
+              "Move"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  0,
+                  1
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 15,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  2,
+                  1
+                ],
+                "hp": 490,
+                "pa": 5,
+                "ct": 20,
+                "moved": true,
+                "acted": false,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  1,
+                  3
+                ],
+                "hp": 500,
+                "pa": 6,
+                "ct": 0,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              }
+            ],
+            "word": 3269224778,
+            "count": 84,
+            "ticks": 1,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  0
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  0,
+                  1
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  2,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  0,
+                  2
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  1,
+                  2
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  2,
+                  2
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  1,
+                  3
+                ],
+                "priority": -488
+              }
+            ]
+          },
+          "clock": {
+            "ticks": 16,
+            "atTick": 17,
+            "actor": "b",
+            "before": 100,
+            "ct": 0,
+            "raw": 22825,
+            "word": 1495896251,
+            "count": 85
+          }
+        },
+        {
+          "actor": "b",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "Move",
+                "occurrence": 0,
+                "entryWord": 1495896251,
+                "entryCount": 85,
+                "word": 856000655,
+                "count": 97
+              }
+            ],
+            "commands": [
+              "Move",
+              "RetainedAttack",
+              "FinishFacing"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  0,
+                  1
+                ],
+                "hp": 490,
+                "pa": 5,
+                "ct": 95,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  1,
+                  1
+                ],
+                "hp": 490,
+                "pa": 5,
+                "ct": 0,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  1,
+                  3
+                ],
+                "hp": 500,
+                "pa": 6,
+                "ct": 80,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              }
+            ],
+            "word": 2077067425,
+            "count": 103,
+            "ticks": 17,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  0
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  2,
+                  0
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  0,
+                  1
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  2,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  3,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  0,
+                  2
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  1,
+                  2
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  2,
+                  2
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  1,
+                  3
+                ],
+                "priority": -488
+              }
+            ]
+          },
+          "clock": {
+            "ticks": 1,
+            "atTick": 18,
+            "actor": "a",
+            "before": 100,
+            "ct": 0,
+            "raw": 25514,
+            "word": 3819596486,
+            "count": 104
+          }
+        },
+        {
+          "actor": "a",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "Attack",
+                "occurrence": 0,
+                "entryWord": 3819596486,
+                "entryCount": 104,
+                "word": 924723277,
+                "count": 123
+              },
+              {
+                "afterAct": true,
+                "kind": "Move",
+                "occurrence": null,
+                "entryWord": 3075635823,
+                "entryCount": 129,
+                "word": 327681027,
+                "count": 141
+              }
+            ],
+            "commands": [
+              "Attack",
+              "Move"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  0,
+                  2
+                ],
+                "hp": 490,
+                "pa": 5,
+                "ct": 0,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  1,
+                  1
+                ],
+                "hp": 480,
+                "pa": 5,
+                "ct": 5,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  1,
+                  3
+                ],
+                "hp": 500,
+                "pa": 6,
+                "ct": 85,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              }
+            ],
+            "word": 327681027,
+            "count": 141,
+            "ticks": 18,
+            "workspace": [
+              {
+                "tile": [
+                  0,
+                  0
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  1,
+                  0
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  2,
+                  0
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  0,
+                  1
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  2,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  3,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  0,
+                  2
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  1,
+                  2
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  2,
+                  2
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  1,
+                  3
+                ],
+                "priority": -488
+              }
+            ]
+          },
+          "clock": {
+            "ticks": 3,
+            "atTick": 21,
+            "actor": "c",
+            "before": 100,
+            "ct": 0,
+            "raw": 8052,
+            "word": 2675232640,
+            "count": 142
+          }
+        },
+        {
+          "actor": "c",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "Self",
+                "occurrence": 1,
+                "entryWord": 2675232640,
+                "entryCount": 142,
+                "word": 3331395548,
+                "count": 162
+              },
+              {
+                "afterAct": true,
+                "kind": "Move",
+                "occurrence": null,
+                "entryWord": 3331395548,
+                "entryCount": 162,
+                "word": 3102103705,
+                "count": 175
+              }
+            ],
+            "commands": [
+              "Self",
+              "Move"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  0,
+                  2
+                ],
+                "hp": 490,
+                "pa": 5,
+                "ct": 15,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  1,
+                  1
+                ],
+                "hp": 480,
+                "pa": 5,
+                "ct": 20,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  2,
+                  3
+                ],
+                "hp": 500,
+                "pa": 7,
+                "ct": 0,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              }
+            ],
+            "word": 3102103705,
+            "count": 175,
+            "ticks": 21,
+            "workspace": [
+              {
+                "tile": [
+                  0,
+                  0
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  1,
+                  0
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  2,
+                  0
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  0,
+                  1
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  2,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  3,
+                  1
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  0,
+                  2
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  1,
+                  2
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  2,
+                  2
+                ],
+                "priority": 488
+              },
+              {
+                "tile": [
+                  0,
+                  3
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  1,
+                  3
+                ],
+                "priority": -488
+              },
+              {
+                "tile": [
+                  2,
+                  3
+                ],
+                "priority": -488
+              }
+            ]
+          },
+          "clock": null
+        }
+      ]
+    },
+    {
+      "id": "allied-empty-list-clock-ties",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 500,
+            "maxHp": 500,
+            "pa": 5,
+            "speed": 5,
+            "move": 0,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 1,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 100,
+            "hp": 500,
+            "maxHp": 500,
+            "pa": 5,
+            "speed": 5,
+            "move": 0,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 100,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 100,
+            "hp": 500,
+            "maxHp": 500,
+            "pa": 5,
+            "speed": 5,
+            "move": 0,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "turns": 6,
+      "expected": [
+        {
+          "actor": "a",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "End",
+                "occurrence": null,
+                "entryWord": 1,
+                "entryCount": 7,
+                "word": 267834847,
+                "count": 17
+              }
+            ],
+            "commands": [
+              "End"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  1,
+                  1
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 55,
+                "moved": false,
+                "acted": false,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  3,
+                  1
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 100,
+                "moved": false,
+                "acted": false,
+                "face": "West",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  1,
+                  2
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 100,
+                "moved": false,
+                "acted": false,
+                "face": "South",
+                "ko": 0
+              }
+            ],
+            "word": 267834847,
+            "count": 17,
+            "ticks": 1,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -1455
+              }
+            ]
+          },
+          "clock": {
+            "ticks": 0,
+            "atTick": 1,
+            "actor": "b",
+            "before": 100,
+            "ct": 0,
+            "raw": 2749,
+            "word": 180171308,
+            "count": 18
+          }
+        },
+        {
+          "actor": "b",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "End",
+                "occurrence": null,
+                "entryWord": 180171308,
+                "entryCount": 18,
+                "word": 3914758370,
+                "count": 28
+              }
+            ],
+            "commands": [
+              "End"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  1,
+                  1
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 55,
+                "moved": false,
+                "acted": false,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  3,
+                  1
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 40,
+                "moved": false,
+                "acted": false,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  1,
+                  2
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 100,
+                "moved": false,
+                "acted": false,
+                "face": "South",
+                "ko": 0
+              }
+            ],
+            "word": 3914758370,
+            "count": 28,
+            "ticks": 1,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -1455
+              },
+              {
+                "tile": [
+                  3,
+                  1
+                ],
+                "priority": -1455
+              }
+            ]
+          },
+          "clock": {
+            "ticks": 0,
+            "atTick": 1,
+            "actor": "c",
+            "before": 100,
+            "ct": 0,
+            "raw": 4978,
+            "word": 2473755763,
+            "count": 29
+          }
+        },
+        {
+          "actor": "c",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "End",
+                "occurrence": null,
+                "entryWord": 2473755763,
+                "entryCount": 29,
+                "word": 4015624929,
+                "count": 39
+              }
+            ],
+            "commands": [
+              "End"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  1,
+                  1
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 55,
+                "moved": false,
+                "acted": false,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  3,
+                  1
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 40,
+                "moved": false,
+                "acted": false,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  1,
+                  2
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 40,
+                "moved": false,
+                "acted": false,
+                "face": "North",
+                "ko": 0
+              }
+            ],
+            "word": 4015624929,
+            "count": 39,
+            "ticks": 1,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -1455
+              },
+              {
+                "tile": [
+                  3,
+                  1
+                ],
+                "priority": -1455
+              },
+              {
+                "tile": [
+                  1,
+                  2
+                ],
+                "priority": -1455
+              }
+            ]
+          },
+          "clock": {
+            "ticks": 9,
+            "atTick": 10,
+            "actor": "a",
+            "before": 100,
+            "ct": 0,
+            "raw": 28394,
+            "word": 4008331270,
+            "count": 40
+          }
+        },
+        {
+          "actor": "a",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "End",
+                "occurrence": null,
+                "entryWord": 4008331270,
+                "entryCount": 40,
+                "word": 2102736524,
+                "count": 50
+              }
+            ],
+            "commands": [
+              "End"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  1,
+                  1
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 40,
+                "moved": false,
+                "acted": false,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  3,
+                  1
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 85,
+                "moved": false,
+                "acted": false,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  1,
+                  2
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 85,
+                "moved": false,
+                "acted": false,
+                "face": "North",
+                "ko": 0
+              }
+            ],
+            "word": 2102736524,
+            "count": 50,
+            "ticks": 10,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -1455
+              },
+              {
+                "tile": [
+                  3,
+                  1
+                ],
+                "priority": -1455
+              },
+              {
+                "tile": [
+                  1,
+                  2
+                ],
+                "priority": -1455
+              }
+            ]
+          },
+          "clock": {
+            "ticks": 3,
+            "atTick": 13,
+            "actor": "b",
+            "before": 100,
+            "ct": 0,
+            "raw": 4143,
+            "word": 271520213,
+            "count": 51
+          }
+        },
+        {
+          "actor": "b",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "End",
+                "occurrence": null,
+                "entryWord": 271520213,
+                "entryCount": 51,
+                "word": 3772987475,
+                "count": 61
+              }
+            ],
+            "commands": [
+              "End"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  1,
+                  1
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 55,
+                "moved": false,
+                "acted": false,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  3,
+                  1
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 40,
+                "moved": false,
+                "acted": false,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  1,
+                  2
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 100,
+                "moved": false,
+                "acted": false,
+                "face": "North",
+                "ko": 0
+              }
+            ],
+            "word": 3772987475,
+            "count": 61,
+            "ticks": 13,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -1455
+              },
+              {
+                "tile": [
+                  3,
+                  1
+                ],
+                "priority": -1455
+              },
+              {
+                "tile": [
+                  1,
+                  2
+                ],
+                "priority": -1455
+              }
+            ]
+          },
+          "clock": {
+            "ticks": 0,
+            "atTick": 13,
+            "actor": "c",
+            "before": 100,
+            "ct": 0,
+            "raw": 7962,
+            "word": 2669311376,
+            "count": 62
+          }
+        },
+        {
+          "actor": "c",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "End",
+                "occurrence": null,
+                "entryWord": 2669311376,
+                "entryCount": 62,
+                "word": 1223573862,
+                "count": 72
+              }
+            ],
+            "commands": [
+              "End"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  1,
+                  1
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 55,
+                "moved": false,
+                "acted": false,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  3,
+                  1
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 40,
+                "moved": false,
+                "acted": false,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  1,
+                  2
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 40,
+                "moved": false,
+                "acted": false,
+                "face": "North",
+                "ko": 0
+              }
+            ],
+            "word": 1223573862,
+            "count": 72,
+            "ticks": 13,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -1455
+              },
+              {
+                "tile": [
+                  3,
+                  1
+                ],
+                "priority": -1455
+              },
+              {
+                "tile": [
+                  1,
+                  2
+                ],
+                "priority": -1455
+              }
+            ]
+          },
+          "clock": null
+        }
+      ]
+    }
+  ]
+}

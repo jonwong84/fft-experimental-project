@@ -103,7 +103,7 @@ public static class TargetedAbilityBattleSimulator
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(command); ArgumentNullException.ThrowIfNull(profile);
         var invalid = ValidateCommand(state, command, profile);
         if (invalid != AttackCommandRejection.None) return Reject(invalid);
-        return ApplyAdmitted(state, command);
+        return ApplyRandomPa(state, command);
         AttackBattleResult Reject(AttackCommandRejection reason) => new(false, reason, TurnCycleRejection.None, BattleTransitionRejection.None, state, []);
     }
 
@@ -113,7 +113,7 @@ public static class TargetedAbilityBattleSimulator
     {
         var invalid = ValidateRoster(state, command, profile, roster, heights, out var actualTarget);
         if (invalid != AttackCommandRejection.None) return new(false, invalid, TurnCycleRejection.None, BattleTransitionRejection.None, state, []);
-        return ApplyAdmitted(state, command with { TargetId = actualTarget }, actualTarget == command.TargetId ? null : command.TargetId);
+        return ApplyRandomPa(state, command with { TargetId = actualTarget }, actualTarget == command.TargetId ? null : command.TargetId);
     }
 
     /// <summary>Pure current-command validation and live projectile resolution; does not consume ACT or RNG.</summary>
@@ -159,7 +159,7 @@ public static class TargetedAbilityBattleSimulator
             ? AttackCommandRejection.UnsupportedSetup : AttackCommandRejection.None;
     }
 
-    private static AttackBattleResult ApplyAdmitted(AttackBattleSnapshot state, UseTargetedAbilityCommand command, BattleUnitId? intendedTarget = null)
+    internal static AttackBattleResult ApplyRandomPa(AttackBattleSnapshot state, UseTargetedAbilityCommand command, BattleUnitId? intendedTarget = null, bool dash = false)
     {
         var actor = state.Combatants.Single(unit => unit.UnitId == command.ActorId);
         var target = state.Combatants.Single(unit => unit.UnitId == command.TargetId);
@@ -180,11 +180,11 @@ public static class TargetedAbilityBattleSimulator
         try
         {
             int classEvade = ThrowStoneFormula.IsFront(dx, dy, target.Facing) ? target.ClassPhysicalEvade : 0;
-            foreach (int evade in new[] { 0, 0, 0, classEvade })
+            foreach (int evade in dash ? Array.Empty<int>() : new[] { 0, 0, 0, classEvade })
                 if (Draw() * 100 / 32768 < evade) { hit = false; break; }
             if (hit)
             {
-                damage = ThrowStoneFormula.Damage(actor.PhysicalAttack, Draw());
+                damage = dash ? DashFormula.Damage(actor.PhysicalAttack, Draw()) : ThrowStoneFormula.Damage(actor.PhysicalAttack, Draw());
                 uint attackerRoll = Draw(), targetRoll = Draw();
                 attempted = ThrowStoneFormula.AttemptsKnockback(actor.Brave, target.Brave, attackerRoll, targetRoll);
             }
@@ -212,11 +212,12 @@ public static class TargetedAbilityBattleSimulator
             state.Combatants.Select(unit => unit.UnitId == target.UnitId ? nextTarget : unit));
         var events = action.Events.Select(ev => (AttackResultEvent)new AttackTurnBattleEvent(ev)).ToList();
         if (intendedTarget is { } original) events.Add(new ThrowStoneTargetInterceptedEvent(actor.UnitId, command.AbilityId, original, target.UnitId));
-        events.Add(new ThrowStoneResolvedEvent(actor.UnitId, command.AbilityId, target.UnitId, hit, damage, attempted));
+        events.Add(dash ? new DashResolvedEvent(actor.UnitId, command.AbilityId, target.UnitId, damage, attempted)
+            : new ThrowStoneResolvedEvent(actor.UnitId, command.AbilityId, target.UnitId, hit, damage, attempted));
         if (hp != target.Hp) events.Add(new AttackHpChangedEvent(target.UnitId, target.Hp, hp));
         if (nextTarget.Status != target.Status) events.Add(new AttackStatusChangedEvent(target.UnitId, target.Status, nextTarget.Status));
         if (ko) events.Add(new AttackKnockedOutEvent(target.UnitId, nextTarget.KoCount));
-        if (destination != to) events.Add(new ThrowStoneKnockbackEvent(target.UnitId, to, destination));
+        if (destination != to) events.Add(dash ? new DashKnockbackEvent(target.UnitId, to, destination) : new ThrowStoneKnockbackEvent(target.UnitId, to, destination));
         return new(true, AttackCommandRejection.None, TurnCycleRejection.None, BattleTransitionRejection.None, next, events.ToImmutableArray());
 
         AttackBattleResult Reject(AttackCommandRejection reason) =>

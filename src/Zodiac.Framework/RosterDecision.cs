@@ -58,6 +58,12 @@ public sealed partial class RosterDecisionContext
     public RosterDecision<T> PrepareWait<T>(BattleFacing? facing, RandomState rng, T diagnostic) =>
         Issue(ActorId, rng, RosterDecisionChoices.Any, state => Applied(RosterFacingTurnBattle.WaitWithFacing(state, ActorId, facing), diagnostic));
 
+    public RosterDecision<T> PrepareDashAbility<T>(UseTargetedAbilityCommand command, DashAbilityBattleProfile profile, RandomState rng, T diagnostic)
+    {
+        CheckOpen(); ArgumentNullException.ThrowIfNull(command); ArgumentNullException.ThrowIfNull(profile);
+        return Issue(command.ActorId, rng, RosterDecisionChoices.Any, state => Applied(RosterFacingTurnBattle.UseDashAbility(state, command, profile), diagnostic));
+    }
+
     /// <summary>Atomically publish a post-ACT actual path and its receipt-bound explicit facing.</summary>
     public RosterDecision<T> PrepareTurnEndingMove<T>(MoveUnitCommand command, BattleFacing? facing, RandomState rng, T diagnostic)
     {

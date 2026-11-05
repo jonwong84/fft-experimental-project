@@ -45,6 +45,9 @@ public static class RosterFacingTurnBattle
         TargetedAbilityBattleProfile profile, FlatRosterProjectileHeights heights) =>
         Apply(state, () => TargetedAbilityBattleSimulator.ApplyRoster(state.Battle, command, profile, state.Profile, heights));
 
+    public static RosterFacingResult UseDashAbility(RosterFacingTurnState state, UseTargetedAbilityCommand command, DashAbilityBattleProfile profile) =>
+        Apply(state, () => DashAbilityBattleSimulator.ApplyRoster(state.Battle, command, profile, state.Profile));
+
     public static RosterFacingResult Move(RosterFacingTurnState state, MoveUnitCommand command)
     {
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(command);

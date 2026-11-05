@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-316 (prove a bounded multi-unit roster AI replay).** ZOD-314/315 now dispatch fresh supported roster decisions inside Framework and drive complete bounded turns with exact-session recovery. Public cached plans remain non-authoritative.
-There are 34 open tickets below. The 282 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-321 (initialize supported Dash AI entries).** ZOD-316 proves eighteen real roster turns; ZOD-317–320 trace and implement actual Dash, verified command publication and frozen Move follow-ups.
+There are 38 open tickets below. The 287 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,21 +29,50 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-316 — Prove a bounded multi-unit roster AI battle replay
+### ZOD-321 — Initialize semantic Dash AI lists and preparation
 
-**Type:** Verification · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-315
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-317, ZOD-320
 
-Trace and verify a deterministic sequence of real supported roster turns, using
-explicit public clock advancement between complete-turn invocations. Preserve
-real damage/PA/pushes, choice refunds, source-order eligibility, RNG and retained
-priority knowledge across actors; no detached pair or hypothetical state becomes
-authority. Compare independent bounded source descriptions and immutable replay,
-including actual clock events and stopping at explicit scenario boundaries.
-Use ordinary initially living supported inputs; report any deferred corpse-domain
-stop with accepted progress rather than adding terminal policy. Fixed/kept facing
-suffices. This proof does not activate host/editor, automatic facing, full corpse/
-terminal/frame RNG, other policies/maps/abilities, broad replacement interfaces,
-owner drafts or ZOD-106. See [current turn boundary](behavior/roster-ai-command-and-turn.md).
+Add retail harmful physical non-Evadeable/non-ranged/non-exhaustive Dash to owned semantic lists and roster summaries/prepared usage. Preserve missing/repeated/reordered slots and canonical pair guards; no omitted eligible unsupported action.
+See [Dash source/design](architecture/zod-317-dash.md). Automatic facing, full
+corpse/terminal/frame RNG, host/editor, owner drafts, broad interfaces and
+ZOD-106 remain separate/deferred.
+
+### ZOD-322 — Project one isolated roster Dash candidate
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting — ZOD-321 · **Depends on:** ZOD-321
+
+Validate initial roster, typed grants, enemy/range and legal origin; project midpoint3*PA/hit100 with no effect draws or push, then the shared whole-roster clock/scoring. Preserve all peers, real inputs and transactional failure.
+See [Dash source/design](architecture/zod-317-dash.md). Automatic facing, full
+corpse/terminal/frame RNG, host/editor, owner drafts, broad interfaces and
+ZOD-106 remain separate/deferred.
+
+### ZOD-323 — Search one fresh ranked roster Dash occurrence
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting — ZOD-322 · **Depends on:** ZOD-322
+
+Own a fresh prefix and private one-occurrence traversal: range1 useful-enemy origins, signed priority/proximity ordering, map-order aims, consume evaluated aims, actor-origin D1/ACT-first and baseline comparison. No trajectory test or fabricated unknown keys.
+See [Dash source/design](architecture/zod-317-dash.md). Automatic facing, full
+corpse/terminal/frame RNG, host/editor, owner drafts, broad interfaces and
+ZOD-106 remain separate/deferred.
+
+### ZOD-324 — Integrate Dash list ranking and actual dispatch
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting — ZOD-323 · **Depends on:** ZOD-323
+
+Compose owned Dash entries with Attack/self/Stone through one prefix/RNG/ranks/lottery, including duplicates. Fresh Framework callback maps actual Dash or freezes its Move follow-up; workspace publishes only with accepted commands, without broadening pair certificates.
+See [Dash source/design](architecture/zod-317-dash.md). Automatic facing, full
+corpse/terminal/frame RNG, host/editor, owner drafts, broad interfaces and
+ZOD-106 remain separate/deferred.
+
+### ZOD-325 — Prove complete Dash roster turns and recovery
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting — ZOD-324 · **Depends on:** ZOD-324
+
+Verify both actual orders, source damage/push/RNG, post-ACT decisions, frozen continuation, exact-session late failure/retry, and multi-actor replay with retained priorities. Explicit fixed/kept facing; stop before next clock unless the replay explicitly advances it.
+See [Dash source/design](architecture/zod-317-dash.md). Automatic facing, full
+corpse/terminal/frame RNG, host/editor, owner drafts, broad interfaces and
+ZOD-106 remain separate/deferred.
 
 ## Existing validation gates
 

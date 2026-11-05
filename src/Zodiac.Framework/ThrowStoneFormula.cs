@@ -13,9 +13,7 @@ public static class ThrowStoneFormula
 
     public static int Damage(int physicalAttack, uint raw)
     {
-        if (physicalAttack is < 1 or > 99) throw new ArgumentOutOfRangeException(nameof(physicalAttack));
-        ValidateRaw(raw);
-        return ((int)(raw * 2 / 32768) + 1) * physicalAttack;
+        return RandomPaDamageFormula.Damage(physicalAttack, 2, raw);
     }
 
     /// <summary>Two independently scaled Brave rolls; equality does not attempt a push.</summary>

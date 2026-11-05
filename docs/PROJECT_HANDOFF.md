@@ -6,18 +6,19 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-316: prove a bounded multi-unit roster AI battle replay.**
-[ZOD-314/315](behavior/roster-ai-command-and-turn.md) now own fresh full supported
-roster-list selection inside Framework's verified callback, actual command
-publication, frozen Move follow-ups, post-ACT reselection and bounded complete
-turns with exact-session recovery. Priority writes publish only with accepted
-actual progress; late failure keeps earlier real commands. Fixed/kept facing is
-explicit, and the driver stops before advancing the next clock. Pure plans are
-still non-authoritative. Next verify multiple real actors/turns and explicit
-clock advancement with retained state/RNG/priority knowledge. An actual ACT-first
-KO can reach the deferred corpse-input guard; preserve its accepted progress for
-recovery/manual END. Full corpse/terminal/frame RNG, automatic facing, host/editor,
-owner drafts, replacement interfaces and ZOD-106 remain separate/deferred.
+**ZOD-321–325: integrate bounded Dash AI through complete roster turns.**
+[ZOD-316 replay](behavior/roster-ai-replay.md) proves eighteen real supported
+turns, explicit clock/ready-peer boundaries, all-peer state/RNG and retained
+priority knowledge. [ZOD-317 source study](architecture/zod-317-dash.md) selects
+retail Dash: range1, Y4, no evasion/trajectory, actual3 draws and AI midpoint3*PA.
+[ZOD-318–320](behavior/dash-actual.md) add shared neutral arithmetic, actual roster
+Dash/grants/results, verified proposals and frozen Move follow-ups through the
+existing session/receipt owners. Next connect semantic lists, isolated projected
+candidate, fresh ranked occurrence and full-list/command/turn integration.
+Existing supported turns keep explicit fixed/kept facing and exact recovery;
+ACT-first KO may stop at the deferred fresh corpse-input guard. Full corpse/
+terminal/frame RNG, automatic facing, host/editor, owner drafts, broad interfaces
+and ZOD-106 remain separate/deferred.
 
 The [original AI algorithm guide](architecture/original-ai-algorithm.md) maps
 policy precedence and all core source functions, with bounded implementation
@@ -158,11 +159,11 @@ without rewriting old evidence.
   explicit player-control flag clear, HP*128/maxHP>=45 and no NonBlue reach draw.
   Existing Attack/Stone scoring/selection/execution and both teams are preserved;
   terminal routing and Blue low-HP/player-controlled policies remain open.
-- Latest source trace: [ZOD-314/315 integration](behavior/roster-ai-command-and-turn.md)
-  rechecks83 functions/27 files and composes twelve independent source scenarios
-  with real dispatch/effects/routes/choice settlement. Framework authority contracts
-  remain separately labelled. Source/prepared SDK geometry checks still prove all
-  192 normalization factors. No original/C execution.
+- Latest source trace: [ZOD-317 Dash](architecture/zod-317-dash.md) rechecks the
+  83-function/27-file trace and prepared primary/range/Squire slot records. Twenty-four
+  formula boundaries and eight actual descriptions distinguish Dash's3-draw rule
+  from Stone. [ZOD-316](behavior/roster-ai-replay.md) composes eighteen real turns
+  and explicit CT/upkeep boundaries. No original/C execution.
 - Organization: AI source/tests use Shared, Sword, ThrowStone, AttackThrowStone,
   Accumulate and BasicSkill folders with stable namespaces; [layout](development/ai-source-layout.md).
   Owner RNG migration is completed as `Zodiac.Framework.Random.RandomStateGenerator`
@@ -176,16 +177,16 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore, zero-warning/error Release build and **4,449 .NET
-  cases** (1,516 Framework, 1,188 AI), including twenty new AI cases, pass. All
-  **587 Python tests**, pinned source/prepared-data, algorithm-guide, local-link
+- Validation: locked restore, zero-warning/error Release build and **4,457 .NET
+  cases** (1,521 Framework, 1,191 AI), including five new Framework and three new AI cases, pass. All
+  **591 Python tests**, pinned source/prepared-data, algorithm-guide, local-link
   and coverage checks pass. Seven full TRX reports/logs are under ignored
-  `scratch/roster-turn-314-315/`.
+  `scratch/dash-317-325/`.
   Python uses repository-pinned Pillow 12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow 13.0.0 triggers six existing version guards; WindowsApps Python
   is unavailable. All nine owner drafts remain unchanged, including AbilityToggles.
-  AI adds fresh roster dispatch and bounded turns/recovery using shared routing; no Content/host/editor
+  Framework adds closed actual Dash through shared results; AI adds real-turn replay proof; no Content/host/editor
   or project/lock/package/dependency changes.
   Nine historical checkpoint audits last passed at ZOD-158; unchanged snapshots
   were not rerun. No original/C execution, host/editor activation or UI review.

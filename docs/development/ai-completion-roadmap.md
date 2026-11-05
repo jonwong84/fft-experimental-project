@@ -220,3 +220,10 @@ with original behavior as the default and refinements/alternatives selectable
 separately. Delivering that boundary is distinct from implementing a new custom
 algorithm; the latter need not block original-game completion. C reference code
 remains a study/validation source, never a runtime dependency.
+
+[ZOD-316](../behavior/roster-ai-replay.md) now proves eighteen real roster turns
+with explicit clock advancement and all-peer state/RNG/priority history.
+[ZOD-317–320](../architecture/zod-317-dash.md) now trace Dash and implement its
+actual3-draw rule, verified proposals and frozen Move follow-ups. ZOD-321–325
+next integrate its semantic list, hypothetical candidate, ranked search and
+actual complete turns. No automatic-facing/corpse/terminal/host gate is activated.

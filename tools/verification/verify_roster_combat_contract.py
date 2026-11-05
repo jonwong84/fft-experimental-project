@@ -23,7 +23,7 @@ def describe(kind,data):
     require(type(units) is list and 1<=len(units)<=21,'Original source slot extent')
     for u in units:
         require(type(u['id']) is str and bool(u['id']) and len(u['tile'])==2,'Unit identity/position')
-        integer(u['tile'][0],0,w-1); integer(u['tile'][1],0,h-1); integer(u['team'],0,3); integer(u['hp'],0,50)
+        integer(u['tile'][0],0,w-1); integer(u['tile'][1],0,h-1); integer(u['team'],0,3); integer(u['hp'],0,65535)
     require(len({u['id'] for u in units})==len(units) and len({tuple(u['tile']) for u in units})==len(units),'Distinct IDs/positions')
     by_id={u['id']:u for u in units}; require(data['actor'] in by_id,'Represented actor'); actor=by_id[data['actor']]
     if kind=='route':

@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 282 entries index completed bounded work; they do not mean the full game is complete.
+These 287 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -305,3 +305,8 @@ These 282 entries index completed bounded work; they do not mean the full game i
 - [ZOD-313 — Continue exact-state roster Attack/self/Stone/Wait intent](../behavior/roster-decision-and-continuation.md)
 - [ZOD-314 — Dispatch fresh supported roster AI decisions](../behavior/roster-ai-command-and-turn.md)
 - [ZOD-315 — Drive bounded roster AI turns with exact-session recovery](../behavior/roster-ai-command-and-turn.md)
+- [ZOD-316 — Prove a bounded multi-unit roster AI battle replay](../behavior/roster-ai-replay.md)
+- [ZOD-317 — Trace original Dash behavior and roster AI search](../architecture/zod-317-dash.md)
+- [ZOD-318 — Implement exact neutral Dash formula arithmetic](../behavior/dash-actual.md)
+- [ZOD-319 — Execute actual roster Dash with grants and results](../behavior/dash-actual.md)
+- [ZOD-320 — Publish verified Dash commands and frozen Move follow-ups](../behavior/dash-actual.md)
