@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-310",
+    "ZOD-311",
+    "ZOD-312",
+    "ZOD-313"
+  ],
+  "date": "2026-11-05",
+  "kind": "verified-roster-decision-and-retained-Move-authority",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "8d62bf4",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/roster-authority-source-v1.json",
+  "design": "docs/architecture/zod-310-roster-decision-authority.md",
+  "behavior": "docs/behavior/roster-decision-and-continuation.md",
+  "sourceFixture": "docs/fixtures/behavior/roster-authority-contract-v1.json",
+  "implementationPaths": [
+    "src/Zodiac.Framework/RosterDecision.cs",
+    "src/Zodiac.Framework/RosterPlannedMove.cs",
+    "src/Zodiac.Framework/RosterMoveContinuation.cs",
+    "src/Zodiac.Framework/ImmediateAbilityBattle.cs",
+    "src/Zodiac.Framework/TargetedAbilityBattle.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Tests/RosterDecisionTests.cs",
+    "tests/Zodiac.Framework.Tests/RosterPlannedMoveTests.cs",
+    "tests/Zodiac.Framework.Tests/RosterMoveContinuationTests.cs"
+  ],
+  "invariants": [
+    "one closed-in-finally invocation and opaque proposal, exact owner/actor checks, shared full-word/count logarithmic forward RNG verification",
+    "private RNG staging and actual existing command delegation; all late command/facing failures return exact input with empty events/path/token/default diagnostic",
+    "both-unused planned Move, pure effect/setup validation independent of original Stone range/ray, actual path/heading/token publication only on success",
+    "exact-state/battle/revision/lineage/actor continuation; no replacement payload, planner or RNG adoption; actual admission rechecked after Move",
+    "late follow-up failure retains Move; same-original replay allowed; foreign/newer/reconstructed states and cross-replay receipts rejected",
+    "internal closures freeze concrete immutable commands/profiles; no custom command delegate API, save token, AI reference or production friend access"
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4429,
+    "frameworkPassed": 1516,
+    "aiPassed": 1168,
+    "newFrameworkCases": 16,
+    "pythonPassed": 584,
+    "newPythonCases": 3,
+    "trxReports": 7,
+    "sourceFiles": 27,
+    "sourceFunctions": 83,
+    "sourceDescriptions": 21,
+    "algorithmGuideAudit": true,
+    "localLinkAudit": true,
+    "coverageAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/roster-authority-310-311/"
+  },
+  "dependencyChanges": false,
+  "newProductionFriendAccess": false,
+  "originalExecuted": false,
+  "cExecuted": false
+}

@@ -200,8 +200,9 @@ one prefix, stable ranking and source lottery. ZOD-304/305 map roster
 command/turn integration prerequisites
 and expose the existing actual self kernel through roster sessions. ZOD-306
 now traces/implements live Stone interception, actual effects and session
-publication through ZOD-306–309. ZOD-310 next traces verified roster decision
-and retained Move authority.
+publication through ZOD-306–309. ZOD-310–313 now implement verified roster
+decisions and retained Move authority. ZOD-314/315 next integrate fresh dispatch
+and bounded turns/recovery.
 Broader control/low-HP/terminal policies remain separate.
 A certificate for one closed ability list cannot stand in for another list.
 

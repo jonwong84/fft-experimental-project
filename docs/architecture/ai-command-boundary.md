@@ -108,3 +108,7 @@ No pair certificate/session is fabricated, no roster planner callback or frozen
 continuation is added, and existing AI drivers retain two-opponent admission.
 Source-bounded movement rejects unsupported corpse/record-truncation cases;
 roster automatic facing and AI preparation/search need later milestones.
+
+[ZOD-310–313](../behavior/roster-decision-and-continuation.md) add separately typed
+roster invocation/proposal/continuation authority, sharing actual command, receipt
+and forward-checkpoint owners. The old pair boundaries and guards remain.

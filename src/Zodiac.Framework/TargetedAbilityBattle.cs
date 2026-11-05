@@ -133,13 +133,8 @@ public static class TargetedAbilityBattleSimulator
         if (state.TurnBattle.Turns.Units.Single(u => u.Id == command.ActorId).ActionTaken) return AttackCommandRejection.ActionAlreadyTaken;
         if (command.ActorId == command.TargetId) return AttackCommandRejection.SelfTarget;
         if (target.Status == AttackUnitStatus.Dead) return AttackCommandRejection.DeadTarget;
-        if (!profile.Abilities.ContainsKey(command.AbilityId)) return AttackCommandRejection.UnknownAbility;
-        if (!profile.Units.TryGetValue(command.ActorId, out var grant) || !grant.Abilities.Contains(command.AbilityId)) return AttackCommandRejection.AbilityNotGranted;
-        try { roster.ValidateState(state); }
-        catch (Exception exception) when (exception is ArgumentException or NotSupportedException) { return AttackCommandRejection.UnsupportedSetup; }
-        if (profile.OrdinaryGroundSurface != roster.Ground || profile.Units.Count != roster.Units.Count ||
-            !profile.Units.Keys.ToHashSet().SetEquals(roster.Units.Keys) || state.Combatants.Any(u => u.Hp == 0 || u.PhysicalAttack is < 1 or > 99))
-            return AttackCommandRejection.UnsupportedSetup;
+        var setup = ValidateRosterAbilitySetup(state, command.ActorId, command.AbilityId, profile, roster);
+        if (setup != AttackCommandRejection.None) return setup;
         var origin = state.TurnBattle.Battle.Units.Single(u => u.Id == command.ActorId).Position;
         var to = state.TurnBattle.Battle.Units.Single(u => u.Id == command.TargetId).Position;
         if (Math.Abs(origin.X - to.X) + Math.Abs(origin.Y - to.Y) > 4) return AttackCommandRejection.OutOfRange;
@@ -147,6 +142,21 @@ public static class TargetedAbilityBattleSimulator
         if (!path.Accepted || path.Outcome!.ResolveTarget(command.TargetId) is not { } resolved) return AttackCommandRejection.UnsupportedSetup;
         actualTarget = resolved;
         return AttackCommandRejection.None;
+    }
+
+    /// <summary>Pure complete-roster effect/grant admission, independent of origin range/trajectory and current choices.</summary>
+    public static AttackCommandRejection ValidateRosterAbilitySetup(AttackBattleSnapshot state, BattleUnitId actorId, AssetId abilityId,
+        TargetedAbilityBattleProfile profile, FlatRosterBattleProfile roster)
+    {
+        ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(profile); ArgumentNullException.ThrowIfNull(roster);
+        if (!state.Combatants.Any(u => u.UnitId == actorId)) return AttackCommandRejection.UnknownActor;
+        if (!profile.Abilities.ContainsKey(abilityId)) return AttackCommandRejection.UnknownAbility;
+        if (!profile.Units.TryGetValue(actorId, out var grant) || !grant.Abilities.Contains(abilityId)) return AttackCommandRejection.AbilityNotGranted;
+        try { roster.ValidateState(state); }
+        catch (Exception exception) when (exception is ArgumentException or NotSupportedException) { return AttackCommandRejection.UnsupportedSetup; }
+        return profile.OrdinaryGroundSurface != roster.Ground || profile.Units.Count != roster.Units.Count ||
+            !profile.Units.Keys.ToHashSet().SetEquals(roster.Units.Keys) || state.Combatants.Any(u => u.Hp == 0 || u.PhysicalAttack is < 1 or > 99)
+            ? AttackCommandRejection.UnsupportedSetup : AttackCommandRejection.None;
     }
 
     private static AttackBattleResult ApplyAdmitted(AttackBattleSnapshot state, UseTargetedAbilityCommand command, BattleUnitId? intendedTarget = null)
