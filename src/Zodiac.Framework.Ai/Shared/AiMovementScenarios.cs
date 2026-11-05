@@ -40,10 +40,8 @@ internal static class AiMovementScenarios
             return Reject(new(AttackThrowStoneAiScenarioStage.Branch, AttackThrowStoneAiScenarioRejection.OutOfReach));
         if (outOfReach && distance <= reach)
             return Reject(new(AttackThrowStoneAiScenarioStage.Branch, AttackThrowStoneAiScenarioRejection.InReach));
-        int limit = outOfReach ? distance - 1 : common.AllyAbilityReach + distance;
-        var scored = common.ReachableOrigins.Where(p => Distance(p) <= limit).ToImmutableArray();
-        bool filterFallback = scored.IsEmpty;
-        if (filterFallback) scored = common.ReachableOrigins;
+        var partition = AiScenarioLayout.Partition(common.ReachableOrigins, common.Origin, common.AllyAbilityReach, reach, Distance);
+        var scored = partition.ScoreMask;
         var evaluated = AiMovementPrefix.Evaluate(state, request.ActorId, request.TargetId, scored, null, units, rng,
             proximityOrigins: common.ReachableOrigins);
         if (evaluated.Rejection != AiSimulationClockRejection.None)
@@ -51,51 +49,22 @@ internal static class AiMovementScenarios
                 MovementIndex: evaluated.FailedIndex, MovementReason: evaluated.Rejection == AiSimulationClockRejection.RandomDrawCountExhausted
                     ? SwordAiMovementBaselineRejection.RandomDrawCountExhausted : SwordAiMovementBaselineRejection.TickCountExhausted));
         var prefix = evaluated.Outcome!; rng = evaluated.RngState;
-        int effective = reach; SwordAiReachAdjustment? adjustment = null;
-        if (outOfReach && team == SwordAiScenarioTeam.NonBlue)
+        AiScenarioLayoutOutcome layout;
+        try
         {
-            uint raw;
-            try { var draw = new RandomStateGenerator().Next(rng); raw = draw.Value; rng = draw.State; }
-            catch (OverflowException)
-            { return Reject(new(AttackThrowStoneAiScenarioStage.ReachAdjustment, AttackThrowStoneAiScenarioRejection.RandomDrawCountExhausted)); }
-            int modulo = (int)(raw % 7); effective = modulo == 0 ? reach / 2 : reach;
-            adjustment = new(raw, modulo, reach, effective);
+            layout = AiScenarioLayout.Finish(partition, common.ReachableOrigins, common.Origin, Distance,
+                prefix.Movement.Select(m => new AiScenarioCell(m.Outcome.Destination, m.TilePriority, m.Proximity)).ToImmutableArray(),
+                prefix.Proximity.Destinations, team == SwordAiScenarioTeam.NonBlue, common.ActorAttackUsable,
+                hasRangedAbility && common.Refresh.RefreshedUnits.Single(u => u.UnitId == request.TargetId).Enemy, rng);
         }
-        int? bound = null; bool destinationFallback = false; TilePosition d0, d1;
-        if (outOfReach)
-        {
-            var within = prefix.Movement.Where(m => Distance(m.Outcome.Destination) <= effective).ToImmutableArray();
-            destinationFallback = within.IsEmpty;
-            d0 = d1 = Select(destinationFallback ? prefix.Movement : within, Distance, destinationFallback);
-        }
-        else
-        {
-            d0 = d1 = Select(prefix.Movement, Distance, false);
-            if (common.ActorAttackUsable)
-            {
-                bound = distance - 1;
-                if (hasRangedAbility && common.Refresh.RefreshedUnits.Single(u => u.UnitId == request.TargetId).Enemy)
-                    bound = Math.Max(3, bound.Value);
-                var within = prefix.Movement.Where(m => Distance(m.Outcome.Destination) <= bound.Value).ToImmutableArray();
-                destinationFallback = within.IsEmpty;
-                d0 = Select(destinationFallback ? prefix.Movement : within, Distance, destinationFallback);
-            }
-        }
-        // Source scenario2 precedes actor OR; priority/proximity provenance covers original M0, not just the score mask.
-        var written = prefix.Movement.ToImmutableDictionary(m => m.Outcome.Destination, m => m.TilePriority);
-        var scenario2 = common.ReachableOrigins.Where(p => !written.ContainsKey(p)).ToImmutableArray();
-        var scenario1 = common.ReachableOrigins.Where(p => written.ContainsKey(p) || p == common.Origin).ToImmutableArray();
-        var cells = common.ReachableOrigins.Select(p => new AiMovementCellProvenance(p, prefix.Proximity.Destinations[p],
-            written.TryGetValue(p, out short priority) ? priority : null)).ToImmutableArray();
-        int baselineIndex = prefix.Movement.Select(m => m.Outcome.Destination).ToImmutableArray().IndexOf(d0);
-        prefix = prefix with { BaselineIndex = baselineIndex };
-        return new(new(scored, scenario1, scenario2, prefix.Movement, cells, d0, d1, baselineIndex,
-            distance, reach, effective, adjustment, bound, filterFallback, destinationFallback, outOfReach), null, prefix, rng);
+        catch (OverflowException)
+        { return Reject(new(AttackThrowStoneAiScenarioStage.ReachAdjustment, AttackThrowStoneAiScenarioRejection.RandomDrawCountExhausted)); }
+        prefix = prefix with { BaselineIndex = layout.BaselineIndex };
+        return new(new(scored, layout.Scenario1, layout.Scenario2, prefix.Movement, layout.Cells, layout.D0, layout.D1, layout.BaselineIndex,
+            distance, reach, layout.EffectiveReach, layout.Adjustment, layout.BaselineLimit, partition.FilterFallback,
+            layout.DestinationFallback, outOfReach), null, prefix, layout.RngState);
     }
 
     internal static TilePosition Select(ImmutableArray<AiScoredMovementTile> cells, Func<TilePosition, int> distance, bool distanceFirst) =>
-        (distanceFirst ? cells.OrderBy(c => distance(c.Outcome.Destination)).ThenBy(c => c.OriginKey)
-            : cells.OrderBy(c => c.OriginKey).ThenBy(c => distance(c.Outcome.Destination)))
-        .ThenByDescending(c => c.Outcome.Destination.Layer).ThenByDescending(c => c.Outcome.Destination.Y)
-        .ThenByDescending(c => c.Outcome.Destination.X).First().Outcome.Destination;
+        AiScenarioLayout.Select(cells.Select(c => new AiScenarioCell(c.Outcome.Destination, c.TilePriority, c.Proximity)).ToImmutableArray(), distance, distanceFirst);
 }

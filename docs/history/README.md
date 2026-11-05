@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 253 entries index completed bounded work; they do not mean the full game is complete.
+These 256 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -276,3 +276,6 @@ These 253 entries index completed bounded work; they do not mean the full game i
 - [ZOD-284 — Refresh a whole ordinary roster through the shared private clock](../behavior/roster-ai-preparation.md#fresh-whole-roster-refresh--zod-284)
 - [ZOD-285 — Prepare roster list summaries and team support on restored state](../behavior/roster-ai-preparation.md#list-summaries-and-team-support--zod-285)
 - [ZOD-286 — Score an isolated ordinary-roster movement hypothesis](../behavior/roster-ai-preparation.md#isolated-movement-hypotheses-and-scores--zod-286)
+- [ZOD-287 — Trace roster general-search admission, focus and movement scenarios](../architecture/zod-287-roster-general-search.md)
+- [ZOD-288 — Derive fresh roster general admission and focus](../behavior/roster-ai-general-scenarios.md#fresh-general-entry--zod-288)
+- [ZOD-289 — Derive roster general movement scenarios](../behavior/roster-ai-general-scenarios.md#general-scenarios--zod-289)

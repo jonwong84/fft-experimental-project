@@ -114,8 +114,10 @@ Use the [existing pinned Pillow setup](accumulate-ai.md#validation). Historical
 checkpoint snapshots and UI were not rerun. Owner drafts, including AbilityToggles,
 are unchanged; no Framework/Content/host/editor or project/lock/package changes.
 
-ZOD-287 next traces roster policy admission, focus and general movement scenarios.
-Full ability/target/effect traversal, commands driven by a roster AI selection,
+The [ZOD-287–289 follow-up](roster-ai-general-scenarios.md) now derives bounded
+general admission/focus and movement scenarios. ZOD-290 next traces roster
+cast-origin priorities and supported-action search. Full ability/target/effect
+traversal, commands driven by a roster AI selection,
 corpse movement/death scheduling, other statuses/maps/policies, automatic facing,
 terminal routing and original frame RNG remain open. Existing AI command drivers
 stay pair-bounded. Host/editor work, owner flags, broad replacement interfaces

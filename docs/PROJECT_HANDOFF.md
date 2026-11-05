@@ -1,22 +1,23 @@
 # Tessera / Zodiac / FFT handoff
 
-Updated 2026-11-04. Read [AGENTS.md](../AGENTS.md), the [active backlog](BACKLOG.md)
+Updated 2026-11-05. Read [AGENTS.md](../AGENTS.md), the [active backlog](BACKLOG.md)
 and the selected task's design before editing. This file describes current state;
 [planning history](history/README.md) holds completed tickets and old checkpoints.
 
 ## Next work
 
-**ZOD-287: trace roster general-search admission, focus and movement scenarios.**
-[ZOD-283–286](behavior/roster-ai-preparation.md) now refresh a living ordinary
-roster through one shared private clock, prepare owned-list/team flags on restored
-state, and score an isolated legal move hypothesis across all units. No new
-command driver is activated. Trace policy precedence and manual/general admission
-before deriving roster focus, reach, scenarios, destination ties and priority
-provenance. Multi-ally support and MostlySupport can select policies excluded by
-the old pair domain; do not assume general search from team alone. Keep full
-action/effect/target traversal, corpse movement/death scheduling, other statuses/
-maps/policies, automatic facing, terminal routing, frame RNG, host/editor,
-owner drafts, replacement interfaces and ZOD-106 separate/deferred.
+**ZOD-290: trace roster cast-origin priorities and supported-action search.**
+[ZOD-287–289](behavior/roster-ai-general-scenarios.md) now own a fresh roster
+general prefix with support-aware policy admission, nearest focus and source
+movement scenarios. Critical retreat, FadingLife and Blue healer focus reject;
+direct-control/special behavior must be explicitly excluded. Shared private
+layout/projection/clock/scoring kernels preserve pair streams and unknown cell
+priorities. Next trace supported-action occurrence/target/aim/cast traversal,
+actual grant/effect/numeric admission and written/retained/unread priority reads
+before selecting its managed child. No roster AI command driver is activated.
+Keep other policies/statuses/maps, corpse lifecycle, automatic facing, terminal
+routing, frame RNG, host/editor, owner drafts, replacement interfaces and ZOD-106
+separate/deferred.
 
 The [original AI algorithm guide](architecture/original-ai-algorithm.md) maps
 policy precedence and all core source functions, with bounded implementation
@@ -76,16 +77,18 @@ without rewriting old evidence.
   are preserved byte-for-byte and tracked as deferred scaffolding. The owner
   explicitly left `AbilityToggles` consolidation for later; it is not wired into
   current metadata, the editor or rules. Other unimplemented flag families stay deferred.
-- Latest pure roster AI: [ZOD-284–286 preparation/simulation](behavior/roster-ai-preparation.md)
-  owns an effect-free profile with at most 16 present compact records, complete
-  source-order baselines and explicit retained policies/context. Fresh refresh
-  captures live actor delay and runs one whole-roster clock. Supported-list
-  summaries sum all enemies, clear the first lowest-share ally and preserve
-  post-ACT reach-before-clear. Team support retains early-exit/Blue propagation
-  distinctions and uncomputed count diagnostics. Targets use restored live facts.
-  An isolated legal move score uses shared private projection/clock/absolute
-  scoring, every unit's team sign and unchanged facing. These are diagnostics,
-  not caller-supplied executable plans or full scenario/action selection.
+- Latest pure roster AI: [ZOD-288/289 general preparation/scenarios](behavior/roster-ai-general-scenarios.md)
+  privately own [roster refresh/list/team preparation](behavior/roster-ai-preparation.md)
+  and derive general admission/focus, ANY diagnostics, legal origins and restored
+  proximity/delays. Blue ratio 45, conditional retreat and MostlySupport/support
+  flags remain distinct. Self-focus zeroes target distances; first source-unit
+  ties differ from last map-tile ties. Shared private scenario layout filters
+  and scores one ordered mask, then performs NonBlue reach adjustment. Actor
+  reinsertion follows scenario2; unscored priorities stay unknown. Before/after
+  Move and post-ACT choices, all-unit score signs and unchanged hypothetical
+  facing are preserved. No cached public input, fake pair target, action search,
+  rank/lottery or command authority is added. Runtime AI compact16, Framework
+  slot21 and movement16 other records remain separate from uncapped storage.
 - Latest authoritative prerequisites: [ZOD-278–282 roster commands](behavior/flat-roster-combat.md)
   own immutable stable teams/source order and strict ground/profile matching.
   Shared range/backtrace permits ally transit but empty endpoints; source movement
@@ -145,14 +148,11 @@ without rewriting old evidence.
   explicit player-control flag clear, HP*128/maxHP>=45 and no NonBlue reach draw.
   Existing Attack/Stone scoring/selection/execution and both teams are preserved;
   terminal routing and Blue low-HP/player-controlled policies remain open.
-- Latest source study: [ZOD-283 roster preparation](architecture/zod-283-roster-preparation.md)
-  pins 17 functions across seven files. Thirteen isolated source descriptions
-  cover clock ties/HP flags, team support, lowest-share order, multi-enemy threats
-  and per-unit absolute scores. Original compact16, source slot21 and other
-  movement-record16 limits remain distinct. Prior
-  [roster combat](architecture/zod-277-roster-combat.md) and
-  [roster targeting](architecture/zod-271-roster-targeting.md) studies retain their
-  provenance; old pair/list/workspace/scenario evidence remains unchanged.
+- Latest source study: [ZOD-287 roster general search](architecture/zod-287-roster-general-search.md)
+  pins 29 functions across eight files. Eighteen independent descriptions cover
+  policy order, HP/support boundaries, focus/fallback, masks, destination ties,
+  known/unknown priorities and literal RNG. Prior roster preparation/combat/
+  targeting and pair/list/workspace evidence retain their provenance.
 - Organization: AI source/tests use Shared, Sword, ThrowStone, AttackThrowStone,
   Accumulate and BasicSkill folders with stable namespaces; [layout](development/ai-source-layout.md).
   Owner RNG migration is completed as `Zodiac.Framework.Random.RandomStateGenerator`
@@ -166,11 +166,11 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore, zero-warning/error Release build and **4,335 .NET
-  cases** (1,483 Framework, 1,107 AI), including 10 new AI cases, pass. All
-  **551 Python tests**, pinned source/prepared-data, algorithm-guide, local-link
+- Validation: locked restore, zero-warning/error Release build and **4,343 .NET
+  cases** (1,483 Framework, 1,115 AI), including eight new AI cases, pass. All
+  **554 Python tests**, pinned source/prepared-data, algorithm-guide, local-link
   and coverage checks pass. Seven full TRX reports/logs are under ignored
-  `scratch/roster-preparation-283-286/`.
+  `scratch/roster-scenarios-287-289/`.
   Python uses repository-pinned Pillow 12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow 13.0.0 triggers six existing version guards; WindowsApps Python

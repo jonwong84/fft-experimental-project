@@ -74,23 +74,26 @@ evaluation/lottery and actual complete recoverable turns.
 [Roster targeting queries](../behavior/ai-roster-targeting.md) now supply ordered
 live/cache membership, eligible-enemy nearest focus, active masks and imminent
 proximity over resolved facts, shared with admitted pair preparation. Full roster
-refresh/team/ability/effect traversal, other policies/maps and independent
-validation remain open. [Actual roster commands](../behavior/flat-roster-combat.md)
+ability/effect traversal, other policies/maps and independent validation remain open. [Actual roster commands](../behavior/flat-roster-combat.md)
 now support ordinary living-roster ally transit/empty endpoints, selected sword
 resolution and explicit-facing settlement through shared kernels. Existing AI
 profiles/drivers still require two opponents; corpse movement/death scheduling
 remain unimplemented. [Pure roster preparation](../behavior/roster-ai-preparation.md)
 now owns one fresh whole-roster refresh, supported-list/team flags and an isolated
-legal move score through shared clock/projection/scoring owners. General policy,
-focus/scenario and action/target search still require separate work.
+legal move score through shared clock/projection/scoring owners.
+[Roster general scenarios](../behavior/roster-ai-general-scenarios.md) now derive
+support-aware general admission, nearest focus, ANY diagnostics and ordered
+movement masks/destinations/provenance. Other policies and action/target search
+still require separate work.
 
 The [ZOD-210 cleanup](ai-pair-selection-refactor.md) shares pair admission and
 composition/lottery handling while retaining separate scenario/provenance rules.
 Immutable request/configuration records simplify selection and execution inputs;
 this introduces no broader replacement contract or behavior change.
 
-These are bounded implementations: ordinary flat geometry, two opponents,
-restricted lists/statuses and explicit assertions about unrepresented context.
+These are bounded implementations: ordinary flat geometry, pair command drivers
+and separate living-roster queries, restricted lists/statuses and explicit
+assertions about unrepresented context.
 They do not establish general original-game AI equivalence. Existing source
 studies pin fft_decomp `11464943bbdbd2a0af022d90cb7f10455cf911df`; recheck the
 read-only reference revision before new tracing. Test count is not a completion measure.
@@ -177,7 +180,8 @@ turn recovery, retaining canonical guards. ZOD-271–276 now provide shared rost
 targeting queries. ZOD-277–282 add source-bounded actual roster movement/sword/
 explicit-facing commands without weakening old pair admission. ZOD-283–286
 add pure roster refresh, summaries/team flags and isolated movement scoring.
-ZOD-287 next traces general-search policy admission, focus and movement scenarios.
+ZOD-287–289 add fresh general admission/focus and source movement scenarios.
+ZOD-290 next traces roster cast-origin priorities and supported-action search.
 Broader control/low-HP/terminal policies remain separate.
 A certificate for one closed ability list cannot stand in for another list.
 

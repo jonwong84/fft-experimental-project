@@ -15,7 +15,10 @@ family. Source and test projects use matching folders:
   `RosterAiMovementBaseline` uses shared private projection/clock/absolute score
   kernels without inventing a pair target or accepting cached simulations.
   [Boundaries](../../docs/behavior/roster-ai-preparation.md) remain explicit;
-  general focus/scenarios/action search and live roster AI commands are future work.
+  `RosterAiGeneralPreparation`/`GeneralScenarios` now derive support-aware general
+  admission/focus and roster movement masks/destinations through shared private
+  `AiScenarioLayout` arithmetic. [Policy and provenance limits](../../docs/behavior/roster-ai-general-scenarios.md)
+  stay explicit; action search and live roster AI commands are future work.
   These serve more than one family.
 - `Sword/`: the original ordinary-sword pilot, its preparation, scenarios,
   scans, selection and execution adapters.

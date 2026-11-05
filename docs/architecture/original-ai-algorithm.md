@@ -111,7 +111,10 @@ See [refresh](zod-156-ai-refresh-prefix.md),
 construct supported default-menu actions and supply canonical preparation.
 [Roster targeting queries](../behavior/ai-roster-targeting.md) now implement
 separate membership, eligible-enemy nearest focus, active masks and proximity
-over resolved facts. Full roster refresh/list/effect traversal, teams, status
+over resolved facts. [Roster preparation](../behavior/roster-ai-preparation.md)
+now owns living ordinary roster refresh/list/team flags, and
+[general preparation/scenarios](../behavior/roster-ai-general-scenarios.md) derives
+bounded support-aware admission and focus. Full ability/effect traversal, status
 timing and special policies remain **mapped, unported**. Pair post-ACT command execution now uses fresh pair preparation;
 the [certified Blue AI-controlled branch](../behavior/blue-attack-throw-stone-ai.md)
 shares it while retaining control/HP boundaries and team-specific policies.
@@ -219,6 +222,9 @@ those phases. This is not a blanket instruction to cancel or preserve charges.
 **Implemented, bounded:** ordinary flat movement/scoring and explicit reach
 branches, including the two-family pre-ACT pair and
 [post-ACT pair scenarios](../behavior/attack-throw-stone-ai-post-act-scenarios.md).
+[Roster general scenarios](../behavior/roster-ai-general-scenarios.md) now share
+private layout/projection/clock/scoring owners after derived ordinary admission,
+including self-focus, team adjustment and unknown priority provenance.
 Charging, terrain breadth and
 special scenario overrides remain **mapped, unported**. Unknown original-origin
 priority values and retained/event alias history remain **unresolved** where
@@ -456,8 +462,10 @@ selected sword resolution and explicit-facing sessions through shared Framework
 kernels. [ZOD-283–286](../behavior/roster-ai-preparation.md) add separate fresh
 ordinary-roster refresh, supported-list/team preparation and isolated movement
 scores through shared private clocks/projections/scoring. Existing AI command
-drivers remain pair-bounded; ZOD-287 next traces roster general-search admission,
-focus and movement scenarios. Full original search breadth remains separate.
+drivers remain pair-bounded. [ZOD-287–289](../behavior/roster-ai-general-scenarios.md)
+derive fresh general admission/focus and roster movement scenarios through shared
+private kernels. ZOD-290 next traces roster cast-origin priorities and supported
+action search. Full original search breadth remains separate.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use
 the supported domain and a real consumer, rather than exposing the entire
