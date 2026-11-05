@@ -30,7 +30,10 @@ family. Source and test projects use matching folders:
   preserve old pair guards and peer state. `RosterSwordAiAttackEntry` now owns
   [fresh exhaustive roster Attack](../../docs/behavior/roster-sword-ai-attack.md),
   with map origin/aim order, first-complete ties and D0 comparison. Stone/list
-  selection remains open.
+  selection remains open. `RosterThrowStoneAiCandidate` projects one supplied
+  [certified-clear roster Stone candidate](../../docs/behavior/roster-throw-stone-ai-candidate.md)
+  with real typed grants and shared formula/state/clock/scoring; computed
+  trajectories and ranked Stone search remain open.
 - `ThrowStone/`: one Throw Stone formula/candidate/scan, used by pair selection.
 - `AttackThrowStone/`: the closed two-entry list, shared pair preparation,
   movement/scenario branches, ranking/selection and actual command adapters.

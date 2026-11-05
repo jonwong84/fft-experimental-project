@@ -12,7 +12,7 @@ FIXTURE=ROOT/'docs/fixtures/behavior/roster-sword-contract-v1.json'
 EVIDENCE=ROOT/'docs/evidence/ai/roster-sword-source-v1.json'
 
 
-def describe(data):
+def describe(data, *, stone=False):
     d=copy.deepcopy(data);units=sorted(d['units'],key=lambda u:u['order'])
     require(1<=len(units)<=16 and len({u['id'] for u in units})==len(units) and len({u['order'] for u in units})==len(units),'Compact distinct roster')
     require(len({tuple(u['tile']) for u in units})==len(units),'Distinct positions')
@@ -34,16 +34,20 @@ def describe(data):
     require(destination in distances and distances[destination]<=min(124,d['move']) and destination not in occupied and
         (not d['moved'] or destination==start),'Initial legal destination')
     origin=destination if d['order']=='MoveThenAct' else start;dx=target['tile'][0]-origin[0];dy=target['tile'][1]-origin[1]
-    require(abs(dx)+abs(dy)==1,'Formula range')
-    xa=max(1,actor['pa']);require(0<=d['power']<=255 and (2*xa-1)*d['power']<=32767,'Bound sword envelope')
-    front='West' if dx>0 else 'East' if dx<0 else 'South' if dy>0 else 'North'
-    hit=100-(target['evade'] if target['face']==front else 0);word=d['word'];count=d['count'];ticks=d['ticks']
+    require(1<=abs(dx)+abs(dy)<=4 if stone else abs(dx)+abs(dy)==1,'Formula range')
+    xa=max(1,actor['pa'])
+    if stone:require(all(1<=u['pa']<=99 for u in units) and d['clearTrajectory'] is True,'Bound certified clear Stone')
+    else:require(0<=d['power']<=255 and (2*xa-1)*d['power']<=32767,'Bound sword envelope')
+    horizontal=(dx>0 and target['face']=='West') or (dx<0 and target['face']=='East')
+    vertical=(dy>0 and target['face']=='South') or (dy<0 and target['face']=='North')
+    front=horizontal if abs(dx)>abs(dy) else vertical if abs(dy)>abs(dx) else horizontal or vertical
+    hit=100-(target['evade'] if front else 0);word=d['word'];count=d['count'];ticks=d['ticks']
     def draw():
         nonlocal word,count
         require(count<0xffffffffffffffff,'Draw budget');word=(word*1103515245+12345)&0xffffffff;count+=1
     for _ in range(4):draw()
     if hit==0:return dict(disposition='NotValuable',word=word,count=count)
-    damage=min(999,xa*d['power']);target['hp']=max(0,target['hp']-damage)
+    damage=2*xa if stone else min(999,xa*d['power']);target['hp']=max(0,target['hp']-damage)
     end=min(60,actor['ct']+(0 if d['moved'] or destination!=start else 20));actor['ct']=end
     elapsed=0;picks=[]
     while True:

@@ -18,6 +18,13 @@ public static class ThrowStoneAiFormulaProjection
     {
         var invalid = TargetedAbilityBattleSimulator.ValidateCommand(state, command, profile);
         if (invalid != AttackCommandRejection.None) return new(false, invalid, null, decisionRng);
+        return EvaluateAdmitted(state, command, decisionRng);
+    }
+
+    // Pair public admission remains in Framework. Roster owners establish their complete admission separately.
+    internal static ThrowStoneAiFormulaResult EvaluateAdmitted(AttackBattleSnapshot state, UseTargetedAbilityCommand command,
+        RandomState decisionRng)
+    {
         var actor = state.Combatants.Single(unit => unit.UnitId == command.ActorId);
         var target = state.Combatants.Single(unit => unit.UnitId == command.TargetId);
         state.TurnBattle.Battle.TryGetUnit(actor.UnitId, out var from);

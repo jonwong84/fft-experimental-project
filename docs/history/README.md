@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 263 entries index completed bounded work; they do not mean the full game is complete.
+These 265 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -286,3 +286,5 @@ These 263 entries index completed bounded work; they do not mean the full game i
 - [ZOD-294 — Trace one ordinary roster sword candidate/effect boundary](../architecture/zod-294-roster-sword-candidate.md)
 - [ZOD-295 — Project and score an isolated ordinary roster sword candidate](../behavior/roster-sword-ai-candidate.md)
 - [ZOD-296 — Evaluate ordinary roster Attack through a fresh general prefix](../behavior/roster-sword-ai-attack.md)
+- [ZOD-297 — Trace roster Throw Stone effect, trajectory and ranked-aim search](../architecture/zod-297-roster-stone-search.md)
+- [ZOD-298 — Project one supplied certified-clear roster Throw Stone candidate](../behavior/roster-throw-stone-ai-candidate.md)

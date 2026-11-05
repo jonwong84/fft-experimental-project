@@ -191,7 +191,9 @@ ZOD-287–289 add fresh general admission/focus and source movement scenarios.
 ZOD-290–293 add cast-priority binding, roster self usefulness and an isolated
 fresh self entry. ZOD-294/295 add an isolated roster sword candidate and source
 study. ZOD-296 now connects exhaustive Attack search to a fresh general prefix.
-ZOD-297 next traces roster Stone effects, direct trajectories and ranked aims.
+ZOD-297/298 now trace ranked aims and project one supplied certified-clear
+roster Stone candidate. ZOD-299 next resolves computed direct trajectories
+and missing sprite/SDK inputs before selecting fresh ranked Stone search.
 Broader control/low-HP/terminal policies remain separate.
 A certificate for one closed ability list cannot stand in for another list.
 

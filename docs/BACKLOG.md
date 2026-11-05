@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-297 (trace roster Throw Stone effect, trajectory and ranked-aim search).** ZOD-296 owns one fresh general prefix and exhaustive Attack enumeration across every active useful enemy. Pair command drivers retain their guards; roster Stone and full-list selection remain separate.
-There are 34 open tickets below. The 263 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-299 (resolve bounded roster Stone trajectory admission).** ZOD-297/298 trace ranked aims and implement one supplied certified-clear roster Stone candidate. Computed trajectories precede fresh ranked Stone search; full-list selection remains separate.
+There are 34 open tickets below. The 265 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,24 +29,23 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-297 — Trace roster Throw Stone effect, trajectory and ranked-aim search
+### ZOD-299 — Resolve bounded roster Stone direct-trajectory admission
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-291, ZOD-295, ZOD-296
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-297, ZOD-298
 
-Pin the read-only reference and trace the existing Stone effect/grant/numeric
-profile and formula into a roster candidate, preserving all peer state and
-whole-roster clocks/scores. Trace direct trajectory checks against every occupant,
-range4 cast-key union, ranked origin ties, target panel order, evaluated-aim
-consumption and remaining origin/aim counts across multiple enemies. Reuse
-shared fresh prefix/priority/candidate/rank owners; never repeat refreshed pair
-decisions, guess an unknown key, omit a blocked target without source evidence,
-or infer grants from an AI entry. Record concrete independent vectors and select
-bounded managed children before coding. Full-list ranking/lottery, roster AI
-commands/turns, other abilities/policies/statuses/maps, full corpse lifecycle,
-automatic facing, terminal routing, frame RNG, host/editor, owner drafts,
-replacement interfaces and ZOD-106 remain separate/deferred. See
-[fresh roster Attack](behavior/roster-sword-ai-attack.md) and
-[roster search study](architecture/zod-290-roster-action-search.md).
+Resolve the exact source inputs and SDK rounding needed for computed direct
+trajectory checks across every occupant. Current state lacks sprite heights,
+and the local reference only declares SquareRoot12. Select an independently
+checkable domain or record the precise remaining evidence dependency; never
+guess a default height, use a panel line approximation or silently omit blocked
+aims. Trace candidate origin placement and complete initial occupant geometry,
+strict collision boxes and fixed-point sampling. Preserve ZOD-298's explicit
+single-candidate clear certificate and existing pair guards. Select computed
+trajectory and fresh ranked roster Stone search children only after the boundary
+is concrete. Full-list ranking/lottery, roster commands/turns and all existing
+ability/policy/status/map, corpse, facing, terminal/frame RNG, host/editor,
+owner-draft, replacement-interface and ZOD-106 deferrals remain.
+See [roster Stone source study](architecture/zod-297-roster-stone-search.md).
 
 ## Existing validation gates
 
