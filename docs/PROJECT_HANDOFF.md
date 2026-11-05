@@ -6,7 +6,14 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-348: trace live magic stat and Faith inputs.**
+**ZOD-349: Classify source zodiac compatibility for shared magic.**
+[Current magic inputs and casts](behavior/magic-current-inputs-and-casts.md)
+records completed ZOD-348. Current effective MA and current Faith are
+distinct from base/equipment MA and original Faith. Keep snapshots immutable,
+source classification/rounding/order explicit, and all state/RNG adoption outside
+pure queries. Resource/charge children preserve scheduling versus MP spending.
+No original target geometry, spell commands, live state or magic AI activation.
+
 [Magic evasion](behavior/magic-evasion.md) records completed ZOD-342, ZOD-344, ZOD-345, ZOD-346, ZOD-347
 from clean source `11464943bbdbd2a0af022d90cb7f10455cf911df` (13 files/21 functions).
 `FaithMagicFormula.Resolve` now owns certified nonzero fresh formula entry,

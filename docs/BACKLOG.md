@@ -4,13 +4,12 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-348 (trace live magic stat and Faith inputs).**
-[Magic evasion and entry](behavior/magic-evasion.md) records the pinned trace and
-completed bounded children: ZOD-342, ZOD-344, ZOD-345, ZOD-346, ZOD-347. Magic
-uses its own equipment/status chain, real ordered draws even in AI/preview, and
-source hit-versus-accuracy facts. Shared formula arithmetic and geometry remain
-independent; no live publication, commands or magic AI activation is inferred.
-There are 34 open tickets below. The 314 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-349 (Classify source zodiac compatibility for shared magic).**
+[Current magic inputs and casts](behavior/magic-current-inputs-and-casts.md)
+records completed ZOD-348. Read current effective MA/current Faith;
+preserve typed shared calculations, explicit context and candidate RNG/state.
+Scheduling, resource consumption and target calculations have separate owners.
+There are 42 open tickets below. The 315 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -34,18 +33,77 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-348 — Trace live magic stat and Faith inputs
+### ZOD-349 — Classify source zodiac compatibility for shared magic
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-347
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-348
 
-Trace source loading and updates of live MA, Faith and the status/support/modifier
-facts consumed by the bounded magic calculation. Pin the read-only reference;
-distinguish stored battle values, copied work and status priority. Identify the
-smallest immutable snapshot projection child with explicit unsupported context.
-Source/design only; no live state, equipment import, spell grants, MP/charge,
-targeting, commands or AI activation. Owner drafts, JobStats, host/editor,
-automatic facing, full corpse/Golem/terminal/status/frame RNG, broad interfaces
-and ZOD-106 remain separate/deferred. See the [source and boundaries](behavior/magic-evasion.md).
+Classify the pinned sign-difference table, Serpentarius and exact sex/monster opposition semantics into the existing compatibility enum. Preserve arithmetic owner and unknown-sign guards. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
+Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/
+deferred. See the [source and boundaries](behavior/magic-current-inputs-and-casts.md).
+
+### ZOD-350 — Project immutable current magic inputs
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-349
+
+Capture current effective MA, current Faith/status/support/affinity/equipment facts as immutable inputs. Project shared formula/evasion facts without touching the narrow sword state. Reject unsupported living/element contexts and conflicting same-unit snapshots. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
+Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/
+deferred. See the [source and boundaries](behavior/magic-current-inputs-and-casts.md).
+
+### ZOD-351 — Resolve shared magic from current unit snapshots
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-350
+
+Compose projected current inputs through the shared formula with explicit remaining entry/finalizer certificates, pure replay and atomic rejection. Preserve healing bypass and all old APIs. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
+Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/
+deferred. See the [source and boundaries](behavior/magic-current-inputs-and-casts.md).
+
+### ZOD-352 — Trace ordinary spell MP and charge preparation
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-351
+
+Trace MP checks, charge setup and countdown callers, mode behavior, storage widths and order. Distinguish scheduling from spending at resolution, and choose independently testable children before implementation. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
+Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/
+deferred. See the [source and boundaries](behavior/magic-current-inputs-and-casts.md).
+
+### ZOD-353 — Evaluate source MP admission and candidate consumption
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-352
+
+Implement ordinary MP checks as a pure query, including restriction/Frog/Silence order, menu/Mime bypasses, Half MP floors, signed MP reads, recorded cost and preview versus AI/execute candidate subtraction. Do not perform action-state bookkeeping or publish state. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
+Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/
+deferred. See the [source and boundaries](behavior/magic-current-inputs-and-casts.md).
+
+### ZOD-354 — Calculate ordinary spell charge setup
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-353
+
+Implement low-seven-bit CT, Short Charge ceiling, Non-Charge and Persevere bypass from explicit source facts. Scheduling result data only; no MP spend, status/turn publication or AI activation. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
+Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/
+deferred. See the [source and boundaries](behavior/magic-current-inputs-and-casts.md).
+
+### ZOD-355 — Query one deterministic charge countdown step
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-354
+
+Implement one explicitly allowed/blocked charge-counter step, preserving None255, zero readiness and full-byte stores. No global clock advance, event emission, performance repeat or frame RNG. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
+Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/
+deferred. See the [source and boundaries](behavior/magic-current-inputs-and-casts.md).
+
+### ZOD-356 — Prepare a certified ready magic cast once
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-355
+
+Prepare immutable ordinary non-Mime cast work only at certified resolution readiness, evaluating MP once and retaining source block/recorded-cost facts. Charge scheduling alone must not spend MP. Return candidate state only. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
+Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/
+deferred. See the [source and boundaries](behavior/magic-current-inputs-and-casts.md).
+
+### ZOD-357 — Resolve ordered immediate cast targets with one MP charge
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-356
+
+Evaluate explicitly ordered eligible targets through the shared current-input formula, with one prepared MP charge, unique IDs, deterministic RNG continuation and whole-query rollback. No geometry inference or HP/MP/status publication. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
+Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/
+deferred. See the [source and boundaries](behavior/magic-current-inputs-and-casts.md).
 
 ## Existing validation gates
 
