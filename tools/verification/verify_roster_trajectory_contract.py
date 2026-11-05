@@ -17,9 +17,9 @@ def sqrt12(value):
     return factor<<exponent if exponent>=0 else factor>>-exponent
 
 
-def describe(data):
+def describe(data, *, include_target=False, max_units=16):
     d=copy.deepcopy(data);units=sorted(d['units'],key=lambda u:u['order'])
-    require(2<=len(units)<=16 and len({u['id'] for u in units})==len(units) and len({u['order'] for u in units})==len(units),'Distinct compact roster')
+    require(2<=len(units)<=max_units and len({u['id'] for u in units})==len(units) and len({u['order'] for u in units})==len(units),'Distinct bounded roster')
     for u in units:require(0<=u['height']<=255 and len(u['tile'])==2 and 0<=u['tile'][0]<8 and 0<=u['tile'][1]<4,'Explicit flat sprite metadata')
     actor=next(u for u in units if u['id']==d['actor']);target=next(u for u in units if u['id']==d['target'])
     require(actor!=target,'Distinct endpoints');origin=d['origin'];destination=target['tile']
@@ -34,7 +34,7 @@ def describe(data):
         else:
             blocked=False
             for u in units:
-                if u in (actor,target):continue
+                if u==actor or (not include_target and u==target):continue
                 if -120-u['height']<point[1]<-120 and u['height']!=0 and abs(point[0]-(u['tile'][0]*28+14))<8 and abs(point[2]-(u['tile'][1]*28+14))<8:
                     blocker=u['id'];blocked=True;break
         if blocked:return dict(clear=False,blocker=blocker,sample=i,samples=samples,distance=distance,point=point)

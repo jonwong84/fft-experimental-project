@@ -6,19 +6,17 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-306: trace actual roster Stone interception, knockback and admission.**
-[ZOD-304](architecture/zod-304-roster-ai-execution.md) maps authoritative
-integration prerequisites. [ZOD-305](behavior/roster-immediate-ability-session.md)
-exposes the already roster-capable actual self effect through existing session
-publication/receipts, preserving peers/RNG and actual Move/ACT settlement.
-Live Stone still has a pair guard. Its projectile query includes the intended
-target and may intercept another unit, unlike AI's boolean; trace clear-path
-admission/interception and all-occupant landing before its runtime child.
-Framework must not reference AI: a real second geometry consumer should share
-the lower-layer kernel rather than duplicate it. Verified roster decision RNG,
-continuations, first/post-ACT dispatch and exact-session recovery follow later.
-Automatic facing, full corpse lifecycle, terminal/frame RNG, host/editor,
-owner drafts, replacement interfaces and ZOD-106 remain separate/deferred.
+**ZOD-310: trace verified roster AI decision and retained Move authority.**
+[ZOD-306–309](behavior/roster-live-throw-stone.md) move exact direct geometry to
+Framework and add actual roster Stone with first-unit interception, real formula/
+RNG and all-occupant landing checks. Existing pair guards and AI geometry facade
+remain; Framework never references AI. Roster sessions now expose both actual
+self and targeted abilities through the existing publisher/receipt owner.
+Next trace private fresh roster decision proposals, verified RNG adoption,
+retained Move-first ACT/END, first/post-ACT dispatch and exact-session recovery.
+Public cached plans remain non-authoritative. Explicit fixed/kept facing suffices;
+automatic facing, complete corpse/terminal/frame RNG, host/editor, owner drafts,
+replacement interfaces and ZOD-106 remain separate/deferred.
 
 The [original AI algorithm guide](architecture/original-ai-algorithm.md) maps
 policy precedence and all core source functions, with bounded implementation
@@ -53,7 +51,7 @@ own that separate boundary.
 Attack-only and pair post-ACT execution privately own selection/dispatch, adopt verified RNG,
 and commit either a confirmed path plus actual-receipt facing, or same-tile END.
 It stops after settlement without a Move-first token, extra Attack or clock advance.
-Full AI search, general multi-entry ranking/lottery, replaceable decision interface
+Broader original-ability search/ranking, a replaceable decision interface
 and presentation activation remain future work.
 Original UNIT_SLOT_COUNT is **21**; the old 26-foe wrap example is inadmissible.
 This does not select a fixed managed roster size. The contract records the erratum
@@ -97,19 +95,17 @@ without rewriting old evidence.
   [Full supported roster list selection](behavior/roster-basic-skill-ai-selection.md)
   now composes those private fresh owners with stable rank insertion and source
   lottery. It returns pure plans without roster AI command authority. No cached trusted
-  result, command authority or full-list stream is claimed. AI compact16,
+  input, live command authority or full-game stream equivalence is claimed. AI compact16,
   Framework slot21 and 16 other movement records stay distinct from uncapped
   storage; general policy/flat/MP0 guards remain explicit.
-- Latest authoritative prerequisites: [ZOD-278–282 roster commands](behavior/flat-roster-combat.md)
-  own immutable stable teams/source order and strict ground/profile matching.
-  Shared range/backtrace permits ally transit but empty endpoints; source movement
-  truncation beyond 16 other living units rejects. Runtime battle admission is
-  bounded to 21 source slots; profile storage has no catalog capacity. Actual Move
-  shares path/heading/choice settlement with pair execution; AttackRoster uses the
-  existing sword kernel and all-occupant critical landing check. A separate opaque
-  roster session shares exact receipt guards and supports explicit fixed/kept
-  facing after actual Move/ACT/Wait. Old pair profiles/APIs retain their guards;
-  AI queries and complete-turn drivers are not broadened by these commands.
+- Latest authoritative prerequisites: [ZOD-306–309 live Stone](behavior/roster-live-throw-stone.md)
+  share exact Framework geometry, preserve AI compact16/legal origins and actual
+  slot21 admission, resolve the first intercepted unit, and reuse the actual
+  Stone formula/choice/result kernel with all-occupant push checks. Pair guards
+  stay intact. Both roster ability kinds now share the opaque session publisher,
+  real completion receipts, explicit facing and late atomic failures. Earlier
+  [roster Move/Attack foundations](behavior/flat-roster-combat.md) remain. No live
+  roster AI decision adoption or complete-turn driver is implied.
 - Latest targeting foundation: [ZOD-272–276 roster queries](behavior/ai-roster-targeting.md)
   own ordered semantic live/decision facts without a fixed roster capacity.
   Live untargetability, cached out-of-play, active ability targets and imminent
@@ -159,11 +155,11 @@ without rewriting old evidence.
   explicit player-control flag clear, HP*128/maxHP>=45 and no NonBlue reach draw.
   Existing Attack/Stone scoring/selection/execution and both teams are preserved;
   terminal routing and Blue low-HP/player-controlled policies remain open.
-- Latest source trace: [ZOD-304 execution prerequisites](architecture/zod-304-roster-ai-execution.md)
-  pins 79 functions across 26 files and reviews existing authoritative session/
-  proposal/continuation owners. Eight independent actual self vectors separate
-  PA/choice/CT/no-RNG settlement from AI score credits. Existing full-list,
-  entry/trajectory and prepared SDK factor evidence retains its provenance.
+- Latest source trace: [ZOD-306 actual Stone](architecture/zod-306-roster-live-stone.md)
+  pins83 functions across27 files. Thirteen independent live tapes cover actual
+  interception, target-specific evade, real damage/Brave, KO byte wrap and
+  all-occupant/edge/diagonal landing. Shared geometry retains the prepared SDK
+  factor proof and all prior AI sample/stream evidence.
 - Organization: AI source/tests use Shared, Sword, ThrowStone, AttackThrowStone,
   Accumulate and BasicSkill folders with stable namespaces; [layout](development/ai-source-layout.md).
   Owner RNG migration is completed as `Zodiac.Framework.Random.RandomStateGenerator`
@@ -177,16 +173,16 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore, zero-warning/error Release build and **4,400 .NET
-  cases** (1,487 Framework, 1,168 AI), including four new Framework cases, pass. All
-  **578 Python tests**, pinned source/prepared-data, algorithm-guide, local-link
+- Validation: locked restore, zero-warning/error Release build and **4,413 .NET
+  cases** (1,500 Framework, 1,168 AI), including thirteen new Framework cases, pass. All
+  **581 Python tests**, pinned source/prepared-data, algorithm-guide, local-link
   and coverage checks pass. Seven full TRX reports/logs are under ignored
-  `scratch/roster-execution-304-305/`.
+  `scratch/roster-live-stone-306-309/`.
   Python uses repository-pinned Pillow 12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow 13.0.0 triggers six existing version guards; WindowsApps Python
   is unavailable. All nine owner drafts remain unchanged, including AbilityToggles.
-  Framework adds only the roster session self wrapper; no Content/host/editor
+  Framework adds shared geometry and actual roster Stone/session support; no Content/host/editor
   or project/lock/package/dependency changes.
   Nine historical checkpoint audits last passed at ZOD-158; unchanged snapshots
   were not rerun. No original/C execution, host/editor activation or UI review.

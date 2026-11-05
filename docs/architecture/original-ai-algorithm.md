@@ -489,7 +489,9 @@ aims. [ZOD-302/303](../behavior/roster-basic-skill-ai-selection.md) now compose
 one full supported roster list, stable rank insertion and source lottery.
 [ZOD-304/305](../behavior/roster-immediate-ability-session.md) trace execution
 prerequisites and expose actual self abilities through roster sessions. ZOD-306
-next traces live Stone interception/knockback before its runtime child.
+now traces/implements live Stone interception/knockback and shared Framework
+geometry through ZOD-306–309. ZOD-310 next traces verified roster decision/
+continuation authority.
 Full original search breadth remains separate.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use

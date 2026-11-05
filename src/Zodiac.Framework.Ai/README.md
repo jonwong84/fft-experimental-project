@@ -104,3 +104,8 @@ for policy/source coverage and the [completion roadmap](../../docs/development/a
 for remaining breadth. Historical evidence records paths at its pinned managed
 revision. Current coverage links follow this layout; old hash receipts must not
 be regenerated merely because files moved.
+
+Exact roster projectile sampling now belongs to Framework `FlatRosterDirectTrajectory`;
+the AI facade preserves compact16/legal-origin admission and between-unit semantics.
+Actual roster Stone uses the live to-target mode with interception. Neither pure
+geometry nor public AI plans grant command authority.

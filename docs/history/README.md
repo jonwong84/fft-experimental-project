@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 272 entries index completed bounded work; they do not mean the full game is complete.
+These 276 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -295,3 +295,7 @@ These 272 entries index completed bounded work; they do not mean the full game i
 - [ZOD-303 — Select one fresh full supported roster list decision](../behavior/roster-basic-skill-ai-selection.md)
 - [ZOD-304 — Trace authoritative roster AI command and turn integration](../architecture/zod-304-roster-ai-execution.md)
 - [ZOD-305 — Expose actual self abilities through roster sessions](../behavior/roster-immediate-ability-session.md)
+- [ZOD-306 — Trace actual roster Stone interception, knockback and admission](../architecture/zod-306-roster-live-stone.md)
+- [ZOD-307 — Share exact direct projectile geometry in Framework](../behavior/roster-live-throw-stone.md)
+- [ZOD-308 — Execute actual roster Stone with source target interception](../behavior/roster-live-throw-stone.md)
+- [ZOD-309 — Expose actual roster Stone through opaque sessions](../behavior/roster-live-throw-stone.md)

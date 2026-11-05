@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-05",
   "edition": "SCUS-94221",
-  "managedCommit": "ad34551",
+  "managedCommit": "2c4b2e0",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 4400,
-    "source": "docs/behavior/roster-immediate-ability-session.md",
+    "passed": 4413,
+    "source": "docs/behavior/roster-live-throw-stone.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -265,7 +265,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
-      "currentScope": "The bounded neutral sword remains executable. A separate ZOD-105 Accumulate profile changes current PA and feeds later sword damage with unchanged RNG order; ZOD-107 adds prepared Windows controls with owner approval. Ability-profile persistence is deferred. ZOD-281 adds explicit ordinary-roster single-target sword execution through the existing formula kernel, including friendly fire, all-occupant critical landings and bystander isolation. ZOD-282 adds separate actual-command/facing sessions; existing pair APIs/AI remain guarded.",
+      "currentScope": "The bounded neutral sword remains executable. A separate ZOD-105 Accumulate profile changes current PA and feeds later sword damage with unchanged RNG order; ZOD-107 adds prepared Windows controls with owner approval. Ability-profile persistence is deferred. ZOD-281 adds explicit ordinary-roster single-target sword execution through the existing formula kernel, including friendly fire, all-occupant critical landings and bystander isolation. ZOD-282 adds separate actual-command/facing sessions; existing pair APIs/AI remain guarded. Exact flat direct geometry now has one Framework owner and an AI facade preserving its extra guards. Actual roster Stone resolves interception and shares the existing actual formula/results and opaque session publisher, including all-occupant landing and real RNG. Pair guards remain; verified roster AI authority/turn integration is still open.",
       "referenceSources": [
         {
           "path": "src/battle/combat/targets.c",
@@ -296,7 +296,12 @@
         "docs/behavior/flat-roster-combat.md",
         "docs/evidence/combat/roster-combat-source-v1.json",
         "docs/evidence/combat/roster-combat-implementation-v1.json",
-        "docs/fixtures/behavior/roster-combat-contract-v1.json"
+        "docs/fixtures/behavior/roster-combat-contract-v1.json",
+        "docs/architecture/zod-306-roster-live-stone.md",
+        "docs/behavior/roster-live-throw-stone.md",
+        "docs/evidence/ai/roster-live-stone-source-v1.json",
+        "docs/fixtures/behavior/roster-live-stone-contract-v1.json",
+        "docs/evidence/ai/roster-live-stone-implementation-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/AttackBattleSimulator.cs",
@@ -310,7 +315,10 @@
         "src/Zodiac.Framework/FlatOrdinaryMovement.cs",
         "src/Zodiac.Framework/FlatSwordBattleProfile.cs",
         "src/Zodiac.Framework/FacingTurnPathMovement.cs",
-        "src/Zodiac.Framework/FacingTurnBattle.cs"
+        "src/Zodiac.Framework/FacingTurnBattle.cs",
+        "src/Zodiac.Framework/FlatRosterDirectTrajectory.cs",
+        "src/Zodiac.Framework/TargetedAbilityBattle.cs",
+        "src/Zodiac.Framework.Ai/Shared/RosterAiDirectTrajectory.cs"
       ],
       "automatedChecks": [
         {
@@ -332,6 +340,26 @@
         {
           "path": "tools/verification/test_roster_combat_contract.py",
           "scope": "Eleven isolated source-only movement/sword descriptions, input preservation, original-domain and tampered-claim checks; no original/C/managed execution."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/FlatRosterDirectTrajectoryTests.cs",
+          "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/RosterThrowStoneTests.cs",
+          "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/RosterTargetedAbilitySessionTests.cs",
+          "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
+        },
+        {
+          "path": "tools/verification/test_roster_live_stone_contract.py",
+          "scope": "Thirteen independent actual source tapes, live interception, real draw counts, KO wrap and invalid/tampered rejection."
+        },
+        {
+          "path": "tools/verification/verify_roster_live_stone_contract.py",
+          "scope": "Pinned83 functions/27 files and independent actual descriptions; no original/C/managed execution."
         }
       ],
       "manualCheckpoint": {
@@ -358,7 +386,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
-      "currentScope": "Accumulate controls remain owner-approved. Throw Stone pure rules now compose through strict targeted content/grants and first-KO lifecycle with Accumulate; TST-001..028 pass. Six-record verified import preserves source-0148 and historical bytes; repeated headless checks cover 46 commands/47 continuations. Windows target controls remain ZOD-111; broader original coverage remains open. Existing complete-roster actual self PA+1 now runs through the opaque roster session publisher/receipt owner; no RNG or new effect. Execution prerequisites are traced; live Stone interception and verified roster AI command/turn authority remain open.",
+      "currentScope": "Accumulate controls remain owner-approved. Throw Stone pure rules now compose through strict targeted content/grants and first-KO lifecycle with Accumulate; TST-001..028 pass. Six-record verified import preserves source-0148 and historical bytes; repeated headless checks cover 46 commands/47 continuations. Windows target controls remain ZOD-111; broader original coverage remains open. Existing complete-roster actual self PA+1 now runs through the opaque roster session publisher/receipt owner; no RNG or new effect. Execution prerequisites are traced; live Stone interception and verified roster AI command/turn authority remain open. Exact flat direct geometry now has one Framework owner and an AI facade preserving its extra guards. Actual roster Stone resolves interception and shares the existing actual formula/results and opaque session publisher, including all-occupant landing and real RNG. Pair guards remain; verified roster AI authority/turn integration is still open.",
       "referenceSources": [
         {
           "path": "src/battle/combat/formulas.c",
@@ -391,7 +419,12 @@
         "docs/behavior/roster-immediate-ability-session.md",
         "docs/evidence/ai/roster-execution-source-v1.json",
         "docs/fixtures/behavior/roster-execution-contract-v1.json",
-        "docs/evidence/ai/roster-execution-implementation-v1.json"
+        "docs/evidence/ai/roster-execution-implementation-v1.json",
+        "docs/architecture/zod-306-roster-live-stone.md",
+        "docs/behavior/roster-live-throw-stone.md",
+        "docs/evidence/ai/roster-live-stone-source-v1.json",
+        "docs/fixtures/behavior/roster-live-stone-contract-v1.json",
+        "docs/evidence/ai/roster-live-stone-implementation-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/ImmediateAbilityBattle.cs",
@@ -403,7 +436,9 @@
         "src/Zodiac.Framework/TargetedAbilityBattle.cs",
         "src/Zodiac.Content/ContentPackages/TargetedAbilityContentPackage.cs",
         "src/Zodiac.Content/Samples/SyntheticBasicSkillBattle.cs",
-        "src/Zodiac.Framework/RosterFacingTurnBattle.cs"
+        "src/Zodiac.Framework/RosterFacingTurnBattle.cs",
+        "src/Zodiac.Framework/FlatRosterDirectTrajectory.cs",
+        "src/Zodiac.Framework.Ai/Shared/RosterAiDirectTrajectory.cs"
       ],
       "automatedChecks": [
         {
@@ -449,6 +484,26 @@
         {
           "path": "tools/verification/verify_roster_execution_contract.py",
           "scope": "Pinned 26 files/79 functions, eight actual self settlement descriptions and managed boundary review paths; no original/C/managed execution."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/FlatRosterDirectTrajectoryTests.cs",
+          "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/RosterThrowStoneTests.cs",
+          "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/RosterTargetedAbilitySessionTests.cs",
+          "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
+        },
+        {
+          "path": "tools/verification/test_roster_live_stone_contract.py",
+          "scope": "Thirteen independent actual source tapes, live interception, real draw counts, KO wrap and invalid/tampered rejection."
+        },
+        {
+          "path": "tools/verification/verify_roster_live_stone_contract.py",
+          "scope": "Pinned83 functions/27 files and independent actual descriptions; no original/C/managed execution."
         }
       ],
       "manualCheckpoint": {
@@ -519,7 +574,7 @@
       "ownerTicket": "ZOD-036",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "absent",
-      "currentScope": "M1 still stops at first KO. Explicit ordinary sword/Stone slices have source-traced displacement; the new roster sword entry checks every landing occupant, including corpses, and cancels lethal pushes with unchanged RNG. Actual KO/receipt progress is retained, but corpse movement, death scheduling, revival and pickup lifecycle remain unsupported.",
+      "currentScope": "M1 still stops at first KO. Explicit ordinary sword/Stone slices have source-traced displacement; the new roster sword entry checks every landing occupant, including corpses, and cancels lethal pushes with unchanged RNG. Actual KO/receipt progress is retained, but corpse movement, death scheduling, revival and pickup lifecycle remain unsupported. Exact flat direct geometry now has one Framework owner and an AI facade preserving its extra guards. Actual roster Stone resolves interception and shares the existing actual formula/results and opaque session publisher, including all-occupant landing and real RNG. Pair guards remain; verified roster AI authority/turn integration is still open.",
       "referenceSources": [
         {
           "path": "src/battle/combat/resolution.c",
@@ -540,7 +595,12 @@
         "docs/behavior/flat-roster-combat.md",
         "docs/evidence/combat/roster-combat-source-v1.json",
         "docs/evidence/combat/roster-combat-implementation-v1.json",
-        "docs/fixtures/behavior/roster-combat-contract-v1.json"
+        "docs/fixtures/behavior/roster-combat-contract-v1.json",
+        "docs/architecture/zod-306-roster-live-stone.md",
+        "docs/behavior/roster-live-throw-stone.md",
+        "docs/evidence/ai/roster-live-stone-source-v1.json",
+        "docs/fixtures/behavior/roster-live-stone-contract-v1.json",
+        "docs/evidence/ai/roster-live-stone-implementation-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/FlatRosterBattleProfile.cs",
@@ -553,7 +613,10 @@
         "src/Zodiac.Framework/FlatSwordBattleProfile.cs",
         "src/Zodiac.Framework/AttackBattleSimulator.cs",
         "src/Zodiac.Framework/FacingTurnPathMovement.cs",
-        "src/Zodiac.Framework/FacingTurnBattle.cs"
+        "src/Zodiac.Framework/FacingTurnBattle.cs",
+        "src/Zodiac.Framework/FlatRosterDirectTrajectory.cs",
+        "src/Zodiac.Framework/TargetedAbilityBattle.cs",
+        "src/Zodiac.Framework.Ai/Shared/RosterAiDirectTrajectory.cs"
       ],
       "automatedChecks": [
         {
@@ -567,6 +630,26 @@
         {
           "path": "tools/verification/test_roster_combat_contract.py",
           "scope": "Eleven isolated source-only movement/sword descriptions, input preservation, original-domain and tampered-claim checks; no original/C/managed execution."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/FlatRosterDirectTrajectoryTests.cs",
+          "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/RosterThrowStoneTests.cs",
+          "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/RosterTargetedAbilitySessionTests.cs",
+          "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
+        },
+        {
+          "path": "tools/verification/test_roster_live_stone_contract.py",
+          "scope": "Thirteen independent actual source tapes, live interception, real draw counts, KO wrap and invalid/tampered rejection."
+        },
+        {
+          "path": "tools/verification/verify_roster_live_stone_contract.py",
+          "scope": "Pinned83 functions/27 files and independent actual descriptions; no original/C/managed execution."
         }
       ],
       "manualCheckpoint": {
@@ -586,7 +669,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "Existing pair/variable-list command and complete-turn drivers retain guards, priority knowledge and streams. Roster queries own general preparation/scenarios, cast-priority binding, roster self usefulness/isolated self entry, selected-target sword candidates, fresh exhaustive Attack enumeration and one supplied certified-clear Throw Stone candidate. Shared private formulas, masks, selected-target state, clock and scoring preserve peers and pair behavior. Actual roster commands exist separately. Computed flat direct trajectories now use explicit complete sprite heights and exact SDK normalization/samples against every occupant. Fresh isolated ranked Stone search now owns one selected occurrence with computed blockage and evaluated-aim consumption. Full supported roster list ranking/lottery now composes private fresh entry owners through one prefix. Roster AI command/turn drivers remain open alongside other policies/statuses/maps, complete corpse lifecycle, terminal/frame RNG, original evidence and host activation. Existing complete-roster actual self PA+1 now runs through the opaque roster session publisher/receipt owner; no RNG or new effect. Execution prerequisites are traced; live Stone interception and verified roster AI command/turn authority remain open.",
+      "currentScope": "Existing pair/variable-list command and complete-turn drivers retain guards, priority knowledge and streams. Roster queries own general preparation/scenarios, cast-priority binding, roster self usefulness/isolated self entry, selected-target sword candidates, fresh exhaustive Attack enumeration and one supplied certified-clear Throw Stone candidate. Shared private formulas, masks, selected-target state, clock and scoring preserve peers and pair behavior. Actual roster commands exist separately. Computed flat direct trajectories now use explicit complete sprite heights and exact SDK normalization/samples against every occupant. Fresh isolated ranked Stone search now owns one selected occurrence with computed blockage and evaluated-aim consumption. Full supported roster list ranking/lottery now composes private fresh entry owners through one prefix. Roster AI command/turn drivers remain open alongside other policies/statuses/maps, complete corpse lifecycle, terminal/frame RNG, original evidence and host activation. Existing complete-roster actual self PA+1 now runs through the opaque roster session publisher/receipt owner; no RNG or new effect. Execution prerequisites are traced; live Stone interception and verified roster AI command/turn authority remain open. Exact flat direct geometry now has one Framework owner and an AI facade preserving its extra guards. Actual roster Stone resolves interception and shares the existing actual formula/results and opaque session publisher, including all-occupant landing and real RNG. Pair guards remain; verified roster AI authority/turn integration is still open.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -739,7 +822,12 @@
         "docs/behavior/roster-immediate-ability-session.md",
         "docs/evidence/ai/roster-execution-source-v1.json",
         "docs/fixtures/behavior/roster-execution-contract-v1.json",
-        "docs/evidence/ai/roster-execution-implementation-v1.json"
+        "docs/evidence/ai/roster-execution-implementation-v1.json",
+        "docs/architecture/zod-306-roster-live-stone.md",
+        "docs/behavior/roster-live-throw-stone.md",
+        "docs/evidence/ai/roster-live-stone-source-v1.json",
+        "docs/fixtures/behavior/roster-live-stone-contract-v1.json",
+        "docs/evidence/ai/roster-live-stone-implementation-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -823,7 +911,9 @@
         "src/Zodiac.Framework.Ai/ThrowStone/ThrowStoneAiFormulaProjection.cs",
         "src/Zodiac.Framework.Ai/Shared/RosterAiDirectTrajectory.cs",
         "src/Zodiac.Framework.Ai/ThrowStone/RosterThrowStoneAiEntry.cs",
-        "src/Zodiac.Framework.Ai/BasicSkill/RosterBasicSkillAiSelection.cs"
+        "src/Zodiac.Framework.Ai/BasicSkill/RosterBasicSkillAiSelection.cs",
+        "src/Zodiac.Framework/FlatRosterDirectTrajectory.cs",
+        "src/Zodiac.Framework/TargetedAbilityBattle.cs"
       ],
       "automatedChecks": [
         {
@@ -1181,6 +1271,26 @@
         {
           "path": "tools/verification/verify_roster_execution_contract.py",
           "scope": "Pinned 26 files/79 functions, eight actual self settlement descriptions and managed boundary review paths; no original/C/managed execution."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/FlatRosterDirectTrajectoryTests.cs",
+          "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/RosterThrowStoneTests.cs",
+          "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/RosterTargetedAbilitySessionTests.cs",
+          "scope": "Independent actual/geometry tapes, pair parity, exact admission/RNG, complete occupancy, source slot boundaries, real receipts, late atomic failure and replay."
+        },
+        {
+          "path": "tools/verification/test_roster_live_stone_contract.py",
+          "scope": "Thirteen independent actual source tapes, live interception, real draw counts, KO wrap and invalid/tampered rejection."
+        },
+        {
+          "path": "tools/verification/verify_roster_live_stone_contract.py",
+          "scope": "Pinned83 functions/27 files and independent actual descriptions; no original/C/managed execution."
         }
       ],
       "manualCheckpoint": {
@@ -1193,9 +1303,9 @@
         "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
         "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Trace ZOD-306 live roster Stone interception, target resolution, actual RNG and all-occupant knockback admission before its runtime child.",
+      "nextAction": "Trace ZOD-310 verified roster AI decision RNG and retained Move authority, then select bounded transaction/dispatch/recovery children.",
       "followUpTickets": [
-        "ZOD-306"
+        "ZOD-310"
       ]
     },
     {

@@ -199,7 +199,9 @@ ZOD-302/303 now implement full supported roster list selection through
 one prefix, stable ranking and source lottery. ZOD-304/305 map roster
 command/turn integration prerequisites
 and expose the existing actual self kernel through roster sessions. ZOD-306
-next traces live Stone interception and knockback admission.
+now traces/implements live Stone interception, actual effects and session
+publication through ZOD-306–309. ZOD-310 next traces verified roster decision
+and retained Move authority.
 Broader control/low-HP/terminal policies remain separate.
 A certificate for one closed ability list cannot stand in for another list.
 

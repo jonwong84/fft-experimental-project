@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-306 (trace actual roster Stone interception, knockback and admission).** ZOD-304 maps authoritative integration prerequisites; ZOD-305 exposes the existing actual self effect through roster sessions. Pure full-list decisions remain separate from live AI execution.
-There are 34 open tickets below. The 272 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-310 (trace verified roster AI decision and retained Move authority).** ZOD-306–309 share exact geometry in Framework and add actual roster Stone interception/formula/knockback through existing sessions. Full-list AI plans still have no live command authority.
+There are 34 open tickets below. The 276 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,23 +29,20 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-306 — Trace actual roster Stone interception, knockback and admission
+### ZOD-310 — Trace verified roster AI decision and retained Move authority
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-300, ZOD-303, ZOD-304, ZOD-305
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-303, ZOD-305, ZOD-309
 
-Trace live projectile target resolution separately from the AI boolean: live
-direct tracing includes the intended target and may intercept another occupant.
-Select an explicit clear-path execution domain or exact interception behavior
-before coding. Trace actual evasion short circuit, damage/Brave draws, target
-HP/KO and every-occupant landing checks. Choose how the existing exact pure
-geometry kernel/metadata can serve Framework without a Framework-to-AI reference,
-duplicate algorithm, raw asset table or new friend access. Preserve existing pair
-guards and session receipts. Record pinned source and independent live vectors,
-then select the bounded actual roster Stone child. Verified roster decision RNG,
-Move continuations, first/post-ACT dispatch, recovery and full-turn drivers remain
-subsequent work; automatic facing, corpse/terminal/frame RNG, host/editor, owner
-drafts, broad interfaces and ZOD-106 retain their separate/deferred scopes.
-See [execution study](architecture/zod-304-roster-ai-execution.md).
+Trace one private fresh roster decision into Framework-owned invocation-bound
+proposals, exact RNG continuity and one actual command transaction. Reuse shared
+validation/receipt owners; do not trust cached public plans or add friend access.
+Trace retained Move-first command authority, actual-receipt facing, post-ACT fresh
+selection, exact-session continuation/recovery and priority publication only with
+accepted command progress. Record pinned source, independent dispatch/continuity
+vectors and select bounded implementation children. Explicit fixed/kept facing
+is sufficient; automatic facing, full corpse/terminal/frame RNG, host/editor,
+owner drafts, broad interfaces and ZOD-106 remain separate/deferred. See
+[live roster Stone](behavior/roster-live-throw-stone.md).
 
 ## Existing validation gates
 

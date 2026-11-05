@@ -91,8 +91,10 @@ public sealed record UseTargetedAbilityCommand(BattleUnitId ActorId, AssetId Abi
 public sealed record ThrowStoneResolvedEvent(BattleUnitId ActorId, AssetId AbilityId, BattleUnitId TargetId,
     bool Hit, int Damage, bool KnockbackAttempted) : AttackResultEvent;
 public sealed record ThrowStoneKnockbackEvent(BattleUnitId UnitId, TilePosition Before, TilePosition After) : AttackResultEvent;
+public sealed record ThrowStoneTargetInterceptedEvent(BattleUnitId ActorId, AssetId AbilityId,
+    BattleUnitId IntendedTargetId, BattleUnitId ActualTargetId) : AttackResultEvent;
 
-/// <summary>Pure settled Throw Stone transition; no obstruction, falling, rewards, animation or save format.</summary>
+/// <summary>Pure settled Throw Stone with separate pair and flat-roster admission; no falling, rewards, animation or save format.</summary>
 /// <remarks>Source trace/limits: docs/architecture/zod-108-throw-stone-action.md, decomp 11464943bbdbd2a0af022d90cb7f10455cf911df.</remarks>
 public static class TargetedAbilityBattleSimulator
 {
@@ -101,9 +103,56 @@ public static class TargetedAbilityBattleSimulator
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(command); ArgumentNullException.ThrowIfNull(profile);
         var invalid = ValidateCommand(state, command, profile);
         if (invalid != AttackCommandRejection.None) return Reject(invalid);
+        return ApplyAdmitted(state, command);
+        AttackBattleResult Reject(AttackCommandRejection reason) => new(false, reason, TurnCycleRejection.None, BattleTransitionRejection.None, state, []);
+    }
+
+    /// <summary>Actual immediate roster Stone, including the source-selected first unit hit. Pair admission remains unchanged.</summary>
+    public static AttackBattleResult ApplyRoster(AttackBattleSnapshot state, UseTargetedAbilityCommand command,
+        TargetedAbilityBattleProfile profile, FlatRosterBattleProfile roster, FlatRosterProjectileHeights heights)
+    {
+        var invalid = ValidateRoster(state, command, profile, roster, heights, out var actualTarget);
+        if (invalid != AttackCommandRejection.None) return new(false, invalid, TurnCycleRejection.None, BattleTransitionRejection.None, state, []);
+        return ApplyAdmitted(state, command with { TargetId = actualTarget }, actualTarget == command.TargetId ? null : command.TargetId);
+    }
+
+    /// <summary>Pure current-command validation and live projectile resolution; does not consume ACT or RNG.</summary>
+    public static AttackCommandRejection ValidateRosterCommand(AttackBattleSnapshot state, UseTargetedAbilityCommand command,
+        TargetedAbilityBattleProfile profile, FlatRosterBattleProfile roster, FlatRosterProjectileHeights heights) =>
+        ValidateRoster(state, command, profile, roster, heights, out _);
+
+    private static AttackCommandRejection ValidateRoster(AttackBattleSnapshot state, UseTargetedAbilityCommand command,
+        TargetedAbilityBattleProfile profile, FlatRosterBattleProfile roster, FlatRosterProjectileHeights heights, out BattleUnitId actualTarget)
+    {
+        ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(command); ArgumentNullException.ThrowIfNull(profile);
+        ArgumentNullException.ThrowIfNull(roster); ArgumentNullException.ThrowIfNull(heights); actualTarget = command.TargetId;
+        if (!state.Combatants.Any(u => u.UnitId == command.ActorId)) return AttackCommandRejection.UnknownActor;
+        var target = state.Combatants.FirstOrDefault(u => u.UnitId == command.TargetId);
+        if (target is null) return AttackCommandRejection.UnknownTarget;
+        if (state.TurnBattle.Turns.ActiveUnitId != command.ActorId) return AttackCommandRejection.InactiveActor;
+        if (state.TurnBattle.Turns.Units.Single(u => u.Id == command.ActorId).ActionTaken) return AttackCommandRejection.ActionAlreadyTaken;
+        if (command.ActorId == command.TargetId) return AttackCommandRejection.SelfTarget;
+        if (target.Status == AttackUnitStatus.Dead) return AttackCommandRejection.DeadTarget;
+        if (!profile.Abilities.ContainsKey(command.AbilityId)) return AttackCommandRejection.UnknownAbility;
+        if (!profile.Units.TryGetValue(command.ActorId, out var grant) || !grant.Abilities.Contains(command.AbilityId)) return AttackCommandRejection.AbilityNotGranted;
+        try { roster.ValidateState(state); }
+        catch (Exception exception) when (exception is ArgumentException or NotSupportedException) { return AttackCommandRejection.UnsupportedSetup; }
+        if (profile.OrdinaryGroundSurface != roster.Ground || profile.Units.Count != roster.Units.Count ||
+            !profile.Units.Keys.ToHashSet().SetEquals(roster.Units.Keys) || state.Combatants.Any(u => u.Hp == 0 || u.PhysicalAttack is < 1 or > 99))
+            return AttackCommandRejection.UnsupportedSetup;
+        var origin = state.TurnBattle.Battle.Units.Single(u => u.Id == command.ActorId).Position;
+        var to = state.TurnBattle.Battle.Units.Single(u => u.Id == command.TargetId).Position;
+        if (Math.Abs(origin.X - to.X) + Math.Abs(origin.Y - to.Y) > 4) return AttackCommandRejection.OutOfRange;
+        var path = FlatRosterDirectTrajectory.EvaluateToTarget(state, new(command.ActorId, command.TargetId, origin), roster, heights);
+        if (!path.Accepted || path.Outcome!.ResolveTarget(command.TargetId) is not { } resolved) return AttackCommandRejection.UnsupportedSetup;
+        actualTarget = resolved;
+        return AttackCommandRejection.None;
+    }
+
+    private static AttackBattleResult ApplyAdmitted(AttackBattleSnapshot state, UseTargetedAbilityCommand command, BattleUnitId? intendedTarget = null)
+    {
         var actor = state.Combatants.Single(unit => unit.UnitId == command.ActorId);
         var target = state.Combatants.Single(unit => unit.UnitId == command.TargetId);
-        var ability = profile.Abilities[command.AbilityId];
         state.TurnBattle.Battle.TryGetUnit(actor.UnitId, out var actorBody);
         state.TurnBattle.Battle.TryGetUnit(target.UnitId, out var targetBody);
         TilePosition from = actorBody!.Position, to = targetBody!.Position;
@@ -152,7 +201,8 @@ public static class TargetedAbilityBattleSimulator
         var next = new AttackBattleSnapshot(new(battle, turns),
             state.Combatants.Select(unit => unit.UnitId == target.UnitId ? nextTarget : unit));
         var events = action.Events.Select(ev => (AttackResultEvent)new AttackTurnBattleEvent(ev)).ToList();
-        events.Add(new ThrowStoneResolvedEvent(actor.UnitId, ability.Id, target.UnitId, hit, damage, attempted));
+        if (intendedTarget is { } original) events.Add(new ThrowStoneTargetInterceptedEvent(actor.UnitId, command.AbilityId, original, target.UnitId));
+        events.Add(new ThrowStoneResolvedEvent(actor.UnitId, command.AbilityId, target.UnitId, hit, damage, attempted));
         if (hp != target.Hp) events.Add(new AttackHpChangedEvent(target.UnitId, target.Hp, hp));
         if (nextTarget.Status != target.Status) events.Add(new AttackStatusChangedEvent(target.UnitId, target.Status, nextTarget.Status));
         if (ko) events.Add(new AttackKnockedOutEvent(target.UnitId, nextTarget.KoCount));

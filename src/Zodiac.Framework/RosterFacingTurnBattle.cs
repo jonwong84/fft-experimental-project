@@ -40,6 +40,11 @@ public static class RosterFacingTurnBattle
     public static RosterFacingResult UseImmediateAbility(RosterFacingTurnState state, UseImmediateAbilityCommand command,
         ImmediateAbilityBattleProfile profile) => Apply(state, () => ImmediateAbilityBattleSimulator.Apply(state.Battle, command, profile));
 
+    /// <summary>Actual roster Stone with live interception and complete-occupancy knockback through the same session publisher.</summary>
+    public static RosterFacingResult UseTargetedAbility(RosterFacingTurnState state, UseTargetedAbilityCommand command,
+        TargetedAbilityBattleProfile profile, FlatRosterProjectileHeights heights) =>
+        Apply(state, () => TargetedAbilityBattleSimulator.ApplyRoster(state.Battle, command, profile, state.Profile, heights));
+
     public static RosterFacingResult Move(RosterFacingTurnState state, MoveUnitCommand command)
     {
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(command);

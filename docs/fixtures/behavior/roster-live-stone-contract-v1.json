@@ -1,0 +1,1165 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-306",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "vectors": [
+    {
+      "id": "clear-live-seven-draw-damage-and-push",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "word": 57,
+        "count": 7,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "order": 0,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "b",
+            "tile": [
+              3,
+              1
+            ],
+            "order": 1,
+            "team": 0,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "order": 2,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          }
+        ]
+      },
+      "expected": {
+        "target": "b",
+        "intercepted": false,
+        "hit": true,
+        "damage": 5,
+        "attempted": true,
+        "hp": 45,
+        "status": "None",
+        "ko": 0,
+        "destination": [
+          4,
+          1
+        ],
+        "word": 3448561432,
+        "count": 14,
+        "path": {
+          "clear": false,
+          "blocker": "b",
+          "sample": 25,
+          "samples": 28,
+          "distance": 229376,
+          "point": [
+            91,
+            -140,
+            42
+          ]
+        },
+        "pa": 5,
+        "peersChanged": false
+      }
+    },
+    {
+      "id": "class-front-evade-four-draw-miss",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "word": 57,
+        "count": 7,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "order": 0,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "b",
+            "tile": [
+              3,
+              1
+            ],
+            "order": 1,
+            "team": 0,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 100,
+            "face": "West"
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "order": 2,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          }
+        ]
+      },
+      "expected": {
+        "target": "b",
+        "intercepted": false,
+        "hit": false,
+        "damage": 0,
+        "attempted": false,
+        "hp": 50,
+        "status": "None",
+        "ko": 0,
+        "destination": [
+          3,
+          1
+        ],
+        "word": 3587663605,
+        "count": 11,
+        "path": {
+          "clear": false,
+          "blocker": "b",
+          "sample": 25,
+          "samples": 28,
+          "distance": 229376,
+          "point": [
+            91,
+            -140,
+            42
+          ]
+        },
+        "pa": 5,
+        "peersChanged": false
+      }
+    },
+    {
+      "id": "ally-intercepts-intended-enemy",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "word": 57,
+        "count": 7,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "order": 0,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "b",
+            "tile": [
+              5,
+              1
+            ],
+            "order": 1,
+            "team": 0,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "c",
+            "tile": [
+              3,
+              1
+            ],
+            "order": 2,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          }
+        ]
+      },
+      "expected": {
+        "target": "c",
+        "intercepted": true,
+        "hit": true,
+        "damage": 5,
+        "attempted": true,
+        "hp": 45,
+        "status": "None",
+        "ko": 0,
+        "destination": [
+          4,
+          1
+        ],
+        "word": 3448561432,
+        "count": 14,
+        "path": {
+          "clear": false,
+          "blocker": "c",
+          "sample": 25,
+          "samples": 56,
+          "distance": 458752,
+          "point": [
+            91,
+            -140,
+            42
+          ]
+        },
+        "pa": 5,
+        "peersChanged": false
+      }
+    },
+    {
+      "id": "third-team-interception-is-identical",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "word": 57,
+        "count": 7,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "order": 0,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "b",
+            "tile": [
+              5,
+              1
+            ],
+            "order": 1,
+            "team": 0,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "c",
+            "tile": [
+              3,
+              1
+            ],
+            "order": 2,
+            "team": 3,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          }
+        ]
+      },
+      "expected": {
+        "target": "c",
+        "intercepted": true,
+        "hit": true,
+        "damage": 5,
+        "attempted": true,
+        "hp": 45,
+        "status": "None",
+        "ko": 0,
+        "destination": [
+          4,
+          1
+        ],
+        "word": 3448561432,
+        "count": 14,
+        "path": {
+          "clear": false,
+          "blocker": "c",
+          "sample": 25,
+          "samples": 56,
+          "distance": 458752,
+          "point": [
+            91,
+            -140,
+            42
+          ]
+        },
+        "pa": 5,
+        "peersChanged": false
+      }
+    },
+    {
+      "id": "interceptor-facing-and-evade-own-formula",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "word": 57,
+        "count": 7,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "order": 0,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "b",
+            "tile": [
+              5,
+              1
+            ],
+            "order": 1,
+            "team": 0,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "c",
+            "tile": [
+              3,
+              1
+            ],
+            "order": 2,
+            "team": 3,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 100,
+            "face": "West"
+          }
+        ]
+      },
+      "expected": {
+        "target": "c",
+        "intercepted": true,
+        "hit": false,
+        "damage": 0,
+        "attempted": false,
+        "hp": 50,
+        "status": "None",
+        "ko": 0,
+        "destination": [
+          3,
+          1
+        ],
+        "word": 3587663605,
+        "count": 11,
+        "path": {
+          "clear": false,
+          "blocker": "c",
+          "sample": 25,
+          "samples": 56,
+          "distance": 458752,
+          "point": [
+            91,
+            -140,
+            42
+          ]
+        },
+        "pa": 5,
+        "peersChanged": false
+      }
+    },
+    {
+      "id": "occupied-landing-suppresses-push-not-draws",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "word": 57,
+        "count": 7,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "order": 0,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "b",
+            "tile": [
+              3,
+              1
+            ],
+            "order": 1,
+            "team": 0,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "c",
+            "tile": [
+              4,
+              1
+            ],
+            "order": 2,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          }
+        ]
+      },
+      "expected": {
+        "target": "b",
+        "intercepted": false,
+        "hit": true,
+        "damage": 5,
+        "attempted": true,
+        "hp": 45,
+        "status": "None",
+        "ko": 0,
+        "destination": [
+          3,
+          1
+        ],
+        "word": 3448561432,
+        "count": 14,
+        "path": {
+          "clear": false,
+          "blocker": "b",
+          "sample": 25,
+          "samples": 28,
+          "distance": 229376,
+          "point": [
+            91,
+            -140,
+            42
+          ]
+        },
+        "pa": 5,
+        "peersChanged": false
+      }
+    },
+    {
+      "id": "lethal-byte-ko-wrap-cancels-push-after-brave-draws",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "word": 57,
+        "count": 7,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "order": 0,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "b",
+            "tile": [
+              3,
+              1
+            ],
+            "order": 1,
+            "team": 0,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 5,
+            "ko": 255,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "order": 2,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          }
+        ]
+      },
+      "expected": {
+        "target": "b",
+        "intercepted": false,
+        "hit": true,
+        "damage": 5,
+        "attempted": true,
+        "hp": 0,
+        "status": "Dead",
+        "ko": 0,
+        "destination": [
+          3,
+          1
+        ],
+        "word": 3448561432,
+        "count": 14,
+        "path": {
+          "clear": false,
+          "blocker": "b",
+          "sample": 25,
+          "samples": 28,
+          "distance": 229376,
+          "point": [
+            91,
+            -140,
+            42
+          ]
+        },
+        "pa": 5,
+        "peersChanged": false
+      }
+    },
+    {
+      "id": "diagonal-y-wins-push-tie",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "word": 57,
+        "count": 7,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "order": 0,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "b",
+            "tile": [
+              2,
+              2
+            ],
+            "order": 1,
+            "team": 0,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "c",
+            "tile": [
+              0,
+              0
+            ],
+            "order": 2,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          }
+        ]
+      },
+      "expected": {
+        "target": "b",
+        "intercepted": false,
+        "hit": true,
+        "damage": 5,
+        "attempted": true,
+        "hp": 45,
+        "status": "None",
+        "ko": 0,
+        "destination": [
+          2,
+          3
+        ],
+        "word": 3448561432,
+        "count": 14,
+        "path": {
+          "clear": false,
+          "blocker": "b",
+          "sample": 15,
+          "samples": 19,
+          "distance": 162176,
+          "point": [
+            63,
+            -140,
+            63
+          ]
+        },
+        "pa": 5,
+        "peersChanged": false
+      }
+    },
+    {
+      "id": "off-map-y-landing-suppresses-push",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "word": 57,
+        "count": 7,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "order": 0,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "b",
+            "tile": [
+              2,
+              3
+            ],
+            "order": 1,
+            "team": 0,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "c",
+            "tile": [
+              0,
+              0
+            ],
+            "order": 2,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          }
+        ]
+      },
+      "expected": {
+        "target": "b",
+        "intercepted": false,
+        "hit": true,
+        "damage": 5,
+        "attempted": true,
+        "hp": 45,
+        "status": "None",
+        "ko": 0,
+        "destination": [
+          2,
+          3
+        ],
+        "word": 3448561432,
+        "count": 14,
+        "path": {
+          "clear": false,
+          "blocker": "b",
+          "sample": 28,
+          "samples": 31,
+          "distance": 256448,
+          "point": [
+            67,
+            -140,
+            92
+          ]
+        },
+        "pa": 5,
+        "peersChanged": false
+      }
+    },
+    {
+      "id": "tiny-intended-height-no-box-hit-still-resolves-target",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "word": 57,
+        "count": 7,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "order": 0,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "b",
+            "tile": [
+              3,
+              1
+            ],
+            "order": 1,
+            "team": 0,
+            "height": 1,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "order": 2,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          }
+        ]
+      },
+      "expected": {
+        "target": "b",
+        "intercepted": false,
+        "hit": true,
+        "damage": 5,
+        "attempted": true,
+        "hp": 45,
+        "status": "None",
+        "ko": 0,
+        "destination": [
+          4,
+          1
+        ],
+        "word": 3448561432,
+        "count": 14,
+        "path": {
+          "clear": true,
+          "blocker": null,
+          "sample": null,
+          "samples": 28,
+          "distance": 231680,
+          "point": null
+        },
+        "pa": 5,
+        "peersChanged": false
+      }
+    },
+    {
+      "id": "current-effective-pa-99-not-ai-midpoint-cache",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "word": 57,
+        "count": 7,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "order": 0,
+            "team": 1,
+            "height": 30,
+            "pa": 99,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "b",
+            "tile": [
+              3,
+              1
+            ],
+            "order": 1,
+            "team": 0,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "order": 2,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          }
+        ]
+      },
+      "expected": {
+        "target": "b",
+        "intercepted": false,
+        "hit": true,
+        "damage": 99,
+        "attempted": true,
+        "hp": 0,
+        "status": "Dead",
+        "ko": 1,
+        "destination": [
+          3,
+          1
+        ],
+        "word": 3448561432,
+        "count": 14,
+        "path": {
+          "clear": false,
+          "blocker": "b",
+          "sample": 25,
+          "samples": 28,
+          "distance": 229376,
+          "point": [
+            91,
+            -140,
+            42
+          ]
+        },
+        "pa": 99,
+        "peersChanged": false
+      }
+    },
+    {
+      "id": "negative-direction-live-source-sampling",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "word": 57,
+        "count": 7,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              5,
+              1
+            ],
+            "order": 0,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "b",
+            "tile": [
+              1,
+              1
+            ],
+            "order": 1,
+            "team": 0,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "East"
+          },
+          {
+            "id": "c",
+            "tile": [
+              4,
+              3
+            ],
+            "order": 2,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          }
+        ]
+      },
+      "expected": {
+        "target": "b",
+        "intercepted": false,
+        "hit": true,
+        "damage": 5,
+        "attempted": true,
+        "hp": 45,
+        "status": "None",
+        "ko": 0,
+        "destination": [
+          0,
+          1
+        ],
+        "word": 3448561432,
+        "count": 14,
+        "path": {
+          "clear": false,
+          "blocker": "b",
+          "sample": 53,
+          "samples": 56,
+          "distance": 458752,
+          "point": [
+            48,
+            -140,
+            42
+          ]
+        },
+        "pa": 5,
+        "peersChanged": false
+      }
+    },
+    {
+      "id": "different-real-damage-and-brave-tape",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "word": 1,
+        "count": 7,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "order": 0,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "b",
+            "tile": [
+              3,
+              1
+            ],
+            "order": 1,
+            "team": 0,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "order": 2,
+            "team": 1,
+            "height": 30,
+            "pa": 5,
+            "brave": 70,
+            "hp": 50,
+            "ko": 0,
+            "evade": 0,
+            "face": "West"
+          }
+        ]
+      },
+      "expected": {
+        "target": "b",
+        "intercepted": false,
+        "hit": true,
+        "damage": 10,
+        "attempted": false,
+        "hp": 40,
+        "status": "None",
+        "ko": 0,
+        "destination": [
+          3,
+          1
+        ],
+        "word": 3655513600,
+        "count": 14,
+        "path": {
+          "clear": false,
+          "blocker": "b",
+          "sample": 25,
+          "samples": 28,
+          "distance": 229376,
+          "point": [
+            91,
+            -140,
+            42
+          ]
+        },
+        "pa": 5,
+        "peersChanged": false
+      }
+    }
+  ],
+  "notes": [
+    "Independent source geometry, RNG and actual settled formulas; no original/C/managed execution.",
+    "Explicit typed actual profiles/grants are separately admitted; source table bytes remain ignored."
+  ]
+}
