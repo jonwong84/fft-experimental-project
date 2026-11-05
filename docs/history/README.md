@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 327 entries index completed bounded work; they do not mean the full game is complete.
+These 328 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -376,3 +376,5 @@ These 327 entries index completed bounded work; they do not mean the full game i
 - [ZOD-359 — Select source spell height layers](../behavior/ordinary-spell-targeting.md#zod-359)
 
 - [ZOD-360 — Build ordinary spell range and area panels](../behavior/ordinary-spell-targeting.md#zod-360)
+
+- [ZOD-361 — Select spell occupants in source order](../behavior/ordinary-spell-targeting.md#zod-361)

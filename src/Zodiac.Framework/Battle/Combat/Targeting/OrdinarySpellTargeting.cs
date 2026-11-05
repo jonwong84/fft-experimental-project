@@ -26,9 +26,56 @@ public sealed class SpellTargetPanels
 }
 public sealed record SpellPanelQueryResult(bool Accepted, SpellTargetingRejection Rejection, SpellTargetPanels? Outcome);
 
+public enum SpellTargetTeam { Blue, Red, Green, LightBlue }
+/// <summary>Source-order and map facts, separate from current formula input snapshots.</summary>
+public sealed record SpellTargetOccupant(BattleUnitId UnitId, int SourceOrder, TilePosition Position,
+    SpellTargetTeam InitialTeam, SpellTargetTeam CurrentTeam, bool Active = true, bool Crystal = false,
+    bool Treasure = false, bool Jump = false, bool Mount = false);
+public sealed record SpellTargetRosterProfile(bool CompleteRosterAndSourceOrderKnown = false);
+public sealed record SpellTargetSelection(ImmutableArray<TilePosition> Panels, ImmutableArray<BattleUnitId> UnitIds);
+public sealed record SpellTargetSelectionResult(bool Accepted, SpellTargetingRejection Rejection, SpellTargetSelection? Outcome);
+
 /// <summary>Pure original-compatible map queries, with no transient marks or live state.</summary>
 public static class OrdinarySpellTargeting
 {
+    private static bool Eligible(SpellTargetOccupant u) => u.Active && !u.Crystal && !u.Treasure && !u.Jump && !u.Mount;
+
+    /// <summary>Apply source per-panel team mutations, then collect occupants. No per-unit team refilter.</summary>
+    public static SpellTargetSelectionResult SelectTargets(SpellTargetPanels area, BattleUnitId casterId,
+        ImmutableArray<SpellTargetOccupant> roster, SpellTargetRosterProfile? profile, bool nearestFirst = false)
+    {
+        ArgumentNullException.ThrowIfNull(area);
+        SpellTargetSelectionResult Reject() => new(false, SpellTargetingRejection.UnsupportedRoster, null);
+        if (!area.IsArea || profile is not { CompleteRosterAndSourceOrderKnown: true } || roster.IsDefaultOrEmpty) return Reject();
+        var ids = new HashSet<BattleUnitId>(); var orders = new HashSet<int>();
+        foreach (var u in roster)
+        {
+            if (u is null || string.IsNullOrWhiteSpace(u.UnitId.Value) || !ids.Add(u.UnitId) ||
+                u.SourceOrder < 0 || !orders.Add(u.SourceOrder) || !Enum.IsDefined(u.InitialTeam) || !Enum.IsDefined(u.CurrentTeam) ||
+                u.Active && !area.Map.TryGetTile(u.Position, out _)) return Reject();
+        }
+        var actor = roster.FirstOrDefault(u => u.UnitId == casterId);
+        if (actor is null || !Eligible(actor) || actor.Position != area.CasterPosition) return Reject();
+        var ordered = roster.OrderBy(u => u.SourceOrder).ToArray();
+        var remaining = area.Panels.ToHashSet(); var marked = new HashSet<TilePosition>(); var g = area.Geometry;
+        if (g.CanHitAllies || g.CanHitEnemies)
+        {
+            foreach (var u in ordered)
+            {
+                if (!Eligible(u) || !remaining.Contains(u.Position)) continue;
+                bool ally = u.UnitId == casterId || u.InitialTeam == actor.CurrentTeam;
+                if (ally ? g.CanHitAllies : g.CanHitEnemies) marked.Add(u.Position);
+                else remaining.Remove(u.Position); // Earlier marks intentionally survive this mutation.
+            }
+            if (g.Area != 255) marked.UnionWith(remaining);
+        }
+        else marked.UnionWith(remaining);
+        IEnumerable<SpellTargetOccupant> selected = ordered.Where(u => Eligible(u) && marked.Contains(u.Position));
+        if (nearestFirst) selected = selected.OrderBy(u => Math.Abs(u.Position.X - actor.Position.X) + Math.Abs(u.Position.Y - actor.Position.Y));
+        return new(true, SpellTargetingRejection.None, new(area.Panels.Where(marked.Contains).ToImmutableArray(),
+            selected.Select(u => u.UnitId).ToImmutableArray()));
+    }
+
     public static SpellPanelQueryResult Range(BattleMapDefinition map, TilePosition caster, OrdinarySpellGeometry geometry,
         SpellTargetingProfile? profile) => Build(map, caster, caster, geometry, profile, false);
 

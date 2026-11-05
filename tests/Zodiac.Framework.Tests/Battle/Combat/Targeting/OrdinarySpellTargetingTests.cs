@@ -1,10 +1,15 @@
 using System.Text.Json;
+using System.Collections.Immutable;
 using Xunit;
 
 namespace Zodiac.Framework.Tests;
 
 internal static class SpellTargetTestData
 {
+    internal static SpellTargetOccupant Occupant(JsonElement u) => new(new(u.GetProperty("id").GetString()!),
+        u.GetProperty("order").GetInt32(), Position(u.GetProperty("position")), (SpellTargetTeam)u.GetProperty("initial").GetInt32(),
+        (SpellTargetTeam)u.GetProperty("current").GetInt32(), u.GetProperty("active").GetBoolean(), u.GetProperty("crystal").GetBoolean(),
+        u.GetProperty("treasure").GetBoolean(), u.GetProperty("jump").GetBoolean(), u.GetProperty("mount").GetBoolean());
     internal static TilePosition Position(JsonElement p) => new(p[0].GetInt32(), p[1].GetInt32(), p[2].GetInt32());
     internal static BattleMapDefinition Map(JsonElement m)
     {
@@ -32,6 +37,39 @@ internal static class SpellTargetTestData
 [Trait("Ruleset", "OriginalFft")]
 public sealed class OrdinarySpellTargetingTests
 {
+    [Fact]
+    public void Literal_rosters_preserve_team_panel_mutations_targetability_and_source_order()
+    {
+        using var doc = SpellTargetTestData.Fixture();
+        foreach (var r in doc.RootElement.GetProperty("rosters").EnumerateArray())
+        {
+            var area = OrdinarySpellTargeting.Area(SpellTargetTestData.Map(r.GetProperty("map")),
+                SpellTargetTestData.Position(r.GetProperty("caster")), SpellTargetTestData.Position(r.GetProperty("aim")),
+                SpellTargetTestData.Geometry(r.GetProperty("geometry")), SpellTargetTestData.Profile(r.GetProperty("profile"))).Outcome!;
+            var roster = r.GetProperty("units").EnumerateArray().Select(SpellTargetTestData.Occupant).ToImmutableArray();
+            var actual = OrdinarySpellTargeting.SelectTargets(area, new(r.GetProperty("casterId").GetString()!), roster,
+                new(r.GetProperty("complete").GetBoolean()), r.GetProperty("nearest").GetBoolean());
+            Assert.True(actual.Accepted); var e = r.GetProperty("expected");
+            Assert.Equal(e.GetProperty("ids").EnumerateArray().Select(p => p.GetString()), actual.Outcome!.UnitIds.Select(p => p.Value));
+            Assert.Equal(e.GetProperty("panels").EnumerateArray().Select(SpellTargetTestData.Position), actual.Outcome.Panels);
+        }
+    }
+
+    [Fact]
+    public void Incomplete_conflicting_or_blue_rosters_reject_without_a_selection()
+    {
+        var map = new BattleMapDefinition(1, 1, 1, [new(0)]); var g = new OrdinarySpellGeometry(0, 0, 0);
+        var area = OrdinarySpellTargeting.Area(map, default, default, g, new(true, true, true, true)).Outcome!;
+        var a = new SpellTargetOccupant(new("actor"), 0, default, SpellTargetTeam.Blue, SpellTargetTeam.Blue);
+        ImmutableArray<SpellTargetOccupant>[] invalid = [default, [], [a, a], [a with { SourceOrder = -1 }],
+            [a with { Position = new(2, 0, 0) }], [a with { Mount = true }], [a with { InitialTeam = (SpellTargetTeam)4 }]];
+        foreach (var roster in invalid)
+        { var r = OrdinarySpellTargeting.SelectTargets(area, a.UnitId, roster, new(true)); Assert.False(r.Accepted); Assert.Null(r.Outcome); }
+        Assert.False(OrdinarySpellTargeting.SelectTargets(area, a.UnitId, [a], null).Accepted);
+        var blue = OrdinarySpellTargeting.Range(map, default, g, new(true, true, true, true)).Outcome!;
+        Assert.False(OrdinarySpellTargeting.SelectTargets(blue, a.UnitId, [a], new(true)).Accepted);
+    }
+
     [Fact]
     public void Literal_panel_vectors_preserve_blue_green_height_and_collision_boundaries()
     {

@@ -6,9 +6,9 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-361: Select spell occupants in source order.**
+**ZOD-362: Resolve ready magic casts from map geometry.**
 [Ordinary spell targeting](behavior/ordinary-spell-targeting.md) records completed
-ZOD-358–360 at clean reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+ZOD-358–361 at clean reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 Keep blue selectable aims separate from green resolution areas. Preserve narrowed
 reference height, blocked sentinels, initial/current team distinctions and source
 roster order. Shared magic arithmetic and prepared one-cost casts remain owners

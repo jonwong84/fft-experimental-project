@@ -88,3 +88,14 @@ spread model. Twenty-six literal panel descriptions and four focused managed
 tests passed, covering both sheets, vertical ties, whole map, self flags,
 collision, propagation through obstacles and rejection boundaries. No unit list
 or command is inferred yet. Panel order is managed layer/Y/X, not target order.
+
+## ZOD-361
+
+`SelectTargets` derives a stable source-order unit list from opaque green panels
+and a certified complete roster. It preserves per-panel marks, initial/current
+team semantics, caster ally override and stable nearest-distance ties. Inactive
+positions are ignored; active positions, IDs, teams and unique source ordinals
+are validated. Crystal/Treasure/Jump/mount are excluded, while unsupported formula
+statuses remain for the calculation owner to reject. Twelve literal roster
+scenarios and six focused managed tests passed. No HP/status eligibility shortcuts
+or live target lists were introduced.
