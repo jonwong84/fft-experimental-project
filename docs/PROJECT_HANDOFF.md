@@ -6,14 +6,16 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-299: resolve bounded roster Stone direct-trajectory admission.**
-[ZOD-297](architecture/zod-297-roster-stone-search.md) traces every-occupant
-collision, ranked origin ties and consumed aims. [ZOD-298](behavior/roster-throw-stone-ai-candidate.md)
-implements one supplied certified-clear roster Stone candidate with explicit
-typed grants, shared midpoint formula and whole-roster clock/scoring.
-Current battle state lacks sprite heights; the local reference declares but
-does not implement SquareRoot12. Resolve that computed-geometry boundary before
-selecting fresh ranked Stone search. Existing pair commands retain their guards.
+**ZOD-301: evaluate one fresh ranked roster Throw Stone occurrence.**
+[ZOD-299/300](behavior/roster-ai-direct-trajectory.md) now compute exact bounded
+direct trajectories against every initial occupant using explicit sprite heights.
+The SDK source is present at the pinned revision; ZOD-297's mistaken absence
+claim is corrected. Offline prepared checks prove all192 normalized factors,
+so runtime computes them with integer arithmetic and ships no raw table.
+Next compose this geometry with one selected Stone occurrence through one fresh
+general prefix, owned known priority keys, blocked retry and evaluated-aim
+consumption. [ZOD-298](behavior/roster-throw-stone-ai-candidate.md) remains the
+supplied-clear effect/clock/scoring primitive; existing pair guards are retained.
 Full-list ranking/lottery, roster AI commands/turns, other policies/statuses/maps,
 complete corpse lifecycle, automatic facing, terminal/frame RNG, host/editor,
 owner drafts, replacement interfaces and ZOD-106 remain separate/deferred.
@@ -88,8 +90,9 @@ without rewriting old evidence.
   and [cast/self foundations](behavior/roster-ai-action-foundation.md) remain.
   [Roster Stone candidates](behavior/roster-throw-stone-ai-candidate.md) now
   share the existing formula and all-unit state/clock/scoring under a supplied
-  clear-trajectory certificate. Computed trajectories and full roster list
-  selection are not yet composed. No cached trusted
+  clear-trajectory certificate. [Computed direct trajectories](behavior/roster-ai-direct-trajectory.md)
+  now use exact SDK rounding, explicit sprite heights and every initial occupant.
+  Fresh ranked Stone search and full roster list selection are not yet composed. No cached trusted
   result, command authority or full-list stream is claimed. AI compact16,
   Framework slot21 and 16 other movement records stay distinct from uncapped
   storage; general policy/flat/MP0 guards remain explicit.
@@ -152,12 +155,12 @@ without rewriting old evidence.
   explicit player-control flag clear, HP*128/maxHP>=45 and no NonBlue reach draw.
   Existing Attack/Stone scoring/selection/execution and both teams are preserved;
   terminal routing and Blue low-HP/player-controlled policies remain open.
-- Latest source trace: [ZOD-297 roster Stone](architecture/zod-297-roster-stone-search.md)
-  pins 66 functions across 21 files. Fourteen candidate tapes and four ranked
-  control-flow tapes cover midpoint/evasion, all-peer clock/score, blocked retry,
-  aim-map order and zero-accuracy consumption. Search clearance is a supplied
-  fact; computed SDK sampling/sprite metadata remains open. Prior roster/pair/
-  list/workspace evidence retains its provenance.
+- Latest source trace: [ZOD-299 exact trajectories](architecture/zod-299-roster-stone-trajectory.md)
+  pins fourteen functions across eleven files and verifies all192 SDK table
+  factors against prepared data. Fourteen independent sample tapes cover strict
+  boxes/heights, all-team blockers, SDK rounding, diagonal/oblique/reverse paths
+  and target-height fallback. ZOD-297's SDK absence mistake is corrected at the
+  same pinned revision. Prior source receipts retain their provenance.
 - Organization: AI source/tests use Shared, Sword, ThrowStone, AttackThrowStone,
   Accumulate and BasicSkill folders with stable namespaces; [layout](development/ai-source-layout.md).
   Owner RNG migration is completed as `Zodiac.Framework.Random.RandomStateGenerator`
@@ -171,11 +174,11 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore, zero-warning/error Release build and **4,378 .NET
-  cases** (1,483 Framework, 1,150 AI), including seven new AI cases, pass. All
-  **566 Python tests**, pinned source/prepared-data, algorithm-guide, local-link
+- Validation: locked restore, zero-warning/error Release build and **4,384 .NET
+  cases** (1,483 Framework, 1,156 AI), including six new AI cases, pass. All
+  **569 Python tests**, pinned source/prepared-data, algorithm-guide, local-link
   and coverage checks pass. Seven full TRX reports/logs are under ignored
-  `scratch/roster-stone-297-298/`.
+  `scratch/roster-trajectory-299-300/`.
   Python uses repository-pinned Pillow 12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow 13.0.0 triggers six existing version guards; WindowsApps Python

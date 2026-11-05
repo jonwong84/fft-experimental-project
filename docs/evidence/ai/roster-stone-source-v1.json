@@ -601,5 +601,6 @@
   ],
   "originalExecuted": false,
   "cExecuted": false,
-  "trajectoryLimitation": "Sprite-height metadata and external SquareRoot12 exact sampling remain separate evidence prerequisites."
+  "trajectoryLimitation": "Sprite-height metadata and external SquareRoot12 exact sampling remain separate evidence prerequisites.",
+  "correction": "ZOD-299 found the capitalized SquareRoot12.c at the same pinned revision and verified exact table normalization/factor identity; the original absence claim was mistaken. See docs/evidence/ai/roster-trajectory-source-v1.json."
 }

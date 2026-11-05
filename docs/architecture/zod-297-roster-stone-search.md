@@ -54,8 +54,9 @@ baseY-height < pointY < baseY, and reject zero-height boxes.
 Q12 distance by0x2000, and visits floor(distance/0x2000) samples. Interpolation
 uses `(current<<8)/(total>>4)` then signed arithmetic shifts of delta products.
 There is no RNG. This is not a panel Bresenham test or continuous line/box test.
-The local checkout declares `SquareRoot12` without its implementation; exact
-SDK rounding/table behavior is an unresolved dependency for general samples.
+**Correction from [ZOD-299](zod-299-roster-stone-trajectory.md):** the SDK
+implementation is present under its capitalized filename at this same revision.
+Its table normalization and exact factor identity are now traced and checked.
 Do not substitute floating-point square root or infer clearance from range.
 
 The first child may retain an explicit **clear direct trajectory certificate
@@ -101,10 +102,9 @@ facts; they verify source control flow, not projectile sampling correctness.
 - **ZOD-298:** implement only the supplied roster candidate under the explicit
   clear-trajectory certificate. Share the current Stone formula and roster
   state/clock/scoring owners; preserve public pair command/profile guards.
-- **ZOD-299:** resolve bounded direct-trajectory admission and missing sprite/SDK
-  inputs before a computed blocked-path roster search. Record the available
-  exact domain or an explicit remaining evidence dependency. Do not manufacture
-  a default height or approximate SDK sampling.
+- **ZOD-299/300:** [computed trajectories](../behavior/roster-ai-direct-trajectory.md)
+  now use explicit sprite heights and source-exact SDK normalization/samples.
+  The initial missing-implementation claim above was a filename-search mistake.
 - Select the fresh isolated ranked Stone entry after that boundary is concrete;
   then full-list composition/ranking/lottery and roster command/turn integration.
 

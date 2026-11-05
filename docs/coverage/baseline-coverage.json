@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-05",
   "edition": "SCUS-94221",
-  "managedCommit": "d6e72e18cbd59e7dae0f8c59c93cf516690b63e6",
+  "managedCommit": "5df5cc0",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 4378,
-    "source": "docs/behavior/roster-throw-stone-ai-candidate.md",
+    "passed": 4384,
+    "source": "docs/behavior/roster-ai-direct-trajectory.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -568,7 +568,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "Existing pair/variable-list command and complete-turn drivers retain guards, priority knowledge and streams. Roster queries own general preparation/scenarios, cast-priority binding, roster self usefulness/isolated self entry, selected-target sword candidates, fresh exhaustive Attack enumeration and one supplied certified-clear Throw Stone candidate. Shared private formulas, masks, selected-target state, clock and scoring preserve peers and pair behavior. Actual roster commands exist separately. Computed Stone trajectories, fresh ranked Stone search, full-list ranking/lottery and roster AI drivers remain open alongside other policies/statuses/maps, complete corpse lifecycle, terminal/frame RNG, original evidence and host activation.",
+      "currentScope": "Existing pair/variable-list command and complete-turn drivers retain guards, priority knowledge and streams. Roster queries own general preparation/scenarios, cast-priority binding, roster self usefulness/isolated self entry, selected-target sword candidates, fresh exhaustive Attack enumeration and one supplied certified-clear Throw Stone candidate. Shared private formulas, masks, selected-target state, clock and scoring preserve peers and pair behavior. Actual roster commands exist separately. Computed flat direct trajectories now use explicit complete sprite heights and exact SDK normalization/samples against every occupant. Fresh ranked Stone search, full-list ranking/lottery and roster AI drivers remain open alongside other policies/statuses/maps, complete corpse lifecycle, terminal/frame RNG, original evidence and host activation.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -701,7 +701,12 @@
         "docs/behavior/roster-throw-stone-ai-candidate.md",
         "docs/evidence/ai/roster-stone-source-v1.json",
         "docs/fixtures/behavior/roster-stone-contract-v1.json",
-        "docs/evidence/ai/roster-stone-implementation-v1.json"
+        "docs/evidence/ai/roster-stone-implementation-v1.json",
+        "docs/architecture/zod-299-roster-stone-trajectory.md",
+        "docs/behavior/roster-ai-direct-trajectory.md",
+        "docs/evidence/ai/roster-trajectory-source-v1.json",
+        "docs/fixtures/behavior/roster-trajectory-contract-v1.json",
+        "docs/evidence/ai/roster-trajectory-implementation-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -782,7 +787,8 @@
         "src/Zodiac.Framework.Ai/Sword/RosterSwordAiAttackEntry.cs",
         "src/Zodiac.Framework.Ai/Shared/AiRosterCastGeometry.cs",
         "src/Zodiac.Framework.Ai/ThrowStone/RosterThrowStoneAiCandidate.cs",
-        "src/Zodiac.Framework.Ai/ThrowStone/ThrowStoneAiFormulaProjection.cs"
+        "src/Zodiac.Framework.Ai/ThrowStone/ThrowStoneAiFormulaProjection.cs",
+        "src/Zodiac.Framework.Ai/Shared/RosterAiDirectTrajectory.cs"
       ],
       "automatedChecks": [
         {
@@ -1092,6 +1098,18 @@
         {
           "path": "tools/verification/verify_roster_stone_contract.py",
           "scope": "Pinned 66 functions/21 files, fourteen candidate and four ranked-control-flow descriptions; no C/original/managed execution."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/Shared/RosterAiDirectTrajectoryTests.cs",
+          "scope": "Fourteen exact sampled source tapes, strict box/height boundaries, copied/exact metadata, legal origin/range/context, compact extent and replay."
+        },
+        {
+          "path": "tools/verification/test_roster_trajectory_contract.py",
+          "scope": "Independent source sample descriptions, observable SDK approximation and tampered/unsupported rejection."
+        },
+        {
+          "path": "tools/verification/verify_roster_trajectory_contract.py",
+          "scope": "Pinned eleven files/fourteen functions and prepared identity proof for every192 SDK factor; no original/C/managed execution."
         }
       ],
       "manualCheckpoint": {
@@ -1099,14 +1117,14 @@
         "procedure": "Observe selected mandatory AI turns and distinguish legal choices from exact policy matching."
       },
       "openQuestions": [
-        "Roster Attack enumeration and supplied certified-clear Stone candidate exist; computed Stone trajectory inputs/sampling and fresh ranked search remain before full-list selection and roster AI command integration.",
+        "Computed bounded direct trajectories now exist. Fresh ranked roster Stone search remains before full-list selection and roster AI command integration.",
         "Knowledge starts unknown, records only owned writes and must forget after unmodeled workspace use; numerical startup/event/loader history and frame-interleaved RNG remain unresolved.",
         "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
         "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Resolve ZOD-299 computed Stone trajectory admission and missing sprite-height/SDK rounding inputs; select fresh ranked search only after that boundary is concrete.",
+      "nextAction": "Implement ZOD-301 one fresh selected roster Stone occurrence with computed blockage, owned known origin priorities, blocked retry, clear evaluated-aim consumption and whole-query rollback.",
       "followUpTickets": [
-        "ZOD-299"
+        "ZOD-301"
       ]
     },
     {

@@ -49,8 +49,9 @@ Validation: locked restore, clean Release build, **4,378 .NET cases** (1,150 AI,
 coverage, links and unchanged owner-draft checks. Logs/receipts are under ignored
 `scratch/roster-stone-297-298/`; [implementation receipt](../evidence/ai/roster-stone-implementation-v1.json).
 
-ZOD-299 next resolves computed trajectory admission and missing sprite/SDK
-inputs before selecting isolated fresh ranked Stone search. No public cached
+[ZOD-299/300](roster-ai-direct-trajectory.md) now compute bounded trajectories
+using explicit heights and exact SDK normalization. ZOD-301 next composes fresh
+ranked Stone search. No public cached
 outcome, search/list/lottery, live command authority or full original equivalence
 is claimed. Other abilities/policies/statuses/maps, complete corpse lifecycle,
 automatic facing, terminal/frame RNG, host/editor, owner drafts, replacement

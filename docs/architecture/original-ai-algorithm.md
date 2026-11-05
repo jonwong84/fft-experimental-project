@@ -482,7 +482,9 @@ sword candidate with peer-preserving HP projection and corpse clocks. ZOD-296
 now owns exhaustive Attack enumeration through one fresh general prefix.
 [ZOD-297/298](../behavior/roster-throw-stone-ai-candidate.md) now trace ranked
 aims and project one supplied certified-clear Stone candidate with all peers.
-ZOD-299 next resolves computed trajectories and missing sprite/SDK inputs.
+[ZOD-299/300](../behavior/roster-ai-direct-trajectory.md) now compute bounded
+trajectories with explicit heights and exact SDK normalization. ZOD-301 next
+composes one fresh ranked Stone occurrence.
 Full original search breadth remains separate.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use
