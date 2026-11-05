@@ -53,21 +53,14 @@ public static class AccumulateAiCandidateProjection
         var invalid = Validate(state, candidate, profile);
         if (invalid != AccumulateAiCandidateRejection.None) return Reject(invalid);
         if (!candidate.SelfActiveAndUseful) return Reject(AccumulateAiCandidateRejection.SelfNotUseful);
-        var actor = state.Combatants.Single(u => u.UnitId == candidate.ActorId);
-        var opponent = state.Combatants.Single(u => u.UnitId == candidate.OpponentId);
-        var turn = state.TurnBattle.Turns.Units.Single(u => u.Id == actor.UnitId);
-        state.TurnBattle.Battle.TryGetUnit(actor.UnitId, out var body);
-        bool moved = turn.MovementTaken || candidate.Destination != body!.Position;
-        int endCt = Math.Min(60, turn.Ct + (moved ? 0 : 20));
-        // The sole target is self in either order. PA never crosses a candidate or live-state boundary.
-        int after = AccumulateFormula.IncreasePhysicalAttack(actor.PhysicalAttack);
-        var units = AiCandidateState.CreateUnits(state, actor.UnitId, candidate.Destination, opponent.Hp, endCt, moved, profile.Units);
-        var invalidClock = AiSimulationClock.Advance(units, state.TurnBattle.Turns.Ticks, decisionRng, out var clock);
-        if (invalidClock != AiSimulationClockRejection.None)
-            return Reject(invalidClock == AiSimulationClockRejection.RandomDrawCountExhausted
+        var effect = AiSelfStatProjection.Evaluate(state, candidate.ActorId, candidate.Destination, profile.Units, decisionRng);
+        var projection = effect.Projection;
+        if (projection.Rejection != AiSimulationClockRejection.None)
+            return Reject(projection.Rejection == AiSimulationClockRejection.RandomDrawCountExhausted
                 ? AccumulateAiCandidateRejection.RandomDrawCountExhausted : AccumulateAiCandidateRejection.TickCountExhausted);
+        var clock = projection.Clock!;
         return new(true, AccumulateAiCandidateRejection.None,
-            new(candidate, actor.PhysicalAttack, after, endCt, clock!.Units, clock.MoveOpportunityUnitId,
+            new(candidate, effect.Before, effect.After, projection.TurnEndCt, clock.Units, clock.MoveOpportunityUnitId,
                 clock.ElapsedTicks, clock.Ticks, clock.UpkeepPicks), clock.RngState);
     }
 

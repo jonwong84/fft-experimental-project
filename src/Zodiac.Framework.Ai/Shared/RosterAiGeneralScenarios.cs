@@ -41,7 +41,7 @@ public static class RosterAiGeneralScenarios
         foreach (var tile in partition.ScoreMask)
         {
             // Admission and legal mask are owned above; do not re-run public movement/preparation per tile.
-            var result = AiMoveOnlyProjection.Evaluate(state, request.ActorId, tile, simulation.Units, current);
+            var result = AiEffectFreeProjection.Evaluate(state, request.ActorId, tile, simulation.Units, current);
             if (result.Rejection != AiSimulationClockRejection.None)
                 return Reject(new(result.Rejection == AiSimulationClockRejection.RandomDrawCountExhausted
                     ? RosterAiGeneralRejection.RandomDrawCountExhausted : RosterAiGeneralRejection.TickCountExhausted,

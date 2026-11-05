@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-290 (trace roster cast-origin priorities and supported-action search).** ZOD-287–289 add fresh support-aware general admission/focus and roster movement scenarios through shared private kernels. Existing AI command drivers retain their two-unit guards; roster action/effect/target search remains separate.
-There are 34 open tickets below. The 256 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-294 (trace the ordinary roster sword candidate/effect boundary).** ZOD-290–293 bind ranked cast priorities across all enemies, classify roster self usefulness and evaluate one isolated fresh Accumulate occurrence. Existing pair command drivers retain their guards; roster Attack/Stone search and full-list selection remain separate.
+There are 34 open tickets below. The 260 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,24 +29,24 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-290 — Trace roster cast-origin priorities and supported-action search
+### ZOD-294 — Trace the ordinary roster sword candidate/effect boundary
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-288, ZOD-289
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-291, ZOD-292, ZOD-293
 
-Pin the read-only reference and trace the fresh general movement output into
-supported Attack/self/Stone occurrence search across multiple allies/enemies.
-Record active membership, usefulness/target and aim traversal, cast-origin reads,
-first/terminal-entry policy, formula/projection/score ordering and RNG. Preserve
-written/retained/unread priority provenance, actor reinsertion and source ties;
-never invent a value for an unscored cell. Trace all affected grants/effect and
-numeric-envelope admission before broadening any pair simulator. Reuse shared
-movement/targeting/clock/scoring/rank owners, with one owned fresh prefix rather
-than repeated pair decisions or caller-supplied cached plans. Produce independent
-vectors and select a bounded managed child before coding. Full unsupported
-ability families, other policies/statuses/maps, corpse lifecycle, automatic
-facing, terminal routing, frame RNG, host/editor, owner drafts, replacement
-interfaces and ZOD-106 remain separate/deferred. See
-[roster general scenarios](behavior/roster-ai-general-scenarios.md) and the
+Pin the read-only reference and trace one ordinary sword candidate against a
+selected roster target through both action orders, exact weapon/numeric/facing
+admission, formula draws, midpoint accuracy, no-knockback AI projection, target
+HP/status/KO accounting, source clock and all-unit score signs. Distinguish
+living input from a hypothetical KO, including corpse upkeep and later living
+movement opportunities. Reuse actual roster sword/formula rules and shared
+projection/clock/scoring; do not weaken a pair guard or apply the target's HP to
+every peer. Preserve grants/effect binding, actual versus predicted effects and
+whole-query RNG rollback. Produce independent vectors and select a bounded
+managed child before full target/aim traversal. Stone search, full-list ranking/
+lottery, roster AI command execution, other abilities/policies/statuses/maps,
+corpse lifecycle, automatic facing, terminal routing, frame RNG, host/editor,
+owner drafts, replacement interfaces and ZOD-106 remain separate/deferred. See
+[roster action foundations](behavior/roster-ai-action-foundation.md) and the
 [AI roadmap](development/ai-completion-roadmap.md).
 
 ## Existing validation gates

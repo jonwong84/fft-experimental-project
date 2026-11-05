@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 256 entries index completed bounded work; they do not mean the full game is complete.
+These 260 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -279,3 +279,7 @@ These 256 entries index completed bounded work; they do not mean the full game i
 - [ZOD-287 — Trace roster general-search admission, focus and movement scenarios](../architecture/zod-287-roster-general-search.md)
 - [ZOD-288 — Derive fresh roster general admission and focus](../behavior/roster-ai-general-scenarios.md#fresh-general-entry--zod-288)
 - [ZOD-289 — Derive roster general movement scenarios](../behavior/roster-ai-general-scenarios.md#general-scenarios--zod-289)
+- [ZOD-290 — Trace roster cast priorities and supported-action search](../architecture/zod-290-roster-action-search.md)
+- [ZOD-291 — Bind fresh roster cast-origin priority provenance](../behavior/roster-ai-action-foundation.md#fresh-cast-origin-provenance--zod-291)
+- [ZOD-292 — Classify roster Accumulate usefulness in source order](../behavior/roster-ai-action-foundation.md#roster-usefulness--zod-292)
+- [ZOD-293 — Evaluate an isolated fresh roster self occurrence](../behavior/roster-ai-action-foundation.md#isolated-fresh-self-occurrence--zod-293)

@@ -26,7 +26,7 @@ public static class RosterAiMovementBaseline
         var movement = FlatRosterMovement.Evaluate(state, request.ActorId, simulation.Battle);
         if (!movement.Accepted) return Reject(RosterAiRejection.UnsupportedProfile);
         if (!movement.Outcome!.AiOrigins.Contains(request.Destination)) return Reject(RosterAiRejection.InvalidDestination);
-        var projected = AiMoveOnlyProjection.Evaluate(state, request.ActorId, request.Destination, simulation.Units, rng);
+        var projected = AiEffectFreeProjection.Evaluate(state, request.ActorId, request.Destination, simulation.Units, rng);
         if (projected.Rejection != AiSimulationClockRejection.None) return Reject(RosterAiRefresh.ClockReason(projected.Rejection));
         int team = simulation.Battle.Units[request.ActorId].StableTeam;
         var enemies = simulation.Battle.Members.Where(u => u.UnitId != request.ActorId && u.StableTeam != team).Select(u => u.UnitId).ToImmutableHashSet();

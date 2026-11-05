@@ -97,4 +97,6 @@ rank insertion, lottery, roster AI command/turn execution, retreat/FadingLife/
 healer/special/control policies, other statuses/maps, corpse lifecycle, automatic
 facing, terminal routing and original frame RNG remain open. Owner drafts,
 host/editor, broad replacement interfaces and ZOD-106 remain separate/deferred.
-ZOD-290 next traces roster cast-origin priority reads and supported-action search.
+The [ZOD-290–293 follow-up](roster-ai-action-foundation.md) adds cast-priority
+binding, roster self usefulness and an isolated fresh self entry. ZOD-294 next
+traces the ordinary roster sword candidate/effect boundary.

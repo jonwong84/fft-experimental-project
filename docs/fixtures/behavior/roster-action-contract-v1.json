@@ -1,0 +1,2074 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-290",
+  "date": "2026-11-05",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "kind": "isolated-roster-action-descriptions",
+  "productionImplemented": false,
+  "notes": [
+    "Independent hand-worked expectations; no original/C/managed execution.",
+    "Cast and entry descriptions reuse the selected 8x4 fresh general prefix. Usefulness descriptions start at the explicitly supplied entry stream.",
+    "Retained numeric values are source-description inputs, not a managed public import path or a certificate of full workspace history.",
+    "Isolated entry omits earlier/later action evaluations, ranked insertion and lottery. No full original decision or frame RNG equivalence."
+  ],
+  "vectors": [
+    {
+      "id": "ranked-stone-missing-reinserted-actor",
+      "kind": "casts",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "pa": 5
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              5,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          }
+        ],
+        "retained": []
+      },
+      "expected": {
+        "rejection": "UnknownPriority",
+        "occurrence": 1,
+        "tile": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "ranked-stone-retained-actor-current-proximity",
+      "kind": "casts",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "pa": 5
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              5,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          }
+        ],
+        "retained": [
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": -421
+          }
+        ]
+      },
+      "expected": {
+        "rejection": "None",
+        "occurrences": [
+          {
+            "action": "Attack",
+            "origins": [],
+            "keys": []
+          },
+          {
+            "action": "Stone",
+            "origins": [
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                1
+              ]
+            ],
+            "keys": [
+              {
+                "tile": [
+                  2,
+                  1
+                ],
+                "priority": -485,
+                "proximity": 7,
+                "provenance": "Fresh"
+              },
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -421,
+                "proximity": 6,
+                "provenance": "Retained"
+              }
+            ]
+          },
+          {
+            "action": "Frog",
+            "origins": [],
+            "keys": []
+          }
+        ],
+        "word": 662824084,
+        "count": 10
+      }
+    },
+    {
+      "id": "fresh-write-replaces-retained-actor",
+      "kind": "casts",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": true,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "pa": 5
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              5,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          }
+        ],
+        "retained": [
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": -421
+          }
+        ]
+      },
+      "expected": {
+        "rejection": "None",
+        "occurrences": [
+          {
+            "action": "Attack",
+            "origins": [],
+            "keys": []
+          },
+          {
+            "action": "Stone",
+            "origins": [
+              [
+                1,
+                1
+              ]
+            ],
+            "keys": [
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -485,
+                "proximity": 6,
+                "provenance": "Fresh"
+              }
+            ]
+          },
+          {
+            "action": "Frog",
+            "origins": [],
+            "keys": []
+          }
+        ],
+        "word": 662824084,
+        "count": 10
+      }
+    },
+    {
+      "id": "self-map-and-exhaustive-attack-do-not-read-ranked-keys",
+      "kind": "casts",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self"
+            ],
+            "pa": 5
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              5,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          }
+        ],
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "occurrences": [
+          {
+            "action": "Attack",
+            "origins": [],
+            "keys": []
+          },
+          {
+            "action": "Self",
+            "origins": [],
+            "keys": []
+          },
+          {
+            "action": "Frog",
+            "origins": [],
+            "keys": []
+          }
+        ],
+        "word": 662824084,
+        "count": 10
+      }
+    },
+    {
+      "id": "post-act-no-origin-reads",
+      "kind": "casts",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": true,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "pa": 5
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              5,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          }
+        ],
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "occurrences": [
+          {
+            "action": "Attack",
+            "origins": [],
+            "keys": []
+          },
+          {
+            "action": "Stone",
+            "origins": [],
+            "keys": []
+          },
+          {
+            "action": "Frog",
+            "origins": [],
+            "keys": []
+          }
+        ],
+        "word": 662824084,
+        "count": 10
+      }
+    },
+    {
+      "id": "every-active-ally-draws-including-far-ally",
+      "kind": "usefulness",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self"
+            ],
+            "pa": 5
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              7,
+              3
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          }
+        ],
+        "active": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      "expected": {
+        "targets": [
+          {
+            "id": "a",
+            "effect": "Useful",
+            "raw": 16838
+          },
+          {
+            "id": "b",
+            "effect": "Adverse",
+            "raw": null
+          },
+          {
+            "id": "c",
+            "effect": "Useful",
+            "raw": 5758
+          }
+        ],
+        "selfUseful": true,
+        "word": 2524885223,
+        "count": 9
+      }
+    },
+    {
+      "id": "three-allied-coins-source-order",
+      "kind": "usefulness",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self"
+            ],
+            "pa": 5
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "d",
+            "order": 3,
+            "team": 1,
+            "tile": [
+              4,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          }
+        ],
+        "active": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ]
+      },
+      "expected": {
+        "targets": [
+          {
+            "id": "a",
+            "effect": "Useful",
+            "raw": 16838
+          },
+          {
+            "id": "b",
+            "effect": "Adverse",
+            "raw": null
+          },
+          {
+            "id": "c",
+            "effect": "Useful",
+            "raw": 5758
+          },
+          {
+            "id": "d",
+            "effect": "None",
+            "raw": 10113
+          }
+        ],
+        "selfUseful": true,
+        "word": 662824084,
+        "count": 10
+      }
+    },
+    {
+      "id": "actor-last-receives-third-allied-coin",
+      "kind": "usefulness",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 3,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self"
+            ],
+            "pa": 5
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "c",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "d",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              4,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          }
+        ],
+        "active": [
+          "d",
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      "expected": {
+        "targets": [
+          {
+            "id": "c",
+            "effect": "Useful",
+            "raw": 16838
+          },
+          {
+            "id": "b",
+            "effect": "Adverse",
+            "raw": null
+          },
+          {
+            "id": "d",
+            "effect": "Useful",
+            "raw": 5758
+          },
+          {
+            "id": "a",
+            "effect": "None",
+            "raw": 10113
+          }
+        ],
+        "selfUseful": false,
+        "word": 662824084,
+        "count": 10
+      }
+    },
+    {
+      "id": "empty-active-mask-is-no-work",
+      "kind": "usefulness",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self"
+            ],
+            "pa": 5
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          }
+        ],
+        "active": []
+      },
+      "expected": {
+        "targets": [],
+        "selfUseful": false,
+        "word": 1,
+        "count": 7
+      }
+    },
+    {
+      "id": "all-enemy-teams-adverse-without-coins",
+      "kind": "usefulness",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self"
+            ],
+            "pa": 5
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "d",
+            "order": 3,
+            "team": 2,
+            "tile": [
+              4,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          }
+        ],
+        "active": [
+          "b",
+          "d"
+        ]
+      },
+      "expected": {
+        "targets": [
+          {
+            "id": "b",
+            "effect": "Adverse",
+            "raw": null
+          },
+          {
+            "id": "d",
+            "effect": "Adverse",
+            "raw": null
+          }
+        ],
+        "selfUseful": false,
+        "word": 1,
+        "count": 7
+      }
+    },
+    {
+      "id": "inactive-actor-does-not-draw",
+      "kind": "usefulness",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self"
+            ],
+            "pa": 5
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          }
+        ],
+        "active": [
+          "b",
+          "c"
+        ]
+      },
+      "expected": {
+        "targets": [
+          {
+            "id": "b",
+            "effect": "Adverse",
+            "raw": null
+          },
+          {
+            "id": "c",
+            "effect": "Useful",
+            "raw": 16838
+          }
+        ],
+        "selfUseful": false,
+        "word": 1103527590,
+        "count": 8
+      }
+    },
+    {
+      "id": "other-ally-useful-self-candidates-reject-before-clock",
+      "kind": "entry",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self"
+            ],
+            "pa": 5
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          }
+        ]
+      },
+      "expected": {
+        "skipped": false,
+        "targets": [
+          {
+            "id": "a",
+            "effect": "None",
+            "raw": 5627
+          },
+          {
+            "id": "b",
+            "effect": "Adverse",
+            "raw": null
+          },
+          {
+            "id": "c",
+            "effect": "Useful",
+            "raw": 23010
+          }
+        ],
+        "attempts": [
+          {
+            "order": "ActFirst",
+            "disposition": "NotValuable"
+          },
+          {
+            "order": "MoveFirst",
+            "disposition": "NotValuable"
+          }
+        ],
+        "best": null,
+        "word": 3655513600,
+        "count": 14
+      }
+    },
+    {
+      "id": "both-orders-restore-same-pa-and-retain-act-first-tie",
+      "kind": "entry",
+      "input": {
+        "actor": "a",
+        "word": 3,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self"
+            ],
+            "pa": 5
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          }
+        ]
+      },
+      "expected": {
+        "skipped": false,
+        "targets": [
+          {
+            "id": "a",
+            "effect": "Useful",
+            "raw": 15796
+          },
+          {
+            "id": "b",
+            "effect": "Adverse",
+            "raw": null
+          },
+          {
+            "id": "c",
+            "effect": "None",
+            "raw": 4173
+          }
+        ],
+        "attempts": [
+          {
+            "order": "ActFirst",
+            "disposition": "Scored",
+            "before": 5,
+            "after": 6,
+            "endCt": 15,
+            "priority": 488,
+            "hit": 100,
+            "next": "b",
+            "elapsed": 1
+          },
+          {
+            "order": "MoveFirst",
+            "disposition": "Scored",
+            "before": 5,
+            "after": 6,
+            "endCt": 15,
+            "priority": 488,
+            "hit": 100,
+            "next": "b",
+            "elapsed": 1
+          }
+        ],
+        "best": 0,
+        "word": 3746093720,
+        "count": 16
+      }
+    },
+    {
+      "id": "pa99-keeps-stat-hit-credit",
+      "kind": "entry",
+      "input": {
+        "actor": "a",
+        "word": 3,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self"
+            ],
+            "pa": 99
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          }
+        ]
+      },
+      "expected": {
+        "skipped": false,
+        "targets": [
+          {
+            "id": "a",
+            "effect": "Useful",
+            "raw": 15796
+          },
+          {
+            "id": "b",
+            "effect": "Adverse",
+            "raw": null
+          },
+          {
+            "id": "c",
+            "effect": "None",
+            "raw": 4173
+          }
+        ],
+        "attempts": [
+          {
+            "order": "ActFirst",
+            "disposition": "Scored",
+            "before": 99,
+            "after": 99,
+            "endCt": 15,
+            "priority": 488,
+            "hit": 100,
+            "next": "b",
+            "elapsed": 1
+          },
+          {
+            "order": "MoveFirst",
+            "disposition": "Scored",
+            "before": 99,
+            "after": 99,
+            "endCt": 15,
+            "priority": 488,
+            "hit": 100,
+            "next": "b",
+            "elapsed": 1
+          }
+        ],
+        "best": 0,
+        "word": 3746093720,
+        "count": 16
+      }
+    },
+    {
+      "id": "critical-ally-contributes-to-absolute-score",
+      "kind": "entry",
+      "input": {
+        "actor": "a",
+        "word": 3,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self"
+            ],
+            "pa": 5
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 10,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          }
+        ]
+      },
+      "expected": {
+        "skipped": false,
+        "targets": [
+          {
+            "id": "a",
+            "effect": "Useful",
+            "raw": 15796
+          },
+          {
+            "id": "b",
+            "effect": "Adverse",
+            "raw": null
+          },
+          {
+            "id": "c",
+            "effect": "None",
+            "raw": 4173
+          }
+        ],
+        "attempts": [
+          {
+            "order": "ActFirst",
+            "disposition": "Scored",
+            "before": 5,
+            "after": 6,
+            "endCt": 15,
+            "priority": 353,
+            "hit": 100,
+            "next": "b",
+            "elapsed": 1
+          },
+          {
+            "order": "MoveFirst",
+            "disposition": "Scored",
+            "before": 5,
+            "after": 6,
+            "endCt": 15,
+            "priority": 353,
+            "hit": 100,
+            "next": "b",
+            "elapsed": 1
+          }
+        ],
+        "best": 0,
+        "word": 3746093720,
+        "count": 16
+      }
+    },
+    {
+      "id": "same-destination-skips-second-order",
+      "kind": "entry",
+      "input": {
+        "actor": "a",
+        "word": 3,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 0,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self"
+            ],
+            "pa": 5
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          }
+        ]
+      },
+      "expected": {
+        "skipped": false,
+        "targets": [
+          {
+            "id": "a",
+            "effect": "Useful",
+            "raw": 8312
+          },
+          {
+            "id": "b",
+            "effect": "Adverse",
+            "raw": null
+          },
+          {
+            "id": "c",
+            "effect": "Useful",
+            "raw": 20622
+          }
+        ],
+        "attempts": [
+          {
+            "order": "ActFirst",
+            "disposition": "Scored",
+            "before": 5,
+            "after": 6,
+            "endCt": 35,
+            "priority": 488,
+            "hit": 100,
+            "next": "b",
+            "elapsed": 1
+          }
+        ],
+        "best": 0,
+        "word": 1035215989,
+        "count": 13
+      }
+    },
+    {
+      "id": "already-moved-one-notvaluable-attempt",
+      "kind": "entry",
+      "input": {
+        "actor": "a",
+        "word": 3,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": true,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self"
+            ],
+            "pa": 5
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          }
+        ]
+      },
+      "expected": {
+        "skipped": false,
+        "targets": [
+          {
+            "id": "a",
+            "effect": "None",
+            "raw": 10365
+          },
+          {
+            "id": "b",
+            "effect": "Adverse",
+            "raw": null
+          },
+          {
+            "id": "c",
+            "effect": "Useful",
+            "raw": 8312
+          }
+        ],
+        "attempts": [
+          {
+            "order": "ActFirst",
+            "disposition": "NotValuable"
+          }
+        ],
+        "best": null,
+        "word": 2692258143,
+        "count": 11
+      }
+    },
+    {
+      "id": "no-useful-allies-skips-both-orders",
+      "kind": "entry",
+      "input": {
+        "actor": "a",
+        "word": 20,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self"
+            ],
+            "pa": 5
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          }
+        ]
+      },
+      "expected": {
+        "skipped": false,
+        "targets": [
+          {
+            "id": "a",
+            "effect": "None",
+            "raw": 20309
+          },
+          {
+            "id": "b",
+            "effect": "Adverse",
+            "raw": null
+          },
+          {
+            "id": "c",
+            "effect": "None",
+            "raw": 24279
+          }
+        ],
+        "attempts": [],
+        "best": null,
+        "word": 1591205727,
+        "count": 14
+      }
+    },
+    {
+      "id": "post-act-skips-entry-before-usefulness",
+      "kind": "entry",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": true,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self"
+            ],
+            "pa": 5
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "pa": 5
+          }
+        ]
+      },
+      "expected": {
+        "skipped": true,
+        "targets": [],
+        "attempts": [],
+        "best": null,
+        "word": 4182499122,
+        "count": 12
+      }
+    }
+  ]
+}

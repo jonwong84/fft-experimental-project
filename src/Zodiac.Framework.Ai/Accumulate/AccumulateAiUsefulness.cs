@@ -33,20 +33,26 @@ public static class AccumulateAiUsefulness
     // An owning caller supplies only freshly admitted state and the source entry's current mask.
     internal static AccumulateAiUsefulnessResult FilterFresh(AttackBattleSnapshot state, BattleUnitId actorId,
         AccumulateAiUsefulnessProfile entry, RandomState decisionRng)
+        => FilterFresh(state, actorId, state.Combatants.Where(u => u.UnitId == actorId ? entry.ActorActive : entry.OpponentActive)
+            .Select(u => u.UnitId).ToHashSet(), state.Combatants.Where(u => u.UnitId != actorId).Select(u => u.UnitId).ToHashSet(), decisionRng);
+
+    // Private source-order kernel; the owner admits the complete live roster, mask and stable enemy relations.
+    internal static AccumulateAiUsefulnessResult FilterFresh(AttackBattleSnapshot state, BattleUnitId actorId,
+        IReadOnlySet<BattleUnitId> active, IReadOnlySet<BattleUnitId> enemies, RandomState decisionRng)
     {
         var targets = ImmutableArray.CreateBuilder<AccumulateAiUsefulnessTarget>();
         bool selfUseful = false; var rng = decisionRng;
         foreach (var unit in state.TurnBattle.Turns.Units.OrderBy(u => u.TieKey))
         {
-            bool actor = unit.Id == actorId;
-            if (!(actor ? entry.ActorActive : entry.OpponentActive)) continue;
-            if (!actor) { targets.Add(new(unit.Id, AccumulateAiEffect.Adverse, null)); continue; }
+            if (!active.Contains(unit.Id)) continue;
+            if (enemies.Contains(unit.Id)) { targets.Add(new(unit.Id, AccumulateAiEffect.Adverse, null)); continue; }
             uint raw;
             try { var draw = new RandomStateGenerator().Next(rng); raw = draw.Value; rng = draw.State; }
             catch (OverflowException)
             { return new(false, AccumulateAiUsefulnessRejection.RandomDrawCountExhausted, AccumulateAiCandidateRejection.None, null, decisionRng); }
-            selfUseful = (raw & 1) == 0;
-            targets.Add(new(unit.Id, selfUseful ? AccumulateAiEffect.Useful : AccumulateAiEffect.None, raw));
+            bool useful = (raw & 1) == 0;
+            if (unit.Id == actorId) selfUseful = useful;
+            targets.Add(new(unit.Id, useful ? AccumulateAiEffect.Useful : AccumulateAiEffect.None, raw));
         }
         return new(true, AccumulateAiUsefulnessRejection.None, AccumulateAiCandidateRejection.None,
             new(targets.ToImmutable(), selfUseful), rng);

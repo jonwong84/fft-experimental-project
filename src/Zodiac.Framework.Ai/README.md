@@ -18,14 +18,21 @@ family. Source and test projects use matching folders:
   `RosterAiGeneralPreparation`/`GeneralScenarios` now derive support-aware general
   admission/focus and roster movement masks/destinations through shared private
   `AiScenarioLayout` arithmetic. [Policy and provenance limits](../../docs/behavior/roster-ai-general-scenarios.md)
-  stay explicit; action search and live roster AI commands are future work.
+  stay explicit. `RosterAiCastOrigins` now binds fresh/retained ranked keys
+  across every active enemy through the existing workspace; exhaustive Attack
+  and self map entries read no ranked keys. Full action traversal and live
+  roster AI commands remain future work.
   These serve more than one family.
 - `Sword/`: the original ordinary-sword pilot, its preparation, scenarios,
   scans, selection and execution adapters.
 - `ThrowStone/`: one Throw Stone formula/candidate/scan, used by pair selection.
 - `AttackThrowStone/`: the closed two-entry list, shared pair preparation,
   movement/scenario branches, ranking/selection and actual command adapters.
-- `Accumulate/`: self PA projection/scoring, certified three-action-list
+- `Accumulate/`: roster source-order allied usefulness and one isolated fresh
+  self occurrence now share private filter/PA/choice/clock/scoring kernels with
+  the pair owners. [Entry and binding limits](../../docs/behavior/roster-ai-action-foundation.md)
+  preserve ally-only NotValuable behavior and the incomplete list-wide stream.
+  Also owns self PA projection/scoring, certified three-action-list
   preparation, a separate usefulness filter and an isolated map-target entry.
 - `BasicSkill/`: supplied-scenario Attack/Accumulate/Throw Stone composition and
   terminal selection using those shared entry/score/rank/lottery owners.

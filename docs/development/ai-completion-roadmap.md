@@ -83,8 +83,11 @@ now owns one fresh whole-roster refresh, supported-list/team flags and an isolat
 legal move score through shared clock/projection/scoring owners.
 [Roster general scenarios](../behavior/roster-ai-general-scenarios.md) now derive
 support-aware general admission, nearest focus, ANY diagnostics and ordered
-movement masks/destinations/provenance. Other policies and action/target search
-still require separate work.
+movement masks/destinations/provenance.
+[Roster action foundations](../behavior/roster-ai-action-foundation.md) now bind
+cast keys across all active enemies and evaluate one isolated self occurrence
+with all-ally usefulness and whole-roster scoring. Other policies, Attack/Stone
+roster traversal and full-list ranking/selection still require separate work.
 
 The [ZOD-210 cleanup](ai-pair-selection-refactor.md) shares pair admission and
 composition/lottery handling while retaining separate scenario/provenance rules.
@@ -181,7 +184,8 @@ targeting queries. ZOD-277–282 add source-bounded actual roster movement/sword
 explicit-facing commands without weakening old pair admission. ZOD-283–286
 add pure roster refresh, summaries/team flags and isolated movement scoring.
 ZOD-287–289 add fresh general admission/focus and source movement scenarios.
-ZOD-290 next traces roster cast-origin priorities and supported-action search.
+ZOD-290–293 add cast-priority binding, roster self usefulness and an isolated
+fresh self entry. ZOD-294 next traces the roster sword candidate/effect boundary.
 Broader control/low-HP/terminal policies remain separate.
 A certificate for one closed ability list cannot stand in for another list.
 

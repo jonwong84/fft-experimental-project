@@ -61,7 +61,7 @@ public static class RosterAiRefresh
         var actor = state.TurnBattle.Turns.Units.Single(u => u.Id == request.ActorId);
         byte cachedDelay = (byte)AiRosterEligibility.OrdinaryTurnDelay((byte)actor.Ct, (byte)actor.Speed);
         var origin = state.TurnBattle.Battle.Units.Single(u => u.Id == request.ActorId).Position;
-        var projection = AiMoveOnlyProjection.Evaluate(state, request.ActorId, origin, simulation.Units, rng);
+        var projection = AiEffectFreeProjection.Evaluate(state, request.ActorId, origin, simulation.Units, rng);
         if (projection.Rejection != AiSimulationClockRejection.None) return Reject(ClockReason(projection.Rejection));
         var clock = projection.Clock!; int team = simulation.Battle.Units[request.ActorId].StableTeam;
         var flags = clock.Units.Select(unit => {

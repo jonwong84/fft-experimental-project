@@ -19,7 +19,7 @@ internal static class AiMovementSimulation
     internal static AiMovementSimulationResult Evaluate(AttackBattleSnapshot state, BattleUnitId actorId,
         BattleUnitId targetId, TilePosition destination, ImmutableArray<AiUnitBaseline> baselines, RandomState decisionRng)
     {
-        var projected = AiMoveOnlyProjection.Evaluate(state, actorId, destination, baselines, decisionRng);
+        var projected = AiEffectFreeProjection.Evaluate(state, actorId, destination, baselines, decisionRng);
         if (projected.Rejection != AiSimulationClockRejection.None) return new(projected.Rejection, null, decisionRng);
         var clock = projected.Clock!;
         var score = AiCandidateScoring.ScoreFreshUnits(clock.Units, targetId, 100);
@@ -29,22 +29,23 @@ internal static class AiMovementSimulation
     }
 }
 
-internal sealed record AiMoveOnlyProjectionResult(AiSimulationClockRejection Rejection, int TurnEndCt,
+internal sealed record AiEffectFreeProjectionResult(AiSimulationClockRejection Rejection, int TurnEndCt,
     AiClockOutcome? Clock, RandomState RngState);
 
-/// <summary>Shared fresh private move/skillset-zero projection; callers own admission, scoring and interpretation.</summary>
-internal static class AiMoveOnlyProjection
+/// <summary>Shared fresh private placement/choice/clock projection; callers own effects, admission and scoring.</summary>
+internal static class AiEffectFreeProjection
 {
-    internal static AiMoveOnlyProjectionResult Evaluate(AttackBattleSnapshot state, BattleUnitId actorId,
-        TilePosition destination, ImmutableArray<AiUnitBaseline> baselines, RandomState decisionRng)
+    internal static AiEffectFreeProjectionResult Evaluate(AttackBattleSnapshot state, BattleUnitId actorId,
+        TilePosition destination, ImmutableArray<AiUnitBaseline> baselines, RandomState decisionRng, bool consumeAction = false)
     {
         var turns = state.TurnBattle.Turns;
         var actorTurn = turns.Units.Single(u => u.Id == actorId);
         var battle = state.TurnBattle.Battle;
         battle.TryGetUnit(actorId, out var body);
         bool moved = actorTurn.MovementTaken || destination != body!.Position;
+        bool acted = actorTurn.ActionTaken || consumeAction;
         // Source turn_end uses u16 arithmetic before the byte store; refund only genuinely unused choices.
-        int turnEndCt = Math.Min(60, actorTurn.Ct + (actorTurn.ActionTaken ? 0 : 20) + (moved ? 0 : 20));
+        int turnEndCt = Math.Min(60, actorTurn.Ct + (acted ? 0 : 20) + (moved ? 0 : 20));
         var units = turns.Units.OrderBy(u => u.TieKey).Select(turn =>
         {
             var combat = state.Combatants.Single(u => u.UnitId == turn.Id);
@@ -53,7 +54,7 @@ internal static class AiMoveOnlyProjection
             return new AiProjectedUnit(turn.Id, isActor ? destination : unitBody!.Position, combat.Facing,
                 combat.Hp, combat.MaxHp, combat.Status, baselines.Single(u => u.UnitId == turn.Id).DeathCounter,
                 turn.Speed, turn.TieKey, isActor ? turnEndCt : turn.Ct,
-                isActor ? moved : turn.MovementTaken, turn.ActionTaken);
+                isActor ? moved : turn.MovementTaken, isActor ? acted : turn.ActionTaken);
         }).ToArray();
         var rejection = AiSimulationClock.Advance(units, turns.Ticks, decisionRng, out var clock);
         return rejection != AiSimulationClockRejection.None ? new(rejection, turnEndCt, null, decisionRng)
