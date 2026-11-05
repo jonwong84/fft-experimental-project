@@ -10,6 +10,12 @@
       "managedBaseRevision": "a1b6c1200f3dd675b50d78f86f20ded608bb574c",
       "validation": "8 Python checks passed; pinned 11-file/21-function source audit and 55 descriptions passed; no managed implementation yet.",
       "reports": "scratch/spell-targeting-358-362/"
+    },
+    {
+      "ticket": "ZOD-359",
+      "managedBaseRevision": "515223199dc45788dd0db80020a248b3e3445130",
+      "validation": "2 focused managed tests passed (17 literal reference/column descriptions); no whole-suite claim.",
+      "reports": "scratch/spell-targeting-358-362/"
     }
   ]
 }

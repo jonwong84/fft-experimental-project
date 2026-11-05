@@ -69,3 +69,12 @@ The future custom cone remains separate: forward rows1/3/5, excluding the actor,
 rotated with attack direction. Owner drafts, JobStats, host/editor, automatic
 facing, full corpse/Golem/terminal/status/frame RNG, broad interfaces and ZOD-106
 remain deferred. No runtime C, BIN, command, content grant or magic AI activation.
+
+## ZOD-359
+
+`OrdinarySpellTargeting.ReferenceHeight` and `SelectLayer` implement the traced
+height primitive without map marks, source execution or global map constraints.
+Original field-width violations throw at this direct primitive boundary. Seventeen
+literal reference/column descriptions cover narrowing, water/half height, tolerance,
+lower ties, TopDown and blocked sentinels. Two managed tests passed; Python's eight
+checks remain the independently described baseline.
