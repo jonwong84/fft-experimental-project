@@ -6,17 +6,18 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-302: trace full supported roster list composition and selection.**
-[ZOD-301](behavior/roster-throw-stone-ai-entry.md) owns one fresh selected Stone
-occurrence with computed all-occupant blockage, ranked known keys, map aim order,
-blocked retry, evaluated-aim consumption and D0 comparison. Whole-query failures
-restore input RNG/workspace; success publishes exactly fresh movement writes.
-Next trace one prefix through Attack/self/Stone occurrences, per-entry reset/
-rank admission and lottery before selecting managed composition children.
-Existing pair drivers retain their guards. Full roster commands/turns, other
-policies/statuses/maps, complete corpse lifecycle, automatic facing, terminal/
-frame RNG, host/editor, owner drafts, replacement interfaces and ZOD-106 remain
-separate/deferred.
+**ZOD-304: trace authoritative roster AI command and turn integration.**
+[ZOD-302/303](behavior/roster-basic-skill-ai-selection.md) own a complete supported
+roster decision through one fresh general prefix, structural Attack/self/Stone/
+Frog traversal, per-occurrence coins/geometry/effects, stable eight-slot insertion
+and one source lottery. Private fresh owners restore all hypotheses and chain
+RNG. Late failures restore original workspace/RNG; only successful selection
+publishes fresh priority writes. Post-ACT empty rankings still draw eight times.
+Next trace missing actual roster abilities and existing Framework sessions/
+receipts before selecting execution children. Existing pair guards stay intact.
+Full roster AI commands/turns, other policies/statuses/maps, complete corpse
+lifecycle, automatic facing, terminal/frame RNG, host/editor, owner drafts,
+replacement interfaces and ZOD-106 remain separate/deferred.
 
 The [original AI algorithm guide](architecture/original-ai-algorithm.md) maps
 policy precedence and all core source functions, with bounded implementation
@@ -92,7 +93,9 @@ without rewriting old evidence.
   now use exact SDK rounding, explicit sprite heights and every initial occupant.
   [Fresh ranked Stone search](behavior/roster-throw-stone-ai-entry.md) now owns
   a selected occurrence through one prefix with blocked retry and consumed aims.
-  Full roster list selection is not yet composed. No cached trusted
+  [Full supported roster list selection](behavior/roster-basic-skill-ai-selection.md)
+  now composes those private fresh owners with stable rank insertion and source
+  lottery. It returns pure plans without roster AI command authority. No cached trusted
   result, command authority or full-list stream is claimed. AI compact16,
   Framework slot21 and 16 other movement records stay distinct from uncapped
   storage; general policy/flat/MP0 guards remain explicit.
@@ -155,12 +158,12 @@ without rewriting old evidence.
   explicit player-control flag clear, HP*128/maxHP>=45 and no NonBlue reach draw.
   Existing Attack/Stone scoring/selection/execution and both teams are preserved;
   terminal routing and Blue low-HP/player-controlled policies remain open.
-- Latest source trace: [ZOD-301 fresh ranked Stone](architecture/zod-301-roster-stone-entry.md)
-  pins 69 functions across 26 files. Eleven independent full-prefix tapes cover
-  ranked/aim order, blocked retry, zero-accuracy consumption, duplicate index,
-  unknown keys and restored peer HP/KO collision. Computed trajectory evidence
-  retains the corrected SDK trace and complete prepared factor proof. Prior
-  roster/pair/list/workspace receipts retain their provenance.
+- Latest source trace: [ZOD-302 roster list](architecture/zod-302-roster-list-selection.md)
+  pins 73 functions across 26 files. Twelve independent composed tapes cover
+  entry order/coins, duplicate passes, eight-slot capacity/ties, partial-hit
+  lottery/fallback, post-ACT empty ranks, PA99 and restored multi-target state.
+  Prior entry/trajectory receipts and prepared SDK factor proof retain their
+  provenance, including the corrected ZOD-297 SDK filename-search mistake.
 - Organization: AI source/tests use Shared, Sword, ThrowStone, AttackThrowStone,
   Accumulate and BasicSkill folders with stable namespaces; [layout](development/ai-source-layout.md).
   Owner RNG migration is completed as `Zodiac.Framework.Random.RandomStateGenerator`
@@ -174,11 +177,11 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore, zero-warning/error Release build and **4,392 .NET
-  cases** (1,483 Framework, 1,164 AI), including eight new AI cases, pass. All
-  **572 Python tests**, pinned source/prepared-data, algorithm-guide, local-link
+- Validation: locked restore, zero-warning/error Release build and **4,396 .NET
+  cases** (1,483 Framework, 1,168 AI), including four new AI cases, pass. All
+  **575 Python tests**, pinned source/prepared-data, algorithm-guide, local-link
   and coverage checks pass. Seven full TRX reports/logs are under ignored
-  `scratch/roster-stone-entry-301/`.
+  `scratch/roster-list-302-303/`.
   Python uses repository-pinned Pillow 12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow 13.0.0 triggers six existing version guards; WindowsApps Python

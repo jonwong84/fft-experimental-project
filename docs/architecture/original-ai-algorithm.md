@@ -485,7 +485,9 @@ aims and project one supplied certified-clear Stone candidate with all peers.
 [ZOD-299/300](../behavior/roster-ai-direct-trajectory.md) now compute bounded
 trajectories with explicit heights and exact SDK normalization. ZOD-301
 now has one fresh ranked Stone occurrence with computed blockage and consumed
-aims. ZOD-302 next traces full supported roster list composition/selection.
+aims. [ZOD-302/303](../behavior/roster-basic-skill-ai-selection.md) now compose
+one full supported roster list, stable rank insertion and source lottery.
+ZOD-304 next traces authoritative roster command/turn integration.
 Full original search breadth remains separate.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use

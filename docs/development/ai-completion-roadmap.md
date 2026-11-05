@@ -195,7 +195,9 @@ ZOD-297/298 now trace ranked aims and project one supplied certified-clear
 roster Stone candidate. ZOD-299/300 now compute direct trajectories
 with explicit heights and exact SDK normalization. ZOD-301 implements one
 fresh ranked Stone occurrence with computed blockage and consumed aims;
-ZOD-302 next traces full supported roster list selection.
+ZOD-302/303 now implement full supported roster list selection through
+one prefix, stable ranking and source lottery. ZOD-304 next traces roster
+command/turn integration prerequisites.
 Broader control/low-HP/terminal policies remain separate.
 A certificate for one closed ability list cannot stand in for another list.
 

@@ -13,9 +13,9 @@ FIXTURE=ROOT/'docs/fixtures/behavior/roster-attack-contract-v1.json'
 EVIDENCE=ROOT/'docs/evidence/ai/roster-attack-source-v1.json'
 
 
-def describe(data):
-    d=copy.deepcopy(data);d['kind']='scenarios';m=general_description(d);require(m['rejection']=='None','Ordinary general prefix')
-    actor=next(u for u in d['units'] if u['id']==d['actor']);word=m['word'];count=m['count']
+def describe(data, *, fresh=None):
+    d=copy.deepcopy(data);d['kind']='scenarios';m=general_description(d) if fresh is None else fresh[0];require(m['rejection']=='None','Ordinary general prefix')
+    actor=next(u for u in d['units'] if u['id']==d['actor']);word=m['word'] if fresh is None else fresh[1];count=m['count'] if fresh is None else fresh[2]
     if actor['acted']:return dict(skipped=True,origins=[],targets=[],candidates=[],best=None,comparison=None,word=word,count=count)
     require(0<=d['power']<=255 and (2*max(1,actor['pa'])-1)*d['power']<=32767,'Bound ordinary sword')
     foes=sorted((u for u in d['units'] if u['team']!=actor['team']),key=lambda u:(u['tile'][1],u['tile'][0]))

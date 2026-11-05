@@ -41,12 +41,20 @@ public static class RosterThrowStoneAiEntry
         if (!profile.OriginalInstantDirectEnemyPolicy) return Reject(new(RosterThrowStoneAiEntryStage.Admission));
         var prefix = RosterAiGeneralScenarios.Evaluate(state, request.Preparation, simulation, refresh, lists, general, scoring, rng);
         if (!prefix.Accepted) return Reject(new(RosterThrowStoneAiEntryStage.Prefix, prefix.Failure));
-        var m = prefix.Outcome!; var actorId = request.Preparation.ActorId;
-        var entry = m.Preparation.Preparation.ActorEntries.FirstOrDefault(e => e.Index == request.OccurrenceIndex);
+        var result = EvaluateFresh(state, request.Preparation.ActorId, request.OccurrenceIndex, simulation, ability, heights, prefix.Outcome!, prefix.RngState, workspace);
+        return result.Accepted ? result : result with { RngState = rng, Workspace = workspace };
+    }
+
+    internal static RosterThrowStoneAiEntryResult EvaluateFresh(AttackBattleSnapshot state, BattleUnitId actorId, int occurrenceIndex,
+        RosterAiSimulationProfile simulation, TargetedAbilityBattleProfile ability, RosterAiProjectileHeights heights,
+        RosterAiGeneralScenarioOutcome m, RandomState rng, AiPriorityWorkspace workspace)
+    {
+        RosterThrowStoneAiEntryResult Reject(RosterThrowStoneAiEntryFailure failure) => new(false, failure, null, rng, workspace);
+        var entry = m.Preparation.Preparation.ActorEntries.FirstOrDefault(e => e.Index == occurrenceIndex);
         if (entry is null || entry.Source.Kind != AiHumanAbilityKind.ThrowStone || entry.Source.AbilityId is not { } abilityId)
             return Reject(new(RosterThrowStoneAiEntryStage.Admission));
         var successor = workspace.Write(m.Movement.Select(t => KeyValuePair.Create(t.Outcome.Destination, t.TilePriority)));
-        if (!entry.Usable) return new(true, null, new(m, entry, [], [], [], [], [], null, null, 0, 0), prefix.RngState, successor);
+        if (!entry.Usable) return new(true, null, new(m, entry, [], [], [], [], [], null, null, 0, 0), rng, successor);
         var setup = RosterThrowStoneAiCandidate.ValidateAbility(state, actorId, abilityId, ability, simulation);
         if (setup != RosterThrowStoneAiCandidateRejection.None) return Reject(new(RosterThrowStoneAiEntryStage.Admission, CandidateReason: setup));
         if (!RosterAiDirectTrajectory.HasCompleteHeights(simulation, heights)) return Reject(new(RosterThrowStoneAiEntryStage.Admission, MissingSpriteHeights: true));
@@ -56,7 +64,7 @@ public static class RosterThrowStoneAiEntry
         if (missing is not null) return Reject(new(RosterThrowStoneAiEntryStage.Priority, MissingTile: missing));
         var remaining = targets.Select(u => u.UnitId).ToHashSet();
         var visitedOrigins = ImmutableArray.CreateBuilder<TilePosition>(); var visits = ImmutableArray.CreateBuilder<RosterThrowStoneAiAimVisit>();
-        var candidates = ImmutableArray.CreateBuilder<RosterThrowStoneAiScannedCandidate>(); int? best = null; var current = prefix.RngState;
+        var candidates = ImmutableArray.CreateBuilder<RosterThrowStoneAiScannedCandidate>(); int? best = null; var current = rng;
         var actorOrigin = m.Preparation.Preparation.Targets.ById[actorId].Position;
         foreach (var key in ranked)
         {

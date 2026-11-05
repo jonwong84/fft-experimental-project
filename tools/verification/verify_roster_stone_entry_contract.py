@@ -11,9 +11,9 @@ FIXTURE=ROOT/'docs/fixtures/behavior/roster-stone-entry-contract-v1.json'
 EVIDENCE=ROOT/'docs/evidence/ai/roster-stone-entry-source-v1.json'
 
 
-def describe(data):
-    d=copy.deepcopy(data);d['kind']='scenarios';m=general_description(d);require(m['rejection']=='None','Ordinary prefix')
-    actor=next(u for u in d['units'] if u['id']==d['actor']);word=m['word'];count=m['count']
+def describe(data, *, fresh=None):
+    d=copy.deepcopy(data);d['kind']='scenarios';m=general_description(d) if fresh is None else fresh[0];require(m['rejection']=='None','Ordinary prefix')
+    actor=next(u for u in d['units'] if u['id']==d['actor']);word=m['word'] if fresh is None else fresh[1];count=m['count'] if fresh is None else fresh[2]
     require(1<=d['occurrence']<=len(actor['actions']) and actor['actions'][d['occurrence']-1]=='Stone','Selected structural Stone')
     if actor['acted']:return dict(rejection='None',skipped=True,ranked=[],aims=[],origins=[],visits=[],candidates=[],best=None,comparison=None,remainingOrigins=0,remainingAims=0,word=word,count=count)
     foes=sorted((u for u in d['units'] if u['team']!=actor['team']),key=lambda u:(u['tile'][1],u['tile'][0]))

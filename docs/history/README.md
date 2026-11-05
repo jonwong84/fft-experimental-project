@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 268 entries index completed bounded work; they do not mean the full game is complete.
+These 270 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -291,3 +291,5 @@ These 268 entries index completed bounded work; they do not mean the full game i
 - [ZOD-299 — Resolve bounded roster Stone direct-trajectory admission](../architecture/zod-299-roster-stone-trajectory.md)
 - [ZOD-300 — Compute flat roster direct projectile trajectories](../behavior/roster-ai-direct-trajectory.md)
 - [ZOD-301 — Evaluate one fresh ranked roster Throw Stone occurrence](../behavior/roster-throw-stone-ai-entry.md)
+- [ZOD-302 — Trace full supported roster list composition and selection](../architecture/zod-302-roster-list-selection.md)
+- [ZOD-303 — Select one fresh full supported roster list decision](../behavior/roster-basic-skill-ai-selection.md)

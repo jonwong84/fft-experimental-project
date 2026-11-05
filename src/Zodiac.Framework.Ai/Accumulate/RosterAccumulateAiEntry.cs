@@ -34,13 +34,20 @@ public static class RosterAccumulateAiEntry
         RosterAccumulateAiEntryResult Reject(RosterAccumulateAiEntryFailure failure) => new(false, failure, null, rng);
         var prepared = RosterAiGeneralScenarios.Evaluate(state, request.Preparation, simulation, refresh, lists, general, scoring, rng);
         if (!prepared.Accepted) return Reject(new(RosterAccumulateAiEntryStage.Prefix, prepared.Failure));
-        var m = prepared.Outcome!; var actorId = request.Preparation.ActorId;
-        var entry = m.Preparation.Preparation.ActorEntries.FirstOrDefault(e => e.Index == request.OccurrenceIndex);
+        var result = EvaluateFresh(state, request.Preparation.ActorId, request.OccurrenceIndex, simulation, ability, prepared.Outcome!, prepared.RngState);
+        return result.Accepted ? result : result with { RngState = rng };
+    }
+
+    internal static RosterAccumulateAiEntryResult EvaluateFresh(AttackBattleSnapshot state, BattleUnitId actorId, int occurrenceIndex,
+        RosterAiSimulationProfile simulation, RosterAccumulateAiProfile ability, RosterAiGeneralScenarioOutcome m, RandomState rng)
+    {
+        RosterAccumulateAiEntryResult Reject(RosterAccumulateAiEntryFailure failure) => new(false, failure, null, rng);
+        var entry = m.Preparation.Preparation.ActorEntries.FirstOrDefault(e => e.Index == occurrenceIndex);
         if (entry is null || entry.Source.Kind != AiHumanAbilityKind.Accumulate || entry.Source.AbilityId is not { } abilityId)
             return Reject(new(RosterAccumulateAiEntryStage.Admission));
-        if (!entry.Usable) return new(true, null, new(m, entry, null, [], null, null), prepared.RngState);
+        if (!entry.Usable) return new(true, null, new(m, entry, null, [], null, null), rng);
         var usefulness = RosterAccumulateAiUsefulness.Evaluate(state,
-            new(actorId, abilityId, m.Preparation.ActiveTargets.SelectedUnits), simulation, ability, prepared.RngState);
+            new(actorId, abilityId, m.Preparation.ActiveTargets.SelectedUnits), simulation, ability, rng);
         if (!usefulness.Accepted) return Reject(new(RosterAccumulateAiEntryStage.Usefulness, Reason: usefulness.Rejection));
         var candidates = ImmutableArray.CreateBuilder<RosterAccumulateAiCandidate>(); var current = usefulness.RngState; int? best = null;
         if (usefulness.Outcome!.Targets.Any(u => u.Effect == AccumulateAiEffect.Useful))

@@ -29,13 +29,14 @@ def usefulness(data,word,count,active):
     return dict(targets=targets,selfUseful=self_useful,word=word,count=count)
 
 
-def describe(kind,data):
+def describe(kind,data, *, fresh=None):
     d=copy.deepcopy(data);actor=next(u for u in d['units'] if u['id']==d['actor'])
     # Reuse independently established input-domain checks, not a managed or original simulator.
     preparation_description('preparation',d)
     if kind=='usefulness':return usefulness(d,d['word'],d['count'],d['active'])
     require(kind in ('casts','entry'),'Description kind')
-    d['kind']='scenarios';m=general_description(d);require(m['rejection']=='None','Admitted ordinary general prefix')
+    d['kind']='scenarios';m=general_description(d) if fresh is None else copy.deepcopy(fresh[0]);require(m['rejection']=='None','Admitted ordinary general prefix')
+    if fresh is not None:m.update(word=fresh[1],count=fresh[2])
     if kind=='casts':
         retained={tuple(v['tile']):v['priority'] for v in d['retained']}
         require(all(type(v) is int and -32768<=v<=32767 for v in retained.values()),'Signed priority')

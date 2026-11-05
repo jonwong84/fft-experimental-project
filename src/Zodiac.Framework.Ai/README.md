@@ -37,7 +37,9 @@ family. Source and test projects use matching folders:
   sprite heights and exact SDK normalization/samples across all occupants.
   `RosterThrowStoneAiEntry` now owns one fresh selected ranked Stone occurrence
   with computed blockage, consumed aims and transactional workspace/RNG.
-  Full roster list composition/selection remains open.
+  `RosterBasicSkillAiSelection` now owns a complete supported roster decision
+  through one prefix, private entry continuations, stable eight-slot ranking
+  and source lottery. Roster AI command/turn integration remains open.
 - `ThrowStone/`: one Throw Stone formula/candidate/scan, used by pair selection.
 - `AttackThrowStone/`: the closed two-entry list, shared pair preparation,
   movement/scenario branches, ranking/selection and actual command adapters.

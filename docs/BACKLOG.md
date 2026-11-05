@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-302 (trace full supported roster list composition and selection).** ZOD-301 owns one fresh selected ranked Stone occurrence with computed blockage, consumed aims and transactional priorities/RNG. Full-list selection remains separate.
-There are 34 open tickets below. The 268 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-304 (trace authoritative roster AI command and turn integration).** ZOD-302/303 own a full supported roster list through one fresh prefix, private occurrence owners, stable eight-slot rank insertion and source lottery. Live roster AI execution remains separate.
+There are 34 open tickets below. The 270 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,22 +29,21 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-302 — Trace full supported roster list composition and selection
+### ZOD-304 — Trace authoritative roster AI command and turn integration
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-293, ZOD-296, ZOD-301
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-280, ZOD-282, ZOD-303
 
-Pin the read-only source and trace one fresh general prefix through structural
-Attack/self/Stone/Frog occurrences, repeated IDs/order, each actual usefulness/
-target/trajectory pass, per-entry best/rank reset, insertion against D0, source
-lottery and successful priority publication. Reuse private fresh owners rather
-than calling independently refreshed public queries. Trace self coin placement
-after preparation and its effect on later geometry/formula/upkeep RNG. Preserve
-unknown selected-entry priorities, all-peer restoration, projected KO blockers,
-post-ACT empty list and whole-query rollback. Record independent composed tapes
-and select bounded managed children before coding. Full roster commands/turns,
-other abilities/policies/statuses/maps, complete corpse lifecycle, automatic
-facing, terminal/frame RNG, host/editor, owner drafts, replacement interfaces
-and ZOD-106 remain separate/deferred. See [fresh Stone](behavior/roster-throw-stone-ai-entry.md).
+Trace the pure supported roster plan into existing Framework-owned actual
+Move/Attack/self/Stone/Wait/END boundaries, complete initial occupancy, real RNG,
+receipts/sessions and post-ACT fresh redecision. Identify missing actual roster
+ability primitives without weakening pair guards or granting authority to a
+public cached plan. Preserve actual-receipt facing, exact-session continuation,
+partial-progress recovery and priority invalidation/publication. Trace actual
+knockback/KO/CT ordering separately from AI midpoint projections. Record pinned
+source and independent behavior vectors before selecting bounded children.
+Terminal transitions, full corpse lifecycle, automatic facing, frame RNG,
+host/editor activation, owner drafts, replacement interfaces and ZOD-106 retain
+their existing separate/deferred scopes. See [supported roster selection](behavior/roster-basic-skill-ai-selection.md).
 
 ## Existing validation gates
 
