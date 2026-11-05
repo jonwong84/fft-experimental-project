@@ -7,7 +7,7 @@ using static Zodiac.Framework.Ai.Tests.RosterAiSessionTestData;
 namespace Zodiac.Framework.Ai.Tests;
 
 [Trait("Ruleset", "OriginalFft")]
-public sealed class RosterBasicSkillAiTurnExecutionTests
+public sealed class AiTurnControllerTests
 {
     public static IEnumerable<object[]> SourceIds()
     {
@@ -17,12 +17,11 @@ public sealed class RosterBasicSkillAiTurnExecutionTests
     private static JsonDocument Fixture() => JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "roster-turn-contract-v1.json")));
     private static JsonElement Row(JsonDocument doc, string id) => doc.RootElement.GetProperty("vectors").EnumerateArray().Single(r => r.GetProperty("id").GetString() == id);
     private static TilePosition Tile(JsonElement a) => new(a[0].GetInt32(), a[1].GetInt32(), 0);
-    private static RosterBasicSkillAiCommandResult Command(Sample s, RosterFacingTurnState? state = null,
-        RosterBasicSkillAiTurnConfiguration? configuration = null, AiPriorityWorkspace? workspace = null)
+    private static AiCommandResult Command(Sample s, RosterFacingTurnState? state = null,
+        AiTurnConfiguration? configuration = null, AiPriorityWorkspace? workspace = null)
     {
         var c = configuration ?? s.Configuration;
-        return RosterBasicSkillAiCommandExecution.Execute(state ?? s.State, s.Setup.Request, c.Simulation, c.Refresh, c.Lists,
-            c.General, c.Movement, c.Selection, c.Dispatch, c.Facing, workspace);
+        return AiCommandExecutor.Execute(state ?? s.State, s.Setup.Request, c.Decision, c.Dispatch, c.Facing, workspace);
     }
 
     [Theory]
@@ -31,14 +30,14 @@ public sealed class RosterBasicSkillAiTurnExecutionTests
     {
         using var doc = Fixture(); var row = Row(doc, id); var d = row.GetProperty("input"); var e = row.GetProperty("expected"); var s = Load(d);
         var before = Snapshot(s.State.Battle); var workspace = AiPriorityWorkspace.StartUnknown(s.State.Battle.TurnBattle.Battle.Map);
-        RosterFacingTurnState state; RosterBasicSkillAiCommandOutcome[] decisions; AiPriorityWorkspace successor;
+        RosterFacingTurnState state; AiCommandOutcome[] decisions; AiPriorityWorkspace successor;
         bool failed; bool continuation;
         if (row.GetProperty("wholeTurn").GetBoolean())
         {
-            var r = RosterBasicSkillAiTurnExecution.Execute(s.State, s.Setup.Request, s.Configuration, workspace);
+            var r = AiTurnController.Execute(s.State, s.Setup.Request, s.Configuration, workspace);
             state = r.State; decisions = r.Decisions.ToArray(); successor = r.Workspace; failed = !r.Completed; continuation = false;
             Assert.Equal(failed, r.Recovery is not null);
-            var replay = RosterBasicSkillAiTurnExecution.Execute(s.State, s.Setup.Request, s.Configuration, workspace);
+            var replay = AiTurnController.Execute(s.State, s.Setup.Request, s.Configuration, workspace);
             Assert.Equal(Snapshot(state.Battle), Snapshot(replay.State.Battle));
             Assert.Equal(JsonSerializer.Serialize(r.Events), JsonSerializer.Serialize(replay.Events));
         }
@@ -80,24 +79,24 @@ public sealed class RosterBasicSkillAiTurnExecutionTests
         var priorities = e.GetProperty("workspace").EnumerateArray().ToArray(); Assert.Equal(priorities.Length, successor.KnownPriorities.Count);
         foreach (var p in priorities) Assert.Equal(p.GetProperty("priority").GetInt16(), successor.KnownPriorities[Tile(p.GetProperty("tile"))]);
     }
-    private static string Name(BasicSkillAiCommandKind kind) => kind switch {
-        BasicSkillAiCommandKind.Accumulate => "Self", BasicSkillAiCommandKind.ThrowStone => "Stone", _ => kind.ToString() };
+    private static string Name(AiCommandKind kind) => kind switch {
+        AiCommandKind.Accumulate => "Self", AiCommandKind.ThrowStone => "Stone", _ => kind.ToString() };
 
     [Fact]
     public void Exact_session_recovery_keeps_actual_KO_and_retries_only_the_failed_fresh_step()
     {
         using var doc = Fixture(); var s = Load(Row(doc, "accepted-ACT-first-KO-retained-at-deferred-corpse-guard").GetProperty("input"));
-        var r = RosterBasicSkillAiTurnExecution.Execute(s.State, s.Setup.Request, s.Configuration);
+        var r = AiTurnController.Execute(s.State, s.Setup.Request, s.Configuration);
         Assert.False(r.Completed); Assert.Single(r.Decisions); Assert.NotEmpty(r.Events); Assert.NotEmpty(r.Workspace.KnownPriorities);
-        Assert.Equal(BasicSkillAiTurnStage.PostActCommand, r.Recovery!.NextStep);
-        var retry = RosterBasicSkillAiTurnExecution.Resume(r.State, r.Recovery);
+        Assert.Equal(AiTurnStage.PostActCommand, r.Recovery!.NextStep);
+        var retry = AiTurnController.Resume(r.State, r.Recovery);
         Assert.False(retry.Completed); Assert.Same(r.State, retry.State); Assert.Same(r.Workspace, retry.Workspace);
         Assert.Empty(retry.Events); Assert.Empty(retry.Decisions); Assert.NotNull(retry.Recovery);
         var abandoned = RosterFacingTurnBattle.WaitWithFacing(r.State, s.Setup.Request.ActorId); Assert.True(abandoned.Accepted);
-        var stale = RosterBasicSkillAiTurnExecution.Resume(abandoned.State, r.Recovery);
-        Assert.Equal(BasicSkillAiTurnStage.RecoveryBinding, stale.Failure!.Stage); Assert.Same(abandoned.State, stale.State); Assert.Null(stale.Recovery);
+        var stale = AiTurnController.Resume(abandoned.State, r.Recovery);
+        Assert.Equal(AiTurnStage.RecoveryBinding, stale.Failure!.Stage); Assert.Same(abandoned.State, stale.State); Assert.Null(stale.Recovery);
         var foreign = Load(Row(doc, "accepted-ACT-first-KO-retained-at-deferred-corpse-guard").GetProperty("input"));
-        Assert.Equal(BasicSkillAiTurnStage.RecoveryBinding, RosterBasicSkillAiTurnExecution.Resume(foreign.State, r.Recovery).Failure!.Stage);
+        Assert.Equal(AiTurnStage.RecoveryBinding, AiTurnController.Resume(foreign.State, r.Recovery).Failure!.Stage);
     }
 
     [Fact]
@@ -105,15 +104,15 @@ public sealed class RosterBasicSkillAiTurnExecutionTests
     {
         using var doc = Fixture(); var s = Load(Row(doc, "complete-frozen-Stone-followup-and-facing").GetProperty("input"));
         var c = s.Configuration with { Facing = (BattleFacing)255 };
-        var r = RosterBasicSkillAiTurnExecution.Execute(s.State, s.Setup.Request, c);
+        var r = AiTurnController.Execute(s.State, s.Setup.Request, c);
         Assert.False(r.Completed); Assert.Single(r.Decisions); Assert.NotNull(r.State.PendingFacing);
-        Assert.Equal(BasicSkillAiTurnStage.FinishFacing, r.Recovery!.NextStep);
-        var retry = RosterBasicSkillAiTurnExecution.Resume(r.State, r.Recovery);
+        Assert.Equal(AiTurnStage.FinishFacing, r.Recovery!.NextStep);
+        var retry = AiTurnController.Resume(r.State, r.Recovery);
         Assert.Same(r.State, retry.State); Assert.Same(r.Workspace, retry.Workspace); Assert.Empty(retry.Events); Assert.Empty(retry.Decisions);
         Assert.Equal(FacingTurnRejection.UnsupportedFacing, retry.Failure!.FacingFailure!.FacingRejection);
         var manual = RosterFacingTurnBattle.FinishFacing(r.State, s.Setup.Request.ActorId, r.State.PendingFacing, BattleFacing.East);
         Assert.True(manual.Accepted); Assert.Null(manual.State.PendingFacing);
-        var finishOnly = RosterBasicSkillAiTurnExecution.Execute(r.State, s.Setup.Request, s.Configuration);
+        var finishOnly = AiTurnController.Execute(r.State, s.Setup.Request, s.Configuration);
         Assert.True(finishOnly.Completed); Assert.Empty(finishOnly.Decisions); Assert.Equal(r.State.Battle.TurnBattle.Turns.RngState, finishOnly.State.Battle.TurnBattle.Turns.RngState);
     }
 
@@ -134,17 +133,17 @@ public sealed class RosterBasicSkillAiTurnExecutionTests
     public void Authoritative_roster_facts_and_explicit_dispatch_flags_are_required_before_selection()
     {
         using var doc = Fixture(); var s = Load(Row(doc, "first-attack-ACT-first").GetProperty("input"));
-        var wrong = new FlatRosterBattleProfile(Ground, s.Configuration.Simulation.Battle.Members.Select(u => u with { StableTeam = (u.StableTeam + 1) % 4 }));
+        var wrong = new FlatRosterBattleProfile(Ground, s.Configuration.Decision.Simulation.Battle.Members.Select(u => u with { StableTeam = (u.StableTeam + 1) % 4 }));
         var configs = new[] { s.Configuration with { Dispatch = new() },
-            s.Configuration with { Simulation = new(wrong, s.Configuration.Simulation.Units, true) } };
+            s.Configuration with { Decision = s.Configuration.Decision with { Simulation = new(wrong, s.Configuration.Decision.Simulation.Units, true) } } };
         foreach (var c in configs)
         {
             var r = Command(s, configuration: c); Assert.False(r.Accepted);
-            Assert.Equal(BasicSkillAiCommandRejection.UnsupportedDispatchContext, r.Failure!.Reason);
+            Assert.Equal(AiCommandRejection.UnsupportedDispatchContext, r.Failure!.Reason);
             Assert.Same(s.State, r.State); Assert.Empty(r.Events); Assert.Null(r.Outcome);
         }
-        var equal = new FlatRosterBattleProfile(Ground, s.Configuration.Simulation.Battle.Members.Reverse());
-        Assert.True(Command(s, configuration: s.Configuration with { Simulation = new(equal, s.Configuration.Simulation.Units, true) }).Accepted);
+        var equal = new FlatRosterBattleProfile(Ground, s.Configuration.Decision.Simulation.Battle.Members.Reverse());
+        Assert.True(Command(s, configuration: s.Configuration with { Decision = s.Configuration.Decision with { Simulation = new(equal, s.Configuration.Decision.Simulation.Units, true) } }).Accepted);
     }
 
     [Fact]
@@ -156,12 +155,12 @@ public sealed class RosterBasicSkillAiTurnExecutionTests
         var retained = RosterMoveDecisionBattle.Continue(first.State, s.Setup.Request.ActorId, first.Continuation); Assert.True(retained.Accepted);
         var replay = RosterMoveDecisionBattle.Continue(first.State, s.Setup.Request.ActorId, first.Continuation);
         Assert.Equal(Snapshot(retained.State.Battle), Snapshot(replay.State.Battle));
-        var all = RosterBasicSkillAiTurnExecution.Execute(s.State, s.Setup.Request, c);
+        var all = AiTurnController.Execute(s.State, s.Setup.Request, c);
         Assert.True(all.Completed); Assert.Single(all.Decisions);
         Assert.Equal(retained.State.Battle.Combatants.Single(u => u.UnitId == s.Setup.Request.ActorId).Facing,
             all.State.Battle.Combatants.Single(u => u.UnitId == s.Setup.Request.ActorId).Facing);
         var permuted = Load(d, true);
-        var alternate = RosterBasicSkillAiTurnExecution.Execute(permuted.State, permuted.Setup.Request, permuted.Configuration with { Facing = null });
+        var alternate = AiTurnController.Execute(permuted.State, permuted.Setup.Request, permuted.Configuration with { Facing = null });
         Assert.True(alternate.Completed); Assert.Equal(Snapshot(all.State.Battle), Snapshot(alternate.State.Battle));
         Assert.Equal(JsonSerializer.Serialize(all.Events), JsonSerializer.Serialize(alternate.Events));
     }
@@ -175,7 +174,7 @@ public sealed class RosterBasicSkillAiTurnExecutionTests
         var data = System.Text.Json.Nodes.JsonNode.Parse(d.GetRawText())!; data["count"] = ulong.MaxValue - decisionDraws;
         using var limited = JsonDocument.Parse(data.ToJsonString()); var s = Load(limited.RootElement);
         var w = AiPriorityWorkspace.StartUnknown(s.State.Battle.TurnBattle.Battle.Map); var r = Command(s, workspace: w);
-        Assert.False(r.Accepted); Assert.Equal(BasicSkillAiCommandRejection.BoundaryRejected, r.Failure!.Reason);
+        Assert.False(r.Accepted); Assert.Equal(AiCommandRejection.BoundaryRejected, r.Failure!.Reason);
         Assert.Equal(AttackCommandRejection.RandomDrawCountExhausted, r.Execution.Transition.AttackRejection);
         Assert.Same(s.State, r.State); Assert.Same(w, r.Workspace); Assert.Empty(r.Events); Assert.Null(r.Outcome); Assert.Null(r.Continuation);
     }
@@ -184,14 +183,14 @@ public sealed class RosterBasicSkillAiTurnExecutionTests
     public void Late_post_ACT_settlement_failure_retains_only_the_earlier_actual_ACT()
     {
         using var doc = Fixture(); var s = Load(Row(doc, "complete-attack-then-fresh-post-ACT").GetProperty("input"));
-        var first = Command(s); Assert.True(first.Accepted); Assert.Equal(BasicSkillAiCommandKind.Attack, first.Outcome!.Kind);
+        var first = Command(s); Assert.True(first.Accepted); Assert.Equal(AiCommandKind.Attack, first.Outcome!.Kind);
         var bad = s.Configuration with { Facing = (BattleFacing)255 };
-        var r = RosterBasicSkillAiTurnExecution.Execute(s.State, s.Setup.Request, bad);
-        Assert.False(r.Completed); Assert.Single(r.Decisions); Assert.Equal(BasicSkillAiTurnStage.PostActCommand, r.Recovery!.NextStep);
+        var r = AiTurnController.Execute(s.State, s.Setup.Request, bad);
+        Assert.False(r.Completed); Assert.Single(r.Decisions); Assert.Equal(AiTurnStage.PostActCommand, r.Recovery!.NextStep);
         Assert.Equal(Snapshot(first.State.Battle), Snapshot(r.State.Battle));
         Assert.Equal(JsonSerializer.Serialize(first.Events), JsonSerializer.Serialize(r.Events));
         Assert.Equal(first.Workspace.KnownPriorities.OrderBy(p => p.Key.X).ThenBy(p => p.Key.Y), r.Workspace.KnownPriorities.OrderBy(p => p.Key.X).ThenBy(p => p.Key.Y));
-        var retry = RosterBasicSkillAiTurnExecution.Resume(r.State, r.Recovery);
+        var retry = AiTurnController.Resume(r.State, r.Recovery);
         Assert.Same(r.State, retry.State); Assert.Empty(retry.Events); Assert.Empty(retry.Decisions); Assert.Same(r.Workspace, retry.Workspace);
         var manual = Command(s, r.State, workspace: r.Workspace); Assert.True(manual.Accepted); Assert.Null(manual.State.PendingFacing);
     }
@@ -205,14 +204,14 @@ public sealed class RosterBasicSkillAiTurnExecutionTests
         var data = System.Text.Json.Nodes.JsonNode.Parse(d.GetRawText())!; data["count"] = ulong.MaxValue - decisionDraws;
         using var limited = JsonDocument.Parse(data.ToJsonString()); var s = Load(limited.RootElement);
         var move = Command(s); Assert.True(move.Accepted); Assert.NotNull(move.Path); Assert.Equal(ulong.MaxValue, move.Outcome!.DecisionRng.DrawCount);
-        var r = RosterBasicSkillAiTurnExecution.Execute(s.State, s.Setup.Request, s.Configuration);
-        Assert.False(r.Completed); Assert.Single(r.Decisions); Assert.Equal(BasicSkillAiTurnStage.RetainedCommand, r.Recovery!.NextStep);
+        var r = AiTurnController.Execute(s.State, s.Setup.Request, s.Configuration);
+        Assert.False(r.Completed); Assert.Single(r.Decisions); Assert.Equal(AiTurnStage.RetainedCommand, r.Recovery!.NextStep);
         Assert.Equal(AttackCommandRejection.RandomDrawCountExhausted, r.Failure!.ContinuationFailure!.Transition.AttackRejection);
         Assert.Equal(Snapshot(move.State.Battle), Snapshot(r.State.Battle)); Assert.Equal(JsonSerializer.Serialize(move.Events), JsonSerializer.Serialize(r.Events));
-        var retry = RosterBasicSkillAiTurnExecution.Resume(r.State, r.Recovery);
+        var retry = AiTurnController.Resume(r.State, r.Recovery);
         Assert.False(retry.Completed); Assert.Same(r.State, retry.State); Assert.Same(r.Workspace, retry.Workspace);
-        Assert.Empty(retry.Events); Assert.Empty(retry.Decisions); Assert.Equal(BasicSkillAiTurnStage.RetainedCommand, retry.Recovery!.NextStep);
+        Assert.Empty(retry.Events); Assert.Empty(retry.Decisions); Assert.Equal(AiTurnStage.RetainedCommand, retry.Recovery!.NextStep);
         var abandoned = RosterFacingTurnBattle.WaitWithFacing(r.State, s.Setup.Request.ActorId); Assert.True(abandoned.Accepted);
-        Assert.Equal(BasicSkillAiTurnStage.RecoveryBinding, RosterBasicSkillAiTurnExecution.Resume(abandoned.State, r.Recovery).Failure!.Stage);
+        Assert.Equal(AiTurnStage.RecoveryBinding, AiTurnController.Resume(abandoned.State, r.Recovery).Failure!.Stage);
     }
 }

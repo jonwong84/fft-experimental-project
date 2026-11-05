@@ -12,7 +12,7 @@ public sealed record BasicSkillAiWorkspaceScenarioResult(BasicSkillAiScenarioRes
 
 /// <summary>Own fresh three-entry preparation and derived ordinary movement, preserving unknown cells without reading them.</summary>
 /// <remarks>ZOD-249/250. No public cached prefixes, action scans, prior memory, lottery or command authority.</remarks>
-public static class BasicSkillAiScenarios
+internal static class BasicSkillAiScenarios
 {
     public static BasicSkillAiWorkspaceScenarioResult EvaluateWithWorkspace(AttackBattleSnapshot state,
         AccumulateAiPreparationRequest request, AccumulateAiPreparationConfiguration configuration,

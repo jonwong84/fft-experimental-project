@@ -23,7 +23,7 @@ public sealed record AccumulateAiMapEntryResult(bool Accepted, AccumulateAiMapEn
 /// <summary>Own fresh preparation, one move baseline, one usefulness filter and the map-target origin orders.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-229/232. This isolated query omits earlier/later
 /// ability evaluations and full movement scoring. It cannot certify the RNG or plan of an entire three-action decision.</remarks>
-public static class AccumulateAiMapEntry
+internal static class AccumulateAiMapEntry
 {
     public static AccumulateAiMapEntryResult Evaluate(AttackBattleSnapshot state, AccumulateAiMapEntryRequest request,
         AccumulateAiPreparationConfiguration configuration, RandomState decisionRng)

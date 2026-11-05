@@ -3,18 +3,17 @@ using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework.Ai;
 
-public sealed record BasicSkillAiPreparedOccurrence(int Index, AiHumanInitializedEntry Source, bool Usable, bool ConsumeAim);
 public sealed record BasicSkillAiListUnit(BattleUnitId UnitId, AiHumanInitializedList Initialization,
     int HelpfulShare, bool? MostlySupport);
 public sealed record BasicSkillAiListPreparationOutcome(SwordAiPreparationOutcome Common, SwordAiScenarioTeam Team,
-    ImmutableArray<BasicSkillAiListUnit> Units, ImmutableArray<BasicSkillAiPreparedOccurrence> ActorEntries,
+    ImmutableArray<BasicSkillAiListUnit> Units, ImmutableArray<AiPreparedAbility> ActorEntries,
     int EnemyHarmfulCount, int EnemyPhysicalCount);
 public sealed record BasicSkillAiListPreparationResult(bool Accepted, AccumulateAiPreparationFailure? Failure,
     BasicSkillAiListPreparationOutcome? Outcome, RandomState RngState);
 
 /// <summary>Fresh preparation for owned ordinary lists, preserving every supported occurrence and absent-action distinctions.</summary>
 /// <remarks>ZOD-264/265. No movement scoring, action search or canonical-list admission bypass.</remarks>
-public static class BasicSkillAiListPreparation
+internal static class BasicSkillAiListPreparation
 {
     public static BasicSkillAiListPreparationResult Evaluate(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,
         AccumulateAiPreparationConfiguration configuration, RandomState decisionRng) => EvaluateCore(state, request, configuration, decisionRng, false);
@@ -76,7 +75,7 @@ public static class BasicSkillAiListPreparation
             // The source's lowest-share ally override clears the sole allied actor, even when share >=77.
             return new BasicSkillAiListUnit(u.Id, list, share, u.Id == actor.UnitId ? false : null);
         }).ToImmutableArray();
-        var entries = actorList.Entries.Select((e, i) => new BasicSkillAiPreparedOccurrence(i, e,
+        var entries = actorList.Entries.Select((e, i) => new AiPreparedAbility(i, e,
             e.OrdinaryUsable && !afterAct, e.OrdinaryUsable && (e.ForceConsumeAim || !e.ExhaustiveOriginScan))).ToImmutableArray();
         common = common with { EnemyAbilityReach = body.Move + actorList.Entries.Where(e => e.Harmful).Min(e => e.Range),
             AllyAbilityReach = body.Move + actorList.Entries.Where(e => e.Helpful).Select(e => e.Range).DefaultIfEmpty(0).Min() };

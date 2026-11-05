@@ -7,7 +7,7 @@ public sealed record AiRosterProximityOutcome(ImmutableArray<BattleUnitId> Targe
 
 /// <summary>Source scenario0 proximity writes only; cells outside the mask remain unreported, not cleared.</summary>
 /// <remarks>ZOD-275; resolved target delays compare against the pre-refresh cached actor byte.</remarks>
-public static class AiRosterProximity
+internal static class AiRosterProximity
 {
     public static AiRosterProximityOutcome Evaluate(AiTargetRoster roster, IEnumerable<TilePosition> scenario0)
     {

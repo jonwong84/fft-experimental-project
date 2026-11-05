@@ -33,7 +33,7 @@ public sealed class AttackThrowStoneAiOutOfReachScenarioTests
             Assert.Equal((Right, Right, 0, distance, 2, 2), (value.BaselineDestination, value.ActFirstDestination,
                 value.BaselineIndex, value.TargetDistance, value.TargetReach, value.EffectiveReach));
             Assert.Equal(distance > 3, value.DestinationUsedDistanceFallback); Assert.False(value.FilterUsedReachableFallback);
-            Assert.Equal(new SwordAiReachAdjustment(10113, 5, 2, 2), value.ReachAdjustment);
+            Assert.Equal(new AiReachAdjustment(10113, 5, 2, 2), value.ReachAdjustment);
             Assert.Equal(new RandomState(662824084, 10), result.RngState); // One refresh, one scored tile, then adjustment; no actor rescore.
         }
     }
@@ -46,7 +46,7 @@ public sealed class AttackThrowStoneAiOutOfReachScenarioTests
         Assert.Equal(scored, value.ScoreMask); Assert.Equal(scored, value.Movement.Select(m => m.Outcome.Destination));
         Assert.All(value.Movement, m => Assert.Equal(0, m.TilePriority));
         Assert.Equal(new TilePosition(3, 2, 0), value.BaselineDestination); Assert.Equal(value.BaselineDestination, value.ActFirstDestination);
-        Assert.Equal(new SwordAiReachAdjustment(23010, 1, 4, 4), value.ReachAdjustment);
+        Assert.Equal(new AiReachAdjustment(23010, 1, 4, 4), value.ReachAdjustment);
         Assert.Equal(new RandomState(3655513600, 14), result.RngState);
         Assert.Equal(new RandomState(2516284547, 13), value.Movement[^1].RngState);
         var notImminent = Success(Derive(Battle(target: new(6, 1, 0), targetCt: 0)));
@@ -66,7 +66,7 @@ public sealed class AttackThrowStoneAiOutOfReachScenarioTests
         Assert.Equal(55, Assert.Single(value.Movement).Outcome.TurnEndCt);
         Assert.Equal(new RandomState(662824084, 10), zero.RngState);
         var halved = Derive(Battle(move: 1, target: new(4, 1, 0)), rng: new(20, 7)); var half = Success(halved);
-        Assert.Equal(new SwordAiReachAdjustment(12502, 0, 2, 1), half.ReachAdjustment);
+        Assert.Equal(new AiReachAdjustment(12502, 0, 2, 1), half.ReachAdjustment);
         Assert.True(half.DestinationUsedDistanceFallback); Assert.Equal(Right, half.BaselineDestination);
         Assert.Equal(new RandomState(143664818, 9), Assert.Single(half.Movement).RngState);
         Assert.Equal(new RandomState(2966873603, 10), halved.RngState);

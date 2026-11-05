@@ -40,7 +40,7 @@ public sealed record SwordAiComparisonResult(SwordAiComparisonDisposition Dispos
 /// Source: decomp 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-128/129.
 /// No cached-result/cache input, enumeration, ranked list, lottery, command receipt or authoritative RNG commit.
 /// </remarks>
-public static class SwordAiCandidateComparison
+internal static class SwordAiCandidateComparison
 {
     public static SwordAiComparisonResult Evaluate(AttackBattleSnapshot state, SwordAiCandidate incumbent,
         SwordAiCandidate challenger, BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile,

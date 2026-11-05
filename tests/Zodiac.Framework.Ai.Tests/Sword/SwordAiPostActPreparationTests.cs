@@ -22,7 +22,7 @@ public sealed class SwordAiPostActPreparationTests
             Assert.Equal(40, o.Refresh.Units.Single(u => u.UnitId == A).Ct); Assert.Equal(0, o.Refresh.Units.Single(u => u.UnitId == B).Ct);
             Assert.Equal(new TilePosition(2, 1, 0), o.Origin); Assert.Equal(new TilePosition(1, 1, 0), o.FocusPosition);
             Assert.Equal(new[] { new TilePosition(2, 0, 0), new(2, 1, 0), new(3, 1, 0), new(2, 2, 0) }, o.ReachableOrigins);
-            Assert.Equal(new SwordAiRefreshPolicy(A, true, true), o.Policies.Single(u => u.UnitId == A));
+            Assert.Equal(new AiUnitPolicy(A, true, true), o.Policies.Single(u => u.UnitId == A));
             Assert.False(o.Refresh.RefreshedUnits.Single(u => u.UnitId == A).TeamSupportUnavailable);
             Assert.False(o.RetreatSupportAvailable); Assert.False(o.SingleEnemyRemaining); Assert.True(o.TargetActive); Assert.True(o.ManualAutobattle);
             Assert.Equal(0, o.RandomUseThreshold); Assert.Equal(before, Snapshot(state));

@@ -17,7 +17,7 @@ public enum SwordAiPreparationRejection { None, UnsupportedProfile, UnsupportedT
 /// <summary>Fresh refresh diagnostics followed by restored-state ordinary policy preparation.</summary>
 /// <remarks>Policies are post-team-update; Refresh retains its earlier pre-team-update policy diagnostics.</remarks>
 public sealed record SwordAiPreparationOutcome(SwordAiRefreshOutcome Refresh,
-    ImmutableArray<SwordAiRefreshPolicy> Policies, TilePosition Origin, TilePosition FocusPosition,
+    ImmutableArray<AiUnitPolicy> Policies, TilePosition Origin, TilePosition FocusPosition,
     int ActorDelay, int TargetDelay, int EnemyAbilityReach, int AllyAbilityReach, byte FoeProximity,
     bool RetreatSupportAvailable, bool SingleEnemyRemaining, bool TargetActive,
     bool ManualAutobattle, int RandomUseThreshold)
@@ -34,7 +34,7 @@ public sealed record SwordAiPreparationResult(bool Accepted, SwordAiPreparationR
 
 /// <summary>Fresh pure refresh and ordinary NonBlue preparation, without selection or command authority.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-160/161/171/172/176/179. Preparation adds no draws after refresh.</remarks>
-public static class SwordAiPreparation
+internal static class SwordAiPreparation
 {
     public static SwordAiPreparationResult Evaluate(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,
@@ -109,7 +109,7 @@ public static class SwordAiPreparation
         var focus = roster.ById[nearest.TargetId].Position;
         byte proximity = AiRosterProximity.Evaluate(roster, [origin]).WrittenValues[origin];
         // One ally cannot provide retreat support. NonBlue sets the actor's bit; Blue preserves all retained policies.
-        var policies = refresh.RefreshedUnits.Select(u => new SwordAiRefreshPolicy(u.UnitId,
+        var policies = refresh.RefreshedUnits.Select(u => new AiUnitPolicy(u.UnitId,
             u.ConserveCt, (team == SwordAiScenarioTeam.NonBlue && u.UnitId == request.ActorId) || u.TeamSupportUnavailable)).ToImmutableArray();
         return new(refresh, policies, origin, focus, actorDelay, targetDelay, actor.Move + 1, actor.Move,
             proximity, RetreatSupportAvailable: false, SingleEnemyRemaining: false, TargetActive: active.UnitActive[request.TargetId],

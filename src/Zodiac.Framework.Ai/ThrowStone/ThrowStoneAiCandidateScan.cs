@@ -49,7 +49,7 @@ public sealed record ThrowStoneAiScanResult(ThrowStoneAiScanDisposition Disposit
 /// <summary>Pure fresh movement prefix and one prepared Throw Stone scan in certified clear two-opponent geometry.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-190/191. No cached input, scenario derivation,
 /// obstructed-path traversal, ability-list/ranked insertion/lottery, command authority or live RNG adoption.</remarks>
-public static class ThrowStoneAiCandidateScan
+internal static class ThrowStoneAiCandidateScan
 {
     public static ThrowStoneAiScanResult Evaluate(AttackBattleSnapshot state, ThrowStoneAiScanRequest request,
         ThrowStoneAiScanScenario scenario, ThrowStoneAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,

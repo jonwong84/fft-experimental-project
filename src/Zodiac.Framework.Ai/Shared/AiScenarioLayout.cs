@@ -11,7 +11,7 @@ internal sealed record AiScenarioPartition(ImmutableArray<TilePosition> ScoreMas
     bool OutOfReach, bool FilterFallback);
 internal sealed record AiScenarioLayoutOutcome(ImmutableArray<TilePosition> Scenario1, ImmutableArray<TilePosition> Scenario2,
     ImmutableArray<AiMovementCellProvenance> Cells, TilePosition D0, TilePosition D1, int BaselineIndex,
-    int EffectiveReach, SwordAiReachAdjustment? Adjustment, int? BaselineLimit, bool DestinationFallback, RandomState RngState);
+    int EffectiveReach, AiReachAdjustment? Adjustment, int? BaselineLimit, bool DestinationFallback, RandomState RngState);
 
 /// <summary>Private source mask/destination arithmetic shared by admitted pair and roster owners. No simulation inputs or command authority.</summary>
 /// <remarks>ZOD-287/289; source 11464943bbdbd2a0af022d90cb7f10455cf911df, scenarios_build/destination_select.</remarks>
@@ -31,7 +31,7 @@ internal static class AiScenarioLayout
         TilePosition origin, Func<TilePosition, int> distance, ImmutableArray<AiScenarioCell> scored,
         ImmutableDictionary<TilePosition, byte> proximity, bool nonBlue, bool canAct, bool rangedEnemy, RandomState rng)
     {
-        int effective = partition.Reach; SwordAiReachAdjustment? adjustment = null;
+        int effective = partition.Reach; AiReachAdjustment? adjustment = null;
         if (partition.OutOfReach && nonBlue)
         {
             var draw = new RandomStateGenerator().Next(rng); rng = draw.State;

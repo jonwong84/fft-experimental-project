@@ -13,7 +13,7 @@ public sealed record AttackThrowStoneAiOutOfReachSelectionResult(bool Accepted, 
 /// <summary>Own fresh out-of-reach pair selection only when every cast key is fresh or proved unread.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-199/200/202.
 /// No prior-memory inputs, actor rescore, cached results, command authority or live RNG adoption.</remarks>
-public static class AttackThrowStoneAiOutOfReachSelection
+internal static class AttackThrowStoneAiOutOfReachSelection
 {
     public static AttackThrowStoneAiOutOfReachSelectionResult Evaluate(AttackBattleSnapshot state,
         AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, RandomState decisionRng)

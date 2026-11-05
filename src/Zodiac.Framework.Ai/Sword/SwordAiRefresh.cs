@@ -3,10 +3,8 @@ using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework.Ai;
 
-/// <summary>Known cached policy values, retained by refresh rather than inferred from unit IDs.</summary>
-public sealed record SwordAiRefreshPolicy(BattleUnitId UnitId, bool ConserveCt, bool TeamSupportUnavailable);
 public sealed record SwordAiRefreshRequest(BattleUnitId ActorId, BattleUnitId TargetId,
-    ImmutableArray<SwordAiRefreshPolicy> Policies);
+    ImmutableArray<AiUnitPolicy> Policies);
 
 /// <summary>Unrepresented source entry/cache facts require explicit certification.</summary>
 public sealed record SwordAiRefreshProfile(bool FreshRefreshEntry = false, bool BothUnitsTargetable = false,
@@ -41,7 +39,7 @@ public sealed record SwordAiRefreshResult(bool Accepted, SwordAiRefreshRejection
 /// Act-first/skillset-zero skips movement and action simulation. One private clock call consumes one upkeep draw.
 /// No command commitment, scoring, earlier delay-cache derivation or later ability/team policy initialization.
 /// </remarks>
-public static class SwordAiRefresh
+internal static class SwordAiRefresh
 {
     public static SwordAiRefreshResult Evaluate(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,

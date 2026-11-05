@@ -27,7 +27,7 @@ public sealed record BasicSkillAiSelectionResult(bool Accepted, BasicSkillAiSele
 /// <summary>Fresh three-entry supplied-scenario composition followed by the shared terminal source lottery.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-233/236. No cached plan/rank input,
 /// live choice/RNG adoption, self-command authority, derived scenarios or presentation activation.</remarks>
-public static class BasicSkillAiSelection
+internal static class BasicSkillAiSelection
 {
     public static BasicSkillAiSelectionResult Evaluate(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,
         ThrowStoneAiScanScenario scenario, BasicSkillAiProfile profile, BasicSkillAiSelectionProfile selection, RandomState decisionRng)

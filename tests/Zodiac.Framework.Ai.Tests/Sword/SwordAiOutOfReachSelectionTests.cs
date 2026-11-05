@@ -53,7 +53,7 @@ public sealed class SwordAiOutOfReachSelectionTests
         else
         {
             Assert.NotEqual(c.Movement[^1].RngState, o.Selection.LotteryEntryRng);
-            Assert.Equal(seed == 19 ? new SwordAiReachAdjustment(224, 0, 4, 2) : new(17515, 1, 4, 4), o.MovementScenario.ReachAdjustment);
+            Assert.Equal(seed == 19 ? new AiReachAdjustment(224, 0, 4, 2) : new(17515, 1, 4, 4), o.MovementScenario.ReachAdjustment);
         }
     }
 

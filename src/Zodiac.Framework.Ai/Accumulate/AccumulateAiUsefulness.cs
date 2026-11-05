@@ -15,7 +15,7 @@ public sealed record AccumulateAiUsefulnessResult(bool Accepted, AccumulateAiUse
 
 /// <summary>Source-order usefulness filtering for one certified ordinary Accumulate entry, outside candidate/origin scoring.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-229/231. No once-per-turn cache or command authority.</remarks>
-public static class AccumulateAiUsefulness
+internal static class AccumulateAiUsefulness
 {
     public static AccumulateAiUsefulnessResult Evaluate(AttackBattleSnapshot state, AccumulateAiCandidate candidate,
         AccumulateAiCandidateProfile profile, AccumulateAiUsefulnessProfile entry, RandomState decisionRng)

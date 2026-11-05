@@ -23,7 +23,7 @@ public sealed record AttackThrowStoneAiPostActExecutionResult(AttackThrowStoneAi
 /// <summary>Own fresh post-ACT pair selection and settle one actual path Move or same-tile END.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-209/215.
 /// No cached plan, predicted pre-ACT destination, additional ACT, continuation token or clock advance.</remarks>
-public static class AttackThrowStoneAiPostActExecution
+internal static class AttackThrowStoneAiPostActExecution
 {
     public static AttackThrowStoneAiPostActExecutionResult ExecuteInReach(FacingTurnState state,
         AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration,

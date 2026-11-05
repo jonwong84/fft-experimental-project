@@ -96,14 +96,14 @@ public sealed class BasicSkillAiListExecutionTests
             var actions = self ? new[] { AiHumanAbilityKind.Accumulate, AiHumanAbilityKind.Accumulate } : [];
             var state = self ? Ready(move: 0, count: ulong.MaxValue - 21) : Ready(move: 1, evade: 0, target: new(3, 1, 0), count: ulong.MaxValue - 17);
             var result = Run(state, actions); Assert.False(result.Completed);
-            Assert.Equal(self ? BasicSkillAiTurnStage.PostActCommand : BasicSkillAiTurnStage.RetainedCommand, result.Failure!.Stage);
+            Assert.Equal(self ? AiTurnStage.PostActCommand : AiTurnStage.RetainedCommand, result.Failure!.Stage);
             Assert.Single(result.Decisions); Assert.Equal(self ? 6 : 5, result.State.Battle.Combatants.Single(u => u.UnitId == A).PhysicalAttack);
             Assert.NotSame(state, result.State); Assert.NotEmpty(result.Workspace.KnownPriorities);
             var retry = BasicSkillAiListTurnExecution.Resume(result.State, result.Recovery!);
             Assert.Same(result.State, retry.State); Assert.Same(result.Workspace, retry.Workspace); Assert.Empty(retry.Events); Assert.Empty(retry.Decisions);
             Assert.Equal(result.Failure.Stage, retry.Failure!.Stage);
             var replay = Run(state, actions); var foreign = BasicSkillAiListTurnExecution.Resume(replay.State, result.Recovery!);
-            Assert.Equal(BasicSkillAiTurnStage.RecoveryBinding, foreign.Failure!.Stage); Assert.Null(foreign.Recovery);
+            Assert.Equal(AiTurnStage.RecoveryBinding, foreign.Failure!.Stage); Assert.Null(foreign.Recovery);
             Assert.Empty(foreign.Events); Assert.Empty(foreign.Decisions);
         }
     }
@@ -113,7 +113,7 @@ public sealed class BasicSkillAiListExecutionTests
     {
         var state = Ready(move: 0, evade: 0, count: ulong.MaxValue - 13); var history = AiPriorityWorkspace.StartUnknown(state.Battle.TurnBattle.Battle.Map);
         var result = BasicSkillAiListCommandExecution.Execute(state, SelfData.Request(), ListProfile([]), ListSelection, Dispatch, history);
-        Atomic(state, result); Assert.Same(history, result.Workspace); Assert.Equal(BasicSkillAiCommandRejection.BoundaryRejected, result.Failure!.Reason);
+        Atomic(state, result); Assert.Same(history, result.Workspace); Assert.Equal(AiCommandRejection.BoundaryRejected, result.Failure!.Reason);
         Assert.Equal(AttackCommandRejection.RandomDrawCountExhausted, result.Execution.Transition.AttackRejection);
     }
 
@@ -125,10 +125,10 @@ public sealed class BasicSkillAiListExecutionTests
         Assert.Equal(BasicSkillAiDerivedStage.Provenance, result.Failure!.Selection!.Stage);
         var state = Ready(move: 0);
         var context = BasicSkillAiListCommandExecution.Execute(state, SelfData.Request(), ListProfile([]), ListSelection, Dispatch with { PresentCompactRecords = false });
-        Atomic(state, context); Assert.Equal(BasicSkillAiCommandRejection.UnsupportedDispatchContext, context.Failure!.Reason);
+        Atomic(state, context); Assert.Equal(AiCommandRejection.UnsupportedDispatchContext, context.Failure!.Reason);
         var actor = BasicSkillAiListCommandExecution.Execute(state, SelfData.Request(true), ListProfile([]), ListSelection, Dispatch); Atomic(state, actor);
         var spent = BasicSkillAiListCommandExecution.ExecuteAfterAct(state, SelfData.Request(), ListProfile([]), ListSelection, Dispatch); Atomic(state, spent);
-        Assert.Equal(BasicSkillAiCommandRejection.UnavailableChoices, spent.Failure!.Reason);
+        Assert.Equal(AiCommandRejection.UnavailableChoices, spent.Failure!.Reason);
     }
 
     [Fact]
@@ -136,7 +136,7 @@ public sealed class BasicSkillAiListExecutionTests
     {
         var ready = Ready(move: 1, evade: 0, target: new(3, 1, 0));
         var state = new FacingTurnState(ready.Battle, ready.Profile, ulong.MaxValue - 2, null, ready.Lineage);
-        var result = Run(state, []); Assert.False(result.Completed); Assert.Equal(BasicSkillAiTurnStage.FinishFacing, result.Failure!.Stage);
+        var result = Run(state, []); Assert.False(result.Completed); Assert.Equal(AiTurnStage.FinishFacing, result.Failure!.Stage);
         Assert.Equal(40, result.State.Battle.Combatants.Single(u => u.UnitId == B).Hp); Assert.NotNull(result.State.PendingFacing);
         var retry = BasicSkillAiListTurnExecution.Resume(result.State, result.Recovery!);
         Assert.Same(result.State.PendingFacing, retry.State.PendingFacing); Assert.Same(result.Workspace, retry.Workspace); Assert.Empty(retry.Events); Assert.Empty(retry.Decisions);
@@ -150,7 +150,7 @@ public sealed class BasicSkillAiListExecutionTests
             var state = Ready(move: moveFirst ? 1 : 0, evade: 0, pa: 99, target: moveFirst ? new(4, 1, 0) : new(5, 1, 0));
             var history = moveFirst ? BasicSkillAiPriorityWorkspaceQueryTests.Seed(state, 1) : null;
             var result = Run(state, [AiHumanAbilityKind.ThrowStone], history);
-            Assert.False(result.Completed); Assert.Equal(moveFirst ? BasicSkillAiTurnStage.FinishFacing : BasicSkillAiTurnStage.PostActCommand, result.Failure!.Stage);
+            Assert.False(result.Completed); Assert.Equal(moveFirst ? AiTurnStage.FinishFacing : AiTurnStage.PostActCommand, result.Failure!.Stage);
             Assert.Equal(0, result.State.Battle.Combatants.Single(u => u.UnitId == B).Hp); Assert.Single(result.Events.OfType<ThrowStoneResolvedEvent>());
             var retry = BasicSkillAiListTurnExecution.Resume(result.State, result.Recovery!);
             Assert.Same(result.State, retry.State); Assert.Same(result.Workspace, retry.Workspace); Assert.Empty(retry.Events); Assert.Empty(retry.Decisions);

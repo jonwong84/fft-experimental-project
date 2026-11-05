@@ -12,7 +12,7 @@ public sealed record BasicSkillAiListScenarioResult(bool Accepted, BasicSkillAiS
 internal sealed record BasicSkillAiListScenarioCore(BasicSkillAiListScenarioResult Result, AiMovementPrefixOutcome? Prefix = null);
 
 /// <summary>One fresh variable-list preparation and shared source movement evaluation; no action search.</summary>
-public static class BasicSkillAiListScenarios
+internal static class BasicSkillAiListScenarios
 {
     public static BasicSkillAiListScenarioResult Evaluate(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,
         BasicSkillAiListProfile profile, RandomState rng) => EvaluateFresh(state, request, profile, rng, false).Result;

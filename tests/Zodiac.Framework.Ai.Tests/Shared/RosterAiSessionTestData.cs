@@ -10,7 +10,7 @@ internal static class RosterAiSessionTestData
     private static TilePosition Tile(JsonElement a) => new(a[0].GetInt32(), a[1].GetInt32(), 0);
     private static readonly AssetId Self = new("test:self"), Stone = new("test:stone");
     private static readonly BoundedSwordWeapon Sword = new(new("test:roster-sword"), 2);
-    internal sealed record Sample(Setup Setup, RosterFacingTurnState State, RosterBasicSkillAiTurnConfiguration Configuration);
+    internal sealed record Sample(Setup Setup, RosterFacingTurnState State, AiTurnConfiguration Configuration);
 
     internal static Sample Load(JsonElement d, bool reverse = false, bool allSwordBindings = false)
     {
@@ -24,13 +24,13 @@ internal static class RosterAiSessionTestData
         var rng = new RandomState(d.GetProperty("word").GetUInt32(), d.GetProperty("count").GetUInt64());
         var s = Make(units, actor, reverse, d.GetProperty("ticks").GetUInt64(), rng, raw.Select(u => Tile(u.GetProperty("tile"))).ToArray());
         var ability = new ImmediateAbilityBattleProfile([new(Self)], units.Select(u => new ImmediateAbilityUnitGrant(new(u.Id), [Self], 0)));
-        var selection = new RosterBasicSkillAiProfile(Sword, new(ability, true),
+        var selection = new AiAbilityEvaluationProfile(Sword, new(ability, true),
             new(Ground, [new(Stone)], units.Select(u => new TargetedAbilityUnitGrant(new(u.Id), [Stone], 0))),
             new(units.Select(u => new RosterAiSpriteHeight(new(u.Id), 30))), true, true, true, true);
         if (units.Any(u => (u.Actions ?? []).Contains("Dash"))) selection = selection with {
             Dash = new(Ground, [new(new("test:dash"))], units.Select(u => new TargetedAbilityUnitGrant(new(u.Id), [new("test:dash")], 0))), OriginalInstantEnemyDashPolicy = true };
         var facing = d.GetProperty("facing").ValueKind == JsonValueKind.Null ? (BattleFacing?)null : Enum.Parse<BattleFacing>(d.GetProperty("facing").GetString()!);
-        var c = new RosterBasicSkillAiTurnConfiguration(s.Simulation, Refresh, s.Lists, new(true, true), Movement, selection, new(true, true, true, true), facing);
+        var c = new AiTurnConfiguration(new(s.Simulation, Refresh, s.Lists, new(true, true), Movement, selection), new(true, true, true, true), facing);
         bool acted = raw.Single(u => u.GetProperty("id").GetString() == actor).GetProperty("acted").GetBoolean();
         var evades = raw.ToDictionary(u => u.GetProperty("id").GetString()!, u => u.GetProperty("evade").GetInt32());
         var combatants = s.State.Combatants.Select(u => new AttackUnitState(u.UnitId, u.Hp, u.MaxHp, 0, 0,

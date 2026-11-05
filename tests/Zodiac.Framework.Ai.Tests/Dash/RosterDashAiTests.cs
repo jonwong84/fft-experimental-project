@@ -16,12 +16,11 @@ public sealed class RosterDashAiTests
     { using var doc = Fixture(); return doc.RootElement.GetProperty("vectors").EnumerateArray().Select(r => new object[] { r.GetProperty("id").GetString()! }).ToArray(); }
     private static TilePosition Tile(JsonElement t) => new(t[0].GetInt32(), t[1].GetInt32(), 0);
     private static void Rng(JsonElement e, RandomState rng) => Assert.Equal(new RandomState(e.GetProperty("word").GetUInt32(), e.GetProperty("count").GetUInt64()), rng);
-    private static RosterBasicSkillAiSelectionResult Select(Sample s, RosterBasicSkillAiProfile? p = null, RandomState? rng = null) =>
-        RosterBasicSkillAiSelection.Evaluate(s.State.Battle, s.Setup.Request, s.Configuration.Simulation, Refresh, s.Configuration.Lists,
-            s.Configuration.General, Movement, p ?? s.Configuration.Selection, rng ?? s.State.Battle.TurnBattle.Turns.RngState);
-    private static RosterBasicSkillAiCommandResult Command(Sample s, RosterFacingTurnState? state = null, AiPriorityWorkspace? w = null) =>
-        RosterBasicSkillAiCommandExecution.Execute(state ?? s.State, s.Setup.Request, s.Configuration.Simulation, Refresh, s.Configuration.Lists,
-            s.Configuration.General, Movement, s.Configuration.Selection, s.Configuration.Dispatch, s.Configuration.Facing, w);
+    private static AiDecisionResult Select(Sample s, AiAbilityEvaluationProfile? p = null, RandomState? rng = null) =>
+        AiDecisionMaker.Decide(s.State.Battle, s.Setup.Request, s.Configuration.Decision with { Abilities = p ?? s.Configuration.Decision.Abilities },
+            rng ?? s.State.Battle.TurnBattle.Turns.RngState);
+    private static AiCommandResult Command(Sample s, RosterFacingTurnState? state = null, AiPriorityWorkspace? w = null) =>
+        AiCommandExecutor.Execute(state ?? s.State, s.Setup.Request, s.Configuration.Decision, s.Configuration.Dispatch, s.Configuration.Facing, w);
 
     [Theory]
     [MemberData(nameof(Ids))]
@@ -39,7 +38,7 @@ public sealed class RosterDashAiTests
         switch (kind)
         {
             case "preparation":
-                var p = RosterAiPreparation.Evaluate(state.Battle, s.Setup.Request, s.Configuration.Simulation, Refresh, s.Configuration.Lists, state.Battle.TurnBattle.Turns.RngState);
+                var p = RosterAiPreparation.Evaluate(state.Battle, s.Setup.Request, s.Configuration.Decision.Simulation, Refresh, s.Configuration.Decision.Lists, state.Battle.TurnBattle.Turns.RngState);
                 Assert.True(p.Accepted); Rng(e, p.RngState); Assert.Equal(e.GetProperty("harmful").GetInt32(), p.Outcome!.EnemyHarmfulCount);
                 foreach (var u in p.Outcome.Units) Assert.Equal(e.GetProperty("share").GetProperty(u.UnitId.Value).GetInt32(), u.HelpfulShare);
                 var entries = p.Outcome.ActorEntries.Where(a => a.Source.Kind == AiHumanAbilityKind.Dash).ToArray(); Assert.Equal(2, entries.Length);
@@ -47,7 +46,7 @@ public sealed class RosterDashAiTests
                 break;
             case "candidate":
                 var candidate = new DashAiCandidate(A, Dash, new(d.GetProperty("target").GetString()!), Tile(d.GetProperty("destination")), d.GetProperty("order").GetString() == "ActThenMove");
-                var c = RosterDashAiCandidate.Evaluate(state.Battle, candidate, s.Configuration.Simulation, s.Configuration.Selection.Dash!, new(true, true, true), state.Battle.TurnBattle.Turns.RngState);
+                var c = RosterDashAiCandidate.Evaluate(state.Battle, candidate, s.Configuration.Decision.Simulation, s.Configuration.Decision.Abilities.Dash!, new(true, true, true), state.Battle.TurnBattle.Turns.RngState);
                 Assert.Equal(AiScoringDisposition.Scored, c.Disposition); Rng(e, c.RngState);
                 Assert.Equal(e.GetProperty("damage").GetInt32(), c.Outcome!.NormalDamage); Assert.Equal(100, c.Outcome.HitPercent);
                 Assert.Equal(e.GetProperty("endCt").GetInt32(), c.Outcome.TurnEndCt); Assert.Equal(e.GetProperty("next").GetString(), c.Outcome.MoveOpportunityUnitId.Value);
@@ -60,8 +59,8 @@ public sealed class RosterDashAiTests
                 }
                 break;
             case "entry":
-                var r = RosterDashAiEntry.Evaluate(state.Battle, s.Setup.Request, d.GetProperty("occurrence").GetInt32(), s.Configuration.Simulation,
-                    Refresh, s.Configuration.Lists, s.Configuration.General, Movement, s.Configuration.Selection.Dash!, true, state.Battle.TurnBattle.Turns.RngState);
+                var r = RosterDashAiEntry.Evaluate(state.Battle, s.Setup.Request, d.GetProperty("occurrence").GetInt32(), s.Configuration.Decision.Simulation,
+                    Refresh, s.Configuration.Decision.Lists, s.Configuration.Decision.General, Movement, s.Configuration.Decision.Abilities.Dash!, true, state.Battle.TurnBattle.Turns.RngState);
                 Assert.True(r.Accepted, r.Failure?.ToString()); Rng(e, r.RngState); var o = r.Outcome!;
                 Assert.Equal(e.GetProperty("skipped").GetBoolean(), o.Skipped); Assert.Equal(NullableIndex(e.GetProperty("best")), o.BestCandidateIndex);
                 Assert.Equal(e.GetProperty("ranked").EnumerateArray().Select(Tile), o.RankedOrigins.Select(v => v.Tile));
@@ -97,14 +96,14 @@ public sealed class RosterDashAiTests
                 }
                 break;
             case "turn":
-                var turn = RosterBasicSkillAiTurnExecution.Execute(state, s.Setup.Request, s.Configuration);
+                var turn = AiTurnController.Execute(state, s.Setup.Request, s.Configuration);
                 Check(e, turn.State, turn.Workspace); Assert.Equal(e.GetProperty("failure").ValueKind == JsonValueKind.Null, turn.Completed);
                 int dashCount = e.GetProperty("commands").EnumerateArray().Count(v => v.GetString() is "Dash" or "RetainedDash"); Assert.Equal(dashCount, turn.Events.OfType<DashResolvedEvent>().Count());
-                var replay = RosterBasicSkillAiTurnExecution.Execute(state, s.Setup.Request, s.Configuration);
+                var replay = AiTurnController.Execute(state, s.Setup.Request, s.Configuration);
                 Assert.Equal(Snapshot(turn.State.Battle), Snapshot(replay.State.Battle)); Assert.Equal(Events(turn.Events), Events(replay.Events));
                 if (!turn.Completed)
                 {
-                    var retry = RosterBasicSkillAiTurnExecution.Resume(turn.State, turn.Recovery!); Assert.Same(turn.State, retry.State); Assert.Empty(retry.Events); Assert.Empty(retry.Decisions); Assert.Same(turn.Workspace, retry.Workspace);
+                    var retry = AiTurnController.Resume(turn.State, turn.Recovery!); Assert.Same(turn.State, retry.State); Assert.Empty(retry.Events); Assert.Empty(retry.Decisions); Assert.Same(turn.Workspace, retry.Workspace);
                 }
                 break;
             case "replay":
@@ -112,7 +111,7 @@ public sealed class RosterDashAiTests
                 foreach (var step in e.EnumerateArray())
                 {
                     var request = s.Setup.Request with { ActorId = new(step.GetProperty("actor").GetString()!) };
-                    var result = RosterBasicSkillAiTurnExecution.Execute(state, request, s.Configuration, workspace); Assert.True(result.Completed, result.Failure?.ToString());
+                    var result = AiTurnController.Execute(state, request, s.Configuration, workspace); Assert.True(result.Completed, result.Failure?.ToString());
                     Check(step.GetProperty("turn"), result.State, result.Workspace); state = result.State; workspace = result.Workspace; turns++;
                     if (step.GetProperty("clock").ValueKind == JsonValueKind.Null) continue;
                     var advanced = RosterFacingTurnBattle.Advance(state); Assert.True(advanced.Accepted); state = advanced.State;
@@ -159,17 +158,17 @@ public sealed class RosterDashAiTests
         ulong draws = first.Outcome!.DecisionRng.DrawCount - ordinary.State.Battle.TurnBattle.Turns.RngState.DrawCount;
         var data = System.Text.Json.Nodes.JsonNode.Parse(d.GetRawText())!; data["count"] = ulong.MaxValue - draws;
         using var limited = JsonDocument.Parse(data.ToJsonString()); var s = Load(limited.RootElement);
-        var r = RosterBasicSkillAiTurnExecution.Execute(s.State, s.Setup.Request, s.Configuration); Assert.False(r.Completed);
+        var r = AiTurnController.Execute(s.State, s.Setup.Request, s.Configuration); Assert.False(r.Completed);
         if (!moveFirst)
         { Assert.Same(s.State, r.State); Assert.Empty(r.Events); Assert.Empty(r.Decisions); Assert.Empty(r.Workspace.KnownPriorities); }
         else
         {
-            Assert.Single(r.Decisions); Assert.Equal(BasicSkillAiTurnStage.RetainedCommand, r.Recovery!.NextStep);
+            Assert.Single(r.Decisions); Assert.Equal(AiTurnStage.RetainedCommand, r.Recovery!.NextStep);
             Assert.Empty(r.Events.OfType<DashResolvedEvent>()); Assert.True(r.State.Battle.TurnBattle.Turns.Units.Single(u => u.Id == A).MovementTaken);
             Assert.Equal(AttackCommandRejection.RandomDrawCountExhausted, r.Failure!.ContinuationFailure!.Transition.AttackRejection);
-            var retry = RosterBasicSkillAiTurnExecution.Resume(r.State, r.Recovery); Assert.Same(r.State, retry.State); Assert.Empty(retry.Events); Assert.Empty(retry.Decisions);
+            var retry = AiTurnController.Resume(r.State, r.Recovery); Assert.Same(r.State, retry.State); Assert.Empty(retry.Events); Assert.Empty(retry.Decisions);
             var ended = RosterFacingTurnBattle.WaitWithFacing(r.State, A); Assert.True(ended.Accepted);
-            Assert.Equal(BasicSkillAiTurnStage.RecoveryBinding, RosterBasicSkillAiTurnExecution.Resume(ended.State, r.Recovery).Failure!.Stage);
+            Assert.Equal(AiTurnStage.RecoveryBinding, AiTurnController.Resume(ended.State, r.Recovery).Failure!.Stage);
         }
     }
 
@@ -177,19 +176,19 @@ public sealed class RosterDashAiTests
     public void Candidate_scoring_grants_range_and_late_clock_failure_remain_explicit_and_transactional()
     {
         using var doc = Fixture(); var s = Load(Row(doc, "ACT-first").GetProperty("input")); var c = new DashAiCandidate(A, Dash, B, new(1, 0, 0), true); var rng = s.State.Battle.TurnBattle.Turns.RngState;
-        var profile = s.Configuration.Selection.Dash!;
-        var noScores = RosterDashAiCandidate.Evaluate(s.State.Battle, c, s.Configuration.Simulation, profile, new(), rng);
+        var profile = s.Configuration.Decision.Abilities.Dash!;
+        var noScores = RosterDashAiCandidate.Evaluate(s.State.Battle, c, s.Configuration.Decision.Simulation, profile, new(), rng);
         Assert.Equal(RosterDashAiCandidateRejection.UnsupportedScoring, noScores.Rejection); Assert.Equal(rng, noScores.RngState);
         var noGrants = new DashAbilityBattleProfile(Ground, [new(Dash)], s.State.Battle.Combatants.Select(u => new TargetedAbilityUnitGrant(u.UnitId, [], 0)));
-        Assert.Equal(RosterDashAiCandidateRejection.AbilityNotGranted, RosterDashAiCandidate.Evaluate(s.State.Battle, c, s.Configuration.Simulation, noGrants, new(true, true, true), rng).Rejection);
-        Assert.Equal(RosterDashAiCandidateRejection.OutOfRange, RosterDashAiCandidate.Evaluate(s.State.Battle, c with { ActBeforeMove = false }, s.Configuration.Simulation, profile, new(true, true, true), rng).Rejection);
-        var late = RosterDashAiCandidate.Evaluate(s.State.Battle, c, s.Configuration.Simulation, profile, new(true, true, true), new(1, ulong.MaxValue));
+        Assert.Equal(RosterDashAiCandidateRejection.AbilityNotGranted, RosterDashAiCandidate.Evaluate(s.State.Battle, c, s.Configuration.Decision.Simulation, noGrants, new(true, true, true), rng).Rejection);
+        Assert.Equal(RosterDashAiCandidateRejection.OutOfRange, RosterDashAiCandidate.Evaluate(s.State.Battle, c with { ActBeforeMove = false }, s.Configuration.Decision.Simulation, profile, new(true, true, true), rng).Rejection);
+        var late = RosterDashAiCandidate.Evaluate(s.State.Battle, c, s.Configuration.Decision.Simulation, profile, new(true, true, true), new(1, ulong.MaxValue));
         Assert.Equal(RosterDashAiCandidateRejection.RandomDrawCountExhausted, late.Rejection); Assert.Null(late.Outcome); Assert.Null(late.Score); Assert.Equal(new RandomState(1, ulong.MaxValue), late.RngState);
-        var q = Select(s, s.Configuration.Selection with { Dash = null }); Assert.False(q.Accepted); Assert.Equal(1, q.Failure!.OccurrenceIndex); Assert.Equal(rng, q.RngState); Assert.Empty(q.Workspace.KnownPriorities);
+        var q = Select(s, s.Configuration.Decision.Abilities with { Dash = null }); Assert.False(q.Accepted); Assert.Equal(1, q.Failure!.OccurrenceIndex); Assert.Equal(rng, q.RngState); Assert.Empty(q.Workspace.KnownPriorities);
         var old = s.State.Battle.TurnBattle;
         var ticks = new AttackBattleSnapshot(new(old.Battle, new(old.Turns.Units.Select(u => new TurnUnitState(u.Id, u.Speed, u.Id == B ? 95 : u.Ct, u.TieKey, u.HasTurn, u.MovementTaken, u.ActionTaken)),
             old.Turns.RngState, ulong.MaxValue, old.Turns.Phase)), s.State.Battle.Combatants);
-        var exhausted = RosterDashAiCandidate.Evaluate(ticks, c, s.Configuration.Simulation, profile, new(true, true, true), rng);
+        var exhausted = RosterDashAiCandidate.Evaluate(ticks, c, s.Configuration.Decision.Simulation, profile, new(true, true, true), rng);
         Assert.Equal(RosterDashAiCandidateRejection.TickCountExhausted, exhausted.Rejection); Assert.Equal(rng, exhausted.RngState); Assert.Null(exhausted.Score);
     }
 }

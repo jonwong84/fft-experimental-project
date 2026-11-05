@@ -8,7 +8,7 @@ public sealed record AttackThrowStoneAiPostActScenarioOutcome(AttackThrowStoneAi
     ImmutableArray<TilePosition> ScoreMask, ImmutableArray<TilePosition> Scenario1, ImmutableArray<TilePosition> Scenario2,
     ImmutableArray<AiScoredMovementTile> Movement, ImmutableArray<AiMovementCellProvenance> Cells,
     TilePosition Destination, int BaselineIndex, int TargetDistance, int TargetReach, int EffectiveReach,
-    SwordAiReachAdjustment? ReachAdjustment, bool FilterUsedReachableFallback, bool DestinationUsedDistanceFallback)
+    AiReachAdjustment? ReachAdjustment, bool FilterUsedReachableFallback, bool DestinationUsedDistanceFallback)
 {
     public TilePosition D0 => Destination;
     public TilePosition D1 => Destination;
@@ -20,7 +20,7 @@ public sealed record AttackThrowStoneAiPostActScenarioResult(bool Accepted, Atta
 /// <summary>Own fresh pair post-ACT preparation and movement-only scenarios through shared source kernels.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-209/211/213.
 /// No Attack-only certificate, cached prefix, action scan, lottery, live RNG adoption or command authority.</remarks>
-public static class AttackThrowStoneAiPostActScenarios
+internal static class AttackThrowStoneAiPostActScenarios
 {
     public static AttackThrowStoneAiPostActScenarioResult EvaluateInReach(AttackBattleSnapshot state,
         AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, RandomState decisionRng) =>

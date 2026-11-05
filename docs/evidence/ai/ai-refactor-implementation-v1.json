@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-331",
+  "date": "2026-11-05",
+  "managedBaseRevision": "b4617e0f2c8a05b4205e8a8aca03f0e9d5673ce7",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "behavior": "docs/development/ai-refactor-331.md",
+  "inventory": {
+    "previousPublicStaticOwners": 87,
+    "externalProductionCallers": 0,
+    "externalTestCallers": 0,
+    "internalizedStaticOwners": 84,
+    "publicStaticOwners": [
+      "AiDecisionMaker",
+      "AiCommandExecutor",
+      "AiTurnController"
+    ]
+  },
+  "validation": {
+    "dotnetPassed": 4531,
+    "frameworkPassed": 1521,
+    "aiPassed": 1217,
+    "contentPassed": 833,
+    "pythonPassed": 596,
+    "newExternalPipelineCases": 1,
+    "trxReports": 7,
+    "lockedRestore": true,
+    "releaseWarnings": 0,
+    "releaseErrors": 0,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/ai-refactor-331/",
+    "existingAiAssertionStatementsPreserved": 5685,
+    "sourceAudit": true,
+    "algorithmGuideAudit": true,
+    "dashAudit": true,
+    "rosterReplayAudit": true,
+    "preparedTrajectoryAudit": true,
+    "coverageAudit": true,
+    "localLinkAudit": true
+  },
+  "invariants": [
+    "existing behavior assertions, source fixtures and replay checkpoints unchanged",
+    "fresh Framework callback owns actual decisions, RNG adoption and typed command authority",
+    "exact recovery, accepted-only workspace publication and specialized ability guards retained",
+    "older bounded algorithms remain internal and regression-tested"
+  ],
+  "publicApiChanged": true,
+  "packageSchemaChanged": false,
+  "dependencyChanges": false,
+  "newFriendAccess": false
+}

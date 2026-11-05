@@ -35,7 +35,7 @@ public sealed class RosterAiSimulationProfile
 
 public enum RosterAiRejection { None, UnsupportedContext, UnsupportedProfile, UnknownActor, TerminalInput,
     UnavailableAction, InvalidPolicies, UnsupportedList, InvalidDestination, RandomDrawCountExhausted, TickCountExhausted }
-public sealed record RosterAiRefreshRequest(BattleUnitId ActorId, ImmutableArray<SwordAiRefreshPolicy> Policies);
+public sealed record RosterAiRefreshRequest(BattleUnitId ActorId, ImmutableArray<AiUnitPolicy> Policies);
 public sealed record RosterAiRefreshProfile(bool FreshRefreshEntry = false, bool AllUnitsTargetable = false,
     bool ZeroCachedMpAbilityModifiers = false, bool CleanActorDelayCache = false);
 public sealed record RosterAiRefreshOutcome(BattleUnitId ActorId, byte CachedActorDelay,
@@ -45,7 +45,7 @@ public sealed record RosterAiRefreshResult(bool Accepted, RosterAiRejection Reje
     RosterAiRefreshOutcome? Outcome, RandomState RngState);
 
 /// <summary>One private fresh whole-roster refresh, with diagnostics only. Source ZOD-283/284 at 11464943bbdbd2a0af022d90cb7f10455cf911df.</summary>
-public static class RosterAiRefresh
+internal static class RosterAiRefresh
 {
     public static RosterAiRefreshResult Evaluate(AttackBattleSnapshot state, RosterAiRefreshRequest request,
         RosterAiSimulationProfile simulation, RosterAiRefreshProfile profile, RandomState rng)

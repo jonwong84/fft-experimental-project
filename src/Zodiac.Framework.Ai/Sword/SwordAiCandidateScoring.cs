@@ -13,7 +13,7 @@ public sealed record SwordAiScoringResult(AiScoringDisposition Disposition, AiSc
 /// Source: decomp 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-126/127.
 /// No external/cached outcome entry, enumeration, comparison, ranking, policy, command or live RNG commitment.
 /// </remarks>
-public static class SwordAiCandidateScoring
+internal static class SwordAiCandidateScoring
 {
     public static SwordAiScoringResult Evaluate(AttackBattleSnapshot state, SwordAiCandidate candidate,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,

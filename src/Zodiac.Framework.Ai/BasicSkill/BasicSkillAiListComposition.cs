@@ -6,7 +6,7 @@ namespace Zodiac.Framework.Ai;
 public sealed record BasicSkillAiListFailure(BasicSkillAiDerivedStage Stage, BasicSkillAiScenarioFailure? Scenarios = null,
     BasicSkillAiFailure? Entry = null, int? OccurrenceIndex = null, int? LotteryIndex = null);
 public sealed record BasicSkillAiListCandidate(int OccurrenceIndex, BasicSkillAiAction Action);
-public sealed record BasicSkillAiListEntryOutcome(BasicSkillAiPreparedOccurrence Entry, RandomState EntryRng, RandomState ExitRng,
+public sealed record BasicSkillAiListEntryOutcome(AiPreparedAbility Entry, RandomState EntryRng, RandomState ExitRng,
     SwordAiScanOutcome? Attack = null, AccumulateAiEntryOutcome? Accumulate = null, ThrowStoneAiScanOutcome? ThrowStone = null,
     int? InsertionIndex = null);
 public sealed record BasicSkillAiListCompositionOutcome(BasicSkillAiListScenarioOutcome Scenarios,
@@ -16,7 +16,7 @@ public sealed record BasicSkillAiListCompositionResult(bool Accepted, BasicSkill
     BasicSkillAiListCompositionOutcome? Outcome, RandomState RngState, AiPriorityWorkspace Workspace);
 
 /// <summary>Fresh owned list/scenarios followed by source-order occurrence evaluation through existing entry/rank kernels.</summary>
-public static class BasicSkillAiListComposition
+internal static class BasicSkillAiListComposition
 {
     public static BasicSkillAiListCompositionResult Evaluate(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,
         BasicSkillAiListProfile profile, RandomState rng, AiPriorityWorkspace? workspace = null) => EvaluateCore(state, request, profile, rng, workspace, false);

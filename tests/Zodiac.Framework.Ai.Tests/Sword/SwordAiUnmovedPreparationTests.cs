@@ -84,8 +84,8 @@ public sealed class SwordAiUnmovedPreparationTests
         Assert.Equal(5, o.Refresh.Units.Single(u => u.UnitId == A).Ct);
         Assert.Equal(90, o.Refresh.Units.Single(u => u.UnitId == B).Ct);
         Assert.Equal((9, 6, (byte)8), (o.ActorDelay, o.TargetDelay, o.FoeProximity));
-        Assert.Equal(new SwordAiRefreshPolicy(A, true, true), o.Policies.Single(p => p.UnitId == A));
-        Assert.Equal(new SwordAiRefreshPolicy(B, false, false), o.Policies.Single(p => p.UnitId == B));
+        Assert.Equal(new AiUnitPolicy(A, true, true), o.Policies.Single(p => p.UnitId == A));
+        Assert.Equal(new AiUnitPolicy(B, false, false), o.Policies.Single(p => p.UnitId == B));
         Assert.False(o.Refresh.RefreshedUnits.Single(u => u.UnitId == A).TeamSupportUnavailable);
         Assert.True(o.Refresh.RefreshedUnits.Single(u => u.UnitId == A).HpBelowHalf);
         Assert.True(o.TargetActive); Assert.True(o.ManualAutobattle);

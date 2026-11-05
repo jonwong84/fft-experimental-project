@@ -10,7 +10,7 @@ public sealed record AiRosterNearestOutcome(BattleUnitId TargetId, int? Distance
 
 /// <summary>Only source ELIGIBLE_ENEMY, not the different healer, imminent, enemy or arbitrary-unit nearest modes.</summary>
 /// <remarks>ZOD-273; first source-order tie wins; an empty eligible set falls back to the actor; no RNG.</remarks>
-public static class AiRosterNearest
+internal static class AiRosterNearest
 {
     public static AiRosterNearestOutcome FindEligibleEnemy(AiTargetRoster roster, IEnumerable<BattleUnitId> targetable)
     {

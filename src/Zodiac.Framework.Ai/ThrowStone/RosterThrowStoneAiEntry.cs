@@ -14,7 +14,7 @@ public sealed record RosterThrowStoneAiScannedCandidate(TilePosition Origin, Til
     ThrowStoneAiCandidate Candidate, RosterThrowStoneAiCandidateResult Evaluation, byte Proximity);
 public sealed record RosterThrowStoneAiAimVisit(TilePosition Origin, BattleUnitId TargetId, RosterAiDirectTrajectoryOutcome Trajectory,
     int? CandidateIndex, int RemainingAimCount, RandomState RngState);
-public sealed record RosterThrowStoneAiEntryOutcome(RosterAiGeneralScenarioOutcome Scenarios, BasicSkillAiPreparedOccurrence Entry,
+public sealed record RosterThrowStoneAiEntryOutcome(RosterAiGeneralScenarioOutcome Scenarios, AiPreparedAbility Entry,
     ImmutableArray<AiCastOriginPriority> RankedOrigins, ImmutableArray<BattleUnitId> AimTargets, ImmutableArray<TilePosition> EvaluatedOrigins,
     ImmutableArray<RosterThrowStoneAiAimVisit> Visits, ImmutableArray<RosterThrowStoneAiScannedCandidate> Candidates,
     int? BestCandidateIndex, AiRankOrder? BaselineComparison, int RemainingOriginCount, int RemainingAimCount)
@@ -27,7 +27,7 @@ public sealed record RosterThrowStoneAiEntryResult(bool Accepted, RosterThrowSto
 
 /// <summary>One fresh general prefix and isolated ranked Stone occurrence with computed all-occupant trajectories. No full-list rank, lottery or command.</summary>
 /// <remarks>ZOD-301; source 11464943bbdbd2a0af022d90cb7f10455cf911df. Blocked aims remain; clear evaluated aims consume even at zero accuracy.</remarks>
-public static class RosterThrowStoneAiEntry
+internal static class RosterThrowStoneAiEntry
 {
     public static RosterThrowStoneAiEntryResult Evaluate(AttackBattleSnapshot state, RosterThrowStoneAiEntryRequest request,
         RosterAiSimulationProfile simulation, RosterAiRefreshProfile refresh, AiHumanAbilityLists lists, RosterAiGeneralProfile general,

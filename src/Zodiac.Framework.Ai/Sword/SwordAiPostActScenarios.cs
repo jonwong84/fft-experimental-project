@@ -18,7 +18,7 @@ public sealed record SwordAiPostActScenarioResult(bool Accepted, SwordAiPostActS
 
 /// <summary>Own fresh post-ACT preparation and source-ordered movement scoring; no Attack scan or lottery.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-176/181. No cached outcomes or command authority.</remarks>
-public static class SwordAiPostActScenarios
+internal static class SwordAiPostActScenarios
 {
     public static SwordAiPostActScenarioResult EvaluateInReach(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,

@@ -19,7 +19,7 @@ public sealed record BasicSkillAiWorkspaceCompositionResult(BasicSkillAiDerivedC
 
 /// <summary>Own fresh preparation/scenarios and provenance-safe three-entry composition through the existing entry/rank owner.</summary>
 /// <remarks>ZOD-249/251. No public scenario, score, cache or ranked input; never rescore the inserted actor or guess an unwritten key.</remarks>
-public static class BasicSkillAiDerivedComposition
+internal static class BasicSkillAiDerivedComposition
 {
     public static BasicSkillAiDerivedCompositionResult Evaluate(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,
         BasicSkillAiDerivedProfile profile, RandomState decisionRng)

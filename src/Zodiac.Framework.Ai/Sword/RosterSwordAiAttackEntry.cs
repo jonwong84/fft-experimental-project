@@ -10,7 +10,7 @@ public sealed record RosterSwordAiScannedCandidate(TilePosition Origin, TilePosi
 public enum RosterSwordAiAttackStage { Admission, Prefix, Candidate }
 public sealed record RosterSwordAiAttackFailure(RosterSwordAiAttackStage Stage, RosterAiGeneralFailure? Prefix = null,
     RosterSwordAiCandidateRejection CandidateReason = RosterSwordAiCandidateRejection.None, int? CandidateIndex = null);
-public sealed record RosterSwordAiAttackOutcome(RosterAiGeneralScenarioOutcome Scenarios, BasicSkillAiPreparedOccurrence Entry,
+public sealed record RosterSwordAiAttackOutcome(RosterAiGeneralScenarioOutcome Scenarios, AiPreparedAbility Entry,
     ImmutableArray<TilePosition> CastOrigins, ImmutableArray<BattleUnitId> AimTargets,
     ImmutableArray<RosterSwordAiScannedCandidate> Candidates, int? BestCandidateIndex, AiRankOrder? BaselineComparison)
 {
@@ -22,7 +22,7 @@ public sealed record RosterSwordAiAttackResult(bool Accepted, RosterSwordAiAttac
 
 /// <summary>One fresh general prefix and exhaustive ordinary Attack occurrence across all active useful enemies. No ranked array, lottery or command.</summary>
 /// <remarks>ZOD-296; decomp 11464943bbdbd2a0af022d90cb7f10455cf911df. Origins and target panels use map order; complete ties keep first.</remarks>
-public static class RosterSwordAiAttackEntry
+internal static class RosterSwordAiAttackEntry
 {
     public static RosterSwordAiAttackResult Evaluate(AttackBattleSnapshot state, RosterAiRefreshRequest request,
         RosterAiSimulationProfile simulation, RosterAiRefreshProfile refresh, AiHumanAbilityLists lists,

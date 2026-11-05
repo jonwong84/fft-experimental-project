@@ -1,4 +1,9 @@
-# AI file organization — ZOD-219
+# AI file organization
+
+Current managed ownership: [ZOD-331](../development/ai-refactor-331.md) uses
+`AiDecisionMaker`, `AiCommandExecutor` and `AiTurnController` with shared immutable
+configuration. Older names below identify the historical source-traced slices;
+lower-level pilot APIs are now internal. Original rules and evidence remain unchanged.
 
 Reorganized 2026-11-04. The [source map](../../src/Zodiac.Framework.Ai/README.md)
 describes the family folders and their mirrored test layout. The RNG tests

@@ -14,8 +14,8 @@ public sealed class SwordAiPreparationTests
         var result = Evaluate(state, request); var o = Success(result);
         Assert.Equal(new RandomState(1103527590, 8), result.RngState);
         Assert.Equal(cachedSupport, o.Refresh.RefreshedUnits.Single(u => u.UnitId == A).TeamSupportUnavailable);
-        Assert.Equal(new SwordAiRefreshPolicy(A, true, true), o.Policies.Single(p => p.UnitId == A));
-        Assert.Equal(new SwordAiRefreshPolicy(B, false, false), o.Policies.Single(p => p.UnitId == B));
+        Assert.Equal(new AiUnitPolicy(A, true, true), o.Policies.Single(p => p.UnitId == A));
+        Assert.Equal(new AiUnitPolicy(B, false, false), o.Policies.Single(p => p.UnitId == B));
         Assert.False(o.RetreatSupportAvailable); Assert.False(o.SingleEnemyRemaining);
         Assert.True(o.TargetActive); Assert.True(o.ManualAutobattle); Assert.Equal(0, o.RandomUseThreshold);
         Assert.Equal((4, 3), (o.EnemyAbilityReach, o.AllyAbilityReach));

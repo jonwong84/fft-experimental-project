@@ -19,7 +19,7 @@ public sealed record AttackThrowStoneAiPreparedSelectionResult(bool Accepted, At
 /// <summary>Fresh both-unused in-reach pair decision, owning preparation, scenarios, both scans and lottery exactly once.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-195/198.
 /// Hypothetical only: no cached inputs, out-of-reach branch, command/session authority or live RNG adoption.</remarks>
-public static class AttackThrowStoneAiPreparedSelection
+internal static class AttackThrowStoneAiPreparedSelection
 {
     public static AttackThrowStoneAiPreparedSelectionResult Evaluate(AttackBattleSnapshot state,
         AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, RandomState decisionRng)

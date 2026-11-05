@@ -15,7 +15,7 @@ public sealed record SwordAiWaitSettlementResult(bool Accepted, SwordAiWaitSettl
 
 /// <summary>Opt-in fresh AI Wait-facing application through existing active/receipt authority.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df, ZOD-152/153. No selected plan, decision-RNG commit or host activation.</remarks>
-public static class SwordAiWaitSettlement
+internal static class SwordAiWaitSettlement
 {
     /// <summary>End the active turn once, including its unused-choice CT refund, then publish fresh facing.</summary>
     public static SwordAiWaitSettlementResult Wait(FacingTurnState state, BattleUnitId actorId, BattleUnitId targetId,

@@ -154,7 +154,7 @@ public sealed class BasicSkillAiContentListTests
         var state = Ready(move: 0, word: 7); var configured = Configuration(Lists(Content(state)));
         var profile = DerivedProfile() with { Preparation = configured };
         var command = BasicSkillAiCommandExecution.ExecuteDerived(state, SelfData.Request(), profile, Selection, Dispatch);
-        Assert.True(command.Accepted, command.Failure?.ToString()); Assert.Equal(BasicSkillAiCommandKind.Accumulate, command.Outcome!.Kind);
+        Assert.True(command.Accepted, command.Failure?.ToString()); Assert.Equal(AiCommandKind.Accumulate, command.Outcome!.Kind);
         var rng = command.State.Battle.TurnBattle.Turns.RngState;
         var after = AccumulateAiPreparation.EvaluateAfterAct(command.State.Battle, SelfData.Request(), configured, rng);
         var old = AccumulateAiPreparation.EvaluateAfterAct(command.State.Battle, SelfData.Request(), SelfData.Configuration(), rng);
@@ -186,7 +186,7 @@ public sealed class BasicSkillAiContentListTests
         var state = Ready(move: 1, evade: 0, target: new(4, 1, 0), count: ulong.MaxValue - 16);
         var history = BasicSkillAiPriorityWorkspaceQueryTests.Seed(state, 1); var profile = DerivedProfile() with { Preparation = Configuration(Lists(Content(state))) };
         var turn = BasicSkillAiTurnExecution.ExecuteWithWorkspace(state, SelfData.Request(), new(profile, Selection, new(true, true, true)), Dispatch, history);
-        Assert.False(turn.Turn.Completed); Assert.Equal(BasicSkillAiTurnStage.RetainedCommand, turn.Turn.Failure!.Stage);
+        Assert.False(turn.Turn.Completed); Assert.Equal(AiTurnStage.RetainedCommand, turn.Turn.Failure!.Stage);
         Assert.Single(turn.Turn.Decisions); Assert.Equal((short)0, turn.Workspace.KnownPriorities[new(2, 1, 0)]);
         var retry = BasicSkillAiTurnExecution.ResumeWithWorkspace(turn.Turn.State, turn.Turn.Recovery!);
         Assert.Same(turn.Turn.State, retry.Turn.State); Assert.Same(turn.Workspace, retry.Workspace); Assert.Empty(retry.Turn.Events); Assert.Empty(retry.Turn.Decisions);

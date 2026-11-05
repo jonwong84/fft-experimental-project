@@ -56,7 +56,7 @@ public sealed record SwordAiCandidateResult(SwordAiCandidateDisposition Disposit
 
 /// <summary>Pure projection of one supplied ordinary sword candidate; no enumeration, score or live decision execution.</summary>
 /// <remarks>Source: decomp 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-124/125.</remarks>
-public static class SwordAiCandidateProjection
+internal static class SwordAiCandidateProjection
 {
     public static SwordAiCandidateResult Evaluate(AttackBattleSnapshot state, SwordAiCandidate candidate,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile profile, RandomState decisionRng)

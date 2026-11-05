@@ -33,7 +33,7 @@ public sealed record AttackThrowStoneAiTurnResult(FacingTurnState State, Immutab
 /// <summary>Compose one bounded living-pair turn without advancing the next-turn clock or rolling back published commands.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-220/221/224.
 /// No presentation delay, terminal policy, cached-plan input or speculative retry.</remarks>
-public static class AttackThrowStoneAiTurnExecution
+internal static class AttackThrowStoneAiTurnExecution
 {
     public static AttackThrowStoneAiTurnResult Execute(FacingTurnState state, AttackThrowStoneAiSelectionRequest request,
         AttackThrowStoneAiSelectionConfiguration configuration, SwordAiCommandDispatchProfile dispatch)

@@ -61,7 +61,7 @@ public sealed class AttackThrowStoneAiBlueTests
         var blue=Scenario(state,new(20,7),Config());Assert.True(blue.Accepted);var b=blue.Outcome!;
         var non=Scenario(state,new(20,7),SelectionConfiguration(Selection));Assert.True(non.Accepted);var n=non.Outcome!;
         Assert.Null(b.ReachAdjustment);Assert.Equal(2,b.EffectiveReach);Assert.Equal(new RandomState(143664818,9),blue.RngState);
-        Assert.Equal(new SwordAiReachAdjustment(12502,0,2,1),n.ReachAdjustment);Assert.Equal(new RandomState(2966873603,10),non.RngState);
+        Assert.Equal(new AiReachAdjustment(12502,0,2,1),n.ReachAdjustment);Assert.Equal(new RandomState(2966873603,10),non.RngState);
         Assert.Equal(Serialize(n.Movement),Serialize(b.Movement));Assert.Equal(Serialize(n.ScoreMask),Serialize(b.ScoreMask));
         Assert.Null(b.Cells.Single(c=>c.Tile==Origin).WrittenPriority);
         Assert.Contains(Origin,b.Scenario1);Assert.Contains(Origin,b.Scenario2);Assert.Equal(new TilePosition(2,1,0),b.BaselineDestination);

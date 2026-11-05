@@ -27,7 +27,7 @@ public sealed record SwordAiPreparedSelectionResult(bool Accepted, SwordAiPrepar
 /// Owns refresh provenance and its retained draw; no cached-result input, command authority or runtime activation.
 /// Existing post-prefix execution and its GeneralSelectionEntryContext remain separate.
 /// </remarks>
-public static class SwordAiPreparedSelection
+internal static class SwordAiPreparedSelection
 {
     public static SwordAiPreparedSelectionResult Evaluate(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,

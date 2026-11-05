@@ -28,7 +28,7 @@ public sealed record AttackThrowStoneAiSelectionResult(bool Accepted, AttackThro
 /// <summary>Own fresh pair ranking, then one terminal source lottery and typed hypothetical plan.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-192/194.
 /// No cached-rank input, executable command, live choice/RNG adoption, facing resolution or host activation.</remarks>
-public static class AttackThrowStoneAiSelection
+internal static class AttackThrowStoneAiSelection
 {
     public static AttackThrowStoneAiSelectionResult Evaluate(AttackBattleSnapshot state, ThrowStoneAiScanRequest request,
         ThrowStoneAiScanScenario scenario, BoundedSwordWeapon? weapon, AttackThrowStoneAiProfile profile,

@@ -12,14 +12,14 @@ public sealed record RosterAiGeneralScenarioOutcome(RosterAiGeneralPreparationOu
     ImmutableArray<TilePosition> ScoreMask, ImmutableArray<TilePosition> Scenario1, ImmutableArray<TilePosition> Scenario2,
     ImmutableArray<RosterAiScoredMovementTile> Movement, ImmutableArray<AiMovementCellProvenance> Cells,
     TilePosition BaselineDestination, TilePosition ActFirstDestination, int BaselineIndex, int TargetDistance,
-    int TargetReach, int EffectiveReach, SwordAiReachAdjustment? ReachAdjustment, int? BaselineDistanceLimit,
+    int TargetReach, int EffectiveReach, AiReachAdjustment? ReachAdjustment, int? BaselineDistanceLimit,
     bool FilterUsedReachableFallback, bool DestinationUsedDistanceFallback, bool OutOfReach);
 public sealed record RosterAiGeneralScenarioResult(bool Accepted, RosterAiGeneralFailure? Failure,
     RosterAiGeneralScenarioOutcome? Outcome, RandomState RngState);
 
 /// <summary>Own one fresh general prefix and private roster movement scan. No ability search, rank/lottery, plan or command.</summary>
 /// <remarks>ZOD-287/289; source 11464943bbdbd2a0af022d90cb7f10455cf911df. Normal focused scenarios; no reflected/stay-near/crystal overrides.</remarks>
-public static class RosterAiGeneralScenarios
+internal static class RosterAiGeneralScenarios
 {
     public static RosterAiGeneralScenarioResult Evaluate(AttackBattleSnapshot state, RosterAiRefreshRequest request,
         RosterAiSimulationProfile simulation, RosterAiRefreshProfile refresh, AiHumanAbilityLists lists,

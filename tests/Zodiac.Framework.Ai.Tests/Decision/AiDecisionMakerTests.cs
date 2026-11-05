@@ -6,20 +6,20 @@ using static Zodiac.Framework.Ai.Tests.RosterAiTestData;
 namespace Zodiac.Framework.Ai.Tests;
 
 [Trait("Ruleset", "OriginalFft")]
-public sealed class RosterBasicSkillAiSelectionTests
+public sealed class AiDecisionMakerTests
 {
     private static readonly AssetId Self = new("test:self"), Stone = new("test:stone");
     private static readonly BoundedSwordWeapon Sword = new(new("test:roster-sword"),2);
     private static readonly RosterAiGeneralProfile General = new(true,true);
     private static Setup Bind(Setup s) => s with {State=new(s.State.TurnBattle,s.State.Combatants.Select(u=>new AttackUnitState(u.UnitId,u.Hp,u.MaxHp,0,0,u.PhysicalAttack,
         u.ClassPhysicalEvade,0,0,0,u.Brave,u.ZodiacSign,u.Facing,u.Status,u.KoCount,u.UnitId==s.Request.ActorId ? Sword.Id : null)))};
-    private static RosterBasicSkillAiProfile Profile(Setup s) => new(Sword,new(new([new(Self)],s.Simulation.Units.Select(u=>new ImmediateAbilityUnitGrant(u.UnitId,[Self],0))),true),
+    private static AiAbilityEvaluationProfile Profile(Setup s) => new(Sword,new(new([new(Self)],s.Simulation.Units.Select(u=>new ImmediateAbilityUnitGrant(u.UnitId,[Self],0))),true),
         new(Ground,[new(Stone)],s.Simulation.Units.Select(u=>new TargetedAbilityUnitGrant(u.UnitId,[Stone],0))),
         new(s.Simulation.Units.Select(u=>new RosterAiSpriteHeight(u.UnitId,30))),true,true,true,true);
     private static Setup Sample(bool acted=false,bool reverse=false) => Bind(Make([new("a",0,1,15,Move:1,Acted:acted,Actions:["Self","Stone"]),new("b",1,0,95,Facing:BattleFacing.West),new("c",2,1)],
         positions:[new(1,1,0),new(3,1,0),new(1,2,0)],reverse:reverse));
-    private static RosterBasicSkillAiSelectionResult Query(Setup s,RosterBasicSkillAiProfile? profile=null,RandomState? rng=null,AiPriorityWorkspace? workspace=null) =>
-        RosterBasicSkillAiSelection.Evaluate(s.State,s.Request,s.Simulation,Refresh,s.Lists,General,Movement,profile ?? Profile(s),rng ?? Rng,workspace);
+    private static AiDecisionResult Query(Setup s,AiAbilityEvaluationProfile? profile=null,RandomState? rng=null,AiPriorityWorkspace? workspace=null) =>
+        AiDecisionMaker.Decide(s.State,s.Request,new(s.Simulation,Refresh,s.Lists,General,Movement,profile ?? Profile(s)),rng ?? Rng,workspace);
 
     [Fact]
     public void Twelve_source_tapes_cover_entry_rng_ranks_capacity_selection_order_and_all_peer_restoration()
@@ -84,7 +84,7 @@ public sealed class RosterBasicSkillAiSelectionTests
     {
         var s=Bind(Make([new("a",0,1,15,Move:1),new("b",1,0,95),new("c",2,1)],positions:[new(1,1,0),new(2,1,0),new(1,2,0)]));
         var workspace=AiPriorityWorkspace.StartUnknown(s.State.TurnBattle.Battle.Map);var rng=new RandomState(1,ulong.MaxValue-9);var before=Snapshot(s.State);
-        var r=Query(s,rng:rng,workspace:workspace);Assert.False(r.Accepted);Assert.Equal(RosterBasicSkillAiSelectionStage.Lottery,r.Failure!.Stage);Assert.Equal(0,r.Failure.LotteryIndex);
+        var r=Query(s,rng:rng,workspace:workspace);Assert.False(r.Accepted);Assert.Equal(AiDecisionStage.Lottery,r.Failure!.Stage);Assert.Equal(0,r.Failure.LotteryIndex);
         Assert.Null(r.Outcome);Assert.Equal(rng,r.RngState);Assert.Same(workspace,r.Workspace);Assert.Empty(workspace.KnownPriorities);Assert.Equal(before,Snapshot(s.State));
     }
 
@@ -102,7 +102,7 @@ public sealed class RosterBasicSkillAiSelectionTests
     private static TilePosition Tile(JsonElement e)=>new(e[0].GetInt32(),e[1].GetInt32(),0);
     private static int? NullableInt(JsonElement e)=>e.ValueKind==JsonValueKind.Null ? null : e.GetInt32();
     private static void RngEquals(JsonElement e,string word,string count,RandomState rng)=>Assert.Equal(new RandomState(e.GetProperty(word).GetUInt32(),e.GetProperty(count).GetUInt64()),rng);
-    private static void Action(JsonElement e,RosterBasicSkillAiRankedAction? a)
+    private static void Action(JsonElement e,AiRankedAbility? a)
     {
         if(e.ValueKind==JsonValueKind.Null){Assert.Null(a);return;}Assert.NotNull(a);Assert.Equal(e.GetProperty("occurrence").GetInt32(),a.OccurrenceIndex);
         Assert.Equal(e.GetProperty("kind").GetString(),Name(a.Kind));Assert.Equal(Tile(e.GetProperty("destination")),a.Destination);Assert.Equal(e.GetProperty("actFirst").GetBoolean(),a.ActBeforeMove);

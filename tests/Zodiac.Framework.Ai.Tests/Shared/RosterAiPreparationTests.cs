@@ -99,7 +99,7 @@ public sealed class RosterAiPreparationTests
         var s=Make();
         foreach (var p in new[]{new RosterAiRefreshProfile(),Refresh with{AllUnitsTargetable=false},Refresh with{CleanActorDelayCache=false},Refresh with{ZeroCachedMpAbilityModifiers=false}})
             Rejected(RosterAiRefresh.Evaluate(s.State,s.Request,s.Simulation,p,Rng),RosterAiRejection.UnsupportedContext);
-        foreach (var rows in new[]{default(ImmutableArray<SwordAiRefreshPolicy>),ImmutableArray.Create(new SwordAiRefreshPolicy(A,false,false)),ImmutableArray.Create(new SwordAiRefreshPolicy(A,false,false),new(A,false,false),new(C,false,false))})
+        foreach (var rows in new[]{default(ImmutableArray<AiUnitPolicy>),ImmutableArray.Create(new AiUnitPolicy(A,false,false)),ImmutableArray.Create(new AiUnitPolicy(A,false,false),new(A,false,false),new(C,false,false))})
             Rejected(RosterAiRefresh.Evaluate(s.State,s.Request with{Policies=rows},s.Simulation,Refresh,Rng),RosterAiRejection.InvalidPolicies);
         Rejected(RosterAiRefresh.Evaluate(s.State,s.Request with{ActorId=new("absent")},s.Simulation,Refresh,Rng),RosterAiRejection.UnknownActor);
         Rejected(RosterAiRefresh.Evaluate(s.State,s.Request,new(s.Simulation.Battle,s.Simulation.Units),Refresh,Rng),RosterAiRejection.UnsupportedContext);

@@ -1,5 +1,10 @@
 # AI completion roadmap
 
+Current managed ownership: [ZOD-331](../development/ai-refactor-331.md) uses
+`AiDecisionMaker`, `AiCommandExecutor` and `AiTurnController` with shared immutable
+configuration. Older names below identify the historical source-traced slices;
+lower-level pilot APIs are now internal. Original rules and evidence remain unchanged.
+
 Recorded 2026-10-29 from the owner's requested completion discussion, after
 ZOD-202 (`7d979d0`). This document preserves the overall destination and remaining
 work areas. The [backlog](../BACKLOG.md) owns selected work/order; the

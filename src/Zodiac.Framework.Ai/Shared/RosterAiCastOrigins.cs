@@ -5,7 +5,7 @@ namespace Zodiac.Framework.Ai;
 
 /// <summary>Range-one ordinary sword origin geometry, not an executable weapon/effect binding.</summary>
 public sealed record RosterAiCastProfile(bool OrdinaryRangeOneAttack = false);
-public sealed record RosterAiOccurrenceOrigins(BasicSkillAiPreparedOccurrence Entry,
+public sealed record RosterAiOccurrenceOrigins(AiPreparedAbility Entry,
     ImmutableArray<TilePosition> CastOrigins, ImmutableArray<AiCastOriginPriority> RankedOrigins);
 public sealed record RosterAiCastOriginOutcome(RosterAiGeneralScenarioOutcome Scenarios,
     ImmutableArray<RosterAiOccurrenceOrigins> Occurrences);
@@ -17,7 +17,7 @@ public sealed record RosterAiCastOriginResult(bool Accepted, RosterAiCastOriginF
 
 /// <summary>One fresh roster prefix and actual ranked-read provenance across all active enemies; no action/aim evaluation.</summary>
 /// <remarks>ZOD-290/291; source 11464943bbdbd2a0af022d90cb7f10455cf911df. Attack exhaustive and self map entries read no priority keys.</remarks>
-public static class RosterAiCastOrigins
+internal static class RosterAiCastOrigins
 {
     public static RosterAiCastOriginResult Evaluate(AttackBattleSnapshot state, RosterAiRefreshRequest request,
         RosterAiSimulationProfile simulation, RosterAiRefreshProfile refresh, AiHumanAbilityLists lists,

@@ -17,7 +17,7 @@ public sealed record SwordAiWaitFacingResult(bool Accepted, SwordAiWaitFacingRej
 
 /// <summary>Pure ChooseAtWait resolution for two settled living ordinary opponents on clear flat ground.</summary>
 /// <remarks>Reference 11464943bbdbd2a0af022d90cb7f10455cf911df, ZOD-150/151. No selected-plan inputs or host activation.</remarks>
-public static class SwordAiWaitFacing
+internal static class SwordAiWaitFacing
 {
     public static SwordAiWaitFacingResult Evaluate(AttackBattleSnapshot state, BattleUnitId actorId, BattleUnitId targetId,
         FlatOrdinaryMovementProfile movementProfile, SwordAiWaitFacingProfile waitProfile, RandomState rng) =>

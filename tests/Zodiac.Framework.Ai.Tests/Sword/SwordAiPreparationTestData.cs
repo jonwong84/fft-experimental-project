@@ -17,7 +17,7 @@ internal static class SwordAiPreparationTestData
     internal static SwordAiRefreshRequest Request(bool second = false, bool cachedSupport = false, bool reverse = false)
     {
         var actor = second ? B : A; var target = second ? A : B;
-        ImmutableArray<SwordAiRefreshPolicy> policies = [new(actor, true, cachedSupport), new(target, false, false)];
+        ImmutableArray<AiUnitPolicy> policies = [new(actor, true, cachedSupport), new(target, false, false)];
         return new(actor, target, reverse ? policies.Reverse().ToImmutableArray() : policies);
     }
     internal static AttackBattleSnapshot State(int ct = 15, int targetCt = 95, int speed = 5, int targetSpeed = 5,

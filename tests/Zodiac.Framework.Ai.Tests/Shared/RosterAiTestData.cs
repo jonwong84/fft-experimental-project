@@ -31,7 +31,7 @@ internal static class RosterAiTestData
             reverse ? bodies.Reverse() : bodies,random),new(reverse ? turns.Reverse() : turns,random,ticks,TurnCyclePhase.UnitTurn)),reverse ? combat.Reverse() : combat);
         var battle = new FlatRosterBattleProfile(Ground,units.Select(u => new FlatRosterUnit(new(u.Id),u.Team,u.Order)));
         var simulation = new RosterAiSimulationProfile(battle,units.Select(u => new AiUnitBaseline(new(u.Id),255)),true);
-        var policies = units.Select(u => new SwordAiRefreshPolicy(new(u.Id),u.Conserve,u.Support)).ToImmutableArray();
+        var policies = units.Select(u => new AiUnitPolicy(new(u.Id),u.Conserve,u.Support)).ToImmutableArray();
         var lists = AiHumanAbilityLists.Build(units.Select(u => new AiHumanUnitAbilitySource(new(u.Id),
             new(new("test:skill/"+u.Id),(u.Actions ?? []).Select((a,i) => new AiHumanActionSlot(i,new(a=="Self" ? "test:self" : a=="Dash" ? "test:dash" : "test:stone"),
                 a=="Self" ? AiHumanAbilityKind.Accumulate : a=="Dash" ? AiHumanAbilityKind.Dash : AiHumanAbilityKind.ThrowStone,true,true))))),new(true,true));

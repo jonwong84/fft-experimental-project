@@ -37,7 +37,7 @@ public sealed record AccumulateAiPreparationResult(bool Accepted, AccumulateAiPr
 
 /// <summary>Fresh closed-list preparation before or after ACT; no usefulness coin or source-scenario/command authority.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-229/231/243/244.</remarks>
-public static class AccumulateAiPreparation
+internal static class AccumulateAiPreparation
 {
     public static AccumulateAiPreparationResult Evaluate(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,
         AccumulateAiPreparationConfiguration configuration, RandomState decisionRng)

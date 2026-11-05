@@ -51,7 +51,7 @@ public sealed record SwordAiCompositionResult(bool Accepted, SwordAiCompositionF
 /// Starts before the supplied movement scoring mask; stops before lottery/fallback/commands.
 /// No scenario generation, caller-populated cached outcomes, live RNG commitment or native activation.
 /// </remarks>
-public static class SwordAiComposition
+internal static class SwordAiComposition
 {
     public static SwordAiCompositionResult Evaluate(AttackBattleSnapshot state, SwordAiCompositionScenario scenario,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,

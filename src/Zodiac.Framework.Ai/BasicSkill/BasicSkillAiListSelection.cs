@@ -12,7 +12,7 @@ public sealed record BasicSkillAiListSelectionResult(bool Accepted, BasicSkillAi
     BasicSkillAiListSelectionOutcome? Outcome, RandomState RngState, AiPriorityWorkspace Workspace);
 
 /// <summary>One private variable-list composition and existing lottery. Failed work publishes neither RNG nor priority writes.</summary>
-public static class BasicSkillAiListSelection
+internal static class BasicSkillAiListSelection
 {
     public static BasicSkillAiListSelectionResult Evaluate(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,
         BasicSkillAiListProfile profile, BasicSkillAiListSelectionProfile selection, RandomState rng, AiPriorityWorkspace? workspace = null) =>

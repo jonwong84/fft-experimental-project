@@ -12,7 +12,7 @@ public sealed record RosterAiMovementOutcome(BattleUnitId ActorId, TilePosition 
 public sealed record RosterAiMovementResult(bool Accepted, RosterAiRejection Rejection, RosterAiMovementOutcome? Outcome, RandomState RngState);
 
 /// <summary>One supplied legal roster move-only hypothesis and absolute score; no refresh, scenarios, rank selection or command authority.</summary>
-public static class RosterAiMovementBaseline
+internal static class RosterAiMovementBaseline
 {
     public static RosterAiMovementResult Evaluate(AttackBattleSnapshot state, RosterAiMovementRequest request,
         RosterAiSimulationProfile simulation, RosterAiMovementProfile profile, RandomState rng)

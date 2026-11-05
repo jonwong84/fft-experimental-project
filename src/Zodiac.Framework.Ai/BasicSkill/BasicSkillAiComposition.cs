@@ -65,7 +65,7 @@ public sealed record BasicSkillAiCompositionResult(bool Accepted, BasicSkillAiFa
 
 /// <summary>Fresh closed-list preparation and one shared supplied-scenario prefix, followed by three source-order entries.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-233/235. No derived scenarios, lottery or command authority.</remarks>
-public static class BasicSkillAiComposition
+internal static class BasicSkillAiComposition
 {
     public static BasicSkillAiCompositionResult Evaluate(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,
         ThrowStoneAiScanScenario scenario, BasicSkillAiProfile profile, RandomState decisionRng)

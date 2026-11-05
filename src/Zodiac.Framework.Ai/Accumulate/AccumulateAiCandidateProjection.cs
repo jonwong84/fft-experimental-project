@@ -43,7 +43,7 @@ public sealed record AccumulateAiCandidateResult(bool Accepted, AccumulateAiCand
 
 /// <summary>One fresh post-usefulness self candidate, with zero formula draws and the shared hypothetical clock.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-229/230. No usefulness coin, enumeration or authority.</remarks>
-public static class AccumulateAiCandidateProjection
+internal static class AccumulateAiCandidateProjection
 {
     public static AccumulateAiCandidateResult Evaluate(AttackBattleSnapshot state, AccumulateAiCandidate candidate,
         AccumulateAiCandidateProfile profile, RandomState decisionRng)

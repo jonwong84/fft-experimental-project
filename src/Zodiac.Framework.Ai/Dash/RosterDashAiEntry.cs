@@ -7,7 +7,7 @@ public enum RosterDashAiEntryStage { Admission, Prefix, Priority, Candidate }
 public sealed record RosterDashAiEntryFailure(RosterDashAiEntryStage Stage, RosterAiGeneralFailure? Prefix = null,
     RosterDashAiCandidateRejection CandidateReason = RosterDashAiCandidateRejection.None, TilePosition? MissingTile = null, int? CandidateIndex = null);
 public sealed record RosterDashAiScannedCandidate(TilePosition Origin, DashAiCandidate Candidate, RosterDashAiCandidateResult Evaluation, byte Proximity);
-public sealed record RosterDashAiEntryOutcome(RosterAiGeneralScenarioOutcome Scenarios, BasicSkillAiPreparedOccurrence Entry,
+public sealed record RosterDashAiEntryOutcome(RosterAiGeneralScenarioOutcome Scenarios, AiPreparedAbility Entry,
     ImmutableArray<AiCastOriginPriority> RankedOrigins, ImmutableArray<BattleUnitId> AimTargets,
     ImmutableArray<TilePosition> EvaluatedOrigins, ImmutableArray<RosterDashAiScannedCandidate> Candidates,
     int? BestCandidateIndex, AiRankOrder? BaselineComparison, int RemainingOriginCount, int RemainingAimCount)
@@ -19,7 +19,7 @@ public sealed record RosterDashAiEntryResult(bool Accepted, RosterDashAiEntryFai
 
 /// <summary>One privately prepared ranked Dash occurrence, range1 union and consumed map-order aims; no trajectory or public cached prefix.</summary>
 /// <remarks>ZOD-323; source 11464943bbdbd2a0af022d90cb7f10455cf911df.</remarks>
-public static class RosterDashAiEntry
+internal static class RosterDashAiEntry
 {
     public static RosterDashAiEntryResult Evaluate(AttackBattleSnapshot state, RosterAiRefreshRequest request, int occurrenceIndex,
         RosterAiSimulationProfile simulation, RosterAiRefreshProfile refresh, AiHumanAbilityLists lists,

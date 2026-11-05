@@ -33,7 +33,7 @@ public sealed record SwordAiMovementBaselineResult(bool Accepted, SwordAiMovemen
 /// This isolated evaluation consumes one upkeep draw, not the full original scenario search's RNG schedule.
 /// No weapon formula, scenario generation, cached-outcome input, ranking, lottery or runtime activation.
 /// </remarks>
-public static class SwordAiMovementBaseline
+internal static class SwordAiMovementBaseline
 {
     public static SwordAiMovementBaselineResult Evaluate(AttackBattleSnapshot state, SwordAiMovementBaselineRequest request,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,

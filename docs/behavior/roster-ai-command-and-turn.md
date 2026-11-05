@@ -1,5 +1,10 @@
 # Fresh roster AI commands and bounded turns — ZOD-314/315
 
+Current managed ownership: [ZOD-331](../development/ai-refactor-331.md) uses
+`AiDecisionMaker`, `AiCommandExecutor` and `AiTurnController` with shared immutable
+configuration. Older names below identify the historical source-traced slices;
+lower-level pilot APIs are now internal. Original rules and evidence remain unchanged.
+
 Implemented 2026-11-05 from managed baseline `dc660e9`, following
 [the authority design](../architecture/zod-310-roster-decision-authority.md) and
 [Framework transactions/continuations](roster-decision-and-continuation.md).

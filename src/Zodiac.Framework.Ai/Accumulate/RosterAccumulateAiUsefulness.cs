@@ -14,7 +14,7 @@ public sealed record RosterAccumulateAiUsefulnessResult(bool Accepted, RosterAcc
 
 /// <summary>One supplied active-mask entry filter; every allied source slot draws, even beyond self range. No general prefix or candidate evaluation.</summary>
 /// <remarks>ZOD-290/292; source 11464943bbdbd2a0af022d90cb7f10455cf911df. No actor-only shortcut, once-per-turn cache or command authority.</remarks>
-public static class RosterAccumulateAiUsefulness
+internal static class RosterAccumulateAiUsefulness
 {
     public static RosterAccumulateAiUsefulnessResult Evaluate(AttackBattleSnapshot state, RosterAccumulateAiUsefulnessRequest request,
         RosterAiSimulationProfile simulation, RosterAccumulateAiProfile profile, RandomState rng)

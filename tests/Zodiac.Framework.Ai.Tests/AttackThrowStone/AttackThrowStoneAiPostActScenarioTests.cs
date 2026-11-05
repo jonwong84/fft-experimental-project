@@ -41,7 +41,7 @@ public sealed class AttackThrowStoneAiPostActScenarioTests
             });
             Assert.All(o.Preparation.ActorEntries, e => Assert.False(e.Usable));
             if (!example.Outside) { Assert.Null(o.ReachAdjustment); Assert.Empty(o.Scenario2); Assert.All(o.Cells, c => Assert.True(c.PriorityWritten)); }
-            else { Assert.Equal(new SwordAiReachAdjustment(4445, 0, 1, 0), o.ReachAdjustment); Assert.True(o.FilterUsedReachableFallback); }
+            else { Assert.Equal(new AiReachAdjustment(4445, 0, 1, 0), o.ReachAdjustment); Assert.True(o.FilterUsedReachableFallback); }
             Assert.Equal(before, Snapshot(state));
         }
     }
@@ -54,7 +54,7 @@ public sealed class AttackThrowStoneAiPostActScenarioTests
         Assert.Equal(5, o.Movement.Length); Assert.Equal(17, o.Cells.Length);
         Assert.Equal(new TilePosition(3, 2, 0), o.Destination); Assert.Equal(o.D0, o.D1);
         Assert.Equal(new RandomState(2000392299, 34), result.RngState);
-        Assert.Equal(new SwordAiReachAdjustment(30523, 3, 4, 4), o.ReachAdjustment);
+        Assert.Equal(new AiReachAdjustment(30523, 3, 4, 4), o.ReachAdjustment);
         Assert.Equal(new AiMovementCellProvenance(Origin, 5, null), o.Cells.Single(c => c.Tile == Origin));
         Assert.Contains(Origin, o.Scenario1); Assert.Contains(Origin, o.Scenario2); Assert.DoesNotContain(Origin, o.ScoreMask);
         Assert.Equal(before, Snapshot(state));
@@ -63,7 +63,7 @@ public sealed class AttackThrowStoneAiPostActScenarioTests
         // It does not replace either live RNG copy. The actor is an unknown key inside Stone range, but no cast reads it.
         var nearer = Pushed(move: 1, originalTargetX: 4); var entry = new RandomState(20, 7);
         var halved = Success(Evaluate(nearer, outside: true, rng: entry));
-        Assert.Equal(new SwordAiReachAdjustment(12502, 0, 2, 1), halved.ReachAdjustment);
+        Assert.Equal(new AiReachAdjustment(12502, 0, 2, 1), halved.ReachAdjustment);
         Assert.Equal(new TilePosition(2, 1, 0), halved.Destination); Assert.True(halved.DestinationUsedDistanceFallback);
         Assert.Null(halved.Cells.Single(c => c.Tile == Origin).WrittenPriority); Assert.Equal(4, halved.TargetDistance);
         Assert.Equal(new RandomState(2966873603, 10), Evaluate(nearer, outside: true, rng: entry).RngState);

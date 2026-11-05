@@ -21,7 +21,7 @@ public sealed record SwordAiActFirstResult(SwordAiActFirstFailure? Failure, Faci
 
 /// <summary>Own fresh ordinary NonBlue ACT-first selection and one actual Attack; stop before post-ACT reselection.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-176/177. No cached plan, Move token or host activation.</remarks>
-public static class SwordAiActFirstExecution
+internal static class SwordAiActFirstExecution
 {
     public static SwordAiActFirstResult StartPreparedInReach(FacingTurnState state, SwordAiRefreshRequest request,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,

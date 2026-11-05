@@ -38,7 +38,7 @@ public sealed record AttackThrowStoneAiPreparationResult(bool Accepted, AttackTh
 /// <summary>Fresh pair preparation for NonBlue or the certified Blue AI-control branch, before or after ACT.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-195/196/209/211.
 /// No cached results, ranged D0/scenario derivation, candidate scoring/selection, authority or live RNG adoption.</remarks>
-public static class AttackThrowStoneAiPreparation
+internal static class AttackThrowStoneAiPreparation
 {
     public static AttackThrowStoneAiPreparationResult Evaluate(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         AssetId throwStoneAbilityId, BoundedSwordWeapon? weapon, SwordAiCandidateProfile attackProfile,

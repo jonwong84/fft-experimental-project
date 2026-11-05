@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-05",
   "edition": "SCUS-94221",
-  "managedCommit": "66821b3",
+  "managedCommit": "b4617e0",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 4530,
-    "source": "docs/behavior/readable-ai-authoring.md",
+    "passed": 4531,
+    "source": "docs/development/ai-refactor-331.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -683,7 +683,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "Existing pair/variable-list command and complete-turn drivers retain guards, priority knowledge and streams. Roster general preparation/scenarios, cast-priority provenance and fresh exhaustive supported Attack/self/Stone list ranking/lottery share private formulas, clocks, projections, geometry and scoring while restoring all peers. Exact Framework flat direct trajectories use complete sprite heights and SDK normalization; actual roster Stone resolves live interception and all-occupant landing. Framework owns invocation-bound proposals, full-word/count RNG verification, actual command transactions and exact-state frozen Move follow-ups. Fresh supported roster AI dispatch now runs selection inside that boundary, publishing priority knowledge only with actual progress. Bounded complete-turn routing and exact-session recovery compose retained commands, fresh post-ACT and explicit facing without advancing the next clock. ACT-first KO can stop at the deferred corpse query guard with real progress retained; Move-first KO can settle its real receipt. Other policies/abilities/maps, full corpse/terminal/frame RNG, original evidence and host activation remain open. Eighteen real turns now verify multi-actor commands, clocks, ready-peer order, all-peer state/RNG and retained priorities; Dash now joins supported roster semantic preparation, isolated midpoint projection, ranked range1 search, full-list ranking/lottery and actual dispatch through existing verified proposals/frozen Move. Six further real Dash/Accumulate turns verify shared priority/RNG history. Its non-evadeable rule uses zero hypothetical effect draws, compared with three actual damage/Brave draws; legacy pair guards remain. Immutable semantic AI traits now derive from preserved primary bytes and feed owned list target/evasion/Silence/trajectory/physical summaries. Static fourth-byte facts stay separate from working usage. Unsupported edited combinations reject; package schema/raw preservation and owner drafts remain unchanged. Prepared Dash effect/grant binding remains next. ZOD-330 now makes named boolean AI traits and structured area-shape combinations authoritative for C# authoring, with generated original-byte exports, explicit import factory, preserved unknown residuals and unchanged version1 packages.",
+      "currentScope": "Existing pair/variable-list command and complete-turn drivers retain guards, priority knowledge and streams. Roster general preparation/scenarios, cast-priority provenance and fresh exhaustive supported Attack/self/Stone list ranking/lottery share private formulas, clocks, projections, geometry and scoring while restoring all peers. Exact Framework flat direct trajectories use complete sprite heights and SDK normalization; actual roster Stone resolves live interception and all-occupant landing. Framework owns invocation-bound proposals, full-word/count RNG verification, actual command transactions and exact-state frozen Move follow-ups. Fresh supported roster AI dispatch now runs selection inside that boundary, publishing priority knowledge only with actual progress. Bounded complete-turn routing and exact-session recovery compose retained commands, fresh post-ACT and explicit facing without advancing the next clock. ACT-first KO can stop at the deferred corpse query guard with real progress retained; Move-first KO can settle its real receipt. Other policies/abilities/maps, full corpse/terminal/frame RNG, original evidence and host activation remain open. Eighteen real turns now verify multi-actor commands, clocks, ready-peer order, all-peer state/RNG and retained priorities; Dash now joins supported roster semantic preparation, isolated midpoint projection, ranked range1 search, full-list ranking/lottery and actual dispatch through existing verified proposals/frozen Move. Six further real Dash/Accumulate turns verify shared priority/RNG history. Its non-evadeable rule uses zero hypothetical effect draws, compared with three actual damage/Brave draws; legacy pair guards remain. Immutable semantic AI traits now derive from preserved primary bytes and feed owned list target/evasion/Silence/trajectory/physical summaries. Static fourth-byte facts stay separate from working usage. Unsupported edited combinations reject; package schema/raw preservation and owner drafts remain unchanged. Prepared Dash effect/grant binding remains next. ZOD-330 now makes named boolean AI traits and structured area-shape combinations authoritative for C# authoring, with generated original-byte exports, explicit import factory, preserved unknown residuals and unchanged version1 packages. ZOD-331 consolidates the supported public roster path as AiDecisionMaker/AiCommandExecutor/AiTurnController with shared immutable configuration; older pilot owners remain tested internally. Specialized behavior, rejection ordering and RNG/workspace/receipt authority are unchanged.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -865,7 +865,9 @@
         "docs/fixtures/behavior/ai-behavior-contract-v1.json",
         "docs/evidence/ai/ai-behavior-implementation-v1.json",
         "docs/behavior/readable-ai-authoring.md",
-        "docs/evidence/ai/readable-ai-authoring-v1.json"
+        "docs/evidence/ai/readable-ai-authoring-v1.json",
+        "docs/development/ai-refactor-331.md",
+        "docs/evidence/ai/ai-refactor-implementation-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -910,7 +912,7 @@
         "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListSelection.cs",
         "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListCommandExecution.cs",
         "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListTurnExecution.cs",
-        "src/Zodiac.Framework.Ai/Shared/AiTurnProgress.cs",
+        "src/Zodiac.Framework.Ai/Execution/AiTurnProgress.cs",
         "src/Zodiac.Framework.Ai/Shared/AiTargetRoster.cs",
         "src/Zodiac.Framework.Ai/Shared/AiRosterNearest.cs",
         "src/Zodiac.Framework.Ai/Shared/AiRosterActiveTargets.cs",
@@ -949,22 +951,29 @@
         "src/Zodiac.Framework.Ai/ThrowStone/ThrowStoneAiFormulaProjection.cs",
         "src/Zodiac.Framework.Ai/Shared/RosterAiDirectTrajectory.cs",
         "src/Zodiac.Framework.Ai/ThrowStone/RosterThrowStoneAiEntry.cs",
-        "src/Zodiac.Framework.Ai/BasicSkill/RosterBasicSkillAiSelection.cs",
+        "src/Zodiac.Framework.Ai/Decision/AiDecisionMaker.cs",
         "src/Zodiac.Framework/FlatRosterDirectTrajectory.cs",
         "src/Zodiac.Framework/TargetedAbilityBattle.cs",
         "src/Zodiac.Framework/RosterDecision.cs",
         "src/Zodiac.Framework/RosterPlannedMove.cs",
         "src/Zodiac.Framework/RosterMoveContinuation.cs",
         "src/Zodiac.Framework/ImmediateAbilityBattle.cs",
-        "src/Zodiac.Framework.Ai/BasicSkill/RosterBasicSkillAiCommandExecution.cs",
-        "src/Zodiac.Framework.Ai/BasicSkill/RosterBasicSkillAiTurnExecution.cs",
+        "src/Zodiac.Framework.Ai/Execution/AiCommandExecutor.cs",
+        "src/Zodiac.Framework.Ai/Execution/AiTurnController.cs",
         "src/Zodiac.Framework.Ai/Dash/RosterDashAiCandidate.cs",
         "src/Zodiac.Framework.Ai/Dash/RosterDashAiEntry.cs",
         "src/Zodiac.Framework.Ai/Shared/AiAbilityBehavior.cs",
         "src/Zodiac.Content/Definitions/OriginalAbilityAiFlags.cs",
         "src/Zodiac.Content/Definitions/AbilityMetadataDefinition.cs",
         "src/Zodiac.AssetTool.Cli/OriginalAbilityMetadataAdapter.cs",
-        "src/Zodiac.Content/Authoring/JobEditorDocument.cs"
+        "src/Zodiac.Content/Authoring/JobEditorDocument.cs",
+        "src/Zodiac.Framework.Ai/Decision/AiDecision.cs",
+        "src/Zodiac.Framework.Ai/Decision/AiDecisionConfiguration.cs",
+        "src/Zodiac.Framework.Ai/Decision/AiAbilityEvaluator.cs",
+        "src/Zodiac.Framework.Ai/Execution/AiCommand.cs",
+        "src/Zodiac.Framework.Ai/Execution/AiTurn.cs",
+        "src/Zodiac.Framework.Ai/Shared/AiDamageHypothesis.cs",
+        "src/Zodiac.Framework.Ai/Shared/AiPreparationTypes.cs"
       ],
       "automatedChecks": [
         {
@@ -1300,7 +1309,7 @@
           "scope": "Pinned 26 files/69 functions and eleven composed source tapes; no original/C/managed execution."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/BasicSkill/RosterBasicSkillAiSelectionTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Decision/AiDecisionMakerTests.cs",
           "scope": "Twelve source tapes checking every entry RNG/best/insertion/rank/roll/selection, entered-only profiles, late lottery rollback, map identity and replay."
         },
         {
@@ -1364,7 +1373,7 @@
           "scope": "Pinned83 functions/27 files and21 contracts; no original/C/managed execution."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/BasicSkill/RosterBasicSkillAiTurnExecutionTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Execution/AiTurnControllerTests.cs",
           "scope": "Twelve independent real command/turn tapes plus late RNG/facing rollback, exact-session retry/binding, immutable replay, kept facing, peer storage permutation and accepted KO retention."
         },
         {
@@ -1376,7 +1385,7 @@
           "scope": "Pinned83 functions/27 files and12 independent compositions; no original/C/managed execution."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/BasicSkill/RosterAiBattleReplayTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/Execution/RosterAiBattleReplayTests.cs",
           "scope": "Three six-turn source compositions through public actual sessions, reversed storage, exact clock events and persistent priority knowledge."
         },
         {
@@ -1410,6 +1419,10 @@
         {
           "path": "tests/Zodiac.Content.Tests/Definitions/AbilityAiBehaviorTests.cs",
           "scope": "Named authoring, literal original Stone/area encoding, all1,024 byte patterns through semantic construction/legacy JSON, invalid shape/residual rejection;37 prior vectors remain equal."
+        },
+        {
+          "path": "tests/Zodiac.Content.Tests/PublicAiPipelineTests.cs",
+          "scope": "External assembly without AI friend access: pure decision, fresh actual command and complete turn share one configuration; input restoration, decision versus actual RNG, damage and explicit facing are checked."
         }
       ],
       "manualCheckpoint": {

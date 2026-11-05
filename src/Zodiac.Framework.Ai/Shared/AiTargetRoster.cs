@@ -69,7 +69,7 @@ public sealed class AiTargetRoster
     }
 }
 
-public static class AiRosterEligibility
+internal static class AiRosterEligibility
 {
     /// <summary>Semantic team indices 0..3; target initial team is deliberately distinct from actor current team.</summary>
     public static bool IsEnemy(BattleUnitId actorId, int actorCurrentTeam, BattleUnitId targetId, int targetInitialTeam)

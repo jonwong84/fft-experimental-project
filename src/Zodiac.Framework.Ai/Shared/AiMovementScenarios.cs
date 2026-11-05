@@ -14,7 +14,7 @@ public sealed record AiDerivedMovementScenario(ImmutableArray<TilePosition> Scor
     ImmutableArray<TilePosition> Scenario1, ImmutableArray<TilePosition> Scenario2,
     ImmutableArray<AiScoredMovementTile> Movement, ImmutableArray<AiMovementCellProvenance> Cells,
     TilePosition BaselineDestination, TilePosition ActFirstDestination, int BaselineIndex,
-    int TargetDistance, int TargetReach, int EffectiveReach, SwordAiReachAdjustment? ReachAdjustment,
+    int TargetDistance, int TargetReach, int EffectiveReach, AiReachAdjustment? ReachAdjustment,
     int? BaselineDistanceLimit, bool FilterUsedReachableFallback, bool DestinationUsedDistanceFallback, bool OutOfReach);
 internal sealed record AiMovementScenarioCore(AiDerivedMovementScenario? Outcome,
     AttackThrowStoneAiScenarioFailure? Failure, AiMovementPrefixOutcome? Prefix, RandomState RngState)

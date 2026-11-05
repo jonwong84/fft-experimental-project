@@ -3,7 +3,7 @@ using System.Collections.Immutable;
 namespace Zodiac.Framework.Ai;
 
 public sealed record BasicSkillAiListTurnConfiguration(BasicSkillAiListProfile Profile, BasicSkillAiListSelectionProfile Selection);
-public sealed record BasicSkillAiListTurnFailure(BasicSkillAiTurnStage Stage, BasicSkillAiListCommandFailure? CommandFailure = null,
+public sealed record BasicSkillAiListTurnFailure(AiTurnStage Stage, BasicSkillAiListCommandFailure? CommandFailure = null,
     FacingMoveContinueResult? ContinuationFailure = null, FacingTurnResult? FacingFailure = null);
 public sealed record BasicSkillAiListTurnDecision(bool AfterAct, BasicSkillAiListCommandOutcome Outcome);
 public sealed record BasicSkillAiListTurnResult(FacingTurnState State, ImmutableArray<AttackResultEvent> Events,
@@ -18,17 +18,17 @@ internal sealed record BasicSkillAiListTurnInputs(AccumulateAiPreparationRequest
 /// <summary>Opaque exact-session cursor freezing list configuration, priority knowledge and existing Framework continuation.</summary>
 public sealed class BasicSkillAiListTurnRecovery
 {
-    public BasicSkillAiTurnStage NextStep { get; }
+    public AiTurnStage NextStep { get; }
     internal FacingTurnState ExpectedState { get; }
     internal BasicSkillAiListTurnInputs Inputs { get; }
     internal FacingMoveContinuation? Continuation { get; }
-    internal BasicSkillAiListTurnRecovery(FacingTurnState state, BasicSkillAiTurnStage step,
+    internal BasicSkillAiListTurnRecovery(FacingTurnState state, AiTurnStage step,
         BasicSkillAiListTurnInputs inputs, FacingMoveContinuation? continuation)
     { ExpectedState = state; NextStep = step; Inputs = inputs; Continuation = continuation; }
 }
 
 /// <summary>Compose actual variable-list commands through existing continuations/facing and shared stage routing.</summary>
-public static class BasicSkillAiListTurnExecution
+internal static class BasicSkillAiListTurnExecution
 {
     public static BasicSkillAiListTurnResult Execute(FacingTurnState state, AccumulateAiPreparationRequest request,
         BasicSkillAiListTurnConfiguration configuration, SwordAiCommandDispatchProfile dispatch, AiPriorityWorkspace? workspace = null)
@@ -37,19 +37,19 @@ public static class BasicSkillAiListTurnExecution
         BasicSkillAiListScenarios.ValidateArguments(state.Battle, request, configuration.Profile);
         ArgumentNullException.ThrowIfNull(configuration.Selection); ArgumentNullException.ThrowIfNull(dispatch);
         workspace ??= AiPriorityWorkspace.StartUnknown(state.Battle.TurnBattle.Battle.Map); workspace.ValidateMap(state.Battle);
-        return Run(state, new(request, configuration, dispatch, workspace), BasicSkillAiTurnStage.FirstCommand, null);
+        return Run(state, new(request, configuration, dispatch, workspace), AiTurnStage.FirstCommand, null);
     }
 
     public static BasicSkillAiListTurnResult Resume(FacingTurnState state, BasicSkillAiListTurnRecovery recovery)
     {
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(recovery);
         if (!ReferenceEquals(state, recovery.ExpectedState))
-            return new(state, [], [], recovery.Inputs.Workspace, new(BasicSkillAiTurnStage.RecoveryBinding), null);
+            return new(state, [], [], recovery.Inputs.Workspace, new(AiTurnStage.RecoveryBinding), null);
         return Run(state, recovery.Inputs, recovery.NextStep, recovery.Continuation);
     }
 
     private static BasicSkillAiListTurnResult Run(FacingTurnState state, BasicSkillAiListTurnInputs inputs,
-        BasicSkillAiTurnStage stage, FacingMoveContinuation? continuation)
+        AiTurnStage stage, FacingMoveContinuation? continuation)
     {
         var events = ImmutableArray.CreateBuilder<AttackResultEvent>(); var decisions = ImmutableArray.CreateBuilder<BasicSkillAiListTurnDecision>();
         var workspace = inputs.Workspace; var request = inputs.Request;
@@ -59,9 +59,9 @@ public static class BasicSkillAiListTurnExecution
         {
             switch (stage)
             {
-                case BasicSkillAiTurnStage.FirstCommand:
-                case BasicSkillAiTurnStage.PostActCommand:
-                    bool after = stage == BasicSkillAiTurnStage.PostActCommand;
+                case AiTurnStage.FirstCommand:
+                case AiTurnStage.PostActCommand:
+                    bool after = stage == AiTurnStage.PostActCommand;
                     var c = inputs.Configuration;
                     var command = after ? BasicSkillAiListCommandExecution.ExecuteAfterAct(state, request, c.Profile, c.Selection, inputs.Dispatch, workspace)
                         : BasicSkillAiListCommandExecution.Execute(state, request, c.Profile, c.Selection, inputs.Dispatch, workspace);
@@ -69,12 +69,12 @@ public static class BasicSkillAiListTurnExecution
                     state = command.State; workspace = command.Workspace; events.AddRange(command.Events);
                     decisions.Add(new(after, command.Outcome!)); continuation = command.Continuation;
                     break;
-                case BasicSkillAiTurnStage.RetainedCommand:
+                case AiTurnStage.RetainedCommand:
                     var retained = FacingMoveDecisionBattle.Continue(state, request.Turn.ActorId, continuation);
                     if (!retained.Accepted) return Failed(new(stage, ContinuationFailure: retained));
                     state = retained.State; events.AddRange(retained.Events); continuation = null;
                     break;
-                case BasicSkillAiTurnStage.FinishFacing:
+                case AiTurnStage.FinishFacing:
                     var facing = FacingTurnBattle.FinishFacing(state, request.Turn.ActorId, state.PendingFacing,
                         new FacingChoice.ChooseClosedEnemy(request.Turn.TargetId));
                     if (!facing.Accepted) return Failed(new(stage, FacingFailure: facing));

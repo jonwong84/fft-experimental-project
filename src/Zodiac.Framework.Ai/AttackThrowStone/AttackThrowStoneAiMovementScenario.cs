@@ -23,7 +23,7 @@ internal sealed record AttackThrowStoneAiScenarioCore(AttackThrowStoneAiMovement
 /// <summary>Own fresh both-unused pair preparation and one in-reach movement prefix; derive D0/D1 with ranged policy.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-195/197.
 /// No cached inputs, out-of-reach adjustment, action scans, lottery, authority or live RNG adoption.</remarks>
-public static class AttackThrowStoneAiMovementScenario
+internal static class AttackThrowStoneAiMovementScenario
 {
     public static AttackThrowStoneAiMovementScenarioResult Evaluate(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         AssetId throwStoneAbilityId, BoundedSwordWeapon? weapon, SwordAiCandidateProfile attackProfile,

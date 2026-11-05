@@ -23,18 +23,15 @@ public sealed record SwordAiMovementScenarioResult(bool Accepted, SwordAiMovemen
 
 /// <summary>Original masked team class, independent of control, actor identity or opponent relation.</summary>
 public enum SwordAiScenarioTeam { Unknown, Blue, NonBlue }
-public sealed record SwordAiReachAdjustment(uint Raw, int Modulo, int Before, int After)
-{
-    public bool Halved => Modulo == 0;
-}
+
 public sealed record SwordAiOutOfReachScenarioOutcome(SwordAiMovementScenarioOutcome MovementScenario,
-    SwordAiScenarioTeam Team, int EffectiveReach, SwordAiReachAdjustment? ReachAdjustment, bool AttackUsedDistanceFallback);
+    SwordAiScenarioTeam Team, int EffectiveReach, AiReachAdjustment? ReachAdjustment, bool AttackUsedDistanceFallback);
 public sealed record SwordAiOutOfReachScenarioResult(bool Accepted, SwordAiMovementScenarioFailure? Failure,
     SwordAiOutOfReachScenarioOutcome? Outcome, RandomState RngState);
 
 /// <summary>Fresh, pure derivation of explicit in-reach and out-of-reach focused ordinary-sword movement branches.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-141/143/146/147. No Attack, lottery or command execution.</remarks>
-public static class SwordAiMovementScenario
+internal static class SwordAiMovementScenario
 {
     public static SwordAiMovementScenarioResult Evaluate(AttackBattleSnapshot state,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,
@@ -72,7 +69,7 @@ public static class SwordAiMovementScenario
     }
 
     private sealed record CoreResult(SwordAiMovementScenarioResult Result, int EffectiveReach = 0,
-        SwordAiReachAdjustment? Adjustment = null, bool AttackFallback = false);
+        AiReachAdjustment? Adjustment = null, bool AttackFallback = false);
 
     private static CoreResult EvaluateCore(AttackBattleSnapshot state, SwordAiCandidateProfile candidateProfile,
         AiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,
@@ -131,7 +128,7 @@ public static class SwordAiMovementScenario
         }
         var values = ordering.ToImmutable();
         int effectiveReach = reach;
-        SwordAiReachAdjustment? adjustment = null;
+        AiReachAdjustment? adjustment = null;
         if (team == SwordAiScenarioTeam.NonBlue)
         {
             uint raw;

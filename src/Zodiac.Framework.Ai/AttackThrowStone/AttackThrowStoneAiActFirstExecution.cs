@@ -30,7 +30,7 @@ public sealed record AttackThrowStoneAiOutOfReachActFirstResult(AttackThrowStone
 /// <summary>Own fresh pair selection and one actual ACT-first Attack or Throw Stone through explicit reach entries.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-198/203/204/208/216/217.
 /// No cached decision, unknown cast keys, post-ACT Move token/reselection or host activation.</remarks>
-public static class AttackThrowStoneAiActFirstExecution
+internal static class AttackThrowStoneAiActFirstExecution
 {
     public static AttackThrowStoneAiActFirstResult StartInReach(FacingTurnState state, AttackThrowStoneAiSelectionRequest request,
         AttackThrowStoneAiSelectionConfiguration configuration, SwordAiCommandDispatchProfile dispatchProfile)

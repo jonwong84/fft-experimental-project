@@ -9,7 +9,7 @@ public sealed record AttackThrowStoneAiOutOfReachScenarioOutcome(AttackThrowSton
     ImmutableArray<TilePosition> ScoreMask, ImmutableArray<TilePosition> Scenario1, ImmutableArray<TilePosition> Scenario2,
     ImmutableArray<AiScoredMovementTile> Movement, ImmutableArray<AiMovementCellProvenance> Cells,
     TilePosition BaselineDestination, TilePosition ActFirstDestination, int BaselineIndex,
-    int TargetDistance, int TargetReach, int EffectiveReach, SwordAiReachAdjustment? ReachAdjustment,
+    int TargetDistance, int TargetReach, int EffectiveReach, AiReachAdjustment? ReachAdjustment,
     bool FilterUsedReachableFallback, bool DestinationUsedDistanceFallback);
 /// <summary>Failure exposes reasons only and restores incoming whole-query RNG, including after partial private work.</summary>
 public sealed record AttackThrowStoneAiOutOfReachScenarioResult(bool Accepted, AttackThrowStoneAiScenarioFailure? Failure,
@@ -20,7 +20,7 @@ internal sealed record AttackThrowStoneAiOutOfReachScenarioCore(AttackThrowStone
 /// <summary>Own fresh pair preparation, full proximity, filtered scores and team-specific out-of-reach D0=D1.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-199/200.
 /// No unknown priority reads, cached inputs, scans, lottery, command authority or live RNG adoption.</remarks>
-public static class AttackThrowStoneAiOutOfReachScenario
+internal static class AttackThrowStoneAiOutOfReachScenario
 {
     public static AttackThrowStoneAiOutOfReachScenarioResult Evaluate(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         AssetId throwStoneAbilityId, BoundedSwordWeapon? weapon, SwordAiCandidateProfile attackProfile,

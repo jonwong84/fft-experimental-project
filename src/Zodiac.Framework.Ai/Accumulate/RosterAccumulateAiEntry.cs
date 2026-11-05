@@ -12,7 +12,7 @@ public sealed record RosterAccumulateAiCandidate(bool ActBeforeMove, AiScoringDi
 public enum RosterAccumulateAiEntryStage { Admission, Prefix, Usefulness, Candidate }
 public sealed record RosterAccumulateAiEntryFailure(RosterAccumulateAiEntryStage Stage,
     RosterAiGeneralFailure? Prefix = null, RosterAccumulateAiRejection Reason = RosterAccumulateAiRejection.None, int? CandidateIndex = null);
-public sealed record RosterAccumulateAiEntryOutcome(RosterAiGeneralScenarioOutcome Scenarios, BasicSkillAiPreparedOccurrence Entry,
+public sealed record RosterAccumulateAiEntryOutcome(RosterAiGeneralScenarioOutcome Scenarios, AiPreparedAbility Entry,
     AccumulateAiUsefulnessOutcome? Usefulness, ImmutableArray<RosterAccumulateAiCandidate> Candidates,
     int? BestCandidateIndex, AiRankOrder? BaselineComparison)
 {
@@ -24,7 +24,7 @@ public sealed record RosterAccumulateAiEntryResult(bool Accepted, RosterAccumula
 
 /// <summary>Isolated selected self occurrence after one owned fresh general prefix. No preceding/later entry stream, ranked list, lottery or command.</summary>
 /// <remarks>ZOD-290/293; source 11464943bbdbd2a0af022d90cb7f10455cf911df. Other allies' usefulness cannot certify a valuable self hit.</remarks>
-public static class RosterAccumulateAiEntry
+internal static class RosterAccumulateAiEntry
 {
     public static RosterAccumulateAiEntryResult Evaluate(AttackBattleSnapshot state, RosterAccumulateAiEntryRequest request,
         RosterAiSimulationProfile simulation, RosterAiRefreshProfile refresh, AiHumanAbilityLists lists,

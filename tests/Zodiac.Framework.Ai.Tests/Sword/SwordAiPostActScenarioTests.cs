@@ -45,7 +45,7 @@ public sealed class SwordAiPostActScenarioTests
             var rng = new RandomState(seed, 7); var result = Evaluate(state, outOfReach: true, rng: rng); var o = Success(result);
             Assert.Equal(new TilePosition(2, 1, 0), Assert.Single(o.MovementScenario.Scenario.MovementOrigins));
             var reach = Assert.IsType<SwordAiOutOfReachScenarioOutcome>(o.OutOfReach);
-            var adjustment = Assert.IsType<SwordAiReachAdjustment>(reach.ReachAdjustment);
+            var adjustment = Assert.IsType<AiReachAdjustment>(reach.ReachAdjustment);
             Assert.Equal(halved, adjustment.Halved); Assert.Equal(2, adjustment.Before); Assert.Equal(halved ? 1 : 2, reach.EffectiveReach);
             Assert.Equal(halved, reach.AttackUsedDistanceFallback);
             Assert.Equal(o.MovementScenario.Scenario.AttackDestination, o.MovementScenario.Scenario.BaselineDestination);

@@ -35,7 +35,7 @@ public sealed record SwordAiDispatchResult(bool Accepted, SwordAiDispatchRejecti
 
 /// <summary>Pure ordinary command-builder classification; no selection, path execution or live continuation authority.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-165/166. Adds no RNG/tick/revision work.</remarks>
-public static class SwordAiCommandDispatch
+internal static class SwordAiCommandDispatch
 {
     public static SwordAiDispatchResult InspectEntry(AttackBattleSnapshot state, SwordAiDispatchRequest request,
         FlatOrdinaryMovementProfile movementProfile, SwordAiCommandDispatchProfile dispatchProfile) =>

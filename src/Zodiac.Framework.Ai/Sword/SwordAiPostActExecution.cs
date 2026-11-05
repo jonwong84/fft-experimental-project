@@ -23,7 +23,7 @@ public sealed record SwordAiPostActExecutionResult(SwordAiPostActExecutionFailur
 
 /// <summary>Own one fresh post-ACT decision and actual path Move or END with settled facing.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-176/183/184. No cached plan, external RNG or Move-first token.</remarks>
-public static class SwordAiPostActExecution
+internal static class SwordAiPostActExecution
 {
     public static SwordAiPostActExecutionResult ExecuteInReach(FacingTurnState state, SwordAiRefreshRequest request,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiRefreshProfile refreshProfile,

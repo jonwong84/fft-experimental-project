@@ -33,7 +33,7 @@ public sealed record ThrowStoneAiBaselineComparisonResult(bool Accepted, ThrowSt
 /// Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-185/189.
 /// Isolated evaluation costs, not a full search RNG schedule. No cached input, scan, ranked insertion, lottery or authority.
 /// </remarks>
-public static class ThrowStoneAiBaselineComparison
+internal static class ThrowStoneAiBaselineComparison
 {
     public static ThrowStoneAiBaselineComparisonResult Evaluate(AttackBattleSnapshot state, TilePosition baselineDestination,
         ThrowStoneAiCandidate candidate, ThrowStoneAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,

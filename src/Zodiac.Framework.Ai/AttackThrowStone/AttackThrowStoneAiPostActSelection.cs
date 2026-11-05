@@ -14,7 +14,7 @@ public sealed record AttackThrowStoneAiPostActSelectionResult(bool Accepted, Att
 
 /// <summary>Own fresh pair post-ACT scenarios and the empty-ranking movement fallback, without an action scan or authority.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-209/213/214. No cached scenario/rank input or live RNG adoption.</remarks>
-public static class AttackThrowStoneAiPostActSelection
+internal static class AttackThrowStoneAiPostActSelection
 {
     public static AttackThrowStoneAiPostActSelectionResult EvaluateInReach(AttackBattleSnapshot state,
         AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration, RandomState decisionRng) =>

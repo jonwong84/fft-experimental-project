@@ -12,7 +12,7 @@ public sealed record BasicSkillAiWorkspaceSelectionResult(BasicSkillAiDerivedSel
 
 /// <summary>Privately derive provenance-safe ranks and run the existing terminal lottery exactly once.</summary>
 /// <remarks>ZOD-249/252. No cached inputs, public score assertions, command authority or live RNG adoption.</remarks>
-public static class BasicSkillAiDerivedSelection
+internal static class BasicSkillAiDerivedSelection
 {
     public static BasicSkillAiDerivedSelectionResult Evaluate(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,
         BasicSkillAiDerivedProfile profile, BasicSkillAiSelectionProfile selection, RandomState decisionRng)

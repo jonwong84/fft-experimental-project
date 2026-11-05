@@ -37,7 +37,7 @@ public sealed class SwordAiOutOfReachScenarioTests
         Assert.All(m.Movement, v => { Assert.Equal(21ul, v.Outcome.Ticks); Assert.Equal(0, v.Outcome.Score.Priority); });
         Assert.Equal(5, m.TargetDistance); Assert.Equal(4, m.TargetReach);
         if (team == SwordAiScenarioTeam.Blue) { Assert.Null(o.ReachAdjustment); Assert.Equal(4, o.EffectiveReach); }
-        else Assert.Equal(seed == 19 ? new SwordAiReachAdjustment(224, 0, 4, 2) : new(17515, 1, 4, 4), o.ReachAdjustment);
+        else Assert.Equal(seed == 19 ? new AiReachAdjustment(224, 0, 4, 2) : new(17515, 1, 4, 4), o.ReachAdjustment);
     }
 
     [Theory] [InlineData(1u)] [InlineData(19u)]
@@ -64,7 +64,7 @@ public sealed class SwordAiOutOfReachScenarioTests
     public void Reach_one_can_halve_to_zero_and_distance_first_complete_ties_keep_the_last_tile()
     {
         var o = Success(Evaluate(State(origin: new(3, 0, 0), move: 0), SwordAiScenarioTeam.NonBlue, new(6, 7)));
-        Assert.Equal(new SwordAiReachAdjustment(25515, 0, 1, 0), o.ReachAdjustment);
+        Assert.Equal(new AiReachAdjustment(25515, 0, 1, 0), o.ReachAdjustment);
         Assert.True(o.AttackUsedDistanceFallback); Assert.Equal(0, o.EffectiveReach);
         var tie = Success(Evaluate(State(width: 5, depth: 3, origin: new(4, 2, 0), target: new(0, 0, 0), move: 1), SwordAiScenarioTeam.Blue));
         Assert.Equal(new[] { new TilePosition(4, 1, 0), new(3, 2, 0) }, tie.MovementScenario.Scenario.MovementOrigins);

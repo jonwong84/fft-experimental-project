@@ -20,7 +20,7 @@ public sealed record BasicSkillAiPostActResult(bool Accepted, BasicSkillAiPostAc
 /// <summary>Fresh three-entry post-ACT preparation, derived movement scenarios and empty-ranking fallback.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-243–245/247/248. No cached inputs, action scan,
 /// usefulness coin, pre-ACT scenario derivation or live command authority.</remarks>
-public static class BasicSkillAiPostActSelection
+internal static class BasicSkillAiPostActSelection
 {
     /// <summary>Derive reach from one freshly prepared actual post-ACT state, then select exactly one movement branch.</summary>
     public static BasicSkillAiPostActResult Evaluate(AttackBattleSnapshot state, AccumulateAiPreparationRequest request,

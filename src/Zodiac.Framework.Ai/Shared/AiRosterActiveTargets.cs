@@ -11,7 +11,7 @@ public sealed record AiRosterActiveOutcome(ImmutableArray<BattleUnitId> Selected
 
 /// <summary>Rebuild every active flag from cached targetability/Considered and live Confusion/status facts.</summary>
 /// <remarks>ZOD-274; unknown signed filter values deliberately follow ANY, as in source.</remarks>
-public static class AiRosterActiveTargets
+internal static class AiRosterActiveTargets
 {
     public static AiRosterActiveOutcome Select(AiTargetRoster roster, AiRosterTargetFilter filter,
         BattleUnitId? specificTarget = null, bool excludeActor = false)

@@ -11,7 +11,7 @@ public sealed record ThrowStoneAiFormulaResult(bool Accepted, AttackCommandRejec
 
 /// <summary>Pure non-execution Throw Stone result; separate accuracy, midpoint damage and four real evasion draws.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-185/186. No knockback, live command or clock.</remarks>
-public static class ThrowStoneAiFormulaProjection
+internal static class ThrowStoneAiFormulaProjection
 {
     public static ThrowStoneAiFormulaResult Evaluate(AttackBattleSnapshot state, UseTargetedAbilityCommand command,
         TargetedAbilityBattleProfile profile, RandomState decisionRng)

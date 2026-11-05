@@ -22,7 +22,7 @@ public sealed record SwordAiFormulaResult(bool Accepted, AttackCommandRejection 
 /// Uses current combat stats and settled target facing. No execution, choice consumption, battle mutation,
 /// critical, proc, knockback, candidate upkeep/clock, scoring or whole-decision RNG claim.
 /// </remarks>
-public static class SwordAiFormulaProjection
+internal static class SwordAiFormulaProjection
 {
     public static SwordAiFormulaResult Evaluate(AttackBattleSnapshot state, AttackUnitCommand command,
         BoundedSwordWeapon? weapon, FlatSwordBattleProfile profile)

@@ -41,7 +41,7 @@ public sealed record SwordAiScanResult(SwordAiScanDisposition Disposition, Sword
 /// Source: fft_decomp 11464943bbdbd2a0af022d90cb7f10455cf911df, ZOD-130/131.
 /// Stops before ranked-list insertion. No scenario generation, policy, command authority or live RNG commitment.
 /// </remarks>
-public static class SwordAiCandidateScan
+internal static class SwordAiCandidateScan
 {
     public static SwordAiScanResult Evaluate(AttackBattleSnapshot state, SwordAiScanScenario scenario,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,

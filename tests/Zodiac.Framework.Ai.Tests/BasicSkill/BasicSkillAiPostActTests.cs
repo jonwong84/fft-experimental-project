@@ -185,7 +185,7 @@ public sealed class BasicSkillAiPostActTests
     public void Fresh_ACT_first_self_command_then_fresh_post_ACT_selection_preserves_both_real_checkpoints()
     {
         var ready = Ready(); var cast = BasicSkillAiCommandExecution.Execute(ready, SelfData.Request(), Scenario(), Profile(), new(true, true, true), Dispatch);
-        Assert.True(cast.Accepted); Assert.Equal(BasicSkillAiCommandKind.Accumulate, cast.Outcome!.Kind);
+        Assert.True(cast.Accepted); Assert.Equal(AiCommandKind.Accumulate, cast.Outcome!.Kind);
         Assert.Equal(new RandomState(3794901700, 26), cast.State.Battle.TurnBattle.Turns.RngState);
         var before = Snapshot(cast.State.Battle); var remaining = Execute(cast.State); var o = Success(remaining);
         Assert.Equal(new RandomState(995405759, 49), o.DecisionRng);

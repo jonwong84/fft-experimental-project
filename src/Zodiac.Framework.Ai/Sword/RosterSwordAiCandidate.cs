@@ -14,7 +14,7 @@ public sealed record RosterSwordAiCandidateResult(AiScoringDisposition Dispositi
 
 /// <summary>One supplied ordinary useful-enemy sword candidate and fresh all-unit score. No preparation, scan, rank, lottery or live command.</summary>
 /// <remarks>ZOD-294/295; source 11464943bbdbd2a0af022d90cb7f10455cf911df. Initially living roster; only selected target HP changes.</remarks>
-public static class RosterSwordAiCandidate
+internal static class RosterSwordAiCandidate
 {
     public static RosterSwordAiCandidateResult Evaluate(AttackBattleSnapshot state, SwordAiCandidate candidate,
         BoundedSwordWeapon? weapon, RosterAiSimulationProfile simulation, RosterSwordAiScoringProfile scoring, RandomState rng)
@@ -49,8 +49,6 @@ public static class RosterSwordAiCandidate
         BoundedSwordWeapon? weapon, RosterAiSimulationProfile simulation, RandomState rng)
     {
         RosterSwordAiCandidateResult Reject(RosterSwordAiCandidateRejection reason) => new(AiScoringDisposition.Rejected, reason, null, null, rng);
-        var turn = state.TurnBattle.Turns.Units.Single(u => u.Id == candidate.ActorId);
-        int team = simulation.Battle.Units[candidate.ActorId].StableTeam;
         var old = state.TurnBattle; var actor = old.Battle.Units.Single(u => u.Id == candidate.ActorId);
         var origin = candidate.Order == SwordAiCandidateOrder.MoveThenAct ? candidate.Destination : actor.Position;
         var bodies = old.Battle.Units.Select(u => u.Id == candidate.ActorId ? new BattleUnitState(u.Id, origin, u.MovementProfile, u.HasMoved) : u);
@@ -62,17 +60,14 @@ public static class RosterSwordAiCandidate
             AttackCommandRejection.RandomDrawCountExhausted => RosterSwordAiCandidateRejection.RandomDrawCountExhausted,
             _ => RosterSwordAiCandidateRejection.UnsupportedProfile });
         if (!formula.Outcome!.HasAccuracy) return new(AiScoringDisposition.NotValuable, RosterSwordAiCandidateRejection.None, null, null, formula.RngState);
-        bool moved = turn.MovementTaken || candidate.Destination != actor.Position;
-        int endCt = Math.Min(60, turn.Ct + (moved ? 0 : 20));
-        var units = AiCandidateState.CreateUnits(state, candidate.ActorId, candidate.TargetId, candidate.Destination,
-            formula.Outcome.TargetHp, endCt, moved, simulation.Units);
-        var clockReason = AiSimulationClock.Advance(units, old.Turns.Ticks, formula.RngState, out var clock);
+        var clockReason = AiDamageHypotheses.Complete(state, candidate.ActorId, candidate.TargetId, candidate.Destination,
+            formula.Outcome.TargetHp, (byte)formula.Outcome.HitPercent, simulation, formula.RngState, out var completed);
         if (clockReason != AiSimulationClockRejection.None) return Reject(clockReason == AiSimulationClockRejection.RandomDrawCountExhausted
             ? RosterSwordAiCandidateRejection.RandomDrawCountExhausted : RosterSwordAiCandidateRejection.TickCountExhausted);
-        var enemies = simulation.Battle.Members.Where(u => u.StableTeam != team).Select(u => u.UnitId).ToImmutableHashSet();
+        var clock = completed!.Clock;
         var outcome = new SwordAiCandidateOutcome(candidate.ActorId, candidate.TargetId, formula.Outcome.HitPercent, formula.Outcome.NormalDamage,
-            endCt, clock!.Units, clock.MoveOpportunityUnitId, clock.ElapsedTicks, clock.Ticks, clock.UpkeepPicks);
+            completed.TurnEndCt, clock.Units, clock.MoveOpportunityUnitId, clock.ElapsedTicks, clock.Ticks, clock.UpkeepPicks);
         return new(AiScoringDisposition.Scored, RosterSwordAiCandidateRejection.None, outcome,
-            AiCandidateScoring.ScoreFreshUnits(clock.Units, enemies, (byte)formula.Outcome.HitPercent), clock.RngState);
+            completed.Score, clock.RngState);
     }
 }

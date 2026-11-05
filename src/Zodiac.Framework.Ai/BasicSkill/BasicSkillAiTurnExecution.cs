@@ -16,8 +16,7 @@ public sealed record BasicSkillAiDerivedTurnConfiguration(BasicSkillAiDerivedPro
     internal BasicSkillAiPostActConfiguration AfterAct => new(BeforeAct.Preparation, PostActScenarios,
         BeforeAct.SourceGeneralEntry, BeforeAct.FreshEmptyRankedList, Selection.NoDefendSupport);
 }
-public enum BasicSkillAiTurnStage { FirstCommand, RetainedCommand, PostActCommand, FinishFacing, RecoveryBinding }
-public sealed record BasicSkillAiTurnFailure(BasicSkillAiTurnStage Stage,
+public sealed record BasicSkillAiTurnFailure(AiTurnStage Stage,
     BasicSkillAiCommandFailure? FirstFailure = null, BasicSkillAiPostActExecutionFailure? PostActFailure = null,
     FacingMoveContinueResult? ContinuationFailure = null, FacingTurnResult? FacingFailure = null);
 /// <summary>Successful fresh-command diagnostics only; these records grant no command authority.</summary>
@@ -39,11 +38,11 @@ public sealed record BasicSkillAiWorkspaceTurnResult(BasicSkillAiTurnResult Turn
 /// <summary>Opaque in-memory cursor bound to exact partial progress and frozen inputs; not a save or new Framework authority.</summary>
 public sealed class BasicSkillAiTurnRecovery
 {
-    public BasicSkillAiTurnStage NextStep { get; }
+    public AiTurnStage NextStep { get; }
     internal FacingTurnState ExpectedState { get; }
     internal BasicSkillAiTurnInputs Inputs { get; }
     internal FacingMoveContinuation? Continuation { get; }
-    internal BasicSkillAiTurnRecovery(FacingTurnState state, BasicSkillAiTurnStage stage,
+    internal BasicSkillAiTurnRecovery(FacingTurnState state, AiTurnStage stage,
         BasicSkillAiTurnInputs inputs, FacingMoveContinuation? continuation)
     { ExpectedState = state; NextStep = stage; Inputs = inputs; Continuation = continuation; }
 }
@@ -58,19 +57,19 @@ public sealed record BasicSkillAiTurnResult(FacingTurnState State, ImmutableArra
 /// <summary>Complete one supplied or derived scenario three-entry turn through existing command, continuation and facing owners.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-247/248/254. No whole-turn rollback,
 /// speculative retry, next-turn clock, terminal policy, cached-plan input or host activation.</remarks>
-public static class BasicSkillAiTurnExecution
+internal static class BasicSkillAiTurnExecution
 {
     public static BasicSkillAiWorkspaceTurnResult ExecuteWithWorkspace(FacingTurnState state, AccumulateAiPreparationRequest request,
         BasicSkillAiDerivedTurnConfiguration configuration, SwordAiCommandDispatchProfile dispatch, AiPriorityWorkspace workspace)
     {
         ArgumentNullException.ThrowIfNull(workspace);
-        var result = Run(state, DerivedInputs(state, request, configuration, dispatch, workspace), BasicSkillAiTurnStage.FirstCommand, null);
+        var result = Run(state, DerivedInputs(state, request, configuration, dispatch, workspace), AiTurnStage.FirstCommand, null);
         return new(result.Turn, result.Workspace!);
     }
 
     public static BasicSkillAiTurnResult ExecuteDerived(FacingTurnState state, AccumulateAiPreparationRequest request,
         BasicSkillAiDerivedTurnConfiguration configuration, SwordAiCommandDispatchProfile dispatch) =>
-        Run(state, DerivedInputs(state, request, configuration, dispatch, null), BasicSkillAiTurnStage.FirstCommand, null).Turn;
+        Run(state, DerivedInputs(state, request, configuration, dispatch, null), AiTurnStage.FirstCommand, null).Turn;
 
     private static BasicSkillAiTurnInputs DerivedInputs(FacingTurnState state, AccumulateAiPreparationRequest request,
         BasicSkillAiDerivedTurnConfiguration configuration, SwordAiCommandDispatchProfile dispatch, AiPriorityWorkspace? workspace)
@@ -96,14 +95,14 @@ public static class BasicSkillAiTurnExecution
         ArgumentNullException.ThrowIfNull(dispatch);
         return Run(state, new(request, configuration.AfterAct, dispatch,
             (current, history) => new(BasicSkillAiCommandExecution.Execute(current, request, scenario, configuration.BeforeAct, configuration.Selection, dispatch), history)),
-            BasicSkillAiTurnStage.FirstCommand, null).Turn;
+            AiTurnStage.FirstCommand, null).Turn;
     }
 
     public static BasicSkillAiTurnResult Resume(FacingTurnState state, BasicSkillAiTurnRecovery recovery)
     {
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(recovery);
         if (!ReferenceEquals(state, recovery.ExpectedState))
-            return new(state, [], [], new(BasicSkillAiTurnStage.RecoveryBinding), null);
+            return new(state, [], [], new(AiTurnStage.RecoveryBinding), null);
         return Run(state, recovery.Inputs, recovery.NextStep, recovery.Continuation).Turn;
     }
 
@@ -113,13 +112,13 @@ public static class BasicSkillAiTurnExecution
         if (recovery.Inputs.Workspace is not { } workspace)
             throw new ArgumentException("Recovery belongs to an entry without priority workspace state.", nameof(recovery));
         if (!ReferenceEquals(state, recovery.ExpectedState))
-            return new(new(state, [], [], new(BasicSkillAiTurnStage.RecoveryBinding), null), workspace);
+            return new(new(state, [], [], new(AiTurnStage.RecoveryBinding), null), workspace);
         var result = Run(state, recovery.Inputs, recovery.NextStep, recovery.Continuation);
         return new(result.Turn, result.Workspace!);
     }
 
     private static BasicSkillAiTurnRun Run(FacingTurnState state, BasicSkillAiTurnInputs inputs,
-        BasicSkillAiTurnStage stage, FacingMoveContinuation? continuation)
+        AiTurnStage stage, FacingMoveContinuation? continuation)
     {
         var request = inputs.Request;
         var workspace = inputs.Workspace;
@@ -132,25 +131,25 @@ public static class BasicSkillAiTurnExecution
         {
             switch (stage)
             {
-                case BasicSkillAiTurnStage.FirstCommand:
+                case AiTurnStage.FirstCommand:
                     var owned = inputs.First(state, workspace); var first = owned.Command;
                     if (!first.Accepted) return Failed(new(stage, FirstFailure: first.Failure));
                     workspace = owned.Workspace;
                     state = first.State; events.AddRange(first.Events); decisions.Add(new BasicSkillAiTurnDecision.BeforeAct(first.Outcome!));
                     continuation = first.Continuation;
                     break;
-                case BasicSkillAiTurnStage.RetainedCommand:
+                case AiTurnStage.RetainedCommand:
                     var retained = FacingMoveDecisionBattle.Continue(state, request.Turn.ActorId, continuation);
                     if (!retained.Accepted) return Failed(new(stage, ContinuationFailure: retained));
                     state = retained.State; events.AddRange(retained.Events); continuation = null;
                     break;
-                case BasicSkillAiTurnStage.PostActCommand:
+                case AiTurnStage.PostActCommand:
                     var post = BasicSkillAiPostActExecution.Execute(state, request, inputs.AfterAct, inputs.Dispatch);
                     if (!post.Accepted) return Failed(new(stage, PostActFailure: post.Failure));
                     workspace = workspace?.Write(post.Outcome!.Selection.MovementScenario.Movement);
                     state = post.State; events.AddRange(post.Events); decisions.Add(new BasicSkillAiTurnDecision.AfterAct(post.Outcome!));
                     break;
-                case BasicSkillAiTurnStage.FinishFacing:
+                case AiTurnStage.FinishFacing:
                     var facing = FacingTurnBattle.FinishFacing(state, request.Turn.ActorId, state.PendingFacing,
                         new FacingChoice.ChooseClosedEnemy(request.Turn.TargetId));
                     if (!facing.Accepted) return Failed(new(stage, FacingFailure: facing));

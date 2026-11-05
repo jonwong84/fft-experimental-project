@@ -15,7 +15,7 @@ public sealed class SwordAiRefreshTests
     private static readonly SwordAiCandidateProfile Candidate = new(new(Ground), new(Ground, A, B), [new(A, 255), new(B, 19)]);
     private static readonly AiScoreProfile Score = new([new(A, AiScoreFacts.ClosedProfile), new(B, AiScoreFacts.ClosedProfile)]);
     private static readonly SwordAiRefreshProfile Profile = new(true, true, true);
-    private static readonly ImmutableArray<SwordAiRefreshPolicy> Policies = [new(A, true, false), new(B, false, true)];
+    private static readonly ImmutableArray<AiUnitPolicy> Policies = [new(A, true, false), new(B, false, true)];
 
     public static IEnumerable<object[]> ClockVectors()
     {
@@ -127,7 +127,7 @@ public sealed class SwordAiRefreshTests
     [Fact]
     public void Missing_duplicate_unknown_and_null_policy_rows_reject_without_partial_flags()
     {
-        foreach (var policies in new ImmutableArray<SwordAiRefreshPolicy>[]
+        foreach (var policies in new ImmutableArray<AiUnitPolicy>[]
             { default, [], [Policies[0]], [Policies[0], Policies[0]],
                 [Policies[0], new(new("sample:unit/unknown"), false, false)], [Policies[0], null!] })
             Atomic(Evaluate(State(), policies: policies), SwordAiRefreshRejection.InvalidPolicies);
@@ -152,7 +152,7 @@ public sealed class SwordAiRefreshTests
     }
 
     private static SwordAiRefreshResult Evaluate(AttackBattleSnapshot state, bool second = false,
-        RandomState? rng = null, SwordAiRefreshProfile? profile = null, ImmutableArray<SwordAiRefreshPolicy>? policies = null) =>
+        RandomState? rng = null, SwordAiRefreshProfile? profile = null, ImmutableArray<AiUnitPolicy>? policies = null) =>
         SwordAiRefresh.Evaluate(state, new(second ? B : A, second ? A : B, policies ?? Policies), Candidate, Score, profile ?? Profile, rng ?? Decision);
     private static SwordAiRefreshOutcome Success(SwordAiRefreshResult result)
     {

@@ -29,11 +29,11 @@ public sealed class RosterAiBattleReplayTests
             Assert.Equal(actor, state.Battle.TurnBattle.Turns.ActiveUnitId);
             var request = s.Setup.Request with { ActorId = actor };
             var before = Snapshot(state.Battle);
-            var result = RosterBasicSkillAiTurnExecution.Execute(state, request, s.Configuration, workspace);
+            var result = AiTurnController.Execute(state, request, s.Configuration, workspace);
             Assert.True(result.Completed, result.Failure?.ToString()); Assert.Null(result.Recovery); Assert.Null(result.State.PendingFacing);
             Assert.Equal(before, Snapshot(state.Battle));
             Check(step.GetProperty("turn"), result.State, result.Workspace);
-            var replay = RosterBasicSkillAiTurnExecution.Execute(other, request, alternate.Configuration, otherWorkspace);
+            var replay = AiTurnController.Execute(other, request, alternate.Configuration, otherWorkspace);
             Assert.True(replay.Completed); Assert.Equal(Snapshot(result.State.Battle), Snapshot(replay.State.Battle));
             Assert.Equal(JsonSerializer.Serialize(result.Events), JsonSerializer.Serialize(replay.Events));
             Assert.Equal(result.Decisions.Select(d => (d.Kind, d.AfterAct, d.DecisionRng)), replay.Decisions.Select(d => (d.Kind, d.AfterAct, d.DecisionRng)));

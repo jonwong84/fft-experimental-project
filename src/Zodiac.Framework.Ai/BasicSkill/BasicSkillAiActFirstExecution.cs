@@ -20,7 +20,7 @@ public sealed record BasicSkillAiActFirstResult(BasicSkillAiActFirstFailure? Fai
 /// <summary>Own fresh supplied-scenario three-entry selection and execute one actual ACT-first command.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-237/239. No cached selection input,
 /// derived scenarios, Move-first tokens, post-ACT selection, automatic END or host activation.</remarks>
-public static class BasicSkillAiActFirstExecution
+internal static class BasicSkillAiActFirstExecution
 {
     public static BasicSkillAiActFirstResult Execute(FacingTurnState state, AccumulateAiPreparationRequest request,
         ThrowStoneAiScanScenario scenario, BasicSkillAiProfile profile, BasicSkillAiSelectionProfile selection,
@@ -29,10 +29,10 @@ public static class BasicSkillAiActFirstExecution
         var result = BasicSkillAiCommandPipeline.Execute(state, request, scenario, profile, selection, dispatch,
             BasicSkillAiDispatchMode.ActFirst, (decision, rng, _) => new BasicSkillAiActFirstOutcome(decision, rng));
         var failure = result.Failure is { } f ? new BasicSkillAiActFirstFailure(f.Reason switch {
-            BasicSkillAiCommandRejection.UnavailableChoices => BasicSkillAiActFirstRejection.UnavailableChoices,
-            BasicSkillAiCommandRejection.UnsupportedDispatchContext => BasicSkillAiActFirstRejection.UnsupportedDispatchContext,
-            BasicSkillAiCommandRejection.SelectionRejected => BasicSkillAiActFirstRejection.SelectionRejected,
-            BasicSkillAiCommandRejection.DispatchMismatch => BasicSkillAiActFirstRejection.ActFirstRequired,
+            AiCommandRejection.UnavailableChoices => BasicSkillAiActFirstRejection.UnavailableChoices,
+            AiCommandRejection.UnsupportedDispatchContext => BasicSkillAiActFirstRejection.UnsupportedDispatchContext,
+            AiCommandRejection.SelectionRejected => BasicSkillAiActFirstRejection.SelectionRejected,
+            AiCommandRejection.DispatchMismatch => BasicSkillAiActFirstRejection.ActFirstRequired,
             _ => BasicSkillAiActFirstRejection.BoundaryRejected
         }, f.Selection, f.Boundary) : null;
         return new(failure, result.Execution);

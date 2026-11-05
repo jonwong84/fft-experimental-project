@@ -53,7 +53,7 @@ public sealed record AttackThrowStoneAiCompositionResult(bool Accepted, AttackTh
 /// <summary>Fresh movement prefix followed by exactly two certified entries and retained source ranks.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-192/193.
 /// No generic list, cached-result input, lottery, command authority or live RNG adoption.</remarks>
-public static class AttackThrowStoneAiComposition
+internal static class AttackThrowStoneAiComposition
 {
     public static AttackThrowStoneAiCompositionResult Evaluate(AttackBattleSnapshot state, ThrowStoneAiScanRequest request,
         ThrowStoneAiScanScenario scenario, BoundedSwordWeapon? weapon, AttackThrowStoneAiProfile profile, RandomState decisionRng)

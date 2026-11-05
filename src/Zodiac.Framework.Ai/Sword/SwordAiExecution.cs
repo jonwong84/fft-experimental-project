@@ -37,7 +37,7 @@ public sealed record SwordAiExecutionResult(bool Accepted, SwordAiExecutionFailu
 
 /// <summary>One fresh in-reach decision and actual Attack or Wait after Move is already used.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df, ZOD-154/155/163. No cached-plan executor or host activation.</remarks>
-public static class SwordAiExecution
+internal static class SwordAiExecution
 {
     public static SwordAiExecutionResult ExecuteAlreadyMoved(FacingTurnState state, BoundedSwordWeapon? weapon,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,

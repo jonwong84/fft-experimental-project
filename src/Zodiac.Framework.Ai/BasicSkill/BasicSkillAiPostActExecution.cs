@@ -21,7 +21,7 @@ public sealed record BasicSkillAiPostActExecutionResult(BasicSkillAiPostActExecu
 /// <summary>Fresh post-ACT selection with derived or explicit reach, actual remaining Move/END and facing settlement.</summary>
 /// <remarks>ZOD-243/246/247/248. Uses actual boosted state, Framework authority and per-command rollback; no additional ACT,
 /// frozen Move-first token, clock advance or public cached decision input.</remarks>
-public static class BasicSkillAiPostActExecution
+internal static class BasicSkillAiPostActExecution
 {
     public static BasicSkillAiPostActExecutionResult Execute(FacingTurnState state, AccumulateAiPreparationRequest request,
         BasicSkillAiPostActConfiguration configuration, SwordAiCommandDispatchProfile dispatch) => ExecuteCore(state, request, configuration, dispatch, null);

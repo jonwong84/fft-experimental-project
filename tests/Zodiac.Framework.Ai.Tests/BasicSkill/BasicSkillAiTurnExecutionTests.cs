@@ -70,14 +70,14 @@ public sealed class BasicSkillAiTurnExecutionTests
     public void Complete_self_Attack_Stone_and_empty_turns_preserve_literal_streams_choices_and_event_order()
     {
         var examples = new[] {
-            new { Name="Self ACT-first", State=Ready(), Scenario=Scenario(), Kind=BasicSkillAiCommandKind.Accumulate, Rng=new RandomState(995405759,49), Ct=15, Pa=6, Hp=50, Decisions=2 },
-            new { Name="Attack ACT-first", State=Ready(evade:0), Scenario=Scenario(), Kind=BasicSkillAiCommandKind.Attack, Rng=new RandomState(2058258651,53), Ct=15, Pa=5, Hp=40, Decisions=2 },
-            new { Name="Stone ACT-first", State=Ready(evade:0,target:new(4,1,0)), Scenario=OriginScenario, Kind=BasicSkillAiCommandKind.ThrowStone, Rng=new RandomState(995405759,49), Ct=15, Pa=5, Hp=45, Decisions=2 },
-            new { Name="Stone Move-first", State=Ready(evade:0,target:new(4,1,0)), Scenario=Scenario(), Kind=BasicSkillAiCommandKind.Move, Rng=new RandomState(3791773014,24), Ct=15, Pa=5, Hp=40, Decisions=1 },
-            new { Name="Attack Move-first", State=Ready(evade:0,target:new(3,1,0)), Scenario=AttackScenario, Kind=BasicSkillAiCommandKind.Move, Rng=new RandomState(1343201072,30), Ct=15, Pa=5, Hp=40, Decisions=1 },
-            new { Name="Empty Move-first", State=Ready(target:new(7,7,0)), Scenario=EmptyMoveScenario, Kind=BasicSkillAiCommandKind.Move, Rng=new RandomState(836760821,19), Ct=35, Pa=5, Hp=50, Decisions=1 },
-            new { Name="Same-tile END", State=Ready(target:new(7,7,0)), Scenario=Scenario(), Kind=BasicSkillAiCommandKind.End, Rng=new RandomState(836760821,19), Ct=55, Pa=5, Hp=50, Decisions=1 },
-            new { Name="At-cap self END", State=Ready(move:0,pa:99,word:5), Scenario=new ThrowStoneAiScanScenario([Origin],[],Origin,Origin), Kind=BasicSkillAiCommandKind.Accumulate, Rng=new RandomState(736722860,22), Ct=35, Pa=99, Hp=50, Decisions=2 }
+            new { Name="Self ACT-first", State=Ready(), Scenario=Scenario(), Kind=AiCommandKind.Accumulate, Rng=new RandomState(995405759,49), Ct=15, Pa=6, Hp=50, Decisions=2 },
+            new { Name="Attack ACT-first", State=Ready(evade:0), Scenario=Scenario(), Kind=AiCommandKind.Attack, Rng=new RandomState(2058258651,53), Ct=15, Pa=5, Hp=40, Decisions=2 },
+            new { Name="Stone ACT-first", State=Ready(evade:0,target:new(4,1,0)), Scenario=OriginScenario, Kind=AiCommandKind.ThrowStone, Rng=new RandomState(995405759,49), Ct=15, Pa=5, Hp=45, Decisions=2 },
+            new { Name="Stone Move-first", State=Ready(evade:0,target:new(4,1,0)), Scenario=Scenario(), Kind=AiCommandKind.Move, Rng=new RandomState(3791773014,24), Ct=15, Pa=5, Hp=40, Decisions=1 },
+            new { Name="Attack Move-first", State=Ready(evade:0,target:new(3,1,0)), Scenario=AttackScenario, Kind=AiCommandKind.Move, Rng=new RandomState(1343201072,30), Ct=15, Pa=5, Hp=40, Decisions=1 },
+            new { Name="Empty Move-first", State=Ready(target:new(7,7,0)), Scenario=EmptyMoveScenario, Kind=AiCommandKind.Move, Rng=new RandomState(836760821,19), Ct=35, Pa=5, Hp=50, Decisions=1 },
+            new { Name="Same-tile END", State=Ready(target:new(7,7,0)), Scenario=Scenario(), Kind=AiCommandKind.End, Rng=new RandomState(836760821,19), Ct=55, Pa=5, Hp=50, Decisions=1 },
+            new { Name="At-cap self END", State=Ready(move:0,pa:99,word:5), Scenario=new ThrowStoneAiScanScenario([Origin],[],Origin,Origin), Kind=AiCommandKind.Accumulate, Rng=new RandomState(736722860,22), Ct=35, Pa=99, Hp=50, Decisions=2 }
         };
         foreach (var e in examples)
         {
@@ -144,7 +144,7 @@ public sealed class BasicSkillAiTurnExecutionTests
     {
         var state = Ready(count: ulong.MaxValue - 1); var result = Run(state);
         Assert.False(result.Completed); Assert.Same(state, result.State); Assert.Empty(result.Events); Assert.Empty(result.Decisions);
-        Assert.Equal(BasicSkillAiTurnStage.FirstCommand, result.Failure!.Stage); Assert.NotNull(result.Failure.FirstFailure);
+        Assert.Equal(AiTurnStage.FirstCommand, result.Failure!.Stage); Assert.NotNull(result.Failure.FirstFailure);
         var retry = BasicSkillAiTurnExecution.Resume(state, result.Recovery!);
         Assert.False(retry.Completed); Assert.Same(state, retry.State); Assert.Empty(retry.Events); Assert.Empty(retry.Decisions);
         Assert.Equal(result.Failure.Stage, retry.Failure!.Stage);
@@ -158,7 +158,7 @@ public sealed class BasicSkillAiTurnExecutionTests
             var input = self ? Ready(count: ulong.MaxValue - 41) : Ready(evade: 0, target: new(4, 1, 0), count: ulong.MaxValue - 16);
             var result = Run(input); Assert.False(result.Completed); Assert.NotSame(input, result.State);
             Assert.Single(result.Decisions); Assert.NotEmpty(result.Events);
-            Assert.Equal(self ? BasicSkillAiTurnStage.PostActCommand : BasicSkillAiTurnStage.RetainedCommand, result.Failure!.Stage);
+            Assert.Equal(self ? AiTurnStage.PostActCommand : AiTurnStage.RetainedCommand, result.Failure!.Stage);
             Assert.Equal(self ? 6 : 5, result.State.Battle.Combatants.Single(u => u.UnitId == A).PhysicalAttack);
             Assert.Equal(50, result.State.Battle.Combatants.Single(u => u.UnitId == B).Hp);
             var actor = result.State.Battle.TurnBattle.Turns.Units.Single(u => u.Id == A);
@@ -169,7 +169,7 @@ public sealed class BasicSkillAiTurnExecutionTests
             Assert.Equal(result.Failure.Stage, retry.Recovery!.NextStep);
             var replay = Run(input); Assert.False(replay.Completed); Assert.Equal(before, Snapshot(replay.State.Battle));
             var foreign = BasicSkillAiTurnExecution.Resume(replay.State, result.Recovery!);
-            Assert.Equal(BasicSkillAiTurnStage.RecoveryBinding, foreign.Failure!.Stage); Assert.Same(replay.State, foreign.State);
+            Assert.Equal(AiTurnStage.RecoveryBinding, foreign.Failure!.Stage); Assert.Same(replay.State, foreign.State);
             Assert.Empty(foreign.Events); Assert.Empty(foreign.Decisions); Assert.Null(foreign.Recovery);
         }
     }
@@ -182,7 +182,7 @@ public sealed class BasicSkillAiTurnExecutionTests
             var ready = self ? Ready() : Ready(evade: 0, target: new(4, 1, 0));
             var input = new FacingTurnState(ready.Battle, ready.Profile, ulong.MaxValue - 2, null, ready.Lineage);
             var result = Run(input); Assert.False(result.Completed);
-            Assert.Equal(self ? BasicSkillAiTurnStage.PostActCommand : BasicSkillAiTurnStage.FinishFacing, result.Failure!.Stage);
+            Assert.Equal(self ? AiTurnStage.PostActCommand : AiTurnStage.FinishFacing, result.Failure!.Stage);
             if (self)
             {
                 Assert.Null(result.State.PendingFacing); Assert.Equal(6, result.State.Battle.Combatants.Single(u => u.UnitId == A).PhysicalAttack);
@@ -209,7 +209,7 @@ public sealed class BasicSkillAiTurnExecutionTests
             var result = Run(state, moveFirst ? AttackScenario : Scenario(), request: SelfData.Request() with { Weapon = new(SelfData.SwordId, 10) });
             Assert.False(result.Completed); Assert.Equal(0, result.State.Battle.Combatants.Single(u => u.UnitId == B).Hp);
             Assert.Single(result.Events.OfType<AttackResolvedEvent>()); Assert.Empty(result.Events.OfType<FacingSettledEvent>());
-            Assert.Equal(moveFirst ? BasicSkillAiTurnStage.FinishFacing : BasicSkillAiTurnStage.PostActCommand, result.Failure!.Stage);
+            Assert.Equal(moveFirst ? AiTurnStage.FinishFacing : AiTurnStage.PostActCommand, result.Failure!.Stage);
             if (moveFirst) { Assert.NotNull(result.State.PendingFacing); Assert.Equal(FacingTurnRejection.NoLivingEnemy, result.Failure.FacingFailure!.FacingRejection); }
             else Assert.Equal(AccumulateAiCandidateRejection.TerminalInput, result.Failure.PostActFailure!.Selection!.Preparation!.AccumulateReason);
             var retry = BasicSkillAiTurnExecution.Resume(result.State, result.Recovery!);

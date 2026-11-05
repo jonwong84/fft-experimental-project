@@ -25,7 +25,7 @@ public sealed record AttackThrowStoneAiCommandResult(AttackThrowStoneAiCommandFa
 /// <summary>Own one fresh pair decision and dispatch one actual command, deriving reach and order privately.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-221/223.
 /// Fresh-entry assertions remain required. No cached plan, speculative retry, whole-turn transaction or host activation.</remarks>
-public static class AttackThrowStoneAiCommandExecution
+internal static class AttackThrowStoneAiCommandExecution
 {
     public static AttackThrowStoneAiCommandResult Execute(FacingTurnState state, AttackThrowStoneAiSelectionRequest request,
         AttackThrowStoneAiSelectionConfiguration configuration, SwordAiCommandDispatchProfile dispatchProfile)

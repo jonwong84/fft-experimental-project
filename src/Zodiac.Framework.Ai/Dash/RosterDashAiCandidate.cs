@@ -16,7 +16,7 @@ public sealed record RosterDashAiCandidateResult(AiScoringDisposition Dispositio
 
 /// <summary>One isolated neutral Dash hypothesis: hit100, midpoint3*PA, no formula draws or push, then shared all-unit clock/scoring.</summary>
 /// <remarks>ZOD-322; source 11464943bbdbd2a0af022d90cb7f10455cf911df. Never publishes a command or projected battle.</remarks>
-public static class RosterDashAiCandidate
+internal static class RosterDashAiCandidate
 {
     public static RosterDashAiCandidateResult Evaluate(AttackBattleSnapshot state, DashAiCandidate candidate,
         RosterAiSimulationProfile simulation, DashAbilityBattleProfile ability, RosterDashAiCandidateProfile profile, RandomState rng)
@@ -61,20 +61,14 @@ public static class RosterDashAiCandidate
     {
         var actor = state.Combatants.Single(u => u.UnitId == candidate.ActorId);
         var target = state.Combatants.Single(u => u.UnitId == candidate.TargetId);
-        var turn = state.TurnBattle.Turns.Units.Single(u => u.Id == candidate.ActorId);
-        var start = state.TurnBattle.Battle.Units.Single(u => u.Id == candidate.ActorId).Position;
-        bool moved = turn.MovementTaken || candidate.Destination != start;
-        int end = Math.Min(60, turn.Ct + (moved ? 0 : 20)), damage = DashFormula.Damage(actor.PhysicalAttack, 16384);
-        var units = AiCandidateState.CreateUnits(state, candidate.ActorId, candidate.TargetId, candidate.Destination,
-            Math.Max(0, target.Hp - damage), end, moved, simulation.Units);
-        var reason = AiSimulationClock.Advance(units, state.TurnBattle.Turns.Ticks, rng, out var clock);
+        int damage = DashFormula.Damage(actor.PhysicalAttack, 16384);
+        var reason = AiDamageHypotheses.Complete(state, candidate.ActorId, candidate.TargetId, candidate.Destination,
+            Math.Max(0, target.Hp - damage), 100, simulation, rng, out var completed);
         if (reason != AiSimulationClockRejection.None) return new(AiScoringDisposition.Rejected,
             reason == AiSimulationClockRejection.RandomDrawCountExhausted ? RosterDashAiCandidateRejection.RandomDrawCountExhausted : RosterDashAiCandidateRejection.TickCountExhausted, null, null, rng);
-        int team = simulation.Battle.Units[candidate.ActorId].StableTeam;
-        var enemies = simulation.Battle.Members.Where(u => u.StableTeam != team).Select(u => u.UnitId).ToImmutableHashSet();
-        var c = clock!;
+        var c = completed!.Clock;
         return new(AiScoringDisposition.Scored, RosterDashAiCandidateRejection.None,
-            new(candidate.ActorId, candidate.AbilityId, candidate.TargetId, 100, damage, end, c.Units, c.MoveOpportunityUnitId, c.ElapsedTicks, c.Ticks, c.UpkeepPicks),
-            AiCandidateScoring.ScoreFreshUnits(c.Units, enemies, 100), c.RngState);
+            new(candidate.ActorId, candidate.AbilityId, candidate.TargetId, 100, damage, completed.TurnEndCt, c.Units, c.MoveOpportunityUnitId, c.ElapsedTicks, c.Ticks, c.UpkeepPicks),
+            completed.Score, c.RngState);
     }
 }

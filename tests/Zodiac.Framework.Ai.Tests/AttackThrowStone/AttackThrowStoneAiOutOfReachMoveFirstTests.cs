@@ -51,7 +51,7 @@ public sealed class AttackThrowStoneAiOutOfReachMoveFirstTests
     public void Post_score_halving_and_no_cast_or_zero_accuracy_fallbacks_retain_exact_decision_draws()
     {
         var half = Start(Ready(move: 1, target: Target, entryWord: 20)); var h = Success(half);
-        Assert.Equal(new SwordAiReachAdjustment(12502, 0, 2, 1), h.Decision.MovementScenario.ReachAdjustment);
+        Assert.Equal(new AiReachAdjustment(12502, 0, 2, 1), h.Decision.MovementScenario.ReachAdjustment);
         Assert.True(h.Decision.MovementScenario.DestinationUsedDistanceFallback); Assert.Equal(Right, h.Move.Destination);
         Assert.Equal(new RandomState(143664818, 9), Assert.Single(h.Decision.MovementScenario.Movement).RngState);
         Assert.Equal(new RandomState(4007910005, 16), h.DecisionRng);

@@ -1,5 +1,10 @@
 # Original FFT AI algorithm guide
 
+Current managed ownership: [ZOD-331](../development/ai-refactor-331.md) uses
+`AiDecisionMaker`, `AiCommandExecutor` and `AiTurnController` with shared immutable
+configuration. Older names below identify the historical source-traced slices;
+lower-level pilot APIs are now internal. Original rules and evidence remain unchanged.
+
 ZOD-212, recorded 2026-10-29 from clean read-only fft_decomp
 `11464943bbdbd2a0af022d90cb7f10455cf911df`; managed study base `04cd4d9`.
 This is the central structural map of the algorithm available in that checkout.

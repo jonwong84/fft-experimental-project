@@ -20,7 +20,7 @@ public sealed record AttackThrowStoneAiFallbackResult(AttackThrowStoneAiFallback
 /// <summary>Own fresh both-unused selection and execute only its same-tile, empty-action END.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-216/218.
 /// This is fresh fallback dispatch, not the earlier saved-choice/no-progress guard.</remarks>
-public static class AttackThrowStoneAiFallbackExecution
+internal static class AttackThrowStoneAiFallbackExecution
 {
     public static AttackThrowStoneAiFallbackResult ExecuteInReach(FacingTurnState state,
         AttackThrowStoneAiSelectionRequest request, AttackThrowStoneAiSelectionConfiguration configuration,

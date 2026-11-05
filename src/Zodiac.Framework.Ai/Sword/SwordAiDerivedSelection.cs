@@ -27,7 +27,7 @@ public sealed record SwordAiOutOfReachSelectionResult(bool Accepted, SwordAiDeri
 /// Reference 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-144/145/148/149. No supplied masks/destinations,
 /// cached-result inputs, live commands/RNG, resolved facing or native activation.
 /// </remarks>
-public static class SwordAiDerivedSelection
+internal static class SwordAiDerivedSelection
 {
     public static SwordAiDerivedSelectionResult Evaluate(AttackBattleSnapshot state, BoundedSwordWeapon? weapon,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,

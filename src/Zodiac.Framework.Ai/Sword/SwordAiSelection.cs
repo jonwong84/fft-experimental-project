@@ -43,7 +43,7 @@ internal sealed record SwordAiRankedLotteryResult(bool Accepted, SwordAiSelectio
 /// Requires terminal Attack, no Defend support and fresh ordinary defaults. No cached-result input,
 /// general ability search, command/facing execution, live RNG commitment or native activation.
 /// </remarks>
-public static class SwordAiSelection
+internal static class SwordAiSelection
 {
     public static SwordAiSelectionResult Evaluate(AttackBattleSnapshot state, SwordAiCompositionScenario scenario,
         BoundedSwordWeapon? weapon, SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,

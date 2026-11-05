@@ -43,7 +43,7 @@ public sealed record ThrowStoneAiCandidateResult(ThrowStoneAiCandidateDispositio
 
 /// <summary>One fresh supplied Throw Stone candidate followed by the shared hypothetical clock; no scoring or authority.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-185/187. Baseline geometry is checked before any projected KO.</remarks>
-public static class ThrowStoneAiCandidateProjection
+internal static class ThrowStoneAiCandidateProjection
 {
     public static ThrowStoneAiCandidateResult Evaluate(AttackBattleSnapshot state, ThrowStoneAiCandidate candidate,
         ThrowStoneAiCandidateProfile profile, RandomState decisionRng)

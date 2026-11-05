@@ -17,7 +17,7 @@ public sealed record SwordAiPostActSelectionResult(bool Accepted, SwordAiPostAct
 
 /// <summary>Fresh post-ACT scenarios and empty-ranking fallback; no Attack scan or command authority.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-176/182. No supplied ranked list or cached result.</remarks>
-public static class SwordAiPostActSelection
+internal static class SwordAiPostActSelection
 {
     public static SwordAiPostActSelectionResult EvaluateInReach(AttackBattleSnapshot state, SwordAiRefreshRequest request,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile,

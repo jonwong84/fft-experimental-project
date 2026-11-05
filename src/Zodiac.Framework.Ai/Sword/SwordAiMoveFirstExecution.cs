@@ -32,7 +32,7 @@ public sealed record SwordAiMoveFirstResult(SwordAiMoveFirstFailure? Failure, Fa
 /// Post-prefix entries retain their general-entry certificate. Prepared entries own fresh unmoved preparation instead.
 /// No cached-plan input, ACT-first execution, automatic branch dispatch or host activation.
 /// </remarks>
-public static class SwordAiMoveFirstExecution
+internal static class SwordAiMoveFirstExecution
 {
     public static SwordAiMoveFirstResult StartInReach(FacingTurnState state, BoundedSwordWeapon? weapon,
         SwordAiCandidateProfile candidateProfile, AiScoreProfile scoreProfile, SwordAiComparisonProfile comparisonProfile,

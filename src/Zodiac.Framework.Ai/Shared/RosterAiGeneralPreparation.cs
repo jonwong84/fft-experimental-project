@@ -17,7 +17,7 @@ public sealed record RosterAiGeneralPreparationResult(bool Accepted, RosterAiGen
 
 /// <summary>One fresh automatic manual/general prefix; derive policy admission and focus, never accept a cached preparation.</summary>
 /// <remarks>ZOD-287/288; decomp 11464943bbdbd2a0af022d90cb7f10455cf911df. No action search or live publication.</remarks>
-public static class RosterAiGeneralPreparation
+internal static class RosterAiGeneralPreparation
 {
     public static RosterAiGeneralPreparationResult Evaluate(AttackBattleSnapshot state, RosterAiRefreshRequest request,
         RosterAiSimulationProfile simulation, RosterAiRefreshProfile refresh, AiHumanAbilityLists lists,

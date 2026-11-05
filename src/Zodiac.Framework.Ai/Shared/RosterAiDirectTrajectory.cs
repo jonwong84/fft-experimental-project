@@ -33,7 +33,7 @@ public sealed record RosterAiDirectTrajectoryResult(bool Accepted, RosterAiDirec
 
 /// <summary>Pure range1..4 direct projectile sampling against every initial living occupant on the existing flat ground domain.</summary>
 /// <remarks>ZOD-299/300; source 11464943bbdbd2a0af022d90cb7f10455cf911df. No RNG, effects, execution authority or general terrain/corpse model.</remarks>
-public static class RosterAiDirectTrajectory
+internal static class RosterAiDirectTrajectory
 {
     public static RosterAiDirectTrajectoryResult Evaluate(AttackBattleSnapshot state, RosterAiDirectTrajectoryRequest request,
         RosterAiSimulationProfile simulation, RosterAiProjectileHeights heights)

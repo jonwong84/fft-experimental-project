@@ -15,7 +15,7 @@ public sealed record RosterThrowStoneAiCandidateResult(AiScoringDisposition Disp
 
 /// <summary>One supplied certified-clear roster Stone candidate with fresh whole-roster clock and score. No preparation, search or authority.</summary>
 /// <remarks>ZOD-297/298; source 11464943bbdbd2a0af022d90cb7f10455cf911df. Pair command admission remains unchanged.</remarks>
-public static class RosterThrowStoneAiCandidate
+internal static class RosterThrowStoneAiCandidate
 {
     public static RosterThrowStoneAiCandidateResult Evaluate(AttackBattleSnapshot state, ThrowStoneAiCandidate candidate,
         TargetedAbilityBattleProfile ability, RosterAiSimulationProfile simulation, RosterThrowStoneAiCandidateProfile profile, RandomState rng)
@@ -67,8 +67,6 @@ public static class RosterThrowStoneAiCandidate
         RosterAiSimulationProfile simulation, RandomState rng)
     {
         RosterThrowStoneAiCandidateResult Reject(RosterThrowStoneAiCandidateRejection reason) => new(AiScoringDisposition.Rejected, reason, null, null, rng);
-        var turn = state.TurnBattle.Turns.Units.Single(u => u.Id == candidate.ActorId);
-        int team = simulation.Battle.Units[candidate.ActorId].StableTeam;
         var old = state.TurnBattle; var actor = old.Battle.Units.Single(u => u.Id == candidate.ActorId);
         var origin = candidate.ActBeforeMove ? actor.Position : candidate.Destination;
         var bodies = old.Battle.Units.Select(u => u.Id == candidate.ActorId ? new BattleUnitState(u.Id, origin, u.MovementProfile, u.HasMoved) : u);
@@ -77,18 +75,15 @@ public static class RosterThrowStoneAiCandidate
         var formula = ThrowStoneAiFormulaProjection.EvaluateAdmitted(staged, new(candidate.ActorId, candidate.AbilityId, candidate.TargetId), rng);
         if (!formula.Accepted) return Reject(RosterThrowStoneAiCandidateRejection.RandomDrawCountExhausted);
         if (!formula.Outcome!.HasAccuracy) return new(AiScoringDisposition.NotValuable, RosterThrowStoneAiCandidateRejection.None, null, null, formula.RngState);
-        bool moved = turn.MovementTaken || candidate.Destination != actor.Position;
-        int endCt = Math.Min(60, turn.Ct + (moved ? 0 : 20));
-        var units = AiCandidateState.CreateUnits(state, candidate.ActorId, candidate.TargetId, candidate.Destination,
-            formula.Outcome.TargetHp, endCt, moved, simulation.Units);
-        var reason = AiSimulationClock.Advance(units, old.Turns.Ticks, formula.RngState, out var clock);
+        var reason = AiDamageHypotheses.Complete(state, candidate.ActorId, candidate.TargetId, candidate.Destination,
+            formula.Outcome.TargetHp, (byte)formula.Outcome.HitPercent, simulation, formula.RngState, out var completed);
         if (reason != AiSimulationClockRejection.None) return Reject(reason == AiSimulationClockRejection.RandomDrawCountExhausted
             ? RosterThrowStoneAiCandidateRejection.RandomDrawCountExhausted : RosterThrowStoneAiCandidateRejection.TickCountExhausted);
-        var enemies = simulation.Battle.Members.Where(u => u.StableTeam != team).Select(u => u.UnitId).ToImmutableHashSet();
+        var clock = completed!.Clock;
         var outcome = new ThrowStoneAiCandidateOutcome(candidate.ActorId, candidate.AbilityId, candidate.TargetId,
-            formula.Outcome.HitPercent, formula.Outcome.NormalDamage, endCt, clock!.Units, clock.MoveOpportunityUnitId,
+            formula.Outcome.HitPercent, formula.Outcome.NormalDamage, completed.TurnEndCt, clock.Units, clock.MoveOpportunityUnitId,
             clock.ElapsedTicks, clock.Ticks, clock.UpkeepPicks);
         return new(AiScoringDisposition.Scored, RosterThrowStoneAiCandidateRejection.None, outcome,
-            AiCandidateScoring.ScoreFreshUnits(clock.Units, enemies, (byte)formula.Outcome.HitPercent), clock.RngState);
+            completed.Score, clock.RngState);
     }
 }
