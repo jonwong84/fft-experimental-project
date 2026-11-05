@@ -24,7 +24,7 @@ public static class RosterAiPreparation
         if (lists.Units.Count != simulation.Battle.Units.Count || !lists.Units.Keys.ToHashSet().SetEquals(simulation.Battle.Units.Keys) ||
             lists.Units.Values.Any(l => l.Entries.Length is < 2 or > 34 || l.Entries[0].Kind != AiHumanAbilityKind.Attack ||
                 l.Entries[^1].Kind != AiHumanAbilityKind.FrogAttack || l.Entries.Skip(1).SkipLast(1)
-                    .Any(e => e.Kind is not (AiHumanAbilityKind.Accumulate or AiHumanAbilityKind.ThrowStone)))) return Reject(RosterAiRejection.UnsupportedList);
+                    .Any(e => e.Kind is not (AiHumanAbilityKind.Accumulate or AiHumanAbilityKind.ThrowStone or AiHumanAbilityKind.Dash)))) return Reject(RosterAiRejection.UnsupportedList);
         var body = state.TurnBattle.Battle.Units.FirstOrDefault(u => u.Id == request.ActorId);
         if (body is not null && body.Move > 124) return Reject(RosterAiRejection.UnsupportedProfile);
         var refreshed = RosterAiRefresh.Evaluate(state, request, simulation, refreshProfile, rng);

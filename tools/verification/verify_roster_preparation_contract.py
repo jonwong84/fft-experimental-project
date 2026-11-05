@@ -24,7 +24,7 @@ def describe(kind,data):
         integer(u['maxHp'],1,65535);integer(u['hp'],1,u['maxHp']);integer(u['move'],0,255)
         require(len(u['tile'])==2 and all(type(v) is int and 0<=v<16 for v in u['tile']),'Flat coordinates')
         require(all(type(u[k]) is bool for k in ('moved','acted','support','conserve')),'Choice/policy facts')
-        require(type(u['actions']) is list and len(u['actions'])<=32 and all(a in ('Self','Stone') for a in u['actions']),'Supported list occurrences')
+        require(type(u['actions']) is list and len(u['actions'])<=32 and all(a in ('Self','Stone','Dash') for a in u['actions']),'Supported list occurrences')
     require(len({u['id'] for u in units})==len(units) and len({u['order'] for u in units})==len(units),'Distinct units/order')
     require(len({tuple(u['tile']) for u in units})==len(units),'Distinct occupied positions')
     units.sort(key=lambda u:u['order']); actor=next((u for u in units if u['id']==data['actor']),None)
@@ -56,7 +56,7 @@ def describe(kind,data):
         blocked=actor_live['support'];impaired=sum(u['hp']<=u['maxHp']//5 for u in allies)
         support=not blocked and len(allies)>=2 and len(allies)!=impaired
         policies={u['id']:u['support'] or not blocked and not support and actor_live['team']!=0 and u in allies for u in original}
-        result.update(share=share,mostly=mostly,harmful=sum(1+u['actions'].count('Stone') for u in enemies),
+        result.update(share=share,mostly=mostly,harmful=sum(1+u['actions'].count('Stone')+u['actions'].count('Dash') for u in enemies),
             support=support,single=support and len(enemies)==1,policyExit=blocked,
             counts=None if blocked else [len(allies),len(enemies),impaired],policies=policies,
             usable=[] if actor_live['acted'] else ['Attack']+actor_live['actions'],enemyReach=actor_live['move']+1,allyReach=actor_live['move'])

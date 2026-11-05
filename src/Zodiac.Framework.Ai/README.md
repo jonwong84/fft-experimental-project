@@ -43,6 +43,11 @@ family. Source and test projects use matching folders:
 - `ThrowStone/`: one Throw Stone formula/candidate/scan, used by pair selection.
 - `AttackThrowStone/`: the closed two-entry list, shared pair preparation,
   movement/scenario branches, ranking/selection and actual command adapters.
+- `Dash/`: one isolated neutral midpoint candidate and fresh ranked range1
+  occurrence, using shared masks/priority provenance, all-unit clocks/scoring
+  and consumed aims. Dash is non-evadeable and has no trajectory/formula RNG.
+  Supported roster full-list/actual command/turn owners compose this entry;
+  legacy pair consumers retain their list guards.
 - `Accumulate/`: roster source-order allied usefulness and one isolated fresh
   self occurrence now share private filter/PA/choice/clock/scoring kernels with
   the pair owners. [Entry and binding limits](../../docs/behavior/roster-ai-action-foundation.md)
@@ -117,3 +122,6 @@ priority knowledge publishes only with accepted actual commands.
 continuations, explicit fixed/kept facing and exact-session partial-progress
 recovery, stopping before the next clock. Public plans grant no authority.
 See [roster command/turn boundaries](../../docs/behavior/roster-ai-command-and-turn.md).
+
+[Dash integration](../../docs/behavior/dash-ai.md) preserves actual3-draw damage/
+Brave resolution separately from AI midpoint3*PA and shared decision clocks.

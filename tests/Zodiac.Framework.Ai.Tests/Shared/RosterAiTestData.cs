@@ -33,8 +33,8 @@ internal static class RosterAiTestData
         var simulation = new RosterAiSimulationProfile(battle,units.Select(u => new AiUnitBaseline(new(u.Id),255)),true);
         var policies = units.Select(u => new SwordAiRefreshPolicy(new(u.Id),u.Conserve,u.Support)).ToImmutableArray();
         var lists = AiHumanAbilityLists.Build(units.Select(u => new AiHumanUnitAbilitySource(new(u.Id),
-            new(new("test:skill/"+u.Id),(u.Actions ?? []).Select((a,i) => new AiHumanActionSlot(i,new(a=="Self" ? "test:self" : "test:stone"),
-                a=="Self" ? AiHumanAbilityKind.Accumulate : AiHumanAbilityKind.ThrowStone,true,true))))),new(true,true));
+            new(new("test:skill/"+u.Id),(u.Actions ?? []).Select((a,i) => new AiHumanActionSlot(i,new(a=="Self" ? "test:self" : a=="Dash" ? "test:dash" : "test:stone"),
+                a=="Self" ? AiHumanAbilityKind.Accumulate : a=="Dash" ? AiHumanAbilityKind.Dash : AiHumanAbilityKind.ThrowStone,true,true))))),new(true,true));
         return new(state,simulation,new(new(actor),policies),lists);
     }
 

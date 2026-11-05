@@ -492,7 +492,7 @@ prerequisites and expose actual self abilities through roster sessions. ZOD-306
 now traces/implements live Stone interception/knockback and shared Framework
 geometry through ZOD-306–309. [ZOD-310–313](../behavior/roster-decision-and-continuation.md)
 now own verified roster decision/continuation authority. [ZOD-314/315](../behavior/roster-ai-command-and-turn.md)
-now integrate fresh AI dispatch and bounded turns/recovery; ZOD-316 next proves
+now integrate fresh AI dispatch and bounded turns/recovery; ZOD-316 proves
 multi-unit real-turn replay with explicit clock advancement.
 Full original search breadth remains separate.
 A future replaceable AI interface should consume explicit state/content/RNG and
@@ -503,6 +503,8 @@ original workspace or prematurely committing to the current pilot's types.
 [ZOD-316](../behavior/roster-ai-replay.md) now proves eighteen real roster turns
 with explicit clock advancement and all-peer state/RNG/priority history.
 [ZOD-317–320](../architecture/zod-317-dash.md) now trace Dash and implement its
-actual3-draw rule, verified proposals and frozen Move follow-ups. ZOD-321–325
-next integrate its semantic list, hypothetical candidate, ranked search and
-actual complete turns. No automatic-facing/corpse/terminal/host gate is activated.
+actual3-draw rule, verified proposals and frozen Move follow-ups.
+[ZOD-321–325](../behavior/dash-ai.md) now integrate its semantic list, hypothetical
+candidate, ranked search, full-list dispatch and actual complete turns, including
+six further real turns with retained priorities. ZOD-326 next traces content/AI
+setup binding. No automatic-facing/corpse/terminal/host gate is activated.

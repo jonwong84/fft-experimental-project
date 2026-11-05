@@ -84,8 +84,9 @@ guide, coverage and local-link audits pass. All nine owner drafts are unchanged.
 See the [implementation receipt](../evidence/ai/roster-turn-implementation-v1.json);
 ignored logs are under `scratch/roster-turn-314-315/`.
 
-ZOD-316 next proves several real turns through explicit clock advancement and
-shared state/priority knowledge. Other policies/abilities/maps, full corpse/
+[ZOD-316](roster-ai-replay.md) proves several real turns through explicit clock
+advancement and shared state/priority knowledge. [ZOD-321–325](dash-ai.md) now
+extend the supported roster lane with Dash. Other policies/abilities/maps, full corpse/
 terminal/frame RNG, automatic facing, host/editor, owner drafts, broad replacement
 interfaces and ZOD-106 remain separate/deferred. This is bounded integration,
 not full original encounter or campaign AI parity.

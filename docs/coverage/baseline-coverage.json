@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-05",
   "edition": "SCUS-94221",
-  "managedCommit": "720966b",
+  "managedCommit": "4e94271",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 4457,
-    "source": "docs/behavior/dash-actual.md",
+    "passed": 4481,
+    "source": "docs/behavior/dash-ai.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -683,7 +683,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "Existing pair/variable-list command and complete-turn drivers retain guards, priority knowledge and streams. Roster general preparation/scenarios, cast-priority provenance and fresh exhaustive supported Attack/self/Stone list ranking/lottery share private formulas, clocks, projections, geometry and scoring while restoring all peers. Exact Framework flat direct trajectories use complete sprite heights and SDK normalization; actual roster Stone resolves live interception and all-occupant landing. Framework owns invocation-bound proposals, full-word/count RNG verification, actual command transactions and exact-state frozen Move follow-ups. Fresh supported roster AI dispatch now runs selection inside that boundary, publishing priority knowledge only with actual progress. Bounded complete-turn routing and exact-session recovery compose retained commands, fresh post-ACT and explicit facing without advancing the next clock. ACT-first KO can stop at the deferred corpse query guard with real progress retained; Move-first KO can settle its real receipt. Other policies/abilities/maps, full corpse/terminal/frame RNG, original evidence and host activation remain open. Eighteen real turns now verify multi-actor commands, clocks, ready-peer order, all-peer state/RNG and retained priorities; Dash actual prerequisites are implemented, its AI entry integration is selected next.",
+      "currentScope": "Existing pair/variable-list command and complete-turn drivers retain guards, priority knowledge and streams. Roster general preparation/scenarios, cast-priority provenance and fresh exhaustive supported Attack/self/Stone list ranking/lottery share private formulas, clocks, projections, geometry and scoring while restoring all peers. Exact Framework flat direct trajectories use complete sprite heights and SDK normalization; actual roster Stone resolves live interception and all-occupant landing. Framework owns invocation-bound proposals, full-word/count RNG verification, actual command transactions and exact-state frozen Move follow-ups. Fresh supported roster AI dispatch now runs selection inside that boundary, publishing priority knowledge only with actual progress. Bounded complete-turn routing and exact-session recovery compose retained commands, fresh post-ACT and explicit facing without advancing the next clock. ACT-first KO can stop at the deferred corpse query guard with real progress retained; Move-first KO can settle its real receipt. Other policies/abilities/maps, full corpse/terminal/frame RNG, original evidence and host activation remain open. Eighteen real turns now verify multi-actor commands, clocks, ready-peer order, all-peer state/RNG and retained priorities; Dash now joins supported roster semantic preparation, isolated midpoint projection, ranked range1 search, full-list ranking/lottery and actual dispatch through existing verified proposals/frozen Move. Six further real Dash/Accumulate turns verify shared priority/RNG history. Its non-evadeable rule uses zero hypothetical effect draws, compared with three actual damage/Brave draws; legacy pair guards remain.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -853,7 +853,12 @@
         "docs/evidence/ai/roster-turn-implementation-v1.json",
         "docs/behavior/roster-ai-replay.md",
         "docs/evidence/ai/roster-replay-source-v1.json",
-        "docs/evidence/ai/replay-dash-316-320-implementation-v1.json"
+        "docs/evidence/ai/replay-dash-316-320-implementation-v1.json",
+        "docs/architecture/zod-317-dash.md",
+        "docs/behavior/dash-ai.md",
+        "docs/evidence/ai/dash-ai-source-v1.json",
+        "docs/fixtures/behavior/dash-ai-contract-v1.json",
+        "docs/evidence/ai/dash-ai-implementation-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -945,7 +950,9 @@
         "src/Zodiac.Framework/RosterMoveContinuation.cs",
         "src/Zodiac.Framework/ImmediateAbilityBattle.cs",
         "src/Zodiac.Framework.Ai/BasicSkill/RosterBasicSkillAiCommandExecution.cs",
-        "src/Zodiac.Framework.Ai/BasicSkill/RosterBasicSkillAiTurnExecution.cs"
+        "src/Zodiac.Framework.Ai/BasicSkill/RosterBasicSkillAiTurnExecution.cs",
+        "src/Zodiac.Framework.Ai/Dash/RosterDashAiCandidate.cs",
+        "src/Zodiac.Framework.Ai/Dash/RosterDashAiEntry.cs"
       ],
       "automatedChecks": [
         {
@@ -1363,6 +1370,18 @@
         {
           "path": "tools/verification/test_roster_replay_contract.py",
           "scope": "18 independent composed turns and tampered clock rejection."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/Dash/RosterDashAiTests.cs",
+          "scope": "Twenty source descriptions plus explicit scoring/grant/range/late clock, legacy pair guard and actual pre-/post-Move RNG/recovery checks."
+        },
+        {
+          "path": "tools/verification/test_dash_ai_contract.py",
+          "scope": "20 independently composed semantic/candidate/ranked/list/turn/replay descriptions, no effect draws and tamper detection."
+        },
+        {
+          "path": "tools/verification/verify_dash_ai_contract.py",
+          "scope": "Pinned83 functions/27 files and independent Dash AI descriptions; no original/C/managed execution."
         }
       ],
       "manualCheckpoint": {
@@ -1375,13 +1394,9 @@
         "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
         "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Integrate Dash semantic preparation, isolated candidate, ranked occurrence, full-list dispatch and complete turns under ZOD-321–325.",
+      "nextAction": "Trace ZOD-326 retail Dash prepared-content/semantic AI setup binding, preserving unresolved flags and existing authored schemas/guards.",
       "followUpTickets": [
-        "ZOD-321",
-        "ZOD-322",
-        "ZOD-323",
-        "ZOD-324",
-        "ZOD-325"
+        "ZOD-326"
       ]
     },
     {

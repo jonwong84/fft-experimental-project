@@ -34,8 +34,8 @@ Five Framework cases verify literal quartile/result tapes, class-evade bypass,
 occupancy/edge/KO/PA99, grants/range/choices, exact3-draw exhaustion, immutable
 replay, direct ACT/END, frozen Move/ACT/facing and late retained range failure.
 The [implementation receipt](../evidence/ai/replay-dash-316-320-implementation-v1.json)
-records full validation. ZOD-321–325 next integrate semantic Dash entries,
-hypothetical scoring, fresh ranked search, full-list dispatch and complete-turn
-proof. Other abilities/policies/maps, automatic facing, full corpse/terminal/
+records full validation. [ZOD-321–325](dash-ai.md) now integrate semantic Dash
+entries, hypothetical scoring, fresh ranked search, full-list dispatch and
+complete-turn proof. Other abilities/policies/maps, automatic facing, full corpse/terminal/
 frame RNG, host/editor, owner drafts, replacement interfaces and ZOD-106 remain
 outside this bounded work.

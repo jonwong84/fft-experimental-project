@@ -26,7 +26,7 @@ def describe(data):
             else:
                 if kind=='Attack':result=attack_description(d,fresh=fresh)
                 else:
-                    require(kind=='Stone','Supported list');request=copy.deepcopy(d);request['occurrence']=index;result=stone_description(request,fresh=fresh)
+                    require(kind in ('Stone','Dash'),'Supported list');request=copy.deepcopy(d);request['occurrence']=index;result=stone_description(request,fresh=fresh,dash=kind=='Dash')
                     if result['rejection']!='None':return dict(rejection=result['rejection'],occurrence=index,word=d['word'],count=d['count'])
                 if result['best'] is not None:
                     c=result['candidates'][result['best']];best=dict(occurrence=index,kind=kind,destination=c['destination'],actFirst=c.get('actFirst',c.get('order')=='ActThenMove'),target=c['target'],priority=c['priority'],hit=c['hit'],proximity=c['proximity'])

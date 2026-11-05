@@ -1,0 +1,80 @@
+using System.Collections.Immutable;
+using Zodiac.Framework.Random;
+
+namespace Zodiac.Framework.Ai;
+
+public sealed record DashAiCandidate(BattleUnitId ActorId, AssetId AbilityId, BattleUnitId TargetId, TilePosition Destination, bool ActBeforeMove);
+public sealed record RosterDashAiCandidateProfile(bool NormalScoring = false, bool OrdinaryHumansUnchangedEquipment = false, bool ZeroCurrentAndBaselineGolem = false);
+public enum RosterDashAiCandidateRejection { None, UnknownActor, UnknownTarget, TerminalInput, UnavailableAction,
+    UnsupportedProfile, UnsupportedScoring, InvalidCandidate, TargetNotEnemy, AbilityNotGranted, UnknownAbility, OutOfRange,
+    RandomDrawCountExhausted, TickCountExhausted }
+public sealed record DashAiCandidateOutcome(BattleUnitId ActorId, AssetId AbilityId, BattleUnitId TargetId,
+    int HitPercent, int NormalDamage, int TurnEndCt, ImmutableArray<AiProjectedUnit> Units,
+    BattleUnitId MoveOpportunityUnitId, ulong ElapsedTicks, ulong Ticks, ImmutableArray<AiUpkeepPick> UpkeepPicks);
+public sealed record RosterDashAiCandidateResult(AiScoringDisposition Disposition, RosterDashAiCandidateRejection Rejection,
+    DashAiCandidateOutcome? Outcome, AiCandidateScore? Score, RandomState RngState);
+
+/// <summary>One isolated neutral Dash hypothesis: hit100, midpoint3*PA, no formula draws or push, then shared all-unit clock/scoring.</summary>
+/// <remarks>ZOD-322; source 11464943bbdbd2a0af022d90cb7f10455cf911df. Never publishes a command or projected battle.</remarks>
+public static class RosterDashAiCandidate
+{
+    public static RosterDashAiCandidateResult Evaluate(AttackBattleSnapshot state, DashAiCandidate candidate,
+        RosterAiSimulationProfile simulation, DashAbilityBattleProfile ability, RosterDashAiCandidateProfile profile, RandomState rng)
+    {
+        ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(candidate);
+        ArgumentNullException.ThrowIfNull(simulation); ArgumentNullException.ThrowIfNull(ability);
+        ArgumentNullException.ThrowIfNull(profile);
+        RosterDashAiCandidateResult Reject(RosterDashAiCandidateRejection r) => new(AiScoringDisposition.Rejected, r, null, null, rng);
+        if (!profile.NormalScoring || !profile.OrdinaryHumansUnchangedEquipment || !profile.ZeroCurrentAndBaselineGolem)
+            return Reject(RosterDashAiCandidateRejection.UnsupportedScoring);
+        var admission = simulation.Validate(state, candidate.ActorId);
+        if (admission != RosterAiRejection.None) return Reject(admission switch {
+            RosterAiRejection.UnknownActor => RosterDashAiCandidateRejection.UnknownActor,
+            RosterAiRejection.TerminalInput => RosterDashAiCandidateRejection.TerminalInput,
+            RosterAiRejection.UnavailableAction => RosterDashAiCandidateRejection.UnavailableAction,
+            _ => RosterDashAiCandidateRejection.UnsupportedProfile });
+        if (!state.Combatants.Any(u => u.UnitId == candidate.TargetId)) return Reject(RosterDashAiCandidateRejection.UnknownTarget);
+        if (state.TurnBattle.Turns.Units.Single(u => u.Id == candidate.ActorId).ActionTaken) return Reject(RosterDashAiCandidateRejection.UnavailableAction);
+        if (candidate.ActorId == candidate.TargetId) return Reject(RosterDashAiCandidateRejection.InvalidCandidate);
+        if (simulation.Battle.Units[candidate.ActorId].StableTeam == simulation.Battle.Units[candidate.TargetId].StableTeam)
+            return Reject(RosterDashAiCandidateRejection.TargetNotEnemy);
+        var setup = ValidateAbility(state, candidate.ActorId, candidate.AbilityId, ability, simulation);
+        if (setup != RosterDashAiCandidateRejection.None) return Reject(setup);
+        var movement = FlatRosterMovement.Evaluate(state, candidate.ActorId, simulation.Battle);
+        if (!movement.Accepted || !movement.Outcome!.AiOrigins.Contains(candidate.Destination)) return Reject(RosterDashAiCandidateRejection.InvalidCandidate);
+        var origin = candidate.ActBeforeMove ? state.TurnBattle.Battle.Units.Single(u => u.Id == candidate.ActorId).Position : candidate.Destination;
+        var target = state.TurnBattle.Battle.Units.Single(u => u.Id == candidate.TargetId).Position;
+        return AiRosterNearest.Distance(origin, target) != 1 ? Reject(RosterDashAiCandidateRejection.OutOfRange) : EvaluateFresh(state, candidate, simulation, rng);
+    }
+
+    internal static RosterDashAiCandidateRejection ValidateAbility(AttackBattleSnapshot state, BattleUnitId actor,
+        AssetId id, DashAbilityBattleProfile ability, RosterAiSimulationProfile simulation) =>
+        DashAbilityBattleSimulator.ValidateAbilitySetup(state, actor, id, ability, simulation.Battle) switch {
+            AttackCommandRejection.None => RosterDashAiCandidateRejection.None,
+            AttackCommandRejection.UnknownAbility => RosterDashAiCandidateRejection.UnknownAbility,
+            AttackCommandRejection.AbilityNotGranted => RosterDashAiCandidateRejection.AbilityNotGranted,
+            _ => RosterDashAiCandidateRejection.UnsupportedProfile };
+
+    // Only owning fresh entry/candidate admission can enter here. Formula has no target-facing/trajectory dependency.
+    internal static RosterDashAiCandidateResult EvaluateFresh(AttackBattleSnapshot state, DashAiCandidate candidate,
+        RosterAiSimulationProfile simulation, RandomState rng)
+    {
+        var actor = state.Combatants.Single(u => u.UnitId == candidate.ActorId);
+        var target = state.Combatants.Single(u => u.UnitId == candidate.TargetId);
+        var turn = state.TurnBattle.Turns.Units.Single(u => u.Id == candidate.ActorId);
+        var start = state.TurnBattle.Battle.Units.Single(u => u.Id == candidate.ActorId).Position;
+        bool moved = turn.MovementTaken || candidate.Destination != start;
+        int end = Math.Min(60, turn.Ct + (moved ? 0 : 20)), damage = DashFormula.Damage(actor.PhysicalAttack, 16384);
+        var units = AiCandidateState.CreateUnits(state, candidate.ActorId, candidate.TargetId, candidate.Destination,
+            Math.Max(0, target.Hp - damage), end, moved, simulation.Units);
+        var reason = AiSimulationClock.Advance(units, state.TurnBattle.Turns.Ticks, rng, out var clock);
+        if (reason != AiSimulationClockRejection.None) return new(AiScoringDisposition.Rejected,
+            reason == AiSimulationClockRejection.RandomDrawCountExhausted ? RosterDashAiCandidateRejection.RandomDrawCountExhausted : RosterDashAiCandidateRejection.TickCountExhausted, null, null, rng);
+        int team = simulation.Battle.Units[candidate.ActorId].StableTeam;
+        var enemies = simulation.Battle.Members.Where(u => u.StableTeam != team).Select(u => u.UnitId).ToImmutableHashSet();
+        var c = clock!;
+        return new(AiScoringDisposition.Scored, RosterDashAiCandidateRejection.None,
+            new(candidate.ActorId, candidate.AbilityId, candidate.TargetId, 100, damage, end, c.Units, c.MoveOpportunityUnitId, c.ElapsedTicks, c.Ticks, c.UpkeepPicks),
+            AiCandidateScoring.ScoreFreshUnits(c.Units, enemies, 100), c.RngState);
+    }
+}

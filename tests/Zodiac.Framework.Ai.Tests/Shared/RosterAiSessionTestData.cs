@@ -27,6 +27,8 @@ internal static class RosterAiSessionTestData
         var selection = new RosterBasicSkillAiProfile(Sword, new(ability, true),
             new(Ground, [new(Stone)], units.Select(u => new TargetedAbilityUnitGrant(new(u.Id), [Stone], 0))),
             new(units.Select(u => new RosterAiSpriteHeight(new(u.Id), 30))), true, true, true, true);
+        if (units.Any(u => (u.Actions ?? []).Contains("Dash"))) selection = selection with {
+            Dash = new(Ground, [new(new("test:dash"))], units.Select(u => new TargetedAbilityUnitGrant(new(u.Id), [new("test:dash")], 0))), OriginalInstantEnemyDashPolicy = true };
         var facing = d.GetProperty("facing").ValueKind == JsonValueKind.Null ? (BattleFacing?)null : Enum.Parse<BattleFacing>(d.GetProperty("facing").GetString()!);
         var c = new RosterBasicSkillAiTurnConfiguration(s.Simulation, Refresh, s.Lists, new(true, true), Movement, selection, new(true, true, true, true), facing);
         bool acted = raw.Single(u => u.GetProperty("id").GetString() == actor).GetProperty("acted").GetBoolean();

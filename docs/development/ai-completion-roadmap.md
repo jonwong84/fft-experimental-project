@@ -203,7 +203,7 @@ and expose the existing actual self kernel through roster sessions. ZOD-306
 now traces/implements live Stone interception, actual effects and session
 publication through ZOD-306–309. ZOD-310–313 now implement verified roster
 decisions and retained Move authority. [ZOD-314/315](../behavior/roster-ai-command-and-turn.md)
-now integrate fresh dispatch and bounded turns/recovery. ZOD-316 next verifies
+now integrate fresh dispatch and bounded turns/recovery. ZOD-316 verifies
 multi-unit real-turn replay with explicit clock advancement.
 Broader control/low-HP/terminal policies remain separate.
 A certificate for one closed ability list cannot stand in for another list.
@@ -224,6 +224,8 @@ remains a study/validation source, never a runtime dependency.
 [ZOD-316](../behavior/roster-ai-replay.md) now proves eighteen real roster turns
 with explicit clock advancement and all-peer state/RNG/priority history.
 [ZOD-317–320](../architecture/zod-317-dash.md) now trace Dash and implement its
-actual3-draw rule, verified proposals and frozen Move follow-ups. ZOD-321–325
-next integrate its semantic list, hypothetical candidate, ranked search and
-actual complete turns. No automatic-facing/corpse/terminal/host gate is activated.
+actual3-draw rule, verified proposals and frozen Move follow-ups.
+[ZOD-321–325](../behavior/dash-ai.md) now integrate its semantic list, hypothetical
+candidate, ranked search, full-list dispatch and actual complete turns, including
+six further real turns with retained priorities. ZOD-326 next traces content/AI
+setup binding. No automatic-facing/corpse/terminal/host gate is activated.

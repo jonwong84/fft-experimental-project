@@ -3,7 +3,7 @@ using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework.Ai;
 
-public enum BasicSkillAiCommandKind { Move, Attack, ThrowStone, Accumulate, End }
+public enum BasicSkillAiCommandKind { Move, Attack, ThrowStone, Accumulate, End, Dash }
 public enum BasicSkillAiCommandRejection { UnavailableChoices, UnsupportedDispatchContext, SelectionRejected, DispatchMismatch, BoundaryRejected }
 /// <summary>Failure reasons only; no private selection, progressed RNG, path or token is published.</summary>
 public sealed record BasicSkillAiCommandFailure(BasicSkillAiCommandRejection Reason,

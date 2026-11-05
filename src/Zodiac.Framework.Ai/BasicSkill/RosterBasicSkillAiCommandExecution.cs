@@ -54,6 +54,7 @@ public static class RosterBasicSkillAiCommandExecution
                     AiHumanAbilityKind.Attack => BasicSkillAiCommandKind.Attack,
                     AiHumanAbilityKind.Accumulate => BasicSkillAiCommandKind.Accumulate,
                     AiHumanAbilityKind.ThrowStone => BasicSkillAiCommandKind.ThrowStone,
+                    AiHumanAbilityKind.Dash => BasicSkillAiCommandKind.Dash,
                     _ => throw new InvalidOperationException("An unsupported entry passed owned selection.") };
             var diagnostic = new RosterBasicSkillAiCommandOutcome(selected.Outcome, selected.RngState, kind, actor.ActionTaken);
             successor = selected.Workspace;
@@ -75,6 +76,7 @@ public static class RosterBasicSkillAiCommandExecution
             return action?.Kind switch {
                 AiHumanAbilityKind.Attack => context.PrepareMoveThenAttack(move, new(context.ActorId, action.TargetId!.Value), profile.Weapon, rng, diagnostic),
                 AiHumanAbilityKind.Accumulate => context.PrepareMoveThenImmediateAbility(move, new(context.ActorId, action.AbilityId!.Value), profile.Accumulate!.Ability, rng, diagnostic),
+                AiHumanAbilityKind.Dash => context.PrepareMoveThenDashAbility(move, new(context.ActorId, action.AbilityId!.Value, action.TargetId!.Value), profile.Dash!, rng, diagnostic),
                 AiHumanAbilityKind.ThrowStone => context.PrepareMoveThenTargetedAbility(move, new(context.ActorId, action.AbilityId!.Value, action.TargetId!.Value),
                     profile.ThrowStone!, profile.Heights!.Shared, rng, diagnostic),
                 null => context.PrepareMoveThenWait(move, facing, rng, diagnostic),
@@ -83,6 +85,7 @@ public static class RosterBasicSkillAiCommandExecution
         return kind switch {
             BasicSkillAiCommandKind.Attack => context.PrepareAttack(new(context.ActorId, action!.TargetId!.Value), profile.Weapon, rng, diagnostic),
             BasicSkillAiCommandKind.Accumulate => context.PrepareImmediateAbility(new(context.ActorId, action!.AbilityId!.Value), profile.Accumulate!.Ability, rng, diagnostic),
+            BasicSkillAiCommandKind.Dash => context.PrepareDashAbility(new(context.ActorId, action!.AbilityId!.Value, action.TargetId!.Value), profile.Dash!, rng, diagnostic),
             BasicSkillAiCommandKind.ThrowStone => context.PrepareTargetedAbility(new(context.ActorId, action!.AbilityId!.Value, action.TargetId!.Value),
                 profile.ThrowStone!, profile.Heights!.Shared, rng, diagnostic),
             BasicSkillAiCommandKind.End => context.PrepareWait(facing, rng, diagnostic),

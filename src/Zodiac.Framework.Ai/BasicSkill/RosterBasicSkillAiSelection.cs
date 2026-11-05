@@ -7,16 +7,17 @@ namespace Zodiac.Framework.Ai;
 public sealed record RosterBasicSkillAiProfile(BoundedSwordWeapon? Weapon = null, RosterAccumulateAiProfile? Accumulate = null,
     TargetedAbilityBattleProfile? ThrowStone = null, RosterAiProjectileHeights? Heights = null,
     bool OrdinaryAttackTilePolicy = false, bool OriginalInstantDirectEnemyPolicy = false,
-    bool NoDefendSupport = false, bool FreshOrdinarySelectionDefaults = false);
+    bool NoDefendSupport = false, bool FreshOrdinarySelectionDefaults = false,
+    DashAbilityBattleProfile? Dash = null, bool OriginalInstantEnemyDashPolicy = false);
 public sealed record RosterBasicSkillAiRankedAction(int OccurrenceIndex, AiHumanAbilityKind Kind, TilePosition Destination,
     bool ActBeforeMove, BattleUnitId? TargetId, AssetId? AbilityId, AiCandidateScore Score, byte Proximity);
 public sealed record RosterBasicSkillAiEntryOutcome(BasicSkillAiPreparedOccurrence Entry, RandomState EntryRng, RandomState ExitRng,
     RosterSwordAiAttackOutcome? Attack = null, RosterAccumulateAiEntryOutcome? Accumulate = null,
-    RosterThrowStoneAiEntryOutcome? ThrowStone = null, RosterBasicSkillAiRankedAction? Best = null, int? InsertionIndex = null);
+    RosterThrowStoneAiEntryOutcome? ThrowStone = null, RosterBasicSkillAiRankedAction? Best = null, int? InsertionIndex = null, RosterDashAiEntryOutcome? Dash = null);
 public enum RosterBasicSkillAiSelectionStage { Admission, Prefix, Entry, Lottery }
 public sealed record RosterBasicSkillAiSelectionFailure(RosterBasicSkillAiSelectionStage Stage, RosterAiGeneralFailure? Prefix = null,
     int? OccurrenceIndex = null, RosterSwordAiAttackFailure? Attack = null, RosterAccumulateAiEntryFailure? Accumulate = null,
-    RosterThrowStoneAiEntryFailure? ThrowStone = null, int? LotteryIndex = null);
+    RosterThrowStoneAiEntryFailure? ThrowStone = null, int? LotteryIndex = null, RosterDashAiEntryFailure? Dash = null);
 public sealed record RosterBasicSkillAiSelectedPlan(BattleUnitId ActorId, TilePosition Destination, RosterBasicSkillAiRankedAction? Action)
 {
     public bool ActBeforeMove => Action?.ActBeforeMove ?? false;
@@ -50,6 +51,7 @@ public static class RosterBasicSkillAiSelection
             var entryRng = current;
             if (!entry.Usable) { entries.Add(new(entry, current, current)); continue; }
             RosterSwordAiAttackOutcome? attack = null; RosterAccumulateAiEntryOutcome? self = null; RosterThrowStoneAiEntryOutcome? stone = null;
+            RosterDashAiEntryOutcome? dash = null;
             RosterBasicSkillAiRankedAction? best = null;
             switch (entry.Source.Kind)
             {
@@ -87,11 +89,23 @@ public static class RosterBasicSkillAiSelection
                             c.Candidate.TargetId, entry.Source.AbilityId, c.Evaluation.Score!, c.Proximity);
                     }
                     break;
+                case AiHumanAbilityKind.Dash:
+                    if (!profile.OriginalInstantEnemyDashPolicy || profile.Dash is null)
+                        return Reject(new(RosterBasicSkillAiSelectionStage.Entry, OccurrenceIndex: entry.Index));
+                    var d = RosterDashAiEntry.EvaluateFresh(state, request.ActorId, entry.Index, simulation, profile.Dash, m, current, workspace);
+                    if (!d.Accepted) return Reject(new(RosterBasicSkillAiSelectionStage.Entry, OccurrenceIndex: entry.Index, Dash: d.Failure));
+                    dash = d.Outcome!; current = d.RngState;
+                    if (dash.BestCandidateIndex is { } di)
+                    {
+                        var c = dash.Candidates[di]; best = new(entry.Index, entry.Source.Kind, c.Candidate.Destination, c.Candidate.ActBeforeMove,
+                            c.Candidate.TargetId, entry.Source.AbilityId, c.Evaluation.Score!, c.Proximity);
+                    }
+                    break;
                 default: throw new InvalidOperationException("An unsupported occurrence passed owned list admission.");
             }
             int? insertion = best is null ? null : AiRankedInsertion.Insert(best, m.Movement[m.BaselineIndex].Outcome.Score,
                 ranked, c => c.Score, c => c.Proximity);
-            entries.Add(new(entry, entryRng, current, attack, self, stone, best, insertion));
+            entries.Add(new(entry, entryRng, current, attack, self, stone, best, insertion, dash));
         }
         var lotteryRng = current;
         var lottery = AiRankedLottery.Evaluate(ranked.Select(r => r?.Score.HitPercent ?? (byte)0).ToImmutableArray(), current);

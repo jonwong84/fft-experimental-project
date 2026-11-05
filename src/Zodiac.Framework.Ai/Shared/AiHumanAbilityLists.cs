@@ -2,7 +2,7 @@ using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
 
-public enum AiHumanAbilityKind { Attack, Accumulate, ThrowStone, FrogAttack, Unsupported }
+public enum AiHumanAbilityKind { Attack, Accumulate, ThrowStone, FrogAttack, Unsupported, Dash }
 public enum AiHumanEntrySource { Attack, Primary, Secondary, FrogAttack }
 /// <summary>Semantic class-filtered action slot. Known is supplied resolved learning state, not inferred from job membership.</summary>
 public sealed record AiHumanActionSlot(int Slot, AssetId? AbilityId, AiHumanAbilityKind Kind, bool Known, bool UsableByAi);
@@ -34,7 +34,7 @@ public sealed record AiHumanInitializedEntry(AiHumanAbilityKind Kind, AssetId? A
     public bool OrdinaryUsable => Kind != AiHumanAbilityKind.FrogAttack;
     public bool Evadeable => Kind is AiHumanAbilityKind.Attack or AiHumanAbilityKind.ThrowStone;
     public bool Helpful => Kind == AiHumanAbilityKind.Accumulate;
-    public bool Harmful => Kind is AiHumanAbilityKind.Attack or AiHumanAbilityKind.ThrowStone;
+    public bool Harmful => Kind is AiHumanAbilityKind.Attack or AiHumanAbilityKind.ThrowStone or AiHumanAbilityKind.Dash;
     public bool HasTrajectory => Kind == AiHumanAbilityKind.ThrowStone;
     public bool ExhaustiveOriginScan => Kind is AiHumanAbilityKind.Attack or AiHumanAbilityKind.FrogAttack;
     public bool ForceConsumeAim => Kind == AiHumanAbilityKind.Accumulate;
@@ -79,7 +79,7 @@ public sealed class AiHumanAbilityLists
                 foreach (var slot in skillset.Slots)
                 {
                     if (slot.AbilityId is null || !slot.UsableByAi || !slot.Known) continue;
-                    if (slot.Kind is not (AiHumanAbilityKind.Accumulate or AiHumanAbilityKind.ThrowStone))
+                    if (slot.Kind is not (AiHumanAbilityKind.Accumulate or AiHumanAbilityKind.ThrowStone or AiHumanAbilityKind.Dash))
                         throw new NotSupportedException("An eligible unsupported action cannot be omitted from the AI list.");
                     entries.Add(new(slot.Kind, slot.AbilityId, source, skillset.Id, slot.Slot));
                 }

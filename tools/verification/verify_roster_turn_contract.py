@@ -25,6 +25,11 @@ def describe(data,whole_turn):
             request=copy.deepcopy(d);request['target']=action['target']
             for u in request['units']:u.update(brave=70,ko=u.get('ko',0))
             r=stone(request);target=next(u for u in d['units'] if u['id']==r['target']);target.update(hp=r['hp'],tile=r['destination'],ko=r['ko']);d.update(word=r['word'],count=r['count'])
+        elif action['kind']=='Dash':
+            from verify_dash_contract import actual as dash
+            target=next(u for u in d['units'] if u['id']==action['target'])
+            r=dash(dict(word=d['word'],count=d['count'],pa=actor['pa'],hp=target['hp'],actorBrave=70,targetBrave=70,actor=actor['tile'],target=target['tile'],occupied=[u['tile'] for u in d['units']],width=8,depth=4,ko=target.get('ko',0)))
+            target.update(hp=r['hp'],tile=r['destination'],ko=r['ko']);d.update(word=r['word'],count=r['count'])
         else:
             target=next(u for u in d['units'] if u['id']==action['target'])
             r=resolve(dict(seed=d['word'],drawCount=d['count'],pa=actor['pa'],power=d['power'],actor=actor['tile'],target=target['tile'],mapSize=[8,4],actorFacing=actor['face'],targetFacing=target['face'],hp=target['hp'],classEvade=target['evade'],actorBrave=70,targetBrave=70))

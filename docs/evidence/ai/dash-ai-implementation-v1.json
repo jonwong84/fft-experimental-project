@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-321",
+    "ZOD-322",
+    "ZOD-323",
+    "ZOD-324",
+    "ZOD-325"
+  ],
+  "date": "2026-11-05",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "4e94271",
+  "productionImplemented": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "sourceStudy": "docs/architecture/zod-317-dash.md",
+  "sourceReceipt": "docs/evidence/ai/dash-ai-source-v1.json",
+  "sourceFixture": "docs/fixtures/behavior/dash-ai-contract-v1.json",
+  "behavior": "docs/behavior/dash-ai.md",
+  "implementationPaths": [
+    "src/Zodiac.Framework.Ai/Dash/RosterDashAiCandidate.cs",
+    "src/Zodiac.Framework.Ai/Dash/RosterDashAiEntry.cs",
+    "src/Zodiac.Framework.Ai/Shared/AiHumanAbilityLists.cs",
+    "src/Zodiac.Framework.Ai/Shared/RosterAiPreparation.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/RosterBasicSkillAiSelection.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/RosterBasicSkillAiCommandExecution.cs"
+  ],
+  "validation": {
+    "dotnetPassed": 4481,
+    "frameworkPassed": 1521,
+    "aiPassed": 1215,
+    "newAiCases": 24,
+    "pythonPassed": 594,
+    "newPythonCases": 3,
+    "releaseWarnings": 0,
+    "releaseErrors": 0,
+    "lockedRestore": true,
+    "trxReports": 7,
+    "sourceFunctions": 83,
+    "sourceFiles": 27,
+    "dashAiDescriptions": 20,
+    "realDashReplayTurns": 6,
+    "priorRealReplayTurns": 18,
+    "preparedVerified": true,
+    "preparedSdkFactors": 192,
+    "algorithmGuideAudit": true,
+    "coverageAudit": true,
+    "localLinkAudit": true,
+    "ownerDraftsUnchanged": true,
+    "logs": "scratch/dash-317-325/"
+  },
+  "invariants": [
+    "source semantic harmful/physical/non-evadeable/non-ranged/non-exhaustive occurrence; duplicate and absent actions preserved",
+    "explicit scoring and typed grants, initial legal origin/range, hit100/midpoint3PA with no effect RNG/push, shared peer-preserving clock/scoring",
+    "private fresh ranked range1 entry, shared priority/proximity keys and aim consumption, no trajectory/cached public prefix",
+    "one full-list prefix/RNG/ranks/lottery; privately selected concrete Dash proposal/frozen Move through unchanged Framework authority",
+    "existing complete-turn/recovery owner, explicit facing, exact state/workspace publication, late RNG/clock rollback and accepted Move/KO retention"
+  ],
+  "dependencyChanges": false,
+  "newProductionFriendAccess": false
+}
