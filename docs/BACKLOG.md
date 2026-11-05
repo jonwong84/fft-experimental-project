@@ -4,13 +4,13 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-346 (resolve ordered magical evasion and rng).**
+**Next bounded work: ZOD-347 (compose pre-evasion shared faith-magic formula resolution).**
 [Magic evasion and entry](behavior/magic-evasion.md) records the pinned trace and
-completed bounded children: ZOD-342, ZOD-344, ZOD-345. Magic
+completed bounded children: ZOD-342, ZOD-344, ZOD-345, ZOD-346. Magic
 uses its own equipment/status chain, real ordered draws even in AI/preview, and
 source hit-versus-accuracy facts. Shared formula arithmetic and geometry remain
 independent; no live publication, commands or magic AI activation is inferred.
-There are 35 open tickets below. The 312 completed tickets, prior checkpoints and
+There are 34 open tickets below. The 313 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -34,17 +34,9 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-346 — Resolve ordered magical evasion and RNG
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-345
-
-Implement secondary execution Evadeable, exact integer accuracy products and accessory/right/left/class real RNG checks. Preserve execution early exit, AI/preview draws, certainty versus rounded-zero hit facts, blocking labels and whole-query rollback on counter exhaustion. No live RNG adoption. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
-Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/
-deferred. See the [source and boundaries](behavior/magic-evasion.md).
-
 ### ZOD-347 — Compose pre-evasion shared Faith-magic formula resolution
 
-**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-346, ZOD-343
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-346, ZOD-343
 
 Compose the shared formula before evasion under explicit fresh/no-earlier-reaction/reflection and existing finalizer facts. Healing bypasses evasion. Branch on hit rather than rounded accuracy, preserve all private evade/proc draw order, return full diagnostic/result data, and reject atomically. Keep ResolveAfterHit and earlier APIs compatible; no commands/HP/status/AI activation. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
 Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/

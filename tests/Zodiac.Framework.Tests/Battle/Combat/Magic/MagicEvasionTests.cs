@@ -1,5 +1,6 @@
 using System.Text.Json;
 using Xunit;
+using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework.Tests;
 
@@ -28,6 +29,48 @@ internal static class MagicEvasionTestData
 [Trait("Ruleset", "OriginalFft")]
 public sealed class MagicEvasionTests
 {
+    [Fact]
+    public void Twenty_four_ordered_tapes_preserve_modes_labels_accuracy_and_atomic_counter_behavior()
+    {
+        using var doc = MagicEvasionTestData.Fixture();
+        foreach (var row in doc.RootElement.GetProperty("rolls").EnumerateArray())
+        {
+            var prepared = MagicEvasion.Prepare(MagicEvasion.Load(MagicEvasionTestData.Equipment(row.GetProperty("equipment"))),
+                MagicEvasionTestData.Modifiers(row.GetProperty("modifiers")));
+            var before = new RandomState(row.GetProperty("word").GetUInt32(), row.GetProperty("count").GetUInt64());
+            var r = MagicEvasion.Resolve(prepared, row.GetProperty("evadeable").GetBoolean(),
+                Enum.Parse<MagicFormulaEvaluationMode>(row.GetProperty("mode").GetString()!), row.GetProperty("accuracy").GetUInt16(), before);
+            var e = row.GetProperty("expected");
+            Assert.Equal(e.GetProperty("accepted").GetBoolean(), r.Accepted);
+            Assert.Equal(Enum.Parse<MagicEvasionRejection>(e.GetProperty("rejection").GetString()!), r.Rejection);
+            Assert.Equal(new RandomState(e.GetProperty("word").GetUInt32(), e.GetProperty("count").GetUInt64()), r.RngState);
+            if (!r.Accepted) { Assert.Null(r.Outcome); Assert.Equal(before, r.RngState); continue; }
+            var o = e.GetProperty("outcome");
+            Assert.Equal(new MagicEvasionOutcome(o.GetProperty("hit").GetBoolean(), o.GetProperty("accuracy").GetUInt16(),
+                (MagicResultMissKind)o.GetProperty("miss").GetByte(), o.GetProperty("itemLost").GetByte(),
+                o.GetProperty("abandon").GetBoolean()), r.Outcome);
+        }
+    }
+
+    [Fact]
+    [Trait("Contract", "QueryIsolation")]
+    public void Evasion_replay_is_deterministic_and_does_not_change_prepared_work()
+    {
+        var work = MagicEvasion.Prepare(MagicEvasion.Load(new(false, new(10, 10, true), new(20, 20, true), new(30, 30, true))), new(true));
+        var copy = work with { }; var before = new RandomState(57, 9);
+        var first = MagicEvasion.Resolve(work, true, MagicFormulaEvaluationMode.Execute, 100, before);
+        Assert.Equal(first, MagicEvasion.Resolve(work, true, MagicFormulaEvaluationMode.Execute, 100, before));
+        Assert.Equal(copy, work); Assert.Equal(new RandomState(57, 9), before);
+    }
+
+    [Fact]
+    public void Missing_work_and_unknown_modes_throw_even_when_checks_are_disabled()
+    {
+        Assert.Throws<ArgumentNullException>(() => MagicEvasion.Resolve(null!, false, MagicFormulaEvaluationMode.Execute, 100, new(1, 0)));
+        var work = MagicEvasion.Prepare(MagicEvasion.Load(new(false, new(255, 0, false), new(255, 0, false), new(255, 0, false))), new(true));
+        Assert.Throws<ArgumentOutOfRangeException>(() => MagicEvasion.Resolve(work, false, (MagicFormulaEvaluationMode)255, 100, new(1, 0)));
+    }
+
     [Fact]
     public void Fifteen_literal_preparations_preserve_magic_order_base_hit_and_abandon_diagnostics()
     {

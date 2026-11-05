@@ -134,3 +134,21 @@ nonzero class evade. Four cumulative focused Framework cases pass the eight
 loads and15 preparations plus null guards; two cases are new for this child.
 Prior inputs and item labels remain immutable. No RNG is consumed. Logs:
 `scratch/magic-evasion-342-347/focused-345.log`.
+
+## ZOD-346
+
+`MagicEvasion.Resolve` now owns the exact fresh-work percentage and ordered real
+draws. It takes secondary execution Evadeable and explicit evaluation mode; no
+physical or AI metadata flags are inferred. `MagicEvasionOutcome` preserves hit,
+unsigned16 accuracy, miss label, raw blocking-item label and Abandon diagnostic.
+The prepared opaque work guarantees a positive base and class0. A zero rounded
+percentage is retained independently of hit. Counter exhaustion returns the
+incoming RNG and no outcome, including after earlier private draws; no blanket
+four-draw preflight rejects a legitimate early exit. No stream is adopted.
+
+Seven cumulative focused Framework cases pass all47 descriptions plus input,
+replay and immutability guards; three cases are new for this child. Tests include
+partial/certain/non-evadeable modes, full-byte/unsigned16 limits, first-success
+labels, scaled19 boundaries, no fake midpoint RNG, and the final available draw.
+Logs: `scratch/magic-evasion-342-347/focused-346.log`. No spell entry is connected
+by this milestone; ZOD-347 owns that bounded composition.

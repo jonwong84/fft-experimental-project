@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 312 entries index completed bounded work; they do not mean the full game is complete.
+These 313 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -346,3 +346,5 @@ These 312 entries index completed bounded work; they do not mean the full game i
 - [ZOD-344 — Load magic evasion contributions and blocking-item labels](../behavior/magic-evasion.md#zod-344)
 
 - [ZOD-345 — Prepare magic evasion status modifiers](../behavior/magic-evasion.md#zod-345)
+
+- [ZOD-346 — Resolve ordered magical evasion and RNG](../behavior/magic-evasion.md#zod-346)

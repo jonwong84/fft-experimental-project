@@ -3,7 +3,8 @@
   "tickets": [
     "ZOD-342",
     "ZOD-344",
-    "ZOD-345"
+    "ZOD-345",
+    "ZOD-346"
   ],
   "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
   "referenceClean": true,
@@ -28,6 +29,12 @@
       "ticket": "ZOD-345",
       "managedBaseRevision": "a25e4a46377eda4d2bc4fa4287c625a48a9821f2",
       "validation": "4 cumulative focused Framework cases / 8 loads and15 preparations; two new cases, Release compilation passed",
+      "reports": "scratch/magic-evasion-342-347/"
+    },
+    {
+      "ticket": "ZOD-346",
+      "managedBaseRevision": "37ced64d8646407b8212a1dd5dc8b1b59f8225b6",
+      "validation": "7 cumulative focused Framework cases / all47 descriptions; three new cases, Release compilation passed",
       "reports": "scratch/magic-evasion-342-347/"
     }
   ]
