@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 318 entries index completed bounded work; they do not mean the full game is complete.
+These 319 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -358,3 +358,5 @@ These 318 entries index completed bounded work; they do not mean the full game i
 - [ZOD-350 — Project immutable current magic inputs](../behavior/magic-current-inputs-and-casts.md#zod-350)
 
 - [ZOD-351 — Resolve shared magic from current unit snapshots](../behavior/magic-current-inputs-and-casts.md#zod-351)
+
+- [ZOD-352 — Trace ordinary spell MP and charge preparation](../behavior/magic-current-inputs-and-casts.md#zod-352)

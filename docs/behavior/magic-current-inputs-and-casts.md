@@ -97,3 +97,45 @@ cases (three new) and all76 focused magic cases pass, including11 literal curren
 queries, mode/RNG continuation, replay and unsupported current status. All prior
 amount/proc/finalizer expectations remain unchanged. Logs:
 `scratch/magic-inputs-348-357/focused-351.log`. No publisher or AI entry is connected.
+
+## ZOD-352
+
+[Resource source receipt](../evidence/combat/magic-resource-source-v1.json) pins12
+files/10 functions at the same clean reference, including `action_prepare`,
+`action_init_current_data`, `mp_check_and_consume`, `action_resolve_strike`, clock
+steps and AI loading/simulation. [59 descriptions](../fixtures/behavior/magic-resource-contract-v1.json)
+separate32 MP checks,10 execution setups, seven AI delays and10 counter steps.
+Eight focused Python cases independently validate them before implementation.
+
+`action_prepare` schedules CT before resolution: low seven bits, then Short Charge
+ceiling `(ct+1)/2`, then Non-Charge zero. Persevere skips both. The plan alone does
+not spend spell MP. `action_init_current_data` later calls the MP helper once,
+before strike/target calculations. AI scratch simulation calls that same initializer.
+MP must not be charged again for each target or ordinary strike in the same action.
+The supplied-order query will cover one certified ordinary strike only; discovery,
+original panel ordering, multiple strikes and reactions remain separate.
+
+The MP helper resets recorded cost, performs primary action-state bookkeeping,
+then restriction (Don't Act overrides), Frog exceptions (IDs0/29/367, never Charge),
+then Silence for Default/Monster menus within signed ability ID0..367. Only Default
+non-Mime abilities read/pay cost. Half MP floors. Cost is recorded **before** budget
+failure. The MP field is unsigned16 but is read through signed16: high-bit values
+fail even a zero cost. Preview skips subtraction only; AI and execution subtract
+from their respective state. A zero-cost successful store still occurs. Early
+failures and Mime/other-menu bypasses leave recorded cost0. The pure helper will
+require prior action-state bookkeeping to be certified; it will not implement
+KEEP_PERFORMING or erase Charging/Defending/Jump state itself.
+
+The AI candidate CT path is a distinct original quirk: it reads the full raw CT
+byte, tests Monster Skill to halve with a floor, else Defend to zero, and bypasses
+those changes for Persevere. It does not use execution's Short Charge/Non-Charge
+bits, rounding or high-bit mask. Both calculations must remain separate. This
+does not activate AI planning for magic.
+
+Charge ticking is one decrement unless the resolved wait-menu block predicate is
+true or the counter is0/255. Zero is ready only when unblocked;255 means no charge.
+Haste/Slow bits do not accelerate this decrement. Source classification includes
+inactive/frozen/mounted/dead states and the original unreachable Sleep branch;
+the bounded helper takes the already-classified predicate and does not repair it.
+It will emit no event, advance no global clock, and perform no repeated Song/Dance
+or terminal/status work.

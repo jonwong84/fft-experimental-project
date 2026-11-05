@@ -1,0 +1,1228 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-352",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "confidence": "source-derived resource and charge descriptions; no original/C execution",
+  "mp": [
+    {
+      "id": "ordinary-paid",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": false,
+          "frog": false,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "None",
+          "cost": 9,
+          "remaining": 21,
+          "subtracted": true
+        }
+      }
+    },
+    {
+      "id": "half-odd-floor",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": true,
+          "mime": false,
+          "frog": false,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "None",
+          "cost": 4,
+          "remaining": 26,
+          "subtracted": true
+        }
+      }
+    },
+    {
+      "id": "half-one-is-free",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": true,
+          "mime": false,
+          "frog": false,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 1,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "None",
+          "cost": 0,
+          "remaining": 30,
+          "subtracted": true
+        }
+      }
+    },
+    {
+      "id": "cost255-half127",
+      "input": {
+        "actor": {
+          "mp": 200,
+          "half": true,
+          "mime": false,
+          "frog": false,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 255,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "None",
+          "cost": 127,
+          "remaining": 73,
+          "subtracted": true
+        }
+      }
+    },
+    {
+      "id": "preview-tests-but-does-not-subtract",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": false,
+          "frog": false,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Preview",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "None",
+          "cost": 9,
+          "remaining": 30,
+          "subtracted": false
+        }
+      }
+    },
+    {
+      "id": "AI-private-subtraction",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": false,
+          "frog": false,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "AiSimulation",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "None",
+          "cost": 9,
+          "remaining": 21,
+          "subtracted": true
+        }
+      }
+    },
+    {
+      "id": "exact-mp-budget",
+      "input": {
+        "actor": {
+          "mp": 9,
+          "half": false,
+          "mime": false,
+          "frog": false,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "None",
+          "cost": 9,
+          "remaining": 0,
+          "subtracted": true
+        }
+      }
+    },
+    {
+      "id": "insufficient-after-cost-record",
+      "input": {
+        "actor": {
+          "mp": 8,
+          "half": false,
+          "mime": false,
+          "frog": false,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "NotEnoughMp",
+          "cost": 9,
+          "remaining": 8,
+          "subtracted": false
+        }
+      }
+    },
+    {
+      "id": "preview-still-needs-budget",
+      "input": {
+        "actor": {
+          "mp": 8,
+          "half": false,
+          "mime": false,
+          "frog": false,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Preview",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "NotEnoughMp",
+          "cost": 9,
+          "remaining": 8,
+          "subtracted": false
+        }
+      }
+    },
+    {
+      "id": "cannot-act-before-frog-and-silence",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": false,
+          "frog": true,
+          "silence": true,
+          "dontAct": false,
+          "restriction": "CannotAct"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "CannotAct",
+          "cost": 0,
+          "remaining": 30,
+          "subtracted": false
+        }
+      }
+    },
+    {
+      "id": "deep-water-before-frog",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": false,
+          "frog": true,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "DeepWater"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "DeepWater",
+          "cost": 0,
+          "remaining": 30,
+          "subtracted": false
+        }
+      }
+    },
+    {
+      "id": "dont-act-explicit-override",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": false,
+          "frog": false,
+          "silence": false,
+          "dontAct": true,
+          "restriction": "DeepWater"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "CannotAct",
+          "cost": 0,
+          "remaining": 30,
+          "subtracted": false
+        }
+      }
+    },
+    {
+      "id": "frog-before-silence",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": false,
+          "frog": true,
+          "silence": true,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "Frog",
+          "cost": 0,
+          "remaining": 30,
+          "subtracted": false
+        }
+      }
+    },
+    {
+      "id": "frog-exception-0",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": false,
+          "frog": true,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 0,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "None",
+          "cost": 9,
+          "remaining": 21,
+          "subtracted": true
+        }
+      }
+    },
+    {
+      "id": "frog-exception-29",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": false,
+          "frog": true,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 29,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "None",
+          "cost": 9,
+          "remaining": 21,
+          "subtracted": true
+        }
+      }
+    },
+    {
+      "id": "frog-exception-367",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": false,
+          "frog": true,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 367,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "None",
+          "cost": 9,
+          "remaining": 21,
+          "subtracted": true
+        }
+      }
+    },
+    {
+      "id": "frog-charge-still-blocked",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": false,
+          "frog": true,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 0,
+          "cost": 9,
+          "menu": "Charge",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "Frog",
+          "cost": 0,
+          "remaining": 30,
+          "subtracted": false
+        }
+      }
+    },
+    {
+      "id": "silence-before-cost",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": false,
+          "frog": false,
+          "silence": true,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "Silenced",
+          "cost": 0,
+          "remaining": 30,
+          "subtracted": false
+        }
+      }
+    },
+    {
+      "id": "silence-ignored-by-flag",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": false,
+          "frog": false,
+          "silence": true,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Default",
+          "affected": false
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "None",
+          "cost": 9,
+          "remaining": 21,
+          "subtracted": true
+        }
+      }
+    },
+    {
+      "id": "monster-silence-still-applies",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": false,
+          "frog": false,
+          "silence": true,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Monster",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "Silenced",
+          "cost": 0,
+          "remaining": 30,
+          "subtracted": false
+        }
+      }
+    },
+    {
+      "id": "monster-menu-no-cost",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": false,
+          "frog": false,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Monster",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "None",
+          "cost": 0,
+          "remaining": 30,
+          "subtracted": false
+        }
+      }
+    },
+    {
+      "id": "mime-no-cost",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": true,
+          "frog": false,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "None",
+          "cost": 0,
+          "remaining": 30,
+          "subtracted": false
+        }
+      }
+    },
+    {
+      "id": "mime-still-silenced",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": true,
+          "frog": false,
+          "silence": true,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "Silenced",
+          "cost": 0,
+          "remaining": 30,
+          "subtracted": false
+        }
+      }
+    },
+    {
+      "id": "other-menu-no-silence-or-cost",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": false,
+          "frog": false,
+          "silence": true,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Other",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "None",
+          "cost": 0,
+          "remaining": 30,
+          "subtracted": false
+        }
+      }
+    },
+    {
+      "id": "negative-ability-bypasses-data",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": false,
+          "frog": false,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": -1,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "None",
+          "cost": 0,
+          "remaining": 30,
+          "subtracted": false
+        }
+      }
+    },
+    {
+      "id": "item-boundary-bypasses-data",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": false,
+          "frog": false,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 368,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "None",
+          "cost": 0,
+          "remaining": 30,
+          "subtracted": false
+        }
+      }
+    },
+    {
+      "id": "signed-mp-max32767",
+      "input": {
+        "actor": {
+          "mp": 32767,
+          "half": false,
+          "mime": false,
+          "frog": false,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 255,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "None",
+          "cost": 255,
+          "remaining": 32512,
+          "subtracted": true
+        }
+      }
+    },
+    {
+      "id": "signed-high-bit-rejects-even-free",
+      "input": {
+        "actor": {
+          "mp": 32768,
+          "half": false,
+          "mime": false,
+          "frog": false,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 0,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "NotEnoughMp",
+          "cost": 0,
+          "remaining": 32768,
+          "subtracted": false
+        }
+      }
+    },
+    {
+      "id": "signed65535-rejects",
+      "input": {
+        "actor": {
+          "mp": 65535,
+          "half": false,
+          "mime": false,
+          "frog": false,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "NotEnoughMp",
+          "cost": 9,
+          "remaining": 65535,
+          "subtracted": false
+        }
+      }
+    },
+    {
+      "id": "mime-does-not-read-signed-mp",
+      "input": {
+        "actor": {
+          "mp": 65535,
+          "half": false,
+          "mime": true,
+          "frog": false,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "None",
+          "cost": 0,
+          "remaining": 65535,
+          "subtracted": false
+        }
+      }
+    },
+    {
+      "id": "zero-cost-still-stores",
+      "input": {
+        "actor": {
+          "mp": 0,
+          "half": false,
+          "mime": false,
+          "frog": false,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 0,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": true
+      },
+      "expected": {
+        "accepted": true,
+        "outcome": {
+          "block": "None",
+          "cost": 0,
+          "remaining": 0,
+          "subtracted": true
+        }
+      }
+    },
+    {
+      "id": "unprepared-bookkeeping-not-simulated",
+      "input": {
+        "actor": {
+          "mp": 30,
+          "half": false,
+          "mime": false,
+          "frog": false,
+          "silence": false,
+          "dontAct": false,
+          "restriction": "None"
+        },
+        "ability": {
+          "id": 16,
+          "cost": 9,
+          "menu": "Default",
+          "affected": true
+        },
+        "mode": "Execute",
+        "bookkeeping": false
+      },
+      "expected": {
+        "accepted": false,
+        "outcome": null
+      }
+    }
+  ],
+  "setup": [
+    {
+      "id": "zero",
+      "raw": 0,
+      "short": false,
+      "non": false,
+      "persevere": false,
+      "expected": 0
+    },
+    {
+      "id": "ordinary9",
+      "raw": 9,
+      "short": false,
+      "non": false,
+      "persevere": false,
+      "expected": 9
+    },
+    {
+      "id": "short9-ceiling",
+      "raw": 9,
+      "short": true,
+      "non": false,
+      "persevere": false,
+      "expected": 5
+    },
+    {
+      "id": "short1-remains1",
+      "raw": 1,
+      "short": true,
+      "non": false,
+      "persevere": false,
+      "expected": 1
+    },
+    {
+      "id": "noncharge",
+      "raw": 9,
+      "short": false,
+      "non": true,
+      "persevere": false,
+      "expected": 0
+    },
+    {
+      "id": "noncharge-after-short",
+      "raw": 9,
+      "short": true,
+      "non": true,
+      "persevere": false,
+      "expected": 0
+    },
+    {
+      "id": "persevere-ignores-both",
+      "raw": 9,
+      "short": true,
+      "non": true,
+      "persevere": true,
+      "expected": 9
+    },
+    {
+      "id": "mask-high-bit",
+      "raw": 128,
+      "short": false,
+      "non": false,
+      "persevere": false,
+      "expected": 0
+    },
+    {
+      "id": "mask255",
+      "raw": 255,
+      "short": false,
+      "non": false,
+      "persevere": false,
+      "expected": 127
+    },
+    {
+      "id": "mask-then-ceiling",
+      "raw": 255,
+      "short": true,
+      "non": false,
+      "persevere": false,
+      "expected": 64
+    }
+  ],
+  "ai": [
+    {
+      "id": "raw-high-bit",
+      "raw": 255,
+      "monsterSkill": false,
+      "defend": false,
+      "persevere": false,
+      "expected": 255
+    },
+    {
+      "id": "monster-floor9",
+      "raw": 9,
+      "monsterSkill": true,
+      "defend": false,
+      "persevere": false,
+      "expected": 4
+    },
+    {
+      "id": "monster-floor1",
+      "raw": 1,
+      "monsterSkill": true,
+      "defend": false,
+      "persevere": false,
+      "expected": 0
+    },
+    {
+      "id": "defend-zero",
+      "raw": 9,
+      "monsterSkill": false,
+      "defend": true,
+      "persevere": false,
+      "expected": 0
+    },
+    {
+      "id": "monster-precedes-defend",
+      "raw": 9,
+      "monsterSkill": true,
+      "defend": true,
+      "persevere": false,
+      "expected": 4
+    },
+    {
+      "id": "persevere-bypass",
+      "raw": 255,
+      "monsterSkill": true,
+      "defend": true,
+      "persevere": true,
+      "expected": 255
+    },
+    {
+      "id": "raw255-halved",
+      "raw": 255,
+      "monsterSkill": true,
+      "defend": false,
+      "persevere": false,
+      "expected": 127
+    }
+  ],
+  "ticks": [
+    {
+      "counter": 255,
+      "blocked": false,
+      "expected": {
+        "counter": 255,
+        "ready": false,
+        "changed": false
+      }
+    },
+    {
+      "counter": 0,
+      "blocked": false,
+      "expected": {
+        "counter": 0,
+        "ready": true,
+        "changed": false
+      }
+    },
+    {
+      "counter": 1,
+      "blocked": false,
+      "expected": {
+        "counter": 0,
+        "ready": true,
+        "changed": true
+      }
+    },
+    {
+      "counter": 2,
+      "blocked": false,
+      "expected": {
+        "counter": 1,
+        "ready": false,
+        "changed": true
+      }
+    },
+    {
+      "counter": 127,
+      "blocked": false,
+      "expected": {
+        "counter": 126,
+        "ready": false,
+        "changed": true
+      }
+    },
+    {
+      "counter": 254,
+      "blocked": false,
+      "expected": {
+        "counter": 253,
+        "ready": false,
+        "changed": true
+      }
+    },
+    {
+      "counter": 255,
+      "blocked": true,
+      "expected": {
+        "counter": 255,
+        "ready": false,
+        "changed": false
+      }
+    },
+    {
+      "counter": 0,
+      "blocked": true,
+      "expected": {
+        "counter": 0,
+        "ready": false,
+        "changed": false
+      }
+    },
+    {
+      "counter": 1,
+      "blocked": true,
+      "expected": {
+        "counter": 1,
+        "ready": false,
+        "changed": false
+      }
+    },
+    {
+      "counter": 10,
+      "blocked": true,
+      "expected": {
+        "counter": 10,
+        "ready": false,
+        "changed": false
+      }
+    }
+  ]
+}

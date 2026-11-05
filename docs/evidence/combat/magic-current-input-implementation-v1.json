@@ -4,7 +4,8 @@
     "ZOD-348",
     "ZOD-349",
     "ZOD-350",
-    "ZOD-351"
+    "ZOD-351",
+    "ZOD-352"
   ],
   "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
   "referenceClean": true,
@@ -12,7 +13,8 @@
   "cExecuted": false,
   "behavior": "docs/behavior/magic-current-inputs-and-casts.md",
   "sourceReceipts": [
-    "docs/evidence/combat/magic-current-input-source-v1.json"
+    "docs/evidence/combat/magic-current-input-source-v1.json",
+    "docs/evidence/combat/magic-resource-source-v1.json"
   ],
   "milestones": [
     {
@@ -37,6 +39,12 @@
       "ticket": "ZOD-351",
       "managedBaseRevision": "6930abff572eab6ff6f119f921c209294b58e4e1",
       "validation": "76 focused magic cases; eight cumulative new current-input cases, three new current-query cases; Release compilation passed",
+      "reports": "scratch/magic-inputs-348-357/"
+    },
+    {
+      "ticket": "ZOD-352",
+      "managedBaseRevision": "a789f350a8ba1ee1ed9cc4ab863d457c45837e73",
+      "validation": "Eight focused Python cases / 59 resource and charge descriptions; source12/10 clean",
       "reports": "scratch/magic-inputs-348-357/"
     }
   ]
