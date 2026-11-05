@@ -16,7 +16,7 @@ public sealed record SwordAiFormulaOutcome(int HitPercent, int NormalDamage, int
 public sealed record SwordAiFormulaResult(bool Accepted, AttackCommandRejection Rejection,
     SwordAiFormulaOutcome? Outcome, RandomState RngState);
 
-/// <summary>Pure ordinary-sword AI formula query over the explicitly selected two-unit flat profile.</summary>
+/// <summary>Pure ordinary-sword AI formula queries with separate explicit pair and roster admission.</summary>
 /// <remarks>
 /// Source: decomp 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-116/117.
 /// Uses current combat stats and settled target facing. No execution, choice consumption, battle mutation,
@@ -27,9 +27,23 @@ public static class SwordAiFormulaProjection
     public static SwordAiFormulaResult Evaluate(AttackBattleSnapshot state, AttackUnitCommand command,
         BoundedSwordWeapon? weapon, FlatSwordBattleProfile profile)
     {
+        ArgumentNullException.ThrowIfNull(profile);
+        return EvaluateCore(state, command, weapon, profile.ValidateState);
+    }
+
+    /// <summary>Explicit roster formula entry; shares the same selected-target formula, with no clock or command authority.</summary>
+    public static SwordAiFormulaResult EvaluateRoster(AttackBattleSnapshot state, AttackUnitCommand command,
+        BoundedSwordWeapon? weapon, FlatRosterBattleProfile profile)
+    {
+        ArgumentNullException.ThrowIfNull(profile);
+        return EvaluateCore(state, command, weapon, profile.ValidateState);
+    }
+
+    private static SwordAiFormulaResult EvaluateCore(AttackBattleSnapshot state, AttackUnitCommand command,
+        BoundedSwordWeapon? weapon, Action<AttackBattleSnapshot> validateProfile)
+    {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(command);
-        ArgumentNullException.ThrowIfNull(profile);
         var initialRng = state.TurnBattle.Turns.RngState;
         SwordAiFormulaResult Reject(AttackCommandRejection reason) => new(false, reason, null, initialRng);
 
@@ -44,7 +58,7 @@ public static class SwordAiFormulaProjection
         if (actor.UnitId == target.UnitId) return Reject(AttackCommandRejection.SelfTarget);
         if (target.Status == AttackUnitStatus.Dead) return Reject(AttackCommandRejection.DeadTarget);
         if (weapon is null || actor.RightHandWeaponId != weapon.Id) return Reject(AttackCommandRejection.UnsupportedSetup);
-        try { profile.ValidateState(state); }
+        try { validateProfile(state); }
         catch (Exception exception) when (exception is ArgumentException or NotSupportedException)
         { return Reject(AttackCommandRejection.UnsupportedSetup); }
 

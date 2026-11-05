@@ -6,18 +6,18 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-294: trace the ordinary roster sword candidate/effect boundary.**
-[ZOD-290–293](behavior/roster-ai-action-foundation.md) now own fresh cast-origin
-provenance across every active enemy, source-order allied Accumulate coins and
-one isolated self occurrence after a fresh general prefix. Missing ranked keys
-reject atomically; exhaustive Attack and self map work read no ranked keys.
-Another ally's usefulness can admit the map pass while both self candidates
-return NotValuable before the clock. Valuable self candidates share private
-projection/clock/scoring with old pair owners. Next trace exact sword formula/
-weapon/numeric admission and one-target roster HP/KO projection before selecting
-its managed child. Existing pair command drivers are unchanged. Full roster
-Attack/Stone target/aim traversal, list ranking/lottery, roster AI commands,
-other policies/statuses/maps, corpse lifecycle, automatic facing, terminal
+**ZOD-296: evaluate ordinary roster Attack through a fresh general prefix.**
+[ZOD-294/295](behavior/roster-sword-ai-candidate.md) now project and score one
+selected enemy sword candidate, sharing pair/roster formula arithmetic and an
+explicit changed-target unit builder. Peer HP/status/counters remain their own;
+a new corpse contributes upkeep draws until the first living movement
+opportunity. Both orders, front evade, zero accuracy/damage, numeric widths,
+all-unit signs and whole-query rollback are covered. Next own one fresh general
+prefix and source exhaustive Attack origin/aim traversal across active enemies,
+including actor-origin D1 substitution, first-complete ties and D0 comparison.
+Attack's unread priority cells must stay unread. Existing pair command drivers
+are unchanged. Stone, full-list ranking/lottery, roster AI commands/turns, other
+policies/statuses/maps, full corpse lifecycle, automatic facing, terminal
 routing, frame RNG, host/editor, owner drafts, replacement interfaces and ZOD-106
 remain separate/deferred.
 
@@ -79,21 +79,20 @@ without rewriting old evidence.
   are preserved byte-for-byte and tracked as deferred scaffolding. The owner
   explicitly left `AbilityToggles` consolidation for later; it is not wired into
   current metadata, the editor or rules. Other unimplemented flag families stay deferred.
-- Latest pure roster AI: [ZOD-291–293 action foundations](behavior/roster-ai-action-foundation.md)
-  own a fresh general prefix and cast masks across all active enemy teams.
-  Ranked Stone resolves fresh/retained keys and current proximity; missing keys
-  return incoming workspace/RNG. Attack exhaustive and self map entries do not
-  read ranked priority. Existing source-order scenario/unknown-cell rules remain.
-  Separate roster self usefulness validates typed effects, complete zero-bonus
-  bindings, grants and PA 1..99; every active ally draws. The isolated selected
-  self occurrence derives D1, usefulness and zero/one/two attempts. Ally-only
-  usefulness rejects self before the clock; a valuable self hit preserves +3,
-  all-unit signs and restored PA/facing. Post-ACT skips before invocation checks.
-  Existing pair owners share private filter/projection/clock/scoring kernels;
-  public pair admission and streams remain unchanged. No full action-list RNG,
-  ranked lottery, cached simulation input or command authority is claimed.
-  Compact16, Framework slot21 and 16 other movement records remain distinct
-  from uncapped definition storage. General policy/flat/MP0 guards stay explicit.
+- Latest pure roster AI: [ZOD-295 isolated sword candidate](behavior/roster-sword-ai-candidate.md)
+  derives legal destinations from initially living state, uses supplied ACT/Move
+  order for formula origin and shares private formula/clock/scoring with old pair
+  owners. Only selected target HP changes; peers retain HP/status/counters. Front
+  evade and four real formula draws, midpoint/no-knockback projection, Critical/
+  Dead counter3, corpse upkeep and any living next opportunity remain distinct.
+  Typed/equipped sword and signed-16 envelope gate before drawing; whole-query
+  late failures roll back formula/upkeep. Existing pair API/guards stay intact.
+  [Cast/self foundations](behavior/roster-ai-action-foundation.md) retain fresh/
+  retained/unread keys, all-ally usefulness and isolated self entry through shared
+  private kernels. Full roster occurrence/target/aim search is not yet composed.
+  No cached executable result, ranked lottery, command authority or full-list
+  stream is claimed. AI compact16, Framework slot21 and 16 other movement records
+  remain distinct from uncapped storage; general policy/flat/MP0 guards persist.
 - Latest authoritative prerequisites: [ZOD-278–282 roster commands](behavior/flat-roster-combat.md)
   own immutable stable teams/source order and strict ground/profile matching.
   Shared range/backtrace permits ally transit but empty endpoints; source movement
@@ -153,12 +152,11 @@ without rewriting old evidence.
   explicit player-control flag clear, HP*128/maxHP>=45 and no NonBlue reach draw.
   Existing Attack/Stone scoring/selection/execution and both teams are preserved;
   terminal routing and Blue low-HP/player-controlled policies remain open.
-- Latest source study: [ZOD-290 roster action search](architecture/zod-290-roster-action-search.md)
-  pins 32 functions across nine files. Nineteen independent descriptions cover
-  ranked/unread cast priorities, fresh/retained values, source-order allied
-  coins, self-unuseful early rejection, restored PA/clamp and all-unit scores.
-  Prior roster preparation/general/combat/targeting and pair/list/workspace
-  evidence retain their provenance.
+- Latest source study: [ZOD-294 roster sword candidate](architecture/zod-294-roster-sword-candidate.md)
+  pins 30 functions across twelve files. Thirteen independent descriptions cover
+  formula/origin/width, selected-target HP, Critical/KO, ready ties, repeated
+  corpse upkeep and all-unit scores. Prior roster search/preparation/general/
+  combat/targeting and pair/list/workspace evidence retain their provenance.
 - Organization: AI source/tests use Shared, Sword, ThrowStone, AttackThrowStone,
   Accumulate and BasicSkill folders with stable namespaces; [layout](development/ai-source-layout.md).
   Owner RNG migration is completed as `Zodiac.Framework.Random.RandomStateGenerator`
@@ -172,11 +170,11 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore, zero-warning/error Release build and **4,355 .NET
-  cases** (1,483 Framework, 1,127 AI), including 12 new AI cases, pass. All
-  **557 Python tests**, pinned source/prepared-data, algorithm-guide, local-link
+- Validation: locked restore, zero-warning/error Release build and **4,363 .NET
+  cases** (1,483 Framework, 1,135 AI), including eight new AI cases, pass. All
+  **560 Python tests**, pinned source/prepared-data, algorithm-guide, local-link
   and coverage checks pass. Seven full TRX reports/logs are under ignored
-  `scratch/roster-actions-290-293/`.
+  `scratch/roster-sword-294-295/`.
   Python uses repository-pinned Pillow 12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow 13.0.0 triggers six existing version guards; WindowsApps Python

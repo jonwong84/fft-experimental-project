@@ -24,7 +24,10 @@ family. Source and test projects use matching folders:
   roster AI commands remain future work.
   These serve more than one family.
 - `Sword/`: the original ordinary-sword pilot, its preparation, scenarios,
-  scans, selection and execution adapters.
+  scans, selection and execution adapters. `RosterSwordAiCandidate` now shares
+  formula/clock/scoring and explicit selected-target projection for one isolated
+  roster hypothesis. [Candidate boundaries](../../docs/behavior/roster-sword-ai-candidate.md)
+  preserve old pair guards and peer state; roster enumeration remains open.
 - `ThrowStone/`: one Throw Stone formula/candidate/scan, used by pair selection.
 - `AttackThrowStone/`: the closed two-entry list, shared pair preparation,
   movement/scenario branches, ranking/selection and actual command adapters.

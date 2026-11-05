@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-294 (trace the ordinary roster sword candidate/effect boundary).** ZOD-290–293 bind ranked cast priorities across all enemies, classify roster self usefulness and evaluate one isolated fresh Accumulate occurrence. Existing pair command drivers retain their guards; roster Attack/Stone search and full-list selection remain separate.
-There are 34 open tickets below. The 260 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-296 (evaluate ordinary roster Attack through a fresh general prefix).** ZOD-294/295 add an isolated selected-target sword candidate with shared formula/clock/scoring and explicit roster admission. Existing pair command drivers retain their guards; full roster Attack/Stone traversal and list selection remain separate.
+There are 34 open tickets below. The 262 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,25 +29,25 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-294 — Trace the ordinary roster sword candidate/effect boundary
+### ZOD-296 — Evaluate ordinary roster Attack through a fresh general prefix
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-291, ZOD-292, ZOD-293
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-291, ZOD-295
 
-Pin the read-only reference and trace one ordinary sword candidate against a
-selected roster target through both action orders, exact weapon/numeric/facing
-admission, formula draws, midpoint accuracy, no-knockback AI projection, target
-HP/status/KO accounting, source clock and all-unit score signs. Distinguish
-living input from a hypothetical KO, including corpse upkeep and later living
-movement opportunities. Reuse actual roster sword/formula rules and shared
-projection/clock/scoring; do not weaken a pair guard or apply the target's HP to
-every peer. Preserve grants/effect binding, actual versus predicted effects and
-whole-query RNG rollback. Produce independent vectors and select a bounded
-managed child before full target/aim traversal. Stone search, full-list ranking/
-lottery, roster AI command execution, other abilities/policies/statuses/maps,
-corpse lifecycle, automatic facing, terminal routing, frame RNG, host/editor,
-owner drafts, replacement interfaces and ZOD-106 remain separate/deferred. See
-[roster action foundations](behavior/roster-ai-action-foundation.md) and the
-[AI roadmap](development/ai-completion-roadmap.md).
+Own one fresh general preparation/scenario prefix and evaluate its ordinary
+Attack occurrence across every active useful enemy. Recheck the pinned source
+callers/masks before translating source exhaustive origin and aim traversal,
+actor-origin D1 substitution, range/eligibility, complete ties and best-candidate
+comparison against D0. Reuse the roster sword candidate and existing private
+ranking helpers; do not call a refreshed pair query per target. Attack reads no
+ranked-origin priority keys and must not reject an unread unknown cell. Preserve
+post-ACT skip, no-target/zero-accuracy paths, original target ordering, whole-query
+RNG rollback and input isolation. Add independent vectors and pair parity without
+weakening pair guards. Stop before Stone, occurrence composition/ranked lottery,
+roster AI commands/turns, other abilities/policies/statuses/maps, full corpse
+lifecycle, automatic facing, terminal routing, frame RNG, host/editor, owner
+drafts, replacement interfaces and ZOD-106. See
+[roster sword candidate](behavior/roster-sword-ai-candidate.md) and
+[roster search study](architecture/zod-290-roster-action-search.md).
 
 ## Existing validation gates
 

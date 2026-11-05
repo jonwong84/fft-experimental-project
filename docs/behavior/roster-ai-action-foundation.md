@@ -104,8 +104,10 @@ records validation; seven TRX reports/logs are ignored under
 validation was repeated. All nine owner drafts, including AbilityToggles, are
 unchanged; no Framework/Content/host/editor or project/lock/package changes.
 
-ZOD-294 next traces the ordinary roster sword candidate/effect boundary. Full
-Attack/Stone roster formula/target/aim traversal, list composition/ranked lottery,
+The [ZOD-294/295 follow-up](roster-sword-ai-candidate.md) now projects and scores
+one ordinary roster sword candidate. ZOD-296 next connects exhaustive Attack
+enumeration to a fresh general prefix. Full Attack/Stone target/aim traversal,
+list composition/ranked lottery,
 roster AI commands/turns, other abilities/policies/statuses/maps, corpse lifecycle,
 automatic facing, terminal routing and original frame RNG remain open. General
 policy, compact16, MP0/positive Speed, raw Move <=124 and flat-ground guards stay
