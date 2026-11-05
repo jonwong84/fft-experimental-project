@@ -1,5 +1,6 @@
 using System.Text.Json;
 using Xunit;
+using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework.Tests;
 
@@ -24,11 +25,72 @@ internal static class MagicCurrentTestData
     }
     internal static FaithMagicSpell Spell(JsonElement d) => new(Enum.Parse<FaithMagicAmountKind>(d.GetProperty("kind").GetString()!),
         d.GetProperty("power").GetByte(), (MagicElement)d.GetProperty("elements").GetByte(), d.GetProperty("evadeable").GetBoolean());
+    internal static FaithMagicCurrentRequest Request(JsonElement r)
+    {
+        var p = r.GetProperty("profile"); var pe = p.GetProperty("entry"); var entry = r.GetProperty("entry");
+        return new(Unit(r.GetProperty("caster")), Unit(r.GetProperty("target")), Spell(r.GetProperty("spell")),
+            (MagicDamageWeather)r.GetProperty("weather").GetInt32(), Enum.Parse<MagicFormulaEvaluationMode>(r.GetProperty("mode").GetString()!),
+            new(p.GetProperty("living").GetBoolean(), p.GetProperty("noBlocked").GetBoolean(), p.GetProperty("noGolem").GetBoolean(),
+                p.GetProperty("emptyStatus").GetBoolean(), p.GetProperty("noKnockback").GetBoolean(), p.GetProperty("hpOnly").GetBoolean(),
+                new(pe.GetProperty("primary").GetBoolean(), pe.GetProperty("noPending").GetBoolean(), pe.GetProperty("clearFlag").GetBoolean())),
+            new(entry.GetProperty("fresh").GetBoolean(), entry.GetProperty("noEarlier").GetBoolean(), entry.GetProperty("nonzero").GetBoolean()));
+    }
+    internal static MagicResultFrame Frame(JsonElement d)
+    {
+        var t = d.GetProperty("types"); var e = d.GetProperty("effects");
+        return new(d.GetProperty("hit").GetBoolean(), d.GetProperty("accuracy").GetUInt16(), (MagicResultMissKind)d.GetProperty("miss").GetByte(),
+            d.GetProperty("damage").GetInt16(), d.GetProperty("healing").GetInt16(),
+            new(t.GetProperty("damage").GetBoolean(), t.GetProperty("healing").GetBoolean(), t.GetProperty("pseudo").GetBoolean()),
+            new(e.GetProperty("absorb").GetBoolean(), e.GetProperty("weak").GetBoolean(), e.GetProperty("added").GetBoolean()), d.GetProperty("clear").GetBoolean());
+    }
+    internal static void AssertResult(FaithMagicResolutionResult r, JsonElement e)
+    {
+        Assert.Equal(e.GetProperty("accepted").GetBoolean(), r.Accepted);
+        Assert.Equal(Enum.Parse<FaithMagicResolutionRejection>(e.GetProperty("rejection").GetString()!), r.Rejection);
+        Assert.Equal(new RandomState(e.GetProperty("word").GetUInt32(), e.GetProperty("count").GetUInt64()), r.RngState);
+        if (!r.Accepted) { Assert.Null(r.Outcome); Assert.Null(r.Evasion); Assert.Null(r.Proc); return; }
+        Assert.Equal(Frame(e.GetProperty("outcome")), r.Outcome);
+        var ev = e.GetProperty("evasion");
+        if (ev.ValueKind == JsonValueKind.Null) Assert.Null(r.Evasion);
+        else Assert.Equal(new MagicEvasionOutcome(ev.GetProperty("hit").GetBoolean(), ev.GetProperty("accuracy").GetUInt16(),
+            (MagicResultMissKind)ev.GetProperty("miss").GetByte(), ev.GetProperty("itemLost").GetByte(), ev.GetProperty("abandon").GetBoolean()), r.Evasion);
+        var proc = e.GetProperty("procDisposition");
+        if (proc.ValueKind == JsonValueKind.Null) Assert.Null(r.Proc);
+        else { Assert.Equal(Enum.Parse<MagicProcDisposition>(proc.GetString()!), r.Proc!.Disposition); Assert.Equal(e.GetProperty("setFlag").GetBoolean(), r.Proc.SetAddedEffectFlag); }
+    }
 }
 
 [Trait("Ruleset", "OriginalFft")]
 public sealed class FaithMagicCurrentInputTests
 {
+    [Fact]
+    public void Eleven_literal_current_pair_queries_preserve_full_results_modes_and_rng_checkpoints()
+    {
+        using var doc = MagicCurrentTestData.Fixture();
+        foreach (var row in doc.RootElement.GetProperty("queries").EnumerateArray())
+            MagicCurrentTestData.AssertResult(FaithMagicInputs.Resolve(MagicCurrentTestData.Request(row),
+                new(row.GetProperty("word").GetUInt32(), row.GetProperty("count").GetUInt64())), row.GetProperty("expected"));
+    }
+
+    [Fact]
+    public void Unsupported_current_state_rejects_without_private_results_or_rng()
+    {
+        using var doc = MagicCurrentTestData.Fixture(); var request = MagicCurrentTestData.Request(doc.RootElement.GetProperty("queries")[0]);
+        var before = new RandomState(57, 9);
+        var r = FaithMagicInputs.Resolve(request with { Target = request.Target with { Statuses = new(Dead: true) } }, before);
+        Assert.False(r.Accepted); Assert.Null(r.Outcome); Assert.Null(r.Evasion); Assert.Null(r.Proc); Assert.Equal(before, r.RngState);
+        Assert.Throws<ArgumentNullException>(() => FaithMagicInputs.Resolve(null!, before));
+    }
+
+    [Fact]
+    [Trait("Contract", "QueryIsolation")]
+    public void Current_pair_replay_preserves_both_snapshots()
+    {
+        using var doc = MagicCurrentTestData.Fixture(); var request = MagicCurrentTestData.Request(doc.RootElement.GetProperty("queries")[0]);
+        var copy = request with { }; var before = new RandomState(57, 9); var r = FaithMagicInputs.Resolve(request, before);
+        Assert.Equal(r, FaithMagicInputs.Resolve(request, before)); Assert.Equal(copy, request); Assert.Equal(new RandomState(57, 9), before);
+    }
+
     [Fact]
     public void Twelve_current_input_projections_preserve_stored_bytes_and_derive_named_facts()
     {

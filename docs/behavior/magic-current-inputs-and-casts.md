@@ -86,3 +86,14 @@ Don't Act additionally disables the supplied action-unrestricted fact. No live
 state, RNG or command is changed. Five cumulative focused cases pass33 relations,
 12 projections and self-target/immutability/argument guards; two cases are new.
 Logs: `scratch/magic-inputs-348-357/focused-350.log`.
+
+## ZOD-351
+
+`FaithMagicInputs.Resolve` now accepts a current immutable pair and spell inputs,
+projects them once and delegates to the existing shared formula entry. Remaining
+fresh/nonzero/no-earlier-effects/finalizer certificates remain explicit. Rejection
+returns original RNG and no partial frame/evade/proc data. Eight cumulative input
+cases (three new) and all76 focused magic cases pass, including11 literal current
+queries, mode/RNG continuation, replay and unsupported current status. All prior
+amount/proc/finalizer expectations remain unchanged. Logs:
+`scratch/magic-inputs-348-357/focused-351.log`. No publisher or AI entry is connected.

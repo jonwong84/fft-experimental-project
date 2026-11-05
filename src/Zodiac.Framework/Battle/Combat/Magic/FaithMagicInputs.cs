@@ -31,9 +31,25 @@ public sealed record MagicInputProjection(FaithMagicAmountInput Amount, MagicDam
 
 public sealed record MagicInputProjectionResult(bool Accepted, MagicInputProjection? Outcome);
 
+public sealed record FaithMagicCurrentRequest(MagicCurrentUnit Caster, MagicCurrentUnit Target, FaithMagicSpell Spell,
+    MagicDamageWeather Weather, MagicFormulaEvaluationMode Mode, MagicResultFinalizationProfile? Profile,
+    FaithMagicEntryProfile? Entry);
+
 /// <summary>Current-input projection for the shared magic owner, source 11464943bbdbd2a0af022d90cb7f10455cf911df.</summary>
 public static class FaithMagicInputs
 {
+    /// <summary>Resolve a current immutable pair with the existing shared formula; no live state or RNG adoption.</summary>
+    public static FaithMagicResolutionResult Resolve(FaithMagicCurrentRequest request, Zodiac.Framework.Random.RandomState rng)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        if (!Enum.IsDefined(request.Mode)) throw new ArgumentOutOfRangeException(nameof(request));
+        var projected = Project(request.Caster, request.Target, request.Spell, request.Weather);
+        if (!projected.Accepted) return new(false, FaithMagicResolutionRejection.UnsupportedContext, null, null, null, rng);
+        var p = projected.Outcome!;
+        return FaithMagicFormula.Resolve(new(new(p.Amount, p.TargetIsUndead, 100, request.Mode, request.Profile, p.Elements),
+            request.Entry, request.Spell.SecondaryEvadeable, p.Equipment, p.EvadeModifiers), rng);
+    }
+
     public static MagicInputProjectionResult Project(MagicCurrentUnit caster, MagicCurrentUnit target,
         FaithMagicSpell spell, MagicDamageWeather weather)
     {

@@ -3,7 +3,8 @@
   "tickets": [
     "ZOD-348",
     "ZOD-349",
-    "ZOD-350"
+    "ZOD-350",
+    "ZOD-351"
   ],
   "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
   "referenceClean": true,
@@ -30,6 +31,12 @@
       "ticket": "ZOD-350",
       "managedBaseRevision": "4921b2b4438fa21e2b33e81e087a61b982b88ea6",
       "validation": "Five cumulative focused Framework cases; 33 relations and12 projections, two new cases; Release compilation passed",
+      "reports": "scratch/magic-inputs-348-357/"
+    },
+    {
+      "ticket": "ZOD-351",
+      "managedBaseRevision": "6930abff572eab6ff6f119f921c209294b58e4e1",
+      "validation": "76 focused magic cases; eight cumulative new current-input cases, three new current-query cases; Release compilation passed",
       "reports": "scratch/magic-inputs-348-357/"
     }
   ]

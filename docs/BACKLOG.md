@@ -4,12 +4,12 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-351 (Resolve shared magic from current unit snapshots).**
+**Next bounded work: ZOD-352 (Trace ordinary spell MP and charge preparation).**
 [Current magic inputs and casts](behavior/magic-current-inputs-and-casts.md)
-records completed ZOD-348–350. Read current effective MA/current Faith;
+records completed ZOD-348–351. Read current effective MA/current Faith;
 preserve typed shared calculations, explicit context and candidate RNG/state.
 Scheduling, resource consumption and target calculations have separate owners.
-There are 40 open tickets below. The 317 completed tickets, prior checkpoints and
+There are 39 open tickets below. The 318 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -33,17 +33,9 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-351 — Resolve shared magic from current unit snapshots
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-350
-
-Compose projected current inputs through the shared formula with explicit remaining entry/finalizer certificates, pure replay and atomic rejection. Preserve healing bypass and all old APIs. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
-Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/
-deferred. See the [source and boundaries](behavior/magic-current-inputs-and-casts.md).
-
 ### ZOD-352 — Trace ordinary spell MP and charge preparation
 
-**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-351
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-351
 
 Trace MP checks, charge setup and countdown callers, mode behavior, storage widths and order. Distinguish scheduling from spending at resolution, and choose independently testable children before implementation. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
 Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/

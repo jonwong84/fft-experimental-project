@@ -6,9 +6,9 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-351: Resolve shared magic from current unit snapshots.**
+**ZOD-352: Trace ordinary spell MP and charge preparation.**
 [Current magic inputs and casts](behavior/magic-current-inputs-and-casts.md)
-records completed ZOD-348–350. Current effective MA and current Faith are
+records completed ZOD-348–351. Current effective MA and current Faith are
 distinct from base/equipment MA and original Faith. Keep snapshots immutable,
 source classification/rounding/order explicit, and all state/RNG adoption outside
 pure queries. Resource/charge children preserve scheduling versus MP spending.
