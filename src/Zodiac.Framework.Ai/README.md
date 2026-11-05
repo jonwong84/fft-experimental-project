@@ -27,7 +27,10 @@ family. Source and test projects use matching folders:
   scans, selection and execution adapters. `RosterSwordAiCandidate` now shares
   formula/clock/scoring and explicit selected-target projection for one isolated
   roster hypothesis. [Candidate boundaries](../../docs/behavior/roster-sword-ai-candidate.md)
-  preserve old pair guards and peer state; roster enumeration remains open.
+  preserve old pair guards and peer state. `RosterSwordAiAttackEntry` now owns
+  [fresh exhaustive roster Attack](../../docs/behavior/roster-sword-ai-attack.md),
+  with map origin/aim order, first-complete ties and D0 comparison. Stone/list
+  selection remains open.
 - `ThrowStone/`: one Throw Stone formula/candidate/scan, used by pair selection.
 - `AttackThrowStone/`: the closed two-entry list, shared pair preparation,
   movement/scenario branches, ranking/selection and actual command adapters.

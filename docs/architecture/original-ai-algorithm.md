@@ -273,7 +273,9 @@ coin; another useful ally cannot certify a valuable self hit. A separate fresh
 isolated self entry preserves early hit-accounting rejection and whole-roster
 scoring. [One roster sword candidate](../behavior/roster-sword-ai-candidate.md)
 now shares formula, explicit selected-target projection, hypothetical clock and
-all-unit scoring. Full Attack/Stone roster aim/target traversal remains open.
+all-unit scoring. [Fresh roster Attack](../behavior/roster-sword-ai-attack.md)
+now enumerates all active useful enemy panels through one privately owned
+general prefix. Stone and full-list traversal remain open.
 
 **Implemented, bounded:** ordinary sword and Throw Stone projections/scans, their
 shared prefix and pair ranking, plus [Accumulate self projection, closed-list
@@ -477,7 +479,8 @@ fresh cast-priority provenance, all-ally self usefulness and an isolated fresh
 self occurrence with whole-roster scoring.
 [ZOD-294/295](../behavior/roster-sword-ai-candidate.md) add one isolated roster
 sword candidate with peer-preserving HP projection and corpse clocks. ZOD-296
-next connects exhaustive Attack enumeration to one fresh general prefix.
+now owns exhaustive Attack enumeration through one fresh general prefix.
+ZOD-297 next traces roster Stone effects, trajectories and ranked aims.
 Full original search breadth remains separate.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use

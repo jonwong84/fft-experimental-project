@@ -31,12 +31,12 @@ public static class RosterAiCastOrigins
         var prefix = RosterAiGeneralScenarios.Evaluate(state, request, simulation, refresh, lists, general, scoring, rng);
         if (!prefix.Accepted) return Reject(new(RosterAiCastOriginRejection.PrefixRejected, prefix.Failure));
         var m = prefix.Outcome!; var p = m.Preparation;
-        var enemies = p.Preparation.Targets.Units.Where(u => u.Decision.Enemy && p.ActiveTargets.UnitActive[u.UnitId]).ToImmutableArray();
+        var enemies = AiRosterCastGeometry.UsefulEnemies(p);
         var occurrences = ImmutableArray.CreateBuilder<RosterAiOccurrenceOrigins>();
         foreach (var entry in p.Preparation.ActorEntries)
         {
             var origins = entry.Usable && entry.Source.Harmful
-                ? m.Scenario1.Where(tile => enemies.Any(u => AiRosterNearest.Distance(tile, u.Position) <= entry.Source.Range)).ToImmutableArray()
+                ? AiRosterCastGeometry.Origins(m.Scenario1, enemies, entry.Source.Range)
                 : ImmutableArray<TilePosition>.Empty;
             var keys = ImmutableArray.CreateBuilder<AiCastOriginPriority>();
             if (entry.Usable && entry.Source.Kind == AiHumanAbilityKind.ThrowStone)

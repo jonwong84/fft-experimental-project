@@ -88,9 +88,9 @@ records checks; seven TRX reports/logs are ignored under
 manual UI validation was repeated. All nine owner drafts, including AbilityToggles,
 are unchanged; no Framework/Content/host/editor or project/lock/package changes.
 
-ZOD-296 next connects ordinary roster Attack enumeration to one fresh general
-prefix through this candidate owner, preserving source exhaustive map/aim order
-and unread priority keys. Stone search, full-list ranking/lottery, roster AI
+The [ZOD-296 follow-up](roster-sword-ai-attack.md) now connects ordinary roster
+Attack enumeration to one fresh general prefix through this candidate owner,
+preserving source exhaustive map/aim order and unread priority keys. Stone search, full-list ranking/lottery, roster AI
 commands/turns, other abilities/policies/statuses/maps, full corpse lifecycle,
 automatic facing, terminal routing and original frame RNG remain open. Owner
 drafts, host/editor, broad replacement interfaces and ZOD-106 stay deferred.

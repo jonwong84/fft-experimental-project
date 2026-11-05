@@ -41,6 +41,16 @@ public static class RosterSwordAiCandidate
         var movement = FlatRosterMovement.Evaluate(state, candidate.ActorId, simulation.Battle);
         if (!movement.Accepted) return Reject(RosterSwordAiCandidateRejection.UnsupportedProfile);
         if (!movement.Outcome!.AiOrigins.Contains(candidate.Destination)) return Reject(RosterSwordAiCandidateRejection.InvalidCandidate);
+        return EvaluateFresh(state, candidate, weapon, simulation, rng);
+    }
+
+    // Only owning fresh entry scans bypass repeated state/movement admission; never a public cached result input.
+    internal static RosterSwordAiCandidateResult EvaluateFresh(AttackBattleSnapshot state, SwordAiCandidate candidate,
+        BoundedSwordWeapon? weapon, RosterAiSimulationProfile simulation, RandomState rng)
+    {
+        RosterSwordAiCandidateResult Reject(RosterSwordAiCandidateRejection reason) => new(AiScoringDisposition.Rejected, reason, null, null, rng);
+        var turn = state.TurnBattle.Turns.Units.Single(u => u.Id == candidate.ActorId);
+        int team = simulation.Battle.Units[candidate.ActorId].StableTeam;
         var old = state.TurnBattle; var actor = old.Battle.Units.Single(u => u.Id == candidate.ActorId);
         var origin = candidate.Order == SwordAiCandidateOrder.MoveThenAct ? candidate.Destination : actor.Position;
         var bodies = old.Battle.Units.Select(u => u.Id == candidate.ActorId ? new BattleUnitState(u.Id, origin, u.MovementProfile, u.HasMoved) : u);

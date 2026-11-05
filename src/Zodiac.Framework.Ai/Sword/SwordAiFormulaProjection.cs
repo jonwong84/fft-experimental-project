@@ -70,7 +70,7 @@ public static class SwordAiFormulaProjection
             return Reject(AttackCommandRejection.OutOfRange);
         int xa = Math.Max(1, actor.PhysicalAttack); // Neutral ordinary zodiac still floors XA.
         // Retain the execution profile's closed signed-16 domain, even though AI never crits.
-        if ((2 * xa - 1) * weapon.Power > short.MaxValue) return Reject(AttackCommandRejection.UnsupportedSetup);
+        if (!WeaponFits(actor, weapon)) return Reject(AttackCommandRejection.UnsupportedSetup);
         var front = dx > 0 ? BattleFacing.West : dx < 0 ? BattleFacing.East
             : dy > 0 ? BattleFacing.South : BattleFacing.North;
         int hitPercent = 100 - (target.Facing == front ? target.ClassPhysicalEvade : 0);
@@ -89,4 +89,8 @@ public static class SwordAiFormulaProjection
         return new(true, AttackCommandRejection.None,
             new(hitPercent, damage, Math.Max(0, target.Hp - damage)), rng);
     }
+
+    internal static bool WeaponFits(AttackUnitState actor, BoundedSwordWeapon? weapon) =>
+        weapon is not null && actor.RightHandWeaponId == weapon.Id &&
+        (2 * Math.Max(1, actor.PhysicalAttack) - 1) * weapon.Power <= short.MaxValue;
 }

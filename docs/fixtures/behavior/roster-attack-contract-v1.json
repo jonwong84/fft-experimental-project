@@ -1,0 +1,1221 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-296",
+  "date": "2026-11-05",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "kind": "isolated-fresh-roster-attack-descriptions",
+  "productionImplemented": false,
+  "notes": [
+    "Independent hand-worked fresh-prefix/Attack tapes; no original, C or managed execution.",
+    "Selected 8x4 ordinary map. One prefix precedes exhaustive origin-map then aim-panel-map order. Target source order is distinct.",
+    "All supported candidate RNG is retained, but every candidate restores the original live baseline. No aim consumption or ranked-origin priority read.",
+    "Other list entries affect preparation only; no full-list stream, ranked array, lottery, command or original frame RNG equivalence."
+  ],
+  "vectors": [
+    {
+      "id": "actor-origin-substitutes-owned-d1",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0
+          }
+        ]
+      },
+      "expected": {
+        "skipped": false,
+        "origins": [
+          [
+            1,
+            1
+          ]
+        ],
+        "targets": [
+          "b"
+        ],
+        "candidates": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "destination": [
+              0,
+              1
+            ],
+            "order": "ActThenMove",
+            "disposition": "Scored",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 8,
+            "word": 3210001534,
+            "count": 16
+          }
+        ],
+        "best": 0,
+        "comparison": "Above",
+        "word": 3210001534,
+        "count": 16
+      }
+    },
+    {
+      "id": "certain-evade-keeps-formula-only-draws",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 100
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0
+          }
+        ]
+      },
+      "expected": {
+        "skipped": false,
+        "origins": [
+          [
+            1,
+            1
+          ]
+        ],
+        "targets": [
+          "b"
+        ],
+        "candidates": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "destination": [
+              0,
+              1
+            ],
+            "order": "ActThenMove",
+            "disposition": "NotValuable",
+            "priority": null,
+            "hit": null,
+            "proximity": 8,
+            "word": 2633739833,
+            "count": 15
+          }
+        ],
+        "best": null,
+        "comparison": null,
+        "word": 2633739833,
+        "count": 15
+      }
+    },
+    {
+      "id": "target-panels-map-order-not-source-slot-order",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 3,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 0,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 0,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 2,
+            "tile": [
+              1,
+              0
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "d",
+            "order": 4,
+            "team": 1,
+            "tile": [
+              0,
+              1
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0
+          }
+        ]
+      },
+      "expected": {
+        "skipped": false,
+        "origins": [
+          [
+            1,
+            1
+          ]
+        ],
+        "targets": [
+          "c",
+          "b"
+        ],
+        "candidates": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "c",
+            "destination": [
+              1,
+              1
+            ],
+            "order": "ActThenMove",
+            "disposition": "Scored",
+            "priority": 26,
+            "hit": 100,
+            "proximity": 18,
+            "word": 3655513600,
+            "count": 14
+          },
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "destination": [
+              1,
+              1
+            ],
+            "order": "ActThenMove",
+            "disposition": "Scored",
+            "priority": 26,
+            "hit": 100,
+            "proximity": 18,
+            "word": 836760821,
+            "count": 19
+          }
+        ],
+        "best": 0,
+        "comparison": "Above",
+        "word": 836760821,
+        "count": 19
+      }
+    },
+    {
+      "id": "all-origins-continue-after-success-and-zero-accuracy",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 2,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 100
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0
+          }
+        ]
+      },
+      "expected": {
+        "skipped": false,
+        "origins": [
+          [
+            2,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "targets": [
+          "b"
+        ],
+        "candidates": [
+          {
+            "origin": [
+              2,
+              0
+            ],
+            "target": "b",
+            "destination": [
+              2,
+              0
+            ],
+            "order": "MoveThenAct",
+            "disposition": "Scored",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 9,
+            "word": 2937909499,
+            "count": 21
+          },
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "destination": [
+              1,
+              3
+            ],
+            "order": "ActThenMove",
+            "disposition": "NotValuable",
+            "priority": null,
+            "hit": null,
+            "proximity": 7,
+            "word": 3535774167,
+            "count": 25
+          },
+          {
+            "origin": [
+              2,
+              2
+            ],
+            "target": "b",
+            "destination": [
+              2,
+              2
+            ],
+            "order": "MoveThenAct",
+            "disposition": "Scored",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 9,
+            "word": 1343201072,
+            "count": 30
+          }
+        ],
+        "best": 0,
+        "comparison": "Above",
+        "word": 1343201072,
+        "count": 30
+      }
+    },
+    {
+      "id": "each-hypothesis-restores-killed-target-before-next-origin",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 2,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 5,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 100,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0
+          }
+        ]
+      },
+      "expected": {
+        "skipped": false,
+        "origins": [
+          [
+            2,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "targets": [
+          "b"
+        ],
+        "candidates": [
+          {
+            "origin": [
+              2,
+              0
+            ],
+            "target": "b",
+            "destination": [
+              2,
+              0
+            ],
+            "order": "MoveThenAct",
+            "disposition": "Scored",
+            "priority": 805,
+            "hit": 100,
+            "proximity": 9,
+            "word": 2937909499,
+            "count": 21
+          },
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "destination": [
+              1,
+              3
+            ],
+            "order": "ActThenMove",
+            "disposition": "Scored",
+            "priority": 805,
+            "hit": 100,
+            "proximity": 7,
+            "word": 3794901700,
+            "count": 26
+          },
+          {
+            "origin": [
+              2,
+              2
+            ],
+            "target": "b",
+            "destination": [
+              2,
+              2
+            ],
+            "order": "MoveThenAct",
+            "disposition": "Scored",
+            "priority": 805,
+            "hit": 100,
+            "proximity": 9,
+            "word": 675780521,
+            "count": 31
+          }
+        ],
+        "best": 1,
+        "comparison": "Above",
+        "word": 675780521,
+        "count": 31
+      }
+    },
+    {
+      "id": "post-act-skips-before-entry-work",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": true,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0
+          }
+        ]
+      },
+      "expected": {
+        "skipped": true,
+        "origins": [],
+        "targets": [],
+        "candidates": [],
+        "best": null,
+        "comparison": null,
+        "word": 3295386429,
+        "count": 11
+      }
+    },
+    {
+      "id": "no-enemies-is-supported-empty-attack",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 1,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0
+          }
+        ]
+      },
+      "expected": {
+        "skipped": false,
+        "origins": [],
+        "targets": [],
+        "candidates": [],
+        "best": null,
+        "comparison": null,
+        "word": 3295386429,
+        "count": 11
+      }
+    },
+    {
+      "id": "unentered-stone-ranked-actor-key-is-unread",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              5,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0
+          }
+        ]
+      },
+      "expected": {
+        "skipped": false,
+        "origins": [],
+        "targets": [
+          "b"
+        ],
+        "candidates": [],
+        "best": null,
+        "comparison": null,
+        "word": 662824084,
+        "count": 10
+      }
+    },
+    {
+      "id": "already-moved-single-origin-no-second-order",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": true,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0
+          }
+        ]
+      },
+      "expected": {
+        "skipped": false,
+        "origins": [
+          [
+            1,
+            1
+          ]
+        ],
+        "targets": [
+          "b"
+        ],
+        "candidates": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "destination": [
+              1,
+              1
+            ],
+            "order": "ActThenMove",
+            "disposition": "Scored",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 9,
+            "word": 3655513600,
+            "count": 14
+          }
+        ],
+        "best": 0,
+        "comparison": "Above",
+        "word": 3655513600,
+        "count": 14
+      }
+    },
+    {
+      "id": "non-imminent-enemy-still-active-zero-proximity-keeps-d1-at-actor",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0
+          }
+        ]
+      },
+      "expected": {
+        "skipped": false,
+        "origins": [
+          [
+            1,
+            1
+          ]
+        ],
+        "targets": [
+          "b"
+        ],
+        "candidates": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "destination": [
+              1,
+              1
+            ],
+            "order": "ActThenMove",
+            "disposition": "Scored",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 0,
+            "word": 3210001534,
+            "count": 16
+          }
+        ],
+        "best": 0,
+        "comparison": "Above",
+        "word": 3210001534,
+        "count": 16
+      }
+    }
+  ]
+}
