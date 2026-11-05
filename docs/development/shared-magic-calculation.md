@@ -74,7 +74,9 @@ Faith, element and prepared-data audits, guide, coverage, local links and nine
 owner-draft checks pass. [Implementation receipt](../evidence/combat/magic-consolidation-implementation-v1.json);
 ignored logs: `scratch/magic-consolidation-343/`.
 
-ZOD-342 remains next: trace magical evasion and pre-formula admission before
-expanding the supported entry boundary. Owner drafts, JobStats, host/editor,
+[ZOD-342/344–347](../behavior/magic-evasion.md) now add `FaithMagicFormula.Resolve`
+before evasion under fresh/nonzero/no-earlier-effects certificates, while retaining
+this already-hit entry unchanged. Target geometry remains independent. ZOD-348
+next traces live MA/Faith inputs before selecting a snapshot projection. Owner drafts, JobStats, host/editor,
 automatic facing, full corpse/Golem/terminal/status/frame RNG, broad interfaces,
 resource/target/command integration and ZOD-106 remain separate/deferred.

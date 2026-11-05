@@ -113,7 +113,8 @@ the [amount implementation](../behavior/faith-magic-amounts.md).
 weather/element transforms, composition and raw result routing.
 [ZOD-340](../behavior/magic-conditional-proc.md) now handles the isolated proc/RNG
 decision; [ZOD-341](../behavior/magic-result-finalization.md) now finalizes bounded
-result data. ZOD-342 next traces magical evasion/admission. The original selected-child scope was:
+result data. [Magic evasion and entry](../behavior/magic-evasion.md) are now bounded
+implementations; ZOD-348 next traces live MA/Faith inputs. The original selected-child scope was:
 independently verify and implement weather/target-element
 transformations on the stored damage, including cancellation/absorption and the
 Oil/Float boundaries, before connecting complete spell effects. Live MA/Faith

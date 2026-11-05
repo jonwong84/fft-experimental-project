@@ -53,7 +53,7 @@ public sealed record MagicEvasionResult(bool Accepted, MagicEvasionRejection Rej
 /// <summary>Magic-only evasion rules; source 11464943bbdbd2a0af022d90cb7f10455cf911df.</summary>
 public static class MagicEvasion
 {
-    /// <summary>Resolve ordered magic evade checks from fresh hit=true/miss=0/item=0 work and supplied accuracy.</summary>
+    /// <summary>Resolve a nonzero ability's magic checks from fresh hit=true/miss=0/item=0 work and supplied accuracy.</summary>
     public static MagicEvasionResult Resolve(MagicEvadePrepared prepared, bool secondaryEvadeable,
         MagicFormulaEvaluationMode mode, ushort initialAccuracy, RandomState rng)
     {

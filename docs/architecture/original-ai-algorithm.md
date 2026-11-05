@@ -528,5 +528,8 @@ guards. [ZOD-340](../behavior/magic-conditional-proc.md) now adds the isolated
 conditional-proc decision/RNG step. These do not add spell commands or AI entries.
 [ZOD-341](../behavior/magic-result-finalization.md) now supplies bounded
 empty-status/living-target result finalization with caps and retained effect types.
-ZOD-342 next traces magical evasion/admission before later state/resource/target integration.
+[ZOD-342/344–347](../behavior/magic-evasion.md) now add bounded magic evasion and
+fresh formula entry, including real mode-specific draws and whole-query rollback.
+ZOD-348 next traces live MA/Faith inputs; resource/target/command and magic AI
+integration remain separate.
 No automatic-facing/corpse/terminal/host gate is activated.

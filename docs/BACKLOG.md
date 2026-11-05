@@ -4,13 +4,13 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-347 (compose pre-evasion shared faith-magic formula resolution).**
+**Next bounded work: ZOD-348 (trace live magic stat and Faith inputs).**
 [Magic evasion and entry](behavior/magic-evasion.md) records the pinned trace and
-completed bounded children: ZOD-342, ZOD-344, ZOD-345, ZOD-346. Magic
+completed bounded children: ZOD-342, ZOD-344, ZOD-345, ZOD-346, ZOD-347. Magic
 uses its own equipment/status chain, real ordered draws even in AI/preview, and
 source hit-versus-accuracy facts. Shared formula arithmetic and geometry remain
 independent; no live publication, commands or magic AI activation is inferred.
-There are 34 open tickets below. The 313 completed tickets, prior checkpoints and
+There are 34 open tickets below. The 314 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -34,13 +34,18 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-347 — Compose pre-evasion shared Faith-magic formula resolution
+### ZOD-348 — Trace live magic stat and Faith inputs
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-346, ZOD-343
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-347
 
-Compose the shared formula before evasion under explicit fresh/no-earlier-reaction/reflection and existing finalizer facts. Healing bypasses evasion. Branch on hit rather than rounded accuracy, preserve all private evade/proc draw order, return full diagnostic/result data, and reject atomically. Keep ResolveAfterHit and earlier APIs compatible; no commands/HP/status/AI activation. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
-Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/
-deferred. See the [source and boundaries](behavior/magic-evasion.md).
+Trace source loading and updates of live MA, Faith and the status/support/modifier
+facts consumed by the bounded magic calculation. Pin the read-only reference;
+distinguish stored battle values, copied work and status priority. Identify the
+smallest immutable snapshot projection child with explicit unsupported context.
+Source/design only; no live state, equipment import, spell grants, MP/charge,
+targeting, commands or AI activation. Owner drafts, JobStats, host/editor,
+automatic facing, full corpse/Golem/terminal/status/frame RNG, broad interfaces
+and ZOD-106 remain separate/deferred. See the [source and boundaries](behavior/magic-evasion.md).
 
 ## Existing validation gates
 

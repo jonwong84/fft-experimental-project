@@ -6,16 +6,21 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-347: compose pre-evasion shared faith-magic formula resolution.**
-[Magic evasion](behavior/magic-evasion.md) records completed ZOD-342, ZOD-344, ZOD-345, ZOD-346
+**ZOD-348: trace live magic stat and Faith inputs.**
+[Magic evasion](behavior/magic-evasion.md) records completed ZOD-342, ZOD-344, ZOD-345, ZOD-346, ZOD-347
 from clean source `11464943bbdbd2a0af022d90cb7f10455cf911df` (13 files/21 functions).
-The damage0x08 chain differs from healing0x0C's bypass; physical evasion helpers
-must not be imported wholesale. Preserve real ordered evade draws in AI/preview,
-secondary execution Evadeable, Abandon diagnostics and hit-versus-rounded-accuracy
-branch facts. Selected children retain explicit fresh/no-earlier-effects and
-finalizer admission; no spell command, live HP/status/RNG adoption or magic AI.
+`FaithMagicFormula.Resolve` now owns certified nonzero fresh formula entry,
+including damage0x08's magic evasion and healing0x0C's bypass. `MagicEvasion`
+owns loading, ordered status preparation, percentages and real accessory/right/
+left/class draws even in AI/preview. Secondary execution Evadeable is independent
+of primary AI metadata. Abandon/blocking labels remain diagnostic data. Branch
+on hit, not rounded accuracy; finalization clears zero accuracy only afterward.
+Counter failure returns the whole entry RNG with no partial outcome, even after
+four evade draws before a failed proc draw. Fresh context also certifies the
+stored result reaction clear: source initialization alone preserves that field.
+No spell commands, live HP/status/RNG adoption or magic AI activation.
 
-[ZOD-343](development/shared-magic-calculation.md) now provides the single
+[ZOD-343](development/shared-magic-calculation.md) retains the already-hit
 `FaithMagicFormula.ResolveAfterHit(request, rng)` calculation entry from explicit
 amount/element/target/mode/profile inputs through finalized result data and
 candidate RNG. Existing rule helpers and projection/raw APIs remain compatible;
@@ -237,22 +242,22 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore, zero-warning/error Release build and **4,618 .NET
-  cases** (1,577 Framework, 1,217 AI, 838 Content, 328 CLI) pass. Five new Framework
-  cases exercise20 unchanged composed descriptions through raw formula inputs,
-  ordered target/RNG continuation around rejection, input isolation, healing
-  context bypass and argument guards. All **643 Python tests** now pass, including eight new evasion-description cases.
-  Managed code is unchanged for ZOD-342; the .NET count is the last full run.
-  Pinned finalization (eight files/15 functions), Faith/element and prepared-data
-  checks, guide, coverage and local links pass. Seven TRX reports/logs are under
-  ignored `scratch/magic-consolidation-343/`.
+- Validation: locked restore, zero-warning/error Release build and **4,630 .NET
+  cases** (1,589 Framework, 1,217 AI, 838 Content, 328 CLI) pass. Twelve new managed
+  cases exercise47 equipment/preparation/roll and24 composed entry descriptions,
+  scope/argument guards, exact private RNG rollback and immutable query replay.
+  All **649 Python tests** pass, including14 new independent description/order/
+  boundary/tamper cases. Pinned13-file/21-function evasion/entry, prior Faith/
+  element/proc/finalization, prepared empty-status/four-Fire-tier, guide, coverage
+  and local-link checks pass. Seven TRX reports/logs are under ignored
+  `scratch/magic-evasion-342-347/`.
   Prepared Dash/Stone import checks remain at ZOD-329; their code/input is unchanged.
   Python uses repository-pinned Pillow12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow13.0.0 triggers six existing version guards; WindowsApps Python
   is unavailable. All nine owner drafts remain unchanged, including AbilityToggles.
   No existing rules/state/content/AI/fixture expectations, project/lock/dependency
-  changes or host/editor activation. The new pure helper uses the existing verified
+  changes or host/editor activation. The pure magic helpers use the existing verified
   generator; it does not broaden actual combat/turn/command behavior.
   Nine historical checkpoint audits last passed at ZOD-158; unchanged snapshots
   were not rerun. No original/C execution or UI review.

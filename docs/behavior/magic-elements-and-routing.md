@@ -96,7 +96,8 @@ ignored reports: `scratch/magic-elements-337-339/`.
 
 [ZOD-340](magic-conditional-proc.md) now implements the isolated conditional-proc
 decision; [ZOD-341](magic-result-finalization.md) now supplies bounded living-target/
-empty-status finalization. ZOD-342 next traces magical evasion/admission.
+empty-status finalization. [Magic evasion and fresh formula entry](magic-evasion.md) are now implemented;
+ZOD-348 next traces live MA/Faith inputs.
 The original next-step boundary was: trace and implement the proc decision with
 explicit execution/preview/AI modes and exact RNG ownership. Keep the original
 formula family and cancellation context; absorption does not turn0x08 into0x0C.

@@ -14,8 +14,10 @@ Content supplies immutable definitions and prepared data through outer adapters.
   and [stored element/result routing](../../docs/behavior/magic-elements-and-routing.md),
   plus [conditional-proc decisions](../../docs/behavior/magic-conditional-proc.md).
   [FaithMagicFormula.ResolveAfterHit](../../docs/development/shared-magic-calculation.md)
-  is the shared calculation entry through bounded finalization, without spell
-  commands or live state publication. Targeting remains separate.
+  is the shared already-hit calculation entry through bounded finalization.
+  [FaithMagicFormula.Resolve and MagicEvasion](../../docs/behavior/magic-evasion.md)
+  add certified nonzero-ability entry with ordered magic evade work. Both return
+  pure result data without spell commands or live publication; targeting remains separate.
 - `Battle/Turns/`: CT, turn progression, facing, completion receipts and settlement.
 - `Battle/Commands/`: invocation-bound decision transactions, frozen follow-ups
   and retained Move continuations.

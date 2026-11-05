@@ -152,3 +152,69 @@ partial/certain/non-evadeable modes, full-byte/unsigned16 limits, first-success
 labels, scaled19 boundaries, no fake midpoint RNG, and the final available draw.
 Logs: `scratch/magic-evasion-342-347/focused-346.log`. No spell entry is connected
 by this milestone; ZOD-347 owns that bounded composition.
+
+## ZOD-347
+
+`FaithMagicFormula.Resolve` now composes the existing shared calculation from
+before evasion. `FaithMagicResolutionRequest` supplies the earlier formula request,
+positive `FaithMagicEntryProfile`, secondary execution Evadeable and resolved
+equipment/modifier facts. The existing `ResolveAfterHit` and projection/raw APIs
+retain their behavior and signatures. The ordered amount/proc/finalizer tail still
+has one owner; no per-spell coordinator or universal interface was added.
+
+The entry requires a positively known fresh result, no earlier reaction or
+reflection effects, a known nonzero ability, accuracy100 and all existing
+living/empty-status/no-pending finalizer facts with known-clear entry flags.
+`FreshResultKnown` includes zero supported HP/type/special/blocking-item work and
+a known-clear stored result reaction. The original initializer preserves the
+reaction field, so running that initializer alone cannot certify this context.
+Ability0 always checks evasion in the original regardless of secondary Evadeable;
+this selected nonzero-ability entry rejects an uncertified ID context rather than
+silently importing the wrong branch. These certificates are managed admission,
+not new original rules.
+
+The coordinator validates/projects immutable amount inputs privately before any
+RNG. This has no side effects or draws. Source-visible amount/element/proc results
+are returned only when the evasion hit branch enters the formula. Thus an early
+miss exposes no precomputed amount or affinity flags. Required argument errors
+still throw even if a later evade would miss; unsupported certified context
+rejects before any draws. This is explicit managed input validation, not a claim
+that the original computes missed damage. Healing bypasses all evasion inputs,
+which may be absent; damage still prepares work when checks are disabled.
+
+`FaithMagicResolutionResult` returns a finalized frame, separate evade diagnostics
+(including blocking-item/Abandon facts), proc diagnostics and candidate RNG. On
+an evade miss proc diagnostics are absent because the tail never entered. The
+coordinator branches on hit, not accuracy: a rounded-zero hit still reaches the
+proc and only later becomes a miss at finalization. A certain AI/preview evade
+draws four times then skips the formula. Element nullification happens after
+surviving evasion and skips the proc. Absorption retains the damage proc family.
+Healing has neither evade draws nor a damage conditional proc.
+
+If evasion or the later proc exhausts the managed counter, the entire query
+returns the incoming RNG with no frame, evade or proc output. Four successful
+private evade draws therefore cannot leak when the fifth proc draw is unavailable.
+Successful early evade exits can use the final available counter slot.
+
+[24 further literal entries](../fixtures/behavior/magic-entry-contract-v1.json)
+cover those combinations plus fresh/nonzero/earlier-effects/result-domain guards.
+Five new Framework cases exercise all24 entries, every existing result scope fact,
+healing without evade/element context, input isolation/replay and invalid required
+arguments. Six new Python cases independently verify the entry descriptions,
+hit/accuracy ordering, no leaked private amount and prefix rollback.
+
+Full batch validation: locked restore, zero-warning/error Release build,
+**4,630 .NET tests** (1,589 Framework, 1,217 AI, 838 Content, 328 CLI) and **649
+Python tests**. That adds12 managed cases and14 Python cases across the five
+tickets, with71 new source descriptions. All prior test expectations/fixtures,
+source receipts, owner drafts, JobStats, content/AI/host/project/dependency code
+remain unchanged. Pinned13-file/21-function evasion/entry audits, prepared empty
+status/four-Fire-tier checks, prior Faith/element/proc/finalizer, guide, coverage,
+links and preservation audits pass. Seven TRX reports and logs are under ignored
+`scratch/magic-evasion-342-347/`.
+[Implementation receipt](../evidence/combat/magic-evasion-implementation-v1.json).
+
+**Next ZOD-348:** trace live MA/Faith and consumed status/support/modifier inputs,
+then select the smallest snapshot projection. The completed entry still accepts
+explicit resolved inputs and grants no command, HP/status mutation or live RNG
+authority. Cone geometry and the other documented deferrals remain separate.

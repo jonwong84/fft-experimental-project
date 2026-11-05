@@ -103,7 +103,8 @@ signed/Faith and already-hit amount slices. [ZOD-337–339](../behavior/magic-el
 now add guarded weather/element composition and raw HP routing.
 [ZOD-340](../behavior/magic-conditional-proc.md) now handles bounded proc decisions;
 [ZOD-341](../behavior/magic-result-finalization.md) now finalizes bounded result data;
-ZOD-342 next traces magical evasion/admission. The wider acceptance still needs the following work: Cover MA/Faith representation, arithmetic widths,
+[ZOD-342/344–347](../behavior/magic-evasion.md) now add bounded magic evasion and
+fresh formula entry; ZOD-348 next traces live MA/Faith inputs. The wider acceptance still needs the following work: Cover MA/Faith representation, arithmetic widths,
 modifier order, evasion, element/undead rules, charging/MP, area/vertical targeting
 and actual-versus-AI evaluation. Design shared primitives and data requirements
 before implementing a representative spell. Broader mechanics remain deferred
