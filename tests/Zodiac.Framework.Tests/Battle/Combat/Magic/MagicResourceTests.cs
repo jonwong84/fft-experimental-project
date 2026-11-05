@@ -9,6 +9,28 @@ public sealed class MagicResourceTests
     private static JsonDocument Fixture() => JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,
         "Fixtures", "magic-resource-contract-v1.json")));
     [Fact]
+    public void Ten_execution_setups_preserve_mask_ceiling_support_order_and_persevere()
+    {
+        using var doc = Fixture();
+        foreach (var r in doc.RootElement.GetProperty("setup").EnumerateArray())
+        {
+            var result = MagicCharge.CalculateSetup(r.GetProperty("raw").GetByte(), r.GetProperty("short").GetBoolean(),
+                r.GetProperty("non").GetBoolean(), r.GetProperty("persevere").GetBoolean());
+            Assert.Equal(r.GetProperty("expected").GetByte(), result.Ticks);
+            Assert.Equal(r.GetProperty("persevere").GetBoolean(), result.Persevere);
+            Assert.Equal(result.Ticks == 0, result.Immediate);
+        }
+    }
+
+    [Fact]
+    public void Seven_ordinary_AI_delays_preserve_the_distinct_raw_byte_and_wrong_support_bit_quirk()
+    {
+        using var doc = Fixture();
+        foreach (var r in doc.RootElement.GetProperty("ai").EnumerateArray())
+            Assert.Equal(r.GetProperty("expected").GetByte(), MagicCharge.CalculateOrdinaryAiDelay(r.GetProperty("raw").GetByte(),
+                r.GetProperty("monsterSkill").GetBoolean(), r.GetProperty("defend").GetBoolean(), r.GetProperty("persevere").GetBoolean()));
+    }
+    [Fact]
     public void Thirty_two_literal_mp_checks_preserve_order_modes_recorded_cost_and_signed_reads()
     {
         using var doc = Fixture();

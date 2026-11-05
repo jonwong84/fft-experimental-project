@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-05",
   "edition": "SCUS-94221",
-  "managedCommit": "882a2eb",
+  "managedCommit": "bce0b81",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -654,7 +654,7 @@
       "openQuestions": [
         "Original projectile obstruction/elevation/falling, other action families/modifiers, progression/rewards, AI and independent original observation remain open. ZOD-111 owns Windows controls; battle checkpoints remain deferred."
       ],
-      "nextAction": "ZOD-354: Calculate ordinary spell charge setup. Target geometry, state publication, commands and magic AI activation remain separate.",
+      "nextAction": "ZOD-355: Query one deterministic charge countdown step. Target geometry, state publication, commands and magic AI activation remain separate.",
       "followUpTickets": [
         "ZOD-104",
         "ZOD-105",

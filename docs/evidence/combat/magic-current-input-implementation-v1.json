@@ -6,7 +6,8 @@
     "ZOD-350",
     "ZOD-351",
     "ZOD-352",
-    "ZOD-353"
+    "ZOD-353",
+    "ZOD-354"
   ],
   "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
   "referenceClean": true,
@@ -52,6 +53,12 @@
       "ticket": "ZOD-353",
       "managedBaseRevision": "882a2eb5b8a536ece37305c199ea3159f7e674fb",
       "validation": "Two focused Framework cases /32 literal MP checks, guards and immutable inputs; Release compilation passed",
+      "reports": "scratch/magic-inputs-348-357/"
+    },
+    {
+      "ticket": "ZOD-354",
+      "managedBaseRevision": "bce0b8188faf3b077f752964e5da5fffad6891ed",
+      "validation": "Four cumulative resource cases; 10 execution setups and seven AI delays, two new cases; Release compilation passed",
       "reports": "scratch/magic-inputs-348-357/"
     }
   ]

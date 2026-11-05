@@ -151,3 +151,13 @@ signed ID0..367 branch is a compatibility rule rather than a managed catalog cap
 mean MP changed. Two focused cases pass all32 literal MP descriptions, immutable
 input and argument/bookkeeping guards. No MP or status is published. Logs:
 `scratch/magic-inputs-348-357/focused-353.log`.
+
+## ZOD-354
+
+`MagicCharge.CalculateSetup` now returns execution setup data with mask, ceiling,
+support order and Persevere. `CalculateOrdinaryAiDelay` separately preserves the
+ordinary AI entry quirk (full byte, Monster Skill floor, else Defend). Neither
+method spends MP or publishes action status. Four cumulative resource cases pass
+all49 MP/setup/AI descriptions; two cases are new. These are distinct source
+phases, not alternate rounding options for one algorithm. Logs:
+`scratch/magic-inputs-348-357/focused-354.log`.

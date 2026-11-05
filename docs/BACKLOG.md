@@ -4,12 +4,12 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-354 (Calculate ordinary spell charge setup).**
+**Next bounded work: ZOD-355 (Query one deterministic charge countdown step).**
 [Current magic inputs and casts](behavior/magic-current-inputs-and-casts.md)
-records completed ZOD-348–353. Read current effective MA/current Faith;
+records completed ZOD-348–354. Read current effective MA/current Faith;
 preserve typed shared calculations, explicit context and candidate RNG/state.
 Scheduling, resource consumption and target calculations have separate owners.
-There are 37 open tickets below. The 320 completed tickets, prior checkpoints and
+There are 36 open tickets below. The 321 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -33,17 +33,9 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-354 — Calculate ordinary spell charge setup
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-353
-
-Implement low-seven-bit CT, Short Charge ceiling, Non-Charge and Persevere bypass from explicit source facts. Scheduling result data only; no MP spend, status/turn publication or AI activation. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
-Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/
-deferred. See the [source and boundaries](behavior/magic-current-inputs-and-casts.md).
-
 ### ZOD-355 — Query one deterministic charge countdown step
 
-**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-354
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-354
 
 Implement one explicitly allowed/blocked charge-counter step, preserving None255, zero readiness and full-byte stores. No global clock advance, event emission, performance repeat or frame RNG. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
 Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/
