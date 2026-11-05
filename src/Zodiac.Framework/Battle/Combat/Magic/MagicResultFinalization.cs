@@ -51,33 +51,14 @@ public static class MagicResultFinalization
         });
     }
 
-    /// <summary>Privately compose routing, the proc decision, empty-status preservation and finalization from an admitted projection.</summary>
+    /// <summary>Compatibility entry for projected work; delegates to the shared formula's ordered tail.</summary>
     public static MagicResultCompositionResult EvaluateAfterHit(FaithMagicElementAmount projection, bool targetIsUndead,
-        ushort accuracy, MagicFormulaEvaluationMode mode, MagicResultFinalizationProfile? profile, RandomState rng)
-    {
-        ArgumentNullException.ThrowIfNull(projection);
-        if (!Enum.IsDefined(mode)) throw new ArgumentOutOfRangeException(nameof(mode));
-        // Admission is managed policy: unsupported work publishes no private roll or result.
-        // Even preview needs known entry flags here, because final flags must be retained.
-        if (!Supported(profile) || (!projection.Nullified && !profile!.EntryProcContext!.AddedEffectFlagKnownClear))
-            return new(Reject(MagicResultFinalizationRejection.UnsupportedContext),null,rng);
-        var hp = FaithMagicHpRouting.Route(projection,targetIsUndead);
-        var proc = MagicConditionalProc.EvaluateAfterHit(projection,mode,profile!.EntryProcContext,rng);
-        if (!proc.Accepted) return new(Reject(MagicResultFinalizationRejection.ProcDecisionRejected),null,rng,proc.Rejection);
-        bool nullified = projection.Nullified;
-        var frame = new MagicResultFrame(!nullified,nullified ? (ushort)0 : accuracy,
-            nullified ? MagicResultMissKind.Nullified : MagicResultMissKind.Hit,hp.HpDamage,hp.HpHealing,
-            new(hp.Route == FaithMagicHpRoute.Damage,hp.Route == FaithMagicHpRoute.Healing),
-            new(projection.Elements?.Absorbed == true,projection.Elements?.WeaknessApplied == true,proc.Outcome!.SetAddedEffectFlag),
-            hp.ClearFirstCanceledStatusByte);
-        // The known empty status attempt preserves hit/accuracy/miss and changes no status set.
-        var result = Evaluate(frame,profile);
-        return result.Accepted ? new(result,proc.Outcome,proc.RngState) : new(result,null,rng);
-    }
+        ushort accuracy, MagicFormulaEvaluationMode mode, MagicResultFinalizationProfile? profile, RandomState rng) =>
+        FaithMagicFormula.ResolveProjectedAfterHit(projection, targetIsUndead, accuracy, mode, profile, rng);
 
     private static short Cap(short value) => value > 999 ? (short)999 : value;
     private static MagicResultFinalizationResult Reject(MagicResultFinalizationRejection reason) => new(false,reason,null);
-    private static bool Supported(MagicResultFinalizationProfile? p) => p is
+    internal static bool Supported(MagicResultFinalizationProfile? p) => p is
     {
         LivingTarget: true, NoPetrifyOrWall: true, NoGolem: true, EmptyStatusRecord: true,
         NoPendingKnockback: true, OnlySupportedHpResultWork: true,

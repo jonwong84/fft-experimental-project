@@ -11,6 +11,12 @@ to make ordinary source edits possible.
 
 ## Current implementation
 
+[ZOD-343](shared-magic-calculation.md) now provides
+`FaithMagicFormula.ResolveAfterHit` as the shared bounded Faith-magic calculation
+entry. Its existing arithmetic/helpers remain readable C#, with formula inputs
+independent of future targeting shapes. The owner-specified nine-tile1/3/5 cone is
+recorded there for later implementation; new algorithms remain explicit C# rules.
+
 `src/Zodiac.Framework/Battle/Combat/AttackBattleSimulator.cs` already implements the bounded sword attack
 in C#. It currently combines validation, targeting/facing, ordered evade draws,
 critical calculation, the damage expression, the proc draw and publication of

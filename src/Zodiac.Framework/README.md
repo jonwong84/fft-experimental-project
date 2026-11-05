@@ -12,8 +12,10 @@ Content supplies immutable definitions and prepared data through outer adapters.
   combat profiles. Actual action resolution remains separate from AI hypotheses.
   `Battle/Combat/Magic/` contains [shared raw Faith/magic amount arithmetic](../../docs/behavior/faith-magic-amounts.md),
   and [stored element/result routing](../../docs/behavior/magic-elements-and-routing.md),
-  plus [conditional-proc decisions](../../docs/behavior/magic-conditional-proc.md),
-  without spell commands or live state publication.
+  plus [conditional-proc decisions](../../docs/behavior/magic-conditional-proc.md).
+  [FaithMagicFormula.ResolveAfterHit](../../docs/development/shared-magic-calculation.md)
+  is the shared calculation entry through bounded finalization, without spell
+  commands or live state publication. Targeting remains separate.
 - `Battle/Turns/`: CT, turn progression, facing, completion receipts and settlement.
 - `Battle/Commands/`: invocation-bound decision transactions, frozen follow-ups
   and retained Move continuations.

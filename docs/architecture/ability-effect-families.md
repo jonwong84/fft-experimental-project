@@ -91,6 +91,12 @@ formula does not by itself enable unsupported area, charge, element, status or
 targeting behavior. Avoid creating a new AI coordinator for each ability or one
 universal formula interface before concrete consumers justify it.
 
+[ZOD-343](../development/shared-magic-calculation.md) now consolidates the supported
+Faith calculation behind one entry while retaining its tested rule helpers.
+Formula selection and target geometry remain independent. The owner-specified
+future cone has rows1/3/5 ahead of the actor (nine tiles), rotated with attack
+direction; it is recorded for later targeting work and is not implemented here.
+
 [ZOD-334](zod-334-faith-magic.md) now traces the shared Faith-based 0x08/0x0C
 pipeline; [ZOD-335/336](../behavior/faith-magic-amounts.md) implement its first pure
 signed/Faith and already-hit amount slices. [ZOD-337–339](../behavior/magic-elements-and-routing.md)

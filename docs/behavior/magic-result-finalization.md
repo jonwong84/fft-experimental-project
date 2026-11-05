@@ -8,6 +8,11 @@ files/15 functions. [Twenty raw and20 composed descriptions](../fixtures/behavio
 record literal results independently of the managed implementation. No original
 or C code was executed.
 
+[ZOD-343](../development/shared-magic-calculation.md) subsequently moved composition
+into `FaithMagicFormula.ResolveAfterHit`; the projection-based API delegates to
+that same implementation. The rules, scope and historical validation below remain
+the ZOD-341 checkpoint.
+
 ## Source order and supported domain
 
 `action_calculate_target_result` runs the selected formula, calls

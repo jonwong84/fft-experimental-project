@@ -5,11 +5,12 @@ constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
 **Next bounded work: ZOD-342 (trace magical evasion and pre-formula admission).**
-[ZOD-341](behavior/magic-result-finalization.md) now composes bounded living-target,
-empty-status result data with upper999 caps, preserved signed fields/hit labels,
-special-effect typing and atomic RNG rejection. It publishes no live HP/status
-or command. Existing after-hit amount/routing/proc primitives remain unchanged.
-There are 34 open tickets below. The 308 completed tickets, prior checkpoints and
+[ZOD-343](development/shared-magic-calculation.md) now provides one shared
+`FaithMagicFormula.ResolveAfterHit` calculation entry, retaining the existing
+amount/element/routing/proc/finalization rules and lower-level APIs. Formula and
+targeting remain independent; the agreed nine-tile cone is recorded for later
+targeting work. There is no live HP/status/command or magic AI activation.
+There are 34 open tickets below. The 309 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.

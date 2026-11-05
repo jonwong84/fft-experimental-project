@@ -7,6 +7,17 @@ and the selected task's design before editing. This file describes current state
 ## Next work
 
 **ZOD-342: trace magical evasion and pre-formula admission for0x08/0x0C.**
+[ZOD-343](development/shared-magic-calculation.md) now provides the single
+`FaithMagicFormula.ResolveAfterHit(request, rng)` calculation entry from explicit
+amount/element/target/mode/profile inputs through finalized result data and
+candidate RNG. Existing rule helpers and projection/raw APIs remain compatible;
+the composed tail has one owner in FaithMagicFormula. Geometry, live publication,
+commands and magic AI remain separate. Future formulas and targeting shapes are
+independent selections. The owner-specified cone has centered forward rows of
+1/3/5 tiles, excluding the actor, rotated with attack direction; its geometry is
+recorded for later work and is not activated. Current limits and deferred gates
+remain in force. This owner-selected refactor preceded the still-open ZOD-342.
+
 [ZOD-341](behavior/magic-result-finalization.md) now finalizes explicitly living,
 non-Petrify/Wall, no-Golem, empty-status HP work. It preserves signed fields and
 miss labels, clears hit on zero accuracy, applies upper999 caps only, and retains
@@ -218,13 +229,14 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore, zero-warning/error Release build and **4,613 .NET
-  cases** (1,572 Framework, 1,217 AI, 838 Content, 328 CLI) pass. Fourteen new Framework
-  cases cover40 raw/composed descriptions plus admission, miss labels and preview
-  knowledge. All **635 Python tests** pass, including eight new independent
-  cap/flag/order/guard/tamper cases. Pinned eight-file/15-function source and prepared
-  empty-status/four-Fire-tier checks, prior element/Faith/proc, guide, coverage and
-  local links pass. Seven TRX reports/logs are under ignored `scratch/magic-finalization-341/`.
+- Validation: locked restore, zero-warning/error Release build and **4,618 .NET
+  cases** (1,577 Framework, 1,217 AI, 838 Content, 328 CLI) pass. Five new Framework
+  cases exercise20 unchanged composed descriptions through raw formula inputs,
+  ordered target/RNG continuation around rejection, input isolation, healing
+  context bypass and argument guards. All **635 Python tests** pass unchanged.
+  Pinned finalization (eight files/15 functions), Faith/element and prepared-data
+  checks, guide, coverage and local links pass. Seven TRX reports/logs are under
+  ignored `scratch/magic-consolidation-343/`.
   Prepared Dash/Stone import checks remain at ZOD-329; their code/input is unchanged.
   Python uses repository-pinned Pillow12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.

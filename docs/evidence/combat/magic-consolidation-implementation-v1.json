@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-343",
+  "date": "2026-11-05",
+  "managedBaseRevision": "f41ad2c2362096b71272ddbf01fe744b52691f7c",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "newOriginalRules": false,
+  "behavior": "docs/development/shared-magic-calculation.md",
+  "preservedContracts": [
+    "docs/evidence/combat/faith-magic-source-v1.json",
+    "docs/evidence/combat/magic-elements-source-v1.json",
+    "docs/evidence/combat/magic-proc-source-v1.json",
+    "docs/evidence/combat/magic-finalization-source-v1.json"
+  ],
+  "validation": {
+    "dotnetPassed": 4618,
+    "frameworkPassed": 1577,
+    "aiPassed": 1217,
+    "contentPassed": 838,
+    "cliPassed": 328,
+    "pythonPassed": 635,
+    "newFrameworkCases": 5,
+    "newPythonCases": 0,
+    "reusedComposedDescriptions": 20,
+    "trxReports": 7,
+    "lockedRestore": true,
+    "releaseWarnings": 0,
+    "releaseErrors": 0,
+    "sourcePreparedAudits": true,
+    "algorithmGuideAudit": true,
+    "coverageAudit": true,
+    "localLinkAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/magic-consolidation-343/"
+  },
+  "invariants": [
+    "one ordered formula owner; projection compatibility entry delegates to it",
+    "existing arithmetic, widths/order/guards, RNG draws and source-derived fixture expectations unchanged",
+    "immutable explicit formula inputs independent of target geometry and presentation",
+    "caller owns target order, result adoption and candidate RNG continuation; no live publication",
+    "cone rows1/3/5 specification recorded only, no geometry implementation or WotL compatibility claim",
+    "no new formulas, universal interfaces, dependencies, content schema/owner draft/JobStats or host/AI activation"
+  ]
+}
