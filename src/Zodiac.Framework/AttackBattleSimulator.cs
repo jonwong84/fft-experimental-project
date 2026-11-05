@@ -37,11 +37,19 @@ public static class AttackBattleSimulator
         BoundedSwordWeapon? weapon, FlatSwordBattleProfile profile)
     {
         ArgumentNullException.ThrowIfNull(profile);
-        return AttackCore(state, command, weapon, profile);
+        return AttackCore(state, command, weapon, profile.ValidateState);
+    }
+
+    /// <summary>Explicit roster entry using the same sword resolution, with full roster/source-order admission.</summary>
+    public static AttackBattleResult AttackRoster(AttackBattleSnapshot state, AttackUnitCommand command,
+        BoundedSwordWeapon? weapon, FlatRosterBattleProfile profile)
+    {
+        ArgumentNullException.ThrowIfNull(profile);
+        return AttackCore(state, command, weapon, profile.ValidateState);
     }
 
     private static AttackBattleResult AttackCore(AttackBattleSnapshot state, AttackUnitCommand command,
-        BoundedSwordWeapon? weapon, FlatSwordBattleProfile? profile)
+        BoundedSwordWeapon? weapon, Action<AttackBattleSnapshot>? validateProfile)
     {
         ArgumentNullException.ThrowIfNull(state);
         ArgumentNullException.ThrowIfNull(command);
@@ -56,9 +64,9 @@ public static class AttackBattleSimulator
         if (target.Status == AttackUnitStatus.Dead) return Reject(state, AttackCommandRejection.DeadTarget);
         if (!SupportedGeometry(state) || weapon is null || actor.RightHandWeaponId != weapon.Id)
             return Reject(state, AttackCommandRejection.UnsupportedSetup);
-        if (profile is not null)
+        if (validateProfile is not null)
         {
-            try { profile.ValidateState(state); }
+            try { validateProfile(state); }
             catch (Exception exception) when (exception is ArgumentException or NotSupportedException)
             { return Reject(state, AttackCommandRejection.UnsupportedSetup); }
         }
@@ -71,7 +79,7 @@ public static class AttackBattleSimulator
             return Reject(state, AttackCommandRejection.OutOfRange);
         // Legacy selection remains edge-only; interior destinations require the strict explicit profile.
         var candidate = new TilePosition(to.X + dx, to.Y + dy, to.Layer);
-        if (profile is null && state.TurnBattle.Battle.Map.TryGetTile(candidate, out _))
+        if (validateProfile is null && state.TurnBattle.Battle.Map.TryGetTile(candidate, out _))
             return Reject(state, AttackCommandRejection.UnsupportedSetup);
         int baseXa = Math.Max(1, actor.PhysicalAttack); // Neutral zodiac still floors XA to 1.
         if ((2 * baseXa - 1) * weapon.Power > short.MaxValue)
@@ -112,8 +120,8 @@ public static class AttackBattleSimulator
         bool ko = target.Hp > 0 && hp == 0;
         TilePosition destination = to;
         // A sword critical directly attempts a push: no Brave contest or extra random draw.
-        // The closed profile proves a clear, same-height landing; lethal damage cancels it.
-        if (profile is not null && critical && !ko && action.State.Battle.Map.TryGetTile(candidate, out _) &&
+        // Profiles prove same-height terrain; current occupancy and lethal damage gate the push.
+        if (validateProfile is not null && critical && !ko && action.State.Battle.Map.TryGetTile(candidate, out _) &&
             !action.State.Battle.Units.Any(unit => unit.Position == candidate))
             destination = candidate;
         AttackUnitState nextTarget = target.WithResult(hp, target.Facing, ko ? (target.KoCount + 1) & 255 : target.KoCount);

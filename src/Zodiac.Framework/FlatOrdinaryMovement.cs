@@ -49,7 +49,7 @@ public sealed class FlatOrdinaryMovementProfile
     }
 }
 
-public enum FlatMovementRejection { None, UnknownActor, UnsupportedProfile, InvalidDestination }
+public enum FlatMovementRejection { None, UnknownActor, UnsupportedProfile, InvalidDestination, UnknownFocus }
 public sealed record FlatMovementResidual(TilePosition Tile, byte Remaining);
 /// <summary>Every x in this lower-layer row; omitted rows are unqueried, not zero filled.</summary>
 public sealed record FlatMovementDistanceRow(int Y, ImmutableArray<byte> Distances);
@@ -69,11 +69,6 @@ public sealed record FlatMovementQueryResult(bool Accepted, FlatMovementRejectio
 /// </remarks>
 public static class FlatOrdinaryMovement
 {
-    // Source spread order differs from packed move-step and managed facing ordinals. +y is North.
-    private static readonly (int X, int Y, byte Packed, BattleFacing Facing)[] Steps =
-    [ (1, 0, 0, BattleFacing.East), (0, 1, 192, BattleFacing.North),
-      (-1, 0, 64, BattleFacing.West), (0, -1, 128, BattleFacing.South) ];
-
     public static FlatMovementQueryResult Evaluate(AttackBattleSnapshot state, BattleUnitId actorId,
         FlatOrdinaryMovementProfile profile, TilePosition? destination = null)
     {
@@ -85,6 +80,24 @@ public static class FlatOrdinaryMovement
         if (!battle.TryGetUnit(actorId, out var actor)) return Reject(FlatMovementRejection.UnknownActor);
         if (!profile.Supports(state)) return Reject(FlatMovementRejection.UnsupportedProfile);
         var enemy = battle.Units.Single(unit => unit.Id != actorId);
+        return FlatMovementKernel.Evaluate(state, actor!, new HashSet<TilePosition> { enemy.Position },
+            new HashSet<TilePosition> { enemy.Position }, enemy.Position, destination);
+    }
+}
+
+/// <summary>Shared admitted cost-one range and source backtrace; callers own team/occupancy and geometry admission.</summary>
+internal static class FlatMovementKernel
+{
+    private static readonly (int X, int Y, byte Packed, BattleFacing Facing)[] Steps =
+    [ (1, 0, 0, BattleFacing.East), (0, 1, 192, BattleFacing.North),
+      (-1, 0, 64, BattleFacing.West), (0, -1, 128, BattleFacing.South) ];
+
+    internal static FlatMovementQueryResult Evaluate(AttackBattleSnapshot state, BattleUnitState actor,
+        IReadOnlySet<TilePosition> blocked, IReadOnlySet<TilePosition> occupied, TilePosition? focus, TilePosition? destination)
+    {
+        var battle = state.TurnBattle.Battle;
+        var rng = state.TurnBattle.Turns.RngState;
+        FlatMovementQueryResult Reject(FlatMovementRejection reason) => new(false, reason, null, rng);
         var map = battle.Map;
         var origin = actor!.Position;
         int move = Math.Min(124, actor.Move);
@@ -99,7 +112,7 @@ public static class FlatOrdinaryMovement
             foreach (var step in Steps)
             {
                 var next = new TilePosition(current.X + step.X, current.Y + step.Y, 0);
-                if (!Inside(next) || next == enemy.Position || distance[Index(next)] >= 0) continue;
+                if (!Inside(next) || blocked.Contains(next) || distance[Index(next)] >= 0) continue;
                 distance[Index(next)] = distance[Index(current)] + 1;
                 pending.Enqueue(next);
             }
@@ -108,7 +121,7 @@ public static class FlatOrdinaryMovement
         FlatMovementPath? path = null;
         if (destination is { } target)
         {
-            if (!Inside(target) || target == origin || distance[Index(target)] < 1 || distance[Index(target)] > move)
+            if (!Inside(target) || target == origin || occupied.Contains(target) || distance[Index(target)] < 1 || distance[Index(target)] > move)
                 return Reject(FlatMovementRejection.InvalidDestination);
             var reverse = new List<TilePosition> { target };
             var current = target;
@@ -153,14 +166,15 @@ public static class FlatOrdinaryMovement
                 int d = distance[Index(tile)];
                 if (d < 0 || d > move) continue;
                 residuals.Add(new(tile, (byte)(move + 1 - d)));
-                if (tile != origin) physical.Add(tile);
-                if (!actor.HasMoved || tile == origin) { origins.Add(tile); selectedRow = true; }
+                bool open = tile == origin || !occupied.Contains(tile);
+                if (tile != origin && open) physical.Add(tile);
+                if (open && (!actor.HasMoved || tile == origin)) { origins.Add(tile); selectedRow = true; }
             }
-            if (selectedRow)
+            if (selectedRow && focus is { } focusPosition)
             {
                 var values = ImmutableArray.CreateBuilder<byte>(map.Width);
                 // Reverse source propagation clears every unit record. Manhattan is valid only here.
-                for (int x = 0; x < map.Width; x++) values.Add((byte)(Math.Abs(enemy.Position.X - x) + Math.Abs(enemy.Position.Y - y)));
+                for (int x = 0; x < map.Width; x++) values.Add((byte)(Math.Abs(focusPosition.X - x) + Math.Abs(focusPosition.Y - y)));
                 rows.Add(new(y, values.ToImmutable()));
             }
         }

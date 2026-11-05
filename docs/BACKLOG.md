@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-277 (trace multi-unit ordinary movement and sword-command boundaries).** ZOD-271–276 establish shared roster eligibility, eligible-enemy focus, active masks and proximity queries, now consumed by existing admitted pair preparation. Actual multi-unit combat/search still needs authoritative prerequisites.
-There are 34 open tickets below. The 243 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-283 (trace ordinary-roster AI preparation and hypothetical simulation).** ZOD-277–282 add source-bounded actual roster movement, sword resolution and explicit facing/receipt settlement through shared kernels. Existing AI drivers retain their two-opponent guards; broader AI preparation/search needs a pinned source study.
+There are 34 open tickets below. The 249 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,24 +29,24 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-277 — Trace multi-unit ordinary movement and sword-command boundaries
+### ZOD-283 — Trace ordinary-roster AI preparation and hypothetical simulation
 
-**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-271, ZOD-276
+**Type:** Spike · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-276, ZOD-282
 
-Pin and inspect the read-only reference before expanding actual combat beyond
-two ordinary opponents. Trace walkable occupancy and ally/enemy traversal,
-destination/path ordering, source unit lookup, single-target ordinary sword
-resolution, critical displacement into other units, KO/turn/event ordering and
-the command/facing/continuation callers. Map current Framework two-unit guards
-against a concrete three-unit scenario; distinguish scheduling support from
-legal movement/combat and original slot/compact extents from managed capacity.
-Select one bounded authoritative prerequisite with independent vectors and
-rollback/replay checks. Reuse the
-[roster targeting foundation](behavior/ai-roster-targeting.md); do not emulate
-multi-unit effects with repeated pair snapshots or weaken guards before their
-rules are represented. Full AI refresh/team/ability/scoring/target traversal,
-other maps/statuses/policies, terminal routing, host/editor, replacement
-interfaces, owner drafts, frame RNG and ZOD-106 remain separate/deferred.
+Pin the read-only reference and trace fresh ordinary living-roster refresh,
+pre-refresh actor cache, hypothetical clocks/restoration, per-unit scoring,
+team-support/lowest-ally policy and usable-list threat/reach summaries. Map
+the existing shared targeting queries and new authoritative roster profile
+against AI's two-unit preparation/simulation/scoring assumptions. Record source
+slot/compact/movement extents separately and select one incremental managed
+child with literal multi-unit clock/RNG/support vectors. Reuse existing owners;
+do not simulate a roster with repeated pair snapshots or admit unrepresented
+effects by weakening old guards. Full ability/target traversal, corpse movement/
+death scheduling, other statuses/maps/policies, automatic facing, terminal
+routing, frame RNG, host/editor, owner drafts, broad replacement interfaces
+and ZOD-106 remain separate/deferred. See the
+[actual roster boundary](behavior/flat-roster-combat.md) and
+[targeting foundation](behavior/ai-roster-targeting.md).
 
 ## Existing validation gates
 

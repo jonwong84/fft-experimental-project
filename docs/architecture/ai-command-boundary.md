@@ -98,3 +98,13 @@ includes the owner's pending content/settings refactor, which remains excluded
 from this work's commit. Current paths, provenance and ignored result reports:
 [implementation evidence](../evidence/ai/module-extraction-v1.json).
 No C/original execution, UI review or host activation was performed.
+
+## Actual roster prerequisites
+
+[ZOD-278–282](../behavior/flat-roster-combat.md) add a separate ordinary-roster
+profile and typed facing session for explicitly submitted actual commands.
+Shared path, sword-resolution and receipt-guard owners preserve pair behavior.
+No pair certificate/session is fabricated, no roster planner callback or frozen
+continuation is added, and existing AI drivers retain two-opponent admission.
+Source-bounded movement rejects unsupported corpse/record-truncation cases;
+roster automatic facing and AI preparation/search need later milestones.

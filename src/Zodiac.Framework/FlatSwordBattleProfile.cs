@@ -26,6 +26,11 @@ public sealed class FlatSwordBattleProfile
         state.ValidateSupportedGeometry();
         if (state.Combatants.Length != 2)
             throw new NotSupportedException("Flat sword displacement requires exactly two ordinary units.");
+        ValidateGround(state, OrdinaryGroundSurface);
+    }
+
+    internal static void ValidateGround(AttackBattleSnapshot state, TerrainSurfaceId ground)
+    {
         var map = state.TurnBattle.Battle.Map;
         if (map.LayerCount != 1)
             throw new NotSupportedException("Flat sword displacement requires one open lower-layer rectangle.");
@@ -33,7 +38,7 @@ public sealed class FlatSwordBattleProfile
         for (int x = 0; x < map.Width; x++)
         {
             map.TryGetTile(new(x, y, 0), out var tile);
-            if (tile.Surface != OrdinaryGroundSurface || tile.MovementFlags != BattleTileMovementFlags.None ||
+            if (tile.Surface != ground || tile.MovementFlags != BattleTileMovementFlags.None ||
                 tile.Height != 10 || tile.HalfHeight != 0 || tile.WaterDepth != 0 ||
                 tile.CeilingDepth != 0 || tile.Slope.ToPackedByte() != 0)
                 throw new NotSupportedException("Flat sword displacement requires clear, dry, flat ordinary ground throughout the map.");

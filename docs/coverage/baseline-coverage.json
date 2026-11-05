@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-04",
   "edition": "SCUS-94221",
-  "managedCommit": "95e25fe97dd9a1025d8b36aa1cd8596da92b79ca",
+  "managedCommit": "ac83f9a978e52fce124fcf68d29a96799f5634f2",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 4309,
-    "source": "docs/behavior/ai-roster-targeting.md",
+    "passed": 4325,
+    "source": "docs/behavior/flat-roster-combat.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -129,7 +129,7 @@
       "ownerTicket": "ZOD-037",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
-      "currentScope": "Flat, terrain-cost and restricted adjacent-step policies exist; M1 uses the restricted ordinary policy.",
+      "currentScope": "Existing terrain-cost/restricted policies remain. Separate source-bounded living-roster flat movement shares range/backtrace, supports ally transit and empty endpoints, optional focus rows and actual final-heading/choice settlement; unsupported corpse and source-record-truncation cases reject.",
       "referenceSources": [
         {
           "path": "src/battle/map/move_range.c",
@@ -142,10 +142,26 @@
       ],
       "evidenceDocs": [
         "docs/behavior/adjacent-step-implementation.md",
-        "docs/behavior/terrain-policy-integration.md"
+        "docs/behavior/terrain-policy-integration.md",
+        "docs/architecture/zod-277-roster-combat.md",
+        "docs/behavior/flat-roster-combat.md",
+        "docs/evidence/combat/roster-combat-source-v1.json",
+        "docs/evidence/combat/roster-combat-implementation-v1.json",
+        "docs/fixtures/behavior/roster-combat-contract-v1.json"
       ],
       "implementationPaths": [
-        "src/Zodiac.Framework/OrdinaryAdjacentStepRange.cs"
+        "src/Zodiac.Framework/OrdinaryAdjacentStepRange.cs",
+        "src/Zodiac.Framework/FlatRosterBattleProfile.cs",
+        "src/Zodiac.Framework/FlatRosterMovement.cs",
+        "src/Zodiac.Framework/FlatRosterPathMovement.cs",
+        "src/Zodiac.Framework/ConfirmedPathMovement.cs",
+        "src/Zodiac.Framework/RosterFacingTurnBattle.cs",
+        "src/Zodiac.Framework/FacingReceiptRules.cs",
+        "src/Zodiac.Framework/FlatOrdinaryMovement.cs",
+        "src/Zodiac.Framework/FlatSwordBattleProfile.cs",
+        "src/Zodiac.Framework/AttackBattleSimulator.cs",
+        "src/Zodiac.Framework/FacingTurnPathMovement.cs",
+        "src/Zodiac.Framework/FacingTurnBattle.cs"
       ],
       "automatedChecks": [
         {
@@ -155,6 +171,18 @@
         {
           "path": "tests/Zodiac.Framework.Tests/TerrainAwareMovementRangeTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/FlatRosterCombatTests.cs",
+          "scope": "Literal roster ally transit/occupied endpoints/paths and sword occupancy/RNG; source extents, ownership, pair parity, bystanders and atomic failure."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/RosterFacingTurnTests.cs",
+          "scope": "Actual three-unit Move/ACT/Wait flows, final-state receipt binding, explicit facing, late failure/KO progress and immutable replay."
+        },
+        {
+          "path": "tools/verification/test_roster_combat_contract.py",
+          "scope": "Eleven isolated source-only movement/sword descriptions, input preservation, original-domain and tampered-claim checks; no original/C/managed execution."
         }
       ],
       "manualCheckpoint": {
@@ -164,7 +192,7 @@
       "openQuestions": [
         "Full slopes, horizontal jumps, ceilings, water, multi-layer transitions and special movement modes remain open."
       ],
-      "nextAction": "Trace one movement family with callers and regression vectors."
+      "nextAction": "Select a source-traced remaining terrain/layer movement child under ZOD-037; preserve the new ordinary-roster profile and reject unported corpse/record-truncation states."
     },
     {
       "id": "COV-SIM-004",
@@ -174,7 +202,7 @@
       "ownerTicket": "ZOD-037",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "absent",
-      "currentScope": "M1 blocks other-unit occupancy in its supported domain; no general allegiance/mount/fly/teleport rule set exists.",
+      "currentScope": "M1 retains its occupancy policy. The separate ordinary-roster profile now carries explicit stable teams/source order: allies permit transit, enemies block, and all occupied tiles exclude ordinary endpoints. Mount/Fly/Teleport, changing teams, corpse landing and other geometry remain unsupported.",
       "referenceSources": [
         {
           "path": "src/battle/map/move_range.c",
@@ -186,10 +214,40 @@
         }
       ],
       "evidenceDocs": [
-        "PROJECT_PLAN.md"
+        "PROJECT_PLAN.md",
+        "docs/architecture/zod-277-roster-combat.md",
+        "docs/behavior/flat-roster-combat.md",
+        "docs/evidence/combat/roster-combat-source-v1.json",
+        "docs/evidence/combat/roster-combat-implementation-v1.json",
+        "docs/fixtures/behavior/roster-combat-contract-v1.json"
       ],
-      "implementationPaths": [],
-      "automatedChecks": [],
+      "implementationPaths": [
+        "src/Zodiac.Framework/FlatRosterBattleProfile.cs",
+        "src/Zodiac.Framework/FlatRosterMovement.cs",
+        "src/Zodiac.Framework/FlatRosterPathMovement.cs",
+        "src/Zodiac.Framework/ConfirmedPathMovement.cs",
+        "src/Zodiac.Framework/RosterFacingTurnBattle.cs",
+        "src/Zodiac.Framework/FacingReceiptRules.cs",
+        "src/Zodiac.Framework/FlatOrdinaryMovement.cs",
+        "src/Zodiac.Framework/FlatSwordBattleProfile.cs",
+        "src/Zodiac.Framework/AttackBattleSimulator.cs",
+        "src/Zodiac.Framework/FacingTurnPathMovement.cs",
+        "src/Zodiac.Framework/FacingTurnBattle.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Zodiac.Framework.Tests/FlatRosterCombatTests.cs",
+          "scope": "Literal roster ally transit/occupied endpoints/paths and sword occupancy/RNG; source extents, ownership, pair parity, bystanders and atomic failure."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/RosterFacingTurnTests.cs",
+          "scope": "Actual three-unit Move/ACT/Wait flows, final-state receipt binding, explicit facing, late failure/KO progress and immutable replay."
+        },
+        {
+          "path": "tools/verification/test_roster_combat_contract.py",
+          "scope": "Eleven isolated source-only movement/sword descriptions, input preservation, original-domain and tampered-claim checks; no original/C/managed execution."
+        }
+      ],
       "manualCheckpoint": {
         "status": "pending-original-observation",
         "procedure": "Observe ally/enemy traversal, riding and one selected special movement mode."
@@ -197,7 +255,7 @@
       "openQuestions": [
         "Mode-specific movement and stopping rules, rider/mount state coupling and teleport outcomes need separate traces."
       ],
-      "nextAction": "Break ZOD-037 into separate ordinary-geometry and special-mode children."
+      "nextAction": "Trace changing-team, corpse-landing or special-mode occupancy as separate prerequisites before broadening stable living-roster movement."
     },
     {
       "id": "COV-SIM-005",
@@ -207,7 +265,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
-      "currentScope": "The bounded neutral sword remains executable. A separate ZOD-105 Accumulate profile changes current PA and feeds later sword damage with unchanged RNG order; ZOD-107 adds prepared Windows controls with owner approval. Ability-profile persistence is deferred.",
+      "currentScope": "The bounded neutral sword remains executable. A separate ZOD-105 Accumulate profile changes current PA and feeds later sword damage with unchanged RNG order; ZOD-107 adds prepared Windows controls with owner approval. Ability-profile persistence is deferred. ZOD-281 adds explicit ordinary-roster single-target sword execution through the existing formula kernel, including friendly fire, all-occupant critical landings and bystander isolation. ZOD-282 adds separate actual-command/facing sessions; existing pair APIs/AI remain guarded.",
       "referenceSources": [
         {
           "path": "src/battle/combat/targets.c",
@@ -233,11 +291,26 @@
         "docs/behavior/throw-stone-implementation.md",
         "docs/evidence/combat/throw-stone-implementation-v1.json",
         "docs/development/basic-skill-content.md",
-        "docs/evidence/combat/throw-stone-content-v1.json"
+        "docs/evidence/combat/throw-stone-content-v1.json",
+        "docs/architecture/zod-277-roster-combat.md",
+        "docs/behavior/flat-roster-combat.md",
+        "docs/evidence/combat/roster-combat-source-v1.json",
+        "docs/evidence/combat/roster-combat-implementation-v1.json",
+        "docs/fixtures/behavior/roster-combat-contract-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/AttackBattleSimulator.cs",
-        "src/Zodiac.Framework/PhysicalWeaponEvasion.cs"
+        "src/Zodiac.Framework/PhysicalWeaponEvasion.cs",
+        "src/Zodiac.Framework/FlatRosterBattleProfile.cs",
+        "src/Zodiac.Framework/FlatRosterMovement.cs",
+        "src/Zodiac.Framework/FlatRosterPathMovement.cs",
+        "src/Zodiac.Framework/ConfirmedPathMovement.cs",
+        "src/Zodiac.Framework/RosterFacingTurnBattle.cs",
+        "src/Zodiac.Framework/FacingReceiptRules.cs",
+        "src/Zodiac.Framework/FlatOrdinaryMovement.cs",
+        "src/Zodiac.Framework/FlatSwordBattleProfile.cs",
+        "src/Zodiac.Framework/FacingTurnPathMovement.cs",
+        "src/Zodiac.Framework/FacingTurnBattle.cs"
       ],
       "automatedChecks": [
         {
@@ -247,6 +320,18 @@
         {
           "path": "tests/Zodiac.Framework.Tests/AttackFixtureV3Tests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/FlatRosterCombatTests.cs",
+          "scope": "Literal roster ally transit/occupied endpoints/paths and sword occupancy/RNG; source extents, ownership, pair parity, bystanders and atomic failure."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/RosterFacingTurnTests.cs",
+          "scope": "Actual three-unit Move/ACT/Wait flows, final-state receipt binding, explicit facing, late failure/KO progress and immutable replay."
+        },
+        {
+          "path": "tools/verification/test_roster_combat_contract.py",
+          "scope": "Eleven isolated source-only movement/sword descriptions, input preservation, original-domain and tampered-claim checks; no original/C/managed execution."
         }
       ],
       "manualCheckpoint": {
@@ -255,9 +340,9 @@
       },
       "openQuestions": [
         "Other weapons, affinities, equipment evade, zodiac interactions, line of sight and area targets remain open.",
-        "ZOD-108 identifies a settled-facing discrepancy: the authored sword retains attack-facing while the original restores a living actor saved facing; no runtime fix was made in this investigation."
+        "Unrepresented weapon procs/reactions and wider settled-facing interactions need separate source traces; the admitted sword owner restores living actor incoming facing."
       ],
-      "nextAction": "ZOD-110 targeted content/import and combined Basic Skill scenario are complete. Implement ZOD-111 prepared Windows target controls with a finite native plan and separate owner review. Retain both-profile save guards; battle checkpoints and editor work remain deferred.",
+      "nextAction": "Expand unsupported weapon/formula/target effects through traced ZOD-038 children while reusing shared actual resolution; preserve existing pair and roster command profiles and deferred editor/battle-save work.",
       "followUpTickets": [
         "ZOD-104",
         "ZOD-105",
@@ -416,7 +501,7 @@
       "ownerTicket": "ZOD-036",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "absent",
-      "currentScope": "M1 stops at first KO; original knockback and post-KO lifecycle are unsupported.",
+      "currentScope": "M1 still stops at first KO. Explicit ordinary sword/Stone slices have source-traced displacement; the new roster sword entry checks every landing occupant, including corpses, and cancels lethal pushes with unchanged RNG. Actual KO/receipt progress is retained, but corpse movement, death scheduling, revival and pickup lifecycle remain unsupported.",
       "referenceSources": [
         {
           "path": "src/battle/combat/resolution.c",
@@ -432,18 +517,48 @@
         }
       ],
       "evidenceDocs": [
-        "PROJECT_PLAN.md"
+        "PROJECT_PLAN.md",
+        "docs/architecture/zod-277-roster-combat.md",
+        "docs/behavior/flat-roster-combat.md",
+        "docs/evidence/combat/roster-combat-source-v1.json",
+        "docs/evidence/combat/roster-combat-implementation-v1.json",
+        "docs/fixtures/behavior/roster-combat-contract-v1.json"
       ],
-      "implementationPaths": [],
-      "automatedChecks": [],
+      "implementationPaths": [
+        "src/Zodiac.Framework/FlatRosterBattleProfile.cs",
+        "src/Zodiac.Framework/FlatRosterMovement.cs",
+        "src/Zodiac.Framework/FlatRosterPathMovement.cs",
+        "src/Zodiac.Framework/ConfirmedPathMovement.cs",
+        "src/Zodiac.Framework/RosterFacingTurnBattle.cs",
+        "src/Zodiac.Framework/FacingReceiptRules.cs",
+        "src/Zodiac.Framework/FlatOrdinaryMovement.cs",
+        "src/Zodiac.Framework/FlatSwordBattleProfile.cs",
+        "src/Zodiac.Framework/AttackBattleSimulator.cs",
+        "src/Zodiac.Framework/FacingTurnPathMovement.cs",
+        "src/Zodiac.Framework/FacingTurnBattle.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Zodiac.Framework.Tests/FlatRosterCombatTests.cs",
+          "scope": "Literal roster ally transit/occupied endpoints/paths and sword occupancy/RNG; source extents, ownership, pair parity, bystanders and atomic failure."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/RosterFacingTurnTests.cs",
+          "scope": "Actual three-unit Move/ACT/Wait flows, final-state receipt binding, explicit facing, late failure/KO progress and immutable replay."
+        },
+        {
+          "path": "tools/verification/test_roster_combat_contract.py",
+          "scope": "Eleven isolated source-only movement/sword descriptions, input preservation, original-domain and tampered-claim checks; no original/C/managed execution."
+        }
+      ],
       "manualCheckpoint": {
         "status": "pending-original-observation",
         "procedure": "Record original knockback eligibility/destination and KO-to-crystal/treasure or revival behavior."
       },
       "openQuestions": [
-        "Eligibility/critical rolls, collision/fall, countdown ordering, revival and pickup effects remain open."
+        "Non-flat/fall displacement, unrepresented eligibility, corpse overlap/presence, countdown ordering, revival and pickup effects remain open."
       ],
-      "nextAction": "Trace original behavior first; keep the planned knockback modification in COV-PRO-003."
+      "nextAction": "Trace a bounded corpse movement/death-scheduling or non-flat displacement child before expanding the post-KO lifecycle; preserve actual KO/receipt progress and keep optional modifications separate."
     },
     {
       "id": "COV-SIM-009",
@@ -453,7 +568,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "Closed sword/pair and variable supported-action complete turns remain supported, with priority knowledge and Content-backed lists. Shared read-only roster facts now separate live/cached eligibility, eligible-enemy nearest focus, active masks and imminent proximity across explicit resolved units. Existing pair preparation/proximity consume these owners without changing admission or streams. General roster refresh/team/ability/scoring/target traversal, actual multi-unit combat, other policies/maps, terminal routing, original evidence and host activation remain open.",
+      "currentScope": "Closed sword/pair and variable supported-action complete turns remain supported, with priority knowledge and Content-backed lists. Shared read-only roster facts now separate live/cached eligibility, eligible-enemy nearest focus, active masks and imminent proximity across explicit resolved units. Existing pair preparation/proximity consume these owners without changing admission or streams. General roster refresh/team/ability/scoring/target traversal, other actual multi-unit effects, other policies/maps, terminal routing, original evidence and host activation remain open. ZOD-277–282 now supply source-bounded actual roster movement/sword/explicit-facing prerequisites; existing AI drivers remain pair-bounded.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -551,7 +666,12 @@
         "docs/behavior/ai-roster-targeting.md",
         "docs/evidence/ai/roster-targeting-source-v1.json",
         "docs/fixtures/behavior/ai-roster-targeting-contract-v1.json",
-        "docs/evidence/ai/roster-targeting-implementation-v1.json"
+        "docs/evidence/ai/roster-targeting-implementation-v1.json",
+        "docs/architecture/zod-277-roster-combat.md",
+        "docs/behavior/flat-roster-combat.md",
+        "docs/evidence/combat/roster-combat-source-v1.json",
+        "docs/evidence/combat/roster-combat-implementation-v1.json",
+        "docs/fixtures/behavior/roster-combat-contract-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -602,7 +722,18 @@
         "src/Zodiac.Framework.Ai/Shared/AiRosterActiveTargets.cs",
         "src/Zodiac.Framework.Ai/Shared/AiRosterProximity.cs",
         "src/Zodiac.Framework.Ai/Shared/AiOrdinaryPairRoster.cs",
-        "src/Zodiac.Framework.Ai/Shared/AiMovementPrefix.cs"
+        "src/Zodiac.Framework.Ai/Shared/AiMovementPrefix.cs",
+        "src/Zodiac.Framework/FlatRosterBattleProfile.cs",
+        "src/Zodiac.Framework/FlatRosterMovement.cs",
+        "src/Zodiac.Framework/FlatRosterPathMovement.cs",
+        "src/Zodiac.Framework/ConfirmedPathMovement.cs",
+        "src/Zodiac.Framework/RosterFacingTurnBattle.cs",
+        "src/Zodiac.Framework/FacingReceiptRules.cs",
+        "src/Zodiac.Framework/FlatOrdinaryMovement.cs",
+        "src/Zodiac.Framework/FlatSwordBattleProfile.cs",
+        "src/Zodiac.Framework/AttackBattleSimulator.cs",
+        "src/Zodiac.Framework/FacingTurnPathMovement.cs",
+        "src/Zodiac.Framework/FacingTurnBattle.cs"
       ],
       "automatedChecks": [
         {
@@ -828,6 +959,18 @@
         {
           "path": "tools/verification/verify_ai_roster_targeting_contract.py",
           "scope": "Pinned read-only source fingerprints and seventeen isolated descriptions; not full refresh, a status simulator or original behavioral equivalence."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/FlatRosterCombatTests.cs",
+          "scope": "Literal roster ally transit/occupied endpoints/paths and sword occupancy/RNG; source extents, ownership, pair parity, bystanders and atomic failure."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/RosterFacingTurnTests.cs",
+          "scope": "Actual three-unit Move/ACT/Wait flows, final-state receipt binding, explicit facing, late failure/KO progress and immutable replay."
+        },
+        {
+          "path": "tools/verification/test_roster_combat_contract.py",
+          "scope": "Eleven isolated source-only movement/sword descriptions, input preservation, original-domain and tampered-claim checks; no original/C/managed execution."
         }
       ],
       "manualCheckpoint": {
@@ -835,14 +978,14 @@
         "procedure": "Observe selected mandatory AI turns and distinguish legal choices from exact policy matching."
       },
       "openQuestions": [
-        "Shared roster eligibility/focus/active/proximity queries accept resolved source facts; full roster refresh/team/ability/scoring/target effects and authoritative multi-unit movement/combat remain unported.",
+        "Shared targeting queries and actual roster movement/sword/facing prerequisites exist, but full roster refresh/team/ability/scoring/target enumeration and automatic facing remain unported.",
         "Knowledge starts unknown, records only owned writes and must forget after unmodeled workspace use; numerical startup/event/loader history and frame-interleaved RNG remain unresolved.",
         "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
         "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Trace ZOD-277 multi-unit ordinary movement and sword-command boundaries: occupancy/path/lookup, displacement/KO and command/facing/continuation order; select one bounded authoritative prerequisite before broadening two-unit guards.",
+      "nextAction": "Trace ZOD-283 fresh ordinary-roster AI preparation, cached actor delay, hypothetical clocks/restoration, per-unit scoring, team support and usable-list summaries; select an incremental child without weakening pair guards.",
       "followUpTickets": [
-        "ZOD-277"
+        "ZOD-283"
       ]
     },
     {

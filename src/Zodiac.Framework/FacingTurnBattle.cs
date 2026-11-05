@@ -142,10 +142,7 @@ public static class FacingTurnBattle
     public static FacingTurnRejection ValidateWait(FacingTurnState state, BattleUnitId actorId)
     {
         ArgumentNullException.ThrowIfNull(state);
-        if (state.PendingFacing is not null) return FacingTurnRejection.FacingPending;
-        if (!state.Battle.Combatants.Any(u => u.UnitId == actorId)) return FacingTurnRejection.UnknownActor;
-        if (state.Battle.TurnBattle.Turns.ActiveUnitId != actorId) return FacingTurnRejection.InactiveActor;
-        return state.Revision == ulong.MaxValue ? FacingTurnRejection.RevisionExhausted : FacingTurnRejection.None;
+        return FacingReceiptRules.ValidateWait(state.Battle, state.PendingFacing, state.Revision, actorId);
     }
 
     /// <summary>Read-only query against an existing opaque receipt; never issues or consumes one.</summary>
@@ -153,13 +150,7 @@ public static class FacingTurnBattle
         FacingCompletionReceipt? receipt)
     {
         ArgumentNullException.ThrowIfNull(state);
-        if (state.PendingFacing is not { } pending) return FacingTurnRejection.MissingCompletion;
-        if (!ReferenceEquals(receipt, pending) || !ReferenceEquals(pending.ExpectedBattle, state.Battle) ||
-            !ReferenceEquals(pending.Lineage, state.Lineage) || pending.Revision != state.Revision)
-            return FacingTurnRejection.StaleCompletion;
-        if (actorId != pending.ActorId) return FacingTurnRejection.WrongActor;
-        if (state.Battle.TurnBattle.Turns.ActiveUnitId is not null) return FacingTurnRejection.InconsistentCompletion;
-        return state.Revision == ulong.MaxValue ? FacingTurnRejection.RevisionExhausted : FacingTurnRejection.None;
+        return FacingReceiptRules.ValidateCompletion(state.Battle, state.PendingFacing, state.Revision, state.Lineage, actorId, receipt);
     }
 
     private static FacingTurnResult Delegate(FacingTurnState state, Func<AttackBattleResult> apply)

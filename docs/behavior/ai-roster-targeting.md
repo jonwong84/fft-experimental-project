@@ -123,8 +123,9 @@ Seven full TRX reports and other logs are under ignored
 snapshots and UI were not rerun; all nine owner drafts remain unchanged.
 
 This completes a shared targeting foundation, not full-roster combat/search.
-ZOD-277 next traces multi-unit ordinary movement and sword-command boundaries
-before selecting authoritative prerequisites. Full roster refresh/team/ability
+The [ZOD-277–282 follow-up](flat-roster-combat.md) now implements source-bounded
+actual roster movement, sword and explicit-facing command prerequisites. Existing
+AI drivers retain their two-opponent limits and this document's validation is historical. Full roster refresh/team/ability
 preparation, hypothetical combat scoring, per-ability target enumeration, other
 nearest policies, statuses/maps, terminal routing and original frame RNG remain
 open. Owner AbilityToggles consolidation, editor work, broad replacement

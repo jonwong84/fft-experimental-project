@@ -38,24 +38,12 @@ public static class FacingTurnPathMovement
         var query = FlatOrdinaryMovement.Evaluate(state.Battle, command.UnitId, profile, command.Destination);
         if (!query.Accepted) return Reject(path: query.Rejection);
         var path = query.Outcome!.Path!;
-        var before = state.Battle.TurnBattle.Battle;
-        before.TryGetUnit(command.UnitId, out var body);
-        var actor = state.Battle.Combatants.Single(unit => unit.UnitId == command.UnitId);
-        var bodies = before.Units.Select(unit => unit.Id == command.UnitId
-            ? new BattleUnitState(unit.Id, command.Destination, unit.MovementProfile, hasMoved: true) : unit);
-        var battle = new BattleState(before.Map, bodies, turn.State.RngState);
-        var settled = new AttackBattleSnapshot(new(battle, turn.State), state.Battle.Combatants.Select(unit =>
-            unit.UnitId == command.UnitId ? unit.WithResult(unit.Hp, path.FinalHeading, unit.KoCount) : unit));
-
-        var events = ImmutableArray.CreateBuilder<AttackResultEvent>();
-        events.Add(new AttackTurnBattleEvent(new TurnBattleMovementEvent(new(command.UnitId, body!.Position, command.Destination))));
-        events.Add(new VoluntaryPathCompletedEvent(command.UnitId, path, actor.Facing));
-        events.AddRange(turn.Events.Select(ev => (AttackResultEvent)new AttackTurnBattleEvent(new TurnBattleClockEvent(ev))));
+        var settled = ConfirmedPathMovement.Settle(state.Battle, command, turn, path);
         ulong revision = state.Revision + 1;
         var ended = turn.Events.OfType<TurnEndedEvent>().SingleOrDefault();
         // Authorization is minted only after both tile/path-facing and clock/choice settlement.
-        var receipt = ended is null ? null : new FacingCompletionReceipt(ended.UnitId, revision, settled, state.Lineage);
-        var next = new FacingTurnState(settled, state.Profile, revision, receipt, state.Lineage);
-        return new(true, FacingTurnRejection.None, TurnCycleRejection.None, FlatMovementRejection.None, next, events.ToImmutable(), path);
+        var receipt = ended is null ? null : new FacingCompletionReceipt(ended.UnitId, revision, settled.State, state.Lineage);
+        var next = new FacingTurnState(settled.State, state.Profile, revision, receipt, state.Lineage);
+        return new(true, FacingTurnRejection.None, TurnCycleRejection.None, FlatMovementRejection.None, next, settled.Events, path);
     }
 }

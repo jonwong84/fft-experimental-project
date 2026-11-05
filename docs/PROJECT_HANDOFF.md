@@ -6,17 +6,17 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-277: trace multi-unit ordinary movement and sword-command boundaries.**
-[ZOD-271–276](behavior/ai-roster-targeting.md) establish immutable roster facts,
-separate live/cached eligibility, nearest eligible-enemy focus, complete active
-masks and imminent-enemy proximity writes. Existing pair preparation/proximity
-now consume these shared owners, preserving actual turns and recovery. Actual
-combat/movement admission still requires two ordinary opponents. Trace source
-occupancy/path/lookup, sword displacement/KO and controller/continuation/facing
-order before selecting a concrete authoritative three-unit prerequisite.
-Full AI refresh/team/ability/scoring/target traversal and other maps/statuses/
-policies remain open. Keep terminal routing, host/editor, replacement interfaces,
-frame RNG, owner drafts and ZOD-106 separate/deferred.
+**ZOD-283: trace ordinary-roster AI preparation and hypothetical simulation.**
+[ZOD-277–282](behavior/flat-roster-combat.md) add actual roster movement, shared
+sword resolution and separately typed explicit-facing sessions. Ally transit,
+occupied endpoints/critical landings and atomic actual-result receipts are
+validated. Existing AI drivers still admit two opponents. Trace fresh roster
+refresh, cached actor delay, hypothetical clocks/restoration, per-unit scores,
+team support and usable-list summaries before selecting an incremental AI child.
+Keep original slot/compact/movement extents distinct. Corpse movement/death
+scheduling, full ability/target traversal, other statuses/maps/policies,
+automatic facing, terminal routing, frame RNG, host/editor, owner drafts,
+replacement interfaces and ZOD-106 remain separate/deferred.
 
 The [original AI algorithm guide](architecture/original-ai-algorithm.md) maps
 policy precedence and all core source functions, with bounded implementation
@@ -76,6 +76,16 @@ without rewriting old evidence.
   are preserved byte-for-byte and tracked as deferred scaffolding. The owner
   explicitly left `AbilityToggles` consolidation for later; it is not wired into
   current metadata, the editor or rules. Other unimplemented flag families stay deferred.
+- Latest authoritative prerequisites: [ZOD-278–282 roster commands](behavior/flat-roster-combat.md)
+  own immutable stable teams/source order and strict ground/profile matching.
+  Shared range/backtrace permits ally transit but empty endpoints; source movement
+  truncation beyond 16 other living units rejects. Runtime battle admission is
+  bounded to 21 source slots; profile storage has no catalog capacity. Actual Move
+  shares path/heading/choice settlement with pair execution; AttackRoster uses the
+  existing sword kernel and all-occupant critical landing check. A separate opaque
+  roster session shares exact receipt guards and supports explicit fixed/kept
+  facing after actual Move/ACT/Wait. Old pair profiles/APIs retain their guards;
+  AI queries and complete-turn drivers are not broadened by these commands.
 - Latest targeting foundation: [ZOD-272–276 roster queries](behavior/ai-roster-targeting.md)
   own ordered semantic live/decision facts without a fixed roster capacity.
   Live untargetability, cached out-of-play, active ability targets and imminent
@@ -125,16 +135,15 @@ without rewriting old evidence.
   explicit player-control flag clear, HP*128/maxHP>=45 and no NonBlue reach draw.
   Existing Attack/Stone scoring/selection/execution and both teams are preserved;
   terminal routing and Blue low-HP/player-controlled policies remain open.
-- Latest source study: [ZOD-271 roster targeting](architecture/zod-271-roster-targeting.md)
-  pins 25 functions across seven files and 17 isolated source descriptions. It
-  records current-versus-initial team classification, retained cache/live differences,
-  distinct nearest/active/imminent filters, restoration and byte delay/proximity
-  arithmetic. Source slot extent21 and compact extent16 are not managed capacities.
-  Wider read-only queries do not authorize full-roster commands. The prior
-  [ZOD-265–270 design](architecture/zod-265-variable-search-extension.md),
-  [ZOD-264 list study](architecture/zod-264-variable-action-lists.md),
-  [ZOD-255 workspace](architecture/zod-255-priority-workspace.md) and
-  [ZOD-249 scenarios](architecture/zod-249-three-entry-scenarios.md) retain their evidence.
+- Latest source study: [ZOD-277 multi-unit movement/combat](architecture/zod-277-roster-combat.md)
+  pins 28 functions across nine files, inheriting the earlier movement/sword
+  studies. Eleven isolated source descriptions cover ally transit, occupied
+  endpoints, enemy detours and sword occupancy/draw branches. Source movement
+  records exclude corpses; unfiltered knockback occupancy includes them.
+  Source slot21, other-movement-record16 and AI compact16 limits are distinct.
+  [ZOD-271 targeting](architecture/zod-271-roster-targeting.md) retains separate
+  live/cache/nearest/active/imminent evidence. Older list/workspace/scenario notes
+  retain their own provenance and validation checkpoints.
 - Organization: AI source/tests use Shared, Sword, ThrowStone, AttackThrowStone,
   Accumulate and BasicSkill folders with stable namespaces; [layout](development/ai-source-layout.md).
   Owner RNG migration is completed as `Zodiac.Framework.Random.RandomStateGenerator`
@@ -148,16 +157,16 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore, zero-warning/error Release build and **4,309 .NET
-  cases** (1,467 Framework, 1,097 AI), including 11 new AI cases, pass. All
-  **545 Python tests**, pinned roster/prepared-data, algorithm-guide, local-link
-  and coverage checks pass. Seven full TRX reports and logs are under ignored
-  `scratch/roster-targeting-271-276/`.
+- Validation: locked restore, zero-warning/error Release build and **4,325 .NET
+  cases** (1,483 Framework, 1,097 AI), including 16 new Framework cases, pass.
+  All **548 Python tests**, pinned source/prepared-data, algorithm-guide,
+  local-link and coverage checks pass. Seven full TRX reports and logs are under
+  ignored `scratch/roster-combat-277-282/`.
   Python uses repository-pinned Pillow 12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow 13.0.0 triggers six existing version guards; WindowsApps Python
   is unavailable. All nine owner drafts remain unchanged, including AbilityToggles.
-  No project/lock/package, Framework, Content or host/editor source changes.
+  No project/lock/package/dependency, Content or host/editor source changes.
   Nine historical checkpoint audits last passed at ZOD-158; unchanged snapshots
   were not rerun. No original/C execution, host/editor activation or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/

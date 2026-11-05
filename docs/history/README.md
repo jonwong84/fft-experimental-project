@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 243 entries index completed bounded work; they do not mean the full game is complete.
+These 249 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -266,3 +266,9 @@ These 243 entries index completed bounded work; they do not mean the full game i
 - [ZOD-274 — Rebuild active ability target flags](../behavior/ai-roster-targeting.md#active-ability-targets--zod-274)
 - [ZOD-275 — Derive roster imminent-enemy proximity writes](../behavior/ai-roster-targeting.md#proximity-writes--zod-275)
 - [ZOD-276 — Consume roster targeting through existing pair owners](../behavior/ai-roster-targeting.md#existing-pair-consumers--zod-276)
+- [ZOD-277 — Trace multi-unit ordinary movement and sword-command boundaries](../architecture/zod-277-roster-combat.md)
+- [ZOD-278 — Own the source-bounded ordinary roster profile](../behavior/flat-roster-combat.md#owned-profile--zod-278)
+- [ZOD-279 — Query roster ranges and source-selected paths](../behavior/flat-roster-combat.md#roster-range-and-paths--zod-279)
+- [ZOD-280 — Execute confirmed roster walks atomically](../behavior/flat-roster-combat.md#confirmed-roster-walk--zod-280)
+- [ZOD-281 — Resolve actual roster sword attacks and occupied landings](../behavior/flat-roster-combat.md#actual-sword-and-occupancy--zod-281)
+- [ZOD-282 — Settle roster command sessions and exact facing receipts](../behavior/flat-roster-combat.md#roster-facing-sessions--zod-282)
