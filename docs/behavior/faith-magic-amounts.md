@@ -70,4 +70,5 @@ through common validation into prepared JSON and immutable runtime definitions.
 No original/C execution, host/editor activation or manual UI checkpoint applies.
 [ZOD-337–339](magic-elements-and-routing.md) now add an element-aware composition
 path and raw routing. This original API and its strict neutral certificate remain
-unchanged. ZOD-340 next handles proc decisions; other documented deferrals remain.
+unchanged. [ZOD-340](magic-conditional-proc.md) now handles bounded proc decisions;
+ZOD-341 next selects result finalization. Other documented deferrals remain.

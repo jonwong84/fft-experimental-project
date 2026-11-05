@@ -6,7 +6,16 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-340: trace and implement the shared magic conditional-proc decision and RNG.**
+**ZOD-341: implement bounded living-target, empty-status magic result finalization.**
+[ZOD-340](behavior/magic-conditional-proc.md) now supplies an isolated proc decision:
+execution uses floor(raw*100/32768)<19 and exactly one draw, even for empty status
+record0 or zero amount. Preview requests the status without a draw/flag set; fresh
+AI excludes it. Explicit primary/no-pending context and relevant clear-flag facts
+are required. Unsupported context and counter exhaustion reject atomically.
+Misses/nullification and0x0C skip without reading otherwise-unused profile facts.
+After-hit composition uses the original formula family, never the HP route.
+Returned RNG/flag-set/status-attempt data grants no live authority or status effect.
+
 [ZOD-337–339](behavior/magic-elements-and-routing.md) now add stored damage weather/
 affinities before Faith and raw absorption/undead routing afterward. Element work
 must be explicitly fresh; Fire needs known no Oil, Earth known no Float/rider.
@@ -20,7 +29,7 @@ product and signed Faith arithmetic. The old neutral-damage API and all44 prior
 source descriptions remain unchanged. The new element-aware method reuses that
 owner. New source audit pins nine files/14 functions with50 further descriptions.
 No spell command, magic AI entry, charging, live MA/Faith state or target search
-has been activated. Proc decisions must retain original family identity rather
+has been activated. Proc decisions now retain original family identity rather
 than infer it from the routed HP direction; absorption does not change family.
 [ZOD-333](architecture/ability-effect-families.md) remains the full formula-family
 inventory; generated catalogs stay in scratch. Shared effects use data parameters
@@ -198,21 +207,21 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore, zero-warning/error Release build and **4,589 .NET
-  cases** (1,548 Framework, 1,217 AI, 838 Content, 328 CLI) pass. Sixteen new
-  Framework cases exercise50 source descriptions, scope and legacy equivalence.
-  All **619 Python tests** pass, including eight new independent descriptions/order/
-  tamper cases. Pinned source, prior prepared eight-tier/Faith, guide, coverage and
-  local-link audits pass. Seven TRX reports/logs are under ignored
-  `scratch/magic-elements-337-339/`. Prepared Dash/Stone import checks remain at
-  ZOD-329; their code/input is unchanged.
+- Validation: locked restore, zero-warning/error Release build and **4,599 .NET
+  cases** (1,558 Framework, 1,217 AI, 838 Content, 328 CLI) pass. Ten new Framework
+  cases cover32 threshold/decision descriptions plus family/path composition and
+  scope guards. All **627 Python tests** pass, including eight new independent
+  proc/mode/RNG/tamper cases. Pinned nine-file/ten-function source and prepared
+  empty-status/four-Fire-tier checks, prior element/Faith, guide, coverage and local
+  links pass. Seven TRX reports/logs are under ignored `scratch/magic-proc-340/`.
+  Prepared Dash/Stone import checks remain at ZOD-329; their code/input is unchanged.
   Python uses repository-pinned Pillow12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow13.0.0 triggers six existing version guards; WindowsApps Python
   is unavailable. All nine owner drafts remain unchanged, including AbilityToggles.
   No existing rules/state/content/AI/fixture expectations, project/lock/dependency
-  changes or host/editor activation. Shared raw math composes the added stages;
-  no actual combat/turn/command behavior is broadened.
+  changes or host/editor activation. The new pure helper uses the existing verified
+  generator; it does not broaden actual combat/turn/command behavior.
   Nine historical checkpoint audits last passed at ZOD-158; unchanged snapshots
   were not rerun. No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/

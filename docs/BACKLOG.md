@@ -4,12 +4,12 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-340 (shared magic conditional-proc decision and RNG).**
-[ZOD-337–339](behavior/magic-elements-and-routing.md) add stored weather/affinity
-transforms, element-aware Faith composition and raw absorption/undead routing.
-Oil/Float/rider states remain explicitly guarded. These helpers do not enable
-spell commands, magic AI entries, resource use, status execution or live HP changes.
-There are 34 open tickets below. The 306 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-341 (bounded living-target magic result finalization).**
+[ZOD-340](behavior/magic-conditional-proc.md) adds the isolated conditional-proc
+decision with exact execution scaling/draws, preview/AI behavior, family/path
+identity and atomic managed counter/context rejection. It applies no status and
+publishes no live RNG or HP. The prior shared raw magic stages remain unchanged.
+There are 34 open tickets below. The 307 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -33,22 +33,22 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-340 — Trace and implement the shared magic conditional-proc decision
+### ZOD-341 — Implement bounded living-target magic result finalization
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-334, ZOD-339
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-334, ZOD-339, ZOD-340
 
-Trace exact random_roll_pass_fail arithmetic, calls and ordering for the0x08
-conditional proc at the pinned reference. Implement one explicit-input decision
-with execution/preview/AI modes, deterministic RNG input/output and independently
-checked boundary vectors. Preserve actual draws even when status record0 has no
-effect; preview/AI behavior and canceled/missed invocations remain distinct. Use
-the original formula family, not the routed HP direction: absorbed damage still
-uses0x08's path, while undead-reversed healing remains0x0C. Keep unsupported pending
-proc/reaction context explicit and preserve atomic rejection. No status application,
-complete result eligibility/caps, MP/charge, live magic stats, targeting or command/
-AI integration is implied. Owner drafts, JobStats, host/editor, automatic facing,
-corpse/terminal/frame RNG, broad interfaces and ZOD-106 remain deferred.
-See the [current stages and source boundaries](behavior/magic-elements-and-routing.md).
+Trace and implement the smallest complete raw-result finalization for an explicitly
+living, non-Petrify/Wall, no-Golem target with known empty status-infliction record
+and no pending proc/knockback/reaction work. Preserve accuracy/hit facts, signed
+field semantics and source upper999 caps; do not add a lower clamp or infer a
+route from amount sign. Carry absorption/weakness/added-effect flags, including
+the added-effect delta from a successful roll against record0, through source
+attack-type finalization. Unsupported target/status/work context must reject.
+Use independent literal and composed vectors. This remains result data, not HP
+publication or a command. General status application, corpse/terminal/Golem rules,
+MP/charge, live MA/Faith, targeting, actual spell/AI integration, owner drafts,
+JobStats, host/editor, automatic facing, frame RNG, broad interfaces and ZOD-106
+remain separate/deferred. See the [proc and boundary trace](behavior/magic-conditional-proc.md).
 
 ## Existing validation gates
 

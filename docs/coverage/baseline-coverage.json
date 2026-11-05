@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-05",
   "edition": "SCUS-94221",
-  "managedCommit": "be97330",
+  "managedCommit": "e8ffff7",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 4589,
-    "source": "docs/behavior/magic-elements-and-routing.md",
+    "passed": 4599,
+    "source": "docs/behavior/magic-conditional-proc.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -32,7 +32,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
-      "currentScope": "FFT BIOS RNG algorithm/state is implemented with supplied-BIOS vectors; draw ordering is covered only for bounded CT/sword paths.",
+      "currentScope": "FFT BIOS RNG algorithm/state is implemented with supplied-BIOS vectors; draw ordering is covered only for bounded CT/sword paths. ZOD-340 adds an isolated0x08 proc decision: execution uses scaled raw*100/32768<19 with one counted draw, preview/AI use no draw, and original family/miss/nullification remain explicit. Fresh/ordinary/no-pending context guards and atomic UInt64 exhaustion are managed bounds. No status or live RNG/HP publication, spell commands, frame equivalence or magic AI entry is claimed.",
       "referenceSources": [
         {
           "path": "include/fft/random.h",
@@ -51,10 +51,15 @@
         "docs/behavior/bios-rng-verification.md",
         "docs/behavior/rng-state-and-ordering.md",
         "docs/architecture/zod-154-ai-execution-rng.md",
-        "docs/architecture/zod-040-event-script-investigation.md"
+        "docs/architecture/zod-040-event-script-investigation.md",
+        "docs/behavior/magic-conditional-proc.md",
+        "docs/evidence/combat/magic-proc-source-v1.json",
+        "docs/evidence/combat/magic-proc-implementation-v1.json",
+        "docs/fixtures/behavior/magic-proc-contract-v1.json"
       ],
       "implementationPaths": [
-        "src/Zodiac.Framework/Random/RandomStateGenerator.cs"
+        "src/Zodiac.Framework/Random/RandomStateGenerator.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicConditionalProc.cs"
       ],
       "automatedChecks": [
         {
@@ -64,6 +69,14 @@
         {
           "path": "tests/Zodiac.Framework.Tests/Random/RandomReplayRunnerTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/MagicConditionalProcTests.cs",
+          "scope": "Six scaled-roll boundaries and26 ordered mode/context/counter tapes, original family versus routed HP, zero amount and nullification; exact immutable RNG continuation, no status publication."
+        },
+        {
+          "path": "tools/verification/verify_magic_proc_contract.py",
+          "scope": "32 independent descriptions, nine source files/ten functions, verified empty status record0 and four Fire tier bindings; no original/C execution."
         }
       ],
       "manualCheckpoint": {
@@ -386,7 +399,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
-      "currentScope": "Accumulate controls remain owner-approved. Throw Stone pure rules now compose through strict targeted content/grants and first-KO lifecycle with Accumulate; TST-001..028 pass. Six-record verified import preserves source-0148 and historical bytes; repeated headless checks cover 46 commands/47 continuations. Windows target controls remain ZOD-111; broader original coverage remains open. Existing complete-roster actual self PA+1 now runs through the opaque roster session publisher/receipt owner; no RNG or new effect. Execution prerequisites are traced; live Stone interception and verified roster AI command/turn authority remain open. Exact flat direct geometry now has one Framework owner and an AI facade preserving its extra guards. Actual roster Stone resolves interception and shares the existing actual formula/results and opaque session publisher, including all-occupant landing and real RNG. Pair guards remain; verified roster AI authority/turn integration is still open. Closed actual roster Dash now shares formula0x37/result publication: range1, Y4, no evasion/trajectory, actual3 damage/Brave draws, complete occupancy and verified/frozen command authority. ZOD-334 traces shared Faith magic through14 files/36 functions and verifies eight prepared Cure/Fire formula/X/Y tiers. ZOD-335/336 add pure signed-halfword product/Faith arithmetic and one already-hit 0x08/0x0C amount projection, preserving modifier order, healing defense bypass and compatibility floors. The legacy amount API requires unchanged intervening weather/target-element steps. Raw amounts do not enable spells, AI entries, MP/charge, target search, result routing/caps or live HP/state changes. ZOD-337/338 add signed stored weather/affinity transforms and an element-aware amount path: fresh work, known Fire-no-Oil and Earth-no-Float/rider, nullification before Faith and separate rounded stores. Healing bypasses damage elements; old neutral API and prior vectors remain equal. ZOD-339 adds raw elemental absorption versus undead-healing routing with a deferred canceled-status-byte0 clear. This remains before procs, full eligibility/caps and live HP/resource/command publication.",
+      "currentScope": "Accumulate controls remain owner-approved. Throw Stone pure rules now compose through strict targeted content/grants and first-KO lifecycle with Accumulate; TST-001..028 pass. Six-record verified import preserves source-0148 and historical bytes; repeated headless checks cover 46 commands/47 continuations. Windows target controls remain ZOD-111; broader original coverage remains open. Existing complete-roster actual self PA+1 now runs through the opaque roster session publisher/receipt owner; no RNG or new effect. Execution prerequisites are traced; live Stone interception and verified roster AI command/turn authority remain open. Exact flat direct geometry now has one Framework owner and an AI facade preserving its extra guards. Actual roster Stone resolves interception and shares the existing actual formula/results and opaque session publisher, including all-occupant landing and real RNG. Pair guards remain; verified roster AI authority/turn integration is still open. Closed actual roster Dash now shares formula0x37/result publication: range1, Y4, no evasion/trajectory, actual3 damage/Brave draws, complete occupancy and verified/frozen command authority. ZOD-334 traces shared Faith magic through14 files/36 functions and verifies eight prepared Cure/Fire formula/X/Y tiers. ZOD-335/336 add pure signed-halfword product/Faith arithmetic and one already-hit 0x08/0x0C amount projection, preserving modifier order, healing defense bypass and compatibility floors. The legacy amount API requires unchanged intervening weather/target-element steps. Raw amounts do not enable spells, AI entries, MP/charge, target search, result routing/caps or live HP/state changes. ZOD-337/338 add signed stored weather/affinity transforms and an element-aware amount path: fresh work, known Fire-no-Oil and Earth-no-Float/rider, nullification before Faith and separate rounded stores. Healing bypasses damage elements; old neutral API and prior vectors remain equal. ZOD-339 adds raw elemental absorption versus undead-healing routing with a deferred canceled-status-byte0 clear. This remains before procs, full eligibility/caps and live HP/resource/command publication. ZOD-340 adds an isolated0x08 proc decision: execution uses scaled raw*100/32768<19 with one counted draw, preview/AI use no draw, and original family/miss/nullification remain explicit. Fresh/ordinary/no-pending context guards and atomic UInt64 exhaustion are managed bounds. No status or live RNG/HP publication, spell commands, frame equivalence or magic AI entry is claimed.",
       "referenceSources": [
         {
           "path": "src/battle/combat/formulas.c",
@@ -437,7 +450,11 @@
         "docs/behavior/magic-elements-and-routing.md",
         "docs/evidence/combat/magic-elements-source-v1.json",
         "docs/evidence/combat/magic-elements-implementation-v1.json",
-        "docs/fixtures/behavior/magic-elements-contract-v1.json"
+        "docs/fixtures/behavior/magic-elements-contract-v1.json",
+        "docs/behavior/magic-conditional-proc.md",
+        "docs/evidence/combat/magic-proc-source-v1.json",
+        "docs/evidence/combat/magic-proc-implementation-v1.json",
+        "docs/fixtures/behavior/magic-proc-contract-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattle.cs",
@@ -457,7 +474,8 @@
         "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicArithmetic.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmountFormula.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageElements.cs",
-        "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicHpRouting.cs"
+        "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicHpRouting.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicConditionalProc.cs"
       ],
       "automatedChecks": [
         {
@@ -555,6 +573,14 @@
         {
           "path": "tools/verification/verify_magic_elements_contract.py",
           "scope": "50 independent descriptions and pinned nine-file/14-function source audit; no original/C execution."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/MagicConditionalProcTests.cs",
+          "scope": "Six scaled-roll boundaries and26 ordered mode/context/counter tapes, original family versus routed HP, zero amount and nullification; exact immutable RNG continuation, no status publication."
+        },
+        {
+          "path": "tools/verification/verify_magic_proc_contract.py",
+          "scope": "32 independent descriptions, nine source files/ten functions, verified empty status record0 and four Fire tier bindings; no original/C execution."
         }
       ],
       "manualCheckpoint": {
@@ -564,7 +590,7 @@
       "openQuestions": [
         "Original projectile obstruction/elevation/falling, other action families/modifiers, progression/rewards, AI and independent original observation remain open. ZOD-111 owns Windows controls; battle checkpoints remain deferred."
       ],
-      "nextAction": "ZOD-340: conditional-proc decision/RNG with explicit execution/preview/AI modes and original family identity; later result eligibility/caps, resources, live stats, targets and actual command integration remain separate.",
+      "nextAction": "ZOD-341: bounded living-target/empty-status result eligibility and caps, preserving special effects; later status, resource, live stats, target and actual command/AI integration remain separate.",
       "followUpTickets": [
         "ZOD-104",
         "ZOD-105",

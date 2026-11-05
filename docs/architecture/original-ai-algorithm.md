@@ -524,6 +524,8 @@ now inventories shared formulas and data/targeting/presentation boundaries.
 implement pure signed/Faith arithmetic and already-hit amount projection.
 [ZOD-337–339](../behavior/magic-elements-and-routing.md) now add bounded weather/
 element composition and raw absorption/undead routing, preserving Oil/Float/rider
-guards. These do not add spell commands or AI entries. ZOD-340 next handles the
-isolated conditional-proc/RNG step before later result/state/target integration.
+guards. [ZOD-340](../behavior/magic-conditional-proc.md) now adds the isolated
+conditional-proc decision/RNG step. These do not add spell commands or AI entries.
+ZOD-341 next covers bounded empty-status/living-target result finalization before
+later state/resource/target integration.
 No automatic-facing/corpse/terminal/host gate is activated.

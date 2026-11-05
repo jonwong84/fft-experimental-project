@@ -110,8 +110,9 @@ element steps. Healing's different chain remains explicit. Both are completed in
 the [amount implementation](../behavior/faith-magic-amounts.md).
 
 [ZOD-337–339](../behavior/magic-elements-and-routing.md) now implement guarded
-weather/element transforms, composition and raw result routing. ZOD-340 next
-handles the isolated proc/RNG decision. The original selected-child scope was:
+weather/element transforms, composition and raw result routing.
+[ZOD-340](../behavior/magic-conditional-proc.md) now handles the isolated proc/RNG
+decision; ZOD-341 next selects bounded result finalization. The original selected-child scope was:
 independently verify and implement weather/target-element
 transformations on the stored damage, including cancellation/absorption and the
 Oil/Float boundaries, before connecting complete spell effects. Live MA/Faith

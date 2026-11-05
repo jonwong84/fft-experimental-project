@@ -94,7 +94,9 @@ drafts and all prior fixtures/test expectations remain unchanged.
 [Implementation receipt](../evidence/combat/magic-elements-implementation-v1.json);
 ignored reports: `scratch/magic-elements-337-339/`.
 
-**Next ZOD-340:** trace and implement the isolated conditional-proc decision with
+[ZOD-340](magic-conditional-proc.md) now implements the isolated conditional-proc
+decision; ZOD-341 next selects bounded living-target/empty-status finalization.
+The original next-step boundary was: trace and implement the proc decision with
 explicit execution/preview/AI modes and exact RNG ownership. Keep the original
 formula family and cancellation context; absorption does not turn0x08 into0x0C.
 No full status application, result eligibility/caps, MP/charge, live MA/Faith,
