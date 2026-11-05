@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-05",
   "edition": "SCUS-94221",
-  "managedCommit": "3f194e6",
+  "managedCommit": "8982dd4",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 4562,
-    "source": "docs/development/dash-content-binding.md",
+    "passed": 4573,
+    "source": "docs/behavior/faith-magic-amounts.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -386,7 +386,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
-      "currentScope": "Accumulate controls remain owner-approved. Throw Stone pure rules now compose through strict targeted content/grants and first-KO lifecycle with Accumulate; TST-001..028 pass. Six-record verified import preserves source-0148 and historical bytes; repeated headless checks cover 46 commands/47 continuations. Windows target controls remain ZOD-111; broader original coverage remains open. Existing complete-roster actual self PA+1 now runs through the opaque roster session publisher/receipt owner; no RNG or new effect. Execution prerequisites are traced; live Stone interception and verified roster AI command/turn authority remain open. Exact flat direct geometry now has one Framework owner and an AI facade preserving its extra guards. Actual roster Stone resolves interception and shares the existing actual formula/results and opaque session publisher, including all-occupant landing and real RNG. Pair guards remain; verified roster AI authority/turn integration is still open. Closed actual roster Dash now shares formula0x37/result publication: range1, Y4, no evasion/trajectory, actual3 damage/Brave draws, complete occupancy and verified/frozen command authority.",
+      "currentScope": "Accumulate controls remain owner-approved. Throw Stone pure rules now compose through strict targeted content/grants and first-KO lifecycle with Accumulate; TST-001..028 pass. Six-record verified import preserves source-0148 and historical bytes; repeated headless checks cover 46 commands/47 continuations. Windows target controls remain ZOD-111; broader original coverage remains open. Existing complete-roster actual self PA+1 now runs through the opaque roster session publisher/receipt owner; no RNG or new effect. Execution prerequisites are traced; live Stone interception and verified roster AI command/turn authority remain open. Exact flat direct geometry now has one Framework owner and an AI facade preserving its extra guards. Actual roster Stone resolves interception and shares the existing actual formula/results and opaque session publisher, including all-occupant landing and real RNG. Pair guards remain; verified roster AI authority/turn integration is still open. Closed actual roster Dash now shares formula0x37/result publication: range1, Y4, no evasion/trajectory, actual3 damage/Brave draws, complete occupancy and verified/frozen command authority. ZOD-334 traces shared Faith magic through14 files/36 functions and verifies eight prepared Cure/Fire formula/X/Y tiers. ZOD-335/336 add pure signed-halfword product/Faith arithmetic and one already-hit 0x08/0x0C amount projection, preserving modifier order, healing defense bypass and compatibility floors. Damage requires unchanged intervening weather/target-element steps. Raw amounts do not enable spells, AI entries, MP/charge, target search, result routing/caps or live HP/state changes.",
       "referenceSources": [
         {
           "path": "src/battle/combat/formulas.c",
@@ -428,7 +428,12 @@
         "docs/architecture/zod-317-dash.md",
         "docs/behavior/dash-actual.md",
         "docs/evidence/combat/dash-source-v1.json",
-        "docs/fixtures/behavior/dash-contract-v1.json"
+        "docs/fixtures/behavior/dash-contract-v1.json",
+        "docs/architecture/zod-334-faith-magic.md",
+        "docs/behavior/faith-magic-amounts.md",
+        "docs/evidence/combat/faith-magic-source-v1.json",
+        "docs/evidence/combat/faith-magic-implementation-v1.json",
+        "docs/fixtures/behavior/faith-magic-contract-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattle.cs",
@@ -444,7 +449,9 @@
         "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectory.cs",
         "src/Zodiac.Framework.Ai/Shared/RosterAiDirectTrajectory.cs",
         "src/Zodiac.Framework/Battle/Combat/DashFormula.cs",
-        "src/Zodiac.Framework/Battle/Combat/DashAbilityBattle.cs"
+        "src/Zodiac.Framework/Battle/Combat/DashAbilityBattle.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicArithmetic.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmountFormula.cs"
       ],
       "automatedChecks": [
         {
@@ -518,6 +525,18 @@
         {
           "path": "tools/verification/test_dash_contract.py",
           "scope": "24 formula and8 actual source descriptions; tamper/domain guards."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/FaithMagicArithmeticTests.cs",
+          "scope": "Seven signed-product and15 Faith vectors: one division, signed narrowing, full-byte storage and independent Faith/Innocent priority."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/FaithMagicAmountTests.cs",
+          "scope": "22 shared amount descriptions, eight spell-tier powers, modifier ordering and healing bypass, six compatibility modes, overflow/floors and explicit damage scope admission; no commands."
+        },
+        {
+          "path": "tools/verification/verify_faith_magic_contract.py",
+          "scope": "44 independent descriptions; optional pinned14 files/36 functions and verified eight prepared tier formula/X/Y rows; no original/C execution."
         }
       ],
       "manualCheckpoint": {
@@ -527,7 +546,7 @@
       "openQuestions": [
         "Original projectile obstruction/elevation/falling, other action families/modifiers, progression/rewards, AI and independent original observation remain open. ZOD-111 owns Windows controls; battle checkpoints remain deferred."
       ],
-      "nextAction": "ZOD-110 targeted content/import and combined Basic Skill scenario are complete. Implement ZOD-111 prepared Windows target controls with a finite native plan and separate owner review. Retain both-profile save guards; battle checkpoints and editor work remain deferred.",
+      "nextAction": "ZOD-337: bound and implement stored damage weather/element transformations before separately selected result, resource, live-stat, targeting and command/AI integration.",
       "followUpTickets": [
         "ZOD-104",
         "ZOD-105",

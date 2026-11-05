@@ -4,12 +4,12 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-334 (trace the shared Faith-based magic pipeline).**
-[ZOD-329](development/dash-content-binding.md) binds prepared Dash effects, explicit
-grants and semantic AI setup through the public roster path. [ZOD-333](architecture/ability-effect-families.md)
-inventories formula reuse and the data/targeting/presentation boundaries. Expand
-shared effect families with explicit parameters and validated exceptions.
-There are 34 open tickets below. The 300 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-337 (stored magic damage weather/element transformations).**
+[ZOD-334](architecture/zod-334-faith-magic.md) traces the shared Faith-based magic
+pipeline. [ZOD-335/336](behavior/faith-magic-amounts.md) implement signed-store/Faith
+arithmetic and one parameterized already-hit damage/healing amount projection.
+These helpers do not enable spells, live stat changes, charging or magic AI entries.
+There are 34 open tickets below. The 303 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -33,20 +33,21 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-334 — Trace shared Faith-based magic and select the first managed slice
+### ZOD-337 — Implement stored magic damage weather and element transformations
 
-**Type:** Investigation · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-329, ZOD-333
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-334, ZOD-336
 
-Trace formula0x08/0x0C and their shared helpers/callers/data at the pinned reference:
-MA/Faith representation, widths and truncation, modifier/element/undead/evasion
-order, status/reaction hooks, charging/MP and area/vertical targeting. Separate
-actual and hypothetical RNG/results. Define reusable arithmetic, effect parameters
-and targeting/result boundaries, then select the smallest independently testable
-managed child with literal source vectors. Account for representative Fire/Cure
-tiers through data rather than one class per spell. This investigation does not
-activate general spell support or a broad interface. Owner drafts, JobStats,
-host/editor, automatic facing, corpse/terminal/frame RNG and ZOD-106 remain deferred.
-See the [formula-family inventory](architecture/ability-effect-families.md).
+Trace independently checkable literal vectors for the between-product-and-Faith
+steps of formula0x08. Preserve signed-halfword stores and ordering: effective
+weather, Oil/Float/rider boundaries, absorb marking, nullification, then half/weak.
+Implement the smallest explicit-input transformation/result slice, with unsupported
+state rejected rather than treated as neutral. Preserve Oil's post-product XA
+quirk; no assumed fire-damage doubling. Keep absorption/undead routing, proc and
+status publication, complete result caps/eligibility, MP/charge, live magic stats,
+targeting and actual command/AI integration in separately bounded children.
+No new general interface, spell-specific classes, owner drafts, JobStats changes,
+host/editor activation, automatic facing, corpse/terminal/frame RNG or ZOD-106.
+See the [source trace](architecture/zod-334-faith-magic.md).
 
 ## Existing validation gates
 

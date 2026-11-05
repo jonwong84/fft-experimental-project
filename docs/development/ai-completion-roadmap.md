@@ -241,5 +241,8 @@ and original import/export compatibility. [ZOD-329](../development/dash-content-
 now binds prepared Dash effects, grants and AI setup, preserving the distinct
 primary AI/secondary combat evasion flags. [ZOD-333](../architecture/ability-effect-families.md)
 now inventories shared formulas and data/targeting/presentation boundaries.
-ZOD-334 next traces shared Faith magic before selecting a managed spell slice.
+[ZOD-334–336](../behavior/faith-magic-amounts.md) now trace shared Faith magic and
+implement pure signed/Faith arithmetic and already-hit amount projection.
+These do not add spell commands or AI entries. ZOD-337 next covers the omitted
+weather/element step before later effect/state/target integration.
 No automatic-facing/corpse/terminal/host gate is activated.

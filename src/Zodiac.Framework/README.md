@@ -10,6 +10,8 @@ Content supplies immutable definitions and prepared data through outer adapters.
   movement commands/results, and direct projectile trajectory geometry.
 - `Battle/Combat/`: attacks, ability resolution, formulas, evasion and bounded
   combat profiles. Actual action resolution remains separate from AI hypotheses.
+  `Battle/Combat/Magic/` contains [shared raw Faith/magic amount arithmetic](../../docs/behavior/faith-magic-amounts.md),
+  without spell commands or live state publication.
 - `Battle/Turns/`: CT, turn progression, facing, completion receipts and settlement.
 - `Battle/Commands/`: invocation-bound decision transactions, frozen follow-ups
   and retained Move continuations.

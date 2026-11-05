@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 300 entries index completed bounded work; they do not mean the full game is complete.
+These 303 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -326,3 +326,7 @@ These 300 entries index completed bounded work; they do not mean the full game i
 
 - [ZOD-329 — Bind prepared Dash content and semantic AI setup](../development/dash-content-binding.md)
 - [ZOD-333 — Inventory shared ability formulas and effect boundaries](../architecture/ability-effect-families.md)
+
+- [ZOD-334 — Trace shared Faith-based magic and select the first managed slice](../architecture/zod-334-faith-magic.md)
+- [ZOD-335 — Implement signed magic-product and Faith arithmetic](../behavior/faith-magic-amounts.md#zod-335-signed-stores-and-faith)
+- [ZOD-336 — Implement parameterized damage/healing amount projection](../behavior/faith-magic-amounts.md#zod-336-one-parameterized-amount-pipeline)

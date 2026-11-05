@@ -6,12 +6,19 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-334: trace the shared Faith-based 0x08/0x0C magic pipeline and select its first managed slice.**
-[ZOD-333](architecture/ability-effect-families.md) maps100 formula dispatch slots,
-82 distinct raw formula values across368 ordinary secondary slots, menu overrides,
-shared parameters and explicit exceptions. The full generated catalog stays under
-ignored scratch. Use shared effect handlers and data, with targeting/result and
-presentation separate. Full source-family inventory is not a completed rules port.
+**ZOD-337: implement source-traced stored magic damage weather/element transformations.**
+[ZOD-334](architecture/zod-334-faith-magic.md) traces14 files/36 functions across
+0x08/0x0C, widths, modifiers, Faith, targeting, result, MP/charge and RNG boundaries.
+[ZOD-335/336](behavior/faith-magic-amounts.md) add pure signed-product/Faith helpers
+and a shared already-hit amount pipeline with data-supplied MA/power, status/support
+facts and classified compatibility. Damage requires explicitly unchanged intervening
+weather/target-element steps; healing retains its defense bypass. Signed wrapping,
+one final Faith division and neutral-versus-Serpentarius floor behavior are preserved.
+These are raw amounts before result routing/caps or HP publication; no Fire/Cure
+command, magic AI entry, charging or live MA/Faith state has been activated.
+[ZOD-333](architecture/ability-effect-families.md) remains the full formula-family
+inventory; generated catalogs stay in scratch. Shared effects use data parameters
+instead of per-spell coordinator classes.
 
 [ZOD-329](development/dash-content-binding.md) now imports verified Dash into the
 existing targeted schema1 companion and binds explicit learned grants and known
@@ -185,19 +192,20 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore, zero-warning/error Release build and **4,562 .NET
-  cases** (1,521 Framework, 1,217 AI, 838 Content, 328 CLI), including31 new
-  Content/CLI cases, pass. All **603 Python tests** pass, including seven formula
-  inventory cases. Pinned-source/prepared Dash and formula inventory, guide,
-  coverage and local-link audits pass. Verified prepared Dash import succeeds;
-  the saved Stone package/provenance remain byte-identical. Seven full TRX reports
-  and logs are under ignored `scratch/dash-content-329/`; inventory/Python reports
-  are under `scratch/effect-families-333/`.
+- Validation: locked restore, zero-warning/error Release build and **4,573 .NET
+  cases** (1,532 Framework, 1,217 AI, 838 Content, 328 CLI) pass. Eleven new Framework
+  cases exercise44 source descriptions and amount-scope guards. All **611 Python
+  tests** pass, including eight new independent arithmetic/description cases.
+  Pinned source/prepared eight-tier, guide, coverage and local-link audits pass.
+  Seven TRX reports and logs are under ignored `scratch/faith-magic-334-336/`.
+  The prior prepared Dash/Stone import checks remain at ZOD-329; their code/input
+  is unchanged by these math-only helpers.
   Python uses repository-pinned Pillow12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow13.0.0 triggers six existing version guards; WindowsApps Python
   is unavailable. All nine owner drafts remain unchanged, including AbilityToggles.
-  No Framework rules, project/lock/dependency changes or host/editor activation.
+  No existing rules/state/content/AI/fixtures, project/lock/dependency changes or
+  host/editor activation. New Framework helpers and a new source fixture are additive.
   Nine historical checkpoint audits last passed at ZOD-158; unchanged snapshots
   were not rerun. No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/

@@ -91,8 +91,10 @@ formula does not by itself enable unsupported area, charge, element, status or
 targeting behavior. Avoid creating a new AI coordinator for each ability or one
 universal formula interface before concrete consumers justify it.
 
-**Next: ZOD-334**, trace the shared Faith-based 0x08/0x0C magic pipeline and select
-its first bounded managed slice. Cover MA/Faith representation, arithmetic widths,
+[ZOD-334](zod-334-faith-magic.md) now traces the shared Faith-based 0x08/0x0C
+pipeline; [ZOD-335/336](../behavior/faith-magic-amounts.md) implement its first pure
+signed/Faith and already-hit amount slices. ZOD-337 next covers weather/element
+transformations. The wider acceptance still needs the following work: Cover MA/Faith representation, arithmetic widths,
 modifier order, evasion, element/undead rules, charging/MP, area/vertical targeting
 and actual-versus-AI evaluation. Design shared primitives and data requirements
 before implementing a representative spell. Broader mechanics remain deferred

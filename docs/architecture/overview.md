@@ -34,6 +34,17 @@ per frame, so this managed isolation boundary does not establish frame-interleav
 retail RNG equivalence. [ZOD-154](zod-154-ai-execution-rng.md) records the pinned
 source, earlier refresh-prefix gap and bounded execution contract.
 
+## Content authoring and prepared definitions
+
+**Owner direction (2026-11-05):** Keep typed definitions and effect rules in C#,
+with individual jobs, abilities and skillsets supplied through validated prepared
+JSON packages. Trusted C# authoring, editor and import paths share validation and
+produce the same immutable runtime definitions. Each package has one authoritative
+authoring source; generated JSON from C# is exported output. Runtime consumers
+load prepared data rather than authoring assemblies. The existing [C# export
+boundary](zod-016-content-packages.md) supports this without a new project or
+format. Imported original assets/catalogs remain local under ignored scratch.
+
 ## Content flag representation
 
 **Owner direction (2026-10-27):** Prefer named boolean properties for independent
