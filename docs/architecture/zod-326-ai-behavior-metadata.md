@@ -28,8 +28,9 @@ Remaining static fourth-byte bits stay unresolved/preserved for this boundary.
 Use positive `AffectedBySilence`, matching the source test. Throw Stone has it
 clear. Do not canonize editor labels such as Ignore Silence or Non-Spear Target
 into independent runtime policies without tracing their exact mapping. Likewise,
-the four third-byte area-shape bits are currently exposed only as the verified
-union tested by initialization; no invented spear/shape behavior.
+the original four third-byte area-shape bits feed the union tested by
+initialization. [ZOD-330](../behavior/readable-ai-authoring.md) preserves the
+individual named shapes for lossless authoring; it adds no spear/shape behavior.
 
 ## Selected implementation boundary
 

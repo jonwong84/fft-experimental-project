@@ -230,4 +230,7 @@ candidate, ranked search, full-list dispatch and actual complete turns, includin
 six further real turns with retained priorities. [ZOD-326–328](../behavior/semantic-ai-metadata.md)
 now trace content/AI binding and feed immutable static metadata traits into
 supported lists, preserving working-policy separation and unsupported-edit
-guards. ZOD-329 next binds prepared Dash content/effect grants. No automatic-facing/corpse/terminal/host gate is activated.
+guards. [ZOD-330](../behavior/readable-ai-authoring.md) now makes named booleans
+and structured shape traits primary for authoring, retaining version1 package
+and original import/export compatibility. ZOD-329 next binds prepared Dash
+content/effect grants. No automatic-facing/corpse/terminal/host gate is activated.

@@ -2,6 +2,7 @@ using System.Text.Json;
 using Xunit;
 using Zodiac.Content.ContentPackages;
 using Zodiac.Content.Definitions;
+using Zodiac.Framework.Ai;
 
 namespace Zodiac.Content.Tests.Definitions;
 
@@ -20,7 +21,7 @@ public sealed class AbilityAiBehaviorTests
         var metadata = new AbilityMetadataDefinition(new("test:ability"), 0, 0, 1, flags, unknownTypeBit4: true);
         var behavior = JsonSerializer.SerializeToElement(metadata.AiBehavior);
         foreach (var field in expected.GetProperty("behavior").EnumerateObject()) Assert.Equal(field.Value.GetBoolean(), behavior.GetProperty(field.Name).GetBoolean());
-        Assert.Equal(21, behavior.EnumerateObject().Count()); Assert.Equal(expected.GetProperty("usable").GetBoolean(), metadata.UsableByAi);
+        Assert.Equal(22, behavior.EnumerateObject().Count()); Assert.Equal(expected.GetProperty("usable").GetBoolean(), metadata.UsableByAi);
         Assert.Equal(expected.GetProperty("motion").GetBoolean(), metadata.AiEvadeWithMotion); Assert.Equal(expected.GetProperty("unresolved").GetBoolean(), metadata.HasUnresolvedAiFlags);
         Assert.Equal(flags, metadata.AiFlagsRaw); Array.Fill(flags, (byte)0); Assert.Equal(row.GetProperty("flags").EnumerateArray().Select(v => v.GetByte()), metadata.AiFlagsRaw);
         Assert.True(metadata.UnknownTypeBit4);
@@ -37,5 +38,66 @@ public sealed class AbilityAiBehaviorTests
         Assert.True(row.TryGetProperty("aiFlagsRaw", out _)); Assert.False(row.TryGetProperty("aiBehavior", out _));
         Assert.True(copy.AiBehavior.AffectsHp); Assert.True(copy.AiBehavior.TargetsEnemies); Assert.True(copy.AiBehavior.PhysicalAttack); Assert.True(copy.AiBehavior.DirectTrajectory);
         Assert.False(copy.AiBehavior.AffectedBySilence); Assert.False(copy.AiBehavior.TargetsAllies);
+    }
+
+    [Fact]
+    public void Named_boolean_authoring_is_authoritative_and_matches_original_Stone_without_packed_input()
+    {
+        var behavior = new AiAbilityBehavior(TargetsEnemies: true, AffectsHp: true, Evadeable: true,
+            PhysicalAttack: true, DirectTrajectory: true);
+        var authored = new AbilityMetadataDefinition(new("test:stone"), 90, 80, 1, behavior,
+            usableByAi: true, aiEvadeWithMotion: true, learnOnHit: true, unknownTypeBit4: true);
+        Assert.Same(behavior, authored.AiBehavior); Assert.True(authored.UsableByAi); Assert.True(authored.AiEvadeWithMotion);
+        Assert.Equal(new byte[] { 130, 2, 65, 129 }, authored.AiFlagsRaw); Assert.Equal(0, authored.UnresolvedAiBitsRaw);
+        var imported = AbilityMetadataDefinition.FromOriginalAiFlags(authored.Id, 90, 80, 1, [130,2,65,129], learnOnHit: true, unknownTypeBit4: true);
+        ContentPackage Package(AbilityMetadataDefinition a) => new("test:metadata", "test:profile", ContentPackageKind.Baseline, null, [], [], [a]);
+        Assert.Equal(Package(imported).ToJson(), Package(authored).ToJson());
+        var changed = new AbilityMetadataDefinition(authored.Id, 90, 80, 1, behavior with { TargetsEnemies = false, TargetsAllies = true }, usableByAi: false);
+        Assert.Equal(new byte[] { 129,2,65,0 }, changed.AiFlagsRaw);
+        Assert.True(authored.AiBehavior.TargetsEnemies); Assert.False(authored.AiBehavior.TargetsAllies); Assert.True(authored.UsableByAi);
+    }
+
+    [Theory]
+    [InlineData(AiAbilityAreaShape.None, 0)]
+    [InlineData(AiAbilityAreaShape.TripleBracelet, 4)]
+    [InlineData(AiAbilityAreaShape.TripleAttack, 8)]
+    [InlineData(AiAbilityAreaShape.Cone, 16)]
+    [InlineData(AiAbilityAreaShape.Linear, 32)]
+    [InlineData(AiAbilityAreaShape.TripleBracelet | AiAbilityAreaShape.TripleAttack | AiAbilityAreaShape.Cone | AiAbilityAreaShape.Linear, 60)]
+    public void Named_area_shapes_preserve_source_bits_and_do_not_collapse_to_one_boolean(AiAbilityAreaShape shape, int encoded)
+    {
+        var a = new AbilityMetadataDefinition(new("test:shape"), 0, 0, 1,
+            new AiAbilityBehavior(AreaShape: shape), usableByAi: true, unresolvedAiBitsRaw: 126);
+        Assert.Equal(encoded, a.AiFlagsRaw[2]); Assert.Equal(254, a.AiFlagsRaw[3]); Assert.Equal(126, a.UnresolvedAiBitsRaw);
+        Assert.Equal(shape != AiAbilityAreaShape.None, a.AiBehavior.HasExhaustiveAreaShape);
+        var copy = AbilityMetadataDefinition.FromOriginalAiFlags(a.Id, 0, 0, 1, a.AiFlagsRaw);
+        Assert.Equal(shape, copy.AiBehavior.AreaShape); Assert.Equal(a.AiBehavior, copy.AiBehavior); Assert.True(copy.HasUnresolvedAiFlags);
+    }
+
+    [Fact]
+    public void All_1024_individual_byte_patterns_roundtrip_through_semantic_authoring_and_legacy_packages_losslessly()
+    {
+        for (int index = 0; index < 4; index++)
+        for (int value = 0; value < 256; value++)
+        {
+            byte[] flags = [0xa5, 0xb6, 0xc7, 0xd8]; flags[index] = (byte)value;
+            var imported = AbilityMetadataDefinition.FromOriginalAiFlags(new("test:pattern"), 0, 0, 1, flags);
+            var authored = new AbilityMetadataDefinition(imported.Id, 0, 0, 1, imported.AiBehavior, imported.UsableByAi,
+                imported.AiEvadeWithMotion, imported.UnresolvedAiBitsRaw);
+            Assert.Equal(flags, authored.AiFlagsRaw);
+            var package = new ContentPackage("test:metadata", "test:profile", ContentPackageKind.Baseline, null, [], [], [authored]);
+            var json = package.ToJson(); var reread = ContentPackage.ReadJson(json);
+            Assert.Equal(flags, reread.Abilities[0].AiFlagsRaw); Assert.Equal(json, reread.ToJson());
+            Assert.Equal(authored.AiBehavior.AreaShape, reread.Abilities[0].AiBehavior.AreaShape);
+        }
+    }
+
+    [Fact]
+    public void Semantic_authoring_rejects_ambiguous_known_bits_invalid_shapes_and_null_behavior()
+    {
+        AbilityMetadataDefinition Make(AiAbilityBehavior b, byte unknown = 0) => new(new("test:invalid"), 0, 0, 1, b, usableByAi: true, unresolvedAiBitsRaw: unknown);
+        Assert.Throws<ArgumentNullException>(() => Make(null!));
+        foreach (byte unknown in new byte[] { 1, 128, 129, 255 }) Assert.Throws<ArgumentOutOfRangeException>(() => Make(new(), unknown));
+        foreach (int shape in new[] { -1, 16, 255 }) Assert.Throws<ArgumentOutOfRangeException>(() => Make(new(AreaShape: (AiAbilityAreaShape)shape)));
     }
 }

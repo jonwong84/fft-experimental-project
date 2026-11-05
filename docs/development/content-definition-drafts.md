@@ -27,7 +27,8 @@ LearnOnHit properties overlap the implemented `AbilityMetadataDefinition`.
 The latter remains authoritative for current learning metadata; the unused
 draft is not a second active configuration source. UnknownTypeBit4 remains
 opaque. [Semantic AI metadata](../behavior/semantic-ai-metadata.md) now derives
-verified traits from the preserved AI bytes without activating these drafts.
+verified traits without activating these drafts. [Readable AI authoring](../behavior/readable-ai-authoring.md)
+now stores semantic values directly, with original-byte encoding at the boundary.
 
 When a gameplay/content milestone needs these drafts, trace the selected fields,
 resolve naming and original/custom boundaries, choose immutable configuration

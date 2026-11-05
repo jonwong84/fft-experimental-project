@@ -85,7 +85,8 @@ public sealed class JobEditorDocument
             [new(new(Remap(skillset.Id.Value)), skillset.Slots.Select(slot => new SkillsetSlot(slot.Slot,
                 slot.AbilityId is { } id ? new AbilityId(Remap(id.Value)) : null)))],
             Source.Abilities.Where(ability => referenced.Contains(ability.Id)).Select(ability => new AbilityMetadataDefinition(
-                new(Remap(ability.Id.Value)), ability.JpCost, ability.LearnOnHitRateRaw, ability.SerializedClassRaw, ability.AiFlagsRaw,
+                new(Remap(ability.Id.Value)), ability.JpCost, ability.LearnOnHitRateRaw, ability.SerializedClassRaw, ability.AiBehavior,
+                usableByAi: ability.UsableByAi, aiEvadeWithMotion: ability.AiEvadeWithMotion, unresolvedAiBitsRaw: ability.UnresolvedAiBitsRaw,
                 learnOnHit: ability.LearnOnHit, showName: ability.ShowName, canLearnWithJp: ability.CanLearnWithJp,
                 unknownTypeBit4: ability.UnknownTypeBit4)));
         // Round-trip enforces wire budgets and field-path diagnostics on generated identities too.

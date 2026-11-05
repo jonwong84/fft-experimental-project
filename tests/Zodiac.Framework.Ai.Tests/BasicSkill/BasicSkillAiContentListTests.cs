@@ -28,9 +28,13 @@ public sealed class BasicSkillAiContentListTests
         var metadata = new ContentPackage("sample:metadata/ai-list", "sample:profile/ai-list", ContentPackageKind.Baseline, null,
             [new JobDefinition(Job, Basic, new(3, 0), false, [])],
             [new SkillsetDefinition(Basic, reverseSlots ? slots.Reverse() : slots)],
-            [new AbilityMetadataDefinition(Self, 0, 0, 1, selfFlags ?? [9, 128, 0, 128]),
-             new AbilityMetadataDefinition(Rock, 0, 0, 1, stoneFlags ?? [130, 2, 65, 129]),
-             new AbilityMetadataDefinition(Other, 0, 0, 2, [0, 0, 0, 128])]);
+            [selfFlags is null ? new AbilityMetadataDefinition(Self, 0, 0, 1,
+                new AiAbilityBehavior(TargetsAllies: true, AffectsStats: true, TargetsMapTiles: true), usableByAi: true)
+                : AbilityMetadataDefinition.FromOriginalAiFlags(Self, 0, 0, 1, selfFlags),
+             stoneFlags is null ? new AbilityMetadataDefinition(Rock, 0, 0, 1,
+                new AiAbilityBehavior(TargetsEnemies: true, AffectsHp: true, Evadeable: true, PhysicalAttack: true, DirectTrajectory: true),
+                usableByAi: true, aiEvadeWithMotion: true) : AbilityMetadataDefinition.FromOriginalAiFlags(Rock, 0, 0, 1, stoneFlags),
+             new AbilityMetadataDefinition(Other, 0, 0, 2, new AiAbilityBehavior(), usableByAi: true)]);
         var setup = BaseJobBattleSetup.Create(new(metadata.Jobs, metadata.Skillsets, metadata.Abilities), state.Battle.TurnBattle.Battle.Map,
             state.Battle.TurnBattle.Battle.Units.Select(u => new BaseJobUnitPlacement(u.Id, Job, u.Position, 6,
                 [KeyValuePair.Create(Ground, new TerrainMovementCost(1))])));

@@ -137,7 +137,7 @@ public sealed partial class ContentPackage
             var aiBytes = new List<byte>();
             foreach (JsonElement value in aiValues)
                 aiBytes.Add((byte)Integer(value, id, $"{path}.aiFlagsRaw[{aiBytes.Count}]", 0, 255));
-            return new AbilityMetadataDefinition(new AbilityId(id), cost, rate, serializedClass, aiBytes,
+            return AbilityMetadataDefinition.FromOriginalAiFlags(new AbilityId(id), cost, rate, serializedClass, aiBytes,
                 learnOnHit: flags.Contains("learn-on-hit"), showName: flags.Contains("show-name"),
                 canLearnWithJp: !flags.Contains("cannot-learn-with-jp"), unknownTypeBit4: unknown != 0);
         }

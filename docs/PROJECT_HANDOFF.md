@@ -7,18 +7,18 @@ and the selected task's design before editing. This file describes current state
 ## Next work
 
 **ZOD-329: bind prepared Dash content and semantic AI setup.**
-[ZOD-326–328](behavior/semantic-ai-metadata.md) now decode immutable AI traits on
-AbilityMetadataDefinition and carry them into owned lists. Helpful/harmful,
-evasion/Silence, ranged and physical summaries consume that metadata. Static
-fourth-byte facts stay separate from initialized usage/search policy. Existing
-authored slots keep retail defaults; explicit unsupported metadata edits reject,
-and serialization/unknown raw bits remain unchanged. [The source study](architecture/zod-326-ai-behavior-metadata.md)
-identifies the remaining prepared Dash effect/grant/content-adapter gap. Next
-bind that bounded effect through the same semantic path. Full configurable AI
-policy variants remain future work; decoding alone does not implement them.
-Owner toggle drafts and JobStats stay unchanged. Existing fixed/kept facing,
-corpse-domain/terminal/frame RNG, host/editor, broad interface and ZOD-106
-deferrals remain.
+[ZOD-330](behavior/readable-ai-authoring.md) now makes named AI booleans and
+structured area-shape flags authoritative in AbilityMetadataDefinition. Static
+usable/motion values and unresolved residual bits are immutable. Original input
+uses an explicit factory; raw bytes are a generated compatibility view. Version1
+JSON/imports/companion checks remain lossless. Editor copies and authored AI
+fixtures use the semantic constructor. [ZOD-326–328](behavior/semantic-ai-metadata.md)
+still supply list target/evasion/Silence/trajectory/physical consumers and strict
+supported-evaluator guards. Existing types need no imported byte guesses during
+authoring. Next bind the prepared Dash effect/grants through this same path.
+Full configurable policy variants remain future work. Owner toggle drafts,
+JobStats, host/editor activation, automatic facing, full corpse/terminal/frame
+RNG, broad interfaces and ZOD-106 remain separate/deferred.
 
 The [original AI algorithm guide](architecture/original-ai-algorithm.md) maps
 policy precedence and all core source functions, with bounded implementation
@@ -159,10 +159,10 @@ without rewriting old evidence.
   explicit player-control flag clear, HP*128/maxHP>=45 and no NonBlue reach draw.
   Existing Attack/Stone scoring/selection/execution and both teams are preserved;
   terminal routing and Blue low-HP/player-controlled policies remain open.
-- Latest source trace: [static AI metadata](architecture/zod-326-ai-behavior-metadata.md)
-  pins five files/six functions and37 independent static-bit/retail descriptions.
-  Static fourth-byte motion/usable bits never become working consume policy.
-  Existing broader source/guide evidence remains; no original/C execution.
+- Latest source check: [readable AI authoring](behavior/readable-ai-authoring.md)
+  rechecks the five-file/six-function static flag trace and37 original vectors.
+  Area shape names preserve every bit;1,024 byte patterns roundtrip through
+  semantic construction and old packages. No original/C execution.
 - Organization: AI source/tests use Shared, Sword, ThrowStone, AttackThrowStone,
   Accumulate and BasicSkill folders with stable namespaces; [layout](development/ai-source-layout.md).
   Owner RNG migration is completed as `Zodiac.Framework.Random.RandomStateGenerator`
@@ -176,17 +176,18 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore, zero-warning/error Release build and **4,521 .NET
-  cases** (1,521 Framework, 1,217 AI, 823 Content), including thirty-eight new Content and two new AI cases, pass. All
+- Validation: locked restore, zero-warning/error Release build and **4,530 .NET
+  cases** (1,521 Framework, 1,217 AI, 832 Content), including nine new Content cases, pass. All
   **596 Python tests**, pinned source/prepared-data, algorithm-guide, local-link
   and coverage checks pass. Seven full TRX reports/logs are under ignored
-  `scratch/ai-flags-326-328/`.
+  `scratch/ai-authoring-330/`.
   Python uses repository-pinned Pillow 12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow 13.0.0 triggers six existing version guards; WindowsApps Python
   is unavailable. All nine owner drafts remain unchanged, including AbilityToggles.
-  Content and AI add semantic flag decoding/list consumers; no host/editor
-  or lock/package/dependency changes. One test-project item copies its source fixture.
+  Content/AI add semantic authoring, structured shapes and lossless encoding;
+  original import/editor-copy paths use the boundary/semantic constructors.
+  No host/editor activation, project/lock/package/dependency changes.
   Nine historical checkpoint audits last passed at ZOD-158; unchanged snapshots
   were not rerun. No original/C execution, host/editor activation or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/

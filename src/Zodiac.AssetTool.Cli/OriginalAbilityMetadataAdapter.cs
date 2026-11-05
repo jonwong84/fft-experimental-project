@@ -11,7 +11,7 @@ namespace Zodiac.AssetTool.Cli;
 internal static class OriginalAbilityMetadataAdapter
 {
     internal static AbilityMetadataDefinition ToDefinition(AbilityId id, OriginalAbilityRecord record) =>
-        new(id, record.JpCost, record.LearnRate, record.TypeFlags & 0x0f, record.AiFlags,
+        AbilityMetadataDefinition.FromOriginalAiFlags(id, record.JpCost, record.LearnRate, record.TypeFlags & 0x0f, record.AiFlags,
             learnOnHit: (record.TypeFlags & 0x20) != 0,
             showName: (record.TypeFlags & 0x40) != 0,
             canLearnWithJp: (record.TypeFlags & 0x80) == 0,
