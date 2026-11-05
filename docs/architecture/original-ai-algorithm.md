@@ -526,6 +526,7 @@ implement pure signed/Faith arithmetic and already-hit amount projection.
 element composition and raw absorption/undead routing, preserving Oil/Float/rider
 guards. [ZOD-340](../behavior/magic-conditional-proc.md) now adds the isolated
 conditional-proc decision/RNG step. These do not add spell commands or AI entries.
-ZOD-341 next covers bounded empty-status/living-target result finalization before
-later state/resource/target integration.
+[ZOD-341](../behavior/magic-result-finalization.md) now supplies bounded
+empty-status/living-target result finalization with caps and retained effect types.
+ZOD-342 next traces magical evasion/admission before later state/resource/target integration.
 No automatic-facing/corpse/terminal/host gate is activated.

@@ -6,7 +6,17 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-341: implement bounded living-target, empty-status magic result finalization.**
+**ZOD-342: trace magical evasion and pre-formula admission for0x08/0x0C.**
+[ZOD-341](behavior/magic-result-finalization.md) now finalizes explicitly living,
+non-Petrify/Wall, no-Golem, empty-status HP work. It preserves signed fields and
+miss labels, clears hit on zero accuracy, applies upper999 caps only, and retains
+special effects through pseudo-status typing even on misses. Its composed path
+privately owns routing/proc/empty-status/finalization and returns candidate RNG.
+Unsupported facts or exhausted counters reject without partial output/draws.
+Full output requires known entry flags even in preview; nullification proves
+flags clear but still requires all target/work facts. No live HP/status/command
+publication. Next trace evasion before widening the already-hit boundary.
+
 [ZOD-340](behavior/magic-conditional-proc.md) now supplies an isolated proc decision:
 execution uses floor(raw*100/32768)<19 and exactly one draw, even for empty status
 record0 or zero amount. Preview requests the status without a draw/flag set; fresh
@@ -22,7 +32,8 @@ must be explicitly fresh; Fire needs known no Oil, Earth known no Float/rider.
 Unknown weather rejects. Healing bypasses damage's entire element context.
 Nullification skips Faith and clears absorption markers. Absorbed damage can heal
 undead, while0x0C healing becomes damage and requests clearing canceled-status
-byte0. Results remain signed/raw, with no999 cap, status execution or live HP change.
+byte0. These earlier APIs retain signed/raw output; the separate ZOD-341 owner now adds
+bounded final caps without status execution or live HP change.
 
 [ZOD-334–336](behavior/faith-magic-amounts.md) retain the shared pre-Faith modifier/
 product and signed Faith arithmetic. The old neutral-damage API and all44 prior
@@ -207,13 +218,13 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore, zero-warning/error Release build and **4,599 .NET
-  cases** (1,558 Framework, 1,217 AI, 838 Content, 328 CLI) pass. Ten new Framework
-  cases cover32 threshold/decision descriptions plus family/path composition and
-  scope guards. All **627 Python tests** pass, including eight new independent
-  proc/mode/RNG/tamper cases. Pinned nine-file/ten-function source and prepared
-  empty-status/four-Fire-tier checks, prior element/Faith, guide, coverage and local
-  links pass. Seven TRX reports/logs are under ignored `scratch/magic-proc-340/`.
+- Validation: locked restore, zero-warning/error Release build and **4,613 .NET
+  cases** (1,572 Framework, 1,217 AI, 838 Content, 328 CLI) pass. Fourteen new Framework
+  cases cover40 raw/composed descriptions plus admission, miss labels and preview
+  knowledge. All **635 Python tests** pass, including eight new independent
+  cap/flag/order/guard/tamper cases. Pinned eight-file/15-function source and prepared
+  empty-status/four-Fire-tier checks, prior element/Faith/proc, guide, coverage and
+  local links pass. Seven TRX reports/logs are under ignored `scratch/magic-finalization-341/`.
   Prepared Dash/Stone import checks remain at ZOD-329; their code/input is unchanged.
   Python uses repository-pinned Pillow12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.

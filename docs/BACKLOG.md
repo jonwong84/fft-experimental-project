@@ -4,12 +4,12 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-341 (bounded living-target magic result finalization).**
-[ZOD-340](behavior/magic-conditional-proc.md) adds the isolated conditional-proc
-decision with exact execution scaling/draws, preview/AI behavior, family/path
-identity and atomic managed counter/context rejection. It applies no status and
-publishes no live RNG or HP. The prior shared raw magic stages remain unchanged.
-There are 34 open tickets below. The 307 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-342 (trace magical evasion and pre-formula admission).**
+[ZOD-341](behavior/magic-result-finalization.md) now composes bounded living-target,
+empty-status result data with upper999 caps, preserved signed fields/hit labels,
+special-effect typing and atomic RNG rejection. It publishes no live HP/status
+or command. Existing after-hit amount/routing/proc primitives remain unchanged.
+There are 34 open tickets below. The 308 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -33,22 +33,23 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-341 — Implement bounded living-target magic result finalization
+### ZOD-342 — Trace magical evasion and pre-formula admission
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-334, ZOD-339, ZOD-340
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-334, ZOD-341
 
-Trace and implement the smallest complete raw-result finalization for an explicitly
-living, non-Petrify/Wall, no-Golem target with known empty status-infliction record
-and no pending proc/knockback/reaction work. Preserve accuracy/hit facts, signed
-field semantics and source upper999 caps; do not add a lower clamp or infer a
-route from amount sign. Carry absorption/weakness/added-effect flags, including
-the added-effect delta from a successful roll against record0, through source
-attack-type finalization. Unsupported target/status/work context must reject.
-Use independent literal and composed vectors. This remains result data, not HP
-publication or a command. General status application, corpse/terminal/Golem rules,
-MP/charge, live MA/Faith, targeting, actual spell/AI integration, owner drafts,
-JobStats, host/editor, automatic facing, frame RNG, broad interfaces and ZOD-106
-remain separate/deferred. See the [proc and boundary trace](behavior/magic-conditional-proc.md).
+Trace the0x08 magical evasion pipeline and0x0C's bypass before the existing
+after-hit projection. Pin the read-only source revision and record callers,
+accessory/shield/class and monster contributions, status modifiers, secondary
+Evadeable, arithmetic stores, accuracy/miss labels, check order and execution/
+preview/AI RNG behavior. Identify which existing evasion primitives can be reused
+without broadening their contracts. Produce independent source-derived boundary
+and ordered draw descriptions, and select the smallest complete implementation
+child with explicit facts for unsupported reactions/Reflect/status/target work.
+This ticket is source analysis and acceptance design; it does not activate magic
+commands or AI. MP/charge, live MA/Faith, full targeting/status/corpse/Golem/terminal
+rules, owner drafts, JobStats, host/editor, automatic facing, frame RNG, broad
+interfaces and ZOD-106 remain separate/deferred. See the
+[current result boundary](behavior/magic-result-finalization.md).
 
 ## Existing validation gates
 

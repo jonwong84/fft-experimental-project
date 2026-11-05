@@ -83,8 +83,8 @@ ignored logs: `scratch/magic-proc-340/`.
 
 This decides only whether the status applicator should be attempted. It does not
 apply status sets, finalize eligibility/caps, use MP/charge, publish HP, add spell
-commands or activate magic AI. **Next ZOD-341:** select and implement bounded
-living-target, empty-status result finalization, carrying special-effect/accuracy
-facts and source upper999 caps without pretending to cover full corpse/Golem/
-status behavior. Owner drafts, JobStats, host/editor, automatic facing,
+commands or activate magic AI. [ZOD-341](magic-result-finalization.md) now adds
+bounded living-target/empty-status result finalization, carrying special-effect/
+accuracy facts and source upper999 caps. Full corpse/Golem/status behavior remains
+outside that domain. ZOD-342 next traces magical evasion/pre-formula admission. Owner drafts, JobStats, host/editor, automatic facing,
 corpse/terminal/frame RNG, broad interfaces and ZOD-106 remain deferred.

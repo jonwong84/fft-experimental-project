@@ -1,0 +1,2157 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-341",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "confidence": "source-derived raw result and composed decision descriptions; no original/C execution",
+  "scope": "Living non-Petrify/Wall no-Golem target, empty status record, no pending work; source labels are copied without implementing their underlying miss rules; no live publication",
+  "raw": [
+    {
+      "id": "damage-upper-cap",
+      "input": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 1000,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      },
+      "expected": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 999,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      }
+    },
+    {
+      "id": "healing-upper-cap",
+      "input": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 0,
+        "healing": 1000,
+        "types": {
+          "damage": false,
+          "healing": true,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      },
+      "expected": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 0,
+        "healing": 999,
+        "types": {
+          "damage": false,
+          "healing": true,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      }
+    },
+    {
+      "id": "both-fields-cap-independently",
+      "input": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 32767,
+        "healing": 1001,
+        "types": {
+          "damage": true,
+          "healing": true,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      },
+      "expected": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 999,
+        "healing": 999,
+        "types": {
+          "damage": true,
+          "healing": true,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      }
+    },
+    {
+      "id": "below-cap",
+      "input": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 998,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      },
+      "expected": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 998,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      }
+    },
+    {
+      "id": "at-cap",
+      "input": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 999,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      },
+      "expected": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 999,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      }
+    },
+    {
+      "id": "negative-damage-not-lower-clamped",
+      "input": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": -32768,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      },
+      "expected": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": -32768,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      }
+    },
+    {
+      "id": "negative-healing-not-retyped",
+      "input": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 0,
+        "healing": -250,
+        "types": {
+          "damage": false,
+          "healing": true,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      },
+      "expected": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 0,
+        "healing": -250,
+        "types": {
+          "damage": false,
+          "healing": true,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      }
+    },
+    {
+      "id": "zero-damage-keeps-type",
+      "input": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 0,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      },
+      "expected": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 0,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      }
+    },
+    {
+      "id": "numeric-field-does-not-infer-types",
+      "input": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 0,
+        "healing": 20,
+        "types": {
+          "damage": false,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      },
+      "expected": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 0,
+        "healing": 20,
+        "types": {
+          "damage": false,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      }
+    },
+    {
+      "id": "false-hit-not-restored",
+      "input": {
+        "hit": false,
+        "accuracy": 100,
+        "miss": 1,
+        "damage": 1200,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      },
+      "expected": {
+        "hit": false,
+        "accuracy": 100,
+        "miss": 1,
+        "damage": 999,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      }
+    },
+    {
+      "id": "zero-accuracy-does-not-change-miss-label",
+      "input": {
+        "hit": true,
+        "accuracy": 0,
+        "miss": 0,
+        "damage": 1200,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      },
+      "expected": {
+        "hit": false,
+        "accuracy": 0,
+        "miss": 0,
+        "damage": 999,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      }
+    },
+    {
+      "id": "full-ushort-accuracy-preserved",
+      "input": {
+        "hit": true,
+        "accuracy": 65535,
+        "miss": 0,
+        "damage": 0,
+        "healing": 10,
+        "types": {
+          "damage": false,
+          "healing": true,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      },
+      "expected": {
+        "hit": true,
+        "accuracy": 65535,
+        "miss": 0,
+        "damage": 0,
+        "healing": 10,
+        "types": {
+          "damage": false,
+          "healing": true,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      }
+    },
+    {
+      "id": "weakness-adds-pseudo",
+      "input": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 10,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": true,
+          "added": false
+        },
+        "clear": false
+      },
+      "expected": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 10,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": true
+        },
+        "effects": {
+          "absorb": false,
+          "weak": true,
+          "added": false
+        },
+        "clear": false
+      }
+    },
+    {
+      "id": "absorption-adds-pseudo",
+      "input": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 0,
+        "healing": 10,
+        "types": {
+          "damage": false,
+          "healing": true,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": true,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      },
+      "expected": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 0,
+        "healing": 10,
+        "types": {
+          "damage": false,
+          "healing": true,
+          "pseudo": true
+        },
+        "effects": {
+          "absorb": true,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      }
+    },
+    {
+      "id": "empty-status-proc-flag-still-adds-pseudo",
+      "input": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 0,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": true
+        },
+        "clear": false
+      },
+      "expected": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 0,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": true
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": true
+        },
+        "clear": false
+      }
+    },
+    {
+      "id": "pseudo-added-even-when-hit-false",
+      "input": {
+        "hit": true,
+        "accuracy": 0,
+        "miss": 0,
+        "damage": 1234,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": true
+        },
+        "clear": false
+      },
+      "expected": {
+        "hit": false,
+        "accuracy": 0,
+        "miss": 0,
+        "damage": 999,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": true
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": true
+        },
+        "clear": false
+      }
+    },
+    {
+      "id": "existing-pseudo-not-cleared",
+      "input": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 0,
+        "healing": 0,
+        "types": {
+          "damage": false,
+          "healing": false,
+          "pseudo": true
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      },
+      "expected": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 0,
+        "healing": 0,
+        "types": {
+          "damage": false,
+          "healing": false,
+          "pseudo": true
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      }
+    },
+    {
+      "id": "nullified-frame-remains-nullified",
+      "input": {
+        "hit": false,
+        "accuracy": 0,
+        "miss": 5,
+        "damage": 0,
+        "healing": 0,
+        "types": {
+          "damage": false,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      },
+      "expected": {
+        "hit": false,
+        "accuracy": 0,
+        "miss": 5,
+        "damage": 0,
+        "healing": 0,
+        "types": {
+          "damage": false,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      }
+    },
+    {
+      "id": "clear-canceled-byte-marker-preserved",
+      "input": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 10,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": true
+      },
+      "expected": {
+        "hit": true,
+        "accuracy": 100,
+        "miss": 0,
+        "damage": 10,
+        "healing": 0,
+        "types": {
+          "damage": true,
+          "healing": false,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": true
+      }
+    },
+    {
+      "id": "known-miss-label-is-copied-not-reinterpreted",
+      "input": {
+        "hit": false,
+        "accuracy": 0,
+        "miss": 9,
+        "damage": 0,
+        "healing": 1000,
+        "types": {
+          "damage": false,
+          "healing": true,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      },
+      "expected": {
+        "hit": false,
+        "accuracy": 0,
+        "miss": 9,
+        "damage": 0,
+        "healing": 999,
+        "types": {
+          "damage": false,
+          "healing": true,
+          "pseudo": false
+        },
+        "effects": {
+          "absorb": false,
+          "weak": false,
+          "added": false
+        },
+        "clear": false
+      }
+    }
+  ],
+  "composed": [
+    {
+      "id": "executed-damage-cap-with-proc",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 99,
+        "power": 40,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "accuracy": 100,
+      "mode": "Execute",
+      "word": 2361954567,
+      "count": 9,
+      "profile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "procRejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "damage": 999,
+          "healing": 0,
+          "types": {
+            "damage": true,
+            "healing": false,
+            "pseudo": true
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": true
+          },
+          "clear": false
+        },
+        "draws": 1,
+        "procDisposition": "Passed",
+        "setFlag": true,
+        "word": 4660,
+        "count": 10
+      }
+    },
+    {
+      "id": "executed-damage-cap-without-proc",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 99,
+        "power": 40,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "accuracy": 100,
+      "mode": "Execute",
+      "word": 560173319,
+      "count": 9,
+      "profile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "procRejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "damage": 999,
+          "healing": 0,
+          "types": {
+            "damage": true,
+            "healing": false,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": false
+        },
+        "draws": 1,
+        "procDisposition": "Failed",
+        "setFlag": false,
+        "word": 2147422772,
+        "count": 10
+      }
+    },
+    {
+      "id": "preview-status-attempt-does-not-invent-added-flag",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 99,
+        "power": 40,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "accuracy": 100,
+      "mode": "Preview",
+      "word": 2361954567,
+      "count": 18446744073709551615,
+      "profile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "procRejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "damage": 999,
+          "healing": 0,
+          "types": {
+            "damage": true,
+            "healing": false,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": false
+        },
+        "draws": 0,
+        "procDisposition": "Passed",
+        "setFlag": false,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "AI-no-proc-no-draw",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 99,
+        "power": 40,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "accuracy": 100,
+      "mode": "AiSimulation",
+      "word": 2361954567,
+      "count": 18446744073709551615,
+      "profile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "procRejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "damage": 999,
+          "healing": 0,
+          "types": {
+            "damage": true,
+            "healing": false,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": false
+        },
+        "draws": 0,
+        "procDisposition": "Failed",
+        "setFlag": false,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "absorption-keeps-original-proc-family",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 128,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": true,
+      "accuracy": 100,
+      "mode": "Execute",
+      "word": 2361954567,
+      "count": 9,
+      "profile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "procRejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "damage": 0,
+          "healing": 34,
+          "types": {
+            "damage": false,
+            "healing": true,
+            "pseudo": true
+          },
+          "effects": {
+            "absorb": true,
+            "weak": false,
+            "added": true
+          },
+          "clear": false
+        },
+        "draws": 1,
+        "procDisposition": "Passed",
+        "setFlag": true,
+        "word": 4660,
+        "count": 10
+      }
+    },
+    {
+      "id": "weakness-even-after-failed-proc",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 128
+      },
+      "targetIsUndead": false,
+      "accuracy": 100,
+      "mode": "Execute",
+      "word": 560173319,
+      "count": 9,
+      "profile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "procRejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "damage": 68,
+          "healing": 0,
+          "types": {
+            "damage": true,
+            "healing": false,
+            "pseudo": true
+          },
+          "effects": {
+            "absorb": false,
+            "weak": true,
+            "added": false
+          },
+          "clear": false
+        },
+        "draws": 1,
+        "procDisposition": "Failed",
+        "setFlag": false,
+        "word": 2147422772,
+        "count": 10
+      }
+    },
+    {
+      "id": "weak-absorbed-damage-caps-healing",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 99,
+        "power": 40,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 128,
+        "nullify": 0,
+        "half": 0,
+        "weak": 128
+      },
+      "targetIsUndead": false,
+      "accuracy": 100,
+      "mode": "AiSimulation",
+      "word": 2361954567,
+      "count": 9,
+      "profile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "procRejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "damage": 0,
+          "healing": 999,
+          "types": {
+            "damage": false,
+            "healing": true,
+            "pseudo": true
+          },
+          "effects": {
+            "absorb": true,
+            "weak": true,
+            "added": false
+          },
+          "clear": false
+        },
+        "draws": 0,
+        "procDisposition": "Failed",
+        "setFlag": false,
+        "word": 2361954567,
+        "count": 9
+      }
+    },
+    {
+      "id": "healing-caps-with-no-proc",
+      "input": {
+        "kind": "Healing",
+        "magicAttack": 99,
+        "power": 40,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "accuracy": 100,
+      "mode": "Execute",
+      "word": 2361954567,
+      "count": 18446744073709551615,
+      "profile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "procRejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "damage": 0,
+          "healing": 999,
+          "types": {
+            "damage": false,
+            "healing": true,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": false
+        },
+        "draws": 0,
+        "procDisposition": "NoConditionalBranch",
+        "setFlag": false,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "undead-healing-keeps-clear-marker",
+      "input": {
+        "kind": "Healing",
+        "magicAttack": 99,
+        "power": 40,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": true,
+      "accuracy": 100,
+      "mode": "Execute",
+      "word": 2361954567,
+      "count": 18446744073709551615,
+      "profile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "procRejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "damage": 999,
+          "healing": 0,
+          "types": {
+            "damage": true,
+            "healing": false,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": true
+        },
+        "draws": 0,
+        "procDisposition": "NoConditionalBranch",
+        "setFlag": false,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "nullification-knows-cleared-flags",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 128,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "accuracy": 100,
+      "mode": "Execute",
+      "word": 2361954567,
+      "count": 18446744073709551615,
+      "profile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": false
+        }
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "procRejection": "None",
+        "outcome": {
+          "hit": false,
+          "accuracy": 0,
+          "miss": 5,
+          "damage": 0,
+          "healing": 0,
+          "types": {
+            "damage": false,
+            "healing": false,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": false
+        },
+        "draws": 0,
+        "procDisposition": "ElementNullified",
+        "setFlag": false,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "zero-amount-proc-preserved",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 0,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 0,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "accuracy": 100,
+      "mode": "Execute",
+      "word": 2361954567,
+      "count": 9,
+      "profile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "procRejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "damage": 0,
+          "healing": 0,
+          "types": {
+            "damage": true,
+            "healing": false,
+            "pseudo": true
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": true
+          },
+          "clear": false
+        },
+        "draws": 1,
+        "procDisposition": "Passed",
+        "setFlag": true,
+        "word": 4660,
+        "count": 10
+      }
+    },
+    {
+      "id": "zero-accuracy-still-draws-before-clearing-hit",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "accuracy": 0,
+      "mode": "Execute",
+      "word": 2361954567,
+      "count": 9,
+      "profile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "procRejection": "None",
+        "outcome": {
+          "hit": false,
+          "accuracy": 0,
+          "miss": 0,
+          "damage": 34,
+          "healing": 0,
+          "types": {
+            "damage": true,
+            "healing": false,
+            "pseudo": true
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": true
+          },
+          "clear": false
+        },
+        "draws": 1,
+        "procDisposition": "Passed",
+        "setFlag": true,
+        "word": 4660,
+        "count": 10
+      }
+    },
+    {
+      "id": "zero-accuracy-failed-proc-still-preserves-fields",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "accuracy": 0,
+      "mode": "Execute",
+      "word": 560173319,
+      "count": 9,
+      "profile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "procRejection": "None",
+        "outcome": {
+          "hit": false,
+          "accuracy": 0,
+          "miss": 0,
+          "damage": 34,
+          "healing": 0,
+          "types": {
+            "damage": true,
+            "healing": false,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": false
+        },
+        "draws": 1,
+        "procDisposition": "Failed",
+        "setFlag": false,
+        "word": 2147422772,
+        "count": 10
+      }
+    },
+    {
+      "id": "negative-damage-remains-damage",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 255,
+        "power": 255,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "accuracy": 100,
+      "mode": "Execute",
+      "word": 560173319,
+      "count": 9,
+      "profile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "procRejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "damage": -250,
+          "healing": 0,
+          "types": {
+            "damage": true,
+            "healing": false,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": false
+        },
+        "draws": 1,
+        "procDisposition": "Failed",
+        "setFlag": false,
+        "word": 2147422772,
+        "count": 10
+      }
+    },
+    {
+      "id": "negative-healing-remains-healing",
+      "input": {
+        "kind": "Healing",
+        "magicAttack": 255,
+        "power": 255,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "accuracy": 100,
+      "mode": "Execute",
+      "word": 2361954567,
+      "count": 9,
+      "profile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "procRejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "damage": 0,
+          "healing": -250,
+          "types": {
+            "damage": false,
+            "healing": true,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": false
+        },
+        "draws": 0,
+        "procDisposition": "NoConditionalBranch",
+        "setFlag": false,
+        "word": 2361954567,
+        "count": 9
+      }
+    },
+    {
+      "id": "exhausted-proc-roll-is-atomic",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "accuracy": 100,
+      "mode": "Execute",
+      "word": 2361954567,
+      "count": 18446744073709551615,
+      "profile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "ProcDecisionRejected",
+        "procRejection": "RandomDrawCountExhausted",
+        "draws": 0,
+        "outcome": null,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "preview-still-needs-known-final-flags",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "accuracy": 100,
+      "mode": "Preview",
+      "word": 2361954567,
+      "count": 18446744073709551615,
+      "profile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": false
+        }
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "procRejection": "None",
+        "draws": 0,
+        "outcome": null,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "unsupported-target-rejects-before-private-roll",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "accuracy": 100,
+      "mode": "Execute",
+      "word": 2361954567,
+      "count": 9,
+      "profile": {
+        "living": false,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "procRejection": "None",
+        "draws": 0,
+        "outcome": null,
+        "word": 2361954567,
+        "count": 9
+      }
+    },
+    {
+      "id": "nonempty-status-not-simulated",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "accuracy": 100,
+      "mode": "Execute",
+      "word": 2361954567,
+      "count": 9,
+      "profile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": false,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "procRejection": "None",
+        "draws": 0,
+        "outcome": null,
+        "word": 2361954567,
+        "count": 9
+      }
+    },
+    {
+      "id": "nullified-still-needs-target-context",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 128,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "accuracy": 100,
+      "mode": "Execute",
+      "word": 2361954567,
+      "count": 18446744073709551615,
+      "profile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": false,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "procRejection": "None",
+        "draws": 0,
+        "outcome": null,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    }
+  ]
+}
