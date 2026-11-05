@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-05",
   "edition": "SCUS-94221",
-  "managedCommit": "4e94271",
+  "managedCommit": "891f4c0",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 4481,
-    "source": "docs/behavior/dash-ai.md",
+    "passed": 4521,
+    "source": "docs/behavior/semantic-ai-metadata.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -683,7 +683,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "Existing pair/variable-list command and complete-turn drivers retain guards, priority knowledge and streams. Roster general preparation/scenarios, cast-priority provenance and fresh exhaustive supported Attack/self/Stone list ranking/lottery share private formulas, clocks, projections, geometry and scoring while restoring all peers. Exact Framework flat direct trajectories use complete sprite heights and SDK normalization; actual roster Stone resolves live interception and all-occupant landing. Framework owns invocation-bound proposals, full-word/count RNG verification, actual command transactions and exact-state frozen Move follow-ups. Fresh supported roster AI dispatch now runs selection inside that boundary, publishing priority knowledge only with actual progress. Bounded complete-turn routing and exact-session recovery compose retained commands, fresh post-ACT and explicit facing without advancing the next clock. ACT-first KO can stop at the deferred corpse query guard with real progress retained; Move-first KO can settle its real receipt. Other policies/abilities/maps, full corpse/terminal/frame RNG, original evidence and host activation remain open. Eighteen real turns now verify multi-actor commands, clocks, ready-peer order, all-peer state/RNG and retained priorities; Dash now joins supported roster semantic preparation, isolated midpoint projection, ranked range1 search, full-list ranking/lottery and actual dispatch through existing verified proposals/frozen Move. Six further real Dash/Accumulate turns verify shared priority/RNG history. Its non-evadeable rule uses zero hypothetical effect draws, compared with three actual damage/Brave draws; legacy pair guards remain.",
+      "currentScope": "Existing pair/variable-list command and complete-turn drivers retain guards, priority knowledge and streams. Roster general preparation/scenarios, cast-priority provenance and fresh exhaustive supported Attack/self/Stone list ranking/lottery share private formulas, clocks, projections, geometry and scoring while restoring all peers. Exact Framework flat direct trajectories use complete sprite heights and SDK normalization; actual roster Stone resolves live interception and all-occupant landing. Framework owns invocation-bound proposals, full-word/count RNG verification, actual command transactions and exact-state frozen Move follow-ups. Fresh supported roster AI dispatch now runs selection inside that boundary, publishing priority knowledge only with actual progress. Bounded complete-turn routing and exact-session recovery compose retained commands, fresh post-ACT and explicit facing without advancing the next clock. ACT-first KO can stop at the deferred corpse query guard with real progress retained; Move-first KO can settle its real receipt. Other policies/abilities/maps, full corpse/terminal/frame RNG, original evidence and host activation remain open. Eighteen real turns now verify multi-actor commands, clocks, ready-peer order, all-peer state/RNG and retained priorities; Dash now joins supported roster semantic preparation, isolated midpoint projection, ranked range1 search, full-list ranking/lottery and actual dispatch through existing verified proposals/frozen Move. Six further real Dash/Accumulate turns verify shared priority/RNG history. Its non-evadeable rule uses zero hypothetical effect draws, compared with three actual damage/Brave draws; legacy pair guards remain. Immutable semantic AI traits now derive from preserved primary bytes and feed owned list target/evasion/Silence/trajectory/physical summaries. Static fourth-byte facts stay separate from working usage. Unsupported edited combinations reject; package schema/raw preservation and owner drafts remain unchanged. Prepared Dash effect/grant binding remains next.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -858,7 +858,12 @@
         "docs/behavior/dash-ai.md",
         "docs/evidence/ai/dash-ai-source-v1.json",
         "docs/fixtures/behavior/dash-ai-contract-v1.json",
-        "docs/evidence/ai/dash-ai-implementation-v1.json"
+        "docs/evidence/ai/dash-ai-implementation-v1.json",
+        "docs/architecture/zod-326-ai-behavior-metadata.md",
+        "docs/behavior/semantic-ai-metadata.md",
+        "docs/evidence/ai/ai-behavior-source-v1.json",
+        "docs/fixtures/behavior/ai-behavior-contract-v1.json",
+        "docs/evidence/ai/ai-behavior-implementation-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -952,7 +957,10 @@
         "src/Zodiac.Framework.Ai/BasicSkill/RosterBasicSkillAiCommandExecution.cs",
         "src/Zodiac.Framework.Ai/BasicSkill/RosterBasicSkillAiTurnExecution.cs",
         "src/Zodiac.Framework.Ai/Dash/RosterDashAiCandidate.cs",
-        "src/Zodiac.Framework.Ai/Dash/RosterDashAiEntry.cs"
+        "src/Zodiac.Framework.Ai/Dash/RosterDashAiEntry.cs",
+        "src/Zodiac.Framework.Ai/Shared/AiAbilityBehavior.cs",
+        "src/Zodiac.Content/Definitions/OriginalAbilityAiFlags.cs",
+        "src/Zodiac.Content/Definitions/AbilityMetadataDefinition.cs"
       ],
       "automatedChecks": [
         {
@@ -1382,6 +1390,18 @@
         {
           "path": "tools/verification/verify_dash_ai_contract.py",
           "scope": "Pinned83 functions/27 files and independent Dash AI descriptions; no original/C/managed execution."
+        },
+        {
+          "path": "tests/Zodiac.Content.Tests/Definitions/AbilityAiBehaviorTests.cs",
+          "scope": "37 source-bit/retail vectors, copied storage and unchanged schema roundtrip."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiContentListTests.cs",
+          "scope": "Exact metadata identity through owned lists, source summaries, usability and explicit unsupported edits; existing complete-turn parity."
+        },
+        {
+          "path": "tools/verification/test_ai_behavior_contract.py",
+          "scope": "37 static-bit descriptions, preserved inputs, fourth-byte separation and tamper rejection."
         }
       ],
       "manualCheckpoint": {
@@ -1394,9 +1414,9 @@
         "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
         "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Trace ZOD-326 retail Dash prepared-content/semantic AI setup binding, preserving unresolved flags and existing authored schemas/guards.",
+      "nextAction": "Bind ZOD-329 prepared Dash content/effects/grants through semantic AI setup; configurable policy variants require separate source-traced support.",
       "followUpTickets": [
-        "ZOD-326"
+        "ZOD-329"
       ]
     },
     {
@@ -1485,7 +1505,7 @@
       "ownerTicket": "ZOD-039",
       "ownerArea": "Zodiac.Content definitions and offline import",
       "status": "partial",
-      "currentScope": "Selected Squire metadata/sword/Accumulate imports remain. ZOD-110 adds a separate strict targeted-effect companion and verified Throw Stone conversion, preserving historical source-0148 and metadata bytes; explicit learned grants compose the authored combined scenario. Full catalog coverage remains open.",
+      "currentScope": "Selected Squire metadata/sword/Accumulate imports remain. ZOD-110 adds a separate strict targeted-effect companion and verified Throw Stone conversion, preserving historical source-0148 and metadata bytes; explicit learned grants compose the authored combined scenario. Full catalog coverage remains open. Immutable semantic AI traits now derive from preserved primary bytes and feed owned list target/evasion/Silence/trajectory/physical summaries. Static fourth-byte facts stay separate from working usage. Unsupported edited combinations reject; package schema/raw preservation and owner drafts remain unchanged. Prepared Dash effect/grant binding remains next.",
       "referenceSources": [
         {
           "path": "include/fft/job.h",
@@ -1511,7 +1531,12 @@
         "docs/behavior/throw-stone-implementation.md",
         "docs/evidence/combat/throw-stone-implementation-v1.json",
         "docs/development/basic-skill-content.md",
-        "docs/evidence/combat/throw-stone-content-v1.json"
+        "docs/evidence/combat/throw-stone-content-v1.json",
+        "docs/architecture/zod-326-ai-behavior-metadata.md",
+        "docs/behavior/semantic-ai-metadata.md",
+        "docs/evidence/ai/ai-behavior-source-v1.json",
+        "docs/fixtures/behavior/ai-behavior-contract-v1.json",
+        "docs/evidence/ai/ai-behavior-implementation-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Content/Definitions/JobDefinition.cs",
@@ -1519,7 +1544,11 @@
         "src/Zodiac.Content/ContentPackages/ImmediateAbilityContentPackage.cs",
         "src/Zodiac.Content/BattleSetup/ImmediateAbilityBattleSetup.cs",
         "src/Zodiac.AssetTool.Cli/OriginalThrowStoneImporter.cs",
-        "src/Zodiac.Content/BattleSetup/TargetedAbilityBattleSetup.cs"
+        "src/Zodiac.Content/BattleSetup/TargetedAbilityBattleSetup.cs",
+        "src/Zodiac.Framework.Ai/Shared/AiAbilityBehavior.cs",
+        "src/Zodiac.Content/Definitions/OriginalAbilityAiFlags.cs",
+        "src/Zodiac.Content/Definitions/AbilityMetadataDefinition.cs",
+        "src/Zodiac.Content/BattleSetup/OrdinaryHumanAiAbilityListSetup.cs"
       ],
       "automatedChecks": [
         {
@@ -1533,6 +1562,18 @@
         {
           "path": "tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs",
           "scope": "Immediate companion validation/round-trip/grants and authored high slot indices; broader catalog remains open."
+        },
+        {
+          "path": "tests/Zodiac.Content.Tests/Definitions/AbilityAiBehaviorTests.cs",
+          "scope": "37 source-bit/retail vectors, copied storage and unchanged schema roundtrip."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiContentListTests.cs",
+          "scope": "Exact metadata identity through owned lists, source summaries, usability and explicit unsupported edits; existing complete-turn parity."
+        },
+        {
+          "path": "tools/verification/test_ai_behavior_contract.py",
+          "scope": "37 static-bit descriptions, preserved inputs, fourth-byte separation and tamper rejection."
         }
       ],
       "manualCheckpoint": {

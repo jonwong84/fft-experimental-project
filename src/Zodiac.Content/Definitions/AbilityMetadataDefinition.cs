@@ -1,8 +1,9 @@
 using System.Collections.Immutable;
+using Zodiac.Framework.Ai;
 
 namespace Zodiac.Content.Definitions;
 
-/// <summary>Immutable learning metadata only; this definition does not supply an executable combat effect.</summary>
+/// <summary>Immutable learning and semantic AI metadata; this definition does not supply an executable combat effect.</summary>
 public sealed class AbilityMetadataDefinition
 {
     public AbilityId Id { get; }
@@ -16,6 +17,12 @@ public sealed class AbilityMetadataDefinition
     /// <summary>Unresolved original bit 4, preserved without assigning it gameplay meaning.</summary>
     public bool UnknownTypeBit4 { get; }
     public ImmutableArray<byte> AiFlagsRaw { get; }
+    /// <summary>Derived from the preserved original bytes; not a second editable configuration source.</summary>
+    public AiAbilityBehavior AiBehavior { get; }
+    public bool UsableByAi => (AiFlagsRaw[3] & 128) != 0;
+    /// <summary>Original static bit, deliberately separate from runtime consume-aim policy.</summary>
+    public bool AiEvadeWithMotion => (AiFlagsRaw[3] & 1) != 0;
+    public bool HasUnresolvedAiFlags => (AiFlagsRaw[3] & ~129) != 0;
 
     public AbilityMetadataDefinition(AbilityId id, int jpCost, int learnOnHitRateRaw, int serializedClassRaw,
         IEnumerable<byte> aiFlagsRaw, bool learnOnHit = false, bool showName = false,
@@ -41,5 +48,6 @@ public sealed class AbilityMetadataDefinition
         CanLearnWithJp = canLearnWithJp;
         UnknownTypeBit4 = unknownTypeBit4;
         AiFlagsRaw = flags;
+        AiBehavior = OriginalAbilityAiFlags.Decode(flags);
     }
 }

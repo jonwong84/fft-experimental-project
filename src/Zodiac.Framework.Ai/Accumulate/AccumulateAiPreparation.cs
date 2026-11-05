@@ -116,7 +116,8 @@ public static class AccumulateAiPreparation
                 AllyAbilityReach = body.Move + source.Where(e => e.Helpful).Min(e => e.Range) };
         }
         int harmful = units.Single(u => u.UnitId == turn.TargetId).HarmfulCount;
-        return new(true, null, new(common, team, units, entries, harmful, harmful), refresh.RngState);
+        int physical = configuration.AbilityLists is { } sourceLists ? sourceLists.Units[turn.TargetId].PhysicalHarmfulCount : harmful;
+        return new(true, null, new(common, team, units, entries, harmful, physical), refresh.RngState);
     }
 
     private static AccumulateAiPreparedUnit Summary(BattleUnitId id, AiHumanInitializedList list, BattleUnitId actorId) =>

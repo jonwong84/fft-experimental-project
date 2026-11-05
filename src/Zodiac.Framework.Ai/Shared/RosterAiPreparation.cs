@@ -61,7 +61,8 @@ public static class RosterAiPreparation
                 AiRosterEligibility.OrdinaryTurnDelay((byte)turn.Ct, (byte)turn.Speed), false);
         }));
         int harmful = summaries.Where(u => flags[u.UnitId].Enemy).Sum(u => u.Initialization.HarmfulCount);
-        return new(true, RosterAiRejection.None, new(r, summaries, entries, harmful, harmful, body!.Move + 1, body.Move,
+        int physical = summaries.Where(u => flags[u.UnitId].Enemy).Sum(u => u.Initialization.PhysicalHarmfulCount);
+        return new(true, RosterAiRejection.None, new(r, summaries, entries, harmful, physical, body!.Move + 1, body.Move,
             new(support, single, blocked, allies, enemies, impaired, policies), targets), refreshed.RngState);
     }
 }

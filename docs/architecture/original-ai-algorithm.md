@@ -506,5 +506,7 @@ with explicit clock advancement and all-peer state/RNG/priority history.
 actual3-draw rule, verified proposals and frozen Move follow-ups.
 [ZOD-321–325](../behavior/dash-ai.md) now integrate its semantic list, hypothetical
 candidate, ranked search, full-list dispatch and actual complete turns, including
-six further real turns with retained priorities. ZOD-326 next traces content/AI
-setup binding. No automatic-facing/corpse/terminal/host gate is activated.
+six further real turns with retained priorities. [ZOD-326–328](../behavior/semantic-ai-metadata.md)
+now trace content/AI binding and feed immutable static metadata traits into
+supported lists, preserving working-policy separation and unsupported-edit
+guards. ZOD-329 next binds prepared Dash content/effect grants. No automatic-facing/corpse/terminal/host gate is activated.

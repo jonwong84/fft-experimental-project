@@ -26,7 +26,8 @@ consolidation later in development. Its LearnWithJp, DisplayAbilityName and
 LearnOnHit properties overlap the implemented `AbilityMetadataDefinition`.
 The latter remains authoritative for current learning metadata; the unused
 draft is not a second active configuration source. UnknownTypeBit4 remains
-opaque, and AI bytes retain their existing preservation contract.
+opaque. [Semantic AI metadata](../behavior/semantic-ai-metadata.md) now derives
+verified traits from the preserved AI bytes without activating these drafts.
 
 When a gameplay/content milestone needs these drafts, trace the selected fields,
 resolve naming and original/custom boundaries, choose immutable configuration
@@ -40,7 +41,7 @@ FFTPatcher label or from these property names alone.
 The following are implemented content models rather than the unused drafts above:
 
 - [Ability metadata](../architecture/zod-014-typed-definitions.md): immutable
-  learning configuration with original packing in offline adapters.
+  learning and derived AI configuration with original packing in adapters.
 - [Weapon behavior and elements](../behavior/retail-sword-representation.md):
   immutable semantic records, retaining the current supported sword domain and
   unchanged package schemas 1/2. Other WeaponType values do not activate rules.

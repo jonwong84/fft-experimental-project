@@ -125,3 +125,9 @@ See [roster command/turn boundaries](../../docs/behavior/roster-ai-command-and-t
 
 [Dash integration](../../docs/behavior/dash-ai.md) preserves actual3-draw damage/
 Brave resolution separately from AI midpoint3*PA and shared decision clocks.
+
+`AiAbilityBehavior` is immutable semantic input, supplied by Content's decoded
+AbilityMetadataDefinition on the prepared-content path. Owned lists read its
+target/evasion/trajectory/physical traits, while closed evaluator guards reject
+unsupported variants. Static original bytes and working usage policy stay
+separate. [Metadata boundary](../../docs/behavior/semantic-ai-metadata.md).

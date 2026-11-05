@@ -5,7 +5,8 @@ namespace Zodiac.Framework.Ai;
 public enum AiHumanAbilityKind { Attack, Accumulate, ThrowStone, FrogAttack, Unsupported, Dash }
 public enum AiHumanEntrySource { Attack, Primary, Secondary, FrogAttack }
 /// <summary>Semantic class-filtered action slot. Known is supplied resolved learning state, not inferred from job membership.</summary>
-public sealed record AiHumanActionSlot(int Slot, AssetId? AbilityId, AiHumanAbilityKind Kind, bool Known, bool UsableByAi);
+public sealed record AiHumanActionSlot(int Slot, AssetId? AbilityId, AiHumanAbilityKind Kind, bool Known, bool UsableByAi,
+    AiAbilityBehavior? Behavior = null);
 
 /// <summary>Explicit ordinary default-menu action slots, in source slot order; copies input storage.</summary>
 public sealed class AiHumanSkillset
@@ -30,12 +31,13 @@ public sealed record AiHumanAbilityListProfile(bool OrdinaryHumanDefaultMenus = 
 public sealed record AiHumanInitializedEntry(AiHumanAbilityKind Kind, AssetId? AbilityId,
     AiHumanEntrySource Source, AssetId? SkillsetId = null, int? Slot = null)
 {
+    public AiAbilityBehavior Behavior { get; init; } = AiAbilityBehaviorDefaults.ForKind(Kind);
     public int Range => Kind == AiHumanAbilityKind.ThrowStone ? 4 : Kind == AiHumanAbilityKind.Accumulate ? 0 : 1;
     public bool OrdinaryUsable => Kind != AiHumanAbilityKind.FrogAttack;
-    public bool Evadeable => Kind is AiHumanAbilityKind.Attack or AiHumanAbilityKind.ThrowStone;
-    public bool Helpful => Kind == AiHumanAbilityKind.Accumulate;
-    public bool Harmful => Kind is AiHumanAbilityKind.Attack or AiHumanAbilityKind.ThrowStone or AiHumanAbilityKind.Dash;
-    public bool HasTrajectory => Kind == AiHumanAbilityKind.ThrowStone;
+    public bool Evadeable => Behavior.Evadeable;
+    public bool Helpful => Behavior.TargetsAllies;
+    public bool Harmful => Behavior.TargetsEnemies;
+    public bool HasTrajectory => Behavior.DirectTrajectory || Behavior.ArcTrajectory;
     public bool ExhaustiveOriginScan => Kind is AiHumanAbilityKind.Attack or AiHumanAbilityKind.FrogAttack;
     public bool ForceConsumeAim => Kind == AiHumanAbilityKind.Accumulate;
 }
@@ -45,10 +47,11 @@ public sealed class AiHumanInitializedList
     public ImmutableArray<AiHumanInitializedEntry> Entries { get; }
     public int InitializedEntryCount => Entries.Length;
     public int EvadeQuarterShare => Entries.Count(e => e.Evadeable) * 4 / Entries.Length;
-    public int SilenceQuarterShare => 0; // All admitted effects are zero-MP and not Silence-sensitive.
+    public int SilenceQuarterShare => Entries.Count(e => e.Behavior.AffectedBySilence) * 4 / Entries.Length;
     public int MpQuarterShare => 0;
     public int HarmfulCount => Entries.Count(e => e.OrdinaryUsable && e.Harmful);
     public int HelpfulCount => Entries.Count(e => e.OrdinaryUsable && e.Helpful);
+    public int PhysicalHarmfulCount => Entries.Count(e => e.OrdinaryUsable && e.Harmful && e.Behavior.PhysicalAttack);
     public bool HasRangedAbility => Entries.Any(e => e.OrdinaryUsable && e.HasTrajectory);
     internal AiHumanInitializedList(ImmutableArray<AiHumanInitializedEntry> entries) => Entries = entries;
 }
@@ -81,7 +84,10 @@ public sealed class AiHumanAbilityLists
                     if (slot.AbilityId is null || !slot.UsableByAi || !slot.Known) continue;
                     if (slot.Kind is not (AiHumanAbilityKind.Accumulate or AiHumanAbilityKind.ThrowStone or AiHumanAbilityKind.Dash))
                         throw new NotSupportedException("An eligible unsupported action cannot be omitted from the AI list.");
-                    entries.Add(new(slot.Kind, slot.AbilityId, source, skillset.Id, slot.Slot));
+                    var behavior = slot.Behavior ?? AiAbilityBehaviorDefaults.ForKind(slot.Kind);
+                    if (behavior != AiAbilityBehaviorDefaults.ForKind(slot.Kind))
+                        throw new NotSupportedException("The selected ability's AI targeting/search traits exceed its supported evaluator.");
+                    entries.Add(new(slot.Kind, slot.AbilityId, source, skillset.Id, slot.Slot) { Behavior = behavior });
                 }
             }
             Append(unit.Primary, AiHumanEntrySource.Primary);

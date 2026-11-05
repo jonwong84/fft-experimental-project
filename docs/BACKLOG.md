@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-326 (trace retail Dash content/AI setup binding).** ZOD-321–325 now carry semantic Dash entries through isolated scoring, ranked search, full-list dispatch and complete roster turns/recovery.
-There are 34 open tickets below. The 292 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-329 (bind prepared Dash content and semantic AI setup).** ZOD-326–328 trace static versus working AI flags and carry immutable metadata traits into supported list consumers; incompatible policy edits remain explicit.
+There are 34 open tickets below. The 295 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,20 +29,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-326 — Trace retail Dash content and AI setup binding
+### ZOD-329 — Bind prepared Dash content and semantic AI setup
 
-**Type:** Source study · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-325
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-325, ZOD-328
 
-Trace how prepared immutable definitions, original metadata and explicit learned
-grants should supply the newly supported Dash rule and semantic AI entry. Compare
-the existing Accumulate/Stone content setup adapters and preserve old schemas,
-unresolved raw flags, public profile guards and authored overrides. Identify the
-smallest validated content-binding child so no constructor silently supplies
-unproved behavior. Use the pinned read-only reference and verified local prepared
-records; no BIN/runtime C or asset dependency. This does not consolidate deferred
-AbilityToggles, change JobStats mutability, activate host/editor, automatic facing,
-full corpse/terminal/frame RNG, other policies/maps, broad interfaces or ZOD-106.
-See [current Dash integration](behavior/dash-ai.md).
+Add one source-traced prepared Dash effect definition/package and explicit
+learned-grant/setup binding. Feed decoded primary AI traits through the existing
+owned semantic lists; do not infer executable effects or learning from an ID or
+AI flags. Preserve current self/Stone schemas/adapters, authored overrides and
+public pair guards. Validate Dash range/Y/charge/MP/secondary flags against its
+pinned prepared record, including non-evadeable actual3 draws versus AI midpoint.
+Use deterministic content-to-command scenarios. Owner drafts, JobStats mutability,
+host/editor, automatic facing, full corpse/terminal/frame RNG, broad interfaces
+and ZOD-106 remain separate/deferred. See [binding study](architecture/zod-326-ai-behavior-metadata.md).
 
 ## Existing validation gates
 

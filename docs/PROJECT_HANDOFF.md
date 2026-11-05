@@ -6,19 +6,19 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-326: trace retail Dash content and AI setup binding.**
-[ZOD-321–325](behavior/dash-ai.md) now carry semantic Dash through owned roster
-preparation, isolated midpoint candidate, ranked range1 occurrence, full supported
-list/ranking/lottery, fresh authoritative dispatch and complete turn/recovery.
-Dash ignores evasion: AI hit100/3*PA uses no formula RNG; real resolution draws
-damage plus both Brave rolls. One fresh prefix preserves duplicate occurrences,
-all peers and priority knowledge. Existing verified Framework factories own
-actual ACT and frozen Move/Dash; the shared turn driver needed no new routing.
-Twenty source scenarios and six real Dash/Accumulate turns pass alongside the
-existing eighteen-turn proof. Next trace prepared-content/learned-grant binding
-to reduce manual semantic assertions. Explicit fixed/kept facing, actual KO
-retention at the deferred fresh corpse guard and all automatic-facing/full
-corpse/terminal/frame RNG/host/editor/owner-draft/interface/ZOD-106 deferrals remain.
+**ZOD-329: bind prepared Dash content and semantic AI setup.**
+[ZOD-326–328](behavior/semantic-ai-metadata.md) now decode immutable AI traits on
+AbilityMetadataDefinition and carry them into owned lists. Helpful/harmful,
+evasion/Silence, ranged and physical summaries consume that metadata. Static
+fourth-byte facts stay separate from initialized usage/search policy. Existing
+authored slots keep retail defaults; explicit unsupported metadata edits reject,
+and serialization/unknown raw bits remain unchanged. [The source study](architecture/zod-326-ai-behavior-metadata.md)
+identifies the remaining prepared Dash effect/grant/content-adapter gap. Next
+bind that bounded effect through the same semantic path. Full configurable AI
+policy variants remain future work; decoding alone does not implement them.
+Owner toggle drafts and JobStats stay unchanged. Existing fixed/kept facing,
+corpse-domain/terminal/frame RNG, host/editor, broad interface and ZOD-106
+deferrals remain.
 
 The [original AI algorithm guide](architecture/original-ai-algorithm.md) maps
 policy precedence and all core source functions, with bounded implementation
@@ -159,10 +159,10 @@ without rewriting old evidence.
   explicit player-control flag clear, HP*128/maxHP>=45 and no NonBlue reach draw.
   Existing Attack/Stone scoring/selection/execution and both teams are preserved;
   terminal routing and Blue low-HP/player-controlled policies remain open.
-- Latest source trace: [Dash AI](behavior/dash-ai.md) rechecks83 functions/27
-  files with twenty independent semantic/candidate/search/list/turn/replay
-  compositions, alongside the prepared Dash record/formula/result receipt.
-  All192 SDK geometry factors remain verified. No original/C execution.
+- Latest source trace: [static AI metadata](architecture/zod-326-ai-behavior-metadata.md)
+  pins five files/six functions and37 independent static-bit/retail descriptions.
+  Static fourth-byte motion/usable bits never become working consume policy.
+  Existing broader source/guide evidence remains; no original/C execution.
 - Organization: AI source/tests use Shared, Sword, ThrowStone, AttackThrowStone,
   Accumulate and BasicSkill folders with stable namespaces; [layout](development/ai-source-layout.md).
   Owner RNG migration is completed as `Zodiac.Framework.Random.RandomStateGenerator`
@@ -176,17 +176,17 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore, zero-warning/error Release build and **4,481 .NET
-  cases** (1,521 Framework, 1,215 AI), including twenty-four new AI cases, pass. All
-  **594 Python tests**, pinned source/prepared-data, algorithm-guide, local-link
+- Validation: locked restore, zero-warning/error Release build and **4,521 .NET
+  cases** (1,521 Framework, 1,217 AI, 823 Content), including thirty-eight new Content and two new AI cases, pass. All
+  **596 Python tests**, pinned source/prepared-data, algorithm-guide, local-link
   and coverage checks pass. Seven full TRX reports/logs are under ignored
-  `scratch/dash-317-325/`.
+  `scratch/ai-flags-326-328/`.
   Python uses repository-pinned Pillow 12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow 13.0.0 triggers six existing version guards; WindowsApps Python
   is unavailable. All nine owner drafts remain unchanged, including AbilityToggles.
-  AI adds bounded Dash preparation/candidate/search/dispatch through existing shared owners; no Content/host/editor
-  or project/lock/package/dependency changes.
+  Content and AI add semantic flag decoding/list consumers; no host/editor
+  or lock/package/dependency changes. One test-project item copies its source fixture.
   Nine historical checkpoint audits last passed at ZOD-158; unchanged snapshots
   were not rerun. No original/C execution, host/editor activation or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/

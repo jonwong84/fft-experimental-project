@@ -53,6 +53,33 @@ public sealed class BasicSkillAiContentListTests
     }
 
     [Fact]
+    public void Immutable_metadata_behavior_reaches_owned_entries_and_source_summaries_without_effect_inference()
+    {
+        var f = Content(Ready()); var list = Lists(f).Units[A];
+        var metadata = f.Metadata.Abilities.Single(a => a.Id == Rock);
+        var stone = list.Entries.Single(e => e.Kind == AiHumanAbilityKind.ThrowStone);
+        Assert.Same(metadata.AiBehavior, stone.Behavior);
+        Assert.True(stone.Behavior.AffectsHp); Assert.True(stone.Harmful); Assert.True(stone.Evadeable); Assert.True(stone.HasTrajectory);
+        Assert.False(stone.Behavior.AffectedBySilence); Assert.False(stone.Helpful);
+        Assert.Equal(2, list.PhysicalHarmfulCount); Assert.Equal(2, list.HarmfulCount); Assert.Equal(1, list.HelpfulCount);
+        Assert.Equal(0, list.SilenceQuarterShare); Assert.Equal(2, list.EvadeQuarterShare);
+        var disabled = Lists(Content(Ready(), stoneFlags: [130, 2, 65, 1])).Units[A];
+        Assert.DoesNotContain(disabled.Entries, e => e.Kind == AiHumanAbilityKind.ThrowStone);
+    }
+
+    [Fact]
+    public void Changed_AI_targeting_status_trajectory_and_unresolved_static_bits_do_not_silently_use_retail_evaluator()
+    {
+        foreach (byte[] flags in new byte[][] { [128,2,65,129], [130,0,65,129], [130,3,65,129], [130,2,1,129], [130,2,64,129], [130,2,65,131] })
+            Assert.Throws<NotSupportedException>(() => Lists(Content(Ready(), stoneFlags: flags)));
+        var behavior = Content(Ready()).Metadata.Abilities.Single(a => a.Id == Rock).AiBehavior;
+        AiHumanAbilityLists Build(Zodiac.Framework.Ai.AiAbilityBehavior supplied) => AiHumanAbilityLists.Build(
+            [new(A, new(new("sample:semantic"), [new(0, Stone, AiHumanAbilityKind.ThrowStone, true, true, supplied)]))], ListProfile);
+        Assert.Same(behavior, Build(behavior).Units[A].Entries[1].Behavior);
+        Assert.Throws<NotSupportedException>(() => Build(behavior with { TargetsEnemies = false }));
+    }
+
+    [Fact]
     public void Real_metadata_slots_and_resolved_known_state_produce_canonical_lists_without_inferred_learning()
     {
         var state = Ready(); var f = Content(state, reverseSlots: true); var lists = Lists(f);

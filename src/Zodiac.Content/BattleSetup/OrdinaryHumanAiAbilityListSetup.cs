@@ -74,15 +74,14 @@ public static class OrdinaryHumanAiAbilityListSetup
                 var slots = definition.Slots.Where(s => s.Slot < OriginalHumanActionPositions).Select(slot => {
                     bool learned = known.Contains((definition.Id, slot.Slot));
                     if (slot.AbilityId is not { } id) return new AiHumanActionSlot(slot.Slot, null, AiHumanAbilityKind.Unsupported, false, false);
-                    var data = abilities[id]; bool usable = (data.AiFlagsRaw[3] & 0x80) != 0;
+                    var data = abilities[id]; bool usable = data.UsableByAi;
                     var kind = id == self ? AiHumanAbilityKind.Accumulate : id == stone ? AiHumanAbilityKind.ThrowStone : AiHumanAbilityKind.Unsupported;
                     if (learned && usable && kind != AiHumanAbilityKind.Unsupported)
                     {
-                        byte[] expected = kind == AiHumanAbilityKind.Accumulate ? [9, 128, 0] : [130, 2, 65];
-                        if (!data.AiFlagsRaw.Take(3).SequenceEqual(expected) || (data.AiFlagsRaw[3] & ~0x81) != 0)
+                        if (data.HasUnresolvedAiFlags)
                             throw new NotSupportedException("Executable effects require the traced ordinary AI metadata; effect identity alone is insufficient.");
                     }
-                    return new AiHumanActionSlot(slot.Slot, new(id.Value), kind, learned, usable);
+                    return new AiHumanActionSlot(slot.Slot, new(id.Value), kind, learned, usable, data.AiBehavior);
                 });
                 return new(new(definition.Id.Value), slots);
             }

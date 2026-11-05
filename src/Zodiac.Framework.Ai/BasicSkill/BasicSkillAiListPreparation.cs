@@ -81,6 +81,6 @@ public static class BasicSkillAiListPreparation
         common = common with { EnemyAbilityReach = body.Move + actorList.Entries.Where(e => e.Harmful).Min(e => e.Range),
             AllyAbilityReach = body.Move + actorList.Entries.Where(e => e.Helpful).Select(e => e.Range).DefaultIfEmpty(0).Min() };
         int harmful = lists.Units[turn.TargetId].HarmfulCount;
-        return new(true, null, new(common, p.Team, units, entries, harmful, harmful), refresh.RngState);
+        return new(true, null, new(common, p.Team, units, entries, harmful, lists.Units[turn.TargetId].PhysicalHarmfulCount), refresh.RngState);
     }
 }
