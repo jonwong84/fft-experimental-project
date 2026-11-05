@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-360 (Build ordinary spell range and area panels).**
+**Next bounded work: ZOD-361 (Select spell occupants in source order).**
 [Ordinary spell targeting](behavior/ordinary-spell-targeting.md) records completed
-ZOD-358–359. Geometry remains independent of arithmetic and live publication.
-There are 36 open tickets below. The 326 completed tickets, prior checkpoints and
+ZOD-358–360. Geometry remains independent of arithmetic and live publication.
+There are 35 open tickets below. The 327 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,17 +31,9 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-360 — Build ordinary spell range and area panels
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-359
-
-Implement certified ordinary blue range and green map-aim area footprints; preserve phase-specific collision and self flags. See [scope and deferrals](behavior/ordinary-spell-targeting.md).
-Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
-status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
-
 ### ZOD-361 — Select spell occupants in source order
 
-**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-360
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-360
 
 Apply source team panel mutations and occupant eligibility in certified source order; preserve shared-panel and nearest-tie quirks. See [scope and deferrals](behavior/ordinary-spell-targeting.md).
 Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/

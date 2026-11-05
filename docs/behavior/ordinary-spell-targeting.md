@@ -78,3 +78,13 @@ Original field-width violations throw at this direct primitive boundary. Sevente
 literal reference/column descriptions cover narrowing, water/half height, tolerance,
 lower ties, TopDown and blocked sentinels. Two managed tests passed; Python's eight
 checks remain the independently described baseline.
+
+## ZOD-360
+
+`Range` and `Area` produce opaque immutable panel sets from a managed map and
+positive ordinary/no-special/cross-section/padding certificates. The managed
+implementation uses distance enumeration independently of Python's frontier
+spread model. Twenty-six literal panel descriptions and four focused managed
+tests passed, covering both sheets, vertical ties, whole map, self flags,
+collision, propagation through obstacles and rejection boundaries. No unit list
+or command is inferred yet. Panel order is managed layer/Y/X, not target order.

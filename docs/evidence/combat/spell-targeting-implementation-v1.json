@@ -16,6 +16,12 @@
       "managedBaseRevision": "515223199dc45788dd0db80020a248b3e3445130",
       "validation": "2 focused managed tests passed (17 literal reference/column descriptions); no whole-suite claim.",
       "reports": "scratch/spell-targeting-358-362/"
+    },
+    {
+      "ticket": "ZOD-360",
+      "managedBaseRevision": "ab2358190e3e56698c8926263955aa8cac6ae433",
+      "validation": "4 focused managed tests passed, including 26 literal panel queries and 17 height descriptions.",
+      "reports": "scratch/spell-targeting-358-362/"
     }
   ]
 }
