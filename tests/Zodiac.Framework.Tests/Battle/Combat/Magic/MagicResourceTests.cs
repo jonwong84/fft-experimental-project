@@ -9,6 +9,17 @@ public sealed class MagicResourceTests
     private static JsonDocument Fixture() => JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,
         "Fixtures", "magic-resource-contract-v1.json")));
     [Fact]
+    public void Ten_counter_steps_preserve_blocking_zero_readiness_and_none255()
+    {
+        using var doc = Fixture();
+        foreach (var r in doc.RootElement.GetProperty("ticks").EnumerateArray())
+        {
+            var e = r.GetProperty("expected");
+            Assert.Equal(new MagicChargeStep(e.GetProperty("counter").GetByte(), e.GetProperty("ready").GetBoolean(), e.GetProperty("changed").GetBoolean()),
+                MagicCharge.Tick(r.GetProperty("counter").GetByte(), r.GetProperty("blocked").GetBoolean()));
+        }
+    }
+    [Fact]
     public void Ten_execution_setups_preserve_mask_ceiling_support_order_and_persevere()
     {
         using var doc = Fixture();

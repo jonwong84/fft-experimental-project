@@ -4,12 +4,12 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-355 (Query one deterministic charge countdown step).**
+**Next bounded work: ZOD-356 (Prepare a certified ready magic cast once).**
 [Current magic inputs and casts](behavior/magic-current-inputs-and-casts.md)
-records completed ZOD-348–354. Read current effective MA/current Faith;
+records completed ZOD-348–355. Read current effective MA/current Faith;
 preserve typed shared calculations, explicit context and candidate RNG/state.
 Scheduling, resource consumption and target calculations have separate owners.
-There are 36 open tickets below. The 321 completed tickets, prior checkpoints and
+There are 35 open tickets below. The 322 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -33,17 +33,9 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-355 — Query one deterministic charge countdown step
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-354
-
-Implement one explicitly allowed/blocked charge-counter step, preserving None255, zero readiness and full-byte stores. No global clock advance, event emission, performance repeat or frame RNG. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
-Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/
-deferred. See the [source and boundaries](behavior/magic-current-inputs-and-casts.md).
-
 ### ZOD-356 — Prepare a certified ready magic cast once
 
-**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-355
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-355
 
 Prepare immutable ordinary non-Mime cast work only at certified resolution readiness, evaluating MP once and retaining source block/recorded-cost facts. Charge scheduling alone must not spend MP. Return candidate state only. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
 Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/

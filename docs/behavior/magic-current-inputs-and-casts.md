@@ -161,3 +161,13 @@ method spends MP or publishes action status. Four cumulative resource cases pass
 all49 MP/setup/AI descriptions; two cases are new. These are distinct source
 phases, not alternate rounding options for one algorithm. Logs:
 `scratch/magic-inputs-348-357/focused-354.log`.
+
+## ZOD-355
+
+`MagicCharge.Tick` now returns one immutable counter/readiness/change query from
+the classified source wait-menu block fact. None255 remains None, active counters
+decrement once, zero stays ready only when unblocked, and blocked counters retain
+their bits. It does not select a ready unit, reset the counter after resolution,
+repeat performances, emit events or advance the global clock. Five cumulative
+resource cases pass all59 descriptions; one counter case is new. Logs:
+`scratch/magic-inputs-348-357/focused-355.log`.

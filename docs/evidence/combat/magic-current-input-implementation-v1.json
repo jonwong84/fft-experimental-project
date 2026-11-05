@@ -7,7 +7,8 @@
     "ZOD-351",
     "ZOD-352",
     "ZOD-353",
-    "ZOD-354"
+    "ZOD-354",
+    "ZOD-355"
   ],
   "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
   "referenceClean": true,
@@ -59,6 +60,12 @@
       "ticket": "ZOD-354",
       "managedBaseRevision": "bce0b8188faf3b077f752964e5da5fffad6891ed",
       "validation": "Four cumulative resource cases; 10 execution setups and seven AI delays, two new cases; Release compilation passed",
+      "reports": "scratch/magic-inputs-348-357/"
+    },
+    {
+      "ticket": "ZOD-355",
+      "managedBaseRevision": "90445ad4cd7eff9bbb6e53f326a2061f3ac31cc3",
+      "validation": "Five cumulative resource cases / all59 descriptions, one new countdown case; Release compilation passed",
       "reports": "scratch/magic-inputs-348-357/"
     }
   ]
