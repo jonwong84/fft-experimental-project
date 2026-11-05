@@ -18,7 +18,7 @@ def column(d):
     valid=[not a['blocked'],b is not None and not b['blocked']]
     hs=[height(a) if valid[0] else -255,height(b) if valid[1] else -255]
     if d['topDown']:
-        removed=1 if hs[0]>=hs[1] else 0;hs[removed]=-255;valid[removed]=False
+        removed=1 if hs[0]>=hs[1] else 0;hs[removed]=-255
     ds=[abs(h-ref) for h in hs];choice=1 if ds[1]<ds[0] else 0
     return choice if valid[choice] and ds[choice]<=tol else None
 

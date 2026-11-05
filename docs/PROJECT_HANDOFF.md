@@ -6,9 +6,9 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-362: Resolve ready magic casts from map geometry.**
+**ZOD-363: Trace unit-follow targeting and stored-aim resolution.**
 [Ordinary spell targeting](behavior/ordinary-spell-targeting.md) records completed
-ZOD-358–361 at clean reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+ZOD-358–362 at clean reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 Keep blue selectable aims separate from green resolution areas. Preserve narrowed
 reference height, blocked sentinels, initial/current team distinctions and source
 roster order. Shared magic arithmetic and prepared one-cost casts remain owners
@@ -252,24 +252,26 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore, zero-warning/error Release build and **4,652 .NET
-  cases** (1,611 Framework, 1,217 AI, 838 Content, 328 CLI) pass. Twenty-two new
-  managed cases exercise128 new compatibility/current-input/MP/charge/cast
-  descriptions, scope/argument guards and pure replay. All **673 Python tests**
-  pass, including24 new independent source-description cases. Current-input
-  source12/16 and resource source12/10, prior magic/prepared-data, guide, coverage,
+- Validation: locked restore, zero-warning/error Release build and **4,661 .NET
+  cases** (1,620 Framework, 1,217 AI, 838 Content, 328 CLI, 206 AssetTool,
+  428 Client, 24 Engine) pass. Nine new managed cases exercise58 targeting
+  descriptions and13 geometry/cast descriptions, guards and pure replay. All
+  **687 Python tests** pass, including14 new independent description checks.
+  Focused magic99, source11/21, prior magic/prepared-data, guide, coverage,
   local-link and preservation checks pass. Seven TRX reports/logs are under
-  ignored `scratch/magic-inputs-348-357/`.
+  ignored `scratch/spell-targeting-358-362/`.
   Prepared Dash/Stone import checks remain at ZOD-329; their code/input is unchanged.
   Python uses repository-pinned Pillow12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow13.0.0 triggers six existing version guards; WindowsApps Python
-  is unavailable. All nine owner drafts remain unchanged, including AbilityToggles.
-  All pre-batch C# code/tests/fixtures and content/AI/host remain unchanged,
-  with no project/lock/dependency changes or host/editor activation. The pure magic helpers use the existing verified
-  generator; it does not broaden actual combat/turn/command behavior.
-  Nine historical checkpoint audits last passed at ZOD-158; unchanged snapshots
-  were not rerun. No original/C execution or UI review.
+  is unavailable. All nine owner drafts and JobStats remain unchanged, including
+  AbilityToggles. Pre-batch C# logic/tests/fixtures and content/AI/host are unchanged;
+  the sole existing C# edit adds an optional geometry parameter to the cast
+  definition. No project/lock/dependency changes or host/editor activation.
+  Geometry feeds the existing pure one-cost magic query; it does not broaden
+  actual combat/turn/command behavior. Nine historical checkpoint audits last
+  passed at ZOD-158; unchanged snapshots were not rerun. No original/C execution
+  or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
   introduction proofs and synthetic world Save/Load exist. Original campaign,
   full combat/content, audio and general AI remain incomplete. See the

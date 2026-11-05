@@ -5,7 +5,7 @@ namespace Zodiac.Framework;
 
 /// <summary>Explicit compatible spell inputs, not a runtime original-table lookup or complete content package.</summary>
 public sealed record MagicCastDefinition(AssetId Id, short OriginalAbilityId, FaithMagicSpell Spell,
-    byte MpCost, byte RawChargeTime, bool AffectedBySilence, bool Persevere = false);
+    byte MpCost, byte RawChargeTime, bool AffectedBySilence, bool Persevere = false, OrdinarySpellGeometry? Targeting = null);
 
 public sealed record MagicReadyCastProfile(bool ChargeReadyKnown = false, bool ActionStateBookkeepingKnown = false,
     bool NoHamedoKnown = false, bool SingleOrdinaryDefaultStrikeKnown = false, bool FreshResultsKnown = false);

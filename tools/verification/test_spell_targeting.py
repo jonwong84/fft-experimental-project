@@ -4,7 +4,7 @@ import verify_spell_targeting as v
 class SpellTargetingTests(unittest.TestCase):
     def setUp(self):self.f=json.loads(v.FIXTURE.read_text(encoding='utf-8'))
     def roster(self,id):return next(r for r in self.f['rosters'] if r['id']==id)
-    def test_all_literal_descriptions(self):self.assertEqual(26,v.validate(self.f)['panelDescriptions'])
+    def test_all_literal_descriptions(self):self.assertEqual(27,v.validate(self.f)['panelDescriptions'])
     def test_reference_narrows_after_half_and_water(self):self.assertEqual(43,v.reference(dict(h=255,half=31,water=7)))
     def test_blocked_sentinel_is_not_skipped_in_distance_choice(self):
         r=next(r for r in self.f['columns'] if r['id']=='blocked-sentinel-can-be-closer');self.assertIsNone(v.column(r))

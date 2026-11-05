@@ -22,8 +22,10 @@ height narrows to unsigned byte after addition; candidate heights do not.
 `vertical_tolerance_apply` uses -255 for blocked/missing sheets. It compares both
 distances, including that sentinel, chooses lower on ties, then validates the
 chosen sheet and tolerance (`vertical*2`). A blocked sentinel can beat a valid
-high sheet and leave no result. TopDown first retains the physically higher
-sheet (lower wins ties), then still applies the same sentinel/distance procedure.
+high sheet and leave no result. TopDown replaces the physically lower sheet's
+comparison height with -255 (lower wins height ties), without clearing that
+panel. It still applies the sentinel/distance procedure: at extreme heights the
+substituted sentinel can win, retaining the physically lower unblocked sheet.
 
 Finite `panels_spread` residual budgets describe an orthogonal Manhattan diamond
 including its centre. Spread ignores obstacles and untargetability; both sheets
@@ -99,3 +101,39 @@ are validated. Crystal/Treasure/Jump/mount are excluded, while unsupported formu
 statuses remain for the calculation owner to reject. Twelve literal roster
 scenarios and six focused managed tests passed. No HP/status eligibility shortcuts
 or live target lists were introduced.
+
+## ZOD-362
+
+The ready cast definition optionally binds `OrdinarySpellGeometry`; prior supplied-
+order APIs and calculation bodies are unchanged. `ResolveCast` requires certified
+previous aim validation, complete source roster and no earlier target effects.
+It builds green panels, derives default source order, then delegates to
+`MagicCastQuery.ResolveTargets`. MP is proposed once by preparation; no blue range
+recheck, cost reevaluation, formula duplication or live publication occurs.
+Selected unsupported targets and late counter failures discard all candidate
+MP/results/RNG. Special ability329 is explicitly excluded. Missing selected
+current inputs and conflicting metadata reject before calculation.
+
+The [13 composition descriptions](../fixtures/behavior/spell-geometry-cast-contract-v1.json)
+reuse prior literal magic frame/RNG expectations and independently describe map
+selection. They include team filtering, source order, moved/out-of-current-range
+aim, Preview/AI, self-healing, empty targets and whole-cast rollback. Nine new
+managed cases cover geometry/casts, guards and isolation; the focused magic suite
+passes99 cases. Fourteen new Python cases pass independently. A final reread added
+two columns and one area description for TopDown's comparison-only substitution;
+the source model and managed primitive now both preserve this extreme-height
+quirk. Final targeting descriptions total58 (4 references,15 columns,27 panels,
+12 rosters), plus13 casts. The earlier milestone counts record the smaller set
+validated at those commits; they are not full equivalence claims.
+
+Next ZOD-363 traces unit-follow and stored-aim behavior before another geometry
+extension. Future custom formulas and the cone remain independent of this owner.
+
+Final validation: locked restore and Release build passed with zero warnings/errors;
+all **4,661 .NET tests** and **687 Python tests** passed. Source fingerprints,
+prior magic/prepared-data, algorithm guide, coverage and preservation audits
+passed. [Implementation receipt](../evidence/combat/spell-targeting-implementation-v1.json)
+records milestone bases and ignored report locations. All nine owner drafts and
+JobStats are unchanged. Existing C# calculation bodies/tests/fixtures are unchanged;
+only the cast definition gains its optional geometry parameter. No project,
+package, host/editor or AI activation changes; no original/C execution or UI review.

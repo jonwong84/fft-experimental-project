@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework;
 
@@ -35,9 +36,44 @@ public sealed record SpellTargetRosterProfile(bool CompleteRosterAndSourceOrderK
 public sealed record SpellTargetSelection(ImmutableArray<TilePosition> Panels, ImmutableArray<BattleUnitId> UnitIds);
 public sealed record SpellTargetSelectionResult(bool Accepted, SpellTargetingRejection Rejection, SpellTargetSelection? Outcome);
 
+public sealed record SpellTargetCombatant(SpellTargetOccupant Occupant, MagicCurrentUnit? Current);
+public sealed record SpellTargetCastProfile(bool MapAimPreviouslyValidatedKnown = false, bool NoEarlierTargetEffectsKnown = false);
+public sealed record SpellGeometryCastRequest(PreparedMagicCast Cast, BattleMapDefinition Map, TilePosition SelectedMapAim,
+    ImmutableArray<SpellTargetCombatant> Roster, SpellTargetingProfile? GeometryProfile,
+    SpellTargetRosterProfile? RosterProfile, SpellTargetCastProfile? Entry);
+
 /// <summary>Pure original-compatible map queries, with no transient marks or live state.</summary>
 public static class OrdinarySpellTargeting
 {
+    /// <summary>Derive ordinary resolution targets and delegate one-cost calculation, with whole-query rollback.</summary>
+    public static MagicCastResolutionResult ResolveCast(SpellGeometryCastRequest request, RandomState rng)
+    {
+        ArgumentNullException.ThrowIfNull(request); ArgumentNullException.ThrowIfNull(request.Cast);
+        MagicCastResolutionResult Reject() => new(false, FaithMagicResolutionRejection.UnsupportedContext, null, rng);
+        var cast = request.Cast;
+        if (request.Entry is not { MapAimPreviouslyValidatedKnown: true, NoEarlierTargetEffectsKnown: true } ||
+            cast.Definition.Targeting is not { } geometry || cast.Definition.OriginalAbilityId == 329 || request.Roster.IsDefaultOrEmpty)
+            return Reject();
+        foreach (var u in request.Roster)
+            if (u is null || u.Occupant is null || u.Current is { } c && c.UnitId != u.Occupant.UnitId) return Reject();
+        var actor = request.Roster.FirstOrDefault(u => u.Occupant.UnitId == cast.Caster.UnitId);
+        if (actor is null || actor.Current != cast.Caster && actor.Current != cast.Caster with { Mp = cast.Resource.CandidateMp }) return Reject();
+        var area = Area(request.Map, actor.Occupant.Position, request.SelectedMapAim, geometry, request.GeometryProfile);
+        if (!area.Accepted) return Reject();
+        // Ordinary action resolution resets source nearest-first. Directional handlers are outside this slice.
+        var selection = SelectTargets(area.Outcome!, cast.Caster.UnitId,
+            request.Roster.Select(u => u.Occupant).ToImmutableArray(), request.RosterProfile);
+        if (!selection.Accepted) return Reject();
+        var byId = request.Roster.ToDictionary(u => u.Occupant.UnitId);
+        var targets = ImmutableArray.CreateBuilder<MagicCurrentUnit>();
+        foreach (var id in selection.Outcome!.UnitIds)
+        {
+            if (byId[id].Current is not { } current) return Reject();
+            targets.Add(current);
+        }
+        return MagicCastQuery.ResolveTargets(cast, targets.ToImmutable(), new(true, true), rng);
+    }
+
     private static bool Eligible(SpellTargetOccupant u) => u.Active && !u.Crystal && !u.Treasure && !u.Jump && !u.Mount;
 
     /// <summary>Apply source per-panel team mutations, then collect occupants. No per-unit team refilter.</summary>
@@ -145,8 +181,9 @@ public static class OrdinarySpellTargeting
         int ah = a ? Height(lower) : -255, bh = b ? Height(upper!.Value) : -255;
         if (topDown)
         {
-            if (ah >= bh) { b = false; bh = -255; }
-            else { a = false; ah = -255; }
+            // Source substitutes only the comparison height, not the panel's remaining range.
+            if (ah >= bh) bh = -255;
+            else ah = -255;
         }
         int ad = Math.Abs(ah - reference), bd = Math.Abs(bh - reference);
         return bd < ad ? b && bd <= tolerance * 2 ? 1 : null : a && ad <= tolerance * 2 ? 0 : null;

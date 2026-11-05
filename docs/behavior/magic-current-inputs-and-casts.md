@@ -239,9 +239,8 @@ remain unchanged. Source receipts preserve their original pins and provenance.
 Seven TRX reports and logs: `scratch/magic-inputs-348-357/`.
 [Implementation receipt](../evidence/combat/magic-current-input-implementation-v1.json).
 
-**Next ZOD-358:** trace original range/area/vertical targeting and target iteration
-before selecting a geometry child. The agreed future nine-tile1/3/5 cone remains
-a separate owner requirement. Actual state publication, commands, spell grants/
-import, full scheduler/status/corpse/terminal/frame RNG, AI activation, host/editor,
-automatic facing, broad interfaces, owner drafts, JobStats and ZOD-106 remain
-separate/deferred.
+ZOD-358–362 now provide [ordinary map-aim geometry](ordinary-spell-targeting.md)
+and derive a source-ordered target list for this existing cast query. Unit-follow,
+special shapes, commands, live publication and magic AI remain separate. Next
+ZOD-363 traces unit-follow and stored-aim resolution. The agreed future forward
+nine-tile1/3/5 cone remains unimplemented and independent of shared arithmetic.

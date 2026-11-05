@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-362 (Resolve ready magic casts from map geometry).**
+**Next bounded work: ZOD-363 (Trace unit-follow targeting and stored-aim resolution).**
 [Ordinary spell targeting](behavior/ordinary-spell-targeting.md) records completed
-ZOD-358–361. Geometry remains independent of arithmetic and live publication.
-There are 34 open tickets below. The 328 completed tickets, prior checkpoints and
+ZOD-358–362. Geometry remains independent of arithmetic and live publication.
+There are 34 open tickets below. The 329 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,11 +31,11 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-362 — Resolve ready magic casts from map geometry
+### ZOD-363 — Trace unit-follow targeting and stored-aim resolution
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-361
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-362
 
-Bind geometry to the ready spell definition and derive ordered targets for the shared cast query, preserving one MP proposal and atomic RNG rollback. See [scope and deferrals](behavior/ordinary-spell-targeting.md).
+Trace unit-follow versus stored map-aim resolution, movement during charge, no-follow flags and original validation boundaries before choosing a bounded implementation child. Do not activate commands or scheduling. See [scope and deferrals](behavior/ordinary-spell-targeting.md).
 Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
 status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
 
