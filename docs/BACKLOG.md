@@ -4,12 +4,12 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-349 (Classify source zodiac compatibility for shared magic).**
+**Next bounded work: ZOD-350 (Project immutable current magic inputs).**
 [Current magic inputs and casts](behavior/magic-current-inputs-and-casts.md)
-records completed ZOD-348. Read current effective MA/current Faith;
+records completed ZOD-348–349. Read current effective MA/current Faith;
 preserve typed shared calculations, explicit context and candidate RNG/state.
 Scheduling, resource consumption and target calculations have separate owners.
-There are 42 open tickets below. The 315 completed tickets, prior checkpoints and
+There are 41 open tickets below. The 316 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -33,17 +33,9 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-349 — Classify source zodiac compatibility for shared magic
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-348
-
-Classify the pinned sign-difference table, Serpentarius and exact sex/monster opposition semantics into the existing compatibility enum. Preserve arithmetic owner and unknown-sign guards. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
-Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/
-deferred. See the [source and boundaries](behavior/magic-current-inputs-and-casts.md).
-
 ### ZOD-350 — Project immutable current magic inputs
 
-**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-349
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-349
 
 Capture current effective MA, current Faith/status/support/affinity/equipment facts as immutable inputs. Project shared formula/evasion facts without touching the narrow sword state. Reject unsupported living/element contexts and conflicting same-unit snapshots. Owner drafts, JobStats, host/editor, automatic facing, full corpse/
 Golem/terminal/status/frame RNG, broad interfaces and ZOD-106 remain separate/

@@ -3,7 +3,7 @@
 Generated from `baseline-coverage.json` by `tools/verification/verify_baseline_coverage.py --write-view`.
 Edit the JSON, then regenerate this view. See [the inventory guide](README.md) for status/evidence rules.
 
-Target: **SCUS-94221**. Snapshot: 2026-11-05; managed base `61a0a3b`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+Target: **SCUS-94221**. Snapshot: 2026-11-05; managed base `a936970`; reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 These entries are planning scopes, not a feature-completion percentage or a complete record/encounter catalog.
 
 ## Simulation
@@ -142,7 +142,7 @@ Remaining gaps:
 
 - Original projectile obstruction/elevation/falling, other action families/modifiers, progression/rewards, AI and independent original observation remain open. ZOD-111 owns Windows controls; battle checkpoints remain deferred.
 
-Next action: ZOD-349: Classify source zodiac compatibility for shared magic. Target geometry, state publication, commands and magic AI activation remain separate.
+Next action: ZOD-350: Project immutable current magic inputs. Target geometry, state publication, commands and magic AI activation remain separate.
 
 Bounded follow-ups: ZOD-104, ZOD-105, ZOD-106, ZOD-107, ZOD-108, ZOD-109, ZOD-110, ZOD-111.
 

@@ -64,3 +64,11 @@ adoption. No live HP/status/MP publication, full charge scheduler, target finder
 cone geometry, prepared spell grants, AI activation or host/editor is added by
 this trace. Owner drafts, JobStats, automatic facing, corpse/terminal/frame RNG,
 broad interfaces and ZOD-106 remain separate/deferred.
+
+## ZOD-349
+
+`FaithMagicInputs.ClassifyCompatibility` now maps explicit `MagicZodiacIdentity`
+to the existing amount enum. Three focused managed cases pass33 literal relations
+and unknown-sign guards, including both independent sex bits, monster precedence,
+reverse differences and Serpentarius. The existing arithmetic and source fixtures
+are unchanged. Logs: `scratch/magic-inputs-348-357/focused-349.log`.

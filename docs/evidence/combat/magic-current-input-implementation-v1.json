@@ -1,7 +1,8 @@
 {
   "schemaVersion": 1,
   "tickets": [
-    "ZOD-348"
+    "ZOD-348",
+    "ZOD-349"
   ],
   "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
   "referenceClean": true,
@@ -16,6 +17,12 @@
       "ticket": "ZOD-348",
       "managedBaseRevision": "61a0a3b16ec8fe51f593a16134b76ebd24b5cd3a",
       "validation": "Eight focused Python cases; 56 independent descriptions; source12/16 clean; managed code unchanged",
+      "reports": "scratch/magic-inputs-348-357/"
+    },
+    {
+      "ticket": "ZOD-349",
+      "managedBaseRevision": "a936970fe56479f558ec1bfd5e77363ef8c5633b",
+      "validation": "Three focused Framework cases; all33 literal compatibilities and unknown signs; Release compilation passed",
       "reports": "scratch/magic-inputs-348-357/"
     }
   ]
