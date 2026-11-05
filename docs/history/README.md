@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 280 entries index completed bounded work; they do not mean the full game is complete.
+These 282 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -303,3 +303,5 @@ These 280 entries index completed bounded work; they do not mean the full game i
 - [ZOD-311 — Verify and publish fresh roster decision commands](../behavior/roster-decision-and-continuation.md)
 - [ZOD-312 — Publish planned roster Move with frozen follow-up authority](../behavior/roster-decision-and-continuation.md)
 - [ZOD-313 — Continue exact-state roster Attack/self/Stone/Wait intent](../behavior/roster-decision-and-continuation.md)
+- [ZOD-314 — Dispatch fresh supported roster AI decisions](../behavior/roster-ai-command-and-turn.md)
+- [ZOD-315 — Drive bounded roster AI turns with exact-session recovery](../behavior/roster-ai-command-and-turn.md)

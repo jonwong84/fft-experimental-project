@@ -20,8 +20,8 @@ family. Source and test projects use matching folders:
   `AiScenarioLayout` arithmetic. [Policy and provenance limits](../../docs/behavior/roster-ai-general-scenarios.md)
   stay explicit. `RosterAiCastOrigins` now binds fresh/retained ranked keys
   across every active enemy through the existing workspace; exhaustive Attack
-  and self map entries read no ranked keys. Full action traversal and live
-  roster AI commands remain future work.
+  and self map entries read no ranked keys. Supported full-list selection and
+  fresh live roster dispatch now compose those kernels; broader traversal remains.
   These serve more than one family.
 - `Sword/`: the original ordinary-sword pilot, its preparation, scenarios,
   scans, selection and execution adapters. `RosterSwordAiCandidate` now shares
@@ -109,3 +109,11 @@ Exact roster projectile sampling now belongs to Framework `FlatRosterDirectTraje
 the AI facade preserves compact16/legal-origin admission and between-unit semantics.
 Actual roster Stone uses the live to-target mode with interception. Neither pure
 geometry nor public AI plans grant command authority.
+
+`RosterBasicSkillAiCommandExecution` owns fresh supported-list selection inside
+Framework and derives first/post-ACT Move/ACT/END from actual choices. Private
+priority knowledge publishes only with accepted actual commands.
+`RosterBasicSkillAiTurnExecution` uses shared routing, frozen Framework Move
+continuations, explicit fixed/kept facing and exact-session partial-progress
+recovery, stopping before the next clock. Public plans grant no authority.
+See [roster command/turn boundaries](../../docs/behavior/roster-ai-command-and-turn.md).

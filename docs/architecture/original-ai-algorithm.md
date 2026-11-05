@@ -472,7 +472,7 @@ selected sword resolution and explicit-facing sessions through shared Framework
 kernels. [ZOD-283–286](../behavior/roster-ai-preparation.md) add separate fresh
 ordinary-roster refresh, supported-list/team preparation and isolated movement
 scores through shared private clocks/projections/scoring. Existing AI command
-drivers remain pair-bounded. [ZOD-287–289](../behavior/roster-ai-general-scenarios.md)
+drivers retain their pair guards; separate roster drivers now exist through ZOD-315. [ZOD-287–289](../behavior/roster-ai-general-scenarios.md)
 derive fresh general admission/focus and roster movement scenarios through shared
 private kernels. [ZOD-290–293](../behavior/roster-ai-action-foundation.md) add
 fresh cast-priority provenance, all-ally self usefulness and an isolated fresh
@@ -491,8 +491,9 @@ one full supported roster list, stable rank insertion and source lottery.
 prerequisites and expose actual self abilities through roster sessions. ZOD-306
 now traces/implements live Stone interception/knockback and shared Framework
 geometry through ZOD-306–309. [ZOD-310–313](../behavior/roster-decision-and-continuation.md)
-now own verified roster decision/continuation authority. ZOD-314/315 next
-integrate fresh AI dispatch and bounded turns/recovery.
+now own verified roster decision/continuation authority. [ZOD-314/315](../behavior/roster-ai-command-and-turn.md)
+now integrate fresh AI dispatch and bounded turns/recovery; ZOD-316 next proves
+multi-unit real-turn replay with explicit clock advancement.
 Full original search breadth remains separate.
 A future replaceable AI interface should consume explicit state/content/RNG and
 return decisions checked by authoritative rules. Its concrete design must use

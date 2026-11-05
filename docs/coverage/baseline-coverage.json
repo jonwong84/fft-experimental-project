@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-05",
   "edition": "SCUS-94221",
-  "managedCommit": "8d62bf4",
+  "managedCommit": "dc660e9",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 4429,
-    "source": "docs/behavior/roster-decision-and-continuation.md",
+    "passed": 4449,
+    "source": "docs/behavior/roster-ai-command-and-turn.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -669,7 +669,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework.Ai policies / Zodiac.Framework command authority",
       "status": "partial",
-      "currentScope": "Existing pair/variable-list command and complete-turn drivers retain guards, priority knowledge and streams. Roster queries own general preparation/scenarios, cast-priority binding, roster self usefulness/isolated self entry, selected-target sword candidates, fresh exhaustive Attack enumeration and one supplied certified-clear Throw Stone candidate. Shared private formulas, masks, selected-target state, clock and scoring preserve peers and pair behavior. Actual roster commands exist separately. Computed flat direct trajectories now use explicit complete sprite heights and exact SDK normalization/samples against every occupant. Fresh isolated ranked Stone search now owns one selected occurrence with computed blockage and evaluated-aim consumption. Full supported roster list ranking/lottery now composes private fresh entry owners through one prefix. Roster AI command/turn drivers remain open alongside other policies/statuses/maps, complete corpse lifecycle, terminal/frame RNG, original evidence and host activation. Existing complete-roster actual self PA+1 now runs through the opaque roster session publisher/receipt owner; no RNG or new effect. Execution prerequisites are traced; live Stone interception and verified roster AI command/turn authority remain open. Exact flat direct geometry now has one Framework owner and an AI facade preserving its extra guards. Actual roster Stone resolves interception and shares the existing actual formula/results and opaque session publisher, including all-occupant landing and real RNG. Pair guards remain; verified roster AI authority/turn integration is still open. Framework now owns separately typed roster invocation/proposal/RNG/actual-command transactions and exact-state frozen Move follow-ups. Pair APIs remain unchanged; fresh roster AI dispatch and complete-turn recovery remain open.",
+      "currentScope": "Existing pair/variable-list command and complete-turn drivers retain guards, priority knowledge and streams. Roster general preparation/scenarios, cast-priority provenance and fresh exhaustive supported Attack/self/Stone list ranking/lottery share private formulas, clocks, projections, geometry and scoring while restoring all peers. Exact Framework flat direct trajectories use complete sprite heights and SDK normalization; actual roster Stone resolves live interception and all-occupant landing. Framework owns invocation-bound proposals, full-word/count RNG verification, actual command transactions and exact-state frozen Move follow-ups. Fresh supported roster AI dispatch now runs selection inside that boundary, publishing priority knowledge only with actual progress. Bounded complete-turn routing and exact-session recovery compose retained commands, fresh post-ACT and explicit facing without advancing the next clock. ACT-first KO can stop at the deferred corpse query guard with real progress retained; Move-first KO can settle its real receipt. Other policies/abilities/maps, full corpse/terminal/frame RNG, original evidence and host activation remain open.",
       "referenceSources": [
         {
           "path": "src/battle/ai/turn.c",
@@ -832,7 +832,11 @@
         "docs/behavior/roster-decision-and-continuation.md",
         "docs/evidence/ai/roster-authority-source-v1.json",
         "docs/fixtures/behavior/roster-authority-contract-v1.json",
-        "docs/evidence/ai/roster-authority-implementation-v1.json"
+        "docs/evidence/ai/roster-authority-implementation-v1.json",
+        "docs/behavior/roster-ai-command-and-turn.md",
+        "docs/evidence/ai/roster-turn-source-v1.json",
+        "docs/fixtures/behavior/roster-turn-contract-v1.json",
+        "docs/evidence/ai/roster-turn-implementation-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -922,7 +926,9 @@
         "src/Zodiac.Framework/RosterDecision.cs",
         "src/Zodiac.Framework/RosterPlannedMove.cs",
         "src/Zodiac.Framework/RosterMoveContinuation.cs",
-        "src/Zodiac.Framework/ImmediateAbilityBattle.cs"
+        "src/Zodiac.Framework/ImmediateAbilityBattle.cs",
+        "src/Zodiac.Framework.Ai/BasicSkill/RosterBasicSkillAiCommandExecution.cs",
+        "src/Zodiac.Framework.Ai/BasicSkill/RosterBasicSkillAiTurnExecution.cs"
       ],
       "automatedChecks": [
         {
@@ -1320,6 +1326,18 @@
         {
           "path": "tools/verification/verify_roster_authority_contract.py",
           "scope": "Pinned83 functions/27 files and21 contracts; no original/C/managed execution."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/BasicSkill/RosterBasicSkillAiTurnExecutionTests.cs",
+          "scope": "Twelve independent real command/turn tapes plus late RNG/facing rollback, exact-session retry/binding, immutable replay, kept facing, peer storage permutation and accepted KO retention."
+        },
+        {
+          "path": "tools/verification/test_roster_turn_contract.py",
+          "scope": "Twelve composed source descriptions, preserved inputs, labelled corpse boundary and tamper detection."
+        },
+        {
+          "path": "tools/verification/verify_roster_turn_contract.py",
+          "scope": "Pinned83 functions/27 files and12 independent compositions; no original/C/managed execution."
         }
       ],
       "manualCheckpoint": {
@@ -1332,10 +1350,9 @@
         "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
         "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Integrate ZOD-314 fresh roster AI selection/dispatch inside the authoritative callback, then ZOD-315 bounded turn routing/recovery.",
+      "nextAction": "Verify ZOD-316 bounded multi-unit real-turn replay through explicit public clock advancement and retained state/RNG/priority knowledge.",
       "followUpTickets": [
-        "ZOD-314",
-        "ZOD-315"
+        "ZOD-316"
       ]
     },
     {

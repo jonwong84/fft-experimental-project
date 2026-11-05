@@ -4,8 +4,8 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-314 (dispatch fresh supported roster AI decisions).** ZOD-310–313 own invocation-bound roster proposals, verified RNG adoption, actual command transactions and exact-state retained Move follow-ups. Public cached AI plans still have no executor.
-There are 35 open tickets below. The 280 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-316 (prove a bounded multi-unit roster AI replay).** ZOD-314/315 now dispatch fresh supported roster decisions inside Framework and drive complete bounded turns with exact-session recovery. Public cached plans remain non-authoritative.
+There are 34 open tickets below. The 282 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -29,34 +29,21 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-314 — Dispatch fresh supported roster AI decisions
+### ZOD-316 — Prove a bounded multi-unit roster AI battle replay
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-303, ZOD-311, ZOD-312, ZOD-313
+**Type:** Verification · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-315
 
-Own full supported roster selection inside the Framework callback, deriving
-first/post-ACT and actual Move/ACT/END dispatch from current choices and private
-selected data. Match simulation roster facts to the authoritative profile; use
-actual typed grants/metadata and concrete command factories. Planned Move freezes
-the selected follow-up, post-ACT path settles its real receipt, and priority
-workspace publishes only with accepted actual progress. Late selection/boundary/
-command failure returns original RNG/session/workspace. No public cached-plan
-input, second refresh/adoption or pair certificate. Keep explicit fixed/kept
-facing and all documented deferrals. See [authority](behavior/roster-decision-and-continuation.md).
-
-### ZOD-315 — Drive bounded roster AI turns with exact-session recovery
-
-**Type:** Story · **Priority:** P3 · **Status:** Waiting — ZOD-314 · **Depends on:** ZOD-313, ZOD-314
-
-Compose accepted first/post-ACT dispatch, retained follow-up and actual facing
-through shared turn-stage routing. Stop without advancing the next clock.
-Late failure retains accepted state/events/decisions/workspace and freezes an
-opaque recovery cursor bound to the exact current session/configuration.
-Resume cannot replace intent, RNG, configuration or prior progress. Verify both
-orders, empty fallback, all supported actions, late failure/recovery and immutable
-replay. An actual KO may expose the deferred corpse/terminal input guard; retain
-that progress rather than inventing terminal behavior. Automatic facing,
-corpse/terminal/frame RNG, host/editor, owner drafts, broad interfaces and
-ZOD-106 remain separate/deferred. See [source design](architecture/zod-310-roster-decision-authority.md).
+Trace and verify a deterministic sequence of real supported roster turns, using
+explicit public clock advancement between complete-turn invocations. Preserve
+real damage/PA/pushes, choice refunds, source-order eligibility, RNG and retained
+priority knowledge across actors; no detached pair or hypothetical state becomes
+authority. Compare independent bounded source descriptions and immutable replay,
+including actual clock events and stopping at explicit scenario boundaries.
+Use ordinary initially living supported inputs; report any deferred corpse-domain
+stop with accepted progress rather than adding terminal policy. Fixed/kept facing
+suffices. This proof does not activate host/editor, automatic facing, full corpse/
+terminal/frame RNG, other policies/maps/abilities, broad replacement interfaces,
+owner drafts or ZOD-106. See [current turn boundary](behavior/roster-ai-command-and-turn.md).
 
 ## Existing validation gates
 

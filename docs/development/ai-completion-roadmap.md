@@ -77,8 +77,9 @@ proximity over resolved facts, shared with admitted pair preparation. Full roste
 ability/effect traversal, other policies/maps and independent validation remain open. [Actual roster commands](../behavior/flat-roster-combat.md)
 now support ordinary living-roster ally transit/empty endpoints, selected sword
 resolution and explicit-facing settlement through shared kernels. Existing AI
-profiles/drivers still require two opponents; corpse movement/death scheduling
-remain unimplemented. [Pure roster preparation](../behavior/roster-ai-preparation.md)
+pair profiles/drivers retain two-opponent guards; separate supported roster
+drivers now exist through ZOD-315. Corpse movement/death scheduling remain
+unimplemented. [Pure roster preparation](../behavior/roster-ai-preparation.md)
 now owns one fresh whole-roster refresh, supported-list/team flags and an isolated
 legal move score through shared clock/projection/scoring owners.
 [Roster general scenarios](../behavior/roster-ai-general-scenarios.md) now derive
@@ -201,8 +202,9 @@ command/turn integration prerequisites
 and expose the existing actual self kernel through roster sessions. ZOD-306
 now traces/implements live Stone interception, actual effects and session
 publication through ZOD-306–309. ZOD-310–313 now implement verified roster
-decisions and retained Move authority. ZOD-314/315 next integrate fresh dispatch
-and bounded turns/recovery.
+decisions and retained Move authority. [ZOD-314/315](../behavior/roster-ai-command-and-turn.md)
+now integrate fresh dispatch and bounded turns/recovery. ZOD-316 next verifies
+multi-unit real-turn replay with explicit clock advancement.
 Broader control/low-HP/terminal policies remain separate.
 A certificate for one closed ability list cannot stand in for another list.
 

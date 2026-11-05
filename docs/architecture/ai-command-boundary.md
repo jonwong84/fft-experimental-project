@@ -112,3 +112,8 @@ roster automatic facing and AI preparation/search need later milestones.
 [ZOD-310–313](../behavior/roster-decision-and-continuation.md) add separately typed
 roster invocation/proposal/continuation authority, sharing actual command, receipt
 and forward-checkpoint owners. The old pair boundaries and guards remain.
+
+[ZOD-314/315](../behavior/roster-ai-command-and-turn.md) now compose private fresh
+supported roster selection, actual commands, retained Move intent, explicit
+facing and exact-session turn recovery through that boundary. Successor priority
+knowledge publishes with accepted actual progress; no cached plan executor.

@@ -56,8 +56,8 @@ Framework, 1,168 AI), **584 Python tests**, pinned source/guide/coverage/link an
 nine unchanged owner-draft checks pass. Logs: `scratch/roster-authority-310-311/`;
 [implementation receipt](../evidence/ai/roster-authority-implementation-v1.json).
 
-ZOD-314 next owns fresh full-list AI dispatch inside this boundary. ZOD-315 then
-owns bounded complete turns/recovery. Public cached AI plans still have no live
-executor. Explicit fixed/kept facing, ordinary initial living domains and all
+[ZOD-314/315](roster-ai-command-and-turn.md) now own fresh full-list AI dispatch
+inside this boundary and bounded complete turns/recovery. Public cached AI plans
+still have no live executor. Explicit fixed/kept facing, ordinary initial living domains and all
 documented automatic-facing/corpse/terminal/frame RNG/host/editor/owner-draft/
 interface/ZOD-106 deferrals remain.

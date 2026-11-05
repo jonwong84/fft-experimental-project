@@ -4,7 +4,12 @@ namespace Zodiac.Framework.Ai;
 internal static class AiTurnProgress
 {
     internal static BasicSkillAiTurnStage? Next(FacingTurnState state, BattleUnitId actor, FacingMoveContinuation? continuation) =>
-        continuation is not null ? BasicSkillAiTurnStage.RetainedCommand :
-        state.PendingFacing is not null ? BasicSkillAiTurnStage.FinishFacing :
-        state.Battle.TurnBattle.Turns.ActiveUnitId == actor ? BasicSkillAiTurnStage.PostActCommand : null;
+        FromFacts(continuation is not null, state.PendingFacing is not null, state.Battle.TurnBattle.Turns.ActiveUnitId == actor);
+
+    internal static BasicSkillAiTurnStage? Next(RosterFacingTurnState state, BattleUnitId actor, RosterMoveContinuation? continuation) =>
+        FromFacts(continuation is not null, state.PendingFacing is not null, state.Battle.TurnBattle.Turns.ActiveUnitId == actor);
+
+    private static BasicSkillAiTurnStage? FromFacts(bool retained, bool facing, bool active) =>
+        retained ? BasicSkillAiTurnStage.RetainedCommand : facing ? BasicSkillAiTurnStage.FinishFacing :
+        active ? BasicSkillAiTurnStage.PostActCommand : null;
 }
