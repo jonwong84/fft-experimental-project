@@ -4,12 +4,12 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-337 (stored magic damage weather/element transformations).**
-[ZOD-334](architecture/zod-334-faith-magic.md) traces the shared Faith-based magic
-pipeline. [ZOD-335/336](behavior/faith-magic-amounts.md) implement signed-store/Faith
-arithmetic and one parameterized already-hit damage/healing amount projection.
-These helpers do not enable spells, live stat changes, charging or magic AI entries.
-There are 34 open tickets below. The 303 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-340 (shared magic conditional-proc decision and RNG).**
+[ZOD-337–339](behavior/magic-elements-and-routing.md) add stored weather/affinity
+transforms, element-aware Faith composition and raw absorption/undead routing.
+Oil/Float/rider states remain explicitly guarded. These helpers do not enable
+spell commands, magic AI entries, resource use, status execution or live HP changes.
+There are 34 open tickets below. The 306 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -33,21 +33,22 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-337 — Implement stored magic damage weather and element transformations
+### ZOD-340 — Trace and implement the shared magic conditional-proc decision
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-334, ZOD-336
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-334, ZOD-339
 
-Trace independently checkable literal vectors for the between-product-and-Faith
-steps of formula0x08. Preserve signed-halfword stores and ordering: effective
-weather, Oil/Float/rider boundaries, absorb marking, nullification, then half/weak.
-Implement the smallest explicit-input transformation/result slice, with unsupported
-state rejected rather than treated as neutral. Preserve Oil's post-product XA
-quirk; no assumed fire-damage doubling. Keep absorption/undead routing, proc and
-status publication, complete result caps/eligibility, MP/charge, live magic stats,
-targeting and actual command/AI integration in separately bounded children.
-No new general interface, spell-specific classes, owner drafts, JobStats changes,
-host/editor activation, automatic facing, corpse/terminal/frame RNG or ZOD-106.
-See the [source trace](architecture/zod-334-faith-magic.md).
+Trace exact random_roll_pass_fail arithmetic, calls and ordering for the0x08
+conditional proc at the pinned reference. Implement one explicit-input decision
+with execution/preview/AI modes, deterministic RNG input/output and independently
+checked boundary vectors. Preserve actual draws even when status record0 has no
+effect; preview/AI behavior and canceled/missed invocations remain distinct. Use
+the original formula family, not the routed HP direction: absorbed damage still
+uses0x08's path, while undead-reversed healing remains0x0C. Keep unsupported pending
+proc/reaction context explicit and preserve atomic rejection. No status application,
+complete result eligibility/caps, MP/charge, live magic stats, targeting or command/
+AI integration is implied. Owner drafts, JobStats, host/editor, automatic facing,
+corpse/terminal/frame RNG, broad interfaces and ZOD-106 remain deferred.
+See the [current stages and source boundaries](behavior/magic-elements-and-routing.md).
 
 ## Existing validation gates
 

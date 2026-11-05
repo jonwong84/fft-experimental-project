@@ -68,4 +68,6 @@ APIs, projects, dependencies, fixtures or owner drafts are rewritten. The new
 source fixture describes this new slice. Authoring remains typed C#/editor/import
 through common validation into prepared JSON and immutable runtime definitions.
 No original/C execution, host/editor activation or manual UI checkpoint applies.
-ZOD-337 is the next bounded weather/element step; other documented deferrals remain.
+[ZOD-337–339](magic-elements-and-routing.md) now add an element-aware composition
+path and raw routing. This original API and its strict neutral certificate remain
+unchanged. ZOD-340 next handles proc decisions; other documented deferrals remain.

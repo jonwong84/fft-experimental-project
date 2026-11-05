@@ -93,8 +93,9 @@ universal formula interface before concrete consumers justify it.
 
 [ZOD-334](zod-334-faith-magic.md) now traces the shared Faith-based 0x08/0x0C
 pipeline; [ZOD-335/336](../behavior/faith-magic-amounts.md) implement its first pure
-signed/Faith and already-hit amount slices. ZOD-337 next covers weather/element
-transformations. The wider acceptance still needs the following work: Cover MA/Faith representation, arithmetic widths,
+signed/Faith and already-hit amount slices. [ZOD-337–339](../behavior/magic-elements-and-routing.md)
+now add guarded weather/element composition and raw HP routing. ZOD-340 next
+handles proc decisions. The wider acceptance still needs the following work: Cover MA/Faith representation, arithmetic widths,
 modifier order, evasion, element/undead rules, charging/MP, area/vertical targeting
 and actual-versus-AI evaluation. Design shared primitives and data requirements
 before implementing a representative spell. Broader mechanics remain deferred

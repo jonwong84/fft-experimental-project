@@ -109,7 +109,10 @@ classified compatibility. Damage requires unchanged intervening weather/target
 element steps. Healing's different chain remains explicit. Both are completed in
 the [amount implementation](../behavior/faith-magic-amounts.md).
 
-**Next ZOD-337:** independently verify and implement weather/target-element
+[ZOD-337–339](../behavior/magic-elements-and-routing.md) now implement guarded
+weather/element transforms, composition and raw result routing. ZOD-340 next
+handles the isolated proc/RNG decision. The original selected-child scope was:
+independently verify and implement weather/target-element
 transformations on the stored damage, including cancellation/absorption and the
 Oil/Float boundaries, before connecting complete spell effects. Live MA/Faith
 state, learned grants, MP/charge, full target search, undead/status/reactions and

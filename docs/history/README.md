@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 303 entries index completed bounded work; they do not mean the full game is complete.
+These 306 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -330,3 +330,7 @@ These 303 entries index completed bounded work; they do not mean the full game i
 - [ZOD-334 — Trace shared Faith-based magic and select the first managed slice](../architecture/zod-334-faith-magic.md)
 - [ZOD-335 — Implement signed magic-product and Faith arithmetic](../behavior/faith-magic-amounts.md#zod-335-signed-stores-and-faith)
 - [ZOD-336 — Implement parameterized damage/healing amount projection](../behavior/faith-magic-amounts.md#zod-336-one-parameterized-amount-pipeline)
+
+- [ZOD-337 — Implement stored magic damage weather and element transformations](../behavior/magic-elements-and-routing.md#zod-337-stored-weather-and-affinity-transform)
+- [ZOD-338 — Compose element-aware magic amounts before Faith](../behavior/magic-elements-and-routing.md#zod-338-element-aware-amount-composition)
+- [ZOD-339 — Route raw magic absorption and undead healing results](../behavior/magic-elements-and-routing.md#zod-339-raw-hp-routing)

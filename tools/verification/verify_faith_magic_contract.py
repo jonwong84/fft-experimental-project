@@ -25,7 +25,7 @@ def scale(amount,caster,target):
     integer(amount,-32768,32767)
     return signed16(divide(amount*faith(target)*faith(caster),10000))
 
-def amount(data):
+def product(data):
     kind=data['kind'];require(kind in ('Damage','Healing'),'Supported amount branch')
     xa=integer(data['magicAttack'],0,255);power=integer(data['power'],0,255);mods=data['modifiers']
     require(set(mods) <= {'strengthensElement','magicAttackUp','magicDefenseUp','targetShell','targetChickenOrFrog','compatibility'},'Known modifiers')
@@ -41,7 +41,11 @@ def amount(data):
         require(compatibility in factors,'Classified compatibility')
         sign,divisor=factors[compatibility];xa=max(1,signed16(xa+sign*((xa*25)%65536//divisor)))
     product=signed16(xa*power)
-    return dict(xa=xa,product=product,amount=scale(product,data['caster'],data['target']))
+    return dict(xa=xa,product=product)
+
+def amount(data):
+    result=product(data)
+    return dict(result,amount=scale(result['product'],data['caster'],data['target']))
 
 def validate(fixture):
     require(fixture['ticket']=='ZOD-334' and fixture['referenceRevision']==REVISION and fixture['productionImplemented'] is False,'Source description receipt')

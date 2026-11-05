@@ -243,6 +243,8 @@ primary AI/secondary combat evasion flags. [ZOD-333](../architecture/ability-eff
 now inventories shared formulas and data/targeting/presentation boundaries.
 [ZOD-334–336](../behavior/faith-magic-amounts.md) now trace shared Faith magic and
 implement pure signed/Faith arithmetic and already-hit amount projection.
-These do not add spell commands or AI entries. ZOD-337 next covers the omitted
-weather/element step before later effect/state/target integration.
+[ZOD-337–339](../behavior/magic-elements-and-routing.md) now add bounded weather/
+element composition and raw absorption/undead routing, preserving Oil/Float/rider
+guards. These do not add spell commands or AI entries. ZOD-340 next handles the
+isolated conditional-proc/RNG step before later result/state/target integration.
 No automatic-facing/corpse/terminal/host gate is activated.
