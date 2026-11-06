@@ -133,9 +133,45 @@ from `attributes` (including CT) and three from `has_turn` (including choices),
 while four from `faith` include current HP. The pinned unit layout records those
 byte spans; they are not omitted live mutations in this managed implementation.
 
-Twelve composed cases cover Fire tick13, CT3 tile value before a target turn,
+Thirteen composed cases cover Fire tick13, CT3 tile value before a target turn,
 CT10 actor readiness without Wait refund, immediate formula-before-upkeep, AI
-corpse upkeep after KO, healing, already-used Move, high-bit CT masking, source
+corpse upkeep after KO, immediate/delayed healing, already-used Move, high-bit CT masking, source
 cap score-9199/hit255, pending/foreign admission and late draw/tick rollback.
-All1,304 AI regressions pass. General ranking/search/lottery and autonomous magic
+All1,305 AI regressions pass. General ranking/search/lottery and autonomous magic
 turns remain separate from this bounded fixed-origin score.
+
+## Prepared delayed diagnostics and batch validation (ZOD-417)
+
+`inspect-delayed-magic-ai` binds the existing prepared metadata catalog to fresh
+fixed-origin candidates. It reports followed-unit and tile hypotheses separately,
+including actual/considered CT, ordered clock events, CT/choice copies, movement
+opportunities, formula-entry RNG, frames, restored/projected units and scores.
+Each hypothesis restarts from the same state/RNG; the list is not a ranked
+source search. The tool requires prepared files only and cannot adopt its output.
+[Usage](../development/ordinary-spell-ai-inspection.md#delayed-fixed-origin-candidates).
+
+The [implementation receipt](../evidence/ai/ordinary-spell-ai-clock-implementation-v1.json)
+records locked restore, zero-warning/error Release build, **5,044 .NET tests**
+and **762 Python tests**. Eight Python cases cover ten literal clock vectors,
+prepared timing/score boundaries and mutation checks. The pinned eight-file
+clock audit independently validates thirty actual prepared delayed hypotheses:
+Fire2, elemental24 and learning4. Exact clock events/CT, upkeep raw values,
+formula-entry/exit RNG, damage, private HP/MP, scores and tile exclusions match.
+The unchanged ready-hit inspector's fifteen hypotheses still match its earlier
+independent source model. Four new CLI cases check repeatable prepared-only
+output, unchanged asset hashes and unsupported-secondary rejection.
+
+All four native Windows scenarios pass eighteen full headless replay checkpoints,
+movement, restart and state-preserving drawing. Their final gameplay hashes
+equal ZOD-402/ZOD-412. These programmed key/pointer routes do not establish
+physical input or original graphics/animation/timing fidelity. Prepared source
+audits still verify35/57/39/37 records and both asset hashes; the AI source index
+checks105 core/eight external entries. No original or C execution is claimed.
+
+Ten owner-file blobs, immutable JobStats, int MP costs and all467 public Framework
+declarations/matching files remain preserved. The approved formatting edit is
+committed separately as `b7a222d`. AbilityToggles consolidation, Knight slot
+mapping, editor, automatic facing, general movement, broader statuses/reactions/
+corpses/Golem/terminal/frame RNG, ZOD-106 and custom cone remain deferred.
+Next trace fixed-origin aim enumeration and rank insertion before adding search;
+autonomous magic turns remain separate.

@@ -6,16 +6,21 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-417: Expose prepared delayed AI diagnostics and validate the batch.**
-The owner requested ten milestones ZOD-403–412. ZOD-403–416 are complete;
-[ordinary spell AI](behavior/ordinary-spell-ai-clock.md) records the ready-hit boundary
-and the remaining selected steps. Twelve composed cases and all 1,304 AI regressions pass.
-Full delayed charge-clock search and autonomous magic turns remain separate.
-The earlier five-hour runs are not active. Source stays clean/read-only at
-`11464943bbdbd2a0af022d90cb7f10455cf911df`. Preserve the ten owner files,
-JobStats and all
-documented deferred gates. The approved formatting edit is committed as `b7a222d`. The last whole-solution validation below is the
-ZOD-412 baseline (5,010 .NET /754 Python); the new milestone checks are above.
+**ZOD-418: Trace fixed-origin ordinary spell aim search and ranking.**
+The requested five tickets ZOD-413–417 are complete. The
+[ordinary spell AI clock](behavior/ordinary-spell-ai-clock.md) now composes one
+fresh candidate at the actor's current origin, deriving charge timing and
+movement opportunities before stored-aim resolution/scoring. Prepared-only
+diagnostics independently verify thirty delayed and fifteen ready-hit hypotheses.
+Aim/origin enumeration, full-list ranking/lottery and autonomous magic turns
+remain separate; ZOD-418 is the next bounded source study.
+
+Locked restore, a zero-warning/error Release build, **5,044 .NET tests** and
+**762 Python tests** pass. Four native scenarios retain all eighteen complete
+replay checkpoints and unchanged gameplay hashes. The reference remains clean/
+read-only at `11464943bbdbd2a0af022d90cb7f10455cf911df`. All ten owner-file blobs
+and deferred gates are preserved. The approved formatting edit is committed as
+`b7a222d`. Earlier five-hour runs are not active.
 
 [Managed MP costs](development/managed-magic-mp-costs.md) now use nonnegative `int`
 through spell definitions, resource calculation and recorded cast/resource cost.
@@ -264,36 +269,40 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: ZOD-387–412 pass locked restore, a zero-warning/error Release
-  build and **5,010 .NET cases** (1,784 Framework,1,275 AI,884 Content,390 CLI,
-  206 AssetTool,447 Client,24 Engine). All **754 Python tests** pass. Latest
-  seven TRX reports/logs are under ignored `scratch/ordinary-spell-ai-403-412/`,
-  set `trx-all-412-final`. The new source audit pins ten files and two structural
-  Frog records, and independently verifies fifteen managed prepared AI hypotheses.
-  The full source algorithm guide still checks 105 core/eight external functions.
-  Prepared Fire/elemental/Cure/learning audits check 35/57/39/37 records and both
-  asset hashes. Read-only AI projection/scoring leaves player execution unchanged.
-  Native `native-412-fire`, `-elemental`, `-healing`, `-learning` pass spell input,
-  full movement/path/heading, charge/HP/MP/status/rewards/growth, learning choices,
-  restart and eighteen complete headless replay checkpoints. Final gameplay
-  hashes equal ZOD-402. Drawing preserves state. These programmed key/pointer
+- Validation: ZOD-413–417 pass locked restore, a zero-warning/error Release
+  build and **5,044 .NET cases** (1,784 Framework,1,305 AI,884 Content,394 CLI,
+  206 AssetTool,447 Client,24 Engine). All **762 Python tests** pass. Latest
+  seven TRX reports/logs are under ignored `scratch/ordinary-spell-ai-413-417/`,
+  set `trx-all-417-final`. The pinned eight-file clock audit checks ten literal
+  descriptions and thirty actual prepared delayed hypotheses, including exact
+  CT/events, upkeep rolls, formula-entry/exit RNG, HP/MP, scores and tile exclusions.
+  The prior ten-file ready-hit audit still matches fifteen prepared hypotheses.
+  The source algorithm guide checks 105 core/eight external functions. Prepared
+  Fire/elemental/Cure/learning audits check35/57/39/37 records and both asset hashes.
+  [Implementation receipt](evidence/ai/ordinary-spell-ai-clock-implementation-v1.json).
+  Native `native-417-fire`, `-elemental`, `-healing`, `-learning` pass spell input,
+  movement/path/heading, charge/HP/MP/status/rewards/growth, learning choices,
+  restart and eighteen complete headless replay checkpoints. Final gameplay hashes
+  equal ZOD-402/ZOD-412. Drawing preserves state. These programmed key/pointer
   routes do not establish physical input or original graphics/animation/timing
   fidelity; no new UI activation or original/C execution is claimed.
   Schema1 remains legacy effect-only; schema2 binds metadata/grants; schema3 owns
   explicit initial primary slots. The AI bridge requires metadata and primary-only
-  loadouts, rejecting missing secondary learning instead of inferring it. Its
-  ready-hit score is not a full delayed candidate rank. Existing decision maker,
-  sword/Basic Skill execution and player commands are preserved.
-  Ten owner-file blobs and the separate unstaged targeting-format edit are
-  unchanged. All 467 public Framework declarations retain matching files and
-  existing partial parts. MP costs stay int; JobStats, AbilityToggles, editor and
-  Knight slot intent are preserved. Automatic wait-facing, general terrain,
-  full statuses/reactions/corpse/Golem/terminal/frame RNG, secondary/special AI
-  learned rows, charge-clock search, autonomous magic turns, ZOD-106 and custom
-  cone remain separate. Python uses pinned Pillow12.3.0 under ignored
-  `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
-  Historical whole-worktree audits keep old baselines; the movement verifier
-  checks source/description portions without retired managed paths.
+  loadouts, rejecting missing secondary learning instead of inferring it. The new
+  query forecasts one fixed-origin candidate; it does not rank a complete search
+  or execute a turn. Existing decision maker, sword/Basic Skill execution and
+  player commands are preserved.
+  Ten owner-file blobs are unchanged. The approved targeting-format edit is
+  committed as `b7a222d` and preserved. All467 public Framework declarations
+  retain matching files and existing partial parts. MP costs stay int; JobStats,
+  AbilityToggles, editor and Knight slot intent are preserved. Automatic wait-facing,
+  general terrain, full statuses/reactions/corpse/Golem/terminal/frame RNG,
+  secondary/special AI learned rows, general aim/origin search/ranking, autonomous
+  magic turns, ZOD-106 and custom cone remain separate. Python uses pinned
+  Pillow12.3.0 under ignored `scratch/accumulate-ai-229/python-deps`, with
+  TEMP/TMP in its `python-temp`. Historical whole-worktree audits keep old
+  baselines; the movement verifier checks source/description portions without
+  retired managed paths.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
   introduction proofs and synthetic world Save/Load exist. Original campaign,
   full combat/content, audio and general AI remain incomplete. See the

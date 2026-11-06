@@ -257,3 +257,14 @@ steps, and resolve supplied ready-cast targets with one cost and whole-query
 rollback. ZOD-358 next traces original targeting geometry; commands, state
 publication and magic AI activation remain separate.
 No automatic-facing/corpse/terminal/host gate is activated.
+
+ZOD-358–402 subsequently add targeting, prepared player casting/movement and
+learn-on-hit through the shared formula owners. [ZOD-403–412](../behavior/ordinary-spell-ai.md)
+bind semantic primary metadata to a fresh ready-hit AI query with usefulness,
+formula/resource projection, strike accounting and MP-aware scoring.
+[ZOD-413–417](../behavior/ordinary-spell-ai-clock.md) now add fixed-origin delayed
+candidates with source clock phases, derived movement opportunities and stored
+aim resolution. Prepared-only diagnostics independently validate their timing,
+RNG and scores. Fixed-origin aim search/rank insertion is the next source study;
+origin enumeration, full decision integration and autonomous magic turns remain
+separate. These slices do not complete original AI breadth.

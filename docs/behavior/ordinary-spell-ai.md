@@ -263,3 +263,14 @@ retain matching files and existing partial parts. MP costs stay int; JobStats,
 AbilityToggles, Knight EquipmentSlot intent, editor, automatic wait-facing,
 full statuses/reactions/corpses/Golem/terminal/frame RNG, broad interfaces,
 ZOD-106 and custom cone remain separate. Charge-clock search is the next study.
+
+## Subsequent charge-clock work
+
+[ZOD-413–417](ordinary-spell-ai-clock.md) now add a source-timed fixed-origin
+candidate query with captured unit/tile aims, derived movement opportunities and
+the unresolved source event-cap score. Both paths share private fresh admission
+and stored-hit owners; the ready-hit query still models its explicit current-fact
+boundary. The separate prepared delayed inspector validates timing and RNG.
+Target/origin enumeration, rank insertion, lottery and autonomous magic turns
+remain separate. The formatting edit mentioned in the historical checkpoint
+above was subsequently approved and committed as `b7a222d`.

@@ -4,14 +4,16 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-417 (Expose prepared delayed AI diagnostics and validate the batch).**
+**Next bounded work: ZOD-418 (Trace fixed-origin ordinary spell aim search and ranking).**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 [Learning reports, owned slots and player casting](behavior/learn-on-hit.md)
-complete ZOD-398–402. Ten further milestones ZOD-403–412 complete a bounded
-[ordinary spell AI ready-hit path](behavior/ordinary-spell-ai.md); charge-clock
-search and autonomous magic turns remain separate.
-There are 34 open tickets below. The 383 completed tickets, prior checkpoints and
+complete ZOD-398–402. ZOD-403–412 complete a bounded
+[ordinary spell AI ready-hit path](behavior/ordinary-spell-ai.md). ZOD-413–417
+add [fixed-origin charge simulation](behavior/ordinary-spell-ai-clock.md) and
+prepared delayed diagnostics. General aim/origin search, full ranking/lottery
+and autonomous magic turns remain separate.
+There are 34 open tickets below. The 384 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -35,11 +37,17 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-417 — Expose prepared delayed AI diagnostics and validate the batch
+### ZOD-418 — Trace fixed-origin ordinary spell aim search and ranking
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-416
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-417
 
-Bind the existing metadata catalog to prepared-only delayed diagnostics. Independently check original elemental timing, RNG and scores, compare immediate versus delayed readouts and preserve all player/native/owner regressions.
+Trace callers, source aim order, unit-versus-tile alternatives, useful-target
+masks, RNG chaining and baseline/rank comparisons for one ordinary spell at the
+current origin. Pin the reference and add independently checkable descriptions
+for ties, NotValuable exits and unresolved charge scores. Identify which existing
+ranking owners can be reused and select a bounded implementation child before
+coding search. Movement-origin enumeration, full-list dispatch, lottery and
+autonomous magic turn execution remain separate.
 
 Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
 Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.

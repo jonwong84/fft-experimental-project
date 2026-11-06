@@ -59,10 +59,11 @@ public sealed class OrdinarySpellAiCandidateTests
         Assert.Equal(6UL,r.RngState.DrawCount);
     }
 
-    [Fact]
-    public void Immediate_healing_runs_only_upkeep_rng_and_clears_critical_privately()
+    [Theory]
+    [InlineData(0)] [InlineData(4)]
+    public void Healing_runs_only_upkeep_rng_and_clears_critical_privately(byte charge)
     {
-        var (_,catalog,state)=OrdinarySpellAiReadyTests.Setup(charge:0,heal:true);
+        var (_,catalog,state)=OrdinarySpellAiReadyTests.Setup(charge:charge,heal:true);
         var r=OrdinarySpellAiCandidateQuery.Evaluate(state,catalog,Request(),new(57,0));
         Assert.True(r.Accepted,r.Rejection);Assert.Equal((ushort)84,r.Outcome!.Units[1].Vitals.Hp);
         Assert.False(r.Outcome.Units[1].Vitals.Critical);Assert.Equal(1UL,r.RngState.DrawCount);

@@ -36,3 +36,11 @@ this query and the existing decision maker is unchanged. Content supplies the
 metadata bridge; it rejects unrepresented secondary learned rows/loadouts.
 See [behavior and validation](../../docs/behavior/ordinary-spell-ai.md) and the
 [prepared-only inspector](../../docs/development/ordinary-spell-ai-inspection.md).
+
+`OrdinarySpellAiCandidateQuery` now captures a supplied aim at the current origin
+and derives readiness/movement opportunities through `OrdinarySpellAiClock`.
+It shares private fresh admission/stored-hit owners with the ready query and
+returns hypothetical diagnostics and decision RNG, including the unresolved
+source event-cap score. It cannot execute a command. Both queries retain their
+separate contracts; general aim/origin search, ranking, lottery and autonomous
+magic turns remain outside this path. [Clock contract and validation](../../docs/behavior/ordinary-spell-ai-clock.md).

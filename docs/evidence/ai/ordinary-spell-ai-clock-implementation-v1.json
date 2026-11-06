@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    413,
+    414,
+    415,
+    416,
+    417
+  ],
+  "managedBaseCommit": "900537d9c05cec6179a4f83e79ef6d6d568dc773",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "sourceReceipt": "docs/evidence/ai/ordinary-spell-ai-clock-source-v1.json",
+  "fixture": "docs/fixtures/behavior/ordinary-spell-ai-clock-v1.json",
+  "completedCommitsBeforeFinalMilestone": [
+    "7a21c6e Compose source-timed fixed-origin spell AI candidates (ZOD-416)",
+    "c1401c7 Share fresh stored-aim ordinary AI hit work (ZOD-415)",
+    "fa3f4f0 Simulate the source single-charge ordinary AI clock (ZOD-414)",
+    "b500601 Trace source ordinary spell AI charge-clock behavior (ZOD-413)",
+    "b7a222d Format spell targeting argument checks"
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseWarnings": 0,
+    "releaseErrors": 0,
+    "dotnetTests": 5044,
+    "dotnetAssemblies": [
+      {
+        "assembly": "Tessera.Engine.Tests.dll",
+        "passed": 24
+      },
+      {
+        "assembly": "Zodiac.AssetTool.Tests.dll",
+        "passed": 206
+      },
+      {
+        "assembly": "Zodiac.Framework.Tests.dll",
+        "passed": 1784
+      },
+      {
+        "assembly": "Zodiac.AssetTool.Cli.Tests.dll",
+        "passed": 394
+      },
+      {
+        "assembly": "Zodiac.Content.Tests.dll",
+        "passed": 884
+      },
+      {
+        "assembly": "Fft.Client.Tests.dll",
+        "passed": 447
+      },
+      {
+        "assembly": "Zodiac.Framework.Ai.Tests.dll",
+        "passed": 1305
+      }
+    ],
+    "pythonTests": 762,
+    "localDocumentLinksChecked": 662,
+    "localDocumentAnchorsChecked": 276,
+    "completedTickets": 384,
+    "openTickets": 34,
+    "aiCases": 1305,
+    "clockDescriptions": 10,
+    "clockUnitCases": 13,
+    "storedHitCases": 4,
+    "candidateCases": 13,
+    "preparedDelayedCliCases": 4,
+    "clockPythonCases": 8,
+    "delayedSourceAudits": [
+      {
+        "clockDescriptions": 10,
+        "sourceEventCap": 255,
+        "immediateStillAdvances": true,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "sourceFiles": 8,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "preparedDelayedHypotheses": 2,
+        "selection": "fire",
+        "independentTimingRngAndScoresMatched": true
+      },
+      {
+        "clockDescriptions": 10,
+        "sourceEventCap": 255,
+        "immediateStillAdvances": true,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "sourceFiles": 8,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "preparedDelayedHypotheses": 24,
+        "selection": "elemental",
+        "independentTimingRngAndScoresMatched": true
+      },
+      {
+        "clockDescriptions": 10,
+        "sourceEventCap": 255,
+        "immediateStillAdvances": true,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "sourceFiles": 8,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "preparedDelayedHypotheses": 4,
+        "selection": "learning",
+        "independentTimingRngAndScoresMatched": true
+      }
+    ],
+    "preparedDelayedHypotheses": 30,
+    "readySourceAudits": [
+      {
+        "learningDescriptions": 4,
+        "chargeDescriptions": 3,
+        "mpDescriptions": 4,
+        "scoreDescriptions": 1,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "sourceFiles": 10,
+        "structuralPreparedRecords": 2,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "chargeClockSearchImplemented": false,
+        "preparedAiHypotheses": 1,
+        "selection": "fire",
+        "independentScoresMatched": true
+      },
+      {
+        "learningDescriptions": 4,
+        "chargeDescriptions": 3,
+        "mpDescriptions": 4,
+        "scoreDescriptions": 1,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "sourceFiles": 10,
+        "structuralPreparedRecords": 2,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "chargeClockSearchImplemented": false,
+        "preparedAiHypotheses": 12,
+        "selection": "elemental",
+        "independentScoresMatched": true
+      },
+      {
+        "learningDescriptions": 4,
+        "chargeDescriptions": 3,
+        "mpDescriptions": 4,
+        "scoreDescriptions": 1,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "sourceFiles": 10,
+        "structuralPreparedRecords": 2,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "chargeClockSearchImplemented": false,
+        "preparedAiHypotheses": 2,
+        "selection": "learning",
+        "independentScoresMatched": true
+      }
+    ],
+    "preparedReadyHypotheses": 15,
+    "preparedContentAudits": [
+      {
+        "bindingVectors": 1,
+        "sharedFormulas": 1,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 6,
+        "sourceFunctions": 5,
+        "preparedRecords": 35,
+        "metadataRecordsChecked": 1,
+        "manifestVerified": true,
+        "originalExecuted": false,
+        "cExecuted": false
+      },
+      {
+        "bindingVectors": 12,
+        "sharedFormulas": 1,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 6,
+        "sourceFunctions": 5,
+        "preparedRecords": 57,
+        "metadataRecordsChecked": 12,
+        "manifestVerified": true,
+        "originalExecuted": false,
+        "cExecuted": false
+      },
+      {
+        "bindingVectors": 2,
+        "sharedFormulas": 2,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 6,
+        "sourceFunctions": 7,
+        "preparedRecords": 39,
+        "metadataRecordsChecked": 2,
+        "manifestVerified": true,
+        "originalExecuted": false,
+        "cExecuted": false
+      },
+      {
+        "bindingVectors": 2,
+        "sharedFormulas": 1,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 6,
+        "sourceFunctions": 5,
+        "preparedRecords": 37,
+        "metadataRecordsChecked": 2,
+        "manifestVerified": true,
+        "originalExecuted": false,
+        "cExecuted": false
+      }
+    ],
+    "algorithmGuideAudit": {
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "guideCoreFunctions": 105,
+      "guideExternalFunctions": 8,
+      "guideSourceFiles": 9,
+      "guideChapters": 10,
+      "directCoreRandSites": 11,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "scope": "Structural inventory and source/document integrity; not full behavioral equivalence"
+    },
+    "secondaryCureAiRejectedExplicitly": true,
+    "preservation": {
+      "ownerFiles": 10,
+      "ownerBlobsUnchanged": true,
+      "approvedFormattingCommit": "b7a222d",
+      "approvedFormattingUnchanged": true,
+      "publicFrameworkDeclarations": 467,
+      "matchingPublicTypeFiles": true,
+      "partialPartsPreserved": true,
+      "native": [
+        {
+          "profile": "fire",
+          "checkpoints": 4,
+          "finalSha256": "05f08744a6fc01b22de9c623c71ab6c28cbebce4685cbe2653a14aff38a829f7",
+          "sameGameplayHashAs402And412": true,
+          "replayMatched": true,
+          "drawingPreservedState": true,
+          "movementChecked": true,
+          "restartMatched": true
+        },
+        {
+          "profile": "elemental",
+          "checkpoints": 4,
+          "finalSha256": "5c1fd7e2cf5da76ba3442b3e3dcd3c9dfa575ec0fc62781fb209eeb2770dc744",
+          "sameGameplayHashAs402And412": true,
+          "replayMatched": true,
+          "drawingPreservedState": true,
+          "movementChecked": true,
+          "restartMatched": true
+        },
+        {
+          "profile": "healing",
+          "checkpoints": 4,
+          "finalSha256": "215d32aad03e0056fd483769a60afab05b88b9da0482736f6baa7741ce792547",
+          "sameGameplayHashAs402And412": true,
+          "replayMatched": true,
+          "drawingPreservedState": true,
+          "movementChecked": true,
+          "restartMatched": true
+        },
+        {
+          "profile": "learning",
+          "checkpoints": 6,
+          "finalSha256": "5e49ea88f2ae386f737248501db90ff84a93e94ad3e0d09d3b4b41d29d0228f5",
+          "sameGameplayHashAs402And412": true,
+          "replayMatched": true,
+          "drawingPreservedState": true,
+          "movementChecked": true,
+          "restartMatched": true
+        }
+      ]
+    }
+  },
+  "runtimeBoundary": {
+    "managedOnly": true,
+    "preparedFilesOnly": true,
+    "cReferenceRequired": false,
+    "originalMediaRequired": false,
+    "canAdoptProjection": false,
+    "canQueueCommand": false,
+    "fixedOriginSingleChargeForecast": true,
+    "fullCandidateRank": false,
+    "autonomousMagicTurns": false
+  },
+  "limits": [
+    "One supplied legal initial aim at the current origin; movement opportunities derive from effect-free copied clock phases.",
+    "Primary-only bare-human ordinary context; no other pending charges, timed effects, Quick or immediate caster KO/terminal simulation.",
+    "Source 255-event cap keeps the unresolved charge, unspent MP and hit-percent255 score explicitly.",
+    "No aim/origin enumeration, rank insertion, lottery, autonomous magic turns or reward/growth/learning publication.",
+    "Broader statuses/reactions/corpses/Golem/terminal/frame RNG, secondary/special AI learned rows, editor, automatic facing, ZOD-106 and custom cone remain separate.",
+    "No original or C execution; native evidence uses programmed key/pointer routes, not physical input or original fidelity."
+  ]
+}

@@ -1,3 +1,7 @@
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.Json;
+using Zodiac.Content;
 using Zodiac.Content.BattleSetup;
 using Zodiac.Framework;
 using Zodiac.Framework.Ai;
@@ -72,5 +76,72 @@ public sealed class OrdinarySpellAiPreparedTests
         var p=OriginalOrdinaryMagicImporter.DecodeSelection(CureMagicImporterTests.Image(),OriginalOrdinarySpellSelection.CureAndFire).Package;
         Assert.Contains(new AssetId("fft.ps1:ability/source-0001"),p.Definition.Units[0].LearnedSpells);
         Assert.Contains("secondary",Assert.Throws<NotSupportedException>(()=>PreparedOrdinarySpellAi.CreateCatalog(p)).Message);
+    }
+
+    [Theory] [InlineData(false)] [InlineData(true)]
+    public void Prepared_only_inspection_is_repeatable_and_reports_source_timing_without_mutating_assets(bool delayed)
+    {
+        var p=OriginalOrdinaryMagicImporter.DecodeSelection(Image(),OriginalOrdinarySpellSelection.ElementalTiers).Package;
+        WithPrepared(p,root=>
+        {
+            var before=Directory.GetFiles(root).ToDictionary(f=>Path.GetFileName(f)!,f=>Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(f))));
+            string command=delayed?"inspect-delayed-magic-ai":"inspect-magic-ai";
+            string Inspect()
+            {
+                using var output=new StringWriter();using var error=new StringWriter();
+                Assert.Equal(0,new InspectOrdinarySpellAiCommand().Run([command,"--content-root",root],output,error));
+                Assert.Equal("",error.ToString());return output.ToString();
+            }
+            string json=Inspect();Assert.Equal(json,Inspect());
+            using var document=JsonDocument.Parse(json);var cases=document.RootElement.GetProperty("cases");
+            Assert.Equal(delayed?24:12,cases.GetArrayLength());
+            Assert.True(document.RootElement.GetProperty("eachCaseRestartsFromSameStateAndRng").GetBoolean());
+            Assert.False(document.RootElement.GetProperty("cExecuted").GetBoolean());
+            Assert.Equal(78,cases[0].GetProperty("Score").GetProperty("Priority").GetInt32());
+            if(delayed)
+            {
+                Assert.Equal(13,cases[0].GetProperty("clock").GetProperty("Ticks").GetInt32());
+                Assert.Equal(2,cases[0].GetProperty("formulaEntryRng").GetProperty("DrawCount").GetInt32());
+                Assert.Equal("NotValuable",cases[1].GetProperty("disposition").GetString());
+                Assert.Equal(JsonValueKind.Null,cases[1].GetProperty("Score").ValueKind);
+                Assert.Equal(19,cases[6].GetProperty("clock").GetProperty("Ticks").GetInt32());
+                Assert.Equal(10,cases[6].GetProperty("clock").GetProperty("units")[0].GetProperty("Ct").GetInt32());
+            }
+            Assert.Equal(before.Count,Directory.GetFiles(root).Length);
+            foreach(var file in Directory.GetFiles(root))Assert.Equal(before[Path.GetFileName(file)],Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(file))));
+        });
+    }
+
+    [Theory] [InlineData("inspect-magic-ai")] [InlineData("inspect-delayed-magic-ai")]
+    public void Inspector_rejects_unrepresented_secondary_learning_without_partial_output(string command)
+    {
+        var p=OriginalOrdinaryMagicImporter.DecodeSelection(CureMagicImporterTests.Image(),OriginalOrdinarySpellSelection.CureAndFire).Package;
+        WithPrepared(p,root=>
+        {
+            using var output=new StringWriter();using var error=new StringWriter();
+            Assert.Equal(1,new InspectOrdinarySpellAiCommand().Run([command,"--content-root",root],output,error));
+            Assert.Contains("secondary",error.ToString());Assert.Equal("",output.ToString());
+        });
+    }
+
+    private static void WithPrepared(PreparedOrdinaryMagicBattle prepared,Action<string> action)
+    {
+        string root=Path.Combine(Path.GetTempPath(),"fft-ai-inspect-"+Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(root);
+        try
+        {
+            var metadata=prepared.MetadataPackage!;
+            byte[] package=Encoding.UTF8.GetBytes(prepared.ToJson()),companion=Encoding.UTF8.GetBytes(metadata.ToJson());
+            File.WriteAllBytes(Path.Combine(root,"battle.json"),package);File.WriteAllBytes(Path.Combine(root,"metadata.json"),companion);
+            new PreparedAssetManifest([new(PreparedOrdinaryMagicBattle.AssetId,"battle.json",package.Length,Convert.ToHexStringLower(SHA256.HashData(package))),
+                new(new(metadata.PackageId),"metadata.json",companion.Length,Convert.ToHexStringLower(SHA256.HashData(companion)))])
+                .SaveToFile(Path.Combine(root,PreparedAssetManifest.FileName));
+            action(root);
+        }
+        finally
+        {
+            foreach(string name in new[]{"battle.json","metadata.json",PreparedAssetManifest.FileName})File.Delete(Path.Combine(root,name));
+            Directory.Delete(root);
+        }
     }
 }

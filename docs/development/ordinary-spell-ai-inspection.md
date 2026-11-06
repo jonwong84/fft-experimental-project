@@ -33,5 +33,38 @@ the separate source learned-row/loadout capture needed by this AI slice; that
 inspector rejection does not affect player Cure casting. Authored skillset IDs
 need an explicit numeric compatibility mapping when using the library API.
 
-[Behavior, source boundary and validation](../behavior/ordinary-spell-ai.md)
-describe the supported flags, integer arithmetic and remaining charge-clock work.
+[Ready-hit behavior and validation](../behavior/ordinary-spell-ai.md) describe
+the supported flags and integer arithmetic.
+
+## Delayed fixed-origin candidates
+
+ZOD-413–417 add a separate command using the same prepared inputs:
+
+```powershell
+dotnet run --project src/Zodiac.AssetTool.Cli -c Release -- inspect-delayed-magic-ai --content-root scratch/fire-battle
+```
+
+For each known primary spell this evaluates a followed-unit hypothesis when
+metadata permits it, then a tile hypothesis against the same hostile location.
+Each starts from the same initial state/RNG. The query captures the initial aim,
+simulates its actual charge clock, derives movement opportunities, resolves the
+stored aim and scores privately. Clock output includes ordered events, CT,
+upkeep draws and formula-entry RNG. It does not move the simulated units.
+
+In the retained Fire scene, the first actor is ready at tick10. Fire resolves at
+tick13 after Guard's upkeep, deals54, spends6 MP and scores49 for a followed
+target. The tile hypothesis consumes the same five additional draws but becomes
+NotValuable after Guard's movement opportunity; its unit facts are restored and
+its score is null. Tier4 reaches tick19 after an additional Mage turn at tick18.
+That simulated turn receives no player Wait refund. Actual charge setup and
+considered-AI delay are reported separately.
+
+This is a diagnostic for supplied aims at one origin. It does not enumerate all
+targets/origins, chain candidates into a ranked source search, run the lottery
+or execute a turn. The library also distinguishes the source's unresolved
+255-event-cap score as ScoredUnresolved; the retained prepared scenes resolve
+before that limit. Pure healing tests cover both immediate and delayed casts;
+the prepared Cure secondary-loadout rejection above remains explicit.
+
+[Charge-clock behavior and evidence](../behavior/ordinary-spell-ai-clock.md)
+record the supported context and independent timing/RNG/score checks.
