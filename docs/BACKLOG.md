@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-380 (Calculate job-point balances and threshold levels).**
+**Next bounded work: ZOD-381 (Project ordinary rewards over stable-ID rosters).**
 [Action outcomes and rewards](behavior/action-outcomes-and-rewards.md) records
-completed ZOD-376–379. Live magic adoption remains gated by complete state/phase ownership.
-There are 35 open tickets below. The 346 completed tickets, prior checkpoints and
+completed ZOD-376–380. Live magic adoption remains gated by complete state/phase ownership.
+There are 34 open tickets below. The 347 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,17 +31,9 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-380 — Calculate job-point balances and threshold levels
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-379
-
-Calculate independently capped current/total JP and count explicit threshold data; map original generic job IDs at the compatibility boundary. No unlock adoption. See [traced boundaries](behavior/action-outcomes-and-rewards.md).
-Owner drafts/JobStats, host/editor, automatic facing, full status/corpse/Golem/
-terminal/frame RNG, broad interfaces, ZOD-106 and custom cone remain separate.
-
 ### ZOD-381 — Project ordinary rewards over stable-ID rosters
 
-**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-380
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-380
 
 Compose reward offers over a coherent stable-ID roster with source actor and recipient eligibility, original/current team distinction and independent sex bits. Report growth/unlock work explicitly, without live career adoption. See [traced boundaries](behavior/action-outcomes-and-rewards.md).
 Owner drafts/JobStats, host/editor, automatic facing, full status/corpse/Golem/

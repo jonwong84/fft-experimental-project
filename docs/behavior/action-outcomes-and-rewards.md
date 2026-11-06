@@ -131,3 +131,15 @@ holds EXP99. A numeric level change explicitly requires stat growth, with no
 claim to updated raw/derived stats. Four further managed cases pass16 literals,
 pre-level3 versus new-level4 JP and the monster early return. Ten cumulative
 managed cases pass; no battle or career state is published.
+
+## ZOD-380
+
+`JobPointArithmetic.Add` caps current/total independently at9999 and derives job
+level from total using explicit immutable thresholds. Zero awards still clamp
+and count; counting does not assume sorted or distinct thresholds. The original
+eight prepared thresholds pass all immediate lower/exact boundaries. The helper
+does not pack levels or rebuild unlocks and rejects negative or potentially
+signed32-overflowing awards rather than claiming unsupported overflow behavior.
+`OriginalRewardSlot` confines byte job-ID mapping to the compatibility adapter.
+Four more managed cases pass11 literals, threshold boundaries, job endpoints and
+domain guards;14 cumulative managed cases pass.

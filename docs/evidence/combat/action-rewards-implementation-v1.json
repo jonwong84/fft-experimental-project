@@ -27,6 +27,12 @@
       "managedBaseRevision": "0a96d5d13e161ef64739a8416c74643e558fb4c3",
       "validation": "Ten cumulative managed cases pass;16 EXP-balance/JP amount literals, pre-level JP and monster selective bypass. Numeric level changes explicitly require separate stat growth.",
       "reports": "scratch/action-rewards-376-381/"
+    },
+    {
+      "ticket": "ZOD-380",
+      "managedBaseRevision": "6f261b508a46452be8d8a330bae74edcd16d708c",
+      "validation": "Fourteen cumulative managed cases pass:11 JP literals, all eight threshold lower/exact boundaries, original job-slot endpoints and safe-domain guards. Zero JP still recalculates; unlock storage remains separate.",
+      "reports": "scratch/action-rewards-376-381/"
     }
   ]
 }
