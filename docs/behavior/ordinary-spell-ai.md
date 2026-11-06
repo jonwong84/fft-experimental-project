@@ -68,3 +68,19 @@ ZOD-106 and the custom cone remain separate. Owner drafts stay unchanged.
 descriptions; four Python cases exercise their boundaries. This is source study,
 not original or C execution. Later milestones retain Fire/Cure/elemental/learning,
 movement, replay and full solution regressions.
+
+## Learned list admission (ZOD-404)
+
+`OrdinarySpellAiLists` resolves the original known-row lookup independently of
+learn-on-hit. It preserves the source unowned-special-skillset/monster known
+shortcut, validates actual requested rows, filters source action slots0..15 and
+ability IDs below422, then admits supported default-menu ordinary spells by
+static AI usability, maximum MP and known bit. Serialized class metadata is not
+that ID-range filter. Current MP is deliberately absent from initialization.
+Half MP is applied before the maximum comparison. Repeated references survive
+in slot order, including distinct primary/secondary entries. Eligible unsupported
+item/Jump/Charge and monster menus fail closed instead of vanishing.
+
+Eight managed cases cover row aliases, absent-row failure, special known behavior,
+source order, repeated abilities, static usability, max-MP/Half-MP and action
+slot/ID filtering. These entries grant no search, command or projection authority.

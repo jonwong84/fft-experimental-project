@@ -4,12 +4,12 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-404 (Resolve original AI learned slots and list admission).**
+**Next bounded work: ZOD-405 (Load ordinary considered spell parameters and usage).**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 The five requested learning milestones ZOD-398–402 are complete;
 [learning reports, owned slots and player casting](behavior/learn-on-hit.md) are validated.
-There are 42 open tickets below. The 370 completed tickets, prior checkpoints and
+There are 41 open tickets below. The 371 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -32,12 +32,6 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 
 ## Next bounded milestone
-
-### ZOD-404 — Resolve original AI learned slots and list admission
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-403
-
-Implement original human action-slot learning lookup, the special-skillset known quirk, static AI/class/max-MP admission, stable source slot order and repeated entries.
 
 ### ZOD-405 — Load ordinary considered spell parameters and usage
 

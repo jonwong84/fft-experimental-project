@@ -6,10 +6,10 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-404: Resolve original AI learned slots and list admission.**
-The owner requested ten milestones ZOD-403–412. ZOD-403–403 are complete;
+**ZOD-405: Load ordinary considered spell parameters and usage.**
+The owner requested ten milestones ZOD-403–412. ZOD-403–404 are complete;
 [ordinary spell AI](behavior/ordinary-spell-ai.md) records the ready-hit boundary
-and the remaining selected steps. Four independent Python checks and the pinned-source audit pass.
+and the remaining selected steps. Eight managed learned-list admission cases pass.
 Full delayed charge-clock search and autonomous magic turns remain separate.
 The earlier five-hour runs are not active. Source stays clean/read-only at
 `11464943bbdbd2a0af022d90cb7f10455cf911df`. Preserve the ten owner files,

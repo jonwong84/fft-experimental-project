@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 370 entries index completed bounded work; they do not mean the full game is complete.
+These 371 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -457,3 +457,4 @@ These 370 entries index completed bounded work; they do not mean the full game i
 - [ZOD-401 — Expose learning reports through the native command path](../behavior/learn-on-hit.md#player-report-and-replay-zod-401)
 - [ZOD-402 — Preserve disabled learning reports and multi-recipient ordering](../behavior/learn-on-hit.md#disabled-reports-and-multiple-recipients-zod-402)
 - [ZOD-403 — Trace a bounded ordinary spell AI ready-hit path](../behavior/ordinary-spell-ai.md#source-boundary-zod-403)
+- [ZOD-404 — Resolve original AI learned slots and list admission](../behavior/ordinary-spell-ai.md#learned-list-admission-zod-404)
