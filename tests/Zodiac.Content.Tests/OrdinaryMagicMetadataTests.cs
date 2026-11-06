@@ -89,17 +89,47 @@ public sealed class OrdinaryMagicMetadataTests
     }
 
     [Fact]
-    public void Potential_learning_offers_and_repeated_learnable_slots_fail_closed_until_post_action_learning_exists()
+    public void Learning_metadata_binds_eligible_recipients_and_preserves_repeated_slots()
     {
         var document = Document();
         var ability = Ability(learnOnHit: true);
         ContentPackage MetadataFor(IEnumerable<SkillsetSlot> slots) => new(PackageId, "test:profile/ordinary",
             ContentPackageKind.Baseline, null, [], [new(new("test:skillset/magic"), slots)], [ability]);
         var metadata = MetadataFor([new(0, ability.Id)]);
-        Assert.Contains("Learn-on-hit offers", Assert.Throws<InvalidDataException>(() => PreparedOrdinaryMagicBattle.Create(document, metadata)).Message);
+        var initial = PreparedOrdinaryMagicBattle.Create(document, metadata).Definition.Start();
+        Assert.Empty(initial.Units[1].LearnedAbilitySlots[new(AuthoredOrdinaryMagic.Wizard)]);
         document.Units[1] = document.Units[1] with { LearnedSpells = [AuthoredOrdinaryMagic.Fire] };
         Assert.Single(PreparedOrdinaryMagicBattle.Create(document, metadata).AbilityMetadata);
         metadata = MetadataFor([new(0, ability.Id), new(1, ability.Id)]);
-        Assert.Contains("repeated skillset slots", Assert.Throws<InvalidDataException>(() => PreparedOrdinaryMagicBattle.Create(document, metadata)).Message);
+        var repeated = PreparedOrdinaryMagicBattle.Create(document, metadata).Definition.Start();
+        Assert.True(repeated.Units[1].LearnedAbilitySlots[new(AuthoredOrdinaryMagic.Wizard)].SetEquals([0, 1]));
+        Assert.Equal(2, repeated.Definition.Learning!.PrimarySlots(new(AuthoredOrdinaryMagic.Wizard)).Length);
+    }
+
+    [Fact]
+    public void Version3_slot_rows_are_explicit_snapshot_data_and_can_grant_primary_spells()
+    {
+        var document = Document() with { SchemaVersion = 3 };
+        document.Units[0] = document.Units[0] with { LearnedPrimarySlots = [0] };
+        document.Units[1] = document.Units[1] with { LearnedPrimarySlots = [0] };
+        var package = PreparedOrdinaryMagicBattle.Create(document, Metadata());
+        document.Units[1].LearnedPrimarySlots![0] = 20;
+        var state = package.Definition.Start();
+        Assert.Contains(new AssetId(AuthoredOrdinaryMagic.Fire), OrdinaryMagicBattle.KnownSpells(state, new("guard")));
+        Assert.True(state.Units[1].LearnedAbilitySlots[new(AuthoredOrdinaryMagic.Wizard)].SetEquals([0]));
+        Assert.Equal(package.ToJson(), PreparedOrdinaryMagicBattle.ReadJson(package.ToJson(), package.MetadataPackage).ToJson());
+    }
+
+    [Theory]
+    [InlineData("missing")] [InlineData("duplicate")] [InlineData("unknown")]
+    [InlineData("negative")] [InlineData("out-of-range")] [InlineData("legacy")]
+    public void Invalid_or_implicit_version3_rows_cannot_authorize_learning(string change)
+    {
+        var document = Document() with { SchemaVersion = 3 };
+        document.Units[0] = document.Units[0] with { LearnedPrimarySlots = [] };
+        document.Units[1] = document.Units[1] with { LearnedPrimarySlots = change switch
+        { "missing" => null, "duplicate" => [0, 0], "unknown" => [1], "negative" => [-1], "out-of-range" => [22], _ => [] } };
+        if (change == "legacy") document = document with { SchemaVersion = 2 };
+        Assert.Throws<InvalidDataException>(() => PreparedOrdinaryMagicBattle.Create(document, Metadata()));
     }
 }

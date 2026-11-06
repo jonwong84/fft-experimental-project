@@ -79,7 +79,7 @@ public sealed class ElementalMagicImporterTests
     }
 
     private static int Offset(uint address) => checked((int)(address - 0x80010000 + 0x800));
-    private static byte[] Image()
+    internal static byte[] Image()
     {
         byte[] image = OriginalOrdinaryMagicImporterTests.Image();
         byte[] power = [14, 18, 24, 32], area = [1, 1, 1, 2], vertical = [1, 2, 3, 3], ct = [4, 5, 7, 10];

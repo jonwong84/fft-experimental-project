@@ -1,3 +1,3 @@
 namespace Zodiac.AssetTool.Cli;
 
-public enum OriginalOrdinarySpellSelection { Fire, ElementalTiers, CureAndFire }
+public enum OriginalOrdinarySpellSelection { Fire, ElementalTiers, CureAndFire, LearnOnHit }

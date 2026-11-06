@@ -6,14 +6,16 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-400: Bind prepared learning data and an eligible spell encounter.**
-The owner requested five milestones ZOD-398–402; the pure rule and owned battle
-learning/report state are complete. [Learning behavior](behavior/learn-on-hit.md)
-records source ordering, per-job slot state, explicit acceptance/decline, command
-gates and atomic rollback. The full Framework suite passes 1,773 cases; the last
-whole-solution baseline below predates this batch. Prepared packages still guard
-eligible unlearned recipients until ZOD-400. Client reporting and disabled-menu
-policy follow. Reference stays clean at
+**ZOD-401: Expose learning reports through the native command path.**
+Three of the owner's five selected milestones ZOD-398–402 are complete.
+[Learning behavior](behavior/learn-on-hit.md) covers the pure source rule, owned
+battle report/slot state and schema3 prepared binding. Schema2 now executes its
+metadata and derives initial primary slots from grants; schema1 remains legacy.
+`prepare-learning-magic-battle` imports Fire/Fire4 with an authored eligible Wizard
+recipient and seed10. The independent source/content audit checks37 records and
+both hashes. Full Framework1773, Content876 and CLI375 suites pass; the last
+whole-solution baseline below predates this batch. Client display/replay and
+disabled non-player report policy remain. Reference stays clean at
 `11464943bbdbd2a0af022d90cb7f10455cf911df`. Preserve owner drafts/JobStats,
 the independent targeting-format edit and all deferred gates.
 

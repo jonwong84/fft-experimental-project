@@ -76,3 +76,30 @@ known spells, command gates/stale replies, duplicate acceptance/decline, rate0,
 ineligible marker publication, instant casts, restart and atomic rollback when
 the learning draw exhausts the counter. The full Framework suite passes 1,773
 cases. Prepared packages still retain their guards until ZOD-400 binds metadata.
+
+## Prepared learning content (ZOD-400)
+
+Metadata companions now populate Framework's immutable execution copy from
+`AbilityMetadataDefinition.LearnOnHit` and `LearnOnHitRateRaw`, plus source-indexed
+primary skillset slots. The old eligible-recipient/repeated-slot guards are
+removed. Schema2 converts its initial grants to all matching primary slots;
+schema1 retains its explicit legacy effect-only behavior. Schema3 requires an
+explicit unique `learnedPrimarySlots` array for every unit, independently of
+initial secondary grants. Missing, duplicate, negative, unbound or oversized
+slots fail closed. No editable duplicate flag source or AbilityToggles change
+is introduced. Main and companion assets remain hash checked and deeply captured.
+
+`prepare-learning-magic-battle` imports only Fire16 and Fire4=19 using the same
+formula08. Its37 verified records include unchanged primary rate30, secondary
+power32/MP48/CT10/area2, Wizard80/BlackMagic11 slot3 and progression records.
+The authored scene uses a Wizard learner with HP200/MP75, no spell grants, an
+empty current-job row and explicit seed10. Mage starts with slots0/3; the seed
+makes the first learning report reproducible without modifying the original rate.
+The scene's positions, bare equipment, units, seed and first-KO objective are
+invented setup, not an original encounter claim.
+
+The independent content audit now accepts `--selection learning` and verifies
+both asset hashes, both raw records and metadata, all37 provenance records,
+source slot indices and explicit learner setup. Full Content876 and CLI375
+cases pass, including actual prepared Fire4 acceptance/decline through the
+Framework command path. Client display and journal snapshots are ZOD-401.

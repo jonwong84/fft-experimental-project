@@ -11,8 +11,8 @@ HEALING_SOURCE=ROOT/'docs/evidence/combat/ordinary-healing-source-v1.json'
 
 def validate(fixture):
     require(fixture['schemaVersion']==1 and fixture['referenceRevision']==REVISION,'Fixture identity')
-    selection=fixture.get('selection','elemental');require(selection in ['elemental','healing','fire'],'Selected binding family')
-    rows=fixture['cases'];require([r['id'] for r in rows]==([1,16] if selection=='healing' else [16] if selection=='fire' else list(range(16,28))),'Explicit prepared selection order')
+    selection=fixture.get('selection','elemental');require(selection in ['elemental','healing','fire','learning'],'Selected binding family')
+    rows=fixture['cases'];require([r['id'] for r in rows]==([1,16] if selection=='healing' else [16] if selection=='fire' else [16,19] if selection=='learning' else list(range(16,28))),'Explicit prepared selection order')
     for row in rows:
         healing=row['id']==1;tier=(row['id']-16)%4;fourth=not healing and tier==3
         require(row['formula']==(12 if healing else 8) and row['status']==0,'Selected ordinary formula and empty status')
@@ -29,7 +29,7 @@ def validate(fixture):
     return dict(bindingVectors=len(rows),sharedFormulas=len({r['formula'] for r in rows}))
 
 def audit(reference,executable,content_root,selection='elemental'):
-    require(selection in ['elemental','healing','fire'],'Selected binding family')
+    require(selection in ['elemental','healing','fire','learning'],'Selected binding family')
     require(subprocess.check_output(['git','rev-parse','HEAD'],cwd=reference,text=True).strip()==REVISION,'Pinned reference')
     require(not subprocess.check_output(['git','status','--porcelain'],cwd=reference,text=True).strip(),'Clean reference')
     source=json.loads((HEALING_SOURCE if selection=='healing' else SOURCE).read_text(encoding='utf-8'))
@@ -40,13 +40,14 @@ def audit(reference,executable,content_root,selection='elemental'):
     data=executable.read_bytes();require(len(data)==356352 and hashlib.sha256(data).hexdigest()=='287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562','Prepared SCUS-94221')
     fixture=json.loads((HEALING_FIXTURE if selection=='healing' else FIXTURE).read_text(encoding='utf-8'));report=validate(fixture)
     if selection=='fire':fixture=dict(fixture,selection='fire',cases=fixture['cases'][:1]);report=validate(fixture)
+    if selection=='learning':fixture=dict(fixture,selection='learning',cases=[fixture['cases'][0],fixture['cases'][3]]);report=validate(fixture)
     package=json.loads((content_root/'ordinary-magic.package.json').read_text(encoding='utf-8'))
     manifest=json.loads((content_root/'assets.manifest.json').read_text());metadata=None
     for entry in manifest['assets']:
         asset=(content_root/entry['relativePath']).read_bytes()
         require(len(asset)==entry['byteLength'] and hashlib.sha256(asset).hexdigest()==entry['sha256'],'Prepared manifest integrity')
         if entry['id']==package.get('metadataPackageId'):metadata=json.loads(asset)
-    if package['schemaVersion']==2:
+    if package['schemaVersion']>=2:
         require(metadata is not None and metadata['packageId']==package['metadataPackageId'],'Required metadata companion')
         receipt=json.loads((ROOT/'docs/evidence/combat/ordinary-spell-primary-metadata-source-v1.json').read_text())
         for row in receipt['sourceFiles']:require(fingerprint(reference,row['path'])==row,'Metadata source '+row['path'])
@@ -85,9 +86,13 @@ def audit(reference,executable,content_root,selection='elemental'):
                 if identifier in {s['id'] for s in package['spells']}:expected.append(dict(index=slot,abilityId=identifier))
             require(skillset['slots']==expected,'Selected source skillset slots')
     require(set(package['units'][0]['learnedSpells'])=={s['id'] for s in package['spells']},'Explicit selected learned grants')
+    if selection=='learning':
+        require(package['schemaVersion']==3 and package['seed']==10,'Explicit learning scene identity')
+        require([u['learnedPrimarySlots'] for u in package['units']]==[[0,3],[]],'Explicit current-job learned slots')
+        require(package['units'][1]['jobId']=='fft.ps1:job/wizard' and not package['units'][1]['learnedSpells'],'Eligible unlearned Wizard recipient')
     provenance=json.loads((content_root/('fire.import.json' if selection=='fire' else 'ordinary-magic.import.json')).read_text())
     require(provenance['verifiedInputSha256']==hashlib.sha256(data).hexdigest() and provenance['referenceRevision']==REVISION,'Verified import provenance')
-    expected_records=(38 if selection=='healing' else 34 if selection=='fire' else 56)+(1 if package['schemaVersion']==2 else 0)
+    expected_records=(38 if selection=='healing' else 34 if selection=='fire' else 36 if selection=='learning' else 56)+(1 if package['schemaVersion']>=2 else 0)
     require(len(provenance['records'])==expected_records,'Complete selected record receipt')
     for row in provenance['records']:
         require(row['FileOffset']==row['VirtualAddress']-0x80010000+0x800,'Source address mapping')
@@ -95,7 +100,7 @@ def audit(reference,executable,content_root,selection='elemental'):
     return dict(report,referenceRevision=REVISION,referenceClean=True,sourceFiles=len(source['sourceFiles']),sourceFunctions=len(source['sourceFunctions']),preparedRecords=len(provenance['records']),metadataRecordsChecked=0 if metadata is None else len(metadata['abilities']),manifestVerified=True,originalExecuted=False,cExecuted=False)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--reference',type=Path,required=True);p.add_argument('--prepared-executable',type=Path,required=True);p.add_argument('--content-root',type=Path,required=True);p.add_argument('--selection',choices=['elemental','healing','fire'],default='elemental');p.add_argument('--output',type=Path)
+    p=argparse.ArgumentParser();p.add_argument('--reference',type=Path,required=True);p.add_argument('--prepared-executable',type=Path,required=True);p.add_argument('--content-root',type=Path,required=True);p.add_argument('--selection',choices=['elemental','healing','fire','learning'],default='elemental');p.add_argument('--output',type=Path)
     a=p.parse_args();r=audit(a.reference,a.prepared_executable,a.content_root,a.selection)
     if a.output:
         with a.output.open('x',encoding='utf-8') as stream:json.dump(r,stream,indent=2);stream.write('\n')

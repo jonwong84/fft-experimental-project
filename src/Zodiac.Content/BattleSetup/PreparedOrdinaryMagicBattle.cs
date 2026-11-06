@@ -84,7 +84,7 @@ public sealed class PreparedOrdinaryMagicBattle
         var map = new BattleMapDefinition(document.Width, document.Depth, 1,
             Enumerable.Repeat(new BattleTile(ground, document.Height), document.Width * document.Depth).ToArray());
         Definition = new(map, units, spells, catalog, document.JobThresholds.ToImmutableArray(), new(document.Seed, 0), ground);
-        if (document.SchemaVersion == 1 && metadata is not null || document.SchemaVersion == 2 &&
+        if (document.SchemaVersion == 1 && metadata is not null || document.SchemaVersion >= 2 &&
             (metadata is null || metadata.PackageId != document.MetadataPackageId || metadata.Kind != ContentPackageKind.Baseline ||
              !metadata.Jobs.IsEmpty || metadata.Abilities.Length != Definition.Spells.Count ||
              document.Ruleset == "original-fft" && metadata.ProfileId != "fft.ps1:profile/scus-94221"))
@@ -92,26 +92,32 @@ public sealed class PreparedOrdinaryMagicBattle
         MetadataPackage = metadata;
         AbilityMetadata = metadata?.Abilities.ToImmutableDictionary(a => new AssetId(a.Id.Value)) ??
             ImmutableDictionary<AssetId, AbilityMetadataDefinition>.Empty;
-        if (document.SchemaVersion == 2 && !Definition.Spells.Keys.ToHashSet().SetEquals(AbilityMetadata.Keys))
+        if (document.SchemaVersion >= 2 && !Definition.Spells.Keys.ToHashSet().SetEquals(AbilityMetadata.Keys))
             throw new InvalidDataException("Every executable spell must have exactly one matching metadata definition.");
         if (metadata is not null && (JobDefinitions.Values.Any(j => !metadata.Skillsets.Any(s => s.Id == j.PrimarySkillsetId)) ||
             !metadata.Skillsets.SelectMany(s => s.Slots).Where(s => s.AbilityId is not null)
                 .Select(s => new AssetId(s.AbilityId!.Value.Value)).ToHashSet().SetEquals(Definition.Spells.Keys)))
             throw new InvalidDataException("Selected skillsets must bind every spell and every prepared job primary skillset.");
+        if (document.Units.Any(u => document.SchemaVersion < 3 && u.LearnedPrimarySlots is not null ||
+            document.SchemaVersion == 3 && (u.LearnedPrimarySlots is null || u.LearnedPrimarySlots.Length > 22 ||
+                u.LearnedPrimarySlots.Distinct().Count() != u.LearnedPrimarySlots.Length)))
+            throw new InvalidDataException("Version3 requires an explicit unique learned primary slot list per unit; older versions use grants only.");
         if (metadata is not null)
-            foreach (var ability in metadata.Abilities.Where(a => a.LearnOnHit))
+        {
+            var learning = new OrdinaryMagicLearningDefinition(metadata.Abilities.Select(a =>
+                new AbilityLearningRule(new(a.Id.Value), a.LearnOnHit, checked((byte)a.LearnOnHitRateRaw))),
+                JobDefinitions.Select(j => new KeyValuePair<AssetId, ImmutableArray<AbilityLearningSlot>>(new(j.Key),
+                    metadata.Skillsets.Single(s => s.Id == j.Value.PrimarySkillsetId).Slots.Where(s => s.AbilityId is not null)
+                        .Select(s => new AbilityLearningSlot(s.Slot, new(s.AbilityId!.Value.Value))).ToImmutableArray())));
+            var captured = units.Select(u => u with
             {
-                if (metadata.Skillsets.Sum(s => s.Slots.Count(slot => slot.AbilityId == ability.Id)) != 1)
-                    throw new NotSupportedException("Learn-on-hit with repeated skillset slots needs the deferred per-job learning state.");
-                foreach (var unit in document.Units)
-                {
-                    var primary = metadata.Skillsets.Single(s => s.Id == JobDefinitions[unit.JobId].PrimarySkillsetId);
-                    if (!unit.LearnedSpells.Contains(ability.Id.Value, StringComparer.Ordinal) &&
-                        primary.Slots.Any(s => s.AbilityId == ability.Id) &&
-                        document.Units.Any(other => other.Id != unit.Id && other.LearnedSpells.Contains(ability.Id.Value, StringComparer.Ordinal)))
-                        throw new NotSupportedException("Learn-on-hit offers are not yet supported by this ordinary encounter profile.");
-                }
-            }
+                LearnedPrimarySlots = document.SchemaVersion == 3
+                    ? document.Units.Single(d => d.Id == u.Current.UnitId.Value).LearnedPrimarySlots!.ToImmutableHashSet()
+                    : learning.PrimarySlots(u.RewardJobId).Where(s => u.LearnedSpells.Contains(s.AbilityId))
+                        .Select(s => s.Index).ToImmutableHashSet()
+            }).ToImmutableArray();
+            Definition = new(map, captured, spells, catalog, document.JobThresholds.ToImmutableArray(), new(document.Seed, 0), ground, learning);
+        }
         UnitNames = document.Units.ToImmutableDictionary(u => new BattleUnitId(u.Id), u => u.Name);
         SpellNames = document.Spells.ToImmutableDictionary(s => new AssetId(s.Id), s =>
             !string.IsNullOrWhiteSpace(s.Name) && s.Name.Length <= 32 && !s.Name.Any(char.IsControl)
@@ -152,10 +158,10 @@ public sealed class PreparedOrdinaryMagicBattle
 
     private static void ValidateHeader(OrdinaryMagicPackageDocument document)
     {
-        if (document.Format != "fft.ordinary-magic-battle" || document.SchemaVersion is not (1 or 2) ||
+        if (document.Format != "fft.ordinary-magic-battle" || document.SchemaVersion is not (1 or 2 or 3) ||
             document.Profile != Profile || document.Ruleset is not ("original-fft" or "authored-ordinary") ||
             document.SchemaVersion == 1 && document.MetadataPackageId is not null ||
-            document.SchemaVersion == 2 && string.IsNullOrWhiteSpace(document.MetadataPackageId))
+            document.SchemaVersion >= 2 && string.IsNullOrWhiteSpace(document.MetadataPackageId))
             throw new InvalidDataException("Unsupported ordinary magic package format, version, profile, ruleset or companion reference.");
         if (document.MetadataPackageId is { } id) _ = new AssetId(id);
     }

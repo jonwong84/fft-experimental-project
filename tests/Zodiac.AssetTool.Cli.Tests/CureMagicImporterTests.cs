@@ -103,7 +103,8 @@ public sealed class CureMagicImporterTests
     }
     private static OrdinaryMagicBattleDefinition Copy(OrdinaryMagicBattleDefinition definition,
         ImmutableArray<OrdinaryMagicUnitDefinition> units, RandomState? rng = null) =>
-        new(definition.Map, units, definition.Spells.Values, definition.Jobs, definition.JobThresholds, rng ?? definition.InitialRng);
+        new(definition.Map, units, definition.Spells.Values, definition.Jobs, definition.JobThresholds, rng ?? definition.InitialRng,
+            definition.MovementGround, definition.Learning);
     private static OriginalOrdinaryMagicImport Import() => OriginalOrdinaryMagicImporter.DecodeSelection(Image(), OriginalOrdinarySpellSelection.CureAndFire);
     private static int Offset(uint address) => checked((int)(address - 0x80010000 + 0x800));
     private static byte[] Image()

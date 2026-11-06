@@ -12,8 +12,8 @@ public sealed class PrepareOrdinaryMagicBattleCommand(string workspaceRoot)
         string? staging = null;
         try
         {
-            if (args.Length != 5 || args[0] is not ("prepare-fire-battle" or "prepare-elemental-magic-battle" or "prepare-healing-magic-battle") || args[1] != "--exe" || args[3] != "--output")
-                throw new ArgumentException("Usage: (prepare-fire-battle|prepare-elemental-magic-battle|prepare-healing-magic-battle) --exe <scratch/SCUS_942.21> --output <fresh-scratch-directory>");
+            if (args.Length != 5 || args[0] is not ("prepare-fire-battle" or "prepare-elemental-magic-battle" or "prepare-healing-magic-battle" or "prepare-learning-magic-battle") || args[1] != "--exe" || args[3] != "--output")
+                throw new ArgumentException("Usage: (prepare-fire-battle|prepare-elemental-magic-battle|prepare-healing-magic-battle|prepare-learning-magic-battle) --exe <scratch/SCUS_942.21> --output <fresh-scratch-directory>");
             string scratch = Path.GetFullPath(Path.Combine(workspaceRoot, "scratch")) + Path.DirectorySeparatorChar;
             StringComparison comparison = OperatingSystem.IsWindows() ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal;
             string CheckedPath(string value)
@@ -36,6 +36,7 @@ public sealed class PrepareOrdinaryMagicBattleCommand(string workspaceRoot)
             {
                 "prepare-fire-battle" => OriginalOrdinarySpellSelection.Fire,
                 "prepare-elemental-magic-battle" => OriginalOrdinarySpellSelection.ElementalTiers,
+                "prepare-learning-magic-battle" => OriginalOrdinarySpellSelection.LearnOnHit,
                 _ => OriginalOrdinarySpellSelection.CureAndFire
             };
             var result = OriginalOrdinaryMagicImporter.ImportVerified(File.ReadAllBytes(input), selection);

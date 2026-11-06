@@ -33,7 +33,8 @@ public static class OriginalOrdinaryMagicImporter
         var metadata = new List<AbilityMetadataDefinition>();
         var metadataSkillsets = new List<SkillsetDefinition>();
         int learningCost = 0;
-        foreach (var binding in Bindings.Where(b => selection == OriginalOrdinarySpellSelection.ElementalTiers || b.Id == 16))
+        foreach (var binding in Bindings.Where(b => selection == OriginalOrdinarySpellSelection.ElementalTiers || b.Id == 16 ||
+            selection == OriginalOrdinarySpellSelection.LearnOnHit && b.Id == 19))
         {
             string id = $"fft.ps1:ability/source-{binding.Id:D4}";
             var raw = reader.Read("g_ability_range_data", 0x8005fbf0, 14, binding.Id, id);
@@ -138,10 +139,20 @@ public static class OriginalOrdinaryMagicImporter
                 MagicZodiacSign.Aries, true, false, Stats(squire, 200, 50, 8, 8, 5), new(8, 5, 8),
                 (ushort)(selection == OriginalOrdinarySpellSelection.CureAndFire ? 30 : 200), 50, guardCareer, [], BattleFacing.West)
         };
+        if (selection == OriginalOrdinarySpellSelection.LearnOnHit)
+        {
+            // Authored learner: copied Wizard job, unknown Fire4 slot3, enough HP/MP to survive and use it.
+            units[0] = units[0] with { LearnedPrimarySlots = [0, 3] };
+            guardCareer[JobId("chemist")] = JobPointArithmetic.Add(200, 200, 0, thresholds.ToImmutableArray());
+            units[1] = units[1] with { Name = "Learner", JobId = wizard.Id, Mp = 75,
+                RawStats = Stats(wizard, 200, 75, 8, 6, 5), BaseAttributes = new(6, 5, 8), LearnedPrimarySlots = [] };
+        }
         var companion = new ContentPackage("fft.ps1:package/ordinary-magic-metadata", "fft.ps1:profile/scus-94221",
             ContentPackageKind.Baseline, null, [], metadataSkillsets, metadata);
-        var document = new OrdinaryMagicPackageDocument("fft.ordinary-magic-battle", 2, "ordinary-human-bare-v1", "original-fft",
-            57, 7, 5, 10, JobId("squire"), JobId("bard"), JobId("dancer"), thresholds, spells.ToArray(), [wizard, squire], unlocks.ToArray(), units,
+        var document = new OrdinaryMagicPackageDocument("fft.ordinary-magic-battle", selection == OriginalOrdinarySpellSelection.LearnOnHit ? 3 : 2,
+            "ordinary-human-bare-v1", "original-fft",
+            selection == OriginalOrdinarySpellSelection.LearnOnHit ? 10u : 57u, 7, 5, 10, JobId("squire"), JobId("bard"), JobId("dancer"),
+            thresholds, spells.ToArray(), [wizard, squire], unlocks.ToArray(), units,
             companion.PackageId);
         return new(PreparedOrdinaryMagicBattle.Create(document, companion), null, reader.Records.ToImmutableArray());
     }
