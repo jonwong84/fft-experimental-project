@@ -746,5 +746,448 @@
         8
       ]
     }
+  ],
+  "rosters": [
+    {
+      "id": "hamed\u014d-before-disabled",
+      "input": {
+        "units": [],
+        "earned": 14,
+        "job": 75,
+        "hamedo": true,
+        "canEarn": false,
+        "thresholds": [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "amounts": null,
+        "balance": null,
+        "display": null,
+        "points": null
+      }
+    },
+    {
+      "id": "disabled-before-actor",
+      "input": {
+        "units": [],
+        "earned": 14,
+        "job": 75,
+        "hamedo": false,
+        "canEarn": false,
+        "thresholds": [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      },
+      "expected": {
+        "disposition": "Skipped",
+        "amounts": null,
+        "balance": null,
+        "display": null,
+        "points": null
+      }
+    },
+    {
+      "id": "petrify-blocks-actor",
+      "input": {
+        "units": [
+          [
+            "actor",
+            0,
+            0,
+            0,
+            10,
+            90,
+            1,
+            20,
+            199,
+            [
+              "petrify"
+            ]
+          ]
+        ],
+        "earned": 14,
+        "job": 75,
+        "hamedo": false,
+        "canEarn": true,
+        "thresholds": [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "amounts": null,
+        "balance": null,
+        "display": null,
+        "points": null
+      }
+    },
+    {
+      "id": "charmed-team-and-petrified-recipient",
+      "input": {
+        "units": [
+          [
+            "peer",
+            3,
+            1,
+            0,
+            10,
+            90,
+            1,
+            20,
+            199,
+            [
+              "petrify"
+            ]
+          ],
+          [
+            "actor",
+            0,
+            0,
+            1,
+            10,
+            90,
+            1,
+            20,
+            199,
+            [
+              "jpUp"
+            ]
+          ],
+          [
+            "oldTeam",
+            1,
+            0,
+            0,
+            10,
+            90,
+            1,
+            20,
+            199,
+            []
+          ]
+        ],
+        "earned": 14,
+        "job": 75,
+        "hamedo": false,
+        "canEarn": true,
+        "thresholds": [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      },
+      "expected": {
+        "disposition": "Projected",
+        "amounts": [
+          14,
+          12,
+          18,
+          3
+        ],
+        "balance": [
+          0,
+          11,
+          true
+        ],
+        "display": [
+          11,
+          2
+        ],
+        "points": [
+          [
+            "peer",
+            3,
+            23,
+            202,
+            2
+          ],
+          [
+            "actor",
+            18,
+            38,
+            217,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "zero-award-still-clamps-and-levels",
+      "input": {
+        "units": [
+          [
+            "actor",
+            0,
+            0,
+            0,
+            10,
+            0,
+            1,
+            65535,
+            65535,
+            []
+          ]
+        ],
+        "earned": 0,
+        "job": 75,
+        "hamedo": false,
+        "canEarn": true,
+        "thresholds": [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      },
+      "expected": {
+        "disposition": "Projected",
+        "amounts": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "balance": [
+          0,
+          10,
+          false
+        ],
+        "display": [
+          0,
+          8
+        ],
+        "points": [
+          [
+            "actor",
+            0,
+            9999,
+            9999,
+            8
+          ]
+        ]
+      }
+    },
+    {
+      "id": "female-bard-display-without-own-storage",
+      "input": {
+        "units": [
+          [
+            "actor",
+            0,
+            0,
+            0,
+            10,
+            90,
+            1,
+            20,
+            199,
+            [
+              "female"
+            ]
+          ],
+          [
+            "peer",
+            1,
+            0,
+            0,
+            10,
+            90,
+            1,
+            20,
+            199,
+            []
+          ]
+        ],
+        "earned": 14,
+        "job": 91,
+        "hamedo": false,
+        "canEarn": true,
+        "thresholds": [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      },
+      "expected": {
+        "disposition": "Projected",
+        "amounts": [
+          14,
+          12,
+          12,
+          3
+        ],
+        "balance": [
+          0,
+          11,
+          true
+        ],
+        "display": [
+          11,
+          0
+        ],
+        "points": [
+          [
+            "peer",
+            3,
+            23,
+            202,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "monster-exp-only",
+      "input": {
+        "units": [
+          [
+            "actor",
+            0,
+            0,
+            0,
+            10,
+            90,
+            1,
+            20,
+            199,
+            [
+              "monster"
+            ]
+          ]
+        ],
+        "earned": 14,
+        "job": 75,
+        "hamedo": false,
+        "canEarn": true,
+        "thresholds": [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      },
+      "expected": {
+        "disposition": "Projected",
+        "amounts": [
+          14,
+          0,
+          0,
+          0
+        ],
+        "balance": [
+          0,
+          11,
+          true
+        ],
+        "display": [
+          11,
+          0
+        ],
+        "points": []
+      }
+    },
+    {
+      "id": "level99-experience-and-prelevel-jp",
+      "input": {
+        "units": [
+          [
+            "actor",
+            0,
+            0,
+            0,
+            99,
+            99,
+            8,
+            20,
+            2100,
+            [
+              "jpUp"
+            ]
+          ]
+        ],
+        "earned": 99,
+        "job": 75,
+        "hamedo": false,
+        "canEarn": true,
+        "thresholds": [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      },
+      "expected": {
+        "disposition": "Projected",
+        "amounts": [
+          99,
+          48,
+          72,
+          12
+        ],
+        "balance": [
+          99,
+          99,
+          false
+        ],
+        "display": [
+          0,
+          0
+        ],
+        "points": [
+          [
+            "actor",
+            72,
+            92,
+            2172,
+            8
+          ]
+        ]
+      }
+    }
   ]
 }

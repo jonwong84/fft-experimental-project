@@ -6,9 +6,9 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-381: Project ordinary rewards over stable-ID rosters.**
+**ZOD-382: Trace level growth and job unlocks before magic state integration.**
 [Action outcomes and rewards](behavior/action-outcomes-and-rewards.md) records
-completed ZOD-376–380, pinned to clean read-only source
+completed ZOD-376–381, pinned to clean read-only source
 `11464943bbdbd2a0af022d90cb7f10455cf911df` (11 files/23 functions).
 Primary markers precede misses; EXP uses the maximum award; JP spillover precedes
 Gained JP Up and uses actor current team versus recipient initial team.
@@ -264,22 +264,24 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: ZOD-370–375 pass locked restore, a zero-warning/error Release
-  build and **4,714 .NET cases** (1,673 Framework,1,217 AI,838 Content,328 CLI,
-  206 AssetTool,428 Client,24 Engine). All **711 Python tests** pass.
-  Twenty new managed cases cover 36 independent raw vital/living descriptions,
-  immutable snapshots, one-cost reduction, ready HP/MP/RNG proposals and late
-  rejection/replay boundaries. Eight new Python cases validate the independent
-  descriptions. Fresh publication 10-file/18-function, prior magic/prepared-data,
-  algorithm-guide, coverage, link, layout and preservation audits pass. Seven TRX
-  reports/logs are under ignored `scratch/magic-publication-370-375/`.
-  All pre-batch production, managed tests and behavior fixtures are unchanged.
-  The 18 new public types have matching files; existing partial parts remain.
-  Original imports, Content, AI, host, all nine owner drafts and JobStats are
-  unchanged. No project, lock, dependency or activation changes. MP costs remain
-  nonnegative int. These are private vital projections, with no live commands,
-  battle/turn state adoption, complete clock, rewards or status processing.
-  ZOD-376 traces execution authority and battle-state integration next.
+- Validation: ZOD-376–381 pass locked restore, a zero-warning/error Release
+  build and **4,748 .NET cases** (1,707 Framework,1,217 AI,838 Content,328 CLI,
+  206 AssetTool,428 Client,24 Engine). All **720 Python tests** pass.
+  Thirty-four new managed cases and nine Python cases cover 57 independent
+  outcome/EXP/JP/roster descriptions, ordered reward offers, immutable replay and
+  a composed magic-vital/outcome/EXP/reward scenario. Fresh source 11-file/
+  23-function fingerprints and eight prepared JP thresholds pass, alongside
+  prior magic/prepared-data, algorithm-guide, coverage, links, layout and
+  preservation checks. Seven TRX reports/logs are under ignored
+  `scratch/action-rewards-376-381/`.
+  All pre-batch production, tests and behavior fixtures are unchanged. The 15 new
+  public types have matching files; existing partial parts remain. Content, AI,
+  host, imports, all nine owner drafts and JobStats are unchanged. No project,
+  dependency or activation changes. MP costs remain nonnegative int.
+  Reward projections explicitly identify required raw-stat growth and unlock
+  recalculation; they grant no live career/battle/turn authority. ZOD-382 traces
+  growth and unlocks before selecting complete magic state integration. Other
+  actor/status/reaction/paid-fizzle and global scheduling gaps remain separate.
   Prepared Dash/Stone import checks remain at ZOD-329; their code/input is unchanged.
   Python uses repository-pinned Pillow12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.

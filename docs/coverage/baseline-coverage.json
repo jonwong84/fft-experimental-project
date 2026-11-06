@@ -1,9 +1,9 @@
 {
   "format": "fft.baseline-coverage",
   "schemaVersion": 1,
-  "updated": "2026-11-05",
+  "updated": "2026-11-06",
   "edition": "SCUS-94221",
-  "managedCommit": "563ebd0",
+  "managedCommit": "ee16bee",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 4714,
-    "source": "docs/behavior/living-magic-projections.md",
+    "passed": 4748,
+    "source": "docs/behavior/action-outcomes-and-rewards.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -905,7 +905,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
-      "currentScope": "Accumulate controls remain owner-approved. Throw Stone pure rules now compose through strict targeted content/grants and first-KO lifecycle with Accumulate; TST-001..028 pass. Six-record verified import preserves source-0148 and historical bytes; repeated headless checks cover 46 commands/47 continuations. Windows target controls remain ZOD-111; broader original coverage remains open. Existing complete-roster actual self PA+1 now runs through the opaque roster session publisher/receipt owner; no RNG or new effect. Execution prerequisites are traced; live Stone interception and verified roster AI command/turn authority remain open. Exact flat direct geometry now has one Framework owner and an AI facade preserving its extra guards. Actual roster Stone resolves interception and shares the existing actual formula/results and opaque session publisher, including all-occupant landing and real RNG. Pair guards remain; verified roster AI authority/turn integration is still open. Closed actual roster Dash now shares formula0x37/result publication: range1, Y4, no evasion/trajectory, actual3 damage/Brave draws, complete occupancy and verified/frozen command authority. ZOD-334 traces shared Faith magic through14 files/36 functions and verifies eight prepared Cure/Fire formula/X/Y tiers. ZOD-335/336 add pure signed-halfword product/Faith arithmetic and one already-hit 0x08/0x0C amount projection, preserving modifier order, healing defense bypass and compatibility floors. The legacy amount API requires unchanged intervening weather/target-element steps. Raw amounts do not enable spells, AI entries, MP/charge, target search, result routing/caps or live HP/state changes. ZOD-337/338 add signed stored weather/affinity transforms and an element-aware amount path: fresh work, known Fire-no-Oil and Earth-no-Float/rider, nullification before Faith and separate rounded stores. Healing bypasses damage elements; old neutral API and prior vectors remain equal. ZOD-339 adds raw elemental absorption versus undead-healing routing with a deferred canceled-status-byte0 clear. This remains before procs, full eligibility/caps and live HP/resource/command publication. ZOD-340 adds an isolated0x08 proc decision: execution uses scaled raw*100/32768<19 with one counted draw, preview/AI use no draw, and original family/miss/nullification remain explicit. Fresh/ordinary/no-pending context guards and atomic UInt64 exhaustion are managed bounds. No status or live RNG/HP publication, spell commands, frame equivalence or magic AI entry is claimed. ZOD-341 adds bounded living/non-Petrify/Wall/no-Golem, empty-status result finalization: zero accuracy clears hit without relabeling misses, signed HP fields have only upper999 caps, and retained absorption/weakness/added-effect flags imply pseudo-status even on misses. Private composition retains original family, empty-status proc flags and RNG continuation; unsupported context/counter exhaustion yields no partial result. No HP/status/command publication or magic AI activation. ZOD-343 consolidates these unchanged rules through FaithMagicFormula.ResolveAfterHit with immutable request/result and candidate RNG. The previous projection entry delegates to the same tail; geometry remains independent, and the agreed future 1/3/5 cone is documented only. No supported behavior, targeting or live authority is broadened. ZOD-342 traces magic-only evasion and entry through13 files/21 functions with47 independent descriptions: equipment/type/monster facts, Transparent/Abandon/status ordering, real ordered mode draws, secondary Evadeable, certainty versus rounded-zero hit, labels and atomic managed counter policy. Implementation children are selected; no new runtime support is claimed by the trace. ZOD-344\u00e2\u20ac\u201c347 implement bounded nonzero magic entry: immutable equipment contributions and blocking labels, magic-only status order with Abandon diagnostics, exact products and ordered real evade draws in every mode, source hit-versus-rounded-accuracy branching and whole-query evade/proc counter rollback. Healing bypasses evasion; after-hit APIs remain compatible. Fresh/no-earlier-effects and living/empty-status scope remain explicit. No commands, live RNG/HP/status authority or magic AI activation. ZOD-348 traces current MA/Faith, modifier and zodiac input provenance through12 files/16 functions, with56 independent descriptions; implementation children are selected without broadening live state. ZOD-348\u00e2\u20ac\u201c357 add typed current MA/Faith/status/support/affinity projections and exact zodiac classification, MP admission/recorded-cost/signed-MP queries, distinct actual/AI timing and counter steps, certified ready-cast preparation and immutable supplied-order target results with MP proposed once. Self-target data is normalized privately after cost; invalid/late target or RNG failure exposes no partial cast proposal. Original arithmetic/after-hit APIs remain unchanged. No original target finder, live HP/MP/status/command publication, magic AI or cone activation. ZOD-358\u00e2\u20ac\u201c362 add certified ordinary spell map-aim range/area, exact half-height layer selection, per-panel team mutations and source-order occupants, plus a bridge into the existing ready one-cost magic query. No unit-follow/special shapes, live state, commands or magic AI activation. ZOD-363 traces stored map/unit-follow aims through19 files/26 functions and42 independent descriptions: exact UNIT6 versus raw YES7, NoFollowTarget choice scope, preparation versus resolution activity guards, narrowed coordinates and moved-anchor/bystander scenarios. No production behavior changes. Owner-requested managed MP costs now use nonnegative int through cast definition, resource calculation and recorded results; original packed imports remain byte-based, with source-domain behavior unchanged. ZOD-364\u00e2\u20ac\u201c369 add pure stable-ID stored-aim resolution, current unit-follow cast integration, blue choice/confirmed selection, immutable charge planning and ready one-cost composition. Current inputs and whole-query RNG rollback are preserved; no commands, live publication or global clock activation. ZOD-370\u2013375 trace target publication ordering and add exact signed vital arithmetic, bounded living HP admission, immutable captures, private cast MP/HP reduction and opaque ready-plan HP/MP/RNG proposals. Late KO/status or calculation rejection discards the private candidate and preserves incoming RNG. Preview/AI cannot create execution proposals. No game battle/turn adoption, rewards/actor work, paid-fizzle execution, full status or magic AI activation.",
+      "currentScope": "Accumulate controls remain owner-approved. Throw Stone pure rules now compose through strict targeted content/grants and first-KO lifecycle with Accumulate; TST-001..028 pass. Six-record verified import preserves source-0148 and historical bytes; repeated headless checks cover 46 commands/47 continuations. Windows target controls remain ZOD-111; broader original coverage remains open. Existing complete-roster actual self PA+1 now runs through the opaque roster session publisher/receipt owner; no RNG or new effect. Execution prerequisites are traced; live Stone interception and verified roster AI command/turn authority remain open. Exact flat direct geometry now has one Framework owner and an AI facade preserving its extra guards. Actual roster Stone resolves interception and shares the existing actual formula/results and opaque session publisher, including all-occupant landing and real RNG. Pair guards remain; verified roster AI authority/turn integration is still open. Closed actual roster Dash now shares formula0x37/result publication: range1, Y4, no evasion/trajectory, actual3 damage/Brave draws, complete occupancy and verified/frozen command authority. ZOD-334 traces shared Faith magic through14 files/36 functions and verifies eight prepared Cure/Fire formula/X/Y tiers. ZOD-335/336 add pure signed-halfword product/Faith arithmetic and one already-hit 0x08/0x0C amount projection, preserving modifier order, healing defense bypass and compatibility floors. The legacy amount API requires unchanged intervening weather/target-element steps. Raw amounts do not enable spells, AI entries, MP/charge, target search, result routing/caps or live HP/state changes. ZOD-337/338 add signed stored weather/affinity transforms and an element-aware amount path: fresh work, known Fire-no-Oil and Earth-no-Float/rider, nullification before Faith and separate rounded stores. Healing bypasses damage elements; old neutral API and prior vectors remain equal. ZOD-339 adds raw elemental absorption versus undead-healing routing with a deferred canceled-status-byte0 clear. This remains before procs, full eligibility/caps and live HP/resource/command publication. ZOD-340 adds an isolated0x08 proc decision: execution uses scaled raw*100/32768<19 with one counted draw, preview/AI use no draw, and original family/miss/nullification remain explicit. Fresh/ordinary/no-pending context guards and atomic UInt64 exhaustion are managed bounds. No status or live RNG/HP publication, spell commands, frame equivalence or magic AI entry is claimed. ZOD-341 adds bounded living/non-Petrify/Wall/no-Golem, empty-status result finalization: zero accuracy clears hit without relabeling misses, signed HP fields have only upper999 caps, and retained absorption/weakness/added-effect flags imply pseudo-status even on misses. Private composition retains original family, empty-status proc flags and RNG continuation; unsupported context/counter exhaustion yields no partial result. No HP/status/command publication or magic AI activation. ZOD-343 consolidates these unchanged rules through FaithMagicFormula.ResolveAfterHit with immutable request/result and candidate RNG. The previous projection entry delegates to the same tail; geometry remains independent, and the agreed future 1/3/5 cone is documented only. No supported behavior, targeting or live authority is broadened. ZOD-342 traces magic-only evasion and entry through13 files/21 functions with47 independent descriptions: equipment/type/monster facts, Transparent/Abandon/status ordering, real ordered mode draws, secondary Evadeable, certainty versus rounded-zero hit, labels and atomic managed counter policy. Implementation children are selected; no new runtime support is claimed by the trace. ZOD-344\u00e2\u20ac\u201c347 implement bounded nonzero magic entry: immutable equipment contributions and blocking labels, magic-only status order with Abandon diagnostics, exact products and ordered real evade draws in every mode, source hit-versus-rounded-accuracy branching and whole-query evade/proc counter rollback. Healing bypasses evasion; after-hit APIs remain compatible. Fresh/no-earlier-effects and living/empty-status scope remain explicit. No commands, live RNG/HP/status authority or magic AI activation. ZOD-348 traces current MA/Faith, modifier and zodiac input provenance through12 files/16 functions, with56 independent descriptions; implementation children are selected without broadening live state. ZOD-348\u00e2\u20ac\u201c357 add typed current MA/Faith/status/support/affinity projections and exact zodiac classification, MP admission/recorded-cost/signed-MP queries, distinct actual/AI timing and counter steps, certified ready-cast preparation and immutable supplied-order target results with MP proposed once. Self-target data is normalized privately after cost; invalid/late target or RNG failure exposes no partial cast proposal. Original arithmetic/after-hit APIs remain unchanged. No original target finder, live HP/MP/status/command publication, magic AI or cone activation. ZOD-358\u00e2\u20ac\u201c362 add certified ordinary spell map-aim range/area, exact half-height layer selection, per-panel team mutations and source-order occupants, plus a bridge into the existing ready one-cost magic query. No unit-follow/special shapes, live state, commands or magic AI activation. ZOD-363 traces stored map/unit-follow aims through19 files/26 functions and42 independent descriptions: exact UNIT6 versus raw YES7, NoFollowTarget choice scope, preparation versus resolution activity guards, narrowed coordinates and moved-anchor/bystander scenarios. No production behavior changes. Owner-requested managed MP costs now use nonnegative int through cast definition, resource calculation and recorded results; original packed imports remain byte-based, with source-domain behavior unchanged. ZOD-364\u00e2\u20ac\u201c369 add pure stable-ID stored-aim resolution, current unit-follow cast integration, blue choice/confirmed selection, immutable charge planning and ready one-cost composition. Current inputs and whole-query RNG rollback are preserved; no commands, live publication or global clock activation. ZOD-370\u2013375 trace target publication ordering and add exact signed vital arithmetic, bounded living HP admission, immutable captures, private cast MP/HP reduction and opaque ready-plan HP/MP/RNG proposals. Late KO/status or calculation rejection discards the private candidate and preserves incoming RNG. Preview/AI cannot create execution proposals. No game battle/turn adoption, rewards/actor work, paid-fizzle execution, full status or magic AI activation. ZOD-376\u2013381 trace controller/actor/reward phase boundaries and implement normal-return outcome markers, primary EXP maximum accumulation, pre-level EXP/JP amounts, independent current/total JP caps, explicit threshold counting and stable-ID roster reward projections. Source team/sex/Petrify/zero-award quirks are covered. Results identify required raw growth/unlock recalculation and grant no live career, battle or turn authority. Paid fizzles, full statuses/reactions and magic AI activation remain separate.",
       "referenceSources": [
         {
           "path": "src/battle/combat/formulas.c",
@@ -1000,7 +1000,11 @@
         "docs/behavior/living-magic-projections.md",
         "docs/evidence/combat/magic-publication-source-v1.json",
         "docs/evidence/combat/magic-publication-implementation-v1.json",
-        "docs/fixtures/behavior/magic-publication-contract-v1.json"
+        "docs/fixtures/behavior/magic-publication-contract-v1.json",
+        "docs/behavior/action-outcomes-and-rewards.md",
+        "docs/evidence/combat/action-rewards-source-v1.json",
+        "docs/evidence/combat/action-rewards-implementation-v1.json",
+        "docs/fixtures/behavior/action-rewards-contract-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/Battle/Combat/BoundedImmediateAbility.cs",
@@ -1163,7 +1167,22 @@
         "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicUnitVitals.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicVitalArithmetic.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicVitalChange.cs",
-        "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicVitalInput.cs"
+        "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicVitalInput.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/AbilityOutcomeMarker.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionExperience.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionExperienceBalance.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionJobPointProjection.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionOutcomeTracking.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionRewardAmounts.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionRewardCalculation.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionRewardDisposition.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionRewardProjection.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionRewardProjectionResult.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionRewardUnit.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionTargetOutcome.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/BattleActionRewards.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/JobPointArithmetic.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/JobPointBalance.cs"
       ],
       "automatedChecks": [
         {
@@ -1393,6 +1412,30 @@
         {
           "path": "tools/verification/verify_magic_publication.py",
           "scope": "36 independent raw vital/living descriptions and pinned ten-file/eighteen-function source audit; no original/C execution."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Rewards/ActionExperienceTests.cs",
+          "scope": "Source reward arithmetic, literal descriptions, roster eligibility, replay and composed magic proposal scenario; no full career adoption."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Rewards/ActionOutcomeTrackingTests.cs",
+          "scope": "Source reward arithmetic, literal descriptions, roster eligibility, replay and composed magic proposal scenario; no full career adoption."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Rewards/ActionRewardCalculationTests.cs",
+          "scope": "Source reward arithmetic, literal descriptions, roster eligibility, replay and composed magic proposal scenario; no full career adoption."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Rewards/BattleActionRewardsTests.cs",
+          "scope": "Source reward arithmetic, literal descriptions, roster eligibility, replay and composed magic proposal scenario; no full career adoption."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Rewards/JobPointArithmeticTests.cs",
+          "scope": "Source reward arithmetic, literal descriptions, roster eligibility, replay and composed magic proposal scenario; no full career adoption."
+        },
+        {
+          "path": "tools/verification/verify_action_rewards.py",
+          "scope": "57 independent descriptions,11 source files/23 functions and eight verified prepared JP thresholds; no original/C execution."
         }
       ],
       "manualCheckpoint": {
@@ -1402,7 +1445,7 @@
       "openQuestions": [
         "Original projectile obstruction/elevation/falling, other action families/modifiers, progression/rewards, AI and independent original observation remain open. ZOD-111 owns Windows controls; battle checkpoints remain deferred."
       ],
-      "nextAction": "ZOD-376: trace execution authority, action/turn bookkeeping, actor/reward work and paid fizzles before selecting live magic battle-state integration; retain all other gaps.",
+      "nextAction": "ZOD-382: trace raw growth, derived stats and prepared unlock requirements before selecting complete magic battle/career integration.",
       "followUpTickets": [
         "ZOD-104",
         "ZOD-105",
@@ -2439,8 +2482,8 @@
       "profileScope": "baseline",
       "ownerTicket": "ZOD-039",
       "ownerArea": "Zodiac.Framework simulation",
-      "status": "absent",
-      "currentScope": "Job/ability metadata and base-job setup do not implement persistent progression.",
+      "status": "partial",
+      "currentScope": "Job/ability metadata and base-job setup do not implement persistent progression. ZOD-376\u2013381 trace controller/actor/reward phase boundaries and implement normal-return outcome markers, primary EXP maximum accumulation, pre-level EXP/JP amounts, independent current/total JP caps, explicit threshold counting and stable-ID roster reward projections. Source team/sex/Petrify/zero-award quirks are covered. Results identify required raw growth/unlock recalculation and grant no live career, battle or turn authority. Paid fizzles, full statuses/reactions and magic AI activation remain separate.",
       "referenceSources": [
         {
           "path": "src/main/job_progress.c",
@@ -2453,21 +2496,75 @@
         {
           "path": "src/battle/combat/outcomes.c",
           "inspection": "entry-point inventory; full behavior trace pending unless linked evidence states otherwise"
+        },
+        {
+          "path": "src/battle/combat/preparation.c",
+          "inspection": "Bounded ordinary reward trace pinned by ZOD-376; full progression application remains open."
+        },
+        {
+          "path": "src/battle/combat/resolution.c",
+          "inspection": "Bounded ordinary reward trace pinned by ZOD-376; full progression application remains open."
         }
       ],
       "evidenceDocs": [
-        "PROJECT_PLAN.md"
+        "PROJECT_PLAN.md",
+        "docs/behavior/action-outcomes-and-rewards.md",
+        "docs/evidence/combat/action-rewards-source-v1.json",
+        "docs/evidence/combat/action-rewards-implementation-v1.json",
+        "docs/fixtures/behavior/action-rewards-contract-v1.json"
       ],
-      "implementationPaths": [],
-      "automatedChecks": [],
+      "implementationPaths": [
+        "src/Zodiac.Framework/Battle/Combat/Rewards/AbilityOutcomeMarker.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionExperience.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionExperienceBalance.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionJobPointProjection.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionOutcomeTracking.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionRewardAmounts.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionRewardCalculation.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionRewardDisposition.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionRewardProjection.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionRewardProjectionResult.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionRewardUnit.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/ActionTargetOutcome.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/BattleActionRewards.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/JobPointArithmetic.cs",
+        "src/Zodiac.Framework/Battle/Combat/Rewards/JobPointBalance.cs"
+      ],
+      "automatedChecks": [
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Rewards/ActionExperienceTests.cs",
+          "scope": "Source reward arithmetic, literal descriptions, roster eligibility, replay and composed magic proposal scenario; no full career adoption."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Rewards/ActionOutcomeTrackingTests.cs",
+          "scope": "Source reward arithmetic, literal descriptions, roster eligibility, replay and composed magic proposal scenario; no full career adoption."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Rewards/ActionRewardCalculationTests.cs",
+          "scope": "Source reward arithmetic, literal descriptions, roster eligibility, replay and composed magic proposal scenario; no full career adoption."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Rewards/BattleActionRewardsTests.cs",
+          "scope": "Source reward arithmetic, literal descriptions, roster eligibility, replay and composed magic proposal scenario; no full career adoption."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Rewards/JobPointArithmeticTests.cs",
+          "scope": "Source reward arithmetic, literal descriptions, roster eligibility, replay and composed magic proposal scenario; no full career adoption."
+        },
+        {
+          "path": "tools/verification/verify_action_rewards.py",
+          "scope": "57 independent descriptions,11 source files/23 functions and eight verified prepared JP thresholds; no original/C execution."
+        }
+      ],
       "manualCheckpoint": {
         "status": "pending-original-observation",
         "procedure": "Compare one award/level/job-unlock chain and roster persistence."
       },
       "openQuestions": [
-        "Growth arithmetic, awards, spillover, learning costs, unlock requirements and level changes need traces."
+        "Full raw-stat growth/derived-state integration, prepared unlock requirements, learning/learn-on-hit and persistent career adoption remain incomplete.",
+        "KO/status/reaction outcome integration, actor result work and paid-fizzle/turn-authority integration remain separate."
       ],
-      "nextAction": "Split progression into award, learning and stat-rebuild children."
+      "nextAction": "ZOD-382: trace raw growth, derived stats and prepared unlock requirements before selecting complete magic battle/career integration."
     },
     {
       "id": "COV-SIM-011",

@@ -143,3 +143,41 @@ signed32-overflowing awards rather than claiming unsupported overflow behavior.
 `OriginalRewardSlot` confines byte job-ID mapping to the compatibility adapter.
 Four more managed cases pass11 literals, threshold boundaries, job endpoints and
 domain guards;14 cumulative managed cases pass.
+
+## ZOD-381
+
+`BattleActionRewards.Project` composes actor eligibility, EXP balance, pre-level
+JP amounts and eligible recipient job-slot projections. Captures use stable IDs,
+unique source order and classified teams; JP facts refer to the actor's selected
+job slot. Hamedo and disabled-reward gates precede actor reads. Other recipients
+are visited in source order and actor storage is last. Petrify only blocks the
+actor; independent sex bits filter Bard/Dancer storage without normalizing flags.
+An incompatible actor sex can prevent its own JP storage while its displayed
+earned amount remains nonzero, as in the source. Zero awards still enter storage
+arithmetic and require unlock recomputation. Monsters bypass all JP captures.
+
+The result explicitly reports `RequiresStatGrowth` and
+`RequiresUnlockRecalculation`. It projects selected numeric fields, not a complete
+career, grants/unlocks, raw stats or a live command receipt. Invalid or mismatched
+captures expose no partial result. No original roster cap is imposed. Replays
+preserve inputs. A managed scenario composes the prior two-target magic proposal,
+actual changed markers and maximum EXP14 into actor JP18/spillover3 calculations,
+without publishing any field. Eight further independent roster descriptions
+include current-team charm, petrified recipients, zero awards, incompatible actor
+sex, monster and level99 paths. Full original action/career adoption still waits
+for ZOD-382's growth/unlock trace and the remaining phase/status/fizzle work.
+
+## Final validation
+
+Locked restore and Release build pass with zero warnings/errors. All **4,748 .NET
+cases** and **720 Python tests** pass, including 34 new managed cases and nine new
+Python cases. The 57 independent descriptions include eight complete roster
+projections. Fresh source fingerprints (11 files/23 functions), eight verified
+prepared thresholds, prior magic/prepared-data, algorithm-guide, coverage,
+local-link, layout and preservation checks pass. The
+[implementation receipt](../evidence/combat/action-rewards-implementation-v1.json)
+records milestone bases and ignored reports under `scratch/action-rewards-376-381/`.
+All 15 new public types have matching files in Battle/Combat/Rewards, retaining
+the Framework namespace. All pre-batch production, managed tests and behavior
+fixtures, owner drafts and JobStats are unchanged. No project/dependency, Content,
+AI, host or import changes; no original/C execution or UI review.

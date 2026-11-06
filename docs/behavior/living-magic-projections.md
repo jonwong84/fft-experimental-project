@@ -141,8 +141,10 @@ caster 21 MP, RNG 1579910103/count19, late KO/Critical rollback, absorption/heal
 resource failure, counter exhaustion and snapshot substitution rejection.
 
 The proposal conveys no command, turn, one-use receipt or live adoption authority.
-ZOD-376 must trace those boundaries, actor/reward work and paid fizzles before
-selecting battle-state integration. All earlier deferred systems remain separate.
+[ZOD-376–381](action-outcomes-and-rewards.md) now trace those boundaries, actor/
+reward work and paid fizzles, and implement bounded reward calculations.
+ZOD-382 traces growth and unlocks before selecting complete career/battle-state
+integration. All earlier deferred systems remain separate.
 
 ## Final validation
 

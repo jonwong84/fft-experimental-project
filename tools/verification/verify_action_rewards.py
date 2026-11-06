@@ -23,8 +23,10 @@ def experience(d):
 
 def amounts(d):
     level,job,earned,monster,bonus=d
-    integer(level,0,255);integer(job,0,15);integer(earned,0,255)
-    base=0 if monster or not earned else 8+2*job+(level>>2)
+    integer(level,0,255);integer(earned,0,255)
+    if monster:return [earned,0,0,0]
+    integer(job,0,15)
+    base=0 if not earned else 8+2*job+(level>>2)
     return [earned,base,base*3//2 if bonus else base,base//4]
 
 def balance(d):
@@ -42,12 +44,35 @@ def job_points(d):
     current=min(9999,current+award);total=min(9999,total+award)
     return [current,total,sum(total>=value for value in thresholds)]
 
+def roster(d):
+    def stop(disposition):return dict(disposition=disposition,amounts=None,balance=None,display=None,points=None)
+    if d['hamedo']:return stop('Rejected')
+    if not d['canEarn']:return stop('Skipped')
+    units=d['units'];actor=next((u for u in units if u[0]=='actor'),None)
+    if actor is None or set(actor[9])&{'inactive','crystal','dead','petrify','treasure'}:return stop('Rejected')
+    flags=actor[9];is_monster='monster' in flags
+    quoted=amounts([actor[4],actor[6],d['earned'],is_monster,'jpUp' in flags])
+    exp=balance([actor[5],d['earned'],actor[4]])
+    slot=d['job']-74 if 75<=d['job']<=93 else 0
+    points=[];next_job=actor[6]
+    if not is_monster:
+        for u in sorted((u for u in units if u[0]!='actor'),key=lambda u:u[1])+[actor]:
+            direct=u[0]=='actor';team=actor[2] if direct else actor[3];f=set(u[9])
+            if f&{'inactive','crystal','dead','treasure','monster'} or u[2]!=team or slot==17 and 'female' in f or slot==18 and 'male' in f:continue
+            award=quoted[2] if direct else quoted[3]
+            jp=job_points([u[7],u[8],award,d['thresholds']]);points.append([u[0],award,*jp])
+            if direct:next_job=jp[2]
+    return dict(disposition='Projected',amounts=quoted,balance=exp,
+        display=[exp[1] if exp[2] or d.get('priorLevel',False) else 0,next_job if next_job!=actor[6] else 0],points=points)
+
 def validate(f):
     require(f['referenceRevision']==REVISION and f['productionImplemented'] is False,'Fixture identity')
     counts={}
     for name,fn in [('markers',marker),('experience',experience),('amounts',amounts),('balances',balance),('jobPoints',job_points)]:
         for r in f[name]:require(fn(r['input'])==r['expected'],name+' '+r['id'])
         counts[name]=len(f[name])
+    for r in f.get('rosters',[]):require(roster(r['input'])==r['expected'],'Roster '+r['id'])
+    counts['rosters']=len(f.get('rosters',[]))
     return dict(descriptions=counts,originalExecuted=False,cExecuted=False,managedExecuted=False)
 
 def audit(reference,executable):

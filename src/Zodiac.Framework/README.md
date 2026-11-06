@@ -28,6 +28,10 @@ Content supplies immutable definitions and prepared data through outer adapters.
   add current unit-follow centres, blue choice/confirmation and immutable charge
   plans through ready one-cost calculations. They publish no battle state or RNG,
   create no commands and advance no global clock.
+  `Battle/Combat/Magic/Publication/` owns private living vital/RNG projections.
+  `Battle/Combat/Rewards/` owns [outcome markers and action reward calculations](../../docs/behavior/action-outcomes-and-rewards.md),
+  including EXP maxima, JP spillover and explicit growth/unlock work still required
+  before adopting a complete career state. These helpers publish no battle state.
 - `Battle/Turns/`: CT, turn progression, facing, completion receipts and settlement.
 - `Battle/Commands/`: invocation-bound decision transactions, frozen follow-ups
   and retained Move continuations.

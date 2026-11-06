@@ -117,8 +117,9 @@ Automatic NoTargeting capture, runtime cursor preference/slot lifecycle, complet
 scheduling, performance repeats, no-target/fizzle publication, all live state and
 RNG adoption, commands, grants/import activation, and magic AI remain separate.
 [ZOD-370–375](living-magic-projections.md) now trace ordinary result application
-and implement bounded private living HP/MP/RNG proposals. ZOD-376 traces
-execution authority before selecting live integration. No original quirks are
+and implement bounded private living HP/MP/RNG proposals. [ZOD-376–381](action-outcomes-and-rewards.md)
+trace execution/reward phases and add reward calculations; ZOD-382 traces
+growth/unlocks before selecting live integration. No original quirks are
 silently repaired.
 
 Charge plans use actual execution setup. AiSimulation in the ready query evaluates
