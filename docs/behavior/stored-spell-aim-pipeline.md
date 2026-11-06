@@ -71,3 +71,19 @@ not guessed from combat source order. Auto NoTargeting capture remains outside
 this manual-selection slice. Twelve cumulative managed cases pass six player
 confirmation literals, bound definitions, context/range/occupancy guards and
 cursor-versus-combat eligibility. No UI, command or live state is created.
+
+## ZOD-368
+
+`MagicChargePlanQuery` prepares opaque immutable `PendingMagicCast` data from the
+confirmed definition/aim and certified stable roster identities. Preparation
+requires an active actor and, for exact6, an active anchor; it does not substitute
+combat eligibility or re-read aim geometry. Tile/YES7 preparation does not read
+anchor facts. Current Short/Non-Charge supports feed the existing low-seven-bit
+setup owner. Mime and Persevere remain outside this bounded plan.
+
+One explicit blocked/allowed `Tick` delegates `MagicCharge.Tick`, returning a new
+plan and readiness data without changing the old plan. Counter0 remains unready
+while blocked. Preparation/countdown neither reads MP affordability nor spends MP,
+starts statuses, emits events or advances a global clock. The plan retains no stale
+MA/Faith/MP snapshot. Fifteen cumulative managed cases pass source charge vectors,
+active-identity distinctions, guards, zero-MP planning and deterministic ticking.

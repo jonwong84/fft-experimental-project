@@ -32,6 +32,12 @@
       "managedBaseRevision": "333a97eb3c0492d3f4968c64b3e2629605ca66a9",
       "validation": "12 cumulative focused managed cases passed;6 player confirmation literals plus immutable binding, range/context and cursor eligibility guards.",
       "reports": "scratch/spell-aim-364-369/"
+    },
+    {
+      "ticket": "ZOD-368",
+      "managedBaseRevision": "0576fb4611dd6c1815ad757b5feac06796e19ff2",
+      "validation": "15 cumulative managed cases passed; source charge setups, active-identity guards, zero-MP planning and immutable blocked/allowed countdown;3 preparation guard cases rerun.",
+      "reports": "scratch/spell-aim-364-369/"
     }
   ]
 }
