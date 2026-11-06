@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-370 (Trace ordinary magic result publication boundaries).**
-[Stored spell aims and phases](behavior/stored-spell-aim-pipeline.md) records
-completed ZOD-364–369. Keep selection, preparation, readiness and publication separate.
-There are 34 open tickets below. The 336 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-371 (Apply exact signed vital arithmetic).**
+[Living magic result projections](behavior/living-magic-projections.md) records
+completed ZOD-370. Keep selection, preparation, readiness and publication separate.
+There are 38 open tickets below. The 337 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,11 +31,43 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-370 — Trace ordinary magic result publication boundaries
+### ZOD-371 — Apply exact signed vital arithmetic
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-369
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-370
 
-Trace ordinary magic HP/MP/result publication callers, ordering, validation and transactional boundaries before choosing a living/no-status implementation child. Do not activate commands, scheduling or state publication. See [source and phase boundaries](behavior/stored-spell-aim-pipeline.md).
+Implement unsigned stored HP/MP and signed work arithmetic, combining before lower/upper clamps and preserving the early miss return. Arithmetic only, not unit/status application. See [source and phase boundaries](behavior/living-magic-projections.md).
+Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
+status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
+
+### ZOD-372 — Project bounded living magic results
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-371
+
+Project a living HP-only result after known absent reactions/Golem/sharing/other result work. Reject KO, Critical/Chicken changes and required status cancellations; preserve misses and signed values. See [source and phase boundaries](behavior/living-magic-projections.md).
+Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
+status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
+
+### ZOD-373 — Capture immutable living magic projection snapshots
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-372
+
+Add an immutable map/roster/current-input/vitals/RNG snapshot with coherent identities and bounded living states, retaining known inactive anchor metadata. Do not widen sword state or add adoption authority. See [source and phase boundaries](behavior/living-magic-projections.md).
+Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
+status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
+
+### ZOD-374 — Reduce cast HP and MP projections atomically
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-373
+
+Reduce a supplied certified cast into a private snapshot with one proposed MP deduction before self-target work and source target order. Late rejection discards all HP/MP candidate data; no RNG or publication authority. See [source and phase boundaries](behavior/living-magic-projections.md).
+Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
+status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
+
+### ZOD-375 — Compose ready plans into opaque vital and RNG proposals
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-374
+
+Bind a ready-plan calculation to one exact immutable snapshot, recompute through existing owners and return an opaque HP/MP/RNG proposal. Execution mode only; no live adoption, commands or full status/progression. See [source and phase boundaries](behavior/living-magic-projections.md).
 Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
 status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
 

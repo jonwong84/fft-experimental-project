@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "sourceReceipts": [
+    "docs/evidence/combat/magic-publication-source-v1.json"
+  ],
+  "milestones": [
+    {
+      "ticket": "ZOD-370",
+      "managedBaseRevision": "518a074a4ccd039e1f15c8b8f67b68fb1d95fcb8",
+      "validation": "8 Python cases passed;36 independent vital/living descriptions validated;clean pinned10-file/18-function source audit passed;no managed implementation yet.",
+      "reports": "scratch/magic-publication-370-375/"
+    }
+  ]
+}

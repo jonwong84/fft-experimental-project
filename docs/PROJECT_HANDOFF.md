@@ -6,15 +6,15 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-370: Trace ordinary magic result publication boundaries.**
-[Stored spell aims and phases](behavior/stored-spell-aim-pipeline.md) records
-completed ZOD-364–369, using clean source
-`11464943bbdbd2a0af022d90cb7f10455cf911df`. Exact UNIT6 follows current identity/
-position; YES7 and other types use byte-narrowed stored tiles. Preparation checks
-anchor activity separately from resolution centre selection and occupant filtering.
-Keep blue selection, confirmation, charge and ready one-cost calculation distinct.
-No live commands, publication, full clock, status/corpse/Golem/terminal/frame RNG,
-AI activation or custom cone. Owner drafts/JobStats and documented deferrals remain.
+**ZOD-371: Apply exact signed vital arithmetic.**
+[Living magic result projections](behavior/living-magic-projections.md) records
+completed ZOD-370, using clean source
+`11464943bbdbd2a0af022d90cb7f10455cf911df`. Vital application combines signed work before clamping unsigned stored fields.
+Targeted reactions precede the hit check; KO/status/progression remain separate.
+Keep raw arithmetic, living admission, snapshots and private cast proposals distinct.
+No game battle/turn publication, live commands, full clock, status/corpse/Golem/
+terminal/frame RNG, AI activation or custom cone. Owner drafts/JobStats and all
+other documented deferrals remain.
 
 [Managed MP costs](development/managed-magic-mp-costs.md) now use nonnegative `int`
 through spell definitions, resource calculation and recorded cast/resource cost.
