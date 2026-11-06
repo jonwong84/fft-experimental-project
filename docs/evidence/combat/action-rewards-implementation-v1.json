@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "originalExecuted": false,
+  "cExecuted": false,
+  "milestones": [
+    {
+      "ticket": "ZOD-376",
+      "managedBaseRevision": "c4994e4bcb908290fff5cf3090d5fd1ef83879f5",
+      "validation": "Eight Python cases and49 independent descriptions pass;clean pinned11-file/23-function source audit and eight prepared JP thresholds verified. Architecture identifies phase/actor/career/fizzle gaps before adoption.",
+      "reports": "scratch/action-rewards-376-381/"
+    }
+  ]
+}

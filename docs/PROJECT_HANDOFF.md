@@ -1,20 +1,21 @@
 # Tessera / Zodiac / FFT handoff
 
-Updated 2026-11-05. Read [AGENTS.md](../AGENTS.md), the [active backlog](BACKLOG.md)
+Updated 2026-11-06. Read [AGENTS.md](../AGENTS.md), the [active backlog](BACKLOG.md)
 and the selected task's design before editing. This file describes current state;
 [planning history](history/README.md) holds completed tickets and old checkpoints.
 
 ## Next work
 
-**ZOD-376: Trace magic execution authority and battle-state integration.**
-[Living magic result projections](behavior/living-magic-projections.md) records
-completed ZOD-370–375, using clean source
-`11464943bbdbd2a0af022d90cb7f10455cf911df`. Vital application combines signed work before clamping unsigned stored fields.
-Targeted reactions precede the hit check; KO/status/progression remain separate.
-Keep raw arithmetic, living admission, snapshots and private cast proposals distinct.
-No game battle/turn publication, live commands, full clock, status/corpse/Golem/
-terminal/frame RNG, AI activation or custom cone. Owner drafts/JobStats and all
-other documented deferrals remain.
+**ZOD-377: Track ordinary action outcome markers.**
+[Action outcomes and rewards](behavior/action-outcomes-and-rewards.md) records
+completed ZOD-376, pinned to clean read-only source
+`11464943bbdbd2a0af022d90cb7f10455cf911df` (11 files/23 functions).
+Primary markers precede misses; EXP uses the maximum award; JP spillover precedes
+Gained JP Up and uses actor current team versus recipient initial team.
+Reward arithmetic is separate from required raw growth/unlock recomputation.
+[Vital proposals](behavior/living-magic-projections.md) remain private calculations.
+No live commands/battle/career adoption, global clock or magic AI activation.
+Owner drafts/JobStats and all documented deferred work remain preserved.
 
 [Managed MP costs](development/managed-magic-mp-costs.md) now use nonnegative `int`
 through spell definitions, resource calculation and recorded cast/resource cost.

@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-376 (Trace magic execution authority and battle-state integration).**
-[Living magic result projections](behavior/living-magic-projections.md) records
-completed ZOD-370–375. Keep selection, preparation, readiness and publication separate.
-There are 34 open tickets below. The 342 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-377 (Track ordinary action outcome markers).**
+[Action outcomes and rewards](behavior/action-outcomes-and-rewards.md) records
+completed ZOD-376. Live magic adoption remains gated by complete state/phase ownership.
+There are 38 open tickets below. The 343 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,13 +31,45 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-376 — Trace magic execution authority and battle-state integration
+### ZOD-377 — Track ordinary action outcome markers
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-375
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-376
 
-Trace exact-state authority, action/turn bookkeeping, full vital/status consistency, rewards/actor work and no-target/fizzle behavior before selecting game battle-state integration. Do not activate commands, scheduling or live adoption. See [source and phase boundaries](behavior/living-magic-projections.md).
-Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
-status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
+Implement normal-return target marker assignment, preserving primary miss and nonprimary change semantics. Exclude early KO/dead-conversion branches. See [traced boundaries](behavior/action-outcomes-and-rewards.md).
+Owner drafts/JobStats, host/editor, automatic facing, full status/corpse/Golem/
+terminal/frame RNG, broad interfaces, ZOD-106 and custom cone remain separate.
+
+### ZOD-378 — Accumulate exact per-target action EXP
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-377
+
+Implement source primary-context EXP maximum accumulation, signed level differences, KO-count division and bonus/cap order. No career storage. See [traced boundaries](behavior/action-outcomes-and-rewards.md).
+Owner drafts/JobStats, host/editor, automatic facing, full status/corpse/Golem/
+terminal/frame RNG, broad interfaces, ZOD-106 and custom cone remain separate.
+
+### ZOD-379 — Calculate action EXP balances and JP amounts
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-378
+
+Calculate pre-level JP/direct/spillover amounts and EXP balance/level transition facts. Explicitly report required raw-stat growth; do not apply growth. See [traced boundaries](behavior/action-outcomes-and-rewards.md).
+Owner drafts/JobStats, host/editor, automatic facing, full status/corpse/Golem/
+terminal/frame RNG, broad interfaces, ZOD-106 and custom cone remain separate.
+
+### ZOD-380 — Calculate job-point balances and threshold levels
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-379
+
+Calculate independently capped current/total JP and count explicit threshold data; map original generic job IDs at the compatibility boundary. No unlock adoption. See [traced boundaries](behavior/action-outcomes-and-rewards.md).
+Owner drafts/JobStats, host/editor, automatic facing, full status/corpse/Golem/
+terminal/frame RNG, broad interfaces, ZOD-106 and custom cone remain separate.
+
+### ZOD-381 — Project ordinary rewards over stable-ID rosters
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-380
+
+Compose reward offers over a coherent stable-ID roster with source actor and recipient eligibility, original/current team distinction and independent sex bits. Report growth/unlock work explicitly, without live career adoption. See [traced boundaries](behavior/action-outcomes-and-rewards.md).
+Owner drafts/JobStats, host/editor, automatic facing, full status/corpse/Golem/
+terminal/frame RNG, broad interfaces, ZOD-106 and custom cone remain separate.
 
 ## Existing validation gates
 
