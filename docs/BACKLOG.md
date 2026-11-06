@@ -4,11 +4,11 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-398 (Trace and execute bounded learn-on-hit reports).**
+**Next bounded work: ZOD-399 (Own learning reports in ordinary magic battles).**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
-The current batch is closed; the next ticket remains ready.
-There are 34 open tickets below. The 364 completed tickets, prior checkpoints and
+The owner requested the next five bounded milestones (ZOD-398–402).
+There are 37 open tickets below. The 365 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -32,18 +32,40 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-398 — Trace and execute bounded learn-on-hit reports
+### ZOD-399 — Own learning reports in ordinary magic battles
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-397
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-398
 
-Trace the post-reward marker scan, current-job learned slots, source ordering,
-raw-rate RNG and report acceptance/decline before extending tier4 spell encounters
-or general magic AI. Publish LearnChecked even for an ineligible affected target;
-preserve the source actor exclusion, first-learner return and already-checked
-behavior. Add explicit owned learning/report state before admitting eligible
-unlearned recipients; keep schema2 fail-closed guards until then. See
-[source finding and current limits](behavior/ordinary-spell-metadata.md#selected-follow-up-zod-398).
-Retain Fire/Cure, per-tier numeric, movement, replay and native regressions.
+Own current-job learned slots and pending reports. Scan after reward/growth RNG,
+accept or decline once, gate commands/clock while pending, defer the authored KO
+objective until the report closes, and roll back counter exhaustion atomically.
+
+### ZOD-400 — Bind prepared learning data and an eligible spell encounter
+
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-399
+
+Copy learning facts from AbilityMetadataDefinition and ordered primary skillsets.
+Provide explicit initial slot/control data and a verified-source tier4 encounter;
+remove eligible-recipient/repeated-slot guards only with authoritative state.
+Retain old packages and hash validation, immutable definitions and owner drafts.
+
+### ZOD-401 — Expose learning reports through the native command path
+
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-400
+
+Display and answer the owned report; immediately offer learned spells through
+normal cast selection. Include learned rows/reports in replay snapshots, verify
+accept/decline/restart and run the prepared scene through the native check.
+
+### ZOD-402 — Preserve disabled learning reports and multi-recipient ordering
+
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-401
+
+Trace the non-player-controlled menu close response before choosing its policy.
+Execute that policy without invented automatic acceptance. Verify real composed
+multi-target actions stop at one offer, preserve later markers, and never scan
+again after decline. Revalidate retained Fire/Cure/elemental/movement scenarios.
+
 Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
 Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.
 

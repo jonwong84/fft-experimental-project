@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "sha256": "2730850280790b0ee1c0b464589dac739be33da6b43faf17ff8443e3bda1c80b"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "sha256": "838c419938cdd610c14fa8e1cc578a1c76c949394bf1ea08449b526e74912933"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "sha256": "d17147259db338a396354c3f5c7166e31b7a3e578869a36099abb0f45961ab26"
+    },
+    {
+      "path": "src/lib/menu/command_prompts.c",
+      "sha256": "3c044f71016c06a3acc6ef01884cd1ea26b6872c5bbc240b5ad6f6961d6887a1"
+    }
+  ],
+  "originalExecuted": false,
+  "cExecuted": false,
+  "scope": "Source study and independent arithmetic descriptions; not observed retail gameplay."
+}

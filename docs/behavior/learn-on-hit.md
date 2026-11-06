@@ -1,0 +1,53 @@
+# Learn on hit
+
+ZOD-398 pins the clean, read-only reference
+`11464943bbdbd2a0af022d90cb7f10455cf911df`. The
+[source receipt](../evidence/combat/learn-on-hit-source-v1.json) fingerprints
+`outcomes.c`, the turn controller, menu dispatcher and RNG wrapper. This is
+source study with independent arithmetic checks, not an observed retail run.
+
+## Source contract
+
+`reward_grant` applies EXP/JP and growth before the learning report phase.
+`ability_find_learn_on_hit_unit` exits without scanning for Hamedo, ability0,
+or an ability without primary LearnOnHit. It scans original unit slots in order,
+excluding the actor. An Affected marker is **replaced** by LearnChecked before
+checking human/reaction eligibility or primary-skillset membership. Already
+checked and merely Targeted units are skipped. Dead ordinary hit results retain
+Targeted, so cannot qualify through this path.
+
+The current job selects a three-byte learned row: jobs below Squire74 alias row0;
+otherwise row=job-74. Bits are MSB first, slot0 at byte0 bit7. The source loops
+24 bits, but human skillset lookup returns zero beyond slot21. Each matching
+unknown slot draws `rand()*100/32768 < rawRate`; rates0 and >=100 still draw.
+Duplicate ability slots can roll repeatedly until one succeeds. The first
+success returns immediately, leaving later units' Affected markers untouched.
+
+The controller creates at most one offer. YES invokes `ability_learn_used`,
+which sets **every** matching unknown slot using the row captured before its
+walk. NO and UNRESOLVED_FF advance the phase without learning. Neither response
+rescans other units. Acceptance spends no JP or RNG. Definitions remain immutable.
+Disabled non-player menus require the follow-up close-response trace in ZOD-402;
+team color must not be used as a substitute for player control.
+
+## Managed boundary and validation
+
+`LearnOnHit.Scan` is a pure captured-row calculation; it cannot publish battle
+state. It orders by source slot and retains slot identity independently of
+ability identity. `Accept` unions matching slots. Counter exhaustion throws
+without publishing partial candidates. An owned battle/report path is ZOD-399;
+prepared eligible recipients stay guarded until ZOD-400.
+
+Eleven managed cases cover marker ordering, first success, duplicates, acceptance,
+known/ineligible/already-checked recipients, raw rates0/29/30/100/255, Hamedo,
+disabled metadata and exhaustion. The independent Python audit checks all32768
+BIOS outputs at seven rates (229376 comparisons), seed57 and duplicate-slot
+vectors, and row `80 80 04`. Run:
+
+```powershell
+python tools/verification/verify_learn_on_hit.py --reference C:/repositories/fft_decomp
+dotnet test tests/Zodiac.Framework.Tests/Zodiac.Framework.Tests.csproj -c Release --filter FullyQualifiedName~LearnOnHitTests
+```
+
+No reactions, monster combat, job switching, general AI, original report graphics,
+presentation-frame RNG or save/checkpoint support is activated by this rule.

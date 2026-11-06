@@ -6,22 +6,15 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-398: Trace and execute bounded learn-on-hit reports.**
-The owner asked to finish the current work after the usage interruption; the
-batch is closed at ZOD-397. Do not continue the earlier five-hour run automatically.
-[Primary spell metadata](behavior/ordinary-spell-metadata.md) records the current
-schema2 binding, source roles and learning-stage gap. Fire, all elemental tiers,
-Cure and confirmed flat movement execute through the shared player command path.
-Source remains pinned to clean read-only
-`11464943bbdbd2a0af022d90cb7f10455cf911df`.
-
-Tier4 LearnOnHit is real metadata. The existing numeric path does not yet perform
-its post-action LearnChecked/report stage. The checked Squire target is ineligible
-and loses no learning RNG, but its markers remain pre-learning-report data.
-Schema2 rejects potentially eligible unlearned recipients and repeated learnable
-slot bindings until ZOD-398 owns learning state and explicit report decisions.
-General magic AI remains separate. Preserve owner drafts/JobStats, the independent
-targeting-format edit, Knight EquipmentSlot intent and all other documented gates.
+**ZOD-399: Own learning reports in ordinary magic battles.**
+The owner requested five milestones ZOD-398–402. ZOD-398's
+[pure learning rule](behavior/learn-on-hit.md) is implemented and passes eleven
+managed cases plus two independent arithmetic checks. Reference remains clean
+and pinned to `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+Owned battle integration, prepared eligible recipients, client reporting and
+disabled-menu behavior remain the four selected follow-ups. Schema2's guards
+remain in force until owned state is available. Preserve owner drafts/JobStats,
+the independent targeting-format edit and all deferred gates.
 
 [Managed MP costs](development/managed-magic-mp-costs.md) now use nonnegative `int`
 through spell definitions, resource calculation and recorded cast/resource cost.
