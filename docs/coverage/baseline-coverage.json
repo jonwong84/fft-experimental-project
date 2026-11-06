@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-06",
   "edition": "SCUS-94221",
-  "managedCommit": "ee16bee",
+  "managedCommit": "0f8ba1d",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 4748,
-    "source": "docs/behavior/action-outcomes-and-rewards.md",
+    "passed": 4758,
+    "source": "docs/behavior/growth-and-job-unlocks.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -32,7 +32,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
-      "currentScope": "FFT BIOS RNG algorithm/state is implemented with supplied-BIOS vectors; draw ordering is covered only for bounded CT/sword paths. ZOD-340 adds an isolated0x08 proc decision: execution uses scaled raw*100/32768<19 with one counted draw, preview/AI use no draw, and original family/miss/nullification remain explicit. Fresh/ordinary/no-pending context guards and atomic UInt64 exhaustion are managed bounds. No status or live RNG/HP publication, spell commands, frame equivalence or magic AI entry is claimed. ZOD-344\u00e2\u20ac\u201c347 implement bounded nonzero magic entry: immutable equipment contributions and blocking labels, magic-only status order with Abandon diagnostics, exact products and ordered real evade draws in every mode, source hit-versus-rounded-accuracy branching and whole-query evade/proc counter rollback. Healing bypasses evasion; after-hit APIs remain compatible. Fresh/no-earlier-effects and living/empty-status scope remain explicit. No commands, live RNG/HP/status authority or magic AI activation. ZOD-348\u00e2\u20ac\u201c357 add immutable current-input and supplied-order ready-cast queries with one proposed MP cost, source mode-specific evasion/proc draws and complete prefix rollback on failure. No live stream adoption, frame-equivalence or magic AI activation. ZOD-364\u00e2\u20ac\u201c369 add pure stable-ID stored-aim resolution, current unit-follow cast integration, blue choice/confirmed selection, immutable charge planning and ready one-cost composition. Current inputs and whole-query RNG rollback are preserved; no commands, live publication or global clock activation. ZOD-370\u2013375 trace target publication ordering and add exact signed vital arithmetic, bounded living HP admission, immutable captures, private cast MP/HP reduction and opaque ready-plan HP/MP/RNG proposals. Late KO/status or calculation rejection discards the private candidate and preserves incoming RNG. Preview/AI cannot create execution proposals. No game battle/turn adoption, rewards/actor work, paid-fizzle execution, full status or magic AI activation.",
+      "currentScope": "FFT BIOS RNG algorithm/state is implemented with supplied-BIOS vectors; draw ordering is covered only for bounded CT/sword paths. ZOD-340 adds an isolated0x08 proc decision: execution uses scaled raw*100/32768<19 with one counted draw, preview/AI use no draw, and original family/miss/nullification remain explicit. Fresh/ordinary/no-pending context guards and atomic UInt64 exhaustion are managed bounds. No status or live RNG/HP publication, spell commands, frame equivalence or magic AI entry is claimed. ZOD-344\u00e2\u20ac\u201c347 implement bounded nonzero magic entry: immutable equipment contributions and blocking labels, magic-only status order with Abandon diagnostics, exact products and ordered real evade draws in every mode, source hit-versus-rounded-accuracy branching and whole-query evade/proc counter rollback. Healing bypasses evasion; after-hit APIs remain compatible. Fresh/no-earlier-effects and living/empty-status scope remain explicit. No commands, live RNG/HP/status authority or magic AI activation. ZOD-348\u00e2\u20ac\u201c357 add immutable current-input and supplied-order ready-cast queries with one proposed MP cost, source mode-specific evasion/proc draws and complete prefix rollback on failure. No live stream adoption, frame-equivalence or magic AI activation. ZOD-364\u00e2\u20ac\u201c369 add pure stable-ID stored-aim resolution, current unit-follow cast integration, blue choice/confirmed selection, immutable charge planning and ready one-cost composition. Current inputs and whole-query RNG rollback are preserved; no commands, live publication or global clock activation. ZOD-370\u2013375 trace target publication ordering and add exact signed vital arithmetic, bounded living HP admission, immutable captures, private cast MP/HP reduction and opaque ready-plan HP/MP/RNG proposals. Late KO/status or calculation rejection discards the private candidate and preserves incoming RNG. Preview/AI cannot create execution proposals. No game battle/turn adoption, rewards/actor work, paid-fizzle execution, full status or magic AI activation. ZOD-382\u2013383 trace battle raw growth and implement its five discarded RNG draws, even for zero values/deltas, level-down or saturation. Supplied caller level controls arithmetic; diagnostic counter exhaustion rejects the private calculation with the full incoming RNG. Derived refresh/frame-interleaved equivalence and live growth publication remain separate.",
       "referenceSources": [
         {
           "path": "include/fft/random.h",
@@ -45,6 +45,10 @@
         {
           "path": "src/lib/event/script/control.c",
           "inspection": "Separate event RNG read through variable 0x21; see ZOD-040 for source trace and exclusions."
+        },
+        {
+          "path": "src/main/unit_stats.c",
+          "inspection": "Pinned raw-growth/caller trace in ZOD-382; complete refresh and publication remain separate."
         }
       ],
       "evidenceDocs": [
@@ -76,7 +80,11 @@
         "docs/behavior/living-magic-projections.md",
         "docs/evidence/combat/magic-publication-source-v1.json",
         "docs/evidence/combat/magic-publication-implementation-v1.json",
-        "docs/fixtures/behavior/magic-publication-contract-v1.json"
+        "docs/fixtures/behavior/magic-publication-contract-v1.json",
+        "docs/behavior/growth-and-job-unlocks.md",
+        "docs/evidence/combat/growth-unlocks-source-v1.json",
+        "docs/evidence/combat/growth-unlocks-implementation-v1.json",
+        "docs/fixtures/behavior/growth-unlocks-contract-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/Random/RandomState.cs",
@@ -152,7 +160,11 @@
         "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicUnitVitals.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicVitalArithmetic.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicVitalChange.cs",
-        "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicVitalInput.cs"
+        "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicVitalInput.cs",
+        "src/Zodiac.Framework/Battle/Progression/BattleGrowthRates.cs",
+        "src/Zodiac.Framework/Battle/Progression/BattleRawGrowthResult.cs",
+        "src/Zodiac.Framework/Battle/Progression/BattleRawStatGrowth.cs",
+        "src/Zodiac.Framework/Battle/Progression/BattleRawStats.cs"
       ],
       "automatedChecks": [
         {
@@ -250,6 +262,14 @@
         {
           "path": "tools/verification/verify_magic_publication.py",
           "scope": "36 independent raw vital/living descriptions and pinned ten-file/eighteen-function source audit; no original/C execution."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Progression/BattleRawStatGrowthTests.cs",
+          "scope": "15 independent raw/RNG vectors, five discarded draws, caller-level distinction, exact counter end/rejection and replay; no derived refresh."
+        },
+        {
+          "path": "tools/verification/verify_growth_unlocks.py",
+          "scope": "31 independent descriptions;10 files/20 functions,19 prepared unlock rows and five Squire growth/multiplier pairs; no original/C execution."
         }
       ],
       "manualCheckpoint": {
@@ -2483,7 +2503,7 @@
       "ownerTicket": "ZOD-039",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
-      "currentScope": "Job/ability metadata and base-job setup do not implement persistent progression. ZOD-376\u2013381 trace controller/actor/reward phase boundaries and implement normal-return outcome markers, primary EXP maximum accumulation, pre-level EXP/JP amounts, independent current/total JP caps, explicit threshold counting and stable-ID roster reward projections. Source team/sex/Petrify/zero-award quirks are covered. Results identify required raw growth/unlock recalculation and grant no live career, battle or turn authority. Paid fizzles, full statuses/reactions and magic AI activation remain separate.",
+      "currentScope": "Job/ability metadata and base-job setup do not implement persistent progression. ZOD-376\u2013381 trace controller/actor/reward phase boundaries and implement normal-return outcome markers, primary EXP maximum accumulation, pre-level EXP/JP amounts, independent current/total JP caps, explicit threshold counting and stable-ID roster reward projections. Source team/sex/Petrify/zero-award quirks are covered. Results identify required raw growth/unlock recalculation and grant no live career, battle or turn authority. Paid fizzles, full statuses/reactions and magic AI activation remain separate. ZOD-382\u2013384 trace raw growth/refresh and prepared unlock requirements. Raw growth now preserves five discarded draws, caller-established level, unsigned24 caps and level-down. Immutable stable-ID unlock catalogs preserve independent sex/monster/nibble semantics without a fixed bitset capacity. Complete derived/status refresh and live career integration remain separate.",
       "referenceSources": [
         {
           "path": "src/main/job_progress.c",
@@ -2511,7 +2531,11 @@
         "docs/behavior/action-outcomes-and-rewards.md",
         "docs/evidence/combat/action-rewards-source-v1.json",
         "docs/evidence/combat/action-rewards-implementation-v1.json",
-        "docs/fixtures/behavior/action-rewards-contract-v1.json"
+        "docs/fixtures/behavior/action-rewards-contract-v1.json",
+        "docs/behavior/growth-and-job-unlocks.md",
+        "docs/evidence/combat/growth-unlocks-source-v1.json",
+        "docs/evidence/combat/growth-unlocks-implementation-v1.json",
+        "docs/fixtures/behavior/growth-unlocks-contract-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/Battle/Combat/Rewards/AbilityOutcomeMarker.cs",
@@ -2528,7 +2552,14 @@
         "src/Zodiac.Framework/Battle/Combat/Rewards/ActionTargetOutcome.cs",
         "src/Zodiac.Framework/Battle/Combat/Rewards/BattleActionRewards.cs",
         "src/Zodiac.Framework/Battle/Combat/Rewards/JobPointArithmetic.cs",
-        "src/Zodiac.Framework/Battle/Combat/Rewards/JobPointBalance.cs"
+        "src/Zodiac.Framework/Battle/Combat/Rewards/JobPointBalance.cs",
+        "src/Zodiac.Framework/Battle/Progression/BattleGrowthRates.cs",
+        "src/Zodiac.Framework/Battle/Progression/BattleRawGrowthResult.cs",
+        "src/Zodiac.Framework/Battle/Progression/BattleRawStatGrowth.cs",
+        "src/Zodiac.Framework/Battle/Progression/BattleRawStats.cs",
+        "src/Zodiac.Framework/Battle/Progression/JobLevelRequirement.cs",
+        "src/Zodiac.Framework/Battle/Progression/JobUnlockCatalog.cs",
+        "src/Zodiac.Framework/Battle/Progression/JobUnlockDefinition.cs"
       ],
       "automatedChecks": [
         {
@@ -2554,6 +2585,18 @@
         {
           "path": "tools/verification/verify_action_rewards.py",
           "scope": "57 independent descriptions,11 source files/23 functions and eight verified prepared JP thresholds; no original/C execution."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Progression/BattleRawStatGrowthTests.cs",
+          "scope": "15 independent raw/RNG vectors, five discarded draws, caller-level distinction, exact counter end/rejection and replay; no derived refresh."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Progression/JobUnlockCatalogTests.cs",
+          "scope": "16 original/synthetic vectors, all source prerequisite boundaries, sex/monster/nibble semantics, zero-JP composition and30-job replay."
+        },
+        {
+          "path": "tools/verification/verify_growth_unlocks.py",
+          "scope": "31 independent descriptions;10 files/20 functions,19 prepared unlock rows and five Squire growth/multiplier pairs; no original/C execution."
         }
       ],
       "manualCheckpoint": {
@@ -2561,10 +2604,10 @@
         "procedure": "Compare one award/level/job-unlock chain and roster persistence."
       },
       "openQuestions": [
-        "Full raw-stat growth/derived-state integration, prepared unlock requirements, learning/learn-on-hit and persistent career adoption remain incomplete.",
-        "KO/status/reaction outcome integration, actor result work and paid-fizzle/turn-authority integration remain separate."
+        "Full derived/status refresh, copied growth/multiplier and base/equipment/current stat ownership, HP/MP clamping, packed career adapters and persistent adoption remain incomplete.",
+        "Learning/learn-on-hit, KO/status/reaction outcome integration, actor work and paid-fizzle/turn-authority integration remain separate."
       ],
-      "nextAction": "ZOD-382: trace raw growth, derived stats and prepared unlock requirements before selecting complete magic battle/career integration."
+      "nextAction": "ZOD-385: implement source-mode1 numeric maxima/current clamps with egg rules and preserved base Speed/PA/MA; retain equipment/status refresh and complete state integration gaps."
     },
     {
       "id": "COV-SIM-011",

@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-384 (Evaluate stable-ID job unlock prerequisites).**
+**Next bounded work: ZOD-385 (Project bounded mode1 derived battle attributes).**
 [Growth and job unlocks](behavior/growth-and-job-unlocks.md) records
-completed ZOD-382–383. Complete magic state still needs derived/status refresh and phase ownership.
-There are 34 open tickets below. The 350 completed tickets, prior checkpoints and
+completed ZOD-382–384. Complete magic state still needs derived/status refresh and phase ownership.
+There are 34 open tickets below. The 351 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,11 +31,11 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-384 — Evaluate stable-ID job unlock prerequisites
+### ZOD-385 — Project bounded mode1 derived battle attributes
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-383
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-384
 
-Add validated immutable stable-ID job prerequisite definitions and source unlock evaluation. Preserve raw nibble levels, both/neither sex flags, opposite-sex prerequisite substitution and final Bard/Dancer exclusions. Keep original packing and prepared content separate. See [source and implementation boundaries](behavior/growth-and-job-unlocks.md).
+Implement the source-traced numeric mode1 HP/MP maxima and current-field clamps from explicit raw/multiplier inputs, including egg rules and retained base Speed/PA/MA. Keep equipment/status/timer refresh, level ownership and complete career adoption separate; do not activate live commands or silently recompute all base stats. See [source and implementation boundaries](behavior/growth-and-job-unlocks.md).
 Owner drafts/JobStats, host/editor, automatic facing, full status/corpse/Golem/
 terminal/frame RNG, broad interfaces, ZOD-106 and custom cone remain separate.
 

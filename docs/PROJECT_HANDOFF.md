@@ -6,9 +6,9 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-384: Evaluate stable-ID job unlock prerequisites.**
+**ZOD-385: Project bounded mode1 derived battle attributes.**
 [Growth and job unlocks](behavior/growth-and-job-unlocks.md) records completed
-ZOD-382–383, from clean read-only source
+ZOD-382–384, from clean read-only source
 `11464943bbdbd2a0af022d90cb7f10455cf911df` (10 files/20 functions).
 Battle raw growth consumes five discarded RNG draws. Reward callers grow before
 level increment; special effects store the new level first. Source mode1 refresh
@@ -265,24 +265,24 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: ZOD-376–381 pass locked restore, a zero-warning/error Release
-  build and **4,748 .NET cases** (1,707 Framework,1,217 AI,838 Content,328 CLI,
-  206 AssetTool,428 Client,24 Engine). All **720 Python tests** pass.
-  Thirty-four new managed cases and nine Python cases cover 57 independent
-  outcome/EXP/JP/roster descriptions, ordered reward offers, immutable replay and
-  a composed magic-vital/outcome/EXP/reward scenario. Fresh source 11-file/
-  23-function fingerprints and eight prepared JP thresholds pass, alongside
-  prior magic/prepared-data, algorithm-guide, coverage, links, layout and
-  preservation checks. Seven TRX reports/logs are under ignored
-  `scratch/action-rewards-376-381/`.
-  All pre-batch production, tests and behavior fixtures are unchanged. The 15 new
+- Validation: ZOD-382–384 pass locked restore, a zero-warning/error Release
+  build and **4,758 .NET cases** (1,717 Framework,1,217 AI,838 Content,328 CLI,
+  206 AssetTool,428 Client,24 Engine). All **728 Python tests** pass.
+  Ten new managed cases and eight Python cases cover 31 independent raw-growth/
+  RNG and original/synthetic unlock descriptions, every original prerequisite
+  lower/exact boundary, zero-JP composition and immutable replay. Fresh source
+  10-file/20-function fingerprints, 19 prepared unlock rows and five Squire
+  growth/multiplier pairs pass, alongside prior reward/vital, algorithm-guide,
+  coverage, link, layout and preservation checks. Seven TRX reports/logs are
+  under ignored `scratch/growth-unlocks-382-384/`.
+  All pre-batch production, tests and behavior fixtures are unchanged. Seven new
   public types have matching files; existing partial parts remain. Content, AI,
-  host, imports, all nine owner drafts and JobStats are unchanged. No project,
+  host, imports, nine owner drafts and JobStats are unchanged. No project,
   dependency or activation changes. MP costs remain nonnegative int.
-  Reward projections explicitly identify required raw-stat growth and unlock
-  recalculation; they grant no live career/battle/turn authority. ZOD-382 traces
-  growth and unlocks before selecting complete magic state integration. Other
-  actor/status/reaction/paid-fizzle and global scheduling gaps remain separate.
+  Raw growth consumes five discarded draws without adopting state. Unlocks are
+  recalculated by stable IDs without original packing/table limits. Full derived/
+  equipment/status refresh and battle/career/turn authority remain separate.
+  ZOD-385 adds the bounded mode1 numeric derived-attribute projection next.
   Prepared Dash/Stone import checks remain at ZOD-329; their code/input is unchanged.
   Python uses repository-pinned Pillow12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.

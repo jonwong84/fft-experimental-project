@@ -87,8 +87,9 @@ contain more than twenty jobs, without copying the original bitset capacity.
 - ZOD-384: implement a validated immutable stable-ID prerequisite catalog and
   source unlock evaluation, preserving independent sex flags and nibble levels.
 
-ZOD-385 will select the derived refresh boundary before complete magic/career
-state integration. These calculations cannot clear the previous reward result's
+ZOD-385 will project the source-mode1 numeric derived attributes before complete
+equipment/status refresh and magic/career state integration. These calculations
+cannot clear the previous reward result's
 growth/unlock requirements by themselves. No live battle/career/turn publication,
 paid-fizzle execution, grants/learning, full statuses/reactions, global scheduling,
 magic AI, host/editor, automatic facing or custom cone. Owner drafts/JobStats,
@@ -100,7 +101,37 @@ broad interfaces and ZOD-106 remain preserved/separate.
 from explicit copied growth rates and caller-established level. It validates
 unsigned24 inputs, retains zero-rate fallback, level-down and positive saturation,
 and returns a full five-draw continuation. Counter exhaustion returns no raw
-prefix and preserves incoming RNG. Five managed cases pass15 independent
+prefix and preserves incoming RNG. Five managed cases pass 15 independent
 literals, exact counter end, zero-valued up/down tapes, immutable replay and a
 reward old-level versus special new-level comparison. No derived stats, statuses,
 current HP/MP or caller level are changed by this raw calculation.
+
+## ZOD-384
+
+`JobUnlockCatalog` captures immutable stable-ID definitions and validates known
+distinct prerequisite references, original nibble levels and the base/Bard/Dancer
+roles. `Calculate` requires a complete immutable level capture, recomputes the
+unlocked set in catalog order and preserves all independent sex/monster cases.
+Opposite-sex prerequisite substitutions do not mutate captured levels. No packed
+bytes, original table size, previous unlock mask or file I/O enter the calculation.
+Five additional managed cases cover 16 independent vectors, every original
+requirement's lower/exact boundary, zero-JP threshold/unlock composition, rejected
+content/captures and replay over a 30-job catalog. Ten cumulative managed cases
+pass. Original and synthetic prerequisite expectations remain explicitly separate;
+no prepared catalog/import or complete career adoption is activated.
+
+## Final validation
+
+Locked restore and Release build pass with zero warnings/errors. All **4,758 .NET
+cases** and **728 Python tests** pass, including ten new managed cases and eight
+new Python cases. The 31 independent descriptions distinguish original content
+from synthetic prerequisite cases. Fresh source fingerprints (10 files/20
+functions), 19 prepared unlock rows and five prepared Squire growth/multiplier
+pairs pass, along with prior reward/vital, algorithm-guide, coverage, local-link,
+layout and preservation checks. The
+[implementation receipt](../evidence/combat/growth-unlocks-implementation-v1.json)
+records milestone bases and ignored reports under `scratch/growth-unlocks-382-384/`.
+All seven new public types have matching files in Battle/Progression, retaining
+the Framework namespace. All pre-batch production, managed tests and behavior
+fixtures, owner drafts and JobStats are unchanged. No Content, AI, host, import,
+project or dependency changes; no original/C execution or UI review.

@@ -165,7 +165,10 @@ actual changed markers and maximum EXP14 into actor JP18/spillover3 calculations
 without publishing any field. Eight further independent roster descriptions
 include current-team charm, petrified recipients, zero awards, incompatible actor
 sex, monster and level99 paths. Full original action/career adoption still waits
-for ZOD-382's growth/unlock trace and the remaining phase/status/fizzle work.
+for complete derived refresh and the remaining phase/status/fizzle work.
+[ZOD-382–384](growth-and-job-unlocks.md) now trace growth/unlocks and implement
+raw growth/RNG and semantic unlock calculations. ZOD-385 adds the bounded mode1
+numeric derived-attribute projection next.
 
 ## Final validation
 

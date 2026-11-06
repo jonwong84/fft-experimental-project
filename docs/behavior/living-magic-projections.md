@@ -143,8 +143,9 @@ resource failure, counter exhaustion and snapshot substitution rejection.
 The proposal conveys no command, turn, one-use receipt or live adoption authority.
 [ZOD-376–381](action-outcomes-and-rewards.md) now trace those boundaries, actor/
 reward work and paid fizzles, and implement bounded reward calculations.
-ZOD-382 traces growth and unlocks before selecting complete career/battle-state
-integration. All earlier deferred systems remain separate.
+[ZOD-382–384](growth-and-job-unlocks.md) now supply raw growth/RNG and job unlock
+calculations; derived refresh and complete career/battle-state integration remain
+separate. All earlier deferred systems remain separate.
 
 ## Final validation
 

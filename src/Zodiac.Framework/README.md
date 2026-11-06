@@ -33,6 +33,9 @@ Content supplies immutable definitions and prepared data through outer adapters.
   including EXP maxima, JP spillover and explicit growth/unlock work still required
   before adopting a complete career state. These helpers publish no battle state.
 - `Battle/Turns/`: CT, turn progression, facing, completion receipts and settlement.
+- `Battle/Progression/`: [raw battle growth and job unlock calculations](../../docs/behavior/growth-and-job-unlocks.md),
+  with explicit five-draw RNG continuation and immutable stable-ID prerequisites.
+  Derived/status refresh, career adoption and original packed adapters remain separate.
 - `Battle/Commands/`: invocation-bound decision transactions, frozen follow-ups
   and retained Move continuations.
 - `Events/`: deterministic scene/script tasks and event state.
