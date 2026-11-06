@@ -24,6 +24,10 @@ Content supplies immutable definitions and prepared data through outer adapters.
   targets, advance the clock or publish battle state.
   `Battle/Combat/Targeting/` contains ordinary spell panel/occupant queries and
   their public geometry, profile, request and result types in matching files.
+  [Stored aims and pure casting phases](../../docs/behavior/stored-spell-aim-pipeline.md)
+  add current unit-follow centres, blue choice/confirmation and immutable charge
+  plans through ready one-cost calculations. They publish no battle state or RNG,
+  create no commands and advance no global clock.
 - `Battle/Turns/`: CT, turn progression, facing, completion receipts and settlement.
 - `Battle/Commands/`: invocation-bound decision transactions, frozen follow-ups
   and retained Move continuations.

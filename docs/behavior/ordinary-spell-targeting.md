@@ -127,8 +127,9 @@ quirk. Final targeting descriptions total58 (4 references,15 columns,27 panels,
 validated at those commits; they are not full equivalence claims.
 
 [ZOD-363](spell-follow-and-stored-aim.md) now traces unit-follow and stored-aim
-behavior. Next ZOD-364 adds only the certified aim primitive before later bridge
-integration. Future custom formulas and the cone remain independent of this owner.
+behavior. [ZOD-364–369](stored-spell-aim-pipeline.md) now add the certified aim
+primitive, bridge and pure confirmation/charge/readiness phases. Next ZOD-370
+traces publication. Future custom formulas and the cone remain independent.
 
 Final validation: locked restore and Release build passed with zero warnings/errors;
 all **4,661 .NET tests** and **687 Python tests** passed. Source fingerprints,

@@ -87,3 +87,50 @@ while blocked. Preparation/countdown neither reads MP affordability nor spends M
 starts statuses, emits events or advances a global clock. The plan retains no stale
 MA/Faith/MP snapshot. Fifteen cumulative managed cases pass source charge vectors,
 active-identity distinctions, guards, zero-MP planning and deterministic ticking.
+
+## ZOD-369
+
+`MagicReadyPlanQuery` admits only a counter0 plan with known unblocked current
+turn status and stable current identities. It derives charge readiness and earlier
+blue admission from the opaque plan; callers still certify preceding action-state
+bookkeeping, reactions, current anchor position and no earlier target effects.
+It reads the current caster snapshot, prepares MP once, then delegates stored-aim
+resolution, green panels, source-order targets and the existing formula owner.
+
+The result exposes either a resource block diagnostic or a complete candidate
+cast. It exposes no separate partially payable MP proposal on a later geometry,
+context or RNG failure. All failures retain the incoming RNG and no cast outcome.
+Current MP, MA, Half MP and anchor positions are used at readiness, not cached at
+charge start. Tile/YES7 remain at the captured tile; exact6 follows current position.
+The query is replayable calculation data, not one-use command or publication authority.
+
+[19 new phase descriptions](../fixtures/behavior/spell-aim-pipeline-contract-v1.json)
+cover confirmation through ready resolution, with literal prior source cast/RNG
+vectors and explicit managed admission guards. They include current-MA rounding
+(68/137), inactive anchors, Short/Non-Charge, Preview, current Half MP, zero-MP
+planning, failed budget, unknown identity/position, blocked readiness and late
+rollback. The independent Python composition executes no C# or original code.
+Twenty-four new managed cases pass, including these19 descriptions; the focused
+magic suite passes 132 cases. Eight new independent Python cases pass.
+
+Automatic NoTargeting capture, runtime cursor preference/slot lifecycle, complete
+scheduling, performance repeats, no-target/fizzle publication, all live state and
+RNG adoption, commands, grants/import activation, and magic AI remain separate.
+Next ZOD-370 traces ordinary result-publication boundaries before selecting a
+living/no-status implementation child. No original quirks are silently repaired.
+
+Charge plans use actual execution setup. AiSimulation in the ready query evaluates
+an already-ready actual plan; it does not replace the separate original AI
+candidate-delay quirk in `MagicCharge.CalculateOrdinaryAiDelay`.
+
+## Final validation
+
+Locked restore and Release build pass with zero warnings/errors; all **4,694 .NET
+cases** and **703 Python tests** pass. The focused magic suite passes 132 cases.
+Fresh source/prepared-data, algorithm-guide, coverage, local-link, layout and
+preservation audits pass. [Implementation receipt](../evidence/combat/spell-aim-pipeline-implementation-v1.json)
+records milestone bases and ignored logs. All 26 new public types have matching
+files; all pre-batch formula/geometry/resource bodies, managed tests, behavior
+fixtures, owner drafts and JobStats are preserved. Only two optional named flags
+extend the existing geometry definition. No project/dependency, Content, AI or
+host changes; no original/C execution or UI review.

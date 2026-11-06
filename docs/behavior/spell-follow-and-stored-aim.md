@@ -122,7 +122,10 @@ tests at any future raw-command adapter; do not infer combat rules from a cursor
 
 ### Selected implementation child
 
-**Next ZOD-364: Resolve certified ordinary stored spell aims.** Add one pure,
+**Selected ZOD-364: Resolve certified ordinary stored spell aims.** The subsequent
+[ZOD-364–369 implementation](stored-spell-aim-pipeline.md) now completes these
+pure aim/selection/charge children. Next ZOD-370 traces publication. The selected
+primitive scope was one pure,
 source-traced aim query that distinguishes a stored map aim from an explicit
 stable-ID follow anchor, resolves current coordinates with original narrowing at
 the raw-data boundary, validates map/sheet/blocked-centre admission and returns

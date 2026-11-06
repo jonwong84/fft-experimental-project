@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-369 (Resolve ready charge plans through shared magic queries).**
+**Next bounded work: ZOD-370 (Trace ordinary magic result publication boundaries).**
 [Stored spell aims and phases](behavior/stored-spell-aim-pipeline.md) records
-completed ZOD-364–368. Keep selection, preparation, readiness and publication separate.
-There are 34 open tickets below. The 335 completed tickets, prior checkpoints and
+completed ZOD-364–369. Keep selection, preparation, readiness and publication separate.
+There are 34 open tickets below. The 336 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,11 +31,11 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-369 — Resolve ready charge plans through shared magic queries
+### ZOD-370 — Trace ordinary magic result publication boundaries
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-368
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-369
 
-At an admitted ready counter, read current caster/anchor facts, prepare MP once and resolve the retained aim/definition through existing owners. Preserve delayed movement, mode behavior and full candidate rollback; no live publication. See [source and phase boundaries](behavior/stored-spell-aim-pipeline.md).
+Trace ordinary magic HP/MP/result publication callers, ordering, validation and transactional boundaries before choosing a living/no-status implementation child. Do not activate commands, scheduling or state publication. See [source and phase boundaries](behavior/stored-spell-aim-pipeline.md).
 Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
 status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
 

@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-05",
   "edition": "SCUS-94221",
-  "managedCommit": "2964589",
+  "managedCommit": "befa904",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 4670,
-    "source": "docs/development/framework-public-type-files.md",
+    "passed": 4694,
+    "source": "docs/behavior/stored-spell-aim-pipeline.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -32,7 +32,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
-      "currentScope": "FFT BIOS RNG algorithm/state is implemented with supplied-BIOS vectors; draw ordering is covered only for bounded CT/sword paths. ZOD-340 adds an isolated0x08 proc decision: execution uses scaled raw*100/32768<19 with one counted draw, preview/AI use no draw, and original family/miss/nullification remain explicit. Fresh/ordinary/no-pending context guards and atomic UInt64 exhaustion are managed bounds. No status or live RNG/HP publication, spell commands, frame equivalence or magic AI entry is claimed. ZOD-344–347 implement bounded nonzero magic entry: immutable equipment contributions and blocking labels, magic-only status order with Abandon diagnostics, exact products and ordered real evade draws in every mode, source hit-versus-rounded-accuracy branching and whole-query evade/proc counter rollback. Healing bypasses evasion; after-hit APIs remain compatible. Fresh/no-earlier-effects and living/empty-status scope remain explicit. No commands, live RNG/HP/status authority or magic AI activation. ZOD-348–357 add immutable current-input and supplied-order ready-cast queries with one proposed MP cost, source mode-specific evasion/proc draws and complete prefix rollback on failure. No live stream adoption, frame-equivalence or magic AI activation.",
+      "currentScope": "FFT BIOS RNG algorithm/state is implemented with supplied-BIOS vectors; draw ordering is covered only for bounded CT/sword paths. ZOD-340 adds an isolated0x08 proc decision: execution uses scaled raw*100/32768<19 with one counted draw, preview/AI use no draw, and original family/miss/nullification remain explicit. Fresh/ordinary/no-pending context guards and atomic UInt64 exhaustion are managed bounds. No status or live RNG/HP publication, spell commands, frame equivalence or magic AI entry is claimed. ZOD-344–347 implement bounded nonzero magic entry: immutable equipment contributions and blocking labels, magic-only status order with Abandon diagnostics, exact products and ordered real evade draws in every mode, source hit-versus-rounded-accuracy branching and whole-query evade/proc counter rollback. Healing bypasses evasion; after-hit APIs remain compatible. Fresh/no-earlier-effects and living/empty-status scope remain explicit. No commands, live RNG/HP/status authority or magic AI activation. ZOD-348–357 add immutable current-input and supplied-order ready-cast queries with one proposed MP cost, source mode-specific evasion/proc draws and complete prefix rollback on failure. No live stream adoption, frame-equivalence or magic AI activation. ZOD-364–369 add pure stable-ID stored-aim resolution, current unit-follow cast integration, blue choice/confirmed selection, immutable charge planning and ready one-cost composition. Current inputs and whole-query RNG rollback are preserved; no commands, live publication or global clock activation.",
       "referenceSources": [
         {
           "path": "include/fft/random.h",
@@ -69,7 +69,10 @@
         "docs/fixtures/behavior/magic-resource-contract-v1.json",
         "docs/fixtures/behavior/magic-cast-contract-v1.json",
         "docs/development/framework-public-type-files.md",
-        "docs/evidence/maintenance/framework-public-type-files-v1.json"
+        "docs/evidence/maintenance/framework-public-type-files-v1.json",
+        "docs/behavior/stored-spell-aim-pipeline.md",
+        "docs/evidence/combat/spell-aim-pipeline-implementation-v1.json",
+        "docs/fixtures/behavior/spell-aim-pipeline-contract-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/Random/RandomState.cs",
@@ -115,7 +118,19 @@
         "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastTargetResult.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastOutcome.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastResolutionResult.cs",
-        "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastQuery.cs"
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastQuery.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicChargePlanProfile.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicChargePlanQuery.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicChargePlanRequest.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicChargePlanResult.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicChargePlanStep.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/PendingMagicCast.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/StoredSpellCastQuery.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/StoredSpellCastRequest.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicReadyPlanProfile.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicReadyPlanQuery.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicReadyPlanRequest.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicReadyPlanResult.cs"
       ],
       "automatedChecks": [
         {
@@ -161,6 +176,34 @@
         {
           "path": "tools/verification/verify_magic_casts.py",
           "scope": "Independent cast/source/prepared audit through the current-input and resource checkers; no original/C/managed execution."
+        },
+        {
+          "path": "tools/verification/verify_spell_aim_pipeline.py",
+          "scope": "19 source-rule/managed-admission phase descriptions; rechecks follow, geometry, magic/resource and prepared-data source receipts; no original/C/managed execution."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/StoredSpellAimTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/StoredSpellCastTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/SpellTargetChoiceTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/SpellAimCaptureTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/MagicChargePlanTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/MagicReadyPlanTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
         }
       ],
       "manualCheckpoint": {
@@ -171,7 +214,7 @@
         "Whole-game consumers and seed lifecycles remain open; the event interpreter uses a separate RNG, whose algorithm/seed/order is not covered by the BIOS proof.",
         "Source VSync consumes BIOS rand once per frame. Managed rendering adds no gameplay draws; exact frame-interleaved retail stream equivalence remains unresolved."
       ],
-      "nextAction": "Extend ordering traces one new rule/caller at a time."
+      "nextAction": "ZOD-370: trace ordinary magic result-publication boundaries before a living/no-status child; retain full clock, commands, special shapes, statuses and magic AI deferrals."
     },
     {
       "id": "COV-SIM-002",
@@ -181,7 +224,7 @@
       "ownerTicket": "ZOD-036",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
-      "currentScope": "Positive-Speed living ordinary units, CT refunds and explicit move/action/Wait are implemented; full scheduler is absent. ZOD-352/354/355 trace and implement pure ordinary charge queries: actual low7 CT then Short Charge ceiling/Non-Charge, distinct original AI full-byte Monster Skill floor/else-Defend quirk, Persevere bypass, and one counter tick with classified block, None255 and zero readiness. No global clock, performance repeat, event, status or command integration is added.",
+      "currentScope": "Positive-Speed living ordinary units, CT refunds and explicit move/action/Wait are implemented; full scheduler is absent. ZOD-352/354/355 trace and implement pure ordinary charge queries: actual low7 CT then Short Charge ceiling/Non-Charge, distinct original AI full-byte Monster Skill floor/else-Defend quirk, Persevere bypass, and one counter tick with classified block, None255 and zero readiness. No global clock, performance repeat, event, status or command integration is added. ZOD-364–369 add pure stable-ID stored-aim resolution, current unit-follow cast integration, blue choice/confirmed selection, immutable charge planning and ready one-cost composition. Current inputs and whole-query RNG rollback are preserved; no commands, live publication or global clock activation.",
       "referenceSources": [
         {
           "path": "src/battle/turn/clock.c",
@@ -202,7 +245,10 @@
         "docs/fixtures/behavior/magic-resource-contract-v1.json",
         "docs/fixtures/behavior/magic-cast-contract-v1.json",
         "docs/development/framework-public-type-files.md",
-        "docs/evidence/maintenance/framework-public-type-files-v1.json"
+        "docs/evidence/maintenance/framework-public-type-files-v1.json",
+        "docs/behavior/stored-spell-aim-pipeline.md",
+        "docs/evidence/combat/spell-aim-pipeline-implementation-v1.json",
+        "docs/fixtures/behavior/spell-aim-pipeline-contract-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/Battle/Turns/TurnCycle.cs",
@@ -244,7 +290,19 @@
         "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastTargetResult.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastOutcome.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastResolutionResult.cs",
-        "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastQuery.cs"
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastQuery.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicChargePlanProfile.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicChargePlanQuery.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicChargePlanRequest.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicChargePlanResult.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicChargePlanStep.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/PendingMagicCast.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/StoredSpellCastQuery.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/StoredSpellCastRequest.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicReadyPlanProfile.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicReadyPlanQuery.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicReadyPlanRequest.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicReadyPlanResult.cs"
       ],
       "automatedChecks": [
         {
@@ -270,6 +328,34 @@
         {
           "path": "tools/verification/verify_magic_casts.py",
           "scope": "Independent cast/source/prepared audit through the current-input and resource checkers; no original/C/managed execution."
+        },
+        {
+          "path": "tools/verification/verify_spell_aim_pipeline.py",
+          "scope": "19 source-rule/managed-admission phase descriptions; rechecks follow, geometry, magic/resource and prepared-data source receipts; no original/C/managed execution."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/StoredSpellAimTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/StoredSpellCastTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/SpellTargetChoiceTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/SpellAimCaptureTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/MagicChargePlanTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/MagicReadyPlanTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
         }
       ],
       "manualCheckpoint": {
@@ -279,7 +365,7 @@
       "openQuestions": [
         "Statuses, charge timers, Mimes, presence changes and AT-list prediction remain unsupported."
       ],
-      "nextAction": "Select one status/charge interaction after a source trace."
+      "nextAction": "ZOD-370: trace ordinary magic result-publication boundaries before a living/no-status child; retain full clock, commands, special shapes, statuses and magic AI deferrals."
     },
     {
       "id": "COV-SIM-003",
@@ -475,7 +561,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
-      "currentScope": "The bounded neutral sword remains executable. A separate ZOD-105 Accumulate profile changes current PA and feeds later sword damage with unchanged RNG order; ZOD-107 adds prepared Windows controls with owner approval. Ability-profile persistence is deferred. ZOD-281 adds explicit ordinary-roster single-target sword execution through the existing formula kernel, including friendly fire, all-occupant critical landings and bystander isolation. ZOD-282 adds separate actual-command/facing sessions; existing pair APIs/AI remain guarded. Exact flat direct geometry now has one Framework owner and an AI facade preserving its extra guards. Actual roster Stone resolves interception and shares the existing actual formula/results and opaque session publisher, including all-occupant landing and real RNG. Pair guards remain; verified roster AI authority/turn integration is still open. ZOD-358–362 add certified ordinary spell map-aim range/area, exact half-height layer selection, per-panel team mutations and source-order occupants, plus a bridge into the existing ready one-cost magic query. No unit-follow/special shapes, live state, commands or magic AI activation. ZOD-363 traces stored map/unit-follow aims through19 files/26 functions and42 independent descriptions: exact UNIT6 versus raw YES7, NoFollowTarget choice scope, preparation versus resolution activity guards, narrowed coordinates and moved-anchor/bystander scenarios. No production behavior changes.",
+      "currentScope": "The bounded neutral sword remains executable. A separate ZOD-105 Accumulate profile changes current PA and feeds later sword damage with unchanged RNG order; ZOD-107 adds prepared Windows controls with owner approval. Ability-profile persistence is deferred. ZOD-281 adds explicit ordinary-roster single-target sword execution through the existing formula kernel, including friendly fire, all-occupant critical landings and bystander isolation. ZOD-282 adds separate actual-command/facing sessions; existing pair APIs/AI remain guarded. Exact flat direct geometry now has one Framework owner and an AI facade preserving its extra guards. Actual roster Stone resolves interception and shares the existing actual formula/results and opaque session publisher, including all-occupant landing and real RNG. Pair guards remain; verified roster AI authority/turn integration is still open. ZOD-358–362 add certified ordinary spell map-aim range/area, exact half-height layer selection, per-panel team mutations and source-order occupants, plus a bridge into the existing ready one-cost magic query. No unit-follow/special shapes, live state, commands or magic AI activation. ZOD-363 traces stored map/unit-follow aims through19 files/26 functions and42 independent descriptions: exact UNIT6 versus raw YES7, NoFollowTarget choice scope, preparation versus resolution activity guards, narrowed coordinates and moved-anchor/bystander scenarios. No production behavior changes. ZOD-364–369 add pure stable-ID stored-aim resolution, current unit-follow cast integration, blue choice/confirmed selection, immutable charge planning and ready one-cost composition. Current inputs and whole-query RNG rollback are preserved; no commands, live publication or global clock activation.",
       "referenceSources": [
         {
           "path": "src/battle/combat/targets.c",
@@ -524,7 +610,10 @@
         "docs/development/targeting-file-layout.md",
         "docs/evidence/maintenance/targeting-file-layout-v1.json",
         "docs/development/framework-public-type-files.md",
-        "docs/evidence/maintenance/framework-public-type-files-v1.json"
+        "docs/evidence/maintenance/framework-public-type-files-v1.json",
+        "docs/behavior/stored-spell-aim-pipeline.md",
+        "docs/evidence/combat/spell-aim-pipeline-implementation-v1.json",
+        "docs/fixtures/behavior/spell-aim-pipeline-contract-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/Battle/Combat/BoundedSwordWeapon.cs",
@@ -592,7 +681,23 @@
         "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetSelectionResult.cs",
         "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetCombatant.cs",
         "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetCastProfile.cs",
-        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellGeometryCastRequest.cs"
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellGeometryCastRequest.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/ConfirmedSpellAim.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimAnchor.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimCapture.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimCaptureProfile.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimCaptureResult.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimRejection.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimResolutionProfile.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimResolutionResult.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimResolver.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetChoice.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetChoiceMode.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetChoiceQuery.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetChoiceResult.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/StoredSpellAim.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/StoredSpellCastQuery.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/StoredSpellCastRequest.cs"
       ],
       "automatedChecks": [
         {
@@ -654,6 +759,34 @@
         {
           "path": "tools/verification/verify_spell_follow_contract.py",
           "scope": "42 normalized source descriptions and 19-file/26-function receipt; prior geometry audit; no original/C/managed execution."
+        },
+        {
+          "path": "tools/verification/verify_spell_aim_pipeline.py",
+          "scope": "19 source-rule/managed-admission phase descriptions; rechecks follow, geometry, magic/resource and prepared-data source receipts; no original/C/managed execution."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/StoredSpellAimTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/StoredSpellCastTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/SpellTargetChoiceTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/SpellAimCaptureTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/MagicChargePlanTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/MagicReadyPlanTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
         }
       ],
       "manualCheckpoint": {
@@ -664,7 +797,7 @@
         "Other weapons, affinities, equipment evade, zodiac interactions, line of sight and area targets remain open.",
         "Unrepresented weapon procs/reactions and wider settled-facing interactions need separate source traces; the admitted sword owner restores living actor incoming facing."
       ],
-      "nextAction": "ZOD-364: resolve certified ordinary stored spell aims as a pure query before bridge integration; preserve commands/scheduling/special-shape/live-state and magic AI deferrals.",
+      "nextAction": "ZOD-370: trace ordinary magic result-publication boundaries before a living/no-status child; retain full clock, commands, special shapes, statuses and magic AI deferrals.",
       "followUpTickets": [
         "ZOD-104",
         "ZOD-105",
@@ -680,7 +813,7 @@
       "ownerTicket": "ZOD-038",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
-      "currentScope": "Accumulate controls remain owner-approved. Throw Stone pure rules now compose through strict targeted content/grants and first-KO lifecycle with Accumulate; TST-001..028 pass. Six-record verified import preserves source-0148 and historical bytes; repeated headless checks cover 46 commands/47 continuations. Windows target controls remain ZOD-111; broader original coverage remains open. Existing complete-roster actual self PA+1 now runs through the opaque roster session publisher/receipt owner; no RNG or new effect. Execution prerequisites are traced; live Stone interception and verified roster AI command/turn authority remain open. Exact flat direct geometry now has one Framework owner and an AI facade preserving its extra guards. Actual roster Stone resolves interception and shares the existing actual formula/results and opaque session publisher, including all-occupant landing and real RNG. Pair guards remain; verified roster AI authority/turn integration is still open. Closed actual roster Dash now shares formula0x37/result publication: range1, Y4, no evasion/trajectory, actual3 damage/Brave draws, complete occupancy and verified/frozen command authority. ZOD-334 traces shared Faith magic through14 files/36 functions and verifies eight prepared Cure/Fire formula/X/Y tiers. ZOD-335/336 add pure signed-halfword product/Faith arithmetic and one already-hit 0x08/0x0C amount projection, preserving modifier order, healing defense bypass and compatibility floors. The legacy amount API requires unchanged intervening weather/target-element steps. Raw amounts do not enable spells, AI entries, MP/charge, target search, result routing/caps or live HP/state changes. ZOD-337/338 add signed stored weather/affinity transforms and an element-aware amount path: fresh work, known Fire-no-Oil and Earth-no-Float/rider, nullification before Faith and separate rounded stores. Healing bypasses damage elements; old neutral API and prior vectors remain equal. ZOD-339 adds raw elemental absorption versus undead-healing routing with a deferred canceled-status-byte0 clear. This remains before procs, full eligibility/caps and live HP/resource/command publication. ZOD-340 adds an isolated0x08 proc decision: execution uses scaled raw*100/32768<19 with one counted draw, preview/AI use no draw, and original family/miss/nullification remain explicit. Fresh/ordinary/no-pending context guards and atomic UInt64 exhaustion are managed bounds. No status or live RNG/HP publication, spell commands, frame equivalence or magic AI entry is claimed. ZOD-341 adds bounded living/non-Petrify/Wall/no-Golem, empty-status result finalization: zero accuracy clears hit without relabeling misses, signed HP fields have only upper999 caps, and retained absorption/weakness/added-effect flags imply pseudo-status even on misses. Private composition retains original family, empty-status proc flags and RNG continuation; unsupported context/counter exhaustion yields no partial result. No HP/status/command publication or magic AI activation. ZOD-343 consolidates these unchanged rules through FaithMagicFormula.ResolveAfterHit with immutable request/result and candidate RNG. The previous projection entry delegates to the same tail; geometry remains independent, and the agreed future 1/3/5 cone is documented only. No supported behavior, targeting or live authority is broadened. ZOD-342 traces magic-only evasion and entry through13 files/21 functions with47 independent descriptions: equipment/type/monster facts, Transparent/Abandon/status ordering, real ordered mode draws, secondary Evadeable, certainty versus rounded-zero hit, labels and atomic managed counter policy. Implementation children are selected; no new runtime support is claimed by the trace. ZOD-344–347 implement bounded nonzero magic entry: immutable equipment contributions and blocking labels, magic-only status order with Abandon diagnostics, exact products and ordered real evade draws in every mode, source hit-versus-rounded-accuracy branching and whole-query evade/proc counter rollback. Healing bypasses evasion; after-hit APIs remain compatible. Fresh/no-earlier-effects and living/empty-status scope remain explicit. No commands, live RNG/HP/status authority or magic AI activation. ZOD-348 traces current MA/Faith, modifier and zodiac input provenance through12 files/16 functions, with56 independent descriptions; implementation children are selected without broadening live state. ZOD-348–357 add typed current MA/Faith/status/support/affinity projections and exact zodiac classification, MP admission/recorded-cost/signed-MP queries, distinct actual/AI timing and counter steps, certified ready-cast preparation and immutable supplied-order target results with MP proposed once. Self-target data is normalized privately after cost; invalid/late target or RNG failure exposes no partial cast proposal. Original arithmetic/after-hit APIs remain unchanged. No original target finder, live HP/MP/status/command publication, magic AI or cone activation. ZOD-358–362 add certified ordinary spell map-aim range/area, exact half-height layer selection, per-panel team mutations and source-order occupants, plus a bridge into the existing ready one-cost magic query. No unit-follow/special shapes, live state, commands or magic AI activation. ZOD-363 traces stored map/unit-follow aims through19 files/26 functions and42 independent descriptions: exact UNIT6 versus raw YES7, NoFollowTarget choice scope, preparation versus resolution activity guards, narrowed coordinates and moved-anchor/bystander scenarios. No production behavior changes. Owner-requested managed MP costs now use nonnegative int through cast definition, resource calculation and recorded results; original packed imports remain byte-based, with source-domain behavior unchanged.",
+      "currentScope": "Accumulate controls remain owner-approved. Throw Stone pure rules now compose through strict targeted content/grants and first-KO lifecycle with Accumulate; TST-001..028 pass. Six-record verified import preserves source-0148 and historical bytes; repeated headless checks cover 46 commands/47 continuations. Windows target controls remain ZOD-111; broader original coverage remains open. Existing complete-roster actual self PA+1 now runs through the opaque roster session publisher/receipt owner; no RNG or new effect. Execution prerequisites are traced; live Stone interception and verified roster AI command/turn authority remain open. Exact flat direct geometry now has one Framework owner and an AI facade preserving its extra guards. Actual roster Stone resolves interception and shares the existing actual formula/results and opaque session publisher, including all-occupant landing and real RNG. Pair guards remain; verified roster AI authority/turn integration is still open. Closed actual roster Dash now shares formula0x37/result publication: range1, Y4, no evasion/trajectory, actual3 damage/Brave draws, complete occupancy and verified/frozen command authority. ZOD-334 traces shared Faith magic through14 files/36 functions and verifies eight prepared Cure/Fire formula/X/Y tiers. ZOD-335/336 add pure signed-halfword product/Faith arithmetic and one already-hit 0x08/0x0C amount projection, preserving modifier order, healing defense bypass and compatibility floors. The legacy amount API requires unchanged intervening weather/target-element steps. Raw amounts do not enable spells, AI entries, MP/charge, target search, result routing/caps or live HP/state changes. ZOD-337/338 add signed stored weather/affinity transforms and an element-aware amount path: fresh work, known Fire-no-Oil and Earth-no-Float/rider, nullification before Faith and separate rounded stores. Healing bypasses damage elements; old neutral API and prior vectors remain equal. ZOD-339 adds raw elemental absorption versus undead-healing routing with a deferred canceled-status-byte0 clear. This remains before procs, full eligibility/caps and live HP/resource/command publication. ZOD-340 adds an isolated0x08 proc decision: execution uses scaled raw*100/32768<19 with one counted draw, preview/AI use no draw, and original family/miss/nullification remain explicit. Fresh/ordinary/no-pending context guards and atomic UInt64 exhaustion are managed bounds. No status or live RNG/HP publication, spell commands, frame equivalence or magic AI entry is claimed. ZOD-341 adds bounded living/non-Petrify/Wall/no-Golem, empty-status result finalization: zero accuracy clears hit without relabeling misses, signed HP fields have only upper999 caps, and retained absorption/weakness/added-effect flags imply pseudo-status even on misses. Private composition retains original family, empty-status proc flags and RNG continuation; unsupported context/counter exhaustion yields no partial result. No HP/status/command publication or magic AI activation. ZOD-343 consolidates these unchanged rules through FaithMagicFormula.ResolveAfterHit with immutable request/result and candidate RNG. The previous projection entry delegates to the same tail; geometry remains independent, and the agreed future 1/3/5 cone is documented only. No supported behavior, targeting or live authority is broadened. ZOD-342 traces magic-only evasion and entry through13 files/21 functions with47 independent descriptions: equipment/type/monster facts, Transparent/Abandon/status ordering, real ordered mode draws, secondary Evadeable, certainty versus rounded-zero hit, labels and atomic managed counter policy. Implementation children are selected; no new runtime support is claimed by the trace. ZOD-344–347 implement bounded nonzero magic entry: immutable equipment contributions and blocking labels, magic-only status order with Abandon diagnostics, exact products and ordered real evade draws in every mode, source hit-versus-rounded-accuracy branching and whole-query evade/proc counter rollback. Healing bypasses evasion; after-hit APIs remain compatible. Fresh/no-earlier-effects and living/empty-status scope remain explicit. No commands, live RNG/HP/status authority or magic AI activation. ZOD-348 traces current MA/Faith, modifier and zodiac input provenance through12 files/16 functions, with56 independent descriptions; implementation children are selected without broadening live state. ZOD-348–357 add typed current MA/Faith/status/support/affinity projections and exact zodiac classification, MP admission/recorded-cost/signed-MP queries, distinct actual/AI timing and counter steps, certified ready-cast preparation and immutable supplied-order target results with MP proposed once. Self-target data is normalized privately after cost; invalid/late target or RNG failure exposes no partial cast proposal. Original arithmetic/after-hit APIs remain unchanged. No original target finder, live HP/MP/status/command publication, magic AI or cone activation. ZOD-358–362 add certified ordinary spell map-aim range/area, exact half-height layer selection, per-panel team mutations and source-order occupants, plus a bridge into the existing ready one-cost magic query. No unit-follow/special shapes, live state, commands or magic AI activation. ZOD-363 traces stored map/unit-follow aims through19 files/26 functions and42 independent descriptions: exact UNIT6 versus raw YES7, NoFollowTarget choice scope, preparation versus resolution activity guards, narrowed coordinates and moved-anchor/bystander scenarios. No production behavior changes. Owner-requested managed MP costs now use nonnegative int through cast definition, resource calculation and recorded results; original packed imports remain byte-based, with source-domain behavior unchanged. ZOD-364–369 add pure stable-ID stored-aim resolution, current unit-follow cast integration, blue choice/confirmed selection, immutable charge planning and ready one-cost composition. Current inputs and whole-query RNG rollback are preserved; no commands, live publication or global clock activation.",
       "referenceSources": [
         {
           "path": "src/battle/combat/formulas.c",
@@ -768,7 +901,10 @@
         "docs/development/targeting-file-layout.md",
         "docs/evidence/maintenance/targeting-file-layout-v1.json",
         "docs/development/framework-public-type-files.md",
-        "docs/evidence/maintenance/framework-public-type-files-v1.json"
+        "docs/evidence/maintenance/framework-public-type-files-v1.json",
+        "docs/behavior/stored-spell-aim-pipeline.md",
+        "docs/evidence/combat/spell-aim-pipeline-implementation-v1.json",
+        "docs/fixtures/behavior/spell-aim-pipeline-contract-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/Battle/Combat/BoundedImmediateAbility.cs",
@@ -887,7 +1023,33 @@
         "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetSelectionResult.cs",
         "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetCombatant.cs",
         "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetCastProfile.cs",
-        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellGeometryCastRequest.cs"
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellGeometryCastRequest.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicChargePlanProfile.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicChargePlanQuery.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicChargePlanRequest.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicChargePlanResult.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicChargePlanStep.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/PendingMagicCast.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/ConfirmedSpellAim.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimAnchor.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimCapture.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimCaptureProfile.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimCaptureResult.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimRejection.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimResolutionProfile.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimResolutionResult.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimResolver.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetChoice.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetChoiceMode.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetChoiceQuery.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetChoiceResult.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/StoredSpellAim.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/StoredSpellCastQuery.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/StoredSpellCastRequest.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicReadyPlanProfile.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicReadyPlanQuery.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicReadyPlanRequest.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicReadyPlanResult.cs"
       ],
       "automatedChecks": [
         {
@@ -1065,6 +1227,34 @@
         {
           "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/MagicMpCostTests.cs",
           "scope": "Integer costs above255, Half MP floors, multi-target one-cost mode behavior, int.MaxValue affordability and negative-cost rejection."
+        },
+        {
+          "path": "tools/verification/verify_spell_aim_pipeline.py",
+          "scope": "19 source-rule/managed-admission phase descriptions; rechecks follow, geometry, magic/resource and prepared-data source receipts; no original/C/managed execution."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/StoredSpellAimTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/StoredSpellCastTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/SpellTargetChoiceTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/SpellAimCaptureTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/MagicChargePlanTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/MagicReadyPlanTests.cs",
+          "scope": "Bounded stored-aim/selection/charge/readiness regressions, known-context guards and private proposal isolation."
         }
       ],
       "manualCheckpoint": {
@@ -1074,7 +1264,7 @@
       "openQuestions": [
         "Original projectile obstruction/elevation/falling, other action families/modifiers, progression/rewards, AI and independent original observation remain open. ZOD-111 owns Windows controls; battle checkpoints remain deferred."
       ],
-      "nextAction": "ZOD-364: resolve certified ordinary stored spell aims as a pure query before bridge integration; preserve commands/scheduling/special-shape/live-state and magic AI deferrals.",
+      "nextAction": "ZOD-370: trace ordinary magic result-publication boundaries before a living/no-status child; retain full clock, commands, special shapes, statuses and magic AI deferrals.",
       "followUpTickets": [
         "ZOD-104",
         "ZOD-105",

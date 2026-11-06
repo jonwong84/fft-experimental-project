@@ -6,9 +6,9 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-369: Resolve ready charge plans through shared magic queries.**
+**ZOD-370: Trace ordinary magic result publication boundaries.**
 [Stored spell aims and phases](behavior/stored-spell-aim-pipeline.md) records
-completed ZOD-364–368, using clean source
+completed ZOD-364–369, using clean source
 `11464943bbdbd2a0af022d90cb7f10455cf911df`. Exact UNIT6 follows current identity/
 position; YES7 and other types use byte-narrowed stored tiles. Preparation checks
 anchor activity separately from resolution centre selection and occupant filtering.
@@ -263,20 +263,24 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: the Framework public-type file pass passes locked restore,
-  a zero-warning/error Release build and **4,670 .NET cases** (1,629 Framework,
-  1,217 AI,838 Content,328 CLI,206 AssetTool,428 Client,24 Engine). All
-  **695 Python tests** pass. Nine sequential feature-folder builds and an SDK
-  Roslyn comparison confirm all 383 namespace-level declarations/bodies/comments/
-  attributes/imports unchanged. The 373 distinct public types use matching files;
-  two partial types retain separate parts, and small internal helpers remain.
-  No tests or fixtures were changed or added. Coverage, 2,154 local links and
-  preservation checks pass. Seven TRX reports/logs are under ignored
-  `scratch/framework-public-type-layout/`.
+- Validation: ZOD-364–369 pass locked restore, a zero-warning/error Release
+  build and **4,694 .NET cases** (1,653 Framework,1,217 AI,838 Content,328 CLI,
+  206 AssetTool,428 Client,24 Engine). All **703 Python tests** pass.
+  Twenty-four new managed cases include 19 new phase descriptions and applicable
+  prior source literals, immutable proposals and rejection/rollback boundaries.
+  Eight new Python cases independently compose the 19 phase descriptions.
+  Focused magic132, fresh follow19/26 and resource12/10 fingerprints, prior
+  magic/prepared-data, algorithm guide, coverage, links, layout and preservation
+  audits pass. Seven TRX reports/logs are under ignored `scratch/spell-aim-364-369/`.
+  Existing calculation/geometry/resource bodies and all pre-batch tests/fixtures
+  are unchanged; the existing geometry record gains only optional NoFollowTarget/
+  Auto flags. The 26 new public types follow matching-file layout; existing partial
+  parts remain. Actual charge setup stays separate from the original AI delay
+  quirk; AiSimulation here evaluates a ready plan, not AI charge planning.
   Original imports, content, AI, host, all nine owner drafts, AbilityToggles and
-  JobStats are unchanged. No project, lock, dependency, command, scheduling or
-  magic AI activation changes. MP costs retain the owner's nonnegative-int
-  adjustment. ZOD-364 remains next; other-project organization stays separate.
+  JobStats are unchanged. No project, lock, dependency or activation changes.
+  MP costs remain nonnegative int. No live commands, state/RNG adoption, complete
+  clock or status processing. ZOD-370 traces publication next.
   Prepared Dash/Stone import checks remain at ZOD-329; their code/input is unchanged.
   Python uses repository-pinned Pillow12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.

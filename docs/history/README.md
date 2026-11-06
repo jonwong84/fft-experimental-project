@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 335 entries index completed bounded work; they do not mean the full game is complete.
+These 336 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -392,3 +392,5 @@ These 335 entries index completed bounded work; they do not mean the full game i
 - [ZOD-367 — Capture admitted player spell confirmations](../behavior/stored-spell-aim-pipeline.md#zod-367)
 
 - [ZOD-368 — Prepare immutable ordinary spell charge plans](../behavior/stored-spell-aim-pipeline.md#zod-368)
+
+- [ZOD-369 — Resolve ready charge plans through shared magic queries](../behavior/stored-spell-aim-pipeline.md#zod-369)
