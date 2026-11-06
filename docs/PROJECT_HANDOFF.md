@@ -14,6 +14,12 @@ failure and ordering rules. The draft EquipmentSlot and all owner files remain
 unchanged; no equipment effect is activated. The owner agreed to shared C#
 formula/mechanic implementations with individual abilities in validated JSON;
 proposed Formulas/CombatRules namespaces are recorded in the architecture.
+The owner also requires [formula reassignment](architecture/ability-effect-families.md#formula-reassignment-requirement):
+Dash must be able to select Repeating Fist's formula without changing its identity
+or separately authored targeting/presentation. The current fixed bindings and
+Dash-specific AI projection do not support it. The upcoming refactor needs
+formula-specific parameters, a traced0x32 handler and shared execution/preview/AI
+dispatch; preserve original content and keep edits explicit as custom content.
 This source study does not start that migration or ZOD-418.
 All 770 current Python tests pass, including eight new selector tests. The
 [study receipt](evidence/combat/equipment-selection-study-v1.json) records the

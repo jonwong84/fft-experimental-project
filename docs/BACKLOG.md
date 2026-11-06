@@ -16,6 +16,10 @@ and autonomous magic turns remain separate. The owner-requested
 [ZOD-419 equipment selector study](architecture/equipment-effect-selection.md)
 is complete; typed equipment policies and formula-family content direction are
 recorded without activating equipment effects or modifying owner drafts.
+The next formula-family refactor must support [editable formula assignment](architecture/ability-effect-families.md#formula-reassignment-requirement),
+including Dash selecting Repeating Fist's formula with valid parameters and
+consistent execution/preview/AI. This is a required future capability; the
+current closed Dash/Stone definitions do not implement it.
 There are 34 open tickets below. The 385 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs

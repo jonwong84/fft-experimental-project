@@ -95,6 +95,21 @@ retain formula-specific order and failure behavior. The [effect-family inventory
 remains the map for choosing subsequent bounded work. AbilityToggles and owner
 draft consolidation remain deferred.
 
+### Formula reassignment
+
+The owner explicitly requires an ability's formula assignment to be editable.
+Dash must be able to select the formula normally used by Repeating Fist while
+retaining its separately authored identity, range/targeting, costs and animation.
+Ability identity must not hard-code dispatch to its original formula or AI damage
+calculation. Formula selection includes validated formula-specific parameters;
+changing a formula does not silently copy every property of another ability.
+Execution, preview and AI must resolve the same selected definition through their
+appropriate mode-specific rules. Original content retains its original assignment;
+edited assignments belong to explicit custom content. These are acceptance
+requirements for the upcoming refactor, not implemented functionality today.
+The [source/data boundary and required proof](ability-effect-families.md#formula-reassignment-requirement)
+record the Dash/Repeating Fist example.
+
 ## Current repository, verified
 
 - `Fft.Editor` is a separate Windows Forms presentation adapter for the

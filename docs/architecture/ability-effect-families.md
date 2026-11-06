@@ -79,6 +79,45 @@ Its per-ability slot policies become explicit typed content rather than new
 ability-specific classes; the source hand choice and failure paths stay intact.
 The broad namespace/content migration is not implemented by that source study.
 
+## Formula reassignment requirement
+
+The owner wants to assign Dash the formula normally used by Repeating Fist.
+At the pinned reference revision above, Dash uses0x37 and
+[`formula_repeating_fist`](https://github.com/adamrt/fft_decomp/blob/11464943bbdbd2a0af022d90cb7f10455cf911df/src/battle/combat/formulas.c#L785)
+is0x32. The latter reads both X and Y, calls the shared physical-modifier and
+critical-hit steps, adds the prepared XA/YA terms, then applies its random factor.
+It does not call0x37's damage-and-two-Brave-roll-knockback helper. Its critical
+step can itself request knockback. This is a distinct full formula path, not
+an alias for0x37 with a different power value. This focused check does not
+complete0x32's width/modifier/RNG/admission trace or implement its handler.
+
+Formula IDs should select reusable implementations with typed parameters. A
+formula change requires a valid parameter definition for the destination formula;
+do not silently reinterpret one generic Power field or copy another ability's
+complete content record. A raw compatibility formula-byte edit and a semantic
+formula-plus-parameters edit are different operations and need explicit handling.
+Range, targeting restrictions, cost/timing, presentation and independently owned
+execution flags remain separate. Formula-owned critical/knockback/result behavior
+must follow the selected implementation; retaining a special Dash-only tail
+would defeat the reassignment. A separately configurable custom extra effect
+would require an explicit rule and ordering, not an implicit retained behavior.
+
+Current `TargetedAbilityDefinition`/schema1 companions and bounded Dash/Stone
+profiles intentionally admit fixed effects. Actual execution still selects their
+closed paths, and Dash's AI projection directly calls `DashFormula`. They do
+**not** support this reassignment today. Extend the model/package and shared
+execution/AI owners together, preserving existing schema1 content and regressions.
+Reject unsupported formulas or incomplete parameter/context combinations at
+validation; do not silently execute Dash's original formula instead.
+
+Required refactor proof: keep Dash's identity/targeting/presentation constant,
+select a supported0x32 parameter definition in custom content, and verify that
+actual execution, preview and AI all use it with their correct RNG contracts.
+Keep original Dash/Throw Stone definitions and behavior unchanged. No new
+ability-specific RepeatingFist class, editor work or runtime C dependency is
+needed to express the assignment. The supported0x32 handler and its source trace
+are necessary before the example can execute.
+
 ## Navigation buckets and next development step
 
 The tool groups all100 dispatch slots once into eleven navigation buckets:
