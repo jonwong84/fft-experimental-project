@@ -121,3 +121,13 @@ new award at99 and preserves a larger existing accumulator. It does not add a
 mode guard absent from the source. Three managed cases pass14 literals, a
 multi-target/reaction tape and post-increment KO255/0 boundaries. The helper
 does not inflict KO, increment its count, apply career EXP or draw RNG.
+
+## ZOD-379
+
+`ActionRewardCalculation` computes pre-level JP amounts and numeric EXP/level
+balances. Monsters bypass job-level reads; other actors retain the source nibble
+domain. EXP overflow is capped before one level check, excess is lost and level99
+holds EXP99. A numeric level change explicitly requires stat growth, with no
+claim to updated raw/derived stats. Four further managed cases pass16 literals,
+pre-level3 versus new-level4 JP and the monster early return. Ten cumulative
+managed cases pass; no battle or career state is published.

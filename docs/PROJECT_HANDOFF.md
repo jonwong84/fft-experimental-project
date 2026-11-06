@@ -6,9 +6,9 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-379: Calculate action EXP balances and JP amounts.**
+**ZOD-380: Calculate job-point balances and threshold levels.**
 [Action outcomes and rewards](behavior/action-outcomes-and-rewards.md) records
-completed ZOD-376–378, pinned to clean read-only source
+completed ZOD-376–379, pinned to clean read-only source
 `11464943bbdbd2a0af022d90cb7f10455cf911df` (11 files/23 functions).
 Primary markers precede misses; EXP uses the maximum award; JP spillover precedes
 Gained JP Up and uses actor current team versus recipient initial team.

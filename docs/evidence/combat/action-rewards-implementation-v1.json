@@ -21,6 +21,12 @@
       "managedBaseRevision": "dc9151a9dbdf0232085d89165c063126ee3f882c",
       "validation": "Six cumulative managed cases passed:14 literal EXP awards, maximum-not-sum multi-target/reaction tape, bonus/floor/cap and post-increment KO boundaries.",
       "reports": "scratch/action-rewards-376-381/"
+    },
+    {
+      "ticket": "ZOD-379",
+      "managedBaseRevision": "0a96d5d13e161ef64739a8416c74643e558fb4c3",
+      "validation": "Ten cumulative managed cases pass;16 EXP-balance/JP amount literals, pre-level JP and monster selective bypass. Numeric level changes explicitly require separate stat growth.",
+      "reports": "scratch/action-rewards-376-381/"
     }
   ]
 }
