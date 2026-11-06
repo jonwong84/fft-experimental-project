@@ -5,6 +5,7 @@ using System.Text.Json.Serialization;
 using Zodiac.Framework;
 using Zodiac.Content.Definitions;
 using Zodiac.Content.Definitions.Job;
+using Zodiac.Content.ContentPackages;
 
 namespace Zodiac.Content.BattleSetup;
 
@@ -33,12 +34,12 @@ public sealed class PreparedOrdinaryMagicBattle
     public ImmutableArray<AssetId> SpellOrder { get; }
     public string Ruleset { get; }
     public ImmutableDictionary<string, JobDefinition> JobDefinitions { get; }
+    public ContentPackage? MetadataPackage { get; }
+    public ImmutableDictionary<AssetId, AbilityMetadataDefinition> AbilityMetadata { get; }
 
-    private PreparedOrdinaryMagicBattle(OrdinaryMagicPackageDocument document)
+    private PreparedOrdinaryMagicBattle(OrdinaryMagicPackageDocument document, ContentPackage? metadata)
     {
-        if (document.Format != "fft.ordinary-magic-battle" || document.SchemaVersion != 1 ||
-            document.Profile != Profile || document.Ruleset is not ("original-fft" or "authored-ordinary"))
-            throw new InvalidDataException("Unsupported ordinary magic package format, version, profile or ruleset.");
+        ValidateHeader(document);
         if (document.Width < 1 || document.Depth < 1 || (long)document.Width * document.Depth > 256 ||
             document.Jobs.Length > 4096 || document.Unlocks.Length > 4096 || document.Spells.Length > 4096 ||
             document.Units.Length > 256 || document.Jobs.Any(j => j is null || j.Growth is null) || document.Spells.Any(s => s is null) ||
@@ -83,6 +84,34 @@ public sealed class PreparedOrdinaryMagicBattle
         var map = new BattleMapDefinition(document.Width, document.Depth, 1,
             Enumerable.Repeat(new BattleTile(ground, document.Height), document.Width * document.Depth).ToArray());
         Definition = new(map, units, spells, catalog, document.JobThresholds.ToImmutableArray(), new(document.Seed, 0), ground);
+        if (document.SchemaVersion == 1 && metadata is not null || document.SchemaVersion == 2 &&
+            (metadata is null || metadata.PackageId != document.MetadataPackageId || metadata.Kind != ContentPackageKind.Baseline ||
+             !metadata.Jobs.IsEmpty || metadata.Abilities.Length != Definition.Spells.Count ||
+             document.Ruleset == "original-fft" && metadata.ProfileId != "fft.ps1:profile/scus-94221"))
+            throw new InvalidDataException("A version2 spell package requires its matching selected ability/skillset metadata companion.");
+        MetadataPackage = metadata;
+        AbilityMetadata = metadata?.Abilities.ToImmutableDictionary(a => new AssetId(a.Id.Value)) ??
+            ImmutableDictionary<AssetId, AbilityMetadataDefinition>.Empty;
+        if (document.SchemaVersion == 2 && !Definition.Spells.Keys.ToHashSet().SetEquals(AbilityMetadata.Keys))
+            throw new InvalidDataException("Every executable spell must have exactly one matching metadata definition.");
+        if (metadata is not null && (JobDefinitions.Values.Any(j => !metadata.Skillsets.Any(s => s.Id == j.PrimarySkillsetId)) ||
+            !metadata.Skillsets.SelectMany(s => s.Slots).Where(s => s.AbilityId is not null)
+                .Select(s => new AssetId(s.AbilityId!.Value.Value)).ToHashSet().SetEquals(Definition.Spells.Keys)))
+            throw new InvalidDataException("Selected skillsets must bind every spell and every prepared job primary skillset.");
+        if (metadata is not null)
+            foreach (var ability in metadata.Abilities.Where(a => a.LearnOnHit))
+            {
+                if (metadata.Skillsets.Sum(s => s.Slots.Count(slot => slot.AbilityId == ability.Id)) != 1)
+                    throw new NotSupportedException("Learn-on-hit with repeated skillset slots needs the deferred per-job learning state.");
+                foreach (var unit in document.Units)
+                {
+                    var primary = metadata.Skillsets.Single(s => s.Id == JobDefinitions[unit.JobId].PrimarySkillsetId);
+                    if (!unit.LearnedSpells.Contains(ability.Id.Value, StringComparer.Ordinal) &&
+                        primary.Slots.Any(s => s.AbilityId == ability.Id) &&
+                        document.Units.Any(other => other.Id != unit.Id && other.LearnedSpells.Contains(ability.Id.Value, StringComparer.Ordinal)))
+                        throw new NotSupportedException("Learn-on-hit offers are not yet supported by this ordinary encounter profile.");
+                }
+            }
         UnitNames = document.Units.ToImmutableDictionary(u => new BattleUnitId(u.Id), u => u.Name);
         SpellNames = document.Spells.ToImmutableDictionary(s => new AssetId(s.Id), s =>
             !string.IsNullOrWhiteSpace(s.Name) && s.Name.Length <= 32 && !s.Name.Any(char.IsControl)
@@ -95,16 +124,43 @@ public sealed class PreparedOrdinaryMagicBattle
     public static PreparedOrdinaryMagicBattle Load(LooseAssetStore store)
     {
         ArgumentNullException.ThrowIfNull(store);
-        return ReadJson(new UTF8Encoding(false, true).GetString(store.ReadAllBytes(AssetId, MaxJsonBytes)));
+        var utf8 = new UTF8Encoding(false, true);
+        string json = utf8.GetString(store.ReadAllBytes(AssetId, MaxJsonBytes));
+        var document = ParseDocument(json);
+        ContentPackage? metadata = null;
+        if (document.MetadataPackageId is { } id)
+        {
+            try { metadata = ContentPackage.ReadJson(utf8.GetString(store.ReadAllBytes(new(id), ContentPackage.MaxJsonBytes))); }
+            catch (ContentPackageValidationException error) { throw new InvalidDataException("Invalid spell metadata companion: " + error.Message, error); }
+        }
+        return ReadJson(json, metadata);
     }
 
-    public static PreparedOrdinaryMagicBattle Create(OrdinaryMagicPackageDocument document)
+    public static PreparedOrdinaryMagicBattle Create(OrdinaryMagicPackageDocument document, ContentPackage? metadata = null)
     {
         ArgumentNullException.ThrowIfNull(document);
-        return ReadJson(JsonSerializer.Serialize(document, Options));
+        return ReadJson(JsonSerializer.Serialize(document, Options), metadata is null ? null : ContentPackage.ReadJson(metadata.ToJson()));
     }
 
-    public static PreparedOrdinaryMagicBattle ReadJson(string json)
+    public static PreparedOrdinaryMagicBattle ReadJson(string json, ContentPackage? metadata = null)
+    {
+        ArgumentNullException.ThrowIfNull(json);
+        try { return new(ParseDocument(json), metadata); }
+        catch (Exception e) when (e is ArgumentException or NotSupportedException or OverflowException or KeyNotFoundException)
+        { throw new InvalidDataException("Invalid prepared magic content: " + e.Message, e); }
+    }
+
+    private static void ValidateHeader(OrdinaryMagicPackageDocument document)
+    {
+        if (document.Format != "fft.ordinary-magic-battle" || document.SchemaVersion is not (1 or 2) ||
+            document.Profile != Profile || document.Ruleset is not ("original-fft" or "authored-ordinary") ||
+            document.SchemaVersion == 1 && document.MetadataPackageId is not null ||
+            document.SchemaVersion == 2 && string.IsNullOrWhiteSpace(document.MetadataPackageId))
+            throw new InvalidDataException("Unsupported ordinary magic package format, version, profile, ruleset or companion reference.");
+        if (document.MetadataPackageId is { } id) _ = new AssetId(id);
+    }
+
+    private static OrdinaryMagicPackageDocument ParseDocument(string json)
     {
         ArgumentNullException.ThrowIfNull(json);
         if (Encoding.UTF8.GetByteCount(json) > MaxJsonBytes)
@@ -113,7 +169,8 @@ public sealed class PreparedOrdinaryMagicBattle
         {
             var document = JsonSerializer.Deserialize<OrdinaryMagicPackageDocument>(json, Options)
                 ?? throw new InvalidDataException("Prepared magic document is empty.");
-            return new(document);
+            ValidateHeader(document);
+            return document;
         }
         catch (Exception e) when (e is JsonException or ArgumentException or NotSupportedException or OverflowException or KeyNotFoundException)
         {

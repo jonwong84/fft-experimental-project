@@ -40,15 +40,19 @@ public sealed class PrepareOrdinaryMagicBattleCommand(string workspaceRoot)
             };
             var result = OriginalOrdinaryMagicImporter.ImportVerified(File.ReadAllBytes(input), selection);
             byte[] package = Encoding.UTF8.GetBytes(result.Package.ToJson());
+            var metadata = result.Package.MetadataPackage ?? throw new InvalidDataException("Verified spell preparation requires its metadata companion.");
+            byte[] metadataBytes = Encoding.UTF8.GetBytes(metadata.ToJson());
             string parent = Path.GetDirectoryName(destination)!;
             Directory.CreateDirectory(parent);
             staging = Path.Combine(parent, ".fire-" + Guid.NewGuid().ToString("N"));
             Directory.CreateDirectory(staging);
             File.WriteAllBytes(Path.Combine(staging, "ordinary-magic.package.json"), package);
+            File.WriteAllBytes(Path.Combine(staging, "ordinary-magic.metadata.json"), metadataBytes);
             File.WriteAllText(Path.Combine(staging, selection == OriginalOrdinarySpellSelection.Fire ? "fire.import.json" : "ordinary-magic.import.json"),
                 OriginalOrdinaryMagicImporter.Provenance(result), new UTF8Encoding(false));
             new PreparedAssetManifest([new(PreparedOrdinaryMagicBattle.AssetId, "ordinary-magic.package.json", package.Length,
-                Convert.ToHexStringLower(SHA256.HashData(package)))])
+                Convert.ToHexStringLower(SHA256.HashData(package))), new(new(metadata.PackageId), "ordinary-magic.metadata.json", metadataBytes.Length,
+                Convert.ToHexStringLower(SHA256.HashData(metadataBytes)))])
                 .SaveToFile(Path.Combine(staging, PreparedAssetManifest.FileName));
             _ = PreparedOrdinaryMagicBattle.Load(LooseAssetStore.Load(staging));
             Directory.Move(staging, destination);
@@ -64,7 +68,7 @@ public sealed class PrepareOrdinaryMagicBattleCommand(string workspaceRoot)
         {
             if (staging is not null && Directory.Exists(staging))
             {
-                foreach (string name in new[] { "ordinary-magic.package.json", "fire.import.json", "ordinary-magic.import.json", PreparedAssetManifest.FileName })
+                foreach (string name in new[] { "ordinary-magic.package.json", "ordinary-magic.metadata.json", "fire.import.json", "ordinary-magic.import.json", PreparedAssetManifest.FileName })
                     File.Delete(Path.Combine(staging, name));
                 Directory.Delete(staging);
             }

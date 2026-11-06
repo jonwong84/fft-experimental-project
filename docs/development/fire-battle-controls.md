@@ -17,6 +17,9 @@ dotnet run --project src/Fft.Client -c Release -- --fire-battle --content-root s
 
 Choose a fresh preparation directory. It contains strict prepared JSON, a SHA-256
 asset manifest and offline import provenance. All stay ignored under scratch.
+Current preparation uses battle schema2 and adds a required hash-checked primary
+ability/selected-skillset metadata companion. Older schema1 prepared files still
+load. [Metadata roles and the remaining learning stage](../behavior/ordinary-spell-metadata.md).
 The running client needs only the manifest and prepared content; it never opens
 the executable, BIN or C reference checkout.
 

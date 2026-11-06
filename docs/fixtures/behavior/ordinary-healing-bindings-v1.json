@@ -21,7 +21,19 @@
       "flags2": 0,
       "flags3": 226,
       "flags4": 0,
-      "expectedHealingAtMa8Faith70": 54
+      "expectedHealingAtMa8Faith70": 54,
+      "learnOnHit": false,
+      "learnOnHitRateRaw": 90,
+      "serializedClassRaw": 1,
+      "showName": true,
+      "canLearnWithJp": true,
+      "unknownTypeBit4": false,
+      "primaryAiFlags": [
+        129,
+        117,
+        0,
+        128
+      ]
     },
     {
       "id": 16,
@@ -40,7 +52,19 @@
       "flags2": 0,
       "flags3": 226,
       "flags4": 66,
-      "expectedDamageAtMa8Faith70": 54
+      "expectedDamageAtMa8Faith70": 54,
+      "learnOnHit": false,
+      "learnOnHitRateRaw": 90,
+      "serializedClassRaw": 1,
+      "showName": true,
+      "canLearnWithJp": true,
+      "unknownTypeBit4": false,
+      "primaryAiFlags": [
+        130,
+        85,
+        2,
+        128
+      ]
     }
   ]
 }

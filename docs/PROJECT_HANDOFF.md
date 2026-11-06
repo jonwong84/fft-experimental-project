@@ -6,19 +6,22 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-397: Bind ordinary spell primary AI metadata.**
-[Fire execution](behavior/ordinary-magic-execution.md) is complete through ZOD-391.
-[Elemental execution](behavior/elemental-magic-execution.md) completes ZOD-392–393;
-[Cure](behavior/ordinary-healing-execution.md) completes ZOD-394.
-[Ordinary walking](behavior/ordinary-magic-movement.md) records completed movement
-work. Source remains pinned to clean read-only
+**ZOD-398: Trace and execute bounded learn-on-hit reports.**
+The owner asked to finish the current work after the usage interruption; the
+batch is closed at ZOD-397. Do not continue the earlier five-hour run automatically.
+[Primary spell metadata](behavior/ordinary-spell-metadata.md) records the current
+schema2 binding, source roles and learning-stage gap. Fire, all elemental tiers,
+Cure and confirmed flat movement execute through the shared player command path.
+Source remains pinned to clean read-only
 `11464943bbdbd2a0af022d90cb7f10455cf911df`.
-Fire works end to end through prepared content, explicit grants, player aim/charge,
-actual HP/MP/status/RNG/rewards, replay/restart and a runnable native client.
-Continue validated development within the owner's five-hour work window.
-Preserve old sword/AI paths, owner drafts/JobStats and Knight EquipmentSlot intent.
-Concrete spell host work is authorized; editor, generic magic AI and other
-documented deferrals remain separate.
+
+Tier4 LearnOnHit is real metadata. The existing numeric path does not yet perform
+its post-action LearnChecked/report stage. The checked Squire target is ineligible
+and loses no learning RNG, but its markers remain pre-learning-report data.
+Schema2 rejects potentially eligible unlearned recipients and repeated learnable
+slot bindings until ZOD-398 owns learning state and explicit report decisions.
+General magic AI remains separate. Preserve owner drafts/JobStats, the independent
+targeting-format edit, Knight EquipmentSlot intent and all other documented gates.
 
 [Managed MP costs](development/managed-magic-mp-costs.md) now use nonnegative `int`
 through spell definitions, resource calculation and recorded cast/resource cost.
@@ -267,42 +270,33 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: ZOD-387–396 pass locked restore, a zero-warning/error Release
-  build and **4,869 .NET cases** (1,753 Framework,1,217 AI,857 Content,370 CLI,
-  206 AssetTool,442 Client,24 Engine). All **745 Python tests** pass.
-  New status descriptions, authoritative cast scenarios, strict prepared content /
-  import boundaries and player routes cover real HP/MP/status/RNG/reward/growth
-  publication, paid failures, replay and restart. Windows GPU Fire-only and twelve-spell runs pass learned selection,
-  aim, charge, other-unit turn, Critical and first-KO controls through resized
-  key/pointer routes, with complete headless replay matches. Aim/resolution/KO
-  captures were visually inspected; physical input and original media are not
-  claimed. [Launch and controls](development/fire-battle-controls.md).
-  Fresh status/clock source fingerprints, growth/unlock/reward prepared-data,
-  algorithm-guide, coverage, links, public-file layout and preservation checks
-  pass. Fire preparation repeats all three files exactly and independently
-  verifies all34 Fire source records, selected job growth,19 unlock rows and8 thresholds.
-  The elemental package binds twelve reviewed rows/56 source records to the same
-  formula/command owners. All12 native menu choices and per-tier managed execution
-  pass. The Cure/Fire package independently verifies38 records, healing/Critical
-  and zero formula draws, pending-cast preservation and its native replay; owner drafts remain preserved. One unrelated Python banner-directory
-  access-denied error passed on a fresh full suite run.
-  Seven TRX reports, native captures and audit logs stay under ignored
-  `scratch/fire-execution-387/` (latest TRX set `trx-all-396`). No original or C execution. Source remains clean
-  at `11464943bbdbd2a0af022d90cb7f10455cf911df`.
-  Nine owner drafts/JobStats and Knight EquipmentSlot intent are preserved.
-  The owner's separate formatting change in SpellTargetChoiceQuery remains
-  unstaged. Dependencies and existing sword/AI paths are unchanged; MP costs
-  remain int. The dedicated prepared spell host and full confirmed cost1 flat movement are
-  active. Walk previews/confirmation, source final headings, Move/Act CT settlement
-  and charge preservation pass in all three native profiles. Initial facing and
-  copied Jump are immutable inputs; automatic wait-facing remains deferred. Full status /
-  affinity/equipped-flag refresh, reactions, corpse/crystal/objective scheduling,
-  generic magic AI and frame RNG equivalence remain separate.
-  Prepared Dash/Stone import checks remain at ZOD-329; their code/input is unchanged.
-  Python uses repository-pinned Pillow12.3.0 from ignored
+- Validation: ZOD-387–397 pass the retained locked restore, a zero-warning/error
+  Release build and **4,883 .NET cases** (1,753 Framework,1,217 AI,869 Content,
+  372 CLI,206 AssetTool,442 Client,24 Engine). All **747 Python tests** pass.
+  Latest logs/seven TRX reports are in ignored `scratch/fire-execution-387/`,
+  set `trx-all-397-final`. Source/status/clock/growth/reward and ordinary metadata /
+  movement audits pass. No dependency changes or C/original execution.
+  Fresh schema2 Fire/elemental/Cure packages verify35/57/39 source records and
+  one/twelve/two primary ability definitions. Main and metadata assets are hashed;
+  schema1 remains loadable without inferred AI metadata. Metadata uses the existing
+  immutable ability/skillset models, with no duplicate job model or toggle rewrite.
+  Native runs `native-397-final-fire`, `-elemental`, `-healing` pass spell selection,
+  full Move preview/confirmation/heading, charge, HP/MP/status/rewards/growth,
+  restart and KO; complete headless replays match. Gameplay hashes are identical
+  to ZOD-396, confirming metadata does not alter execution. Captures were inspected
+  at the earlier visual checkpoints; these are programmed routes, not physical
+  input or original-media fidelity checks. Frame RNG equivalence remains open.
+  All ten preservation files (nine owner drafts plus JobStats) retain their
+  recorded blobs. The owner's SpellTargetChoiceQuery formatting remains unstaged.
+  Framework public files retain matching names (458 declarations at ZOD-396);
+  existing partial parts remain. MP costs remain int. Existing sword/AI paths,
+  editor and Knight slot intent are preserved. Automatic wait-facing, general
+  terrain/post-move effects, general magic AI and full status/corpse scheduling
+  remain separate. Learn-on-hit post-action state is the next concrete gap.
+  Python uses repository-pinned Pillow12.3.0 in ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
-  Nine historical checkpoint audits last passed at ZOD-158; unchanged snapshots
-  were not rerun. Fire's first-KO objective and flat encounter are authored.
+  Historical whole-worktree audits retain old baselines; the current movement
+  verifier checks their source/description portions without retired managed paths.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
   introduction proofs and synthetic world Save/Load exist. Original campaign,
   full combat/content, audio and general AI remain incomplete. See the

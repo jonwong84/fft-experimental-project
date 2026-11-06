@@ -4,12 +4,11 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-397 (Bind ordinary spell primary AI metadata).**
-[Fire execution](behavior/ordinary-magic-execution.md) is complete through ZOD-391.
-[Elemental spells](behavior/elemental-magic-execution.md) complete ZOD-392–393;
-[Cure](behavior/ordinary-healing-execution.md) completes ZOD-394.
-[Ordinary walking](behavior/ordinary-magic-movement.md) records the current movement work.
-There are 34 open tickets below. The 363 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-398 (Trace and execute bounded learn-on-hit reports).**
+Prepared Fire, elemental/Cure casting, confirmed movement and
+[primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
+The current batch is closed; the next ticket remains ready.
+There are 34 open tickets below. The 364 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -33,11 +32,18 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-397 — Bind ordinary spell primary AI metadata
+### ZOD-398 — Trace and execute bounded learn-on-hit reports
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-396
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-397
 
-Bind selected original spell primary AI metadata through the existing immutable ability definition model, keeping execution geometry/formulas separate and preserving unknown bits offline. Select a bounded AI consumer before broader activation.
+Trace the post-reward marker scan, current-job learned slots, source ordering,
+raw-rate RNG and report acceptance/decline before extending tier4 spell encounters
+or general magic AI. Publish LearnChecked even for an ineligible affected target;
+preserve the source actor exclusion, first-learner return and already-checked
+behavior. Add explicit owned learning/report state before admitting eligible
+unlearned recipients; keep schema2 fail-closed guards until then. See
+[source finding and current limits](behavior/ordinary-spell-metadata.md#selected-follow-up-zod-398).
+Retain Fire/Cure, per-tier numeric, movement, replay and native regressions.
 Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
 Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.
 

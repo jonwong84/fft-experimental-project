@@ -63,6 +63,12 @@
       "managedBaseRevision": "191f867b7a086a3d45fa29fde8a0c2376695ca46",
       "validation": "Release zero warnings/errors; all 4869 .NET and 745 Python tests pass. Fresh Fire/elemental/Cure native full-move preview/confirmation/heading, spell/restart/KO routes match headless replay. Move captures inspected. Full source/layout/preservation checks retained; owner formatting stays unstaged.",
       "reports": "scratch/fire-execution-387/"
+    },
+    {
+      "ticket": "ZOD-397",
+      "managedBaseRevision": "983e0ea8f2df0bf670b8f7a031c3aca6d5b2b9a0",
+      "validation": "Release zero warnings/errors; all 4883 .NET and 747 Python tests pass. Schema2 companion, source slots/flags and unknown bits validated. All three native profiles match complete replay and prior gameplay hashes. Fail-closed learning admission added; post-action learning remains ZOD-398.",
+      "reports": "scratch/fire-execution-387/"
     }
   ]
 }

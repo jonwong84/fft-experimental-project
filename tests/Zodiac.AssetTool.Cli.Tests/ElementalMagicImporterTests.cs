@@ -16,7 +16,7 @@ public sealed class ElementalMagicImporterTests
     public void Every_selected_spell_runs_the_shared_command_path_with_its_own_power_cost_and_charge(int originalId, int damage, int cost, int charge)
     {
         var import = OriginalOrdinaryMagicImporter.DecodeSelection(Image(), OriginalOrdinarySpellSelection.ElementalTiers);
-        Assert.Equal(56, import.Records.Length); Assert.Equal(12, import.Package.Definition.Spells.Count);
+        Assert.Equal(57, import.Records.Length); Assert.Equal(12, import.Package.Definition.Spells.Count);
         var definition = import.Package.Definition;
         var spell = definition.Spells.Single(p => p.Value.OriginalAbilityId == originalId).Value;
         var state = definition.Start();

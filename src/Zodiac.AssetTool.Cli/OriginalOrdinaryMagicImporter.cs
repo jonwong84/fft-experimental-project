@@ -3,6 +3,8 @@ using System.Collections.Immutable;
 using System.Text.Json;
 using Zodiac.AssetTool;
 using Zodiac.Content.BattleSetup;
+using Zodiac.Content.ContentPackages;
+using Zodiac.Content.Definitions;
 using Zodiac.Framework;
 
 namespace Zodiac.AssetTool.Cli;
@@ -28,6 +30,8 @@ public static class OriginalOrdinaryMagicImporter
         if (!Enum.IsDefined(selection)) throw new ArgumentOutOfRangeException(nameof(selection));
         var reader = new OriginalExecutableReader(executable);
         var spells = new List<OrdinaryMagicPreparedSpell>();
+        var metadata = new List<AbilityMetadataDefinition>();
+        var metadataSkillsets = new List<SkillsetDefinition>();
         int learningCost = 0;
         foreach (var binding in Bindings.Where(b => selection == OriginalOrdinarySpellSelection.ElementalTiers || b.Id == 16))
         {
@@ -40,6 +44,7 @@ public static class OriginalOrdinaryMagicImporter
             if (!raw.SequenceEqual(expected))
                 throw new InvalidDataException($"{binding.Name} exceeds the traced ordinary empty-status binding.");
             var learning = OriginalMetadataRecords.DecodeAbility(reader.Read("g_ability_data", 0x8005ebf0, 8, binding.Id, id));
+            metadata.Add(OriginalAbilityMetadataAdapter.ToDefinition(new(id), learning));
             if (learning.JpCost > 9999) throw new InvalidDataException("Unsupported ordinary spell learning data.");
             learningCost = checked(learningCost + learning.JpCost);
             spells.Add(new(id, binding.Name, binding.Id,
@@ -53,6 +58,8 @@ public static class OriginalOrdinaryMagicImporter
         if (spells.Any(s => skillset[s.OriginalId - 16] != s.OriginalId) ||
             reader.Read("g_command_menu_types_by_skillset", 0x80065cb4, 1, 11, "fft.ps1:skillset/black-magic")[0] != 0)
             throw new InvalidDataException("Black Magic does not bind the traced default-menu spell slots.");
+        metadataSkillsets.Add(new(new("fft.ps1:skillset/black-magic"), spells.Select(s =>
+            new SkillsetSlot(s.OriginalId - 16, new AbilityId(s.Id)))));
 
         ushort cureLearningCost = 0;
         if (selection == OriginalOrdinarySpellSelection.CureAndFire)
@@ -61,13 +68,16 @@ public static class OriginalOrdinaryMagicImporter
             var raw = reader.Read("g_ability_range_data", 0x8005fbf0, 14, 1, id);
             byte[] expected = [4, 1, 1, 0, 0, 226, 0, 0, 12, 0, 14, 0, 4, 6];
             if (!raw.SequenceEqual(expected)) throw new InvalidDataException("Cure exceeds the traced ordinary healing binding.");
-            cureLearningCost = OriginalMetadataRecords.DecodeAbility(reader.Read("g_ability_data", 0x8005ebf0, 8, 1, id)).JpCost;
+            var learning = OriginalMetadataRecords.DecodeAbility(reader.Read("g_ability_data", 0x8005ebf0, 8, 1, id));
+            metadata.Add(OriginalAbilityMetadataAdapter.ToDefinition(new(id), learning));
+            cureLearningCost = learning.JpCost;
             var whiteMagic = OriginalMetadataRecords.DecodeHumanSkillset(reader.Read("g_ability_human_skillset_abilities", 0x80064a94, 25, 10, "fft.ps1:skillset/white-magic"));
             if (cureLearningCost > 9999 || whiteMagic[0] != 1 ||
                 reader.Read("g_command_menu_types_by_skillset", 0x80065cb4, 1, 10, "fft.ps1:skillset/white-magic")[0] != 0)
                 throw new InvalidDataException("White Magic does not bind the traced default-menu Cure slot and learning data.");
             spells.Insert(0, new(id, "Cure", 1, new(FaithMagicAmountKind.Healing, raw[10], MagicElement.None, false),
                 raw[13], raw[12], (raw[5] & 0x20) != 0, new(raw[0], raw[1], raw[2])));
+            metadataSkillsets.Add(new(new("fft.ps1:skillset/white-magic"), [new(0, new(id))]));
         }
 
         string JobId(string name) => "fft.ps1:job/" + name;
@@ -83,6 +93,11 @@ public static class OriginalOrdinaryMagicImporter
         }
         var squire = ReadJob(74, "squire", "fft.ps1:skillset/basic-skill", 5);
         var wizard = ReadJob(80, "wizard", "fft.ps1:skillset/black-magic", 11);
+        var basic = OriginalMetadataRecords.DecodeHumanSkillset(reader.Read("g_ability_human_skillset_abilities", 0x80064a94, 25, 5, "fft.ps1:skillset/basic-skill"));
+        if (basic.Any(id => spells.Any(s => s.OriginalId == id)))
+            throw new InvalidDataException("The selected ordinary spells unexpectedly appear in Basic Skill.");
+        // Explicit empty intersection with the selected effect catalog, not an assertion that Basic Skill has no abilities.
+        metadataSkillsets.Add(new(new("fft.ps1:skillset/basic-skill"), []));
         var unlocks = new List<OrdinaryMagicPreparedUnlock> { new(JobId("squire"), []) };
         for (int i = 1; i < OriginalJobNames.Length; i++)
         {
@@ -123,9 +138,12 @@ public static class OriginalOrdinaryMagicImporter
                 MagicZodiacSign.Aries, true, false, Stats(squire, 200, 50, 8, 8, 5), new(8, 5, 8),
                 (ushort)(selection == OriginalOrdinarySpellSelection.CureAndFire ? 30 : 200), 50, guardCareer, [], BattleFacing.West)
         };
-        var document = new OrdinaryMagicPackageDocument("fft.ordinary-magic-battle", 1, "ordinary-human-bare-v1", "original-fft",
-            57, 7, 5, 10, JobId("squire"), JobId("bard"), JobId("dancer"), thresholds, spells.ToArray(), [wizard, squire], unlocks.ToArray(), units);
-        return new(PreparedOrdinaryMagicBattle.Create(document), null, reader.Records.ToImmutableArray());
+        var companion = new ContentPackage("fft.ps1:package/ordinary-magic-metadata", "fft.ps1:profile/scus-94221",
+            ContentPackageKind.Baseline, null, [], metadataSkillsets, metadata);
+        var document = new OrdinaryMagicPackageDocument("fft.ordinary-magic-battle", 2, "ordinary-human-bare-v1", "original-fft",
+            57, 7, 5, 10, JobId("squire"), JobId("bard"), JobId("dancer"), thresholds, spells.ToArray(), [wizard, squire], unlocks.ToArray(), units,
+            companion.PackageId);
+        return new(PreparedOrdinaryMagicBattle.Create(document, companion), null, reader.Records.ToImmutableArray());
     }
 
     public static string Provenance(OriginalOrdinaryMagicImport import) => JsonSerializer.Serialize(new

@@ -26,7 +26,7 @@ public sealed class CureMagicImporterTests
     [Fact]
     public void Cure_content_grants_two_skillsets_and_applies_growth_with_no_formula_random_draws()
     {
-        var import = Import(); Assert.Equal(38, import.Records.Length); Assert.Equal(2, import.Package.Definition.Spells.Count);
+        var import = Import(); Assert.Equal(39, import.Records.Length); Assert.Equal(2, import.Package.Definition.Spells.Count);
         Assert.Equal(new[] { Cure, new AssetId("fft.ps1:ability/source-0016") }, import.Package.SpellOrder.ToArray());
         var cure = import.Package.Definition.Spells[Cure];
         Assert.Equal(FaithMagicAmountKind.Healing, cure.Spell.Kind); Assert.False(cure.Spell.SecondaryEvadeable);

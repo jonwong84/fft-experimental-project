@@ -46,6 +46,10 @@ twelve records and manifest integrity. Long CT10 casts also reach Mage's ordinar
 tick18 turn while charging; Wait preserves the cast, and the additional upkeep
 draw is included. No runtime formula/clock/status breadth is added here.
 
+Later [primary metadata binding](ordinary-spell-metadata.md) identifies the tier4
+LearnOnHit post-action stage as a remaining compatibility gap. Numeric execution
+above does not establish complete post-learning marker/report equivalence.
+
 ## ZOD-393
 
 The ordinary client now consumes prepared `SpellOrder`, filters it by the active
