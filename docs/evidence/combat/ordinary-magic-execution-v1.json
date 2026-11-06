@@ -27,6 +27,12 @@
       "managedBaseRevision": "93f1168d7f198295611ca29604b172c3b8a1094c",
       "validation": "Release importer build: zero warnings/errors. 19 content and 11 CLI cases pass; verified local input prepares 34 records with explicit authored grant. Full suite and runtime UI remain ZOD-391 gates.",
       "reports": "scratch/fire-execution-387/"
+    },
+    {
+      "ticket": "ZOD-391",
+      "managedBaseRevision": "17f898738c5c60b0d7cf88cffa7f8765f8241330",
+      "validation": "Locked restore; Release zero warnings/errors; all 4818 .NET and 739 Python tests passed. Verified 34 prepared source records and repeatable files; Windows GPU charge/aim/reward/growth/restart/KO routes match headless replay. Source, growth, reward, guide and coverage audits pass.",
+      "reports": "scratch/fire-execution-387/"
     }
   ]
 }

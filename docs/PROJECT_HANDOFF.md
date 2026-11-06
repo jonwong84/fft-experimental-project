@@ -6,14 +6,13 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-391: Run player Fire casting end to end.**
+**ZOD-392: Expand ordinary magic execution from the proven Fire path.**
 [Ordinary magic execution](behavior/ordinary-magic-execution.md) records completed
-ZOD-387–390, pinned to clean source
+ZOD-387–391, pinned to clean source
 `11464943bbdbd2a0af022d90cb7f10455cf911df`.
-Owner direction: make Fire work end to end through prepared content, grants,
-player aim/charge, actual HP/MP/status/RNG/rewards, replay/restart and runnable
-client, then continue validated development within the five-hour work window.
-Private calculation output alone does not satisfy acceptance. Preserve old
+Fire now works end to end through prepared content, explicit grants, player
+aim/charge, actual HP/MP/status/RNG/rewards, replay/restart and a runnable native
+client. Continue validated development within the owner's five-hour work window. Preserve old
 sword/AI paths, owner drafts/JobStats and Knight EquipmentSlot intent. Concrete
 spell host work is authorized; editor, general magic AI and other deferrals remain.
 
@@ -264,32 +263,34 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: ZOD-385–386 pass locked restore, a zero-warning/error Release
-  build and **4,767 .NET cases** (1,726 Framework,1,217 AI,838 Content,328 CLI,
-  206 AssetTool,428 Client,24 Engine). All **736 Python tests** pass.
-  Nine new managed cases and eight Python cases cover 28 independent mode1/
-  equipment numeric descriptions, growth/maxima composition, armor-before-clamp,
-  monster bypass, presence/type distinctions and immutable replay. Fresh source
-  seven-file/seven-function fingerprints pass, alongside prior growth/unlock/
-  reward prepared-data, algorithm-guide, coverage, links, layout and preservation
-  checks. Seven TRX reports/logs are under ignored `scratch/derived-385-386/`.
-  All pre-batch production, tests and behavior fixtures are unchanged. Seven new
-  public types have matching files; existing partial parts remain. Content, AI,
-  host, imports, nine owner drafts/JobStats and Knight EquipmentSlot intent are
-  unchanged. No project, dependency or activation changes. MP costs remain int.
-  Numeric mode1 and ordered equipment projections share maxima arithmetic, keep
-  base PA/MA/Speed and clamp current HP/MP after armor. Complete status/affinity/
-  equipped-flag refresh and battle/career/turn authority remain separate.
-  ZOD-387 traces required status reconciliation next. After the bounded status
-  work, prioritize an end-to-end ordinary magic scenario with coherent state,
-  delayed-cast bookkeeping, actor/reward work and paid-failure handling. Player/
-  AI magic execution is not connected by these calculation milestones alone.
+- Validation: ZOD-387–391 pass locked restore, a zero-warning/error Release
+  build and **4,818 .NET cases** (1,741 Framework,1,217 AI,857 Content,339 CLI,
+  206 AssetTool,434 Client,24 Engine). All **739 Python tests** pass.
+  New status descriptions, authoritative cast scenarios, strict prepared content /
+  import boundaries and player routes cover real HP/MP/status/RNG/reward/growth
+  publication, paid failures, replay and restart. The Windows GPU Fire run passes
+  aim, charge, other-unit turn, Critical and first-KO controls through resized
+  key/pointer routes, with complete headless replay matches. Aim/resolution/KO
+  captures were visually inspected; physical input and original media are not
+  claimed. [Launch and controls](development/fire-battle-controls.md).
+  Fresh status/clock source fingerprints, growth/unlock/reward prepared-data,
+  algorithm-guide, coverage, links, public-file layout and preservation checks
+  pass. Fire preparation repeats all three files exactly and independently
+  verifies all34 source records, selected job growth,19 unlock rows and8 thresholds.
+  Seven TRX reports, native captures and audit logs stay under ignored
+  `scratch/fire-execution-387/`. No original or C execution. Source remains clean
+  at `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+  Nine owner drafts/JobStats and Knight EquipmentSlot intent are preserved.
+  The owner's separate formatting change in SpellTargetChoiceQuery remains
+  unstaged. Dependencies and existing sword/AI paths are unchanged; MP costs
+  remain int. The dedicated prepared spell host is now active. Full status /
+  affinity/equipped-flag refresh, reactions, corpse/crystal/objective scheduling,
+  generic magic AI and frame RNG equivalence remain separate.
   Prepared Dash/Stone import checks remain at ZOD-329; their code/input is unchanged.
   Python uses repository-pinned Pillow12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
-  Bundled Pillow13.0.0 triggers six existing version guards; WindowsApps Python
-  is unavailable. Nine historical checkpoint audits last passed at ZOD-158;
-  unchanged snapshots were not rerun. No original/C execution or UI review.
+  Nine historical checkpoint audits last passed at ZOD-158; unchanged snapshots
+  were not rerun. Fire's first-KO objective and flat encounter are authored.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
   introduction proofs and synthetic world Save/Load exist. Original campaign,
   full combat/content, audio and general AI remain incomplete. See the

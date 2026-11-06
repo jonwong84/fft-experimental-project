@@ -152,3 +152,30 @@ manifest integrity, integer costs and actual loaded-content battle effects.
 Eleven CLI cases cover synthetic layout decoding, provenance, unsupported source
 dependencies and wrong-edition failure before publication. The real verified
 local input prepares successfully; no prepared assets are tracked in Git.
+
+## ZOD-391
+
+The dedicated `--fire-battle` client loads the prepared package before opening a
+native window. Its player controller derives blue range/area displays and submits
+Cast/Step/Wait/Advance commands; it does not apply private formula projections.
+Unit-follow/tile selection, confirmation, pending charge, one-time MP payment,
+HP/Critical/KO, careers and level growth are visible. Rendering and elapsed host
+time never advance the battle. A press-edge buffer and pointer/letterbox mapping
+serve keyboard and clickable controls. Restart creates a fresh definition state.
+The existing sword/AI clients are unchanged.
+
+Six managed player-route cases cover selection without publication, current spell
+effects, rejected inputs, paid empty-tile resolution, restart, KO and exact replay.
+The Windows GPU check exercises those real routes through a resized window,
+captures eight checkpoints and compares complete gameplay receipts with headless
+replay at initial resolution, restarted resolution and KO. Seed57's first cast
+hits for54, pays6 MP, earns10 EXP/12 JP and raises Mage from level10/EXP95 to
+level11/EXP0, including five raw-growth draws. Four casts finish the authored
+first-KO encounter. Aim, resolved and finished captures were visually inspected.
+
+This completes the owner's bounded Fire end-to-end acceptance. The prepared data
+and rules are original; the encounter and diagnostic presentation are authored.
+No original-game executable/C execution, physical input injection, original
+artwork/animation/audio or full-game equivalence is claimed. Full statuses,
+reactions, generic magic AI and prior explicit deferrals remain open.
+[Launch, controls and verification](../development/fire-battle-controls.md).

@@ -27,6 +27,11 @@ justifies it. Current assemblies are not yet interchangeable.
 
 ## What works today
 
+- **Playable prepared Fire:** select a unit or tile, charge and resolve original
+  Fire in an authored two-unit encounter. Real HP/MP/status/RNG, EXP/JP, level
+  growth and unlocks publish through deterministic commands; native checks match
+  headless replay and restart. [Prepare, launch and controls](docs/development/fire-battle-controls.md).
+
 - **First job/ability editor:** `Fft.Editor` opens prepared baseline metadata,
   creates a separate authored job/skillset/ability copy, edits Move/Jump/JP,
   validates/exports/reopens through shared APIs and compares movement through the
