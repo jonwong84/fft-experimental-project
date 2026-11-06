@@ -6,26 +6,16 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-403: Trace a bounded ordinary Fire AI candidate path.**
-The owner's requested five milestones ZOD-398–402 are complete. Do not resume
-older five-hour runs automatically. [Learning behavior](behavior/learn-on-hit.md)
-and its [validation receipt](evidence/combat/learn-on-hit-implementation-v1.json)
-record source scan/marker/RNG ordering, owned per-job learned slots and reports,
-schema3 prepared content, native acceptance/decline and newly learned casting.
-The source disabled-menu close resolves to YES7, so non-player-controlled learners
-automatically accept once; control is explicit and independent of team. At most
-one learner succeeds per action, and declining never scans another recipient.
-Special-job row aliases and autonomous magic turns remain outside this profile.
-
-Latest full validation: locked restore, zero-warning/error Release build,
-**4,931 .NET / 749 Python tests**. Fresh Fire/elemental/Cure/learning packages
-check35/57/39/37 records and both asset hashes. All four finite native checks pass
-movement, restart, state-preserving drawing and full headless replay. The learning
-check covers both answers and a normal learned Fire4 cast; report/result captures
-were inspected. Source remains clean and read-only at
-`11464943bbdbd2a0af022d90cb7f10455cf911df`. Ten owner-file blobs and the independent
-unstaged SpellTargetChoiceQuery formatting edit are preserved. All other deferred
-gates remain. General magic AI needs the next bounded source study.
+**ZOD-404: Resolve original AI learned slots and list admission.**
+The owner requested ten milestones ZOD-403–412. ZOD-403–403 are complete;
+[ordinary spell AI](behavior/ordinary-spell-ai.md) records the ready-hit boundary
+and the remaining selected steps. Four independent Python checks and the pinned-source audit pass.
+Full delayed charge-clock search and autonomous magic turns remain separate.
+The earlier five-hour runs are not active. Source stays clean/read-only at
+`11464943bbdbd2a0af022d90cb7f10455cf911df`. Preserve the ten owner files,
+JobStats, the independent unstaged SpellTargetChoiceQuery formatting and all
+documented deferred gates. The last whole-solution validation below is the
+ZOD-402 baseline (4,931 .NET /749 Python); the new milestone checks are above.
 
 [Managed MP costs](development/managed-magic-mp-costs.md) now use nonnegative `int`
 through spell definitions, resource calculation and recorded cast/resource cost.

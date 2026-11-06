@@ -4,12 +4,12 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-403 (Trace a bounded ordinary Fire AI candidate path).**
+**Next bounded work: ZOD-404 (Resolve original AI learned slots and list admission).**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 The five requested learning milestones ZOD-398–402 are complete;
 [learning reports, owned slots and player casting](behavior/learn-on-hit.md) are validated.
-There are 34 open tickets below. The 369 completed tickets, prior checkpoints and
+There are 42 open tickets below. The 370 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -33,19 +33,59 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-403 — Trace a bounded ordinary Fire AI candidate path
+### ZOD-404 — Resolve original AI learned slots and list admission
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-402
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-403
 
-Trace primary metadata admission/usefulness, learned/current-job availability,
-MP restrictions, blue/green target enumeration and formula08 projection into
-source scoring for a single ordinary Fire candidate. Pin callers, data,
-arithmetic and RNG policy before selecting an independently checkable managed
-slice. Reuse shared formulas/geometry and the existing semantic AI flags; avoid
-per-spell classes or caller-supplied cached result authority. Scope the exact
-boundary with movement, charge readiness and current-to-projected unit fields.
-This source study does not activate general magic AI, broad status combinations
-or enemy turn selection. Retain prepared casting/learning/movement/replay gates.
+Implement original human action-slot learning lookup, the special-skillset known quirk, static AI/class/max-MP admission, stable source slot order and repeated entries.
+
+### ZOD-405 — Load ordinary considered spell parameters and usage
+
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-404
+
+Copy semantic behavior independently of working usage; trace initialization of force-consume/exhaustive flags and preserve the Monster Skill/Defend CT support quirk.
+
+### ZOD-406 — Calculate spell-bearing initialized ability statistics
+
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-405
+
+Count structural Attack/Frog entries and selected primary/secondary slots; derive quarter shares, nonzero minimum/maximum MP costs and Monster Skill numerator exclusion.
+
+### ZOD-407 — Classify bounded ordinary spell usefulness
+
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-406
+
+Derive human damage/healing target classification and useful masks from current sides, HP threshold and admitted statuses; reject unsupported semantic flags and statuses.
+
+### ZOD-408 — Project AI-mode spell hits through shared formulas
+
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-407
+
+Own fresh AI-mode resource/formula work and private HP/Critical/KO projections, preserving real evasion draws and no execute-only proc/reward/learning work.
+
+### ZOD-409 — Account ordinary spell AI strikes and valuable targets
+
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-408
+
+Apply source movement-opportunity exclusions, positive-accuracy counting, collateral penalties and valuable-target admission before private result application.
+
+### ZOD-410 — Score ordinary spell HP statuses equipment and MP
+
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-409
+
+Implement absolute source-order short accumulation with MP scaling, below-cheapest halving and quarter shares; keep full clock/search authority separate.
+
+### ZOD-411 — Compose an owned ordinary spell ready-hit query
+
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-410
+
+Bind current battle units, selected immutable spell facts, blue/green geometry, usefulness, fresh AI projections, strike accounting and absolute score without trusting cached results.
+
+### ZOD-412 — Bind prepared metadata to the AI ready-hit path
+
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-411
+
+Copy validated ability/skillset metadata and derive current known slots into the composed query; verify original Fire/elemental/Cure source records, live-state isolation and execute-mode regressions.
 
 Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
 Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.
