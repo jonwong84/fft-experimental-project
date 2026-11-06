@@ -6,9 +6,9 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-367: Capture admitted player spell confirmations.**
+**ZOD-368: Prepare immutable ordinary spell charge plans.**
 [Stored spell aims and phases](behavior/stored-spell-aim-pipeline.md) records
-completed ZOD-364–366, using clean source
+completed ZOD-364–367, using clean source
 `11464943bbdbd2a0af022d90cb7f10455cf911df`. Exact UNIT6 follows current identity/
 position; YES7 and other types use byte-narrowed stored tiles. Preparation checks
 anchor activity separately from resolution centre selection and occupant filtering.

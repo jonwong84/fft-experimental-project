@@ -57,3 +57,17 @@ NoFollowTarget bit chooses TileOnly versus UnitOrTile. No MP is read or proposed
 This admits only the known ordinary nonweapon slice; Auto's NoTargeting is data,
 not automatic command activation. Nine cumulative managed cases pass four admitted
 source choice literals, early Auto priority and unknown/inactive context guards.
+
+## ZOD-367
+
+`SpellAimCapture` captures an admitted player confirmation into an opaque
+`ConfirmedSpellAim` retaining the original definition and caster. It requires
+unchanged blue selection and a caller-certified offered answer; non-tile answers
+also require the source-preferred current cursor occupant or known empty. It
+preserves exact5/6/7 and the previous ignored ID, including empty-unit fallback5.
+Cursor selection excludes inactive/Crystal/Treasure/Jump but does not add combat's
+mount exclusion. Runtime source/rider/list preference remains explicitly certified,
+not guessed from combat source order. Auto NoTargeting capture remains outside
+this manual-selection slice. Twelve cumulative managed cases pass six player
+confirmation literals, bound definitions, context/range/occupancy guards and
+cursor-versus-combat eligibility. No UI, command or live state is created.

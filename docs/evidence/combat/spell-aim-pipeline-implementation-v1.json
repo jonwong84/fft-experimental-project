@@ -26,6 +26,12 @@
       "managedBaseRevision": "a771143709087cc02f31cd367a5b1eaeb9cc7cd4",
       "validation": "9 cumulative focused managed cases passed;4 admitted source choice literals and Auto-before-blue ordering/guards.",
       "reports": "scratch/spell-aim-364-369/"
+    },
+    {
+      "ticket": "ZOD-367",
+      "managedBaseRevision": "333a97eb3c0492d3f4968c64b3e2629605ca66a9",
+      "validation": "12 cumulative focused managed cases passed;6 player confirmation literals plus immutable binding, range/context and cursor eligibility guards.",
+      "reports": "scratch/spell-aim-364-369/"
     }
   ]
 }
