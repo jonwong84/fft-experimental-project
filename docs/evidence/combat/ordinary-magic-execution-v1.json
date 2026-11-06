@@ -9,6 +9,12 @@
       "managedBaseRevision": "695355fa2b3e5ef86a791f23d1851a01e5f5bdb1",
       "validation": "Three Python cases pass12 independent refresh descriptions;clean pinned8-file/15-function source audit and six prepared status records verified. Actual Fire end-to-end acceptance and bounded implementation children selected.",
       "reports": "scratch/fire-execution-387/"
+    },
+    {
+      "ticket": "ZOD-388",
+      "managedBaseRevision": "416dcbddf6f8a8c3a34d6ef04d61e2fc03dc24c1",
+      "validation": "Six managed cases pass Critical transitions, KO/byte counter/death state, source marker early return, misses, signed work, unsupported-state guards and growth refresh. Existing owner formatting in SpellTargetChoiceQuery remains unstaged.",
+      "reports": "scratch/fire-execution-387/"
     }
   ]
 }

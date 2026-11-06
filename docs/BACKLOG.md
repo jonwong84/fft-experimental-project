@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-388 (Apply bounded ordinary magic status changes).**
+**Next bounded work: ZOD-389 (Execute charged spells through coherent battle commands).**
 [Ordinary magic execution](behavior/ordinary-magic-execution.md) records completed
-ZOD-387. The owner requires one spell end to end before broader development.
-There are 37 open tickets below. The 354 completed tickets, prior checkpoints and
+ZOD-387–388. The owner requires one spell end to end before broader development.
+There are 36 open tickets below. The 355 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,17 +31,9 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-388 — Apply bounded ordinary magic status changes
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-387
-
-Implement explicit ordinary Critical/Charging/Dead state and known empty-status target application, preserving source KO counters/outcome markers and refresh order. Reject unsupported status/reaction/innate/equipment-special context at setup. See [source and end-to-end acceptance](behavior/ordinary-magic-execution.md).
-Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
-Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.
-
 ### ZOD-389 — Execute charged spells through coherent battle commands
 
-**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-388
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-388
 
 Own actual units, resources, RNG, turns, pending casts and careers in an immutable magic battle. Confirm aims, charge, resolve, publish and replay commands; represent resource/empty-target paid failures and a first-KO demo objective. Preserve old sword/AI state. See [source and end-to-end acceptance](behavior/ordinary-magic-execution.md).
 Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/

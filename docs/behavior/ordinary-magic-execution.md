@@ -72,3 +72,15 @@ Knight equipment-break mapping and all owner drafts/JobStats remain preserved.
 After Fire acceptance, continue source-traced development within the owner's
 five-hour work window. Full status breadth, corpse/Golem/terminal/frame RNG,
 general magic AI and earlier documented deferrals remain separate.
+
+## ZOD-388
+
+An internal ordinary application kernel now admits only coherent living
+Critical/Charging state with Brave10..100, no innate/immune/timed/special status
+context and known empty-result work. It reuses signed vital arithmetic, applies
+Critical crossings and KO, clears Critical/Charging on KO, wraps the byte KO
+counter and sets death counter3. The HP-zero early return retains TARGETED while
+normal changed targets become AFFECTED. Misses retain fields/counters but assign
+TARGETED. This helper grants no live publication authority; the following battle
+definition/command boundary owns admission and adoption. Full status handling is
+not enabled by a caller-provided flag.
