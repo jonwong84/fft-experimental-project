@@ -146,3 +146,20 @@ introduced. Strike accounting still decides which computed frames are applied.
 Five AI scenarios cover the literal Fire54/four-draw result, Cure54/no draws,
 Critical and KO/Charging transitions, late-target rollback and admission failure.
 Retained ordinary battle/application regressions pass alongside them.
+
+## Strike accounting (ZOD-409)
+
+`OrdinarySpellAiAccounting` follows the source's post-formula, pre-application
+ordering. Zero accuracy is excluded. A followed anchor with a move opportunity
+keeps only itself; otherwise harmful-only spells skip individually moved units,
+while ally preferences retain them. Map-target behavior bypasses those exclusions.
+Positive-accuracy included pairs add intended-side0/contrary-side-1 (stat3/-4),
+contribute to the unsigned16 total and require one Useful recipient. This stage
+is independent of numeric HP change and consumes no RNG. Formula draws have
+already occurred even for a subsequently excluded target. At255 entries the
+source disables accounting; that sentinel boundary is explicitly unsupported.
+
+Five managed scenarios cover collateral/zero accuracy and truncated averaging,
+follow versus tile motion, ally preference, untargetability/map bypass, stat
+credits, empty and no-valuable-target outcomes. No supplied tally becomes live
+state or a whole-candidate score; the composed query derives these facts fresh.
