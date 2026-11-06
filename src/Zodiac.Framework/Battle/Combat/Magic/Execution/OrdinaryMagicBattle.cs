@@ -160,13 +160,13 @@ public static class OrdinaryMagicBattle
             occupant, null, new(true, true, true));
         if (!selection.Accepted)
             throw new OrdinaryMagicExecutionException("Choose a tile in spell range.");
-        var plan = MagicChargePlanQuery.Prepare(new(selection.Outcome!, actor.Current,
+        var plan = CombatRules.OrdinaryMagicPreparation.Prepare(new(selection.Outcome!, actor.Current,
             state.Units.Select(u => u.Occupant).ToImmutableArray(), new(true), new(true, true)));
         if (!plan.Accepted)
             throw new OrdinaryMagicExecutionException("The spell could not be prepared.");
         var next = Consume(state, actor.Id, TurnCommandKind.ConfirmAct, events);
-        var pending = plan.Outcome!;
-        actor = actor with { Current = actor.Current with { Statuses = new(Charging: pending.Counter != 0) } };
+        var pending = plan.Outcome!.Plan;
+        actor = actor with { Current = plan.Outcome.Caster };
         next = next.With(units: next.Units.SetItem(Index(next, actor.Id), actor), pending: next.Pending.Add(actor.Id, pending));
         events.Add(new OrdinaryMagicEvent.Queued(actor.Id, spell.Id, pending.Counter));
         return pending.Counter == 0 ? OrdinaryMagicCastExecution.Resolve(next, actor.Id, events) : next;

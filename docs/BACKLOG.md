@@ -21,7 +21,10 @@ now support custom Dash/Stone formula ID/X/Y data, including Dash selecting0x32,
 through shared calculation, preview, ranked AI and actual execution. Original
 imports and named compatibility adapters are preserved; profile/definition
 consolidation is the next bounded refactor before returning to ZOD-418.
-There are 35 open tickets below. The 386 completed tickets, prior checkpoints and
+The owner-selected [ZOD-422 ordinary preparation/AI refactor](architecture/ai-preparation-and-simulation.md)
+now shares preparation with live casting and separates candidate/strike owners.
+Its original snapshot semantics are documented; frame suspension remains gated.
+There are 35 open tickets below. The 387 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.

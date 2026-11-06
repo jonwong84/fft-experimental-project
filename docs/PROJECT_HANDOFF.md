@@ -7,6 +7,15 @@ and the selected task's design before editing. This file describes current state
 ## Next work
 
 **ZOD-421: Consolidate physical delivery profiles and definition ownership.**
+The owner-selected [ZOD-422 preparation/AI refactor](architecture/ai-preparation-and-simulation.md)
+is complete. `CombatRules.OrdinaryMagicPreparation` now proposes a pending plan
+and primary-action caster statuses for both live ordinary casting and AI.
+`MagicChargePlanQuery` remains a compatible plan-only adapter. AI query admission,
+private candidate simulation and strike processing have distinct owners; existing
+accounting and scoring remain shared. Current immutable hypotheses preserve
+isolation and decision RNG rules. Original baseline/suspended-status semantics
+are documented, but frame suspension and additional command families stay gated.
+
 The owner-selected [ZOD-420 physical formula refactor](architecture/physical-formula-reassignment.md)
 is complete. Shared `Zodiac.Framework.Formulas` and `.CombatRules` owners now
 resolve neutral0x32/0x37 from immutable formula ID/X/Y data. Custom schema2 makes
@@ -17,14 +26,17 @@ identity, range, execution evasion, metadata and grants. Formula-only edits reta
 X/Y; they do not copy another ability's parameters. Named adapters remain for
 existing API/event contracts; profile/definition consolidation is next.
 
-Locked restore, zero-warning/error Release build, **5,080 .NET tests** and
-**776 Python tests** pass. All1,305 AI cases pass. The native Basic Skill check
-matches all121 retained steps and two replays; four magic scenarios retain their
-eighteen complete replay checkpoints and gameplay hashes. Eight source files/
-sixteen functions are pinned at clean read-only reference
+Locked restore, zero-warning/error Release build, **5,087 .NET tests** and
+**776 Python tests** pass. All1,308 AI cases pass. New public regressions compare
+live/AI counters for immediate, delayed and raw-high-bit casts, replay/isolation,
+support precedence and primary status proposals. The ZOD-422 receipt pins eight
+source files/nine functions at clean read-only reference
 `11464943bbdbd2a0af022d90cb7f10455cf911df`. All ten owner blobs, immutable
 JobStats, int MP costs and the approved `b7a222d` formatting remain preserved.
-The new474 public Framework declarations retain matching files and partial parts.
+New public Framework types have matching files. The native Basic Skill121-step/
+two-replay and four magic eighteen-checkpoint proofs remain the prior ZOD-420
+evidence; those native checks were not rerun for this refactor. Current logs and
+TRX are under ignored `scratch/preparation-refactor-*`.
 
 The [equipment selector study](architecture/equipment-effect-selection.md)
 still owns the weapon-required-level/right-tie and right-first shield findings.

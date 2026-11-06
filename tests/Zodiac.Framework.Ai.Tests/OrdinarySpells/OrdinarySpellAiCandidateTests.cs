@@ -9,6 +9,39 @@ public sealed class OrdinarySpellAiCandidateTests
     private static readonly BattleUnitId Mage=new("mage"),Guard=new("guard");
     private static OrdinarySpellAiCandidateRequest Request(bool follow=true)=>new(Mage,0,new(4,2,0),follow);
 
+    [Theory]
+    [InlineData(0, 0)]
+    [InlineData(4, 4)]
+    [InlineData(131, 3)]
+    public void Candidate_and_live_cast_share_preparation_without_mutating_the_candidate_input(byte raw, byte expected)
+    {
+        var (_, catalog, state) = OrdinarySpellAiReadyTests.Setup(charge: raw);
+        string before = OrdinarySpellAiReadyTests.Receipt(state);
+        var candidate = OrdinarySpellAiCandidateQuery.Evaluate(state, catalog, Request(), new(57, 0));
+        var live = OrdinaryMagicBattle.Apply(state,
+            new OrdinaryMagicCommand.Cast(Mage, new("test:spell/fire"), new(4, 2, 0)));
+        Assert.True(candidate.Accepted, candidate.Rejection);
+        Assert.True(live.Accepted, live.Rejection);
+        var queued = Assert.Single(live.Events.OfType<OrdinaryMagicEvent.Queued>());
+        Assert.Equal(expected, queued.ChargeTicks);
+        Assert.Equal(queued.ChargeTicks, candidate.Outcome!.ActualChargeTime);
+        if (expected != 0)
+        {
+            Assert.Equal(expected, live.State.Pending[Mage].Counter);
+            Assert.True(live.State.Units.Single(u => u.Id == Mage).Current.Statuses.Charging);
+            Assert.Equal((ushort)75, live.State.Units.Single(u => u.Id == Mage).Current.Mp);
+        }
+        Assert.False(candidate.Outcome.Units.Single(u => u.Id == Mage).Current.Statuses.Charging);
+        Assert.Equal((ushort)69, candidate.Outcome.Units.Single(u => u.Id == Mage).Current.Mp);
+        Assert.Equal(before, OrdinarySpellAiReadyTests.Receipt(state));
+        var replay = OrdinarySpellAiCandidateQuery.Evaluate(state, catalog, Request(), new(57, 0));
+        Assert.Equal(candidate.RngState, replay.RngState);
+        Assert.Equal(candidate.Outcome.Score!.Priority, replay.Outcome!.Score!.Priority);
+        Assert.Equal(candidate.Outcome.Score.HitPercent, replay.Outcome.Score.HitPercent);
+        Assert.Equal(candidate.Outcome.Score.Contributions.ToArray(), replay.Outcome.Score.Contributions.ToArray());
+        Assert.Equal(candidate.Outcome.Units.ToArray(), replay.Outcome.Units.ToArray());
+    }
+
     [Fact]
     public void Delayed_fire_derives_clock_opportunities_before_real_formula_work_without_live_changes()
     {

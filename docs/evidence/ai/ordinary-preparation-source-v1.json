@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-422",
+  "managedBaseRevision": "54075ace33eea9d4a9936e55c3443cb44efdd17e",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/preparation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 80969,
+      "sha256": "e8ec92c02c53d3715b3813931685399e79481dad0fae6ae27505fbc5d086d444"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 111880,
+      "sha256": "22555f06b061bc6f017f721998a5e44dfb3d4fa4c7284a2ee3367dfa27ce80ad"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40868,
+      "sha256": "f76188542c39818fa2ab478e42ef63b4eb0f2c1c2db5a74db4120ddbaf4cb8cb"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 15884,
+      "sha256": "7ddb1c8ed2e0cad3de18dae6945364d4fffd2299aa4383a659ecbe27717b7eb9"
+    },
+    {
+      "path": "include/fft/action.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14957,
+      "sha256": "6e97b3935c0d9cdcb8f6ba9ee2d40985b645bc0b03281a0d50d3d20aae35591c"
+    },
+    {
+      "path": "include/fft/ai.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 25771,
+      "sha256": "fa7aabf5b4d21e3f42be7978c061fb859a52709a234e5b4205c5de5e2c8566b5"
+    },
+    {
+      "path": "include/fft/ai_decision.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9018,
+      "sha256": "a88a67152b5143b74121946b7dffd4c8b76b568d9947c828d6620014a741b02b"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "action_prepare",
+      "startLine": 177,
+      "endLine": 375,
+      "normalizedLfSha256": "1f6a6b279fb1f2c584883bd0fb68c88d53eaa6f20d26317711a09d18d0e6b4fe"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "action_commit_preparation",
+      "startLine": 153,
+      "endLine": 161,
+      "normalizedLfSha256": "96f4d3ed79ea76fac957450047f623666c7cd2510d1521eae477cae4d6c37885"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_action_simulate_and_score",
+      "startLine": 1442,
+      "endLine": 1728,
+      "normalizedLfSha256": "9415274d3b38d3e7afe51922914355e40ff6bad7bccb9bc861bbbfae6894bcd4"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "strikes_simulate",
+      "startLine": 1808,
+      "endLine": 1897,
+      "normalizedLfSha256": "72f586ff192e9466e7af3dfe1c3093b890c458fc31747757649e243bb731ea6c"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "action_hits_simulate",
+      "startLine": 1772,
+      "endLine": 1796,
+      "normalizedLfSha256": "8645f10a3b9f3738453919558247b8ae951627fc279ca971bf1e4d465c216919"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "simulation_unit_state_save",
+      "startLine": 1906,
+      "endLine": 1958,
+      "normalizedLfSha256": "e0c523b4a8e1487ba06e267dd10d6aa6fa015a285a63a06a04b911f07dfa8f2c"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "simulation_unit_state_restore",
+      "startLine": 1966,
+      "endLine": 2011,
+      "normalizedLfSha256": "d195422db548f6b870a1df33d2de5a0b3525e6e9a1d13f0f6b0585d193cb4dfa"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "status_clear_action_state",
+      "startLine": 1011,
+      "endLine": 1013,
+      "normalizedLfSha256": "9efa302735cde075c2adb2d385f2c64dc5565cb378bacfe4c81193662a68fb57"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "symbol": "status_action_state_set",
+      "startLine": 368,
+      "endLine": 421,
+      "normalizedLfSha256": "8dfbd728d457b6a2caaf9ac81de3b30a898e6724c98a75942a233f0abdd64397"
+    }
+  ],
+  "originalExecuted": false,
+  "cExecuted": false,
+  "scope": "Shared bounded ordinary primary preparation and separation of existing AI candidate/strike owners; baseline and suspended-status semantics are documented, not newly activated."
+}
