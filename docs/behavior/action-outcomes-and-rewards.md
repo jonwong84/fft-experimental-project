@@ -112,3 +112,12 @@ otherwise nonprimary calls preserve the prior byte, including unknown bits.
 There is no cumulative OR. Three managed cases cover eight independent literals,
 reaction preservation and a later actor miss replacing its self-target marker.
 Early KO/dead-conversion and learn-on-hit application remain separate.
+
+## ZOD-378
+
+`ActionExperience.Accumulate` owns primary-context maximum EXP work. It accepts
+byte levels and the already-updated KO count, floors before doubling, caps the
+new award at99 and preserves a larger existing accumulator. It does not add a
+mode guard absent from the source. Three managed cases pass14 literals, a
+multi-target/reaction tape and post-increment KO255/0 boundaries. The helper
+does not inflict KO, increment its count, apply career EXP or draw RNG.

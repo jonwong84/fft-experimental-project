@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-378 (Accumulate exact per-target action EXP).**
+**Next bounded work: ZOD-379 (Calculate action EXP balances and JP amounts).**
 [Action outcomes and rewards](behavior/action-outcomes-and-rewards.md) records
-completed ZOD-376–377. Live magic adoption remains gated by complete state/phase ownership.
-There are 37 open tickets below. The 344 completed tickets, prior checkpoints and
+completed ZOD-376–378. Live magic adoption remains gated by complete state/phase ownership.
+There are 36 open tickets below. The 345 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,17 +31,9 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-378 — Accumulate exact per-target action EXP
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-377
-
-Implement source primary-context EXP maximum accumulation, signed level differences, KO-count division and bonus/cap order. No career storage. See [traced boundaries](behavior/action-outcomes-and-rewards.md).
-Owner drafts/JobStats, host/editor, automatic facing, full status/corpse/Golem/
-terminal/frame RNG, broad interfaces, ZOD-106 and custom cone remain separate.
-
 ### ZOD-379 — Calculate action EXP balances and JP amounts
 
-**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-378
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-378
 
 Calculate pre-level JP/direct/spillover amounts and EXP balance/level transition facts. Explicitly report required raw-stat growth; do not apply growth. See [traced boundaries](behavior/action-outcomes-and-rewards.md).
 Owner drafts/JobStats, host/editor, automatic facing, full status/corpse/Golem/

@@ -15,6 +15,12 @@
       "managedBaseRevision": "7d9fe00913d481bc6765df40c8f7f2c6ec974da0",
       "validation": "Three managed cases passed: eight literal marker assignments, reaction/unknown-bit preservation and self-target marker overwritten by later actor miss.",
       "reports": "scratch/action-rewards-376-381/"
+    },
+    {
+      "ticket": "ZOD-378",
+      "managedBaseRevision": "dc9151a9dbdf0232085d89165c063126ee3f882c",
+      "validation": "Six cumulative managed cases passed:14 literal EXP awards, maximum-not-sum multi-target/reaction tape, bonus/floor/cap and post-increment KO boundaries.",
+      "reports": "scratch/action-rewards-376-381/"
     }
   ]
 }
