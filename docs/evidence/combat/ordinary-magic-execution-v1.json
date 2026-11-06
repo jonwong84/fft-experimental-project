@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "originalExecuted": false,
+  "cExecuted": false,
+  "milestones": [
+    {
+      "ticket": "ZOD-387",
+      "managedBaseRevision": "695355fa2b3e5ef86a791f23d1851a01e5f5bdb1",
+      "validation": "Three Python cases pass12 independent refresh descriptions;clean pinned8-file/15-function source audit and six prepared status records verified. Actual Fire end-to-end acceptance and bounded implementation children selected.",
+      "reports": "scratch/fire-execution-387/"
+    }
+  ]
+}

@@ -1,0 +1,640 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "cases": [
+    {
+      "id": "critical-exact",
+      "input": {
+        "oldInnate": [],
+        "inflicted": [],
+        "newInnate": [],
+        "newImmunity": [],
+        "floatAbility": false,
+        "hp": 60,
+        "maxHp": 300,
+        "timers": {
+          "Poison": 5,
+          "DeathSentence": 7
+        },
+        "seeds": {
+          "Poison": 36,
+          "DeathSentence": 3
+        },
+        "timedOrder": [
+          "Poison",
+          "DeathSentence"
+        ],
+        "statusOrder": [
+          "Dead",
+          "Charging",
+          "Float",
+          "Chicken",
+          "Critical",
+          "Poison",
+          "DeathSentence"
+        ],
+        "skipStatus": false,
+        "mode": "Execute"
+      },
+      "expected": {
+        "innate": [],
+        "immunity": [],
+        "inflicted": [
+          "Critical"
+        ],
+        "current": [
+          "Critical"
+        ],
+        "timers": {
+          "Poison": 5,
+          "DeathSentence": 7
+        },
+        "changes": [
+          [
+            "Critical",
+            "Add"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "critical-above",
+      "input": {
+        "oldInnate": [],
+        "inflicted": [],
+        "newInnate": [],
+        "newImmunity": [],
+        "floatAbility": false,
+        "hp": 61,
+        "maxHp": 300,
+        "timers": {
+          "Poison": 5,
+          "DeathSentence": 7
+        },
+        "seeds": {
+          "Poison": 36,
+          "DeathSentence": 3
+        },
+        "timedOrder": [
+          "Poison",
+          "DeathSentence"
+        ],
+        "statusOrder": [
+          "Dead",
+          "Charging",
+          "Float",
+          "Chicken",
+          "Critical",
+          "Poison",
+          "DeathSentence"
+        ],
+        "skipStatus": false,
+        "mode": "Execute"
+      },
+      "expected": {
+        "innate": [],
+        "immunity": [],
+        "inflicted": [],
+        "current": [],
+        "timers": {
+          "Poison": 5,
+          "DeathSentence": 7
+        },
+        "changes": []
+      }
+    },
+    {
+      "id": "innate-critical-survives",
+      "input": {
+        "oldInnate": [
+          "Critical"
+        ],
+        "inflicted": [
+          "Critical"
+        ],
+        "newInnate": [
+          "Critical"
+        ],
+        "newImmunity": [],
+        "floatAbility": false,
+        "hp": 61,
+        "maxHp": 300,
+        "timers": {
+          "Poison": 5,
+          "DeathSentence": 7
+        },
+        "seeds": {
+          "Poison": 36,
+          "DeathSentence": 3
+        },
+        "timedOrder": [
+          "Poison",
+          "DeathSentence"
+        ],
+        "statusOrder": [
+          "Dead",
+          "Charging",
+          "Float",
+          "Chicken",
+          "Critical",
+          "Poison",
+          "DeathSentence"
+        ],
+        "skipStatus": false,
+        "mode": "Execute"
+      },
+      "expected": {
+        "innate": [
+          "Critical"
+        ],
+        "immunity": [],
+        "inflicted": [],
+        "current": [
+          "Critical"
+        ],
+        "timers": {
+          "Poison": 5,
+          "DeathSentence": 7
+        },
+        "changes": []
+      }
+    },
+    {
+      "id": "immunity-does-not-remove-inflicted",
+      "input": {
+        "oldInnate": [],
+        "inflicted": [
+          "Poison"
+        ],
+        "newInnate": [],
+        "newImmunity": [
+          "Poison"
+        ],
+        "floatAbility": false,
+        "hp": 61,
+        "maxHp": 300,
+        "timers": {
+          "Poison": 5,
+          "DeathSentence": 7
+        },
+        "seeds": {
+          "Poison": 36,
+          "DeathSentence": 3
+        },
+        "timedOrder": [
+          "Poison",
+          "DeathSentence"
+        ],
+        "statusOrder": [
+          "Dead",
+          "Charging",
+          "Float",
+          "Chicken",
+          "Critical",
+          "Poison",
+          "DeathSentence"
+        ],
+        "skipStatus": false,
+        "mode": "Execute"
+      },
+      "expected": {
+        "innate": [],
+        "immunity": [
+          "Poison"
+        ],
+        "inflicted": [
+          "Poison"
+        ],
+        "current": [
+          "Poison"
+        ],
+        "timers": {
+          "Poison": 5,
+          "DeathSentence": 7
+        },
+        "changes": []
+      }
+    },
+    {
+      "id": "float-removes-own-immunity",
+      "input": {
+        "oldInnate": [],
+        "inflicted": [],
+        "newInnate": [],
+        "newImmunity": [
+          "Float",
+          "Poison"
+        ],
+        "floatAbility": true,
+        "hp": 61,
+        "maxHp": 300,
+        "timers": {
+          "Poison": 5,
+          "DeathSentence": 7
+        },
+        "seeds": {
+          "Poison": 36,
+          "DeathSentence": 3
+        },
+        "timedOrder": [
+          "Poison",
+          "DeathSentence"
+        ],
+        "statusOrder": [
+          "Dead",
+          "Charging",
+          "Float",
+          "Chicken",
+          "Critical",
+          "Poison",
+          "DeathSentence"
+        ],
+        "skipStatus": false,
+        "mode": "Execute"
+      },
+      "expected": {
+        "innate": [
+          "Float"
+        ],
+        "immunity": [
+          "Poison"
+        ],
+        "inflicted": [],
+        "current": [
+          "Float"
+        ],
+        "timers": {
+          "Poison": 5,
+          "DeathSentence": 7
+        },
+        "changes": [
+          [
+            "Float",
+            "Add"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "timer-preserved",
+      "input": {
+        "oldInnate": [],
+        "inflicted": [
+          "Poison"
+        ],
+        "newInnate": [],
+        "newImmunity": [],
+        "floatAbility": false,
+        "hp": 61,
+        "maxHp": 300,
+        "timers": {
+          "Poison": 5,
+          "DeathSentence": 7
+        },
+        "seeds": {
+          "Poison": 36,
+          "DeathSentence": 3
+        },
+        "timedOrder": [
+          "Poison",
+          "DeathSentence"
+        ],
+        "statusOrder": [
+          "Dead",
+          "Charging",
+          "Float",
+          "Chicken",
+          "Critical",
+          "Poison",
+          "DeathSentence"
+        ],
+        "skipStatus": false,
+        "mode": "Execute"
+      },
+      "expected": {
+        "innate": [],
+        "immunity": [],
+        "inflicted": [
+          "Poison"
+        ],
+        "current": [
+          "Poison"
+        ],
+        "timers": {
+          "Poison": 5,
+          "DeathSentence": 7
+        },
+        "changes": []
+      }
+    },
+    {
+      "id": "timer-zero-seeded",
+      "input": {
+        "oldInnate": [],
+        "inflicted": [
+          "Poison"
+        ],
+        "newInnate": [],
+        "newImmunity": [],
+        "floatAbility": false,
+        "hp": 61,
+        "maxHp": 300,
+        "timers": {
+          "Poison": 0,
+          "DeathSentence": 7
+        },
+        "seeds": {
+          "Poison": 36,
+          "DeathSentence": 3
+        },
+        "timedOrder": [
+          "Poison",
+          "DeathSentence"
+        ],
+        "statusOrder": [
+          "Dead",
+          "Charging",
+          "Float",
+          "Chicken",
+          "Critical",
+          "Poison",
+          "DeathSentence"
+        ],
+        "skipStatus": false,
+        "mode": "Execute"
+      },
+      "expected": {
+        "innate": [],
+        "immunity": [],
+        "inflicted": [
+          "Poison"
+        ],
+        "current": [
+          "Poison"
+        ],
+        "timers": {
+          "Poison": 36,
+          "DeathSentence": 7
+        },
+        "changes": []
+      }
+    },
+    {
+      "id": "innate-only-not-seeded",
+      "input": {
+        "oldInnate": [],
+        "inflicted": [],
+        "newInnate": [
+          "Poison"
+        ],
+        "newImmunity": [],
+        "floatAbility": false,
+        "hp": 61,
+        "maxHp": 300,
+        "timers": {
+          "Poison": 0,
+          "DeathSentence": 7
+        },
+        "seeds": {
+          "Poison": 36,
+          "DeathSentence": 3
+        },
+        "timedOrder": [
+          "Poison",
+          "DeathSentence"
+        ],
+        "statusOrder": [
+          "Dead",
+          "Charging",
+          "Float",
+          "Chicken",
+          "Critical",
+          "Poison",
+          "DeathSentence"
+        ],
+        "skipStatus": false,
+        "mode": "Execute"
+      },
+      "expected": {
+        "innate": [
+          "Poison"
+        ],
+        "immunity": [],
+        "inflicted": [],
+        "current": [
+          "Poison"
+        ],
+        "timers": {
+          "Poison": 0,
+          "DeathSentence": 7
+        },
+        "changes": [
+          [
+            "Poison",
+            "Add"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "formation-skips-critical",
+      "input": {
+        "oldInnate": [],
+        "inflicted": [],
+        "newInnate": [],
+        "newImmunity": [],
+        "floatAbility": false,
+        "hp": 60,
+        "maxHp": 300,
+        "timers": {
+          "Poison": 5,
+          "DeathSentence": 7
+        },
+        "seeds": {
+          "Poison": 36,
+          "DeathSentence": 3
+        },
+        "timedOrder": [
+          "Poison",
+          "DeathSentence"
+        ],
+        "statusOrder": [
+          "Dead",
+          "Charging",
+          "Float",
+          "Chicken",
+          "Critical",
+          "Poison",
+          "DeathSentence"
+        ],
+        "skipStatus": true,
+        "mode": "Execute"
+      },
+      "expected": {
+        "innate": [],
+        "immunity": [],
+        "inflicted": [],
+        "current": [],
+        "timers": {
+          "Poison": 5,
+          "DeathSentence": 7
+        },
+        "changes": []
+      }
+    },
+    {
+      "id": "preview-calculates-without-display",
+      "input": {
+        "oldInnate": [],
+        "inflicted": [],
+        "newInnate": [],
+        "newImmunity": [],
+        "floatAbility": false,
+        "hp": 60,
+        "maxHp": 300,
+        "timers": {
+          "Poison": 5,
+          "DeathSentence": 7
+        },
+        "seeds": {
+          "Poison": 36,
+          "DeathSentence": 3
+        },
+        "timedOrder": [
+          "Poison",
+          "DeathSentence"
+        ],
+        "statusOrder": [
+          "Dead",
+          "Charging",
+          "Float",
+          "Chicken",
+          "Critical",
+          "Poison",
+          "DeathSentence"
+        ],
+        "skipStatus": false,
+        "mode": "Preview"
+      },
+      "expected": {
+        "innate": [],
+        "immunity": [],
+        "inflicted": [
+          "Critical"
+        ],
+        "current": [
+          "Critical"
+        ],
+        "timers": {
+          "Poison": 5,
+          "DeathSentence": 7
+        },
+        "changes": []
+      }
+    },
+    {
+      "id": "ai-calculates-without-display",
+      "input": {
+        "oldInnate": [],
+        "inflicted": [],
+        "newInnate": [],
+        "newImmunity": [],
+        "floatAbility": false,
+        "hp": 60,
+        "maxHp": 300,
+        "timers": {
+          "Poison": 5,
+          "DeathSentence": 7
+        },
+        "seeds": {
+          "Poison": 36,
+          "DeathSentence": 3
+        },
+        "timedOrder": [
+          "Poison",
+          "DeathSentence"
+        ],
+        "statusOrder": [
+          "Dead",
+          "Charging",
+          "Float",
+          "Chicken",
+          "Critical",
+          "Poison",
+          "DeathSentence"
+        ],
+        "skipStatus": false,
+        "mode": "AiSimulation"
+      },
+      "expected": {
+        "innate": [],
+        "immunity": [],
+        "inflicted": [
+          "Critical"
+        ],
+        "current": [
+          "Critical"
+        ],
+        "timers": {
+          "Poison": 5,
+          "DeathSentence": 7
+        },
+        "changes": []
+      }
+    },
+    {
+      "id": "clear-inflicted-critical",
+      "input": {
+        "oldInnate": [],
+        "inflicted": [
+          "Critical"
+        ],
+        "newInnate": [],
+        "newImmunity": [],
+        "floatAbility": false,
+        "hp": 61,
+        "maxHp": 300,
+        "timers": {
+          "Poison": 5,
+          "DeathSentence": 7
+        },
+        "seeds": {
+          "Poison": 36,
+          "DeathSentence": 3
+        },
+        "timedOrder": [
+          "Poison",
+          "DeathSentence"
+        ],
+        "statusOrder": [
+          "Dead",
+          "Charging",
+          "Float",
+          "Chicken",
+          "Critical",
+          "Poison",
+          "DeathSentence"
+        ],
+        "skipStatus": false,
+        "mode": "Execute"
+      },
+      "expected": {
+        "innate": [],
+        "immunity": [],
+        "inflicted": [],
+        "current": [],
+        "timers": {
+          "Poison": 5,
+          "DeathSentence": 7
+        },
+        "changes": [
+          [
+            "Critical",
+            "Remove"
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "sourceFiles": [
+    {
+      "path": "src/main/unit_state.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 15884,
+      "sha256": "7ddb1c8ed2e0cad3de18dae6945364d4fffd2299aa4383a659ecbe27717b7eb9"
+    },
+    {
+      "path": "src/main/unit_stats.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11279,
+      "sha256": "c067b3adfe646dea5b6627ff6ca9a3f986d564e80f016443f37f176116511349"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 85515,
+      "sha256": "820411f8293d559677ff676f4e3d19a16ae52b667e7aa1393ab5495741f1e149"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 23857,
+      "sha256": "57dd4fa8b07ef93c4a8e21c73657a0fdbe6c601a6db0b0351ae15b3cd15e4aea"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "include/fft/status.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11673,
+      "sha256": "deeaeec02add8b9db7cca91c99517706033b18385ca433d32f1998d9d62e0e83"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "target/main.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 135004,
+      "sha256": "b6066d98d481d73eb49d2d16be57ae3fc5ae4070830176fdeeeaae2bdeaec2a3"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/main/unit_state.c",
+      "symbol": "status_current_update",
+      "startLine": 349,
+      "endLine": 356,
+      "normalizedLfSha256": "7757e6f21f93f3b1e9565afbbb3991464d9777cb0f87211f5e05fba8bc94b0ab"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "symbol": "status_action_state_set",
+      "startLine": 368,
+      "endLine": 421,
+      "normalizedLfSha256": "8dfbd728d457b6a2caaf9ac81de3b30a898e6724c98a75942a233f0abdd64397"
+    },
+    {
+      "path": "src/main/unit_stats.c",
+      "symbol": "stats_refresh",
+      "startLine": 97,
+      "endLine": 169,
+      "normalizedLfSha256": "dd0c400f5edfbb8cb52b827772321bf5831e2f43d29532be3b56e562be52cc51"
+    },
+    {
+      "path": "src/main/unit_stats.c",
+      "symbol": "statuses_reconcile",
+      "startLine": 47,
+      "endLine": 71,
+      "normalizedLfSha256": "d24eb404bd293893758e894fef1db78ec796104d821d21aa2b32cdc9090e1ead"
+    },
+    {
+      "path": "src/main/unit_stats.c",
+      "symbol": "status_ct_set",
+      "startLine": 287,
+      "endLine": 315,
+      "normalizedLfSha256": "49bb9bc79839a832f31f7aeaec286ad3214fcb580b90ac15b7cb99a870e1eda7"
+    },
+    {
+      "path": "src/main/unit_stats.c",
+      "symbol": "status_unit_init",
+      "startLine": 23,
+      "endLine": 32,
+      "normalizedLfSha256": "ca505fa28be59e3ba85d192f0c6f87187b3060bd87b547cd55ddf411f7f0dffd"
+    },
+    {
+      "path": "src/main/unit_stats.c",
+      "symbol": "status_timers_init",
+      "startLine": 36,
+      "endLine": 44,
+      "normalizedLfSha256": "47bed72b3a4135e90f8ac1af602bd718bd9b79d7773ce4eaf3620f00afe42738"
+    },
+    {
+      "path": "src/main/unit_stats.c",
+      "symbol": "unit_stats_refresh",
+      "startLine": 81,
+      "endLine": 83,
+      "normalizedLfSha256": "a3a5951df72a3edbd91c0c688cb1714ca9db08dd2526d5cdce8fd7a3db26747f"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "status_resolve_unit_changes",
+      "startLine": 2003,
+      "endLine": 2027,
+      "normalizedLfSha256": "c4f3157dad90b24902910484bc09cb7808036b8a032c5bee3db53b49168afbe0"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_removals_apply",
+      "startLine": 2051,
+      "endLine": 2069,
+      "normalizedLfSha256": "195cd3727a6fd3cf6d223d6b885bb705d48f8f6575b36094eabbf1fabfa66f31"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_inflictions_apply",
+      "startLine": 2082,
+      "endLine": 2147,
+      "normalizedLfSha256": "22c8638967673a08a0583cc3bdf1f17304339d5b93e584d6325bd43b5ddf4b04"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "control_status_update",
+      "startLine": 2033,
+      "endLine": 2046,
+      "normalizedLfSha256": "68334c10a69834da3f9577e949150d765daf2c632a9972c48482a91dd04b89f2"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_apply_target_result",
+      "startLine": 837,
+      "endLine": 1039,
+      "normalizedLfSha256": "72f17f94af572c3b4f21f92787e7f80000bdc33fb418921c718432c9d46b00a5"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "status_queue_display_flag_change_if_executing",
+      "startLine": 214,
+      "endLine": 218,
+      "normalizedLfSha256": "21e296421083b2791a96c63ef079e1bd7cfae641b453cd4dccacab486fd4c516"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "status_modify_inflictions",
+      "startLine": 399,
+      "endLine": 469,
+      "normalizedLfSha256": "a19c63b4339bb0cd66da3a8b64d428b8fa1bf6a775490f5459a57352a611583e"
+    }
+  ],
+  "statusRecords": [
+    {
+      "id": 2,
+      "hex": "0000250001ab0f1459ffff6400000000"
+    },
+    {
+      "id": 4,
+      "hex": "00000800000000000000006400000000"
+    },
+    {
+      "id": 21,
+      "hex": "0000040000870f004000006400000000"
+    },
+    {
+      "id": 23,
+      "hex": "00000300000800000000004400000000"
+    },
+    {
+      "id": 24,
+      "hex": "00001a24101000000040006400000000"
+    },
+    {
+      "id": 39,
+      "hex": "00000903001300000000006400000001"
+    }
+  ]
+}

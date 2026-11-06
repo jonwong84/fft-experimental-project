@@ -6,16 +6,16 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-387: Trace status reconciliation required by magic refresh.**
-[Mode1 derived attributes](behavior/mode1-derived-attributes.md) records completed
-ZOD-385–386, from clean read-only source
-`11464943bbdbd2a0af022d90cb7f10455cf911df` (7 files/7 functions).
-HP/MP maxima use copied multipliers and integer division/shift; base PA/MA/Speed
-remain. Equipment numeric work must precede current HP/MP clamps. Raw growth
-still owns its five draws; derived numeric calculations add none.
-Status reconciliation, complete career/battle/turn adoption, actor work, paid
-fizzles and delayed-cast bookkeeping remain separate. Owner drafts/JobStats and
-Knight equipment-break slot intent remain preserved; no host/editor/AI activation.
+**ZOD-388: Apply bounded ordinary magic status changes.**
+[Ordinary magic execution](behavior/ordinary-magic-execution.md) records completed
+ZOD-387, pinned to clean source
+`11464943bbdbd2a0af022d90cb7f10455cf911df`.
+Owner direction: make Fire work end to end through prepared content, grants,
+player aim/charge, actual HP/MP/status/RNG/rewards, replay/restart and runnable
+client, then continue validated development within the five-hour work window.
+Private calculation output alone does not satisfy acceptance. Preserve old
+sword/AI paths, owner drafts/JobStats and Knight EquipmentSlot intent. Concrete
+spell host work is authorized; editor, general magic AI and other deferrals remain.
 
 [Managed MP costs](development/managed-magic-mp-costs.md) now use nonnegative `int`
 through spell definitions, resource calculation and recorded cast/resource cost.
