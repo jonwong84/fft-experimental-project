@@ -82,3 +82,16 @@ unchanged fields even when above maximum. This is numeric work after earlier
 application branches; it does not dispatch reactions, infer type bits, change
 statuses or report full source ability outcome. Two focused managed cases pass
 all18 literals, immutable replay and null-input handling.
+
+## ZOD-372
+
+`MagicLivingApplication` projects HP-only frames after active-unit and absent
+pre-hit reaction facts. A miss preserves input fields before reading downstream
+Golem/sharing/status certificates. Hits require absent Golem/sharing and other
+record work, ordinary consistent Critical/Chicken and stable status results.
+HP0, critical threshold crossings and required damage-type cancellations reject
+without an outcome. Numeric HP changes are not gated by type bits; cancellation
+checks are. Signed negative work is retained, while positive unfinalized amounts
+above999 reject. Derived XP/outcome markers are outside this vital projection.
+Five cumulative managed cases pass all36 raw/living descriptions plus selective
+knowledge, zero-damage cancellation and immutable-input boundaries.

@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 338 entries index completed bounded work; they do not mean the full game is complete.
+These 339 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -398,3 +398,5 @@ These 338 entries index completed bounded work; they do not mean the full game i
 - [ZOD-370 — Trace ordinary magic result publication boundaries](../behavior/living-magic-projections.md#zod-370)
 
 - [ZOD-371 — Apply exact signed vital arithmetic](../behavior/living-magic-projections.md#zod-371)
+
+- [ZOD-372 — Project bounded living magic results](../behavior/living-magic-projections.md#zod-372)

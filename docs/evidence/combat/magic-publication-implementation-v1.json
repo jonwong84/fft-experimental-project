@@ -19,6 +19,12 @@
       "managedBaseRevision": "3425bb3540ffc31a889cf699fdc0a33f96d38ed6",
       "validation": "2 focused managed cases pass18 source vital literals, clamp/miss ordering, immutable replay and null guard.",
       "reports": "scratch/magic-publication-370-375/"
+    },
+    {
+      "ticket": "ZOD-372",
+      "managedBaseRevision": "8dfb6eda7c73efc9d7f808788f184e074902f206",
+      "validation": "5 cumulative focused managed cases pass36 source/arithmetic and bounded living descriptions, selective miss/reaction knowledge and type-bit status behavior.",
+      "reports": "scratch/magic-publication-370-375/"
     }
   ]
 }
