@@ -6,17 +6,16 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-385: Project bounded mode1 derived battle attributes.**
-[Growth and job unlocks](behavior/growth-and-job-unlocks.md) records completed
-ZOD-382–384, from clean read-only source
-`11464943bbdbd2a0af022d90cb7f10455cf911df` (10 files/20 functions).
-Battle raw growth consumes five discarded RNG draws. Reward callers grow before
-level increment; special effects store the new level first. Source mode1 refresh
-keeps base Speed/PA/MA. Job unlocks retain nibble levels and independent sex bits.
-Raw growth and unlock calculations do not complete derived/status refresh or
-grant battle/career/turn authority. [Reward projections](behavior/action-outcomes-and-rewards.md)
-and [vital proposals](behavior/living-magic-projections.md) retain their boundaries.
-Owner drafts/JobStats and all documented deferrals remain preserved.
+**ZOD-386: Project ordered equipment numeric attribute bonuses.**
+[Mode1 derived attributes](behavior/mode1-derived-attributes.md) records completed
+ZOD-385, from clean read-only source
+`11464943bbdbd2a0af022d90cb7f10455cf911df` (7 files/7 functions).
+HP/MP maxima use copied multipliers and integer division/shift; base PA/MA/Speed
+remain. Equipment numeric work must precede current HP/MP clamps. Raw growth
+still owns its five draws; derived numeric calculations add none.
+Status reconciliation, complete career/battle/turn adoption, actor work, paid
+fizzles and delayed-cast bookkeeping remain separate. Owner drafts/JobStats and
+Knight equipment-break slot intent remain preserved; no host/editor/AI activation.
 
 [Managed MP costs](development/managed-magic-mp-costs.md) now use nonnegative `int`
 through spell definitions, resource calculation and recorded cast/resource cost.

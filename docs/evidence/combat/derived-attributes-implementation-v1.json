@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "originalExecuted": false,
+  "cExecuted": false,
+  "milestones": [
+    {
+      "ticket": "ZOD-385",
+      "managedBaseRevision": "cec57a61a7fce60e9e6244db410bb613c6e8b291",
+      "validation": "Three managed cases pass14 mode1 literals, reward/growth/maxima composition, retained base stats and immutable/domain guards. Eight Python cases and28 descriptions pass; clean pinned7-file/7-function source audit passed.",
+      "reports": "scratch/derived-385-386/"
+    }
+  ]
+}

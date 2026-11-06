@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-385 (Project bounded mode1 derived battle attributes).**
-[Growth and job unlocks](behavior/growth-and-job-unlocks.md) records
-completed ZOD-382–384. Complete magic state still needs derived/status refresh and phase ownership.
-There are 34 open tickets below. The 351 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-386 (Project ordered equipment numeric attribute bonuses).**
+[Mode1 derived attributes](behavior/mode1-derived-attributes.md) records
+completed ZOD-385. Complete refresh still needs status reconciliation and phase ownership.
+There are 34 open tickets below. The 352 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,13 +31,14 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-385 — Project bounded mode1 derived battle attributes
+### ZOD-386 — Project ordered equipment numeric attribute bonuses
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-384
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-385
 
-Implement the source-traced numeric mode1 HP/MP maxima and current-field clamps from explicit raw/multiplier inputs, including egg rules and retained base Speed/PA/MA. Keep equipment/status/timer refresh, level ownership and complete career adoption separate; do not activate live commands or silently recompute all base stats. See [source and implementation boundaries](behavior/growth-and-job-unlocks.md).
-Owner drafts/JobStats, host/editor, automatic facing, full status/corpse/Golem/
-terminal/frame RNG, broad interfaces, ZOD-106 and custom cone remain separate.
+Compose mode1 maxima with ordered item numeric contributions, saturated equipment bonuses, armor type/presence rules, monster bypass and final HP/MP/actual-attribute clamps. Preserve unclamped incoming HP/MP until after armor. Do not activate item import, the EquipmentSlot draft or complete status refresh. See [numeric and remaining refresh boundaries](behavior/mode1-derived-attributes.md).
+Owner drafts/JobStats, Knight equipment-break slot mapping, host/editor, automatic
+facing, full corpse/Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom
+cone remain separate/deferred.
 
 ## Existing validation gates
 
