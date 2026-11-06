@@ -180,3 +180,30 @@ Fire ready-hit example scores49: actor HP128 + equipment357 + remaining MP14,
 minus enemy HP93 + equipment357. This remains a ready-hit diagnostic until the
 full delay/movement clock and candidate comparison are implemented. All1,263 AI
 cases pass, preserving the prior decision/execution paths.
+
+## Owned current-aim ready-hit query (ZOD-411)
+
+`OrdinarySpellAiCatalog` binds exact executable spell objects and primary slots
+to one battle definition. The generic primary-only profile rejects missing
+learned rows, special/Mime aliases, foreign definitions and inferred secondary
+grants. `OrdinarySpellAiReadyQuery` derives fresh initialized lists/statistics,
+selected known slot, considered usage, current MP, usefulness, initial blue aim,
+green area, source-order AI frames, strike accounting, included HP effects and
+absolute score. Only the query's own fresh data flows between those stages.
+It returns hypothetical units, diagnostics and decision RNG; no adoption path,
+command, reward, EXP/JP/growth or learn-on-hit scan exists in this path.
+
+The request explicitly supplies movement-opportunity IDs at the ready boundary.
+Those facts are not predicted by this slice. It models one initial-aim hypothesis
+on current positions/resources and validates blue range there; it is **not** a
+stored delayed cast whose followed target can leave initial range. Pending
+casts, learning reports, spent actions, unsupported statuses/shapes, foreign
+catalogs, unknown slots and wrong actors fail closed. NotValuable retains formula
+RNG already consumed but returns restored unit facts and no score. A failure
+returns entry RNG and no partial outcome even after earlier private draws.
+
+Eleven scenarios cover Fire49, self/collateral area score-22, followed-anchor versus
+tile exclusions after eight formula draws, zero-damage valuable hits, Cure and
+no-useful-target exits, current MP, pending casts/reports, slot/aim/actor/catalog
+binding and late counter rollback. Complete live-field receipts remain identical.
+No result is inserted into the existing decision maker as a whole candidate rank.
