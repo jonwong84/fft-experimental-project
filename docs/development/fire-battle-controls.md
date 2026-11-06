@@ -32,8 +32,10 @@ the executable, BIN or C reference checkout.
 - **Enter / Confirm:** queue the cast. MP is paid once when it resolves.
 - **W / Wait:** finish the active unit's turn. Control both units locally;
   Guard has no learned spells and can move or wait.
-- **M / Step:** select and confirm one free adjacent tile, consuming Move.
-  This demo does not activate full movement/facing commands.
+- **M / Move:** show legal cost1 flat movement, select a blue tile to preview its
+  path and confirm. The actual final walking heading and Move usage are published.
+  Both action orders work; a queued ordinary spell survives walking. Automatic
+  end-turn facing and broader terrain/post-move effects remain separate.
 - **Backspace / Cancel:** cancel selection; **R / Restart:** reset the encounter.
   **Esc:** cancel an open selection, or close while browsing.
 
@@ -76,6 +78,11 @@ out-of-range/turn/closed-encounter rejection, restart and four successful casts.
 Complete gameplay receipts match a fresh headless command replay at resolution
 and KO; rendering preserves state. `check.json` records adapter/runtime and
 receipt hashes. These are programmed UI routes, not physical input injection.
+
+The current check first previews and confirms a three-tile Move, rejects an
+occupied endpoint and verifies the South final heading, unchanged MP/ticks/RNG
+and complete replay. It restarts before the spell scenario. The preview/path
+and current heading are visible on the map; canceled selection leaves state alone.
 
 The first local GPU run passed and its aim/resolution/KO captures were inspected.
 Updated native checks pass both packages; the larger list visits all12 spells

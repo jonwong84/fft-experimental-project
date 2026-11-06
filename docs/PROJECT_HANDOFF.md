@@ -6,7 +6,7 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-396: Expose full ordinary movement in the player client.**
+**ZOD-397: Bind ordinary spell primary AI metadata.**
 [Fire execution](behavior/ordinary-magic-execution.md) is complete through ZOD-391.
 [Elemental execution](behavior/elemental-magic-execution.md) completes ZOD-392–393;
 [Cure](behavior/ordinary-healing-execution.md) completes ZOD-394.
@@ -267,9 +267,9 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: ZOD-387–394 pass locked restore, a zero-warning/error Release
-  build and **4,853 .NET cases** (1,741 Framework,1,217 AI,857 Content,370 CLI,
-  206 AssetTool,438 Client,24 Engine). All **743 Python tests** pass.
+- Validation: ZOD-387–396 pass locked restore, a zero-warning/error Release
+  build and **4,869 .NET cases** (1,753 Framework,1,217 AI,857 Content,370 CLI,
+  206 AssetTool,442 Client,24 Engine). All **745 Python tests** pass.
   New status descriptions, authoritative cast scenarios, strict prepared content /
   import boundaries and player routes cover real HP/MP/status/RNG/reward/growth
   publication, paid failures, replay and restart. Windows GPU Fire-only and twelve-spell runs pass learned selection,
@@ -287,12 +287,15 @@ without rewriting old evidence.
   and zero formula draws, pending-cast preservation and its native replay; owner drafts remain preserved. One unrelated Python banner-directory
   access-denied error passed on a fresh full suite run.
   Seven TRX reports, native captures and audit logs stay under ignored
-  `scratch/fire-execution-387/` (latest TRX set `trx-all-394`). No original or C execution. Source remains clean
+  `scratch/fire-execution-387/` (latest TRX set `trx-all-396`). No original or C execution. Source remains clean
   at `11464943bbdbd2a0af022d90cb7f10455cf911df`.
   Nine owner drafts/JobStats and Knight EquipmentSlot intent are preserved.
   The owner's separate formatting change in SpellTargetChoiceQuery remains
   unstaged. Dependencies and existing sword/AI paths are unchanged; MP costs
-  remain int. The dedicated prepared spell host is now active. Full status /
+  remain int. The dedicated prepared spell host and full confirmed cost1 flat movement are
+  active. Walk previews/confirmation, source final headings, Move/Act CT settlement
+  and charge preservation pass in all three native profiles. Initial facing and
+  copied Jump are immutable inputs; automatic wait-facing remains deferred. Full status /
   affinity/equipped-flag refresh, reactions, corpse/crystal/objective scheduling,
   generic magic AI and frame RNG equivalence remain separate.
   Prepared Dash/Stone import checks remain at ZOD-329; their code/input is unchanged.

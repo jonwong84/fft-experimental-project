@@ -26,6 +26,8 @@ internal sealed class OrdinaryMagicBattleWindow : Game
     private string? pendingCapture = "start.png", firstResolution;
     private bool resizeChecked, restarted, finalCaptured;
     private int spellSelectionsChecked;
+    private int movementCheckStage;
+    private bool movementChecked;
     private readonly List<object> checkpoints = [];
     public bool CheckCompleted { get; private set; }
 
@@ -78,7 +80,7 @@ internal sealed class OrdinaryMagicBattleWindow : Game
             case Keys.Tab: case Keys.Down: interaction.NextSpell(); break;
             case Keys.Up: interaction.NextSpell(-1); break;
             case Keys.W: interaction.Wait(); break;
-            case Keys.M: interaction.BeginStep(); break;
+            case Keys.M: interaction.BeginMove(); break;
             case Keys.U: interaction.ToggleFollow(); break;
             case Keys.Enter: interaction.Confirm(); break;
             case Keys.Back: interaction.Cancel(); break;
@@ -117,7 +119,7 @@ internal sealed class OrdinaryMagicBattleWindow : Game
         yield return (new(24, 548, 178, 34), Keys.N, "N NEXT EVENT");
         yield return (new(214, 548, 120, 34), Keys.F, "F MAGIC");
         yield return (new(346, 548, 120, 34), Keys.W, "W WAIT");
-        yield return (new(478, 548, 120, 34), Keys.M, "M STEP");
+        yield return (new(478, 548, 120, 34), Keys.M, "M MOVE");
         yield return (new(610, 548, 154, 34), Keys.R, "R RESTART");
         yield return (new(24, 594, 220, 30), Keys.U, "U UNIT OR TILE");
         yield return (new(256, 594, 208, 30), Keys.Enter, "ENTER CONFIRM");
@@ -172,11 +174,16 @@ internal sealed class OrdinaryMagicBattleWindow : Game
             Rect(px + 20, py + 5, 22, 26, unit.Current.Statuses.Dead ? Muted : team);
             Text(interaction.Name(unit.Id)[..1], px + 26, py + 11, 2, Background);
             Text(unit.Current.Statuses.Dead ? "KO" : unit.Vitals.Hp.ToString(), px + 5, py + 37, 1, Color.White);
+            Text(unit.Facing.ToString()[..1], px + 48, py + 7, 1, team);
             Rect(px + 25, py + 39, 32, 4, Background);
             Rect(px + 25, py + 39, (int)(32L * unit.Vitals.Hp / unit.Vitals.MaxHp), 4, team);
         }
+        var path = interaction.PreviewPath ?? interaction.LastEvents.OfType<OrdinaryMagicEvent.Moved>().LastOrDefault()?.Path;
+        if (path is not null)
+            foreach (var tile in path.Tiles) Rect(28 + tile.X * 64, 202 + tile.Y * 56, 5, 5, Gold);
         Text(interaction.Mode == OrdinaryMagicInteractionMode.Cast
-            ? $"AIM / {(interaction.FollowUnit ? "FOLLOW UNIT" : "KEEP TILE")}" : "M STEP / ONE ADJACENT TILE", 24, 496, 2, Muted);
+            ? $"AIM / {(interaction.FollowUnit ? "FOLLOW UNIT" : "KEEP TILE")}" :
+            interaction.Mode == OrdinaryMagicInteractionMode.Move ? "MOVE / BLUE TILES / CONFIRM PATH" : "M MOVE / F MAGIC", 24, 496, 2, Muted);
         if (interaction.Mode == OrdinaryMagicInteractionMode.Cast)
         {
             Text("MAGIC / TAB OR UP DOWN", 520, 174, 2, Muted);
@@ -196,8 +203,9 @@ internal sealed class OrdinaryMagicBattleWindow : Game
             Text($"HP {unit.Vitals.Hp} / {unit.Vitals.MaxHp}   MP {unit.Current.Mp} / {unit.Vitals.MaxMp}", 536, y + 40, 2, Cyan);
             var points = unit.JobPoints[unit.Definition.RewardJobId];
             Text($"JP {points.Current} / TOTAL {points.Total}", 536, y + 68, 2, Muted);
-            Text(unit.Current.Statuses.Dead ? "KO" : state.Pending.TryGetValue(unit.Id, out var pending)
-                ? $"CHARGING / {pending.Counter} CT" : unit.Vitals.Critical ? "CRITICAL" : "READY", 536, y + 96, 2, Gold);
+            string status = unit.Current.Statuses.Dead ? "KO" : state.Pending.TryGetValue(unit.Id, out var pending)
+                ? $"CHARGING / {pending.Counter} CT" : unit.Vitals.Critical ? "CRITICAL" : "READY";
+            Text($"{status} / FACE {unit.Facing.ToString()[..1]}", 536, y + 96, 2, Gold);
         }
         var log = interaction.Log.TakeLast(2).ToArray();
         for (int i = 0; i < log.Length; i++) Text(log[i], 520, 490 + i * 20, 1, Muted, 68);
@@ -224,6 +232,10 @@ internal sealed class OrdinaryMagicBattleWindow : Game
     private void CheckInput()
     {
         // Scripted presses and pointers enter the same routes as real input. No simulation fields are patched.
+        if (checkStep == 2 && movementCheckStage < 3)
+        {
+            CheckMovement(); return;
+        }
         switch (checkStep++)
         {
             case 0: Dispatch(Keys.N); pendingCapture = "turn.png"; break;
@@ -277,6 +289,32 @@ internal sealed class OrdinaryMagicBattleWindow : Game
         }
         if (checkStep > 100) throw new InvalidOperationException("Native spell check exceeded its event budget.");
     }
+    private void CheckMovement()
+    {
+        string before = OrdinaryMagicSnapshot.Capture(interaction.State);
+        switch (movementCheckStage++)
+        {
+            case 0:
+                Dispatch(Keys.M); InjectTile(2, 1);
+                if (interaction.PreviewPath?.PackedSteps.Length != 3 || OrdinaryMagicSnapshot.Capture(interaction.State) != before)
+                    throw new InvalidOperationException("Move preview changed state or did not use the full copied Move.");
+                pendingCapture = "move-preview.png"; break;
+            case 1:
+                InjectTile(4, 2); Dispatch(Keys.Enter);
+                if (OrdinaryMagicSnapshot.Capture(interaction.State) != before) throw new InvalidOperationException("Occupied move changed state.");
+                InjectTile(2, 1); Dispatch(Keys.Enter);
+                var state = interaction.State;
+                if (state.Units[0].Position != new TilePosition(2, 1, 0) || state.Units[0].Facing != BattleFacing.South ||
+                    !state.Turns.Units[0].MovementTaken || state.Turns.Units[0].ActionTaken || state.Units[0].Current.Mp != 75 ||
+                    state.Turns.RngState.DrawCount != 1)
+                    throw new InvalidOperationException("Confirmed native move differed from source path/choice expectations.");
+                Checkpoint("confirmed-move"); movementChecked = true; pendingCapture = "moved.png"; break;
+            case 2:
+                Dispatch(Keys.R);
+                if (OrdinaryMagicSnapshot.Capture(interaction.State) != initial) throw new InvalidOperationException("Move restart changed the initial state.");
+                Dispatch(Keys.N); break;
+        }
+    }
     private void ValidateFirstCast()
     {
         var state = interaction.State;
@@ -311,7 +349,7 @@ internal sealed class OrdinaryMagicBattleWindow : Game
     }
     private void FinishCheck()
     {
-        if (!resizeChecked || !restarted || !interaction.State.Finished || casts != (healingCheck ? 3 : 4) || interaction.State.Units[1].Vitals.Hp != 0)
+        if (!resizeChecked || !restarted || !movementChecked || !interaction.State.Finished || casts != (healingCheck ? 3 : 4) || interaction.State.Units[1].Vitals.Hp != 0)
             throw new InvalidOperationException("Incomplete native spell check.");
         string final = OrdinaryMagicSnapshot.Capture(interaction.State);
         var report = new
@@ -319,7 +357,7 @@ internal sealed class OrdinaryMagicBattleWindow : Game
             evidence = "Windows GPU plus programmed key/pointer routes; no physical input injection or original media",
             referenceRevision = "11464943bbdbd2a0af022d90cb7f10455cf911df", interaction.Content.Ruleset,
             scenario = healingCheck ? "cure-then-fire" : "fire",
-            checkpoints, casts, spellSelectionsChecked, restartMatched = true, renderingPreservedState = true, resizeChecked, frames,
+            checkpoints, casts, spellSelectionsChecked, movementChecked, restartMatched = true, renderingPreservedState = true, resizeChecked, frames,
             finalSha256 = Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(final))),
             adapter = GraphicsAdapter.DefaultAdapter.Description,
             runtime = System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription,

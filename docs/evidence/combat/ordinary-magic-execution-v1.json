@@ -57,6 +57,12 @@
       "managedBaseRevision": "fb30ed692a22250c853945693274b948422d0607",
       "validation": "12 new movement cases; all 1753 Framework, 1217 AI, 370 CLI and 438 Client cases plus 19 prepared-content cases pass. Release build clean. Eight-file/nine-function movement source and reused 48/60 descriptions pass; seven cancellation vectors/two Python cases pass. Full native movement follows in ZOD-396.",
       "reports": "scratch/fire-execution-387/"
+    },
+    {
+      "ticket": "ZOD-396",
+      "managedBaseRevision": "191f867b7a086a3d45fa29fde8a0c2376695ca46",
+      "validation": "Release zero warnings/errors; all 4869 .NET and 745 Python tests pass. Fresh Fire/elemental/Cure native full-move preview/confirmation/heading, spell/restart/KO routes match headless replay. Move captures inspected. Full source/layout/preservation checks retained; owner formatting stays unstaged.",
+      "reports": "scratch/fire-execution-387/"
     }
   ]
 }

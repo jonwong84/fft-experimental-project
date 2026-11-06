@@ -4,12 +4,12 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-396 (Expose full ordinary movement in the player client).**
+**Next bounded work: ZOD-397 (Bind ordinary spell primary AI metadata).**
 [Fire execution](behavior/ordinary-magic-execution.md) is complete through ZOD-391.
 [Elemental spells](behavior/elemental-magic-execution.md) complete ZOD-392–393;
 [Cure](behavior/ordinary-healing-execution.md) completes ZOD-394.
 [Ordinary walking](behavior/ordinary-magic-movement.md) records the current movement work.
-There are 34 open tickets below. The 362 completed tickets, prior checkpoints and
+There are 34 open tickets below. The 363 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -33,11 +33,11 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-396 — Expose full ordinary movement in the player client
+### ZOD-397 — Bind ordinary spell primary AI metadata
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-395
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-396
 
-Expose legal full Move range and path preview through the shared authoritative command, including voluntary heading, input rejection, charge preservation and native replay.
+Bind selected original spell primary AI metadata through the existing immutable ability definition model, keeping execution geometry/formulas separate and preserving unknown bits offline. Select a bounded AI consumer before broader activation.
 Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
 Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.
 

@@ -28,8 +28,11 @@ public sealed class OrdinaryMagicInteraction
     public string Name(BattleUnitId id) => Content.UnitNames[id];
     public ImmutableArray<AssetId> AvailableSpells => State.Turns.ActiveUnitId is { } actor
         ? Content.SpellOrder.Where(State.Units.Single(u => u.Id == actor).Definition.LearnedSpells.Contains).ToImmutableArray() : [];
-    public ImmutableArray<TilePosition> Range => SelectedSpell is { } spell && State.Turns.ActiveUnitId is { } actor
-        ? OrdinaryMagicBattle.Choice(State, actor, spell).Outcome?.Range?.Panels ?? [] : [];
+    public ImmutableArray<TilePosition> Range => State.Turns.ActiveUnitId is not { } actor ? [] :
+        Mode == OrdinaryMagicInteractionMode.Move ? OrdinaryMagicMovement.Query(State, actor).Outcome?.PhysicalDestinations ?? [] :
+        SelectedSpell is { } spell ? OrdinaryMagicBattle.Choice(State, actor, spell).Outcome?.Range?.Panels ?? [] : [];
+    public FlatMovementPath? PreviewPath => Mode == OrdinaryMagicInteractionMode.Move && Aim is { } aim &&
+        State.Turns.ActiveUnitId is { } actor ? OrdinaryMagicMovement.Query(State, actor, aim).Outcome?.Path : null;
     public ImmutableArray<TilePosition> Area
     {
         get
@@ -79,11 +82,25 @@ public sealed class OrdinaryMagicInteraction
         Mode = OrdinaryMagicInteractionMode.Step; SelectedSpell = null; Aim = null;
         Message = "Choose a free adjacent tile then confirm."; IsError = false;
     }
+    public void BeginMove()
+    {
+        if (State.Finished || State.Turns.ActiveUnitId is not { } actor) { Error("Advance to a unit turn first."); return; }
+        if (State.Turns.Units.Single(u => u.Id == actor).MovementTaken) { Error("Movement has already been used."); return; }
+        var query = OrdinaryMagicMovement.Query(State, actor);
+        if (!query.Accepted || query.Outcome!.PhysicalDestinations.IsEmpty) { Error("No supported movement is available."); return; }
+        Mode = OrdinaryMagicInteractionMode.Move; SelectedSpell = null; Aim = null;
+        Message = "Choose a blue tile to preview a path then confirm."; IsError = false;
+    }
     public void Select(TilePosition tile)
     {
         if (Mode == OrdinaryMagicInteractionMode.Browse) return;
         if (!State.Definition.Map.TryGetTile(tile, out _)) { Error("Choose a map tile."); return; }
         Aim = tile;
+        if (Mode == OrdinaryMagicInteractionMode.Move)
+        {
+            if (!Range.Contains(tile)) { Error("Choose a free blue tile in movement range."); return; }
+            Message = $"Walk {PreviewPath!.PackedSteps.Length} tiles. Confirm to move."; IsError = false; return;
+        }
         if (Mode == OrdinaryMagicInteractionMode.Cast && !Range.Contains(tile)) { Error("Choose a blue tile in spell range."); return; }
         Message = Mode == OrdinaryMagicInteractionMode.Step ? "Confirm this step." :
             FollowUnit && State.Units.FirstOrDefault(u => u.Position == tile) is { } target
@@ -102,11 +119,12 @@ public sealed class OrdinaryMagicInteraction
         if (Mode == OrdinaryMagicInteractionMode.Cast && SelectedSpell is { } spell)
             Apply(new OrdinaryMagicCommand.Cast(actor, spell, aim, FollowUnit && State.Units.Any(u => u.Position == aim)));
         else if (Mode == OrdinaryMagicInteractionMode.Step) Apply(new OrdinaryMagicCommand.Step(actor, aim));
+        else if (Mode == OrdinaryMagicInteractionMode.Move) Apply(new OrdinaryMagicCommand.Move(actor, aim));
     }
     public void Cancel()
     {
         Mode = OrdinaryMagicInteractionMode.Browse; Aim = null; SelectedSpell = null;
-        Message = "N next event / F magic / M step / W wait."; IsError = false;
+        Message = "N next event / F magic / M move / W wait."; IsError = false;
     }
     public void Restart()
     {
@@ -126,9 +144,11 @@ public sealed class OrdinaryMagicInteraction
             string? line = ev switch
             {
                 OrdinaryMagicEvent.TurnReady e => $"{Name(e.UnitId)} turn.",
-                OrdinaryMagicEvent.TurnEnded e => $"{Name(e.UnitId)} waits. N advances.",
+                OrdinaryMagicEvent.TurnEnded e => $"{Name(e.UnitId)} turn ends. N advances.",
                 OrdinaryMagicEvent.Stepped e => $"{Name(e.UnitId)} moves.",
-                OrdinaryMagicEvent.Queued e => $"{Name(e.UnitId)} charges {Content.SpellNames[e.SpellId]} / {e.ChargeTicks} CT. W waits.",
+                OrdinaryMagicEvent.Moved e => $"{Name(e.UnitId)} walks {e.Path.PackedSteps.Length} tiles / faces {e.Path.FinalHeading}.",
+                OrdinaryMagicEvent.Queued e => $"{Name(e.UnitId)} charges {Content.SpellNames[e.SpellId]} / {e.ChargeTicks} CT. " +
+                    (State.Turns.ActiveUnitId is null ? "N advances." : "W waits."),
                 OrdinaryMagicEvent.Resolved e => $"{Content.SpellNames[e.SpellId]} resolves / {e.MpCost} MP spent.",
                 OrdinaryMagicEvent.Fizzled e => e.Reason,
                 OrdinaryMagicEvent.Applied e => $"{Name(e.UnitId)} / HP {e.Hp}" + (e.Dead ? " / KO" : e.Critical ? " / Critical" : ""),
