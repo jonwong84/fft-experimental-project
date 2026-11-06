@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 352 entries index completed bounded work; they do not mean the full game is complete.
+These 353 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -426,3 +426,5 @@ These 352 entries index completed bounded work; they do not mean the full game i
 - [ZOD-384 — Evaluate stable-ID job unlock prerequisites](../behavior/growth-and-job-unlocks.md#zod-384)
 
 - [ZOD-385 — Project bounded mode1 derived battle attributes](../behavior/mode1-derived-attributes.md#zod-385)
+
+- [ZOD-386 — Project ordered equipment numeric attribute bonuses](../behavior/mode1-derived-attributes.md#zod-386)

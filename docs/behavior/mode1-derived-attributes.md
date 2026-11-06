@@ -37,9 +37,9 @@ state/career authority.
 projection and shares its internal maxima calculation with the upcoming ordered
 equipment pass. It preserves retained byte base attributes, accepts original-width
 raw/multiplier/current fields and rejects out-of-storage raw captures. Three
-managed cases pass14 source literals, reward/growth/maxima composition and
-immutable replay/invalid captures. Eight Python cases independently check all28
-mode1/equipment descriptions; no managed equipment implementation is claimed yet.
+managed cases pass 14 source literals, reward/growth/maxima composition and
+immutable replay/invalid captures. Eight Python cases independently check all 28
+mode1/equipment descriptions. Equipment implementation follows under ZOD-386.
 
 ### Selected ZOD-386 equipment work
 
@@ -80,3 +80,39 @@ query rejections distinct from real executed outcomes. No live commands, global
 clock, magic AI, host/editor, automatic facing or custom cone activation. Owner
 drafts/JobStats, full corpse/Golem/terminal/frame RNG, broad interfaces and ZOD-106
 remain preserved/separate.
+
+## ZOD-386
+
+`EquipmentAttributeCalculation.CalculateMode1` uses the shared maxima owner and
+ordered immutable numeric item contributions, preserving incoming unclamped HP/
+MP until all armor work is complete. Presence and armor classification remain
+independent of bonus values. It reproduces saturated bonus accumulation,
+Move/Jump/actual-attribute caps, monster selective bypass and armor's egg cap.
+Base attributes remain unchanged; no RNG is consumed. Six further managed cases
+pass 14 equipment literals, the late-clamp regression, type/presence distinctions,
+unknown-item monster bypass, invalid captures and replay of explicitly synthetic
+extended contributions. Nine cumulative managed cases pass. The contribution
+kernel imposes no original slot-count limit and activates no equipment ownership,
+item import, status/affinity/flag handling or owner draft.
+
+## Final validation
+
+Locked restore and Release build pass with zero warnings/errors. All **4,767 .NET
+cases** and **736 Python tests** pass, including nine new managed cases and eight
+new Python cases. The 28 independent descriptions cover mode1 and ordered
+equipment work. Fresh source fingerprints (seven files/seven functions), prior
+growth/unlock/reward prepared-data checks, algorithm-guide, coverage, local-link,
+layout and preservation audits pass. The
+[implementation receipt](../evidence/combat/derived-attributes-implementation-v1.json)
+records milestone bases and ignored reports under `scratch/derived-385-386/`.
+Seven new public types have matching files in Battle/Progression. All pre-batch
+production, managed tests and behavior fixtures, owner drafts/JobStats and the
+Knight EquipmentSlot intent are preserved. No Content, AI, host, import,
+project/dependency or activation changes; no original/C execution or UI review.
+
+The numeric layer now composes raw growth, maxima and equipment contributions
+through shared owners. The main integration gap is a coherent action path owning
+status refresh, delayed-cast state, actor/reward work, paid failures and final
+battle publication. After the bounded status trace, prioritize an end-to-end
+ordinary magic scenario with explicit unsupported branches. These passing
+calculation checks do not establish that player/AI magic execution is connected.

@@ -87,8 +87,9 @@ contain more than twenty jobs, without copying the original bitset capacity.
 - ZOD-384: implement a validated immutable stable-ID prerequisite catalog and
   source unlock evaluation, preserving independent sex flags and nibble levels.
 
-ZOD-385 will project the source-mode1 numeric derived attributes before complete
-equipment/status refresh and magic/career state integration. These calculations
+[ZOD-385–386](mode1-derived-attributes.md) now project source-mode1 maxima and
+equipment numeric contributions; complete status refresh and magic/career state
+integration remain separate. These calculations
 cannot clear the previous reward result's
 growth/unlock requirements by themselves. No live battle/career/turn publication,
 paid-fizzle execution, grants/learning, full statuses/reactions, global scheduling,

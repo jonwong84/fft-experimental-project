@@ -36,6 +36,9 @@ Content supplies immutable definitions and prepared data through outer adapters.
 - `Battle/Progression/`: [raw battle growth and job unlock calculations](../../docs/behavior/growth-and-job-unlocks.md),
   with explicit five-draw RNG continuation and immutable stable-ID prerequisites.
   Derived/status refresh, career adoption and original packed adapters remain separate.
+  [Mode1 and equipment numeric projections](../../docs/behavior/mode1-derived-attributes.md)
+  share raw-to-maxima arithmetic and retain base PA/MA/Speed; armor bonuses precede
+  current HP/MP clamps. Complete status/equipment refresh is still separate.
 - `Battle/Commands/`: invocation-bound decision transactions, frozen follow-ups
   and retained Move continuations.
 - `Events/`: deterministic scene/script tasks and event state.

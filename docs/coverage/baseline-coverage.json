@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-06",
   "edition": "SCUS-94221",
-  "managedCommit": "0f8ba1d",
+  "managedCommit": "4d8a7fa",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -11,8 +11,8 @@
   },
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
-    "passed": 4758,
-    "source": "docs/behavior/growth-and-job-unlocks.md",
+    "passed": 4767,
+    "source": "docs/behavior/mode1-derived-attributes.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -2503,7 +2503,7 @@
       "ownerTicket": "ZOD-039",
       "ownerArea": "Zodiac.Framework simulation",
       "status": "partial",
-      "currentScope": "Job/ability metadata and base-job setup do not implement persistent progression. ZOD-376\u2013381 trace controller/actor/reward phase boundaries and implement normal-return outcome markers, primary EXP maximum accumulation, pre-level EXP/JP amounts, independent current/total JP caps, explicit threshold counting and stable-ID roster reward projections. Source team/sex/Petrify/zero-award quirks are covered. Results identify required raw growth/unlock recalculation and grant no live career, battle or turn authority. Paid fizzles, full statuses/reactions and magic AI activation remain separate. ZOD-382\u2013384 trace raw growth/refresh and prepared unlock requirements. Raw growth now preserves five discarded draws, caller-established level, unsigned24 caps and level-down. Immutable stable-ID unlock catalogs preserve independent sex/monster/nibble semantics without a fixed bitset capacity. Complete derived/status refresh and live career integration remain separate.",
+      "currentScope": "Job/ability metadata and base-job setup do not implement persistent progression. ZOD-376\u2013381 trace controller/actor/reward phase boundaries and implement normal-return outcome markers, primary EXP maximum accumulation, pre-level EXP/JP amounts, independent current/total JP caps, explicit threshold counting and stable-ID roster reward projections. Source team/sex/Petrify/zero-award quirks are covered. Results identify required raw growth/unlock recalculation and grant no live career, battle or turn authority. Paid fizzles, full statuses/reactions and magic AI activation remain separate. ZOD-382\u2013384 trace raw growth/refresh and prepared unlock requirements. Raw growth now preserves five discarded draws, caller-established level, unsigned24 caps and level-down. Immutable stable-ID unlock catalogs preserve independent sex/monster/nibble semantics without a fixed bitset capacity. Complete derived/status refresh and live career integration remain separate. ZOD-385\u2013386 implement bounded mode1 HP/MP maxima and ordered numeric equipment projections from copied multipliers/raw/current/base facts. Base PA/MA/Speed are retained; armor precedes final current clamps. Bonus, actual, Move/Jump and egg/armor caps, item presence/type distinctions and monster bypass are covered. No complete status/affinity/equipped-flag refresh, item import, owner draft activation or live career/battle adoption.",
       "referenceSources": [
         {
           "path": "src/main/job_progress.c",
@@ -2535,7 +2535,11 @@
         "docs/behavior/growth-and-job-unlocks.md",
         "docs/evidence/combat/growth-unlocks-source-v1.json",
         "docs/evidence/combat/growth-unlocks-implementation-v1.json",
-        "docs/fixtures/behavior/growth-unlocks-contract-v1.json"
+        "docs/fixtures/behavior/growth-unlocks-contract-v1.json",
+        "docs/behavior/mode1-derived-attributes.md",
+        "docs/evidence/combat/derived-attributes-source-v1.json",
+        "docs/evidence/combat/derived-attributes-implementation-v1.json",
+        "docs/fixtures/behavior/derived-attributes-contract-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/Battle/Combat/Rewards/AbilityOutcomeMarker.cs",
@@ -2559,7 +2563,14 @@
         "src/Zodiac.Framework/Battle/Progression/BattleRawStats.cs",
         "src/Zodiac.Framework/Battle/Progression/JobLevelRequirement.cs",
         "src/Zodiac.Framework/Battle/Progression/JobUnlockCatalog.cs",
-        "src/Zodiac.Framework/Battle/Progression/JobUnlockDefinition.cs"
+        "src/Zodiac.Framework/Battle/Progression/JobUnlockDefinition.cs",
+        "src/Zodiac.Framework/Battle/Progression/BattleAttributeValues.cs",
+        "src/Zodiac.Framework/Battle/Progression/BattleStatMultipliers.cs",
+        "src/Zodiac.Framework/Battle/Progression/Mode1AttributeProjection.cs",
+        "src/Zodiac.Framework/Battle/Progression/Mode1BattleAttributes.cs",
+        "src/Zodiac.Framework/Battle/Progression/EquipmentAttributeContribution.cs",
+        "src/Zodiac.Framework/Battle/Progression/EquipmentAttributeProjection.cs",
+        "src/Zodiac.Framework/Battle/Progression/EquipmentAttributeCalculation.cs"
       ],
       "automatedChecks": [
         {
@@ -2597,6 +2608,18 @@
         {
           "path": "tools/verification/verify_growth_unlocks.py",
           "scope": "31 independent descriptions;10 files/20 functions,19 prepared unlock rows and five Squire growth/multiplier pairs; no original/C execution."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Progression/Mode1BattleAttributesTests.cs",
+          "scope": "Literal numeric vectors, growth/maxima composition, armor-before-clamp regression, independent item facts, monster bypass and immutable replay; no complete state adoption."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Progression/EquipmentAttributeCalculationTests.cs",
+          "scope": "Literal numeric vectors, growth/maxima composition, armor-before-clamp regression, independent item facts, monster bypass and immutable replay; no complete state adoption."
+        },
+        {
+          "path": "tools/verification/verify_derived_attributes.py",
+          "scope": "28 independent descriptions and clean pinned seven-file/seven-function audit; no original/C execution."
         }
       ],
       "manualCheckpoint": {
@@ -2604,10 +2627,10 @@
         "procedure": "Compare one award/level/job-unlock chain and roster persistence."
       },
       "openQuestions": [
-        "Full derived/status refresh, copied growth/multiplier and base/equipment/current stat ownership, HP/MP clamping, packed career adapters and persistent adoption remain incomplete.",
+        "Full status/affinity/equipped-flag refresh, copied-field and career coherence, original packed adapters and persistent adoption remain incomplete.",
         "Learning/learn-on-hit, KO/status/reaction outcome integration, actor work and paid-fizzle/turn-authority integration remain separate."
       ],
-      "nextAction": "ZOD-385: implement source-mode1 numeric maxima/current clamps with egg rules and preserved base Speed/PA/MA; retain equipment/status refresh and complete state integration gaps."
+      "nextAction": "ZOD-387: trace status-current/innate/inflicted reconciliation, timers and Critical changes required by refresh before selecting bounded status and complete magic-state integration."
     },
     {
       "id": "COV-SIM-011",
@@ -2773,7 +2796,7 @@
       "ownerTicket": "ZOD-039",
       "ownerArea": "Zodiac.Content definitions and offline import",
       "status": "partial",
-      "currentScope": "Selected sword/Attack import and schema-2 raw/effective evade representation exist; full equipment stat derivation is absent.",
+      "currentScope": "Selected sword/Attack import and schema-2 raw/effective evade representation exist; full equipment stat derivation is absent. ZOD-385\u2013386 implement bounded mode1 HP/MP maxima and ordered numeric equipment projections from copied multipliers/raw/current/base facts. Base PA/MA/Speed are retained; armor precedes final current clamps. Bonus, actual, Move/Jump and egg/armor caps, item presence/type distinctions and monster bypass are covered. No complete status/affinity/equipped-flag refresh, item import, owner draft activation or live career/battle adoption.",
       "referenceSources": [
         {
           "path": "include/fft/item.h",
@@ -2790,11 +2813,22 @@
       ],
       "evidenceDocs": [
         "docs/behavior/retail-sword-representation.md",
-        "docs/behavior/base-job-battle-setup.md"
+        "docs/behavior/base-job-battle-setup.md",
+        "docs/behavior/mode1-derived-attributes.md",
+        "docs/evidence/combat/derived-attributes-source-v1.json",
+        "docs/evidence/combat/derived-attributes-implementation-v1.json",
+        "docs/fixtures/behavior/derived-attributes-contract-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.AssetTool/OriginalSwordRecords.cs",
-        "src/Zodiac.Content/BattleSetup/AttackBattleSetup.cs"
+        "src/Zodiac.Content/BattleSetup/AttackBattleSetup.cs",
+        "src/Zodiac.Framework/Battle/Progression/BattleAttributeValues.cs",
+        "src/Zodiac.Framework/Battle/Progression/BattleStatMultipliers.cs",
+        "src/Zodiac.Framework/Battle/Progression/Mode1AttributeProjection.cs",
+        "src/Zodiac.Framework/Battle/Progression/Mode1BattleAttributes.cs",
+        "src/Zodiac.Framework/Battle/Progression/EquipmentAttributeContribution.cs",
+        "src/Zodiac.Framework/Battle/Progression/EquipmentAttributeProjection.cs",
+        "src/Zodiac.Framework/Battle/Progression/EquipmentAttributeCalculation.cs"
       ],
       "automatedChecks": [
         {
@@ -2804,6 +2838,18 @@
         {
           "path": "tests/Zodiac.Content.Tests/AttackBattleSetupTests.cs",
           "scope": "Existing bounded checks only; see currentScope and linked evidence."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Progression/Mode1BattleAttributesTests.cs",
+          "scope": "Literal numeric vectors, growth/maxima composition, armor-before-clamp regression, independent item facts, monster bypass and immutable replay; no complete state adoption."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Progression/EquipmentAttributeCalculationTests.cs",
+          "scope": "Literal numeric vectors, growth/maxima composition, armor-before-clamp regression, independent item facts, monster bypass and immutable replay; no complete state adoption."
+        },
+        {
+          "path": "tools/verification/verify_derived_attributes.py",
+          "scope": "28 independent descriptions and clean pinned seven-file/seven-function audit; no original/C execution."
         }
       ],
       "manualCheckpoint": {
@@ -2813,7 +2859,7 @@
       "openQuestions": [
         "Remaining item categories, equip restrictions, two-handed/dual wield, affinities and complete stat rebuilding are absent."
       ],
-      "nextAction": "Separate raw import completeness from effective-stat implementation."
+      "nextAction": "ZOD-387: trace status-current/innate/inflicted reconciliation, timers and Critical changes required by refresh before selecting bounded status and complete magic-state integration."
     },
     {
       "id": "COV-CAT-003",

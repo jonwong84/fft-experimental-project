@@ -167,8 +167,9 @@ include current-team charm, petrified recipients, zero awards, incompatible acto
 sex, monster and level99 paths. Full original action/career adoption still waits
 for complete derived refresh and the remaining phase/status/fizzle work.
 [ZOD-382–384](growth-and-job-unlocks.md) now trace growth/unlocks and implement
-raw growth/RNG and semantic unlock calculations. ZOD-385 adds the bounded mode1
-numeric derived-attribute projection next.
+raw growth/RNG and semantic unlock calculations. [ZOD-385–386](mode1-derived-attributes.md)
+add shared mode1/equipment numeric projections. ZOD-387 traces required status
+reconciliation before complete refresh and state integration.
 
 ## Final validation
 

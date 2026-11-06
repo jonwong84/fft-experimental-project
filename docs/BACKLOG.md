@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-386 (Project ordered equipment numeric attribute bonuses).**
+**Next bounded work: ZOD-387 (Trace status reconciliation required by magic refresh).**
 [Mode1 derived attributes](behavior/mode1-derived-attributes.md) records
-completed ZOD-385. Complete refresh still needs status reconciliation and phase ownership.
-There are 34 open tickets below. The 352 completed tickets, prior checkpoints and
+completed ZOD-385–386. Complete refresh still needs status reconciliation and phase ownership.
+There are 34 open tickets below. The 353 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,11 +31,11 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-386 — Project ordered equipment numeric attribute bonuses
+### ZOD-387 — Trace status reconciliation required by magic refresh
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-385
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-386
 
-Compose mode1 maxima with ordered item numeric contributions, saturated equipment bonuses, armor type/presence rules, monster bypass and final HP/MP/actual-attribute clamps. Preserve unclamped incoming HP/MP until after armor. Do not activate item import, the EquipmentSlot draft or complete status refresh. See [numeric and remaining refresh boundaries](behavior/mode1-derived-attributes.md).
+Trace status_current_update, innate/inflicted reconciliation, timer preservation and Critical changes required by derived refresh; select a bounded child before implementation. Preserve source order and keep numeric projections distinct from complete battle/career adoption. See [numeric and remaining refresh boundaries](behavior/mode1-derived-attributes.md).
 Owner drafts/JobStats, Knight equipment-break slot mapping, host/editor, automatic
 facing, full corpse/Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom
 cone remain separate/deferred.
