@@ -49,7 +49,7 @@ internal static class RosterThrowStoneAiCandidate
         var origin = candidate.ActBeforeMove ? actor.Position : candidate.Destination;
         var targetPosition = old.Battle.Units.Single(u => u.Id == candidate.TargetId).Position;
         if (AiRosterNearest.Distance(origin, targetPosition) is < 1 or > 4) return Reject(RosterThrowStoneAiCandidateRejection.OutOfRange);
-        return EvaluateFresh(state, candidate, simulation, rng);
+        return EvaluateFresh(state, candidate, simulation, ability.Abilities[candidate.AbilityId].Definition, rng);
     }
 
     internal static RosterThrowStoneAiCandidateRejection ValidateAbility(AttackBattleSnapshot state, BattleUnitId actorId, AssetId abilityId,
@@ -64,7 +64,7 @@ internal static class RosterThrowStoneAiCandidate
 
     // Fresh entry ownership only: admitted initial roster, effect/grant, legal destination, range and computed clear trajectory.
     internal static RosterThrowStoneAiCandidateResult EvaluateFresh(AttackBattleSnapshot state, ThrowStoneAiCandidate candidate,
-        RosterAiSimulationProfile simulation, RandomState rng)
+        RosterAiSimulationProfile simulation, PhysicalAbilityDefinition ability, RandomState rng)
     {
         RosterThrowStoneAiCandidateResult Reject(RosterThrowStoneAiCandidateRejection reason) => new(AiScoringDisposition.Rejected, reason, null, null, rng);
         var old = state.TurnBattle; var actor = old.Battle.Units.Single(u => u.Id == candidate.ActorId);
@@ -72,7 +72,7 @@ internal static class RosterThrowStoneAiCandidate
         var bodies = old.Battle.Units.Select(u => u.Id == candidate.ActorId ? new BattleUnitState(u.Id, origin, u.MovementProfile, u.HasMoved) : u);
         var staged = new AttackBattleSnapshot(new(new(old.Battle.Map, bodies, rng),
             new(old.Turns.Units, rng, old.Turns.Ticks, old.Turns.Phase)), state.Combatants);
-        var formula = ThrowStoneAiFormulaProjection.EvaluateAdmitted(staged, new(candidate.ActorId, candidate.AbilityId, candidate.TargetId), rng);
+        var formula = ThrowStoneAiFormulaProjection.EvaluateAdmitted(staged, new(candidate.ActorId, candidate.AbilityId, candidate.TargetId), rng, ability);
         if (!formula.Accepted) return Reject(RosterThrowStoneAiCandidateRejection.RandomDrawCountExhausted);
         if (!formula.Outcome!.HasAccuracy) return new(AiScoringDisposition.NotValuable, RosterThrowStoneAiCandidateRejection.None, null, null, formula.RngState);
         var reason = AiDamageHypotheses.Complete(state, candidate.ActorId, candidate.TargetId, candidate.Destination,

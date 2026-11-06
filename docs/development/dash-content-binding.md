@@ -66,3 +66,12 @@ Release build. Verified prepared Dash import succeeds. Saved prepared Stone
 package/provenance remain byte-identical. [Receipt](../evidence/combat/dash-content-implementation-v1.json).
 No new packages, Framework rules, owner drafts, JobStats, host/editor activation,
 automatic facing, corpse/terminal/frame RNG, broad interfaces or ZOD-106 changes.
+
+## Subsequent formula assignment (ZOD-420)
+
+[Assignable physical formulas](../architecture/physical-formula-reassignment.md)
+now preserve the original schema1 import while adding explicit custom schema2.
+Its formula ID/X/Y data reaches shared calculation, preview, ranked AI and actual
+execution, including frozen Move continuation. A custom Dash can select0x32/X9/Y0
+while retaining range1, non-evadeable delivery, identity and metadata. No editor
+or broader attribute migration is included; unsupported contexts still reject.

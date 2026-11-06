@@ -6,47 +6,34 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-Owner-requested [ZOD-419 equipment selection study](architecture/equipment-effect-selection.md)
-is complete. Weapon effects choose higher item required level with right ties;
-shields prefer right then left. Typed content must select policies, not assume
-Weapon=MainHand or Shield=OffHand. Break/Steal/Mighty Sword retain distinct
-failure and ordering rules. The draft EquipmentSlot and all owner files remain
-unchanged; no equipment effect is activated. The owner agreed to shared C#
-formula/mechanic implementations with individual abilities in validated JSON;
-proposed Formulas/CombatRules namespaces are recorded in the architecture.
-The owner also requires [formula reassignment](architecture/ability-effect-families.md#formula-reassignment-requirement):
-Dash must be able to select Repeating Fist's formula without changing its identity
-or separately authored targeting/presentation. The current fixed bindings and
-Dash-specific AI projection do not support it. The upcoming refactor needs
-formula-specific parameters, a traced0x32 handler and shared execution/preview/AI
-dispatch; preserve original content and keep edits explicit as custom content.
-The supplied FFHacktics pre-formula disassembly now has a
-[source-checked setup boundary](architecture/ability-effect-families.md#pre-formula-setup-boundary):
-menu-dependent formula selection, selective result reset, status/cancellation
-preparation, reaction gates and post-formula finalization. A zero C return does
-not establish formula invocation. Keep those steps outside individual handlers;
-no general setup or namespace migration has been implemented by these notes.
-This source study does not start that migration or ZOD-418.
-All 770 current Python tests pass, including eight new selector tests. The
-[study receipt](evidence/combat/equipment-selection-study-v1.json) records the
-source audit and preservation. C# production code is unchanged; .NET/native
-results below remain the ZOD-417 baseline, not new runs for this study.
+**ZOD-421: Consolidate physical delivery profiles and definition ownership.**
+The owner-selected [ZOD-420 physical formula refactor](architecture/physical-formula-reassignment.md)
+is complete. Shared `Zodiac.Framework.Formulas` and `.CombatRules` owners now
+resolve neutral0x32/0x37 from immutable formula ID/X/Y data. Custom schema2 makes
+assignment explicit; original schema1 import bytes remain identical. A custom
+Dash selects Repeating Fist's formula through shared calculation, preview,
+ranked AI, direct execution and frozen Move continuation, retaining its own
+identity, range, execution evasion, metadata and grants. Formula-only edits retain
+X/Y; they do not copy another ability's parameters. Named adapters remain for
+existing API/event contracts; profile/definition consolidation is next.
 
-**ZOD-418: Trace fixed-origin ordinary spell aim search and ranking.**
-The requested five tickets ZOD-413–417 are complete. The
-[ordinary spell AI clock](behavior/ordinary-spell-ai-clock.md) now composes one
-fresh candidate at the actor's current origin, deriving charge timing and
-movement opportunities before stored-aim resolution/scoring. Prepared-only
-diagnostics independently verify thirty delayed and fifteen ready-hit hypotheses.
-Aim/origin enumeration, full-list ranking/lottery and autonomous magic turns
-remain separate; ZOD-418 is the next bounded source study.
+Locked restore, zero-warning/error Release build, **5,080 .NET tests** and
+**776 Python tests** pass. All1,305 AI cases pass. The native Basic Skill check
+matches all121 retained steps and two replays; four magic scenarios retain their
+eighteen complete replay checkpoints and gameplay hashes. Eight source files/
+sixteen functions are pinned at clean read-only reference
+`11464943bbdbd2a0af022d90cb7f10455cf911df`. All ten owner blobs, immutable
+JobStats, int MP costs and the approved `b7a222d` formatting remain preserved.
+The new474 public Framework declarations retain matching files and partial parts.
 
-The ZOD-417 baseline passed locked restore, a zero-warning/error Release build,
-**5,044 .NET tests** and **762 Python tests**. Four native scenarios retain all eighteen complete
-replay checkpoints and unchanged gameplay hashes. The reference remains clean/
-read-only at `11464943bbdbd2a0af022d90cb7f10455cf911df`. All ten owner-file blobs
-and deferred gates are preserved. The approved formatting edit is committed as
-`b7a222d`. Earlier five-hour runs are not active.
+The [equipment selector study](architecture/equipment-effect-selection.md)
+still owns the weapon-required-level/right-tie and right-first shield findings.
+The owner also supplied formula/status-set documentation and pre-formula
+disassembly; [the shared setup boundary](architecture/ability-effect-families.md#pre-formula-setup-boundary)
+remains the design for wider families. General status/flag/equipment behavior,
+namespace migration, editor, automatic facing, ZOD-106 and custom cone stay
+separate. ZOD-418 ordinary magic aim search remains queued after the selected
+refactor. Earlier five-hour runs are not active.
 
 [Managed MP costs](development/managed-magic-mp-costs.md) now use nonnegative `int`
 through spell definitions, resource calculation and recorded cast/resource cost.
@@ -295,40 +282,30 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: ZOD-413–417 pass locked restore, a zero-warning/error Release
-  build and **5,044 .NET cases** (1,784 Framework,1,305 AI,884 Content,394 CLI,
-  206 AssetTool,447 Client,24 Engine). All **762 Python tests** pass. Latest
-  seven TRX reports/logs are under ignored `scratch/ordinary-spell-ai-413-417/`,
-  set `trx-all-417-final`. The pinned eight-file clock audit checks ten literal
-  descriptions and thirty actual prepared delayed hypotheses, including exact
-  CT/events, upkeep rolls, formula-entry/exit RNG, HP/MP, scores and tile exclusions.
-  The prior ten-file ready-hit audit still matches fifteen prepared hypotheses.
-  The source algorithm guide checks 105 core/eight external functions. Prepared
-  Fire/elemental/Cure/learning audits check35/57/39/37 records and both asset hashes.
-  [Implementation receipt](evidence/ai/ordinary-spell-ai-clock-implementation-v1.json).
-  Native `native-417-fire`, `-elemental`, `-healing`, `-learning` pass spell input,
-  movement/path/heading, charge/HP/MP/status/rewards/growth, learning choices,
-  restart and eighteen complete headless replay checkpoints. Final gameplay hashes
-  equal ZOD-402/ZOD-412. Drawing preserves state. These programmed key/pointer
-  routes do not establish physical input or original graphics/animation/timing
-  fidelity; no new UI activation or original/C execution is claimed.
-  Schema1 remains legacy effect-only; schema2 binds metadata/grants; schema3 owns
-  explicit initial primary slots. The AI bridge requires metadata and primary-only
-  loadouts, rejecting missing secondary learning instead of inferring it. The new
-  query forecasts one fixed-origin candidate; it does not rank a complete search
-  or execute a turn. Existing decision maker, sword/Basic Skill execution and
-  player commands are preserved.
-  Ten owner-file blobs are unchanged. The approved targeting-format edit is
-  committed as `b7a222d` and preserved. All467 public Framework declarations
-  retain matching files and existing partial parts. MP costs stay int; JobStats,
-  AbilityToggles, editor and Knight slot intent are preserved. Automatic wait-facing,
-  general terrain, full statuses/reactions/corpse/Golem/terminal/frame RNG,
-  secondary/special AI learned rows, general aim/origin search/ranking, autonomous
-  magic turns, ZOD-106 and custom cone remain separate. Python uses pinned
-  Pillow12.3.0 under ignored `scratch/accumulate-ai-229/python-deps`, with
-  TEMP/TMP in its `python-temp`. Historical whole-worktree audits keep old
-  baselines; the movement verifier checks source/description portions without
-  retired managed paths.
+- Validation: ZOD-420 passes locked restore, a zero-warning/error Release build
+  and **5,080 .NET tests** (1,807 Framework,1,305 AI,895 Content,396 CLI,206
+  AssetTool,447 Client,24 Engine). All **776 Python tests** pass. Final seven TRX
+  reports/logs are in ignored `scratch/physical-formula-420/trx-all-final-cap`.
+  [Receipt](evidence/combat/physical-formula-assignment-implementation-v1.json).
+  Eighteen independent physical vectors and focused source fingerprints cover
+ 0x32/0x37 arithmetic, critical/Brave knockback, evasion, mode RNG, caps and
+  rollback. Custom JSON integration reaches full ranked AI and actual turns in
+  both action orders. Original Dash/Stone imports repeat retained schema1 bytes.
+  Native `native-basic-reviewed` matches all121 retained steps, two journal
+  replays, drawing and final gameplay hash; `native-fire`, `-elemental`, `-healing`,
+  `-learning` retain eighteen full replay checkpoints and prior gameplay hashes.
+  These programmed routes do not establish physical input or original fidelity.
+  No original or C execution is claimed. Owner-file blobs and approved formatting
+  are unchanged; all474 public Framework declarations have matching files and
+  existing partial parts. No asset inventories are committed. MP remains int;
+  JobStats, AbilityToggles, AttributeToggles, EquipmentSlot and other owner drafts
+  remain preserved. Broader status/modifier/terrain/equipment/terminal/frame RNG,
+  general flag/status catalogs, editor, automatic facing, ZOD-106 and custom cone
+  remain separate. Python uses pinned Pillow12.3.0 under ignored
+  `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
+  Historical receipts retain their baselines; they are not refreshed for this
+  refactor. The prior delayed-magic implementation remains validated by the
+  whole-solution suites and unchanged native magic checks.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
   introduction proofs and synthetic world Save/Load exist. Original campaign,
   full combat/content, audio and general AI remain incomplete. See the

@@ -1,5 +1,6 @@
 using System.Collections.Immutable;
 using Zodiac.Framework.Random;
+using Zodiac.Framework.CombatRules;
 
 namespace Zodiac.Framework.Ai;
 
@@ -14,7 +15,7 @@ public sealed record DashAiCandidateOutcome(BattleUnitId ActorId, AssetId Abilit
 public sealed record RosterDashAiCandidateResult(AiScoringDisposition Disposition, RosterDashAiCandidateRejection Rejection,
     DashAiCandidateOutcome? Outcome, AiCandidateScore? Score, RandomState RngState);
 
-/// <summary>One isolated neutral Dash hypothesis: hit100, midpoint3*PA, no formula draws or push, then shared all-unit clock/scoring.</summary>
+/// <summary>One isolated adjacent neutral physical hypothesis using its selected formula, then shared all-unit clock/scoring.</summary>
 /// <remarks>ZOD-322; source 11464943bbdbd2a0af022d90cb7f10455cf911df. Never publishes a command or projected battle.</remarks>
 internal static class RosterDashAiCandidate
 {
@@ -44,7 +45,7 @@ internal static class RosterDashAiCandidate
         if (!movement.Accepted || !movement.Outcome!.AiOrigins.Contains(candidate.Destination)) return Reject(RosterDashAiCandidateRejection.InvalidCandidate);
         var origin = candidate.ActBeforeMove ? state.TurnBattle.Battle.Units.Single(u => u.Id == candidate.ActorId).Position : candidate.Destination;
         var target = state.TurnBattle.Battle.Units.Single(u => u.Id == candidate.TargetId).Position;
-        return AiRosterNearest.Distance(origin, target) != 1 ? Reject(RosterDashAiCandidateRejection.OutOfRange) : EvaluateFresh(state, candidate, simulation, rng);
+        return AiRosterNearest.Distance(origin, target) != 1 ? Reject(RosterDashAiCandidateRejection.OutOfRange) : EvaluateFresh(state, candidate, simulation, ability.Abilities[candidate.AbilityId].Definition, rng);
     }
 
     internal static RosterDashAiCandidateRejection ValidateAbility(AttackBattleSnapshot state, BattleUnitId actor,
@@ -57,18 +58,24 @@ internal static class RosterDashAiCandidate
 
     // Only owning fresh entry/candidate admission can enter here. Formula has no target-facing/trajectory dependency.
     internal static RosterDashAiCandidateResult EvaluateFresh(AttackBattleSnapshot state, DashAiCandidate candidate,
-        RosterAiSimulationProfile simulation, RandomState rng)
+        RosterAiSimulationProfile simulation, PhysicalAbilityDefinition ability, RandomState rng)
     {
         var actor = state.Combatants.Single(u => u.UnitId == candidate.ActorId);
         var target = state.Combatants.Single(u => u.UnitId == candidate.TargetId);
-        int damage = DashFormula.Damage(actor.PhysicalAttack, 16384);
+        var origin = candidate.ActBeforeMove ? state.TurnBattle.Battle.Units.Single(u => u.Id == actor.UnitId).Position : candidate.Destination;
+        var to = state.TurnBattle.Battle.Units.Single(u => u.Id == target.UnitId).Position;
+        var formula = PhysicalDamageRules.Calculate(ability, actor.PhysicalAttack, actor.Brave, target.Brave,
+            target.ClassPhysicalEvade, (long)to.X-origin.X, (long)to.Y-origin.Y, target.Facing, PhysicalDamageMode.Ai, rng);
+        if (!formula.Accepted) return new(AiScoringDisposition.Rejected, RosterDashAiCandidateRejection.RandomDrawCountExhausted, null, null, rng);
+        if (!formula.Outcome!.Hit) return new(AiScoringDisposition.NotValuable, RosterDashAiCandidateRejection.None, null, null, formula.RngState);
+        int damage = formula.Outcome!.Damage;
         var reason = AiDamageHypotheses.Complete(state, candidate.ActorId, candidate.TargetId, candidate.Destination,
-            Math.Max(0, target.Hp - damage), 100, simulation, rng, out var completed);
+            Math.Max(0, target.Hp - damage), checked((byte)formula.Outcome.Accuracy), simulation, formula.RngState, out var completed);
         if (reason != AiSimulationClockRejection.None) return new(AiScoringDisposition.Rejected,
             reason == AiSimulationClockRejection.RandomDrawCountExhausted ? RosterDashAiCandidateRejection.RandomDrawCountExhausted : RosterDashAiCandidateRejection.TickCountExhausted, null, null, rng);
         var c = completed!.Clock;
         return new(AiScoringDisposition.Scored, RosterDashAiCandidateRejection.None,
-            new(candidate.ActorId, candidate.AbilityId, candidate.TargetId, 100, damage, completed.TurnEndCt, c.Units, c.MoveOpportunityUnitId, c.ElapsedTicks, c.Ticks, c.UpkeepPicks),
+            new(candidate.ActorId, candidate.AbilityId, candidate.TargetId, formula.Outcome.Accuracy, damage, completed.TurnEndCt, c.Units, c.MoveOpportunityUnitId, c.ElapsedTicks, c.Ticks, c.UpkeepPicks),
             completed.Score, c.RngState);
     }
 }

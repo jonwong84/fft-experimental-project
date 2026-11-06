@@ -1,5 +1,6 @@
 using Zodiac.Framework.Random;
 using System.Collections.Immutable;
+using Zodiac.Framework.CombatRules;
 
 namespace Zodiac.Framework;
 
@@ -12,7 +13,7 @@ public static class TargetedAbilityBattleSimulator
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(command); ArgumentNullException.ThrowIfNull(profile);
         var invalid = ValidateCommand(state, command, profile);
         if (invalid != AttackCommandRejection.None) return Reject(invalid);
-        return ApplyRandomPa(state, command);
+        return ApplyPhysical(state, command, profile.Abilities[command.AbilityId].Definition);
         AttackBattleResult Reject(AttackCommandRejection reason) => new(false, reason, TurnCycleRejection.None, BattleTransitionRejection.None, state, []);
     }
 
@@ -22,7 +23,8 @@ public static class TargetedAbilityBattleSimulator
     {
         var invalid = ValidateRoster(state, command, profile, roster, heights, out var actualTarget);
         if (invalid != AttackCommandRejection.None) return new(false, invalid, TurnCycleRejection.None, BattleTransitionRejection.None, state, []);
-        return ApplyRandomPa(state, command with { TargetId = actualTarget }, actualTarget == command.TargetId ? null : command.TargetId);
+        return ApplyPhysical(state, command with { TargetId = actualTarget }, profile.Abilities[command.AbilityId].Definition,
+            actualTarget == command.TargetId ? null : command.TargetId);
     }
 
     /// <summary>Pure current-command validation and live projectile resolution; does not consume ACT or RNG.</summary>
@@ -68,7 +70,8 @@ public static class TargetedAbilityBattleSimulator
             ? AttackCommandRejection.UnsupportedSetup : AttackCommandRejection.None;
     }
 
-    internal static AttackBattleResult ApplyRandomPa(AttackBattleSnapshot state, UseTargetedAbilityCommand command, BattleUnitId? intendedTarget = null, bool dash = false)
+    internal static AttackBattleResult ApplyPhysical(AttackBattleSnapshot state, UseTargetedAbilityCommand command,
+        PhysicalAbilityDefinition ability, BattleUnitId? intendedTarget = null, bool legacyDashEvents = false)
     {
         var actor = state.Combatants.Single(unit => unit.UnitId == command.ActorId);
         var target = state.Combatants.Single(unit => unit.UnitId == command.TargetId);
@@ -79,26 +82,13 @@ public static class TargetedAbilityBattleSimulator
         var action = TurnBattleSimulator.ConfirmAct(state.TurnBattle, actor.UnitId);
         if (!action.Accepted) return new(false, AttackCommandRejection.None, action.TurnRejection, action.MovementRejection, state, []);
 
-        var rng = state.TurnBattle.Turns.RngState;
-        uint Draw()
-        {
-            var draw = new RandomStateGenerator().Next(rng); rng = draw.State; return draw.Value;
-        }
-        bool hit = true, attempted = false;
-        int damage = 0;
-        try
-        {
-            int classEvade = ThrowStoneFormula.IsFront(dx, dy, target.Facing) ? target.ClassPhysicalEvade : 0;
-            foreach (int evade in dash ? Array.Empty<int>() : new[] { 0, 0, 0, classEvade })
-                if (Draw() * 100 / 32768 < evade) { hit = false; break; }
-            if (hit)
-            {
-                damage = dash ? DashFormula.Damage(actor.PhysicalAttack, Draw()) : ThrowStoneFormula.Damage(actor.PhysicalAttack, Draw());
-                uint attackerRoll = Draw(), targetRoll = Draw();
-                attempted = ThrowStoneFormula.AttemptsKnockback(actor.Brave, target.Brave, attackerRoll, targetRoll);
-            }
-        }
-        catch (OverflowException) { return Reject(AttackCommandRejection.RandomDrawCountExhausted); }
+        var calculation = PhysicalDamageRules.Calculate(ability, actor.PhysicalAttack, actor.Brave, target.Brave,
+            target.ClassPhysicalEvade, dx, dy, target.Facing, PhysicalDamageMode.Execution, state.TurnBattle.Turns.RngState);
+        if (!calculation.Accepted) return Reject(AttackCommandRejection.RandomDrawCountExhausted);
+        var result = calculation.Outcome!;
+        var rng = calculation.RngState;
+        bool hit = result.Hit, attempted = result.KnockbackAttempted;
+        int damage = result.Damage;
 
         int hp = hit ? Math.Max(0, target.Hp - damage) : target.Hp;
         bool ko = target.Hp > 0 && hp == 0;
@@ -121,12 +111,12 @@ public static class TargetedAbilityBattleSimulator
             state.Combatants.Select(unit => unit.UnitId == target.UnitId ? nextTarget : unit));
         var events = action.Events.Select(ev => (AttackResultEvent)new AttackTurnBattleEvent(ev)).ToList();
         if (intendedTarget is { } original) events.Add(new ThrowStoneTargetInterceptedEvent(actor.UnitId, command.AbilityId, original, target.UnitId));
-        events.Add(dash ? new DashResolvedEvent(actor.UnitId, command.AbilityId, target.UnitId, damage, attempted)
+        events.Add(legacyDashEvents ? new DashResolvedEvent(actor.UnitId, command.AbilityId, target.UnitId, damage, attempted)
             : new ThrowStoneResolvedEvent(actor.UnitId, command.AbilityId, target.UnitId, hit, damage, attempted));
         if (hp != target.Hp) events.Add(new AttackHpChangedEvent(target.UnitId, target.Hp, hp));
         if (nextTarget.Status != target.Status) events.Add(new AttackStatusChangedEvent(target.UnitId, target.Status, nextTarget.Status));
         if (ko) events.Add(new AttackKnockedOutEvent(target.UnitId, nextTarget.KoCount));
-        if (destination != to) events.Add(dash ? new DashKnockbackEvent(target.UnitId, to, destination) : new ThrowStoneKnockbackEvent(target.UnitId, to, destination));
+        if (destination != to) events.Add(legacyDashEvents ? new DashKnockbackEvent(target.UnitId, to, destination) : new ThrowStoneKnockbackEvent(target.UnitId, to, destination));
         return new(true, AttackCommandRejection.None, TurnCycleRejection.None, BattleTransitionRejection.None, next, events.ToImmutableArray());
 
         AttackBattleResult Reject(AttackCommandRejection reason) =>

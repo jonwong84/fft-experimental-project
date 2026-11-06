@@ -13,7 +13,7 @@ All share immutable `AiDecisionConfiguration`; a turn adds dispatch/facing throu
 - `Decision/`: configuration, decision records, fresh prefix/list/ranking/lottery orchestration and internal ability dispatch.
 - `Execution/`: actual commands, complete turns, diagnostics, recovery and common stage routing.
 - `Shared/`: hypothetical clocks/state, roster preparation, movement/scenarios, target masks, scoring/ranking/lottery and immutable priority knowledge. `AiDamageHypotheses` completes admitted HP projections through the all-unit clock/score. `AiUnitPolicy`, `AiPreparedAbility` and `AiReachAdjustment` name shared data.
-- `Sword/`, `ThrowStone/`, `Accumulate/`, `Dash/`: specialized admission, formulas and searches. Attack/Stone retain distinct trajectory/evasion/RNG rules; Dash retains AI midpoint versus actual damage behavior; Accumulate retains usefulness and self-PA hypotheses.
+- `Sword/`, `ThrowStone/`, `Accumulate/`, `Dash/`: specialized admission and searches. Stone/Dash now project through Framework's shared selected physical formula/rule owners; delivery and metadata policies remain distinct. Accumulate retains usefulness and self-PA hypotheses.
 - `AttackThrowStone/`, `BasicSkill/`: earlier bounded composition, selection and execution paths, retained internally for source vectors and guards.
 
 Namespaces remain `Zodiac.Framework.Ai` and `.Tests`. AI references Framework; Framework never references AI. Content supplies semantic lists and typed grants from immutable metadata. AI does no file I/O and cannot construct trusted sessions/receipts. Actual combat, geometry, movement, RNG primitives and turn rules remain in Framework. The live host is not yet wired to these entry points.

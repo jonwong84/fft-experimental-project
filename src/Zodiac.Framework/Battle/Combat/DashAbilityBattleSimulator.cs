@@ -10,7 +10,7 @@ public static class DashAbilityBattleSimulator
         DashAbilityBattleProfile profile, FlatRosterBattleProfile roster)
     {
         var invalid = ValidateCommand(state, command, profile, roster);
-        return invalid == AttackCommandRejection.None ? TargetedAbilityBattleSimulator.ApplyRandomPa(state, command, dash: true)
+        return invalid == AttackCommandRejection.None ? TargetedAbilityBattleSimulator.ApplyPhysical(state, command, profile.Abilities[command.AbilityId].Definition, legacyDashEvents: true)
             : new(false, invalid, TurnCycleRejection.None, BattleTransitionRejection.None, state, []);
     }
     public static AttackCommandRejection ValidateAbilitySetup(AttackBattleSnapshot state, BattleUnitId actor, AssetId ability,

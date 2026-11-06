@@ -102,10 +102,13 @@ must follow the selected implementation; retaining a special Dash-only tail
 would defeat the reassignment. A separately configurable custom extra effect
 would require an explicit rule and ordering, not an implicit retained behavior.
 
-Current `TargetedAbilityDefinition`/schema1 companions and bounded Dash/Stone
-profiles intentionally admit fixed effects. Actual execution still selects their
-closed paths, and Dash's AI projection directly calls `DashFormula`. They do
-**not** support this reassignment today. Extend the model/package and shared
+At the design baseline `c34d6c5`, `TargetedAbilityDefinition`/schema1 companions and bounded Dash/Stone
+profiles admitted fixed effects. Actual execution selected their closed paths,
+and Dash's AI projection directly called `DashFormula`. They did **not** support
+this reassignment. [ZOD-420](physical-formula-reassignment.md)
+now implements the first neutral physical slice with explicit custom schema2,
+shared formula/rule owners and normal execution/preview/AI assignment. Wider
+families still need to extend the model/package and shared
 execution/AI owners together, preserving existing schema1 content and regressions.
 Reject unsupported formulas or incomplete parameter/context combinations at
 validation; do not silently execute Dash's original formula instead.
@@ -115,8 +118,9 @@ select a supported0x32 parameter definition in custom content, and verify that
 actual execution, preview and AI all use it with their correct RNG contracts.
 Keep original Dash/Throw Stone definitions and behavior unchanged. No new
 ability-specific RepeatingFist class, editor work or runtime C dependency is
-needed to express the assignment. The supported0x32 handler and its source trace
-are necessary before the example can execute.
+needed to express the assignment. Each subsequently admitted family needs its
+own source trace and supported handler. The0x32 example now executes
+within the explicit neutral, bare-human, single-target delivery profiles.
 
 ## Pre-formula setup boundary
 

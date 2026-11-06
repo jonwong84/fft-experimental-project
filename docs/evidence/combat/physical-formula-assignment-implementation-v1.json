@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-420",
+  "managedBaseRevision": "c34d6c5590f0e9b7336947d6f3a4c05b17bb083e",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "sourceReceipt": "docs/evidence/combat/physical-formula-assignment-source-v1.json",
+  "fixture": "docs/fixtures/behavior/physical-formula-assignment-v1.json",
+  "sourceAudit": {
+    "physicalFormulaDescriptions": 18,
+    "sourceFormulaIds": [
+      50,
+      55
+    ],
+    "originalExecuted": false,
+    "cExecuted": false,
+    "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "sourceFiles": 8,
+    "sourceFunctions": 16
+  },
+  "validation": {
+    "lockedRestore": true,
+    "releaseWarnings": 0,
+    "releaseErrors": 0,
+    "dotnetTests": 5080,
+    "dotnetAssemblies": [
+      {
+        "assembly": "Tessera.Engine.Tests.dll",
+        "passed": 24
+      },
+      {
+        "assembly": "Zodiac.AssetTool.Tests.dll",
+        "passed": 206
+      },
+      {
+        "assembly": "Zodiac.AssetTool.Cli.Tests.dll",
+        "passed": 396
+      },
+      {
+        "assembly": "Zodiac.Content.Tests.dll",
+        "passed": 895
+      },
+      {
+        "assembly": "Fft.Client.Tests.dll",
+        "passed": 447
+      },
+      {
+        "assembly": "Zodiac.Framework.Ai.Tests.dll",
+        "passed": 1305
+      },
+      {
+        "assembly": "Zodiac.Framework.Tests.dll",
+        "passed": 1807
+      }
+    ],
+    "pythonTests": 776,
+    "newManagedTests": 36,
+    "newPythonTests": 6,
+    "managedPhysicalCases": 23,
+    "managedContentCases": 11,
+    "newCustomImportCases": 2,
+    "existingAiCases": 1305,
+    "preparedOperandAndEvadeRecordsVerified": 3,
+    "preparedInputSha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562",
+    "legacyImports": [
+      {
+        "profile": "import-dash",
+        "sha256": "74c0a04927dc5ad5237b2616ab039161bea290227f273fbd694e81f7c74bc158",
+        "schema1BytesUnchanged": true
+      },
+      {
+        "profile": "import-stone",
+        "sha256": "50a45c020f6c52c3a05f285e43bdf05497f320a906210a46081e926fa1bab648",
+        "schema1BytesUnchanged": true
+      }
+    ],
+    "ownerFiles": 10,
+    "ownerBlobsUnchanged": true,
+    "approvedFormattingCommit": "b7a222d",
+    "approvedFormattingUnchanged": true,
+    "publicFrameworkDeclarations": 474,
+    "matchingPublicTypeFiles": true,
+    "partialPartsPreserved": true,
+    "localLinksChecked": 682,
+    "localAnchorsChecked": 279,
+    "nativeBasic": {
+      "steps": 121,
+      "journalReplays": 2,
+      "allStepsMatch111": true,
+      "finalSha256": "539bba6b8cd1400c7aab66c9d8a4a841c1674a911b3ce9e4f7aa1fe86a409484",
+      "headlessMatched": true,
+      "replayMatched": true,
+      "drawingPreservedState": true
+    },
+    "nativeMagic": [
+      {
+        "profile": "fire",
+        "checkpoints": 4,
+        "finalSha256": "05f08744a6fc01b22de9c623c71ab6c28cbebce4685cbe2653a14aff38a829f7",
+        "sameGameplayHashAs402And412And417": true,
+        "replayMatched": true,
+        "restartMatched": true,
+        "drawingPreservedState": true
+      },
+      {
+        "profile": "elemental",
+        "checkpoints": 4,
+        "finalSha256": "5c1fd7e2cf5da76ba3442b3e3dcd3c9dfa575ec0fc62781fb209eeb2770dc744",
+        "sameGameplayHashAs402And412And417": true,
+        "replayMatched": true,
+        "restartMatched": true,
+        "drawingPreservedState": true
+      },
+      {
+        "profile": "healing",
+        "checkpoints": 4,
+        "finalSha256": "215d32aad03e0056fd483769a60afab05b88b9da0482736f6baa7741ce792547",
+        "sameGameplayHashAs402And412And417": true,
+        "replayMatched": true,
+        "restartMatched": true,
+        "drawingPreservedState": true
+      },
+      {
+        "profile": "learning",
+        "checkpoints": 6,
+        "finalSha256": "5e49ea88f2ae386f737248501db90ff84a93e94ad3e0d09d3b4b41d29d0228f5",
+        "sameGameplayHashAs402And412And417": true,
+        "replayMatched": true,
+        "restartMatched": true,
+        "drawingPreservedState": true
+      }
+    ]
+  },
+  "runtimeBoundary": {
+    "managedOnly": true,
+    "preparedContentOnly": true,
+    "referenceRequired": false,
+    "originalMediaRequired": false,
+    "explicitCustomSchema": 2,
+    "originalSchema": 1,
+    "knownPhysicalFormulaIds": [
+      50,
+      55
+    ],
+    "selectedFormulaSharedAcrossExecutionPreviewAi": true,
+    "publicProjectionGrantsNoCommandAuthority": true
+  },
+  "limits": [
+    "Neutral bare-human single-target immediate profiles only; admitted source X/Y and signed16-safe envelope.",
+    "Adjacent range1 non-evadeable or range4 evadeable direct projectile; no generic flag/shape/status/cost/charge widening.",
+    "Original named binding, profile, event and arithmetic APIs remain compatibility adapters; broader consolidation is ZOD-421.",
+    "Owner drafts, JobStats, int MP costs, equipment policies, editor, automatic facing, ZOD-106 and custom cone remain preserved/deferred.",
+    "No original or C execution; native checks are programmed routes, not physical-input or original-fidelity claims."
+  ],
+  "originalExecuted": false,
+  "cExecuted": false
+}

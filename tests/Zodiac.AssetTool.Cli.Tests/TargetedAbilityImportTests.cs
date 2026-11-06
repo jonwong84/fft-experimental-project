@@ -8,6 +8,8 @@ using Zodiac.Content.Definitions;
 using Zodiac.Framework;
 using Zodiac.Framework.Ai;
 using Zodiac.Framework.Random;
+using Zodiac.Framework.Formulas;
+using Zodiac.Framework.CombatRules;
 using Xunit;
 
 namespace Zodiac.AssetTool.Cli.Tests;
@@ -98,11 +100,18 @@ public sealed class TargetedAbilityImportTests
         }
     }
 
-    [Theory] [InlineData(false)] [InlineData(true)]
-    public void Imported_Dash_lists_and_explicit_grants_reach_both_actual_turn_orders(bool moveFirst)
+    [Theory] [InlineData(false,false)] [InlineData(true,false)] [InlineData(false,true)] [InlineData(true,true)]
+    public void Imported_Dash_lists_and_explicit_grants_reach_both_actual_turn_orders(bool moveFirst,bool customFormula)
     {
         var image = Image(); var metadata = OriginalMetadataImporter.DecodeSelection(image).Package;
         var dash = OriginalTargetedAbilityImporter.DecodeSelection(image, metadata, TargetedAbilityEffect.DashFlat).Package;
+        if(customFormula)
+        {
+            var edited=new TargetedAbilityContentPackage(dash.PackageId,dash.ProfileId,dash.RequiredMetadataPackageId,
+                [new(dash.Abilities[0].Id,TargetedAbilityEffect.DashFlat,new PhysicalDamageFormula(PhysicalDamageFormulaId.RandomPaPlusHalfPa,9,0))]);
+            dash=TargetedAbilityContentPackage.ReadJson(edited.ToJson());
+            Assert.Equal(2,dash.Version);Assert.Contains("\"ruleset\": \"custom\"",edited.ToJson());
+        }
         var stone = OriginalTargetedAbilityImporter.DecodeSelection(image, metadata, TargetedAbilityEffect.ThrowStoneFlat).Package;
         var self = new ImmediateAbilityContentPackage("fft.ps1:package/self", metadata.ProfileId, metadata.PackageId,
             [new(new("fft.ps1:ability/accumulate"), ImmediateAbilityEffect.SelfPhysicalAttackIncrease, 1,0,0)]);
@@ -135,20 +144,28 @@ public sealed class TargetedAbilityImportTests
         Assert.Equal(!moveFirst,decision.Outcome.Plan.ActBeforeMove);
         var first = AiCommandExecutor.Execute(ready.State,request,configuration,new(true,true,true,true));
         Assert.True(first.Accepted);
+        var expected=PhysicalDamageRules.Calculate(binding.Abilities[new(dash.Abilities[0].Id.Value)].Definition,5,70,70,100,
+            1,0,BattleFacing.West,PhysicalDamageMode.Execution,first.Outcome!.DecisionRng);
         if (moveFirst)
         {
             Assert.Equal(AiCommandKind.Move,first.Outcome!.Kind);
             var retained = RosterMoveDecisionBattle.Continue(first.State,actor,first.Continuation);
             Assert.True(retained.Accepted);
-            Assert.Equal(first.Outcome.DecisionRng.DrawCount + 3,retained.State.Battle.TurnBattle.Turns.RngState.DrawCount);
+            Assert.Equal(expected.RngState,retained.State.Battle.TurnBattle.Turns.RngState);
+            Assert.Equal(expected.Outcome!.Damage,Assert.Single(retained.Events.OfType<DashResolvedEvent>()).Damage);
         }
-        else Assert.Equal(first.Outcome!.DecisionRng.DrawCount + 3,first.State.Battle.TurnBattle.Turns.RngState.DrawCount);
+        else
+        {
+            Assert.Equal(expected.RngState,first.State.Battle.TurnBattle.Turns.RngState);
+            Assert.Equal(expected.Outcome!.Damage,Assert.Single(first.Events.OfType<DashResolvedEvent>()).Damage);
+        }
+        if(!customFormula)Assert.Equal(first.Outcome!.DecisionRng.DrawCount+3,expected.RngState.DrawCount);
         var turn = AiTurnController.Execute(ready.State,request,new(configuration,new(true,true,true,true),BattleFacing.North));
         Assert.True(turn.Completed,turn.Failure?.ToString());
         Assert.Contains(turn.Events,e => e is DashResolvedEvent); Assert.Equal(50,ready.State.Battle.Combatants.Single(u => u.UnitId == enemy).Hp);
         Assert.True(turn.State.Battle.Combatants.Single(u => u.UnitId == enemy).Hp < 50);
         var entry = decision.Outcome.Entries.Single(e => e.Entry.Source.Kind == AiHumanAbilityKind.Dash);
-        Assert.All(entry.Dash!.Candidates,c => Assert.Equal(15,c.Evaluation.Outcome!.NormalDamage));
+        Assert.All(entry.Dash!.Candidates,c => Assert.Equal(customFormula?35:15,c.Evaluation.Outcome!.NormalDamage));
         var ungranted = TargetedAbilityBattleSetup.CreateDashProfile(metadata,dash,setup,[],ground,0);
         var rejected = AiCommandExecutor.Execute(ready.State,request,configuration with { Abilities = configuration.Abilities with { Dash = ungranted } },new(true,true,true,true));
         Assert.False(rejected.Accepted); Assert.Same(ready.State,rejected.State);

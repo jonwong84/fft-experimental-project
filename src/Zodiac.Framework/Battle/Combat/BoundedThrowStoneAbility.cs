@@ -1,16 +1,17 @@
 using Zodiac.Framework.Random;
 using System.Collections.Immutable;
+using Zodiac.Framework.Formulas;
 
 namespace Zodiac.Framework;
 
-/// <summary>Explicit projection of Throw Stone's closed range-4, Y=2 immediate damage/knockback rule.</summary>
+/// <summary>Compatibility adapter for direct-projectile delivery, defaulting to original Throw Stone formula0x37/Y2.</summary>
 public sealed record BoundedThrowStoneAbility
 {
-    public AssetId Id { get; }
-    public int Range => 4;
-    public BoundedThrowStoneAbility(AssetId id)
+    public PhysicalAbilityDefinition Definition { get; }
+    public AssetId Id => Definition.Id;
+    public int Range => Definition.Range;
+    public BoundedThrowStoneAbility(AssetId id, PhysicalDamageFormula? formula = null)
     {
-        if (string.IsNullOrWhiteSpace(id.Value)) throw new ArgumentException("An ability ID is required.", nameof(id));
-        Id = id;
+        Definition = new(id, 4, true, true, formula ?? new(PhysicalDamageFormulaId.RandomPa, 0, 2));
     }
 }

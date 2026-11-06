@@ -82,10 +82,11 @@ with individual abilities expressed as validated content data. Use immutable typ
 definitions loaded from JSON for formula selection/parameters, targeting,
 behavior, costs/timing and presentation references. Calculations and new rule or
 geometry implementations remain C#; editing content selects supported behavior.
-Proposed namespaces are `Zodiac.Framework.Formulas` and
-`Zodiac.Framework.CombatRules`. This records the target; it does not move existing
-types or introduce a generic formula interface, untyped parameter bag or runtime
-scripting language. Preserve existing metadata ownership and versioned packages.
+The first physical implementations now use `Zodiac.Framework.Formulas` and
+`Zodiac.Framework.CombatRules`. Other families retain their existing namespaces
+until selected for migration. Preserve existing metadata ownership and versioned
+packages; this does not introduce a generic formula interface, untyped parameter
+bag or runtime scripting language.
 
 The [equipment selection study](equipment-effect-selection.md) demonstrates why
 typed family parameters need policies as well as fixed values: weapon/shield
@@ -106,7 +107,10 @@ changing a formula does not silently copy every property of another ability.
 Execution, preview and AI must resolve the same selected definition through their
 appropriate mode-specific rules. Original content retains its original assignment;
 edited assignments belong to explicit custom content. These are acceptance
-requirements for the upcoming refactor, not implemented functionality today.
+requirements for the refactor. [ZOD-420](physical-formula-reassignment.md) now
+implements the first neutral physical slice: shared Formulas/CombatRules owners,
+custom JSON assignment and execution/preview/AI for0x32/0x37. Existing named
+adapters and broader targeting/status/definition consolidation remain separate.
 The [source/data boundary and required proof](ability-effect-families.md#formula-reassignment-requirement)
 record the Dash/Repeating Fist example.
 

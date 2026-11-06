@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-420",
+  "managedBaseRevision": "c34d6c5590f0e9b7336947d6f3a4c05b17bb083e",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/formulas.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 46088,
+      "sha256": "a9e58962104849ae4e947e3833236aaf2c1334394a1af12b19930428e6885e03"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40418,
+      "sha256": "04542e66135d779fd739adbce9fa6ee714feb6dc8607dfa4584c87222a38343c"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 23857,
+      "sha256": "57dd4fa8b07ef93c4a8e21c73657a0fdbe6c601a6db0b0351ae15b3cd15e4aea"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 85515,
+      "sha256": "820411f8293d559677ff676f4e3d19a16ae52b667e7aa1393ab5495741f1e149"
+    },
+    {
+      "path": "include/fft/ability.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 34632,
+      "sha256": "530676861205ea3cf31cada08ffc927142db98af0ad2c986722ad83b069b9a2f"
+    },
+    {
+      "path": "include/fft/action.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14957,
+      "sha256": "6e97b3935c0d9cdcb8f6ba9ee2d40985b645bc0b03281a0d50d3d20aae35591c"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_repeating_fist",
+      "startLine": 785,
+      "endLine": 804,
+      "normalizedLfSha256": "33a8b1be2efb3ce2d87218858c1d7b788c51c6ff6355819cd72b8fa0f1806df0"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_damage_random_y_times_pa",
+      "startLine": 852,
+      "endLine": 859,
+      "normalizedLfSha256": "732505faefa48d6ae1e172ca09a52c0e6cc4bdb2aaaadb5567de7642917ee85b"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_apply_physical_modifiers_without_supports",
+      "startLine": 110,
+      "endLine": 115,
+      "normalizedLfSha256": "fb11100b19830097d618dff379b79fbf777b986a2c5884d8fd13e334be608fc6"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_store_pa_and_y",
+      "startLine": 964,
+      "endLine": 970,
+      "normalizedLfSha256": "ef05bf35633499d9cd543e48a556db563f636b8234f3a119ccf3dce5d75cac9c"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_store_pa_and_pa_plus_y_divided_by_two",
+      "startLine": 923,
+      "endLine": 927,
+      "normalizedLfSha256": "42a1a80e8ddd1233531bf0775b9439eaf3cacda6b66e40b5de8125cd44463f2b"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_calculate_critical_hit",
+      "startLine": 1145,
+      "endLine": 1156,
+      "normalizedLfSha256": "c18e75778f250b30020d11622e664891ea8b8645a6505421cf5a00996accbe3d"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_store_xa_plus_ya",
+      "startLine": 1171,
+      "endLine": 1182,
+      "normalizedLfSha256": "050c58c4e80f9d043ae8d3d2d09eca9d0bf090fc23c5e072163c3dc2f69d729e"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_damage_and_knockback",
+      "startLine": 1283,
+      "endLine": 1301,
+      "normalizedLfSha256": "29ccebbc867f5dc10e796919cf3280b8cd0476d0d34efe29bb2aa34ce506e605"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_evade_calculate_final_hit_percent",
+      "startLine": 811,
+      "endLine": 854,
+      "normalizedLfSha256": "720389e43cdf64d0efb0ce788006b82eec068d661d876b0861cb6837ca505325"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "evade_source_roll",
+      "startLine": 291,
+      "endLine": 302,
+      "normalizedLfSha256": "26a09b9e4435a85b92128833800106817452b3a59cf8a24bf8306dec88de127a"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "knockback_calculate",
+      "startLine": 99,
+      "endLine": 186,
+      "normalizedLfSha256": "5a7f2614c5426a583669e2a591af966ff3936a39ed9f41e38a11ad62003db9e2"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_evade_calculate_physical",
+      "startLine": 871,
+      "endLine": 880,
+      "normalizedLfSha256": "48147e5227c0821be86975a823dc9ee9196ce95d895cfb8d2e7cfe6203570506"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "formula_get_random",
+      "startLine": 394,
+      "endLine": 399,
+      "normalizedLfSha256": "cdf6c4c0c319dc057ac12bd5c35829c7c3cd794b5acb4595ece35a9814e0512f"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "formula_roll_random_at_least",
+      "startLine": 402,
+      "endLine": 404,
+      "normalizedLfSha256": "c4766649bc9ec2cb81d545d75777587d8ce62995aa90492cb02981b59ac7208e"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_calculate_target_result",
+      "startLine": 473,
+      "endLine": 673,
+      "normalizedLfSha256": "6855ceea86f5e95b4b1edc5fff1d4f47e6623e4bae0309b2a84ed2d232de91c0"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_finalize_target_result",
+      "startLine": 694,
+      "endLine": 753,
+      "normalizedLfSha256": "2242654f86ef5c9efef9c0ca7dab88bdab2be0835224e79eb1efe9cc3b084a86"
+    }
+  ],
+  "originalExecuted": false,
+  "cExecuted": false,
+  "scope": "Source trace for neutral bare formula0x32/0x37, mode RNG, evasion, critical, knockback and caps; no full modifier/terminal port."
+}

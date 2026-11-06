@@ -1,0 +1,467 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "originalExecuted": false,
+  "cExecuted": false,
+  "scope": "Synthetic neutral bare single-target source vectors; class evade assumes a front-facing target; no production or C oracle.",
+  "cases": [
+    {
+      "id": "random-pa-original-dash",
+      "input": {
+        "formula": 55,
+        "x": 0,
+        "y": 4,
+        "pa": 5,
+        "word": 1,
+        "count": 0,
+        "mode": "Execution",
+        "evadeable": false,
+        "classEvade": 0,
+        "attackerBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "accepted": true,
+        "hit": true,
+        "accuracy": 100,
+        "damage": 15,
+        "critical": false,
+        "attempted": false,
+        "word": 662824084,
+        "count": 3
+      }
+    },
+    {
+      "id": "random-pa-original-stone",
+      "input": {
+        "formula": 55,
+        "x": 0,
+        "y": 2,
+        "pa": 5,
+        "word": 1,
+        "count": 0,
+        "mode": "Execution",
+        "evadeable": true,
+        "classEvade": 0,
+        "attackerBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "accepted": true,
+        "hit": true,
+        "accuracy": 100,
+        "damage": 10,
+        "critical": false,
+        "attempted": false,
+        "word": 3655513600,
+        "count": 7
+      }
+    },
+    {
+      "id": "sum-random-no-critical",
+      "input": {
+        "formula": 50,
+        "x": 9,
+        "y": 0,
+        "pa": 5,
+        "word": 1,
+        "count": 0,
+        "mode": "Execution",
+        "evadeable": false,
+        "classEvade": 0,
+        "attackerBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "accepted": true,
+        "hit": true,
+        "accuracy": 100,
+        "damage": 14,
+        "critical": false,
+        "attempted": false,
+        "word": 2524885223,
+        "count": 2
+      }
+    },
+    {
+      "id": "sum-random-critical",
+      "input": {
+        "formula": 50,
+        "x": 9,
+        "y": 0,
+        "pa": 5,
+        "word": 0,
+        "count": 0,
+        "mode": "Execution",
+        "evadeable": false,
+        "classEvade": 0,
+        "attackerBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "accepted": true,
+        "hit": true,
+        "accuracy": 100,
+        "damage": 30,
+        "critical": true,
+        "attempted": true,
+        "word": 2802067423,
+        "count": 3
+      }
+    },
+    {
+      "id": "sum-random-y-uses-original-pa",
+      "input": {
+        "formula": 50,
+        "x": 3,
+        "y": 5,
+        "pa": 5,
+        "word": 0,
+        "count": 0,
+        "mode": "Execution",
+        "evadeable": false,
+        "classEvade": 0,
+        "attackerBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "accepted": true,
+        "hit": true,
+        "accuracy": 100,
+        "damage": 13,
+        "critical": true,
+        "attempted": true,
+        "word": 2802067423,
+        "count": 3
+      }
+    },
+    {
+      "id": "formula-only-edit-retains-dash-operands",
+      "input": {
+        "formula": 50,
+        "x": 0,
+        "y": 4,
+        "pa": 5,
+        "word": 1,
+        "count": 0,
+        "mode": "Execution",
+        "evadeable": false,
+        "classEvade": 0,
+        "attackerBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "accepted": true,
+        "hit": true,
+        "accuracy": 100,
+        "damage": 9,
+        "critical": false,
+        "attempted": false,
+        "word": 2524885223,
+        "count": 2
+      }
+    },
+    {
+      "id": "sum-random-ai-midpoint",
+      "input": {
+        "formula": 50,
+        "x": 9,
+        "y": 0,
+        "pa": 5,
+        "word": 1,
+        "count": 0,
+        "mode": "Ai",
+        "evadeable": false,
+        "classEvade": 0,
+        "attackerBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "accepted": true,
+        "hit": true,
+        "accuracy": 100,
+        "damage": 35,
+        "critical": false,
+        "attempted": false,
+        "word": 1,
+        "count": 0
+      }
+    },
+    {
+      "id": "sum-random-preview-midpoint",
+      "input": {
+        "formula": 50,
+        "x": 9,
+        "y": 0,
+        "pa": 5,
+        "word": 1,
+        "count": 0,
+        "mode": "Preview",
+        "evadeable": false,
+        "classEvade": 0,
+        "attackerBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "accepted": true,
+        "hit": true,
+        "accuracy": 100,
+        "damage": 35,
+        "critical": false,
+        "attempted": false,
+        "word": 1,
+        "count": 0
+      }
+    },
+    {
+      "id": "sum-random-ai-evade-draws",
+      "input": {
+        "formula": 50,
+        "x": 9,
+        "y": 0,
+        "pa": 5,
+        "word": 1,
+        "count": 0,
+        "mode": "Ai",
+        "evadeable": true,
+        "classEvade": 10,
+        "attackerBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "accepted": true,
+        "hit": true,
+        "accuracy": 90,
+        "damage": 35,
+        "critical": false,
+        "attempted": false,
+        "word": 3295386429,
+        "count": 4
+      }
+    },
+    {
+      "id": "sum-random-execution-evade",
+      "input": {
+        "formula": 50,
+        "x": 9,
+        "y": 0,
+        "pa": 5,
+        "word": 19,
+        "count": 0,
+        "mode": "Execution",
+        "evadeable": true,
+        "classEvade": 10,
+        "attackerBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "accepted": true,
+        "hit": false,
+        "accuracy": 0,
+        "damage": 0,
+        "critical": false,
+        "attempted": false,
+        "word": 2162199151,
+        "count": 4
+      }
+    },
+    {
+      "id": "sum-random-preview-zero-accuracy",
+      "input": {
+        "formula": 50,
+        "x": 9,
+        "y": 0,
+        "pa": 5,
+        "word": 1,
+        "count": 0,
+        "mode": "Preview",
+        "evadeable": true,
+        "classEvade": 100,
+        "attackerBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "accepted": true,
+        "hit": false,
+        "accuracy": 0,
+        "damage": 0,
+        "critical": false,
+        "attempted": false,
+        "word": 3295386429,
+        "count": 4
+      }
+    },
+    {
+      "id": "sum-random-upper-cap",
+      "input": {
+        "formula": 50,
+        "x": 87,
+        "y": 255,
+        "pa": 99,
+        "word": 0,
+        "count": 0,
+        "mode": "Execution",
+        "evadeable": false,
+        "classEvade": 0,
+        "attackerBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "accepted": true,
+        "hit": true,
+        "accuracy": 100,
+        "damage": 999,
+        "critical": true,
+        "attempted": true,
+        "word": 2802067423,
+        "count": 3
+      }
+    },
+    {
+      "id": "random-pa-upper-cap",
+      "input": {
+        "formula": 55,
+        "x": 0,
+        "y": 255,
+        "pa": 99,
+        "word": 57,
+        "count": 0,
+        "mode": "Execution",
+        "evadeable": false,
+        "classEvade": 0,
+        "attackerBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "accepted": true,
+        "hit": true,
+        "accuracy": 100,
+        "damage": 999,
+        "critical": false,
+        "attempted": false,
+        "word": 1124281388,
+        "count": 3
+      }
+    },
+    {
+      "id": "zero-operands-are-valid",
+      "input": {
+        "formula": 50,
+        "x": 0,
+        "y": 0,
+        "pa": 1,
+        "word": 1,
+        "count": 0,
+        "mode": "Execution",
+        "evadeable": false,
+        "classEvade": 0,
+        "attackerBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "accepted": true,
+        "hit": true,
+        "accuracy": 100,
+        "damage": 1,
+        "critical": false,
+        "attempted": false,
+        "word": 2524885223,
+        "count": 2
+      }
+    },
+    {
+      "id": "critical-late-counter-rollback",
+      "input": {
+        "formula": 50,
+        "x": 9,
+        "y": 0,
+        "pa": 5,
+        "word": 0,
+        "count": 18446744073709551613,
+        "mode": "Execution",
+        "evadeable": false,
+        "classEvade": 0,
+        "attackerBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "accepted": false,
+        "word": 0,
+        "count": 18446744073709551613
+      }
+    },
+    {
+      "id": "ai-no-draws-at-limit",
+      "input": {
+        "formula": 50,
+        "x": 9,
+        "y": 0,
+        "pa": 5,
+        "word": 1,
+        "count": 18446744073709551615,
+        "mode": "Ai",
+        "evadeable": false,
+        "classEvade": 0,
+        "attackerBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "accepted": true,
+        "hit": true,
+        "accuracy": 100,
+        "damage": 35,
+        "critical": false,
+        "attempted": false,
+        "word": 1,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "ai-evade-late-counter-rollback",
+      "input": {
+        "formula": 50,
+        "x": 9,
+        "y": 0,
+        "pa": 5,
+        "word": 1,
+        "count": 18446744073709551612,
+        "mode": "Ai",
+        "evadeable": true,
+        "classEvade": 0,
+        "attackerBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "accepted": false,
+        "word": 1,
+        "count": 18446744073709551612
+      }
+    },
+    {
+      "id": "random-pa-zero-y",
+      "input": {
+        "formula": 55,
+        "x": 0,
+        "y": 0,
+        "pa": 5,
+        "word": 1,
+        "count": 0,
+        "mode": "Execution",
+        "evadeable": false,
+        "classEvade": 0,
+        "attackerBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "accepted": true,
+        "hit": true,
+        "accuracy": 100,
+        "damage": 5,
+        "critical": false,
+        "attempted": false,
+        "word": 662824084,
+        "count": 3
+      }
+    }
+  ]
+}

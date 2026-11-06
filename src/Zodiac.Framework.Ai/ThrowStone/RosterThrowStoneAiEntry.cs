@@ -77,7 +77,7 @@ internal static class RosterThrowStoneAiEntry
                 if (!trajectory.Clear) { visits.Add(new(tile, target.UnitId, trajectory, null, remaining.Count, current)); continue; }
                 bool first = tile == actorOrigin;
                 var candidate = new ThrowStoneAiCandidate(actorId, abilityId, target.UnitId, first ? m.ActFirstDestination : tile, first);
-                var evaluation = RosterThrowStoneAiCandidate.EvaluateFresh(state, candidate, simulation, current);
+                var evaluation = RosterThrowStoneAiCandidate.EvaluateFresh(state, candidate, simulation, ability.Abilities[abilityId].Definition, current);
                 if (evaluation.Disposition == AiScoringDisposition.Rejected)
                     return Reject(new(RosterThrowStoneAiEntryStage.Candidate, CandidateReason: evaluation.Rejection, CandidateIndex: candidates.Count));
                 byte proximity = m.Preparation.Proximity.WrittenValues[candidate.Destination];

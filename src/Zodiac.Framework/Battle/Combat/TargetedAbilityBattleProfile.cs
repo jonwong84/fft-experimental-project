@@ -35,6 +35,17 @@ public sealed class TargetedAbilityBattleProfile
         Abilities = effects.ToImmutable(); Units = grants.ToImmutable();
     }
 
+    /// <summary>Bind shared content definitions to the admitted direct-projectile delivery.</summary>
+    public static TargetedAbilityBattleProfile FromDefinitions(TerrainSurfaceId ground, IEnumerable<PhysicalAbilityDefinition> abilities,
+        IEnumerable<TargetedAbilityUnitGrant> units)
+    {
+        ArgumentNullException.ThrowIfNull(abilities);
+        var definitions = abilities.ToImmutableArray();
+        if (definitions.Any(a => a is null || a.Range != 4 || !a.Evadeable || !a.DirectTrajectory))
+            throw new NotSupportedException("Select the range4 evadeable direct-projectile delivery profile.");
+        return new(ground, definitions.Select(a => new BoundedThrowStoneAbility(a.Id, a.Formula)), units);
+    }
+
     internal void ValidateState(AttackBattleSnapshot state)
     {
         state.ValidateSupportedGeometry();

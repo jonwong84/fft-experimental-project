@@ -44,6 +44,10 @@ Content supplies immutable definitions and prepared data through outer adapters.
 - `Events/`: deterministic scene/script tasks and event state.
 - `Campaign/`: the current world checkpoint model.
 - `Random/`: explicit gameplay RNG state and the verified generator.
+- `Formulas/`: selected physical formula IDs/X/Y and neutral raw arithmetic.
+- `CombatRules/`: shared physical execution/preview/AI evasion, RNG, critical/
+  knockback decisions and final cap. Existing battle profiles retain admission
+  and live settlement. [Assignment and limits](../../docs/architecture/physical-formula-reassignment.md).
 - `Properties/`: assembly metadata. `AssetId.cs` stays at the root as a shared ID.
 
 Public classes, records, structs and enums should normally have their own

@@ -13,7 +13,7 @@ public static class TargetedAbilityBattleSetup
         BaseJobBattleSetup setup, IEnumerable<LearnedTargetedAbilityGrant> grants, TerrainSurfaceId ordinaryGroundSurface, int equipmentPhysicalAttackBonus)
     {
         var units = ResolveGrants(metadata, effects, setup, grants, equipmentPhysicalAttackBonus, TargetedAbilityEffect.ThrowStoneFlat);
-        return new(ordinaryGroundSurface, effects.Abilities.Select(ability => new BoundedThrowStoneAbility(new(ability.Id.Value))), units);
+        return TargetedAbilityBattleProfile.FromDefinitions(ordinaryGroundSurface, effects.Abilities.Select(ability => ability.Definition), units);
     }
 
     /// <summary>Explicit flat Dash binding; AI metadata and known slots never grant an actual action.</summary>
@@ -21,7 +21,7 @@ public static class TargetedAbilityBattleSetup
         BaseJobBattleSetup setup, IEnumerable<LearnedTargetedAbilityGrant> grants, TerrainSurfaceId ordinaryGroundSurface, int equipmentPhysicalAttackBonus)
     {
         var units = ResolveGrants(metadata, effects, setup, grants, equipmentPhysicalAttackBonus, TargetedAbilityEffect.DashFlat);
-        return new(ordinaryGroundSurface, effects.Abilities.Select(ability => new BoundedDashAbility(new(ability.Id.Value))), units);
+        return DashAbilityBattleProfile.FromDefinitions(ordinaryGroundSurface, effects.Abilities.Select(ability => ability.Definition), units);
     }
 
     private static IEnumerable<TargetedAbilityUnitGrant> ResolveGrants(ContentPackage metadata, TargetedAbilityContentPackage effects,

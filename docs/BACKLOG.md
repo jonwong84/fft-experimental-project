@@ -4,7 +4,7 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-418 (Trace fixed-origin ordinary spell aim search and ranking).**
+**Next bounded work: ZOD-421 (Consolidate physical delivery profiles and definition ownership).**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 [Learning reports, owned slots and player casting](behavior/learn-on-hit.md)
@@ -16,11 +16,12 @@ and autonomous magic turns remain separate. The owner-requested
 [ZOD-419 equipment selector study](architecture/equipment-effect-selection.md)
 is complete; typed equipment policies and formula-family content direction are
 recorded without activating equipment effects or modifying owner drafts.
-The next formula-family refactor must support [editable formula assignment](architecture/ability-effect-families.md#formula-reassignment-requirement),
-including Dash selecting Repeating Fist's formula with valid parameters and
-consistent execution/preview/AI. This is a required future capability; the
-current closed Dash/Stone definitions do not implement it.
-There are 34 open tickets below. The 385 completed tickets, prior checkpoints and
+[ZOD-420 assignable physical formulas](architecture/physical-formula-reassignment.md)
+now support custom Dash/Stone formula ID/X/Y data, including Dash selecting0x32,
+through shared calculation, preview, ranked AI and actual execution. Original
+imports and named compatibility adapters are preserved; profile/definition
+consolidation is the next bounded refactor before returning to ZOD-418.
+There are 35 open tickets below. The 386 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -43,6 +44,18 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 
 ## Next bounded milestone
+
+### ZOD-421 — Consolidate physical delivery profiles and definition ownership
+
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-420
+
+Consolidate named physical binding/profile ownership around shared definitions
+and explicit adjacent/projectile delivery. Preserve source-specific admission,
+targeting, metadata, event and command/continuation contracts. Keep legacy
+serialized schemas and API adapters where compatibility needs them; new ability
+records must not require a new per-ability type or duplicate editable fields.
+Retain ZOD-420 assignment/RNG regressions. This does not activate general flags,
+statuses, shapes, editor, equipment effects or broader terrain/modifier domains.
 
 ### ZOD-418 — Trace fixed-origin ordinary spell aim search and ranking
 

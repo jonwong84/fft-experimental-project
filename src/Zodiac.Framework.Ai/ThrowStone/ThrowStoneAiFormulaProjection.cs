@@ -1,4 +1,5 @@
 using Zodiac.Framework.Random;
+using Zodiac.Framework.CombatRules;
 
 namespace Zodiac.Framework.Ai;
 
@@ -18,28 +19,22 @@ internal static class ThrowStoneAiFormulaProjection
     {
         var invalid = TargetedAbilityBattleSimulator.ValidateCommand(state, command, profile);
         if (invalid != AttackCommandRejection.None) return new(false, invalid, null, decisionRng);
-        return EvaluateAdmitted(state, command, decisionRng);
+        return EvaluateAdmitted(state, command, decisionRng, profile.Abilities[command.AbilityId].Definition);
     }
 
     // Pair public admission remains in Framework. Roster owners establish their complete admission separately.
     internal static ThrowStoneAiFormulaResult EvaluateAdmitted(AttackBattleSnapshot state, UseTargetedAbilityCommand command,
-        RandomState decisionRng)
+        RandomState decisionRng, PhysicalAbilityDefinition ability)
     {
         var actor = state.Combatants.Single(unit => unit.UnitId == command.ActorId);
         var target = state.Combatants.Single(unit => unit.UnitId == command.TargetId);
         state.TurnBattle.Battle.TryGetUnit(actor.UnitId, out var from);
         state.TurnBattle.Battle.TryGetUnit(target.UnitId, out var to);
         long dx = (long)to!.Position.X - from!.Position.X, dy = (long)to.Position.Y - from.Position.Y;
-        int hit = 100 - (ThrowStoneFormula.IsFront(dx, dy, target.Facing) ? target.ClassPhysicalEvade : 0);
-        var rng = decisionRng;
-        try
-        {
-            var random = new RandomStateGenerator();
-            for (int source = 0; source < 4; source++) rng = random.Next(rng).State;
-        }
-        catch (OverflowException) { return new(false, AttackCommandRejection.RandomDrawCountExhausted, null, decisionRng); }
-        // formula_get_random is the fixed midpoint in AI; execution-only Brave/knockback work is skipped.
-        int damage = hit == 0 ? 0 : ThrowStoneFormula.Damage(actor.PhysicalAttack, 16384);
-        return new(true, AttackCommandRejection.None, new(hit, damage, Math.Max(0, target.Hp - damage)), rng);
+        var result = PhysicalDamageRules.Calculate(ability, actor.PhysicalAttack, actor.Brave, target.Brave,
+            target.ClassPhysicalEvade, dx, dy, target.Facing, PhysicalDamageMode.Ai, decisionRng);
+        if (!result.Accepted) return new(false, AttackCommandRejection.RandomDrawCountExhausted, null, decisionRng);
+        int hit = result.Outcome!.Accuracy, damage = result.Outcome.Damage;
+        return new(true, AttackCommandRejection.None, new(hit, damage, Math.Max(0, target.Hp - damage)), result.RngState);
     }
 }
