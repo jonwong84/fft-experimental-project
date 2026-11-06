@@ -46,3 +46,14 @@ Missing/duplicate anchors, unknown position, unsupported selected targets and la
 RNG exhaustion return the incoming checkpoint with no cast outcome. Six cumulative
 managed cases pass current-versus-stored position, order,34/68 damage, exact RNG,
 inactive/Jump eligibility, replay and atomic-failure vectors.
+
+## ZOD-366
+
+`SpellTargetChoiceQuery` derives an opaque choice from the same immutable spell
+and caster plus existing blue panels. Named geometry flags `NoFollowTarget` and
+`Auto` default false, preserving all old constructors. Auto/range0 returns
+NoTargeting before blue filtering; otherwise empty panels mean None, then the
+NoFollowTarget bit chooses TileOnly versus UnitOrTile. No MP is read or proposed.
+This admits only the known ordinary nonweapon slice; Auto's NoTargeting is data,
+not automatic command activation. Nine cumulative managed cases pass four admitted
+source choice literals, early Auto priority and unknown/inactive context guards.
