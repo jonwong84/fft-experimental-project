@@ -51,14 +51,14 @@ public sealed class MagicResourceTests
             var request = new MagicMpRequest(new(a.GetProperty("mp").GetUInt16(), a.GetProperty("half").GetBoolean(),
                 a.GetProperty("mime").GetBoolean(), a.GetProperty("frog").GetBoolean(), a.GetProperty("silence").GetBoolean(),
                 a.GetProperty("dontAct").GetBoolean(), Enum.Parse<MagicActionRestriction>(a.GetProperty("restriction").GetString()!)),
-                new(s.GetProperty("id").GetInt16(), s.GetProperty("cost").GetByte(), Enum.Parse<MagicResourceMenu>(s.GetProperty("menu").GetString()!), s.GetProperty("affected").GetBoolean()),
+                new(s.GetProperty("id").GetInt16(), s.GetProperty("cost").GetInt32(), Enum.Parse<MagicResourceMenu>(s.GetProperty("menu").GetString()!), s.GetProperty("affected").GetBoolean()),
                 Enum.Parse<MagicFormulaEvaluationMode>(d.GetProperty("mode").GetString()!), new(d.GetProperty("bookkeeping").GetBoolean()));
             var before = request with { }; var r = MagicResources.EvaluateMp(request); var e = row.GetProperty("expected");
             Assert.Equal(e.GetProperty("accepted").GetBoolean(), r.Accepted);
             if (!r.Accepted) { Assert.Null(r.Outcome); continue; }
             var o = e.GetProperty("outcome");
             Assert.Equal(new MagicMpOutcome(Enum.Parse<MagicMpBlock>(o.GetProperty("block").GetString()!),
-                o.GetProperty("cost").GetByte(), o.GetProperty("remaining").GetUInt16(), o.GetProperty("subtracted").GetBoolean()), r.Outcome);
+                o.GetProperty("cost").GetInt32(), o.GetProperty("remaining").GetUInt16(), o.GetProperty("subtracted").GetBoolean()), r.Outcome);
             Assert.Equal(before, request);
         }
     }

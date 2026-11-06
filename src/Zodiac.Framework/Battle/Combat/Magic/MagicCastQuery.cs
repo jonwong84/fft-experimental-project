@@ -3,9 +3,10 @@ using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework;
 
-/// <summary>Explicit compatible spell inputs, not a runtime original-table lookup or complete content package.</summary>
+/// <summary>Explicit spell inputs, not a runtime original-table lookup or complete content package.</summary>
+/// <remarks>MP cost is a nonnegative managed integer; original record packing is an import concern.</remarks>
 public sealed record MagicCastDefinition(AssetId Id, short OriginalAbilityId, FaithMagicSpell Spell,
-    byte MpCost, byte RawChargeTime, bool AffectedBySilence, bool Persevere = false, OrdinarySpellGeometry? Targeting = null);
+    int MpCost, byte RawChargeTime, bool AffectedBySilence, bool Persevere = false, OrdinarySpellGeometry? Targeting = null);
 
 public sealed record MagicReadyCastProfile(bool ChargeReadyKnown = false, bool ActionStateBookkeepingKnown = false,
     bool NoHamedoKnown = false, bool SingleOrdinaryDefaultStrikeKnown = false, bool FreshResultsKnown = false);
@@ -32,7 +33,7 @@ public sealed record MagicReadyCastResult(bool Accepted, MagicMpOutcome? Resourc
 public sealed record MagicCastTargetProfile(bool EligibilityAndOrderKnown = false, bool NoEarlierTargetEffectsKnown = false);
 public sealed record MagicCastTargetResult(BattleUnitId TargetId, MagicResultFrame Result, MagicEvasionOutcome? Evasion,
     MagicConditionalProcOutcome? Proc);
-public sealed record MagicCastOutcome(ushort CandidateMp, byte RecordedCost, ImmutableArray<MagicCastTargetResult> Targets);
+public sealed record MagicCastOutcome(ushort CandidateMp, int RecordedCost, ImmutableArray<MagicCastTargetResult> Targets);
 public sealed record MagicCastResolutionResult(bool Accepted, FaithMagicResolutionRejection Rejection,
     MagicCastOutcome? Outcome, RandomState RngState);
 
@@ -86,6 +87,7 @@ public static class MagicCastQuery
         ArgumentNullException.ThrowIfNull(request); ArgumentNullException.ThrowIfNull(request.Definition);
         ArgumentNullException.ThrowIfNull(request.Definition.Spell); FaithMagicInputs.ValidateCurrentUnit(request.Caster);
         var d = request.Definition; var c = request.Caster; var s = c.Statuses;
+        ArgumentOutOfRangeException.ThrowIfNegative(d.MpCost, nameof(request.Definition.MpCost));
         if (string.IsNullOrWhiteSpace(d.Id.Value)) throw new ArgumentException("A cast definition requires a stable ID.", nameof(request));
         if (!Enum.IsDefined(request.Mode) || !Enum.IsDefined(d.Spell.Kind)) throw new ArgumentOutOfRangeException(nameof(request));
         if (d.Spell.Kind == FaithMagicAmountKind.Damage && !Enum.IsDefined(request.Weather)) throw new ArgumentOutOfRangeException(nameof(request));

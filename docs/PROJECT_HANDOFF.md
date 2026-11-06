@@ -22,6 +22,11 @@ ZOD-363 changes no production code. Next add the isolated aim query before bridg
 integration. Commands, full scheduling, special shapes and magic AI remain separate.
 The custom forward1/3/5 cone, owner drafts/JobStats and deferred gates are unchanged.
 
+[Managed MP costs](development/managed-magic-mp-costs.md) now use nonnegative `int`
+through spell definitions, resource calculation and recorded cast/resource cost.
+Original packed readers retain byte fields; source-domain behavior is preserved.
+This owner-requested representation adjustment leaves ZOD-364 next.
+
 [Magic evasion](behavior/magic-evasion.md) records completed ZOD-342, ZOD-344, ZOD-345, ZOD-346, ZOD-347
 from clean source `11464943bbdbd2a0af022d90cb7f10455cf911df` (13 files/21 functions).
 `FaithMagicFormula.Resolve` now owns certified nonzero fresh formula entry,
@@ -257,16 +262,15 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: ZOD-363's eight new Python cases pass42 literal descriptions;
-  all **695 Python tests** pass. The clean source19/26 audit and prior targeting
-  audit, algorithm guide,58-entry coverage inventory, local links and preservation
-  checks pass. Reports are under ignored `scratch/spell-follow-363/`.
-  Last managed baseline remains **4,661 .NET cases** from ZOD-362 (1,620 Framework,
-  1,217 AI,838 Content,328 CLI,206 AssetTool,428 Client,24 Engine), with locked
-  restore and zero-warning/error Release build. Managed tests/build were not
-  rerun for ZOD-363: all production/build files, managed tests and prior behavior
-  fixtures are unchanged. The prior seven TRX reports remain under
-  `scratch/spell-targeting-358-362/`.
+- Validation: the owner-requested integer MP-cost change passes locked restore,
+  a zero-warning/error Release build and **4,670 .NET cases** (1,629 Framework,
+  1,217 AI,838 Content,328 CLI,206 AssetTool,428 Client,24 Engine). Nine new
+  managed cases cover costs above255, Half MP flooring, one-cost multi-target
+  casts in all modes, unaffordable int.MaxValue and negative-cost admission.
+  All **695 Python tests** pass; focused magic108, prior magic/source/prepared-data,
+  58-entry coverage, local-link and preservation audits pass. Seven TRX reports
+  and logs are under ignored `scratch/managed-mp-costs/`.
+  Original import readers, behavior fixtures, content, AI and host are unchanged.
   All nine owner drafts, AbilityToggles and JobStats are unchanged. No project,
   lock, dependency, host/editor, command, scheduling or magic AI activation changes.
   Prepared Dash/Stone import checks remain at ZOD-329; their code/input is unchanged.

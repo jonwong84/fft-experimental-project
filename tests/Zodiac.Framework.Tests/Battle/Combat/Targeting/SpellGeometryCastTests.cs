@@ -16,7 +16,7 @@ public sealed class SpellGeometryCastTests
         var d = row.GetProperty("definition"); var p = row.GetProperty("resultProfile"); var pe = p.GetProperty("entry");
         var ready = row.GetProperty("ready"); var e = row.GetProperty("entry");
         var definition = new MagicCastDefinition(new(d.GetProperty("id").GetString()!), d.GetProperty("originalId").GetInt16(),
-            MagicCurrentTestData.Spell(row.GetProperty("spell")), d.GetProperty("cost").GetByte(), d.GetProperty("ct").GetByte(),
+            MagicCurrentTestData.Spell(row.GetProperty("spell")), d.GetProperty("cost").GetInt32(), d.GetProperty("ct").GetByte(),
             d.GetProperty("affected").GetBoolean(), d.GetProperty("persevere").GetBoolean(),
             row.GetProperty("geometryBound").GetBoolean() ? SpellTargetTestData.Geometry(row.GetProperty("geometry")) : null);
         var prepared = MagicCastQuery.PrepareReady(new(MagicCurrentTestData.Unit(row.GetProperty("caster")), definition,
@@ -48,7 +48,7 @@ public sealed class SpellGeometryCastTests
             Assert.Equal(new RandomState(e.GetProperty("word").GetUInt32(), e.GetProperty("count").GetUInt64()), r.RngState);
             if (!r.Accepted) { Assert.Null(r.Outcome); Assert.Equal(before, r.RngState); continue; }
             var o = e.GetProperty("outcome"); Assert.Equal(o.GetProperty("mp").GetUInt16(), r.Outcome!.CandidateMp);
-            Assert.Equal(o.GetProperty("cost").GetByte(), r.Outcome.RecordedCost);
+            Assert.Equal(o.GetProperty("cost").GetInt32(), r.Outcome.RecordedCost);
             Assert.Equal(o.GetProperty("targets").GetArrayLength(), r.Outcome.Targets.Length);
             for (int i = 0; i < r.Outcome.Targets.Length; i++)
             {

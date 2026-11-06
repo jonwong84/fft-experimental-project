@@ -25,7 +25,7 @@ public sealed class MagicCastQueryTests
         var d = r.GetProperty("definition"); var p = r.GetProperty("resultProfile"); var pe = p.GetProperty("entry"); var ready = r.GetProperty("ready");
         return new(MagicCurrentTestData.Unit(r.GetProperty("caster")),
             new(new(d.GetProperty("id").GetString()!), d.GetProperty("originalId").GetInt16(), MagicCurrentTestData.Spell(r.GetProperty("spell")),
-                d.GetProperty("cost").GetByte(), d.GetProperty("ct").GetByte(), d.GetProperty("affected").GetBoolean(), d.GetProperty("persevere").GetBoolean()),
+                d.GetProperty("cost").GetInt32(), d.GetProperty("ct").GetByte(), d.GetProperty("affected").GetBoolean(), d.GetProperty("persevere").GetBoolean()),
             (MagicDamageWeather)r.GetProperty("weather").GetInt32(), Enum.Parse<MagicFormulaEvaluationMode>(r.GetProperty("mode").GetString()!),
             new(p.GetProperty("living").GetBoolean(), p.GetProperty("noBlocked").GetBoolean(), p.GetProperty("noGolem").GetBoolean(),
                 p.GetProperty("emptyStatus").GetBoolean(), p.GetProperty("noKnockback").GetBoolean(), p.GetProperty("hpOnly").GetBoolean(),
@@ -50,7 +50,7 @@ public sealed class MagicCastQueryTests
             Assert.Equal(new RandomState(e.GetProperty("word").GetUInt32(), e.GetProperty("count").GetUInt64()), r.RngState);
             if (!r.Accepted) { Assert.Null(r.Outcome); Assert.Equal(before, r.RngState); continue; }
             var o = e.GetProperty("outcome"); Assert.Equal(o.GetProperty("mp").GetUInt16(), r.Outcome!.CandidateMp);
-            Assert.Equal(o.GetProperty("cost").GetByte(), r.Outcome.RecordedCost);
+            Assert.Equal(o.GetProperty("cost").GetInt32(), r.Outcome.RecordedCost);
             Assert.Equal(o.GetProperty("targets").GetArrayLength(), r.Outcome.Targets.Length);
             for (int i = 0; i < r.Outcome.Targets.Length; i++)
             {
@@ -104,7 +104,7 @@ public sealed class MagicCastQueryTests
         Assert.Equal((byte)9, MagicCharge.CalculateSetup(request.Definition.RawChargeTime, false, false, false).Ticks);
         var result = MagicCastQuery.PrepareReady(request);
         Assert.True(result.Accepted); Assert.True(result.Resource!.Usable); Assert.NotNull(result.Cast);
-        Assert.Equal((ushort)candidate, result.Resource.CandidateMp); Assert.Equal((byte)9, result.Resource.RecordedCost);
+        Assert.Equal((ushort)candidate, result.Resource.CandidateMp); Assert.Equal(9, result.Resource.RecordedCost);
         Assert.Equal((ushort)30, result.Cast!.Caster.Mp); Assert.Equal(copy, request);
     }
 

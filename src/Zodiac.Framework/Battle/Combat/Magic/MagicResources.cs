@@ -6,11 +6,11 @@ public enum MagicMpBlock { None = 0, Silenced = 2, NotEnoughMp = 3, Frog = 5, Ca
 
 public sealed record MagicMpActor(ushort Mp, bool HalfMp, bool IsMime, bool Frog, bool Silence,
     bool DontAct, MagicActionRestriction Restriction);
-public sealed record MagicMpAbility(short OriginalAbilityId, byte BaseCost, MagicResourceMenu Menu, bool AffectedBySilence);
+public sealed record MagicMpAbility(short OriginalAbilityId, int BaseCost, MagicResourceMenu Menu, bool AffectedBySilence);
 public sealed record MagicMpProfile(bool ActionStateBookkeepingKnown = false);
 public sealed record MagicMpRequest(MagicMpActor Actor, MagicMpAbility Ability, MagicFormulaEvaluationMode Mode,
     MagicMpProfile? Profile);
-public sealed record MagicMpOutcome(MagicMpBlock Block, byte RecordedCost, ushort CandidateMp, bool SubtractionPerformed)
+public sealed record MagicMpOutcome(MagicMpBlock Block, int RecordedCost, ushort CandidateMp, bool SubtractionPerformed)
 {
     public bool Usable => Block == MagicMpBlock.None;
 }
@@ -25,10 +25,11 @@ public static class MagicResources
         ArgumentNullException.ThrowIfNull(request); ArgumentNullException.ThrowIfNull(request.Actor);
         ArgumentNullException.ThrowIfNull(request.Ability);
         var a = request.Actor; var s = request.Ability;
+        ArgumentOutOfRangeException.ThrowIfNegative(s.BaseCost, nameof(request.Ability.BaseCost));
         if (!Enum.IsDefined(a.Restriction) || !Enum.IsDefined(s.Menu) || !Enum.IsDefined(request.Mode))
             throw new ArgumentOutOfRangeException(nameof(request));
         if (request.Profile is not { ActionStateBookkeepingKnown: true }) return new(false, null);
-        MagicMpResult Result(MagicMpBlock block = MagicMpBlock.None, byte cost = 0) => new(true, new(block, cost, a.Mp, false));
+        MagicMpResult Result(MagicMpBlock block = MagicMpBlock.None, int cost = 0) => new(true, new(block, cost, a.Mp, false));
         var restriction = a.DontAct ? MagicActionRestriction.CannotAct : a.Restriction;
         if (restriction != MagicActionRestriction.None)
             return Result(restriction == MagicActionRestriction.CannotAct ? MagicMpBlock.CannotAct : MagicMpBlock.DeepWater);
@@ -40,7 +41,7 @@ public static class MagicResources
                 return Result(MagicMpBlock.Silenced);
             if (s.Menu == MagicResourceMenu.Default && !a.IsMime)
             {
-                byte cost = a.HalfMp ? (byte)(s.BaseCost >> 1) : s.BaseCost;
+                int cost = a.HalfMp ? s.BaseCost >> 1 : s.BaseCost;
                 // The original reads the unsigned MP field through signed16 before comparing it.
                 if (unchecked((short)a.Mp) < cost) return Result(MagicMpBlock.NotEnoughMp, cost);
                 bool subtract = request.Mode != MagicFormulaEvaluationMode.Preview;
