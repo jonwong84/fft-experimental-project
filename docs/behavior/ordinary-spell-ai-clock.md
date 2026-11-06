@@ -87,3 +87,20 @@ actor turn during CT10 without Wait refund, corpse upkeep and exact zero-draw
 readiness at maximum counters. Clock output is hypothetical data, never a battle
 or an adoptable TurnCycleState. The existing player and immediate AI clocks are
 unchanged.
+
+## Shared fresh admission and stored hits (ZOD-415)
+
+`OrdinarySpellAiWork` privately owns the same current-state/catalog binding,
+initialized lists, considered usage, usefulness and initial aim capture for both
+query paths. `OrdinarySpellAiHitWork` owns stored anchor/tile resolution, fresh
+green geometry, formula frames, movement exclusions and included HP/MP effects.
+It never repeats initial blue range. The current-aim public query now delegates
+to these private owners, preserving its output and rollback boundary. No public
+cached preparation, frame or score becomes authority.
+
+Four new cases verify that a followed anchor can leave initial range, a stored
+tile stays put, excluded collateral still consumes formula draws, and late
+failure leaves private inputs unchanged. All1,292 AI cases pass. Considered CT
+now delegates to the existing `MagicCharge.CalculateOrdinaryAiDelay` arithmetic
+owner; actual setup remains its separate masked/Short-Charge path. No player
+command or full-search interface changes are introduced.

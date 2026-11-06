@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 381 entries index completed bounded work; they do not mean the full game is complete.
+These 382 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -468,3 +468,4 @@ These 381 entries index completed bounded work; they do not mean the full game i
 - [ZOD-412 — Bind prepared metadata to the AI ready-hit path](../behavior/ordinary-spell-ai.md#prepared-metadata-bridge-and-inspection-zod-412)
 - [ZOD-413 — Trace ordinary spell AI charge-clock and movement opportunities](../behavior/ordinary-spell-ai-clock.md#source-contract-zod-413)
 - [ZOD-414 — Implement the bounded single-charge AI simulation clock](../behavior/ordinary-spell-ai-clock.md#single-charge-clock-zod-414)
+- [ZOD-415 — Share fresh stored-aim AI hit work](../behavior/ordinary-spell-ai-clock.md#shared-fresh-admission-and-stored-hits-zod-415)

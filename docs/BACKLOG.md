@@ -4,14 +4,14 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-415 (Share fresh stored-aim AI hit work).**
+**Next bounded work: ZOD-416 (Compose fixed-origin delayed spell AI candidates).**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 [Learning reports, owned slots and player casting](behavior/learn-on-hit.md)
 complete ZOD-398–402. Ten further milestones ZOD-403–412 complete a bounded
 [ordinary spell AI ready-hit path](behavior/ordinary-spell-ai.md); charge-clock
 search and autonomous magic turns remain separate.
-There are 36 open tickets below. The 381 completed tickets, prior checkpoints and
+There are 35 open tickets below. The 382 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -34,12 +34,6 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 
 ## Next bounded milestone
-
-### ZOD-415 — Share fresh stored-aim AI hit work
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-414
-
-Extract private admission and ready-hit work for current-aim and delayed owners. Reuse stored aim/green geometry without repeating blue range at readiness, and retain formula draw/accounting/application/scoring isolation.
 
 ### ZOD-416 — Compose fixed-origin delayed spell AI candidates
 

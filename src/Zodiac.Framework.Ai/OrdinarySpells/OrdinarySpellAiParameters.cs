@@ -23,13 +23,8 @@ public static class OrdinarySpellAiParameters
         ArgumentNullException.ThrowIfNull(spell); ArgumentNullException.ThrowIfNull(entry.Slot.Behavior);
         if (spell.OriginalAbilityId is < 1 or >= 368 || spell.Targeting is null || spell.Targeting.Auto || spell.MpCost < 0)
             throw new NotSupportedException("Explicit ordinary default-menu secondary parameters are required.");
-        byte ct = spell.RawChargeTime;
-        // Retail AI tests these support bits. Actual charge planning tests ShortCharge/NonCharge instead.
-        if (!spell.Persevere)
-        {
-            if (supports.MonsterSkill) ct >>= 1;
-            else if (supports.Defend) ct = 0;
-        }
+        // One shared arithmetic owner preserves the retail AI/actual-charge support-bit distinction.
+        byte ct = MagicCharge.CalculateOrdinaryAiDelay(spell.RawChargeTime, supports.MonsterSkill, supports.Defend, spell.Persevere);
         return new(entry, entry.Slot.Behavior, spell.Targeting,
             supports.HalfMp ? spell.MpCost >> 1 : spell.MpCost, ct, retainedUsage);
     }
