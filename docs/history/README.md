@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 373 entries index completed bounded work; they do not mean the full game is complete.
+These 374 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -460,3 +460,4 @@ These 373 entries index completed bounded work; they do not mean the full game i
 - [ZOD-404 — Resolve original AI learned slots and list admission](../behavior/ordinary-spell-ai.md#learned-list-admission-zod-404)
 - [ZOD-405 — Load ordinary considered spell parameters and usage](../behavior/ordinary-spell-ai.md#considered-parameters-and-usage-zod-405)
 - [ZOD-406 — Calculate spell-bearing initialized ability statistics](../behavior/ordinary-spell-ai.md#initialized-ability-statistics-zod-406)
+- [ZOD-407 — Classify bounded ordinary spell usefulness](../behavior/ordinary-spell-ai.md#ordinary-hp-usefulness-zod-407)

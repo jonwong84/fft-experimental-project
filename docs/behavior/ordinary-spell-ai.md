@@ -113,3 +113,18 @@ no-cost minimum255/maximum0, empty divisor0 and integer operation order.
 Four literal managed scenarios cover Fire's three-entry shares1/1/1 and cost6,
 Monster Skill exclusion, zero/empty lists and repeated Half-MP entries. Managed
 MP costs remain nonnegative int; original imported byte costs remain exact.
+
+## Ordinary HP usefulness (ZOD-407)
+
+`OrdinarySpellAiUsefulness` classifies current ordinary humans and derives masks
+in source-unit order. Side-only working restrictions, Dead and cannot-hit-caster
+precede primary preferences. Harmful enemies are Useful even at numeric Faith0;
+formula magnitude is not the classifier. Healing uses **HP < floor(maxHP/2)**,
+so HP50/max101 is not useful. Harmful preference wins its source branch when
+both ally/enemy flags are set. Critical and Charging remain admitted; unsupported
+affinities/statuses, random/stat/MP/status work fail closed. This pure stage uses
+no RNG and cannot publish a hit or a target decision.
+
+Seven cases cover enemy/allied damage, zero Faith, odd half-HP boundaries,
+healing enemies, both preference flags, absolute restrictions, Dead/self exclusion
+and rejection of unsupported behavior/status combinations.
