@@ -27,7 +27,7 @@ public sealed class OrdinaryMagicInteraction
 
     public string Name(BattleUnitId id) => Content.UnitNames[id];
     public ImmutableArray<AssetId> AvailableSpells => State.Turns.ActiveUnitId is { } actor
-        ? Content.SpellOrder.Where(State.Units.Single(u => u.Id == actor).Definition.LearnedSpells.Contains).ToImmutableArray() : [];
+        ? Content.SpellOrder.Where(OrdinaryMagicBattle.KnownSpells(State, actor).Contains).ToImmutableArray() : [];
     public ImmutableArray<TilePosition> Range => State.Turns.ActiveUnitId is not { } actor ? [] :
         Mode == OrdinaryMagicInteractionMode.Move ? OrdinaryMagicMovement.Query(State, actor).Outcome?.PhysicalDestinations ?? [] :
         SelectedSpell is { } spell ? OrdinaryMagicBattle.Choice(State, actor, spell).Outcome?.Range?.Panels ?? [] : [];
@@ -53,6 +53,7 @@ public sealed class OrdinaryMagicInteraction
     }
     public void BeginCast()
     {
+        if (ReportPending()) return;
         if (State.Finished || State.Turns.ActiveUnitId is not { } actor) { Error("Advance to a unit turn first."); return; }
         var unit = State.Units.Single(u => u.Id == actor);
         var learned = AvailableSpells;
@@ -78,12 +79,14 @@ public sealed class OrdinaryMagicInteraction
     }
     public void BeginStep()
     {
+        if (ReportPending()) return;
         if (State.Finished || State.Turns.ActiveUnitId is null) { Error("Advance to a unit turn first."); return; }
         Mode = OrdinaryMagicInteractionMode.Step; SelectedSpell = null; Aim = null;
         Message = "Choose a free adjacent tile then confirm."; IsError = false;
     }
     public void BeginMove()
     {
+        if (ReportPending()) return;
         if (State.Finished || State.Turns.ActiveUnitId is not { } actor) { Error("Advance to a unit turn first."); return; }
         if (State.Turns.Units.Single(u => u.Id == actor).MovementTaken) { Error("Movement has already been used."); return; }
         var query = OrdinaryMagicMovement.Query(State, actor);
@@ -115,6 +118,7 @@ public sealed class OrdinaryMagicInteraction
     }
     public void Confirm()
     {
+        if (State.LearningReport is not null) { AnswerLearning(true); return; }
         if (State.Turns.ActiveUnitId is not { } actor || Aim is not { } aim) { Error("Choose a tile first."); return; }
         if (Mode == OrdinaryMagicInteractionMode.Cast && SelectedSpell is { } spell)
             Apply(new OrdinaryMagicCommand.Cast(actor, spell, aim, FollowUnit && State.Units.Any(u => u.Position == aim)));
@@ -123,8 +127,18 @@ public sealed class OrdinaryMagicInteraction
     }
     public void Cancel()
     {
+        if (State.LearningReport is not null) { AnswerLearning(false); return; }
+        ClearSelection();
+    }
+    private void ClearSelection()
+    {
         Mode = OrdinaryMagicInteractionMode.Browse; Aim = null; SelectedSpell = null;
         Message = "N next event / F magic / M move / W wait."; IsError = false;
+    }
+    public void AnswerLearning(bool accept)
+    {
+        if (State.LearningReport is not { } report) { Error("No learning report is open."); return; }
+        Apply(new OrdinaryMagicCommand.AnswerLearning(report.Id, report.LearnerId, accept));
     }
     public void Restart()
     {
@@ -138,7 +152,7 @@ public sealed class OrdinaryMagicInteraction
         var result = OrdinaryMagicBattle.Apply(State, command);
         LastEvents = result.Events;
         if (!result.Accepted) { Error(result.Rejection!); return; }
-        State = result.State; Cancel();
+        State = result.State; ClearSelection();
         foreach (var ev in result.Events)
         {
             string? line = ev switch
@@ -154,11 +168,18 @@ public sealed class OrdinaryMagicInteraction
                 OrdinaryMagicEvent.Applied e => $"{Name(e.UnitId)} / HP {e.Hp}" + (e.Dead ? " / KO" : e.Critical ? " / Critical" : ""),
                 OrdinaryMagicEvent.Rewarded e => $"{Name(e.UnitId)} gains {e.Exp} EXP / {e.Jp} JP" + (e.Level > 0 ? $" / Level {e.Level}" : ""),
                 OrdinaryMagicEvent.EncounterEnded => "First KO ends the encounter. R restarts.",
+                OrdinaryMagicEvent.LearningOffered e => $"{Name(e.UnitId)} can learn {Content.SpellNames[e.AbilityId]}. Enter accepts / Back declines.",
+                OrdinaryMagicEvent.LearningAnswered e => $"{Name(e.UnitId)} " + (e.Accepted ? "learned " : "declined ") + Content.SpellNames[e.AbilityId] + ".",
                 _ => null
             };
             if (line is null) continue;
             Log = Log.Add(line); if (Log.Length > 8) Log = Log.RemoveAt(0); Message = line;
         }
+    }
+    private bool ReportPending()
+    {
+        if (State.LearningReport is null) return false;
+        Error("Answer the learning report first. Enter accepts / Back declines."); return true;
     }
     private void Error(string message) { Message = message; IsError = true; }
 }

@@ -103,3 +103,25 @@ both asset hashes, both raw records and metadata, all37 provenance records,
 source slot indices and explicit learner setup. Full Content876 and CLI375
 cases pass, including actual prepared Fire4 acceptance/decline through the
 Framework command path. Client display and journal snapshots are ZOD-401.
+
+## Player report and replay (ZOD-401)
+
+The ordinary client presents the owned learner/ability report and pauses action
+selection until Enter accepts or Back declines. Pointer buttons use those same
+routes. The choice is an ordinary recorded Framework command; presentation cannot
+construct a report or adopt a learning result. Newly learned primary spells enter
+the normal prepared-order magic list immediately. Restart resets learned rows,
+reports, career, RNG and the command journal. Snapshots now include the report,
+every per-job learned row and derived known spells, sorted deterministically;
+receipt hashes therefore intentionally change from the older snapshot shape.
+
+Four client cases exercise acceptance, decline, unrelated intent rejection,
+restart, learned spell execution and exact command replay. All446 client cases
+pass. A finite Windows GPU check on the verified learning package exercises
+resized pointer controls, full movement, invalid input, Fire4 HP200→75/MP75→27,
+level11 and draw14, explicit decline, identical restart/offer, acceptance without
+new draws and the learner's normal cast (Mage HP100→22; learner MP75→27).
+All six complete checkpoints match headless replay and drawing preserves state.
+Offer/result captures were visually inspected. The retained native Fire/movement
+check also passes. These are programmed native key/pointer routes, not physical
+input injection or original graphics/animation/timing observations.

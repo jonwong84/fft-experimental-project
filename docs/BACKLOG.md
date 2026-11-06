@@ -4,11 +4,11 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-401 (Expose learning reports through the native command path).**
+**Next bounded work: ZOD-402 (Preserve disabled learning reports and multi-recipient ordering).**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 The owner requested the next five bounded milestones (ZOD-398–402).
-There are 35 open tickets below. The 367 completed tickets, prior checkpoints and
+There are 34 open tickets below. The 368 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,14 +31,6 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 
 ## Next bounded milestone
-
-### ZOD-401 — Expose learning reports through the native command path
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-400
-
-Display and answer the owned report; immediately offer learned spells through
-normal cast selection. Include learned rows/reports in replay snapshots, verify
-accept/decline/restart and run the prepared scene through the native check.
 
 ### ZOD-402 — Preserve disabled learning reports and multi-recipient ordering
 

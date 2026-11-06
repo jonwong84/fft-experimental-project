@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 namespace Fft.Client.Presentation;
 
 /// <summary>Authored local player view. Time and rendering never advance the deterministic battle.</summary>
-internal sealed class OrdinaryMagicBattleWindow : Game
+internal sealed partial class OrdinaryMagicBattleWindow : Game
 {
     private static readonly Color Background = new(14, 21, 34), Muted = new(145, 162, 184), Cyan = new(82, 202, 232), Gold = new(241, 172, 86);
     private readonly GraphicsDeviceManager graphics;
@@ -19,6 +19,7 @@ internal sealed class OrdinaryMagicBattleWindow : Game
     private readonly string? checkDirectory;
     private readonly string initial;
     private readonly bool healingCheck;
+    private readonly bool learningCheck;
     private SpriteBatch batch = null!;
     private Texture2D pixel = null!;
     private RenderTarget2D scene = null!;
@@ -35,6 +36,9 @@ internal sealed class OrdinaryMagicBattleWindow : Game
     {
         this.checkDirectory = checkDirectory; interaction = new(content); initial = OrdinaryMagicSnapshot.Capture(interaction.State);
         healingCheck = content.Definition.Spells[content.SpellOrder[0]].Spell.Kind == FaithMagicAmountKind.Healing;
+        learningCheck = content.Definition.Learning is { } learning && learning.Abilities.Values.Any(a => a.LearnOnHit &&
+            content.Definition.Units.Any(u => learning.PrimarySlots(u.RewardJobId).Any(s => s.AbilityId == a.AbilityId) &&
+                !OrdinaryMagicBattle.KnownSpells(interaction.State, u.Current.UnitId).Contains(a.AbilityId)));
         graphics = new(this) { PreferredBackBufferWidth = 960, PreferredBackBufferHeight = 640,
             GraphicsProfile = GraphicsProfile.Reach, SynchronizeWithVerticalRetrace = true };
         IsFixedTimeStep = true; TargetElapsedTime = TimeSpan.FromSeconds(1.0 / 60); IsMouseVisible = true;
@@ -114,7 +118,7 @@ internal sealed class OrdinaryMagicBattleWindow : Game
             (int)(((long)fit.Y + (long)canvas.Y * fit.Height / 640) * Window.ClientBounds.Height / pp.BackBufferHeight)));
     }
     private void InjectTile(int x, int y) => Inject(new(24 + x * 64 + 32, 196 + y * 56 + 28));
-    private static IEnumerable<(PixelRect Bounds, Keys Key, string Label)> Buttons()
+    private IEnumerable<(PixelRect Bounds, Keys Key, string Label)> Buttons()
     {
         yield return (new(24, 548, 178, 34), Keys.N, "N NEXT EVENT");
         yield return (new(214, 548, 120, 34), Keys.F, "F MAGIC");
@@ -122,8 +126,8 @@ internal sealed class OrdinaryMagicBattleWindow : Game
         yield return (new(478, 548, 120, 34), Keys.M, "M MOVE");
         yield return (new(610, 548, 154, 34), Keys.R, "R RESTART");
         yield return (new(24, 594, 220, 30), Keys.U, "U UNIT OR TILE");
-        yield return (new(256, 594, 208, 30), Keys.Enter, "ENTER CONFIRM");
-        yield return (new(478, 594, 208, 30), Keys.Back, "BACK CANCEL");
+        yield return (new(256, 594, 208, 30), Keys.Enter, interaction.State.LearningReport is null ? "ENTER CONFIRM" : "ENTER LEARN");
+        yield return (new(478, 594, 208, 30), Keys.Back, interaction.State.LearningReport is null ? "BACK CANCEL" : "BACK DECLINE");
     }
 
     protected override void Draw(GameTime gameTime)
@@ -153,7 +157,7 @@ internal sealed class OrdinaryMagicBattleWindow : Game
         Text("ORDINARY MAGIC", 24, 24, 3, Color.White);
         Text("LOCAL TWO PLAYER / FIRST KO WINS", 24, 64, 2, Muted);
         Text(interaction.Message, 24, 104, 2, interaction.IsError ? Gold : Color.White, 75);
-        string turn = state.Finished ? "ENCOUNTER COMPLETE" : state.Turns.ActiveUnitId is { } id
+        string turn = state.LearningReport is not null ? "LEARNING REPORT / CLOCK PAUSED" : state.Finished ? "ENCOUNTER COMPLETE" : state.Turns.ActiveUnitId is { } id
             ? $"TURN {interaction.Name(id)}" : "N ADVANCES TO NEXT EVENT";
         Text($"{turn} / TICK {state.Turns.Ticks}", 24, 146, 2, Cyan);
         if (interaction.SelectedSpell is { } selected)
@@ -184,7 +188,16 @@ internal sealed class OrdinaryMagicBattleWindow : Game
         Text(interaction.Mode == OrdinaryMagicInteractionMode.Cast
             ? $"AIM / {(interaction.FollowUnit ? "FOLLOW UNIT" : "KEEP TILE")}" :
             interaction.Mode == OrdinaryMagicInteractionMode.Move ? "MOVE / BLUE TILES / CONFIRM PATH" : "M MOVE / F MAGIC", 24, 496, 2, Muted);
-        if (interaction.Mode == OrdinaryMagicInteractionMode.Cast)
+        if (state.LearningReport is { } report)
+        {
+            Rect(520, 196, 416, 272, new(25, 37, 54));
+            Text($"{interaction.Name(report.LearnerId)} CAN LEARN", 536, 216, 2, Cyan);
+            Text(interaction.Content.SpellNames[report.AbilityId], 536, 254, 3, Gold);
+            Text("ENTER / ACCEPT", 536, 312, 2, Color.White);
+            Text("BACK / DECLINE", 536, 350, 2, Color.White);
+            Text("NO JP COST / NO NEW ROLL", 536, 408, 2, Muted);
+        }
+        else if (interaction.Mode == OrdinaryMagicInteractionMode.Cast)
         {
             Text("MAGIC / TAB OR UP DOWN", 520, 174, 2, Muted);
             var available = interaction.AvailableSpells;
@@ -236,6 +249,7 @@ internal sealed class OrdinaryMagicBattleWindow : Game
         {
             CheckMovement(); return;
         }
+        if (learningCheck) { CheckLearningInput(); return; }
         switch (checkStep++)
         {
             case 0: Dispatch(Keys.N); pendingCapture = "turn.png"; break;
@@ -268,7 +282,7 @@ internal sealed class OrdinaryMagicBattleWindow : Game
                 }
                 if (interaction.State.Turns.ActiveUnitId is { } active)
                 {
-                    if (interaction.State.Units.Single(u => u.Id == active).Definition.LearnedSpells.Count > 0 &&
+                    if (OrdinaryMagicBattle.KnownSpells(interaction.State, active).Count > 0 &&
                         !interaction.State.Pending.ContainsKey(active))
                     {
                         Dispatch(Keys.F);

@@ -6,17 +6,18 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-401: Expose learning reports through the native command path.**
-Three of the owner's five selected milestones ZOD-398–402 are complete.
+**ZOD-402: Preserve disabled learning reports and multi-recipient ordering.**
+Four of the owner's five selected milestones ZOD-398–402 are complete.
 [Learning behavior](behavior/learn-on-hit.md) covers the pure source rule, owned
-battle report/slot state and schema3 prepared binding. Schema2 now executes its
-metadata and derives initial primary slots from grants; schema1 remains legacy.
-`prepare-learning-magic-battle` imports Fire/Fire4 with an authored eligible Wizard
-recipient and seed10. The independent source/content audit checks37 records and
-both hashes. Full Framework1773, Content876 and CLI375 suites pass; the last
-whole-solution baseline below predates this batch. Client display/replay and
-disabled non-player report policy remain. Reference stays clean at
-`11464943bbdbd2a0af022d90cb7f10455cf911df`. Preserve owner drafts/JobStats,
+battle report/slot state, schema3 prepared binding and player controls. Enter
+accepts, Back declines; newly learned spells use the normal cast list. Snapshots
+now include reports/rows/derived grants and replay exactly. Full Framework1773,
+Content876, CLI375 and Client446 pass; the last whole-solution baseline below
+predates this batch. The verified Fire4 native check passes decline/accept,
+restart, learned cast, movement and six full headless comparisons. Report and
+result captures were inspected; retained native Fire also passes. Disabled-menu
+policy and composed multi-recipient ordering remain for ZOD-402. Reference stays
+clean at `11464943bbdbd2a0af022d90cb7f10455cf911df`. Preserve owner drafts/JobStats,
 the independent targeting-format edit and all deferred gates.
 
 [Managed MP costs](development/managed-magic-mp-costs.md) now use nonnegative `int`

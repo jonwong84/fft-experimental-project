@@ -96,3 +96,21 @@ not supplied by this view. This is a human bare-equipment/no-RSM ordinary profil
 general magic AI, full statuses, reactions, corpse/crystal scheduling and frame
 RNG equivalence remain open. The first-KO objective is explicitly invented.
 See [behavior and source evidence](../behavior/ordinary-magic-execution.md).
+
+
+## Learn on hit
+
+Prepare `prepare-learning-magic-battle` with the same executable/output switches,
+then launch `--magic-battle` against that prepared directory. Select Fire4 with
+Tab, aim at Learner and confirm. Wait through intervening turns (CT10). The
+source rate30 and authored seed10 produce an offer at tick19 after rewards.
+Enter or the ENTER LEARN button accepts; Back or BACK DECLINE declines. Other
+battle commands are blocked until answered. Acceptance spends no JP/RNG and adds
+Fire4 to Learner's normal magic list on its next turn. Restart removes the learned
+slot. [Learning behavior and source](../behavior/learn-on-hit.md).
+
+The learning package's finite `--check <fresh-directory>` runs both answers,
+restart, clock/input gating, a newly learned Fire4 cast and full headless replay,
+with captures of the report and outcome. It also retains the movement/path check.
+The spell/learning facts are imported; this eligible encounter and its seed,
+control assignment and first-KO objective are authored diagnostic setup.
