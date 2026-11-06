@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-375 (Compose ready plans into opaque vital and RNG proposals).**
+**Next bounded work: ZOD-376 (Trace magic execution authority and battle-state integration).**
 [Living magic result projections](behavior/living-magic-projections.md) records
-completed ZOD-370–374. Keep selection, preparation, readiness and publication separate.
-There are 34 open tickets below. The 341 completed tickets, prior checkpoints and
+completed ZOD-370–375. Keep selection, preparation, readiness and publication separate.
+There are 34 open tickets below. The 342 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,11 +31,11 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-375 — Compose ready plans into opaque vital and RNG proposals
+### ZOD-376 — Trace magic execution authority and battle-state integration
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-374
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-375
 
-Bind a ready-plan calculation to one exact immutable snapshot, recompute through existing owners and return an opaque HP/MP/RNG proposal. Execution mode only; no live adoption, commands or full status/progression. See [source and phase boundaries](behavior/living-magic-projections.md).
+Trace exact-state authority, action/turn bookkeeping, full vital/status consistency, rewards/actor work and no-target/fizzle behavior before selecting game battle-state integration. Do not activate commands, scheduling or live adoption. See [source and phase boundaries](behavior/living-magic-projections.md).
 Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
 status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
 

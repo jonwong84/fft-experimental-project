@@ -119,3 +119,40 @@ Input unit order and bystanders remain, and this stage deliberately retains the
 input RNG because it does not own formula draws. Twelve cumulative managed cases
 pass two-target66/32 HP, one-cost21 MP, self/miss handling, malformed casts and
 late KO/Critical rollback. A supplied public cast is analysis data, not authority.
+
+## ZOD-375
+
+`MagicProjectionQuery.Calculate` binds an Execute-mode ready request to an exact
+immutable source snapshot. It checks map identity and current roster equality,
+recomputes through `MagicReadyPlanQuery` from the captured RNG, derives eligible
+source order and then delegates vital admission to `MagicCastProjection`.
+Success returns an opaque `MagicProjectionProposal` retaining its source,
+candidate and cast. The candidate contains all proposed target HP, one MP cost
+and the complete formula RNG continuation. Callers cannot supply calculated
+frames, candidate MP or a replacement RNG to this entry.
+
+Preview and AI cannot create these execution projections. Unknown application
+facts, foreign inputs, resource/calculation failures and late KO/status rejection
+return no proposal and the entire incoming RNG checkpoint. This is private
+managed admission, not a claim that original target application is atomic.
+Repeated queries preserve their source and produce equal candidate values.
+Twenty cumulative focused managed cases pass, including two-target 66/32 HP,
+caster 21 MP, RNG 1579910103/count19, late KO/Critical rollback, absorption/healing,
+resource failure, counter exhaustion and snapshot substitution rejection.
+
+The proposal conveys no command, turn, one-use receipt or live adoption authority.
+ZOD-376 must trace those boundaries, actor/reward work and paid fizzles before
+selecting battle-state integration. All earlier deferred systems remain separate.
+
+## Final validation
+
+Locked restore and Release build pass with zero warnings/errors. All **4,714 .NET
+cases** and **711 Python tests** pass, including 20 new managed cases and eight new
+Python cases. Fresh pinned source, prior prepared-data, algorithm-guide, coverage,
+local-link, public-type layout and preservation audits pass. The
+[implementation receipt](../evidence/combat/magic-publication-implementation-v1.json)
+records milestone bases and ignored reports. The 18 new public types each have a
+matching file under Magic/Publication with the existing Framework namespace.
+All pre-batch production, managed tests and behavior fixtures, owner drafts and
+JobStats are unchanged. No Content, AI, host, project/dependency or import changes;
+no original/C execution or UI review.

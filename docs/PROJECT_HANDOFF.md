@@ -6,9 +6,9 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-375: Compose ready plans into opaque vital and RNG proposals.**
+**ZOD-376: Trace magic execution authority and battle-state integration.**
 [Living magic result projections](behavior/living-magic-projections.md) records
-completed ZOD-370–374, using clean source
+completed ZOD-370–375, using clean source
 `11464943bbdbd2a0af022d90cb7f10455cf911df`. Vital application combines signed work before clamping unsigned stored fields.
 Targeted reactions precede the hit check; KO/status/progression remain separate.
 Keep raw arithmetic, living admission, snapshots and private cast proposals distinct.
@@ -19,14 +19,14 @@ other documented deferrals remain.
 [Managed MP costs](development/managed-magic-mp-costs.md) now use nonnegative `int`
 through spell definitions, resource calculation and recorded cast/resource cost.
 Original packed readers retain byte fields; source-domain behavior is preserved.
-This owner-requested representation adjustment leaves ZOD-364 next.
+This owner-requested representation adjustment is preserved by the later magic work.
 
 [Framework public type files](development/framework-public-type-files.md) now give
 all namespace-level public declarations matching files across Framework. The two
 existing partial types keep `.PlannedMove.cs` parts; small internal helpers stay
 with their owners. All 383 declarations, bodies, attributes, comments, imports and
 namespaces are preserved. Nine folder batches compiled cleanly. AI, Content, host,
-owner drafts/JobStats and ZOD-364's scope are unchanged.
+owner drafts/JobStats and the subsequent magic behavior scope are unchanged.
 
 [Magic evasion](behavior/magic-evasion.md) records completed ZOD-342, ZOD-344, ZOD-345, ZOD-346, ZOD-347
 from clean source `11464943bbdbd2a0af022d90cb7f10455cf911df` (13 files/21 functions).
@@ -263,24 +263,22 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: ZOD-364–369 pass locked restore, a zero-warning/error Release
-  build and **4,694 .NET cases** (1,653 Framework,1,217 AI,838 Content,328 CLI,
-  206 AssetTool,428 Client,24 Engine). All **703 Python tests** pass.
-  Twenty-four new managed cases include 19 new phase descriptions and applicable
-  prior source literals, immutable proposals and rejection/rollback boundaries.
-  Eight new Python cases independently compose the 19 phase descriptions.
-  Focused magic132, fresh follow19/26 and resource12/10 fingerprints, prior
-  magic/prepared-data, algorithm guide, coverage, links, layout and preservation
-  audits pass. Seven TRX reports/logs are under ignored `scratch/spell-aim-364-369/`.
-  Existing calculation/geometry/resource bodies and all pre-batch tests/fixtures
-  are unchanged; the existing geometry record gains only optional NoFollowTarget/
-  Auto flags. The 26 new public types follow matching-file layout; existing partial
-  parts remain. Actual charge setup stays separate from the original AI delay
-  quirk; AiSimulation here evaluates a ready plan, not AI charge planning.
-  Original imports, content, AI, host, all nine owner drafts, AbilityToggles and
-  JobStats are unchanged. No project, lock, dependency or activation changes.
-  MP costs remain nonnegative int. No live commands, state/RNG adoption, complete
-  clock or status processing. ZOD-370 traces publication next.
+- Validation: ZOD-370–375 pass locked restore, a zero-warning/error Release
+  build and **4,714 .NET cases** (1,673 Framework,1,217 AI,838 Content,328 CLI,
+  206 AssetTool,428 Client,24 Engine). All **711 Python tests** pass.
+  Twenty new managed cases cover 36 independent raw vital/living descriptions,
+  immutable snapshots, one-cost reduction, ready HP/MP/RNG proposals and late
+  rejection/replay boundaries. Eight new Python cases validate the independent
+  descriptions. Fresh publication 10-file/18-function, prior magic/prepared-data,
+  algorithm-guide, coverage, link, layout and preservation audits pass. Seven TRX
+  reports/logs are under ignored `scratch/magic-publication-370-375/`.
+  All pre-batch production, managed tests and behavior fixtures are unchanged.
+  The 18 new public types have matching files; existing partial parts remain.
+  Original imports, Content, AI, host, all nine owner drafts and JobStats are
+  unchanged. No project, lock, dependency or activation changes. MP costs remain
+  nonnegative int. These are private vital projections, with no live commands,
+  battle/turn state adoption, complete clock, rewards or status processing.
+  ZOD-376 traces execution authority and battle-state integration next.
   Prepared Dash/Stone import checks remain at ZOD-329; their code/input is unchanged.
   Python uses repository-pinned Pillow12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
