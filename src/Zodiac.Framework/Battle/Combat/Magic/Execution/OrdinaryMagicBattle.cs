@@ -8,6 +8,15 @@ public static class OrdinaryMagicBattle
 {
     internal static SpellTargetingProfile GeometryProfile => new(true, true, true, true);
 
+    public static ImmutableHashSet<AssetId> KnownSpells(OrdinaryMagicBattleState state, BattleUnitId unitId)
+    {
+        ArgumentNullException.ThrowIfNull(state);
+        var unit = state.Units[Index(state, unitId)];
+        var primary = state.Definition.Learning?.PrimarySlots(unit.Definition.RewardJobId) ?? [];
+        var row = unit.LearnedAbilitySlots[unit.Definition.RewardJobId];
+        return unit.Definition.LearnedSpells.Union(primary.Where(s => row.Contains(s.Index)).Select(s => s.AbilityId));
+    }
+
     public static SpellTargetChoiceResult Choice(OrdinaryMagicBattleState state, BattleUnitId actorId, AssetId spellId)
     {
         ArgumentNullException.ThrowIfNull(state);
@@ -26,12 +35,17 @@ public static class OrdinaryMagicBattle
             return Reject("The encounter has ended.");
         if (state.Revision == ulong.MaxValue)
             return Reject("The command counter is exhausted.");
+        if (state.LearningReport is not null && command is not OrdinaryMagicCommand.AnswerLearning)
+            return Reject("Answer the learning report first.");
         var events = new List<OrdinaryMagicEvent>();
         try
         {
             OrdinaryMagicBattleState next;
             switch (command)
             {
+                case OrdinaryMagicCommand.AnswerLearning answer:
+                    next = OrdinaryMagicLearningExecution.Answer(state, answer, events);
+                    break;
                 case OrdinaryMagicCommand.Advance:
                     if (state.Turns.ActiveUnitId is not null)
                         return Reject("Finish the active turn first.");
@@ -129,7 +143,7 @@ public static class OrdinaryMagicBattle
     {
         var actor = Active(state, command.UnitId);
         if (!state.Definition.Spells.TryGetValue(command.SpellId, out var spell) ||
-            !actor.Definition.LearnedSpells.Contains(command.SpellId))
+            !KnownSpells(state, actor.Id).Contains(command.SpellId))
             throw new OrdinaryMagicExecutionException("That spell is not learned.");
         if (state.Pending.ContainsKey(actor.Id))
             throw new OrdinaryMagicExecutionException("That unit is already charging a spell.");

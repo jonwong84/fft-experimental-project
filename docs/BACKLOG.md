@@ -4,11 +4,11 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-399 (Own learning reports in ordinary magic battles).**
+**Next bounded work: ZOD-400 (Bind prepared learning data and an eligible spell encounter).**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 The owner requested the next five bounded milestones (ZOD-398–402).
-There are 37 open tickets below. The 365 completed tickets, prior checkpoints and
+There are 36 open tickets below. The 366 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,14 +31,6 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 
 ## Next bounded milestone
-
-### ZOD-399 — Own learning reports in ordinary magic battles
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-398
-
-Own current-job learned slots and pending reports. Scan after reward/growth RNG,
-accept or decline once, gate commands/clock while pending, defer the authored KO
-objective until the report closes, and roll back counter exhaustion atomically.
 
 ### ZOD-400 — Bind prepared learning data and an eligible spell encounter
 

@@ -9,6 +9,8 @@ public sealed record OrdinaryMagicUnitState(OrdinaryMagicUnitDefinition Definiti
     byte KoCount = 0, byte DeathCounter = 3, AbilityOutcomeMarker OutcomeMarker = AbilityOutcomeMarker.None,
     BattleFacing Facing = BattleFacing.East)
 {
+    public ImmutableDictionary<AssetId, ImmutableHashSet<int>> LearnedAbilitySlots { get; init; } =
+        ImmutableDictionary<AssetId, ImmutableHashSet<int>>.Empty;
     public BattleUnitId Id => Current.UnitId;
     public SpellTargetOccupant Occupant => Definition.Occupant with { Position = Position };
 }

@@ -6,14 +6,15 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-399: Own learning reports in ordinary magic battles.**
-The owner requested five milestones ZOD-398–402. ZOD-398's
-[pure learning rule](behavior/learn-on-hit.md) is implemented and passes eleven
-managed cases plus two independent arithmetic checks. Reference remains clean
-and pinned to `11464943bbdbd2a0af022d90cb7f10455cf911df`.
-Owned battle integration, prepared eligible recipients, client reporting and
-disabled-menu behavior remain the four selected follow-ups. Schema2's guards
-remain in force until owned state is available. Preserve owner drafts/JobStats,
+**ZOD-400: Bind prepared learning data and an eligible spell encounter.**
+The owner requested five milestones ZOD-398–402; the pure rule and owned battle
+learning/report state are complete. [Learning behavior](behavior/learn-on-hit.md)
+records source ordering, per-job slot state, explicit acceptance/decline, command
+gates and atomic rollback. The full Framework suite passes 1,773 cases; the last
+whole-solution baseline below predates this batch. Prepared packages still guard
+eligible unlearned recipients until ZOD-400. Client reporting and disabled-menu
+policy follow. Reference stays clean at
+`11464943bbdbd2a0af022d90cb7f10455cf911df`. Preserve owner drafts/JobStats,
 the independent targeting-format edit and all deferred gates.
 
 [Managed MP costs](development/managed-magic-mp-costs.md) now use nonnegative `int`

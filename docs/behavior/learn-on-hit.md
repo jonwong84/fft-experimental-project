@@ -51,3 +51,28 @@ dotnet test tests/Zodiac.Framework.Tests/Zodiac.Framework.Tests.csproj -c Releas
 
 No reactions, monster combat, job switching, general AI, original report graphics,
 presentation-frame RNG or save/checkpoint support is activated by this rule.
+
+## Owned battle reports (ZOD-399)
+
+`OrdinaryMagicBattleDefinition` optionally owns a validated learning catalog,
+with exact executable ability coverage and stable current-job primary slots.
+Its learning profile admits generic original jobs74–93; special-job row aliases
+stay rejected until separately modeled. Each unit supplies an explicit initial
+current-job slot set. Battle state owns immutable per-job learned rows, separate
+from immutable initial secondary spell grants. `KnownSpells` derives available
+casts from both. Legacy definitions without metadata retain their old path.
+
+Actual spell application runs learning after rewards and growth. Ineligible
+affected targets still publish LearnChecked without draws. An internal report
+identifies the successful learner, ability, current job and creating command
+revision. `AnswerLearning` accepts that exact pending report once or rejects
+without mutation. Acceptance sets all matching slots; decline sets none. Both
+resume the existing clock phase without rescanning. A pending report gates every
+other command; even an instant cast can resume its unfinished active turn.
+The authored first-KO objective settles only after the report closes, if present.
+
+Nine composed cases cover reward/growth draw ordering, immutable definitions,
+known spells, command gates/stale replies, duplicate acceptance/decline, rate0,
+ineligible marker publication, instant casts, restart and atomic rollback when
+the learning draw exhausts the counter. The full Framework suite passes 1,773
+cases. Prepared packages still retain their guards until ZOD-400 binds metadata.

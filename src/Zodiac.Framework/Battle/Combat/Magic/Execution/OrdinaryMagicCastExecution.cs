@@ -88,6 +88,12 @@ internal static class OrdinaryMagicCastExecution
         units = units.SetItem(actorIndex, units[actorIndex] with { OutcomeMarker = AbilityOutcomeMarker.Targeted });
         next = next.With(units: units, turns: WithRng(next.Turns, rng));
         next = Rewards(next, actorIndex, earned, events);
+        next = OrdinaryMagicLearningExecution.Scan(next, casterId, plan.Definition.Id, events);
+        return next.LearningReport is null ? FinishObjective(next, events) : next;
+    }
+
+    internal static OrdinaryMagicBattleState FinishObjective(OrdinaryMagicBattleState next, List<OrdinaryMagicEvent> events)
+    {
         var knockedOut = next.Units.FirstOrDefault(u => u.Current.Statuses.Dead);
         if (knockedOut is not null)
         {

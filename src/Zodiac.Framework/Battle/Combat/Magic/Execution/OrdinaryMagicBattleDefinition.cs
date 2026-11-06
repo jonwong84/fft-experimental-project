@@ -14,13 +14,14 @@ public sealed class OrdinaryMagicBattleDefinition
     public RandomState InitialRng { get; }
     /// <summary>Explicit authored cost1 ground for confirmed paths; null retains the earlier one-step-only setup.</summary>
     public TerrainSurfaceId? MovementGround { get; }
+    public OrdinaryMagicLearningDefinition? Learning { get; }
 
     public static MagicEvadeEquipmentInput BareEquipment => new(false,
         new(255, 0, false), new(255, 0, false), new(255, 0, false));
 
     public OrdinaryMagicBattleDefinition(BattleMapDefinition map, IEnumerable<OrdinaryMagicUnitDefinition> units,
         IEnumerable<MagicCastDefinition> spells, JobUnlockCatalog jobs, ImmutableArray<ushort> jobThresholds,
-        RandomState initialRng, TerrainSurfaceId? movementGround = null)
+        RandomState initialRng, TerrainSurfaceId? movementGround = null, OrdinaryMagicLearningDefinition? learning = null)
     {
         ArgumentNullException.ThrowIfNull(map);
         ArgumentNullException.ThrowIfNull(units);
@@ -53,6 +54,9 @@ public sealed class OrdinaryMagicBattleDefinition
         }
         if (selected.Count == 0)
             throw new ArgumentException("At least one spell must be selected.", nameof(spells));
+        if (learning is not null && (!learning.Abilities.Keys.ToHashSet().SetEquals(selected.Keys) ||
+            learning.PrimarySlotsByJob.Keys.Any(id => !jobs.Jobs.Any(j => j.JobId == id))))
+            throw new ArgumentException("Learning metadata must bind exactly the executable spells and known jobs.", nameof(learning));
         var inputUnits = units.ToImmutableArray();
         if (inputUnits.Any(u => u is null || u.Occupant is null || u.Growth is null))
             throw new ArgumentException("Explicit unit, occupant and growth captures are required.", nameof(units));
@@ -78,6 +82,11 @@ public sealed class OrdinaryMagicBattleDefinition
                 u.Current.MagicAttack != Math.Min(99, (int)u.BaseAttributes.MagicAttack))
                 throw new NotSupportedException("Unit setup exceeds the ordinary human, bare-equipment, status-free encounter profile.");
             int slot = JobPointArithmetic.OriginalRewardSlot(u.OriginalJobId);
+            if (learning is not null && (u.OriginalJobId is < 74 or > 93 || u.LearnedPrimarySlots is null ||
+                u.LearnedPrimarySlots.Any(i => !learning.PrimarySlots(u.RewardJobId).Any(s => s.Index == i))))
+                throw new NotSupportedException("Learning requires an explicit generic current-job learned row; special-job row aliases are deferred.");
+            if (learning is null && u.LearnedPrimarySlots is not null)
+                throw new ArgumentException("Learned primary slots require a learning definition.", nameof(units));
             if (slot >= jobs.Jobs.Length || jobs.Jobs[slot].JobId != u.RewardJobId ||
                 u.JobPoints is null || u.JobPoints.Count != jobs.Jobs.Length || u.LearnedSpells is null ||
                 u.LearnedSpells.Any(id => !selected.ContainsKey(id)))
@@ -100,6 +109,7 @@ public sealed class OrdinaryMagicBattleDefinition
         JobThresholds = jobThresholds;
         InitialRng = initialRng;
         MovementGround = movementGround;
+        Learning = learning;
     }
 
     public OrdinaryMagicBattleState Start()
@@ -107,7 +117,11 @@ public sealed class OrdinaryMagicBattleDefinition
         var units = Units.Select(u => new OrdinaryMagicUnitState(u, u.Occupant.Position, u.Current, u.Vitals,
             u.RawStats, u.Level, u.Experience, u.JobPoints,
             Jobs.Calculate(u.JobPoints.ToImmutableDictionary(p => p.Key, p => (byte)p.Value.JobLevel),
-                u.Current.Identity.IsMale, u.Current.Identity.IsFemale), Facing: u.InitialFacing)).ToImmutableArray();
+                u.Current.Identity.IsMale, u.Current.Identity.IsFemale), Facing: u.InitialFacing)
+            {
+                LearnedAbilitySlots = Jobs.Jobs.ToImmutableDictionary(j => j.JobId,
+                    j => j.JobId == u.RewardJobId ? u.LearnedPrimarySlots ?? [] : ImmutableHashSet<int>.Empty)
+            }).ToImmutableArray();
         var turns = new TurnCycleState(units.Select(u => new TurnUnitState(u.Id,
             Math.Min(50, (int)u.Definition.BaseAttributes.Speed), 0, u.Occupant.SourceOrder)), InitialRng);
         return new(this, units, turns, ImmutableDictionary<BattleUnitId, PendingMagicCast>.Empty,
