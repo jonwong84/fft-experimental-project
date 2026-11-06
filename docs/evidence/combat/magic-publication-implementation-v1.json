@@ -13,6 +13,12 @@
       "managedBaseRevision": "518a074a4ccd039e1f15c8b8f67b68fb1d95fcb8",
       "validation": "8 Python cases passed;36 independent vital/living descriptions validated;clean pinned10-file/18-function source audit passed;no managed implementation yet.",
       "reports": "scratch/magic-publication-370-375/"
+    },
+    {
+      "ticket": "ZOD-371",
+      "managedBaseRevision": "3425bb3540ffc31a889cf699fdc0a33f96d38ed6",
+      "validation": "2 focused managed cases pass18 source vital literals, clamp/miss ordering, immutable replay and null guard.",
+      "reports": "scratch/magic-publication-370-375/"
     }
   ]
 }

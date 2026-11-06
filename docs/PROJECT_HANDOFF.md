@@ -6,9 +6,9 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-371: Apply exact signed vital arithmetic.**
+**ZOD-372: Project bounded living magic results.**
 [Living magic result projections](behavior/living-magic-projections.md) records
-completed ZOD-370, using clean source
+completed ZOD-370–371, using clean source
 `11464943bbdbd2a0af022d90cb7f10455cf911df`. Vital application combines signed work before clamping unsigned stored fields.
 Targeted reactions precede the hit check; KO/status/progression remain separate.
 Keep raw arithmetic, living admission, snapshots and private cast proposals distinct.

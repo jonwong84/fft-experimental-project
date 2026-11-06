@@ -73,3 +73,12 @@ Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/termina
 status/frame RNG, broad interfaces and ZOD-106 remain deferred. The future custom
 forward1/3/5 cone remains unimplemented. The reference checkout is never modified
 or used at runtime; prepared original data stays under ignored scratch.
+
+## ZOD-371
+
+`MagicVitalArithmetic` implements the18 raw vital descriptions using unsigned16
+stored values, signed16 work and full signed32 sums before clamps. A miss returns
+unchanged fields even when above maximum. This is numeric work after earlier
+application branches; it does not dispatch reactions, infer type bits, change
+statuses or report full source ability outcome. Two focused managed cases pass
+all18 literals, immutable replay and null-input handling.
