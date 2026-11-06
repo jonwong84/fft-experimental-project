@@ -18,6 +18,7 @@ internal sealed class OrdinaryMagicBattleWindow : Game
     private readonly BattleInputBuffer input = new();
     private readonly string? checkDirectory;
     private readonly string initial;
+    private readonly bool healingCheck;
     private SpriteBatch batch = null!;
     private Texture2D pixel = null!;
     private RenderTarget2D scene = null!;
@@ -31,6 +32,7 @@ internal sealed class OrdinaryMagicBattleWindow : Game
     internal OrdinaryMagicBattleWindow(PreparedOrdinaryMagicBattle content, string? checkDirectory)
     {
         this.checkDirectory = checkDirectory; interaction = new(content); initial = OrdinaryMagicSnapshot.Capture(interaction.State);
+        healingCheck = content.Definition.Spells[content.SpellOrder[0]].Spell.Kind == FaithMagicAmountKind.Healing;
         graphics = new(this) { PreferredBackBufferWidth = 960, PreferredBackBufferHeight = 640,
             GraphicsProfile = GraphicsProfile.Reach, SynchronizeWithVerticalRetrace = true };
         IsFixedTimeStep = true; TargetElapsedTime = TimeSpan.FromSeconds(1.0 / 60); IsMouseVisible = true;
@@ -257,7 +259,9 @@ internal sealed class OrdinaryMagicBattleWindow : Game
                     if (interaction.State.Units.Single(u => u.Id == active).Definition.LearnedSpells.Count > 0 &&
                         !interaction.State.Pending.ContainsKey(active))
                     {
-                        Dispatch(Keys.F); InjectTile(4, 2); Dispatch(Keys.Enter);
+                        Dispatch(Keys.F);
+                        if (healingCheck && casts >= 1) Dispatch(Keys.Tab); // Cure first, then Fire through the same player list.
+                        InjectTile(4, 2); Dispatch(Keys.Enter);
                     }
                     Dispatch(Keys.W);
                 }
@@ -276,9 +280,10 @@ internal sealed class OrdinaryMagicBattleWindow : Game
     private void ValidateFirstCast()
     {
         var state = interaction.State;
-        if (state.Units[1].Vitals.Hp != 146 || state.Units[0].Current.Mp != 69 || state.Units[0].Level != 11 ||
-            state.Units[0].Experience != 0 || state.Turns.RngState.DrawCount != 12 || !state.Pending.IsEmpty)
-            throw new InvalidOperationException("Prepared Fire first-cast result differed from the independent expected values.");
+        if (state.Units[1].Vitals.Hp != (healingCheck ? 84 : 146) || state.Units[1].Vitals.Critical ||
+            state.Units[0].Current.Mp != 69 || state.Units[0].Level != 11 || state.Units[0].Experience != 0 ||
+            state.Turns.RngState.DrawCount != (healingCheck ? 7UL : 12UL) || !state.Pending.IsEmpty)
+            throw new InvalidOperationException("Prepared first-cast result differed from the independent expected values.");
     }
     private void CheckSpellSelection()
     {
@@ -306,13 +311,14 @@ internal sealed class OrdinaryMagicBattleWindow : Game
     }
     private void FinishCheck()
     {
-        if (!resizeChecked || !restarted || !interaction.State.Finished || casts != 4 || interaction.State.Units[1].Vitals.Hp != 0)
+        if (!resizeChecked || !restarted || !interaction.State.Finished || casts != (healingCheck ? 3 : 4) || interaction.State.Units[1].Vitals.Hp != 0)
             throw new InvalidOperationException("Incomplete native spell check.");
         string final = OrdinaryMagicSnapshot.Capture(interaction.State);
         var report = new
         {
             evidence = "Windows GPU plus programmed key/pointer routes; no physical input injection or original media",
             referenceRevision = "11464943bbdbd2a0af022d90cb7f10455cf911df", interaction.Content.Ruleset,
+            scenario = healingCheck ? "cure-then-fire" : "fire",
             checkpoints, casts, spellSelectionsChecked, restartMatched = true, renderingPreservedState = true, resizeChecked, frames,
             finalSha256 = Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(final))),
             adapter = GraphicsAdapter.DefaultAdapter.Description,
@@ -321,7 +327,7 @@ internal sealed class OrdinaryMagicBattleWindow : Game
         };
         using var file = new FileStream(Path.Combine(checkDirectory!, "check.json"), FileMode.CreateNew);
         JsonSerializer.Serialize(file, report, new JsonSerializerOptions { WriteIndented = true });
-        CheckCompleted = true; Console.WriteLine("Native Fire check passed: charge, HP/MP/rewards/growth, restart, first KO and exact headless replay."); Exit();
+        CheckCompleted = true; Console.WriteLine("Native ordinary magic check passed: charge, HP/MP/rewards/growth, restart, first KO and exact headless replay."); Exit();
     }
 
     private void Baseline() => input.Baseline(Keyboard.GetState().GetPressedKeys(), Mouse.GetState(Window).LeftButton == ButtonState.Pressed);

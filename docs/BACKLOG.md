@@ -4,10 +4,11 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-394 (Execute prepared Cure through the ordinary healing path).**
+**Next bounded work: ZOD-395 (Execute confirmed flat movement in ordinary magic battles).**
 [Fire execution](behavior/ordinary-magic-execution.md) is complete through ZOD-391.
-[Shared elemental work](behavior/elemental-magic-execution.md) records ZOD-392–393.
-There are 34 open tickets below. The 360 completed tickets, prior checkpoints and
+[Shared elemental work](behavior/elemental-magic-execution.md) records ZOD-392–393;
+[ordinary Cure](behavior/ordinary-healing-execution.md) completes ZOD-394.
+There are 34 open tickets below. The 361 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,11 +32,11 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-394 — Execute prepared Cure through the ordinary healing path
+### ZOD-395 — Execute confirmed flat movement in ordinary magic battles
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-393
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-394
 
-Trace and bind Cure formula0x0C with selected prepared metadata. Exercise actual HP healing, Critical clearing, MP payment, rewards and replay through the established ordinary command owner. Keep unsupported undead/status/AI branches explicit.
+Reuse the source-traced flat movement kernel to publish confirmed paths, voluntary final headings and Move/CT settlement in the authoritative magic battle. Preserve spell charges, reject unsupported post-move work and test fresh occupancy, path ties, counters and replay. See [selected contract](behavior/ordinary-magic-movement.md).
 Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
 Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.
 

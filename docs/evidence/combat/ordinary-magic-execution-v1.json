@@ -45,6 +45,12 @@
       "managedBaseRevision": "5f6adc88dfe49d017f6d39b28debb9cf57ba339b",
       "validation": "Release zero warnings/errors; all 4839 .NET and 741 Python tests pass. Native Fire-only and twelve-spell menu/charge/restart/KO checks match complete headless replay. Twelve keyboard selections and pointer rows verified; captures inspected. One unrelated temporary-directory access error passed on a fresh full Python run.",
       "reports": "scratch/fire-execution-387/"
+    },
+    {
+      "ticket": "ZOD-394",
+      "managedBaseRevision": "fce2a86cca4f366e156315bd1c479922f17565ff",
+      "validation": "Release zero warnings/errors; all 4853 .NET and 743 Python cases pass. Native Cure/restart/Fire/KO and complete headless replay match; healed/Critical captures inspected. Fresh six-file/seven-function source audit and all 38 prepared records plus manifest pass.",
+      "reports": "scratch/fire-execution-387/"
     }
   ]
 }

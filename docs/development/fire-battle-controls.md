@@ -58,6 +58,11 @@ Wizard career is total5000/current260 after the selected grants, so a first Fire
 cast earns26 JP rather than the Fire-only setup's12. The map and first-KO objective
 are unchanged. [Source and execution](../behavior/elemental-magic-execution.md).
 
+For a Cure/Fire loadout and injured target, use `prepare-healing-magic-battle`
+with the same input/output switches, then launch `--magic-battle` against its
+output. Cure heals HP30→84 and clears Critical; Tab selects Fire afterward.
+[Healing source, setup and validation](../behavior/ordinary-healing-execution.md).
+
 ## Validation and limits
 
 ```powershell

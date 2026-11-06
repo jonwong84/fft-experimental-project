@@ -32,7 +32,8 @@ justifies it. Current assemblies are not yet interchangeable.
   growth and unlocks publish through deterministic commands; native checks match
   headless replay and restart. A separate package adds all Fire/Bolt/Ice tiers
   through the same formula, with a learned spell menu and distinct costs/charge/
-  geometry. [Prepare, launch and controls](docs/development/fire-battle-controls.md).
+  geometry. A Cure/Fire setup also exercises healing, Critical clearing and
+  healing-specific draw behavior. [Prepare, launch and controls](docs/development/fire-battle-controls.md).
 
 - **First job/ability editor:** `Fft.Editor` opens prepared baseline metadata,
   creates a separate authored job/skillset/ability copy, edits Move/Jump/JP,

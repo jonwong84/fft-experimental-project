@@ -29,7 +29,7 @@ public static class OriginalOrdinaryMagicImporter
         var reader = new OriginalExecutableReader(executable);
         var spells = new List<OrdinaryMagicPreparedSpell>();
         int learningCost = 0;
-        foreach (var binding in Bindings.Where(b => selection != OriginalOrdinarySpellSelection.Fire || b.Id == 16))
+        foreach (var binding in Bindings.Where(b => selection == OriginalOrdinarySpellSelection.ElementalTiers || b.Id == 16))
         {
             string id = $"fft.ps1:ability/source-{binding.Id:D4}";
             var raw = reader.Read("g_ability_range_data", 0x8005fbf0, 14, binding.Id, id);
@@ -53,6 +53,22 @@ public static class OriginalOrdinaryMagicImporter
         if (spells.Any(s => skillset[s.OriginalId - 16] != s.OriginalId) ||
             reader.Read("g_command_menu_types_by_skillset", 0x80065cb4, 1, 11, "fft.ps1:skillset/black-magic")[0] != 0)
             throw new InvalidDataException("Black Magic does not bind the traced default-menu spell slots.");
+
+        ushort cureLearningCost = 0;
+        if (selection == OriginalOrdinarySpellSelection.CureAndFire)
+        {
+            const string id = "fft.ps1:ability/source-0001";
+            var raw = reader.Read("g_ability_range_data", 0x8005fbf0, 14, 1, id);
+            byte[] expected = [4, 1, 1, 0, 0, 226, 0, 0, 12, 0, 14, 0, 4, 6];
+            if (!raw.SequenceEqual(expected)) throw new InvalidDataException("Cure exceeds the traced ordinary healing binding.");
+            cureLearningCost = OriginalMetadataRecords.DecodeAbility(reader.Read("g_ability_data", 0x8005ebf0, 8, 1, id)).JpCost;
+            var whiteMagic = OriginalMetadataRecords.DecodeHumanSkillset(reader.Read("g_ability_human_skillset_abilities", 0x80064a94, 25, 10, "fft.ps1:skillset/white-magic"));
+            if (cureLearningCost > 9999 || whiteMagic[0] != 1 ||
+                reader.Read("g_command_menu_types_by_skillset", 0x80065cb4, 1, 10, "fft.ps1:skillset/white-magic")[0] != 0)
+                throw new InvalidDataException("White Magic does not bind the traced default-menu Cure slot and learning data.");
+            spells.Insert(0, new(id, "Cure", 1, new(FaithMagicAmountKind.Healing, raw[10], MagicElement.None, false),
+                raw[13], raw[12], (raw[5] & 0x20) != 0, new(raw[0], raw[1], raw[2])));
+        }
 
         string JobId(string name) => "fft.ps1:job/" + name;
         OrdinaryMagicPreparedJob ReadJob(byte id, string name, string skillsetId, byte expectedSkillset)
@@ -87,8 +103,10 @@ public static class OriginalOrdinaryMagicImporter
         var mageCareer = Career();
         mageCareer[JobId("chemist")] = JobPointArithmetic.Add(200, 200, 0, thresholds.ToImmutableArray());
         if (learningCost > 9999) throw new InvalidDataException("Selected learned grants exceed the authored career budget.");
-        ushort wizardTotal = (ushort)Math.Max(selection == OriginalOrdinarySpellSelection.Fire ? 100 : 5000, learningCost);
+        ushort wizardTotal = (ushort)Math.Max(selection == OriginalOrdinarySpellSelection.ElementalTiers ? 5000 : 100, learningCost);
         mageCareer[JobId("wizard")] = JobPointArithmetic.Add((ushort)(wizardTotal - learningCost), wizardTotal, 0, thresholds.ToImmutableArray());
+        if (selection == OriginalOrdinarySpellSelection.CureAndFire)
+            mageCareer[JobId("priest")] = JobPointArithmetic.Add(0, cureLearningCost, 0, thresholds.ToImmutableArray());
         var guardCareer = Career();
         guardCareer[JobId("squire")] = JobPointArithmetic.Add(100, 100, 0, thresholds.ToImmutableArray());
         uint Raw(int value, byte multiplier) => multiplier == 0
@@ -102,7 +120,8 @@ public static class OriginalOrdinaryMagicImporter
             new OrdinaryMagicPreparedUnit("mage", "Mage", 0, 0, 2, SpellTargetTeam.Blue, wizard.Id, 10, 95, 70, 70,
                 MagicZodiacSign.Aries, true, false, Stats(wizard, 100, 75, 10, 6, 8), new(6, 8, 10), 100, 75, mageCareer, spells.Select(s => s.Id).ToArray()),
             new OrdinaryMagicPreparedUnit("guard", "Guard", 1, 4, 2, SpellTargetTeam.Red, squire.Id, 10, 0, 70, 70,
-                MagicZodiacSign.Aries, true, false, Stats(squire, 200, 50, 8, 8, 5), new(8, 5, 8), 200, 50, guardCareer, [])
+                MagicZodiacSign.Aries, true, false, Stats(squire, 200, 50, 8, 8, 5), new(8, 5, 8),
+                (ushort)(selection == OriginalOrdinarySpellSelection.CureAndFire ? 30 : 200), 50, guardCareer, [])
         };
         var document = new OrdinaryMagicPackageDocument("fft.ordinary-magic-battle", 1, "ordinary-human-bare-v1", "original-fft",
             57, 7, 5, 10, JobId("squire"), JobId("bard"), JobId("dancer"), thresholds, spells.ToArray(), [wizard, squire], unlocks.ToArray(), units);
