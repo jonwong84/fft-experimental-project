@@ -163,3 +163,20 @@ Five managed scenarios cover collateral/zero accuracy and truncated averaging,
 follow versus tile motion, ally preference, untargetability/map bypass, stat
 credits, empty and no-valuable-target outcomes. No supplied tally becomes live
 state or a whole-candidate score; the composed query derives these facts fresh.
+
+## Absolute state and MP scoring (ZOD-410)
+
+`OrdinarySpellAiScoring` adds HP, ordinary Critical/Dead, all seven unchanged bare
+equipment slots and MP for every unit in source order. MP scales by64/maxMP,
+then halves below the cheapest initialized nonzero cost, then multiplies by the
+quarter share and divides by4. No maxMP scores0; no MP abilities means share0.
+Enemies negate the whole contribution. Running priority narrows after each unit,
+starting with the private strike credit; the score is absolute, not HP delta.
+No Golem or equipment-change term is guessed.
+
+Ten cases cover cost equality/below-cost boundaries, odd MP rounding, no MP,
+Critical/Dead, source order, strike credit and signed16 overflow. The literal
+Fire ready-hit example scores49: actor HP128 + equipment357 + remaining MP14,
+minus enemy HP93 + equipment357. This remains a ready-hit diagnostic until the
+full delay/movement clock and candidate comparison are implemented. All1,263 AI
+cases pass, preserving the prior decision/execution paths.

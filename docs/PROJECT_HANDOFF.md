@@ -6,10 +6,10 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-410: Score ordinary spell HP statuses equipment and MP.**
-The owner requested ten milestones ZOD-403–412. ZOD-403–409 are complete;
+**ZOD-411: Compose an owned ordinary spell ready-hit query.**
+The owner requested ten milestones ZOD-403–412. ZOD-403–410 are complete;
 [ordinary spell AI](behavior/ordinary-spell-ai.md) records the ready-hit boundary
-and the remaining selected steps. Five strike accounting and exclusion scenarios pass.
+and the remaining selected steps. Ten new score scenarios and all 1,263 AI regressions pass.
 Full delayed charge-clock search and autonomous magic turns remain separate.
 The earlier five-hour runs are not active. Source stays clean/read-only at
 `11464943bbdbd2a0af022d90cb7f10455cf911df`. Preserve the ten owner files,

@@ -4,12 +4,12 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-410 (Score ordinary spell HP statuses equipment and MP).**
+**Next bounded work: ZOD-411 (Compose an owned ordinary spell ready-hit query).**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 The five requested learning milestones ZOD-398–402 are complete;
 [learning reports, owned slots and player casting](behavior/learn-on-hit.md) are validated.
-There are 36 open tickets below. The 376 completed tickets, prior checkpoints and
+There are 35 open tickets below. The 377 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -32,12 +32,6 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 
 ## Next bounded milestone
-
-### ZOD-410 — Score ordinary spell HP statuses equipment and MP
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-409
-
-Implement absolute source-order short accumulation with MP scaling, below-cheapest halving and quarter shares; keep full clock/search authority separate.
 
 ### ZOD-411 — Compose an owned ordinary spell ready-hit query
 
