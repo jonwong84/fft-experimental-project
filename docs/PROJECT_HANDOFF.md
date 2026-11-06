@@ -20,6 +20,12 @@ or separately authored targeting/presentation. The current fixed bindings and
 Dash-specific AI projection do not support it. The upcoming refactor needs
 formula-specific parameters, a traced0x32 handler and shared execution/preview/AI
 dispatch; preserve original content and keep edits explicit as custom content.
+The supplied FFHacktics pre-formula disassembly now has a
+[source-checked setup boundary](architecture/ability-effect-families.md#pre-formula-setup-boundary):
+menu-dependent formula selection, selective result reset, status/cancellation
+preparation, reaction gates and post-formula finalization. A zero C return does
+not establish formula invocation. Keep those steps outside individual handlers;
+no general setup or namespace migration has been implemented by these notes.
 This source study does not start that migration or ZOD-418.
 All 770 current Python tests pass, including eight new selector tests. The
 [study receipt](evidence/combat/equipment-selection-study-v1.json) records the

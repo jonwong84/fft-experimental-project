@@ -118,6 +118,66 @@ ability-specific RepeatingFist class, editor work or runtime C dependency is
 needed to express the assignment. The supported0x32 handler and its source trace
 are necessary before the example can execute.
 
+## Pre-formula setup boundary
+
+The owner supplied the annotated FFHacktics
+[Pre Formula Setup (FDC)](https://ffhacktics.com/wiki/Pre_Formula_Setup_%28FDC%29)
+disassembly after direct wiki access returned403. It maps to
+`action_calculate_target_result` at0x8018B34C in the pinned reference above.
+The formula call returns at0x8018B97C. The
+[ZOD-419 source receipt](../evidence/combat/equipment-selection-source-v1.json)
+already pins this function and its full source file. This comparison checks
+source/annotation correspondence; it is not original/C execution or a completed
+port of reaction, item, Jump or other setup branches.
+
+The general calculation boundary must retain these responsibilities:
+
+- Copy the command and establish actor/target context. Non-primary reaction
+  handling and pending knockback can exit before ordinary formula dispatch.
+- Select the strike's weapon/item context, copy source definitions and initial
+  Faith values, then initialize result work. `action_clear_current_data` preserves
+  reaction_id and last_received_attack, sets hit/accuracy defaults and clears
+  status work/canceled statuses. `data_clear` additionally makes the attacker
+  result not-hit. A whole-record reset would lose source-retained information.
+- Resolve the action menu and any pending proc or effective-ability substitution.
+  Ordinary/default/monster/Math/Draw Out paths read the selected ability formula;
+  Item uses item data; Throw selects0x63; Jump selects0x64; Attack/Charge use the
+  weapon formula, with Charge contributing its power. Geomancy and Draw Out
+  have their own effective-ability selection. Compatibility assignments must
+  respect this delivery-dependent precedence.
+- Load the effective status-application record, including its selection flags,
+  and prepare canceled-status eligibility before entering the formula. Formula3
+  forces the empty status record here. The original maps formula0 or values
+  outside1..0x64 to weapon formula1; unsupported implemented handlers within that
+  range still need explicit managed admission, not an accidental substitute.
+- Run evasion reactions before formula dispatch. A pre-formula miss skips the
+  handler. Formula-specific evasion remains inside applicable handlers.
+- After the handler, run applicable formula-specific aftermath and common result
+  finalization. This routine calculates results; later result application owns
+  authoritative HP/MP/status/equipment mutation.
+
+The C return value is not a boolean saying a formula ran. It is1 on the
+pre-formula evasion-reaction miss path, and0 otherwise, including the reaction
+and knockback early exits. Managed diagnostics must distinguish those paths.
+
+Primary AI metadata also contributes actual miss-display team/dodge flags in
+this setup. That does not make the primary AI Evadeable bit the execution
+evasion switch. Keep field meanings and consumers explicit when consolidating
+the owner drafts; naming a metadata group does not prove it has only one consumer.
+
+For the shared model, an ability references a reusable status-application set
+with stable identity, membership and application flags. Individual status
+behavior is separate. Canceled-status preparation belongs to shared setup even
+when a selected formula does not normally apply statuses. Status membership is
+not automatically applied merely because the ability references the set.
+
+The refactor should compose preparation, selected formula/shared combat rules,
+finalization and application through explicit state and execution/preview/AI
+context. Preserve required retained facts, source order and RNG boundaries.
+Neither RAM addresses nor mutable C globals become runtime dependencies. This
+records the calculation boundary; it does not introduce a broad public interface
+or activate unsupported reaction/item/status families.
+
 ## Navigation buckets and next development step
 
 The tool groups all100 dispatch slots once into eleven navigation buckets:
