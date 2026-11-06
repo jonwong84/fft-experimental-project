@@ -26,6 +26,7 @@ public sealed class PreparedOrdinaryMagicTests
         Assert.Contains(new AssetId(AuthoredOrdinaryMagic.Fire), package.Definition.Units[0].LearnedSpells);
         Assert.Equal((ushort)100, package.Definition.JobThresholds[0]);
         Assert.Equal("authored-ordinary", package.Ruleset);
+        Assert.Equal(new[] { new AssetId(AuthoredOrdinaryMagic.Fire) }, package.SpellOrder.ToArray());
     }
 
     [Fact]

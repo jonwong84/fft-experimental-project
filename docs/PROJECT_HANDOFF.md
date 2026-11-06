@@ -6,15 +6,17 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-392: Expand ordinary magic execution from the proven Fire path.**
-[Ordinary magic execution](behavior/ordinary-magic-execution.md) records completed
-ZOD-387–391, pinned to clean source
+**ZOD-393: Select learned elemental spells in the player client.**
+[Fire execution](behavior/ordinary-magic-execution.md) is complete through ZOD-391.
+[Shared elemental execution](behavior/elemental-magic-execution.md) records completed
+ZOD-392. Source remains pinned to clean read-only
 `11464943bbdbd2a0af022d90cb7f10455cf911df`.
-Fire now works end to end through prepared content, explicit grants, player
-aim/charge, actual HP/MP/status/RNG/rewards, replay/restart and a runnable native
-client. Continue validated development within the owner's five-hour work window. Preserve old
-sword/AI paths, owner drafts/JobStats and Knight EquipmentSlot intent. Concrete
-spell host work is authorized; editor, general magic AI and other deferrals remain.
+Fire works end to end through prepared content, explicit grants, player aim/charge,
+actual HP/MP/status/RNG/rewards, replay/restart and a runnable native client.
+Continue validated development within the owner's five-hour work window.
+Preserve old sword/AI paths, owner drafts/JobStats and Knight EquipmentSlot intent.
+Concrete spell host work is authorized; editor, generic magic AI and other
+documented deferrals remain separate.
 
 [Managed MP costs](development/managed-magic-mp-costs.md) now use nonnegative `int`
 through spell definitions, resource calculation and recorded cast/resource cost.

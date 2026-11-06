@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Zodiac.AssetTool.Cli.Tests;
 
-public sealed class OriginalFireImporterTests
+public sealed class OriginalOrdinaryMagicImporterTests
 {
     private static int Offset(uint address) => checked((int)(address - 0x80010000 + 0x800));
 
@@ -13,7 +13,7 @@ public sealed class OriginalFireImporterTests
     public void Synthetic_layout_import_keeps_source_records_and_authored_grants_distinct()
     {
         byte[] image = Image(); byte[] before = image.ToArray();
-        var imported = OriginalFireImporter.DecodeSelection(image);
+        var imported = OriginalOrdinaryMagicImporter.DecodeSelection(image);
         var definition = imported.Package.Definition;
         var fire = Assert.Single(definition.Spells).Value;
         Assert.Equal(14, fire.Spell.Power); Assert.Equal(6, fire.MpCost); Assert.Equal((byte)4, fire.RawChargeTime);
@@ -26,13 +26,13 @@ public sealed class OriginalFireImporterTests
         }
         Assert.Contains(fire.Id, definition.Units[0].LearnedSpells); Assert.Empty(definition.Units[1].LearnedSpells);
         Assert.Equal((ushort)50, definition.Units[0].JobPoints[new("fft.ps1:job/wizard")].Current);
-        var receipt = JsonNode.Parse(OriginalFireImporter.Provenance(imported))!;
+        var receipt = JsonNode.Parse(OriginalOrdinaryMagicImporter.Provenance(imported))!;
         Assert.Null(receipt["verifiedInputSha256"]);
         Assert.Equal("unverified-layout-decoding", receipt["confidence"]!.GetValue<string>());
         Assert.Contains("authored encounter", receipt["scope"]!.GetValue<string>());
-        Assert.Throws<InvalidDataException>(() => OriginalFireImporter.ImportVerified(image));
+        Assert.Throws<InvalidDataException>(() => OriginalOrdinaryMagicImporter.ImportVerified(image));
         Array.Clear(image); Assert.Equal(before.Length, image.Length);
-        Assert.Equal(imported.Package.ToJson(), OriginalFireImporter.DecodeSelection(before).Package.ToJson());
+        Assert.Equal(imported.Package.ToJson(), OriginalOrdinaryMagicImporter.DecodeSelection(before).Package.ToJson());
     }
 
     [Theory]
@@ -54,7 +54,7 @@ public sealed class OriginalFireImporterTests
             case "learning": image[Offset(0x8005ebf0 + 16 * 8) + 1] = 255; break;
             case "header": image[0] = 0; break;
         }
-        Assert.Throws<InvalidDataException>(() => OriginalFireImporter.DecodeSelection(image));
+        Assert.Throws<InvalidDataException>(() => OriginalOrdinaryMagicImporter.DecodeSelection(image));
     }
 
     [Fact]
@@ -67,7 +67,7 @@ public sealed class OriginalFireImporterTests
         {
             File.WriteAllBytes(image, Image());
             using var message = new StringWriter(); using var error = new StringWriter();
-            Assert.Equal(1, new PrepareFireBattleCommand(workspace).Run(
+            Assert.Equal(1, new PrepareOrdinaryMagicBattleCommand(workspace).Run(
                 ["prepare-fire-battle", "--exe", image, "--output", output], message, error));
             Assert.Contains("SHA-256", error.ToString()); Assert.False(Directory.Exists(output));
             Assert.Equal([image], Directory.GetFiles(scratch));
@@ -75,7 +75,7 @@ public sealed class OriginalFireImporterTests
         finally { File.Delete(image); Directory.Delete(scratch); Directory.Delete(workspace); }
     }
 
-    private static byte[] Image()
+    internal static byte[] Image()
     {
         var image = new byte[OriginalMetadataImporter.ExecutableLength];
         "PS-X EXE"u8.CopyTo(image);

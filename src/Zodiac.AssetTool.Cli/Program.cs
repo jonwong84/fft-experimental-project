@@ -30,8 +30,8 @@ internal static class Program
         if (args.Length > 0 && args[0] == "prepare-basic-skill-battle")
             return new PrepareBasicSkillBattleCommand(workspaceRoot).Run(args, Console.Out, Console.Error);
 
-        if (args.Length > 0 && args[0] == "prepare-fire-battle")
-            return new PrepareFireBattleCommand(workspaceRoot).Run(args, Console.Out, Console.Error);
+        if (args.Length > 0 && args[0] is "prepare-fire-battle" or "prepare-elemental-magic-battle")
+            return new PrepareOrdinaryMagicBattleCommand(workspaceRoot).Run(args, Console.Out, Console.Error);
 
         if (args.Length > 0 && args[0] == "prepare-sprite-pose")
             return new PrepareSpritePoseCommand(workspaceRoot).Run(args, Console.Out, Console.Error);

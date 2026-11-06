@@ -3,5 +3,5 @@ using Zodiac.Content.BattleSetup;
 
 namespace Zodiac.AssetTool.Cli;
 
-public sealed record OriginalFireImport(PreparedOrdinaryMagicBattle Package, string? VerifiedInputSha256,
+public sealed record OriginalOrdinaryMagicImport(PreparedOrdinaryMagicBattle Package, string? VerifiedInputSha256,
     ImmutableArray<OriginalMetadataSourceRecord> Records);

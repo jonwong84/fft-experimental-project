@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 358 entries index completed bounded work; they do not mean the full game is complete.
+These 359 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -438,3 +438,5 @@ These 358 entries index completed bounded work; they do not mean the full game i
 - [ZOD-390 — Import and bind verified prepared Fire content](../behavior/ordinary-magic-execution.md#zod-390)
 
 - [ZOD-391 — Run player Fire casting end to end](../behavior/ordinary-magic-execution.md#zod-391)
+
+- [ZOD-392 — Bind the shared original elemental spell family](../behavior/elemental-magic-execution.md#zod-392)

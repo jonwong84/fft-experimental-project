@@ -33,6 +33,12 @@
       "managedBaseRevision": "17f898738c5c60b0d7cf88cffa7f8765f8241330",
       "validation": "Locked restore; Release zero warnings/errors; all 4818 .NET and 739 Python tests passed. Verified 34 prepared source records and repeatable files; Windows GPU charge/aim/reward/growth/restart/KO routes match headless replay. Source, growth, reward, guide and coverage audits pass.",
       "reports": "scratch/fire-execution-387/"
+    },
+    {
+      "ticket": "ZOD-392",
+      "managedBaseRevision": "b29ffe738e95c7900dd34ba01965287f3dae0f01",
+      "validation": "28 selected CLI cases pass, including 17 new family execution cases; prior Fire vectors retained. Verified local elemental preparation succeeds with 56 source records; six-file/five-function source audit and twelve reviewed binding vectors pass. Two new Python cases pass.",
+      "reports": "scratch/fire-execution-387/"
     }
   ]
 }

@@ -7,35 +7,52 @@ using Zodiac.Framework;
 
 namespace Zodiac.AssetTool.Cli;
 
-/// <summary>Offline Fire/job/progression import; the map, units, grants and seed are explicitly authored demo setup.</summary>
-public static class OriginalFireImporter
+/// <summary>Offline selected ordinary spell/job/progression import; encounter setup and grants are authored.</summary>
+public static class OriginalOrdinaryMagicImporter
 {
     public const string ReferenceRevision = "11464943bbdbd2a0af022d90cb7f10455cf911df";
     private static readonly ImmutableArray<string> OriginalJobNames = ["squire", "chemist", "knight", "archer", "monk", "priest", "wizard",
         "time-mage", "summoner", "thief", "mediator", "oracle", "geomancer", "lancer", "samurai", "ninja", "calculator", "bard", "dancer", "mime"];
 
-    public static OriginalFireImport ImportVerified(ReadOnlySpan<byte> executable)
+    public static OriginalOrdinaryMagicImport ImportVerified(ReadOnlySpan<byte> executable,
+        OriginalOrdinarySpellSelection selection = OriginalOrdinarySpellSelection.Fire)
     {
         string hash = OriginalExecutableReader.Verify(executable);
-        return DecodeSelection(executable) with { VerifiedInputSha256 = hash };
+        return DecodeSelection(executable, selection) with { VerifiedInputSha256 = hash };
     }
 
     /// <summary>Layout testing only; does not certify an edition or input hash.</summary>
-    public static OriginalFireImport DecodeSelection(ReadOnlySpan<byte> executable)
+    public static OriginalOrdinaryMagicImport DecodeSelection(ReadOnlySpan<byte> executable,
+        OriginalOrdinarySpellSelection selection = OriginalOrdinarySpellSelection.Fire)
     {
+        if (!Enum.IsDefined(selection)) throw new ArgumentOutOfRangeException(nameof(selection));
         var reader = new OriginalExecutableReader(executable);
-        string fireId = "fft.ps1:ability/source-0016";
-        var fire = reader.Read("g_ability_range_data", 0x8005fbf0, 14, 16, fireId);
-        byte[] expected = [4, 1, 1, 0, 0, 226, 66, 128, 8, 0, 14, 0, 4, 6];
-        if (!fire.SequenceEqual(expected))
-            throw new InvalidDataException("Fire exceeds the traced ordinary empty-status binding.");
-        var learning = OriginalMetadataRecords.DecodeAbility(reader.Read("g_ability_data", 0x8005ebf0, 8, 16, fireId));
-        var status = reader.Read("g_status_infliction_data", 0x80063fc4, 6, 0, fireId);
-        if (status.Any(value => value != 0) || learning.JpCost > 9999)
-            throw new InvalidDataException("Unsupported Fire status or learning data.");
+        var spells = new List<OrdinaryMagicPreparedSpell>();
+        int learningCost = 0;
+        foreach (var binding in Bindings.Where(b => selection != OriginalOrdinarySpellSelection.Fire || b.Id == 16))
+        {
+            string id = $"fft.ps1:ability/source-{binding.Id:D4}";
+            var raw = reader.Read("g_ability_range_data", 0x8005fbf0, 14, binding.Id, id);
+            bool fourth = binding.Area == 2;
+            byte[] expected = [4, binding.Area, binding.Vertical, 0, (byte)(fourth ? 1 : 0),
+                (byte)(fourth ? 34 : 226), (byte)(fourth ? 2 : 66), (byte)binding.Element, 8, 0,
+                binding.Power, 0, binding.Charge, binding.Mp];
+            if (!raw.SequenceEqual(expected))
+                throw new InvalidDataException($"{binding.Name} exceeds the traced ordinary empty-status binding.");
+            var learning = OriginalMetadataRecords.DecodeAbility(reader.Read("g_ability_data", 0x8005ebf0, 8, binding.Id, id));
+            if (learning.JpCost > 9999) throw new InvalidDataException("Unsupported ordinary spell learning data.");
+            learningCost = checked(learningCost + learning.JpCost);
+            spells.Add(new(id, binding.Name, binding.Id,
+                new(FaithMagicAmountKind.Damage, raw[10], (MagicElement)raw[7], (raw[6] & 2) != 0),
+                raw[13], raw[12], (raw[5] & 0x20) != 0,
+                new(raw[0], raw[1], raw[2], CannotHitCaster: (raw[4] & 1) != 0)));
+        }
+        var status = reader.Read("g_status_infliction_data", 0x80063fc4, 6, 0, null);
+        if (status.Any(value => value != 0)) throw new InvalidDataException("Unsupported ordinary spell status data.");
         var skillset = OriginalMetadataRecords.DecodeHumanSkillset(reader.Read("g_ability_human_skillset_abilities", 0x80064a94, 25, 11, "fft.ps1:skillset/black-magic"));
-        if (skillset[0] != 16 || reader.Read("g_command_menu_types_by_skillset", 0x80065cb4, 1, 11, "fft.ps1:skillset/black-magic")[0] != 0)
-            throw new InvalidDataException("Black Magic does not bind the traced default-menu Fire slot.");
+        if (spells.Any(s => skillset[s.OriginalId - 16] != s.OriginalId) ||
+            reader.Read("g_command_menu_types_by_skillset", 0x80065cb4, 1, 11, "fft.ps1:skillset/black-magic")[0] != 0)
+            throw new InvalidDataException("Black Magic does not bind the traced default-menu spell slots.");
 
         string JobId(string name) => "fft.ps1:job/" + name;
         OrdinaryMagicPreparedJob ReadJob(byte id, string name, string skillsetId, byte expectedSkillset)
@@ -69,8 +86,9 @@ public static class OriginalFireImporter
         Dictionary<string, JobPointBalance> Career() => OriginalJobNames.ToDictionary(JobId, _ => new JobPointBalance(0, 0, 0));
         var mageCareer = Career();
         mageCareer[JobId("chemist")] = JobPointArithmetic.Add(200, 200, 0, thresholds.ToImmutableArray());
-        ushort wizardTotal = (ushort)Math.Max(100, (int)learning.JpCost);
-        mageCareer[JobId("wizard")] = JobPointArithmetic.Add((ushort)(wizardTotal - learning.JpCost), wizardTotal, 0, thresholds.ToImmutableArray());
+        if (learningCost > 9999) throw new InvalidDataException("Selected learned grants exceed the authored career budget.");
+        ushort wizardTotal = (ushort)Math.Max(selection == OriginalOrdinarySpellSelection.Fire ? 100 : 5000, learningCost);
+        mageCareer[JobId("wizard")] = JobPointArithmetic.Add((ushort)(wizardTotal - learningCost), wizardTotal, 0, thresholds.ToImmutableArray());
         var guardCareer = Career();
         guardCareer[JobId("squire")] = JobPointArithmetic.Add(100, 100, 0, thresholds.ToImmutableArray());
         uint Raw(int value, byte multiplier) => multiplier == 0
@@ -79,28 +97,42 @@ public static class OriginalFireImporter
         BattleRawStats Stats(OrdinaryMagicPreparedJob job, int hp, int mp, int speed, int pa, int ma) =>
             new(Raw(hp, job.Multipliers.Hp), Raw(mp, job.Multipliers.Mp), Raw(speed, job.Multipliers.Speed),
                 Raw(pa, job.Multipliers.PhysicalAttack), Raw(ma, job.Multipliers.MagicAttack));
-        var spell = new OrdinaryMagicPreparedSpell(fireId, "Fire", 16,
-            new(FaithMagicAmountKind.Damage, fire[10], (MagicElement)fire[7], (fire[6] & 2) != 0),
-            fire[13], fire[12], (fire[5] & 0x20) != 0, new(fire[0], fire[1], fire[2]));
         var units = new[]
         {
             new OrdinaryMagicPreparedUnit("mage", "Mage", 0, 0, 2, SpellTargetTeam.Blue, wizard.Id, 10, 95, 70, 70,
-                MagicZodiacSign.Aries, true, false, Stats(wizard, 100, 75, 10, 6, 8), new(6, 8, 10), 100, 75, mageCareer, [fireId]),
+                MagicZodiacSign.Aries, true, false, Stats(wizard, 100, 75, 10, 6, 8), new(6, 8, 10), 100, 75, mageCareer, spells.Select(s => s.Id).ToArray()),
             new OrdinaryMagicPreparedUnit("guard", "Guard", 1, 4, 2, SpellTargetTeam.Red, squire.Id, 10, 0, 70, 70,
                 MagicZodiacSign.Aries, true, false, Stats(squire, 200, 50, 8, 8, 5), new(8, 5, 8), 200, 50, guardCareer, [])
         };
         var document = new OrdinaryMagicPackageDocument("fft.ordinary-magic-battle", 1, "ordinary-human-bare-v1", "original-fft",
-            57, 7, 5, 10, JobId("squire"), JobId("bard"), JobId("dancer"), thresholds, [spell], [wizard, squire], unlocks.ToArray(), units);
+            57, 7, 5, 10, JobId("squire"), JobId("bard"), JobId("dancer"), thresholds, spells.ToArray(), [wizard, squire], unlocks.ToArray(), units);
         return new(PreparedOrdinaryMagicBattle.Create(document), null, reader.Records.ToImmutableArray());
     }
 
-    public static string Provenance(OriginalFireImport import) => JsonSerializer.Serialize(new
+    public static string Provenance(OriginalOrdinaryMagicImport import) => JsonSerializer.Serialize(new
     {
-        format = "fft.original-fire-import", schemaVersion = 1, referenceRevision = ReferenceRevision,
+        format = "fft.original-ordinary-magic-import", schemaVersion = 1, referenceRevision = ReferenceRevision,
         verifiedInputSha256 = import.VerifiedInputSha256,
         confidence = import.VerifiedInputSha256 is null ? "unverified-layout-decoding" : "verified-source-traced-records",
-        scope = "original-fire-selected-job-and-progression-data; authored encounter, units, learned grant and seed",
+        scope = "original-ordinary-spells-selected-job-and-progression-data; authored encounter, units, learned grants and seed",
         records = import.Records,
         limitations = "No original encounter, assets/animation, generic statuses/AI, corpse scheduling or frame RNG equivalence is inferred."
     }, new JsonSerializerOptions { WriteIndented = true, NewLine = "\n" }) + "\n";
+
+    // Each row independently inspected against the verified executable and pinned source.
+    private static readonly (short Id, string Name, byte Power, byte Area, byte Vertical, byte Charge, byte Mp, MagicElement Element)[] Bindings =
+    [
+        (16, "Fire", 14, 1, 1, 4, 6, MagicElement.Fire),
+        (17, "Fire 2", 18, 1, 2, 5, 12, MagicElement.Fire),
+        (18, "Fire 3", 24, 1, 3, 7, 24, MagicElement.Fire),
+        (19, "Fire 4", 32, 2, 3, 10, 48, MagicElement.Fire),
+        (20, "Bolt", 14, 1, 1, 4, 6, MagicElement.Lightning),
+        (21, "Bolt 2", 18, 1, 2, 5, 10, MagicElement.Lightning),
+        (22, "Bolt 3", 24, 1, 3, 7, 24, MagicElement.Lightning),
+        (23, "Bolt 4", 32, 2, 3, 10, 48, MagicElement.Lightning),
+        (24, "Ice", 14, 1, 1, 4, 6, MagicElement.Ice),
+        (25, "Ice 2", 18, 1, 2, 5, 12, MagicElement.Ice),
+        (26, "Ice 3", 24, 1, 3, 7, 24, MagicElement.Ice),
+        (27, "Ice 4", 32, 2, 3, 10, 48, MagicElement.Ice)
+    ];
 }

@@ -5,15 +5,15 @@ using Zodiac.Content.BattleSetup;
 
 namespace Zodiac.AssetTool.Cli;
 
-public sealed class PrepareFireBattleCommand(string workspaceRoot)
+public sealed class PrepareOrdinaryMagicBattleCommand(string workspaceRoot)
 {
     public int Run(string[] args, TextWriter output, TextWriter error)
     {
         string? staging = null;
         try
         {
-            if (args.Length != 5 || args[0] != "prepare-fire-battle" || args[1] != "--exe" || args[3] != "--output")
-                throw new ArgumentException("Usage: prepare-fire-battle --exe <scratch/SCUS_942.21> --output <fresh-scratch-directory>");
+            if (args.Length != 5 || args[0] is not ("prepare-fire-battle" or "prepare-elemental-magic-battle") || args[1] != "--exe" || args[3] != "--output")
+                throw new ArgumentException("Usage: (prepare-fire-battle|prepare-elemental-magic-battle) --exe <scratch/SCUS_942.21> --output <fresh-scratch-directory>");
             string scratch = Path.GetFullPath(Path.Combine(workspaceRoot, "scratch")) + Path.DirectorySeparatorChar;
             StringComparison comparison = OperatingSystem.IsWindows() ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal;
             string CheckedPath(string value)
@@ -32,20 +32,22 @@ public sealed class PrepareFireBattleCommand(string workspaceRoot)
                 throw new IOException("Select a fresh output directory that cannot contain the original input.");
             if (new FileInfo(input).Length != OriginalMetadataImporter.ExecutableLength)
                 throw new InvalidDataException("Unsupported executable length.");
-            var result = OriginalFireImporter.ImportVerified(File.ReadAllBytes(input));
+            var selection = args[0] == "prepare-fire-battle" ? OriginalOrdinarySpellSelection.Fire : OriginalOrdinarySpellSelection.ElementalTiers;
+            var result = OriginalOrdinaryMagicImporter.ImportVerified(File.ReadAllBytes(input), selection);
             byte[] package = Encoding.UTF8.GetBytes(result.Package.ToJson());
             string parent = Path.GetDirectoryName(destination)!;
             Directory.CreateDirectory(parent);
             staging = Path.Combine(parent, ".fire-" + Guid.NewGuid().ToString("N"));
             Directory.CreateDirectory(staging);
             File.WriteAllBytes(Path.Combine(staging, "ordinary-magic.package.json"), package);
-            File.WriteAllText(Path.Combine(staging, "fire.import.json"), OriginalFireImporter.Provenance(result), new UTF8Encoding(false));
+            File.WriteAllText(Path.Combine(staging, selection == OriginalOrdinarySpellSelection.Fire ? "fire.import.json" : "ordinary-magic.import.json"),
+                OriginalOrdinaryMagicImporter.Provenance(result), new UTF8Encoding(false));
             new PreparedAssetManifest([new(PreparedOrdinaryMagicBattle.AssetId, "ordinary-magic.package.json", package.Length,
                 Convert.ToHexStringLower(SHA256.HashData(package)))])
                 .SaveToFile(Path.Combine(staging, PreparedAssetManifest.FileName));
             _ = PreparedOrdinaryMagicBattle.Load(LooseAssetStore.Load(staging));
             Directory.Move(staging, destination);
-            output.WriteLine($"Prepared verified Fire and authored encounter at {destination}; {result.Records.Length} source records, explicit learned grant.");
+            output.WriteLine($"Prepared verified {result.Package.Definition.Spells.Count} ordinary spells and authored encounter at {destination}; {result.Records.Length} source records, explicit learned grants.");
             return 0;
         }
         catch (Exception e) when (e is ArgumentException or IOException or InvalidDataException or NotSupportedException or UnauthorizedAccessException)
@@ -57,7 +59,7 @@ public sealed class PrepareFireBattleCommand(string workspaceRoot)
         {
             if (staging is not null && Directory.Exists(staging))
             {
-                foreach (string name in new[] { "ordinary-magic.package.json", "fire.import.json", PreparedAssetManifest.FileName })
+                foreach (string name in new[] { "ordinary-magic.package.json", "fire.import.json", "ordinary-magic.import.json", PreparedAssetManifest.FileName })
                     File.Delete(Path.Combine(staging, name));
                 Directory.Delete(staging);
             }

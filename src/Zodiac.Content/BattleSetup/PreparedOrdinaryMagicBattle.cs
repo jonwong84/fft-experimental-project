@@ -30,6 +30,7 @@ public sealed class PreparedOrdinaryMagicBattle
     public OrdinaryMagicBattleDefinition Definition { get; }
     public ImmutableDictionary<BattleUnitId, string> UnitNames { get; }
     public ImmutableDictionary<AssetId, string> SpellNames { get; }
+    public ImmutableArray<AssetId> SpellOrder { get; }
     public string Ruleset { get; }
     public ImmutableDictionary<string, JobDefinition> JobDefinitions { get; }
 
@@ -84,6 +85,7 @@ public sealed class PreparedOrdinaryMagicBattle
         SpellNames = document.Spells.ToImmutableDictionary(s => new AssetId(s.Id), s =>
             !string.IsNullOrWhiteSpace(s.Name) && s.Name.Length <= 32 && !s.Name.Any(char.IsControl)
                 ? s.Name : throw new InvalidDataException("Spell name is invalid."));
+        SpellOrder = document.Spells.Select(s => new AssetId(s.Id)).ToImmutableArray();
         Ruleset = document.Ruleset;
         canonicalJson = JsonSerializer.Serialize(document, Options) + "\n";
     }
