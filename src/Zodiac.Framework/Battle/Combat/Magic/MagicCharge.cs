@@ -1,12 +1,5 @@
 namespace Zodiac.Framework;
 
-public readonly record struct MagicChargeSetup(byte Ticks, bool Persevere)
-{
-    public bool Immediate => Ticks == 0;
-}
-
-public readonly record struct MagicChargeStep(byte Counter, bool Ready, bool Changed);
-
 /// <summary>Ordinary ability timing queries, source 11464943bbdbd2a0af022d90cb7f10455cf911df. No clock or action mutation.</summary>
 public static class MagicCharge
 {

@@ -2,38 +2,6 @@ using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework;
 
-/// <summary>Known source labels, preserved as data; the corresponding miss behaviors are not implemented here.</summary>
-public enum MagicResultMissKind : byte
-{
-    Hit, AccessoryEvade, RightHandEvade, LeftHandEvade, ClassEvade, Nullified, AccuracyMiss,
-    ForcedFailure, Canceled, Reflected, GolemGuard, BladeGraspOrFingerGuard, BuggedReflection, Catch
-}
-
-public readonly record struct MagicResultTypes(bool HpDamage = false, bool HpHealing = false, bool PseudoStatus = false);
-public readonly record struct MagicResultEffects(bool Absorption = false, bool Weakness = false, bool AddedEffect = false)
-{
-    public bool Any => Absorption || Weakness || AddedEffect;
-}
-
-/// <summary>Supported signed HP work and known flags, before or after bounded result finalization.</summary>
-public sealed record MagicResultFrame(bool Hit, ushort Accuracy, MagicResultMissKind Miss,
-    short HpDamage, short HpHealing, MagicResultTypes Types, MagicResultEffects Effects,
-    bool ClearFirstCanceledStatusByte = false);
-
-/// <summary>Positive remaining facts. EntryProcContext's clear-flag fact describes entry, not post-proc flags.</summary>
-public sealed record MagicResultFinalizationProfile(bool LivingTarget = false, bool NoPetrifyOrWall = false,
-    bool NoGolem = false, bool EmptyStatusRecord = false, bool NoPendingKnockback = false,
-    bool OnlySupportedHpResultWork = false, MagicConditionalProcProfile? EntryProcContext = null);
-
-public enum MagicResultFinalizationRejection { None, UnsupportedContext, ProcDecisionRejected }
-public sealed record MagicResultFinalizationResult(bool Accepted, MagicResultFinalizationRejection Rejection,
-    MagicResultFrame? Outcome);
-public sealed record MagicResultCompositionResult(MagicResultFinalizationResult Finalization,
-    MagicConditionalProcOutcome? Proc, RandomState RngState, MagicProcRejection ProcRejection = MagicProcRejection.None)
-{
-    public bool Accepted => Finalization.Accepted;
-}
-
 /// <summary>Bounded raw HP result finalization, then source special-effect to pseudo-status typing.</summary>
 /// <remarks>ZOD-341; source 11464943bbdbd2a0af022d90cb7f10455cf911df. No HP, status, command or live RNG publication.</remarks>
 public static class MagicResultFinalization

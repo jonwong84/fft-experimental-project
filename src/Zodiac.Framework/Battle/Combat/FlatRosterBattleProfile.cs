@@ -2,8 +2,6 @@ using System.Collections.Immutable;
 
 namespace Zodiac.Framework;
 
-public sealed record FlatRosterUnit(BattleUnitId UnitId, int StableTeam, int SourceOrder);
-
 /// <summary>Explicit stable teams/source order for ordinary neutral/effect-free units on open cost-one ground.</summary>
 /// <remarks>ZOD-277/278, decomp 11464943bbdbd2a0af022d90cb7f10455cf911df.
 /// Certifies no mounts, formation/importance/immortality, charges, reactions, traps, pickups or unrepresented effects.

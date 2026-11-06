@@ -2,32 +2,6 @@ using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Events;
 
-/// <summary>A trusted composition-root assertion. It carries logical identities, never artwork or I/O.</summary>
-public sealed record PreloadedBannerBinding(AssetId DefinitionId, AssetId ArtworkId, AssetId OwnerId);
-
-/// <summary>Typed admission, independent of raw opcodes and prepared-content formats.</summary>
-public sealed record DisplayGeneralBanner(GeneralBannerDefinition Definition, AssetId ArtworkId, AssetId OwnerId);
-
-public sealed class OrderedBannerInstruction
-{
-    public int Offset => SceneInstruction.Offset;
-    public SceneEventInstruction SceneInstruction { get; }
-    public DisplayGeneralBanner? Display { get; }
-
-    public OrderedBannerInstruction(SceneEventInstruction instruction)
-    {
-        ArgumentNullException.ThrowIfNull(instruction);
-        SceneInstruction = instruction;
-    }
-
-    public OrderedBannerInstruction(int offset, DisplayGeneralBanner display)
-    {
-        ArgumentNullException.ThrowIfNull(display);
-        Display = display;
-        SceneInstruction = new(new ConditionalEventInstruction(offset, ConditionalEventOperation.Nop));
-    }
-}
-
 /// <summary>Separate authored event-before-worker domain; existing scene programs cannot admit effects.</summary>
 public sealed class OrderedBannerProgram
 {
@@ -60,21 +34,4 @@ public sealed class OrderedBannerProgram
     public OrderedBannerState Start(ConditionalEventVariables variables, SceneTaskState tasks, AssetId consumerId,
         PreloadedBannerBinding? readyBinding)
         => new(this, Body.Start(variables, tasks, consumerId), null, readyBinding);
-}
-
-/// <summary>One scene retains its banner and binding across consumer lifetimes, including terminal tombstones.</summary>
-public sealed class OrderedBannerState
-{
-    public OrderedBannerProgram Program { get; }
-    public SceneEventState Event { get; }
-    public GeneralBannerState? Banner { get; }
-    public PreloadedBannerBinding? ReadyBinding { get; }
-    internal BannerSceneState Scene => new(Event, Banner);
-
-    internal OrderedBannerState(OrderedBannerProgram program, SceneEventState sceneEvent,
-        GeneralBannerState? banner, PreloadedBannerBinding? readyBinding)
-        => (Program, Event, Banner, ReadyBinding) = (program, sceneEvent, banner, readyBinding);
-
-    internal OrderedBannerState With(SceneEventState sceneEvent, GeneralBannerState? banner)
-        => new(Program, sceneEvent, banner, ReadyBinding);
 }

@@ -18,7 +18,7 @@ maps DSI-001..024 to passing tests without changing its original unexecuted flag
 ## API and scope
 
 The implementation is in
-[DarkScreenIntroduction.cs](../../src/Zodiac.Framework/Events/DarkScreenIntroduction.cs).
+[DarkScreenIntroductionExecutor.cs](../../src/Zodiac.Framework/Events/DarkScreenIntroductionExecutor.cs).
 Construct the program with a validated `StartDarkScreen`, condition-8 general
 definition, condition-0 Ready definition, unsigned-byte display holds and one
 shared owner. Program, definition, artwork and owner IDs must be distinct and

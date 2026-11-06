@@ -2,25 +2,6 @@ using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework;
 
-/// <summary>One already-admitted target's immutable formula inputs; geometry and live state belong to the caller.</summary>
-public sealed record FaithMagicFormulaRequest(FaithMagicAmountInput Amount, bool TargetIsUndead,
-    ushort Accuracy, MagicFormulaEvaluationMode Mode, MagicResultFinalizationProfile? Profile,
-    MagicDamageElementContext? Elements = null);
-
-/// <summary>Positive source-entry certificates; these do not perform earlier reaction or reflection work.</summary>
-/// <remarks>FreshResultKnown includes zero supported work and a known-clear stored result reaction; the source initializer preserves that field.</remarks>
-public sealed record FaithMagicEntryProfile(bool FreshResultKnown = false, bool NoEarlierReactionsOrReflection = false,
-    bool NonzeroAbilityKnown = false);
-
-public sealed record FaithMagicResolutionRequest(FaithMagicFormulaRequest Formula, FaithMagicEntryProfile? Entry,
-    bool SecondaryEvadeable, MagicEvadeEquipmentInput? Equipment = null, MagicEvadeModifiers? EvadeModifiers = null);
-
-public enum FaithMagicResolutionRejection { None, UnsupportedContext, RandomDrawCountExhausted }
-
-/// <summary>Bounded formula result and separate evade diagnostics, never a live-state transition.</summary>
-public sealed record FaithMagicResolutionResult(bool Accepted, FaithMagicResolutionRejection Rejection,
-    MagicResultFrame? Outcome, MagicEvasionOutcome? Evasion, MagicConditionalProcOutcome? Proc, RandomState RngState);
-
 /// <summary>Shared 0x08/0x0C calculation from explicit inputs through bounded result finalization.</summary>
 /// <remarks>
 /// ZOD-343 consolidation; source 11464943bbdbd2a0af022d90cb7f10455cf911df.

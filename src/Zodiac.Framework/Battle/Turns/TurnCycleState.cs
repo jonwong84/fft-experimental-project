@@ -3,14 +3,6 @@ using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework;
 
-/// <summary>The bounded clock distinguishes an initial tick from rechecking already-ready peers.</summary>
-public enum TurnCyclePhase
-{
-    AddCt,
-    PickUnit,
-    UnitTurn,
-}
-
 /// <summary>Explicit immutable scheduling state for positive-Speed, living, unrestricted ordinary units.</summary>
 public sealed class TurnCycleState
 {

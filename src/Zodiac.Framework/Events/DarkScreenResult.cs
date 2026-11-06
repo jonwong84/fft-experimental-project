@@ -2,16 +2,6 @@ using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Events;
 
-public enum DarkScreenRejection
-{
-    None, InvalidManagedBinding, WorkerAlreadyAttached, ManagedTaskUpdateForbidden,
-    EventRejected, TaskLedgerRejected,
-}
-public enum DarkScreenTraceKind { Event, TaskLedger, WorkerStarted, ReleaseMatched, ReleaseNoMatch, WorkerAdvanced, WorkerObserved }
-public sealed record DarkScreenTrace(DarkScreenTraceKind Kind, long Tick, int InstructionBudget, int UpdateBudget,
-    int? Offset = null, DarkScreenState? Before = null, DarkScreenState? After = null,
-    SceneEventTrace? EventTrace = null, SceneTaskTrace? TaskTrace = null);
-
 /// <summary>A rejected transaction returns its exact input object and no accepted trace/counters.</summary>
 public sealed class DarkScreenResult
 {

@@ -3,40 +3,6 @@ using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework;
 
-/// <summary>Explicit spell inputs, not a runtime original-table lookup or complete content package.</summary>
-/// <remarks>MP cost is a nonnegative managed integer; original record packing is an import concern.</remarks>
-public sealed record MagicCastDefinition(AssetId Id, short OriginalAbilityId, FaithMagicSpell Spell,
-    int MpCost, byte RawChargeTime, bool AffectedBySilence, bool Persevere = false, OrdinarySpellGeometry? Targeting = null);
-
-public sealed record MagicReadyCastProfile(bool ChargeReadyKnown = false, bool ActionStateBookkeepingKnown = false,
-    bool NoHamedoKnown = false, bool SingleOrdinaryDefaultStrikeKnown = false, bool FreshResultsKnown = false);
-
-public sealed record MagicReadyCastRequest(MagicCurrentUnit Caster, MagicCastDefinition Definition,
-    MagicDamageWeather Weather, MagicFormulaEvaluationMode Mode, MagicResultFinalizationProfile? ResultProfile,
-    MagicReadyCastProfile? ReadyProfile);
-
-/// <summary>Derived immutable MP proposal for one certified ready action; no command or live-state authority.</summary>
-public sealed record PreparedMagicCast
-{
-    public MagicCurrentUnit Caster { get; }
-    public MagicCastDefinition Definition { get; }
-    public MagicDamageWeather Weather { get; }
-    public MagicFormulaEvaluationMode Mode { get; }
-    public MagicResultFinalizationProfile ResultProfile { get; }
-    public MagicMpOutcome Resource { get; }
-    internal PreparedMagicCast(MagicReadyCastRequest r, MagicMpOutcome resource)
-    { Caster = r.Caster; Definition = r.Definition; Weather = r.Weather; Mode = r.Mode; ResultProfile = r.ResultProfile!; Resource = resource; }
-}
-
-public sealed record MagicReadyCastResult(bool Accepted, MagicMpOutcome? Resource, PreparedMagicCast? Cast);
-
-public sealed record MagicCastTargetProfile(bool EligibilityAndOrderKnown = false, bool NoEarlierTargetEffectsKnown = false);
-public sealed record MagicCastTargetResult(BattleUnitId TargetId, MagicResultFrame Result, MagicEvasionOutcome? Evasion,
-    MagicConditionalProcOutcome? Proc);
-public sealed record MagicCastOutcome(ushort CandidateMp, int RecordedCost, ImmutableArray<MagicCastTargetResult> Targets);
-public sealed record MagicCastResolutionResult(bool Accepted, FaithMagicResolutionRejection Rejection,
-    MagicCastOutcome? Outcome, RandomState RngState);
-
 /// <summary>Pure scheduling-independent ready-cast work. No spell command, MP/HP/status or RNG publication.</summary>
 public static class MagicCastQuery
 {

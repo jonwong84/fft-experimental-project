@@ -2,35 +2,6 @@ using System.Collections.Immutable;
 
 namespace Zodiac.Framework;
 
-public enum TurnCommandKind
-{
-    ConfirmMove,
-    ConfirmAct,
-    Wait,
-}
-
-/// <summary>A confirmed choice-consumption or end-turn decision; ConfirmAct does not resolve combat.</summary>
-public sealed record TurnCommand(BattleUnitId UnitId, TurnCommandKind Kind);
-
-public enum TurnCycleRejection
-{
-    None,
-    TurnAlreadyActive,
-    UnknownUnit,
-    InactiveUnit,
-    MovementAlreadyTaken,
-    ActionAlreadyTaken,
-    UnsupportedCommand,
-    TickCountExhausted,
-    RandomDrawCountExhausted,
-}
-
-public abstract record TurnCycleEvent;
-public sealed record TurnClockAdvancedEvent(ulong Tick) : TurnCycleEvent;
-public sealed record TurnReadyEvent(BattleUnitId UnitId, int CtBeforeSelection, int CtAfterSelection, uint UpkeepRoll) : TurnCycleEvent;
-public sealed record TurnChoiceConsumedEvent(BattleUnitId UnitId, TurnCommandKind Choice) : TurnCycleEvent;
-public sealed record TurnEndedEvent(BattleUnitId UnitId, int CtBeforeCompletion, int CtAfterCompletion) : TurnCycleEvent;
-
 public sealed class TurnCycleResult
 {
     public bool Accepted { get; }

@@ -2,23 +2,6 @@ using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Events;
 
-public enum BannerSceneRejection
-{
-    None, InvalidId, InvalidDefinition, UnsupportedCondition, InvalidHoldFrames, EffectAlreadyAttached,
-    EffectNotAttached, MissingCircleSample, InvalidManagedTaskBinding, ManagedTaskUpdateForbidden,
-    InvalidInstructionBudget, AlreadyExited, AwaitingTick, NotWaiting, InstructionBudgetExceeded,
-    ArithmeticDomainExceeded, TaskLedgerRejected, EventNotExited, InvalidProgram, InvalidVariables,
-}
-
-public enum BannerSceneTraceKind { Event, TaskLedger, EffectAttached, EffectAdvanced, EffectObserved, EventStarted }
-
-/// <summary>Ordered event/task facts plus explicit effect inputs and before/after snapshots. Terminal observations never advance the effect.</summary>
-public sealed record BannerSceneTrace(BannerSceneTraceKind Kind, long Tick,
-    SceneEventTrace? EventTrace = null, SceneTaskTrace? TaskTrace = null,
-    GeneralBannerState? Before = null, GeneralBannerState? After = null, bool? CirclePressed = null,
-    BannerCancellation? Cancellation = null, int? InstructionBudget = null, int? UpdateBudget = null,
-    SceneEventState? StartedEvent = null);
-
 public sealed class BannerSceneResult
 {
     public BannerSceneState State { get; }

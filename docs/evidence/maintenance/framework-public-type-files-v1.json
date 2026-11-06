@@ -1,0 +1,3614 @@
+{
+  "schemaVersion": 1,
+  "kind": "owner-requested-framework-public-type-files",
+  "managedBaseRevision": "29645899a265760dbf184a93fc1f764aa26d5440",
+  "behaviorChanged": false,
+  "namespacesChanged": false,
+  "visibilityChanged": false,
+  "newTests": false,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "newFiles": 275,
+  "removedAggregateFiles": [
+    "src/Zodiac.Framework/Battle/Combat/DashAbilityBattle.cs",
+    "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattle.cs",
+    "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattle.cs",
+    "src/Zodiac.Framework/Battle/Commands/RosterPlannedMove.cs",
+    "src/Zodiac.Framework/Campaign/WorldCheckpoint.cs",
+    "src/Zodiac.Framework/Events/BannerReadySequence.cs",
+    "src/Zodiac.Framework/Events/BattleIntroduction.cs",
+    "src/Zodiac.Framework/Events/DarkScreenIntroduction.cs"
+  ],
+  "retainedFilesChanged": 51,
+  "originalSourceFiles": 111,
+  "currentSourceFiles": 378,
+  "uniquePublicTypes": 373,
+  "publicDeclarations": 375,
+  "internalDeclarations": 8,
+  "groups": [
+    "src/Zodiac.Framework/Battle/Combat",
+    "src/Zodiac.Framework/Battle/Combat/Magic",
+    "src/Zodiac.Framework/Battle/Commands",
+    "src/Zodiac.Framework/Battle/Movement",
+    "src/Zodiac.Framework/Battle/State",
+    "src/Zodiac.Framework/Battle/Turns",
+    "src/Zodiac.Framework/Campaign",
+    "src/Zodiac.Framework/Events",
+    "src/Zodiac.Framework/Random"
+  ],
+  "declarations": [
+    {
+      "type": "Zodiac.Framework.AssetId`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/AssetId.cs",
+      "toPath": "src/Zodiac.Framework/AssetId.cs",
+      "normalizedDeclarationSha256": "1f2c22d30a5b72f636645ed374a137a42222e9160086397b8f1dfce9d4f9505c",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.BoundedSwordWeapon`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/AttackBattleSimulator.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/BoundedSwordWeapon.cs",
+      "normalizedDeclarationSha256": "d5cf33bfe3feef8fe92bb9513722ac1c0ae6adf254165f35366ae5a1d4172357",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.AttackBattleResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/AttackBattleSimulator.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/AttackBattleResult.cs",
+      "normalizedDeclarationSha256": "31b10fa11602dd2edd5f9f2127b6162dbcb3d9680bcb96910ba01c359f6f8058",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.AttackBattleSimulator`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/AttackBattleSimulator.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/AttackBattleSimulator.cs",
+      "normalizedDeclarationSha256": "08253f53f8b0db0025df671242ccdb2bb0086f5e88ee8e0ebf123c4f048f086f",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.BoundedDashAbility`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/DashAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/BoundedDashAbility.cs",
+      "normalizedDeclarationSha256": "1bde0a29f3f2897ff6ae48fdfe9b68904d228a52f69b2f158deef4d6cede338f",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.DashAbilityBattleProfile`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/DashAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/DashAbilityBattleProfile.cs",
+      "normalizedDeclarationSha256": "477c103a008aeab3c165ee6a3c2777185bd6aefa0d4dcd33c72fa9b741fb679a",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.DashResolvedEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/DashAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/DashResolvedEvent.cs",
+      "normalizedDeclarationSha256": "61f102175329baacefab994cdc8decb834c7f28c3fff69d34d3e3e48221f9091",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.DashKnockbackEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/DashAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/DashKnockbackEvent.cs",
+      "normalizedDeclarationSha256": "1a44073531f35be919c061f57c8aa7aa4035bb078834081bfad15b26ab0950b0",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.DashAbilityBattleSimulator`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/DashAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/DashAbilityBattleSimulator.cs",
+      "normalizedDeclarationSha256": "b5069da7bae9b40c414622a7ee0b70d28844d48502205062425e94ea078287e2",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.DashFormula`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/DashFormula.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/DashFormula.cs",
+      "normalizedDeclarationSha256": "58ca5f9986ee3121edfbea539c9fda010cbb0d7a37472e8b068ea10da3f1872a",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.RandomPaDamageFormula`0",
+      "public": false,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/DashFormula.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/DashFormula.cs",
+      "normalizedDeclarationSha256": "fcb83d294537ffa8517702c08dd112669ce58410e6d957b30b6cc3c9575d4c07",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.FlatRosterUnit`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/FlatRosterBattleProfile.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/FlatRosterUnit.cs",
+      "normalizedDeclarationSha256": "e4126c032ab2faf7847f29bd02a46542ae4db3216e4ff8ed4255281019bd4fe4",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.FlatRosterBattleProfile`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/FlatRosterBattleProfile.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/FlatRosterBattleProfile.cs",
+      "normalizedDeclarationSha256": "fc1563999d665d49793e349e2bfb5124eacce1025b88da034835bd4f55e8d417",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.FlatSwordBattleProfile`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/FlatSwordBattleProfile.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/FlatSwordBattleProfile.cs",
+      "normalizedDeclarationSha256": "46506e9ddcbe4353f3a3f2e69bd88f1e5dabd0965694ab5d88e15f2770450065",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.SwordKnockbackEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/FlatSwordBattleProfile.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/SwordKnockbackEvent.cs",
+      "normalizedDeclarationSha256": "e5b5333ff518dc73a023dfc75c1736a5a159855aa1e6c58f00ba858de5f80c3e",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.BoundedImmediateAbility`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/BoundedImmediateAbility.cs",
+      "normalizedDeclarationSha256": "d7bfdab83c53c43ab8b1b4dedd31b8b31ce4afe3941130abbec178f860f50fa3",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.ImmediateAbilityUnitGrant`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityUnitGrant.cs",
+      "normalizedDeclarationSha256": "76f6a3dce2ae9dff4f1cced05c126d25def9ff5051d8bde61458c1935ed9fc16",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.ImmediateAbilityBattleProfile`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattleProfile.cs",
+      "normalizedDeclarationSha256": "284142275da30ba92671fc12e91c11f92d47e45d0cab15187b955b8dcf397215",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.AccumulateFormula`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/AccumulateFormula.cs",
+      "normalizedDeclarationSha256": "7cb1dd9846b6ff32af7d65e1aca09dbb2d3253046268e32d1e9195a5dfb30e1d",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.UseImmediateAbilityCommand`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/UseImmediateAbilityCommand.cs",
+      "normalizedDeclarationSha256": "74ad4680b4cb3217e9a595ad9f33068b678075ba6e82838f7e6aa48086b2f805",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.ImmediateAbilityResolvedEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityResolvedEvent.cs",
+      "normalizedDeclarationSha256": "2e45203f607cabb3959dc2fdc7bf7879e973c828629ec2e3204c4b111ae65754",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.AttackPhysicalAttackChangedEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/AttackPhysicalAttackChangedEvent.cs",
+      "normalizedDeclarationSha256": "e5545c9f9be61535b649013a65f5787168c89d28878e604c874ec2e16be9f889",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.ImmediateAbilityBattleSimulator`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattleSimulator.cs",
+      "normalizedDeclarationSha256": "aedcdf5b8ced3dabec10b4aab486f196012d21fe51bdf1b5233be01ff1dd0843",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.FaithMagicAmountKind`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmountFormula.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmountKind.cs",
+      "normalizedDeclarationSha256": "a8f25a97b06141e5680d3be1a8bb85a45f1fde559d3b08e2a5dab946d41c80b3",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.MagicCompatibility`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmountFormula.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCompatibility.cs",
+      "normalizedDeclarationSha256": "c5cc939a1f8644bfa6ab44d1cab4dc6c234165f7d1761d6554e0c07c8fa7c3eb",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.FaithMagicAmountModifiers`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmountFormula.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmountModifiers.cs",
+      "normalizedDeclarationSha256": "81055c02a75507f0e6bcee81f211ddc2c2ac647c86d4b54d097b54275074319c",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.FaithMagicAmountProfile`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmountFormula.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmountProfile.cs",
+      "normalizedDeclarationSha256": "39d703c0058ea72bc635a665618f54d2428a1cecb04f011de74350f9f0ce1b10",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.FaithMagicAmountInput`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmountFormula.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmountInput.cs",
+      "normalizedDeclarationSha256": "ad95df060f41c21f190dfd64c3aec9b48f903328c27529b82c95b86b5cf14e12",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.FaithMagicAmount`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmountFormula.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmount.cs",
+      "normalizedDeclarationSha256": "066fcd3b71d0f1470d3d02f97cfa7b281ec3ff17de372a99c46250489dbd7753",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.FaithMagicElementAmount`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmountFormula.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicElementAmount.cs",
+      "normalizedDeclarationSha256": "4d32556defa482c79cb864c079e169d1105c7b70cf71cfd91266e075e047f0fa",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.FaithMagicAmountFormula`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmountFormula.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmountFormula.cs",
+      "normalizedDeclarationSha256": "e825140ef4cb1f735cd9a10b56ed26c4ffdbebafae11cab3a6e9a81378da9da8",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.FaithValue`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicArithmetic.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithValue.cs",
+      "normalizedDeclarationSha256": "88178a5622f733b90fb041349f854ee46c6267e8869fd8838dad1962f0048c5f",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.FaithMagicArithmetic`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicArithmetic.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicArithmetic.cs",
+      "normalizedDeclarationSha256": "e967d8aeefe22ddf650e8162f6f734fbc1626153f6844ef1e9a7c319050d9dc9",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.FaithMagicFormulaRequest`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicFormula.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicFormulaRequest.cs",
+      "normalizedDeclarationSha256": "f31556d26225b5281dcd4bca8e72d28d1a916782f6b7e481309faaffd35e3e4a",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.FaithMagicEntryProfile`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicFormula.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicEntryProfile.cs",
+      "normalizedDeclarationSha256": "669b7d419aea96f40b233da25719bc7fcde91079f55028e69d236ac075e8cf1d",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.FaithMagicResolutionRequest`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicFormula.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicResolutionRequest.cs",
+      "normalizedDeclarationSha256": "e8bb6274836ca3ea1d3cadbcb12b667746200aaa85590558ab6963f01f535c2f",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.FaithMagicResolutionRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicFormula.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicResolutionRejection.cs",
+      "normalizedDeclarationSha256": "acbef39e642f01269b6c37f655813a1fe1e1e729dbe13eff904a195c180c5f06",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.FaithMagicResolutionResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicFormula.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicResolutionResult.cs",
+      "normalizedDeclarationSha256": "10b174cbfb47c9aac1e2505aedc3f66a70d88b1505564d0286b44c54e77e9d84",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.FaithMagicFormula`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicFormula.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicFormula.cs",
+      "normalizedDeclarationSha256": "295d9bc467f77774355ec297aa2006703cd476a0190a521ad1ba542b0bac062d",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.FaithMagicHpRoute`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicHpRouting.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicHpRoute.cs",
+      "normalizedDeclarationSha256": "7f334fc55a997de20807d1dc227ceb92dde7aef57a42b7c8b3b360fc24ae5995",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.FaithMagicHpResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicHpRouting.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicHpResult.cs",
+      "normalizedDeclarationSha256": "6a4fc8c6362989e785e41603b25050ba3a56a94fb9f4afd8ce3095859955da42",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.FaithMagicHpRouting`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicHpRouting.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicHpRouting.cs",
+      "normalizedDeclarationSha256": "fd0e8579323eb3b1f9bdb038227461570249f97212590f4ec78b6a68110f7c37",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.MagicZodiacSign`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicInputs.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicZodiacSign.cs",
+      "normalizedDeclarationSha256": "2536deaa0237df959459b004312bc631233a5a9aa94c46be8ca88d672b382d53",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.MagicZodiacIdentity`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicInputs.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicZodiacIdentity.cs",
+      "normalizedDeclarationSha256": "b73517d0a155da391fb82b64781b5845fe94e9823058bedc8322eca72eff5d26",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.MagicCurrentStatuses`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicInputs.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCurrentStatuses.cs",
+      "normalizedDeclarationSha256": "7c3f127cd5996e824852df39f1a735a802fab3f095d35a1b095a2d33cd520546",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.MagicCurrentSupports`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicInputs.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCurrentSupports.cs",
+      "normalizedDeclarationSha256": "239203617ff168add1a3be70572bbb9897d0268676d450740685ba998957befd",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.MagicCurrentUnit`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicInputs.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCurrentUnit.cs",
+      "normalizedDeclarationSha256": "40525cc3fc7256180002f39361fb306cd5ce287fc77a741cf60110d63c5942d0",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.FaithMagicSpell`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicInputs.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicSpell.cs",
+      "normalizedDeclarationSha256": "baa51216df1032b4ba9262af60caa93efe23ef5b1649708084445006f21bc130",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.MagicInputProjection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicInputs.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicInputProjection.cs",
+      "normalizedDeclarationSha256": "01754e4296f7de39f7004d91603d01ec5dab4a0aab9cca415dcf574886cf42a6",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.MagicInputProjectionResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicInputs.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicInputProjectionResult.cs",
+      "normalizedDeclarationSha256": "40c83db380f412b18917d17e7aed15334cd97519cd0797e5d1f6c1e1942a6249",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.FaithMagicCurrentRequest`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicInputs.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicCurrentRequest.cs",
+      "normalizedDeclarationSha256": "54924e834f07cfb7131d6f34f668bfc876b0c6625a7eb0d5a3ae366d77ebfecb",
+      "originalOrdinal": 8
+    },
+    {
+      "type": "Zodiac.Framework.FaithMagicInputs`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicInputs.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicInputs.cs",
+      "normalizedDeclarationSha256": "9a374c39f25b9d51d5ef8559b02fa389354fdf76ff899475921d6a1dbc5a259b",
+      "originalOrdinal": 9
+    },
+    {
+      "type": "Zodiac.Framework.MagicCastDefinition`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastQuery.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastDefinition.cs",
+      "normalizedDeclarationSha256": "a33f41aaf5298ca8c6e1dc5495ed573b435fb77eb538838b637384fd4a741502",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.MagicReadyCastProfile`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastQuery.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicReadyCastProfile.cs",
+      "normalizedDeclarationSha256": "fb2cb01c2e6cab4f413a76fd64a0725747885c5d7df58762d3db5d9859c03bed",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.MagicReadyCastRequest`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastQuery.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicReadyCastRequest.cs",
+      "normalizedDeclarationSha256": "9648da5ed71ebc6bd3c1b7c675a58cc512308ec6138cfb5bc45f3bb533573b86",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.PreparedMagicCast`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastQuery.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/PreparedMagicCast.cs",
+      "normalizedDeclarationSha256": "e8aa8c339e276f6cd99a5ac6513e85ff087cca8e96d1f07c66bd26bda65a6c81",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.MagicReadyCastResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastQuery.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicReadyCastResult.cs",
+      "normalizedDeclarationSha256": "28d6bd8dc8969ba89d9de1ee3d60211e104cbf054057edbf6c28bef909089592",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.MagicCastTargetProfile`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastQuery.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastTargetProfile.cs",
+      "normalizedDeclarationSha256": "7d6221610d3cf6d88b5811014f546bc8216b2904f6f395e6951f26a08aa93b60",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.MagicCastTargetResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastQuery.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastTargetResult.cs",
+      "normalizedDeclarationSha256": "f8ae9a5170c6ff2fc48ed892d59a9c4b813295a56ea6e8abbc0c4a85f429df80",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.MagicCastOutcome`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastQuery.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastOutcome.cs",
+      "normalizedDeclarationSha256": "d43621db076266709b3665f5d055cae2d40faad487fdb80ad06f9a098bb8d6bd",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.MagicCastResolutionResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastQuery.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastResolutionResult.cs",
+      "normalizedDeclarationSha256": "09c6729a0c078b4341fc1495cddd8cb0f32494236c1da826841e19dec620cc26",
+      "originalOrdinal": 8
+    },
+    {
+      "type": "Zodiac.Framework.MagicCastQuery`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastQuery.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastQuery.cs",
+      "normalizedDeclarationSha256": "5f55decc2a7f58c42d1386c8e04f88b1f5083aab63f41d50be06d16e1f6f29c6",
+      "originalOrdinal": 9
+    },
+    {
+      "type": "Zodiac.Framework.MagicChargeSetup`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCharge.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicChargeSetup.cs",
+      "normalizedDeclarationSha256": "909eb27182953a9ed991265a2627227ebab3b78d4cbf71f9cc15cfb11fb56771",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.MagicChargeStep`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCharge.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicChargeStep.cs",
+      "normalizedDeclarationSha256": "a24633500dbc94c1967cfc0de8452eb04d9dfa2fc9997dd2dd93eb66a7ab94b3",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.MagicCharge`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCharge.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCharge.cs",
+      "normalizedDeclarationSha256": "394b050a08d2152a6f9a143b8efafa2e3d833c802d6d42f57fdaf0bcce2336e9",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.MagicFormulaEvaluationMode`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicConditionalProc.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicFormulaEvaluationMode.cs",
+      "normalizedDeclarationSha256": "8b95d198c9269049235d2ea510d667802128f6a1e06d12e884f4ce85c2b3744f",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.MagicProcInvocation`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicConditionalProc.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicProcInvocation.cs",
+      "normalizedDeclarationSha256": "aee1d58f1505076877446e85eca9fa1aeafd0bbc7fde9a296ab3986200fcbf37",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.MagicProcDisposition`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicConditionalProc.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicProcDisposition.cs",
+      "normalizedDeclarationSha256": "d88e8fe3c6fbd9522dfc299dd64f371bf7ce94434c3b368bf786837014458191",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.MagicProcRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicConditionalProc.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicProcRejection.cs",
+      "normalizedDeclarationSha256": "56108c311ffa230de19b297af145dac88d9a907341646149410b5f8dd2e8c57b",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.MagicConditionalProcRequest`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicConditionalProc.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicConditionalProcRequest.cs",
+      "normalizedDeclarationSha256": "d28634d41adb411ad18d5247842da3ca9bf532ad87252b71866abd30011d0dfa",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.MagicConditionalProcProfile`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicConditionalProc.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicConditionalProcProfile.cs",
+      "normalizedDeclarationSha256": "4edcc3570e50099172ace9ed0d445060d38ebd02f5d22549aebe8a8525cd5b2d",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.MagicConditionalProcOutcome`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicConditionalProc.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicConditionalProcOutcome.cs",
+      "normalizedDeclarationSha256": "df3c34b4b4c4fb59c6752cd4b9ba0513eed124b628796595aeaf587f20e2c6eb",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.MagicConditionalProcResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicConditionalProc.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicConditionalProcResult.cs",
+      "normalizedDeclarationSha256": "88b109420d2c72ef99069d435cf1f2dc178516a228a8cd68866cbcdfa8b1d1d8",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.MagicConditionalProc`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicConditionalProc.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicConditionalProc.cs",
+      "normalizedDeclarationSha256": "4f618d128541a7d8db819df642a7a0c34cf86894ebc1806c58950d977c2f49bb",
+      "originalOrdinal": 8
+    },
+    {
+      "type": "Zodiac.Framework.MagicElement`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageElements.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicElement.cs",
+      "normalizedDeclarationSha256": "a50a24a60298dabce5239886ace9f2b02d4998f46aac80afbe247aecc1f092f0",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.MagicDamageWeather`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageElements.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageWeather.cs",
+      "normalizedDeclarationSha256": "ede919f6cd4a15a600f0dfe137a49ed40edcda31bb6faf13091362e133a51e12",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.MagicElementAffinities`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageElements.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicElementAffinities.cs",
+      "normalizedDeclarationSha256": "819467adb1b8cce52bb340cc9761ab65a9b93e8514308f5072af1e2138e91e0a",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.MagicDamageElementProfile`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageElements.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageElementProfile.cs",
+      "normalizedDeclarationSha256": "7b2cf0540344423ec1c504cb695105296298f7119d86da1b9b9b3cfb76531724",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.MagicDamageElementContext`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageElements.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageElementContext.cs",
+      "normalizedDeclarationSha256": "9772d29895abae792a9f943f8052837ddb89c453042028c032e7eed1e539fcb7",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.MagicDamageElementOutcome`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageElements.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageElementOutcome.cs",
+      "normalizedDeclarationSha256": "9ac6517e6f584e2b5b906aa5b1f5701f2f42517447fe5dd13143d4adea00aba9",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.MagicDamageElements`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageElements.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageElements.cs",
+      "normalizedDeclarationSha256": "1afd5534a8ded9770f95de85047e06de283b4a5edc5de722cebef8abad784873",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.MagicEvadeItem`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvasion.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvadeItem.cs",
+      "normalizedDeclarationSha256": "94c6c09c8a2e6e94ff4d6f410aecb3a25056eeaf0d7b28090ce4f47622c21866",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.MagicEvadeEquipmentInput`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvasion.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvadeEquipmentInput.cs",
+      "normalizedDeclarationSha256": "9e5ac815a1163f7c1b2f256b7e13fac20a7d6569bff9b32787b6ec63f948e615",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.MagicEvadeValues`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvasion.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvadeValues.cs",
+      "normalizedDeclarationSha256": "073a9f00ae8d55e9717fa4c90a828a5723eed3630014f660c58fbcae4544fee1",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.MagicEvadeItems`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvasion.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvadeItems.cs",
+      "normalizedDeclarationSha256": "4a2ce820e696de0eaf1cd23e7109d69d6a5752c6c3f1088028119c468184b9b6",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.MagicEvadeContributions`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvasion.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvadeContributions.cs",
+      "normalizedDeclarationSha256": "363e314373692f6a9221a51db053941645f42a9ce84860593144d44b9dd3f0be",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.MagicEvadeModifiers`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvasion.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvadeModifiers.cs",
+      "normalizedDeclarationSha256": "fcb62aff4107bf308f2f48c11bcc64b1ae73888ab4de33167f3c554881721a67",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.MagicEvadePrepared`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvasion.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvadePrepared.cs",
+      "normalizedDeclarationSha256": "dfdcf5ed7e939036fd88fa8c5350473db45e77225e978fe25c8ea1cd46c67053",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.MagicEvasionRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvasion.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvasionRejection.cs",
+      "normalizedDeclarationSha256": "644f94e5d51c5bf3e5d62ed411b3d8cfaee213b76451fbdee8cf8f30d44c9bce",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.MagicEvasionOutcome`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvasion.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvasionOutcome.cs",
+      "normalizedDeclarationSha256": "689ca22e97034204b89cb96718428277057392db7632baa252c70e075243d7ed",
+      "originalOrdinal": 8
+    },
+    {
+      "type": "Zodiac.Framework.MagicEvasionResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvasion.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvasionResult.cs",
+      "normalizedDeclarationSha256": "5df117a01c244f04f04e56615f2c0ac324906026656bf49e995f2dfdcda37497",
+      "originalOrdinal": 9
+    },
+    {
+      "type": "Zodiac.Framework.MagicEvasion`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvasion.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvasion.cs",
+      "normalizedDeclarationSha256": "4d6dacf0b5feb71aa6eb5bc603ca136723c97af8dab456d058321a0f4e86c59b",
+      "originalOrdinal": 10
+    },
+    {
+      "type": "Zodiac.Framework.MagicActionRestriction`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResources.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicActionRestriction.cs",
+      "normalizedDeclarationSha256": "fd70d21babe500b481f8acdc6c1147794cc557312ff4889aa3adb77b3c60cf2f",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.MagicResourceMenu`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResources.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResourceMenu.cs",
+      "normalizedDeclarationSha256": "4c020afe6b87be0a504df4e588965bc0db5deefa014a4a9dc25b9a9c3cc09f7a",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.MagicMpBlock`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResources.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicMpBlock.cs",
+      "normalizedDeclarationSha256": "61e01f34c0114392eec2311bc3973bdcabbd7683874123d4815ec32e43f0f99a",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.MagicMpActor`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResources.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicMpActor.cs",
+      "normalizedDeclarationSha256": "ffe8e6a08757aa7f3ce8f99a41b74c9d13cc1179d4c8c7b8adb0407a3a2980c6",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.MagicMpAbility`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResources.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicMpAbility.cs",
+      "normalizedDeclarationSha256": "21a74dd360cbb15bd5ef0d6a7346ba597e9d5a87072289cc23878c7c3f372d77",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.MagicMpProfile`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResources.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicMpProfile.cs",
+      "normalizedDeclarationSha256": "b0860fa82f01e110fe4eb9a4c71692d743435d52ddc0bf4820b760ce04cf941c",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.MagicMpRequest`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResources.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicMpRequest.cs",
+      "normalizedDeclarationSha256": "146c7acf77b126c55b970002227ab35429ddfe0fa647c6c2bc42420048fd950f",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.MagicMpOutcome`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResources.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicMpOutcome.cs",
+      "normalizedDeclarationSha256": "d0ba86f8df730d25182f92d1f602ed0274f158b0a113dfaa443cdc692a047ea9",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.MagicMpResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResources.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicMpResult.cs",
+      "normalizedDeclarationSha256": "2412ab4d82cc5645c5de6caf41cd755f1029b8fab4e7bbf957dc8049df96c0b4",
+      "originalOrdinal": 8
+    },
+    {
+      "type": "Zodiac.Framework.MagicResources`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResources.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResources.cs",
+      "normalizedDeclarationSha256": "1aaad9c3cc1b07d0b2b8891ed4197eaa60063c89b5479225c9eb53042c925e8d",
+      "originalOrdinal": 9
+    },
+    {
+      "type": "Zodiac.Framework.MagicResultMissKind`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultFinalization.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultMissKind.cs",
+      "normalizedDeclarationSha256": "1e77794d67ea6722f61e15c98d7b8f188d51006821677bd2f7dceba515517718",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.MagicResultTypes`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultFinalization.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultTypes.cs",
+      "normalizedDeclarationSha256": "095cf55bdbe1c05ed2cac9ee5c44beb60a96411fe85b5dce0747ba21b988ebeb",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.MagicResultEffects`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultFinalization.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultEffects.cs",
+      "normalizedDeclarationSha256": "d30a1edddf730a81fb4c015cccb589b77f321c0ba403ab05e523c6455ee7fa15",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.MagicResultFrame`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultFinalization.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultFrame.cs",
+      "normalizedDeclarationSha256": "b301709844e7db66cf8e52df9772fbfb632676a8846eef756ba59001953e9bea",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.MagicResultFinalizationProfile`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultFinalization.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultFinalizationProfile.cs",
+      "normalizedDeclarationSha256": "f74e801b461033df1dfe9ef416650679cfd9137f04120d9c52141ee64494763d",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.MagicResultFinalizationRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultFinalization.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultFinalizationRejection.cs",
+      "normalizedDeclarationSha256": "fe11e3b3aa8ed9748a80e98f50065b80e337f0c1efc59fa9483b4e593bd03f9d",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.MagicResultFinalizationResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultFinalization.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultFinalizationResult.cs",
+      "normalizedDeclarationSha256": "facec9cc659fcebd580b950dff401157e1f40cd1ac75db4016ee82e1f79f4488",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.MagicResultCompositionResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultFinalization.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultCompositionResult.cs",
+      "normalizedDeclarationSha256": "7cad37a0f8517f6b11cd324122e453b9394e8f392dfaa0dd42d4cc9cdbb0fa58",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.MagicResultFinalization`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultFinalization.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultFinalization.cs",
+      "normalizedDeclarationSha256": "b9e0af977a2147daf89038aae53905e285d74ca35549dc07774725f8331f2f46",
+      "originalOrdinal": 8
+    },
+    {
+      "type": "Zodiac.Framework.PhysicalWeaponEvasion`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/PhysicalWeaponEvasion.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/PhysicalWeaponEvasion.cs",
+      "normalizedDeclarationSha256": "4db74296a7422bd8aa2066da807f1ad4d1453261728bc07e55af58077d2d98e1",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.BoundedThrowStoneAbility`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/BoundedThrowStoneAbility.cs",
+      "normalizedDeclarationSha256": "7aa726a6c142ae679787236e99ad26b38f7babe0b38504f984db77050efbc426",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.TargetedAbilityUnitGrant`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/TargetedAbilityUnitGrant.cs",
+      "normalizedDeclarationSha256": "493e975573ca428ff1699c66146be9f251499630fd33813b304333453cd61278",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.TargetedAbilityBattleProfile`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattleProfile.cs",
+      "normalizedDeclarationSha256": "0d3d179f433b30d080a9fef44b4b09826ec99d314ea71a5f4f7158ee99e1f4fd",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.UseTargetedAbilityCommand`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/UseTargetedAbilityCommand.cs",
+      "normalizedDeclarationSha256": "938b1ad854508683e00bf96c5bb5cf2c00071cb7b2a0b6a64fd7e90ce44d4ca3",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.ThrowStoneResolvedEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/ThrowStoneResolvedEvent.cs",
+      "normalizedDeclarationSha256": "7317ee1d8538f6ca393c576621c6564cdd11749fd36713df5ecc6ca517926827",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.ThrowStoneKnockbackEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/ThrowStoneKnockbackEvent.cs",
+      "normalizedDeclarationSha256": "5eb337c5d3dabba21b9ffac177e31e48a5a4b2726e6a5269ec449c896dd64708",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.ThrowStoneTargetInterceptedEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/ThrowStoneTargetInterceptedEvent.cs",
+      "normalizedDeclarationSha256": "27cd57ec1efb42804730f176c61e11bbca60098171ecbd80598602ffc977b494",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.TargetedAbilityBattleSimulator`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattleSimulator.cs",
+      "normalizedDeclarationSha256": "4c2c2a4156c13c6caa32d734a2d926beed37a6f8d25a4702557dea1639c9bd56",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.OrdinarySpellGeometry`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellGeometry.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellGeometry.cs",
+      "normalizedDeclarationSha256": "94b6351bbed10021017abcac9e931bdd92c7286c4d1bc006da79a5567a959f63",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.OrdinarySpellTargeting`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
+      "normalizedDeclarationSha256": "e7a7f675952008be45a304777e000b5497a60ea4d0976cca6cd2242c2dd79203",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.SpellGeometryCastRequest`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellGeometryCastRequest.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellGeometryCastRequest.cs",
+      "normalizedDeclarationSha256": "7a7c87c299307d636a8b98153c3c71b3868c4ca5e0d8b553fa665455c340f5b2",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.SpellPanelQueryResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellPanelQueryResult.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellPanelQueryResult.cs",
+      "normalizedDeclarationSha256": "0e9dea2ab5c736108030c9160b54e9c8d40430a332fa1a2126bc386982bb6f2b",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.SpellTargetCastProfile`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetCastProfile.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetCastProfile.cs",
+      "normalizedDeclarationSha256": "6850be0215383888a4b51834a34451ce3c0fe382088407ca338f32c01c4e0ce3",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.SpellTargetCombatant`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetCombatant.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetCombatant.cs",
+      "normalizedDeclarationSha256": "79721fd8d6384011242b18d8a996a7fbfd474be3febfc856d0f25a25f8fcd1c5",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.SpellTargetOccupant`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetOccupant.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetOccupant.cs",
+      "normalizedDeclarationSha256": "cbdac64a906cf69072d5c8fbb822cb6a286b8dd0e6010cd3028368d9f905a282",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.SpellTargetPanels`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetPanels.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetPanels.cs",
+      "normalizedDeclarationSha256": "2bf5cc1b1d79baaa5bf490a52ef372a18e793f3d6d9f2b6de207be275ac0fc56",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.SpellTargetRosterProfile`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetRosterProfile.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetRosterProfile.cs",
+      "normalizedDeclarationSha256": "6df4a86142e8d6330176bbbe27eb150966a250b9218092d706622caf5508cdd7",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.SpellTargetSelection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetSelection.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetSelection.cs",
+      "normalizedDeclarationSha256": "6089a802c49b9f721a24025d499c7b29086e81f883d76c175e58345ca41bb4f0",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.SpellTargetSelectionResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetSelectionResult.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetSelectionResult.cs",
+      "normalizedDeclarationSha256": "feb36e41b068e9af84ac6f4de3faa0bdb9ae556b9d4378fee2f1258b2421091f",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.SpellTargetTeam`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetTeam.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetTeam.cs",
+      "normalizedDeclarationSha256": "ac9ece67fc61374d086fa1f7f91d74a6b5f2e882e5216e97c8b163ac8f439d8d",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.SpellTargetingProfile`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetingProfile.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetingProfile.cs",
+      "normalizedDeclarationSha256": "a56fcad693ac418764afbf4caba1891cf9aa722fdf907a8ebcd0973833397784",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.SpellTargetingRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetingRejection.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetingRejection.cs",
+      "normalizedDeclarationSha256": "5b9edae1aa4059eba5b836bb40dcb7d51c108154c874b8f77168b14f0c6efbd7",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.ThrowStoneFormula`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/ThrowStoneFormula.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/ThrowStoneFormula.cs",
+      "normalizedDeclarationSha256": "1fa107e4ff66ea474ffe2f0c0e0005393d483da98c120b708cc9d47f6dbe8e94",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.FacingDecisionKind`0",
+      "public": false,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/FacingDecision.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/FacingDecision.cs",
+      "normalizedDeclarationSha256": "2da51cf5749a38e136d8543f1d9a5afb95d9183896fd2b14903b86b0452c864c",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.FacingDecision`1",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/FacingDecision.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/FacingDecision.cs",
+      "normalizedDeclarationSha256": "6713a61b9612df4b67219f82b39eadd34f76becdf89bae79839355def38d7b60",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.FacingDecisionContext`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/FacingDecision.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/FacingDecisionContext.cs",
+      "normalizedDeclarationSha256": "da643e4682f4aea03628b04fdce442beddde5cfe824ad80ea8d7bd5210811705",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.FacingDecisionRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/FacingDecision.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/FacingDecisionRejection.cs",
+      "normalizedDeclarationSha256": "1449ac95164d2d2816819e4c67b023b80f832526ef05e3fd06eaa63174381866",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.FacingDecisionResult`1",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/FacingDecision.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/FacingDecisionResult.cs",
+      "normalizedDeclarationSha256": "a3f50a265f5dc1bd3d40d72528341858b5a6db1b6de4668e7bcb5f4e7b4a5ae9",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.FacingDecisionBattle`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/FacingDecision.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/FacingDecisionBattle.cs",
+      "normalizedDeclarationSha256": "8cfe8d491033afb77d824dd38e4ddb35060c966ea0807d3d29def10d6f38be5e",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.FacingMoveIntentKind`0",
+      "public": false,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/FacingMoveDecision.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/FacingMoveDecision.cs",
+      "normalizedDeclarationSha256": "587438e2d9d0b01c01a60ffccfd98f59e59580a64ea7c07733f5721a058c0933",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.FacingMoveDecision`1",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/FacingMoveDecision.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/FacingMoveDecision.cs",
+      "normalizedDeclarationSha256": "5cb65f10be064c6bc31fe9d20968ef823e4c0efd463546fde6286e6b8d1ab0b0",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.FacingMoveDecisionContext`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/FacingMoveDecision.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/FacingMoveDecisionContext.cs",
+      "normalizedDeclarationSha256": "54d5e304ddb5da30140973daf48a5142f5c8d7eda13cc904a3224e90cb86e8e8",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.FacingMoveContinuation`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/FacingMoveDecision.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/FacingMoveContinuation.cs",
+      "normalizedDeclarationSha256": "61b825c0b3d39844646ee918b90bc425f1cca0227c4a6c4c777985d1bf060cd8",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.FacingMoveRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/FacingMoveDecision.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/FacingMoveRejection.cs",
+      "normalizedDeclarationSha256": "1271c7a287172e28180abbb16f96db435823edf8a187dcf4d8a7bfaa4c91ba79",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.FacingMoveResult`1",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/FacingMoveDecision.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/FacingMoveResult.cs",
+      "normalizedDeclarationSha256": "077ca4992d19bef8e0931baadd20e3920f1c4042d42bbf439542995e5f71f641",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.FacingMoveContinueResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/FacingMoveDecision.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/FacingMoveContinueResult.cs",
+      "normalizedDeclarationSha256": "7d3436194755a320bd2e2fbb31882ca5de410d6f89dac4823db4308c8890f11e",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.FacingMoveDecisionBattle`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/FacingMoveDecision.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/FacingMoveDecisionBattle.cs",
+      "normalizedDeclarationSha256": "d6f56abb1ca31314468cba3abbd56e2aad5dbd0059b16861b4b4fcdf3534a966",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.RosterDecisionChoices`0",
+      "public": false,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/RosterDecision.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/RosterDecision.cs",
+      "normalizedDeclarationSha256": "e0d6805a4e1464f219d8c30638059c509640c4d0525d97818bfccc499bd90a43",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.RosterDecision`1",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/RosterDecision.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/RosterDecision.cs",
+      "normalizedDeclarationSha256": "f3517092d1f21fa8f2a4b260194d38a1d265af70bdf0b458cbe9b17c3ac9f2d8",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.RosterDecisionContext`0",
+      "public": true,
+      "partial": true,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/RosterDecision.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/RosterDecisionContext.cs",
+      "normalizedDeclarationSha256": "2a61cd86c618e351dcf5d2028307d54cb29f5419cf20a33b7229567583ca5c55",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.RosterDecisionResult`1",
+      "public": true,
+      "partial": true,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/RosterDecision.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/RosterDecisionResult.cs",
+      "normalizedDeclarationSha256": "acc6c93cfd90a8788beef97e3ccba9171f1dc83fa19a0b30ceffcd8be802a29c",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.RosterDecisionBattle`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/RosterDecision.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/RosterDecisionBattle.cs",
+      "normalizedDeclarationSha256": "7501df93b838ccb8494aa54701474b43cacb01a477c0aab63c12757b9cd22bdd",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.RosterMoveContinueResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/RosterMoveContinuation.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/RosterMoveContinueResult.cs",
+      "normalizedDeclarationSha256": "a3868c0a705dda8dbcc9a7c2533e2568cad116889d16bd1e80eb60e6073fcf09",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.RosterMoveDecisionBattle`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/RosterMoveContinuation.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/RosterMoveDecisionBattle.cs",
+      "normalizedDeclarationSha256": "877268e36cda5ab90031dcb8053ee142a8aaea6588471b5fde9ff47218788785",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.RosterMoveContinuation`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/RosterPlannedMove.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/RosterMoveContinuation.cs",
+      "normalizedDeclarationSha256": "cf21523872350548e2ae3851526008af49c9082a5f8a7ab763eca397c7164de6",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.RosterDecisionResult`1",
+      "public": true,
+      "partial": true,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/RosterPlannedMove.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/RosterDecisionResult.PlannedMove.cs",
+      "normalizedDeclarationSha256": "2d0d7c58bc1b01a7c4e4f9089915acd92b0b122e2cc5c32b40c014a0765fe48f",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.RosterDecisionContext`0",
+      "public": true,
+      "partial": true,
+      "fromPath": "src/Zodiac.Framework/Battle/Commands/RosterPlannedMove.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Commands/RosterDecisionContext.PlannedMove.cs",
+      "normalizedDeclarationSha256": "c7517e5926bd198723c990ac5fdf586901ec76fd79d83ab6f0774462c1e1d23a",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.BattleMovementEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/BattleMovementEvent.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/BattleMovementEvent.cs",
+      "normalizedDeclarationSha256": "45a0dc463d3bce5484c5ef9fe6197fd9eaa34c7c0dc121f90ccbaed458b8e91e",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.BattleMovementPolicy`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/BattleMovementPolicy.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/BattleMovementPolicy.cs",
+      "normalizedDeclarationSha256": "1e8ad5d8f874040488aba4c4e94c3eea4d6b7f1868d417ac176749ca628e74fb",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.BattleSimulator`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/BattleSimulator.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/BattleSimulator.cs",
+      "normalizedDeclarationSha256": "7c63865f1b33e40df8edf654edc2a7241c9b0b02aa3640a2788df688c97a4cac",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.BattleTransitionRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/BattleTransitionResult.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/BattleTransitionRejection.cs",
+      "normalizedDeclarationSha256": "b3fbdb820c895b29b82d1686f2766b59243b642f468bcc70d45fcfa1067cb068",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.BattleTransitionResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/BattleTransitionResult.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/BattleTransitionResult.cs",
+      "normalizedDeclarationSha256": "858c9d308ad945ba567906f42faadd3199ae6f332de6daed4af684f4fa4ecdde",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.ConfirmedPathOutcome`0",
+      "public": false,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/ConfirmedPathMovement.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/ConfirmedPathMovement.cs",
+      "normalizedDeclarationSha256": "2ab5cf1c806e6566e189868c48cb712027e00fcf2e4472a31c847aa123a10739",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.ConfirmedPathMovement`0",
+      "public": false,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/ConfirmedPathMovement.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/ConfirmedPathMovement.cs",
+      "normalizedDeclarationSha256": "98200baf1079109a1d2de1140cbd5a7e20cc425e9a9e0b356f16060a34fb3a4b",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.VoluntaryPathCompletedEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FacingTurnPathMovement.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/VoluntaryPathCompletedEvent.cs",
+      "normalizedDeclarationSha256": "9a2c4101c734ca693c65b364c6d64b2b940dbb4a3b4e2dee2fa536980fe44f3e",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.PathMoveResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FacingTurnPathMovement.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/PathMoveResult.cs",
+      "normalizedDeclarationSha256": "df4d83a41e93db7ffaf30bac2cd7f84f7d69c2da2456019de45dd3def2f2ba46",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.FacingTurnPathMovement`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FacingTurnPathMovement.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FacingTurnPathMovement.cs",
+      "normalizedDeclarationSha256": "fed04921af73bdc14a53ca6fde6f5e21ad25a0df1467165cc0bf3d215c6a8ffe",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.FlatGridMovementRange`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatGridMovementRange.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FlatGridMovementRange.cs",
+      "normalizedDeclarationSha256": "afb6edb0b5d8e420bea706ee8d80dd20ac5f6f868be0775e158aca0da88e817f",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.FlatOrdinaryMovementProfile`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovement.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovementProfile.cs",
+      "normalizedDeclarationSha256": "1d0f68a82a9f177bb1402266670a59c7ece3d5c4a914e107f02d0e3b01982d45",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.FlatMovementRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovement.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FlatMovementRejection.cs",
+      "normalizedDeclarationSha256": "d7dfe508b178415b166386747ab6984832b53d98778b8693fe4ce7b0df7734dc",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.FlatMovementResidual`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovement.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FlatMovementResidual.cs",
+      "normalizedDeclarationSha256": "6495fe6f057f616e7ddd9bb173d0fb5f1023fa2f9a1c7aca25e100da1250cfe2",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.FlatMovementDistanceRow`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovement.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FlatMovementDistanceRow.cs",
+      "normalizedDeclarationSha256": "d9333b64305530553137b0f9776645ec115a39dfc08fce864d9e561c194ace20",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.FlatMovementPath`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovement.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FlatMovementPath.cs",
+      "normalizedDeclarationSha256": "c8d4c9dac1f2463701e25ca1117034b4cfe9fbd898c2cfd41b5ac2c1afc5aa8b",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.FlatMovementOutcome`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovement.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FlatMovementOutcome.cs",
+      "normalizedDeclarationSha256": "dc9dba7d747575f58b07f4244a0aba67f93a62d4a55393db5ae000517cba3c8f",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.FlatMovementQueryResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovement.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FlatMovementQueryResult.cs",
+      "normalizedDeclarationSha256": "9468f6f0768a750735d7e28d6d2606eee46746da97d9c552f361209b5fa89f32",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.FlatOrdinaryMovement`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovement.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovement.cs",
+      "normalizedDeclarationSha256": "323970135a3eae4209d4761838c3bfc63a8eef97a7b32be69ec6862a8fd2d13a",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.FlatMovementKernel`0",
+      "public": false,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovement.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovement.cs",
+      "normalizedDeclarationSha256": "051104f597633238a1e7845fc9c6f5880ec1c6be668b1adfb563dac95c3de6c3",
+      "originalOrdinal": 8
+    },
+    {
+      "type": "Zodiac.Framework.FlatRosterSpriteHeight`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectory.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FlatRosterSpriteHeight.cs",
+      "normalizedDeclarationSha256": "93e709fa38e7243ba198df4f66e7c8b6f0bb018c90374d394384d169d681a417",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.FlatRosterProjectileHeights`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectory.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FlatRosterProjectileHeights.cs",
+      "normalizedDeclarationSha256": "56dc4c0e34693d292d1a894e3e92518c95630c334fbe397e1063bcbf2976da76",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.FlatRosterDirectTrajectoryRequest`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectory.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectoryRequest.cs",
+      "normalizedDeclarationSha256": "e03099189a17a57b2d307133ca28966dd30b424ad5eb218138e99d0183c7878d",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.FlatRosterDirectTrajectoryRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectory.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectoryRejection.cs",
+      "normalizedDeclarationSha256": "9aa8472a9a7e0fbeb9a39491aff56364fb57c8f7d4b60ea72274e035046d45ae",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.FlatProjectilePoint`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectory.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FlatProjectilePoint.cs",
+      "normalizedDeclarationSha256": "a25e8925d8dfb475e852be5164fa634a54efb6116f6b1217953c69cb384a0b20",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.FlatRosterDirectTrajectoryOutcome`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectory.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectoryOutcome.cs",
+      "normalizedDeclarationSha256": "1a240497e99dba5dbb00672f0666b96958149204ff294a2ed80c204b31e72084",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.FlatRosterDirectTrajectoryResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectory.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectoryResult.cs",
+      "normalizedDeclarationSha256": "89b9bcfc3e349ceb742cf749c07c632bb22e73c60da3973f6a94b3c91fd6be8f",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.FlatRosterDirectTrajectory`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectory.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectory.cs",
+      "normalizedDeclarationSha256": "7f33fd5d17fe3dbb01be0e6c407f14e6f912e5c390f4381a7798c3f1fa5e8d18",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.FlatRosterMovement`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatRosterMovement.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FlatRosterMovement.cs",
+      "normalizedDeclarationSha256": "42fa107d9f712e31c1f3e5c4a75ac6335fb659167acb1701a09ce90fcd01872c",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.RosterPathMoveResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatRosterPathMovement.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/RosterPathMoveResult.cs",
+      "normalizedDeclarationSha256": "051cd07768ee021b0841d54f291b32eed52262929941c186a56159ad00c62d5f",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.FlatRosterPathMovement`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/FlatRosterPathMovement.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/FlatRosterPathMovement.cs",
+      "normalizedDeclarationSha256": "2fc1e1043f9e6e8d589ac66974f168373bd3ea059340b3a388b3468aac4ceaff",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.MoveUnitCommand`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/MoveUnitCommand.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/MoveUnitCommand.cs",
+      "normalizedDeclarationSha256": "a6595cfb37751a58b8de3281ce11db5ab20452ccd0bdd493ade926ce47425e6e",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.OrdinaryAdjacentStepRange`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/OrdinaryAdjacentStepRange.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/OrdinaryAdjacentStepRange.cs",
+      "normalizedDeclarationSha256": "5588e5948b84f9f1fea0ca61d34347575af90b470ba3385651b2b88af2906a1a",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.TerrainAwareMovementRange`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/TerrainAwareMovementRange.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/TerrainAwareMovementRange.cs",
+      "normalizedDeclarationSha256": "25a4b2500429ddfe2491a921bc1d5aef445b78acc5dda92da5970d2d081da9ad",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.TerrainMovementCost`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/TerrainMovementCost.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/TerrainMovementCost.cs",
+      "normalizedDeclarationSha256": "d0e530016ccf600708dd9c8f57349c127bad235ff0306855110cb03b8fd15a90",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.TerrainSurfaceId`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/TerrainSurfaceId.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/TerrainSurfaceId.cs",
+      "normalizedDeclarationSha256": "173529a39d3ea3e3de4e2a8dc5b069dacf374f10331c9ddd3271ecd295a9bff8",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.UnitMovementMode`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/UnitMovementMode.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/UnitMovementMode.cs",
+      "normalizedDeclarationSha256": "1903d5d14bc05ad146100c464ddbb17dada3c0e30d13ef31c33aa643901740eb",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.UnitMovementProfile`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/UnitMovementProfile.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/UnitMovementProfile.cs",
+      "normalizedDeclarationSha256": "714e0416082fb87e16d4a4fc6b9c511e97d9c4294e79eb864110cde4d819573b",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.UnitMovementTraits`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Movement/UnitMovementTraits.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Movement/UnitMovementTraits.cs",
+      "normalizedDeclarationSha256": "0f4e1bbeb555f9e5d30df9b38cfdeb6b8e29b18b4a5cc7268632c97c0c3b4724",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.BattleFacing`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/AttackBattleSnapshot.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/BattleFacing.cs",
+      "normalizedDeclarationSha256": "30f3dea3b5ff2d61139fe9b2a1a0d028eb7576a6e59bdc3db0a8d877fe8928b0",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.AttackUnitStatus`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/AttackBattleSnapshot.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/AttackUnitStatus.cs",
+      "normalizedDeclarationSha256": "2a74ace84837537e058f73acbd24687f36e1e7714a63551bddc170d6e135e545",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.AttackUnitState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/AttackBattleSnapshot.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/AttackUnitState.cs",
+      "normalizedDeclarationSha256": "4e9115d30a3a87a32a2512c6502a40f4d8c5390a17340cdaa554a1ed6391f23e",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.AttackBattleSnapshot`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/AttackBattleSnapshot.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/AttackBattleSnapshot.cs",
+      "normalizedDeclarationSha256": "e5b26f2fb87e9850f7e7e672d5999d34c1d66b1eb775c8f4aad25e04388673dd",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.AttackUnitCommand`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/AttackBattleSnapshot.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/AttackUnitCommand.cs",
+      "normalizedDeclarationSha256": "002357e4b2c53d7ab076854ef8a498bd5caec715076d4f83a42a10f5293a9914",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.AttackCommandRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/AttackBattleSnapshot.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/AttackCommandRejection.cs",
+      "normalizedDeclarationSha256": "c73ce70f550792d433ff433009911e9b03b223f9dde01ccac1b9b9b4cd286cfe",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.AttackResultEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/AttackBattleSnapshot.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/AttackResultEvent.cs",
+      "normalizedDeclarationSha256": "cddb52bf16682c6b0b67d5d257a2f240739bda351b523626734f2489ce235d04",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.AttackTurnBattleEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/AttackBattleSnapshot.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/AttackTurnBattleEvent.cs",
+      "normalizedDeclarationSha256": "3bf2fe49d81edcc63fe27177cf4970e5ece946dbdd71c32808648fa26974a00b",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.AttackResolvedEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/AttackBattleSnapshot.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/AttackResolvedEvent.cs",
+      "normalizedDeclarationSha256": "87a0df6e174304ea6bb457e4b863edbeb173110fc2470878eaeca3195a20e418",
+      "originalOrdinal": 8
+    },
+    {
+      "type": "Zodiac.Framework.AttackHpChangedEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/AttackBattleSnapshot.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/AttackHpChangedEvent.cs",
+      "normalizedDeclarationSha256": "e3b5758d0aaf4dfceff8d647e39dc04b09dab8bd2d9549da6b0cb868d74d4a77",
+      "originalOrdinal": 9
+    },
+    {
+      "type": "Zodiac.Framework.AttackStatusChangedEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/AttackBattleSnapshot.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/AttackStatusChangedEvent.cs",
+      "normalizedDeclarationSha256": "da0305f1e12cf1f823716e0d3f684ad0f5e667c98b60b8360942710618d5d2a1",
+      "originalOrdinal": 10
+    },
+    {
+      "type": "Zodiac.Framework.AttackKnockedOutEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/AttackBattleSnapshot.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/AttackKnockedOutEvent.cs",
+      "normalizedDeclarationSha256": "0085cc8a8210a50d4c938c0d6bdb94f59ea123e75ad64ff57d5be526c07c0eb4",
+      "originalOrdinal": 11
+    },
+    {
+      "type": "Zodiac.Framework.BattleMapDefinition`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/BattleMapDefinition.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/BattleMapDefinition.cs",
+      "normalizedDeclarationSha256": "67488160727a97f9d4c4bb66147e004f489fed8c07f43d857ba13e58e77b60cd",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.BattleState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/BattleState.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/BattleState.cs",
+      "normalizedDeclarationSha256": "46d0ea336bed26fc01a2c6621c34652484e321d92abb1a466629b12e1c634c6c",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.BattleTile`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/BattleTile.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/BattleTile.cs",
+      "normalizedDeclarationSha256": "2830f3f79f58ece56bddfc2b40dc2f0df5f577f5795a7cb344ffd0576688776c",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.BattleTileMovementFlags`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/BattleTileMovementFlags.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/BattleTileMovementFlags.cs",
+      "normalizedDeclarationSha256": "7c3e2a166f50621cb18fbc6671263eee6b03fe04eb2cccdbbb04e014709e432d",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.BattleUnitId`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/BattleUnitId.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/BattleUnitId.cs",
+      "normalizedDeclarationSha256": "cf5bd4c6d2e1c613913ea3ba4bb44e2b39d24f20cf23f4faad1567dccc109671",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.BattleUnitState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/BattleUnitState.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/BattleUnitState.cs",
+      "normalizedDeclarationSha256": "67f355a4b7bc38e266cfd741b9b40471e8c4afd66e481640eb6289155699e6ae",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.TilePosition`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/TilePosition.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/TilePosition.cs",
+      "normalizedDeclarationSha256": "6104d011f18b61a213b958afbb95002e2d218815b9fd3b7fe41d89b47a8daddd",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.TileSlope`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/TileSlope.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/TileSlope.cs",
+      "normalizedDeclarationSha256": "35e6a7ac3af3effbb2eb582d2d5bc24fc933d0849f6153b64c7451f51590811d",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.TwoUnitBattleDefinition`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/TwoUnitBattleScenario.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/TwoUnitBattleDefinition.cs",
+      "normalizedDeclarationSha256": "b6092425120bfe6b73a40ee1332950c8a9876f200a9e2330f5e9dc9c6d36d1cc",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.TwoUnitBattleOutcome`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/TwoUnitBattleScenario.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/TwoUnitBattleOutcome.cs",
+      "normalizedDeclarationSha256": "d99654fbf1474d51d2ce0dd66b4912e07fcb6529eebc5b679eacc3eed5b77fff",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.TwoUnitBattleRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/TwoUnitBattleScenario.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/TwoUnitBattleRejection.cs",
+      "normalizedDeclarationSha256": "317f89f9ecce85716d04861501c806fcdfaf365ad2a7f5f58514dc18a980dad7",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.TwoUnitBattleState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/TwoUnitBattleScenario.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/TwoUnitBattleState.cs",
+      "normalizedDeclarationSha256": "c4fc61624bdf6c20ed47c665c0c91c62bd9a5f85ba65c53c76bf7dcde46690ea",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.TwoUnitBattleCommand`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/TwoUnitBattleScenario.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/TwoUnitBattleCommand.cs",
+      "normalizedDeclarationSha256": "3fc38f1ead50acd2c9aea277355a02bc2ea095d278482a3098fe975651f83ec0",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.TwoUnitBattleEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/TwoUnitBattleScenario.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/TwoUnitBattleEvent.cs",
+      "normalizedDeclarationSha256": "592f682df626d14c619777ccc2a6a6860bc36e95ac090d673e3174a35ddca368",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.TwoUnitBattleTransitionEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/TwoUnitBattleScenario.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/TwoUnitBattleTransitionEvent.cs",
+      "normalizedDeclarationSha256": "7ef762ea8d5ffa32f4aa3e2a04b0ad84cf7cc01782a5421e530df21662463ab9",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.TwoUnitBattleCompletedEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/TwoUnitBattleScenario.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/TwoUnitBattleCompletedEvent.cs",
+      "normalizedDeclarationSha256": "160b76dba53eafa17828deb84cf383e566aa7f7c61170ece818a864c7fdd5701",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.TwoUnitBattleResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/TwoUnitBattleScenario.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/TwoUnitBattleResult.cs",
+      "normalizedDeclarationSha256": "9efdb5ac2b88c33689dad3e1d17d738e060f979f24f05f7b6aee8b1b653d720c",
+      "originalOrdinal": 8
+    },
+    {
+      "type": "Zodiac.Framework.TwoUnitBattleScenario`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/State/TwoUnitBattleScenario.cs",
+      "toPath": "src/Zodiac.Framework/Battle/State/TwoUnitBattleScenario.cs",
+      "normalizedDeclarationSha256": "84b17cb6476df7ffa178095986056355526f0242f14f7cd952f2bd065368893d",
+      "originalOrdinal": 9
+    },
+    {
+      "type": "Zodiac.Framework.FacingReceiptRules`0",
+      "public": false,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/FacingReceiptRules.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/FacingReceiptRules.cs",
+      "normalizedDeclarationSha256": "da78fcd2c7a7093c77528031c6a2287e9cb992284dcdc67ed61451af163a198b",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.FacingChoice`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/FacingTurnBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/FacingChoice.cs",
+      "normalizedDeclarationSha256": "a5701f5c88de4e55fbe0fc7cf3438ca22d2a8a545e4119093fed315b8a220b61",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.FacingCompletionReceipt`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/FacingTurnBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/FacingCompletionReceipt.cs",
+      "normalizedDeclarationSha256": "f9903fc5872cef2a58961055bc4c4354c33c8ac529212e196d7d98c7f8e514bf",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.FacingTurnState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/FacingTurnBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/FacingTurnState.cs",
+      "normalizedDeclarationSha256": "c996468edebf78b7679deb50ca02f9c36306dc00b19b1965337fb69a0d03d43f",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.FacingTurnRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/FacingTurnBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/FacingTurnRejection.cs",
+      "normalizedDeclarationSha256": "3e1ef8585005091e264b3c4b6f7cd5b7fd629a088c49ade50b1ccc3335510603",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.FacingChoiceResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/FacingTurnBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/FacingChoiceResult.cs",
+      "normalizedDeclarationSha256": "1de662928faf9ea82c03cdee2019dc42318d096b283c8c9f126cef2b78c8581b",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.FacingSettledEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/FacingTurnBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/FacingSettledEvent.cs",
+      "normalizedDeclarationSha256": "2caae91c98e89fbc6e6987e1ce22c9e00248e15beff6a7cafb1d823d3d6eb985",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.FacingTurnResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/FacingTurnBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/FacingTurnResult.cs",
+      "normalizedDeclarationSha256": "7495419c255767a151e547663fd6ea6f710b1ce3dfde7a9c52551cdd9b03e046",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.FacingTurnBattle`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/FacingTurnBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/FacingTurnBattle.cs",
+      "normalizedDeclarationSha256": "b53764fd1654f9f1e4b2ae7506a8542284687cd99b4781bbebde4f6ccaacc047",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.RosterFacingTurnState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/RosterFacingTurnBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/RosterFacingTurnState.cs",
+      "normalizedDeclarationSha256": "c60dc0084d003788f363ae128feb1831a9aa79caf33f9a68e1a9547b4ef7291e",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.RosterFacingResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/RosterFacingTurnBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/RosterFacingResult.cs",
+      "normalizedDeclarationSha256": "a2be207be66e46894552f00e3c231cf2368be719ad68e0408a4aae9a62308ad9",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.RosterFacingTurnBattle`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/RosterFacingTurnBattle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/RosterFacingTurnBattle.cs",
+      "normalizedDeclarationSha256": "5b0924d8307560a116ab7a3e895ef88e242c3c0c165c8a188751b3c6b06b3276",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.TurnBattleState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/TurnBattleState.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/TurnBattleState.cs",
+      "normalizedDeclarationSha256": "23148b35b5fcaaf46bdcce5414519645fa8ce0bc606d02e988f73d58deda76c2",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.TurnBattleEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/TurnBattleState.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/TurnBattleEvent.cs",
+      "normalizedDeclarationSha256": "cf4e661d7a0827bb6d2c94702fd8c38b3c9cccf718dafd624115f33c110b7832",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.TurnBattleMovementEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/TurnBattleState.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/TurnBattleMovementEvent.cs",
+      "normalizedDeclarationSha256": "3519b40bd0306aeb6251eb49a6775ccbf6657951f2a446e4af12824ebeffe1fd",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.TurnBattleClockEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/TurnBattleState.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/TurnBattleClockEvent.cs",
+      "normalizedDeclarationSha256": "517e62cabae1436153370047f376a314812151260f273cc324de53f9f5b0743e",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.TurnBattleResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/TurnBattleState.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/TurnBattleResult.cs",
+      "normalizedDeclarationSha256": "13d81ff8276dc784d074f6b78a4822bc8e962bad4d1b3ef9dc759b72a61746ff",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.TurnBattleSimulator`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/TurnBattleState.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/TurnBattleSimulator.cs",
+      "normalizedDeclarationSha256": "2893ada7b12b1afc150943dd332bef1fd5a4be896fc76627ed134a216b0e3951",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.TurnCycle`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/TurnCycle.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/TurnCycle.cs",
+      "normalizedDeclarationSha256": "4cb3cef775916922e447448b2b148d41881510836cdae6e0ec22195d537d9334",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.TurnCommandKind`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/TurnCycleResult.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/TurnCommandKind.cs",
+      "normalizedDeclarationSha256": "4033b93700f065ceec6ef14e2b288ead884354c7464946df32474490741b6764",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.TurnCommand`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/TurnCycleResult.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/TurnCommand.cs",
+      "normalizedDeclarationSha256": "8d032a6bb950c0028058575ce83e74f508305ab0f9b32ba322b1eb0133e10f67",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.TurnCycleRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/TurnCycleResult.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/TurnCycleRejection.cs",
+      "normalizedDeclarationSha256": "3f70ab3f3ec7a6f3e28adf4ffa82ad5a15d7732a85fdcecab460b8940cd6f70c",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.TurnCycleEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/TurnCycleResult.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/TurnCycleEvent.cs",
+      "normalizedDeclarationSha256": "ec7cf936ae8a5e2f1c25a8d06cfab0e1f08b3b4c5dc0ddafec8ee40542fac204",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.TurnClockAdvancedEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/TurnCycleResult.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/TurnClockAdvancedEvent.cs",
+      "normalizedDeclarationSha256": "a09c5d1ea3fde863dcb3907aa1e69d5826d0becd256cecd5b6a8fdc71ae945b0",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.TurnReadyEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/TurnCycleResult.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/TurnReadyEvent.cs",
+      "normalizedDeclarationSha256": "aeb62a2a61487f347cef1d57c5a1cf89aaa543a2f396fcce3ed2082ec0bd0d82",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.TurnChoiceConsumedEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/TurnCycleResult.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/TurnChoiceConsumedEvent.cs",
+      "normalizedDeclarationSha256": "d293af6e137d447cc11a7af886d3ff0b3b6af1017881220a5ba95df1f08b4a25",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.TurnEndedEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/TurnCycleResult.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/TurnEndedEvent.cs",
+      "normalizedDeclarationSha256": "20400c6054fef97a782922b42e109d844552efc363665efcbd02f5123c7d8ae3",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.TurnCycleResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/TurnCycleResult.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/TurnCycleResult.cs",
+      "normalizedDeclarationSha256": "2db46a723431cf4147c544888386b3fe0ead28816d534a5c03b21fc8fe118759",
+      "originalOrdinal": 8
+    },
+    {
+      "type": "Zodiac.Framework.TurnCyclePhase`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/TurnCycleState.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/TurnCyclePhase.cs",
+      "normalizedDeclarationSha256": "f5dd60537bba837d98c1bb2ca4db6b46516e8f1c46a12eadde220e5948c1c672",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.TurnCycleState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/TurnCycleState.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/TurnCycleState.cs",
+      "normalizedDeclarationSha256": "669c3c5e9dbfcccd412ec5a67207b3e282cf6fc605cd2739031aec5d9a1d86c6",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.TurnUnitState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Battle/Turns/TurnUnitState.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Turns/TurnUnitState.cs",
+      "normalizedDeclarationSha256": "b67d0b7a2fdbaf5b92d3185abfd805fd0e441746bd7b328daa6165232f2440c4",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Campaign.WorldCheckpointJob`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Campaign/WorldCheckpoint.cs",
+      "toPath": "src/Zodiac.Framework/Campaign/WorldCheckpointJob.cs",
+      "normalizedDeclarationSha256": "d2026f2107acde12f76588f925a84072c9cf6c34e0504aef2f47d7a596e7d7f9",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Campaign.WorldCheckpointItem`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Campaign/WorldCheckpoint.cs",
+      "toPath": "src/Zodiac.Framework/Campaign/WorldCheckpointItem.cs",
+      "normalizedDeclarationSha256": "215b393121455a43b250226f6d19a048053a20bc7e1f83bdfdf597e7d6dce046",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Campaign.WorldPartyMember`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Campaign/WorldCheckpoint.cs",
+      "toPath": "src/Zodiac.Framework/Campaign/WorldPartyMember.cs",
+      "normalizedDeclarationSha256": "561bd41010075093c3086890f51bc434a757562d64981d4f49d772918cc2d985",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.Campaign.WorldItemStack`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Campaign/WorldCheckpoint.cs",
+      "toPath": "src/Zodiac.Framework/Campaign/WorldItemStack.cs",
+      "normalizedDeclarationSha256": "c0ebc1f5e25b9b4dba0a25396da9e460f4d9e1961fc7e5d25f0f3d0c9aa4f633",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.Campaign.WorldDate`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Campaign/WorldCheckpoint.cs",
+      "toPath": "src/Zodiac.Framework/Campaign/WorldDate.cs",
+      "normalizedDeclarationSha256": "c4104f6e31541189ee9b9110ad313b6cdf9ab1ace3e62928c483596d23329774",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.Campaign.WorldCheckpointDefinition`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Campaign/WorldCheckpoint.cs",
+      "toPath": "src/Zodiac.Framework/Campaign/WorldCheckpointDefinition.cs",
+      "normalizedDeclarationSha256": "77b8cceb0db87e56aaae485ab12af08e85b359cf5f32dd9b1fbcc835fba813af",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.Campaign.WorldCheckpointState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Campaign/WorldCheckpoint.cs",
+      "toPath": "src/Zodiac.Framework/Campaign/WorldCheckpointState.cs",
+      "normalizedDeclarationSha256": "9c117db6098f2ac6852a9ce1b026ad9a530336b2faee8572b704305c251ccc7a",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.Campaign.WorldTravelRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Campaign/WorldCheckpoint.cs",
+      "toPath": "src/Zodiac.Framework/Campaign/WorldTravelRejection.cs",
+      "normalizedDeclarationSha256": "034d38664fa031d37023ffb2b1aeb7aedd8112da07b067a438c8316a31e32268",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.Campaign.WorldTravelEvent`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Campaign/WorldCheckpoint.cs",
+      "toPath": "src/Zodiac.Framework/Campaign/WorldTravelEvent.cs",
+      "normalizedDeclarationSha256": "a1a8266a74d2caa3caf7dae82a5a0284c3ae1743c9e4642a9f6277a1e44a6b7e",
+      "originalOrdinal": 8
+    },
+    {
+      "type": "Zodiac.Framework.Campaign.WorldTravelResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Campaign/WorldCheckpoint.cs",
+      "toPath": "src/Zodiac.Framework/Campaign/WorldTravelResult.cs",
+      "normalizedDeclarationSha256": "7f671f7fc55a9ffd4236948a6c37bb2a3be293696eb199d7a5bae55b87335f65",
+      "originalOrdinal": 9
+    },
+    {
+      "type": "Zodiac.Framework.Campaign.WorldCheckpointSimulator`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Campaign/WorldCheckpoint.cs",
+      "toPath": "src/Zodiac.Framework/Campaign/WorldCheckpointSimulator.cs",
+      "normalizedDeclarationSha256": "c0b55e95d0a886c1d1814567940edac0b3ac6d2aaf231bd6dbf26d5cbb95d7cc",
+      "originalOrdinal": 10
+    },
+    {
+      "type": "Zodiac.Framework.Events.BannerReadyBinding`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/BannerReadySequence.cs",
+      "toPath": "src/Zodiac.Framework/Events/BannerReadyBinding.cs",
+      "normalizedDeclarationSha256": "c32d1eb033e9eef8c646edb4924daeb08880ba3a8b4cdf849c3fa98d2976da14",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.BannerReadyProgram`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/BannerReadySequence.cs",
+      "toPath": "src/Zodiac.Framework/Events/BannerReadyProgram.cs",
+      "normalizedDeclarationSha256": "c61945693ce2f4d734d5e7a2c1088446b14a73037676b08328b89e050cde2aa8",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.BannerReadyState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/BannerReadySequence.cs",
+      "toPath": "src/Zodiac.Framework/Events/BannerReadyState.cs",
+      "normalizedDeclarationSha256": "eb891c758ac89f98e773ad1afbfa14b3f49569df0fc97bf5666738eebed92bbd",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.Events.BannerReadyTraceKind`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/BannerReadySequence.cs",
+      "toPath": "src/Zodiac.Framework/Events/BannerReadyTraceKind.cs",
+      "normalizedDeclarationSha256": "c6302d0e2bc179dd4f24de7727318cac2a55914c27b6fef925c5c70ef3c2b7bb",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.Events.BannerReadyTrace`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/BannerReadySequence.cs",
+      "toPath": "src/Zodiac.Framework/Events/BannerReadyTrace.cs",
+      "normalizedDeclarationSha256": "129c0607a465553f05828b8fc8e1bdc183dda066f6939f28d1c95ac79ee99e13",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.Events.BannerReadyResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/BannerReadySequence.cs",
+      "toPath": "src/Zodiac.Framework/Events/BannerReadyResult.cs",
+      "normalizedDeclarationSha256": "40ea03479dc84ed767ae50cce61877630082e57206e90a02b3e36b1997f21431",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.Events.BannerReadyExecutor`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/BannerReadySequence.cs",
+      "toPath": "src/Zodiac.Framework/Events/BannerReadyExecutor.cs",
+      "normalizedDeclarationSha256": "8b3411d8253328c9e8036c1b2240e8a30d98bb64b0c1c38eb52d675e5c755476",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.Events.BannerSceneExecutor`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/BannerSceneExecutor.cs",
+      "toPath": "src/Zodiac.Framework/Events/BannerSceneExecutor.cs",
+      "normalizedDeclarationSha256": "c3c153d4424d3ab3ab046f137d69c61bec08c60c2f055ad36a53e2b821da4f73",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.BannerSceneRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/BannerSceneResult.cs",
+      "toPath": "src/Zodiac.Framework/Events/BannerSceneRejection.cs",
+      "normalizedDeclarationSha256": "7210c423d6d1a405dca61f25917119fcb5e836617b3a953c6036e56e9cb4e5bc",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.BannerSceneTraceKind`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/BannerSceneResult.cs",
+      "toPath": "src/Zodiac.Framework/Events/BannerSceneTraceKind.cs",
+      "normalizedDeclarationSha256": "a3eb9d0330a2b431964f6df4cc3ae7f9cd20ae29df3c52c49296f31a84744ce0",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.BannerSceneTrace`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/BannerSceneResult.cs",
+      "toPath": "src/Zodiac.Framework/Events/BannerSceneTrace.cs",
+      "normalizedDeclarationSha256": "7e58fea7b34bfb179c86c8b355721e98951bf6248c2c4f5882c5f66504644a82",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.Events.BannerSceneResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/BannerSceneResult.cs",
+      "toPath": "src/Zodiac.Framework/Events/BannerSceneResult.cs",
+      "normalizedDeclarationSha256": "e09024a5dd2d68576534a6ba892f82fbe1eda4eafee0c11bc756d182e4f2e5e3",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.Events.BattleIntroductionState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/BattleIntroduction.cs",
+      "toPath": "src/Zodiac.Framework/Events/BattleIntroductionState.cs",
+      "normalizedDeclarationSha256": "cd4307d1dab312a206569b8a830e8d5656ce772679347b6ae8a6f2482f075dd2",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.BattleIntroductionRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/BattleIntroduction.cs",
+      "toPath": "src/Zodiac.Framework/Events/BattleIntroductionRejection.cs",
+      "normalizedDeclarationSha256": "8ca55aaa50a78f39518e5274085315ca098e77091b05f966a930b4d26e0ddd79",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.BattleIntroductionResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/BattleIntroduction.cs",
+      "toPath": "src/Zodiac.Framework/Events/BattleIntroductionResult.cs",
+      "normalizedDeclarationSha256": "a2bef4c8b0a8d79277ff254309c8d81094bc23a550704f8926633e5fc10932a6",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.Events.ConditionalEventRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ConditionalEventExecutor.cs",
+      "toPath": "src/Zodiac.Framework/Events/ConditionalEventRejection.cs",
+      "normalizedDeclarationSha256": "a86f124d805d76de849006c9f32af47a6e71f6f6d34fefa97379ca7c824fc2f2",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.ConditionalEventTrace`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ConditionalEventExecutor.cs",
+      "toPath": "src/Zodiac.Framework/Events/ConditionalEventTrace.cs",
+      "normalizedDeclarationSha256": "d7f7193bb0228f57d1ce647e6c50b719ae142e750ec311193a2e052fb35f8654",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.ConditionalEventResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ConditionalEventExecutor.cs",
+      "toPath": "src/Zodiac.Framework/Events/ConditionalEventResult.cs",
+      "normalizedDeclarationSha256": "95ab48be1e67f17f79332ed1d159e357e908811e7e3f495aabad070a08437e1a",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.Events.ConditionalEventExecutor`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ConditionalEventExecutor.cs",
+      "toPath": "src/Zodiac.Framework/Events/ConditionalEventExecutor.cs",
+      "normalizedDeclarationSha256": "e8f362ca09583bff4f9920860199a68bb4660e3e3e9406a25f761e9744614fa4",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.Events.ConditionalEventOperation`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ConditionalEventProgram.cs",
+      "toPath": "src/Zodiac.Framework/Events/ConditionalEventOperation.cs",
+      "normalizedDeclarationSha256": "cc0ed0a8bfdadad672c36fe3f8c0613edea08ce47db05c21cd6edc14c4d5f376",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.ConditionalEventInstruction`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ConditionalEventProgram.cs",
+      "toPath": "src/Zodiac.Framework/Events/ConditionalEventInstruction.cs",
+      "normalizedDeclarationSha256": "0541086903440d1caf1eea0660e5d8ec2b4cb61c4b94453755c51ed00d0c2201",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.ConditionalEventProgram`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ConditionalEventProgram.cs",
+      "toPath": "src/Zodiac.Framework/Events/ConditionalEventProgram.cs",
+      "normalizedDeclarationSha256": "252b7650885dab8d2e1b6daa8ddacb12ba48900605fff97230d6292da0eb3ca9",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.Events.ConditionalEventVariables`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ConditionalEventState.cs",
+      "toPath": "src/Zodiac.Framework/Events/ConditionalEventVariables.cs",
+      "normalizedDeclarationSha256": "eba93e32c6b0586bf3c8b8cb604f7dbd542012721908dfe13ba3937214b639bc",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.ConditionalEventState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ConditionalEventState.cs",
+      "toPath": "src/Zodiac.Framework/Events/ConditionalEventState.cs",
+      "normalizedDeclarationSha256": "1774c9c7b3cdb2efefd6e21ba36517e8b63e449d3082fb26540c9e18dbeb6975",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenExecutor`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenExecutor.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenExecutor.cs",
+      "normalizedDeclarationSha256": "3195f36a0e2ded8536f1638468f03b4bd3b9f4107e75e139bd348a4ea8d918b6",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenIntroductionBinding`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenIntroduction.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenIntroductionBinding.cs",
+      "normalizedDeclarationSha256": "ff7923d1a23e1fa837d6a5d70fee97c248bda4035b47ad30918aae2726ef7b72",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenIntroductionProgram`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenIntroduction.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenIntroductionProgram.cs",
+      "normalizedDeclarationSha256": "f9f0a1ba658d6ef95c267f75e20759b7052fd981df9651e42897a9e1b0b20fba",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenIntroductionState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenIntroduction.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenIntroductionState.cs",
+      "normalizedDeclarationSha256": "4feb2c7bbafe9629f3ac16226b0a8031701cd94e3c2302d5188af0711e46b60f",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenIntroductionTraceKind`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenIntroduction.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenIntroductionTraceKind.cs",
+      "normalizedDeclarationSha256": "ac0e1008f06cef8c3a9eb29ac07fdded72d2e06f9b779a42cb1995e3622e56f9",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenIntroductionTrace`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenIntroduction.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenIntroductionTrace.cs",
+      "normalizedDeclarationSha256": "6c97a846ecd33467b0dde0dbb65d3875d1f8742acbcbdd9a7875830953a9e8d0",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenIntroductionRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenIntroduction.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenIntroductionRejection.cs",
+      "normalizedDeclarationSha256": "91ef08e8f74d0bc9394e690274668c508c840738c498803acaa3ceb653b49c1d",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenIntroductionResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenIntroduction.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenIntroductionResult.cs",
+      "normalizedDeclarationSha256": "44f0db696b5f19784d4191f72f724cdde7bb33da8bd0636b10a6bb67cda9ff5f",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenIntroductionExecutor`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenIntroduction.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenIntroductionExecutor.cs",
+      "normalizedDeclarationSha256": "2d65e3c8fadce38528da42e83c7adc6b6efe0b8fdf24c8f946652ccbbb544d52",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.Events.ReadyDarkScreenBinding`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenProgram.cs",
+      "toPath": "src/Zodiac.Framework/Events/ReadyDarkScreenBinding.cs",
+      "normalizedDeclarationSha256": "4096775b994f2d5ba6356cc9f79b52c04b3c877b6440ccedd2c70182232b008c",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.StartDarkScreen`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenProgram.cs",
+      "toPath": "src/Zodiac.Framework/Events/StartDarkScreen.cs",
+      "normalizedDeclarationSha256": "461d8d2f444a9a7266b755928427baf891d5de4ea0095a26bb42a2111d71cc3f",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenInstruction`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenProgram.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenInstruction.cs",
+      "normalizedDeclarationSha256": "b47dc8a5ad2ffe6bb91cd3a559ba2d844fbd9c0c9205e4ef7e1d0d4bc11d7cf1",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenProgram`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenProgram.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenProgram.cs",
+      "normalizedDeclarationSha256": "2c9cc5ea4a0fd1da50063efa960bdf740893c6ebc732d529e276cb1bfc7544bb",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenSceneState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenProgram.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenSceneState.cs",
+      "normalizedDeclarationSha256": "600b0c00e8263fea5b799820de9138b8659f847f3664e5224a8841b19605987a",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenResult.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenRejection.cs",
+      "normalizedDeclarationSha256": "41d87e9a30d2e4df6690c9e3ac8a344bbb36dcc3c6a35553ca48f74528af17a3",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenTraceKind`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenResult.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenTraceKind.cs",
+      "normalizedDeclarationSha256": "36d30b14c35cfa51c23a51f59d3fa1f7a4f72fab2f9621dd7e57493edb8c5aa1",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenTrace`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenResult.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenTrace.cs",
+      "normalizedDeclarationSha256": "90c160444fc2454f5dc73a16f83a2b624fb609ca3d9764db8f01ed410266a0c5",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenResult.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenResult.cs",
+      "normalizedDeclarationSha256": "d798f2447d299c8f4322ac662ace033268a1d8376e3af6298430aad7fba65027",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenParameters`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenState.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenParameters.cs",
+      "normalizedDeclarationSha256": "b52195d45507697aa1d4233ae42296e127ade150cdaa731c12fbf1cfc4b92949",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenTileDefinition`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenState.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenTileDefinition.cs",
+      "normalizedDeclarationSha256": "a4dc7e74c9734e7d83ab2442ad3ca1eeefefa71793e493fc871593234f331cef",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenDefinition`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenState.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenDefinition.cs",
+      "normalizedDeclarationSha256": "099815a67289a9306d9578bcd7780e3c000b8ca29e23ce1282762b798a39afce",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenPhase`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenState.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenPhase.cs",
+      "normalizedDeclarationSha256": "8501a9e243f036a2653e5ced717207212bc56f66ff7f376bbd2fe3d50145d5c6",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenDrawKind`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenState.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenDrawKind.cs",
+      "normalizedDeclarationSha256": "ecfa75b77887a16b25643428d7a119df380ded9c256dea6bc45dc0939a6091b0",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenTileState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenState.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenTileState.cs",
+      "normalizedDeclarationSha256": "716d1f34e377d25584c636f303aa2b7f74668d2e732570506ecd327845836ab5",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenTileDraw`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenState.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenTileDraw.cs",
+      "normalizedDeclarationSha256": "12840054cde687ceedd79f20ba99e756eaa331b198b7d2a973bc849dc7cf8691",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenDraw`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenState.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenDraw.cs",
+      "normalizedDeclarationSha256": "b016bdd6ca708ebfa133c60a4aa254c43013255b36cde929fcf6eb001f295419",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.Events.DarkScreenState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/DarkScreenState.cs",
+      "toPath": "src/Zodiac.Framework/Events/DarkScreenState.cs",
+      "normalizedDeclarationSha256": "fc4b1582e7983c1e1a7632b0acc81c8bfb27af1f6ac3a6d379a14914af980b7d",
+      "originalOrdinal": 8
+    },
+    {
+      "type": "Zodiac.Framework.Events.GeneralBannerDefinition`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/GeneralBannerState.cs",
+      "toPath": "src/Zodiac.Framework/Events/GeneralBannerDefinition.cs",
+      "normalizedDeclarationSha256": "af6b5dbc16286424a4819cd9dddc7bb643a19b9a66d531f5ca409640e185c5b7",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.GeneralBannerPhase`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/GeneralBannerState.cs",
+      "toPath": "src/Zodiac.Framework/Events/GeneralBannerPhase.cs",
+      "normalizedDeclarationSha256": "4c841e0d8ff2f5711816bb93a33cac2b063db4ed6206209f66ddae7f67cbb23e",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.GeneralBannerExitCause`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/GeneralBannerState.cs",
+      "toPath": "src/Zodiac.Framework/Events/GeneralBannerExitCause.cs",
+      "normalizedDeclarationSha256": "9d442ed2e5b5afc8833d9f69d263a1364636ccd73ee5d94d649d92e537c472cf",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.Events.BannerCancellation`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/GeneralBannerState.cs",
+      "toPath": "src/Zodiac.Framework/Events/BannerCancellation.cs",
+      "normalizedDeclarationSha256": "d3cab3e15bd62681f022d4817d3ad20fa4b18abc5246c1d35747d185220d567f",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.Events.GeneralBannerState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/GeneralBannerState.cs",
+      "toPath": "src/Zodiac.Framework/Events/GeneralBannerState.cs",
+      "normalizedDeclarationSha256": "f681d7e8d44d305d25ef9d49d6b35d3b17ab21ff51d4fcef61f9c64ddc18d89d",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.Events.BannerSceneState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/GeneralBannerState.cs",
+      "toPath": "src/Zodiac.Framework/Events/BannerSceneState.cs",
+      "normalizedDeclarationSha256": "1d2966ea750255b5c912132ed1dba9be44d61b50a75156745ff37ca6ba14c2ca",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.Events.OrderedBannerExecutor`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/OrderedBannerExecutor.cs",
+      "toPath": "src/Zodiac.Framework/Events/OrderedBannerExecutor.cs",
+      "normalizedDeclarationSha256": "f5f228bbbbd133924d67ab29d20c438e71a4377957acea9bd07560d128316402",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.PreloadedBannerBinding`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/OrderedBannerProgram.cs",
+      "toPath": "src/Zodiac.Framework/Events/PreloadedBannerBinding.cs",
+      "normalizedDeclarationSha256": "0a941ca12c8f2375f715cef95b1c23e4b577f9bd8630b3391c4c5c0ced2127ae",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.DisplayGeneralBanner`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/OrderedBannerProgram.cs",
+      "toPath": "src/Zodiac.Framework/Events/DisplayGeneralBanner.cs",
+      "normalizedDeclarationSha256": "0ae252b2005e9af4c2af177ca8433c5eef6a70cad06ea77e0fbee6f5f3186d8c",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.OrderedBannerInstruction`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/OrderedBannerProgram.cs",
+      "toPath": "src/Zodiac.Framework/Events/OrderedBannerInstruction.cs",
+      "normalizedDeclarationSha256": "64448ccc3ef85b7cd506de5f15be93aa45acfdb60a6ceab461c35ccf86f30641",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.Events.OrderedBannerProgram`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/OrderedBannerProgram.cs",
+      "toPath": "src/Zodiac.Framework/Events/OrderedBannerProgram.cs",
+      "normalizedDeclarationSha256": "25ce71b313c6a378888470c73e5dae529d509c31c8b59e99adb6f6d8336e35f8",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.Events.OrderedBannerState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/OrderedBannerProgram.cs",
+      "toPath": "src/Zodiac.Framework/Events/OrderedBannerState.cs",
+      "normalizedDeclarationSha256": "9994e373e96ecab2354035fc0a0eb14f5bd091ebf4ea9377085f6d9fd556e431",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.Events.OrderedBannerResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/OrderedBannerResult.cs",
+      "toPath": "src/Zodiac.Framework/Events/OrderedBannerResult.cs",
+      "normalizedDeclarationSha256": "4abc14a053e5f42e696a6f8e8bc4ae2a2b509b0412fa0766dc30310431905332",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.ReadyDisplayDefinition`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ReadyDisplayState.cs",
+      "toPath": "src/Zodiac.Framework/Events/ReadyDisplayDefinition.cs",
+      "normalizedDeclarationSha256": "322c42e7ca17e416305d3a165fd843a313f46613c341dbc619a46c2ac55590e8",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.DisplayReady`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ReadyDisplayState.cs",
+      "toPath": "src/Zodiac.Framework/Events/DisplayReady.cs",
+      "normalizedDeclarationSha256": "8b9e00ce88f5de1dfff2e59ebec0ab9689910ffafca9ca552394dab85bc32994",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.ReadyCancellation`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ReadyDisplayState.cs",
+      "toPath": "src/Zodiac.Framework/Events/ReadyCancellation.cs",
+      "normalizedDeclarationSha256": "77be915f8b7e478b9d5a15deedc880cd968d7b773b23f8cb7291083cc7b24922",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.Events.ReadyChildId`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ReadyDisplayState.cs",
+      "toPath": "src/Zodiac.Framework/Events/ReadyChildId.cs",
+      "normalizedDeclarationSha256": "2e648289152257b5eef015447231ecedc584336173ce4a17ccef01e82a09b1d2",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.Events.ReadyDispatcherPhase`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ReadyDisplayState.cs",
+      "toPath": "src/Zodiac.Framework/Events/ReadyDispatcherPhase.cs",
+      "normalizedDeclarationSha256": "7427eafca4f1957830124f0d1adc09ff86789c284125a967442745e679a16702",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.Events.ReadyChildPhase`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ReadyDisplayState.cs",
+      "toPath": "src/Zodiac.Framework/Events/ReadyChildPhase.cs",
+      "normalizedDeclarationSha256": "91cd04f3114864795d35f71a194c71d511915d48bbb5af1c6556fae4480432f4",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.Events.ReadyExitCause`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ReadyDisplayState.cs",
+      "toPath": "src/Zodiac.Framework/Events/ReadyExitCause.cs",
+      "normalizedDeclarationSha256": "8953c6159401f3f675c92874eab2895ba99f59617b1545bd87b045692d727863",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.Events.ReadyDisplayState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ReadyDisplayState.cs",
+      "toPath": "src/Zodiac.Framework/Events/ReadyDisplayState.cs",
+      "normalizedDeclarationSha256": "97f4906366c6713f1a3346440eb81af22b1f21a0d2794c0423e5cb14aa49cad3",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.Events.ReadySceneExecutor`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ReadySceneExecutor.cs",
+      "toPath": "src/Zodiac.Framework/Events/ReadySceneExecutor.cs",
+      "normalizedDeclarationSha256": "d869a62698cb465c63157f2731ece01d8b2aa9cd448921026cef7104aa16d846",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.ReadySceneInstruction`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ReadySceneProgram.cs",
+      "toPath": "src/Zodiac.Framework/Events/ReadySceneInstruction.cs",
+      "normalizedDeclarationSha256": "748315cd3316c7f29b0909f769a35af04fb18df4768504ab134d804a8c966057",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.ReadySceneProgram`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ReadySceneProgram.cs",
+      "toPath": "src/Zodiac.Framework/Events/ReadySceneProgram.cs",
+      "normalizedDeclarationSha256": "3fbdc4a343b07097d64214799efba7b026012d7d2a5e92cacead8a0fb1edb9c0",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.ReadySceneState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ReadySceneProgram.cs",
+      "toPath": "src/Zodiac.Framework/Events/ReadySceneState.cs",
+      "normalizedDeclarationSha256": "c645f8fc589674c247b49506252f26d75fde84262991657b05ab8299c41338a6",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.Events.ReadySceneTraceKind`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ReadySceneResult.cs",
+      "toPath": "src/Zodiac.Framework/Events/ReadySceneTraceKind.cs",
+      "normalizedDeclarationSha256": "cdce36c3a5ca2f962ea1b45f8b7d8489678743f666a2fe4db4f91f4d0e0951b0",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.ReadySceneTrace`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ReadySceneResult.cs",
+      "toPath": "src/Zodiac.Framework/Events/ReadySceneTrace.cs",
+      "normalizedDeclarationSha256": "5490154fe3ad49fbe61c5efd4f1f2190245a255c0aec0cf03a64d05e54457625",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.ReadySceneResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/ReadySceneResult.cs",
+      "toPath": "src/Zodiac.Framework/Events/ReadySceneResult.cs",
+      "normalizedDeclarationSha256": "f5ac496c0ecd68f03757bc688eb0abd1a91160f2e68a1c9621c7012a87080355",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneEventExecutor`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneEventExecutor.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneEventExecutor.cs",
+      "normalizedDeclarationSha256": "7984abea47549b81368a63117a33a5d24faf817ace1c3bb019a5f9938f8df288",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneEventInstruction`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneEventProgram.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneEventInstruction.cs",
+      "normalizedDeclarationSha256": "0aac24cee96f487e064ad6a01c8c1c1e857f17e3b62e79743991597439ad3ba1",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneEventProgram`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneEventProgram.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneEventProgram.cs",
+      "normalizedDeclarationSha256": "2287f78075f426c8cbf9c853eeb222dcc9616bbcd02ac67ad39f648358706b9e",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneEventRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneEventResult.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneEventRejection.cs",
+      "normalizedDeclarationSha256": "f30cd4fc52a59d05dbe29acc02c508429b0eb71a0cdc4419416c1dfec143c638",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneEventTraceKind`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneEventResult.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneEventTraceKind.cs",
+      "normalizedDeclarationSha256": "34246c6fcb0368481b9dbdab36950c633fe84cb709d98a47187a01abd5e235b5",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneEventTrace`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneEventResult.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneEventTrace.cs",
+      "normalizedDeclarationSha256": "e23ff9de49cda5e828cb557ac4954fbb88d50684a6b79ae23efd468600ee8b45",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneEventResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneEventResult.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneEventResult.cs",
+      "normalizedDeclarationSha256": "99cae5fef29eab79b86bc54732d937044ec137030e5058b31b5a8ed62a2ea422",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneEventSuspension`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneEventState.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneEventSuspension.cs",
+      "normalizedDeclarationSha256": "d96c3a9dc0ea689a4cfe8fcd2aa5cb42d8c38e3402f001cf2b85b183362a6a37",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneEventState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneEventState.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneEventState.cs",
+      "normalizedDeclarationSha256": "6e031c942120e3b539d4ade68bbbf330bb519065252c71e0639c6cc390b46960",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneTaskLedger`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneTaskLedger.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneTaskLedger.cs",
+      "normalizedDeclarationSha256": "e5fae1be323578d475df6cf49cececf666b315608c1bd871dd4ac833cdc1c8eb",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneTaskRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneTaskResult.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneTaskRejection.cs",
+      "normalizedDeclarationSha256": "0d7d8922bad63f2fef4730662bc7a3c5a6874b1fb3d474af87db3cc8b4ca168a",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneTaskTraceKind`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneTaskResult.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneTaskTraceKind.cs",
+      "normalizedDeclarationSha256": "308814ae5dbd39ccc287bd23819c8b3e93dcc40d70387cee3d0c374d8c213740",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneTaskTrace`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneTaskResult.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneTaskTrace.cs",
+      "normalizedDeclarationSha256": "b39c6e1a67de5b5c59e294de1ceccbef9ff2234c202476707da7b8c08b1abe4d",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneTaskResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneTaskResult.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneTaskResult.cs",
+      "normalizedDeclarationSha256": "c2c59b1d10c3b73a6b442c0cdf2f360b7402490aa2de218931d2d01e4ce1a86b",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneTaskFamily`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneTaskState.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneTaskFamily.cs",
+      "normalizedDeclarationSha256": "a2dbe385719f2f6b30969fc1dcd13a49275bba6dd4f040c7c1a231ab6196507a",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneTaskPhase`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneTaskState.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneTaskPhase.cs",
+      "normalizedDeclarationSha256": "84b823ac82c549d4ff95acbdc0cac18522c7583d2b2508610d2ce303133c2ea6",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneTaskClass`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneTaskState.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneTaskClass.cs",
+      "normalizedDeclarationSha256": "3c51b81d44ccf544016b56fc27e3a2b9404bcf6d098a222b5c2400221acf6041",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneTaskCancellationReason`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneTaskState.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneTaskCancellationReason.cs",
+      "normalizedDeclarationSha256": "9c504ae5a76ec27be475fcd85af77b8cbf986ce1a794d983846c3e3a49ee439a",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneBarrierStatus`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneTaskState.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneBarrierStatus.cs",
+      "normalizedDeclarationSha256": "c7c17899a99f3a7ed1224caa0e0062b626a978ced2b5f0d1012cf6237f13e610",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneTaskId`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneTaskState.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneTaskId.cs",
+      "normalizedDeclarationSha256": "3eb98fc878c0b5584daa616ea62dd2f43713ed6d4f3e175865684586f965632d",
+      "originalOrdinal": 5
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneTask`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneTaskState.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneTask.cs",
+      "normalizedDeclarationSha256": "e6c00568c57ef791469d887555e2189acdc2edee994925785b215fb8ac8f6957",
+      "originalOrdinal": 6
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneBarrier`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneTaskState.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneBarrier.cs",
+      "normalizedDeclarationSha256": "5a540c00332ab304bc515276c38cbb15f942ebab6e8c104d78f56a60b5c2cb0e",
+      "originalOrdinal": 7
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneTaskState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneTaskState.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneTaskState.cs",
+      "normalizedDeclarationSha256": "1ce7df1c4a483e8452fd695f6c7e9343e8d8a3d441ef2d4bbdfe73aa00a9d379",
+      "originalOrdinal": 8
+    },
+    {
+      "type": "Zodiac.Framework.Events.SceneTaskUpdate`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/SceneTaskState.cs",
+      "toPath": "src/Zodiac.Framework/Events/SceneTaskUpdate.cs",
+      "normalizedDeclarationSha256": "c58327ca74a10793883dec455aef83f76e0ab0554a883646188b3aaee07c7135",
+      "originalOrdinal": 9
+    },
+    {
+      "type": "Zodiac.Framework.Events.TimedEventRejection`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/TimedEventExecutor.cs",
+      "toPath": "src/Zodiac.Framework/Events/TimedEventRejection.cs",
+      "normalizedDeclarationSha256": "d28b3643674dfa0b5527e368936dbfd542cf46ce73a40695372930086bfc257b",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.TimedEventTraceKind`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/TimedEventExecutor.cs",
+      "toPath": "src/Zodiac.Framework/Events/TimedEventTraceKind.cs",
+      "normalizedDeclarationSha256": "30ccd67fc5208f716bd004f3a817291b3fd087fd63c258b54a935dc6aca681b5",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.TimedEventTrace`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/TimedEventExecutor.cs",
+      "toPath": "src/Zodiac.Framework/Events/TimedEventTrace.cs",
+      "normalizedDeclarationSha256": "7f5b8ac4bb2d069f1faf3c1cc5524c0f9b62d21e6fb33e4b560366d8e8e5dbf5",
+      "originalOrdinal": 2
+    },
+    {
+      "type": "Zodiac.Framework.Events.TimedEventResult`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/TimedEventExecutor.cs",
+      "toPath": "src/Zodiac.Framework/Events/TimedEventResult.cs",
+      "normalizedDeclarationSha256": "e3698fc11c43f7fb7abfe6a4f29cc197c081ff9aca3038f634037b448fd7c212",
+      "originalOrdinal": 3
+    },
+    {
+      "type": "Zodiac.Framework.Events.TimedEventExecutor`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/TimedEventExecutor.cs",
+      "toPath": "src/Zodiac.Framework/Events/TimedEventExecutor.cs",
+      "normalizedDeclarationSha256": "1c5f9ea363dfdebd383c35f23ea3e5c491e698ecfa4f53292295387badc2b804",
+      "originalOrdinal": 4
+    },
+    {
+      "type": "Zodiac.Framework.Events.TimedEventInstruction`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/TimedEventProgram.cs",
+      "toPath": "src/Zodiac.Framework/Events/TimedEventInstruction.cs",
+      "normalizedDeclarationSha256": "3da1b72849820d333971efa3121b1c4c98fcaa0e83a403f9a0e28ded194cdd5a",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Events.TimedEventProgram`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/TimedEventProgram.cs",
+      "toPath": "src/Zodiac.Framework/Events/TimedEventProgram.cs",
+      "normalizedDeclarationSha256": "16be93e2b748a0a916875c3d332a5db324968b1ca51337f7011af8baf2081a17",
+      "originalOrdinal": 1
+    },
+    {
+      "type": "Zodiac.Framework.Events.TimedEventState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Events/TimedEventState.cs",
+      "toPath": "src/Zodiac.Framework/Events/TimedEventState.cs",
+      "normalizedDeclarationSha256": "c03a403eb56321aff56cff0c10f2970dc873d077adf27ed3358f956881f6b06a",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Random.RandomState`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Random/RandomStateGenerator.cs",
+      "toPath": "src/Zodiac.Framework/Random/RandomState.cs",
+      "normalizedDeclarationSha256": "2e3cf685ad89d617f6ef03d1da3bb533dcb6e68dfc06f5d9fe5552ea85f7b197",
+      "originalOrdinal": 0
+    },
+    {
+      "type": "Zodiac.Framework.Random.RandomStateGenerator`0",
+      "public": true,
+      "partial": false,
+      "fromPath": "src/Zodiac.Framework/Random/RandomStateGenerator.cs",
+      "toPath": "src/Zodiac.Framework/Random/RandomStateGenerator.cs",
+      "normalizedDeclarationSha256": "4f295da45cef867a348f1c3a53ca90df82b868fed63b20b0d3f3eb9cf52aa43a",
+      "originalOrdinal": 1
+    }
+  ],
+  "activeLinkUpdates": [
+    {
+      "path": "docs/behavior/dark-screen-introduction.md",
+      "old": "../../src/Zodiac.Framework/Events/DarkScreenIntroduction.cs",
+      "new": "../../src/Zodiac.Framework/Events/DarkScreenIntroductionExecutor.cs"
+    }
+  ],
+  "reports": "scratch/framework-public-type-layout/",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "sourceRulesStudiedForThisChange": false,
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuild": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "managedPassed": 4670,
+    "managedReports": [
+      {
+        "path": "scratch/framework-public-type-layout/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_21_28_19_net10.0.trx",
+        "passed": 24
+      },
+      {
+        "path": "scratch/framework-public-type-layout/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_21_28_20_net10.0.trx",
+        "passed": 206
+      },
+      {
+        "path": "scratch/framework-public-type-layout/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_21_28_20_net10.0[1].trx",
+        "passed": 1217
+      },
+      {
+        "path": "scratch/framework-public-type-layout/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_21_28_20_net10.0[2].trx",
+        "passed": 838
+      },
+      {
+        "path": "scratch/framework-public-type-layout/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_21_28_20_net10.0[3].trx",
+        "passed": 428
+      },
+      {
+        "path": "scratch/framework-public-type-layout/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_21_28_21_net10.0.trx",
+        "passed": 328
+      },
+      {
+        "path": "scratch/framework-public-type-layout/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_21_28_21_net10.0[1].trx",
+        "passed": 1629
+      }
+    ],
+    "pythonPassed": 695,
+    "preservation": {
+      "managedBaseRevision": "29645899a265760dbf184a93fc1f764aa26d5440",
+      "originalNamespaceFiles": 110,
+      "currentNamespaceFiles": 377,
+      "publicDeclarations": 375,
+      "uniquePublicTypes": 373,
+      "internalDeclarations": 8,
+      "all383DeclarationsAndBodiesIdentical": true,
+      "commentsAttributesAndImportsIdentical": true,
+      "namespacesAndVisibilityUnchanged": true,
+      "publicTypesPerFile": 1,
+      "partialPartsPreserved": 2,
+      "folderBuilds": 9,
+      "ownerFiles": [
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AbilityToggles.cs",
+          "gitBlob": "16320578ffa448783221b68c4ef5c18e245b9f35",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AiBehaviorToggles.cs",
+          "gitBlob": "c67c4b154c471764fa11a6761710d2e9c9694a65",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AttributeToggles.cs",
+          "gitBlob": "1182777f8a0c3ca219afa23d0803c52af4ca9f8e",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/EquipmentSlot.cs",
+          "gitBlob": "091006b2d60ca558c303571a4eb779340be53629",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/StatusToggles.cs",
+          "gitBlob": "5136db2af350d7e3735e47fb92b905019316fd6f",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Item/ShopAvailabilityToggles.cs",
+          "gitBlob": "fd543d84dc8eb7860d710cf1c75499eb55306e14",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/EquipmentOptionToggles.cs",
+          "gitBlob": "694e44bbdc3e62103b64ff794addec1ad977d142",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/EffectBehaviorToggles.cs",
+          "gitBlob": "9792cdea7da1d92e9ec25cf1e97d3e879c24e8ae",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/StatusSelectionToggles.cs",
+          "gitBlob": "a0b2e2a8ddcb53a4bfd7416609927399b8339294",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/JobStats.cs",
+          "gitBlob": "bd617c374309aca1529a167a8d31a488160086cc",
+          "unchanged": true
+        }
+      ],
+      "testsAndBehaviorFixturesUnchanged": true,
+      "buildAndDependenciesUnchanged": true,
+      "otherProjectsUnchanged": true
+    },
+    "coverageEntriesChecked": 58,
+    "coverageRowsUpdated": 12,
+    "localLinksChecked": 2154,
+    "newTests": false,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "uiReviewed": false
+  }
+}

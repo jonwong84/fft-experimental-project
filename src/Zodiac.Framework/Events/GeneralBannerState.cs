@@ -1,18 +1,5 @@
 namespace Zodiac.Framework.Events;
 
-/// <summary>Authored post-readiness definition, validated by BannerSceneExecutor.AttachBanner.</summary>
-public sealed record GeneralBannerDefinition(AssetId Id, int Condition, int HoldFrames)
-{
-    public const int SupportedCondition = 8;
-    public const int RevealIterations = 20;
-    public const int HideIterations = 10;
-    public const int MaxHoldFrames = byte.MaxValue;
-}
-
-public enum GeneralBannerPhase { Revealing, Holding, Hiding, ExitYield, Completed, Cancelled }
-public enum GeneralBannerExitCause { Natural, CircleSkipped, OwnerAcknowledgedCancellation }
-public sealed record BannerCancellation(SceneTaskId TaskId, long ExpectedRevision);
-
 /// <summary>One ready banner's immutable logical lifetime. No quad, loading, input-device or renderer state.</summary>
 public sealed class GeneralBannerState
 {
@@ -74,18 +61,5 @@ public sealed class GeneralBannerState
             }
         }
         return new(Definition, TaskId, OwnerId, StartTick, tick, phase, reveal, hold, hide, cause);
-    }
-}
-
-/// <summary>Retains one effect, including its terminal record, across event interpreter lifetimes.</summary>
-public sealed class BannerSceneState
-{
-    public SceneEventState Event { get; }
-    public GeneralBannerState? Banner { get; }
-    internal BannerSceneState(SceneEventState sceneEvent, GeneralBannerState? banner) => (Event, Banner) = (sceneEvent, banner);
-    public static BannerSceneState Create(SceneEventState sceneEvent)
-    {
-        ArgumentNullException.ThrowIfNull(sceneEvent);
-        return new(sceneEvent, null);
     }
 }

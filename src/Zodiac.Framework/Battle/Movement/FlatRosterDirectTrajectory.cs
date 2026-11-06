@@ -3,33 +3,6 @@ using System.Numerics;
 
 namespace Zodiac.Framework;
 
-public sealed record FlatRosterSpriteHeight(BattleUnitId UnitId, byte Height);
-/// <summary>Copied actual sprite-sheet graphic heights. Missing metadata is not a zero-height sprite.</summary>
-public sealed class FlatRosterProjectileHeights
-{
-    public ImmutableDictionary<BattleUnitId, byte> Units { get; }
-    public FlatRosterProjectileHeights(IEnumerable<FlatRosterSpriteHeight> units)
-    {
-        ArgumentNullException.ThrowIfNull(units); var copy = ImmutableDictionary.CreateBuilder<BattleUnitId, byte>();
-        foreach (var unit in units)
-            if (unit is null || string.IsNullOrWhiteSpace(unit.UnitId.Value) || !copy.TryAdd(unit.UnitId, unit.Height))
-                throw new ArgumentException("Specify distinct units with actual byte sprite heights.", nameof(units));
-        Units = copy.ToImmutable();
-    }
-}
-public sealed record FlatRosterDirectTrajectoryRequest(BattleUnitId ActorId, BattleUnitId TargetId, TilePosition Origin);
-public enum FlatRosterDirectTrajectoryRejection { None, UnknownActor, UnknownTarget, InvalidTarget, UnsupportedProfile,
-    MissingSpriteHeights, InvalidOrigin, OutOfRange }
-public readonly record struct FlatProjectilePoint(int X, int Y, int Z);
-public sealed record FlatRosterDirectTrajectoryOutcome(bool Clear, BattleUnitId? BlockingUnitId, int? BlockingSample,
-    int TotalSamples, int DistanceQ12, FlatProjectilePoint? BlockingPoint)
-{
-    /// <summary>Live to-target tracing returns the intended target when clear, or the first hit unit when blocked.</summary>
-    public BattleUnitId? ResolveTarget(BattleUnitId intendedTarget) => Clear ? intendedTarget : BlockingUnitId;
-}
-public sealed record FlatRosterDirectTrajectoryResult(bool Accepted, FlatRosterDirectTrajectoryRejection Rejection,
-    FlatRosterDirectTrajectoryOutcome? Outcome);
-
 /// <summary>Exact sampled direct paths on the bounded living flat roster. A supplied free origin is geometry, not movement permission.</summary>
 /// <remarks>ZOD-306/307; source 11464943bbdbd2a0af022d90cb7f10455cf911df. No RNG, effects, file I/O or PS1 runtime dependency.</remarks>
 public static class FlatRosterDirectTrajectory

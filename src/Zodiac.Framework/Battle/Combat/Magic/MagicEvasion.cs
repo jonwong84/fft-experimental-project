@@ -2,54 +2,6 @@ using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework;
 
-/// <summary>A resolved slot's primary-type qualification and byte fields, not a live equipment lookup.</summary>
-public readonly record struct MagicEvadeItem(byte ItemId, byte MagicEvade, bool HasRequiredType);
-
-public sealed record MagicEvadeEquipmentInput(bool TargetIsMonster, MagicEvadeItem Accessory,
-    MagicEvadeItem RightShield, MagicEvadeItem LeftShield,
-    byte RightWeaponItemId = byte.MaxValue, byte LeftWeaponItemId = byte.MaxValue);
-
-public readonly record struct MagicEvadeValues(byte Accessory, byte RightHand, byte LeftHand)
-{
-    public byte Class => 0;
-}
-
-public readonly record struct MagicEvadeItems(byte Accessory, byte RightHand, byte LeftHand);
-
-/// <summary>Immutable magic contributions and independent source blocking-item labels.</summary>
-public sealed record MagicEvadeContributions
-{
-    public MagicEvadeValues Evades { get; }
-    public MagicEvadeItems Items { get; }
-    internal MagicEvadeContributions(MagicEvadeValues evades, MagicEvadeItems items)
-    { Evades = evades; Items = items; }
-}
-
-/// <summary>Explicit magic status facts; TargetActionUnrestricted is the already-classified source restriction.</summary>
-public sealed record MagicEvadeModifiers(bool TargetActionUnrestricted, bool AttackerTransparent = false,
-    bool TargetAbandon = false, bool TargetDontAct = false, bool TargetSleep = false, bool TargetStop = false,
-    bool TargetConfusion = false, bool TargetCharging = false, bool TargetPerforming = false, bool TargetDefending = false);
-
-/// <summary>Admitted magic preparation. Base hit can only be 100, 50 or 25; class evade remains zero.</summary>
-public sealed record MagicEvadePrepared
-{
-    public byte BaseHit { get; }
-    public MagicEvadeValues Evades { get; }
-    public MagicEvadeItems Items { get; }
-    public bool AbandonTriggered { get; }
-    internal MagicEvadePrepared(byte baseHit, MagicEvadeValues evades, MagicEvadeItems items, bool abandonTriggered)
-    { BaseHit = baseHit; Evades = evades; Items = items; AbandonTriggered = abandonTriggered; }
-}
-
-public enum MagicEvasionRejection { None, RandomDrawCountExhausted }
-
-/// <summary>Fresh result facts plus an Abandon diagnostic; ItemLost is a source blocking label, not an equipment mutation.</summary>
-public sealed record MagicEvasionOutcome(bool Hit, ushort Accuracy, MagicResultMissKind Miss,
-    byte ItemLost, bool AbandonTriggered);
-
-public sealed record MagicEvasionResult(bool Accepted, MagicEvasionRejection Rejection,
-    MagicEvasionOutcome? Outcome, RandomState RngState);
-
 /// <summary>Magic-only evasion rules; source 11464943bbdbd2a0af022d90cb7f10455cf911df.</summary>
 public static class MagicEvasion
 {

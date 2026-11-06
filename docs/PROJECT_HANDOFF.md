@@ -27,11 +27,12 @@ through spell definitions, resource calculation and recorded cast/resource cost.
 Original packed readers retain byte fields; source-domain behavior is preserved.
 This owner-requested representation adjustment leaves ZOD-364 next.
 
-[Targeting public type files](development/targeting-file-layout.md) now separate
-all 14 public targeting types into matching files, with identical declarations,
-visibility and algorithm text. New public types normally receive matching files;
-small implementation-only helpers may stay with their owner. Other grouped files
-remain separate focused cleanup work. Namespaces and ZOD-364's scope are unchanged.
+[Framework public type files](development/framework-public-type-files.md) now give
+all namespace-level public declarations matching files across Framework. The two
+existing partial types keep `.PlannedMove.cs` parts; small internal helpers stay
+with their owners. All 383 declarations, bodies, attributes, comments, imports and
+namespaces are preserved. Nine folder batches compiled cleanly. AI, Content, host,
+owner drafts/JobStats and ZOD-364's scope are unchanged.
 
 [Magic evasion](behavior/magic-evasion.md) records completed ZOD-342, ZOD-344, ZOD-345, ZOD-346, ZOD-347
 from clean source `11464943bbdbd2a0af022d90cb7f10455cf911df` (13 files/21 functions).
@@ -268,19 +269,20 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: the owner-approved targeting file split passes locked restore,
+- Validation: the Framework public-type file pass passes locked restore,
   a zero-warning/error Release build and **4,670 .NET cases** (1,629 Framework,
   1,217 AI,838 Content,328 CLI,206 AssetTool,428 Client,24 Engine). All
-  **695 Python tests** pass. All 14 targeting declarations and the retained
-  algorithm text match the prior baseline after line-ending normalization.
-  No tests/fixtures were changed or added. Coverage, local links and preservation
-  checks pass; seven TRX reports/logs are under ignored
-  `scratch/targeting-file-layout/`.
-  MP costs retain the owner's nonnegative-int adjustment and its existing tests.
-  Original import readers, behavior fixtures, unrelated production code, content,
-  AI and host are unchanged. All nine owner drafts, AbilityToggles and JobStats
-  are unchanged. No project, lock, dependency, command, scheduling or magic AI
-  activation changes. ZOD-364 remains next.
+  **695 Python tests** pass. Nine sequential feature-folder builds and an SDK
+  Roslyn comparison confirm all 383 namespace-level declarations/bodies/comments/
+  attributes/imports unchanged. The 373 distinct public types use matching files;
+  two partial types retain separate parts, and small internal helpers remain.
+  No tests or fixtures were changed or added. Coverage, 2,154 local links and
+  preservation checks pass. Seven TRX reports/logs are under ignored
+  `scratch/framework-public-type-layout/`.
+  Original imports, content, AI, host, all nine owner drafts, AbilityToggles and
+  JobStats are unchanged. No project, lock, dependency, command, scheduling or
+  magic AI activation changes. MP costs retain the owner's nonnegative-int
+  adjustment. ZOD-364 remains next; other-project organization stays separate.
   Prepared Dash/Stone import checks remain at ZOD-329; their code/input is unchanged.
   Python uses repository-pinned Pillow12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.

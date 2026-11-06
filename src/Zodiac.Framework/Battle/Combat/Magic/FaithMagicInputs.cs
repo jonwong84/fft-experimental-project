@@ -2,41 +2,6 @@ using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework;
 
-public enum MagicZodiacSign
-{
-    Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces, Serpentarius
-}
-
-/// <summary>Independent source identity flags; do not normalize the male/female pair.</summary>
-public readonly record struct MagicZodiacIdentity(MagicZodiacSign Sign, bool IsMale = false,
-    bool IsFemale = false, bool IsMonster = false);
-
-public sealed record MagicCurrentStatuses(bool Faith = false, bool Innocent = false, bool Shell = false,
-    bool Chicken = false, bool Frog = false, bool Undead = false, bool Dead = false, bool Petrify = false,
-    bool Wall = false, bool Oil = false, bool Float = false, bool Transparent = false, bool DontAct = false,
-    bool Sleep = false, bool Stop = false, bool Confusion = false, bool Charging = false,
-    bool Performing = false, bool Defending = false, bool Silence = false);
-
-public sealed record MagicCurrentSupports(bool MagicAttackUp = false, bool MagicDefenseUp = false,
-    bool Abandon = false, bool HalfMp = false, bool ShortCharge = false, bool NonCharge = false);
-
-/// <summary>Immutable current input capture, not a mutable battle unit or base-stat/equipment refresh implementation.</summary>
-public sealed record MagicCurrentUnit(BattleUnitId UnitId, byte MagicAttack, byte Faith, MagicZodiacIdentity Identity,
-    MagicCurrentStatuses Statuses, MagicCurrentSupports Supports, MagicElement Strengthens = MagicElement.None,
-    MagicElementAffinities Affinities = default, MagicEvadeEquipmentInput? Equipment = null,
-    bool ActionUnrestricted = true, bool HasRider = false, ushort Mp = 0, bool IsMime = false);
-
-public sealed record FaithMagicSpell(FaithMagicAmountKind Kind, byte Power, MagicElement Elements, bool SecondaryEvadeable);
-
-public sealed record MagicInputProjection(FaithMagicAmountInput Amount, MagicDamageElementContext? Elements,
-    bool TargetIsUndead, MagicEvadeEquipmentInput? Equipment, MagicEvadeModifiers? EvadeModifiers);
-
-public sealed record MagicInputProjectionResult(bool Accepted, MagicInputProjection? Outcome);
-
-public sealed record FaithMagicCurrentRequest(MagicCurrentUnit Caster, MagicCurrentUnit Target, FaithMagicSpell Spell,
-    MagicDamageWeather Weather, MagicFormulaEvaluationMode Mode, MagicResultFinalizationProfile? Profile,
-    FaithMagicEntryProfile? Entry);
-
 /// <summary>Current-input projection for the shared magic owner, source 11464943bbdbd2a0af022d90cb7f10455cf911df.</summary>
 public static class FaithMagicInputs
 {

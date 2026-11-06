@@ -35,12 +35,14 @@ Content supplies immutable definitions and prepared data through outer adapters.
 Public classes, records, structs and enums should normally have their own
 matching `.cs` file within the relevant feature folder. Small implementation-only
 helpers may remain with their owner when that improves readability. Apply this
-layout to new code and focused cleanup; existing grouped files can be migrated
-separately. The [targeting split](../../docs/development/targeting-file-layout.md)
-preserves all declarations and the existing `Zodiac.Framework` namespace.
+layout to new code and focused cleanup. Framework's namespace-level public types
+now follow it; existing partial types retain clearly named `.PlannedMove.cs`
+parts. The [Framework pass](../../docs/development/framework-public-type-files.md)
+extends the earlier [targeting split](../../docs/development/targeting-file-layout.md)
+without changing declarations or namespaces.
 
 These folders describe existing ownership; they introduce no dependency or new
-abstraction. Files containing closely related records and rules stay together.
+abstraction. Small internal helpers may remain with their related public owner.
 Battle namespaces remain `Zodiac.Framework`; Events, Campaign and Random retain
 their existing namespaces. SDK recursive compilation needs no project-file edits.
 Tests mirror these folders; reusable fixture runners stay in `Fixtures/` and the
@@ -49,4 +51,4 @@ cross-suite `RosterCombatTestData` helper lives under `Battle/Combat/`.
 See the [move and validation note](../../docs/development/framework-source-layout.md).
 Current documentation and coverage follow this layout. Historical evidence JSON and
 archived planning retain paths at their original managed revisions. Namespace
-changes, class splitting and gameplay expansion are separate work.
+changes and gameplay expansion are separate work.

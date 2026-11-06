@@ -2,15 +2,6 @@ using System.Collections.ObjectModel;
 
 namespace Zodiac.Framework;
 
-public enum BattleTransitionRejection
-{
-    None,
-    UnknownUnit,
-    UnitHasAlreadyMoved,
-    DestinationOccupied,
-    DestinationNotReachable,
-}
-
 /// <summary>The result of applying one command to an immutable battle snapshot.</summary>
 public sealed class BattleTransitionResult
 {

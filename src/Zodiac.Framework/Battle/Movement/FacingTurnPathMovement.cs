@@ -2,15 +2,6 @@ using System.Collections.Immutable;
 
 namespace Zodiac.Framework;
 
-/// <summary>A confirmed voluntary walk; final facing is carried by Path, even when unchanged.</summary>
-public sealed record VoluntaryPathCompletedEvent(BattleUnitId ActorId, FlatMovementPath Path,
-    BattleFacing PreviousFacing) : AttackResultEvent;
-
-/// <summary>Rejections retain the identical wrapper, empty events and no partial path.</summary>
-public sealed record PathMoveResult(bool Accepted, FacingTurnRejection FacingRejection,
-    TurnCycleRejection TurnRejection, FlatMovementRejection PathRejection, FacingTurnState State,
-    ImmutableArray<AttackResultEvent> Events, FlatMovementPath? Path);
-
 /// <summary>Additive confirmed-path movement over the existing facing state and receipt lifecycle.</summary>
 /// <remarks>
 /// Source: decomp 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-122/123.

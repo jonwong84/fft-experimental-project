@@ -1,7 +1,5 @@
 namespace Zodiac.Framework.Events;
 
-public enum SceneEventSuspension { Ready, Frames, Barrier }
-
 /// <summary>One immutable VM continuation and its scene-owned task ledger; the scene clock is authoritative.</summary>
 public sealed class SceneEventState
 {

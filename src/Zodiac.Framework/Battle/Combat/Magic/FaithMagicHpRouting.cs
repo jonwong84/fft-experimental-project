@@ -1,11 +1,5 @@
 namespace Zodiac.Framework;
 
-public enum FaithMagicHpRoute { Nullified, Damage, Healing }
-
-/// <summary>Raw signed result fields and a deferred status-mask operation; no caps, procs or HP changes.</summary>
-public sealed record FaithMagicHpResult(FaithMagicHpRoute Route, short HpDamage, short HpHealing,
-    bool ClearFirstCanceledStatusByte);
-
 /// <summary>Elemental absorption after damage Faith, or undead reversal after healing Faith.</summary>
 /// <remarks>ZOD-339; source 11464943bbdbd2a0af022d90cb7f10455cf911df. Not complete action-result finalization.</remarks>
 public static class FaithMagicHpRouting

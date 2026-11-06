@@ -1,21 +1,5 @@
 namespace Zodiac.Framework;
 
-public enum MagicActionRestriction { None, CannotAct, DeepWater }
-public enum MagicResourceMenu { Default, Monster, Charge, Other }
-public enum MagicMpBlock { None = 0, Silenced = 2, NotEnoughMp = 3, Frog = 5, CannotAct = 7, DeepWater = 8 }
-
-public sealed record MagicMpActor(ushort Mp, bool HalfMp, bool IsMime, bool Frog, bool Silence,
-    bool DontAct, MagicActionRestriction Restriction);
-public sealed record MagicMpAbility(short OriginalAbilityId, int BaseCost, MagicResourceMenu Menu, bool AffectedBySilence);
-public sealed record MagicMpProfile(bool ActionStateBookkeepingKnown = false);
-public sealed record MagicMpRequest(MagicMpActor Actor, MagicMpAbility Ability, MagicFormulaEvaluationMode Mode,
-    MagicMpProfile? Profile);
-public sealed record MagicMpOutcome(MagicMpBlock Block, int RecordedCost, ushort CandidateMp, bool SubtractionPerformed)
-{
-    public bool Usable => Block == MagicMpBlock.None;
-}
-public sealed record MagicMpResult(bool Accepted, MagicMpOutcome? Outcome);
-
 /// <summary>Pure resource work after certified action-state bookkeeping; no MP/status/turn publication.</summary>
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; original ability ranges are compatibility branches, not managed catalog limits.</remarks>
 public static class MagicResources

@@ -2,22 +2,6 @@ using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Events;
 
-public enum SceneEventRejection
-{
-    None, InvalidInstructionBudget, AlreadyExited, AwaitingTick, NotWaiting,
-    InstructionBudgetExceeded, ArithmeticDomainExceeded, TaskLedgerRejected,
-}
-
-public enum SceneEventTraceKind
-{
-    Instruction, ZeroWait, FrameWaitEntered, FrameWaitTick, FrameWaitResumed,
-    BarrierWaitEntered, BarrierWaitResumed, TaskLedger,
-}
-
-public sealed record SceneEventTrace(SceneEventTraceKind Kind, long Tick, int Offset,
-    ConditionalEventVariables Before, ConditionalEventVariables After, int NextOffset,
-    int RemainingWaitTicks, bool Exited, ConditionalEventOperation? Operation = null, SceneTaskTrace? TaskTrace = null);
-
 public sealed class SceneEventResult
 {
     public SceneEventState State { get; }

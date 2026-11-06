@@ -2,40 +2,6 @@ using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Events;
 
-public enum TimedEventRejection
-{
-    None, AlreadyExited, AwaitingTick, NotWaiting, ArithmeticDomainExceeded,
-    InstructionBudgetExceeded, InvalidInstructionBudget, InvalidTickCount, UnusedTicks,
-}
-
-public enum TimedEventTraceKind { Instruction, ZeroWait, WaitEntered, WaitTick, WaitResumed }
-
-public sealed record TimedEventTrace(TimedEventTraceKind Kind, int Offset, ConditionalEventOperation? Operation,
-    ConditionalEventVariables Before, ConditionalEventVariables After, int NextOffset,
-    int RemainingWaitTicks, long Tick, bool Exited);
-
-public sealed class TimedEventResult
-{
-    public bool Accepted => Rejection == TimedEventRejection.None;
-    public TimedEventRejection Rejection { get; }
-    public string? Diagnostic { get; }
-    public int? FailureOffset { get; }
-    public TimedEventState State { get; }
-    public ImmutableArray<TimedEventTrace> Trace { get; }
-    public int InstructionsExecuted { get; }
-    public int TicksConsumed { get; }
-
-    private TimedEventResult(TimedEventState state, ImmutableArray<TimedEventTrace> trace,
-        int instructionsExecuted, int ticksConsumed, TimedEventRejection rejection, string? diagnostic, int? failureOffset)
-        => (State, Trace, InstructionsExecuted, TicksConsumed, Rejection, Diagnostic, FailureOffset) =
-            (state, trace, instructionsExecuted, ticksConsumed, rejection, diagnostic, failureOffset);
-
-    internal static TimedEventResult Accept(TimedEventState state, ImmutableArray<TimedEventTrace> trace, int instructions, int ticks)
-        => new(state, trace, instructions, ticks, TimedEventRejection.None, null, null);
-    internal static TimedEventResult Reject(TimedEventState state, TimedEventRejection reason, string message, int offset)
-        => new(state, [], 0, 0, reason, message, offset);
-}
-
 /// <summary>Pure timed proof. Every call commits all requested work or returns its exact input and an empty trace.</summary>
 public static class TimedEventExecutor
 {

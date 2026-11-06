@@ -2,53 +2,6 @@ using System.Collections.Immutable;
 
 namespace Zodiac.Framework;
 
-/// <summary>Typed facing intent. Choosing an enemy explicitly certifies its opposing role in this closed profile.</summary>
-public abstract record FacingChoice
-{
-    private FacingChoice() { }
-    public sealed record Fixed(BattleFacing Facing) : FacingChoice;
-    public sealed record KeepCurrent : FacingChoice;
-    public sealed record ChooseClosedEnemy(BattleUnitId EnemyId) : FacingChoice;
-}
-
-/// <summary>Opaque in-memory authorization for a fully settled, automatically ended turn; not a save token.</summary>
-public sealed class FacingCompletionReceipt
-{
-    public BattleUnitId ActorId { get; }
-    public ulong Revision { get; }
-    internal AttackBattleSnapshot ExpectedBattle { get; }
-    internal object Lineage { get; }
-
-    internal FacingCompletionReceipt(BattleUnitId actorId, ulong revision, AttackBattleSnapshot battle, object lineage)
-    { ActorId = actorId; Revision = revision; ExpectedBattle = battle; Lineage = lineage; }
-}
-
-/// <summary>Opt-in immutable command boundary. Only Begin and accepted transitions issue production states.</summary>
-public sealed class FacingTurnState
-{
-    public AttackBattleSnapshot Battle { get; }
-    public FlatSwordBattleProfile Profile { get; }
-    public ulong Revision { get; }
-    public FacingCompletionReceipt? PendingFacing { get; }
-    internal object Lineage { get; }
-
-    internal FacingTurnState(AttackBattleSnapshot battle, FlatSwordBattleProfile profile, ulong revision,
-        FacingCompletionReceipt? pendingFacing, object lineage)
-    { Battle = battle; Profile = profile; Revision = revision; PendingFacing = pendingFacing; Lineage = lineage; }
-}
-
-public enum FacingTurnRejection
-{
-    None, FacingPending, MissingCompletion, StaleCompletion, WrongActor, InactiveActor,
-    UnknownActor, InconsistentCompletion, RevisionExhausted, UnsupportedFacing, NoLivingEnemy,
-}
-
-public sealed record FacingChoiceResult(bool Accepted, FacingTurnRejection Rejection, BattleFacing? Facing);
-public sealed record FacingSettledEvent(BattleUnitId ActorId, BattleFacing Before, BattleFacing After) : AttackResultEvent;
-public sealed record FacingTurnResult(bool Accepted, FacingTurnRejection FacingRejection,
-    AttackCommandRejection AttackRejection, TurnCycleRejection TurnRejection,
-    BattleTransitionRejection MovementRejection, FacingTurnState State, ImmutableArray<AttackResultEvent> Events);
-
 /// <summary>Bounded ordinary facing settlement; no AI search, path heading, decision-RNG commit or save activation.</summary>
 /// <remarks>Source: decomp 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-118/119.</remarks>
 public static class FacingTurnBattle

@@ -2,24 +2,6 @@ using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Events;
 
-public sealed class ReadySceneInstruction
-{
-    public int Offset => SceneInstruction.Offset;
-    public SceneEventInstruction SceneInstruction { get; }
-    public DisplayReady? Display { get; }
-    public ReadySceneInstruction(SceneEventInstruction instruction)
-    {
-        ArgumentNullException.ThrowIfNull(instruction);
-        SceneInstruction = instruction;
-    }
-    public ReadySceneInstruction(int offset, DisplayReady display)
-    {
-        ArgumentNullException.ThrowIfNull(display);
-        Display = display;
-        SceneInstruction = new(new ConditionalEventInstruction(offset, ConditionalEventOperation.Nop));
-    }
-}
-
 /// <summary>Typed condition-0 domain with fixed event/dispatcher/child order; no raw opcodes or native slots.</summary>
 public sealed class ReadySceneProgram
 {
@@ -46,15 +28,4 @@ public sealed class ReadySceneProgram
     }
     public ReadySceneState Start(ConditionalEventVariables variables, SceneTaskState tasks, AssetId consumerId, PreloadedBannerBinding? binding)
         => new(this, Body.Start(variables, tasks, consumerId), null, binding);
-}
-
-public sealed class ReadySceneState
-{
-    public ReadySceneProgram Program { get; }
-    public SceneEventState Event { get; }
-    public ReadyDisplayState? Ready { get; }
-    public PreloadedBannerBinding? Binding { get; }
-    internal ReadySceneState(ReadySceneProgram program, SceneEventState sceneEvent, ReadyDisplayState? ready, PreloadedBannerBinding? binding)
-        => (Program, Event, Ready, Binding) = (program, sceneEvent, ready, binding);
-    internal ReadySceneState With(SceneEventState sceneEvent, ReadyDisplayState? ready) => new(Program, sceneEvent, ready, Binding);
 }

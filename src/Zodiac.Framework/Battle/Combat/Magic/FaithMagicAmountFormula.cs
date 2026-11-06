@@ -1,38 +1,5 @@
 namespace Zodiac.Framework;
 
-public enum FaithMagicAmountKind { Damage = 0x08, Healing = 0x0c }
-
-/// <summary>Already-classified source compatibility. Sign/sex/monster classification belongs to its caller.</summary>
-public enum MagicCompatibility { Neutral, Good, Best, Bad, Worst, Serpentarius }
-
-public readonly record struct FaithMagicAmountModifiers(bool StrengthensElement = false, bool MagicAttackUp = false,
-    bool MagicDefenseUp = false, bool TargetShell = false, bool TargetChickenOrFrog = false,
-    MagicCompatibility Compatibility = MagicCompatibility.Neutral);
-
-/// <summary>Explicit remaining scope fact for formula0x08's omitted between-product-and-Faith element/weather steps.</summary>
-public sealed record FaithMagicAmountProfile(bool DamageHasNoWeatherOrTargetElementChanges = false);
-
-public sealed record FaithMagicAmountInput(FaithMagicAmountKind Kind, byte MagicAttack, byte Power,
-    FaithValue CasterFaith, FaithValue TargetFaith, FaithMagicAmountModifiers Modifiers = default);
-
-/// <summary>Raw formula work, before absorption/undead routing, procs, 999 cap or HP publication.</summary>
-public sealed record FaithMagicAmount(short ModifiedXa, short StoredProduct, short Amount,
-    byte EffectiveCasterFaith, byte EffectiveTargetFaith);
-
-/// <summary>Opaque raw amount work. A null amount records element cancellation before the Faith step.</summary>
-public sealed record FaithMagicElementAmount
-{
-    public FaithMagicAmountKind Kind { get; }
-    public short ModifiedXa { get; }
-    public short StoredProduct { get; }
-    public MagicDamageElementOutcome? Elements { get; }
-    public FaithMagicAmount? Amount { get; }
-    public bool Nullified => Elements?.Nullified == true;
-    internal FaithMagicElementAmount(FaithMagicAmountKind kind, short xa, short product,
-        MagicDamageElementOutcome? elements, FaithMagicAmount? amount)
-    { Kind=kind; ModifiedXa=xa; StoredProduct=product; Elements=elements; Amount=amount; }
-}
-
 /// <summary>Shared data-parameterized 0x08/0x0C amount pipeline for an already-admitted hit.</summary>
 /// <remarks>ZOD-336; source 11464943bbdbd2a0af022d90cb7f10455cf911df. Not a spell command, complete effect or AI ability entry.</remarks>
 public static class FaithMagicAmountFormula

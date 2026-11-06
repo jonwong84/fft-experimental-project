@@ -2,29 +2,6 @@ using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework;
 
-public enum MagicFormulaEvaluationMode { Execute, AiSimulation, Preview }
-public enum MagicProcInvocation { FormulaMissed, ElementNullified, FamilyTail }
-public enum MagicProcDisposition { FormulaMissed, ElementNullified, NoConditionalBranch, Passed, Failed }
-public enum MagicProcRejection { None, UnsupportedContext, RandomDrawCountExhausted }
-
-public sealed record MagicConditionalProcRequest(FaithMagicAmountKind Formula, MagicProcInvocation Invocation,
-    MagicFormulaEvaluationMode Mode);
-
-/// <summary>Remaining caller/work facts. False is uncertified; execution/AI require a known-clear added flag.</summary>
-public sealed record MagicConditionalProcProfile(bool OrdinaryPrimaryContext = false,
-    bool NoPendingWeaponProcOrReaction = false, bool AddedEffectFlagKnownClear = false);
-
-/// <summary>Status-call decision and a flag-set delta, not a final flag value or applied status.</summary>
-public sealed record MagicConditionalProcOutcome(MagicProcDisposition Disposition, bool SetAddedEffectFlag,
-    uint? Raw = null, int? Percent = null)
-{
-    public bool Invoked => Disposition is MagicProcDisposition.Passed or MagicProcDisposition.Failed;
-    public bool ShouldApplyStatus => Disposition == MagicProcDisposition.Passed;
-}
-
-public sealed record MagicConditionalProcResult(bool Accepted, MagicProcRejection Rejection,
-    MagicConditionalProcOutcome? Outcome, RandomState RngState);
-
 /// <summary>One bounded original 0x08 conditional-proc decision, with explicit evaluation mode and RNG ownership.</summary>
 /// <remarks>ZOD-340; source 11464943bbdbd2a0af022d90cb7f10455cf911df. No status application, command or live RNG adoption.</remarks>
 public static class MagicConditionalProc

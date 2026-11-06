@@ -2,9 +2,6 @@ using System.Collections.Immutable;
 
 namespace Zodiac.Framework;
 
-public sealed record RosterPathMoveResult(bool Accepted, TurnCycleRejection TurnRejection,
-    FlatMovementRejection PathRejection, AttackBattleSnapshot State, ImmutableArray<AttackResultEvent> Events, FlatMovementPath? Path);
-
 /// <summary>Atomic confirmed roster walk, including actual final heading and choice/CT settlement.</summary>
 public static class FlatRosterPathMovement
 {

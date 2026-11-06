@@ -2,9 +2,6 @@ using Tessera.Engine;
 
 namespace Zodiac.Framework.Random;
 
-/// <summary>The full unsigned BIOS RNG word and the number of outputs consumed since seeding.</summary>
-public readonly record struct RandomState(uint Value, ulong DrawCount);
-
 /// <summary>Zodiac framework's generator verified against the US v3.0 SCPH BIOS.</summary>
 /// <remarks>
 /// Evidence: docs/behavior/bios-rng-verification.md and docs/fixtures/rng/scph5501-rng-vectors.json;

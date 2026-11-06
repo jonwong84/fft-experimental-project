@@ -2,16 +2,6 @@ using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Events;
 
-public enum ConditionalEventOperation
-{
-    Nop, ZeroVariable, AddImmediate, AddVariable, CompareEqual,
-    JumpForwardIfZero, JumpForward, Target, Exit,
-}
-
-/// <summary>Normalized operation with a diagnostic source offset; jump targets are already resolved.</summary>
-public sealed record ConditionalEventInstruction(int Offset, ConditionalEventOperation Operation,
-    int? Operand1 = null, int? Operand2 = null, int? TargetOffset = null);
-
 /// <summary>FFT's closed conditional-event proof. No bytecode, I/O, RNG, waits or scene lifecycle.</summary>
 public sealed class ConditionalEventProgram
 {

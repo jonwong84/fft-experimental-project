@@ -1,13 +1,5 @@
 namespace Zodiac.Framework.Events;
 
-public sealed record ReadyDisplayDefinition(AssetId Id, int Condition, int HoldFrames);
-public sealed record DisplayReady(ReadyDisplayDefinition Definition, AssetId ArtworkId, AssetId OwnerId);
-public sealed record ReadyCancellation(SceneTaskId TaskId, long ExpectedRevision);
-public readonly record struct ReadyChildId(SceneTaskId DispatcherTaskId);
-public enum ReadyDispatcherPhase { WaitingInput, WaitingChild, Completed, Cancelled }
-public enum ReadyChildPhase { FadeIn, Holding, FadeOut, ExitYield, Completed, Cancelled }
-public enum ReadyExitCause { Natural, CircleSkipped, OwnerAcknowledgedCancellation }
-
 /// <summary>One task-56 dispatcher owns a child with no separate ledger task. DrawScale is logical submission data, not a resource.</summary>
 public sealed record ReadyDisplayState
 {
