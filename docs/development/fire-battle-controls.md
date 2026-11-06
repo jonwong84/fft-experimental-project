@@ -114,3 +114,10 @@ restart, clock/input gating, a newly learned Fire4 cast and full headless replay
 with captures of the report and outcome. It also retains the movement/path check.
 The spell/learning facts are imported; this eligible encounter and its seed,
 control assignment and first-KO objective are authored diagnostic setup.
+
+
+For read-only primary spell AI admission, projection and score diagnostics, use
+[ordinary spell AI inspection](ordinary-spell-ai-inspection.md). This does not
+activate an AI opponent or issue commands in the player window. Its current
+primary-only metadata bridge rejects the Cure/Fire secondary loadout; the player
+casting path described above remains supported.

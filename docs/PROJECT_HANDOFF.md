@@ -6,16 +6,34 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-412: Bind prepared metadata to the AI ready-hit path.**
-The owner requested ten milestones ZOD-403–412. ZOD-403–411 are complete;
-[ordinary spell AI](behavior/ordinary-spell-ai.md) records the ready-hit boundary
-and the remaining selected steps. Eleven composed query isolation/scoring scenarios pass.
-Full delayed charge-clock search and autonomous magic turns remain separate.
-The earlier five-hour runs are not active. Source stays clean/read-only at
-`11464943bbdbd2a0af022d90cb7f10455cf911df`. Preserve the ten owner files,
-JobStats, the independent unstaged SpellTargetChoiceQuery formatting and all
-documented deferred gates. The last whole-solution validation below is the
-ZOD-402 baseline (4,931 .NET /749 Python); the new milestone checks are above.
+**ZOD-413: Trace ordinary spell AI charge-clock and movement opportunities.**
+The owner's requested ten milestones ZOD-403–412 are complete. No older five-hour
+run is active. [Ordinary spell AI](behavior/ordinary-spell-ai.md) and its
+[implementation receipt](evidence/ai/ordinary-spell-ai-implementation-v1.json)
+record original learned-row/list admission, considered usage/CT quirks, initialized
+MP statistics, usefulness, shared AI formulas, strike accounting, absolute MP
+scoring and a definition-bound current-aim/ready-hit query. The prepared metadata
+bridge uses AbilityMetadataDefinition as its source of truth. The new read-only
+[inspector](development/ordinary-spell-ai-inspection.md) needs prepared files only.
+
+This is not a whole delayed candidate rank or an autonomous magic turn. It
+projects one legal initial aim on current facts with explicit movement-opportunity
+inputs; source clock/move/aim search, restoration and lottery remain separate.
+Generic primary-only learned rows are supported. Secondary Cure/Fire grants,
+special/Mime row aliases and unresolved static AI bits fail closed for this AI
+bridge; player Cure casting and learning remain supported. No cached projection
+can enter authoritative battle execution. Shared damage/healing formulas remain
+independent of animation and future targeting shapes.
+
+Latest validation: locked restore, zero-warning/error Release build,
+**5,010 .NET /754 Python tests**. Fifteen managed prepared AI hypotheses match
+independent HP/MP/score/RNG arithmetic. All four native Fire/elemental/Cure/learning
+scenarios pass eighteen full replay checkpoints, movement, restart and drawing
+isolation; final gameplay hashes match ZOD-402. Source stays clean/read-only at
+`11464943bbdbd2a0af022d90cb7f10455cf911df`. Ten owner-file blobs and the independent
+unstaged SpellTargetChoiceQuery formatting edit are preserved. All 467 public
+Framework declarations have matching files and retained partial parts. Other
+documented deferrals remain in force; begin with the next bounded source study.
 
 [Managed MP costs](development/managed-magic-mp-costs.md) now use nonnegative `int`
 through spell definitions, resource calculation and recorded cast/resource cost.
@@ -264,33 +282,36 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: ZOD-387–402 pass locked restore, a zero-warning/error Release
-  build and **4,931 .NET cases** (1,784 Framework,1,217 AI,878 Content,375 CLI,
-  206 AssetTool,447 Client,24 Engine). All **749 Python tests** pass. Latest
-  seven TRX reports and logs are under ignored `scratch/learning-398-402/`, set
-  `trx-all-402-final`. Source learning/status/movement and ordinary content audits
-  pass; fresh Fire/elemental/Cure/learning profiles check35/57/39/37 source records
-  and both main/metadata asset hashes. Schema1 remains legacy effect-only;
-  schema2 binds metadata and initial grants; schema3 requires explicit initial
-  learned primary slots. Immutable ability/skillset definitions remain the source
-  of truth; JobStats and AbilityToggles are preserved.
-  Native runs `native-402-fire`, `-elemental`, `-healing`, `-learning` pass key/
-  pointer selection, full Move/path/heading, spell charge/HP/MP/status/rewards/
-  growth, restart and complete headless replay. Learning adds report gating,
-  explicit decline/accept and a newly learned cast. Receipt hashes changed with
-  the added owned report/learned-row/control fields; no old-shape hash identity
-  is claimed. Captures were inspected at the learning and earlier visual
-  checkpoints. Programmed routes do not establish physical input or original
-  artwork/animation/timing fidelity. Frame RNG equivalence remains open.
-  All ten preservation files retain their recorded blobs; the owner's targeting
-  formatting stays unstaged. Framework's465 public declarations retain matching
-  filenames and existing partial parts. MP costs stay int. Sword/AI paths, editor
-  and Knight slot intent remain separate. Automatic wait-facing, general terrain,
-  general magic AI, special-job learned-row aliases and full status/corpse
-  scheduling remain open. Python uses pinned Pillow12.3.0 under ignored
+- Validation: ZOD-387–412 pass locked restore, a zero-warning/error Release
+  build and **5,010 .NET cases** (1,784 Framework,1,275 AI,884 Content,390 CLI,
+  206 AssetTool,447 Client,24 Engine). All **754 Python tests** pass. Latest
+  seven TRX reports/logs are under ignored `scratch/ordinary-spell-ai-403-412/`,
+  set `trx-all-412-final`. The new source audit pins ten files and two structural
+  Frog records, and independently verifies fifteen managed prepared AI hypotheses.
+  The full source algorithm guide still checks 105 core/eight external functions.
+  Prepared Fire/elemental/Cure/learning audits check 35/57/39/37 records and both
+  asset hashes. Read-only AI projection/scoring leaves player execution unchanged.
+  Native `native-412-fire`, `-elemental`, `-healing`, `-learning` pass spell input,
+  full movement/path/heading, charge/HP/MP/status/rewards/growth, learning choices,
+  restart and eighteen complete headless replay checkpoints. Final gameplay
+  hashes equal ZOD-402. Drawing preserves state. These programmed key/pointer
+  routes do not establish physical input or original graphics/animation/timing
+  fidelity; no new UI activation or original/C execution is claimed.
+  Schema1 remains legacy effect-only; schema2 binds metadata/grants; schema3 owns
+  explicit initial primary slots. The AI bridge requires metadata and primary-only
+  loadouts, rejecting missing secondary learning instead of inferring it. Its
+  ready-hit score is not a full delayed candidate rank. Existing decision maker,
+  sword/Basic Skill execution and player commands are preserved.
+  Ten owner-file blobs and the separate unstaged targeting-format edit are
+  unchanged. All 467 public Framework declarations retain matching files and
+  existing partial parts. MP costs stay int; JobStats, AbilityToggles, editor and
+  Knight slot intent are preserved. Automatic wait-facing, general terrain,
+  full statuses/reactions/corpse/Golem/terminal/frame RNG, secondary/special AI
+  learned rows, charge-clock search, autonomous magic turns, ZOD-106 and custom
+  cone remain separate. Python uses pinned Pillow12.3.0 under ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
-  Historical whole-worktree audits keep old baselines; the current movement
-  verifier checks source/description portions without retired managed paths.
+  Historical whole-worktree audits keep old baselines; the movement verifier
+  checks source/description portions without retired managed paths.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
   introduction proofs and synthetic world Save/Load exist. Original campaign,
   full combat/content, audio and general AI remain incomplete. See the

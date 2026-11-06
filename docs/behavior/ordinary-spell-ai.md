@@ -3,7 +3,7 @@
 ## Source boundary (ZOD-403)
 
 Read-only reference `11464943bbdbd2a0af022d90cb7f10455cf911df` remains clean.
-The [source receipt](../evidence/ai/ordinary-spell-ai-source-v1.json) pins nine
+The [source receipt](../evidence/ai/ordinary-spell-ai-source-v1.json) pins ten
 files. This study follows `usable_abilities_build`, `ability_usable_from_skillset_add`,
 `ai_ability_is_known`, `ai_unit_abilities_init`, `ai_ability_entry_load`,
 `ai_ability_outcome_evaluate`, `useful_targets_filter`,
@@ -12,12 +12,12 @@ and `ai_action_simulate_and_score` through the shared formula owners.
 
 Human default-menu lists retain known, action-class, static-AI-usable slots whose
 cost fits **maximum** MP. Current MP is checked later. Action slots are0..15;
-the learned row is MSB first. Generic skillsets5..23 map to rows0..18. Other
-owned primary/base skillsets read row0; an unowned special skillset returns known.
+the learned row is MSB first. Generic skillsets 5..23 map to rows 0..18. Other
+owned primary/base skillsets read row 0; an unowned special skillset returns known.
 This lookup differs from learn-on-hit's current-job row selection. Do not replace
 either with global ability membership when repeated or secondary slots matter.
 
-The considered entry retains primary behavior bytes1..3 but replaces byte4 with
+The considered entry retains primary behavior bytes 1..3 but replaces byte 4 with
 working usage. Static evade-with-motion is not consume-aim. Secondary parameters
 supply range/area/element/cost/CT. Half MP applies before max/current-cost tests.
 The source AI CT quirk tests Monster Skill and Defend, rather than the actual
@@ -31,8 +31,8 @@ threshold. Primary preferences determine usefulness, not damage formula kind.
 Reflection, timed statuses, affinity exceptions and transformed units require
 their own future profiles. The selected empty-status units have none.
 
-Ready damage formula08 in AI mode still consumes four evasion draws, while the
-execution-only conditional proc consumes none. Healing formula0C consumes no
+Ready damage formula 0x08 in AI mode still consumes four evasion draws, while the
+execution-only conditional proc consumes none. Healing formula 0x0C consumes no
 formula draws. The source strike stage ignores zero-accuracy results, applies
 movement-opportunity exclusions before result publication, counts included
 target/strike pairs and requires one useful target. Collateral hits cost one
@@ -40,9 +40,9 @@ point (four for stat work); intended-side ordinary HP hits add zero. HP effects
 still count when clamping produces no numeric change.
 
 Absolute scoring uses HP*128/maxHP, ordinary Critical=-32/Dead=-192, seven equal
-equipment terms of51, and MP. MP is floor(mp*64/maxMP), halved **before** the
+equipment terms of 51, and MP. MP is floor(mp*64/maxMP), halved **before** the
 quarter-share multiplier if MP is below the cheapest nonzero ability. Each unit's
-signed contribution narrows the running priority to signed16 in source order.
+signed contribution narrows the running priority to signed 16 in source order.
 Golem and equipment changes are outside the selected bare profile.
 
 ## Ten selected milestones
@@ -73,8 +73,8 @@ movement, replay and full solution regressions.
 
 `OrdinarySpellAiLists` resolves the original known-row lookup independently of
 learn-on-hit. It preserves the source unowned-special-skillset/monster known
-shortcut, validates actual requested rows, filters source action slots0..15 and
-ability IDs below422, then admits supported default-menu ordinary spells by
+shortcut, validates actual requested rows, filters source action slots 0..15 and
+ability IDs below 422, then admits supported default-menu ordinary spells by
 static AI usability, maximum MP and known bit. Serialized class metadata is not
 that ID-range filter. Current MP is deliberately absent from initialization.
 Half MP is applied before the maximum comparison. Repeated references survive
@@ -108,9 +108,9 @@ bare Attack and initialized Frog Attack included. Frog's primary AI Evadeable
 is clear despite its secondary combat flag; the prepared source records are
 recorded separately. Current MP and later Frog usability do not change counts.
 The pure statistics entry also preserves Monster Skill denominator-only behavior,
-no-cost minimum255/maximum0, empty divisor0 and integer operation order.
+no-cost minimum 255/maximum 0, empty divisor 0 and integer operation order.
 
-Four literal managed scenarios cover Fire's three-entry shares1/1/1 and cost6,
+Four literal managed scenarios cover Fire's three-entry shares1/1/1 and cost 6,
 Monster Skill exclusion, zero/empty lists and repeated Half-MP entries. Managed
 MP costs remain nonnegative int; original imported byte costs remain exact.
 
@@ -118,9 +118,9 @@ MP costs remain nonnegative int; original imported byte costs remain exact.
 
 `OrdinarySpellAiUsefulness` classifies current ordinary humans and derives masks
 in source-unit order. Side-only working restrictions, Dead and cannot-hit-caster
-precede primary preferences. Harmful enemies are Useful even at numeric Faith0;
+precede primary preferences. Harmful enemies are Useful even at numeric Faith 0;
 formula magnitude is not the classifier. Healing uses **HP < floor(maxHP/2)**,
-so HP50/max101 is not useful. Harmful preference wins its source branch when
+so HP 50/max 101 is not useful. Harmful preference wins its source branch when
 both ally/enemy flags are set. Critical and Charging remain admitted; unsupported
 affinities/statuses, random/stat/MP/status work fail closed. This pure stage uses
 no RNG and cannot publish a hit or a target decision.
@@ -153,10 +153,10 @@ Retained ordinary battle/application regressions pass alongside them.
 ordering. Zero accuracy is excluded. A followed anchor with a move opportunity
 keeps only itself; otherwise harmful-only spells skip individually moved units,
 while ally preferences retain them. Map-target behavior bypasses those exclusions.
-Positive-accuracy included pairs add intended-side0/contrary-side-1 (stat3/-4),
-contribute to the unsigned16 total and require one Useful recipient. This stage
+Positive-accuracy included pairs add intended-side 0/contrary-side -1 (stat 3/-4),
+contribute to the unsigned 16 total and require one Useful recipient. This stage
 is independent of numeric HP change and consumes no RNG. Formula draws have
-already occurred even for a subsequently excluded target. At255 entries the
+already occurred even for a subsequently excluded target. At 255 entries the
 source disables accounting; that sentinel boundary is explicitly unsupported.
 
 Five managed scenarios cover collateral/zero accuracy and truncated averaging,
@@ -167,18 +167,18 @@ state or a whole-candidate score; the composed query derives these facts fresh.
 ## Absolute state and MP scoring (ZOD-410)
 
 `OrdinarySpellAiScoring` adds HP, ordinary Critical/Dead, all seven unchanged bare
-equipment slots and MP for every unit in source order. MP scales by64/maxMP,
+equipment slots and MP for every unit in source order. MP scales by 64/maxMP,
 then halves below the cheapest initialized nonzero cost, then multiplies by the
-quarter share and divides by4. No maxMP scores0; no MP abilities means share0.
+quarter share and divides by 4. No maxMP scores 0; no MP abilities means share 0.
 Enemies negate the whole contribution. Running priority narrows after each unit,
 starting with the private strike credit; the score is absolute, not HP delta.
 No Golem or equipment-change term is guessed.
 
 Ten cases cover cost equality/below-cost boundaries, odd MP rounding, no MP,
-Critical/Dead, source order, strike credit and signed16 overflow. The literal
+Critical/Dead, source order, strike credit and signed 16 overflow. The literal
 Fire ready-hit example scores49: actor HP128 + equipment357 + remaining MP14,
 minus enemy HP93 + equipment357. This remains a ready-hit diagnostic until the
-full delay/movement clock and candidate comparison are implemented. All1,263 AI
+full delay/movement clock and candidate comparison are implemented. All 1,263 AI
 cases pass, preserving the prior decision/execution paths.
 
 ## Owned current-aim ready-hit query (ZOD-411)
@@ -202,8 +202,64 @@ catalogs, unknown slots and wrong actors fail closed. NotValuable retains formul
 RNG already consumed but returns restored unit facts and no score. A failure
 returns entry RNG and no partial outcome even after earlier private draws.
 
-Eleven scenarios cover Fire49, self/collateral area score-22, followed-anchor versus
+Twelve scenarios cover Fire 49, self/collateral area score -22, followed-anchor versus
 tile exclusions after eight formula draws, zero-damage valuable hits, Cure and
 no-useful-target exits, current MP, pending casts/reports, slot/aim/actor/catalog
-binding and late counter rollback. Complete live-field receipts remain identical.
+binding, primary FollowTarget admission and late counter rollback. Complete live-field receipts remain identical.
 No result is inserted into the existing decision maker as a whole candidate rank.
+
+## Prepared metadata bridge and inspection (ZOD-412)
+
+`PreparedOrdinarySpellAi.CreateCatalog` copies behavior and static AI usability
+from the existing `AbilityMetadataDefinition` instances, retains exact executable
+objects and ordered skillset slots, and binds the resulting catalog to the
+prepared battle definition. No duplicate editable flag source is introduced.
+The three reviewed original skillset IDs (Basic 5, White 10, Black 11) are mapped
+explicitly; authored stable IDs require an explicit numeric compatibility map.
+Schema1, unresolved static AI bits, missing/incorrect mappings and unrepresented
+secondary grants fail closed for this query. Player package loading is unaffected.
+Serialized class bits do not replace ID-range action filtering, and static
+EvadeWithMotion is not working ConsumeAim or secondary combat Evadeable.
+A followed-unit hypothesis now requires primary FollowTarget as well as ordinary
+initial aim legality. Tile hypotheses remain separate choices.
+
+Six Content cases cover exact metadata/definition references, map snapshotting,
+static disabled usability, unknown flags, legacy and explicit source IDs.
+Fifteen CLI/import cases cover all twelve elemental tiers, source MP differences,
+AI versus execution evasion flags, unchanged live state/career, a newly learned
+primary slot, unsupported secondary Cure and malformed inspector arguments.
+The Cure/Fire player's secondary grant does not encode a separate owned learned
+row/loadout. This AI bridge rejects it; it does not infer a known secondary row
+from a global spell grant. Pure formula 0x0C/Cure projection is supported and player
+Cure remains validated. Fresh list initialization is explicit here; retained AI
+workspace refresh after learning still belongs to full decision integration.
+
+`inspect-magic-ai --content-root <prepared-directory>` needs only prepared files
+and prints independent initial-aim/ready-hit hypotheses for the first actor's
+known primary slots against the scene's hostile recipient. Every case starts
+from the same private state/RNG, so this is not a source-order candidate search
+or lottery. [Usage and interpretation](../development/ordinary-spell-ai-inspection.md).
+No command, projection adoption or runtime reference/BIN dependency is added.
+
+## Batch validation
+
+The [implementation receipt](../evidence/ai/ordinary-spell-ai-implementation-v1.json)
+records locked restore, a zero-warning/error Release build, **5,010 .NET cases**
+and **754 Python tests**. All 1,275 AI cases pass. The source audit pins ten files,
+checks the structural Frog records against the verified executable hash, and
+independently checks fifteen actual managed prepared-data hypotheses: Fire 1,
+elemental 12 and Fire/Fire4 learning 2. Amounts, MP, absolute priorities and four
+real AI evasion draws match the independent arithmetic model. The source index
+also rechecks 105 core functions/eight external entries; structural coverage is
+not full behavior equivalence. No original or C execution is claimed.
+
+All four retained Windows native scenarios pass eighteen complete replay
+checkpoints, movement, restart and state-preserving drawing. Their final gameplay
+hashes are identical to ZOD-402, confirming this read-only AI work preserves
+player casting/learning. These are programmed key/pointer routes, not physical
+input or original-media fidelity checks. Ten owner-file blobs and the independent
+unstaged targeting-format edit are preserved. All 467 public Framework declarations
+retain matching files and existing partial parts. MP costs stay int; JobStats,
+AbilityToggles, Knight EquipmentSlot intent, editor, automatic wait-facing,
+full statuses/reactions/corpses/Golem/terminal/frame RNG, broad interfaces,
+ZOD-106 and custom cone remain separate. Charge-clock search is the next study.

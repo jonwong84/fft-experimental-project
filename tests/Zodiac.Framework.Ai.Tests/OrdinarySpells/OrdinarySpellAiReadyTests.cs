@@ -96,7 +96,7 @@ public sealed class OrdinarySpellAiReadyTests
     }
 
     [Theory]
-    [InlineData("slot")] [InlineData("aim")] [InlineData("actor")] [InlineData("foreign")]
+    [InlineData("slot")] [InlineData("aim")] [InlineData("actor")] [InlineData("foreign")] [InlineData("follow")]
     public void Unbound_slot_illegal_aim_wrong_actor_and_foreign_catalog_reject_atomically(string change)
     {
         var (_,catalog,state)=Setup();var request=new OrdinarySpellAiReadyRequest(Mage,0,new(4,2,0),[]);
@@ -104,6 +104,8 @@ public sealed class OrdinarySpellAiReadyTests
         if(change=="aim")request=request with {Aim=new(6,4,0)};
         if(change=="actor")request=request with {ActorId=Guard};
         if(change=="foreign")catalog=Setup().Catalog;
+        if(change=="follow")catalog=new(state.Definition,catalog.PrimaryByJob.Select(p=>KeyValuePair.Create(p.Key,
+            p.Value with {Slots=p.Value.Slots.Select(s=>s with {Behavior=s.Behavior with {FollowTarget=false}}).ToImmutableArray()})));
         string before=Receipt(state);var rng=new RandomState(57,9);
         var r=OrdinarySpellAiReadyQuery.Evaluate(state,catalog,request,rng);
         Assert.False(r.Accepted);Assert.Null(r.Outcome);Assert.Equal(rng,r.RngState);Assert.Equal(before,Receipt(state));

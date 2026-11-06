@@ -44,6 +44,8 @@ public static class OrdinarySpellAiReadyQuery
             var b = ability.Behavior;
             if (b.HasExhaustiveAreaShape || b.DirectTrajectory || b.ArcTrajectory || b.TargetsMapTiles)
                 return Reject("Special targeting/search shapes are outside the ordinary ready-hit profile.");
+            if (request.FollowUnit && !b.FollowTarget)
+                return Reject("Primary AI metadata does not offer a followed-unit hypothesis.");
             if (ability.MpCost > actor.Current.Mp) return Reject("Not enough current MP.");
             var useful = OrdinarySpellAiUsefulness.Filter(state, actor.Id, ability);
             OrdinarySpellAiReadyResult NotValuable(ImmutableArray<MagicCastTargetResult> frames, RandomState exit,

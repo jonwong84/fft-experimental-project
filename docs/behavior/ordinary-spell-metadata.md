@@ -76,5 +76,6 @@ ZOD-398–400 follow-up: [owned learning and prepared slot state](learn-on-hit.m
 now implement the selected source scan. The earlier schema2 eligibility and
 repeated-slot guards above describe the ZOD-397 checkpoint; they have been
 replaced by explicit owned learning rows/reports. Schema3 provides partial-slot
-initial state. Client reporting and disabled-menu policy are the selected next
-milestones; no general magic AI is activated.
+initial state. Client reporting and disabled-menu policy are complete through ZOD-402.
+[ZOD-403–412](ordinary-spell-ai.md) now copy the same metadata into a read-only
+AI ready-hit projection/scoring path; autonomous magic AI remains separate.

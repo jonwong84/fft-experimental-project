@@ -21,7 +21,7 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 378 entries index completed bounded work; they do not mean the full game is complete.
+These 379 entries index completed bounded work; they do not mean the full game is complete.
 
 - [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
 - [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
@@ -465,3 +465,4 @@ These 378 entries index completed bounded work; they do not mean the full game i
 - [ZOD-409 — Account ordinary spell AI strikes and valuable targets](../behavior/ordinary-spell-ai.md#strike-accounting-zod-409)
 - [ZOD-410 — Score ordinary spell HP statuses equipment and MP](../behavior/ordinary-spell-ai.md#absolute-state-and-mp-scoring-zod-410)
 - [ZOD-411 — Compose an owned ordinary spell ready-hit query](../behavior/ordinary-spell-ai.md#owned-current-aim-ready-hit-query-zod-411)
+- [ZOD-412 — Bind prepared metadata to the AI ready-hit path](../behavior/ordinary-spell-ai.md#prepared-metadata-bridge-and-inspection-zod-412)

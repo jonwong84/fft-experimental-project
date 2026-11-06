@@ -107,7 +107,7 @@ public sealed class CureMagicImporterTests
             definition.MovementGround, definition.Learning);
     private static OriginalOrdinaryMagicImport Import() => OriginalOrdinaryMagicImporter.DecodeSelection(Image(), OriginalOrdinarySpellSelection.CureAndFire);
     private static int Offset(uint address) => checked((int)(address - 0x80010000 + 0x800));
-    private static byte[] Image()
+    internal static byte[] Image()
     {
         byte[] image = OriginalOrdinaryMagicImporterTests.Image();
         new byte[] { 4, 1, 1, 0, 0, 226, 0, 0, 12, 0, 14, 0, 4, 6 }.CopyTo(image, Offset(0x8005fbf0 + 14));

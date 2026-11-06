@@ -21,3 +21,18 @@ Namespaces remain `Zodiac.Framework.Ai` and `.Tests`. AI references Framework; F
 Folders describe ownership, not original table limits or general weapon support. Keep unsupported policies explicit. Broader abilities, automatic facing, corpse/terminal/frame RNG and presentation activation remain deferred. Avoid another composition class or broad abstraction for each ticket.
 
 Start with the [original algorithm guide](../../docs/architecture/original-ai-algorithm.md) and [completion roadmap](../../docs/development/ai-completion-roadmap.md). Historical evidence retains names/paths at its pinned managed revision; current coverage follows today's layout.
+
+
+## Ordinary spell ready-hit diagnostics
+
+`OrdinarySpells/` adds source-traced primary learned-slot admission, considered
+parameters/working usage, initialized MP shares, ordinary HP usefulness, shared
+AI formula projection, strike exclusions and absolute HP/status/MP scoring.
+`OrdinarySpellAiReadyQuery` owns all fresh calculations against a definition-bound
+catalog and a current initial aim; it returns no executable plan or battle state.
+Movement opportunities are explicit boundary inputs. Charge-clock forecasting,
+origin/target search, rank insertion and autonomous magic turns remain outside
+this query and the existing decision maker is unchanged. Content supplies the
+metadata bridge; it rejects unrepresented secondary learned rows/loadouts.
+See [behavior and validation](../../docs/behavior/ordinary-spell-ai.md) and the
+[prepared-only inspector](../../docs/development/ordinary-spell-ai-inspection.md).

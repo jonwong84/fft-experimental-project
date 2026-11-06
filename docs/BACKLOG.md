@@ -4,12 +4,14 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-412 (Bind prepared metadata to the AI ready-hit path).**
+**Next bounded work: ZOD-413 (Trace ordinary spell AI charge-clock and movement opportunities).**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
-The five requested learning milestones ZOD-398–402 are complete;
-[learning reports, owned slots and player casting](behavior/learn-on-hit.md) are validated.
-There are 34 open tickets below. The 378 completed tickets, prior checkpoints and
+[Learning reports, owned slots and player casting](behavior/learn-on-hit.md)
+complete ZOD-398–402. Ten further milestones ZOD-403–412 complete a bounded
+[ordinary spell AI ready-hit path](behavior/ordinary-spell-ai.md); charge-clock
+search and autonomous magic turns remain separate.
+There are 34 open tickets below. The 379 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -33,11 +35,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-412 — Bind prepared metadata to the AI ready-hit path
+### ZOD-413 — Trace ordinary spell AI charge-clock and movement opportunities
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-411
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-412
 
-Copy validated ability/skillset metadata and derive current known slots into the composed query; verify original Fire/elemental/Cure source records, live-state isolation and execute-mode regressions.
+Trace the simulation clock from action preparation through delayed readiness,
+unit-ready opportunities and hit application, including turn-event limits,
+CT ties/phases, real upkeep/formula draws, restoration and no-valuable exits.
+Connect the existing ready-hit owner to a bounded current-to-ready contract
+before admitting full candidate ranks or target/origin enumeration. Preserve
+the AI-loader versus actual-charge support quirk; do not revalidate initial blue
+range at delayed followed-target readiness. Keep pending unrelated casts,
+secondary learned loadouts, broader status/reaction/equipment/Golem/terminal/frame
+RNG and autonomous magic turns outside the first contract unless separately traced.
 
 Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
 Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.
