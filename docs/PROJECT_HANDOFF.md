@@ -6,9 +6,9 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-383: Calculate battle raw-stat growth with discarded RNG draws.**
+**ZOD-384: Evaluate stable-ID job unlock prerequisites.**
 [Growth and job unlocks](behavior/growth-and-job-unlocks.md) records completed
-ZOD-382, from clean read-only source
+ZOD-382–383, from clean read-only source
 `11464943bbdbd2a0af022d90cb7f10455cf911df` (10 files/20 functions).
 Battle raw growth consumes five discarded RNG draws. Reward callers grow before
 level increment; special effects store the new level first. Source mode1 refresh

@@ -93,3 +93,14 @@ growth/unlock requirements by themselves. No live battle/career/turn publication
 paid-fizzle execution, grants/learning, full statuses/reactions, global scheduling,
 magic AI, host/editor, automatic facing or custom cone. Owner drafts/JobStats,
 broad interfaces and ZOD-106 remain preserved/separate.
+
+## ZOD-383
+
+`BattleRawStatGrowth.Calculate` implements all five raw values and discarded draws
+from explicit copied growth rates and caller-established level. It validates
+unsigned24 inputs, retains zero-rate fallback, level-down and positive saturation,
+and returns a full five-draw continuation. Counter exhaustion returns no raw
+prefix and preserves incoming RNG. Five managed cases pass15 independent
+literals, exact counter end, zero-valued up/down tapes, immutable replay and a
+reward old-level versus special new-level comparison. No derived stats, statuses,
+current HP/MP or caller level are changed by this raw calculation.

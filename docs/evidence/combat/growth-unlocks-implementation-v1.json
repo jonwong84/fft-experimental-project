@@ -9,6 +9,12 @@
       "managedBaseRevision": "24c1779e6cb7fb2aee0b39530b93942eef3baada",
       "validation": "Eight Python cases and31 independent descriptions pass; clean pinned10-file/20-function source audit,19 prepared unlock rows and five Squire growth pairs verified. Caller level/RNG and derived-refresh quirks documented.",
       "reports": "scratch/growth-unlocks-382-384/"
+    },
+    {
+      "ticket": "ZOD-383",
+      "managedBaseRevision": "0db127eff88f06d4f5356994777a4935c2dfdb4d",
+      "validation": "Five managed cases pass15 independent raw/RNG literals, exact counter end, up/down zero tapes, replay and reward-old-level versus special-new-level arithmetic. Invalid fields/counter rejection expose no partial result.",
+      "reports": "scratch/growth-unlocks-382-384/"
     }
   ]
 }
