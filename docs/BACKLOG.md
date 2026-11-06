@@ -4,11 +4,12 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-402 (Preserve disabled learning reports and multi-recipient ordering).**
+**Next bounded work: ZOD-403 (Trace a bounded ordinary Fire AI candidate path).**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
-The owner requested the next five bounded milestones (ZOD-398–402).
-There are 34 open tickets below. The 368 completed tickets, prior checkpoints and
+The five requested learning milestones ZOD-398–402 are complete;
+[learning reports, owned slots and player casting](behavior/learn-on-hit.md) are validated.
+There are 34 open tickets below. The 369 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -32,14 +33,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-402 — Preserve disabled learning reports and multi-recipient ordering
+### ZOD-403 — Trace a bounded ordinary Fire AI candidate path
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-401
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-402
 
-Trace the non-player-controlled menu close response before choosing its policy.
-Execute that policy without invented automatic acceptance. Verify real composed
-multi-target actions stop at one offer, preserve later markers, and never scan
-again after decline. Revalidate retained Fire/Cure/elemental/movement scenarios.
+Trace primary metadata admission/usefulness, learned/current-job availability,
+MP restrictions, blue/green target enumeration and formula08 projection into
+source scoring for a single ordinary Fire candidate. Pin callers, data,
+arithmetic and RNG policy before selecting an independently checkable managed
+slice. Reuse shared formulas/geometry and the existing semantic AI flags; avoid
+per-spell classes or caller-supplied cached result authority. Scope the exact
+boundary with movement, charge readiness and current-to-projected unit fields.
+This source study does not activate general magic AI, broad status combinations
+or enemy turn selection. Retain prepared casting/learning/movement/replay gates.
 
 Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
 Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.

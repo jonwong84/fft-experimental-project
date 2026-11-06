@@ -169,7 +169,8 @@ public sealed class OrdinaryMagicInteraction
                 OrdinaryMagicEvent.Rewarded e => $"{Name(e.UnitId)} gains {e.Exp} EXP / {e.Jp} JP" + (e.Level > 0 ? $" / Level {e.Level}" : ""),
                 OrdinaryMagicEvent.EncounterEnded => "First KO ends the encounter. R restarts.",
                 OrdinaryMagicEvent.LearningOffered e => $"{Name(e.UnitId)} can learn {Content.SpellNames[e.AbilityId]}. Enter accepts / Back declines.",
-                OrdinaryMagicEvent.LearningAnswered e => $"{Name(e.UnitId)} " + (e.Accepted ? "learned " : "declined ") + Content.SpellNames[e.AbilityId] + ".",
+                OrdinaryMagicEvent.LearningAnswered e => $"{Name(e.UnitId)} " + (e.Accepted ? "learned " : "declined ") +
+                    Content.SpellNames[e.AbilityId] + (e.Automatic ? " automatically." : "."),
                 _ => null
             };
             if (line is null) continue;

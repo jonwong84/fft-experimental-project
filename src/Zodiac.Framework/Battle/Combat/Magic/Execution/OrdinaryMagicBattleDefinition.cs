@@ -82,7 +82,8 @@ public sealed class OrdinaryMagicBattleDefinition
                 u.Current.MagicAttack != Math.Min(99, (int)u.BaseAttributes.MagicAttack))
                 throw new NotSupportedException("Unit setup exceeds the ordinary human, bare-equipment, status-free encounter profile.");
             int slot = JobPointArithmetic.OriginalRewardSlot(u.OriginalJobId);
-            if (learning is not null && (u.OriginalJobId is < 74 or > 93 || u.LearnedPrimarySlots is null ||
+            if (learning is not null && (u.OriginalJobId is < 74 or > 93 || !learning.PrimarySlotsByJob.ContainsKey(u.RewardJobId) ||
+                u.LearnedPrimarySlots is null ||
                 u.LearnedPrimarySlots.Any(i => !learning.PrimarySlots(u.RewardJobId).Any(s => s.Index == i))))
                 throw new NotSupportedException("Learning requires an explicit generic current-job learned row; special-job row aliases are deferred.");
             if (learning is null && u.LearnedPrimarySlots is not null)

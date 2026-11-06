@@ -38,7 +38,7 @@ def validate():
     return dict(arithmeticComparisons=boundaries, rowHex=row.hex())
 
 
-def audit(reference):
+def audit(reference, executable=None):
     if subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=reference, text=True).strip() != REVISION:
         raise ValueError('Reference revision')
     if subprocess.check_output(['git', 'status', '--porcelain'], cwd=reference, text=True).strip():
@@ -47,16 +47,34 @@ def audit(reference):
     for row in evidence['sourceFiles']:
         if hashlib.sha256((reference / row['path']).read_bytes()).hexdigest() != row['sha256']:
             raise ValueError('Source fingerprint: ' + row['path'])
+    if evidence['disabledPromptTrace'] != dict(closePrompt=8, menuId=-1, pendingCommand=7, resolvedCommand=7,
+                                              reportYesCommand=7, automaticallyLearns=True, presentationFrames=2):
+        raise ValueError('Disabled prompt description')
+    # u16 map menu IDs widen to0..65535 and cannot equal signed NONE=-1.
+    if any(menu_id == -1 for menu_id in range(65536)):
+        raise ValueError('Menu map width')
+    if executable:
+        data = executable.read_bytes()
+        if hashlib.sha256(data).hexdigest() != evidence['preparedStatusInputSha256']:
+            raise ValueError('Prepared edition')
+        for row in evidence['admittedReactionStatusRecords']:
+            offset = 0x80065de4 - 0x80010000 + 0x800 + 16 * row['id']
+            raw = data[offset:offset+16]
+            if raw.hex() != row['hex'] or raw[5] & 128:
+                raise ValueError('Admitted reaction eligibility: ' + str(row['id']))
     return dict(validate(), referenceRevision=REVISION, sourceFiles=len(evidence['sourceFiles']),
-                referenceClean=True, originalExecuted=False, cExecuted=False)
+                referenceClean=True, automaticallyLearnsWhenDisabled=True,
+                preparedStatusRecords=0 if executable is None else len(evidence['admittedReactionStatusRecords']),
+                originalExecuted=False, cExecuted=False)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--reference', type=Path, required=True)
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--prepared-executable', type=Path)
     args = parser.parse_args()
-    result = audit(args.reference)
+    result = audit(args.reference, args.prepared_executable)
     if args.output:
         with args.output.open('x', encoding='utf-8') as stream:
             json.dump(result, stream, indent=2)

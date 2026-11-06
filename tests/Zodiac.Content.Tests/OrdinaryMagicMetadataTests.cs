@@ -132,4 +132,17 @@ public sealed class OrdinaryMagicMetadataTests
         if (change == "legacy") document = document with { SchemaVersion = 2 };
         Assert.Throws<InvalidDataException>(() => PreparedOrdinaryMagicBattle.Create(document, Metadata()));
     }
+
+    [Theory]
+    [InlineData(true)] [InlineData(false)]
+    public void Player_control_is_explicit_data_independent_of_team_and_survives_round_trip(bool controlled)
+    {
+        var document = Document();
+        document.Units[1] = document.Units[1] with { PlayerControlled = controlled };
+        var package = PreparedOrdinaryMagicBattle.Create(document, Metadata());
+        var restored = PreparedOrdinaryMagicBattle.ReadJson(package.ToJson(), package.MetadataPackage);
+        Assert.Equal(controlled, restored.Definition.Units[1].PlayerControlled);
+        Assert.Equal(SpellTargetTeam.Red, restored.Definition.Units[1].Occupant.InitialTeam);
+        Assert.True(restored.Definition.Units[0].PlayerControlled);
+    }
 }

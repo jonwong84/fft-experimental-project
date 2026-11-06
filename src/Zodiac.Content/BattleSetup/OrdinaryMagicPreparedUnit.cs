@@ -6,4 +6,4 @@ public sealed record OrdinaryMagicPreparedUnit(string Id, string Name, int Sourc
     SpellTargetTeam Team, string JobId, byte Level, byte Experience, byte Faith, byte Brave,
     MagicZodiacSign Sign, bool Male, bool Female, BattleRawStats RawStats, BattleAttributeValues BaseAttributes,
     ushort Hp, ushort Mp, Dictionary<string, JobPointBalance> Career, string[] LearnedSpells,
-    BattleFacing Facing = BattleFacing.East, int[]? LearnedPrimarySlots = null);
+    BattleFacing Facing = BattleFacing.East, int[]? LearnedPrimarySlots = null, bool PlayerControlled = true);

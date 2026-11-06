@@ -13,11 +13,11 @@ public sealed class OrdinaryMagicLearningTests
 {
     private static readonly AssetId Fire = new(AuthoredOrdinaryMagic.Fire);
     private static readonly BattleUnitId Guard = new("guard");
-    private static OrdinaryMagicInteraction Interaction()
+    private static OrdinaryMagicInteraction Interaction(bool controlled = true)
     {
         var document = AuthoredOrdinaryMagic.Document() with { SchemaVersion = 3, MetadataPackageId = "test:package/learning" };
         document.Units[0] = document.Units[0] with { LearnedPrimarySlots = [0] };
-        document.Units[1] = document.Units[1] with { LearnedPrimarySlots = [] };
+        document.Units[1] = document.Units[1] with { LearnedPrimarySlots = [], PlayerControlled = controlled };
         var metadata = new ContentPackage("test:package/learning", "test:profile/learning", ContentPackageKind.Baseline, null, [],
             [new(new("test:skillset/magic"), [new(0, new(Fire.Value))])],
             [new(new(Fire.Value), 50, 100, 1, new AiAbilityBehavior(), true, learnOnHit: true)]);
@@ -84,4 +84,17 @@ public sealed class OrdinaryMagicLearningTests
 
     private static void AssertReplay(OrdinaryMagicInteraction ui) => Assert.Equal(OrdinaryMagicSnapshot.Capture(ui.State),
         OrdinaryMagicSnapshot.Capture(OrdinaryMagicSnapshot.Replay(ui.State.Definition, ui.Journal)));
+
+    [Fact]
+    public void Disabled_report_automatically_learns_once_and_replays_without_a_player_answer()
+    {
+        var ui = Interaction(false);
+        ui.Advance(); ui.BeginCast(); ui.Select(new(4, 2, 0)); ui.Confirm(); ui.Wait(); ui.Advance(); ui.Wait(); ui.Advance();
+        Assert.Null(ui.State.LearningReport);
+        Assert.Contains(Fire, OrdinaryMagicBattle.KnownSpells(ui.State, Guard));
+        Assert.Contains("automatically", ui.Message);
+        Assert.DoesNotContain(ui.Journal, c => c is OrdinaryMagicCommand.AnswerLearning);
+        Assert.True(Assert.Single(ui.LastEvents.OfType<OrdinaryMagicEvent.LearningAnswered>()).Automatic);
+        AssertReplay(ui);
+    }
 }

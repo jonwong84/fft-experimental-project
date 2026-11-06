@@ -9,4 +9,4 @@ public sealed record OrdinaryMagicUnitDefinition(SpellTargetOccupant Occupant, M
     byte Experience, byte OriginalJobId, AssetId RewardJobId,
     ImmutableDictionary<AssetId, JobPointBalance> JobPoints, ImmutableHashSet<AssetId> LearnedSpells,
     byte Move = 3, byte Jump = 3, BattleFacing InitialFacing = BattleFacing.East,
-    ImmutableHashSet<int>? LearnedPrimarySlots = null);
+    ImmutableHashSet<int>? LearnedPrimarySlots = null, bool PlayerControlled = true);

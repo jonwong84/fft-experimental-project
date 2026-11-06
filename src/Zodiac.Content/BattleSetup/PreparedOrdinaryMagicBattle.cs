@@ -77,7 +77,8 @@ public sealed class PreparedOrdinaryMagicBattle
                 new(u.Hp, maxima.MaxHp, maxima.MaxMp, u.Brave, u.Hp <= maxima.MaxHp / 5), u.RawStats, growth,
                 multipliers, u.BaseAttributes, u.Level, u.Experience, job.OriginalId, new(job.Id),
                 u.Career.ToImmutableDictionary(p => new AssetId(p.Key), p => p.Value),
-                u.LearnedSpells.Select(s => new AssetId(s)).ToImmutableHashSet(), job.Move, job.Jump, u.Facing);
+                u.LearnedSpells.Select(s => new AssetId(s)).ToImmutableHashSet(), job.Move, job.Jump, u.Facing,
+                PlayerControlled: u.PlayerControlled);
         }).ToImmutableArray();
         // This profile authors ordinary cost1 ground; it never infers a cost from an original terrain ID.
         var ground = new TerrainSurfaceId("fft.demo:terrain/ordinary-ground");

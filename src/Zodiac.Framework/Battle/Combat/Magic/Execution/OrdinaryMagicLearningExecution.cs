@@ -20,6 +20,12 @@ internal static class OrdinaryMagicLearningExecution
             return next;
         var learner = next.Units[OrdinaryMagicBattle.Index(next, id)];
         var report = new OrdinaryMagicLearningReport(checked(state.Revision + 1), id, abilityId, learner.Definition.RewardJobId);
+        if (!learner.Definition.PlayerControlled)
+        {
+            // Disabled prompt -> CLOSE/NONE -> command7 -> PROMPT_YES, not UNRESOLVED_FF.
+            events.Add(new OrdinaryMagicEvent.LearningAnswered(id, abilityId, true, Automatic: true));
+            return Learn(next, report);
+        }
         events.Add(new OrdinaryMagicEvent.LearningOffered(report.Id, id, abilityId));
         return next.With(learningReport: report);
     }
@@ -31,15 +37,18 @@ internal static class OrdinaryMagicLearningExecution
             throw new OrdinaryMagicExecutionException("That learning report is no longer available.");
         var next = state;
         if (answer.Accept)
-        {
-            int index = OrdinaryMagicBattle.Index(state, report.LearnerId);
-            var unit = state.Units[index];
-            var learned = LearnOnHit.Accept(report.AbilityId, state.Definition.Learning!.PrimarySlots(report.JobId),
-                unit.LearnedAbilitySlots[report.JobId]);
-            next = next.With(units: state.Units.SetItem(index, unit with
-                { LearnedAbilitySlots = unit.LearnedAbilitySlots.SetItem(report.JobId, learned) }));
-        }
+            next = Learn(state, report);
         events.Add(new OrdinaryMagicEvent.LearningAnswered(report.LearnerId, report.AbilityId, answer.Accept));
         return OrdinaryMagicCastExecution.FinishObjective(next.With(clearLearningReport: true), events);
+    }
+
+    private static OrdinaryMagicBattleState Learn(OrdinaryMagicBattleState state, OrdinaryMagicLearningReport report)
+    {
+        int index = OrdinaryMagicBattle.Index(state, report.LearnerId);
+        var unit = state.Units[index];
+        var learned = LearnOnHit.Accept(report.AbilityId, state.Definition.Learning!.PrimarySlots(report.JobId),
+            unit.LearnedAbilitySlots[report.JobId]);
+        return state.With(units: state.Units.SetItem(index, unit with
+            { LearnedAbilitySlots = unit.LearnedAbilitySlots.SetItem(report.JobId, learned) }));
     }
 }

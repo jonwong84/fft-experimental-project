@@ -17,9 +17,57 @@
     {
       "path": "src/lib/menu/command_prompts.c",
       "sha256": "3c044f71016c06a3acc6ef01884cd1ea26b6872c5bbc240b5ad6f6961d6887a1"
+    },
+    {
+      "path": "src/main/game_tables.c",
+      "sha256": "21bd5fcd3f31c7b74a2c3a06a08688cc9af0910c2d1bd0b5b576062618024f36"
+    },
+    {
+      "path": "src/lib/menu/command_selection.c",
+      "sha256": "d6aa1fc37da13853385a02860d41772d27e5916c63ab03b055c671c9cc975026"
+    },
+    {
+      "path": "src/lib/event/scene/runtime.c",
+      "sha256": "85ce71ecac32e95dd59cac73da8a95ab13d4c8f01b6e412a94c7b8c5408ef81e"
+    },
+    {
+      "path": "include/fft/command.h",
+      "sha256": "7535086064f2bb7642f122401dfb8bb43050b98c9f71023a92111d4d6d2e737b"
+    },
+    {
+      "path": "include/fft/turn_command.h",
+      "sha256": "b1d924465fb3a278b26d83dd6b12f2b094852b54e27767a3182586e29f2baf22"
+    },
+    {
+      "path": "include/fft/status.h",
+      "sha256": "a780bb1b1f1e711c391231bd9aec607757f121fe9dd2267320f21f6aca70da85"
+    },
+    {
+      "path": "src/main/status_check_data.c",
+      "sha256": "7d28cacd7cc5ec502973d49221954cece17277b5b03752423622b361e01cdaf9"
     }
   ],
   "originalExecuted": false,
   "cExecuted": false,
-  "scope": "Source study and independent arithmetic descriptions; not observed retail gameplay."
+  "scope": "Source study and independent arithmetic descriptions; not observed retail gameplay.",
+  "disabledPromptTrace": {
+    "closePrompt": 8,
+    "menuId": -1,
+    "pendingCommand": 7,
+    "resolvedCommand": 7,
+    "reportYesCommand": 7,
+    "automaticallyLearns": true,
+    "presentationFrames": 2
+  },
+  "preparedStatusInputSha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562",
+  "admittedReactionStatusRecords": [
+    {
+      "id": 4,
+      "hex": "00000800000000000000006400000000"
+    },
+    {
+      "id": 23,
+      "hex": "00000300000800000000004400000000"
+    }
+  ]
 }

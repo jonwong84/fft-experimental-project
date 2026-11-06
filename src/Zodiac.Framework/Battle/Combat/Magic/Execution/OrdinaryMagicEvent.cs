@@ -18,5 +18,5 @@ public abstract record OrdinaryMagicEvent
     public sealed record Rewarded(BattleUnitId UnitId, byte Exp, int Jp, byte Level, byte JobLevel) : OrdinaryMagicEvent;
     public sealed record EncounterEnded(BattleUnitId KnockedOutUnitId) : OrdinaryMagicEvent;
     public sealed record LearningOffered(ulong ReportId, BattleUnitId UnitId, AssetId AbilityId) : OrdinaryMagicEvent;
-    public sealed record LearningAnswered(BattleUnitId UnitId, AssetId AbilityId, bool Accepted) : OrdinaryMagicEvent;
+    public sealed record LearningAnswered(BattleUnitId UnitId, AssetId AbilityId, bool Accepted, bool Automatic = false) : OrdinaryMagicEvent;
 }
