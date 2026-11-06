@@ -99,3 +99,17 @@ Persevere bypass, Short Charge/Non-Charge having no AI-loader effect, retained
 usage, copied behavior and branch ordering. Actual cast charge planning remains
 unchanged, including its different support bits. No static fourth-byte flag is
 accepted as working usage.
+
+## Initialized ability statistics (ZOD-406)
+
+`OrdinarySpellAiStatistics` owns quarter shares and nonzero MP extrema. Its
+ordinary human entry derives every selected spell from the owned list, with
+bare Attack and initialized Frog Attack included. Frog's primary AI Evadeable
+is clear despite its secondary combat flag; the prepared source records are
+recorded separately. Current MP and later Frog usability do not change counts.
+The pure statistics entry also preserves Monster Skill denominator-only behavior,
+no-cost minimum255/maximum0, empty divisor0 and integer operation order.
+
+Four literal managed scenarios cover Fire's three-entry shares1/1/1 and cost6,
+Monster Skill exclusion, zero/empty lists and repeated Half-MP entries. Managed
+MP costs remain nonnegative int; original imported byte costs remain exact.

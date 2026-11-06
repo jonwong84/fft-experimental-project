@@ -37,9 +37,28 @@
     {
       "path": "src/battle/turn/clock.c",
       "sha256": "8d96a9971e6d7165132227c77647f87f4a28f45744adbaaabfe1abb7a9342941"
+    },
+    {
+      "path": "src/main/game_tables.c",
+      "sha256": "21bd5fcd3f31c7b74a2c3a06a08688cc9af0910c2d1bd0b5b576062618024f36"
     }
   ],
   "originalExecuted": false,
   "cExecuted": false,
-  "scope": "Source study of ordinary default-menu list initialization through a ready-hit scoring boundary; no charge-clock search equivalence."
+  "scope": "Source study of ordinary default-menu list initialization through a ready-hit scoring boundary; no charge-clock search equivalence.",
+  "preparedInputSha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562",
+  "structuralFrogRecords": [
+    {
+      "address": 2147871728,
+      "stride": 8,
+      "index": 367,
+      "hex": "0000640182000181"
+    },
+    {
+      "address": 2147875824,
+      "stride": 14,
+      "index": 367,
+      "hex": "0100010901188200010000000000"
+    }
+  ]
 }

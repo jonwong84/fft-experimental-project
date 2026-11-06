@@ -6,10 +6,10 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-406: Calculate spell-bearing initialized ability statistics.**
-The owner requested ten milestones ZOD-403–412. ZOD-403–405 are complete;
+**ZOD-407: Classify bounded ordinary spell usefulness.**
+The owner requested ten milestones ZOD-403–412. ZOD-403–406 are complete;
 [ordinary spell AI](behavior/ordinary-spell-ai.md) records the ready-hit boundary
-and the remaining selected steps. Seven considered-parameter/usage cases pass.
+and the remaining selected steps. Four initialized-list statistics scenarios pass.
 Full delayed charge-clock search and autonomous magic turns remain separate.
 The earlier five-hour runs are not active. Source stays clean/read-only at
 `11464943bbdbd2a0af022d90cb7f10455cf911df`. Preserve the ten owner files,
