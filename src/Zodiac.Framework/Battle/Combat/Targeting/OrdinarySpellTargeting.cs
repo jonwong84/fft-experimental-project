@@ -3,45 +3,6 @@ using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework;
 
-/// <summary>Source ordinary targeting rules; independent of spell amount and animation.</summary>
-public sealed record OrdinarySpellGeometry(byte Range, byte Area, byte Vertical, bool RangeUsesVertical = false,
-    bool CannotTargetSelf = false, bool CannotHitCaster = false, bool TopDown = false,
-    bool CanHitAllies = false, bool CanHitEnemies = false);
-
-public sealed record SpellTargetingProfile(bool OrdinaryMapAimedSpellKnown = false, bool NoSpecialAbilityRulesKnown = false,
-    bool NoSelectableCrossSectionsKnown = false, bool UnusedSourcePanelsExcludedKnown = false);
-public enum SpellTargetingRejection { None, UnsupportedContext, UnsupportedMap, InvalidOrigin, InvalidAim, UnsupportedRoster }
-
-/// <summary>Opaque derived panel set; a blue selection range cannot stand in for a green resolution area.</summary>
-public sealed class SpellTargetPanels
-{
-    public ImmutableArray<TilePosition> Panels { get; }
-    public TilePosition CasterPosition { get; }
-    public TilePosition Center { get; }
-    public OrdinarySpellGeometry Geometry { get; }
-    public bool IsArea { get; }
-    internal BattleMapDefinition Map { get; }
-    internal SpellTargetPanels(BattleMapDefinition map, TilePosition caster, TilePosition center,
-        OrdinarySpellGeometry geometry, bool area, ImmutableArray<TilePosition> panels)
-    { Map = map; CasterPosition = caster; Center = center; Geometry = geometry; IsArea = area; Panels = panels; }
-}
-public sealed record SpellPanelQueryResult(bool Accepted, SpellTargetingRejection Rejection, SpellTargetPanels? Outcome);
-
-public enum SpellTargetTeam { Blue, Red, Green, LightBlue }
-/// <summary>Source-order and map facts, separate from current formula input snapshots.</summary>
-public sealed record SpellTargetOccupant(BattleUnitId UnitId, int SourceOrder, TilePosition Position,
-    SpellTargetTeam InitialTeam, SpellTargetTeam CurrentTeam, bool Active = true, bool Crystal = false,
-    bool Treasure = false, bool Jump = false, bool Mount = false);
-public sealed record SpellTargetRosterProfile(bool CompleteRosterAndSourceOrderKnown = false);
-public sealed record SpellTargetSelection(ImmutableArray<TilePosition> Panels, ImmutableArray<BattleUnitId> UnitIds);
-public sealed record SpellTargetSelectionResult(bool Accepted, SpellTargetingRejection Rejection, SpellTargetSelection? Outcome);
-
-public sealed record SpellTargetCombatant(SpellTargetOccupant Occupant, MagicCurrentUnit? Current);
-public sealed record SpellTargetCastProfile(bool MapAimPreviouslyValidatedKnown = false, bool NoEarlierTargetEffectsKnown = false);
-public sealed record SpellGeometryCastRequest(PreparedMagicCast Cast, BattleMapDefinition Map, TilePosition SelectedMapAim,
-    ImmutableArray<SpellTargetCombatant> Roster, SpellTargetingProfile? GeometryProfile,
-    SpellTargetRosterProfile? RosterProfile, SpellTargetCastProfile? Entry);
-
 /// <summary>Pure original-compatible map queries, with no transient marks or live state.</summary>
 public static class OrdinarySpellTargeting
 {

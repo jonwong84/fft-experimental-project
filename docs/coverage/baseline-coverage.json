@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "updated": "2026-11-05",
   "edition": "SCUS-94221",
-  "managedCommit": "0de5d62",
+  "managedCommit": "3d39ed2",
   "reference": {
     "root": "C:/repositories/fft_decomp",
     "commit": "11464943bbdbd2a0af022d90cb7f10455cf911df",
@@ -12,7 +12,7 @@
   "evidencePolicy": "Source entry points identify inventory scope, not completed behavior traces. Linked notes retain their own historical source revisions. Baseline equivalence is not established by any aggregate status or test count.",
   "lastRecordedTests": {
     "passed": 4670,
-    "source": "docs/development/managed-magic-mp-costs.md",
+    "source": "docs/development/targeting-file-layout.md",
     "runForThisInventory": true
   },
   "statusDefinitions": {
@@ -394,7 +394,9 @@
         "docs/behavior/spell-follow-and-stored-aim.md",
         "docs/evidence/combat/spell-follow-source-v1.json",
         "docs/evidence/combat/spell-follow-review-v1.json",
-        "docs/fixtures/behavior/spell-follow-contract-v1.json"
+        "docs/fixtures/behavior/spell-follow-contract-v1.json",
+        "docs/development/targeting-file-layout.md",
+        "docs/evidence/maintenance/targeting-file-layout-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/Battle/Combat/AttackBattleSimulator.cs",
@@ -412,7 +414,20 @@
         "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectory.cs",
         "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattle.cs",
         "src/Zodiac.Framework.Ai/Shared/RosterAiDirectTrajectory.cs",
-        "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs"
+        "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellGeometry.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetingProfile.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetingRejection.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetPanels.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellPanelQueryResult.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetTeam.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetOccupant.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetRosterProfile.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetSelection.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetSelectionResult.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetCombatant.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetCastProfile.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellGeometryCastRequest.cs"
       ],
       "automatedChecks": [
         {
@@ -584,7 +599,9 @@
         "docs/evidence/combat/spell-follow-review-v1.json",
         "docs/fixtures/behavior/spell-follow-contract-v1.json",
         "docs/development/managed-magic-mp-costs.md",
-        "docs/evidence/combat/managed-mp-costs-v1.json"
+        "docs/evidence/combat/managed-mp-costs-v1.json",
+        "docs/development/targeting-file-layout.md",
+        "docs/evidence/maintenance/targeting-file-layout-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattle.cs",
@@ -610,7 +627,20 @@
         "src/Zodiac.Framework/Battle/Combat/Magic/MagicResources.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/MagicCharge.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastQuery.cs",
-        "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs"
+        "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellGeometry.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetingProfile.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetingRejection.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetPanels.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellPanelQueryResult.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetTeam.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetOccupant.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetRosterProfile.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetSelection.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetSelectionResult.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetCombatant.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetCastProfile.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/SpellGeometryCastRequest.cs"
       ],
       "automatedChecks": [
         {

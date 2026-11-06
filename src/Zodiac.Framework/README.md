@@ -22,6 +22,8 @@ Content supplies immutable definitions and prepared data through outer adapters.
   add current immutable stat projection, source resource/timing queries and one-cost
   supplied-order ready-cast results. They do not broaden sword state, discover
   targets, advance the clock or publish battle state.
+  `Battle/Combat/Targeting/` contains ordinary spell panel/occupant queries and
+  their public geometry, profile, request and result types in matching files.
 - `Battle/Turns/`: CT, turn progression, facing, completion receipts and settlement.
 - `Battle/Commands/`: invocation-bound decision transactions, frozen follow-ups
   and retained Move continuations.
@@ -29,6 +31,13 @@ Content supplies immutable definitions and prepared data through outer adapters.
 - `Campaign/`: the current world checkpoint model.
 - `Random/`: explicit gameplay RNG state and the verified generator.
 - `Properties/`: assembly metadata. `AssetId.cs` stays at the root as a shared ID.
+
+Public classes, records, structs and enums should normally have their own
+matching `.cs` file within the relevant feature folder. Small implementation-only
+helpers may remain with their owner when that improves readability. Apply this
+layout to new code and focused cleanup; existing grouped files can be migrated
+separately. The [targeting split](../../docs/development/targeting-file-layout.md)
+preserves all declarations and the existing `Zodiac.Framework` namespace.
 
 These folders describe existing ownership; they introduce no dependency or new
 abstraction. Files containing closely related records and rules stay together.

@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "kind": "owner-requested-targeting-file-layout",
+  "managedBaseRevision": "3d39ed24cf16fb2a0a8d1b3adf4ef333fe69c72f",
+  "behaviorChanged": false,
+  "namespacesChanged": false,
+  "visibilityChanged": false,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "newTests": false,
+  "types": [
+    {
+      "type": "OrdinarySpellGeometry",
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellGeometry.cs",
+      "normalizedDeclarationSha256": "94b6351bbed10021017abcac9e931bdd92c7286c4d1bc006da79a5567a959f63"
+    },
+    {
+      "type": "SpellTargetingProfile",
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetingProfile.cs",
+      "normalizedDeclarationSha256": "a56fcad693ac418764afbf4caba1891cf9aa722fdf907a8ebcd0973833397784"
+    },
+    {
+      "type": "SpellTargetingRejection",
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetingRejection.cs",
+      "normalizedDeclarationSha256": "5b9edae1aa4059eba5b836bb40dcb7d51c108154c874b8f77168b14f0c6efbd7"
+    },
+    {
+      "type": "SpellTargetPanels",
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetPanels.cs",
+      "normalizedDeclarationSha256": "2bf5cc1b1d79baaa5bf490a52ef372a18e793f3d6d9f2b6de207be275ac0fc56"
+    },
+    {
+      "type": "SpellPanelQueryResult",
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellPanelQueryResult.cs",
+      "normalizedDeclarationSha256": "0e9dea2ab5c736108030c9160b54e9c8d40430a332fa1a2126bc386982bb6f2b"
+    },
+    {
+      "type": "SpellTargetTeam",
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetTeam.cs",
+      "normalizedDeclarationSha256": "ac9ece67fc61374d086fa1f7f91d74a6b5f2e882e5216e97c8b163ac8f439d8d"
+    },
+    {
+      "type": "SpellTargetOccupant",
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetOccupant.cs",
+      "normalizedDeclarationSha256": "cbdac64a906cf69072d5c8fbb822cb6a286b8dd0e6010cd3028368d9f905a282"
+    },
+    {
+      "type": "SpellTargetRosterProfile",
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetRosterProfile.cs",
+      "normalizedDeclarationSha256": "6df4a86142e8d6330176bbbe27eb150966a250b9218092d706622caf5508cdd7"
+    },
+    {
+      "type": "SpellTargetSelection",
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetSelection.cs",
+      "normalizedDeclarationSha256": "6089a802c49b9f721a24025d499c7b29086e81f883d76c175e58345ca41bb4f0"
+    },
+    {
+      "type": "SpellTargetSelectionResult",
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetSelectionResult.cs",
+      "normalizedDeclarationSha256": "feb36e41b068e9af84ac6f4de3faa0bdb9ae556b9d4378fee2f1258b2421091f"
+    },
+    {
+      "type": "SpellTargetCombatant",
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetCombatant.cs",
+      "normalizedDeclarationSha256": "79721fd8d6384011242b18d8a996a7fbfd474be3febfc856d0f25a25f8fcd1c5"
+    },
+    {
+      "type": "SpellTargetCastProfile",
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetCastProfile.cs",
+      "normalizedDeclarationSha256": "6850be0215383888a4b51834a34451ce3c0fe382088407ca338f32c01c4e0ce3"
+    },
+    {
+      "type": "SpellGeometryCastRequest",
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellGeometryCastRequest.cs",
+      "normalizedDeclarationSha256": "7a7c87c299307d636a8b98153c3c71b3868c4ca5e0d8b553fa665455c340f5b2"
+    },
+    {
+      "type": "OrdinarySpellTargeting",
+      "fromPath": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
+      "toPath": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
+      "normalizedDeclarationSha256": "e7a7f675952008be45a304777e000b5497a60ea4d0976cca6cd2242c2dd79203"
+    }
+  ],
+  "reports": "scratch/targeting-file-layout/",
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuild": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "managedPassed": 4670,
+    "managedReports": [
+      {
+        "path": "scratch/targeting-file-layout/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_21_10_05_net10.0.trx",
+        "passed": 206
+      },
+      {
+        "path": "scratch/targeting-file-layout/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_21_10_05_net10.0[1].trx",
+        "passed": 24
+      },
+      {
+        "path": "scratch/targeting-file-layout/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_21_10_05_net10.0[2].trx",
+        "passed": 1217
+      },
+      {
+        "path": "scratch/targeting-file-layout/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_21_10_05_net10.0[3].trx",
+        "passed": 838
+      },
+      {
+        "path": "scratch/targeting-file-layout/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_21_10_05_net10.0[4].trx",
+        "passed": 428
+      },
+      {
+        "path": "scratch/targeting-file-layout/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_21_10_06_net10.0.trx",
+        "passed": 1629
+      },
+      {
+        "path": "scratch/targeting-file-layout/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_21_10_06_net10.0[1].trx",
+        "passed": 328
+      }
+    ],
+    "pythonPassed": 695,
+    "preservation": {
+      "managedBaseRevision": "3d39ed24cf16fb2a0a8d1b3adf4ef333fe69c72f",
+      "declarationsCompared": 14,
+      "publicTypesPerFile": 1,
+      "allDeclarationTextIdentical": true,
+      "algorithmTextIdentical": true,
+      "namespacesAndVisibilityUnchanged": true,
+      "unrelatedProductionUnchanged": true,
+      "testsAndBehaviorFixturesUnchanged": true,
+      "buildAndDependenciesUnchanged": true,
+      "ownerFiles": [
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AbilityToggles.cs",
+          "gitBlob": "16320578ffa448783221b68c4ef5c18e245b9f35",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AiBehaviorToggles.cs",
+          "gitBlob": "c67c4b154c471764fa11a6761710d2e9c9694a65",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AttributeToggles.cs",
+          "gitBlob": "1182777f8a0c3ca219afa23d0803c52af4ca9f8e",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/EquipmentSlot.cs",
+          "gitBlob": "091006b2d60ca558c303571a4eb779340be53629",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/StatusToggles.cs",
+          "gitBlob": "5136db2af350d7e3735e47fb92b905019316fd6f",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Item/ShopAvailabilityToggles.cs",
+          "gitBlob": "fd543d84dc8eb7860d710cf1c75499eb55306e14",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/EquipmentOptionToggles.cs",
+          "gitBlob": "694e44bbdc3e62103b64ff794addec1ad977d142",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/EffectBehaviorToggles.cs",
+          "gitBlob": "9792cdea7da1d92e9ec25cf1e97d3e879c24e8ae",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/StatusSelectionToggles.cs",
+          "gitBlob": "a0b2e2a8ddcb53a4bfd7416609927399b8339294",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/JobStats.cs",
+          "gitBlob": "bd617c374309aca1529a167a8d31a488160086cc",
+          "unchanged": true
+        }
+      ]
+    },
+    "coverageEntriesChecked": 58,
+    "localLinksChecked": 1646,
+    "newTests": false,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "uiReviewed": false
+  }
+}

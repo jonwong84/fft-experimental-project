@@ -27,6 +27,12 @@ through spell definitions, resource calculation and recorded cast/resource cost.
 Original packed readers retain byte fields; source-domain behavior is preserved.
 This owner-requested representation adjustment leaves ZOD-364 next.
 
+[Targeting public type files](development/targeting-file-layout.md) now separate
+all 14 public targeting types into matching files, with identical declarations,
+visibility and algorithm text. New public types normally receive matching files;
+small implementation-only helpers may stay with their owner. Other grouped files
+remain separate focused cleanup work. Namespaces and ZOD-364's scope are unchanged.
+
 [Magic evasion](behavior/magic-evasion.md) records completed ZOD-342, ZOD-344, ZOD-345, ZOD-346, ZOD-347
 from clean source `11464943bbdbd2a0af022d90cb7f10455cf911df` (13 files/21 functions).
 `FaithMagicFormula.Resolve` now owns certified nonzero fresh formula entry,
@@ -262,17 +268,19 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: the owner-requested integer MP-cost change passes locked restore,
+- Validation: the owner-approved targeting file split passes locked restore,
   a zero-warning/error Release build and **4,670 .NET cases** (1,629 Framework,
-  1,217 AI,838 Content,328 CLI,206 AssetTool,428 Client,24 Engine). Nine new
-  managed cases cover costs above255, Half MP flooring, one-cost multi-target
-  casts in all modes, unaffordable int.MaxValue and negative-cost admission.
-  All **695 Python tests** pass; focused magic108, prior magic/source/prepared-data,
-  58-entry coverage, local-link and preservation audits pass. Seven TRX reports
-  and logs are under ignored `scratch/managed-mp-costs/`.
-  Original import readers, behavior fixtures, content, AI and host are unchanged.
-  All nine owner drafts, AbilityToggles and JobStats are unchanged. No project,
-  lock, dependency, host/editor, command, scheduling or magic AI activation changes.
+  1,217 AI,838 Content,328 CLI,206 AssetTool,428 Client,24 Engine). All
+  **695 Python tests** pass. All 14 targeting declarations and the retained
+  algorithm text match the prior baseline after line-ending normalization.
+  No tests/fixtures were changed or added. Coverage, local links and preservation
+  checks pass; seven TRX reports/logs are under ignored
+  `scratch/targeting-file-layout/`.
+  MP costs retain the owner's nonnegative-int adjustment and its existing tests.
+  Original import readers, behavior fixtures, unrelated production code, content,
+  AI and host are unchanged. All nine owner drafts, AbilityToggles and JobStats
+  are unchanged. No project, lock, dependency, command, scheduling or magic AI
+  activation changes. ZOD-364 remains next.
   Prepared Dash/Stone import checks remain at ZOD-329; their code/input is unchanged.
   Python uses repository-pinned Pillow12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
