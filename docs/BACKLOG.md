@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-373 (Capture immutable living magic projection snapshots).**
+**Next bounded work: ZOD-374 (Reduce cast HP and MP projections atomically).**
 [Living magic result projections](behavior/living-magic-projections.md) records
-completed ZOD-370–372. Keep selection, preparation, readiness and publication separate.
-There are 36 open tickets below. The 339 completed tickets, prior checkpoints and
+completed ZOD-370–373. Keep selection, preparation, readiness and publication separate.
+There are 35 open tickets below. The 340 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,17 +31,9 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-373 — Capture immutable living magic projection snapshots
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-372
-
-Add an immutable map/roster/current-input/vitals/RNG snapshot with coherent identities and bounded living states, retaining known inactive anchor metadata. Do not widen sword state or add adoption authority. See [source and phase boundaries](behavior/living-magic-projections.md).
-Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
-status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
-
 ### ZOD-374 — Reduce cast HP and MP projections atomically
 
-**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-373
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-373
 
 Reduce a supplied certified cast into a private snapshot with one proposed MP deduction before self-target work and source target order. Late rejection discards all HP/MP candidate data; no RNG or publication authority. See [source and phase boundaries](behavior/living-magic-projections.md).
 Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/

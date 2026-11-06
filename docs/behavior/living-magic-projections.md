@@ -95,3 +95,14 @@ checks are. Signed negative work is retained, while positive unfinalized amounts
 above999 reject. Derived XP/outcome markers are outside this vital projection.
 Five cumulative managed cases pass all36 raw/living descriptions plus selective
 knowledge, zero-damage cancellation and immutable-input boundaries.
+
+## ZOD-373
+
+`MagicProjectionSnapshot` captures an immutable map, source-order roster, current
+formula inputs, vital facts and RNG checkpoint. Active units require coherent
+living current/vital captures and unblocked in-map positions. Stable IDs/orders
+must be unique; current identities and HP/MP bounds must agree. Inactive anchors
+can retain explicit metadata with no invented current/vital defaults. This adds
+no original fixed roster cap, neutral-sign requirement, sword-state fields or
+adoption authority. Eight cumulative managed cases pass copy isolation, inactive
+anchors, invalid coherence and a26-unit/13-sign roster.
