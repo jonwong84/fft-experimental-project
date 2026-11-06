@@ -8,4 +8,4 @@ public sealed record OrdinaryMagicUnitDefinition(SpellTargetOccupant Occupant, M
     BattleStatMultipliers Multipliers, BattleAttributeValues BaseAttributes, byte Level,
     byte Experience, byte OriginalJobId, AssetId RewardJobId,
     ImmutableDictionary<AssetId, JobPointBalance> JobPoints, ImmutableHashSet<AssetId> LearnedSpells,
-    byte Move = 3);
+    byte Move = 3, byte Jump = 3, BattleFacing InitialFacing = BattleFacing.East);

@@ -4,11 +4,12 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-395 (Execute confirmed flat movement in ordinary magic battles).**
+**Next bounded work: ZOD-396 (Expose full ordinary movement in the player client).**
 [Fire execution](behavior/ordinary-magic-execution.md) is complete through ZOD-391.
-[Shared elemental work](behavior/elemental-magic-execution.md) records ZOD-392–393;
-[ordinary Cure](behavior/ordinary-healing-execution.md) completes ZOD-394.
-There are 34 open tickets below. The 361 completed tickets, prior checkpoints and
+[Elemental spells](behavior/elemental-magic-execution.md) complete ZOD-392–393;
+[Cure](behavior/ordinary-healing-execution.md) completes ZOD-394.
+[Ordinary walking](behavior/ordinary-magic-movement.md) records the current movement work.
+There are 34 open tickets below. The 362 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -32,11 +33,11 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-395 — Execute confirmed flat movement in ordinary magic battles
+### ZOD-396 — Expose full ordinary movement in the player client
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-394
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-395
 
-Reuse the source-traced flat movement kernel to publish confirmed paths, voluntary final headings and Move/CT settlement in the authoritative magic battle. Preserve spell charges, reject unsupported post-move work and test fresh occupancy, path ties, counters and replay. See [selected contract](behavior/ordinary-magic-movement.md).
+Expose legal full Move range and path preview through the shared authoritative command, including voluntary heading, input rejection, charge preservation and native replay.
 Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
 Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.
 

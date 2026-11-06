@@ -125,7 +125,7 @@ internal static class OrdinaryMagicCastExecution
                 throw new OverflowException();
             rng = growth.RngState;
             var refreshed = EquipmentAttributeCalculation.CalculateMode1(growth.Stats!, actor.Definition.Multipliers,
-                actor.Vitals.Hp, actor.Current.Mp, actor.Definition.BaseAttributes, actor.Definition.Move, 3, []);
+                actor.Vitals.Hp, actor.Current.Mp, actor.Definition.BaseAttributes, actor.Definition.Move, actor.Definition.Jump, []);
             actor = actor with
             {
                 RawStats = growth.Stats!,

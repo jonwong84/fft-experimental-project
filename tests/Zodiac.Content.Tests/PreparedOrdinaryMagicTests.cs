@@ -14,6 +14,8 @@ public sealed class PreparedOrdinaryMagicTests
     public void Round_trip_copies_mutable_wire_data_and_uses_immutable_job_metadata()
     {
         var document = AuthoredOrdinaryMagic.Document();
+        document.Jobs[0] = document.Jobs[0] with { Jump = 5 };
+        document.Units[1] = document.Units[1] with { Facing = BattleFacing.West };
         var package = PreparedOrdinaryMagicBattle.Create(document);
         string json = package.ToJson();
         document.Units[0].LearnedSpells[0] = "test:spell/missing";
@@ -23,6 +25,10 @@ public sealed class PreparedOrdinaryMagicTests
         Assert.Equal(json, PreparedOrdinaryMagicBattle.ReadJson(json).ToJson());
         Assert.Equal(3, package.JobDefinitions[AuthoredOrdinaryMagic.Wizard].JobStats.BaseMove);
         Assert.Equal(12, package.Definition.Units[0].Growth.Hp);
+        Assert.Equal(5, package.Definition.Units[0].Jump);
+        Assert.Equal(5, package.JobDefinitions[AuthoredOrdinaryMagic.Wizard].JobStats.BaseJump);
+        Assert.Equal(BattleFacing.West, package.Definition.Start().Units[1].Facing);
+        Assert.NotNull(package.Definition.MovementGround);
         Assert.Contains(new AssetId(AuthoredOrdinaryMagic.Fire), package.Definition.Units[0].LearnedSpells);
         Assert.Equal((ushort)100, package.Definition.JobThresholds[0]);
         Assert.Equal("authored-ordinary", package.Ruleset);

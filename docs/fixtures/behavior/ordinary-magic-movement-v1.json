@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Independent source cancellation descriptions; only Black/White Magic is admitted by the current ordinary battle.",
+  "cases": [
+    { "id": "black-magic-survives", "charging": true, "counter": 4, "skillset": 11, "cancels": false },
+    { "id": "white-magic-survives", "charging": true, "counter": 4, "skillset": 10, "cancels": false },
+    { "id": "charge-cancels", "charging": true, "counter": 4, "skillset": 8, "cancels": true },
+    { "id": "charge-zero-counter-still-cancels", "charging": true, "counter": 0, "skillset": 8, "cancels": true },
+    { "id": "charge-sentinel-does-not-cancel", "charging": true, "counter": 255, "skillset": 8, "cancels": false },
+    { "id": "not-charging", "charging": false, "counter": 4, "skillset": 8, "cancels": false },
+    { "id": "alternate-charge-skillset-not-tested", "charging": true, "counter": 4, "skillset": 156, "cancels": false }
+  ]
+}

@@ -6,12 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-395: Execute confirmed flat movement in ordinary magic battles.**
+**ZOD-396: Expose full ordinary movement in the player client.**
 [Fire execution](behavior/ordinary-magic-execution.md) is complete through ZOD-391.
-[Shared elemental execution](behavior/elemental-magic-execution.md) records completed
-ZOD-392–393. [Cure execution](behavior/ordinary-healing-execution.md) completes
-ZOD-394. [Confirmed flat movement](behavior/ordinary-magic-movement.md) is next.
-Source remains pinned to clean read-only
+[Elemental execution](behavior/elemental-magic-execution.md) completes ZOD-392–393;
+[Cure](behavior/ordinary-healing-execution.md) completes ZOD-394.
+[Ordinary walking](behavior/ordinary-magic-movement.md) records completed movement
+work. Source remains pinned to clean read-only
 `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 Fire works end to end through prepared content, explicit grants, player aim/charge,
 actual HP/MP/status/RNG/rewards, replay/restart and a runnable native client.

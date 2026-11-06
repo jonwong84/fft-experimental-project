@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "sourceFiles": [
+    {
+      "path": "src/battle/units/placement.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 21907,
+      "sha256": "51d58903dfe661921b7817d4c2b7287670e381240e229917ca6990c006eff1b8"
+    },
+    {
+      "path": "src/battle/combat/pickups.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 15082,
+      "sha256": "e2197d5f63619185e374fb62200ac840d8c2ce42bc7d412e2b1686f2de8c16a0"
+    },
+    {
+      "path": "src/battle/units/movement.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 109656,
+      "sha256": "e008ef1f59d1a01c52b41d535203765af519e6336952b884f6e90762a4050e0c"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 187246,
+      "sha256": "2792e2b861e8de4f4f996a5491dbacde0b96f77518a75cc4b8eebf2d6bc1557f"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40868,
+      "sha256": "f76188542c39818fa2ab478e42ef63b4eb0f2c1c2db5a74db4120ddbaf4cb8cb"
+    },
+    {
+      "path": "include/fft/move.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11466,
+      "sha256": "28cb002ca1ab5bf2fe139ffea6e4a71acaef70fe50c9023327439a1465b56fab"
+    },
+    {
+      "path": "include/fft/turn.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2844,
+      "sha256": "bf8eac9a51807894a645b9587c68323ab8c95411a176a0ccfbbfd752dfbfe6dd"
+    },
+    {
+      "path": "include/fft/skillset.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 10251,
+      "sha256": "ff8564cfae7e4e64dd3dc289577f56ee3cba27c8a8f450491e2d6bf6182729ad"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/units/placement.c",
+      "symbol": "unit_set_tile_position",
+      "startLine": 428,
+      "endLine": 478,
+      "normalizedLfSha256": "d913dc5966724e9dc6ba44a877fedc3226af160924038aaf6a3a6e5ac0dc8c30"
+    },
+    {
+      "path": "src/battle/units/placement.c",
+      "symbol": "move_get_post_events",
+      "startLine": 484,
+      "endLine": 525,
+      "normalizedLfSha256": "14a2224b5751f5c7d85429ef4a28ba09f920102757a2ebd2525e29de8cbc92d6"
+    },
+    {
+      "path": "src/battle/units/placement.c",
+      "symbol": "move_get_ability_events",
+      "startLine": 529,
+      "endLine": 540,
+      "normalizedLfSha256": "3e26164c245c5434609d81e6a2727a4b6e5a32b25e586df0018df5b7e4ebb4e2"
+    },
+    {
+      "path": "src/battle/combat/pickups.c",
+      "symbol": "action_charge_check_and_cancel",
+      "startLine": 41,
+      "endLine": 59,
+      "normalizedLfSha256": "521a3f8e17f5023cd8846cc9a0fcdef08964887e65a68cffcb2517eec4578cfa"
+    },
+    {
+      "path": "src/battle/units/movement.c",
+      "symbol": "move_step_start_walk",
+      "startLine": 568,
+      "endLine": 612,
+      "normalizedLfSha256": "2ffffbb7d1047e0904cf9e8c26b45ad3bb033d8e1988fd16a67b35a08e6c7a67"
+    },
+    {
+      "path": "src/battle/units/movement.c",
+      "symbol": "move_settle_on_tile",
+      "startLine": 1440,
+      "endLine": 1461,
+      "normalizedLfSha256": "bc83991c772183300cfb860b4df873ef92802e4229e95c2cdcbfe73beb067520"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "move_confirm",
+      "startLine": 3067,
+      "endLine": 3095,
+      "normalizedLfSha256": "39e3103aa39d609ae0d0c13aa16de41865ceccc77352e4dcda7dd5b5ab61be35"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_move_act_taken_set",
+      "startLine": 923,
+      "endLine": 940,
+      "normalizedLfSha256": "ab6508dce1e9e9ef352a27b22a0166a0526d1571fb059f969937605b630782d7"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_end",
+      "startLine": 947,
+      "endLine": 974,
+      "normalizedLfSha256": "2071e4d41c2099741ca3ae787add5e7b731df488197b87a47ca84291a6ac268b"
+    }
+  ],
+  "originalExecuted": false,
+  "cExecuted": false,
+  "scope": "Confirmed flat ordinary magic walking, final heading, cost1 authored ground and charge preservation. Earlier source movement/voluntary receipts own range/backtrace. No mounts/traps/pickups/RSM effects or automatic wait facing."
+}

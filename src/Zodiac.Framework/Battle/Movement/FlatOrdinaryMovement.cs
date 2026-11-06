@@ -36,13 +36,16 @@ internal static class FlatMovementKernel
 
     internal static FlatMovementQueryResult Evaluate(AttackBattleSnapshot state, BattleUnitState actor,
         IReadOnlySet<TilePosition> blocked, IReadOnlySet<TilePosition> occupied, TilePosition? focus, TilePosition? destination)
+        => Evaluate(state.TurnBattle.Battle.Map, actor.Position, actor.Move, actor.MovementProfile.Jump, actor.HasMoved,
+            blocked, occupied, focus, destination, state.TurnBattle.Turns.RngState);
+
+    // Concrete ordinary-magic state shares the same admitted graph/backtrace without fabricating sword combat stats.
+    internal static FlatMovementQueryResult Evaluate(BattleMapDefinition map, TilePosition origin, int movePoints, int jump,
+        bool movementTaken, IReadOnlySet<TilePosition> blocked, IReadOnlySet<TilePosition> occupied,
+        TilePosition? focus, TilePosition? destination, RandomState rng)
     {
-        var battle = state.TurnBattle.Battle;
-        var rng = state.TurnBattle.Turns.RngState;
         FlatMovementQueryResult Reject(FlatMovementRejection reason) => new(false, reason, null, rng);
-        var map = battle.Map;
-        var origin = actor!.Position;
-        int move = Math.Min(124, actor.Move);
+        int move = Math.Min(124, movePoints);
         var distance = new int[map.Width * map.Depth];
         Array.Fill(distance, -1);
         int Index(TilePosition p) => p.Y * map.Width + p.X;
@@ -110,7 +113,7 @@ internal static class FlatMovementKernel
                 residuals.Add(new(tile, (byte)(move + 1 - d)));
                 bool open = tile == origin || !occupied.Contains(tile);
                 if (tile != origin && open) physical.Add(tile);
-                if (open && (!actor.HasMoved || tile == origin)) { origins.Add(tile); selectedRow = true; }
+                if (open && (!movementTaken || tile == origin)) { origins.Add(tile); selectedRow = true; }
             }
             if (selectedRow && focus is { } focusPosition)
             {
@@ -121,7 +124,7 @@ internal static class FlatMovementKernel
             }
         }
         return new(true, FlatMovementRejection.None,
-            new(move, Math.Min(7, actor.MovementProfile.Jump) >> 1, physical.ToImmutable(), residuals.ToImmutable(),
+            new(move, Math.Min(7, jump) >> 1, physical.ToImmutable(), residuals.ToImmutable(),
                 origins.ToImmutable(), rows.ToImmutable(), path), rng);
     }
 }

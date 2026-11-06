@@ -51,6 +51,12 @@
       "managedBaseRevision": "fce2a86cca4f366e156315bd1c479922f17565ff",
       "validation": "Release zero warnings/errors; all 4853 .NET and 743 Python cases pass. Native Cure/restart/Fire/KO and complete headless replay match; healed/Critical captures inspected. Fresh six-file/seven-function source audit and all 38 prepared records plus manifest pass.",
       "reports": "scratch/fire-execution-387/"
+    },
+    {
+      "ticket": "ZOD-395",
+      "managedBaseRevision": "fb30ed692a22250c853945693274b948422d0607",
+      "validation": "12 new movement cases; all 1753 Framework, 1217 AI, 370 CLI and 438 Client cases plus 19 prepared-content cases pass. Release build clean. Eight-file/nine-function movement source and reused 48/60 descriptions pass; seven cancellation vectors/two Python cases pass. Full native movement follows in ZOD-396.",
+      "reports": "scratch/fire-execution-387/"
     }
   ]
 }

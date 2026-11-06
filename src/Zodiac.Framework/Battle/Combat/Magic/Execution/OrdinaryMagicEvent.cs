@@ -8,6 +8,8 @@ public abstract record OrdinaryMagicEvent
     public sealed record TurnReady(BattleUnitId UnitId) : OrdinaryMagicEvent;
     public sealed record TurnEnded(BattleUnitId UnitId) : OrdinaryMagicEvent;
     public sealed record Stepped(BattleUnitId UnitId, TilePosition Destination) : OrdinaryMagicEvent;
+    public sealed record Moved(BattleUnitId UnitId, TilePosition From, TilePosition Destination,
+        BattleFacing PreviousFacing, FlatMovementPath Path) : OrdinaryMagicEvent;
     public sealed record Queued(BattleUnitId UnitId, AssetId SpellId, byte ChargeTicks) : OrdinaryMagicEvent;
     public sealed record Resolved(BattleUnitId UnitId, AssetId SpellId, int MpCost, TilePosition Center,
         ImmutableArray<MagicCastTargetResult> Targets) : OrdinaryMagicEvent;

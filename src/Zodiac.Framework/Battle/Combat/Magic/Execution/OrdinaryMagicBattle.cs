@@ -49,10 +49,18 @@ public static class OrdinaryMagicBattle
                         Math.Abs(actor.Position.X - step.Destination.X) + Math.Abs(actor.Position.Y - step.Destination.Y) != 1 ||
                         !state.Definition.Map.TryGetTile(step.Destination, out _) || state.Units.Any(u => u.Position == step.Destination))
                         return Reject("Choose a free adjacent tile.");
-                    next = Consume(state, step.UnitId, TurnCommandKind.ConfirmMove, events);
-                    int index = Index(next, step.UnitId);
-                    next = next.With(units: next.Units.SetItem(index, actor with { Position = step.Destination }));
-                    events.Add(new OrdinaryMagicEvent.Stepped(step.UnitId, step.Destination));
+                    var stepEvents = new List<OrdinaryMagicEvent>();
+                    next = Consume(state, step.UnitId, TurnCommandKind.ConfirmMove, stepEvents);
+                    var facing = step.Destination.X > actor.Position.X ? BattleFacing.East :
+                        step.Destination.X < actor.Position.X ? BattleFacing.West :
+                        step.Destination.Y > actor.Position.Y ? BattleFacing.North : BattleFacing.South;
+                    next = next.With(units: next.Units.SetItem(Index(next, actor.Id), actor with
+                        { Position = step.Destination, Facing = facing }));
+                    events.Add(new OrdinaryMagicEvent.Stepped(actor.Id, step.Destination));
+                    events.AddRange(stepEvents);
+                    break;
+                case OrdinaryMagicCommand.Move move:
+                    next = Walk(state, move.UnitId, move.Destination, events);
                     break;
                 default:
                     return Reject("Unsupported command.");
@@ -96,6 +104,24 @@ public static class OrdinaryMagicBattle
             events.Add(new OrdinaryMagicEvent.TurnEnded(id));
         return state.With(turns: result.State, phase: result.State.ActiveUnitId is null
             ? OrdinaryMagicClockPhase.PickUnit : OrdinaryMagicClockPhase.UnitTurn);
+    }
+
+    private static OrdinaryMagicBattleState Walk(OrdinaryMagicBattleState state, BattleUnitId id, TilePosition destination,
+        List<OrdinaryMagicEvent> events)
+    {
+        var actor = Active(state, id);
+        var query = OrdinaryMagicMovement.Query(state, id, destination);
+        if (!query.Accepted)
+            throw new OrdinaryMagicExecutionException("Choose a free tile in the supported movement range.");
+        var path = query.Outcome!.Path!;
+        var turnEvents = new List<OrdinaryMagicEvent>();
+        var next = Consume(state, id, TurnCommandKind.ConfirmMove, turnEvents);
+        next = next.With(units: next.Units.SetItem(Index(next, id), actor with
+            { Position = destination, Facing = path.FinalHeading }));
+        events.Add(new OrdinaryMagicEvent.Moved(id, actor.Position, destination, actor.Facing, path));
+        events.AddRange(turnEvents);
+        // These are ordinary Black/White Magic casts, never the movement-canceled Charge skillset.
+        return next;
     }
 
     private static OrdinaryMagicBattleState Queue(OrdinaryMagicBattleState state,

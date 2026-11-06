@@ -76,11 +76,13 @@ public sealed class PreparedOrdinaryMagicBattle
                 new(u.Hp, maxima.MaxHp, maxima.MaxMp, u.Brave, u.Hp <= maxima.MaxHp / 5), u.RawStats, growth,
                 multipliers, u.BaseAttributes, u.Level, u.Experience, job.OriginalId, new(job.Id),
                 u.Career.ToImmutableDictionary(p => new AssetId(p.Key), p => p.Value),
-                u.LearnedSpells.Select(s => new AssetId(s)).ToImmutableHashSet(), job.Move);
+                u.LearnedSpells.Select(s => new AssetId(s)).ToImmutableHashSet(), job.Move, job.Jump, u.Facing);
         }).ToImmutableArray();
+        // This profile authors ordinary cost1 ground; it never infers a cost from an original terrain ID.
+        var ground = new TerrainSurfaceId("fft.demo:terrain/ordinary-ground");
         var map = new BattleMapDefinition(document.Width, document.Depth, 1,
-            Enumerable.Repeat(new BattleTile(document.Height), document.Width * document.Depth).ToArray());
-        Definition = new(map, units, spells, catalog, document.JobThresholds.ToImmutableArray(), new(document.Seed, 0));
+            Enumerable.Repeat(new BattleTile(ground, document.Height), document.Width * document.Depth).ToArray());
+        Definition = new(map, units, spells, catalog, document.JobThresholds.ToImmutableArray(), new(document.Seed, 0), ground);
         UnitNames = document.Units.ToImmutableDictionary(u => new BattleUnitId(u.Id), u => u.Name);
         SpellNames = document.Spells.ToImmutableDictionary(s => new AssetId(s.Id), s =>
             !string.IsNullOrWhiteSpace(s.Name) && s.Name.Length <= 32 && !s.Name.Any(char.IsControl)

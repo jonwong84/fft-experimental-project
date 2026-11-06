@@ -12,13 +12,15 @@ public sealed class OrdinaryMagicBattleDefinition
     public JobUnlockCatalog Jobs { get; }
     public ImmutableArray<ushort> JobThresholds { get; }
     public RandomState InitialRng { get; }
+    /// <summary>Explicit authored cost1 ground for confirmed paths; null retains the earlier one-step-only setup.</summary>
+    public TerrainSurfaceId? MovementGround { get; }
 
     public static MagicEvadeEquipmentInput BareEquipment => new(false,
         new(255, 0, false), new(255, 0, false), new(255, 0, false));
 
     public OrdinaryMagicBattleDefinition(BattleMapDefinition map, IEnumerable<OrdinaryMagicUnitDefinition> units,
         IEnumerable<MagicCastDefinition> spells, JobUnlockCatalog jobs, ImmutableArray<ushort> jobThresholds,
-        RandomState initialRng)
+        RandomState initialRng, TerrainSurfaceId? movementGround = null)
     {
         ArgumentNullException.ThrowIfNull(map);
         ArgumentNullException.ThrowIfNull(units);
@@ -36,6 +38,8 @@ public sealed class OrdinaryMagicBattleDefinition
             if (tile.IsBlocked || tile.IsUntargetable || tile.CannotStop || tile.Height != first.Height ||
                 tile.HalfHeight != 0 || tile.WaterDepth != 0 || tile.Slope.ToPackedByte() != 0 || tile.CeilingDepth != 0)
                 throw new NotSupportedException("This encounter admits dry, flat, targetable terrain without special movement.");
+            if (movementGround is { } ground && (string.IsNullOrWhiteSpace(ground.Value) || tile.Surface != ground))
+                throw new NotSupportedException("Confirmed ordinary movement requires explicitly matching cost1 ground on every tile.");
         }
         var selected = ImmutableDictionary.CreateBuilder<AssetId, MagicCastDefinition>();
         foreach (var spell in spells)
@@ -69,7 +73,7 @@ public sealed class OrdinaryMagicBattleDefinition
                 u.Current.Statuses != new MagicCurrentStatuses() || u.Current.Supports != new MagicCurrentSupports() ||
                 u.Current.Equipment != BareEquipment || u.Current.Identity.IsMonster || u.Current.HasRider || u.Current.IsMime ||
                 !u.Current.ActionUnrestricted || u.Current.Strengthens != MagicElement.None || u.Current.Affinities != default ||
-                u.Current.Faith > 100 || u.Level is < 1 or > 99 || u.Experience > 99 ||
+                u.Current.Faith > 100 || u.Level is < 1 or > 99 || u.Experience > 99 || !Enum.IsDefined(u.InitialFacing) ||
                 u.BaseAttributes.Speed == 0 || u.BaseAttributes.MagicAttack == 0 ||
                 u.Current.MagicAttack != Math.Min(99, (int)u.BaseAttributes.MagicAttack))
                 throw new NotSupportedException("Unit setup exceeds the ordinary human, bare-equipment, status-free encounter profile.");
@@ -95,6 +99,7 @@ public sealed class OrdinaryMagicBattleDefinition
         Jobs = jobs;
         JobThresholds = jobThresholds;
         InitialRng = initialRng;
+        MovementGround = movementGround;
     }
 
     public OrdinaryMagicBattleState Start()
@@ -102,7 +107,7 @@ public sealed class OrdinaryMagicBattleDefinition
         var units = Units.Select(u => new OrdinaryMagicUnitState(u, u.Occupant.Position, u.Current, u.Vitals,
             u.RawStats, u.Level, u.Experience, u.JobPoints,
             Jobs.Calculate(u.JobPoints.ToImmutableDictionary(p => p.Key, p => (byte)p.Value.JobLevel),
-                u.Current.Identity.IsMale, u.Current.Identity.IsFemale))).ToImmutableArray();
+                u.Current.Identity.IsMale, u.Current.Identity.IsFemale), Facing: u.InitialFacing)).ToImmutableArray();
         var turns = new TurnCycleState(units.Select(u => new TurnUnitState(u.Id,
             Math.Min(50, (int)u.Definition.BaseAttributes.Speed), 0, u.Occupant.SourceOrder)), InitialRng);
         return new(this, units, turns, ImmutableDictionary<BattleUnitId, PendingMagicCast>.Empty,

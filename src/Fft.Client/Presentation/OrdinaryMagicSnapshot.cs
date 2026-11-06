@@ -13,7 +13,7 @@ public static class OrdinaryMagicSnapshot
         turns = state.Turns.Units,
         units = state.Units.Select(u => new
         {
-            u.Id, u.Position, u.Current, u.Vitals, u.RawStats, u.Level, u.Experience, u.KoCount, u.DeathCounter, u.OutcomeMarker,
+            u.Id, u.Position, u.Facing, u.Current, u.Vitals, u.RawStats, u.Level, u.Experience, u.KoCount, u.DeathCounter, u.OutcomeMarker,
             career = u.JobPoints.OrderBy(p => p.Key.Value, StringComparer.Ordinal).Select(p => new { id = p.Key.Value, p.Value }),
             unlocked = u.UnlockedJobs.OrderBy(id => id.Value, StringComparer.Ordinal).Select(id => id.Value)
         }),

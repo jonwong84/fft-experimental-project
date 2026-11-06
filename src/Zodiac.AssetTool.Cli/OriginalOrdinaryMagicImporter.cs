@@ -121,7 +121,7 @@ public static class OriginalOrdinaryMagicImporter
                 MagicZodiacSign.Aries, true, false, Stats(wizard, 100, 75, 10, 6, 8), new(6, 8, 10), 100, 75, mageCareer, spells.Select(s => s.Id).ToArray()),
             new OrdinaryMagicPreparedUnit("guard", "Guard", 1, 4, 2, SpellTargetTeam.Red, squire.Id, 10, 0, 70, 70,
                 MagicZodiacSign.Aries, true, false, Stats(squire, 200, 50, 8, 8, 5), new(8, 5, 8),
-                (ushort)(selection == OriginalOrdinarySpellSelection.CureAndFire ? 30 : 200), 50, guardCareer, [])
+                (ushort)(selection == OriginalOrdinarySpellSelection.CureAndFire ? 30 : 200), 50, guardCareer, [], BattleFacing.West)
         };
         var document = new OrdinaryMagicPackageDocument("fft.ordinary-magic-battle", 1, "ordinary-human-bare-v1", "original-fft",
             57, 7, 5, 10, JobId("squire"), JobId("bard"), JobId("dancer"), thresholds, spells.ToArray(), [wizard, squire], unlocks.ToArray(), units);
