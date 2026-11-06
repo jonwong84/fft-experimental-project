@@ -71,6 +71,14 @@ Jump selects0x64; Charge sets charge power and falls through to the weapon formu
 Weapon procs can re-enter a spell path. An inventory of ordinary rows alone cannot
 declare those paths covered or unused.
 
+The owner has agreed to formula-family implementations in C# and individual
+ability definitions in validated JSON, with proposed Formulas/CombatRules
+namespaces. [ZOD-419 equipment selection](equipment-effect-selection.md) traces
+the shared equipment picker and its distinct break/steal/Mighty Sword callers.
+Its per-ability slot policies become explicit typed content rather than new
+ability-specific classes; the source hand choice and failure paths stay intact.
+The broad namespace/content migration is not implemented by that source study.
+
 ## Navigation buckets and next development step
 
 The tool groups all100 dispatch slots once into eleven navigation buckets:

@@ -12,8 +12,11 @@ complete ZOD-398–402. ZOD-403–412 complete a bounded
 [ordinary spell AI ready-hit path](behavior/ordinary-spell-ai.md). ZOD-413–417
 add [fixed-origin charge simulation](behavior/ordinary-spell-ai-clock.md) and
 prepared delayed diagnostics. General aim/origin search, full ranking/lottery
-and autonomous magic turns remain separate.
-There are 34 open tickets below. The 384 completed tickets, prior checkpoints and
+and autonomous magic turns remain separate. The owner-requested
+[ZOD-419 equipment selector study](architecture/equipment-effect-selection.md)
+is complete; typed equipment policies and formula-family content direction are
+recorded without activating equipment effects or modifying owner drafts.
+There are 34 open tickets below. The 385 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.

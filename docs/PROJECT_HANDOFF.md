@@ -6,6 +6,20 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
+Owner-requested [ZOD-419 equipment selection study](architecture/equipment-effect-selection.md)
+is complete. Weapon effects choose higher item required level with right ties;
+shields prefer right then left. Typed content must select policies, not assume
+Weapon=MainHand or Shield=OffHand. Break/Steal/Mighty Sword retain distinct
+failure and ordering rules. The draft EquipmentSlot and all owner files remain
+unchanged; no equipment effect is activated. The owner agreed to shared C#
+formula/mechanic implementations with individual abilities in validated JSON;
+proposed Formulas/CombatRules namespaces are recorded in the architecture.
+This source study does not start that migration or ZOD-418.
+All 770 current Python tests pass, including eight new selector tests. The
+[study receipt](evidence/combat/equipment-selection-study-v1.json) records the
+source audit and preservation. C# production code is unchanged; .NET/native
+results below remain the ZOD-417 baseline, not new runs for this study.
+
 **ZOD-418: Trace fixed-origin ordinary spell aim search and ranking.**
 The requested five tickets ZOD-413–417 are complete. The
 [ordinary spell AI clock](behavior/ordinary-spell-ai-clock.md) now composes one
@@ -15,8 +29,8 @@ diagnostics independently verify thirty delayed and fifteen ready-hit hypotheses
 Aim/origin enumeration, full-list ranking/lottery and autonomous magic turns
 remain separate; ZOD-418 is the next bounded source study.
 
-Locked restore, a zero-warning/error Release build, **5,044 .NET tests** and
-**762 Python tests** pass. Four native scenarios retain all eighteen complete
+The ZOD-417 baseline passed locked restore, a zero-warning/error Release build,
+**5,044 .NET tests** and **762 Python tests**. Four native scenarios retain all eighteen complete
 replay checkpoints and unchanged gameplay hashes. The reference remains clean/
 read-only at `11464943bbdbd2a0af022d90cb7f10455cf911df`. All ten owner-file blobs
 and deferred gates are preserved. The approved formatting edit is committed as
@@ -334,8 +348,10 @@ without rewriting old evidence.
   families only when their mapping is ready or the owner requests it.
 - [Equipment-break slot intent](development/content-definition-drafts.md#equipment-break-slot-selection-deferred):
   the owner created `EquipmentSlot` for Knight's Break Helm/Armor/Weapon/Shield.
-  Preserve the draft and trace original selector/hand/category mappings when that
-  formula family is selected; its ordinals are not verified source encodings.
+  ZOD-419 now traces the original selector, hand/category mappings and caller
+  boundaries. Preserve the draft until managed equipment-family implementation;
+  its ordinals are not source encodings. Shared formula/rule code and data-defined
+  abilities are the agreed design direction, with explicit typed selector policies.
 
 ## Deferred and unresolved gates
 

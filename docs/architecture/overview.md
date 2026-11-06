@@ -75,6 +75,26 @@ migration and remaining deferred work. Unused owner-authored
 [definition drafts](../development/content-definition-drafts.md) remain preserved;
 `AbilityToggles` consolidation is explicitly deferred.
 
+## Formula families and content
+
+Owner direction on 2026-11-06: share implementations by mechanic/formula family,
+with individual abilities expressed as validated content data. Use immutable typed
+definitions loaded from JSON for formula selection/parameters, targeting,
+behavior, costs/timing and presentation references. Calculations and new rule or
+geometry implementations remain C#; editing content selects supported behavior.
+Proposed namespaces are `Zodiac.Framework.Formulas` and
+`Zodiac.Framework.CombatRules`. This records the target; it does not move existing
+types or introduce a generic formula interface, untyped parameter bag or runtime
+scripting language. Preserve existing metadata ownership and versioned packages.
+
+The [equipment selection study](equipment-effect-selection.md) demonstrates why
+typed family parameters need policies as well as fixed values: weapon/shield
+effects resolve their physical hand from current equipment, while the ability
+record selects the policy. Keep original slot/ID/mask encoding in adapters and
+retain formula-specific order and failure behavior. The [effect-family inventory](ability-effect-families.md)
+remains the map for choosing subsequent bounded work. AbilityToggles and owner
+draft consolidation remain deferred.
+
 ## Current repository, verified
 
 - `Fft.Editor` is a separate Windows Forms presentation adapter for the

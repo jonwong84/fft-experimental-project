@@ -44,12 +44,14 @@ Knight's Break Helm, Break Armor, Break Weapon and Break Shield selecting an
 equipment slot through an apparently hard-coded original value. Preserve this
 intent when selecting their equipment-break formula/content work.
 
-Trace the original selector, its callers and per-ability data before activating
-the enum. Keep named semantic slots in definitions and map original encodings
-explicitly in adapters; the draft enum's ordinal values are not verified original
-slot numbers. Establish how hand selection and weapon/shield categories relate
-to MainHand/OffHand before choosing the runtime model. This note records owner
-intent, not a completed source trace. Leave the draft unchanged until that work.
+The owner subsequently requested the [ZOD-419 source investigation](../architecture/equipment-effect-selection.md).
+It pins the original selector/callers and establishes right-first shields and
+highest-required-level weapons with right ties. Menu slots, battle locations and
+action masks are separate encodings. Missing-item fallback also differs between
+Break and Steal. The enum remains unchanged and inactive: its ordinals are not
+source slot numbers, and MainHand/OffHand must not imply Weapon/Shield. Managed
+equipment effects still need typed selection policies, explicit compatibility
+mapping and independently validated implementation before wiring in the draft.
 
 ## Active definitions
 
