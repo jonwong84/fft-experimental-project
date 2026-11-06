@@ -131,6 +131,12 @@ semantic flags as each family matures. Add armor, accessory and consumable defin
 alongside weapons; identify shared item metadata and family-specific data before selecting
 their structure. Keep owned quantities, equipped instances and battle use in state.
 
+For Knight's Break Helm/Armor/Weapon/Shield, retain the owner's
+[EquipmentSlot design intent](development/content-definition-drafts.md#equipment-break-slot-selection-deferred).
+Trace the original slot selector, hand/category rules and data mapping before
+using the draft enum; do not assume its ordinals match original encodings.
+This remains later equipment-break work and does not reorder the current milestone.
+
 Element mapping is one part of import expansion. Review the owner's remaining toggle groups
 as they are defined, trace each known property to its original field/bit and preserve unknown
 bits in adapters. Record custom-only toggles explicitly; decide defaults, validation and JSON

@@ -37,6 +37,20 @@ Similarly named AI preferences, absolute restrictions and execution flags must
 retain their distinct source meanings. Do not infer gameplay behavior from an
 FFTPatcher label or from these property names alone.
 
+## Equipment-break slot selection deferred
+
+Owner direction on 2026-11-06: `EquipmentSlot` was created in anticipation of
+Knight's Break Helm, Break Armor, Break Weapon and Break Shield selecting an
+equipment slot through an apparently hard-coded original value. Preserve this
+intent when selecting their equipment-break formula/content work.
+
+Trace the original selector, its callers and per-ability data before activating
+the enum. Keep named semantic slots in definitions and map original encodings
+explicitly in adapters; the draft enum's ordinal values are not verified original
+slot numbers. Establish how hand selection and weapon/shield categories relate
+to MainHand/OffHand before choosing the runtime model. This note records owner
+intent, not a completed source trace. Leave the draft unchanged until that work.
+
 ## Active definitions
 
 The following are implemented content models rather than the unused drafts above:

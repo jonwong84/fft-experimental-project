@@ -318,6 +318,10 @@ without rewriting old evidence.
   booleans for independent semantic flags, original byte packing in adapters,
   unknown bits preserved. ZOD-134's learning/current-sword families are migrated; extend other
   families only when their mapping is ready or the owner requests it.
+- [Equipment-break slot intent](development/content-definition-drafts.md#equipment-break-slot-selection-deferred):
+  the owner created `EquipmentSlot` for Knight's Break Helm/Armor/Weapon/Shield.
+  Preserve the draft and trace original selector/hand/category mappings when that
+  formula family is selected; its ordinals are not verified source encodings.
 
 ## Deferred and unresolved gates
 
