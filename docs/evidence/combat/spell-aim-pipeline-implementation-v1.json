@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "sourceReceipts": [
+    "docs/evidence/combat/spell-follow-source-v1.json",
+    "docs/evidence/combat/magic-resource-source-v1.json"
+  ],
+  "milestones": [
+    {
+      "ticket": "ZOD-364",
+      "managedBaseRevision": "befa904548dc596c887a17c14d5a962451c35820",
+      "validation": "3 focused managed cases passed;13 admitted original centre vectors and guards; fresh follow19/26 and resource12/10 source audits passed.",
+      "reports": "scratch/spell-aim-364-369/"
+    }
+  ]
+}

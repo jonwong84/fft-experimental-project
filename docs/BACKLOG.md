@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-364 (Resolve certified ordinary stored spell aims).**
-[Unit-follow and stored spell aims](behavior/spell-follow-and-stored-aim.md) records
-completed ZOD-363. Keep source choice, preparation admission and resolution separate.
-There are 34 open tickets below. The 330 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-365 (Resolve ready casts from stored unit-follow aims).**
+[Stored spell aims and phases](behavior/stored-spell-aim-pipeline.md) records
+completed ZOD-364. Keep selection, preparation, readiness and publication separate.
+There are 38 open tickets below. The 331 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,16 +31,43 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-364 — Resolve certified ordinary stored spell aims
+### ZOD-365 — Resolve ready casts from stored unit-follow aims
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-363
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-364
 
-Add a pure ordinary stored-map/unit-follow aim query from explicit known current
-anchor data. Preserve original coordinate narrowing and map/sheet/blocked-centre
-checks, target-activity distinctions and raw YES7 tile semantics. Reject missing
-anchor facts without falling back to the old tile. Preserve existing map APIs;
-no bridge, commands, clock, MP, RNG or live-state adoption in this child. See the
-[source and selected scope](behavior/spell-follow-and-stored-aim.md).
+Resolve the stored centre from a complete current roster, then delegate geometry and one-cost target calculation. Preserve inactive-anchor centring, original target order and whole-query rollback. See [source and phase boundaries](behavior/stored-spell-aim-pipeline.md).
+Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
+status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
+
+### ZOD-366 — Query ordinary spell target-choice modes
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-365
+
+Query ordinary blue target-choice modes from named flags and derived range panels, preserving NoFollowTarget and Auto/range0 ordering. No UI or command activation. See [source and phase boundaries](behavior/stored-spell-aim-pipeline.md).
+Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
+status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
+
+### ZOD-367 — Capture admitted player spell confirmations
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-366
+
+Capture a certified player confirmation from derived blue admission and known cursor occupancy. Preserve exact5/6/7, empty-tile fallback and ignored previous target identity. No runtime cursor search or commands. See [source and phase boundaries](behavior/stored-spell-aim-pipeline.md).
+Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
+status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
+
+### ZOD-368 — Prepare immutable ordinary spell charge plans
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-367
+
+Prepare an immutable ordinary Default non-Mime charge plan from a confirmed aim and certified current roster. Preserve preparation active-anchor checks, Short/Non-Charge and one blocked/allowed tick without spending MP or starting statuses. See [source and phase boundaries](behavior/stored-spell-aim-pipeline.md).
+Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
+status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
+
+### ZOD-369 — Resolve ready charge plans through shared magic queries
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-368
+
+At an admitted ready counter, read current caster/anchor facts, prepare MP once and resolve the retained aim/definition through existing owners. Preserve delayed movement, mode behavior and full candidate rollback; no live publication. See [source and phase boundaries](behavior/stored-spell-aim-pipeline.md).
 Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
 status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
 

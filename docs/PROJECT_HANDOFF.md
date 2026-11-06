@@ -6,21 +6,15 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-364: Resolve certified ordinary stored spell aims.**
-[Unit-follow and stored spell aims](behavior/spell-follow-and-stored-aim.md)
-records completed ZOD-363 from clean reference
-`11464943bbdbd2a0af022d90cb7f10455cf911df` (19 files/26 functions,42 descriptions).
-NoFollowTarget chooses the offered targeting mode; it does not override an already
-stored exact-unit command. UNIT6 follows current position at resolution; YES7 and
-other nonunit types use stored byte-narrowed tile coordinates. Preparation checks
-anchor activity, whereas ordinary resolution centre selection checks target slot
-bounds but not current activity/status. Keep known anchor data separate from
-occupant eligibility. Current blue range is not rechecked at resolution.
-[ZOD-358–362](behavior/ordinary-spell-targeting.md) already provide immutable range/
-area panels, source-order occupants and the ready one-cost magic cast bridge.
-ZOD-363 changes no production code. Next add the isolated aim query before bridge
-integration. Commands, full scheduling, special shapes and magic AI remain separate.
-The custom forward1/3/5 cone, owner drafts/JobStats and deferred gates are unchanged.
+**ZOD-365: Resolve ready casts from stored unit-follow aims.**
+[Stored spell aims and phases](behavior/stored-spell-aim-pipeline.md) records
+completed ZOD-364, using clean source
+`11464943bbdbd2a0af022d90cb7f10455cf911df`. Exact UNIT6 follows current identity/
+position; YES7 and other types use byte-narrowed stored tiles. Preparation checks
+anchor activity separately from resolution centre selection and occupant filtering.
+Keep blue selection, confirmation, charge and ready one-cost calculation distinct.
+No live commands, publication, full clock, status/corpse/Golem/terminal/frame RNG,
+AI activation or custom cone. Owner drafts/JobStats and documented deferrals remain.
 
 [Managed MP costs](development/managed-magic-mp-costs.md) now use nonnegative `int`
 through spell definitions, resource calculation and recorded cast/resource cost.
