@@ -6,34 +6,16 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-413: Trace ordinary spell AI charge-clock and movement opportunities.**
-The owner's requested ten milestones ZOD-403–412 are complete. No older five-hour
-run is active. [Ordinary spell AI](behavior/ordinary-spell-ai.md) and its
-[implementation receipt](evidence/ai/ordinary-spell-ai-implementation-v1.json)
-record original learned-row/list admission, considered usage/CT quirks, initialized
-MP statistics, usefulness, shared AI formulas, strike accounting, absolute MP
-scoring and a definition-bound current-aim/ready-hit query. The prepared metadata
-bridge uses AbilityMetadataDefinition as its source of truth. The new read-only
-[inspector](development/ordinary-spell-ai-inspection.md) needs prepared files only.
-
-This is not a whole delayed candidate rank or an autonomous magic turn. It
-projects one legal initial aim on current facts with explicit movement-opportunity
-inputs; source clock/move/aim search, restoration and lottery remain separate.
-Generic primary-only learned rows are supported. Secondary Cure/Fire grants,
-special/Mime row aliases and unresolved static AI bits fail closed for this AI
-bridge; player Cure casting and learning remain supported. No cached projection
-can enter authoritative battle execution. Shared damage/healing formulas remain
-independent of animation and future targeting shapes.
-
-Latest validation: locked restore, zero-warning/error Release build,
-**5,010 .NET /754 Python tests**. Fifteen managed prepared AI hypotheses match
-independent HP/MP/score/RNG arithmetic. All four native Fire/elemental/Cure/learning
-scenarios pass eighteen full replay checkpoints, movement, restart and drawing
-isolation; final gameplay hashes match ZOD-402. Source stays clean/read-only at
-`11464943bbdbd2a0af022d90cb7f10455cf911df`. Ten owner-file blobs and the independent
-unstaged SpellTargetChoiceQuery formatting edit are preserved. All 467 public
-Framework declarations have matching files and retained partial parts. Other
-documented deferrals remain in force; begin with the next bounded source study.
+**ZOD-414: Implement the bounded single-charge AI simulation clock.**
+The owner requested ten milestones ZOD-403–412. ZOD-403–413 are complete;
+[ordinary spell AI](behavior/ordinary-spell-ai-clock.md) records the ready-hit boundary
+and the remaining selected steps. Four independent Python checks and ten source clock descriptions pass.
+Full delayed charge-clock search and autonomous magic turns remain separate.
+The earlier five-hour runs are not active. Source stays clean/read-only at
+`11464943bbdbd2a0af022d90cb7f10455cf911df`. Preserve the ten owner files,
+JobStats and all
+documented deferred gates. The approved formatting edit is committed as `b7a222d`. The last whole-solution validation below is the
+ZOD-412 baseline (5,010 .NET /754 Python); the new milestone checks are above.
 
 [Managed MP costs](development/managed-magic-mp-costs.md) now use nonnegative `int`
 through spell definitions, resource calculation and recorded cast/resource cost.
