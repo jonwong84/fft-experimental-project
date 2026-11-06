@@ -6,10 +6,10 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-393: Select learned elemental spells in the player client.**
+**ZOD-394: Execute prepared Cure through the ordinary healing path.**
 [Fire execution](behavior/ordinary-magic-execution.md) is complete through ZOD-391.
 [Shared elemental execution](behavior/elemental-magic-execution.md) records completed
-ZOD-392. Source remains pinned to clean read-only
+ZOD-392–393. Source remains pinned to clean read-only
 `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 Fire works end to end through prepared content, explicit grants, player aim/charge,
 actual HP/MP/status/RNG/rewards, replay/restart and a runnable native client.
@@ -265,12 +265,12 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: ZOD-387–391 pass locked restore, a zero-warning/error Release
-  build and **4,818 .NET cases** (1,741 Framework,1,217 AI,857 Content,339 CLI,
-  206 AssetTool,434 Client,24 Engine). All **739 Python tests** pass.
+- Validation: ZOD-387–393 pass locked restore, a zero-warning/error Release
+  build and **4,839 .NET cases** (1,741 Framework,1,217 AI,857 Content,356 CLI,
+  206 AssetTool,438 Client,24 Engine). All **741 Python tests** pass.
   New status descriptions, authoritative cast scenarios, strict prepared content /
   import boundaries and player routes cover real HP/MP/status/RNG/reward/growth
-  publication, paid failures, replay and restart. The Windows GPU Fire run passes
+  publication, paid failures, replay and restart. Windows GPU Fire-only and twelve-spell runs pass learned selection,
   aim, charge, other-unit turn, Critical and first-KO controls through resized
   key/pointer routes, with complete headless replay matches. Aim/resolution/KO
   captures were visually inspected; physical input and original media are not
@@ -278,9 +278,13 @@ without rewriting old evidence.
   Fresh status/clock source fingerprints, growth/unlock/reward prepared-data,
   algorithm-guide, coverage, links, public-file layout and preservation checks
   pass. Fire preparation repeats all three files exactly and independently
-  verifies all34 source records, selected job growth,19 unlock rows and8 thresholds.
+  verifies all34 Fire source records, selected job growth,19 unlock rows and8 thresholds.
+  The elemental package binds twelve reviewed rows/56 source records to the same
+  formula/command owners. All12 native menu choices and per-tier managed execution
+  pass; owner drafts remain preserved. One unrelated Python banner-directory
+  access-denied error passed on a fresh full suite run.
   Seven TRX reports, native captures and audit logs stay under ignored
-  `scratch/fire-execution-387/`. No original or C execution. Source remains clean
+  `scratch/fire-execution-387/` (latest TRX set `trx-all-393`). No original or C execution. Source remains clean
   at `11464943bbdbd2a0af022d90cb7f10455cf911df`.
   Nine owner drafts/JobStats and Knight EquipmentSlot intent are preserved.
   The owner's separate formatting change in SpellTargetChoiceQuery remains

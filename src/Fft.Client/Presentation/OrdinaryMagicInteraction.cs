@@ -26,6 +26,8 @@ public sealed class OrdinaryMagicInteraction
     }
 
     public string Name(BattleUnitId id) => Content.UnitNames[id];
+    public ImmutableArray<AssetId> AvailableSpells => State.Turns.ActiveUnitId is { } actor
+        ? Content.SpellOrder.Where(State.Units.Single(u => u.Id == actor).Definition.LearnedSpells.Contains).ToImmutableArray() : [];
     public ImmutableArray<TilePosition> Range => SelectedSpell is { } spell && State.Turns.ActiveUnitId is { } actor
         ? OrdinaryMagicBattle.Choice(State, actor, spell).Outcome?.Range?.Panels ?? [] : [];
     public ImmutableArray<TilePosition> Area
@@ -50,12 +52,26 @@ public sealed class OrdinaryMagicInteraction
     {
         if (State.Finished || State.Turns.ActiveUnitId is not { } actor) { Error("Advance to a unit turn first."); return; }
         var unit = State.Units.Single(u => u.Id == actor);
-        var learned = unit.Definition.LearnedSpells.OrderBy(id => id.Value, StringComparer.Ordinal).ToArray();
+        var learned = AvailableSpells;
         if (learned.Length == 0) { Error("This unit has no learned spells. Move or wait."); return; }
         if (State.Pending.ContainsKey(actor)) { Error("This unit is already charging a spell."); return; }
         if (State.Turns.Units.Single(u => u.Id == actor).ActionTaken) { Error("The action has already been used."); return; }
         SelectedSpell = learned[0]; Mode = OrdinaryMagicInteractionMode.Cast; Aim = null;
         Message = "Choose a blue tile then confirm. Orange tiles show the area."; IsError = false;
+    }
+    public void SelectSpell(AssetId spell)
+    {
+        if (Mode != OrdinaryMagicInteractionMode.Cast || !AvailableSpells.Contains(spell))
+        { Error("Choose a learned spell from the open magic list."); return; }
+        SelectedSpell = spell; Aim = null;
+        Message = $"{Content.SpellNames[spell]} selected. Choose a blue tile then confirm."; IsError = false;
+    }
+    public void NextSpell(int direction = 1)
+    {
+        if (Mode != OrdinaryMagicInteractionMode.Cast || SelectedSpell is not { } selected) return;
+        var available = AvailableSpells;
+        int index = available.IndexOf(selected);
+        SelectSpell(available[(index + Math.Sign(direction) + available.Length) % available.Length]);
     }
     public void BeginStep()
     {
@@ -90,7 +106,7 @@ public sealed class OrdinaryMagicInteraction
     public void Cancel()
     {
         Mode = OrdinaryMagicInteractionMode.Browse; Aim = null; SelectedSpell = null;
-        Message = "N next event / F Fire / M step / W wait."; IsError = false;
+        Message = "N next event / F magic / M step / W wait."; IsError = false;
     }
     public void Restart()
     {

@@ -23,7 +23,9 @@ the executable, BIN or C reference checkout.
 ## Controls
 
 - **N / Next event:** advance to a ready turn or spell. Time passes only here.
-- **F / Fire:** on Mage's turn, show the blue selection range.
+- **F / Magic:** on Mage's turn, open learned spells and show blue selection range.
+- **Tab / Down / Up, or click a spell row:** select a learned spell in prepared
+  slot order. Its MP cost and charge time are displayed. Changing spell clears aim.
 - **Click a blue tile:** aim; orange tiles show the resolution area.
 - **U / Unit or tile:** follow the chosen unit or retain the selected tile.
   An empty tile always retains its position.
@@ -42,6 +44,20 @@ total100→112, EXP95→0 and level10→11. Five growth draws refresh HP/MP maxi
 The starting seed57 produces 12 gameplay draws through this first resolution.
 Continuing to cast Fire on Guard finishes the authored encounter at its first KO.
 
+## Elemental tiers
+
+```powershell
+dotnet run --project src/Zodiac.AssetTool.Cli -c Release -- prepare-elemental-magic-battle --exe scratch/all-data-extraction/SCUS_942.21 --output scratch/elemental-battle
+dotnet run --project src/Fft.Client -c Release -- --magic-battle --content-root scratch/elemental-battle
+```
+
+This separate authored setup grants Fire/Bolt/Ice tiers1–4 through the same shared
+formula and commands. Each spell retains its own power/cost/charge/geometry,
+including Bolt2's10 MP cost and tier4's radius2 caster exclusion. Its starting
+Wizard career is total5000/current260 after the selected grants, so a first Fire
+cast earns26 JP rather than the Fire-only setup's12. The map and first-KO objective
+are unchanged. [Source and execution](../behavior/elemental-magic-execution.md).
+
 ## Validation and limits
 
 ```powershell
@@ -57,6 +73,9 @@ and KO; rendering preserves state. `check.json` records adapter/runtime and
 receipt hashes. These are programmed UI routes, not physical input injection.
 
 The first local GPU run passed and its aim/resolution/KO captures were inspected.
+Updated native checks pass both packages; the larger list visits all12 spells
+through keys and first/last rows through resized pointer input. All12 actual cast
+effects are covered by managed command tests. The updated list/results were inspected.
 Original artwork, spell animations, audio and original encounter comparison are
 not supplied by this view. This is a human bare-equipment/no-RSM ordinary profile;
 general magic AI, full statuses, reactions, corpse/crystal scheduling and frame

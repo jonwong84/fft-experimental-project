@@ -45,3 +45,30 @@ cases validate source descriptions; the fresh source/prepared audit verifies all
 twelve records and manifest integrity. Long CT10 casts also reach Mage's ordinary
 tick18 turn while charging; Wait preserves the cast, and the additional upkeep
 draw is included. No runtime formula/clock/status breadth is added here.
+
+## ZOD-393
+
+The ordinary client now consumes prepared `SpellOrder`, filters it by the active
+unit's explicit learned grants and displays the resulting list with MP/CT.
+Keyboard Tab/Up/Down and pointer rows select a spell; changing selection clears
+the old aim. Range and area come from that selected definition, and confirmation
+submits its stable ID to the same authoritative battle command. Browsing neither
+spends MP nor changes turns/RNG. The old `--fire-battle` path remains available;
+`--magic-battle` selects the same player host for the twelve-spell package.
+
+Four new player-route cases cover nonalphabetic authored slot order, filtered
+grants, selection wrapping, distinct Bolt2 cost/power/charge, radius2 exclusion,
+stale aim, insufficient MP and exact replay. Separate native runs pass for the
+one-spell and twelve-spell packages. The latter visits all12 keyboard selections
+and pointer rows before running the unchanged Fire/restart/first-KO scenario;
+every elemental tier separately executes in managed tests. Resized input mapping,
+rendering isolation and complete replay receipts pass. The menu and result
+captures were visually inspected. These are programmed routes, not physical
+input or original menu presentation equivalence.
+
+Release builds with zero warnings/errors and all **4,839 .NET /741 Python tests**
+pass. One initial Python run encountered Windows access denied while renaming an
+unrelated banner test's temporary directory; a fresh complete run passes.
+Owner drafts/JobStats, the owner's separate targeting-format edit, existing
+sword/AI paths and prior deferrals are preserved. Next select Cure's ordinary
+healing path using the same player/state owners.

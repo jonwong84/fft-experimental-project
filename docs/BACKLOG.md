@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-393 (Select learned elemental spells in the player client).**
+**Next bounded work: ZOD-394 (Execute prepared Cure through the ordinary healing path).**
 [Fire execution](behavior/ordinary-magic-execution.md) is complete through ZOD-391.
-[Shared elemental work](behavior/elemental-magic-execution.md) records ZOD-392.
-There are 34 open tickets below. The 359 completed tickets, prior checkpoints and
+[Shared elemental work](behavior/elemental-magic-execution.md) records ZOD-392–393.
+There are 34 open tickets below. The 360 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,11 +31,11 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-393 — Select learned elemental spells in the player client
+### ZOD-394 — Execute prepared Cure through the ordinary healing path
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-392
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-393
 
-Expose source-ordered learned spell selection through the existing ordinary player command path. Preserve spell-specific cost, charge, geometry, damage and grants; validate native controls plus deterministic replay.
+Trace and bind Cure formula0x0C with selected prepared metadata. Exercise actual HP healing, Critical clearing, MP payment, rewards and replay through the established ordinary command owner. Keep unsupported undead/status/AI branches explicit.
 Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
 Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.
 

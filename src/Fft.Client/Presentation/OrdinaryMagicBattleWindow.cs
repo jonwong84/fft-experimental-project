@@ -24,6 +24,7 @@ internal sealed class OrdinaryMagicBattleWindow : Game
     private int frames, checkStep, nextFrame = 15, casts;
     private string? pendingCapture = "start.png", firstResolution;
     private bool resizeChecked, restarted, finalCaptured;
+    private int spellSelectionsChecked;
     private readonly List<object> checkpoints = [];
     public bool CheckCompleted { get; private set; }
 
@@ -33,7 +34,7 @@ internal sealed class OrdinaryMagicBattleWindow : Game
         graphics = new(this) { PreferredBackBufferWidth = 960, PreferredBackBufferHeight = 640,
             GraphicsProfile = GraphicsProfile.Reach, SynchronizeWithVerticalRetrace = true };
         IsFixedTimeStep = true; TargetElapsedTime = TimeSpan.FromSeconds(1.0 / 60); IsMouseVisible = true;
-        Window.AllowUserResizing = true; Window.Title = "FFT / Fire / local two player / Esc closes";
+        Window.AllowUserResizing = true; Window.Title = "FFT / Ordinary Magic / local two player / Esc closes";
         Window.KeyDown += KeyDown; Window.KeyUp += KeyUp;
         Activated += Focus; Deactivated += Blur;
     }
@@ -72,6 +73,8 @@ internal sealed class OrdinaryMagicBattleWindow : Game
         {
             case Keys.N: interaction.Advance(); break;
             case Keys.F: interaction.BeginCast(); break;
+            case Keys.Tab: case Keys.Down: interaction.NextSpell(); break;
+            case Keys.Up: interaction.NextSpell(-1); break;
             case Keys.W: interaction.Wait(); break;
             case Keys.M: interaction.BeginStep(); break;
             case Keys.U: interaction.ToggleFollow(); break;
@@ -91,6 +94,11 @@ internal sealed class OrdinaryMagicBattleWindow : Game
                 pp.BackBufferWidth, pp.BackBufferHeight) is not { } canvas) return;
         foreach (var button in Buttons())
             if (Contains(button.Bounds, canvas)) { Dispatch(button.Key); return; }
+        if (interaction.Mode == OrdinaryMagicInteractionMode.Cast && canvas.X is >= 520 and < 936 && canvas.Y >= 196)
+        {
+            int row = (canvas.Y - 196) / 22;
+            if (row < interaction.AvailableSpells.Length) { interaction.SelectSpell(interaction.AvailableSpells[row]); return; }
+        }
         int x = (canvas.X - 24) / 64, y = (canvas.Y - 196) / 56;
         if (canvas.X >= 24 && canvas.Y >= 196 && x < 7 && y < 5) interaction.Select(new(x, y, 0));
     }
@@ -105,7 +113,7 @@ internal sealed class OrdinaryMagicBattleWindow : Game
     private static IEnumerable<(PixelRect Bounds, Keys Key, string Label)> Buttons()
     {
         yield return (new(24, 548, 178, 34), Keys.N, "N NEXT EVENT");
-        yield return (new(214, 548, 120, 34), Keys.F, "F FIRE");
+        yield return (new(214, 548, 120, 34), Keys.F, "F MAGIC");
         yield return (new(346, 548, 120, 34), Keys.W, "W WAIT");
         yield return (new(478, 548, 120, 34), Keys.M, "M STEP");
         yield return (new(610, 548, 154, 34), Keys.R, "R RESTART");
@@ -138,12 +146,17 @@ internal sealed class OrdinaryMagicBattleWindow : Game
     private void Interface()
     {
         var state = interaction.State;
-        Text("FIRE / ORDINARY MAGIC", 24, 24, 3, Color.White);
+        Text("ORDINARY MAGIC", 24, 24, 3, Color.White);
         Text("LOCAL TWO PLAYER / FIRST KO WINS", 24, 64, 2, Muted);
         Text(interaction.Message, 24, 104, 2, interaction.IsError ? Gold : Color.White, 75);
         string turn = state.Finished ? "ENCOUNTER COMPLETE" : state.Turns.ActiveUnitId is { } id
             ? $"TURN {interaction.Name(id)}" : "N ADVANCES TO NEXT EVENT";
         Text($"{turn} / TICK {state.Turns.Ticks}", 24, 146, 2, Cyan);
+        if (interaction.SelectedSpell is { } selected)
+        {
+            var spell = state.Definition.Spells[selected];
+            Text($"{interaction.Content.SpellNames[selected]} / MP {spell.MpCost} / CT {spell.RawChargeTime}", 24, 174, 2, Gold);
+        }
         var range = interaction.Range; var area = interaction.Area;
         for (int y = 0; y < 5; y++) for (int x = 0; x < 7; x++)
         {
@@ -162,7 +175,18 @@ internal sealed class OrdinaryMagicBattleWindow : Game
         }
         Text(interaction.Mode == OrdinaryMagicInteractionMode.Cast
             ? $"AIM / {(interaction.FollowUnit ? "FOLLOW UNIT" : "KEEP TILE")}" : "M STEP / ONE ADJACENT TILE", 24, 496, 2, Muted);
-        for (int i = 0; i < state.Units.Length; i++)
+        if (interaction.Mode == OrdinaryMagicInteractionMode.Cast)
+        {
+            Text("MAGIC / TAB OR UP DOWN", 520, 174, 2, Muted);
+            var available = interaction.AvailableSpells;
+            for (int i = 0; i < available.Length; i++)
+            {
+                var spell = state.Definition.Spells[available[i]]; int y = 196 + i * 22;
+                Rect(520, y, 416, 21, available[i] == interaction.SelectedSpell ? new(52, 83, 111) : new(25, 37, 54));
+                Text($"{interaction.Content.SpellNames[spell.Id]} / MP {spell.MpCost} / CT {spell.RawChargeTime}", 532, y + 3, 2, Color.White);
+            }
+        }
+        else for (int i = 0; i < state.Units.Length; i++)
         {
             var unit = state.Units[i]; int y = 196 + i * 142;
             Rect(520, y, 416, 132, new(25, 37, 54));
@@ -202,7 +226,9 @@ internal sealed class OrdinaryMagicBattleWindow : Game
         {
             case 0: Dispatch(Keys.N); pendingCapture = "turn.png"; break;
             case 1: Dispatch(Keys.N); break; // Rejected while the unit owns its turn.
-            case 2: Dispatch(Keys.F); InjectTile(6, 4); Dispatch(Keys.Enter); break; // Rejected out-of-range aim.
+            case 2:
+                Dispatch(Keys.F); CheckSpellSelection(); InjectTile(6, 4); Dispatch(Keys.Enter);
+                pendingCapture = "spell-list.png"; break; // Rejected out-of-range aim.
             case 3: InjectTile(4, 2); pendingCapture = "aim.png"; break;
             case 4: Dispatch(Keys.Enter); pendingCapture = "charging.png"; break;
             case 5: Inject(new(400, 565)); break; // Native pointer route to Wait.
@@ -254,6 +280,21 @@ internal sealed class OrdinaryMagicBattleWindow : Game
             state.Units[0].Experience != 0 || state.Turns.RngState.DrawCount != 12 || !state.Pending.IsEmpty)
             throw new InvalidOperationException("Prepared Fire first-cast result differed from the independent expected values.");
     }
+    private void CheckSpellSelection()
+    {
+        string before = OrdinaryMagicSnapshot.Capture(interaction.State);
+        var order = interaction.AvailableSpells;
+        for (int i = 0; i < order.Length; i++)
+        {
+            if (interaction.SelectedSpell != order[i]) throw new InvalidOperationException("Player spell order differs from prepared learned slots.");
+            spellSelectionsChecked++; Dispatch(Keys.Tab);
+        }
+        Inject(new(600, 196 + (order.Length - 1) * 22 + 10));
+        if (interaction.SelectedSpell != order[^1]) throw new InvalidOperationException("Spell pointer selection failed.");
+        Inject(new(600, 206));
+        if (interaction.SelectedSpell != order[0] || OrdinaryMagicSnapshot.Capture(interaction.State) != before)
+            throw new InvalidOperationException("Spell browsing changed gameplay state.");
+    }
     private string Checkpoint(string name)
     {
         string snapshot = OrdinaryMagicSnapshot.Capture(interaction.State);
@@ -272,7 +313,7 @@ internal sealed class OrdinaryMagicBattleWindow : Game
         {
             evidence = "Windows GPU plus programmed key/pointer routes; no physical input injection or original media",
             referenceRevision = "11464943bbdbd2a0af022d90cb7f10455cf911df", interaction.Content.Ruleset,
-            checkpoints, casts, restartMatched = true, renderingPreservedState = true, resizeChecked, frames,
+            checkpoints, casts, spellSelectionsChecked, restartMatched = true, renderingPreservedState = true, resizeChecked, frames,
             finalSha256 = Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(final))),
             adapter = GraphicsAdapter.DefaultAdapter.Description,
             runtime = System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription,

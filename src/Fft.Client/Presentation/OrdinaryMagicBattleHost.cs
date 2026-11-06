@@ -5,18 +5,18 @@ namespace Fft.Client.Presentation;
 
 public static class OrdinaryMagicBattleHost
 {
-    public const string Usage = "--fire-battle --content-root <prepared-directory> [--check <fresh-directory>]";
+    public const string Usage = "(--fire-battle|--magic-battle) --content-root <prepared-directory> [--check <fresh-directory>]";
     public static int Run(string[] args)
     {
-        if (args.Length is not (3 or 5) || args[0] != "--fire-battle" || args[1] != "--content-root" ||
+        if (args.Length is not (3 or 5) || args[0] is not ("--fire-battle" or "--magic-battle") || args[1] != "--content-root" ||
             args.Length == 5 && args[3] != "--check" || args.Where((_, i) => i is 2 or 4).Any(string.IsNullOrWhiteSpace))
         { Console.Error.WriteLine("Usage: " + Usage); return 2; }
         try
         {
             var prepared = PreparedOrdinaryMagicBattle.Load(LooseAssetStore.Load(args[2]));
-            if (prepared.Definition.Units.Length != 2 || prepared.SpellNames.Count != 1 ||
+            if (prepared.Definition.Units.Length != 2 || prepared.SpellNames.Count is < 1 or > 12 ||
                 prepared.Definition.Map.Width != 7 || prepared.Definition.Map.Depth != 5)
-                throw new NotSupportedException("This player window selects the two-unit 7x5 Fire encounter.");
+                throw new NotSupportedException("This player window selects two-unit 7x5 ordinary encounters with up to twelve spells.");
             string? output = args.Length == 5 ? Path.GetFullPath(args[4]) : null;
             if (output is not null && (Directory.Exists(output) || File.Exists(output))) throw new IOException("Check output already exists.");
             if (!OperatingSystem.IsWindows()) throw new PlatformNotSupportedException("The playable spell window supports Windows.");

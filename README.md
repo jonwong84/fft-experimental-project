@@ -30,7 +30,9 @@ justifies it. Current assemblies are not yet interchangeable.
 - **Playable prepared Fire:** select a unit or tile, charge and resolve original
   Fire in an authored two-unit encounter. Real HP/MP/status/RNG, EXP/JP, level
   growth and unlocks publish through deterministic commands; native checks match
-  headless replay and restart. [Prepare, launch and controls](docs/development/fire-battle-controls.md).
+  headless replay and restart. A separate package adds all Fire/Bolt/Ice tiers
+  through the same formula, with a learned spell menu and distinct costs/charge/
+  geometry. [Prepare, launch and controls](docs/development/fire-battle-controls.md).
 
 - **First job/ability editor:** `Fft.Editor` opens prepared baseline metadata,
   creates a separate authored job/skillset/ability copy, edits Move/Jump/JP,

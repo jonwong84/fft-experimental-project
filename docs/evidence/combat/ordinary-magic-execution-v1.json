@@ -39,6 +39,12 @@
       "managedBaseRevision": "b29ffe738e95c7900dd34ba01965287f3dae0f01",
       "validation": "28 selected CLI cases pass, including 17 new family execution cases; prior Fire vectors retained. Verified local elemental preparation succeeds with 56 source records; six-file/five-function source audit and twelve reviewed binding vectors pass. Two new Python cases pass.",
       "reports": "scratch/fire-execution-387/"
+    },
+    {
+      "ticket": "ZOD-393",
+      "managedBaseRevision": "5f6adc88dfe49d017f6d39b28debb9cf57ba339b",
+      "validation": "Release zero warnings/errors; all 4839 .NET and 741 Python tests pass. Native Fire-only and twelve-spell menu/charge/restart/KO checks match complete headless replay. Twelve keyboard selections and pointer rows verified; captures inspected. One unrelated temporary-directory access error passed on a fresh full Python run.",
+      "reports": "scratch/fire-execution-387/"
     }
   ]
 }
