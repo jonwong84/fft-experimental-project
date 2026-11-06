@@ -31,6 +31,12 @@
       "managedBaseRevision": "2c08c39260b5e4ce2a0477c9ce4a283ac569016b",
       "validation": "8 cumulative focused managed cases passed; immutable capture, inactive anchor retention, coherence guards and26-unit/13-sign roster.",
       "reports": "scratch/magic-publication-370-375/"
+    },
+    {
+      "ticket": "ZOD-374",
+      "managedBaseRevision": "c7adb5b362c4267b2d302200ea46c3ef44078bc3",
+      "validation": "12 cumulative managed cases passed; four reducer cases rechecked after deriving active metadata; one cost/self/miss, private late KO/Critical rollback and malformed-cast guards.",
+      "reports": "scratch/magic-publication-370-375/"
     }
   ]
 }

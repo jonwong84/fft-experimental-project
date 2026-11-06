@@ -106,3 +106,16 @@ can retain explicit metadata with no invented current/vital defaults. This adds
 no original fixed roster cap, neutral-sign requirement, sword-state fields or
 adoption authority. Eight cumulative managed cases pass copy isolation, inactive
 anchors, invalid coherence and a26-unit/13-sign roster.
+
+## ZOD-374
+
+`MagicCastProjection` privately reduces a certified eligible target order into a
+new vital snapshot. It checks unique known active targets and a consistent
+nonnegative recorded cost/MP difference, proposes MP once before self-target
+application and delegates each frame to `MagicLivingApplication`. Active-unit
+knowledge is derived from captured metadata; absent reactions/other work still
+require explicit certificates. Late rejection discards the entire HP/MP builder.
+Input unit order and bystanders remain, and this stage deliberately retains the
+input RNG because it does not own formula draws. Twelve cumulative managed cases
+pass two-target66/32 HP, one-cost21 MP, self/miss handling, malformed casts and
+late KO/Critical rollback. A supplied public cast is analysis data, not authority.

@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-374 (Reduce cast HP and MP projections atomically).**
+**Next bounded work: ZOD-375 (Compose ready plans into opaque vital and RNG proposals).**
 [Living magic result projections](behavior/living-magic-projections.md) records
-completed ZOD-370–373. Keep selection, preparation, readiness and publication separate.
-There are 35 open tickets below. The 340 completed tickets, prior checkpoints and
+completed ZOD-370–374. Keep selection, preparation, readiness and publication separate.
+There are 34 open tickets below. The 341 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,17 +31,9 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-374 — Reduce cast HP and MP projections atomically
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-373
-
-Reduce a supplied certified cast into a private snapshot with one proposed MP deduction before self-target work and source target order. Late rejection discards all HP/MP candidate data; no RNG or publication authority. See [source and phase boundaries](behavior/living-magic-projections.md).
-Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
-status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
-
 ### ZOD-375 — Compose ready plans into opaque vital and RNG proposals
 
-**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-374
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-374
 
 Bind a ready-plan calculation to one exact immutable snapshot, recompute through existing owners and return an opaque HP/MP/RNG proposal. Execution mode only; no live adoption, commands or full status/progression. See [source and phase boundaries](behavior/living-magic-projections.md).
 Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
