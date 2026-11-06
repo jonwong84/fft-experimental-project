@@ -8,17 +8,18 @@ public enum TargetedAbilityEffect { ThrowStoneFlat = 1, DashFlat = 2 }
 /// <summary>Closed immediate occupied-unit damage/flat-knockback definition, separate from learning metadata.</summary>
 public sealed class TargetedAbilityDefinition
 {
-    public AbilityId Id { get; }
-    public TargetedAbilityEffect Effect { get; }
-    public int Range { get; }
+    public AbilityId Id => new(Definition.Id.Value);
+    public PhysicalAbilityDelivery Delivery { get; }
+    public TargetedAbilityEffect Effect => Delivery == PhysicalAbilityDelivery.AdjacentUnit
+        ? TargetedAbilityEffect.DashFlat : TargetedAbilityEffect.ThrowStoneFlat;
+    public int Range => Definition.Range;
     /// <summary>Legacy schema1 binding value. Configurable calculations use Formula.X/Y.</summary>
-    public int MaximumDamageMultiplier { get; }
-    public int ChargeTicks { get; }
-    public int MpCost { get; }
-    public PhysicalDamageFormula Formula { get; }
+    public int MaximumDamageMultiplier => Delivery == PhysicalAbilityDelivery.AdjacentUnit ? 4 : 2;
+    public int ChargeTicks => 0;
+    public int MpCost => 0;
+    public PhysicalDamageFormula Formula => Definition.Formula;
     public bool IsCustom { get; }
-    public PhysicalAbilityDefinition Definition => new(new(Id.Value), Range,
-        Effect == TargetedAbilityEffect.ThrowStoneFlat, Effect == TargetedAbilityEffect.ThrowStoneFlat, Formula);
+    public PhysicalAbilityDefinition Definition { get; }
 
     public TargetedAbilityDefinition(AbilityId id, TargetedAbilityEffect effect, int range,
         int maximumDamageMultiplier, int chargeTicks, int mpCost)
@@ -32,16 +33,28 @@ public sealed class TargetedAbilityDefinition
         };
         if (!supported || chargeTicks != 0 || mpCost != 0)
             throw new NotSupportedException("Select immediate zero-MP flat Throw Stone (range4/Y2) or Dash (range1/Y4).");
-        Id = id; Effect = effect; Range = range; MaximumDamageMultiplier = maximumDamageMultiplier; ChargeTicks = chargeTicks; MpCost = mpCost;
-        Formula = new(PhysicalDamageFormulaId.RandomPa, 0, maximumDamageMultiplier);
+        Delivery = ToDelivery(effect);
+        Definition = new(new(id.Value), Delivery, new(PhysicalDamageFormulaId.RandomPa, 0, maximumDamageMultiplier));
     }
 
     /// <summary>Explicit custom formula assignment; delivery retains the admitted original targeting and execution attributes.</summary>
     public TargetedAbilityDefinition(AbilityId id, TargetedAbilityEffect delivery, PhysicalDamageFormula formula)
-        : this(id, delivery, delivery == TargetedAbilityEffect.DashFlat ? 1 : 4,
-            delivery == TargetedAbilityEffect.DashFlat ? 4 : 2, 0, 0)
+        : this(id, ToDelivery(delivery), formula) { }
+
+    /// <summary>Custom data with explicit delivery and formula; no ability-specific class or defaults are required.</summary>
+    public TargetedAbilityDefinition(AbilityId id, PhysicalAbilityDelivery delivery, PhysicalDamageFormula formula)
     {
+        DefinitionValidation.RequiredId(id.Value, nameof(id));
         ArgumentNullException.ThrowIfNull(formula);
-        Formula = formula; IsCustom = true;
+        Definition = new(new(id.Value), delivery, formula);
+        Delivery = delivery;
+        IsCustom = true;
     }
+
+    private static PhysicalAbilityDelivery ToDelivery(TargetedAbilityEffect effect) => effect switch
+    {
+        TargetedAbilityEffect.DashFlat => PhysicalAbilityDelivery.AdjacentUnit,
+        TargetedAbilityEffect.ThrowStoneFlat => PhysicalAbilityDelivery.DirectProjectile,
+        _ => throw new NotSupportedException("Select an admitted physical delivery profile.")
+    };
 }

@@ -12,24 +12,33 @@ public static class TargetedAbilityBattleSetup
     public static TargetedAbilityBattleProfile CreateProfile(ContentPackage metadata, TargetedAbilityContentPackage effects,
         BaseJobBattleSetup setup, IEnumerable<LearnedTargetedAbilityGrant> grants, TerrainSurfaceId ordinaryGroundSurface, int equipmentPhysicalAttackBonus)
     {
-        var units = ResolveGrants(metadata, effects, setup, grants, equipmentPhysicalAttackBonus, TargetedAbilityEffect.ThrowStoneFlat);
-        return TargetedAbilityBattleProfile.FromDefinitions(ordinaryGroundSurface, effects.Abilities.Select(ability => ability.Definition), units);
+        return TargetedAbilityBattleProfile.FromPhysicalProfile(CreatePhysicalProfile(metadata, effects, setup, grants,
+            ordinaryGroundSurface, equipmentPhysicalAttackBonus, PhysicalAbilityDelivery.DirectProjectile));
     }
 
     /// <summary>Explicit flat Dash binding; AI metadata and known slots never grant an actual action.</summary>
     public static DashAbilityBattleProfile CreateDashProfile(ContentPackage metadata, TargetedAbilityContentPackage effects,
         BaseJobBattleSetup setup, IEnumerable<LearnedTargetedAbilityGrant> grants, TerrainSurfaceId ordinaryGroundSurface, int equipmentPhysicalAttackBonus)
     {
-        var units = ResolveGrants(metadata, effects, setup, grants, equipmentPhysicalAttackBonus, TargetedAbilityEffect.DashFlat);
-        return DashAbilityBattleProfile.FromDefinitions(ordinaryGroundSurface, effects.Abilities.Select(ability => ability.Definition), units);
+        return DashAbilityBattleProfile.FromPhysicalProfile(CreatePhysicalProfile(metadata, effects, setup, grants,
+            ordinaryGroundSurface, equipmentPhysicalAttackBonus, PhysicalAbilityDelivery.AdjacentUnit));
+    }
+
+    /// <summary>Bind explicit physical delivery data; metadata and learned slot grants remain separate authorities.</summary>
+    public static PhysicalAbilityBattleProfile CreatePhysicalProfile(ContentPackage metadata, TargetedAbilityContentPackage effects,
+        BaseJobBattleSetup setup, IEnumerable<LearnedTargetedAbilityGrant> grants, TerrainSurfaceId ordinaryGroundSurface,
+        int equipmentPhysicalAttackBonus, PhysicalAbilityDelivery delivery)
+    {
+        var units = ResolveGrants(metadata, effects, setup, grants, equipmentPhysicalAttackBonus, delivery);
+        return new(ordinaryGroundSurface, delivery, effects.Abilities.Select(ability => ability.Definition), units);
     }
 
     private static IEnumerable<TargetedAbilityUnitGrant> ResolveGrants(ContentPackage metadata, TargetedAbilityContentPackage effects,
-        BaseJobBattleSetup setup, IEnumerable<LearnedTargetedAbilityGrant> grants, int equipmentPhysicalAttackBonus, TargetedAbilityEffect expectedEffect)
+        BaseJobBattleSetup setup, IEnumerable<LearnedTargetedAbilityGrant> grants, int equipmentPhysicalAttackBonus, PhysicalAbilityDelivery expectedDelivery)
     {
         ArgumentNullException.ThrowIfNull(effects); ArgumentNullException.ThrowIfNull(setup); ArgumentNullException.ThrowIfNull(grants);
         effects.ValidateAgainst(metadata);
-        if (effects.Abilities.Any(ability => ability.Effect != expectedEffect))
+        if (effects.Abilities.Any(ability => ability.Delivery != expectedDelivery))
             throw new NotSupportedException("Select only effects for the requested actual rule binding.");
         if (equipmentPhysicalAttackBonus != 0) throw new NotSupportedException("Only zero equipment PA bonus is supported.");
         var units = setup.Definitions.ToDictionary(binding => binding.UnitId);

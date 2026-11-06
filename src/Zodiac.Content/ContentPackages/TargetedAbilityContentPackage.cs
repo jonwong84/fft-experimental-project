@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.Json;
 using Zodiac.Content.Definitions;
 using Zodiac.Framework.Formulas;
+using Zodiac.Framework;
 
 namespace Zodiac.Content.ContentPackages;
 
@@ -113,7 +114,7 @@ public sealed class TargetedAbilityContentPackage
             profileId = ProfileId, requiredMetadataPackageId = RequiredMetadataPackageId,
             abilities = Abilities.OrderBy(a => a.Id.Value, StringComparer.Ordinal).Select(a => new
             {
-                id = a.Id.Value, delivery = a.Effect == TargetedAbilityEffect.DashFlat ? "adjacent-unit" : "direct-projectile",
+                id = a.Id.Value, delivery = a.Delivery == PhysicalAbilityDelivery.AdjacentUnit ? "adjacent-unit" : "direct-projectile",
                 target = "occupied-unit", range = a.Range, evadeable = a.Definition.Evadeable,
                 formula = (int)a.Formula.Id, x = a.Formula.X, y = a.Formula.Y, chargeTicks = a.ChargeTicks, mpCost = a.MpCost
             })
@@ -135,15 +136,15 @@ public sealed class TargetedAbilityContentPackage
         id = v.Id(node.GetProperty("id"), id, path + ".id");
         var delivery = v.Text(node.GetProperty("delivery"), id, path + ".delivery") switch
         {
-            "adjacent-unit" => TargetedAbilityEffect.DashFlat,
-            "direct-projectile" => TargetedAbilityEffect.ThrowStoneFlat,
+            "adjacent-unit" => PhysicalAbilityDelivery.AdjacentUnit,
+            "direct-projectile" => PhysicalAbilityDelivery.DirectProjectile,
             _ => throw v.Failure(id, path + ".delivery", "Unsupported delivery profile.")
         };
         if (v.Text(node.GetProperty("target"), id, path + ".target") != "occupied-unit") throw v.Failure(id, path + ".target", "Select occupied-unit targeting.");
-        int range = delivery == TargetedAbilityEffect.DashFlat ? 1 : 4;
+        int range = delivery == PhysicalAbilityDelivery.AdjacentUnit ? 1 : 4;
         _ = v.Integer(node.GetProperty("range"), id, path + ".range", range, range);
         var evade = node.GetProperty("evadeable");
-        if (evade.ValueKind is not (JsonValueKind.True or JsonValueKind.False) || evade.GetBoolean() != (delivery == TargetedAbilityEffect.ThrowStoneFlat))
+        if (evade.ValueKind is not (JsonValueKind.True or JsonValueKind.False) || evade.GetBoolean() != (delivery == PhysicalAbilityDelivery.DirectProjectile))
             throw v.Failure(id, path + ".evadeable", "The selected delivery retains its admitted execution flags.");
         _ = v.Integer(node.GetProperty("chargeTicks"), id, path + ".chargeTicks", 0, 0);
         _ = v.Integer(node.GetProperty("mpCost"), id, path + ".mpCost", 0, 0);

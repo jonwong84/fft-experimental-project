@@ -1,50 +1,37 @@
-using Zodiac.Framework.Random;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework;
 
-/// <summary>Immutable opt-in for two ordinary units on an explicitly selected open, dry ground surface.</summary>
-/// <remarks>The caller certifies the selected surface as ordinary ground; raw original terrain IDs are not inferred.</remarks>
+/// <summary>Compatibility view of the admitted direct-projectile physical profile.</summary>
+/// <remarks>Pair admission remains distinct from roster trajectory admission.</remarks>
 public sealed class TargetedAbilityBattleProfile
 {
     public const string RulesId = "fft:rules/throw-stone-flat-v1";
-    public TerrainSurfaceId OrdinaryGroundSurface { get; }
+    public PhysicalAbilityBattleProfile PhysicalProfile { get; }
+    public TerrainSurfaceId OrdinaryGroundSurface => PhysicalProfile.Ground;
     public ImmutableDictionary<AssetId, BoundedThrowStoneAbility> Abilities { get; }
-    public ImmutableDictionary<BattleUnitId, TargetedAbilityUnitGrant> Units { get; }
+    public ImmutableDictionary<BattleUnitId, TargetedAbilityUnitGrant> Units => PhysicalProfile.Units;
 
     public TargetedAbilityBattleProfile(TerrainSurfaceId ordinaryGroundSurface,
         IEnumerable<BoundedThrowStoneAbility> abilities, IEnumerable<TargetedAbilityUnitGrant> units)
+        : this(new PhysicalAbilityBattleProfile(ordinaryGroundSurface, PhysicalAbilityDelivery.DirectProjectile,
+            (abilities ?? throw new ArgumentNullException(nameof(abilities))).Select(a =>
+                (a ?? throw new ArgumentNullException(nameof(abilities))).Definition), units)) { }
+
+    private TargetedAbilityBattleProfile(PhysicalAbilityBattleProfile profile)
     {
-        if (string.IsNullOrWhiteSpace(ordinaryGroundSurface.Value))
-            throw new ArgumentException("Select an ordinary ground surface explicitly.", nameof(ordinaryGroundSurface));
-        ArgumentNullException.ThrowIfNull(abilities); ArgumentNullException.ThrowIfNull(units);
-        var effects = ImmutableDictionary.CreateBuilder<AssetId, BoundedThrowStoneAbility>();
-        foreach (var ability in abilities)
-        {
-            ArgumentNullException.ThrowIfNull(ability);
-            if (!effects.TryAdd(ability.Id, ability)) throw new ArgumentException("Duplicate executable ability.", nameof(abilities));
-        }
-        var grants = ImmutableDictionary.CreateBuilder<BattleUnitId, TargetedAbilityUnitGrant>();
-        foreach (var unit in units)
-        {
-            ArgumentNullException.ThrowIfNull(unit);
-            if (!grants.TryAdd(unit.UnitId, unit)) throw new ArgumentException("Duplicate unit grant binding.", nameof(units));
-            if (unit.Abilities.Any(id => !effects.ContainsKey(id))) throw new ArgumentException("Unresolved executable ability grant.", nameof(units));
-        }
-        OrdinaryGroundSurface = ordinaryGroundSurface;
-        Abilities = effects.ToImmutable(); Units = grants.ToImmutable();
+        ArgumentNullException.ThrowIfNull(profile);
+        if (profile.Delivery != PhysicalAbilityDelivery.DirectProjectile)
+            throw new NotSupportedException("Select the direct-projectile physical delivery profile.");
+        PhysicalProfile = profile;
+        Abilities = profile.Abilities.ToImmutableDictionary(p => p.Key, p => BoundedThrowStoneAbility.FromDefinition(p.Value));
     }
 
-    /// <summary>Bind shared content definitions to the admitted direct-projectile delivery.</summary>
+    public static TargetedAbilityBattleProfile FromPhysicalProfile(PhysicalAbilityBattleProfile profile) => new(profile);
+
     public static TargetedAbilityBattleProfile FromDefinitions(TerrainSurfaceId ground, IEnumerable<PhysicalAbilityDefinition> abilities,
-        IEnumerable<TargetedAbilityUnitGrant> units)
-    {
-        ArgumentNullException.ThrowIfNull(abilities);
-        var definitions = abilities.ToImmutableArray();
-        if (definitions.Any(a => a is null || a.Range != 4 || !a.Evadeable || !a.DirectTrajectory))
-            throw new NotSupportedException("Select the range4 evadeable direct-projectile delivery profile.");
-        return new(ground, definitions.Select(a => new BoundedThrowStoneAbility(a.Id, a.Formula)), units);
-    }
+        IEnumerable<TargetedAbilityUnitGrant> units) =>
+        new(new PhysicalAbilityBattleProfile(ground, PhysicalAbilityDelivery.DirectProjectile, abilities, units));
 
     internal void ValidateState(AttackBattleSnapshot state)
     {

@@ -6,7 +6,15 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-421: Consolidate physical delivery profiles and definition ownership.**
+**ZOD-418: Trace fixed-origin ordinary spell aim search and ranking.**
+The [ZOD-421 physical delivery refactor](architecture/physical-delivery-profiles.md)
+is complete. `PhysicalAbilityBattleProfile` owns immutable definitions and learned
+grants for explicit adjacent/projectile delivery. Generic content binding and
+roster execution retain arbitrary stable IDs and selected formulas. Named profiles
+are compatibility views of the same definitions; named roster APIs forward to
+shared admission/settlement. Pair-only projectile admission, event shapes,
+interception, metadata and command/frozen-continuation authority remain preserved.
+
 The owner-selected [ZOD-422 preparation/AI refactor](architecture/ai-preparation-and-simulation.md)
 is complete. `CombatRules.OrdinaryMagicPreparation` now proposes a pending plan
 and primary-action caster statuses for both live ordinary casting and AI.
@@ -24,19 +32,21 @@ Dash selects Repeating Fist's formula through shared calculation, preview,
 ranked AI, direct execution and frozen Move continuation, retaining its own
 identity, range, execution evasion, metadata and grants. Formula-only edits retain
 X/Y; they do not copy another ability's parameters. Named adapters remain for
-existing API/event contracts; profile/definition consolidation is next.
+existing API/event contracts; the subsequent delivery consolidation is complete.
 
-Locked restore, zero-warning/error Release build, **5,087 .NET tests** and
-**776 Python tests** pass. All1,308 AI cases pass. New public regressions compare
-live/AI counters for immediate, delayed and raw-high-bit casts, replay/isolation,
-support precedence and primary status proposals. The ZOD-422 receipt pins eight
-source files/nine functions at clean read-only reference
+Locked restore, zero-warning/error Release build, **5,094 .NET tests** and
+**776 Python tests** pass. All1,308 AI cases pass. Seven new delivery/content cases
+cover generic state/events, interception, grants, identity, collection capture and
+admission. The custom imported Dash path uses generic binding through ranked AI
+and both actual action orders. The reused ZOD-420 source receipt pins eight
+files/sixteen functions at clean read-only reference
 `11464943bbdbd2a0af022d90cb7f10455cf911df`. All ten owner blobs, immutable
 JobStats, int MP costs and the approved `b7a222d` formatting remain preserved.
-New public Framework types have matching files. The native Basic Skill121-step/
-two-replay and four magic eighteen-checkpoint proofs remain the prior ZOD-420
-evidence; those native checks were not rerun for this refactor. Current logs and
-TRX are under ignored `scratch/preparation-refactor-*`.
+New public Framework types have matching files. Fresh original Dash/Stone imports
+retain schema1 bytes. One new native Basic Skill check matches all121 retained
+steps, two journal replays and gameplay hashes; four magic eighteen-checkpoint
+proofs remain prior ZOD-420 evidence. Current logs, TRX and native output are
+under ignored `scratch/physical-delivery-*`.
 
 The [equipment selector study](architecture/equipment-effect-selection.md)
 still owns the weapon-required-level/right-tie and right-first shield findings.
@@ -44,8 +54,8 @@ The owner also supplied formula/status-set documentation and pre-formula
 disassembly; [the shared setup boundary](architecture/ability-effect-families.md#pre-formula-setup-boundary)
 remains the design for wider families. General status/flag/equipment behavior,
 namespace migration, editor, automatic facing, ZOD-106 and custom cone stay
-separate. ZOD-418 ordinary magic aim search remains queued after the selected
-refactor. Earlier five-hour runs are not active.
+separate. ZOD-418 ordinary magic aim-search source study is next.
+Earlier five-hour runs are not active.
 
 [Managed MP costs](development/managed-magic-mp-costs.md) now use nonnegative `int`
 through spell definitions, resource calculation and recorded cast/resource cost.

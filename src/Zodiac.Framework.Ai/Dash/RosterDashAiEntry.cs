@@ -60,7 +60,7 @@ internal static class RosterDashAiEntry
                 if (!remaining.Contains(target.UnitId) || AiRosterNearest.Distance(key.Tile, target.Position) != 1) continue;
                 bool first = key.Tile == start;
                 var candidate = new DashAiCandidate(actor, id, target.UnitId, first ? m.ActFirstDestination : key.Tile, first);
-                var result = RosterDashAiCandidate.EvaluateFresh(state, candidate, simulation, ability.Abilities[id].Definition, current);
+                var result = RosterDashAiCandidate.EvaluateFresh(state, candidate, simulation, ability.PhysicalProfile.Abilities[id], current);
                 if (result.Disposition == AiScoringDisposition.Rejected) return Reject(new(RosterDashAiEntryStage.Candidate, CandidateReason: result.Rejection, CandidateIndex: candidates.Count));
                 byte proximity = m.Preparation.Proximity.WrittenValues[candidate.Destination];
                 if (result.Score is { } score && (best is null || SwordAiCandidateScan.IsHigher(score, proximity, candidates[best.Value].Evaluation.Score!, candidates[best.Value].Proximity))) best = candidates.Count;

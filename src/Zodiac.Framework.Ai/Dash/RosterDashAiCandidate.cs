@@ -45,7 +45,7 @@ internal static class RosterDashAiCandidate
         if (!movement.Accepted || !movement.Outcome!.AiOrigins.Contains(candidate.Destination)) return Reject(RosterDashAiCandidateRejection.InvalidCandidate);
         var origin = candidate.ActBeforeMove ? state.TurnBattle.Battle.Units.Single(u => u.Id == candidate.ActorId).Position : candidate.Destination;
         var target = state.TurnBattle.Battle.Units.Single(u => u.Id == candidate.TargetId).Position;
-        return AiRosterNearest.Distance(origin, target) != 1 ? Reject(RosterDashAiCandidateRejection.OutOfRange) : EvaluateFresh(state, candidate, simulation, ability.Abilities[candidate.AbilityId].Definition, rng);
+        return AiRosterNearest.Distance(origin, target) != 1 ? Reject(RosterDashAiCandidateRejection.OutOfRange) : EvaluateFresh(state, candidate, simulation, ability.PhysicalProfile.Abilities[candidate.AbilityId], rng);
     }
 
     internal static RosterDashAiCandidateRejection ValidateAbility(AttackBattleSnapshot state, BattleUnitId actor,

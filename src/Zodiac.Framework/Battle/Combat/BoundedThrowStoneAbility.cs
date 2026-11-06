@@ -1,5 +1,3 @@
-using Zodiac.Framework.Random;
-using System.Collections.Immutable;
 using Zodiac.Framework.Formulas;
 
 namespace Zodiac.Framework;
@@ -11,7 +9,13 @@ public sealed record BoundedThrowStoneAbility
     public AssetId Id => Definition.Id;
     public int Range => Definition.Range;
     public BoundedThrowStoneAbility(AssetId id, PhysicalDamageFormula? formula = null)
+        : this(new PhysicalAbilityDefinition(id, PhysicalAbilityDelivery.DirectProjectile,
+            formula ?? new(PhysicalDamageFormulaId.RandomPa, 0, 2))) { }
+
+    internal static BoundedThrowStoneAbility FromDefinition(PhysicalAbilityDefinition definition) => new(definition);
+
+    private BoundedThrowStoneAbility(PhysicalAbilityDefinition definition)
     {
-        Definition = new(id, 4, true, true, formula ?? new(PhysicalDamageFormulaId.RandomPa, 0, 2));
+        Definition = definition;
     }
 }

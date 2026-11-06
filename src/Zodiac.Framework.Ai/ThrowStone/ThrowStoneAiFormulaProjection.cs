@@ -19,7 +19,7 @@ internal static class ThrowStoneAiFormulaProjection
     {
         var invalid = TargetedAbilityBattleSimulator.ValidateCommand(state, command, profile);
         if (invalid != AttackCommandRejection.None) return new(false, invalid, null, decisionRng);
-        return EvaluateAdmitted(state, command, decisionRng, profile.Abilities[command.AbilityId].Definition);
+        return EvaluateAdmitted(state, command, decisionRng, profile.PhysicalProfile.Abilities[command.AbilityId]);
     }
 
     // Pair public admission remains in Framework. Roster owners establish their complete admission separately.

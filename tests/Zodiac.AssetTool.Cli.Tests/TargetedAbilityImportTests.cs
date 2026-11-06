@@ -108,7 +108,7 @@ public sealed class TargetedAbilityImportTests
         if(customFormula)
         {
             var edited=new TargetedAbilityContentPackage(dash.PackageId,dash.ProfileId,dash.RequiredMetadataPackageId,
-                [new(dash.Abilities[0].Id,TargetedAbilityEffect.DashFlat,new PhysicalDamageFormula(PhysicalDamageFormulaId.RandomPaPlusHalfPa,9,0))]);
+                [new(dash.Abilities[0].Id,PhysicalAbilityDelivery.AdjacentUnit,new PhysicalDamageFormula(PhysicalDamageFormulaId.RandomPaPlusHalfPa,9,0))]);
             dash=TargetedAbilityContentPackage.ReadJson(edited.ToJson());
             Assert.Equal(2,dash.Version);Assert.Contains("\"ruleset\": \"custom\"",edited.ToJson());
         }
@@ -125,7 +125,11 @@ public sealed class TargetedAbilityImportTests
         var selections = ids.Select(id => new OrdinaryHumanAiUnitSelection(id,id == actor ? [new(skill,1)] : []));
         var lists = OrdinaryHumanAiAbilityListSetup.Create(metadata,self,stone,dash,setup,selections,new(true,true));
         Assert.Equal(2,lists.Units[actor].EvadeQuarterShare);
-        var binding = TargetedAbilityBattleSetup.CreateDashProfile(metadata,dash,setup,[new(actor,1,dash.Abilities[0].Id)],ground,0);
+        var binding = customFormula
+            ? DashAbilityBattleProfile.FromPhysicalProfile(TargetedAbilityBattleSetup.CreatePhysicalProfile(metadata,dash,setup,
+                [new(actor,1,dash.Abilities[0].Id)],ground,0,PhysicalAbilityDelivery.AdjacentUnit))
+            : TargetedAbilityBattleSetup.CreateDashProfile(metadata,dash,setup,[new(actor,1,dash.Abilities[0].Id)],ground,0);
+        Assert.Same(dash.Abilities[0].Definition,binding.PhysicalProfile.Abilities[new(dash.Abilities[0].Id.Value)]);
         Assert.Throws<NotSupportedException>(() => TargetedAbilityBattleSetup.CreateProfile(metadata,dash,setup,[],ground,0));
         Assert.Throws<NotSupportedException>(() => TargetedAbilityBattleSetup.CreateDashProfile(metadata,stone,setup,[],ground,0));
         var roster = new FlatRosterBattleProfile(ground,ids.Select((id,i) => new FlatRosterUnit(id,i == 1 ? 0 : 1,i)));

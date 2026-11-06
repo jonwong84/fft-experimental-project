@@ -21,7 +21,9 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 387 entries index completed bounded work; they do not mean the full game is complete.
+These 388 entries index completed bounded work; they do not mean the full game is complete.
+
+- [ZOD-421 — Consolidate physical delivery profiles and definition ownership](../architecture/physical-delivery-profiles.md)
 
 - [ZOD-422 — Share ordinary preparation and separate AI simulation owners](../architecture/ai-preparation-and-simulation.md)
 

@@ -1,4 +1,3 @@
-using System.Collections.Immutable;
 using Zodiac.Framework.Formulas;
 
 namespace Zodiac.Framework;
@@ -9,7 +8,13 @@ public sealed record BoundedDashAbility
     public PhysicalAbilityDefinition Definition { get; }
     public AssetId Id => Definition.Id;
     public BoundedDashAbility(AssetId id, PhysicalDamageFormula? formula = null)
+        : this(new PhysicalAbilityDefinition(id, PhysicalAbilityDelivery.AdjacentUnit,
+            formula ?? new(PhysicalDamageFormulaId.RandomPa, 0, 4))) { }
+
+    internal static BoundedDashAbility FromDefinition(PhysicalAbilityDefinition definition) => new(definition);
+
+    private BoundedDashAbility(PhysicalAbilityDefinition definition)
     {
-        Definition = new(id, 1, false, false, formula ?? new(PhysicalDamageFormulaId.RandomPa, 0, 4));
+        Definition = definition;
     }
 }

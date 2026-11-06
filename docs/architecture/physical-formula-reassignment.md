@@ -1,5 +1,9 @@
 # Assignable physical formulas — ZOD-420
 
+Subsequent [ZOD-421 delivery/profile consolidation](physical-delivery-profiles.md)
+now owns shared binding and settlement. The implementation and validation below
+record the original ZOD-420 checkpoint; its schemas and formula contracts remain.
+
 Owner-authorized bounded refactor, managed baseline
 `c34d6c5590f0e9b7336947d6f3a4c05b17bb083e`; clean read-only fft_decomp
 `11464943bbdbd2a0af022d90cb7f10455cf911df`.

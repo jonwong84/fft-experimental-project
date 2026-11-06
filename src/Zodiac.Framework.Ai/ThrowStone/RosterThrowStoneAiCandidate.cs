@@ -49,7 +49,7 @@ internal static class RosterThrowStoneAiCandidate
         var origin = candidate.ActBeforeMove ? actor.Position : candidate.Destination;
         var targetPosition = old.Battle.Units.Single(u => u.Id == candidate.TargetId).Position;
         if (AiRosterNearest.Distance(origin, targetPosition) is < 1 or > 4) return Reject(RosterThrowStoneAiCandidateRejection.OutOfRange);
-        return EvaluateFresh(state, candidate, simulation, ability.Abilities[candidate.AbilityId].Definition, rng);
+        return EvaluateFresh(state, candidate, simulation, ability.PhysicalProfile.Abilities[candidate.AbilityId], rng);
     }
 
     internal static RosterThrowStoneAiCandidateRejection ValidateAbility(AttackBattleSnapshot state, BattleUnitId actorId, AssetId abilityId,
@@ -58,7 +58,7 @@ internal static class RosterThrowStoneAiCandidate
         if (ability.OrdinaryGroundSurface != simulation.Battle.Ground || ability.Units.Count != simulation.Battle.Units.Count ||
             !ability.Units.Keys.ToHashSet().SetEquals(simulation.Battle.Units.Keys) || state.Combatants.Any(u => u.PhysicalAttack is < 1 or > 99))
             return RosterThrowStoneAiCandidateRejection.UnsupportedProfile;
-        if (!ability.Abilities.ContainsKey(abilityId)) return RosterThrowStoneAiCandidateRejection.UnknownAbility;
+        if (!ability.PhysicalProfile.Abilities.ContainsKey(abilityId)) return RosterThrowStoneAiCandidateRejection.UnknownAbility;
         return ability.Units[actorId].Abilities.Contains(abilityId) ? RosterThrowStoneAiCandidateRejection.None : RosterThrowStoneAiCandidateRejection.AbilityNotGranted;
     }
 
