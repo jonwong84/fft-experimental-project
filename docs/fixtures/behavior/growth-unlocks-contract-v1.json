@@ -1,0 +1,1053 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-382",
+    "ZOD-383",
+    "ZOD-384"
+  ],
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "originalJobOrder": [
+    "squire",
+    "chemist",
+    "knight",
+    "archer",
+    "monk",
+    "priest",
+    "wizard",
+    "time-mage",
+    "summoner",
+    "thief",
+    "mediator",
+    "oracle",
+    "geomancer",
+    "lancer",
+    "samurai",
+    "ninja",
+    "calculator",
+    "bard",
+    "dancer",
+    "mime"
+  ],
+  "unlockDefinitions": [
+    {
+      "job": "chemist",
+      "requires": {}
+    },
+    {
+      "job": "knight",
+      "requires": {
+        "squire": 2
+      }
+    },
+    {
+      "job": "archer",
+      "requires": {
+        "squire": 2
+      }
+    },
+    {
+      "job": "monk",
+      "requires": {
+        "squire": 2,
+        "knight": 2
+      }
+    },
+    {
+      "job": "priest",
+      "requires": {
+        "chemist": 2
+      }
+    },
+    {
+      "job": "wizard",
+      "requires": {
+        "chemist": 2
+      }
+    },
+    {
+      "job": "time-mage",
+      "requires": {
+        "chemist": 2,
+        "wizard": 2
+      }
+    },
+    {
+      "job": "summoner",
+      "requires": {
+        "chemist": 2,
+        "wizard": 2,
+        "time-mage": 2
+      }
+    },
+    {
+      "job": "thief",
+      "requires": {
+        "squire": 2,
+        "archer": 2
+      }
+    },
+    {
+      "job": "mediator",
+      "requires": {
+        "chemist": 2,
+        "priest": 2,
+        "oracle": 2
+      }
+    },
+    {
+      "job": "oracle",
+      "requires": {
+        "chemist": 2,
+        "priest": 2
+      }
+    },
+    {
+      "job": "geomancer",
+      "requires": {
+        "squire": 2,
+        "knight": 2,
+        "monk": 3
+      }
+    },
+    {
+      "job": "lancer",
+      "requires": {
+        "squire": 2,
+        "archer": 2,
+        "thief": 3
+      }
+    },
+    {
+      "job": "samurai",
+      "requires": {
+        "squire": 2,
+        "knight": 3,
+        "archer": 2,
+        "monk": 4,
+        "thief": 3,
+        "lancer": 2
+      }
+    },
+    {
+      "job": "ninja",
+      "requires": {
+        "squire": 2,
+        "knight": 2,
+        "archer": 3,
+        "monk": 3,
+        "thief": 4,
+        "geomancer": 2
+      }
+    },
+    {
+      "job": "calculator",
+      "requires": {
+        "chemist": 2,
+        "priest": 4,
+        "wizard": 4,
+        "time-mage": 3,
+        "oracle": 3
+      }
+    },
+    {
+      "job": "bard",
+      "requires": {
+        "chemist": 2,
+        "priest": 2,
+        "wizard": 2,
+        "time-mage": 2,
+        "summoner": 4,
+        "mediator": 4,
+        "oracle": 2
+      }
+    },
+    {
+      "job": "dancer",
+      "requires": {
+        "squire": 2,
+        "knight": 2,
+        "archer": 2,
+        "monk": 3,
+        "thief": 3,
+        "geomancer": 4,
+        "lancer": 4
+      }
+    },
+    {
+      "job": "mime",
+      "requires": {
+        "squire": 8,
+        "chemist": 8,
+        "knight": 2,
+        "archer": 2,
+        "monk": 3,
+        "priest": 2,
+        "wizard": 2,
+        "time-mage": 2,
+        "summoner": 4,
+        "thief": 3,
+        "mediator": 4,
+        "oracle": 2,
+        "geomancer": 4,
+        "lancer": 4
+      }
+    }
+  ],
+  "growth": [
+    {
+      "id": "squire-up",
+      "input": {
+        "raw": [
+          1000,
+          1500,
+          2000,
+          3000,
+          4000
+        ],
+        "growth": [
+          11,
+          15,
+          100,
+          60,
+          50
+        ],
+        "level": 10,
+        "down": false,
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": true,
+        "raw": [
+          1047,
+          1560,
+          2018,
+          3042,
+          4066
+        ],
+        "word": 2224270474,
+        "count": 14
+      }
+    },
+    {
+      "id": "squire-down",
+      "input": {
+        "raw": [
+          1000,
+          1500,
+          2000,
+          3000,
+          4000
+        ],
+        "growth": [
+          11,
+          15,
+          100,
+          60,
+          50
+        ],
+        "level": 10,
+        "down": true,
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": true,
+        "raw": [
+          953,
+          1440,
+          1982,
+          2958,
+          3934
+        ],
+        "word": 2224270474,
+        "count": 14
+      }
+    },
+    {
+      "id": "reward-old-level",
+      "input": {
+        "raw": [
+          1000,
+          1000,
+          1000,
+          1000,
+          1000
+        ],
+        "growth": [
+          11,
+          11,
+          11,
+          11,
+          11
+        ],
+        "level": 10,
+        "down": false,
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": true,
+        "raw": [
+          1047,
+          1047,
+          1047,
+          1047,
+          1047
+        ],
+        "word": 2224270474,
+        "count": 14
+      }
+    },
+    {
+      "id": "special-new-level",
+      "input": {
+        "raw": [
+          1000,
+          1000,
+          1000,
+          1000,
+          1000
+        ],
+        "growth": [
+          11,
+          11,
+          11,
+          11,
+          11
+        ],
+        "level": 11,
+        "down": false,
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": true,
+        "raw": [
+          1045,
+          1045,
+          1045,
+          1045,
+          1045
+        ],
+        "word": 2224270474,
+        "count": 14
+      }
+    },
+    {
+      "id": "zero-rate-is-one",
+      "input": {
+        "raw": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
+        "growth": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "level": 0,
+        "down": false,
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": true,
+        "raw": [
+          20,
+          40,
+          60,
+          80,
+          100
+        ],
+        "word": 2224270474,
+        "count": 14
+      }
+    },
+    {
+      "id": "down-divisor-one",
+      "input": {
+        "raw": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
+        "growth": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "level": 0,
+        "down": true,
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": true,
+        "raw": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "word": 2224270474,
+        "count": 14
+      }
+    },
+    {
+      "id": "zero-raw-still-five-draws",
+      "input": {
+        "raw": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "growth": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "level": 0,
+        "down": false,
+        "word": 0,
+        "count": 0
+      },
+      "expected": {
+        "accepted": true,
+        "raw": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "word": 229283573,
+        "count": 5
+      }
+    },
+    {
+      "id": "zero-quotient-still-five-draws",
+      "input": {
+        "raw": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "growth": [
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "level": 255,
+        "down": false,
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": true,
+        "raw": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "word": 2224270474,
+        "count": 14
+      }
+    },
+    {
+      "id": "upper-saturation-still-draws",
+      "input": {
+        "raw": [
+          16777215,
+          16777215,
+          16777215,
+          16777215,
+          16777215
+        ],
+        "growth": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "level": 0,
+        "down": false,
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": true,
+        "raw": [
+          16777215,
+          16777215,
+          16777215,
+          16777215,
+          16777215
+        ],
+        "word": 2224270474,
+        "count": 14
+      }
+    },
+    {
+      "id": "largest-divisor",
+      "input": {
+        "raw": [
+          510,
+          510,
+          510,
+          510,
+          510
+        ],
+        "growth": [
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "level": 255,
+        "down": false,
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": true,
+        "raw": [
+          511,
+          511,
+          511,
+          511,
+          511
+        ],
+        "word": 2224270474,
+        "count": 14
+      }
+    },
+    {
+      "id": "largest-divisor-down",
+      "input": {
+        "raw": [
+          510,
+          510,
+          510,
+          510,
+          510
+        ],
+        "growth": [
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "level": 255,
+        "down": true,
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": true,
+        "raw": [
+          509,
+          509,
+          509,
+          509,
+          509
+        ],
+        "word": 2224270474,
+        "count": 14
+      }
+    },
+    {
+      "id": "seed-does-not-change-numeric-growth",
+      "input": {
+        "raw": [
+          1000,
+          1000,
+          1000,
+          1000,
+          1000
+        ],
+        "growth": [
+          11,
+          11,
+          11,
+          11,
+          11
+        ],
+        "level": 10,
+        "down": false,
+        "word": 1,
+        "count": 100
+      },
+      "expected": {
+        "accepted": true,
+        "raw": [
+          1047,
+          1047,
+          1047,
+          1047,
+          1047
+        ],
+        "word": 4182499122,
+        "count": 105
+      }
+    },
+    {
+      "id": "exact-counter-end",
+      "input": {
+        "raw": [
+          1000,
+          1000,
+          1000,
+          1000,
+          1000
+        ],
+        "growth": [
+          11,
+          11,
+          11,
+          11,
+          11
+        ],
+        "level": 10,
+        "down": false,
+        "word": 57,
+        "count": 18446744073709551610
+      },
+      "expected": {
+        "accepted": true,
+        "raw": [
+          1047,
+          1047,
+          1047,
+          1047,
+          1047
+        ],
+        "word": 2224270474,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "late-counter-failure",
+      "input": {
+        "raw": [
+          1000,
+          1000,
+          1000,
+          1000,
+          1000
+        ],
+        "growth": [
+          11,
+          11,
+          11,
+          11,
+          11
+        ],
+        "level": 10,
+        "down": false,
+        "word": 57,
+        "count": 18446744073709551611
+      },
+      "expected": {
+        "accepted": false,
+        "raw": null,
+        "word": 57,
+        "count": 18446744073709551611
+      }
+    },
+    {
+      "id": "already-exhausted-counter",
+      "input": {
+        "raw": [
+          1000,
+          1000,
+          1000,
+          1000,
+          1000
+        ],
+        "growth": [
+          11,
+          11,
+          11,
+          11,
+          11
+        ],
+        "level": 10,
+        "down": false,
+        "word": 57,
+        "count": 18446744073709551615
+      },
+      "expected": {
+        "accepted": false,
+        "raw": null,
+        "word": 57,
+        "count": 18446744073709551615
+      }
+    }
+  ],
+  "unlocks": [
+    {
+      "id": "zero-levels",
+      "variant": "original",
+      "input": {
+        "male": false,
+        "female": false,
+        "monster": false
+      },
+      "expected": [
+        "squire",
+        "chemist"
+      ]
+    },
+    {
+      "id": "squire-one",
+      "variant": "original",
+      "input": {
+        "male": false,
+        "female": false,
+        "monster": false,
+        "levels": {
+          "squire": 1
+        }
+      },
+      "expected": [
+        "squire",
+        "chemist"
+      ]
+    },
+    {
+      "id": "squire-two",
+      "variant": "original",
+      "input": {
+        "male": false,
+        "female": false,
+        "monster": false,
+        "levels": {
+          "squire": 2
+        }
+      },
+      "expected": [
+        "squire",
+        "chemist",
+        "knight",
+        "archer"
+      ]
+    },
+    {
+      "id": "knight-two",
+      "variant": "original",
+      "input": {
+        "male": false,
+        "female": false,
+        "monster": false,
+        "levels": {
+          "squire": 2,
+          "knight": 2
+        }
+      },
+      "expected": [
+        "squire",
+        "chemist",
+        "knight",
+        "archer",
+        "monk"
+      ]
+    },
+    {
+      "id": "all-nibbles-fifteen-neither-sex",
+      "variant": "original",
+      "input": {
+        "male": false,
+        "female": false,
+        "monster": false,
+        "allLevels": 15
+      },
+      "expected": [
+        "squire",
+        "chemist",
+        "knight",
+        "archer",
+        "monk",
+        "priest",
+        "wizard",
+        "time-mage",
+        "summoner",
+        "thief",
+        "mediator",
+        "oracle",
+        "geomancer",
+        "lancer",
+        "samurai",
+        "ninja",
+        "calculator",
+        "bard",
+        "dancer",
+        "mime"
+      ]
+    },
+    {
+      "id": "all-nibbles-fifteen-male",
+      "variant": "original",
+      "input": {
+        "male": true,
+        "female": false,
+        "monster": false,
+        "allLevels": 15
+      },
+      "expected": [
+        "squire",
+        "chemist",
+        "knight",
+        "archer",
+        "monk",
+        "priest",
+        "wizard",
+        "time-mage",
+        "summoner",
+        "thief",
+        "mediator",
+        "oracle",
+        "geomancer",
+        "lancer",
+        "samurai",
+        "ninja",
+        "calculator",
+        "bard",
+        "mime"
+      ]
+    },
+    {
+      "id": "all-nibbles-fifteen-female",
+      "variant": "original",
+      "input": {
+        "male": false,
+        "female": true,
+        "monster": false,
+        "allLevels": 15
+      },
+      "expected": [
+        "squire",
+        "chemist",
+        "knight",
+        "archer",
+        "monk",
+        "priest",
+        "wizard",
+        "time-mage",
+        "summoner",
+        "thief",
+        "mediator",
+        "oracle",
+        "geomancer",
+        "lancer",
+        "samurai",
+        "ninja",
+        "calculator",
+        "dancer",
+        "mime"
+      ]
+    },
+    {
+      "id": "all-nibbles-fifteen-both",
+      "variant": "original",
+      "input": {
+        "male": true,
+        "female": true,
+        "monster": false,
+        "allLevels": 15
+      },
+      "expected": [
+        "squire",
+        "chemist",
+        "knight",
+        "archer",
+        "monk",
+        "priest",
+        "wizard",
+        "time-mage",
+        "summoner",
+        "thief",
+        "mediator",
+        "oracle",
+        "geomancer",
+        "lancer",
+        "samurai",
+        "ninja",
+        "calculator",
+        "mime"
+      ]
+    },
+    {
+      "id": "monster-no-base",
+      "variant": "original",
+      "input": {
+        "male": true,
+        "female": true,
+        "monster": true,
+        "allLevels": 15
+      },
+      "expected": []
+    },
+    {
+      "id": "female-bard-substitution",
+      "variant": "synthetic-source-rule",
+      "input": {
+        "male": false,
+        "female": true,
+        "monster": false,
+        "syntheticRequirements": {
+          "mime": {
+            "bard": 15
+          }
+        }
+      },
+      "expected": [
+        "squire",
+        "chemist",
+        "mime"
+      ]
+    },
+    {
+      "id": "male-bard-no-substitution",
+      "variant": "synthetic-source-rule",
+      "input": {
+        "male": true,
+        "female": false,
+        "monster": false,
+        "syntheticRequirements": {
+          "mime": {
+            "bard": 15
+          }
+        }
+      },
+      "expected": [
+        "squire",
+        "chemist"
+      ]
+    },
+    {
+      "id": "male-dancer-substitution",
+      "variant": "synthetic-source-rule",
+      "input": {
+        "male": true,
+        "female": false,
+        "monster": false,
+        "syntheticRequirements": {
+          "mime": {
+            "dancer": 15
+          }
+        }
+      },
+      "expected": [
+        "squire",
+        "chemist",
+        "mime"
+      ]
+    },
+    {
+      "id": "female-dancer-no-substitution",
+      "variant": "synthetic-source-rule",
+      "input": {
+        "male": false,
+        "female": true,
+        "monster": false,
+        "syntheticRequirements": {
+          "mime": {
+            "dancer": 15
+          }
+        }
+      },
+      "expected": [
+        "squire",
+        "chemist"
+      ]
+    },
+    {
+      "id": "both-substitutions",
+      "variant": "synthetic-source-rule",
+      "input": {
+        "male": true,
+        "female": true,
+        "monster": false,
+        "syntheticRequirements": {
+          "mime": {
+            "bard": 15,
+            "dancer": 15
+          }
+        }
+      },
+      "expected": [
+        "squire",
+        "chemist",
+        "mime"
+      ]
+    },
+    {
+      "id": "raw-fifteen-is-not-eight",
+      "variant": "synthetic-source-rule",
+      "input": {
+        "male": false,
+        "female": false,
+        "monster": false,
+        "levels": {
+          "bard": 15
+        },
+        "syntheticRequirements": {
+          "mime": {
+            "bard": 15
+          }
+        }
+      },
+      "expected": [
+        "squire",
+        "chemist",
+        "mime"
+      ]
+    },
+    {
+      "id": "raw-fourteen-fails-fifteen",
+      "variant": "synthetic-source-rule",
+      "input": {
+        "male": false,
+        "female": false,
+        "monster": false,
+        "levels": {
+          "bard": 14
+        },
+        "syntheticRequirements": {
+          "mime": {
+            "bard": 15
+          }
+        }
+      },
+      "expected": [
+        "squire",
+        "chemist"
+      ]
+    }
+  ]
+}

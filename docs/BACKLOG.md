@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-382 (Trace level growth and job unlocks before magic state integration).**
-[Action outcomes and rewards](behavior/action-outcomes-and-rewards.md) records
-completed ZOD-376–381. Live magic adoption remains gated by complete state/phase ownership.
-There are 34 open tickets below. The 348 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-383 (Calculate battle raw-stat growth with discarded RNG draws).**
+[Growth and job unlocks](behavior/growth-and-job-unlocks.md) records
+completed ZOD-382. Complete magic state still needs derived/status refresh and phase ownership.
+There are 35 open tickets below. The 349 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,11 +31,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-382 — Trace level growth and job unlocks before magic state integration
+### ZOD-383 — Calculate battle raw-stat growth with discarded RNG draws
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-381
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-382
 
-Trace battle raw-stat growth, derived-stat rebuilding, prepared unlock requirements and zero-JP recalculation before selecting a complete magic battle/career state. Preserve paid-fizzle, actor-work and turn-authority gaps; no premature live activation. See [traced boundaries](behavior/action-outcomes-and-rewards.md).
+Implement five ordered unsigned24 raw-stat growth calculations with zero-growth fallback, supplied caller level, level-down, saturation and five discarded RNG draws. Counter exhaustion rejects the private result; derived refresh/level ownership remain separate. See [source and implementation boundaries](behavior/growth-and-job-unlocks.md).
+Owner drafts/JobStats, host/editor, automatic facing, full status/corpse/Golem/
+terminal/frame RNG, broad interfaces, ZOD-106 and custom cone remain separate.
+
+### ZOD-384 — Evaluate stable-ID job unlock prerequisites
+
+**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-383
+
+Add validated immutable stable-ID job prerequisite definitions and source unlock evaluation. Preserve raw nibble levels, both/neither sex flags, opposite-sex prerequisite substitution and final Bard/Dancer exclusions. Keep original packing and prepared content separate. See [source and implementation boundaries](behavior/growth-and-job-unlocks.md).
 Owner drafts/JobStats, host/editor, automatic facing, full status/corpse/Golem/
 terminal/frame RNG, broad interfaces, ZOD-106 and custom cone remain separate.
 

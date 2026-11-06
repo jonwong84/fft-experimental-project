@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "originalExecuted": false,
+  "cExecuted": false,
+  "milestones": [
+    {
+      "ticket": "ZOD-382",
+      "managedBaseRevision": "24c1779e6cb7fb2aee0b39530b93942eef3baada",
+      "validation": "Eight Python cases and31 independent descriptions pass; clean pinned10-file/20-function source audit,19 prepared unlock rows and five Squire growth pairs verified. Caller level/RNG and derived-refresh quirks documented.",
+      "reports": "scratch/growth-unlocks-382-384/"
+    }
+  ]
+}

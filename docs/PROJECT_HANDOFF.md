@@ -6,16 +6,17 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-382: Trace level growth and job unlocks before magic state integration.**
-[Action outcomes and rewards](behavior/action-outcomes-and-rewards.md) records
-completed ZOD-376–381, pinned to clean read-only source
-`11464943bbdbd2a0af022d90cb7f10455cf911df` (11 files/23 functions).
-Primary markers precede misses; EXP uses the maximum award; JP spillover precedes
-Gained JP Up and uses actor current team versus recipient initial team.
-Reward arithmetic is separate from required raw growth/unlock recomputation.
-[Vital proposals](behavior/living-magic-projections.md) remain private calculations.
-No live commands/battle/career adoption, global clock or magic AI activation.
-Owner drafts/JobStats and all documented deferred work remain preserved.
+**ZOD-383: Calculate battle raw-stat growth with discarded RNG draws.**
+[Growth and job unlocks](behavior/growth-and-job-unlocks.md) records completed
+ZOD-382, from clean read-only source
+`11464943bbdbd2a0af022d90cb7f10455cf911df` (10 files/20 functions).
+Battle raw growth consumes five discarded RNG draws. Reward callers grow before
+level increment; special effects store the new level first. Source mode1 refresh
+keeps base Speed/PA/MA. Job unlocks retain nibble levels and independent sex bits.
+Raw growth and unlock calculations do not complete derived/status refresh or
+grant battle/career/turn authority. [Reward projections](behavior/action-outcomes-and-rewards.md)
+and [vital proposals](behavior/living-magic-projections.md) retain their boundaries.
+Owner drafts/JobStats and all documented deferrals remain preserved.
 
 [Managed MP costs](development/managed-magic-mp-costs.md) now use nonnegative `int`
 through spell definitions, resource calculation and recorded cast/resource cost.
