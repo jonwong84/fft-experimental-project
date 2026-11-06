@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-363",
+  "managedBaseRevision": "306ab8ee781be6da3921c1bac2852750327b0095",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "productionChanged": false,
+  "managedTestsRunForThisTicket": false,
+  "lastManagedPassed": 4661,
+  "behavior": "docs/behavior/spell-follow-and-stored-aim.md",
+  "sourceReceipt": "docs/evidence/combat/spell-follow-source-v1.json",
+  "sourceAudit": "scratch/spell-follow-363/final-source-audit.json",
+  "nextTicket": "ZOD-364",
+  "reports": "scratch/spell-follow-363/",
+  "validation": {
+    "pythonPassed": 695,
+    "newPythonCases": 8,
+    "literalDescriptions": 42,
+    "sourceFiles": 19,
+    "sourceFunctions": 26,
+    "guideAudit": "scratch/spell-follow-363/guide-audit.json",
+    "localMarkdownLinksChecked": 2004,
+    "coverageEntriesChecked": 58,
+    "preservation": {
+      "managedBaseRevision": "306ab8ee781be6da3921c1bac2852750327b0095",
+      "ownerFiles": [
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AbilityToggles.cs",
+          "gitBlob": "16320578ffa448783221b68c4ef5c18e245b9f35",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AiBehaviorToggles.cs",
+          "gitBlob": "c67c4b154c471764fa11a6761710d2e9c9694a65",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AttributeToggles.cs",
+          "gitBlob": "1182777f8a0c3ca219afa23d0803c52af4ca9f8e",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/EquipmentSlot.cs",
+          "gitBlob": "091006b2d60ca558c303571a4eb779340be53629",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/StatusToggles.cs",
+          "gitBlob": "5136db2af350d7e3735e47fb92b905019316fd6f",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Item/ShopAvailabilityToggles.cs",
+          "gitBlob": "fd543d84dc8eb7860d710cf1c75499eb55306e14",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/EquipmentOptionToggles.cs",
+          "gitBlob": "694e44bbdc3e62103b64ff794addec1ad977d142",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/EffectBehaviorToggles.cs",
+          "gitBlob": "9792cdea7da1d92e9ec25cf1e97d3e879c24e8ae",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/StatusSelectionToggles.cs",
+          "gitBlob": "a0b2e2a8ddcb53a4bfd7416609927399b8339294",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/JobStats.cs",
+          "gitBlob": "bd617c374309aca1529a167a8d31a488160086cc",
+          "unchanged": true
+        }
+      ],
+      "allExistingProductionCodeAndManagedTestsUnchanged": true,
+      "allExistingBehaviorFixturesUnchanged": true,
+      "newProductionCode": false
+    },
+    "managedBaselineSource": "docs/evidence/combat/spell-targeting-implementation-v1.json",
+    "managedRerunReason": "Trace-only change; all existing production/build/managed tests and prior behavior fixtures unchanged; prior4661 baseline retained, not rerun."
+  }
+}

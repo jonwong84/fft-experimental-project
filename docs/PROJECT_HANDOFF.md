@@ -6,16 +6,21 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-363: Trace unit-follow targeting and stored-aim resolution.**
-[Ordinary spell targeting](behavior/ordinary-spell-targeting.md) records completed
-ZOD-358–362 at clean reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
-Keep blue selectable aims separate from green resolution areas. Preserve narrowed
-reference height, blocked sentinels, initial/current team distinctions and source
-roster order. Shared magic arithmetic and prepared one-cost casts remain owners
-of calculation and candidate MP/RNG. Geometry grants no live state authority.
-Unit-follow, special shapes, commands, full scheduling and magic AI remain separate.
-Future custom forward1/3/5 cone is recorded, not implemented. Owner drafts and
-JobStats remain preserved; documented deferred gates still apply.
+**ZOD-364: Resolve certified ordinary stored spell aims.**
+[Unit-follow and stored spell aims](behavior/spell-follow-and-stored-aim.md)
+records completed ZOD-363 from clean reference
+`11464943bbdbd2a0af022d90cb7f10455cf911df` (19 files/26 functions,42 descriptions).
+NoFollowTarget chooses the offered targeting mode; it does not override an already
+stored exact-unit command. UNIT6 follows current position at resolution; YES7 and
+other nonunit types use stored byte-narrowed tile coordinates. Preparation checks
+anchor activity, whereas ordinary resolution centre selection checks target slot
+bounds but not current activity/status. Keep known anchor data separate from
+occupant eligibility. Current blue range is not rechecked at resolution.
+[ZOD-358–362](behavior/ordinary-spell-targeting.md) already provide immutable range/
+area panels, source-order occupants and the ready one-cost magic cast bridge.
+ZOD-363 changes no production code. Next add the isolated aim query before bridge
+integration. Commands, full scheduling, special shapes and magic AI remain separate.
+The custom forward1/3/5 cone, owner drafts/JobStats and deferred gates are unchanged.
 
 [Magic evasion](behavior/magic-evasion.md) records completed ZOD-342, ZOD-344, ZOD-345, ZOD-346, ZOD-347
 from clean source `11464943bbdbd2a0af022d90cb7f10455cf911df` (13 files/21 functions).
@@ -252,26 +257,24 @@ without rewriting old evidence.
   [ZOD-209](architecture/zod-209-pair-post-act.md) remains the detailed post-ACT source design;
   [ZOD-221](architecture/zod-221-fresh-pair-command-entry.md) traces single-entry reach/dispatch;
   [ZOD-225](architecture/zod-225-blue-pair-policy.md) traces Blue policy boundaries.
-- Validation: locked restore, zero-warning/error Release build and **4,661 .NET
-  cases** (1,620 Framework, 1,217 AI, 838 Content, 328 CLI, 206 AssetTool,
-  428 Client, 24 Engine) pass. Nine new managed cases exercise58 targeting
-  descriptions and13 geometry/cast descriptions, guards and pure replay. All
-  **687 Python tests** pass, including14 new independent description checks.
-  Focused magic99, source11/21, prior magic/prepared-data, guide, coverage,
-  local-link and preservation checks pass. Seven TRX reports/logs are under
-  ignored `scratch/spell-targeting-358-362/`.
+- Validation: ZOD-363's eight new Python cases pass42 literal descriptions;
+  all **695 Python tests** pass. The clean source19/26 audit and prior targeting
+  audit, algorithm guide,58-entry coverage inventory, local links and preservation
+  checks pass. Reports are under ignored `scratch/spell-follow-363/`.
+  Last managed baseline remains **4,661 .NET cases** from ZOD-362 (1,620 Framework,
+  1,217 AI,838 Content,328 CLI,206 AssetTool,428 Client,24 Engine), with locked
+  restore and zero-warning/error Release build. Managed tests/build were not
+  rerun for ZOD-363: all production/build files, managed tests and prior behavior
+  fixtures are unchanged. The prior seven TRX reports remain under
+  `scratch/spell-targeting-358-362/`.
+  All nine owner drafts, AbilityToggles and JobStats are unchanged. No project,
+  lock, dependency, host/editor, command, scheduling or magic AI activation changes.
   Prepared Dash/Stone import checks remain at ZOD-329; their code/input is unchanged.
   Python uses repository-pinned Pillow12.3.0 from ignored
   `scratch/accumulate-ai-229/python-deps`, with TEMP/TMP in its `python-temp`.
   Bundled Pillow13.0.0 triggers six existing version guards; WindowsApps Python
-  is unavailable. All nine owner drafts and JobStats remain unchanged, including
-  AbilityToggles. Pre-batch C# logic/tests/fixtures and content/AI/host are unchanged;
-  the sole existing C# edit adds an optional geometry parameter to the cast
-  definition. No project/lock/dependency changes or host/editor activation.
-  Geometry feeds the existing pure one-cost magic query; it does not broaden
-  actual combat/turn/command behavior. Nine historical checkpoint audits last
-  passed at ZOD-158; unchanged snapshots were not rerun. No original/C execution
-  or UI review.
+  is unavailable. Nine historical checkpoint audits last passed at ZOD-158;
+  unchanged snapshots were not rerun. No original/C execution or UI review.
 - A playable synthetic battle, Accumulate/Throw Stone slices, prepared scene/
   introduction proofs and synthetic world Save/Load exist. Original campaign,
   full combat/content, audio and general AI remain incomplete. See the

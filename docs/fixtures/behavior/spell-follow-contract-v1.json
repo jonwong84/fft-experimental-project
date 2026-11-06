@@ -1,0 +1,1657 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-363",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "confidence": "Source-traced normalized boundary descriptions, not original/C/managed execution. Fixed slot21 is an observed source guard in this offline description only.",
+  "choices": [
+    {
+      "id": "ordinary-can-offer-unit-or-tile",
+      "input": {
+        "auto": false,
+        "range": 4,
+        "weaponRange": false,
+        "panelCount": 5,
+        "noFollow": false
+      },
+      "expected": 0
+    },
+    {
+      "id": "no-follow-offers-tile-only",
+      "input": {
+        "auto": false,
+        "range": 4,
+        "weaponRange": false,
+        "panelCount": 5,
+        "noFollow": true
+      },
+      "expected": 1
+    },
+    {
+      "id": "empty-range-is-none-even-no-follow",
+      "input": {
+        "auto": false,
+        "range": 4,
+        "weaponRange": false,
+        "panelCount": 0,
+        "noFollow": true
+      },
+      "expected": 3
+    },
+    {
+      "id": "auto-zero-range-before-no-follow",
+      "input": {
+        "auto": true,
+        "range": 0,
+        "weaponRange": false,
+        "panelCount": 5,
+        "noFollow": true
+      },
+      "expected": 2
+    },
+    {
+      "id": "weapon-range-exempts-auto-zero",
+      "input": {
+        "auto": true,
+        "range": 0,
+        "weaponRange": true,
+        "panelCount": 5,
+        "noFollow": false
+      },
+      "expected": 0
+    }
+  ],
+  "confirmations": [
+    {
+      "id": "tile-does-not-overwrite-target-id",
+      "input": {
+        "player": true,
+        "answer": 5,
+        "occupantId": 9,
+        "storedType": 5,
+        "storedId": 17
+      },
+      "expected": {
+        "type": 5,
+        "targetId": 17,
+        "startsAttack": true
+      }
+    },
+    {
+      "id": "unit-stores-exact-six",
+      "input": {
+        "player": true,
+        "answer": 6,
+        "occupantId": 9,
+        "storedType": 5,
+        "storedId": 17
+      },
+      "expected": {
+        "type": 6,
+        "targetId": 9,
+        "startsAttack": true
+      }
+    },
+    {
+      "id": "yes-stores-seven-not-six",
+      "input": {
+        "player": true,
+        "answer": 7,
+        "occupantId": 9,
+        "storedType": 5,
+        "storedId": 17
+      },
+      "expected": {
+        "type": 7,
+        "targetId": 9,
+        "startsAttack": true
+      }
+    },
+    {
+      "id": "empty-falls-back-to-tile-6",
+      "input": {
+        "player": true,
+        "answer": 6,
+        "occupantId": null,
+        "storedType": 5,
+        "storedId": 17
+      },
+      "expected": {
+        "type": 5,
+        "targetId": 17,
+        "startsAttack": true
+      }
+    },
+    {
+      "id": "empty-falls-back-to-tile-7",
+      "input": {
+        "player": true,
+        "answer": 7,
+        "occupantId": null,
+        "storedType": 5,
+        "storedId": 17
+      },
+      "expected": {
+        "type": 5,
+        "targetId": 17,
+        "startsAttack": true
+      }
+    },
+    {
+      "id": "ai-keeps-preselected-unit-type",
+      "input": {
+        "player": false,
+        "answer": 5,
+        "occupantId": 9,
+        "storedType": 6,
+        "storedId": 17
+      },
+      "expected": {
+        "type": 6,
+        "targetId": 17,
+        "startsAttack": true
+      }
+    },
+    {
+      "id": "cancel-keeps-pending-command",
+      "input": {
+        "player": true,
+        "answer": 8,
+        "occupantId": 9,
+        "storedType": 5,
+        "storedId": 17
+      },
+      "expected": {
+        "type": 5,
+        "targetId": 17,
+        "startsAttack": false
+      }
+    }
+  ],
+  "preparations": [
+    {
+      "id": "unit-requires-active-anchor",
+      "input": {
+        "actorId": 0,
+        "actorActive": true,
+        "type": 6,
+        "targetId": 1,
+        "targetActive": true
+      },
+      "expected": true
+    },
+    {
+      "id": "inactive-anchor-blocks-preparation",
+      "input": {
+        "actorId": 0,
+        "actorActive": true,
+        "type": 6,
+        "targetId": 1,
+        "targetActive": false
+      },
+      "expected": false
+    },
+    {
+      "id": "slot-limit-blocks-unit",
+      "input": {
+        "actorId": 0,
+        "actorActive": true,
+        "type": 6,
+        "targetId": 21,
+        "targetActive": true
+      },
+      "expected": false
+    },
+    {
+      "id": "tile-ignores-anchor",
+      "input": {
+        "actorId": 0,
+        "actorActive": true,
+        "type": 5,
+        "targetId": 255,
+        "targetActive": false
+      },
+      "expected": true
+    },
+    {
+      "id": "yes-seven-ignores-anchor",
+      "input": {
+        "actorId": 0,
+        "actorActive": true,
+        "type": 7,
+        "targetId": 255,
+        "targetActive": false
+      },
+      "expected": true
+    },
+    {
+      "id": "inactive-actor-blocks",
+      "input": {
+        "actorId": 0,
+        "actorActive": false,
+        "type": 6,
+        "targetId": 1,
+        "targetActive": true
+      },
+      "expected": false
+    },
+    {
+      "id": "actor-slot-limit",
+      "input": {
+        "actorId": 21,
+        "actorActive": true,
+        "type": 6,
+        "targetId": 1,
+        "targetActive": true
+      },
+      "expected": false
+    }
+  ],
+  "centers": [
+    {
+      "id": "unit-follows-current-position-and-layer",
+      "input": {
+        "type": 6,
+        "actorId": 0,
+        "actorActive": true,
+        "targetId": 1,
+        "targetActive": true,
+        "stored": [
+          1,
+          0,
+          0
+        ],
+        "actorPosition": [
+          0,
+          0,
+          0
+        ],
+        "targetPosition": [
+          3,
+          1,
+          1
+        ],
+        "noFollow": false,
+        "directional": false,
+        "width": 5,
+        "depth": 2,
+        "blocked": [],
+        "untargetable": []
+      },
+      "expected": {
+        "resolved": true,
+        "center": [
+          3,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "tile-keeps-stored-position",
+      "input": {
+        "type": 5,
+        "actorId": 0,
+        "actorActive": true,
+        "targetId": 1,
+        "targetActive": true,
+        "stored": [
+          1,
+          0,
+          0
+        ],
+        "actorPosition": [
+          0,
+          0,
+          0
+        ],
+        "targetPosition": [
+          3,
+          1,
+          1
+        ],
+        "noFollow": false,
+        "directional": false,
+        "width": 5,
+        "depth": 2,
+        "blocked": [],
+        "untargetable": []
+      },
+      "expected": {
+        "resolved": true,
+        "center": [
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "no-follow-does-not-rewrite-stored-unit",
+      "input": {
+        "type": 6,
+        "actorId": 0,
+        "actorActive": true,
+        "targetId": 1,
+        "targetActive": true,
+        "stored": [
+          1,
+          0,
+          0
+        ],
+        "actorPosition": [
+          0,
+          0,
+          0
+        ],
+        "targetPosition": [
+          3,
+          1,
+          1
+        ],
+        "noFollow": true,
+        "directional": false,
+        "width": 5,
+        "depth": 2,
+        "blocked": [],
+        "untargetable": []
+      },
+      "expected": {
+        "resolved": true,
+        "center": [
+          3,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "yes-seven-uses-tile-branch",
+      "input": {
+        "type": 7,
+        "actorId": 0,
+        "actorActive": true,
+        "targetId": 1,
+        "targetActive": true,
+        "stored": [
+          1,
+          0,
+          0
+        ],
+        "actorPosition": [
+          0,
+          0,
+          0
+        ],
+        "targetPosition": [
+          3,
+          1,
+          1
+        ],
+        "noFollow": false,
+        "directional": false,
+        "width": 5,
+        "depth": 2,
+        "blocked": [],
+        "untargetable": []
+      },
+      "expected": {
+        "resolved": true,
+        "center": [
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "other-raw-type-is-not-unit",
+      "input": {
+        "type": 0,
+        "actorId": 0,
+        "actorActive": true,
+        "targetId": 1,
+        "targetActive": true,
+        "stored": [
+          1,
+          0,
+          0
+        ],
+        "actorPosition": [
+          0,
+          0,
+          0
+        ],
+        "targetPosition": [
+          3,
+          1,
+          1
+        ],
+        "noFollow": false,
+        "directional": false,
+        "width": 5,
+        "depth": 2,
+        "blocked": [],
+        "untargetable": []
+      },
+      "expected": {
+        "resolved": true,
+        "center": [
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "tile-ignores-invalid-target-id",
+      "input": {
+        "type": 5,
+        "actorId": 0,
+        "actorActive": true,
+        "targetId": 255,
+        "targetActive": true,
+        "stored": [
+          1,
+          0,
+          0
+        ],
+        "actorPosition": [
+          0,
+          0,
+          0
+        ],
+        "targetPosition": [
+          3,
+          1,
+          1
+        ],
+        "noFollow": false,
+        "directional": false,
+        "width": 5,
+        "depth": 2,
+        "blocked": [],
+        "untargetable": []
+      },
+      "expected": {
+        "resolved": true,
+        "center": [
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "unit-target-slot-rejected-by-wrapper",
+      "input": {
+        "type": 6,
+        "actorId": 0,
+        "actorActive": true,
+        "targetId": 21,
+        "targetActive": true,
+        "stored": [
+          1,
+          0,
+          0
+        ],
+        "actorPosition": [
+          0,
+          0,
+          0
+        ],
+        "targetPosition": [
+          3,
+          1,
+          1
+        ],
+        "noFollow": false,
+        "directional": false,
+        "width": 5,
+        "depth": 2,
+        "blocked": [],
+        "untargetable": []
+      },
+      "expected": {
+        "resolved": false,
+        "center": null
+      }
+    },
+    {
+      "id": "inactive-anchor-position-still-read",
+      "input": {
+        "type": 6,
+        "actorId": 0,
+        "actorActive": true,
+        "targetId": 1,
+        "targetActive": false,
+        "stored": [
+          1,
+          0,
+          0
+        ],
+        "actorPosition": [
+          0,
+          0,
+          0
+        ],
+        "targetPosition": [
+          3,
+          1,
+          1
+        ],
+        "noFollow": false,
+        "directional": false,
+        "width": 5,
+        "depth": 2,
+        "blocked": [],
+        "untargetable": []
+      },
+      "expected": {
+        "resolved": true,
+        "center": [
+          3,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "inactive-caster-rejected",
+      "input": {
+        "type": 6,
+        "actorId": 0,
+        "actorActive": false,
+        "targetId": 1,
+        "targetActive": true,
+        "stored": [
+          1,
+          0,
+          0
+        ],
+        "actorPosition": [
+          0,
+          0,
+          0
+        ],
+        "targetPosition": [
+          3,
+          1,
+          1
+        ],
+        "noFollow": false,
+        "directional": false,
+        "width": 5,
+        "depth": 2,
+        "blocked": [],
+        "untargetable": []
+      },
+      "expected": {
+        "resolved": false,
+        "center": null
+      }
+    },
+    {
+      "id": "caster-slot-limit",
+      "input": {
+        "type": 6,
+        "actorId": 21,
+        "actorActive": true,
+        "targetId": 1,
+        "targetActive": true,
+        "stored": [
+          1,
+          0,
+          0
+        ],
+        "actorPosition": [
+          0,
+          0,
+          0
+        ],
+        "targetPosition": [
+          3,
+          1,
+          1
+        ],
+        "noFollow": false,
+        "directional": false,
+        "width": 5,
+        "depth": 2,
+        "blocked": [],
+        "untargetable": []
+      },
+      "expected": {
+        "resolved": false,
+        "center": null
+      }
+    },
+    {
+      "id": "raw-positive-halfword-wraps-to-byte",
+      "input": {
+        "type": 5,
+        "actorId": 0,
+        "actorActive": true,
+        "targetId": 1,
+        "targetActive": true,
+        "stored": [
+          256,
+          256,
+          256
+        ],
+        "actorPosition": [
+          0,
+          0,
+          0
+        ],
+        "targetPosition": [
+          3,
+          1,
+          1
+        ],
+        "noFollow": false,
+        "directional": false,
+        "width": 5,
+        "depth": 2,
+        "blocked": [],
+        "untargetable": []
+      },
+      "expected": {
+        "resolved": true,
+        "center": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "raw-negative-halfwords-wrap-to-byte",
+      "input": {
+        "type": 5,
+        "actorId": 0,
+        "actorActive": true,
+        "targetId": 1,
+        "targetActive": true,
+        "stored": [
+          -255,
+          -256,
+          -255
+        ],
+        "actorPosition": [
+          0,
+          0,
+          0
+        ],
+        "targetPosition": [
+          3,
+          1,
+          1
+        ],
+        "noFollow": false,
+        "directional": false,
+        "width": 5,
+        "depth": 2,
+        "blocked": [],
+        "untargetable": []
+      },
+      "expected": {
+        "resolved": true,
+        "center": [
+          1,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "wrapped-coordinate-out-of-map",
+      "input": {
+        "type": 5,
+        "actorId": 0,
+        "actorActive": true,
+        "targetId": 1,
+        "targetActive": true,
+        "stored": [
+          -1,
+          0,
+          0
+        ],
+        "actorPosition": [
+          0,
+          0,
+          0
+        ],
+        "targetPosition": [
+          3,
+          1,
+          1
+        ],
+        "noFollow": false,
+        "directional": false,
+        "width": 5,
+        "depth": 2,
+        "blocked": [],
+        "untargetable": []
+      },
+      "expected": {
+        "resolved": false,
+        "center": null
+      }
+    },
+    {
+      "id": "wrapped-layer-two-rejected",
+      "input": {
+        "type": 5,
+        "actorId": 0,
+        "actorActive": true,
+        "targetId": 1,
+        "targetActive": true,
+        "stored": [
+          1,
+          0,
+          258
+        ],
+        "actorPosition": [
+          0,
+          0,
+          0
+        ],
+        "targetPosition": [
+          3,
+          1,
+          1
+        ],
+        "noFollow": false,
+        "directional": false,
+        "width": 5,
+        "depth": 2,
+        "blocked": [],
+        "untargetable": []
+      },
+      "expected": {
+        "resolved": false,
+        "center": null
+      }
+    },
+    {
+      "id": "blocked-anchor-panel-rejected",
+      "input": {
+        "type": 6,
+        "actorId": 0,
+        "actorActive": true,
+        "targetId": 1,
+        "targetActive": true,
+        "stored": [
+          1,
+          0,
+          0
+        ],
+        "actorPosition": [
+          0,
+          0,
+          0
+        ],
+        "targetPosition": [
+          3,
+          1,
+          1
+        ],
+        "noFollow": false,
+        "directional": false,
+        "width": 5,
+        "depth": 2,
+        "blocked": [
+          [
+            3,
+            1,
+            1
+          ]
+        ],
+        "untargetable": []
+      },
+      "expected": {
+        "resolved": false,
+        "center": null
+      }
+    },
+    {
+      "id": "untargetable-centre-not-rejected-here",
+      "input": {
+        "type": 6,
+        "actorId": 0,
+        "actorActive": true,
+        "targetId": 1,
+        "targetActive": true,
+        "stored": [
+          1,
+          0,
+          0
+        ],
+        "actorPosition": [
+          0,
+          0,
+          0
+        ],
+        "targetPosition": [
+          3,
+          1,
+          1
+        ],
+        "noFollow": false,
+        "directional": false,
+        "width": 5,
+        "depth": 2,
+        "blocked": [],
+        "untargetable": [
+          [
+            3,
+            1,
+            1
+          ]
+        ]
+      },
+      "expected": {
+        "resolved": true,
+        "center": [
+          3,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "directional-origin-precedes-unit",
+      "input": {
+        "type": 6,
+        "actorId": 0,
+        "actorActive": true,
+        "targetId": 1,
+        "targetActive": true,
+        "stored": [
+          1,
+          0,
+          0
+        ],
+        "actorPosition": [
+          0,
+          0,
+          0
+        ],
+        "targetPosition": [
+          3,
+          1,
+          1
+        ],
+        "noFollow": false,
+        "directional": true,
+        "width": 5,
+        "depth": 2,
+        "blocked": [],
+        "untargetable": []
+      },
+      "expected": {
+        "resolved": true,
+        "center": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "wrapper-rejects-unit-id-before-directional-origin",
+      "input": {
+        "type": 6,
+        "actorId": 0,
+        "actorActive": true,
+        "targetId": 21,
+        "targetActive": true,
+        "stored": [
+          1,
+          0,
+          0
+        ],
+        "actorPosition": [
+          0,
+          0,
+          0
+        ],
+        "targetPosition": [
+          3,
+          1,
+          1
+        ],
+        "noFollow": false,
+        "directional": true,
+        "width": 5,
+        "depth": 2,
+        "blocked": [],
+        "untargetable": []
+      },
+      "expected": {
+        "resolved": false,
+        "center": null
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "moved-unit-outside-current-blue-range",
+      "input": {
+        "aim": {
+          "type": 6,
+          "actorId": 0,
+          "actorActive": true,
+          "targetId": 1,
+          "targetActive": true,
+          "stored": [
+            1,
+            0,
+            0
+          ],
+          "actorPosition": [
+            0,
+            0,
+            0
+          ],
+          "targetPosition": [
+            3,
+            0,
+            0
+          ],
+          "noFollow": false,
+          "directional": false,
+          "width": 5,
+          "depth": 1,
+          "blocked": [],
+          "untargetable": []
+        },
+        "area": {
+          "map": {
+            "width": 5,
+            "depth": 1,
+            "layers": 1,
+            "overrides": []
+          },
+          "geometry": {
+            "range": 1,
+            "area": 0,
+            "vertical": 0,
+            "rangeVertical": true,
+            "cannotTargetSelf": false,
+            "cannotHitCaster": false,
+            "topDown": false,
+            "allies": false,
+            "enemies": false
+          },
+          "casterId": "actor",
+          "caster": [
+            0,
+            0,
+            0
+          ],
+          "profile": {
+            "ordinary": true,
+            "noSpecial": true,
+            "noCross": true,
+            "padding": true
+          },
+          "complete": true,
+          "units": [
+            {
+              "id": "bystander",
+              "order": 3,
+              "position": [
+                3,
+                0,
+                0
+              ],
+              "initial": 0,
+              "current": 0,
+              "active": true,
+              "crystal": false,
+              "treasure": false,
+              "jump": false,
+              "mount": false
+            },
+            {
+              "id": "old-tile-unit",
+              "order": 2,
+              "position": [
+                1,
+                0,
+                0
+              ],
+              "initial": 0,
+              "current": 0,
+              "active": true,
+              "crystal": false,
+              "treasure": false,
+              "jump": false,
+              "mount": false
+            },
+            {
+              "id": "anchor",
+              "order": 1,
+              "position": [
+                3,
+                0,
+                0
+              ],
+              "initial": 0,
+              "current": 0,
+              "active": true,
+              "crystal": false,
+              "treasure": false,
+              "jump": false,
+              "mount": false
+            },
+            {
+              "id": "actor",
+              "order": 0,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "initial": 0,
+              "current": 0,
+              "active": true,
+              "crystal": false,
+              "treasure": false,
+              "jump": false,
+              "mount": false
+            }
+          ]
+        }
+      },
+      "expected": {
+        "ids": [
+          "anchor",
+          "bystander"
+        ],
+        "panels": [
+          [
+            3,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "tile-hit-old-tile-occupant",
+      "input": {
+        "aim": {
+          "type": 5,
+          "actorId": 0,
+          "actorActive": true,
+          "targetId": 1,
+          "targetActive": true,
+          "stored": [
+            1,
+            0,
+            0
+          ],
+          "actorPosition": [
+            0,
+            0,
+            0
+          ],
+          "targetPosition": [
+            3,
+            0,
+            0
+          ],
+          "noFollow": false,
+          "directional": false,
+          "width": 5,
+          "depth": 1,
+          "blocked": [],
+          "untargetable": []
+        },
+        "area": {
+          "map": {
+            "width": 5,
+            "depth": 1,
+            "layers": 1,
+            "overrides": []
+          },
+          "geometry": {
+            "range": 1,
+            "area": 0,
+            "vertical": 0,
+            "rangeVertical": true,
+            "cannotTargetSelf": false,
+            "cannotHitCaster": false,
+            "topDown": false,
+            "allies": false,
+            "enemies": false
+          },
+          "casterId": "actor",
+          "caster": [
+            0,
+            0,
+            0
+          ],
+          "profile": {
+            "ordinary": true,
+            "noSpecial": true,
+            "noCross": true,
+            "padding": true
+          },
+          "complete": true,
+          "units": [
+            {
+              "id": "bystander",
+              "order": 3,
+              "position": [
+                3,
+                0,
+                0
+              ],
+              "initial": 0,
+              "current": 0,
+              "active": true,
+              "crystal": false,
+              "treasure": false,
+              "jump": false,
+              "mount": false
+            },
+            {
+              "id": "old-tile-unit",
+              "order": 2,
+              "position": [
+                1,
+                0,
+                0
+              ],
+              "initial": 0,
+              "current": 0,
+              "active": true,
+              "crystal": false,
+              "treasure": false,
+              "jump": false,
+              "mount": false
+            },
+            {
+              "id": "anchor",
+              "order": 1,
+              "position": [
+                3,
+                0,
+                0
+              ],
+              "initial": 0,
+              "current": 0,
+              "active": true,
+              "crystal": false,
+              "treasure": false,
+              "jump": false,
+              "mount": false
+            },
+            {
+              "id": "actor",
+              "order": 0,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "initial": 0,
+              "current": 0,
+              "active": true,
+              "crystal": false,
+              "treasure": false,
+              "jump": false,
+              "mount": false
+            }
+          ]
+        }
+      },
+      "expected": {
+        "ids": [
+          "old-tile-unit"
+        ],
+        "panels": [
+          [
+            1,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "inactive-anchor-centres-area-but-is-not-selected",
+      "input": {
+        "aim": {
+          "type": 6,
+          "actorId": 0,
+          "actorActive": true,
+          "targetId": 1,
+          "targetActive": false,
+          "stored": [
+            1,
+            0,
+            0
+          ],
+          "actorPosition": [
+            0,
+            0,
+            0
+          ],
+          "targetPosition": [
+            3,
+            0,
+            0
+          ],
+          "noFollow": false,
+          "directional": false,
+          "width": 5,
+          "depth": 1,
+          "blocked": [],
+          "untargetable": []
+        },
+        "area": {
+          "map": {
+            "width": 5,
+            "depth": 1,
+            "layers": 1,
+            "overrides": []
+          },
+          "geometry": {
+            "range": 1,
+            "area": 0,
+            "vertical": 0,
+            "rangeVertical": true,
+            "cannotTargetSelf": false,
+            "cannotHitCaster": false,
+            "topDown": false,
+            "allies": false,
+            "enemies": false
+          },
+          "casterId": "actor",
+          "caster": [
+            0,
+            0,
+            0
+          ],
+          "profile": {
+            "ordinary": true,
+            "noSpecial": true,
+            "noCross": true,
+            "padding": true
+          },
+          "complete": true,
+          "units": [
+            {
+              "id": "bystander",
+              "order": 3,
+              "position": [
+                3,
+                0,
+                0
+              ],
+              "initial": 0,
+              "current": 0,
+              "active": true,
+              "crystal": false,
+              "treasure": false,
+              "jump": false,
+              "mount": false
+            },
+            {
+              "id": "old-tile-unit",
+              "order": 2,
+              "position": [
+                1,
+                0,
+                0
+              ],
+              "initial": 0,
+              "current": 0,
+              "active": true,
+              "crystal": false,
+              "treasure": false,
+              "jump": false,
+              "mount": false
+            },
+            {
+              "id": "anchor",
+              "order": 1,
+              "position": [
+                3,
+                0,
+                0
+              ],
+              "initial": 0,
+              "current": 0,
+              "active": false,
+              "crystal": false,
+              "treasure": false,
+              "jump": false,
+              "mount": false
+            },
+            {
+              "id": "actor",
+              "order": 0,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "initial": 0,
+              "current": 0,
+              "active": true,
+              "crystal": false,
+              "treasure": false,
+              "jump": false,
+              "mount": false
+            }
+          ]
+        }
+      },
+      "expected": {
+        "ids": [
+          "bystander"
+        ],
+        "panels": [
+          [
+            3,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "jumping-anchor-centres-area-but-is-not-selected",
+      "input": {
+        "aim": {
+          "type": 6,
+          "actorId": 0,
+          "actorActive": true,
+          "targetId": 1,
+          "targetActive": true,
+          "stored": [
+            1,
+            0,
+            0
+          ],
+          "actorPosition": [
+            0,
+            0,
+            0
+          ],
+          "targetPosition": [
+            3,
+            0,
+            0
+          ],
+          "noFollow": false,
+          "directional": false,
+          "width": 5,
+          "depth": 1,
+          "blocked": [],
+          "untargetable": []
+        },
+        "area": {
+          "map": {
+            "width": 5,
+            "depth": 1,
+            "layers": 1,
+            "overrides": []
+          },
+          "geometry": {
+            "range": 1,
+            "area": 0,
+            "vertical": 0,
+            "rangeVertical": true,
+            "cannotTargetSelf": false,
+            "cannotHitCaster": false,
+            "topDown": false,
+            "allies": false,
+            "enemies": false
+          },
+          "casterId": "actor",
+          "caster": [
+            0,
+            0,
+            0
+          ],
+          "profile": {
+            "ordinary": true,
+            "noSpecial": true,
+            "noCross": true,
+            "padding": true
+          },
+          "complete": true,
+          "units": [
+            {
+              "id": "bystander",
+              "order": 3,
+              "position": [
+                3,
+                0,
+                0
+              ],
+              "initial": 0,
+              "current": 0,
+              "active": true,
+              "crystal": false,
+              "treasure": false,
+              "jump": false,
+              "mount": false
+            },
+            {
+              "id": "old-tile-unit",
+              "order": 2,
+              "position": [
+                1,
+                0,
+                0
+              ],
+              "initial": 0,
+              "current": 0,
+              "active": true,
+              "crystal": false,
+              "treasure": false,
+              "jump": false,
+              "mount": false
+            },
+            {
+              "id": "anchor",
+              "order": 1,
+              "position": [
+                3,
+                0,
+                0
+              ],
+              "initial": 0,
+              "current": 0,
+              "active": true,
+              "crystal": false,
+              "treasure": false,
+              "jump": true,
+              "mount": false
+            },
+            {
+              "id": "actor",
+              "order": 0,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "initial": 0,
+              "current": 0,
+              "active": true,
+              "crystal": false,
+              "treasure": false,
+              "jump": false,
+              "mount": false
+            }
+          ]
+        }
+      },
+      "expected": {
+        "ids": [
+          "bystander"
+        ],
+        "panels": [
+          [
+            3,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "no-follow-bit-still-does-not-rewrite-stored-unit",
+      "input": {
+        "aim": {
+          "type": 6,
+          "actorId": 0,
+          "actorActive": true,
+          "targetId": 1,
+          "targetActive": true,
+          "stored": [
+            1,
+            0,
+            0
+          ],
+          "actorPosition": [
+            0,
+            0,
+            0
+          ],
+          "targetPosition": [
+            3,
+            0,
+            0
+          ],
+          "noFollow": true,
+          "directional": false,
+          "width": 5,
+          "depth": 1,
+          "blocked": [],
+          "untargetable": []
+        },
+        "area": {
+          "map": {
+            "width": 5,
+            "depth": 1,
+            "layers": 1,
+            "overrides": []
+          },
+          "geometry": {
+            "range": 1,
+            "area": 0,
+            "vertical": 0,
+            "rangeVertical": true,
+            "cannotTargetSelf": false,
+            "cannotHitCaster": false,
+            "topDown": false,
+            "allies": false,
+            "enemies": false
+          },
+          "casterId": "actor",
+          "caster": [
+            0,
+            0,
+            0
+          ],
+          "profile": {
+            "ordinary": true,
+            "noSpecial": true,
+            "noCross": true,
+            "padding": true
+          },
+          "complete": true,
+          "units": [
+            {
+              "id": "bystander",
+              "order": 3,
+              "position": [
+                3,
+                0,
+                0
+              ],
+              "initial": 0,
+              "current": 0,
+              "active": true,
+              "crystal": false,
+              "treasure": false,
+              "jump": false,
+              "mount": false
+            },
+            {
+              "id": "old-tile-unit",
+              "order": 2,
+              "position": [
+                1,
+                0,
+                0
+              ],
+              "initial": 0,
+              "current": 0,
+              "active": true,
+              "crystal": false,
+              "treasure": false,
+              "jump": false,
+              "mount": false
+            },
+            {
+              "id": "anchor",
+              "order": 1,
+              "position": [
+                3,
+                0,
+                0
+              ],
+              "initial": 0,
+              "current": 0,
+              "active": true,
+              "crystal": false,
+              "treasure": false,
+              "jump": false,
+              "mount": false
+            },
+            {
+              "id": "actor",
+              "order": 0,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "initial": 0,
+              "current": 0,
+              "active": true,
+              "crystal": false,
+              "treasure": false,
+              "jump": false,
+              "mount": false
+            }
+          ]
+        }
+      },
+      "expected": {
+        "ids": [
+          "anchor",
+          "bystander"
+        ],
+        "panels": [
+          [
+            3,
+            0,
+            0
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -242,5 +242,6 @@ Seven TRX reports and logs: `scratch/magic-inputs-348-357/`.
 ZOD-358–362 now provide [ordinary map-aim geometry](ordinary-spell-targeting.md)
 and derive a source-ordered target list for this existing cast query. Unit-follow,
 special shapes, commands, live publication and magic AI remain separate. Next
-ZOD-363 traces unit-follow and stored-aim resolution. The agreed future forward
+[ZOD-363](spell-follow-and-stored-aim.md) now traces unit-follow and stored-aim
+resolution; ZOD-364 selects the isolated aim primitive next. The agreed future forward
 nine-tile1/3/5 cone remains unimplemented and independent of shared arithmetic.

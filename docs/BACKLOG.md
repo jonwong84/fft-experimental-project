@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-363 (Trace unit-follow targeting and stored-aim resolution).**
-[Ordinary spell targeting](behavior/ordinary-spell-targeting.md) records completed
-ZOD-358–362. Geometry remains independent of arithmetic and live publication.
-There are 34 open tickets below. The 329 completed tickets, prior checkpoints and
+**Next bounded work: ZOD-364 (Resolve certified ordinary stored spell aims).**
+[Unit-follow and stored spell aims](behavior/spell-follow-and-stored-aim.md) records
+completed ZOD-363. Keep source choice, preparation admission and resolution separate.
+There are 34 open tickets below. The 330 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,11 +31,16 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-363 — Trace unit-follow targeting and stored-aim resolution
+### ZOD-364 — Resolve certified ordinary stored spell aims
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-362
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-363
 
-Trace unit-follow versus stored map-aim resolution, movement during charge, no-follow flags and original validation boundaries before choosing a bounded implementation child. Do not activate commands or scheduling. See [scope and deferrals](behavior/ordinary-spell-targeting.md).
+Add a pure ordinary stored-map/unit-follow aim query from explicit known current
+anchor data. Preserve original coordinate narrowing and map/sheet/blocked-centre
+checks, target-activity distinctions and raw YES7 tile semantics. Reject missing
+anchor facts without falling back to the old tile. Preserve existing map APIs;
+no bridge, commands, clock, MP, RNG or live-state adoption in this child. See the
+[source and selected scope](behavior/spell-follow-and-stored-aim.md).
 Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
 status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
 

@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-363",
+  "managedBaseRevision": "306ab8ee781be6da3921c1bac2852750327b0095",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "sourceFiles": [
+    {
+      "path": "include/fft/ability.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 34632,
+      "sha256": "530676861205ea3cf31cada08ffc927142db98af0ad2c986722ad83b069b9a2f"
+    },
+    {
+      "path": "include/fft/action.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14957,
+      "sha256": "6e97b3935c0d9cdcb8f6ba9ee2d40985b645bc0b03281a0d50d3d20aae35591c"
+    },
+    {
+      "path": "include/fft/battle_map.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 22162,
+      "sha256": "8e31c1b1320542770f2ddf587f22edf9e293e4bc45d5c85116d34a4cde96c296"
+    },
+    {
+      "path": "include/fft/command.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 16578,
+      "sha256": "1c033381864b735aded0393f686443333b09d2ee62c539ecbbd3ae9a7ebb60a0"
+    },
+    {
+      "path": "include/fft/cursor.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2041,
+      "sha256": "abdd4508f181af070f1786edb301dcf03341d0bcb380b1238bd72204cd332ed8"
+    },
+    {
+      "path": "include/fft/target.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3515,
+      "sha256": "9205682345d258f30701a0e8e5d016e93704c6147caa016df9051974db231448"
+    },
+    {
+      "path": "include/fft/turn_command.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2166,
+      "sha256": "bff9d91a197c4e67bdbb633c8a034c0aa8c28ba8ac04e86cef68e199c7a64eb8"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/unit_runtime.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 24677,
+      "sha256": "dd205932204a10a48224c7ddc3b73ca6aad3bd92bcf3cdbdd4f0c205d206f865"
+    },
+    {
+      "path": "include/psx/libgte.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 5202,
+      "sha256": "11b147f665d9f0b5c9ca90700833294b08ef69aedaf5f415dbfb2ba67029bcf3"
+    },
+    {
+      "path": "include/psx/types.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 203,
+      "sha256": "6799bda195b2b30c95a4a06a62074e247d9705b014203bd2633d00beaf75467f"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 80969,
+      "sha256": "e8ec92c02c53d3715b3813931685399e79481dad0fae6ae27505fbc5d086d444"
+    },
+    {
+      "path": "src/battle/combat/targets.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 69383,
+      "sha256": "b891ce80c358af2b3914d68f06a832fd0d4e73ba7516c37aeffed6ba1c09071d"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40868,
+      "sha256": "f76188542c39818fa2ab478e42ef63b4eb0f2c1c2db5a74db4120ddbaf4cb8cb"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 187246,
+      "sha256": "2792e2b861e8de4f4f996a5491dbacde0b96f77518a75cc4b8eebf2d6bc1557f"
+    },
+    {
+      "path": "src/battle/turn/inspection.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 6018,
+      "sha256": "112c5e809b6e484df8d8a516c0b5b7a998fe83c667dbd32f60a645951a74d843"
+    },
+    {
+      "path": "src/battle/units/queries.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 8896,
+      "sha256": "136167f2099482714acf2edfdf98c83f16a5a3b263e757436339dc6f7805d26e"
+    },
+    {
+      "path": "src/lib/menu/command_prompts.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 49775,
+      "sha256": "6ecaa3754f30d65283049792e70161d0b20b58783c36bdf4fcc53a50266603b4"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 15884,
+      "sha256": "7ddb1c8ed2e0cad3de18dae6945364d4fffd2299aa4383a659ecbe27717b7eb9"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/targets.c",
+      "symbol": "target_range_set_for_action",
+      "startLine": 968,
+      "endLine": 1058,
+      "normalizedLfSha256": "3e0fa439ba68dd52e1ef6455d41a11ec87c37b04aaae0e95c731e20a4c68397f"
+    },
+    {
+      "path": "src/battle/combat/targets.c",
+      "symbol": "ability_range_set",
+      "startLine": 708,
+      "endLine": 795,
+      "normalizedLfSha256": "a0a7d76d1a7f994e9fc8c1263e875bcc047a8a61477e52ffc851740f935ff898"
+    },
+    {
+      "path": "src/battle/combat/targets.c",
+      "symbol": "target_area_set_for_action",
+      "startLine": 1065,
+      "endLine": 1133,
+      "normalizedLfSha256": "354f8d7ff6a3c9af3306933a74bbb2d679e773ccd814f1eec66e34f8a6d417d1"
+    },
+    {
+      "path": "src/battle/combat/targets.c",
+      "symbol": "ability_area_set",
+      "startLine": 1613,
+      "endLine": 1764,
+      "normalizedLfSha256": "a06d126f09660afa9d383ab0f9ea8ce85e7b0fa5bd2eca4c6a20163d596dc0ee"
+    },
+    {
+      "path": "src/battle/combat/targets.c",
+      "symbol": "target_validate_for_weapon",
+      "startLine": 1151,
+      "endLine": 1255,
+      "normalizedLfSha256": "a8a7e137ebd4a74431efd7d817d272e7b5f2cd194b74e59673b3a80349a4583d"
+    },
+    {
+      "path": "src/battle/combat/targets.c",
+      "symbol": "area_target_tile_keep",
+      "startLine": 1581,
+      "endLine": 1602,
+      "normalizedLfSha256": "54dad395a03e477e11d43c2676c312ce80fdf7d35d26eb47335743071d3c9847"
+    },
+    {
+      "path": "src/battle/combat/targets.c",
+      "symbol": "target_is_unit_untargetable_and_store_tile",
+      "startLine": 1816,
+      "endLine": 1832,
+      "normalizedLfSha256": "4baff32e4c73eabf7673be333bc3519c24d6b9669ce025ad7e6922273cf06d4f"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "action_prepare",
+      "startLine": 177,
+      "endLine": 375,
+      "normalizedLfSha256": "1f6a6b279fb1f2c584883bd0fb68c88d53eaa6f20d26317711a09d18d0e6b4fe"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "action_commit_preparation",
+      "startLine": 153,
+      "endLine": 161,
+      "normalizedLfSha256": "96f4d3ed79ea76fac957450047f623666c7cd2510d1521eae477cae4d6c37885"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "action_init_current_data",
+      "startLine": 423,
+      "endLine": 460,
+      "normalizedLfSha256": "1c9392fe9c971c8f13a540c5c9d10b6098a63f9a94f26d132d592f40b95276ea"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "action_tiles_calculate",
+      "startLine": 587,
+      "endLine": 621,
+      "normalizedLfSha256": "9c67a57a4c7b03d6056c40dc4661feb4ca326cac58da315fc79698472e787e82"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "action_resolve_strike",
+      "startLine": 630,
+      "endLine": 782,
+      "normalizedLfSha256": "5f8d5e4b18be3ac6d0ee33bfb3a0b921eec53629c4d1b24438dc477cc3ac6995"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "units_on_panels_list",
+      "startLine": 988,
+      "endLine": 1042,
+      "normalizedLfSha256": "f513a48c4e001f57ae63987b486852860340bff65468aa440d610569c4557da4"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "target_tile_select",
+      "startLine": 2094,
+      "endLine": 2135,
+      "normalizedLfSha256": "bef63e96b052eb80ab2aa48910458764e8561ea3616dd5261970601ab315e916"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "target_tile_selection_start",
+      "startLine": 2158,
+      "endLine": 2186,
+      "normalizedLfSha256": "2f5ef092b2acaa86d591762832f1dbad3bd4eceed40dcb9fa5f2cbfcb786becd"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_targeting_range_update",
+      "startLine": 3367,
+      "endLine": 3420,
+      "normalizedLfSha256": "106d746e53f7b4431303b57b8977a969f3fa21f38d885f35b638c88e6a1b0ec3"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_confirm_action_enter",
+      "startLine": 2192,
+      "endLine": 2233,
+      "normalizedLfSha256": "8b710e49175d93ed1cff9c8106315a694bf7bc994285d3a1287b8f3b7b43c757"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_confirm_action_update",
+      "startLine": 3501,
+      "endLine": 3556,
+      "normalizedLfSha256": "13ba65397870eae8396a4208fe66d813f884f795e7f605f6cc6748a990675428"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "action_execute_ability",
+      "startLine": 2021,
+      "endLine": 2052,
+      "normalizedLfSha256": "97e760f9870b916f1f207cb77f7c48913b28d7084e35ae78ca580c5b0425277d"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_commence_attack_phase_enter",
+      "startLine": 2057,
+      "endLine": 2072,
+      "normalizedLfSha256": "56d6f785b1f643da8293b34643f49256447edf00c3006e9586c6503bdc882847"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "action_announce_next",
+      "startLine": 1786,
+      "endLine": 1859,
+      "normalizedLfSha256": "46b4c8c61b2c6736bff4bd4a5b6f288232839527b5b6594ad95b951d7ec1204f"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "symbol": "action_command_copy",
+      "startLine": 151,
+      "endLine": 159,
+      "normalizedLfSha256": "1265fb12e556a701540fb9dfe183fe9a108a8ab8061a7630872ff2e16149d270"
+    },
+    {
+      "path": "src/battle/units/queries.c",
+      "symbol": "unit_find_selectable_at_tile",
+      "startLine": 59,
+      "endLine": 91,
+      "normalizedLfSha256": "b31d970b1ea979a2edbadd2e2a747fc07f80443cfda6cfd3428b5cd8aa394103"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_clock_run",
+      "startLine": 43,
+      "endLine": 384,
+      "normalizedLfSha256": "340cbbd8690adcfab96bf53d3eb5ea9f5b47327eb5901a3cc758b2cfbbfdf1e5"
+    },
+    {
+      "path": "src/battle/turn/inspection.c",
+      "symbol": "cursor_move_to_action_target",
+      "startLine": 40,
+      "endLine": 51,
+      "normalizedLfSha256": "4f5bd0893daf5e6d20953b5fd911ac861baaeec2edfd2880f142cb26559a4c04"
+    },
+    {
+      "path": "src/lib/menu/command_prompts.c",
+      "symbol": "request_dispatch",
+      "startLine": 728,
+      "endLine": 1035,
+      "normalizedLfSha256": "ee6aa85945e4b59de19502fbed2d20cdb0cc567883b92dbfbcb590d174b56f95"
+    }
+  ],
+  "originalExecuted": false,
+  "cExecuted": false,
+  "scope": "Ordinary choice, stored targeting, preparation target checks and resolution centre; clock, UI and nonordinary routines are traced boundaries, not implemented or exhaustively described."
+}
