@@ -103,3 +103,12 @@ levels cannot silently become a complete career state. Full status/corpse/Golem/
 terminal/frame RNG, host/editor, automatic facing, global scheduling, magic AI,
 owner drafts/JobStats, broad interfaces, ZOD-106 and the custom cone stay separate.
 Next trace growth and unlock requirements before selecting live integration.
+
+## ZOD-377
+
+`ActionOutcomeTracking.ApplyOrdinary` implements normal-return marker stores.
+Primary misses assign Targeted; a nonprimary changed hit assigns Affected;
+otherwise nonprimary calls preserve the prior byte, including unknown bits.
+There is no cumulative OR. Three managed cases cover eight independent literals,
+reaction preservation and a later actor miss replacing its self-target marker.
+Early KO/dead-conversion and learn-on-hit application remain separate.

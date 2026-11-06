@@ -9,6 +9,12 @@
       "managedBaseRevision": "c4994e4bcb908290fff5cf3090d5fd1ef83879f5",
       "validation": "Eight Python cases and49 independent descriptions pass;clean pinned11-file/23-function source audit and eight prepared JP thresholds verified. Architecture identifies phase/actor/career/fizzle gaps before adoption.",
       "reports": "scratch/action-rewards-376-381/"
+    },
+    {
+      "ticket": "ZOD-377",
+      "managedBaseRevision": "7d9fe00913d481bc6765df40c8f7f2c6ec974da0",
+      "validation": "Three managed cases passed: eight literal marker assignments, reaction/unknown-bit preservation and self-target marker overwritten by later actor miss.",
+      "reports": "scratch/action-rewards-376-381/"
     }
   ]
 }
