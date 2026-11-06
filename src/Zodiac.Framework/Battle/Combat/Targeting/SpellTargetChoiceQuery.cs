@@ -6,9 +6,12 @@ public static class SpellTargetChoiceQuery
     public static SpellTargetChoiceResult Evaluate(BattleMapDefinition map, SpellTargetOccupant caster,
         MagicCastDefinition definition, SpellTargetingProfile? profile)
     {
-        ArgumentNullException.ThrowIfNull(map); ArgumentNullException.ThrowIfNull(caster); ArgumentNullException.ThrowIfNull(definition);
+        ArgumentNullException.ThrowIfNull(map);
+        ArgumentNullException.ThrowIfNull(caster);
+        ArgumentNullException.ThrowIfNull(definition);
         ArgumentNullException.ThrowIfNull(definition.Spell);
         ArgumentOutOfRangeException.ThrowIfNegative(definition.MpCost, nameof(definition.MpCost));
+
         SpellTargetChoiceResult Reject(SpellTargetingRejection reason) => new(false, reason, null);
         if (string.IsNullOrWhiteSpace(definition.Id.Value) || string.IsNullOrWhiteSpace(caster.UnitId.Value))
             throw new ArgumentException("Explicit caster and spell identities are required.");
