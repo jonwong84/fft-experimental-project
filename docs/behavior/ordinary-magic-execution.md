@@ -126,3 +126,29 @@ charge/readiness, real HP/MP/EXP/JP publication, moving follow/tile fizzles, two
 simultaneously ready casts, KO, level growth/unlocks, counter-prefix rollback,
 admission, resource failure and deterministic replay/restart. Prepared Fire and
 the player host are the next acceptance gates.
+
+## ZOD-390
+
+The offline `prepare-fire-battle` command verifies SCUS-94221 executable length
+and SHA-256 before reading 34 selected records: Fire's primary/secondary data,
+empty infliction record0, Black Magic/default-menu binding, Wizard/Squire jobs,
+19 unlock rows and eight JP thresholds. The pinned reference above supplies the
+layouts. Fire has power14, Fire element, range4/area1/vertical1, charge4 and MP6.
+Its secondary Evadeable and Silence flags drive the existing runtime rules.
+Unsupported spell flags/status work or selected job innates/affinities fail closed.
+Raw records and exact input provenance stay under ignored scratch.
+
+The output contains a versioned strict JSON document and SHA-256 manifest.
+Runtime loading reads only these prepared files. Immutable `JobDefinition` /
+`JobStats` supplies copied growth/multiplier inputs without changing owner types.
+Explicit careers and learned spell IDs are validated against the runtime catalog;
+the loader snapshots all mutable wire collections. MP costs remain integers.
+The flat map, Mage/Guard units, starting careers, Fire grant, seed and first-KO
+objective are authored demonstration setup, not an imported original encounter.
+Mage starts at EXP95 so the first successful cast also exercises raw growth.
+
+Nineteen content cases cover strict schema, nested validation, immutable copies,
+manifest integrity, integer costs and actual loaded-content battle effects.
+Eleven CLI cases cover synthetic layout decoding, provenance, unsupported source
+dependencies and wrong-edition failure before publication. The real verified
+local input prepares successfully; no prepared assets are tracked in Git.

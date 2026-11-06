@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-390 (Import and bind verified prepared Fire content).**
+**Next bounded work: ZOD-391 (Run player Fire casting end to end).**
 [Ordinary magic execution](behavior/ordinary-magic-execution.md) records completed
-ZOD-387–389. The owner requires one spell end to end before broader development.
-There are 35 open tickets below. The 356 completed tickets, prior checkpoints and
+ZOD-387–390. The owner requires one spell end to end before broader development.
+There are 34 open tickets below. The 357 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,17 +31,9 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-390 — Import and bind verified prepared Fire content
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-389
-
-Read verified original records offline to prepare Fire and selected job/progression inputs, then validate runtime data and explicit learned grants. Runtime reads prepared JSON only, with no original/BIN/C dependency. See [source and end-to-end acceptance](behavior/ordinary-magic-execution.md).
-Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
-Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.
-
 ### ZOD-391 — Run player Fire casting end to end
 
-**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-390
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-390
 
 Add a runnable player casting client using the same authoritative commands as headless tests. Show aim/charge/HP/MP/status/reward results and verify native input/check replay and restart; do not activate general magic AI or an editor. See [source and end-to-end acceptance](behavior/ordinary-magic-execution.md).
 Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/

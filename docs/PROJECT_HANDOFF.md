@@ -6,9 +6,9 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-390: Import and bind verified prepared Fire content.**
+**ZOD-391: Run player Fire casting end to end.**
 [Ordinary magic execution](behavior/ordinary-magic-execution.md) records completed
-ZOD-387–389, pinned to clean source
+ZOD-387–390, pinned to clean source
 `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 Owner direction: make Fire work end to end through prepared content, grants,
 player aim/charge, actual HP/MP/status/RNG/rewards, replay/restart and runnable
