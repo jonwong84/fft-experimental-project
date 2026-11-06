@@ -34,3 +34,15 @@ explicitly. This primitive returns only a centre, not green panels or a cast.
 Three managed cases pass13 applicable original centre literals, identity/knowledge
 guards and map/collision boundaries. Directional/invalid original-slot/actor cases
 remain source descriptions outside this admitted primitive.
+
+## ZOD-365
+
+`StoredSpellCastQuery` finds a unique current anchor from certified complete
+roster metadata, resolves the centre with `SpellAimResolver`, then delegates the
+existing `OrdinarySpellTargeting.ResolveCast` and `MagicCastQuery` owners. It does
+not recheck blue range or spend MP a second time. Inactive anchors may omit formula
+snapshots while retaining explicit position data; they can centre bystanders.
+Missing/duplicate anchors, unknown position, unsupported selected targets and late
+RNG exhaustion return the incoming checkpoint with no cast outcome. Six cumulative
+managed cases pass current-versus-stored position, order,34/68 damage, exact RNG,
+inactive/Jump eligibility, replay and atomic-failure vectors.

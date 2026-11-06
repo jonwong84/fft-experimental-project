@@ -6,9 +6,9 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-365: Resolve ready casts from stored unit-follow aims.**
+**ZOD-366: Query ordinary spell target-choice modes.**
 [Stored spell aims and phases](behavior/stored-spell-aim-pipeline.md) records
-completed ZOD-364, using clean source
+completed ZOD-364–365, using clean source
 `11464943bbdbd2a0af022d90cb7f10455cf911df`. Exact UNIT6 follows current identity/
 position; YES7 and other types use byte-narrowed stored tiles. Preparation checks
 anchor activity separately from resolution centre selection and occupant filtering.

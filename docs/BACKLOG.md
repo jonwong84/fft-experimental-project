@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-365 (Resolve ready casts from stored unit-follow aims).**
+**Next bounded work: ZOD-366 (Query ordinary spell target-choice modes).**
 [Stored spell aims and phases](behavior/stored-spell-aim-pipeline.md) records
-completed ZOD-364. Keep selection, preparation, readiness and publication separate.
-There are 38 open tickets below. The 331 completed tickets, prior checkpoints and
+completed ZOD-364–365. Keep selection, preparation, readiness and publication separate.
+There are 37 open tickets below. The 332 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,17 +31,9 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-365 — Resolve ready casts from stored unit-follow aims
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-364
-
-Resolve the stored centre from a complete current roster, then delegate geometry and one-cost target calculation. Preserve inactive-anchor centring, original target order and whole-query rollback. See [source and phase boundaries](behavior/stored-spell-aim-pipeline.md).
-Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
-status/frame RNG, broad interfaces and ZOD-106 remain separate/deferred.
-
 ### ZOD-366 — Query ordinary spell target-choice modes
 
-**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-365
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-365
 
 Query ordinary blue target-choice modes from named flags and derived range panels, preserving NoFollowTarget and Auto/range0 ordering. No UI or command activation. See [source and phase boundaries](behavior/stored-spell-aim-pipeline.md).
 Owner drafts, JobStats, host/editor, automatic facing, full corpse/Golem/terminal/
