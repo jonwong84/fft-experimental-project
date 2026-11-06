@@ -4,12 +4,12 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-408 (Project AI-mode spell hits through shared formulas).**
+**Next bounded work: ZOD-409 (Account ordinary spell AI strikes and valuable targets).**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 The five requested learning milestones ZOD-398–402 are complete;
 [learning reports, owned slots and player casting](behavior/learn-on-hit.md) are validated.
-There are 38 open tickets below. The 374 completed tickets, prior checkpoints and
+There are 37 open tickets below. The 375 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -32,12 +32,6 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 
 ## Next bounded milestone
-
-### ZOD-408 — Project AI-mode spell hits through shared formulas
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-407
-
-Own fresh AI-mode resource/formula work and private HP/Critical/KO projections, preserving real evasion draws and no execute-only proc/reward/learning work.
 
 ### ZOD-409 — Account ordinary spell AI strikes and valuable targets
 

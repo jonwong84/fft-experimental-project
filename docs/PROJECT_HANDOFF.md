@@ -6,10 +6,10 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-408: Project AI-mode spell hits through shared formulas.**
-The owner requested ten milestones ZOD-403–412. ZOD-403–407 are complete;
+**ZOD-409: Account ordinary spell AI strikes and valuable targets.**
+The owner requested ten milestones ZOD-403–412. ZOD-403–408 are complete;
 [ordinary spell AI](behavior/ordinary-spell-ai.md) records the ready-hit boundary
-and the remaining selected steps. Seven current-state usefulness cases pass.
+and the remaining selected steps. Five AI formula/projection and fifty retained ordinary/application cases pass.
 Full delayed charge-clock search and autonomous magic turns remain separate.
 The earlier five-hour runs are not active. Source stays clean/read-only at
 `11464943bbdbd2a0af022d90cb7f10455cf911df`. Preserve the ten owner files,

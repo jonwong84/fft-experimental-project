@@ -128,3 +128,21 @@ no RNG and cannot publish a hit or a target decision.
 Seven cases cover enemy/allied damage, zero Faith, odd half-HP boundaries,
 healing enemies, both preference flags, absolute restrictions, Dead/self exclusion
 and rejection of unsupported behavior/status combinations.
+
+## AI formula and private HP projection (ZOD-408)
+
+`OrdinarySpellAiProjection` derives fresh ready resource work in AiSimulation,
+then calls the shared `MagicCastQuery`/`FaithMagicFormula` for selected source-order
+current targets. Damage consumes four real evasion draws even with bare zero
+evade, but no execute-only proc draw. Cure consumes no formula draws. MP is paid
+once privately, including self-target normalization. A later target's counter
+failure returns entry RNG with no partial cost or results. Unsupported status,
+equipment, identity, order and resource contexts fail closed.
+
+`OrdinaryMagicHitApplication` exposes only HP/Critical/Dead projections from the
+same existing internal kernel used by actual battle execution; no duplicated
+damage formula, live state adoption, career, counter or learning authority is
+introduced. Strike accounting still decides which computed frames are applied.
+Five AI scenarios cover the literal Fire54/four-draw result, Cure54/no draws,
+Critical and KO/Charging transitions, late-target rollback and admission failure.
+Retained ordinary battle/application regressions pass alongside them.
