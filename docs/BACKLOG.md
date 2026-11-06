@@ -4,14 +4,14 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-414 (Implement the bounded single-charge AI simulation clock).**
+**Next bounded work: ZOD-415 (Share fresh stored-aim AI hit work).**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 [Learning reports, owned slots and player casting](behavior/learn-on-hit.md)
 complete ZOD-398–402. Ten further milestones ZOD-403–412 complete a bounded
 [ordinary spell AI ready-hit path](behavior/ordinary-spell-ai.md); charge-clock
 search and autonomous magic turns remain separate.
-There are 37 open tickets below. The 380 completed tickets, prior checkpoints and
+There are 36 open tickets below. The 381 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -34,12 +34,6 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 
 ## Next bounded milestone
-
-### ZOD-414 — Implement the bounded single-charge AI simulation clock
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-413
-
-Derive unused-Move refund, ordinary phase/tie order, real upkeep draws, source movement opportunities and event-cap diagnostics from copied CT units. Keep player Wait, other charges and full statuses outside the clock.
 
 ### ZOD-415 — Share fresh stored-aim AI hit work
 

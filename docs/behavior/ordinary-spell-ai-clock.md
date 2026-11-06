@@ -64,3 +64,26 @@ overshoot order and the255-event unresolved boundary. Four Python cases verify
 those descriptions and detect changed refund/phase/count expectations. The
 formatting edit was explicitly approved and committed as `b7a222d`; the ten other
 owner-file blobs remain preservation gates.
+
+## Single-charge clock (ZOD-414)
+
+`OrdinarySpellAiClock.Run` copies source-slot scheduling facts after ACT is
+marked, derives the unused-Move refund, and resumes PICK_UNIT. It owns CT cap,
+overshoot/tie order, current-tick charge decrements, actual upkeep draws, direct
+simulated turn clearing and movement opportunities. Ordinary AI corpses retain
+upkeep/modulo without yielding turns or changing counters. Charge0 means the
+immediate hit was already evaluated, so one living readiness event is still run.
+
+The profile admits source slots0..20, positive derived Speed1..50, no Quick,
+a living caster, one owned charge and effect-free intervening phases. Dynamic
+collections retain stable IDs; the21-slot check is a source simulation boundary,
+not a catalog/storage size. Positive living Speed ensures an event within the
+source per-call phase guard; all-dead immediate simulation is rejected. Upkeep
+and tick exhaustion return entry RNG and no partial diagnostics.
+
+Ten fixture cases plus three budget/admission cases pass. They include the
+source255-event cap (counter102 at tick35 in the21-unit boundary fixture), an
+actor turn during CT10 without Wait refund, corpse upkeep and exact zero-draw
+readiness at maximum counters. Clock output is hypothetical data, never a battle
+or an adoptable TurnCycleState. The existing player and immediate AI clocks are
+unchanged.
