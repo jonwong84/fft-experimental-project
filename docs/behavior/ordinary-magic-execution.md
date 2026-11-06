@@ -84,3 +84,45 @@ normal changed targets become AFFECTED. Misses retain fields/counters but assign
 TARGETED. This helper grants no live publication authority; the following battle
 definition/command boundary owns admission and adoption. Full status handling is
 not enabled by a caller-provided flag.
+
+## ZOD-389
+
+`OrdinaryMagicBattleDefinition` now admits coherent human bare-equipment setups,
+copied raw/growth/multiplier/base facts, complete careers/unlock rules and explicit
+learned spell grants. It validates numeric maxima and rejects unsupported
+statuses/RSM/affinities/equipment instead of silently dropping them. New immutable
+battle state owns current HP/MP/statuses, careers, one RNG checkpoint, ordinary
+turn choices and pending charge plans. Only Framework commands create successors;
+no public state constructor or adoption of arbitrary projection results is added.
+The old sword/AI state and private magic projection API remain unchanged.
+
+The [clock/command source receipt](../evidence/combat/ordinary-magic-clock-source-v1.json)
+pins seven files/16 functions. The bounded event pump adds CT, serves all ready
+units by CT/source order with one upkeep draw each, decrements **all** charge
+counters, then resolves zero counters in source order without ticking the
+remaining zero counters twice. No normal turn is consumed at delayed readiness.
+The source Quick/Mime/timer/terrain branches are outside this admitted profile.
+Queueing consumes ACT and stores Charging without spending MP; Step is an
+explicitly bounded one-tile Move and Wait settles the turn. Current anchor
+positions drive follow targeting without repeating old blue range checks.
+
+Readiness clears Charging, performs the current MP check, calculates complete
+source-ordered frames through existing formula/evasion/proc owners and publishes
+HP/MP/status/RNG/careers. A valid empty area spends MP and resolves with no formula
+draws; insufficient current MP ends the pending cast without spending MP or
+granting rewards. Initialization failure does not enter the controller's normal
+post-strike reward path. Fire's separate miss actor work assigns TARGETED even
+after self-target work. Source reward owners then update EXP/JP, all eligible
+recipient slots, semantic unlocks and any five-draw raw growth/derived Critical
+refresh. Full numeric/career adoption now happens in this command path.
+
+The demo ends at its first KO, explicitly an invented encounter objective; it
+clears remaining demo commands before deferred corpse/terminal scheduling. The
+ordinary target's source KO count, death counter, markers and player-fallen flag
+are retained. Diagnostic counter exhaustion rejects an entire private command
+and exposes no state/events; this is managed admission policy, not a claim that
+original sequential mutation was atomic. Nine managed scenario cases cover
+charge/readiness, real HP/MP/EXP/JP publication, moving follow/tile fizzles, two
+simultaneously ready casts, KO, level growth/unlocks, counter-prefix rollback,
+admission, resource failure and deterministic replay/restart. Prepared Fire and
+the player host are the next acceptance gates.

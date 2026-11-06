@@ -15,6 +15,12 @@
       "managedBaseRevision": "416dcbddf6f8a8c3a34d6ef04d61e2fc03dc24c1",
       "validation": "Six managed cases pass Critical transitions, KO/byte counter/death state, source marker early return, misses, signed work, unsupported-state guards and growth refresh. Existing owner formatting in SpellTargetChoiceQuery remains unstaged.",
       "reports": "scratch/fire-execution-387/"
+    },
+    {
+      "ticket": "ZOD-389",
+      "managedBaseRevision": "35b58035665aeb7041a35a8fed8b9edda0381d76",
+      "validation": "Locked restore and zero-warning/error Release build pass; all4782 .NET tests passed. Nine actual command scenarios plus six status cases pass charge/RNG/payment/HP/KO/reward/growth/unlock/replay/paid-fizzle boundaries; fresh source clock audit seven files/16 functions passed.",
+      "reports": "scratch/fire-execution-387/"
     }
   ]
 }

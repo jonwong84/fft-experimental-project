@@ -4,10 +4,10 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-389 (Execute charged spells through coherent battle commands).**
+**Next bounded work: ZOD-390 (Import and bind verified prepared Fire content).**
 [Ordinary magic execution](behavior/ordinary-magic-execution.md) records completed
-ZOD-387–388. The owner requires one spell end to end before broader development.
-There are 36 open tickets below. The 355 completed tickets, prior checkpoints and
+ZOD-387–389. The owner requires one spell end to end before broader development.
+There are 35 open tickets below. The 356 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -31,17 +31,9 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-389 — Execute charged spells through coherent battle commands
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-388
-
-Own actual units, resources, RNG, turns, pending casts and careers in an immutable magic battle. Confirm aims, charge, resolve, publish and replay commands; represent resource/empty-target paid failures and a first-KO demo objective. Preserve old sword/AI state. See [source and end-to-end acceptance](behavior/ordinary-magic-execution.md).
-Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
-Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.
-
 ### ZOD-390 — Import and bind verified prepared Fire content
 
-**Type:** Story · **Priority:** P3 · **Status:** Waiting for preceding child · **Depends on:** ZOD-389
+**Type:** Story · **Priority:** P3 · **Status:** Ready (recommended next) · **Depends on:** ZOD-389
 
 Read verified original records offline to prepare Fire and selected job/progression inputs, then validate runtime data and explicit learned grants. Runtime reads prepared JSON only, with no original/BIN/C dependency. See [source and end-to-end acceptance](behavior/ordinary-magic-execution.md).
 Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/

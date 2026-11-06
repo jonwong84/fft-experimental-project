@@ -34,7 +34,11 @@ def audit(reference,executable):
     data=executable.read_bytes();require(hashlib.sha256(data).hexdigest()=='287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562','Prepared edition')
     start=0x80065de4-0x80010000+0x800
     for r in source['statusRecords']:require(data[start+16*r['id']:start+16*(r['id']+1)].hex()==r['hex'],'Status record '+str(r['id']))
-    return dict(validate(json.loads(FIXTURE.read_text(encoding='utf-8'))),referenceRevision=REVISION,referenceClean=True,sourceFiles=len(source['sourceFiles']),sourceFunctions=len(source['sourceFunctions']),preparedStatusRecords=len(source['statusRecords']))
+    clock=json.loads((ROOT/'docs/evidence/combat/ordinary-magic-clock-source-v1.json').read_text(encoding='utf-8'))
+    for r in clock['sourceFiles']:require(fingerprint(reference,r['path'])==r,'Clock file '+r['path'])
+    for r in clock['sourceFunctions']:
+        a=function_fingerprint(reference/r['path'],r['symbol']);require(all(r[k]==v for k,v in a.items()),'Clock function '+r['symbol'])
+    return dict(validate(json.loads(FIXTURE.read_text(encoding='utf-8'))),referenceRevision=REVISION,referenceClean=True,sourceFiles=len(source['sourceFiles']),sourceFunctions=len(source['sourceFunctions']),preparedStatusRecords=len(source['statusRecords']),clockSourceFiles=len(clock['sourceFiles']),clockSourceFunctions=len(clock['sourceFunctions']))
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--reference',type=Path,required=True);p.add_argument('--prepared-executable',type=Path,required=True);p.add_argument('--output',type=Path);a=p.parse_args();r=audit(a.reference,a.prepared_executable)
