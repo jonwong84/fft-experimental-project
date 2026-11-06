@@ -23,6 +23,14 @@ public static class OrdinarySpellAiScoring
 
     public static OrdinarySpellAiScore Calculate(IEnumerable<OrdinarySpellAiScoringUnit> units, byte hitPercent,
         short initialPriority = 0)
+        => CalculateCore(units, hitPercent, initialPriority, false);
+
+    // Only a fresh simulated event-limit owner may retain the source's unset-hit sentinel.
+    internal static OrdinarySpellAiScore CalculateUnresolved(IEnumerable<OrdinarySpellAiScoringUnit> units) =>
+        CalculateCore(units, byte.MaxValue, 0, true);
+
+    private static OrdinarySpellAiScore CalculateCore(IEnumerable<OrdinarySpellAiScoringUnit> units, byte hitPercent,
+        short initialPriority, bool unresolved)
     {
         ArgumentNullException.ThrowIfNull(units);
         var ordered = units.OrderBy(u => u?.SourceOrder).ToImmutableArray();
@@ -31,7 +39,7 @@ public static class OrdinarySpellAiScoring
                 u.Vitals.Hp > u.Vitals.MaxHp || u.Mp > u.Vitals.MaxMp || u.Dead != (u.Vitals.Hp == 0) ||
                 u.Vitals.Critical != (!u.Dead && u.Vitals.Hp <= u.Vitals.MaxHp / 5)) ||
             ordered.Select(u => u.UnitId).Distinct().Count() != ordered.Length ||
-            ordered.Select(u => u.SourceOrder).Distinct().Count() != ordered.Length || hitPercent > 100)
+            ordered.Select(u => u.SourceOrder).Distinct().Count() != ordered.Length || hitPercent > 100 && !(unresolved && hitPercent == byte.MaxValue))
             throw new ArgumentException("Explicit coherent ordinary score units and unique source slots are required.", nameof(units));
         short priority = initialPriority;
         var terms = ImmutableArray.CreateBuilder<OrdinarySpellAiScoreContribution>();

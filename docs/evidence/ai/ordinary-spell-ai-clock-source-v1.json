@@ -29,6 +29,10 @@
     {
       "path": "include/fft/ai_decision.h",
       "sha256": "37daae1989bf21cfee4703c1db83ac2e47fd8b3b440771974db3fb8363beccce"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "sha256": "939da0ee31959de0b3eef3c8c815b439d14c2d941f989d976f29efeef22e5905"
     }
   ],
   "originalExecuted": false,

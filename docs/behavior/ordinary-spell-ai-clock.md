@@ -104,3 +104,38 @@ failure leaves private inputs unchanged. All1,292 AI cases pass. Considered CT
 now delegates to the existing `MagicCharge.CalculateOrdinaryAiDelay` arithmetic
 owner; actual setup remains its separate masked/Short-Charge path. No player
 command or full-search interface changes are introduced.
+
+## Fixed-origin delayed candidate (ZOD-416)
+
+`OrdinarySpellAiCandidateQuery` owns fresh admission, actual masked charge setup,
+initial aim capture and the single-charge clock. Delayed hits derive movement
+opportunities from that clock, clear owned Charging at readiness, then reuse the
+stored-hit owner for resource/formula/accounting/application and absolute score.
+No supplied movement mask, clock result, frame or score can enter as authority.
+The request selects a known primary slot and one initial aim at the actor's
+current origin. An already-used Move is retained, but no new move is simulated.
+
+Immediate hits precede turn_end/the mandatory clock event, so a later movement
+opportunity does not undo them. Delayed tile damage can become NotValuable after
+the target's turn; followed targeting retains its anchor. All formula draws still
+occur before exclusion. NotValuable returns restored unit facts and no score,
+with actual decision draws retained. Counter/unsupported failure restores entry
+RNG and publishes no partial outcome. No rewards, learning or live CT/MP/HP are
+adopted. A living-caster/no-other-charge/no-timed-effect profile stays explicit;
+immediate caster KO/terminal clock work is rejected.
+
+At the255-event cap, the owned unresolved charge stays Charging with unspent MP,
+no frames and source hit-percent255. `ScoredUnresolved` distinguishes this real
+source branch; only that private owner can invoke the scoring sentinel path.
+The ordinary ready-score API still rejects hit values above100. CT and turn
+choices are diagnostic copies: source baseline restoration copies four bytes
+from `attributes` (including CT) and three from `has_turn` (including choices),
+while four from `faith` include current HP. The pinned unit layout records those
+byte spans; they are not omitted live mutations in this managed implementation.
+
+Twelve composed cases cover Fire tick13, CT3 tile value before a target turn,
+CT10 actor readiness without Wait refund, immediate formula-before-upkeep, AI
+corpse upkeep after KO, healing, already-used Move, high-bit CT masking, source
+cap score-9199/hit255, pending/foreign admission and late draw/tick rollback.
+All1,304 AI regressions pass. General ranking/search/lottery and autonomous magic
+turns remain separate from this bounded fixed-origin score.

@@ -13,13 +13,13 @@ public sealed class OrdinarySpellAiReadyTests
 {
     internal static readonly BattleUnitId Mage=new("mage"), Guard=new("guard");
     internal static (PreparedOrdinaryMagicBattle Content, OrdinarySpellAiCatalog Catalog, OrdinaryMagicBattleState State) Setup(
-        byte area=1, ushort mp=75, byte faith=70, bool heal=false, bool learn=false)
+        byte area=1, ushort mp=75, byte faith=70, bool heal=false, bool learn=false, byte charge=4, ushort? targetHp=null)
     {
         var d=AuthoredOrdinaryMagic.Document() with {SchemaVersion=3,MetadataPackageId="test:package/spell-ai"};
-        d.Spells[0]=d.Spells[0] with {Targeting=d.Spells[0].Targeting with {Area=area},
+        d.Spells[0]=d.Spells[0] with {Targeting=d.Spells[0].Targeting with {Area=area},ChargeTime=charge,
             Formula=heal?new(FaithMagicAmountKind.Healing,14,MagicElement.None,false):d.Spells[0].Formula};
         d.Units[0]=d.Units[0] with {LearnedPrimarySlots=[0],Mp=mp,Faith=faith};
-        d.Units[1]=d.Units[1] with {LearnedPrimarySlots=[],Team=heal?SpellTargetTeam.Blue:SpellTargetTeam.Red,Hp=heal?(ushort)30:(ushort)200};
+        d.Units[1]=d.Units[1] with {LearnedPrimarySlots=[],Team=heal?SpellTargetTeam.Blue:SpellTargetTeam.Red,Hp=targetHp??(heal?(ushort)30:(ushort)200)};
         var behavior=heal?new AiAbilityBehavior(TargetsAllies:true,AffectsHp:true,AffectedBySilence:true,AffectedByFaith:true,FollowTarget:true,Reflectable:true):OrdinarySpellAiListTests.FireBehavior;
         var meta=new ContentPackage(d.MetadataPackageId!,"test:profile/ai",ContentPackageKind.Baseline,null,[],
             [new(new("test:skillset/magic"),[new(0,new(AuthoredOrdinaryMagic.Fire))])],

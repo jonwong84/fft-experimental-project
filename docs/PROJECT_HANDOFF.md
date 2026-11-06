@@ -6,10 +6,10 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-416: Compose fixed-origin delayed spell AI candidates.**
-The owner requested ten milestones ZOD-403–412. ZOD-403–415 are complete;
+**ZOD-417: Expose prepared delayed AI diagnostics and validate the batch.**
+The owner requested ten milestones ZOD-403–412. ZOD-403–416 are complete;
 [ordinary spell AI](behavior/ordinary-spell-ai-clock.md) records the ready-hit boundary
-and the remaining selected steps. Four new stored-hit cases and all 1,292 AI regressions pass.
+and the remaining selected steps. Twelve composed cases and all 1,304 AI regressions pass.
 Full delayed charge-clock search and autonomous magic turns remain separate.
 The earlier five-hour runs are not active. Source stays clean/read-only at
 `11464943bbdbd2a0af022d90cb7f10455cf911df`. Preserve the ten owner files,
