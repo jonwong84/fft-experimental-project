@@ -84,3 +84,18 @@ item/Jump/Charge and monster menus fail closed instead of vanishing.
 Eight managed cases cover row aliases, absent-row failure, special known behavior,
 source order, repeated abilities, static usability, max-MP/Half-MP and action
 slot/ID filtering. These entries grant no search, command or projection authority.
+
+## Considered parameters and usage (ZOD-405)
+
+`OrdinarySpellAiParameters` copies primary semantic behavior and secondary
+geometry, MP and CT independently of named working usage. Initialization clears
+the three low search bits, preserving high restrictions/usability and the opaque
+reserved bit. Trajectory bypasses shape/range policy; special shape forces
+exhaustive origins; short evadeable range precedes caster-exclusion/zero-area
+force-consume policy. This records flags only and activates no new geometry.
+
+Half MP truncates before use. Seven cases preserve Monster Skill before Defend,
+Persevere bypass, Short Charge/Non-Charge having no AI-loader effect, retained
+usage, copied behavior and branch ordering. Actual cast charge planning remains
+unchanged, including its different support bits. No static fourth-byte flag is
+accepted as working usage.

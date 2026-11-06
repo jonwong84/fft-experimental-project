@@ -4,12 +4,12 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-405 (Load ordinary considered spell parameters and usage).**
+**Next bounded work: ZOD-406 (Calculate spell-bearing initialized ability statistics).**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 The five requested learning milestones ZOD-398–402 are complete;
 [learning reports, owned slots and player casting](behavior/learn-on-hit.md) are validated.
-There are 41 open tickets below. The 371 completed tickets, prior checkpoints and
+There are 40 open tickets below. The 372 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -32,12 +32,6 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 
 ## Next bounded milestone
-
-### ZOD-405 — Load ordinary considered spell parameters and usage
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-404
-
-Copy semantic behavior independently of working usage; trace initialization of force-consume/exhaustive flags and preserve the Monster Skill/Defend CT support quirk.
 
 ### ZOD-406 — Calculate spell-bearing initialized ability statistics
 
