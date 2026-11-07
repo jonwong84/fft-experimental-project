@@ -6,7 +6,17 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-428 review programme; next bounded batch is ZOD-429 (sword Attack/Accumulate).**
+**ZOD-428 review programme; next bounded batch is ZOD-430 (shared AI simulation boundaries).**
+[ZOD-429 sword/Accumulate review](behavior/sword-accumulate-review.md) is complete.
+The receipt pins eight source/metadata files,27 functions and27 managed paths/
+edges, rechecks prepared formula1/36 dispatch and sword calls, and independently
+recalculates seven sword literals. Existing source audits revalidate18 Accumulate,
+13 roster-sword descriptions and35 knockback vectors. No new confirmed defect,
+runtime change or historical evidence erratum was found within this batch.
+PA99 still accepts Accumulate and earns source stat-hit credit3; zero-bonus
+base/effective PA and current-stat sword consumers remain explicit boundaries.
+Full .NET/Python regression suites passed again at5,155/794, including1,358 AI.
+
 [ZOD-427 physical review](behavior/physical-pipeline-review.md) completes the first
 bounded batch. It retraces actual/preview/AI formula, delivery, metadata, ranking
 and execution edges, pins 14 files/47 functions, and rechecks both retail secondary
@@ -37,9 +47,10 @@ section/receipt; the wider review programme and runtime deferrals remain open.
 
 The [programme](development/documentation-review-programme.md) and
 [progress receipt](evidence/maintenance/documentation-review-progress-v1.json)
-retain the complete 2,138-path snapshot/38 historical paths and list 38 reviewed
-paths/edges for this batch. Full inventory groups remain open, including broader
-shared AI/movement/turn/command owners. ZOD-429 is next; ZOD-426 remains a queued
+retain the complete 2,138-path snapshot/38 historical paths, with38 reviewed
+paths/edges for ZOD-427 and27 for ZOD-429 (overlapping shared edges). Full inventory
+groups remain open, including broader shared AI/movement/turn/command owners.
+ZOD-430 is next; ZOD-426 remains a queued
 supporting origin/baseline trace. Preserve owner drafts/JobStats, original quirks
 and existing deferrals. Source descriptions and passing tests are evidence to
 review, not automatic proof; keep later replacements/integration in scope.

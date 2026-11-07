@@ -60,9 +60,57 @@
         ]
       },
       "limits": "Integration-edge review does not close all branches of shared AI/movement/turn/command/content owners. Full inventory groups remain open."
+    },
+    {
+      "ticket": "ZOD-429",
+      "managedReviewBaseline": "b16c11d9dccfe5c38e7e18aa511686236c4ef220",
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "report": "docs/behavior/sword-accumulate-review.md",
+      "receipt": "docs/evidence/combat/sword-accumulate-review-v1.json",
+      "disposition": "Completed bounded neutral sword Attack/zero-bonus Accumulate mechanics and current pair/roster AI integration-edge review; no new defect confirmed.",
+      "reviewedPathsByFocus": {
+        "execution and admission": [
+          "src/Zodiac.Framework/Battle/Combat/AttackBattleSimulator.cs",
+          "src/Zodiac.Framework/Battle/Combat/BoundedSwordWeapon.cs",
+          "src/Zodiac.Framework/Battle/Combat/AccumulateFormula.cs",
+          "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattleSimulator.cs",
+          "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattleProfile.cs",
+          "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityUnitGrant.cs",
+          "src/Zodiac.Framework/Battle/Combat/BoundedImmediateAbility.cs",
+          "src/Zodiac.Framework/Battle/State/AttackUnitState.cs",
+          "src/Zodiac.Framework/Battle/State/AttackBattleSnapshot.cs",
+          "src/Zodiac.Framework/Battle/Combat/FlatRosterBattleProfile.cs"
+        ],
+        "sword formula and scoring edges": [
+          "src/Zodiac.Framework.Ai/Sword/SwordAiFormulaProjection.cs",
+          "src/Zodiac.Framework.Ai/Sword/SwordAiCandidateProjection.cs",
+          "src/Zodiac.Framework.Ai/Sword/SwordAiCandidateScoring.cs",
+          "src/Zodiac.Framework.Ai/Sword/RosterSwordAiCandidate.cs",
+          "src/Zodiac.Framework.Ai/Sword/RosterSwordAiAttackEntry.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiDamageHypothesis.cs"
+        ],
+        "Accumulate usefulness projection and scoring": [
+          "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiUsefulness.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/RosterAccumulateAiUsefulness.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/AiSelfStatProjection.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiCandidateProjection.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiCandidateScoring.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiEntryEvaluation.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/RosterAccumulateAiEntry.cs"
+        ],
+        "shared simulation and score edges": [
+          "src/Zodiac.Framework.Ai/Shared/AiMovementSimulation.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiCandidateScoring.cs"
+        ],
+        "content binding edges": [
+          "src/Zodiac.Content/BattleSetup/AttackBattleSetup.cs",
+          "src/Zodiac.Content/BattleSetup/ImmediateAbilityBattleSetup.cs"
+        ]
+      },
+      "limits": "Bounded neutral sword Attack and zero-equipment-bonus PA+1 execution plus current pair/roster formula/usefulness/projection/score integration edges. Full shared movement/clock/decision owners remain open."
     }
   ],
   "fullyReviewedGroups": [],
-  "nextBatch": "ZOD-429",
+  "nextBatch": "ZOD-430",
   "overallBehaviorReviewCompleted": false
 }

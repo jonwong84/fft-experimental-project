@@ -10,7 +10,10 @@ close a review batch.
 physical-pipeline batch, including one corrected formula/fixture assumption.
 The [progress receipt](../evidence/maintenance/documentation-review-progress-v1.json)
 records reviewed paths and integration limits. No complete inventory group is
-closed yet; ZOD-429 is the next bounded review of Attack/Accumulate.
+closed yet. [ZOD-429](../behavior/sword-accumulate-review.md) completes the bounded
+sword/Accumulate mechanics and pair/roster AI integration review, without a new
+confirmed defect. ZOD-430 next reviews shared AI baseline/clock/strike-accounting
+boundaries; movement-origin study ZOD-426 remains queued as supporting work.
 
 ## Scope and historical boundary
 

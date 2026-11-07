@@ -1,0 +1,866 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-429",
+  "managedBaseRevision": "b16c11d9dccfe5c38e7e18aa511686236c4ef220",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "report": "docs/behavior/sword-accumulate-review.md",
+  "scope": "Bounded neutral sword Attack and zero-equipment-bonus PA+1 execution plus current pair/roster formula/usefulness/projection/score integration edges. Full shared movement/clock/decision owners remain open.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/formulas.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 46088,
+      "sha256": "a9e58962104849ae4e947e3833236aaf2c1334394a1af12b19930428e6885e03"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40418,
+      "sha256": "04542e66135d779fd739adbce9fa6ee714feb6dc8607dfa4584c87222a38343c"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 85515,
+      "sha256": "820411f8293d559677ff676f4e3d19a16ae52b667e7aa1393ab5495741f1e149"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 23857,
+      "sha256": "57dd4fa8b07ef93c4a8e21c73657a0fdbe6c601a6db0b0351ae15b3cd15e4aea"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 111880,
+      "sha256": "22555f06b061bc6f017f721998a5e44dfb3d4fa4c7284a2ee3367dfa27ce80ad"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    },
+    {
+      "path": "target/main.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 135004,
+      "sha256": "b6066d98d481d73eb49d2d16be57ae3fc5ae4070830176fdeeeaae2bdeaec2a3"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_weapon_damage",
+      "startLine": 130,
+      "endLine": 134,
+      "normalizedLfSha256": "0b4cb83f4c479357a9141b52c3516338934af60758c2ff368fa026d19240794e"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_calculate_base_xa",
+      "startLine": 866,
+      "endLine": 905,
+      "normalizedLfSha256": "c01e6d4f88d0e8ec8cf3cd92a7467906840a48f5d594ec1b41addb99775f481f"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_zodiac_compatibility",
+      "startLine": 319,
+      "endLine": 387,
+      "normalizedLfSha256": "b2983bca04a561e880d8f4d125419a63d7c792db0b9dba6f75488f6a0b6c1c77"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_calculate_critical_hit",
+      "startLine": 1145,
+      "endLine": 1156,
+      "normalizedLfSha256": "c18e75778f250b30020d11622e664891ea8b8645a6505421cf5a00996accbe3d"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_store_xa_times_ya_damage",
+      "startLine": 1159,
+      "endLine": 1165,
+      "normalizedLfSha256": "f1716159cf32faad2dea79a588620b724cdc96e486bc3665de89f432550ee334"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_add_pa_y",
+      "startLine": 1276,
+      "endLine": 1279,
+      "normalizedLfSha256": "6455a8fccadddc309f628d3894979e7b4f4b522e3e6d12c4a5c057c2741ae396"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "knockback_calculate",
+      "startLine": 99,
+      "endLine": 186,
+      "normalizedLfSha256": "5a7f2614c5426a583669e2a591af966ff3936a39ed9f41e38a11ad62003db9e2"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "knockback_destination_check",
+      "startLine": 202,
+      "endLine": 285,
+      "normalizedLfSha256": "9be9e962bba2e1f8c5f67f1fdad606fdc21e2d7e82aaab9842e77dcd097bfe01"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_apply_physical_modifiers",
+      "startLine": 907,
+      "endLine": 913,
+      "normalizedLfSha256": "c94b02cd8bb405c4de2c324768db5ee81dfdf1d976eb7e57cb696dcf752ec4aa"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_calculate_weapon_damage",
+      "startLine": 920,
+      "endLine": 930,
+      "normalizedLfSha256": "8af49b20d674f8c2b4cb5a5a2939bc3b21a56d25d6e645afc5752215349e34a8"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_calculate_physical_damage",
+      "startLine": 933,
+      "endLine": 937,
+      "normalizedLfSha256": "d7de3f1984822428c4f4025890db1cf3ab3c7d6883a72d84a8c3ec92f92ae9ff"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_roll_conditional_status_proc",
+      "startLine": 857,
+      "endLine": 866,
+      "normalizedLfSha256": "0fc73881d8f26bf8b08f5ef4e88f1191ca80469bd89b2af35595d3df5f8a5c79"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "conditional_status_proc_roll_inner",
+      "startLine": 412,
+      "endLine": 418,
+      "normalizedLfSha256": "40d4f276cd1a506807f87002a9bc21cfac252bbf09da445b8ff5f0df14e9a008"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_calculate_target_result",
+      "startLine": 473,
+      "endLine": 673,
+      "normalizedLfSha256": "6855ceea86f5e95b4b1edc5fff1d4f47e6623e4bae0309b2a84ed2d232de91c0"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_finalize_target_result",
+      "startLine": 694,
+      "endLine": 753,
+      "normalizedLfSha256": "2242654f86ef5c9efef9c0ca7dab88bdab2be0835224e79eb1efe9cc3b084a86"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_clear_current_data",
+      "startLine": 792,
+      "endLine": 801,
+      "normalizedLfSha256": "1200e15fe4c9cca228a5dd8ff338f97337abc1241e279616878e265cff5d7e4b"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_apply_target_result",
+      "startLine": 837,
+      "endLine": 1039,
+      "normalizedLfSha256": "72f17f94af572c3b4f21f92787e7f80000bdc33fb418921c718432c9d46b00a5"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "stat_delta_apply",
+      "startLine": 1590,
+      "endLine": 1625,
+      "normalizedLfSha256": "2b879b567c3e7e725b0d9e33b4392b4ed2d4c4c2c3964f737ddb386fdef510c1"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "formula_get_random",
+      "startLine": 394,
+      "endLine": 399,
+      "normalizedLfSha256": "cdf6c4c0c319dc057ac12bd5c35829c7c3cd794b5acb4595ece35a9814e0512f"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "formula_roll_random_at_least",
+      "startLine": 402,
+      "endLine": 404,
+      "normalizedLfSha256": "c4766649bc9ec2cb81d545d75777587d8ce62995aa90492cb02981b59ac7208e"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_target_classify_ability_effect",
+      "startLine": 2039,
+      "endLine": 2313,
+      "normalizedLfSha256": "00ee8d38a45c4fffda9167a0197e6d3c56d42cd0c4ff95ec8975c0a981772439"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "useful_targets_filter",
+      "startLine": 2015,
+      "endLine": 2031,
+      "normalizedLfSha256": "299bc384c97e93ab71b5f9c8951ffae4b11c427174e6f54f4d1c0c6a9ab83954"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "action_hits_simulate",
+      "startLine": 1772,
+      "endLine": 1796,
+      "normalizedLfSha256": "8645f10a3b9f3738453919558247b8ae951627fc279ca971bf1e4d465c216919"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "strikes_simulate",
+      "startLine": 1808,
+      "endLine": 1897,
+      "normalizedLfSha256": "72f586ff192e9466e7af3dfe1c3093b890c458fc31747757649e243bb731ea6c"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_action_simulate_and_score",
+      "startLine": 1442,
+      "endLine": 1728,
+      "normalizedLfSha256": "9415274d3b38d3e7afe51922914355e40ff6bad7bccb9bc861bbbfae6894bcd4"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "simulation_unit_state_save",
+      "startLine": 1906,
+      "endLine": 1958,
+      "normalizedLfSha256": "e0c523b4a8e1487ba06e267dd10d6aa6fa015a285a63a06a04b911f07dfa8f2c"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "simulation_unit_state_restore",
+      "startLine": 1966,
+      "endLine": 2011,
+      "normalizedLfSha256": "d195422db548f6b870a1df33d2de5a0b3525e6e9a1d13f0f6b0585d193cb4dfa"
+    }
+  ],
+  "preparedValidation": {
+    "battle": {
+      "byteLength": 1397096,
+      "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+      "loadAddress": "0x80067000"
+    },
+    "executable": {
+      "byteLength": 356352,
+      "sha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562"
+    }
+  },
+  "formulaDispatch": [
+    {
+      "formula": 1,
+      "table": "0x8018f614",
+      "target": "0x80188b64",
+      "symbol": "formula_weapon_damage"
+    },
+    {
+      "formula": 54,
+      "table": "0x8018f614",
+      "target": "0x801868f0",
+      "symbol": "formula_add_pa_y"
+    }
+  ],
+  "orderedCallChecks": [
+    {
+      "symbol": "formula_weapon_damage",
+      "start": "0x80188b64",
+      "calls": [
+        {
+          "pc": "0x80188b6c",
+          "target": "0x80188510",
+          "symbol": "formula_evade_calculate_physical"
+        },
+        {
+          "pc": "0x80188b7c",
+          "target": "0x80188638",
+          "symbol": "formula_calculate_weapon_damage"
+        },
+        {
+          "pc": "0x80188b8c",
+          "target": "0x80187eb4",
+          "symbol": "formula_apply_status"
+        }
+      ]
+    },
+    {
+      "symbol": "formula_calculate_weapon_damage",
+      "start": "0x80188638",
+      "calls": [
+        {
+          "pc": "0x80188640",
+          "target": "0x80185a9c",
+          "symbol": "formula_calculate_base_xa"
+        },
+        {
+          "pc": "0x80188648",
+          "target": "0x80185f80",
+          "symbol": "formula_apply_charge"
+        },
+        {
+          "pc": "0x80188650",
+          "target": "0x80185fa4",
+          "symbol": "formula_element_apply_weapon_strengthen"
+        },
+        {
+          "pc": "0x80188658",
+          "target": "0x801886a4",
+          "symbol": "formula_calculate_physical_damage"
+        },
+        {
+          "pc": "0x80188660",
+          "target": "0x80186fd0",
+          "symbol": "formula_element_modify_weapon_damage"
+        },
+        {
+          "pc": "0x80188684",
+          "target": "0x801870fc",
+          "symbol": "formula_element_apply_absorption"
+        },
+        {
+          "pc": "0x8018868c",
+          "target": "0x801884c0",
+          "symbol": "formula_roll_conditional_status_proc"
+        }
+      ]
+    },
+    {
+      "symbol": "formula_calculate_physical_damage",
+      "start": "0x801886a4",
+      "calls": [
+        {
+          "pc": "0x801886ac",
+          "target": "0x801885f8",
+          "symbol": "formula_apply_physical_modifiers"
+        },
+        {
+          "pc": "0x801886b4",
+          "target": "0x801864f8",
+          "symbol": "formula_calculate_critical_hit"
+        },
+        {
+          "pc": "0x801886bc",
+          "target": "0x80186568",
+          "symbol": "formula_store_xa_times_ya_damage"
+        }
+      ]
+    },
+    {
+      "symbol": "formula_calculate_critical_hit",
+      "start": "0x801864f8",
+      "calls": [
+        {
+          "pc": "0x80186504",
+          "target": "0x8018eed8",
+          "symbol": "formula_roll_random_at_least"
+        },
+        {
+          "pc": "0x8018651c",
+          "target": "0x8018eea0",
+          "symbol": "formula_get_random"
+        },
+        {
+          "pc": "0x80186550",
+          "target": "0x801843ec",
+          "symbol": "knockback_calculate"
+        }
+      ]
+    },
+    {
+      "symbol": "formula_add_pa_y",
+      "start": "0x801868f0",
+      "calls": []
+    }
+  ],
+  "retailChecks": {
+    "broadSword": {
+      "itemId": 19,
+      "range": 1,
+      "formula": 1,
+      "power": 4,
+      "rawEvade": 5,
+      "flags": 142,
+      "element": 0,
+      "emptyProcType": 0
+    },
+    "attackSecondaryFormula": 13,
+    "attackDispatch": "Weapon formula overrides ability0 secondary formula",
+    "accumulate": {
+      "abilityId": 146,
+      "primaryAiFlags": "0x80008009",
+      "formula": 54,
+      "y": 1
+    }
+  },
+  "independentSwordLiteralReviews": [
+    {
+      "id": "ordinary",
+      "input": {
+        "seed": 1,
+        "pa": 5,
+        "power": 5,
+        "frontEvade": 0
+      },
+      "expected": {
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "raw": [
+          16838,
+          5758,
+          10113,
+          17515,
+          31051,
+          5627
+        ],
+        "rngWord": 2516284547,
+        "draws": 6
+      }
+    },
+    {
+      "id": "critical",
+      "input": {
+        "seed": 57,
+        "pa": 5,
+        "power": 5,
+        "frontEvade": 0
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ],
+        "rngWord": 3448561432,
+        "draws": 7
+      }
+    },
+    {
+      "id": "frontal-miss",
+      "input": {
+        "seed": 19,
+        "pa": 5,
+        "power": 5,
+        "frontEvade": 10
+      },
+      "expected": {
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "raw": [
+          25016,
+          17901,
+          12377,
+          224
+        ],
+        "rngWord": 2162199151,
+        "draws": 4
+      }
+    },
+    {
+      "id": "zero-PA-floor",
+      "input": {
+        "seed": 1,
+        "pa": 0,
+        "power": 255,
+        "frontEvade": 0
+      },
+      "expected": {
+        "hit": true,
+        "critical": false,
+        "damage": 255,
+        "raw": [
+          16838,
+          5758,
+          10113,
+          17515,
+          31051,
+          5627
+        ],
+        "rngWord": 2516284547,
+        "draws": 6
+      }
+    },
+    {
+      "id": "critical-zero-bonus",
+      "input": {
+        "seed": 57,
+        "pa": 1,
+        "power": 5,
+        "frontEvade": 0
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 5,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ],
+        "rngWord": 3448561432,
+        "draws": 7
+      }
+    },
+    {
+      "id": "zero-power-still-draws",
+      "input": {
+        "seed": 1,
+        "pa": 5,
+        "power": 0,
+        "frontEvade": 0
+      },
+      "expected": {
+        "hit": true,
+        "critical": false,
+        "damage": 0,
+        "raw": [
+          16838,
+          5758,
+          10113,
+          17515,
+          31051,
+          5627
+        ],
+        "rngWord": 2516284547,
+        "draws": 6
+      }
+    },
+    {
+      "id": "cap",
+      "input": {
+        "seed": 1,
+        "pa": 255,
+        "power": 64,
+        "frontEvade": 0
+      },
+      "expected": {
+        "hit": true,
+        "critical": false,
+        "damage": 999,
+        "raw": [
+          16838,
+          5758,
+          10113,
+          17515,
+          31051,
+          5627
+        ],
+        "rngWord": 2516284547,
+        "draws": 6
+      }
+    }
+  ],
+  "existingSourceAudits": {
+    "accumulate": {
+      "descriptions": 18,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "sourceFiles": 12,
+      "sourceFunctions": 41,
+      "preparedDataChecked": true
+    },
+    "rosterSword": {
+      "rosterSwordDescriptions": 13,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "sourceFiles": 12,
+      "sourceFunctions": 30
+    },
+    "swordKnockback": {
+      "vectors": 35,
+      "implementationCasesUnexecuted": 20,
+      "preservedFiles": 34,
+      "managedBaselineFilesChecked": 0,
+      "referenceFilesChecked": 17,
+      "referenceFunctionsChecked": 41,
+      "format": "fft.sword-flat-knockback-audit",
+      "schemaVersion": 1,
+      "passed": true,
+      "productionImplementationExecuted": false,
+      "originalExecuted": false
+    }
+  },
+  "reviewedPathsByFocus": {
+    "execution and admission": [
+      "src/Zodiac.Framework/Battle/Combat/AttackBattleSimulator.cs",
+      "src/Zodiac.Framework/Battle/Combat/BoundedSwordWeapon.cs",
+      "src/Zodiac.Framework/Battle/Combat/AccumulateFormula.cs",
+      "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattleSimulator.cs",
+      "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattleProfile.cs",
+      "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityUnitGrant.cs",
+      "src/Zodiac.Framework/Battle/Combat/BoundedImmediateAbility.cs",
+      "src/Zodiac.Framework/Battle/State/AttackUnitState.cs",
+      "src/Zodiac.Framework/Battle/State/AttackBattleSnapshot.cs",
+      "src/Zodiac.Framework/Battle/Combat/FlatRosterBattleProfile.cs"
+    ],
+    "sword formula and scoring edges": [
+      "src/Zodiac.Framework.Ai/Sword/SwordAiFormulaProjection.cs",
+      "src/Zodiac.Framework.Ai/Sword/SwordAiCandidateProjection.cs",
+      "src/Zodiac.Framework.Ai/Sword/SwordAiCandidateScoring.cs",
+      "src/Zodiac.Framework.Ai/Sword/RosterSwordAiCandidate.cs",
+      "src/Zodiac.Framework.Ai/Sword/RosterSwordAiAttackEntry.cs",
+      "src/Zodiac.Framework.Ai/Shared/AiDamageHypothesis.cs"
+    ],
+    "Accumulate usefulness projection and scoring": [
+      "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiUsefulness.cs",
+      "src/Zodiac.Framework.Ai/Accumulate/RosterAccumulateAiUsefulness.cs",
+      "src/Zodiac.Framework.Ai/Accumulate/AiSelfStatProjection.cs",
+      "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiCandidateProjection.cs",
+      "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiCandidateScoring.cs",
+      "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiEntryEvaluation.cs",
+      "src/Zodiac.Framework.Ai/Accumulate/RosterAccumulateAiEntry.cs"
+    ],
+    "shared simulation and score edges": [
+      "src/Zodiac.Framework.Ai/Shared/AiMovementSimulation.cs",
+      "src/Zodiac.Framework.Ai/Shared/AiCandidateScoring.cs"
+    ],
+    "content binding edges": [
+      "src/Zodiac.Content/BattleSetup/AttackBattleSetup.cs",
+      "src/Zodiac.Content/BattleSetup/ImmediateAbilityBattleSetup.cs"
+    ]
+  },
+  "managedFiles": [
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/AttackBattleSimulator.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 10265,
+      "sha256": "0616a09e17fb7b64872939afc075a86a0eaf1b0a035ef2d0493bd69e30fdee8d"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/BoundedSwordWeapon.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 771,
+      "sha256": "3c98bbb3fd4bdb02743f6ea410bac6457467b9f8ab667b8113cf2e9e45b94e97"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/AccumulateFormula.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 503,
+      "sha256": "9c07842fa8c9f278f1dd4d4acf7717ff310437a2a361ad12b46f57243d714172"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattleSimulator.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3213,
+      "sha256": "aaf1f800f1b51ef2ae3ea57743f7a29b8102c9e2c55709193e565c679186ab17"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattleProfile.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2521,
+      "sha256": "78f9c3d3a803a19ab02898ac70d71b1d0705344d56ebf8072a2036fe0168a97b"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityUnitGrant.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1124,
+      "sha256": "fe4d45094b6f5bfe182654aead001513f9ddc033222024ba0fcd1946c71592c6"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/BoundedImmediateAbility.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 454,
+      "sha256": "44b63e7258faad0cce6e37049854fde7d34573b119e2ce5b6715f3b1da1ad10c"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/State/AttackUnitState.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3944,
+      "sha256": "73d2eed63d39708005f137a20de357a449bd229f15f07156060ae5e0533f755c"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/State/AttackBattleSnapshot.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3564,
+      "sha256": "9400e80096192b5d0b5c9f23086804f83b0307def2290ecfee7aa6392131124b"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/FlatRosterBattleProfile.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3484,
+      "sha256": "5dad9c0a51623ef08ae721d56de37babe024ac05965b826e1a4020a786723377"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Sword/SwordAiFormulaProjection.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 5924,
+      "sha256": "20ec82cafc74b93d29f26409e652ef1c64ffe3f2823353c2d17b0a9a32607a4e"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Sword/SwordAiCandidateProjection.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 8145,
+      "sha256": "b39ee97d5430f5e64a9a957a44a964bb97fa94712c0b72f81454a5dea29a833f"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Sword/SwordAiCandidateScoring.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2476,
+      "sha256": "fe6d13c08a675e2ab8e6ca691fe7e4ac972e23d6e3ddecbc237e802d7a0b619a"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Sword/RosterSwordAiCandidate.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 6411,
+      "sha256": "b45cdcee1468aa7b00360c057c38427f25d5a24b2747adc5b09ecedb977d92df"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Sword/RosterSwordAiAttackEntry.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 5627,
+      "sha256": "2bc520643865eaa7ccb04e258891ae8f7bf0d4e323f8e46a1ee87f50fc465045"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiDamageHypothesis.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1766,
+      "sha256": "96291925b4cee7915c548b4cb8a8e1af35229fe60ef0318b8925a469a81ad22c"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiUsefulness.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4268,
+      "sha256": "96b4139d34a8426b613ca6a0eb3d32941e7afc820e1ef520352a32d0911d16fc"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Accumulate/RosterAccumulateAiUsefulness.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3818,
+      "sha256": "fae2469f9a3300dcc138190599df9d1f2d8cd72d44f026764f381e4901cc2063"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Accumulate/AiSelfStatProjection.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 902,
+      "sha256": "018e73fff4e765e2284f7525c970e0e91bd8038ec144715a3dc6617d159a4913"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiCandidateProjection.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 7107,
+      "sha256": "bd352bce668a8e9058d0c0310812573e17806ab2d13744033eb0f80184ba54f5"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiCandidateScoring.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1725,
+      "sha256": "fd0b35d04b58281f9e5b73f4d8204a352cc339433e22c8767cf31d48530f45f8"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiEntryEvaluation.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2782,
+      "sha256": "aee863ea81636efdd5f89480aa82140b3671f137948d7c7d4657e69fbfe91b6b"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Accumulate/RosterAccumulateAiEntry.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 6595,
+      "sha256": "44d8b5b6a389463ce804b61ede502ab7472549b791be00bea4964f00e01e612a"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiMovementSimulation.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3827,
+      "sha256": "2f7a7678cc1a11e97b59421d07b03fb81a64dad97b60c9104f36fececef33e34"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiCandidateScoring.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4901,
+      "sha256": "3ac46725f974b5859a61fab1634fa9e8e336d7da59694b7027ad1aeca22c0ea5"
+    },
+    {
+      "path": "src/Zodiac.Content/BattleSetup/AttackBattleSetup.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2956,
+      "sha256": "d08a47e63da3202bfe558cb6c75d24bc024e44fe36032a86a805bae7f8fb58d2"
+    },
+    {
+      "path": "src/Zodiac.Content/BattleSetup/ImmediateAbilityBattleSetup.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2633,
+      "sha256": "fbb3e7adc77ebcff2cfdcc2779012f3409a0cc5d9400aac5d6a216fad7e948b1"
+    }
+  ],
+  "findings": [
+    {
+      "id": "SA-429-01",
+      "disposition": "verified-within-domain",
+      "finding": "Sword normal/critical/evasion/proc arithmetic and RNG; signed16 damage envelope; final cap and settlement"
+    },
+    {
+      "id": "SA-429-02",
+      "disposition": "verified-within-domain",
+      "finding": "Accumulate base/effective PA collapse only under zero-bonus PA1..99 certificate; saturation still consumes Act"
+    },
+    {
+      "id": "SA-429-03",
+      "disposition": "verified-within-domain",
+      "finding": "Current-stat AI sword damage; source-order Accumulate ally coin; fresh candidates, stat-hit+3 even at PA99; absolute scoring has no direct PA term"
+    },
+    {
+      "id": "SA-429-04",
+      "disposition": "deferred",
+      "finding": "Full player preview, general weapon/status/equipment execution, broad shared AI/clock/origin/command review and ZOD-106 remain outside this batch"
+    }
+  ],
+  "confirmedDefects": [],
+  "historicalEvidenceErrata": [],
+  "runtimeChanged": false,
+  "validation": {
+    "dotnet": {
+      "total": 5155,
+      "failed": 0,
+      "skipped": 0,
+      "projects": {
+        "Engine": 24,
+        "AssetTool": 206,
+        "Cli": 396,
+        "Content": 897,
+        "Framework": 1827,
+        "Ai": 1358,
+        "Client": 447
+      },
+      "command": "dotnet test Fft.sln -c Release --no-build --no-restore"
+    },
+    "python": {
+      "total": 794,
+      "result": "OK",
+      "command": "python -m unittest discover -s tools/verification -p 'test_*.py'"
+    },
+    "ownerBlobs": 10,
+    "approvedFormattingPreserved": true,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "nativePresentationRerun": false
+  }
+}
