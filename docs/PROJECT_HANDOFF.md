@@ -23,6 +23,11 @@ eight calls and twenty caller return locations match. Its final call goes via
 than testing rounded accuracy. Current magic evasion types force class0 and
 cannot directly serve full physical evasion. See the physical review's helper
 trace section; this adds source evidence without widening runtime admission.
+The supplied physical equipment loader is also checked in full against138
+instruction words: monsters retain class evade; each hand prefers an eligible
+Weapon Guard weapon over a shield. Its restriction helper must return exactly0.
+The weapon-only managed primitive remains correct within its stated domain;
+full equipment loading remains deferred. The physical review links the receipt.
 
 The [programme](development/documentation-review-programme.md) and
 [progress receipt](evidence/maintenance/documentation-review-progress-v1.json)

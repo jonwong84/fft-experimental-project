@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "c0b0e382bf2dcf311d8d81eb10d3959e36af1811",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Owner-supplied physical equipment-evasion loader; source and prepared-byte correspondence only. General runtime equipment/status support remains deferred.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "src/battle/menu/ability_choices.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 33117,
+      "sha256": "3b551809fc63ec825a7b2156c45591719871793c857c481564d2e74b558638fc"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40418,
+      "sha256": "04542e66135d779fd739adbce9fa6ee714feb6dc8607dfa4584c87222a38343c"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 46088,
+      "sha256": "a9e58962104849ae4e947e3833236aaf2c1334394a1af12b19930428e6885e03"
+    },
+    {
+      "path": "include/fft/unit_runtime.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 24677,
+      "sha256": "dd205932204a10a48224c7ddc3b73ca6aad3bd92bcf3cdbdd4f0c205d206f865"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_evade_store_physical",
+      "startLine": 542,
+      "endLine": 596,
+      "normalizedLfSha256": "365527886047dfed9c2f6d8925463cde54ceef627750f458daa877d5ce9fe1e0"
+    },
+    {
+      "path": "src/battle/menu/ability_choices.c",
+      "symbol": "unit_get_action_restriction",
+      "startLine": 125,
+      "endLine": 152,
+      "normalizedLfSha256": "efcf7e4ece9b80d1ed75494ed4f3aca35bb4582974f62234e42d4eda6eb9d5e4"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_evade_calculate_physical_without_weather",
+      "startLine": 883,
+      "endLine": 891,
+      "normalizedLfSha256": "960ab4611515232b1fb53966a53e6139a9d05d45a175ebc1cd9c56d12d6b5cd4"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_weapon_damage_without_element_or_weather",
+      "startLine": 179,
+      "endLine": 188,
+      "normalizedLfSha256": "b2748df0048705cafed70c95d94d39e9d544868ab8dc6234f3079c35d02dfae7"
+    }
+  ],
+  "suppliedInstructionCheck": {
+    "start": "0x80184f9c",
+    "endInclusive": "0x801851c0",
+    "instructionCount": 138,
+    "allMatched": true
+  },
+  "preparedValidation": {
+    "size": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000",
+    "readOnly": true
+  },
+  "calls": [
+    {
+      "callPc": "0x80184fc0",
+      "target": "0x8018130c",
+      "symbol": "unit_get_action_restriction",
+      "returnAddress": "0x80184fc8"
+    }
+  ],
+  "listedCallerChecks": [
+    {
+      "callPc": "0x80188518",
+      "target": "0x80184f9c",
+      "symbol": "formula_evade_store_physical",
+      "returnAddress": "0x80188520"
+    },
+    {
+      "callPc": "0x80188570",
+      "target": "0x80184f9c",
+      "symbol": "formula_evade_store_physical",
+      "returnAddress": "0x80188578"
+    }
+  ],
+  "withoutWeatherCaller": {
+    "callPc": "0x80188ca4",
+    "target": "0x80188568",
+    "symbol": "formula_evade_calculate_physical_without_weather",
+    "returnAddress": "0x80188cac"
+  },
+  "monsterBranch": {
+    "pc": "0x80185010",
+    "target": "0x801851b4",
+    "condition": "monster flag nonzero; class evade already stored"
+  },
+  "sourceSemanticChecks": {
+    "initialState": "base hit100, equipment contributions0, class contribution loaded from target",
+    "weaponGuard": "Reaction set4 bit0x40 and action-restriction classifier exactly0; classifier can return0,1,2",
+    "monster": "Retains class; skips accessory and hand lookups",
+    "accessory": "Primary type bit0x08 selects accessory secondary physical-evade byte",
+    "hands": "Each hand uses weapon type bit0x80 with eligible Weapon Guard; otherwise shield type bit0x40; otherwise0. Eligible zero-evade weapon still wins.",
+    "lookup": "Primary item stride12, type flags offset3, secondary index offset4; accessory/shield stride2, weapon stride8 with evade offset5",
+    "randomness": "No RNG in this loader or action-restriction classifier",
+    "annotationCorrections": [
+      "Left-hand clearing address is0x801938e0, not0x801838e0",
+      "The second caller is the without-weather wrapper; pinned source has a formula0x05 caller, so the wiki Charge/never-called label is not accepted as a reachability claim"
+    ]
+  },
+  "behaviorChange": false,
+  "originalExecuted": false,
+  "cExecuted": false
+}

@@ -77,8 +77,49 @@ It must not be reused directly as full physical evasion. A future shared tail
 must preserve four contributions, source hit-versus-accuracy semantics, labels,
 ordered draws and early exits while retaining distinct physical/magic loaders.
 This excerpt requires no current-domain runtime correction or activation of
-deferred equipment/status support. The linked equipment loader and final hit
-calculation pages are useful next documentation inputs.
+deferred equipment/status support. The supplied equipment loader is recorded
+below; the final hit calculation page remains a useful next documentation input.
+
+## Supplied physical equipment-evasion loader (2026-11-07)
+
+The owner's Equipment Evasion Setting (Physical) listing at0x80184F9C matches
+all138 instruction words in the hash-verified prepared BATTLE.BIN. The
+[equipment trace receipt](../evidence/combat/physical-equipment-evade-trace-v1.json)
+pins reference `11464943bbdbd2a0af022d90cb7f10455cf911df`, the loader,
+action-restriction classifier, relevant callers and metadata. Both listed return
+locations,0x80188520 and0x80188578, match calls to this loader.
+
+The loader starts base hit at100, clears the three equipment contributions,
+and loads class physical evasion from the target. Monsters then return with
+class evasion intact. Human accessory evasion uses the primary item's accessory
+type flag and secondary-table index. Each hand independently selects weapon
+evasion when its weapon type flag and eligible Weapon Guard are present;
+otherwise it selects a valid shield's physical evasion, or leaves0. This is
+precedence, not addition or a maximum: an eligible weapon with evade0 still
+wins over the shield branch. These are separate classified source fields,
+not a claim that a normal hand equips a weapon and shield simultaneously.
+
+Weapon Guard eligibility requires reaction-set4 bit0x40 and an exactly-zero
+`unit_get_action_restriction` result. The helper also returns1 for inability
+to act and2 for restricted deep water; it is not merely a boolean test for
+Don't Act. Item lookup uses category flags and secondary indices rather than
+item-ID ranges. Primary records are12 bytes (type at3, secondary index at4);
+accessory/shield secondary records are2 bytes, and weapon records are8 bytes
+with evasion at5. This loader and its restriction helper consume no RNG.
+
+Two annotations need care. The left-hand clear actually writes0x801938E0,
+not the comment's0x801838E0. The second caller is named
+`formula_evade_calculate_physical_without_weather` in the pinned decompilation;
+formula0x05 calls it. The wiki's Charge/"seems to never be called" label does
+not establish source reachability or justify removing the branch.
+
+The existing `PhysicalWeaponEvasion.GetContribution` correctly implements the
+weapon-only gate for its documented human/weapon inputs. It does not implement
+this complete equipment loader. No admitted runtime defect was found here;
+general equipment/status integration remains deferred. All eight existing
+`PhysicalWeaponEvasionTests` pass; no gameplay code changed. The next useful
+excerpt is the actual final hit-percentage routine at0x00185814, reached through
+`evade_roll` at0x00188488.
 
 ## Confirmed defect: minimum YA in assigned formula0x32
 
