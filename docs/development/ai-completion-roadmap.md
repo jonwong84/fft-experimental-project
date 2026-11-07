@@ -38,6 +38,16 @@ owner walkthrough or full AI coverage gates.
 The [backlog](../BACKLOG.md) owns this gate and current review order; the wider
 ZOD-428 retrospective remains separate from completing original-AI breadth.
 
+## Review and integration into main
+
+The owner uses trunk-based development. After the AI logic/pipeline completion
+and ZOD-432 walkthrough, prepare a pull request into `main` and review the entire
+branch diff, including any changes outside AI. Keep the PR's scope, compatibility
+limits and validation clear. The owner has SonarQube and CodeRabbit configured;
+inspect their actual quality, coverage and review results, address actionable
+findings, and rerun checks appropriate to any fixes before merging. Automated
+results supplement source/behavior validation and the owner's readability review.
+
 ## Current foundation
 
 `Zodiac.Framework.Ai` owns a source-traced prepare → evaluate movement/actions →

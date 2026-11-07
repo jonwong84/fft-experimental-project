@@ -6,15 +6,31 @@ namespace Zodiac.Framework.Ai;
 /// <remarks>ZOD-315; source 11464943bbdbd2a0af022d90cb7f10455cf911df. Stops before the next clock; no corpse/terminal policy or automatic facing.</remarks>
 public static class AiTurnController
 {
-    public static AiTurnResult Execute(RosterFacingTurnState state, RosterAiRefreshRequest request,
-        AiTurnConfiguration configuration, AiPriorityWorkspace? workspace = null)
+    public static AiTurnResult Execute(
+        RosterFacingTurnState state,
+        RosterAiRefreshRequest request,
+        AiTurnConfiguration configuration,
+        AiPriorityWorkspace? workspace = null)
     {
-        ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(request); ArgumentNullException.ThrowIfNull(configuration);
-        workspace ??= AiPriorityWorkspace.StartUnknown(state.Battle.TurnBattle.Battle.Map); workspace.ValidateMap(state.Battle);
+        ArgumentNullException.ThrowIfNull(state);
+        ArgumentNullException.ThrowIfNull(request);
+        ArgumentNullException.ThrowIfNull(configuration);
+
+        workspace ??= AiPriorityWorkspace.StartUnknown(state.Battle.TurnBattle.Battle.Map);
+        workspace.ValidateMap(state.Battle);
+
         // An existing receipt remains the authority for its actor, even though UNIT_TURN has already ended.
-        var stage = state.PendingFacing is not null ? AiTurnStage.FinishFacing :
-            state.Battle.TurnBattle.Turns.Units.Any(u => u.Id == request.ActorId && u.ActionTaken)
+        AiTurnStage stage;
+        if (state.PendingFacing is not null)
+        {
+            stage = AiTurnStage.FinishFacing;
+        }
+        else
+        {
+            stage = state.Battle.TurnBattle.Turns.Units.Any(u => u.Id == request.ActorId && u.ActionTaken)
                 ? AiTurnStage.PostActCommand : AiTurnStage.FirstCommand;
+        }
+
         return Run(state, new(request, configuration, workspace), stage, null);
     }
 

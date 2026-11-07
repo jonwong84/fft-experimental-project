@@ -128,6 +128,10 @@ with appropriate regressions and owner walkthroughs; do not equate file movement
 or passing tests with clarity. See the [completion roadmap](development/ai-completion-roadmap.md).
 Routine local clarity improvements may continue during development; a blanket
 namespace/interface migration is not activated by this future gate.
+After AI completion and this walkthrough, prepare/review a PR into `main` in the
+owner's trunk-based workflow. Review the whole branch scope and actual SonarQube/
+CodeRabbit quality, coverage and review findings; address actionable issues and
+validate fixes before merging.
 
 ## Queued supporting source study
 

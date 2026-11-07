@@ -6,6 +6,13 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
+Owner direction: after completing the AI logic/pipeline and ZOD-432 readability
+walkthrough, prepare/review a PR into `main` for the trunk-based workflow. Review
+the entire branch scope and actual SonarQube/CodeRabbit quality, coverage and
+review results before merge. The owner-approved
+`AiTurnController.cs` readability edit is now included in the branch; its exact
+blob was already covered by the passing ZOD-435 full validation.
+
 Owner-requested AI navigation pass: `AiDecisionMaker.cs`, `AiCommandExecutor.cs`
 and `AiTurnController.cs` now live at the `Zodiac.Framework.Ai` project root,
 moved byte-for-byte. The project/repository READMEs link the decision and complete
@@ -33,7 +40,7 @@ routine pages and their call traces would help cross-check the next magic review
 No new defect was confirmed in admitted rank-only baseline gates, proximity ties,
 eight-slot insertion, ordered hit trials, retained priority or ordinary fallback.
 All5,181 .NET tests, including1,384 AI, were rebuilt and passed against the latest
-owner controller formatting, which remains unstaged. Python tools/tests are
+owner controller formatting, now committed with approval. Python tools/tests are
 unchanged since the passing794-test ZOD-433 run. Source audits and independent
 seed1 lottery literals pass. This batch changes no runtime, test, fixture or
 historical receipt.
@@ -64,7 +71,7 @@ the original compact-record admission. Sparse battle slots through20 remain vali
 the standalone21-slot clock is unchanged. Three new regression cases cover oversized
 atomic rejection and sparse-slot acceptance; unresolved candidate/search scenarios
 now use a reachable16-unit profile. Its historical validation is recorded in the
-receipt. The owner's unstaged `AiTurnController.cs` edit remains untouched.
+receipt. The owner's `AiTurnController.cs` edit is now committed with approval.
 Historical candidate/score audits pass using hash-verified recorded inputs rebuilt
 under ignored scratch; their old path manifests do not validate today's managed
 bodies. The current review/test evidence is recorded separately.
