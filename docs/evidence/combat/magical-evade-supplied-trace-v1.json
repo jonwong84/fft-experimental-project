@@ -58,6 +58,18 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 34632,
       "sha256": "530676861205ea3cf31cada08ffc927142db98af0ad2c986722ad83b069b9a2f"
+    },
+    {
+      "path": "src/battle/units/roster.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9567,
+      "sha256": "8decea51b4efd0a1fc50f7fb943d61e46e476112f998882bdd141c2354954352"
+    },
+    {
+      "path": "include/fft/unit_runtime.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 24677,
+      "sha256": "dd205932204a10a48224c7ddc3b73ca6aad3bd92bcf3cdbdd4f0c205d206f865"
     }
   ],
   "sourceFunctions": [
@@ -123,6 +135,13 @@
       "startLine": 125,
       "endLine": 152,
       "normalizedLfSha256": "efcf7e4ece9b80d1ed75494ed4f3aca35bb4582974f62234e42d4eda6eb9d5e4"
+    },
+    {
+      "path": "src/battle/units/roster.c",
+      "symbol": "battle_map_tile_calculate_unit_index",
+      "startLine": 227,
+      "endLine": 232,
+      "normalizedLfSha256": "1bd7141c2018998396c14dffc0134dbc250487d894d7f6f27ec9bf00166dbbe6"
     }
   ],
   "managedFiles": [
@@ -173,6 +192,12 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 610,
       "sha256": "c6d06f9b48f0083f6837d87819cb762b9ffcaf66d06dfadf0da51d94bb6b0f52"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/Execution/OrdinaryMagicBattleDefinition.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9150,
+      "sha256": "11c3f404d7027fc9fbbebd364430211da4f74f5aa6b396c3af7eae92ab4de99b"
     }
   ],
   "preparedValidation": {
@@ -798,6 +823,247 @@
       "ownerBlobsVerified": 10,
       "focusedManagedTestsPassed": 7,
       "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedActionRestrictionCheck": {
+    "managedBaseRevision": "599313230711b7737f76f0770614d5a7f9aceef9",
+    "start": "0x8018130c",
+    "endInclusive": "0x801813bc",
+    "instructionCount": 45,
+    "instructionWords": [
+      "27bdffe8",
+      "afb00010",
+      "00808021",
+      "afbf0014",
+      "9202005c",
+      "00000000",
+      "30420004",
+      "14400020",
+      "34020001",
+      "92020182",
+      "00000000",
+      "30420040",
+      "1440001b",
+      "34020001",
+      "0c060428",
+      "02002021",
+      "000210c0",
+      "3c018019",
+      "00220821",
+      "9022f8cf",
+      "00000000",
+      "00021142",
+      "28420002",
+      "14400010",
+      "00001021",
+      "9202005a",
+      "00000000",
+      "30420046",
+      "1440000b",
+      "00001021",
+      "92020095",
+      "00000000",
+      "304200c8",
+      "14400006",
+      "00001021",
+      "92020182",
+      "00000000",
+      "30420080",
+      "2c420001",
+      "00021040",
+      "8fbf0014",
+      "8fb00010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "earlyExitBranches": [
+      {
+        "pc": "0x80181328",
+        "target": "0x801813ac",
+        "delaySlotWord": "34020001"
+      },
+      {
+        "pc": "0x8018133c",
+        "target": "0x801813ac",
+        "delaySlotWord": "34020001"
+      },
+      {
+        "pc": "0x80181368",
+        "target": "0x801813ac",
+        "delaySlotWord": "00001021"
+      },
+      {
+        "pc": "0x8018137c",
+        "target": "0x801813ac",
+        "delaySlotWord": "00001021"
+      },
+      {
+        "pc": "0x80181390",
+        "target": "0x801813ac",
+        "delaySlotWord": "00001021"
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "listedReturnAddress": "0x80140534",
+        "matches": false,
+        "callPc": "0x80140534",
+        "returnAddress": "0x8014053c",
+        "target": "0x8018130c",
+        "caller": "command_build_act_menu"
+      },
+      {
+        "listedReturnAddress": "0x80140b4c",
+        "matches": true,
+        "callPc": "0x80140b44",
+        "returnAddress": "0x80140b4c",
+        "target": "0x8018130c",
+        "caller": "command_check_restrictions"
+      },
+      {
+        "listedReturnAddress": "0x80140d30",
+        "matches": true,
+        "callPc": "0x80140d28",
+        "returnAddress": "0x80140d30",
+        "target": "0x8018130c",
+        "caller": "command_check_row_restrictions"
+      },
+      {
+        "listedReturnAddress": "0x8017da74",
+        "matches": true,
+        "callPc": "0x8017da6c",
+        "returnAddress": "0x8017da74",
+        "target": "0x8018130c",
+        "caller": "mp_check_and_consume"
+      },
+      {
+        "listedReturnAddress": "0x8017e1f4",
+        "matches": true,
+        "callPc": "0x8017e1ec",
+        "returnAddress": "0x8017e1f4",
+        "target": "0x8018130c",
+        "caller": "reaction_prepare_next"
+      },
+      {
+        "listedReturnAddress": "0x80181280",
+        "matches": true,
+        "callPc": "0x80181278",
+        "returnAddress": "0x80181280",
+        "target": "0x8018130c",
+        "caller": "menu_action_unit_menu_id_get"
+      },
+      {
+        "listedReturnAddress": "0x80183d24",
+        "matches": true,
+        "callPc": "0x80183d1c",
+        "returnAddress": "0x80183d24",
+        "target": "0x8018130c",
+        "caller": "turn_should_end"
+      },
+      {
+        "listedReturnAddress": "0x80184fc8",
+        "matches": true,
+        "callPc": "0x80184fc0",
+        "returnAddress": "0x80184fc8",
+        "target": "0x8018130c",
+        "caller": "formula_evade_store_physical"
+      },
+      {
+        "listedReturnAddress": "0x80185394",
+        "matches": true,
+        "callPc": "0x8018538c",
+        "returnAddress": "0x80185394",
+        "target": "0x8018130c",
+        "caller": "formula_evade_calculate_abandon"
+      },
+      {
+        "listedReturnAddress": "0x8018c954",
+        "matches": true,
+        "callPc": "0x8018c94c",
+        "returnAddress": "0x8018c954",
+        "target": "0x8018130c",
+        "caller": "reaction_is_blocked"
+      },
+      {
+        "listedReturnAddress": "0x8018caa0",
+        "matches": false,
+        "callPc": "0x8018caa0",
+        "returnAddress": "0x8018caa8",
+        "target": "0x8018130c",
+        "caller": "evasion_reactions_check"
+      }
+    ],
+    "mapDependency": {
+      "callPc": "0x80181344",
+      "target": "0x801810a0",
+      "symbol": "battle_map_tile_calculate_unit_index",
+      "index": "higherLayer*256 + y*terrainWidth + x",
+      "tileStride": 8,
+      "depthByteOffset": 3,
+      "depthShift": 5
+    },
+    "orderedRules": [
+      {
+        "condition": "DontAct: unit byte0x5c &0x04",
+        "result": 1,
+        "mapRead": false
+      },
+      {
+        "condition": "Being ridden/mount: unit byte0x182 &0x40",
+        "result": 1,
+        "mapRead": false
+      },
+      {
+        "condition": "Tile depth0 or1",
+        "result": 0
+      },
+      {
+        "condition": "At depth2..7, Float/Chicken/Frog: unit byte0x5a &0x46",
+        "result": 0
+      },
+      {
+        "condition": "At depth2..7, Move in Water/Walk on Water/Float movement: unit byte0x95 &0xc8",
+        "result": 0
+      },
+      {
+        "condition": "At depth2..7 with none of those exceptions, riding another unit: byte0x182 &0x80",
+        "result": 0
+      },
+      {
+        "condition": "Remaining depth2..7 case",
+        "result": 2
+      }
+    ],
+    "clarifications": [
+      "DontAct and being-ridden restrictions precede every water exception.",
+      "Move Underwater movement bit0x10 is not included in the0xc8 exception mask.",
+      "This helper does not test Sleep/Stop or every evasion-relevant status, does not draw RNG and does not read turn action_taken.",
+      "Zero is no restriction from this classifier, not proof of a successful hit or general permission to evade all attacks."
+    ],
+    "managedBoundary": "TargetActionUnrestricted represents result==0 for Abandon. Pure magic takes the classified fact; the current executable ordinary-magic encounter rejects restricted/mounted/support-bearing setups. No general terrain/mount classifier or reaction implementation is added.",
+    "validation": {
+      "sourceAudit": {
+        "loadDescriptions": 8,
+        "preparationDescriptions": 15,
+        "rollDescriptions": 24,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 13,
+        "sourceFunctions": 21
+      },
+      "ownerBlobsVerified": 10,
+      "focusedManagedTestsPassed": 15,
+      "focusedPythonTestsPassed": 16,
       "managedTestsExecuted": true,
       "runtimeChanged": false,
       "originalExecuted": false,

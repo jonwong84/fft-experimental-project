@@ -49,7 +49,11 @@ eight Python evasion tests pass; no runtime change. Abandon also matches all30
 words, its restriction call and three returns: zero restriction plus the reaction
 flag halves base hit and records449, with no Brave/RNG roll. The managed API
 retains caller-classified eligibility; full terrain/mount classification is separate.
-ZOD-436 remains open. Check If Unit Can Evade, Evasion Changes due to Statuses and
+The supplied Check If Unit Can Evade matches all45 words and11 callers after two
+return-address corrections. Its restriction codes preserve Don't Act/mount
+precedence, depth0/1 admission and the exact status/movement/rider exceptions;
+Move Underwater is excluded. Zero is classified eligibility, not a universal
+evasion guarantee. ZOD-436 remains open. Evasion Changes due to Statuses and
 Magical Support/Status/Compat are the next useful wiki pages.
 The shared Calculate Hit %/final-hit/per-source roll
 documentation was already supplied; no duplicate is needed.

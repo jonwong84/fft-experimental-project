@@ -89,14 +89,54 @@ excludes Don't Act. This is not a complete map/mount restriction implementation:
 the source helper also checks ridden-mount and deep-water circumstances, with
 status/movement/rider exceptions. Its name must not be used to turn it into a
 universal gate for all shield/accessory evasion; later target-status clearing
-remains separate. The next useful supplied dependency is Check If Unit Can Evade,
-then Evasion Changes due to Statuses and Magical Support/Status/Compat.
+remains separate.
 
 The wiki's "Physical Evade Calculation (Charge)" listed caller maps to
 `formula_evade_calculate_physical_without_weather`. Its call to Abandon is verified;
 the parenthetical claim that the caller is never called is not established here.
 The same supporting receipt records these Abandon checks. No runtime or fixture
 change is required, and ZOD-436 remains open.
+
+### Supplied action-restriction dependency
+
+The owner then supplied Check If Unit Can Evade itself. All45 instruction words
+at `0x8018130c`–`0x801813bc` match, including five early-exit branches and the
+map-location call. The same supporting receipt records its source/managed inputs
+and11 caller checks. The name `unit_get_action_restriction` fits its wider use
+in action menus, MP/use checks and reactions. Its return codes follow this order:
+
+1. Don't Act (`status+0x5c`, bit`0x04`) returns1.
+2. Being ridden (`mount_info+0x182`, bit`0x40`) returns1.
+3. Tile depth0 or1 returns0.
+4. At depth2 or more, Float/Chicken/Frog (`status+0x5a`, mask`0x46`), or Move in
+   Water/Walk on Water/Float movement (`movement+0x95`, mask`0xc8`), returns0.
+5. Otherwise a rider (`mount_info` bit`0x80`) returns0; the remaining deep-water
+   case returns2. The rider exception cannot override the earlier restrictions.
+
+Depth comes from the upper three bits of tile byte3, using stride8 tile records.
+Map Location Calculation at `0x801810a0` maps to
+`battle_map_tile_calculate_unit_index`: higher layer*256 + y*terrain width + x.
+The source helper is pinned in the receipt; no new coordinate implementation is
+needed for this study. Notably, Move Underwater bit`0x10` is **absent** from the
+`0xc8` exception mask. Sleep/Stop and the turn's action-taken flag are not checked
+here, and there is no RNG draw. Zero means no restriction from this classifier;
+it does not establish universal evasion eligibility or a successful hit.
+
+Nine listed return addresses match directly. Two list the call instruction
+rather than its return: `0x80140534` should be `0x8014053c`, and `0x8018caa0`
+should be `0x8018caa8`. After these corrections all11 map to verified direct
+calls, including Player Control's menu selection, physical Weapon Guard and
+Abandon. The physical equipment loader uses the result to qualify Weapon Guard,
+not to suppress every shield/accessory contribution.
+
+For the bounded magic API, `TargetActionUnrestricted` represents result==0.
+Map/mount classification remains caller-owned; `FaithMagicInputs` also excludes
+Don't Act. The current executable ordinary-magic encounter rejects restricted,
+mounted and support-bearing input profiles, rather than implementing the full
+source classifier. All15 focused .NET evasion/current-input tests and16 matching
+Python tests pass; all ten owner draft blobs are unchanged. This check adds no
+broad terrain, status or reaction support. The next useful wiki pages are Evasion Changes due to Statuses and Magical
+Support/Status/Compat. ZOD-436 remains open.
 
 Calculate Hit %, Calculate Final Hit % and the per-source roll have already been
 supplied during the [physical-evasion review](physical-pipeline-review.md);
