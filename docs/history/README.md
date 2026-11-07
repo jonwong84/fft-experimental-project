@@ -21,7 +21,9 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 390 entries index completed bounded work; they do not mean the full game is complete.
+These 391 entries index completed bounded work; they do not mean the full game is complete.
+
+- [ZOD-424 — Enumerate ordinary spell aims at a fixed origin](../behavior/ordinary-spell-aim-enumeration.md)
 
 - [ZOD-418 — Trace fixed-origin ordinary spell aim search and ranking](../behavior/ordinary-spell-aim-search.md)
 - [ZOD-423 — Organize action entry points and targeting/AI pathways](../development/action-pipelines.md)

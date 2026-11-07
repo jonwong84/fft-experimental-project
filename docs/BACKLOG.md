@@ -4,7 +4,7 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-424 (Enumerate ordinary spell aims at a fixed origin).**
+**Next bounded work: ZOD-425 (Evaluate and rank ordinary spell aims at a fixed origin).**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 [Learning reports, owned slots and player casting](behavior/learn-on-hit.md)
@@ -30,8 +30,10 @@ Its original snapshot semantics are documented; frame suspension remains gated.
 it records unit/tile stage order, masks, RNG, strict ranks and early exits.
 [ZOD-423 action pathways](development/action-pipelines.md) now give selection,
 geometry, resolution, simulation and scoring distinct navigable owners while
-preserving public entry points. ZOD-424 is the selected bounded search child.
-There are 34 open tickets below. The 390 completed tickets, prior checkpoints and
+preserving public entry points. [ZOD-424 fixed-origin aim lists](behavior/ordinary-spell-aim-enumeration.md)
+now enumerate potential unit/tile alternatives with working usage and deadline
+groups, without candidate evaluation or command authority. ZOD-425 is next.
+There are 34 open tickets below. The 391 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -55,18 +57,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-424 — Enumerate ordinary spell aims at a fixed origin
+### ZOD-425 — Evaluate and rank ordinary spell aims at a fixed origin
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-418, ZOD-423
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-418, ZOD-424
 
-Implement fresh definition-bound ordinary aim-list diagnostics at the actor's
-current origin using the [source study](behavior/ordinary-spell-aim-search.md).
-Preserve source layer/Y/X order, usefulness masks, walkable/range intersections,
-unit-before-tile alternatives and considered-CT deadline groups. Admit only the
-certified neutral HP/consistent-choice domain and safe source row-template radii;
-reject unsupported self/Reflect/trajectory and flag combinations. Returned lists
-grant no command or cached-evaluation authority. Subsequent candidate ranking,
-movement origins, full-list dispatch, lottery and autonomous turns remain separate.
+Compose fresh definition-bound [aim enumeration](behavior/ordinary-spell-aim-enumeration.md)
+and existing ordinary candidate simulation at the actor's current origin. Trace
+the evaluation caller before translating state/early-exit policy. Carry one
+decision RNG across source-ordered candidates, including nonvaluable outcomes;
+reuse shared strict rank/tie rules and retain source unresolved-charge hit255
+behavior. Preserve unit/tile passes, admission and atomic unsupported-context
+rejection. Return diagnostics without accepting cached aim lists or granting
+command authority. Movement origins, full ability-list dispatch, baseline/list
+insertion, lottery and autonomous magic turns remain separate.
 
 Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
 Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.

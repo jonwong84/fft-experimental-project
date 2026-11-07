@@ -18,6 +18,10 @@ It does not enable additional ability families or an autonomous magic AI.
 - One ordinary spell hypothesis at the current origin:
   [OrdinarySpellAiCandidateQuery.Evaluate](../../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiCandidateQuery.cs).
   This produces diagnostics, not an executable command or complete search.
+- Potential ordinary spell aims at the current origin:
+  [OrdinarySpellAiAimQuery.Evaluate](../../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAimQuery.cs).
+  [ZOD-424](../behavior/ordinary-spell-aim-enumeration.md) adds fresh source-ordered
+  unit/tile lists; candidate evaluation/ranking remain separate.
 
 ## Walk one player cast
 
@@ -64,8 +68,10 @@ fresh work/selection, private simulation, shared primary preparation, charge
 clock, stored-aim hit work, accounting and absolute scoring. The file groups
 make those responsibilities visible without changing namespaces or APIs.
 Ready-hit diagnostics remain separately named and require supplied movement
-opportunities. Neither query performs the source aim search or enters the
-physical roster's full decision/command pipeline yet.
+opportunities. The subsequent `OrdinarySpellAiAimQuery` lists potential aims
+through `Selection/OrdinarySpellAiAimEnumeration`, including completed working
+usage and deadline groups. These queries do not compose a ranked magic search
+or enter the physical roster's full decision/command pipeline yet.
 
 ## Original routine mapping and corrections
 
@@ -91,7 +97,8 @@ physical roster's full decision/command pipeline yet.
   other menu branches remain separately gated.
 - `origin_aim_tiles_evaluate`,0x8019CD9C: original candidate enumeration, not the
   stored-aim resolver. [The search study](../behavior/ordinary-spell-aim-search.md)
-  records its masks, ordering and ranking boundaries. Its runtime child is next.
+  records its masks, ordering and ranking boundaries. The subsequent ZOD-424
+  query lists bounded potential aims without evaluating or ranking them.
 - `ai_action_simulate_and_score`,0x8019D37C, wrapper0x8019DCBC and strikes0x8019DD8C:
   the supported spell subset is divided among simulation, hit work, accounting
   and scoring. Original suspended snapshots/frame work remain documented gates.

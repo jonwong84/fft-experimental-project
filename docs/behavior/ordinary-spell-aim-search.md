@@ -2,6 +2,9 @@
 
 This study closes the fixed-origin source-tracing milestone and selects ZOD-424
 as the next implementation child. It does not implement candidate search.
+The subsequent [ZOD-424 implementation](ordinary-spell-aim-enumeration.md) now
+lists bounded potential aims and completes the working usage policy; composed
+candidate search and ranking remain separate.
 Managed baseline is `230faf2`; the read-only fft_decomp revision is
 `11464943bbdbd2a0af022d90cb7f10455cf911df`. The
 [source receipt](../evidence/ai/spell-aim-search-source-v1.json) pins nine files

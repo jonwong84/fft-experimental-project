@@ -1,5 +1,12 @@
 # Ordinary spell AI pathway
 
+For potential aims at the current origin, start with
+[OrdinarySpellAiAimQuery.Evaluate](OrdinarySpellAiAimQuery.cs). It freshly binds
+one owned slot and calls [OrdinarySpellAiAimEnumeration](Selection/OrdinarySpellAiAimEnumeration.cs)
+for working usage, deadline groups and source-ordered unit/tile masks. It returns
+diagnostics without RNG, candidate evaluation or command authority. Its current
+domain and source mapping are in [ZOD-424](../../../docs/behavior/ordinary-spell-aim-enumeration.md).
+
 Start with [OrdinarySpellAiCandidateQuery.Evaluate](OrdinarySpellAiCandidateQuery.cs)
 for one supplied aim at the actor's current origin. It is a pure hypothetical
 query, not the complete decision maker and not a command entry point.
@@ -37,10 +44,11 @@ For the supported physical roster's complete decision, start with
 [AiDecisionMaker.Decide](../Decision/AiDecisionMaker.cs). For actual commands,
 start with [AiCommandExecutor.Execute](../Execution/AiCommandExecutor.cs), or
 [AiTurnController.Execute](../Execution/AiTurnController.cs) for a complete
-admitted turn. Magic aim search, rank insertion/lottery and automatic spell turns
-are not connected to those entry points yet. This organization does not enable
-them. [ZOD-418 source study](../../../docs/behavior/ordinary-spell-aim-search.md)
-defines the next bounded search work.
+admitted turn. Potential spell aim lists and supplied-aim simulation remain
+separate diagnostics. Composed candidate search, rank insertion/lottery and
+automatic spell turns are not connected to those entry points yet.
+[ZOD-418 source study](../../../docs/behavior/ordinary-spell-aim-search.md)
+defines the broader search boundaries.
 
 See the [player/AI pathway guide](../../../docs/development/action-pipelines.md)
 for shared rules, source mappings, modification points and current limitations.

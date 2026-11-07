@@ -51,6 +51,11 @@ source event-cap score. It cannot execute a command. Both queries retain their
 separate contracts; general aim/origin search, ranking, lottery and autonomous
 magic turns remain outside this path. [Clock contract and validation](../../docs/behavior/ordinary-spell-ai-clock.md).
 
+`OrdinarySpellAiAimQuery` now lists fresh potential unit/tile aims at the current
+origin, with source working usage, deadline groups and scan order. It does not
+draw RNG, evaluate/rank candidates or execute commands.
+[Aim-list contract and validation](../../docs/behavior/ordinary-spell-aim-enumeration.md).
+
 Within `OrdinarySpells/`, `Selection/` owns catalog/list/parameter/usefulness work,
 `Simulation/` owns private state, charge clocks and hits, `Scoring/` owns hit
 accounting and absolute scores, and `Diagnostics/` owns the ready-hit query.
