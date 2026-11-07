@@ -1,5 +1,33 @@
 # AI ownership and entry points
 
+## Start with these three files
+
+Open [AiDecisionMaker.cs](AiDecisionMaker.cs) to follow how the AI chooses its
+next action. `Decide` prepares the current battle, evaluates each supported
+ability, ranks its best candidate and selects a plan through the source lottery.
+
+For a complete supported AI turn, start at
+[AiTurnController.cs](AiTurnController.cs). The main call flow is:
+
+`AiTurnController.Execute` → `AiCommandExecutor.Execute` → `AiDecisionMaker.Decide`
+
+[AiCommandExecutor.cs](AiCommandExecutor.cs) obtains that decision inside the
+checked battle boundary and executes one actual command. The turn controller
+handles subsequent commands, movement continuations and turn completion;
+`Resume` continues an interrupted admitted turn.
+
+These three public entry files live at the project root. Their configuration,
+result records and internal helpers remain in `Decision/` and `Execution/`.
+To read decision logic, continue from `AiDecisionMaker.Decide` into
+[Decision/AiAbilityEvaluator.cs](Decision/AiAbilityEvaluator.cs), which dispatches
+to the supported ability-family owners. `Shared/` contains their common work.
+
+The Windows host is not wired to this pipeline yet. Ordinary spell searches
+currently return diagnostic hypotheses and are not part of its executable
+ability dispatch. Follow `OrdinarySpells/README.md` for that separate path.
+
+## Further reading
+
 The [action pathway guide](../../docs/development/action-pipelines.md) walks one
 player cast and one AI decision, with source symbols and modification points.
 The [ordinary spell source map](OrdinarySpells/README.md) follows fresh selection,
@@ -16,8 +44,9 @@ All share immutable `AiDecisionConfiguration`; a turn adds dispatch/facing throu
 
 ## Source map
 
-- `Decision/`: configuration, decision records, fresh prefix/list/ranking/lottery orchestration and internal ability dispatch.
-- `Execution/`: actual commands, complete turns, diagnostics, recovery and common stage routing.
+- Project root: the public decision, command and turn entry files above.
+- `Decision/`: configuration, decision records and internal ability dispatch used by the root decision maker.
+- `Execution/`: command/turn configuration, diagnostics, recovery and common stage routing used by the root execution entries.
 - `Shared/`: hypothetical clocks/state, roster preparation, movement/scenarios, target masks, scoring/ranking/lottery and immutable priority knowledge. `AiDamageHypotheses` completes admitted HP projections through the all-unit clock/score. `AiUnitPolicy`, `AiPreparedAbility` and `AiReachAdjustment` name shared data.
 - `Sword/`, `ThrowStone/`, `Accumulate/`, `Dash/`: specialized admission and searches. Stone/Dash now project through Framework's shared selected physical formula/rule owners; delivery and metadata policies remain distinct. Accumulate retains usefulness and self-PA hypotheses.
 - `AttackThrowStone/`, `BasicSkill/`: earlier bounded composition, selection and execution paths, retained internally for source vectors and guards.

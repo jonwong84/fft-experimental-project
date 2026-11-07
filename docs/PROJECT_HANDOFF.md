@@ -6,6 +6,18 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
+Owner-requested AI navigation pass: `AiDecisionMaker.cs`, `AiCommandExecutor.cs`
+and `AiTurnController.cs` now live at the `Zodiac.Framework.Ai` project root,
+moved byte-for-byte. The project/repository READMEs link the decision and complete
+turn starting points. Configuration/results/helpers retain their current folders;
+namespaces, APIs, behavior, owner drafts and historical receipts are preserved.
+Current coverage links follow the moves. This does not activate host/magic AI
+integration or advance the behavioral review programme.
+Rebuilt AI/content consumers: all1,358 AI tests and the external-assembly public
+pipeline test pass. Coverage validation passes all58 entries;27 preexisting stale
+targeting paths were repaired alongside the three AI moves, with coverage claims
+unchanged. Source move bytes and all ten owner blobs were checked unchanged.
+
 **ZOD-428 review programme; next bounded batch is ZOD-430 (shared AI simulation boundaries).**
 [ZOD-429 sword/Accumulate review](behavior/sword-accumulate-review.md) is complete.
 The receipt pins eight source/metadata files,27 functions and27 managed paths/

@@ -11,10 +11,10 @@ It does not enable additional ability families or an autonomous magic AI.
 - Player spell selection and actual commands:
   [OrdinaryMagicBattle.Choice / Apply](../../src/Zodiac.Framework/Battle/Combat/Magic/Execution/OrdinaryMagicBattle.cs).
 - Complete supported physical-roster decision:
-  [AiDecisionMaker.Decide](../../src/Zodiac.Framework.Ai/Decision/AiDecisionMaker.cs).
+  [AiDecisionMaker.Decide](../../src/Zodiac.Framework.Ai/AiDecisionMaker.cs).
 - Checked actual AI command:
-  [AiCommandExecutor.Execute](../../src/Zodiac.Framework.Ai/Execution/AiCommandExecutor.cs).
-  Complete turn: [AiTurnController.Execute / Resume](../../src/Zodiac.Framework.Ai/Execution/AiTurnController.cs).
+  [AiCommandExecutor.Execute](../../src/Zodiac.Framework.Ai/AiCommandExecutor.cs).
+  Complete turn: [AiTurnController.Execute / Resume](../../src/Zodiac.Framework.Ai/AiTurnController.cs).
 - One ordinary spell hypothesis at the current origin:
   [OrdinarySpellAiCandidateQuery.Evaluate](../../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiCandidateQuery.cs).
   This produces diagnostics, not an executable command or complete search.
@@ -57,6 +57,13 @@ separate internal owners in `Geometry/` and `Resolution/`; choice/capture types
 live in `Selection/`. Runtime flow and error ordering are preserved.
 
 ## Walk one AI decision
+
+The three public entry files now live directly under `src/Zodiac.Framework.Ai/`:
+`AiDecisionMaker.cs`, `AiCommandExecutor.cs` and `AiTurnController.cs`.
+This owner-requested visibility follow-up moves them byte-for-byte; namespaces,
+public APIs and behavior remain unchanged. Configuration/results and internal
+helpers retain the existing `Decision/` and `Execution/` folders. The
+[AI starting guide](../../src/Zodiac.Framework.Ai/README.md) links the call flow.
 
 `AiDecisionMaker.Decide` reads in this order: fresh preparation/movement prefix,
 ability occurrences through `AiAbilityEvaluator`, per-occurrence candidate

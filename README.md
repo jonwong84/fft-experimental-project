@@ -6,6 +6,11 @@ The project is an early prototype. A bounded two-unit battle is playable, and on
 
 ## Engine, framework and content
 
+To follow an AI decision, start at
+[AiDecisionMaker.cs](src/Zodiac.Framework.Ai/AiDecisionMaker.cs).
+The [AI starting guide](src/Zodiac.Framework.Ai/README.md) explains the complete
+decision → command → turn flow and the remaining integration limits.
+
 The design has three parts:
 
 - **Tessera Engine (`Tessera.Engine`):** reusable grid positions/bounds, movement and deterministic simulation contracts, independent of FFT rules, formats and assets.
