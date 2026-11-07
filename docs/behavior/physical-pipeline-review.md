@@ -16,6 +16,28 @@ The prepared SCUS_942.21 was checked at 356,352 bytes and SHA-256
 `287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562`.
 Neither reference C nor the original game was executed.
 
+## Supplied formula0x37 trace confirmation
+
+The owner's repeated disassembly was checked against pinned `target/battle.yaml`
+and the hash-verified prepared BATTLE.BIN, loaded at0x80067000. All five JAL
+targets match the named decompilation helpers, in the supplied order: physical
+evasion, PA/Y loading, Attack Up/Martial Arts, the physical-modifier cluster,
+then damage/knockback. See the [address-check receipt](../evidence/combat/formula37-call-trace-v1.json).
+The wiki's00189F84 notation corresponds to virtual address0x80189F84; the
+prepared file offset is0x122F84, not00189F84.
+
+At0x80189F94, `bne v0,zero` branches to the handler's end when evasion returns
+nonzero. The non-evaded path falls through into the remaining helper calls.
+The annotation "If Attack is not evaded" describes that fallthrough.
+
+The stated return location0x8018B97C is correct. The caller's indirect dispatch
+is `jalr v0` at0x8018B974, its delay slot is0x8018B978, and the saved return
+address is0x8018B97C. That instruction starts the formula<7 aftermath check in
+`action_calculate_target_result`, the routine labeled Pre Formula Setup by the
+wiki. The caller then reaches applicable aftermath and result finalization;
+authoritative result application remains later. This confirmation changes no
+gameplay code and adds no original/C execution claim.
+
 ## Confirmed defect: minimum YA in assigned formula0x32
 
 `formula_repeating_fist` calls `formula_store_pa_and_pa_plus_y_divided_by_two`,

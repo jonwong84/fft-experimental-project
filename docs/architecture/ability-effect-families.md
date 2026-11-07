@@ -128,7 +128,10 @@ The owner supplied the annotated FFHacktics
 [Pre Formula Setup (FDC)](https://ffhacktics.com/wiki/Pre_Formula_Setup_%28FDC%29)
 disassembly after direct wiki access returned403. It maps to
 `action_calculate_target_result` at0x8018B34C in the pinned reference above.
-The formula call returns at0x8018B97C. The
+The formula call returns at0x8018B97C. A subsequent
+[prepared-byte/source check](../behavior/physical-pipeline-review.md#supplied-formula0x37-trace-confirmation)
+confirms dispatch at0x8018B974, its delay slot at0x8018B978 and that exact return
+address, rather than interpreting the wiki label as a call-site address. The
 [ZOD-419 source receipt](../evidence/combat/equipment-selection-source-v1.json)
 already pins this function and its full source file. This comparison checks
 source/annotation correspondence; it is not original/C execution or a completed
