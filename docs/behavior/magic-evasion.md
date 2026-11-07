@@ -171,7 +171,9 @@ Together with the previously
 supplied final-hit/roll documentation, this completes the supplied-document
 dependency checklist for the magical-evade wrapper. It does not complete ZOD-436
 or activate general statuses, reactions or terrain rules. The next useful page
-for formula0x08 is Magical Support/Status/Compat.
+for formula0x08, Magical Support/Status/Compat, has now also been
+[cross-checked](faith-magic-amounts.md#supplied-magical-modifier-wrapper--zod-436-support);
+its individual helper pages are the next useful documentation.
 
 Calculate Hit %, Calculate Final Hit % and the per-source roll have already been
 supplied during the [physical-evasion review](physical-pipeline-review.md);

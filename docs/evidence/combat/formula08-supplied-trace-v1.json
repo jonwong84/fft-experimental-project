@@ -105,6 +105,34 @@
       "startLine": 473,
       "endLine": 673,
       "normalizedLfSha256": "6855ceea86f5e95b4b1edc5fff1d4f47e6623e4bae0309b2a84ed2d232de91c0"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_magic_attack_up",
+      "startLine": 1073,
+      "endLine": 1077,
+      "normalizedLfSha256": "ae8a476c744a6e4907da1737c661ba0470f184119a18e9adfc7e1efdfabcea0e"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_magic_defense_up",
+      "startLine": 1101,
+      "endLine": 1105,
+      "normalizedLfSha256": "f1bf6bd3b80784a36c4c107fce4bb7a90ae165200e88dea916b513a4572b2e7c"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_target_magical_statuses",
+      "startLine": 1132,
+      "endLine": 1140,
+      "normalizedLfSha256": "bc905c3ec2eaffa1e57eaaf2e65de1f27d5d6a64ad1328678f5bac68a3870a0a"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_zodiac_compatibility",
+      "startLine": 319,
+      "endLine": 387,
+      "normalizedLfSha256": "b2983bca04a561e880d8f4d125419a63d7c792db0b9dba6f75488f6a0b6c1c77"
     }
   ],
   "managedFiles": [
@@ -275,5 +303,152 @@
     "cExecuted": false,
     "managedExecuted": false,
     "fullTicketCompleted": false
+  },
+  "suppliedMagicalModifierCheck": {
+    "managedBaseRevision": "526451b3cb376c5b2a3ade5a87f5bc7dfd344345",
+    "start": "0x80188744",
+    "endInclusive": "0x80188778",
+    "instructionCount": 14,
+    "instructionWords": [
+      "27bdffe8",
+      "afbf0010",
+      "0c061881",
+      "00000000",
+      "0c0618c7",
+      "00000000",
+      "0c061918",
+      "00000000",
+      "0c061259",
+      "00000000",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "orderedDirectCalls": [
+      {
+        "callPc": "0x8018874c",
+        "target": "0x80186204",
+        "symbol": "formula_apply_magic_attack_up"
+      },
+      {
+        "callPc": "0x80188754",
+        "target": "0x8018631c",
+        "symbol": "formula_apply_magic_defense_up"
+      },
+      {
+        "callPc": "0x8018875c",
+        "target": "0x80186460",
+        "symbol": "formula_apply_target_magical_statuses"
+      },
+      {
+        "callPc": "0x80188764",
+        "target": "0x80184964",
+        "symbol": "formula_apply_zodiac_compatibility"
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80188974",
+        "returnAddress": "0x8018897c",
+        "target": "0x80188744",
+        "caller": "formula_calculate_magical_damage_without_faith"
+      },
+      {
+        "callPc": "0x801889dc",
+        "returnAddress": "0x801889e4",
+        "target": "0x80188744",
+        "caller": "magic_accuracy_without_strengthen_calculate"
+      },
+      {
+        "callPc": "0x80188a3c",
+        "returnAddress": "0x80188a44",
+        "target": "0x80188744",
+        "caller": "formula_accuracy_calculate_magic"
+      },
+      {
+        "callPc": "0x80188a9c",
+        "returnAddress": "0x80188aa4",
+        "target": "0x80188744",
+        "caller": "formula_accuracy_calculate_magic_without_faith"
+      },
+      {
+        "callPc": "0x80188c64",
+        "returnAddress": "0x80188c6c",
+        "target": "0x80188744",
+        "caller": "formula_magic_gun"
+      },
+      {
+        "callPc": "0x80188dac",
+        "returnAddress": "0x80188db4",
+        "target": "0x80188744",
+        "caller": "formula_magical_damage"
+      },
+      {
+        "callPc": "0x801892d4",
+        "returnAddress": "0x801892dc",
+        "target": "0x80188744",
+        "caller": "formula_destroy_sword_stat_ruin"
+      },
+      {
+        "callPc": "0x8018948c",
+        "returnAddress": "0x80189494",
+        "target": "0x80188744",
+        "caller": "formula_un_truth"
+      },
+      {
+        "callPc": "0x8018960c",
+        "returnAddress": "0x80189614",
+        "target": "0x80188744",
+        "caller": "formula_bizen_boat"
+      }
+    ],
+    "arithmeticOrder": [
+      "Magic Attack Up: signed16 XA *4 /3, stored",
+      "Magic Defense Up: signed16 XA *2 /3, stored",
+      "Shell: signed16 XA *2 /3, stored",
+      "Chicken or Frog: signed16 XA *3 /2 once, stored",
+      "Zodiac compatibility, including its unsigned16 XA*25 temporary and neutral floor/Serpentarius exception"
+    ],
+    "clarifications": [
+      "The percentage labels denote exact rational arithmetic, not multipliers1.33 or0.67.",
+      "Magic Defense Up and Shell stack as separate stores, not one OR-qualified reduction.",
+      "Chicken and Frog share one bonus; both statuses together do not apply it twice.",
+      "This wrapper modifies work XA, not the caster current MA or final HP field; strengthening precedes it and XA*Y/Faith follow it in formula0x08.",
+      "The wrapper has no branch or RNG call; broader caller/formula support is not implied by verifying these addresses."
+    ],
+    "roundingExample": {
+      "inputXa": 7,
+      "magicDefenseUp": true,
+      "shell": true,
+      "afterDefense": 4,
+      "afterShell": 2,
+      "combinedFourNinthsWouldBe": 3
+    },
+    "managedMapping": "FaithMagicAmountFormula.PrepareProduct applies these exact separate stores; healing0x0C uses its distinct branch and bypasses the three target-defense/status steps.",
+    "validation": {
+      "sourceAudit": {
+        "faithDescriptions": 15,
+        "productDescriptions": 7,
+        "amountDescriptions": 22,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 14,
+        "sourceFunctions": 36,
+        "preparedTiersVerified": 8
+      },
+      "ownerBlobsVerified": 10,
+      "focusedManagedTestsPassed": 11,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
   }
 }

@@ -48,12 +48,55 @@ or C code was executed. All46 focused magic-contract Python tests pass, and all
 ten owner draft blobs are unchanged.
 
 This verifies the supplied top-level trace, **not completion of ZOD-436**.
-The next useful wiki pages are Magical Evade Calculation and Magical
-Support/Status/Compat, followed by Elemental XA * YA and Elemental Absorb and
-status roll. Store MA and Y and Faith already have explicit source-backed
+The [magical-evade wrapper and dependencies](magic-evasion.md#supplied-magical-evade-wrapper--zod-436-support)
+and the magical-modifier wrapper below have now also been supplied and checked.
+Their individual modifier pages, followed by Elemental XA * YA and Elemental
+Absorb and status roll, can support the remaining review. Store MA and Y and
+Faith already have explicit source-backed
 arithmetic descriptions; their wiki pages can still provide independent checks.
 General status sets, reactions/Reflect/Golem and other documented deferrals
 retain their current admission boundaries.
+
+## Supplied magical-modifier wrapper — ZOD-436 support
+
+The owner's Magical Support/Status/Compat listing matches all14 instruction
+words at `0x80188744`–`0x80188778` in the verified prepared BATTLE.BIN. The same
+[formula0x08 supporting receipt](../evidence/combat/formula08-supplied-trace-v1.json)
+records four direct calls, all nine matching listed return addresses and helper
+function fingerprints at reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+The ordered dependencies are:
+
+1. `0x80186204`, `formula_apply_magic_attack_up`: attacker Magic Attack Up,
+   XA *4/3, then signed16 store.
+2. `0x8018631c`, `formula_apply_magic_defense_up`: target Magic Defense Up,
+   XA *2/3, then signed16 store.
+3. `0x80186460`, `formula_apply_target_magical_statuses`: Shell applies *2/3,
+   then Chicken-or-Frog applies *3/2 once. Each active step stores separately.
+4. `0x80184964`, `formula_apply_zodiac_compatibility`: classified compatibility,
+   including its unsigned16 XA*25 temporary, neutral floor and Serpentarius
+   early-return exception.
+
+These modify the shared work value XA, rather than changing the unit's current
+MA or directly writing final HP damage. Formula0x08 strengthens XA before this
+wrapper; multiplication by Y, weather/affinities and Faith follow it. The wrapper
+has no branch or RNG call. Its other verified callers do not imply support for
+those formula families in the managed runtime.
+
+The percentage labels are summaries of exact fractions, not multipliers1.33 or
+0.67. In particular, Magic Defense Up **and** Shell each run when both are set.
+XA7 becomes4 after the first *2/3, then2 after the second; a combined *4/9 would
+produce3. Chicken and Frog share one test and do not grant two separate bonuses.
+`FaithMagicAmountFormula.PrepareProduct` already preserves this order and each
+signed16 store. Formula0x0C keeps its distinct healing branch, bypassing the target
+defense/status steps rather than reusing this entire damage wrapper.
+
+The existing source/prepared audit passes15 Faith, seven stored-product and22
+amount descriptions, including the literal full modifier chain and healing
+defense bypass, plus eight prepared Cure/Fire bindings. All11 focused .NET amount/
+arithmetic tests and eight Python tests pass. No runtime or fixture change is
+required; all ten owner draft blobs remain unchanged and ZOD-436 remains open.
+The next useful supplied page is Magic Attack Up routine, followed by Magic
+Defense Up routine, Target's Status Affecting XA (Magical), and Compatibility.
 
 ## Original implementation checkpoint
 

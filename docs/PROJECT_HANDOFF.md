@@ -56,7 +56,11 @@ Move Underwater is excluded. Zero is classified eligibility, not a universal
 evasion guarantee. Evasion Changes due to Statuses also matches all49 words,
 its clearing call and three returns. Clearing precedes the independent Defending
 halving and retains the earlier Abandon marker; existing C# matches.
-ZOD-436 remains open. Magical Support/Status/Compat is the next useful wiki page.
+The [Magical Support/Status/Compat wrapper](behavior/faith-magic-amounts.md#supplied-magical-modifier-wrapper--zod-436-support)
+also matches all14 words/four ordered calls/nine returns. Magic Defense Up and
+Shell are separate *2/3 stores; existing shared C# preserves the truncation.
+ZOD-436 remains open. Magic Attack Up is the next useful helper page, then Magic
+Defense Up, Target's Status Affecting XA (Magical) and Compatibility.
 The shared Calculate Hit %/final-hit/per-source roll
 documentation was already supplied; no duplicate is needed.
 
