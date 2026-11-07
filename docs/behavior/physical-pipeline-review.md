@@ -78,7 +78,7 @@ must preserve four contributions, source hit-versus-accuracy semantics, labels,
 ordered draws and early exits while retaining distinct physical/magic loaders.
 This excerpt requires no current-domain runtime correction or activation of
 deferred equipment/status support. The supplied equipment loader is recorded
-below; the final hit calculation page remains a useful next documentation input.
+below, followed by the supplied final hit calculation.
 
 ## Supplied physical equipment-evasion loader (2026-11-07)
 
@@ -117,9 +117,55 @@ The existing `PhysicalWeaponEvasion.GetContribution` correctly implements the
 weapon-only gate for its documented human/weapon inputs. It does not implement
 this complete equipment loader. No admitted runtime defect was found here;
 general equipment/status integration remains deferred. All eight existing
-`PhysicalWeaponEvasionTests` pass; no gameplay code changed. The next useful
-excerpt is the actual final hit-percentage routine at0x00185814, reached through
-`evade_roll` at0x00188488.
+`PhysicalWeaponEvasionTests` pass; no gameplay code changed.
+
+## Supplied final hit-percentage routine (2026-11-07)
+
+The owner's Calculate Final Hit % listing at0x80185814 matches all162
+instruction words in the hash-verified prepared BATTLE.BIN. The
+[final-hit trace receipt](../evidence/combat/final-hit-percent-trace-v1.json)
+pins reference `11464943bbdbd2a0af022d90cb7f10455cf911df`, the final routine,
+its per-source roll helper, the wrapper and the random comparison helper.
+All four calls to `evade_source_roll` at0x801848D8 and the stated caller return
+location0x80188498 match the executable.
+
+The flag bypass applies only to nonzero ability IDs; basic Attack ID0 always
+reaches the checks. Accessory, right hand, left hand and class evade are compared
+with the byte base hit. Equality is sufficient to force hit=false/accuracy0:
+the condition is **evade >= base hit**, rather than strictly greater. This path
+still reaches the roll helpers, including when base hit is0; it skips the
+division section, avoiding a zero denominator there.
+
+Otherwise each remaining-chance factor is independently truncated:
+`factor = (baseHit - evade) * 100 / baseHit`. The four factors multiply before
+division by1,000,000. That integer result multiplies the preexisting signed16
+accuracy, then divides by100 before storage. Base hit is not substituted for
+that existing accuracy. With positive byte base hit and all evades below it,
+the four-factor product is at most100,000,000 and fits signed32. Preserve both
+division stages: base25, evades15/15/15/0 and initial accuracy80 produce4;
+combining those final divisions would incorrectly produce5. Rounded accuracy0
+does not itself clear hit, as the earlier wrapper example demonstrates.
+
+Roll helpers run in accessory/right/left/class order. Every reached helper
+draws, even for zero or certain evasion. Only execution can record a random
+evade and stop the remaining helpers; preview/AI retain all four draws. A
+pre-established forced miss remains a miss even though preview/AI do not set
+random miss labels. These mode details come from the pinned helper and
+`random_roll_pass_fail`, not merely the page's summary.
+
+Miss types are1/2/3/4 in that order. The accessory label uses its item ID;
+each hand label uses its weapon ID unless that ID is0xFF, then its shield ID.
+Class uses0xFF. Label choice does not repeat the loader's item-type/Weapon Guard
+selection, so a future equipment integration must preserve the two decisions
+separately.
+
+The existing physical base100/class-only path and magic nonzero-ability/class0
+path preserve these rules within their admitted domains. All39 existing
+`MagicEvasionTests`/`PhysicalFormulaAssignmentTests` cases and18 corresponding
+Python tests pass. No gameplay code or historical fixture changed; general
+equipment/status support and a shared physical/magic kernel remain separate.
+The next useful supplied page is Attack Evaded Calculations at0x001848D8,
+to confirm the helper's annotated trace and execution-only labels directly.
 
 ## Confirmed defect: minimum YA in assigned formula0x32
 

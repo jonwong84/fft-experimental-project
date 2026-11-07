@@ -28,6 +28,12 @@ instruction words: monsters retain class evade; each hand prefers an eligible
 Weapon Guard weapon over a shield. Its restriction helper must return exactly0.
 The weapon-only managed primitive remains correct within its stated domain;
 full equipment loading remains deferred. The physical review links the receipt.
+The supplied final hit routine also matches all162 instruction words and four
+ordered helper calls. It preserves Attack ID0's flag exception, evade>=base
+forced misses, staged accuracy truncation, mode-dependent labels and distinct
+hand-label selection. Existing bounded physical/magic paths need no correction;
+39 targeted managed cases and18 Python tests pass. See the final-hit review
+section/receipt; the wider review programme and runtime deferrals remain open.
 
 The [programme](development/documentation-review-programme.md) and
 [progress receipt](evidence/maintenance/documentation-review-progress-v1.json)
