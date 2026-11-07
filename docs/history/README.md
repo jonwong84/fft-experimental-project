@@ -21,7 +21,10 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 388 entries index completed bounded work; they do not mean the full game is complete.
+These 390 entries index completed bounded work; they do not mean the full game is complete.
+
+- [ZOD-418 — Trace fixed-origin ordinary spell aim search and ranking](../behavior/ordinary-spell-aim-search.md)
+- [ZOD-423 — Organize action entry points and targeting/AI pathways](../development/action-pipelines.md)
 
 - [ZOD-421 — Consolidate physical delivery profiles and definition ownership](../architecture/physical-delivery-profiles.md)
 

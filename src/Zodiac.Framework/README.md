@@ -4,6 +4,14 @@ Framework owns deterministic FFT rules and runtime state. It references Tessera;
 AI policy and orchestration remain in the separate `Zodiac.Framework.Ai` project.
 Content supplies immutable definitions and prepared data through outer adapters.
 
+For a player action or AI decision, start with the
+[action pathway guide](../../docs/development/action-pipelines.md). Ordinary
+spell selection/commands enter through `OrdinaryMagicBattle.Choice` / `Apply`;
+the cast branch calls `OrdinaryMagicCastPreparation.PrepareAndQueue`.
+The [targeting source map](Battle/Combat/Targeting/README.md) links selection,
+geometry and readiness resolution in execution order. Shared rules remain here;
+AI choice/ranking remain in the AI project.
+
 - `Battle/State/`: snapshots, map/unit geometry and identifiers, and the bounded
   two-unit scenario wrapper.
 - `Battle/Movement/`: terrain and movement profiles, range/path algorithms,
@@ -23,7 +31,8 @@ Content supplies immutable definitions and prepared data through outer adapters.
   supplied-order ready-cast results. They do not broaden sword state, discover
   targets, advance the clock or publish battle state.
   `Battle/Combat/Targeting/` contains ordinary spell panel/occupant queries and
-  their public geometry, profile, request and result types in matching files.
+  their public geometry, profile, request and result types in matching files,
+  grouped into `Selection/`, `Geometry/` and `Resolution/`.
   [Stored aims and pure casting phases](../../docs/behavior/stored-spell-aim-pipeline.md)
   add current unit-follow centres, blue choice/confirmation and immutable charge
   plans through ready one-cost calculations. They publish no battle state or RNG,
@@ -46,8 +55,9 @@ Content supplies immutable definitions and prepared data through outer adapters.
 - `Random/`: explicit gameplay RNG state and the verified generator.
 - `Formulas/`: selected physical formula IDs/X/Y and neutral raw arithmetic.
 - `CombatRules/`: shared physical execution/preview/AI evasion, RNG, critical/
-  knockback decisions and final cap. Existing battle profiles retain admission
-  and live settlement. [Assignment and limits](../../docs/architecture/physical-formula-reassignment.md).
+  knockback decisions, final cap and ordinary primary preparation.
+  `PhysicalAbilityBattleProfile` / `PhysicalAbilityBattleSimulator` own shared
+  delivery admission and settlement. [Delivery and limits](../../docs/architecture/physical-delivery-profiles.md).
 - `Properties/`: assembly metadata. `AssetId.cs` stays at the root as a shared ID.
 
 Public classes, records, structs and enums should normally have their own

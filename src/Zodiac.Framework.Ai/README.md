@@ -1,5 +1,11 @@
 # AI ownership and entry points
 
+The [action pathway guide](../../docs/development/action-pipelines.md) walks one
+player cast and one AI decision, with source symbols and modification points.
+The [ordinary spell source map](OrdinarySpells/README.md) follows fresh selection,
+private simulation and scoring; it explicitly identifies the unimplemented
+search/command connection.
+
 The supported roster path has three public static entry points:
 
 - `AiDecisionMaker.Decide`: pure decision, diagnostics and successor priority knowledge. Hypotheses restore battle state while decision RNG chains.
@@ -44,3 +50,8 @@ returns hypothetical diagnostics and decision RNG, including the unresolved
 source event-cap score. It cannot execute a command. Both queries retain their
 separate contracts; general aim/origin search, ranking, lottery and autonomous
 magic turns remain outside this path. [Clock contract and validation](../../docs/behavior/ordinary-spell-ai-clock.md).
+
+Within `OrdinarySpells/`, `Selection/` owns catalog/list/parameter/usefulness work,
+`Simulation/` owns private state, charge clocks and hits, `Scoring/` owns hit
+accounting and absolute scores, and `Diagnostics/` owns the ready-hit query.
+The candidate query stays at that feature's root. Namespaces and APIs are unchanged.

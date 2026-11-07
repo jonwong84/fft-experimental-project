@@ -27,6 +27,11 @@ source from initialization through policy selection, evaluation, scoring and
 command settlement. It distinguishes source structure from bounded managed
 coverage and unresolved compatibility behavior.
 
+The [action pathway guide](../development/action-pipelines.md) connects those
+source responsibilities to current C# entry points and stage owners. It includes
+concrete player-cast and AI-decision walkthroughs and the ordinary spell search
+boundary, following the owner's supplied targeting/preparation documentation.
+
 Decision scoring and actual combat share explicit gameplay RNG; restoring a
 hypothetical candidate does not erase its draws. Rendering, wall time and pauses
 must not advance that stream. The original VSync callback draws BIOS rand once

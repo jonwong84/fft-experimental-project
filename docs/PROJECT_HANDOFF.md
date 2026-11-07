@@ -6,55 +6,39 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-418: Trace fixed-origin ordinary spell aim search and ranking.**
-The [ZOD-421 physical delivery refactor](architecture/physical-delivery-profiles.md)
-is complete. `PhysicalAbilityBattleProfile` owns immutable definitions and learned
-grants for explicit adjacent/projectile delivery. Generic content binding and
-roster execution retain arbitrary stable IDs and selected formulas. Named profiles
-are compatibility views of the same definitions; named roster APIs forward to
-shared admission/settlement. Pair-only projectile admission, event shapes,
-interception, metadata and command/frozen-continuation authority remain preserved.
+**ZOD-424: Enumerate ordinary spell aims at a fixed origin.**
+The [ZOD-418 source study](behavior/ordinary-spell-aim-search.md) is complete.
+It pins nine source files/twenty-four functions and records ordinary unit/tile
+stages, deadline groups, masks, map order, decision RNG, rank/baseline comparisons
+and the unresolved-charge early exit. Fifteen literal source descriptions and
+six Python tests check masks, ordering, strict ties and source-width guards.
+No runtime aim search or automatic spell turn is activated. ZOD-424 is the
+selected implementation child; ranking and multiple origins remain separate.
 
-The owner-selected [ZOD-422 preparation/AI refactor](architecture/ai-preparation-and-simulation.md)
-is complete. `CombatRules.OrdinaryMagicPreparation` now proposes a pending plan
-and primary-action caster statuses for both live ordinary casting and AI.
-`MagicChargePlanQuery` remains a compatible plan-only adapter. AI query admission,
-private candidate simulation and strike processing have distinct owners; existing
-accounting and scoring remain shared. Current immutable hypotheses preserve
-isolation and decision RNG rules. Original baseline/suspended-status semantics
-are documented, but frame suspension and additional command families stay gated.
+The owner-selected [ZOD-423 action pathway pass](development/action-pipelines.md)
+is complete. `OrdinaryMagicBattle.Choice` / `Apply` remain the player spell entry
+points; `AiDecisionMaker.Decide`, `AiCommandExecutor.Execute` and
+`AiTurnController.Execute` / `Resume` remain the supported physical AI entries.
+`OrdinarySpellAiCandidateQuery` remains a supplied-aim diagnostic, distinct from
+complete search/commands. Forty files move unchanged into targeting Selection/
+Geometry/Resolution and ordinary AI Selection/Simulation/Scoring/Diagnostics.
+Four internal owners extract existing targeting and cast-queue method bodies.
+Namespaces, public APIs, command authority and existing behavior limits remain.
+The source-map READMEs link concrete player/AI walkthroughs and modification points.
 
-The owner-selected [ZOD-420 physical formula refactor](architecture/physical-formula-reassignment.md)
-is complete. Shared `Zodiac.Framework.Formulas` and `.CombatRules` owners now
-resolve neutral0x32/0x37 from immutable formula ID/X/Y data. Custom schema2 makes
-assignment explicit; original schema1 import bytes remain identical. A custom
-Dash selects Repeating Fist's formula through shared calculation, preview,
-ranked AI, direct execution and frozen Move continuation, retaining its own
-identity, range, execution evasion, metadata and grants. Formula-only edits retain
-X/Y; they do not copy another ability's parameters. Named adapters remain for
-existing API/event contracts; the subsequent delivery consolidation is complete.
-
-Locked restore, zero-warning/error Release build, **5,094 .NET tests** and
-**776 Python tests** pass. All1,308 AI cases pass. Seven new delivery/content cases
-cover generic state/events, interception, grants, identity, collection capture and
-admission. The custom imported Dash path uses generic binding through ranked AI
-and both actual action orders. The reused ZOD-420 source receipt pins eight
-files/sixteen functions at clean read-only reference
-`11464943bbdbd2a0af022d90cb7f10455cf911df`. All ten owner blobs, immutable
-JobStats, int MP costs and the approved `b7a222d` formatting remain preserved.
-New public Framework types have matching files. Fresh original Dash/Stone imports
-retain schema1 bytes. One new native Basic Skill check matches all121 retained
-steps, two journal replays and gameplay hashes; four magic eighteen-checkpoint
-proofs remain prior ZOD-420 evidence. Current logs, TRX and native output are
-under ignored `scratch/physical-delivery-*`.
-
-The [equipment selector study](architecture/equipment-effect-selection.md)
-still owns the weapon-required-level/right-tie and right-first shield findings.
-The owner also supplied formula/status-set documentation and pre-formula
-disassembly; [the shared setup boundary](architecture/ability-effect-families.md#pre-formula-setup-boundary)
-remains the design for wider families. General status/flag/equipment behavior,
-namespace migration, editor, automatic facing, ZOD-106 and custom cone stay
-separate. ZOD-418 ordinary magic aim-search source study is next.
+Locked restore and a zero-warning/error Release build, **5,094 .NET tests** and
+**782 Python tests** pass. All1,308 AI cases pass. Existing targeting, immediate/
+delayed cast, rank, RNG isolation and command regressions retain their original
+expectations. Validation/move receipts and native checks are recorded in the
+pathway guide and ignored `scratch/pathways-423/`. Fresh Basic Skill121-step/
+two-replay and Fire four-checkpoint native checks match retained gameplay hashes.
+Source remains clean/read-only
+at `11464943bbdbd2a0af022d90cb7f10455cf911df`. All ten owner blobs, immutable
+JobStats, int MP costs and approved `b7a222d` formatting remain preserved.
+Historical evidence/fixtures retain their paths and hashes; current links follow
+the new folders. ZOD-421 physical delivery ownership and ZOD-422 shared ordinary
+preparation remain intact. General statuses, equipment, shapes/cone, automatic
+facing, broad namespace migration, editor, ZOD-106 and frame RNG remain separate.
 Earlier five-hour runs are not active.
 
 [Managed MP costs](development/managed-magic-mp-costs.md) now use nonnegative `int`

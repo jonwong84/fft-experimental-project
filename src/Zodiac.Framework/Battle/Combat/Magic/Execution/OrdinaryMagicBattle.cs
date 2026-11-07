@@ -52,7 +52,7 @@ public static class OrdinaryMagicBattle
                     next = Advance(state, events);
                     break;
                 case OrdinaryMagicCommand.Cast cast:
-                    next = Queue(state, cast, events);
+                    next = OrdinaryMagicCastPreparation.PrepareAndQueue(state, cast, events);
                     break;
                 case OrdinaryMagicCommand.Wait wait:
                     next = Consume(state, wait.UnitId, TurnCommandKind.Wait, events);
@@ -99,14 +99,14 @@ public static class OrdinaryMagicBattle
         throw new OrdinaryMagicExecutionException("Unknown unit.");
     }
 
-    private static OrdinaryMagicUnitState Active(OrdinaryMagicBattleState state, BattleUnitId id)
+    internal static OrdinaryMagicUnitState Active(OrdinaryMagicBattleState state, BattleUnitId id)
     {
         if (state.Turns.ActiveUnitId != id)
             throw new OrdinaryMagicExecutionException("That unit does not own the active turn.");
         return state.Units[Index(state, id)];
     }
 
-    private static OrdinaryMagicBattleState Consume(OrdinaryMagicBattleState state, BattleUnitId id,
+    internal static OrdinaryMagicBattleState Consume(OrdinaryMagicBattleState state, BattleUnitId id,
         TurnCommandKind kind, List<OrdinaryMagicEvent> events)
     {
         _ = Active(state, id);
@@ -136,40 +136,6 @@ public static class OrdinaryMagicBattle
         events.AddRange(turnEvents);
         // These are ordinary Black/White Magic casts, never the movement-canceled Charge skillset.
         return next;
-    }
-
-    private static OrdinaryMagicBattleState Queue(OrdinaryMagicBattleState state,
-        OrdinaryMagicCommand.Cast command, List<OrdinaryMagicEvent> events)
-    {
-        var actor = Active(state, command.UnitId);
-        if (!state.Definition.Spells.TryGetValue(command.SpellId, out var spell) ||
-            !KnownSpells(state, actor.Id).Contains(command.SpellId))
-            throw new OrdinaryMagicExecutionException("That spell is not learned.");
-        if (state.Pending.ContainsKey(actor.Id))
-            throw new OrdinaryMagicExecutionException("That unit is already charging a spell.");
-        var resource = MagicResources.EvaluateMp(new(new(actor.Current.Mp, false, false, false, false, false, MagicActionRestriction.None),
-            new(spell.OriginalAbilityId, spell.MpCost, MagicResourceMenu.Default, spell.AffectedBySilence),
-            MagicFormulaEvaluationMode.Preview, new(true)));
-        if (resource.Outcome is not { Usable: true })
-            throw new OrdinaryMagicExecutionException("Not enough MP.");
-        var choice = Choice(state, actor.Id, spell.Id);
-        if (!choice.Accepted || choice.Outcome is null || command.FollowUnit && choice.Outcome.Mode != SpellTargetChoiceMode.UnitOrTile)
-            throw new OrdinaryMagicExecutionException("That targeting choice is unavailable.");
-        var occupant = state.Units.FirstOrDefault(u => u.Position == command.Aim)?.Occupant;
-        var selection = SpellAimCapture.Capture(choice.Outcome, command.Aim, command.FollowUnit ? (byte)6 : (byte)5,
-            occupant, null, new(true, true, true));
-        if (!selection.Accepted)
-            throw new OrdinaryMagicExecutionException("Choose a tile in spell range.");
-        var plan = CombatRules.OrdinaryMagicPreparation.Prepare(new(selection.Outcome!, actor.Current,
-            state.Units.Select(u => u.Occupant).ToImmutableArray(), new(true), new(true, true)));
-        if (!plan.Accepted)
-            throw new OrdinaryMagicExecutionException("The spell could not be prepared.");
-        var next = Consume(state, actor.Id, TurnCommandKind.ConfirmAct, events);
-        var pending = plan.Outcome!.Plan;
-        actor = actor with { Current = plan.Outcome.Caster };
-        next = next.With(units: next.Units.SetItem(Index(next, actor.Id), actor), pending: next.Pending.Add(actor.Id, pending));
-        events.Add(new OrdinaryMagicEvent.Queued(actor.Id, spell.Id, pending.Counter));
-        return pending.Counter == 0 ? OrdinaryMagicCastExecution.Resolve(next, actor.Id, events) : next;
     }
 
     private static OrdinaryMagicBattleState Advance(OrdinaryMagicBattleState state, List<OrdinaryMagicEvent> events)

@@ -4,7 +4,7 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-418 (Trace fixed-origin ordinary spell aim search and ranking).**
+**Next bounded work: ZOD-424 (Enumerate ordinary spell aims at a fixed origin).**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 [Learning reports, owned slots and player casting](behavior/learn-on-hit.md)
@@ -22,11 +22,16 @@ through shared calculation, preview, ranked AI and actual execution. Original
 imports and named compatibility adapters are preserved.
 [ZOD-421 delivery/profile consolidation](architecture/physical-delivery-profiles.md)
 now gives physical definitions/grants one owner and shares adjacent/projectile
-roster admission and settlement. ZOD-418 source study is next.
+roster admission and settlement.
 The owner-selected [ZOD-422 ordinary preparation/AI refactor](architecture/ai-preparation-and-simulation.md)
 now shares preparation with live casting and separates candidate/strike owners.
 Its original snapshot semantics are documented; frame suspension remains gated.
-There are 34 open tickets below. The 388 completed tickets, prior checkpoints and
+[ZOD-418 aim-search source study](behavior/ordinary-spell-aim-search.md) is complete;
+it records unit/tile stage order, masks, RNG, strict ranks and early exits.
+[ZOD-423 action pathways](development/action-pipelines.md) now give selection,
+geometry, resolution, simulation and scoring distinct navigable owners while
+preserving public entry points. ZOD-424 is the selected bounded search child.
+There are 34 open tickets below. The 390 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -50,17 +55,18 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-418 — Trace fixed-origin ordinary spell aim search and ranking
+### ZOD-424 — Enumerate ordinary spell aims at a fixed origin
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-417
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-418, ZOD-423
 
-Trace callers, source aim order, unit-versus-tile alternatives, useful-target
-masks, RNG chaining and baseline/rank comparisons for one ordinary spell at the
-current origin. Pin the reference and add independently checkable descriptions
-for ties, NotValuable exits and unresolved charge scores. Identify which existing
-ranking owners can be reused and select a bounded implementation child before
-coding search. Movement-origin enumeration, full-list dispatch, lottery and
-autonomous magic turn execution remain separate.
+Implement fresh definition-bound ordinary aim-list diagnostics at the actor's
+current origin using the [source study](behavior/ordinary-spell-aim-search.md).
+Preserve source layer/Y/X order, usefulness masks, walkable/range intersections,
+unit-before-tile alternatives and considered-CT deadline groups. Admit only the
+certified neutral HP/consistent-choice domain and safe source row-template radii;
+reject unsupported self/Reflect/trajectory and flag combinations. Returned lists
+grant no command or cached-evaluation authority. Subsequent candidate ranking,
+movement origins, full-list dispatch, lottery and autonomous turns remain separate.
 
 Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
 Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.
