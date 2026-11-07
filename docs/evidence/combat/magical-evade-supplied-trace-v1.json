@@ -1070,5 +1070,185 @@
       "cExecuted": false,
       "fullTicketCompleted": false
     }
+  },
+  "suppliedTargetStatusCheck": {
+    "managedBaseRevision": "d3a57f8340ff5d26a126e62488095210b1e72e55",
+    "start": "0x801853f4",
+    "endInclusive": "0x801854b4",
+    "instructionCount": 49,
+    "instructionWords": [
+      "3c058019",
+      "8ca52d98",
+      "27bdffe8",
+      "afbf0010",
+      "90a2005c",
+      "90a3005b",
+      "30420014",
+      "0002102b",
+      "30630002",
+      "10600002",
+      "00402021",
+      "34040001",
+      "90a20059",
+      "00000000",
+      "30420010",
+      "10400002",
+      "00000000",
+      "34040001",
+      "90a20058",
+      "00000000",
+      "30420009",
+      "10400003",
+      "308200ff",
+      "34040001",
+      "308200ff",
+      "10400005",
+      "00000000",
+      "3c048019",
+      "248438de",
+      "0c017991",
+      "34050004",
+      "3c028019",
+      "8c422d98",
+      "00000000",
+      "90420058",
+      "00000000",
+      "30420002",
+      "10400007",
+      "00000000",
+      "3c038019",
+      "246338dc",
+      "90620000",
+      "00000000",
+      "00021042",
+      "a0620000",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "branches": [
+      {
+        "pc": "0x80185418",
+        "condition": "tested register == 0",
+        "target": "0x80185424"
+      },
+      {
+        "pc": "0x80185430",
+        "condition": "tested register == 0",
+        "target": "0x8018543c"
+      },
+      {
+        "pc": "0x80185448",
+        "condition": "tested register == 0",
+        "target": "0x80185458"
+      },
+      {
+        "pc": "0x80185458",
+        "condition": "tested register == 0",
+        "target": "0x80185470"
+      },
+      {
+        "pc": "0x80185488",
+        "condition": "tested register == 0",
+        "target": "0x801854a8"
+      }
+    ],
+    "directCalls": [
+      {
+        "pc": "0x80185468",
+        "target": "0x8005e644",
+        "symbol": "mem_zero",
+        "destination": "0x801938de",
+        "byteCount": 4,
+        "byteCountSetInDelaySlot": true
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80188538",
+        "returnAddress": "0x80188540",
+        "target": "0x801853f4"
+      },
+      {
+        "callPc": "0x80188590",
+        "returnAddress": "0x80188598",
+        "target": "0x801853f4"
+      },
+      {
+        "callPc": "0x801885d8",
+        "returnAddress": "0x801885e0",
+        "target": "0x801853f4"
+      }
+    ],
+    "clearMasks": [
+      {
+        "offset": "0x5c",
+        "mask": "0x14",
+        "statuses": [
+          "DontAct",
+          "Sleep"
+        ]
+      },
+      {
+        "offset": "0x5b",
+        "mask": "0x02",
+        "statuses": [
+          "Stop"
+        ]
+      },
+      {
+        "offset": "0x59",
+        "mask": "0x10",
+        "statuses": [
+          "Confusion"
+        ]
+      },
+      {
+        "offset": "0x58",
+        "mask": "0x09",
+        "statuses": [
+          "Charging",
+          "Performing"
+        ]
+      }
+    ],
+    "defending": {
+      "offset": "0x58",
+      "mask": "0x02",
+      "baseHitAddress": "0x801938dc",
+      "operation": "Unsigned byte >>1 then byte store",
+      "appliedAfterClear": true
+    },
+    "findings": [
+      "Any of the six clearing statuses clears all four evasion contributions, without changing the statuses themselves.",
+      "Defending is a separate later check; it still halves base hit after a clear and stacks after Abandon.",
+      "No RNG, action-restriction helper, Abandon-marker clear or early return after the contribution clear occurs here.",
+      "Zero-valued beq branches skip the corresponding present-status action; inline If Target has annotations must be read with that polarity."
+    ],
+    "managedMapping": "MagicEvasion.Prepare ORs the six target flags to clear contributions, then independently applies TargetDefending; prior AbandonTriggered is retained.",
+    "validation": {
+      "sourceAudit": {
+        "loadDescriptions": 8,
+        "preparationDescriptions": 15,
+        "rollDescriptions": 24,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 13,
+        "sourceFunctions": 21
+      },
+      "ownerBlobsVerified": 10,
+      "focusedManagedTestsPassed": 7,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
   }
 }

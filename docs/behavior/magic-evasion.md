@@ -135,8 +135,43 @@ Don't Act. The current executable ordinary-magic encounter rejects restricted,
 mounted and support-bearing input profiles, rather than implementing the full
 source classifier. All15 focused .NET evasion/current-input tests and16 matching
 Python tests pass; all ten owner draft blobs are unchanged. This check adds no
-broad terrain, status or reaction support. The next useful wiki pages are Evasion Changes due to Statuses and Magical
-Support/Status/Compat. ZOD-436 remains open.
+broad terrain, status or reaction support. ZOD-436 remains open.
+
+### Supplied target-status changes
+
+Evasion Changes due to Statuses matches all49 instruction words at
+`0x801853f4`–`0x801854b4`, its four-byte clearing call and all three listed
+returns (`0x80188540`, `0x80188598`, `0x801885e0`). The supporting receipt pins
+the exact words and five branch targets. The target status masks are:
+
+- Byte`0x5c`, mask`0x14`: Don't Act or Sleep.
+- Byte`0x5b`, mask`0x02`: Stop.
+- Byte`0x59`, mask`0x10`: Confusion.
+- Byte`0x58`, mask`0x09`: Charging or Performing.
+
+Any matching clearing status causes `mem_zero(0x801938de,4)`, clearing accessory,
+both hands and class contributions. It does not remove any target status. The
+`beq` instructions skip their respective present-status action when the tested
+value is zero; terse "If Target has" inline annotations are not branch conditions.
+
+The routine then separately reloads target byte`0x58` and tests Defending
+bit`0x02`. If set, it shifts the current unsigned base-hit byte right1 and stores
+it. There is no early return after clearing: Defending still applies when any
+clearing status is also present. Abandon followed by Defending therefore produces
+base hit100 ->50 ->25. Clearing contributions does not undo an earlier Abandon
+reaction marker. No RNG is drawn, and the restriction classifier is not called
+again here.
+
+`MagicEvasion.Prepare` already ORs the six clearing flags, then independently
+applies `TargetDefending`, retaining `AbandonTriggered`. Existing literal
+preparations cover each status, stacked halvings and a later clear that retains
+the marker. All seven focused .NET evasion tests and eight Python tests pass;
+all ten owner draft blobs are unchanged. No runtime or fixture change is needed.
+Together with the previously
+supplied final-hit/roll documentation, this completes the supplied-document
+dependency checklist for the magical-evade wrapper. It does not complete ZOD-436
+or activate general statuses, reactions or terrain rules. The next useful page
+for formula0x08 is Magical Support/Status/Compat.
 
 Calculate Hit %, Calculate Final Hit % and the per-source roll have already been
 supplied during the [physical-evasion review](physical-pipeline-review.md);

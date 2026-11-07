@@ -53,8 +53,10 @@ The supplied Check If Unit Can Evade matches all45 words and11 callers after two
 return-address corrections. Its restriction codes preserve Don't Act/mount
 precedence, depth0/1 admission and the exact status/movement/rider exceptions;
 Move Underwater is excluded. Zero is classified eligibility, not a universal
-evasion guarantee. ZOD-436 remains open. Evasion Changes due to Statuses and
-Magical Support/Status/Compat are the next useful wiki pages.
+evasion guarantee. Evasion Changes due to Statuses also matches all49 words,
+its clearing call and three returns. Clearing precedes the independent Defending
+halving and retains the earlier Abandon marker; existing C# matches.
+ZOD-436 remains open. Magical Support/Status/Compat is the next useful wiki page.
 The shared Calculate Hit %/final-hit/per-source roll
 documentation was already supplied; no duplicate is needed.
 
