@@ -1,0 +1,649 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-431",
+  "managedBaseRevision": "05cb5e6c82da12bfa8a080d18e9e91896960d1bf",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "report": "docs/behavior/shared-ai-preparation-review.md",
+  "scope": "Bounded ordinary physical/magic list, parameter, initialized-statistic, fresh preparation and usefulness review; older caller and content edges are partial, not full source/managed branch coverage.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/ai/abilities.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 20079,
+      "sha256": "42b793235173dbc98e77249df6488eed3708ef3c60c9d10520557fc9636c6862"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 147880,
+      "sha256": "5519c4550e9fea302ee4366848435b8131c7d3aef24f02462c7571d11bd1cd17"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 111880,
+      "sha256": "22555f06b061bc6f017f721998a5e44dfb3d4fa4c7284a2ee3367dfa27ce80ad"
+    },
+    {
+      "path": "src/main/game_tables.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 7063,
+      "sha256": "35b6df66b42f21c0ab95fa0dfbd0596592a193235f615181b0d3cbfac3559a5f"
+    },
+    {
+      "path": "include/fft/ai.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 25771,
+      "sha256": "fa7aabf5b4d21e3f42be7978c061fb859a52709a234e5b4205c5de5e2c8566b5"
+    },
+    {
+      "path": "include/fft/ai_decision.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9018,
+      "sha256": "a88a67152b5143b74121946b7dffd4c8b76b568d9947c828d6620014a741b02b"
+    },
+    {
+      "path": "include/fft/command.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 16578,
+      "sha256": "1c033381864b735aded0393f686443333b09d2ee62c539ecbbd3ae9a7ebb60a0"
+    },
+    {
+      "path": "include/fft/skillset.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 10251,
+      "sha256": "ff8564cfae7e4e64dd3dc289577f56ee3cba27c8a8f450491e2d6bf6182729ad"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "target/main.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 135004,
+      "sha256": "b6066d98d481d73eb49d2d16be57ae3fc5ae4070830176fdeeeaae2bdeaec2a3"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/ai/abilities.c",
+      "symbol": "usable_abilities_build",
+      "startLine": 223,
+      "endLine": 278,
+      "normalizedLfSha256": "804a26a4db6daeeffa6316d6ca444d61bd96e295aa4ff47c170d6940889db4de"
+    },
+    {
+      "path": "src/battle/ai/abilities.c",
+      "symbol": "ability_usable_from_skillset_add",
+      "startLine": 335,
+      "endLine": 466,
+      "normalizedLfSha256": "3c5c7d2936e5fd8156081cc4b7b54a7574cdc2c5f7e640511a13c8669d94becc"
+    },
+    {
+      "path": "src/battle/ai/abilities.c",
+      "symbol": "ai_ability_is_known",
+      "startLine": 472,
+      "endLine": 493,
+      "normalizedLfSha256": "a6a6ef49a634ca65624dfb74c1af6beaad441199d9551139aeeaf47955066414"
+    },
+    {
+      "path": "src/battle/ai/abilities.c",
+      "symbol": "ai_unit_abilities_init",
+      "startLine": 86,
+      "endLine": 197,
+      "normalizedLfSha256": "fb9c5da2b0c69815e35072a175ae22a865c76821481eb51de260564caf49aac4"
+    },
+    {
+      "path": "src/battle/ai/abilities.c",
+      "symbol": "ratio_q2_calculate",
+      "startLine": 201,
+      "endLine": 206,
+      "normalizedLfSha256": "8bb2359db294b63df5a108fd22efdbb0eedb4f392c17bfbc35ebb11a0d0a2357"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_ability_entry_load",
+      "startLine": 974,
+      "endLine": 1131,
+      "normalizedLfSha256": "98619a79ae6c72e98affb0803445984e5291b27b130e0fb27394b73fccb4e832"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ability_considerations_set",
+      "startLine": 607,
+      "endLine": 904,
+      "normalizedLfSha256": "6ee3cb512ac66ef6799dce7b4f78c549cc10d1eaa0a4fa7701e0fbf6bed4d21d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "decision_flags_refresh",
+      "startLine": 270,
+      "endLine": 323,
+      "normalizedLfSha256": "b64660e3cd084717a39ff0bbd764421152e45a21e458d466bf4b4b51bab204fb"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "decision_team_targeting_flags_update",
+      "startLine": 332,
+      "endLine": 379,
+      "normalizedLfSha256": "4d08f71f328f1e043aa2fc808757cb4eda2b2d32cbdd647bb60339880a02dce7"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "decision_target_consideration_init",
+      "startLine": 388,
+      "endLine": 453,
+      "normalizedLfSha256": "bb3d550f249476e7ca4d9820520dca32abdba7b01ba5b3d5916a0baafeb01ec3"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "status_only_ability_disable",
+      "startLine": 914,
+      "endLine": 960,
+      "normalizedLfSha256": "cfe1c6bc0efd48d213fb203c86fb540dfdf620e5c05a5ee92590a4818665023a"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_unit_turn_delay_calculate",
+      "startLine": 3394,
+      "endLine": 3431,
+      "normalizedLfSha256": "abda23c263216d91e3146f5d4b8e0314e299c49d0b5d627bd1d5f6c89a26ae10"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "target_is_out_of_play",
+      "startLine": 1672,
+      "endLine": 1679,
+      "normalizedLfSha256": "fc098f0d5d2ce3c64eb0d5d0d83bc974f355433d5aab0d7dbe1af96c28c2f981"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_target_is_untargetable",
+      "startLine": 1686,
+      "endLine": 1713,
+      "normalizedLfSha256": "9637259eec334dfd321b0bd33394f504e55f72f965128c9912383b2984294c14"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "useful_targets_filter",
+      "startLine": 2015,
+      "endLine": 2031,
+      "normalizedLfSha256": "299bc384c97e93ab71b5f9c8951ffae4b11c427174e6f54f4d1c0c6a9ab83954"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_target_classify_ability_effect",
+      "startLine": 2039,
+      "endLine": 2313,
+      "normalizedLfSha256": "00ee8d38a45c4fffda9167a0197e6d3c56d42cd0c4ff95ec8975c0a981772439"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_status_is_active_through_delay",
+      "startLine": 2321,
+      "endLine": 2344,
+      "normalizedLfSha256": "9ab84e86d29fb0e00c171e4d9b71e3c52a37743d8d03bdc5c2b5521f8e15da8d"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "status_can_cancellation_affect_turn",
+      "startLine": 2352,
+      "endLine": 2359,
+      "normalizedLfSha256": "223fef60724d0ad972a0002c0831e956291bd373c125168683312b51fdc99734"
+    },
+    {
+      "path": "src/main/game_tables.c",
+      "symbol": "ability_skillset_list_build",
+      "startLine": 78,
+      "endLine": 111,
+      "normalizedLfSha256": "b8762358e260baed5818bd64f866d84f98a9f1404317a90d739cec562d20ed1c"
+    }
+  ],
+  "managedInputs": [
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiHumanAbilityLists.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 7255,
+      "sha256": "0909438fb02857a7f115bf83799ef9a32c376bf3a15476d5d1de3b0afa8afee3"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiAbilityBehavior.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2254,
+      "sha256": "a2629374238e439bae111049faf3b7e55af9a6cbc7f6aff15f82142c4dd608dc"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiPreparationTypes.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 459,
+      "sha256": "b8c2b7cc8a0954e5b985d4c5ad347f7f8e66e981385d74b569d2ea88a4ec093c"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/RosterAiPreparation.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 5839,
+      "sha256": "e846c3edcdfc38cd26901a3e9ad0fe9d6b65005ff307ddb3095ca51d7a3f3485"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/RosterAiRefresh.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 5920,
+      "sha256": "b57d5758955fe0b726c70111b4901a3e4f098c328de875dd7e5d00672d1535a4"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/RosterAiGeneralPreparation.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4262,
+      "sha256": "6103e9fad3db21558a48249f6ff5db079ffc955db2a8bbd0c20f69f0c1135d0b"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiOrdinaryPairRoster.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1331,
+      "sha256": "01ba452868c3094c20b247739ae419ae261799d3695f8de924d5f039c41b3980"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiTargetRoster.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 5480,
+      "sha256": "ec9db20c3e8e100a3ff2b9691158e14404f716e0c307aac5354bfaedbbd0accf"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiLists.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3851,
+      "sha256": "268673895046762098c075df6e9fb2b2e89b72f7835737239efb5cabb90aface"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiParameters.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3414,
+      "sha256": "bd7af455600c5e7c58f4d0d9478ee432ddfdcb84af5a5db3999d564d81a00b13"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiCatalog.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2962,
+      "sha256": "dee22de9d54ae35a365f4d224744848a9b881d462f39a305a12e86ed5af688cc"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiStatistics.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2531,
+      "sha256": "66cba31eb973f82b630f6b645359ae937a14b9c5be89e1b1e20ca28a8c090476"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiUsefulness.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2667,
+      "sha256": "24d35c3b7ac53202e69d38a56245867ceaee19e80c8f4e9fe93a07071ae8ea7a"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiWork.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 6268,
+      "sha256": "4a6a71dd368088d9025331f19f070791560cfe0b047a52e577ef6ce3b18c955b"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Sword/SwordAiPreparation.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9099,
+      "sha256": "4f6f159414743603f657ec35af8c737c25815a5ba1b6c8f309d63554207bb5cc"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Sword/SwordAiRefresh.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 8915,
+      "sha256": "3d2ebf6c410a1ebf0b20667b6eb867327188f229eeda3c88f21ac5f56ecaf66e"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/AttackThrowStone/AttackThrowStoneAiPreparation.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11351,
+      "sha256": "4f3e8e3cb5cc6a56f5c2a250425caf0c5d226bf72151174df270d74e9a4052f3"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiPreparation.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 12870,
+      "sha256": "9a2ab5a7bd63caf037390c6397aaaa822190ea485a4255b33b83c177fc4cf3ad"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiUsefulness.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4268,
+      "sha256": "96b4139d34a8426b613ca6a0eb3d32941e7afc820e1ef520352a32d0911d16fc"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Accumulate/RosterAccumulateAiUsefulness.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3818,
+      "sha256": "fae2469f9a3300dcc138190599df9d1f2d8cd72d44f026764f381e4901cc2063"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListPreparation.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 7181,
+      "sha256": "bee6000c669ce7db4c585db1b230c7eed47e0abaf6e18dd321de34d7d722b7ad"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCharge.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1338,
+      "sha256": "74658ae4bb8d62e8a11dd7d456a4637709e7a83aaf801b0d7e4858042ff09f0b"
+    },
+    {
+      "path": "src/Zodiac.Content/BattleSetup/PreparedOrdinarySpellAi.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2260,
+      "sha256": "5a519f152db46f60ad23879b32a49122ba5afb70942b18bec067b20ce1568107"
+    },
+    {
+      "path": "src/Zodiac.Content/BattleSetup/OrdinaryHumanAiAbilityListSetup.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 7503,
+      "sha256": "07062b2f064b6b0dcc15ff1c671523866aa3e6f25f4d258a85f487ea64abd3cf"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiListTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 5090,
+      "sha256": "dc8148376c808d908cceb13736e25688af308b971bcb77e899d139d62a6b2c2a"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiParameterTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2808,
+      "sha256": "d8b404bb9d904d569890228fc77d4b54b99bbc8bb3b16ba5e47f691b46e65728"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiStatisticTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2288,
+      "sha256": "844259b9dd6d7b26401ab167e541b7c6dabe7d6abeca738b7e7440242e13efca"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiUsefulnessTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4901,
+      "sha256": "6b71ad1ec6198aadc577ffa2854f28c72efdbe9ef6e0ab98e4c4c923bf9bad2b"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/Shared/AiHumanAbilityListTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 5032,
+      "sha256": "145558c8a7c575ebda1f695306d53c320cb7ac6ec87ca3ea59489b98a3528efb"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/Shared/RosterAiPreparationTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 17752,
+      "sha256": "6fd39b830ea9b5454d3668a953c4ba4a989574cfb5268dea600e26aad9aed5bd"
+    }
+  ],
+  "preparedMenuTable": {
+    "inputRole": "ignored local prepared executable; never runtime input for these pure AI classes",
+    "byteLength": 356352,
+    "sha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562",
+    "address": "0x80065CB4",
+    "fileOffset": 353460,
+    "rowCount": 176,
+    "hex": "0f080b0c0d0001000a0000000000000000040907020300000000000000000000000000000000000000000000000000000000000009000000020200070000070000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000",
+    "nonDefaultHumanRows": [
+      {
+        "skillsetId": 1,
+        "menuType": 8
+      },
+      {
+        "skillsetId": 2,
+        "menuType": 11
+      },
+      {
+        "skillsetId": 3,
+        "menuType": 12
+      },
+      {
+        "skillsetId": 4,
+        "menuType": 13
+      },
+      {
+        "skillsetId": 6,
+        "menuType": 1
+      },
+      {
+        "skillsetId": 8,
+        "menuType": 10
+      },
+      {
+        "skillsetId": 17,
+        "menuType": 4
+      },
+      {
+        "skillsetId": 18,
+        "menuType": 9
+      },
+      {
+        "skillsetId": 19,
+        "menuType": 7
+      },
+      {
+        "skillsetId": 20,
+        "menuType": 2
+      },
+      {
+        "skillsetId": 21,
+        "menuType": 3
+      },
+      {
+        "skillsetId": 52,
+        "menuType": 9
+      },
+      {
+        "skillsetId": 56,
+        "menuType": 2
+      },
+      {
+        "skillsetId": 57,
+        "menuType": 2
+      },
+      {
+        "skillsetId": 59,
+        "menuType": 7
+      },
+      {
+        "skillsetId": 62,
+        "menuType": 7
+      },
+      {
+        "skillsetId": 156,
+        "menuType": 10
+      }
+    ],
+    "runtimeMenuImplemented": false
+  },
+  "findings": [
+    {
+      "id": "PREP-431-01",
+      "disposition": "confirmed-defect-fixed",
+      "finding": "HP-only behavior with neither target-side preference was None instead of Useful. Absolute exclusions and both-flag enemy precedence remain intact; ready-hit scoring proceeds without a side credit/penalty."
+    },
+    {
+      "id": "PREP-431-02",
+      "disposition": "confirmed-defect-fixed",
+      "finding": "Special skillset menus could enter default spell list/loading via ordinary-looking ability IDs. Shared original-menu admission now guards list, loader and catalog; special menu implementations remain deferred."
+    },
+    {
+      "id": "PREP-431-03",
+      "disposition": "verified-within-domain",
+      "finding": "Resolved learning/static usability/max-MP initialization versus current MP, repeated occurrences, Frog/Monster Skill statistics, primary versus secondary flags, CT support quirk and working usage ordering."
+    },
+    {
+      "id": "PREP-431-04",
+      "disposition": "verified-within-domain",
+      "finding": "Stable enemy relation, strict HP thresholds, retained policies/team support, first-minimum support-share override and reaches/counts before post-ACT clear; old certified pair consumers remain narrow."
+    },
+    {
+      "id": "PREP-431-05",
+      "disposition": "verified-within-domain",
+      "finding": "Fresh useful masks and source-order Accumulate parity draws for active allies; no enemy draws or input publication; late budget rejection retains entry state/RNG."
+    },
+    {
+      "id": "PREP-431-06",
+      "disposition": "deferred",
+      "finding": "Special menu/status/equipment/item policies, stale Innocent cache quirk outside certified domain, full selection/origin/ranking/commands and frame RNG; readability gate432 remains waiting for full port."
+    }
+  ],
+  "confirmedDefects": [
+    "PREP-431-01",
+    "PREP-431-02"
+  ],
+  "runtimeChanged": true,
+  "historicalEvidenceErrata": [
+    {
+      "finding": "Existing ordinary usefulness coverage omitted the no-side-preference branch; corrected current classifier and composed C# regressions now cover it."
+    },
+    {
+      "finding": "The earlier behavior note claimed unsupported menus failed closed, but only ability-ID/monster limits were enforced. The current guard uses verified original menu identity."
+    }
+  ],
+  "historicalReceiptsUnchanged": true,
+  "sourceAuditResults": {
+    "ordinarySpell": {
+      "learningDescriptions": 4,
+      "chargeDescriptions": 3,
+      "mpDescriptions": 4,
+      "scoreDescriptions": 1,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "sourceFiles": 10,
+      "structuralPreparedRecords": 2,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "chargeClockSearchImplemented": false
+    },
+    "rosterPreparation": {
+      "rosterPreparationDescriptions": 13,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "sourceFiles": 7,
+      "sourceFunctions": 17
+    },
+    "refresh": {
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "files": 4,
+      "functions": 21,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "additionalFunctions": 6,
+      "selectionHeaders": 4,
+      "selectionFunctions": 4,
+      "totalReferenceFiles": 8,
+      "totalReferenceFunctions": 31,
+      "scenarioFunctions": 11,
+      "outOfReachAdditionalFiles": 2,
+      "outOfReachAdditionalFunctions": 1,
+      "waitSourceFiles": 7,
+      "waitSourceFunctions": 12,
+      "directionVectors": 8,
+      "directionPairs": 65280,
+      "overlapViabilityResolved": false,
+      "settlementFiles": 3,
+      "settlementFunctions": 8,
+      "executionFiles": 6,
+      "executionFunctions": 16,
+      "suppliedRngTapes": 3,
+      "refreshFiles": 3,
+      "refreshFunctions": 18,
+      "refreshVectors": 6
+    },
+    "variableLists": {
+      "variableListDescriptions": 16,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "sourceFiles": 9,
+      "sourceFunctions": 31
+    },
+    "rosterLists": {
+      "rosterListDescriptions": 12,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "sourceFiles": 26,
+      "sourceFunctions": 73
+    },
+    "accumulate": {
+      "descriptions": 18,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "sourceFiles": 12,
+      "sourceFunctions": 41,
+      "preparedDataChecked": true
+    }
+  },
+  "validation": {
+    "dotnet": {
+      "total": 5181,
+      "failed": 0,
+      "skipped": 0,
+      "projects": {
+        "Engine": 24,
+        "AssetTool": 206,
+        "Framework": 1827,
+        "Ai": 1384,
+        "Cli": 396,
+        "Content": 897,
+        "Client": 447
+      },
+      "command": "dotnet test Fft.sln -c Release --no-restore"
+    },
+    "python": {
+      "total": 794,
+      "result": "OK",
+      "command": "python -m unittest discover -s tools/verification -p 'test_*.py'"
+    },
+    "focusedListParameterUsefulnessCases": 45,
+    "newRegressionCases": 23,
+    "casesFailedBeforeFix": 20,
+    "newCaseBreakdown": {
+      "nonDefaultMenus": 17,
+      "defaultMenus": 3,
+      "neutralHpClassifier": 2,
+      "neutralHpReadyHit": 1
+    },
+    "independentReadyLiteral": {
+      "damage": 54,
+      "targetHp": 146,
+      "casterMp": 69,
+      "draws": 4,
+      "priority": 49,
+      "sideCredit": 0
+    },
+    "ownerBlobs": 10,
+    "approvedFormattingPreserved": true,
+    "unstagedOwnerEdit": {
+      "path": "src/Zodiac.Framework.Ai/AiTurnController.cs",
+      "gitBlob": "373d13f739439813f9608aefc2d84715d8ed1346",
+      "preserved": true,
+      "excludedFromCommit": true
+    },
+    "originalExecuted": false,
+    "cExecuted": false,
+    "nativePresentationRerun": false
+  }
+}

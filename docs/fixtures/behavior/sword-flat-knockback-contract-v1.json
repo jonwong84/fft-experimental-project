@@ -1,0 +1,2010 @@
+{
+  "format": "fft.sword-flat-knockback-description",
+  "schemaVersion": 1,
+  "ticket": "ZOD-114",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "execution": "description-only",
+  "productionImplementationExecuted": false,
+  "domain": "Two ordinary nonimmortal importance-not-3 unmounted units; neutral empty-proc ordinary sword; open dry flat ground lower layer, absent blocked upper layer; cardinal range 1.",
+  "arithmeticBoundaries": {
+    "criticalLastRaw": 1310,
+    "noncriticalFirstRaw": 1311,
+    "pa5BonusLastZeroRaw": 6553,
+    "pa5BonusFirstOneRaw": 6554,
+    "pa5CriticalXaMin": 5,
+    "pa5CriticalXaMax": 9,
+    "pa255Power64WorstProduct": 32576,
+    "pa255Power65WorstProduct": 33085
+  },
+  "vectors": [
+    {
+      "id": "interior-East-East",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          2,
+          2
+        ],
+        "target": [
+          3,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "East",
+        "targetFacing": "West",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          4,
+          2
+        ],
+        "moved": true,
+        "actorFacing": "East",
+        "targetFacing": "West",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "interior-East-North",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          2,
+          2
+        ],
+        "target": [
+          3,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          4,
+          2
+        ],
+        "moved": true,
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "interior-East-West",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          2,
+          2
+        ],
+        "target": [
+          3,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "West",
+        "targetFacing": "West",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          4,
+          2
+        ],
+        "moved": true,
+        "actorFacing": "West",
+        "targetFacing": "West",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "interior-East-South",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          2,
+          2
+        ],
+        "target": [
+          3,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "South",
+        "targetFacing": "West",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          4,
+          2
+        ],
+        "moved": true,
+        "actorFacing": "South",
+        "targetFacing": "West",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "edge-East",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          3,
+          2
+        ],
+        "target": [
+          4,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": false,
+        "lethalCanceled": false,
+        "target": [
+          4,
+          2
+        ],
+        "moved": false,
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "interior-North-East",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          2,
+          2
+        ],
+        "target": [
+          2,
+          3
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "East",
+        "targetFacing": "South",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          2,
+          4
+        ],
+        "moved": true,
+        "actorFacing": "East",
+        "targetFacing": "South",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "interior-North-North",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          2,
+          2
+        ],
+        "target": [
+          2,
+          3
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "South",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          2,
+          4
+        ],
+        "moved": true,
+        "actorFacing": "North",
+        "targetFacing": "South",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "interior-North-West",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          2,
+          2
+        ],
+        "target": [
+          2,
+          3
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "West",
+        "targetFacing": "South",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          2,
+          4
+        ],
+        "moved": true,
+        "actorFacing": "West",
+        "targetFacing": "South",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "interior-North-South",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          2,
+          2
+        ],
+        "target": [
+          2,
+          3
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "South",
+        "targetFacing": "South",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          2,
+          4
+        ],
+        "moved": true,
+        "actorFacing": "South",
+        "targetFacing": "South",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "edge-North",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          2,
+          3
+        ],
+        "target": [
+          2,
+          4
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "South",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": false,
+        "lethalCanceled": false,
+        "target": [
+          2,
+          4
+        ],
+        "moved": false,
+        "actorFacing": "North",
+        "targetFacing": "South",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "interior-West-East",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          2,
+          2
+        ],
+        "target": [
+          1,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "East",
+        "targetFacing": "East",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          0,
+          2
+        ],
+        "moved": true,
+        "actorFacing": "East",
+        "targetFacing": "East",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "interior-West-North",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          2,
+          2
+        ],
+        "target": [
+          1,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "East",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          0,
+          2
+        ],
+        "moved": true,
+        "actorFacing": "North",
+        "targetFacing": "East",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "interior-West-West",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          2,
+          2
+        ],
+        "target": [
+          1,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "West",
+        "targetFacing": "East",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          0,
+          2
+        ],
+        "moved": true,
+        "actorFacing": "West",
+        "targetFacing": "East",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "interior-West-South",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          2,
+          2
+        ],
+        "target": [
+          1,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "South",
+        "targetFacing": "East",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          0,
+          2
+        ],
+        "moved": true,
+        "actorFacing": "South",
+        "targetFacing": "East",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "edge-West",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          1,
+          2
+        ],
+        "target": [
+          0,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "East",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": false,
+        "lethalCanceled": false,
+        "target": [
+          0,
+          2
+        ],
+        "moved": false,
+        "actorFacing": "North",
+        "targetFacing": "East",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "interior-South-East",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          2,
+          2
+        ],
+        "target": [
+          2,
+          1
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "East",
+        "targetFacing": "North",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          2,
+          0
+        ],
+        "moved": true,
+        "actorFacing": "East",
+        "targetFacing": "North",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "interior-South-North",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          2,
+          2
+        ],
+        "target": [
+          2,
+          1
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "North",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          2,
+          0
+        ],
+        "moved": true,
+        "actorFacing": "North",
+        "targetFacing": "North",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "interior-South-West",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          2,
+          2
+        ],
+        "target": [
+          2,
+          1
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "West",
+        "targetFacing": "North",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          2,
+          0
+        ],
+        "moved": true,
+        "actorFacing": "West",
+        "targetFacing": "North",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "interior-South-South",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          2,
+          2
+        ],
+        "target": [
+          2,
+          1
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "South",
+        "targetFacing": "North",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          2,
+          0
+        ],
+        "moved": true,
+        "actorFacing": "South",
+        "targetFacing": "North",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "edge-South",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          2,
+          1
+        ],
+        "target": [
+          2,
+          0
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "North",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": false,
+        "lethalCanceled": false,
+        "target": [
+          2,
+          0
+        ],
+        "moved": false,
+        "actorFacing": "North",
+        "targetFacing": "North",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "normal",
+      "inputs": {
+        "seed": 1,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          1,
+          2
+        ],
+        "target": [
+          2,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "hp": 25,
+        "criticalKnockbackAttempted": false,
+        "destinationEligible": false,
+        "lethalCanceled": false,
+        "target": [
+          2,
+          2
+        ],
+        "moved": false,
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "rngWord": 2516284547,
+        "drawCount": 6,
+        "raw": [
+          16838,
+          5758,
+          10113,
+          17515,
+          31051,
+          5627
+        ]
+      }
+    },
+    {
+      "id": "miss",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          1,
+          2
+        ],
+        "target": [
+          2,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "hp": 50,
+        "classEvade": 100,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "hp": 50,
+        "criticalKnockbackAttempted": false,
+        "destinationEligible": false,
+        "lethalCanceled": false,
+        "target": [
+          2,
+          2
+        ],
+        "moved": false,
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "rngWord": 3587663605,
+        "drawCount": 4,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975
+        ]
+      }
+    },
+    {
+      "id": "side-hit",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          1,
+          2
+        ],
+        "target": [
+          2,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "North",
+        "hp": 50,
+        "classEvade": 100,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          3,
+          2
+        ],
+        "moved": true,
+        "actorFacing": "North",
+        "targetFacing": "North",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "zero-power",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 0,
+        "actor": [
+          1,
+          2
+        ],
+        "target": [
+          2,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 0,
+        "hp": 50,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          3,
+          2
+        ],
+        "moved": true,
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "zero-pa",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 0,
+        "power": 5,
+        "actor": [
+          1,
+          2
+        ],
+        "target": [
+          2,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 5,
+        "hp": 45,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          3,
+          2
+        ],
+        "moved": true,
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "lethal-equal",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          1,
+          2
+        ],
+        "target": [
+          2,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "hp": 45,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 0,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": true,
+        "target": [
+          2,
+          2
+        ],
+        "moved": false,
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "lethal-over",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          1,
+          2
+        ],
+        "target": [
+          2,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "hp": 44,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 0,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": true,
+        "target": [
+          2,
+          2
+        ],
+        "moved": false,
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "survive-one",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          1,
+          2
+        ],
+        "target": [
+          2,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "hp": 46,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 1,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          3,
+          2
+        ],
+        "moved": true,
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "cap",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 255,
+        "power": 64,
+        "actor": [
+          1,
+          2
+        ],
+        "target": [
+          2,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "hp": 2000,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 999,
+        "hp": 1001,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          3,
+          2
+        ],
+        "moved": true,
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "brave-low-high",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          1,
+          2
+        ],
+        "target": [
+          2,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 10,
+        "targetBrave": 100
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          3,
+          2
+        ],
+        "moved": true,
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "brave-high-low",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          1,
+          2
+        ],
+        "target": [
+          2,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 100,
+        "targetBrave": 10
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          3,
+          2
+        ],
+        "moved": true,
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "rngWord": 3448561432,
+        "drawCount": 7,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "empty-proc-pass",
+      "inputs": {
+        "seed": 233,
+        "drawCount": 0,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          1,
+          2
+        ],
+        "target": [
+          2,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 25,
+        "hp": 25,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          3,
+          2
+        ],
+        "moved": true,
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "rngWord": 2184573576,
+        "drawCount": 7,
+        "raw": [
+          23933,
+          31194,
+          6516,
+          31310,
+          885,
+          5547,
+          565
+        ]
+      }
+    },
+    {
+      "id": "critical-draw-remaining",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 18446744073709551608,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          1,
+          2
+        ],
+        "target": [
+          2,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "criticalKnockbackAttempted": true,
+        "destinationEligible": true,
+        "lethalCanceled": false,
+        "target": [
+          3,
+          2
+        ],
+        "moved": true,
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "rngWord": 3448561432,
+        "drawCount": 18446744073709551615,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975,
+          1171,
+          28206,
+          19852
+        ]
+      }
+    },
+    {
+      "id": "normal-draw-remaining",
+      "inputs": {
+        "seed": 1,
+        "drawCount": 18446744073709551609,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          1,
+          2
+        ],
+        "target": [
+          2,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "hp": 50,
+        "classEvade": 0,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "hp": 25,
+        "criticalKnockbackAttempted": false,
+        "destinationEligible": false,
+        "lethalCanceled": false,
+        "target": [
+          2,
+          2
+        ],
+        "moved": false,
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "rngWord": 2516284547,
+        "drawCount": 18446744073709551615,
+        "raw": [
+          16838,
+          5758,
+          10113,
+          17515,
+          31051,
+          5627
+        ]
+      }
+    },
+    {
+      "id": "miss-draw-remaining",
+      "inputs": {
+        "seed": 57,
+        "drawCount": 18446744073709551611,
+        "pa": 5,
+        "power": 5,
+        "actor": [
+          1,
+          2
+        ],
+        "target": [
+          2,
+          2
+        ],
+        "mapSize": [
+          5,
+          5
+        ],
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "hp": 50,
+        "classEvade": 100,
+        "actorBrave": 70,
+        "targetBrave": 70
+      },
+      "expected": {
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "hp": 50,
+        "criticalKnockbackAttempted": false,
+        "destinationEligible": false,
+        "lethalCanceled": false,
+        "target": [
+          2,
+          2
+        ],
+        "moved": false,
+        "actorFacing": "North",
+        "targetFacing": "West",
+        "rngWord": 3587663605,
+        "drawCount": 18446744073709551615,
+        "raw": [
+          9511,
+          10768,
+          17155,
+          21975
+        ]
+      }
+    }
+  ],
+  "implementationCases": [
+    {
+      "id": "SKB-001",
+      "status": "unexecuted",
+      "purpose": "Explicit opt-in open-ground profile; legacy edge-only API and fixtures unchanged."
+    },
+    {
+      "id": "SKB-002",
+      "status": "unexecuted",
+      "purpose": "Critical push in four cardinal directions and all incoming actor/target facings."
+    },
+    {
+      "id": "SKB-003",
+      "status": "unexecuted",
+      "purpose": "Normal hit and front/side/back evade behavior with exact four/six/seven draws."
+    },
+    {
+      "id": "SKB-004",
+      "status": "unexecuted",
+      "purpose": "Critical threshold raw 1310/1311 and bonus threshold/endpoints; no Brave draws."
+    },
+    {
+      "id": "SKB-005",
+      "status": "unexecuted",
+      "purpose": "All four off-map edges suppress displacement without altering damage/RNG."
+    },
+    {
+      "id": "SKB-006",
+      "status": "unexecuted",
+      "purpose": "Damage equal to HP and exceeding HP cancel pending displacement; survive-one pushes."
+    },
+    {
+      "id": "SKB-007",
+      "status": "unexecuted",
+      "purpose": "Zero-power critical pushes; PA zero floors XA to one; positive damage caps at 999."
+    },
+    {
+      "id": "SKB-008",
+      "status": "unexecuted",
+      "purpose": "Worst signed-16 product gate rejects unsupported setup before drawing."
+    },
+    {
+      "id": "SKB-009",
+      "status": "unexecuted",
+      "purpose": "Miss and normal/critical branches consume only their exact remaining draw budgets."
+    },
+    {
+      "id": "SKB-010",
+      "status": "unexecuted",
+      "purpose": "Every insufficient draw budget rejects with identical state/events and both RNG copies."
+    },
+    {
+      "id": "SKB-011",
+      "status": "unexecuted",
+      "purpose": "Actor and target retain incoming settled facing after push, miss, zero damage and KO."
+    },
+    {
+      "id": "SKB-012",
+      "status": "unexecuted",
+      "purpose": "Target voluntary HasMoved/Move/Act flags, CT, speed and movement profile are preserved."
+    },
+    {
+      "id": "SKB-013",
+      "status": "unexecuted",
+      "purpose": "Act-then-Move and Move-then-Act retain source-traced choice/event ordering."
+    },
+    {
+      "id": "SKB-014",
+      "status": "unexecuted",
+      "purpose": "Recompute attack and movement range from pushed positions; old adjacent target now out of range."
+    },
+    {
+      "id": "SKB-015",
+      "status": "unexecuted",
+      "purpose": "Accepted/rejected command replay and discarded pure probes preserve input state and RNG."
+    },
+    {
+      "id": "SKB-016",
+      "status": "unexecuted",
+      "purpose": "Reject blocked/untargetable/cannot-stop, non-ground, water, slope, height/ceiling/layer setups atomically."
+    },
+    {
+      "id": "SKB-017",
+      "status": "unexecuted",
+      "purpose": "Reject extra/overlapping units, modified movement, invalid actors/targets/weapons and noncardinal range."
+    },
+    {
+      "id": "SKB-018",
+      "status": "unexecuted",
+      "purpose": "Successful empty 19-percent proc does not cancel the critical push or add draws."
+    },
+    {
+      "id": "SKB-019",
+      "status": "unexecuted",
+      "purpose": "Position event only on actual push, after existing resolution/HP/status/KO events; no voluntary Move event."
+    },
+    {
+      "id": "SKB-020",
+      "status": "unexecuted",
+      "purpose": "Existing historical fixtures/saves/content and headless regressions remain unchanged under legacy selection."
+    }
+  ],
+  "limitations": [
+    "Offline source-derived arithmetic, not C execution or original observation.",
+    "Not accepted by the managed behavior-fixture runner; no production feature is implemented.",
+    "No general terrain/layer/occupancy/mount/reaction/status/AI/presentation/save contract."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "format": "fft.ai-execution-rng-contract",
+  "schemaVersion": 1,
+  "ticket": "ZOD-154",
+  "expectationKind": "source-derived supplied-prefix RNG tapes; not fresh selection or command execution",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "vectors": [
+    {
+      "id": "first-roll-actual-miss",
+      "entry": {"word": 1, "count": 7},
+      "movementCells": 1,
+      "projectedAttackCosts": [5],
+      "hitPercent": 11,
+      "expectedDecision": {"word": 3655513600, "count": 14, "lotteryDraws": 1, "reason": "FirstRoll"},
+      "actualClassEvade": 89,
+      "expectedActual": {"word": 180171308, "count": 18, "hit": false, "damage": 0, "hp": 50, "raw": [7419, 16212, 4086, 2749]}
+    },
+    {
+      "id": "eight-roll-actual-miss",
+      "entry": {"word": 1, "count": 7},
+      "movementCells": 1,
+      "projectedAttackCosts": [5],
+      "hitPercent": 10,
+      "expectedDecision": {"word": 2937909499, "count": 21, "lotteryDraws": 8, "reason": "AllRollsFailedUseFirst"},
+      "actualClassEvade": 90,
+      "expectedActual": {"word": 3535774167, "count": 25, "hit": false, "damage": 0, "hp": 50, "raw": [32225, 17543, 25089, 21183]}
+    },
+    {
+      "id": "empty-ranking-Wait",
+      "entry": {"word": 1, "count": 7},
+      "movementCells": 1,
+      "projectedAttackCosts": [],
+      "hitPercent": null,
+      "expectedDecision": {"word": 3210001534, "count": 16, "lotteryDraws": 8, "reason": "NoRankedAction"},
+      "actualClassEvade": null,
+      "expectedActual": null
+    }
+  ]
+}

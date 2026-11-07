@@ -1,0 +1,213 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-209",
+  "date": "2026-10-29",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "2bfc621ec1953e23b32cf487d56f5f84bdaec29e",
+  "productionImplemented": false,
+  "sourceReceipt": "docs/evidence/ai/throw-stone-command-contract-v1.json",
+  "fixture": "docs/fixtures/behavior/ai-pair-post-act-contract-v1.json",
+  "contract": "docs/architecture/zod-209-pair-post-act.md",
+  "sourceFiles": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 147880,
+      "sha256": "5519c4550e9fea302ee4366848435b8131c7d3aef24f02462c7571d11bd1cd17"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 111880,
+      "sha256": "22555f06b061bc6f017f721998a5e44dfb3d4fa4c7284a2ee3367dfa27ce80ad"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40868,
+      "sha256": "f76188542c39818fa2ab478e42ef63b4eb0f2c1c2db5a74db4120ddbaf4cb8cb"
+    },
+    {
+      "path": "src/battle/ai/abilities.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 20079,
+      "sha256": "42b793235173dbc98e77249df6488eed3708ef3c60c9d10520557fc9636c6862"
+    },
+    {
+      "path": "include/fft/ai.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 25771,
+      "sha256": "fa7aabf5b4d21e3f42be7978c061fb859a52709a234e5b4205c5de5e2c8566b5"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_command_build",
+      "startLine": 131,
+      "endLine": 224,
+      "normalizedLfSha256": "b4a01ef870fceac6d31bc8ab370f0b4053aaee69fc3dd55d9b79c78a0975a5bf"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "decision_flags_refresh",
+      "startLine": 270,
+      "endLine": 323,
+      "normalizedLfSha256": "b64660e3cd084717a39ff0bbd764421152e45a21e458d466bf4b4b51bab204fb"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ability_considerations_set",
+      "startLine": 607,
+      "endLine": 904,
+      "normalizedLfSha256": "6ee3cb512ac66ef6799dce7b4f78c549cc10d1eaa0a4fa7701e0fbf6bed4d21d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "decision_target_consideration_init",
+      "startLine": 388,
+      "endLine": 453,
+      "normalizedLfSha256": "bb3d550f249476e7ca4d9820520dca32abdba7b01ba5b3d5916a0baafeb01ec3"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "decision_target_focus",
+      "startLine": 458,
+      "endLine": 464,
+      "normalizedLfSha256": "2b6fb46f22ea01aa17f709b04abca666da7314119f60ae3fe8714040c444561d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "reachable_tiles_build",
+      "startLine": 478,
+      "endLine": 593,
+      "normalizedLfSha256": "157ef55cbc96b187ff8cbf4e959f61e81994c0486a987d0fabf1c8482171c438"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_ability_entry_load",
+      "startLine": 974,
+      "endLine": 1131,
+      "normalizedLfSha256": "98619a79ae6c72e98affb0803445984e5291b27b130e0fb27394b73fccb4e832"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "general_select",
+      "startLine": 1311,
+      "endLine": 1356,
+      "normalizedLfSha256": "f6674dc7574a0aae432eda2fedcc799774bc099a049d0c48a52e599d134fe2fb"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "target_reach_get",
+      "startLine": 1364,
+      "endLine": 1374,
+      "normalizedLfSha256": "33acf41d58bc2546f41f4afbb64ee638d12c4d570a76131c5dba31aaa946c685"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "scenarios_build",
+      "startLine": 1428,
+      "endLine": 1527,
+      "normalizedLfSha256": "c88507ca82b368c137075684feae35f9a9b3b44354955c9f111e5704b3fa4205"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ranked_select",
+      "startLine": 1844,
+      "endLine": 1866,
+      "normalizedLfSha256": "249278485ed952f209f5fa3f59978d88ee4763d4973a5ce45b85cd10a748a48d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ability_list_evaluate",
+      "startLine": 2330,
+      "endLine": 2351,
+      "normalizedLfSha256": "16fc81e0a64d57f4a205adb82a1079f4a5b7e3e0d73ea077aa6e9ae65475743b"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "fallback_select",
+      "startLine": 3156,
+      "endLine": 3171,
+      "normalizedLfSha256": "fad02f672586be9f22bb13f959623503a9e01f1b59e824e3d98007c8ff641f51"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_target_find_nearest",
+      "startLine": 3036,
+      "endLine": 3096,
+      "normalizedLfSha256": "6850f511caed7f4bd91a5a01ee5bb9a53fb94e5f728e97ca3878fa9a0b5bb84d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "foe_proximity_grid_fill",
+      "startLine": 3240,
+      "endLine": 3292,
+      "normalizedLfSha256": "4452983c86938f116afa90a47edea3a7a32d7b7c79578309104f046a0167c01d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "reachable_tiles_score",
+      "startLine": 3323,
+      "endLine": 3387,
+      "normalizedLfSha256": "a1267e9003813caf13232b6d5192c71f6f1cf8fd416bbaf21bc8038400b22fb1"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_ability_outcome_evaluate",
+      "startLine": 311,
+      "endLine": 467,
+      "normalizedLfSha256": "ef236fb9f5cb2ed53870489b054483c7227e76c62c6fcb7d1b6f3c1f1b126f68"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_action_simulate_and_score",
+      "startLine": 1442,
+      "endLine": 1728,
+      "normalizedLfSha256": "9415274d3b38d3e7afe51922914355e40ff6bad7bccb9bc861bbbfae6894bcd4"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_end",
+      "startLine": 947,
+      "endLine": 974,
+      "normalizedLfSha256": "2071e4d41c2099741ca3ae787add5e7b731df488197b87a47ca84291a6ac268b"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_move_act_taken_set",
+      "startLine": 923,
+      "endLine": 940,
+      "normalizedLfSha256": "ab6508dce1e9e9ef352a27b22a0166a0526d1571fb059f969937605b630782d7"
+    },
+    {
+      "path": "src/battle/ai/abilities.c",
+      "symbol": "ai_unit_abilities_init",
+      "startLine": 86,
+      "endLine": 197,
+      "normalizedLfSha256": "fb9c5da2b0c69815e35072a175ae22a865c76821481eb51de260564caf49aac4"
+    },
+    {
+      "path": "src/battle/ai/abilities.c",
+      "symbol": "usable_abilities_build",
+      "startLine": 223,
+      "endLine": 278,
+      "normalizedLfSha256": "804a26a4db6daeeffa6316d6ca444d61bd96e295aa4ff47c170d6940889db4de"
+    }
+  ],
+  "managedStudyFiles": [
+    "src/Zodiac.Framework.Ai/AttackThrowStoneAiPreparation.cs",
+    "src/Zodiac.Framework.Ai/SwordAiRefresh.cs",
+    "src/Zodiac.Framework/TargetedAbilityBattle.cs",
+    "src/Zodiac.Framework.Ai/SwordAiPostActScenarios.cs",
+    "src/Zodiac.Framework.Ai/SwordAiPostActExecution.cs",
+    "tests/Zodiac.Framework.Ai.Tests/AttackThrowStoneAiActFirstExecutionTests.cs"
+  ],
+  "limits": [
+    "Supplied actual checkpoints match committed ZOD-208/210 managed scenarios; this tool does not execute them.",
+    "Descriptions cover one refresh clock and preparation facts, not movement scoring or a full selection stream.",
+    "Terminal rejection is selected managed admission; original battle-end routing remains unresolved."
+  ]
+}

@@ -1,0 +1,400 @@
+{
+  "format": "fft.original-banner-circle-hold-evidence",
+  "schemaVersion": 1,
+  "recorded": "2026-10-24",
+  "edition": "SCUS-94221",
+  "managedBaseCommit": "5dfcacc",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "evidenceGuide": "docs/development/original-banner-circle-input.md",
+  "scope": "One owner-operated USB-controller hold-phase Circle press, paired neutral/pressed original states and repeated no-input task exit.",
+  "physicalProvenance": {
+    "action": "Owner loaded private slot 1 and saved a neutral checkpoint; after inspection, was instructed to hold Circle, tap K twice while paused, release Circle and save slot 1 through Quick Menu.",
+    "port": 1,
+    "frontendDriver": "XInput",
+    "deviceLogName": "Xbox 360 Controller",
+    "coreDevice": "PlayStation Controller",
+    "session": "b42ada1aa583401ab46ee921e4b95683",
+    "inputMovieRecorded": false,
+    "exactPhysicalTimingIndependentlyRecorded": false,
+    "files": [
+      {
+        "localPath": "scratch/banner-circle-hold-observation-plan/retroarch.log",
+        "bytes": 7809,
+        "sha256": "bbd631dd87e187d0db22b2d8ff0607585cd8432b0e4ce1e103c30fbc9a43bbed"
+      },
+      {
+        "localPath": "scratch/banner-circle-hold-observation-plan/session.cfg",
+        "bytes": 179,
+        "sha256": "876aff385d512a22bf27f918957f7edfb28f98e1e9ee3ea450074133aeb3f50b"
+      },
+      {
+        "localPath": "scratch/banner-circle-hold-observation-plan/core-options.cfg",
+        "bytes": 1165,
+        "sha256": "ab6ef957daf729321de0d9f9aa8104068718dbf38617515b25e34c7f733acc48"
+      }
+    ],
+    "loadDiagnostic": "The log initially reports a failed slot-1 load. The subsequently saved neutral baseline independently verifies Holding count 1 with neutral input; the later slot-1 load has no corresponding failure message. No assumption about the failed operation is needed."
+  },
+  "reports": [
+    {
+      "localPath": "scratch/banner-circle-hold-observed-a/report.json",
+      "bytes": 6481,
+      "sha256": "3b42075a45f1b241a4ba8413bae9115f66bd24022dc184266ae1bf8030cfeb83"
+    },
+    {
+      "localPath": "scratch/banner-circle-hold-observed-b/report.json",
+      "bytes": 6481,
+      "sha256": "3b42075a45f1b241a4ba8413bae9115f66bd24022dc184266ae1bf8030cfeb83"
+    }
+  ],
+  "repeatedReportsByteIdentical": true,
+  "plan": {
+    "localPath": "scratch/banner-circle-hold-observation-plan/plan.json",
+    "bytes": 1148,
+    "sha256": "555700e440929dde601d87ebf2b2d9811d51aeab3a534e995d5a0365b5ed07f7"
+  },
+  "tools": [
+    {
+      "localPath": "tools/verification/inspect_banner_circle.py",
+      "bytes": 7216,
+      "sha256": "81b8d749e4fd086c59a70386d9ebb366b4eadd4bab448a7a900379a6c1b8dd37"
+    },
+    {
+      "localPath": "tools/verification/capture_banner_continuation.py",
+      "bytes": 16116,
+      "sha256": "d9d973d970f8ebfdf9bf9b5907022a8c9ff70cdb6e26d955b9734c8a08cf269c"
+    },
+    {
+      "localPath": "tools/verification/compare_banner_hide.py",
+      "bytes": 21845,
+      "sha256": "9a375e7dfa44fd18404d1f2fd8eabd31db5a166dded4ef25432b1d50fec56c28"
+    },
+    {
+      "localPath": "tools/verification/trace_banner_draw_state.py",
+      "bytes": 6618,
+      "sha256": "15f44edd29c87f43ae0824c92e3b415deec58e6bd80c2b0ab487f7d4d3afdd9a"
+    },
+    {
+      "localPath": "tools/verification/compare_visual_checkpoints.py",
+      "bytes": 13970,
+      "sha256": "3ee039e9a767c491d2b44b9889b7d3512262d456e51cf34017945b5e84e3210b"
+    }
+  ],
+  "inputs": {
+    "format": "fft.banner-circle-observation-plan",
+    "schemaVersion": 1,
+    "definition": {
+      "localPath": "scratch/banner-078-a/banner.json",
+      "bytes": 4071,
+      "sha256": "e1c61e66de5ca10f84743f286ec8fb7f34c0bdd14e41b5eb0cab704a629ffdac"
+    },
+    "before": {
+      "localPath": "scratch/banner-circle-hold-intake-a/fft-clean-base-game.state1",
+      "bytes": 1500047,
+      "sha256": "fd6375043eac88420a2034737b3e25454f0a94284ee20169b690a5061de06a5e"
+    },
+    "after": {
+      "localPath": "scratch/banner-circle-hold-after-a/fft-clean-base-game.state1",
+      "bytes": 1499887,
+      "sha256": "0f7d977bab63bdf32c21a4a68e7cd6bd829366f98439d526ddc1e188bef9e598"
+    },
+    "exits": [
+      {
+        "localPath": "scratch/banner-circle-hold-exit-c/first/states/fft-clean-base-game.state.auto",
+        "bytes": 1496248,
+        "sha256": "3d9d1d25b5bddcd0f5e6325b464d611b862d19c93f025f54200211c8964e6f72"
+      },
+      {
+        "localPath": "scratch/banner-circle-hold-exit-c/repeat/states/fft-clean-base-game.state.auto",
+        "bytes": 1496248,
+        "sha256": "3d9d1d25b5bddcd0f5e6325b464d611b862d19c93f025f54200211c8964e6f72"
+      }
+    ]
+  },
+  "witness": {
+    "slot": 3,
+    "before": {
+      "slot": 3,
+      "savedReturnAddress": 2149358296,
+      "phase": "Holding",
+      "phaseCounter": 1,
+      "logicalTick": 21,
+      "revealCompleted": 20,
+      "holdCompleted": 1,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ]
+    },
+    "after": {
+      "logicalTick": 22,
+      "phase": "ExitYield",
+      "revealCompleted": 20,
+      "holdCompleted": 1,
+      "hideCompleted": 0,
+      "exitCause": "CircleSkipped",
+      "isTerminal": false,
+      "draws": []
+    },
+    "beforeFrameCounter": 9000,
+    "afterFrameCounter": 9001,
+    "beforeInput": {
+      "residentCurrent": 0,
+      "residentPrevious": 0,
+      "residentPressed": 0,
+      "eventPressed": 0,
+      "eventHeld": 0
+    },
+    "afterInput": {
+      "residentCurrent": 32,
+      "residentPrevious": 32,
+      "residentPressed": 32,
+      "eventPressed": 32,
+      "eventHeld": 32
+    },
+    "savedReturnAddress": 2149359464,
+    "evidence": "Paired pre-phase, unchanged loop counter, Circle-only event/resident input, shared yield and empty queued banner list; return address alone is insufficient."
+  },
+  "observations": [
+    {
+      "slot": 3,
+      "savedReturnAddress": 2149358296,
+      "phase": "Holding",
+      "phaseCounter": 1,
+      "logicalTick": 21,
+      "revealCompleted": 20,
+      "holdCompleted": 1,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ],
+      "exitCause": null,
+      "isTerminal": false
+    },
+    {
+      "logicalTick": 22,
+      "phase": "ExitYield",
+      "revealCompleted": 20,
+      "holdCompleted": 1,
+      "hideCompleted": 0,
+      "exitCause": "CircleSkipped",
+      "isTerminal": false,
+      "draws": []
+    },
+    {
+      "logicalTick": 23,
+      "phase": "Completed",
+      "revealCompleted": 20,
+      "holdCompleted": 1,
+      "hideCompleted": 0,
+      "exitCause": "CircleSkipped",
+      "isTerminal": true,
+      "draws": []
+    }
+  ],
+  "continuation": {
+    "report": {
+      "localPath": "scratch/banner-circle-hold-exit-c/report.json",
+      "bytes": 6779,
+      "sha256": "afde814e3a4c1ded32829be3b738c17326b26168fb363923fce489f7f8fdd1b3"
+    },
+    "captureScript": {
+      "localPath": "scratch/check-circle-hold-exit-b.py",
+      "bytes": 4241,
+      "sha256": "3115e0bca61fe62d33238813a5a0c1766e0402c65e624f94da4609c966d3942b"
+    },
+    "controllerInput": "disconnected",
+    "frontendFramesPerRun": 3,
+    "sourceFrameCounter": 9002,
+    "savedReturnAddress": "0x8014c984",
+    "taskRunning": false,
+    "taskId": 0,
+    "pngAndExitStateByteIdentical": true,
+    "protectedInputsUnchanged": true,
+    "privateSlotsUnchanged": true,
+    "captures": [
+      {
+        "frontendFrames": 3,
+        "inputStateSha256": "0f7d977bab63bdf32c21a4a68e7cd6bd829366f98439d526ddc1e188bef9e598",
+        "exitState": {
+          "localPath": "scratch/banner-circle-hold-exit-c/first/states/fft-clean-base-game.state.auto",
+          "bytes": 1496248,
+          "sha256": "3d9d1d25b5bddcd0f5e6325b464d611b862d19c93f025f54200211c8964e6f72"
+        },
+        "png": {
+          "localPath": "scratch/banner-circle-hold-exit-c/first/frame.png",
+          "bytes": 42892,
+          "sha256": "994d7b2700201d8774f7db161f1a41c409e0fbddbffa60955ec47492b12e13d9"
+        },
+        "command": {
+          "localPath": "scratch/banner-circle-hold-exit-c/first/command.json",
+          "bytes": 856,
+          "sha256": "4295070780de7f95908020120ae6c983fc216cd7870a50db105868df8a942767"
+        },
+        "config": {
+          "localPath": "scratch/banner-circle-hold-exit-c/first/restore.cfg",
+          "bytes": 520,
+          "sha256": "81cdd9878a33739a32f6bf33bfa1b64b6b08690fc8acce10a9a29d41e6280e60"
+        },
+        "effectiveOptions": {
+          "localPath": "scratch/banner-circle-hold-exit-c/first/core-options.cfg",
+          "bytes": 1986,
+          "sha256": "38281cdd808978b08a2c9132acf86308828449a031a9ec24ac9b149a2a0a4247"
+        },
+        "log": {
+          "localPath": "scratch/banner-circle-hold-exit-c/first/retroarch.log",
+          "bytes": 6029,
+          "sha256": "dfc86194fa48343c6d99a460eaf8cd3a36a2d61f001fb26bb21004bb1a5822de"
+        },
+        "diagnostics": [
+          "[ERROR] [Environ] GET_VARIABLE: beetle_psx_pgxp_vertex - Invalid value.",
+          "[ERROR] [Environ] GET_VARIABLE: beetle_psx_pgxp_texture - Invalid value.",
+          "[ERROR] [Environ] GET_VARIABLE: beetle_psx_filter - Invalid value.",
+          "[WARN] [GLSL] Stock GLSL shaders will be used.",
+          "[WARN] [MIDI] Output device \"Microsoft GS Wavetable Synth\" unavailable."
+        ]
+      },
+      {
+        "frontendFrames": 3,
+        "inputStateSha256": "0f7d977bab63bdf32c21a4a68e7cd6bd829366f98439d526ddc1e188bef9e598",
+        "exitState": {
+          "localPath": "scratch/banner-circle-hold-exit-c/repeat/states/fft-clean-base-game.state.auto",
+          "bytes": 1496248,
+          "sha256": "3d9d1d25b5bddcd0f5e6325b464d611b862d19c93f025f54200211c8964e6f72"
+        },
+        "png": {
+          "localPath": "scratch/banner-circle-hold-exit-c/repeat/frame.png",
+          "bytes": 42892,
+          "sha256": "994d7b2700201d8774f7db161f1a41c409e0fbddbffa60955ec47492b12e13d9"
+        },
+        "command": {
+          "localPath": "scratch/banner-circle-hold-exit-c/repeat/command.json",
+          "bytes": 859,
+          "sha256": "8c350382f5636d27ba7f9d0e87ad35d6c10e095583277fa0bf3de4a800fbe95b"
+        },
+        "config": {
+          "localPath": "scratch/banner-circle-hold-exit-c/repeat/restore.cfg",
+          "bytes": 523,
+          "sha256": "c4e33d7decfb7f3b76fa1712150c5dceb70a7ed1e357a1802358612a0815d074"
+        },
+        "effectiveOptions": {
+          "localPath": "scratch/banner-circle-hold-exit-c/repeat/core-options.cfg",
+          "bytes": 1986,
+          "sha256": "38281cdd808978b08a2c9132acf86308828449a031a9ec24ac9b149a2a0a4247"
+        },
+        "log": {
+          "localPath": "scratch/banner-circle-hold-exit-c/repeat/retroarch.log",
+          "bytes": 6037,
+          "sha256": "e98310be78dfadb8672c8986723d3bddd0df1daa6889a3fcc42c89b7d4e01780"
+        },
+        "diagnostics": [
+          "[ERROR] [Environ] GET_VARIABLE: beetle_psx_pgxp_vertex - Invalid value.",
+          "[ERROR] [Environ] GET_VARIABLE: beetle_psx_pgxp_texture - Invalid value.",
+          "[ERROR] [Environ] GET_VARIABLE: beetle_psx_filter - Invalid value.",
+          "[WARN] [GLSL] Stock GLSL shaders will be used.",
+          "[WARN] [MIDI] Output device \"Microsoft GS Wavetable Synth\" unavailable."
+        ]
+      }
+    ],
+    "deadStackIsAnimationProgress": false
+  },
+  "rejectedLaterSample": {
+    "state": {
+      "localPath": "scratch/banner-circle-hold-exit-a/first/states/fft-clean-base-game.state.auto",
+      "bytes": 1492949,
+      "sha256": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+    },
+    "command": {
+      "localPath": "scratch/banner-circle-hold-exit-a/first/command.json",
+      "bytes": 856,
+      "sha256": "3ca5a1641e39bb5ebcc3631f2e70e80d4c3778dad40d5d2a969bc9e2f9a917c1"
+    },
+    "sourceFrameCounter": 9003,
+    "savedReturnAddress": "0x801c3bc8",
+    "parameter0": 0,
+    "parameter1": 60,
+    "reason": "Four frontend frames reached the next original condition-0 task in the same slot; the original task-clear guard correctly rejected reuse."
+  },
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "dotnetTestsPassed": 1492,
+    "pythonTestsPassed": 145,
+    "combinedCircleManagedCases": 6,
+    "combinedCirclePythonTests": 10,
+    "runtimeChanged": false
+  },
+  "originalEvent401Verified": false,
+  "hidePhysicalInputVerified": false,
+  "bsvPlaybackVerified": false,
+  "limits": [
+    "One source-bound controller press observation; physical action comes from the owner report plus saved input fields.",
+    "No USB-to-screen latency, repeatable BSV playback, other physical input phase or original event identity claim.",
+    "Images are context only; queued draw absence is not instantaneous visible disappearance.",
+    "Dedicated three-frontend-frame capture retains the established isolation arguments; its state source counter proves the next update. The general image-capture command keeps its existing 4..148 budget.",
+    "Released Circle may remain in the last sampled saved input words until another poll.",
+    "Task-slot reuse is not continuation of the prior logical effect."
+  ]
+}

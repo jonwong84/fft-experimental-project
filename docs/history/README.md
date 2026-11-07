@@ -1,0 +1,496 @@
+# Planning history
+
+The active [backlog](../BACKLOG.md) and [handoff](../PROJECT_HANDOFF.md) own current work.
+
+## Snapshot — 2026-10-27
+
+Captured from `dedc95acdec0fc54b0eac2be672811ab719e5af2` before planning cleanup. The [old backlog](2026-10-27/BACKLOG.md)
+contains all 134 original ticket definitions and checkpoint narratives; the
+[old handoff](2026-10-27/PROJECT_HANDOFF.md) preserves the development history.
+Links have been rebased without changing the narrative. Old instructions,
+statuses and counts are historical; individual behavior/evidence documents
+retain their own provenance. Original pre-cleanup bytes are available from Git.
+
+## Keeping current documents small
+
+- Replace the handoff with current state, next work, blockers and validation.
+- Keep open ticket acceptance summaries in the backlog; link detailed designs.
+- Add completed-ticket evidence/commit links here rather than copying reports.
+- Archive significant transitions when useful; do not create full snapshots per task.
+- Historical audits use recorded Git snapshots, not current planning-file hashes.
+
+## Completed tickets
+
+These 397 entries index completed bounded work; they do not mean the full game is complete.
+
+- [ZOD-433 — Review AI target selection and scenario admission](../behavior/ai-target-scenario-review.md)
+
+- [ZOD-431 — Review AI preparation and correct neutral HP usefulness/special-menu admission](../behavior/shared-ai-preparation-review.md)
+
+- [ZOD-430 — Review shared AI simulation boundaries and correct magic roster admission](../behavior/shared-ai-simulation-review.md)
+
+- [ZOD-429 — Review sword Attack and Accumulate mechanics/settlement](../behavior/sword-accumulate-review.md)
+
+- [ZOD-427 — Review Throw Stone/Dash pipelines and correct the neutral YA boundary](../behavior/physical-pipeline-review.md)
+
+- [ZOD-425 — Evaluate and rank ordinary spell aims at a fixed origin](../behavior/ordinary-spell-aim-ranking.md)
+
+- [ZOD-424 — Enumerate ordinary spell aims at a fixed origin](../behavior/ordinary-spell-aim-enumeration.md)
+
+- [ZOD-418 — Trace fixed-origin ordinary spell aim search and ranking](../behavior/ordinary-spell-aim-search.md)
+- [ZOD-423 — Organize action entry points and targeting/AI pathways](../development/action-pipelines.md)
+
+- [ZOD-421 — Consolidate physical delivery profiles and definition ownership](../architecture/physical-delivery-profiles.md)
+
+- [ZOD-422 — Share ordinary preparation and separate AI simulation owners](../architecture/ai-preparation-and-simulation.md)
+
+- [ZOD-001 — Audit current types and select the first engine slice](2026-10-27/BACKLOG.md#zod-001--audit-current-types-and-select-the-first-engine-slice)
+- [ZOD-002 — Define behavioral fixture provenance and comparison rules](2026-10-27/BACKLOG.md#zod-002--define-behavioral-fixture-provenance-and-comparison-rules)
+- [ZOD-003 — Trace a minimal job and ability definition slice](2026-10-27/BACKLOG.md#zod-003--trace-a-minimal-job-and-ability-definition-slice)
+- [ZOD-004 — Trace one adjacent-step height/slope eligibility rule](2026-10-27/BACKLOG.md#zod-004--trace-one-adjacent-step-heightslope-eligibility-rule)
+- [ZOD-005 — Trace FFT RNG state, arithmetic, and call ordering](2026-10-27/BACKLOG.md#zod-005--trace-fft-rng-state-arithmetic-and-call-ordering)
+- [ZOD-007 — Extract the first useful Zodiac engine slice](2026-10-27/BACKLOG.md#zod-007--extract-the-first-useful-zodiac-engine-slice)
+- [ZOD-008 — Adapt the existing FFT transition to the engine slice](2026-10-27/BACKLOG.md#zod-008--adapt-the-existing-fft-transition-to-the-engine-slice)
+- [ZOD-009 — Prove engine independence with a neutral sample and dependency check](2026-10-27/BACKLOG.md#zod-009--prove-engine-independence-with-a-neutral-sample-and-dependency-check)
+- [ZOD-010 — Implement the selected adjacent-step geometry rule](2026-10-27/BACKLOG.md#zod-010--implement-the-selected-adjacent-step-geometry-rule)
+- [ZOD-011 — Add a deterministic scenario fixture runner](2026-10-27/BACKLOG.md#zod-011--add-a-deterministic-scenario-fixture-runner)
+- [ZOD-012 — Integrate the bounded terrain-cost policy explicitly](2026-10-27/BACKLOG.md#zod-012--integrate-the-bounded-terrain-cost-policy-explicitly)
+- [ZOD-013 — Implement explicit deterministic RNG state](2026-10-27/BACKLOG.md#zod-013--implement-explicit-deterministic-rng-state)
+- [ZOD-014 — Implement minimal typed job and ability definitions](2026-10-27/BACKLOG.md#zod-014--implement-minimal-typed-job-and-ability-definitions)
+- [ZOD-015 — Decide and prototype the editable content package format](2026-10-27/BACKLOG.md#zod-015--decide-and-prototype-the-editable-content-package-format)
+- [ZOD-016 — Build the shared content validator and C# authoring export](2026-10-27/BACKLOG.md#zod-016--build-the-shared-content-validator-and-c-authoring-export)
+- [ZOD-017 — Import and validate the selected original job/ability records](2026-10-27/BACKLOG.md#zod-017--import-and-validate-the-selected-original-jobability-records)
+- [ZOD-018 — Resolve content definitions into bounded battle units](2026-10-27/BACKLOG.md#zod-018--resolve-content-definitions-into-bounded-battle-units)
+- [ZOD-019 — Trace the smallest CT and turn-completion scenario](2026-10-27/BACKLOG.md#zod-019--trace-the-smallest-ct-and-turn-completion-scenario)
+- [ZOD-020 — Implement the bounded turn cycle and wait command](2026-10-27/BACKLOG.md#zod-020--implement-the-bounded-turn-cycle-and-wait-command)
+- [ZOD-021 — Trace one ordinary physical attack end to end](2026-10-27/BACKLOG.md#zod-021--trace-one-ordinary-physical-attack-end-to-end)
+- [ZOD-022 — Implement the selected attack and HP/KO transitions](2026-10-27/BACKLOG.md#zod-022--implement-the-selected-attack-and-hpko-transitions)
+- [ZOD-023 — Complete a reproducible two-unit battle scenario](2026-10-27/BACKLOG.md#zod-023--complete-a-reproducible-two-unit-battle-scenario)
+- [ZOD-024 — Select a Windows rendering/input stack using a bounded spike](2026-10-27/BACKLOG.md#zod-024--select-a-windows-renderinginput-stack-using-a-bounded-spike)
+- [ZOD-025 — Create the Windows host with a synthetic battle view](2026-10-27/BACKLOG.md#zod-025--create-the-windows-host-with-a-synthetic-battle-view)
+- [ZOD-026 — Establish an independent sprite/reference capture workflow](2026-10-27/BACKLOG.md#zod-026--establish-an-independent-spritereference-capture-workflow)
+- [ZOD-027 — Trace one sprite frame, palette, and animation selection path](2026-10-27/BACKLOG.md#zod-027--trace-one-sprite-frame-palette-and-animation-selection-path)
+- [ZOD-028 — Parse and prepare the selected sprite-frame slice](2026-10-27/BACKLOG.md#zod-028--parse-and-prepare-the-selected-sprite-frame-slice)
+- [ZOD-029 — Trace one battle map's geometry, terrain, and texture inputs](2026-10-27/BACKLOG.md#zod-029--trace-one-battle-maps-geometry-terrain-and-texture-inputs)
+- [ZOD-030 — Prepare and load the selected map slice](2026-10-27/BACKLOG.md#zod-030--prepare-and-load-the-selected-map-slice)
+- [ZOD-031 — Render one prepared map and unit pose](2026-10-27/BACKLOG.md#zod-031--render-one-prepared-map-and-unit-pose)
+- [ZOD-032 — Make the bounded battle playable through input and UI](2026-10-27/BACKLOG.md#zod-032--make-the-bounded-battle-playable-through-input-and-ui)
+- [ZOD-035 — Add a versioned save/load proof for the bounded scenario](2026-10-27/BACKLOG.md#zod-035--add-a-versioned-saveload-proof-for-the-bounded-scenario)
+- [ZOD-040 — Investigate event/script formats and community-tool interoperability](2026-10-27/BACKLOG.md#zod-040--investigate-eventscript-formats-and-community-tool-interoperability)
+- [ZOD-045 — Build the baseline feature/content coverage matrix](2026-10-27/BACKLOG.md#zod-045--build-the-baseline-featurecontent-coverage-matrix)
+- [ZOD-055 — Define the bounded executable sword content slice](2026-10-27/BACKLOG.md#zod-055--define-the-bounded-executable-sword-content-slice)
+- [ZOD-056 — Extend battle snapshots and fixtures for the bounded attack](2026-10-27/BACKLOG.md#zod-056--extend-battle-snapshots-and-fixtures-for-the-bounded-attack)
+- [ZOD-057 — Verify and import the selected retail sword and attack records](2026-10-27/BACKLOG.md#zod-057--verify-and-import-the-selected-retail-sword-and-attack-records)
+- [ZOD-058 — Represent the verified retail sword differences explicitly](2026-10-27/BACKLOG.md#zod-058--represent-the-verified-retail-sword-differences-explicitly)
+- [ZOD-064 — Decode one bounded PS1 scenario block into prepared event data](2026-10-27/BACKLOG.md#zod-064--decode-one-bounded-ps1-scenario-block-into-prepared-event-data)
+- [ZOD-065 — Execute the bounded conditional event deterministically](2026-10-27/BACKLOG.md#zod-065--execute-the-bounded-conditional-event-deterministically)
+- [ZOD-066 — Trace one real event's activation and completion prerequisites](2026-10-27/BACKLOG.md#zod-066--trace-one-real-events-activation-and-completion-prerequisites)
+- [ZOD-067 — Trace campaign save fields, lifetimes and legal checkpoints](2026-10-27/BACKLOG.md#zod-067--trace-campaign-save-fields-lifetimes-and-legal-checkpoints)
+- [ZOD-068 — Prove a synthetic world-checkpoint Save/Load service](2026-10-27/BACKLOG.md#zod-068--prove-a-synthetic-world-checkpoint-saveload-service)
+- [ZOD-069 — Add native Windows Save/Load slot navigation](2026-10-27/BACKLOG.md#zod-069--add-native-windows-saveload-slot-navigation)
+- [ZOD-071 — Prove one deterministic non-tutorial event frame wait](2026-10-27/BACKLOG.md#zod-071--prove-one-deterministic-non-tutorial-event-frame-wait)
+- [ZOD-072 — Define deterministic event task lifetimes and barrier contract](2026-10-27/BACKLOG.md#zod-072--define-deterministic-event-task-lifetimes-and-barrier-contract)
+- [ZOD-073 — Prove the scene task ledger and single barrier consumer](2026-10-27/BACKLOG.md#zod-073--prove-the-scene-task-ledger-and-single-barrier-consumer)
+- [ZOD-074 — Integrate task barriers into a separate synthetic event profile](2026-10-27/BACKLOG.md#zod-074--integrate-task-barriers-into-a-separate-synthetic-event-profile)
+- [ZOD-075 — Trace and select the first deterministic scene effect model](2026-10-27/BACKLOG.md#zod-075--trace-and-select-the-first-deterministic-scene-effect-model)
+- [ZOD-076 — Prove the logical general-banner effect and atomic scene adapter](2026-10-27/BACKLOG.md#zod-076--prove-the-logical-general-banner-effect-and-atomic-scene-adapter)
+- [ZOD-077 — Trace general-banner assets and the preparation/readiness boundary](2026-10-27/BACKLOG.md#zod-077--trace-general-banner-assets-and-the-preparationreadiness-boundary)
+- [ZOD-078 — Prepare and preview the bounded general banner](2026-10-27/BACKLOG.md#zod-078--prepare-and-preview-the-bounded-general-banner)
+- [ZOD-080 — Trace bounded DisplayConditions admission and update order](2026-10-27/BACKLOG.md#zod-080--trace-bounded-displayconditions-admission-and-update-order)
+- [ZOD-081 — Prove ordered event/banner transactions in Core](2026-10-27/BACKLOG.md#zod-081--prove-ordered-eventbanner-transactions-in-core)
+- [ZOD-082 — Prepare and execute the authored preloaded banner profile](2026-10-27/BACKLOG.md#zod-082--prepare-and-execute-the-authored-preloaded-banner-profile)
+- [ZOD-083 — Trace Ready display assets and dispatcher/child lifetime](2026-10-27/BACKLOG.md#zod-083--trace-ready-display-assets-and-dispatcherchild-lifetime)
+- [ZOD-084 — Prove the ordered Ready dispatcher/child aggregate](2026-10-27/BACKLOG.md#zod-084--prove-the-ordered-ready-dispatcherchild-aggregate)
+- [ZOD-085 — Select Ready glyph preparation and rendering policies](2026-10-27/BACKLOG.md#zod-085--select-ready-glyph-preparation-and-rendering-policies)
+- [ZOD-086 — Prepare and preview the authored Ready profile](2026-10-27/BACKLOG.md#zod-086--prepare-and-preview-the-authored-ready-profile)
+- [ZOD-087 — Validate displayed Ready glyphs against original references](2026-10-27/BACKLOG.md#zod-087--validate-displayed-ready-glyphs-against-original-references)
+- [ZOD-088 — Bind displayed Ready birth frames through interrupted checkpoints](2026-10-27/BACKLOG.md#zod-088--bind-displayed-ready-birth-frames-through-interrupted-checkpoints)
+- [ZOD-089 — Compose the prepared general-banner → Ready scene](2026-10-27/BACKLOG.md#zod-089--compose-the-prepared-general-banner--ready-scene)
+- [ZOD-090 — Trace Ready completion and battle-control ownership](2026-10-27/BACKLOG.md#zod-090--trace-ready-completion-and-battle-control-ownership)
+- [ZOD-091 — Hand the authored introduction to the playable battle](2026-10-27/BACKLOG.md#zod-091--hand-the-authored-introduction-to-the-playable-battle)
+- [ZOD-092 — Trace the original dark-screen transition worker](2026-10-27/BACKLOG.md#zod-092--trace-the-original-dark-screen-transition-worker)
+- [ZOD-093 — Implement the pure dark-screen worker and task proof](2026-10-27/BACKLOG.md#zod-093--implement-the-pure-dark-screen-worker-and-task-proof)
+- [ZOD-094 — Prepare and preview the bounded dark-screen transition](2026-10-27/BACKLOG.md#zod-094--prepare-and-preview-the-bounded-dark-screen-transition)
+- [ZOD-095 — Bind original dark-screen entry and release references](2026-10-27/BACKLOG.md#zod-095--bind-original-dark-screen-entry-and-release-references)
+- [ZOD-096 — Specify the combined dark-screen introduction](2026-10-27/BACKLOG.md#zod-096--specify-the-combined-dark-screen-introduction)
+- [ZOD-097 — Implement the pure combined dark-screen introduction](2026-10-27/BACKLOG.md#zod-097--implement-the-pure-combined-dark-screen-introduction)
+- [ZOD-098 — Prepare and preview the combined dark-screen introduction](2026-10-27/BACKLOG.md#zod-098--prepare-and-preview-the-combined-dark-screen-introduction)
+- [ZOD-099 — Audit replaceable engine and framework contracts](2026-10-27/BACKLOG.md#zod-099--audit-replaceable-engine-and-framework-contracts)
+- [ZOD-102 — Prove authored world-menu application navigation](2026-10-27/BACKLOG.md#zod-102--prove-authored-world-menu-application-navigation)
+- [ZOD-103 — Host authored world-menu navigation on Windows](2026-10-27/BACKLOG.md#zod-103--host-authored-world-menu-navigation-on-windows)
+- [ZOD-104 — Trace and specify the first executable job ability](2026-10-27/BACKLOG.md#zod-104--trace-and-specify-the-first-executable-job-ability)
+- [ZOD-105 — Prove the pure Accumulate content/action scenario](2026-10-27/BACKLOG.md#zod-105--prove-the-pure-accumulate-contentaction-scenario)
+- [ZOD-107 — Use Accumulate through the existing Windows battle controls](2026-10-27/BACKLOG.md#zod-107--use-accumulate-through-the-existing-windows-battle-controls)
+- [ZOD-108 — Trace Throw Stone targeting, damage and flat knockback](2026-10-27/BACKLOG.md#zod-108--trace-throw-stone-targeting-damage-and-flat-knockback)
+- [ZOD-109 — Prove pure Throw Stone damage and flat knockback](2026-10-27/BACKLOG.md#zod-109--prove-pure-throw-stone-damage-and-flat-knockback)
+- [ZOD-110 — Prepare Throw Stone content and a combined Basic Skill scenario](2026-10-27/BACKLOG.md#zod-110--prepare-throw-stone-content-and-a-combined-basic-skill-scenario)
+- [ZOD-111 — Use Throw Stone through prepared Windows target controls](2026-10-27/BACKLOG.md#zod-111--use-throw-stone-through-prepared-windows-target-controls)
+- [ZOD-112 — Specify the bounded sword's settled facing lifecycle](2026-10-27/BACKLOG.md#zod-112--specify-the-bounded-swords-settled-facing-lifecycle)
+- [ZOD-113 — Correct settled sword facing and migrate executable fixtures](2026-10-27/BACKLOG.md#zod-113--correct-settled-sword-facing-and-migrate-executable-fixtures)
+- [ZOD-114 — Specify flat sword critical knockback and the geometry gate](2026-10-27/BACKLOG.md#zod-114--specify-flat-sword-critical-knockback-and-the-geometry-gate)
+- [ZOD-115 — Implement the opt-in flat sword critical knockback extension](2026-10-27/BACKLOG.md#zod-115--implement-the-opt-in-flat-sword-critical-knockback-extension)
+- [ZOD-116 — Map bounded original AI decisions and the replaceable C# interface](2026-10-27/BACKLOG.md#zod-116--map-bounded-original-ai-decisions-and-the-replaceable-c-interface)
+- [ZOD-117 — Implement the bounded ordinary-sword AI formula projection](2026-10-27/BACKLOG.md#zod-117--implement-the-bounded-ordinary-sword-ai-formula-projection)
+- [ZOD-118 — Specify bounded end-of-turn facing and completion lifecycle](2026-10-27/BACKLOG.md#zod-118--specify-bounded-end-of-turn-facing-and-completion-lifecycle)
+- [ZOD-119 — Implement bounded turn-facing completion and closed-enemy choice](2026-10-27/BACKLOG.md#zod-119--implement-bounded-turn-facing-completion-and-closed-enemy-choice)
+- [ZOD-120 — Specify flat ordinary AI movement and path composition](2026-10-27/BACKLOG.md#zod-120--specify-flat-ordinary-ai-movement-and-path-composition)
+- [ZOD-121 — Implement the certified flat ordinary movement query](2026-10-27/BACKLOG.md#zod-121--implement-the-certified-flat-ordinary-movement-query)
+- [ZOD-122 — Specify the bounded voluntary Move execution adapter](2026-10-27/BACKLOG.md#zod-122--specify-the-bounded-voluntary-move-execution-adapter)
+- [ZOD-123 — Implement the confirmed flat path Move boundary](2026-10-27/BACKLOG.md#zod-123--implement-the-confirmed-flat-path-move-boundary)
+- [ZOD-124 — Specify one closed sword AI candidate's placement and clock boundary](2026-10-27/BACKLOG.md#zod-124--specify-one-closed-sword-ai-candidates-placement-and-clock-boundary)
+- [ZOD-125 — Implement one supplied closed sword AI candidate projection](2026-10-27/BACKLOG.md#zod-125--implement-one-supplied-closed-sword-ai-candidate-projection)
+- [ZOD-126 — Specify closed sword candidate priority scoring](2026-10-27/BACKLOG.md#zod-126--specify-closed-sword-candidate-priority-scoring)
+- [ZOD-127 — Implement closed sword candidate priority scoring](2026-10-27/BACKLOG.md#zod-127--implement-closed-sword-candidate-priority-scoring)
+- [ZOD-128 — Specify supplied-candidate comparison and the proximity tie](2026-10-27/BACKLOG.md#zod-128--specify-supplied-candidate-comparison-and-the-proximity-tie)
+- [ZOD-129 — Implement supplied sword candidate pair comparison](2026-10-27/BACKLOG.md#zod-129--implement-supplied-sword-candidate-pair-comparison)
+- [ZOD-130 — Specify ordinary sword candidate scan and evaluation ownership](2026-10-27/BACKLOG.md#zod-130--specify-ordinary-sword-candidate-scan-and-evaluation-ownership)
+- [ZOD-131 — Implement one-scenario ordinary sword candidate scan](../behavior/sword-ai-candidate-scan.md)
+- [ZOD-132 — Separate current behavioral tests from historical checkpoint audits](2026-10-27/BACKLOG.md#zod-132--separate-current-behavioral-tests-from-historical-checkpoint-audits)
+- [ZOD-133 — Consolidate repeated tests and retire obsolete milestone checks](2026-10-27/BACKLOG.md#zod-133--consolidate-repeated-tests-and-retire-obsolete-milestone-checks)
+- [ZOD-135 — Specify ordinary-sword movement baseline and ranked-list admission](../architecture/zod-135-ai-rank-admission.md)
+- [ZOD-136 — Implement one certified movement-only AI baseline evaluation](../behavior/sword-ai-movement-baseline.md)
+- [ZOD-137 — Specify fresh baseline/Attack composition and ranked admission](../architecture/zod-137-ai-composition-contract.md)
+- [ZOD-138 — Compose certified movement scoring, Attack scan and ranked admission](../behavior/sword-ai-composition.md)
+- [ZOD-139 — Specify ranked lottery and movement fallback for the composed sword slice](../architecture/zod-139-ai-selection-contract.md)
+- [ZOD-140 — Select a hypothetical Attack or movement-only plan after fresh composition](../behavior/sword-ai-selection.md)
+- [ZOD-141 — Specify original movement-scenario derivation for one sword opponent](../architecture/zod-141-ai-movement-scenario.md)
+- [ZOD-143 — Derive a fresh in-reach ordinary-sword movement scenario](../behavior/sword-ai-movement-scenario.md)
+- [ZOD-144 — Specify derived-scenario composition and selection ownership](../architecture/zod-144-ai-derived-selection.md)
+- [ZOD-145 — Select a hypothetical plan from a freshly derived sword scenario](../behavior/sword-ai-derived-selection.md)
+- [ZOD-146 — Specify a bounded out-of-reach sword movement branch](../architecture/zod-146-ai-out-of-reach-scenario.md)
+- [ZOD-147 — Derive a fresh out-of-reach ordinary-sword movement scenario](../behavior/sword-ai-out-of-reach-scenario.md)
+- [ZOD-148 — Specify out-of-reach derived-selection ownership and ability-prefix facts](../architecture/zod-148-ai-out-of-reach-selection.md)
+- [ZOD-149 — Select a hypothetical plan from an out-of-reach sword scenario](../behavior/sword-ai-out-of-reach-selection.md)
+- [ZOD-150 — Specify deferred wait-facing resolution for two ordinary opponents](../architecture/zod-150-ai-wait-facing.md)
+- [ZOD-151 — Resolve deferred wait-facing for two settled ordinary opponents](../behavior/sword-ai-wait-facing.md)
+- [ZOD-152 — Specify source-certified AI Wait settlement through existing receipts](../architecture/zod-152-ai-wait-settlement.md)
+- [ZOD-153 — Apply source-certified AI Wait facing through existing receipts](../behavior/sword-ai-wait-settlement.md)
+- [ZOD-154 — Specify decision-RNG ownership before ordinary AI command execution](../architecture/zod-154-ai-execution-rng.md)
+- [ZOD-155 — Execute one fresh already-moved ordinary AI decision](../behavior/sword-ai-execution.md)
+- [ZOD-156 — Trace the ordinary AI refresh prefix before general selection](../architecture/zod-156-ai-refresh-prefix.md)
+- [ZOD-157 — Design the Framework-owned AI command handoff](../architecture/ai-command-boundary.md#controlled-planning-transaction)
+- [ZOD-158 — Extract Zodiac.Framework.Ai and its tests](../architecture/ai-command-boundary.md)
+- [ZOD-159 — Implement a pure ordinary AI refresh query](../behavior/sword-ai-refresh.md)
+- [ZOD-160 — Trace ordinary preparation between refresh and general selection](../architecture/zod-160-ai-preparation.md)
+- [ZOD-161 — Derive closed ordinary preparation after fresh refresh](../behavior/sword-ai-preparation.md)
+- [ZOD-162 — Compose fresh preparation with pure ordinary selection](../behavior/sword-ai-prepared-selection.md)
+- [ZOD-163 — Execute a freshly prepared already-moved AI decision](../behavior/sword-ai-prepared-execution.md)
+- [ZOD-164 — Select and execute a freshly prepared out-of-reach Wait](../behavior/sword-ai-prepared-out-of-reach.md)
+- [ZOD-165 — Trace ordinary Move-first command continuation and selection reuse](../architecture/zod-165-ai-command-continuation.md)
+- [ZOD-166 — Implement a pure ordinary command-dispatch query](../behavior/sword-ai-command-dispatch.md)
+- [ZOD-167 — Design Framework-owned Move-first execution and continuation](../architecture/zod-167-move-continuation-boundary.md)
+- [ZOD-168 — Implement Framework-owned planned Move and retained follow-up](../behavior/planned-move-continuation.md)
+- [ZOD-169 — Integrate one in-reach post-prefix AI Move-first decision](../behavior/sword-ai-move-first-execution.md)
+- [ZOD-170 — Integrate post-prefix out-of-reach AI Move-first fallback](../behavior/sword-ai-move-first-out-of-reach.md)
+- [ZOD-171 — Trace fresh unmoved AI preparation](../architecture/zod-171-ai-unmoved-preparation.md)
+- [ZOD-172 — Implement pure fresh unmoved AI refresh and preparation](../behavior/sword-ai-unmoved-preparation.md)
+- [ZOD-173 — Compose fresh unmoved preparation with pure AI selection](../behavior/sword-ai-unmoved-prepared-selection.md)
+- [ZOD-174 — Integrate fresh prepared in-reach AI Move-first execution](../behavior/sword-ai-prepared-move-first.md)
+- [ZOD-175 — Integrate fresh prepared out-of-reach AI Move-first execution](../behavior/sword-ai-prepared-move-first-out-of-reach.md)
+- [ZOD-176 — Trace ordinary ACT-first and post-ACT reselection](../architecture/zod-176-ai-act-first.md)
+- [ZOD-177 — Execute one fresh prepared ACT-first Attack](../behavior/sword-ai-act-first-execution.md)
+- [ZOD-178 — Implement pure fresh post-ACT refresh](../behavior/sword-ai-post-act-refresh.md)
+- [ZOD-179 — Implement pure fresh post-ACT preparation](../behavior/sword-ai-post-act-preparation.md)
+- [ZOD-180 — Implement pure post-ACT move-only tile scoring](../behavior/sword-ai-post-act-movement-scoring.md)
+- [ZOD-181 — Derive pure fresh post-ACT movement scenarios](../behavior/sword-ai-post-act-scenarios.md)
+- [ZOD-182 — Select the fresh post-ACT movement-only fallback](../behavior/sword-ai-post-act-selection.md)
+- [ZOD-183 — Design Framework-owned post-ACT Move/END handoff](../architecture/zod-183-post-act-command-boundary.md)
+- [ZOD-184 — Execute one fresh post-ACT Move/END decision](../behavior/sword-ai-post-act-execution.md)
+- [ZOD-185 — Trace ordinary ability-list iteration beyond the Attack pilot](../architecture/zod-185-ai-ability-iteration.md)
+- [ZOD-186 — Implement pure Throw Stone AI formula projection](../behavior/throw-stone-ai-formula.md)
+- [ZOD-187 — Project one hypothetical Throw Stone Move/ACT candidate](../behavior/throw-stone-ai-candidate.md)
+- [ZOD-188 — Score one freshly projected Throw Stone candidate](../behavior/throw-stone-ai-scoring.md)
+- [ZOD-189 — Compare one fresh Throw Stone candidate with a movement baseline](../behavior/throw-stone-ai-baseline-comparison.md)
+- [ZOD-190 — Trace one Throw Stone origin and target scan](../architecture/zod-190-throw-stone-ai-scan.md)
+- [ZOD-191 — Scan one prepared Throw Stone scenario with fresh movement scores](../behavior/throw-stone-ai-scan.md)
+- [ZOD-192 — Design shared-prefix Attack and Throw Stone ranking](../architecture/zod-192-two-entry-ai.md)
+- [ZOD-193 — Rank fresh Attack and Throw Stone entries after one movement prefix](../behavior/attack-throw-stone-ai-ranking.md)
+- [ZOD-194 — Select a fresh terminal Attack and Throw Stone pair](../behavior/attack-throw-stone-ai-selection.md)
+- [ZOD-195 — Trace fresh preparation for the Attack and Throw Stone pair](../architecture/zod-195-pair-preparation.md)
+- [ZOD-196 — Prepare a fresh both-unused Attack and Throw Stone pair](../behavior/attack-throw-stone-ai-preparation.md)
+- [ZOD-197 — Derive fresh in-reach movement scenarios for the prepared pair](../behavior/attack-throw-stone-ai-scenarios.md)
+- [ZOD-198 — Select a fresh prepared in-reach Attack and Throw Stone pair](../behavior/attack-throw-stone-ai-prepared-selection.md)
+- [ZOD-199 — Trace out-of-reach pair scenarios and original-origin score provenance](../architecture/zod-199-pair-out-of-reach.md)
+- [ZOD-200 — Derive out-of-reach pair scenarios with explicit score provenance](../behavior/attack-throw-stone-ai-out-of-reach-scenarios.md)
+- [ZOD-202 — Select a fresh out-of-reach pair when all cast scores are known](../behavior/attack-throw-stone-ai-out-of-reach-selection.md)
+- [ZOD-203 — Trace and design the authoritative Throw Stone command handoff](../architecture/zod-203-throw-stone-command-boundary.md)
+- [ZOD-204 — Add a Framework-owned targeted-ability ACT transaction](../behavior/targeted-ability-decision.md)
+- [ZOD-205 — Retain a targeted ACT across a confirmed Move](../behavior/targeted-move-continuation.md)
+- [ZOD-206 — Execute a fresh in-reach pair Move-first decision](../behavior/attack-throw-stone-ai-move-first-execution.md)
+- [ZOD-207 — Execute a fresh known-score out-of-reach pair Move-first decision](../behavior/attack-throw-stone-ai-out-of-reach-move-first.md)
+- [ZOD-208 — Execute a fresh in-reach pair ACT-first decision](../behavior/attack-throw-stone-ai-act-first-execution.md)
+- [ZOD-209 — Trace pair post-ACT movement and settlement from actual results](../architecture/zod-209-pair-post-act.md)
+- [ZOD-210 — Consolidate pair-selection orchestration and inputs](../development/ai-pair-selection-refactor.md)
+- [ZOD-211 — Prepare a fresh post-ACT Attack and Throw Stone pair](../behavior/attack-throw-stone-ai-post-act-preparation.md)
+- [ZOD-212 — Document the unified original AI algorithm and source index](../architecture/original-ai-algorithm.md)
+- [ZOD-213 — Derive fresh post-ACT pair movement scenarios](../behavior/attack-throw-stone-ai-post-act-scenarios.md)
+- [ZOD-214 — Select a fresh post-ACT pair movement-only fallback](../behavior/attack-throw-stone-ai-post-act-selection.md)
+- [ZOD-215 — Execute a fresh post-ACT pair Move or END decision](../behavior/attack-throw-stone-ai-post-act-execution.md)
+- [ZOD-216 — Trace remaining pair ACT and END dispatch entries](../architecture/zod-216-pair-act-and-end.md)
+- [ZOD-217 — Execute a fresh known-score out-of-reach pair ACT-first decision](../behavior/attack-throw-stone-ai-out-of-reach-act-first.md)
+- [ZOD-218 — Execute a fresh same-tile pair fallback END](../behavior/attack-throw-stone-ai-fallback-execution.md)
+- [ZOD-219 — Organize AI source and tests by decision family](../development/ai-source-layout.md)
+- [ZOD-220 — Validate composed pair command flows and recovery](../development/ai-pair-command-flows.md)
+- [ZOD-221 — Design one fresh pair command entry](../architecture/zod-221-fresh-pair-command-entry.md)
+- [ZOD-222 — Allow one decision callback to choose a planned Move](../behavior/facing-decision-planned-move.md)
+- [ZOD-223 — Execute one fresh pair command with derived reach and order](../behavior/attack-throw-stone-ai-command-execution.md)
+- [ZOD-224 — Compose a bounded complete pair turn through the unified entry](../behavior/attack-throw-stone-ai-turn-execution.md)
+- [ZOD-225 — Trace bounded Blue-team pair policy](../architecture/zod-225-blue-pair-policy.md)
+- [ZOD-226 — Prepare the certified Blue AI-controlled pair](../behavior/blue-attack-throw-stone-ai.md#preparation--zod-226)
+- [ZOD-227 — Derive Blue pair movement without the NonBlue reach draw](../behavior/blue-attack-throw-stone-ai.md#movement--zod-227)
+- [ZOD-228 — Validate Blue selection and complete turn execution](../behavior/blue-attack-throw-stone-ai.md#selection-and-complete-turns--zod-228)
+- [ZOD-229 — Trace Accumulate AI usefulness, PA projection and scoring](../architecture/zod-229-accumulate-ai.md)
+- [ZOD-230 — Project and score one supplied Accumulate self candidate](../behavior/accumulate-ai.md#supplied-projection-and-scoring--zod-230)
+- [ZOD-231 — Prepare certified Accumulate lists and source-order usefulness](../behavior/accumulate-ai.md#fresh-closed-list-preparation-and-usefulness--zod-231)
+- [ZOD-232 — Evaluate an isolated Accumulate map-target entry](../behavior/accumulate-ai.md#one-map-target-entry-against-a-supplied-movement-baseline--zod-232)
+- [ZOD-233 — Design shared three-entry AI search composition](../architecture/zod-233-three-entry-ai.md)
+- [ZOD-234 — Share private rank insertion and Accumulate entry evaluation](../behavior/basic-skill-ai-selection.md#shared-entry-and-rank-owners--zod-234)
+- [ZOD-235 — Compose a fresh supplied-scenario Attack/Accumulate/Throw Stone search](../behavior/basic-skill-ai-selection.md#fresh-supplied-scenario-composition--zod-235)
+- [ZOD-236 — Select a terminal three-entry plan through the source lottery](../behavior/basic-skill-ai-selection.md#terminal-lottery-and-typed-plan--zod-236)
+- [ZOD-237 — Trace and design authoritative Accumulate self-ACT handoff](../architecture/zod-237-self-act-command.md)
+- [ZOD-238 — Add the Framework-owned immediate self-ACT transaction](../behavior/immediate-self-act.md#framework-transaction--zod-238)
+- [ZOD-239 — Execute fresh three-entry ACT-first decisions](../behavior/immediate-self-act.md#fresh-three-entry-act-first-execution--zod-239)
+- [ZOD-240 — Execute fresh three-entry Move-first decisions](../behavior/basic-skill-ai-command-execution.md#move-first--zod-240)
+- [ZOD-241 — Execute fresh same-tile empty three-entry END](../behavior/basic-skill-ai-command-execution.md#same-tile-empty-end--zod-241)
+- [ZOD-242 — Unify fresh three-entry command dispatch](../behavior/basic-skill-ai-command-execution.md#unified-fresh-command--zod-242)
+- [ZOD-243 — Trace three-entry post-ACT preparation from actual boosted state](../architecture/zod-243-three-entry-post-act.md)
+- [ZOD-244 — Prepare fresh three-entry post-ACT state](../behavior/basic-skill-ai-post-act.md#fresh-preparation--zod-244)
+- [ZOD-245 — Derive post-ACT movement scenarios and empty selection](../behavior/basic-skill-ai-post-act.md#derived-movement-and-empty-selection--zod-245)
+- [ZOD-246 — Execute post-ACT movement and facing settlement](../behavior/basic-skill-ai-post-act.md#actual-remaining-command--zod-246)
+- [ZOD-247 — Trace complete three-entry headless-turn orchestration and recovery](../architecture/zod-247-three-entry-turn.md)
+- [ZOD-248 — Complete supplied-scenario three-entry turns with exact recovery](../behavior/basic-skill-ai-turn-execution.md)
+- [ZOD-249 — Trace three-entry pre-ACT scenarios and score provenance](../architecture/zod-249-three-entry-scenarios.md)
+- [ZOD-250 — Derive shared fresh three-entry movement scenarios](../behavior/derived-basic-skill-ai.md#shared-fresh-scenarios--zod-250)
+- [ZOD-251 — Compose provenance-safe derived three-entry actions](../behavior/derived-basic-skill-ai.md#provenance-safe-composition--zod-251)
+- [ZOD-252 — Select derived three-entry plans through the terminal lottery](../behavior/derived-basic-skill-ai.md#terminal-selection--zod-252)
+- [ZOD-253 — Execute a fresh derived first command](../behavior/derived-basic-skill-ai.md#actual-first-command--zod-253)
+- [ZOD-254 — Complete derived three-entry turns with exact recovery](../behavior/derived-basic-skill-ai.md#complete-turns-and-recovery--zod-254)
+- [ZOD-255 — Trace retained cast-priority lifecycle and a bounded consumer](../architecture/zod-255-priority-workspace.md)
+- [ZOD-256 — Track owned priority writes as immutable unknown-aware knowledge](../behavior/ai-priority-workspace.md#knowledge-and-owned-scenario-writes--zod-256)
+- [ZOD-257 — Compose three-entry actions with resolved retained cast keys](../behavior/ai-priority-workspace.md#resolved-cast-keys-and-composition--zod-257)
+- [ZOD-258 — Select terminal plans with transactional priority knowledge](../behavior/ai-priority-workspace.md#terminal-selection--zod-258)
+- [ZOD-259 — Execute actual first commands with priority knowledge](../behavior/ai-priority-workspace.md#actual-first-command--zod-259)
+- [ZOD-260 — Complete workspace-aware turns and exact recovery](../behavior/ai-priority-workspace.md#complete-turns-and-recovery--zod-260)
+- [ZOD-261 — Trace content-derived usable lists for supported actions](../architecture/zod-261-usable-ability-lists.md)
+- [ZOD-262 — Build immutable semantic ordinary human AI lists](../behavior/content-backed-ai-lists.md#owned-semantic-list-construction--zod-262)
+- [ZOD-263 — Bind content-backed lists into canonical fresh preparation](../behavior/content-backed-ai-lists.md#outer-content-setup-and-fresh-preparation--zod-263)
+- [ZOD-264 — Trace variable supported-action lists through preparation and search](../architecture/zod-264-variable-action-lists.md)
+- [ZOD-265 — Prepare owned variable supported-action lists](../behavior/variable-basic-skill-ai.md#owned-preparation--zod-265)
+- [ZOD-266 — Derive shared fresh variable-list movement scenarios](../behavior/variable-basic-skill-ai.md#shared-fresh-scenarios--zod-266)
+- [ZOD-267 — Compose supported occurrences with range-aware provenance](../behavior/variable-basic-skill-ai.md#occurrence-composition--zod-267)
+- [ZOD-268 — Select variable-list plans with occurrence identity](../behavior/variable-basic-skill-ai.md#terminal-selection--zod-268)
+- [ZOD-269 — Execute actual fresh variable-list commands](../behavior/variable-basic-skill-ai.md#actual-first-command--zod-269)
+- [ZOD-270 — Complete variable-list turns and exact recovery](../behavior/variable-basic-skill-ai.md#complete-turns-and-recovery--zod-270)
+- [ZOD-271 — Trace general roster focus and target search](../architecture/zod-271-roster-targeting.md)
+- [ZOD-272 — Own ordered roster facts and separate live/cached membership](../behavior/ai-roster-targeting.md#owned-facts-and-membership--zod-272)
+- [ZOD-273 — Select the source-order nearest eligible enemy](../behavior/ai-roster-targeting.md#eligible-enemy-nearest-search--zod-273)
+- [ZOD-274 — Rebuild active ability target flags](../behavior/ai-roster-targeting.md#active-ability-targets--zod-274)
+- [ZOD-275 — Derive roster imminent-enemy proximity writes](../behavior/ai-roster-targeting.md#proximity-writes--zod-275)
+- [ZOD-276 — Consume roster targeting through existing pair owners](../behavior/ai-roster-targeting.md#existing-pair-consumers--zod-276)
+- [ZOD-277 — Trace multi-unit ordinary movement and sword-command boundaries](../architecture/zod-277-roster-combat.md)
+- [ZOD-278 — Own the source-bounded ordinary roster profile](../behavior/flat-roster-combat.md#owned-profile--zod-278)
+- [ZOD-279 — Query roster ranges and source-selected paths](../behavior/flat-roster-combat.md#roster-range-and-paths--zod-279)
+- [ZOD-280 — Execute confirmed roster walks atomically](../behavior/flat-roster-combat.md#confirmed-roster-walk--zod-280)
+- [ZOD-281 — Resolve actual roster sword attacks and occupied landings](../behavior/flat-roster-combat.md#actual-sword-and-occupancy--zod-281)
+- [ZOD-282 — Settle roster command sessions and exact facing receipts](../behavior/flat-roster-combat.md#roster-facing-sessions--zod-282)
+- [ZOD-283 — Trace ordinary-roster AI preparation and hypothetical simulation](../architecture/zod-283-roster-preparation.md)
+- [ZOD-284 — Refresh a whole ordinary roster through the shared private clock](../behavior/roster-ai-preparation.md#fresh-whole-roster-refresh--zod-284)
+- [ZOD-285 — Prepare roster list summaries and team support on restored state](../behavior/roster-ai-preparation.md#list-summaries-and-team-support--zod-285)
+- [ZOD-286 — Score an isolated ordinary-roster movement hypothesis](../behavior/roster-ai-preparation.md#isolated-movement-hypotheses-and-scores--zod-286)
+- [ZOD-287 — Trace roster general-search admission, focus and movement scenarios](../architecture/zod-287-roster-general-search.md)
+- [ZOD-288 — Derive fresh roster general admission and focus](../behavior/roster-ai-general-scenarios.md#fresh-general-entry--zod-288)
+- [ZOD-289 — Derive roster general movement scenarios](../behavior/roster-ai-general-scenarios.md#general-scenarios--zod-289)
+- [ZOD-290 — Trace roster cast priorities and supported-action search](../architecture/zod-290-roster-action-search.md)
+- [ZOD-291 — Bind fresh roster cast-origin priority provenance](../behavior/roster-ai-action-foundation.md#fresh-cast-origin-provenance--zod-291)
+- [ZOD-292 — Classify roster Accumulate usefulness in source order](../behavior/roster-ai-action-foundation.md#roster-usefulness--zod-292)
+- [ZOD-293 — Evaluate an isolated fresh roster self occurrence](../behavior/roster-ai-action-foundation.md#isolated-fresh-self-occurrence--zod-293)
+- [ZOD-294 — Trace one ordinary roster sword candidate/effect boundary](../architecture/zod-294-roster-sword-candidate.md)
+- [ZOD-295 — Project and score an isolated ordinary roster sword candidate](../behavior/roster-sword-ai-candidate.md)
+- [ZOD-296 — Evaluate ordinary roster Attack through a fresh general prefix](../behavior/roster-sword-ai-attack.md)
+- [ZOD-297 — Trace roster Throw Stone effect, trajectory and ranked-aim search](../architecture/zod-297-roster-stone-search.md)
+- [ZOD-298 — Project one supplied certified-clear roster Throw Stone candidate](../behavior/roster-throw-stone-ai-candidate.md)
+- [ZOD-299 — Resolve bounded roster Stone direct-trajectory admission](../architecture/zod-299-roster-stone-trajectory.md)
+- [ZOD-300 — Compute flat roster direct projectile trajectories](../behavior/roster-ai-direct-trajectory.md)
+- [ZOD-301 — Evaluate one fresh ranked roster Throw Stone occurrence](../behavior/roster-throw-stone-ai-entry.md)
+- [ZOD-302 — Trace full supported roster list composition and selection](../architecture/zod-302-roster-list-selection.md)
+- [ZOD-303 — Select one fresh full supported roster list decision](../behavior/roster-basic-skill-ai-selection.md)
+- [ZOD-304 — Trace authoritative roster AI command and turn integration](../architecture/zod-304-roster-ai-execution.md)
+- [ZOD-305 — Expose actual self abilities through roster sessions](../behavior/roster-immediate-ability-session.md)
+- [ZOD-306 — Trace actual roster Stone interception, knockback and admission](../architecture/zod-306-roster-live-stone.md)
+- [ZOD-307 — Share exact direct projectile geometry in Framework](../behavior/roster-live-throw-stone.md)
+- [ZOD-308 — Execute actual roster Stone with source target interception](../behavior/roster-live-throw-stone.md)
+- [ZOD-309 — Expose actual roster Stone through opaque sessions](../behavior/roster-live-throw-stone.md)
+- [ZOD-310 — Trace verified roster AI decision and retained Move authority](../architecture/zod-310-roster-decision-authority.md)
+- [ZOD-311 — Verify and publish fresh roster decision commands](../behavior/roster-decision-and-continuation.md)
+- [ZOD-312 — Publish planned roster Move with frozen follow-up authority](../behavior/roster-decision-and-continuation.md)
+- [ZOD-313 — Continue exact-state roster Attack/self/Stone/Wait intent](../behavior/roster-decision-and-continuation.md)
+- [ZOD-314 — Dispatch fresh supported roster AI decisions](../behavior/roster-ai-command-and-turn.md)
+- [ZOD-315 — Drive bounded roster AI turns with exact-session recovery](../behavior/roster-ai-command-and-turn.md)
+- [ZOD-316 — Prove a bounded multi-unit roster AI battle replay](../behavior/roster-ai-replay.md)
+- [ZOD-317 — Trace original Dash behavior and roster AI search](../architecture/zod-317-dash.md)
+- [ZOD-318 — Implement exact neutral Dash formula arithmetic](../behavior/dash-actual.md)
+- [ZOD-319 — Execute actual roster Dash with grants and results](../behavior/dash-actual.md)
+- [ZOD-320 — Publish verified Dash commands and frozen Move follow-ups](../behavior/dash-actual.md)
+- [ZOD-321 — Initialize semantic Dash AI lists and preparation](../behavior/dash-ai.md)
+- [ZOD-322 — Project one isolated roster Dash candidate](../behavior/dash-ai.md)
+- [ZOD-323 — Search one fresh ranked roster Dash occurrence](../behavior/dash-ai.md)
+- [ZOD-324 — Integrate Dash list ranking and actual dispatch](../behavior/dash-ai.md)
+- [ZOD-325 — Prove complete Dash roster turns and recovery](../behavior/dash-ai.md)
+- [ZOD-326 — Trace static AI semantics and Dash content binding](../architecture/zod-326-ai-behavior-metadata.md)
+- [ZOD-327 — Decode immutable ability AI behavior metadata](../behavior/semantic-ai-metadata.md)
+- [ZOD-328 — Feed semantic metadata into supported AI lists](../behavior/semantic-ai-metadata.md)
+- [ZOD-330 — Author verified ability AI behavior with named flags](../behavior/readable-ai-authoring.md)
+
+- [ZOD-331 — Consolidate AI decision, command and turn ownership](../development/ai-refactor-331.md)
+
+- [ZOD-332 — Organize Framework source and tests by responsibility](../development/framework-source-layout.md)
+
+- [ZOD-329 — Bind prepared Dash content and semantic AI setup](../development/dash-content-binding.md)
+- [ZOD-333 — Inventory shared ability formulas and effect boundaries](../architecture/ability-effect-families.md)
+
+- [ZOD-334 — Trace shared Faith-based magic and select the first managed slice](../architecture/zod-334-faith-magic.md)
+- [ZOD-335 — Implement signed magic-product and Faith arithmetic](../behavior/faith-magic-amounts.md#zod-335-signed-stores-and-faith)
+- [ZOD-336 — Implement parameterized damage/healing amount projection](../behavior/faith-magic-amounts.md#zod-336-one-parameterized-amount-pipeline)
+
+- [ZOD-337 — Implement stored magic damage weather and element transformations](../behavior/magic-elements-and-routing.md#zod-337-stored-weather-and-affinity-transform)
+- [ZOD-338 — Compose element-aware magic amounts before Faith](../behavior/magic-elements-and-routing.md#zod-338-element-aware-amount-composition)
+- [ZOD-339 — Route raw magic absorption and undead healing results](../behavior/magic-elements-and-routing.md#zod-339-raw-hp-routing)
+
+- [ZOD-340 — Trace and implement the shared magic conditional-proc decision](../behavior/magic-conditional-proc.md)
+
+- [ZOD-341 — Implement bounded living-target magic result finalization](../behavior/magic-result-finalization.md)
+
+- [ZOD-343 — Consolidate the supported Faith-magic calculation entry](../development/shared-magic-calculation.md)
+
+- [ZOD-342 — Trace magical evasion and pre-formula admission](../behavior/magic-evasion.md#zod-342)
+
+- [ZOD-344 — Load magic evasion contributions and blocking-item labels](../behavior/magic-evasion.md#zod-344)
+
+- [ZOD-345 — Prepare magic evasion status modifiers](../behavior/magic-evasion.md#zod-345)
+
+- [ZOD-346 — Resolve ordered magical evasion and RNG](../behavior/magic-evasion.md#zod-346)
+
+- [ZOD-347 — Compose pre-evasion shared Faith-magic formula resolution](../behavior/magic-evasion.md#zod-347)
+
+- [ZOD-348 — Trace live magic stat and Faith inputs](../behavior/magic-current-inputs-and-casts.md#zod-348)
+
+- [ZOD-349 — Classify source zodiac compatibility for shared magic](../behavior/magic-current-inputs-and-casts.md#zod-349)
+
+- [ZOD-350 — Project immutable current magic inputs](../behavior/magic-current-inputs-and-casts.md#zod-350)
+
+- [ZOD-351 — Resolve shared magic from current unit snapshots](../behavior/magic-current-inputs-and-casts.md#zod-351)
+
+- [ZOD-352 — Trace ordinary spell MP and charge preparation](../behavior/magic-current-inputs-and-casts.md#zod-352)
+
+- [ZOD-353 — Evaluate source MP admission and candidate consumption](../behavior/magic-current-inputs-and-casts.md#zod-353)
+
+- [ZOD-354 — Calculate ordinary spell charge setup](../behavior/magic-current-inputs-and-casts.md#zod-354)
+
+- [ZOD-355 — Query one deterministic charge countdown step](../behavior/magic-current-inputs-and-casts.md#zod-355)
+
+- [ZOD-356 — Prepare a certified ready magic cast once](../behavior/magic-current-inputs-and-casts.md#zod-356)
+
+- [ZOD-357 — Resolve supplied ready-cast targets with one MP charge](../behavior/magic-current-inputs-and-casts.md#zod-357)
+
+- [ZOD-358 — Trace shared ordinary spell targeting geometry](../behavior/ordinary-spell-targeting.md#zod-358)
+
+- [ZOD-359 — Select source spell height layers](../behavior/ordinary-spell-targeting.md#zod-359)
+
+- [ZOD-360 — Build ordinary spell range and area panels](../behavior/ordinary-spell-targeting.md#zod-360)
+
+- [ZOD-361 — Select spell occupants in source order](../behavior/ordinary-spell-targeting.md#zod-361)
+
+- [ZOD-362 — Resolve ready magic casts from map geometry](../behavior/ordinary-spell-targeting.md#zod-362)
+
+- [ZOD-363 — Trace unit-follow targeting and stored-aim resolution](../behavior/spell-follow-and-stored-aim.md#zod-363)
+
+- [ZOD-364 — Resolve certified ordinary stored spell aims](../behavior/stored-spell-aim-pipeline.md#zod-364)
+
+- [ZOD-365 — Resolve ready casts from stored unit-follow aims](../behavior/stored-spell-aim-pipeline.md#zod-365)
+
+- [ZOD-366 — Query ordinary spell target-choice modes](../behavior/stored-spell-aim-pipeline.md#zod-366)
+
+- [ZOD-367 — Capture admitted player spell confirmations](../behavior/stored-spell-aim-pipeline.md#zod-367)
+
+- [ZOD-368 — Prepare immutable ordinary spell charge plans](../behavior/stored-spell-aim-pipeline.md#zod-368)
+
+- [ZOD-369 — Resolve ready charge plans through shared magic queries](../behavior/stored-spell-aim-pipeline.md#zod-369)
+
+- [ZOD-370 — Trace ordinary magic result publication boundaries](../behavior/living-magic-projections.md#zod-370)
+
+- [ZOD-371 — Apply exact signed vital arithmetic](../behavior/living-magic-projections.md#zod-371)
+
+- [ZOD-372 — Project bounded living magic results](../behavior/living-magic-projections.md#zod-372)
+
+- [ZOD-373 — Capture immutable living magic projection snapshots](../behavior/living-magic-projections.md#zod-373)
+
+- [ZOD-374 — Reduce cast HP and MP projections atomically](../behavior/living-magic-projections.md#zod-374)
+
+- [ZOD-375 — Compose ready plans into opaque vital and RNG proposals](../behavior/living-magic-projections.md#zod-375)
+
+- [ZOD-376 — Trace magic execution authority and battle-state integration](../behavior/action-outcomes-and-rewards.md#zod-376)
+
+- [ZOD-377 — Track ordinary action outcome markers](../behavior/action-outcomes-and-rewards.md#zod-377)
+
+- [ZOD-378 — Accumulate exact per-target action EXP](../behavior/action-outcomes-and-rewards.md#zod-378)
+
+- [ZOD-379 — Calculate action EXP balances and JP amounts](../behavior/action-outcomes-and-rewards.md#zod-379)
+
+- [ZOD-380 — Calculate job-point balances and threshold levels](../behavior/action-outcomes-and-rewards.md#zod-380)
+
+- [ZOD-381 — Project ordinary rewards over stable-ID rosters](../behavior/action-outcomes-and-rewards.md#zod-381)
+
+- [ZOD-382 — Trace level growth and job unlocks before magic state integration](../behavior/growth-and-job-unlocks.md#zod-382)
+
+- [ZOD-383 — Calculate battle raw-stat growth with discarded RNG draws](../behavior/growth-and-job-unlocks.md#zod-383)
+
+- [ZOD-384 — Evaluate stable-ID job unlock prerequisites](../behavior/growth-and-job-unlocks.md#zod-384)
+
+- [ZOD-385 — Project bounded mode1 derived battle attributes](../behavior/mode1-derived-attributes.md#zod-385)
+
+- [ZOD-386 — Project ordered equipment numeric attribute bonuses](../behavior/mode1-derived-attributes.md#zod-386)
+
+- [ZOD-387 — Trace status reconciliation required by magic refresh](../behavior/ordinary-magic-execution.md#zod-387)
+
+- [ZOD-388 — Apply bounded ordinary magic status changes](../behavior/ordinary-magic-execution.md#zod-388)
+
+- [ZOD-389 — Execute charged spells through coherent battle commands](../behavior/ordinary-magic-execution.md#zod-389)
+
+- [ZOD-390 — Import and bind verified prepared Fire content](../behavior/ordinary-magic-execution.md#zod-390)
+
+- [ZOD-391 — Run player Fire casting end to end](../behavior/ordinary-magic-execution.md#zod-391)
+
+- [ZOD-392 — Bind the shared original elemental spell family](../behavior/elemental-magic-execution.md#zod-392)
+
+- [ZOD-393 — Select learned elemental spells in the player client](../behavior/elemental-magic-execution.md#zod-393)
+
+- [ZOD-394 — Execute prepared Cure through the ordinary healing path](../behavior/ordinary-healing-execution.md#zod-394)
+
+- [ZOD-395 — Execute confirmed flat movement in ordinary magic battles](../behavior/ordinary-magic-movement.md#zod-395)
+
+- [ZOD-396 — Expose full ordinary movement in the player client](../behavior/ordinary-magic-movement.md#zod-396)
+
+- [ZOD-397 — Bind ordinary spell primary AI metadata](../behavior/ordinary-spell-metadata.md#zod-397)
+
+- [ZOD-398 — Trace the learn-on-hit scan and learned-slot arithmetic](../behavior/learn-on-hit.md)
+- [ZOD-399 — Own learning reports in ordinary magic battles](../behavior/learn-on-hit.md#owned-battle-reports-zod-399)
+- [ZOD-400 — Bind prepared learning data and an eligible spell encounter](../behavior/learn-on-hit.md#prepared-learning-content-zod-400)
+- [ZOD-401 — Expose learning reports through the native command path](../behavior/learn-on-hit.md#player-report-and-replay-zod-401)
+- [ZOD-402 — Preserve disabled learning reports and multi-recipient ordering](../behavior/learn-on-hit.md#disabled-reports-and-multiple-recipients-zod-402)
+- [ZOD-403 — Trace a bounded ordinary spell AI ready-hit path](../behavior/ordinary-spell-ai.md#source-boundary-zod-403)
+- [ZOD-404 — Resolve original AI learned slots and list admission](../behavior/ordinary-spell-ai.md#learned-list-admission-zod-404)
+- [ZOD-405 — Load ordinary considered spell parameters and usage](../behavior/ordinary-spell-ai.md#considered-parameters-and-usage-zod-405)
+- [ZOD-406 — Calculate spell-bearing initialized ability statistics](../behavior/ordinary-spell-ai.md#initialized-ability-statistics-zod-406)
+- [ZOD-407 — Classify bounded ordinary spell usefulness](../behavior/ordinary-spell-ai.md#ordinary-hp-usefulness-zod-407)
+- [ZOD-408 — Project AI-mode spell hits through shared formulas](../behavior/ordinary-spell-ai.md#ai-formula-and-private-hp-projection-zod-408)
+- [ZOD-409 — Account ordinary spell AI strikes and valuable targets](../behavior/ordinary-spell-ai.md#strike-accounting-zod-409)
+- [ZOD-410 — Score ordinary spell HP statuses equipment and MP](../behavior/ordinary-spell-ai.md#absolute-state-and-mp-scoring-zod-410)
+- [ZOD-411 — Compose an owned ordinary spell ready-hit query](../behavior/ordinary-spell-ai.md#owned-current-aim-ready-hit-query-zod-411)
+- [ZOD-412 — Bind prepared metadata to the AI ready-hit path](../behavior/ordinary-spell-ai.md#prepared-metadata-bridge-and-inspection-zod-412)
+- [ZOD-413 — Trace ordinary spell AI charge-clock and movement opportunities](../behavior/ordinary-spell-ai-clock.md#source-contract-zod-413)
+- [ZOD-414 — Implement the bounded single-charge AI simulation clock](../behavior/ordinary-spell-ai-clock.md#single-charge-clock-zod-414)
+- [ZOD-415 — Share fresh stored-aim AI hit work](../behavior/ordinary-spell-ai-clock.md#shared-fresh-admission-and-stored-hits-zod-415)
+- [ZOD-416 — Compose fixed-origin delayed spell AI candidates](../behavior/ordinary-spell-ai-clock.md#fixed-origin-delayed-candidate-zod-416)
+- [ZOD-417 — Expose prepared delayed AI diagnostics and validate the batch](../behavior/ordinary-spell-ai-clock.md#prepared-delayed-diagnostics-and-batch-validation-zod-417)
+- [ZOD-419 — Trace equipment-effect slot policies and content boundaries](../architecture/equipment-effect-selection.md)
+- [ZOD-420 — Make physical formula assignment data-driven](../architecture/physical-formula-reassignment.md#validation)

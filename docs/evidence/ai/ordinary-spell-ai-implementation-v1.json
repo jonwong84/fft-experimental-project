@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    403,
+    404,
+    405,
+    406,
+    407,
+    408,
+    409,
+    410,
+    411,
+    412
+  ],
+  "managedBaseCommit": "0d66a3c81c4a7bb8fc4e7d267c12ec0a3a067465",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "sourceReceipt": "docs/evidence/ai/ordinary-spell-ai-source-v1.json",
+  "completedCommitsBeforeFinalMilestone": [
+    "7439d19 Compose an owned ordinary spell AI ready-hit query (ZOD-411)",
+    "a101077 Score ordinary spell AI HP state and remaining MP (ZOD-410)",
+    "21c5270 Account source ordinary spell AI strikes and exclusions (ZOD-409)",
+    "88a2b81 Project ordinary AI spell hits with shared formula and HP owners (ZOD-408)",
+    "2abecf8 Classify ordinary HP spell AI usefulness (ZOD-407)",
+    "0fb8345 Derive initialized spell AI shares and MP statistics (ZOD-406)",
+    "a165512 Load semantic ordinary spell AI parameters and usage (ZOD-405)",
+    "56c3dad Resolve ordinary spell AI learned-slot admission (ZOD-404)",
+    "ff40c75 Trace ordinary spell AI ready-hit boundary (ZOD-403)"
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseWarnings": 0,
+    "releaseErrors": 0,
+    "dotnetTests": 5010,
+    "pythonTests": 754,
+    "aiCases": 1275,
+    "readySourceAudits": [
+      {
+        "learningDescriptions": 4,
+        "chargeDescriptions": 3,
+        "mpDescriptions": 4,
+        "scoreDescriptions": 1,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "sourceFiles": 10,
+        "structuralPreparedRecords": 2,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "chargeClockSearchImplemented": false,
+        "preparedAiHypotheses": 1,
+        "selection": "fire",
+        "independentScoresMatched": true
+      },
+      {
+        "learningDescriptions": 4,
+        "chargeDescriptions": 3,
+        "mpDescriptions": 4,
+        "scoreDescriptions": 1,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "sourceFiles": 10,
+        "structuralPreparedRecords": 2,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "chargeClockSearchImplemented": false,
+        "preparedAiHypotheses": 12,
+        "selection": "elemental",
+        "independentScoresMatched": true
+      },
+      {
+        "learningDescriptions": 4,
+        "chargeDescriptions": 3,
+        "mpDescriptions": 4,
+        "scoreDescriptions": 1,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "sourceFiles": 10,
+        "structuralPreparedRecords": 2,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "chargeClockSearchImplemented": false,
+        "preparedAiHypotheses": 2,
+        "selection": "learning",
+        "independentScoresMatched": true
+      }
+    ],
+    "preparedAiHypotheses": 15,
+    "preparedContentAudits": [
+      {
+        "bindingVectors": 1,
+        "sharedFormulas": 1,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 6,
+        "sourceFunctions": 5,
+        "preparedRecords": 35,
+        "metadataRecordsChecked": 1,
+        "manifestVerified": true,
+        "originalExecuted": false,
+        "cExecuted": false
+      },
+      {
+        "bindingVectors": 12,
+        "sharedFormulas": 1,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 6,
+        "sourceFunctions": 5,
+        "preparedRecords": 57,
+        "metadataRecordsChecked": 12,
+        "manifestVerified": true,
+        "originalExecuted": false,
+        "cExecuted": false
+      },
+      {
+        "bindingVectors": 2,
+        "sharedFormulas": 2,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 6,
+        "sourceFunctions": 7,
+        "preparedRecords": 39,
+        "metadataRecordsChecked": 2,
+        "manifestVerified": true,
+        "originalExecuted": false,
+        "cExecuted": false
+      },
+      {
+        "bindingVectors": 2,
+        "sharedFormulas": 1,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 6,
+        "sourceFunctions": 5,
+        "preparedRecords": 37,
+        "metadataRecordsChecked": 2,
+        "manifestVerified": true,
+        "originalExecuted": false,
+        "cExecuted": false
+      }
+    ],
+    "secondaryCureAiRejectedExplicitly": true,
+    "preservation": {
+      "ownerFiles": 10,
+      "ownerBlobsUnchanged": true,
+      "independentTargetingFormattingPreserved": true,
+      "publicFrameworkDeclarations": 467,
+      "matchingPublicTypeFiles": true,
+      "partialPartsPreserved": true,
+      "native": [
+        {
+          "profile": "fire",
+          "checkpoints": 4,
+          "finalSha256": "05f08744a6fc01b22de9c623c71ab6c28cbebce4685cbe2653a14aff38a829f7",
+          "sameGameplayHashAs402": true,
+          "replayMatched": true,
+          "drawingPreservedState": true,
+          "movementChecked": true,
+          "restartMatched": true
+        },
+        {
+          "profile": "elemental",
+          "checkpoints": 4,
+          "finalSha256": "5c1fd7e2cf5da76ba3442b3e3dcd3c9dfa575ec0fc62781fb209eeb2770dc744",
+          "sameGameplayHashAs402": true,
+          "replayMatched": true,
+          "drawingPreservedState": true,
+          "movementChecked": true,
+          "restartMatched": true
+        },
+        {
+          "profile": "healing",
+          "checkpoints": 4,
+          "finalSha256": "215d32aad03e0056fd483769a60afab05b88b9da0482736f6baa7741ce792547",
+          "sameGameplayHashAs402": true,
+          "replayMatched": true,
+          "drawingPreservedState": true,
+          "movementChecked": true,
+          "restartMatched": true
+        },
+        {
+          "profile": "learning",
+          "checkpoints": 6,
+          "finalSha256": "5e49ea88f2ae386f737248501db90ff84a93e94ad3e0d09d3b4b41d29d0228f5",
+          "sameGameplayHashAs402": true,
+          "replayMatched": true,
+          "drawingPreservedState": true,
+          "movementChecked": true,
+          "restartMatched": true
+        }
+      ]
+    }
+  },
+  "runtimeBoundary": {
+    "managedOnly": true,
+    "preparedFilesOnly": true,
+    "cReferenceRequired": false,
+    "originalMediaRequired": false,
+    "canAdoptProjection": false,
+    "canQueueCommand": false,
+    "chargeClockForecast": false,
+    "fullCandidateRank": false,
+    "autonomousMagicTurns": false
+  },
+  "limits": [
+    "Initial legal aim projected to ready hit on current facts; movement opportunities supplied explicitly.",
+    "Fresh primary-only initialization; unrepresented secondary learning/loadouts and special learned-row aliases rejected.",
+    "Broader status/reaction/affinity/Golem/equipment/terminal/frame RNG and custom cone remain deferred.",
+    "Ready hit scores do not enter existing full AI decisions; player execution and all owner drafts are preserved."
+  ]
+}

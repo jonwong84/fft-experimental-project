@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-288",
+    "ZOD-289"
+  ],
+  "date": "2026-11-05",
+  "kind": "managed-roster-general-preparation-and-scenarios",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "532b1919e956578123e758cdea0386311e74b064",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/roster-general-source-v1.json",
+  "design": "docs/architecture/zod-287-roster-general-search.md",
+  "behavior": "docs/behavior/roster-ai-general-scenarios.md",
+  "sourceFixture": "docs/fixtures/behavior/roster-general-contract-v1.json",
+  "implementationPaths": [
+    "src/Zodiac.Framework.Ai/Shared/RosterAiGeneralPreparation.cs",
+    "src/Zodiac.Framework.Ai/Shared/RosterAiGeneralScenarios.cs",
+    "src/Zodiac.Framework.Ai/Shared/AiScenarioLayout.cs",
+    "src/Zodiac.Framework.Ai/Shared/AiMovementScenarios.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Ai.Tests/Shared/RosterAiGeneralTests.cs"
+  ],
+  "invariants": [
+    "one privately owned fresh roster preparation; explicit no direct control/special behavior; no inferred manual setting",
+    "Blue ratio <45 needs healer focus; Critical/support retreat precedes FadingLife; updated retained policy and minimum-share order preserved",
+    "first source nearest tie and actor fallback; self-focus zero target distance; ANY diagnostic includes actor/all considered teams",
+    "source legal forward movement and cleared-record reverse distances; restored CT/delays and cached actor byte for all-enemy proximity",
+    "source map-order score mask, one private whole-roster clock per tile, no facing mutation or live-state adoption",
+    "shared private mask/destination/layout arithmetic with pair API and stream parity; no fake pair target or cached public simulation input",
+    "reach adjustment after all simulations only for out-of-reach non-Blue; source last tile ties and ranged D0 floor",
+    "scenario2 before actor OR; unscored priorities remain unknown; D0 baseline is freshly written",
+    "whole-query rollback on context/policy/preparation, late tile clock and reach-draw failures; no command/rank/lottery authority"
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4343,
+    "frameworkPassed": 1483,
+    "aiPassed": 1115,
+    "newAiCases": 8,
+    "pythonPassed": 554,
+    "newPythonCases": 3,
+    "trxReports": 7,
+    "sourceFiles": 8,
+    "sourceFunctions": 29,
+    "sourceDescriptions": 18,
+    "sourcePreparedAudit": true,
+    "algorithmGuideAudit": true,
+    "localLinkAudit": true,
+    "coverageAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/roster-scenarios-287-289/"
+  },
+  "boundaries": [
+    "living ordinary compact16, stable teams, MP0/positive Speed, raw Move<=124 and strict flat ground",
+    "summary/scenario queries do not infer actual gameplay grants/effect bindings; no supported-action/effect/target traversal yet",
+    "other policies/statuses/maps, corpse lifecycle, automatic facing, terminal routing and frame RNG remain open",
+    "existing roster actual commands are separate; AI command drivers remain pair-bounded",
+    "host/editor, owner drafts, broad replacement interfaces and ZOD-106 deferred; ZOD-290 next traces action search and cast priority provenance"
+  ],
+  "dependencyChanges": false,
+  "newProductionFriendAccess": false,
+  "originalExecuted": false,
+  "cExecuted": false
+}

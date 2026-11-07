@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "sourceReceipts": [
+    "docs/evidence/combat/spell-follow-source-v1.json",
+    "docs/evidence/combat/magic-resource-source-v1.json"
+  ],
+  "milestones": [
+    {
+      "ticket": "ZOD-364",
+      "managedBaseRevision": "befa904548dc596c887a17c14d5a962451c35820",
+      "validation": "3 focused managed cases passed;13 admitted original centre vectors and guards; fresh follow19/26 and resource12/10 source audits passed.",
+      "reports": "scratch/spell-aim-364-369/"
+    },
+    {
+      "ticket": "ZOD-365",
+      "managedBaseRevision": "0c9eb771464a4a8f4b4f131f8a256dd8480533fb",
+      "validation": "6 cumulative focused managed cases passed: stored/follow centre, one-cost 34/68 results, exact RNG, inactive/Jump anchors and late atomic rollback.",
+      "reports": "scratch/spell-aim-364-369/"
+    },
+    {
+      "ticket": "ZOD-366",
+      "managedBaseRevision": "a771143709087cc02f31cd367a5b1eaeb9cc7cd4",
+      "validation": "9 cumulative focused managed cases passed;4 admitted source choice literals and Auto-before-blue ordering/guards.",
+      "reports": "scratch/spell-aim-364-369/"
+    },
+    {
+      "ticket": "ZOD-367",
+      "managedBaseRevision": "333a97eb3c0492d3f4968c64b3e2629605ca66a9",
+      "validation": "12 cumulative focused managed cases passed;6 player confirmation literals plus immutable binding, range/context and cursor eligibility guards.",
+      "reports": "scratch/spell-aim-364-369/"
+    },
+    {
+      "ticket": "ZOD-368",
+      "managedBaseRevision": "0576fb4611dd6c1815ad757b5feac06796e19ff2",
+      "validation": "15 cumulative managed cases passed; source charge setups, active-identity guards, zero-MP planning and immutable blocked/allowed countdown;3 preparation guard cases rerun.",
+      "reports": "scratch/spell-aim-364-369/"
+    },
+    {
+      "ticket": "ZOD-369",
+      "managedBaseRevision": "016123f176355415debff7c035ea847444eea221",
+      "validation": "Locked restore; Release build zero warnings/errors;4694 .NET and703 Python tests passed;24 new managed/8 new Python cases,19 new phase descriptions;focused magic132;source/prepared-data,guide,coverage,layout,preservation checks passed.",
+      "reports": "scratch/spell-aim-364-369/"
+    }
+  ],
+  "managedBaseRevision": "befa904548dc596c887a17c14d5a962451c35820",
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuild": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "managedPassed": 4694,
+    "newManagedCases": 24,
+    "managedReports": [
+      {
+        "path": "scratch/spell-aim-364-369/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_22_09_05_net10.0.trx",
+        "passed": 24
+      },
+      {
+        "path": "scratch/spell-aim-364-369/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_22_09_05_net10.0[1].trx",
+        "passed": 206
+      },
+      {
+        "path": "scratch/spell-aim-364-369/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_22_09_05_net10.0[2].trx",
+        "passed": 1653
+      },
+      {
+        "path": "scratch/spell-aim-364-369/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_22_09_06_net10.0.trx",
+        "passed": 328
+      },
+      {
+        "path": "scratch/spell-aim-364-369/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_22_09_06_net10.0[1].trx",
+        "passed": 838
+      },
+      {
+        "path": "scratch/spell-aim-364-369/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_22_09_06_net10.0[2].trx",
+        "passed": 428
+      },
+      {
+        "path": "scratch/spell-aim-364-369/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_22_09_07_net10.0.trx",
+        "passed": 1217
+      }
+    ],
+    "pythonPassed": 703,
+    "newPythonCases": 8,
+    "phaseDescriptions": 19,
+    "focusedMagicPassed": 132,
+    "sourceAudit": "scratch/spell-aim-364-369/composed-source-audit.json",
+    "guideAudit": "scratch/spell-aim-364-369/guide-audit.json",
+    "layout": {
+      "publicTypes": 399,
+      "publicDeclarations": 401,
+      "newTypes": 26,
+      "onePublicDeclarationPerMatchingFile": true,
+      "existingPartialPartsPreserved": true
+    },
+    "preservation": {
+      "managedBaseRevision": "befa904548dc596c887a17c14d5a962451c35820",
+      "ownerFiles": [
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AbilityToggles.cs",
+          "gitBlob": "16320578ffa448783221b68c4ef5c18e245b9f35",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AiBehaviorToggles.cs",
+          "gitBlob": "c67c4b154c471764fa11a6761710d2e9c9694a65",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AttributeToggles.cs",
+          "gitBlob": "1182777f8a0c3ca219afa23d0803c52af4ca9f8e",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/EquipmentSlot.cs",
+          "gitBlob": "091006b2d60ca558c303571a4eb779340be53629",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/StatusToggles.cs",
+          "gitBlob": "5136db2af350d7e3735e47fb92b905019316fd6f",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Item/ShopAvailabilityToggles.cs",
+          "gitBlob": "fd543d84dc8eb7860d710cf1c75499eb55306e14",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/EquipmentOptionToggles.cs",
+          "gitBlob": "694e44bbdc3e62103b64ff794addec1ad977d142",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/EffectBehaviorToggles.cs",
+          "gitBlob": "9792cdea7da1d92e9ec25cf1e97d3e879c24e8ae",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/StatusSelectionToggles.cs",
+          "gitBlob": "a0b2e2a8ddcb53a4bfd7416609927399b8339294",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/JobStats.cs",
+          "gitBlob": "bd617c374309aca1529a167a8d31a488160086cc",
+          "unchanged": true
+        }
+      ],
+      "existingProductionChange": "Only two optional named geometry flags; all existing calculation, geometry and resource bodies unchanged.",
+      "allExistingManagedTestsAndBehaviorFixturesUnchanged": true,
+      "contentAiHostAndImportsUnchanged": true,
+      "buildAndDependenciesUnchanged": true
+    },
+    "originalExecuted": false,
+    "cExecuted": false,
+    "uiReviewed": false,
+    "coverageEntriesChecked": 58,
+    "localLinksChecked": 2671
+  }
+}

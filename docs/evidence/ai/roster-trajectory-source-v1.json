@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-299",
+  "date": "2026-11-05",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "5df5cc08777a243cf0274431d10c548fbfe404e6",
+  "design": "docs/architecture/zod-299-roster-stone-trajectory.md",
+  "fixture": "docs/fixtures/behavior/roster-trajectory-contract-v1.json",
+  "sourceFiles": [
+    {
+      "path": "src/battle/effects/projectile.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 29334,
+      "sha256": "427296982506a888b71698bfec63e09e7b0aceaa49be169e097ce8c7e08be960"
+    },
+    {
+      "path": "src/platform/psyq/libgte/SquareRoot12.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2629,
+      "sha256": "b60e8988b3fac40e3fdc1b0fe91cb5a337a14f4d35ab747836979207d2c6a59a"
+    },
+    {
+      "path": "src/battle/units/evtchr.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11561,
+      "sha256": "5843de8f47ede325c8eb75dd627350bf8ec367583d3de95d548e92b7dfb9221c"
+    },
+    {
+      "path": "src/battle/units/commands.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 27687,
+      "sha256": "80f9eb6f95f4c8ddb423db33c0f280ecba960cbfaa6e2b42c4672a4fbdd1b1ca"
+    },
+    {
+      "path": "src/battle/map/terrain_projection.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 31785,
+      "sha256": "ca37637284cfdd4e2d9efaebb9d14f73ccb22085e6771464d95c88edc4287762"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 111880,
+      "sha256": "22555f06b061bc6f017f721998a5e44dfb3d4fa4c7284a2ee3367dfa27ce80ad"
+    },
+    {
+      "path": "include/psx/gte_inline.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 47589,
+      "sha256": "54262b85d4b5eddd202805d4e4b6037bc03133c1581bddd544a3806c2d6d02b7"
+    },
+    {
+      "path": "include/psx/libgte.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 5202,
+      "sha256": "11b147f665d9f0b5c9ca90700833294b08ef69aedaf5f415dbfb2ba67029bcf3"
+    },
+    {
+      "path": "include/fft/battle_map.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 22162,
+      "sha256": "8e31c1b1320542770f2ddf587f22edf9e293e4bc45d5c85116d34a4cde96c296"
+    },
+    {
+      "path": "include/fft/sprite_sheet.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 19345,
+      "sha256": "18931424e1ae3b9f7b8d6ec87f84eebcae2f4426e5c56c52b10a8c5649d06649"
+    },
+    {
+      "path": "target/main.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 135004,
+      "sha256": "b6066d98d481d73eb49d2d16be57ae3fc5ae4070830176fdeeeaae2bdeaec2a3"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/effects/projectile.c",
+      "symbol": "projectile_direct_check_between_units",
+      "startLine": 609,
+      "endLine": 633,
+      "normalizedLfSha256": "b64c0c26353fe672a9d3597a40ab9e3fa32903a49197da10be17d5cd8b268416"
+    },
+    {
+      "path": "src/battle/effects/projectile.c",
+      "symbol": "obstacle_units_list",
+      "startLine": 201,
+      "endLine": 222,
+      "normalizedLfSha256": "9f6e992d66dfb792c1417577e89800ad43772ab75abe24c102106fe78a00c3c5"
+    },
+    {
+      "path": "src/battle/effects/projectile.c",
+      "symbol": "position_for_obstacle_test",
+      "startLine": 232,
+      "endLine": 280,
+      "normalizedLfSha256": "0a8e7c61cab325f6b81f68ef1337bb9d961c2437d553f3e554fc5db39eb6a4c6"
+    },
+    {
+      "path": "src/battle/effects/projectile.c",
+      "symbol": "direct_path_trace",
+      "startLine": 562,
+      "endLine": 600,
+      "normalizedLfSha256": "59df1d7c4ffe24aab09df83e7448806d43d50211ea956b26b3273705404ef430"
+    },
+    {
+      "path": "src/battle/effects/projectile.c",
+      "symbol": "projectile_trajectory_position_calculate",
+      "startLine": 181,
+      "endLine": 187,
+      "normalizedLfSha256": "61b8514e1be7bfa5afedad547003c0293a42357ae9297c04660cef26a7226de8"
+    },
+    {
+      "path": "src/platform/psyq/libgte/SquareRoot12.c",
+      "symbol": "SquareRoot12",
+      "startLine": 8,
+      "endLine": 63,
+      "normalizedLfSha256": "82c6e78f52fb2990322359951085ae9e3d2bf813b33c95d9b10b7a563ead523b"
+    },
+    {
+      "path": "src/battle/units/evtchr.c",
+      "symbol": "spritesheet_height_get",
+      "startLine": 254,
+      "endLine": 265,
+      "normalizedLfSha256": "0aa255c842f6c5de1907b33f46844acfc818e67a1ff907a22c290303ee6e4f62"
+    },
+    {
+      "path": "src/battle/units/evtchr.c",
+      "symbol": "sprite_battle_sheet_height_get",
+      "startLine": 275,
+      "endLine": 277,
+      "normalizedLfSha256": "9b9d795103347556c12e66360adda16a31e95ef2f02a2dc5c4e834d0808e3c85"
+    },
+    {
+      "path": "src/battle/units/commands.c",
+      "symbol": "unit_battle_tile_center_height_get",
+      "startLine": 283,
+      "endLine": 294,
+      "normalizedLfSha256": "97ef4592b7b976ebcf66e462e8347b2872dd22b7d353e83416243f0ce3822750"
+    },
+    {
+      "path": "src/battle/map/terrain_projection.c",
+      "symbol": "unit_height_calculate_from_battle_tile",
+      "startLine": 741,
+      "endLine": 759,
+      "normalizedLfSha256": "ca62f707c686b1a66157c7498378a73003f476d1fbe006522656f21dd10fbb3f"
+    },
+    {
+      "path": "src/battle/map/terrain_projection.c",
+      "symbol": "coords_height_calculate",
+      "startLine": 608,
+      "endLine": 656,
+      "normalizedLfSha256": "3de1e39e1694a517d4e2dd628fbcfaf379010b345c00ae55e1f7553eb0015a38"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "origin_destination_finalize",
+      "startLine": 913,
+      "endLine": 923,
+      "normalizedLfSha256": "456dc6cf56cf7c3e86c5bdfc3876b641f58d126e24b3f5920e491a693a7c1436"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "origin_aim_tiles_evaluate",
+      "startLine": 1233,
+      "endLine": 1360,
+      "normalizedLfSha256": "c3c7e39451e0cfc495fba11e327d472693dc185bdb14462017ac40b463482741"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "target_unit_on_panel_find",
+      "startLine": 1364,
+      "endLine": 1391,
+      "normalizedLfSha256": "b3665d3444dc0ec24a8f045b3f681fb492363735d9dd5b88dfaf784e50f20f9d"
+    }
+  ],
+  "sdkTable": {
+    "address": 2147662008,
+    "fileMappingBase": 2147547136,
+    "entries": 192,
+    "spanBytes": 384,
+    "spanSha256": "45ca1b7b619b33961c03c82243b8baf59fc50c49b4d7eefc94b76edbd417a5c8",
+    "executableSha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562",
+    "identity": "factor(N)=floor(sqrt(N<<18)) for every N64..255; no raw table committed"
+  },
+  "correction": "ZOD-297 incorrectly reported SquareRoot12 implementation absent; its capitalized source file is present at the same pinned revision.",
+  "originalExecuted": false,
+  "cExecuted": false
+}

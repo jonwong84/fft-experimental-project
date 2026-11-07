@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "selection": "healing",
+  "scope": "Independent source-reviewed ordinary Cure and Fire binding vectors; authored two-skillset encounter selection.",
+  "cases": [
+    {
+      "id": 1,
+      "name": "Cure",
+      "element": 0,
+      "power": 14,
+      "range": 4,
+      "area": 1,
+      "vertical": 1,
+      "charge": 4,
+      "mp": 6,
+      "jp": 50,
+      "formula": 12,
+      "status": 0,
+      "flags1": 0,
+      "flags2": 0,
+      "flags3": 226,
+      "flags4": 0,
+      "expectedHealingAtMa8Faith70": 54,
+      "learnOnHit": false,
+      "learnOnHitRateRaw": 90,
+      "serializedClassRaw": 1,
+      "showName": true,
+      "canLearnWithJp": true,
+      "unknownTypeBit4": false,
+      "primaryAiFlags": [
+        129,
+        117,
+        0,
+        128
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Fire",
+      "element": 128,
+      "power": 14,
+      "range": 4,
+      "area": 1,
+      "vertical": 1,
+      "charge": 4,
+      "mp": 6,
+      "jp": 50,
+      "formula": 8,
+      "status": 0,
+      "flags1": 0,
+      "flags2": 0,
+      "flags3": 226,
+      "flags4": 66,
+      "expectedDamageAtMa8Faith70": 54,
+      "learnOnHit": false,
+      "learnOnHitRateRaw": 90,
+      "serializedClassRaw": 1,
+      "showName": true,
+      "canLearnWithJp": true,
+      "unknownTypeBit4": false,
+      "primaryAiFlags": [
+        130,
+        85,
+        2,
+        128
+      ]
+    }
+  ]
+}

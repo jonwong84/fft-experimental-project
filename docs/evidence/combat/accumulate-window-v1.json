@@ -1,0 +1,311 @@
+{
+  "format": "fft.accumulate-window-validation",
+  "schemaVersion": 1,
+  "ticket": "ZOD-107",
+  "validatedOn": "2026-10-26",
+  "status": "complete with owner approval of bounded review",
+  "managedBase": "f35e055a31674d40146b959c1e341af97496e434",
+  "guide": "docs/development/accumulate-battle-controls.md",
+  "reference": {
+    "root": "C:/repositories/fft_decomp",
+    "revision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "clean": true,
+    "readOnly": true,
+    "newOriginalRulesTranslated": false
+  },
+  "sequencing": {
+    "ownerAccepted": true,
+    "battleCheckpoints": "ZOD-106 deferred until concrete debugging/checkpoint or selected suspension requirement",
+    "existingAbilitySaveGuardRetained": true,
+    "editor": "remains deferred"
+  },
+  "build": {
+    "configuration": "Release",
+    "lockedRestore": true,
+    "warnings": 0,
+    "errors": 0,
+    "artifacts": "scratch/accumulate-107-artifacts"
+  },
+  "tests": {
+    "managedPassed": 2459,
+    "managedAdded": 21,
+    "pythonPassed": 299,
+    "pythonAdded": 6,
+    "trxDirectory": "scratch/accumulate-107-tests-full",
+    "pythonCommand": "python -m unittest discover -s tools/verification -p 'test_*.py'",
+    "environment": "Python TEMP/TMP under scratch/accumulate-107-python-temp; initial sandbox default temp had five permission errors; final suite passed"
+  },
+  "cases": [
+    {
+      "id": "ACC-028",
+      "status": "automated passed",
+      "scope": "Separate prepared launch, strict load/preflight and deterministic preparations"
+    },
+    {
+      "id": "ACC-029",
+      "status": "automated passed",
+      "scope": "Keyboard and canvas-pointer self action; inactive/ungranted/used/terminal rejection; current PA and later damage"
+    },
+    {
+      "id": "ACC-030",
+      "status": "automated passed",
+      "scope": "Legal repeated uses to PA99; capped Act consumed; availability and success/cap feedback"
+    },
+    {
+      "id": "ACC-031",
+      "status": "automated passed under revised owner sequencing",
+      "scope": "Every routed command state/events/RNG equals typed headless execution; journal replay, resize and restart exact",
+      "deferredClause": "Save continuation remains with deferred ZOD-106; historical ZOD-104 case unchanged"
+    },
+    {
+      "id": "ACC-032",
+      "status": "approved by owner",
+      "scope": "Owner visual and physical keyboard/pointer review"
+    }
+  ],
+  "native": {
+    "plannedProcesses": 2,
+    "executedProcesses": 2,
+    "perProcessBudgetSeconds": 30,
+    "directories": [
+      "scratch/accumulate-107-native-a",
+      "scratch/accumulate-107-native-b"
+    ],
+    "programmedInputsPerRun": 560,
+    "framesPerRun": 576,
+    "acceptedAbilityUses": 95,
+    "paIncreases": 94,
+    "cappedUses": 1,
+    "atomicRejections": 4,
+    "capturesPerRun": 15,
+    "captureSize": [
+      960,
+      640
+    ],
+    "resizedBackbuffer": [
+      1280,
+      720
+    ],
+    "headlessEveryCommand": true,
+    "stateAndEventsReplay": true,
+    "resolutionDraws": 0,
+    "renderingAndProbesPreserveState": true,
+    "restartPhysicalAttack": 5,
+    "repeatedAllBytesEqual": true,
+    "capturesInspected": true,
+    "physicalInputPerformed": false,
+    "ownerApproved": true,
+    "adapter": "AMD Radeon RX 6600",
+    "runtime": ".NET 10.0.13"
+  },
+  "prepared": {
+    "authoredOnly": true,
+    "originalInput": false,
+    "directories": [
+      "scratch/accumulate-107-prepared-a",
+      "scratch/accumulate-107-prepared-b"
+    ],
+    "files": 3,
+    "repeatedAllBytesEqual": true,
+    "identities": [
+      {
+        "localPath": "scratch/accumulate-107-prepared-a/ability.package.json",
+        "bytes": 438,
+        "sha256": "1108d4d00b41c6247ecad37b5ae7973e0dbf56a83f5a2e311bfc4defaec22c1c"
+      },
+      {
+        "localPath": "scratch/accumulate-107-prepared-a/assets.manifest.json",
+        "bytes": 490,
+        "sha256": "a847b50402bdbaf5aad6f323d90616b35fb62eae1b47095bb8de67a1245b29aa"
+      },
+      {
+        "localPath": "scratch/accumulate-107-prepared-a/content.package.json",
+        "bytes": 910,
+        "sha256": "837a5a3d7eacfdaf7b0bd83189836df4e9342d555042b0a31704bc1b568279f5"
+      }
+    ]
+  },
+  "independentAudit": {
+    "path": "tools/verification/verify_accumulate_window.py",
+    "report": {
+      "localPath": "scratch/accumulate-107-review/audit.json",
+      "bytes": 1856,
+      "sha256": "53d901822cf4a8a6038cd1b92a9b21132bd1a850bed49af2b3fe20ca420613e2"
+    },
+    "passed": true,
+    "nativeIdentities": [
+      {
+        "localPath": "scratch/accumulate-107-native-a/boosted.png",
+        "bytes": 32766,
+        "sha256": "ebc462545230c3d99f6442953f4a66f60083badbc3c9b4e236a61760b85b09d7"
+      },
+      {
+        "localPath": "scratch/accumulate-107-native-a/cap-reached.png",
+        "bytes": 32857,
+        "sha256": "78ebded397601c1a27d8ecb82b00336a92247b48850bdc42ddcb4a9850a3128c"
+      },
+      {
+        "localPath": "scratch/accumulate-107-native-a/cap-ready.png",
+        "bytes": 32758,
+        "sha256": "5a48475faa35f29150f9733f5357da28e313267f07e3e13e432d097853cc58d7"
+      },
+      {
+        "localPath": "scratch/accumulate-107-native-a/cap-used.png",
+        "bytes": 32873,
+        "sha256": "a98d6173e5cdc815dfcfa703bff1b84ac323c0c550cfaf859baa449e4a9dc9e5"
+      },
+      {
+        "localPath": "scratch/accumulate-107-native-a/check.json",
+        "bytes": 2160408,
+        "sha256": "84c58fc33440ce817317e9d12ad93d62a0ac18d5affba1f2bf7d90d280e10d69"
+      },
+      {
+        "localPath": "scratch/accumulate-107-native-a/damage.png",
+        "bytes": 32871,
+        "sha256": "0e7b10710d07f6b5ed10cb958f91d306cb55f4516721700867f434b640d037b4"
+      },
+      {
+        "localPath": "scratch/accumulate-107-native-a/duplicate-rejected.png",
+        "bytes": 32706,
+        "sha256": "95f3538ea2490689f2b6f76747143508bbd38b2f772d4cf19349d3dc58fab004"
+      },
+      {
+        "localPath": "scratch/accumulate-107-native-a/finished.png",
+        "bytes": 33019,
+        "sha256": "6cccae18c72578aaeefb976f134e7fa2b51600ce06b1fa3d14f5a125489e25ee"
+      },
+      {
+        "localPath": "scratch/accumulate-107-native-a/inactive-rejected.png",
+        "bytes": 32752,
+        "sha256": "a40b6cc6dcbec873a999b8e2c7c93e2fc9ba2548e7bede64d53daa868e74bbac"
+      },
+      {
+        "localPath": "scratch/accumulate-107-native-a/inactive-selection.png",
+        "bytes": 32769,
+        "sha256": "6046791776fdf218f35f716584ade195b35452033ba16c0726ffd2dc72a23c53"
+      },
+      {
+        "localPath": "scratch/accumulate-107-native-a/moved.png",
+        "bytes": 32875,
+        "sha256": "c398cc8a9078861a82749937a157197a793716889b6a503349a351574fd507b5"
+      },
+      {
+        "localPath": "scratch/accumulate-107-native-a/no-grant.png",
+        "bytes": 32747,
+        "sha256": "e8a46c547bff2b0f9f9c38fca655a5314d2651930d6ef5e60254aa5e2206d9b6"
+      },
+      {
+        "localPath": "scratch/accumulate-107-native-a/ready.png",
+        "bytes": 32531,
+        "sha256": "cd2f7c7531b8761a05af410c4ab2a5d9b7f5a0479bb10aad0b63366e3ade8fd1"
+      },
+      {
+        "localPath": "scratch/accumulate-107-native-a/restarted.png",
+        "bytes": 32705,
+        "sha256": "e8208cbb7b1a51477b4dcf794aa49f4a43de84e21313f707f91384d3bcfaf7b8"
+      },
+      {
+        "localPath": "scratch/accumulate-107-native-a/start.png",
+        "bytes": 32705,
+        "sha256": "e8208cbb7b1a51477b4dcf794aa49f4a43de84e21313f707f91384d3bcfaf7b8"
+      },
+      {
+        "localPath": "scratch/accumulate-107-native-a/terminal-rejected.png",
+        "bytes": 33257,
+        "sha256": "1fb805cc42498209ab745a5fcb0ca3e16e56138945f9ee61655656ce87c4693c"
+      }
+    ]
+  },
+  "sourceIdentities": [
+    {
+      "localPath": "src/Fft.Client/Presentation/AccumulateBattleHost.cs",
+      "bytes": 1857,
+      "sha256": "c74cc6c790b6399c774e56b4af28f62ea3a95334c423e8483a6231162cebacfb"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/AccumulateUiCheckPlan.cs",
+      "bytes": 4289,
+      "sha256": "7e03caeca83ace51394f4c2d51111c75ab88a6615ae3784a364c19db98d28922"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/PlayableBattleWindow.Accumulate.cs",
+      "bytes": 6474,
+      "sha256": "8340509b0ca07a3789121e79abfd9cfd43616cbadd0c67fc7ba699da168ba6c1"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/PlayableBattleWindow.cs",
+      "bytes": 21514,
+      "sha256": "222b8e6c9dc6e2a493c5158a87788079d712d4f838644dfd168698cc1202c660"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/BattleInteraction.cs",
+      "bytes": 7561,
+      "sha256": "6bf0fa8f5463962947c718b01930831ee1908782cb9f0026e049aa4c5e309eea"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/BattleUiLayout.cs",
+      "bytes": 7992,
+      "sha256": "02a813c73c726125f279843e97605a45a857a5a70b3ae8aced8bacfd545a6a03"
+    },
+    {
+      "localPath": "src/Fft.Client/Program.cs",
+      "bytes": 5505,
+      "sha256": "2b4bf9ad1e5fcca747c99ce0c0af9810b163129bc03ddd0da813f44a74af22ae"
+    },
+    {
+      "localPath": "src/Zodiac.AssetTool.Cli/PrepareAccumulateBattleCommand.cs",
+      "bytes": 3772,
+      "sha256": "570347125a621d21b3926374a498634b3637ccae3223da727498b2131c9209e6"
+    },
+    {
+      "localPath": "src/Zodiac.AssetTool.Cli/Program.cs",
+      "bytes": 3534,
+      "sha256": "856b83b1486445743c2e35caa13294c2b6b67d499d1cf244004551382ff72b6d"
+    },
+    {
+      "localPath": "src/Zodiac.Content/BattleSetup/PreparedAccumulateBattle.cs",
+      "bytes": 1649,
+      "sha256": "ee1f42ea1ecd11f55f25cd27443d411b8700fb0fd1e9f07a51a8b54b358f4f5c"
+    },
+    {
+      "localPath": "src/Zodiac.Content/Samples/SyntheticAccumulateBattle.cs",
+      "bytes": 3682,
+      "sha256": "215471c4dff8051cae80b8fe06db774e61d2910bb8cf0d156bcd0d8fe2524c2b"
+    },
+    {
+      "localPath": "tests/Fft.Client.Tests/AccumulateBattleInteractionTests.cs",
+      "bytes": 9770,
+      "sha256": "b31796e38b27da5efcf0ee445ac169b716ab5c9769a756d48e206433a0844d50"
+    },
+    {
+      "localPath": "tests/Zodiac.AssetTool.Cli.Tests/PrepareAccumulateBattleTests.cs",
+      "bytes": 5790,
+      "sha256": "bc0b8c09f14a7ae9dd901b7f8909f179e8250bbed1eb4aeb311f5214eeb774b9"
+    },
+    {
+      "localPath": "tools/verification/verify_accumulate_window.py",
+      "bytes": 6798,
+      "sha256": "c765e2072273ed572c1138ed018ba55d43f693f8d60ecaf9933d53485bbd5b09"
+    },
+    {
+      "localPath": "tools/verification/test_accumulate_window.py",
+      "bytes": 2820,
+      "sha256": "9da541168e3908d66cb6d3040f859bc9cde8b27d02da550f69cd8fa790482549"
+    }
+  ],
+  "limits": [
+    "Authored fixed-map/unit/sword/grant sample; no original encounter or animation equivalence.",
+    "Native GPU render-target and programmed input routes; not desktop scanout or physical-input approval.",
+    "Diagnostic JSON is not a save format or public persistent replay protocol.",
+    "Campaign battle-end transfer, progression/rewards/AI, equipment PA bonuses and wider ability catalog remain open."
+  ],
+  "ownerApproval": {
+    "recordedOn": "2026-10-26",
+    "statement": "Looks good. Let's keep going.",
+    "context": "After launch/manual guide and screenshot gallery were provided",
+    "scope": "Owner acceptance of bounded ZOD-107 review; no original equivalence",
+    "individualPhysicalStepsSeparatelyReported": false,
+    "agentObservedPhysicalInput": false,
+    "implementationAndCapturesRerun": false
+  }
+}

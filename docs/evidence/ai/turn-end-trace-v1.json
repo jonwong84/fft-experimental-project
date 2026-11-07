@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "1e5d4d1cd628c9c5af2b4a49e212645c40fe6e52",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Supplied End of Turn trace and existing unrestricted managed refund consumers; source-only status/no-op boundaries remain explicit and ZOD-430 remains open.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/turn/clock.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40868,
+      "sha256": "f76188542c39818fa2ab478e42ef63b4eb0f2c1c2db5a74db4120ddbaf4cb8cb"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/status.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11673,
+      "sha256": "deeaeec02add8b9db7cca91c99517706033b18385ca433d32f1998d9d62e0e83"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_end",
+      "startLine": 947,
+      "endLine": 974,
+      "normalizedLfSha256": "2071e4d41c2099741ca3ae787add5e7b731df488197b87a47ca84291a6ac268b"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_move_act_taken_set",
+      "startLine": 923,
+      "endLine": 940,
+      "normalizedLfSha256": "ab6508dce1e9e9ef352a27b22a0166a0526d1571fb059f969937605b630782d7"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_should_end",
+      "startLine": 979,
+      "endLine": 993,
+      "normalizedLfSha256": "e681268c0903794a2ff9b9de8f2b18b663bc565ea4a047e6f005e63bc6155e86"
+    }
+  ],
+  "preparedValidation": {
+    "byteLength": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000"
+  },
+  "suppliedInstructionCheck": {
+    "start": "0x80183c6c",
+    "endInclusive": "0x80183d0c",
+    "instructionCount": 41,
+    "allMatched": true
+  },
+  "listedCallerChecks": [
+    {
+      "callPc": "0x800755d4",
+      "target": "0x80183c6c",
+      "returnAddress": "0x800755dc"
+    },
+    {
+      "callPc": "0x800764fc",
+      "target": "0x80183c6c",
+      "returnAddress": "0x80076504"
+    },
+    {
+      "callPc": "0x80076628",
+      "target": "0x80183c6c",
+      "returnAddress": "0x80076630"
+    },
+    {
+      "callPc": "0x80182e44",
+      "target": "0x80183c6c",
+      "returnAddress": "0x80182e4c"
+    },
+    {
+      "callPc": "0x80183c50",
+      "target": "0x80183c6c",
+      "returnAddress": "0x80183c58"
+    },
+    {
+      "callPc": "0x8019d528",
+      "target": "0x80183c6c",
+      "returnAddress": "0x8019d530"
+    }
+  ],
+  "findings": {
+    "shared": "Actual command/controller, between-turn, choice-consumption and AI simulation callers",
+    "noOp": "Absent active_battle_id0xff or has_turn0 returns1 without mutation",
+    "refundMove": "20 iff movement_taken0 and DontMove absent",
+    "refundAct": "20 iff action_taken0 and DontAct/Performing absent",
+    "width": "Load byte CT into u16, add up to40, cap60 before byte store; no intermediate byte wrap",
+    "completion": "Store CT and clear has_turn only; choice flags not reset here",
+    "returnValue": "Always1 including no-op; not proof a turn changed",
+    "notPerformed": "No CT-minus100, clock phase advance, status cleanup, ticks or RNG draws in this leaf",
+    "managedBoundary": "TurnCycle status-free active CT0..99; immutable rejected inactive commands differ deliberately from source leaf no-op. AI effect-free projections share refund/cap arithmetic."
+  },
+  "managedConsumers": [
+    {
+      "path": "src/Zodiac.Framework/Battle/Turns/TurnCycle.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4684,
+      "sha256": "9a3f20d6b965aaeb877f1341e904b2583b4d92e82751f9e55878d0cac26fdb36"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Turns/TurnUnitState.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1685,
+      "sha256": "e58fbe5055066e281ea7c94c858f555052fe4a756a7e93891d77aad002bb7c25"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Turns/TurnCycleState.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2023,
+      "sha256": "2013110b5eb0cccdccedafec2f65572f58c22420f63222eb25f3e192ab968469"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiMovementSimulation.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3827,
+      "sha256": "2f7a7678cc1a11e97b59421d07b03fb81a64dad97b60c9104f36fececef33e34"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiDamageHypothesis.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1766,
+      "sha256": "96291925b4cee7915c548b4cb8a8e1af35229fe60ef0318b8925a469a81ad22c"
+    }
+  ],
+  "ownerEditPreserved": {
+    "path": "src/Zodiac.Framework.Ai/AiTurnController.cs",
+    "gitBlob": "373d13f739439813f9608aefc2d84715d8ed1346"
+  },
+  "runtimeChanged": false,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "validation": {
+    "managedTestsPassed": 18,
+    "filter": "TurnCycleTests.Source_completion_refunds_and_cap_vectors|TurnCycleTests.Second_choice_automatically_ends_turn_and_repeated_Wait_cannot_refund_again",
+    "fullSuiteRerun": false
+  }
+}

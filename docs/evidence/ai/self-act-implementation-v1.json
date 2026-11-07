@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-238",
+    "ZOD-239"
+  ],
+  "date": "2026-11-04",
+  "kind": "managed-immediate-self-act",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "e51c1faaab2fdcbee49b570d3b0f234025962496",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/self-act-source-v1.json",
+  "design": "docs/behavior/immediate-self-act.md",
+  "implementationPaths": [
+    "src/Zodiac.Framework/FacingDecision.cs",
+    "src/Zodiac.Framework/FacingTurnBattle.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiActFirstExecution.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Tests/ImmediateAbilityDecisionTests.cs",
+    "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiActFirstExecutionTests.cs"
+  ],
+  "actualRulesOwner": "src/Zodiac.Framework/ImmediateAbilityBattle.cs",
+  "newProductionFriendAccess": false,
+  "newPublicSessionOrReceiptConstructors": false,
+  "behavior": {
+    "actualSelfDraws": 0,
+    "cap": 99,
+    "actSuccessRevisions": 1,
+    "receipt": "after final PA if Move already used",
+    "freshAdapter": "ACT-first only; no public cached plan input",
+    "copiedHypotheticalUnits": false,
+    "postActMoveToken": false
+  },
+  "suppliedSelfAct": {
+    "decisionWord": 3794901700,
+    "decisionCount": 26,
+    "paBefore": 5,
+    "paAfter": 6,
+    "ct": 15,
+    "moveUsed": false,
+    "completionReceipt": false,
+    "additionalActualDraws": 0
+  },
+  "laterActualAttack": {
+    "pa": 6,
+    "damage": 12,
+    "rngWord": 1116175964,
+    "rngCount": 34
+  },
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4185,
+    "frameworkPassed": 1467,
+    "aiPassed": 973,
+    "newFrameworkCases": 8,
+    "newAiCases": 8,
+    "pythonPassed": 539,
+    "trxReports": 7,
+    "sourcePreparedAudit": true,
+    "algorithmGuideAudit": true,
+    "reports": "scratch/self-act-237-239/",
+    "ownerDraftsIncludedInValidation": true,
+    "ownerDraftsExcludedFromCommit": true
+  },
+  "boundaries": [
+    "supplied known-score scenarios and existing source assertions",
+    "no three-entry Move-first/post-ACT/complete-turn execution",
+    "no derived scenarios or broader policies",
+    "no host/editor activation or battle saves"
+  ],
+  "originalExecuted": false,
+  "cExecuted": false
+}

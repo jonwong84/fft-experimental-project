@@ -1,0 +1,23 @@
+{
+  "format": "fft.sword-content",
+  "schemaVersion": 1,
+  "packageId": "sample:package/swords",
+  "profileId": "sample:profile/attack",
+  "requiredMetadataPackageId": "sample:package/metadata",
+  "swords": [
+    {
+      "id": "sample:item/plain-sword",
+      "type": 3,
+      "range": 1,
+      "power": 5,
+      "formula": 1,
+      "targetingFlags": 128,
+      "evade": 0,
+      "element": 0,
+      "addedEffect": {
+        "typeRaw": 128,
+        "statusesRaw": [0, 0, 0, 0, 0]
+      }
+    }
+  ]
+}

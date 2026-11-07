@@ -1,0 +1,434 @@
+{
+  "format": "fft.accumulate-investigation-contract",
+  "schemaVersion": 1,
+  "ticket": "ZOD-104",
+  "recordedOn": "2026-10-26",
+  "status": "source/data investigation complete; implementation unexecuted",
+  "managedBase": "303d2eaaaae93975b8a283fc47133850b3403e0a",
+  "guide": "docs/architecture/zod-104-accumulate-action.md",
+  "reference": {
+    "root": "C:/repositories/fft_decomp",
+    "revision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "clean": true,
+    "readOnly": true
+  },
+  "sourceIdentities": [
+    {
+      "path": "include/fft/ability.h",
+      "gitBlob": "22a376d2811b8d645ecb0ac539743fdbbb7494be",
+      "checkoutBytes": 35432,
+      "checkoutSha256": "12fa216274fe08572b248107369044b47ccc40e1206e7db16d5822c1c5bfc6d2"
+    },
+    {
+      "path": "include/fft/action.h",
+      "gitBlob": "bf586cd4bfe67704a274e3f6487486f0560453c6",
+      "checkoutBytes": 15283,
+      "checkoutSha256": "f4ad0b2f25e3e6d1fc1a8a8361cc39a718dd886d5197a31bce641117c190b8b8"
+    },
+    {
+      "path": "include/fft/command.h",
+      "gitBlob": "e22544a5422d8eee7a95a6b54e552a2e23c2e236",
+      "checkoutBytes": 16920,
+      "checkoutSha256": "7535086064f2bb7642f122401dfb8bb43050b98c9f71023a92111d4d6d2e737b"
+    },
+    {
+      "path": "include/fft/status.h",
+      "gitBlob": "59934587510d1e7e364033e7fdb4ca4f0e85c338",
+      "checkoutBytes": 11942,
+      "checkoutSha256": "a780bb1b1f1e711c391231bd9aec607757f121fe9dd2267320f21f6aca70da85"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "gitBlob": "97f67bfc915ea72bb9ee4b53eb150779795fabb1",
+      "checkoutBytes": 32808,
+      "checkoutSha256": "939da0ee31959de0b3eef3c8c815b439d14c2d941f989d976f29efeef22e5905"
+    },
+    {
+      "path": "include/psx/types.h",
+      "gitBlob": "3d21bb7cb3dd8c4abb38ae7f73d82ced835f2cea",
+      "checkoutBytes": 214,
+      "checkoutSha256": "fdcffcdb66717fbdccc1e3667de6e5a24638fdf0e23cd48731b04cca7d4fc7ca"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "gitBlob": "a437be0544f96b798f4c9b075ff2f3bf15fca76c",
+      "checkoutBytes": 56097,
+      "checkoutSha256": "654eb10f59d51776f591382d009824468e1d05db8772691a2d551be717af4365"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "gitBlob": "a4a20f68871f1cc852f21d84ef3a1786fd89038b",
+      "checkoutBytes": 47370,
+      "checkoutSha256": "e4be8d12a6b2c146056cac3e2624df79b7b3fad5db47c02094e663b6e6681387"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "gitBlob": "42c675e73a7bf02f44fb87e046c3609b85e02cab",
+      "checkoutBytes": 83006,
+      "checkoutSha256": "2e4cbd150c2e3a41557a8a2f111e6d12cbebd7c6b64a5cc4240fed9bc416b164"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "gitBlob": "6d3fffb65982abc2b3c9f811e3e4c14990bc2663",
+      "checkoutBytes": 87662,
+      "checkoutSha256": "70ea706441e8d01f392d7f1c74669d18866ac1ca086e3d75ab12fc331974f9ea"
+    },
+    {
+      "path": "src/battle/combat/targets.c",
+      "gitBlob": "781f40b90ea7aaad99b9fcb90e31c5b1501eb5bb",
+      "checkoutBytes": 71345,
+      "checkoutSha256": "4da02d876955207fdf876ffe6789be9bed6bfcf990cef267ce93c4d0a597c88f"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "gitBlob": "022fb682c6ee49969a56abb7c7266863e3b7f424",
+      "checkoutBytes": 191808,
+      "checkoutSha256": "838c419938cdd610c14fa8e1cc578a1c76c949394bf1ea08449b526e74912933"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "gitBlob": "b0ae1eedcefbb836740f7e210799f2dbd5f2b151",
+      "checkoutBytes": 41903,
+      "checkoutSha256": "8d96a9971e6d7165132227c77647f87f4a28f45744adbaaabfe1abb7a9342941"
+    },
+    {
+      "path": "src/battle/menu/ability_choices.c",
+      "gitBlob": "da138987de27181de4e8eb306f93d59b6342b93e",
+      "checkoutBytes": 34025,
+      "checkoutSha256": "6e9b9810b03251c9f288bcf0fca25eac2aaaf8cf26cbf70a2f9c93ed02e6acc4"
+    },
+    {
+      "path": "src/main/unit_init.c",
+      "gitBlob": "e80470057d9f5707eef585f0721b8bbaae7e8179",
+      "checkoutBytes": 56201,
+      "checkoutSha256": "86ba402c91557e66ca838307fa642384b339187fbafd3d3a29f98d57b066a6c7"
+    },
+    {
+      "path": "src/main/unit_stats.c",
+      "gitBlob": "2dfe565f300fb10b7bdc710e0a84736035d0ebbd",
+      "checkoutBytes": 11594,
+      "checkoutSha256": "23e138a6d19fa1de72617e0006684240088ac24ab3ba63b1dd388dcfb9ef65cf"
+    },
+    {
+      "path": "target/main.yaml",
+      "gitBlob": "1f3f49eda90423ab181ca1b68804a9db7d4b51e9",
+      "checkoutBytes": 136443,
+      "checkoutSha256": "a35f69fd3fe8eedd33a5d340e1c655f222dcbb17858cdba24da55c898df9fb88"
+    }
+  ],
+  "inputIdentity": {
+    "path": "scratch/all-data-extraction/SCUS_942.21",
+    "byteLength": 356352,
+    "sha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562"
+  },
+  "selectedRecordIdentities": [
+    {
+      "name": "job74",
+      "virtualAddress": 2147884696,
+      "fileOffset": 337560,
+      "byteLength": 48,
+      "sha256": "7d7946a6ea6f51ee5647cd5ecbe069fae6e004b4a4a81cf082b118c640876c9c"
+    },
+    {
+      "name": "humanSkillset5",
+      "virtualAddress": 2147896081,
+      "fileOffset": 348945,
+      "byteLength": 25,
+      "sha256": "2aa594c430fa15af22087c09e7d501b715186fcd0e0b25d01e579f82c97cc272"
+    },
+    {
+      "name": "ability146",
+      "virtualAddress": 2147872896,
+      "fileOffset": 325760,
+      "byteLength": 8,
+      "sha256": "5b886336133c15b9d8cb235605e3b15ce44cef85585eda6976975737fc8a8c6b"
+    },
+    {
+      "name": "abilitySecondary146",
+      "virtualAddress": 2147877868,
+      "fileOffset": 330732,
+      "byteLength": 14,
+      "sha256": "83750f3e376e1ce13457c2ede57fcf9db04c1a7fd640439eea6dc708d06e84ef"
+    },
+    {
+      "name": "menuType5",
+      "virtualAddress": 2147900601,
+      "fileOffset": 353465,
+      "byteLength": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "name": "statusInfliction0",
+      "virtualAddress": 2147893188,
+      "fileOffset": 346052,
+      "byteLength": 6,
+      "sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44"
+    }
+  ],
+  "historicalImport": {
+    "path": "scratch/imported-squire-check-a/import.provenance.json",
+    "sha256": "63aecf54bad557c9f019d36f91da175f3d52b134a3329c47dbc8b9a43fc57d9f",
+    "recordsRecompared": 22,
+    "referenceRevisionRetained": "611b504d25d4a9b03fab8023d7dbea75fe381d5d"
+  },
+  "executedChecks": {
+    "kind": "offline-source-and-prepared-data-inspection",
+    "script": "scratch/inspect_accumulate_104.py",
+    "scriptSha256": "55f52539a756bb1eeebe3677b2fbd4e9dd8c092feec5ce46f38f7c837c2aa1da",
+    "finalReports": [
+      "scratch/accumulate-104-e/audit.json",
+      "scratch/accumulate-104-f/audit.json"
+    ],
+    "finalReportSha256": "671d6378180b87ea35323047dcf9316984d6263155989aa516340d90123d1cb7",
+    "byteIdentical": true,
+    "sourceFilesFingerprinted": 17,
+    "formulaDispatch": {
+      "id": 54,
+      "symbol": "formula_add_pa_y"
+    },
+    "addedRecordChecks": [
+      "Basic Skill default menu byte",
+      "Empty status-infliction record 0"
+    ]
+  },
+  "evidenceLimits": [
+    "Static source analysis and verified local record inspection, not original or C-reference execution.",
+    "No new managed implementation or native launch.",
+    "Raw original records and local audit scripts/reports remain ignored under scratch.",
+    "Acceptance cases below are specification-only and unexecuted.",
+    "Source-derived cases use authored scenario inputs and managed event/atomic-publication expectations defined in the contract; those API choices are not original display-event observations.",
+    "No complete ability, reward, learning, AI, equipment-modifier or visual compatibility claim."
+  ],
+  "lastImplementationValidation": {
+    "dotnetTests": 2349,
+    "pythonTests": 293,
+    "rerunForThisInvestigation": false,
+    "source": "docs/development/editor-workspaces.md"
+  },
+  "acceptanceCases": [
+    {
+      "id": "ACC-001",
+      "ownerTicket": "ZOD-105",
+      "evidenceKind": "source-derived",
+      "status": "unexecuted",
+      "expectation": "PA 5 increases to 6; only actor changes; Act consumed, Move still available; HP/MP, position, facing, ticks and RNG unchanged."
+    },
+    {
+      "id": "ACC-002",
+      "ownerTicket": "ZOD-105",
+      "evidenceKind": "source-derived",
+      "status": "unexecuted",
+      "expectation": "PA 1 increases to 2 with no wrap or hidden multiplier."
+    },
+    {
+      "id": "ACC-003",
+      "ownerTicket": "ZOD-105",
+      "evidenceKind": "source-derived",
+      "status": "unexecuted",
+      "expectation": "PA 98 increases to 99."
+    },
+    {
+      "id": "ACC-004",
+      "ownerTicket": "ZOD-105",
+      "evidenceKind": "source-derived",
+      "status": "unexecuted",
+      "expectation": "PA 99 resolves to 99, consumes Act and emits resolution but no PA-changed event."
+    },
+    {
+      "id": "ACC-005",
+      "ownerTicket": "ZOD-105",
+      "evidenceKind": "source-derived",
+      "status": "unexecuted",
+      "expectation": "Repeated legal uses on subsequent turns accumulate and saturate at 99; readiness RNG draws remain separate."
+    },
+    {
+      "id": "ACC-006",
+      "ownerTicket": "ZOD-105",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "A second Act on the same turn rejects with the identical input snapshot, no events and unchanged RNG."
+    },
+    {
+      "id": "ACC-007",
+      "ownerTicket": "ZOD-105",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "Unknown actor rejects atomically."
+    },
+    {
+      "id": "ACC-008",
+      "ownerTicket": "ZOD-105",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "Known inactive actor rejects atomically."
+    },
+    {
+      "id": "ACC-009",
+      "ownerTicket": "ZOD-105",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "A unit with skillset membership but no explicit ability grant cannot use Accumulate."
+    },
+    {
+      "id": "ACC-010",
+      "ownerTicket": "ZOD-105",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "Unknown ability, unresolved effect and mismatched action-slot references fail explicitly; no fallback to Attack."
+    },
+    {
+      "id": "ACC-011",
+      "ownerTicket": "ZOD-105",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "Unsupported formula, Y variant, cost, charge, targeting or flag fails closed during original conversion/setup."
+    },
+    {
+      "id": "ACC-012",
+      "ownerTicket": "ZOD-105",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "New profile rejects initial PA outside 1..99 and unsupported modifier domains; old sword-only PA domain is unchanged."
+    },
+    {
+      "id": "ACC-013",
+      "ownerTicket": "ZOD-105",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "New profile rejects power 167 and admits power 166 at its reachable PA-99 signed-16 envelope boundary."
+    },
+    {
+      "id": "ACC-014",
+      "ownerTicket": "ZOD-105",
+      "evidenceKind": "source-derived",
+      "status": "unexecuted",
+      "expectation": "Move then Accumulate ends the turn with no unused-choice CT refund, preserving boosted PA."
+    },
+    {
+      "id": "ACC-015",
+      "ownerTicket": "ZOD-105",
+      "evidenceKind": "source-derived",
+      "status": "unexecuted",
+      "expectation": "Accumulate then Move ends the turn and preserves boosted PA; move-first and act-first retain the specified event order."
+    },
+    {
+      "id": "ACC-016",
+      "ownerTicket": "ZOD-105",
+      "evidenceKind": "source-derived",
+      "status": "unexecuted",
+      "expectation": "Accumulate then Wait preserves the existing unused-Move refund min(60, remainder+20); subsequent Advance preserves PA."
+    },
+    {
+      "id": "ACC-017",
+      "ownerTicket": "ZOD-105",
+      "evidenceKind": "source-derived",
+      "status": "unexecuted",
+      "expectation": "A controlled noncritical power-4 sword hit uses PA 6 for damage 24 after a PA-5 Accumulate; pre-boost damage would be 20. Existing hit/critical/proc RNG order is unchanged."
+    },
+    {
+      "id": "ACC-018",
+      "ownerTicket": "ZOD-105",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "Ability probes are pure; zero resolution draws permit use at the maximum RNG draw counter; later readiness retains its existing exhaustion behavior."
+    },
+    {
+      "id": "ACC-019",
+      "ownerTicket": "ZOD-105",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "Self-target aliasing applies PA once; restart resets setup PA/grants; rejected/completed-scenario commands preserve all state."
+    },
+    {
+      "id": "ACC-020",
+      "ownerTicket": "ZOD-105",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "Existing sword-only fixtures/journals remain unchanged; content companion round-trip is deterministic, references validate and original input files remain untouched; unsupported saving of ability-enabled states fails explicitly."
+    },
+    {
+      "id": "ACC-021",
+      "ownerTicket": "ZOD-106",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "Save before and after the first boost, restore against a fresh definition, then reproduce uninterrupted state/events/RNG and later sword damage."
+    },
+    {
+      "id": "ACC-022",
+      "ownerTicket": "ZOD-106",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "Save at PA 99 and with Move unused/used at legal checkpoints; restore preserves PA and remaining choices."
+    },
+    {
+      "id": "ACC-023",
+      "ownerTicket": "ZOD-106",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "Old profiles retain schema-2 output and schema-1/2 read behavior and existing fixture bytes."
+    },
+    {
+      "id": "ACC-024",
+      "ownerTicket": "ZOD-106",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "Schema-1/2 documents reject against the new ability profile instead of inventing current PA or grants."
+    },
+    {
+      "id": "ACC-025",
+      "ownerTicket": "ZOD-106",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "New schema rejects missing PA, PA below starting value, PA above 99 and nonintegral PA without publication; rehash mutated payloads to test semantic validation."
+    },
+    {
+      "id": "ACC-026",
+      "ownerTicket": "ZOD-106",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "Wrong profile/content/grant identity, unresolved definitions, corrupt hashes and unsupported versions reject without changing live state or output files."
+    },
+    {
+      "id": "ACC-027",
+      "ownerTicket": "ZOD-106",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "Replaying a journal with accepted and rejected ability commands exactly matches uninterrupted execution; restarting after load resets PA to setup."
+    },
+    {
+      "id": "ACC-028",
+      "ownerTicket": "ZOD-107",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "Ability-enabled prepared launch shows the granted self action and current PA; sword-only launch and existing world/intro/editor flows retain their behavior."
+    },
+    {
+      "id": "ACC-029",
+      "ownerTicket": "ZOD-107",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "Selecting Accumulate consumes one action without a target-picking mode, reports before/after PA and updates availability; rejected input cannot mutate state."
+    },
+    {
+      "id": "ACC-030",
+      "ownerTicket": "ZOD-107",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "At-cap feedback reports successful resolution with unchanged PA, and Act is consumed; subsequent legal Move/Wait remains usable."
+    },
+    {
+      "id": "ACC-031",
+      "ownerTicket": "ZOD-107",
+      "evidenceKind": "managed-contract",
+      "status": "unexecuted",
+      "expectation": "Two bounded repeated native runs match state/journal/save-continuation artifacts and captures under a plan written before launch; the host submits shared simulation commands."
+    },
+    {
+      "id": "ACC-032",
+      "ownerTicket": "ZOD-107",
+      "evidenceKind": "owner-manual",
+      "status": "unexecuted",
+      "expectation": "Owner reviews visuals and physical keyboard/mouse operation, action availability, resize, restart and applicable existing save/load path; programmed checks alone do not approve presentation."
+    }
+  ]
+}

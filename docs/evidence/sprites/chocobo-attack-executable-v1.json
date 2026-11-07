@@ -1,0 +1,40 @@
+{
+  "format": "fft.sprite-attack-executable-evidence",
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "edition": "SCUS-94221",
+  "managedCommit": "9012e42",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "evidenceKind": "executable-reference",
+  "originalGameBooted": false,
+  "harness": "tools/verification/verify_sprite_attack.py",
+  "harnessSha256": "d898e777b386f2d236e596dc63a6f5c7114630794aa86d6f93a121f0a38c5d24",
+  "captures": [
+    {
+      "id": "chocobo-attack-original-instructions-report-v1",
+      "kind": "executable-reference-report",
+      "localPath": "scratch/behavior/chocobo-attack-oracle/c/capture.json",
+      "sha256": "17b96b4213c1c6fde535049e1137edae328ca09daee2a5cf98ad84cbe2a2b997",
+      "byteLength": 1781,
+      "tool": "Unicorn 2.1.4 / Python 3.12.14 / MIPS32 4KC little endian",
+      "procedure": "Run the pinned original decoder/helper bytes unchanged at linked addresses with the verified CYOKO.SPR tail and controlled RAM; require bounded instructions/accesses, sentinel return, canaries and expected digest. Reproduction is documented in docs/development/sprite-executable-reference.md.",
+      "editionVerification": "BATTLE.BIN and CYOKO.SPR full SHA-256 identities match previously verified SCUS-94221 extraction; both instruction ranges match pinned target/battle.yaml hashes."
+    },
+    {
+      "id": "chocobo-attack-original-instructions-output-v1",
+      "kind": "decoded-original-output",
+      "localPath": "scratch/behavior/chocobo-attack-oracle/c/decoded.bin",
+      "sha256": "d07fff4e49bf5e0a8b91343b2a722521ac5309e34ec23d2d5810e579a741c24f",
+      "byteLength": 25600,
+      "tool": "Unicorn 2.1.4 / Python 3.12.14 / MIPS32 4KC little endian",
+      "procedure": "Read the 25,600-byte destination after successful original-instruction return; packed 4bpp first pixel high. Palette/frame/camera/timing do not apply to this isolated byte output.",
+      "editionVerification": "Same verified executable/sprite identities as the companion report."
+    }
+  ],
+  "repeatLocalRoot": "scratch/behavior/chocobo-attack-oracle/d",
+  "repeatMatchesBytesAndReport": true,
+  "wrongHashRejected": true,
+  "existingOutputPreserved": true,
+  "managedVerifierPassed": true,
+  "originalVisualEquivalenceClaimed": false
+}

@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "milestones": [
+    {
+      "ticket": "ZOD-358",
+      "managedBaseRevision": "a1b6c1200f3dd675b50d78f86f20ded608bb574c",
+      "validation": "8 Python checks passed; pinned 11-file/21-function source audit and 55 descriptions passed; no managed implementation yet.",
+      "reports": "scratch/spell-targeting-358-362/"
+    },
+    {
+      "ticket": "ZOD-359",
+      "managedBaseRevision": "515223199dc45788dd0db80020a248b3e3445130",
+      "validation": "2 focused managed tests passed (17 literal reference/column descriptions); no whole-suite claim.",
+      "reports": "scratch/spell-targeting-358-362/"
+    },
+    {
+      "ticket": "ZOD-360",
+      "managedBaseRevision": "ab2358190e3e56698c8926263955aa8cac6ae433",
+      "validation": "4 focused managed tests passed, including 26 literal panel queries and 17 height descriptions.",
+      "reports": "scratch/spell-targeting-358-362/"
+    },
+    {
+      "ticket": "ZOD-361",
+      "managedBaseRevision": "83e95141dfa8ed831197f8b98d75b450e426f23d",
+      "validation": "6 focused managed tests passed, including 12 literal roster scenarios and prior 43 geometry descriptions.",
+      "reports": "scratch/spell-targeting-358-362/"
+    },
+    {
+      "ticket": "ZOD-362",
+      "managedBaseRevision": "12e8d68405d9bea4e3fccfc4d3f4db78fa2bf2ef",
+      "validation": "Locked restore; Release build zero warnings/errors; 4661 .NET and 687 Python tests passed; focused magic99, source11/21 plus prior magic/prepared-data, guide, coverage and preservation checks passed.",
+      "reports": "scratch/spell-targeting-358-362/"
+    }
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuild": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "managed": {
+      "passed": 4661,
+      "failed": 0,
+      "reports": [
+        {
+          "path": "scratch/spell-targeting-358-362/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_18_52_08_net10.0.trx",
+          "passed": 24
+        },
+        {
+          "path": "scratch/spell-targeting-358-362/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_18_52_08_net10.0[1].trx",
+          "passed": 206
+        },
+        {
+          "path": "scratch/spell-targeting-358-362/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_18_52_09_net10.0.trx",
+          "passed": 1620
+        },
+        {
+          "path": "scratch/spell-targeting-358-362/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_18_52_09_net10.0[1].trx",
+          "passed": 838
+        },
+        {
+          "path": "scratch/spell-targeting-358-362/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_18_52_09_net10.0[2].trx",
+          "passed": 428
+        },
+        {
+          "path": "scratch/spell-targeting-358-362/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_18_52_10_net10.0.trx",
+          "passed": 1217
+        },
+        {
+          "path": "scratch/spell-targeting-358-362/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_18_52_10_net10.0[1].trx",
+          "passed": 328
+        }
+      ],
+      "newCases": 9
+    },
+    "python": {
+      "passed": 687,
+      "newCases": 14
+    },
+    "focusedMagicCases": 99,
+    "sourceAudit": "scratch/spell-targeting-358-362/composed-source-audit.json",
+    "guideAudit": "scratch/spell-targeting-358-362/guide-audit.json",
+    "preservation": {
+      "managedBaseRevision": "a1b6c1200f3dd675b50d78f86f20ded608bb574c",
+      "ownerFiles": [
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AbilityToggles.cs",
+          "unchanged": true,
+          "gitBlob": "16320578ffa448783221b68c4ef5c18e245b9f35"
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AiBehaviorToggles.cs",
+          "unchanged": true,
+          "gitBlob": "c67c4b154c471764fa11a6761710d2e9c9694a65"
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AttributeToggles.cs",
+          "unchanged": true,
+          "gitBlob": "1182777f8a0c3ca219afa23d0803c52af4ca9f8e"
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/EquipmentSlot.cs",
+          "unchanged": true,
+          "gitBlob": "091006b2d60ca558c303571a4eb779340be53629"
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/StatusToggles.cs",
+          "unchanged": true,
+          "gitBlob": "5136db2af350d7e3735e47fb92b905019316fd6f"
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Item/ShopAvailabilityToggles.cs",
+          "unchanged": true,
+          "gitBlob": "fd543d84dc8eb7860d710cf1c75499eb55306e14"
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/EquipmentOptionToggles.cs",
+          "unchanged": true,
+          "gitBlob": "694e44bbdc3e62103b64ff794addec1ad977d142"
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/EffectBehaviorToggles.cs",
+          "unchanged": true,
+          "gitBlob": "9792cdea7da1d92e9ec25cf1e97d3e879c24e8ae"
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/StatusSelectionToggles.cs",
+          "unchanged": true,
+          "gitBlob": "a0b2e2a8ddcb53a4bfd7416609927399b8339294"
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/JobStats.cs",
+          "unchanged": true,
+          "gitBlob": "bd617c374309aca1529a167a8d31a488160086cc"
+        }
+      ],
+      "existingCodeChange": "Only optional bound targeting parameter; prior query body exactly preserved.",
+      "otherPreBatchCodeUnchanged": true
+    },
+    "targetingDescriptions": {
+      "references": 4,
+      "columns": 15,
+      "panels": 27,
+      "rosters": 12
+    },
+    "geometryCastDescriptions": 13,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "uiReviewed": false
+  }
+}

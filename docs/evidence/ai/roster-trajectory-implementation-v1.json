@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-299",
+    "ZOD-300"
+  ],
+  "date": "2026-11-05",
+  "kind": "managed-computed-flat-roster-direct-trajectory",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "5df5cc0",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/roster-trajectory-source-v1.json",
+  "design": "docs/architecture/zod-299-roster-stone-trajectory.md",
+  "behavior": "docs/behavior/roster-ai-direct-trajectory.md",
+  "sourceFixture": "docs/fixtures/behavior/roster-trajectory-contract-v1.json",
+  "implementationPaths": [
+    "src/Zodiac.Framework.Ai/Shared/RosterAiDirectTrajectory.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Ai.Tests/Shared/RosterAiDirectTrajectoryTests.cs"
+  ],
+  "invariants": [
+    "complete copied actual byte sprite heights; initial legal movement origin and every other occupant regardless of team/usefulness",
+    "source SDK normalization and exact integer factor identity verified against all192 prepared entries; no raw table or runtime I/O/C/SDK",
+    "source sampled Q12 interpolation, negative shifts, strict boxes, target zero-raise fallback, terrain-first checks and endpoint exclusions",
+    "pure geometry result separates accepted blocked from rejected domain; immutable live state/RNG; no effects or authority",
+    "ZOD-297 missing-SDK-source mistake corrected at the same reference revision; ZOD-298 clear certificate and pair guards unchanged"
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4384,
+    "frameworkPassed": 1483,
+    "aiPassed": 1156,
+    "newAiCases": 6,
+    "pythonPassed": 569,
+    "newPythonCases": 3,
+    "trxReports": 7,
+    "sourceFiles": 11,
+    "sourceFunctions": 14,
+    "sourceDescriptions": 14,
+    "sdkFactorsVerified": 192,
+    "sourcePreparedAudit": true,
+    "algorithmGuideAudit": true,
+    "localLinkAudit": true,
+    "coverageAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/roster-trajectory-299-300/"
+  },
+  "boundaries": [
+    "living compact16 ordinary flat height10 domain; exact sprite metadata supplied rather than inferred; no corpse/general terrain/mount/Jump model",
+    "no fresh ranked Stone search, list ranking/lottery or roster command/turn integration; all other documented deferrals retained"
+  ],
+  "dependencyChanges": false,
+  "newProductionFriendAccess": false,
+  "originalExecuted": false,
+  "cExecuted": false
+}

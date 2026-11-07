@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-301"
+  ],
+  "date": "2026-11-05",
+  "kind": "managed-fresh-ranked-roster-stone-occurrence",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "9f02cc1",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/roster-stone-entry-source-v1.json",
+  "design": "docs/architecture/zod-301-roster-stone-entry.md",
+  "behavior": "docs/behavior/roster-throw-stone-ai-entry.md",
+  "sourceFixture": "docs/fixtures/behavior/roster-stone-entry-contract-v1.json",
+  "implementationPaths": [
+    "src/Zodiac.Framework.Ai/ThrowStone/RosterThrowStoneAiEntry.cs",
+    "src/Zodiac.Framework.Ai/ThrowStone/RosterThrowStoneAiCandidate.cs",
+    "src/Zodiac.Framework.Ai/Shared/AiRosterCastGeometry.cs",
+    "src/Zodiac.Framework.Ai/Shared/RosterAiCastOrigins.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Ai.Tests/ThrowStone/RosterThrowStoneAiEntryTests.cs"
+  ],
+  "invariants": [
+    "one fresh general prefix and selected structural Stone occurrence; duplicate preservation and post-ACT skip before invocation",
+    "actual typed effect/grant, exact complete bindings/ground, PA1..99 and sprite metadata; entered empty scan still admits setup",
+    "shared fresh/retained priority owner uses current proximity; unknown selected keys reject whole query without writes",
+    "last complete origin tie, map aim order, computed all-initial-occupant trajectories, blocked retry without draws, clear consume including zero accuracy",
+    "private candidate/clock/scoring reuse restores every hypothesis including projected KO blockers; RNG chains and first complete candidate tie remains",
+    "best compares against owned D0; success publishes only fresh movement mask; late failure returns original workspace/RNG/no partial result"
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4392,
+    "frameworkPassed": 1483,
+    "aiPassed": 1164,
+    "newAiCases": 8,
+    "pythonPassed": 572,
+    "newPythonCases": 3,
+    "trxReports": 7,
+    "sourceFiles": 26,
+    "sourceFunctions": 69,
+    "sourceDescriptions": 11,
+    "sourcePreparedAudit": true,
+    "algorithmGuideAudit": true,
+    "localLinkAudit": true,
+    "coverageAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/roster-stone-entry-301/"
+  },
+  "boundaries": [
+    "isolated selected occurrence; other listed entries affect prefix only, not their effect/lottery stream",
+    "living compact16, flat ordinary ground, explicit source policy/metadata and bounded general preparation remain",
+    "full-list ranking/lottery and roster command/turn integration remain; all other documented deferrals retained"
+  ],
+  "dependencyChanges": false,
+  "newProductionFriendAccess": false,
+  "originalExecuted": false,
+  "cExecuted": false
+}

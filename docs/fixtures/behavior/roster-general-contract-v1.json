@@ -1,0 +1,2221 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-287",
+  "date": "2026-11-05",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "kind": "isolated-roster-general-descriptions",
+  "productionImplemented": false,
+  "notes": [
+    "Hand-worked source descriptions; no original, C or managed execution.",
+    "8x4 flat map. M0/scores use source layer/y/x order. Expectation literals are independent of both implementations.",
+    "Source prefix clock consumes one upkeep draw; each selected movement tile consumes another; non-Blue outside adjustment follows all tiles.",
+    "Rejected policies have no output/RNG adoption. This fixture does not implement retreat, FadingLife or original frame RNG."
+  ],
+  "vectors": [
+    {
+      "id": "automatic-nonblue-manual-focus",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "preparation",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ]
+      },
+      "expected": {
+        "rejection": "None",
+        "focus": "b",
+        "fallback": false,
+        "reach": 2,
+        "active": [
+          "a",
+          "b",
+          "c"
+        ],
+        "imminent": [
+          "b"
+        ],
+        "m0": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "mostly-support-uses-fading-life",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "preparation",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Self"
+            ]
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ]
+      },
+      "expected": {
+        "rejection": "FadingLife"
+      }
+    },
+    {
+      "id": "retained-unavailable-overrides-mostly",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "preparation",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": true,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Self"
+            ]
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ]
+      },
+      "expected": {
+        "rejection": "None",
+        "focus": "b",
+        "fallback": false,
+        "reach": 2,
+        "active": [
+          "a",
+          "b",
+          "c"
+        ],
+        "imminent": [
+          "b"
+        ],
+        "m0": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "critical-retreat-precedes-fading-life",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "preparation",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 10,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Self"
+            ]
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ]
+      },
+      "expected": {
+        "rejection": "ConditionalRetreat"
+      }
+    },
+    {
+      "id": "all-allies-critical-disables-retreat",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "preparation",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 10,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 10,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ]
+      },
+      "expected": {
+        "rejection": "None",
+        "focus": "b",
+        "fallback": false,
+        "reach": 2,
+        "active": [
+          "a",
+          "b",
+          "c"
+        ],
+        "imminent": [
+          "b"
+        ],
+        "m0": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "blue-ratio-below-45-needs-healer-focus",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "preparation",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 0,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 44,
+            "maxHp": 128,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 1,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 0,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ]
+      },
+      "expected": {
+        "rejection": "BlueHealerFocus"
+      }
+    },
+    {
+      "id": "blue-ratio-exact-45-admits",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "preparation",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 0,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 45,
+            "maxHp": 128,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 1,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 0,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ]
+      },
+      "expected": {
+        "rejection": "None",
+        "focus": "b",
+        "fallback": false,
+        "reach": 2,
+        "active": [
+          "a",
+          "b",
+          "c"
+        ],
+        "imminent": [
+          "b"
+        ],
+        "m0": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "nonblue-low-hp-is-not-blue-healer-policy",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "preparation",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 17,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ]
+      },
+      "expected": {
+        "rejection": "None",
+        "focus": "b",
+        "fallback": false,
+        "reach": 2,
+        "active": [
+          "a",
+          "b",
+          "c"
+        ],
+        "imminent": [
+          "b"
+        ],
+        "m0": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "nearest-equal-distance-keeps-first-source-slot",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "preparation",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 2,
+            "tile": [
+              1,
+              3
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ]
+      },
+      "expected": {
+        "rejection": "None",
+        "focus": "b",
+        "fallback": false,
+        "reach": 2,
+        "active": [
+          "a",
+          "b",
+          "c"
+        ],
+        "imminent": [
+          "b"
+        ],
+        "m0": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "in-reach-melee-last-tile-ties",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ]
+      },
+      "expected": {
+        "rejection": "None",
+        "focus": "b",
+        "fallback": false,
+        "reach": 2,
+        "active": [
+          "a",
+          "b",
+          "c"
+        ],
+        "imminent": [
+          "b"
+        ],
+        "m0": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "distance": 2,
+        "outside": false,
+        "mask": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "scenario1": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "scenario2": [],
+        "d0": [
+          2,
+          1
+        ],
+        "d1": [
+          0,
+          1
+        ],
+        "baseline": 3,
+        "effective": 2,
+        "modulo": null,
+        "bound": 1,
+        "filterFallback": false,
+        "destinationFallback": false,
+        "priority": 485,
+        "proximity": [
+          7,
+          7,
+          8,
+          9
+        ],
+        "word": 4182499122,
+        "count": 12
+      }
+    },
+    {
+      "id": "ranged-d0-floor-three",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ]
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ]
+      },
+      "expected": {
+        "rejection": "None",
+        "focus": "b",
+        "fallback": false,
+        "reach": 2,
+        "active": [
+          "a",
+          "b",
+          "c"
+        ],
+        "imminent": [
+          "b"
+        ],
+        "m0": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "distance": 2,
+        "outside": false,
+        "mask": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "scenario1": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "scenario2": [],
+        "d0": [
+          0,
+          1
+        ],
+        "d1": [
+          0,
+          1
+        ],
+        "baseline": 1,
+        "effective": 2,
+        "modulo": null,
+        "bound": 3,
+        "filterFallback": false,
+        "destinationFallback": false,
+        "priority": 485,
+        "proximity": [
+          7,
+          7,
+          8,
+          9
+        ],
+        "word": 4182499122,
+        "count": 12
+      }
+    },
+    {
+      "id": "post-act-retains-reach-but-copies-d1",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": true,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ]
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ]
+      },
+      "expected": {
+        "rejection": "None",
+        "focus": "b",
+        "fallback": false,
+        "reach": 2,
+        "active": [
+          "a",
+          "b",
+          "c"
+        ],
+        "imminent": [
+          "b"
+        ],
+        "m0": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "distance": 2,
+        "outside": false,
+        "mask": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "scenario1": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "scenario2": [],
+        "d0": [
+          0,
+          1
+        ],
+        "d1": [
+          0,
+          1
+        ],
+        "baseline": 1,
+        "effective": 2,
+        "modulo": null,
+        "bound": null,
+        "filterFallback": false,
+        "destinationFallback": false,
+        "priority": 485,
+        "proximity": [
+          7,
+          7,
+          8,
+          9
+        ],
+        "word": 4182499122,
+        "count": 12
+      }
+    },
+    {
+      "id": "out-of-reach-score-before-nonblue-draw",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              7,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ]
+      },
+      "expected": {
+        "rejection": "None",
+        "focus": "b",
+        "fallback": false,
+        "reach": 2,
+        "active": [
+          "a",
+          "b",
+          "c"
+        ],
+        "imminent": [
+          "b"
+        ],
+        "m0": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "distance": 6,
+        "outside": true,
+        "mask": [
+          [
+            2,
+            1
+          ]
+        ],
+        "scenario1": [
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "scenario2": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "d0": [
+          2,
+          1
+        ],
+        "d1": [
+          2,
+          1
+        ],
+        "baseline": 0,
+        "effective": 2,
+        "modulo": 5,
+        "bound": null,
+        "filterFallback": false,
+        "destinationFallback": true,
+        "priority": 485,
+        "proximity": [
+          3,
+          3,
+          4,
+          5
+        ],
+        "word": 662824084,
+        "count": 10
+      }
+    },
+    {
+      "id": "nonblue-modulo-zero-halves-reach",
+      "input": {
+        "actor": "a",
+        "word": 20,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              7,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ]
+      },
+      "expected": {
+        "rejection": "None",
+        "focus": "b",
+        "fallback": false,
+        "reach": 2,
+        "active": [
+          "a",
+          "b",
+          "c"
+        ],
+        "imminent": [
+          "b"
+        ],
+        "m0": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "distance": 6,
+        "outside": true,
+        "mask": [
+          [
+            2,
+            1
+          ]
+        ],
+        "scenario1": [
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "scenario2": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "d0": [
+          2,
+          1
+        ],
+        "d1": [
+          2,
+          1
+        ],
+        "baseline": 0,
+        "effective": 1,
+        "modulo": 0,
+        "bound": null,
+        "filterFallback": false,
+        "destinationFallback": true,
+        "priority": 485,
+        "proximity": [
+          3,
+          3,
+          4,
+          5
+        ],
+        "word": 2966873603,
+        "count": 10
+      }
+    },
+    {
+      "id": "blue-out-of-reach-no-adjustment-draw",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 0,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 1,
+            "tile": [
+              7,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 0,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ]
+      },
+      "expected": {
+        "rejection": "None",
+        "focus": "b",
+        "fallback": false,
+        "reach": 2,
+        "active": [
+          "a",
+          "b",
+          "c"
+        ],
+        "imminent": [
+          "b"
+        ],
+        "m0": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "distance": 6,
+        "outside": true,
+        "mask": [
+          [
+            2,
+            1
+          ]
+        ],
+        "scenario1": [
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "scenario2": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "d0": [
+          2,
+          1
+        ],
+        "d1": [
+          2,
+          1
+        ],
+        "baseline": 0,
+        "effective": 2,
+        "modulo": null,
+        "bound": null,
+        "filterFallback": false,
+        "destinationFallback": true,
+        "priority": 485,
+        "proximity": [
+          3,
+          3,
+          4,
+          5
+        ],
+        "word": 2524885223,
+        "count": 9
+      }
+    },
+    {
+      "id": "already-moved-empty-filter-retains-origin",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": true,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              7,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ]
+      },
+      "expected": {
+        "rejection": "None",
+        "focus": "b",
+        "fallback": false,
+        "reach": 2,
+        "active": [
+          "a",
+          "b",
+          "c"
+        ],
+        "imminent": [
+          "b"
+        ],
+        "m0": [
+          [
+            1,
+            1
+          ]
+        ],
+        "distance": 6,
+        "outside": true,
+        "mask": [
+          [
+            1,
+            1
+          ]
+        ],
+        "scenario1": [
+          [
+            1,
+            1
+          ]
+        ],
+        "scenario2": [],
+        "d0": [
+          1,
+          1
+        ],
+        "d1": [
+          1,
+          1
+        ],
+        "baseline": 0,
+        "effective": 2,
+        "modulo": 5,
+        "bound": null,
+        "filterFallback": true,
+        "destinationFallback": true,
+        "priority": 485,
+        "proximity": [
+          4
+        ],
+        "word": 662824084,
+        "count": 10
+      }
+    },
+    {
+      "id": "zero-move-empty-filter-keeps-unknowns-honest",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 0,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              7,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ]
+      },
+      "expected": {
+        "rejection": "None",
+        "focus": "b",
+        "fallback": false,
+        "reach": 1,
+        "active": [
+          "a",
+          "b",
+          "c"
+        ],
+        "imminent": [
+          "b"
+        ],
+        "m0": [
+          [
+            1,
+            1
+          ]
+        ],
+        "distance": 6,
+        "outside": true,
+        "mask": [
+          [
+            1,
+            1
+          ]
+        ],
+        "scenario1": [
+          [
+            1,
+            1
+          ]
+        ],
+        "scenario2": [],
+        "d0": [
+          1,
+          1
+        ],
+        "d1": [
+          1,
+          1
+        ],
+        "baseline": 0,
+        "effective": 1,
+        "modulo": 5,
+        "bound": null,
+        "filterFallback": true,
+        "destinationFallback": true,
+        "priority": 485,
+        "proximity": [
+          4
+        ],
+        "word": 662824084,
+        "count": 10
+      }
+    },
+    {
+      "id": "no-enemy-self-focus-zeroes-distance-grid",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 1,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ]
+      },
+      "expected": {
+        "rejection": "None",
+        "focus": "a",
+        "fallback": true,
+        "reach": 1,
+        "active": [
+          "a",
+          "b",
+          "c"
+        ],
+        "imminent": [],
+        "m0": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "distance": 0,
+        "outside": false,
+        "mask": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "scenario1": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "scenario2": [],
+        "d0": [
+          2,
+          1
+        ],
+        "d1": [
+          2,
+          1
+        ],
+        "baseline": 3,
+        "effective": 1,
+        "modulo": null,
+        "bound": -1,
+        "filterFallback": false,
+        "destinationFallback": true,
+        "priority": 1455,
+        "proximity": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "word": 4182499122,
+        "count": 12
+      }
+    }
+  ]
+}

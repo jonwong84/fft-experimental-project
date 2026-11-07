@@ -1,0 +1,1193 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "tickets": [
+    "ZOD-376",
+    "ZOD-377",
+    "ZOD-378",
+    "ZOD-379",
+    "ZOD-380",
+    "ZOD-381"
+  ],
+  "markers": [
+    {
+      "id": "primary-miss-replaces-learned",
+      "input": [
+        4,
+        true,
+        false,
+        false
+      ],
+      "expected": 1
+    },
+    {
+      "id": "primary-unchanged-hit",
+      "input": [
+        2,
+        true,
+        true,
+        false
+      ],
+      "expected": 1
+    },
+    {
+      "id": "primary-change",
+      "input": [
+        1,
+        true,
+        true,
+        true
+      ],
+      "expected": 2
+    },
+    {
+      "id": "reaction-miss-preserves",
+      "input": [
+        4,
+        false,
+        false,
+        false
+      ],
+      "expected": 4
+    },
+    {
+      "id": "reaction-change-assigns-affected",
+      "input": [
+        1,
+        false,
+        true,
+        true
+      ],
+      "expected": 2
+    },
+    {
+      "id": "reaction-unchanged",
+      "input": [
+        2,
+        false,
+        true,
+        false
+      ],
+      "expected": 2
+    },
+    {
+      "id": "miss-ignores-changed-certificate",
+      "input": [
+        0,
+        true,
+        false,
+        true
+      ],
+      "expected": 1
+    },
+    {
+      "id": "unknown-bits-preserved-on-reaction-miss",
+      "input": [
+        128,
+        false,
+        false,
+        false
+      ],
+      "expected": 128
+    }
+  ],
+  "experience": [
+    {
+      "id": "same-level-change",
+      "input": [
+        0,
+        10,
+        10,
+        1,
+        1,
+        true,
+        false
+      ],
+      "expected": 10
+    },
+    {
+      "id": "lower-target-floor-before-bonus",
+      "input": [
+        0,
+        99,
+        1,
+        1,
+        1,
+        true,
+        true
+      ],
+      "expected": 2
+    },
+    {
+      "id": "higher-target-cap",
+      "input": [
+        0,
+        1,
+        255,
+        1,
+        1,
+        true,
+        false
+      ],
+      "expected": 99
+    },
+    {
+      "id": "double-before-cap",
+      "input": [
+        0,
+        1,
+        45,
+        1,
+        1,
+        true,
+        true
+      ],
+      "expected": 99
+    },
+    {
+      "id": "keep-highest-not-sum",
+      "input": [
+        14,
+        10,
+        10,
+        1,
+        1,
+        true,
+        false
+      ],
+      "expected": 14
+    },
+    {
+      "id": "no-outcome",
+      "input": [
+        14,
+        10,
+        99,
+        1,
+        0,
+        true,
+        true
+      ],
+      "expected": 14
+    },
+    {
+      "id": "reaction-no-award",
+      "input": [
+        14,
+        10,
+        99,
+        1,
+        1,
+        false,
+        true
+      ],
+      "expected": 14
+    },
+    {
+      "id": "kill-first",
+      "input": [
+        0,
+        10,
+        10,
+        1,
+        2,
+        true,
+        false
+      ],
+      "expected": 20
+    },
+    {
+      "id": "kill-second",
+      "input": [
+        0,
+        10,
+        10,
+        2,
+        2,
+        true,
+        false
+      ],
+      "expected": 10
+    },
+    {
+      "id": "kill-third-truncates",
+      "input": [
+        0,
+        10,
+        10,
+        3,
+        2,
+        true,
+        false
+      ],
+      "expected": 6
+    },
+    {
+      "id": "kill-zero-count",
+      "input": [
+        0,
+        10,
+        10,
+        0,
+        2,
+        true,
+        false
+      ],
+      "expected": 20
+    },
+    {
+      "id": "kill-large-count",
+      "input": [
+        0,
+        10,
+        10,
+        255,
+        2,
+        true,
+        false
+      ],
+      "expected": 1
+    },
+    {
+      "id": "preserve-byte-accumulator",
+      "input": [
+        250,
+        1,
+        255,
+        0,
+        2,
+        true,
+        true
+      ],
+      "expected": 250
+    },
+    {
+      "id": "raw-byte-levels",
+      "input": [
+        0,
+        255,
+        0,
+        0,
+        2,
+        true,
+        false
+      ],
+      "expected": 1
+    }
+  ],
+  "amounts": [
+    {
+      "id": "ordinary",
+      "input": [
+        10,
+        1,
+        10,
+        false,
+        false
+      ],
+      "expected": [
+        10,
+        12,
+        12,
+        3
+      ]
+    },
+    {
+      "id": "pre-level-four",
+      "input": [
+        3,
+        1,
+        10,
+        false,
+        false
+      ],
+      "expected": [
+        10,
+        10,
+        10,
+        2
+      ]
+    },
+    {
+      "id": "level-four-bonus",
+      "input": [
+        4,
+        1,
+        10,
+        false,
+        true
+      ],
+      "expected": [
+        10,
+        11,
+        16,
+        2
+      ]
+    },
+    {
+      "id": "no-exp-no-jp",
+      "input": [
+        99,
+        8,
+        0,
+        false,
+        true
+      ],
+      "expected": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "monster-exp-only",
+      "input": [
+        99,
+        8,
+        10,
+        true,
+        true
+      ],
+      "expected": [
+        10,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "max-normal",
+      "input": [
+        99,
+        8,
+        99,
+        false,
+        true
+      ],
+      "expected": [
+        99,
+        48,
+        72,
+        12
+      ]
+    },
+    {
+      "id": "raw-job-nibble",
+      "input": [
+        255,
+        15,
+        255,
+        false,
+        true
+      ],
+      "expected": [
+        255,
+        101,
+        151,
+        25
+      ]
+    },
+    {
+      "id": "level-zero",
+      "input": [
+        0,
+        0,
+        1,
+        false,
+        false
+      ],
+      "expected": [
+        1,
+        8,
+        8,
+        2
+      ]
+    }
+  ],
+  "balances": [
+    {
+      "id": "below-threshold",
+      "input": [
+        90,
+        9,
+        10
+      ],
+      "expected": [
+        99,
+        10,
+        false
+      ]
+    },
+    {
+      "id": "exact-threshold",
+      "input": [
+        90,
+        10,
+        10
+      ],
+      "expected": [
+        0,
+        11,
+        true
+      ]
+    },
+    {
+      "id": "discard-excess",
+      "input": [
+        99,
+        99,
+        10
+      ],
+      "expected": [
+        0,
+        11,
+        true
+      ]
+    },
+    {
+      "id": "cap-before-one-level",
+      "input": [
+        250,
+        99,
+        10
+      ],
+      "expected": [
+        0,
+        11,
+        true
+      ]
+    },
+    {
+      "id": "max-level-held",
+      "input": [
+        90,
+        10,
+        99
+      ],
+      "expected": [
+        99,
+        99,
+        false
+      ]
+    },
+    {
+      "id": "old-over-threshold-even-zero",
+      "input": [
+        100,
+        0,
+        98
+      ],
+      "expected": [
+        0,
+        99,
+        true
+      ]
+    },
+    {
+      "id": "raw-level-over-max",
+      "input": [
+        255,
+        255,
+        255
+      ],
+      "expected": [
+        99,
+        255,
+        false
+      ]
+    },
+    {
+      "id": "zero-no-growth",
+      "input": [
+        0,
+        0,
+        1
+      ],
+      "expected": [
+        0,
+        1,
+        false
+      ]
+    }
+  ],
+  "jobPoints": [
+    {
+      "id": "below-first",
+      "input": [
+        0,
+        0,
+        99,
+        [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      ],
+      "expected": [
+        99,
+        99,
+        0
+      ]
+    },
+    {
+      "id": "exact-first",
+      "input": [
+        0,
+        0,
+        100,
+        [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      ],
+      "expected": [
+        100,
+        100,
+        1
+      ]
+    },
+    {
+      "id": "separate-fields",
+      "input": [
+        50,
+        199,
+        1,
+        [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      ],
+      "expected": [
+        51,
+        200,
+        2
+      ]
+    },
+    {
+      "id": "spent-current-level-from-total",
+      "input": [
+        0,
+        2100,
+        0,
+        [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      ],
+      "expected": [
+        0,
+        2100,
+        8
+      ]
+    },
+    {
+      "id": "cap-current",
+      "input": [
+        9990,
+        2000,
+        20,
+        [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      ],
+      "expected": [
+        9999,
+        2020,
+        7
+      ]
+    },
+    {
+      "id": "cap-total",
+      "input": [
+        1,
+        9990,
+        20,
+        [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      ],
+      "expected": [
+        21,
+        9999,
+        8
+      ]
+    },
+    {
+      "id": "zero-still-clamps",
+      "input": [
+        65535,
+        65535,
+        0,
+        [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      ],
+      "expected": [
+        9999,
+        9999,
+        8
+      ]
+    },
+    {
+      "id": "unsorted-count-not-break",
+      "input": [
+        1,
+        200,
+        0,
+        [
+          300,
+          100,
+          200
+        ]
+      ],
+      "expected": [
+        1,
+        200,
+        2
+      ]
+    },
+    {
+      "id": "duplicate-thresholds-count",
+      "input": [
+        0,
+        100,
+        0,
+        [
+          100,
+          100
+        ]
+      ],
+      "expected": [
+        0,
+        100,
+        2
+      ]
+    },
+    {
+      "id": "no-thresholds",
+      "input": [
+        10,
+        20,
+        5,
+        []
+      ],
+      "expected": [
+        15,
+        25,
+        0
+      ]
+    },
+    {
+      "id": "wide-safe-award",
+      "input": [
+        1,
+        2,
+        2147418112,
+        [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      ],
+      "expected": [
+        9999,
+        9999,
+        8
+      ]
+    }
+  ],
+  "rosters": [
+    {
+      "id": "hamed\u014d-before-disabled",
+      "input": {
+        "units": [],
+        "earned": 14,
+        "job": 75,
+        "hamedo": true,
+        "canEarn": false,
+        "thresholds": [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "amounts": null,
+        "balance": null,
+        "display": null,
+        "points": null
+      }
+    },
+    {
+      "id": "disabled-before-actor",
+      "input": {
+        "units": [],
+        "earned": 14,
+        "job": 75,
+        "hamedo": false,
+        "canEarn": false,
+        "thresholds": [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      },
+      "expected": {
+        "disposition": "Skipped",
+        "amounts": null,
+        "balance": null,
+        "display": null,
+        "points": null
+      }
+    },
+    {
+      "id": "petrify-blocks-actor",
+      "input": {
+        "units": [
+          [
+            "actor",
+            0,
+            0,
+            0,
+            10,
+            90,
+            1,
+            20,
+            199,
+            [
+              "petrify"
+            ]
+          ]
+        ],
+        "earned": 14,
+        "job": 75,
+        "hamedo": false,
+        "canEarn": true,
+        "thresholds": [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "amounts": null,
+        "balance": null,
+        "display": null,
+        "points": null
+      }
+    },
+    {
+      "id": "charmed-team-and-petrified-recipient",
+      "input": {
+        "units": [
+          [
+            "peer",
+            3,
+            1,
+            0,
+            10,
+            90,
+            1,
+            20,
+            199,
+            [
+              "petrify"
+            ]
+          ],
+          [
+            "actor",
+            0,
+            0,
+            1,
+            10,
+            90,
+            1,
+            20,
+            199,
+            [
+              "jpUp"
+            ]
+          ],
+          [
+            "oldTeam",
+            1,
+            0,
+            0,
+            10,
+            90,
+            1,
+            20,
+            199,
+            []
+          ]
+        ],
+        "earned": 14,
+        "job": 75,
+        "hamedo": false,
+        "canEarn": true,
+        "thresholds": [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      },
+      "expected": {
+        "disposition": "Projected",
+        "amounts": [
+          14,
+          12,
+          18,
+          3
+        ],
+        "balance": [
+          0,
+          11,
+          true
+        ],
+        "display": [
+          11,
+          2
+        ],
+        "points": [
+          [
+            "peer",
+            3,
+            23,
+            202,
+            2
+          ],
+          [
+            "actor",
+            18,
+            38,
+            217,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "zero-award-still-clamps-and-levels",
+      "input": {
+        "units": [
+          [
+            "actor",
+            0,
+            0,
+            0,
+            10,
+            0,
+            1,
+            65535,
+            65535,
+            []
+          ]
+        ],
+        "earned": 0,
+        "job": 75,
+        "hamedo": false,
+        "canEarn": true,
+        "thresholds": [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      },
+      "expected": {
+        "disposition": "Projected",
+        "amounts": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "balance": [
+          0,
+          10,
+          false
+        ],
+        "display": [
+          0,
+          8
+        ],
+        "points": [
+          [
+            "actor",
+            0,
+            9999,
+            9999,
+            8
+          ]
+        ]
+      }
+    },
+    {
+      "id": "female-bard-display-without-own-storage",
+      "input": {
+        "units": [
+          [
+            "actor",
+            0,
+            0,
+            0,
+            10,
+            90,
+            1,
+            20,
+            199,
+            [
+              "female"
+            ]
+          ],
+          [
+            "peer",
+            1,
+            0,
+            0,
+            10,
+            90,
+            1,
+            20,
+            199,
+            []
+          ]
+        ],
+        "earned": 14,
+        "job": 91,
+        "hamedo": false,
+        "canEarn": true,
+        "thresholds": [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      },
+      "expected": {
+        "disposition": "Projected",
+        "amounts": [
+          14,
+          12,
+          12,
+          3
+        ],
+        "balance": [
+          0,
+          11,
+          true
+        ],
+        "display": [
+          11,
+          0
+        ],
+        "points": [
+          [
+            "peer",
+            3,
+            23,
+            202,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "monster-exp-only",
+      "input": {
+        "units": [
+          [
+            "actor",
+            0,
+            0,
+            0,
+            10,
+            90,
+            1,
+            20,
+            199,
+            [
+              "monster"
+            ]
+          ]
+        ],
+        "earned": 14,
+        "job": 75,
+        "hamedo": false,
+        "canEarn": true,
+        "thresholds": [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      },
+      "expected": {
+        "disposition": "Projected",
+        "amounts": [
+          14,
+          0,
+          0,
+          0
+        ],
+        "balance": [
+          0,
+          11,
+          true
+        ],
+        "display": [
+          11,
+          0
+        ],
+        "points": []
+      }
+    },
+    {
+      "id": "level99-experience-and-prelevel-jp",
+      "input": {
+        "units": [
+          [
+            "actor",
+            0,
+            0,
+            0,
+            99,
+            99,
+            8,
+            20,
+            2100,
+            [
+              "jpUp"
+            ]
+          ]
+        ],
+        "earned": 99,
+        "job": 75,
+        "hamedo": false,
+        "canEarn": true,
+        "thresholds": [
+          100,
+          200,
+          350,
+          550,
+          800,
+          1150,
+          1550,
+          2100
+        ]
+      },
+      "expected": {
+        "disposition": "Projected",
+        "amounts": [
+          99,
+          48,
+          72,
+          12
+        ],
+        "balance": [
+          99,
+          99,
+          false
+        ],
+        "display": [
+          0,
+          0
+        ],
+        "points": [
+          [
+            "actor",
+            72,
+            92,
+            2172,
+            8
+          ]
+        ]
+      }
+    }
+  ]
+}

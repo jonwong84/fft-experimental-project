@@ -1,0 +1,169 @@
+{
+  "format": "fft.general-banner-precision-evidence",
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "managedBase": "89630c2",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "evidenceKind": "source-informed-emulator-capture-precision-study",
+  "originalComparisonPerformed": true,
+  "originalFidelityEstablished": false,
+  "runtimeRendererChanged": false,
+  "renderingPolicySelected": false,
+  "originalTimingVerified": false,
+  "bannerTimeDrawModeWriterVerified": false,
+  "installedDllSourceRevisionVerified": false,
+  "emulatorStudyBuildMatchesInstalledDll": null,
+  "emulatorStudyRepository": "https://github.com/libretro/beetle-psx-libretro",
+  "emulatorStudyRevision": "dda8cf71d420b1972d92324a5edecf2b92b1ec92",
+  "emulatorSourceLicense": "GPL-2.0; source study only, source copies under ignored scratch; no emulator code/library dependency added",
+  "externalSourceIdentities": [
+    {
+      "path": "mednafen/psx/gpu.c",
+      "url": "https://raw.githubusercontent.com/libretro/beetle-psx-libretro/dda8cf71d420b1972d92324a5edecf2b92b1ec92/mednafen/psx/gpu.c",
+      "bytes": 114575,
+      "sha256": "eb9d79b45e6f01ee4c6d757751d423abcb60048ff8efa8b0636095a3509ad83b"
+    },
+    {
+      "path": "mednafen/psx/gpu_common.h",
+      "url": "https://raw.githubusercontent.com/libretro/beetle-psx-libretro/dda8cf71d420b1972d92324a5edecf2b92b1ec92/mednafen/psx/gpu_common.h",
+      "bytes": 52055,
+      "sha256": "2fbe5496c2c700941d012e374857e8579f8b2fa6712ccc60ad85417b2bfe7c42"
+    },
+    {
+      "path": "mednafen/psx/gpu_polygon.c",
+      "url": "https://raw.githubusercontent.com/libretro/beetle-psx-libretro/dda8cf71d420b1972d92324a5edecf2b92b1ec92/mednafen/psx/gpu_polygon.c",
+      "bytes": 84883,
+      "sha256": "aa5caec17c678cc5d28321bbb7f2cc4fabd2c4689850bf8feae2d9b0aa423af2"
+    },
+    {
+      "path": "COPYING",
+      "url": "https://raw.githubusercontent.com/libretro/beetle-psx-libretro/dda8cf71d420b1972d92324a5edecf2b92b1ec92/COPYING",
+      "bytes": 18010,
+      "sha256": "a6996dcf0c334281f734560926e079b2dbbd5b78e81c0ca00a413ec01e1cd2fb"
+    },
+    {
+      "path": "mednafen/state.c",
+      "url": "https://raw.githubusercontent.com/libretro/beetle-psx-libretro/dda8cf71d420b1972d92324a5edecf2b92b1ec92/mednafen/state.c",
+      "bytes": 30321,
+      "sha256": "543d24ef7a5f58de4c81c980332f01b8d5d93e9a2a23aa7f7dd0393d54441e03"
+    },
+    {
+      "path": "mednafen/state_helpers.h",
+      "url": "https://raw.githubusercontent.com/libretro/beetle-psx-libretro/dda8cf71d420b1972d92324a5edecf2b92b1ec92/mednafen/state_helpers.h",
+      "bytes": 4372,
+      "sha256": "cc33b98ff8c6c8f189086da51914fcbc1ba71268ea203a797b65199142154737"
+    },
+    {
+      "path": "tasks/task_save.c",
+      "url": "https://raw.githubusercontent.com/libretro/RetroArch/59e4fc7/tasks/task_save.c",
+      "bytes": 49679,
+      "sha256": "d666bd11a721d4305a0e6e90739dd465c456662a9afa1449050a4c745c0cf484"
+    },
+    {
+      "path": "libretro-common/streams/rzip_stream.c",
+      "url": "https://raw.githubusercontent.com/libretro/RetroArch/59e4fc7/libretro-common/streams/rzip_stream.c",
+      "bytes": 31669,
+      "sha256": "f641cc17c52d1e5ebb66780a7152318642737c89b3d81e6bf8c73109c903e5a2"
+    }
+  ],
+  "fftSourcePaths": [
+    "src/event/require/conditions.c",
+    "src/battle/frame.c",
+    "src/lib/menu/display.c",
+    "src/battle/map/runtime.c",
+    "src/platform/psyq/libgpu/get_mode.c"
+  ],
+  "frozenState": {
+    "path": "scratch/banner-033-original-a/fft-clean-base-game.state",
+    "sha256": "133b893188d0abe7909725f910496b74bad9cfc85733cb38d76fece03048901a"
+  },
+  "frozenGpu": {
+    "dtd": 0,
+    "displayMode": 0,
+    "displayFramebuffer": [
+      0,
+      240
+    ],
+    "vramSha256": "97191d6c51d35f4cc3a1656f2e9b3fa1944c7479008fe0d7be04ac0492fadb6d"
+  },
+  "originalPng": {
+    "path": "scratch/banner-033-original-a/restore-004-a/frame.png",
+    "sha256": "4fc1a51f516efbd1c94493476f0b382e901e2c0e0baf7cc865a391e4463d65aa"
+  },
+  "managedPng": {
+    "path": "scratch/banner-078-preview-a/tick-020.png",
+    "sha256": "c76dd1042fd3ea64e84a3d4fa7c9d7f2ee1ae844def11eabe3b7e9068412a719"
+  },
+  "plan": {
+    "localPath": "scratch/banner-033-comparison-plan/plan.json",
+    "byteLength": 2247,
+    "sha256": "58a12df650a711c3128fc260490510f8a02ad1817cc47411e3c23567b04308a1"
+  },
+  "reports": [
+    {
+      "localPath": "scratch/banner-precision-e/report.json",
+      "byteLength": 8432,
+      "sha256": "28a7aa31ea9f66386c7b8933e9354edae94962423db39c6df3db5d2b6d752ec4"
+    },
+    {
+      "localPath": "scratch/banner-precision-f/report.json",
+      "byteLength": 8432,
+      "sha256": "28a7aa31ea9f66386c7b8933e9354edae94962423db39c6df3db5d2b6d752ec4"
+    }
+  ],
+  "reportsByteIdentical": true,
+  "selectedSamples": 1577,
+  "selectedModelChangedPixels": 0,
+  "selectedModelMaxRgbDelta": [
+    0,
+    0,
+    0
+  ],
+  "frozenVramChangedPixels": 0,
+  "historicalModernChangedPixels": 1460,
+  "originalAllChannelsMultiplesOfEight": true,
+  "cases": [
+    {
+      "id": "state-selected-native",
+      "samples": 1577,
+      "changedPixels": 0,
+      "excludedBackgroundSensitivePixels": 0
+    },
+    {
+      "id": "counterfactual-dither-toggle",
+      "samples": 1433,
+      "changedPixels": 657,
+      "excludedBackgroundSensitivePixels": 144
+    },
+    {
+      "id": "counterfactual-bit-replication",
+      "samples": 1577,
+      "changedPixels": 1441,
+      "excludedBackgroundSensitivePixels": 0
+    },
+    {
+      "id": "counterfactual-no-half-unit-color-bias",
+      "samples": 1577,
+      "changedPixels": 192,
+      "excludedBackgroundSensitivePixels": 0
+    }
+  ],
+  "tools": [
+    {
+      "localPath": "tools/verification/analyze_banner_precision.py",
+      "byteLength": 11270,
+      "sha256": "86f8085bdf875677f20020ed2e3138ff1a1b2ed5eb26f84d861ce4a7e0efe2f3"
+    },
+    {
+      "localPath": "tools/verification/test_banner_precision.py",
+      "byteLength": 8198,
+      "sha256": "68a8d6c8a4964c9d4f5071349b05db09a280257108212cf9ea1fcd681af89bcb"
+    }
+  ],
+  "pythonTestsPassed": 66,
+  "authoredTestsAdded": 14,
+  "managedSuiteRerun": false,
+  "lastManagedTestsPassed": 1388,
+  "interpretation": "The selected foreground discrepancy is explained at this checkpoint by five-bit material arithmetic, quantized vertical colors, snapshot dtd=0 and zero-padded emulator scanout. This does not establish a general native renderer, original timing, per-primitive draw-state provenance or hardware equivalence.",
+  "nextGate": "Select an explicit bounded precision profile; trace banner-time draw state before choosing a compatibility default. Preserve modern RGB8 expectations. Obtain pre-banner anchors for reveal/hide timing."
+}

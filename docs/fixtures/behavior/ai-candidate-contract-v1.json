@@ -1,0 +1,3783 @@
+{
+  "format": "fft.ai-candidate-source-description",
+  "schemaVersion": 1,
+  "ticket": "ZOD-124",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "execution": "offline-source-and-proposed-adapter-description",
+  "productionImplemented": false,
+  "vectorCount": 44,
+  "vectors": [
+    {
+      "id": "normal",
+      "family": "source-status",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "hp": 50,
+        "maxHp": 50,
+        "damage": 25,
+        "hasAccuracy": true,
+        "status": "None",
+        "deathCounter": 255
+      },
+      "expected": {
+        "hp": 25,
+        "status": "None",
+        "deathCounter": 255
+      }
+    },
+    {
+      "id": "critical-at-threshold",
+      "family": "source-status",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "hp": 50,
+        "maxHp": 50,
+        "damage": 40,
+        "hasAccuracy": true,
+        "status": "None",
+        "deathCounter": 255
+      },
+      "expected": {
+        "hp": 10,
+        "status": "Critical",
+        "deathCounter": 255
+      }
+    },
+    {
+      "id": "above-threshold",
+      "family": "source-status",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "hp": 50,
+        "maxHp": 50,
+        "damage": 39,
+        "hasAccuracy": true,
+        "status": "None",
+        "deathCounter": 255
+      },
+      "expected": {
+        "hp": 11,
+        "status": "None",
+        "deathCounter": 255
+      }
+    },
+    {
+      "id": "ko",
+      "family": "source-status",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "hp": 50,
+        "maxHp": 50,
+        "damage": 50,
+        "hasAccuracy": true,
+        "status": "None",
+        "deathCounter": 255
+      },
+      "expected": {
+        "hp": 0,
+        "status": "Dead",
+        "deathCounter": 3
+      }
+    },
+    {
+      "id": "overkill",
+      "family": "source-status",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "hp": 50,
+        "maxHp": 50,
+        "damage": 999,
+        "hasAccuracy": true,
+        "status": "None",
+        "deathCounter": 255
+      },
+      "expected": {
+        "hp": 0,
+        "status": "Dead",
+        "deathCounter": 3
+      }
+    },
+    {
+      "id": "odd-max-floor",
+      "family": "source-status",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "hp": 51,
+        "maxHp": 51,
+        "damage": 41,
+        "hasAccuracy": true,
+        "status": "None",
+        "deathCounter": 255
+      },
+      "expected": {
+        "hp": 10,
+        "status": "Critical",
+        "deathCounter": 255
+      }
+    },
+    {
+      "id": "zero-damage",
+      "family": "source-status",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "hp": 10,
+        "maxHp": 50,
+        "damage": 0,
+        "hasAccuracy": true,
+        "status": "Critical",
+        "deathCounter": 255
+      },
+      "expected": {
+        "hp": 10,
+        "status": "Critical",
+        "deathCounter": 255
+      }
+    },
+    {
+      "id": "certain-evade",
+      "family": "source-status",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "hp": 50,
+        "maxHp": 50,
+        "damage": 999,
+        "hasAccuracy": false,
+        "status": "None",
+        "deathCounter": 255
+      },
+      "expected": {
+        "hp": 50,
+        "status": "None",
+        "deathCounter": 255
+      }
+    },
+    {
+      "id": "order-MoveThenAct-False-False",
+      "family": "source-order",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "hasAccuracy": false,
+        "facing": "West"
+      },
+      "expected": {
+        "steps": [
+          "ProjectAction",
+          "RestoreBaseline"
+        ],
+        "scored": false,
+        "facing": "West"
+      }
+    },
+    {
+      "id": "order-MoveThenAct-False-True",
+      "family": "source-order",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "hasAccuracy": true,
+        "facing": "West"
+      },
+      "expected": {
+        "steps": [
+          "ProjectAction",
+          "ActTaken",
+          "TurnEnd",
+          "FirstClockEvent",
+          "RestoreClockGlobals",
+          "Score",
+          "RestoreBaseline"
+        ],
+        "scored": true,
+        "facing": "West"
+      }
+    },
+    {
+      "id": "order-MoveThenAct-True-False",
+      "family": "source-order",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          1,
+          0
+        ],
+        "hasAccuracy": false,
+        "facing": "West"
+      },
+      "expected": {
+        "steps": [
+          "PlaceCoordinates",
+          "MoveTaken",
+          "ProjectAction",
+          "RestoreBaseline"
+        ],
+        "scored": false,
+        "facing": "West"
+      }
+    },
+    {
+      "id": "order-MoveThenAct-True-True",
+      "family": "source-order",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          1,
+          0
+        ],
+        "hasAccuracy": true,
+        "facing": "West"
+      },
+      "expected": {
+        "steps": [
+          "PlaceCoordinates",
+          "MoveTaken",
+          "ProjectAction",
+          "ActTaken",
+          "TurnEnd",
+          "FirstClockEvent",
+          "RestoreClockGlobals",
+          "Score",
+          "RestoreBaseline"
+        ],
+        "scored": true,
+        "facing": "West"
+      }
+    },
+    {
+      "id": "order-ActThenMove-False-False",
+      "family": "source-order",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "order": "ActThenMove",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "hasAccuracy": false,
+        "facing": "West"
+      },
+      "expected": {
+        "steps": [
+          "ProjectAction",
+          "RestoreBaseline"
+        ],
+        "scored": false,
+        "facing": "West"
+      }
+    },
+    {
+      "id": "order-ActThenMove-False-True",
+      "family": "source-order",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "order": "ActThenMove",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "hasAccuracy": true,
+        "facing": "West"
+      },
+      "expected": {
+        "steps": [
+          "ProjectAction",
+          "ActTaken",
+          "TurnEnd",
+          "FirstClockEvent",
+          "RestoreClockGlobals",
+          "Score",
+          "RestoreBaseline"
+        ],
+        "scored": true,
+        "facing": "West"
+      }
+    },
+    {
+      "id": "order-ActThenMove-True-False",
+      "family": "source-order",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "order": "ActThenMove",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          1,
+          0
+        ],
+        "hasAccuracy": false,
+        "facing": "West"
+      },
+      "expected": {
+        "steps": [
+          "ProjectAction",
+          "RestoreBaseline"
+        ],
+        "scored": false,
+        "facing": "West"
+      }
+    },
+    {
+      "id": "order-ActThenMove-True-True",
+      "family": "source-order",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "order": "ActThenMove",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          1,
+          0
+        ],
+        "hasAccuracy": true,
+        "facing": "West"
+      },
+      "expected": {
+        "steps": [
+          "ProjectAction",
+          "ActTaken",
+          "PlaceCoordinates",
+          "MoveTaken",
+          "TurnEnd",
+          "FirstClockEvent",
+          "RestoreClockGlobals",
+          "Score",
+          "RestoreBaseline"
+        ],
+        "scored": true,
+        "facing": "West"
+      }
+    },
+    {
+      "id": "pick-before-add",
+      "family": "source-clock",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "units": [
+          {
+            "slot": 0,
+            "ct": 20,
+            "speed": 5,
+            "status": "None",
+            "moved": true,
+            "acted": true
+          },
+          {
+            "slot": 1,
+            "ct": 100,
+            "speed": 5,
+            "status": "None",
+            "moved": true,
+            "acted": true
+          }
+        ]
+      },
+      "expected": {
+        "units": [
+          {
+            "slot": 0,
+            "ct": 20,
+            "speed": 5,
+            "status": "None",
+            "moved": true,
+            "acted": true
+          },
+          {
+            "slot": 1,
+            "ct": 0,
+            "speed": 5,
+            "status": "None",
+            "moved": false,
+            "acted": false
+          }
+        ],
+        "elapsedTicks": 0,
+        "upkeepDraws": 1,
+        "picks": [
+          {
+            "slot": 1,
+            "ctBefore": 100,
+            "ctAfter": 0,
+            "dead": false
+          }
+        ],
+        "readySlot": 1,
+        "moveOpportunitySlot": 1,
+        "activeUnit": null,
+        "deathCountersChanged": false
+      }
+    },
+    {
+      "id": "lower-slot-tie",
+      "family": "source-clock",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "units": [
+          {
+            "slot": 0,
+            "ct": 95,
+            "speed": 5,
+            "status": "None",
+            "moved": true,
+            "acted": true
+          },
+          {
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "status": "None",
+            "moved": true,
+            "acted": true
+          }
+        ]
+      },
+      "expected": {
+        "units": [
+          {
+            "slot": 0,
+            "ct": 0,
+            "speed": 5,
+            "status": "None",
+            "moved": false,
+            "acted": false
+          },
+          {
+            "slot": 1,
+            "ct": 100,
+            "speed": 5,
+            "status": "None",
+            "moved": true,
+            "acted": true
+          }
+        ],
+        "elapsedTicks": 1,
+        "upkeepDraws": 1,
+        "picks": [
+          {
+            "slot": 0,
+            "ctBefore": 100,
+            "ctAfter": 0,
+            "dead": false
+          }
+        ],
+        "readySlot": 0,
+        "moveOpportunitySlot": 0,
+        "activeUnit": null,
+        "deathCountersChanged": false
+      }
+    },
+    {
+      "id": "highest-ct",
+      "family": "source-clock",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "units": [
+          {
+            "slot": 0,
+            "ct": 95,
+            "speed": 5,
+            "status": "None",
+            "moved": true,
+            "acted": true
+          },
+          {
+            "slot": 1,
+            "ct": 96,
+            "speed": 5,
+            "status": "None",
+            "moved": true,
+            "acted": true
+          }
+        ]
+      },
+      "expected": {
+        "units": [
+          {
+            "slot": 0,
+            "ct": 100,
+            "speed": 5,
+            "status": "None",
+            "moved": true,
+            "acted": true
+          },
+          {
+            "slot": 1,
+            "ct": 1,
+            "speed": 5,
+            "status": "None",
+            "moved": false,
+            "acted": false
+          }
+        ],
+        "elapsedTicks": 1,
+        "upkeepDraws": 1,
+        "picks": [
+          {
+            "slot": 1,
+            "ctBefore": 101,
+            "ctAfter": 1,
+            "dead": false
+          }
+        ],
+        "readySlot": 1,
+        "moveOpportunitySlot": 1,
+        "activeUnit": null,
+        "deathCountersChanged": false
+      }
+    },
+    {
+      "id": "byte-cap",
+      "family": "source-clock",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "units": [
+          {
+            "slot": 0,
+            "ct": 0,
+            "speed": 1,
+            "status": "None",
+            "moved": true,
+            "acted": true
+          },
+          {
+            "slot": 1,
+            "ct": 90,
+            "speed": 255,
+            "status": "None",
+            "moved": true,
+            "acted": true
+          }
+        ]
+      },
+      "expected": {
+        "units": [
+          {
+            "slot": 0,
+            "ct": 1,
+            "speed": 1,
+            "status": "None",
+            "moved": true,
+            "acted": true
+          },
+          {
+            "slot": 1,
+            "ct": 54,
+            "speed": 255,
+            "status": "None",
+            "moved": false,
+            "acted": false
+          }
+        ],
+        "elapsedTicks": 1,
+        "upkeepDraws": 1,
+        "picks": [
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": false
+          }
+        ],
+        "readySlot": 1,
+        "moveOpportunitySlot": 1,
+        "activeUnit": null,
+        "deathCountersChanged": false
+      }
+    },
+    {
+      "id": "dead-picked-without-ready",
+      "family": "source-clock",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "units": [
+          {
+            "slot": 0,
+            "ct": 20,
+            "speed": 5,
+            "status": "None",
+            "moved": true,
+            "acted": true
+          },
+          {
+            "slot": 1,
+            "ct": 100,
+            "speed": 5,
+            "status": "Dead",
+            "moved": true,
+            "acted": true
+          }
+        ]
+      },
+      "expected": {
+        "units": [
+          {
+            "slot": 0,
+            "ct": 0,
+            "speed": 5,
+            "status": "None",
+            "moved": false,
+            "acted": false
+          },
+          {
+            "slot": 1,
+            "ct": 80,
+            "speed": 5,
+            "status": "Dead",
+            "moved": true,
+            "acted": true
+          }
+        ],
+        "elapsedTicks": 16,
+        "upkeepDraws": 2,
+        "picks": [
+          {
+            "slot": 1,
+            "ctBefore": 100,
+            "ctAfter": 0,
+            "dead": true
+          },
+          {
+            "slot": 0,
+            "ctBefore": 100,
+            "ctAfter": 0,
+            "dead": false
+          }
+        ],
+        "readySlot": 0,
+        "moveOpportunitySlot": 0,
+        "activeUnit": null,
+        "deathCountersChanged": false
+      }
+    },
+    {
+      "id": "dead-fast",
+      "family": "source-clock",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "units": [
+          {
+            "slot": 0,
+            "ct": 0,
+            "speed": 1,
+            "status": "None",
+            "moved": true,
+            "acted": true
+          },
+          {
+            "slot": 1,
+            "ct": 0,
+            "speed": 255,
+            "status": "Dead",
+            "moved": true,
+            "acted": true
+          }
+        ]
+      },
+      "expected": {
+        "units": [
+          {
+            "slot": 0,
+            "ct": 0,
+            "speed": 1,
+            "status": "None",
+            "moved": false,
+            "acted": false
+          },
+          {
+            "slot": 1,
+            "ct": 54,
+            "speed": 255,
+            "status": "Dead",
+            "moved": true,
+            "acted": true
+          }
+        ],
+        "elapsedTicks": 100,
+        "upkeepDraws": 101,
+        "picks": [
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 1,
+            "ctBefore": 254,
+            "ctAfter": 54,
+            "dead": true
+          },
+          {
+            "slot": 0,
+            "ctBefore": 100,
+            "ctAfter": 0,
+            "dead": false
+          }
+        ],
+        "readySlot": 0,
+        "moveOpportunitySlot": 0,
+        "activeUnit": null,
+        "deathCountersChanged": false
+      }
+    },
+    {
+      "id": "already-ready",
+      "family": "source-clock",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "units": [
+          {
+            "slot": 0,
+            "ct": 110,
+            "speed": 5,
+            "status": "None",
+            "moved": true,
+            "acted": true
+          },
+          {
+            "slot": 1,
+            "ct": 99,
+            "speed": 5,
+            "status": "None",
+            "moved": true,
+            "acted": true
+          }
+        ]
+      },
+      "expected": {
+        "units": [
+          {
+            "slot": 0,
+            "ct": 10,
+            "speed": 5,
+            "status": "None",
+            "moved": false,
+            "acted": false
+          },
+          {
+            "slot": 1,
+            "ct": 99,
+            "speed": 5,
+            "status": "None",
+            "moved": true,
+            "acted": true
+          }
+        ],
+        "elapsedTicks": 0,
+        "upkeepDraws": 1,
+        "picks": [
+          {
+            "slot": 0,
+            "ctBefore": 110,
+            "ctAfter": 10,
+            "dead": false
+          }
+        ],
+        "readySlot": 0,
+        "moveOpportunitySlot": 0,
+        "activeUnit": null,
+        "deathCountersChanged": false
+      }
+    },
+    {
+      "id": "critical-ready",
+      "family": "source-clock",
+      "expectationKind": "source-derived-closed-domain",
+      "inputs": {
+        "units": [
+          {
+            "slot": 0,
+            "ct": 0,
+            "speed": 5,
+            "status": "None",
+            "moved": true,
+            "acted": true
+          },
+          {
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "status": "Critical",
+            "moved": true,
+            "acted": true
+          }
+        ]
+      },
+      "expected": {
+        "units": [
+          {
+            "slot": 0,
+            "ct": 5,
+            "speed": 5,
+            "status": "None",
+            "moved": true,
+            "acted": true
+          },
+          {
+            "slot": 1,
+            "ct": 0,
+            "speed": 5,
+            "status": "Critical",
+            "moved": false,
+            "acted": false
+          }
+        ],
+        "elapsedTicks": 1,
+        "upkeepDraws": 1,
+        "picks": [
+          {
+            "slot": 1,
+            "ctBefore": 100,
+            "ctAfter": 0,
+            "dead": false
+          }
+        ],
+        "readySlot": 1,
+        "moveOpportunitySlot": 1,
+        "activeUnit": null,
+        "deathCountersChanged": false
+      }
+    },
+    {
+      "id": "stay",
+      "family": "proposed-candidate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "terminal": false,
+        "activeActor": true,
+        "acted": false,
+        "moved": false,
+        "profileSupported": true,
+        "placementAllowed": true,
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "facing": "West",
+        "targetFacing": "East",
+        "rngWord": 1,
+        "rngCount": 7,
+        "hitPercent": 100,
+        "damage": 25,
+        "actorCt": 15,
+        "actorSpeed": 5,
+        "actorSlot": 0,
+        "actorStatus": "None",
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "targetStatus": "None",
+        "targetHp": 50,
+        "targetMaxHp": 50,
+        "deathCounter": 255,
+        "targetMoved": true,
+        "targetActed": true,
+        "elapsedTicks": 20
+      },
+      "expected": {
+        "disposition": "Projected",
+        "reason": null,
+        "inputUnchanged": true,
+        "rngWord": 4182499122,
+        "rngCount": 12,
+        "rngDraws": 5,
+        "outcome": {
+          "position": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "target": {
+            "hp": 25,
+            "status": "None",
+            "deathCounter": 255
+          },
+          "turnEndCt": 35,
+          "clock": {
+            "units": [
+              {
+                "slot": 0,
+                "ct": 40,
+                "speed": 5,
+                "status": "None",
+                "moved": false,
+                "acted": true
+              },
+              {
+                "slot": 1,
+                "ct": 0,
+                "speed": 5,
+                "status": "None",
+                "moved": false,
+                "acted": false
+              }
+            ],
+            "elapsedTicks": 1,
+            "upkeepDraws": 1,
+            "picks": [
+              {
+                "slot": 1,
+                "ctBefore": 100,
+                "ctAfter": 0,
+                "dead": false
+              }
+            ],
+            "readySlot": 1,
+            "moveOpportunitySlot": 1,
+            "activeUnit": null,
+            "deathCountersChanged": false
+          },
+          "targetKnockedOut": false,
+          "terminalPolicyApplied": false,
+          "clockGlobalsRestored": true
+        }
+      }
+    },
+    {
+      "id": "move-first",
+      "family": "proposed-candidate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "terminal": false,
+        "activeActor": true,
+        "acted": false,
+        "moved": false,
+        "profileSupported": true,
+        "placementAllowed": true,
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          1,
+          0
+        ],
+        "facing": "West",
+        "targetFacing": "East",
+        "rngWord": 1,
+        "rngCount": 7,
+        "hitPercent": 100,
+        "damage": 25,
+        "actorCt": 15,
+        "actorSpeed": 5,
+        "actorSlot": 0,
+        "actorStatus": "None",
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "targetStatus": "None",
+        "targetHp": 50,
+        "targetMaxHp": 50,
+        "deathCounter": 255,
+        "targetMoved": true,
+        "targetActed": true,
+        "elapsedTicks": 20
+      },
+      "expected": {
+        "disposition": "Projected",
+        "reason": null,
+        "inputUnchanged": true,
+        "rngWord": 4182499122,
+        "rngCount": 12,
+        "rngDraws": 5,
+        "outcome": {
+          "position": [
+            1,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "target": {
+            "hp": 25,
+            "status": "None",
+            "deathCounter": 255
+          },
+          "turnEndCt": 15,
+          "clock": {
+            "units": [
+              {
+                "slot": 0,
+                "ct": 20,
+                "speed": 5,
+                "status": "None",
+                "moved": true,
+                "acted": true
+              },
+              {
+                "slot": 1,
+                "ct": 0,
+                "speed": 5,
+                "status": "None",
+                "moved": false,
+                "acted": false
+              }
+            ],
+            "elapsedTicks": 1,
+            "upkeepDraws": 1,
+            "picks": [
+              {
+                "slot": 1,
+                "ctBefore": 100,
+                "ctAfter": 0,
+                "dead": false
+              }
+            ],
+            "readySlot": 1,
+            "moveOpportunitySlot": 1,
+            "activeUnit": null,
+            "deathCountersChanged": false
+          },
+          "targetKnockedOut": false,
+          "terminalPolicyApplied": false,
+          "clockGlobalsRestored": true
+        }
+      }
+    },
+    {
+      "id": "act-first",
+      "family": "proposed-candidate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "terminal": false,
+        "activeActor": true,
+        "acted": false,
+        "moved": false,
+        "profileSupported": true,
+        "placementAllowed": true,
+        "order": "ActThenMove",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          1,
+          0
+        ],
+        "facing": "West",
+        "targetFacing": "East",
+        "rngWord": 1,
+        "rngCount": 7,
+        "hitPercent": 100,
+        "damage": 25,
+        "actorCt": 15,
+        "actorSpeed": 5,
+        "actorSlot": 0,
+        "actorStatus": "None",
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "targetStatus": "None",
+        "targetHp": 50,
+        "targetMaxHp": 50,
+        "deathCounter": 255,
+        "targetMoved": true,
+        "targetActed": true,
+        "elapsedTicks": 20
+      },
+      "expected": {
+        "disposition": "Projected",
+        "reason": null,
+        "inputUnchanged": true,
+        "rngWord": 4182499122,
+        "rngCount": 12,
+        "rngDraws": 5,
+        "outcome": {
+          "position": [
+            1,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "target": {
+            "hp": 25,
+            "status": "None",
+            "deathCounter": 255
+          },
+          "turnEndCt": 15,
+          "clock": {
+            "units": [
+              {
+                "slot": 0,
+                "ct": 20,
+                "speed": 5,
+                "status": "None",
+                "moved": true,
+                "acted": true
+              },
+              {
+                "slot": 1,
+                "ct": 0,
+                "speed": 5,
+                "status": "None",
+                "moved": false,
+                "acted": false
+              }
+            ],
+            "elapsedTicks": 1,
+            "upkeepDraws": 1,
+            "picks": [
+              {
+                "slot": 1,
+                "ctBefore": 100,
+                "ctAfter": 0,
+                "dead": false
+              }
+            ],
+            "readySlot": 1,
+            "moveOpportunitySlot": 1,
+            "activeUnit": null,
+            "deathCountersChanged": false
+          },
+          "targetKnockedOut": false,
+          "terminalPolicyApplied": false,
+          "clockGlobalsRestored": true
+        }
+      }
+    },
+    {
+      "id": "partial-accuracy",
+      "family": "proposed-candidate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "terminal": false,
+        "activeActor": true,
+        "acted": false,
+        "moved": false,
+        "profileSupported": true,
+        "placementAllowed": true,
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "facing": "West",
+        "targetFacing": "East",
+        "rngWord": 1,
+        "rngCount": 7,
+        "hitPercent": 50,
+        "damage": 25,
+        "actorCt": 15,
+        "actorSpeed": 5,
+        "actorSlot": 0,
+        "actorStatus": "None",
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "targetStatus": "None",
+        "targetHp": 50,
+        "targetMaxHp": 50,
+        "deathCounter": 255,
+        "targetMoved": true,
+        "targetActed": true,
+        "elapsedTicks": 20
+      },
+      "expected": {
+        "disposition": "Projected",
+        "reason": null,
+        "inputUnchanged": true,
+        "rngWord": 4182499122,
+        "rngCount": 12,
+        "rngDraws": 5,
+        "outcome": {
+          "position": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "target": {
+            "hp": 25,
+            "status": "None",
+            "deathCounter": 255
+          },
+          "turnEndCt": 35,
+          "clock": {
+            "units": [
+              {
+                "slot": 0,
+                "ct": 40,
+                "speed": 5,
+                "status": "None",
+                "moved": false,
+                "acted": true
+              },
+              {
+                "slot": 1,
+                "ct": 0,
+                "speed": 5,
+                "status": "None",
+                "moved": false,
+                "acted": false
+              }
+            ],
+            "elapsedTicks": 1,
+            "upkeepDraws": 1,
+            "picks": [
+              {
+                "slot": 1,
+                "ctBefore": 100,
+                "ctAfter": 0,
+                "dead": false
+              }
+            ],
+            "readySlot": 1,
+            "moveOpportunitySlot": 1,
+            "activeUnit": null,
+            "deathCountersChanged": false
+          },
+          "targetKnockedOut": false,
+          "terminalPolicyApplied": false,
+          "clockGlobalsRestored": true
+        }
+      }
+    },
+    {
+      "id": "candidate-critical",
+      "family": "proposed-candidate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "terminal": false,
+        "activeActor": true,
+        "acted": false,
+        "moved": false,
+        "profileSupported": true,
+        "placementAllowed": true,
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "facing": "West",
+        "targetFacing": "East",
+        "rngWord": 1,
+        "rngCount": 7,
+        "hitPercent": 100,
+        "damage": 40,
+        "actorCt": 15,
+        "actorSpeed": 5,
+        "actorSlot": 0,
+        "actorStatus": "None",
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "targetStatus": "None",
+        "targetHp": 50,
+        "targetMaxHp": 50,
+        "deathCounter": 255,
+        "targetMoved": true,
+        "targetActed": true,
+        "elapsedTicks": 20
+      },
+      "expected": {
+        "disposition": "Projected",
+        "reason": null,
+        "inputUnchanged": true,
+        "rngWord": 4182499122,
+        "rngCount": 12,
+        "rngDraws": 5,
+        "outcome": {
+          "position": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "target": {
+            "hp": 10,
+            "status": "Critical",
+            "deathCounter": 255
+          },
+          "turnEndCt": 35,
+          "clock": {
+            "units": [
+              {
+                "slot": 0,
+                "ct": 40,
+                "speed": 5,
+                "status": "None",
+                "moved": false,
+                "acted": true
+              },
+              {
+                "slot": 1,
+                "ct": 0,
+                "speed": 5,
+                "status": "Critical",
+                "moved": false,
+                "acted": false
+              }
+            ],
+            "elapsedTicks": 1,
+            "upkeepDraws": 1,
+            "picks": [
+              {
+                "slot": 1,
+                "ctBefore": 100,
+                "ctAfter": 0,
+                "dead": false
+              }
+            ],
+            "readySlot": 1,
+            "moveOpportunitySlot": 1,
+            "activeUnit": null,
+            "deathCountersChanged": false
+          },
+          "targetKnockedOut": false,
+          "terminalPolicyApplied": false,
+          "clockGlobalsRestored": true
+        }
+      }
+    },
+    {
+      "id": "candidate-ko",
+      "family": "proposed-candidate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "terminal": false,
+        "activeActor": true,
+        "acted": false,
+        "moved": false,
+        "profileSupported": true,
+        "placementAllowed": true,
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "facing": "West",
+        "targetFacing": "East",
+        "rngWord": 1,
+        "rngCount": 7,
+        "hitPercent": 100,
+        "damage": 50,
+        "actorCt": 15,
+        "actorSpeed": 5,
+        "actorSlot": 0,
+        "actorStatus": "None",
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "targetStatus": "None",
+        "targetHp": 50,
+        "targetMaxHp": 50,
+        "deathCounter": 255,
+        "targetMoved": true,
+        "targetActed": true,
+        "elapsedTicks": 20
+      },
+      "expected": {
+        "disposition": "Projected",
+        "reason": null,
+        "inputUnchanged": true,
+        "rngWord": 2516284547,
+        "rngCount": 13,
+        "rngDraws": 6,
+        "outcome": {
+          "position": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "target": {
+            "hp": 0,
+            "status": "Dead",
+            "deathCounter": 3
+          },
+          "turnEndCt": 35,
+          "clock": {
+            "units": [
+              {
+                "slot": 0,
+                "ct": 0,
+                "speed": 5,
+                "status": "None",
+                "moved": false,
+                "acted": false
+              },
+              {
+                "slot": 1,
+                "ct": 60,
+                "speed": 5,
+                "status": "Dead",
+                "moved": true,
+                "acted": true
+              }
+            ],
+            "elapsedTicks": 13,
+            "upkeepDraws": 2,
+            "picks": [
+              {
+                "slot": 1,
+                "ctBefore": 100,
+                "ctAfter": 0,
+                "dead": true
+              },
+              {
+                "slot": 0,
+                "ctBefore": 100,
+                "ctAfter": 0,
+                "dead": false
+              }
+            ],
+            "readySlot": 0,
+            "moveOpportunitySlot": 0,
+            "activeUnit": null,
+            "deathCountersChanged": false
+          },
+          "targetKnockedOut": true,
+          "terminalPolicyApplied": false,
+          "clockGlobalsRestored": true
+        }
+      }
+    },
+    {
+      "id": "candidate-ko-fast",
+      "family": "proposed-candidate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "terminal": false,
+        "activeActor": true,
+        "acted": false,
+        "moved": false,
+        "profileSupported": true,
+        "placementAllowed": true,
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          1,
+          0
+        ],
+        "facing": "West",
+        "targetFacing": "East",
+        "rngWord": 1,
+        "rngCount": 7,
+        "hitPercent": 100,
+        "damage": 50,
+        "actorCt": 0,
+        "actorSpeed": 1,
+        "actorSlot": 0,
+        "actorStatus": "None",
+        "targetCt": 0,
+        "targetSpeed": 255,
+        "targetStatus": "None",
+        "targetHp": 50,
+        "targetMaxHp": 50,
+        "deathCounter": 255,
+        "targetMoved": true,
+        "targetActed": true,
+        "elapsedTicks": 20
+      },
+      "expected": {
+        "disposition": "Projected",
+        "reason": null,
+        "inputUnchanged": true,
+        "rngWord": 3758492830,
+        "rngCount": 112,
+        "rngDraws": 105,
+        "outcome": {
+          "position": [
+            1,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "target": {
+            "hp": 0,
+            "status": "Dead",
+            "deathCounter": 3
+          },
+          "turnEndCt": 0,
+          "clock": {
+            "units": [
+              {
+                "slot": 0,
+                "ct": 0,
+                "speed": 1,
+                "status": "None",
+                "moved": false,
+                "acted": false
+              },
+              {
+                "slot": 1,
+                "ct": 54,
+                "speed": 255,
+                "status": "Dead",
+                "moved": true,
+                "acted": true
+              }
+            ],
+            "elapsedTicks": 100,
+            "upkeepDraws": 101,
+            "picks": [
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 1,
+                "ctBefore": 254,
+                "ctAfter": 54,
+                "dead": true
+              },
+              {
+                "slot": 0,
+                "ctBefore": 100,
+                "ctAfter": 0,
+                "dead": false
+              }
+            ],
+            "readySlot": 0,
+            "moveOpportunitySlot": 0,
+            "activeUnit": null,
+            "deathCountersChanged": false
+          },
+          "targetKnockedOut": true,
+          "terminalPolicyApplied": false,
+          "clockGlobalsRestored": true
+        }
+      }
+    },
+    {
+      "id": "second-actor",
+      "family": "proposed-candidate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "terminal": false,
+        "activeActor": true,
+        "acted": false,
+        "moved": false,
+        "profileSupported": true,
+        "placementAllowed": true,
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "facing": "West",
+        "targetFacing": "East",
+        "rngWord": 1,
+        "rngCount": 7,
+        "hitPercent": 100,
+        "damage": 25,
+        "actorCt": 15,
+        "actorSpeed": 5,
+        "actorSlot": 1,
+        "actorStatus": "None",
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "targetStatus": "None",
+        "targetHp": 50,
+        "targetMaxHp": 50,
+        "deathCounter": 255,
+        "targetMoved": true,
+        "targetActed": true,
+        "elapsedTicks": 20
+      },
+      "expected": {
+        "disposition": "Projected",
+        "reason": null,
+        "inputUnchanged": true,
+        "rngWord": 4182499122,
+        "rngCount": 12,
+        "rngDraws": 5,
+        "outcome": {
+          "position": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "target": {
+            "hp": 25,
+            "status": "None",
+            "deathCounter": 255
+          },
+          "turnEndCt": 35,
+          "clock": {
+            "units": [
+              {
+                "slot": 1,
+                "ct": 40,
+                "speed": 5,
+                "status": "None",
+                "moved": false,
+                "acted": true
+              },
+              {
+                "slot": 0,
+                "ct": 0,
+                "speed": 5,
+                "status": "None",
+                "moved": false,
+                "acted": false
+              }
+            ],
+            "elapsedTicks": 1,
+            "upkeepDraws": 1,
+            "picks": [
+              {
+                "slot": 0,
+                "ctBefore": 100,
+                "ctAfter": 0,
+                "dead": false
+              }
+            ],
+            "readySlot": 0,
+            "moveOpportunitySlot": 0,
+            "activeUnit": null,
+            "deathCountersChanged": false
+          },
+          "targetKnockedOut": false,
+          "terminalPolicyApplied": false,
+          "clockGlobalsRestored": true
+        }
+      }
+    },
+    {
+      "id": "candidate-target-ready",
+      "family": "proposed-candidate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "terminal": false,
+        "activeActor": true,
+        "acted": false,
+        "moved": false,
+        "profileSupported": true,
+        "placementAllowed": true,
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "facing": "West",
+        "targetFacing": "East",
+        "rngWord": 1,
+        "rngCount": 7,
+        "hitPercent": 100,
+        "damage": 25,
+        "actorCt": 15,
+        "actorSpeed": 5,
+        "actorSlot": 0,
+        "actorStatus": "None",
+        "targetCt": 100,
+        "targetSpeed": 5,
+        "targetStatus": "None",
+        "targetHp": 50,
+        "targetMaxHp": 50,
+        "deathCounter": 255,
+        "targetMoved": true,
+        "targetActed": true,
+        "elapsedTicks": 20
+      },
+      "expected": {
+        "disposition": "Projected",
+        "reason": null,
+        "inputUnchanged": true,
+        "rngWord": 4182499122,
+        "rngCount": 12,
+        "rngDraws": 5,
+        "outcome": {
+          "position": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "target": {
+            "hp": 25,
+            "status": "None",
+            "deathCounter": 255
+          },
+          "turnEndCt": 35,
+          "clock": {
+            "units": [
+              {
+                "slot": 0,
+                "ct": 35,
+                "speed": 5,
+                "status": "None",
+                "moved": false,
+                "acted": true
+              },
+              {
+                "slot": 1,
+                "ct": 0,
+                "speed": 5,
+                "status": "None",
+                "moved": false,
+                "acted": false
+              }
+            ],
+            "elapsedTicks": 0,
+            "upkeepDraws": 1,
+            "picks": [
+              {
+                "slot": 1,
+                "ctBefore": 100,
+                "ctAfter": 0,
+                "dead": false
+              }
+            ],
+            "readySlot": 1,
+            "moveOpportunitySlot": 1,
+            "activeUnit": null,
+            "deathCountersChanged": false
+          },
+          "targetKnockedOut": false,
+          "terminalPolicyApplied": false,
+          "clockGlobalsRestored": true
+        }
+      }
+    },
+    {
+      "id": "prior-move-stay",
+      "family": "proposed-candidate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "terminal": false,
+        "activeActor": true,
+        "acted": false,
+        "moved": true,
+        "profileSupported": true,
+        "placementAllowed": true,
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "facing": "West",
+        "targetFacing": "East",
+        "rngWord": 1,
+        "rngCount": 7,
+        "hitPercent": 100,
+        "damage": 25,
+        "actorCt": 15,
+        "actorSpeed": 5,
+        "actorSlot": 0,
+        "actorStatus": "None",
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "targetStatus": "None",
+        "targetHp": 50,
+        "targetMaxHp": 50,
+        "deathCounter": 255,
+        "targetMoved": true,
+        "targetActed": true,
+        "elapsedTicks": 20
+      },
+      "expected": {
+        "disposition": "Projected",
+        "reason": null,
+        "inputUnchanged": true,
+        "rngWord": 4182499122,
+        "rngCount": 12,
+        "rngDraws": 5,
+        "outcome": {
+          "position": [
+            0,
+            0
+          ],
+          "facing": "West",
+          "targetFacing": "East",
+          "target": {
+            "hp": 25,
+            "status": "None",
+            "deathCounter": 255
+          },
+          "turnEndCt": 15,
+          "clock": {
+            "units": [
+              {
+                "slot": 0,
+                "ct": 20,
+                "speed": 5,
+                "status": "None",
+                "moved": true,
+                "acted": true
+              },
+              {
+                "slot": 1,
+                "ct": 0,
+                "speed": 5,
+                "status": "None",
+                "moved": false,
+                "acted": false
+              }
+            ],
+            "elapsedTicks": 1,
+            "upkeepDraws": 1,
+            "picks": [
+              {
+                "slot": 1,
+                "ctBefore": 100,
+                "ctAfter": 0,
+                "dead": false
+              }
+            ],
+            "readySlot": 1,
+            "moveOpportunitySlot": 1,
+            "activeUnit": null,
+            "deathCountersChanged": false
+          },
+          "targetKnockedOut": false,
+          "terminalPolicyApplied": false,
+          "clockGlobalsRestored": true
+        }
+      }
+    },
+    {
+      "id": "terminal-input",
+      "family": "proposed-candidate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "terminal": true,
+        "activeActor": true,
+        "acted": false,
+        "moved": false,
+        "profileSupported": true,
+        "placementAllowed": true,
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "facing": "West",
+        "targetFacing": "East",
+        "rngWord": 1,
+        "rngCount": 7,
+        "hitPercent": 100,
+        "damage": 25,
+        "actorCt": 15,
+        "actorSpeed": 5,
+        "actorSlot": 0,
+        "actorStatus": "None",
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "targetStatus": "None",
+        "targetHp": 50,
+        "targetMaxHp": 50,
+        "deathCounter": 255,
+        "targetMoved": true,
+        "targetActed": true,
+        "elapsedTicks": 20
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "TerminalInput",
+        "outcome": null,
+        "inputUnchanged": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "action-used",
+      "family": "proposed-candidate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "terminal": false,
+        "activeActor": true,
+        "acted": true,
+        "moved": false,
+        "profileSupported": true,
+        "placementAllowed": true,
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "facing": "West",
+        "targetFacing": "East",
+        "rngWord": 1,
+        "rngCount": 7,
+        "hitPercent": 100,
+        "damage": 25,
+        "actorCt": 15,
+        "actorSpeed": 5,
+        "actorSlot": 0,
+        "actorStatus": "None",
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "targetStatus": "None",
+        "targetHp": 50,
+        "targetMaxHp": 50,
+        "deathCounter": 255,
+        "targetMoved": true,
+        "targetActed": true,
+        "elapsedTicks": 20
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "UnavailableAction",
+        "outcome": null,
+        "inputUnchanged": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "unsupported-profile",
+      "family": "proposed-candidate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "terminal": false,
+        "activeActor": true,
+        "acted": false,
+        "moved": false,
+        "profileSupported": false,
+        "placementAllowed": true,
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "facing": "West",
+        "targetFacing": "East",
+        "rngWord": 1,
+        "rngCount": 7,
+        "hitPercent": 100,
+        "damage": 25,
+        "actorCt": 15,
+        "actorSpeed": 5,
+        "actorSlot": 0,
+        "actorStatus": "None",
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "targetStatus": "None",
+        "targetHp": 50,
+        "targetMaxHp": 50,
+        "deathCounter": 255,
+        "targetMoved": true,
+        "targetActed": true,
+        "elapsedTicks": 20
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "UnsupportedProfile",
+        "outcome": null,
+        "inputUnchanged": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "invalid-placement",
+      "family": "proposed-candidate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "terminal": false,
+        "activeActor": true,
+        "acted": false,
+        "moved": false,
+        "profileSupported": true,
+        "placementAllowed": false,
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "facing": "West",
+        "targetFacing": "East",
+        "rngWord": 1,
+        "rngCount": 7,
+        "hitPercent": 100,
+        "damage": 25,
+        "actorCt": 15,
+        "actorSpeed": 5,
+        "actorSlot": 0,
+        "actorStatus": "None",
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "targetStatus": "None",
+        "targetHp": 50,
+        "targetMaxHp": 50,
+        "deathCounter": 255,
+        "targetMoved": true,
+        "targetActed": true,
+        "elapsedTicks": 20
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "InvalidCandidate",
+        "outcome": null,
+        "inputUnchanged": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "move-used",
+      "family": "proposed-candidate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "terminal": false,
+        "activeActor": true,
+        "acted": false,
+        "moved": true,
+        "profileSupported": true,
+        "placementAllowed": true,
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          1,
+          0
+        ],
+        "facing": "West",
+        "targetFacing": "East",
+        "rngWord": 1,
+        "rngCount": 7,
+        "hitPercent": 100,
+        "damage": 25,
+        "actorCt": 15,
+        "actorSpeed": 5,
+        "actorSlot": 0,
+        "actorStatus": "None",
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "targetStatus": "None",
+        "targetHp": 50,
+        "targetMaxHp": 50,
+        "deathCounter": 255,
+        "targetMoved": true,
+        "targetActed": true,
+        "elapsedTicks": 20
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "InvalidCandidate",
+        "outcome": null,
+        "inputUnchanged": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "not-valuable",
+      "family": "proposed-candidate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "terminal": false,
+        "activeActor": true,
+        "acted": false,
+        "moved": false,
+        "profileSupported": true,
+        "placementAllowed": true,
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "facing": "West",
+        "targetFacing": "East",
+        "rngWord": 1,
+        "rngCount": 7,
+        "hitPercent": 0,
+        "damage": 25,
+        "actorCt": 15,
+        "actorSpeed": 5,
+        "actorSlot": 0,
+        "actorStatus": "None",
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "targetStatus": "None",
+        "targetHp": 50,
+        "targetMaxHp": 50,
+        "deathCounter": 255,
+        "targetMoved": true,
+        "targetActed": true,
+        "elapsedTicks": 20
+      },
+      "expected": {
+        "disposition": "NotValuable",
+        "reason": null,
+        "outcome": null,
+        "inputUnchanged": true,
+        "rngWord": 3295386429,
+        "rngCount": 11,
+        "rngDraws": 4
+      }
+    },
+    {
+      "id": "rng-exhaustion",
+      "family": "proposed-candidate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "terminal": false,
+        "activeActor": true,
+        "acted": false,
+        "moved": false,
+        "profileSupported": true,
+        "placementAllowed": true,
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "facing": "West",
+        "targetFacing": "East",
+        "rngWord": 1,
+        "rngCount": 18446744073709551612,
+        "hitPercent": 100,
+        "damage": 25,
+        "actorCt": 15,
+        "actorSpeed": 5,
+        "actorSlot": 0,
+        "actorStatus": "None",
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "targetStatus": "None",
+        "targetHp": 50,
+        "targetMaxHp": 50,
+        "deathCounter": 255,
+        "targetMoved": true,
+        "targetActed": true,
+        "elapsedTicks": 20
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "RandomDrawCountExhausted",
+        "outcome": null,
+        "inputUnchanged": true,
+        "rngWord": 1,
+        "rngCount": 18446744073709551612,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "tick-exhaustion",
+      "family": "proposed-candidate",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "terminal": false,
+        "activeActor": true,
+        "acted": false,
+        "moved": false,
+        "profileSupported": true,
+        "placementAllowed": true,
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "facing": "West",
+        "targetFacing": "East",
+        "rngWord": 1,
+        "rngCount": 7,
+        "hitPercent": 100,
+        "damage": 25,
+        "actorCt": 15,
+        "actorSpeed": 5,
+        "actorSlot": 0,
+        "actorStatus": "None",
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "targetStatus": "None",
+        "targetHp": 50,
+        "targetMaxHp": 50,
+        "deathCounter": 255,
+        "targetMoved": true,
+        "targetActed": true,
+        "elapsedTicks": 18446744073709551615
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "TickCountExhausted",
+        "outcome": null,
+        "inputUnchanged": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "discard-carry-replay",
+      "family": "proposed-ownership",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "terminal": false,
+        "activeActor": true,
+        "acted": false,
+        "moved": false,
+        "profileSupported": true,
+        "placementAllowed": true,
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "facing": "West",
+        "targetFacing": "East",
+        "rngWord": 1,
+        "rngCount": 7,
+        "hitPercent": 100,
+        "damage": 25,
+        "actorCt": 15,
+        "actorSpeed": 5,
+        "actorSlot": 0,
+        "actorStatus": "None",
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "targetStatus": "None",
+        "targetHp": 50,
+        "targetMaxHp": 50,
+        "deathCounter": 255,
+        "targetMoved": true,
+        "targetActed": true,
+        "elapsedTicks": 20
+      },
+      "expected": {
+        "first": {
+          "disposition": "Projected",
+          "reason": null,
+          "inputUnchanged": true,
+          "rngWord": 4182499122,
+          "rngCount": 12,
+          "rngDraws": 5,
+          "outcome": {
+            "position": [
+              0,
+              0
+            ],
+            "facing": "West",
+            "targetFacing": "East",
+            "target": {
+              "hp": 25,
+              "status": "None",
+              "deathCounter": 255
+            },
+            "turnEndCt": 35,
+            "clock": {
+              "units": [
+                {
+                  "slot": 0,
+                  "ct": 40,
+                  "speed": 5,
+                  "status": "None",
+                  "moved": false,
+                  "acted": true
+                },
+                {
+                  "slot": 1,
+                  "ct": 0,
+                  "speed": 5,
+                  "status": "None",
+                  "moved": false,
+                  "acted": false
+                }
+              ],
+              "elapsedTicks": 1,
+              "upkeepDraws": 1,
+              "picks": [
+                {
+                  "slot": 1,
+                  "ctBefore": 100,
+                  "ctAfter": 0,
+                  "dead": false
+                }
+              ],
+              "readySlot": 1,
+              "moveOpportunitySlot": 1,
+              "activeUnit": null,
+              "deathCountersChanged": false
+            },
+            "targetKnockedOut": false,
+            "terminalPolicyApplied": false,
+            "clockGlobalsRestored": true
+          }
+        },
+        "second": {
+          "disposition": "Projected",
+          "reason": null,
+          "inputUnchanged": true,
+          "rngWord": 267834847,
+          "rngCount": 17,
+          "rngDraws": 5,
+          "outcome": {
+            "position": [
+              0,
+              0
+            ],
+            "facing": "West",
+            "targetFacing": "East",
+            "target": {
+              "hp": 25,
+              "status": "None",
+              "deathCounter": 255
+            },
+            "turnEndCt": 35,
+            "clock": {
+              "units": [
+                {
+                  "slot": 0,
+                  "ct": 40,
+                  "speed": 5,
+                  "status": "None",
+                  "moved": false,
+                  "acted": true
+                },
+                {
+                  "slot": 1,
+                  "ct": 0,
+                  "speed": 5,
+                  "status": "None",
+                  "moved": false,
+                  "acted": false
+                }
+              ],
+              "elapsedTicks": 1,
+              "upkeepDraws": 1,
+              "picks": [
+                {
+                  "slot": 1,
+                  "ctBefore": 100,
+                  "ctAfter": 0,
+                  "dead": false
+                }
+              ],
+              "readySlot": 1,
+              "moveOpportunitySlot": 1,
+              "activeUnit": null,
+              "deathCountersChanged": false
+            },
+            "targetKnockedOut": false,
+            "terminalPolicyApplied": false,
+            "clockGlobalsRestored": true
+          }
+        },
+        "replayEqual": true,
+        "discardedStateReused": false,
+        "carriedDecisionRng": true
+      }
+    },
+    {
+      "id": "discard-noaccuracy-carry",
+      "family": "proposed-ownership",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "terminal": false,
+        "activeActor": true,
+        "acted": false,
+        "moved": false,
+        "profileSupported": true,
+        "placementAllowed": true,
+        "order": "MoveThenAct",
+        "origin": [
+          0,
+          0
+        ],
+        "destination": [
+          0,
+          0
+        ],
+        "facing": "West",
+        "targetFacing": "East",
+        "rngWord": 1,
+        "rngCount": 7,
+        "hitPercent": 0,
+        "damage": 25,
+        "actorCt": 15,
+        "actorSpeed": 5,
+        "actorSlot": 0,
+        "actorStatus": "None",
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "targetStatus": "None",
+        "targetHp": 50,
+        "targetMaxHp": 50,
+        "deathCounter": 255,
+        "targetMoved": true,
+        "targetActed": true,
+        "elapsedTicks": 20
+      },
+      "expected": {
+        "first": {
+          "disposition": "NotValuable",
+          "reason": null,
+          "outcome": null,
+          "inputUnchanged": true,
+          "rngWord": 3295386429,
+          "rngCount": 11,
+          "rngDraws": 4
+        },
+        "second": {
+          "disposition": "NotValuable",
+          "reason": null,
+          "outcome": null,
+          "inputUnchanged": true,
+          "rngWord": 2633739833,
+          "rngCount": 15,
+          "rngDraws": 4
+        },
+        "replayEqual": true,
+        "discardedStateReused": false,
+        "carriedDecisionRng": true
+      }
+    }
+  ],
+  "implementationCases": [
+    {
+      "id": "ACP-001",
+      "description": "Both candidate orders; formula origin and private placement",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACP-002",
+      "description": "Stay/prior Move keeps Move flag and unused refund",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACP-003",
+      "description": "Incoming facing retained; never use real path heading",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACP-004",
+      "description": "Partial accuracy applies full damage; zero accuracy NotValuable",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACP-005",
+      "description": "Critical threshold and odd max HP",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACP-006",
+      "description": "Lethal and overkill remain admitted, Dead replaces Critical",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACP-007",
+      "description": "PickUnit before AddCt and readiness modulo",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACP-008",
+      "description": "CT cap, highest CT and original slot tie",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACP-009",
+      "description": "Dead upkeep picks consume draws without turn/counter decay",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACP-010",
+      "description": "Ready unit choice reset then has_turn cleared; move opportunity",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACP-011",
+      "description": "Reject terminal, unavailable action and unsupported profiles before draws",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACP-012",
+      "description": "Invalid/movement-used candidate rejection before draws",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACP-013",
+      "description": "Late RNG/tick overflow rolls back all output",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACP-014",
+      "description": "Discard candidate state while carrying decision RNG",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACP-015",
+      "description": "Replay and independent branches without hidden RNG",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACP-016",
+      "description": "Exact input preserved, no events/receipts/activation",
+      "status": "unexecuted"
+    }
+  ]
+}

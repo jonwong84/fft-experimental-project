@@ -1,0 +1,512 @@
+{
+  "format": "fft.accumulate-implementation-validation",
+  "schemaVersion": 1,
+  "ticket": "ZOD-105",
+  "validatedOn": "2026-10-26",
+  "status": "complete within the closed source-derived authored profile",
+  "managedBase": "402d4d9d0eddf693403264594d754f12dd24c117",
+  "guide": "docs/behavior/accumulate-implementation.md",
+  "contract": "docs/evidence/combat/accumulate-contract-v1.json",
+  "reference": {
+    "root": "C:/repositories/fft_decomp",
+    "revision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "clean": true,
+    "readOnly": true,
+    "freshlyCheckedBeforeImplementation": true
+  },
+  "sourceIdentities": [
+    {
+      "localPath": "src/Zodiac.AssetTool.Cli/ImportMetadataCommand.cs",
+      "bytes": 8803,
+      "sha256": "464a22f8326e4b607c46ae657b266e7d008f74be805eab6753ae01fd19688950"
+    },
+    {
+      "localPath": "src/Zodiac.AssetTool.Cli/OriginalAccumulateImporter.cs",
+      "bytes": 5179,
+      "sha256": "1eb8626e5b4b9c045eddb7b41731d65539d2247724cad62217ce0f87da3368a4"
+    },
+    {
+      "localPath": "src/Zodiac.AssetTool.Cli/Program.cs",
+      "bytes": 3351,
+      "sha256": "78f80daf0e592a2d2d26de9300fda691675dbc4f3ff91d79d27aef63c172b4d5"
+    },
+    {
+      "localPath": "src/Zodiac.AssetTool/OriginalImmediateAbilityRecords.cs",
+      "bytes": 1500,
+      "sha256": "ccc47df645c2da8f85ffd05c19541864cc1fdad0e1dd0bd7896a1c6a9ac30914"
+    },
+    {
+      "localPath": "src/Zodiac.Content/BattleSetup/ImmediateAbilityBattleSetup.cs",
+      "bytes": 2633,
+      "sha256": "fbb3e7adc77ebcff2cfdcc2779012f3409a0cc5d9400aac5d6a216fad7e948b1"
+    },
+    {
+      "localPath": "src/Zodiac.Content/ContentPackages/ImmediateAbilityContentPackage.cs",
+      "bytes": 6687,
+      "sha256": "527c245f4a3c4782d96e673d4210ae4e85095c3d661bb7d2e8ae41eb8eaad41d"
+    },
+    {
+      "localPath": "src/Zodiac.Content/Definitions/ImmediateAbilityDefinition.cs",
+      "bytes": 975,
+      "sha256": "5221db8dae864b9828659868be81c319a25733fe7ab7126d6fc4febdb09262b1"
+    },
+    {
+      "localPath": "src/Zodiac.Content/Samples/SyntheticAccumulateBattle.cs",
+      "bytes": 2795,
+      "sha256": "a2831c050add7597e4b9dd94f729d4fd4aadcd20a08d3ac2413419e3fb504db9"
+    },
+    {
+      "localPath": "src/Zodiac.Content/Saves/TwoUnitBattleSave.Files.cs",
+      "bytes": 2301,
+      "sha256": "18d91de2e27e5f7a6d24a667398611b2397cbbe2d80a18e7edb3355517c33ea1"
+    },
+    {
+      "localPath": "src/Zodiac.Content/Saves/TwoUnitBattleSave.cs",
+      "bytes": 12455,
+      "sha256": "9ca6e3d6c5daf680c17fd1b1437b23a6364d00a414c31a7ce4f553315f9715d0"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/AttackBattleSnapshot.cs",
+      "bytes": 8670,
+      "sha256": "30191d5e0f3899abf8909a26fa3bc4d2a5c2d43bd5f4ab672a367b76fe3018d7"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/ImmediateAbilityBattle.cs",
+      "bytes": 7537,
+      "sha256": "6fd50d2ceb12203f04e7dae07d36791205b9295a6ffece2a83c8efcd4305ed0e"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/TwoUnitBattleScenario.cs",
+      "bytes": 13688,
+      "sha256": "e12a51cc44411360f38804f09c21d00cb1dfae68b9bf023db3568fea0f7bafd1"
+    },
+    {
+      "localPath": "tests/Zodiac.AssetTool.Cli.Tests/OriginalAccumulateImporterTests.cs",
+      "bytes": 6574,
+      "sha256": "945720d3c510819650b58b2061fa6a63e45bd0c6517784835ca2e27d4489adf1"
+    },
+    {
+      "localPath": "tests/Zodiac.AssetTool.Tests/OriginalImmediateAbilityRecordsTests.cs",
+      "bytes": 911,
+      "sha256": "3f52cd5b62243fd96b95f883e56241950e93a60ce2c460446ba21250ceaa0cb1"
+    },
+    {
+      "localPath": "tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs",
+      "bytes": 19757,
+      "sha256": "4c1e9254456471d10cefbccd59be78c88983341603a432eac1090c8891b9afc6"
+    },
+    {
+      "localPath": "tests/Zodiac.Framework.Tests/ImmediateAbilityBattleTests.cs",
+      "bytes": 7557,
+      "sha256": "720bf6082f20484e997354a21ad1a6d1b486de0b21fcf8ebbdce93871b01ecc7"
+    }
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetTests": 2438,
+    "newDotnetTests": 89,
+    "pythonTests": 293,
+    "newPythonTests": 0,
+    "projectTests": {
+      "Content": 718,
+      "Framework": 847,
+      "Engine": 24,
+      "AssetTool": 206,
+      "CLI": 237,
+      "Client": 406
+    },
+    "fullTrx": [
+      {
+        "path": "scratch/accumulate-105-tests-full/accumulate-full_net10.0_20261026104107.trx",
+        "passed": 24,
+        "sha256": "f079a7a474beef3492b0e4ecb9a82e1bc0d9c7f590b0edfddebd9ae3c03b3d72"
+      },
+      {
+        "path": "scratch/accumulate-105-tests-full/accumulate-full_net10.0_20261026104108.trx",
+        "passed": 206,
+        "sha256": "6c32f1a3d1a7249d9c3e93fcd6a4378317ba1c86908ead2bb1188628a5f0ca91"
+      },
+      {
+        "path": "scratch/accumulate-105-tests-full/accumulate-full_net10.0_20261026104109.trx",
+        "passed": 237,
+        "sha256": "2bbcd545d917e153f5973d7ece342ae953ac2690e26daf444a6e4eb71b8ac70e"
+      },
+      {
+        "path": "scratch/accumulate-105-tests-full/accumulate-full_net10.0_20261026104110.trx",
+        "passed": 847,
+        "sha256": "62d3d1d66858d3ac525ee860bed8505aad784a6dec1a7f3bde55b98e65c4561b"
+      },
+      {
+        "path": "scratch/accumulate-105-tests-full/accumulate-full_net10.0_20261026104112.trx",
+        "passed": 718,
+        "sha256": "b291732233cacfa1470ab6cb57eecbaf100b8b514da4a27e14defc0e50ed6be1"
+      },
+      {
+        "path": "scratch/accumulate-105-tests-full/accumulate-full_net10.0_20261026104114.trx",
+        "passed": 406,
+        "sha256": "4e96fb8ccb46792fb72449820c8a84df8efbba16b550af167aa74aacb79e837c"
+      }
+    ],
+    "discoveryFailures": "Two initial test assumptions corrected: ImmutableArray identity comparison and next-turn ordering after Wait. No sword/scheduler production change.",
+    "retainedDiscovery": "scratch/accumulate-105-tests-focused",
+    "focusedSuccess": "scratch/accumulate-105-tests-focused-b"
+  },
+  "offlineImport": {
+    "inputSha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562",
+    "directories": [
+      "scratch/accumulate-105-import-a",
+      "scratch/accumulate-105-import-b"
+    ],
+    "repeatedFiles": [
+      {
+        "path": "scratch/accumulate-105-import-a/ability.package.json",
+        "bytes": 430,
+        "sha256": "46cc0eade07c57a8c34fe9555d82f8052f297b38e907374fe65e6689d09f0031"
+      },
+      {
+        "path": "scratch/accumulate-105-import-a/ability.import.json",
+        "bytes": 2183,
+        "sha256": "e9a5979cfba9722833908c87c2dc7a0cbeb270fd06f755d670aa325a3080cd43"
+      }
+    ],
+    "sourceRecordsIndependentlyCompared": 6,
+    "preservedHistoricalFiles": [
+      {
+        "original": "scratch/imported-squire-check-a/content.package.json",
+        "repeated": "scratch/accumulate-105-metadata-regression/content.package.json",
+        "sha256": "62d7a4c41e163f6f5d7514f3ef900cc51ac9724afd26255ac665f2f8d7438435"
+      },
+      {
+        "original": "scratch/imported-squire-check-a/import.provenance.json",
+        "repeated": "scratch/accumulate-105-metadata-regression/import.provenance.json",
+        "sha256": "63aecf54bad557c9f019d36f91da175f3d52b134a3329c47dbc8b9a43fc57d9f"
+      },
+      {
+        "original": "scratch/imported-sword-v2-check-a/sword.package.json",
+        "repeated": "scratch/accumulate-105-sword-regression/sword.package.json",
+        "sha256": "ea320010ad7130a5a8359a5eb4cd36efb599df00e2ef8a8628ee62af6ea1d059"
+      },
+      {
+        "original": "scratch/imported-sword-v2-check-a/sword.import.json",
+        "repeated": "scratch/accumulate-105-sword-regression/sword.import.json",
+        "sha256": "49816a4f21ee8174fb34cf678a41eef85a44df1349f20e061e455a83e05f59e4"
+      }
+    ],
+    "audit": "scratch/accumulate-105-audit.json",
+    "auditSha256": "b87a55319660b77431fb6350f0b6466989aa034dec274775e84a7b5fb39705be"
+  },
+  "executedAcceptanceCases": [
+    {
+      "id": "ACC-001",
+      "status": "passed",
+      "tests": [
+        {
+          "path": "tests/Zodiac.Framework.Tests/ImmediateAbilityBattleTests.cs",
+          "method": "Source_PA_vectors_publish_one_self_result_preserving_all_other_inputs"
+        }
+      ]
+    },
+    {
+      "id": "ACC-002",
+      "status": "passed",
+      "tests": [
+        {
+          "path": "tests/Zodiac.Framework.Tests/ImmediateAbilityBattleTests.cs",
+          "method": "Source_PA_vectors_publish_one_self_result_preserving_all_other_inputs"
+        }
+      ]
+    },
+    {
+      "id": "ACC-003",
+      "status": "passed",
+      "tests": [
+        {
+          "path": "tests/Zodiac.Framework.Tests/ImmediateAbilityBattleTests.cs",
+          "method": "Source_PA_vectors_publish_one_self_result_preserving_all_other_inputs"
+        }
+      ]
+    },
+    {
+      "id": "ACC-004",
+      "status": "passed",
+      "tests": [
+        {
+          "path": "tests/Zodiac.Framework.Tests/ImmediateAbilityBattleTests.cs",
+          "method": "Source_PA_vectors_publish_one_self_result_preserving_all_other_inputs"
+        }
+      ]
+    },
+    {
+      "id": "ACC-005",
+      "status": "passed",
+      "tests": [
+        {
+          "path": "tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs",
+          "method": "Many_legal_turns_saturate_and_replay_including_rejected_actions_and_restart"
+        }
+      ]
+    },
+    {
+      "id": "ACC-006",
+      "status": "passed",
+      "tests": [
+        {
+          "path": "tests/Zodiac.Framework.Tests/ImmediateAbilityBattleTests.cs",
+          "method": "Invalid_commands_are_atomic"
+        },
+        {
+          "path": "tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs",
+          "method": "Many_legal_turns_saturate_and_replay_including_rejected_actions_and_restart"
+        }
+      ]
+    },
+    {
+      "id": "ACC-007",
+      "status": "passed",
+      "tests": [
+        {
+          "path": "tests/Zodiac.Framework.Tests/ImmediateAbilityBattleTests.cs",
+          "method": "Invalid_commands_are_atomic"
+        }
+      ]
+    },
+    {
+      "id": "ACC-008",
+      "status": "passed",
+      "tests": [
+        {
+          "path": "tests/Zodiac.Framework.Tests/ImmediateAbilityBattleTests.cs",
+          "method": "Invalid_commands_are_atomic"
+        }
+      ]
+    },
+    {
+      "id": "ACC-009",
+      "status": "passed",
+      "tests": [
+        {
+          "path": "tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs",
+          "method": "Setup_checks_worst_reachable_PA_and_rejects_missing_or_ungranted_actions"
+        },
+        {
+          "path": "tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs",
+          "method": "Learned_grants_require_the_resolved_action_slot_and_supported_domain"
+        }
+      ]
+    },
+    {
+      "id": "ACC-010",
+      "status": "passed",
+      "tests": [
+        {
+          "path": "tests/Zodiac.Framework.Tests/ImmediateAbilityBattleTests.cs",
+          "method": "Grant_projections_snapshot_inputs_and_reject_unsupported_or_ambiguous_bindings"
+        },
+        {
+          "path": "tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs",
+          "method": "Learned_grants_require_the_resolved_action_slot_and_supported_domain"
+        }
+      ]
+    },
+    {
+      "id": "ACC-011",
+      "status": "passed",
+      "tests": [
+        {
+          "path": "tests/Zodiac.AssetTool.Cli.Tests/OriginalAccumulateImporterTests.cs",
+          "method": "Every_unsupported_secondary_field_is_rejected_without_rewriting_input"
+        },
+        {
+          "path": "tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs",
+          "method": "Unsupported_or_malformed_content_fails_with_a_field_diagnostic"
+        },
+        {
+          "path": "tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs",
+          "method": "Typed_effects_also_reject_unimplemented_variants"
+        }
+      ]
+    },
+    {
+      "id": "ACC-012",
+      "status": "passed",
+      "tests": [
+        {
+          "path": "tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs",
+          "method": "New_profile_restricts_initial_PA_without_changing_the_old_sword_profile"
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/ImmediateAbilityBattleTests.cs",
+          "method": "Invalid_commands_are_atomic"
+        }
+      ]
+    },
+    {
+      "id": "ACC-013",
+      "status": "passed",
+      "tests": [
+        {
+          "path": "tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs",
+          "method": "Setup_checks_worst_reachable_PA_and_rejects_missing_or_ungranted_actions"
+        }
+      ]
+    },
+    {
+      "id": "ACC-014",
+      "status": "passed",
+      "tests": [
+        {
+          "path": "tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs",
+          "method": "Move_and_ability_can_be_taken_in_either_order"
+        },
+        {
+          "path": "tests/Zodiac.Framework.Tests/ImmediateAbilityBattleTests.cs",
+          "method": "Move_consumed_before_action_ends_turn_before_publishing_effect_events"
+        }
+      ]
+    },
+    {
+      "id": "ACC-015",
+      "status": "passed",
+      "tests": [
+        {
+          "path": "tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs",
+          "method": "Move_and_ability_can_be_taken_in_either_order"
+        }
+      ]
+    },
+    {
+      "id": "ACC-016",
+      "status": "passed",
+      "tests": [
+        {
+          "path": "tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs",
+          "method": "Boost_survives_turns_and_changes_later_sword_damage_with_the_original_draw_order"
+        }
+      ]
+    },
+    {
+      "id": "ACC-017",
+      "status": "passed",
+      "tests": [
+        {
+          "path": "tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs",
+          "method": "Boost_survives_turns_and_changes_later_sword_damage_with_the_original_draw_order"
+        }
+      ]
+    },
+    {
+      "id": "ACC-018",
+      "status": "passed",
+      "tests": [
+        {
+          "path": "tests/Zodiac.Framework.Tests/ImmediateAbilityBattleTests.cs",
+          "method": "Probes_are_repeatable_at_exhausted_RNG_but_later_readiness_still_rejects"
+        }
+      ]
+    },
+    {
+      "id": "ACC-019",
+      "status": "passed",
+      "tests": [
+        {
+          "path": "tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs",
+          "method": "Many_legal_turns_saturate_and_replay_including_rejected_actions_and_restart"
+        },
+        {
+          "path": "tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs",
+          "method": "First_KO_still_finishes_the_scenario_and_all_later_ability_commands_reject_atomically"
+        }
+      ]
+    },
+    {
+      "id": "ACC-020",
+      "status": "passed",
+      "tests": [
+        {
+          "path": "tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs",
+          "method": "Content_round_trip_is_ordered_and_does_not_change_learning_metadata"
+        },
+        {
+          "path": "tests/Zodiac.Content.Tests/ImmediateAbilityScenarioTests.cs",
+          "method": "Ability_profiles_cannot_save_or_load_even_before_boost_or_at_no_change_cap"
+        },
+        {
+          "path": "tests/Zodiac.AssetTool.Cli.Tests/OriginalAccumulateImporterTests.cs",
+          "method": "Explicit_supported_export_preserves_all_records_and_never_certifies_synthetic_edition"
+        }
+      ]
+    }
+  ],
+  "remainingAcceptanceCases": [
+    {
+      "id": "ACC-021",
+      "status": "unexecuted",
+      "ownerTicket": "ZOD-106"
+    },
+    {
+      "id": "ACC-022",
+      "status": "unexecuted",
+      "ownerTicket": "ZOD-106"
+    },
+    {
+      "id": "ACC-023",
+      "status": "unexecuted",
+      "ownerTicket": "ZOD-106"
+    },
+    {
+      "id": "ACC-024",
+      "status": "unexecuted",
+      "ownerTicket": "ZOD-106"
+    },
+    {
+      "id": "ACC-025",
+      "status": "unexecuted",
+      "ownerTicket": "ZOD-106"
+    },
+    {
+      "id": "ACC-026",
+      "status": "unexecuted",
+      "ownerTicket": "ZOD-106"
+    },
+    {
+      "id": "ACC-027",
+      "status": "unexecuted",
+      "ownerTicket": "ZOD-106"
+    },
+    {
+      "id": "ACC-028",
+      "status": "unexecuted",
+      "ownerTicket": "ZOD-107"
+    },
+    {
+      "id": "ACC-029",
+      "status": "unexecuted",
+      "ownerTicket": "ZOD-107"
+    },
+    {
+      "id": "ACC-030",
+      "status": "unexecuted",
+      "ownerTicket": "ZOD-107"
+    },
+    {
+      "id": "ACC-031",
+      "status": "unexecuted",
+      "ownerTicket": "ZOD-107"
+    },
+    {
+      "id": "ACC-032",
+      "status": "unexecuted",
+      "ownerTicket": "ZOD-107"
+    }
+  ],
+  "limits": [
+    "Synthetic/source-derived managed expectations, not an original/emulator executable comparison.",
+    "Zero equipment PA bonus, immediate self PA+1 and existing closed ordinary sword/turn domain only.",
+    "Existing battle-save entry points reject ability-enabled profiles until ZOD-106; no save format changed.",
+    "No new native launch, owner visual/manual approval or editor/game-client/Engine production change.",
+    "Raw original records and generated import/audit/test artifacts remain ignored under scratch.",
+    "No learning/progression, rewards, AI, equipment-bonus, reaction/status or original presentation equivalence claim."
+  ]
+}

@@ -1,0 +1,822 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-277",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "kind": "isolated-roster-combat-descriptions",
+  "productionImplemented": false,
+  "vectors": [
+    {
+      "id": "ally-transit-empty-endpoint",
+      "kind": "route",
+      "input": {
+        "width": 5,
+        "depth": 1,
+        "actor": "a",
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              0,
+              0
+            ],
+            "team": 0,
+            "hp": 50
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              0
+            ],
+            "team": 0,
+            "hp": 50
+          },
+          {
+            "id": "b",
+            "tile": [
+              4,
+              0
+            ],
+            "team": 1,
+            "hp": 50
+          }
+        ],
+        "move": 3,
+        "jump": 0,
+        "moved": false,
+        "destination": [
+          3,
+          0
+        ]
+      },
+      "expected": {
+        "physical": [
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "origins": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "path": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "packed": [
+          0,
+          0,
+          0
+        ],
+        "heading": "East",
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "ally-cannot-be-endpoint",
+      "kind": "route",
+      "input": {
+        "width": 5,
+        "depth": 1,
+        "actor": "a",
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              0,
+              0
+            ],
+            "team": 0,
+            "hp": 50
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              0
+            ],
+            "team": 0,
+            "hp": 50
+          },
+          {
+            "id": "b",
+            "tile": [
+              4,
+              0
+            ],
+            "team": 1,
+            "hp": 50
+          }
+        ],
+        "move": 3,
+        "jump": 0,
+        "moved": false,
+        "destination": [
+          1,
+          0
+        ]
+      },
+      "expected": {
+        "physical": [
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "origins": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "path": null,
+        "packed": null,
+        "heading": null,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "enemy-corridor-not-jumpable",
+      "kind": "route",
+      "input": {
+        "width": 5,
+        "depth": 1,
+        "actor": "a",
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              0,
+              0
+            ],
+            "team": 0,
+            "hp": 50
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              0
+            ],
+            "team": 0,
+            "hp": 50
+          },
+          {
+            "id": "b",
+            "tile": [
+              2,
+              0
+            ],
+            "team": 1,
+            "hp": 50
+          }
+        ],
+        "move": 4,
+        "jump": 255,
+        "moved": false,
+        "destination": [
+          3,
+          0
+        ]
+      },
+      "expected": {
+        "physical": [],
+        "origins": [
+          [
+            0,
+            0
+          ]
+        ],
+        "path": null,
+        "packed": null,
+        "heading": null,
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "enemy-detour-via-ally",
+      "kind": "route",
+      "input": {
+        "width": 3,
+        "depth": 3,
+        "actor": "a",
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              0,
+              1
+            ],
+            "team": 0,
+            "hp": 50
+          },
+          {
+            "id": "b",
+            "tile": [
+              1,
+              1
+            ],
+            "team": 1,
+            "hp": 50
+          },
+          {
+            "id": "c",
+            "tile": [
+              0,
+              2
+            ],
+            "team": 0,
+            "hp": 50
+          }
+        ],
+        "move": 4,
+        "jump": 7,
+        "moved": false,
+        "destination": [
+          2,
+          1
+        ]
+      },
+      "expected": {
+        "physical": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "origins": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "path": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "packed": [
+          192,
+          0,
+          0,
+          128
+        ],
+        "heading": "South",
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "moved-query-retains-physical-geometry",
+      "kind": "route",
+      "input": {
+        "width": 3,
+        "depth": 3,
+        "actor": "a",
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              0,
+              1
+            ],
+            "team": 0,
+            "hp": 50
+          },
+          {
+            "id": "b",
+            "tile": [
+              1,
+              1
+            ],
+            "team": 1,
+            "hp": 50
+          },
+          {
+            "id": "c",
+            "tile": [
+              0,
+              2
+            ],
+            "team": 0,
+            "hp": 50
+          }
+        ],
+        "move": 4,
+        "jump": 7,
+        "moved": true,
+        "destination": [
+          2,
+          1
+        ]
+      },
+      "expected": {
+        "physical": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "origins": [
+          [
+            0,
+            1
+          ]
+        ],
+        "path": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "packed": [
+          192,
+          0,
+          0,
+          128
+        ],
+        "heading": "South",
+        "rngDraws": 0
+      }
+    },
+    {
+      "id": "critical-ally-occupies-landing",
+      "kind": "sword",
+      "input": {
+        "width": 6,
+        "depth": 5,
+        "actor": "a",
+        "target": "b",
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "team": 0,
+            "hp": 50
+          },
+          {
+            "id": "b",
+            "tile": [
+              2,
+              1
+            ],
+            "team": 1,
+            "hp": 50
+          },
+          {
+            "id": "c",
+            "tile": [
+              3,
+              1
+            ],
+            "team": 0,
+            "hp": 50
+          }
+        ],
+        "seed": 57,
+        "count": 0,
+        "pa": 5,
+        "power": 5,
+        "evade": 0
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "target": [
+          2,
+          1
+        ],
+        "moved": false,
+        "rngWord": 3448561432,
+        "drawCount": 7
+      }
+    },
+    {
+      "id": "critical-empty-landing",
+      "kind": "sword",
+      "input": {
+        "width": 6,
+        "depth": 5,
+        "actor": "a",
+        "target": "b",
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "team": 0,
+            "hp": 50
+          },
+          {
+            "id": "b",
+            "tile": [
+              2,
+              1
+            ],
+            "team": 1,
+            "hp": 50
+          },
+          {
+            "id": "c",
+            "tile": [
+              4,
+              3
+            ],
+            "team": 0,
+            "hp": 50
+          }
+        ],
+        "seed": 57,
+        "count": 0,
+        "pa": 5,
+        "power": 5,
+        "evade": 0
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "target": [
+          3,
+          1
+        ],
+        "moved": true,
+        "rngWord": 3448561432,
+        "drawCount": 7
+      }
+    },
+    {
+      "id": "critical-corpse-occupies-landing",
+      "kind": "sword",
+      "input": {
+        "width": 6,
+        "depth": 5,
+        "actor": "a",
+        "target": "b",
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "team": 0,
+            "hp": 50
+          },
+          {
+            "id": "b",
+            "tile": [
+              2,
+              1
+            ],
+            "team": 1,
+            "hp": 50
+          },
+          {
+            "id": "c",
+            "tile": [
+              3,
+              1
+            ],
+            "team": 0,
+            "hp": 0
+          }
+        ],
+        "seed": 57,
+        "count": 0,
+        "pa": 5,
+        "power": 5,
+        "evade": 0
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 5,
+        "target": [
+          2,
+          1
+        ],
+        "moved": false,
+        "rngWord": 3448561432,
+        "drawCount": 7
+      }
+    },
+    {
+      "id": "normal-no-bystander-draws",
+      "kind": "sword",
+      "input": {
+        "width": 6,
+        "depth": 5,
+        "actor": "a",
+        "target": "b",
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "team": 0,
+            "hp": 50
+          },
+          {
+            "id": "b",
+            "tile": [
+              2,
+              1
+            ],
+            "team": 1,
+            "hp": 50
+          },
+          {
+            "id": "c",
+            "tile": [
+              3,
+              1
+            ],
+            "team": 0,
+            "hp": 50
+          }
+        ],
+        "seed": 1,
+        "count": 0,
+        "pa": 5,
+        "power": 5,
+        "evade": 0
+      },
+      "expected": {
+        "hit": true,
+        "critical": false,
+        "damage": 25,
+        "hp": 25,
+        "target": [
+          2,
+          1
+        ],
+        "moved": false,
+        "rngWord": 2516284547,
+        "drawCount": 6
+      }
+    },
+    {
+      "id": "lethal-critical-cancels-push",
+      "kind": "sword",
+      "input": {
+        "width": 6,
+        "depth": 5,
+        "actor": "a",
+        "target": "b",
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "team": 0,
+            "hp": 50
+          },
+          {
+            "id": "b",
+            "tile": [
+              2,
+              1
+            ],
+            "team": 1,
+            "hp": 45
+          },
+          {
+            "id": "c",
+            "tile": [
+              4,
+              3
+            ],
+            "team": 0,
+            "hp": 50
+          }
+        ],
+        "seed": 57,
+        "count": 0,
+        "pa": 5,
+        "power": 5,
+        "evade": 0
+      },
+      "expected": {
+        "hit": true,
+        "critical": true,
+        "damage": 45,
+        "hp": 0,
+        "target": [
+          2,
+          1
+        ],
+        "moved": false,
+        "rngWord": 3448561432,
+        "drawCount": 7
+      }
+    },
+    {
+      "id": "miss-does-not-touch-bystanders",
+      "kind": "sword",
+      "input": {
+        "width": 6,
+        "depth": 5,
+        "actor": "a",
+        "target": "b",
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "team": 0,
+            "hp": 50
+          },
+          {
+            "id": "b",
+            "tile": [
+              2,
+              1
+            ],
+            "team": 1,
+            "hp": 50
+          },
+          {
+            "id": "c",
+            "tile": [
+              3,
+              1
+            ],
+            "team": 0,
+            "hp": 50
+          }
+        ],
+        "seed": 1,
+        "count": 0,
+        "pa": 5,
+        "power": 5,
+        "evade": 100
+      },
+      "expected": {
+        "hit": false,
+        "critical": false,
+        "damage": 0,
+        "hp": 50,
+        "target": [
+          2,
+          1
+        ],
+        "moved": false,
+        "rngWord": 3295386429,
+        "drawCount": 4
+      }
+    }
+  ]
+}

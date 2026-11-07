@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-419",
+  "managedBaseRevision": "52f8f22f6ce1d1e28e83395bb77c021ebc693e26",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "sourceReceipt": "docs/evidence/combat/equipment-selection-source-v1.json",
+  "fixture": "docs/fixtures/behavior/equipment-selection-v1.json",
+  "sourceAudit": {
+    "selectionDescriptions": 19,
+    "originalAbilitySelectorMappings": 13,
+    "selectionConsumesRandomDraws": false,
+    "managedEquipmentEffectsImplemented": false,
+    "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "referenceClean": true,
+    "sourceFiles": 13,
+    "sourceFunctions": 15,
+    "originalExecuted": false,
+    "cExecuted": false
+  },
+  "validation": {
+    "newPythonTests": 8,
+    "fullPythonTests": 770,
+    "localLinksChecked": 577,
+    "localAnchorsChecked": 274,
+    "ownerFiles": 10,
+    "ownerBlobsUnchanged": true,
+    "csharpProductionAndTestsUnchanged": true,
+    "referenceClean": true,
+    "dotnetAndNativeRerun": false,
+    "lastDotnetNativeBaseline": {
+      "commit": "52f8f22f6ce1d1e28e83395bb77c021ebc693e26",
+      "dotnetTests": 5044,
+      "nativeReplayCheckpoints": 18
+    }
+  },
+  "architectureDirection": {
+    "formulas": "Zodiac.Framework.Formulas",
+    "combatRules": "Zodiac.Framework.CombatRules",
+    "content": "Validated JSON loaded into typed immutable definitions",
+    "individualAbilitiesAreData": true,
+    "equipmentEffectsSelectPolicies": true,
+    "namespaceOrRuntimeMigrationImplemented": false
+  },
+  "sourceOriginalExecuted": false,
+  "cExecuted": false,
+  "managedEquipmentEffectsImplemented": false,
+  "deferred": [
+    "EquipmentSlot/AbilityToggles owner draft activation/consolidation",
+    "Full equipment formula accuracy/modifiers and failure-path implementations",
+    "Runtime equipment removal, inventory/Charge/status/AI integration",
+    "Broad namespace migration and new targeting shapes"
+  ]
+}

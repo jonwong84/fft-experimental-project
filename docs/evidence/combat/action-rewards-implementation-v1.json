@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "originalExecuted": false,
+  "cExecuted": false,
+  "milestones": [
+    {
+      "ticket": "ZOD-376",
+      "managedBaseRevision": "c4994e4bcb908290fff5cf3090d5fd1ef83879f5",
+      "validation": "Eight Python cases and49 independent descriptions pass;clean pinned11-file/23-function source audit and eight prepared JP thresholds verified. Architecture identifies phase/actor/career/fizzle gaps before adoption.",
+      "reports": "scratch/action-rewards-376-381/"
+    },
+    {
+      "ticket": "ZOD-377",
+      "managedBaseRevision": "7d9fe00913d481bc6765df40c8f7f2c6ec974da0",
+      "validation": "Three managed cases passed: eight literal marker assignments, reaction/unknown-bit preservation and self-target marker overwritten by later actor miss.",
+      "reports": "scratch/action-rewards-376-381/"
+    },
+    {
+      "ticket": "ZOD-378",
+      "managedBaseRevision": "dc9151a9dbdf0232085d89165c063126ee3f882c",
+      "validation": "Six cumulative managed cases passed:14 literal EXP awards, maximum-not-sum multi-target/reaction tape, bonus/floor/cap and post-increment KO boundaries.",
+      "reports": "scratch/action-rewards-376-381/"
+    },
+    {
+      "ticket": "ZOD-379",
+      "managedBaseRevision": "0a96d5d13e161ef64739a8416c74643e558fb4c3",
+      "validation": "Ten cumulative managed cases pass;16 EXP-balance/JP amount literals, pre-level JP and monster selective bypass. Numeric level changes explicitly require separate stat growth.",
+      "reports": "scratch/action-rewards-376-381/"
+    },
+    {
+      "ticket": "ZOD-380",
+      "managedBaseRevision": "6f261b508a46452be8d8a330bae74edcd16d708c",
+      "validation": "Fourteen cumulative managed cases pass:11 JP literals, all eight threshold lower/exact boundaries, original job-slot endpoints and safe-domain guards. Zero JP still recalculates; unlock storage remains separate.",
+      "reports": "scratch/action-rewards-376-381/"
+    },
+    {
+      "ticket": "ZOD-381",
+      "managedBaseRevision": "ee16bee050b98b6c368e76bb2175d63ba6a7113f",
+      "validation": "Locked restore and zero-warning/error Release build pass;4748 .NET and720 Python cases passed, including34 new managed/nine new Python cases and57 independent descriptions. Fresh source/prepared/guide/layout/preservation audits passed; growth/unlocks explicitly remain required before adoption.",
+      "reports": "scratch/action-rewards-376-381/"
+    }
+  ],
+  "validation": {
+    "lockedRestorePassed": true,
+    "releaseBuild": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "dotnetPassed": 4748,
+    "dotnetReports": [
+      {
+        "path": "scratch/action-rewards-376-381/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-06_00_56_22_net10.0.trx",
+        "total": 1707,
+        "executed": 1707,
+        "passed": 1707,
+        "failed": 0,
+        "error": 0,
+        "notExecuted": 0
+      },
+      {
+        "path": "scratch/action-rewards-376-381/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-06_00_56_24_net10.0.trx",
+        "total": 24,
+        "executed": 24,
+        "passed": 24,
+        "failed": 0,
+        "error": 0,
+        "notExecuted": 0
+      },
+      {
+        "path": "scratch/action-rewards-376-381/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-06_00_56_25_net10.0.trx",
+        "total": 206,
+        "executed": 206,
+        "passed": 206,
+        "failed": 0,
+        "error": 0,
+        "notExecuted": 0
+      },
+      {
+        "path": "scratch/action-rewards-376-381/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-06_00_56_25_net10.0[1].trx",
+        "total": 328,
+        "executed": 328,
+        "passed": 328,
+        "failed": 0,
+        "error": 0,
+        "notExecuted": 0
+      },
+      {
+        "path": "scratch/action-rewards-376-381/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-06_00_56_27_net10.0.trx",
+        "total": 838,
+        "executed": 838,
+        "passed": 838,
+        "failed": 0,
+        "error": 0,
+        "notExecuted": 0
+      },
+      {
+        "path": "scratch/action-rewards-376-381/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-06_00_56_27_net10.0[1].trx",
+        "total": 428,
+        "executed": 428,
+        "passed": 428,
+        "failed": 0,
+        "error": 0,
+        "notExecuted": 0
+      },
+      {
+        "path": "scratch/action-rewards-376-381/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-06_00_56_28_net10.0.trx",
+        "total": 1217,
+        "executed": 1217,
+        "passed": 1217,
+        "failed": 0,
+        "error": 0,
+        "notExecuted": 0
+      }
+    ],
+    "pythonPassed": 720,
+    "newManagedCases": 34,
+    "newPythonCases": 9,
+    "independentDescriptions": 57,
+    "preparedThresholdsVerified": 8,
+    "sourceAudit": "scratch/action-rewards-376-381/final-source-audit-v2.json",
+    "priorMagicAudits": [
+      "scratch/action-rewards-376-381/prior-publication-audit.json",
+      "scratch/action-rewards-376-381/prior-pipeline-audit.json"
+    ],
+    "guideAudit": "scratch/action-rewards-376-381/guide-audit.json",
+    "layout": {
+      "publicTypes": 432,
+      "publicDeclarations": 434,
+      "newTypes": 15,
+      "onePublicDeclarationPerMatchingFile": true,
+      "existingPartialPartsPreserved": true
+    },
+    "preservation": {
+      "managedBaseRevision": "c4994e4bcb908290fff5cf3090d5fd1ef83879f5",
+      "ownerFiles": [
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AbilityToggles.cs",
+          "gitBlob": "16320578ffa448783221b68c4ef5c18e245b9f35",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AiBehaviorToggles.cs",
+          "gitBlob": "c67c4b154c471764fa11a6761710d2e9c9694a65",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AttributeToggles.cs",
+          "gitBlob": "1182777f8a0c3ca219afa23d0803c52af4ca9f8e",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/EquipmentSlot.cs",
+          "gitBlob": "091006b2d60ca558c303571a4eb779340be53629",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/StatusToggles.cs",
+          "gitBlob": "5136db2af350d7e3735e47fb92b905019316fd6f",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Item/ShopAvailabilityToggles.cs",
+          "gitBlob": "fd543d84dc8eb7860d710cf1c75499eb55306e14",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/EquipmentOptionToggles.cs",
+          "gitBlob": "694e44bbdc3e62103b64ff794addec1ad977d142",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/EffectBehaviorToggles.cs",
+          "gitBlob": "9792cdea7da1d92e9ec25cf1e97d3e879c24e8ae",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/StatusSelectionToggles.cs",
+          "gitBlob": "a0b2e2a8ddcb53a4bfd7416609927399b8339294",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/JobStats.cs",
+          "gitBlob": "bd617c374309aca1529a167a8d31a488160086cc",
+          "unchanged": true
+        }
+      ],
+      "allExistingProductionTestsAndBehaviorFixturesUnchanged": true,
+      "contentAiHostAndImportsUnchanged": true,
+      "buildAndDependenciesUnchanged": true
+    },
+    "originalExecuted": false,
+    "cExecuted": false,
+    "uiReviewed": false,
+    "coverageEntriesChecked": 58,
+    "pythonReport": "scratch/action-rewards-376-381/python-final.log",
+    "localLinksChecked": 2808
+  }
+}

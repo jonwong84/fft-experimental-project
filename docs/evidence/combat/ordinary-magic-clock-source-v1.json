@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "sourceFiles": [
+    {
+      "path": "src/battle/turn/clock.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40868,
+      "sha256": "f76188542c39818fa2ab478e42ef63b4eb0f2c1c2db5a74db4120ddbaf4cb8cb"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 80969,
+      "sha256": "e8ec92c02c53d3715b3813931685399e79481dad0fae6ae27505fbc5d086d444"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 187246,
+      "sha256": "2792e2b861e8de4f4f996a5491dbacde0b96f77518a75cc4b8eebf2d6bc1557f"
+    },
+    {
+      "path": "include/fft/turn.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2844,
+      "sha256": "bf8eac9a51807894a645b9587c68323ab8c95411a176a0ccfbbfd752dfbfe6dd"
+    },
+    {
+      "path": "include/fft/action.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14957,
+      "sha256": "6e97b3935c0d9cdcb8f6ba9ee2d40985b645bc0b03281a0d50d3d20aae35591c"
+    },
+    {
+      "path": "include/fft/ability.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 34632,
+      "sha256": "530676861205ea3cf31cada08ffc927142db98af0ad2c986722ad83b069b9a2f"
+    },
+    {
+      "path": "include/fft/job.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14276,
+      "sha256": "ce67c92d42d72be78b847259bc24e24138f5bcb589d1180e24640251e66a70b1"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_clock_run",
+      "startLine": 43,
+      "endLine": 384,
+      "normalizedLfSha256": "340cbbd8690adcfab96bf53d3eb5ea9f5b47327eb5901a3cc758b2cfbbfdf1e5"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "upkeep_action_build",
+      "startLine": 399,
+      "endLine": 481,
+      "normalizedLfSha256": "db3bb2342ef78ca6d64b5b2e911e9e2fd14e5a77cd1820472fa784c35cfeaa22"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_status_flags_calculate",
+      "startLine": 490,
+      "endLine": 522,
+      "normalizedLfSha256": "d2386dfccbf45ad8e2d7be18e26ffcfcbd4867e16b09e0526dc2c5837dc71f8c"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_move_act_taken_set",
+      "startLine": 923,
+      "endLine": 940,
+      "normalizedLfSha256": "ab6508dce1e9e9ef352a27b22a0166a0526d1571fb059f969937605b630782d7"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_end",
+      "startLine": 947,
+      "endLine": 974,
+      "normalizedLfSha256": "2071e4d41c2099741ca3ae787add5e7b731df488197b87a47ca84291a6ac268b"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_should_end",
+      "startLine": 979,
+      "endLine": 993,
+      "normalizedLfSha256": "e681268c0903794a2ff9b9de8f2b18b663bc565ea4a047e6f005e63bc6155e86"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "action_prepare",
+      "startLine": 177,
+      "endLine": 375,
+      "normalizedLfSha256": "1f6a6b279fb1f2c584883bd0fb68c88d53eaa6f20d26317711a09d18d0e6b4fe"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "action_commit_preparation",
+      "startLine": 153,
+      "endLine": 161,
+      "normalizedLfSha256": "96f4d3ed79ea76fac957450047f623666c7cd2510d1521eae477cae4d6c37885"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "action_init_current_data",
+      "startLine": 423,
+      "endLine": 460,
+      "normalizedLfSha256": "1c9392fe9c971c8f13a540c5c9d10b6098a63f9a94f26d132d592f40b95276ea"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "mp_check_and_consume",
+      "startLine": 1055,
+      "endLine": 1100,
+      "normalizedLfSha256": "6aef7817e989014fe208b327ab18079b89b17e1bd2dce464317a2cac07a648c9"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "action_resolve_strike",
+      "startLine": 630,
+      "endLine": 782,
+      "normalizedLfSha256": "5f8d5e4b18be3ac6d0ee33bfb3a0b921eec53629c4d1b24438dc477cc3ac6995"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "reward_apply_action",
+      "startLine": 1604,
+      "endLine": 1686,
+      "normalizedLfSha256": "a52b88f5171b749207e2c851331e447fbddc35972761af52be73e55048bb19ab"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "action_announce_next",
+      "startLine": 1786,
+      "endLine": 1859,
+      "normalizedLfSha256": "46b4c8c61b2c6736bff4bd4a5b6f288232839527b5b6594ad95b951d7ec1204f"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_commence_attack_phase_update",
+      "startLine": 3599,
+      "endLine": 3614,
+      "normalizedLfSha256": "1395dc30bd93fecf8619e3ef3b3b7117d5ab0db5d09942d33ad5ff78cfd6edb3"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "unit_result_apply",
+      "startLine": 1541,
+      "endLine": 1549,
+      "normalizedLfSha256": "6ab274a6a4a14ac3c30de8b97dc5cd6e46571c1cf3eed9a1da54904ad1f75764"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "reward_grant",
+      "startLine": 1659,
+      "endLine": 1679,
+      "normalizedLfSha256": "bdb455d6c4999b8ab7899963fa8c429dc16d7fdb14bd705a8183e0b1c19834cb"
+    }
+  ],
+  "scope": "Bounded human bare-equipment CT/charge/command ownership, no statuses beyond Critical/Charging/first KO; no general clock equivalence."
+}

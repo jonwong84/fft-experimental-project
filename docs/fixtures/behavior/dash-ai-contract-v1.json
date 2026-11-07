@@ -1,0 +1,4615 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-321\u2013325",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "vectors": [
+    {
+      "id": "semantic-duplicate-summary",
+      "kind": "preparation",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash",
+              "Self",
+              "Dash"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "turnEndCt": 55,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 2,
+        "word": 1103527590,
+        "count": 8,
+        "ct": [
+          {
+            "id": "a",
+            "ct": 60
+          },
+          {
+            "id": "b",
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "ct": 10
+          }
+        ],
+        "cachedDelay": 17,
+        "enemy": [
+          "b"
+        ],
+        "belowHalf": [],
+        "belowThreeQuarters": [],
+        "share": {
+          "a": 32,
+          "b": 0,
+          "c": 0
+        },
+        "mostly": {
+          "a": false,
+          "b": null,
+          "c": false
+        },
+        "harmful": 1,
+        "support": true,
+        "single": true,
+        "policyExit": false,
+        "counts": [
+          2,
+          1,
+          0
+        ],
+        "policies": {
+          "a": false,
+          "b": false,
+          "c": false
+        },
+        "usable": [
+          "Attack",
+          "Dash",
+          "Self",
+          "Dash"
+        ],
+        "enemyReach": 2,
+        "allyReach": 1
+      }
+    },
+    {
+      "id": "ACT-first",
+      "kind": "candidate",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 100,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 100,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North",
+        "target": "b",
+        "destination": [
+          1,
+          0
+        ],
+        "order": "ActThenMove",
+        "move": 1,
+        "moved": false
+      },
+      "expected": {
+        "disposition": "Scored",
+        "hit": 100,
+        "damage": 15,
+        "endCt": 15,
+        "next": "b",
+        "elapsed": 0,
+        "ticks": 1,
+        "units": [
+          {
+            "id": "a",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 15
+          },
+          {
+            "id": "b",
+            "hp": 35,
+            "status": "None",
+            "counter": 255,
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 5
+          }
+        ],
+        "groups": [
+          {
+            "id": "b",
+            "dead": false,
+            "count": 1
+          }
+        ],
+        "priority": 524,
+        "running": [
+          485,
+          39,
+          524
+        ],
+        "word": 1103527590,
+        "count": 8
+      }
+    },
+    {
+      "id": "Move-first",
+      "kind": "candidate",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              0,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 100,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 100,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North",
+        "target": "b",
+        "destination": [
+          1,
+          1
+        ],
+        "order": "MoveThenAct",
+        "move": 1,
+        "moved": false
+      },
+      "expected": {
+        "disposition": "Scored",
+        "hit": 100,
+        "damage": 15,
+        "endCt": 15,
+        "next": "b",
+        "elapsed": 0,
+        "ticks": 1,
+        "units": [
+          {
+            "id": "a",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 15
+          },
+          {
+            "id": "b",
+            "hp": 35,
+            "status": "None",
+            "counter": 255,
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 5
+          }
+        ],
+        "groups": [
+          {
+            "id": "b",
+            "dead": false,
+            "count": 1
+          }
+        ],
+        "priority": 524,
+        "running": [
+          485,
+          39,
+          524
+        ],
+        "word": 1103527590,
+        "count": 8
+      }
+    },
+    {
+      "id": "projected-KO-clock",
+      "kind": "candidate",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 100,
+            "hp": 5,
+            "maxHp": 5,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 100,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North",
+        "target": "b",
+        "destination": [
+          1,
+          0
+        ],
+        "order": "ActThenMove",
+        "move": 1,
+        "moved": false
+      },
+      "expected": {
+        "disposition": "Scored",
+        "hit": 100,
+        "damage": 15,
+        "endCt": 15,
+        "next": "a",
+        "elapsed": 17,
+        "ticks": 18,
+        "units": [
+          {
+            "id": "a",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 0
+          },
+          {
+            "id": "b",
+            "hp": 0,
+            "status": "Dead",
+            "counter": 3,
+            "ct": 85
+          },
+          {
+            "id": "c",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 90
+          }
+        ],
+        "groups": [
+          {
+            "id": "b",
+            "dead": true,
+            "count": 1
+          },
+          {
+            "id": "a",
+            "dead": false,
+            "count": 1
+          }
+        ],
+        "priority": 805,
+        "running": [
+          485,
+          320,
+          805
+        ],
+        "word": 2524885223,
+        "count": 9
+      }
+    },
+    {
+      "id": "already-moved",
+      "kind": "candidate",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": true,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 100,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 100,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North",
+        "target": "b",
+        "destination": [
+          1,
+          1
+        ],
+        "order": "ActThenMove",
+        "move": 1,
+        "moved": true
+      },
+      "expected": {
+        "disposition": "Scored",
+        "hit": 100,
+        "damage": 15,
+        "endCt": 15,
+        "next": "b",
+        "elapsed": 0,
+        "ticks": 1,
+        "units": [
+          {
+            "id": "a",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 15
+          },
+          {
+            "id": "b",
+            "hp": 35,
+            "status": "None",
+            "counter": 255,
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 5
+          }
+        ],
+        "groups": [
+          {
+            "id": "b",
+            "dead": false,
+            "count": 1
+          }
+        ],
+        "priority": 524,
+        "running": [
+          485,
+          39,
+          524
+        ],
+        "word": 1103527590,
+        "count": 8
+      }
+    },
+    {
+      "id": "ranked-ACT-first",
+      "kind": "entry",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North",
+        "occurrence": 1
+      },
+      "expected": {
+        "rejection": "None",
+        "skipped": false,
+        "ranked": [
+          [
+            1,
+            1
+          ]
+        ],
+        "aims": [
+          "b"
+        ],
+        "origins": [
+          [
+            1,
+            1
+          ]
+        ],
+        "visits": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "clear": true,
+            "candidate": 0,
+            "remainingAims": 0,
+            "word": 4182499122,
+            "count": 12
+          }
+        ],
+        "candidates": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "disposition": "Scored",
+            "priority": 524,
+            "hit": 100,
+            "proximity": 8,
+            "word": 4182499122,
+            "count": 12
+          }
+        ],
+        "best": 0,
+        "comparison": "Above",
+        "remainingOrigins": 0,
+        "remainingAims": 0,
+        "word": 4182499122,
+        "count": 12
+      }
+    },
+    {
+      "id": "ranked-Move-first",
+      "kind": "entry",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North",
+        "occurrence": 1
+      },
+      "expected": {
+        "rejection": "None",
+        "skipped": false,
+        "ranked": [
+          [
+            2,
+            1
+          ]
+        ],
+        "aims": [
+          "b"
+        ],
+        "origins": [
+          [
+            2,
+            1
+          ]
+        ],
+        "visits": [
+          {
+            "origin": [
+              2,
+              1
+            ],
+            "target": "b",
+            "clear": true,
+            "candidate": 0,
+            "remainingAims": 0,
+            "word": 2516284547,
+            "count": 13
+          }
+        ],
+        "candidates": [
+          {
+            "origin": [
+              2,
+              1
+            ],
+            "target": "b",
+            "destination": [
+              2,
+              1
+            ],
+            "actFirst": false,
+            "disposition": "Scored",
+            "priority": 524,
+            "hit": 100,
+            "proximity": 9,
+            "word": 2516284547,
+            "count": 13
+          }
+        ],
+        "best": 0,
+        "comparison": "Above",
+        "remainingOrigins": 0,
+        "remainingAims": 0,
+        "word": 2516284547,
+        "count": 13
+      }
+    },
+    {
+      "id": "ranked-multiple-enemy-teams",
+      "kind": "entry",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 2,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North",
+        "occurrence": 1
+      },
+      "expected": {
+        "rejection": "None",
+        "skipped": false,
+        "ranked": [
+          [
+            1,
+            1
+          ]
+        ],
+        "aims": [
+          "b",
+          "c"
+        ],
+        "origins": [
+          [
+            1,
+            1
+          ]
+        ],
+        "visits": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "clear": true,
+            "candidate": 0,
+            "remainingAims": 1,
+            "word": 4182499122,
+            "count": 12
+          },
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "c",
+            "clear": true,
+            "candidate": 1,
+            "remainingAims": 0,
+            "word": 2516284547,
+            "count": 13
+          }
+        ],
+        "candidates": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "disposition": "Scored",
+            "priority": -446,
+            "hit": 100,
+            "proximity": 8,
+            "word": 4182499122,
+            "count": 12
+          },
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "c",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "disposition": "Scored",
+            "priority": -446,
+            "hit": 100,
+            "proximity": 8,
+            "word": 2516284547,
+            "count": 13
+          }
+        ],
+        "best": 0,
+        "comparison": "Above",
+        "remainingOrigins": 0,
+        "remainingAims": 0,
+        "word": 2516284547,
+        "count": 13
+      }
+    },
+    {
+      "id": "post-ACT-skips-Dash",
+      "kind": "entry",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 6,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": true,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Dash"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North",
+        "occurrence": 2
+      },
+      "expected": {
+        "rejection": "None",
+        "skipped": true,
+        "ranked": [],
+        "aims": [],
+        "origins": [],
+        "visits": [],
+        "candidates": [],
+        "best": null,
+        "comparison": null,
+        "remainingOrigins": 0,
+        "remainingAims": 0,
+        "word": 3295386429,
+        "count": 11
+      }
+    },
+    {
+      "id": "Dash-only",
+      "kind": "list",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "rejection": "None",
+        "entries": [
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "entryWord": 3295386429,
+            "entryCount": 11,
+            "exitWord": 3210001534,
+            "exitCount": 16,
+            "best": {
+              "occurrence": 0,
+              "kind": "Attack",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 1,
+            "kind": "Dash",
+            "entryWord": 3210001534,
+            "entryCount": 16,
+            "exitWord": 267834847,
+            "exitCount": 17,
+            "best": {
+              "occurrence": 1,
+              "kind": "Dash",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 524,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 2,
+            "kind": "Frog",
+            "entryWord": 267834847,
+            "entryCount": 17,
+            "exitWord": 267834847,
+            "exitCount": 17,
+            "best": null,
+            "insertion": null
+          }
+        ],
+        "ranked": [
+          {
+            "occurrence": 1,
+            "kind": "Dash",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 524,
+            "hit": 100,
+            "proximity": 8
+          },
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 8
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "lotteryWord": 267834847,
+        "lotteryCount": 17,
+        "rolls": [
+          {
+            "slot": 0,
+            "raw": 2749,
+            "modulo": 49,
+            "hit": 100,
+            "passed": true
+          }
+        ],
+        "selected": 0,
+        "reason": "FirstRoll",
+        "destination": [
+          0,
+          1
+        ],
+        "selectedOccurrence": 1,
+        "word": 180171308,
+        "count": 18
+      }
+    },
+    {
+      "id": "Dash-beats-evaded-Attack",
+      "kind": "list",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 100,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "rejection": "None",
+        "entries": [
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "entryWord": 3295386429,
+            "entryCount": 11,
+            "exitWord": 2633739833,
+            "exitCount": 15,
+            "best": null,
+            "insertion": null
+          },
+          {
+            "occurrence": 1,
+            "kind": "Dash",
+            "entryWord": 2633739833,
+            "entryCount": 15,
+            "exitWord": 3210001534,
+            "exitCount": 16,
+            "best": {
+              "occurrence": 1,
+              "kind": "Dash",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 524,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 2,
+            "kind": "Frog",
+            "entryWord": 3210001534,
+            "entryCount": 16,
+            "exitWord": 3210001534,
+            "exitCount": 16,
+            "best": null,
+            "insertion": null
+          }
+        ],
+        "ranked": [
+          {
+            "occurrence": 1,
+            "kind": "Dash",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 524,
+            "hit": 100,
+            "proximity": 8
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "lotteryWord": 3210001534,
+        "lotteryCount": 16,
+        "rolls": [
+          {
+            "slot": 0,
+            "raw": 4086,
+            "modulo": 86,
+            "hit": 100,
+            "passed": true
+          }
+        ],
+        "selected": 0,
+        "reason": "FirstRoll",
+        "destination": [
+          0,
+          1
+        ],
+        "selectedOccurrence": 1,
+        "word": 267834847,
+        "count": 17
+      }
+    },
+    {
+      "id": "duplicate-Dash",
+      "kind": "list",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash",
+              "Dash"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "rejection": "None",
+        "entries": [
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "entryWord": 3295386429,
+            "entryCount": 11,
+            "exitWord": 3210001534,
+            "exitCount": 16,
+            "best": {
+              "occurrence": 0,
+              "kind": "Attack",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 1,
+            "kind": "Dash",
+            "entryWord": 3210001534,
+            "entryCount": 16,
+            "exitWord": 267834847,
+            "exitCount": 17,
+            "best": {
+              "occurrence": 1,
+              "kind": "Dash",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 524,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 2,
+            "kind": "Dash",
+            "entryWord": 267834847,
+            "entryCount": 17,
+            "exitWord": 180171308,
+            "exitCount": 18,
+            "best": {
+              "occurrence": 2,
+              "kind": "Dash",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 524,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 1
+          },
+          {
+            "occurrence": 3,
+            "kind": "Frog",
+            "entryWord": 180171308,
+            "entryCount": 18,
+            "exitWord": 180171308,
+            "exitCount": 18,
+            "best": null,
+            "insertion": null
+          }
+        ],
+        "ranked": [
+          {
+            "occurrence": 1,
+            "kind": "Dash",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 524,
+            "hit": 100,
+            "proximity": 8
+          },
+          {
+            "occurrence": 2,
+            "kind": "Dash",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 524,
+            "hit": 100,
+            "proximity": 8
+          },
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 8
+          },
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "lotteryWord": 180171308,
+        "lotteryCount": 18,
+        "rolls": [
+          {
+            "slot": 0,
+            "raw": 12767,
+            "modulo": 67,
+            "hit": 100,
+            "passed": true
+          }
+        ],
+        "selected": 0,
+        "reason": "FirstRoll",
+        "destination": [
+          0,
+          1
+        ],
+        "selectedOccurrence": 1,
+        "word": 836760821,
+        "count": 19
+      }
+    },
+    {
+      "id": "reordered-mixed",
+      "kind": "list",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash",
+              "Stone",
+              "Self",
+              "Dash"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "rejection": "None",
+        "entries": [
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "entryWord": 3295386429,
+            "entryCount": 11,
+            "exitWord": 3210001534,
+            "exitCount": 16,
+            "best": {
+              "occurrence": 0,
+              "kind": "Attack",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 1,
+            "kind": "Dash",
+            "entryWord": 3210001534,
+            "entryCount": 16,
+            "exitWord": 267834847,
+            "exitCount": 17,
+            "best": {
+              "occurrence": 1,
+              "kind": "Dash",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 524,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 2,
+            "kind": "Stone",
+            "entryWord": 267834847,
+            "entryCount": 17,
+            "exitWord": 2111915288,
+            "exitCount": 22,
+            "best": {
+              "occurrence": 2,
+              "kind": "Stone",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 2
+          },
+          {
+            "occurrence": 3,
+            "kind": "Self",
+            "entryWord": 2111915288,
+            "entryCount": 22,
+            "exitWord": 3791773014,
+            "exitCount": 24,
+            "best": null,
+            "insertion": null
+          },
+          {
+            "occurrence": 4,
+            "kind": "Dash",
+            "entryWord": 3791773014,
+            "entryCount": 24,
+            "exitWord": 3535774167,
+            "exitCount": 25,
+            "best": {
+              "occurrence": 4,
+              "kind": "Dash",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 524,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 1
+          },
+          {
+            "occurrence": 5,
+            "kind": "Frog",
+            "entryWord": 3535774167,
+            "entryCount": 25,
+            "exitWord": 3535774167,
+            "exitCount": 25,
+            "best": null,
+            "insertion": null
+          }
+        ],
+        "ranked": [
+          {
+            "occurrence": 1,
+            "kind": "Dash",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 524,
+            "hit": 100,
+            "proximity": 8
+          },
+          {
+            "occurrence": 4,
+            "kind": "Dash",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 524,
+            "hit": 100,
+            "proximity": 8
+          },
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 8
+          },
+          {
+            "occurrence": 2,
+            "kind": "Stone",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 8
+          },
+          null,
+          null,
+          null,
+          null
+        ],
+        "lotteryWord": 3535774167,
+        "lotteryCount": 25,
+        "rolls": [
+          {
+            "slot": 0,
+            "raw": 25137,
+            "modulo": 37,
+            "hit": 100,
+            "passed": true
+          }
+        ],
+        "selected": 0,
+        "reason": "FirstRoll",
+        "destination": [
+          0,
+          1
+        ],
+        "selectedOccurrence": 1,
+        "word": 3794901700,
+        "count": 26
+      }
+    },
+    {
+      "id": "rank-capacity",
+      "kind": "list",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash",
+              "Dash",
+              "Dash",
+              "Dash",
+              "Dash",
+              "Dash",
+              "Dash",
+              "Dash",
+              "Dash",
+              "Dash"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "rejection": "None",
+        "entries": [
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "entryWord": 3295386429,
+            "entryCount": 11,
+            "exitWord": 3210001534,
+            "exitCount": 16,
+            "best": {
+              "occurrence": 0,
+              "kind": "Attack",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 1,
+            "kind": "Dash",
+            "entryWord": 3210001534,
+            "entryCount": 16,
+            "exitWord": 267834847,
+            "exitCount": 17,
+            "best": {
+              "occurrence": 1,
+              "kind": "Dash",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 524,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 2,
+            "kind": "Dash",
+            "entryWord": 267834847,
+            "entryCount": 17,
+            "exitWord": 180171308,
+            "exitCount": 18,
+            "best": {
+              "occurrence": 2,
+              "kind": "Dash",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 524,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 1
+          },
+          {
+            "occurrence": 3,
+            "kind": "Dash",
+            "entryWord": 180171308,
+            "entryCount": 18,
+            "exitWord": 836760821,
+            "exitCount": 19,
+            "best": {
+              "occurrence": 3,
+              "kind": "Dash",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 524,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 2
+          },
+          {
+            "occurrence": 4,
+            "kind": "Dash",
+            "entryWord": 836760821,
+            "entryCount": 19,
+            "exitWord": 595337866,
+            "exitCount": 20,
+            "best": {
+              "occurrence": 4,
+              "kind": "Dash",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 524,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 3
+          },
+          {
+            "occurrence": 5,
+            "kind": "Dash",
+            "entryWord": 595337866,
+            "entryCount": 20,
+            "exitWord": 2937909499,
+            "exitCount": 21,
+            "best": {
+              "occurrence": 5,
+              "kind": "Dash",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 524,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 4
+          },
+          {
+            "occurrence": 6,
+            "kind": "Dash",
+            "entryWord": 2937909499,
+            "entryCount": 21,
+            "exitWord": 2111915288,
+            "exitCount": 22,
+            "best": {
+              "occurrence": 6,
+              "kind": "Dash",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 524,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 5
+          },
+          {
+            "occurrence": 7,
+            "kind": "Dash",
+            "entryWord": 2111915288,
+            "entryCount": 22,
+            "exitWord": 3297241969,
+            "exitCount": 23,
+            "best": {
+              "occurrence": 7,
+              "kind": "Dash",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 524,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 6
+          },
+          {
+            "occurrence": 8,
+            "kind": "Dash",
+            "entryWord": 3297241969,
+            "entryCount": 23,
+            "exitWord": 3791773014,
+            "exitCount": 24,
+            "best": {
+              "occurrence": 8,
+              "kind": "Dash",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 524,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 7
+          },
+          {
+            "occurrence": 9,
+            "kind": "Dash",
+            "entryWord": 3791773014,
+            "entryCount": 24,
+            "exitWord": 3535774167,
+            "exitCount": 25,
+            "best": {
+              "occurrence": 9,
+              "kind": "Dash",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 524,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": null
+          },
+          {
+            "occurrence": 10,
+            "kind": "Dash",
+            "entryWord": 3535774167,
+            "entryCount": 25,
+            "exitWord": 3794901700,
+            "exitCount": 26,
+            "best": {
+              "occurrence": 10,
+              "kind": "Dash",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 524,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": null
+          },
+          {
+            "occurrence": 11,
+            "kind": "Frog",
+            "entryWord": 3794901700,
+            "entryCount": 26,
+            "exitWord": 3794901700,
+            "exitCount": 26,
+            "best": null,
+            "insertion": null
+          }
+        ],
+        "ranked": [
+          {
+            "occurrence": 1,
+            "kind": "Dash",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 524,
+            "hit": 100,
+            "proximity": 8
+          },
+          {
+            "occurrence": 2,
+            "kind": "Dash",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 524,
+            "hit": 100,
+            "proximity": 8
+          },
+          {
+            "occurrence": 3,
+            "kind": "Dash",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 524,
+            "hit": 100,
+            "proximity": 8
+          },
+          {
+            "occurrence": 4,
+            "kind": "Dash",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 524,
+            "hit": 100,
+            "proximity": 8
+          },
+          {
+            "occurrence": 5,
+            "kind": "Dash",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 524,
+            "hit": 100,
+            "proximity": 8
+          },
+          {
+            "occurrence": 6,
+            "kind": "Dash",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 524,
+            "hit": 100,
+            "proximity": 8
+          },
+          {
+            "occurrence": 7,
+            "kind": "Dash",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 524,
+            "hit": 100,
+            "proximity": 8
+          },
+          {
+            "occurrence": 8,
+            "kind": "Dash",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 524,
+            "hit": 100,
+            "proximity": 8
+          }
+        ],
+        "lotteryWord": 3794901700,
+        "lotteryCount": 26,
+        "rolls": [
+          {
+            "slot": 0,
+            "raw": 25566,
+            "modulo": 66,
+            "hit": 100,
+            "passed": true
+          }
+        ],
+        "selected": 0,
+        "reason": "FirstRoll",
+        "destination": [
+          0,
+          1
+        ],
+        "selectedOccurrence": 1,
+        "word": 3823029677,
+        "count": 27
+      }
+    },
+    {
+      "id": "complete-Dash-ACT-first",
+      "kind": "turn",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "decisions": [
+          {
+            "afterAct": false,
+            "kind": "Dash",
+            "occurrence": 1,
+            "entryWord": 1,
+            "entryCount": 7,
+            "word": 180171308,
+            "count": 18
+          },
+          {
+            "afterAct": true,
+            "kind": "Move",
+            "occurrence": null,
+            "entryWord": 2937909499,
+            "entryCount": 21,
+            "word": 1969681615,
+            "count": 33
+          }
+        ],
+        "commands": [
+          "Dash",
+          "Move"
+        ],
+        "failure": null,
+        "active": false,
+        "pending": false,
+        "continuation": false,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              0,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 15,
+            "moved": true,
+            "acted": true,
+            "face": "North",
+            "ko": 0
+          },
+          {
+            "id": "b",
+            "tile": [
+              2,
+              1
+            ],
+            "hp": 40,
+            "pa": 5,
+            "ct": 95,
+            "moved": false,
+            "acted": false,
+            "face": "West",
+            "ko": 0
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 5,
+            "moved": false,
+            "acted": false,
+            "face": "South",
+            "ko": 0
+          }
+        ],
+        "word": 1969681615,
+        "count": 33,
+        "ticks": 1,
+        "workspace": [
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "priority": -511
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "priority": -511
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": -511
+          }
+        ]
+      }
+    },
+    {
+      "id": "complete-Dash-Move-first",
+      "kind": "turn",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "decisions": [
+          {
+            "afterAct": false,
+            "kind": "Move",
+            "occurrence": 1,
+            "entryWord": 1,
+            "entryCount": 7,
+            "word": 836760821,
+            "count": 19
+          }
+        ],
+        "commands": [
+          "Move",
+          "RetainedDash",
+          "FinishFacing"
+        ],
+        "failure": null,
+        "active": false,
+        "pending": false,
+        "continuation": false,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              2,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 15,
+            "moved": true,
+            "acted": true,
+            "face": "North",
+            "ko": 0
+          },
+          {
+            "id": "b",
+            "tile": [
+              3,
+              1
+            ],
+            "hp": 40,
+            "pa": 5,
+            "ct": 95,
+            "moved": false,
+            "acted": false,
+            "face": "West",
+            "ko": 0
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 5,
+            "moved": false,
+            "acted": false,
+            "face": "South",
+            "ko": 0
+          }
+        ],
+        "word": 2111915288,
+        "count": 22,
+        "ticks": 1,
+        "workspace": [
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "priority": -485
+          }
+        ]
+      }
+    },
+    {
+      "id": "complete-Dash-class-evade100",
+      "kind": "turn",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 100,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "decisions": [
+          {
+            "afterAct": false,
+            "kind": "Dash",
+            "occurrence": 1,
+            "entryWord": 1,
+            "entryCount": 7,
+            "word": 267834847,
+            "count": 17
+          },
+          {
+            "afterAct": true,
+            "kind": "Move",
+            "occurrence": null,
+            "entryWord": 595337866,
+            "entryCount": 20,
+            "word": 1969681615,
+            "count": 33
+          }
+        ],
+        "commands": [
+          "Dash",
+          "Move"
+        ],
+        "failure": null,
+        "active": false,
+        "pending": false,
+        "continuation": false,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              0,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 15,
+            "moved": true,
+            "acted": true,
+            "face": "North",
+            "ko": 0
+          },
+          {
+            "id": "b",
+            "tile": [
+              3,
+              1
+            ],
+            "hp": 45,
+            "pa": 5,
+            "ct": 95,
+            "moved": false,
+            "acted": false,
+            "face": "West",
+            "ko": 0
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 5,
+            "moved": false,
+            "acted": false,
+            "face": "South",
+            "ko": 0
+          }
+        ],
+        "word": 1969681615,
+        "count": 33,
+        "ticks": 1,
+        "workspace": [
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "priority": -498
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "priority": -498
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": -498
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "priority": -498
+          }
+        ]
+      }
+    },
+    {
+      "id": "complete-Dash-KO-retained",
+      "kind": "turn",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 5,
+            "maxHp": 5,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 100,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "decisions": [
+          {
+            "afterAct": false,
+            "kind": "Dash",
+            "occurrence": 1,
+            "entryWord": 1,
+            "entryCount": 7,
+            "word": 180171308,
+            "count": 18
+          }
+        ],
+        "commands": [
+          "Dash"
+        ],
+        "failure": "DeferredCorpseInput",
+        "active": true,
+        "pending": false,
+        "continuation": false,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 15,
+            "moved": false,
+            "acted": true,
+            "face": "South",
+            "ko": 0
+          },
+          {
+            "id": "b",
+            "tile": [
+              2,
+              1
+            ],
+            "hp": 0,
+            "pa": 5,
+            "ct": 95,
+            "moved": false,
+            "acted": false,
+            "face": "West",
+            "ko": 1
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 5,
+            "moved": false,
+            "acted": false,
+            "face": "South",
+            "ko": 0
+          }
+        ],
+        "word": 2937909499,
+        "count": 21,
+        "ticks": 1,
+        "workspace": [
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": -485
+          }
+        ]
+      }
+    },
+    {
+      "id": "complete-Dash-Move-first-KO",
+      "kind": "turn",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 5,
+            "maxHp": 5,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 100,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "decisions": [
+          {
+            "afterAct": false,
+            "kind": "Move",
+            "occurrence": 1,
+            "entryWord": 1,
+            "entryCount": 7,
+            "word": 836760821,
+            "count": 19
+          }
+        ],
+        "commands": [
+          "Move",
+          "RetainedDash",
+          "FinishFacing"
+        ],
+        "failure": null,
+        "active": false,
+        "pending": false,
+        "continuation": false,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              2,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 15,
+            "moved": true,
+            "acted": true,
+            "face": "North",
+            "ko": 0
+          },
+          {
+            "id": "b",
+            "tile": [
+              3,
+              1
+            ],
+            "hp": 0,
+            "pa": 5,
+            "ct": 95,
+            "moved": false,
+            "acted": false,
+            "face": "West",
+            "ko": 1
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 5,
+            "moved": false,
+            "acted": false,
+            "face": "South",
+            "ko": 0
+          }
+        ],
+        "word": 2111915288,
+        "count": 22,
+        "ticks": 1,
+        "workspace": [
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "priority": -485
+          }
+        ]
+      }
+    },
+    {
+      "id": "six-real-Dash-mixed-turns",
+      "kind": "replay",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 500,
+            "maxHp": 500,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash",
+              "Self"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 100,
+            "hp": 500,
+            "maxHp": 500,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash",
+              "Self"
+            ],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 100,
+            "hp": 500,
+            "maxHp": 500,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Dash",
+              "Self"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "turns": 6,
+      "expected": [
+        {
+          "actor": "a",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "Move",
+                "occurrence": 1,
+                "entryWord": 1,
+                "entryCount": 7,
+                "word": 2937909499,
+                "count": 21
+              }
+            ],
+            "commands": [
+              "Move",
+              "RetainedDash",
+              "FinishFacing"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  2,
+                  1
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 15,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  3,
+                  1
+                ],
+                "hp": 480,
+                "pa": 5,
+                "ct": 100,
+                "moved": false,
+                "acted": false,
+                "face": "West",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  1,
+                  2
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 100,
+                "moved": false,
+                "acted": false,
+                "face": "South",
+                "ko": 0
+              }
+            ],
+            "word": 3791773014,
+            "count": 24,
+            "ticks": 1,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  0
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  0,
+                  1
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  2,
+                  1
+                ],
+                "priority": -485
+              }
+            ]
+          },
+          "clock": {
+            "ticks": 0,
+            "atTick": 1,
+            "actor": "b",
+            "before": 100,
+            "ct": 0,
+            "raw": 21183,
+            "word": 3535774167,
+            "count": 25
+          }
+        },
+        {
+          "actor": "b",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "Dash",
+                "occurrence": 1,
+                "entryWord": 3535774167,
+                "entryCount": 25,
+                "word": 4008331270,
+                "count": 40
+              },
+              {
+                "afterAct": true,
+                "kind": "Move",
+                "occurrence": null,
+                "entryWord": 3397090333,
+                "entryCount": 43,
+                "word": 1627576247,
+                "count": 57
+              }
+            ],
+            "commands": [
+              "Dash",
+              "Move"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  1,
+                  1
+                ],
+                "hp": 485,
+                "pa": 5,
+                "ct": 15,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  4,
+                  1
+                ],
+                "hp": 480,
+                "pa": 5,
+                "ct": 0,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  1,
+                  2
+                ],
+                "hp": 500,
+                "pa": 5,
+                "ct": 100,
+                "moved": false,
+                "acted": false,
+                "face": "South",
+                "ko": 0
+              }
+            ],
+            "word": 1627576247,
+            "count": 57,
+            "ticks": 1,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  0
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  3,
+                  0
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  0,
+                  1
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  2,
+                  1
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  3,
+                  1
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  4,
+                  1
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  3,
+                  2
+                ],
+                "priority": 487
+              }
+            ]
+          },
+          "clock": {
+            "ticks": 0,
+            "atTick": 1,
+            "actor": "c",
+            "before": 100,
+            "ct": 0,
+            "raw": 31353,
+            "word": 2054802212,
+            "count": 58
+          }
+        },
+        {
+          "actor": "c",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "Self",
+                "occurrence": 2,
+                "entryWord": 2054802212,
+                "entryCount": 58,
+                "word": 685333180,
+                "count": 66
+              },
+              {
+                "afterAct": true,
+                "kind": "Move",
+                "occurrence": null,
+                "entryWord": 685333180,
+                "entryCount": 66,
+                "word": 872078403,
+                "count": 77
+              }
+            ],
+            "commands": [
+              "Self",
+              "Move"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  1,
+                  1
+                ],
+                "hp": 485,
+                "pa": 5,
+                "ct": 15,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  4,
+                  1
+                ],
+                "hp": 480,
+                "pa": 5,
+                "ct": 0,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  2,
+                  2
+                ],
+                "hp": 500,
+                "pa": 6,
+                "ct": 0,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              }
+            ],
+            "word": 872078403,
+            "count": 77,
+            "ticks": 1,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  0
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  3,
+                  0
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  0,
+                  1
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  2,
+                  1
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  3,
+                  1
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  4,
+                  1
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  2,
+                  2
+                ],
+                "priority": -487
+              },
+              {
+                "tile": [
+                  3,
+                  2
+                ],
+                "priority": 487
+              }
+            ]
+          },
+          "clock": {
+            "ticks": 17,
+            "atTick": 18,
+            "actor": "a",
+            "before": 100,
+            "ct": 0,
+            "raw": 28606,
+            "word": 4022231744,
+            "count": 78
+          }
+        },
+        {
+          "actor": "a",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "Self",
+                "occurrence": 2,
+                "entryWord": 4022231744,
+                "entryCount": 78,
+                "word": 208521688,
+                "count": 86
+              },
+              {
+                "afterAct": true,
+                "kind": "Move",
+                "occurrence": null,
+                "entryWord": 208521688,
+                "entryCount": 86,
+                "word": 856000655,
+                "count": 97
+              }
+            ],
+            "commands": [
+              "Self",
+              "Move"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  2,
+                  1
+                ],
+                "hp": 485,
+                "pa": 6,
+                "ct": 0,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  4,
+                  1
+                ],
+                "hp": 480,
+                "pa": 5,
+                "ct": 85,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  2,
+                  2
+                ],
+                "hp": 500,
+                "pa": 6,
+                "ct": 85,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              }
+            ],
+            "word": 856000655,
+            "count": 97,
+            "ticks": 18,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  0
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  3,
+                  0
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  0,
+                  1
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  2,
+                  1
+                ],
+                "priority": -487
+              },
+              {
+                "tile": [
+                  3,
+                  1
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  4,
+                  1
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  2,
+                  2
+                ],
+                "priority": -487
+              },
+              {
+                "tile": [
+                  3,
+                  2
+                ],
+                "priority": 487
+              }
+            ]
+          },
+          "clock": {
+            "ticks": 3,
+            "atTick": 21,
+            "actor": "b",
+            "before": 100,
+            "ct": 0,
+            "raw": 22160,
+            "word": 1452336924,
+            "count": 98
+          }
+        },
+        {
+          "actor": "b",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "Move",
+                "occurrence": 1,
+                "entryWord": 1452336924,
+                "entryCount": 98,
+                "word": 3758492830,
+                "count": 112
+              }
+            ],
+            "commands": [
+              "Move",
+              "RetainedDash",
+              "FinishFacing"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  2,
+                  1
+                ],
+                "hp": 480,
+                "pa": 6,
+                "ct": 15,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  3,
+                  1
+                ],
+                "hp": 480,
+                "pa": 5,
+                "ct": 0,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  2,
+                  2
+                ],
+                "hp": 500,
+                "pa": 6,
+                "ct": 100,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              }
+            ],
+            "word": 2780109717,
+            "count": 115,
+            "ticks": 21,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  0
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  3,
+                  0
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  4,
+                  0
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  0,
+                  1
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  2,
+                  1
+                ],
+                "priority": -487
+              },
+              {
+                "tile": [
+                  3,
+                  1
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  4,
+                  1
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  5,
+                  1
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  2,
+                  2
+                ],
+                "priority": -487
+              },
+              {
+                "tile": [
+                  3,
+                  2
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  4,
+                  2
+                ],
+                "priority": 487
+              }
+            ]
+          },
+          "clock": {
+            "ticks": 0,
+            "atTick": 21,
+            "actor": "c",
+            "before": 100,
+            "ct": 0,
+            "raw": 26306,
+            "word": 3871495338,
+            "count": 116
+          }
+        },
+        {
+          "actor": "c",
+          "turn": {
+            "decisions": [
+              {
+                "afterAct": false,
+                "kind": "Move",
+                "occurrence": 1,
+                "entryWord": 3871495338,
+                "entryCount": 116,
+                "word": 510737498,
+                "count": 132
+              }
+            ],
+            "commands": [
+              "Move",
+              "RetainedDash",
+              "FinishFacing"
+            ],
+            "failure": null,
+            "active": false,
+            "pending": false,
+            "continuation": false,
+            "units": [
+              {
+                "id": "a",
+                "tile": [
+                  2,
+                  1
+                ],
+                "hp": 480,
+                "pa": 6,
+                "ct": 15,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "b",
+                "tile": [
+                  3,
+                  0
+                ],
+                "hp": 456,
+                "pa": 5,
+                "ct": 0,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              },
+              {
+                "id": "c",
+                "tile": [
+                  3,
+                  2
+                ],
+                "hp": 500,
+                "pa": 6,
+                "ct": 0,
+                "moved": true,
+                "acted": true,
+                "face": "North",
+                "ko": 0
+              }
+            ],
+            "word": 3445091201,
+            "count": 135,
+            "ticks": 21,
+            "workspace": [
+              {
+                "tile": [
+                  1,
+                  0
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  3,
+                  0
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  4,
+                  0
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  0,
+                  1
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  1,
+                  1
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  2,
+                  1
+                ],
+                "priority": -487
+              },
+              {
+                "tile": [
+                  3,
+                  1
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  4,
+                  1
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  5,
+                  1
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  1,
+                  2
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  2,
+                  2
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  3,
+                  2
+                ],
+                "priority": -485
+              },
+              {
+                "tile": [
+                  4,
+                  2
+                ],
+                "priority": 487
+              },
+              {
+                "tile": [
+                  2,
+                  3
+                ],
+                "priority": -485
+              }
+            ]
+          },
+          "clock": null
+        }
+      ]
+    }
+  ]
+}

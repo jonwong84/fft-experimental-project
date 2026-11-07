@@ -1,0 +1,315 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-310",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "vectors": [
+    {
+      "id": "dispatch-0",
+      "kind": "source-dispatch",
+      "input": {
+        "moved": false,
+        "acted": false,
+        "action": true,
+        "actFirst": false,
+        "origin": [
+          1,
+          1
+        ],
+        "destination": [
+          0,
+          1
+        ]
+      },
+      "expected": "Move"
+    },
+    {
+      "id": "dispatch-1",
+      "kind": "source-dispatch",
+      "input": {
+        "moved": false,
+        "acted": false,
+        "action": true,
+        "actFirst": true,
+        "origin": [
+          1,
+          1
+        ],
+        "destination": [
+          0,
+          1
+        ]
+      },
+      "expected": "Act"
+    },
+    {
+      "id": "dispatch-2",
+      "kind": "source-dispatch",
+      "input": {
+        "moved": false,
+        "acted": false,
+        "action": true,
+        "actFirst": true,
+        "origin": [
+          1,
+          1
+        ],
+        "destination": [
+          1,
+          1
+        ]
+      },
+      "expected": "Act"
+    },
+    {
+      "id": "dispatch-3",
+      "kind": "source-dispatch",
+      "input": {
+        "moved": false,
+        "acted": false,
+        "action": false,
+        "actFirst": false,
+        "origin": [
+          1,
+          1
+        ],
+        "destination": [
+          0,
+          1
+        ]
+      },
+      "expected": "Move"
+    },
+    {
+      "id": "dispatch-4",
+      "kind": "source-dispatch",
+      "input": {
+        "moved": false,
+        "acted": false,
+        "action": false,
+        "actFirst": false,
+        "origin": [
+          1,
+          1
+        ],
+        "destination": [
+          1,
+          1
+        ]
+      },
+      "expected": "End"
+    },
+    {
+      "id": "dispatch-5",
+      "kind": "source-dispatch",
+      "input": {
+        "moved": false,
+        "acted": true,
+        "action": false,
+        "actFirst": false,
+        "origin": [
+          1,
+          1
+        ],
+        "destination": [
+          0,
+          1
+        ]
+      },
+      "expected": "Move"
+    },
+    {
+      "id": "dispatch-6",
+      "kind": "source-dispatch",
+      "input": {
+        "moved": false,
+        "acted": true,
+        "action": false,
+        "actFirst": false,
+        "origin": [
+          1,
+          1
+        ],
+        "destination": [
+          1,
+          1
+        ]
+      },
+      "expected": "End"
+    },
+    {
+      "id": "dispatch-7",
+      "kind": "source-dispatch",
+      "input": {
+        "moved": true,
+        "acted": false,
+        "action": true,
+        "actFirst": false,
+        "origin": [
+          1,
+          1
+        ],
+        "destination": [
+          0,
+          1
+        ]
+      },
+      "expected": "Act"
+    },
+    {
+      "id": "dispatch-8",
+      "kind": "source-dispatch",
+      "input": {
+        "moved": true,
+        "acted": true,
+        "action": true,
+        "actFirst": true,
+        "origin": [
+          1,
+          1
+        ],
+        "destination": [
+          0,
+          1
+        ]
+      },
+      "expected": "End"
+    },
+    {
+      "id": "dispatch-9",
+      "kind": "source-dispatch",
+      "input": {
+        "moved": true,
+        "acted": false,
+        "action": false,
+        "actFirst": false,
+        "origin": [
+          1,
+          1
+        ],
+        "destination": [
+          0,
+          1
+        ]
+      },
+      "expected": "End"
+    },
+    {
+      "id": "route-10",
+      "kind": "managed-turn-route",
+      "input": {
+        "continuation": true,
+        "pending": false,
+        "active": true
+      },
+      "expected": "RetainedCommand"
+    },
+    {
+      "id": "route-11",
+      "kind": "managed-turn-route",
+      "input": {
+        "continuation": false,
+        "pending": true,
+        "active": false
+      },
+      "expected": "FinishFacing"
+    },
+    {
+      "id": "route-12",
+      "kind": "managed-turn-route",
+      "input": {
+        "continuation": false,
+        "pending": false,
+        "active": true
+      },
+      "expected": "PostActCommand"
+    },
+    {
+      "id": "route-13",
+      "kind": "managed-turn-route",
+      "input": {
+        "continuation": false,
+        "pending": false,
+        "active": false
+      },
+      "expected": null
+    },
+    {
+      "id": "same-checkpoint",
+      "kind": "managed-rng-checkpoint",
+      "input": {
+        "beforeWord": 1,
+        "beforeCount": 7,
+        "afterWord": 1,
+        "afterCount": 7
+      },
+      "expected": true
+    },
+    {
+      "id": "seven-real-draws",
+      "kind": "managed-rng-checkpoint",
+      "input": {
+        "beforeWord": 1,
+        "beforeCount": 7,
+        "afterWord": 3655513600,
+        "afterCount": 14
+      },
+      "expected": true
+    },
+    {
+      "id": "wrong-same-count-word",
+      "kind": "managed-rng-checkpoint",
+      "input": {
+        "beforeWord": 1,
+        "beforeCount": 7,
+        "afterWord": 2,
+        "afterCount": 7
+      },
+      "expected": false
+    },
+    {
+      "id": "decreasing-count",
+      "kind": "managed-rng-checkpoint",
+      "input": {
+        "beforeWord": 1,
+        "beforeCount": 7,
+        "afterWord": 1,
+        "afterCount": 6
+      },
+      "expected": false
+    },
+    {
+      "id": "wrong-forward-word",
+      "kind": "managed-rng-checkpoint",
+      "input": {
+        "beforeWord": 1,
+        "beforeCount": 7,
+        "afterWord": 2,
+        "afterCount": 14
+      },
+      "expected": false
+    },
+    {
+      "id": "large-forward-count",
+      "kind": "managed-rng-checkpoint",
+      "input": {
+        "beforeWord": 1,
+        "beforeCount": 7,
+        "afterWord": 3791773014,
+        "afterCount": 1099511627800
+      },
+      "expected": true
+    },
+    {
+      "id": "last-representable-count",
+      "kind": "managed-rng-checkpoint",
+      "input": {
+        "beforeWord": 1,
+        "beforeCount": 7,
+        "afterWord": 3991797961,
+        "afterCount": 18446744073709551615
+      },
+      "expected": true
+    }
+  ]
+}

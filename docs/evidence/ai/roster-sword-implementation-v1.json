@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-295"
+  ],
+  "date": "2026-11-05",
+  "kind": "managed-isolated-roster-sword-candidate",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "d284c92f9ccb64fb292b8269bf06acef520d08df",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/roster-sword-source-v1.json",
+  "design": "docs/architecture/zod-294-roster-sword-candidate.md",
+  "behavior": "docs/behavior/roster-sword-ai-candidate.md",
+  "sourceFixture": "docs/fixtures/behavior/roster-sword-contract-v1.json",
+  "implementationPaths": [
+    "src/Zodiac.Framework.Ai/Sword/RosterSwordAiCandidate.cs",
+    "src/Zodiac.Framework.Ai/Sword/SwordAiFormulaProjection.cs",
+    "src/Zodiac.Framework.Ai/Shared/AiCandidateState.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Ai.Tests/Shared/RosterSwordAiCandidateTests.cs"
+  ],
+  "invariants": [
+    "initially living compact16, owned complete source membership/baselines, stable teams and selected ordinary useful enemy",
+    "typed/equipped ordinary sword and old signed-16 envelope before draws; range from order-specific formula origin; facing unchanged",
+    "separate roster formula admission shares private pair arithmetic; old pair guards and API shape retained",
+    "four real evade draws, fixed midpoint/no critical or proc/displacement draws; positive accuracy full normal damage; zero accuracy returns before clock",
+    "legal destinations from initial living roster; explicit changed-target unit builder updates only selected HP/status/counter; old pair owners delegate through sole peer",
+    "shared whole-roster clock includes corpse modulo/upkeep and all other living units, source ready/tie order, no death-counter decay or live KO-count publication",
+    "all source-order score terms/team signs and fresh ownership, no cached public outcome input or actual Attack invocation",
+    "late clock failures restore complete query RNG; immutable replay, either actor and collection reordering preserve live state",
+    "no preparation/search/list ranking/lottery, roster command authority or complete decision stream claim; owner drafts preserved"
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4363,
+    "frameworkPassed": 1483,
+    "aiPassed": 1135,
+    "newAiCases": 8,
+    "pythonPassed": 560,
+    "newPythonCases": 3,
+    "trxReports": 7,
+    "sourceFiles": 12,
+    "sourceFunctions": 30,
+    "sourceDescriptions": 13,
+    "sourcePreparedAudit": true,
+    "algorithmGuideAudit": true,
+    "localLinkAudit": true,
+    "coverageAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/roster-sword-294-295/"
+  },
+  "boundaries": [
+    "ordinary neutral range-one empty-proc sword, normal unchanged human equipment, zero Golem/MP, positive Speed, strict flat geometry",
+    "isolated candidate admits byte Move with shared cap124; no claim to general reach/policy admission or arbitrary useful masks/friendly fire",
+    "full Attack/Stone enumeration, occurrence composition/ranking/lottery and roster AI command/turn execution remain open",
+    "full corpse lifecycle, other abilities/policies/statuses/maps, automatic facing, terminal routing and frame RNG remain open",
+    "host/editor, owner drafts, broad replacement interfaces and ZOD-106 deferred; ZOD-296 next owns fresh-prefix Attack enumeration"
+  ],
+  "dependencyChanges": false,
+  "newProductionFriendAccess": false,
+  "originalExecuted": false,
+  "cExecuted": false
+}

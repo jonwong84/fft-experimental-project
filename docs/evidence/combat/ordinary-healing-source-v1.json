@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/formulas.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 46088,
+      "sha256": "a9e58962104849ae4e947e3833236aaf2c1334394a1af12b19930428e6885e03"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40418,
+      "sha256": "04542e66135d779fd739adbce9fa6ee714feb6dc8607dfa4584c87222a38343c"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 85515,
+      "sha256": "820411f8293d559677ff676f4e3d19a16ae52b667e7aa1393ab5495741f1e149"
+    },
+    {
+      "path": "src/main/unit_stats.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11279,
+      "sha256": "c067b3adfe646dea5b6627ff6ca9a3f986d564e80f016443f37f176116511349"
+    },
+    {
+      "path": "include/fft/ability.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 34632,
+      "sha256": "530676861205ea3cf31cada08ffc927142db98af0ad2c986722ad83b069b9a2f"
+    },
+    {
+      "path": "include/fft/status.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11673,
+      "sha256": "deeaeec02add8b9db7cca91c99517706033b18385ca433d32f1998d9d62e0e83"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_magical_heal",
+      "startLine": 263,
+      "endLine": 269,
+      "normalizedLfSha256": "6283c1300418be96f44690b192c923771733f99bd56bb0d2b99cac3ea8c5c02f"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_calculate_magical_xa_times_ya",
+      "startLine": 28,
+      "endLine": 32,
+      "normalizedLfSha256": "ed541ae1a1270ee6dafbcf7b0a96f4a07ab66a5087c072d47336e2bc38d4ac40"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_calculate_faith",
+      "startLine": 213,
+      "endLine": 234,
+      "normalizedLfSha256": "0812837b942de11405114acecfb45320118930ffab21e427ce991a8ef39e2a3f"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_apply_undead_reversal",
+      "startLine": 279,
+      "endLine": 297,
+      "normalizedLfSha256": "4a40d052e80aab2a1eb9e10f28a1cb1b5a7fea4c3c899a6f86c86598e270d833"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_apply_target_result",
+      "startLine": 837,
+      "endLine": 1039,
+      "normalizedLfSha256": "72f17f94af572c3b4f21f92787e7f80000bdc33fb418921c718432c9d46b00a5"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_finalize_target_result",
+      "startLine": 694,
+      "endLine": 753,
+      "normalizedLfSha256": "2242654f86ef5c9efef9c0ca7dab88bdab2be0835224e79eb1efe9cc3b084a86"
+    },
+    {
+      "path": "src/main/unit_stats.c",
+      "symbol": "stats_refresh",
+      "startLine": 97,
+      "endLine": 169,
+      "normalizedLfSha256": "dd0c400f5edfbb8cb52b827772321bf5831e2f43d29532be3b56e562be52cc51"
+    }
+  ],
+  "originalExecuted": false,
+  "cExecuted": false,
+  "scope": "Ordinary living Cure, no undead/status/reaction work; reused source clock/content receipts own readiness and table binding."
+}

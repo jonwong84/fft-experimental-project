@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-250",
+    "ZOD-251",
+    "ZOD-252",
+    "ZOD-253",
+    "ZOD-254"
+  ],
+  "date": "2026-11-04",
+  "kind": "managed-derived-three-entry-scenarios-selection-execution",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "d9375d2034a8b17d96817b4b523b7b086203df9a",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/derived-three-entry-source-v1.json",
+  "design": "docs/behavior/derived-basic-skill-ai.md",
+  "implementationPaths": [
+    "src/Zodiac.Framework.Ai/AttackThrowStone/AttackThrowStoneAiMovementScenario.cs",
+    "src/Zodiac.Framework.Ai/AttackThrowStone/AttackThrowStoneAiOutOfReachScenario.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiCommandExecution.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiComposition.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiDerivedComposition.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiDerivedSelection.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiScenarios.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiSelection.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiTurnExecution.cs",
+    "src/Zodiac.Framework.Ai/Shared/AiMovementScenarios.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiDerivedQueryTests.cs",
+    "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiDerivedExecutionTests.cs"
+  ],
+  "newFrameworkImplementation": false,
+  "newProductionFriendAccess": false,
+  "newPublicSessionOrReceiptConstructors": false,
+  "behavior": {
+    "preActPreparationsPerDecision": 1,
+    "movementEvaluationsPerDecision": 1,
+    "publicCachedInputs": false,
+    "unknownPriorityIsZero": false,
+    "actorRescored": false,
+    "damageCastRange": 4,
+    "unwrittenInCastRange": "atomic Provenance rejection",
+    "unwrittenOutOfCastRange": "proved unread by damage scans; self still evaluated",
+    "entryOrder": [
+      "Attack",
+      "Accumulate usefulness/clock",
+      "ThrowStone"
+    ],
+    "sourceGeneralEntryAssertionsRetained": true,
+    "suppliedApisPreserved": true,
+    "stages": [
+      "FirstCommand",
+      "RetainedCommand",
+      "PostActCommand",
+      "FinishFacing"
+    ],
+    "recovery": "exact immutable partial session and frozen entry mode; failed stage only",
+    "resumesPublishOnlyNewEventsAndDecisions": true,
+    "wholeTurnRollback": false,
+    "clockAdvance": false,
+    "terminalPolicy": false
+  },
+  "vectors": {
+    "attackActFirst": {
+      "word": 3834121963,
+      "count": 37,
+      "pa": 5,
+      "ct": 35,
+      "hp": 40,
+      "decisions": 2
+    },
+    "self": {
+      "incomingWord": 7,
+      "word": 2073554906,
+      "count": 34,
+      "pa": 6,
+      "ct": 35,
+      "hp": 50,
+      "decisions": 2
+    },
+    "cap": {
+      "incomingWord": 1,
+      "word": 1303003706,
+      "count": 36,
+      "pa": 99,
+      "ct": 35,
+      "hp": 50,
+      "decisions": 2,
+      "hypotheticalKoClock": true
+    },
+    "stoneMoveFirst": {
+      "word": 3791773014,
+      "count": 24,
+      "pa": 5,
+      "ct": 15,
+      "hp": 40,
+      "decisions": 1
+    },
+    "stoneActFirst": {
+      "word": 3008955749,
+      "count": 35,
+      "pa": 5,
+      "ct": 35,
+      "hp": 40,
+      "decisions": 2
+    },
+    "empty": {
+      "word": 836760821,
+      "count": 19,
+      "pa": 5,
+      "ct": 55,
+      "hp": 50,
+      "decisions": 1
+    }
+  },
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4242,
+    "frameworkPassed": 1467,
+    "aiPassed": 1030,
+    "newAiCases": 21,
+    "pythonPassed": 539,
+    "trxReports": 7,
+    "sourcePreparedAudit": true,
+    "pairSourcePreparedAudit": true,
+    "algorithmGuideAudit": true,
+    "coverageAudit": true,
+    "reports": "scratch/derived-basic-skill-249-254/",
+    "ownerDraftsUnchanged": true
+  },
+  "boundaries": [
+    "retained unknown cast keys still reject; no invented workspace history",
+    "closed ordinary two-unit profile and explicit policy/trajectory assertions",
+    "no broad search/maps/rosters/policies, terminal routing, host/editor activation or battle saves",
+    "original frame/VSync RNG unresolved"
+  ],
+  "originalExecuted": false,
+  "cExecuted": false
+}

@@ -1,0 +1,745 @@
+{
+  "format": "fft.dark-screen-intro-source-validation",
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "managedBase": "9e69322bc6692e8ae3f22c4fa7ce5153bdb41e46",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "specificationOnly": true,
+  "productionSourceChanged": false,
+  "newOriginalCaptures": false,
+  "emulatorLaunched": false,
+  "originalInstructionsExecuted": false,
+  "combinedDisplayedPixelsCompared": false,
+  "originalDurationEstablished": false,
+  "sourceFiles": [
+    {
+      "path": "include/fft/after_battle.h",
+      "bytes": 4303,
+      "sha256": "96cbef18065f8e5a64d2fbcd7af2d4d94667f887d174b7158aaaff830e9efbcf"
+    },
+    {
+      "path": "include/fft/battle_state.h",
+      "bytes": 9001,
+      "sha256": "2d2ccb0f958ab6c3b280bd31ebff010e7118f1a94ee0240751141a9628543f89"
+    },
+    {
+      "path": "include/fft/menu.h",
+      "bytes": 12682,
+      "sha256": "843c8262be7b49dcd8d8bcf182368779210d17f6743e1b15a1371df3dd92b863"
+    },
+    {
+      "path": "include/fft/menu_input.h",
+      "bytes": 5462,
+      "sha256": "7b600398ab9f17b8b32551ffdfb9f96504fb9c53828769737a51c8c093bc099e"
+    },
+    {
+      "path": "include/fft/script.h",
+      "bytes": 14636,
+      "sha256": "7430207a08a77a716eb7930d1895a46a7db8c6b23594c0f45d32f6924177f5b8"
+    },
+    {
+      "path": "include/fft/script_variable.h",
+      "bytes": 16608,
+      "sha256": "492ce44595c88b54d2e0c6641250c6c2d5457a7826edc6ace3594ff415286b42"
+    },
+    {
+      "path": "include/fft/thread.h",
+      "bytes": 12726,
+      "sha256": "55565b16d3f944c3fb86d34ae5a5ca483964235bac6ce592815d5d1c62efd9c7"
+    },
+    {
+      "path": "include/psx/gte_inline.h",
+      "bytes": 48083,
+      "sha256": "ee6a1bccecb6ae4a13e74feee7cfc57453e9d134b84e3a4eba13d5f78977344a"
+    },
+    {
+      "path": "include/psx/libgpu.h",
+      "bytes": 32315,
+      "sha256": "8b82cd0b44260334cbbae4144434b48214731def3800ae41ed663b472269b860"
+    },
+    {
+      "path": "src/battle/entry.c",
+      "bytes": 21402,
+      "sha256": "adb050612e82856c4300a8fe308ebee5672bc3994ff004ab9643fac167a3f510"
+    },
+    {
+      "path": "src/battle/event/frame.c",
+      "bytes": 23797,
+      "sha256": "7117b3e5daf773352411f24ff83c2fbdcc26d660de7371d1d088d5fabd31e812"
+    },
+    {
+      "path": "src/battle/event/interpreter.c",
+      "bytes": 57266,
+      "sha256": "0f1d08b30a16b88e55936442239f875eb53d961320a1409049c6bf2b72b464ec"
+    },
+    {
+      "path": "src/battle/frame.c",
+      "bytes": 7598,
+      "sha256": "7ac1a5904889e531e40f0235b86d6741f588ace695bcf7b8c605c9fc9540754f"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "bytes": 41903,
+      "sha256": "8d96a9971e6d7165132227c77647f87f4a28f45744adbaaabfe1abb7a9342941"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "bytes": 191808,
+      "sha256": "838c419938cdd610c14fa8e1cc578a1c76c949394bf1ea08449b526e74912933"
+    },
+    {
+      "path": "src/event/attack/scenario_setup.c",
+      "bytes": 14324,
+      "sha256": "54ebe8b3b11e7ef934b2fd9c961e4298a709e4a18cbae7389eb2b9c5848db675"
+    },
+    {
+      "path": "src/event/require/conditions.c",
+      "bytes": 23759,
+      "sha256": "1e05a5c461a8d208ad2f3d84102a147013d8af2ce60e83bc481aef13c04644fe"
+    },
+    {
+      "path": "src/event/require/entry_conditions.c",
+      "bytes": 5326,
+      "sha256": "f76849cd60f9dbf8df6efc82f0fc1446d22ada3bb7ba3ec89d19d6371bd8d46c"
+    },
+    {
+      "path": "src/event/require/entry_dark_screen.c",
+      "bytes": 13215,
+      "sha256": "e11a806e386cd0b182d4ab72095aea0aace69b48e24a9f55a4a05dd3e6ee6b8a"
+    },
+    {
+      "path": "src/event/require/screen_support.c",
+      "bytes": 4809,
+      "sha256": "c245776a1966ad212c8e912e4de6c6e15028bdbc5636406e070a23ccb399cbf5"
+    },
+    {
+      "path": "src/lib/event/scene/control.c",
+      "bytes": 14944,
+      "sha256": "977b52bd1d783965e0392164982de3495ff9eeb783992e321019e42e2debac4c"
+    },
+    {
+      "path": "src/lib/event/scene/menu_dispatch.c",
+      "bytes": 12054,
+      "sha256": "991829320e230445a76586348703715eb7d4e8f0b1408a577a9ac2982684a776"
+    },
+    {
+      "path": "src/lib/event/scene/menu_overlays.c",
+      "bytes": 15504,
+      "sha256": "3e48540293a3c65b808a2419d367228e97638b873367c9f80073c873747bf419"
+    },
+    {
+      "path": "src/lib/event/scene/menu_sessions.c",
+      "bytes": 15041,
+      "sha256": "95685ca9f8552004667870b64c40eb0e3c9477b85bd4a4b3af89f1384774f20d"
+    },
+    {
+      "path": "src/lib/event/script/control.c",
+      "bytes": 17474,
+      "sha256": "af8ad98b57a70499514ad12f0d3b4c3f35a5d2eb7f25708f60f495cf1a2c736f"
+    },
+    {
+      "path": "src/lib/event/script/scenario.c",
+      "bytes": 12186,
+      "sha256": "5eee6b7027d7a92a76dad2ec2f503a5752af90c02b837dfec8d864dcf8b185f7"
+    },
+    {
+      "path": "src/lib/event/script/scene_commands.c",
+      "bytes": 83364,
+      "sha256": "99285516a169728d4d6945d2e4d1d976a17fb372f742167cd98fed2e17519512"
+    },
+    {
+      "path": "src/lib/menu/display.c",
+      "bytes": 12798,
+      "sha256": "6da84033bddac0d4f89207bfd1159ac0eb5e156bc59fd8d272f2a573eb725f4d"
+    },
+    {
+      "path": "src/lib/menu/menu_actions.c",
+      "bytes": 8816,
+      "sha256": "2c8d7ebf2be449dd664b4b67ca79c5ea89f568d28f2da51850fd9b5113315916"
+    },
+    {
+      "path": "src/lib/thread/scheduler.c",
+      "bytes": 3815,
+      "sha256": "143a43b0a0dbd9f26610d2cb17240d3d76e2320a970b963e56e6b51865bc3600"
+    },
+    {
+      "path": "src/platform/psyq/libgpu/DrawOTag.c",
+      "bytes": 289,
+      "sha256": "d40c3c9f4bf092f6c4c1b0f46c03ef772c35ea3f0471de90b8ced12a9ac5c197"
+    },
+    {
+      "path": "src/platform/psyq/libgpu/SetDrawMode.c",
+      "bytes": 285,
+      "sha256": "3ca99f738400850b84578d5df538e1b4fb86551cfc9e100fb0da6f953b56365f"
+    },
+    {
+      "path": "src/platform/psyq/libgpu/SetPolyF4.c",
+      "bytes": 165,
+      "sha256": "1b6865fcf26d9a9812baab8bfc3dd4781aed6db46f9c4fd81f94b38467fc8f5a"
+    },
+    {
+      "path": "src/platform/psyq/libgpu/SetSemiTrans.c",
+      "bytes": 153,
+      "sha256": "89e62ad39a75982f17cf488c9c42ee2a29bd2cbe3347ab815128ded43d676552"
+    },
+    {
+      "path": "src/platform/psyq/libgte/ApplyMatrixLV.c",
+      "bytes": 2928,
+      "sha256": "cb08ae0d51e729bad1a4710f8348aeb12d78aef34dd16b79f61cc09f315f929b"
+    },
+    {
+      "path": "src/platform/psyq/libgte/RotMatrix.c",
+      "bytes": 7171,
+      "sha256": "a6b5f108fb3fcfa1196a8e089bbcbf129aa773638c17a5e8216ca627c81568db"
+    },
+    {
+      "path": "src/platform/psyq/libgte/SquareRoot0.c",
+      "bytes": 2442,
+      "sha256": "12702bc862912fba090127786dc2ab8c1b960a912c26f06c8052a4cb07243908"
+    },
+    {
+      "path": "target/battle.yaml",
+      "bytes": 304943,
+      "sha256": "f536f589674bea249747863bd60431cdba2671362ce611cbe2f8931f3d540611"
+    },
+    {
+      "path": "target/event.yaml",
+      "bytes": 204370,
+      "sha256": "7d3fd976a01e5b5beb34c7f5b0b9bcb82c8004d192f47bfab9451859c2a3b50f"
+    },
+    {
+      "path": "target/main.yaml",
+      "bytes": 136443,
+      "sha256": "a35f69fd3fe8eedd33a5d340e1c655f222dcbb17858cdba24da55c898df9fb88"
+    }
+  ],
+  "residentFunctions": [
+    {
+      "name": "script_conditions_display",
+      "address": 2148777324,
+      "bytes": 40,
+      "sha256": "889b5b3e5f2d0343858f4954407eb202a81072173c76dd4d7606e7e54f76d0cd"
+    },
+    {
+      "name": "gfx_draw_or_append_gpu_primitive",
+      "address": 2148836840,
+      "bytes": 120,
+      "sha256": "f436ef6d49b0750acb9ce4f8b3e73447f8996819ae68d3485f9c6c719c302ab4"
+    },
+    {
+      "name": "script_event_frame_run",
+      "address": 2148805976,
+      "bytes": 1620,
+      "sha256": "d4dd1211bca4f5422246ab538afc40ef107bb0aab1a55848c5d18893257a2f89"
+    },
+    {
+      "name": "script_execute_event",
+      "address": 2148809688,
+      "bytes": 9120,
+      "sha256": "f5e240270b084a495426b78bb62b981948943db94841969f4b2305b75301a53f"
+    },
+    {
+      "name": "script_dark_screen_thread",
+      "address": 2148777364,
+      "bytes": 48,
+      "sha256": "2379c22e7c612b3aed605fc3666ba2c4edb4f500cb9194bec4d2e4446279eac4"
+    },
+    {
+      "name": "thread_task_find",
+      "address": 2148834492,
+      "bytes": 140,
+      "sha256": "3e4172d2ef22f4ec4da6c820b886959bf6f77d7f0b16f8798a075d2d18980356"
+    },
+    {
+      "name": "thread_current_exit",
+      "address": 2148845912,
+      "bytes": 60,
+      "sha256": "23aa4a3549fe6cb707b4f4e7a19e7f36356ce2411a96dfbb3d64c6fc5d1c2392"
+    },
+    {
+      "name": "thread_frames_wait",
+      "address": 2148845656,
+      "bytes": 72,
+      "sha256": "e33123533d666f7170fe364c17f5fa829fd46c0e0e861171c40813a76af85106"
+    },
+    {
+      "name": "gfx_append_gpu_primitive_to_secondary_otag",
+      "address": 2148836960,
+      "bytes": 68,
+      "sha256": "29775e21c5c1e7bd43e4580dcce8865c42a379073b9101176896af8dbd81c14c"
+    },
+    {
+      "name": "conditions_show_general",
+      "address": 2149355392,
+      "bytes": 4132,
+      "sha256": "231240f68206f06c842633bd08d76cb806eaac8b3e032ba673417f590ed12607"
+    },
+    {
+      "name": "conditions_special_thread",
+      "address": 2149359532,
+      "bytes": 1688,
+      "sha256": "ac96742eb4a60b7889e6f5093d0211f46d1efecde99e788c168303a48c5e02ce"
+    },
+    {
+      "name": "require_conditions_entrypoint",
+      "address": 2149363668,
+      "bytes": 392,
+      "sha256": "5daba3919c5bcdeb01c189f145ee30d788d1fd7a5f531caf763dc7233bfc500e"
+    },
+    {
+      "name": "require_dark_screen_entrypoint",
+      "address": 2149361252,
+      "bytes": 2416,
+      "sha256": "5a5a3d742bcaea7a48fc495de490dcc8344232dbda2f002c3123e9eb4895ab28"
+    },
+    {
+      "name": "conditions_load_banner_image",
+      "address": 2149333680,
+      "bytes": 244,
+      "sha256": "83bdf7ea18ea62c44d0b5bcf4f0d12ba8a9d4ad7b3827200fddb225bf364e6ae"
+    },
+    {
+      "name": "thread_yield_full_region",
+      "address": 2148846208,
+      "bytes": 308,
+      "sha256": "2f09dae8797f8acbde873608b889474322bad8efbce867c640d5ef74cdb1289a"
+    }
+  ],
+  "originalInputs": {
+    "archive": {
+      "localPath": "scratch/all-data-extraction/EVENT/TEST.EVT",
+      "bytes": 4096000,
+      "sha256": "107b109254ccbb150aca7baf336b632837b22e340677e2b9e746ac61b3de4405"
+    },
+    "battle": {
+      "localPath": "scratch/all-data-extraction/BATTLE.BIN",
+      "bytes": 1397096,
+      "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94"
+    },
+    "overlay": {
+      "localPath": "scratch/all-data-extraction/EVENT/REQUIRE.OUT",
+      "bytes": 127684,
+      "sha256": "97112c50c0b037b2cb5c9d93ae9e2a7506b582c5edbd86a1debfb7ab8e777630"
+    },
+    "executable": {
+      "localPath": "scratch/all-data-extraction/SCUS_942.21",
+      "bytes": 356352,
+      "sha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562"
+    },
+    "bonus": {
+      "localPath": "scratch/all-data-extraction/EVENT/BONUS.BIN",
+      "bytes": 958464,
+      "sha256": "c5d881b1fb62c04d1d7f0e5238faff4131676165c08e35b5cadb68b21c89165f"
+    }
+  },
+  "originalStates": [
+    {
+      "kind": "General",
+      "state": {
+        "localPath": "scratch/banner-background-c/original/states/fft-clean-base-game.state.auto",
+        "bytes": 1499357,
+        "sha256": "040c0863acd8c2c30153ec8f57355fe0d6aff0439ffed09a539b17d48ccd12d6"
+      }
+    },
+    {
+      "kind": "Ready",
+      "state": {
+        "localPath": "scratch/ready-displayed-087-e/original-022/states/fft-clean-base-game.state.auto",
+        "bytes": 1494672,
+        "sha256": "01a20b8c3d7b61b1cac5dd9a5427516b9eef72bbf261914372a3a6e205e2c144"
+      }
+    }
+  ],
+  "commands": [
+    {
+      "eventId": 4,
+      "rawBlockSha256": "528875cb3cde1eb84c709f8b2de9afb41478041710b134a0ede075ae34d1bef7",
+      "textOffset": 823,
+      "darkOffset": 794,
+      "entryWait": 801,
+      "generalOffset": 804,
+      "generalWait": 807,
+      "readyOffset": 810,
+      "readyWait": 813,
+      "releaseOffset": 816,
+      "releaseWait": 817,
+      "speedOffset": 820,
+      "endOffset": 822,
+      "cameraGap": [],
+      "cameraRestore": false,
+      "completePlaybackEstablished": false
+    },
+    {
+      "eventId": 401,
+      "rawBlockSha256": "a12ad52f48c2b6684993f196ead1721ecb8895cfd0f6690faed1a0d9ccca483f",
+      "textOffset": 207,
+      "darkOffset": 154,
+      "entryWait": 161,
+      "generalOffset": 164,
+      "generalWait": 167,
+      "readyOffset": 192,
+      "readyWait": 195,
+      "releaseOffset": 198,
+      "releaseWait": 199,
+      "speedOffset": 202,
+      "endOffset": 206,
+      "cameraGap": [
+        {
+          "offset": 170,
+          "opcode": "E5",
+          "operandBytes": 2,
+          "operandSha256": "c0ba8a33ac67f44abff5984dfbb6f56c46b880ac2b86e1f23e7fa9c402c53ae7"
+        },
+        {
+          "offset": 173,
+          "opcode": "63",
+          "operandBytes": 1,
+          "operandSha256": "13598656f10fa962b75f6c4587a61a067c14c1ef7dc9ca3703da76bae4c1beb1"
+        },
+        {
+          "offset": 175,
+          "opcode": "19",
+          "operandBytes": 16,
+          "operandSha256": "1c88db8acb1eb088cc82689965d4d610ef516b94bccb91690d6d08e3178d5d72"
+        }
+      ],
+      "cameraRestore": true,
+      "completePlaybackEstablished": false
+    }
+  ],
+  "queuedLayerObservations": [
+    {
+      "kind": "General",
+      "state": {
+        "localPath": "scratch/banner-background-c/original/states/fft-clean-base-game.state.auto",
+        "bytes": 1499357,
+        "sha256": "040c0863acd8c2c30153ec8f57355fe0d6aff0439ffed09a539b17d48ccd12d6"
+      },
+      "frameCounter": 6383,
+      "heldWorker": {
+        "slot": 2,
+        "task": 55,
+        "savedReturnAddress": 2149363356,
+        "frameCounter": 6383,
+        "rgb": [
+          48,
+          40,
+          16
+        ],
+        "checkedTiles": 288,
+        "checkedTilePackets": 576,
+        "checkedFlashBanks": 2,
+        "submittedFlashBank": 0,
+        "dmaNodes": 757,
+        "texturedPackets": false,
+        "enterOrReleaseObserved": false
+      },
+      "eventId": 4,
+      "layers": {
+        "kind": "General",
+        "otag": 2147840280,
+        "dmaNodes": 757,
+        "flashPosition": 365,
+        "flashBank": 0,
+        "displayPositions": [
+          366,
+          367,
+          368,
+          369,
+          370,
+          371
+        ],
+        "displayBank": 1,
+        "displayOrder": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "compositionOrder": [
+          "Background",
+          "DarkScreen",
+          "General"
+        ],
+        "queuedOnly": true,
+        "combinedDisplayedPixelsCompared": false
+      }
+    },
+    {
+      "kind": "Ready",
+      "state": {
+        "localPath": "scratch/ready-displayed-087-e/original-022/states/fft-clean-base-game.state.auto",
+        "bytes": 1494672,
+        "sha256": "01a20b8c3d7b61b1cac5dd9a5427516b9eef72bbf261914372a3a6e205e2c144"
+      },
+      "frameCounter": 9013,
+      "heldWorker": {
+        "slot": 2,
+        "task": 55,
+        "savedReturnAddress": 2149363356,
+        "frameCounter": 9013,
+        "rgb": [
+          48,
+          40,
+          16
+        ],
+        "checkedTiles": 288,
+        "checkedTilePackets": 576,
+        "checkedFlashBanks": 2,
+        "submittedFlashBank": 1,
+        "dmaNodes": 757,
+        "texturedPackets": false,
+        "enterOrReleaseObserved": false
+      },
+      "eventId": 4,
+      "layers": {
+        "kind": "Ready",
+        "otag": 2147840280,
+        "dmaNodes": 757,
+        "flashPosition": 365,
+        "flashBank": 1,
+        "displayPositions": [
+          366,
+          367,
+          368,
+          369,
+          370,
+          371
+        ],
+        "displayBank": 1,
+        "displayOrder": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "compositionOrder": [
+          "Background",
+          "DarkScreen",
+          "Ready"
+        ],
+        "queuedOnly": true,
+        "combinedDisplayedPixelsCompared": false
+      }
+    }
+  ],
+  "sourceAnalysisNotes": {
+    "event401CameraGapPreserved": true,
+    "event401EntryObserved": false,
+    "layerOrder": [
+      "Background",
+      "DarkScreen",
+      "ActiveGeneralOrReady"
+    ],
+    "independentPacketBanks": true,
+    "queuedLayersAreNotDisplayedComparison": true,
+    "standaloneDarkPreviewHoldNotUsedByCombinedProgram": true,
+    "nineTypedOperations": true,
+    "oneClockConsumerLedger": true,
+    "terminalTaskCount": 3,
+    "maximumLiveTaskCount": 2,
+    "originalEventEndExcluded": true
+  },
+  "sourceNotes": [
+    {
+      "localPath": "docs/architecture/zod-080-banner-opcode-admission.md",
+      "bytes": 14226,
+      "sha256": "fa489bbd564202a85b301395187d248471d0b7f9e8f9e2c0820c1e8ca81ef83f"
+    },
+    {
+      "localPath": "docs/architecture/zod-083-ready-display.md",
+      "bytes": 12424,
+      "sha256": "46456942a6d721cb3294b5b7ad252c58d25f16fe2cec30157a299827999029c7"
+    },
+    {
+      "localPath": "docs/architecture/zod-085-ready-rendering.md",
+      "bytes": 17323,
+      "sha256": "fac701823087797bae0891f06981897cd1dcfde8ae82481049f4d399f9e91eed"
+    },
+    {
+      "localPath": "docs/architecture/zod-090-ready-battle-handoff.md",
+      "bytes": 10879,
+      "sha256": "3e53931c7fa2eb1613a052c0896c20a81051769cb32c562e733dea2938744c6e"
+    },
+    {
+      "localPath": "docs/architecture/zod-092-dark-screen-transition.md",
+      "bytes": 13439,
+      "sha256": "4e0412e1c91fda80e02c10bd1d9b9479ec4e72fb065b5be58616a1d9941ae699"
+    },
+    {
+      "localPath": "docs/development/banner-ready-sequence.md",
+      "bytes": 9970,
+      "sha256": "a5d87c2b1cf1890cf68f84bbbe8337bd2d658bedfefbf9266beb6cf37bba9493"
+    },
+    {
+      "localPath": "docs/development/introduction-battle-handoff.md",
+      "bytes": 8839,
+      "sha256": "618e2161811afb9dea9aa595476546aa073e1692581b8d6e3910c918a6899398"
+    },
+    {
+      "localPath": "docs/development/original-dark-screen-comparison.md",
+      "bytes": 7645,
+      "sha256": "c0ff6bf0ec7cfd24227cb499e7fae14cacbdfb7d9544e5eef1a018575603053b"
+    }
+  ],
+  "managedReview": [
+    {
+      "localPath": "src/Zodiac.Framework/Events/BannerReadySequence.cs",
+      "bytes": 12542,
+      "sha256": "42b30af452487ee4369f43ad63efaf6beed19a82cf6d2e9a28b9ad952da75b01"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/Events/DarkScreenExecutor.cs",
+      "bytes": 13494,
+      "sha256": "0b5e3451e28f6910005f5a96b0d9050432c66a78a0407cd564943ac00656ed0a"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/Events/DarkScreenState.cs",
+      "bytes": 6764,
+      "sha256": "c245a666f6da1c3e7a334812a4a0fbfce2768bcdb6eda80c82018d6111006451"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/Events/GeneralBannerState.cs",
+      "bytes": 4180,
+      "sha256": "2eeba3bad3c8ede4d190e04573bcd806f15a840b1e3116d9b97936bd030dcbc6"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/Events/ReadyDisplayState.cs",
+      "bytes": 4852,
+      "sha256": "f3b96a4b06e722de57c3b039fbdc4fcd071079a12cfc623ad99430a9081f35c6"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/Events/BattleIntroduction.cs",
+      "bytes": 2298,
+      "sha256": "a0c5df9542dfb5cd88698000b3343d52b40cf3a051db8028d6e289452a9982d1"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/Events/SceneEventExecutor.cs",
+      "bytes": 9005,
+      "sha256": "ff0535505a3274d529bc7310c77a44243149dce02410d6cfc06c9d6eba7cc006"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/Events/SceneTaskLedger.cs",
+      "bytes": 11160,
+      "sha256": "1bfcee91e7d6021d0bf29dc22eb11390c352253e9eaee3c6ef2b25d8ac762972"
+    },
+    {
+      "localPath": "src/Zodiac.Content/PreparedDarkScreen.cs",
+      "bytes": 6073,
+      "sha256": "e90fa2cc7fcfb0fb00490bcefaf18f0993bdaf1f253d0b696346eca7414a2083"
+    },
+    {
+      "localPath": "src/Zodiac.Content/Events/PreparedBannerReadySequence.cs",
+      "bytes": 3546,
+      "sha256": "a648e2f2fb9fdedb61f224c35a585accdb7becf1a67ea405d52a299eac1745b0"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/BannerReadyPreview.cs",
+      "bytes": 11813,
+      "sha256": "f69e9fca700a0bf9f24d5c455be2d3d2d5e0fc87a0d846e8f4fe7995f9cbe0ff"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/IntroductionBattleSession.cs",
+      "bytes": 4754,
+      "sha256": "a8d9951abb0e2937e4ac7a48d7bda261bb26422cf248eaebdb2c17a5745a73fa"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/PlayableBattleWindow.Introduction.cs",
+      "bytes": 9399,
+      "sha256": "8864a6705daaf85390e97c871fbb39a4cfb4536401a0d87bcd2e371b4269c861"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/FiveBitGeneralBannerPresentation.cs",
+      "bytes": 7649,
+      "sha256": "ec1722d0530fcc39de7369b2d3070798dccb489bdbf409cb0b1f74b56ba85bea"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/ReadyPresentation.cs",
+      "bytes": 6500,
+      "sha256": "5a7cda34c4fb94414a572de66f663c9238ccd6d333d25031021e69a915c888ca"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/DarkScreenPresentation.cs",
+      "bytes": 5380,
+      "sha256": "16aea6851d038582807e1920a2f3bc95748c6dc8ef0d68fff2b87a898e4e7332"
+    }
+  ],
+  "audit": {
+    "inputPlan": {
+      "localPath": "scratch/dark-screen-intro-096-plan/plan.json",
+      "bytes": 1613,
+      "sha256": "b9e1112298179bdd039576a07bf53964772c4a80240d05b719e06ef13cf83a4b"
+    },
+    "reports": [
+      {
+        "localPath": "scratch/dark-screen-intro-096-f/report.json",
+        "bytes": 18721,
+        "sha256": "fbcc15f410304fde312178414ab27bd2db885b3893935eab58c574327fa38660"
+      },
+      {
+        "localPath": "scratch/dark-screen-intro-096-g/report.json",
+        "bytes": 18721,
+        "sha256": "fbcc15f410304fde312178414ab27bd2db885b3893935eab58c574327fa38660"
+      }
+    ],
+    "reportsByteIdentical": true,
+    "originalInputsPreserved": true,
+    "sourceFilesPreserved": true
+  },
+  "tools": [
+    {
+      "localPath": "tools/verification/inspect_dark_screen_intro.py",
+      "bytes": 11871,
+      "sha256": "4d3974bb1822f7272677db2f018b1abb56283c3790d3ca25d3e0953492dcdf24"
+    },
+    {
+      "localPath": "tools/verification/test_dark_screen_intro.py",
+      "bytes": 6642,
+      "sha256": "3b1241baf6c729f2a33814e2d55a9a63a0713fcb2695f557af667eedc5230461"
+    }
+  ],
+  "futureContract": {
+    "localPath": "docs/evidence/events/dark-screen-intro-contract-v1.json",
+    "bytes": 17414,
+    "sha256": "f6ea147499da8f3689f2d6223d80b8f756ec550bef4863c8f4267908237c7cc1"
+  },
+  "futureCases": {
+    "total": 40,
+    "executed": 0,
+    "core": 24,
+    "preparedHostManual": 16,
+    "historicalContractsUnchanged": true
+  },
+  "validation": {
+    "pythonPassed": 269,
+    "newPythonTests": 14,
+    "scope": "Authored source-structure and queued-DMA inspector fixtures only; no future combined C# case executes in this milestone.",
+    "pythonLog": {
+      "localPath": "scratch/dark-screen-intro-096-python-final.log",
+      "bytes": 1259,
+      "sha256": "2bacf08fd69b28e570f61809a9b08f1d4cc8f06f681111bde6d518a04cdc3caa"
+    },
+    "dotnetPassedLastRecorded": 2031,
+    "dotnetSource": "ZOD-095",
+    "dotnetRerunForThisMilestone": false,
+    "nativeChecksRerunForThisMilestone": false,
+    "implementationOrNewVisualApprovalRequiredForSpecification": false
+  },
+  "next": {
+    "pureBehavior": "ZOD-097",
+    "preparedWindowsIntegration": "ZOD-098",
+    "futureGalleryNeedsSeparateApproval": true
+  },
+  "limits": [
+    "Original event4/401 full playback and EventEnd/camera/speed restoration are not implemented by the selected authored program.",
+    "Two queued layer states do not establish combined displayed pixels or original startup duration.",
+    "All forty authored implementation/host/manual cases remain unexecuted; timelines are source-derived expectations.",
+    "Missing DarkScreen endpoints, broader geometry/styles, map/hardware/physical input/CRT/audio remain separate."
+  ],
+  "referenceRoot": "C:/repositories/fft_decomp"
+}

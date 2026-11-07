@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-283",
+  "date": "2026-11-04",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "5b25945d09af258d002e8af6c7d665f8fef64397",
+  "kind": "ordinary-roster-preparation-source",
+  "design": "docs/architecture/zod-283-roster-preparation.md",
+  "fixture": "docs/fixtures/behavior/roster-preparation-contract-v1.json",
+  "sourceFiles": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 147880,
+      "sha256": "5519c4550e9fea302ee4366848435b8131c7d3aef24f02462c7571d11bd1cd17"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 111880,
+      "sha256": "22555f06b061bc6f017f721998a5e44dfb3d4fa4c7284a2ee3367dfa27ce80ad"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40868,
+      "sha256": "f76188542c39818fa2ab478e42ef63b4eb0f2c1c2db5a74db4120ddbaf4cb8cb"
+    },
+    {
+      "path": "src/battle/ai/abilities.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 20079,
+      "sha256": "42b793235173dbc98e77249df6488eed3708ef3c60c9d10520557fc9636c6862"
+    },
+    {
+      "path": "include/fft/ai.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 25771,
+      "sha256": "fa7aabf5b4d21e3f42be7978c061fb859a52709a234e5b4205c5de5e2c8566b5"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/status.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11673,
+      "sha256": "deeaeec02add8b9db7cca91c99517706033b18385ca433d32f1998d9d62e0e83"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_command_build",
+      "startLine": 131,
+      "endLine": 224,
+      "normalizedLfSha256": "b4a01ef870fceac6d31bc8ab370f0b4053aaee69fc3dd55d9b79c78a0975a5bf"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "acting_unit_init",
+      "startLine": 231,
+      "endLine": 257,
+      "normalizedLfSha256": "a37e5edabf630b38b02bb72acb35f5a27c0ab64a0a4e821b660418b321ab2987"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "decision_flags_refresh",
+      "startLine": 270,
+      "endLine": 323,
+      "normalizedLfSha256": "b64660e3cd084717a39ff0bbd764421152e45a21e458d466bf4b4b51bab204fb"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ability_considerations_set",
+      "startLine": 607,
+      "endLine": 904,
+      "normalizedLfSha256": "6ee3cb512ac66ef6799dce7b4f78c549cc10d1eaa0a4fa7701e0fbf6bed4d21d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "decision_team_targeting_flags_update",
+      "startLine": 332,
+      "endLine": 379,
+      "normalizedLfSha256": "4d08f71f328f1e043aa2fc808757cb4eda2b2d32cbdd647bb60339880a02dce7"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "reachable_tiles_score",
+      "startLine": 3323,
+      "endLine": 3387,
+      "normalizedLfSha256": "a1267e9003813caf13232b6d5192c71f6f1cf8fd416bbaf21bc8038400b22fb1"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_unit_turn_delay_calculate",
+      "startLine": 3394,
+      "endLine": 3431,
+      "normalizedLfSha256": "abda23c263216d91e3146f5d4b8e0314e299c49d0b5d627bd1d5f6c89a26ae10"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_action_simulate_and_score",
+      "startLine": 1442,
+      "endLine": 1728,
+      "normalizedLfSha256": "9415274d3b38d3e7afe51922914355e40ff6bad7bccb9bc861bbbfae6894bcd4"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "simulation_unit_state_save",
+      "startLine": 1906,
+      "endLine": 1958,
+      "normalizedLfSha256": "e0c523b4a8e1487ba06e267dd10d6aa6fa015a285a63a06a04b911f07dfa8f2c"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "simulation_unit_state_restore",
+      "startLine": 1966,
+      "endLine": 2011,
+      "normalizedLfSha256": "d195422db548f6b870a1df33d2de5a0b3525e6e9a1d13f0f6b0585d193cb4dfa"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "movement_pickup_simulate",
+      "startLine": 1736,
+      "endLine": 1757,
+      "normalizedLfSha256": "cd86df80f4ec09820ed3ad82aa56af77bce27e61a1f6f459f7d507d95373250a"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "unit_can_move_after_delay",
+      "startLine": 2407,
+      "endLine": 2438,
+      "normalizedLfSha256": "c8ab8d569fd05fe7374230b4d2880b5104c2814661fb5e896cb2260384a3cf32"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_clock_run",
+      "startLine": 43,
+      "endLine": 384,
+      "normalizedLfSha256": "340cbbd8690adcfab96bf53d3eb5ea9f5b47327eb5901a3cc758b2cfbbfdf1e5"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "upkeep_action_build",
+      "startLine": 399,
+      "endLine": 481,
+      "normalizedLfSha256": "db3bb2342ef78ca6d64b5b2e911e9e2fd14e5a77cd1820472fa784c35cfeaa22"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_end",
+      "startLine": 947,
+      "endLine": 974,
+      "normalizedLfSha256": "2071e4d41c2099741ca3ae787add5e7b731df488197b87a47ca84291a6ac268b"
+    },
+    {
+      "path": "src/battle/ai/abilities.c",
+      "symbol": "ai_workspace_init",
+      "startLine": 29,
+      "endLine": 74,
+      "normalizedLfSha256": "2208b5bf8bac19466d27d5ba279bc7c13a0647518bb6c842de903c0b44364a29"
+    },
+    {
+      "path": "src/battle/ai/abilities.c",
+      "symbol": "ai_unit_abilities_init",
+      "startLine": 86,
+      "endLine": 197,
+      "normalizedLfSha256": "fb9c5da2b0c69815e35072a175ae22a865c76821481eb51de260564caf49aac4"
+    }
+  ],
+  "selectedChildren": [
+    "ZOD-284",
+    "ZOD-285",
+    "ZOD-286"
+  ],
+  "originalExecuted": false,
+  "cExecuted": false
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-340",
+  "date": "2026-11-05",
+  "managedBaseRevision": "e8ffff7cacba283321a2e8568753e5aa0647d6cf",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "behavior": "docs/behavior/magic-conditional-proc.md",
+  "sourceReceipt": "docs/evidence/combat/magic-proc-source-v1.json",
+  "validation": {
+    "dotnetPassed": 4599,
+    "frameworkPassed": 1558,
+    "aiPassed": 1217,
+    "contentPassed": 838,
+    "cliPassed": 328,
+    "pythonPassed": 627,
+    "newFrameworkCases": 10,
+    "newPythonCases": 8,
+    "sourceDescriptions": 32,
+    "sourceFiles": 9,
+    "sourceFunctions": 10,
+    "emptyStatusRecordVerified": true,
+    "fireTiersVerified": 4,
+    "trxReports": 7,
+    "lockedRestore": true,
+    "releaseWarnings": 0,
+    "releaseErrors": 0,
+    "coverageAudit": true,
+    "localLinkAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/magic-proc-340/"
+  },
+  "invariants": [
+    "scaled threshold differs from ranked lottery modulo; actual entered0x08 draws once even for empty record0 or zero amount",
+    "preview requests status but sets no flag; clear-flag AI excludes without drawing",
+    "original formula family, pre-formula miss and element nullification control invocation, never routed HP direction",
+    "context/counter rejection returns original RNG with no partial outcome; UInt64 limit is managed policy",
+    "flag-set delta and status-attempt decision only; no live state, status, RNG adoption or command authority",
+    "existing rules, generator, fixtures, content schemas, projects, dependencies and owner drafts unchanged"
+  ]
+}

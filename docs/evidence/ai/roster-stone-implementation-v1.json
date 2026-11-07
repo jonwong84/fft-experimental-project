@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-297",
+    "ZOD-298"
+  ],
+  "date": "2026-11-05",
+  "kind": "managed-supplied-certified-clear-roster-stone-candidate",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "d6e72e18cbd59e7dae0f8c59c93cf516690b63e6",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/roster-stone-source-v1.json",
+  "design": "docs/architecture/zod-297-roster-stone-search.md",
+  "behavior": "docs/behavior/roster-throw-stone-ai-candidate.md",
+  "sourceFixture": "docs/fixtures/behavior/roster-stone-contract-v1.json",
+  "implementationPaths": [
+    "src/Zodiac.Framework.Ai/ThrowStone/RosterThrowStoneAiCandidate.cs",
+    "src/Zodiac.Framework.Ai/ThrowStone/ThrowStoneAiFormulaProjection.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Ai.Tests/ThrowStone/RosterThrowStoneAiCandidateTests.cs"
+  ],
+  "invariants": [
+    "supplied one-candidate clear trajectory certificate covers actual order-specific origin, terrain, sprite heights and every occupant; no computed collision claim",
+    "actual typed effect, actor grant, exact roster/grant/ground membership and PA1..99; AI occurrence is not authority",
+    "shared midpoint Stone kernel retains four evasion draws, full damage at positive accuracy, no damage/Brave/knockback draws",
+    "initial living movement endpoints, explicit selected-target HP, all-peer restoration, source-order effect-free clock and all-team scores",
+    "whole-query RNG rollback with no partial output; pair formula/command two-unit admission unchanged"
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4378,
+    "frameworkPassed": 1483,
+    "aiPassed": 1150,
+    "newAiCases": 7,
+    "pythonPassed": 566,
+    "newPythonCases": 3,
+    "trxReports": 7,
+    "sourceFiles": 21,
+    "sourceFunctions": 66,
+    "sourceDescriptions": 18,
+    "sourcePreparedAudit": true,
+    "algorithmGuideAudit": true,
+    "localLinkAudit": true,
+    "coverageAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/roster-stone-297-298/"
+  },
+  "boundaries": [
+    "compact16 living flat ordinary roster; per-candidate certified-clear trajectory remains explicit; sprite heights/SDK sampling unresolved",
+    "no fresh prefix, ranked search, full-list ranking/lottery, command authority, roster turn driver or original/frame equivalence",
+    "other abilities/policies/statuses/maps, full corpse lifecycle, facing, terminal/frame RNG and all documented deferrals remain separate"
+  ],
+  "dependencyChanges": false,
+  "newProductionFriendAccess": false,
+  "originalExecuted": false,
+  "cExecuted": false
+}

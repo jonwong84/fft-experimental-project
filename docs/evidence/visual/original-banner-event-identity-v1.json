@@ -1,0 +1,636 @@
+{
+  "format": "fft.original-banner-event-identity-evidence",
+  "schemaVersion": 1,
+  "recorded": "2026-10-24",
+  "edition": "SCUS-94221",
+  "managedBaseCommit": "07431935a64890db4524ae0be223a9c688392d21",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "guide": "docs/development/original-banner-event-identity.md",
+  "sourcePaths": [
+    "target/battle.yaml",
+    "target/main.yaml",
+    "src/lib/event/scene/resources.c",
+    "src/lib/event/script/scene_commands.c",
+    "src/battle/event/interpreter.c",
+    "src/lib/thread/scheduler.c",
+    "include/fft/thread.h",
+    "src/lib/event/script/control.c",
+    "src/lib/event/script/variables.c",
+    "include/fft/script_variable.h",
+    "src/lib/event/scene/menu_overlays.c",
+    "src/lib/menu/command_prompts.c"
+  ],
+  "priorEvidence": "docs/evidence/visual/original-pre-banner-anchor-v1.json",
+  "reports": [
+    {
+      "localPath": "scratch/banner-event-identity-a/report.json",
+      "bytes": 17950,
+      "sha256": "df509d2001d4f7bfd711816e481c76f825b2bf2d40a1cb6039957113b1e0e8bf"
+    },
+    {
+      "localPath": "scratch/banner-event-identity-b/report.json",
+      "bytes": 17950,
+      "sha256": "df509d2001d4f7bfd711816e481c76f825b2bf2d40a1cb6039957113b1e0e8bf"
+    }
+  ],
+  "repeatedReportsByteIdentical": true,
+  "plan": {
+    "localPath": "scratch/banner-event-identity-plan/plan.json",
+    "bytes": 2198,
+    "sha256": "0840bffaac40324e91bb9989121ea93fbd8324eb4d2b6c35b170df211207c6c0"
+  },
+  "tools": [
+    {
+      "localPath": "tools/verification/inspect_banner_event.py",
+      "bytes": 10569,
+      "sha256": "e2293c00c86507df9fc5847331dd6ac9c245aff21ba1d33f41855ea9df0c6362"
+    },
+    {
+      "localPath": "tools/verification/analyze_banner_precision.py",
+      "bytes": 11968,
+      "sha256": "0721ef12c3d54fd4a2d8c69ee3b942dc40bff1cef3e6737275ad5e0912341bf2"
+    },
+    {
+      "localPath": "tools/verification/capture_banner_continuation.py",
+      "bytes": 16116,
+      "sha256": "d9d973d970f8ebfdf9bf9b5907022a8c9ff70cdb6e26d955b9734c8a08cf269c"
+    },
+    {
+      "localPath": "tools/verification/compare_banner_hide.py",
+      "bytes": 21845,
+      "sha256": "9a375e7dfa44fd18404d1f2fd8eabd31db5a166dded4ef25432b1d50fec56c28"
+    },
+    {
+      "localPath": "tools/verification/compare_visual_checkpoints.py",
+      "bytes": 13970,
+      "sha256": "3ee039e9a767c491d2b44b9889b7d3512262d456e51cf34017945b5e84e3210b"
+    },
+    {
+      "localPath": "tools/verification/trace_banner_draw_state.py",
+      "bytes": 6618,
+      "sha256": "15f44edd29c87f43ae0824c92e3b415deec58e6bd80c2b0ab487f7d4d3afdd9a"
+    }
+  ],
+  "inputs": {
+    "format": "fft.banner-event-identity-plan",
+    "schemaVersion": 1,
+    "archive": {
+      "localPath": "scratch/all-data-extraction/EVENT/TEST.EVT",
+      "bytes": 4096000,
+      "sha256": "107b109254ccbb150aca7baf336b632837b22e340677e2b9e746ac61b3de4405"
+    },
+    "battle": {
+      "localPath": "scratch/all-data-extraction/BATTLE.BIN",
+      "bytes": 1397096,
+      "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94"
+    },
+    "states": [
+      {
+        "localPath": "scratch/banner-pre-anchor-a/fft-clean-base-game.state",
+        "bytes": 1535609,
+        "sha256": "c661e684cdcd7a65ae5f2633e686a00865b501ebc31949c54e68fee43e2b6afd"
+      },
+      {
+        "localPath": "scratch/banner-pre-anchor-a/frames-300/states/fft-clean-base-game.state.auto",
+        "bytes": 1492421,
+        "sha256": "d413c0d70437181c959cb223fe72e08eff2c2b8f9b826ec8f5bcf21e42290e9c"
+      },
+      {
+        "localPath": "scratch/banner-pre-anchor-a/frames-310-readiness/states/fft-clean-base-game.state.auto",
+        "bytes": 1492888,
+        "sha256": "93256f36553f350ab0d1812262a7b2bfabfc6aa36ab7c5e0bef1fd93b5789253"
+      },
+      {
+        "localPath": "scratch/banner-pre-anchor-a/frames-338-readiness/states/fft-clean-base-game.state.auto",
+        "bytes": 1491313,
+        "sha256": "aada310a2fe3a32c10557056c53f7e7c4ab6029d1ccfccfd6a6703e6c68d52ab"
+      },
+      {
+        "localPath": "scratch/banner-circle-before-a/fft-clean-base-game.state",
+        "bytes": 1495280,
+        "sha256": "b42e0b9587fdaf098bfd718642f5676a2ed719ce17b528e304b983e35b8ae17a"
+      },
+      {
+        "localPath": "scratch/banner-circle-hold-intake-a/fft-clean-base-game.state1",
+        "bytes": 1500047,
+        "sha256": "fd6375043eac88420a2034737b3e25454f0a94284ee20169b690a5061de06a5e"
+      },
+      {
+        "localPath": "scratch/banner-circle-hide-intake-a/fft-clean-base-game.state2",
+        "bytes": 1499596,
+        "sha256": "acd36f72a3a01157ad6f74743006ba471c800a05a6a28c668cd70dc3547aee64"
+      },
+      {
+        "localPath": "scratch/banner-circle-hide-after-a/fft-clean-base-game.state2",
+        "bytes": 1499452,
+        "sha256": "04bd0c5438bafe30052cba0371ae8585c594752795b43be0964062d94da3ce17"
+      }
+    ]
+  },
+  "code": [
+    {
+      "address": 2148809688,
+      "bytes": 9120,
+      "sha256": "f5e240270b084a495426b78bb62b981948943db94841969f4b2305b75301a53f"
+    },
+    {
+      "address": 2148780480,
+      "bytes": 176,
+      "sha256": "300656fe0572dc7f7fb881758622416a1d3c91833a4e0ebdafdb8f09dc682187"
+    },
+    {
+      "address": 2148818808,
+      "bytes": 140,
+      "sha256": "86e825112a99969c4437f207a4c82894f9c0284669a4c9bd7d72da50c8b79ac2"
+    },
+    {
+      "address": 2148845656,
+      "bytes": 72,
+      "sha256": "e33123533d666f7170fe364c17f5fa829fd46c0e0e861171c40813a76af85106"
+    },
+    {
+      "address": 2148846208,
+      "bytes": 200,
+      "sha256": "7243793c2998187ad65ff51653243654c913e6f751edfc172c82adf8d3b7154b"
+    },
+    {
+      "address": 2148835352,
+      "bytes": 724,
+      "sha256": "71d9b10690838d9e55ad37be7c34b5f154e8352f16a64145671c992b70cfe1c0"
+    },
+    {
+      "address": 2148775312,
+      "bytes": 180,
+      "sha256": "92bfa64b3cd0e089bd1968db0989a0f529325f61de3ade4689d473718f2cd4a3"
+    },
+    {
+      "address": 2148777324,
+      "bytes": 40,
+      "sha256": "889b5b3e5f2d0343858f4954407eb202a81072173c76dd4d7606e7e54f76d0cd"
+    }
+  ],
+  "conclusion": {
+    "observedEventId": 4,
+    "commonBattleStartEvent401Observed": false,
+    "archiveOffset": 32768,
+    "rawBlockBytes": 8192,
+    "rawBlockSha256": "528875cb3cde1eb84c709f8b2de9afb41478041710b134a0ede075ae34d1bef7",
+    "textOffset": 823,
+    "instructionCount": 136,
+    "originalHeaderOnlyDifference": true,
+    "uniquePayloadMatchAcrossPhysicalSlots": 4,
+    "targetBannerOffset": 804,
+    "condition": 8,
+    "hold": 60,
+    "followingTaskWaitOffset": 807,
+    "followingTaskId": 56,
+    "earliestStateInstructionOffset": 731,
+    "earliestStateWaitCount": 25,
+    "earliestStateActiveYieldOrdinal": 24,
+    "eventEntryObserved": false,
+    "conditionalSelectionObserved": false
+  },
+  "observations": [
+    {
+      "state": {
+        "localPath": "scratch/banner-pre-anchor-a/fft-clean-base-game.state",
+        "bytes": 1535609,
+        "sha256": "c661e684cdcd7a65ae5f2633e686a00865b501ebc31949c54e68fee43e2b6afd"
+      },
+      "currentEventId": 4,
+      "loadedEventId": 4,
+      "uniqueArchiveMatch": [
+        4
+      ],
+      "rawBlockSha256": "528875cb3cde1eb84c709f8b2de9afb41478041710b134a0ede075ae34d1bef7",
+      "processedBlockSha256": "0081b2e28473d913c7fdbb7da15a44a157b2d22111cde255efc73ab8fa8a8034",
+      "textOffset": 823,
+      "instructionCount": 136,
+      "instructionOffset": 731,
+      "opcode": 241,
+      "wait": {
+        "kind": "FrameWait",
+        "count": 25,
+        "yieldOrdinal": 24
+      },
+      "eventTaskId": 68,
+      "eventSlot": 1,
+      "savedReturnAddress": 2148845692,
+      "frameCounter": 8769,
+      "scenarioEventActive": 1,
+      "battleNotStarted": 1,
+      "debugBattleStyle": 0,
+      "bannerCommands": [
+        {
+          "offset": 804,
+          "condition": 8,
+          "hold": 60,
+          "followingWaitOffset": 807,
+          "followingWaitTaskId": 56
+        },
+        {
+          "offset": 810,
+          "condition": 0,
+          "hold": 60,
+          "followingWaitOffset": 813,
+          "followingWaitTaskId": 56
+        }
+      ],
+      "activeBannerTasks": [],
+      "attributedBannerOffset": null,
+      "commonBattleStartEventObserved": false
+    },
+    {
+      "state": {
+        "localPath": "scratch/banner-pre-anchor-a/frames-300/states/fft-clean-base-game.state.auto",
+        "bytes": 1492421,
+        "sha256": "d413c0d70437181c959cb223fe72e08eff2c2b8f9b826ec8f5bcf21e42290e9c"
+      },
+      "currentEventId": 4,
+      "loadedEventId": 4,
+      "uniqueArchiveMatch": [
+        4
+      ],
+      "rawBlockSha256": "528875cb3cde1eb84c709f8b2de9afb41478041710b134a0ede075ae34d1bef7",
+      "processedBlockSha256": "0081b2e28473d913c7fdbb7da15a44a157b2d22111cde255efc73ab8fa8a8034",
+      "textOffset": 823,
+      "instructionCount": 136,
+      "instructionOffset": 801,
+      "opcode": 229,
+      "wait": {
+        "kind": "TaskWait",
+        "taskId": 54
+      },
+      "eventTaskId": 68,
+      "eventSlot": 1,
+      "savedReturnAddress": 2148817276,
+      "frameCounter": 8959,
+      "scenarioEventActive": 1,
+      "battleNotStarted": 1,
+      "debugBattleStyle": 0,
+      "bannerCommands": [
+        {
+          "offset": 804,
+          "condition": 8,
+          "hold": 60,
+          "followingWaitOffset": 807,
+          "followingWaitTaskId": 56
+        },
+        {
+          "offset": 810,
+          "condition": 0,
+          "hold": 60,
+          "followingWaitOffset": 813,
+          "followingWaitTaskId": 56
+        }
+      ],
+      "activeBannerTasks": [],
+      "attributedBannerOffset": null,
+      "commonBattleStartEventObserved": false
+    },
+    {
+      "state": {
+        "localPath": "scratch/banner-pre-anchor-a/frames-310-readiness/states/fft-clean-base-game.state.auto",
+        "bytes": 1492888,
+        "sha256": "93256f36553f350ab0d1812262a7b2bfabfc6aa36ab7c5e0bef1fd93b5789253"
+      },
+      "currentEventId": 4,
+      "loadedEventId": 4,
+      "uniqueArchiveMatch": [
+        4
+      ],
+      "rawBlockSha256": "528875cb3cde1eb84c709f8b2de9afb41478041710b134a0ede075ae34d1bef7",
+      "processedBlockSha256": "0081b2e28473d913c7fdbb7da15a44a157b2d22111cde255efc73ab8fa8a8034",
+      "textOffset": 823,
+      "instructionCount": 136,
+      "instructionOffset": 807,
+      "opcode": 229,
+      "wait": {
+        "kind": "TaskWait",
+        "taskId": 56
+      },
+      "eventTaskId": 68,
+      "eventSlot": 1,
+      "savedReturnAddress": 2148817276,
+      "frameCounter": 8965,
+      "scenarioEventActive": 1,
+      "battleNotStarted": 1,
+      "debugBattleStyle": 0,
+      "bannerCommands": [
+        {
+          "offset": 804,
+          "condition": 8,
+          "hold": 60,
+          "followingWaitOffset": 807,
+          "followingWaitTaskId": 56
+        },
+        {
+          "offset": 810,
+          "condition": 0,
+          "hold": 60,
+          "followingWaitOffset": 813,
+          "followingWaitTaskId": 56
+        }
+      ],
+      "activeBannerTasks": [
+        {
+          "slot": 3,
+          "condition": 8,
+          "hold": 60,
+          "savedReturnAddress": 2149333712
+        }
+      ],
+      "attributedBannerOffset": 804,
+      "commonBattleStartEventObserved": false
+    },
+    {
+      "state": {
+        "localPath": "scratch/banner-pre-anchor-a/frames-338-readiness/states/fft-clean-base-game.state.auto",
+        "bytes": 1491313,
+        "sha256": "aada310a2fe3a32c10557056c53f7e7c4ab6029d1ccfccfd6a6703e6c68d52ab"
+      },
+      "currentEventId": 4,
+      "loadedEventId": 4,
+      "uniqueArchiveMatch": [
+        4
+      ],
+      "rawBlockSha256": "528875cb3cde1eb84c709f8b2de9afb41478041710b134a0ede075ae34d1bef7",
+      "processedBlockSha256": "0081b2e28473d913c7fdbb7da15a44a157b2d22111cde255efc73ab8fa8a8034",
+      "textOffset": 823,
+      "instructionCount": 136,
+      "instructionOffset": 807,
+      "opcode": 229,
+      "wait": {
+        "kind": "TaskWait",
+        "taskId": 56
+      },
+      "eventTaskId": 68,
+      "eventSlot": 1,
+      "savedReturnAddress": 2148817276,
+      "frameCounter": 8979,
+      "scenarioEventActive": 1,
+      "battleNotStarted": 1,
+      "debugBattleStyle": 0,
+      "bannerCommands": [
+        {
+          "offset": 804,
+          "condition": 8,
+          "hold": 60,
+          "followingWaitOffset": 807,
+          "followingWaitTaskId": 56
+        },
+        {
+          "offset": 810,
+          "condition": 0,
+          "hold": 60,
+          "followingWaitOffset": 813,
+          "followingWaitTaskId": 56
+        }
+      ],
+      "activeBannerTasks": [
+        {
+          "slot": 3,
+          "condition": 8,
+          "hold": 60,
+          "savedReturnAddress": 2149356420
+        }
+      ],
+      "attributedBannerOffset": 804,
+      "commonBattleStartEventObserved": false
+    },
+    {
+      "state": {
+        "localPath": "scratch/banner-circle-before-a/fft-clean-base-game.state",
+        "bytes": 1495280,
+        "sha256": "b42e0b9587fdaf098bfd718642f5676a2ed719ce17b528e304b983e35b8ae17a"
+      },
+      "currentEventId": 4,
+      "loadedEventId": 4,
+      "uniqueArchiveMatch": [
+        4
+      ],
+      "rawBlockSha256": "528875cb3cde1eb84c709f8b2de9afb41478041710b134a0ede075ae34d1bef7",
+      "processedBlockSha256": "0081b2e28473d913c7fdbb7da15a44a157b2d22111cde255efc73ab8fa8a8034",
+      "textOffset": 823,
+      "instructionCount": 136,
+      "instructionOffset": 807,
+      "opcode": 229,
+      "wait": {
+        "kind": "TaskWait",
+        "taskId": 56
+      },
+      "eventTaskId": 68,
+      "eventSlot": 1,
+      "savedReturnAddress": 2148817276,
+      "frameCounter": 8984,
+      "scenarioEventActive": 1,
+      "battleNotStarted": 1,
+      "debugBattleStyle": 0,
+      "bannerCommands": [
+        {
+          "offset": 804,
+          "condition": 8,
+          "hold": 60,
+          "followingWaitOffset": 807,
+          "followingWaitTaskId": 56
+        },
+        {
+          "offset": 810,
+          "condition": 0,
+          "hold": 60,
+          "followingWaitOffset": 813,
+          "followingWaitTaskId": 56
+        }
+      ],
+      "activeBannerTasks": [
+        {
+          "slot": 3,
+          "condition": 8,
+          "hold": 60,
+          "savedReturnAddress": 2149356420
+        }
+      ],
+      "attributedBannerOffset": 804,
+      "commonBattleStartEventObserved": false
+    },
+    {
+      "state": {
+        "localPath": "scratch/banner-circle-hold-intake-a/fft-clean-base-game.state1",
+        "bytes": 1500047,
+        "sha256": "fd6375043eac88420a2034737b3e25454f0a94284ee20169b690a5061de06a5e"
+      },
+      "currentEventId": 4,
+      "loadedEventId": 4,
+      "uniqueArchiveMatch": [
+        4
+      ],
+      "rawBlockSha256": "528875cb3cde1eb84c709f8b2de9afb41478041710b134a0ede075ae34d1bef7",
+      "processedBlockSha256": "0081b2e28473d913c7fdbb7da15a44a157b2d22111cde255efc73ab8fa8a8034",
+      "textOffset": 823,
+      "instructionCount": 136,
+      "instructionOffset": 807,
+      "opcode": 229,
+      "wait": {
+        "kind": "TaskWait",
+        "taskId": 56
+      },
+      "eventTaskId": 68,
+      "eventSlot": 1,
+      "savedReturnAddress": 2148817276,
+      "frameCounter": 9000,
+      "scenarioEventActive": 1,
+      "battleNotStarted": 1,
+      "debugBattleStyle": 0,
+      "bannerCommands": [
+        {
+          "offset": 804,
+          "condition": 8,
+          "hold": 60,
+          "followingWaitOffset": 807,
+          "followingWaitTaskId": 56
+        },
+        {
+          "offset": 810,
+          "condition": 0,
+          "hold": 60,
+          "followingWaitOffset": 813,
+          "followingWaitTaskId": 56
+        }
+      ],
+      "activeBannerTasks": [
+        {
+          "slot": 3,
+          "condition": 8,
+          "hold": 60,
+          "savedReturnAddress": 2149358296
+        }
+      ],
+      "attributedBannerOffset": 804,
+      "commonBattleStartEventObserved": false
+    },
+    {
+      "state": {
+        "localPath": "scratch/banner-circle-hide-intake-a/fft-clean-base-game.state2",
+        "bytes": 1499596,
+        "sha256": "acd36f72a3a01157ad6f74743006ba471c800a05a6a28c668cd70dc3547aee64"
+      },
+      "currentEventId": 4,
+      "loadedEventId": 4,
+      "uniqueArchiveMatch": [
+        4
+      ],
+      "rawBlockSha256": "528875cb3cde1eb84c709f8b2de9afb41478041710b134a0ede075ae34d1bef7",
+      "processedBlockSha256": "0081b2e28473d913c7fdbb7da15a44a157b2d22111cde255efc73ab8fa8a8034",
+      "textOffset": 823,
+      "instructionCount": 136,
+      "instructionOffset": 807,
+      "opcode": 229,
+      "wait": {
+        "kind": "TaskWait",
+        "taskId": 56
+      },
+      "eventTaskId": 68,
+      "eventSlot": 1,
+      "savedReturnAddress": 2148817276,
+      "frameCounter": 6435,
+      "scenarioEventActive": 1,
+      "battleNotStarted": 1,
+      "debugBattleStyle": 0,
+      "bannerCommands": [
+        {
+          "offset": 804,
+          "condition": 8,
+          "hold": 60,
+          "followingWaitOffset": 807,
+          "followingWaitTaskId": 56
+        },
+        {
+          "offset": 810,
+          "condition": 0,
+          "hold": 60,
+          "followingWaitOffset": 813,
+          "followingWaitTaskId": 56
+        }
+      ],
+      "activeBannerTasks": [
+        {
+          "slot": 3,
+          "condition": 8,
+          "hold": 60,
+          "savedReturnAddress": 2149358532
+        }
+      ],
+      "attributedBannerOffset": 804,
+      "commonBattleStartEventObserved": false
+    },
+    {
+      "state": {
+        "localPath": "scratch/banner-circle-hide-after-a/fft-clean-base-game.state2",
+        "bytes": 1499452,
+        "sha256": "04bd0c5438bafe30052cba0371ae8585c594752795b43be0964062d94da3ce17"
+      },
+      "currentEventId": 4,
+      "loadedEventId": 4,
+      "uniqueArchiveMatch": [
+        4
+      ],
+      "rawBlockSha256": "528875cb3cde1eb84c709f8b2de9afb41478041710b134a0ede075ae34d1bef7",
+      "processedBlockSha256": "0081b2e28473d913c7fdbb7da15a44a157b2d22111cde255efc73ab8fa8a8034",
+      "textOffset": 823,
+      "instructionCount": 136,
+      "instructionOffset": 807,
+      "opcode": 229,
+      "wait": {
+        "kind": "TaskWait",
+        "taskId": 56
+      },
+      "eventTaskId": 68,
+      "eventSlot": 1,
+      "savedReturnAddress": 2148817276,
+      "frameCounter": 6436,
+      "scenarioEventActive": 1,
+      "battleNotStarted": 1,
+      "debugBattleStyle": 0,
+      "bannerCommands": [
+        {
+          "offset": 804,
+          "condition": 8,
+          "hold": 60,
+          "followingWaitOffset": 807,
+          "followingWaitTaskId": 56
+        },
+        {
+          "offset": 810,
+          "condition": 0,
+          "hold": 60,
+          "followingWaitOffset": 813,
+          "followingWaitTaskId": 56
+        }
+      ],
+      "activeBannerTasks": [
+        {
+          "slot": 3,
+          "condition": 8,
+          "hold": 60,
+          "savedReturnAddress": 2149358532
+        }
+      ],
+      "attributedBannerOffset": 804,
+      "commonBattleStartEventObserved": false
+    }
+  ],
+  "validation": {
+    "pythonTestsPassed": 163,
+    "newPythonTests": 11,
+    "lastDotnetTestsPassed": 1494,
+    "dotnetSuiteRerun": false,
+    "emulatorLaunched": false,
+    "originalInstructionsExecuted": false,
+    "runtimeChanged": false
+  },
+  "limits": [
+    "Saved-state attribution and source study only; no emulator or original instructions executed.",
+    "Earliest state is already inside the event; its entry/conditional selection is not observed.",
+    "No complete event playback, current-event-401 fallback, encounter name, new pixel comparison or latency claim."
+  ]
+}

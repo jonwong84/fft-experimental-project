@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "originalExecuted": false,
+  "cExecuted": false,
+  "milestones": [
+    {
+      "ticket": "ZOD-387",
+      "managedBaseRevision": "695355fa2b3e5ef86a791f23d1851a01e5f5bdb1",
+      "validation": "Three Python cases pass12 independent refresh descriptions;clean pinned8-file/15-function source audit and six prepared status records verified. Actual Fire end-to-end acceptance and bounded implementation children selected.",
+      "reports": "scratch/fire-execution-387/"
+    },
+    {
+      "ticket": "ZOD-388",
+      "managedBaseRevision": "416dcbddf6f8a8c3a34d6ef04d61e2fc03dc24c1",
+      "validation": "Six managed cases pass Critical transitions, KO/byte counter/death state, source marker early return, misses, signed work, unsupported-state guards and growth refresh. Existing owner formatting in SpellTargetChoiceQuery remains unstaged.",
+      "reports": "scratch/fire-execution-387/"
+    },
+    {
+      "ticket": "ZOD-389",
+      "managedBaseRevision": "35b58035665aeb7041a35a8fed8b9edda0381d76",
+      "validation": "Locked restore and zero-warning/error Release build pass; all4782 .NET tests passed. Nine actual command scenarios plus six status cases pass charge/RNG/payment/HP/KO/reward/growth/unlock/replay/paid-fizzle boundaries; fresh source clock audit seven files/16 functions passed.",
+      "reports": "scratch/fire-execution-387/"
+    },
+    {
+      "ticket": "ZOD-390",
+      "managedBaseRevision": "93f1168d7f198295611ca29604b172c3b8a1094c",
+      "validation": "Release importer build: zero warnings/errors. 19 content and 11 CLI cases pass; verified local input prepares 34 records with explicit authored grant. Full suite and runtime UI remain ZOD-391 gates.",
+      "reports": "scratch/fire-execution-387/"
+    },
+    {
+      "ticket": "ZOD-391",
+      "managedBaseRevision": "17f898738c5c60b0d7cf88cffa7f8765f8241330",
+      "validation": "Locked restore; Release zero warnings/errors; all 4818 .NET and 739 Python tests passed. Verified 34 prepared source records and repeatable files; Windows GPU charge/aim/reward/growth/restart/KO routes match headless replay. Source, growth, reward, guide and coverage audits pass.",
+      "reports": "scratch/fire-execution-387/"
+    },
+    {
+      "ticket": "ZOD-392",
+      "managedBaseRevision": "b29ffe738e95c7900dd34ba01965287f3dae0f01",
+      "validation": "28 selected CLI cases pass, including 17 new family execution cases; prior Fire vectors retained. Verified local elemental preparation succeeds with 56 source records; six-file/five-function source audit and twelve reviewed binding vectors pass. Two new Python cases pass.",
+      "reports": "scratch/fire-execution-387/"
+    },
+    {
+      "ticket": "ZOD-393",
+      "managedBaseRevision": "5f6adc88dfe49d017f6d39b28debb9cf57ba339b",
+      "validation": "Release zero warnings/errors; all 4839 .NET and 741 Python tests pass. Native Fire-only and twelve-spell menu/charge/restart/KO checks match complete headless replay. Twelve keyboard selections and pointer rows verified; captures inspected. One unrelated temporary-directory access error passed on a fresh full Python run.",
+      "reports": "scratch/fire-execution-387/"
+    },
+    {
+      "ticket": "ZOD-394",
+      "managedBaseRevision": "fce2a86cca4f366e156315bd1c479922f17565ff",
+      "validation": "Release zero warnings/errors; all 4853 .NET and 743 Python cases pass. Native Cure/restart/Fire/KO and complete headless replay match; healed/Critical captures inspected. Fresh six-file/seven-function source audit and all 38 prepared records plus manifest pass.",
+      "reports": "scratch/fire-execution-387/"
+    },
+    {
+      "ticket": "ZOD-395",
+      "managedBaseRevision": "fb30ed692a22250c853945693274b948422d0607",
+      "validation": "12 new movement cases; all 1753 Framework, 1217 AI, 370 CLI and 438 Client cases plus 19 prepared-content cases pass. Release build clean. Eight-file/nine-function movement source and reused 48/60 descriptions pass; seven cancellation vectors/two Python cases pass. Full native movement follows in ZOD-396.",
+      "reports": "scratch/fire-execution-387/"
+    },
+    {
+      "ticket": "ZOD-396",
+      "managedBaseRevision": "191f867b7a086a3d45fa29fde8a0c2376695ca46",
+      "validation": "Release zero warnings/errors; all 4869 .NET and 745 Python tests pass. Fresh Fire/elemental/Cure native full-move preview/confirmation/heading, spell/restart/KO routes match headless replay. Move captures inspected. Full source/layout/preservation checks retained; owner formatting stays unstaged.",
+      "reports": "scratch/fire-execution-387/"
+    },
+    {
+      "ticket": "ZOD-397",
+      "managedBaseRevision": "983e0ea8f2df0bf670b8f7a031c3aca6d5b2b9a0",
+      "validation": "Release zero warnings/errors; all 4883 .NET and 747 Python tests pass. Schema2 companion, source slots/flags and unknown bits validated. All three native profiles match complete replay and prior gameplay hashes. Fail-closed learning admission added; post-action learning remains ZOD-398.",
+      "reports": "scratch/fire-execution-387/"
+    }
+  ]
+}

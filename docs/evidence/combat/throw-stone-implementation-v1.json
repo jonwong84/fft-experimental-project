@@ -1,0 +1,562 @@
+{
+  "format": "fft.throw-stone-implementation-validation",
+  "schemaVersion": 1,
+  "ticket": "ZOD-109",
+  "validatedOn": "2026-10-26",
+  "status": "complete within the closed source-derived pure profile",
+  "managedBase": "8ea184dd7e476acdb64c854fd696ed73e652126c",
+  "guide": "docs/behavior/throw-stone-implementation.md",
+  "contract": "docs/evidence/combat/throw-stone-contract-v1.json",
+  "reference": {
+    "root": "C:/repositories/fft_decomp",
+    "revision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "clean": true,
+    "readOnly": true,
+    "freshlyCheckedBeforeTranslation": true,
+    "all24ContractSourceFingerprintsRechecked": true
+  },
+  "sourceIdentities": [
+    {
+      "localPath": "src/Zodiac.Framework/ThrowStoneFormula.cs",
+      "bytes": 1167,
+      "sha256": "280e2188b34b2e14478cb7c7da688592d918508685671865e6297c68ac7e5ffc"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/TargetedAbilityBattle.cs",
+      "bytes": 11335,
+      "sha256": "99302f9d5c356db27eeee52001d8647b56e97494c409ee908dc25b6be1446a16"
+    },
+    {
+      "localPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "bytes": 23338,
+      "sha256": "243a6fcb129d8e69a91179801b3a784847296d43a1c6aaad23c0679a83d1c495"
+    }
+  ],
+  "build": {
+    "lockedRestore": true,
+    "configuration": "Release",
+    "warnings": 0,
+    "errors": 0,
+    "artifacts": "scratch/throw-stone-109-artifacts"
+  },
+  "tests": {
+    "managedPassed": 2608,
+    "managedAdded": 149,
+    "pythonPassed": 299,
+    "pythonAdded": 0,
+    "trx": [
+      {
+        "localPath": "scratch/throw-stone-109-tests-full/throw-stone-109-full_net10.0_20261026134330.trx",
+        "bytes": 1539303,
+        "sha256": "b427e9b4e36a8207f5ee06ec1b83195295edd5b811dedce609e1b362029840db"
+      },
+      {
+        "localPath": "scratch/throw-stone-109-tests-full/throw-stone-109-full_net10.0_20261026134331.trx",
+        "bytes": 37814,
+        "sha256": "34ede429749f295816001c362b84102c2f7b42df0443b6cdd6507f17b0f09016"
+      },
+      {
+        "localPath": "scratch/throw-stone-109-tests-full/throw-stone-109-full_net10.0_20261026134332.trx",
+        "bytes": 313122,
+        "sha256": "d0d8ee1c08c36d977e4e7e495d2f12b58ee2dab2091eae5c4dfd5b968509fb29"
+      },
+      {
+        "localPath": "scratch/throw-stone-109-tests-full/throw-stone-109-full_net10.0_20261026134336.trx",
+        "bytes": 389901,
+        "sha256": "8b77cd49e3e92e3b0bc00cd3d28475156a99986038ebaf63ce57942ca54067c4"
+      },
+      {
+        "localPath": "scratch/throw-stone-109-tests-full/throw-stone-109-full_net10.0_20261026134340.trx",
+        "bytes": 1077201,
+        "sha256": "6da237aac474d8c9c9804d714da914b86e27046363949313db35819d6dc83a47"
+      },
+      {
+        "localPath": "scratch/throw-stone-109-tests-full/throw-stone-109-full_net10.0_20261026134343.trx",
+        "bytes": 632147,
+        "sha256": "09bb88eafe7e15fa04717dcb9da4fbf18ce2563d5163d0460ea779dc9593ad83"
+      }
+    ],
+    "newTestNames": [
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 1, dy: 2, facing: South, front: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: -1, dy: 1, facing: South, front: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Seeded_source_vectors_include_exact_damage_push_and_rng(seed: 3878, evade: 10, facing: West, hit: True, damage: 10, push: False, word: 1752498361, draws: 7)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Invalid_actions_reject_atomically_before_drawing(kind: \"dead\", expected: DeadTarget)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Hit_rng_exhaustion_is_atomic_at_every_draw(remaining: 5)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Damage_boundary_vectors(pa: 99, raw: 0, expected: 99)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Unsupported_geometry_even_away_from_path_rejects_before_Act_or_rng(kind: \"height\")",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Lethal_push_cancellation_and_integer_Critical_boundary(maxHp: 13, hp: 3, status: None)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Damage_boundary_vectors(pa: 1, raw: 0, expected: 1)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Off_map_push_suppression_keeps_hit_and_all_seven_draws(tx: 3, ty: 0, ax: 3, ay: 1)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Miss_needs_only_its_four_draws(remaining: 1, accepted: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Lethal_push_cancellation_and_integer_Critical_boundary(maxHp: 5, hp: 0, status: Dead)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Seeded_source_vectors_include_exact_damage_push_and_rng(seed: 1, evade: 0, facing: West, hit: True, damage: 10, push: False, word: 3655513600, draws: 7)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 1, dy: 0, facing: North, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Range_uses_Manhattan_including_diagonals(dx: 3, dy: 1, admitted: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Damage_boundary_vectors(pa: 1, raw: 16384, expected: 2)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Range_uses_Manhattan_including_diagonals(dx: 1, dy: 0, admitted: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Command_journal_replays_accepts_rejects_pushes_moves_and_later_readiness",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Knockback_dominant_axis_and_Y_ties_preserve_target_choices(x: 4, y: 3, endX: 5, endY: 3)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 0, dy: -1, facing: North, front: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Unsupported_geometry_even_away_from_path_rejects_before_Act_or_rng(kind: \"overlap\")",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Knockback_dominant_axis_and_Y_ties_preserve_target_choices(x: 3, y: 4, endX: 3, endY: 5)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Miss_needs_only_its_four_draws(remaining: 2, accepted: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Hit_rng_exhaustion_is_atomic_at_every_draw(remaining: 3)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Unsupported_geometry_even_away_from_path_rejects_before_Act_or_rng(kind: \"water\")",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Damage_boundary_vectors(pa: 6, raw: 16384, expected: 12)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Seeded_source_vectors_include_exact_damage_push_and_rng(seed: 19, evade: 10, facing: West, hit: False, damage: 0, push: False, word: 2162199151, draws: 4)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Invalid_actions_reject_atomically_before_drawing(kind: \"inactive\", expected: InactiveActor)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Current_PA_feeds_damage_without_weapon_power_or_critical(pa: 5, damage: 10)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Brave_arithmetic_checks_both_stats_and_raw_values(a: 70, b: 70, ra: 32768, rb: 0)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Off_map_push_suppression_keeps_hit_and_all_seven_draws(tx: 6, ty: 6, ax: 5, ay: 5)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Invalid_actions_reject_atomically_before_drawing(kind: \"self\", expected: SelfTarget)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Independent_scaled_Brave_rolls_use_strict_comparison(a: 70, b: 70, ra: 0, rb: 32767, expected: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Damage_boundary_vectors(pa: 99, raw: 16384, expected: 198)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Either_explicitly_granted_unit_can_act_without_mutating_the_other_units_choices",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Independent_scaled_Brave_rolls_use_strict_comparison(a: 70, b: 70, ra: 32767, rb: 0, expected: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Independent_scaled_Brave_rolls_use_strict_comparison(a: 70, b: 70, ra: 0, rb: 0, expected: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Unsupported_geometry_even_away_from_path_rejects_before_Act_or_rng(kind: \"blocked\")",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 1, dy: -1, facing: West, front: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Range_uses_Manhattan_including_diagonals(dx: 5, dy: 0, admitted: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Unsupported_geometry_even_away_from_path_rejects_before_Act_or_rng(kind: \"slope\")",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Miss_needs_only_its_four_draws(remaining: 3, accepted: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Damage_boundary_vectors(pa: 1, raw: 16383, expected: 1)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Brave_arithmetic_checks_both_stats_and_raw_values(a: 70, b: 101, ra: 0, rb: 0)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Invalid_actions_reject_atomically_before_drawing(kind: \"target\", expected: UnknownTarget)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Invalid_actions_reject_atomically_before_drawing(kind: \"grant\", expected: AbilityNotGranted)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 2, dy: 1, facing: West, front: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 1, dy: -1, facing: South, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Arithmetic_rejects_outside_closed_domain(pa: 5, raw: 32768)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Damage_boundary_vectors(pa: 99, raw: 32767, expected: 198)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Knockback_dominant_axis_and_Y_ties_preserve_target_choices(x: 3, y: 2, endX: 3, endY: 1)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Knockback_dominant_axis_and_Y_ties_preserve_target_choices(x: 4, y: 2, endX: 4, endY: 1)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Unsupported_geometry_even_away_from_path_rejects_before_Act_or_rng(kind: \"stop\")",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Arithmetic_rejects_outside_closed_domain(pa: 5, raw: 4294967295)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Arithmetic_rejects_outside_closed_domain(pa: 100, raw: 0)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Act_Move_Wait_order_preserves_existing_CT_refunds(moveFirst: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Invalid_actions_reject_atomically_before_drawing(kind: \"spent\", expected: ActionAlreadyTaken)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Unsupported_geometry_even_away_from_path_rejects_before_Act_or_rng(kind: \"untargetable\")",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Damage_boundary_vectors(pa: 6, raw: 0, expected: 6)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 2, dy: 1, facing: North, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Invalid_actions_reject_atomically_before_drawing(kind: \"pa0\", expected: UnsupportedSetup)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Range_uses_Manhattan_including_diagonals(dx: 3, dy: 2, admitted: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 0, dy: -1, facing: West, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Unsupported_geometry_even_away_from_path_rejects_before_Act_or_rng(kind: \"ceiling\")",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Damage_boundary_vectors(pa: 6, raw: 32767, expected: 12)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Damage_boundary_vectors(pa: 5, raw: 16384, expected: 10)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: -1, dy: 0, facing: East, front: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Damage_boundary_vectors(pa: 5, raw: 0, expected: 5)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 0, dy: 1, facing: West, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Seeded_source_vectors_include_exact_damage_push_and_rng(seed: 19, evade: 10, facing: North, hit: True, damage: 5, push: True, word: 3282209882, draws: 7)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 1, dy: 1, facing: South, front: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Knockback_dominant_axis_and_Y_ties_preserve_target_choices(x: 4, y: 5, endX: 4, endY: 6)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: -1, dy: -1, facing: South, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 2, dy: 1, facing: East, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: -1, dy: -1, facing: West, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Arithmetic_rejects_outside_closed_domain(pa: 0, raw: 0)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: -1, dy: 1, facing: East, front: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Off_map_push_suppression_keeps_hit_and_all_seven_draws(tx: 3, ty: 6, ax: 3, ay: 5)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 1, dy: 0, facing: West, front: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Independent_scaled_Brave_rolls_use_strict_comparison(a: 10, b: 100, ra: 32767, rb: 32767, expected: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Independent_scaled_Brave_rolls_use_strict_comparison(a: 100, b: 10, ra: 32767, rb: 32767, expected: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 1, dy: 0, facing: South, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 1, dy: 1, facing: East, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Lethal_push_cancellation_and_integer_Critical_boundary(maxHp: 10, hp: 0, status: Dead)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Off_map_push_suppression_keeps_hit_and_all_seven_draws(tx: 6, ty: 3, ax: 5, ay: 3)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Miss_needs_only_its_four_draws(remaining: 0, accepted: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Unsupported_geometry_even_away_from_path_rejects_before_Act_or_rng(kind: \"surface\")",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 1, dy: 2, facing: East, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Act_Move_Wait_order_preserves_existing_CT_refunds(moveFirst: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 0, dy: -1, facing: South, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Range_uses_Manhattan_including_diagonals(dx: 0, dy: 5, admitted: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 0, dy: 1, facing: South, front: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Lethal_push_cancellation_and_integer_Critical_boundary(maxHp: 12, hp: 2, status: Critical)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Knockback_dominant_axis_and_Y_ties_preserve_target_choices(x: 2, y: 4, endX: 2, endY: 5)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 1, dy: 2, facing: North, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Profiles_snapshot_collections_and_reject_ambiguous_or_unsupported_bindings",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: -1, dy: 0, facing: North, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Miss_needs_only_its_four_draws(remaining: 4, accepted: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Range_uses_Manhattan_including_diagonals(dx: 4, dy: 0, admitted: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Hit_rng_exhaustion_is_atomic_at_every_draw(remaining: 6)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 0, dy: 1, facing: East, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Brave_arithmetic_checks_both_stats_and_raw_values(a: 9, b: 70, ra: 0, rb: 0)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Knockback_dominant_axis_and_Y_ties_preserve_target_choices(x: 2, y: 2, endX: 2, endY: 1)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Range_uses_Manhattan_including_diagonals(dx: 2, dy: 2, admitted: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.A_push_to_distance_five_is_rechecked_after_legal_turn_continuation",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 1, dy: 1, facing: North, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Current_PA_feeds_damage_without_weapon_power_or_critical(pa: 99, damage: 198)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Brave_arithmetic_checks_both_stats_and_raw_values(a: 70, b: 70, ra: 0, rb: 4294967295)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Unsupported_geometry_even_away_from_path_rejects_before_Act_or_rng(kind: \"layer\")",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Hit_rng_exhaustion_is_atomic_at_every_draw(remaining: 4)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: -1, dy: 1, facing: North, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Hit_rng_exhaustion_is_atomic_at_every_draw(remaining: 2)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 1, dy: 0, facing: East, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Hit_rng_exhaustion_is_atomic_at_every_draw(remaining: 0)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: -1, dy: 0, facing: South, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Current_PA_feeds_damage_without_weapon_power_or_critical(pa: 6, damage: 12)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 1, dy: 2, facing: West, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Damage_boundary_vectors(pa: 5, raw: 32767, expected: 10)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Knockback_dominant_axis_and_Y_ties_preserve_target_choices(x: 4, y: 4, endX: 4, endY: 5)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Invalid_actions_reject_atomically_before_drawing(kind: \"actor\", expected: UnknownActor)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 2, dy: 1, facing: South, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Knockback_dominant_axis_and_Y_ties_preserve_target_choices(x: 5, y: 4, endX: 6, endY: 4)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 1, dy: 1, facing: West, front: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Invalid_actions_reject_atomically_before_drawing(kind: \"pa100\", expected: UnsupportedSetup)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Off_map_push_suppression_keeps_hit_and_all_seven_draws(tx: 0, ty: 3, ax: 1, ay: 3)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Seeded_source_vectors_include_exact_damage_push_and_rng(seed: 410, evade: 10, facing: West, hit: False, damage: 0, push: False, word: 214736230, draws: 4)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Damage_boundary_vectors(pa: 99, raw: 16383, expected: 99)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Hit_rng_exhaustion_is_atomic_at_every_draw(remaining: 1)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Damage_boundary_vectors(pa: 1, raw: 32767, expected: 2)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Damage_boundary_vectors(pa: 5, raw: 16383, expected: 5)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: -1, dy: 1, facing: West, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 1, dy: -1, facing: East, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Exact_hit_budget_and_repeated_live_probes_are_pure",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Unsupported_geometry_even_away_from_path_rejects_before_Act_or_rng(kind: \"third\")",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: -1, dy: 0, facing: West, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Seeded_source_vectors_include_exact_damage_push_and_rng(seed: 3, evade: 0, facing: West, hit: True, damage: 10, push: True, word: 273505290, draws: 7)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Programmer_null_arguments_remain_explicit",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 0, dy: 1, facing: North, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Invalid_actions_reject_atomically_before_drawing(kind: \"effect\", expected: UnknownAbility)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Seeded_source_vectors_include_exact_damage_push_and_rng(seed: 57, evade: 0, facing: West, hit: True, damage: 5, push: True, word: 3448561432, draws: 7)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 1, dy: -1, facing: North, front: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: -1, dy: -1, facing: North, front: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Damage_boundary_vectors(pa: 6, raw: 16383, expected: 6)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Lethal_push_cancellation_and_integer_Critical_boundary(maxHp: 11, hp: 1, status: Critical)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Independent_scaled_Brave_rolls_use_strict_comparison(a: 70, b: 70, ra: 32767, rb: 32767, expected: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: 0, dy: -1, facing: East, front: False)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Knockback_dominant_axis_and_Y_ties_preserve_target_choices(x: 2, y: 3, endX: 1, endY: 3)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Front_class_evade_100_and_all_diagonal_facing_cases(dx: -1, dy: -1, facing: East, front: True)",
+      "Zodiac.Framework.Tests.ThrowStoneBattleTests.Unsupported_geometry_even_away_from_path_rejects_before_Act_or_rng(kind: \"half\")"
+    ],
+    "pythonCommand": "python -m unittest discover -s tools/verification -p 'test_*.py'",
+    "pythonEnvironment": "TEMP/TMP confined to scratch/throw-stone-109-python-temp"
+  },
+  "seededArithmeticAudit": {
+    "classification": "independent Python source-derived RNG/arithmetic; not original execution",
+    "artifact": {
+      "localPath": "scratch/throw-stone-109-vectors.json",
+      "bytes": 1449,
+      "sha256": "6ed7609595cbbbbd5443d626a53533665603b8dc831d9f19374da2af3d59cf94"
+    }
+  },
+  "cases": [
+    {
+      "id": "TST-001",
+      "ownerTicket": "ZOD-109",
+      "status": "executed passed",
+      "expectation": "Admit occupied target at cardinal distance 1 and 4; range derives from selected effect",
+      "testPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "testMethods": [
+        "Range_uses_Manhattan_including_diagonals"
+      ]
+    },
+    {
+      "id": "TST-002",
+      "ownerTicket": "ZOD-109",
+      "status": "executed passed",
+      "expectation": "Admit diagonal Manhattan distance at most 4; reject distance 5 atomically",
+      "testPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "testMethods": [
+        "Range_uses_Manhattan_including_diagonals",
+        "A_push_to_distance_five_is_rechecked_after_legal_turn_continuation"
+      ]
+    },
+    {
+      "id": "TST-003",
+      "ownerTicket": "ZOD-109",
+      "status": "executed passed",
+      "expectation": "Reject unknown/self/dead target, inactive actor and spent Act with identical state/events/RNG",
+      "testPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "testMethods": [
+        "Invalid_actions_reject_atomically_before_drawing"
+      ]
+    },
+    {
+      "id": "TST-004",
+      "ownerTicket": "ZOD-109",
+      "status": "executed passed",
+      "expectation": "Reject ungranted or unresolved ability without substituting a self effect or sword",
+      "testPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "testMethods": [
+        "Invalid_actions_reject_atomically_before_drawing",
+        "Profiles_snapshot_collections_and_reject_ambiguous_or_unsupported_bindings"
+      ]
+    },
+    {
+      "id": "TST-005",
+      "ownerTicket": "ZOD-109",
+      "status": "executed passed",
+      "expectation": "PA 1/5/6/99 and raw 0/16383/16384/32767 give exact PA-or-double-PA damage",
+      "testPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "testMethods": [
+        "Damage_boundary_vectors",
+        "Current_PA_feeds_damage_without_weapon_power_or_critical"
+      ]
+    },
+    {
+      "id": "TST-006",
+      "ownerTicket": "ZOD-109",
+      "status": "executed passed",
+      "expectation": "Front class evade 0 and 100 consume four ordered zero-equipment/class draws",
+      "testPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "testMethods": [
+        "Front_class_evade_100_and_all_diagonal_facing_cases",
+        "Seeded_source_vectors_include_exact_damage_push_and_rng"
+      ]
+    },
+    {
+      "id": "TST-007",
+      "ownerTicket": "ZOD-109",
+      "status": "executed passed",
+      "expectation": "Side/back clear class evade while retaining all four draws",
+      "testPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "testMethods": [
+        "Front_class_evade_100_and_all_diagonal_facing_cases"
+      ]
+    },
+    {
+      "id": "TST-008",
+      "ownerTicket": "ZOD-109",
+      "status": "executed passed",
+      "expectation": "On diagonal offsets either actor-facing axis counts as front; other facings clear class evade",
+      "testPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "testMethods": [
+        "Front_class_evade_100_and_all_diagonal_facing_cases"
+      ]
+    },
+    {
+      "id": "TST-009",
+      "ownerTicket": "ZOD-109",
+      "status": "executed passed",
+      "expectation": "Hit consumes seven draws in evade/damage/attacker-Brave/target-Brave order; no critical or proc",
+      "testPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "testMethods": [
+        "Seeded_source_vectors_include_exact_damage_push_and_rng"
+      ]
+    },
+    {
+      "id": "TST-010",
+      "ownerTicket": "ZOD-109",
+      "status": "executed passed",
+      "expectation": "Brave comparisons use separately scaled draws and strict less-than; equality fails",
+      "testPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "testMethods": [
+        "Independent_scaled_Brave_rolls_use_strict_comparison",
+        "Brave_arithmetic_checks_both_stats_and_raw_values"
+      ]
+    },
+    {
+      "id": "TST-011",
+      "ownerTicket": "ZOD-109",
+      "status": "executed passed",
+      "expectation": "In-bounds flat push moves one tile away on the dominant axis in all four directions",
+      "testPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "testMethods": [
+        "Knockback_dominant_axis_and_Y_ties_preserve_target_choices",
+        "Either_explicitly_granted_unit_can_act_without_mutating_the_other_units_choices"
+      ]
+    },
+    {
+      "id": "TST-012",
+      "ownerTicket": "ZOD-109",
+      "status": "executed passed",
+      "expectation": "Y wins exact diagonal knockback ties; do not derive this from visual facing",
+      "testPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "testMethods": [
+        "Knockback_dominant_axis_and_Y_ties_preserve_target_choices"
+      ]
+    },
+    {
+      "id": "TST-013",
+      "ownerTicket": "ZOD-109",
+      "status": "executed passed",
+      "expectation": "Off-map destination suppresses displacement while preserving damage and all seven draws",
+      "testPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "testMethods": [
+        "Off_map_push_suppression_keeps_hit_and_all_seven_draws"
+      ]
+    },
+    {
+      "id": "TST-014",
+      "ownerTicket": "ZOD-109",
+      "status": "executed passed",
+      "expectation": "Lethal damage cancels push after draws; exact HP/Dead and byte KO-count wrapping",
+      "testPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "testMethods": [
+        "Lethal_push_cancellation_and_integer_Critical_boundary"
+      ]
+    },
+    {
+      "id": "TST-015",
+      "ownerTicket": "ZOD-109",
+      "status": "executed passed",
+      "expectation": "HP Critical threshold and nonlethal push preserve incoming settled actor/target facing",
+      "testPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "testMethods": [
+        "Lethal_push_cancellation_and_integer_Critical_boundary",
+        "Seeded_source_vectors_include_exact_damage_push_and_rng"
+      ]
+    },
+    {
+      "id": "TST-016",
+      "ownerTicket": "ZOD-109",
+      "status": "executed passed",
+      "expectation": "Both action orders use existing Act/refund rules; push preserves target CT/speed/choices/HasMoved",
+      "testPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "testMethods": [
+        "Act_Move_Wait_order_preserves_existing_CT_refunds",
+        "Knockback_dominant_axis_and_Y_ties_preserve_target_choices"
+      ]
+    },
+    {
+      "id": "TST-017",
+      "ownerTicket": "ZOD-109",
+      "status": "executed passed",
+      "expectation": "Draw-count exhaustion is atomic on hit and miss with exact branch budgets",
+      "testPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "testMethods": [
+        "Hit_rng_exhaustion_is_atomic_at_every_draw",
+        "Miss_needs_only_its_four_draws",
+        "Exact_hit_budget_and_repeated_live_probes_are_pure"
+      ]
+    },
+    {
+      "id": "TST-018",
+      "ownerTicket": "ZOD-109",
+      "status": "executed passed",
+      "expectation": "Repeated live availability/preview probes preserve live RNG, state, choices and history",
+      "testPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "testMethods": [
+        "Exact_hit_budget_and_repeated_live_probes_are_pure"
+      ]
+    },
+    {
+      "id": "TST-019",
+      "ownerTicket": "ZOD-109",
+      "status": "executed passed",
+      "expectation": "Accepted/rejected journals replay all state/events; both RNG copies stay synchronized",
+      "testPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "testMethods": [
+        "Command_journal_replays_accepts_rejects_pushes_moves_and_later_readiness"
+      ]
+    },
+    {
+      "id": "TST-020",
+      "ownerTicket": "ZOD-109",
+      "status": "executed passed",
+      "expectation": "Unsupported geometry/status/profile and post-KO commands reject; old self/sword fixtures remain exact",
+      "testPath": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "testMethods": [
+        "Unsupported_geometry_even_away_from_path_rejects_before_Act_or_rng",
+        "Lethal_push_cancellation_and_integer_Critical_boundary",
+        "Invalid_actions_reject_atomically_before_drawing"
+      ]
+    },
+    {
+      "id": "TST-021",
+      "ownerTicket": "ZOD-110",
+      "status": "unexecuted",
+      "expectation": "Targeted companion strict fields/versions/duplicate IDs/budgets and deterministic round trips"
+    },
+    {
+      "id": "TST-022",
+      "ownerTicket": "ZOD-110",
+      "status": "unexecuted",
+      "expectation": "Job/skillset/learning/effect references and explicit per-unit learned grants validate together"
+    },
+    {
+      "id": "TST-023",
+      "ownerTicket": "ZOD-110",
+      "status": "unexecuted",
+      "expectation": "Original import verifies edition/hash/header/mappings and all six selected records"
+    },
+    {
+      "id": "TST-024",
+      "ownerTicket": "ZOD-110",
+      "status": "unexecuted",
+      "expectation": "Two imports repeat exactly and preserve all prior selected metadata bytes/provenance"
+    },
+    {
+      "id": "TST-025",
+      "ownerTicket": "ZOD-110",
+      "status": "unexecuted",
+      "expectation": "Rehashed wrong flags/formula/range/charge/MP/status/dependency/slot records reject without output"
+    },
+    {
+      "id": "TST-026",
+      "ownerTicket": "ZOD-110",
+      "status": "unexecuted",
+      "expectation": "Authored combined Accumulate/Throw Stone scenario proves boosted PA damage and first-KO lifecycle"
+    },
+    {
+      "id": "TST-027",
+      "ownerTicket": "ZOD-110",
+      "status": "unexecuted",
+      "expectation": "New profile saves/restores reject before file I/O even at initial/no-change states; legacy paths preserved"
+    },
+    {
+      "id": "TST-028",
+      "ownerTicket": "ZOD-110",
+      "status": "unexecuted",
+      "expectation": "Fresh-definition restart restores PA/HP/positions/RNG/grants; headless continuation repeatable"
+    },
+    {
+      "id": "TST-029",
+      "ownerTicket": "ZOD-111",
+      "status": "unexecuted",
+      "expectation": "Prepared launch validates bundle and fails unsupported content before creating a native window/output"
+    },
+    {
+      "id": "TST-030",
+      "ownerTicket": "ZOD-111",
+      "status": "unexecuted",
+      "expectation": "Keyboard/pointer target, confirm, cancel and invalid input route through shared typed commands"
+    },
+    {
+      "id": "TST-031",
+      "ownerTicket": "ZOD-111",
+      "status": "unexecuted",
+      "expectation": "HP/PA/position, range, availability and knockback-versus-no-push feedback are readable"
+    },
+    {
+      "id": "TST-032",
+      "ownerTicket": "ZOD-111",
+      "status": "unexecuted",
+      "expectation": "Finite planned native input matches headless/replay state/events/RNG; draw/resize/focus preserve state"
+    },
+    {
+      "id": "TST-033",
+      "ownerTicket": "ZOD-111",
+      "status": "unexecuted",
+      "expectation": "KO/restart and repeated prepared/native/capture artifacts pass independent audit and image inspection"
+    },
+    {
+      "id": "TST-034",
+      "ownerTicket": "ZOD-111",
+      "status": "unexecuted",
+      "expectation": "Owner visual and physical-input review approved separately from programmed controls"
+    }
+  ],
+  "eventOrder": [
+    "existing turn choice and optional turn-ended events",
+    "ThrowStoneResolvedEvent",
+    "optional HP changed",
+    "optional status changed",
+    "optional KO",
+    "optional ThrowStoneKnockbackEvent"
+  ],
+  "limits": [
+    "Exactly two ordinary units on a certified open dry flat height-10 lower-layer ground rectangle.",
+    "PA 1..99; Brave 10..100; no equipment PA/evade or status/support/reaction/terrain modifiers.",
+    "No runtime content/scenario/save/UI integration until ZOD-110/111; no native or original execution.",
+    "Known old sword settled-facing discrepancy is documented and unchanged.",
+    "Source-derived execution is not independent original-game equivalence."
+  ],
+  "next": {
+    "ticket": "ZOD-110",
+    "status": "Ready",
+    "scope": "validated targeted content/import and combined authored scenario",
+    "later": "ZOD-111 prepared Windows controls and owner review",
+    "battleCheckpoints": "ZOD-106 remains deferred",
+    "editor": "remains deferred"
+  }
+}

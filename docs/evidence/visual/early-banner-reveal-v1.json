@@ -1,0 +1,1947 @@
+{
+  "format": "fft.early-banner-reveal-evidence",
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "managedCommit": "2ec1724",
+  "entryState": {
+    "localPath": "scratch/banner-pre-anchor-a/frames-340-repeat/states/fft-clean-base-game.state.auto",
+    "bytes": 1491961,
+    "sha256": "abcfeeafe2fce9a2002e29d1ed0010b479cbc1838010663cdf9eaf16a53ff33f"
+  },
+  "sourcePlan": {
+    "localPath": "scratch/banner-033-comparison-plan/plan.json",
+    "bytes": 2247,
+    "sha256": "58a12df650a711c3128fc260490510f8a02ad1817cc47411e3c23567b04308a1"
+  },
+  "captureProfile": {
+    "localPath": "scratch/retroarch-reference/profile.json",
+    "bytes": 2287,
+    "sha256": "2179365bc1b2ea9643a835ebfa461ee12940841ba023ee1c05e9ee11002dcadf"
+  },
+  "observations": [
+    {
+      "slot": 3,
+      "savedReturnAddress": 2149356420,
+      "phase": "Revealing",
+      "phaseCounter": 0,
+      "logicalTick": 0,
+      "revealCompleted": 0,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [],
+      "originalState": {
+        "localPath": "scratch/banner-pre-anchor-a/frames-338-readiness/states/fft-clean-base-game.state.auto",
+        "bytes": 1491313,
+        "sha256": "aada310a2fe3a32c10557056c53f7e7c4ab6029d1ccfccfd6a6703e6c68d52ab"
+      }
+    },
+    {
+      "slot": 3,
+      "savedReturnAddress": 2149356420,
+      "phase": "Revealing",
+      "phaseCounter": 1,
+      "logicalTick": 1,
+      "revealCompleted": 1,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 31,
+          "VisibleRows": 0
+        }
+      ],
+      "originalState": {
+        "localPath": "scratch/banner-pre-anchor-a/frames-340-repeat/states/fft-clean-base-game.state.auto",
+        "bytes": 1491961,
+        "sha256": "abcfeeafe2fce9a2002e29d1ed0010b479cbc1838010663cdf9eaf16a53ff33f"
+      }
+    },
+    {
+      "slot": 3,
+      "savedReturnAddress": 2149356420,
+      "phase": "Revealing",
+      "phaseCounter": 2,
+      "logicalTick": 2,
+      "revealCompleted": 2,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 23,
+          "VisibleRows": 8
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 23,
+          "VisibleRows": 8
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 23,
+          "VisibleRows": 8
+        }
+      ],
+      "originalState": {
+        "localPath": "scratch/banner-reveal-d/original-004/states/fft-clean-base-game.state.auto",
+        "bytes": 1492107,
+        "sha256": "ba0292db76d59f12e44d8e2ce04b095293472864b80bacd0464dc02a4a38220e"
+      }
+    },
+    {
+      "slot": 3,
+      "savedReturnAddress": 2149356420,
+      "phase": "Revealing",
+      "phaseCounter": 3,
+      "logicalTick": 3,
+      "revealCompleted": 3,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 15,
+          "VisibleRows": 16
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 15,
+          "VisibleRows": 16
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 15,
+          "VisibleRows": 16
+        }
+      ],
+      "originalState": {
+        "localPath": "scratch/banner-reveal-d/original-006/states/fft-clean-base-game.state.auto",
+        "bytes": 1492163,
+        "sha256": "515d07bcf8184044d85fba029e19eab6c6908ac38d3887ffcdd39beaba0e06be"
+      }
+    },
+    {
+      "slot": 3,
+      "savedReturnAddress": 2149356420,
+      "phase": "Revealing",
+      "phaseCounter": 4,
+      "logicalTick": 4,
+      "revealCompleted": 4,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 7,
+          "VisibleRows": 24
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 7,
+          "VisibleRows": 24
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 7,
+          "VisibleRows": 24
+        }
+      ],
+      "originalState": {
+        "localPath": "scratch/banner-reveal-d/original-008/states/fft-clean-base-game.state.auto",
+        "bytes": 1493432,
+        "sha256": "0e9fec0fd5e3a8e1dbd8ab084d485601d3aa0329d7938e4c3676edae9ccec0a3"
+      }
+    },
+    {
+      "slot": 3,
+      "savedReturnAddress": 2149356420,
+      "phase": "Revealing",
+      "phaseCounter": 5,
+      "logicalTick": 5,
+      "revealCompleted": 5,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ],
+      "originalState": {
+        "localPath": "scratch/banner-reveal-d/original-010/states/fft-clean-base-game.state.auto",
+        "bytes": 1495178,
+        "sha256": "adc6f50cdb24d87cdf4cc64442852ab29bade18c0c5c4c4a28c3a6d4b90cd328"
+      }
+    },
+    {
+      "slot": 3,
+      "savedReturnAddress": 2149356420,
+      "phase": "Revealing",
+      "phaseCounter": 6,
+      "logicalTick": 6,
+      "revealCompleted": 6,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ],
+      "originalState": {
+        "localPath": "scratch/banner-reveal-d/original-012/states/fft-clean-base-game.state.auto",
+        "bytes": 1495872,
+        "sha256": "acb133b65d60d5d304863e5379d5a35086160be19fdd1f3ad6cef791175eaf4d"
+      }
+    },
+    {
+      "slot": 3,
+      "savedReturnAddress": 2149356420,
+      "phase": "Revealing",
+      "phaseCounter": 7,
+      "logicalTick": 7,
+      "revealCompleted": 7,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ],
+      "originalState": {
+        "localPath": "scratch/banner-reveal-d/original-014/states/fft-clean-base-game.state.auto",
+        "bytes": 1495379,
+        "sha256": "54098905c9884f4a36eb3752c845aac458bd395c802758ddb44b38ecde8620bd"
+      }
+    },
+    {
+      "slot": 3,
+      "savedReturnAddress": 2149356420,
+      "phase": "Revealing",
+      "phaseCounter": 9,
+      "logicalTick": 9,
+      "revealCompleted": 9,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ],
+      "originalState": {
+        "localPath": "scratch/banner-reveal-d/original-018/states/fft-clean-base-game.state.auto",
+        "bytes": 1494400,
+        "sha256": "03c7ddfc8f258e4f1f2622f256695b800ee22b8fc9196d6c8543342e1add2eb3"
+      }
+    },
+    {
+      "slot": 3,
+      "savedReturnAddress": 2149356420,
+      "phase": "Revealing",
+      "phaseCounter": 10,
+      "logicalTick": 10,
+      "revealCompleted": 10,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 31,
+          "VisibleRows": 0
+        }
+      ],
+      "originalState": {
+        "localPath": "scratch/banner-reveal-d/original-020/states/fft-clean-base-game.state.auto",
+        "bytes": 1494670,
+        "sha256": "e978930d1c2a55a61497cddf56c71e4a5a481d7aee349525f4a895cd5397b4b6"
+      }
+    },
+    {
+      "slot": 3,
+      "savedReturnAddress": 2149356420,
+      "phase": "Revealing",
+      "phaseCounter": 11,
+      "logicalTick": 11,
+      "revealCompleted": 11,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 23,
+          "VisibleRows": 8
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 23,
+          "VisibleRows": 8
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 23,
+          "VisibleRows": 8
+        }
+      ],
+      "originalState": {
+        "localPath": "scratch/banner-reveal-d/original-022/states/fft-clean-base-game.state.auto",
+        "bytes": 1494755,
+        "sha256": "7df72d62374d6fbc631fe43c37677c7af66aa029134fab4b7652034399dd48be"
+      }
+    },
+    {
+      "slot": 3,
+      "savedReturnAddress": 2149356420,
+      "phase": "Revealing",
+      "phaseCounter": 12,
+      "logicalTick": 12,
+      "revealCompleted": 12,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 15,
+          "VisibleRows": 16
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 15,
+          "VisibleRows": 16
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 15,
+          "VisibleRows": 16
+        }
+      ],
+      "originalState": {
+        "localPath": "scratch/banner-reveal-d/original-024/states/fft-clean-base-game.state.auto",
+        "bytes": 1494873,
+        "sha256": "a273ac88669ab2002a9e029d8a2f6765e610053a453023aefee976a6759f824d"
+      }
+    },
+    {
+      "slot": 3,
+      "savedReturnAddress": 2149356420,
+      "phase": "Revealing",
+      "phaseCounter": 13,
+      "logicalTick": 13,
+      "revealCompleted": 13,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 7,
+          "VisibleRows": 24
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 7,
+          "VisibleRows": 24
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 7,
+          "VisibleRows": 24
+        }
+      ],
+      "originalState": {
+        "localPath": "scratch/banner-reveal-d/original-026/states/fft-clean-base-game.state.auto",
+        "bytes": 1495404,
+        "sha256": "e91a90edd476ac25af9674ca56e11859a2d9e7260b4261361a792f1215d6b9b0"
+      }
+    },
+    {
+      "slot": 3,
+      "savedReturnAddress": 2149356420,
+      "phase": "Revealing",
+      "phaseCounter": 14,
+      "logicalTick": 14,
+      "revealCompleted": 14,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ],
+      "originalState": {
+        "localPath": "scratch/banner-reveal-d/original-028/states/fft-clean-base-game.state.auto",
+        "bytes": 1496714,
+        "sha256": "c2c2fc57da73e2c5bc7810fb39a03353afb52e00de98c5238b72c41bf1a5fb49"
+      }
+    },
+    {
+      "slot": 3,
+      "savedReturnAddress": 2149356420,
+      "phase": "Revealing",
+      "phaseCounter": 15,
+      "logicalTick": 15,
+      "revealCompleted": 15,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ],
+      "originalState": {
+        "localPath": "scratch/banner-reveal-d/original-030/states/fft-clean-base-game.state.auto",
+        "bytes": 1497913,
+        "sha256": "ffdf6c3b25f8d165d29e14b49f7734758ebec5f82798ddc1b436ada3257f6e4f"
+      }
+    },
+    {
+      "slot": 3,
+      "savedReturnAddress": 2149356420,
+      "phase": "Revealing",
+      "phaseCounter": 16,
+      "logicalTick": 16,
+      "revealCompleted": 16,
+      "holdCompleted": 0,
+      "hideCompleted": 0,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ],
+      "originalState": {
+        "localPath": "scratch/banner-reveal-d/original-032/states/fft-clean-base-game.state.auto",
+        "bytes": 1498096,
+        "sha256": "9b6bedbb908e98cc9f77f93bf40514a565cc6439625c8c7ee0da3406831ac776"
+      }
+    }
+  ],
+  "readiness": {
+    "report": {
+      "localPath": "scratch/banner-readiness-a/report.json",
+      "bytes": 8420,
+      "sha256": "b89d8282b7e5f572ae175d9e23c2173396c6cfedbca4944ddf29279ce68b52c0"
+    },
+    "repeatReport": {
+      "localPath": "scratch/banner-readiness-b/report.json",
+      "bytes": 8420,
+      "sha256": "b89d8282b7e5f572ae175d9e23c2173396c6cfedbca4944ddf29279ce68b52c0"
+    },
+    "loaderCode": {
+      "address": 2149333680,
+      "bytes": 244,
+      "sha256": "83bdf7ea18ea62c44d0b5bcf4f0d12ba8a9d4ad7b3827200fddb225bf364e6ae"
+    },
+    "sourceFiles": [
+      "src/event/require/entry_conditions.c",
+      "src/event/require/conditions.c",
+      "src/event/require/screen_support.c",
+      "src/main/file_loading.c",
+      "include/fft/thread.h",
+      "src/platform/psyq/libetc/VSync.c",
+      "src/battle/frame.c"
+    ],
+    "observations": [
+      {
+        "frontendFrames": 310,
+        "frameCounter": 8965,
+        "state": {
+          "localPath": "scratch/banner-pre-anchor-a/frames-310-readiness/states/fft-clean-base-game.state.auto",
+          "bytes": 1492888,
+          "sha256": "93256f36553f350ab0d1812262a7b2bfabfc6aa36ab7c5e0bef1fd93b5789253"
+        },
+        "phase": "AllocationYield",
+        "savedReturnAddress": 2149333712,
+        "preparedTextureAlreadyResident": true,
+        "preparedPaletteAlreadyResident": true
+      },
+      {
+        "frontendFrames": 312,
+        "frameCounter": 8966,
+        "state": {
+          "localPath": "scratch/banner-pre-anchor-a/frames-312-readiness/states/fft-clean-base-game.state.auto",
+          "bytes": 1492513,
+          "sha256": "954ad12de48221bc52583e674feb0e6457979518275ffc7da1015c9e9e5848d3"
+        },
+        "phase": "ReadRequestYield",
+        "savedReturnAddress": 2149333776,
+        "preparedTextureAlreadyResident": true,
+        "preparedPaletteAlreadyResident": true
+      },
+      {
+        "frontendFrames": 314,
+        "frameCounter": 8967,
+        "state": {
+          "localPath": "scratch/banner-pre-anchor-a/frames-314-readiness/states/fft-clean-base-game.state.auto",
+          "bytes": 1492295,
+          "sha256": "17509aaf6dff88df75acfb009696c4f83786eb1adf505b08ecf62a65f1c0a9e0"
+        },
+        "phase": "ReadCompletionYield",
+        "savedReturnAddress": 2149333824,
+        "preparedTextureAlreadyResident": true,
+        "preparedPaletteAlreadyResident": true
+      },
+      {
+        "frontendFrames": 320,
+        "frameCounter": 8970,
+        "state": {
+          "localPath": "scratch/banner-pre-anchor-a/frames-320-readiness/states/fft-clean-base-game.state.auto",
+          "bytes": 1490670,
+          "sha256": "2853de67a983734ab66c5819082e6e9435107f9f3c30e424e1677d71caf7d6fa"
+        },
+        "phase": "ReadCompletionYield",
+        "savedReturnAddress": 2149333824,
+        "preparedTextureAlreadyResident": true,
+        "preparedPaletteAlreadyResident": true
+      },
+      {
+        "frontendFrames": 328,
+        "frameCounter": 8974,
+        "state": {
+          "localPath": "scratch/banner-pre-anchor-a/frames-328-readiness/states/fft-clean-base-game.state.auto",
+          "bytes": 1490775,
+          "sha256": "db84f231d6f734d396e2e89ccdac74ca4acace095fc0a866316e75aa6e5ec64f"
+        },
+        "phase": "ReadCompletionYield",
+        "savedReturnAddress": 2149333824,
+        "preparedTextureAlreadyResident": true,
+        "preparedPaletteAlreadyResident": true
+      },
+      {
+        "frontendFrames": 332,
+        "frameCounter": 8976,
+        "state": {
+          "localPath": "scratch/banner-pre-anchor-a/frames-332-readiness/states/fft-clean-base-game.state.auto",
+          "bytes": 1489534,
+          "sha256": "e86003e7173560579c260ecf14ba43dc81919a96cfdd4a92b9d0b24b25bf8a22"
+        },
+        "phase": "ReadCompletionYield",
+        "savedReturnAddress": 2149333824,
+        "preparedTextureAlreadyResident": true,
+        "preparedPaletteAlreadyResident": true
+      },
+      {
+        "frontendFrames": 334,
+        "frameCounter": 8977,
+        "state": {
+          "localPath": "scratch/banner-pre-anchor-a/frames-334-readiness/states/fft-clean-base-game.state.auto",
+          "bytes": 1490671,
+          "sha256": "48b6edc35edd086914b20156b3694758c5592b2117377fba877e497de94eb526"
+        },
+        "phase": "ReadCompletionYield",
+        "savedReturnAddress": 2149333824,
+        "preparedTextureAlreadyResident": true,
+        "preparedPaletteAlreadyResident": true
+      },
+      {
+        "frontendFrames": 336,
+        "frameCounter": 8978,
+        "state": {
+          "localPath": "scratch/banner-pre-anchor-a/frames-336-readiness/states/fft-clean-base-game.state.auto",
+          "bytes": 1490747,
+          "sha256": "bafb89f72743971b5fae0439e5347c373de2f3b721f4f4658fddf91ae6aff28f"
+        },
+        "phase": "PostUploadYield",
+        "savedReturnAddress": 2149333888,
+        "preparedTextureAlreadyResident": true,
+        "preparedPaletteAlreadyResident": true
+      },
+      {
+        "frontendFrames": 338,
+        "frameCounter": 8979,
+        "state": {
+          "localPath": "scratch/banner-pre-anchor-a/frames-338-readiness/states/fft-clean-base-game.state.auto",
+          "bytes": 1491313,
+          "sha256": "aada310a2fe3a32c10557056c53f7e7c4ab6029d1ccfccfd6a6703e6c68d52ab"
+        },
+        "phase": "RevealReadyYield",
+        "savedReturnAddress": 2149356420,
+        "preparedTextureAlreadyResident": true,
+        "preparedPaletteAlreadyResident": true
+      }
+    ],
+    "loaderToGeneralReturn": 2149355452,
+    "allocation": 2149445632,
+    "originalLoadDurationEstablished": false,
+    "repeatedInspectionOnly": true
+  },
+  "displayBinding": {
+    "vsyncReturns": [
+      2147605568,
+      2147605604
+    ],
+    "frameSubmitReturn": 2148088680,
+    "entryReturn": 2147983448,
+    "sourceFrameDistance": 2,
+    "method": "Closed pre-submission VSync stack and opposite-buffer source order, verified prior queued geometry; no offset search"
+  },
+  "intervention": {
+    "vramByteOffset": 523008,
+    "wordCount": 16,
+    "byteCount": 32,
+    "changedCoreBytes": 30,
+    "onlySelectedPaletteChanged": true,
+    "entryCoreSha256": "40a6f7f224de4af87f0a920c32d325dc6c1d5fee97a8d77fd42bcb4f6b914549",
+    "probeCoreSha256": "88b78ab44cd6038a04d97e1ed3139f8f66228526d8809883b67365ec3369a2f8"
+  },
+  "checkpoints": [
+    {
+      "frontendFrames": 6,
+      "displayedLogicalTick": 1,
+      "queuedLogicalTick": 3,
+      "frameCounter": 8982,
+      "sourceFrameDistance": 2,
+      "sourceGeometry": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 31,
+          "VisibleRows": 0
+        }
+      ],
+      "sourceContextAndProbeMatch": true,
+      "nonGpuSubsystemsUnchanged": true,
+      "gpuRegistersUnchanged": true,
+      "passed": true,
+      "failures": [],
+      "visibleArtworkCompared": false,
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "touched": {
+          "pixels": 0,
+          "changedPixels": 0,
+          "compared": false,
+          "exactEquality": null
+        },
+        "foregroundInvariant": {
+          "pixels": 0,
+          "changedPixels": 0,
+          "compared": false,
+          "exactEquality": null
+        },
+        "backgroundSensitive": {
+          "pixels": 0,
+          "changedPixels": 0,
+          "compared": false,
+          "exactEquality": null
+        },
+        "pythonModel": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probeOutsideBanner": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        }
+      }
+    },
+    {
+      "frontendFrames": 8,
+      "displayedLogicalTick": 2,
+      "queuedLogicalTick": 4,
+      "frameCounter": 8983,
+      "sourceFrameDistance": 2,
+      "sourceGeometry": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 23,
+          "VisibleRows": 8
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 23,
+          "VisibleRows": 8
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 23,
+          "VisibleRows": 8
+        }
+      ],
+      "sourceContextAndProbeMatch": true,
+      "nonGpuSubsystemsUnchanged": true,
+      "gpuRegistersUnchanged": true,
+      "passed": true,
+      "failures": [],
+      "visibleArtworkCompared": true,
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "touched": {
+          "compared": true,
+          "pixels": 27,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "foregroundInvariant": {
+          "compared": true,
+          "pixels": 3,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "backgroundSensitive": {
+          "compared": true,
+          "pixels": 24,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "pythonModel": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probeOutsideBanner": {
+          "compared": true,
+          "pixels": 61413,
+          "changedPixels": 0,
+          "exactEquality": true
+        }
+      }
+    },
+    {
+      "frontendFrames": 10,
+      "displayedLogicalTick": 3,
+      "queuedLogicalTick": 5,
+      "frameCounter": 8984,
+      "sourceFrameDistance": 2,
+      "sourceGeometry": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 15,
+          "VisibleRows": 16
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 15,
+          "VisibleRows": 16
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 15,
+          "VisibleRows": 16
+        }
+      ],
+      "sourceContextAndProbeMatch": true,
+      "nonGpuSubsystemsUnchanged": true,
+      "gpuRegistersUnchanged": true,
+      "passed": true,
+      "failures": [],
+      "visibleArtworkCompared": true,
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "touched": {
+          "compared": true,
+          "pixels": 1090,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "foregroundInvariant": {
+          "compared": true,
+          "pixels": 575,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "backgroundSensitive": {
+          "compared": true,
+          "pixels": 515,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "pythonModel": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probeOutsideBanner": {
+          "compared": true,
+          "pixels": 60350,
+          "changedPixels": 0,
+          "exactEquality": true
+        }
+      }
+    },
+    {
+      "frontendFrames": 12,
+      "displayedLogicalTick": 4,
+      "queuedLogicalTick": 6,
+      "frameCounter": 8985,
+      "sourceFrameDistance": 2,
+      "sourceGeometry": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 7,
+          "VisibleRows": 24
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 7,
+          "VisibleRows": 24
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 7,
+          "VisibleRows": 24
+        }
+      ],
+      "sourceContextAndProbeMatch": true,
+      "nonGpuSubsystemsUnchanged": true,
+      "gpuRegistersUnchanged": true,
+      "passed": false,
+      "failures": [
+        "original-composition-mismatch"
+      ],
+      "visibleArtworkCompared": true,
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 21,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            8
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            8
+          ],
+          "exactEquality": false
+        },
+        "touched": {
+          "compared": true,
+          "pixels": 1879,
+          "changedPixels": 21,
+          "exactEquality": false
+        },
+        "foregroundInvariant": {
+          "compared": true,
+          "pixels": 969,
+          "changedPixels": 21,
+          "exactEquality": false
+        },
+        "backgroundSensitive": {
+          "compared": true,
+          "pixels": 910,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "pythonModel": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probeOutsideBanner": {
+          "compared": true,
+          "pixels": 59561,
+          "changedPixels": 0,
+          "exactEquality": true
+        }
+      }
+    },
+    {
+      "frontendFrames": 14,
+      "displayedLogicalTick": 5,
+      "queuedLogicalTick": 7,
+      "frameCounter": 8986,
+      "sourceFrameDistance": 2,
+      "sourceGeometry": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ],
+      "sourceContextAndProbeMatch": true,
+      "nonGpuSubsystemsUnchanged": true,
+      "gpuRegistersUnchanged": true,
+      "passed": true,
+      "failures": [],
+      "visibleArtworkCompared": true,
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "touched": {
+          "compared": true,
+          "pixels": 1879,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "foregroundInvariant": {
+          "compared": true,
+          "pixels": 969,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "backgroundSensitive": {
+          "compared": true,
+          "pixels": 910,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "pythonModel": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probeOutsideBanner": {
+          "compared": true,
+          "pixels": 59561,
+          "changedPixels": 0,
+          "exactEquality": true
+        }
+      }
+    },
+    {
+      "frontendFrames": 22,
+      "displayedLogicalTick": 9,
+      "queuedLogicalTick": 11,
+      "frameCounter": 8990,
+      "sourceFrameDistance": 2,
+      "sourceGeometry": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ],
+      "sourceContextAndProbeMatch": true,
+      "nonGpuSubsystemsUnchanged": true,
+      "gpuRegistersUnchanged": true,
+      "passed": true,
+      "failures": [],
+      "visibleArtworkCompared": true,
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "touched": {
+          "compared": true,
+          "pixels": 1879,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "foregroundInvariant": {
+          "compared": true,
+          "pixels": 969,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "backgroundSensitive": {
+          "compared": true,
+          "pixels": 910,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "pythonModel": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probeOutsideBanner": {
+          "compared": true,
+          "pixels": 59561,
+          "changedPixels": 0,
+          "exactEquality": true
+        }
+      }
+    },
+    {
+      "frontendFrames": 24,
+      "displayedLogicalTick": 10,
+      "queuedLogicalTick": 12,
+      "frameCounter": 8991,
+      "sourceFrameDistance": 2,
+      "sourceGeometry": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 31,
+          "VisibleRows": 0
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 31,
+          "VisibleRows": 0
+        }
+      ],
+      "sourceContextAndProbeMatch": true,
+      "nonGpuSubsystemsUnchanged": true,
+      "gpuRegistersUnchanged": true,
+      "passed": true,
+      "failures": [],
+      "visibleArtworkCompared": true,
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "touched": {
+          "compared": true,
+          "pixels": 1879,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "foregroundInvariant": {
+          "compared": true,
+          "pixels": 969,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "backgroundSensitive": {
+          "compared": true,
+          "pixels": 910,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "pythonModel": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probeOutsideBanner": {
+          "compared": true,
+          "pixels": 59561,
+          "changedPixels": 0,
+          "exactEquality": true
+        }
+      }
+    },
+    {
+      "frontendFrames": 26,
+      "displayedLogicalTick": 11,
+      "queuedLogicalTick": 13,
+      "frameCounter": 8992,
+      "sourceFrameDistance": 2,
+      "sourceGeometry": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 23,
+          "VisibleRows": 8
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 23,
+          "VisibleRows": 8
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 23,
+          "VisibleRows": 8
+        }
+      ],
+      "sourceContextAndProbeMatch": true,
+      "nonGpuSubsystemsUnchanged": true,
+      "gpuRegistersUnchanged": true,
+      "passed": true,
+      "failures": [],
+      "visibleArtworkCompared": true,
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "touched": {
+          "compared": true,
+          "pixels": 1879,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "foregroundInvariant": {
+          "compared": true,
+          "pixels": 969,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "backgroundSensitive": {
+          "compared": true,
+          "pixels": 910,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "pythonModel": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probeOutsideBanner": {
+          "compared": true,
+          "pixels": 59561,
+          "changedPixels": 0,
+          "exactEquality": true
+        }
+      }
+    },
+    {
+      "frontendFrames": 28,
+      "displayedLogicalTick": 12,
+      "queuedLogicalTick": 14,
+      "frameCounter": 8993,
+      "sourceFrameDistance": 2,
+      "sourceGeometry": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 15,
+          "VisibleRows": 16
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 15,
+          "VisibleRows": 16
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 15,
+          "VisibleRows": 16
+        }
+      ],
+      "sourceContextAndProbeMatch": true,
+      "nonGpuSubsystemsUnchanged": true,
+      "gpuRegistersUnchanged": true,
+      "passed": true,
+      "failures": [],
+      "visibleArtworkCompared": true,
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "touched": {
+          "compared": true,
+          "pixels": 2083,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "foregroundInvariant": {
+          "compared": true,
+          "pixels": 969,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "backgroundSensitive": {
+          "compared": true,
+          "pixels": 1114,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "pythonModel": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probeOutsideBanner": {
+          "compared": true,
+          "pixels": 59357,
+          "changedPixels": 0,
+          "exactEquality": true
+        }
+      }
+    },
+    {
+      "frontendFrames": 30,
+      "displayedLogicalTick": 13,
+      "queuedLogicalTick": 15,
+      "frameCounter": 8994,
+      "sourceFrameDistance": 2,
+      "sourceGeometry": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 7,
+          "VisibleRows": 24
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 7,
+          "VisibleRows": 24
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 7,
+          "VisibleRows": 24
+        }
+      ],
+      "sourceContextAndProbeMatch": true,
+      "nonGpuSubsystemsUnchanged": true,
+      "gpuRegistersUnchanged": true,
+      "passed": false,
+      "failures": [
+        "original-composition-mismatch"
+      ],
+      "visibleArtworkCompared": true,
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 14,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            8
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            8
+          ],
+          "exactEquality": false
+        },
+        "touched": {
+          "compared": true,
+          "pixels": 2989,
+          "changedPixels": 14,
+          "exactEquality": false
+        },
+        "foregroundInvariant": {
+          "compared": true,
+          "pixels": 1509,
+          "changedPixels": 14,
+          "exactEquality": false
+        },
+        "backgroundSensitive": {
+          "compared": true,
+          "pixels": 1480,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "pythonModel": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probeOutsideBanner": {
+          "compared": true,
+          "pixels": 58451,
+          "changedPixels": 0,
+          "exactEquality": true
+        }
+      }
+    },
+    {
+      "frontendFrames": 32,
+      "displayedLogicalTick": 14,
+      "queuedLogicalTick": 16,
+      "frameCounter": 8995,
+      "sourceFrameDistance": 2,
+      "sourceGeometry": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ],
+      "sourceContextAndProbeMatch": true,
+      "nonGpuSubsystemsUnchanged": true,
+      "gpuRegistersUnchanged": true,
+      "passed": true,
+      "failures": [],
+      "visibleArtworkCompared": true,
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "touched": {
+          "compared": true,
+          "pixels": 3128,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "foregroundInvariant": {
+          "compared": true,
+          "pixels": 1577,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "backgroundSensitive": {
+          "compared": true,
+          "pixels": 1551,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "pythonModel": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "exactEquality": true
+        },
+        "probeOutsideBanner": {
+          "compared": true,
+          "pixels": 58312,
+          "changedPixels": 0,
+          "exactEquality": true
+        }
+      }
+    }
+  ],
+  "repeatValidation": {
+    "firstReport": {
+      "localPath": "scratch/banner-reveal-d/report.json",
+      "bytes": 269299,
+      "sha256": "3947abda8a6a51334096f1ed89761b240f4b21427312b9ff56697290f746bc57"
+    },
+    "secondReport": {
+      "localPath": "scratch/banner-reveal-e/report.json",
+      "bytes": 269299,
+      "sha256": "7572028eb4060a5b484d36d6c6c8e4fa66f3fe7673c078f47a16b227efc491ef"
+    },
+    "artifactCount": 107,
+    "firstRoot": "scratch/banner-reveal-d",
+    "secondRoot": "scratch/banner-reveal-e",
+    "rule": "Replace firstRoot with secondRoot in each identity path; corresponding bytes and hashes are equal.",
+    "artifactAudit": {
+      "localPath": "scratch/banner-reveal-repeat-audit.json",
+      "bytes": 21516,
+      "sha256": "02bfc5abae647ae495224e891cb268eba08c63ddbcc15086ba08645ef42b2c77"
+    },
+    "sourceContextsBindingsTracesIsolationComparisonsIdentical": true
+  },
+  "tools": [
+    {
+      "localPath": "tools/verification/compare_banner_reveal.py",
+      "bytes": 16029,
+      "sha256": "049fa35a25d8a14c9b69f15ebd88227d9cadbbefe61a30af87ada3adf8d67bcb"
+    },
+    {
+      "localPath": "tools/verification/analyze_banner_precision.py",
+      "bytes": 11456,
+      "sha256": "05dc125aefab31ddcac31482aabefc6ab9c911188589274ba928ec35451dc3d4"
+    },
+    {
+      "localPath": "tools/verification/capture_banner_continuation.py",
+      "bytes": 16116,
+      "sha256": "d9d973d970f8ebfdf9bf9b5907022a8c9ff70cdb6e26d955b9734c8a08cf269c"
+    },
+    {
+      "localPath": "tools/verification/compare_banner_background.py",
+      "bytes": 20919,
+      "sha256": "4c8fb17339c3e44621636a2b13b995fdb2d16286ced7a066dcf1c8837a2b84b4"
+    },
+    {
+      "localPath": "tools/verification/compare_banner_hide.py",
+      "bytes": 21845,
+      "sha256": "9a375e7dfa44fd18404d1f2fd8eabd31db5a166dded4ef25432b1d50fec56c28"
+    },
+    {
+      "localPath": "tools/verification/compare_observed_banner.py",
+      "bytes": 16702,
+      "sha256": "50d1ce4be252cb10b3820293170965a599046aa267ca56040f7ba29e5bff7911"
+    },
+    {
+      "localPath": "tools/verification/compare_visual_checkpoints.py",
+      "bytes": 13970,
+      "sha256": "3ee039e9a767c491d2b44b9889b7d3512262d456e51cf34017945b5e84e3210b"
+    },
+    {
+      "localPath": "tools/verification/prepare_retroarch_reference.py",
+      "bytes": 11773,
+      "sha256": "3bf0e6ffb79f0e12afaf8f4ba6da030034d18de828baee9bd5ae8220c9d365b0"
+    },
+    {
+      "localPath": "tools/verification/trace_banner_draw_state.py",
+      "bytes": 6618,
+      "sha256": "15f44edd29c87f43ae0824c92e3b415deec58e6bd80c2b0ab487f7d4d3afdd9a"
+    },
+    {
+      "localPath": "tools/banner-blend-check/Program.cs",
+      "bytes": 8824,
+      "sha256": "144152c134f9c98cafd2f8ed31c072696fe6c89938980a53734df9873f87b1dd"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/GeneralBannerPresentation.cs",
+      "bytes": 5586,
+      "sha256": "f522659e2fbb579e491cc13004d05f21a9b51149c717b75710b712c7cbc0cc92"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/FiveBitGeneralBannerPresentation.cs",
+      "bytes": 6721,
+      "sha256": "9ca71f7f8ed122f09f192abb2f13b40696c272d073d072b983935468a2318108"
+    },
+    {
+      "localPath": "tools/verification/inspect_banner_readiness.py",
+      "bytes": 4481,
+      "sha256": "e2a430d3c62b449c83deb407d397eb856e6d305ce436da1fdbb096a3059f4217"
+    }
+  ],
+  "manualReview": {
+    "owner": "accepted",
+    "ownerReviewDate": "2026-10-24",
+    "ownerStatement": "The gallery looks good to me.",
+    "ownerReviewScope": "Visual acceptance of the displayed early-reveal gallery. The two measured blue-channel pixel differences remain open; exact early-reveal pixel equivalence is not established.",
+    "reviewArtifact": {
+      "localPath": "scratch/banner-reveal-d/review.html",
+      "bytes": 5113,
+      "sha256": "6299effd343780d9bb279a5ff7135f730cff82206aad8b6b64fa18481f41dc18"
+    },
+    "scope": "Diagnostic early-reveal gallery; visual approval cannot turn the retained pixel differences into exact equality."
+  },
+  "validation": {
+    "managedPassed": 1466,
+    "newManagedClientCases": 16,
+    "pythonPassed": 130,
+    "newPythonCases": 14,
+    "releaseBuildWarnings": 0,
+    "developerHostBuildWarnings": 0,
+    "lockedRestoresPassed": true,
+    "actualHostNegativeCases": 5,
+    "actualHostNegativeReport": {
+      "localPath": "scratch/banner-reveal-negative/report.json",
+      "bytes": 1028,
+      "sha256": "27094c01aa67539cd2c351fddf6ccd0350f921ff8be7adddb6c2b1e8ceb1d3de"
+    },
+    "exactDisplayedFrames": 9,
+    "displayedFrames": 11,
+    "totalAffectedTemporalSamples": 18712,
+    "changedTemporalSamples": 35,
+    "comparisonExitCode": 1
+  },
+  "originalEvent401Verified": false,
+  "originalFidelityEstablished": false,
+  "limits": [
+    "Nine exact full canvases include inherited original backgrounds; no managed scene-rendering proof.",
+    "Reveal 1 has no artwork samples: compared=false, exactEquality=null; only background preservation is checked.",
+    "Reveal 4 differs at 21 pixels and reveal 13 at 14 pixels, blue only, original minus C# +8; cause not established and tolerance remains zero.",
+    "Loader snapshots identify source waits, not every retry or a universal load duration. Prepared bytes are already resident before upload.",
+    "Physical Circle input, original event identity, general triangle rasterization and hardware equivalence remain open.",
+    "No runtime source, event admission, asset/save schema or package lock changes."
+  ]
+}

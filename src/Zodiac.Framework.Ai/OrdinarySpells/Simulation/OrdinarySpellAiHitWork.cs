@@ -1,0 +1,47 @@
+using System.Collections.Immutable;
+using Zodiac.Framework.Random;
+
+namespace Zodiac.Framework.Ai;
+
+internal sealed record OrdinarySpellAiHitOutcome(ImmutableArray<OrdinarySpellAiUnit> Units,
+    ImmutableArray<MagicCastTargetResult> Frames, OrdinarySpellAiAccountingOutcome Accounting, RandomState RngState);
+
+/// <summary>Private fresh stored-aim work. Initial blue validation belongs only to Capture, never readiness.</summary>
+internal static class OrdinarySpellAiHitWork
+{
+    internal static OrdinarySpellAiHitOutcome Resolve(OrdinarySpellAiWork work, ImmutableArray<OrdinarySpellAiUnit> units,
+        StoredSpellAim storedAim, ImmutableHashSet<BattleUnitId> moved, RandomState rng)
+    {
+        OrdinarySpellAiHitOutcome Empty() => new(units, [], new([], 0, 0, false), rng);
+        var caster = units.Single(u => u.Id == work.Actor.Id);
+        SpellAimAnchor? anchor = storedAim.TargetUnitId is { } id
+            ? units.Where(u => u.Id == id).Select(u => new SpellAimAnchor(u.Id, u.Occupant.Position)).SingleOrDefault() : null;
+        var aim = SpellAimResolver.Resolve(work.State.Definition.Map, storedAim, anchor, new(true, true));
+        if (!aim.Accepted) throw new NotSupportedException("The stored area centre is unavailable.");
+        var area = OrdinarySpellTargeting.Area(work.State.Definition.Map, caster.Occupant.Position, aim.Position!.Value,
+            work.Ability.Geometry, new(true, true, true, true));
+        if (!area.Accepted) throw new NotSupportedException("The green area is unavailable.");
+        var selected = OrdinarySpellTargeting.SelectTargets(area.Outcome!, caster.Id,
+            units.Select(u => u.Occupant).ToImmutableArray(), new(true));
+        if (!selected.Accepted) throw new NotSupportedException("The area roster is unavailable.");
+        var targets = selected.Outcome!.UnitIds.Select(t => units.Single(u => u.Id == t)).ToImmutableArray();
+        if (targets.IsEmpty) return Empty();
+        var projected = OrdinarySpellAiProjection.Calculate(caster, work.Spell, targets, rng);
+        if (!projected.Accepted) throw new NotSupportedException("Ready formula/resource projection rejected: " + projected.Rejection);
+        var frames = projected.Outcome!.Cast.Targets;
+        var accounting = OrdinarySpellAiAccounting.Evaluate(work.Ability.Behavior, frames.Select(f => new OrdinarySpellAiStrikeTarget(
+            f.TargetId, f.Result.Accuracy, units.Single(u => u.Id == f.TargetId).Occupant.InitialTeam != caster.Occupant.InitialTeam,
+            work.Usefulness.Single(u => u.UnitId == f.TargetId).Effect == OrdinarySpellAiEffect.Useful)).ToImmutableArray(),
+            moved, storedAim.TargetingType == 6 ? storedAim.TargetUnitId : null);
+        if (!accounting.Valuable) return new(units, frames, accounting, projected.RngState);
+        int actorIndex = units.IndexOf(caster);
+        units = units.SetItem(actorIndex, projected.Outcome.Caster);
+        foreach (var frame in frames.Where(f => accounting.IncludedTargets.Contains(f.TargetId)))
+        {
+            int index = units.IndexOf(units.Single(u => u.Id == frame.TargetId));
+            var applied = OrdinaryMagicHitApplication.Project(units[index].Current, units[index].Vitals, frame.Result);
+            units = units.SetItem(index, units[index] with { Current = applied.Current, Vitals = applied.Vitals });
+        }
+        return new(units, frames, accounting, projected.RngState);
+    }
+}

@@ -1,0 +1,656 @@
+{
+  "format": "fft.prepared-dark-screen-introduction-validation",
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "managedBase": "182802a32bcd4ad9decfe557bdef5a541fa88db6",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceRoot": "C:/repositories/fft_decomp",
+  "referenceClean": true,
+  "sourceEvidence": {
+    "localPath": "docs/evidence/events/dark-screen-intro-source-v1.json",
+    "bytes": 24596,
+    "sha256": "4a7cb6d800be703b64344db426dfa5bb08afa396f54ebb52d16b7c307c6e0c50"
+  },
+  "pureWorkerEvidence": {
+    "localPath": "docs/evidence/events/dark-screen-intro-worker-v1.json",
+    "bytes": 23080,
+    "sha256": "b086f3a89a28df68da1ebef573a442ff21a7ad8972aa49ba23408beaddb0e809"
+  },
+  "historicalContract": {
+    "localPath": "docs/evidence/events/dark-screen-intro-contract-v1.json",
+    "bytes": 17414,
+    "sha256": "f6ea147499da8f3689f2d6223d80b8f756ec550bef4863c8f4267908237c7cc1"
+  },
+  "historicalContractModified": false,
+  "pureFrameworkAndEngineModified": false,
+  "implementation": [
+    {
+      "localPath": "src/Zodiac.Content/Events/PreparedDarkScreenIntroduction.cs",
+      "bytes": 4310,
+      "sha256": "deba48a1a6095e71fa409e1aa75649c38dd7d537a12544c0b14edd23b202b95e"
+    },
+    {
+      "localPath": "src/Zodiac.AssetTool.Cli/PrepareDarkScreenIntroductionCommand.cs",
+      "bytes": 4377,
+      "sha256": "65b3e99ef32bbcd05c99a728f6dd7e60dd770c0abc381cd51b51e5bd09f7be13"
+    },
+    {
+      "localPath": "src/Zodiac.AssetTool.Cli/Program.cs",
+      "bytes": 3328,
+      "sha256": "7a4e0d0da87a88930d200fd8dadb2f9a33a6577e33010fd70888f2af82488aa8"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/DarkScreenIntroductionSession.cs",
+      "bytes": 9518,
+      "sha256": "b07fc4155b415e7ddf9b019c18becf0eab8faafe2f4044730d65243808af986e"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/WindowIntroduction.cs",
+      "bytes": 4940,
+      "sha256": "f1fab499ecbb50117aaa989be82a09ef945d70514dd99108f7f698b09e02bffe"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/PlayableBattleWindow.cs",
+      "bytes": 20050,
+      "sha256": "d19b5e201d50e9ab11dbf7e4d6fd82084c250f97d6ac5955108dadb2bdd3f1e0"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/PlayableBattleWindow.Introduction.cs",
+      "bytes": 10612,
+      "sha256": "59e1e5fdf1784101a2351ed3cf36429a61bb58461031e433cd8db9c221a665bd"
+    },
+    {
+      "localPath": "src/Fft.Client/Program.cs",
+      "bytes": 4881,
+      "sha256": "553b877ffc4c7d18048392c697717fe4e61ee9c520651e7c29d1322b65a788b1"
+    },
+    {
+      "localPath": "tests/Support/AuthoredDarkScreenIntroduction.cs",
+      "bytes": 1823,
+      "sha256": "51370057c9bf50225f6066abb7affa4fa68aee60c8dd935d1e54e1aaaf63c774"
+    },
+    {
+      "localPath": "tests/Zodiac.Content.Tests/PreparedDarkScreenIntroductionTests.cs",
+      "bytes": 5044,
+      "sha256": "495130cb742eb88e064aa6f90850f0792a4d11026d30a1499c86950ffff6db9d"
+    },
+    {
+      "localPath": "tests/Fft.Client.Tests/DarkScreenIntroductionSessionTests.cs",
+      "bytes": 11467,
+      "sha256": "830cad24ffb100e70c19e321bd5778c69ddf32cf2e582ccc22937c286cc78633"
+    },
+    {
+      "localPath": "tests/Zodiac.AssetTool.Cli.Tests/DarkScreenIntroductionPreparationTests.cs",
+      "bytes": 2843,
+      "sha256": "4fea3ca6cb22dc45f7a76dc243870bcb032911340e2c28401d2ef0a202f92071"
+    },
+    {
+      "localPath": "tools/verification/verify_dark_screen_introduction.py",
+      "bytes": 11408,
+      "sha256": "93a21ab2037805d514ff32a64e0ffd1759e986eba24651d0994ec7064779b4f7"
+    },
+    {
+      "localPath": "tools/verification/test_dark_screen_introduction.py",
+      "bytes": 3540,
+      "sha256": "24f9d86839dbbc0f3110f58e3f93567dee7b45945bb363d664ffde0364569347"
+    }
+  ],
+  "validation": {
+    "lockedRestore": {
+      "localPath": "scratch/dark-screen-intro-098-restore.log",
+      "bytes": 82,
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc"
+    },
+    "releaseBuild": {
+      "localPath": "scratch/dark-screen-intro-098-final-build.log",
+      "bytes": 1678,
+      "sha256": "27bf697c56ffe1dafd74ee01b5a0ea800ef4d3cb869a0752bbff0d37e3ecea8c"
+    },
+    "warnings": 0,
+    "errors": 0,
+    "managedPassed": 2173,
+    "newManaged": 62,
+    "assemblies": [
+      {
+        "assembly": "tessera.engine.tests.dll",
+        "passed": 24,
+        "results": {
+          "localPath": "scratch/dark-screen-intro-098-final-tests/Jonathan_DESKTOP-EXCALIB_2026-10-26_00_32_08_net10.0.trx",
+          "bytes": 36854,
+          "sha256": "922ae146bf8d90aaad7e7177f8ca3ea389ce5c9283a729facb83cd290ad08ef8"
+        }
+      },
+      {
+        "assembly": "zodiac.assettool.tests.dll",
+        "passed": 202,
+        "results": {
+          "localPath": "scratch/dark-screen-intro-098-final-tests/Jonathan_DESKTOP-EXCALIB_2026-10-26_00_32_09_net10.0.trx",
+          "bytes": 299067,
+          "sha256": "6ec3831ede885a4e0dcb02c1e5ef726da42c939efb2e869aecb4346aabfb1d8a"
+        }
+      },
+      {
+        "assembly": "zodiac.assettool.cli.tests.dll",
+        "passed": 211,
+        "results": {
+          "localPath": "scratch/dark-screen-intro-098-final-tests/Jonathan_DESKTOP-EXCALIB_2026-10-26_00_32_09_net10.0[1].trx",
+          "bytes": 324268,
+          "sha256": "9bae6a98b4db3249ca02dc37828f05b1212731c05e49a51ced04b11dd30296e3"
+        }
+      },
+      {
+        "assembly": "zodiac.framework.tests.dll",
+        "passed": 805,
+        "results": {
+          "localPath": "scratch/dark-screen-intro-098-final-tests/Jonathan_DESKTOP-EXCALIB_2026-10-26_00_32_09_net10.0[2].trx",
+          "bytes": 1217883,
+          "sha256": "b7f6c356c6c2219d6bb7610a411f0b6db24fb94a8155e5da68e34334bb7044f2"
+        }
+      },
+      {
+        "assembly": "zodiac.content.tests.dll",
+        "passed": 576,
+        "results": {
+          "localPath": "scratch/dark-screen-intro-098-final-tests/Jonathan_DESKTOP-EXCALIB_2026-10-26_00_32_09_net10.0[3].trx",
+          "bytes": 836906,
+          "sha256": "2a9fd52288d05d511fd2184eb4f6915839b56c26d4ff7c4df3f150ce5dfb3d35"
+        }
+      },
+      {
+        "assembly": "fft.client.tests.dll",
+        "passed": 355,
+        "results": {
+          "localPath": "scratch/dark-screen-intro-098-final-tests/Jonathan_DESKTOP-EXCALIB_2026-10-26_00_32_09_net10.0[4].trx",
+          "bytes": 526316,
+          "sha256": "cfe0f035307ae19f1629e1e19a343c38eb0bf37c8f44007fce9b85caa82c6387"
+        }
+      }
+    ],
+    "pythonPassed": 278,
+    "newPython": 9,
+    "pythonLog": {
+      "localPath": "scratch/dark-screen-intro-098-python-final.log",
+      "bytes": 1268,
+      "sha256": "746488ae3ed08b203d53003209ac3dd88b4975e2184b0ae154a8f490636e15f6"
+    },
+    "preliminaryPythonSandboxErrors": "Two existing temporary-file permission errors; unchanged suite passed outside sandbox."
+  },
+  "native": {
+    "recordedPlan": "docs/development/prepared-dark-screen-introduction.md#finite-native-plan-recorded-before-execution",
+    "graphicsWindowProcesses": 7,
+    "maximumTicksPerProcess": 4096,
+    "maximumSecondsPerProcess": 120,
+    "capturedIntroductionFrames": 2054,
+    "comparedPixels": 126197760,
+    "runs": [
+      {
+        "name": "normal",
+        "elapsedSeconds": 12.062000000034459,
+        "frames": 276,
+        "availabilityTick": 275,
+        "receipt": {
+          "localPath": "scratch/dark-screen-intro-098/normal/check.json",
+          "bytes": 338043,
+          "sha256": "816fbe01ce03aa36131e9c56cb36fdc5f3fa831b954a2e757764cc7824c2ce6b"
+        },
+        "independentAudit": {
+          "localPath": "scratch/dark-screen-intro-098/normal-audit.json",
+          "bytes": 33297,
+          "sha256": "9aff7d23f81fccde69b90bfae1de21db7ab825884f5af1b0d30b7b13468c62c9"
+        },
+        "artifactInventory": {
+          "localPath": "scratch/dark-screen-intro-098/normal-artifacts.json",
+          "bytes": 53741,
+          "sha256": "9a1119264aa8ddbea63e30c59c210f80fd012c9c4f2cdfc7417df0c43d2d0b03"
+        },
+        "exactCpuGpuIndependentPixels": true,
+        "unchangedBattlePngs": 6,
+        "orderSensitive": true
+      },
+      {
+        "name": "repeat",
+        "elapsedSeconds": 11.515999999945052,
+        "frames": 276,
+        "availabilityTick": 275,
+        "receipt": {
+          "localPath": "scratch/dark-screen-intro-098/repeat/check.json",
+          "bytes": 338042,
+          "sha256": "fcc0f09b8b4f786e594f9c9d3196bb3e49dc3e7a9c84ad4a5f85da77ee67887f"
+        },
+        "independentAudit": {
+          "localPath": "scratch/dark-screen-intro-098/repeat-audit.json",
+          "bytes": 33297,
+          "sha256": "9aff7d23f81fccde69b90bfae1de21db7ab825884f5af1b0d30b7b13468c62c9"
+        },
+        "artifactInventory": {
+          "localPath": "scratch/dark-screen-intro-098/repeat-artifacts.json",
+          "bytes": 53741,
+          "sha256": "949de0d42fadd4096751dc2d2a8d7a1abc1b5512d55a3f86adf03951ae5e77a3"
+        },
+        "exactCpuGpuIndependentPixels": true,
+        "unchangedBattlePngs": 6,
+        "orderSensitive": true
+      },
+      {
+        "name": "zero",
+        "elapsedSeconds": 8.59299999999348,
+        "frames": 156,
+        "availabilityTick": 155,
+        "receipt": {
+          "localPath": "scratch/dark-screen-intro-098/zero/check.json",
+          "bytes": 256796,
+          "sha256": "5b5f8add6a62d8e434f4429e87e0b65c518ea78d02d66cefa50686e4f9a5982b"
+        },
+        "independentAudit": {
+          "localPath": "scratch/dark-screen-intro-098/zero-audit.json",
+          "bytes": 19010,
+          "sha256": "661a3febca8afd890a0ba4ad217fefc92e39e9103a9f7f9733bc378813c38035"
+        },
+        "artifactInventory": {
+          "localPath": "scratch/dark-screen-intro-098/zero-artifacts.json",
+          "bytes": 30615,
+          "sha256": "829fc84089f6a2fcd02b0a7e40d13497c0c4eabb578c929245191abea688e45d"
+        },
+        "exactCpuGpuIndependentPixels": true,
+        "unchangedBattlePngs": 6,
+        "orderSensitive": true
+      },
+      {
+        "name": "maximum",
+        "elapsedSeconds": 17.938000000081956,
+        "frames": 666,
+        "availabilityTick": 665,
+        "receipt": {
+          "localPath": "scratch/dark-screen-intro-098/maximum/check.json",
+          "bytes": 602375,
+          "sha256": "1c450e6ced5cb84b49b22c1376d242f17df31f93723da73b18e855cb82b4292d"
+        },
+        "independentAudit": {
+          "localPath": "scratch/dark-screen-intro-098/maximum-audit.json",
+          "bytes": 79707,
+          "sha256": "f14194f6da6803a626645192a9326008e9e745ef803a886d90f9a75b885e9c53"
+        },
+        "artifactInventory": {
+          "localPath": "scratch/dark-screen-intro-098/maximum-artifacts.json",
+          "bytes": 128514,
+          "sha256": "c65315944df9eef1a984826774922b9d5228d4bfb1c5ee3151dd978e149c0e4c"
+        },
+        "exactCpuGpuIndependentPixels": true,
+        "unchangedBattlePngs": 6,
+        "orderSensitive": true
+      },
+      {
+        "name": "skip",
+        "elapsedSeconds": 8.436999999918044,
+        "frames": 128,
+        "availabilityTick": 127,
+        "receipt": {
+          "localPath": "scratch/dark-screen-intro-098/skip/check.json",
+          "bytes": 237854,
+          "sha256": "3ee5ba63e463160f96506f7c880f40dd9b2e4e05fecccf5adb5c1e8f92d5c094"
+        },
+        "independentAudit": {
+          "localPath": "scratch/dark-screen-intro-098/skip-audit.json",
+          "bytes": 15677,
+          "sha256": "41a5ea5f7dd1d5068379b74c552366cb73e61d736569fe1df5ff711b36a77c02"
+        },
+        "artifactInventory": {
+          "localPath": "scratch/dark-screen-intro-098/skip-artifacts.json",
+          "bytes": 25351,
+          "sha256": "8458309dbed1c83b06b302e287a6e1385fab9ccdde27e7f1312fc6533fe125c7"
+        },
+        "exactCpuGpuIndependentPixels": true,
+        "unchangedBattlePngs": 6,
+        "orderSensitive": false
+      },
+      {
+        "name": "hide",
+        "elapsedSeconds": 11.35999999998603,
+        "frames": 276,
+        "availabilityTick": 275,
+        "receipt": {
+          "localPath": "scratch/dark-screen-intro-098/hide/check.json",
+          "bytes": 338056,
+          "sha256": "f845e56d3bf195ec48de52f27691a1a9e26b88bc22c800dc4b3ec7bd42c5f2b7"
+        },
+        "independentAudit": {
+          "localPath": "scratch/dark-screen-intro-098/hide-audit.json",
+          "bytes": 33297,
+          "sha256": "9aff7d23f81fccde69b90bfae1de21db7ab825884f5af1b0d30b7b13468c62c9"
+        },
+        "artifactInventory": {
+          "localPath": "scratch/dark-screen-intro-098/hide-artifacts.json",
+          "bytes": 53175,
+          "sha256": "e551011e2e44bb5114e3774a9a46a39b702e38e1d6a42450e1c5b663526557ec"
+        },
+        "exactCpuGpuIndependentPixels": true,
+        "unchangedBattlePngs": 6,
+        "orderSensitive": true
+      },
+      {
+        "name": "isolated",
+        "elapsedSeconds": 11.65700000000652,
+        "frames": 276,
+        "availabilityTick": 275,
+        "receipt": {
+          "localPath": "scratch/dark-screen-intro-098/isolated-deployment/scratch/normal/check.json",
+          "bytes": 338042,
+          "sha256": "8526924076569a8730470eaab6bc3541e99366d9f1baab61832ad5f514d62674"
+        },
+        "independentAudit": {
+          "localPath": "scratch/dark-screen-intro-098/isolated-audit.json",
+          "bytes": 33297,
+          "sha256": "9aff7d23f81fccde69b90bfae1de21db7ab825884f5af1b0d30b7b13468c62c9"
+        },
+        "artifactInventory": {
+          "localPath": "scratch/dark-screen-intro-098/isolated-artifacts.json",
+          "bytes": 61665,
+          "sha256": "030f95b76900cf2276f928945318de21fbd93ff4861ec84fac03f0d9e850bd90"
+        },
+        "exactCpuGpuIndependentPixels": true,
+        "unchangedBattlePngs": 6,
+        "orderSensitive": true
+      }
+    ],
+    "repeatAndPreparedOnly": {
+      "localPath": "scratch/dark-screen-intro-098/audit-summary.json",
+      "bytes": 767,
+      "sha256": "bc520233555c506c7325edc5b5db73248cf5ef76e0e017069033e27d14599ae8"
+    },
+    "preparedOnlyFilesystemAccessDeniedExperiment": false,
+    "currentRuntimeDllsEqualCapturedIsolatedDeployment": true,
+    "finalReadinessNegativeCases": 27,
+    "negativeResults": {
+      "localPath": "scratch/dark-screen-intro-098/negative-results.json",
+      "bytes": 2807,
+      "sha256": "6758a4a42a3e13ad06ebddb057089ef93e632c5d213bc078cd0a7554be69a5a1"
+    },
+    "preliminaryHeadlessRejectionProcesses": 7,
+    "preliminaryHarnessIssue": "Retained palette filenames corrected before final negative batch; no graphics window was opened.",
+    "legacyFilesUnchanged": 581,
+    "legacyBefore": {
+      "localPath": "scratch/dark-screen-intro-098/legacy-before.json",
+      "bytes": 70446,
+      "sha256": "b618ecbec472e455f7b2247d559449aa587dcc87f79d0c166ce591209b454d48"
+    },
+    "legacyAfter": {
+      "localPath": "scratch/dark-screen-intro-098/legacy-after.json",
+      "bytes": 49,
+      "sha256": "6dab2c3284f14bdfd1485bbf5d7933aa371d7cc344b9b79ba2327abcceef6b52"
+    },
+    "oldNativeHostsRelaunched": false,
+    "allocationFailureScope": "Injected client allocation callbacks, not forced device/driver loss",
+    "resizeScope": "Native post-handoff resize and headless layout/recreation over pre/during/post accepted snapshots",
+    "inputScope": "Programmed production latch/focus handlers; no physical USB/display-latency claim"
+  },
+  "cases": [
+    {
+      "id": "DSI-025",
+      "executed": true,
+      "evidence": [
+        {
+          "localPath": "tests/Zodiac.Content.Tests/PreparedDarkScreenIntroductionTests.cs",
+          "bytes": 5044,
+          "sha256": "495130cb742eb88e064aa6f90850f0792a4d11026d30a1499c86950ffff6db9d"
+        },
+        {
+          "localPath": "tests/Zodiac.AssetTool.Cli.Tests/DarkScreenIntroductionPreparationTests.cs",
+          "bytes": 2843,
+          "sha256": "4fea3ca6cb22dc45f7a76dc243870bcb032911340e2c28401d2ef0a202f92071"
+        }
+      ]
+    },
+    {
+      "id": "DSI-026",
+      "executed": true,
+      "evidence": [
+        {
+          "localPath": "tests/Fft.Client.Tests/DarkScreenIntroductionSessionTests.cs",
+          "bytes": 11467,
+          "sha256": "830cad24ffb100e70c19e321bd5778c69ddf32cf2e582ccc22937c286cc78633"
+        },
+        {
+          "localPath": "scratch/dark-screen-intro-098/negative-results.json",
+          "bytes": 2807,
+          "sha256": "6758a4a42a3e13ad06ebddb057089ef93e632c5d213bc078cd0a7554be69a5a1"
+        }
+      ]
+    },
+    {
+      "id": "DSI-027",
+      "executed": true,
+      "evidence": [
+        {
+          "localPath": "tests/Zodiac.Content.Tests/PreparedDarkScreenIntroductionTests.cs",
+          "bytes": 5044,
+          "sha256": "495130cb742eb88e064aa6f90850f0792a4d11026d30a1499c86950ffff6db9d"
+        },
+        {
+          "localPath": "scratch/dark-screen-intro-098/negative-results.json",
+          "bytes": 2807,
+          "sha256": "6758a4a42a3e13ad06ebddb057089ef93e632c5d213bc078cd0a7554be69a5a1"
+        }
+      ]
+    },
+    {
+      "id": "DSI-028",
+      "executed": true,
+      "evidence": [
+        {
+          "localPath": "tests/Fft.Client.Tests/DarkScreenIntroductionSessionTests.cs",
+          "bytes": 11467,
+          "sha256": "830cad24ffb100e70c19e321bd5778c69ddf32cf2e582ccc22937c286cc78633"
+        }
+      ]
+    },
+    {
+      "id": "DSI-029",
+      "executed": true,
+      "evidence": [
+        {
+          "localPath": "tests/Fft.Client.Tests/DarkScreenIntroductionSessionTests.cs",
+          "bytes": 11467,
+          "sha256": "830cad24ffb100e70c19e321bd5778c69ddf32cf2e582ccc22937c286cc78633"
+        },
+        {
+          "localPath": "scratch/dark-screen-intro-098/normal-audit.json",
+          "bytes": 33297,
+          "sha256": "9aff7d23f81fccde69b90bfae1de21db7ab825884f5af1b0d30b7b13468c62c9"
+        }
+      ]
+    },
+    {
+      "id": "DSI-030",
+      "executed": true,
+      "evidence": [
+        {
+          "localPath": "tests/Fft.Client.Tests/DarkScreenIntroductionSessionTests.cs",
+          "bytes": 11467,
+          "sha256": "830cad24ffb100e70c19e321bd5778c69ddf32cf2e582ccc22937c286cc78633"
+        },
+        {
+          "localPath": "scratch/dark-screen-intro-098/audit-summary.json",
+          "bytes": 767,
+          "sha256": "bc520233555c506c7325edc5b5db73248cf5ef76e0e017069033e27d14599ae8"
+        }
+      ]
+    },
+    {
+      "id": "DSI-031",
+      "executed": true,
+      "evidence": [
+        {
+          "localPath": "scratch/dark-screen-intro-098/audit-summary.json",
+          "bytes": 767,
+          "sha256": "bc520233555c506c7325edc5b5db73248cf5ef76e0e017069033e27d14599ae8"
+        }
+      ]
+    },
+    {
+      "id": "DSI-032",
+      "executed": true,
+      "evidence": [
+        {
+          "localPath": "tests/Fft.Client.Tests/DarkScreenIntroductionSessionTests.cs",
+          "bytes": 11467,
+          "sha256": "830cad24ffb100e70c19e321bd5778c69ddf32cf2e582ccc22937c286cc78633"
+        },
+        {
+          "localPath": "scratch/dark-screen-intro-098/normal/check.json",
+          "bytes": 338043,
+          "sha256": "816fbe01ce03aa36131e9c56cb36fdc5f3fa831b954a2e757764cc7824c2ce6b"
+        }
+      ]
+    },
+    {
+      "id": "DSI-033",
+      "executed": true,
+      "evidence": [
+        {
+          "localPath": "tests/Fft.Client.Tests/DarkScreenIntroductionSessionTests.cs",
+          "bytes": 11467,
+          "sha256": "830cad24ffb100e70c19e321bd5778c69ddf32cf2e582ccc22937c286cc78633"
+        },
+        {
+          "localPath": "scratch/dark-screen-intro-098/normal/check.json",
+          "bytes": 338043,
+          "sha256": "816fbe01ce03aa36131e9c56cb36fdc5f3fa831b954a2e757764cc7824c2ce6b"
+        }
+      ]
+    },
+    {
+      "id": "DSI-034",
+      "executed": true,
+      "evidence": [
+        {
+          "localPath": "tests/Fft.Client.Tests/DarkScreenIntroductionSessionTests.cs",
+          "bytes": 11467,
+          "sha256": "830cad24ffb100e70c19e321bd5778c69ddf32cf2e582ccc22937c286cc78633"
+        },
+        {
+          "localPath": "scratch/dark-screen-intro-098/normal/check.json",
+          "bytes": 338043,
+          "sha256": "816fbe01ce03aa36131e9c56cb36fdc5f3fa831b954a2e757764cc7824c2ce6b"
+        }
+      ]
+    },
+    {
+      "id": "DSI-035",
+      "executed": true,
+      "evidence": [
+        {
+          "localPath": "scratch/dark-screen-intro-098/normal/check.json",
+          "bytes": 338043,
+          "sha256": "816fbe01ce03aa36131e9c56cb36fdc5f3fa831b954a2e757764cc7824c2ce6b"
+        },
+        {
+          "localPath": "tests/Fft.Client.Tests/IntroductionBattleSessionTests.cs",
+          "bytes": 10810,
+          "sha256": "a445d0728830525a02310f462cbf0c93323c0c660380ee73c4184cc7e3450c34"
+        }
+      ]
+    },
+    {
+      "id": "DSI-036",
+      "executed": true,
+      "evidence": [
+        {
+          "localPath": "tests/Fft.Client.Tests/DarkScreenIntroductionSessionTests.cs",
+          "bytes": 11467,
+          "sha256": "830cad24ffb100e70c19e321bd5778c69ddf32cf2e582ccc22937c286cc78633"
+        },
+        {
+          "localPath": "scratch/dark-screen-intro-098/audit-summary.json",
+          "bytes": 767,
+          "sha256": "bc520233555c506c7325edc5b5db73248cf5ef76e0e017069033e27d14599ae8"
+        }
+      ]
+    },
+    {
+      "id": "DSI-037",
+      "executed": true,
+      "evidence": [
+        {
+          "localPath": "scratch/dark-screen-intro-098/native-results.json",
+          "bytes": 944,
+          "sha256": "a8c3ecfaf04b016fc1211f3a6b791cd5783bd83cb062dc186a14e33599b57f05"
+        },
+        {
+          "localPath": "scratch/dark-screen-intro-098/legacy-after.json",
+          "bytes": 49,
+          "sha256": "6dab2c3284f14bdfd1485bbf5d7933aa371d7cc344b9b79ba2327abcceef6b52"
+        },
+        {
+          "localPath": "scratch/dark-screen-intro-098/audit-summary.json",
+          "bytes": 767,
+          "sha256": "bc520233555c506c7325edc5b5db73248cf5ef76e0e017069033e27d14599ae8"
+        }
+      ]
+    },
+    {
+      "id": "DSI-038",
+      "executed": true,
+      "evidence": [
+        {
+          "localPath": "scratch/dark-screen-intro-098/isolated-audit.json",
+          "bytes": 33297,
+          "sha256": "9aff7d23f81fccde69b90bfae1de21db7ab825884f5af1b0d30b7b13468c62c9"
+        }
+      ]
+    },
+    {
+      "id": "DSI-039",
+      "executed": true,
+      "evidence": [
+        {
+          "localPath": "tests/Fft.Client.Tests/DarkScreenIntroductionSessionTests.cs",
+          "bytes": 11467,
+          "sha256": "830cad24ffb100e70c19e321bd5778c69ddf32cf2e582ccc22937c286cc78633"
+        }
+      ]
+    },
+    {
+      "id": "DSI-040",
+      "executed": true,
+      "layer": "manual",
+      "date": "2026-10-26",
+      "ownerQuote": "Looks good to me.",
+      "gallery": {
+        "localPath": "scratch/dark-screen-intro-098-review/review.html",
+        "bytes": 7230,
+        "sha256": "58c7f25ba66ce9f2d8721f9c228f35ac45bd89d2edfeaf111d93ecc0be7a7cdf"
+      }
+    }
+  ],
+  "gallery": {
+    "review": {
+      "localPath": "scratch/dark-screen-intro-098-review/review.html",
+      "bytes": 7230,
+      "sha256": "58c7f25ba66ce9f2d8721f9c228f35ac45bd89d2edfeaf111d93ecc0be7a7cdf"
+    },
+    "contact": {
+      "localPath": "scratch/dark-screen-intro-098-review/contact.png",
+      "bytes": 33760,
+      "sha256": "faa6c00f063f90dde9563f959cef879d7188cef7027b6fdc0ecc3b9de799df52"
+    },
+    "ownerApproved": true,
+    "cadence": "80 ms per authored tick, deliberately slowed",
+    "rawNativePixels": true,
+    "crtAspectCorrection": false,
+    "ownerApprovalDate": "2026-10-26",
+    "ownerApprovalQuote": "Looks good to me.",
+    "approvalScope": "Authored entry, dark under general/Ready, hidden gaps, release tail and synthetic battle switch; no original startup/duration equivalence"
+  },
+  "limits": [
+    "Authored composition, not original event playback or EventEnd",
+    "No original startup duration or complete animation equivalence",
+    "No new full renderer, CRT/audio policy, public replacement contract or combat/save change",
+    "Historical approvals do not approve this composition"
+  ],
+  "approvalUpdate": {
+    "date": "2026-10-26",
+    "managedBase": "692c6aa",
+    "implementationSuitesRerun": false,
+    "reviewedArtifactsModified": false
+  }
+}

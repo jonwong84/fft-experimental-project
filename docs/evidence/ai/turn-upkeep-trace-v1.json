@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "8511b7d4a28c76ee8ba30fec20c5c264a9b31533",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "report": "docs/behavior/turn-upkeep-review.md",
+  "scope": "Supplied upkeep staging, action-clear dependency, BIOS RNG call identity and source arithmetic/order. No general revival/status/death-counter runtime port or ZOD-430 closure.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/turn/clock.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40868,
+      "sha256": "f76188542c39818fa2ab478e42ef63b4eb0f2c1c2db5a74db4120ddbaf4cb8cb"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 85515,
+      "sha256": "820411f8293d559677ff676f4e3d19a16ae52b667e7aa1393ab5495741f1e149"
+    },
+    {
+      "path": "src/platform/psyq/libapi/rand.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 202,
+      "sha256": "6bae60cf1d89d9dd09abf3f36c837096bcac34b2928d49be98de770e9681ee52"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/status.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11673,
+      "sha256": "deeaeec02add8b9db7cca91c99517706033b18385ca433d32f1998d9d62e0e83"
+    },
+    {
+      "path": "include/psx/abi_inline.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2336,
+      "sha256": "56c0193d73fdccb5eb180fd0e44ee2faefe2b1b240c94ed869d6ab100a4fc0f7"
+    },
+    {
+      "path": "include/psx/bios.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2708,
+      "sha256": "699cade209b354aedfd5c31a0e3a9b173cf6301758315c192ba4b5475ccd89f0"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    },
+    {
+      "path": "target/main.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 135004,
+      "sha256": "b6066d98d481d73eb49d2d16be57ae3fc5ae4070830176fdeeeaae2bdeaec2a3"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "upkeep_action_build",
+      "startLine": 399,
+      "endLine": 481,
+      "normalizedLfSha256": "db3bb2342ef78ca6d64b5b2e911e9e2fd14e5a77cd1820472fa784c35cfeaa22"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_clear_current_data",
+      "startLine": 792,
+      "endLine": 801,
+      "normalizedLfSha256": "1200e15fe4c9cca228a5dd8ff338f97337abc1241e279616878e265cff5d7e4b"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "status_changes_clear",
+      "startLine": 805,
+      "endLine": 813,
+      "normalizedLfSha256": "5a5b990b58208dac6295dadfead4e00411305235d5cfb27f8882e27d25b88e96"
+    },
+    {
+      "path": "src/platform/psyq/libapi/rand.c",
+      "symbol": "rand",
+      "startLine": 6,
+      "endLine": 8,
+      "normalizedLfSha256": "a9d63b6389f15294c76f44ffe3a25d8fbb11351048b52e21425665297089590e"
+    }
+  ],
+  "preparedValidation": {
+    "battle": {
+      "byteLength": 1397096,
+      "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+      "loadAddress": "0x80067000"
+    },
+    "executable": {
+      "byteLength": 356352,
+      "sha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562"
+    }
+  },
+  "suppliedInstructionCheck": {
+    "start": "0x80183078",
+    "endInclusive": "0x801832c8",
+    "instructionCount": 149,
+    "allMatched": true
+  },
+  "orderedCallSites": [
+    {
+      "pc": "0x80183090",
+      "target": "0x8018bd74",
+      "symbol": "action_clear_current_data",
+      "returnAddress": "0x80183098"
+    },
+    {
+      "pc": "0x80183098",
+      "target": "0x8002230c",
+      "symbol": "rand",
+      "returnAddress": "0x801830a0"
+    },
+    {
+      "pc": "0x80183184",
+      "target": "0x8002230c",
+      "symbol": "rand",
+      "returnAddress": "0x8018318c"
+    }
+  ],
+  "listedCaller": {
+    "pc": "0x80182b10",
+    "target": "0x80183078",
+    "returnAddress": "0x80182b18"
+  },
+  "rngBoundary": {
+    "veneer": "0x8002230c -> BIOS A0 service0x2f",
+    "preparedVeneerVerified": true,
+    "existingAlgorithmEvidence": "docs/behavior/bios-rng-verification.md",
+    "historicalVectors": "docs/fixtures/rng/scph5501-rng-vectors.json",
+    "managedGenerator": "src/Zodiac.Framework/Random/RandomStateGenerator.cs",
+    "algorithm": "state=(state*0x41c64e6d+0x3039) mod2^32; raw=(state>>16)&0x7fff",
+    "newBiosExecution": false,
+    "globalFrameOrderingResolved": false
+  },
+  "findings": {
+    "unconditional": "Clear result then draw before all status/execute guards; healthy or suppressed upkeep still draws1",
+    "reraise": "Dead and not Undead plus Reraise stages removal of Dead/Reraise, floor(maxHP/10) healing and return2 before execute/immortal guards; no second draw",
+    "deathCounter": "Execution-only, excluding immortal or save/load-formation units. old1->0 returns0; old0 underflows local byte to255 then expires without storing255.",
+    "undead": "Expired Undead revives on odd first raw, then draws again for floor(raw*maxHP/32768)+1 signed16 healing; otherwise uses first raw pickup-mask bits.",
+    "pickup": "Crystal iff first raw &0x10 nonzero, or &0x110 when initial player-controlled flag set; otherwise Treasure. Return1 stages statuses, not pickup removal/inventory.",
+    "deathSentence": "After byte decrement,1 expires;0 wraps255. Expiry stages removal and non-Undead Dead/return3; Undead continues lower effects.",
+    "lowerEffects": "Stage Defending removal and +1 Brave iff Brave<10, without checking Chicken status; return2 iff resulting attack_type nonzero",
+    "ai": "Only death-counter branch is execute-gated; Reraise and lower-section effects can still stage in AI/preview. Plain Dead without these effects still consumes first draw.",
+    "arguments": "Body uses r5 unit pointer; documented r4 unit ID is not read. Caller selects CT>=100 and applies modulo first; no CT guard in helper."
+  },
+  "independentDescriptions": {
+    "crystalRawMaskCounts": {
+      "rawDomain": 32768,
+      "mask0x10": 16384,
+      "mask0x110": 24576
+    },
+    "widthBoundaries": {
+      "reraiseMaxHp9Healing": 0,
+      "undeadMaxHp65535Raw16384": {
+        "calculated": 32768,
+        "storedSigned16": -32768
+      },
+      "undeadMaxHp65535Raw32767": {
+        "calculated": 65534,
+        "storedSigned16": -2
+      },
+      "retailReachabilityClaim": false
+    }
+  },
+  "managedFiles": [
+    {
+      "path": "src/Zodiac.Framework/Random/RandomStateGenerator.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2309,
+      "sha256": "1518224ceaf9ecb7c049931e93eb63436a6bcac0833c75eaab51ccb046128576"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiSimulationClock.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2945,
+      "sha256": "f7fd0d36de4b6e110f22d66a71db474bd4a3f01f9000110a6f1c8b2dbc0b73ee"
+    }
+  ],
+  "validation": {
+    "managedRngTestsPassed": 16,
+    "testsUseNumericBiosObservations": true,
+    "fullSuiteRerun": false
+  },
+  "ownerEditPreserved": {
+    "path": "src/Zodiac.Framework.Ai/AiTurnController.cs",
+    "gitBlob": "373d13f739439813f9608aefc2d84715d8ed1346"
+  },
+  "runtimeChanged": false,
+  "originalExecutedThisReview": false,
+  "cExecuted": false
+}

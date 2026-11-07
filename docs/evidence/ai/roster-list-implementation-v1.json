@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-302",
+    "ZOD-303"
+  ],
+  "date": "2026-11-05",
+  "kind": "managed-fresh-supported-roster-list-selection",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "87fc753",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/roster-list-source-v1.json",
+  "design": "docs/architecture/zod-302-roster-list-selection.md",
+  "behavior": "docs/behavior/roster-basic-skill-ai-selection.md",
+  "sourceFixture": "docs/fixtures/behavior/roster-list-contract-v1.json",
+  "implementationPaths": [
+    "src/Zodiac.Framework.Ai/BasicSkill/RosterBasicSkillAiSelection.cs",
+    "src/Zodiac.Framework.Ai/Accumulate/RosterAccumulateAiEntry.cs",
+    "src/Zodiac.Framework.Ai/ThrowStone/RosterThrowStoneAiEntry.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Ai.Tests/BasicSkill/RosterBasicSkillAiSelectionTests.cs"
+  ],
+  "invariants": [
+    "one fresh general prefix and structural full supported roster list; duplicate indexes and per-entry RNG preserved",
+    "private fresh Attack/self/Stone owners share all previous admission, coin, trajectory, state, clock and score rules; no independently refreshed public entry calls",
+    "entered-only effect/grant/metadata/policy requirements; post-ACT preparation then skipped effects and empty-rank lottery",
+    "shared stable eight-slot insertion above D0, no deduplication/PA inheritance, source raw-modulo lottery and all-failed-first or D0 fallback",
+    "hypothetical selected plan with deferred Wait facing; no cached trusted result input or command authority",
+    "all late failures discard earlier prefix/entries/ranks/lottery/workspace; success publishes exact movement writes only after final selection"
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4396,
+    "frameworkPassed": 1483,
+    "aiPassed": 1168,
+    "newAiCases": 4,
+    "pythonPassed": 575,
+    "newPythonCases": 3,
+    "trxReports": 7,
+    "sourceFiles": 26,
+    "sourceFunctions": 73,
+    "sourceDescriptions": 12,
+    "sourcePreparedAudit": true,
+    "algorithmGuideAudit": true,
+    "localLinkAudit": true,
+    "coverageAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/roster-list-302-303/"
+  },
+  "boundaries": [
+    "living compact16 ordinary flat general-policy domain; only supported Attack/self/Stone/Frog lists",
+    "pure decision only; authoritative roster AI commands/turns and all other documented deferrals remain separate"
+  ],
+  "dependencyChanges": false,
+  "newProductionFriendAccess": false,
+  "originalExecuted": false,
+  "cExecuted": false
+}

@@ -1,0 +1,573 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-430",
+  "managedBaseRevision": "b2d66e0a3e1670a8431814635956654821d22c35",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "report": "docs/behavior/shared-ai-simulation-review.md",
+  "scope": "Current bounded physical and ordinary-magic baseline/clock/accounting/absolute-score owners plus their integration edges; not all AI routines or complete source dependencies.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 111880,
+      "sha256": "22555f06b061bc6f017f721998a5e44dfb3d4fa4c7284a2ee3367dfa27ce80ad"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40868,
+      "sha256": "f76188542c39818fa2ab478e42ef63b4eb0f2c1c2db5a74db4120ddbaf4cb8cb"
+    },
+    {
+      "path": "src/main/unit_stats.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11279,
+      "sha256": "c067b3adfe646dea5b6627ff6ca9a3f986d564e80f016443f37f176116511349"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 80969,
+      "sha256": "e8ec92c02c53d3715b3813931685399e79481dad0fae6ae27505fbc5d086d444"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 147880,
+      "sha256": "5519c4550e9fea302ee4366848435b8131c7d3aef24f02462c7571d11bd1cd17"
+    },
+    {
+      "path": "src/battle/ai/abilities.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 20079,
+      "sha256": "42b793235173dbc98e77249df6488eed3708ef3c60c9d10520557fc9636c6862"
+    },
+    {
+      "path": "include/fft/ai_decision.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9018,
+      "sha256": "a88a67152b5143b74121946b7dffd4c8b76b568d9947c828d6620014a741b02b"
+    },
+    {
+      "path": "include/fft/ai.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 25771,
+      "sha256": "fa7aabf5b4d21e3f42be7978c061fb859a52709a234e5b4205c5de5e2c8566b5"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/status.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11673,
+      "sha256": "deeaeec02add8b9db7cca91c99517706033b18385ca433d32f1998d9d62e0e83"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    },
+    {
+      "path": "target/main.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 135004,
+      "sha256": "b6066d98d481d73eb49d2d16be57ae3fc5ae4070830176fdeeeaae2bdeaec2a3"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_action_simulate_and_score",
+      "startLine": 1442,
+      "endLine": 1728,
+      "normalizedLfSha256": "9415274d3b38d3e7afe51922914355e40ff6bad7bccb9bc861bbbfae6894bcd4"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "action_hits_simulate",
+      "startLine": 1772,
+      "endLine": 1796,
+      "normalizedLfSha256": "8645f10a3b9f3738453919558247b8ae951627fc279ca971bf1e4d465c216919"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "strikes_simulate",
+      "startLine": 1808,
+      "endLine": 1897,
+      "normalizedLfSha256": "72f586ff192e9466e7af3dfe1c3093b890c458fc31747757649e243bb731ea6c"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "simulation_unit_state_save",
+      "startLine": 1906,
+      "endLine": 1958,
+      "normalizedLfSha256": "e0c523b4a8e1487ba06e267dd10d6aa6fa015a285a63a06a04b911f07dfa8f2c"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "simulation_unit_state_restore",
+      "startLine": 1966,
+      "endLine": 2011,
+      "normalizedLfSha256": "d195422db548f6b870a1df33d2de5a0b3525e6e9a1d13f0f6b0585d193cb4dfa"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "unit_can_move_after_delay",
+      "startLine": 2407,
+      "endLine": 2438,
+      "normalizedLfSha256": "c8ab8d569fd05fe7374230b4d2880b5104c2814661fb5e896cb2260384a3cf32"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_clock_run",
+      "startLine": 43,
+      "endLine": 384,
+      "normalizedLfSha256": "340cbbd8690adcfab96bf53d3eb5ea9f5b47327eb5901a3cc758b2cfbbfdf1e5"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "upkeep_action_build",
+      "startLine": 399,
+      "endLine": 481,
+      "normalizedLfSha256": "db3bb2342ef78ca6d64b5b2e911e9e2fd14e5a77cd1820472fa784c35cfeaa22"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_status_flags_calculate",
+      "startLine": 490,
+      "endLine": 522,
+      "normalizedLfSha256": "d2386dfccbf45ad8e2d7be18e26ffcfcbd4867e16b09e0526dc2c5837dc71f8c"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_end",
+      "startLine": 947,
+      "endLine": 974,
+      "normalizedLfSha256": "2071e4d41c2099741ca3ae787add5e7b731df488197b87a47ca84291a6ac268b"
+    },
+    {
+      "path": "src/main/unit_stats.c",
+      "symbol": "status_timers_init",
+      "startLine": 36,
+      "endLine": 44,
+      "normalizedLfSha256": "47bed72b3a4135e90f8ac1af602bd718bd9b79d7773ce4eaf3620f00afe42738"
+    },
+    {
+      "path": "src/main/unit_stats.c",
+      "symbol": "status_ct_set",
+      "startLine": 287,
+      "endLine": 315,
+      "normalizedLfSha256": "49bb9bc79839a832f31f7aeaec286ad3214fcb580b90ac15b7cb99a870e1eda7"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "action_commit_preparation",
+      "startLine": 153,
+      "endLine": 161,
+      "normalizedLfSha256": "96f4d3ed79ea76fac957450047f623666c7cd2510d1521eae477cae4d6c37885"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "action_prepare",
+      "startLine": 177,
+      "endLine": 375,
+      "normalizedLfSha256": "1f6a6b279fb1f2c584883bd0fb68c88d53eaa6f20d26317711a09d18d0e6b4fe"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_command_build",
+      "startLine": 131,
+      "endLine": 224,
+      "normalizedLfSha256": "b4a01ef870fceac6d31bc8ab370f0b4053aaee69fc3dd55d9b79c78a0975a5bf"
+    },
+    {
+      "path": "src/battle/ai/abilities.c",
+      "symbol": "ai_workspace_init",
+      "startLine": 29,
+      "endLine": 74,
+      "normalizedLfSha256": "2208b5bf8bac19466d27d5ba279bc7c13a0647518bb6c842de903c0b44364a29"
+    }
+  ],
+  "managedInputs": [
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiCandidateState.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1995,
+      "sha256": "7f84065afb6b9882bd3ab6ea314233137786019755e6dfedf9b330bde5f33284"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiSimulationClock.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2945,
+      "sha256": "f7fd0d36de4b6e110f22d66a71db474bd4a3f01f9000110a6f1c8b2dbc0b73ee"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiSimulationTypes.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 676,
+      "sha256": "dfd220baabe90b6b042621b3397ecf9e04767397f0d244d2ff11e793da7d4176"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiMovementSimulation.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3827,
+      "sha256": "2f7a7678cc1a11e97b59421d07b03fb81a64dad97b60c9104f36fececef33e34"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiDamageHypothesis.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1766,
+      "sha256": "96291925b4cee7915c548b4cb8a8e1af35229fe60ef0318b8925a469a81ad22c"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiCandidateScoring.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4901,
+      "sha256": "3ac46725f974b5859a61fab1634fa9e8e336d7da59694b7027ad1aeca22c0ea5"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/RosterAiRefresh.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 5920,
+      "sha256": "b57d5758955fe0b726c70111b4901a3e4f098c328de875dd7e5d00672d1535a4"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiCandidateQuery.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2511,
+      "sha256": "5a5583a52c6a38a809fd156ecccb32162261fac71d5e02e18c0df11878075e43"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiWork.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 6268,
+      "sha256": "4a6a71dd368088d9025331f19f070791560cfe0b047a52e577ef6ce3b18c955b"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiSimulation.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4935,
+      "sha256": "b8581e942d51675d990e907a7604b51ac5c600870e2c2a158f0d39bb8d3dd586"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiClock.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 6429,
+      "sha256": "c1b887581950702c3d069048c61b9cb9d968ff3bc9773324fd32638527f6fd3f"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiHitWork.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3428,
+      "sha256": "d063f6243e481e35b72fcc22dfad86d545b7a5f52c2187d9cb3fb5b569ad6d1f"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiProjection.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4120,
+      "sha256": "9c90c52cf84b12189d178c8512d65cba2c8ebbbb5a0b71c2a1cbb4f1ac9cdf40"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/Scoring/OrdinarySpellAiAccounting.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2785,
+      "sha256": "ebec8d6ff889030c8f163fc01dfbd28b6bedfc9747529b146c6fffac00563b8a"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/Scoring/OrdinarySpellAiScoring.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3498,
+      "sha256": "8b83b407b72ed4c6f5a71e93ac5270c3a7c2444a67692876e877f677798460b6"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/Diagnostics/OrdinarySpellAiReadyQuery.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3110,
+      "sha256": "d2a9311176f7ba8c8da4ad8eed3193c4599f6c0f786409dd3af03353927e06b5"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAimQuery.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1062,
+      "sha256": "3fe2fd812f45c5966a5a345aeaa15f84f13e0c8b8e39e0bb0f225b146047edd5"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiSearchQuery.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3597,
+      "sha256": "f6b621fb378c674663e677a139e27d8279a8dddee61a0b44e773d52aef132c06"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAimEnumeration.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 7147,
+      "sha256": "81f675cc13407a07c99948666677e7914b1a9b9bec6ea577ec1b08793d15b764"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiCatalog.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2884,
+      "sha256": "254e72e081bd7a9845ebe0634c74d762278261e8b8c9e3fe9425efb16cfc2076"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/ThrowStone/ThrowStoneAiCandidateProjection.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 7189,
+      "sha256": "7d28b444a261785fd0d34f92039741fb6570e6e21198a10bfe34ae9bec5de8ac"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Sword/SwordAiCandidateProjection.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 8145,
+      "sha256": "b39ee97d5430f5e64a9a957a44a964bb97fa94712c0b72f81454a5dea29a833f"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Sword/SwordAiCandidateScoring.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2476,
+      "sha256": "fe6d13c08a675e2ab8e6ca691fe7e4ac972e23d6e3ddecbc237e802d7a0b619a"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Sword/RosterSwordAiCandidate.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 6411,
+      "sha256": "b45cdcee1468aa7b00360c057c38427f25d5a24b2747adc5b09ecedb977d92df"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Accumulate/AiSelfStatProjection.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 902,
+      "sha256": "018e73fff4e765e2284f7525c970e0e91bd8038ec144715a3dc6617d159a4913"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/Execution/OrdinaryMagicBattleDefinition.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9150,
+      "sha256": "11c3f404d7027fc9fbbebd364430211da4f74f5aa6b396c3af7eae92ab4de99b"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiCandidateTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 12959,
+      "sha256": "1549fcc3d4c8209a700a849600db277e96c9d9d8bc6b107ea3026cbfda61e040"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiSearchTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 12386,
+      "sha256": "95aeb8c2896c2495e93e3fb741606a34ccbf6800b3cbf98dda95f9513bd6337a"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiClockTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4039,
+      "sha256": "9855395fa42fdb3969d11171900e8aef9a6a6d7532869548779a8fa5e41e0211"
+    }
+  ],
+  "supportingReceipts": [
+    "docs/evidence/ai/defending-wrapper-trace-v1.json",
+    "docs/evidence/ai/movement-pickup-trace-v1.json",
+    "docs/evidence/ai/turn-end-trace-v1.json",
+    "docs/evidence/ai/between-turn-clock-trace-v1.json",
+    "docs/evidence/ai/turn-status-flags-trace-v1.json",
+    "docs/evidence/ai/turn-upkeep-trace-v1.json",
+    "docs/evidence/ai/vsync-rng-trace-v1.json"
+  ],
+  "findings": [
+    {
+      "id": "SIM-430-01",
+      "disposition": "verified-within-domain",
+      "finding": "Selective source baseline/status transfers differ from immutable private query copies; source transfers do not rewind RNG; managed unsupported/counter rejection is atomic."
+    },
+    {
+      "id": "SIM-430-02",
+      "disposition": "confirmed-defect-fixed",
+      "finding": "Ordinary magic candidate processing admitted17-21 active units despite original16 compact-record command admission. One shared fresh-work guard now protects ready/candidate/aim/search entries;21-slot standalone clock remains valid."
+    },
+    {
+      "id": "SIM-430-03",
+      "disposition": "verified-within-domain",
+      "finding": "Ordinary effect-free readiness preserves CT modulo/cap/ties, mandatory corpse upkeep draws, direct turn clearing and source255-event cap; no general upkeep/suspension port claimed."
+    },
+    {
+      "id": "SIM-430-04",
+      "disposition": "verified-within-domain",
+      "finding": "Formula projection before accounting, retained NotValuable draws, valuable masks, signed16 priority/unsigned16 hit totals, equipment/HP/status/MP absolute terms remain explicit."
+    },
+    {
+      "id": "SIM-430-05",
+      "disposition": "historical-audit-input-limitation",
+      "finding": "Candidate/score historical preserved paths were moved. Hash-verified inputs reconstructed from recorded managed revisions allow original audits; these runs do not validate current managed bodies."
+    },
+    {
+      "id": "SIM-430-06",
+      "disposition": "deferred",
+      "finding": "Movement-origin study426, broad special policies/ranking/commands, timed effects/Mime/Defend/pickups/general statuses and VSync callback RNG remain separate; post-full-port readability gate432 recorded."
+    }
+  ],
+  "confirmedDefects": [
+    "SIM-430-02"
+  ],
+  "runtimeChanged": true,
+  "historicalEvidenceErrata": [
+    {
+      "finding": "Historical21-active-unit candidate/search scenarios exceeded original AI admission. Current regressions use16; standalone clock21-slot fixture is unchanged.",
+      "affectedBehaviorNotes": [
+        "docs/behavior/ordinary-spell-ai-clock.md",
+        "docs/behavior/ordinary-spell-aim-ranking.md"
+      ],
+      "oldCandidateLiterals": {
+        "damagePriority": -9199,
+        "healingSearchPriority": 7381,
+        "remainingCharge": 102
+      },
+      "currentCandidateLiterals": {
+        "activeUnits": 16,
+        "ticks": 43,
+        "remainingCharge": 94,
+        "damagePriority": -6774,
+        "healingSearchPriority": 5661,
+        "hitPercent": 255,
+        "eventsPerPass": 255
+      },
+      "historicalReceiptsUnchanged": true
+    }
+  ],
+  "existingSourceAuditResults": {
+    "candidate": {
+      "vectors": 44,
+      "families": 5,
+      "implementationCasesUnexecuted": 16,
+      "preservedFiles": 92,
+      "managedBaselineFilesChecked": 0,
+      "referenceFilesChecked": 15,
+      "referenceFunctionsChecked": 31,
+      "retailTablesChecked": 1,
+      "format": "fft.ai-candidate-source-audit",
+      "schemaVersion": 1,
+      "passed": true,
+      "productionImplemented": false,
+      "fullAiExecuted": false,
+      "originalExecuted": false,
+      "historicalInputMode": {
+        "recordedManagedBase": "18d95ac",
+        "sameCurrentFileHashes": 62,
+        "restoredGitInputs": 30,
+        "doesNotValidateCurrentManagedBodies": true
+      }
+    },
+    "score": {
+      "vectors": 44,
+      "families": 5,
+      "implementationCasesUnexecuted": 14,
+      "preservedFiles": 101,
+      "managedBaselineFilesChecked": 0,
+      "referenceFilesChecked": 11,
+      "referenceFunctionsChecked": 14,
+      "retailRecordsChecked": 2,
+      "format": "fft.ai-score-source-audit",
+      "schemaVersion": 1,
+      "passed": true,
+      "productionImplemented": false,
+      "fullAiExecuted": false,
+      "originalExecuted": false,
+      "historicalInputMode": {
+        "recordedManagedBase": "e23e558df19d222e95436cf799f60d94dea7c0d2",
+        "sameCurrentFileHashes": 67,
+        "restoredGitInputs": 34,
+        "doesNotValidateCurrentManagedBodies": true
+      }
+    },
+    "roster": {
+      "rosterPreparationDescriptions": 13,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "sourceFiles": 7,
+      "sourceFunctions": 17
+    },
+    "refresh": {
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "files": 4,
+      "functions": 21,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "additionalFunctions": 6,
+      "selectionHeaders": 4,
+      "selectionFunctions": 4,
+      "totalReferenceFiles": 8,
+      "totalReferenceFunctions": 31,
+      "scenarioFunctions": 11,
+      "outOfReachAdditionalFiles": 2,
+      "outOfReachAdditionalFunctions": 1,
+      "waitSourceFiles": 7,
+      "waitSourceFunctions": 12,
+      "directionVectors": 8,
+      "directionPairs": 65280,
+      "overlapViabilityResolved": false,
+      "settlementFiles": 3,
+      "settlementFunctions": 8,
+      "executionFiles": 6,
+      "executionFunctions": 16,
+      "suppliedRngTapes": 3,
+      "refreshFiles": 3,
+      "refreshFunctions": 18,
+      "refreshVectors": 6
+    },
+    "magicClock": {
+      "clockDescriptions": 10,
+      "sourceEventCap": 255,
+      "immediateStillAdvances": true,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "sourceFiles": 8,
+      "originalExecuted": false,
+      "cExecuted": false
+    }
+  },
+  "validation": {
+    "dotnet": {
+      "total": 5158,
+      "failed": 0,
+      "skipped": 0,
+      "projects": {
+        "Engine": 24,
+        "AssetTool": 206,
+        "Framework": 1827,
+        "Ai": 1361,
+        "Cli": 396,
+        "Content": 897,
+        "Client": 447
+      },
+      "command": "dotnet test Fft.sln -c Release --no-restore"
+    },
+    "python": {
+      "total": 794,
+      "result": "OK",
+      "command": "python -m unittest discover -s tools/verification -p 'test_*.py'"
+    },
+    "newRegressionCases": 3,
+    "oversizedCasesFailedBeforeFix": 2,
+    "candidateAndSearchFocusedCases": 37,
+    "ownerBlobs": 10,
+    "approvedFormattingPreserved": true,
+    "unstagedOwnerEdit": {
+      "path": "src/Zodiac.Framework.Ai/AiTurnController.cs",
+      "gitBlob": "373d13f739439813f9608aefc2d84715d8ed1346",
+      "preserved": true,
+      "excludedFromCommit": true
+    },
+    "originalExecuted": false,
+    "cExecuted": false,
+    "nativePresentationRerun": false
+  }
+}

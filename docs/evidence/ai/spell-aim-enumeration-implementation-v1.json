@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-424",
+  "managedBaseRevision": "4900745a59684143cd2ca2bd81f503febf1c67fa",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "sourceReceipt": "docs/evidence/ai/spell-aim-enumeration-source-v1.json",
+  "sourceAudit": {
+    "usageDescriptions": 7,
+    "deadlineDescriptions": 5,
+    "maskDescriptions": 4,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "sourceFiles": 9,
+    "sourceFunctions": 28
+  },
+  "entryPoint": "OrdinarySpellAiAimQuery.Evaluate(state, catalog, request)",
+  "scope": "Fresh definition-bound potential unit/tile aim passes at current origin; living ordinary neutral-modifier HP domain, certified flat lower sheet <=16, Range>0 and Range+Area<=7. No candidate evaluation, RNG, preparation, command authority or live adoption.",
+  "implementationFiles": [
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAimQuery.cs",
+      "hashEncoding": "utf8-lf",
+      "sha256": "3fe2fd812f45c5966a5a345aeaa15f84f13e0c8b8e39e0bb0f225b146047edd5"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAimEnumeration.cs",
+      "hashEncoding": "utf8-lf",
+      "sha256": "acede43d32d7d921857a314c9a2f5d21510d1f8e16e7e6e03e13ab7fbbdb4c0a"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiAimTests.cs",
+      "hashEncoding": "utf8-lf",
+      "sha256": "7a4c2b2a1e5ce1729b6baf7068cfc29fa21122a894c902dd15472dea0e463a2c"
+    },
+    {
+      "path": "docs/fixtures/behavior/spell-aim-enumeration-v1.json",
+      "hashEncoding": "utf8-lf",
+      "sha256": "2cc45eef8208ba6ab40eb5e84fdeca11fca86b344adbb5b71c4511efa608eb0d"
+    },
+    {
+      "path": "tools/verification/verify_spell_aim_enumeration.py",
+      "hashEncoding": "utf8-lf",
+      "sha256": "775cc21ced6ba2f7de687ed99c4e616c07fe184324650ec8beb0ba55c616fa48"
+    },
+    {
+      "path": "tools/verification/test_spell_aim_enumeration.py",
+      "hashEncoding": "utf8-lf",
+      "sha256": "10f6ca131b37053fea2827f7600b36049e17405ab69bd2f0a6f53c2392a8fb80"
+    }
+  ],
+  "validation": {
+    "lockedRestore": "passed",
+    "releaseBuild": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "dotnet": {
+      "passed": 5124,
+      "failed": 0,
+      "assemblies": [
+        {
+          "assembly": "Fft.Client.Tests.dll",
+          "total": 447,
+          "passed": 447,
+          "failed": 0
+        },
+        {
+          "assembly": "Tessera.Engine.Tests.dll",
+          "total": 24,
+          "passed": 24,
+          "failed": 0
+        },
+        {
+          "assembly": "Zodiac.AssetTool.Cli.Tests.dll",
+          "total": 396,
+          "passed": 396,
+          "failed": 0
+        },
+        {
+          "assembly": "Zodiac.AssetTool.Tests.dll",
+          "total": 206,
+          "passed": 206,
+          "failed": 0
+        },
+        {
+          "assembly": "Zodiac.Content.Tests.dll",
+          "total": 897,
+          "passed": 897,
+          "failed": 0
+        },
+        {
+          "assembly": "Zodiac.Framework.Ai.Tests.dll",
+          "total": 1338,
+          "passed": 1338,
+          "failed": 0
+        },
+        {
+          "assembly": "Zodiac.Framework.Tests.dll",
+          "total": 1816,
+          "passed": 1816,
+          "failed": 0
+        }
+      ],
+      "newAimScenarios": 30
+    },
+    "python": {
+      "passed": 786,
+      "failed": 0,
+      "newSourceDescriptionTests": 4
+    },
+    "preservation": {
+      "ownerFiles": [
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AbilityToggles.cs",
+          "gitBlob": "16320578ffa448783221b68c4ef5c18e245b9f35",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AiBehaviorToggles.cs",
+          "gitBlob": "c67c4b154c471764fa11a6761710d2e9c9694a65",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AttributeToggles.cs",
+          "gitBlob": "1182777f8a0c3ca219afa23d0803c52af4ca9f8e",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/EquipmentSlot.cs",
+          "gitBlob": "091006b2d60ca558c303571a4eb779340be53629",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/StatusToggles.cs",
+          "gitBlob": "5136db2af350d7e3735e47fb92b905019316fd6f",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Item/ShopAvailabilityToggles.cs",
+          "gitBlob": "fd543d84dc8eb7860d710cf1c75499eb55306e14",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/EquipmentOptionToggles.cs",
+          "gitBlob": "694e44bbdc3e62103b64ff794addec1ad977d142",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/EffectBehaviorToggles.cs",
+          "gitBlob": "9792cdea7da1d92e9ec25cf1e97d3e879c24e8ae",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/StatusSelectionToggles.cs",
+          "gitBlob": "a0b2e2a8ddcb53a4bfd7416609927399b8339294",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/JobStats.cs",
+          "gitBlob": "bd617c374309aca1529a167a8d31a488160086cc",
+          "unchanged": true
+        }
+      ],
+      "approvedFormatting": {
+        "path": "src/Zodiac.Framework/Battle/Combat/Targeting/Selection/SpellTargetChoiceQuery.cs",
+        "gitBlob": "014193b92e056d5a5207b2aff07a77047e9e1280",
+        "originalCommit": "b7a222d"
+      },
+      "allPreserved": true
+    },
+    "native": "Not rerun: this pure diagnostic is not connected to a host or command pathway; prior ZOD-423 native receipts remain historical.",
+    "artifacts": "scratch/spell-aim-424/"
+  },
+  "deferred": [
+    "useful self-target alternatives",
+    "Reflect and general statuses/corpses",
+    "trajectory and special targeting shapes",
+    "zero-range origin cases and broader maps/radii",
+    "candidate evaluation/ranking (ZOD-425)",
+    "movement origins and full ability-list dispatch",
+    "baseline/list insertion, lottery and autonomous magic commands",
+    "Golem, terminal and frame RNG",
+    "owner drafts/JobStats, equipment selectors, editor, custom cone"
+  ],
+  "originalExecuted": false,
+  "cExecuted": false
+}

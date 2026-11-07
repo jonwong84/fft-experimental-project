@@ -1,0 +1,388 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "e9d3602eaae6a5774424a816b82ea2051ce6532b",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Supplied shared between-turn clock controller, direct-call map and dispatch/order review. Does not port all called routines or complete ZOD-430.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/turn/clock.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40868,
+      "sha256": "f76188542c39818fa2ab478e42ef63b4eb0f2c1c2db5a74db4120ddbaf4cb8cb"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 23857,
+      "sha256": "57dd4fa8b07ef93c4a8e21c73657a0fdbe6c601a6db0b0351ae15b3cd15e4aea"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 111880,
+      "sha256": "22555f06b061bc6f017f721998a5e44dfb3d4fa4c7284a2ee3367dfa27ce80ad"
+    },
+    {
+      "path": "include/fft/turn.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2844,
+      "sha256": "bf8eac9a51807894a645b9587c68323ab8c95411a176a0ccfbbfd752dfbfe6dd"
+    },
+    {
+      "path": "include/fft/ai_decision.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9018,
+      "sha256": "a88a67152b5143b74121946b7dffd4c8b76b568d9947c828d6620014a741b02b"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    },
+    {
+      "path": "target/main.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 135004,
+      "sha256": "b6066d98d481d73eb49d2d16be57ae3fc5ae4070830176fdeeeaae2bdeaec2a3"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_clock_run",
+      "startLine": 43,
+      "endLine": 384,
+      "normalizedLfSha256": "340cbbd8690adcfab96bf53d3eb5ea9f5b47327eb5901a3cc758b2cfbbfdf1e5"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_status_flags_calculate",
+      "startLine": 490,
+      "endLine": 522,
+      "normalizedLfSha256": "d2386dfccbf45ad8e2d7be18e26ffcfcbd4867e16b09e0526dc2c5837dc71f8c"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "upkeep_action_build",
+      "startLine": 399,
+      "endLine": 481,
+      "normalizedLfSha256": "db3bb2342ef78ca6d64b5b2e911e9e2fd14e5a77cd1820472fa784c35cfeaa22"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_should_end",
+      "startLine": 979,
+      "endLine": 993,
+      "normalizedLfSha256": "e681268c0903794a2ff9b9de8f2b18b663bc565ea4a047e6f005e63bc6155e86"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "ai_simulation_end",
+      "startLine": 43,
+      "endLine": 47,
+      "normalizedLfSha256": "17a6b63b2c51acaeb468f3e70ea2d437459d680c8da7810da4b40889d4b636db"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_action_simulate_and_score",
+      "startLine": 1442,
+      "endLine": 1728,
+      "normalizedLfSha256": "9415274d3b38d3e7afe51922914355e40ff6bad7bccb9bc861bbbfae6894bcd4"
+    }
+  ],
+  "preparedValidation": {
+    "byteLength": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000"
+  },
+  "suppliedInstructionCheck": {
+    "start": "0x801827f0",
+    "endInclusive": "0x80183074",
+    "instructionCount": 546,
+    "allMatched": true,
+    "normalization": "The pasted afb0 0018 token is read as word afb00018; malformed assembly operands do not alter verified instruction words"
+  },
+  "directCalls": [
+    {
+      "pc": "0x80182894",
+      "target": "0x8018e628",
+      "symbol": "ai_simulation_end",
+      "returnAddress": "0x8018289c"
+    },
+    {
+      "pc": "0x801829c4",
+      "target": "0x801832cc",
+      "symbol": "turn_status_flags_calculate",
+      "returnAddress": "0x801829cc"
+    },
+    {
+      "pc": "0x80182a54",
+      "target": "0x801832cc",
+      "symbol": "turn_status_flags_calculate",
+      "returnAddress": "0x80182a5c"
+    },
+    {
+      "pc": "0x80182b10",
+      "target": "0x80183078",
+      "symbol": "upkeep_action_build",
+      "returnAddress": "0x80182b18"
+    },
+    {
+      "pc": "0x80182b34",
+      "target": "0x8005e670",
+      "symbol": "unit_casualties_count",
+      "returnAddress": "0x80182b3c"
+    },
+    {
+      "pc": "0x80182b44",
+      "target": "0x801832cc",
+      "symbol": "turn_status_flags_calculate",
+      "returnAddress": "0x80182b4c"
+    },
+    {
+      "pc": "0x80182bb4",
+      "target": "0x801832cc",
+      "symbol": "turn_status_flags_calculate",
+      "returnAddress": "0x80182bbc"
+    },
+    {
+      "pc": "0x80182c14",
+      "target": "0x801832cc",
+      "symbol": "turn_status_flags_calculate",
+      "returnAddress": "0x80182c1c"
+    },
+    {
+      "pc": "0x80182c4c",
+      "target": "0x8005e778",
+      "symbol": "unit_ability_ct_set",
+      "returnAddress": "0x80182c54"
+    },
+    {
+      "pc": "0x80182cbc",
+      "target": "0x8018d910",
+      "symbol": "status_update_expiring",
+      "returnAddress": "0x80182cc4"
+    },
+    {
+      "pc": "0x80182da0",
+      "target": "0x801832cc",
+      "symbol": "turn_status_flags_calculate",
+      "returnAddress": "0x80182da8"
+    },
+    {
+      "pc": "0x80182e1c",
+      "target": "0x801832cc",
+      "symbol": "turn_status_flags_calculate",
+      "returnAddress": "0x80182e24"
+    },
+    {
+      "pc": "0x80182e28",
+      "target": "0x80183d10",
+      "symbol": "turn_should_end",
+      "returnAddress": "0x80182e30"
+    },
+    {
+      "pc": "0x80182e44",
+      "target": "0x80183c6c",
+      "symbol": "turn_end",
+      "returnAddress": "0x80182e4c"
+    },
+    {
+      "pc": "0x80182e9c",
+      "target": "0x8018d7c8",
+      "symbol": "status_prepare_poison_and_regen",
+      "returnAddress": "0x80182ea4"
+    },
+    {
+      "pc": "0x80182ed8",
+      "target": "0x8018da88",
+      "symbol": "status_prepare_terrain_poison",
+      "returnAddress": "0x80182ee0"
+    },
+    {
+      "pc": "0x80182f14",
+      "target": "0x8018d868",
+      "symbol": "status_prepare_transparent_removal",
+      "returnAddress": "0x80182f1c"
+    },
+    {
+      "pc": "0x80182fe0",
+      "target": "0x8018f038",
+      "symbol": "action_mimic_set_ability",
+      "returnAddress": "0x80182fe8"
+    }
+  ],
+  "jumpTable": {
+    "start": "0x80174174",
+    "byteLength": 80,
+    "validIndexCount": 20,
+    "entries": [
+      {
+        "index": 0,
+        "pc": "0x80174174",
+        "target": "0x801829b8",
+        "phase": "ADD_CT"
+      },
+      {
+        "index": 1,
+        "pc": "0x80174178",
+        "target": "0x80182a44",
+        "phase": "PICK_UNIT"
+      },
+      {
+        "index": 2,
+        "pc": "0x8017417c",
+        "target": "0x80182bac",
+        "phase": "TICK_CHARGES"
+      },
+      {
+        "index": 3,
+        "pc": "0x80174180",
+        "target": "0x80182c08",
+        "phase": "RESOLVE_CHARGE"
+      },
+      {
+        "index": 4,
+        "pc": "0x80174184",
+        "target": "0x80182c90",
+        "phase": "EXPIRE_STATUSES"
+      },
+      {
+        "index": 5,
+        "pc": "0x80174188",
+        "target": "0x80182ce8",
+        "phase": "COLLECT_PENDING_ACTIONS"
+      },
+      {
+        "index": 6,
+        "pc": "0x8017418c",
+        "target": "0x80182d50",
+        "phase": "RUN_PENDING_ACTIONS"
+      },
+      {
+        "index": 7,
+        "pc": "0x80174190",
+        "target": "0x80183020",
+        "phase": null
+      },
+      {
+        "index": 8,
+        "pc": "0x80174194",
+        "target": "0x80183020",
+        "phase": null
+      },
+      {
+        "index": 9,
+        "pc": "0x80174198",
+        "target": "0x80182d8c",
+        "phase": "PICK_UNIT_AFTER_CHARGE"
+      },
+      {
+        "index": 10,
+        "pc": "0x8017419c",
+        "target": "0x80182e00",
+        "phase": "UNIT_TURN"
+      },
+      {
+        "index": 11,
+        "pc": "0x801741a0",
+        "target": "0x80183020",
+        "phase": null
+      },
+      {
+        "index": 12,
+        "pc": "0x801741a4",
+        "target": "0x80183020",
+        "phase": null
+      },
+      {
+        "index": 13,
+        "pc": "0x801741a8",
+        "target": "0x80182f34",
+        "phase": "MARK_MIMES"
+      },
+      {
+        "index": 14,
+        "pc": "0x801741ac",
+        "target": "0x80182fa4",
+        "phase": "RUN_MIMES"
+      },
+      {
+        "index": 15,
+        "pc": "0x801741b0",
+        "target": "0x80182eac",
+        "phase": "TERRAIN_POISON"
+      },
+      {
+        "index": 16,
+        "pc": "0x801741b4",
+        "target": "0x80183020",
+        "phase": null
+      },
+      {
+        "index": 17,
+        "pc": "0x801741b8",
+        "target": "0x80182ee8",
+        "phase": "REMOVE_TRANSPARENT"
+      },
+      {
+        "index": 18,
+        "pc": "0x801741bc",
+        "target": "0x80183020",
+        "phase": null
+      },
+      {
+        "index": 19,
+        "pc": "0x801741c0",
+        "target": "0x80182e70",
+        "phase": "POISON_AND_REGEN"
+      }
+    ],
+    "excludedAdjacentWord": {
+      "pc": "0x801741c4",
+      "value": "0x80184070",
+      "reason": "Index20 is rejected by unsigned phase<20 dispatch guard"
+    }
+  },
+  "findings": {
+    "shared": "Battle clock used by live gameplay and AI; mode Reset1 clears clock/unit counters and ends AI simulation; mode FindActiveUnit2 returns first present eligible source slot rather than checking CT",
+    "order": "AddCT -> highest CT>=100 picks/upkeep -> charge countdown/ready -> status expiry/pending events; active-turn completion -> Poison/Regen -> terrain poison -> Transparent removal -> Mime/restore saved phase",
+    "ct": "Slow takes precedence over Haste; floor(Speed/2), or Speed+floor(Speed/2); wide sum capped254; strict greater-than scan retains first source-slot tie; normal selected CT%=100, Quick255 resets0",
+    "events": "UnitReady0x100, AbilityReady0x200, ActionResult0x300, Mime0x500 with unit ID low byte; None0xff00; Reset0xe000, first-unit lookup0xd000|id or0xdf00",
+    "budgets": "Per-call1201 counted internal phase iterations differs from AI caller256 simulation-event limit (at most255 clock calls) and VSync suspension",
+    "rng": "No direct RNG call in dispatcher; upkeep helper unconditionally draws before status branches. Plain dead AI units still draw/modulo but do not decay death counters or receive ordinary turns.",
+    "annotationCorrections": [
+      "PICK_UNIT selects all eligible highest-CT units, not only corpses",
+      "FIND_ACTIVE_UNIT beq is consistent with returning a unit without the excluded statuses",
+      "Phase15 is terrain poison; phase17 is Transparent removal; pasted comments swap them",
+      "Index20/get-tile-type pointer is outside the dispatch table"
+    ]
+  },
+  "nextDocumentation": [
+    {
+      "symbol": "turn_status_flags_calculate",
+      "address": "0x001832cc",
+      "wikiLabel": "Status checks"
+    },
+    {
+      "symbol": "upkeep_action_build",
+      "address": "0x00183078",
+      "wikiLabel": "Death sentence, crystalization, treasurization, etc"
+    }
+  ],
+  "managedReview": {
+    "physical": "AiSimulationClock collapses effect-free phases under positive-speed ordinary/neutral certificates; general status/charge/Mime/Quick paths remain unsupported",
+    "magic": "OrdinarySpellAiClock supports its bounded immediate/delayed hypothesis and255-call cap, not the full shared controller",
+    "runtimeDefectFound": false
+  },
+  "ownerEditPreserved": {
+    "path": "src/Zodiac.Framework.Ai/AiTurnController.cs",
+    "gitBlob": "373d13f739439813f9608aefc2d84715d8ed1346"
+  },
+  "runtimeChanged": false,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "testsRerun": false,
+  "report": "docs/behavior/between-turn-clock-review.md"
+}

@@ -1,0 +1,18 @@
+{
+  "format": "fft.ai-command-continuation-contract",
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "expectationKind": "Source branch scalars only; no live command, movement or selection execution",
+  "vectors": [
+    {"id":"initial-needs-selection","input":{"stage":"entry","decided":0,"saved":[false,false],"current":[false,false],"actFirst":false,"hasSkillset":true,"sameTile":false},"expected":{"kind":"SelectionRequired","recordCommand":false,"selectionRequired":true}},
+    {"id":"fresh-move-first","input":{"stage":"after-selection","decided":255,"saved":[false,false],"current":[false,false],"actFirst":false,"hasSkillset":true,"sameTile":false},"expected":{"kind":"Move","recordCommand":true,"selectionRequired":false}},
+    {"id":"after-Move-reuse-ACT","input":{"stage":"entry","decided":255,"saved":[false,false],"current":[true,false],"actFirst":false,"hasSkillset":true,"sameTile":true},"expected":{"kind":"Attack","recordCommand":true,"selectionRequired":false}},
+    {"id":"unchanged-repeat-ends","input":{"stage":"entry","decided":255,"saved":[true,false],"current":[true,false],"actFirst":false,"hasSkillset":true,"sameTile":true},"expected":{"kind":"EndTurn","recordCommand":false,"selectionRequired":false}},
+    {"id":"after-ACT-reselect","input":{"stage":"entry","decided":255,"saved":[false,false],"current":[false,true],"actFirst":true,"hasSkillset":true,"sameTile":false},"expected":{"kind":"SelectionRequired","recordCommand":false,"selectionRequired":true}},
+    {"id":"fresh-move-only","input":{"stage":"after-selection","decided":255,"saved":[false,false],"current":[false,false],"actFirst":false,"hasSkillset":false,"sameTile":false},"expected":{"kind":"Move","recordCommand":true,"selectionRequired":false}},
+    {"id":"move-only-after-Move-ends","input":{"stage":"entry","decided":255,"saved":[false,false],"current":[true,false],"actFirst":false,"hasSkillset":false,"sameTile":true},"expected":{"kind":"EndTurn","recordCommand":true,"selectionRequired":false}},
+    {"id":"fresh-act-first","input":{"stage":"after-selection","decided":255,"saved":[false,false],"current":[false,false],"actFirst":true,"hasSkillset":true,"sameTile":false},"expected":{"kind":"Attack","recordCommand":true,"selectionRequired":false}},
+    {"id":"fresh-same-tile-ACT","input":{"stage":"after-selection","decided":255,"saved":[false,false],"current":[false,false],"actFirst":false,"hasSkillset":true,"sameTile":true},"expected":{"kind":"Attack","recordCommand":true,"selectionRequired":false}},
+    {"id":"noncanonical-decided-byte","managedChildAdmitted":false,"input":{"stage":"entry","decided":1,"saved":[true,false],"current":[true,false],"actFirst":false,"hasSkillset":true,"sameTile":true},"expected":{"kind":"Attack","recordCommand":true,"selectionRequired":false}}
+  ]
+}

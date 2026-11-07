@@ -1,0 +1,156 @@
+{
+  "format": "fft.general-banner-asset-source-analysis",
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "edition": "SCUS-94221",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "managedBase": "c84e0c4",
+  "evidenceKind": "verified-local-input-and-static-source",
+  "originalExecutionPerformed": false,
+  "gpuPreviewPerformed": false,
+  "image": {
+    "localPath": "scratch/fft-clean-base-game.bin",
+    "bytes": 541315152,
+    "sha256": "29e63bb6d2e7b842fe87f7c0ee03b7076681c34bcc47095cca27ec53236bf4f9"
+  },
+  "selection": {
+    "eventId": 401,
+    "sourceOffset": 164,
+    "condition": 8,
+    "holdFrames": 60,
+    "imageIndex": 0,
+    "sourceEvidence": "docs/evidence/events/battle-start-0401.json"
+  },
+  "files": {
+    "SYSTEM.CNF": {
+      "rawIdentifier": "SYSTEM.CNF;1",
+      "relativePath": "SYSTEM.CNF",
+      "effectiveExtentLba": 23,
+      "byteLength": 68,
+      "sha256": "c2979409e7999a14c4ea02c9ee4f339deabc4adfc54b787650796b0ab84e0dfe",
+      "directBinPayloadMatches": true
+    },
+    "SCUS_942.21": {
+      "rawIdentifier": "SCUS_942.21;1",
+      "relativePath": "SCUS_942.21",
+      "effectiveExtentLba": 24,
+      "byteLength": 356352,
+      "sha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562",
+      "directBinPayloadMatches": true
+    },
+    "EVENT/BONUS.BIN": {
+      "rawIdentifier": "BONUS.BIN;1",
+      "relativePath": "EVENT/BONUS.BIN",
+      "effectiveExtentLba": 5824,
+      "byteLength": 958464,
+      "sha256": "c5d881b1fb62c04d1d7f0e5238faff4131676165c08e35b5cadb68b21c89165f",
+      "directBinPayloadMatches": true
+    },
+    "EVENT/REQUIRE.OUT": {
+      "rawIdentifier": "REQUIRE.OUT;1",
+      "relativePath": "EVENT/REQUIRE.OUT",
+      "effectiveExtentLba": 2192,
+      "byteLength": 127684,
+      "sha256": "97112c50c0b037b2cb5c9d93ae9e2a7506b582c5edbd86a1debfb7ab8e777630",
+      "directBinPayloadMatches": true
+    }
+  },
+  "image0": {
+    "offset": 0,
+    "bytes": 26624,
+    "sha256": "5ba6d5c56bbffa7a4c1bdaea392fcf08f265f545588ccc28496462b63d521ea4",
+    "pixelSha256": "ae8b5e94082a3b32b03384056da0924b1a81d53fb0e0a46cb01bbc8a3dbdff02",
+    "palettesSha256": "e475e8d4679fe733ecc6757eb990a040dfa5000a4b8df2ed7f4259cd4d15f2b3",
+    "palette4Sha256": "8aa38621ccfcd6386e23466a803999ef5ed44a1afc415f447a9fcc0054027739",
+    "archiveRecordCount": 36
+  },
+  "requireModule": {
+    "loadAddress": "0x801bf000",
+    "selectedRanges": {
+      "paletteRect": {
+        "address": "0x801d0070",
+        "offset": 69744,
+        "bytes": 8,
+        "sha256": "f83702f2efe22401f556e941c19d84fc387c944a3b7c77de8abaa225ef2ee849"
+      },
+      "quads": {
+        "address": "0x801d0df4",
+        "offset": 73204,
+        "bytes": 72,
+        "sha256": "32e8a361664837a78145d44ab07dc25c072be39eaf12e4661da29559b4d4178c"
+      },
+      "tpages": {
+        "address": "0x801d0e54",
+        "offset": 73300,
+        "bytes": 24,
+        "sha256": "00daaf8efa3b8fee46b793540bd642be32ccc3a6cf13b1e58bfb904f1d362e82"
+      },
+      "range": {
+        "address": "0x801d0e6c",
+        "offset": 73324,
+        "bytes": 2,
+        "sha256": "40d88127d4d31a3891f41598eeed41174e5bc89b1eb9bbd66a8cbfc09956a3fd"
+      },
+      "colors": {
+        "address": "0x801d0e70",
+        "offset": 73328,
+        "bytes": 120,
+        "sha256": "3c80f578dd6d1824e143fbed35b5c51a6b9ffa7c3599bf5dbea94a3fcde3e562"
+      }
+    }
+  },
+  "interpretation": {
+    "atlasWidth": 256,
+    "atlasHeight": 200,
+    "bitsPerPixel": 4,
+    "lowNibbleFirst": true,
+    "pixelBytes": 25600,
+    "filePaletteBanks": 8,
+    "colorsPerBank": 16,
+    "selectedPaletteBank": 4,
+    "paletteRectVramWords": [
+      384,
+      254,
+      64,
+      2
+    ],
+    "rangeFirst": 0,
+    "rangeEndExclusive": 6,
+    "pieces": 6,
+    "pieceWidth": 232,
+    "pieceHeight": 31,
+    "sourceFrameRecordBytes": 12,
+    "colorRecordBytes": 20,
+    "tpageRecordBytes": 4,
+    "normalizedSampledYMin": 128,
+    "normalizedSampledYEndExclusive": 191,
+    "selectedCropsWithinInitializedPixels": true,
+    "initializedPixelRows": 200,
+    "uploadRows": 256,
+    "reservedBytes": 32768,
+    "fileBytes": 26624,
+    "undefinedReservationSuffixBytes": 6144,
+    "nonzeroSelectedPaletteColors": 15,
+    "nonzeroSelectedPaletteColorsWithStp": 15,
+    "subtractPieces": 4,
+    "addGradientPieces": 2,
+    "graphTypes1And2BlendBitShift": 2,
+    "battleDisplay": [
+      256,
+      240
+    ],
+    "battleDrawOriginX": -128,
+    "initialPacketParity": "unresolved",
+    "previewReadinessPolicy": "preload-before-logical-scene",
+    "originalStartupTicks": "unestablished",
+    "previewColorPolicy": "explicit RGB8 modern approximation; no native GPU equivalence"
+  },
+  "localAudit": "scratch/zod-077/audit.json",
+  "localAtlasDiagnostic": "scratch/zod-077/image0-palette4.png",
+  "nextTicket": "ZOD-078",
+  "limitations": [
+    "No raw pixels/palettes/table records in this document.",
+    "Other images/conditions and undefined upload rows remain unsupported.",
+    "Original draw-state reachability, rasterization, loading latency and observation/comparison remain open."
+  ]
+}

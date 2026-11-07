@@ -1,0 +1,38 @@
+{
+  "format": "fft.ai-refresh-contract",
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "expectationKind": "source-derived closed refresh-clock arithmetic; managed refresh proposals unexecuted",
+  "vectors": [
+    {
+      "id": "peer-after-one-addition",
+      "input": {"actor": "a", "word": 1, "count": 7, "ticks": 20, "units": [{"id": "a", "ct": 15, "speed": 5, "tieKey": 2}, {"id": "b", "ct": 95, "speed": 5, "tieKey": 17}]},
+      "expected": {"accepted": true, "endCt": 35, "picked": "b", "elapsed": 1, "ticks": 21, "ct": {"a": 40, "b": 0}, "raw": 16838, "word": 1103527590, "count": 8}
+    },
+    {
+      "id": "ready-peer-at-MAX-ticks",
+      "input": {"actor": "a", "word": 1, "count": 7, "ticks": 18446744073709551615, "units": [{"id": "a", "ct": 15, "speed": 5, "tieKey": 2}, {"id": "b", "ct": 100, "speed": 5, "tieKey": 17}]},
+      "expected": {"accepted": true, "endCt": 35, "picked": "b", "elapsed": 0, "ticks": 18446744073709551615, "ct": {"a": 35, "b": 0}, "raw": 16838, "word": 1103527590, "count": 8}
+    },
+    {
+      "id": "actor-cap-tie-prefers-original-slot",
+      "input": {"actor": "a", "word": 1, "count": 7, "ticks": 20, "units": [{"id": "b", "ct": 60, "speed": 20, "tieKey": 17}, {"id": "a", "ct": 95, "speed": 20, "tieKey": 2}]},
+      "expected": {"accepted": true, "endCt": 60, "picked": "a", "elapsed": 2, "ticks": 22, "ct": {"a": 0, "b": 100}, "raw": 16838, "word": 1103527590, "count": 8}
+    },
+    {
+      "id": "one-draw-fits-at-MAX",
+      "input": {"actor": "a", "word": 1, "count": 18446744073709551614, "ticks": 20, "units": [{"id": "a", "ct": 15, "speed": 5, "tieKey": 2}, {"id": "b", "ct": 95, "speed": 5, "tieKey": 17}]},
+      "expected": {"accepted": true, "endCt": 35, "picked": "b", "elapsed": 1, "ticks": 21, "ct": {"a": 40, "b": 0}, "raw": 16838, "word": 1103527590, "count": 18446744073709551615}
+    },
+    {
+      "id": "draw-exhaustion-restores-input-RNG",
+      "input": {"actor": "a", "word": 1, "count": 18446744073709551615, "ticks": 20, "units": [{"id": "a", "ct": 15, "speed": 5, "tieKey": 2}, {"id": "b", "ct": 95, "speed": 5, "tieKey": 17}]},
+      "expected": {"accepted": false, "word": 1, "count": 18446744073709551615}
+    },
+    {
+      "id": "required-tick-exhaustion-restores-input-RNG",
+      "input": {"actor": "a", "word": 1, "count": 7, "ticks": 18446744073709551615, "units": [{"id": "a", "ct": 15, "speed": 5, "tieKey": 2}, {"id": "b", "ct": 95, "speed": 5, "tieKey": 17}]},
+      "expected": {"accepted": false, "word": 1, "count": 7}
+    }
+  ]
+}

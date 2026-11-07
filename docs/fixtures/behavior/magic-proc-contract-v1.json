@@ -1,0 +1,684 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-340",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "confidence": "source-derived scaled-threshold and ordered RNG descriptions; BIOS arithmetic uses the independently verified managed generator",
+  "rolls": [
+    {
+      "raw": 0,
+      "percent": 0,
+      "passed": true
+    },
+    {
+      "raw": 1,
+      "percent": 0,
+      "passed": true
+    },
+    {
+      "raw": 6225,
+      "percent": 18,
+      "passed": true
+    },
+    {
+      "raw": 6226,
+      "percent": 19,
+      "passed": false
+    },
+    {
+      "raw": 32700,
+      "percent": 99,
+      "passed": false
+    },
+    {
+      "raw": 32767,
+      "percent": 99,
+      "passed": false
+    }
+  ],
+  "decisions": [
+    {
+      "id": "execute-empty-status-record-pass",
+      "input": {
+        "formula": "Damage",
+        "invocation": "FamilyTail",
+        "mode": "Execute",
+        "word": 2361954567,
+        "count": 9,
+        "profile": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        },
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "disposition": "Passed",
+        "invoked": true,
+        "applyStatus": true,
+        "setFlag": true,
+        "raw": 0,
+        "percent": 0,
+        "word": 4660,
+        "count": 10
+      }
+    },
+    {
+      "id": "execute-last-success-boundary",
+      "input": {
+        "formula": "Damage",
+        "invocation": "FamilyTail",
+        "mode": "Execute",
+        "word": 2143129863,
+        "count": 9,
+        "profile": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        },
+        "statusRecordId": 7
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "disposition": "Passed",
+        "invoked": true,
+        "applyStatus": true,
+        "setFlag": true,
+        "raw": 6225,
+        "percent": 18,
+        "word": 407966260,
+        "count": 10
+      }
+    },
+    {
+      "id": "execute-first-failure-boundary",
+      "input": {
+        "formula": "Damage",
+        "invocation": "FamilyTail",
+        "mode": "Execute",
+        "word": 1797427463,
+        "count": 9,
+        "profile": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        },
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "disposition": "Failed",
+        "invoked": true,
+        "applyStatus": false,
+        "setFlag": false,
+        "raw": 6226,
+        "percent": 19,
+        "word": 408031796,
+        "count": 10
+      }
+    },
+    {
+      "id": "execute-scaled-not-modulo",
+      "input": {
+        "formula": "Damage",
+        "invocation": "FamilyTail",
+        "mode": "Execute",
+        "word": 2247397639,
+        "count": 9,
+        "profile": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        },
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "disposition": "Failed",
+        "invoked": true,
+        "applyStatus": false,
+        "setFlag": false,
+        "raw": 32700,
+        "percent": 99,
+        "word": 2143031860,
+        "count": 10
+      }
+    },
+    {
+      "id": "execute-largest-raw",
+      "input": {
+        "formula": "Damage",
+        "invocation": "FamilyTail",
+        "mode": "Execute",
+        "word": 560173319,
+        "count": 9,
+        "profile": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        },
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "disposition": "Failed",
+        "invoked": true,
+        "applyStatus": false,
+        "setFlag": false,
+        "raw": 32767,
+        "percent": 99,
+        "word": 2147422772,
+        "count": 10
+      }
+    },
+    {
+      "id": "execute-full-high-word-preserved",
+      "input": {
+        "formula": "Damage",
+        "invocation": "FamilyTail",
+        "mode": "Execute",
+        "word": 4290613511,
+        "count": 41,
+        "profile": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        },
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "disposition": "Passed",
+        "invoked": true,
+        "applyStatus": true,
+        "setFlag": true,
+        "raw": 6225,
+        "percent": 18,
+        "word": 2555449908,
+        "count": 42
+      }
+    },
+    {
+      "id": "execute-last-representable-draw",
+      "input": {
+        "formula": "Damage",
+        "invocation": "FamilyTail",
+        "mode": "Execute",
+        "word": 2361954567,
+        "count": 18446744073709551614,
+        "profile": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        },
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "disposition": "Passed",
+        "invoked": true,
+        "applyStatus": true,
+        "setFlag": true,
+        "raw": 0,
+        "percent": 0,
+        "word": 4660,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "preview-forces-status-without-setting-flag",
+      "input": {
+        "formula": "Damage",
+        "invocation": "FamilyTail",
+        "mode": "Preview",
+        "word": 2361954567,
+        "count": 18446744073709551615,
+        "profile": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": false
+        },
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "disposition": "Passed",
+        "invoked": true,
+        "applyStatus": true,
+        "setFlag": false,
+        "raw": null,
+        "percent": null,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "AI-entered-tail-excludes-proc",
+      "input": {
+        "formula": "Damage",
+        "invocation": "FamilyTail",
+        "mode": "AiSimulation",
+        "word": 2361954567,
+        "count": 18446744073709551615,
+        "profile": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        },
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "disposition": "Failed",
+        "invoked": true,
+        "applyStatus": false,
+        "setFlag": false,
+        "raw": null,
+        "percent": null,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "missed-Execute",
+      "input": {
+        "formula": "Damage",
+        "invocation": "FormulaMissed",
+        "mode": "Execute",
+        "word": 2361954567,
+        "count": 18446744073709551615,
+        "profile": null,
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "disposition": "FormulaMissed",
+        "invoked": false,
+        "applyStatus": false,
+        "setFlag": false,
+        "raw": null,
+        "percent": null,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "nullified-Execute",
+      "input": {
+        "formula": "Damage",
+        "invocation": "ElementNullified",
+        "mode": "Execute",
+        "word": 2361954567,
+        "count": 18446744073709551615,
+        "profile": null,
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "disposition": "ElementNullified",
+        "invoked": false,
+        "applyStatus": false,
+        "setFlag": false,
+        "raw": null,
+        "percent": null,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "healing-tail-Execute",
+      "input": {
+        "formula": "Healing",
+        "invocation": "FamilyTail",
+        "mode": "Execute",
+        "word": 2361954567,
+        "count": 18446744073709551615,
+        "profile": null,
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "disposition": "NoConditionalBranch",
+        "invoked": false,
+        "applyStatus": false,
+        "setFlag": false,
+        "raw": null,
+        "percent": null,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "missed-Preview",
+      "input": {
+        "formula": "Damage",
+        "invocation": "FormulaMissed",
+        "mode": "Preview",
+        "word": 2361954567,
+        "count": 18446744073709551615,
+        "profile": null,
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "disposition": "FormulaMissed",
+        "invoked": false,
+        "applyStatus": false,
+        "setFlag": false,
+        "raw": null,
+        "percent": null,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "nullified-Preview",
+      "input": {
+        "formula": "Damage",
+        "invocation": "ElementNullified",
+        "mode": "Preview",
+        "word": 2361954567,
+        "count": 18446744073709551615,
+        "profile": null,
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "disposition": "ElementNullified",
+        "invoked": false,
+        "applyStatus": false,
+        "setFlag": false,
+        "raw": null,
+        "percent": null,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "healing-tail-Preview",
+      "input": {
+        "formula": "Healing",
+        "invocation": "FamilyTail",
+        "mode": "Preview",
+        "word": 2361954567,
+        "count": 18446744073709551615,
+        "profile": null,
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "disposition": "NoConditionalBranch",
+        "invoked": false,
+        "applyStatus": false,
+        "setFlag": false,
+        "raw": null,
+        "percent": null,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "missed-AiSimulation",
+      "input": {
+        "formula": "Damage",
+        "invocation": "FormulaMissed",
+        "mode": "AiSimulation",
+        "word": 2361954567,
+        "count": 18446744073709551615,
+        "profile": null,
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "disposition": "FormulaMissed",
+        "invoked": false,
+        "applyStatus": false,
+        "setFlag": false,
+        "raw": null,
+        "percent": null,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "nullified-AiSimulation",
+      "input": {
+        "formula": "Damage",
+        "invocation": "ElementNullified",
+        "mode": "AiSimulation",
+        "word": 2361954567,
+        "count": 18446744073709551615,
+        "profile": null,
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "disposition": "ElementNullified",
+        "invoked": false,
+        "applyStatus": false,
+        "setFlag": false,
+        "raw": null,
+        "percent": null,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "healing-tail-AiSimulation",
+      "input": {
+        "formula": "Healing",
+        "invocation": "FamilyTail",
+        "mode": "AiSimulation",
+        "word": 2361954567,
+        "count": 18446744073709551615,
+        "profile": null,
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "disposition": "NoConditionalBranch",
+        "invoked": false,
+        "applyStatus": false,
+        "setFlag": false,
+        "raw": null,
+        "percent": null,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "missed-healing",
+      "input": {
+        "formula": "Healing",
+        "invocation": "FormulaMissed",
+        "mode": "Execute",
+        "word": 2361954567,
+        "count": 18446744073709551615,
+        "profile": null,
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "disposition": "FormulaMissed",
+        "invoked": false,
+        "applyStatus": false,
+        "setFlag": false,
+        "raw": null,
+        "percent": null,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "uncertified-primary",
+      "input": {
+        "formula": "Damage",
+        "invocation": "FamilyTail",
+        "mode": "Execute",
+        "word": 2361954567,
+        "count": 9,
+        "profile": {
+          "primary": false,
+          "noPending": true,
+          "clearFlag": true
+        },
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "word": 2361954567,
+        "count": 9
+      }
+    },
+    {
+      "id": "pending-or-reaction-unknown",
+      "input": {
+        "formula": "Damage",
+        "invocation": "FamilyTail",
+        "mode": "Execute",
+        "word": 2361954567,
+        "count": 9,
+        "profile": {
+          "primary": true,
+          "noPending": false,
+          "clearFlag": true
+        },
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "word": 2361954567,
+        "count": 9
+      }
+    },
+    {
+      "id": "existing-added-flag-unknown",
+      "input": {
+        "formula": "Damage",
+        "invocation": "FamilyTail",
+        "mode": "Execute",
+        "word": 2361954567,
+        "count": 9,
+        "profile": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": false
+        },
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "word": 2361954567,
+        "count": 9
+      }
+    },
+    {
+      "id": "AI-added-flag-unknown",
+      "input": {
+        "formula": "Damage",
+        "invocation": "FamilyTail",
+        "mode": "AiSimulation",
+        "word": 2361954567,
+        "count": 9,
+        "profile": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": false
+        },
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "word": 2361954567,
+        "count": 9
+      }
+    },
+    {
+      "id": "missing-context-profile",
+      "input": {
+        "formula": "Damage",
+        "invocation": "FamilyTail",
+        "mode": "Execute",
+        "word": 2361954567,
+        "count": 9,
+        "profile": null,
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "word": 2361954567,
+        "count": 9
+      }
+    },
+    {
+      "id": "context-rejection-before-exhaustion",
+      "input": {
+        "formula": "Damage",
+        "invocation": "FamilyTail",
+        "mode": "Execute",
+        "word": 2361954567,
+        "count": 18446744073709551615,
+        "profile": {
+          "primary": true,
+          "noPending": false,
+          "clearFlag": true
+        },
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "draw-counter-exhaustion-atomic",
+      "input": {
+        "formula": "Damage",
+        "invocation": "FamilyTail",
+        "mode": "Execute",
+        "word": 2361954567,
+        "count": 18446744073709551615,
+        "profile": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        },
+        "statusRecordId": 0
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "RandomDrawCountExhausted",
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    }
+  ],
+  "scope": "Pure resolved-family decision; primary/no-pending context and known-clear added flag except unread preview. UInt64 exhaustion is a managed guard, not a PS1 rule. Status-record IDs are source annotations, not decision inputs."
+}

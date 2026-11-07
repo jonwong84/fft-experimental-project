@@ -1,0 +1,59 @@
+{
+  "format": "fft.ai-act-first-contract",
+  "schemaVersion": 1,
+  "ticket": "ZOD-176",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "expectationKind": "source-derived supplied-cost ACT-first tapes and post-ACT branch/fact scalars; no managed or original execution",
+  "productionImplemented": false,
+  "dispatchVectors": [
+    {
+      "id": "fresh-ACT-first-does-not-authorize-future-Move",
+      "input": {"stage": "after-selection", "decided": 255, "current": [false, false], "saved": [false, false], "actFirst": true, "sameTile": false, "hasSkillset": true},
+      "expected": {"kind": "Attack", "recordCommand": true, "selectionRequired": false}
+    },
+    {
+      "id": "post-ACT-changed-choices-request-selection",
+      "input": {"stage": "entry", "decided": 255, "current": [false, true], "saved": [false, false], "actFirst": true, "sameTile": false, "hasSkillset": true},
+      "expected": {"kind": "SelectionRequired", "recordCommand": false, "selectionRequired": true}
+    },
+    {
+      "id": "post-ACT-unchanged-choices-end-before-refresh",
+      "input": {"stage": "entry", "decided": 255, "current": [false, true], "saved": [false, true], "actFirst": true, "sameTile": false, "hasSkillset": true},
+      "expected": {"kind": "EndTurn", "recordCommand": false, "selectionRequired": false}
+    },
+    {
+      "id": "post-ACT-fresh-Move-only-different-tile",
+      "input": {"stage": "after-selection", "decided": 255, "current": [false, true], "saved": [false, false], "actFirst": false, "sameTile": false, "hasSkillset": false},
+      "expected": {"kind": "Move", "recordCommand": true, "selectionRequired": false}
+    },
+    {
+      "id": "post-ACT-fresh-same-tile-END",
+      "input": {"stage": "after-selection", "decided": 255, "current": [false, true], "saved": [false, false], "actFirst": false, "sameTile": true, "hasSkillset": false},
+      "expected": {"kind": "EndTurn", "recordCommand": true, "selectionRequired": false}
+    }
+  ],
+  "postActVectors": [
+    {
+      "id": "post-ACT-no-ACT-refund",
+      "input": {"ct": 15, "move": 1, "moved": false, "acted": true},
+      "expected": {"refreshEndCt": 35, "movingEndCt": 15, "stayingEndCt": 35, "enemyReach": 2, "attackUsable": false, "baselineCopiesAttackDestination": true}
+    },
+    {
+      "id": "post-ACT-cap-and-retained-reach",
+      "input": {"ct": 95, "move": 124, "moved": false, "acted": true},
+      "expected": {"refreshEndCt": 60, "movingEndCt": 60, "stayingEndCt": 60, "enemyReach": 125, "attackUsable": false, "baselineCopiesAttackDestination": true}
+    }
+  ],
+  "tapes": [
+    {
+      "id": "prepared-ACT-first-full-hit",
+      "input": {"entry": {"word": 1, "count": 7}, "movementCells": 4, "projectedAttackCosts": [5], "hitPercent": 100, "actualClassEvade": 0},
+      "expected": {"decision": {"word": 180171308, "count": 18, "lotteryDraws": 1, "reason": "FirstRoll"}, "actual": {"word": 3791773014, "count": 24, "hit": true, "damage": 25, "hp": 25, "raw": [12767, 9084, 12060, 32225, 17543, 25089]}}
+    },
+    {
+      "id": "prepared-ACT-first-low-hit-miss",
+      "input": {"entry": {"word": 1, "count": 7}, "movementCells": 4, "projectedAttackCosts": [5], "hitPercent": 11, "actualClassEvade": 89},
+      "expected": {"decision": {"word": 3535774167, "count": 25, "lotteryDraws": 8, "reason": "AllRollsFailedUseFirst"}, "actual": {"word": 2473755763, "count": 29, "hit": false, "damage": 0, "hp": 50, "raw": [25137, 25566, 26966, 4978]}}
+    }
+  ]
+}

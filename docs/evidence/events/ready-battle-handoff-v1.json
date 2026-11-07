@@ -1,0 +1,453 @@
+{
+  "format": "fft.ready-battle-handoff-source-analysis",
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBase": "72586cf53ae23c5a58d1aa9c108cdde37d2d3430",
+  "reports": [
+    {
+      "localPath": "scratch/ready-handoff-090-a/report.json",
+      "bytes": 13297,
+      "sha256": "3a0bf9de66ccc9bd8bb056e76118d50dedaf20c5ee0327cd879a42fbeb0bf840"
+    },
+    {
+      "localPath": "scratch/ready-handoff-090-b/report.json",
+      "bytes": 13297,
+      "sha256": "3a0bf9de66ccc9bd8bb056e76118d50dedaf20c5ee0327cd879a42fbeb0bf840"
+    }
+  ],
+  "plan": {
+    "localPath": "scratch/ready-handoff-090-plan/plan.json",
+    "bytes": 917,
+    "sha256": "704bdb15364c87b509626022e20efe3fed9d95ca3db3474a382894a6b45e230e"
+  },
+  "sourceFiles": [
+    {
+      "path": "src/battle/event/interpreter.c",
+      "bytes": 57266,
+      "sha256": "0f1d08b30a16b88e55936442239f875eb53d961320a1409049c6bf2b72b464ec"
+    },
+    {
+      "path": "src/battle/event/frame.c",
+      "bytes": 23797,
+      "sha256": "7117b3e5daf773352411f24ff83c2fbdcc26d660de7371d1d088d5fabd31e812"
+    },
+    {
+      "path": "src/battle/entry.c",
+      "bytes": 21402,
+      "sha256": "adb050612e82856c4300a8fe308ebee5672bc3994ff004ab9643fac167a3f510"
+    },
+    {
+      "path": "src/battle/frame.c",
+      "bytes": 7598,
+      "sha256": "7ac1a5904889e531e40f0235b86d6741f588ace695bcf7b8c605c9fc9540754f"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "bytes": 191808,
+      "sha256": "838c419938cdd610c14fa8e1cc578a1c76c949394bf1ea08449b526e74912933"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "bytes": 41903,
+      "sha256": "8d96a9971e6d7165132227c77647f87f4a28f45744adbaaabfe1abb7a9342941"
+    },
+    {
+      "path": "src/lib/event/script/scenario.c",
+      "bytes": 12186,
+      "sha256": "5eee6b7027d7a92a76dad2ec2f503a5752af90c02b837dfec8d864dcf8b185f7"
+    },
+    {
+      "path": "src/lib/event/script/scene_commands.c",
+      "bytes": 83364,
+      "sha256": "99285516a169728d4d6945d2e4d1d976a17fb372f742167cd98fed2e17519512"
+    },
+    {
+      "path": "src/lib/event/script/control.c",
+      "bytes": 17474,
+      "sha256": "af8ad98b57a70499514ad12f0d3b4c3f35a5d2eb7f25708f60f495cf1a2c736f"
+    },
+    {
+      "path": "src/lib/event/scene/control.c",
+      "bytes": 14944,
+      "sha256": "977b52bd1d783965e0392164982de3495ff9eeb783992e321019e42e2debac4c"
+    },
+    {
+      "path": "src/lib/event/scene/menu_sessions.c",
+      "bytes": 15041,
+      "sha256": "95685ca9f8552004667870b64c40eb0e3c9477b85bd4a4b3af89f1384774f20d"
+    },
+    {
+      "path": "src/lib/event/scene/menu_dispatch.c",
+      "bytes": 12054,
+      "sha256": "991829320e230445a76586348703715eb7d4e8f0b1408a577a9ac2982684a776"
+    },
+    {
+      "path": "src/lib/menu/menu_actions.c",
+      "bytes": 8816,
+      "sha256": "2c8d7ebf2be449dd664b4b67ca79c5ea89f568d28f2da51850fd9b5113315916"
+    },
+    {
+      "path": "src/lib/thread/scheduler.c",
+      "bytes": 3815,
+      "sha256": "143a43b0a0dbd9f26610d2cb17240d3d76e2320a970b963e56e6b51865bc3600"
+    },
+    {
+      "path": "src/event/require/entry_conditions.c",
+      "bytes": 5326,
+      "sha256": "f76849cd60f9dbf8df6efc82f0fc1446d22ada3bb7ba3ec89d19d6371bd8d46c"
+    },
+    {
+      "path": "src/event/require/entry_dark_screen.c",
+      "bytes": 13215,
+      "sha256": "e11a806e386cd0b182d4ab72095aea0aace69b48e24a9f55a4a05dd3e6ee6b8a"
+    },
+    {
+      "path": "src/event/attack/scenario_setup.c",
+      "bytes": 14324,
+      "sha256": "54ebe8b3b11e7ef934b2fd9c961e4298a709e4a18cbae7389eb2b9c5848db675"
+    },
+    {
+      "path": "include/fft/script.h",
+      "bytes": 14636,
+      "sha256": "7430207a08a77a716eb7930d1895a46a7db8c6b23594c0f45d32f6924177f5b8"
+    },
+    {
+      "path": "include/fft/script_variable.h",
+      "bytes": 16608,
+      "sha256": "492ce44595c88b54d2e0c6641250c6c2d5457a7826edc6ace3594ff415286b42"
+    },
+    {
+      "path": "include/fft/menu.h",
+      "bytes": 12682,
+      "sha256": "843c8262be7b49dcd8d8bcf182368779210d17f6743e1b15a1371df3dd92b863"
+    },
+    {
+      "path": "include/fft/menu_input.h",
+      "bytes": 5462,
+      "sha256": "7b600398ab9f17b8b32551ffdfb9f96504fb9c53828769737a51c8c093bc099e"
+    },
+    {
+      "path": "include/fft/battle_state.h",
+      "bytes": 9001,
+      "sha256": "2d2ccb0f958ab6c3b280bd31ebff010e7118f1a94ee0240751141a9628543f89"
+    },
+    {
+      "path": "target/battle.yaml",
+      "bytes": 304943,
+      "sha256": "f536f589674bea249747863bd60431cdba2671362ce611cbe2f8931f3d540611"
+    },
+    {
+      "path": "target/main.yaml",
+      "bytes": 136443,
+      "sha256": "a35f69fd3fe8eedd33a5d340e1c655f222dcbb17858cdba24da55c898df9fb88"
+    }
+  ],
+  "priorEvidence": [
+    {
+      "localPath": "docs/evidence/events/banner-ready-sequence-v1.json",
+      "bytes": 45341,
+      "sha256": "5a77e1345963019af37e7143604a9b08da1f220215495f2da9913e80d210d1d5"
+    },
+    {
+      "localPath": "docs/evidence/visual/displayed-ready-v1.json",
+      "bytes": 68672,
+      "sha256": "099ef0e44315c33fd71c4a9dc50a4fead3ef02e6eee3ada9789505ec5d317c93"
+    },
+    {
+      "localPath": "docs/evidence/events/battle-start-0401.json",
+      "bytes": 5428,
+      "sha256": "eec1558078219201065382e79684d1ac46a10abbd337e1056b8236fd483f34a0"
+    }
+  ],
+  "originalInputs": {
+    "format": "fft.ready-handoff-plan",
+    "schemaVersion": 1,
+    "battle": {
+      "localPath": "scratch/all-data-extraction/BATTLE.BIN",
+      "bytes": 1397096,
+      "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94"
+    },
+    "archive": {
+      "localPath": "scratch/all-data-extraction/EVENT/TEST.EVT",
+      "bytes": 4096000,
+      "sha256": "107b109254ccbb150aca7baf336b632837b22e340677e2b9e746ac61b3de4405"
+    },
+    "states": [
+      {
+        "localPath": "scratch/banner-circle-hold-exit-a/first/states/fft-clean-base-game.state.auto",
+        "bytes": 1492949,
+        "sha256": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+      },
+      {
+        "localPath": "scratch/ready-displayed-087-e/original-140/states/fft-clean-base-game.state.auto",
+        "bytes": 1490722,
+        "sha256": "3c6bc7197b001c080e007a08c894325b56e35f90b42760ca2a4f7d1f399a143a"
+      }
+    ]
+  },
+  "residentFunctions": [
+    {
+      "name": "script_execute_event",
+      "address": 2148809688,
+      "bytes": 9120,
+      "sha256": "f5e240270b084a495426b78bb62b981948943db94841969f4b2305b75301a53f"
+    },
+    {
+      "name": "script_event_frame_run",
+      "address": 2148805976,
+      "bytes": 1620,
+      "sha256": "d4dd1211bca4f5422246ab538afc40ef107bb0aab1a55848c5d18893257a2f89"
+    },
+    {
+      "name": "scenario_finish_operation_get",
+      "address": 2148805468,
+      "bytes": 72,
+      "sha256": "6176716da1909b095787cf05efff2cb0507d7a740d41048694d9bb1e707b3db6"
+    },
+    {
+      "name": "battle_state_event_update",
+      "address": 2147976620,
+      "bytes": 560,
+      "sha256": "7782af25de2f0aec3e34884145788877a5919bfe4dd4e8f9d90d2faa61eed850"
+    },
+    {
+      "name": "turn_next_event_start",
+      "address": 2147946504,
+      "bytes": 412,
+      "sha256": "3645d9cb53ba0325c60c52f10366276ea805bffc25024839aeef4f43989ed7b4"
+    },
+    {
+      "name": "battle_state_change_turn_update",
+      "address": 2147975976,
+      "bytes": 276,
+      "sha256": "05f900b70b25776d4ba8e0c7453865a1f4326ce3c4bd966f09f601a6a8799d0a"
+    },
+    {
+      "name": "battle_state_open_action_menus_enter",
+      "address": 2147945476,
+      "bytes": 116,
+      "sha256": "588d383c591ec7eb0b0793cb30a9ed00dffd8530139cb3542ea2e04afde0289c"
+    },
+    {
+      "name": "battle_state_open_action_menus_update",
+      "address": 2147962516,
+      "bytes": 200,
+      "sha256": "0a8b63ee7f5ff87857074f46d436376177ac30d3a0c0ce998582eb8af9786108"
+    },
+    {
+      "name": "battle_input_update",
+      "address": 2148087380,
+      "bytes": 420,
+      "sha256": "f25584ec404f46a3a3f93d243eaac3fa8d32aca77070efda99820b836003c117"
+    },
+    {
+      "name": "script_event_input_update",
+      "address": 2148720536,
+      "bytes": 504,
+      "sha256": "e554290105b145d96d6da3914036c3516bd7286b21c3f01ec847e2b1a23200f4"
+    }
+  ],
+  "tailSummaries": [
+    {
+      "eventId": 4,
+      "rawBlockSha256": "528875cb3cde1eb84c709f8b2de9afb41478041710b134a0ede075ae34d1bef7",
+      "readyOffset": 810,
+      "hold": 60,
+      "readyBarrierOffset": 813,
+      "releaseOffset": 816,
+      "releaseBarrierOffset": 817,
+      "restoreSpeedOffset": 820,
+      "endOffset": 822,
+      "textOffset": 823,
+      "remainingRecordCount": 4,
+      "remainingOpcodeCounts": {
+        "1C": 1,
+        "77": 1,
+        "DB": 1,
+        "E5": 1
+      },
+      "restoresSpeedOne": true,
+      "hasCameraCurveRestore": false,
+      "immediateControlAfterReady": false
+    },
+    {
+      "eventId": 401,
+      "rawBlockSha256": "a12ad52f48c2b6684993f196ead1721ecb8895cfd0f6690faed1a0d9ccca483f",
+      "readyOffset": 192,
+      "hold": 60,
+      "readyBarrierOffset": 195,
+      "releaseOffset": 198,
+      "releaseBarrierOffset": 199,
+      "restoreSpeedOffset": 202,
+      "endOffset": 206,
+      "textOffset": 207,
+      "remainingRecordCount": 5,
+      "remainingOpcodeCounts": {
+        "1C": 1,
+        "63": 1,
+        "77": 1,
+        "DB": 1,
+        "E5": 1
+      },
+      "restoresSpeedOne": true,
+      "hasCameraCurveRestore": true,
+      "immediateControlAfterReady": false
+    }
+  ],
+  "observations": [
+    {
+      "state": {
+        "localPath": "scratch/banner-circle-hold-exit-a/first/states/fft-clean-base-game.state.auto",
+        "bytes": 1492949,
+        "sha256": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+      },
+      "event": {
+        "eventId": 4,
+        "commandOffset": 810,
+        "waitOffset": 813,
+        "uniqueArchiveMatch": [
+          4
+        ],
+        "rawBlockSha256": "528875cb3cde1eb84c709f8b2de9afb41478041710b134a0ede075ae34d1bef7",
+        "processedBlockSha256": "0081b2e28473d913c7fdbb7da15a44a157b2d22111cde255efc73ab8fa8a8034"
+      },
+      "ready": {
+        "logicalTick": 0,
+        "phase": "FadeIn",
+        "scale": 48,
+        "childPc": 2149360704,
+        "childSlot": 4,
+        "dispatcherSlot": 3,
+        "bank": 1,
+        "draws": []
+      },
+      "frameCounter": 9003,
+      "battleNotStarted": 1,
+      "scenarioEventActive": 1,
+      "gates": {
+        "eventId": 4,
+        "finishWord": 0,
+        "battleState": 52,
+        "menuInputMode": 0,
+        "menuOverlayState": 1,
+        "scriptThreadsIdle": 0,
+        "inputSuppression": 4,
+        "inputPrevious": 0,
+        "inputPressed": 0,
+        "playerControlObserved": false
+      },
+      "activeThreads": [
+        {
+          "slot": 1,
+          "taskId": 68
+        },
+        {
+          "slot": 2,
+          "taskId": 55
+        },
+        {
+          "slot": 3,
+          "taskId": 56
+        },
+        {
+          "slot": 4,
+          "taskId": 0
+        }
+      ]
+    },
+    {
+      "state": {
+        "localPath": "scratch/ready-displayed-087-e/original-140/states/fft-clean-base-game.state.auto",
+        "bytes": 1490722,
+        "sha256": "3c6bc7197b001c080e007a08c894325b56e35f90b42760ca2a4f7d1f399a143a"
+      },
+      "event": {
+        "eventId": 4,
+        "commandOffset": 810,
+        "waitOffset": 813,
+        "uniqueArchiveMatch": [
+          4
+        ],
+        "rawBlockSha256": "528875cb3cde1eb84c709f8b2de9afb41478041710b134a0ede075ae34d1bef7",
+        "processedBlockSha256": "0081b2e28473d913c7fdbb7da15a44a157b2d22111cde255efc73ab8fa8a8034"
+      },
+      "ready": {
+        "logicalTick": 69,
+        "phase": "ChildComplete",
+        "scale": null,
+        "childPc": 2148845956,
+        "childSlot": 4,
+        "dispatcherSlot": 3,
+        "bank": 1,
+        "draws": []
+      },
+      "frameCounter": 9072,
+      "battleNotStarted": 1,
+      "scenarioEventActive": 1,
+      "gates": {
+        "eventId": 4,
+        "finishWord": 0,
+        "battleState": 52,
+        "menuInputMode": 0,
+        "menuOverlayState": 1,
+        "scriptThreadsIdle": 0,
+        "inputSuppression": 4,
+        "inputPrevious": 0,
+        "inputPressed": 0,
+        "playerControlObserved": false
+      },
+      "activeThreads": [
+        {
+          "slot": 1,
+          "taskId": 68
+        },
+        {
+          "slot": 2,
+          "taskId": 55
+        }
+      ]
+    }
+  ],
+  "repeatability": {
+    "byteIdenticalReports": true,
+    "bytes": 13297,
+    "sha256": "3a0bf9de66ccc9bd8bb056e76118d50dedaf20c5ee0327cd879a42fbeb0bf840"
+  },
+  "selectedContract": {
+    "localPath": "docs/evidence/events/intro-battle-contract-v1.json",
+    "bytes": 4613,
+    "sha256": "566ff21028aa42bb48cff4186310b95eea05157055ecb08179be70c6f16c8648"
+  },
+  "contractCasesExecuted": false,
+  "tools": [
+    {
+      "localPath": "tools/verification/inspect_ready_handoff.py",
+      "bytes": 9503,
+      "sha256": "8df19f396fb120e6c741b67c326f9e1371dda173f1af41f354118e5d0d6ace5b"
+    },
+    {
+      "localPath": "tools/verification/test_ready_handoff.py",
+      "bytes": 4533,
+      "sha256": "96b9a3be1b501b911eb9d6a1c6a8d679cc45d609804ea4e7155c1b5993d1e7a2"
+    }
+  ],
+  "validation": {
+    "pythonPassed": 208,
+    "newPythonChecks": 11,
+    "lastFullDotnetPassed": 1868,
+    "dotnetRerun": false,
+    "productionCodeChanged": false,
+    "initialSandboxSuite": "207 passed; one unchanged existing temporary-file test hit sandbox PermissionError; rerun with normal temporary-file access passed all 208."
+  },
+  "newOriginalCaptures": false,
+  "emulatorLaunched": false,
+  "playerControlObserved": false,
+  "commonEvent401EntryObserved": false,
+  "originalCompletionDurationEstablished": false,
+  "originalEventEndRuntimeAdmitted": false,
+  "originalGameplayInputTimingEstablished": false,
+  "nextImplementation": "ZOD-091: authored prepared introduction to existing playable battle, with a pure ownership gate and fresh input boundary.",
+  "mediaPolicy": "Only source/artifact identities and scalar observations are committed; original blocks, states, decoded data and generated reports remain under ignored scratch."
+}

@@ -1,0 +1,333 @@
+{
+  "format": "fft.original-banner-circle-hide-evidence",
+  "schemaVersion": 1,
+  "recorded": "2026-10-24",
+  "edition": "SCUS-94221",
+  "managedBaseCommit": "5dfcacc",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "evidenceGuide": "docs/development/original-banner-circle-input.md",
+  "scope": "One paired owner-operated physical Circle press during hide; original task advances normally for one source update.",
+  "physicalProvenance": {
+    "action": "Owner loaded private slot 2 and saved a neutral checkpoint; after inspection, was instructed to hold Circle, tap K twice while paused, release Circle and save slot 2 through Quick Menu.",
+    "port": 1,
+    "frontendDriver": "XInput",
+    "deviceLogName": "Xbox 360 Controller",
+    "coreDevice": "PlayStation Controller",
+    "session": "b42ada1aa583401ab46ee921e4b95683",
+    "inputMovieRecorded": false,
+    "exactPhysicalTimingIndependentlyRecorded": false,
+    "files": [
+      {
+        "localPath": "scratch/banner-circle-hide-observation-plan/retroarch.log",
+        "bytes": 8953,
+        "sha256": "06f0225294b9b0634796b4c0e2720f17278a970d94cc4ff3987825222f7d0ac9"
+      },
+      {
+        "localPath": "scratch/banner-circle-hide-observation-plan/session.cfg",
+        "bytes": 179,
+        "sha256": "876aff385d512a22bf27f918957f7edfb28f98e1e9ee3ea450074133aeb3f50b"
+      },
+      {
+        "localPath": "scratch/banner-circle-hide-observation-plan/core-options.cfg",
+        "bytes": 1165,
+        "sha256": "ab6ef957daf729321de0d9f9aa8104068718dbf38617515b25e34c7f733acc48"
+      }
+    ],
+    "loadDiagnostic": "The initial slot-2 load reports failure. The subsequently saved neutral baseline independently verifies Hiding count 1; the later slot-2 loads have no corresponding failure message."
+  },
+  "preparationReport": {
+    "localPath": "scratch/banner-circle-hide-anchor-a/report.json",
+    "bytes": 5399,
+    "sha256": "97d53ec0b8cab06912806ebbb50d33ff0be15c6361129c0a1a8e4e764f634147"
+  },
+  "reports": [
+    {
+      "localPath": "scratch/banner-circle-hide-observed-a/report.json",
+      "bytes": 7147,
+      "sha256": "389489fa05238a28d6fc6ba7bf552f2c81858057ec5cf06256cb6fa76735e21b"
+    },
+    {
+      "localPath": "scratch/banner-circle-hide-observed-b/report.json",
+      "bytes": 7147,
+      "sha256": "389489fa05238a28d6fc6ba7bf552f2c81858057ec5cf06256cb6fa76735e21b"
+    }
+  ],
+  "repeatedReportsByteIdentical": true,
+  "plan": {
+    "localPath": "scratch/banner-circle-hide-observation-plan/plan.json",
+    "bytes": 683,
+    "sha256": "7eaa60c94be5c517d314fcea5d7e0c5cdfd9ed78047d55d18c0ca73ce7738a77"
+  },
+  "tools": [
+    {
+      "localPath": "tools/verification/inspect_banner_hide_circle.py",
+      "bytes": 4671,
+      "sha256": "5a13fe810ee58217bfe85ae91ca61214685e0e497ce1b097f15303ffcc255b86"
+    },
+    {
+      "localPath": "tools/verification/inspect_banner_circle.py",
+      "bytes": 7216,
+      "sha256": "81b8d749e4fd086c59a70386d9ebb366b4eadd4bab448a7a900379a6c1b8dd37"
+    },
+    {
+      "localPath": "tools/verification/capture_banner_continuation.py",
+      "bytes": 16116,
+      "sha256": "d9d973d970f8ebfdf9bf9b5907022a8c9ff70cdb6e26d955b9734c8a08cf269c"
+    },
+    {
+      "localPath": "tools/verification/compare_banner_hide.py",
+      "bytes": 21845,
+      "sha256": "9a375e7dfa44fd18404d1f2fd8eabd31db5a166dded4ef25432b1d50fec56c28"
+    },
+    {
+      "localPath": "tools/verification/trace_banner_draw_state.py",
+      "bytes": 6618,
+      "sha256": "15f44edd29c87f43ae0824c92e3b415deec58e6bd80c2b0ab487f7d4d3afdd9a"
+    },
+    {
+      "localPath": "tools/verification/compare_visual_checkpoints.py",
+      "bytes": 13970,
+      "sha256": "3ee039e9a767c491d2b44b9889b7d3512262d456e51cf34017945b5e84e3210b"
+    }
+  ],
+  "inputs": {
+    "format": "fft.banner-hide-circle-observation-plan",
+    "schemaVersion": 1,
+    "definition": {
+      "localPath": "scratch/banner-078-a/banner.json",
+      "bytes": 4071,
+      "sha256": "e1c61e66de5ca10f84743f286ec8fb7f34c0bdd14e41b5eb0cab704a629ffdac"
+    },
+    "before": {
+      "localPath": "scratch/banner-circle-hide-intake-a/fft-clean-base-game.state2",
+      "bytes": 1499596,
+      "sha256": "acd36f72a3a01157ad6f74743006ba471c800a05a6a28c668cd70dc3547aee64"
+    },
+    "after": {
+      "localPath": "scratch/banner-circle-hide-after-a/fft-clean-base-game.state2",
+      "bytes": 1499452,
+      "sha256": "04bd0c5438bafe30052cba0371ae8585c594752795b43be0964062d94da3ce17"
+    }
+  },
+  "witness": {
+    "before": {
+      "slot": 3,
+      "savedReturnAddress": 2149358532,
+      "phase": "Hiding",
+      "phaseCounter": 1,
+      "logicalTick": 81,
+      "revealCompleted": 20,
+      "holdCompleted": 60,
+      "hideCompleted": 1,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ]
+    },
+    "after": {
+      "slot": 3,
+      "savedReturnAddress": 2149358532,
+      "phase": "Hiding",
+      "phaseCounter": 2,
+      "logicalTick": 82,
+      "revealCompleted": 20,
+      "holdCompleted": 60,
+      "hideCompleted": 2,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 8,
+          "VisibleRows": 23
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 8,
+          "VisibleRows": 23
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 8,
+          "VisibleRows": 23
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 8,
+          "VisibleRows": 23
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 8,
+          "VisibleRows": 23
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 8,
+          "VisibleRows": 23
+        }
+      ]
+    },
+    "beforeInput": {
+      "residentCurrent": 0,
+      "residentPrevious": 0,
+      "residentPressed": 0,
+      "eventPressed": 0,
+      "eventHeld": 0
+    },
+    "afterInput": {
+      "residentCurrent": 32,
+      "residentPrevious": 32,
+      "residentPressed": 32,
+      "eventPressed": 32,
+      "eventHeld": 32
+    },
+    "beforeFrameCounter": 6435,
+    "afterFrameCounter": 6436,
+    "evidence": "Neutral -> Circle-only input over one source update; same active hide task/stack, next loop count, alternating buffer and exact six-piece crops. No skip yield."
+  },
+  "observations": [
+    {
+      "slot": 3,
+      "savedReturnAddress": 2149358532,
+      "phase": "Hiding",
+      "phaseCounter": 1,
+      "logicalTick": 81,
+      "revealCompleted": 20,
+      "holdCompleted": 60,
+      "hideCompleted": 1,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 0,
+          "VisibleRows": 31
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 0,
+          "VisibleRows": 31
+        }
+      ],
+      "exitCause": null,
+      "isTerminal": false
+    },
+    {
+      "slot": 3,
+      "savedReturnAddress": 2149358532,
+      "phase": "Hiding",
+      "phaseCounter": 2,
+      "logicalTick": 82,
+      "revealCompleted": 20,
+      "holdCompleted": 60,
+      "hideCompleted": 2,
+      "taskRunning": true,
+      "taskId": 56,
+      "draws": [
+        {
+          "PieceIndex": 0,
+          "CropTop": 8,
+          "VisibleRows": 23
+        },
+        {
+          "PieceIndex": 1,
+          "CropTop": 8,
+          "VisibleRows": 23
+        },
+        {
+          "PieceIndex": 2,
+          "CropTop": 8,
+          "VisibleRows": 23
+        },
+        {
+          "PieceIndex": 3,
+          "CropTop": 8,
+          "VisibleRows": 23
+        },
+        {
+          "PieceIndex": 4,
+          "CropTop": 8,
+          "VisibleRows": 23
+        },
+        {
+          "PieceIndex": 5,
+          "CropTop": 8,
+          "VisibleRows": 23
+        }
+      ],
+      "exitCause": null,
+      "isTerminal": false
+    }
+  ],
+  "subsequentNaturalCompletionObserved": false,
+  "originalEvent401Verified": false,
+  "bsvPlaybackVerified": false,
+  "emulatorLaunchedForThisPairInspection": false,
+  "validation": {
+    "releaseBuildWarnings": 0,
+    "dotnetTestsPassed": 1494,
+    "pythonTestsPassed": 152,
+    "combinedCircleManagedCases": 8,
+    "combinedCirclePythonTests": 17,
+    "runtimeChanged": false
+  },
+  "limits": [
+    "One owner-operated hide-phase Circle press; physical provenance is the owner report plus frozen input fields.",
+    "One source update only; no subsequent natural completion, USB/display latency, input-movie playback or original event identity claim.",
+    "Queued draw geometry is verified; screenshots are context, not a new pixel comparison.",
+    "Saved input words retain the last sample after physical release until the next poll.",
+    "Hide does not read Circle in the pinned source; globally updated input words do not imply the banner sampled them.",
+    "One observed press in each phase does not establish all controller mappings, repeats or boundary timings."
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-190",
+  "kind": "isolated-source-descriptions",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "scope": "Supplied source score keys, distances, clear-path and candidate dispositions after preparation; no projectile, formula/clock, full search or original/C/managed execution.",
+  "vectors": [
+    {"id":"signed-priority-dominates-proximity", "input":{"usable":true,"targetActive":true,"actor":[1,1,0],"destination":[2,1,0],"origins":[
+      {"tile":[1,1,0],"tilePriority":-26,"proximity":9,"distance":3,"clearPath":true,"disposition":"Scored"},
+      {"tile":[2,1,0],"tilePriority":0,"proximity":0,"distance":2,"clearPath":true,"disposition":"Scored"}]},
+      "expected":{"ordered":[[1,1,0],[2,1,0]],"visited":[[1,1,0]],"origin":[1,1,0],"destination":[2,1,0],"actBeforeMove":true,"disposition":"Scored","aimRemaining":0,"entryGateDraws":0,"formulaDraws":4}},
+    {"id":"later-map-coordinate-wins-key-tie", "input":{"usable":true,"targetActive":true,"actor":[1,1,0],"destination":[2,1,0],"origins":[
+      {"tile":[1,1,0],"tilePriority":0,"proximity":7,"distance":3,"clearPath":true,"disposition":"Scored"},
+      {"tile":[2,1,0],"tilePriority":0,"proximity":7,"distance":2,"clearPath":true,"disposition":"Scored"},
+      {"tile":[1,2,0],"tilePriority":0,"proximity":7,"distance":4,"clearPath":true,"disposition":"Scored"}]},
+      "expected":{"ordered":[[1,2,0],[2,1,0],[1,1,0]],"visited":[[1,2,0]],"origin":[1,2,0],"destination":[1,2,0],"actBeforeMove":false,"disposition":"Scored","aimRemaining":0,"entryGateDraws":0,"formulaDraws":4}},
+    {"id":"lower-proximity-beats-later-coordinate", "input":{"usable":true,"targetActive":true,"actor":[1,1,0],"destination":[2,1,0],"origins":[
+      {"tile":[1,1,0],"tilePriority":0,"proximity":7,"distance":3,"clearPath":true,"disposition":"Scored"},
+      {"tile":[2,1,0],"tilePriority":0,"proximity":8,"distance":2,"clearPath":true,"disposition":"Scored"}]},
+      "expected":{"ordered":[[1,1,0],[2,1,0]],"visited":[[1,1,0]],"origin":[1,1,0],"destination":[2,1,0],"actBeforeMove":true,"disposition":"Scored","aimRemaining":0,"entryGateDraws":0,"formulaDraws":4}},
+    {"id":"range-five-skips-and-blocked-path-retains-aim", "input":{"usable":true,"targetActive":true,"actor":[0,1,0],"destination":[2,1,0],"origins":[
+      {"tile":[0,1,0],"tilePriority":-100,"proximity":0,"distance":5,"clearPath":true,"disposition":"Scored"},
+      {"tile":[1,1,0],"tilePriority":-26,"proximity":0,"distance":4,"clearPath":false,"disposition":"Scored"},
+      {"tile":[2,1,0],"tilePriority":0,"proximity":0,"distance":3,"clearPath":true,"disposition":"Scored"}]},
+      "expected":{"ordered":[[1,1,0],[2,1,0]],"visited":[[1,1,0],[2,1,0]],"origin":[2,1,0],"destination":[2,1,0],"actBeforeMove":false,"disposition":"Scored","aimRemaining":0,"entryGateDraws":0,"formulaDraws":4}},
+    {"id":"not-valuable-consumes-sole-aim-without-retrying", "input":{"usable":true,"targetActive":true,"actor":[1,1,0],"destination":[2,1,0],"origins":[
+      {"tile":[1,1,0],"tilePriority":0,"proximity":7,"distance":3,"clearPath":true,"disposition":"NotValuable"},
+      {"tile":[2,1,0],"tilePriority":0,"proximity":8,"distance":2,"clearPath":true,"disposition":"Scored"}]},
+      "expected":{"ordered":[[1,1,0],[2,1,0]],"visited":[[1,1,0]],"origin":[1,1,0],"destination":[2,1,0],"actBeforeMove":true,"disposition":"NotValuable","aimRemaining":0,"entryGateDraws":0,"formulaDraws":4}},
+    {"id":"inactive-target-has-no-origin-or-formula-work", "input":{"usable":true,"targetActive":false,"actor":[1,1,0],"destination":[2,1,0],"origins":[
+      {"tile":[1,1,0],"tilePriority":0,"proximity":7,"distance":3,"clearPath":true,"disposition":"Scored"}]},
+      "expected":{"ordered":[],"visited":[],"origin":null,"destination":null,"actBeforeMove":null,"disposition":null,"aimRemaining":0,"entryGateDraws":0,"formulaDraws":0}},
+    {"id":"unusable-entry-stops-before-target-work", "input":{"usable":false,"targetActive":true,"actor":[1,1,0],"destination":[2,1,0],"origins":[
+      {"tile":[1,1,0],"tilePriority":0,"proximity":7,"distance":3,"clearPath":true,"disposition":"Scored"}]},
+      "expected":{"ordered":[],"visited":[],"origin":null,"destination":null,"actBeforeMove":null,"disposition":null,"aimRemaining":0,"entryGateDraws":0,"formulaDraws":0}}
+  ]
+}

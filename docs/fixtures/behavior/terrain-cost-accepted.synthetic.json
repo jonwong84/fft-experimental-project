@@ -1,0 +1,195 @@
+{
+  "format": "fft.behavior-fixture",
+  "schemaVersion": 1,
+  "fixtureId": "fixture:movement/terrain-cost-accepted",
+  "execution": "scenario",
+  "purpose": "Synthetic terrain entry cost threshold, accepted command.",
+  "target": {
+    "game": "FFT",
+    "edition": "SCUS-94221",
+    "region": "North America",
+    "platform": "PS1",
+    "policyId": "fft:movement/terrain-cost-prototype"
+  },
+  "reference": {
+    "decompCommit": "611b504d25d4a9b03fab8023d7dbea75fe381d5d",
+    "observedOn": "2026-10-22",
+    "usedForExpectations": false
+  },
+  "evidence": [
+    {
+      "id": "prototype-transition",
+      "kind": "synthetic-expectation",
+      "confidence": "specified",
+      "claim": "Cost-on-entry under the bounded terrain-cost prototype; rejection keeps state and events unchanged.",
+      "sources": [
+        {
+          "symbol": "TerrainAwareMovementRange.Calculate",
+          "path": "src/Zodiac.Framework/TerrainAwareMovementRange.cs",
+          "revision": "2aa8f0cbfaf39b4cd9ddae337805f4485ced7494"
+        }
+      ],
+      "limitations": [
+        "Managed prototype contract only; no original-game execution or observation."
+      ]
+    }
+  ],
+  "preconditions": [
+    "One normal unmoved unit; flat dry unoccupied synthetic tiles; effective costs supplied; no RNG."
+  ],
+  "exclusions": [
+    "Height/slope/jump and layer transitions",
+    "Original-game equivalence",
+    "Ability/weather resolution and special movement"
+  ],
+  "unknowns": [
+    "Original-game complete movement behavior remains unverified."
+  ],
+  "scenario": {
+    "initialState": {
+      "map": {
+        "id": "fixture:map/two-tiles",
+        "width": 2,
+        "depth": 1,
+        "layerCount": 1,
+        "tiles": [
+          {
+            "surface": "base:terrain/unclassified",
+            "height": 0,
+            "halfHeight": 0,
+            "waterDepth": 0,
+            "slope": {
+              "east": 0,
+              "west": 0,
+              "south": 0,
+              "north": 0
+            },
+            "ceilingDepth": 0,
+            "movementFlags": []
+          },
+          {
+            "surface": "base:terrain/unclassified",
+            "height": 0,
+            "halfHeight": 0,
+            "waterDepth": 0,
+            "slope": {
+              "east": 0,
+              "west": 0,
+              "south": 0,
+              "north": 0
+            },
+            "ceilingDepth": 0,
+            "movementFlags": []
+          }
+        ]
+      },
+      "units": [
+        {
+          "id": "fixture:unit/mover",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "layer": 0
+          },
+          "hasMoved": false,
+          "movementProfile": {
+            "move": 2,
+            "jump": 0,
+            "bodyHeight": 6,
+            "mode": "Normal",
+            "traits": [],
+            "terrainCosts": [
+              {
+                "surface": "base:terrain/unclassified",
+                "movePoints": 2,
+                "isBlocked": false
+              }
+            ]
+          }
+        }
+      ],
+      "rngState": null
+    },
+    "commands": [
+      {
+        "index": 0,
+        "kind": "move-unit",
+        "unitId": "fixture:unit/mover",
+        "destination": {
+          "x": 1,
+          "y": 0,
+          "layer": 0
+        }
+      }
+    ]
+  },
+  "sourceCases": [],
+  "expectations": [
+    {
+      "commandIndex": 0,
+      "assertions": [
+        {
+          "kind": "result",
+          "accepted": true,
+          "rejection": "None",
+          "evidenceIds": [
+            "prototype-transition"
+          ]
+        },
+        {
+          "kind": "state-and-events",
+          "stateRelation": "new-instance",
+          "state": {
+            "mapId": "fixture:map/two-tiles",
+            "units": [
+              {
+                "id": "fixture:unit/mover",
+                "position": {
+                  "x": 1,
+                  "y": 0,
+                  "layer": 0
+                },
+                "hasMoved": true,
+                "movementProfile": {
+                  "move": 2,
+                  "jump": 0,
+                  "bodyHeight": 6,
+                  "mode": "Normal",
+                  "traits": [],
+                  "terrainCosts": [
+                    {
+                      "surface": "base:terrain/unclassified",
+                      "movePoints": 2,
+                      "isBlocked": false
+                    }
+                  ]
+                }
+              }
+            ],
+            "rngState": null
+          },
+          "events": [
+            {
+              "kind": "unit-moved",
+              "unitId": "fixture:unit/mover",
+              "from": {
+                "x": 0,
+                "y": 0,
+                "layer": 0
+              },
+              "to": {
+                "x": 1,
+                "y": 0,
+                "layer": 0
+              }
+            }
+          ],
+          "evidenceIds": [
+            "prototype-transition"
+          ]
+        }
+      ]
+    }
+  ],
+  "captures": []
+}

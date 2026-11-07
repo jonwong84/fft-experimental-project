@@ -1,0 +1,869 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-334",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "confidence": "source-derived arithmetic descriptions; no original/C execution",
+  "faith": [
+    {
+      "id": "single-final-division",
+      "input": {
+        "amount": 5,
+        "caster": {
+          "stored": 90,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 90,
+          "faithStatus": false,
+          "innocentStatus": false
+        }
+      },
+      "expected": 4
+    },
+    {
+      "id": "negative-toward-zero",
+      "input": {
+        "amount": -5,
+        "caster": {
+          "stored": 90,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 90,
+          "faithStatus": false,
+          "innocentStatus": false
+        }
+      },
+      "expected": -4
+    },
+    {
+      "id": "ordinary-cure",
+      "input": {
+        "amount": 70,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        }
+      },
+      "expected": 34
+    },
+    {
+      "id": "zero-caster",
+      "input": {
+        "amount": 200,
+        "caster": {
+          "stored": 0,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        }
+      },
+      "expected": 0
+    },
+    {
+      "id": "zero-target",
+      "input": {
+        "amount": 200,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 0,
+          "faithStatus": false,
+          "innocentStatus": false
+        }
+      },
+      "expected": 0
+    },
+    {
+      "id": "caster-faith-status",
+      "input": {
+        "amount": 200,
+        "caster": {
+          "stored": 30,
+          "faithStatus": true,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        }
+      },
+      "expected": 140
+    },
+    {
+      "id": "target-faith-status",
+      "input": {
+        "amount": 200,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 30,
+          "faithStatus": true,
+          "innocentStatus": false
+        }
+      },
+      "expected": 140
+    },
+    {
+      "id": "both-faith-status",
+      "input": {
+        "amount": 200,
+        "caster": {
+          "stored": 30,
+          "faithStatus": true,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 30,
+          "faithStatus": true,
+          "innocentStatus": false
+        }
+      },
+      "expected": 200
+    },
+    {
+      "id": "caster-innocent",
+      "input": {
+        "amount": 200,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": true
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        }
+      },
+      "expected": 0
+    },
+    {
+      "id": "target-innocent",
+      "input": {
+        "amount": 200,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": true
+        }
+      },
+      "expected": 0
+    },
+    {
+      "id": "caster-innocent-wins",
+      "input": {
+        "amount": 200,
+        "caster": {
+          "stored": 70,
+          "faithStatus": true,
+          "innocentStatus": true
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": true,
+          "innocentStatus": false
+        }
+      },
+      "expected": 0
+    },
+    {
+      "id": "target-innocent-wins",
+      "input": {
+        "amount": 200,
+        "caster": {
+          "stored": 70,
+          "faithStatus": true,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": true,
+          "innocentStatus": true
+        }
+      },
+      "expected": 0
+    },
+    {
+      "id": "raw-byte-faith",
+      "input": {
+        "amount": 100,
+        "caster": {
+          "stored": 255,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 255,
+          "faithStatus": false,
+          "innocentStatus": false
+        }
+      },
+      "expected": 650
+    },
+    {
+      "id": "positive-halfword-result-wrap",
+      "input": {
+        "amount": 32767,
+        "caster": {
+          "stored": 255,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 255,
+          "faithStatus": false,
+          "innocentStatus": false
+        }
+      },
+      "expected": 16459
+    },
+    {
+      "id": "negative-halfword-result-wrap",
+      "input": {
+        "amount": -32768,
+        "caster": {
+          "stored": 255,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 255,
+          "faithStatus": false,
+          "innocentStatus": false
+        }
+      },
+      "expected": -16465
+    }
+  ],
+  "products": [
+    {
+      "id": "ordinary",
+      "xa": 5,
+      "ya": 14,
+      "expected": 70
+    },
+    {
+      "id": "positive-overflow",
+      "xa": 255,
+      "ya": 255,
+      "expected": -511
+    },
+    {
+      "id": "halfword-max-product",
+      "xa": 32767,
+      "ya": 32767,
+      "expected": 1
+    },
+    {
+      "id": "signed-product",
+      "xa": -5,
+      "ya": 14,
+      "expected": -70
+    },
+    {
+      "id": "negative-times-negative",
+      "xa": -5,
+      "ya": -14,
+      "expected": 70
+    },
+    {
+      "id": "negative-overflow",
+      "xa": -32768,
+      "ya": -1,
+      "expected": -32768
+    },
+    {
+      "id": "zero",
+      "xa": 0,
+      "ya": 255,
+      "expected": 0
+    }
+  ],
+  "amounts": [
+    {
+      "id": "cure-tier-1",
+      "input": {
+        "kind": "Healing",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "expected": {
+        "xa": 5,
+        "product": 70,
+        "amount": 34
+      }
+    },
+    {
+      "id": "cure-tier-2",
+      "input": {
+        "kind": "Healing",
+        "magicAttack": 5,
+        "power": 20,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "expected": {
+        "xa": 5,
+        "product": 100,
+        "amount": 49
+      }
+    },
+    {
+      "id": "cure-tier-3",
+      "input": {
+        "kind": "Healing",
+        "magicAttack": 5,
+        "power": 30,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "expected": {
+        "xa": 5,
+        "product": 150,
+        "amount": 73
+      }
+    },
+    {
+      "id": "cure-tier-4",
+      "input": {
+        "kind": "Healing",
+        "magicAttack": 5,
+        "power": 40,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "expected": {
+        "xa": 5,
+        "product": 200,
+        "amount": 98
+      }
+    },
+    {
+      "id": "fire-tier-1",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "expected": {
+        "xa": 5,
+        "product": 70,
+        "amount": 34
+      }
+    },
+    {
+      "id": "fire-tier-2",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 18,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "expected": {
+        "xa": 5,
+        "product": 90,
+        "amount": 44
+      }
+    },
+    {
+      "id": "fire-tier-3",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 24,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "expected": {
+        "xa": 5,
+        "product": 120,
+        "amount": 58
+      }
+    },
+    {
+      "id": "fire-tier-4",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 32,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "expected": {
+        "xa": 5,
+        "product": 160,
+        "amount": 78
+      }
+    },
+    {
+      "id": "strengthen-before-attack-up",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 7,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {
+          "strengthensElement": true,
+          "magicAttackUp": true
+        }
+      },
+      "expected": {
+        "xa": 10,
+        "product": 140,
+        "amount": 68
+      }
+    },
+    {
+      "id": "damage-modifier-chain",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 7,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {
+          "strengthensElement": true,
+          "magicAttackUp": true,
+          "magicDefenseUp": true,
+          "targetShell": true,
+          "targetChickenOrFrog": true,
+          "compatibility": "Good"
+        }
+      },
+      "expected": {
+        "xa": 7,
+        "product": 98,
+        "amount": 48
+      }
+    },
+    {
+      "id": "healing-ignores-target-defenses",
+      "input": {
+        "kind": "Healing",
+        "magicAttack": 7,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {
+          "strengthensElement": true,
+          "magicAttackUp": true,
+          "magicDefenseUp": true,
+          "targetShell": true,
+          "targetChickenOrFrog": true,
+          "compatibility": "Good"
+        }
+      },
+      "expected": {
+        "xa": 12,
+        "product": 168,
+        "amount": 82
+      }
+    },
+    {
+      "id": "compatibility-Neutral",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 7,
+        "power": 10,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {
+          "compatibility": "Neutral"
+        }
+      },
+      "expected": {
+        "xa": 7,
+        "product": 70,
+        "amount": 34
+      }
+    },
+    {
+      "id": "compatibility-Good",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 7,
+        "power": 10,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {
+          "compatibility": "Good"
+        }
+      },
+      "expected": {
+        "xa": 8,
+        "product": 80,
+        "amount": 39
+      }
+    },
+    {
+      "id": "compatibility-Best",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 7,
+        "power": 10,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {
+          "compatibility": "Best"
+        }
+      },
+      "expected": {
+        "xa": 10,
+        "product": 100,
+        "amount": 49
+      }
+    },
+    {
+      "id": "compatibility-Bad",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 7,
+        "power": 10,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {
+          "compatibility": "Bad"
+        }
+      },
+      "expected": {
+        "xa": 6,
+        "product": 60,
+        "amount": 29
+      }
+    },
+    {
+      "id": "compatibility-Worst",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 7,
+        "power": 10,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {
+          "compatibility": "Worst"
+        }
+      },
+      "expected": {
+        "xa": 4,
+        "product": 40,
+        "amount": 19
+      }
+    },
+    {
+      "id": "compatibility-Serpentarius",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 7,
+        "power": 10,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {
+          "compatibility": "Serpentarius"
+        }
+      },
+      "expected": {
+        "xa": 7,
+        "product": 70,
+        "amount": 34
+      }
+    },
+    {
+      "id": "neutral-zero-xa-floor",
+      "input": {
+        "kind": "Healing",
+        "magicAttack": 0,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "expected": {
+        "xa": 1,
+        "product": 14,
+        "amount": 6
+      }
+    },
+    {
+      "id": "serpentarius-zero-bypasses-floor",
+      "input": {
+        "kind": "Healing",
+        "magicAttack": 0,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {
+          "compatibility": "Serpentarius"
+        }
+      },
+      "expected": {
+        "xa": 0,
+        "product": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "zero-power",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 7,
+        "power": 0,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "expected": {
+        "xa": 7,
+        "product": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "stored-product-wrap-before-faith",
+      "input": {
+        "kind": "Healing",
+        "magicAttack": 255,
+        "power": 255,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "expected": {
+        "xa": 255,
+        "product": -511,
+        "amount": -250
+      }
+    },
+    {
+      "id": "raw-amount-not-999-capped",
+      "input": {
+        "kind": "Healing",
+        "magicAttack": 99,
+        "power": 40,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "expected": {
+        "xa": 99,
+        "product": 3960,
+        "amount": 1940
+      }
+    }
+  ]
+}

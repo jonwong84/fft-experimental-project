@@ -1,0 +1,2232 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-342",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "confidence": "source-derived descriptions, no original/C execution",
+  "scope": "Resolved equipment type/byte facts, classified action restriction, fresh hit with supplied unsigned16 accuracy; magic class evade is zero. No earlier reactions/Reflect or live publication.",
+  "loads": [
+    {
+      "id": "qualified-slots",
+      "input": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 15,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 25,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 35,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "expected": {
+        "evades": [
+          15,
+          25,
+          35
+        ],
+        "items": [
+          10,
+          20,
+          30
+        ]
+      }
+    },
+    {
+      "id": "wrong-types-retain-no-contributions",
+      "input": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 255,
+          "qualifies": false
+        },
+        "right": {
+          "item": 20,
+          "evade": 255,
+          "qualifies": false
+        },
+        "left": {
+          "item": 30,
+          "evade": 255,
+          "qualifies": false
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "expected": {
+        "evades": [
+          0,
+          0,
+          0
+        ],
+        "items": [
+          10,
+          20,
+          30
+        ]
+      }
+    },
+    {
+      "id": "monster-no-equipment-evades",
+      "input": {
+        "monster": true,
+        "accessory": {
+          "item": 10,
+          "evade": 255,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 255,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 255,
+          "qualifies": true
+        },
+        "rightWeapon": 40,
+        "leftWeapon": 255
+      },
+      "expected": {
+        "evades": [
+          0,
+          0,
+          0
+        ],
+        "items": [
+          10,
+          40,
+          30
+        ]
+      }
+    },
+    {
+      "id": "mixed-primary-type-facts",
+      "input": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 255,
+          "qualifies": false
+        },
+        "right": {
+          "item": 20,
+          "evade": 25,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 200,
+          "qualifies": false
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "expected": {
+        "evades": [
+          0,
+          25,
+          0
+        ],
+        "items": [
+          10,
+          20,
+          30
+        ]
+      }
+    },
+    {
+      "id": "full-byte-storage",
+      "input": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 255,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 254,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 253,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "expected": {
+        "evades": [
+          255,
+          254,
+          253
+        ],
+        "items": [
+          10,
+          20,
+          30
+        ]
+      }
+    },
+    {
+      "id": "weapon-label-preferred-over-shield",
+      "input": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 25,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 35,
+          "qualifies": true
+        },
+        "rightWeapon": 40,
+        "leftWeapon": 50
+      },
+      "expected": {
+        "evades": [
+          0,
+          25,
+          35
+        ],
+        "items": [
+          10,
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "zero-is-an-item-not-none",
+      "input": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 25,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 35,
+          "qualifies": true
+        },
+        "rightWeapon": 0,
+        "leftWeapon": 255
+      },
+      "expected": {
+        "evades": [
+          0,
+          25,
+          35
+        ],
+        "items": [
+          10,
+          0,
+          30
+        ]
+      }
+    },
+    {
+      "id": "none-is-255",
+      "input": {
+        "monster": false,
+        "accessory": {
+          "item": 255,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 255,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 255,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "expected": {
+        "evades": [
+          0,
+          0,
+          0
+        ],
+        "items": [
+          255,
+          255,
+          255
+        ]
+      }
+    }
+  ],
+  "preparations": [
+    {
+      "id": "unchanged",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 15,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 25,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 35,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "expected": {
+        "base": 100,
+        "evades": [
+          15,
+          25,
+          35
+        ],
+        "abandon": false
+      }
+    },
+    {
+      "id": "transparent-clears-only-contributions",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 15,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 25,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 35,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": true,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "expected": {
+        "base": 100,
+        "evades": [
+          0,
+          0,
+          0
+        ],
+        "abandon": false
+      }
+    },
+    {
+      "id": "abandon-unrestricted",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 15,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 25,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 35,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": true,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "expected": {
+        "base": 50,
+        "evades": [
+          15,
+          25,
+          35
+        ],
+        "abandon": true
+      }
+    },
+    {
+      "id": "abandon-restricted",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 15,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 25,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 35,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": false,
+        "transparent": false,
+        "abandon": true,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "expected": {
+        "base": 100,
+        "evades": [
+          15,
+          25,
+          35
+        ],
+        "abandon": false
+      }
+    },
+    {
+      "id": "defending",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 15,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 25,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 35,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": true
+      },
+      "expected": {
+        "base": 50,
+        "evades": [
+          15,
+          25,
+          35
+        ],
+        "abandon": false
+      }
+    },
+    {
+      "id": "stacked-halvings",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 15,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 25,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 35,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": true,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": true
+      },
+      "expected": {
+        "base": 25,
+        "evades": [
+          15,
+          25,
+          35
+        ],
+        "abandon": true
+      }
+    },
+    {
+      "id": "target-dontAct",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 15,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 25,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 35,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": true,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "expected": {
+        "base": 100,
+        "evades": [
+          0,
+          0,
+          0
+        ],
+        "abandon": false
+      }
+    },
+    {
+      "id": "target-sleep",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 15,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 25,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 35,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": true,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "expected": {
+        "base": 100,
+        "evades": [
+          0,
+          0,
+          0
+        ],
+        "abandon": false
+      }
+    },
+    {
+      "id": "target-stop",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 15,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 25,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 35,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": true,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "expected": {
+        "base": 100,
+        "evades": [
+          0,
+          0,
+          0
+        ],
+        "abandon": false
+      }
+    },
+    {
+      "id": "target-confusion",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 15,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 25,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 35,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": true,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "expected": {
+        "base": 100,
+        "evades": [
+          0,
+          0,
+          0
+        ],
+        "abandon": false
+      }
+    },
+    {
+      "id": "target-charging",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 15,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 25,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 35,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": true,
+        "performing": false,
+        "defending": false
+      },
+      "expected": {
+        "base": 100,
+        "evades": [
+          0,
+          0,
+          0
+        ],
+        "abandon": false
+      }
+    },
+    {
+      "id": "target-performing",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 15,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 25,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 35,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": true,
+        "defending": false
+      },
+      "expected": {
+        "base": 100,
+        "evades": [
+          0,
+          0,
+          0
+        ],
+        "abandon": false
+      }
+    },
+    {
+      "id": "later-clear-retains-abandon-reaction-and-defending",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 15,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 25,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 35,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": true,
+        "dontAct": false,
+        "sleep": true,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": true
+      },
+      "expected": {
+        "base": 25,
+        "evades": [
+          0,
+          0,
+          0
+        ],
+        "abandon": true
+      }
+    },
+    {
+      "id": "transparent-still-records-abandon",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 15,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 25,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 35,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": true,
+        "abandon": true,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": true
+      },
+      "expected": {
+        "base": 25,
+        "evades": [
+          0,
+          0,
+          0
+        ],
+        "abandon": true
+      }
+    },
+    {
+      "id": "monster-still-runs-modifiers",
+      "equipment": {
+        "monster": true,
+        "accessory": {
+          "item": 10,
+          "evade": 255,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 255,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 255,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": true,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "expected": {
+        "base": 50,
+        "evades": [
+          0,
+          0,
+          0
+        ],
+        "abandon": true
+      }
+    }
+  ],
+  "rolls": [
+    {
+      "id": "zero-evades-Execute",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "Execute",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "word": 2547201699,
+        "count": 13,
+        "draws": 4
+      }
+    },
+    {
+      "id": "zero-evades-Preview",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "Preview",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "word": 2547201699,
+        "count": 13,
+        "draws": 4
+      }
+    },
+    {
+      "id": "zero-evades-AiSimulation",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "AiSimulation",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "word": 2547201699,
+        "count": 13,
+        "draws": 4
+      }
+    },
+    {
+      "id": "secondary-not-evadeable-skips-rolls-after-preparation",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 255,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 255,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 255,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": true,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "Execute",
+      "accuracy": 100,
+      "evadeable": false,
+      "word": 2361954567,
+      "count": 18446744073709551615,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": true
+        },
+        "word": 2361954567,
+        "count": 18446744073709551615,
+        "draws": 0
+      }
+    },
+    {
+      "id": "accessory-first",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 1,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "Execute",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": false,
+          "accuracy": 99,
+          "miss": 1,
+          "itemLost": 10,
+          "abandon": false
+        },
+        "word": 4660,
+        "count": 10,
+        "draws": 1
+      }
+    },
+    {
+      "id": "right-hand-weapon-label",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 75,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 40,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "Execute",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": false,
+          "accuracy": 25,
+          "miss": 2,
+          "itemLost": 40,
+          "abandon": false
+        },
+        "word": 1305200733,
+        "count": 11,
+        "draws": 2
+      }
+    },
+    {
+      "id": "left-shield-third",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 60,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "Execute",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": false,
+          "accuracy": 40,
+          "miss": 3,
+          "itemLost": 30,
+          "abandon": false
+        },
+        "word": 3418281426,
+        "count": 12,
+        "draws": 3
+      }
+    },
+    {
+      "id": "independent-sources-and-truncation",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 10,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 20,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 30,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "Execute",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 50,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "word": 3587663605,
+        "count": 13,
+        "draws": 4
+      }
+    },
+    {
+      "id": "incoming-accuracy-scales-after-product",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 10,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 20,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 30,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "Execute",
+      "accuracy": 37,
+      "evadeable": true,
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 18,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "word": 3587663605,
+        "count": 13,
+        "draws": 4
+      }
+    },
+    {
+      "id": "partial-evade-Preview",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 10,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 20,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 30,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "Preview",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 50,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "word": 2547201699,
+        "count": 13,
+        "draws": 4
+      }
+    },
+    {
+      "id": "partial-evade-AiSimulation",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 10,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 20,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 30,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "AiSimulation",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 50,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "word": 2547201699,
+        "count": 13,
+        "draws": 4
+      }
+    },
+    {
+      "id": "certain-accessory-still-draws",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 100,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "Execute",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 1,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": false,
+          "accuracy": 0,
+          "miss": 1,
+          "itemLost": 10,
+          "abandon": false
+        },
+        "word": 1103527590,
+        "count": 10,
+        "draws": 1
+      }
+    },
+    {
+      "id": "earlier-partial-evade-label-before-certain-right",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 1,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 100,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "Execute",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": false,
+          "accuracy": 0,
+          "miss": 1,
+          "itemLost": 10,
+          "abandon": false
+        },
+        "word": 4660,
+        "count": 10,
+        "draws": 1
+      }
+    },
+    {
+      "id": "certain-right-Preview",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 255,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "Preview",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": false,
+          "accuracy": 0,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "word": 2547201699,
+        "count": 13,
+        "draws": 4
+      }
+    },
+    {
+      "id": "certain-right-AiSimulation",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 255,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "AiSimulation",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": false,
+          "accuracy": 0,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "word": 2547201699,
+        "count": 13,
+        "draws": 4
+      }
+    },
+    {
+      "id": "rounded-zero-accuracy-not-an-early-miss",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 90,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 90,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 90,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "Execute",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 1981,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 0,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "word": 3198837433,
+        "count": 13,
+        "draws": 4
+      }
+    },
+    {
+      "id": "rounded-zero-preview-still-hit",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 90,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 90,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 90,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "Preview",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 1,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 0,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "word": 3295386429,
+        "count": 13,
+        "draws": 4
+      }
+    },
+    {
+      "id": "stacked-base-and-full-ushort-accuracy",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 1,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 2,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 3,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": true,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": true
+      },
+      "mode": "Execute",
+      "accuracy": 65535,
+      "evadeable": true,
+      "word": 560173319,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 50461,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": true
+        },
+        "word": 1528706723,
+        "count": 13,
+        "draws": 4
+      }
+    },
+    {
+      "id": "exhausted-before-first",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "Execute",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 2361954567,
+      "count": 18446744073709551615,
+      "expected": {
+        "accepted": false,
+        "rejection": "RandomDrawCountExhausted",
+        "outcome": null,
+        "word": 2361954567,
+        "count": 18446744073709551615,
+        "draws": 0
+      }
+    },
+    {
+      "id": "exhausted-after-private-draws",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "Execute",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 2361954567,
+      "count": 18446744073709551613,
+      "expected": {
+        "accepted": false,
+        "rejection": "RandomDrawCountExhausted",
+        "outcome": null,
+        "word": 2361954567,
+        "count": 18446744073709551613,
+        "draws": 0
+      }
+    },
+    {
+      "id": "last-draw-can-evade-and-succeed",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 1,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "Execute",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 2361954567,
+      "count": 18446744073709551614,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": false,
+          "accuracy": 99,
+          "miss": 1,
+          "itemLost": 10,
+          "abandon": false
+        },
+        "word": 4660,
+        "count": 18446744073709551615,
+        "draws": 1
+      }
+    },
+    {
+      "id": "cannot-preflight-four-draws-for-an-early-exit",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 75,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "Execute",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 2361954567,
+      "count": 18446744073709551614,
+      "expected": {
+        "accepted": false,
+        "rejection": "RandomDrawCountExhausted",
+        "outcome": null,
+        "word": 2361954567,
+        "count": 18446744073709551614,
+        "draws": 0
+      }
+    },
+    {
+      "id": "scaled-19-last-success",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 19,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "Execute",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 2143129863,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": false,
+          "accuracy": 81,
+          "miss": 1,
+          "itemLost": 10,
+          "abandon": false
+        },
+        "word": 407966260,
+        "count": 10,
+        "draws": 1
+      }
+    },
+    {
+      "id": "scaled-19-first-failure",
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 19,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "mode": "Execute",
+      "accuracy": 100,
+      "evadeable": true,
+      "word": 1797427463,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 81,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "word": 30226083,
+        "count": 13,
+        "draws": 4
+      }
+    }
+  ]
+}

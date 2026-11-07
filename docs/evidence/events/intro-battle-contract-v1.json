@@ -1,0 +1,98 @@
+{
+  "format": "fft.intro-battle-handoff-contract",
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "managedBase": "72586cf53ae23c5a58d1aa9c108cdde37d2d3430",
+  "specificationOnly": true,
+  "executed": false,
+  "profile": "Authored prepared ZOD-089 introduction then the existing synthetic two-unit battle; no retail EventEnd execution.",
+  "ownership": "Availability follows accepted introduction event exit with terminal display tasks, not an image or renderer event.",
+  "inputPolicy": "No queued/reused transition sample; baseline held keyboard and mouse at ownership change; later fresh explicit command.",
+  "cases": [
+    {
+      "id": "IBH-001",
+      "setup": "Natural 60/60 introduction",
+      "action": "Start then accepted ticks through 162",
+      "expected": "Battle remains unchanged through 161; accepted event exit at 162 publishes availability once; no battle command or CT tick occurs in that call.",
+      "executed": false
+    },
+    {
+      "id": "IBH-002",
+      "setup": "Ready child completion is insufficient",
+      "action": "Observe accepted tick 160",
+      "expected": "Child clear does not open battle ownership; event remains suspended.",
+      "executed": false
+    },
+    {
+      "id": "IBH-003",
+      "setup": "Ready dispatcher completion is insufficient",
+      "action": "Observe accepted tick 161",
+      "expected": "Task 56 clear does not open ownership before the waiting event exits.",
+      "executed": false
+    },
+    {
+      "id": "IBH-004",
+      "setup": "Circle skip and discarded birth sample",
+      "action": "Circle ticks 5,7,8 in the 60/60 introduction",
+      "expected": "Intro exits at 18; birth sample at 7 is discarded; no Circle sample is forwarded as a battle action.",
+      "executed": false
+    },
+    {
+      "id": "IBH-005",
+      "setup": "Zero and maximum authored holds",
+      "action": "Run holds 0/0 and 255/255",
+      "expected": "Availability occurs only at accepted event exits 42 and 552, respectively; battle state is frozen beforehand.",
+      "executed": false
+    },
+    {
+      "id": "IBH-006",
+      "setup": "Late budget failure at exit",
+      "action": "Reject the tick-162 call through its cumulative instruction budget",
+      "expected": "Entire session and battle state remain identical, with no trace/availability/command consumption; retry succeeds once.",
+      "executed": false
+    },
+    {
+      "id": "IBH-007",
+      "setup": "Battle commands during introduction",
+      "action": "Attempt NextTurn, move, act, wait, save/load and pointer selection before exit",
+      "expected": "No battle state, CT, RNG, journal or selection mutation; no deferred command is queued for later execution.",
+      "executed": false
+    },
+    {
+      "id": "IBH-008",
+      "setup": "Held keyboard and pointer at ownership change",
+      "action": "Hold a mapped battle key and mouse button through intro exit",
+      "expected": "Transition clears queued inputs and baselines held buttons; release plus fresh press is required to dispatch a battle command.",
+      "executed": false
+    },
+    {
+      "id": "IBH-009",
+      "setup": "At-most-once availability and fresh battle command",
+      "action": "Read/draw/revisit the completed intro, then send a later explicit NextTurn",
+      "expected": "Availability is not republished, intro no longer consumes ticks/input, and exactly the existing battle NextTurn result is produced.",
+      "executed": false
+    },
+    {
+      "id": "IBH-010",
+      "setup": "Readiness failures",
+      "action": "Missing/corrupt descriptor or either artwork; graphics startup failure",
+      "expected": "No logical intro or battle command admission and no success-check output; existing packages/outputs remain unchanged.",
+      "executed": false
+    },
+    {
+      "id": "IBH-011",
+      "setup": "Presentation and focus independence",
+      "action": "Draw repeatedly; resize/recreate resources; deactivate/reactivate before and after handoff",
+      "expected": "State, trace, ownership and battle journal are unchanged; activation baselines input and never submits a command.",
+      "executed": false
+    },
+    {
+      "id": "IBH-012",
+      "setup": "Finite native/headless replay and legacy checks",
+      "action": "Run natural and Circle intro routes followed by the established battle scenario",
+      "expected": "One host hands off once; resulting battle state/journal equals headless replay; renderer publishes no completion facts; prior standalone outputs remain equal.",
+      "executed": false
+    }
+  ]
+}

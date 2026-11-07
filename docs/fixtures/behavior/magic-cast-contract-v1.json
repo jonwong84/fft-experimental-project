@@ -1,0 +1,2724 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-357",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "confidence": "source-derived supplied-order single-strike descriptions, no original/C execution",
+  "casts": [
+    {
+      "id": "two-targets-one-cost",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "targets": [
+        {
+          "id": "first",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 0
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        },
+        {
+          "id": "second",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 128
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        }
+      ],
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "mp": 21,
+          "cost": 9,
+          "targets": [
+            {
+              "id": "first",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 34,
+                "healing": 0,
+                "types": {
+                  "damage": true,
+                  "healing": false,
+                  "pseudo": true
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": false,
+                  "added": true
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "itemLost": 0,
+                "abandon": false
+              },
+              "procDisposition": "Passed",
+              "setFlag": true
+            },
+            {
+              "id": "second",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 68,
+                "healing": 0,
+                "types": {
+                  "damage": true,
+                  "healing": false,
+                  "pseudo": true
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": true,
+                  "added": false
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "itemLost": 0,
+                "abandon": false
+              },
+              "procDisposition": "Failed",
+              "setFlag": false
+            }
+          ]
+        },
+        "word": 1579910103,
+        "count": 19
+      }
+    },
+    {
+      "id": "same-formula-different-target-order",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "targets": [
+        {
+          "id": "second",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 128
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        },
+        {
+          "id": "first",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 0
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        }
+      ],
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "mp": 21,
+          "cost": 9,
+          "targets": [
+            {
+              "id": "second",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 68,
+                "healing": 0,
+                "types": {
+                  "damage": true,
+                  "healing": false,
+                  "pseudo": true
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": true,
+                  "added": true
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "itemLost": 0,
+                "abandon": false
+              },
+              "procDisposition": "Passed",
+              "setFlag": true
+            },
+            {
+              "id": "first",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 34,
+                "healing": 0,
+                "types": {
+                  "damage": true,
+                  "healing": false,
+                  "pseudo": false
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": false,
+                  "added": false
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "itemLost": 0,
+                "abandon": false
+              },
+              "procDisposition": "Failed",
+              "setFlag": false
+            }
+          ]
+        },
+        "word": 1579910103,
+        "count": 19
+      }
+    },
+    {
+      "id": "two-target-Preview",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Preview",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "targets": [
+        {
+          "id": "first",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 0
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        },
+        {
+          "id": "second",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 128
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        }
+      ],
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "mp": 30,
+          "cost": 9,
+          "targets": [
+            {
+              "id": "first",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 34,
+                "healing": 0,
+                "types": {
+                  "damage": true,
+                  "healing": false,
+                  "pseudo": false
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": false,
+                  "added": false
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "itemLost": 0,
+                "abandon": false
+              },
+              "procDisposition": "Passed",
+              "setFlag": false
+            },
+            {
+              "id": "second",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 68,
+                "healing": 0,
+                "types": {
+                  "damage": true,
+                  "healing": false,
+                  "pseudo": true
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": true,
+                  "added": false
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "itemLost": 0,
+                "abandon": false
+              },
+              "procDisposition": "Passed",
+              "setFlag": false
+            }
+          ]
+        },
+        "word": 361004401,
+        "count": 17
+      }
+    },
+    {
+      "id": "two-target-AiSimulation",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "AiSimulation",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "targets": [
+        {
+          "id": "first",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 0
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        },
+        {
+          "id": "second",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 128
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        }
+      ],
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "mp": 21,
+          "cost": 9,
+          "targets": [
+            {
+              "id": "first",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 34,
+                "healing": 0,
+                "types": {
+                  "damage": true,
+                  "healing": false,
+                  "pseudo": false
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": false,
+                  "added": false
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "itemLost": 0,
+                "abandon": false
+              },
+              "procDisposition": "Failed",
+              "setFlag": false
+            },
+            {
+              "id": "second",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 68,
+                "healing": 0,
+                "types": {
+                  "damage": true,
+                  "healing": false,
+                  "pseudo": true
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": true,
+                  "added": false
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "itemLost": 0,
+                "abandon": false
+              },
+              "procDisposition": "Failed",
+              "setFlag": false
+            }
+          ]
+        },
+        "word": 361004401,
+        "count": 17
+      }
+    },
+    {
+      "id": "early-miss-does-not-refund-or-repeat-cost",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "targets": [
+        {
+          "id": "first",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 0
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 1,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        },
+        {
+          "id": "first-normal",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 0
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        }
+      ],
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "mp": 21,
+          "cost": 9,
+          "targets": [
+            {
+              "id": "first",
+              "result": {
+                "hit": false,
+                "accuracy": 99,
+                "miss": 1,
+                "damage": 0,
+                "healing": 0,
+                "types": {
+                  "damage": false,
+                  "healing": false,
+                  "pseudo": false
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": false,
+                  "added": false
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": false,
+                "accuracy": 99,
+                "miss": 1,
+                "itemLost": 10,
+                "abandon": false
+              },
+              "procDisposition": null,
+              "setFlag": null
+            },
+            {
+              "id": "first-normal",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 34,
+                "healing": 0,
+                "types": {
+                  "damage": true,
+                  "healing": false,
+                  "pseudo": false
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": false,
+                  "added": false
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "itemLost": 0,
+                "abandon": false
+              },
+              "procDisposition": "Failed",
+              "setFlag": false
+            }
+          ]
+        },
+        "word": 1099009369,
+        "count": 15
+      }
+    },
+    {
+      "id": "late-target-rejection-discards-prefix",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "targets": [
+        {
+          "id": "first",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 0
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        },
+        {
+          "id": "second",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false,
+            "dead": true
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 128
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        }
+      ],
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "outcome": null,
+        "word": 57,
+        "count": 9
+      }
+    },
+    {
+      "id": "late-rng-exhaustion-discards-mp-and-target-prefix",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "targets": [
+        {
+          "id": "first",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 0
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        },
+        {
+          "id": "second",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 128
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        }
+      ],
+      "word": 57,
+      "count": 18446744073709551608,
+      "expected": {
+        "accepted": false,
+        "rejection": "RandomDrawCountExhausted",
+        "outcome": null,
+        "word": 57,
+        "count": 18446744073709551608
+      }
+    },
+    {
+      "id": "missing-order-certificate",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": false,
+        "noEarlier": true
+      },
+      "targets": [
+        {
+          "id": "first",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 0
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        },
+        {
+          "id": "second",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 128
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        }
+      ],
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "outcome": null,
+        "word": 57,
+        "count": 9
+      }
+    },
+    {
+      "id": "earlier-target-effects-not-simulated",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": false
+      },
+      "targets": [
+        {
+          "id": "first",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 0
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        },
+        {
+          "id": "second",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 128
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        }
+      ],
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "outcome": null,
+        "word": 57,
+        "count": 9
+      }
+    },
+    {
+      "id": "duplicate-target-id-not-silently-deduplicated",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "targets": [
+        {
+          "id": "first",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 0
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        },
+        {
+          "id": "first",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 0
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        }
+      ],
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "outcome": null,
+        "word": 57,
+        "count": 9
+      }
+    },
+    {
+      "id": "empty-list-remains-outside-this-query",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "targets": [],
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "outcome": null,
+        "word": 57,
+        "count": 9
+      }
+    },
+    {
+      "id": "self-heal-uses-post-cost-private-mp",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Healing",
+        "power": 14,
+        "elements": 128,
+        "evadeable": false
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "targets": [
+        {
+          "id": "actor",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {},
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 0
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        }
+      ],
+      "word": 57,
+      "count": 18446744073709551615,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "mp": 21,
+          "cost": 9,
+          "targets": [
+            {
+              "id": "actor",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 0,
+                "healing": 34,
+                "types": {
+                  "damage": false,
+                  "healing": true,
+                  "pseudo": false
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": false,
+                  "added": false
+                },
+                "clear": false
+              },
+              "evasion": null,
+              "procDisposition": "NoConditionalBranch",
+              "setFlag": false
+            }
+          ]
+        },
+        "word": 57,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "half-mp-still-paid-once",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {
+          "halfMp": true
+        },
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "targets": [
+        {
+          "id": "first",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 0
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        },
+        {
+          "id": "second",
+          "ma": 5,
+          "faith": 70,
+          "identity": {
+            "sign": 0,
+            "male": true,
+            "female": false,
+            "monster": false
+          },
+          "statuses": {
+            "undead": false
+          },
+          "supports": {},
+          "strengthen": 0,
+          "affinities": {
+            "absorb": 0,
+            "nullify": 0,
+            "half": 0,
+            "weak": 128
+          },
+          "equipment": {
+            "monster": false,
+            "accessory": {
+              "item": 10,
+              "evade": 0,
+              "qualifies": true
+            },
+            "right": {
+              "item": 20,
+              "evade": 0,
+              "qualifies": true
+            },
+            "left": {
+              "item": 30,
+              "evade": 0,
+              "qualifies": true
+            },
+            "rightWeapon": 255,
+            "leftWeapon": 255
+          },
+          "unrestricted": true,
+          "rider": false,
+          "mp": 30
+        }
+      ],
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "mp": 26,
+          "cost": 4,
+          "targets": [
+            {
+              "id": "first",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 34,
+                "healing": 0,
+                "types": {
+                  "damage": true,
+                  "healing": false,
+                  "pseudo": true
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": false,
+                  "added": true
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "itemLost": 0,
+                "abandon": false
+              },
+              "procDisposition": "Passed",
+              "setFlag": true
+            },
+            {
+              "id": "second",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 68,
+                "healing": 0,
+                "types": {
+                  "damage": true,
+                  "healing": false,
+                  "pseudo": true
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": true,
+                  "added": false
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "itemLost": 0,
+                "abandon": false
+              },
+              "procDisposition": "Failed",
+              "setFlag": false
+            }
+          ]
+        },
+        "word": 1579910103,
+        "count": 19
+      }
+    }
+  ]
+}

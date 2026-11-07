@@ -1,0 +1,2766 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-302",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "notes": [
+    "Independent composed source descriptions, not managed/original/C execution.",
+    "One prefix, structural occurrence order, private entry streams, eight ranked slots and one final lottery."
+  ],
+  "vectors": [
+    {
+      "id": "attack-only-single-prefix-and-lottery",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "entries": [
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "entryWord": 3295386429,
+            "entryCount": 11,
+            "exitWord": 3210001534,
+            "exitCount": 16,
+            "best": {
+              "occurrence": 0,
+              "kind": "Attack",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 1,
+            "kind": "Frog",
+            "entryWord": 3210001534,
+            "entryCount": 16,
+            "exitWord": 3210001534,
+            "exitCount": 16,
+            "best": null,
+            "insertion": null
+          }
+        ],
+        "ranked": [
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 8
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "lotteryWord": 3210001534,
+        "lotteryCount": 16,
+        "rolls": [
+          {
+            "slot": 0,
+            "raw": 4086,
+            "modulo": 86,
+            "hit": 100,
+            "passed": true
+          }
+        ],
+        "selected": 0,
+        "reason": "FirstRoll",
+        "destination": [
+          0,
+          1
+        ],
+        "selectedOccurrence": 0,
+        "word": 267834847,
+        "count": 17
+      }
+    },
+    {
+      "id": "self-coins-between-attack-and-stone",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "entries": [
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "entryWord": 4182499122,
+            "entryCount": 12,
+            "exitWord": 267834847,
+            "exitCount": 17,
+            "best": {
+              "occurrence": 0,
+              "kind": "Attack",
+              "destination": [
+                2,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 9
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 1,
+            "kind": "Self",
+            "entryWord": 267834847,
+            "entryCount": 17,
+            "exitWord": 836760821,
+            "exitCount": 19,
+            "best": null,
+            "insertion": null
+          },
+          {
+            "occurrence": 2,
+            "kind": "Stone",
+            "entryWord": 836760821,
+            "entryCount": 19,
+            "exitWord": 3791773014,
+            "exitCount": 24,
+            "best": {
+              "occurrence": 2,
+              "kind": "Stone",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 7
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 3,
+            "kind": "Frog",
+            "entryWord": 3791773014,
+            "entryCount": 24,
+            "exitWord": 3791773014,
+            "exitCount": 24,
+            "best": null,
+            "insertion": null
+          }
+        ],
+        "ranked": [
+          {
+            "occurrence": 2,
+            "kind": "Stone",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 7
+          },
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "destination": [
+              2,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 9
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "lotteryWord": 3791773014,
+        "lotteryCount": 24,
+        "rolls": [
+          {
+            "slot": 0,
+            "raw": 21183,
+            "modulo": 83,
+            "hit": 100,
+            "passed": true
+          }
+        ],
+        "selected": 0,
+        "reason": "FirstRoll",
+        "destination": [
+          0,
+          1
+        ],
+        "selectedOccurrence": 2,
+        "word": 3535774167,
+        "count": 25
+      }
+    },
+    {
+      "id": "source-reordered-stone-before-self-coins",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone",
+              "Self"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "entries": [
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "entryWord": 4182499122,
+            "entryCount": 12,
+            "exitWord": 267834847,
+            "exitCount": 17,
+            "best": {
+              "occurrence": 0,
+              "kind": "Attack",
+              "destination": [
+                2,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 9
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 1,
+            "kind": "Stone",
+            "entryWord": 267834847,
+            "entryCount": 17,
+            "exitWord": 2111915288,
+            "exitCount": 22,
+            "best": {
+              "occurrence": 1,
+              "kind": "Stone",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 7
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 2,
+            "kind": "Self",
+            "entryWord": 2111915288,
+            "entryCount": 22,
+            "exitWord": 3791773014,
+            "exitCount": 24,
+            "best": null,
+            "insertion": null
+          },
+          {
+            "occurrence": 3,
+            "kind": "Frog",
+            "entryWord": 3791773014,
+            "entryCount": 24,
+            "exitWord": 3791773014,
+            "exitCount": 24,
+            "best": null,
+            "insertion": null
+          }
+        ],
+        "ranked": [
+          {
+            "occurrence": 1,
+            "kind": "Stone",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 7
+          },
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "destination": [
+              2,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 9
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "lotteryWord": 3791773014,
+        "lotteryCount": 24,
+        "rolls": [
+          {
+            "slot": 0,
+            "raw": 21183,
+            "modulo": 83,
+            "hit": 100,
+            "passed": true
+          }
+        ],
+        "selected": 0,
+        "reason": "FirstRoll",
+        "destination": [
+          0,
+          1
+        ],
+        "selectedOccurrence": 1,
+        "word": 3535774167,
+        "count": 25
+      }
+    },
+    {
+      "id": "duplicate-self-and-stone-have-distinct-passes",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Self",
+              "Stone",
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "entries": [
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "entryWord": 4182499122,
+            "entryCount": 12,
+            "exitWord": 267834847,
+            "exitCount": 17,
+            "best": {
+              "occurrence": 0,
+              "kind": "Attack",
+              "destination": [
+                2,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 9
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 1,
+            "kind": "Self",
+            "entryWord": 267834847,
+            "entryCount": 17,
+            "exitWord": 836760821,
+            "exitCount": 19,
+            "best": null,
+            "insertion": null
+          },
+          {
+            "occurrence": 2,
+            "kind": "Self",
+            "entryWord": 836760821,
+            "entryCount": 19,
+            "exitWord": 3297241969,
+            "exitCount": 23,
+            "best": {
+              "occurrence": 2,
+              "kind": "Self",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": null,
+              "priority": 488,
+              "hit": 100,
+              "proximity": 7
+            },
+            "insertion": 1
+          },
+          {
+            "occurrence": 3,
+            "kind": "Stone",
+            "entryWord": 3297241969,
+            "entryCount": 23,
+            "exitWord": 3914758370,
+            "exitCount": 28,
+            "best": {
+              "occurrence": 3,
+              "kind": "Stone",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 7
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 4,
+            "kind": "Stone",
+            "entryWord": 3914758370,
+            "entryCount": 28,
+            "exitWord": 1969681615,
+            "exitCount": 33,
+            "best": {
+              "occurrence": 4,
+              "kind": "Stone",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 7
+            },
+            "insertion": 1
+          },
+          {
+            "occurrence": 5,
+            "kind": "Frog",
+            "entryWord": 1969681615,
+            "entryCount": 33,
+            "exitWord": 1969681615,
+            "exitCount": 33,
+            "best": null,
+            "insertion": null
+          }
+        ],
+        "ranked": [
+          {
+            "occurrence": 3,
+            "kind": "Stone",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 7
+          },
+          {
+            "occurrence": 4,
+            "kind": "Stone",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 7
+          },
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "destination": [
+              2,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 9
+          },
+          {
+            "occurrence": 2,
+            "kind": "Self",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "target": null,
+            "priority": 488,
+            "hit": 100,
+            "proximity": 7
+          },
+          null,
+          null,
+          null,
+          null
+        ],
+        "lotteryWord": 1969681615,
+        "lotteryCount": 33,
+        "rolls": [
+          {
+            "slot": 0,
+            "raw": 17031,
+            "modulo": 31,
+            "hit": 100,
+            "passed": true
+          }
+        ],
+        "selected": 0,
+        "reason": "FirstRoll",
+        "destination": [
+          0,
+          1
+        ],
+        "selectedOccurrence": 3,
+        "word": 1116175964,
+        "count": 34
+      }
+    },
+    {
+      "id": "eight-slots-stable-ties-drop-later-duplicates",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone",
+              "Stone",
+              "Stone",
+              "Stone",
+              "Stone",
+              "Stone",
+              "Stone",
+              "Stone",
+              "Stone",
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "entries": [
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "entryWord": 4182499122,
+            "entryCount": 12,
+            "exitWord": 267834847,
+            "exitCount": 17,
+            "best": {
+              "occurrence": 0,
+              "kind": "Attack",
+              "destination": [
+                2,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 9
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 1,
+            "kind": "Stone",
+            "entryWord": 267834847,
+            "entryCount": 17,
+            "exitWord": 2111915288,
+            "exitCount": 22,
+            "best": {
+              "occurrence": 1,
+              "kind": "Stone",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 7
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 2,
+            "kind": "Stone",
+            "entryWord": 2111915288,
+            "entryCount": 22,
+            "exitWord": 3823029677,
+            "exitCount": 27,
+            "best": {
+              "occurrence": 2,
+              "kind": "Stone",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 7
+            },
+            "insertion": 1
+          },
+          {
+            "occurrence": 3,
+            "kind": "Stone",
+            "entryWord": 3823029677,
+            "entryCount": 27,
+            "exitWord": 744964398,
+            "exitCount": 32,
+            "best": {
+              "occurrence": 3,
+              "kind": "Stone",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 7
+            },
+            "insertion": 2
+          },
+          {
+            "occurrence": 4,
+            "kind": "Stone",
+            "entryWord": 744964398,
+            "entryCount": 32,
+            "exitWord": 3834121963,
+            "exitCount": 37,
+            "best": {
+              "occurrence": 4,
+              "kind": "Stone",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 7
+            },
+            "insertion": 3
+          },
+          {
+            "occurrence": 5,
+            "kind": "Stone",
+            "entryWord": 3834121963,
+            "entryCount": 37,
+            "exitWord": 3776134388,
+            "exitCount": 42,
+            "best": {
+              "occurrence": 5,
+              "kind": "Stone",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 7
+            },
+            "insertion": 4
+          },
+          {
+            "occurrence": 6,
+            "kind": "Stone",
+            "entryWord": 3776134388,
+            "entryCount": 42,
+            "exitWord": 1775811865,
+            "exitCount": 47,
+            "best": {
+              "occurrence": 6,
+              "kind": "Stone",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 7
+            },
+            "insertion": 5
+          },
+          {
+            "occurrence": 7,
+            "kind": "Stone",
+            "entryWord": 1775811865,
+            "entryCount": 47,
+            "exitWord": 456633834,
+            "exitCount": 52,
+            "best": {
+              "occurrence": 7,
+              "kind": "Stone",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 7
+            },
+            "insertion": 6
+          },
+          {
+            "occurrence": 8,
+            "kind": "Stone",
+            "entryWord": 456633834,
+            "entryCount": 52,
+            "exitWord": 1627576247,
+            "exitCount": 57,
+            "best": {
+              "occurrence": 8,
+              "kind": "Stone",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 7
+            },
+            "insertion": 7
+          },
+          {
+            "occurrence": 9,
+            "kind": "Stone",
+            "entryWord": 1627576247,
+            "entryCount": 57,
+            "exitWord": 2669311376,
+            "exitCount": 62,
+            "best": {
+              "occurrence": 9,
+              "kind": "Stone",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 7
+            },
+            "insertion": null
+          },
+          {
+            "occurrence": 10,
+            "kind": "Stone",
+            "entryWord": 2669311376,
+            "entryCount": 62,
+            "exitWord": 2274957893,
+            "exitCount": 67,
+            "best": {
+              "occurrence": 10,
+              "kind": "Stone",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 100,
+              "proximity": 7
+            },
+            "insertion": null
+          },
+          {
+            "occurrence": 11,
+            "kind": "Frog",
+            "entryWord": 2274957893,
+            "entryCount": 67,
+            "exitWord": 2274957893,
+            "exitCount": 67,
+            "best": null,
+            "insertion": null
+          }
+        ],
+        "ranked": [
+          {
+            "occurrence": 1,
+            "kind": "Stone",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 7
+          },
+          {
+            "occurrence": 2,
+            "kind": "Stone",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 7
+          },
+          {
+            "occurrence": 3,
+            "kind": "Stone",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 7
+          },
+          {
+            "occurrence": 4,
+            "kind": "Stone",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 7
+          },
+          {
+            "occurrence": 5,
+            "kind": "Stone",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 7
+          },
+          {
+            "occurrence": 6,
+            "kind": "Stone",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 7
+          },
+          {
+            "occurrence": 7,
+            "kind": "Stone",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 7
+          },
+          {
+            "occurrence": 8,
+            "kind": "Stone",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 511,
+            "hit": 100,
+            "proximity": 7
+          }
+        ],
+        "lotteryWord": 2274957893,
+        "lotteryCount": 67,
+        "rolls": [
+          {
+            "slot": 0,
+            "raw": 14479,
+            "modulo": 79,
+            "hit": 100,
+            "passed": true
+          }
+        ],
+        "selected": 0,
+        "reason": "FirstRoll",
+        "destination": [
+          0,
+          1
+        ],
+        "selectedOccurrence": 1,
+        "word": 948921754,
+        "count": 68
+      }
+    },
+    {
+      "id": "zero-accuracy-eight-draw-movement-fallback",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 0,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 100,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "entries": [
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "entryWord": 662824084,
+            "entryCount": 10,
+            "exitWord": 662824084,
+            "exitCount": 10,
+            "best": null,
+            "insertion": null
+          },
+          {
+            "occurrence": 1,
+            "kind": "Stone",
+            "entryWord": 662824084,
+            "entryCount": 10,
+            "exitWord": 3655513600,
+            "exitCount": 14,
+            "best": null,
+            "insertion": null
+          },
+          {
+            "occurrence": 2,
+            "kind": "Frog",
+            "entryWord": 3655513600,
+            "entryCount": 14,
+            "exitWord": 3655513600,
+            "exitCount": 14,
+            "best": null,
+            "insertion": null
+          }
+        ],
+        "ranked": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "lotteryWord": 3655513600,
+        "lotteryCount": 14,
+        "rolls": [
+          {
+            "slot": 0,
+            "raw": 7419,
+            "modulo": 19,
+            "hit": 0,
+            "passed": false
+          },
+          {
+            "slot": 1,
+            "raw": 16212,
+            "modulo": 12,
+            "hit": 0,
+            "passed": false
+          },
+          {
+            "slot": 2,
+            "raw": 4086,
+            "modulo": 86,
+            "hit": 0,
+            "passed": false
+          },
+          {
+            "slot": 3,
+            "raw": 2749,
+            "modulo": 49,
+            "hit": 0,
+            "passed": false
+          },
+          {
+            "slot": 4,
+            "raw": 12767,
+            "modulo": 67,
+            "hit": 0,
+            "passed": false
+          },
+          {
+            "slot": 5,
+            "raw": 9084,
+            "modulo": 84,
+            "hit": 0,
+            "passed": false
+          },
+          {
+            "slot": 6,
+            "raw": 12060,
+            "modulo": 60,
+            "hit": 0,
+            "passed": false
+          },
+          {
+            "slot": 7,
+            "raw": 32225,
+            "modulo": 25,
+            "hit": 0,
+            "passed": false
+          }
+        ],
+        "selected": null,
+        "reason": "MovementFallback",
+        "destination": [
+          1,
+          1
+        ],
+        "selectedOccurrence": null,
+        "word": 2111915288,
+        "count": 22
+      }
+    },
+    {
+      "id": "partial-hit-all-rolls-fail-keeps-first",
+      "input": {
+        "actor": "a",
+        "word": 0,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 50,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "entries": [
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "entryWord": 229283573,
+            "entryCount": 12,
+            "exitWord": 551188310,
+            "exitCount": 17,
+            "best": {
+              "occurrence": 0,
+              "kind": "Attack",
+              "destination": [
+                2,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 50,
+              "proximity": 9
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 1,
+            "kind": "Stone",
+            "entryWord": 551188310,
+            "entryCount": 17,
+            "exitWord": 1381971571,
+            "exitCount": 22,
+            "best": {
+              "occurrence": 1,
+              "kind": "Stone",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 50,
+              "proximity": 7
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 2,
+            "kind": "Frog",
+            "entryWord": 1381971571,
+            "entryCount": 22,
+            "exitWord": 1381971571,
+            "exitCount": 22,
+            "best": null,
+            "insertion": null
+          }
+        ],
+        "ranked": [
+          {
+            "occurrence": 1,
+            "kind": "Stone",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 511,
+            "hit": 50,
+            "proximity": 7
+          },
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "destination": [
+              2,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 511,
+            "hit": 50,
+            "proximity": 9
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "lotteryWord": 1381971571,
+        "lotteryCount": 22,
+        "rolls": [
+          {
+            "slot": 0,
+            "raw": 25875,
+            "modulo": 75,
+            "hit": 50,
+            "passed": false
+          },
+          {
+            "slot": 1,
+            "raw": 32368,
+            "modulo": 68,
+            "hit": 50,
+            "passed": false
+          },
+          {
+            "slot": 2,
+            "raw": 26233,
+            "modulo": 33,
+            "hit": 0,
+            "passed": false
+          },
+          {
+            "slot": 3,
+            "raw": 15212,
+            "modulo": 12,
+            "hit": 0,
+            "passed": false
+          },
+          {
+            "slot": 4,
+            "raw": 17661,
+            "modulo": 61,
+            "hit": 0,
+            "passed": false
+          },
+          {
+            "slot": 5,
+            "raw": 20496,
+            "modulo": 96,
+            "hit": 0,
+            "passed": false
+          },
+          {
+            "slot": 6,
+            "raw": 8191,
+            "modulo": 91,
+            "hit": 0,
+            "passed": false
+          },
+          {
+            "slot": 7,
+            "raw": 23065,
+            "modulo": 65,
+            "hit": 0,
+            "passed": false
+          }
+        ],
+        "selected": 0,
+        "reason": "AllRollsFailedUseFirst",
+        "destination": [
+          0,
+          1
+        ],
+        "selectedOccurrence": 1,
+        "word": 1511588075,
+        "count": 30
+      }
+    },
+    {
+      "id": "partial-hit-later-ranked-slot-wins",
+      "input": {
+        "actor": "a",
+        "word": 3,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 50,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "entries": [
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "entryWord": 3498995628,
+            "entryCount": 12,
+            "exitWord": 3996095217,
+            "exitCount": 17,
+            "best": {
+              "occurrence": 0,
+              "kind": "Attack",
+              "destination": [
+                2,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 50,
+              "proximity": 9
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 1,
+            "kind": "Stone",
+            "entryWord": 3996095217,
+            "entryCount": 17,
+            "exitWord": 3571802722,
+            "exitCount": 22,
+            "best": {
+              "occurrence": 1,
+              "kind": "Stone",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 511,
+              "hit": 50,
+              "proximity": 7
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 2,
+            "kind": "Frog",
+            "entryWord": 3571802722,
+            "entryCount": 22,
+            "exitWord": 3571802722,
+            "exitCount": 22,
+            "best": null,
+            "insertion": null
+          }
+        ],
+        "ranked": [
+          {
+            "occurrence": 1,
+            "kind": "Stone",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 511,
+            "hit": 50,
+            "proximity": 7
+          },
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "destination": [
+              2,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 511,
+            "hit": 50,
+            "proximity": 9
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "lotteryWord": 3571802722,
+        "lotteryCount": 22,
+        "rolls": [
+          {
+            "slot": 0,
+            "raw": 880,
+            "modulo": 80,
+            "hit": 50,
+            "passed": false
+          },
+          {
+            "slot": 1,
+            "raw": 10532,
+            "modulo": 32,
+            "hit": 50,
+            "passed": true
+          }
+        ],
+        "selected": 1,
+        "reason": "FirstRoll",
+        "destination": [
+          2,
+          1
+        ],
+        "selectedOccurrence": 0,
+        "word": 2837734576,
+        "count": 24
+      }
+    },
+    {
+      "id": "post-act-empty-ranking-still-eight-lottery-draws",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": true,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "entries": [
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "entryWord": 3295386429,
+            "entryCount": 11,
+            "exitWord": 3295386429,
+            "exitCount": 11,
+            "best": null,
+            "insertion": null
+          },
+          {
+            "occurrence": 1,
+            "kind": "Self",
+            "entryWord": 3295386429,
+            "entryCount": 11,
+            "exitWord": 3295386429,
+            "exitCount": 11,
+            "best": null,
+            "insertion": null
+          },
+          {
+            "occurrence": 2,
+            "kind": "Stone",
+            "entryWord": 3295386429,
+            "entryCount": 11,
+            "exitWord": 3295386429,
+            "exitCount": 11,
+            "best": null,
+            "insertion": null
+          },
+          {
+            "occurrence": 3,
+            "kind": "Frog",
+            "entryWord": 3295386429,
+            "entryCount": 11,
+            "exitWord": 3295386429,
+            "exitCount": 11,
+            "best": null,
+            "insertion": null
+          }
+        ],
+        "ranked": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "lotteryWord": 3295386429,
+        "lotteryCount": 11,
+        "rolls": [
+          {
+            "slot": 0,
+            "raw": 31051,
+            "modulo": 51,
+            "hit": 0,
+            "passed": false
+          },
+          {
+            "slot": 1,
+            "raw": 5627,
+            "modulo": 27,
+            "hit": 0,
+            "passed": false
+          },
+          {
+            "slot": 2,
+            "raw": 23010,
+            "modulo": 10,
+            "hit": 0,
+            "passed": false
+          },
+          {
+            "slot": 3,
+            "raw": 7419,
+            "modulo": 19,
+            "hit": 0,
+            "passed": false
+          },
+          {
+            "slot": 4,
+            "raw": 16212,
+            "modulo": 12,
+            "hit": 0,
+            "passed": false
+          },
+          {
+            "slot": 5,
+            "raw": 4086,
+            "modulo": 86,
+            "hit": 0,
+            "passed": false
+          },
+          {
+            "slot": 6,
+            "raw": 2749,
+            "modulo": 49,
+            "hit": 0,
+            "passed": false
+          },
+          {
+            "slot": 7,
+            "raw": 12767,
+            "modulo": 67,
+            "hit": 0,
+            "passed": false
+          }
+        ],
+        "selected": null,
+        "reason": "MovementFallback",
+        "destination": [
+          0,
+          1
+        ],
+        "selectedOccurrence": null,
+        "word": 836760821,
+        "count": 19
+      }
+    },
+    {
+      "id": "late-unknown-stone-key-discards-earlier-entry-stream",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              5,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": []
+      },
+      "expected": {
+        "rejection": "UnknownPriority",
+        "occurrence": 2,
+        "word": 1,
+        "count": 7
+      }
+    },
+    {
+      "id": "self-pa-cap-does-not-suppress-usefulness-coins",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 99,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": []
+      },
+      "expected": {
+        "rejection": "None",
+        "entries": [
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "entryWord": 3295386429,
+            "entryCount": 11,
+            "exitWord": 267834847,
+            "exitCount": 17,
+            "best": {
+              "occurrence": 0,
+              "kind": "Attack",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 805,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 1,
+            "kind": "Self",
+            "entryWord": 267834847,
+            "entryCount": 17,
+            "exitWord": 836760821,
+            "exitCount": 19,
+            "best": null,
+            "insertion": null
+          },
+          {
+            "occurrence": 2,
+            "kind": "Stone",
+            "entryWord": 836760821,
+            "entryCount": 19,
+            "exitWord": 3535774167,
+            "exitCount": 25,
+            "best": {
+              "occurrence": 2,
+              "kind": "Stone",
+              "destination": [
+                0,
+                1
+              ],
+              "actFirst": false,
+              "target": "b",
+              "priority": 805,
+              "hit": 100,
+              "proximity": 8
+            },
+            "insertion": 1
+          },
+          {
+            "occurrence": 3,
+            "kind": "Frog",
+            "entryWord": 3535774167,
+            "entryCount": 25,
+            "exitWord": 3535774167,
+            "exitCount": 25,
+            "best": null,
+            "insertion": null
+          }
+        ],
+        "ranked": [
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 805,
+            "hit": 100,
+            "proximity": 8
+          },
+          {
+            "occurrence": 2,
+            "kind": "Stone",
+            "destination": [
+              0,
+              1
+            ],
+            "actFirst": false,
+            "target": "b",
+            "priority": 805,
+            "hit": 100,
+            "proximity": 8
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "lotteryWord": 3535774167,
+        "lotteryCount": 25,
+        "rolls": [
+          {
+            "slot": 0,
+            "raw": 25137,
+            "modulo": 37,
+            "hit": 100,
+            "passed": true
+          }
+        ],
+        "selected": 0,
+        "reason": "FirstRoll",
+        "destination": [
+          0,
+          1
+        ],
+        "selectedOccurrence": 0,
+        "word": 3794901700,
+        "count": 26
+      }
+    },
+    {
+      "id": "multiple-enemies-restore-every-hypothesis",
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "kind": "scenarios",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 0,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 5,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 2,
+            "tile": [
+              1,
+              0
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "d",
+            "order": 3,
+            "team": 1,
+            "tile": [
+              0,
+              1
+            ],
+            "ct": 100,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 0,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "power": 2
+      },
+      "expected": {
+        "rejection": "None",
+        "entries": [
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "entryWord": 2524885223,
+            "entryCount": 9,
+            "exitWord": 836760821,
+            "exitCount": 19,
+            "best": {
+              "occurrence": 0,
+              "kind": "Attack",
+              "destination": [
+                1,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 320,
+              "hit": 100,
+              "proximity": 18
+            },
+            "insertion": 0
+          },
+          {
+            "occurrence": 1,
+            "kind": "Self",
+            "entryWord": 836760821,
+            "entryCount": 19,
+            "exitWord": 2111915288,
+            "exitCount": 22,
+            "best": {
+              "occurrence": 1,
+              "kind": "Self",
+              "destination": [
+                1,
+                1
+              ],
+              "actFirst": true,
+              "target": null,
+              "priority": 151,
+              "hit": 100,
+              "proximity": 18
+            },
+            "insertion": 1
+          },
+          {
+            "occurrence": 2,
+            "kind": "Stone",
+            "entryWord": 2111915288,
+            "entryCount": 22,
+            "exitWord": 744964398,
+            "exitCount": 32,
+            "best": {
+              "occurrence": 2,
+              "kind": "Stone",
+              "destination": [
+                1,
+                1
+              ],
+              "actFirst": true,
+              "target": "b",
+              "priority": 320,
+              "hit": 100,
+              "proximity": 18
+            },
+            "insertion": 1
+          },
+          {
+            "occurrence": 3,
+            "kind": "Frog",
+            "entryWord": 744964398,
+            "entryCount": 32,
+            "exitWord": 744964398,
+            "exitCount": 32,
+            "best": null,
+            "insertion": null
+          }
+        ],
+        "ranked": [
+          {
+            "occurrence": 0,
+            "kind": "Attack",
+            "destination": [
+              1,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 320,
+            "hit": 100,
+            "proximity": 18
+          },
+          {
+            "occurrence": 2,
+            "kind": "Stone",
+            "destination": [
+              1,
+              1
+            ],
+            "actFirst": true,
+            "target": "b",
+            "priority": 320,
+            "hit": 100,
+            "proximity": 18
+          },
+          {
+            "occurrence": 1,
+            "kind": "Self",
+            "destination": [
+              1,
+              1
+            ],
+            "actFirst": true,
+            "target": null,
+            "priority": 151,
+            "hit": 100,
+            "proximity": 18
+          },
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "lotteryWord": 744964398,
+        "lotteryCount": 32,
+        "rolls": [
+          {
+            "slot": 0,
+            "raw": 30054,
+            "modulo": 54,
+            "hit": 100,
+            "passed": true
+          }
+        ],
+        "selected": 0,
+        "reason": "FirstRoll",
+        "destination": [
+          1,
+          1
+        ],
+        "selectedOccurrence": 0,
+        "word": 1969681615,
+        "count": 33
+      }
+    }
+  ]
+}

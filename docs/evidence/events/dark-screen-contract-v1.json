@@ -1,0 +1,243 @@
+{
+  "format": "fft.dark-screen-contract-expectations",
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "managedBase": "6776ab65cc97019ad3b9fe459988d45d436b161a",
+  "specificationOnly": true,
+  "executed": false,
+  "profile": "One authored post-readiness origin-style worker; event/ledger before worker; no original raw script playback.",
+  "selectedParameters": {
+    "reserved": 0,
+    "mode": 1,
+    "divisor": 12,
+    "angleStep": 64,
+    "radiusStep": 4,
+    "image": 0
+  },
+  "timing": {
+    "logicalBirth": 0,
+    "holdingFirstYield": 55,
+    "firstFlashAndEntryBarrierObservation": 56,
+    "release100": {
+      "finalFlash": 100,
+      "firstReleaseTiles": 101,
+      "lastBodyAndExitYield": 155,
+      "taskClear": 156,
+      "parentObservation": 157
+    }
+  },
+  "noMatchRelease": "Accepted no-op outside Holding; never deferred.",
+  "cases": [
+    {
+      "id": "DSC-001",
+      "setup": "Preload and binding",
+      "action": "Missing prepared definition/resource readiness or mismatched owner",
+      "expected": "Reject before worker/ledger admission, with no consumed identity or output.",
+      "executed": false
+    },
+    {
+      "id": "DSC-002",
+      "setup": "First post-readiness yield",
+      "action": "Admit the selected worker at tick 0",
+      "expected": "Task class 54; all initial counters/layout retained; no tile submission at birth.",
+      "executed": false
+    },
+    {
+      "id": "DSC-003",
+      "setup": "Zero-delay entry cell",
+      "action": "Advance from tick 0 to 1",
+      "expected": "Emit pre-update radius/angle 0/0 as a zero-area quad, then store 4/64; no early completion.",
+      "executed": false
+    },
+    {
+      "id": "DSC-004",
+      "setup": "Positive-delay entry cell",
+      "action": "Advance a cell with initial delay 1",
+      "expected": "First update decrements to zero without a draw; next update emits its zero-area birth shape.",
+      "executed": false
+    },
+    {
+      "id": "DSC-005",
+      "setup": "Strict entry overshoot and extra pass",
+      "action": "Advance the selected full grid through ticks 54 and 55",
+      "expected": "Tick 54 first latches all-finished; tick 55 emits the extra tile pass and changes class 54 to 55.",
+      "executed": false
+    },
+    {
+      "id": "DSC-006",
+      "setup": "Entry barrier observation",
+      "action": "Parent polls class 54 before worker each tick",
+      "expected": "Pending at 55; observes no class 54 at 56 while class 55 remains live.",
+      "executed": false
+    },
+    {
+      "id": "DSC-007",
+      "setup": "Holding birth versus first flash",
+      "action": "Read accepted tick 55 then advance 56",
+      "expected": "Tick 55 retains last tile draw; first flash submission is 56, with selected shared RGB.",
+      "executed": false
+    },
+    {
+      "id": "DSC-008",
+      "setup": "Indefinite hold ignores Circle",
+      "action": "Supply many ticks and Circle samples without Release",
+      "expected": "Remain class 55; Circle never releases or advances the leaving phase.",
+      "executed": false
+    },
+    {
+      "id": "DSC-009",
+      "setup": "Early no-match release",
+      "action": "Signal Release while worker is Entering",
+      "expected": "Accepted no-op; no queued signal; later Holding still waits for a new release.",
+      "executed": false
+    },
+    {
+      "id": "DSC-010",
+      "setup": "Earliest ordered release",
+      "action": "Hold is born at tick 55; next event-phase signal is tick 56",
+      "expected": "Release can act at 56; do not execute another event/worker pass at tick 55.",
+      "executed": false
+    },
+    {
+      "id": "DSC-011",
+      "setup": "Release body boundary",
+      "action": "Signal Release in event phase at tick 100",
+      "expected": "Class becomes 54; worker emits one final flash, resets delays and reaches leaving first yield without a tile step.",
+      "executed": false
+    },
+    {
+      "id": "DSC-012",
+      "setup": "Delayed leaving cell",
+      "action": "Advance release tick 101 with a positive-delay tile",
+      "expected": "Emit its full stored shape while decrementing delay; no hidden waiting tile in phase 1.",
+      "executed": false
+    },
+    {
+      "id": "DSC-013",
+      "setup": "Strict leaving overshoot",
+      "action": "Observe final active steps and zero-size geometry",
+      "expected": "Remain busy while either unclamped counter is nonnegative; preserve the overshoot and extra body pass.",
+      "executed": false
+    },
+    {
+      "id": "DSC-014",
+      "setup": "Final body and exit yield",
+      "action": "Release at 100, advance through 155/156",
+      "expected": "Last release body and one-frame exit wait at 155 retain class 54; task clears at 156.",
+      "executed": false
+    },
+    {
+      "id": "DSC-015",
+      "setup": "Parent completion observation",
+      "action": "Parent E5 polls before worker",
+      "expected": "Parent remains blocked at 156 and resumes at 157; no renderer completion input.",
+      "executed": false
+    },
+    {
+      "id": "DSC-016",
+      "setup": "Duplicate/no-match release",
+      "action": "Release again while Leaving or after worker completion",
+      "expected": "No-match no-op; never restart, revive or shorten the worker.",
+      "executed": false
+    },
+    {
+      "id": "DSC-017",
+      "setup": "Stable task identity and revisions",
+      "action": "Run Entering/Holding/Leaving/Completed",
+      "expected": "Same logical task ID and owner, revisions 0/1/2/3, retained completed tombstone and correct active classes.",
+      "executed": false
+    },
+    {
+      "id": "DSC-018",
+      "setup": "Admission budget failure",
+      "action": "Reject after a candidate start consumes the remaining budget",
+      "expected": "Restore exact input state, empty trace and unused task identity.",
+      "executed": false
+    },
+    {
+      "id": "DSC-019",
+      "setup": "Holding-transition budget failure",
+      "action": "Reject the phase publication after candidate tick-55 work",
+      "expected": "Roll back tick, counters, draw, ledger revision and barrier facts together.",
+      "executed": false
+    },
+    {
+      "id": "DSC-020",
+      "setup": "Release budget failure",
+      "action": "Reject after candidate release/signal in an ordered tick",
+      "expected": "Roll back both event and worker changes; retry publishes the release once.",
+      "executed": false
+    },
+    {
+      "id": "DSC-021",
+      "setup": "Completion budget failure",
+      "action": "Reject final candidate task completion",
+      "expected": "Keep prior state/trace/identity unchanged; no parent success or terminal fact escapes.",
+      "executed": false
+    },
+    {
+      "id": "DSC-022",
+      "setup": "Replay independent of presentation",
+      "action": "Read/omit/repeat draws and recreate resources around identical explicit commands",
+      "expected": "Full accepted state and trace replay match; presentation cannot change task lifetime or clock.",
+      "executed": false
+    },
+    {
+      "id": "DSC-023",
+      "setup": "Closed parameter profile",
+      "action": "Supply other modes, reserved prefix, steps, divisor zero or final-battle image 1",
+      "expected": "Reject as unsupported before start; document native division trap instead of inventing clamping.",
+      "executed": false
+    },
+    {
+      "id": "DSC-024",
+      "setup": "Ownership and shared pool exclusion",
+      "action": "Attempt a second live DarkScreen, foreign binding or external stale ledger facts",
+      "expected": "Reject atomically; no concurrent native burst-pool emulation or guessed multi-slot selector.",
+      "executed": false
+    },
+    {
+      "id": "DSC-025",
+      "setup": "Prepared fixed-point geometry",
+      "action": "Use the bounded delay data and Q12 rotation samples",
+      "expected": "All 288 source-traced delays and 117 selected projections match, with signed truncation and no ideal-trig substitution.",
+      "executed": false
+    },
+    {
+      "id": "DSC-026",
+      "setup": "Flat untextured material",
+      "action": "Compose tile/flash over an explicit RGB5 background",
+      "expected": "No texture/palette/STP test; use selected average material, explicit state and correct clipping before RGB5 expansion.",
+      "executed": false
+    },
+    {
+      "id": "DSC-027",
+      "setup": "Coverage and ordering",
+      "action": "Compose degenerate, shared-edge and overlapping rotated quads",
+      "expected": "Preserve two-triangle single coverage and reverse native submission order; do not union overlapping tiles.",
+      "executed": false
+    },
+    {
+      "id": "DSC-028",
+      "setup": "Prepared-only runtime",
+      "action": "Load the separate descriptor and enclosing banner assets before host start",
+      "expected": "Strict hashes/bounds/provenance/readiness; no BIN, original EXE, C/emulator or runtime PS1 math dependency.",
+      "executed": false
+    },
+    {
+      "id": "DSC-029",
+      "setup": "Original presentation evidence gate",
+      "action": "Plan any entry/release continuation and visual comparison",
+      "expected": "Use a finite verified plan; distinguish queued/submitted/displayed frames and missing observations; source timing is not measured duration.",
+      "executed": false
+    },
+    {
+      "id": "DSC-030",
+      "setup": "Existing profile regression",
+      "action": "Run existing standalone banners, Ready and authored introduction/battle",
+      "expected": "Outputs, rules and strict old profiles remain unchanged; this worker does not admit retail EventEnd or full startup.",
+      "executed": false
+    }
+  ]
+}

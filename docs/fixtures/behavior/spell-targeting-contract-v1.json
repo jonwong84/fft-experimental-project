@@ -1,0 +1,3797 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-358",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "confidence": "source-derived normalized ordinary targeting descriptions; no original/C execution",
+  "references": [
+    {
+      "tile": {
+        "h": 4,
+        "half": 3,
+        "water": 2,
+        "blocked": false,
+        "untargetable": false
+      },
+      "expected": 15
+    },
+    {
+      "tile": {
+        "h": 127,
+        "half": 1,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "expected": 255
+    },
+    {
+      "tile": {
+        "h": 128,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "expected": 0
+    },
+    {
+      "tile": {
+        "h": 255,
+        "half": 31,
+        "water": 7,
+        "blocked": false,
+        "untargetable": false
+      },
+      "expected": 43
+    }
+  ],
+  "columns": [
+    {
+      "id": "distance-tie-lower",
+      "lower": {
+        "h": 10,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "upper": {
+        "h": 12,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "reference": 22,
+      "tolerance": 1,
+      "topDown": false,
+      "expected": 0
+    },
+    {
+      "id": "upper-nearest",
+      "lower": {
+        "h": 10,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "upper": {
+        "h": 12,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "reference": 24,
+      "tolerance": 0,
+      "topDown": false,
+      "expected": 1
+    },
+    {
+      "id": "outside-tolerance",
+      "lower": {
+        "h": 10,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "upper": {
+        "h": 12,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "reference": 23,
+      "tolerance": 0,
+      "topDown": false,
+      "expected": null
+    },
+    {
+      "id": "top-down-physical-upper",
+      "lower": {
+        "h": 10,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "upper": {
+        "h": 12,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "reference": 22,
+      "tolerance": 1,
+      "topDown": true,
+      "expected": 1
+    },
+    {
+      "id": "top-down-physical-lower",
+      "lower": {
+        "h": 12,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "upper": {
+        "h": 10,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "reference": 22,
+      "tolerance": 1,
+      "topDown": true,
+      "expected": 0
+    },
+    {
+      "id": "top-down-equal-keeps-lower",
+      "lower": {
+        "h": 10,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "upper": {
+        "h": 10,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "reference": 20,
+      "tolerance": 0,
+      "topDown": true,
+      "expected": 0
+    },
+    {
+      "id": "blocked-lower",
+      "lower": {
+        "h": 10,
+        "half": 0,
+        "water": 0,
+        "blocked": true,
+        "untargetable": false
+      },
+      "upper": {
+        "h": 10,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "reference": 20,
+      "tolerance": 0,
+      "topDown": false,
+      "expected": 1
+    },
+    {
+      "id": "blocked-upper",
+      "lower": {
+        "h": 10,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "upper": {
+        "h": 10,
+        "half": 0,
+        "water": 0,
+        "blocked": true,
+        "untargetable": false
+      },
+      "reference": 20,
+      "tolerance": 0,
+      "topDown": false,
+      "expected": 0
+    },
+    {
+      "id": "both-blocked",
+      "lower": {
+        "h": 10,
+        "half": 0,
+        "water": 0,
+        "blocked": true,
+        "untargetable": false
+      },
+      "upper": {
+        "h": 10,
+        "half": 0,
+        "water": 0,
+        "blocked": true,
+        "untargetable": false
+      },
+      "reference": 0,
+      "tolerance": 255,
+      "topDown": false,
+      "expected": null
+    },
+    {
+      "id": "blocked-sentinel-can-be-closer",
+      "lower": {
+        "h": 10,
+        "half": 0,
+        "water": 0,
+        "blocked": true,
+        "untargetable": false
+      },
+      "upper": {
+        "h": 128,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "reference": 0,
+      "tolerance": 255,
+      "topDown": false,
+      "expected": null
+    },
+    {
+      "id": "absent-upper-sentinel-can-be-closer",
+      "lower": {
+        "h": 128,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "upper": null,
+      "reference": 0,
+      "tolerance": 255,
+      "topDown": false,
+      "expected": null
+    },
+    {
+      "id": "half-and-water",
+      "lower": {
+        "h": 4,
+        "half": 3,
+        "water": 2,
+        "blocked": false,
+        "untargetable": false
+      },
+      "upper": {
+        "h": 8,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "reference": 15,
+      "tolerance": 0,
+      "topDown": false,
+      "expected": 0
+    },
+    {
+      "id": "top-down-still-uses-sentinel-distance",
+      "lower": {
+        "h": 128,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "upper": {
+        "h": 10,
+        "half": 0,
+        "water": 0,
+        "blocked": true,
+        "untargetable": false
+      },
+      "reference": 0,
+      "tolerance": 255,
+      "topDown": true,
+      "expected": null
+    },
+    {
+      "id": "top-down-sentinel-retains-substituted-lower",
+      "lower": {
+        "h": 0,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "upper": {
+        "h": 128,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "reference": 0,
+      "tolerance": 255,
+      "topDown": true,
+      "expected": 0
+    },
+    {
+      "id": "top-down-sentinel-retains-substituted-upper",
+      "lower": {
+        "h": 128,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "upper": {
+        "h": 0,
+        "half": 0,
+        "water": 0,
+        "blocked": false,
+        "untargetable": false
+      },
+      "reference": 0,
+      "tolerance": 255,
+      "topDown": true,
+      "expected": 1
+    }
+  ],
+  "panels": [
+    {
+      "id": "range-zero",
+      "kind": "Range",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 0,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        1,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            1,
+            1,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "range-one",
+      "kind": "Range",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        1,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "range-corner-two",
+      "kind": "Range",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 2,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        0,
+        0,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "range-self-exclusion-only-blue",
+      "kind": "Range",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": true,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        1,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "range-spreads-through-blocked",
+      "kind": "Range",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": [
+          {
+            "position": [
+              1,
+              1,
+              0
+            ],
+            "tile": {
+              "h": 10,
+              "half": 0,
+              "water": 0,
+              "blocked": true,
+              "untargetable": false
+            }
+          }
+        ]
+      },
+      "geometry": {
+        "range": 2,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        0,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "range-aoe0-clears-untargetable",
+      "kind": "Range",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": [
+          {
+            "position": [
+              1,
+              1,
+              0
+            ],
+            "tile": {
+              "h": 10,
+              "half": 0,
+              "water": 0,
+              "blocked": false,
+              "untargetable": true
+            }
+          }
+        ]
+      },
+      "geometry": {
+        "range": 2,
+        "area": 0,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        0,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "range-aoe1-keeps-untargetable-aim",
+      "kind": "Range",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": [
+          {
+            "position": [
+              1,
+              1,
+              0
+            ],
+            "tile": {
+              "h": 10,
+              "half": 0,
+              "water": 0,
+              "blocked": false,
+              "untargetable": true
+            }
+          }
+        ]
+      },
+      "geometry": {
+        "range": 2,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        0,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "range-whole-map",
+      "kind": "Range",
+      "map": {
+        "width": 2,
+        "depth": 2,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 255,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        0,
+        0,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "range-height-selects-one-layer",
+      "kind": "Range",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 2,
+        "overrides": [
+          {
+            "position": [
+              2,
+              1,
+              0
+            ],
+            "tile": {
+              "h": 12,
+              "half": 0,
+              "water": 0,
+              "blocked": false,
+              "untargetable": false
+            }
+          },
+          {
+            "position": [
+              2,
+              1,
+              1
+            ],
+            "tile": {
+              "h": 10,
+              "half": 0,
+              "water": 0,
+              "blocked": false,
+              "untargetable": false
+            }
+          }
+        ]
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 1,
+        "rangeVertical": true,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        1,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ],
+          [
+            2,
+            1,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "range-height-flag-off-keeps-both",
+      "kind": "Range",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 2,
+        "overrides": [
+          {
+            "position": [
+              2,
+              1,
+              0
+            ],
+            "tile": {
+              "h": 12,
+              "half": 0,
+              "water": 0,
+              "blocked": false,
+              "untargetable": false
+            }
+          },
+          {
+            "position": [
+              2,
+              1,
+              1
+            ],
+            "tile": {
+              "h": 10,
+              "half": 0,
+              "water": 0,
+              "blocked": false,
+              "untargetable": false
+            }
+          }
+        ]
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        1,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ],
+          [
+            2,
+            1,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "range-reference-wrap-with-blocked-sentinel",
+      "kind": "Range",
+      "map": {
+        "width": 1,
+        "depth": 1,
+        "layers": 1,
+        "overrides": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "tile": {
+              "h": 128,
+              "half": 0,
+              "water": 0,
+              "blocked": false,
+              "untargetable": false
+            }
+          }
+        ]
+      },
+      "geometry": {
+        "range": 0,
+        "area": 1,
+        "vertical": 255,
+        "rangeVertical": true,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        0,
+        0,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": []
+      }
+    },
+    {
+      "id": "map-more-than-two-layers-unselected",
+      "kind": "Range",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 3,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        1,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": false,
+        "panels": null
+      }
+    },
+    {
+      "id": "uncertified-cross-sections",
+      "kind": "Range",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        1,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": false,
+        "padding": true
+      },
+      "expected": {
+        "accepted": false,
+        "panels": null
+      }
+    },
+    {
+      "id": "area-zero",
+      "kind": "Area",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 0,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        0,
+        0,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            1,
+            1,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "area-one",
+      "kind": "Area",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        0,
+        0,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "area-corner-two",
+      "kind": "Area",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 2,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        2,
+        2,
+        0
+      ],
+      "aim": [
+        0,
+        0,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "area-untargetable-center-still-spreads",
+      "kind": "Area",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": [
+          {
+            "position": [
+              1,
+              1,
+              0
+            ],
+            "tile": {
+              "h": 10,
+              "half": 0,
+              "water": 0,
+              "blocked": false,
+              "untargetable": true
+            }
+          }
+        ]
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        0,
+        0,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "area-blocked-center-invalid",
+      "kind": "Area",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": [
+          {
+            "position": [
+              1,
+              1,
+              0
+            ],
+            "tile": {
+              "h": 10,
+              "half": 0,
+              "water": 0,
+              "blocked": true,
+              "untargetable": false
+            }
+          }
+        ]
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        0,
+        0,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": false,
+        "panels": null
+      }
+    },
+    {
+      "id": "area-caster-panel-exclusion",
+      "kind": "Area",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": true,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        0,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "blue-self-flag-does-not-exclude-area",
+      "kind": "Area",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 0,
+        "area": 0,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": true,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        1,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            1,
+            1,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "area-top-down-selects-higher-physical-layer",
+      "kind": "Area",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 2,
+        "overrides": [
+          {
+            "position": [
+              2,
+              1,
+              1
+            ],
+            "tile": {
+              "h": 11,
+              "half": 0,
+              "water": 0,
+              "blocked": false,
+              "untargetable": false
+            }
+          }
+        ]
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 1,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": true,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        0,
+        0,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ],
+          [
+            2,
+            1,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "area-equal-distance-keeps-lower",
+      "kind": "Area",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 2,
+        "overrides": [
+          {
+            "position": [
+              1,
+              1,
+              0
+            ],
+            "tile": {
+              "h": 11,
+              "half": 0,
+              "water": 0,
+              "blocked": false,
+              "untargetable": false
+            }
+          },
+          {
+            "position": [
+              2,
+              1,
+              1
+            ],
+            "tile": {
+              "h": 12,
+              "half": 0,
+              "water": 0,
+              "blocked": false,
+              "untargetable": false
+            }
+          }
+        ]
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 1,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        0,
+        0,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "whole-area-bypasses-height-and-top-down",
+      "kind": "Area",
+      "map": {
+        "width": 2,
+        "depth": 2,
+        "layers": 2,
+        "overrides": [
+          {
+            "position": [
+              1,
+              1,
+              1
+            ],
+            "tile": {
+              "h": 100,
+              "half": 0,
+              "water": 0,
+              "blocked": false,
+              "untargetable": false
+            }
+          }
+        ]
+      },
+      "geometry": {
+        "range": 1,
+        "area": 255,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": true,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        0,
+        0,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "area-filters-both-collision-flags",
+      "kind": "Area",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": [
+          {
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "tile": {
+              "h": 10,
+              "half": 0,
+              "water": 0,
+              "blocked": true,
+              "untargetable": false
+            }
+          },
+          {
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "tile": {
+              "h": 10,
+              "half": 0,
+              "water": 0,
+              "blocked": false,
+              "untargetable": true
+            }
+          }
+        ]
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        0,
+        0,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "area-height-is-independent-of-blue-height-flag",
+      "kind": "Area",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": [
+          {
+            "position": [
+              2,
+              1,
+              0
+            ],
+            "tile": {
+              "h": 11,
+              "half": 0,
+              "water": 0,
+              "blocked": false,
+              "untargetable": false
+            }
+          }
+        ]
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        0,
+        0,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "area-outside-normalized-map",
+      "kind": "Area",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        0,
+        0,
+        0
+      ],
+      "aim": [
+        3,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": false,
+        "panels": null
+      }
+    },
+    {
+      "id": "area-top-down-sentinel-retains-lower",
+      "kind": "Area",
+      "map": {
+        "width": 1,
+        "depth": 1,
+        "layers": 2,
+        "overrides": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "tile": {
+              "h": 0,
+              "half": 0,
+              "water": 0,
+              "blocked": false,
+              "untargetable": false
+            }
+          },
+          {
+            "position": [
+              0,
+              0,
+              1
+            ],
+            "tile": {
+              "h": 128,
+              "half": 0,
+              "water": 0,
+              "blocked": false,
+              "untargetable": false
+            }
+          }
+        ]
+      },
+      "geometry": {
+        "range": 1,
+        "area": 0,
+        "vertical": 255,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": true,
+        "allies": false,
+        "enemies": false
+      },
+      "caster": [
+        0,
+        0,
+        0
+      ],
+      "aim": [
+        0,
+        0,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "expected": {
+        "accepted": true,
+        "panels": [
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    }
+  ],
+  "rosters": [
+    {
+      "id": "source-order-not-input-or-name-order",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "casterId": "actor",
+      "caster": [
+        1,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "nearest": false,
+      "units": [
+        {
+          "id": "east",
+          "order": 5,
+          "position": [
+            2,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "actor",
+          "order": 0,
+          "position": [
+            1,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "north",
+          "order": 2,
+          "position": [
+            1,
+            0,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        }
+      ],
+      "expected": {
+        "ids": [
+          "actor",
+          "north",
+          "east"
+        ],
+        "panels": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "untargetable-unit-flags-only",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "casterId": "actor",
+      "caster": [
+        1,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "nearest": false,
+      "units": [
+        {
+          "id": "actor",
+          "order": 0,
+          "position": [
+            1,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "inactive",
+          "order": 1,
+          "position": [
+            255,
+            255,
+            1
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": false,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "crystal",
+          "order": 2,
+          "position": [
+            1,
+            0,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": true,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "treasure",
+          "order": 3,
+          "position": [
+            0,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": true,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "jump",
+          "order": 4,
+          "position": [
+            2,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": true,
+          "mount": false
+        },
+        {
+          "id": "mount",
+          "order": 5,
+          "position": [
+            1,
+            2,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": true
+        },
+        {
+          "id": "corner",
+          "order": 6,
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        }
+      ],
+      "expected": {
+        "ids": [
+          "actor"
+        ],
+        "panels": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "caster-current-versus-target-initial",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": true,
+        "enemies": false
+      },
+      "casterId": "actor",
+      "caster": [
+        1,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "nearest": false,
+      "units": [
+        {
+          "id": "enemy",
+          "order": 2,
+          "position": [
+            2,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 1,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "ally",
+          "order": 1,
+          "position": [
+            1,
+            0,
+            0
+          ],
+          "initial": 1,
+          "current": 3,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "actor",
+          "order": 0,
+          "position": [
+            1,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 1,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        }
+      ],
+      "expected": {
+        "ids": [
+          "actor",
+          "ally"
+        ],
+        "panels": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "enemy-only-forces-caster-ally",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": true
+      },
+      "casterId": "actor",
+      "caster": [
+        1,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "nearest": false,
+      "units": [
+        {
+          "id": "actor",
+          "order": 0,
+          "position": [
+            1,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 1,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "ally",
+          "order": 1,
+          "position": [
+            1,
+            0,
+            0
+          ],
+          "initial": 1,
+          "current": 3,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "enemy",
+          "order": 2,
+          "position": [
+            2,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 1,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        }
+      ],
+      "expected": {
+        "ids": [
+          "enemy"
+        ],
+        "panels": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "no-team-flags-means-all",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "casterId": "actor",
+      "caster": [
+        1,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "nearest": false,
+      "units": [
+        {
+          "id": "actor",
+          "order": 0,
+          "position": [
+            1,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 1,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "ally",
+          "order": 1,
+          "position": [
+            1,
+            0,
+            0
+          ],
+          "initial": 1,
+          "current": 3,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "enemy",
+          "order": 2,
+          "position": [
+            2,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 1,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        }
+      ],
+      "expected": {
+        "ids": [
+          "actor",
+          "ally",
+          "enemy"
+        ],
+        "panels": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "whole-map-both-flags-only-occupied",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 255,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": true,
+        "enemies": true
+      },
+      "casterId": "actor",
+      "caster": [
+        1,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "nearest": false,
+      "units": [
+        {
+          "id": "actor",
+          "order": 0,
+          "position": [
+            1,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 1,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "ally",
+          "order": 1,
+          "position": [
+            1,
+            0,
+            0
+          ],
+          "initial": 1,
+          "current": 3,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "enemy",
+          "order": 2,
+          "position": [
+            2,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 1,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        }
+      ],
+      "expected": {
+        "ids": [
+          "actor",
+          "ally",
+          "enemy"
+        ],
+        "panels": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "whole-map-ally-only",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 255,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": true,
+        "enemies": false
+      },
+      "casterId": "actor",
+      "caster": [
+        1,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "nearest": false,
+      "units": [
+        {
+          "id": "actor",
+          "order": 0,
+          "position": [
+            1,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 1,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "ally",
+          "order": 1,
+          "position": [
+            1,
+            0,
+            0
+          ],
+          "initial": 1,
+          "current": 3,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "enemy",
+          "order": 2,
+          "position": [
+            2,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 1,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        }
+      ],
+      "expected": {
+        "ids": [
+          "actor",
+          "ally"
+        ],
+        "panels": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "shared-panel-allowed-first-keeps-mark",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": true,
+        "enemies": false
+      },
+      "casterId": "actor",
+      "caster": [
+        1,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "nearest": false,
+      "units": [
+        {
+          "id": "actor",
+          "order": 0,
+          "position": [
+            1,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 1,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "ally",
+          "order": 1,
+          "position": [
+            2,
+            1,
+            0
+          ],
+          "initial": 1,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "enemy",
+          "order": 2,
+          "position": [
+            2,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        }
+      ],
+      "expected": {
+        "ids": [
+          "actor",
+          "ally",
+          "enemy"
+        ],
+        "panels": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "shared-panel-disallowed-first-removes-budget",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": true,
+        "enemies": false
+      },
+      "casterId": "actor",
+      "caster": [
+        1,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "nearest": false,
+      "units": [
+        {
+          "id": "actor",
+          "order": 0,
+          "position": [
+            1,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 1,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "enemy",
+          "order": 1,
+          "position": [
+            2,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "ally",
+          "order": 2,
+          "position": [
+            2,
+            1,
+            0
+          ],
+          "initial": 1,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        }
+      ],
+      "expected": {
+        "ids": [
+          "actor"
+        ],
+        "panels": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "nearest-stable-distance-ties",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 2,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "casterId": "actor",
+      "caster": [
+        1,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "nearest": true,
+      "units": [
+        {
+          "id": "actor",
+          "order": 0,
+          "position": [
+            1,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "far",
+          "order": 1,
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "east",
+          "order": 2,
+          "position": [
+            2,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "north",
+          "order": 3,
+          "position": [
+            1,
+            0,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        }
+      ],
+      "expected": {
+        "ids": [
+          "actor",
+          "east",
+          "north",
+          "far"
+        ],
+        "panels": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ],
+          [
+            2,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "ordinary-order-does-not-sort-distance",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 2,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "casterId": "actor",
+      "caster": [
+        1,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "nearest": false,
+      "units": [
+        {
+          "id": "actor",
+          "order": 0,
+          "position": [
+            1,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "far",
+          "order": 1,
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "east",
+          "order": 2,
+          "position": [
+            2,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "north",
+          "order": 3,
+          "position": [
+            1,
+            0,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        }
+      ],
+      "expected": {
+        "ids": [
+          "actor",
+          "far",
+          "east",
+          "north"
+        ],
+        "panels": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ],
+          [
+            2,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "cannot-hit-caster-removes-the-whole-panel",
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 1,
+        "area": 1,
+        "vertical": 0,
+        "rangeVertical": false,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": true,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "casterId": "actor",
+      "caster": [
+        1,
+        1,
+        0
+      ],
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "nearest": false,
+      "units": [
+        {
+          "id": "actor",
+          "order": 0,
+          "position": [
+            1,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "overlap",
+          "order": 1,
+          "position": [
+            1,
+            1,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        },
+        {
+          "id": "north",
+          "order": 2,
+          "position": [
+            1,
+            0,
+            0
+          ],
+          "initial": 0,
+          "current": 0,
+          "active": true,
+          "crystal": false,
+          "treasure": false,
+          "jump": false,
+          "mount": false
+        }
+      ],
+      "expected": {
+        "ids": [
+          "north"
+        ],
+        "panels": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ]
+      }
+    }
+  ]
+}

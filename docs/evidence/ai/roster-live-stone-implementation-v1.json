@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-306",
+    "ZOD-307",
+    "ZOD-308",
+    "ZOD-309"
+  ],
+  "date": "2026-11-05",
+  "kind": "shared-flat-roster-geometry-and-actual-stone-sessions",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "2c4b2e0",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/roster-live-stone-source-v1.json",
+  "design": "docs/architecture/zod-306-roster-live-stone.md",
+  "behavior": "docs/behavior/roster-live-throw-stone.md",
+  "sourceFixture": "docs/fixtures/behavior/roster-live-stone-contract-v1.json",
+  "implementationPaths": [
+    "src/Zodiac.Framework/FlatRosterDirectTrajectory.cs",
+    "src/Zodiac.Framework/TargetedAbilityBattle.cs",
+    "src/Zodiac.Framework/RosterFacingTurnBattle.cs",
+    "src/Zodiac.Framework.Ai/Shared/RosterAiDirectTrajectory.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Tests/FlatRosterDirectTrajectoryTests.cs",
+    "tests/Zodiac.Framework.Tests/RosterThrowStoneTests.cs",
+    "tests/Zodiac.Framework.Tests/RosterTargetedAbilitySessionTests.cs"
+  ],
+  "invariants": [
+    "one exact Framework sampled kernel/height owner, AI facade preserves additional compact16 and movement-origin admission",
+    "actual source excludes only actor and resolves first hit including target; other teams/allies can intercept; no range-only or AI-boolean substitution",
+    "shared actual Stone kernel retains pair guard/results, four miss/seven hit draws, real damage/Brave, KO wrap, all-occupant and Y-tie push checks",
+    "exact real effect/grant/ground/unit/heights required, slot21 separated from AI16 and uncapped storage",
+    "opaque actual session publisher/receipts reused; late failures atomic, earlier accepted Move retained; no cached plan or AI RNG authority"
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4413,
+    "frameworkPassed": 1500,
+    "aiPassed": 1168,
+    "newFrameworkCases": 13,
+    "pythonPassed": 581,
+    "newPythonCases": 3,
+    "trxReports": 7,
+    "sourceFiles": 27,
+    "sourceFunctions": 83,
+    "sourceDescriptions": 13,
+    "sourcePreparedAudit": true,
+    "algorithmGuideAudit": true,
+    "localLinkAudit": true,
+    "coverageAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/roster-live-stone-306-309/"
+  },
+  "dependencyChanges": false,
+  "newProductionFriendAccess": false,
+  "originalExecuted": false,
+  "cExecuted": false
+}

@@ -1,0 +1,95 @@
+{
+  "format": "fft.prepared-scenario-event",
+  "schemaVersion": 1,
+  "profile": "sample:event-profile/non-tutorial-speed1-timed-v1",
+  "dialect": "fft.ps1-us:scenario-bytecode",
+  "id": "sample:event/wait-sequence-v1",
+  "scene": "Battle",
+  "source": {
+    "kind": "synthetic",
+    "edition": "SCUS-94221",
+    "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "blockSha256": "6240a68745c1414f57f1dc08fad7aa44519103035d195b4eacbc92e3cf199b91",
+    "encoding": "raw",
+    "textOffset": 42
+  },
+  "instructions": [
+    {
+      "offset": 4,
+      "operation": "ZeroVariable",
+      "operand1": 3,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 7,
+      "operation": "AddImmediate",
+      "operand1": 3,
+      "operand2": 1,
+      "targetOffset": null
+    },
+    {
+      "offset": 12,
+      "operation": "WaitFrames",
+      "operand1": 1,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 15,
+      "operation": "AddImmediate",
+      "operand1": 3,
+      "operand2": 2,
+      "targetOffset": null
+    },
+    {
+      "offset": 20,
+      "operation": "WaitFrames",
+      "operand1": 0,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 23,
+      "operation": "WaitFrames",
+      "operand1": 60,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 26,
+      "operation": "AddImmediate",
+      "operand1": 3,
+      "operand2": 4,
+      "targetOffset": null
+    },
+    {
+      "offset": 31,
+      "operation": "WaitFrames",
+      "operand1": 1,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 34,
+      "operation": "AddImmediate",
+      "operand1": 3,
+      "operand2": 8,
+      "targetOffset": null
+    },
+    {
+      "offset": 39,
+      "operation": "ForwardTargetExit",
+      "operand1": 1,
+      "operand2": null,
+      "targetOffset": null
+    },
+    {
+      "offset": 41,
+      "operation": "SearchEnd",
+      "operand1": null,
+      "operand2": null,
+      "targetOffset": null
+    }
+  ]
+}

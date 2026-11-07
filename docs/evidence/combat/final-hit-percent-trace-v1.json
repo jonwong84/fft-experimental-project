@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "800fe474313de69be88d0896d065f008481fbe4f",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Supplied final-hit routine/source/prepared-byte correspondence; existing bounded physical and magic implementation review, no runtime expansion.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40418,
+      "sha256": "04542e66135d779fd739adbce9fa6ee714feb6dc8607dfa4584c87222a38343c"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 15884,
+      "sha256": "7ddb1c8ed2e0cad3de18dae6945364d4fffd2299aa4383a659ecbe27717b7eb9"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    },
+    {
+      "path": "target/main.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 135004,
+      "sha256": "b6066d98d481d73eb49d2d16be57ae3fc5ae4070830176fdeeeaae2bdeaec2a3"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_evade_calculate_final_hit_percent",
+      "startLine": 811,
+      "endLine": 854,
+      "normalizedLfSha256": "720389e43cdf64d0efb0ce788006b82eec068d661d876b0861cb6837ca505325"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "evade_source_roll",
+      "startLine": 291,
+      "endLine": 302,
+      "normalizedLfSha256": "26a09b9e4435a85b92128833800106817452b3a59cf8a24bf8306dec88de127a"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "evade_roll",
+      "startLine": 848,
+      "endLine": 851,
+      "normalizedLfSha256": "9bbcd2673a3c007ddb80b03873a6bc206b1b34d2fabc26185e0de4fd3d77d66f"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "symbol": "random_roll_pass_fail",
+      "startLine": 84,
+      "endLine": 88,
+      "normalizedLfSha256": "fe644f4e2a6aefc5520152de095c4762912d9dd0dbb92fadd12c0ff5a5c89f88"
+    }
+  ],
+  "suppliedInstructionCheck": {
+    "start": "0x80185814",
+    "endInclusive": "0x80185a98",
+    "instructionCount": 162,
+    "allMatched": true
+  },
+  "preparedValidation": {
+    "size": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000",
+    "readOnly": true
+  },
+  "orderedCalls": [
+    {
+      "callPc": "0x801859ec",
+      "target": "0x801848d8",
+      "symbol": "evade_source_roll",
+      "returnAddress": "0x801859f4"
+    },
+    {
+      "callPc": "0x80185a28",
+      "target": "0x801848d8",
+      "symbol": "evade_source_roll",
+      "returnAddress": "0x80185a30"
+    },
+    {
+      "callPc": "0x80185a60",
+      "target": "0x801848d8",
+      "symbol": "evade_source_roll",
+      "returnAddress": "0x80185a68"
+    },
+    {
+      "callPc": "0x80185a7c",
+      "target": "0x801848d8",
+      "symbol": "evade_source_roll",
+      "returnAddress": "0x80185a84"
+    }
+  ],
+  "listedCaller": {
+    "callPc": "0x80188490",
+    "target": "0x80185814",
+    "symbol": "formula_evade_calculate_final_hit_percent",
+    "returnAddress": "0x80188498"
+  },
+  "semantics": {
+    "gate": "Nonzero ability with secondary Evadeable off returns without changes or draws; ability0 always checks",
+    "guaranteedMiss": "Any evade >= baseHit clears hit and accuracy, then proceeds to ordered roll helpers, including baseHit0",
+    "accuracy": "factor[i]=floor((baseHit-evade[i])*100/baseHit); newAccuracy=floor(floor(product(factor)/1000000)*initialAccuracy/100). Products fit signed32 for byte evade < positive byte baseHit; source accuracy is signed16.",
+    "orderedSources": [
+      "accessory",
+      "right hand",
+      "left hand",
+      "class"
+    ],
+    "draw": "Each reached helper draws floor(raw*baseHit/32768); zero and certain evades still draw; only Execute records a random evade and exits early",
+    "labels": "Hand item label is weapon ID unless0xff, otherwise shield ID; this is independent of which item contributed evasion. Class label0xff. Miss types1/2/3/4.",
+    "rounding": "Rounded accuracy0 does not itself clear hit; preexisting accuracy is scaled rather than replaced by baseHit"
+  },
+  "managedReview": {
+    "physical": "Restricted base100, no equipment, class/facing only; does not expose general preparation or item labels",
+    "magic": "Nonzero abilities only, class forced0; shared final arithmetic and RNG ordering preserved within the admitted domain",
+    "defectFound": false
+  },
+  "validation": {
+    "managed": "39 existing MagicEvasionTests/PhysicalFormulaAssignmentTests passed",
+    "fullSuiteRerun": false,
+    "python": "18 existing magic-evasion/physical-formula-assignment tests passed"
+  },
+  "behaviorChange": false,
+  "originalExecuted": false,
+  "cExecuted": false
+}

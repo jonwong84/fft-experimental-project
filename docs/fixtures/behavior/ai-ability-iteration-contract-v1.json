@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-185",
+  "kind": "isolated-source-descriptions",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "scope": "Synthetic cursor/loader/gate/rank inputs and isolated Throw Stone AI arithmetic; no original, C or managed AI execution; no full search or RNG-cost oracle.",
+  "cursorVectors": [
+    {"id":"fresh-skip-then-next-entry", "input":{"resume":false,"counter":9,"entries":[{"index":0,"skillset":1,"completion":"skip-unusable"},{"index":1,"skillset":5,"completion":"complete"},{"index":2,"skillset":255}]}, "expected":{"loads":[0,1],"evaluations":[0,1],"counter":2,"endReason":"terminator","cursorDraws":0}},
+    {"id":"suspend-without-increment", "input":{"resume":false,"counter":0,"entries":[{"index":0,"skillset":1,"completion":"suspend"}]}, "expected":{"loads":[0],"evaluations":[0],"counter":0,"endReason":"suspended","cursorDraws":0}},
+    {"id":"resume-same-entry-without-reload", "input":{"resume":true,"counter":1,"entries":[{"index":1,"skillset":5,"completion":"complete"},{"index":2,"skillset":255}]}, "expected":{"loads":[],"evaluations":[1],"counter":2,"endReason":"terminator","cursorDraws":0}},
+    {"id":"last-source-slot-completes", "input":{"resume":true,"counter":33,"entries":[{"index":33,"skillset":5,"completion":"complete"}]}, "expected":{"loads":[],"evaluations":[33],"counter":34,"endReason":"source-capacity","cursorDraws":0}}
+  ],
+  "loaderVectors": [
+    {"id":"usage-replaces-static-motion-bit", "input":{"packedId":17556,"staticAiBytes":[17,66,32,1],"usage":128}, "expected":{"abilityId":148,"physicalSlot":17,"workingWordHex":"80204211","usable":true,"consumeAimTiles":false}},
+    {"id":"static-usable-cannot-override-working-usage", "input":{"packedId":17556,"staticAiBytes":[17,66,32,128],"usage":1}, "expected":{"abilityId":148,"physicalSlot":17,"workingWordHex":"01204211","usable":false,"consumeAimTiles":true}}
+  ],
+  "gateVectors": [
+    {"id":"unusable-skips-before-random-gate", "input":{"usable":false,"randomUse":true,"threshold":0,"raw":1}, "expected":{"evaluateTargets":false,"gateDraws":0}},
+    {"id":"ordinary-usable-has-no-gate-roll", "input":{"usable":true,"randomUse":false}, "expected":{"evaluateTargets":true,"gateDraws":0}},
+    {"id":"random-gate-equality-passes", "input":{"usable":true,"randomUse":true,"threshold":0,"raw":128}, "expected":{"evaluateTargets":true,"gateDraws":1}},
+    {"id":"random-gate-above-threshold-skips", "input":{"usable":true,"randomUse":true,"threshold":0,"raw":129}, "expected":{"evaluateTargets":false,"gateDraws":1}}
+  ],
+  "rankVectors": [
+    {"id":"entry-boundaries-retain-ranks-and-reset-best-only", "input":{"baseline":{"decided":0,"priority":0,"hit":100},"bestByEntry":[
+      {"payload":"first","decided":0,"priority":26,"hit":25,"proximity":3,"waitFacing":2,"reflected":true},
+      {"payload":"second","decided":0,"priority":26,"hit":100,"proximity":5,"waitFacing":2,"reflected":true},
+      {"payload":"third","decided":0,"priority":26,"hit":100,"proximity":5,"waitFacing":2,"reflected":true},
+      {"payload":"baseline-equal","decided":0,"priority":0,"hit":100,"proximity":0,"waitFacing":2,"reflected":true}]},
+      "expected":{"rankedPayloads":["second","third","first"],"insertionIndices":[0,0,1,null],"lastBest":{"payload":"baseline-equal","decided":0,"priority":-32767,"hit":0,"proximity":0,"waitFacing":5,"reflected":false},"additionalRankDraws":0}}
+  ],
+  "throwStoneVectors": [
+    {"id":"ai-midpoint-full-accuracy", "input":{"pa":5,"targetHp":50,"hitPercent":100}, "expected":{"valuable":true,"normalDamage":10,"targetHp":40,"evasionDraws":4,"formulaHelperDraws":0,"knockback":false}},
+    {"id":"accuracy-does-not-scale-projected-hp", "input":{"pa":5,"targetHp":50,"hitPercent":25}, "expected":{"valuable":true,"normalDamage":10,"targetHp":40,"evasionDraws":4,"formulaHelperDraws":0,"knockback":false}},
+    {"id":"zero-accuracy-not-valuable-after-four-draws", "input":{"pa":5,"targetHp":50,"hitPercent":0}, "expected":{"valuable":false,"normalDamage":0,"targetHp":50,"evasionDraws":4,"formulaHelperDraws":0,"knockback":false}},
+    {"id":"current-battle-pa-and-lethal-clamp", "input":{"pa":6,"targetHp":11,"hitPercent":100}, "expected":{"valuable":true,"normalDamage":12,"targetHp":0,"evasionDraws":4,"formulaHelperDraws":0,"knockback":false}}
+  ]
+}

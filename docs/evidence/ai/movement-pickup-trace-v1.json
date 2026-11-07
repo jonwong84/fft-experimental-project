@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "c0b78e799c6b560ad8a5a2823c8408d7e2cb5d08",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Supplied AI movement/pickup simulation and coordinate helper source study; no pickup support activated and ZOD-430 remains open.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 111880,
+      "sha256": "22555f06b061bc6f017f721998a5e44dfb3d4fa4c7284a2ee3367dfa27ce80ad"
+    },
+    {
+      "path": "include/fft/ai.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 25771,
+      "sha256": "fa7aabf5b4d21e3f42be7978c061fb859a52709a234e5b4205c5de5e2c8566b5"
+    },
+    {
+      "path": "include/fft/ai_decision.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9018,
+      "sha256": "a88a67152b5143b74121946b7dffd4c8b76b568d9947c828d6620014a741b02b"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "movement_pickup_simulate",
+      "startLine": 1736,
+      "endLine": 1757,
+      "normalizedLfSha256": "cd86df80f4ec09820ed3ad82aa56af77bce27e61a1f6f459f7d507d95373250a"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_acting_unit_place",
+      "startLine": 2442,
+      "endLine": 2446,
+      "normalizedLfSha256": "0127d5cdd423a574e7f6d32ad494c445a2d77c24343bdccd599353a933ffec11"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_tile_pickup_update",
+      "startLine": 726,
+      "endLine": 745,
+      "normalizedLfSha256": "81974bd2915bd0fb1fbd8659238dc6a38dcd558c55c68716913887df1a33c848"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_action_simulate_and_score",
+      "startLine": 1442,
+      "endLine": 1728,
+      "normalizedLfSha256": "9415274d3b38d3e7afe51922914355e40ff6bad7bccb9bc861bbbfae6894bcd4"
+    }
+  ],
+  "preparedValidation": {
+    "byteLength": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000"
+  },
+  "suppliedInstructionCheck": {
+    "start": "0x8019db80",
+    "endInclusive": "0x8019dca8",
+    "instructionCount": 75,
+    "allMatched": true
+  },
+  "coordinateHelperCall": {
+    "pc": "0x8019dba8",
+    "target": "0x8019f258",
+    "returnAddress": "0x8019dbb0"
+  },
+  "listedCallerChecks": [
+    {
+      "pc": "0x8019d47c",
+      "target": "0x8019db80",
+      "returnAddress": "0x8019d484"
+    },
+    {
+      "pc": "0x8019d48c",
+      "target": "0x8019db80",
+      "returnAddress": "0x8019d494"
+    }
+  ],
+  "findings": {
+    "earlyExit": "Packed32 coordinate word equality skips placement, pickups, priority and movement_taken; canonical coordinate order is x/layer/y/zero",
+    "placement": "Writes actor x, position.y and higher_elevation only; preserves facing and unrelated packed position bits; does not refresh cached acting_unit_coords",
+    "crystal": "Pickup kind1 restores HP/MP to their maxima and clears Critical in current and inflicted status bytes",
+    "bonus": "Any nonzero pickup adds2 when post-recovery actor is noncritical and autobattle setting is not0x11; signed16 priority store wraps",
+    "movement": "A changed destination marks movement_taken even when no pickup exists",
+    "classification": "ai_tile_pickup_update sets NONE0, CRYSTAL1 or TREASURE2 from a present occupant; later treasure assignment wins if both bits exist",
+    "notPerformed": "No pathfinding, inventory award, pickup removal or RNG draws in the supplied routine or placement helper",
+    "annotationCorrections": [
+      "Workspace offsets0x18 and0xe30 are positive offsets from0x8019f3c4",
+      "Unit offset0x1bd is inflicted_status[2], not current-action pending infliction",
+      "Policy0x11 is AI_AUTOBATTLE_RETREAT at the pinned revision; distinct from AI_TARGET_CONSERVE_CT flag0x04"
+    ]
+  },
+  "ownerEditPreserved": {
+    "path": "src/Zodiac.Framework.Ai/AiTurnController.cs",
+    "gitBlob": "373d13f739439813f9608aefc2d84715d8ed1346"
+  },
+  "runtimeChanged": false,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "testsRerun": false
+}

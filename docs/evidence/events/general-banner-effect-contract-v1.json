@@ -1,0 +1,1333 @@
+{
+  "format": "fft.general-banner-effect-contract-expectations",
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "managedBase": "cb5ce5c",
+  "specificationOnly": true,
+  "executed": false,
+  "proofId": "sample:general-banner-effect-contract/v1",
+  "evidencePolicy": "Source-derived post-readiness control flow plus explicitly labeled native ownership/order/failure policies. No original execution, implemented reducer or runtime fixture format.",
+  "selectedEffect": {
+    "scene": "Battle",
+    "condition": 8,
+    "imageIndex": 0,
+    "taskClass": 56,
+    "holdFramesDomain": [
+      0,
+      255
+    ],
+    "revealIterations": 20,
+    "hideIterations": 10,
+    "finalActiveYieldResumptions": 1,
+    "maxNaturalPostReadinessTicks": 286
+  },
+  "originalSelection": {
+    "sourceEvidence": "docs/evidence/events/battle-start-0401.json",
+    "eventId": 401,
+    "sourceOffset": 164,
+    "condition": 8,
+    "holdFrames": 60,
+    "blockSha256": "a12ad52f48c2b6684993f196ead1721ecb8895cfd0f6690faed1a0d9ccca483f",
+    "rehashedLocalBlock": true,
+    "originalTimingObserved": false
+  },
+  "defaultSetup": {
+    "sceneRunId": "sample:scene/banner-a",
+    "owner": "sample:owner/a",
+    "consumer": "sample:consumer/a",
+    "definitionId": "sample:effect/general-banner-v1",
+    "program": "E5-56-at-4; D4-at-7",
+    "variables": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "order": [
+      "Create empty scene/ready interpreter at tick 0",
+      "Attach ready banner allocating task sequence 1 revision 0",
+      "RunUntilBlocked with instructionBudget 1; no effect tick consumed"
+    ],
+    "assetBoundary": "After image preparation/load/upload/setup; immediately before first reveal yield. Startup latency excluded.",
+    "instructionBudget": 1,
+    "updateBudget": 64
+  },
+  "historyConvention": "AdvanceTickRange expands to one explicit tick command for each inclusive tick with the stated Circle sample; unmanagedUpdates/cancelManaged apply only to that entry (multi-tick entries contain neither). Omitted unmanagedUpdates means empty. Setup throughTick expands false Circle samples after default setup. No public restore API is proposed.",
+  "checkpointConvention": "Phase is the state after the named tick, before the next yield resumes. Counts persist across phases. Every active effect checkpoint has lastProcessedTick equal to scene tick; terminal checkpoints retain their terminal tick. Expected arrays state selected boundaries, not an executed oracle.",
+  "traceOrder": {
+    "attach": [
+      "TaskStarted",
+      "EffectAttached"
+    ],
+    "activeTick": [
+      "TickAdvanced",
+      "EffectAdvanced",
+      "supplied unmanaged task changes",
+      "generated terminal task change if any",
+      "BarrierPolled/Released if pending",
+      "VM resumption/instructions if released"
+    ],
+    "naturalCompletionDefault": [
+      "TickAdvanced",
+      "EffectAdvanced(Completed,Natural)",
+      "TaskCompleted",
+      "BarrierPolled",
+      "BarrierReleased",
+      "BarrierWaitResumed",
+      "Instruction(Exit)"
+    ],
+    "skipEntryDefault": [
+      "TickAdvanced",
+      "EffectAdvanced(ExitYield,CircleSkipped)",
+      "BarrierPolled(matching managed task)"
+    ]
+  },
+  "nativeBounds": {
+    "maxAttachedEffectsIncludingTerminal": 1,
+    "maxUpdatesIncludingGenerated": 64,
+    "maxIdCharacters": 256,
+    "sceneTick": "checked signed-64"
+  },
+  "cases": [
+    {
+      "id": "BANNER-NORMAL-000",
+      "evidence": "source-control-flow-at-post-readiness-boundary",
+      "holdFrames": 0,
+      "history": [
+        {
+          "command": "AdvanceTickRange",
+          "first": 1,
+          "last": 31,
+          "circlePressed": false
+        }
+      ],
+      "expected": [
+        {
+          "tick": 0,
+          "effectPhase": "Revealing",
+          "revealCompleted": 0,
+          "holdCompleted": 0,
+          "hideCompleted": 0,
+          "exitCause": null,
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 1,
+          "effectPhase": "Revealing",
+          "revealCompleted": 1,
+          "holdCompleted": 0,
+          "hideCompleted": 0,
+          "exitCause": null,
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 19,
+          "effectPhase": "Revealing",
+          "revealCompleted": 19,
+          "holdCompleted": 0,
+          "hideCompleted": 0,
+          "exitCause": null,
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 20,
+          "effectPhase": "Hiding",
+          "revealCompleted": 20,
+          "holdCompleted": 0,
+          "hideCompleted": 0,
+          "exitCause": null,
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 21,
+          "effectPhase": "Hiding",
+          "revealCompleted": 20,
+          "holdCompleted": 0,
+          "hideCompleted": 1,
+          "exitCause": null,
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 30,
+          "effectPhase": "ExitYield",
+          "revealCompleted": 20,
+          "holdCompleted": 0,
+          "hideCompleted": 10,
+          "exitCause": "Natural",
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 31,
+          "effectPhase": "Completed",
+          "revealCompleted": 20,
+          "holdCompleted": 0,
+          "hideCompleted": 10,
+          "exitCause": "Natural",
+          "managedTaskPhase": "Completed",
+          "managedTaskRevision": 1,
+          "managedTaskClass": null,
+          "vm": "Exited"
+        }
+      ]
+    },
+    {
+      "id": "BANNER-NORMAL-001",
+      "evidence": "source-control-flow-at-post-readiness-boundary",
+      "holdFrames": 1,
+      "history": [
+        {
+          "command": "AdvanceTickRange",
+          "first": 1,
+          "last": 32,
+          "circlePressed": false
+        }
+      ],
+      "expected": [
+        {
+          "tick": 20,
+          "effectPhase": "Holding",
+          "revealCompleted": 20,
+          "holdCompleted": 0,
+          "hideCompleted": 0,
+          "exitCause": null,
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 21,
+          "effectPhase": "Hiding",
+          "revealCompleted": 20,
+          "holdCompleted": 1,
+          "hideCompleted": 0,
+          "exitCause": null,
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 31,
+          "effectPhase": "ExitYield",
+          "revealCompleted": 20,
+          "holdCompleted": 1,
+          "hideCompleted": 10,
+          "exitCause": "Natural",
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 32,
+          "effectPhase": "Completed",
+          "revealCompleted": 20,
+          "holdCompleted": 1,
+          "hideCompleted": 10,
+          "exitCause": "Natural",
+          "managedTaskPhase": "Completed",
+          "managedTaskRevision": 1,
+          "managedTaskClass": null,
+          "vm": "Exited"
+        }
+      ]
+    },
+    {
+      "id": "BANNER-NORMAL-060",
+      "evidence": "source-control-flow-at-post-readiness-boundary",
+      "holdFrames": 60,
+      "history": [
+        {
+          "command": "AdvanceTickRange",
+          "first": 1,
+          "last": 91,
+          "circlePressed": false
+        }
+      ],
+      "expected": [
+        {
+          "tick": 20,
+          "effectPhase": "Holding",
+          "revealCompleted": 20,
+          "holdCompleted": 0,
+          "hideCompleted": 0,
+          "exitCause": null,
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 79,
+          "effectPhase": "Holding",
+          "revealCompleted": 20,
+          "holdCompleted": 59,
+          "hideCompleted": 0,
+          "exitCause": null,
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 80,
+          "effectPhase": "Hiding",
+          "revealCompleted": 20,
+          "holdCompleted": 60,
+          "hideCompleted": 0,
+          "exitCause": null,
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 81,
+          "effectPhase": "Hiding",
+          "revealCompleted": 20,
+          "holdCompleted": 60,
+          "hideCompleted": 1,
+          "exitCause": null,
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 90,
+          "effectPhase": "ExitYield",
+          "revealCompleted": 20,
+          "holdCompleted": 60,
+          "hideCompleted": 10,
+          "exitCause": "Natural",
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 91,
+          "effectPhase": "Completed",
+          "revealCompleted": 20,
+          "holdCompleted": 60,
+          "hideCompleted": 10,
+          "exitCause": "Natural",
+          "managedTaskPhase": "Completed",
+          "managedTaskRevision": 1,
+          "managedTaskClass": null,
+          "vm": "Exited"
+        }
+      ]
+    },
+    {
+      "id": "BANNER-NORMAL-255",
+      "evidence": "source-control-flow-at-post-readiness-boundary",
+      "holdFrames": 255,
+      "history": [
+        {
+          "command": "AdvanceTickRange",
+          "first": 1,
+          "last": 286,
+          "circlePressed": false
+        }
+      ],
+      "expected": [
+        {
+          "tick": 20,
+          "effectPhase": "Holding",
+          "revealCompleted": 20,
+          "holdCompleted": 0,
+          "hideCompleted": 0,
+          "exitCause": null,
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 275,
+          "effectPhase": "Hiding",
+          "revealCompleted": 20,
+          "holdCompleted": 255,
+          "hideCompleted": 0,
+          "exitCause": null,
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 285,
+          "effectPhase": "ExitYield",
+          "revealCompleted": 20,
+          "holdCompleted": 255,
+          "hideCompleted": 10,
+          "exitCause": "Natural",
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 286,
+          "effectPhase": "Completed",
+          "revealCompleted": 20,
+          "holdCompleted": 255,
+          "hideCompleted": 10,
+          "exitCause": "Natural",
+          "managedTaskPhase": "Completed",
+          "managedTaskRevision": 1,
+          "managedTaskClass": null,
+          "vm": "Exited"
+        }
+      ]
+    },
+    {
+      "id": "BANNER-SKIP-REVEAL-FIRST",
+      "evidence": "source-control-flow-at-post-readiness-boundary",
+      "holdFrames": 60,
+      "history": [
+        {
+          "command": "AdvanceTickRange",
+          "first": 1,
+          "last": 1,
+          "circlePressed": true
+        },
+        {
+          "command": "AdvanceTickRange",
+          "first": 2,
+          "last": 2,
+          "circlePressed": false
+        }
+      ],
+      "expected": [
+        {
+          "tick": 1,
+          "effectPhase": "ExitYield",
+          "revealCompleted": 0,
+          "holdCompleted": 0,
+          "hideCompleted": 0,
+          "exitCause": "CircleSkipped",
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 2,
+          "effectPhase": "Completed",
+          "revealCompleted": 0,
+          "holdCompleted": 0,
+          "hideCompleted": 0,
+          "exitCause": "CircleSkipped",
+          "managedTaskPhase": "Completed",
+          "managedTaskRevision": 1,
+          "managedTaskClass": null,
+          "vm": "Exited"
+        }
+      ]
+    },
+    {
+      "id": "BANNER-SKIP-REVEAL-LAST",
+      "evidence": "source-control-flow-at-post-readiness-boundary",
+      "holdFrames": 60,
+      "history": [
+        {
+          "command": "AdvanceTickRange",
+          "first": 1,
+          "last": 19,
+          "circlePressed": false
+        },
+        {
+          "command": "AdvanceTickRange",
+          "first": 20,
+          "last": 20,
+          "circlePressed": true
+        },
+        {
+          "command": "AdvanceTickRange",
+          "first": 21,
+          "last": 21,
+          "circlePressed": false
+        }
+      ],
+      "expected": [
+        {
+          "tick": 19,
+          "effectPhase": "Revealing",
+          "revealCompleted": 19,
+          "holdCompleted": 0,
+          "hideCompleted": 0,
+          "exitCause": null,
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 20,
+          "effectPhase": "ExitYield",
+          "revealCompleted": 19,
+          "holdCompleted": 0,
+          "hideCompleted": 0,
+          "exitCause": "CircleSkipped",
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 21,
+          "effectPhase": "Completed",
+          "revealCompleted": 19,
+          "holdCompleted": 0,
+          "hideCompleted": 0,
+          "exitCause": "CircleSkipped",
+          "managedTaskPhase": "Completed",
+          "managedTaskRevision": 1,
+          "managedTaskClass": null,
+          "vm": "Exited"
+        }
+      ]
+    },
+    {
+      "id": "BANNER-SKIP-HOLD-FIRST",
+      "evidence": "source-control-flow-at-post-readiness-boundary",
+      "holdFrames": 1,
+      "history": [
+        {
+          "command": "AdvanceTickRange",
+          "first": 1,
+          "last": 20,
+          "circlePressed": false
+        },
+        {
+          "command": "AdvanceTickRange",
+          "first": 21,
+          "last": 21,
+          "circlePressed": true
+        },
+        {
+          "command": "AdvanceTickRange",
+          "first": 22,
+          "last": 22,
+          "circlePressed": false
+        }
+      ],
+      "expected": [
+        {
+          "tick": 20,
+          "effectPhase": "Holding",
+          "revealCompleted": 20,
+          "holdCompleted": 0,
+          "hideCompleted": 0,
+          "exitCause": null,
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 21,
+          "effectPhase": "ExitYield",
+          "revealCompleted": 20,
+          "holdCompleted": 0,
+          "hideCompleted": 0,
+          "exitCause": "CircleSkipped",
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 22,
+          "effectPhase": "Completed",
+          "revealCompleted": 20,
+          "holdCompleted": 0,
+          "hideCompleted": 0,
+          "exitCause": "CircleSkipped",
+          "managedTaskPhase": "Completed",
+          "managedTaskRevision": 1,
+          "managedTaskClass": null,
+          "vm": "Exited"
+        }
+      ]
+    },
+    {
+      "id": "BANNER-SKIP-HOLD-LAST",
+      "evidence": "source-control-flow-at-post-readiness-boundary",
+      "holdFrames": 60,
+      "history": [
+        {
+          "command": "AdvanceTickRange",
+          "first": 1,
+          "last": 79,
+          "circlePressed": false
+        },
+        {
+          "command": "AdvanceTickRange",
+          "first": 80,
+          "last": 80,
+          "circlePressed": true
+        },
+        {
+          "command": "AdvanceTickRange",
+          "first": 81,
+          "last": 81,
+          "circlePressed": false
+        }
+      ],
+      "expected": [
+        {
+          "tick": 79,
+          "effectPhase": "Holding",
+          "revealCompleted": 20,
+          "holdCompleted": 59,
+          "hideCompleted": 0,
+          "exitCause": null,
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 80,
+          "effectPhase": "ExitYield",
+          "revealCompleted": 20,
+          "holdCompleted": 59,
+          "hideCompleted": 0,
+          "exitCause": "CircleSkipped",
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 81,
+          "effectPhase": "Completed",
+          "revealCompleted": 20,
+          "holdCompleted": 59,
+          "hideCompleted": 0,
+          "exitCause": "CircleSkipped",
+          "managedTaskPhase": "Completed",
+          "managedTaskRevision": 1,
+          "managedTaskClass": null,
+          "vm": "Exited"
+        }
+      ]
+    },
+    {
+      "id": "BANNER-IGNORE-HIDE",
+      "evidence": "source-control-flow-at-post-readiness-boundary",
+      "holdFrames": 0,
+      "history": [
+        {
+          "command": "AdvanceTickRange",
+          "first": 1,
+          "last": 20,
+          "circlePressed": false
+        },
+        {
+          "command": "AdvanceTickRange",
+          "first": 21,
+          "last": 21,
+          "circlePressed": true
+        },
+        {
+          "command": "AdvanceTickRange",
+          "first": 22,
+          "last": 31,
+          "circlePressed": false
+        }
+      ],
+      "expected": [
+        {
+          "tick": 21,
+          "effectPhase": "Hiding",
+          "revealCompleted": 20,
+          "holdCompleted": 0,
+          "hideCompleted": 1,
+          "exitCause": null,
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 30,
+          "effectPhase": "ExitYield",
+          "revealCompleted": 20,
+          "holdCompleted": 0,
+          "hideCompleted": 10,
+          "exitCause": "Natural",
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 31,
+          "effectPhase": "Completed",
+          "revealCompleted": 20,
+          "holdCompleted": 0,
+          "hideCompleted": 10,
+          "exitCause": "Natural",
+          "managedTaskPhase": "Completed",
+          "managedTaskRevision": 1,
+          "managedTaskClass": null,
+          "vm": "Exited"
+        }
+      ]
+    },
+    {
+      "id": "BANNER-IGNORE-EXIT",
+      "evidence": "source-control-flow-at-post-readiness-boundary",
+      "holdFrames": 0,
+      "history": [
+        {
+          "command": "AdvanceTickRange",
+          "first": 1,
+          "last": 30,
+          "circlePressed": false
+        },
+        {
+          "command": "AdvanceTickRange",
+          "first": 31,
+          "last": 31,
+          "circlePressed": true
+        }
+      ],
+      "expected": [
+        {
+          "tick": 30,
+          "effectPhase": "ExitYield",
+          "revealCompleted": 20,
+          "holdCompleted": 0,
+          "hideCompleted": 10,
+          "exitCause": "Natural",
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 31,
+          "effectPhase": "Completed",
+          "revealCompleted": 20,
+          "holdCompleted": 0,
+          "hideCompleted": 10,
+          "exitCause": "Natural",
+          "managedTaskPhase": "Completed",
+          "managedTaskRevision": 1,
+          "managedTaskClass": null,
+          "vm": "Exited"
+        }
+      ]
+    },
+    {
+      "id": "BANNER-MULTI",
+      "evidence": "source-class-predicate-plus-declared-native-composition",
+      "holdFrames": 0,
+      "history": [
+        {
+          "command": "AdvanceTickRange",
+          "first": 1,
+          "last": 1,
+          "circlePressed": false,
+          "unmanagedUpdates": [
+            {
+              "update": "Start",
+              "family": "ConditionDisplay",
+              "owner": "sample:owner/b"
+            }
+          ]
+        },
+        {
+          "command": "AdvanceTickRange",
+          "first": 2,
+          "last": 31,
+          "circlePressed": false
+        },
+        {
+          "command": "AdvanceTickRange",
+          "first": 32,
+          "last": 32,
+          "circlePressed": false,
+          "unmanagedUpdates": [
+            {
+              "update": "Complete",
+              "sequence": 2,
+              "expectedRevision": 0
+            }
+          ]
+        }
+      ],
+      "expected": [
+        {
+          "tick": 31,
+          "effectPhase": "Completed",
+          "revealCompleted": 20,
+          "holdCompleted": 0,
+          "hideCompleted": 10,
+          "exitCause": "Natural",
+          "managedTaskPhase": "Completed",
+          "managedTaskRevision": 1,
+          "managedTaskClass": null,
+          "vm": "BarrierPending",
+          "matchingSequences": [
+            2
+          ],
+          "otherTaskPhase": "Running"
+        },
+        {
+          "tick": 32,
+          "effectPhase": "Completed",
+          "revealCompleted": 20,
+          "holdCompleted": 0,
+          "hideCompleted": 10,
+          "exitCause": "Natural",
+          "managedTaskPhase": "Completed",
+          "managedTaskRevision": 1,
+          "managedTaskClass": null,
+          "vm": "Exited",
+          "matchingSequences": [],
+          "effectLastProcessedTick": 31
+        }
+      ]
+    },
+    {
+      "id": "BANNER-RESTART",
+      "evidence": "declared-retained-scene-lifetime-plus-source-effect-progression",
+      "holdFrames": 60,
+      "history": [
+        {
+          "command": "AdvanceTickRange",
+          "first": 1,
+          "last": 5,
+          "circlePressed": false
+        },
+        {
+          "command": "StartNextEvent",
+          "consumer": "sample:consumer/b",
+          "program": "E5-56-then-D4"
+        },
+        {
+          "command": "RunUntilBlocked",
+          "instructionBudget": 1
+        },
+        {
+          "command": "AdvanceTickRange",
+          "first": 6,
+          "last": 91,
+          "circlePressed": false
+        }
+      ],
+      "expected": [
+        {
+          "tick": 5,
+          "effectPhase": "Revealing",
+          "revealCompleted": 5,
+          "holdCompleted": 0,
+          "hideCompleted": 0,
+          "exitCause": null,
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "Exited",
+          "after": "first five ticks",
+          "nextSequence": 2
+        },
+        {
+          "tick": 5,
+          "effectPhase": "Revealing",
+          "revealCompleted": 5,
+          "holdCompleted": 0,
+          "hideCompleted": 0,
+          "exitCause": null,
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending",
+          "after": "next event RunUntilBlocked",
+          "barrierEntryTick": 5,
+          "effectStartTick": 0,
+          "nextSequence": 2
+        },
+        {
+          "tick": 91,
+          "effectPhase": "Completed",
+          "revealCompleted": 20,
+          "holdCompleted": 60,
+          "hideCompleted": 10,
+          "exitCause": "Natural",
+          "managedTaskPhase": "Completed",
+          "managedTaskRevision": 1,
+          "managedTaskClass": null,
+          "vm": "Exited"
+        }
+      ],
+      "initialProgram": "D4-only"
+    },
+    {
+      "id": "BANNER-CANCEL-ACTIVE",
+      "evidence": "declared-owner-acknowledged-cancellation-policy",
+      "holdFrames": 60,
+      "history": [
+        {
+          "command": "AdvanceTickRange",
+          "first": 1,
+          "last": 4,
+          "circlePressed": false
+        },
+        {
+          "command": "AdvanceTickRange",
+          "first": 5,
+          "last": 5,
+          "circlePressed": true,
+          "cancelManaged": {
+            "sequence": 1,
+            "expectedRevision": 0
+          }
+        }
+      ],
+      "expected": [
+        {
+          "tick": 4,
+          "effectPhase": "Revealing",
+          "revealCompleted": 4,
+          "holdCompleted": 0,
+          "hideCompleted": 0,
+          "exitCause": null,
+          "managedTaskPhase": "Running",
+          "managedTaskRevision": 0,
+          "managedTaskClass": 56,
+          "vm": "BarrierPending"
+        },
+        {
+          "tick": 5,
+          "effectPhase": "Cancelled",
+          "revealCompleted": 4,
+          "holdCompleted": 0,
+          "hideCompleted": 0,
+          "exitCause": "OwnerAcknowledgedCancellation",
+          "managedTaskPhase": "Cancelled",
+          "managedTaskRevision": 1,
+          "managedTaskClass": null,
+          "vm": "Exited"
+        }
+      ],
+      "cancellationPrecedesCircle": true
+    },
+    {
+      "id": "BANNER-CANCEL-TERMINAL",
+      "evidence": "declared-native-validation-or-atomicity-policy",
+      "setup": {
+        "holdFrames": 0,
+        "throughTick": 31
+      },
+      "command": {
+        "command": "AdvanceTick",
+        "circlePressed": false,
+        "cancelManaged": {
+          "sequence": 1,
+          "expectedRevision": 0
+        }
+      },
+      "expectedRejection": {
+        "reason": "TaskLedgerRejected",
+        "sameInputSnapshot": true,
+        "committedTrace": [],
+        "acceptedEffectTicks": 0,
+        "acceptedTaskUpdates": 0,
+        "instructionsExecuted": 0,
+        "ticksConsumed": 0,
+        "taskReason": "DuplicateTerminalUpdate"
+      },
+      "preserved": {
+        "tick": 31,
+        "effectPhase": "Completed",
+        "revealCompleted": 20,
+        "holdCompleted": 0,
+        "hideCompleted": 10,
+        "exitCause": "Natural",
+        "managedTaskPhase": "Completed",
+        "managedTaskRevision": 1,
+        "managedTaskClass": null,
+        "vm": "Exited"
+      }
+    },
+    {
+      "id": "BANNER-HOLD-NEGATIVE",
+      "evidence": "declared-native-validation-or-atomicity-policy",
+      "setup": "EmptyReadyScene",
+      "command": {
+        "command": "AttachBanner",
+        "condition": 8,
+        "holdFrames": -1
+      },
+      "expectedRejection": {
+        "reason": "InvalidHoldFrames",
+        "sameInputSnapshot": true,
+        "committedTrace": [],
+        "acceptedEffectTicks": 0,
+        "acceptedTaskUpdates": 0,
+        "instructionsExecuted": 0,
+        "ticksConsumed": 0
+      },
+      "nextSequence": 1
+    },
+    {
+      "id": "BANNER-HOLD-TOO-LARGE",
+      "evidence": "declared-native-validation-or-atomicity-policy",
+      "setup": "EmptyReadyScene",
+      "command": {
+        "command": "AttachBanner",
+        "condition": 8,
+        "holdFrames": 256
+      },
+      "expectedRejection": {
+        "reason": "InvalidHoldFrames",
+        "sameInputSnapshot": true,
+        "committedTrace": [],
+        "acceptedEffectTicks": 0,
+        "acceptedTaskUpdates": 0,
+        "instructionsExecuted": 0,
+        "ticksConsumed": 0
+      },
+      "nextSequence": 1
+    },
+    {
+      "id": "BANNER-CONDITION-UNSUPPORTED",
+      "evidence": "declared-native-validation-or-atomicity-policy",
+      "setup": "EmptyReadyScene",
+      "command": {
+        "command": "AttachBanner",
+        "condition": 9,
+        "holdFrames": 0
+      },
+      "expectedRejection": {
+        "reason": "UnsupportedCondition",
+        "sameInputSnapshot": true,
+        "committedTrace": [],
+        "acceptedEffectTicks": 0,
+        "acceptedTaskUpdates": 0,
+        "instructionsExecuted": 0,
+        "ticksConsumed": 0
+      },
+      "nextSequence": 1
+    },
+    {
+      "id": "BANNER-EXTERNAL-UPDATE",
+      "evidence": "declared-native-validation-or-atomicity-policy",
+      "setup": {
+        "holdFrames": 0,
+        "throughTick": 30
+      },
+      "command": {
+        "command": "AdvanceTick",
+        "circlePressed": false,
+        "unmanagedUpdates": [
+          {
+            "update": "Complete",
+            "sequence": 1,
+            "expectedRevision": 0
+          }
+        ]
+      },
+      "expectedRejection": {
+        "reason": "ManagedTaskUpdateForbidden",
+        "sameInputSnapshot": true,
+        "committedTrace": [],
+        "acceptedEffectTicks": 0,
+        "acceptedTaskUpdates": 0,
+        "instructionsExecuted": 0,
+        "ticksConsumed": 0
+      },
+      "preserved": {
+        "tick": 30,
+        "effectPhase": "ExitYield",
+        "revealCompleted": 20,
+        "holdCompleted": 0,
+        "hideCompleted": 10,
+        "exitCause": "Natural",
+        "managedTaskPhase": "Running",
+        "managedTaskRevision": 0,
+        "managedTaskClass": 56,
+        "vm": "BarrierPending"
+      }
+    },
+    {
+      "id": "BANNER-ACK-BUDGET",
+      "evidence": "declared-native-validation-or-atomicity-policy",
+      "setup": {
+        "holdFrames": 0,
+        "throughTick": 30
+      },
+      "command": {
+        "command": "AdvanceTick",
+        "circlePressed": false,
+        "instructionBudget": 1,
+        "updateBudget": 0
+      },
+      "expectedRejection": {
+        "reason": "TaskLedgerRejected",
+        "sameInputSnapshot": true,
+        "committedTrace": [],
+        "acceptedEffectTicks": 0,
+        "acceptedTaskUpdates": 0,
+        "instructionsExecuted": 0,
+        "ticksConsumed": 0,
+        "taskReason": "UpdateBudgetExceeded"
+      },
+      "preserved": {
+        "tick": 30,
+        "effectPhase": "ExitYield",
+        "revealCompleted": 20,
+        "holdCompleted": 0,
+        "hideCompleted": 10,
+        "exitCause": "Natural",
+        "managedTaskPhase": "Running",
+        "managedTaskRevision": 0,
+        "managedTaskClass": 56,
+        "vm": "BarrierPending"
+      }
+    },
+    {
+      "id": "BANNER-CONT-BUDGET",
+      "evidence": "declared-native-validation-or-atomicity-policy",
+      "setup": {
+        "holdFrames": 0,
+        "throughTick": 30
+      },
+      "command": {
+        "command": "AdvanceTick",
+        "circlePressed": false,
+        "instructionBudget": 0,
+        "updateBudget": 1
+      },
+      "expectedRejection": {
+        "reason": "InstructionBudgetExceeded",
+        "sameInputSnapshot": true,
+        "committedTrace": [],
+        "acceptedEffectTicks": 0,
+        "acceptedTaskUpdates": 0,
+        "instructionsExecuted": 0,
+        "ticksConsumed": 0
+      },
+      "preserved": {
+        "tick": 30,
+        "effectPhase": "ExitYield",
+        "revealCompleted": 20,
+        "holdCompleted": 0,
+        "hideCompleted": 10,
+        "exitCause": "Natural",
+        "managedTaskPhase": "Running",
+        "managedTaskRevision": 0,
+        "managedTaskClass": 56,
+        "vm": "BarrierPending"
+      }
+    },
+    {
+      "id": "BANNER-CONT-ARITH",
+      "evidence": "declared-native-validation-or-atomicity-policy",
+      "setup": {
+        "holdFrames": 0,
+        "throughTick": 30,
+        "variables": [
+          0,
+          0,
+          0,
+          65535
+        ],
+        "program": "E5-56-at-4; AddImmediate-V3-1-at-7; D4-at-12"
+      },
+      "command": {
+        "command": "AdvanceTick",
+        "circlePressed": false,
+        "instructionBudget": 2,
+        "updateBudget": 1
+      },
+      "expectedRejection": {
+        "reason": "ArithmeticDomainExceeded",
+        "sameInputSnapshot": true,
+        "committedTrace": [],
+        "acceptedEffectTicks": 0,
+        "acceptedTaskUpdates": 0,
+        "instructionsExecuted": 0,
+        "ticksConsumed": 0
+      },
+      "failureOffset": 7,
+      "preserved": {
+        "tick": 30,
+        "effectPhase": "ExitYield",
+        "revealCompleted": 20,
+        "holdCompleted": 0,
+        "hideCompleted": 10,
+        "exitCause": "Natural",
+        "managedTaskPhase": "Running",
+        "managedTaskRevision": 0,
+        "managedTaskClass": 56,
+        "vm": "BarrierPending"
+      },
+      "variable3": 65535
+    },
+    {
+      "id": "BANNER-CANCEL-FOREIGN",
+      "evidence": "declared-native-validation-or-atomicity-policy",
+      "setup": {
+        "holdFrames": 60,
+        "throughTick": 5
+      },
+      "command": {
+        "command": "AdvanceTick",
+        "circlePressed": false,
+        "cancelManaged": {
+          "sceneRunId": "sample:scene/foreign",
+          "sequence": 1,
+          "expectedRevision": 0
+        }
+      },
+      "expectedRejection": {
+        "reason": "TaskLedgerRejected",
+        "sameInputSnapshot": true,
+        "committedTrace": [],
+        "acceptedEffectTicks": 0,
+        "acceptedTaskUpdates": 0,
+        "instructionsExecuted": 0,
+        "ticksConsumed": 0,
+        "taskReason": "WrongScene"
+      },
+      "preserved": {
+        "tick": 5,
+        "effectPhase": "Revealing",
+        "revealCompleted": 5,
+        "holdCompleted": 0,
+        "hideCompleted": 0,
+        "exitCause": null,
+        "managedTaskPhase": "Running",
+        "managedTaskRevision": 0,
+        "managedTaskClass": 56,
+        "vm": "BarrierPending"
+      }
+    },
+    {
+      "id": "BANNER-CANCEL-STALE",
+      "evidence": "declared-native-validation-or-atomicity-policy",
+      "setup": {
+        "holdFrames": 60,
+        "throughTick": 5
+      },
+      "command": {
+        "command": "AdvanceTick",
+        "circlePressed": false,
+        "cancelManaged": {
+          "sequence": 1,
+          "expectedRevision": 1
+        }
+      },
+      "expectedRejection": {
+        "reason": "TaskLedgerRejected",
+        "sameInputSnapshot": true,
+        "committedTrace": [],
+        "acceptedEffectTicks": 0,
+        "acceptedTaskUpdates": 0,
+        "instructionsExecuted": 0,
+        "ticksConsumed": 0,
+        "taskReason": "StaleTaskRevision"
+      },
+      "preserved": {
+        "tick": 5,
+        "effectPhase": "Revealing",
+        "revealCompleted": 5,
+        "holdCompleted": 0,
+        "hideCompleted": 0,
+        "exitCause": null,
+        "managedTaskPhase": "Running",
+        "managedTaskRevision": 0,
+        "managedTaskClass": 56,
+        "vm": "BarrierPending"
+      }
+    },
+    {
+      "id": "BANNER-SECOND-ATTACH",
+      "evidence": "declared-native-validation-or-atomicity-policy",
+      "setup": {
+        "holdFrames": 0,
+        "throughTick": 31
+      },
+      "command": {
+        "command": "AttachBanner",
+        "condition": 8,
+        "holdFrames": 0
+      },
+      "expectedRejection": {
+        "reason": "EffectAlreadyAttached",
+        "sameInputSnapshot": true,
+        "committedTrace": [],
+        "acceptedEffectTicks": 0,
+        "acceptedTaskUpdates": 0,
+        "instructionsExecuted": 0,
+        "ticksConsumed": 0
+      },
+      "nextSequence": 2,
+      "preserved": {
+        "tick": 31,
+        "effectPhase": "Completed",
+        "revealCompleted": 20,
+        "holdCompleted": 0,
+        "hideCompleted": 10,
+        "exitCause": "Natural",
+        "managedTaskPhase": "Completed",
+        "managedTaskRevision": 1,
+        "managedTaskClass": null,
+        "vm": "Exited"
+      }
+    }
+  ],
+  "additionalImplementationChecks": [
+    "Reject a missing Circle sample and malformed command/envelope without advancing anything; do not infer false from missing input.",
+    "Validate exact managed task binding: scene, identity, owner, ConditionDisplay family, Running/revision while active and matching terminal outcome.",
+    "Reject Ready VM ticks as NotWaiting; reject StartNextEvent before VM exit and preserve effect state across an accepted next-event start.",
+    "Preserve scene live/start/tombstone/ID bounds; generated facts and supplied facts share one budget with no eviction or ID reuse.",
+    "Reject checked scene-tick overflow atomically; terminal effect state emits no repeated completion and does not need a matching lastProcessedTick on later scene ticks.",
+    "Same explicit scene ID/definition/input/command history yields identical full snapshots and ordered traces in an isolated replay.",
+    "Old conditional/timed/task-barrier profiles and APIs are unchanged; original opcode 78 still rejects; no asset/GPU/clock dependency enters Core."
+  ],
+  "sourcePaths": [
+    "src/battle/event/interpreter.c",
+    "include/fft/script_instruction.h",
+    "include/psx/types.h",
+    "include/psx/pad.h",
+    "src/lib/event/scene/menu_overlays.c",
+    "src/event/require/entry_conditions.c",
+    "src/event/require/conditions.c",
+    "src/event/require/screen_support.c",
+    "src/lib/menu/display.c",
+    "src/lib/event/scene/control.c",
+    "src/battle/event/frame.c",
+    "src/lib/thread/scheduler.c",
+    "src/lib/event/script/control.c",
+    "src/lib/event/script/scene_commands.c",
+    "src/lib/event/script/camera_fusion.c"
+  ]
+}

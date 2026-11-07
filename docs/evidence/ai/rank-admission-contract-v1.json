@@ -1,0 +1,205 @@
+{
+  "format": "fft.ai-rank-admission-source-evidence",
+  "schemaVersion": 1,
+  "ticket": "ZOD-135",
+  "date": "2026-10-27",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "0bb18b69822197ef23e462838fe3293efe33bb71",
+  "scope": "Source/design movement-only baseline, fresh best ownership and eight-slot admission",
+  "productionImplemented": false,
+  "runtimeActivated": false,
+  "originalExecuted": false,
+  "cReferenceExecuted": false,
+  "managedCasesExecuted": false,
+  "contract": "docs/architecture/zod-135-ai-rank-admission.md",
+  "offlineChecks": "tools/verification/test_ai_rank_admission_contract.py",
+  "expectationKind": "source-derived-isolated-kernels",
+  "followUp": {
+    "ticket": "ZOD-136",
+    "scope": "One certified supplied movement-only baseline projection and score",
+    "acceptanceStatus": "unexecuted-managed-proposals"
+  },
+  "limits": [
+    "No complete scenario-grid initialization proof for unvisited cells; require freshly written cell provenance",
+    "No general or inherited-best search, native VSync resume, list/lottery production implementation or command authority",
+    "Baseline single-evaluation RNG cost does not include full original scenario scoring",
+    "Literal rank extrema are source-only; closed managed baseline range is -160..160"
+  ],
+  "sourceFiles": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 147880,
+      "sha256": "5519c4550e9fea302ee4366848435b8131c7d3aef24f02462c7571d11bd1cd17"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 111880,
+      "sha256": "22555f06b061bc6f017f721998a5e44dfb3d4fa4c7284a2ee3367dfa27ce80ad"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40868,
+      "sha256": "f76188542c39818fa2ab478e42ef63b4eb0f2c1c2db5a74db4120ddbaf4cb8cb"
+    },
+    {
+      "path": "include/fft/ai.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 25771,
+      "sha256": "fa7aabf5b4d21e3f42be7978c061fb859a52709a234e5b4205c5de5e2c8566b5"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "action_select",
+      "startLine": 1155,
+      "endLine": 1218,
+      "normalizedLfSha256": "7f3f380a6b32eebacd4d7537ac5b1e54cd9304c4f90ee5298b4ca4c7291203c8"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_action_rank_reset",
+      "startLine": 1225,
+      "endLine": 1232,
+      "normalizedLfSha256": "36b0c3d4fee5d8b9adef0a2a7bc1d8e757542f373ec6bc79cb19e0f94fedbcc5"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "general_select",
+      "startLine": 1311,
+      "endLine": 1356,
+      "normalizedLfSha256": "f6674dc7574a0aae432eda2fedcc799774bc099a049d0c48a52e599d134fe2fb"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "scenarios_build",
+      "startLine": 1428,
+      "endLine": 1527,
+      "normalizedLfSha256": "c88507ca82b368c137075684feae35f9a9b3b44354955c9f111e5704b3fa4205"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "rank_baseline_seed",
+      "startLine": 1396,
+      "endLine": 1409,
+      "normalizedLfSha256": "812e239202dd2be38eb7ee736b1bb7a62c75d04e6aec4bfb5d7bb25561e28e36"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "reachable_tiles_score",
+      "startLine": 3323,
+      "endLine": 3387,
+      "normalizedLfSha256": "a1267e9003813caf13232b6d5192c71f6f1cf8fd416bbaf21bc8038400b22fb1"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "rank_compare",
+      "startLine": 1721,
+      "endLine": 1745,
+      "normalizedLfSha256": "4b8030c705f4d09006602503d0e1f437678378998b87b5c02e9cc2085aace112"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_rank_is_higher",
+      "startLine": 1753,
+      "endLine": 1772,
+      "normalizedLfSha256": "082674931431d31ee9304e6b0fcb475186f91ea0123d6ac77249a02dc5f712a5"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_best_rank_insert",
+      "startLine": 1816,
+      "endLine": 1836,
+      "normalizedLfSha256": "068dcaab34a7b6cbf3a99f2e0522319b8c0d863bdb5966f4ed3efeddc5c976bc"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ability_list_evaluate",
+      "startLine": 2330,
+      "endLine": 2351,
+      "normalizedLfSha256": "16fc81e0a64d57f4a205adb82a1079f4a5b7e3e0d73ea077aa6e9ae65475743b"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ranked_select",
+      "startLine": 1844,
+      "endLine": 1866,
+      "normalizedLfSha256": "249278485ed952f209f5fa3f59978d88ee4763d4973a5ce45b85cd10a748a48d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "target_distance_tiles_filter",
+      "startLine": 1639,
+      "endLine": 1668,
+      "normalizedLfSha256": "095b677a92525af97a136423175e36020d53e6df0bf5a5fa7440078caaca16b7"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "destination_select",
+      "startLine": 1563,
+      "endLine": 1629,
+      "normalizedLfSha256": "ce1fca91677de2c3e4de8d7d295bc1b506a60989c80ea6d36e80dffdb2401f20"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_ability_outcome_evaluate",
+      "startLine": 311,
+      "endLine": 467,
+      "normalizedLfSha256": "ef236fb9f5cb2ed53870489b054483c7227e76c62c6fcb7d1b6f3c1f1b126f68"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_action_evaluate",
+      "startLine": 1410,
+      "endLine": 1423,
+      "normalizedLfSha256": "86cc7f91e9ae6614fdc2d6b1abf6acc6d19eeef8fcb7cad66cea35c10c390f80"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_action_simulate_and_score",
+      "startLine": 1442,
+      "endLine": 1728,
+      "normalizedLfSha256": "9415274d3b38d3e7afe51922914355e40ff6bad7bccb9bc861bbbfae6894bcd4"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "movement_pickup_simulate",
+      "startLine": 1736,
+      "endLine": 1757,
+      "normalizedLfSha256": "cd86df80f4ec09820ed3ad82aa56af77bce27e61a1f6f459f7d507d95373250a"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "rank_current_decision_clear",
+      "startLine": 1761,
+      "endLine": 1763,
+      "normalizedLfSha256": "ad1789400836dc9defaf5ce5fe3dff107bfdd8c2bf737c9a728e430ee1a4a2f0"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_end",
+      "startLine": 947,
+      "endLine": 974,
+      "normalizedLfSha256": "2071e4d41c2099741ca3ae787add5e7b731df488197b87a47ca84291a6ac268b"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_clock_run",
+      "startLine": 43,
+      "endLine": 384,
+      "normalizedLfSha256": "340cbbd8690adcfab96bf53d3eb5ea9f5b47327eb5901a3cc758b2cfbbfdf1e5"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "upkeep_action_build",
+      "startLine": 399,
+      "endLine": 481,
+      "normalizedLfSha256": "db3bb2342ef78ca6d64b5b2e911e9e2fd14e5a77cd1820472fa784c35cfeaa22"
+    }
+  ],
+  "hashPurpose": "Read-only source receipt; no current managed file fingerprints or routine snapshot gate"
+}

@@ -1,0 +1,52 @@
+{
+  "format": "fft.ai-movement-baseline-implementation-evidence",
+  "schemaVersion": 1,
+  "ticket": "ZOD-136",
+  "date": "2026-10-27",
+  "managedBaseRevision": "a1c33e4cc3fbce761f19b5ab0f6f89c9eb6597c8",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "One fresh certified movement-only baseline evaluation on original two-opponent state",
+  "sourceContract": "docs/architecture/zod-135-ai-rank-admission.md",
+  "sourceReceipt": "docs/evidence/ai/rank-admission-contract-v1.json",
+  "behaviorGuide": "docs/behavior/sword-ai-movement-baseline.md",
+  "implementation": "src/Zodiac.Framework/SwordAiMovementBaseline.cs",
+  "sharedClock": "src/Zodiac.Framework/SwordAiSimulationClock.cs",
+  "sharedScoring": "src/Zodiac.Framework/SwordAiCandidateScoring.cs",
+  "tests": "tests/Zodiac.Framework.Tests/SwordAiMovementBaselineTests.cs",
+  "productionImplemented": true,
+  "runtimeActivated": false,
+  "authoritativeCommands": false,
+  "liveRngCommitted": false,
+  "originalExecuted": false,
+  "cReferenceExecuted": false,
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuild": true,
+    "buildWarnings": 0,
+    "buildErrors": 0,
+    "dotnetPassed": 3633,
+    "pythonPassed": 485,
+    "newBaselineCases": 25,
+    "priorDotnetCasesPassed": 3608,
+    "sourceReceiptVerified": true,
+    "referenceClean": true,
+    "referenceFiles": 4,
+    "referenceFunctions": 21,
+    "logs": "scratch/ai-baseline-136-*"
+  },
+  "managedAcceptance": {
+    "refundsAndCap": "Move, stay and already-moved CT refunds; real changed readiness order versus Attack",
+    "score": "Zero, negative, both actor identities and closed extrema; unchanged HP/status/facing/death counters",
+    "clock": "Highest CT, source slot ties, modulo and an already-ready opponent without tick addition",
+    "rng": "One upkeep draw, no formula draws, explicit carry/replay, exact-MAX success and exhaustion",
+    "admission": "Each false source certificate, unavailable or terminal state, score certificate and invalid destination",
+    "isolation": "Collection order, immutable input/live RNG and atomic rejection without partial outcome"
+  },
+  "limits": [
+    "Caller certificates do not authenticate unrepresented original context",
+    "Fresh source score-cell provenance required; unvisited/stale cells are not inferred",
+    "No complete original scenario-scoring RNG schedule or native VSync resume",
+    "No scenario generation, ranked list/lottery, decision interface or gameplay activation"
+  ],
+  "receiptPolicy": "Identify this implementation by the Git commit containing this evidence; no routine current-file hash freeze"
+}

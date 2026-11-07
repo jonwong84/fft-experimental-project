@@ -1,0 +1,57 @@
+{
+  "format": "fft.ai-unmoved-preparation-contract",
+  "schemaVersion": 1,
+  "ticket": "ZOD-171",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "expectationKind": "source-derived closed arithmetic; managed unmoved preparation unexecuted",
+  "productionImplemented": false,
+  "clockVectors": [
+    {
+      "id": "unmoved-peer-after-one-addition",
+      "input": {"actor": "a", "word": 1, "count": 7, "ticks": 20, "moved": false, "acted": false, "units": [{"id": "a", "ct": 15, "speed": 5, "tieKey": 2}, {"id": "b", "ct": 95, "speed": 5, "tieKey": 17}]},
+      "expected": {"accepted": true, "endCt": 55, "picked": "b", "elapsed": 1, "ticks": 21, "ct": {"a": 60, "b": 0}, "raw": 16838, "word": 1103527590, "count": 8}
+    },
+    {
+      "id": "extra-Move-refund-changes-first-ready-unit",
+      "input": {"actor": "a", "word": 1, "count": 7, "ticks": 20, "moved": false, "acted": false, "units": [{"id": "a", "ct": 15, "speed": 10, "tieKey": 2}, {"id": "b", "ct": 40, "speed": 10, "tieKey": 17}]},
+      "expected": {"accepted": true, "endCt": 55, "picked": "a", "elapsed": 5, "ticks": 25, "ct": {"a": 5, "b": 90}, "raw": 16838, "word": 1103527590, "count": 8}
+    },
+    {
+      "id": "refunds-cap-before-clock-tie",
+      "input": {"actor": "a", "word": 1, "count": 7, "ticks": 20, "moved": false, "acted": false, "units": [{"id": "b", "ct": 60, "speed": 20, "tieKey": 17}, {"id": "a", "ct": 95, "speed": 20, "tieKey": 2}]},
+      "expected": {"accepted": true, "endCt": 60, "picked": "a", "elapsed": 2, "ticks": 22, "ct": {"a": 0, "b": 100}, "raw": 16838, "word": 1103527590, "count": 8}
+    },
+    {
+      "id": "ready-peer-at-MAX-ticks",
+      "input": {"actor": "a", "word": 1, "count": 7, "ticks": 18446744073709551615, "moved": false, "acted": false, "units": [{"id": "a", "ct": 15, "speed": 5, "tieKey": 2}, {"id": "b", "ct": 100, "speed": 5, "tieKey": 17}]},
+      "expected": {"accepted": true, "endCt": 55, "picked": "b", "elapsed": 0, "ticks": 18446744073709551615, "ct": {"a": 55, "b": 0}, "raw": 16838, "word": 1103527590, "count": 8}
+    },
+    {
+      "id": "one-upkeep-draw-fits-at-MAX",
+      "input": {"actor": "a", "word": 1, "count": 18446744073709551614, "ticks": 20, "moved": false, "acted": false, "units": [{"id": "a", "ct": 15, "speed": 5, "tieKey": 2}, {"id": "b", "ct": 95, "speed": 5, "tieKey": 17}]},
+      "expected": {"accepted": true, "endCt": 55, "picked": "b", "elapsed": 1, "ticks": 21, "ct": {"a": 60, "b": 0}, "raw": 16838, "word": 1103527590, "count": 18446744073709551615}
+    },
+    {
+      "id": "no-upkeep-draw-available",
+      "input": {"actor": "a", "word": 1, "count": 18446744073709551615, "ticks": 20, "moved": false, "acted": false, "units": [{"id": "a", "ct": 15, "speed": 5, "tieKey": 2}, {"id": "b", "ct": 95, "speed": 5, "tieKey": 17}]},
+      "expected": {"accepted": false, "word": 1, "count": 18446744073709551615}
+    },
+    {
+      "id": "required-tick-overflow",
+      "input": {"actor": "a", "word": 1, "count": 7, "ticks": 18446744073709551615, "moved": false, "acted": false, "units": [{"id": "a", "ct": 15, "speed": 5, "tieKey": 2}, {"id": "b", "ct": 95, "speed": 5, "tieKey": 17}]},
+      "expected": {"accepted": false, "word": 1, "count": 7}
+    }
+  ],
+  "reachVectors": [
+    {
+      "id": "full-unmoved-five-origin-spread",
+      "input": {"width": 5, "depth": 3, "origin": [3, 1], "enemy": [1, 1], "move": 1, "jump": 0, "moved": false},
+      "expected": {"origins": [[3, 0], [2, 1], [3, 1], [4, 1], [3, 2]], "rngDraws": 0}
+    },
+    {
+      "id": "zero-Move-unmoved-singleton",
+      "input": {"width": 5, "depth": 3, "origin": [3, 1], "enemy": [1, 1], "move": 0, "jump": 0, "moved": false},
+      "expected": {"origins": [[3, 1]], "rngDraws": 0}
+    }
+  ]
+}

@@ -1,0 +1,2646 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-347",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "confidence": "source-derived bounded entry descriptions, no original/C execution",
+  "scope": "Fresh ordinary0x08/0x0C entry, certified no earlier effects and existing living/empty-status result domain; resolved immutable inputs only.",
+  "entries": [
+    {
+      "id": "zero-evades-then-one-proc-draw",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "Execute",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "damage": 34,
+          "healing": 0,
+          "types": {
+            "damage": true,
+            "healing": false,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": false
+        },
+        "evasion": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "procDisposition": "Failed",
+        "setFlag": false,
+        "word": 2762349984,
+        "count": 14
+      }
+    },
+    {
+      "id": "partial-evasion-then-proc-success",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "Execute",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 10,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 20,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 30,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 50,
+          "miss": 0,
+          "damage": 34,
+          "healing": 0,
+          "types": {
+            "damage": true,
+            "healing": false,
+            "pseudo": true
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": true
+          },
+          "clear": false
+        },
+        "evasion": {
+          "hit": true,
+          "accuracy": 50,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "procDisposition": "Passed",
+        "setFlag": true,
+        "word": 2224270474,
+        "count": 14
+      }
+    },
+    {
+      "id": "accessory-miss-discards-precomputed-weakness-and-amount",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 128
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "Execute",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 1,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": false,
+          "accuracy": 99,
+          "miss": 1,
+          "damage": 0,
+          "healing": 0,
+          "types": {
+            "damage": false,
+            "healing": false,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": false
+        },
+        "evasion": {
+          "hit": false,
+          "accuracy": 99,
+          "miss": 1,
+          "itemLost": 10,
+          "abandon": false
+        },
+        "procDisposition": null,
+        "setFlag": null,
+        "word": 4660,
+        "count": 10
+      }
+    },
+    {
+      "id": "right-hand-miss-retains-weapon-label",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "Execute",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 75,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 40,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": false,
+          "accuracy": 25,
+          "miss": 2,
+          "damage": 0,
+          "healing": 0,
+          "types": {
+            "damage": false,
+            "healing": false,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": false
+        },
+        "evasion": {
+          "hit": false,
+          "accuracy": 25,
+          "miss": 2,
+          "itemLost": 40,
+          "abandon": false
+        },
+        "procDisposition": null,
+        "setFlag": null,
+        "word": 1305200733,
+        "count": 11
+      }
+    },
+    {
+      "id": "left-hand-miss-retains-label",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "Execute",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 60,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": false,
+          "accuracy": 40,
+          "miss": 3,
+          "damage": 0,
+          "healing": 0,
+          "types": {
+            "damage": false,
+            "healing": false,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": false
+        },
+        "evasion": {
+          "hit": false,
+          "accuracy": 40,
+          "miss": 3,
+          "itemLost": 30,
+          "abandon": false
+        },
+        "procDisposition": null,
+        "setFlag": null,
+        "word": 3418281426,
+        "count": 12
+      }
+    },
+    {
+      "id": "AI-evade-draws-but-no-proc-draw",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "AiSimulation",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "damage": 34,
+          "healing": 0,
+          "types": {
+            "damage": true,
+            "healing": false,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": false
+        },
+        "evasion": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "procDisposition": "Failed",
+        "setFlag": false,
+        "word": 2547201699,
+        "count": 13
+      }
+    },
+    {
+      "id": "preview-evade-draws-and-status-attempt-without-flag",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "Preview",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "damage": 34,
+          "healing": 0,
+          "types": {
+            "damage": true,
+            "healing": false,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": false
+        },
+        "evasion": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "procDisposition": "Passed",
+        "setFlag": false,
+        "word": 2547201699,
+        "count": 13
+      }
+    },
+    {
+      "id": "preview-certain-evade-skips-tail",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 128
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "Preview",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 100,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": false,
+          "accuracy": 0,
+          "miss": 0,
+          "damage": 0,
+          "healing": 0,
+          "types": {
+            "damage": false,
+            "healing": false,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": false
+        },
+        "evasion": {
+          "hit": false,
+          "accuracy": 0,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "procDisposition": null,
+        "setFlag": null,
+        "word": 2547201699,
+        "count": 13
+      }
+    },
+    {
+      "id": "rounded-zero-enters-tail-before-final-clear",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "Execute",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 90,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 90,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 90,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 1981,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": false,
+          "accuracy": 0,
+          "miss": 0,
+          "damage": 34,
+          "healing": 0,
+          "types": {
+            "damage": true,
+            "healing": false,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": false
+        },
+        "evasion": {
+          "hit": true,
+          "accuracy": 0,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "procDisposition": "Failed",
+        "setFlag": false,
+        "word": 1823905534,
+        "count": 14
+      }
+    },
+    {
+      "id": "secondary-bypass-retains-preparation-diagnostic",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "Execute",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 255,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 255,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 255,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": true,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": true
+      },
+      "evadeable": false,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "damage": 34,
+          "healing": 0,
+          "types": {
+            "damage": true,
+            "healing": false,
+            "pseudo": true
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": true
+          },
+          "clear": false
+        },
+        "evasion": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": true
+        },
+        "procDisposition": "Passed",
+        "setFlag": true,
+        "word": 4660,
+        "count": 10
+      }
+    },
+    {
+      "id": "element-nullification-after-four-evade-draws",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 128,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "Execute",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": false,
+          "accuracy": 0,
+          "miss": 5,
+          "damage": 0,
+          "healing": 0,
+          "types": {
+            "damage": false,
+            "healing": false,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": false
+        },
+        "evasion": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "procDisposition": "ElementNullified",
+        "setFlag": false,
+        "word": 2547201699,
+        "count": 13
+      }
+    },
+    {
+      "id": "absorption-original-family-after-evasion",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 128,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": true,
+        "accuracy": 100,
+        "mode": "Execute",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 10,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 20,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 30,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 50,
+          "miss": 0,
+          "damage": 0,
+          "healing": 34,
+          "types": {
+            "damage": false,
+            "healing": true,
+            "pseudo": true
+          },
+          "effects": {
+            "absorb": true,
+            "weak": false,
+            "added": true
+          },
+          "clear": false
+        },
+        "evasion": {
+          "hit": true,
+          "accuracy": 50,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "procDisposition": "Passed",
+        "setFlag": true,
+        "word": 2224270474,
+        "count": 14
+      }
+    },
+    {
+      "id": "healing-bypasses-all-evade-inputs-and-RNG",
+      "formula": {
+        "input": {
+          "kind": "Healing",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "Execute",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 255,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 255,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 255,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": true,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": true
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 2361954567,
+      "count": 18446744073709551615,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "damage": 0,
+          "healing": 34,
+          "types": {
+            "damage": false,
+            "healing": true,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": false
+        },
+        "evasion": null,
+        "procDisposition": "NoConditionalBranch",
+        "setFlag": false,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "undead-healing-bypass-retains-clear-marker",
+      "formula": {
+        "input": {
+          "kind": "Healing",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": true,
+        "accuracy": 100,
+        "mode": "Execute",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 2361954567,
+      "count": 18446744073709551615,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "damage": 34,
+          "healing": 0,
+          "types": {
+            "damage": true,
+            "healing": false,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": true
+        },
+        "evasion": null,
+        "procDisposition": "NoConditionalBranch",
+        "setFlag": false,
+        "word": 2361954567,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "early-evade-can-use-final-counter-slot",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "Execute",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 1,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 2361954567,
+      "count": 18446744073709551614,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": false,
+          "accuracy": 99,
+          "miss": 1,
+          "damage": 0,
+          "healing": 0,
+          "types": {
+            "damage": false,
+            "healing": false,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": false
+        },
+        "evasion": {
+          "hit": false,
+          "accuracy": 99,
+          "miss": 1,
+          "itemLost": 10,
+          "abandon": false
+        },
+        "procDisposition": null,
+        "setFlag": null,
+        "word": 4660,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "preview-can-use-exactly-four-final-slots",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "Preview",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 2361954567,
+      "count": 18446744073709551611,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "damage": 34,
+          "healing": 0,
+          "types": {
+            "damage": true,
+            "healing": false,
+            "pseudo": false
+          },
+          "effects": {
+            "absorb": false,
+            "weak": false,
+            "added": false
+          },
+          "clear": false
+        },
+        "evasion": {
+          "hit": true,
+          "accuracy": 100,
+          "miss": 0,
+          "itemLost": 0,
+          "abandon": false
+        },
+        "procDisposition": "Passed",
+        "setFlag": false,
+        "word": 2547201699,
+        "count": 18446744073709551615
+      }
+    },
+    {
+      "id": "proc-exhaustion-rolls-back-four-earlier-draws",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "Execute",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 2361954567,
+      "count": 18446744073709551611,
+      "expected": {
+        "accepted": false,
+        "rejection": "RandomDrawCountExhausted",
+        "outcome": null,
+        "evasion": null,
+        "procDisposition": null,
+        "setFlag": null,
+        "word": 2361954567,
+        "count": 18446744073709551611
+      }
+    },
+    {
+      "id": "evade-exhaustion-rolls-back-private-prefix",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "Execute",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 2361954567,
+      "count": 18446744073709551612,
+      "expected": {
+        "accepted": false,
+        "rejection": "RandomDrawCountExhausted",
+        "outcome": null,
+        "evasion": null,
+        "procDisposition": null,
+        "setFlag": null,
+        "word": 2361954567,
+        "count": 18446744073709551612
+      }
+    },
+    {
+      "id": "uncertified-fresh-result-rejects-before-draws",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "Execute",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": false,
+        "noEarlier": true
+      },
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "outcome": null,
+        "evasion": null,
+        "procDisposition": null,
+        "setFlag": null,
+        "word": 2361954567,
+        "count": 9
+      }
+    },
+    {
+      "id": "earlier-reaction-or-reflection-not-simulated",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "Execute",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": false
+      },
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "outcome": null,
+        "evasion": null,
+        "procDisposition": null,
+        "setFlag": null,
+        "word": 2361954567,
+        "count": 9
+      }
+    },
+    {
+      "id": "nonfresh-accuracy-not-assumed-original-entry",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": false,
+        "accuracy": 37,
+        "mode": "Execute",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "outcome": null,
+        "evasion": null,
+        "procDisposition": null,
+        "setFlag": null,
+        "word": 2361954567,
+        "count": 9
+      }
+    },
+    {
+      "id": "fresh-entry-also-needs-known-clear-flags",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 128,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "Execute",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": false
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "outcome": null,
+        "evasion": null,
+        "procDisposition": null,
+        "setFlag": null,
+        "word": 2361954567,
+        "count": 9
+      }
+    },
+    {
+      "id": "unsupported-result-domain-rejects-before-evasion",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "Execute",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": false,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": true,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "outcome": null,
+        "evasion": null,
+        "procDisposition": null,
+        "setFlag": null,
+        "word": 2361954567,
+        "count": 9
+      }
+    },
+    {
+      "id": "ability-zero-special-case-not-assumed-ordinary",
+      "formula": {
+        "input": {
+          "kind": "Damage",
+          "magicAttack": 5,
+          "power": 14,
+          "caster": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "target": {
+            "stored": 70,
+            "faithStatus": false,
+            "innocentStatus": false
+          },
+          "modifiers": {}
+        },
+        "context": {
+          "elements": 128,
+          "weather": 0,
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "targetIsUndead": false,
+        "accuracy": 100,
+        "mode": "Execute",
+        "profile": {
+          "living": true,
+          "noBlocked": true,
+          "noGolem": true,
+          "emptyStatus": true,
+          "noKnockback": true,
+          "hpOnly": true,
+          "entry": {
+            "primary": true,
+            "noPending": true,
+            "clearFlag": true
+          }
+        }
+      },
+      "equipment": {
+        "monster": false,
+        "accessory": {
+          "item": 10,
+          "evade": 0,
+          "qualifies": true
+        },
+        "right": {
+          "item": 20,
+          "evade": 0,
+          "qualifies": true
+        },
+        "left": {
+          "item": 30,
+          "evade": 0,
+          "qualifies": true
+        },
+        "rightWeapon": 255,
+        "leftWeapon": 255
+      },
+      "modifiers": {
+        "unrestricted": true,
+        "transparent": false,
+        "abandon": false,
+        "dontAct": false,
+        "sleep": false,
+        "stop": false,
+        "confusion": false,
+        "charging": false,
+        "performing": false,
+        "defending": false
+      },
+      "evadeable": true,
+      "entry": {
+        "nonzero": false,
+        "fresh": true,
+        "noEarlier": true
+      },
+      "word": 2361954567,
+      "count": 9,
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "outcome": null,
+        "evasion": null,
+        "procDisposition": null,
+        "setFlag": null,
+        "word": 2361954567,
+        "count": 9
+      }
+    }
+  ]
+}

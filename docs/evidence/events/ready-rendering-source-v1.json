@@ -1,0 +1,422 @@
+{
+  "format": "fft.ready-rendering-source-analysis",
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "managedBase": "68c97dd87fdba4307d4299c0633bdc78c9d98431",
+  "referencePathsClean": true,
+  "runtimeChanged": false,
+  "rendererImplemented": false,
+  "originalComparisonPerformed": false,
+  "originalTimingVerified": false,
+  "originalFidelityEstablished": false,
+  "emulatorLaunched": false,
+  "policySelected": "ready-glyph-rgb5-v1",
+  "sourceFiles": [
+    {
+      "path": "src/event/require/conditions.c",
+      "bytes": 23759,
+      "sha256": "1e05a5c461a8d208ad2f3d84102a147013d8af2ce60e83bc481aef13c04644fe"
+    },
+    {
+      "path": "src/event/require/screen_support.c",
+      "bytes": 4809,
+      "sha256": "c245776a1966ad212c8e912e4de6c6e15028bdbc5636406e070a23ccb399cbf5"
+    },
+    {
+      "path": "src/lib/menu/display.c",
+      "bytes": 12798,
+      "sha256": "6da84033bddac0d4f89207bfd1159ac0eb5e156bc59fd8d272f2a573eb725f4d"
+    },
+    {
+      "path": "src/event/require/entry_dark_screen.c",
+      "bytes": 13215,
+      "sha256": "e11a806e386cd0b182d4ab72095aea0aace69b48e24a9f55a4a05dd3e6ee6b8a"
+    },
+    {
+      "path": "src/battle/frame.c",
+      "bytes": 7598,
+      "sha256": "7ac1a5904889e531e40f0235b86d6741f588ace695bcf7b8c605c9fc9540754f"
+    },
+    {
+      "path": "src/battle/entry.c",
+      "bytes": 21402,
+      "sha256": "adb050612e82856c4300a8fe308ebee5672bc3994ff004ab9643fac167a3f510"
+    },
+    {
+      "path": "src/platform/psyq/libgpu/get_mode.c",
+      "bytes": 778,
+      "sha256": "d44bfae110c4e38101d071446099cd2ac297d4abb77f49476dbe98d4e836a41c"
+    },
+    {
+      "path": "include/psx/libgpu.h",
+      "bytes": 32315,
+      "sha256": "8b82cd0b44260334cbbae4144434b48214731def3800ae41ed663b472269b860"
+    }
+  ],
+  "externalSourceStudy": {
+    "repository": "https://github.com/libretro/beetle-psx-libretro",
+    "revision": "dda8cf71d420b1972d92324a5edecf2b92b1ec92",
+    "installedDllSourceIdentityEstablished": false,
+    "license": "GPL-2.0; source study only, no implementation copied into application or runtime dependency",
+    "files": [
+      {
+        "repositoryPath": "mednafen/psx/gpu_polygon.c",
+        "url": "https://raw.githubusercontent.com/libretro/beetle-psx-libretro/dda8cf71d420b1972d92324a5edecf2b92b1ec92/mednafen/psx/gpu_polygon.c",
+        "identity": {
+          "localPath": "scratch/banner-precision-sources/gpu_polygon.c",
+          "bytes": 84883,
+          "sha256": "aa5caec17c678cc5d28321bbb7f2cc4fabd2c4689850bf8feae2d9b0aa423af2"
+        }
+      },
+      {
+        "repositoryPath": "mednafen/psx/gpu_common.h",
+        "url": "https://raw.githubusercontent.com/libretro/beetle-psx-libretro/dda8cf71d420b1972d92324a5edecf2b92b1ec92/mednafen/psx/gpu_common.h",
+        "identity": {
+          "localPath": "scratch/banner-precision-sources/gpu_common.h",
+          "bytes": 52055,
+          "sha256": "2fbe5496c2c700941d012e374857e8579f8b2fa6712ccc60ad85417b2bfe7c42"
+        }
+      },
+      {
+        "repositoryPath": "mednafen/psx/gpu_uv_phase.h",
+        "url": "https://raw.githubusercontent.com/libretro/beetle-psx-libretro/dda8cf71d420b1972d92324a5edecf2b92b1ec92/mednafen/psx/gpu_uv_phase.h",
+        "identity": {
+          "localPath": "scratch/banner-color-anchor-study/gpu_uv_phase.h",
+          "bytes": 1943,
+          "sha256": "13653f13e577a304774f252cc03e7f91da78774da5fd8d7f74216f4e5c285080"
+        }
+      }
+    ]
+  },
+  "studyScript": {
+    "localPath": "scratch/trace-ready-rendering-085.py",
+    "bytes": 7575,
+    "sha256": "1bf6647da73916ddf49a88c18ca99af3a134ce07188406a6ea28b82632393dbd"
+  },
+  "reports": [
+    {
+      "localPath": "scratch/ready-rendering-085-b/report.json",
+      "bytes": 6577,
+      "sha256": "4b0b6dcb4912a93efadaf083cbee23074a0697318528b9194af847b3cc598dae"
+    },
+    {
+      "localPath": "scratch/ready-rendering-085-c/report.json",
+      "bytes": 6577,
+      "sha256": "4b0b6dcb4912a93efadaf083cbee23074a0697318528b9194af847b3cc598dae"
+    }
+  ],
+  "reportsByteIdentical": true,
+  "repeatedSourceReports": [
+    {
+      "localPath": "scratch/ready-rendering-085-b/source/report.json",
+      "bytes": 15965,
+      "sha256": "eb031e71ef2c4dac8e2ebc80affcbc1e109b6ff22516a184aab8bf05503a2951"
+    },
+    {
+      "localPath": "scratch/ready-rendering-085-c/source/report.json",
+      "bytes": 15965,
+      "sha256": "eb031e71ef2c4dac8e2ebc80affcbc1e109b6ff22516a184aab8bf05503a2951"
+    }
+  ],
+  "sourceReportsMatchHistorical": true,
+  "historicalSourceEvidence": {
+    "localPath": "docs/evidence/events/ready-display-source-v1.json",
+    "bytes": 7447,
+    "sha256": "ecd1f6dd0ec883d57ad982deb698360d6c06c803b80f5134e8aeaacede1045c5"
+  },
+  "inputs": [
+    {
+      "localPath": "scratch/all-data-extraction/EVENT/REQUIRE.OUT",
+      "bytes": 127684,
+      "sha256": "97112c50c0b037b2cb5c9d93ae9e2a7506b582c5edbd86a1debfb7ab8e777630"
+    },
+    {
+      "localPath": "scratch/all-data-extraction/EVENT/BONUS.BIN",
+      "bytes": 958464,
+      "sha256": "c5d881b1fb62c04d1d7f0e5238faff4131676165c08e35b5cadb68b21c89165f"
+    },
+    {
+      "localPath": "scratch/all-data-extraction/EVENT/TEST.EVT",
+      "bytes": 4096000,
+      "sha256": "107b109254ccbb150aca7baf336b632837b22e340677e2b9e746ac61b3de4405"
+    }
+  ],
+  "retainedStates": [
+    {
+      "localPath": "scratch/banner-circle-hold-exit-a/first/states/fft-clean-base-game.state.auto",
+      "bytes": 1492949,
+      "sha256": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+    },
+    {
+      "localPath": "scratch/banner-pre-anchor-a/frames-600/states/fft-clean-base-game.state.auto",
+      "bytes": 1496316,
+      "sha256": "bb7e1aedd9c646e17f28d5071910ab658d316858ba978eb75d1211b232ef5475"
+    }
+  ],
+  "assetSelection": {
+    "image": 0,
+    "imageRange": {
+      "fileOffset": 0,
+      "bytes": 26624,
+      "sha256": "5ba6d5c56bbffa7a4c1bdaea392fcf08f265f545588ccc28496462b63d521ea4"
+    },
+    "paletteBank": 2,
+    "paletteOffset": 25664,
+    "paletteSha256": "06ab76ecb265e6f4a40d0abf00812d2ac0f2817c4d20c80b69a502c2978b3256",
+    "paletteRect": [
+      384,
+      254,
+      64,
+      2
+    ],
+    "clut": 16282,
+    "tpage": 6,
+    "selectedRange": [
+      0,
+      6
+    ],
+    "ranges": [
+      {
+        "address": 2149389628,
+        "fileOffset": 75068,
+        "bytes": 2,
+        "sha256": "40d88127d4d31a3891f41598eeed41174e5bc89b1eb9bbd66a8cbfc09956a3fd"
+      },
+      {
+        "address": 2149388008,
+        "fileOffset": 73448,
+        "bytes": 72,
+        "sha256": "d683d8cf6f60818ad871f1e5a2dc3338e9541530bbba6c4dfc59ea21ed10168c"
+      },
+      {
+        "address": 2149389640,
+        "fileOffset": 75080,
+        "bytes": 120,
+        "sha256": "6e49be7cf5a0f2156e1e865289df2ba4305eae1a9bd9717c226a0e484bea4961"
+      },
+      {
+        "address": 2149384304,
+        "fileOffset": 69744,
+        "bytes": 8,
+        "sha256": "f83702f2efe22401f556e941c19d84fc387c944a3b7c77de8abaa225ef2ee849"
+      }
+    ]
+  },
+  "paletteSummary": {
+    "zeroWords": 1,
+    "stpWords": 1,
+    "nonzeroWithoutStp": 14
+  },
+  "geometrySummary": {
+    "glyphs": 6,
+    "texelSamples": 2328,
+    "transparentTexelSamples": 1049,
+    "stpTexelSamples": 77,
+    "minimumU": 32,
+    "maximumExclusiveU": 240,
+    "minimumV": 0,
+    "maximumExclusiveV": 48
+  },
+  "arithmetic": {
+    "scales": [
+      48,
+      56,
+      64,
+      68,
+      72,
+      80,
+      88,
+      92,
+      96,
+      104,
+      112,
+      116,
+      120,
+      128
+    ],
+    "comparedChannelSamples": 97776,
+    "minimumInterpolatedChannel": 18,
+    "maximumInterpolatedChannel": 148,
+    "packedAverageChannelChecks": 3072,
+    "syntheticVectors": [
+      {
+        "corners": [
+          0,
+          64,
+          128,
+          255
+        ],
+        "width": 16,
+        "height": 24,
+        "x": 0,
+        "y": 0,
+        "expected": 0
+      },
+      {
+        "corners": [
+          0,
+          64,
+          128,
+          255
+        ],
+        "width": 16,
+        "height": 24,
+        "x": 4,
+        "y": 6,
+        "expected": 48
+      },
+      {
+        "corners": [
+          0,
+          64,
+          128,
+          255
+        ],
+        "width": 16,
+        "height": 24,
+        "x": 12,
+        "y": 6,
+        "expected": 80
+      },
+      {
+        "corners": [
+          0,
+          64,
+          128,
+          255
+        ],
+        "width": 16,
+        "height": 24,
+        "x": 15,
+        "y": 23,
+        "expected": 239
+      },
+      {
+        "corners": [
+          255,
+          128,
+          64,
+          0
+        ],
+        "width": 16,
+        "height": 24,
+        "x": 0,
+        "y": 0,
+        "expected": 255
+      },
+      {
+        "corners": [
+          255,
+          128,
+          64,
+          0
+        ],
+        "width": 16,
+        "height": 24,
+        "x": 15,
+        "y": 23,
+        "expected": 9
+      }
+    ]
+  },
+  "observations": [
+    {
+      "sourceFrame": 9003,
+      "savedGpuFields": {
+        "ClipX0": 0,
+        "ClipY0": 240,
+        "ClipX1": 255,
+        "ClipY1": 479,
+        "OffsX": -128,
+        "OffsY": 240,
+        "dtd": 0,
+        "MaskSetOR": 0,
+        "MaskEvalAND": 0,
+        "tww": 0,
+        "twh": 0,
+        "twx": 0,
+        "twy": 0,
+        "DisplayFB_XStart": 0,
+        "DisplayFB_YStart": 0,
+        "DisplayFB_CurYOffset": 0,
+        "DisplayFB_CurLineYReadout": 0
+      },
+      "queuedGlyphCount": 6,
+      "queuedScale": 48,
+      "queuedBank": 1,
+      "precedingQueuedDrawMode": 3774873606
+    },
+    {
+      "sourceFrame": 9110,
+      "savedGpuFields": {
+        "ClipX0": 0,
+        "ClipY0": 0,
+        "ClipX1": 255,
+        "ClipY1": 239,
+        "OffsX": -128,
+        "OffsY": 0,
+        "dtd": 0,
+        "MaskSetOR": 0,
+        "MaskEvalAND": 0,
+        "tww": 0,
+        "twh": 0,
+        "twx": 0,
+        "twy": 0,
+        "DisplayFB_XStart": 0,
+        "DisplayFB_YStart": 240,
+        "DisplayFB_CurYOffset": 0,
+        "DisplayFB_CurLineYReadout": 240
+      },
+      "queuedGlyphCount": 6,
+      "queuedScale": 128,
+      "queuedBank": 0,
+      "precedingQueuedDrawMode": 3774873606
+    }
+  ],
+  "selectedState": {
+    "dither": false,
+    "textureWindow": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "maskSet": false,
+    "maskEvaluate": false,
+    "localClip": [
+      0,
+      0,
+      256,
+      240
+    ],
+    "standardFramebufferOrigin": [
+      0,
+      0
+    ],
+    "sampling": "one-to-one point",
+    "material": "RGB5 modulation, opaque STP-clear nonzero words, floor joint-sum average for STP",
+    "output": "opaque zero-padded RGB5 in RGBA8"
+  },
+  "expectations": {
+    "localPath": "docs/evidence/events/ready-presentation-contract-v1.json",
+    "bytes": 16640,
+    "sha256": "a2d6ace7a2bae848f101106b55e71ffc27d9babc0f01b9241bd97edc2ccc3632"
+  },
+  "validation": {
+    "newPresentationCases": 32,
+    "presentationCasesExecuted": false,
+    "pythonTestsPassed": 163,
+    "dotnetRerun": false,
+    "lastFullDotnetTestsPassed": 1682,
+    "lastFullValidationTicket": "ZOD-084"
+  },
+  "limits": [
+    "Offline bounded arithmetic reduction and queued-packet verification only.",
+    "Saved GPU fields are snapshot state, not proof of all state at future queued Ready execution.",
+    "No Ready scanout comparison, runtime renderer, native execution or emulator run.",
+    "No original asset tables, pixel payloads or emulator source committed.",
+    "RPR-001..032 and RDY-029..032 remain future ZOD-086 implementation gates.",
+    "New queued-to-displayed original Ready/background/input continuations are separate fidelity gates."
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "format": "fft.ai-out-of-reach-scenario-source-evidence",
+  "schemaVersion": 1,
+  "ticket": "ZOD-146",
+  "date": "2026-10-28",
+  "managedBaseRevision": "75bd34af753bc2b266b32d621367899fecf36ed5",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "sourceReceipt": "docs/evidence/ai/movement-scenario-contract-v1.json",
+  "contract": "docs/architecture/zod-146-ai-out-of-reach-scenario.md",
+  "additionalSourceFiles": [
+    {
+      "path": "src/battle/map/move_range.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 112855,
+      "sha256": "eab2f2f9f7074a9d8114636f0c048786410a3d6940ef5a357eb263ca39c85228"
+    },
+    {
+      "path": "include/fft/move.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11466,
+      "sha256": "28cb002ca1ab5bf2fe139ffea6e4a71acaef70fe50c9023327439a1465b56fab"
+    }
+  ],
+  "additionalSourceFunctions": [
+    {
+      "path": "src/battle/map/move_range.c",
+      "symbol": "ai_move_propagate_from_target",
+      "startLine": 2332,
+      "endLine": 2430,
+      "normalizedLfSha256": "c3eb07538aad26f6a64ca6276af2842f3fc35b5142b9bf9bfa1e5c08c82a94cd"
+    }
+  ],
+  "productionImplemented": false,
+  "runtimeActivated": false,
+  "originalExecuted": false,
+  "cReferenceExecuted": false,
+  "managedOutOfReachExecuted": false,
+  "scope": "Focused ordinary sword out-of-reach filter, team-bit gated post-score reach RNG, D1 selection and D0 copy",
+  "sourceFacts": {
+    "teamMask": 48,
+    "blue": 0,
+    "nonBlue": [
+      16,
+      32,
+      48
+    ],
+    "playerControlledFlagNotUsed": 8,
+    "halvingModulo": 7,
+    "halvingRemainder": 0,
+    "drawAfterScoring": true,
+    "baselineCopiesAttackDestination": true
+  },
+  "acceptanceCases": [
+    {
+      "id": "OOR-001",
+      "status": "unexecuted managed proposal"
+    },
+    {
+      "id": "OOR-002",
+      "status": "unexecuted managed proposal"
+    },
+    {
+      "id": "OOR-003",
+      "status": "unexecuted managed proposal"
+    },
+    {
+      "id": "OOR-004",
+      "status": "unexecuted managed proposal"
+    },
+    {
+      "id": "OOR-005",
+      "status": "unexecuted managed proposal"
+    },
+    {
+      "id": "OOR-006",
+      "status": "unexecuted managed proposal"
+    }
+  ],
+  "independentRngVectors": [
+    {
+      "seed": 1,
+      "draws": 3,
+      "word": 662824084
+    },
+    {
+      "seed": 1,
+      "draws": 4,
+      "word": 3295386429,
+      "lastRaw": 17515
+    },
+    {
+      "seed": 19,
+      "draws": 3,
+      "word": 811149646
+    },
+    {
+      "seed": 19,
+      "draws": 4,
+      "word": 2162199151,
+      "lastRaw": 224
+    }
+  ],
+  "sourceAudit": "scratch/ai-out-of-reach-146/final-source.json"
+}

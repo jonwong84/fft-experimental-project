@@ -1,0 +1,18 @@
+{
+  "dashAiDescriptions": 20,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "managedExecuted": false,
+  "source": {
+    "rosterAuthorityDescriptions": 21,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "managedExecuted": false,
+    "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "referenceClean": true,
+    "sourceFiles": 27,
+    "sourceFunctions": 83
+  },
+  "sourceStudy": "docs/evidence/ai/roster-authority-source-v1.json",
+  "preparedDash": "docs/evidence/combat/dash-source-v1.json"
+}
