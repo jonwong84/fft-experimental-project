@@ -26,6 +26,7 @@ public sealed class OrdinarySpellAiCatalog
                 !primary.Slots.OrderBy(s => s.Index).Select(s => (s.Index, s.Spell.Id)).SequenceEqual(
                     definition.Learning.PrimarySlots(pair.Key).OrderBy(s => s.Index).Select(s => (s.Index, s.AbilityId))))
                 throw new ArgumentException("Primary metadata must match the owned selected spell objects and learned slots.", nameof(primaryByJob));
+            OrdinarySpellAiParameters.RequireDefaultMenu(primary.OriginalId);
         }
         foreach (var unit in definition.Units)
         {

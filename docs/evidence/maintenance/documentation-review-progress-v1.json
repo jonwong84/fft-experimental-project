@@ -158,9 +158,60 @@
         ]
       },
       "limits": "Current integration edges include partial caller/definition boundaries, not all branches. General effects, origin/ranking/command coverage and frame suspension/RNG remain open."
+    },
+    {
+      "ticket": "ZOD-431",
+      "managedReviewBaseline": "05cb5e6c82da12bfa8a080d18e9e91896960d1bf",
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "report": "docs/behavior/shared-ai-preparation-review.md",
+      "receipt": "docs/evidence/ai/shared-preparation-review-v1.json",
+      "disposition": "Completed bounded shared preparation/usefulness review; fixed neutral HP usefulness and special-menu admission.",
+      "reviewedPathsByFocus": {
+        "shared list and preparation owners": [
+          "src/Zodiac.Framework.Ai/Shared/AiHumanAbilityLists.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiAbilityBehavior.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiPreparationTypes.cs",
+          "src/Zodiac.Framework.Ai/Shared/RosterAiPreparation.cs",
+          "src/Zodiac.Framework.Ai/Shared/RosterAiRefresh.cs",
+          "src/Zodiac.Framework.Ai/Shared/RosterAiGeneralPreparation.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiOrdinaryPairRoster.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiTargetRoster.cs"
+        ],
+        "ordinary spell lists parameters and usefulness": [
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiLists.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiParameters.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiCatalog.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiStatistics.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiUsefulness.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiWork.cs"
+        ],
+        "older physical preparation and usefulness edges": [
+          "src/Zodiac.Framework.Ai/Sword/SwordAiPreparation.cs",
+          "src/Zodiac.Framework.Ai/Sword/SwordAiRefresh.cs",
+          "src/Zodiac.Framework.Ai/AttackThrowStone/AttackThrowStoneAiPreparation.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiPreparation.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiUsefulness.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/RosterAccumulateAiUsefulness.cs",
+          "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListPreparation.cs"
+        ],
+        "shared timing and content adapter edges": [
+          "src/Zodiac.Framework/Battle/Combat/Magic/MagicCharge.cs",
+          "src/Zodiac.Content/BattleSetup/PreparedOrdinarySpellAi.cs",
+          "src/Zodiac.Content/BattleSetup/OrdinaryHumanAiAbilityListSetup.cs"
+        ],
+        "tests and profile boundaries": [
+          "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiListTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiParameterTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiStatisticTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiUsefulnessTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/Shared/AiHumanAbilityListTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/Shared/RosterAiPreparationTests.cs"
+        ]
+      },
+      "limits": "Partial older caller/content and general-prefix edges do not close all branches; broader selection/origin/ranking/command/special-policy work remains open."
     }
   ],
   "fullyReviewedGroups": [],
-  "nextBatch": "ZOD-431",
+  "nextBatch": "ZOD-433",
   "overallBehaviorReviewCompleted": false
 }

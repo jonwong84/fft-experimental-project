@@ -14,11 +14,20 @@ public sealed record OrdinarySpellAiConsidered(OrdinarySpellAiListEntry Entry, A
 /// <summary>Ordinary default-menu loader and initialization policy, not an executable charge plan.</summary>
 public static class OrdinarySpellAiParameters
 {
+    // Retail SCUS-94221 menu table0x80065CB4. These human skillsets take special menu paths;
+    // the ordinary loader cannot replace their weapon, inventory, terrain or calculator rules.
+    internal static void RequireDefaultMenu(byte skillset)
+    {
+        if (skillset is < 5 or >= 176 or 6 or 8 or 17 or 18 or 19 or 20 or 21 or 52 or 56 or 57 or 59 or 62 or 156)
+            throw new NotSupportedException("An original default-menu human skillset is required for ordinary spell AI.");
+    }
+
     public static OrdinarySpellAiConsidered Load(OrdinarySpellAiListEntry entry, OrdinarySpellAiSupports supports,
         OrdinarySpellAiUsage retainedUsage)
     {
         ArgumentNullException.ThrowIfNull(entry); ArgumentNullException.ThrowIfNull(entry.Slot);
         ArgumentNullException.ThrowIfNull(supports); ArgumentNullException.ThrowIfNull(retainedUsage);
+        RequireDefaultMenu(entry.OriginalSkillsetId);
         var spell = entry.Slot.Spell;
         ArgumentNullException.ThrowIfNull(spell); ArgumentNullException.ThrowIfNull(entry.Slot.Behavior);
         if (spell.OriginalAbilityId is < 1 or >= 368 || spell.Targeting is null || spell.Targeting.Auto || spell.MpCost < 0)

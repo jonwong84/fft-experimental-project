@@ -21,7 +21,9 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 395 entries index completed bounded work; they do not mean the full game is complete.
+These 396 entries index completed bounded work; they do not mean the full game is complete.
+
+- [ZOD-431 — Review AI preparation and correct neutral HP usefulness/special-menu admission](../behavior/shared-ai-preparation-review.md)
 
 - [ZOD-430 — Review shared AI simulation boundaries and correct magic roster admission](../behavior/shared-ai-simulation-review.md)
 

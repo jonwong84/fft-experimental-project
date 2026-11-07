@@ -38,7 +38,7 @@ public static class OrdinarySpellAiLists
         void Append(OrdinarySpellAiSkillset skillset)
         {
             if (skillset.OriginalId == 0) return;
-            if (skillset.OriginalId >= 176) throw new NotSupportedException("Monster skillsets need a separate list profile.");
+            OrdinarySpellAiParameters.RequireDefaultMenu(skillset.OriginalId);
             if (string.IsNullOrWhiteSpace(skillset.Id.Value) || skillset.Slots.IsDefault ||
                 skillset.Slots.Any(s => s is null || s.Spell is null || s.Behavior is null || s.Index is < 0 or > 21 || s.Spell.MpCost < 0) ||
                 skillset.Slots.Select(s => s.Index).Distinct().Count() != skillset.Slots.Length)

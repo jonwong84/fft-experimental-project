@@ -18,7 +18,18 @@ pipeline test pass. Coverage validation passes all58 entries;27 preexisting stal
 targeting paths were repaired alongside the three AI moves, with coverage claims
 unchanged. Source move bytes and all ten owner blobs were checked unchanged.
 
-**ZOD-428 review programme; next bounded batch is ZOD-431 (shared AI preparation/useful-target policy).**
+**ZOD-428 review programme; next bounded batch is ZOD-433 (target selection/scenario admission).**
+[ZOD-431 preparation review](behavior/shared-ai-preparation-review.md) is complete.
+Two source-backed fixes: HP effects with neither side preference are Useful after
+absolute exclusions, and ordinary spell lists/loaders/catalogs reject special
+menu skillsets. The prepared SCUS menu table is pinned; default-menu special IDs
+retain known-row behavior. All5,181 rebuilt .NET/794 Python tests pass, including
+1,384 AI and23 new regression cases. Existing source description audits pass.
+The review covers supported list/parameter/statistics, retained-policy/team/HP
+thresholds, post-ACT ordering and fresh usefulness boundaries; it does not add
+special menus, broader status policies or full AI control. The owner's controller
+edit and ten owner draft blobs remain unchanged.
+
 [ZOD-430 shared simulation review](behavior/shared-ai-simulation-review.md) is complete.
 It retraces selective snapshots, supported clocks, strike accounting and absolute
 scores, including current magic consumers. One confirmed guard defect is fixed:
@@ -26,8 +37,8 @@ ordinary magic candidate processing now requires at most16 active units, matchin
 the original compact-record admission. Sparse battle slots through20 remain valid;
 the standalone21-slot clock is unchanged. Three new regression cases cover oversized
 atomic rejection and sparse-slot acceptance; unresolved candidate/search scenarios
-now use a reachable16-unit profile. All5,158 .NET/794 Python tests pass, including
-1,361 AI tests. The owner's unstaged `AiTurnController.cs` edit remains untouched.
+now use a reachable16-unit profile. Its historical validation is recorded in the
+receipt. The owner's unstaged `AiTurnController.cs` edit remains untouched.
 Historical candidate/score audits pass using hash-verified recorded inputs rebuilt
 under ignored scratch; their old path manifests do not validate today's managed
 bodies. The current review/test evidence is recorded separately.
@@ -78,7 +89,8 @@ retain the complete 2,138-path snapshot/38 historical paths, with38 reviewed
 paths/edges for ZOD-427 and27 for ZOD-429 (overlapping shared edges). Full inventory
 groups remain open, including broader shared AI/movement/turn/command owners.
 ZOD-430's additional current paths/edges are recorded in that progress receipt.
-ZOD-431 is next; ZOD-426 remains a queued
+ZOD-431's list/preparation/usefulness paths and fixes are recorded there as well.
+ZOD-433 is next; ZOD-426 remains a queued
 supporting origin/baseline trace. Preserve owner drafts/JobStats, original quirks
 and existing deferrals. Source descriptions and passing tests are evidence to
 review, not automatic proof; keep later replacements/integration in scope.
@@ -123,8 +135,8 @@ Namespaces, public APIs, command authority and existing behavior limits remain.
 The source-map READMEs link concrete player/AI walkthroughs and modification points.
 
 Locked restore and a zero-warning/error Release build remain established; the
-current rebuilt full run passes **5,158 .NET tests** and **794 Python tests**.
-All1,361 AI cases pass. Existing targeting, immediate/
+current rebuilt full run passes **5,181 .NET tests** and **794 Python tests**.
+All1,384 AI cases pass. Existing targeting, immediate/
 delayed cast, rank, RNG isolation and command regressions pass; ZOD-430 corrects
 the previously oversized candidate/search scenarios. Current source/test/preservation
 receipts are linked from each review, including the shared simulation review.

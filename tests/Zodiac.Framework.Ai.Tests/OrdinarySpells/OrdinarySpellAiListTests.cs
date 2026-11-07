@@ -54,4 +54,33 @@ public sealed class OrdinarySpellAiListTests
         p = p with { Slots = [Slot(0), Slot(0)] };
         Assert.Throws<ArgumentException>(() => OrdinarySpellAiLists.Build(p, null, 5, Rows(0), 75));
     }
+
+    [Theory]
+    [InlineData(1)] [InlineData(2)] [InlineData(3)] [InlineData(4)]
+    [InlineData(6)] [InlineData(8)] [InlineData(17)] [InlineData(18)]
+    [InlineData(19)] [InlineData(20)] [InlineData(21)] [InlineData(52)]
+    [InlineData(56)] [InlineData(57)] [InlineData(59)] [InlineData(62)] [InlineData(156)]
+    public void Special_menus_cannot_enter_the_default_spell_list_or_loader(byte skillset)
+    {
+        var rows = Enumerable.Range(0, 19).ToImmutableDictionary(i => i, _ => ImmutableHashSet.Create(0));
+        var ordinary = new OrdinarySpellAiSkillset(11, new("test:skillset/black"), [Slot(0)]);
+        var special = new OrdinarySpellAiSkillset(skillset, new("test:skillset/special"), [Slot(0)]);
+
+        Assert.Throws<NotSupportedException>(() => OrdinarySpellAiLists.Build(special, null, 5, rows, 75));
+        Assert.Throws<NotSupportedException>(() => OrdinarySpellAiLists.Build(ordinary, special, 5, rows, 75));
+        Assert.Throws<NotSupportedException>(() => OrdinarySpellAiParameters.Load(
+            OrdinarySpellAiParameterTests.Entry() with { OriginalSkillsetId = skillset }, new(), new()));
+    }
+
+    [Theory]
+    [InlineData(5)] [InlineData(74)] [InlineData(175)]
+    public void Default_menus_keep_primary_known_row_aliases_and_special_skillset_ids(byte skillset)
+    {
+        var primary = new OrdinarySpellAiSkillset(skillset, new("test:skillset/default"), [Slot(0)]);
+        var rows = ImmutableDictionary<int, ImmutableHashSet<int>>.Empty.Add(0, ImmutableHashSet.Create(0));
+        var entry = Assert.Single(OrdinarySpellAiLists.Build(primary, null, 5, rows, 75).Entries);
+
+        Assert.Equal(skillset, entry.OriginalSkillsetId);
+        Assert.Equal(6, OrdinarySpellAiParameters.Load(entry, new(), new()).MpCost);
+    }
 }

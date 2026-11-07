@@ -79,7 +79,10 @@ static AI usability, maximum MP and known bit. Serialized class metadata is not
 that ID-range filter. Current MP is deliberately absent from initialization.
 Half MP is applied before the maximum comparison. Repeated references survive
 in slot order, including distinct primary/secondary entries. Eligible unsupported
-item/Jump/Charge and monster menus fail closed instead of vanishing.
+item/Jump/Charge and monster menus fail closed instead of vanishing. The
+[ZOD-431 review](shared-ai-preparation-review.md) corrects an admission gap:
+special menu skillsets are now rejected even when their supplied ability ID
+looks ordinary. Lists, direct loading and catalogs share that check.
 
 Eight managed cases cover row aliases, absent-row failure, special known behavior,
 source order, repeated abilities, static usability, max-MP/Half-MP and action
@@ -128,6 +131,12 @@ no RNG and cannot publish a hit or a target decision.
 Seven cases cover enemy/allied damage, zero Faith, odd half-HP boundaries,
 healing enemies, both preference flags, absolute restrictions, Dead/self exclusion
 and rejection of unsupported behavior/status combinations.
+
+ZOD-431 also corrects the no-preference HP branch: after absolute exclusions,
+neither Target Allies nor Target Enemies means Useful on either side, even at
+full HP. Two classifier cases and a composed ready-hit regression cover this;
+side-neutral accounting adds neither preference credit nor penalty. Useful-self
+aim search remains separately guarded. The review preserves earlier receipts.
 
 ## AI formula and private HP projection (ZOD-408)
 

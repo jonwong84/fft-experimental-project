@@ -27,7 +27,8 @@ public static class OrdinarySpellAiUsefulness
         if (b.TargetsAllies)
             return enemy ? OrdinarySpellAiEffect.Adverse : vitals.Hp < vitals.MaxHp / 2
                 ? OrdinarySpellAiEffect.Useful : OrdinarySpellAiEffect.None;
-        return OrdinarySpellAiEffect.None;
+        // With neither side preference, the source accepts an HP effect after the absolute exclusions.
+        return OrdinarySpellAiEffect.Useful;
     }
 
     public static ImmutableArray<OrdinarySpellAiUsefulTarget> Filter(OrdinaryMagicBattleState state,
