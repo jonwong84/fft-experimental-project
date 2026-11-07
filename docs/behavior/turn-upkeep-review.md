@@ -101,9 +101,9 @@ the existing generator/vector evidence.
 
 Game-wide draw placement and VSync/frame interleaving remain a separate
 unresolved compatibility boundary; generator arithmetic alone does not settle
-them. The next useful supplied documentation is **VSync**, especially any path
-that advances this same state. No new BIOS/C dependency is introduced into the
-application.
+them. The subsequent [VSync/callback review](ai-vsync-rng-review.md) identifies
+AI's elapsed-counter query and the separate installed callback that advances
+this same state. No new BIOS/C dependency is introduced into the application.
 
 ## Managed boundary
 
