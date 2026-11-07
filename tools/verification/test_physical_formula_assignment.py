@@ -9,7 +9,7 @@ class PhysicalFormulaAssignmentTests(unittest.TestCase):
     def row(self,name):return next(row for row in self.fixture()['cases'] if row['id']==name)
 
     def test_all_source_vectors(self):
-        self.assertEqual(validate(self.fixture())['physicalFormulaDescriptions'],18)
+        self.assertEqual(validate(self.fixture())['physicalFormulaDescriptions'],27)
 
     def test_critical_changes_XA_without_recomputing_YA(self):
         result=describe(self.row('sum-random-y-uses-original-pa')['input'])
@@ -37,3 +37,22 @@ class PhysicalFormulaAssignmentTests(unittest.TestCase):
         describe(data);self.assertEqual(before,data)
         data.update(x=255,y=255)
         with self.assertRaises(ValueError):describe(data)
+
+    def test_neutral_YA_floor_is_applied_before_factor_in_every_mode(self):
+        self.assertEqual(describe(self.row('zero-operands-are-valid')['input'])['damage'],2)
+        for name,damage in [('minimum-ya-ai',10),('minimum-ya-preview',10),('minimum-ya-execution',4),('minimum-ya-critical',6)]:
+            self.assertEqual(describe(self.row(name)['input'])['damage'],damage)
+
+    def test_floor_neighbors_and_other_formula_remain_distinct(self):
+        self.assertEqual(describe(self.row('minimum-ya-neighbor-y1')['input'])['damage'],2)
+        self.assertEqual(describe(self.row('minimum-ya-neighbor-pa2')['input'])['damage'],3)
+        self.assertEqual(describe(self.row('random-pa-zero-y-pa1')['input'])['damage'],1)
+
+    def test_projectile_keeps_real_evade_draws_with_corrected_midpoint(self):
+        result=describe(self.row('minimum-ya-projectile-ai')['input'])
+        self.assertEqual((result['damage'],result['count'],result['word']),(10,4,3295386429))
+
+    def test_former_zero_term_assumption_is_detected(self):
+        fixture=self.fixture();row=next(r for r in fixture['cases'] if r['id']=='zero-operands-are-valid')
+        row['expected']['damage']=1
+        with self.assertRaises(ValueError):validate(fixture)

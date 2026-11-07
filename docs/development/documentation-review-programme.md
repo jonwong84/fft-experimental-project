@@ -6,6 +6,12 @@ review. This is the current review priority. Existing decompilation traces,
 fixtures and passing tests are inputs to revalidation; they do not automatically
 close a review batch.
 
+[ZOD-427](../behavior/physical-pipeline-review.md) completes the first bounded
+physical-pipeline batch, including one corrected formula/fixture assumption.
+The [progress receipt](../evidence/maintenance/documentation-review-progress-v1.json)
+records reviewed paths and integration limits. No complete inventory group is
+closed yet; ZOD-429 is the next bounded review of Attack/Accumulate.
+
 ## Scope and historical boundary
 
 There is no reliable single first-documentation cutoff in repository history.

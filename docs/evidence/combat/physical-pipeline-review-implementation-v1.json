@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-427",
+  "managedBaseRevision": "e62a4d75d77f2c8b8887adba4748d228b52a1df7",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "sourceReceipt": "docs/evidence/combat/physical-pipeline-review-source-v1.json",
+  "sourceAudit": {
+    "physicalFormulaDescriptions": 27,
+    "sourceFormulaIds": [
+      50,
+      55
+    ],
+    "originalExecuted": false,
+    "cExecuted": false,
+    "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "sourceFiles": 14,
+    "sourceFunctions": 47
+  },
+  "reviewProgress": "docs/evidence/maintenance/documentation-review-progress-v1.json",
+  "findings": [
+    {
+      "id": "PHY-427-01",
+      "status": "fixed",
+      "formula": "0x32",
+      "trigger": "PA1/Y0 within ordinary neutral signs0..11",
+      "before": "YA0 remained0; additive base1",
+      "after": "Source neutral zodiac floors YA to1 before addition; base2",
+      "affected": "Shared assigned formula in actual/preview/AI; retail Dash/Stone0x37 unaffected",
+      "evidenceCorrection": "Historical v1 preserved; current v2 corrects zero-operands vector and adds nine source vectors; Python description corrected too."
+    }
+  ],
+  "validation": {
+    "beforeFix": {
+      "failed": 9,
+      "passed": 25,
+      "total": 34,
+      "log": "scratch/physical-review-427-before.log"
+    },
+    "lockedRestore": "passed",
+    "releaseBuild": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "dotnet": {
+      "passed": 5155,
+      "failed": 0,
+      "assemblies": [
+        {
+          "assembly": "Fft.Client.Tests.dll",
+          "total": 447,
+          "passed": 447,
+          "failed": 0
+        },
+        {
+          "assembly": "Tessera.Engine.Tests.dll",
+          "total": 24,
+          "passed": 24,
+          "failed": 0
+        },
+        {
+          "assembly": "Zodiac.AssetTool.Cli.Tests.dll",
+          "total": 396,
+          "passed": 396,
+          "failed": 0
+        },
+        {
+          "assembly": "Zodiac.AssetTool.Tests.dll",
+          "total": 206,
+          "passed": 206,
+          "failed": 0
+        },
+        {
+          "assembly": "Zodiac.Content.Tests.dll",
+          "total": 897,
+          "passed": 897,
+          "failed": 0
+        },
+        {
+          "assembly": "Zodiac.Framework.Ai.Tests.dll",
+          "total": 1358,
+          "passed": 1358,
+          "failed": 0
+        },
+        {
+          "assembly": "Zodiac.Framework.Tests.dll",
+          "total": 1827,
+          "passed": 1827,
+          "failed": 0
+        }
+      ],
+      "additionalCases": 13
+    },
+    "python": {
+      "passed": 794,
+      "failed": 0,
+      "additionalCases": 4
+    },
+    "retailRecordAudit": {
+      "preparedSha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562",
+      "checkedAbilityIds": [
+        147,
+        148
+      ],
+      "artifact": "scratch/physical-review-427/retail-records.json"
+    },
+    "dashAudit": {
+      "formulaDescriptions": 24,
+      "actualDescriptions": 8,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "source": {
+        "rosterAuthorityDescriptions": 21,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 27,
+        "sourceFunctions": 83
+      },
+      "prepared": {
+        "abilityId": 147,
+        "range": 1,
+        "verticalTolerance": 1,
+        "formula": 55,
+        "y": 4,
+        "evadeable": false,
+        "directTrajectory": false,
+        "aiPhysical": true,
+        "aiDirectTrajectory": false,
+        "aiExhaustive": false,
+        "preparedVerified": true
+      }
+    },
+    "preservation": {
+      "ownerFiles": [
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AbilityToggles.cs",
+          "gitBlob": "16320578ffa448783221b68c4ef5c18e245b9f35",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AiBehaviorToggles.cs",
+          "gitBlob": "c67c4b154c471764fa11a6761710d2e9c9694a65",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AttributeToggles.cs",
+          "gitBlob": "1182777f8a0c3ca219afa23d0803c52af4ca9f8e",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/EquipmentSlot.cs",
+          "gitBlob": "091006b2d60ca558c303571a4eb779340be53629",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/StatusToggles.cs",
+          "gitBlob": "5136db2af350d7e3735e47fb92b905019316fd6f",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Item/ShopAvailabilityToggles.cs",
+          "gitBlob": "fd543d84dc8eb7860d710cf1c75499eb55306e14",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/EquipmentOptionToggles.cs",
+          "gitBlob": "694e44bbdc3e62103b64ff794addec1ad977d142",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/EffectBehaviorToggles.cs",
+          "gitBlob": "9792cdea7da1d92e9ec25cf1e97d3e879c24e8ae",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/StatusSelectionToggles.cs",
+          "gitBlob": "a0b2e2a8ddcb53a4bfd7416609927399b8339294",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/JobStats.cs",
+          "gitBlob": "bd617c374309aca1529a167a8d31a488160086cc",
+          "unchanged": true
+        }
+      ],
+      "allPreserved": true,
+      "historicalFixture": {
+        "path": "docs/fixtures/behavior/physical-formula-assignment-v1.json",
+        "gitBlob": "d93aa7d528419699148d59a5627ba5fad48d73e3"
+      },
+      "approvedFormatting": {
+        "path": "src/Zodiac.Framework/Battle/Combat/Targeting/Selection/SpellTargetChoiceQuery.cs",
+        "gitBlob": "014193b92e056d5a5207b2aff07a77047e9e1280"
+      }
+    },
+    "native": "Not rerun: no presentation changes; prior native receipts remain historical.",
+    "artifacts": "scratch/physical-review-427/"
+  },
+  "implementationFiles": [
+    {
+      "path": "src/Zodiac.Framework/Formulas/PhysicalDamageFormula.cs",
+      "hashEncoding": "utf8-lf",
+      "sha256": "dc72d37167b7bf1aca9fdaed5de7c54df4f9bfcabdb7ef09e9cdbb2d769c9cde"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Tests/Battle/Combat/PhysicalFormulaAssignmentTests.cs",
+      "hashEncoding": "utf8-lf",
+      "sha256": "3663858cdc473e7ab43cb3d927b2569a3384fc0e0468a9f8574d49d6a763e381"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Tests/Battle/Combat/PhysicalFormulaReviewTests.cs",
+      "hashEncoding": "utf8-lf",
+      "sha256": "b61278b46b6d616e28c494466a509fdfcf98d68024c34229d0e4bd0a9d526d7e"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/Shared/PhysicalFormulaReviewAiTests.cs",
+      "hashEncoding": "utf8-lf",
+      "sha256": "c7ec14b4f75104ba4fc6b5efb0dbb8042c9d13cd1962c1ed660abb5170f58558"
+    },
+    {
+      "path": "tools/verification/verify_physical_formula_assignment.py",
+      "hashEncoding": "utf8-lf",
+      "sha256": "fd82c7416b73c9237d358c0f2acd315da7449ae11f3f3a2f695bf1c09173193f"
+    },
+    {
+      "path": "tools/verification/test_physical_formula_assignment.py",
+      "hashEncoding": "utf8-lf",
+      "sha256": "4ae5cca327f24b9d7081e6ca3d22bf04b6747d2d3b310513f6d1c54123af54a0"
+    },
+    {
+      "path": "docs/fixtures/behavior/physical-formula-assignment-v2.json",
+      "hashEncoding": "utf8-lf",
+      "sha256": "474f5a212f54390a5e2b5dbd56c5c9544682f85c6353a85df27c66065e638f7c"
+    }
+  ],
+  "remainingLimits": [
+    "non-neutral compatibility and Serpentarius",
+    "broader supports/status/equipment/terrain/elevation",
+    "multiple targets and general knockback",
+    "full shared movement/turn/AI/command review under ZOD-428",
+    "Golem, terminal/frame RNG, automatic facing, editor and custom cone"
+  ],
+  "originalExecuted": false,
+  "cExecuted": false
+}

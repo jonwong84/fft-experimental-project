@@ -1,5 +1,10 @@
 # Assignable physical formulas — ZOD-420
 
+The later [ZOD-427 review](../behavior/physical-pipeline-review.md) corrects
+formula0x32's PA1/Y0 boundary: the source zodiac helper floors YA to1 even in
+the admitted neutral profile. Current verification uses the explicit v2 fixture;
+the original v1 fixture and this milestone's receipts remain historical.
+
 Subsequent [ZOD-421 delivery/profile consolidation](physical-delivery-profiles.md)
 now owns shared binding and settlement. The implementation and validation below
 record the original ZOD-420 checkpoint; its schemas and formula contracts remain.

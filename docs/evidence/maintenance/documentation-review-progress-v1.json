@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "epic": "ZOD-428",
+  "scopeInventory": "docs/evidence/maintenance/documentation-review-scope-v1.json",
+  "scopeSnapshot": "8f87533987e53502f474201db804b725f3ec22ec",
+  "completedBatches": [
+    {
+      "ticket": "ZOD-427",
+      "managedReviewBaseline": "e62a4d75d77f2c8b8887adba4748d228b52a1df7",
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "report": "docs/behavior/physical-pipeline-review.md",
+      "receipt": "docs/evidence/combat/physical-pipeline-review-implementation-v1.json",
+      "disposition": "Completed bounded normal neutral single-target physical review; one confirmed formula/oracle defect fixed.",
+      "reviewedPathsByFocus": {
+        "formula and execution": [
+          "src/Zodiac.Framework/Formulas/PhysicalDamageFormula.cs",
+          "src/Zodiac.Framework/CombatRules/PhysicalDamageRules.cs",
+          "src/Zodiac.Framework/Battle/Combat/PhysicalAbilityDefinition.cs",
+          "src/Zodiac.Framework/Battle/Combat/PhysicalAbilityBattleProfile.cs",
+          "src/Zodiac.Framework/Battle/Combat/PhysicalAbilityBattleSimulator.cs",
+          "src/Zodiac.Framework/Battle/Combat/BoundedDashAbility.cs",
+          "src/Zodiac.Framework/Battle/Combat/BoundedThrowStoneAbility.cs",
+          "src/Zodiac.Framework/Battle/Combat/DashFormula.cs",
+          "src/Zodiac.Framework/Battle/Combat/ThrowStoneFormula.cs",
+          "src/Zodiac.Framework/Battle/Combat/DashAbilityBattleSimulator.cs",
+          "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattleSimulator.cs",
+          "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattleProfile.cs"
+        ],
+        "admission and trajectory": [
+          "src/Zodiac.Framework/Battle/State/AttackBattleSnapshot.cs",
+          "src/Zodiac.Framework/Battle/State/AttackUnitState.cs",
+          "src/Zodiac.Framework/Battle/Combat/FlatRosterBattleProfile.cs",
+          "src/Zodiac.Framework/Battle/Combat/FlatSwordBattleProfile.cs",
+          "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectory.cs"
+        ],
+        "physical AI integration edges": [
+          "src/Zodiac.Framework.Ai/ThrowStone/ThrowStoneAiFormulaProjection.cs",
+          "src/Zodiac.Framework.Ai/ThrowStone/ThrowStoneAiCandidateProjection.cs",
+          "src/Zodiac.Framework.Ai/ThrowStone/ThrowStoneAiCandidateScoring.cs",
+          "src/Zodiac.Framework.Ai/ThrowStone/RosterThrowStoneAiCandidate.cs",
+          "src/Zodiac.Framework.Ai/ThrowStone/RosterThrowStoneAiEntry.cs",
+          "src/Zodiac.Framework.Ai/Dash/RosterDashAiCandidate.cs",
+          "src/Zodiac.Framework.Ai/Dash/RosterDashAiEntry.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiDamageHypothesis.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiRosterCastGeometry.cs",
+          "src/Zodiac.Framework.Ai/Shared/RosterAiDirectTrajectory.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiAbilityBehavior.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiHumanAbilityLists.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiRankedInsertion.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiRankedLottery.cs",
+          "src/Zodiac.Framework.Ai/Decision/AiAbilityEvaluator.cs",
+          "src/Zodiac.Framework.Ai/Decision/AiDecisionMaker.cs",
+          "src/Zodiac.Framework.Ai/Execution/AiCommandExecutor.cs",
+          "src/Zodiac.Framework/Battle/Commands/RosterDecisionContext.PlannedMove.cs"
+        ],
+        "content binding edges": [
+          "src/Zodiac.Content/BattleSetup/TargetedAbilityBattleSetup.cs",
+          "src/Zodiac.Content/BattleSetup/PreparedBasicSkillBattle.cs",
+          "src/Zodiac.Content/ContentPackages/TargetedAbilityContentPackage.cs"
+        ]
+      },
+      "limits": "Integration-edge review does not close all branches of shared AI/movement/turn/command/content owners. Full inventory groups remain open."
+    }
+  ],
+  "fullyReviewedGroups": [],
+  "nextBatch": "ZOD-429",
+  "overallBehaviorReviewCompleted": false
+}

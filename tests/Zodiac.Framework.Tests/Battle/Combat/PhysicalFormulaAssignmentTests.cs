@@ -9,7 +9,7 @@ namespace Zodiac.Framework.Tests;
 
 public sealed class PhysicalFormulaAssignmentTests
 {
-    private static JsonDocument Fixture() => JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"Fixtures","physical-formula-assignment-v1.json")));
+    private static JsonDocument Fixture() => JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"Fixtures","physical-formula-assignment-v2.json")));
     public static IEnumerable<object[]> Cases()
     {
         using var fixture=Fixture();return fixture.RootElement.GetProperty("cases").EnumerateArray().Select(r=>new object[]{r.GetProperty("id").GetString()!}).ToArray();

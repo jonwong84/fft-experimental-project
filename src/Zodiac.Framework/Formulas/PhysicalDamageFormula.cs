@@ -21,7 +21,8 @@ public sealed record PhysicalDamageFormula
         Id = id; X = x; Y = y;
     }
 
-    /// <summary>Raw signed16-safe arithmetic; final caps belong to combat rules. A bonus roll means the 0x32 critical check succeeded.</summary>
+    /// <summary>Neutral signed16-safe arithmetic, including the normal-zodiac YA floor; final caps belong to combat rules.</summary>
+    /// <remarks>A bonus roll means the 0x32 critical check succeeded.</remarks>
     public int CalculateDamage(int physicalAttack, uint damageRoll, uint? criticalBonusRoll = null)
     {
         if (physicalAttack is < 1 or > 99) throw new ArgumentOutOfRangeException(nameof(physicalAttack));
@@ -33,7 +34,10 @@ public sealed record PhysicalDamageFormula
         }
         int xa = physicalAttack;
         if (criticalBonusRoll is { } bonus) xa += (int)(bonus * physicalAttack / 32768);
-        int ya = (physicalAttack + Y) / 2; // YA uses original PA, before the critical's XA increase.
+        // YA uses original PA, before the critical's XA increase. Store-XA-plus-YA runs YA
+        // through zodiac compatibility too: even neutral signs0..11 floor a zero term to1.
+        // Serpentarius bypasses that floor and remains outside the admitted physical profile.
+        int ya = Math.Max(1, (physicalAttack + Y) / 2);
         return (xa + ya) * ((int)(damageRoll * X / 32768) + 1);
     }
 }

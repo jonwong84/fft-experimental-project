@@ -4,7 +4,7 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-427 (Review Throw Stone/Dash), first batch of ZOD-428 (review all earlier work).**
+**Next bounded work: ZOD-429 (Review sword Attack/Accumulate), next batch of ZOD-428.**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 [Learning reports, owned slots and player casting](behavior/learn-on-hit.md)
@@ -37,8 +37,11 @@ evaluation](behavior/ordinary-spell-aim-ranking.md) now composes those aims with
 private simulation, pass-specific valuable masks, one decision RNG and strict
 best comparison. Full origin search and decisions remain separate. The owner now
 prioritizes the [documentation/decompilation review programme](development/documentation-review-programme.md):
-ZOD-427 is the first bounded batch; ZOD-426 remains queued as supporting AI study.
-There are 36 open tickets below. The 392 completed tickets, prior checkpoints and
+[ZOD-427 physical review](behavior/physical-pipeline-review.md) is complete: one
+formula0x32 neutral-YA floor defect and its matching oracle/fixture assumption
+are corrected. Retail0x37 behavior remains verified within the admitted domain.
+ZOD-429 is next; ZOD-426 remains queued as supporting AI study.
+There are 36 open tickets below. The 393 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -62,26 +65,21 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-427 — Review Throw Stone and Dash against the documented physical pipeline
+### ZOD-429 — Review sword Attack and Accumulate mechanics/settlement
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready; first review batch under ZOD-428 · **Depends on:** ZOD-420, ZOD-421
+**Type:** Story · **Priority:** P3 · **Status:** Ready; next review batch under ZOD-428 · **Depends on:** ZOD-427
 
-Revisit the existing [Throw Stone](behavior/throw-stone-implementation.md),
-[Dash](behavior/dash-actual.md) and their AI paths using the supplied FFHacktics
-formula0x37 call trace and the read-only pinned decompilation. Map preparation,
-targeting/trajectory, physical evasion, PA/Y loading, support/status/Zodiac
-modifiers, random damage and knockback through actual execution, preview and AI
-simulation/accounting/ranking. Check primary AI preferences separately from
-secondary execution flags, exact arithmetic/RNG order and single/multiple-target
-knockback conditions; identify current admission gaps and observable quirks.
-
-Preserve [data-driven formula assignment](architecture/physical-formula-reassignment.md),
-shared formula-family code and [delivery ownership](architecture/physical-delivery-profiles.md).
-Record verified behavior, discrepancies and uncertainties with source revision,
-symbols and independently checkable vectors. Apply bounded source-backed fixes
-with scenario regressions; split broader newly discovered work into follow-up
-tickets. Owner drafts/JobStats and existing deferred status, equipment, Golem,
-terminal/frame RNG, editor and custom-shape work remain separate.
+Continue the [retrospective](development/documentation-review-programme.md) from
+the [physical review](behavior/physical-pipeline-review.md). Trace currently
+admitted sword Attack and Accumulate formula0x36 through preparation, current
+stats, source widths/limits, evasion/critical/proc/result ordering and settlement.
+Check preview/AI consumers, PA projection, usefulness and scoring against actual
+execution; preserve distinctions between primary metadata and execution rules.
+Use the pinned decompilation and supplied documentation, independently inspect
+literal expectations and profile guards, and record historical evidence errata
+separately. Apply bounded confirmed fixes with regressions; defer wider weapon,
+status/equipment, movement/turn, command and AI branches to explicit later batches.
+Preserve owner drafts/JobStats, shared data-driven definitions and original quirks.
 
 ## Review programme
 
@@ -99,6 +97,8 @@ record verified domains, defects, uncertainty and deferred behavior, and apply
 bounded source-backed fixes with independent regressions. Close only when every
 scope entry has an evidence-backed disposition and outstanding issues are explicit.
 Owner drafts/JobStats and documented deferred mechanics retain their boundaries.
+The [progress receipt](evidence/maintenance/documentation-review-progress-v1.json)
+records the completed ZOD-427 batch; full inventory groups remain open.
 
 ## Queued supporting source study
 

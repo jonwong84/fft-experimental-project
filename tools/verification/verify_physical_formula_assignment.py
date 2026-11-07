@@ -6,8 +6,8 @@ import subprocess
 from verify_sword_knockback_contract import fingerprint, function_fingerprint, require, REVISION
 
 ROOT=Path(__file__).resolve().parents[2]
-FIXTURE=ROOT/'docs/fixtures/behavior/physical-formula-assignment-v1.json'
-RECEIPT=ROOT/'docs/evidence/combat/physical-formula-assignment-source-v1.json'
+FIXTURE=ROOT/'docs/fixtures/behavior/physical-formula-assignment-v2.json'
+RECEIPT=ROOT/'docs/evidence/combat/physical-pipeline-review-source-v1.json'
 
 
 def describe(data):
@@ -33,7 +33,8 @@ def describe(data):
             if formula==50:
                 critical=roll()*100//32768<4
                 xa=pa+roll()*pa//32768 if critical else pa
-                damage=(xa+(pa+y)//2)*(1+roll()*x//32768);attempted=critical
+                # Store-XA-plus-YA applies the normal neutral zodiac floor to YA, including PA1/Y0.
+                damage=(xa+max(1,(pa+y)//2))*(1+roll()*x//32768);attempted=critical
             else:
                 damage=pa*(1+roll()*y//32768)
                 if mode=='Execution':
@@ -46,9 +47,9 @@ def describe(data):
 
 def validate(fixture):
     require(fixture['referenceRevision']==REVISION and fixture['originalExecuted'] is False and fixture['cExecuted'] is False,'Source-only identity')
-    require(len(fixture['cases'])==18 and len({r['id'] for r in fixture['cases']})==18,'Literal formula vectors')
+    require(fixture['schemaVersion']==2 and len(fixture['cases'])==27 and len({r['id'] for r in fixture['cases']})==27,'Corrected literal formula vectors')
     for row in fixture['cases']:require(describe(row['input'])==row['expected'],'Physical formula '+row['id'])
-    return dict(physicalFormulaDescriptions=18,sourceFormulaIds=[50,55],originalExecuted=False,cExecuted=False)
+    return dict(physicalFormulaDescriptions=27,sourceFormulaIds=[50,55],originalExecuted=False,cExecuted=False)
 
 
 def audit(reference):

@@ -21,7 +21,9 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 392 entries index completed bounded work; they do not mean the full game is complete.
+These 393 entries index completed bounded work; they do not mean the full game is complete.
+
+- [ZOD-427 — Review Throw Stone/Dash pipelines and correct the neutral YA boundary](../behavior/physical-pipeline-review.md)
 
 - [ZOD-425 — Evaluate and rank ordinary spell aims at a fixed origin](../behavior/ordinary-spell-aim-ranking.md)
 

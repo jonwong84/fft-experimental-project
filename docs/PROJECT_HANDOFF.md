@@ -6,17 +6,25 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-428 review programme; next bounded batch is ZOD-427 (Throw Stone/Dash).**
-The owner broadened the review to all earlier work using FFHacktics documentation
-and the pinned decompilation together. The [programme](development/documentation-review-programme.md)
-accounts for all 2,138 tracked paths at `8f87533` and 38 historical paths no longer
-at the same location. This completes scope inventory only; behavioral review is
-pending. Earlier work already has source traces and fixtures; revalidate their
-assumptions and current shared pipelines rather than treating passing tests as
-proof. Include later replacements/integration, all subsystems, tests/evidence
-and engineering work. ZOD-427 is first; ZOD-426 remains a queued supporting AI
-origin/baseline trace. Preserve owner drafts/JobStats, original quirks and existing
-deferred-work boundaries. Record each bounded review and targeted fix separately.
+**ZOD-428 review programme; next bounded batch is ZOD-429 (sword Attack/Accumulate).**
+[ZOD-427 physical review](behavior/physical-pipeline-review.md) completes the first
+bounded batch. It retraces actual/preview/AI formula, delivery, metadata, ranking
+and execution edges, pins 14 files/47 functions, and rechecks both retail secondary
+records against the exact hash-verified prepared executable. One confirmed
+defect affected assigned formula0x32 at PA1/Y0: the normal neutral zodiac helper
+floors YA to1 before addition, making base2. The shared formula and Python
+description now preserve it. Historical v1 remains unchanged; current v2 records
+the corrected literal and nine new boundary vectors. Actual and AI delivery
+regressions cover the fix; retail Dash/Stone0x37 expectations remain unchanged.
+
+The [programme](development/documentation-review-programme.md) and
+[progress receipt](evidence/maintenance/documentation-review-progress-v1.json)
+retain the complete 2,138-path snapshot/38 historical paths and list 38 reviewed
+paths/edges for this batch. Full inventory groups remain open, including broader
+shared AI/movement/turn/command owners. ZOD-429 is next; ZOD-426 remains a queued
+supporting origin/baseline trace. Preserve owner drafts/JobStats, original quirks
+and existing deferrals. Source descriptions and passing tests are evidence to
+review, not automatic proof; keep later replacements/integration in scope.
 
 [ZOD-425 current-origin evaluation](behavior/ordinary-spell-aim-ranking.md) is
 complete. Start at `OrdinarySpellAiSearchQuery.Evaluate` for one owned learned
@@ -57,11 +65,11 @@ Four internal owners extract existing targeting and cast-queue method bodies.
 Namespaces, public APIs, command authority and existing behavior limits remain.
 The source-map READMEs link concrete player/AI walkthroughs and modification points.
 
-Locked restore and a zero-warning/error Release build, **5,142 .NET tests** and
-**790 Python tests** pass. All1,356 AI cases pass. Existing targeting, immediate/
+Locked restore and a zero-warning/error Release build, **5,155 .NET tests** and
+**794 Python tests** pass. All1,358 AI cases pass. Existing targeting, immediate/
 delayed cast, rank, RNG isolation and command regressions retain their original
-expectations. Current source/test/preservation receipts are in the ranking guide
-and ignored `scratch/spell-search-425/`. No host path changed in ZOD-425. The prior
+expectations. Current source/test/preservation receipts are in the physical review
+and ignored `scratch/physical-review-427/`. No host path changed in ZOD-427. The prior
 ZOD-423 move/native receipts remain historical in `scratch/pathways-423/`, with
 Basic Skill121-step/two-replay and Fire four-checkpoint native checks matching
 retained gameplay hashes; native presentation was not rerun for these diagnostics.
