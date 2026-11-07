@@ -107,7 +107,8 @@ was already supplied. The [magical-modifier wrapper](behavior/faith-magic-amount
 also matches its14 words, four ordered dependencies and nine listed returns.
 Magic Attack Up matches20 words/seven returns, Magic Defense Up20 words/two
 returns, and both match all signed16 division inputs. Target's Status Affecting
-XA (Magical) is the next useful helper page.
+XA (Magical) matches38 words/two returns and524,288 signed/status combinations.
+Compatibility is the next useful helper page.
 
 ## Review programme
 

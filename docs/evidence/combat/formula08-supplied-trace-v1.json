@@ -39,6 +39,12 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 32072,
       "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/status.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11673,
+      "sha256": "deeaeec02add8b9db7cca91c99517706033b18385ca433d32f1998d9d62e0e83"
     }
   ],
   "sourceFunctions": [
@@ -189,6 +195,12 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 2072,
       "sha256": "708ce56c0be90a2cb225fc9ef5027143983cc46f8b341c6c0dfdab7df817f584"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicInputs.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4934,
+      "sha256": "0705858cf9ae17ac5ef1433e67310d8fdc4dd1b0f57514980727d5880dacb41a"
     }
   ],
   "preparedValidation": {
@@ -759,6 +771,376 @@
       },
       "ownerBlobsVerified": 10,
       "focusedManagedTestsPassed": 11,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedMagicalTargetXaCheck": {
+    "managedBaseRevision": "93bbec5ea779882957b63af129a9893dece3eb22",
+    "start": "0x80186460",
+    "endInclusive": "0x801864f4",
+    "instructionCount": 38,
+    "instructionWords": [
+      "3c028019",
+      "8c422d98",
+      "00000000",
+      "9042005b",
+      "00000000",
+      "30420010",
+      "1040000b",
+      "3c025555",
+      "3c048019",
+      "248438ce",
+      "84830000",
+      "34425556",
+      "00031840",
+      "00620018",
+      "00031fc3",
+      "00001010",
+      "00431023",
+      "a4820000",
+      "3c028019",
+      "8c422d98",
+      "00000000",
+      "9042005a",
+      "00000000",
+      "30420006",
+      "1040000b",
+      "00000000",
+      "3c048019",
+      "248438ce",
+      "84830000",
+      "00000000",
+      "00031040",
+      "00431021",
+      "00021fc2",
+      "00431021",
+      "00021043",
+      "a4820000",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "listedCallerChecks": [
+      {
+        "callPc": "0x8018875c",
+        "returnAddress": "0x80188764",
+        "target": "0x80186460"
+      },
+      {
+        "callPc": "0x80189010",
+        "returnAddress": "0x80189018",
+        "target": "0x80186460"
+      }
+    ],
+    "shell": {
+      "statusByteOffset": "0x5b",
+      "mask": "0x10",
+      "skipBranch": "0x80186478",
+      "skipTarget": "0x801864a8",
+      "operation": "signed16(XA*2/3), truncating toward zero"
+    },
+    "frogChicken": {
+      "statusByteOffset": "0x5a",
+      "mask": "0x06",
+      "skipBranch": "0x801864c0",
+      "skipTarget": "0x801864f0",
+      "operation": "Reload signed16 XA; multiply3, add logical sign bit, arithmetic shift1, store signed16",
+      "appliesOnceForEitherOrBoth": true
+    },
+    "arithmeticComparison": {
+      "signedInputs": 65536,
+      "relevantStatusCombinations": 8,
+      "comparisons": 524288,
+      "allMatched": true,
+      "originalOrCExecuted": false,
+      "samples": [
+        {
+          "inputXa": -32768,
+          "shell": false,
+          "frog": false,
+          "chicken": false,
+          "afterShell": -32768,
+          "storedXa": -32768
+        },
+        {
+          "inputXa": -32768,
+          "shell": false,
+          "frog": false,
+          "chicken": true,
+          "afterShell": -32768,
+          "storedXa": 16384
+        },
+        {
+          "inputXa": -32768,
+          "shell": false,
+          "frog": true,
+          "chicken": false,
+          "afterShell": -32768,
+          "storedXa": 16384
+        },
+        {
+          "inputXa": -32768,
+          "shell": false,
+          "frog": true,
+          "chicken": true,
+          "afterShell": -32768,
+          "storedXa": 16384
+        },
+        {
+          "inputXa": -32768,
+          "shell": true,
+          "frog": false,
+          "chicken": false,
+          "afterShell": -21845,
+          "storedXa": -21845
+        },
+        {
+          "inputXa": -32768,
+          "shell": true,
+          "frog": false,
+          "chicken": true,
+          "afterShell": -21845,
+          "storedXa": -32767
+        },
+        {
+          "inputXa": -32768,
+          "shell": true,
+          "frog": true,
+          "chicken": false,
+          "afterShell": -21845,
+          "storedXa": -32767
+        },
+        {
+          "inputXa": -32768,
+          "shell": true,
+          "frog": true,
+          "chicken": true,
+          "afterShell": -21845,
+          "storedXa": -32767
+        },
+        {
+          "inputXa": -2,
+          "shell": false,
+          "frog": false,
+          "chicken": false,
+          "afterShell": -2,
+          "storedXa": -2
+        },
+        {
+          "inputXa": -2,
+          "shell": false,
+          "frog": false,
+          "chicken": true,
+          "afterShell": -2,
+          "storedXa": -3
+        },
+        {
+          "inputXa": -2,
+          "shell": false,
+          "frog": true,
+          "chicken": false,
+          "afterShell": -2,
+          "storedXa": -3
+        },
+        {
+          "inputXa": -2,
+          "shell": false,
+          "frog": true,
+          "chicken": true,
+          "afterShell": -2,
+          "storedXa": -3
+        },
+        {
+          "inputXa": -2,
+          "shell": true,
+          "frog": false,
+          "chicken": false,
+          "afterShell": -1,
+          "storedXa": -1
+        },
+        {
+          "inputXa": -2,
+          "shell": true,
+          "frog": false,
+          "chicken": true,
+          "afterShell": -1,
+          "storedXa": -1
+        },
+        {
+          "inputXa": -2,
+          "shell": true,
+          "frog": true,
+          "chicken": false,
+          "afterShell": -1,
+          "storedXa": -1
+        },
+        {
+          "inputXa": -2,
+          "shell": true,
+          "frog": true,
+          "chicken": true,
+          "afterShell": -1,
+          "storedXa": -1
+        },
+        {
+          "inputXa": 7,
+          "shell": false,
+          "frog": false,
+          "chicken": false,
+          "afterShell": 7,
+          "storedXa": 7
+        },
+        {
+          "inputXa": 7,
+          "shell": false,
+          "frog": false,
+          "chicken": true,
+          "afterShell": 7,
+          "storedXa": 10
+        },
+        {
+          "inputXa": 7,
+          "shell": false,
+          "frog": true,
+          "chicken": false,
+          "afterShell": 7,
+          "storedXa": 10
+        },
+        {
+          "inputXa": 7,
+          "shell": false,
+          "frog": true,
+          "chicken": true,
+          "afterShell": 7,
+          "storedXa": 10
+        },
+        {
+          "inputXa": 7,
+          "shell": true,
+          "frog": false,
+          "chicken": false,
+          "afterShell": 4,
+          "storedXa": 4
+        },
+        {
+          "inputXa": 7,
+          "shell": true,
+          "frog": false,
+          "chicken": true,
+          "afterShell": 4,
+          "storedXa": 6
+        },
+        {
+          "inputXa": 7,
+          "shell": true,
+          "frog": true,
+          "chicken": false,
+          "afterShell": 4,
+          "storedXa": 6
+        },
+        {
+          "inputXa": 7,
+          "shell": true,
+          "frog": true,
+          "chicken": true,
+          "afterShell": 4,
+          "storedXa": 6
+        },
+        {
+          "inputXa": 32767,
+          "shell": false,
+          "frog": false,
+          "chicken": false,
+          "afterShell": 32767,
+          "storedXa": 32767
+        },
+        {
+          "inputXa": 32767,
+          "shell": false,
+          "frog": false,
+          "chicken": true,
+          "afterShell": 32767,
+          "storedXa": -16386
+        },
+        {
+          "inputXa": 32767,
+          "shell": false,
+          "frog": true,
+          "chicken": false,
+          "afterShell": 32767,
+          "storedXa": -16386
+        },
+        {
+          "inputXa": 32767,
+          "shell": false,
+          "frog": true,
+          "chicken": true,
+          "afterShell": 32767,
+          "storedXa": -16386
+        },
+        {
+          "inputXa": 32767,
+          "shell": true,
+          "frog": false,
+          "chicken": false,
+          "afterShell": 21844,
+          "storedXa": 21844
+        },
+        {
+          "inputXa": 32767,
+          "shell": true,
+          "frog": false,
+          "chicken": true,
+          "afterShell": 21844,
+          "storedXa": 32766
+        },
+        {
+          "inputXa": 32767,
+          "shell": true,
+          "frog": true,
+          "chicken": false,
+          "afterShell": 21844,
+          "storedXa": 32766
+        },
+        {
+          "inputXa": 32767,
+          "shell": true,
+          "frog": true,
+          "chicken": true,
+          "afterShell": 21844,
+          "storedXa": 32766
+        }
+      ]
+    },
+    "managedMapping": "FaithMagicAmountFormula.PrepareProduct applies Shell then TargetChickenOrFrog as separate ScaleXa stores; FaithMagicInputs combines t.Chicken || t.Frog.",
+    "clarifications": [
+      "Shell stores before the optional Frog/Chicken reload; their combined effect is not an identity on all inputs.",
+      "The signed /2 correction truncates toward zero, not general upward rounding; negative arithmetic sra sign values are not always0 or1.",
+      "A zero-valued beq skips the respective effect. Neither bit set preserves work XA.",
+      "No unit-stat/status change, RNG draw or subroutine call occurs; MIPS leaf-call warnings are not managed API requirements.",
+      "Full signed-domain comparison is offline arithmetic evidence and does not expand managed battle/status admission."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "faithDescriptions": 15,
+        "productDescriptions": 7,
+        "amountDescriptions": 22,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 14,
+        "sourceFunctions": 36,
+        "preparedTiersVerified": 8
+      },
+      "ownerBlobsVerified": 10,
+      "focusedManagedTestsPassed": 19,
       "focusedPythonTestsPassed": 8,
       "managedTestsExecuted": true,
       "runtimeChanged": false,

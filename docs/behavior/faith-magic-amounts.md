@@ -145,8 +145,38 @@ defenses. The leaf-routine `r31` warning is MIPS calling-convention guidance,
 not a C# limitation. All11 focused .NET amount/arithmetic tests and eight Python
 tests pass; all ten owner draft blobs remain unchanged. No runtime or fixture
 change is required.
-The next useful supplied pages are Target's Status Affecting XA (Magical) and
-Compatibility. ZOD-436 remains open.
+
+### Supplied target-status XA helper
+
+Target's Status Affecting XA (Magical) matches all38 instruction words at
+`0x80186460`–`0x801864f4` and both listed returns (`0x80188764`, `0x80189018`).
+The same supporting receipt records the exact words, status masks, branch
+targets and offline arithmetic checks against the pinned reference/prepared bytes.
+
+Shell checks target status byte`0x5b`, mask`0x10`. When set, it loads signed16
+work XA, applies *2/3 with truncation toward zero and stores signed16. The routine
+then checks target byte`0x5a`, mask`0x06` for Chicken or Frog. Either or both bits
+cause **one** later signed16 reload, *3/2 step and signed16 store. Both `beq`
+branches skip their respective step when the masked value is zero.
+
+The Frog/Chicken sequence multiplies by3, adds the logical sign bit, then uses
+an arithmetic right shift. This implements division by2 toward zero, rather
+than general upward rounding. The Shell step uses the previously checked signed
+multiply-high correction for division by3. An offline comparison across all
+65,536 signed16 inputs and all eight Shell/Frog/Chicken flag combinations passes
+524,288 cases, including narrowing after each active step. This is arithmetic
+evidence, not original/C execution or new admission of those battle states.
+
+Shell's stored result feeds Frog/Chicken; the two steps cannot be collapsed into
+an identity multiplier. For XA7, Shell stores4 and Frog/Chicken then stores6.
+With no Shell, Frog plus Chicken still gives10 once, rather than two bonuses.
+`FaithMagicAmountFormula` already preserves the separate steps, and
+`FaithMagicInputs` supplies `t.Chicken || t.Frog`. The routine changes work XA
+only, without status/unit-stat writes, RNG or calls. The MIPS leaf-call warning
+does not impose a C# restriction. All19 focused .NET amount/arithmetic/current-input
+tests and eight Python tests pass; all ten owner draft blobs remain unchanged.
+No runtime or fixture change is required.
+The next useful supplied page is Compatibility. ZOD-436 remains open.
 
 ## Original implementation checkpoint
 
