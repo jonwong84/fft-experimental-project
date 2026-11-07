@@ -89,11 +89,21 @@ BIOS stream even in AI, rather than the formula helper's non-execution midpoint.
 The second draw is conditional only on successful expired-Undead revival.
 No status-dependent early exit skips the first draw.
 
-The linked **Random Number Generator** wiki page would be useful to cross-check
-this call boundary, seeding and range description. Game-wide draw placement and
-VSync/frame interleaving remain a separate unresolved compatibility boundary;
-generator arithmetic alone does not settle them. No new BIOS/C dependency is
-introduced into the application.
+The owner's subsequent **RNG** excerpt agrees on state address0xA0009010 and
+the FFT call wrapper. A static reread of the same hash-verified BIOS's12
+instructions confirms two register-description details: r2 receives the updated
+word shifted right16 **and masked with0x7FFF**, so its returned value is always
+0..32767, not a potentially negative signed upper halfword. r3 retains the
+updated full32-bit state. The final r1 base is0xA0010000 (the excerpt omits a
+zero); the store's signed offset-0x6FF0 reaches0xA0009010. The state write is in
+the return delay slot. This reread did not execute the BIOS again or change
+the existing generator/vector evidence.
+
+Game-wide draw placement and VSync/frame interleaving remain a separate
+unresolved compatibility boundary; generator arithmetic alone does not settle
+them. The next useful supplied documentation is **VSync**, especially any path
+that advances this same state. No new BIOS/C dependency is introduced into the
+application.
 
 ## Managed boundary
 
