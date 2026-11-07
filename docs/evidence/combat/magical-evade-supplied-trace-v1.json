@@ -28,6 +28,12 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 301903,
       "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    },
+    {
+      "path": "include/fft/status.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11673,
+      "sha256": "deeaeec02add8b9db7cca91c99517706033b18385ca433d32f1998d9d62e0e83"
     }
   ],
   "sourceFunctions": [
@@ -395,5 +401,73 @@
     "cExecuted": false,
     "managedExecuted": false,
     "fullTicketCompleted": false
+  },
+  "suppliedTransparentCheck": {
+    "start": "0x801854b8",
+    "endInclusive": "0x801854f8",
+    "instructionCount": 17,
+    "instructionWords": [
+      "3c028019",
+      "8c422d94",
+      "27bdffe8",
+      "afbf0010",
+      "9042005a",
+      "00000000",
+      "30420010",
+      "10400005",
+      "00000000",
+      "3c048019",
+      "248438de",
+      "0c017991",
+      "34050004",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "statusByteOffset": "0x5a",
+    "statusMask": "0x10",
+    "branch": {
+      "pc": "0x801854d4",
+      "condition": "masked status == 0",
+      "target": "0x801854ec",
+      "meaning": "Skip clearing when attacker is not Transparent"
+    },
+    "clearCall": {
+      "pc": "0x801854e4",
+      "target": "0x8005e644",
+      "symbol": "mem_zero",
+      "destination": "0x801938de",
+      "byteCount": 4,
+      "lastByte": "0x801938e1",
+      "byteCountSetInDelaySlot": true
+    },
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80185364",
+        "returnAddress": "0x8018536c",
+        "target": "0x801854b8"
+      },
+      {
+        "callPc": "0x801885c8",
+        "returnAddress": "0x801885d0",
+        "target": "0x801854b8"
+      }
+    ],
+    "managedOwner": "MagicEvasion.Prepare: modifiers.AttackerTransparent ? default : contributions.Evades",
+    "sideEffects": "Clears the four current contributions only; no base-hit change, RNG draw, return-value contract or Concentrate check.",
+    "sourceAudit": {
+      "loadDescriptions": 8,
+      "preparationDescriptions": 15,
+      "rollDescriptions": 24,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "sourceFiles": 13,
+      "sourceFunctions": 21
+    }
   }
 }

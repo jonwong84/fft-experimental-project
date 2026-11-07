@@ -40,7 +40,9 @@ indirect dispatch return. Existing arithmetic/entry source audits pass68
 descriptions; no runtime change was needed. The supplied
 [Magical Evade Calculation wrapper](behavior/magic-evasion.md#supplied-magical-evade-wrapper--zod-436-support)
 also matches all16 words/five calls. Its24 caller checks require one corrected
-return address; Transparent uses status rather than Concentrate. ZOD-436 remains
+return address. The subsequently supplied Transparent helper matches all17 words
+and both listed returns, confirming the attacker status check and four-byte clear
+with no base-hit/RNG change. ZOD-436 remains
 open. Equipment Evasion Setting (Magical) and Magical Support/Status/Compat are
 the next useful wiki pages. The shared Calculate Hit %/final-hit/per-source roll
 documentation was already supplied; no duplicate is needed.

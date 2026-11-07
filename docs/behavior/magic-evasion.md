@@ -41,8 +41,20 @@ the call is at `0x801890e4`. Also, the supplied display label "3E" beside
 formula table. The other23 listed return addresses match directly. These address
 checks do not establish managed support for the other formula families.
 
+The owner subsequently supplied the Transparent helper itself. All17 instruction
+words at `0x801854b8`–`0x801854f8` and both listed returns (`0x8018536c` from
+Dark/Confuse and `0x801885d0` from magical evade) match the prepared bytes; the
+same supporting receipt records this check. The helper reads attacker byte
+`0x5a`, masks `0x10`, and branches at `0x801854d4` to the epilogue when that mask
+is **zero**. Otherwise it calls `mem_zero` at `0x8005e644` with destination
+`0x801938de` and length4, set in the call's delay slot. It clears exactly
+accessory/right-hand/left-hand/class contributions through `0x801938e1`.
+Base hit is unchanged, no RNG is drawn, and no return value is specified.
+`MagicEvasion.Prepare` already implements this condition through
+`AttackerTransparent`; no runtime correction is required.
+
 Equipment Evasion Setting (Magical) is the next useful supplied helper page,
-followed by Transparent, Abandon and Evasion Changes due to Statuses as needed.
+followed by Abandon and Evasion Changes due to Statuses as needed.
 Calculate Hit %, Calculate Final Hit % and the per-source roll have already been
 supplied during the [physical-evasion review](physical-pipeline-review.md);
 their shared behavior should be reused without importing physical-only preparation.
