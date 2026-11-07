@@ -18,7 +18,14 @@ pipeline test pass. Coverage validation passes all58 entries;27 preexisting stal
 targeting paths were repaired alongside the three AI moves, with coverage claims
 unchanged. Source move bytes and all ten owner blobs were checked unchanged.
 
-**ZOD-428 review programme; next bounded batch is ZOD-433 (target selection/scenario admission).**
+**ZOD-428 review programme; next bounded batch is ZOD-434 (rank admission/lottery/fallback).**
+[ZOD-433 target/scenario review](behavior/ai-target-scenario-review.md) is complete.
+No new defect was confirmed in admitted target memberships, ties, restored-state
+geometry, scenario masks or magic aim integration edges. All32,768 safe-radius
+row-mask comparisons match independent Manhattan geometry. Fresh full validation
+passes5,181 .NET/794 Python tests, including1,384 AI. Runtime, tests/fixtures and
+historical receipts remain unchanged; the owner controller edit is preserved.
+
 [ZOD-431 preparation review](behavior/shared-ai-preparation-review.md) is complete.
 Two source-backed fixes: HP effects with neither side preference are Useful after
 absolute exclusions, and ordinary spell lists/loaders/catalogs reject special
@@ -90,7 +97,8 @@ paths/edges for ZOD-427 and27 for ZOD-429 (overlapping shared edges). Full inven
 groups remain open, including broader shared AI/movement/turn/command owners.
 ZOD-430's additional current paths/edges are recorded in that progress receipt.
 ZOD-431's list/preparation/usefulness paths and fixes are recorded there as well.
-ZOD-433 is next; ZOD-426 remains a queued
+ZOD-433's target/scenario paths and verified boundaries are recorded there too.
+ZOD-434 is next; ZOD-426 remains a queued
 supporting origin/baseline trace. Preserve owner drafts/JobStats, original quirks
 and existing deferrals. Source descriptions and passing tests are evidence to
 review, not automatic proof; keep later replacements/integration in scope.

@@ -209,9 +209,54 @@
         ]
       },
       "limits": "Partial older caller/content and general-prefix edges do not close all branches; broader selection/origin/ranking/command/special-policy work remains open."
+    },
+    {
+      "ticket": "ZOD-433",
+      "managedReviewBaseline": "f169b4559a839ccbb2ad82611a65001b839b5ed4",
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "report": "docs/behavior/ai-target-scenario-review.md",
+      "receipt": "docs/evidence/ai/target-scenario-review-v1.json",
+      "disposition": "Completed bounded target-selection/scenario admission and magic aim integration-edge review; no new defect confirmed.",
+      "reviewedPathsByFocus": {
+        "target memberships and restored pair consumers": [
+          "src/Zodiac.Framework.Ai/Shared/AiTargetRoster.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiRosterNearest.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiRosterActiveTargets.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiRosterProximity.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiOrdinaryPairRoster.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiMovementPrefix.cs"
+        ],
+        "scenario layout and admitted caller edges": [
+          "src/Zodiac.Framework.Ai/Shared/AiScenarioLayout.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiMovementScenarios.cs",
+          "src/Zodiac.Framework.Ai/Shared/RosterAiGeneralPreparation.cs",
+          "src/Zodiac.Framework.Ai/Shared/RosterAiGeneralScenarios.cs",
+          "src/Zodiac.Framework.Ai/Shared/RosterAiMovementBaseline.cs",
+          "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
+          "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListScenarios.cs",
+          "src/Zodiac.Framework.Ai/AttackThrowStone/AttackThrowStoneAiMovementScenario.cs"
+        ],
+        "cast geometry and magic aim integration edges": [
+          "src/Zodiac.Framework.Ai/Shared/RosterAiCastOrigins.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiRosterCastGeometry.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAimEnumeration.cs"
+        ],
+        "flat movement and admission edges": [
+          "src/Zodiac.Framework/Battle/Movement/FlatRosterMovement.cs",
+          "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovement.cs",
+          "src/Zodiac.Framework/Battle/Combat/FlatRosterBattleProfile.cs"
+        ],
+        "current scenario and target regression inputs": [
+          "tests/Zodiac.Framework.Ai.Tests/Shared/AiRosterTargetingTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/Shared/RosterAiGeneralTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/Shared/AiRosterPairIntegrationTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiAimTests.cs"
+        ]
+      },
+      "limits": "Current geometry and older caller edges are partial; full terrain/target-policy/origin/rank/command branches and frame RNG remain open."
     }
   ],
   "fullyReviewedGroups": [],
-  "nextBatch": "ZOD-433",
+  "nextBatch": "ZOD-434",
   "overallBehaviorReviewCompleted": false
 }

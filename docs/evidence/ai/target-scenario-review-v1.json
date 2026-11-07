@@ -1,0 +1,555 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-433",
+  "managedBaseRevision": "f169b4559a839ccbb2ad82611a65001b839b5ed4",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "report": "docs/behavior/ai-target-scenario-review.md",
+  "scope": "Bounded live/cached target memberships, nearest/active/proximity, restored-state flat scenario construction and current magic aim/cast-geometry edges. Broader dependency branches and full origin/rank/command traversal are not closed.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 147880,
+      "sha256": "5519c4550e9fea302ee4366848435b8131c7d3aef24f02462c7571d11bd1cd17"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 111880,
+      "sha256": "22555f06b061bc6f017f721998a5e44dfb3d4fa4c7284a2ee3367dfa27ce80ad"
+    },
+    {
+      "path": "src/battle/map/move_range.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 112855,
+      "sha256": "eab2f2f9f7074a9d8114636f0c048786410a3d6940ef5a357eb263ca39c85228"
+    },
+    {
+      "path": "include/fft/ai.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 25771,
+      "sha256": "fa7aabf5b4d21e3f42be7978c061fb859a52709a234e5b4205c5de5e2c8566b5"
+    },
+    {
+      "path": "include/fft/ai_decision.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9018,
+      "sha256": "a88a67152b5143b74121946b7dffd4c8b76b568d9947c828d6620014a741b02b"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/status.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11673,
+      "sha256": "deeaeec02add8b9db7cca91c99517706033b18385ca433d32f1998d9d62e0e83"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_target_find_nearest",
+      "startLine": 3036,
+      "endLine": 3096,
+      "normalizedLfSha256": "6850f511caed7f4bd91a5a01ee5bb9a53fb94e5f728e97ca3878fa9a0b5bb84d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_unit_distance_calculate",
+      "startLine": 3099,
+      "endLine": 3107,
+      "normalizedLfSha256": "49541e0186b66284281209ca5f5e5330d97d3f92485e85cbcdf18a1445522974"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "target_active_units_select",
+      "startLine": 2278,
+      "endLine": 2325,
+      "normalizedLfSha256": "8971f84d2bc38ef004a86f44a3cad8fb31c77835114c9700f76384e3843da2d8"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "target_is_out_of_play",
+      "startLine": 1672,
+      "endLine": 1679,
+      "normalizedLfSha256": "fc098f0d5d2ce3c64eb0d5d0d83bc974f355433d5aab0d7dbe1af96c28c2f981"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_target_is_untargetable",
+      "startLine": 1686,
+      "endLine": 1713,
+      "normalizedLfSha256": "9637259eec334dfd321b0bd33394f504e55f72f965128c9912383b2984294c14"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "foe_proximity_grid_fill",
+      "startLine": 3240,
+      "endLine": 3292,
+      "normalizedLfSha256": "4452983c86938f116afa90a47edea3a7a32d7b7c79578309104f046a0167c01d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "target_is_excluded_from_imminent_enemies",
+      "startLine": 3298,
+      "endLine": 3314,
+      "normalizedLfSha256": "06411bcace6b17d5c12aa65cf7a59e2a97b5ac0b67e5f2711954bff54020a0c3"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_unit_turn_delay_calculate",
+      "startLine": 3394,
+      "endLine": 3431,
+      "normalizedLfSha256": "abda23c263216d91e3146f5d4b8e0314e299c49d0b5d627bd1d5f6c89a26ae10"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "target_reach_get",
+      "startLine": 1364,
+      "endLine": 1374,
+      "normalizedLfSha256": "33acf41d58bc2546f41f4afbb64ee638d12c4d570a76131c5dba31aaa946c685"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "scenarios_build",
+      "startLine": 1428,
+      "endLine": 1527,
+      "normalizedLfSha256": "c88507ca82b368c137075684feae35f9a9b3b44354955c9f111e5704b3fa4205"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "target_distance_grid_fill",
+      "startLine": 3181,
+      "endLine": 3231,
+      "normalizedLfSha256": "38bf70f5a7b043dec4319bab6b6e952acd137405baae62e251b9b3a4209bc8db"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "target_distance_tiles_filter",
+      "startLine": 1639,
+      "endLine": 1668,
+      "normalizedLfSha256": "095b677a92525af97a136423175e36020d53e6df0bf5a5fa7440078caaca16b7"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "destination_select",
+      "startLine": 1563,
+      "endLine": 1629,
+      "normalizedLfSha256": "ce1fca91677de2c3e4de8d7d295bc1b506a60989c80ea6d36e80dffdb2401f20"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "destination_with_nearest_fallback_select",
+      "startLine": 1548,
+      "endLine": 1552,
+      "normalizedLfSha256": "a872da14b2445b500548812ff6825495ae1979ce0c798081249c597e255b4bd3"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "destination_with_range_floor_select",
+      "startLine": 1535,
+      "endLine": 1542,
+      "normalizedLfSha256": "69a4560199e4b55ae29d10c1c993a3dd5b22698bd61d51e9e092f423eb39e5bc"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "reachable_tiles_score",
+      "startLine": 3323,
+      "endLine": 3387,
+      "normalizedLfSha256": "a1267e9003813caf13232b6d5192c71f6f1cf8fd416bbaf21bc8038400b22fb1"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "candidate_actor_reachability_set",
+      "startLine": 3117,
+      "endLine": 3152,
+      "normalizedLfSha256": "fe7ef6de964920b30f34044865b29c48924e4f3dc61e4d9a446cd658b8a6e9a3"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_ability_outcome_evaluate",
+      "startLine": 311,
+      "endLine": 467,
+      "normalizedLfSha256": "ef236fb9f5cb2ed53870489b054483c7227e76c62c6fcb7d1b6f3c1f1b126f68"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_cast_aim_tiles_build",
+      "startLine": 976,
+      "endLine": 1087,
+      "normalizedLfSha256": "09da56be25432d8c072b85eb489b9d8ffd05d470df2e5ce0be8a8b5efb294fda"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "origin_targetable_mask_build",
+      "startLine": 1102,
+      "endLine": 1162,
+      "normalizedLfSha256": "4f5dd6bf289e68bd306624f4071a33682fb8e31d65a495a31301947371ec801b"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "unit_can_move_by_charge_deadline",
+      "startLine": 2388,
+      "endLine": 2402,
+      "normalizedLfSha256": "206c6d373eabc19dcb3aa3b05d3f2935be523755985f5fd3d0456bda419291b8"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "unit_can_move_after_delay",
+      "startLine": 2407,
+      "endLine": 2438,
+      "normalizedLfSha256": "c8ab8d569fd05fe7374230b4d2880b5104c2814661fb5e896cb2260384a3cf32"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "target_enemies_with_move_opportunity_exclude",
+      "startLine": 2363,
+      "endLine": 2384,
+      "normalizedLfSha256": "fce505f3335178ae24639cd8103142b4818c377b8715b04f4f01ab036ac7850f"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "origin_reachable_evaluate",
+      "startLine": 832,
+      "endLine": 905,
+      "normalizedLfSha256": "f213309e60e63e57e9b159868cd3e6a95aee7e49a5d9b71f5bac60c0ec4d528b"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "origin_next_take",
+      "startLine": 931,
+      "endLine": 962,
+      "normalizedLfSha256": "528327ddb6e45728cc46749c03a9c7b4fce817d5637e9d81d8e9e010982d5930"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "origin_destination_finalize",
+      "startLine": 913,
+      "endLine": 923,
+      "normalizedLfSha256": "456dc6cf56cf7c3e86c5bdfc3876b641f58d126e24b3f5920e491a693a7c1436"
+    },
+    {
+      "path": "src/battle/map/move_range.c",
+      "symbol": "ai_move_propagate_from_target",
+      "startLine": 2332,
+      "endLine": 2430,
+      "normalizedLfSha256": "c3eb07538aad26f6a64ca6276af2842f3fc35b5142b9bf9bfa1e5c08c82a94cd"
+    }
+  ],
+  "managedInputs": [
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiTargetRoster.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 5480,
+      "sha256": "ec9db20c3e8e100a3ff2b9691158e14404f716e0c307aac5354bfaedbbd0accf"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiRosterNearest.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1640,
+      "sha256": "392c5008c53525dca45218163c58aa8e987a97c92ea8964259117b9f632b4294"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiRosterActiveTargets.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1829,
+      "sha256": "d35f623e9f66b36449bf4df1e1406e40ccedb6adadf09df660811dbf755308a8"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiRosterProximity.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1561,
+      "sha256": "b28e80fc1dcd65dd636876c3649eecfdb50c888a660cffc7bd9acb01e14e48fd"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiOrdinaryPairRoster.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1331,
+      "sha256": "01ba452868c3094c20b247739ae419ae261799d3695f8de924d5f039c41b3980"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiMovementPrefix.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3059,
+      "sha256": "c0de1ad31db075fed0a15d4b15e088656c73098217cad24f78aafe800534a3d5"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiScenarioLayout.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4227,
+      "sha256": "7b3303ae0df56116e69bb94a0e9a16aa8ed7c2aab1270b86327c6cb381f10468"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiMovementScenarios.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 5204,
+      "sha256": "786d93cdffadcc3e4df03f3bcf20e37b6a0190246856ac2c16d0450eb06e535c"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/RosterAiGeneralPreparation.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4262,
+      "sha256": "6103e9fad3db21558a48249f6ff5db079ffc955db2a8bbd0c20f69f0c1135d0b"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/RosterAiGeneralScenarios.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 5338,
+      "sha256": "740de1e8ca0d0fcd4ad3b432e0876b7e112942d4d74c605bf20e48816ca73a23"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/RosterAiMovementBaseline.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3114,
+      "sha256": "9fd4c26b55a8974fe63d3d7660e8ce792e89a5f095fce361b6f3a995e082faf9"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 12198,
+      "sha256": "310012738da588f459c6e37b7f76dbae764c5d8d08594374ee9ac647f530f2cb"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListScenarios.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3117,
+      "sha256": "be375cd469c15d4ebda7d83ba61a26bcd12f1b750a1bb1cdd71ce51e86591f74"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/AttackThrowStone/AttackThrowStoneAiMovementScenario.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 6720,
+      "sha256": "7b6ed8b77abbd96adc01317cea76ae8347ad0245e8c1af649c932a9a395ceb55"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/RosterAiCastOrigins.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3794,
+      "sha256": "ae4217fe48cc6aab13b38aeabba89db9c0784550fc770d5bb8531383e5097359"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiRosterCastGeometry.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1674,
+      "sha256": "f4ae7e9f9313b7b7062bfe7966645932922aa50188968ac84aecb19aafdb2ece"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAimEnumeration.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 7147,
+      "sha256": "81f675cc13407a07c99948666677e7914b1a9b9bec6ea577ec1b08793d15b764"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Movement/FlatRosterMovement.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1658,
+      "sha256": "7a5a5a7613a30c9263e162a0f8af99b2d3463df47a7f2cd7af1c25509b28ed7d"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovement.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 7319,
+      "sha256": "8ddfa7ba15a21f9b541b0c76aa0f38e52b4be92579bfd92955831107978a071a"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/FlatRosterBattleProfile.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3484,
+      "sha256": "5dad9c0a51623ef08ae721d56de37babe024ac05965b826e1a4020a786723377"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/Shared/AiRosterTargetingTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 12211,
+      "sha256": "2e363633e98d471e26eb6d9d863c71eae7d5a9d2820b576af4d489d39d3ffe4d"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/Shared/RosterAiGeneralTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 15171,
+      "sha256": "84a64b22737afee50a9d9c4819882edfdae6d46fc7a355d3142ae9eb9f9dc4d5"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/Shared/AiRosterPairIntegrationTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4019,
+      "sha256": "a77ee94fa47e63a68758056227b65ed0ffc1b4e992ac697e5f274f72661d66e9"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiAimTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14879,
+      "sha256": "9173bbf6e48a8dc1fb6801ee1118c8df0e14330c14d86be4195ff185e16dc2f6"
+    }
+  ],
+  "findings": [
+    {
+      "id": "TARGET-433-01",
+      "disposition": "verified-within-domain",
+      "finding": "Live untargetability, cached out-of-play, ELIGIBLE_ENEMY nearest, active target filters and imminent proximity retain distinct predicates; source-order nearest ties and actor fallback are preserved."
+    },
+    {
+      "id": "TARGET-433-02",
+      "disposition": "verified-within-domain",
+      "finding": "Restored live CT/coordinates drive delays and target geometry; flat forward occupancy differs from reverse target-distance propagation. Slot, movement-record and compact AI extents remain distinct."
+    },
+    {
+      "id": "TARGET-433-03",
+      "disposition": "verified-within-domain",
+      "finding": "Scenario filtering/fallback, signed packed keys, last tile ties, post-ACT D1 copy, ranged floor, non-Blue adjustment order, pre-insertion mask complement and unknown priorities match admitted source branches."
+    },
+    {
+      "id": "TARGET-433-04",
+      "disposition": "verified-within-domain",
+      "finding": "Current-origin ordinary magic masks preserve CT groups, source aim order and Follow center XOR within the dry single-sheet/radius<=7 domain; all32768 row-template/Manhattan comparisons match."
+    },
+    {
+      "id": "TARGET-433-05",
+      "disposition": "deferred",
+      "finding": "Other nearest modes/special policies, nonflat terrain and source overread radii, full origin/aim consumption and rank/lottery/commands, statuses/corpse lifecycle and frame RNG remain separate. Next bounded review434; final readability gate432 remains waiting."
+    }
+  ],
+  "confirmedDefects": [],
+  "historicalEvidenceErrata": [],
+  "runtimeChanged": false,
+  "sourceAuditResults": {
+    "targeting": {
+      "rosterDescriptions": 17,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "sourceFiles": 7,
+      "sourceFunctions": 25
+    },
+    "generalScenarios": {
+      "rosterGeneralDescriptions": 18,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "sourceFiles": 8,
+      "sourceFunctions": 29
+    },
+    "magicAimSearch": {
+      "aimMaskDescriptions": 4,
+      "targetingPassDescriptions": 4,
+      "rankDescriptions": 7,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "sourceFiles": 9,
+      "sourceFunctions": 24
+    },
+    "magicAimEnumeration": {
+      "usageDescriptions": 7,
+      "deadlineDescriptions": 5,
+      "maskDescriptions": 4,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "sourceFiles": 9,
+      "sourceFunctions": 28
+    },
+    "rosterPreparation": {
+      "rosterPreparationDescriptions": 13,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "sourceFiles": 7,
+      "sourceFunctions": 17
+    },
+    "independentRechecks": {
+      "safeRadiusRowComparisons": 32768,
+      "radii": [
+        0,
+        7
+      ],
+      "rosterScenario": {
+        "proximity": [
+          7,
+          7,
+          8,
+          9
+        ],
+        "d1": [
+          0,
+          1
+        ],
+        "meleeD0": [
+          2,
+          1
+        ],
+        "stoneD0": [
+          0,
+          1
+        ],
+        "outsideScoreMask": [
+          [
+            2,
+            1
+          ]
+        ],
+        "originMaskOverlap": true
+      },
+      "sourceSlotProximitySum": 81,
+      "distanceCutoffContributions": [
+        1,
+        0,
+        0
+      ]
+    }
+  },
+  "independentMaskMethod": "For each radius0..7, centerX/Y0..15 and rowY0..15, compare the clipped u16 source row-template shift against bits whose Manhattan distance is within radius; no radius8+ inference.",
+  "validation": {
+    "dotnet": {
+      "total": 5181,
+      "failed": 0,
+      "skipped": 0,
+      "projects": {
+        "Engine": 24,
+        "AssetTool": 206,
+        "Framework": 1827,
+        "Ai": 1384,
+        "Cli": 396,
+        "Content": 897,
+        "Client": 447
+      },
+      "command": "dotnet test Fft.sln -c Release --no-restore"
+    },
+    "python": {
+      "total": 794,
+      "result": "OK",
+      "command": "python -m unittest discover -s tools/verification -p 'test_*.py'"
+    },
+    "newRegressionCases": 0,
+    "productionTestsAndFixturesUnchanged": true,
+    "historicalReceiptsUnchanged": true,
+    "ownerBlobs": 10,
+    "approvedFormattingPreserved": true,
+    "unstagedOwnerEdit": {
+      "path": "src/Zodiac.Framework.Ai/AiTurnController.cs",
+      "gitBlob": "373d13f739439813f9608aefc2d84715d8ed1346",
+      "preserved": true,
+      "excludedFromCommit": true
+    },
+    "originalExecuted": false,
+    "cExecuted": false,
+    "nativePresentationRerun": false
+  }
+}
