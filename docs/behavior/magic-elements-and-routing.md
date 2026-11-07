@@ -1,5 +1,48 @@
 # Stored magic elements, composition and routing — ZOD-337–339
 
+## Supplied Elemental XA * YA wrapper — ZOD-436 support
+
+The owner's listing matches all18 instruction words at `0x8018877c`–`0x801887c0`
+and all four listed return locations. The
+[formula0x08 supporting receipt](../evidence/combat/formula08-supplied-trace-v1.json)
+pins prepared BATTLE.BIN, clean read-only fft_decomp
+`11464943bbdbd2a0af022d90cb7f10455cf911df`, helper functions and managed inputs.
+Its three ordered dependencies are:
+
+1. `0x80186568`, `formula_store_xa_times_ya_damage`: store the signed16 product
+   XA*YA as target HP damage and set the HP-damage type. Managed arithmetic owner:
+   `FaithMagicArithmetic.MultiplyStored`, composed by `FaithMagicAmountFormula`.
+2. `0x80186ed0`, `formula_element_apply_weather`: modify the **stored amount**
+   using effective weather and ability elements. Managed owner:
+   `MagicDamageElements.Transform`'s weather stage.
+3. `0x80186ff8`, `formula_element_apply`: Oil/Fire, Float/Earth with mount/rider
+   handling, then target affinities. The admitted affinity stage is also owned
+   by `MagicDamageElements.Transform`; Oil/Float/rider contexts remain explicitly
+   rejected rather than silently omitted.
+
+The wrapper then loads the target action hit byte and returns `hitByte < 1`:
+1 for a cleared flag,0 for a nonzero flag. It does not test damage, displayed
+accuracy or absorption. A legitimate zero stored amount is not nullification.
+The source's pre-Faith product store and weather/affinity stores remain separate;
+elemental strengthening changes XA earlier, outside this wrapper.
+
+Affinity work marks absorption but does not yet move damage into the healing
+field. In formula0x08 the wrapper must return0 before Faith runs; the later
+absorption/proc helper then performs conversion. The managed projection likewise
+skips Faith output on nullification and lets `FaithMagicHpRouting` convert a
+surviving absorbed amount after Faith. This wrapper has no direct RNG call.
+Verifying its other callers does not admit those formula families or status
+side effects into managed execution.
+
+The existing source audit passes24 transform,12 projection and14 routing
+descriptions. All16 focused .NET element/projection/routing tests and eight Python
+tests pass. No runtime or fixture change is needed; all ten owner draft blobs are
+unchanged and the unrelated `.circleci/config.yml` owner edit is excluded.
+ZOD-436 remains open. The next useful supplied pages are XA * YA Calculation,
+Weather Elemental effects and Ability Elemental?.
+
+## Original implementation checkpoint
+
 Implemented 2026-11-05 from managed base
 `be973305b348b0b1b41c418b2be4082860e8bf08`, clean read-only fft_decomp
 `11464943bbdbd2a0af022d90cb7f10455cf911df`.

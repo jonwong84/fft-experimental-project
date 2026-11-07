@@ -110,8 +110,10 @@ returns, and both match all signed16 division inputs. Target's Status Affecting
 XA (Magical) matches38 words/two returns and524,288 signed/status combinations.
 The original Compatibility listing/table/17 callers also match, with10,816
 classification and393,216 arithmetic checks. The owner explicitly defers
-secondadvent's rewrite to a much later review. Elemental XA * YA is the next
-useful helper page; the full shared-consumer review remains open.
+secondadvent's rewrite to a much later review. The
+[Elemental XA * YA wrapper](behavior/magic-elements-and-routing.md#supplied-elemental-xa--ya-wrapper--zod-436-support)
+matches18 words, three ordered calls and four returns. Its multiplication/weather/
+element helper pages are next; the full shared-consumer review remains open.
 
 ## Review programme
 

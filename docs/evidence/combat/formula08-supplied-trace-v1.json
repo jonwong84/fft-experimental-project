@@ -151,6 +151,27 @@
       "startLine": 319,
       "endLine": 387,
       "normalizedLfSha256": "b2983bca04a561e880d8f4d125419a63d7c792db0b9dba6f75488f6a0b6c1c77"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_store_xa_times_ya_damage",
+      "startLine": 1159,
+      "endLine": 1165,
+      "normalizedLfSha256": "f1716159cf32faad2dea79a588620b724cdc96e486bc3665de89f432550ee334"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_element_apply_weather",
+      "startLine": 132,
+      "endLine": 151,
+      "normalizedLfSha256": "c667afd197b14e8e970abf1c20ed8a7ee852d46c98d45b5d8a000799459a5e20"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_element_apply",
+      "startLine": 161,
+      "endLine": 191,
+      "normalizedLfSha256": "69ea5be9c0258753c1393424336e648878297e4e81c5473767b593514e020ec4"
     }
   ],
   "managedFiles": [
@@ -1572,6 +1593,120 @@
       },
       "focusedManagedTestsPassed": 19,
       "focusedPythonTestsPassed": 16,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedElementalXaYaCheck": {
+    "managedBaseRevision": "1146d811f891f71a4c783e7535d1519f7f7b7eaf",
+    "start": "0x8018877c",
+    "endInclusive": "0x801887c0",
+    "instructionCount": 18,
+    "instructionWords": [
+      "27bdffe8",
+      "afbf0010",
+      "0c06195a",
+      "00000000",
+      "0c061bb4",
+      "00000000",
+      "0c061bfe",
+      "00000000",
+      "3c028019",
+      "8c422d90",
+      "00000000",
+      "90420000",
+      "00000000",
+      "2c420001",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "orderedDirectCalls": [
+      {
+        "callPc": "0x80188784",
+        "target": "0x80186568",
+        "symbol": "formula_store_xa_times_ya_damage"
+      },
+      {
+        "callPc": "0x8018878c",
+        "target": "0x80186ed0",
+        "symbol": "formula_element_apply_weather"
+      },
+      {
+        "callPc": "0x80188794",
+        "target": "0x80186ff8",
+        "symbol": "formula_element_apply"
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "callPc": "0x8018897c",
+        "returnAddress": "0x80188984",
+        "target": "0x8018877c"
+      },
+      {
+        "callPc": "0x80188c6c",
+        "returnAddress": "0x80188c74",
+        "target": "0x8018877c"
+      },
+      {
+        "callPc": "0x80188db4",
+        "returnAddress": "0x80188dbc",
+        "target": "0x8018877c"
+      },
+      {
+        "callPc": "0x80189494",
+        "returnAddress": "0x8018949c",
+        "target": "0x8018877c"
+      }
+    ],
+    "returnCheck": {
+      "loadPc": "0x801887a8",
+      "targetActionByteOffset": 0,
+      "comparisonPc": "0x801887b0",
+      "operation": "unsigned hitByte <1",
+      "clearedHitReturns": 1,
+      "nonzeroHitReturns": 0
+    },
+    "managedMapping": [
+      "FaithMagicArithmetic.MultiplyStored stores signed16 product; formula projection retains the original amount/product diagnostics.",
+      "MagicDamageElements.Transform applies weather to the stored amount, then the admitted affinity steps.",
+      "FaithMagicAmountFormula.ProjectWithElementsAfterHit omits Faith output on nullification; otherwise Faith follows the transformed stored amount.",
+      "FaithMagicHpRouting converts marked absorption to healing after Faith in formula0x08; conversion is not performed by this wrapper."
+    ],
+    "boundaries": [
+      "The return tests hit, not HP amount, displayed accuracy or absorption; legitimate zero damage is not elemental nullification.",
+      "Weather changes stored HP damage, not the earlier XA; elemental strengthening on XA is an earlier separate helper.",
+      "Absorption is marked during affinity work, while damage-to-healing conversion belongs to the later helper.",
+      "Oil/Fire, Earth/Float and rider/mount side effects remain positively excluded by the current managed profile; their source presence does not activate them.",
+      "The wrapper itself has no RNG call. General status side effects and broader formula families retain their existing boundaries."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "transformDescriptions": 24,
+        "projectionDescriptions": 12,
+        "routingDescriptions": 14,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "sourceFiles": 9,
+        "sourceFunctions": 14,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true
+      },
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 16,
+      "focusedPythonTestsPassed": 8,
       "managedTestsExecuted": true,
       "runtimeChanged": false,
       "originalExecuted": false,

@@ -223,8 +223,9 @@ no runtime or fixture change is needed. All19 focused .NET tests and16 Python
 tests pass; all ten owner draft blobs are unchanged.
 The unrelated owner edit in `.circleci/config.yml` is excluded from this milestone.
 This completes the supplied-document checklist for the four magical-modifier
-dependencies, not ZOD-436's broader shared-consumer review. The next useful wiki
-routine is Elemental XA * YA, followed by its weather/element dependencies.
+dependencies, not ZOD-436's broader shared-consumer review. The supplied
+[Elemental XA * YA wrapper](magic-elements-and-routing.md#supplied-elemental-xa--ya-wrapper--zod-436-support)
+is now checked too; its multiplication/weather/element helper pages are next.
 
 ## Original implementation checkpoint
 
