@@ -164,8 +164,34 @@ path preserve these rules within their admitted domains. All39 existing
 `MagicEvasionTests`/`PhysicalFormulaAssignmentTests` cases and18 corresponding
 Python tests pass. No gameplay code or historical fixture changed; general
 equipment/status support and a shared physical/magic kernel remain separate.
-The next useful supplied page is Attack Evaded Calculations at0x001848D8,
-to confirm the helper's annotated trace and execution-only labels directly.
+
+## Supplied per-source evade helper (2026-11-07)
+
+The owner's Attack Evaded Calculations listing at0x801848D8 matches all35
+instruction words in the same hash-verified prepared BATTLE.BIN. Both early-exit
+branches target0x8018494C, the random-helper call targets0x8005E0CC, and all four
+listed returns match the final routine's accessory/right/left/class calls.
+The source and normalized function hashes for `evade_source_roll` and
+`random_roll_pass_fail` are already pinned in the final-hit trace receipt above
+at reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+
+The first two inputs are explicitly masked to unsigned16 before calling the
+random helper with maximum=base hit and threshold=evade. The helper draws first,
+using `floor(raw * baseHit / 32768)`. For positive base hit this is0 through
+baseHit-1, not an inclusive upper bound. At base hit0 the scaled draw is0;
+the underlying RNG draw still occurs. Evade0 never wins, while evade>=positive
+base hit always wins that comparison. The final-hit caller separately handles
+forced misses and supplies byte-sized values.
+
+Only a winning comparison during action state0 (Execute) clears hit, stores the
+low byte of the supplied miss type/item ID and returns1. All other paths return0
+without changing those fields. In particular, preview/AI do not force hit=true:
+they preserve any miss already established by the caller. This helper does not
+change accuracy or itself use/break the labeled item. The existing bounded C#
+paths already preserve the relevant behavior; this confirmation changes no
+runtime code or fixture and does not require repeating the preceding tests.
+The remaining linked RNG page at0x0005E0CC can confirm its disassembly, but its
+source comparison is already pinned; it does not block this helper review.
 
 ## Confirmed defect: minimum YA in assigned formula0x32
 
