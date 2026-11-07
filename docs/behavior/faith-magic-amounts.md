@@ -1,5 +1,62 @@
 # Shared Faith magic arithmetic and amounts — ZOD-335/336
 
+## Supplied formula0x08 trace cross-check — ZOD-436 support
+
+On 2026-11-07 the owner supplied the FFHacktics formula0x08 call trace.
+[Supporting receipt](../evidence/combat/formula08-supplied-trace-v1.json) pins
+clean read-only fft_decomp `11464943bbdbd2a0af022d90cb7f10455cf911df`, the current
+managed inputs and the verified prepared BATTLE.BIN. All28 supplied instruction
+words at `0x80188d84`–`0x80188df0` match, including eight direct calls and three
+early exits. The listed return location `0x8018b97c` is the return address of
+the indirect formula dispatch at `0x8018b974`, rather than a separate direct
+call to this formula.
+
+The verified sequence maps to these shared C# owners:
+
+1. `FaithMagicFormula.Resolve` coordinates fresh entry and `MagicEvasion`.
+2. `FaithMagicAmountFormula` loads explicit MA/Y inputs, strengthens XA, applies
+   magical support/status/zodiac modifiers and stores the signed16 product.
+3. `MagicDamageElements.Transform` handles stored weather/affinity work before
+   `FaithMagicArithmetic.ScaleStored` applies Faith to a surviving amount.
+4. `FaithMagicHpRouting` handles absorption, then `MagicConditionalProc` decides
+   whether to attempt the status side effect. The current admitted empty-status
+   record preserves hit/accuracy/miss without changing a status set.
+5. `MagicResultFinalization` models the later bounded caller finalization.
+   The source performs this after returning from the formula.
+
+The three `bne r2,r0` instructions branch to the epilogue on **nonzero**:
+evasion stops the amount work, elemental cancellation stops the Faith/proc tail,
+and a failed conditional proc skips only the status applicator. Zero continues
+each respective path. The source status wrapper preserves hit, unsigned16
+accuracy and miss type around its attempt; a failed status attempt does not by
+itself erase the damage result.
+
+The wiki's Faith summary must not be read as two integer divisions by100.
+Pinned source uses stored signed16 damage * target Faith * caster Faith /10000,
+dividing once before its next signed16 store. Amount5 with Faith90/90 becomes4;
+two sequential divisions would produce3. Existing managed arithmetic and literal
+vectors already preserve the single division.
+
+Managed pure argument/amount projection can run privately before evasion for
+validation. A formula-entry miss exposes no precomputed amount, element marker
+or proc work, and the coordinator preserves source-visible tail/draw ordering.
+This mapping does not imply a literal translation of instruction execution order.
+The existing source/prepared audits pass44 arithmetic and24 entry descriptions,
+including eight representative Cure/Fire tier bindings. No runtime, tests,
+fixtures or historical evidence were changed for this cross-check; no original
+or C code was executed. All46 focused magic-contract Python tests pass, and all
+ten owner draft blobs are unchanged.
+
+This verifies the supplied top-level trace, **not completion of ZOD-436**.
+The next useful wiki pages are Magical Evade Calculation and Magical
+Support/Status/Compat, followed by Elemental XA * YA and Elemental Absorb and
+status roll. Store MA and Y and Faith already have explicit source-backed
+arithmetic descriptions; their wiki pages can still provide independent checks.
+General status sets, reactions/Reflect/Golem and other documented deferrals
+retain their current admission boundaries.
+
+## Original implementation checkpoint
+
 Implemented from `8982dd4` after the [ZOD-334 trace](../architecture/zod-334-faith-magic.md),
 read-only reference `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 This adds pure formula work; it does not enable Fire/Cure commands, magic AI

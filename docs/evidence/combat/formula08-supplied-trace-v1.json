@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "dcab45fbd0ebc68f37fd9f5deeab44d28d2c0c56",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Supplied formula0x08 top-level trace; supporting evidence only, ZOD-436 remains open.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/formulas.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 46088,
+      "sha256": "a9e58962104849ae4e947e3833236aaf2c1334394a1af12b19930428e6885e03"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40418,
+      "sha256": "04542e66135d779fd739adbce9fa6ee714feb6dc8607dfa4584c87222a38343c"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 85515,
+      "sha256": "820411f8293d559677ff676f4e3d19a16ae52b667e7aa1393ab5495741f1e149"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_magical_damage",
+      "startLine": 214,
+      "endLine": 226,
+      "normalizedLfSha256": "af531fc4dc047745a0466ab1e30c3c69356e4702458c90e64649342efed85024"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_store_ma_and_y",
+      "startLine": 908,
+      "endLine": 914,
+      "normalizedLfSha256": "ab08ff83195c1ab0b066b81e7dee3251538befc0df41efe294d4824069d4ed58"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_element_apply_strengthen",
+      "startLine": 1027,
+      "endLine": 1031,
+      "normalizedLfSha256": "f19ac1e9a4cbbb2865d8d894049982303e3c3c4abb99d2b97578f30b841b4034"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_evade_calculate_magical",
+      "startLine": 896,
+      "endLine": 902,
+      "normalizedLfSha256": "98cd6ca6adacfe714ad5d1239aa35453951e9de2c9d906c5164c4a448707988d"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_apply_magical_modifiers",
+      "startLine": 957,
+      "endLine": 962,
+      "normalizedLfSha256": "e99f35218c3aa5d3c7a1a401f6c45c1b56378c8e2475b04c95b1a4062d8b69b4"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_calculate_elemental_xa_times_ya",
+      "startLine": 966,
+      "endLine": 971,
+      "normalizedLfSha256": "696a777a6edd1fc68246faa01b86565eb4571adaaceee15c643890d768be4c2c"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_calculate_faith",
+      "startLine": 213,
+      "endLine": 234,
+      "normalizedLfSha256": "0812837b942de11405114acecfb45320118930ffab21e427ce991a8ef39e2a3f"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_element_apply_absorption_and_status_proc",
+      "startLine": 950,
+      "endLine": 953,
+      "normalizedLfSha256": "4afb7b59c945892f674ea0ebbeecadfe2bbd42e591f58812ab36c47e65fa61ff"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_apply_status",
+      "startLine": 651,
+      "endLine": 663,
+      "normalizedLfSha256": "2fb9c77ece0d543631574be792c72bbcc1b4de59819bb11f062f438b96bc4998"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_calculate_target_result",
+      "startLine": 473,
+      "endLine": 673,
+      "normalizedLfSha256": "6855ceea86f5e95b4b1edc5fff1d4f47e6623e4bae0309b2a84ed2d232de91c0"
+    }
+  ],
+  "managedFiles": [
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicFormula.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 6079,
+      "sha256": "9115cd747357beed329a699da46a575e9bee266f58d51f51b3feeed1e468d1cb"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmountFormula.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4063,
+      "sha256": "888770c4f8e3105905c18bf02993b1874feaeaddde297b0d84d11989504e9579"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicArithmetic.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 760,
+      "sha256": "f186ba678127bdaafa02a47e91a8415b139e758c88e1f07f7b5fa22a59933e4d"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvasion.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4270,
+      "sha256": "b4ba9568ed47d77451d431a3faba369d0e4cf1eaafbf66b208e616e6149687b4"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageElements.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2179,
+      "sha256": "3ff6535e3b30bd62d9e45c2a1ed28deb380e281aeed59abfccaadc6cc4aaa283"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicHpRouting.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 932,
+      "sha256": "f5615273ec917b3bf5b29139d799a1cb1040a8469032185826693f5d6553ac2c"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicConditionalProc.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3114,
+      "sha256": "f5ddff7711cca274010db4529a0ff93cbec725a4c77d20539baab2701ffa5627"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultFinalization.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2072,
+      "sha256": "708ce56c0be90a2cb225fc9ef5027143983cc46f8b341c6c0dfdab7df817f584"
+    }
+  ],
+  "preparedValidation": {
+    "byteLength": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000"
+  },
+  "suppliedInstructionCheck": {
+    "start": "0x80188d84",
+    "endInclusive": "0x80188df0",
+    "instructionCount": 28,
+    "allMatched": true,
+    "instructionWords": [
+      "27bdffe8",
+      "afbf0010",
+      "0c06216e",
+      "00000000",
+      "14400013",
+      "00000000",
+      "0c061725",
+      "00000000",
+      "0c0617ff",
+      "00000000",
+      "0c0621d1",
+      "00000000",
+      "0c0621df",
+      "00000000",
+      "14400009",
+      "00000000",
+      "0c061c54",
+      "00000000",
+      "0c0621c7",
+      "00000000",
+      "14400003",
+      "00000000",
+      "0c061fad",
+      "00000000",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ]
+  },
+  "directCalls": [
+    {
+      "callPc": "0x80188d8c",
+      "target": "0x801885b8"
+    },
+    {
+      "callPc": "0x80188d9c",
+      "target": "0x80185c94"
+    },
+    {
+      "callPc": "0x80188da4",
+      "target": "0x80185ffc"
+    },
+    {
+      "callPc": "0x80188dac",
+      "target": "0x80188744"
+    },
+    {
+      "callPc": "0x80188db4",
+      "target": "0x8018877c"
+    },
+    {
+      "callPc": "0x80188dc4",
+      "target": "0x80187150"
+    },
+    {
+      "callPc": "0x80188dcc",
+      "target": "0x8018871c"
+    },
+    {
+      "callPc": "0x80188ddc",
+      "target": "0x80187eb4"
+    }
+  ],
+  "earlyExitBranches": [
+    {
+      "branchPc": "0x80188d94",
+      "condition": "r2 != 0",
+      "target": "0x80188de4"
+    },
+    {
+      "branchPc": "0x80188dbc",
+      "condition": "r2 != 0",
+      "target": "0x80188de4"
+    },
+    {
+      "branchPc": "0x80188dd4",
+      "condition": "r2 != 0",
+      "target": "0x80188de4"
+    }
+  ],
+  "dispatchReturnCheck": {
+    "callPc": "0x8018b974",
+    "instruction": "0040f809",
+    "returnAddress": "0x8018b97c",
+    "kind": "indirect jalr through selected formula"
+  },
+  "findings": {
+    "faith": "Stored signed16 HP amount * target Faith * caster Faith /10000, one signed division; not two sequential /100 divisions.",
+    "helperReturns": "Zero continues after evasion/element checks and requests the status attempt after absorption/proc; nonzero branches to the shared epilogue.",
+    "statusBoundary": "formula_apply_status preserves hit, unsigned16 accuracy and miss type around status application. General status sets remain outside current managed admission.",
+    "managedOrder": "Pure input/amount projection may be computed before private evasion, but miss paths expose no amount/element/proc result. This is not a literal C instruction-by-instruction translation.",
+    "finalization": "Target result finalization belongs to action_calculate_target_result after formula return."
+  },
+  "validation": {
+    "faithDescriptions": 15,
+    "productDescriptions": 7,
+    "amountDescriptions": 22,
+    "entryDescriptions": 24,
+    "focusedPythonTestsPassed": 46,
+    "preparedTiersVerified": 8,
+    "ownerBlobsVerified": 10,
+    "runtimeChanged": false,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "managedExecuted": false,
+    "fullTicketCompleted": false
+  }
+}

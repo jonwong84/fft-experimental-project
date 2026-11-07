@@ -33,8 +33,13 @@ Fresh full runs pass5,181 .NET/794 Python tests, including1,384 AI. Independent
 checks cover32 raw dispatch cases,8 turn routes and1,032 affine/direct RNG steps;
 existing authority/command source audits pass. Owner controller formatting and
 all ten owner drafts remain unchanged. No runtime/test/fixture change was needed.
-Additional FFHacktics material was not required for this pass. Formula0x08/0x0C
-routine pages and their call traces would help cross-check the next magic review.
+Additional FFHacktics material was not required for that pass. The owner has now
+supplied formula0x08: its [top-level trace cross-check](behavior/faith-magic-amounts.md#supplied-formula0x08-trace-cross-check--zod-436-support)
+matches all28 prepared instruction words, eight calls, three exits and the
+indirect dispatch return. Existing arithmetic/entry source audits pass68
+descriptions; no runtime change was needed. ZOD-436 remains open. Magical Evade
+Calculation and Magical Support/Status/Compat are the next useful wiki pages;
+formula0x0C and the remaining helper pages can support the broader review.
 
 [ZOD-434 rank/lottery review](behavior/ai-rank-selection-review.md) is complete.
 No new defect was confirmed in admitted rank-only baseline gates, proximity ties,

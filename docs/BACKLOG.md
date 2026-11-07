@@ -94,6 +94,11 @@ learning/lifecycle review, general statuses/Reflect/Golem, broader formulas/shap
 autonomous magic, full origin study ZOD-426 and frame RNG remain separate. Pin
 source/current inputs and preserve owner drafts/JobStats/controller edits.
 
+The [supplied formula0x08 trace cross-check](behavior/faith-magic-amounts.md#supplied-formula0x08-trace-cross-check--zod-436-support)
+verifies all28 instruction words, eight calls, three exits and the dispatch return
+against prepared bytes. This supporting milestone leaves the ticket open; helper
+documentation and the full shared-consumer review remain to be assessed.
+
 ## Review programme
 
 ### ZOD-428 — Revalidate all earlier work against documentation and decompilation
