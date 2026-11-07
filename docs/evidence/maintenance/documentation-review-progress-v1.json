@@ -294,9 +294,57 @@
         ]
       },
       "limits": "Per-entry and command edges are partial; complete origin/aim traversal, policies, commands and frame RNG remain open."
+    },
+    {
+      "ticket": "ZOD-435",
+      "managedReviewBaseline": "edc1aec71638219e4c9228f811cb91bda723a978",
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "report": "docs/behavior/ai-command-continuation-review.md",
+      "receipt": "docs/evidence/ai/command-continuation-review-v1.json",
+      "disposition": "Completed bounded checked command/continuation/facing/recovery review; no new defect confirmed.",
+      "reviewedPathsByFocus": {
+        "fresh AI command turn and recovery owners": [
+          "src/Zodiac.Framework.Ai/AiCommandExecutor.cs",
+          "src/Zodiac.Framework.Ai/AiTurnController.cs",
+          "src/Zodiac.Framework.Ai/Execution/AiCommand.cs",
+          "src/Zodiac.Framework.Ai/Execution/AiTurn.cs",
+          "src/Zodiac.Framework.Ai/Execution/AiTurnProgress.cs",
+          "src/Zodiac.Framework.Ai/Decision/AiDecisionConfiguration.cs"
+        ],
+        "Framework roster proposal and continuation authority": [
+          "src/Zodiac.Framework/Battle/Commands/RosterDecisionBattle.cs",
+          "src/Zodiac.Framework/Battle/Commands/RosterDecisionContext.cs",
+          "src/Zodiac.Framework/Battle/Commands/RosterDecisionContext.PlannedMove.cs",
+          "src/Zodiac.Framework/Battle/Commands/RosterDecision.cs",
+          "src/Zodiac.Framework/Battle/Commands/RosterDecisionResult.cs",
+          "src/Zodiac.Framework/Battle/Commands/RosterDecisionResult.PlannedMove.cs",
+          "src/Zodiac.Framework/Battle/Commands/RosterMoveDecisionBattle.cs",
+          "src/Zodiac.Framework/Battle/Commands/RosterMoveContinuation.cs"
+        ],
+        "actual facing turn and RNG integration": [
+          "src/Zodiac.Framework/Battle/Turns/RosterFacingTurnBattle.cs",
+          "src/Zodiac.Framework/Battle/Turns/RosterFacingTurnState.cs",
+          "src/Zodiac.Framework/Battle/Turns/FacingReceiptRules.cs",
+          "src/Zodiac.Framework/Random/RandomStateGenerator.cs",
+          "src/Zodiac.Framework/Battle/Turns/TurnCycle.cs",
+          "src/Zodiac.Framework/Battle/Turns/TurnBattleSimulator.cs",
+          "src/Zodiac.Framework/Battle/Movement/FlatRosterPathMovement.cs",
+          "src/Zodiac.Framework/Battle/Movement/ConfirmedPathMovement.cs"
+        ],
+        "older pair authority edges": [
+          "src/Zodiac.Framework/Battle/Commands/FacingDecisionBattle.cs",
+          "src/Zodiac.Framework/Battle/Commands/FacingMoveDecisionBattle.cs"
+        ],
+        "current regression inputs": [
+          "tests/Zodiac.Framework.Tests/Battle/Commands/RosterDecisionTests.cs",
+          "tests/Zodiac.Framework.Tests/Battle/Commands/RosterMoveContinuationTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/Execution/AiTurnControllerTests.cs"
+        ]
+      },
+      "limits": "Older pair and actual-state edges are partial. Full native controller/frame/status/terminal behavior and magic commands remain open; managed authority/recovery is explicit architecture."
     }
   ],
   "fullyReviewedGroups": [],
-  "nextBatch": "ZOD-435",
+  "nextBatch": "ZOD-436",
   "overallBehaviorReviewCompleted": false
 }

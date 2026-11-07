@@ -20,8 +20,10 @@ and special-menu admission. [ZOD-433](../behavior/ai-target-scenario-review.md)
 confirms bounded target/scenario membership, ties and masks without a new defect.
 [ZOD-434](../behavior/ai-rank-selection-review.md) confirms bounded rank admission,
 lottery, retained-priority and ordinary fallback rules without a new defect.
-ZOD-435 next reviews checked commands/continuations; movement-origin study
-ZOD-426 remains queued as supporting work. ZOD-432 is the
+[ZOD-435](../behavior/ai-command-continuation-review.md) confirms bounded checked
+commands, continuations and recovery without a new defect. ZOD-436 next reviews
+ordinary magic arithmetic/evasion/routing; movement-origin study ZOD-426 remains
+queued as supporting work. ZOD-432 is the
 required readability/walkthrough/refactor gate after the full original-AI port,
 distinct from this broader behavior retrospective.
 

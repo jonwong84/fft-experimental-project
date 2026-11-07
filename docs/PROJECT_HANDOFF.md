@@ -18,7 +18,17 @@ pipeline test pass. Coverage validation passes all58 entries;27 preexisting stal
 targeting paths were repaired alongside the three AI moves, with coverage claims
 unchanged. Source move bytes and all ten owner blobs were checked unchanged.
 
-**ZOD-428 review programme; next bounded batch is ZOD-435 (checked commands/continuations).**
+**ZOD-428 review programme; next bounded batch is ZOD-436 (ordinary magic arithmetic/evasion/routing).**
+[ZOD-435 command/continuation review](behavior/ai-command-continuation-review.md)
+is complete. No new defect was confirmed in admitted Move/ACT/END publication,
+frozen follow-ups, post-ACT refresh, facing receipts or exact-session recovery.
+Fresh full runs pass5,181 .NET/794 Python tests, including1,384 AI. Independent
+checks cover32 raw dispatch cases,8 turn routes and1,032 affine/direct RNG steps;
+existing authority/command source audits pass. Owner controller formatting and
+all ten owner drafts remain unchanged. No runtime/test/fixture change was needed.
+Additional FFHacktics material was not required for this pass. Formula0x08/0x0C
+routine pages and their call traces would help cross-check the next magic review.
+
 [ZOD-434 rank/lottery review](behavior/ai-rank-selection-review.md) is complete.
 No new defect was confirmed in admitted rank-only baseline gates, proximity ties,
 eight-slot insertion, ordered hit trials, retained priority or ordinary fallback.
@@ -108,7 +118,8 @@ ZOD-430's additional current paths/edges are recorded in that progress receipt.
 ZOD-431's list/preparation/usefulness paths and fixes are recorded there as well.
 ZOD-433's target/scenario paths and verified boundaries are recorded there too.
 ZOD-434's rank/lottery/fallback boundaries are recorded there too.
-ZOD-435 is next; ZOD-426 remains a queued
+ZOD-435's checked commands and continuation/recovery boundaries are recorded there.
+ZOD-436 is next; ZOD-426 remains a queued
 supporting origin/baseline trace. Preserve owner drafts/JobStats, original quirks
 and existing deferrals. Source descriptions and passing tests are evidence to
 review, not automatic proof; keep later replacements/integration in scope.

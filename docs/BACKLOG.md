@@ -4,7 +4,7 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-435 (Review AI checked commands and continuations), next batch of ZOD-428.**
+**Next bounded work: ZOD-436 (Review ordinary magic arithmetic and routing), next batch of ZOD-428.**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 [Learning reports, owned slots and player casting](behavior/learn-on-hit.md)
@@ -51,9 +51,11 @@ corrects side-neutral HP usefulness and special-menu admission.
 the admitted membership, ordering and mask boundaries without a new defect.
 [ZOD-434 rank/lottery review](behavior/ai-rank-selection-review.md) confirms the
 admitted baseline, tie, insertion and fallback boundaries without a new defect.
-ZOD-435 is next; ZOD-426 remains queued as supporting AI study.
+[ZOD-435 command/continuation review](behavior/ai-command-continuation-review.md)
+confirms admitted authority, choice publication and recovery without a new defect.
+ZOD-436 is next; ZOD-426 remains queued as supporting AI study.
 ZOD-432 records the required readability review after the full AI port.
-There are 37 open tickets below. The 398 completed tickets, prior checkpoints and
+There are 37 open tickets below. The 399 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -77,21 +79,20 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-435 — Review AI checked command and continuation boundaries
+### ZOD-436 — Review ordinary magic arithmetic, evasion and result routing
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready; next review batch under ZOD-428 · **Depends on:** ZOD-434
+**Type:** Story · **Priority:** P3 · **Status:** Ready; next review batch under ZOD-428 · **Depends on:** ZOD-435
 
 Continue the [retrospective](development/documentation-review-programme.md) from
-the [rank/lottery review](behavior/ai-rank-selection-review.md). Trace current
-fresh decision-to-command ownership, validated Move/ACT/END transactions,
-ACT-first/Move-first continuation, post-ACT refresh, facing handoff and exact
-partial-progress recovery within admitted pair/roster turns. Recheck source
-choice flags, authoritative state/RNG publication, stale/foreign receipt
-rejection and immutable priority successors. Inspect existing replay/command
-fixtures independently and fix bounded confirmed defects with regressions.
-Full terminal/corpse scheduling, host activation, special policies, Defend,
-general magic commands and frame RNG remain separate. Pin current source/managed
-inputs; preserve the owner's controller edit and all owner drafts/JobStats.
+the [command review](behavior/ai-command-continuation-review.md). Trace current
+formula0x08/0x0C arithmetic, modifiers, Faith/zodiac, elements/weather/affinities,
+magic evasion, proc routing and result finalization through their shared actual,
+preview and AI consumers. Recheck widths, truncation/order, actual versus AI RNG,
+metadata/admission guards and independent vectors. Record verified domains,
+historical errata and bounded confirmed fixes with regressions. Full spell queue/
+learning/lifecycle review, general statuses/Reflect/Golem, broader formulas/shapes,
+autonomous magic, full origin study ZOD-426 and frame RNG remain separate. Pin
+source/current inputs and preserve owner drafts/JobStats/controller edits.
 
 ## Review programme
 
@@ -110,7 +111,7 @@ bounded source-backed fixes with independent regressions. Close only when every
 scope entry has an evidence-backed disposition and outstanding issues are explicit.
 Owner drafts/JobStats and documented deferred mechanics retain their boundaries.
 The [progress receipt](evidence/maintenance/documentation-review-progress-v1.json)
-records completed ZOD-427/429/430/431/433/434 batches; full inventory groups remain open.
+records completed ZOD-427/429/430/431/433/434/435 batches; full inventory groups remain open.
 
 ### ZOD-432 — Review full AI readability, naming and organization
 
