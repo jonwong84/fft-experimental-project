@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "e8730b65195cf751b6060dea137af429df1beef4",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Owner-supplied Defending wrapper; source/byte checks and caller context only; no activation of Defend runtime support or completion of ZOD-430.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/turn/clock.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40868,
+      "sha256": "f76188542c39818fa2ab478e42ef63b4eb0f2c1c2db5a74db4120ddbaf4cb8cb"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 15884,
+      "sha256": "7ddb1c8ed2e0cad3de18dae6945364d4fffd2299aa4383a659ecbe27717b7eb9"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 23857,
+      "sha256": "57dd4fa8b07ef93c4a8e21c73657a0fdbe6c601a6db0b0351ae15b3cd15e4aea"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 111880,
+      "sha256": "22555f06b061bc6f017f721998a5e44dfb3d4fa4c7284a2ee3367dfa27ce80ad"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 187246,
+      "sha256": "2792e2b861e8de4f4f996a5491dbacde0b96f77518a75cc4b8eebf2d6bc1557f"
+    },
+    {
+      "path": "include/fft/status.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11673,
+      "sha256": "deeaeec02add8b9db7cca91c99517706033b18385ca433d32f1998d9d62e0e83"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    },
+    {
+      "path": "target/main.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 135004,
+      "sha256": "b6066d98d481d73eb49d2d16be57ae3fc5ae4070830176fdeeeaae2bdeaec2a3"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "status_inflict_defending",
+      "startLine": 1017,
+      "endLine": 1020,
+      "normalizedLfSha256": "d5dc5a1f36b482eaef2c60ce5416a46d94962b2527a1f4a49a80d4762e679c75"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "symbol": "status_action_state_set",
+      "startLine": 368,
+      "endLine": 421,
+      "normalizedLfSha256": "8dfbd728d457b6a2caaf9ac81de3b30a898e6724c98a75942a233f0abdd64397"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "symbol": "status_unit_change",
+      "startLine": 328,
+      "endLine": 346,
+      "normalizedLfSha256": "3738f048aaf5ad5cf7eb87db626d6eba218f0ad3b7e6e202121a6b8de5f9a766"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "status_queue_display_flag_change_if_executing",
+      "startLine": 214,
+      "endLine": 218,
+      "normalizedLfSha256": "21e296421083b2791a96c63ef079e1bd7cfae641b453cd4dccacab486fd4c516"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_action_simulate_and_score",
+      "startLine": 1442,
+      "endLine": 1728,
+      "normalizedLfSha256": "9415274d3b38d3e7afe51922914355e40ff6bad7bccb9bc861bbbfae6894bcd4"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_idling_action_menus_update",
+      "startLine": 2549,
+      "endLine": 2652,
+      "normalizedLfSha256": "02ddbc8cd9cf13393edd9e39dab175d926174693d63a1b464563c7c77cb7b860"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_ai_command_update",
+      "startLine": 2665,
+      "endLine": 2768,
+      "normalizedLfSha256": "11c99d696f9f045abdb27800c9452d187368a1197d3249c793c5b94515da64e9"
+    }
+  ],
+  "preparedValidation": {
+    "byteLength": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000"
+  },
+  "suppliedInstructionCheck": {
+    "start": "0x80183e00",
+    "endInclusive": "0x80183e38",
+    "instructionCount": 15,
+    "allMatched": true,
+    "regionSha256": "d0e7c54fa7c5eaec12e0c62f1f7183e7ee679fc2a724ffc23489c66110ffa8af"
+  },
+  "setterCall": {
+    "pc": "0x80183e20",
+    "target": "0x8005e7a8",
+    "symbol": "status_action_state_set",
+    "delaySlotActionState": 7,
+    "returnAddress": "0x80183e28"
+  },
+  "callers": [
+    {
+      "symbol": "ai_action_simulate_and_score",
+      "calls": [
+        {
+          "pc": "0x8019d4f4",
+          "target": "0x80183e00",
+          "returnAddress": "0x8019d4fc"
+        }
+      ]
+    },
+    {
+      "symbol": "battle_state_idling_action_menus_update",
+      "calls": [
+        {
+          "pc": "0x80075134",
+          "target": "0x80183e00",
+          "returnAddress": "0x8007513c"
+        }
+      ]
+    },
+    {
+      "symbol": "battle_state_ai_command_update",
+      "calls": [
+        {
+          "pc": "0x800754b4",
+          "target": "0x80183e00",
+          "returnAddress": "0x800754bc"
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "shared": "Used by AI simulation and actual player/AI command handlers",
+    "argument": "7 is STATUS_ACTION_STATE_DEFENDING, not a raw status mask",
+    "state": "Adds inflicted Defending, removes inflicted Charging/Jump/Performing, rebuilds current=inflicted|innate, sets charged_ability_ct0xff",
+    "display": "Only changed current action statuses queue display changes, and only during Execute",
+    "returnValue": "Unconditional0; not a success/failure assertion",
+    "callerResponsibilities": "Simulation sets hit100 and Act consumed, then ends hypothetical turn; live handlers mark Act and advance controller after status wrapper",
+    "wrapperRandomDraws": 0
+  },
+  "ownerEditPreserved": {
+    "path": "src/Zodiac.Framework.Ai/AiTurnController.cs",
+    "gitBlob": "373d13f739439813f9608aefc2d84715d8ed1346"
+  },
+  "runtimeChanged": false,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "testsRerun": false
+}

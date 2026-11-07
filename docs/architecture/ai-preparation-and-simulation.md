@@ -93,6 +93,37 @@ Porting the original suspension lifecycle, frame-interleaved RNG, reactions,
 status handlers/display flags, pickups and broader clocks remains separately
 gated. Do not replace that future lifecycle with a whole-world rollback.
 
+## Supplied Defending wrapper (2026-11-07)
+
+The owner's AI Simulation - Inflict defending listing at0x80183E00 matches
+all15 instruction words in the hash-verified prepared BATTLE.BIN. The
+[wrapper receipt](../evidence/ai/defending-wrapper-trace-v1.json) pins reference
+`11464943bbdbd2a0af022d90cb7f10455cf911df`, the relevant source functions and
+three executable caller sites. The routine is `status_inflict_defending`,
+not an AI-only status setter: both actual command handlers and
+`ai_action_simulate_and_score` call it.
+
+Unit ID is multiplied by448 to obtain the battle-unit pointer. The call at
+0x80183E20 reaches `status_action_state_set` at0x8005E7A8, with action-state
+selector7 supplied in the delay slot. This is `STATUS_ACTION_STATE_DEFENDING`,
+not a raw status bitmask. The wrapper consumes no RNG and always returns0;
+that return does not report whether a status changed.
+
+The shared setter adds inflicted Defending, removes inflicted Charging, Jump
+and Performing, and sets the stored charge counter to0xFF. `status_unit_change`
+rebuilds current status as inflicted|innate, so innate action statuses are not
+erased by that removal. Changes to current action-status bits queue display
+updates only during execution; preview/AI status mutation itself still happens.
+Simply setting a Defending boolean would omit the charge/action-state effects.
+
+The wrapper does not consume Act, set accuracy or end a turn. Its AI caller
+sets candidate hit100 and Act consumed before hypothetical `turn_end`; the
+actual player/AI command handlers separately mark Act and advance the controller.
+Current managed physical decision admission requires `NoDefendSupport` and does
+not select this action. The supplied trace adds evidence for ZOD-430 without
+activating general Defend/status support. No runtime code or historical fixture
+changed; this source-only confirmation does not require another gameplay test run.
+
 ## Verification
 
 Existing ordinary AI regressions retain immediate/delayed ordering, excluded
