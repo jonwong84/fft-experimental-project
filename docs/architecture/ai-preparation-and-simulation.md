@@ -167,6 +167,45 @@ General pickup simulation remains outside current effect-free managed profiles.
 This adds source evidence for ZOD-430 without changing runtime code or repeating
 unchanged gameplay tests. The owner's local AI turn-controller edit is preserved.
 
+## Supplied End of Turn routine (2026-11-07)
+
+The owner's listing at0x80183C6C matches all41 instruction words in the
+hash-verified prepared BATTLE.BIN. All six stated return locations match calls
+to `turn_end`; they include actual command/controller, between-turn, consumed
+choice and AI simulation paths. The routine is shared, not AI-only. The
+[turn-end receipt](../evidence/ai/turn-end-trace-v1.json) pins reference
+`11464943bbdbd2a0af022d90cb7f10455cf911df`, relevant source/metadata, current
+managed consumers and those caller addresses.
+
+An absent unit (active battle ID0xFF) or unit without `has_turn` returns1 without
+changes. Otherwise the byte CT is loaded into an unsigned16 intermediate:
+
+- Add20 only if Move was not taken and Don't Move is absent.
+- Add20 only if Act was not taken and both Don't Act and Performing are absent.
+- Cap the combined value at60, store CT, and clear `has_turn`.
+
+The additions precede the byte store; even raw CT255 plus40 clamps to60 rather
+than wrapping to39. Restrictions do not earn refunds for their blocked choices.
+At CT0, two unused unrestricted choices leave40; either single restriction
+leaves20, and Don't Move together with Don't Act/Performing leaves0. Performing
+only suppresses the Act refund here. These status cases are source descriptions,
+not newly supported managed turn inputs.
+
+The leaf leaves movement/action flags intact, does not subtract100 CT, does
+not clean action statuses or advance the clock, and consumes no RNG. Its always1
+return is not proof of a transition. Caller `turn_move_act_taken_set` separately
+marks choices and uses `turn_should_end` before invoking it. The latter's
+action-restriction decision must not replace this leaf's explicit refund gates.
+
+Current `TurnCycle` and shared AI effect-free projections preserve the ordinary
+refund/cap arithmetic. Their status-free active units have already reduced CT
+to0..99; absent/raw-CT255/status cases do not expand that admission. Managed
+inactive commands are rejected atomically, whereas this source leaf silently
+returns1 without mutation. That remains an intentional API-boundary distinction.
+No runtime correction was needed; all18 existing refund/cap and repeated-Wait
+completion cases pass. The next supplied clock input is the
+In between turn control routine; full ZOD-430 review remains open.
+
 ## Verification
 
 Existing ordinary AI regressions retain immediate/delayed ordering, excluded
