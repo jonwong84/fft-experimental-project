@@ -21,7 +21,9 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 397 entries index completed bounded work; they do not mean the full game is complete.
+These 398 entries index completed bounded work; they do not mean the full game is complete.
+
+- [ZOD-434 — Review AI rank admission, lottery and fallback](../behavior/ai-rank-selection-review.md)
 
 - [ZOD-433 — Review AI target selection and scenario admission](../behavior/ai-target-scenario-review.md)
 

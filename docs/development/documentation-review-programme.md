@@ -18,7 +18,9 @@ candidate admission. [ZOD-431](../behavior/shared-ai-preparation-review.md) revi
 shared preparation/useful-target policy and corrects neutral HP classification
 and special-menu admission. [ZOD-433](../behavior/ai-target-scenario-review.md)
 confirms bounded target/scenario membership, ties and masks without a new defect.
-ZOD-434 next reviews rank admission, lottery and fallback; movement-origin study
+[ZOD-434](../behavior/ai-rank-selection-review.md) confirms bounded rank admission,
+lottery, retained-priority and ordinary fallback rules without a new defect.
+ZOD-435 next reviews checked commands/continuations; movement-origin study
 ZOD-426 remains queued as supporting work. ZOD-432 is the
 required readability/walkthrough/refactor gate after the full original-AI port,
 distinct from this broader behavior retrospective.

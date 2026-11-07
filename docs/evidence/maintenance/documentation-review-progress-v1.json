@@ -254,9 +254,49 @@
         ]
       },
       "limits": "Current geometry and older caller edges are partial; full terrain/target-policy/origin/rank/command branches and frame RNG remain open."
+    },
+    {
+      "ticket": "ZOD-434",
+      "managedReviewBaseline": "0b6db614d0ab5cade08fc0dd9bd54c517cb7a29f",
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "report": "docs/behavior/ai-rank-selection-review.md",
+      "receipt": "docs/evidence/ai/rank-selection-review-v1.json",
+      "disposition": "Completed bounded rank admission/lottery/ordinary fallback and retained-priority review; no new defect confirmed.",
+      "reviewedPathsByFocus": {
+        "shared rank lottery and priority owners": [
+          "src/Zodiac.Framework.Ai/Shared/AiCandidateRank.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiRankedInsertion.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiRankedLottery.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiPriorityWorkspace.cs"
+        ],
+        "fresh selection and dispatch edges": [
+          "src/Zodiac.Framework.Ai/AiDecisionMaker.cs",
+          "src/Zodiac.Framework.Ai/Decision/AiAbilityEvaluator.cs",
+          "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListComposition.cs",
+          "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListSelection.cs",
+          "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiPostActSelection.cs",
+          "src/Zodiac.Framework.Ai/Sword/SwordAiComposition.cs",
+          "src/Zodiac.Framework.Ai/Sword/SwordAiSelection.cs",
+          "src/Zodiac.Framework.Ai/AttackThrowStone/AttackThrowStoneAiFallbackExecution.cs"
+        ],
+        "per-entry best and magic fixed-origin comparison edges": [
+          "src/Zodiac.Framework.Ai/Sword/SwordAiCandidateScan.cs",
+          "src/Zodiac.Framework.Ai/Sword/RosterSwordAiAttackEntry.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiEntryEvaluation.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/RosterAccumulateAiEntry.cs",
+          "src/Zodiac.Framework.Ai/ThrowStone/RosterThrowStoneAiEntry.cs",
+          "src/Zodiac.Framework.Ai/Dash/RosterDashAiEntry.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiSearchQuery.cs"
+        ],
+        "selection regression inputs": [
+          "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiSelectionTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiSelectionTests.cs"
+        ]
+      },
+      "limits": "Per-entry and command edges are partial; complete origin/aim traversal, policies, commands and frame RNG remain open."
     }
   ],
   "fullyReviewedGroups": [],
-  "nextBatch": "ZOD-434",
+  "nextBatch": "ZOD-435",
   "overallBehaviorReviewCompleted": false
 }
