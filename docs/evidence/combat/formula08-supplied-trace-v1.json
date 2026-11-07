@@ -51,6 +51,12 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 1226,
       "sha256": "1fb6f4345d06c2afc850c1cebbe711a6e3b43bc6c008507b9fc786290d867a45"
+    },
+    {
+      "path": "include/fft/action.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14957,
+      "sha256": "6e97b3935c0d9cdcb8f6ba9ee2d40985b645bc0b03281a0d50d3d20aae35591c"
     }
   ],
   "sourceFunctions": [
@@ -1707,6 +1713,156 @@
       },
       "focusedManagedTestsPassed": 16,
       "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedXaYaProductCheck": {
+    "managedBaseRevision": "b363edda0980923cb2cf374882ec12f11de2d1c3",
+    "start": "0x80186568",
+    "endInclusive": "0x80186598",
+    "instructionCount": 13,
+    "instructionWords": [
+      "3c038019",
+      "946338ce",
+      "3c028019",
+      "944238d0",
+      "00000000",
+      "00620018",
+      "3c038019",
+      "8c632d90",
+      "34020080",
+      "a0620025",
+      "00001012",
+      "03e00008",
+      "a4620004"
+    ],
+    "allMatched": true,
+    "listedCallerChecks": [
+      {
+        "callPc": "0x801886bc",
+        "returnAddress": "0x801886c4",
+        "target": "0x80186568"
+      },
+      {
+        "callPc": "0x80188784",
+        "returnAddress": "0x8018878c",
+        "target": "0x80186568"
+      },
+      {
+        "callPc": "0x80188870",
+        "returnAddress": "0x80188878",
+        "target": "0x80186568"
+      },
+      {
+        "callPc": "0x80188d64",
+        "returnAddress": "0x80188d6c",
+        "target": "0x80186568"
+      },
+      {
+        "callPc": "0x80189694",
+        "returnAddress": "0x8018969c",
+        "target": "0x80186568"
+      },
+      {
+        "callPc": "0x80189d10",
+        "returnAddress": "0x80189d18",
+        "target": "0x80186568"
+      },
+      {
+        "callPc": "0x80189eb4",
+        "returnAddress": "0x80189ebc",
+        "target": "0x80186568"
+      },
+      {
+        "callPc": "0x8018ac00",
+        "returnAddress": "0x8018ac08",
+        "target": "0x80186568"
+      },
+      {
+        "callPc": "0x8018ac5c",
+        "returnAddress": "0x8018ac64",
+        "target": "0x80186568"
+      }
+    ],
+    "loads": {
+      "xaAddress": "0x801938ce",
+      "yaAddress": "0x801938d0",
+      "instructions": "lhu: each operand zero-extends16 bits"
+    },
+    "stores": {
+      "typePc": "0x8018658c",
+      "typeByteOffset": "0x25",
+      "typeValue": "0x80",
+      "typeOperation": "Assign HP damage byte, not OR existing flags",
+      "damagePc": "0x80186598",
+      "damageHalfwordOffset": "0x04",
+      "damageStoreIsReturnDelaySlot": true,
+      "retainedProduct": "low16 bits of mult/mflo product"
+    },
+    "equivalence": {
+      "proof": "Each zero-extended operand differs from its signed16 interpretation by0 or65536. Multiplying changes the product only by multiples of65536, so the stored halfword agrees for every pair.",
+      "fullRawXaValues": 65536,
+      "selectedRawYaValues": [
+        0,
+        1,
+        2,
+        3,
+        14,
+        255,
+        256,
+        32767,
+        32768,
+        65535
+      ],
+      "comparisons": 655360,
+      "allMatched": true,
+      "exhaustiveAllPairsClaimed": false,
+      "examples": [
+        {
+          "xa": 255,
+          "ya": 255,
+          "storedSignedDamage": -511
+        },
+        {
+          "xaBits": "0xffff",
+          "yaBits": "0x0002",
+          "storedSignedDamage": -2
+        }
+      ]
+    },
+    "managedMapping": "FaithMagicArithmetic.MultiplyStored uses unchecked signed16 product storage. Element projection subsequently reads that signed amount before weather, Faith, routing and final caps.",
+    "clarifications": [
+      "No division, rounding, clamp, Faith, element/weather transform, live HP mutation or RNG is performed here.",
+      "Later changes to XA/YA do not retroactively alter stored damage; original product-before-Oil ordering is the compatibility target. Oil/Fire remains excluded by the current managed profile.",
+      "The note that every later XA/YA change is pointless is scoped to this already-stored product; later explicit reads or recomputation would remain separate behavior.",
+      "Offline modulo comparisons are not original/C execution and do not expand battle admission."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "faithDescriptions": 15,
+        "productDescriptions": 7,
+        "amountDescriptions": 22,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 14,
+        "sourceFunctions": 36,
+        "preparedTiersVerified": 8
+      },
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 10,
+      "focusedPythonTestsPassed": 16,
       "managedTestsExecuted": true,
       "runtimeChanged": false,
       "originalExecuted": false,

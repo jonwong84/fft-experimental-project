@@ -73,8 +73,11 @@ magic C# agrees; secondadvent's rewrite is explicitly deferred for a much later
 review. The [Elemental XA * YA wrapper](behavior/magic-elements-and-routing.md#supplied-elemental-xa--ya-wrapper--zod-436-support)
 matches all18 words/three ordered calls/four returns. It tests the hit byte after
 stored product, weather and element work; absorption conversion remains after
-Faith in0x08. XA * YA Calculation, Weather Elemental effects and Ability Elemental?
-are the next useful pages. ZOD-436 remains open.
+Faith in0x08. XA * YA Calculation matches13 words/nine returns: the type byte is
+assigned HP damage and the low16 product is stored in the return delay slot.
+Unsigned operand loads and signed C# multiplication agree modulo65,536;655,360
+boundary pairs also pass. Weather Elemental effects and Ability Elemental? are
+the next useful pages. ZOD-436 remains open.
 The unrelated owner edit in `.circleci/config.yml` remains uncommitted and excluded.
 The shared Calculate Hit %/final-hit/per-source roll
 documentation was already supplied; no duplicate is needed.

@@ -38,8 +38,37 @@ The existing source audit passes24 transform,12 projection and14 routing
 descriptions. All16 focused .NET element/projection/routing tests and eight Python
 tests pass. No runtime or fixture change is needed; all ten owner draft blobs are
 unchanged and the unrelated `.circleci/config.yml` owner edit is excluded.
-ZOD-436 remains open. The next useful supplied pages are XA * YA Calculation,
-Weather Elemental effects and Ability Elemental?.
+ZOD-436 remains open.
+
+### Supplied XA * YA product helper
+
+The owner's listing matches all13 words at `0x80186568`–`0x80186598` and all nine
+listed returns. The same supporting receipt records its operand loads and two
+target-action writes. It zero-extends XA/YA with `lhu`, multiplies, assigns the
+action-type byte at offset`0x25` to `0x80` (HP damage), then stores the product's
+low16 bits at HP-damage offset`0x04`. The type write is an assignment, not an OR.
+The `sh` store is in `jr r31`'s delay slot and completes before the caller resumes.
+No rounding, cap, Faith, weather, element processing, RNG or live-HP mutation is
+performed by this helper.
+
+Unsigned operand loads agree with the existing signed-short C# calculation:
+each signed/unsigned interpretation differs by a multiple of65,536, so the
+products have identical low16 bits for every pair. An offline check also covers
+all65,536 raw XA values against ten selected boundary YA values (655,360 pairs),
+not an exhaustive enumeration of every pair. For example,255*255 stores signed
+damage-511, and raw XA`0xffff` times2 stores-2. The result is subsequently read
+as signed16 by the weather/Faith stages. `FaithMagicArithmetic.MultiplyStored`
+already preserves this behavior with its unchecked short cast.
+
+Later XA/YA changes cannot retroactively update the stored damage. This explains
+the original Oil/Fire ordering quirk; it does not justify a general assumption
+that later explicit reads or recomputation are pointless. A future admitted Oil
+implementation must preserve the original ordering. Oil/Fire remains excluded
+from the current managed profile; no Oil behavior is activated or repaired here.
+All ten focused .NET arithmetic/element-pipeline tests and16 Python tests pass;
+all ten owner draft blobs remain unchanged. No runtime or fixture change is
+needed. The next useful supplied pages are Weather Elemental effects and Ability
+Elemental?.
 
 ## Original implementation checkpoint
 

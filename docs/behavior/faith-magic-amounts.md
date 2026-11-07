@@ -225,7 +225,8 @@ The unrelated owner edit in `.circleci/config.yml` is excluded from this milesto
 This completes the supplied-document checklist for the four magical-modifier
 dependencies, not ZOD-436's broader shared-consumer review. The supplied
 [Elemental XA * YA wrapper](magic-elements-and-routing.md#supplied-elemental-xa--ya-wrapper--zod-436-support)
-is now checked too; its multiplication/weather/element helper pages are next.
+and its multiplication helper are now checked too; weather/element helper pages
+are next.
 
 ## Original implementation checkpoint
 
