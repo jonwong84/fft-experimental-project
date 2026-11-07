@@ -15,6 +15,29 @@ The [original AI algorithm guide](../architecture/original-ai-algorithm.md) owns
 the unified source map, policy precedence and documented implementation gaps.
 Use it to place each bounded child within the overall algorithm.
 
+## Required readability review after the full port
+
+Owner direction recorded2026-11-07: once the full original AI routine set is
+implemented and representative behavior is validated, complete ZOD-432 before
+calling the AI work finished. The owner must be able to start at
+`AiDecisionMaker` or `AiTurnController` and follow preparation, useful-target
+policy, formula simulation, strike accounting, scoring, ranking and checked
+execution through `AiCommandExecutor`. Maintain a source-routine-to-C# map and
+clear entry-point documentation, including the player-selected ability path.
+
+Walk through real decisions with the owner; review naming, responsibilities,
+file/namespace organization and branching. Prefer explicit if/else for nontrivial
+conditions. Use shared mechanics/formula families and data-defined individual
+abilities. Refactor only where it improves comprehension, in bounded changes
+that preserve compatibility, arithmetic/order, RNG and deterministic replays.
+Document remaining gaps and rerun checks appropriate to each change. Small
+clarity fixes can continue during the port; this gate does not postpone them or
+authorize a blanket reorganization now. Passing tests alone do not close the
+owner walkthrough or full AI coverage gates.
+
+The [backlog](../BACKLOG.md) owns this gate and current review order; the wider
+ZOD-428 retrospective remains separate from completing original-AI breadth.
+
 ## Current foundation
 
 `Zodiac.Framework.Ai` owns a source-traced prepare → evaluate movement/actions →

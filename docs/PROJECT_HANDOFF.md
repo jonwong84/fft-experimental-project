@@ -18,7 +18,23 @@ pipeline test pass. Coverage validation passes all58 entries;27 preexisting stal
 targeting paths were repaired alongside the three AI moves, with coverage claims
 unchanged. Source move bytes and all ten owner blobs were checked unchanged.
 
-**ZOD-428 review programme; next bounded batch is ZOD-430 (shared AI simulation boundaries).**
+**ZOD-428 review programme; next bounded batch is ZOD-431 (shared AI preparation/useful-target policy).**
+[ZOD-430 shared simulation review](behavior/shared-ai-simulation-review.md) is complete.
+It retraces selective snapshots, supported clocks, strike accounting and absolute
+scores, including current magic consumers. One confirmed guard defect is fixed:
+ordinary magic candidate processing now requires at most16 active units, matching
+the original compact-record admission. Sparse battle slots through20 remain valid;
+the standalone21-slot clock is unchanged. Three new regression cases cover oversized
+atomic rejection and sparse-slot acceptance; unresolved candidate/search scenarios
+now use a reachable16-unit profile. All5,158 .NET/794 Python tests pass, including
+1,361 AI tests. The owner's unstaged `AiTurnController.cs` edit remains untouched.
+Historical candidate/score audits pass using hash-verified recorded inputs rebuilt
+under ignored scratch; their old path manifests do not validate today's managed
+bodies. The current review/test evidence is recorded separately.
+ZOD-432 now requires an owner walkthrough/readability/refactor review after the
+full original-AI routine port and representative validation. It does not claim
+full AI completion or activate a blanket reorganization now.
+
 [ZOD-429 sword/Accumulate review](behavior/sword-accumulate-review.md) is complete.
 The receipt pins eight source/metadata files,27 functions and27 managed paths/
 edges, rechecks prepared formula1/36 dispatch and sword calls, and independently
@@ -27,7 +43,6 @@ recalculates seven sword literals. Existing source audits revalidate18 Accumulat
 runtime change or historical evidence erratum was found within this batch.
 PA99 still accepts Accumulate and earns source stat-hit credit3; zero-bonus
 base/effective PA and current-stat sword consumers remain explicit boundaries.
-Full .NET/Python regression suites passed again at5,155/794, including1,358 AI.
 
 [ZOD-427 physical review](behavior/physical-pipeline-review.md) completes the first
 bounded batch. It retraces actual/preview/AI formula, delivery, metadata, ranking
@@ -62,7 +77,8 @@ The [programme](development/documentation-review-programme.md) and
 retain the complete 2,138-path snapshot/38 historical paths, with38 reviewed
 paths/edges for ZOD-427 and27 for ZOD-429 (overlapping shared edges). Full inventory
 groups remain open, including broader shared AI/movement/turn/command owners.
-ZOD-430 is next; ZOD-426 remains a queued
+ZOD-430's additional current paths/edges are recorded in that progress receipt.
+ZOD-431 is next; ZOD-426 remains a queued
 supporting origin/baseline trace. Preserve owner drafts/JobStats, original quirks
 and existing deferrals. Source descriptions and passing tests are evidence to
 review, not automatic proof; keep later replacements/integration in scope.
@@ -106,11 +122,13 @@ Four internal owners extract existing targeting and cast-queue method bodies.
 Namespaces, public APIs, command authority and existing behavior limits remain.
 The source-map READMEs link concrete player/AI walkthroughs and modification points.
 
-Locked restore and a zero-warning/error Release build, **5,155 .NET tests** and
-**794 Python tests** pass. All1,358 AI cases pass. Existing targeting, immediate/
-delayed cast, rank, RNG isolation and command regressions retain their original
-expectations. Current source/test/preservation receipts are in the physical review
-and ignored `scratch/physical-review-427/`. No host path changed in ZOD-427. The prior
+Locked restore and a zero-warning/error Release build remain established; the
+current rebuilt full run passes **5,158 .NET tests** and **794 Python tests**.
+All1,361 AI cases pass. Existing targeting, immediate/
+delayed cast, rank, RNG isolation and command regressions pass; ZOD-430 corrects
+the previously oversized candidate/search scenarios. Current source/test/preservation
+receipts are linked from each review, including the shared simulation review.
+No host path changed in ZOD-427 or ZOD-430. The prior
 ZOD-423 move/native receipts remain historical in `scratch/pathways-423/`, with
 Basic Skill121-step/two-replay and Fire four-checkpoint native checks matching
 retained gameplay hashes; native presentation was not rerun for these diagnostics.

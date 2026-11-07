@@ -21,7 +21,9 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 394 entries index completed bounded work; they do not mean the full game is complete.
+These 395 entries index completed bounded work; they do not mean the full game is complete.
+
+- [ZOD-430 — Review shared AI simulation boundaries and correct magic roster admission](../behavior/shared-ai-simulation-review.md)
 
 - [ZOD-429 — Review sword Attack and Accumulate mechanics/settlement](../behavior/sword-accumulate-review.md)
 

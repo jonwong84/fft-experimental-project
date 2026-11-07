@@ -126,25 +126,62 @@ public sealed class OrdinarySpellAiCandidateTests
     [Fact]
     public void Event_limit_scores_unresolved_charging_state_with_source_hit255_and_no_mp_spend()
     {
+        var (catalog,state,panels)=CrowdedRoster(16);
+        var before=OrdinarySpellAiReadyTests.Receipt(state);
+        var r=OrdinarySpellAiCandidateQuery.Evaluate(state,catalog,new(Mage,0,panels[0]),new(57,0));
+        Assert.Equal(OrdinarySpellAiCandidateDisposition.ScoredUnresolved,r.Disposition);
+        Assert.Equal((short)-6774,r.Outcome!.Score!.Priority);Assert.Equal((byte)255,r.Outcome.Score.HitPercent);
+        Assert.True(r.Outcome.Clock!.EventLimitReached);Assert.Equal((byte)94,r.Outcome.Clock.RemainingCharge);
+        Assert.Equal(43UL,r.Outcome.Clock.Ticks);
+        Assert.Equal(255,r.Outcome.Clock.Events.Length);Assert.Equal(255UL,r.RngState.DrawCount);
+        Assert.Null(r.Outcome.FormulaEntryRng);Assert.Empty(r.Outcome.Frames);
+        Assert.True(r.Outcome.Units[0].Current.Statuses.Charging);Assert.Equal((ushort)75,r.Outcome.Units[0].Current.Mp);
+        Assert.Equal(before,OrdinarySpellAiReadyTests.Receipt(state));
+    }
+
+    [Theory]
+    [InlineData(17)]
+    [InlineData(21)]
+    public void Unrepresentable_active_rosters_reject_all_candidate_entry_points_without_rng_or_state_changes(int count)
+    {
+        var (catalog,state,panels)=CrowdedRoster(count);
+        var before=OrdinarySpellAiReadyTests.Receipt(state);
+        var rng=new RandomState(57,9);
+        var candidate=OrdinarySpellAiCandidateQuery.Evaluate(state,catalog,new(Mage,0,panels[0]),rng);
+        var ready=OrdinarySpellAiReadyQuery.Evaluate(state,catalog,new(Mage,0,panels[0],ImmutableHashSet<BattleUnitId>.Empty),rng);
+        var search=OrdinarySpellAiSearchQuery.Evaluate(state,catalog,new(Mage,0),rng);
+        var aims=OrdinarySpellAiAimQuery.Evaluate(state,catalog,new(Mage,0));
+        Assert.False(candidate.Accepted);Assert.Null(candidate.Outcome);Assert.Equal(rng,candidate.RngState);
+        Assert.False(ready.Accepted);Assert.Null(ready.Outcome);Assert.Equal(rng,ready.RngState);
+        Assert.False(search.Accepted);Assert.Null(search.Outcome);Assert.Equal(rng,search.RngState);
+        Assert.False(aims.Accepted);Assert.Null(aims.Outcome);
+        Assert.Equal(before,OrdinarySpellAiReadyTests.Receipt(state));
+    }
+
+    [Fact]
+    public void Sixteen_active_units_can_include_the_last_battle_slot()
+    {
+        var (catalog,state,panels)=CrowdedRoster(16,lastSourceOrder:20);
+        var r=OrdinarySpellAiCandidateQuery.Evaluate(state,catalog,new(Mage,0,panels[0]),new(57,0));
+        Assert.True(r.Accepted,r.Rejection);
+        Assert.Equal((short)-6774,r.Outcome!.Score!.Priority);
+        Assert.Equal(20,state.Units[^1].Occupant.SourceOrder);
+    }
+
+    private static (OrdinarySpellAiCatalog Catalog, OrdinaryMagicBattleState State, TilePosition[] Panels)
+        CrowdedRoster(int count, int? lastSourceOrder=null)
+    {
         var x=OrdinarySpellAiReadyTests.Setup(charge:127);var d=x.Content.Definition;
         var mage=d.Units[0] with {BaseAttributes=d.Units[0].BaseAttributes with {Speed=1},RawStats=d.Units[0].RawStats with {Speed=16384}};
         var panels=Enumerable.Range(0,35).Select(i=>new TilePosition(i%7,i/7,0)).Where(p=>p!=mage.Occupant.Position).Take(20).ToArray();
-        var peers=Enumerable.Range(1,20).Select(i=>d.Units[1] with {
-            Occupant=d.Units[1].Occupant with {UnitId=new("peer"+i),SourceOrder=i,Position=panels[i-1]},
+        var peers=Enumerable.Range(1,count-1).Select(i=>d.Units[1] with {
+            Occupant=d.Units[1].Occupant with {UnitId=new("peer"+i),SourceOrder=i==count-1?lastSourceOrder??i:i,Position=panels[i-1]},
             Current=d.Units[1].Current with {UnitId=new("peer"+i)},BaseAttributes=d.Units[1].BaseAttributes with {Speed=50},
             RawStats=d.Units[1].RawStats with {Speed=819200}});
         var def=new OrdinaryMagicBattleDefinition(d.Map,new[]{mage}.Concat(peers),d.Spells.Values,d.Jobs,d.JobThresholds,d.InitialRng,d.MovementGround,d.Learning);
         var catalog=new OrdinarySpellAiCatalog(def,x.Catalog.PrimaryByJob);var start=def.Start();
         var state=start.With(turns:new(start.Turns.Units.Select(u=>new TurnUnitState(u.Id,u.Speed,u.Id==Mage?0:99,u.TieKey,u.Id==Mage)),new(57,0),10,TurnCyclePhase.UnitTurn),phase:OrdinaryMagicClockPhase.UnitTurn);
-        var before=OrdinarySpellAiReadyTests.Receipt(state);
-        var r=OrdinarySpellAiCandidateQuery.Evaluate(state,catalog,new(Mage,0,panels[0]),new(57,0));
-        Assert.Equal(OrdinarySpellAiCandidateDisposition.ScoredUnresolved,r.Disposition);
-        Assert.Equal((short)-9199,r.Outcome!.Score!.Priority);Assert.Equal((byte)255,r.Outcome.Score.HitPercent);
-        Assert.True(r.Outcome.Clock!.EventLimitReached);Assert.Equal((byte)102,r.Outcome.Clock.RemainingCharge);
-        Assert.Equal(255,r.Outcome.Clock.Events.Length);Assert.Equal(255UL,r.RngState.DrawCount);
-        Assert.Null(r.Outcome.FormulaEntryRng);Assert.Empty(r.Outcome.Frames);
-        Assert.True(r.Outcome.Units[0].Current.Statuses.Charging);Assert.Equal((ushort)75,r.Outcome.Units[0].Current.Mp);
-        Assert.Equal(before,OrdinarySpellAiReadyTests.Receipt(state));
+        return (catalog,state,panels);
     }
 
     [Fact]

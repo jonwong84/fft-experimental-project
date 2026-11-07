@@ -76,8 +76,10 @@ immediate hit was already evaluated, so one living readiness event is still run.
 
 The profile admits source slots0..20, positive derived Speed1..50, no Quick,
 a living caster, one owned charge and effect-free intervening phases. Dynamic
-collections retain stable IDs; the21-slot check is a source simulation boundary,
-not a catalog/storage size. Positive living Speed ensures an event within the
+collections retain stable IDs; the21-slot check belongs to this standalone clock,
+not a catalog/storage size. Candidate processing separately requires at most16
+active units, matching the original AI compact-record gate; see the
+[ZOD-430 correction](shared-ai-simulation-review.md). Positive living Speed ensures an event within the
 source per-call phase guard; all-dead immediate simulation is rejected. Upkeep
 and tick exhaustion return entry RNG and no partial diagnostics.
 
@@ -136,7 +138,9 @@ byte spans; they are not omitted live mutations in this managed implementation.
 Thirteen composed cases cover Fire tick13, CT3 tile value before a target turn,
 CT10 actor readiness without Wait refund, immediate formula-before-upkeep, AI
 corpse upkeep after KO, immediate/delayed healing, already-used Move, high-bit CT masking, source
-cap score-9199/hit255, pending/foreign admission and late draw/tick rollback.
+cap score-6774/hit255 in the corrected16-active-unit profile, pending/foreign
+admission and late draw/tick rollback. The historical21-unit candidate setup
+exceeded original AI admission; the independent21-slot clock fixture remains valid.
 All1,305 AI regressions pass. General ranking/search/lottery and autonomous magic
 turns remain separate from this bounded fixed-origin score.
 

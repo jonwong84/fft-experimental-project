@@ -119,8 +119,8 @@ public sealed class OrdinarySpellAiSearchTests
         var mage = d.Units[0] with { BaseAttributes = d.Units[0].BaseAttributes with { Speed = 1 },
             RawStats = d.Units[0].RawStats with { Speed = 16384 } };
         var panels = Enumerable.Range(0, 35).Select(i => new TilePosition(i % 7, i / 7, 0))
-            .Where(p => p != mage.Occupant.Position).Take(20).ToArray();
-        var peers = Enumerable.Range(1, 20).Select(i => d.Units[1] with {
+            .Where(p => p != mage.Occupant.Position).Take(15).ToArray();
+        var peers = Enumerable.Range(1, 15).Select(i => d.Units[1] with {
             Occupant = d.Units[1].Occupant with { UnitId = new("peer" + i), SourceOrder = i, Position = panels[i - 1] },
             Current = d.Units[1].Current with { UnitId = new("peer" + i) },
             BaseAttributes = d.Units[1].BaseAttributes with { Speed = 50 }, RawStats = d.Units[1].RawStats with { Speed = 819200 } });
@@ -133,7 +133,7 @@ public sealed class OrdinarySpellAiSearchTests
     }
 
     [Theory]
-    [InlineData(false, 1, 255, -9199)] [InlineData(true, 2, 510, 7381)]
+    [InlineData(false, 1, 255, -6774)] [InlineData(true, 2, 510, 5661)]
     public void Unresolved_hit255_is_ranked_before_stopping_only_that_origin_pass(bool healing, int passCount, ulong draws, short priority)
     {
         var (catalog, state) = Congested(healing);

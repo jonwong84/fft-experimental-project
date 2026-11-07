@@ -108,9 +108,59 @@
         ]
       },
       "limits": "Bounded neutral sword Attack and zero-equipment-bonus PA+1 execution plus current pair/roster formula/usefulness/projection/score integration edges. Full shared movement/clock/decision owners remain open."
+    },
+    {
+      "ticket": "ZOD-430",
+      "managedReviewBaseline": "b2d66e0a3e1670a8431814635956654821d22c35",
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "report": "docs/behavior/shared-ai-simulation-review.md",
+      "receipt": "docs/evidence/ai/shared-simulation-review-v1.json",
+      "disposition": "Completed bounded shared baseline/clock/accounting/absolute-score review; fixed oversized ordinary magic candidate admission.",
+      "reviewedPathsByFocus": {
+        "shared physical baseline clock and score": [
+          "src/Zodiac.Framework.Ai/Shared/AiCandidateState.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiSimulationClock.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiSimulationTypes.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiMovementSimulation.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiDamageHypothesis.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiCandidateScoring.cs",
+          "src/Zodiac.Framework.Ai/Shared/RosterAiRefresh.cs"
+        ],
+        "ordinary magic simulation accounting and scoring": [
+          "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiCandidateQuery.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiWork.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiSimulation.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiClock.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiHitWork.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiProjection.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Scoring/OrdinarySpellAiAccounting.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Scoring/OrdinarySpellAiScoring.cs"
+        ],
+        "current admission and caller edges": [
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Diagnostics/OrdinarySpellAiReadyQuery.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAimQuery.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiSearchQuery.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAimEnumeration.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiCatalog.cs",
+          "src/Zodiac.Framework.Ai/ThrowStone/ThrowStoneAiCandidateProjection.cs",
+          "src/Zodiac.Framework.Ai/Sword/SwordAiCandidateProjection.cs",
+          "src/Zodiac.Framework.Ai/Sword/SwordAiCandidateScoring.cs",
+          "src/Zodiac.Framework.Ai/Sword/RosterSwordAiCandidate.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/AiSelfStatProjection.cs"
+        ],
+        "ordinary magic definition admission edge": [
+          "src/Zodiac.Framework/Battle/Combat/Magic/Execution/OrdinaryMagicBattleDefinition.cs"
+        ],
+        "regressions and clock boundary": [
+          "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiCandidateTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiSearchTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiClockTests.cs"
+        ]
+      },
+      "limits": "Current integration edges include partial caller/definition boundaries, not all branches. General effects, origin/ranking/command coverage and frame suspension/RNG remain open."
     }
   ],
   "fullyReviewedGroups": [],
-  "nextBatch": "ZOD-430",
+  "nextBatch": "ZOD-431",
   "overallBehaviorReviewCompleted": false
 }

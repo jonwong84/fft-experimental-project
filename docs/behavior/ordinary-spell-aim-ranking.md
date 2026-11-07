@@ -40,7 +40,7 @@ draw ordering rather than re-verifying the generator.
    absence of a best is a normal accepted result when nothing scores.
 
 The initial rank matches `ai_action_rank_reset`: marker0, priority-32767, hit0.
-The admitted <=21 bare-unit roster keeps ordinary absolute scores inside that
+The admitted <=16 bare-unit roster keeps ordinary absolute scores inside that
 reset bound. This is best-candidate comparison, not movement-baseline admission,
 ranked-list insertion, lottery or a complete decision maker.
 

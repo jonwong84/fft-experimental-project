@@ -16,6 +16,10 @@ internal sealed class OrdinarySpellAiWork
     internal OrdinarySpellAiWork(OrdinaryMagicBattleState state, OrdinarySpellAiCatalog catalog,
         BattleUnitId actorId, int primarySlot, bool followUnit)
     {
+        // ai_command_build requires a compact record for every active unit before considering actions.
+        // Sixteen records can describe sparse slots anywhere in the 21-slot battle clock.
+        if (state.Units.Length > 16)
+            throw new NotSupportedException("The original AI admits at most sixteen active units into candidate processing.");
         if (!ReferenceEquals(catalog.Definition, state.Definition) || state.Finished || state.LearningReport is not null ||
             !state.Pending.IsEmpty || state.Turns.ActiveUnitId != actorId)
             throw new NotSupportedException("The current ordinary spell hypothesis boundary is unavailable.");
