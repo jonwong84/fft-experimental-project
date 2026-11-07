@@ -1,6 +1,6 @@
 # Tessera / Zodiac / FFT handoff
 
-Updated 2026-11-06. Read [AGENTS.md](../AGENTS.md), the [active backlog](BACKLOG.md)
+Updated 2026-11-07. Read [AGENTS.md](../AGENTS.md), the [active backlog](BACKLOG.md)
 and the selected task's design before editing. This file describes current state;
 [planning history](history/README.md) holds completed tickets and old checkpoints.
 
@@ -16,6 +16,13 @@ floors YA to1 before addition, making base2. The shared formula and Python
 description now preserve it. Historical v1 remains unchanged; current v2 records
 the corrected literal and nine new boundary vectors. Actual and AI delivery
 regressions cover the fix; retail Dash/Stone0x37 expectations remain unchanged.
+
+The subsequent supplied physical-evasion wrapper is also source/byte checked:
+eight calls and twenty caller return locations match. Its final call goes via
+`evade_roll` to the common hit-percentage routine, returning the hit flag rather
+than testing rounded accuracy. Current magic evasion types force class0 and
+cannot directly serve full physical evasion. See the physical review's helper
+trace section; this adds source evidence without widening runtime admission.
 
 The [programme](development/documentation-review-programme.md) and
 [progress receipt](evidence/maintenance/documentation-review-progress-v1.json)

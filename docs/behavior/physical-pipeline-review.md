@@ -38,6 +38,48 @@ wiki. The caller then reaches applicable aftermath and result finalization;
 authoritative result application remains later. This confirmation changes no
 gameplay code and adds no original/C execution claim.
 
+## Supplied physical-evasion wrapper (2026-11-07)
+
+The owner's full Physical Evade Calculation excerpt confirms the eight calls
+in `formula_evade_calculate_physical`: load physical equipment/class values;
+Concentrate; Dark/Confuse (including Transparent); Abandon; target statuses;
+bow weather; facing; then `evade_roll`. The
+[helper trace receipt](../evidence/combat/physical-evade-call-trace-v1.json)
+pins the source/metadata and verifies all eight call targets and all twenty
+listed caller return addresses against the hash-verified prepared BATTLE.BIN.
+Caller-address verification does not implement those other formulas.
+
+The four evade bytes are transient values for this actor/target calculation,
+not four authored ability flags. They start from target equipment/class and
+base hit100. Dark or Confusion causes one halving even when both are present;
+Abandon and Defending have their own subsequent integer halvings. Bow/crossbow
+night and storm steps each multiply the current base by3/4 with truncation.
+Facing removes class evade from side/back and both hand evades from back.
+Physical chance is `floor(raw * baseHit / 32768) < evade`; keeping the bytes
+unchanged while reducing base hit raises their effective evasion probabilities.
+Displayed accuracy combines separately truncated factors, rather than using one
+roll against that displayed percentage.
+
+The wiki's final "Calculate Hit %" call goes to `evade_roll` at0x80188488.
+That wrapper calls `formula_evade_calculate_final_hit_percent` at0x80185814,
+then returns1 iff the hit flag is clear. Zero rounded accuracy alone does not
+establish that return value. For example, base12/four evades10 yields four
+display factors16 and accuracy0, yet AI/preview can retain hit=true and return0
+before later result finalization. The four real evade draws still occur;
+random-evade flag changes are execution-only. Nonzero abilities without the
+secondary Evadeable flag bypass the final check; basic Attack ID0 is separate.
+
+The current `PhysicalDamageRules` remains a narrower base100, zero-equipment,
+class/facing path. `MagicEvasion` has richer magic-only preparation and the same
+source tail ancestry, but its value/prepared types deliberately force class0
+and omit physical Concentrate, Dark/Confuse, weather and facing preparation.
+It must not be reused directly as full physical evasion. A future shared tail
+must preserve four contributions, source hit-versus-accuracy semantics, labels,
+ordered draws and early exits while retaining distinct physical/magic loaders.
+This excerpt requires no current-domain runtime correction or activation of
+deferred equipment/status support. The linked equipment loader and final hit
+calculation pages are useful next documentation inputs.
+
 ## Confirmed defect: minimum YA in assigned formula0x32
 
 `formula_repeating_fist` calls `formula_store_pa_and_pa_plus_y_divided_by_two`,

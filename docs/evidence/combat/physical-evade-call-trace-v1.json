@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "8e65c9d3fe7aab40cc743dbd3d5a86bd0ab755ed",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Owner-supplied Physical Evade Calculation wrapper/source/byte correspondence; no widening of runtime physical status/equipment support.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40418,
+      "sha256": "04542e66135d779fd739adbce9fa6ee714feb6dc8607dfa4584c87222a38343c"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_evade_store_physical",
+      "startLine": 542,
+      "endLine": 596,
+      "normalizedLfSha256": "365527886047dfed9c2f6d8925463cde54ceef627750f458daa877d5ce9fe1e0"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_evade_calculate_concentrate",
+      "startLine": 633,
+      "endLine": 637,
+      "normalizedLfSha256": "8e3ffb512614bf7465180c82afed08bab8d520067791ad8f25d37f9a28cdceab"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_evade_calculate_dark_confuse",
+      "startLine": 641,
+      "endLine": 648,
+      "normalizedLfSha256": "cbc52f6f837cd6c500820255a7e2ae817e8c50370dcae38214845290f6359a03"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_evade_calculate_abandon",
+      "startLine": 652,
+      "endLine": 661,
+      "normalizedLfSha256": "0c7d4c292fb1c09e26d12dd140ea2783febc785c7c34767e797e0994579f45ba"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_evade_apply_target_statuses",
+      "startLine": 666,
+      "endLine": 692,
+      "normalizedLfSha256": "edbb0133c959c2026fe9150ba659a288d2194fad9d3fd228fc2ac4d8d352490d"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_evade_apply_weather_on_bows",
+      "startLine": 780,
+      "endLine": 799,
+      "normalizedLfSha256": "0a7a1f6d01f6c3a460624eea5d7a64d13a1105f42d2b1a3f1799605056b01d31"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_evade_calculate_facing",
+      "startLine": 710,
+      "endLine": 776,
+      "normalizedLfSha256": "d35bc06c6ae80b6c8421054b259a04247524061bf3a446abf38b877c157b2811"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "evade_roll",
+      "startLine": 848,
+      "endLine": 851,
+      "normalizedLfSha256": "9bbcd2673a3c007ddb80b03873a6bc206b1b34d2fabc26185e0de4fd3d77d66f"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_evade_calculate_physical",
+      "startLine": 871,
+      "endLine": 880,
+      "normalizedLfSha256": "48147e5227c0821be86975a823dc9ee9196ce95d895cfb8d2e7cfe6203570506"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_evade_calculate_transparent",
+      "startLine": 695,
+      "endLine": 700,
+      "normalizedLfSha256": "17b873162862875f632e17f99bcbe33fd19a52c3ca6a3b7adf6aee160696a317"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_evade_calculate_final_hit_percent",
+      "startLine": 811,
+      "endLine": 854,
+      "normalizedLfSha256": "720389e43cdf64d0efb0ce788006b82eec068d661d876b0861cb6837ca505325"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "evade_source_roll",
+      "startLine": 291,
+      "endLine": 302,
+      "normalizedLfSha256": "26a09b9e4435a85b92128833800106817452b3a59cf8a24bf8306dec88de127a"
+    }
+  ],
+  "verifiedCalls": [
+    {
+      "callPc": "0x80188518",
+      "targetPc": "0x80184f9c",
+      "symbol": "formula_evade_store_physical"
+    },
+    {
+      "callPc": "0x80188520",
+      "targetPc": "0x801852e4",
+      "symbol": "formula_evade_calculate_concentrate"
+    },
+    {
+      "callPc": "0x80188528",
+      "targetPc": "0x80185328",
+      "symbol": "formula_evade_calculate_dark_confuse"
+    },
+    {
+      "callPc": "0x80188530",
+      "targetPc": "0x8018537c",
+      "symbol": "formula_evade_calculate_abandon"
+    },
+    {
+      "callPc": "0x80188538",
+      "targetPc": "0x801853f4",
+      "symbol": "formula_evade_apply_target_statuses"
+    },
+    {
+      "callPc": "0x80188540",
+      "targetPc": "0x80185738",
+      "symbol": "formula_evade_apply_weather_on_bows"
+    },
+    {
+      "callPc": "0x80188548",
+      "targetPc": "0x801854fc",
+      "symbol": "formula_evade_calculate_facing"
+    },
+    {
+      "callPc": "0x80188550",
+      "targetPc": "0x80188488",
+      "symbol": "evade_roll"
+    }
+  ],
+  "finalWrapper": {
+    "callPc": "0x80188490",
+    "targetPc": "0x80185814",
+    "symbol": "formula_evade_calculate_final_hit_percent",
+    "returnContract": "evade_roll returns1 iff hit flag is clear; not a test of rounded accuracy"
+  },
+  "verifiedCallerReturnPcs": [
+    "0x80188b74",
+    "0x80188bb4",
+    "0x80188d04",
+    "0x8018972c",
+    "0x801897d0",
+    "0x80189838",
+    "0x80189880",
+    "0x80189aa0",
+    "0x80189ae8",
+    "0x80189b30",
+    "0x80189ba4",
+    "0x80189c60",
+    "0x80189ca0",
+    "0x80189ce0",
+    "0x80189d84",
+    "0x80189f94",
+    "0x8018a3e0",
+    "0x8018a468",
+    "0x8018a4b0",
+    "0x8018abcc"
+  ],
+  "preparedValidation": {
+    "size": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000",
+    "readOnly": true
+  },
+  "sourceSemanticChecks": {
+    "darknessOrConfusion": "single halving when either or both are present",
+    "roll": "floor(raw * baseHit / 32768) < evade",
+    "orderedDraws": [
+      "accessory",
+      "right-hand",
+      "left-hand",
+      "class"
+    ],
+    "outsideExecution": "draws retained; random evade result does not clear hit",
+    "roundedAccuracy": "Can be0 while hit remains1 before result finalization, if all four evades are below base hit",
+    "example": {
+      "baseHit": 12,
+      "evades": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "initialHit": true,
+      "initialAccuracy": 100,
+      "mode": "Ai",
+      "accuracy": 0,
+      "hit": true,
+      "wrapperReturn": 0
+    }
+  },
+  "behaviorChange": false,
+  "originalExecuted": false,
+  "cExecuted": false
+}
