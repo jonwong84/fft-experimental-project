@@ -46,6 +46,18 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 32072,
       "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "src/battle/menu/ability_choices.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 33117,
+      "sha256": "3b551809fc63ec825a7b2156c45591719871793c857c481564d2e74b558638fc"
+    },
+    {
+      "path": "include/fft/ability.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 34632,
+      "sha256": "530676861205ea3cf31cada08ffc927142db98af0ad2c986722ad83b069b9a2f"
     }
   ],
   "sourceFunctions": [
@@ -104,6 +116,13 @@
       "startLine": 666,
       "endLine": 692,
       "normalizedLfSha256": "edbb0133c959c2026fe9150ba659a288d2194fad9d3fd228fc2ac4d8d352490d"
+    },
+    {
+      "path": "src/battle/menu/ability_choices.c",
+      "symbol": "unit_get_action_restriction",
+      "startLine": 125,
+      "endLine": 152,
+      "normalizedLfSha256": "efcf7e4ece9b80d1ed75494ed4f3aca35bb4582974f62234e42d4eda6eb9d5e4"
     }
   ],
   "managedFiles": [
@@ -142,6 +161,18 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 298,
       "sha256": "2c05c68700517c324524f1b229b02b1d3ea92eb33f59b6b12d2a908aded925f9"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicInputs.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4934,
+      "sha256": "0705858cf9ae17ac5ef1433e67310d8fdc4dd1b0f57514980727d5880dacb41a"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCurrentUnit.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 610,
+      "sha256": "c6d06f9b48f0083f6837d87819cb762b9ffcaf66d06dfadf0da51d94bb6b0f52"
     }
   ],
   "preparedValidation": {
@@ -649,6 +680,108 @@
     },
     "managedMapping": "MagicEvasion.Load creates fresh qualifying accessory/shield contributions and class0; MagicEvasion.Prepare initializes baseHit100. Blocking-item labels are separate final-hit behavior, not contributions loaded here.",
     "annotationClarification": "The monster bne exits when the bit is set; item-type beq branches skip contributions when the required bit is absent. Type membership is a bit test, not equality.",
+    "validation": {
+      "sourceAudit": {
+        "loadDescriptions": 8,
+        "preparationDescriptions": 15,
+        "rollDescriptions": 24,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 13,
+        "sourceFunctions": 21
+      },
+      "ownerBlobsVerified": 10,
+      "focusedManagedTestsPassed": 7,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedAbandonCheck": {
+    "managedBaseRevision": "49feb852e2c18c1ae21226b83036df3cf90b8df4",
+    "start": "0x8018537c",
+    "endInclusive": "0x801853f0",
+    "instructionCount": 30,
+    "instructionWords": [
+      "3c048019",
+      "8c842d98",
+      "27bdffe8",
+      "afbf0010",
+      "0c0604c3",
+      "00000000",
+      "14400013",
+      "00000000",
+      "3c028019",
+      "8c422d98",
+      "00000000",
+      "9042008e",
+      "00000000",
+      "30420010",
+      "1040000b",
+      "00000000",
+      "3c038019",
+      "246338dc",
+      "90620000",
+      "00000000",
+      "00021042",
+      "a0620000",
+      "3c038019",
+      "8c632d90",
+      "340201c1",
+      "a462000e",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "directCalls": [
+      {
+        "pc": "0x8018538c",
+        "target": "0x8018130c",
+        "symbol": "unit_get_action_restriction"
+      }
+    ],
+    "branches": [
+      {
+        "pc": "0x80185394",
+        "operation": "bne",
+        "target": "0x801853e4"
+      },
+      {
+        "pc": "0x801853b4",
+        "operation": "beq",
+        "target": "0x801853e4"
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80188530",
+        "returnAddress": "0x80188538",
+        "target": "0x8018537c"
+      },
+      {
+        "callPc": "0x80188588",
+        "returnAddress": "0x80188590",
+        "target": "0x8018537c"
+      },
+      {
+        "callPc": "0x801885d0",
+        "returnAddress": "0x801885d8",
+        "target": "0x8018537c"
+      }
+    ],
+    "eligibility": "Nonzero restriction result skips all Abandon work; zero proceeds to the target reaction byte0x8e bit0x10.",
+    "effect": "When eligible and equipped, unsigned byte baseHit at0x801938dc is shifted right1 and stored; target action reaction_id halfword at0x0e becomes0x01c1 (449). No evasion-byte multiplication, Brave roll or RNG draw.",
+    "managedMapping": "MagicEvasion.Prepare requires TargetActionUnrestricted && TargetAbandon, halves baseHit and returns AbandonTriggered. FaithMagicInputs additionally excludes DontAct from the caller-classified restriction fact.",
+    "dependencyBoundary": "Check If Unit Can Evade is source unit_get_action_restriction, not a universal shield/accessory/status evasion gate. Existing pure APIs accept classified eligibility; full terrain/mount classification remains outside this milestone.",
+    "callerNaming": "The wiki Charge caller maps to formula_evade_calculate_physical_without_weather. Its listed call matches; the claim that the wrapper is never called is not established by this check.",
     "validation": {
       "sourceAudit": {
         "loadDescriptions": 8,

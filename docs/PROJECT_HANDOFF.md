@@ -45,9 +45,13 @@ and both listed returns, confirming the attacker status check and four-byte clea
 with no base-hit/RNG change. The supplied magical equipment loader matches all72
 words and its listed return: base hit100/all evades reset before the monster
 exit, then qualified accessory/shield contributions only. Seven focused .NET and
-eight Python evasion tests pass; no runtime change. ZOD-436 remains open.
-Abandon, Evasion Changes due to Statuses and Magical Support/Status/Compat are
-the next useful wiki pages. The shared Calculate Hit %/final-hit/per-source roll
+eight Python evasion tests pass; no runtime change. Abandon also matches all30
+words, its restriction call and three returns: zero restriction plus the reaction
+flag halves base hit and records449, with no Brave/RNG roll. The managed API
+retains caller-classified eligibility; full terrain/mount classification is separate.
+ZOD-436 remains open. Check If Unit Can Evade, Evasion Changes due to Statuses and
+Magical Support/Status/Compat are the next useful wiki pages.
+The shared Calculate Hit %/final-hit/per-source roll
 documentation was already supplied; no duplicate is needed.
 
 [ZOD-434 rank/lottery review](behavior/ai-rank-selection-review.md) is complete.

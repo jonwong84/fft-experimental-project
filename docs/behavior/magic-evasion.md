@@ -70,8 +70,33 @@ blocking-item labels belong to the later final-hit reporting rules, not an extra
 weapon evade contribution in this loader. The seven focused .NET evasion tests
 (including eight literal equipment descriptions) and eight Python evasion tests
 pass. All ten owner draft blobs are unchanged; no runtime or fixture change is
-needed. The next useful helper pages are Abandon and Evasion Changes due to
-Statuses, alongside formula0x08's Magical Support/Status/Compat.
+needed.
+
+The supplied Abandon Calculation matches all30 instruction words at
+`0x8018537c`–`0x801853f0`, its dependency call and all three listed returns.
+`Check If Unit Can Evade` at `0x8018130c` is named
+`unit_get_action_restriction` in the pinned decompilation. A **nonzero** return
+skips Abandon; zero continues to target reaction byte`0x8e`, bit`0x10`. A clear
+bit also skips the effect. Otherwise the unsigned base-hit byte is shifted
+right1 and stored, then target action `reaction_id` at offset`0x0e` becomes
+`0x01c1` (449). The routine neither doubles the evasion bytes nor rolls Brave/RNG.
+It records result work rather than running a separate reaction action.
+
+`MagicEvasion.Prepare` already checks `TargetActionUnrestricted && TargetAbandon`,
+halves base hit and preserves the diagnostic through `AbandonTriggered`.
+`FaithMagicInputs` carries caller-classified `ActionUnrestricted` and additionally
+excludes Don't Act. This is not a complete map/mount restriction implementation:
+the source helper also checks ridden-mount and deep-water circumstances, with
+status/movement/rider exceptions. Its name must not be used to turn it into a
+universal gate for all shield/accessory evasion; later target-status clearing
+remains separate. The next useful supplied dependency is Check If Unit Can Evade,
+then Evasion Changes due to Statuses and Magical Support/Status/Compat.
+
+The wiki's "Physical Evade Calculation (Charge)" listed caller maps to
+`formula_evade_calculate_physical_without_weather`. Its call to Abandon is verified;
+the parenthetical claim that the caller is never called is not established here.
+The same supporting receipt records these Abandon checks. No runtime or fixture
+change is required, and ZOD-436 remains open.
 
 Calculate Hit %, Calculate Final Hit % and the per-source roll have already been
 supplied during the [physical-evasion review](physical-pipeline-review.md);
