@@ -66,7 +66,12 @@ signed16 *2/3 division inputs, including signed correction; no runtime change.
 Target's Status Affecting XA (Magical) matches all38 words/two returns. Its
 ordered Shell and single Chicken/Frog steps match524,288 signed-input/status
 combinations, including signed stores; existing C# agrees. ZOD-436 remains open.
-Compatibility is the next useful helper page.
+Original Compatibility matches all112 words, its lookup table and17 returns;
+10,816 classification and393,216 arithmetic checks preserve adjustment rounding,
+unsigned temporary wrap, the final floor and Serpentarius's early return. Existing
+magic C# agrees; secondadvent's rewrite is explicitly deferred for a much later
+review. Elemental XA * YA is the next useful page. ZOD-436 remains open.
+The unrelated owner edit in `.circleci/config.yml` remains uncommitted and excluded.
 The shared Calculate Hit %/final-hit/per-source roll
 documentation was already supplied; no duplicate is needed.
 

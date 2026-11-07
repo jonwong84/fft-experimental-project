@@ -108,7 +108,10 @@ also matches its14 words, four ordered dependencies and nine listed returns.
 Magic Attack Up matches20 words/seven returns, Magic Defense Up20 words/two
 returns, and both match all signed16 division inputs. Target's Status Affecting
 XA (Magical) matches38 words/two returns and524,288 signed/status combinations.
-Compatibility is the next useful helper page.
+The original Compatibility listing/table/17 callers also match, with10,816
+classification and393,216 arithmetic checks. The owner explicitly defers
+secondadvent's rewrite to a much later review. Elemental XA * YA is the next
+useful helper page; the full shared-consumer review remains open.
 
 ## Review programme
 

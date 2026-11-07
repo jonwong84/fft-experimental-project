@@ -45,6 +45,12 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 11673,
       "sha256": "deeaeec02add8b9db7cca91c99517706033b18385ca433d32f1998d9d62e0e83"
+    },
+    {
+      "path": "include/fft/zodiac.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1226,
+      "sha256": "1fb6f4345d06c2afc850c1cebbe711a6e3b43bc6c008507b9fc786290d867a45"
     }
   ],
   "sourceFunctions": [
@@ -1142,6 +1148,430 @@
       "ownerBlobsVerified": 10,
       "focusedManagedTestsPassed": 19,
       "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedOriginalCompatibilityCheck": {
+    "managedBaseRevision": "d4cd9eb8b432a448b8479a12bce48fc7e510f30a",
+    "ownerDirection": "Use the original routine, preserving quirks. secondadvent rewrite is deferred for a much later explicit review; it is not the implementation target.",
+    "attachmentNormalizedLfSha256": "e703cbb04179179fea97d26d0d7721295b65315a0f509fd5429539e39faddc7a",
+    "start": "0x80184964",
+    "endInclusive": "0x80184b20",
+    "instructionCount": 112,
+    "instructionWords": [
+      "27bdfff8",
+      "3406000c",
+      "3c028019",
+      "8c422d94",
+      "3c038019",
+      "8c632d98",
+      "94420008",
+      "94630008",
+      "00022302",
+      "00031b02",
+      "00802821",
+      "10a60061",
+      "00601021",
+      "3042ffff",
+      "1046005e",
+      "0045102b",
+      "14400002",
+      "00831023",
+      "00641023",
+      "3042ffff",
+      "3c018019",
+      "00220821",
+      "9024f600",
+      "34020003",
+      "308300ff",
+      "14620015",
+      "00000000",
+      "3c028019",
+      "8c422d94",
+      "00000000",
+      "90430006",
+      "00000000",
+      "30620020",
+      "1440000d",
+      "34040001",
+      "3c028019",
+      "8c422d98",
+      "00000000",
+      "90450006",
+      "00000000",
+      "30a20020",
+      "14400005",
+      "306300c0",
+      "30a200c0",
+      "14620002",
+      "34040005",
+      "34040004",
+      "3c078019",
+      "24e738ce",
+      "84e20000",
+      "00000000",
+      "00021840",
+      "00621821",
+      "000318c0",
+      "00622821",
+      "00403021",
+      "308300ff",
+      "34020002",
+      "1062000f",
+      "30a2ffff",
+      "28620003",
+      "10400005",
+      "34020001",
+      "10620018",
+      "3c0351eb",
+      "080612bf",
+      "00000000",
+      "34020004",
+      "10620019",
+      "34020005",
+      "1062000a",
+      "3c0351eb",
+      "080612bf",
+      "00000000",
+      "3c0351eb",
+      "3463851f",
+      "00430019",
+      "00001010",
+      "00021142",
+      "080612be",
+      "00c21021",
+      "3463851f",
+      "30a2ffff",
+      "00430019",
+      "00001010",
+      "00021102",
+      "080612be",
+      "00c21021",
+      "3463851f",
+      "30a2ffff",
+      "00430019",
+      "00001010",
+      "080612bd",
+      "00021142",
+      "3c0351eb",
+      "3463851f",
+      "30a2ffff",
+      "00430019",
+      "00001010",
+      "00021102",
+      "00c21023",
+      "a4e20000",
+      "3c038019",
+      "246338ce",
+      "84620000",
+      "00000000",
+      "1c400002",
+      "34020001",
+      "a4620000",
+      "27bd0008",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "lookup": {
+      "address": "0x8018f600",
+      "bytes": [
+        0,
+        0,
+        0,
+        1,
+        2,
+        0,
+        3,
+        0,
+        2,
+        1,
+        0,
+        0
+      ],
+      "suppliedNotesAddressTypo": "0x8018f00"
+    },
+    "listedCallerChecks": [
+      {
+        "callPc": "0x801865d0",
+        "returnAddress": "0x801865d8",
+        "target": "0x80184964",
+        "caller": "formula_store_xa_plus_ya"
+      },
+      {
+        "callPc": "0x80188620",
+        "returnAddress": "0x80188628",
+        "target": "0x80184964",
+        "caller": "formula_apply_physical_modifiers"
+      },
+      {
+        "callPc": "0x80188764",
+        "returnAddress": "0x8018876c",
+        "target": "0x80184964",
+        "caller": "formula_apply_magical_modifiers"
+      },
+      {
+        "callPc": "0x80188810",
+        "returnAddress": "0x80188818",
+        "target": "0x80184964",
+        "caller": "friendly_magic_accuracy_calculate"
+      },
+      {
+        "callPc": "0x80188868",
+        "returnAddress": "0x80188870",
+        "target": "0x80184964",
+        "caller": "formula_calculate_magical_xa_times_ya"
+      },
+      {
+        "callPc": "0x80188afc",
+        "returnAddress": "0x80188b04",
+        "target": "0x80184964",
+        "caller": "formula_apply_physical_modifiers_without_supports"
+      },
+      {
+        "callPc": "0x80188d4c",
+        "returnAddress": "0x80188d54",
+        "target": "0x80184964",
+        "caller": "formula_healing_staff"
+      },
+      {
+        "callPc": "0x80189018",
+        "returnAddress": "0x80189020",
+        "target": "0x80184964",
+        "caller": "formula_damage_hp_percent_hit_faith_ma_x_percent"
+      },
+      {
+        "callPc": "0x801898b0",
+        "returnAddress": "0x801898b8",
+        "target": "0x80184964",
+        "caller": "formula_steal_exp"
+      },
+      {
+        "callPc": "0x80189920",
+        "returnAddress": "0x80189928",
+        "target": "0x80184964",
+        "caller": "formula_charm"
+      },
+      {
+        "callPc": "0x80189a44",
+        "returnAddress": "0x80189a4c",
+        "target": "0x80184964",
+        "caller": "formula_talk_skill"
+      },
+      {
+        "callPc": "0x80189e48",
+        "returnAddress": "0x80189e50",
+        "target": "0x80184964",
+        "caller": "formula_stigma_magic"
+      },
+      {
+        "callPc": "0x80189eac",
+        "returnAddress": "0x80189eb4",
+        "target": "0x80184964",
+        "caller": "formula_chakra"
+      },
+      {
+        "callPc": "0x80189f20",
+        "returnAddress": "0x80189f28",
+        "target": "0x80184964",
+        "caller": "formula_heal_y_percent_hit_pa_x_percent"
+      },
+      {
+        "callPc": "0x8018a18c",
+        "returnAddress": "0x8018a194",
+        "target": "0x80184964",
+        "caller": "formula_work"
+      },
+      {
+        "callPc": "0x8018a508",
+        "returnAddress": "0x8018a510",
+        "target": "0x80184964",
+        "caller": "formula_hit_ma_x_percent_no_evade"
+      },
+      {
+        "callPc": "0x8018a844",
+        "returnAddress": "0x8018a84c",
+        "target": "0x80184964",
+        "caller": "formula_moldball_virus"
+      }
+    ],
+    "classification": {
+      "validSigns": 13,
+      "monsterMaleFemaleFlagCombinationsPerUnit": 8,
+      "comparisons": 10816,
+      "allMatched": true,
+      "oppositeMonster": "Bad",
+      "oppositeSameSexFlagPair": "Worst",
+      "oppositeDifferentSexFlagPair": "Best",
+      "serpentarius": "Early return without reading table or clamping XA"
+    },
+    "arithmetic": {
+      "workAddress": "0x801938ce",
+      "loadStore": "signed16",
+      "quarterHalfTemporary": "unsigned16(XA*25)",
+      "exactUnsignedDivisionConstant": "0x51eb851f",
+      "unsignedDivisionInputs": 65536,
+      "signedInputs": 65536,
+      "compatibilityModes": 6,
+      "comparisons": 393216,
+      "allMatched": true,
+      "finalClamp": "At least1 after the signed store for every non-Serpentarius path, including Neutral",
+      "samples": [
+        {
+          "inputXa": -1,
+          "compatibility": "Neutral",
+          "storedXa": 1
+        },
+        {
+          "inputXa": -1,
+          "compatibility": "Bad",
+          "storedXa": 1
+        },
+        {
+          "inputXa": -1,
+          "compatibility": "Good",
+          "storedXa": 654
+        },
+        {
+          "inputXa": -1,
+          "compatibility": "Worst",
+          "storedXa": 1
+        },
+        {
+          "inputXa": -1,
+          "compatibility": "Best",
+          "storedXa": 1309
+        },
+        {
+          "inputXa": -1,
+          "compatibility": "Serpentarius",
+          "storedXa": -1
+        },
+        {
+          "inputXa": 0,
+          "compatibility": "Neutral",
+          "storedXa": 1
+        },
+        {
+          "inputXa": 0,
+          "compatibility": "Bad",
+          "storedXa": 1
+        },
+        {
+          "inputXa": 0,
+          "compatibility": "Good",
+          "storedXa": 1
+        },
+        {
+          "inputXa": 0,
+          "compatibility": "Worst",
+          "storedXa": 1
+        },
+        {
+          "inputXa": 0,
+          "compatibility": "Best",
+          "storedXa": 1
+        },
+        {
+          "inputXa": 0,
+          "compatibility": "Serpentarius",
+          "storedXa": 0
+        },
+        {
+          "inputXa": 7,
+          "compatibility": "Neutral",
+          "storedXa": 7
+        },
+        {
+          "inputXa": 7,
+          "compatibility": "Bad",
+          "storedXa": 6
+        },
+        {
+          "inputXa": 7,
+          "compatibility": "Good",
+          "storedXa": 8
+        },
+        {
+          "inputXa": 7,
+          "compatibility": "Worst",
+          "storedXa": 4
+        },
+        {
+          "inputXa": 7,
+          "compatibility": "Best",
+          "storedXa": 10
+        },
+        {
+          "inputXa": 7,
+          "compatibility": "Serpentarius",
+          "storedXa": 7
+        },
+        {
+          "inputXa": 2622,
+          "compatibility": "Neutral",
+          "storedXa": 2622
+        },
+        {
+          "inputXa": 2622,
+          "compatibility": "Bad",
+          "storedXa": 2622
+        },
+        {
+          "inputXa": 2622,
+          "compatibility": "Good",
+          "storedXa": 2622
+        },
+        {
+          "inputXa": 2622,
+          "compatibility": "Worst",
+          "storedXa": 2622
+        },
+        {
+          "inputXa": 2622,
+          "compatibility": "Best",
+          "storedXa": 2622
+        },
+        {
+          "inputXa": 2622,
+          "compatibility": "Serpentarius",
+          "storedXa": 2622
+        }
+      ]
+    },
+    "managedMapping": "FaithMagicInputs.ClassifyCompatibility matches the table/flags domain. FaithMagicAmountFormula.ApplyCompatibility preserves the unsigned temporary, separate adjustment, signed store, final floor and Serpentarius exception.",
+    "clarifications": [
+      "Bad/Worst are subtraction of a truncated adjustment, not a direct75%/50% multiply; XA7 becomes6/4.",
+      "XA2622 wraps XA*25 to14 before division; this behavior is preserved.",
+      "The attachment links secondadvent patch but contains no separate rewrite instruction body. No rewrite evaluation or adoption is claimed.",
+      "Offline classification/arithmetic checks do not execute original/C code or expand battle admission."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "faithDescriptions": 15,
+        "productDescriptions": 7,
+        "amountDescriptions": 22,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 14,
+        "sourceFunctions": 36,
+        "preparedTiersVerified": 8
+      },
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 19,
+      "focusedPythonTestsPassed": 16,
       "managedTestsExecuted": true,
       "runtimeChanged": false,
       "originalExecuted": false,

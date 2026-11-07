@@ -176,7 +176,55 @@ only, without status/unit-stat writes, RNG or calls. The MIPS leaf-call warning
 does not impose a C# restriction. All19 focused .NET amount/arithmetic/current-input
 tests and eight Python tests pass; all ten owner draft blobs remain unchanged.
 No runtime or fixture change is required.
-The next useful supplied page is Compatibility. ZOD-436 remains open.
+
+### Supplied original Compatibility routine
+
+Owner direction: use the **original** routine and retain its observable quirks.
+secondadvent's rewrite is deferred for a much later explicit review. The supplied
+attachment links that patch but contains only the original instruction listing;
+no rewrite analysis, behavioral equivalence or adoption is claimed here.
+
+All112 original instruction words at `0x80184964`–`0x80184b20` and all17 listed
+return locations match the verified prepared BATTLE.BIN. The supporting receipt
+also checks the12-byte table at `0x8018f600`:
+`00 00 00 01 02 00 03 00 02 01 00 00`. The abbreviated `0x8018f00` address in
+the supplied notes is a typo; the listing's actual load uses `0x8018f600`.
+The pinned decompilation remains `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+
+For valid signs0–12, either Serpentarius exits immediately. Otherwise absolute
+sign difference indexes the table: differences3/9 are Bad,4/8 Good,6 resolves
+by unit flags, and the rest Neutral. At opposition, either monster gives Bad;
+otherwise equal masked male/female flag pairs give Worst and differing pairs
+give Best. The comparison uses both bits (`0xc0`), not a single male/female test.
+An offline table/raw-flag comparison against the managed classification agrees
+for all10,816 valid-sign/monster/male/female combinations, including neither or
+both sex flags. Raw sign nibbles13–15 remain outside managed admission.
+
+The arithmetic preserves the original operations rather than applying the
+summary percentages as one multiplier:
+
+- Load signed16 XA, form **unsigned16** `XA*25`, then divide that temporary by100
+  for Good/Bad or50 for Best/Worst. The original unsigned multiply-high constant
+  `0x51eb851f` implements both divisions exactly over all65,536 temporary values.
+- Add or subtract the adjustment, store signed16, then floor the reloaded result
+  at1. Neutral also reaches this floor. Serpentarius skips the entire sequence
+  and floor, so it must remain distinguishable from ordinary Neutral.
+
+For XA7, Bad gives6 and Worst4; direct75%/50% multiplication would instead give5/3.
+XA2622 wraps the temporary to14 before division. XA0 becomes1 under Neutral but
+stays0 under Serpentarius. The offline comparison checks all65,536 signed inputs
+across six compatibility modes (393,216 cases), including wrapping and the floor.
+These are integer/source-description checks, not original/C execution or expanded
+battle admission. The routine changes work XA only and draws no RNG.
+
+`FaithMagicInputs.ClassifyCompatibility` and
+`FaithMagicAmountFormula.ApplyCompatibility` already preserve these behaviors;
+no runtime or fixture change is needed. All19 focused .NET tests and16 Python
+tests pass; all ten owner draft blobs are unchanged.
+The unrelated owner edit in `.circleci/config.yml` is excluded from this milestone.
+This completes the supplied-document checklist for the four magical-modifier
+dependencies, not ZOD-436's broader shared-consumer review. The next useful wiki
+routine is Elemental XA * YA, followed by its weather/element dependencies.
 
 ## Original implementation checkpoint
 
