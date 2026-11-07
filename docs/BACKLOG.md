@@ -98,6 +98,9 @@ The [supplied formula0x08 trace cross-check](behavior/faith-magic-amounts.md#sup
 verifies all28 instruction words, eight calls, three exits and the dispatch return
 against prepared bytes. This supporting milestone leaves the ticket open; helper
 documentation and the full shared-consumer review remain to be assessed.
+The [magical-evade wrapper cross-check](behavior/magic-evasion.md#supplied-magical-evade-wrapper--zod-436-support)
+also records its five ordered dependencies,24 caller checks and corrections to
+the Transparent annotation, formula0x10 return address and formula0x4E label.
 
 ## Review programme
 

@@ -1,0 +1,399 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-07",
+  "managedBaseRevision": "c291f5b4d48a456a0fd6d950ea5e404805640f10",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Supplied Magical Evade Calculation wrapper and its five dependencies; supporting evidence only, ZOD-436 remains open.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/formulas.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 46088,
+      "sha256": "a9e58962104849ae4e947e3833236aaf2c1334394a1af12b19930428e6885e03"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40418,
+      "sha256": "04542e66135d779fd739adbce9fa6ee714feb6dc8607dfa4584c87222a38343c"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_magic_hp_absorb",
+      "startLine": 333,
+      "endLine": 338,
+      "normalizedLfSha256": "f2a9a65a334a0f7841e57be10c9ecdc855f547b4d2f75d23cc3e663904ca3c37"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_damage_ma_times_y",
+      "startLine": 1001,
+      "endLine": 1006,
+      "normalizedLfSha256": "dd16ce6d5a1481b542c43d5972d3538ccf1bb9c00580d2d1fbcaf71fd8dab1a7"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_evade_calculate_magical",
+      "startLine": 896,
+      "endLine": 902,
+      "normalizedLfSha256": "98cd6ca6adacfe714ad5d1239aa35453951e9de2c9d906c5164c4a448707988d"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "evade_roll",
+      "startLine": 848,
+      "endLine": 851,
+      "normalizedLfSha256": "9bbcd2673a3c007ddb80b03873a6bc206b1b34d2fabc26185e0de4fd3d77d66f"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_evade_store_magical",
+      "startLine": 600,
+      "endLine": 629,
+      "normalizedLfSha256": "3977774860d190eaf3dce086da5d88ba93f92cb0968bbf03ad53612fe8d92a1c"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_evade_calculate_transparent",
+      "startLine": 695,
+      "endLine": 700,
+      "normalizedLfSha256": "17b873162862875f632e17f99bcbe33fd19a52c3ca6a3b7adf6aee160696a317"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_evade_calculate_abandon",
+      "startLine": 652,
+      "endLine": 661,
+      "normalizedLfSha256": "0c7d4c292fb1c09e26d12dd140ea2783febc785c7c34767e797e0994579f45ba"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_evade_apply_target_statuses",
+      "startLine": 666,
+      "endLine": 692,
+      "normalizedLfSha256": "edbb0133c959c2026fe9150ba659a288d2194fad9d3fd228fc2ac4d8d352490d"
+    }
+  ],
+  "managedFiles": [
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvasion.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4270,
+      "sha256": "b4ba9568ed47d77451d431a3faba369d0e4cf1eaafbf66b208e616e6149687b4"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvadeModifiers.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 526,
+      "sha256": "3195fdf39dfeab90f5c2538227ab03bd31346ed2a726ea1e3465fcba0bdec473"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicFormula.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 6079,
+      "sha256": "9115cd747357beed329a699da46a575e9bee266f58d51f51b3feeed1e468d1cb"
+    }
+  ],
+  "preparedValidation": {
+    "byteLength": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000"
+  },
+  "suppliedInstructionCheck": {
+    "start": "0x801885b8",
+    "endInclusive": "0x801885f4",
+    "instructionCount": 16,
+    "allMatched": true,
+    "instructionWords": [
+      "27bdffe8",
+      "afbf0010",
+      "0c061471",
+      "00000000",
+      "0c06152e",
+      "00000000",
+      "0c0614df",
+      "00000000",
+      "0c0614fd",
+      "00000000",
+      "0c062122",
+      "00000000",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ]
+  },
+  "directCalls": [
+    {
+      "callPc": "0x801885c0",
+      "target": "0x801851c4",
+      "symbol": "formula_evade_store_magical"
+    },
+    {
+      "callPc": "0x801885c8",
+      "target": "0x801854b8",
+      "symbol": "formula_evade_calculate_transparent"
+    },
+    {
+      "callPc": "0x801885d0",
+      "target": "0x8018537c",
+      "symbol": "formula_evade_calculate_abandon"
+    },
+    {
+      "callPc": "0x801885d8",
+      "target": "0x801853f4",
+      "symbol": "formula_evade_apply_target_statuses"
+    },
+    {
+      "callPc": "0x801885e0",
+      "target": "0x80188488",
+      "symbol": "evade_roll"
+    }
+  ],
+  "listedCallerChecks": [
+    {
+      "listedReturnAddress": "0x80188d94",
+      "matches": true,
+      "returnAddress": "0x80188d94",
+      "callPc": "0x80188d8c",
+      "instruction": "0c06216e",
+      "caller": "formula_magical_damage"
+    },
+    {
+      "listedReturnAddress": "0x80188e04",
+      "matches": true,
+      "returnAddress": "0x80188e04",
+      "callPc": "0x80188dfc",
+      "instruction": "0c06216e",
+      "caller": "formula_magic_hp_percent_damage"
+    },
+    {
+      "listedReturnAddress": "0x80188e88",
+      "matches": true,
+      "returnAddress": "0x80188e88",
+      "callPc": "0x80188e80",
+      "instruction": "0c06216e",
+      "caller": "formula_hit_faith_ma_x_percent"
+    },
+    {
+      "listedReturnAddress": "0x80188fd4",
+      "matches": true,
+      "returnAddress": "0x80188fd4",
+      "callPc": "0x80188fcc",
+      "instruction": "0c06216e",
+      "caller": "formula_damage_hp_percent_hit_faith_ma_x_percent"
+    },
+    {
+      "listedReturnAddress": "0x80189094",
+      "matches": true,
+      "returnAddress": "0x80189094",
+      "callPc": "0x8018908c",
+      "instruction": "0c06216e",
+      "caller": "formula_absorb_mp_y_percent"
+    },
+    {
+      "listedReturnAddress": "0x801890e8",
+      "matches": false,
+      "returnAddress": "0x801890ec",
+      "callPc": "0x801890e4",
+      "instruction": "0c06216e",
+      "caller": "formula_magic_hp_absorb"
+    },
+    {
+      "listedReturnAddress": "0x801891bc",
+      "matches": true,
+      "returnAddress": "0x801891bc",
+      "callPc": "0x801891b4",
+      "instruction": "0c06216e",
+      "caller": "formula_return_2"
+    },
+    {
+      "listedReturnAddress": "0x80189214",
+      "matches": true,
+      "returnAddress": "0x80189214",
+      "callPc": "0x8018920c",
+      "instruction": "0c06216e",
+      "caller": "formula_mute"
+    },
+    {
+      "listedReturnAddress": "0x8018926c",
+      "matches": true,
+      "returnAddress": "0x8018926c",
+      "callPc": "0x80189264",
+      "instruction": "0c06216e",
+      "caller": "formula_gravi_2"
+    },
+    {
+      "listedReturnAddress": "0x801892bc",
+      "matches": true,
+      "returnAddress": "0x801892bc",
+      "callPc": "0x801892b4",
+      "instruction": "0c06216e",
+      "caller": "formula_destroy_sword_stat_ruin"
+    },
+    {
+      "listedReturnAddress": "0x8018934c",
+      "matches": true,
+      "returnAddress": "0x8018934c",
+      "callPc": "0x80189344",
+      "instruction": "0c06216e",
+      "caller": "formula_magic_ruin"
+    },
+    {
+      "listedReturnAddress": "0x80189444",
+      "matches": true,
+      "returnAddress": "0x80189444",
+      "callPc": "0x8018943c",
+      "instruction": "0c06216e",
+      "caller": "formula_multihit_truth_magic"
+    },
+    {
+      "listedReturnAddress": "0x80189474",
+      "matches": true,
+      "returnAddress": "0x80189474",
+      "callPc": "0x8018946c",
+      "instruction": "0c06216e",
+      "caller": "formula_un_truth"
+    },
+    {
+      "listedReturnAddress": "0x801896c4",
+      "matches": true,
+      "returnAddress": "0x801896c4",
+      "callPc": "0x801896bc",
+      "instruction": "0c06216e",
+      "caller": "formula_elemental"
+    },
+    {
+      "listedReturnAddress": "0x80189fdc",
+      "matches": true,
+      "returnAddress": "0x80189fdc",
+      "callPc": "0x80189fd4",
+      "instruction": "0c06216e",
+      "caller": "formula_hit_ma_x_percent_magical_evade"
+    },
+    {
+      "listedReturnAddress": "0x8018a430",
+      "matches": true,
+      "returnAddress": "0x8018a430",
+      "callPc": "0x8018a428",
+      "instruction": "0c06216e",
+      "caller": "formula_damage_ma_times_y"
+    },
+    {
+      "listedReturnAddress": "0x8018a5f4",
+      "matches": true,
+      "returnAddress": "0x8018a5f4",
+      "callPc": "0x8018a5ec",
+      "instruction": "0c06216e",
+      "caller": "formula_damage_y_percent_hit_ma_x_percent"
+    },
+    {
+      "listedReturnAddress": "0x8018a6a8",
+      "matches": true,
+      "returnAddress": "0x8018a6a8",
+      "callPc": "0x8018a6a0",
+      "instruction": "0c06216e",
+      "caller": "formula_beaking"
+    },
+    {
+      "listedReturnAddress": "0x8018a708",
+      "matches": true,
+      "returnAddress": "0x8018a708",
+      "callPc": "0x8018a700",
+      "instruction": "0c06216e",
+      "caller": "formula_circle"
+    },
+    {
+      "listedReturnAddress": "0x8018a918",
+      "matches": true,
+      "returnAddress": "0x8018a918",
+      "callPc": "0x8018a910",
+      "instruction": "0c06216e",
+      "caller": "formula_level_blast"
+    },
+    {
+      "listedReturnAddress": "0x8018aaa8",
+      "matches": true,
+      "returnAddress": "0x8018aaa8",
+      "callPc": "0x8018aaa0",
+      "instruction": "0c06216e",
+      "caller": "formula_fixed_multihit_magic"
+    },
+    {
+      "listedReturnAddress": "0x8018aad8",
+      "matches": true,
+      "returnAddress": "0x8018aad8",
+      "callPc": "0x8018aad0",
+      "instruction": "0c06216e",
+      "caller": "formula_nanoflare"
+    },
+    {
+      "listedReturnAddress": "0x8018ab28",
+      "matches": true,
+      "returnAddress": "0x8018ab28",
+      "callPc": "0x8018ab20",
+      "instruction": "0c06216e",
+      "caller": "formula_lower_brave_y"
+    },
+    {
+      "listedReturnAddress": "0x8018ab68",
+      "matches": true,
+      "returnAddress": "0x8018ab68",
+      "callPc": "0x8018ab60",
+      "instruction": "0c06216e",
+      "caller": "formula_look_of_fright"
+    }
+  ],
+  "documentationCorrections": {
+    "transparent": "The attacker Transparent status clears all four contributions; Concentrate is a different helper and is not called by the magical wrapper.",
+    "formulaLabel": "The listed return0x8018a430 belongs to formula0x4E, despite the supplied display label3E; its linked page names4E.",
+    "hpAbsorbReturn": "The supplied formula0x10 return0x801890e8 is the delay slot; jal0x801890e4 returns to0x801890ec."
+  },
+  "managedMapping": {
+    "equipment": "MagicEvasion.Load",
+    "transparentAbandonStatuses": "MagicEvasion.Prepare",
+    "hitCheck": "MagicEvasion.Resolve",
+    "coordinator": "FaithMagicFormula.Resolve"
+  },
+  "boundaries": [
+    "The wrapper has no Evadeable gate; the final-hit helper owns it, after preparation.",
+    "Zero contributions still consume four real draws in admitted AI/preview checks; Execute can stop at the first evade.",
+    "No physical Concentrate, facing, Darkness/Confusion or bow-weather steps are called here.",
+    "Capturing shared helper dependencies does not activate general statuses or other formula families."
+  ],
+  "validation": {
+    "sourceAudit": {
+      "loadDescriptions": 8,
+      "preparationDescriptions": 15,
+      "rollDescriptions": 24,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "sourceFiles": 13,
+      "sourceFunctions": 21
+    },
+    "ownerBlobsVerified": 10,
+    "focusedPythonTestsPassed": 46,
+    "runtimeChanged": false,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "managedExecuted": false,
+    "fullTicketCompleted": false
+  }
+}

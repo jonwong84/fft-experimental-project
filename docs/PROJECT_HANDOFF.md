@@ -37,9 +37,13 @@ Additional FFHacktics material was not required for that pass. The owner has now
 supplied formula0x08: its [top-level trace cross-check](behavior/faith-magic-amounts.md#supplied-formula0x08-trace-cross-check--zod-436-support)
 matches all28 prepared instruction words, eight calls, three exits and the
 indirect dispatch return. Existing arithmetic/entry source audits pass68
-descriptions; no runtime change was needed. ZOD-436 remains open. Magical Evade
-Calculation and Magical Support/Status/Compat are the next useful wiki pages;
-formula0x0C and the remaining helper pages can support the broader review.
+descriptions; no runtime change was needed. The supplied
+[Magical Evade Calculation wrapper](behavior/magic-evasion.md#supplied-magical-evade-wrapper--zod-436-support)
+also matches all16 words/five calls. Its24 caller checks require one corrected
+return address; Transparent uses status rather than Concentrate. ZOD-436 remains
+open. Equipment Evasion Setting (Magical) and Magical Support/Status/Compat are
+the next useful wiki pages. The shared Calculate Hit %/final-hit/per-source roll
+documentation was already supplied; no duplicate is needed.
 
 [ZOD-434 rank/lottery review](behavior/ai-rank-selection-review.md) is complete.
 No new defect was confirmed in admitted rank-only baseline gates, proximity ties,

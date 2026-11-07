@@ -1,5 +1,58 @@
 # Magic evasion and formula entry — ZOD-342, ZOD-344–347
 
+## Supplied magical-evade wrapper — ZOD-436 support
+
+Owner-supplied FFHacktics documentation cross-checked on 2026-11-07 against
+clean read-only fft_decomp `11464943bbdbd2a0af022d90cb7f10455cf911df` and verified
+prepared BATTLE.BIN. The [supporting receipt](../evidence/combat/magical-evade-supplied-trace-v1.json)
+records all16 matching instruction words at `0x801885b8`–`0x801885f4`, five direct
+calls, the24 listed caller checks and one corrected return address. This is
+supporting evidence for the still-open ZOD-436 review.
+
+The wrapper's dependency order is:
+
+1. `0x801851c4` — Equipment Evasion Setting (Magical),
+   `formula_evade_store_magical`: reset base hit100/all four contributions,
+   then load eligible accessory/shield magic evades. C# owner: `MagicEvasion.Load`.
+2. `0x801854b8` — Transparent Calculation,
+   `formula_evade_calculate_transparent`: clear all four contributions when the
+   **attacker has Transparent**. C# owner: `MagicEvasion.Prepare`.
+3. `0x8018537c` — Abandon Calculation,
+   `formula_evade_calculate_abandon`: an unrestricted target with Abandon halves
+   base hit and records the reaction marker. C# owner: `MagicEvasion.Prepare`.
+4. `0x801853f4` — Evasion Changes due to Statuses,
+   `formula_evade_apply_target_statuses`: clearing statuses run before Defending's
+   base-hit halving. C# owner: `MagicEvasion.Prepare`.
+5. `0x80188488` — Calculate Hit %, `evade_roll`: invoke final-hit calculation and
+   return whether the result's hit field is zero. C# owner: `MagicEvasion.Resolve`.
+
+The supplied Transparent annotation says Concentration. That is a copy error:
+the pinned source checks Transparent status, and the magical wrapper does not call
+the separate Concentrate helper. The existing C# uses `AttackerTransparent`.
+The wrapper itself does not gate preparation on Evadeable; its final-hit helper
+owns that later gate. A returned zero means the hit field remains set, not that
+displayed accuracy must be positive. Actual versus preview/AI draw ordering and
+the zero-accuracy distinction remain as documented below.
+
+All24 listed callers resolve to this wrapper after correcting formula0x10's
+return address from `0x801890e8` (the call delay slot) to `0x801890ec`:
+the call is at `0x801890e4`. Also, the supplied display label "3E" beside
+`0x8018a430` should read **4E**, consistent with its linked page and the source
+formula table. The other23 listed return addresses match directly. These address
+checks do not establish managed support for the other formula families.
+
+Equipment Evasion Setting (Magical) is the next useful supplied helper page,
+followed by Transparent, Abandon and Evasion Changes due to Statuses as needed.
+Calculate Hit %, Calculate Final Hit % and the per-source roll have already been
+supplied during the [physical-evasion review](physical-pipeline-review.md);
+their shared behavior should be reused without importing physical-only preparation.
+The existing magic source audit passes8 load,15 preparation and24 roll
+descriptions. No runtime or fixture change is needed for this wrapper cross-check;
+all46 focused magic-contract Python tests pass and all ten owner draft blobs are
+unchanged. General status/reaction admission and other deferrals remain unchanged.
+
+## Original source-study checkpoint
+
 Source study 2026-11-05 from managed base
 `c1fcf1ad11d85d753eb31cf7603371f9c24221b6`; read-only fft_decomp clean at
 `11464943bbdbd2a0af022d90cb7f10455cf911df`.
