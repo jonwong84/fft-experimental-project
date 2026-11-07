@@ -76,10 +76,11 @@ All18 JAL sites resolve to12 distinct helpers at pinned metadata addresses:
 
 Address/name correspondence is not full numerical validation of every helper.
 The supplied **Status checks** page at0x001832CC and its frozen-set dependency
-are confirmed below. The next useful supplied page is **Death sentence,
-crystalization, treasurization, etc** at0x00183078: it stages upkeep, including
-its draws and execution-versus-simulation differences. Its linked dependencies
-can then be reviewed in caller order without duplicating End of Turn.
+are confirmed below. The subsequent [upkeep/RNG trace](turn-upkeep-review.md)
+confirms **Death sentence, crystalization, treasurization, etc** at0x00183078,
+including staged results, draw order and execution/simulation differences.
+Its linked RNG documentation is the next useful cross-check; End of Turn and
+the action-clear source dependency are already traced.
 
 ## Supplied Status checks (2026-11-07)
 
