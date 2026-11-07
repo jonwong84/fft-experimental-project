@@ -4,7 +4,7 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-426 (Trace ordinary spell movement origins and baseline ranks).**
+**Next bounded work: ZOD-427 (Review Throw Stone/Dash), first batch of ZOD-428 (review all earlier work).**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 [Learning reports, owned slots and player casting](behavior/learn-on-hit.md)
@@ -35,8 +35,10 @@ now enumerate potential unit/tile alternatives with working usage and deadline
 groups, without candidate evaluation or command authority. [ZOD-425 current-origin
 evaluation](behavior/ordinary-spell-aim-ranking.md) now composes those aims with
 private simulation, pass-specific valuable masks, one decision RNG and strict
-best comparison. Full origin search and decisions remain separate; ZOD-426 is next.
-There are 35 open tickets below. The 392 completed tickets, prior checkpoints and
+best comparison. Full origin search and decisions remain separate. The owner now
+prioritizes the [documentation/decompilation review programme](development/documentation-review-programme.md):
+ZOD-427 is the first bounded batch; ZOD-426 remains queued as supporting AI study.
+There are 36 open tickets below. The 392 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -60,28 +62,9 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-426 — Trace ordinary spell movement origins and baseline ranks
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-418, ZOD-425
-
-Trace the callers beyond [current-origin evaluation](behavior/ordinary-spell-aim-ranking.md):
-reachable cast origins, origin tile ranks/order, act-before-move versus
-move-before-act destinations, foe proximity and movement-baseline admission.
-Pin source revision/functions and independently check literal origin ordering,
-ties, remaining-aim consumption and per-origin early exits without resetting
-decision RNG. Distinguish source walkable masks from movement reachability and
-record supported flat-ground/occupancy constraints. Select one bounded runtime
-child after the trace; do not activate broad movement search, full ability-list
-dispatch, ranked-list insertion/lottery, commands or autonomous magic turns here.
-
-Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
-Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.
-
-## Queued owner review
-
 ### ZOD-427 — Review Throw Stone and Dash against the documented physical pipeline
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready; queued after ZOD-426 · **Depends on:** ZOD-420, ZOD-421
+**Type:** Story · **Priority:** P3 · **Status:** Ready; first review batch under ZOD-428 · **Depends on:** ZOD-420, ZOD-421
 
 Revisit the existing [Throw Stone](behavior/throw-stone-implementation.md),
 [Dash](behavior/dash-actual.md) and their AI paths using the supplied FFHacktics
@@ -99,6 +82,42 @@ symbols and independently checkable vectors. Apply bounded source-backed fixes
 with scenario regressions; split broader newly discovered work into follow-up
 tickets. Owner drafts/JobStats and existing deferred status, equipment, Golem,
 terminal/frame RNG, editor and custom-shape work remain separate.
+
+## Review programme
+
+### ZOD-428 — Revalidate all earlier work against documentation and decompilation
+
+**Type:** Epic · **Priority:** P3 · **Status:** Active; bounded review batches required · **Depends on:** None
+
+The owner expanded ZOD-427 to all work predating systematic reference to the
+supplied documentation. Follow the [review programme](development/documentation-review-programme.md)
+and its complete Git-snapshot scope inventory, including all current subsystems,
+tests/evidence, engineering work and historical paths replaced or moved later.
+Existing source traces and passing tests are evidence to examine, not automatic
+review completion. Review shared pipelines and their current descendants,
+record verified domains, defects, uncertainty and deferred behavior, and apply
+bounded source-backed fixes with independent regressions. Close only when every
+scope entry has an evidence-backed disposition and outstanding issues are explicit.
+Owner drafts/JobStats and documented deferred mechanics retain their boundaries.
+
+## Queued supporting source study
+
+### ZOD-426 — Trace ordinary spell movement origins and baseline ranks
+
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-418, ZOD-425
+
+Trace the callers beyond [current-origin evaluation](behavior/ordinary-spell-aim-ranking.md):
+reachable cast origins, origin tile ranks/order, act-before-move versus
+move-before-act destinations, foe proximity and movement-baseline admission.
+Pin source revision/functions and independently check literal origin ordering,
+ties, remaining-aim consumption and per-origin early exits without resetting
+decision RNG. Distinguish source walkable masks from movement reachability and
+record supported flat-ground/occupancy constraints. Select one bounded runtime
+child after the trace; do not activate broad movement search, full ability-list
+dispatch, ranked-list insertion/lottery, commands or autonomous magic turns here.
+
+Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
+Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.
 
 ## Existing validation gates
 
