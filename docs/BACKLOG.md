@@ -104,8 +104,9 @@ the Transparent annotation, formula0x10 return address and formula0x4E label.
 Its equipment, Transparent, Abandon/restriction and target-status helper listings
 are now cross-checked as supporting evidence; shared final-hit/roll documentation
 was already supplied. The [magical-modifier wrapper](behavior/faith-magic-amounts.md#supplied-magical-modifier-wrapper--zod-436-support)
-also matches its14 words, four ordered dependencies and nine listed returns;
-Magic Attack Up is the next useful helper page.
+also matches its14 words, four ordered dependencies and nine listed returns.
+Magic Attack Up matches20 words/seven returns and all signed16 division inputs;
+Magic Defense Up is the next useful helper page.
 
 ## Review programme
 

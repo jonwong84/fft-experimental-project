@@ -33,6 +33,12 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 301903,
       "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
     }
   ],
   "sourceFunctions": [
@@ -427,6 +433,178 @@
       "combinedFourNinthsWouldBe": 3
     },
     "managedMapping": "FaithMagicAmountFormula.PrepareProduct applies these exact separate stores; healing0x0C uses its distinct branch and bypasses the three target-defense/status steps.",
+    "validation": {
+      "sourceAudit": {
+        "faithDescriptions": 15,
+        "productDescriptions": 7,
+        "amountDescriptions": 22,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 14,
+        "sourceFunctions": 36,
+        "preparedTiersVerified": 8
+      },
+      "ownerBlobsVerified": 10,
+      "focusedManagedTestsPassed": 11,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedMagicAttackUpCheck": {
+    "managedBaseRevision": "2198a38d5fcf438fb9edf16fae53f2fd10c7933e",
+    "start": "0x80186204",
+    "endInclusive": "0x80186250",
+    "instructionCount": 20,
+    "instructionWords": [
+      "3c028019",
+      "8c422d94",
+      "00000000",
+      "90420090",
+      "00000000",
+      "30420004",
+      "1040000b",
+      "3c025555",
+      "3c048019",
+      "248438ce",
+      "84830000",
+      "34425556",
+      "00031880",
+      "00620018",
+      "00031fc3",
+      "00001010",
+      "00431023",
+      "a4820000",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "supportCheck": {
+      "actorPointer": "0x80192d94",
+      "byteOffset": "0x90",
+      "mask": "0x04",
+      "branchPc": "0x8018621c",
+      "skipTarget": "0x8018624c",
+      "skipWhen": "Magic Attack Up bit is clear"
+    },
+    "arithmetic": {
+      "workAddress": "0x801938ce",
+      "load": "signed16",
+      "numerator": "XA*4 in signed32",
+      "divisionConstant": "0x55555556",
+      "operation": "signed product high32 minus numerator sign",
+      "rounding": "toward zero",
+      "store": "low16 bits as signed XA",
+      "inputCount": 65536,
+      "allSignedHalfwordsMatchDivision": true,
+      "samples": [
+        {
+          "inputXa": -32768,
+          "quotient": -43690,
+          "storedXa": 21846
+        },
+        {
+          "inputXa": -3,
+          "quotient": -4,
+          "storedXa": -4
+        },
+        {
+          "inputXa": -2,
+          "quotient": -2,
+          "storedXa": -2
+        },
+        {
+          "inputXa": -1,
+          "quotient": -1,
+          "storedXa": -1
+        },
+        {
+          "inputXa": 0,
+          "quotient": 0,
+          "storedXa": 0
+        },
+        {
+          "inputXa": 1,
+          "quotient": 1,
+          "storedXa": 1
+        },
+        {
+          "inputXa": 2,
+          "quotient": 2,
+          "storedXa": 2
+        },
+        {
+          "inputXa": 3,
+          "quotient": 4,
+          "storedXa": 4
+        },
+        {
+          "inputXa": 7,
+          "quotient": 9,
+          "storedXa": 9
+        },
+        {
+          "inputXa": 255,
+          "quotient": 340,
+          "storedXa": 340
+        },
+        {
+          "inputXa": 32767,
+          "quotient": 43689,
+          "storedXa": -21847
+        }
+      ]
+    },
+    "listedCallerChecks": [
+      {
+        "callPc": "0x8018874c",
+        "returnAddress": "0x80188754",
+        "target": "0x80186204"
+      },
+      {
+        "callPc": "0x80188808",
+        "returnAddress": "0x80188810",
+        "target": "0x80186204"
+      },
+      {
+        "callPc": "0x80188860",
+        "returnAddress": "0x80188868",
+        "target": "0x80186204"
+      },
+      {
+        "callPc": "0x80188898",
+        "returnAddress": "0x801888a0",
+        "target": "0x80186204"
+      },
+      {
+        "callPc": "0x80188fec",
+        "returnAddress": "0x80188ff4",
+        "target": "0x80186204"
+      },
+      {
+        "callPc": "0x8018a500",
+        "returnAddress": "0x8018a508",
+        "target": "0x80186204"
+      },
+      {
+        "callPc": "0x8018a83c",
+        "returnAddress": "0x8018a844",
+        "target": "0x80186204"
+      }
+    ],
+    "managedMapping": "FaithMagicAmountFormula.PrepareProduct conditionally calls ScaleXa(xa,4,3), whose unchecked signed16 store matches the source expression.",
+    "boundaries": [
+      "The routine changes work XA only, not unit MA, Y, HP or RNG.",
+      "No support bit leaves XA unchanged; the branch delay slot only loads a register constant.",
+      "This is a leaf routine with no jal; the wiki return-address warning is MIPS calling-convention guidance, not a C# restriction.",
+      "Exhaustive arithmetic comparison is an offline integer check, not original/C execution or admission of every signed16 value into a managed battle."
+    ],
     "validation": {
       "sourceAudit": {
         "faithDescriptions": 15,

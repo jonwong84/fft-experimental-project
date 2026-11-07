@@ -95,8 +95,33 @@ amount descriptions, including the literal full modifier chain and healing
 defense bypass, plus eight prepared Cure/Fire bindings. All11 focused .NET amount/
 arithmetic tests and eight Python tests pass. No runtime or fixture change is
 required; all ten owner draft blobs remain unchanged and ZOD-436 remains open.
-The next useful supplied page is Magic Attack Up routine, followed by Magic
-Defense Up routine, Target's Status Affecting XA (Magical), and Compatibility.
+### Supplied Magic Attack Up helper
+
+The owner's helper listing matches all20 instruction words at
+`0x80186204`–`0x80186250` and all seven listed return locations. The supporting
+receipt records these checks against the same prepared BATTLE.BIN/reference.
+The routine reads the attacker's support byte`0x90`, mask`0x04`. A clear bit
+branches to return, leaving XA unchanged; the branch delay slot only loads a
+register constant. A set bit reads signed16 work XA at `0x801938ce`, multiplies
+by4, divides by3 with signed truncation toward zero, then stores its low16 bits.
+
+The `0x55555556` multiply-high and sign correction implement that integer
+division exactly; they are not a floating-point approximation of33%. An offline
+integer comparison over all65,536 signed16 inputs matches truncation followed by
+the store, including negative inputs and wrap. For example, XA7 becomes9,
+XA-2 becomes-2, and XA32767 has quotient43689 stored as-21847. These arithmetic
+checks do not admit arbitrary signed values into the bounded battle pipeline.
+No original or C code was executed by the comparison.
+
+`FaithMagicAmountFormula` already conditionally uses `ScaleXa(xa,4,3)` with an
+unchecked signed16 store. This changes shared work XA, not the unit's current MA,
+Y, final HP or RNG. The routine contains no calls; its warning about preserving
+`r31` before adding a `jal` concerns the MIPS calling convention and imposes no
+corresponding C# restriction. All11 focused .NET amount/arithmetic tests and eight
+Python tests pass; all ten owner draft blobs remain unchanged. No runtime or
+fixture change is required.
+The next useful supplied pages are Magic Defense Up routine, Target's Status
+Affecting XA (Magical), and Compatibility. ZOD-436 remains open.
 
 ## Original implementation checkpoint
 
