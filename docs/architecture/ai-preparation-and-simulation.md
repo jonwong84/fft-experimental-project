@@ -208,6 +208,12 @@ In between turn control routine; full ZOD-430 review remains open.
 
 ## Verification
 
+The subsequent supplied [between-turn controller trace](../behavior/between-turn-clock-review.md)
+checks all546 instructions,20 valid dispatch entries and18 calls/12 helper
+targets. It records corrected phase labels, separate internal/event/frame
+budgets, current managed limits and the next useful helper documentation.
+This remains supporting evidence for the open ZOD-430 review.
+
 Existing ordinary AI regressions retain immediate/delayed ordering, excluded
 target draws, hit accounting, literal scores, unresolved hit255, event limits and
 late-failure isolation. Added public tests compare live/AI preparation for CT0,
