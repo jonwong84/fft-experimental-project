@@ -36,7 +36,7 @@ groups, without candidate evaluation or command authority. [ZOD-425 current-orig
 evaluation](behavior/ordinary-spell-aim-ranking.md) now composes those aims with
 private simulation, pass-specific valuable masks, one decision RNG and strict
 best comparison. Full origin search and decisions remain separate; ZOD-426 is next.
-There are 34 open tickets below. The 392 completed tickets, prior checkpoints and
+There are 35 open tickets below. The 392 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -76,6 +76,29 @@ dispatch, ranked-list insertion/lottery, commands or autonomous magic turns here
 
 Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
 Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.
+
+## Queued owner review
+
+### ZOD-427 — Review Throw Stone and Dash against the documented physical pipeline
+
+**Type:** Story · **Priority:** P3 · **Status:** Ready; queued after ZOD-426 · **Depends on:** ZOD-420, ZOD-421
+
+Revisit the existing [Throw Stone](behavior/throw-stone-implementation.md),
+[Dash](behavior/dash-actual.md) and their AI paths using the supplied FFHacktics
+formula0x37 call trace and the read-only pinned decompilation. Map preparation,
+targeting/trajectory, physical evasion, PA/Y loading, support/status/Zodiac
+modifiers, random damage and knockback through actual execution, preview and AI
+simulation/accounting/ranking. Check primary AI preferences separately from
+secondary execution flags, exact arithmetic/RNG order and single/multiple-target
+knockback conditions; identify current admission gaps and observable quirks.
+
+Preserve [data-driven formula assignment](architecture/physical-formula-reassignment.md),
+shared formula-family code and [delivery ownership](architecture/physical-delivery-profiles.md).
+Record verified behavior, discrepancies and uncertainties with source revision,
+symbols and independently checkable vectors. Apply bounded source-backed fixes
+with scenario regressions; split broader newly discovered work into follow-up
+tickets. Owner drafts/JobStats and existing deferred status, equipment, Golem,
+terminal/frame RNG, editor and custom-shape work remain separate.
 
 ## Existing validation gates
 

@@ -7,6 +7,11 @@ and the selected task's design before editing. This file describes current state
 ## Next work
 
 **ZOD-426: Trace ordinary spell movement origins and baseline ranks.**
+The owner also queued **ZOD-427**, a focused review of Throw Stone/Dash actual,
+preview and AI pathways against the supplied FFHacktics formula0x37 trace and
+pinned decompilation. It follows ZOD-426; see the [backlog](BACKLOG.md). Preserve
+shared formulas, data-driven assignments, owner drafts and existing deferred work.
+
 [ZOD-425 current-origin evaluation](behavior/ordinary-spell-aim-ranking.md) is
 complete. Start at `OrdinarySpellAiSearchQuery.Evaluate` for one owned learned
 slot. It freshly enumerates aims, narrows each pass's valuable membership,
