@@ -4,7 +4,7 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-425 (Evaluate and rank ordinary spell aims at a fixed origin).**
+**Next bounded work: ZOD-426 (Trace ordinary spell movement origins and baseline ranks).**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 [Learning reports, owned slots and player casting](behavior/learn-on-hit.md)
@@ -32,8 +32,11 @@ it records unit/tile stage order, masks, RNG, strict ranks and early exits.
 geometry, resolution, simulation and scoring distinct navigable owners while
 preserving public entry points. [ZOD-424 fixed-origin aim lists](behavior/ordinary-spell-aim-enumeration.md)
 now enumerate potential unit/tile alternatives with working usage and deadline
-groups, without candidate evaluation or command authority. ZOD-425 is next.
-There are 34 open tickets below. The 391 completed tickets, prior checkpoints and
+groups, without candidate evaluation or command authority. [ZOD-425 current-origin
+evaluation](behavior/ordinary-spell-aim-ranking.md) now composes those aims with
+private simulation, pass-specific valuable masks, one decision RNG and strict
+best comparison. Full origin search and decisions remain separate; ZOD-426 is next.
+There are 34 open tickets below. The 392 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -57,19 +60,19 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-425 — Evaluate and rank ordinary spell aims at a fixed origin
+### ZOD-426 — Trace ordinary spell movement origins and baseline ranks
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-418, ZOD-424
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-418, ZOD-425
 
-Compose fresh definition-bound [aim enumeration](behavior/ordinary-spell-aim-enumeration.md)
-and existing ordinary candidate simulation at the actor's current origin. Trace
-the evaluation caller before translating state/early-exit policy. Carry one
-decision RNG across source-ordered candidates, including nonvaluable outcomes;
-reuse shared strict rank/tie rules and retain source unresolved-charge hit255
-behavior. Preserve unit/tile passes, admission and atomic unsupported-context
-rejection. Return diagnostics without accepting cached aim lists or granting
-command authority. Movement origins, full ability-list dispatch, baseline/list
-insertion, lottery and autonomous magic turns remain separate.
+Trace the callers beyond [current-origin evaluation](behavior/ordinary-spell-aim-ranking.md):
+reachable cast origins, origin tile ranks/order, act-before-move versus
+move-before-act destinations, foe proximity and movement-baseline admission.
+Pin source revision/functions and independently check literal origin ordering,
+ties, remaining-aim consumption and per-origin early exits without resetting
+decision RNG. Distinguish source walkable masks from movement reachability and
+record supported flat-ground/occupancy constraints. Select one bounded runtime
+child after the trace; do not activate broad movement search, full ability-list
+dispatch, ranked-list insertion/lottery, commands or autonomous magic turns here.
 
 Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
 Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.

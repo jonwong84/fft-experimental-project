@@ -22,6 +22,10 @@ It does not enable additional ability families or an autonomous magic AI.
   [OrdinarySpellAiAimQuery.Evaluate](../../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAimQuery.cs).
   [ZOD-424](../behavior/ordinary-spell-aim-enumeration.md) adds fresh source-ordered
   unit/tile lists; candidate evaluation/ranking remain separate.
+- One owned ordinary spell's evaluated best at the current origin:
+  [OrdinarySpellAiSearchQuery.Evaluate](../../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiSearchQuery.cs).
+  [ZOD-425](../behavior/ordinary-spell-aim-ranking.md) composes fresh enumeration,
+  pass-specific useful membership, simulation/RNG and strict best comparison.
 
 ## Walk one player cast
 
@@ -71,7 +75,12 @@ Ready-hit diagnostics remain separately named and require supplied movement
 opportunities. The subsequent `OrdinarySpellAiAimQuery` lists potential aims
 through `Selection/OrdinarySpellAiAimEnumeration`, including completed working
 usage and deadline groups. These queries do not compose a ranked magic search
-or enter the physical roster's full decision/command pipeline yet.
+or enter the physical roster's full decision/command pipeline yet. The subsequent
+`OrdinarySpellAiSearchQuery` now composes enumeration and simulation for one
+owned slot at the current origin. Follow its pass loop into `ForAimPass`,
+`OrdinarySpellAiSimulation` and shared `AiCandidateRank`. It preserves one
+decision RNG and unresolved per-pass exits. Multiple origins, full ability
+dispatch and command execution remain separate.
 
 ## Original routine mapping and corrections
 

@@ -10,14 +10,14 @@ public sealed class OrdinarySpellAiAimTests
 {
     private static readonly BattleUnitId Mage = new("mage"), Guard = new("guard"), Other = new("other");
 
-    private static (OrdinarySpellAiCatalog Catalog, OrdinaryMagicBattleState State) Setup(
+    internal static (OrdinarySpellAiCatalog Catalog, OrdinaryMagicBattleState State) Setup(
         byte charge = 2, byte area = 1, byte range = 4, bool follow = true, bool noFollow = false,
-        bool force = false, bool healing = false, int width = 7, int actorX = 0, int targetX = 4, int targetY = 2,
+        bool force = false, bool healing = false, int width = 7, int actorX = 0, int targetX = 4, int targetY = 2, bool alliesOnly = false,
         (int X, int Y, SpellTargetTeam Team)? other = null, AiAbilityBehavior? behavior = null)
     {
         var d = AuthoredOrdinaryMagic.Document() with { SchemaVersion = 3, MetadataPackageId = "test:package/aims", Width = width };
         d.Spells[0] = d.Spells[0] with { ChargeTime = charge,
-            Targeting = d.Spells[0].Targeting with { Area = area, Range = range, NoFollowTarget = noFollow, CanHitEnemies = force },
+            Targeting = d.Spells[0].Targeting with { Area = area, Range = range, NoFollowTarget = noFollow, CanHitEnemies = force, CanHitAllies = alliesOnly },
             Formula = healing ? new(FaithMagicAmountKind.Healing, 14, MagicElement.None, false) : d.Spells[0].Formula };
         d.Units[0] = d.Units[0] with { X = actorX, LearnedPrimarySlots = [0] };
         d.Units[1] = d.Units[1] with { X = targetX, Y = targetY, LearnedPrimarySlots = [],
@@ -209,6 +209,7 @@ public sealed class OrdinarySpellAiAimTests
         Assert.True(result.Ability.Usage.ExhaustiveOrigins);
         Assert.False(result.Ability.Usage.ForceConsumeAim);
         Assert.False(result.Ability.Usage.ConsumeAim);
+        Assert.All(result.Passes, p => Assert.False(p.ConsumeEvaluatedAims));
         Assert.Equal(new[] { OrdinarySpellAiAimPassKind.UnitsMovingByDeadline, OrdinarySpellAiAimPassKind.UnitsStillAtDeadline },
             result.Passes.Select(p => p.Kind));
         Assert.Equal(Guard, Assert.Single(result.Passes[0].Aims).UnitId);

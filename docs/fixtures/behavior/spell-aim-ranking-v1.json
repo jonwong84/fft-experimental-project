@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "originalExecuted": false,
+  "cExecuted": false,
+  "scope": "Source caller descriptions over supplied fresh candidate outcomes. Draw counts are literal descriptions, not a formula oracle; seed transitions reuse the previously verified BIOS-v3 RNG contract.",
+  "traces": [
+    { "id": "unit-before-equal-tile", "passes": [
+      [{ "status": "scored", "priority": 49, "hit": 100, "draws": 5 }],
+      [{ "status": "scored", "priority": 49, "hit": 100, "draws": 5 }]
+    ], "expected": { "best": [0,0], "calls": [[0,0],[1,0]], "stopped": [], "draws": 10, "seed": 1579910103 } },
+    { "id": "signed-area-improvement-and-later-tie", "passes": [
+      [{ "status": "scored", "priority": -436, "hit": 100, "draws": 5 }, { "status": "scored", "priority": -436, "hit": 100, "draws": 5 }],
+      [{ "status": "scored", "priority": -436, "hit": 100, "draws": 5 }, { "status": "scored", "priority": -436, "hit": 100, "draws": 5 },
+       { "status": "scored", "priority": -507, "hit": 100, "draws": 9 }, { "status": "scored", "priority": -507, "hit": 100, "draws": 9 },
+       { "status": "scored", "priority": -401, "hit": 100, "draws": 9 }, { "status": "scored", "priority": -507, "hit": 100, "draws": 9 },
+       { "status": "scored", "priority": -472, "hit": 100, "draws": 13 }, { "status": "scored", "priority": -401, "hit": 100, "draws": 9 },
+       { "status": "scored", "priority": -436, "hit": 100, "draws": 5 }, { "status": "scored", "priority": -436, "hit": 100, "draws": 5 }]
+    ], "expected": { "best": [1,4], "calls": [[0,0],[0,1],[1,0],[1,1],[1,2],[1,3],[1,4],[1,5],[1,6],[1,7],[1,8],[1,9]], "stopped": [], "draws": 88, "seed": 3396639393 } },
+    { "id": "nonvaluable-draws-still-advance", "passes": [
+      [{ "status": "not-valuable", "draws": 4 }, { "status": "scored", "priority": 49, "hit": 100, "draws": 5 }]
+    ], "expected": { "best": [0,1], "calls": [[0,0],[0,1]], "stopped": [], "draws": 9, "seed": 1040713558 } },
+    { "id": "unresolved-ranked-before-pass-local-exit", "passes": [
+      [{ "status": "unresolved", "priority": 7381, "hit": 255, "draws": 255 }, { "status": "scored", "priority": 9999, "hit": 100, "draws": 4 }],
+      [{ "status": "unresolved", "priority": 7381, "hit": 255, "draws": 255 }, { "status": "scored", "priority": 9999, "hit": 100, "draws": 4 }]
+    ], "expected": { "best": [0,0], "calls": [[0,0],[1,0]], "stopped": [0,1], "draws": 510, "seed": 1214985347 } }
+  ]
+}

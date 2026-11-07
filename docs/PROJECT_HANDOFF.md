@@ -6,24 +6,34 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-425: Evaluate and rank ordinary spell aims at a fixed origin.**
-[ZOD-424 potential aim lists](behavior/ordinary-spell-aim-enumeration.md) are complete.
-Start at `OrdinarySpellAiAimQuery.Evaluate`; its selection owner freshly binds
-one owned learned slot, completes working ConsumeAim policy, predicts considered
-CT deadlines and lists source-ordered unit/tile alternatives at the current
-origin. Occupied and out-of-Move panels remain valid aim centers. Safe radii,
-consistent choices and certified single-sheet ground are explicit admission
-gates. Useful self, Reflect/trajectory/special shapes, corpse/status expansion,
-zero-range origin cases and broader maps remain separate.
+**ZOD-426: Trace ordinary spell movement origins and baseline ranks.**
+[ZOD-425 current-origin evaluation](behavior/ordinary-spell-aim-ranking.md) is
+complete. Start at `OrdinarySpellAiSearchQuery.Evaluate` for one owned learned
+slot. It freshly enumerates aims, narrows each pass's valuable membership,
+simulates from an immutable baseline with one decision RNG and uses shared
+signed-priority/hit keys. Exact ties retain the first source-ordered aim.
+Unresolved hit255 can become best before stopping only that origin's current
+pass; later caller passes still run. Unsupported work rolls back the complete
+query, including RNG and any earlier best. Returned diagnostics grant no command
+or retained-evaluation authority.
 
-The new source receipt pins nine files/twenty-eight functions. Thirty managed
-scenarios and sixteen additional literal source descriptions/four Python tests
-check working usage, deadlines, masks, ordering, isolation and rejection. The
-earlier ZOD-418 fifteen descriptions and rank/early-exit study remain intact.
-The aim-list query neither draws RNG nor prepares/simulates a cast. Next compose
-fresh enumeration and candidate simulation/ranking while preserving one decision
-RNG and source early exits. Multiple origins, full dispatch, lottery, commands
-and autonomous magic turns remain separate.
+The new receipt pins nine source files/thirty-three functions. Eighteen new
+managed scenarios and four literal source traces/four Python tests check best
+selection, pass masks with collateral, nonvaluable RNG continuation, ties,
+unresolved per-pass exits and atomic failure. The source caller also clears
+ConsumeEvaluatedAims for exhaustive scans after grouping; ZOD-424's diagnostic
+and its existing boundary test now reflect that override. Aim coordinates and
+the supplied-aim query contract are preserved.
+
+[ZOD-424 aim lists](behavior/ordinary-spell-aim-enumeration.md) remain the
+no-RNG/no-simulation entry. Certified <=16 flat lower-sheet ground, nonzero
+range/Range+Area<=7, consistent choices and living neutral HP work remain the
+admission boundary. Occupied and out-of-Move aim centers remain valid. Useful
+self, Reflect/trajectory/shapes, corpse/status expansion, zero-range origin
+cases and broader maps remain separate. Next trace movement-origin ordering,
+act/move destinations, proximity, baseline ranks and multi-origin aim consumption
+before selecting the next runtime child. Full dispatch, lottery, commands and
+autonomous magic turns remain separate.
 
 The owner-selected [ZOD-423 action pathway pass](development/action-pipelines.md)
 is complete. `OrdinaryMagicBattle.Choice` / `Apply` remain the player spell entry
@@ -36,14 +46,14 @@ Four internal owners extract existing targeting and cast-queue method bodies.
 Namespaces, public APIs, command authority and existing behavior limits remain.
 The source-map READMEs link concrete player/AI walkthroughs and modification points.
 
-Locked restore and a zero-warning/error Release build, **5,124 .NET tests** and
-**786 Python tests** pass. All1,338 AI cases pass. Existing targeting, immediate/
+Locked restore and a zero-warning/error Release build, **5,142 .NET tests** and
+**790 Python tests** pass. All1,356 AI cases pass. Existing targeting, immediate/
 delayed cast, rank, RNG isolation and command regressions retain their original
-expectations. Current source/test/preservation receipts are in the aim-list guide
-and ignored `scratch/spell-aim-424/`. No host path changed in ZOD-424. The prior
+expectations. Current source/test/preservation receipts are in the ranking guide
+and ignored `scratch/spell-search-425/`. No host path changed in ZOD-425. The prior
 ZOD-423 move/native receipts remain historical in `scratch/pathways-423/`, with
 Basic Skill121-step/two-replay and Fire four-checkpoint native checks matching
-retained gameplay hashes; native presentation was not rerun for this pure query.
+retained gameplay hashes; native presentation was not rerun for these diagnostics.
 Source remains clean/read-only
 at `11464943bbdbd2a0af022d90cb7f10455cf911df`. All ten owner blobs, immutable
 JobStats, int MP costs and approved `b7a222d` formatting remain preserved.

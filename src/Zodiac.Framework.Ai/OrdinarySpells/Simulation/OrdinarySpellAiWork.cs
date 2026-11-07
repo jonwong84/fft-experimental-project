@@ -40,6 +40,21 @@ internal sealed class OrdinarySpellAiWork
         Usefulness = OrdinarySpellAiUsefulness.Filter(state, actorId, Ability);
     }
 
+    // Only the fresh search owner supplies a pass. This copies the baseline and narrows valuable membership;
+    // excluded units remain real formula recipients and remain in absolute roster scoring.
+    private OrdinarySpellAiWork(OrdinarySpellAiWork source, OrdinarySpellAiAimPass pass, OrdinarySpellAiUsage usage)
+    {
+        State = source.State; Actor = source.Actor; Units = source.Units; Lists = source.Lists;
+        Ability = source.Ability with { Usage = usage };
+        var targets = pass.UsefulTargets.ToHashSet();
+        if (targets.Any(id => !source.Usefulness.Any(u => u.UnitId == id && u.Effect == OrdinarySpellAiEffect.Useful)))
+            throw new NotSupportedException("A fresh pass must narrow the current useful-target mask.");
+        Usefulness = source.Usefulness.Select(u => u.Effect == OrdinarySpellAiEffect.Useful && !targets.Contains(u.UnitId)
+            ? u with { Effect = OrdinarySpellAiEffect.None } : u).ToImmutableArray();
+    }
+
+    internal OrdinarySpellAiWork ForAimPass(OrdinarySpellAiAimPass pass, OrdinarySpellAiUsage usage) => new(this, pass, usage);
+
     internal StoredSpellAim Capture(TilePosition aim, bool followUnit) => Confirm(aim, followUnit).Aim;
 
     internal CombatRules.OrdinaryMagicPreparationOutcome Prepare(TilePosition aim, bool followUnit)

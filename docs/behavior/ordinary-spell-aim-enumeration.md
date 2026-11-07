@@ -1,5 +1,10 @@
 # Fixed-origin ordinary spell aim lists — ZOD-424
 
+The subsequent [ZOD-425 search](ordinary-spell-aim-ranking.md) now evaluates
+and ranks these potential aims. It also corrects the exhaustive-scan consume
+diagnostic using the outer caller; the rest of this document describes the
+original aim-list milestone and its boundaries.
+
 `OrdinarySpellAiAimQuery.Evaluate(state, catalog, request)` lists potential aims
 for one owned, learned primary spell slot at the actor's current origin. Start at
 [the public query](../../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAimQuery.cs)

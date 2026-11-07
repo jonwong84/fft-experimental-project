@@ -56,6 +56,12 @@ origin, with source working usage, deadline groups and scan order. It does not
 draw RNG, evaluate/rank candidates or execute commands.
 [Aim-list contract and validation](../../docs/behavior/ordinary-spell-aim-enumeration.md).
 
+`OrdinarySpellAiSearchQuery` freshly composes one owned slot's current-origin
+aims and simulations, carries one decision RNG and retains the strict best.
+Pass-specific valuable masks and unresolved per-pass exits follow the caller.
+It returns diagnostics; broader origin search, dispatch, lottery and commands
+remain separate. [Search contract](../../docs/behavior/ordinary-spell-aim-ranking.md).
+
 Within `OrdinarySpells/`, `Selection/` owns catalog/list/parameter/usefulness work,
 `Simulation/` owns private state, charge clocks and hits, `Scoring/` owns hit
 accounting and absolute scores, and `Diagnostics/` owns the ready-hit query.

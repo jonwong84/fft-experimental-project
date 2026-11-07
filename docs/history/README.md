@@ -21,7 +21,9 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 391 entries index completed bounded work; they do not mean the full game is complete.
+These 392 entries index completed bounded work; they do not mean the full game is complete.
+
+- [ZOD-425 — Evaluate and rank ordinary spell aims at a fixed origin](../behavior/ordinary-spell-aim-ranking.md)
 
 - [ZOD-424 — Enumerate ordinary spell aims at a fixed origin](../behavior/ordinary-spell-aim-enumeration.md)
 

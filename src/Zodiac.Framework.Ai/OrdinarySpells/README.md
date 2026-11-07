@@ -1,5 +1,13 @@
 # Ordinary spell AI pathway
 
+For one spell's evaluated best at the current origin, start with
+[OrdinarySpellAiSearchQuery.Evaluate](OrdinarySpellAiSearchQuery.cs). It freshly
+enumerates, narrows each pass's useful mask, simulates in order with one decision
+RNG and uses shared strict rank keys. Unsupported work rejects atomically; an
+unresolved charge is ranked before stopping only its current origin pass.
+See [ZOD-425](../../../docs/behavior/ordinary-spell-aim-ranking.md). This is a
+diagnostic, not a complete ability-list decision or command entry point.
+
 For potential aims at the current origin, start with
 [OrdinarySpellAiAimQuery.Evaluate](OrdinarySpellAiAimQuery.cs). It freshly binds
 one owned slot and calls [OrdinarySpellAiAimEnumeration](Selection/OrdinarySpellAiAimEnumeration.cs)
@@ -44,9 +52,10 @@ For the supported physical roster's complete decision, start with
 [AiDecisionMaker.Decide](../Decision/AiDecisionMaker.cs). For actual commands,
 start with [AiCommandExecutor.Execute](../Execution/AiCommandExecutor.cs), or
 [AiTurnController.Execute](../Execution/AiTurnController.cs) for a complete
-admitted turn. Potential spell aim lists and supplied-aim simulation remain
-separate diagnostics. Composed candidate search, rank insertion/lottery and
-automatic spell turns are not connected to those entry points yet.
+admitted turn. Potential lists, supplied-aim simulation and the current-origin
+one-slot search remain diagnostic entry points. Multiple origins, full dispatch,
+rank insertion/lottery and automatic spell turns are not connected to the
+physical decision/command entry points yet.
 [ZOD-418 source study](../../../docs/behavior/ordinary-spell-aim-search.md)
 defines the broader search boundaries.
 

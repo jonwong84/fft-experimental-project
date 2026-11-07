@@ -104,7 +104,8 @@ internal static class OrdinarySpellAiAimEnumeration
                 if (unitMode && unit is null) continue;
                 aims.Add(new(position, unit?.Id));
             }
-            passes.Add(new(kind, consumeAims, targets, aims.ToImmutable()));
+            // origin_reachable_evaluate clears the setting for an exhaustive scan, after caller grouping.
+            passes.Add(new(kind, consumeAims && !ability.Usage.ExhaustiveOrigins, targets, aims.ToImmutable()));
         }
     }
 }
