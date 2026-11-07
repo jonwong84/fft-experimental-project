@@ -53,8 +53,26 @@ Base hit is unchanged, no RNG is drawn, and no return value is specified.
 `MagicEvasion.Prepare` already implements this condition through
 `AttackerTransparent`; no runtime correction is required.
 
-Equipment Evasion Setting (Magical) is the next useful supplied helper page,
-followed by Abandon and Evasion Changes due to Statuses as needed.
+The supplied Equipment Evasion Setting (Magical) listing also matches all72
+instruction words at `0x801851c4`–`0x801852e0` and its return `0x801885c8`.
+The same receipt records its four branches, reset stores and item-table inputs.
+Base hit100 and all four zero contributions are stored **before** testing the
+monster bit (`unit+0x06`, mask`0x20`). A set bit exits at `0x801852dc`, retaining
+those defaults. Otherwise accessory slot`0x1c` requires type bit`0x08`; shield
+slots`0x1e`/`0x20` require bit`0x40`. These are bit-membership checks, not exact
+type-byte equality. A missing bit skips only that contribution. Primary item
+records have stride12; their secondary ID selects stride2 accessory/shield
+records, whose byte1 is unsigned magic evade. Class and weapons are never loaded.
+
+`MagicEvasion.Load` already creates fresh qualified contributions and class0,
+with monster contributions zero; `Prepare` supplies base hit100. Its separate
+blocking-item labels belong to the later final-hit reporting rules, not an extra
+weapon evade contribution in this loader. The seven focused .NET evasion tests
+(including eight literal equipment descriptions) and eight Python evasion tests
+pass. All ten owner draft blobs are unchanged; no runtime or fixture change is
+needed. The next useful helper pages are Abandon and Evasion Changes due to
+Statuses, alongside formula0x08's Magical Support/Status/Compat.
+
 Calculate Hit %, Calculate Final Hit % and the per-source roll have already been
 supplied during the [physical-evasion review](physical-pipeline-review.md);
 their shared behavior should be reused without importing physical-only preparation.

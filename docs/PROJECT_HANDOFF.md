@@ -42,8 +42,11 @@ descriptions; no runtime change was needed. The supplied
 also matches all16 words/five calls. Its24 caller checks require one corrected
 return address. The subsequently supplied Transparent helper matches all17 words
 and both listed returns, confirming the attacker status check and four-byte clear
-with no base-hit/RNG change. ZOD-436 remains
-open. Equipment Evasion Setting (Magical) and Magical Support/Status/Compat are
+with no base-hit/RNG change. The supplied magical equipment loader matches all72
+words and its listed return: base hit100/all evades reset before the monster
+exit, then qualified accessory/shield contributions only. Seven focused .NET and
+eight Python evasion tests pass; no runtime change. ZOD-436 remains open.
+Abandon, Evasion Changes due to Statuses and Magical Support/Status/Compat are
 the next useful wiki pages. The shared Calculate Hit %/final-hit/per-source roll
 documentation was already supplied; no duplicate is needed.
 

@@ -34,6 +34,18 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 11673,
       "sha256": "deeaeec02add8b9db7cca91c99517706033b18385ca433d32f1998d9d62e0e83"
+    },
+    {
+      "path": "include/fft/item.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 17162,
+      "sha256": "d416f46d0784ec89ad86459fe56ac1fe3303d8a744601310ece0dbd6f29b8450"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
     }
   ],
   "sourceFunctions": [
@@ -112,6 +124,24 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 6079,
       "sha256": "9115cd747357beed329a699da46a575e9bee266f58d51f51b3feeed1e468d1cb"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvadeContributions.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 419,
+      "sha256": "d1a6a639e0dbbcd921848fd1c6545d17a44b4b0b81227cca2b831fe72fc7ccb6"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvadeValues.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 187,
+      "sha256": "e6dcfcb05a7ca2761a13c3becb415941181ea133895941e103918200028829b8"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvadeEquipmentInput.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 298,
+      "sha256": "2c05c68700517c324524f1b229b02b1d3ea92eb33f59b6b12d2a908aded925f9"
     }
   ],
   "preparedValidation": {
@@ -468,6 +498,178 @@
       "referenceClean": true,
       "sourceFiles": 13,
       "sourceFunctions": 21
+    }
+  },
+  "suppliedMagicalEquipmentCheck": {
+    "managedBaseRevision": "affeb731744e071a53bba18081d63d5b7aefb3ee",
+    "attachmentNormalizedLfSha256": "9deefff69b42ac1c2d73ea3ed49b2d330c9041bead9bdd795f134feada12d5f8",
+    "start": "0x801851c4",
+    "endInclusive": "0x801852e0",
+    "instructionCount": 72,
+    "instructionWords": [
+      "3c048019",
+      "8c842d98",
+      "34020064",
+      "3c018019",
+      "a02238dc",
+      "3c018019",
+      "a02038de",
+      "3c018019",
+      "a02038df",
+      "3c018019",
+      "a02038e0",
+      "3c018019",
+      "a02038e1",
+      "90820006",
+      "00000000",
+      "30420020",
+      "14400035",
+      "00000000",
+      "9082001c",
+      "3c058006",
+      "24a52eb8",
+      "00021840",
+      "00621821",
+      "00031880",
+      "00651821",
+      "90620003",
+      "00000000",
+      "30420008",
+      "10400009",
+      "00000000",
+      "90620004",
+      "00000000",
+      "00021040",
+      "3c018006",
+      "00220821",
+      "90223f59",
+      "3c018019",
+      "a02238de",
+      "9082001e",
+      "00000000",
+      "00021840",
+      "00621821",
+      "00031880",
+      "00651821",
+      "90620003",
+      "90630004",
+      "30420040",
+      "10400006",
+      "00031040",
+      "3c018006",
+      "00220821",
+      "90223eb9",
+      "3c018019",
+      "a02238df",
+      "90820020",
+      "00000000",
+      "00021840",
+      "00621821",
+      "00031880",
+      "00651821",
+      "90620003",
+      "90630004",
+      "30420040",
+      "10400006",
+      "00031040",
+      "3c018006",
+      "00220821",
+      "90223eb9",
+      "3c018019",
+      "a02238e0",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "branches": [
+      {
+        "pc": "0x80185204",
+        "operation": "bne",
+        "target": "0x801852dc"
+      },
+      {
+        "pc": "0x80185234",
+        "operation": "beq",
+        "target": "0x8018525c"
+      },
+      {
+        "pc": "0x80185280",
+        "operation": "beq",
+        "target": "0x8018529c"
+      },
+      {
+        "pc": "0x801852c0",
+        "operation": "beq",
+        "target": "0x801852dc"
+      }
+    ],
+    "listedCallerCheck": {
+      "callPc": "0x801885c0",
+      "returnAddress": "0x801885c8",
+      "target": "0x801851c4"
+    },
+    "reset": {
+      "baseHitAddress": "0x801938dc",
+      "baseHit": 100,
+      "evadesStart": "0x801938de",
+      "evadesEndInclusive": "0x801938e1",
+      "allFourClearedBeforeMonsterBranch": true
+    },
+    "monster": {
+      "unitByteOffset": "0x06",
+      "mask": "0x20",
+      "behavior": "Nonzero branches to return after reset; no equipment contribution loads"
+    },
+    "equipment": {
+      "primaryTable": "0x80062eb8",
+      "primaryStride": 12,
+      "primaryTypeOffset": 3,
+      "primarySecondaryIdOffset": 4,
+      "accessory": {
+        "unitSlotOffset": "0x1c",
+        "typeMask": "0x08",
+        "secondaryTable": "0x80063f58",
+        "secondaryStride": 2,
+        "magicEvadeOffset": 1
+      },
+      "rightShield": {
+        "unitSlotOffset": "0x1e",
+        "typeMask": "0x40",
+        "secondaryTable": "0x80063eb8",
+        "secondaryStride": 2,
+        "magicEvadeOffset": 1
+      },
+      "leftShield": {
+        "unitSlotOffset": "0x20",
+        "typeMask": "0x40",
+        "secondaryTable": "0x80063eb8",
+        "secondaryStride": 2,
+        "magicEvadeOffset": 1
+      }
+    },
+    "managedMapping": "MagicEvasion.Load creates fresh qualifying accessory/shield contributions and class0; MagicEvasion.Prepare initializes baseHit100. Blocking-item labels are separate final-hit behavior, not contributions loaded here.",
+    "annotationClarification": "The monster bne exits when the bit is set; item-type beq branches skip contributions when the required bit is absent. Type membership is a bit test, not equality.",
+    "validation": {
+      "sourceAudit": {
+        "loadDescriptions": 8,
+        "preparationDescriptions": 15,
+        "rollDescriptions": 24,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 13,
+        "sourceFunctions": 21
+      },
+      "ownerBlobsVerified": 10,
+      "focusedManagedTestsPassed": 7,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
     }
   }
 }
