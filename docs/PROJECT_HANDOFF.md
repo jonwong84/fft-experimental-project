@@ -61,8 +61,10 @@ also matches all14 words/four ordered calls/nine returns. Magic Defense Up and
 Shell are separate *2/3 stores; existing shared C# preserves the truncation.
 Magic Attack Up also matches all20 words/seven returns. Its signed *4/3
 multiply-high sequence matches truncation/store for all65,536 signed16 inputs;
-existing C# agrees. ZOD-436 remains open. Magic Defense Up, Target's Status
-Affecting XA (Magical) and Compatibility are the next useful helper pages.
+existing C# agrees. Magic Defense Up matches all20 words/two returns and all
+signed16 *2/3 division inputs, including signed correction; no runtime change.
+ZOD-436 remains open. Target's Status Affecting XA (Magical) and Compatibility
+are the next useful helper pages.
 The shared Calculate Hit %/final-hit/per-source roll
 documentation was already supplied; no duplicate is needed.
 

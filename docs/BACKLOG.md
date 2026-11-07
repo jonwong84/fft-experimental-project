@@ -105,8 +105,9 @@ Its equipment, Transparent, Abandon/restriction and target-status helper listing
 are now cross-checked as supporting evidence; shared final-hit/roll documentation
 was already supplied. The [magical-modifier wrapper](behavior/faith-magic-amounts.md#supplied-magical-modifier-wrapper--zod-436-support)
 also matches its14 words, four ordered dependencies and nine listed returns.
-Magic Attack Up matches20 words/seven returns and all signed16 division inputs;
-Magic Defense Up is the next useful helper page.
+Magic Attack Up matches20 words/seven returns, Magic Defense Up20 words/two
+returns, and both match all signed16 division inputs. Target's Status Affecting
+XA (Magical) is the next useful helper page.
 
 ## Review programme
 

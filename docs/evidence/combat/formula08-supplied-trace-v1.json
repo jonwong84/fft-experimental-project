@@ -628,5 +628,143 @@
       "cExecuted": false,
       "fullTicketCompleted": false
     }
+  },
+  "suppliedMagicDefenseUpCheck": {
+    "managedBaseRevision": "e13757cc59abe7939ab606e73b58e2a82984bcf0",
+    "start": "0x8018631c",
+    "endInclusive": "0x80186368",
+    "instructionCount": 20,
+    "instructionWords": [
+      "3c028019",
+      "8c422d98",
+      "00000000",
+      "90420090",
+      "00000000",
+      "30420002",
+      "1040000b",
+      "3c025555",
+      "3c048019",
+      "248438ce",
+      "84830000",
+      "34425556",
+      "00031840",
+      "00620018",
+      "00031fc3",
+      "00001010",
+      "00431023",
+      "a4820000",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "supportCheck": {
+      "targetPointer": "0x80192d98",
+      "byteOffset": "0x90",
+      "mask": "0x02",
+      "branchPc": "0x80186334",
+      "skipTarget": "0x80186364",
+      "skipWhen": "Magic Defense Up bit is clear"
+    },
+    "arithmetic": {
+      "workAddress": "0x801938ce",
+      "load": "signed16",
+      "numerator": "XA*2 in signed32",
+      "divisionConstant": "0x55555556",
+      "operation": "signed product high32 minus numerator sign",
+      "rounding": "toward zero",
+      "store": "signed16",
+      "inputCount": 65536,
+      "allSignedHalfwordsMatchDivision": true,
+      "allQuotientsFitSigned16": true,
+      "samples": [
+        {
+          "inputXa": -32768,
+          "storedXa": -21845
+        },
+        {
+          "inputXa": -3,
+          "storedXa": -2
+        },
+        {
+          "inputXa": -2,
+          "storedXa": -1
+        },
+        {
+          "inputXa": -1,
+          "storedXa": 0
+        },
+        {
+          "inputXa": 0,
+          "storedXa": 0
+        },
+        {
+          "inputXa": 1,
+          "storedXa": 0
+        },
+        {
+          "inputXa": 2,
+          "storedXa": 1
+        },
+        {
+          "inputXa": 3,
+          "storedXa": 2
+        },
+        {
+          "inputXa": 7,
+          "storedXa": 4
+        },
+        {
+          "inputXa": 255,
+          "storedXa": 170
+        },
+        {
+          "inputXa": 32767,
+          "storedXa": 21844
+        }
+      ]
+    },
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80188754",
+        "returnAddress": "0x8018875c",
+        "target": "0x8018631c"
+      },
+      {
+        "callPc": "0x80189008",
+        "returnAddress": "0x80189010",
+        "target": "0x8018631c"
+      }
+    ],
+    "managedMapping": "FaithMagicAmountFormula.PrepareProduct conditionally uses ScaleXa(xa,2,3) for damage MagicDefenseUp; Shell remains a separate later step. Healing0x0C bypasses the target-defense branch.",
+    "clarifications": [
+      "A set support bit applies the reduction; beq skips it when the bit is clear.",
+      "The sign-correction register can be negative for negative XA; the wiki should-be-zero annotation is not a valid assumption across the signed16 domain.",
+      "The effect is exactly two thirds, not a decimal66% multiplier or nearest/floor rounding.",
+      "The leaf routine changes work XA only, with no RNG or unit-stat write. The no-r31-save warning concerns adding MIPS calls, not managed callers.",
+      "The exhaustive comparison is offline integer arithmetic, not original/C execution or a wider battle admission domain."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "faithDescriptions": 15,
+        "productDescriptions": 7,
+        "amountDescriptions": 22,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 14,
+        "sourceFunctions": 36,
+        "preparedTiersVerified": 8
+      },
+      "ownerBlobsVerified": 10,
+      "focusedManagedTestsPassed": 11,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
   }
 }

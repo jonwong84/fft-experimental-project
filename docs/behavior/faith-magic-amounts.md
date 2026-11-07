@@ -95,6 +95,7 @@ amount descriptions, including the literal full modifier chain and healing
 defense bypass, plus eight prepared Cure/Fire bindings. All11 focused .NET amount/
 arithmetic tests and eight Python tests pass. No runtime or fixture change is
 required; all ten owner draft blobs remain unchanged and ZOD-436 remains open.
+
 ### Supplied Magic Attack Up helper
 
 The owner's helper listing matches all20 instruction words at
@@ -120,8 +121,32 @@ Y, final HP or RNG. The routine contains no calls; its warning about preserving
 corresponding C# restriction. All11 focused .NET amount/arithmetic tests and eight
 Python tests pass; all ten owner draft blobs remain unchanged. No runtime or
 fixture change is required.
-The next useful supplied pages are Magic Defense Up routine, Target's Status
-Affecting XA (Magical), and Compatibility. ZOD-436 remains open.
+
+### Supplied Magic Defense Up helper
+
+The owner's listing matches all20 instruction words at `0x8018631c`–`0x80186368`
+and both listed returns (`0x8018875c`, `0x80189010`). The same supporting receipt
+records this check at the pinned source and prepared-byte baseline. This helper
+reads the **target's** support byte`0x90`, mask`0x02`. If the bit is clear, `beq`
+skips to return without changing XA. Otherwise it loads signed16 work XA,
+multiplies by2, divides by3 with truncation toward zero, then stores signed16.
+It does not change unit stats or draw RNG.
+
+The multiply-high/sign-correction sequence matches that exact division for
+all65,536 signed16 inputs in an offline integer comparison. Every quotient fits
+signed16. XA7 becomes4, XA-2 becomes-1, and XA-1 becomes0: this is neither a 66%
+multiplier nor rounding toward negative infinity. The instruction annotation
+saying the sign "should be0" must not exclude negative work values; the signed
+correction handles them. No original or C execution is claimed.
+
+The existing `ScaleXa(xa,2,3)` in the damage branch agrees. Shell still runs as
+its own later reduction, and formula0x0C healing continues to bypass both target
+defenses. The leaf-routine `r31` warning is MIPS calling-convention guidance,
+not a C# limitation. All11 focused .NET amount/arithmetic tests and eight Python
+tests pass; all ten owner draft blobs remain unchanged. No runtime or fixture
+change is required.
+The next useful supplied pages are Target's Status Affecting XA (Magical) and
+Compatibility. ZOD-436 remains open.
 
 ## Original implementation checkpoint
 
