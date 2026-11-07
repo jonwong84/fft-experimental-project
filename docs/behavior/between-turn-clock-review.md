@@ -75,12 +75,52 @@ All18 JAL sites resolve to12 distinct helpers at pinned metadata addresses:
   `ai_simulation_end`0x8018E628.
 
 Address/name correspondence is not full numerical validation of every helper.
-The most useful next supplied pages are **Status checks** at0x001832CC and
-**Death sentence, crystalization, treasurization, etc** at0x00183078. The former
-defines eligibility/CT-freeze and haste/slow flags; the latter stages upkeep,
-including its draws and execution-versus-simulation differences. Their linked
-dependencies can then be reviewed in caller order without duplicating the
-already confirmed End of Turn page.
+The supplied **Status checks** page at0x001832CC and its frozen-set dependency
+are confirmed below. The next useful supplied page is **Death sentence,
+crystalization, treasurization, etc** at0x00183078: it stages upkeep, including
+its draws and execution-versus-simulation differences. Its linked dependencies
+can then be reviewed in caller order without duplicating End of Turn.
+
+## Supplied Status checks (2026-11-07)
+
+All42 supplied words at0x801832CC..0x80183370 and all nine listed return
+locations match the hash-verified executable. The
+[status-flags receipt](../evidence/ai/turn-status-flags-trace-v1.json) pins the
+same reference revision, the classifier, `status_unit_set_test` and
+`status_check_data_init`, plus their data/enum declarations and metadata.
+
+The classifier returns in this precedence order:
+
+- Absent unit, any frozen-CT status, or ridden-mount bit0x40:0x01.
+- Otherwise Dead:0x06 (Incapacitated|Dead), without Haste/Slow flags.
+- Otherwise Sleep contributes0x0A if reached; Haste adds0x10 and Slow adds0x20.
+
+Haste and Slow can both be returned (0x30). The clock caller, not this helper,
+gives Slow precedence. Frozen CT and inability to take an ordinary turn are
+different: plain Dead does not freeze CT and still reaches CT/upkeep processing.
+A simultaneous frozen status takes precedence over the Dead return.
+
+The call at0x801832EC passes set index3 in its delay slot. This selects a
+five-byte status-check row, not status ID3 or raw mask3. The called helper
+tests each current-status byte for any intersection with that row and returns
+boolean1/0, without mutation or RNG. It checks effective current statuses,
+rather than only inflicted or innate status arrays.
+
+Following the dependency to initialization matters here. `status_check_data_init`
+builds row3 from bit0x80 of each status record's `flags_1`. The same hash-verified
+SCUS executable used above contains40 records at0x80065DE4 with16-byte stride
+and flags at offset4. Their freeze bit selects IDs1/8/15/30/35: **Crystal,
+Petrify, Treasure, Stop and Sleep**. Thus retail Sleep returns0x01 before the
+later0x0A branch. The code branch remains meaningful with altered status data
+and rebuilt check sets; it must not be removed or treated as the retail result.
+Dead, Don't Act and Don't Move are not members of this frozen set.
+
+Only this row's provenance is validated here. The initializer also builds other
+sets and clears item-location flags; those side effects do not belong in a
+per-unit query. The called helper and row construction are sufficiently traced
+without requiring another wiki paste for this dependency. No runtime status
+support is activated, no current-domain correction was identified, and unchanged
+gameplay tests were not repeated. The owner's turn-controller edit is preserved.
 
 ## Current managed boundary
 

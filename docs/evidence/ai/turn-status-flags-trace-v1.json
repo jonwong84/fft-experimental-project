@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "bbb5e4c3536bef6a57ed7164c1a6865df4c5d6fd",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "report": "docs/behavior/between-turn-clock-review.md",
+  "scope": "Supplied turn-status flags plus called set-test and initialization/verified-retail-data provenance for frozen-CT row3 only. Other status sets and runtime status expansion remain out of scope.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/turn/clock.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40868,
+      "sha256": "f76188542c39818fa2ab478e42ef63b4eb0f2c1c2db5a74db4120ddbaf4cb8cb"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 15884,
+      "sha256": "7ddb1c8ed2e0cad3de18dae6945364d4fffd2299aa4383a659ecbe27717b7eb9"
+    },
+    {
+      "path": "src/main/status_check_data.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2914,
+      "sha256": "27f6e99fe2d9627af92c2a46f5277bf10c93978c7f880d9995332207893f1ba0"
+    },
+    {
+      "path": "include/fft/status.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11673,
+      "sha256": "deeaeec02add8b9db7cca91c99517706033b18385ca433d32f1998d9d62e0e83"
+    },
+    {
+      "path": "include/fft/turn.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2844,
+      "sha256": "bf8eac9a51807894a645b9587c68323ab8c95411a176a0ccfbbfd752dfbfe6dd"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    },
+    {
+      "path": "target/main.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 135004,
+      "sha256": "b6066d98d481d73eb49d2d16be57ae3fc5ae4070830176fdeeeaae2bdeaec2a3"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_status_flags_calculate",
+      "startLine": 490,
+      "endLine": 522,
+      "normalizedLfSha256": "d2386dfccbf45ad8e2d7be18e26ffcfcbd4867e16b09e0526dc2c5837dc71f8c"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "symbol": "status_unit_set_test",
+      "startLine": 128,
+      "endLine": 140,
+      "normalizedLfSha256": "feb4d370a55427263303921356488ac86eb5841da04df876b5675be38df6e0ea"
+    },
+    {
+      "path": "src/main/status_check_data.c",
+      "symbol": "status_check_data_init",
+      "startLine": 9,
+      "endLine": 53,
+      "normalizedLfSha256": "74d4525fb05a45d294dee30dca144b02c76def68425a6cd30b475dc27963b2e6"
+    }
+  ],
+  "preparedValidation": {
+    "battle": {
+      "byteLength": 1397096,
+      "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+      "loadAddress": "0x80067000"
+    },
+    "executable": {
+      "byteLength": 356352,
+      "sha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562"
+    }
+  },
+  "suppliedInstructionCheck": {
+    "start": "0x801832cc",
+    "endInclusive": "0x80183370",
+    "instructionCount": 42,
+    "allMatched": true
+  },
+  "helperCall": {
+    "pc": "0x801832ec",
+    "target": "0x8005e1b0",
+    "symbol": "status_unit_set_test",
+    "delaySlotSetIndex": 3
+  },
+  "listedCallerChecks": [
+    {
+      "pc": "0x800725d8",
+      "target": "0x801832cc",
+      "returnAddress": "0x800725e0"
+    },
+    {
+      "pc": "0x801829c4",
+      "target": "0x801832cc",
+      "returnAddress": "0x801829cc"
+    },
+    {
+      "pc": "0x80182a54",
+      "target": "0x801832cc",
+      "returnAddress": "0x80182a5c"
+    },
+    {
+      "pc": "0x80182b44",
+      "target": "0x801832cc",
+      "returnAddress": "0x80182b4c"
+    },
+    {
+      "pc": "0x80182bb4",
+      "target": "0x801832cc",
+      "returnAddress": "0x80182bbc"
+    },
+    {
+      "pc": "0x80182c14",
+      "target": "0x801832cc",
+      "returnAddress": "0x80182c1c"
+    },
+    {
+      "pc": "0x80182da0",
+      "target": "0x801832cc",
+      "returnAddress": "0x80182da8"
+    },
+    {
+      "pc": "0x80182e1c",
+      "target": "0x801832cc",
+      "returnAddress": "0x80182e24"
+    },
+    {
+      "pc": "0x80183da4",
+      "target": "0x801832cc",
+      "returnAddress": "0x80183dac"
+    }
+  ],
+  "frozenSetProvenance": {
+    "primaryData": "g_status_effect_data",
+    "address": "0x80065de4",
+    "statusCount": 40,
+    "recordStride": 16,
+    "flags1Offset": 4,
+    "freezeFlag": "0x80",
+    "setIndex": 3,
+    "statusIds": [
+      1,
+      8,
+      15,
+      30,
+      35
+    ],
+    "statusNames": [
+      "Crystal",
+      "Petrify",
+      "Treasure",
+      "Stop",
+      "Sleep"
+    ],
+    "query": "Any overlap of unit current status and selected5-byte row; no RNG or mutation"
+  },
+  "findings": {
+    "precedence": [
+      "Absent ->0x01",
+      "Current status intersects frozen-CT set ->0x01",
+      "Ridden mount bit0x40 ->0x01",
+      "Dead ->0x06",
+      "Otherwise Sleep0x0a if reached, OR Haste0x10 and Slow0x20"
+    ],
+    "retailSleep": "Sleep is in row3 and exits as1; later Sleep0x0a branch is unreachable with this unmodified data. Preserve it for altered status definitions/check sets.",
+    "dead": "Plain Dead is not frozen and returns6, suppressing ordinary turns while retaining CT/upkeep processing; a simultaneous freeze status takes precedence.",
+    "bothSpeedFlags": "Returns0x30 when both are present and earlier exits do not apply; caller chooses Slow before Haste",
+    "initializerBoundary": "status_check_data_init builds multiple rows and clears item-location flags; this review validates only row3 derivation, not every initialization side effect"
+  },
+  "ownerEditPreserved": {
+    "path": "src/Zodiac.Framework.Ai/AiTurnController.cs",
+    "gitBlob": "373d13f739439813f9608aefc2d84715d8ed1346"
+  },
+  "runtimeChanged": false,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "testsRerun": false
+}
