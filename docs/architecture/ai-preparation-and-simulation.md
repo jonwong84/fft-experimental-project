@@ -124,6 +124,49 @@ not select this action. The supplied trace adds evidence for ZOD-430 without
 activating general Defend/status support. No runtime code or historical fixture
 changed; this source-only confirmation does not require another gameplay test run.
 
+## Supplied movement/pickup simulation (2026-11-07)
+
+The owner's Moving on crystal/treasure listing at0x8019DB80 matches all75
+instruction words in the hash-verified prepared BATTLE.BIN. The
+[movement/pickup receipt](../evidence/ai/movement-pickup-trace-v1.json) pins
+reference `11464943bbdbd2a0af022d90cb7f10455cf911df`, four source functions,
+coordinate layout, classification/policy enums and metadata. The coordinate
+helper call and both listed returns0x8019D484/0x8019D494 match the executable.
+
+`movement_pickup_simulate` first compares the full32-bit candidate and cached
+acting-unit coordinate words. Equality skips every update, including pickups
+and marking Move. The canonical packed fields are X/layer/Y/zero; the raw
+comparison also includes that final byte. On a changed word,
+`ai_acting_unit_place` at0x8019F258 writes X, Y and the terrain-layer bit to
+the actor. Facing and unrelated packed position bits remain intact; this
+helper does not update cached `acting_unit_coords` or perform movement search.
+Its three source assignments are available without requiring another wiki page.
+
+Crystal kind1 restores current HP and MP to their respective maxima, then
+clears Critical in both current and inflicted statuses. The latter byte at
+unit offset0x1BD is `inflicted_status[2]`, not pending current-action infliction.
+Any nonzero pickup then adds2 priority if the actor is noncritical after that
+recovery and the configured policy is not0x11. Thus a previously Critical
+actor can receive both crystal recovery and the bonus. Treasure does not heal
+here and cannot earn the bonus while the actor remains Critical. The priority
+store retains signed16 wrap; the bonus is separate from later absolute HP/status
+scoring. Every changed destination marks `movement_taken=1`, even without pickup.
+
+The pinned enum names policy0x11 `AI_AUTOBATTLE_RETREAT`, unlike the pasted
+Conserve CT annotation. It is separate from `AI_TARGET_CONSERVE_CT` flag0x04.
+The address comments also describe workspace offsets0x18/0xE30 as subtraction;
+the actual addresses are base0x8019F3C4 plus those positive offsets. The caller
+classifies a present occupant through `ai_tile_pickup_update`: None0, Crystal1,
+Treasure2; the later treasure test wins if both source status bits are present.
+
+The supplied routine consumes no RNG, grants no inventory and does not remove
+the pickup. Those actual game systems must not be inferred from this AI
+hypothesis. Its two caller sites place it after ACT in the admitted ACT-first
+branch or before ACT in Move-first, so recovery ordering can affect later work.
+General pickup simulation remains outside current effect-free managed profiles.
+This adds source evidence for ZOD-430 without changing runtime code or repeating
+unchanged gameplay tests. The owner's local AI turn-controller edit is preserved.
+
 ## Verification
 
 Existing ordinary AI regressions retain immediate/delayed ordering, excluded
