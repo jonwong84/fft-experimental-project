@@ -78,7 +78,7 @@ runtime admission are distinct coverage claims:
   implemented.
 
 For further FFHacktics comparison, the most useful remaining supplied listings
-are the physical cluster's three status/support helpers and
+are **Defense Up**, **Target Physical Statuses**, and
 **Damage and Knockback Routine (alternative)**. Their nested calls can then be
 matched to this inventory without repeating the already supplied shared helpers.
 These pages add independent annotations; they do not block the currently
@@ -125,8 +125,8 @@ fixture or owner-definition change is required, and this does not activate all
 eight caller families. All 186 focused .NET Dash/Stone/formula-assignment tests
 and two Python Dash tests pass; all ten owner drafts and the disabled CI gate
 remain unchanged. The supplied **Cluster of Physical Routines** at `0x80188adc`
-is now checked below. Its three status/support children and the alternative
-damage/knockback helper remain useful supplied checks.
+is now checked below. Its Berserk/Frog child is checked too; Defense Up, Target
+Physical Statuses and alternative damage/knockback remain useful supplied checks.
 
 ## Supplied physical-modifier cluster
 
@@ -139,7 +139,7 @@ its four source callees. Their fingerprints still match the earlier physical
 review. The wrapper calls each helper unconditionally and in this order:
 
 1. **Attacker Berserk/Frog (`0x80186254`)**: Berserk applies `3/2` to XA;
-   Frog then overwrites XA with 1. Its separately supplied listing is next.
+   Frog then overwrites XA with 1. The supplied listing is now checked below.
 2. **Defense Up (`0x801862cc`)**: the target's support applies a separate `2/3`
    step. The source name `without_supports` excludes the earlier attacker
    Attack Up/Martial Arts stage, not this target support.
@@ -160,13 +160,46 @@ can become 0 at Defense Up before ordinary compatibility floors it back to 1.
 Serpentarius's early return skips that floor. Frog is therefore not a blanket
 guarantee about the final XA under every combination.
 
-These child details are source-traced coverage; the separately supplied
-Attacker Berserk/Frog, Defense Up and Target Physical Statuses listings remain
-useful independent checks. Current physical support/status/general-zodiac
+These child details are source-traced coverage; the supplied Berserk/Frog
+listing is checked below. Defense Up and Target Physical Statuses listings
+remain useful independent checks. Current physical support/status/general-zodiac
 inputs remain guarded. This milestone changes documentation/evidence only;
 runtime tests were not repeated after the preceding passing 186 .NET/two Python
 physical validation. The source/prepared Dash audit and all ten owner draft
 checks pass again, with the disabled CI gate unchanged.
+
+## Supplied attacker Berserk/Frog helper
+
+The owner's listing matches all 30 words at `0x80186254`–`0x801862c8` and all
+four listed return addresses. The
+[trace receipt](../evidence/combat/attacker-berserk-frog-trace-v1.json) pins clean
+reference `11464943bbdbd2a0af022d90cb7f10455cf911df`, the verified prepared
+BATTLE.BIN, source and status layout. Return `0x80188aec` belongs to the
+physical-modifier cluster, correcting the supplied Magical XA * YA label.
+
+Both checks read the attacker's status byte `0x5a`: Berserk mask `0x08`, then
+Frog mask `0x02`. Berserk loads signed 16-bit working XA, multiplies by `3/2`,
+truncates toward zero and stores the low 16 bits. XA 5 becomes 7 and -5 becomes
+-7. The sign correction is needed for negative odd products; it does not mean
+positive results round upward. Large values retain the original narrowing.
+
+Frog is checked independently after the Berserk store and overwrites XA with 1.
+Thus Frog wins within this helper when both bits are set, including after a
+Berserk result wrapped. The Frog branch delay slot assigns register v0 to 1
+even when the branch skips its store; that assignment alone does not change XA.
+This remains a void helper, not a hit/result flag API.
+
+All 65,536 signed XA inputs across four status combinations agree with signed
+division/store (262,144 offline checks), plus eight literal boundaries. The
+pinned C helper agrees. The input is working XA, which may already contain
+attacker-support modifiers, rather than a fresh PA load. There is no RNG, other
+call, YA change, final damage write, target defense or zodiac step here.
+
+Frog's 1 is an intermediate value: later cluster stages still run. Current
+physical status inputs remain excluded, so no runtime or fixture change is
+needed. Source/prepared Dash and owner-preservation checks pass; runtime tests
+were not repeated after the prior 186 .NET/two Python physical validation.
+The next useful supplied listing is **Defense Up** at `0x801862cc`.
 
 ## Supplied physical-evasion wrapper (2026-11-07)
 

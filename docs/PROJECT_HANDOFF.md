@@ -215,9 +215,11 @@ signed-input/flag/type arithmetic cases. Its unarmed type gate and separate
 signed stores are retained; broader support inputs remain excluded. The supplied
 physical cluster now matches14 words/four calls/six returns. Its original
 Compatibility dependency reuses the magic review (112 words rechecked); no
-duplicate listing is needed and secondadvent remains deferred. The three child
-status/support listings and alternative damage/knockback remain useful supplied
-cross-checks; source order is already recorded. Broader modifiers,
+duplicate listing is needed and secondadvent remains deferred. The supplied
+Berserk/Frog helper matches30 words/four returns and 262,144 signed/status
+arithmetic cases; its caller label at0x80188aec is corrected to the physical
+cluster. Defense Up, Target Physical Statuses and alternative damage/knockback
+remain useful supplied cross-checks; source order is already recorded. Broader modifiers,
 equipment and landing/fall behavior remain deferred. No runtime change.
 
 The subsequent supplied physical-evasion wrapper is also source/byte checked:
