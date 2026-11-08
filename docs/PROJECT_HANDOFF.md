@@ -113,7 +113,11 @@ bit-preserving damage-to-healing transfer/type assignment, with no Undead check.
 Existing fresh-result routing agrees. Both Conditional Status Proc Roll listings
 match20 words/five returns and the inner call. Preview2 returns0 after the inner
 call; other modes test post-call AddedEffect0x0200. Existing fresh-mode/marker
-guards agree. The inner routine at0x00187690 is next. ZOD-436 remains open.
+guards agree. The inner routine matches21 words, Pass/Fail(100,19) call and its
+listed return: state0 draws, return0 ORs0x0200, other modes/failure preserve flags.
+The inline success condition is reversed and the scaled roll range is0–99.
+Existing C# agrees. Pass/Fail Roll at0x8005e0cc is next; root RNG evidence already
+exists. ZOD-436 remains open.
 The owner-approved `.circleci/config.yml` gate is committed: CircleCI is intentionally
 paused by default through the `ci-enabled: false` workflow gate, with existing
 jobs/filters retained. Re-enabling is a later owner decision. Continue local

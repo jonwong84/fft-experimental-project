@@ -133,7 +133,9 @@ mode distinctions. Elemental Absorption matches21 words/eight returns and the
 bit-preserving amount/type transfer. Both Conditional Status Proc Roll listings
 match20 words/five returns: call inner first, then return0 for Preview2 or test
 the marker in other modes.
-The inner routine is next; the full shared-consumer review remains open.
+The inner routine matches21 words/the chance call/one return: Execute-only,
+Pass/Fail return0 sets0x0200 and failures preserve existing flags. Pass/Fail Roll
+is the next useful listing; the full shared-consumer review remains open.
 
 ## Review programme
 

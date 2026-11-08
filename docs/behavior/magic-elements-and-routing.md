@@ -359,7 +359,8 @@ All13 focused .NET routing/composition tests and eight Python tests pass; all te
 owner draft blobs and the approved disabled-by-default CI gate are unchanged.
 No runtime or fixture change is required. The supplied
 [Conditional Status Proc Roll wrapper](magic-conditional-proc.md#supplied-conditional-status-proc-roll-wrapper)
-at `0x001884c0` is now checked too; its inner routine is next. ZOD-436 remains open.
+at `0x001884c0` and its execution-only inner routine are now checked too; the
+shared Pass/Fail listing is next. ZOD-436 remains open.
 
 ## Original implementation checkpoint
 

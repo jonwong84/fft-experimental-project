@@ -70,8 +70,45 @@ source/prepared audit passes six roll and26 decision descriptions plus four Fire
 tier/empty-status bindings. All15 focused .NET proc/composition tests and eight
 Python tests pass; all ten owner draft blobs and the approved disabled-by-default
 CI gate remain unchanged. No runtime or fixture change is required.
-The next useful supplied page is Conditional Status Proc Roll (19%) Inner Routine
-at `0x00187690`. ZOD-436 remains open.
+ZOD-436 remains open.
+
+## Supplied execution-only inner proc routine
+
+The owner's listing matches all21 instruction words at `0x80187690`–`0x801876e0`,
+the chance-helper call and the listed return `0x801884d0`. The same supporting
+receipt pins the call arguments, two early-exit branches, effect-word update,
+seven literal mode/flag descriptions and five threshold descriptions at the
+unchanged reference/prepared baseline.
+
+The scalar action-state word must equal0 (Execute). Any nonzero state branches
+to return **before** the RNG call. Execution calls `random_roll_pass_fail` at
+`0x8005e0cc` with maximum100 and threshold19; the threshold is assigned in the
+call delay slot. A nonzero returned value branches past the marker update.
+Only return0 performs unsigned16 read/OR/write of AddedEffect`0x0200` in target
+action offset`0x10`, preserving other flags. The supplied inline pseudocode's
+`rollResult != 0` success condition is reversed.
+
+The pinned helper scales raw rand0–32767 with `raw*100/32768`, producing0–99,
+then returns1 when that result is at least19. The notes' inclusive "0–100" range
+is inaccurate. Raw6225 maps to18 and succeeds;6226 maps to19 and fails. This is
+not a modulo100 roll. Failure does not clear an old AddedEffect marker, which
+explains the outer wrapper's sensitivity to stale flags. No non-execution path
+draws or clears markers.
+
+The inner routine does not check HP amount, hit, ability elements, the status
+record or an existing marker before drawing. It sets a marker, not a live status
+or an overall hit result. Empty status data or zero damage therefore does not
+justify omitting its execution draw. Absorbed damage retains the same family
+tail. Broader stale/pending contexts remain outside managed admission.
+
+`MagicConditionalProc.Evaluate` already matches the fresh Execute draw/threshold,
+set delta and no-draw Preview/AI paths. Its atomic draw-counter exhaustion
+rejection is an explicit managed guard, not a PS1 counter rule. No runtime or
+fixture change is required. All15 focused .NET proc/composition tests and eight
+Python tests pass; all ten owner draft blobs and the approved disabled-by-default
+CI gate remain unchanged. The next useful supplied page is Pass/Fail Roll at
+`0x8005e0cc`; its local source is already pinned, and existing root RNG evidence
+remains reusable. ZOD-436 remains open.
 
 ## Original implementation checkpoint
 

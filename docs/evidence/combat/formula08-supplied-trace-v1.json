@@ -93,6 +93,24 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 11466,
       "sha256": "28cb002ca1ab5bf2fe139ffea6e4a71acaef70fe50c9023327439a1465b56fab"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 15884,
+      "sha256": "7ddb1c8ed2e0cad3de18dae6945364d4fffd2299aa4383a659ecbe27717b7eb9"
+    },
+    {
+      "path": "target/main.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 135004,
+      "sha256": "b6066d98d481d73eb49d2d16be57ae3fc5ae4070830176fdeeeaae2bdeaec2a3"
+    },
+    {
+      "path": "include/fft/formula.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9954,
+      "sha256": "2ed903ab22091474bfa4b364594dca038c201232b0062f3dbbd91c02d2d25bd2"
     }
   ],
   "sourceFunctions": [
@@ -298,6 +316,13 @@
       "startLine": 412,
       "endLine": 418,
       "normalizedLfSha256": "40d4f276cd1a506807f87002a9bc21cfac252bbf09da445b8ff5f0df14e9a008"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "symbol": "random_roll_pass_fail",
+      "startLine": 84,
+      "endLine": 88,
+      "normalizedLfSha256": "fe644f4e2a6aefc5520152de095c4762912d9dd0dbb92fadd12c0ff5a5c89f88"
     }
   ],
   "managedFiles": [
@@ -4194,6 +4219,187 @@
       "Non-preview stale AddedEffect can return0 after a failed/no inner roll; current non-preview admission requires the marker known clear at entry."
     ],
     "managedMapping": "MagicConditionalProc.Evaluate matches supported modes Execute0/AiSimulation1/Preview2, keeps no-draw Preview/AI paths and fresh-flag/no-pending guards. Broader stale/pending contexts remain rejected.",
+    "validation": {
+      "sourceAudit": {
+        "rollDescriptions": 6,
+        "decisionDescriptions": 26,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 9,
+        "sourceFunctions": 10,
+        "emptyStatusRecordVerified": true,
+        "fireTiersVerified": 4
+      },
+      "ownerBlobsVerified": 10,
+      "ownerApprovedCiEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "committed": true,
+        "ciEnabledDefault": false
+      },
+      "focusedManagedTestsPassed": 15,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedConditionalProcInnerCheck": {
+    "managedBaseRevision": "dba0887f692878b5cb2b8dcad76daa2a71db30a3",
+    "start": "0x80187690",
+    "endInclusive": "0x801876e0",
+    "instructionCount": 21,
+    "instructionWords": [
+      "3c028019",
+      "8c42f5fc",
+      "27bdffe8",
+      "1440000d",
+      "afbf0010",
+      "34040064",
+      "0c017833",
+      "34050013",
+      "14400008",
+      "00000000",
+      "3c038019",
+      "8c632d90",
+      "00000000",
+      "94620010",
+      "00000000",
+      "34420200",
+      "a4620010",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "executionGate": {
+      "pc": "0x8018769c",
+      "stateWord": "0x8018f5fc",
+      "runOnlyFor": 0,
+      "nonzeroStateSkipTarget": "0x801876d4"
+    },
+    "chanceCall": {
+      "pc": "0x801876a8",
+      "target": "0x8005e0cc",
+      "symbol": "random_roll_pass_fail",
+      "maximum": 100,
+      "threshold": 19,
+      "thresholdSetInDelaySlot": true
+    },
+    "failedRollBranch": {
+      "pc": "0x801876b0",
+      "skipWhen": "r2!=0",
+      "target": "0x801876d4",
+      "successRequiresReturn": 0
+    },
+    "flagUpdate": {
+      "pc": "0x801876cc",
+      "operation": "OR0x0200",
+      "halfwordStorePc": "0x801876d0",
+      "targetActionOffset": "0x10",
+      "preservesOtherFlags": true
+    },
+    "listedCallerCheck": {
+      "callPc": "0x801884c8",
+      "returnAddress": "0x801884d0",
+      "target": "0x80187690"
+    },
+    "literalModeFlagDescriptions": [
+      {
+        "actionState": 0,
+        "passFailReturn": 0,
+        "initialEffects": 0,
+        "expectedEffects": 512,
+        "expectedDraws": 1
+      },
+      {
+        "actionState": 0,
+        "passFailReturn": 0,
+        "initialEffects": 1152,
+        "expectedEffects": 1664,
+        "expectedDraws": 1
+      },
+      {
+        "actionState": 0,
+        "passFailReturn": 1,
+        "initialEffects": 512,
+        "expectedEffects": 512,
+        "expectedDraws": 1
+      },
+      {
+        "actionState": 0,
+        "passFailReturn": 1,
+        "initialEffects": 0,
+        "expectedEffects": 0,
+        "expectedDraws": 1
+      },
+      {
+        "actionState": 1,
+        "passFailReturn": null,
+        "initialEffects": 1024,
+        "expectedEffects": 1024,
+        "expectedDraws": 0
+      },
+      {
+        "actionState": 2,
+        "passFailReturn": null,
+        "initialEffects": 0,
+        "expectedEffects": 0,
+        "expectedDraws": 0
+      },
+      {
+        "actionState": 0,
+        "passFailReturn": 0,
+        "initialEffects": 65535,
+        "expectedEffects": 65535,
+        "expectedDraws": 1
+      }
+    ],
+    "literalThresholdDescriptions": [
+      {
+        "raw": 0,
+        "percent": 0,
+        "expectedPassFailReturn": 0
+      },
+      {
+        "raw": 6225,
+        "percent": 18,
+        "expectedPassFailReturn": 0
+      },
+      {
+        "raw": 6226,
+        "percent": 19,
+        "expectedPassFailReturn": 1
+      },
+      {
+        "raw": 32700,
+        "percent": 99,
+        "expectedPassFailReturn": 1
+      },
+      {
+        "raw": 32767,
+        "percent": 99,
+        "expectedPassFailReturn": 1
+      }
+    ],
+    "documentationCorrections": [
+      "The inline rollResult!=0 success comment is inverted: nonzero skips the OR; zero succeeds.",
+      "Pass/Fail(100,19) scales a raw0..32767 draw into0..99, not an inclusive0..100 roll."
+    ],
+    "managedMapping": "MagicConditionalProc.Evaluate uses one existing Next draw only for fresh Execute, tests raw*100/32768<19 and returns a set delta. Preview/AI skip the draw; unsupported stale/pending work is rejected.",
+    "boundaries": [
+      "The inner routine does not inspect HP amount, hit flag, element, status record or a preexisting AddedEffect before drawing.",
+      "A failed roll or non-execution path never clears an old marker; the outer wrapper subsequently reads it outside Preview.",
+      "Success ORs a marker rather than applying a status or declaring an overall hit.",
+      "The source has no managed draw-count ceiling. The existing atomic counter-exhaustion rejection remains an explicit managed contract.",
+      "Only this one listed caller is claimed; source chance/root RNG ownership remains separate from this instruction check."
+    ],
     "validation": {
       "sourceAudit": {
         "rollDescriptions": 6,
