@@ -120,8 +120,12 @@ Existing C# agrees. Pass/Fail Roll matches 21 words, its rand veneer and 14 list
 callers after correcting the SCUS return to0x8005cfe8. Its signed product/division
 and threshold behavior agree with the admitted C# path; 229,376 nonoverflowing
 products and 13 signed boundaries pass offline checks. The stack annotation is
-also corrected to32 bytes. The preserving status applicator at0x80187eb4 is the
-next useful listing; root RNG evidence already exists. ZOD-436 remains open.
+also corrected to32 bytes. The preserving status wrapper matches 28 words, its
+inner call and 13 listed returns. It restores exactly four bytes: hit, miss type
+and unsigned16 accuracy, retaining inner status/flag/work/RNG changes. Existing
+empty-record composition agrees; general status application remains separate.
+The inner status applicator at0x80187f24 is the next useful listing; root RNG
+evidence already exists. ZOD-436 remains open.
 The owner-approved `.circleci/config.yml` gate is committed: CircleCI is intentionally
 paused by default through the `ci-enabled: false` workflow gate, with existing
 jobs/filters retained. Re-enabling is a later owner decision. Continue local

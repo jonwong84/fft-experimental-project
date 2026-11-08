@@ -146,9 +146,51 @@ fixture change is required. All 25 focused .NET RNG/proc/composition tests and
 eight Python tests pass; all ten owner drafts and the approved disabled CI gate
 remain unchanged. Listed caller checks do not establish a complete
 call graph or activate their other gameplay families. Frame/VSync RNG scheduling
-and broader status sets remain separate. The next useful supplied listing is
-**Apply status (to action) — Preserve hit status, evade type, hit %** at
-`0x80187eb4`. ZOD-436 remains open for the full shared-consumer review.
+and broader status sets remain separate. The preserving status wrapper at
+`0x80187eb4` is now checked below. ZOD-436 remains open for the full
+shared-consumer review.
+
+## Supplied preserving status wrapper
+
+The owner's listing matches all 28 instruction words at `0x80187eb4`–`0x80187f20`,
+the inner call to `0x80187f24` and all 13 listed return locations in the verified
+prepared BATTLE.BIN. The same supporting receipt pins clean reference
+`11464943bbdbd2a0af022d90cb7f10455cf911df`, `formula_apply_status`, the inner
+applicator and the forced-miss helper relevant to the admitted empty record.
+
+Before calling the inner applicator, the wrapper saves unsigned byte miss type
+at offset `0x02`, unsigned 16-bit accuracy at `0x2a`, and unsigned byte hit at
+`0x00`. It unconditionally calls the inner routine, then restores hit, accuracy
+and miss type in that order. The restored footprint is exactly four bytes:
+`0x00`, `0x02`, `0x2a` and `0x2b`. Accuracy is not narrowed to a byte. Incoming
+values are preserved rather than normalized to hit, 100% or a particular miss
+type. Restoration rereads the global target-action pointer after the call.
+
+The wrapper neither tests the original hit/accuracy nor rolls RNG itself.
+Its inner routine owns status processing and any related draws. Only the three
+saved fields are restored: status infliction/removal, HP/MP amounts, attack type,
+special effects and ability work are not snapshotted here. Restoring the hit
+fields therefore does not roll back a successful status change or refund a draw.
+These are planned action results, not direct live-unit status publication.
+
+In the current fresh empty-status context, the inner routine finds no infliction
+or removal, calls `formula_force_attack_miss` and returns. That helper changes
+only hit, miss type and accuracy; the wrapper restores all three. HP results and
+the earlier AddedEffect marker survive. Empty status data therefore cannot turn
+the damage into a miss or justify skipping the preceding proc draw. This does
+not imply that a status was applied.
+
+`FaithMagicFormula.ResolveProjectedAfterHit` already models that admitted empty
+attempt by retaining its hit/accuracy/miss facts. `MagicResultFinalization`
+requires `EmptyStatusRecord`; nonempty status work remains rejected. Later
+finalization may still clear hit for zero accuracy, so the wrapper's restoration
+is not an unconditional final-hit guarantee. No runtime or fixture change is
+required. The source audits retain the four Fire tier/empty-record bindings.
+All 29 focused .NET proc/composition/finalization tests and 16 Python tests pass;
+the ten owner drafts, approved controller edit and disabled CI gate are unchanged.
+The next useful supplied listing is **Apply status (to action)** itself, at
+`0x80187f24`. General status modes, filtering and their dependencies remain
+separate from this wrapper cross-check. ZOD-436 remains open.
 
 ## Original implementation checkpoint
 

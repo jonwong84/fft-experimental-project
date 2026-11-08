@@ -137,8 +137,10 @@ The inner routine matches21 words/the chance call/one return: Execute-only,
 Pass/Fail return0 sets0x0200 and failures preserve existing flags. Pass/Fail Roll
 matches 21 words, its RNG veneer and 14 listed callers after correcting the SCUS
 return to0x8005cfe8. Signed division and scaled thresholds agree with current C#.
-The preserving status applicator at0x80187eb4 is the next useful listing; the
-full shared-consumer review remains open.
+The preserving status wrapper matches 28 words, its inner call and 13 listed
+returns: only hit/miss/unsigned16 accuracy are restored. Current empty-record
+composition agrees. The inner status applicator at0x80187f24 is the next useful
+listing; the full shared-consumer review remains open.
 
 ## Review programme
 

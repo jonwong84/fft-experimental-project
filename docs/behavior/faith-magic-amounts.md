@@ -269,8 +269,9 @@ current-status admission and the final result cap remain separate. All19 focused
 owner draft blobs and the unrelated CI edit are unchanged. No runtime or fixture
 change is needed. The supplied [Elemental Absorb and status roll wrapper](magic-conditional-proc.md#supplied-absorptionproc-wrapper--zod-436-support)
 at `0x0018871c` and its absorption/conditional-proc/inner helpers are now checked
-too, including the shared Pass/Fail listing. The preserving status applicator at
-`0x80187eb4` is the next useful listing. ZOD-436 remains open.
+too, including the shared Pass/Fail listing and preserving status wrapper at
+`0x80187eb4`. The inner status applicator at `0x80187f24` is the next useful
+listing. ZOD-436 remains open.
 
 ## Original implementation checkpoint
 

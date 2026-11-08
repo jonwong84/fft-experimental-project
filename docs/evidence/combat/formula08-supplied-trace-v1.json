@@ -361,6 +361,20 @@
       "startLine": 119,
       "endLine": 187,
       "normalizedLfSha256": "a00159d0f4a24a516ea792816962b21bc1e3ca023a9370a8d09d055f3b88c3e0"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_apply_status_to_action",
+      "startLine": 674,
+      "endLine": 759,
+      "normalizedLfSha256": "f0d7b7151fe1d4a05cc9258db92475d68378d3c584ae19a57249aa68c2bebaa9"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_force_attack_miss",
+      "startLine": 56,
+      "endLine": 61,
+      "normalizedLfSha256": "c787313b90664c07e6dfaf637f597f90ccd31d51d090e31654d906bf3e4c7528"
     }
   ],
   "managedFiles": [
@@ -4779,6 +4793,253 @@
       },
       "focusedManagedTestsPassed": 25,
       "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedStatusPreservationCheck": {
+    "managedBaseRevision": "ec2658ed5ac460d57ebe7aff20699b27bedd2e6a",
+    "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "start": "0x80187eb4",
+    "endInclusive": "0x80187f20",
+    "instructionCount": 28,
+    "instructionWords": [
+      "3c028019",
+      "8c422d90",
+      "27bdffe0",
+      "afbf001c",
+      "afb20018",
+      "afb10014",
+      "afb00010",
+      "90520002",
+      "9451002a",
+      "90500000",
+      "0c061fc9",
+      "00000000",
+      "3c028019",
+      "8c422d90",
+      "00000000",
+      "a0500000",
+      "3c028019",
+      "8c422d90",
+      "00000000",
+      "a451002a",
+      "a0520002",
+      "8fbf001c",
+      "8fb20018",
+      "8fb10014",
+      "8fb00010",
+      "27bd0020",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "innerCall": {
+      "pc": "0x80187edc",
+      "target": "0x80187f24",
+      "returnAddress": "0x80187ee4",
+      "delaySlot": "nop"
+    },
+    "savedFields": [
+      {
+        "offset": "0x02",
+        "widthBits": 8,
+        "signed": false,
+        "register": 18,
+        "meaning": "miss type"
+      },
+      {
+        "offset": "0x2a",
+        "widthBits": 16,
+        "signed": false,
+        "register": 17,
+        "meaning": "attack accuracy"
+      },
+      {
+        "offset": "0x00",
+        "widthBits": 8,
+        "signed": false,
+        "register": 16,
+        "meaning": "hit byte"
+      }
+    ],
+    "restoredFields": [
+      {
+        "pc": "0x80187ef0",
+        "offset": "0x00",
+        "widthBits": 8
+      },
+      {
+        "pc": "0x80187f00",
+        "offset": "0x2a",
+        "widthBits": 16
+      },
+      {
+        "pc": "0x80187f04",
+        "offset": "0x02",
+        "widthBits": 8
+      }
+    ],
+    "restoredByteOffsets": [
+      "0x00",
+      "0x02",
+      "0x2a",
+      "0x2b"
+    ],
+    "listedCallers": [
+      {
+        "returnAddress": "0x801887ec",
+        "callPc": "0x801887e4",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x80188b94",
+        "callPc": "0x80188b8c",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x80188ce4",
+        "callPc": "0x80188cdc",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x80188de4",
+        "callPc": "0x80188ddc",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x80188e68",
+        "callPc": "0x80188e60",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x801895b4",
+        "callPc": "0x801895ac",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x80189b84",
+        "callPc": "0x80189b7c",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x80189d64",
+        "callPc": "0x80189d5c",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x8018a240",
+        "callPc": "0x8018a238",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x8018a5d4",
+        "callPc": "0x8018a5cc",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x8018a658",
+        "callPc": "0x8018a650",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x8018aa00",
+        "callPc": "0x8018a9f8",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x8018acec",
+        "callPc": "0x8018ace4",
+        "word": "0c061fad",
+        "matched": true
+      }
+    ],
+    "sourceFunctions": [
+      {
+        "path": "src/battle/combat/formula_modifiers.c",
+        "symbol": "formula_apply_status",
+        "startLine": 651,
+        "endLine": 663,
+        "normalizedLfSha256": "2fb9c77ece0d543631574be792c72bbcc1b4de59819bb11f062f438b96bc4998"
+      },
+      {
+        "path": "src/battle/combat/formula_modifiers.c",
+        "symbol": "formula_apply_status_to_action",
+        "startLine": 674,
+        "endLine": 759,
+        "normalizedLfSha256": "f0d7b7151fe1d4a05cc9258db92475d68378d3c584ae19a57249aa68c2bebaa9"
+      },
+      {
+        "path": "src/battle/combat/formula_core.c",
+        "symbol": "formula_force_attack_miss",
+        "startLine": 56,
+        "endLine": 61,
+        "normalizedLfSha256": "c787313b90664c07e6dfaf637f597f90ccd31d51d090e31654d906bf3e4c7528"
+      }
+    ],
+    "managedMapping": "FaithMagicFormula.ResolveProjectedAfterHit retains hit/unsigned16 accuracy/miss around the known-empty status attempt. MagicResultFinalization requires EmptyStatusRecord and may later clear hit for zero accuracy. No generic status wrapper/API is added.",
+    "boundaries": [
+      "No branch or RNG call in the wrapper; the inner applicator is called regardless of saved hit/accuracy/miss values. Inner RNG or work mutations are not rolled back.",
+      "Only four target-action bytes are restored, after rereading the global action pointer. HP/MP amounts, type/effect flags, status changes and ability work are not snapshotted by this wrapper.",
+      "An empty fresh status record reaches forced failure in the inner routine, which clears only the three fields restored here. The earlier proc marker and HP result therefore survive. This claim requires the admitted empty action/status context.",
+      "The wrapper preserves incoming values; it does not force hit=1, accuracy=100 or miss type=Hit, and later finalization may change them.",
+      "All13 supplied returns match, without claiming the list is exhaustive or those other ability families are ported.",
+      "General status infliction/removal/filtering is not activated. Apply status (to action) at0x80187f24 is the next useful supplied listing; ZOD-436 stays open."
+    ],
+    "validation": {
+      "sourceAudits": {
+        "proc": {
+          "rollDescriptions": 6,
+          "decisionDescriptions": 26,
+          "originalExecuted": false,
+          "cExecuted": false,
+          "managedExecuted": false,
+          "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+          "referenceClean": true,
+          "sourceFiles": 9,
+          "sourceFunctions": 10,
+          "emptyStatusRecordVerified": true,
+          "fireTiersVerified": 4
+        },
+        "finalization": {
+          "rawDescriptions": 20,
+          "composedDescriptions": 20,
+          "originalExecuted": false,
+          "cExecuted": false,
+          "managedExecuted": false,
+          "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+          "referenceClean": true,
+          "sourceFiles": 8,
+          "sourceFunctions": 15,
+          "emptyStatusRecordVerified": true,
+          "fireTiersVerified": 4
+        }
+      },
+      "ownerBlobsVerified": 10,
+      "ownerControllerBlob": "4856db5509cd27ee13f02e7918d72ce42a47852f",
+      "ownerApprovedCiEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "committed": true,
+        "ciEnabledDefault": false
+      },
+      "focusedManagedTestsPassed": 29,
+      "focusedPythonTestsPassed": 16,
       "managedTestsExecuted": true,
       "runtimeChanged": false,
       "originalExecuted": false,
