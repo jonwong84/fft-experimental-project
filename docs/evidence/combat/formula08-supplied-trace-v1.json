@@ -57,6 +57,18 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 14957,
       "sha256": "6e97b3935c0d9cdcb8f6ba9ee2d40985b645bc0b03281a0d50d3d20aae35591c"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 23857,
+      "sha256": "57dd4fa8b07ef93c4a8e21c73657a0fdbe6c601a6db0b0351ae15b3cd15e4aea"
+    },
+    {
+      "path": "include/fft/weather.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3790,
+      "sha256": "baf439867bef5e0de3a0acc925b1a7205c4de05db582187c382cfd618492ef03"
     }
   ],
   "sourceFunctions": [
@@ -178,6 +190,13 @@
       "startLine": 161,
       "endLine": 191,
       "normalizedLfSha256": "69ea5be9c0258753c1393424336e648878297e4e81c5473767b593514e020ec4"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "weather_get_effective",
+      "startLine": 52,
+      "endLine": 66,
+      "normalizedLfSha256": "fb4214f8dcf5207b63bf48cb3943e694b517ce6502cef338430d0cefc6211bfb"
     }
   ],
   "managedFiles": [
@@ -234,6 +253,18 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 4934,
       "sha256": "0705858cf9ae17ac5ef1433e67310d8fdc4dd1b0f57514980727d5880dacb41a"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicElement.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 181,
+      "sha256": "5484a5351a2fad36ca483578f97f2065967dbdee5eca51d52b9ab24310a6da62"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageWeather.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 230,
+      "sha256": "17f7ecfc92fd7d2534805fbff584bb934347983275c354b572de4e6118754193"
     }
   ],
   "preparedValidation": {
@@ -1863,6 +1894,233 @@
       },
       "focusedManagedTestsPassed": 10,
       "focusedPythonTestsPassed": 16,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedWeatherElementCheck": {
+    "managedBaseRevision": "ba30e18a3b8a6c3c5c84b453a8ed32353686f4f4",
+    "attachmentNormalizedLfSha256": "68b0fecd5982eebed09584874530c725d94c771a81392528ab975cf9e97666ac",
+    "start": "0x80186ed0",
+    "endInclusive": "0x80186fcc",
+    "instructionCount": 64,
+    "instructionWords": [
+      "27bdffe8",
+      "afb00010",
+      "3c108019",
+      "921038f7",
+      "afbf0014",
+      "0c063998",
+      "00000000",
+      "00402821",
+      "24a2fffd",
+      "2c420002",
+      "1040001e",
+      "32020080",
+      "1040000e",
+      "32020040",
+      "3c048019",
+      "8c842d90",
+      "00000000",
+      "84830004",
+      "00000000",
+      "00031040",
+      "00431021",
+      "04410002",
+      "00000000",
+      "24420003",
+      "00021083",
+      "a4820004",
+      "32020040",
+      "1040000e",
+      "24a2fffa",
+      "3c048019",
+      "8c842d90",
+      "00000000",
+      "84830004",
+      "00000000",
+      "00031080",
+      "00431021",
+      "04410002",
+      "00000000",
+      "24420003",
+      "00021083",
+      "a4820004",
+      "24a2fffa",
+      "2c420002",
+      "1040000f",
+      "32020020",
+      "1040000d",
+      "00000000",
+      "3c048019",
+      "8c842d90",
+      "00000000",
+      "84830004",
+      "00000000",
+      "00031080",
+      "00431021",
+      "04410002",
+      "00000000",
+      "24420003",
+      "00021083",
+      "a4820004",
+      "8fbf0014",
+      "8fb00010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "effectiveWeatherCall": {
+      "callPc": "0x80186ee4",
+      "target": "0x8018e660",
+      "symbol": "weather_get_effective",
+      "managedBoundary": "Caller supplies already-effective weather; map/script selection remains separate"
+    },
+    "listedCallerChecks": [
+      {
+        "callPc": "0x8018878c",
+        "returnAddress": "0x80188794",
+        "target": "0x80186ed0"
+      },
+      {
+        "callPc": "0x80188e24",
+        "returnAddress": "0x80188e2c",
+        "target": "0x80186ed0"
+      },
+      {
+        "callPc": "0x80189d18",
+        "returnAddress": "0x80189d20",
+        "target": "0x80186ed0"
+      },
+      {
+        "callPc": "0x8018a614",
+        "returnAddress": "0x8018a61c",
+        "target": "0x80186ed0"
+      }
+    ],
+    "orderedRules": [
+      "Effective weather3/4: Fire bit0x80 applies storedAmount*3/4, then Lightning bit0x40 applies storedAmount*5/4.",
+      "Effective weather6/7: Ice bit0x20 applies storedAmount*5/4.",
+      "Effective weather0/1/2/5 has no damage modification. Unrelated element bits do not participate."
+    ],
+    "arithmetic": {
+      "loadStore": "signed16 HP damage at target-action offset0x04",
+      "rounding": "Negative numerator adds3 before arithmetic shift2, giving truncation toward zero",
+      "narrowAfterEachStep": true,
+      "signedInputs": 65536,
+      "admittedEffectiveWeathers": 8,
+      "relevantElementCombinations": 8,
+      "comparisons": 4194304,
+      "allMatched": true,
+      "samples": [
+        {
+          "inputAmount": -5,
+          "weather": 3,
+          "elementBits": "0xc0",
+          "storedAmount": -3
+        },
+        {
+          "inputAmount": -5,
+          "weather": 4,
+          "elementBits": "0x40",
+          "storedAmount": -6
+        },
+        {
+          "inputAmount": -5,
+          "weather": 5,
+          "elementBits": "0x20",
+          "storedAmount": -5
+        },
+        {
+          "inputAmount": -5,
+          "weather": 6,
+          "elementBits": "0x20",
+          "storedAmount": -6
+        },
+        {
+          "inputAmount": 5,
+          "weather": 3,
+          "elementBits": "0xc0",
+          "storedAmount": 3
+        },
+        {
+          "inputAmount": 5,
+          "weather": 4,
+          "elementBits": "0x40",
+          "storedAmount": 6
+        },
+        {
+          "inputAmount": 5,
+          "weather": 5,
+          "elementBits": "0x20",
+          "storedAmount": 5
+        },
+        {
+          "inputAmount": 5,
+          "weather": 6,
+          "elementBits": "0x20",
+          "storedAmount": 6
+        },
+        {
+          "inputAmount": 32767,
+          "weather": 3,
+          "elementBits": "0xc0",
+          "storedAmount": 30718
+        },
+        {
+          "inputAmount": 32767,
+          "weather": 4,
+          "elementBits": "0x40",
+          "storedAmount": -24578
+        },
+        {
+          "inputAmount": 32767,
+          "weather": 5,
+          "elementBits": "0x20",
+          "storedAmount": 32767
+        },
+        {
+          "inputAmount": 32767,
+          "weather": 6,
+          "elementBits": "0x20",
+          "storedAmount": -24578
+        }
+      ]
+    },
+    "clarifications": [
+      "The negative-arithmetic branches are meaningful after signed product overflow; their never annotations must not remove them.",
+      "The addiu3 instruction adds3 to a negative numerator, rather than replacing damage with3.",
+      "Fire and Lightning are separate ordered stores; amount5 with both in a storm becomes3, not the4 from one15/16 scaling.",
+      "No XA/YA, hit flag, type byte, affinities, live HP or RNG is changed by this weather calculation.",
+      "The source dependency reads script weather and applies ignore/snow map flags; the pure managed transform must not apply that conversion twice.",
+      "The exhaustive comparison is offline integer arithmetic, not original/C execution, full weather-system activation or wider battle admission."
+    ],
+    "managedMapping": "MagicDamageElements.Transform uses the same effective-weather values, element masks, ordered rational operations and unchecked signed16 stores.",
+    "validation": {
+      "sourceAudit": {
+        "transformDescriptions": 24,
+        "projectionDescriptions": 12,
+        "routingDescriptions": 14,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "sourceFiles": 9,
+        "sourceFunctions": 14,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true
+      },
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 16,
+      "focusedPythonTestsPassed": 8,
       "managedTestsExecuted": true,
       "runtimeChanged": false,
       "originalExecuted": false,

@@ -67,8 +67,42 @@ implementation must preserve the original ordering. Oil/Fire remains excluded
 from the current managed profile; no Oil behavior is activated or repaired here.
 All ten focused .NET arithmetic/element-pipeline tests and16 Python tests pass;
 all ten owner draft blobs remain unchanged. No runtime or fixture change is
-needed. The next useful supplied pages are Weather Elemental effects and Ability
-Elemental?.
+needed.
+
+### Supplied Weather Elemental effects
+
+The owner's listing matches all64 instruction words at `0x80186ed0`–`0x80186fcc`,
+all four listed returns and its one dependency call. The same supporting receipt
+pins the source, prepared bytes, effective-weather dependency and managed inputs.
+`weather_get_effective` at `0x8018e660` supplies the weather value; the damage
+routine then reads the already-stored signed16 target HP-damage field:
+
+- Weather3/4 (storm/strong storm): Fire bit`0x80` applies *3/4, then Lightning
+  bit`0x40` applies *5/4. Both can apply, with a signed16 store between them.
+- Weather6/7 (snowstorm/strong snowstorm): Ice bit`0x20` applies *5/4.
+- Weather0/1/2/5 does not alter damage; ordinary rain and snow grant no boost.
+  Other element bits do not affect these checks.
+
+Each negative numerator adds3 before arithmetic shift2, implementing division
+by4 toward zero. The branches annotated "never?" are meaningful for negative
+stored amounts and cannot be removed. The `addiu` adds3 to the numerator; it
+does not replace damage with3. An offline comparison across all65,536 signed
+amounts, eight admitted effective-weather values and eight relevant element
+combinations passes4,194,304 cases, including narrowing after every active step.
+This is integer arithmetic evidence, not original/C execution or broader battle
+admission. A combined Fire/Lightning amount5 in a storm becomes3 rather than4
+from a fused *15/16 operation. `MagicDamageElements.Transform` already agrees.
+
+This changes stored damage only, without changing XA/YA, hit/type flags,
+affinities, live HP or RNG. The pinned source dependency reads script weather,
+returns0 when the map ignores weather, and adds the snow offset3 to weather>=2
+when the snow-map flag is set. The pure transform accepts **already-effective**
+weather; map/script weather selection is separate and must not be applied twice.
+All16 focused .NET element/projection/routing tests and eight Python tests pass;
+all ten owner draft blobs and the unrelated CI edit are unchanged. No runtime or
+fixture change is needed. The next useful supplied dependency is
+the effective-weather routine at `0x0018e660`, followed by Ability Elemental?.
+ZOD-436 remains open.
 
 ## Original implementation checkpoint
 

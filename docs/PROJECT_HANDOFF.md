@@ -76,7 +76,10 @@ stored product, weather and element work; absorption conversion remains after
 Faith in0x08. XA * YA Calculation matches13 words/nine returns: the type byte is
 assigned HP damage and the low16 product is stored in the return delay slot.
 Unsigned operand loads and signed C# multiplication agree modulo65,536;655,360
-boundary pairs also pass. Weather Elemental effects and Ability Elemental? are
+boundary pairs also pass. Weather Elemental effects matches64 words/four returns
+and its effective-weather call;4,194,304 signed amount/weather/element checks
+preserve Fire-before-Lightning, separate stores and signed truncation. Existing
+C# agrees. The effective-weather routine at0x0018e660 and Ability Elemental? are
 the next useful pages. ZOD-436 remains open.
 The unrelated owner edit in `.circleci/config.yml` remains uncommitted and excluded.
 The shared Calculate Hit %/final-hit/per-source roll

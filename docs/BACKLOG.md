@@ -114,7 +114,9 @@ secondadvent's rewrite to a much later review. The
 [Elemental XA * YA wrapper](behavior/magic-elements-and-routing.md#supplied-elemental-xa--ya-wrapper--zod-436-support)
 matches18 words, three ordered calls and four returns. Its XA * YA helper matches
 13 words/nine returns and the modulo-store arithmetic. Weather Elemental effects
-and Ability Elemental? are next; the full shared-consumer review remains open.
+matches64 words/four returns and4,194,304 signed amount/weather/element combinations.
+Its effective-weather dependency and Ability Elemental? are next; the full
+shared-consumer review remains open.
 
 ## Review programme
 
