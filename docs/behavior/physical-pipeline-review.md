@@ -67,7 +67,8 @@ runtime admission are distinct coverage claims:
   Berserk/Frog, target Defense Up, target physical statuses, then original zodiac
   compatibility. Attack Up/Martial Arts is already applied by its caller; the
   cluster name does not mean Defense Up is skipped. All four callees are pinned
-  in the source review. Their broader inputs remain outside current admission.
+  in the source review. The supplied wrapper is checked below; its broader
+  inputs remain outside current admission.
 - **Damage and Knockback, alternative (`0x8018691c`):** calls the formula RNG
   helper twice, Pass/Fail once and knockback calculation conditionally. Damage
   uses random `1..Y`; only execution enters the strict two-Brave comparison.
@@ -77,7 +78,7 @@ runtime admission are distinct coverage claims:
   implemented.
 
 For further FFHacktics comparison, the most useful remaining supplied listings
-are **Cluster of Physical Routines** and
+are the physical cluster's three status/support helpers and
 **Damage and Knockback Routine (alternative)**. Their nested calls can then be
 matched to this inventory without repeating the already supplied shared helpers.
 These pages add independent annotations; they do not block the currently
@@ -123,8 +124,49 @@ Current physical profiles still exclude these support modifiers. No runtime,
 fixture or owner-definition change is required, and this does not activate all
 eight caller families. All 186 focused .NET Dash/Stone/formula-assignment tests
 and two Python Dash tests pass; all ten owner drafts and the disabled CI gate
-remain unchanged. The next useful supplied listing is **Cluster of Physical
-Routines** at `0x80188adc`, followed by the alternative damage/knockback helper.
+remain unchanged. The supplied **Cluster of Physical Routines** at `0x80188adc`
+is now checked below. Its three status/support children and the alternative
+damage/knockback helper remain useful supplied checks.
+
+## Supplied physical-modifier cluster
+
+The owner's Cluster of Physical Routines listing matches all 14 words at
+`0x80188adc`–`0x80188b10`, all four call targets and all six listed caller returns
+in the verified prepared BATTLE.BIN. The
+[trace receipt](../evidence/combat/physical-modifier-cluster-trace-v1.json)
+pins clean reference `11464943bbdbd2a0af022d90cb7f10455cf911df`, this wrapper and
+its four source callees. Their fingerprints still match the earlier physical
+review. The wrapper calls each helper unconditionally and in this order:
+
+1. **Attacker Berserk/Frog (`0x80186254`)**: Berserk applies `3/2` to XA;
+   Frog then overwrites XA with 1. Its separately supplied listing is next.
+2. **Defense Up (`0x801862cc`)**: the target's support applies a separate `2/3`
+   step. The source name `without_supports` excludes the earlier attacker
+   Attack Up/Martial Arts stage, not this target support.
+3. **Target physical statuses (`0x8018636c`)**: Protect applies `2/3`, then
+   Sleep **or** Charging applies `3/2` once, then Chicken **or** Frog applies
+   `3/2` once. The two positive groups are independent stages; the summary must
+   not be interpreted as one combined boost whenever any of the four is set.
+4. **Original Compatibility (`0x80184964`)**: reuse the
+   [supplied original routine](faith-magic-amounts.md#supplied-original-compatibility-routine),
+   already checked in the magic review. All 112 instruction words were rechecked
+   against the same prepared file. No duplicate listing is needed. The original
+   rounding, stored widths and final floor remain; secondadvent stays deferred.
+
+The wrapper itself has no condition, RNG call or direct XA store; the children
+own those details. Separate stores and order must be retained rather than
+collapsed into one multiplier. For example, attacker Frog's intermediate XA 1
+can become 0 at Defense Up before ordinary compatibility floors it back to 1.
+Serpentarius's early return skips that floor. Frog is therefore not a blanket
+guarantee about the final XA under every combination.
+
+These child details are source-traced coverage; the separately supplied
+Attacker Berserk/Frog, Defense Up and Target Physical Statuses listings remain
+useful independent checks. Current physical support/status/general-zodiac
+inputs remain guarded. This milestone changes documentation/evidence only;
+runtime tests were not repeated after the preceding passing 186 .NET/two Python
+physical validation. The source/prepared Dash audit and all ten owner draft
+checks pass again, with the disabled CI gate unchanged.
 
 ## Supplied physical-evasion wrapper (2026-11-07)
 

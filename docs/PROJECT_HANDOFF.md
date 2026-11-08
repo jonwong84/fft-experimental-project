@@ -212,9 +212,12 @@ subpaths. The [coverage checklist](behavior/physical-pipeline-review.md#formula0
 separates source tracing, supplied listings and runtime admission. The supplied
 Attack Up/Martial Arts helper now matches 46 words/eight callers and 524,288
 signed-input/flag/type arithmetic cases. Its unarmed type gate and separate
-signed stores are retained; broader support inputs remain excluded. The physical
-cluster and alternative damage/knockback are the remaining useful supplied
-listings; their source is already traced. Broader modifiers,
+signed stores are retained; broader support inputs remain excluded. The supplied
+physical cluster now matches14 words/four calls/six returns. Its original
+Compatibility dependency reuses the magic review (112 words rechecked); no
+duplicate listing is needed and secondadvent remains deferred. The three child
+status/support listings and alternative damage/knockback remain useful supplied
+cross-checks; source order is already recorded. Broader modifiers,
 equipment and landing/fall behavior remain deferred. No runtime change.
 
 The subsequent supplied physical-evasion wrapper is also source/byte checked:
