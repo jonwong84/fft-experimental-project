@@ -26,7 +26,7 @@ files and nine functions. Neither C nor the original game was executed.
   immediate=1, equipment-change=2 and Jump=3; Defend also returns0.
 - Ordinary timing masks raw CT with0x7F, rounds Short Charge upward when halving,
   then applies Non-Charge. Persevere bypasses both. The distinct AI entry-loading
-  delay remains in `OrdinarySpellAiParameters`; it must not replace actual setup.
+  delay remains in `DefaultAbilityAiParameters`; it must not replace actual setup.
   Jump, Charge, Item, Throw, Math, Geomancy and Draw Out have separate command-menu
   paths. No new support for those paths is introduced here.
 - `status_clear_action_state`, `0x80183DE0`, delegates to
@@ -56,16 +56,16 @@ files and nine functions. Neither C nor the original game was executed.
 - `OrdinaryMagicBattle.Queue` consumes the shared proposal before queuing or
   immediately resolving the spell. MP remains spent at the existing ready-hit
   boundary, not preparation.
-- `OrdinarySpellAiWork` owns fresh admission, lists, usefulness and initial aim
+- `DefaultAbilityAiWork` owns fresh admission, lists, usefulness and initial aim
   capture. Its candidate preparation delegates to the same combat rule. The
   ready-hit diagnostic still captures an aim without scheduling another action.
-- `OrdinarySpellAiCandidateQuery` owns public admission and translates unsupported
-  work to an atomic rejection. `OrdinarySpellAiActionSimulation` privately orchestrates
+- `DefaultAbilityAiCandidateQuery` owns public admission and translates unsupported
+  work to an atomic rejection. `DefaultAbilityAiActionSimulation` privately orchestrates
   preparation, the existing clock, ready strikes and scoring. It applies the
   proposed caster state only to immutable hypothetical units.
-- `OrdinarySpellAiHitSimulation` has its own file and retains stored-aim resolution,
-  formula projection and private result application. `OrdinarySpellAiAccounting`
-  and `OrdinarySpellAiScoring` remain the existing accounting/scoring owners.
+- `DefaultAbilityAiHitSimulation` has its own file and retains stored-aim resolution,
+  formula projection and private result application. `DefaultAbilityAiAccounting`
+  and `DefaultAbilityAiScoring` remain the existing accounting/scoring owners.
 
 No command-family interfaces, raw PS1 memory structures or per-ability handlers
 are added. Current original IDs, metadata ownership, formulas, evasion draws,

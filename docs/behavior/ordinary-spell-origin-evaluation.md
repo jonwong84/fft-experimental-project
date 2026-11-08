@@ -1,6 +1,6 @@
 # One ordinary spell origin/pass — ZOD-439
 
-`OrdinarySpellAiOriginEvaluationQuery.Evaluate` now evaluates the aims at one
+`DefaultAbilityAiOriginEvaluationQuery.Evaluate` now evaluates the aims at one
 freshly derived potential origin and pass. It shares existing preparation,
 formula/application, clock and scoring code. Best-aim selection and movement
 baseline admission are separate diagnostics; neither grants command authority.
@@ -17,10 +17,10 @@ executable was run.
 ## Entry point and simulation order
 
 Start at
-[`OrdinarySpellAiOriginEvaluationQuery`](../../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiOriginEvaluationQuery.cs).
+[`DefaultAbilityAiOriginEvaluationQuery`](../../src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiOriginEvaluationQuery.cs).
 The request selects a current owned slot, Main/Complement scenario, pass kind
-and cast-origin coordinates. The query freshly binds `OrdinarySpellAiWork` once
-and calls internal `OrdinarySpellAiOriginQuery.Build`. An unavailable origin/pass,
+and cast-origin coordinates. The query freshly binds `DefaultAbilityAiWork` once
+and calls internal `DefaultAbilityAiOriginQuery.Build`. An unavailable origin/pass,
 unknown ranked priority or unsupported context rejects with the entry RNG.
 No caller-supplied origin result, rank or movement record is accepted.
 
@@ -31,7 +31,7 @@ before `ai_action_simulate_and_score` saves its baseline. The original live
 position remains available separately for movement/refund comparisons.
 
 `OriginAimTilesEvaluate` (now shared in
-[`OrdinarySpellAiPassEvaluation`](../../src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiPassEvaluation.cs)
+[`DefaultAbilityAiPassEvaluation`](../../src/Zodiac.Framework.Ai/DefaultAbilities/Simulation/DefaultAbilityAiPassEvaluation.cs)
 with consumption disabled for this query) walks that origin's source-ordered aims through shared
 `AiActionSimulateAndScore`. Each hypothesis starts from the same private unit
 baseline while RNG continues from movement preparation and earlier attempts.

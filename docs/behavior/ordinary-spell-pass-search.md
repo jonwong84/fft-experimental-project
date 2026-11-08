@@ -1,6 +1,6 @@
 # One ordinary spell pass across origins — ZOD-440
 
-`OrdinarySpellAiPassSearchQuery.Evaluate` now evaluates one freshly derived
+`DefaultAbilityAiPassSearchQuery.Evaluate` now evaluates one freshly derived
 offensive spell pass across its source-ordered cast origins. The pass shares
 remaining aims and RNG; each hypothesis restores private units. Its best result
 and movement-baseline admission are diagnostics without command authority.
@@ -18,14 +18,14 @@ executable was run.
 ## Entry point and routine flow
 
 Start at
-[`OrdinarySpellAiPassSearchQuery`](../../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiPassSearchQuery.cs).
+[`DefaultAbilityAiPassSearchQuery`](../../src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiPassSearchQuery.cs).
 Supply the actor, owned primary slot, Main/Complement scenario and caller pass.
-It binds `OrdinarySpellAiWork` and internally derives fresh potential aims and
-movement through `OrdinarySpellAiOriginQuery.Build` once. No cached caller
+It binds `DefaultAbilityAiWork` and internally derives fresh potential aims and
+movement through `DefaultAbilityAiOriginQuery.Build` once. No cached caller
 outcome, movement record, rank or command authority is accepted.
 
 Then follow
-[`OrdinarySpellAiPassEvaluation`](../../src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiPassEvaluation.cs):
+[`DefaultAbilityAiPassEvaluation`](../../src/Zodiac.Framework.Ai/DefaultAbilities/Simulation/DefaultAbilityAiPassEvaluation.cs):
 
 1. `OriginReachableEvaluate` owns the pass-wide remaining-aim mask, shared RNG,
    source origin order and best candidate.
@@ -79,7 +79,7 @@ partial best result.
 ## Independent regression evidence
 
 Thirteen new cases in
-[`OrdinarySpellAiPassSearchTests`](../../tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiPassSearchTests.cs)
+[`DefaultAbilityAiPassSearchTests`](../../tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiPassSearchTests.cs)
 use literal geometry/order and source draw accounting:
 
 - Default unit aim is dynamically consumed at origin(1,3): prefix15 plus4

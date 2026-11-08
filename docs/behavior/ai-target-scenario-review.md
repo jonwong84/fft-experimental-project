@@ -93,7 +93,7 @@ review of origin traversal, rank admission, lottery or checked commands.
 
 ## Ordinary magic aim integration
 
-`OrdinarySpellAiAimEnumeration` preserves current-origin useful masks, considered
+`DefaultAbilityAiAimEnumeration` preserves current-origin useful masks, considered
 CT deadlines, unit groups before tile groups, layer/Y/X aim order, and the
 Follow-target center XOR. A moving enemy is removed from the tile-target group;
 an allied preference does not apply that enemy exclusion. Occupied, walkable aims

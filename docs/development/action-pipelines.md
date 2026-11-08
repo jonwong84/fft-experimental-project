@@ -16,14 +16,14 @@ It does not enable additional ability families or an autonomous magic AI.
   [AiCommandExecutor.Execute](../../src/Zodiac.Framework.Ai/AiCommandExecutor.cs).
   Complete turn: [AiTurnController.Execute / Resume](../../src/Zodiac.Framework.Ai/AiTurnController.cs).
 - One ordinary spell hypothesis at the current origin:
-  [OrdinarySpellAiCandidateQuery.Evaluate](../../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiCandidateQuery.cs).
+  [DefaultAbilityAiCandidateQuery.Evaluate](../../src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiCandidateQuery.cs).
   This produces diagnostics, not an executable command or complete search.
 - Potential ordinary spell aims at the current origin:
-  [OrdinarySpellAiAimQuery.Evaluate](../../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAimQuery.cs).
+  [DefaultAbilityAiAimQuery.Evaluate](../../src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiAimQuery.cs).
   [ZOD-424](../behavior/ordinary-spell-aim-enumeration.md) adds fresh source-ordered
   unit/tile lists; candidate evaluation/ranking remain separate.
 - One owned ordinary spell's evaluated best at the current origin:
-  [OrdinarySpellAiSearchQuery.Evaluate](../../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiSearchQuery.cs).
+  [DefaultAbilityAiSearchQuery.Evaluate](../../src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiSearchQuery.cs).
   [ZOD-425](../behavior/ordinary-spell-aim-ranking.md) composes fresh enumeration,
   pass-specific useful membership, simulation/RNG and strict best comparison.
 
@@ -51,7 +51,7 @@ owns formula calculation/evasion/result finalization. Execution then applies
 results, adopts RNG and performs its admitted rewards/learning work.
 
 The [targeting source map](../../src/Zodiac.Framework/Battle/Combat/Targeting/README.md)
-links each concrete stage. `OrdinarySpellTargeting` retains its public range,
+links each concrete stage. `DefaultAbilityTargeting` retains its public range,
 area, collection and pure resolution APIs. Their implementations now have
 separate internal owners in `Geometry/` and `Resolution/`; choice/capture types
 live in `Selection/`. Runtime flow and error ordering are preserved.
@@ -76,19 +76,19 @@ has no command authority.
 callback, then publishes one admitted actual command. `AiTurnController` adds
 continuations and turn completion with explicit facing.
 
-For an ordinary spell hypothesis, start at `OrdinarySpellAiCandidateQuery` and
-follow [its source map](../../src/Zodiac.Framework.Ai/OrdinarySpells/README.md):
+For an ordinary spell hypothesis, start at `DefaultAbilityAiCandidateQuery` and
+follow [its source map](../../src/Zodiac.Framework.Ai/DefaultAbilities/README.md):
 fresh work/selection, private simulation, shared primary preparation, charge
 clock, stored-aim hit work, accounting and absolute scoring. The file groups
 make those responsibilities visible without changing namespaces or APIs.
 Ready-hit diagnostics remain separately named and require supplied movement
-opportunities. The subsequent `OrdinarySpellAiAimQuery` lists potential aims
-through `Selection/OrdinarySpellAiAimEnumeration`, including completed working
+opportunities. The subsequent `DefaultAbilityAiAimQuery` lists potential aims
+through `Selection/DefaultAbilityAiAimEnumeration`, including completed working
 usage and deadline groups. These queries do not compose a ranked magic search
 or enter the physical roster's full decision/command pipeline yet. The subsequent
-`OrdinarySpellAiSearchQuery` now composes enumeration and simulation for one
+`DefaultAbilityAiSearchQuery` now composes enumeration and simulation for one
 owned slot at the current origin. Follow its pass loop into `ForAimPass`,
-`OrdinarySpellAiActionSimulation.AiActionSimulateAndScore` and shared `AiCandidateRank`. It preserves one
+`DefaultAbilityAiActionSimulation.AiActionSimulateAndScore` and shared `AiCandidateRank`. It preserves one
 decision RNG and unresolved per-pass exits. Multiple origins, full ability
 dispatch and command execution remain separate.
 

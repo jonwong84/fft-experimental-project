@@ -2,7 +2,7 @@
 
 Start with [SpellTargetChoiceQuery.Evaluate](Selection/SpellTargetChoiceQuery.cs)
 when an ordinary ability is selected. It calls
-[OrdinarySpellTargeting.Range](OrdinarySpellTargeting.cs) and reports unit-or-tile,
+[DefaultAbilityTargeting.Range](DefaultAbilityTargeting.cs) and reports unit-or-tile,
 tile-only, automatic or no available targeting. It does not drive the cursor.
 
 Follow the supported cast in this order:
@@ -15,14 +15,14 @@ Follow the supported cast in this order:
    shared primary preparation. The actual command owner commits ACT and queues it.
 4. [SpellAimResolver](Resolution/SpellAimResolver.cs): resolve the stored aim at
    readiness. A followed unit may have moved; initial range is not rechecked.
-5. [OrdinarySpellTargeting.Area](OrdinarySpellTargeting.cs): affected panels
+5. [DefaultAbilityTargeting.Area](DefaultAbilityTargeting.cs): affected panels
    around that resolved aim, corresponding to `ability_area_set`.
-6. [OrdinarySpellTargeting.SelectTargets](OrdinarySpellTargeting.cs): apply
+6. [DefaultAbilityTargeting.SelectTargets](DefaultAbilityTargeting.cs): apply
    source-ordered panel/team rules and collect recipients.
 7. [MagicCastQuery](../Magic/MagicCastQuery.cs): resources and supplied-order
    formula results. Actual application is owned by the battle command lifecycle.
 
-[OrdinarySpellTargeting](OrdinarySpellTargeting.cs) retains the public API.
+[DefaultAbilityTargeting](DefaultAbilityTargeting.cs) retains the public API.
 Its internal owners are [SpellTargetGeometry](Geometry/SpellTargetGeometry.cs),
 [SpellTargetCollection](Resolution/SpellTargetCollection.cs) and
 [SpellTargetCastResolution](Resolution/SpellTargetCastResolution.cs).

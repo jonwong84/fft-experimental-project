@@ -128,7 +128,7 @@ gameplay tests were not repeated. The owner's turn-controller edit is preserved.
 `AiSimulationClock` deliberately collapses effect-free phases under its ordinary
 positive-Speed certificates. It preserves source-slot ties, CT modulo/caps and
 upkeep draws, including plain simulated corpses without death-counter decay.
-`OrdinarySpellAiClock` adds its bounded immediate/delayed spell hypothesis and
+`DefaultAbilityAiClock` adds its bounded immediate/delayed spell hypothesis and
 outer255-call behavior. Neither is a general port of this complete controller.
 Quick, general status expiry/upkeep, Mimes, terrain effects, performing actions
 and original frame suspension remain separate. This supplied trace identifies

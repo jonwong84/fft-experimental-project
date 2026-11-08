@@ -32,13 +32,13 @@ from remaining work.
 
 The Windows host is not wired to this pipeline yet. Ordinary spell searches
 currently return diagnostic hypotheses and are not part of its executable
-ability dispatch. Follow `OrdinarySpells/README.md` for that separate path.
+ability dispatch. Follow `DefaultAbilities/README.md` for that separate path.
 
 ## Further reading
 
 The [action pathway guide](../../docs/development/action-pipelines.md) walks one
 player cast and one AI decision, with source symbols and modification points.
-The [ordinary spell source map](OrdinarySpells/README.md) follows fresh selection,
+The [ordinary spell source map](DefaultAbilities/README.md) follows fresh selection,
 private simulation and scoring; it explicitly identifies the unimplemented
 search/command connection.
 
@@ -68,10 +68,10 @@ Start with the [original algorithm guide](../../docs/architecture/original-ai-al
 
 ## Ordinary spell ready-hit diagnostics
 
-`OrdinarySpells/` adds source-traced primary learned-slot admission, considered
+`DefaultAbilities/` adds source-traced primary learned-slot admission, considered
 parameters/working usage, initialized MP shares, ordinary HP usefulness, shared
 AI formula projection, strike exclusions and absolute HP/status/MP scoring.
-`OrdinarySpellAiReadyQuery` owns all fresh calculations against a definition-bound
+`DefaultAbilityAiReadyQuery` owns all fresh calculations against a definition-bound
 catalog and a current initial aim; it returns no executable plan or battle state.
 Movement opportunities are explicit boundary inputs. Charge-clock forecasting,
 origin/target search, rank insertion and autonomous magic turns remain outside
@@ -80,26 +80,26 @@ metadata bridge; it rejects unrepresented secondary learned rows/loadouts.
 See [behavior and validation](../../docs/behavior/ordinary-spell-ai.md) and the
 [prepared-only inspector](../../docs/development/ordinary-spell-ai-inspection.md).
 
-`OrdinarySpellAiCandidateQuery` now captures a supplied aim at the current origin
-and derives readiness/movement opportunities through `OrdinarySpellAiClock`.
+`DefaultAbilityAiCandidateQuery` now captures a supplied aim at the current origin
+and derives readiness/movement opportunities through `DefaultAbilityAiClock`.
 It shares private fresh admission/stored-hit owners with the ready query and
 returns hypothetical diagnostics and decision RNG, including the unresolved
 source event-cap score. It cannot execute a command. Both queries retain their
 separate contracts; general aim/origin search, ranking, lottery and autonomous
 magic turns remain outside this path. [Clock contract and validation](../../docs/behavior/ordinary-spell-ai-clock.md).
 
-`OrdinarySpellAiAimQuery` now lists fresh potential unit/tile aims at the current
+`DefaultAbilityAiAimQuery` now lists fresh potential unit/tile aims at the current
 origin, with source working usage, deadline groups and scan order. It does not
 draw RNG, evaluate/rank candidates or execute commands.
 [Aim-list contract and validation](../../docs/behavior/ordinary-spell-aim-enumeration.md).
 
-`OrdinarySpellAiSearchQuery` freshly composes one owned slot's current-origin
+`DefaultAbilityAiSearchQuery` freshly composes one owned slot's current-origin
 aims and simulations, carries one decision RNG and retains the strict best.
 Pass-specific valuable masks and unresolved per-pass exits follow the caller.
 It returns diagnostics; broader origin search, dispatch, lottery and commands
 remain separate. [Search contract](../../docs/behavior/ordinary-spell-aim-ranking.md).
 
-Within `OrdinarySpells/`, `Selection/` owns catalog/list/parameter/usefulness work,
+Within `DefaultAbilities/`, `Selection/` owns catalog/list/parameter/usefulness work,
 `Simulation/` owns private state, charge clocks and hits, `Scoring/` owns hit
 accounting and absolute scores, and `Diagnostics/` owns the ready-hit query.
 The candidate query stays at that feature's root. Namespaces and APIs are unchanged.

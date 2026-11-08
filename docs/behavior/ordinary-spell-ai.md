@@ -71,7 +71,7 @@ movement, replay and full solution regressions.
 
 ## Learned list admission (ZOD-404)
 
-`OrdinarySpellAiLists` resolves the original known-row lookup independently of
+`DefaultAbilityAiLists` resolves the original known-row lookup independently of
 learn-on-hit. It preserves the source unowned-special-skillset/monster known
 shortcut, validates actual requested rows, filters source action slots 0..15 and
 ability IDs below 422, then admits supported default-menu ordinary spells by
@@ -90,7 +90,7 @@ slot/ID filtering. These entries grant no search, command or projection authorit
 
 ## Considered parameters and usage (ZOD-405)
 
-`OrdinarySpellAiParameters` copies primary semantic behavior and secondary
+`DefaultAbilityAiParameters` copies primary semantic behavior and secondary
 geometry, MP and CT independently of named working usage. Initialization clears
 the three low search bits, preserving high restrictions/usability and the opaque
 reserved bit. Trajectory bypasses shape/range policy; special shape forces
@@ -105,7 +105,7 @@ accepted as working usage.
 
 ## Initialized ability statistics (ZOD-406)
 
-`OrdinarySpellAiStatistics` owns quarter shares and nonzero MP extrema. Its
+`DefaultAbilityAiStatistics` owns quarter shares and nonzero MP extrema. Its
 ordinary human entry derives every selected spell from the owned list, with
 bare Attack and initialized Frog Attack included. Frog's primary AI Evadeable
 is clear despite its secondary combat flag; the prepared source records are
@@ -119,7 +119,7 @@ MP costs remain nonnegative int; original imported byte costs remain exact.
 
 ## Ordinary HP usefulness (ZOD-407)
 
-`OrdinarySpellAiUsefulness` classifies current ordinary humans and derives masks
+`DefaultAbilityAiUsefulness` classifies current ordinary humans and derives masks
 in source-unit order. Side-only working restrictions, Dead and cannot-hit-caster
 precede primary preferences. Harmful enemies are Useful even at numeric Faith 0;
 formula magnitude is not the classifier. Healing uses **HP < floor(maxHP/2)**,
@@ -140,7 +140,7 @@ aim search remains separately guarded. The review preserves earlier receipts.
 
 ## AI formula and private HP projection (ZOD-408)
 
-`OrdinarySpellAiProjection` derives fresh ready resource work in AiSimulation,
+`DefaultAbilityAiProjection` derives fresh ready resource work in AiSimulation,
 then calls the shared `MagicCastQuery`/`FaithMagicFormula` for selected source-order
 current targets. Damage consumes four real evasion draws even with bare zero
 evade, but no execute-only proc draw. Cure consumes no formula draws. MP is paid
@@ -158,7 +158,7 @@ Retained ordinary battle/application regressions pass alongside them.
 
 ## Strike accounting (ZOD-409)
 
-`OrdinarySpellAiAccounting` follows the source's post-formula, pre-application
+`DefaultAbilityAiAccounting` follows the source's post-formula, pre-application
 ordering. Zero accuracy is excluded. A followed anchor with a move opportunity
 keeps only itself; otherwise harmful-only spells skip individually moved units,
 while ally preferences retain them. Map-target behavior bypasses those exclusions.
@@ -175,7 +175,7 @@ state or a whole-candidate score; the composed query derives these facts fresh.
 
 ## Absolute state and MP scoring (ZOD-410)
 
-`OrdinarySpellAiScoring` adds HP, ordinary Critical/Dead, all seven unchanged bare
+`DefaultAbilityAiScoring` adds HP, ordinary Critical/Dead, all seven unchanged bare
 equipment slots and MP for every unit in source order. MP scales by 64/maxMP,
 then halves below the cheapest initialized nonzero cost, then multiplies by the
 quarter share and divides by 4. No maxMP scores 0; no MP abilities means share 0.
@@ -192,10 +192,10 @@ cases pass, preserving the prior decision/execution paths.
 
 ## Owned current-aim ready-hit query (ZOD-411)
 
-`OrdinarySpellAiCatalog` binds exact executable spell objects and primary slots
+`DefaultAbilityAiCatalog` binds exact executable spell objects and primary slots
 to one battle definition. The generic primary-only profile rejects missing
 learned rows, special/Mime aliases, foreign definitions and inferred secondary
-grants. `OrdinarySpellAiReadyQuery` derives fresh initialized lists/statistics,
+grants. `DefaultAbilityAiReadyQuery` derives fresh initialized lists/statistics,
 selected known slot, considered usage, current MP, usefulness, initial blue aim,
 green area, source-order AI frames, strike accounting, included HP effects and
 absolute score. Only the query's own fresh data flows between those stages.
@@ -219,7 +219,7 @@ No result is inserted into the existing decision maker as a whole candidate rank
 
 ## Prepared metadata bridge and inspection (ZOD-412)
 
-`PreparedOrdinarySpellAi.CreateCatalog` copies behavior and static AI usability
+`PreparedDefaultAbilityAi.CreateCatalog` copies behavior and static AI usability
 from the existing `AbilityMetadataDefinition` instances, retains exact executable
 objects and ordered skillset slots, and binds the resulting catalog to the
 prepared battle definition. No duplicate editable flag source is introduced.

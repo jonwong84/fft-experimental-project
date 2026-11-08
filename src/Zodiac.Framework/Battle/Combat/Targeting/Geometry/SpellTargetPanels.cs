@@ -8,10 +8,10 @@ public sealed class SpellTargetPanels
     public ImmutableArray<TilePosition> Panels { get; }
     public TilePosition CasterPosition { get; }
     public TilePosition Center { get; }
-    public OrdinarySpellGeometry Geometry { get; }
+    public DefaultAbilityGeometry Geometry { get; }
     public bool IsArea { get; }
     internal BattleMapDefinition Map { get; }
     internal SpellTargetPanels(BattleMapDefinition map, TilePosition caster, TilePosition center,
-        OrdinarySpellGeometry geometry, bool area, ImmutableArray<TilePosition> panels)
+        DefaultAbilityGeometry geometry, bool area, ImmutableArray<TilePosition> panels)
     { Map = map; CasterPosition = caster; Center = center; Geometry = geometry; IsArea = area; Panels = panels; }
 }

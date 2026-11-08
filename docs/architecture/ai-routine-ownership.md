@@ -76,7 +76,7 @@ Its recovery token is separate from the original scanline-budget suspension.
 ## Follow an ordinary spell hypothesis
 
 The separate ordinary spell query/search enters
-[OrdinarySpellAiActionSimulation.AiActionSimulateAndScore](../../src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiActionSimulation.cs).
+[DefaultAbilityAiActionSimulation.AiActionSimulateAndScore](../../src/Zodiac.Framework.Ai/DefaultAbilities/Simulation/DefaultAbilityAiActionSimulation.cs).
 This is the bounded counterpart of
 `evaluation.c::ai_action_simulate_and_score`, address `0x8019D37C`: privately
 prepare the cast, process immediate/delayed hits in their existing order,
@@ -84,7 +84,7 @@ advance the clock and score the resulting state. An immediate useful hit
 precedes its required clock event; a delayed cast advances to readiness first.
 
 It calls
-[OrdinarySpellAiHitSimulation.ActionHitsSimulate](../../src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiHitSimulation.cs),
+[DefaultAbilityAiHitSimulation.ActionHitsSimulate](../../src/Zodiac.Framework.Ai/DefaultAbilities/Simulation/DefaultAbilityAiHitSimulation.cs),
 the named counterpart of `action_hits_simulate` (`0x8019DCBC`, the wiki's Call AI
 Ability Processing). That wrapper calls `StrikesSimulate`, corresponding to
 `strikes_simulate` (`0x8019DD8C`, AI Ability Processing), and returns a boolean
@@ -94,14 +94,14 @@ result to reject an unhelpful candidate or continue clock/scoring work.
 `StrikesSimulate` owns stored aim/recipient resolution, formula projection,
 exclusions/accounting and included hypothetical result application. The existing
 optimization skips applying a nonvaluable private result that will be discarded.
-`OrdinarySpellAiProjection` and `OrdinarySpellAiAccounting` remain shared
+`DefaultAbilityAiProjection` and `DefaultAbilityAiAccounting` remain shared
 mechanics owners; the latter still computes the fresh accounting average.
 Thus this is a bounded structural correspondence, not a literal mutable-memory
 transcription. The wrapper's general accounting sentinel, repeated strikes and
 recursive reactions are not claimed by this subset. The earlier internal
 `Run` / `Resolve` names are removed; public queries retain their signatures.
 
-`OrdinarySpellAiClock` / `AiSimulationClock` retain between-turn simulation;
+`DefaultAbilityAiClock` / `AiSimulationClock` retain between-turn simulation;
 Framework retains actual preparation, turn-end rules, combat formulas and result
 application. Immutable private state isolates hypotheses, while decision RNG
 continues across them. It does not reproduce the original mutable baseline and

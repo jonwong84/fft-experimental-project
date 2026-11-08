@@ -10,13 +10,13 @@ namespace Zodiac.Framework;
 internal static class SpellTargetGeometry
 {
     internal static SpellPanelQueryResult Range(BattleMapDefinition map, TilePosition caster,
-        OrdinarySpellGeometry geometry, SpellTargetingProfile? profile) => Build(map, caster, caster, geometry, profile, false);
+        DefaultAbilityGeometry geometry, SpellTargetingProfile? profile) => Build(map, caster, caster, geometry, profile, false);
 
     internal static SpellPanelQueryResult Area(BattleMapDefinition map, TilePosition caster, TilePosition aim,
-        OrdinarySpellGeometry geometry, SpellTargetingProfile? profile) => Build(map, caster, aim, geometry, profile, true);
+        DefaultAbilityGeometry geometry, SpellTargetingProfile? profile) => Build(map, caster, aim, geometry, profile, true);
 
     private static SpellPanelQueryResult Build(BattleMapDefinition map, TilePosition caster, TilePosition center,
-        OrdinarySpellGeometry geometry, SpellTargetingProfile? profile, bool area)
+        DefaultAbilityGeometry geometry, SpellTargetingProfile? profile, bool area)
     {
         ArgumentNullException.ThrowIfNull(map); ArgumentNullException.ThrowIfNull(geometry);
         SpellPanelQueryResult Reject(SpellTargetingRejection reason) => new(false, reason, null);

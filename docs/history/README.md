@@ -21,7 +21,9 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 408 entries index completed bounded work; they do not mean the full game is complete.
+These 409 entries index completed bounded work; they do not mean the full game is complete.
+
+- [ZOD-444 — Rename OrdinarySpell to DefaultAbility and record menu pathway names](../architecture/default-ability-pathways.md)
 
 - [ZOD-443 — Introduce the validated ordinary spell query context](../behavior/ordinary-spell-context.md)
 

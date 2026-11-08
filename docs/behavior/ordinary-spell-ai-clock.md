@@ -67,7 +67,7 @@ owner-file blobs remain preservation gates.
 
 ## Single-charge clock (ZOD-414)
 
-`OrdinarySpellAiClock.Run` copies source-slot scheduling facts after ACT is
+`DefaultAbilityAiClock.Run` copies source-slot scheduling facts after ACT is
 marked, derives the unused-Move refund, and resumes PICK_UNIT. It owns CT cap,
 overshoot/tie order, current-tick charge decrements, actual upkeep draws, direct
 simulated turn clearing and movement opportunities. Ordinary AI corpses retain
@@ -92,9 +92,9 @@ unchanged.
 
 ## Shared fresh admission and stored hits (ZOD-415)
 
-`OrdinarySpellAiWork` privately owns the same current-state/catalog binding,
+`DefaultAbilityAiWork` privately owns the same current-state/catalog binding,
 initialized lists, considered usage, usefulness and initial aim capture for both
-query paths. `OrdinarySpellAiHitSimulation` owns stored anchor/tile resolution, fresh
+query paths. `DefaultAbilityAiHitSimulation` owns stored anchor/tile resolution, fresh
 green geometry, formula frames, movement exclusions and included HP/MP effects.
 It never repeats initial blue range. The current-aim public query now delegates
 to these private owners, preserving its output and rollback boundary. No public
@@ -109,7 +109,7 @@ command or full-search interface changes are introduced.
 
 ## Fixed-origin delayed candidate (ZOD-416)
 
-`OrdinarySpellAiCandidateQuery` owns fresh admission, actual masked charge setup,
+`DefaultAbilityAiCandidateQuery` owns fresh admission, actual masked charge setup,
 initial aim capture and the single-charge clock. Delayed hits derive movement
 opportunities from that clock, clear owned Charging at readiness, then reuse the
 stored-hit owner for resource/formula/accounting/application and absolute score.

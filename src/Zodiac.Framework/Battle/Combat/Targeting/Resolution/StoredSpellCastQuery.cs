@@ -21,7 +21,7 @@ public static class StoredSpellCastQuery
         }
         var aim = SpellAimResolver.Resolve(request.Map, request.Aim, anchor, request.AimProfile);
         if (!aim.Accepted) return Reject();
-        return OrdinarySpellTargeting.ResolveCast(new(request.Cast, request.Map, aim.Position!.Value, request.Roster,
+        return DefaultAbilityTargeting.ResolveCast(new(request.Cast, request.Map, aim.Position!.Value, request.Roster,
             request.GeometryProfile, request.RosterProfile, request.Entry), rng);
     }
 }

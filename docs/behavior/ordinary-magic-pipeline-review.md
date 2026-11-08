@@ -147,7 +147,7 @@ frames using the admitted HP/status kernel. Only its formula/resource/result
 edges were reviewed here; queue, charge lifecycle, rewards and learning need
 their separate retrospective.
 
-`OrdinarySpellAiProjection.Calculate` uses AI mode through the same ready-cast
+`DefaultAbilityAiProjection.Calculate` uses AI mode through the same ready-cast
 owner, followed by `ActionHitsSimulate` / `StrikesSimulate` for candidate work.
 It admits a narrower ordinary bare-human profile than the low-level formula:
 no supports, equipment affinities, strengthen, changing teams, mounts or general

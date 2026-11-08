@@ -74,7 +74,7 @@ remain deferred. No runtime C, BIN, command, content grant or magic AI activatio
 
 ## ZOD-359
 
-`OrdinarySpellTargeting.ReferenceHeight` and `SelectLayer` implement the traced
+`DefaultAbilityTargeting.ReferenceHeight` and `SelectLayer` implement the traced
 height primitive without map marks, source execution or global map constraints.
 Original field-width violations throw at this direct primitive boundary. Seventeen
 literal reference/column descriptions cover narrowing, water/half height, tolerance,
@@ -104,7 +104,7 @@ or live target lists were introduced.
 
 ## ZOD-362
 
-The ready cast definition optionally binds `OrdinarySpellGeometry`; prior supplied-
+The ready cast definition optionally binds `DefaultAbilityGeometry`; prior supplied-
 order APIs and calculation bodies are unchanged. `ResolveCast` requires certified
 previous aim validation, complete source roster and no earlier target effects.
 It builds green panels, derives default source order, then delegates to

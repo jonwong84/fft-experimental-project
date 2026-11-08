@@ -17,7 +17,7 @@ public static class OriginalOrdinaryMagicImporter
         "time-mage", "summoner", "thief", "mediator", "oracle", "geomancer", "lancer", "samurai", "ninja", "calculator", "bard", "dancer", "mime"];
 
     public static OriginalOrdinaryMagicImport ImportVerified(ReadOnlySpan<byte> executable,
-        OriginalOrdinarySpellSelection selection = OriginalOrdinarySpellSelection.Fire)
+        OriginalDefaultAbilitySelection selection = OriginalDefaultAbilitySelection.Fire)
     {
         string hash = OriginalExecutableReader.Verify(executable);
         return DecodeSelection(executable, selection) with { VerifiedInputSha256 = hash };
@@ -25,7 +25,7 @@ public static class OriginalOrdinaryMagicImporter
 
     /// <summary>Layout testing only; does not certify an edition or input hash.</summary>
     public static OriginalOrdinaryMagicImport DecodeSelection(ReadOnlySpan<byte> executable,
-        OriginalOrdinarySpellSelection selection = OriginalOrdinarySpellSelection.Fire)
+        OriginalDefaultAbilitySelection selection = OriginalDefaultAbilitySelection.Fire)
     {
         if (!Enum.IsDefined(selection)) throw new ArgumentOutOfRangeException(nameof(selection));
         var reader = new OriginalExecutableReader(executable);
@@ -33,8 +33,8 @@ public static class OriginalOrdinaryMagicImporter
         var metadata = new List<AbilityMetadataDefinition>();
         var metadataSkillsets = new List<SkillsetDefinition>();
         int learningCost = 0;
-        foreach (var binding in Bindings.Where(b => selection == OriginalOrdinarySpellSelection.ElementalTiers || b.Id == 16 ||
-            selection == OriginalOrdinarySpellSelection.LearnOnHit && b.Id == 19))
+        foreach (var binding in Bindings.Where(b => selection == OriginalDefaultAbilitySelection.ElementalTiers || b.Id == 16 ||
+            selection == OriginalDefaultAbilitySelection.LearnOnHit && b.Id == 19))
         {
             string id = $"fft.ps1:ability/source-{binding.Id:D4}";
             var raw = reader.Read("g_ability_range_data", 0x8005fbf0, 14, binding.Id, id);
@@ -63,7 +63,7 @@ public static class OriginalOrdinaryMagicImporter
             new SkillsetSlot(s.OriginalId - 16, new AbilityId(s.Id)))));
 
         ushort cureLearningCost = 0;
-        if (selection == OriginalOrdinarySpellSelection.CureAndFire)
+        if (selection == OriginalDefaultAbilitySelection.CureAndFire)
         {
             const string id = "fft.ps1:ability/source-0001";
             var raw = reader.Read("g_ability_range_data", 0x8005fbf0, 14, 1, id);
@@ -119,9 +119,9 @@ public static class OriginalOrdinaryMagicImporter
         var mageCareer = Career();
         mageCareer[JobId("chemist")] = JobPointArithmetic.Add(200, 200, 0, thresholds.ToImmutableArray());
         if (learningCost > 9999) throw new InvalidDataException("Selected learned grants exceed the authored career budget.");
-        ushort wizardTotal = (ushort)Math.Max(selection == OriginalOrdinarySpellSelection.ElementalTiers ? 5000 : 100, learningCost);
+        ushort wizardTotal = (ushort)Math.Max(selection == OriginalDefaultAbilitySelection.ElementalTiers ? 5000 : 100, learningCost);
         mageCareer[JobId("wizard")] = JobPointArithmetic.Add((ushort)(wizardTotal - learningCost), wizardTotal, 0, thresholds.ToImmutableArray());
-        if (selection == OriginalOrdinarySpellSelection.CureAndFire)
+        if (selection == OriginalDefaultAbilitySelection.CureAndFire)
             mageCareer[JobId("priest")] = JobPointArithmetic.Add(0, cureLearningCost, 0, thresholds.ToImmutableArray());
         var guardCareer = Career();
         guardCareer[JobId("squire")] = JobPointArithmetic.Add(100, 100, 0, thresholds.ToImmutableArray());
@@ -137,9 +137,9 @@ public static class OriginalOrdinaryMagicImporter
                 MagicZodiacSign.Aries, true, false, Stats(wizard, 100, 75, 10, 6, 8), new(6, 8, 10), 100, 75, mageCareer, spells.Select(s => s.Id).ToArray()),
             new OrdinaryMagicPreparedUnit("guard", "Guard", 1, 4, 2, SpellTargetTeam.Red, squire.Id, 10, 0, 70, 70,
                 MagicZodiacSign.Aries, true, false, Stats(squire, 200, 50, 8, 8, 5), new(8, 5, 8),
-                (ushort)(selection == OriginalOrdinarySpellSelection.CureAndFire ? 30 : 200), 50, guardCareer, [], BattleFacing.West)
+                (ushort)(selection == OriginalDefaultAbilitySelection.CureAndFire ? 30 : 200), 50, guardCareer, [], BattleFacing.West)
         };
-        if (selection == OriginalOrdinarySpellSelection.LearnOnHit)
+        if (selection == OriginalDefaultAbilitySelection.LearnOnHit)
         {
             // Authored learner: copied Wizard job, unknown Fire4 slot3, enough HP/MP to survive and use it.
             units[0] = units[0] with { LearnedPrimarySlots = [0, 3] };
@@ -149,9 +149,9 @@ public static class OriginalOrdinaryMagicImporter
         }
         var companion = new ContentPackage("fft.ps1:package/ordinary-magic-metadata", "fft.ps1:profile/scus-94221",
             ContentPackageKind.Baseline, null, [], metadataSkillsets, metadata);
-        var document = new OrdinaryMagicPackageDocument("fft.ordinary-magic-battle", selection == OriginalOrdinarySpellSelection.LearnOnHit ? 3 : 2,
+        var document = new OrdinaryMagicPackageDocument("fft.ordinary-magic-battle", selection == OriginalDefaultAbilitySelection.LearnOnHit ? 3 : 2,
             "ordinary-human-bare-v1", "original-fft",
-            selection == OriginalOrdinarySpellSelection.LearnOnHit ? 10u : 57u, 7, 5, 10, JobId("squire"), JobId("bard"), JobId("dancer"),
+            selection == OriginalDefaultAbilitySelection.LearnOnHit ? 10u : 57u, 7, 5, 10, JobId("squire"), JobId("bard"), JobId("dancer"),
             thresholds, spells.ToArray(), [wizard, squire], unlocks.ToArray(), units,
             companion.PackageId);
         return new(PreparedOrdinaryMagicBattle.Create(document, companion), null, reader.Records.ToImmutableArray());

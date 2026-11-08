@@ -1,6 +1,6 @@
 # Fixed-origin ordinary spell evaluation and ranking — ZOD-425
 
-Start at [OrdinarySpellAiSearchQuery.Evaluate](../../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiSearchQuery.cs).
+Start at [DefaultAbilityAiSearchQuery.Evaluate](../../src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiSearchQuery.cs).
 It freshly binds a definition-owned catalog and learned primary slot, enumerates
 potential aims at the current origin, simulates them in source order with one
 decision RNG, and returns the strict best. This is a diagnostic for one spell
@@ -19,14 +19,14 @@ draw ordering rather than re-verifying the generator.
 
 ## Follow the pipeline
 
-1. `OrdinarySpellAiAimEnumeration` performs the existing fresh admission,
+1. `DefaultAbilityAiAimEnumeration` performs the existing fresh admission,
    working usage, usefulness, deadline grouping and layer/Y/X enumeration.
    The [ZOD-424 domain](ordinary-spell-aim-enumeration.md) remains in force.
-2. `OrdinarySpellAiWork.ForAimPass` privately copies that admitted baseline and
+2. `DefaultAbilityAiWork.ForAimPass` privately copies that admitted baseline and
    narrows valuable membership to the current source pass. Units outside that
    useful mask still receive real formula work, can contribute collateral and
    remain in absolute roster scoring. Public cached diagnostics are not inputs.
-3. `OrdinarySpellAiActionSimulation` performs shared primary preparation, clock,
+3. `DefaultAbilityAiActionSimulation` performs shared primary preparation, clock,
    stored-aim hit work, accounting and scoring. Each aim starts from the same
    immutable battle baseline. The preceding candidate's exit RNG becomes the
    next entry RNG, including a NotValuable result's real formula draws.

@@ -15,7 +15,7 @@ public sealed class ElementalMagicImporterTests
     [Theory] [MemberData(nameof(Cases))]
     public void Every_selected_spell_runs_the_shared_command_path_with_its_own_power_cost_and_charge(int originalId, int damage, int cost, int charge)
     {
-        var import = OriginalOrdinaryMagicImporter.DecodeSelection(Image(), OriginalOrdinarySpellSelection.ElementalTiers);
+        var import = OriginalOrdinaryMagicImporter.DecodeSelection(Image(), OriginalDefaultAbilitySelection.ElementalTiers);
         Assert.Equal(57, import.Records.Length); Assert.Equal(12, import.Package.Definition.Spells.Count);
         var definition = import.Package.Definition;
         var spell = definition.Spells.Single(p => p.Value.OriginalAbilityId == originalId).Value;
@@ -39,7 +39,7 @@ public sealed class ElementalMagicImporterTests
     [Theory] [InlineData(19)] [InlineData(23)] [InlineData(27)]
     public void Fourth_tier_uses_radius_two_but_excludes_the_caster(int originalId)
     {
-        var definition = OriginalOrdinaryMagicImporter.DecodeSelection(Image(), OriginalOrdinarySpellSelection.ElementalTiers).Package.Definition;
+        var definition = OriginalOrdinaryMagicImporter.DecodeSelection(Image(), OriginalDefaultAbilitySelection.ElementalTiers).Package.Definition;
         var state = OrdinaryMagicBattle.Apply(definition.Start(), new OrdinaryMagicCommand.Advance()).State;
         var spell = definition.Spells.Values.Single(s => s.OriginalAbilityId == originalId);
         state = OrdinaryMagicBattle.Apply(state, new OrdinaryMagicCommand.Cast(new("mage"), spell.Id, new(2, 2, 0), false)).State;
@@ -55,7 +55,7 @@ public sealed class ElementalMagicImporterTests
     [Fact]
     public void Elemental_selection_preserves_slot_order_and_charges_all_explicit_grants_to_the_authored_career()
     {
-        var import = OriginalOrdinaryMagicImporter.DecodeSelection(Image(), OriginalOrdinarySpellSelection.ElementalTiers);
+        var import = OriginalOrdinaryMagicImporter.DecodeSelection(Image(), OriginalDefaultAbilitySelection.ElementalTiers);
         var mage = import.Package.Definition.Units[0];
         Assert.Equal(12, mage.LearnedSpells.Count);
         Assert.Equal((ushort)260, mage.JobPoints[new("fft.ps1:job/wizard")].Current);
@@ -72,10 +72,10 @@ public sealed class ElementalMagicImporterTests
     {
         byte[] image = Image(); int offset = Offset(0x8005fbf0 + 23 * 14);
         image[offset + 4] = 0;
-        Assert.Throws<InvalidDataException>(() => OriginalOrdinaryMagicImporter.DecodeSelection(image, OriginalOrdinarySpellSelection.ElementalTiers));
+        Assert.Throws<InvalidDataException>(() => OriginalOrdinaryMagicImporter.DecodeSelection(image, OriginalDefaultAbilitySelection.ElementalTiers));
         image = Image(); image[Offset(0x80064a94 + 11 * 25) + 3 + 8] = 25;
-        Assert.Throws<InvalidDataException>(() => OriginalOrdinaryMagicImporter.DecodeSelection(image, OriginalOrdinarySpellSelection.ElementalTiers));
-        Assert.Throws<ArgumentOutOfRangeException>(() => OriginalOrdinaryMagicImporter.DecodeSelection(Image(), (OriginalOrdinarySpellSelection)999));
+        Assert.Throws<InvalidDataException>(() => OriginalOrdinaryMagicImporter.DecodeSelection(image, OriginalDefaultAbilitySelection.ElementalTiers));
+        Assert.Throws<ArgumentOutOfRangeException>(() => OriginalOrdinaryMagicImporter.DecodeSelection(Image(), (OriginalDefaultAbilitySelection)999));
     }
 
     private static int Offset(uint address) => checked((int)(address - 0x80010000 + 0x800));

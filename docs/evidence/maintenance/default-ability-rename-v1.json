@@ -1,0 +1,1505 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-444",
+  "managedBaseRevision": "887668f9a7a846aeef7a9b31a88ab47c3c6cb03c",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "report": "docs/architecture/default-ability-pathways.md",
+  "sourceFiles": [
+    {
+      "path": "src/battle/ai/abilities.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 20079,
+      "sha256": "42b793235173dbc98e77249df6488eed3708ef3c60c9d10520557fc9636c6862"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 147880,
+      "sha256": "5519c4550e9fea302ee4366848435b8131c7d3aef24f02462c7571d11bd1cd17"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 111880,
+      "sha256": "22555f06b061bc6f017f721998a5e44dfb3d4fa4c7284a2ee3367dfa27ce80ad"
+    },
+    {
+      "path": "include/fft/ai.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 25771,
+      "sha256": "fa7aabf5b4d21e3f42be7978c061fb859a52709a234e5b4205c5de5e2c8566b5"
+    },
+    {
+      "path": "include/fft/ai_decision.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9018,
+      "sha256": "a88a67152b5143b74121946b7dffd4c8b76b568d9947c828d6620014a741b02b"
+    },
+    {
+      "path": "include/fft/skillset.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 10251,
+      "sha256": "ff8564cfae7e4e64dd3dc289577f56ee3cba27c8a8f450491e2d6bf6182729ad"
+    },
+    {
+      "path": "include/fft/ability.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 34632,
+      "sha256": "530676861205ea3cf31cada08ffc927142db98af0ad2c986722ad83b069b9a2f"
+    },
+    {
+      "path": "include/fft/command.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 16578,
+      "sha256": "1c033381864b735aded0393f686443333b09d2ee62c539ecbbd3ae9a7ebb60a0"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/ai/abilities.c",
+      "symbol": "ai_workspace_init",
+      "startLine": 29,
+      "endLine": 74,
+      "normalizedLfSha256": "2208b5bf8bac19466d27d5ba279bc7c13a0647518bb6c842de903c0b44364a29"
+    },
+    {
+      "path": "src/battle/ai/abilities.c",
+      "symbol": "ai_unit_abilities_init",
+      "startLine": 86,
+      "endLine": 197,
+      "normalizedLfSha256": "fb9c5da2b0c69815e35072a175ae22a865c76821481eb51de260564caf49aac4"
+    },
+    {
+      "path": "src/battle/ai/abilities.c",
+      "symbol": "usable_abilities_build",
+      "startLine": 223,
+      "endLine": 278,
+      "normalizedLfSha256": "804a26a4db6daeeffa6316d6ca444d61bd96e295aa4ff47c170d6940889db4de"
+    },
+    {
+      "path": "src/battle/ai/abilities.c",
+      "symbol": "ability_usable_from_skillset_add",
+      "startLine": 335,
+      "endLine": 466,
+      "normalizedLfSha256": "3c5c7d2936e5fd8156081cc4b7b54a7574cdc2c5f7e640511a13c8669d94becc"
+    },
+    {
+      "path": "src/battle/ai/abilities.c",
+      "symbol": "ai_ability_is_known",
+      "startLine": 472,
+      "endLine": 493,
+      "normalizedLfSha256": "a6a6ef49a634ca65624dfb74c1af6beaad441199d9551139aeeaf47955066414"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_command_build",
+      "startLine": 131,
+      "endLine": 224,
+      "normalizedLfSha256": "b4a01ef870fceac6d31bc8ab370f0b4053aaee69fc3dd55d9b79c78a0975a5bf"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "decision_flags_refresh",
+      "startLine": 270,
+      "endLine": 323,
+      "normalizedLfSha256": "b64660e3cd084717a39ff0bbd764421152e45a21e458d466bf4b4b51bab204fb"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ability_considerations_set",
+      "startLine": 607,
+      "endLine": 904,
+      "normalizedLfSha256": "6ee3cb512ac66ef6799dce7b4f78c549cc10d1eaa0a4fa7701e0fbf6bed4d21d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_ability_entry_load",
+      "startLine": 974,
+      "endLine": 1131,
+      "normalizedLfSha256": "98619a79ae6c72e98affb0803445984e5291b27b130e0fb27394b73fccb4e832"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "action_select",
+      "startLine": 1155,
+      "endLine": 1218,
+      "normalizedLfSha256": "7f3f380a6b32eebacd4d7537ac5b1e54cd9304c4f90ee5298b4ca4c7291203c8"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_action_rank_reset",
+      "startLine": 1225,
+      "endLine": 1232,
+      "normalizedLfSha256": "36b0c3d4fee5d8b9adef0a2a7bc1d8e757542f373ec6bc79cb19e0f94fedbcc5"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "general_select",
+      "startLine": 1311,
+      "endLine": 1356,
+      "normalizedLfSha256": "f6674dc7574a0aae432eda2fedcc799774bc099a049d0c48a52e599d134fe2fb"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "scenarios_build",
+      "startLine": 1428,
+      "endLine": 1527,
+      "normalizedLfSha256": "c88507ca82b368c137075684feae35f9a9b3b44354955c9f111e5704b3fa4205"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "rank_baseline_seed",
+      "startLine": 1396,
+      "endLine": 1409,
+      "normalizedLfSha256": "812e239202dd2be38eb7ee736b1bb7a62c75d04e6aec4bfb5d7bb25561e28e36"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ability_list_evaluate",
+      "startLine": 2330,
+      "endLine": 2351,
+      "normalizedLfSha256": "16fc81e0a64d57f4a205adb82a1079f4a5b7e3e0d73ea077aa6e9ae65475743b"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "target_active_units_select",
+      "startLine": 2278,
+      "endLine": 2325,
+      "normalizedLfSha256": "8971f84d2bc38ef004a86f44a3cad8fb31c77835114c9700f76384e3843da2d8"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "keep_charging_select",
+      "startLine": 1245,
+      "endLine": 1302,
+      "normalizedLfSha256": "a56eebc71ab6e664e62a10f3ad667bd443767ebf82a1c343396abad8b1c2d70b"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "rank_compare",
+      "startLine": 1721,
+      "endLine": 1745,
+      "normalizedLfSha256": "4b8030c705f4d09006602503d0e1f437678378998b87b5c02e9cc2085aace112"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_rank_is_higher",
+      "startLine": 1753,
+      "endLine": 1772,
+      "normalizedLfSha256": "082674931431d31ee9304e6b0fcb475186f91ea0123d6ac77249a02dc5f712a5"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_best_rank_insert",
+      "startLine": 1816,
+      "endLine": 1836,
+      "normalizedLfSha256": "068dcaab34a7b6cbf3a99f2e0522319b8c0d863bdb5966f4ed3efeddc5c976bc"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ranked_select",
+      "startLine": 1844,
+      "endLine": 1866,
+      "normalizedLfSha256": "249278485ed952f209f5fa3f59978d88ee4763d4973a5ce45b85cd10a748a48d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "fallback_select",
+      "startLine": 3156,
+      "endLine": 3171,
+      "normalizedLfSha256": "fad02f672586be9f22bb13f959623503a9e01f1b59e824e3d98007c8ff641f51"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "fight_for_life_select",
+      "startLine": 2415,
+      "endLine": 2520,
+      "normalizedLfSha256": "904f6184af17975debb05229e7d4f3dcc7f1dfc0b056e097e44a79724bdfc28f"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "protect_allies_select",
+      "startLine": 2588,
+      "endLine": 2707,
+      "normalizedLfSha256": "e21be13ebc386c315d5a4aa08cb92c7f66774b3699845e7dbcf20394af09dee8"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "retreat_select",
+      "startLine": 2926,
+      "endLine": 2990,
+      "normalizedLfSha256": "ba808d8d82654c7c83d4a0a3425ea642efd7dcc397217a1df04e9496ea3ee20f"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "targeted_build",
+      "startLine": 2529,
+      "endLine": 2583,
+      "normalizedLfSha256": "a6b7b3775cc49ba621fd391801ea56ac3e364d59ca0f5c7b64f5ed99ab933dba"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_ability_outcome_evaluate",
+      "startLine": 311,
+      "endLine": 467,
+      "normalizedLfSha256": "ef236fb9f5cb2ed53870489b054483c7227e76c62c6fcb7d1b6f3c1f1b126f68"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "origin_reflected_evaluate",
+      "startLine": 637,
+      "endLine": 723,
+      "normalizedLfSha256": "38d63b13e634ebbc919d09f97e2a06780e6e5bf5e3e7e89d87c08c4a1677b085"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "origin_self_target_evaluate",
+      "startLine": 475,
+      "endLine": 531,
+      "normalizedLfSha256": "9906dd6b608a7ba1069cdf0efc4f7134662c50d9fb8cf99b273c7b6fb5b1abf6"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "origin_reachable_evaluate",
+      "startLine": 832,
+      "endLine": 905,
+      "normalizedLfSha256": "f213309e60e63e57e9b159868cd3e6a95aee7e49a5d9b71f5bac60c0ec4d528b"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_action_evaluate",
+      "startLine": 1410,
+      "endLine": 1423,
+      "normalizedLfSha256": "86cc7f91e9ae6614fdc2d6b1abf6acc6d19eeef8fcb7cad66cea35c10c390f80"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_action_simulate_and_score",
+      "startLine": 1442,
+      "endLine": 1728,
+      "normalizedLfSha256": "9415274d3b38d3e7afe51922914355e40ff6bad7bccb9bc861bbbfae6894bcd4"
+    }
+  ],
+  "transformations": [
+    {
+      "old": "OrdinarySpells",
+      "new": "DefaultAbilities"
+    },
+    {
+      "old": "OrdinarySpell",
+      "new": "DefaultAbility"
+    }
+  ],
+  "renamedFiles": [
+    {
+      "old": "src/Fft.Client/Presentation/OrdinaryMagicInteraction.cs",
+      "new": "src/Fft.Client/Presentation/OrdinaryMagicInteraction.cs",
+      "beforeNormalizedSha256": "37e5bdb955667d9d3f66b347f22d4c1b6b6e22f867f6c1a22e614d3446ee5de5",
+      "substitutedNormalizedSha256": "c798ae30d1587c0c3ebc73b2fa0c8f198e6fd7975f0ae11cb7155651b624abe3",
+      "currentNormalizedSha256": "c798ae30d1587c0c3ebc73b2fa0c8f198e6fd7975f0ae11cb7155651b624abe3",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.AssetTool.Cli/InspectOrdinarySpellAiCommand.cs",
+      "new": "src/Zodiac.AssetTool.Cli/InspectDefaultAbilityAiCommand.cs",
+      "beforeNormalizedSha256": "5d0e379bfd5bc52ccdf44788fcbec0e9821c2f2b498e2c75428dbac6d889ec6d",
+      "substitutedNormalizedSha256": "1a089271a9b0181750b19f369ae6459b3d7329c9db7d4fb1ee7283938d234c9a",
+      "currentNormalizedSha256": "1a089271a9b0181750b19f369ae6459b3d7329c9db7d4fb1ee7283938d234c9a",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.AssetTool.Cli/OriginalOrdinaryMagicImporter.cs",
+      "new": "src/Zodiac.AssetTool.Cli/OriginalOrdinaryMagicImporter.cs",
+      "beforeNormalizedSha256": "4bbf5ebf43b522ebad93794d2deffa438f64e2cdce15834b31805d3409abb101",
+      "substitutedNormalizedSha256": "22ed5d48f44c0ca08ce0ad28b9a0a1ceaca05a7fb3c83954ba10a4d39e2e8836",
+      "currentNormalizedSha256": "22ed5d48f44c0ca08ce0ad28b9a0a1ceaca05a7fb3c83954ba10a4d39e2e8836",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.AssetTool.Cli/OriginalOrdinarySpellSelection.cs",
+      "new": "src/Zodiac.AssetTool.Cli/OriginalDefaultAbilitySelection.cs",
+      "beforeNormalizedSha256": "6eed1529295e5950f7619ee56ad2b0374bf49bb868545d144751d16d6a1c4aa5",
+      "substitutedNormalizedSha256": "a7ab805fb6c87da9e001be989a32b3675eb80faa44d3da4469e0b97c7883e8f7",
+      "currentNormalizedSha256": "a7ab805fb6c87da9e001be989a32b3675eb80faa44d3da4469e0b97c7883e8f7",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.AssetTool.Cli/PrepareOrdinaryMagicBattleCommand.cs",
+      "new": "src/Zodiac.AssetTool.Cli/PrepareOrdinaryMagicBattleCommand.cs",
+      "beforeNormalizedSha256": "448a6cc84a54a1eb96e59211a92f8fe82356aa7181dadceaaba1d3840443f572",
+      "substitutedNormalizedSha256": "9a454fecb0933fb870fa6544bb88e1f67bfeb4237f1ebcf63da42e62a9191582",
+      "currentNormalizedSha256": "9a454fecb0933fb870fa6544bb88e1f67bfeb4237f1ebcf63da42e62a9191582",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.AssetTool.Cli/Program.cs",
+      "new": "src/Zodiac.AssetTool.Cli/Program.cs",
+      "beforeNormalizedSha256": "46b994bf3c46b4432c4a3c498fa30ee9f87908e1797e370af8a6809f7ecc298f",
+      "substitutedNormalizedSha256": "35c607273cb5a5febc22bda6a31dd3654b5a7504a5e0c0fb599482c9826d4af7",
+      "currentNormalizedSha256": "35c607273cb5a5febc22bda6a31dd3654b5a7504a5e0c0fb599482c9826d4af7",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Content/BattleSetup/OrdinaryMagicPreparedSpell.cs",
+      "new": "src/Zodiac.Content/BattleSetup/OrdinaryMagicPreparedSpell.cs",
+      "beforeNormalizedSha256": "ae233a14e5ad5072492f896b30bb3cb8f0f62d4712fe1af2bf7b2f471848a10c",
+      "substitutedNormalizedSha256": "98432b8bf8015f1525f54479a79a038057a0589ace8474bf63780cf70383bf10",
+      "currentNormalizedSha256": "98432b8bf8015f1525f54479a79a038057a0589ace8474bf63780cf70383bf10",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Content/BattleSetup/PreparedOrdinarySpellAi.cs",
+      "new": "src/Zodiac.Content/BattleSetup/PreparedDefaultAbilityAi.cs",
+      "beforeNormalizedSha256": "5a519f152db46f60ad23879b32a49122ba5afb70942b18bec067b20ce1568107",
+      "substitutedNormalizedSha256": "2aa5a728127d5fa3244e3ca446e8d0d694d7172902146c353305e3e92cc9356a",
+      "currentNormalizedSha256": "2aa5a728127d5fa3244e3ca446e8d0d694d7172902146c353305e3e92cc9356a",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Diagnostics/OrdinarySpellAiReadyQuery.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Diagnostics/DefaultAbilityAiReadyQuery.cs",
+      "beforeNormalizedSha256": "e6c7b10f4ca51a5dea52553ac175b5d7a94ba68ffbfa68e88fac120df312151c",
+      "substitutedNormalizedSha256": "027891056338db1970f0a6bb4c00b8849d397e5c1644f4b0d03650e7e4e7d925",
+      "currentNormalizedSha256": "027891056338db1970f0a6bb4c00b8849d397e5c1644f4b0d03650e7e4e7d925",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAbilitySearchQuery.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiAbilitySearchQuery.cs",
+      "beforeNormalizedSha256": "d22644a2c7fccc4ee8d3e07e76b41e1accf2588b640ec1db7b05b368e5067124",
+      "substitutedNormalizedSha256": "b7a928e93aaba7482f9809a1b0019a6c50441e8e55aaa48580bedd22cf3078ec",
+      "currentNormalizedSha256": "b7a928e93aaba7482f9809a1b0019a6c50441e8e55aaa48580bedd22cf3078ec",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAimQuery.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiAimQuery.cs",
+      "beforeNormalizedSha256": "3fe2fd812f45c5966a5a345aeaa15f84f13e0c8b8e39e0bb0f225b146047edd5",
+      "substitutedNormalizedSha256": "ea371e23b1d24ab21ace5a9e63f2a4d58ad58ddf911cea697de05580abe77fc2",
+      "currentNormalizedSha256": "ea371e23b1d24ab21ace5a9e63f2a4d58ad58ddf911cea697de05580abe77fc2",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiCandidateQuery.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiCandidateQuery.cs",
+      "beforeNormalizedSha256": "fb6c1b0a899a1b4223ce6040b520a2db5924c324fbbce53097bcf81b17fedec7",
+      "substitutedNormalizedSha256": "58a4061fc00d56014ef3ba1bb2d5f600478e55b220e7230ae0cbf05ef7850c23",
+      "currentNormalizedSha256": "58a4061fc00d56014ef3ba1bb2d5f600478e55b220e7230ae0cbf05ef7850c23",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiContext.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiContext.cs",
+      "beforeNormalizedSha256": "c15c8afb2234b9228f0ec193aefb71d992d2a18c581190ee7bb518446c2a69fa",
+      "substitutedNormalizedSha256": "5521a58989a2808a6caff3e4d370815b34478608dd33e458999a454a2d06cb5e",
+      "currentNormalizedSha256": "5521a58989a2808a6caff3e4d370815b34478608dd33e458999a454a2d06cb5e",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiMovementQuery.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiMovementQuery.cs",
+      "beforeNormalizedSha256": "60c169cbfd2367e994eadfd7d5b7889ed173b764bd4fb35898dc77d1f06351ba",
+      "substitutedNormalizedSha256": "24787c57b650a0d46c53ede19d6bd7feaf81e1d5bdf0c0fffed0d4d7559a1551",
+      "currentNormalizedSha256": "24787c57b650a0d46c53ede19d6bd7feaf81e1d5bdf0c0fffed0d4d7559a1551",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiOriginEvaluationQuery.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiOriginEvaluationQuery.cs",
+      "beforeNormalizedSha256": "d8a17fc7dd7892cb023fbe9b06d2cdce138fe73ec37bd43f96a4f3300a1db722",
+      "substitutedNormalizedSha256": "5a44efe5f062db0425a5efd1594fb836650b8baa189473fc1a395f37f2d5b8ad",
+      "currentNormalizedSha256": "5a44efe5f062db0425a5efd1594fb836650b8baa189473fc1a395f37f2d5b8ad",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiOriginQuery.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiOriginQuery.cs",
+      "beforeNormalizedSha256": "5e60451be507dc9d652e433a0beec7282c10da2dbc574bc9700d820dc46275f5",
+      "substitutedNormalizedSha256": "ce575e99231d83c31b11ced24b596deb8d1a3bab54c443b875b64cf6201b3aa8",
+      "currentNormalizedSha256": "ce575e99231d83c31b11ced24b596deb8d1a3bab54c443b875b64cf6201b3aa8",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiPassSearchQuery.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiPassSearchQuery.cs",
+      "beforeNormalizedSha256": "09edb9d9d715f109281fed0edc67b6f13ddfa1dcf7a02d437d8ed0b25206e7dc",
+      "substitutedNormalizedSha256": "47a6134178965035a1f24fe4eea3587453920037abf707eaa8f74fb4d2a2af06",
+      "currentNormalizedSha256": "47a6134178965035a1f24fe4eea3587453920037abf707eaa8f74fb4d2a2af06",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiSearchQuery.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiSearchQuery.cs",
+      "beforeNormalizedSha256": "bd0e8c1b2eed7f23fc762fa64b8fdef17e5872d8d457db684332c22c3b2a1023",
+      "substitutedNormalizedSha256": "073dd63adddbe91d44a96d23538484a8544bb03278a1e0f63d87ebf680fabc90",
+      "currentNormalizedSha256": "073dd63adddbe91d44a96d23538484a8544bb03278a1e0f63d87ebf680fabc90",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/README.md",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/README.md",
+      "beforeNormalizedSha256": "2c7116cd5177b9135234bd3e954550fb21300db3202d742fe9a89de2460e5c88",
+      "substitutedNormalizedSha256": "bef9b4412dc89a6c012a7e6c3cb8d2102fe2c923b26993e04b8206bdaa24fce4",
+      "currentNormalizedSha256": "f45933f0e7cd90fed5510d5b201049429a8029b99e025dd994cefa2917c91a12",
+      "exactNameSubstitution": false,
+      "additionalDocumentationEdits": true
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Scoring/OrdinarySpellAiAccounting.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Scoring/DefaultAbilityAiAccounting.cs",
+      "beforeNormalizedSha256": "ebec8d6ff889030c8f163fc01dfbd28b6bedfc9747529b146c6fffac00563b8a",
+      "substitutedNormalizedSha256": "60991caf879ccfe5a279b4bbbd97ccd6326536573d96a11953fc6797efda08d6",
+      "currentNormalizedSha256": "60991caf879ccfe5a279b4bbbd97ccd6326536573d96a11953fc6797efda08d6",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Scoring/OrdinarySpellAiScoring.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Scoring/DefaultAbilityAiScoring.cs",
+      "beforeNormalizedSha256": "8b83b407b72ed4c6f5a71e93ac5270c3a7c2444a67692876e877f677798460b6",
+      "substitutedNormalizedSha256": "acdf900c32e343b81242bc9835629a15829eb42e98213860d167fc2825a38804",
+      "currentNormalizedSha256": "acdf900c32e343b81242bc9835629a15829eb42e98213860d167fc2825a38804",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAbilityBest.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAbilityBest.cs",
+      "beforeNormalizedSha256": "f70d5aef552e421cf260288cb96f6cddcd751f6933ea27c67e051ba4ca1c5fff",
+      "substitutedNormalizedSha256": "ae7fec26d42f030be3a5144c9a3eb9eea8cafdf93c92c5d0295d63131238eb2c",
+      "currentNormalizedSha256": "ae7fec26d42f030be3a5144c9a3eb9eea8cafdf93c92c5d0295d63131238eb2c",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAbilityEvaluation.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAbilityEvaluation.cs",
+      "beforeNormalizedSha256": "a1ab110bd01bc9a0c146312ea93bbb3bc23e1022163bb1fbd19abb5d66e2a33f",
+      "substitutedNormalizedSha256": "ec7f86c312c65d0d674f0e88f7d4c9b92e8d0857c565fa44a0d215db363a310f",
+      "currentNormalizedSha256": "ec7f86c312c65d0d674f0e88f7d4c9b92e8d0857c565fa44a0d215db363a310f",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAbilityPass.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAbilityPass.cs",
+      "beforeNormalizedSha256": "bfeb9506ece8f6f05648042fc4286c8332a3f8d15d3e8450b5eb0aba4c507243",
+      "substitutedNormalizedSha256": "7d1eca0c9a1591ab32da0e8b1750fbd2ec2110b220d484651162c905ece6b31a",
+      "currentNormalizedSha256": "7d1eca0c9a1591ab32da0e8b1750fbd2ec2110b220d484651162c905ece6b31a",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAbilitySearchOutcome.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAbilitySearchOutcome.cs",
+      "beforeNormalizedSha256": "ccf7e84b051f3f098171607259b6ecdb69d2e6e1dd7f8de8a353bd7254afcf47",
+      "substitutedNormalizedSha256": "3218d4f44920bf751cfe8fe9fcb7e5879a5e5bc71a313c0b46a232587b927a03",
+      "currentNormalizedSha256": "3218d4f44920bf751cfe8fe9fcb7e5879a5e5bc71a313c0b46a232587b927a03",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAbilitySearchRequest.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAbilitySearchRequest.cs",
+      "beforeNormalizedSha256": "695f8153234e49d77bb684eefe6590fd258bae98fbe163f5515d1c5e043a773e",
+      "substitutedNormalizedSha256": "dcbeab6ea3b901e1f5422ca0c64b9dd8d96eb39b218cec3a41df004c7c83cf46",
+      "currentNormalizedSha256": "dcbeab6ea3b901e1f5422ca0c64b9dd8d96eb39b218cec3a41df004c7c83cf46",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAbilitySearchResult.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAbilitySearchResult.cs",
+      "beforeNormalizedSha256": "d3e2b9ffaf3f29dffc4af365340322cf22e2807029fcb46859c9a9609df9eaed",
+      "substitutedNormalizedSha256": "131ea2b29229e306b89766f43c4c15380ebfefd7b63fa9ff06f563ac95c73ca1",
+      "currentNormalizedSha256": "131ea2b29229e306b89766f43c4c15380ebfefd7b63fa9ff06f563ac95c73ca1",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAim.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAim.cs",
+      "beforeNormalizedSha256": "10e62da8e71ce1137aafe94aa29d7ddd9b50363e71ba85f70eb8398eee24f9a3",
+      "substitutedNormalizedSha256": "12a47df406b963cdf4027ef6a7c638e96436aa152bc97c2d8004b5bc9e6367e8",
+      "currentNormalizedSha256": "12a47df406b963cdf4027ef6a7c638e96436aa152bc97c2d8004b5bc9e6367e8",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAimDeadline.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAimDeadline.cs",
+      "beforeNormalizedSha256": "03222fc05a5262aaec9b1fa40abf2cb1a184a5902847b2bcf00e43f53f13b3a5",
+      "substitutedNormalizedSha256": "1a0f131bfaa0aeddead11f5e8758946930a8fef7dca0903513530ec2dac6dfe9",
+      "currentNormalizedSha256": "1a0f131bfaa0aeddead11f5e8758946930a8fef7dca0903513530ec2dac6dfe9",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAimEnumeration.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAimEnumeration.cs",
+      "beforeNormalizedSha256": "a500a130ea15a8698e19f2603ccc36b5e1794b308cfe69a31dae1d37793cb858",
+      "substitutedNormalizedSha256": "50ab62145e2fa7b0a14eefc2d5dbf5d6e401d0a27dd3d9e5e0b01cc539cee860",
+      "currentNormalizedSha256": "50ab62145e2fa7b0a14eefc2d5dbf5d6e401d0a27dd3d9e5e0b01cc539cee860",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAimEvaluation.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAimEvaluation.cs",
+      "beforeNormalizedSha256": "6c2144b2410fc728b1886a32d9d25adbf6124b2e32f68412006b21418d078916",
+      "substitutedNormalizedSha256": "50e2d559475a69e09eb6dd27ec3e85a99c8d2c54dacb66842da90e0bf927b23f",
+      "currentNormalizedSha256": "50e2d559475a69e09eb6dd27ec3e85a99c8d2c54dacb66842da90e0bf927b23f",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAimOutcome.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAimOutcome.cs",
+      "beforeNormalizedSha256": "23a0c4fb9edce7c4169c1af1924ff7289c92b071943e65b39f7d1550fd237e65",
+      "substitutedNormalizedSha256": "90def8e64d227d76b365d2098c8c9618d933bdc292edc80cbe9b6551299d636f",
+      "currentNormalizedSha256": "90def8e64d227d76b365d2098c8c9618d933bdc292edc80cbe9b6551299d636f",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAimPass.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAimPass.cs",
+      "beforeNormalizedSha256": "2c0d25cb8a3b66dd9ee7089f409d84415352701291c6d8d76149ad68a975d463",
+      "substitutedNormalizedSha256": "f6dd5ea13f70fefdda61759f81ccf4328d0ced8ce00afd79883a4ee93b79b803",
+      "currentNormalizedSha256": "f6dd5ea13f70fefdda61759f81ccf4328d0ced8ce00afd79883a4ee93b79b803",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAimPassKind.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAimPassKind.cs",
+      "beforeNormalizedSha256": "4309cdbf421ab36f9d6872bed3e89bcc7c0175565326a6a0a50aab05ca34f4b6",
+      "substitutedNormalizedSha256": "94499b7e4cf7d383dd0c1d0fc8e56f1a120d1f08b60754a4dd2dc0c201667fbf",
+      "currentNormalizedSha256": "94499b7e4cf7d383dd0c1d0fc8e56f1a120d1f08b60754a4dd2dc0c201667fbf",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAimRequest.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAimRequest.cs",
+      "beforeNormalizedSha256": "58c5871e99739f3eea60c9cc1248933d66d9e07e65e95aa8a13168c18004136f",
+      "substitutedNormalizedSha256": "f0483584c11648918e149bae1bf649fa153ec5f8dca566af509b3dd66f56fbf3",
+      "currentNormalizedSha256": "f0483584c11648918e149bae1bf649fa153ec5f8dca566af509b3dd66f56fbf3",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAimResult.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAimResult.cs",
+      "beforeNormalizedSha256": "2021cbb8544db4f8cbd5d278e7d17ce007779a6d254b2cf81910789441829a5f",
+      "substitutedNormalizedSha256": "e2274f0e4acc0735420affa93b95edab5f177cd6db28cc306bd39afc44ce7810",
+      "currentNormalizedSha256": "e2274f0e4acc0735420affa93b95edab5f177cd6db28cc306bd39afc44ce7810",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiCatalog.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiCatalog.cs",
+      "beforeNormalizedSha256": "dee22de9d54ae35a365f4d224744848a9b881d462f39a305a12e86ed5af688cc",
+      "substitutedNormalizedSha256": "9b505b8ecd0d47533d716b5098def058836b02518cd38265831ed5f26838fc74",
+      "currentNormalizedSha256": "9b505b8ecd0d47533d716b5098def058836b02518cd38265831ed5f26838fc74",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiLists.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiLists.cs",
+      "beforeNormalizedSha256": "268673895046762098c075df6e9fb2b2e89b72f7835737239efb5cabb90aface",
+      "substitutedNormalizedSha256": "ea5bdfca61a080692e9e0262e34f7e7d72c5e647c1e632f392acc020f4e79a34",
+      "currentNormalizedSha256": "ea5bdfca61a080692e9e0262e34f7e7d72c5e647c1e632f392acc020f4e79a34",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiMovementOutcome.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiMovementOutcome.cs",
+      "beforeNormalizedSha256": "82e44bbc5980693482900c9c5a25fbe006a50aed4161029fb3b4d449173c48d2",
+      "substitutedNormalizedSha256": "24c9962782a43b19fc885984b0b8bcebfd7db8403543ada71005cbc3cca88362",
+      "currentNormalizedSha256": "24c9962782a43b19fc885984b0b8bcebfd7db8403543ada71005cbc3cca88362",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiMovementProfile.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiMovementProfile.cs",
+      "beforeNormalizedSha256": "3cd64b657c9e075dae3a0533b9cc3215681cb286beba0207130caed2b21ccb0d",
+      "substitutedNormalizedSha256": "6f03842f5fe43fc647043ef94e492ab84e21fcc3d912e5b99568e307275adec7",
+      "currentNormalizedSha256": "6f03842f5fe43fc647043ef94e492ab84e21fcc3d912e5b99568e307275adec7",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiMovementRank.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiMovementRank.cs",
+      "beforeNormalizedSha256": "7a75fd67a04ea9fc69641bb839d5592ca0bdd1d448c7a0d2d81be3f25fd92584",
+      "substitutedNormalizedSha256": "e0603ffde90b7735fe1cc638f98aad2b62c44793af80c80f6419f7b8c117509a",
+      "currentNormalizedSha256": "e0603ffde90b7735fe1cc638f98aad2b62c44793af80c80f6419f7b8c117509a",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiMovementRequest.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiMovementRequest.cs",
+      "beforeNormalizedSha256": "0611b5ba407e964f00c2c737191343a19a181e1ac349c0c4634ef753dd572202",
+      "substitutedNormalizedSha256": "0ee514b20a838474631ab840771fe685362c3831ac2c6b877d49a2ab6f65aa9c",
+      "currentNormalizedSha256": "0ee514b20a838474631ab840771fe685362c3831ac2c6b877d49a2ab6f65aa9c",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiMovementResult.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiMovementResult.cs",
+      "beforeNormalizedSha256": "1991ff1d300cebd87e5ebec4850cfcf8ae47dfc4cb187f25ba238c9ba19afb11",
+      "substitutedNormalizedSha256": "6c516219c2acf7e0ccb3e830f51039d60383fae5a8406f5bc98c36ab0f431fdc",
+      "currentNormalizedSha256": "6c516219c2acf7e0ccb3e830f51039d60383fae5a8406f5bc98c36ab0f431fdc",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiOrigin.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiOrigin.cs",
+      "beforeNormalizedSha256": "f5084550eef5054b33a47e982de50460a02ddc16d964d02818710ddb8ba410a2",
+      "substitutedNormalizedSha256": "2f6832aa392b3fe2e5d8661985df23f83603f741ef4e8b79be07ddd62438ea1b",
+      "currentNormalizedSha256": "2f6832aa392b3fe2e5d8661985df23f83603f741ef4e8b79be07ddd62438ea1b",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiOriginEvaluationOutcome.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiOriginEvaluationOutcome.cs",
+      "beforeNormalizedSha256": "9a1b1f64227f6b8bbdce822f8b9b80a1973ae835079235192a37a616e85a8d30",
+      "substitutedNormalizedSha256": "b89ea5b14d21abfb6ec0d178b068ae64d905cb4cd24bacd51f6fe9d9f749af95",
+      "currentNormalizedSha256": "b89ea5b14d21abfb6ec0d178b068ae64d905cb4cd24bacd51f6fe9d9f749af95",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiOriginEvaluationRequest.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiOriginEvaluationRequest.cs",
+      "beforeNormalizedSha256": "bcf8e08bcb2dd02b743ea002c6632b767ebf9b1f55c7d193e122b0a670882ac8",
+      "substitutedNormalizedSha256": "4cc08540fba6580b801496d62131dfa435fce04dc04f452867341bdcfc37305a",
+      "currentNormalizedSha256": "4cc08540fba6580b801496d62131dfa435fce04dc04f452867341bdcfc37305a",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiOriginEvaluationResult.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiOriginEvaluationResult.cs",
+      "beforeNormalizedSha256": "7ad4759291a2b73a52bb25c3e92c8ecf6ec596144e7ab42debcc9fc5e30cf531",
+      "substitutedNormalizedSha256": "67b34d6ce82b9763a763d7494ab56f6919ea198a04f6cb9cce461c70c94d03de",
+      "currentNormalizedSha256": "67b34d6ce82b9763a763d7494ab56f6919ea198a04f6cb9cce461c70c94d03de",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiOriginOutcome.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiOriginOutcome.cs",
+      "beforeNormalizedSha256": "f54ac371afb339d85bb3b4cb431a14c61c33f530f515fd9544d6efcb1a800574",
+      "substitutedNormalizedSha256": "d552e77539c9b4ee3605e04fb9313a33e4f0763c5b568743c4fe7cd7859d5c88",
+      "currentNormalizedSha256": "d552e77539c9b4ee3605e04fb9313a33e4f0763c5b568743c4fe7cd7859d5c88",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiOriginPass.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiOriginPass.cs",
+      "beforeNormalizedSha256": "c68820aae73be8bf8d081bc4be1dad3466f6a6b761e9c3e4fcca19b527aa6d93",
+      "substitutedNormalizedSha256": "9f2131db664e6321b52c685df202e08a58b534b3e42b603940e3797f86f7a44f",
+      "currentNormalizedSha256": "9f2131db664e6321b52c685df202e08a58b534b3e42b603940e3797f86f7a44f",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiOriginRequest.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiOriginRequest.cs",
+      "beforeNormalizedSha256": "c97a1b6a64f8980e7567d632acd5bc01ae17a91d47e7df801a7cc79f6cba1867",
+      "substitutedNormalizedSha256": "a51e5a2598aa3ef0ebd1c1a380e4039a958ab4264f282fa925b433ad12c98ec5",
+      "currentNormalizedSha256": "a51e5a2598aa3ef0ebd1c1a380e4039a958ab4264f282fa925b433ad12c98ec5",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiOriginResult.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiOriginResult.cs",
+      "beforeNormalizedSha256": "8472e5e24a36dab6f09e4bfce2dd4986857dd0c0367843931c355b0c911f4ccf",
+      "substitutedNormalizedSha256": "46ad69333a5a66e13f5f948a9deb467e19a008558c8cf4267d2ffd2a35004150",
+      "currentNormalizedSha256": "46ad69333a5a66e13f5f948a9deb467e19a008558c8cf4267d2ffd2a35004150",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiOriginScenario.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiOriginScenario.cs",
+      "beforeNormalizedSha256": "2f0fdf2b676e24da5f97995a87c5afbfb4edb424779938f862e507e732891f59",
+      "substitutedNormalizedSha256": "368f74890a5d4962e3bdcd25920e02897c4ed82258e7eba2827db713a5b02819",
+      "currentNormalizedSha256": "368f74890a5d4962e3bdcd25920e02897c4ed82258e7eba2827db713a5b02819",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiOriginTrace.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiOriginTrace.cs",
+      "beforeNormalizedSha256": "b0c9c184c2669d5a5474df3c90cccc541cdec563c09b17db414fb1d61176084f",
+      "substitutedNormalizedSha256": "ae3002c43386ebd08ac98484ccf8645dba75bfb5309ef817beb91a44a53acb58",
+      "currentNormalizedSha256": "ae3002c43386ebd08ac98484ccf8645dba75bfb5309ef817beb91a44a53acb58",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiParameters.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiParameters.cs",
+      "beforeNormalizedSha256": "bd7af455600c5e7c58f4d0d9478ee432ddfdcb84af5a5db3999d564d81a00b13",
+      "substitutedNormalizedSha256": "126196fb76fe4cf95020c3e83ebd37056320c3b6b4a41338194cfe254a6a29e3",
+      "currentNormalizedSha256": "126196fb76fe4cf95020c3e83ebd37056320c3b6b4a41338194cfe254a6a29e3",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiPassBest.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiPassBest.cs",
+      "beforeNormalizedSha256": "01cc2352c23b2f04e5bdb1473a2fbbf6d35de99ed1ab421a32b68c3a6f58ce34",
+      "substitutedNormalizedSha256": "dd7182da115ce93511a97da94a7006a5cc54a5e4b47701ea8a60723029b0992d",
+      "currentNormalizedSha256": "dd7182da115ce93511a97da94a7006a5cc54a5e4b47701ea8a60723029b0992d",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiPassSearchOutcome.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiPassSearchOutcome.cs",
+      "beforeNormalizedSha256": "e21331c450b9630326fe2db8f17fce1679a989265b5a6607ff3671857e8aeb6e",
+      "substitutedNormalizedSha256": "14fcd187f7f0f60afaa4ed4bc5fd3aedcf699d1610c057e20f69897e59330561",
+      "currentNormalizedSha256": "14fcd187f7f0f60afaa4ed4bc5fd3aedcf699d1610c057e20f69897e59330561",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiPassSearchRequest.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiPassSearchRequest.cs",
+      "beforeNormalizedSha256": "6984faaeb10ec8dfef1cd9d7a76ebd8318b3cf0febf39ebe1729a1eb869b5188",
+      "substitutedNormalizedSha256": "9e3fdf6953f632b0297f2b5e401a4c4b8883ca6f9872ca19db5f6827115d4274",
+      "currentNormalizedSha256": "9e3fdf6953f632b0297f2b5e401a4c4b8883ca6f9872ca19db5f6827115d4274",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiPassSearchResult.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiPassSearchResult.cs",
+      "beforeNormalizedSha256": "12f1534020a46ea8276b8d6ace898eaeb45c47b3a185027a46de1528ed109664",
+      "substitutedNormalizedSha256": "8bb8020bbd8f7cb966aa99add4d8eb57dc0116d880af4ab5a5a78e01ff653587",
+      "currentNormalizedSha256": "8bb8020bbd8f7cb966aa99add4d8eb57dc0116d880af4ab5a5a78e01ff653587",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiScoredMovement.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiScoredMovement.cs",
+      "beforeNormalizedSha256": "3bb99714c3f986ce234a2571fa84cec430d0426069df87ebf955974ccf6a88ab",
+      "substitutedNormalizedSha256": "15ea88ae22c9cc617e5e445655923bb92f128e8907966c81a19d2d8d16cc0722",
+      "currentNormalizedSha256": "15ea88ae22c9cc617e5e445655923bb92f128e8907966c81a19d2d8d16cc0722",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiSearchOutcome.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiSearchOutcome.cs",
+      "beforeNormalizedSha256": "12e55c1b4b325c04a693c08b482089fbe8f452b8351c9236a799c78a9391d385",
+      "substitutedNormalizedSha256": "19b209001718ec7ec570463c275bb25a1f4613d8bf5d701ee00fb70c55e52f1e",
+      "currentNormalizedSha256": "19b209001718ec7ec570463c275bb25a1f4613d8bf5d701ee00fb70c55e52f1e",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiSearchPass.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiSearchPass.cs",
+      "beforeNormalizedSha256": "53af1d4706e8d8201eccce2c2e6202ff1c246ee5a412fd2502009db652c665c7",
+      "substitutedNormalizedSha256": "6241874fa06e7be7a1a9ec82370139089267f78192f866f5e5087d1aa5ef9d4a",
+      "currentNormalizedSha256": "6241874fa06e7be7a1a9ec82370139089267f78192f866f5e5087d1aa5ef9d4a",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiSearchRequest.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiSearchRequest.cs",
+      "beforeNormalizedSha256": "b892a95afa3407253a9110f68a8885aa3fccfb09ee78230fb57b20aafc74f8a6",
+      "substitutedNormalizedSha256": "5f6b3eb41d3e0097a977c4ee03cfdc9675c4a0e78ef547913c41a06c197c0fc0",
+      "currentNormalizedSha256": "5f6b3eb41d3e0097a977c4ee03cfdc9675c4a0e78ef547913c41a06c197c0fc0",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiSearchResult.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiSearchResult.cs",
+      "beforeNormalizedSha256": "fa12339b3e229a1a3229c5df6dc0fd309bcd0d1e38155ce6757be75d3f973c3e",
+      "substitutedNormalizedSha256": "5df08bb12e11067624c5b2a0ca546b0d8539b8a2e1689735116c55300dbc3ecb",
+      "currentNormalizedSha256": "5df08bb12e11067624c5b2a0ca546b0d8539b8a2e1689735116c55300dbc3ecb",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiStatistics.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiStatistics.cs",
+      "beforeNormalizedSha256": "66cba31eb973f82b630f6b645359ae937a14b9c5be89e1b1e20ca28a8c090476",
+      "substitutedNormalizedSha256": "4d85b60dc06cc79d9c29c9fca27cbc0ca77444b9f3272719e00de35661e85052",
+      "currentNormalizedSha256": "4d85b60dc06cc79d9c29c9fca27cbc0ca77444b9f3272719e00de35661e85052",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiUsefulness.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiUsefulness.cs",
+      "beforeNormalizedSha256": "24d35c3b7ac53202e69d38a56245867ceaee19e80c8f4e9fe93a07071ae8ea7a",
+      "substitutedNormalizedSha256": "0a8a8c6298382a37a44bdd3f97429b5eb1febbbd5e1aa48e159ed8a8df8c2d86",
+      "currentNormalizedSha256": "0a8a8c6298382a37a44bdd3f97429b5eb1febbbd5e1aa48e159ed8a8df8c2d86",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiActionSimulation.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Simulation/DefaultAbilityAiActionSimulation.cs",
+      "beforeNormalizedSha256": "40b30e345e60bee128bfe892c8ff4d37f0f94ff00b582845fde254ee3469146e",
+      "substitutedNormalizedSha256": "34a05ba21f9961b1c034e606836acef2e4228d248fbf6b1aacabead44dd1aa9f",
+      "currentNormalizedSha256": "34a05ba21f9961b1c034e606836acef2e4228d248fbf6b1aacabead44dd1aa9f",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiClock.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Simulation/DefaultAbilityAiClock.cs",
+      "beforeNormalizedSha256": "ef34f7c0df356957220d4de9ec7f5f0dcf66cf97ae855e375ec1f313a68bf823",
+      "substitutedNormalizedSha256": "4636bdb657baad50d50c1a0f4fdd7412f086f8dfe0c188b739889c040b180540",
+      "currentNormalizedSha256": "4636bdb657baad50d50c1a0f4fdd7412f086f8dfe0c188b739889c040b180540",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiHitSimulation.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Simulation/DefaultAbilityAiHitSimulation.cs",
+      "beforeNormalizedSha256": "9b15e704f29dc9700ee7682a06ded79f268b4b356a72407c1d09b7a7176bde89",
+      "substitutedNormalizedSha256": "49c759891df06b102d15c140ceb8a08a4a471999bae39e0b08e710bb6c813273",
+      "currentNormalizedSha256": "49c759891df06b102d15c140ceb8a08a4a471999bae39e0b08e710bb6c813273",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiPassEvaluation.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Simulation/DefaultAbilityAiPassEvaluation.cs",
+      "beforeNormalizedSha256": "22d408eb7cf216c0c33ba4af543bb86333e6d07799978c1f8dc73a6d84f7d44a",
+      "substitutedNormalizedSha256": "ac3a3e7e64710a2f9da9bd5a16fae3d7fd7e76dee252a79bb8cc24c2905bda0d",
+      "currentNormalizedSha256": "ac3a3e7e64710a2f9da9bd5a16fae3d7fd7e76dee252a79bb8cc24c2905bda0d",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiProjection.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Simulation/DefaultAbilityAiProjection.cs",
+      "beforeNormalizedSha256": "9c90c52cf84b12189d178c8512d65cba2c8ebbbb5a0b71c2a1cbb4f1ac9cdf40",
+      "substitutedNormalizedSha256": "24c96057278937193e21bb6de42918fc7afe35924ae85564469fc62a482c1f07",
+      "currentNormalizedSha256": "24c96057278937193e21bb6de42918fc7afe35924ae85564469fc62a482c1f07",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiWork.cs",
+      "new": "src/Zodiac.Framework.Ai/DefaultAbilities/Simulation/DefaultAbilityAiWork.cs",
+      "beforeNormalizedSha256": "3646b1b706ed1846f2782eaba99afe40f434ddeb9ec0f291c9278f8ac3ccf6d4",
+      "substitutedNormalizedSha256": "472319e9a5421f5a248e773491f111cc74db83123b1629e619106f103859addc",
+      "currentNormalizedSha256": "472319e9a5421f5a248e773491f111cc74db83123b1629e619106f103859addc",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/README.md",
+      "new": "src/Zodiac.Framework.Ai/README.md",
+      "beforeNormalizedSha256": "c1c15939486f9f679fa6a8e1c5903be649322a5336403625ca009d2aa54d641b",
+      "substitutedNormalizedSha256": "c2d2e1c88fcadecf316a0fb0903d965f89f0556d578861496eebf9caaa73052d",
+      "currentNormalizedSha256": "c2d2e1c88fcadecf316a0fb0903d965f89f0556d578861496eebf9caaa73052d",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Magic/Execution/OrdinaryMagicCastExecution.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Magic/Execution/OrdinaryMagicCastExecution.cs",
+      "beforeNormalizedSha256": "076310aef1290b79d8565be2e20ff18a62fbb717f0bb7f2251f6a5c740ee1e41",
+      "substitutedNormalizedSha256": "7989422cb8026403a5fbf3d3e7620b5c0be505c0d82fd6915940792dd2b3066d",
+      "currentNormalizedSha256": "7989422cb8026403a5fbf3d3e7620b5c0be505c0d82fd6915940792dd2b3066d",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastDefinition.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastDefinition.cs",
+      "beforeNormalizedSha256": "1e585eb16735c5977deda288dbf6f5f8487da29d7330c065427dc246870058a3",
+      "substitutedNormalizedSha256": "25ce5b742a126efaedac9f29947574d3ffa69cf73a83cca81309d14e0369cf38",
+      "currentNormalizedSha256": "25ce5b742a126efaedac9f29947574d3ffa69cf73a83cca81309d14e0369cf38",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/Geometry/OrdinarySpellGeometry.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Geometry/DefaultAbilityGeometry.cs",
+      "beforeNormalizedSha256": "18e314b837439c46468096b40519132dcb8362320d14ceaa44c1986c4c0fbb13",
+      "substitutedNormalizedSha256": "f53e849ffbb6a3c4d99e5e3b085480baff83c89574d83f4dc1834aeec2ac8291",
+      "currentNormalizedSha256": "f53e849ffbb6a3c4d99e5e3b085480baff83c89574d83f4dc1834aeec2ac8291",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/Geometry/SpellTargetGeometry.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Geometry/SpellTargetGeometry.cs",
+      "beforeNormalizedSha256": "b9a185b7bd748f4f6d3c7dcadc917f05c9becadea6e349cf527a48f1c842ba00",
+      "substitutedNormalizedSha256": "770f6fdcba945ca183650a8a77e8a7d5f2dbcf2c48b672a60ddd409724240705",
+      "currentNormalizedSha256": "770f6fdcba945ca183650a8a77e8a7d5f2dbcf2c48b672a60ddd409724240705",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/Geometry/SpellTargetPanels.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Geometry/SpellTargetPanels.cs",
+      "beforeNormalizedSha256": "3fec9a1743bb076ce9db6a3296a91e8d22e3e855e3b32c8c10845ab130256c02",
+      "substitutedNormalizedSha256": "e68ea3597db2b94dd4b077e59ddb9d3f4750cd549959c3b5001a6efe83c7a919",
+      "currentNormalizedSha256": "e68ea3597db2b94dd4b077e59ddb9d3f4750cd549959c3b5001a6efe83c7a919",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/DefaultAbilityTargeting.cs",
+      "beforeNormalizedSha256": "679c081436e7985e05e10520970714bff3dccf9eace0c2b95c37b3f13122d6d7",
+      "substitutedNormalizedSha256": "3c04e206236f051170f8024efa7fe11382de04769caa1689ab441068b30aceb3",
+      "currentNormalizedSha256": "3c04e206236f051170f8024efa7fe11382de04769caa1689ab441068b30aceb3",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/README.md",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/README.md",
+      "beforeNormalizedSha256": "3038484e98dbec18826b53431a84197ff3dc3f0578118d0016a3abf7d8e3f167",
+      "substitutedNormalizedSha256": "572c281b4bb3c136b60d661c82d05cb49af18bbb59c03655742e5e241daa2bdd",
+      "currentNormalizedSha256": "572c281b4bb3c136b60d661c82d05cb49af18bbb59c03655742e5e241daa2bdd",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/SpellTargetCastResolution.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/SpellTargetCastResolution.cs",
+      "beforeNormalizedSha256": "8933b5c548171656a10f58dfccbf31ee86d44413487373b5c2505a27f5cee972",
+      "substitutedNormalizedSha256": "399f74ffb316278adeff9a4cc6b816e791b398b108c8185386279385471acb7a",
+      "currentNormalizedSha256": "399f74ffb316278adeff9a4cc6b816e791b398b108c8185386279385471acb7a",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/StoredSpellCastQuery.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/StoredSpellCastQuery.cs",
+      "beforeNormalizedSha256": "3331c5ee3fb80ab56560e8ef0998efa83889430ba87ffa9434e2f38c53e656dd",
+      "substitutedNormalizedSha256": "e178284093b939dd513d53ac989ac8587e4d86f7075123e8bb9bb6c871585ca0",
+      "currentNormalizedSha256": "e178284093b939dd513d53ac989ac8587e4d86f7075123e8bb9bb6c871585ca0",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/Selection/SpellTargetChoiceQuery.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Selection/SpellTargetChoiceQuery.cs",
+      "beforeNormalizedSha256": "582f54d989594f7f1d972444a17e5e84dc9cb4e76ccdd4522b22004bbfe8a52a",
+      "substitutedNormalizedSha256": "3fb9b51514696d658dff73867e5828957be16e037fc6df566226eebf492428b7",
+      "currentNormalizedSha256": "3fb9b51514696d658dff73867e5828957be16e037fc6df566226eebf492428b7",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.AssetTool.Cli.Tests/CureMagicImporterTests.cs",
+      "new": "tests/Zodiac.AssetTool.Cli.Tests/CureMagicImporterTests.cs",
+      "beforeNormalizedSha256": "2ea07e8d43a4568c2286f78291610da7739ba8c1cd4c76232ec06a1ae02f731a",
+      "substitutedNormalizedSha256": "811409d5a3e3f708e264dc2621be12068548e9fd53764bb302ec871c8b8071fe",
+      "currentNormalizedSha256": "811409d5a3e3f708e264dc2621be12068548e9fd53764bb302ec871c8b8071fe",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.AssetTool.Cli.Tests/ElementalMagicImporterTests.cs",
+      "new": "tests/Zodiac.AssetTool.Cli.Tests/ElementalMagicImporterTests.cs",
+      "beforeNormalizedSha256": "f71fc557b01915637308fd1afb86d337d1e1f994019f2e9109135f426bb66fdc",
+      "substitutedNormalizedSha256": "7754aad766306b60af81216553366ceb780cd251a915fd833a8cebf9580d9226",
+      "currentNormalizedSha256": "7754aad766306b60af81216553366ceb780cd251a915fd833a8cebf9580d9226",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.AssetTool.Cli.Tests/LearningMagicImporterTests.cs",
+      "new": "tests/Zodiac.AssetTool.Cli.Tests/LearningMagicImporterTests.cs",
+      "beforeNormalizedSha256": "cefe098c73e6f758f7c90ca4adb89c41779dcb5190ed6a217d3fbcea1e82e78c",
+      "substitutedNormalizedSha256": "cbaffb41f7b04f9147ba3e0d105284954899af7a914e019e0d5ad56f64fa4ba1",
+      "currentNormalizedSha256": "cbaffb41f7b04f9147ba3e0d105284954899af7a914e019e0d5ad56f64fa4ba1",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.AssetTool.Cli.Tests/OrdinarySpellAiPreparedTests.cs",
+      "new": "tests/Zodiac.AssetTool.Cli.Tests/DefaultAbilityAiPreparedTests.cs",
+      "beforeNormalizedSha256": "c1de32a529f9c3017f0feb2b73924feefec4e8d7c4387a69564daffeb64fc49c",
+      "substitutedNormalizedSha256": "15068db181647a73ec18af0deeec2506be069e1f441a41901184ed4401a713aa",
+      "currentNormalizedSha256": "15068db181647a73ec18af0deeec2506be069e1f441a41901184ed4401a713aa",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Content.Tests/PreparedOrdinarySpellAiTests.cs",
+      "new": "tests/Zodiac.Content.Tests/PreparedDefaultAbilityAiTests.cs",
+      "beforeNormalizedSha256": "17e6783ce723498b0a8aaeaa2b8f067053c2fb04c08b49e544f27d612c495513",
+      "substitutedNormalizedSha256": "d7dc22693ac11e6768e2049886c1ea14de51f91c846c9016df1832d22cc18bdc",
+      "currentNormalizedSha256": "d7dc22693ac11e6768e2049886c1ea14de51f91c846c9016df1832d22cc18bdc",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiAbilitySearchTests.cs",
+      "new": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiAbilitySearchTests.cs",
+      "beforeNormalizedSha256": "9c85c9abbf667562f952ee0779b8511c7fc40a54df9717799444de57a1efb0dc",
+      "substitutedNormalizedSha256": "706d22351db2b440e149858af68f9fe56f3f69dc61be64587758cf6039cf60f6",
+      "currentNormalizedSha256": "706d22351db2b440e149858af68f9fe56f3f69dc61be64587758cf6039cf60f6",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiAccountingTests.cs",
+      "new": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiAccountingTests.cs",
+      "beforeNormalizedSha256": "5572a589e172e8b9201ece27ff2de65a646806bf4158db220a875a011e29bf62",
+      "substitutedNormalizedSha256": "22fec027077cc1601a912cbdbae5de9e82b2571032a0c41d2a3fcbc6b68b7481",
+      "currentNormalizedSha256": "22fec027077cc1601a912cbdbae5de9e82b2571032a0c41d2a3fcbc6b68b7481",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiAimTests.cs",
+      "new": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiAimTests.cs",
+      "beforeNormalizedSha256": "9173bbf6e48a8dc1fb6801ee1118c8df0e14330c14d86be4195ff185e16dc2f6",
+      "substitutedNormalizedSha256": "e9c7f8a1d41796e9470c18a6118eff0d418dcc9fb0fc2bd5666c5e07a341ebef",
+      "currentNormalizedSha256": "e9c7f8a1d41796e9470c18a6118eff0d418dcc9fb0fc2bd5666c5e07a341ebef",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiCandidateTests.cs",
+      "new": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiCandidateTests.cs",
+      "beforeNormalizedSha256": "1549fcc3d4c8209a700a849600db277e96c9d9d8bc6b107ea3026cbfda61e040",
+      "substitutedNormalizedSha256": "7f934be11ade90a7c4dbeb2d645d9ea8765fa07150b407224de9564efbe9a47f",
+      "currentNormalizedSha256": "7f934be11ade90a7c4dbeb2d645d9ea8765fa07150b407224de9564efbe9a47f",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiClockTests.cs",
+      "new": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiClockTests.cs",
+      "beforeNormalizedSha256": "9855395fa42fdb3969d11171900e8aef9a6a6d7532869548779a8fa5e41e0211",
+      "substitutedNormalizedSha256": "7474fa3d69895ead9b121a2cffa08a4172d345b2e3eac5fa2516b6afa1ebe607",
+      "currentNormalizedSha256": "7474fa3d69895ead9b121a2cffa08a4172d345b2e3eac5fa2516b6afa1ebe607",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiContextTests.cs",
+      "new": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiContextTests.cs",
+      "beforeNormalizedSha256": "f473bd32d8379268b9edc417ed4477d6c2b87a8a22a34adfe1176c661e4604fa",
+      "substitutedNormalizedSha256": "ce39529eed5573388acdba79fc0964d4ad66bc77795d45dd1da61a82690d5d35",
+      "currentNormalizedSha256": "ce39529eed5573388acdba79fc0964d4ad66bc77795d45dd1da61a82690d5d35",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiListTests.cs",
+      "new": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiListTests.cs",
+      "beforeNormalizedSha256": "dc8148376c808d908cceb13736e25688af308b971bcb77e899d139d62a6b2c2a",
+      "substitutedNormalizedSha256": "8de31f191df52e313440ec9336046819c11162bff54ea8667adef0831c15f77c",
+      "currentNormalizedSha256": "8de31f191df52e313440ec9336046819c11162bff54ea8667adef0831c15f77c",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiMovementTests.cs",
+      "new": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiMovementTests.cs",
+      "beforeNormalizedSha256": "f0083f1dad347d0290116e729aa61935f83e23bd659971423b6ba7e9c194ef17",
+      "substitutedNormalizedSha256": "75d1b5e2f8762f2bdecda7076017cb151c1effb271bd1f27524a6f6f473af24b",
+      "currentNormalizedSha256": "75d1b5e2f8762f2bdecda7076017cb151c1effb271bd1f27524a6f6f473af24b",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiOriginEvaluationTests.cs",
+      "new": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiOriginEvaluationTests.cs",
+      "beforeNormalizedSha256": "93f2d376e5f7b6a236456750c24c75594d75bdec5e97a2e51386dc8803c1b419",
+      "substitutedNormalizedSha256": "72dc44687f5075b5588b9707760bc3ea6eb4667ddc4d07e3dab48c8d02df6bee",
+      "currentNormalizedSha256": "72dc44687f5075b5588b9707760bc3ea6eb4667ddc4d07e3dab48c8d02df6bee",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiOriginTests.cs",
+      "new": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiOriginTests.cs",
+      "beforeNormalizedSha256": "a36edf3004daeedd68efd5c01b10e484c6a0d4ebc4d678ef16afeb7d361feaad",
+      "substitutedNormalizedSha256": "98a17608233be4ef26cd8a23a12fb3696eb0277db8e6bfa05d4e48260d65dccd",
+      "currentNormalizedSha256": "98a17608233be4ef26cd8a23a12fb3696eb0277db8e6bfa05d4e48260d65dccd",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiParameterTests.cs",
+      "new": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiParameterTests.cs",
+      "beforeNormalizedSha256": "d8b404bb9d904d569890228fc77d4b54b99bbc8bb3b16ba5e47f691b46e65728",
+      "substitutedNormalizedSha256": "c112536af3a1da072fbe02d1e03c198cc75f7a645575c4fb39ae7b4c829feda2",
+      "currentNormalizedSha256": "c112536af3a1da072fbe02d1e03c198cc75f7a645575c4fb39ae7b4c829feda2",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiPassSearchTests.cs",
+      "new": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiPassSearchTests.cs",
+      "beforeNormalizedSha256": "0858a410227f90e1785dfa58fd569f6ceafd806c3a1304bbdf42e15cd52b6ec5",
+      "substitutedNormalizedSha256": "82515b9149f661eada2a674532bedd62605ffb627ce698fdea01f25374bac7fa",
+      "currentNormalizedSha256": "82515b9149f661eada2a674532bedd62605ffb627ce698fdea01f25374bac7fa",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiProjectionTests.cs",
+      "new": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiProjectionTests.cs",
+      "beforeNormalizedSha256": "631180f4452b2f47f4e6d07125220b4b1a5f69f44d6527ee35ab5367164ecaf0",
+      "substitutedNormalizedSha256": "c8bd0ceb7eb5b0f71e33ed9b0e933106091279d9bcd7a18473daa28292e3ec24",
+      "currentNormalizedSha256": "c8bd0ceb7eb5b0f71e33ed9b0e933106091279d9bcd7a18473daa28292e3ec24",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiReadyTests.cs",
+      "new": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiReadyTests.cs",
+      "beforeNormalizedSha256": "4424ffa2fb8260c570e6160c22251666e3d6ceaf730dfaa2618be53b40c89b88",
+      "substitutedNormalizedSha256": "ce56c939ecfb808b1d78e2ccdc0f82af9a1f7a0e784095e59bd51bed84de0a12",
+      "currentNormalizedSha256": "ce56c939ecfb808b1d78e2ccdc0f82af9a1f7a0e784095e59bd51bed84de0a12",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiScoringTests.cs",
+      "new": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiScoringTests.cs",
+      "beforeNormalizedSha256": "cbce4337b50ebf3bb8f46a5758956f84d0a0f3a07e0eaaae478a14c21e388240",
+      "substitutedNormalizedSha256": "de39fdde4a1f32976e41de156decd2e4e3ee68ccf92714c07be4f6f64cf52f76",
+      "currentNormalizedSha256": "de39fdde4a1f32976e41de156decd2e4e3ee68ccf92714c07be4f6f64cf52f76",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiSearchTests.cs",
+      "new": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiSearchTests.cs",
+      "beforeNormalizedSha256": "a85ece9466f0359f058319a20054abb295ea1d9a04d3886ea73a2baa3f3c9659",
+      "substitutedNormalizedSha256": "7a00fdb49e9d655890a3f0f4f32cac79d9e24428ea26f558a38c7bb2086a9210",
+      "currentNormalizedSha256": "7a00fdb49e9d655890a3f0f4f32cac79d9e24428ea26f558a38c7bb2086a9210",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiStatisticTests.cs",
+      "new": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiStatisticTests.cs",
+      "beforeNormalizedSha256": "844259b9dd6d7b26401ab167e541b7c6dabe7d6abeca738b7e7440242e13efca",
+      "substitutedNormalizedSha256": "6697090255bb824fb1985217c31161d9bc7d51c7d98bb474a2d3aae8c3729b4e",
+      "currentNormalizedSha256": "6697090255bb824fb1985217c31161d9bc7d51c7d98bb474a2d3aae8c3729b4e",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiStoredHitTests.cs",
+      "new": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiStoredHitTests.cs",
+      "beforeNormalizedSha256": "00cf7bab530dea54b2d3436834e3790400fb447d1cb0c821a733436bf60e32ed",
+      "substitutedNormalizedSha256": "04ee1c92ed14dbe20e06ab36ad21505c925c6418c06989b21432aa353136833b",
+      "currentNormalizedSha256": "04ee1c92ed14dbe20e06ab36ad21505c925c6418c06989b21432aa353136833b",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiUsefulnessTests.cs",
+      "new": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiUsefulnessTests.cs",
+      "beforeNormalizedSha256": "6b71ad1ec6198aadc577ffa2854f28c72efdbe9ef6e0ab98e4c4c923bf9bad2b",
+      "substitutedNormalizedSha256": "32b58d5c9972b7534235ea71efc2bb4020f194aad190b19b6df9da1d600ae76b",
+      "currentNormalizedSha256": "32b58d5c9972b7534235ea71efc2bb4020f194aad190b19b6df9da1d600ae76b",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/OrdinarySpellTargetingTests.cs",
+      "new": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/DefaultAbilityTargetingTests.cs",
+      "beforeNormalizedSha256": "2afd2db9fb31e1dbadeb62a1cf3fdfd02269543d52a5060b0a71a7e60e653dd2",
+      "substitutedNormalizedSha256": "2252061d2b23dfe1200fe19c8b61b62ae62017f8d2cc8dd2c95c8f00664592a6",
+      "currentNormalizedSha256": "2252061d2b23dfe1200fe19c8b61b62ae62017f8d2cc8dd2c95c8f00664592a6",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/SpellGeometryCastTests.cs",
+      "new": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/SpellGeometryCastTests.cs",
+      "beforeNormalizedSha256": "0c91a163751e1049a4a47d2b0147c969f0239c467a30e46ff05df6fade58e9be",
+      "substitutedNormalizedSha256": "75b70f0d06b4e9021ed89204c808ed993a37a966cc26c134ec9fb7241511ffcc",
+      "currentNormalizedSha256": "75b70f0d06b4e9021ed89204c808ed993a37a966cc26c134ec9fb7241511ffcc",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tools/verification/test_ordinary_spell_ai.py",
+      "new": "tools/verification/test_ordinary_spell_ai.py",
+      "beforeNormalizedSha256": "2310c9e35aea62cfd6372ea28ce2aea080880d4b7a3c818d1f6bd51b98f45e99",
+      "substitutedNormalizedSha256": "42203abf00cdb11d4c60a21c16385cab265cb680f894247e7e8d792055baa293",
+      "currentNormalizedSha256": "42203abf00cdb11d4c60a21c16385cab265cb680f894247e7e8d792055baa293",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    },
+    {
+      "old": "tools/verification/test_ordinary_spell_ai_clock.py",
+      "new": "tools/verification/test_ordinary_spell_ai_clock.py",
+      "beforeNormalizedSha256": "e860a952e625d6ab877dbe5e760a421a95a809c038dbe0d284a6f6948584817e",
+      "substitutedNormalizedSha256": "861c58db4105e20b6b1f7ead634b3721bd449b1e0f02203f05ba80a54cf05ecc",
+      "currentNormalizedSha256": "861c58db4105e20b6b1f7ead634b3721bd449b1e0f02203f05ba80a54cf05ecc",
+      "exactNameSubstitution": true,
+      "additionalDocumentationEdits": false
+    }
+  ],
+  "anticipatedMenuPrefixes": [
+    {
+      "prefix": "DefaultAbility",
+      "menuType": 0
+    },
+    {
+      "prefix": "Attack",
+      "menuType": 8
+    },
+    {
+      "prefix": "Defend",
+      "menuType": 11
+    },
+    {
+      "prefix": "ChangeEquipment",
+      "menuType": 12
+    },
+    {
+      "prefix": "ItemInventory",
+      "menuType": 1
+    },
+    {
+      "prefix": "Aim",
+      "menuType": 10
+    },
+    {
+      "prefix": "Elements",
+      "menuType": 4
+    },
+    {
+      "prefix": "Jump",
+      "menuType": 9
+    },
+    {
+      "prefix": "KatanaInventory",
+      "menuType": 7
+    },
+    {
+      "prefix": "WeaponInventory",
+      "menuType": 2
+    },
+    {
+      "prefix": "Mathematics",
+      "menuType": 3
+    },
+    {
+      "prefix": "Monster",
+      "menuType": 6
+    }
+  ],
+  "opaqueMenuTypes": [
+    5,
+    13,
+    14,
+    15
+  ],
+  "anticipatedPathwaysImplemented": false,
+  "scope": "Owner-requested managed prefix/path rename and planned menu-use-case naming; no supported behavior, formulas, schema/ID or command expansion.",
+  "validation": {
+    "build": {
+      "warnings": 0,
+      "errors": 0,
+      "log": "scratch/default-ability-rename-build.log"
+    },
+    "dotnet": {
+      "total": 5276,
+      "newCases": 0,
+      "projects": [
+        {
+          "project": "Fft.Client.Tests",
+          "passed": 447,
+          "report": "scratch/default-ability-rename-trx/Fft.Client.Tests.trx",
+          "testIdentityParity": true
+        },
+        {
+          "project": "Tessera.Engine.Tests",
+          "passed": 24,
+          "report": "scratch/default-ability-rename-trx/Tessera.Engine.Tests.trx",
+          "testIdentityParity": true
+        },
+        {
+          "project": "Zodiac.AssetTool.Cli.Tests",
+          "passed": 396,
+          "report": "scratch/default-ability-rename-trx/Zodiac.AssetTool.Cli.Tests.trx",
+          "testIdentityParity": true
+        },
+        {
+          "project": "Zodiac.AssetTool.Tests",
+          "passed": 206,
+          "report": "scratch/default-ability-rename-trx/Zodiac.AssetTool.Tests.trx",
+          "testIdentityParity": true
+        },
+        {
+          "project": "Zodiac.Content.Tests",
+          "passed": 897,
+          "report": "scratch/default-ability-rename-trx/Zodiac.Content.Tests.trx",
+          "testIdentityParity": true
+        },
+        {
+          "project": "Zodiac.Framework.Ai.Tests",
+          "passed": 1471,
+          "report": "scratch/default-ability-rename-trx/Zodiac.Framework.Ai.Tests.trx",
+          "testIdentityParity": true
+        },
+        {
+          "project": "Zodiac.Framework.Tests",
+          "passed": 1835,
+          "report": "scratch/default-ability-rename-trx/Zodiac.Framework.Tests.trx",
+          "testIdentityParity": true
+        }
+      ],
+      "failed": 0,
+      "skipped": 0
+    },
+    "python": {
+      "total": 810,
+      "newCases": 0,
+      "result": "OK",
+      "log": "scratch/default-ability-rename-python.log"
+    },
+    "sourceAudit": {
+      "descriptions": {
+        "lists": 3,
+        "walks": 3,
+        "usages": 6,
+        "general": 4,
+        "insertions": 4
+      },
+      "total": 20,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "runtimeImplemented": false,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "sourceFiles": 8,
+      "sourceFunctions": 32
+    },
+    "exactSubstitutionCSharpFiles": 105,
+    "exactSubstitutionPythonFiles": 2,
+    "sourceMarkdownFiles": 3,
+    "movedPaths": 90,
+    "historicalReceiptsAndFixturesUnchanged": 386,
+    "quotedOldPrefixLiterals": 0,
+    "cliCommandsAndPreparedSchemasUnchanged": true,
+    "allExistingDotnetTestIdentitiesPreserved": true,
+    "preservation": [
+      {
+        "path": "src/Zodiac.Content/Definitions/Ability/AbilityToggles.cs",
+        "gitBlob": "16320578ffa448783221b68c4ef5c18e245b9f35",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Ability/AiBehaviorToggles.cs",
+        "gitBlob": "c67c4b154c471764fa11a6761710d2e9c9694a65",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Ability/AttributeToggles.cs",
+        "gitBlob": "1182777f8a0c3ca219afa23d0803c52af4ca9f8e",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Common/EquipmentSlot.cs",
+        "gitBlob": "091006b2d60ca558c303571a4eb779340be53629",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Common/StatusToggles.cs",
+        "gitBlob": "5136db2af350d7e3735e47fb92b905019316fd6f",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Item/ShopAvailabilityToggles.cs",
+        "gitBlob": "fd543d84dc8eb7860d710cf1c75499eb55306e14",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Job/EquipmentOptionToggles.cs",
+        "gitBlob": "694e44bbdc3e62103b64ff794addec1ad977d142",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Status/EffectBehaviorToggles.cs",
+        "gitBlob": "9792cdea7da1d92e9ec25cf1e97d3e879c24e8ae",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Status/StatusSelectionToggles.cs",
+        "gitBlob": "a0b2e2a8ddcb53a4bfd7416609927399b8339294",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Job/JobStats.cs",
+        "gitBlob": "bd617c374309aca1529a167a8d31a488160086cc",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Framework.Ai/AiTurnController.cs",
+        "gitBlob": "05d8eb9b12cbd1430daacfb5e960d53d1199ef3a",
+        "unchanged": true
+      },
+      {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "unchanged": true
+      }
+    ],
+    "battleStateFormattingGitBlob": "2dc345d4887b2ac3de98b5f74f7b4ddc9300cd54",
+    "planningEntries": 58,
+    "openTickets": 35,
+    "completedTickets": 409,
+    "changedDocumentLocalLinks": 3247,
+    "testIdentityComparison": "Class and displayed test name after exact prefix substitution, with outcome/multiplicity preserved; runner GUIDs are not compared."
+  },
+  "historicalEvidencePathPolicy": "Recorded paths/hashes belong to their pinned Git snapshots. Use renamedFiles for the corresponding current path; historical receipts were not rewritten.",
+  "nextCheckpoint": "Owner review of ZOD-443/444 before further development",
+  "originalExecuted": false,
+  "cExecuted": false,
+  "managedExecuted": true,
+  "nativePresentationRerun": false
+}

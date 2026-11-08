@@ -738,8 +738,8 @@
         "src/Zodiac.Framework/Battle/Combat/ThrowStoneTargetInterceptedEvent.cs",
         "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattleSimulator.cs",
         "src/Zodiac.Framework.Ai/Shared/RosterAiDirectTrajectory.cs",
-        "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
-        "src/Zodiac.Framework/Battle/Combat/Targeting/Geometry/OrdinarySpellGeometry.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/DefaultAbilityTargeting.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/Geometry/DefaultAbilityGeometry.cs",
         "src/Zodiac.Framework/Battle/Combat/Targeting/Geometry/SpellTargetingProfile.cs",
         "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetingRejection.cs",
         "src/Zodiac.Framework/Battle/Combat/Targeting/Geometry/SpellTargetPanels.cs",
@@ -837,7 +837,7 @@
           "scope": "13 independent map/cast composition descriptions and prior magic source/prepared-data audits."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/OrdinarySpellTargetingTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/DefaultAbilityTargetingTests.cs",
           "scope": "Literal geometry/roster vectors and unsupported boundary checks."
         },
         {
@@ -1131,8 +1131,8 @@
         "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastOutcome.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastResolutionResult.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastQuery.cs",
-        "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellTargeting.cs",
-        "src/Zodiac.Framework/Battle/Combat/Targeting/Geometry/OrdinarySpellGeometry.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/DefaultAbilityTargeting.cs",
+        "src/Zodiac.Framework/Battle/Combat/Targeting/Geometry/DefaultAbilityGeometry.cs",
         "src/Zodiac.Framework/Battle/Combat/Targeting/Geometry/SpellTargetingProfile.cs",
         "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetingRejection.cs",
         "src/Zodiac.Framework/Battle/Combat/Targeting/Geometry/SpellTargetPanels.cs",
@@ -1371,7 +1371,7 @@
           "scope": "13 independent map/cast composition descriptions and prior magic source/prepared-data audits."
         },
         {
-          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/OrdinarySpellTargetingTests.cs",
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Targeting/DefaultAbilityTargetingTests.cs",
           "scope": "Literal geometry/roster vectors and unsupported boundary checks."
         },
         {
@@ -1872,7 +1872,9 @@
         "docs/behavior/ordinary-spell-list-integration.md",
         "docs/evidence/ai/spell-list-integration-source-v1.json",
         "docs/behavior/ordinary-spell-context.md",
-        "docs/evidence/ai/spell-context-implementation-v1.json"
+        "docs/evidence/ai/spell-context-implementation-v1.json",
+        "docs/architecture/default-ability-pathways.md",
+        "docs/evidence/maintenance/default-ability-rename-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -2044,14 +2046,14 @@
         "src/Zodiac.Content/ContentPackages/TargetedAbilityContentPackage.cs",
         "src/Zodiac.Content/BattleSetup/TargetedAbilityBattleSetup.cs",
         "src/Zodiac.AssetTool.Cli/OriginalTargetedAbilityImporter.cs",
-        "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiMovementQuery.cs",
-        "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiOriginQuery.cs",
-        "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiOriginEvaluationQuery.cs",
-        "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiPassSearchQuery.cs",
-        "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiPassEvaluation.cs",
-        "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAbilitySearchQuery.cs",
-        "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAbilityEvaluation.cs",
-        "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiContext.cs"
+        "src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiMovementQuery.cs",
+        "src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiOriginQuery.cs",
+        "src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiOriginEvaluationQuery.cs",
+        "src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiPassSearchQuery.cs",
+        "src/Zodiac.Framework.Ai/DefaultAbilities/Simulation/DefaultAbilityAiPassEvaluation.cs",
+        "src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiAbilitySearchQuery.cs",
+        "src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAbilityEvaluation.cs",
+        "src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiContext.cs"
       ],
       "automatedChecks": [
         {
@@ -2515,23 +2517,23 @@
           "scope": "Source-only origin order, destinations, baseline widths, masks and supplied cross-origin iteration; no runtime/original execution."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiMovementTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiMovementTests.cs",
           "scope": "Fresh offensive D0/D1, baseline widths, priority provenance, occupancy, move-only CT/RNG, atomic rejection and replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiOriginTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiOriginTests.cs",
           "scope": "Fresh unit/tile origin masks, ranked/exhaustive order, D1 substitution, selectable ranges, unknown/counter rejection, RNG and replay."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiOriginEvaluationTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiOriginEvaluationTests.cs",
           "scope": "Fresh selected-origin/pass ACT/Move ordering, self collateral, CT/RNG, strict ranks and baseline admission, exits, KO guards and rollback."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiPassSearchTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiPassSearchTests.cs",
           "scope": "One fresh pass across origins: source self-hit membership, shared aim consumption/skips/RNG, unresolved continuation, final destination/exact ties, rank-only baseline and atomic late rollback."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiAbilitySearchTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiAbilitySearchTests.cs",
           "scope": "One fresh slot/scenario caller: unit/tile order and mask resets, shared best and RNG, recipient versus useful membership, cross-pass rank/proximity ties, nonvaluable/unresolved continuation, final baseline gate and atomic late rollback."
         },
         {
@@ -2539,7 +2541,7 @@
           "scope": "Twenty source-only human list/entry order, usage phase, general scenario sequence and ranked insertion descriptions; capacity/sentinel, stable duplicates, opaque bits and unknown/tampered input rejection. No managed runtime expansion."
         },
         {
-          "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiContextTests.cs",
+          "path": "tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiContextTests.cs",
           "scope": "Definition identity and null failure contract; fresh request/profile/current-state admission; actual-command context lifetime and old-snapshot replay; reuse after whole-query rejection with unchanged source result/RNG vectors."
         }
       ],
@@ -2553,7 +2555,7 @@
         "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
         "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Owner review of ZOD-443, then select a bounded shared-preparation/list-integration child from ZOD-442. Full AI dispatch, autonomous magic and full-port review remain separate.",
+      "nextAction": "Owner review of ZOD-443/444 context and DefaultAbility names, then select a bounded shared-preparation/list-integration child from ZOD-442. Full AI dispatch, autonomous magic and full-port review remain separate.",
       "followUpTickets": [
         "ZOD-329"
       ]

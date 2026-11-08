@@ -1,6 +1,6 @@
 # One ordinary spell's caller passes — ZOD-441
 
-`OrdinarySpellAiAbilitySearchQuery.Evaluate` now composes one owned offensive
+`DefaultAbilityAiAbilitySearchQuery.Evaluate` now composes one owned offensive
 spell's ordinary caller passes for one fresh Main/Complement movement scenario.
 Movement is derived once. Remaining aims reset per pass, while best action and
 RNG continue across passes. The final movement-baseline gate is diagnostic;
@@ -17,21 +17,21 @@ geometry, origin ordering, private simulation and admission limits.
 ## Code entry and routine ownership
 
 Start at
-[`OrdinarySpellAiAbilitySearchQuery.Evaluate`](../../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAbilitySearchQuery.cs).
+[`DefaultAbilityAiAbilitySearchQuery.Evaluate`](../../src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiAbilitySearchQuery.cs).
 Its [ZOD-443 context API](ordinary-spell-context.md) accepts a captured matching
 state/catalog pair, a request containing actor/slot/profile/scenario and explicit
-RNG. It binds fresh `OrdinarySpellAiWork` and calls
-`OrdinarySpellAiOriginQuery.Build` once. It accepts no cached work or rank.
+RNG. It binds fresh `DefaultAbilityAiWork` and calls
+`DefaultAbilityAiOriginQuery.Build` once. It accepts no cached work or rank.
 
 Then follow
-[`OrdinarySpellAiAbilityEvaluation.AiAbilityOutcomeEvaluate`](../../src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAbilityEvaluation.cs)
-→ `OrdinarySpellAiPassEvaluation.OriginReachableEvaluate`
+[`DefaultAbilityAiAbilityEvaluation.AiAbilityOutcomeEvaluate`](../../src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAbilityEvaluation.cs)
+→ `DefaultAbilityAiPassEvaluation.OriginReachableEvaluate`
 → `OriginAimTilesEvaluate` → shared `AiActionSimulateAndScore`.
 The new caller passes its private current best into the existing pass runner;
 standalone pass and single-origin queries still start with a fresh best.
 
 Each caller-pass diagnostic records its source grouping, RNG interval, origin
-traces, remaining aims, and cumulative best at entry/exit. `OrdinarySpellAiAbilityBest`
+traces, remaining aims, and cumulative best at entry/exit. `DefaultAbilityAiAbilityBest`
 also identifies which pass produced the retained action. `ImprovedBest` means
 an actual improvement over the whole caller's current best, including earlier
 passes. An empty group retains the earlier best and spends no candidate draws.
@@ -87,7 +87,7 @@ work or overflow rejects the whole entry RNG with no partial passes/best.
 ## Independent regression evidence
 
 Sixteen new cases in
-[`OrdinarySpellAiAbilitySearchTests`](../../tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiAbilitySearchTests.cs)
+[`DefaultAbilityAiAbilitySearchTests`](../../tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiAbilitySearchTests.cs)
 use source geometry, recipient and draw-count literals:
 
 - Immediate range4/area2 at enemy(2,2): one movement prefix13, empty moving

@@ -4,7 +4,7 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next checkpoint: owner review of ZOD-443 before selecting further development.**
+**Next checkpoint: owner review of the ZOD-443 context API and ZOD-444 DefaultAbility naming before further development.**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 [Learning reports, owned slots and player casting](behavior/learn-on-hit.md)
@@ -74,14 +74,17 @@ now maps original list families/order, per-entry usage/loading, general scenario
 dispatch, scenario0 baseline/fallback, ranked ownership and the agreed context
 lifetime. [ZOD-443 context API](behavior/ordinary-spell-context.md) now validates
 the captured state/catalog pairing and exposes `Evaluate(context, request, rng)`
-with request-owned profile and preserved fresh admission. Dispatch remains separate.
+with request-owned profile and preserved fresh admission. The owner-selected
+[ZOD-444 naming change](architecture/default-ability-pathways.md) now uses the
+`DefaultAbility` prefix and `DefaultAbilities` folders and records anticipated
+menu use-case names. Existing supported mechanics and dispatch boundaries remain.
 ZOD-432 records the required readability review after the full AI port.
 The owner's interim [routine ownership refactor](architecture/ai-routine-ownership.md)
 now exposes named methods matching the supported decision flow: `ActionSelect`,
 `GeneralSelect`, scenario/ability/rank/fallback work, and ordinary spell
 `AiActionSimulateAndScore` / `ActionHitsSimulate` / `StrikesSimulate`.
 It preserves current admission and does not close the remaining AI review work.
-There are 35 open tickets below. The 408 completed tickets, prior checkpoints and
+There are 35 open tickets below. The 409 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -105,11 +108,11 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Owner review checkpoint
 
-ZOD-443 is complete. The owner will review the context API and current AI flow
+ZOD-443/444 are complete. The owner will review the context API, DefaultAbility naming and current AI flow
 before selecting further work. Start with
-[`OrdinarySpellAiContext`](../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiContext.cs),
-[`OrdinarySpellAiAbilitySearchRequest`](../src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAbilitySearchRequest.cs)
-and [`Evaluate`](../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAbilitySearchQuery.cs).
+[`DefaultAbilityAiContext`](../src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiContext.cs),
+[`DefaultAbilityAiAbilitySearchRequest`](../src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAbilitySearchRequest.cs)
+and [`Evaluate`](../src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiAbilitySearchQuery.cs).
 The [context notes](behavior/ordinary-spell-context.md) specify constructor/query
 failure behavior and old-snapshot lifetime. This interim review does not close
 the full-port ZOD-432 readability ticket.

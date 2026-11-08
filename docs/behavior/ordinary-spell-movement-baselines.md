@@ -1,6 +1,6 @@
 # Ordinary spell movement baselines — ZOD-437
 
-`OrdinarySpellAiMovementQuery.Evaluate` now derives fresh move-only scenario
+`DefaultAbilityAiMovementQuery.Evaluate` now derives fresh move-only scenario
 diagnostics from an owned ordinary spell slot. It shares existing geometry,
 clock, absolute scoring, target/proximity and scenario-selection owners. Its
 output distinguishes D0, D1, the baseline rank and explicit priority writes.
@@ -16,9 +16,9 @@ pins the source and final validation. No reference C or original executable ran.
 ## Entry point and flow
 
 Start at
-[`OrdinarySpellAiMovementQuery`](../../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiMovementQuery.cs):
+[`DefaultAbilityAiMovementQuery`](../../src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiMovementQuery.cs):
 
-1. Existing `OrdinarySpellAiWork` freshly binds the definition, actor, owned
+1. Existing `DefaultAbilityAiWork` freshly binds the definition, actor, owned
    primary slot and initialized roster lists. `NormalFocusedScenario` certifies
    the normal focused scenario without special/stay-near/reflection overrides.
    This is a hypothetical scenario entry, not automatic policy dispatch.
@@ -47,7 +47,7 @@ initialized Frog remains in scoring statistics, without contributing usable
 reach. The ability diagnostic retains initialized usage; aim-pass consumption
 belongs to the later search stage.
 
-`OrdinarySpellAiClock.RunMoveOnly` shares the existing clock core. It refunds
+`DefaultAbilityAiClock.RunMoveOnly` shares the existing clock core. It refunds
 20 CT for unused ACT and 20 for unused Move, capped at 60, then advances to one
 ready-unit event. Existing public `Run` still requires ACT to be marked and
 retains spell/charge behavior. Clocks preserve source order, overflow checks

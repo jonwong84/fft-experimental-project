@@ -8,7 +8,7 @@ internal static class Program
         if (args.Length > 0 && string.Equals(args[0], "validate-content", StringComparison.Ordinal))
             return new ValidateContentCommand().Run(args, Console.Out, Console.Error);
         if (args.Length > 0 && args[0] is "inspect-magic-ai" or "inspect-delayed-magic-ai")
-            return new InspectOrdinarySpellAiCommand().Run(args, Console.Out, Console.Error);
+            return new InspectDefaultAbilityAiCommand().Run(args, Console.Out, Console.Error);
 
         string? workspaceRoot = FindWorkspaceRoot(AppContext.BaseDirectory)
             ?? FindWorkspaceRoot(Environment.CurrentDirectory);

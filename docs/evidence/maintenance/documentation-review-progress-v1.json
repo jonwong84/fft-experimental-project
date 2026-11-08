@@ -399,7 +399,7 @@
     }
   ],
   "fullyReviewedGroups": [],
-  "nextBatch": "Owner review of ZOD-443",
+  "nextBatch": "Owner review of ZOD-443/444",
   "overallBehaviorReviewCompleted": false,
   "supportingSourceStudies": [
     {
@@ -451,6 +451,12 @@
       "report": "docs/behavior/ordinary-spell-context.md",
       "receipt": "docs/evidence/ai/spell-context-implementation-v1.json",
       "disposition": "Validated raw-input context and three-argument ability-caller API; prior mechanics preserved. No full dispatch, review group or autonomous magic completed."
+    },
+    {
+      "ticket": "ZOD-444",
+      "report": "docs/architecture/default-ability-pathways.md",
+      "receipt": "docs/evidence/maintenance/default-ability-rename-v1.json",
+      "disposition": "DefaultAbility identifier/path naming maintenance and future menu-prefix record only; no gameplay expansion, full review group or autonomous magic completed."
     }
   ]
 }

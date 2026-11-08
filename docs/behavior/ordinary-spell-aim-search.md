@@ -77,7 +77,7 @@ Each evaluated aim calls `ai_action_evaluate`,0x8019D308, which invokes
 `ai_action_simulate_and_score`. Candidate snapshots restore selected unit state
 while the shared decision RNG continues. A nonvaluable result can consume real
 formula/evasion draws and must not restart the RNG for the next aim. The current
-`OrdinarySpellAiCandidateQuery` already covers that bounded simulation contract,
+`DefaultAbilityAiCandidateQuery` already covers that bounded simulation contract,
 including private state, ready formula work and atomic unsupported-context exits.
 Reusing returned diagnostics as a later trusted candidate is not permitted.
 

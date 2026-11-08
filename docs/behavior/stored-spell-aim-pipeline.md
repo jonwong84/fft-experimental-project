@@ -39,7 +39,7 @@ remain source descriptions outside this admitted primitive.
 
 `StoredSpellCastQuery` finds a unique current anchor from certified complete
 roster metadata, resolves the centre with `SpellAimResolver`, then delegates the
-existing `OrdinarySpellTargeting.ResolveCast` and `MagicCastQuery` owners. It does
+existing `DefaultAbilityTargeting.ResolveCast` and `MagicCastQuery` owners. It does
 not recheck blue range or spend MP a second time. Inactive anchors may omit formula
 snapshots while retaining explicit position data; they can centre bystanders.
 Missing/duplicate anchors, unknown position, unsupported selected targets and late

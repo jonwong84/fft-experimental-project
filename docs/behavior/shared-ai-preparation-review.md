@@ -22,9 +22,9 @@ rejected. `RosterAiPreparation.Evaluate` owns fresh roster refresh and summaries
 Older sword/Attack-Stone/Accumulate/variable-list preparation paths retain their
 narrower certificates and restored-state preparation boundaries.
 
-Magic uses `OrdinarySpellAiLists.Build` and `OrdinarySpellAiParameters.Load`.
-`OrdinarySpellAiCatalog` binds exact definition-owned spells, generic primary
-skillsets and explicit learned rows. `OrdinarySpellAiWork` freshly loads the
+Magic uses `DefaultAbilityAiLists.Build` and `DefaultAbilityAiParameters.Load`.
+`DefaultAbilityAiCatalog` binds exact definition-owned spells, generic primary
+skillsets and explicit learned rows. `DefaultAbilityAiWork` freshly loads the
 selected entry, checks current MP and derives useful targets. Ready/candidate/
 aim/search queries reuse it; cached masks cannot authorize battle mutations.
 

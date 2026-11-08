@@ -21,7 +21,7 @@ public static class SpellTargetChoiceQuery
         if (map.Width > 255 || map.Depth > 255 || (long)map.Width * map.Depth > 256 || map.LayerCount > 2)
             return Reject(SpellTargetingRejection.UnsupportedMap);
         if (g.Auto && g.Range == 0) return new(true, SpellTargetingRejection.None, new(definition, caster, SpellTargetChoiceMode.NoTargeting, null));
-        var range = OrdinarySpellTargeting.Range(map, caster.Position, g, profile);
+        var range = DefaultAbilityTargeting.Range(map, caster.Position, g, profile);
         if (!range.Accepted) return Reject(range.Rejection);
         var mode = range.Outcome!.Panels.IsEmpty ? SpellTargetChoiceMode.None : g.NoFollowTarget ? SpellTargetChoiceMode.TileOnly : SpellTargetChoiceMode.UnitOrTile;
         return new(true, SpellTargetingRejection.None, new(definition, caster, mode, range.Outcome));

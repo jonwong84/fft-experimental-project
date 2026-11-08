@@ -50,7 +50,7 @@ tile, marker0/hit100. It is a gate and fallback reference, not an automatically
 inserted ranked entry.
 
 **General search does not automatically evaluate a scenario2 ability list.**
-`OrdinarySpellAiOriginScenario.Complement` currently allows an explicit diagnostic
+`DefaultAbilityAiOriginScenario.Complement` currently allows an explicit diagnostic
 selection of that constructed mask; it grants no original general-dispatch
 authority. Special policy callers have their own meanings: Fight for Life and
 Protect Allies use `targeted_build`, scenario2 baseline/fallback and scenario0/1
@@ -92,7 +92,7 @@ Jump/Charge/Math special menus, monster fourth-slot flags and the stale consider
 Faith/innate-Innocent quirk require separate facts. They cannot be generalized
 from a clean default-menu spell list; current catalog restrictions remain.
 
-Managed `OrdinarySpellAiCatalog`/`OrdinarySpellAiLists` own selected primary
+Managed `DefaultAbilityAiCatalog`/`DefaultAbilityAiLists` own selected primary
 default-menu spell rows. Their statistical owner separately includes structural
 Attack/Frog terms. They are not a complete heterogeneous original list. Existing
 `AiHumanAbilityLists`/physical selection own a different admitted semantic list.
@@ -130,7 +130,7 @@ weapon-range overrides, Persevere and the known AI charge-support quirk retain
 their existing source rules. It does not reset shared best/ranked records or
 spend an RNG draw itself.
 
-Current one-slot `OrdinarySpellAiWork` rejects an unavailable or unaffordable
+Current one-slot `DefaultAbilityAiWork` rejects an unavailable or unaffordable
 selected slot atomically. A later list dispatcher must classify unusable entries
 before invoking candidates and continue as the source does. It must also
 distinguish those skips from an eligible but unsupported entry; silently dropping
@@ -173,7 +173,7 @@ with the same decision RNG. A baseline check alone is not actual ranked admissio
 ## Agreed context and next implementation
 
 The narrow context should capture only the immutable `OrdinaryMagicBattleState`
-and matching `OrdinarySpellAiCatalog`, validating reference identity of their
+and matching `DefaultAbilityAiCatalog`, validating reference identity of their
 definitions. This prevents mixing content and state from different definitions.
 It does not admit an actor, prove a profile or cache prepared work.
 

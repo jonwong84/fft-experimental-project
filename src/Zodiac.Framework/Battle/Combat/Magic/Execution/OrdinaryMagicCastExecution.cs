@@ -32,11 +32,11 @@ internal static class OrdinaryMagicCastExecution
         ImmutableArray<BattleUnitId> ids = [];
         if (aim.Accepted)
         {
-            var area = OrdinarySpellTargeting.Area(next.Definition.Map, actor.Position, aim.Position!.Value,
+            var area = DefaultAbilityTargeting.Area(next.Definition.Map, actor.Position, aim.Position!.Value,
                 plan.Definition.Targeting!, OrdinaryMagicBattle.GeometryProfile);
             if (!area.Accepted)
                 throw new OrdinaryMagicExecutionException("The stored aim exceeded admitted spell geometry.");
-            var selected = OrdinarySpellTargeting.SelectTargets(area.Outcome!, casterId,
+            var selected = DefaultAbilityTargeting.SelectTargets(area.Outcome!, casterId,
                 next.Units.Select(u => u.Occupant).ToImmutableArray(), new(true));
             if (!selected.Accepted)
                 throw new OrdinaryMagicExecutionException("The spell roster could not be resolved.");

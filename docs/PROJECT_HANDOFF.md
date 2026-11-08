@@ -6,11 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-443 is complete. Next: the owner's review, before further development.**
+**ZOD-443/444 are complete. Next: the owner's review, before further development.**
 Read [BACKLOG.md](BACKLOG.md), the
+[pathway names](architecture/default-ability-pathways.md),
 [context API](behavior/ordinary-spell-context.md) and
 [list/scenario study](behavior/ordinary-spell-list-integration.md).
-The caller now exposes `Evaluate(context, request, rng)`. `OrdinarySpellAiContext`
+The caller now exposes `Evaluate(context, request, rng)`. `DefaultAbilityAiContext`
 holds only the immutable captured battle state and matching catalog; constructor
 validation rejects nulls and mismatched definition instances. The request owns
 actor/slot/profile/scenario. RNG remains explicit, and all per-call admission,
@@ -19,8 +20,9 @@ argument exceptions and rejected-search results have documented distinct contrac
 
 Create a new context for a new live state. Old contexts still replay their old
 snapshot and grant no command authority. Begin review at
-`src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiContext.cs`, then the request
-and `OrdinarySpellAiAbilitySearchQuery.cs`. Other query signatures are unchanged.
+`src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiContext.cs`, then the request
+and `DefaultAbilityAiAbilitySearchQuery.cs`. Other query parameter shapes are
+unchanged; all former OrdinarySpell type/file prefixes now use DefaultAbility.
 This interim review does not complete ZOD-432 or the full AI port. Select a bounded
 shared-preparation/list child after review; no further ticket is activated now.
 
@@ -33,9 +35,9 @@ failed gate and retains stable duplicate ranks when space remains. Full dispatch
 ranked insertion/lottery and command integration remain separate.
 
 Start one-slot/scenario caller search at
-`src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAbilitySearchQuery.cs`.
+`src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiAbilitySearchQuery.cs`.
 It binds fresh work and movement once, then calls
-`OrdinarySpellAiAbilityEvaluation.AiAbilityOutcomeEvaluate` →
+`DefaultAbilityAiAbilityEvaluation.AiAbilityOutcomeEvaluate` →
 `OriginReachableEvaluate` → `OriginAimTilesEvaluate` → shared
 `AiActionSimulateAndScore`. Moving/still unit groups and tile search retain one
 best and RNG; remaining aims rebuild per pass. The source best reset belongs at
@@ -45,14 +47,25 @@ Only the final rank-only movement-baseline gate is reported. Private resources
 restore between hypotheses and late rejection restores the entire entry RNG.
 Standalone pass and single-origin queries retain their previous contracts.
 
+ZOD-444 renames the former `OrdinarySpell` prefix to `DefaultAbility`, including
+shared geometry/targeting, adapters, diagnostics and tests; AI folders are
+`DefaultAbilities`. Source routine method names, C# namespaces, CLI commands,
+prepared schemas/IDs, gameplay and supported-domain gates are unchanged. The
+[naming guide](architecture/default-ability-pathways.md) records the owner's
+anticipated Default/Attack/Defend/Change Equipment/Item Inventory/Aim/Elements/
+Jump/Katana Inventory/Weapon Inventory/Mathematics/Monster use cases. Those names
+do not activate new loaders or ability support. Historical hash receipts remain
+unchanged; use the rename map for their older paths.
+
 Latest validation: zero-warning/error Release build, **5,276 .NET tests**
-(1,835 Framework, 1,471 AI) and **810 Python tests** pass. Thirteen new context
-cases cover null/definition identity, request/profile/current admission, actual
-command lifetime, old-snapshot replay and reuse after whole-query rejection.
-All sixteen prior ability-search vectors retain their exact assertions after
-call-site migration. Logs/seven TRX reports are in ignored `scratch/zod443-*`;
-the [receipt](evidence/ai/spell-context-implementation-v1.json) records validation,
-source-study audit and preservation. Coverage remains 58 planning entries and partial.
+(1,835 Framework, 1,471 AI) and **810 Python tests** pass. The rename retains
+every code file under exact prefix substitution and the same existing test case
+names/results under that substitution. No new expected gameplay vectors or tests were added.
+Logs/seven TRX reports are in ignored `scratch/default-ability-rename-*`;
+the [receipt](evidence/maintenance/default-ability-rename-v1.json) contains the
+before/after source map, test parity, unchanged menu-source audit and preservation.
+Coverage remains 58 planning entries and partial. The earlier context receipt
+retains its own validation/preservation checkpoint.
 
 The owner authorized committing the pending query/battle-state formatting. It is
 preserved in separate commit `973b39e`; the query's split signature and explicit
@@ -100,7 +113,9 @@ until explicitly re-enabled; current validation is local.
 The [review programme](development/documentation-review-programme.md) and
 [progress receipt](evidence/maintenance/documentation-review-progress-v1.json)
 record completed bounded batches through ZOD-436, the supporting ZOD-426
-study, bounded ZOD-437–441 implementations, ZOD-442 integration study and ZOD-443 context API. ZOD-428 and complete inventory groups remain open. Prior helper
+study, bounded ZOD-437–441 implementations, ZOD-442 integration study,
+ZOD-443 context API and ZOD-444 naming maintenance. ZOD-428 and complete inventory
+groups remain open. Prior helper
 cross-checks and annotation corrections live
 in their behavior/evidence notes; use [history](history/README.md) for completed
 ticket checkpoints, not old next-task advice.

@@ -40,7 +40,7 @@ public sealed class OrdinaryMagicInteraction
             if (Mode != OrdinaryMagicInteractionMode.Cast || Aim is not { } aim || SelectedSpell is not { } spell ||
                 State.Turns.ActiveUnitId is not { } actor || !Range.Contains(aim)) return [];
             var position = State.Units.Single(u => u.Id == actor).Position;
-            return OrdinarySpellTargeting.Area(State.Definition.Map, position, aim, State.Definition.Spells[spell].Targeting!,
+            return DefaultAbilityTargeting.Area(State.Definition.Map, position, aim, State.Definition.Spells[spell].Targeting!,
                 new(true, true, true, true)).Outcome?.Panels ?? [];
         }
     }

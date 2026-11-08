@@ -34,10 +34,10 @@ public sealed class PrepareOrdinaryMagicBattleCommand(string workspaceRoot)
                 throw new InvalidDataException("Unsupported executable length.");
             var selection = args[0] switch
             {
-                "prepare-fire-battle" => OriginalOrdinarySpellSelection.Fire,
-                "prepare-elemental-magic-battle" => OriginalOrdinarySpellSelection.ElementalTiers,
-                "prepare-learning-magic-battle" => OriginalOrdinarySpellSelection.LearnOnHit,
-                _ => OriginalOrdinarySpellSelection.CureAndFire
+                "prepare-fire-battle" => OriginalDefaultAbilitySelection.Fire,
+                "prepare-elemental-magic-battle" => OriginalDefaultAbilitySelection.ElementalTiers,
+                "prepare-learning-magic-battle" => OriginalDefaultAbilitySelection.LearnOnHit,
+                _ => OriginalDefaultAbilitySelection.CureAndFire
             };
             var result = OriginalOrdinaryMagicImporter.ImportVerified(File.ReadAllBytes(input), selection);
             byte[] package = Encoding.UTF8.GetBytes(result.Package.ToJson());
@@ -49,7 +49,7 @@ public sealed class PrepareOrdinaryMagicBattleCommand(string workspaceRoot)
             Directory.CreateDirectory(staging);
             File.WriteAllBytes(Path.Combine(staging, "ordinary-magic.package.json"), package);
             File.WriteAllBytes(Path.Combine(staging, "ordinary-magic.metadata.json"), metadataBytes);
-            File.WriteAllText(Path.Combine(staging, selection == OriginalOrdinarySpellSelection.Fire ? "fire.import.json" : "ordinary-magic.import.json"),
+            File.WriteAllText(Path.Combine(staging, selection == OriginalDefaultAbilitySelection.Fire ? "fire.import.json" : "ordinary-magic.import.json"),
                 OriginalOrdinaryMagicImporter.Provenance(result), new UTF8Encoding(false));
             new PreparedAssetManifest([new(PreparedOrdinaryMagicBattle.AssetId, "ordinary-magic.package.json", package.Length,
                 Convert.ToHexStringLower(SHA256.HashData(package))), new(new(metadata.PackageId), "ordinary-magic.metadata.json", metadataBytes.Length,

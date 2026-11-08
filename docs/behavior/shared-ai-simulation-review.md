@@ -17,8 +17,8 @@ Fingerprints identify inputs; they do not certify every branch of a dependency.
 Physical pair/roster candidates reach `AiCandidateState`, `AiSimulationClock`
 and `AiCandidateScoring` through damage, self-stat or effect-free movement
 owners. `RosterAiRefresh` supplies the explicit supported baseline/clock facts.
-Magic enters `OrdinarySpellAiCandidateQuery.Evaluate`, then fresh
-`OrdinarySpellAiWork`, preparation, `OrdinarySpellAiSimulation`, stored-hit work,
+Magic enters `DefaultAbilityAiCandidateQuery.Evaluate`, then fresh
+`DefaultAbilityAiWork`, preparation, `DefaultAbilityAiSimulation`, stored-hit work,
 accounting and absolute scoring. Ready-hit, aim-list and current-origin search
 queries share that fresh work owner. These queries return diagnostics and RNG;
 they do not execute a command or publish their hypothetical units into battle.
@@ -50,7 +50,7 @@ original AI candidate can score21 simultaneously active units.
 
 The ordinary candidate/query family previously admitted17–21 active units and
 even used21-unit candidate/search scenarios to exercise unresolved charges.
-`OrdinarySpellAiWork` now rejects more than16 before constructing lists, formulas
+`DefaultAbilityAiWork` now rejects more than16 before constructing lists, formulas
 or scores. This covers ready-hit, delayed candidate, aim enumeration and search
 through one owner. Physical roster simulation already required at most16.
 All16 may occupy sparse source slots through20; there is no new content table

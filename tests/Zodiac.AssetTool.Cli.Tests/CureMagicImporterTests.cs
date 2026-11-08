@@ -83,7 +83,7 @@ public sealed class CureMagicImporterTests
             case "menu": image[Offset(0x80065cb4 + 10)] = 8; break;
             case "learning": image[Offset(0x8005ebf0 + 8) + 1] = 255; break;
         }
-        Assert.Throws<InvalidDataException>(() => OriginalOrdinaryMagicImporter.DecodeSelection(image, OriginalOrdinarySpellSelection.CureAndFire));
+        Assert.Throws<InvalidDataException>(() => OriginalOrdinaryMagicImporter.DecodeSelection(image, OriginalDefaultAbilitySelection.CureAndFire));
     }
 
     private static OrdinaryMagicBattleState Resolve(OrdinaryMagicBattleDefinition definition)
@@ -105,7 +105,7 @@ public sealed class CureMagicImporterTests
         ImmutableArray<OrdinaryMagicUnitDefinition> units, RandomState? rng = null) =>
         new(definition.Map, units, definition.Spells.Values, definition.Jobs, definition.JobThresholds, rng ?? definition.InitialRng,
             definition.MovementGround, definition.Learning);
-    private static OriginalOrdinaryMagicImport Import() => OriginalOrdinaryMagicImporter.DecodeSelection(Image(), OriginalOrdinarySpellSelection.CureAndFire);
+    private static OriginalOrdinaryMagicImport Import() => OriginalOrdinaryMagicImporter.DecodeSelection(Image(), OriginalDefaultAbilitySelection.CureAndFire);
     private static int Offset(uint address) => checked((int)(address - 0x80010000 + 0x800));
     internal static byte[] Image()
     {

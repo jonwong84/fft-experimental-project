@@ -143,7 +143,7 @@ precedents; importing their assumptions wholesale would not prove spell support.
 
 Use named booleans for understood independent decisions such as exhaustive
 origins, consume aim, ACT-before-MOVE and processing completion. Existing
-`OrdinarySpellAiUsage` already follows that rule. Static metadata and mutable
+`DefaultAbilityAiUsage` already follows that rule. Static metadata and mutable
 working usage retain separate owners. Counts, rank values, coordinates and
 multi-state phase fields retain their numeric/typed meanings; unknown bits stay
 opaque at the reference/import boundary. Owner toggle drafts and immutable

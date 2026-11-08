@@ -1,7 +1,7 @@
 # Ordinary spell query context — ZOD-443
 
 The ability caller now exposes `Evaluate(context, request, rng)`. A narrow,
-immutable `OrdinarySpellAiContext` owns the captured battle state and its matching
+immutable `DefaultAbilityAiContext` owns the captured battle state and its matching
 catalog; the request owns actor, primary slot, profile declaration and scenario.
 RNG remains an explicit input/result. Search mechanics, candidates, ordering,
 scores, baseline gates and resource/RNG behavior are unchanged.
@@ -18,20 +18,20 @@ source-study validation, test results and preservation.
 ## Entry and use
 
 Start at
-[`OrdinarySpellAiContext`](../../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiContext.cs),
+[`DefaultAbilityAiContext`](../../src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiContext.cs),
 then
-[`OrdinarySpellAiAbilitySearchQuery.Evaluate`](../../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAbilitySearchQuery.cs).
+[`DefaultAbilityAiAbilitySearchQuery.Evaluate`](../../src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiAbilitySearchQuery.cs).
 The call now looks like this, using current captured inputs:
 
 ```csharp
-var context = new OrdinarySpellAiContext(state, catalog);
-var request = new OrdinarySpellAiAbilitySearchRequest(
+var context = new DefaultAbilityAiContext(state, catalog);
+var request = new DefaultAbilityAiAbilitySearchRequest(
     actorId,
     primarySlot,
-    new OrdinarySpellAiMovementProfile(NormalFocusedScenario: true),
-    OrdinarySpellAiOriginScenario.Main);
+    new DefaultAbilityAiMovementProfile(NormalFocusedScenario: true),
+    DefaultAbilityAiOriginScenario.Main);
 
-var result = OrdinarySpellAiAbilitySearchQuery.Evaluate(context, request, rng);
+var result = DefaultAbilityAiAbilitySearchQuery.Evaluate(context, request, rng);
 ```
 
 The profile remains an explicit declaration of the supported search domain; it
@@ -46,7 +46,7 @@ assertions. Other ordinary query APIs retain their current signatures and scopes
 
 ## Construction and failure contract
 
-`OrdinarySpellAiContext` is a sealed class with only two get-only public
+`DefaultAbilityAiContext` is a sealed class with only two get-only public
 properties, `State` and `Catalog`. Its constructor stores the exact captured
 objects after validation; it does not derive or cache lists, considered entries,
 target masks, movement, priorities, best/ranked records or RNG progress.
@@ -66,7 +66,7 @@ no outcome and the whole entry RNG. These include invalid/unavailable actor or
 slot, unsupported scenario, profile without the required declaration, unsuitable
 clock/turn state, changed learning/MP and late overflow.
 
-Fresh `ValidateRoster`, `OrdinarySpellAiWork`, origin/movement preparation and
+Fresh `ValidateRoster`, `DefaultAbilityAiWork`, origin/movement preparation and
 `AiAbilityOutcomeEvaluate` still run on each evaluation. The internal definition
 guard remains because other query entry points also use that work owner.
 Context construction does not pre-admit an actor, phase, profile or resources.
@@ -91,7 +91,7 @@ ranked insertion, lottery or commands.
 ## Validation and review
 
 Thirteen new cases in
-[`OrdinarySpellAiContextTests`](../../tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiContextTests.cs)
+[`DefaultAbilityAiContextTests`](../../tests/Zodiac.Framework.Ai.Tests/DefaultAbilities/DefaultAbilityAiContextTests.cs)
 cover null/mismatched inputs, identical content IDs with foreign definition
 identity, explicit profile/scenario/actor/slot rejection, current MP/action/phase/
 learning admission, pure reuse after rejection and actual Wait-command lifetime.

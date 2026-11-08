@@ -1,6 +1,6 @@
 # Ordinary spell cast origins — ZOD-438
 
-`OrdinarySpellAiOriginQuery.Evaluate` now enumerates potential cast origins and
+`DefaultAbilityAiOriginQuery.Evaluate` now enumerates potential cast origins and
 selectable aims for one explicitly selected movement scenario. It owns fresh
 slot/list binding and movement preparation internally. It accepts no cached
 movement outcome, retained score or execution token.
@@ -17,17 +17,17 @@ No reference C or original executable ran.
 ## Entry point and routine sequence
 
 Start at
-[`OrdinarySpellAiOriginQuery`](../../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiOriginQuery.cs).
+[`DefaultAbilityAiOriginQuery`](../../src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiOriginQuery.cs).
 Its request selects `Main` (source scenario 1) or `Complement` (scenario 2). This
 diagnostic choice does not implement the source dispatcher's conditions for
 entering those scenarios.
 
-1. `OrdinarySpellAiWork` binds the current definition, actor and owned primary
-   slot once. Shared `OrdinarySpellAiAimEnumeration.BuildPotentialPasses` derives
+1. `DefaultAbilityAiWork` binds the current definition, actor and owned primary
+   slot once. Shared `DefaultAbilityAiAimEnumeration.BuildPotentialPasses` derives
    completed working usage, deadline groups and walkable aim masks before
    selectable-range intersection. The original `Build` continues to clip those
    masks at the current actor origin for existing fixed-origin consumers.
-2. Internal `OrdinarySpellAiMovementQuery.Build` reuses that same fresh work
+2. Internal `DefaultAbilityAiMovementQuery.Build` reuses that same fresh work
    owner. It runs one refresh and movement scan with one decision RNG. Its
    public query and admission remain intact; no physical snapshot is fabricated.
 3. `AiCastAimTilesBuild` completes each pass's cast-origin mask by intersecting
@@ -45,7 +45,7 @@ entering those scenarios.
    Other origins are MOVE-before-ACT with destination equal to cast origin.
 6. `OriginAimTilesBuild` implements only the mask portion of
    `origin_aim_tiles_evaluate`: it calls shared Framework
-   `OrdinarySpellTargeting.Range` at that cast origin, then intersects the
+   `DefaultAbilityTargeting.Range` at that cast origin, then intersects the
    pass-wide aims in source map order. Unit anchors retain their source unit IDs.
 
 `origin_next_take` mutates the source mask/count. This potential enumerator

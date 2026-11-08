@@ -2,7 +2,7 @@ import copy,json,unittest
 from verify_ordinary_spell_ai_clock import FIXTURE,REVISION,simulate,validate,prepared_case,validate_inspection
 
 
-class OrdinarySpellAiClockTests(unittest.TestCase):
+class DefaultAbilityAiClockTests(unittest.TestCase):
     def test_all_source_clock_descriptions(self):
         self.assertEqual(validate(json.loads(FIXTURE.read_text(encoding='utf-8')))['clockDescriptions'],10)
 

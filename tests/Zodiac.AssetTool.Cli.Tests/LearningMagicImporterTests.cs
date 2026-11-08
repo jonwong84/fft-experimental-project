@@ -17,7 +17,7 @@ public sealed class LearningMagicImporterTests
     [Fact]
     public void Selected_fire4_metadata_and_slot_state_are_distinct_from_authored_encounter()
     {
-        var import = OriginalOrdinaryMagicImporter.DecodeSelection(Image(), OriginalOrdinarySpellSelection.LearnOnHit);
+        var import = OriginalOrdinaryMagicImporter.DecodeSelection(Image(), OriginalDefaultAbilitySelection.LearnOnHit);
         Assert.Null(import.VerifiedInputSha256);
         Assert.Equal(37, import.Records.Length);
         var d = import.Package.Definition;
@@ -38,7 +38,7 @@ public sealed class LearningMagicImporterTests
     [InlineData(true)] [InlineData(false)]
     public void Prepared_learning_recipient_can_accept_or_decline_the_actual_cast(bool accept)
     {
-        var d = OriginalOrdinaryMagicImporter.DecodeSelection(Image(), OriginalOrdinarySpellSelection.LearnOnHit).Package.Definition;
+        var d = OriginalOrdinaryMagicImporter.DecodeSelection(Image(), OriginalDefaultAbilitySelection.LearnOnHit).Package.Definition;
         var state = d.Start();
         var fire4 = new AssetId("fft.ps1:ability/source-0019");
         void Apply(OrdinaryMagicCommand command)

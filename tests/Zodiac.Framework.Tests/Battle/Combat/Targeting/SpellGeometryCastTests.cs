@@ -42,7 +42,7 @@ public sealed class SpellGeometryCastTests
         foreach (var row in doc.RootElement.GetProperty("casts").EnumerateArray())
         {
             var q = Request(row); var before = new RandomState(row.GetProperty("word").GetUInt32(), row.GetProperty("count").GetUInt64());
-            var r = OrdinarySpellTargeting.ResolveCast(q, before); var e = row.GetProperty("expected");
+            var r = DefaultAbilityTargeting.ResolveCast(q, before); var e = row.GetProperty("expected");
             Assert.Equal(e.GetProperty("accepted").GetBoolean(), r.Accepted);
             Assert.Equal(Enum.Parse<FaithMagicResolutionRejection>(e.GetProperty("rejection").GetString()!), r.Rejection);
             Assert.Equal(new RandomState(e.GetProperty("word").GetUInt32(), e.GetProperty("count").GetUInt64()), r.RngState);
@@ -79,7 +79,7 @@ public sealed class SpellGeometryCastTests
             q with { Roster = q.Roster.Replace(actor, actor with { Occupant = actor.Occupant with { Jump = true } }) },
             q with { Roster = q.Roster.SetItem(0, q.Roster[0] with { Current = q.Cast.Caster }) }];
         foreach (var r in invalid)
-        { var result = OrdinarySpellTargeting.ResolveCast(r, before); Assert.False(result.Accepted); Assert.Null(result.Outcome); Assert.Equal(before, result.RngState); }
+        { var result = DefaultAbilityTargeting.ResolveCast(r, before); Assert.False(result.Accepted); Assert.Null(result.Outcome); Assert.Equal(before, result.RngState); }
     }
 
     [Fact]
@@ -88,7 +88,7 @@ public sealed class SpellGeometryCastTests
     {
         using var doc = Fixture(); var q = Request(doc.RootElement.GetProperty("casts")[0]); var before = new RandomState(57, 9);
         var roster = q.Roster.ToArray(); q.Map.TryGetTile(new(1, 1, 0), out var tile);
-        var a = OrdinarySpellTargeting.ResolveCast(q, before); var b = OrdinarySpellTargeting.ResolveCast(q, before);
+        var a = DefaultAbilityTargeting.ResolveCast(q, before); var b = DefaultAbilityTargeting.ResolveCast(q, before);
         Assert.Equal(a.RngState, b.RngState); Assert.Equal(a.Outcome!.Targets.ToArray(), b.Outcome!.Targets.ToArray());
         Assert.Equal((ushort)21, a.Outcome.CandidateMp); Assert.Equal((ushort)30, q.Cast.Caster.Mp);
         Assert.Equal(roster, q.Roster.ToArray()); q.Map.TryGetTile(new(1, 1, 0), out var after); Assert.Equal(tile, after);

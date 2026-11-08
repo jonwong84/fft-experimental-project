@@ -19,10 +19,10 @@ internal static class SpellTargetCastResolution
             if (u is null || u.Occupant is null || u.Current is { } c && c.UnitId != u.Occupant.UnitId) return Reject();
         var actor = request.Roster.FirstOrDefault(u => u.Occupant.UnitId == cast.Caster.UnitId);
         if (actor is null || actor.Current != cast.Caster && actor.Current != cast.Caster with { Mp = cast.Resource.CandidateMp }) return Reject();
-        var area = OrdinarySpellTargeting.Area(request.Map, actor.Occupant.Position, request.SelectedMapAim, geometry, request.GeometryProfile);
+        var area = DefaultAbilityTargeting.Area(request.Map, actor.Occupant.Position, request.SelectedMapAim, geometry, request.GeometryProfile);
         if (!area.Accepted) return Reject();
         // Ordinary action resolution resets source nearest-first. Directional handlers are outside this slice.
-        var selection = OrdinarySpellTargeting.SelectTargets(area.Outcome!, cast.Caster.UnitId,
+        var selection = DefaultAbilityTargeting.SelectTargets(area.Outcome!, cast.Caster.UnitId,
             request.Roster.Select(u => u.Occupant).ToImmutableArray(), request.RosterProfile);
         if (!selection.Accepted) return Reject();
         var byId = request.Roster.ToDictionary(u => u.Occupant.UnitId);

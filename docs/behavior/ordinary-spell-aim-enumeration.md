@@ -5,10 +5,10 @@ and ranks these potential aims. It also corrects the exhaustive-scan consume
 diagnostic using the outer caller; the rest of this document describes the
 original aim-list milestone and its boundaries.
 
-`OrdinarySpellAiAimQuery.Evaluate(state, catalog, request)` lists potential aims
+`DefaultAbilityAiAimQuery.Evaluate(state, catalog, request)` lists potential aims
 for one owned, learned primary spell slot at the actor's current origin. Start at
-[the public query](../../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAimQuery.cs)
-and follow [the selection owner](../../src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAimEnumeration.cs).
+[the public query](../../src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiAimQuery.cs)
+and follow [the selection owner](../../src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAimEnumeration.cs).
 Each call freshly binds the definition/catalog, current turn, slot, MP, usefulness
 and selectable range. Returned records have no command or cached evaluation
 authority. There is no RNG input, formula calculation, preparation, MP spending,
@@ -26,7 +26,7 @@ or C code was executed for this ticket.
 
 The [earlier search study](ordinary-spell-aim-search.md) describes the broader
 caller. One additional initialization step matters: after
-`OrdinarySpellAiParameters.InitializeUsage`, source `ability_considerations_set`
+`DefaultAbilityAiParameters.InitializeUsage`, source `ability_considerations_set`
 completes the working ConsumeAim flag. ForceConsumeAim wins. Otherwise, unless
 ExhaustiveOrigins is set, it consumes when considered CT reaches the actor's
 predicted next turn or the ability has no effect on self. An adverse self-effect

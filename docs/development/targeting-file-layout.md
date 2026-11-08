@@ -3,9 +3,9 @@
 Owner-approved file organization, 2026-11-05, from managed base
 `3d39ed24cf16fb2a0a8d1b3adf4ef333fe69c72f`.
 
-Thirteen supporting public types move from `OrdinarySpellTargeting.cs` into
+Thirteen supporting public types move from `DefaultAbilityTargeting.cs` into
 matching files under `src/Zodiac.Framework/Battle/Combat/Targeting/`. The static
-calculation owner remains in `OrdinarySpellTargeting.cs`. The folder now has one
+calculation owner remains in `DefaultAbilityTargeting.cs`. The folder now has one
 public type per file, including its enums and small request/result records.
 This makes geometry, caller profiles, opaque panels, roster inputs and cast
 requests individually discoverable by filename.

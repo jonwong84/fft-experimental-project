@@ -2,7 +2,7 @@ import unittest
 from verify_ordinary_spell_ai import charge, known_row, mp_term, validate, validate_inspection
 
 
-class OrdinarySpellAiTests(unittest.TestCase):
+class DefaultAbilityAiTests(unittest.TestCase):
     def test_source_descriptions(self):
         self.assertEqual(sum(validate().values()),12)
 
