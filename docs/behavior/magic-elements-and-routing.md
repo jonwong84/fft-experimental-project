@@ -100,9 +100,46 @@ when the snow-map flag is set. The pure transform accepts **already-effective**
 weather; map/script weather selection is separate and must not be applied twice.
 All16 focused .NET element/projection/routing tests and eight Python tests pass;
 all ten owner draft blobs and the unrelated CI edit are unchanged. No runtime or
-fixture change is needed. The next useful supplied dependency is
-the effective-weather routine at `0x0018e660`, followed by Ability Elemental?.
-ZOD-436 remains open.
+fixture change is needed. ZOD-436 remains open.
+
+### Supplied effective-weather dependency
+
+The owner's `BATTLE_Get_Weather` listing matches all22 words at
+`0x8018e660`–`0x8018e6b4`, its script-variable call and both listed returns
+(`0x80174380` from weather movement cost, `0x80186eec` from damage weather).
+The same supporting receipt records three branch/delay-slot checks and source
+fingerprints for the getter and its bounded script-variable read.
+
+It first calls `script_variable_get(0x23)` at `0x8013b590`; the argument is set
+in the call delay slot. This read occurs even when weather is subsequently
+ignored. Then it loads the flag word at `0x800b6698` and applies these rules:
+
+1. Ignore-weather bit`0x02` returns0, including when Snow is also set.
+2. Otherwise a **signed** weather value below2 returns unchanged.
+3. Otherwise Snow bit`0x01` adds3; a clear bit leaves the value unchanged.
+
+This preserves clear/none values even on a snow map. Rain2 becomes Snow5,
+Storm3 becomes Snowstorm6, and StrongStorm4 becomes StrongSnowstorm7. The notes'
+label "Snowstorm" for value5 is a typo: pinned source and the existing
+`MagicDamageWeather.Snow` agree that it is ordinary Snow, which does not boost
+ice damage. The supplied inline branch comments need their zero/nonzero polarity
+and delay-slot assignments to be read together.
+
+The receipt checks20 ordinary raw-weather/flag combinations and16 source-boundary
+descriptions. The source adds no upper clamp; already-converted or out-of-range
+script values must not be silently normalized. Boundary values and signed32
+`addiu` wrap are source descriptions only, not new managed weather admission.
+The current pure transform accepts validated **already-effective** weather0–7;
+there is no new raw map/script weather classifier in this milestone.
+
+The generic getter reads through script variable commands and restores comparison
+variable0. For this fixed0x23 request it does not take the special random-variable
+0x21 path. This dependency is traced sufficiently for the current read boundary;
+a general event-VM port or additional recursive documentation is not required
+here. All16 focused .NET element/projection/routing tests and eight Python tests
+pass; all ten owner draft blobs and the unrelated CI edit are unchanged. No
+runtime or fixture change is needed. The next useful page is Ability
+Elemental?. ZOD-436 remains open.
 
 ## Original implementation checkpoint
 

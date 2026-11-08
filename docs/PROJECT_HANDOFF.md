@@ -79,8 +79,11 @@ Unsigned operand loads and signed C# multiplication agree modulo65,536;655,360
 boundary pairs also pass. Weather Elemental effects matches64 words/four returns
 and its effective-weather call;4,194,304 signed amount/weather/element checks
 preserve Fire-before-Lightning, separate stores and signed truncation. Existing
-C# agrees. The effective-weather routine at0x0018e660 and Ability Elemental? are
-the next useful pages. ZOD-436 remains open.
+C# agrees. Effective weather at0x0018e660 matches22 words/two returns and the
+fixed script-variable0x23 read: ignore overrides snow, values<2 bypass conversion,
+otherwise Snow adds3. Value5 is ordinary Snow (the notes mislabel it Snowstorm).
+The managed consumer still takes already-effective weather; no general map/script
+classifier is added. Ability Elemental? is next. ZOD-436 remains open.
 The unrelated owner edit in `.circleci/config.yml` remains uncommitted and excluded.
 The shared Calculate Hit %/final-hit/per-source roll
 documentation was already supplied; no duplicate is needed.

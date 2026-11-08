@@ -115,8 +115,9 @@ secondadvent's rewrite to a much later review. The
 matches18 words, three ordered calls and four returns. Its XA * YA helper matches
 13 words/nine returns and the modulo-store arithmetic. Weather Elemental effects
 matches64 words/four returns and4,194,304 signed amount/weather/element combinations.
-Its effective-weather dependency and Ability Elemental? are next; the full
-shared-consumer review remains open.
+Its effective-weather dependency matches22 words/two returns, preserves flag
+precedence and corrects the notes' value5 label to Snow. Ability Elemental? is
+next; the full shared-consumer review remains open.
 
 ## Review programme
 

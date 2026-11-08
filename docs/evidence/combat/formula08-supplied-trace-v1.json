@@ -69,6 +69,24 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 3790,
       "sha256": "baf439867bef5e0de3a0acc925b1a7205c4de05db582187c382cfd618492ef03"
+    },
+    {
+      "path": "src/lib/event/script/variables.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2400,
+      "sha256": "e6c0fe57771f63cbc92c03a0c7280238d4c657cc49dcd7e1d3a545159be58baf"
+    },
+    {
+      "path": "include/fft/script_variable.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 16299,
+      "sha256": "684cc112fc026d45fcb1e53be5ee34d67f8f9751756e5dbb8204636b7a63b3f1"
+    },
+    {
+      "path": "src/lib/event/script/control.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 17056,
+      "sha256": "2f34b99b9835980040b59f97f5d3c5b7561abb1410c70e4251b6ce0b9b9cc6af"
     }
   ],
   "sourceFunctions": [
@@ -197,6 +215,20 @@
       "startLine": 52,
       "endLine": 66,
       "normalizedLfSha256": "fb4214f8dcf5207b63bf48cb3943e694b517ce6502cef338430d0cefc6211bfb"
+    },
+    {
+      "path": "src/lib/event/script/variables.c",
+      "symbol": "script_variable_get",
+      "startLine": 17,
+      "endLine": 38,
+      "normalizedLfSha256": "65107a1e3e6b2dff9ff89e2abce473c8dbad65fbae3b4694d491e6965f58688d"
+    },
+    {
+      "path": "src/lib/event/script/control.c",
+      "symbol": "script_variable_command_run",
+      "startLine": 243,
+      "endLine": 351,
+      "normalizedLfSha256": "46f845aa823b1f3869b21011dba6796bd331dfd5f48fb77920c1f12300991a70"
     }
   ],
   "managedFiles": [
@@ -2113,6 +2145,339 @@
         "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
         "referenceClean": true
       },
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 16,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedEffectiveWeatherCheck": {
+    "managedBaseRevision": "b8dd00c5c1dbad0be92f2ce6f1ac6a73043eab6e",
+    "start": "0x8018e660",
+    "endInclusive": "0x8018e6b4",
+    "instructionCount": 22,
+    "instructionWords": [
+      "27bdffe8",
+      "afbf0010",
+      "0c04ed64",
+      "34040023",
+      "3c04800b",
+      "8c846698",
+      "00401821",
+      "30820002",
+      "14400009",
+      "00001021",
+      "28620002",
+      "14400006",
+      "00601021",
+      "30820001",
+      "10400003",
+      "00601021",
+      "24630003",
+      "00601021",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "scriptVariableRead": {
+      "callPc": "0x8018e668",
+      "target": "0x8013b590",
+      "symbol": "script_variable_get",
+      "argument": "0x23",
+      "argumentSetInDelaySlot": true,
+      "performedBeforeIgnoreCheck": true,
+      "boundary": "Generic getter reads the script-variable bank through variable commands and restores comparison variable0. No event-VM port is added."
+    },
+    "flagWordAddress": "0x800b6698",
+    "branches": [
+      {
+        "pc": "0x8018e680",
+        "operation": "bne",
+        "target": "0x8018e6a8",
+        "delaySlotWord": "00001021"
+      },
+      {
+        "pc": "0x8018e68c",
+        "operation": "bne",
+        "target": "0x8018e6a8",
+        "delaySlotWord": "00601021"
+      },
+      {
+        "pc": "0x8018e698",
+        "operation": "beq",
+        "target": "0x8018e6a8",
+        "delaySlotWord": "00601021"
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80174378",
+        "returnAddress": "0x80174380",
+        "target": "0x8018e660"
+      },
+      {
+        "callPc": "0x80186ee4",
+        "returnAddress": "0x80186eec",
+        "target": "0x8018e660"
+      }
+    ],
+    "orderedRules": [
+      "Ignore flag0x02 returns0, including when Snow is also set.",
+      "Otherwise signed raw weather<2 returns unchanged.",
+      "Otherwise Snow flag0x01 adds3; without Snow return unchanged. The source does not add an upper-range clamp."
+    ],
+    "literalVectors": [
+      {
+        "rawWeather": 0,
+        "flags": 0,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 0,
+        "flags": 1,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 0,
+        "flags": 2,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 0,
+        "flags": 3,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 1,
+        "flags": 0,
+        "effectiveWeather": 1,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 1,
+        "flags": 1,
+        "effectiveWeather": 1,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 1,
+        "flags": 2,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 1,
+        "flags": 3,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 2,
+        "flags": 0,
+        "effectiveWeather": 2,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 2,
+        "flags": 1,
+        "effectiveWeather": 5,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 2,
+        "flags": 2,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 2,
+        "flags": 3,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 3,
+        "flags": 0,
+        "effectiveWeather": 3,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 3,
+        "flags": 1,
+        "effectiveWeather": 6,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 3,
+        "flags": 2,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 3,
+        "flags": 3,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 4,
+        "flags": 0,
+        "effectiveWeather": 4,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 4,
+        "flags": 1,
+        "effectiveWeather": 7,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 4,
+        "flags": 2,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 4,
+        "flags": 3,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": -1,
+        "flags": 0,
+        "effectiveWeather": -1,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": -1,
+        "flags": 1,
+        "effectiveWeather": -1,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": -1,
+        "flags": 2,
+        "effectiveWeather": 0,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": -1,
+        "flags": 3,
+        "effectiveWeather": 0,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 5,
+        "flags": 0,
+        "effectiveWeather": 5,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 5,
+        "flags": 1,
+        "effectiveWeather": 8,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 5,
+        "flags": 2,
+        "effectiveWeather": 0,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 5,
+        "flags": 3,
+        "effectiveWeather": 0,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 7,
+        "flags": 0,
+        "effectiveWeather": 7,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 7,
+        "flags": 1,
+        "effectiveWeather": 10,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 7,
+        "flags": 2,
+        "effectiveWeather": 0,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 7,
+        "flags": 3,
+        "effectiveWeather": 0,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 2147483647,
+        "flags": 0,
+        "effectiveWeather": 2147483647,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 2147483647,
+        "flags": 1,
+        "effectiveWeather": -2147483646,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 2147483647,
+        "flags": 2,
+        "effectiveWeather": 0,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 2147483647,
+        "flags": 3,
+        "effectiveWeather": 0,
+        "normalScriptWeather": false
+      }
+    ],
+    "notesCorrection": "Effective value5 is Snow, not Snowstorm. Value6 is Snowstorm and7 StrongSnowstorm. Plain Snow does not boost ice damage.",
+    "managedBoundary": "MagicDamageElements receives already-effective MagicDamageWeather; enum5 is Snow and6/7 are snowstorms. There is no general script/map weather classifier or event-VM activation in this milestone; invalid effective enums remain rejected.",
+    "clarifications": [
+      "The branch comments must be read with polarity and delay slots: ignore is tested first, clear values bypass snow conversion, and a clear Snow bit bypasses addition.",
+      "Raw values>=5, negative values and signed32 wrap cases are source-boundary descriptions only, not newly admitted managed weather.",
+      "Do not apply the snow offset again to an already-effective weather input."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "transformDescriptions": 24,
+        "projectionDescriptions": 12,
+        "routingDescriptions": 14,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "sourceFiles": 9,
+        "sourceFunctions": 14,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true
+      },
+      "literalDescriptions": 36,
+      "normalWeatherFlagDescriptions": 20,
+      "sourceBoundaryDescriptions": 16,
       "ownerBlobsVerified": 10,
       "unrelatedOwnerEdit": {
         "path": ".circleci/config.yml",
