@@ -61,8 +61,8 @@ runtime admission are distinct coverage claims:
 - **Attack Up and Martial Arts (`0x8018614c`):** a source-traced leaf with no
   calls. It applies Attack Up `4/3`, then Martial Arts `3/2` when the selected
   weapon type is unarmed. It has no Two Hands step. These modifiers remain
-  excluded by current physical admission. A supplied listing would independently
-  cross-check its instruction-level conditions and stores.
+  excluded by current physical admission. The supplied listing is now checked
+  below, including the instruction-level conditions and stores.
 - **Cluster of Physical Routines (`0x80188adc`):** four ordered calls: attacker
   Berserk/Frog, target Defense Up, target physical statuses, then original zodiac
   compatibility. Attack Up/Martial Arts is already applied by its caller; the
@@ -77,7 +77,7 @@ runtime admission are distinct coverage claims:
   implemented.
 
 For further FFHacktics comparison, the most useful remaining supplied listings
-are **Attack Up and Martial Arts**, **Cluster of Physical Routines**, and
+are **Cluster of Physical Routines** and
 **Damage and Knockback Routine (alternative)**. Their nested calls can then be
 matched to this inventory without repeating the already supplied shared helpers.
 These pages add independent annotations; they do not block the currently
@@ -86,6 +86,45 @@ required by this coverage check, and no broader review group is closed.
 All 186 focused .NET Dash/Stone/formula-assignment tests and two Python Dash
 tests pass. The prepared Dash record and 32 source-derived descriptions also
 pass; all ten owner draft blobs and the committed disabled CI gate are unchanged.
+
+## Supplied Attack Up and Martial Arts
+
+The owner's listing matches all 46 instruction words at
+`0x8018614c`–`0x80186200` and all eight listed caller return addresses. The
+[trace receipt](../evidence/combat/attack-up-martial-arts-trace-v1.json) pins clean
+reference `11464943bbdbd2a0af022d90cb7f10455cf911df`, the prepared BATTLE.BIN and
+source/header/metadata fingerprints. This is a leaf routine with no calls or RNG.
+
+Attack Up is support byte `0x90`, bit `0x10`. When present, signed 16-bit XA is
+multiplied by `4/3`, truncated toward zero and stored back to 16 bits. The
+multiply-high constant is `0x55555556`; the note's nine-hex-digit value is a typo.
+
+Martial Arts is support byte `0x91`, bit `0x20`, and additionally requires the
+current action's selected weapon **type** to equal 0 (unarmed). The weapon ID is
+read from work byte `0x801938d8`; type comes from primary item record
+`0x80062eb8 + weaponId * 12 + 5`. This is not a category-flags test at offset 3
+or an inference from the actor's current equipment. The summary omits this type
+condition. When eligible, the helper reloads signed XA, multiplies by `3/2`,
+truncates toward zero and stores the low 16 bits again.
+
+Both bits can apply, in that order, subject to the weapon-type gate. The
+intermediate store matters: XA 5 becomes 6, then 9, whereas replacing the pair
+with a single doubling gives 10. Signed arithmetic also does not implement an
+unconditional upward rounding rule: XA -5 becomes -6, then -9. Zero stays zero;
+there is no minimum floor here. High-width inputs retain each signed reload and
+low-16-bit wrap rather than receiving a new clamp.
+
+Offline checks compare the instruction arithmetic with signed truncation/store
+for all 65,536 XA inputs across eight support/type combinations (524,288 cases),
+plus eight literal boundary descriptions. The pinned C helper agrees. There is
+no Two Hands, critical, zodiac, YA update or final damage write in this routine.
+
+Current physical profiles still exclude these support modifiers. No runtime,
+fixture or owner-definition change is required, and this does not activate all
+eight caller families. All 186 focused .NET Dash/Stone/formula-assignment tests
+and two Python Dash tests pass; all ten owner drafts and the disabled CI gate
+remain unchanged. The next useful supplied listing is **Cluster of Physical
+Routines** at `0x80188adc`, followed by the alternative damage/knockback helper.
 
 ## Supplied physical-evasion wrapper (2026-11-07)
 

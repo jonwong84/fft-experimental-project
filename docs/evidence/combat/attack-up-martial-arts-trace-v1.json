@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "a1377bc300288f44edf20668707b2103d966a368",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Owner-supplied Attack Up and Martial Arts listing; no activation of deferred physical support inputs.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 46088,
+      "sha256": "a9e58962104849ae4e947e3833236aaf2c1334394a1af12b19930428e6885e03"
+    },
+    {
+      "path": "include/fft/item.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 17162,
+      "sha256": "d416f46d0784ec89ad86459fe56ac1fe3303d8a744601310ece0dbd6f29b8450"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/action.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14957,
+      "sha256": "6e97b3935c0d9cdcb8f6ba9ee2d40985b645bc0b03281a0d50d3d20aae35591c"
+    },
+    {
+      "path": "target/main.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 135004,
+      "sha256": "b6066d98d481d73eb49d2d16be57ae3fc5ae4070830176fdeeeaae2bdeaec2a3"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_attack_up_and_martial_arts",
+      "startLine": 1056,
+      "endLine": 1070,
+      "normalizedLfSha256": "a4ce5d3a876062ec59e464e42a1f784ad7dbdea59e897f5f241cae6a9d23f029"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_damage_random_y_times_pa",
+      "startLine": 852,
+      "endLine": 859,
+      "normalizedLfSha256": "732505faefa48d6ae1e172ca09a52c0e6cc4bdb2aaaadb5567de7642917ee85b"
+    }
+  ],
+  "start": "0x8018614c",
+  "endInclusive": "0x80186200",
+  "instructionCount": 46,
+  "instructionWords": [
+    "3c028019",
+    "8c422d94",
+    "00000000",
+    "90420090",
+    "00000000",
+    "30420010",
+    "1040000b",
+    "3c025555",
+    "3c048019",
+    "248438ce",
+    "84830000",
+    "34425556",
+    "00031880",
+    "00620018",
+    "00031fc3",
+    "00001010",
+    "00431023",
+    "a4820000",
+    "3c038019",
+    "906338d8",
+    "3c048019",
+    "8c842d94",
+    "00031040",
+    "00431021",
+    "00021080",
+    "90830091",
+    "3c018006",
+    "00220821",
+    "90222ebd",
+    "30630020",
+    "1060000d",
+    "00000000",
+    "1440000b",
+    "00000000",
+    "3c028019",
+    "844238ce",
+    "00000000",
+    "00021840",
+    "00621821",
+    "000317c2",
+    "00621821",
+    "00031843",
+    "3c018019",
+    "a42338ce",
+    "03e00008",
+    "00000000"
+  ],
+  "allMatched": true,
+  "directCalls": 0,
+  "listedCallers": [
+    {
+      "callPc": "0x80188b1c",
+      "returnAddress": "0x80188b24",
+      "matched": true
+    },
+    {
+      "callPc": "0x80189890",
+      "returnAddress": "0x80189898",
+      "matched": true
+    },
+    {
+      "callPc": "0x80189cf8",
+      "returnAddress": "0x80189d00",
+      "matched": true
+    },
+    {
+      "callPc": "0x80189d94",
+      "returnAddress": "0x80189d9c",
+      "matched": true
+    },
+    {
+      "callPc": "0x80189e38",
+      "returnAddress": "0x80189e40",
+      "matched": true
+    },
+    {
+      "callPc": "0x80189ea4",
+      "returnAddress": "0x80189eac",
+      "matched": true
+    },
+    {
+      "callPc": "0x80189f18",
+      "returnAddress": "0x80189f20",
+      "matched": true
+    },
+    {
+      "callPc": "0x80189fa4",
+      "returnAddress": "0x80189fac",
+      "matched": true
+    }
+  ],
+  "selection": {
+    "attackUp": {
+      "unitOffset": "0x90",
+      "mask": "0x10"
+    },
+    "martialArts": {
+      "unitOffset": "0x91",
+      "mask": "0x20"
+    },
+    "weaponId": "unsigned byte at ability work0x801938d8",
+    "weaponType": "unsigned byte at0x80062eb8+weaponId*12+5",
+    "requiredWeaponType": 0
+  },
+  "arithmetic": {
+    "attackUp": "Signed16 XA*4/3, truncation toward zero, low16 store.",
+    "martialArts": "Reload signed16 XA after Attack Up store; *3/2 with truncation toward zero and low16 store.",
+    "combined": "Apply independently in that order. Two stores prevent replacing the pair with XA*2.",
+    "allSignedInputs": 65536,
+    "flagAndWeaponBranches": 8,
+    "comparisons": 524288
+  },
+  "literalDescriptions": [
+    {
+      "xa": 5,
+      "attackUp": true,
+      "martialArts": true,
+      "weaponType": 0,
+      "expectedXa": 9
+    },
+    {
+      "xa": 5,
+      "attackUp": true,
+      "martialArts": true,
+      "weaponType": 1,
+      "expectedXa": 6
+    },
+    {
+      "xa": 5,
+      "attackUp": false,
+      "martialArts": true,
+      "weaponType": 0,
+      "expectedXa": 7
+    },
+    {
+      "xa": -5,
+      "attackUp": true,
+      "martialArts": true,
+      "weaponType": 0,
+      "expectedXa": -9
+    },
+    {
+      "xa": 1,
+      "attackUp": true,
+      "martialArts": true,
+      "weaponType": 0,
+      "expectedXa": 1
+    },
+    {
+      "xa": 0,
+      "attackUp": true,
+      "martialArts": true,
+      "weaponType": 0,
+      "expectedXa": 0
+    },
+    {
+      "xa": 32767,
+      "attackUp": true,
+      "martialArts": true,
+      "weaponType": 0,
+      "expectedXa": 32766
+    },
+    {
+      "xa": -32768,
+      "attackUp": true,
+      "martialArts": true,
+      "weaponType": 0,
+      "expectedXa": -32767
+    }
+  ],
+  "corrections": [
+    "The multiplier is0x55555556, not the nine-hex-digit constant in the note.",
+    "The ratios are exact4/3 and3/2 with signed truncation, not rounded decimal percentages or unconditional upward rounding.",
+    "Martial Arts additionally requires the current action weapon type0; the summary omitted that gate."
+  ],
+  "boundaries": [
+    "No calls, RNG, Two Hands, critical, YA change, damage write, zodiac step or clamp in this helper.",
+    "Weapon type uses primary item byte5, not category flags at byte3, a hard-coded weapon-ID interval or inferred equipment state.",
+    "Attack Up and Martial Arts may both apply when both support bits and the type gate permit; XA5 becomes6 then9 rather than10.",
+    "Full signed-width checks describe original stored behavior, not a widened managed physical profile. Current supported physical paths exclude these support modifiers.",
+    "Next useful supplied listing: Cluster of Physical Routines at0x80188adc. Alternative damage/knockback remains another supplied cross-check."
+  ],
+  "validation": {
+    "referenceClean": true,
+    "sourceAudit": {
+      "formulaDescriptions": 24,
+      "actualDescriptions": 8,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false
+    },
+    "preparedDash": {
+      "abilityId": 147,
+      "range": 1,
+      "verticalTolerance": 1,
+      "formula": 55,
+      "y": 4,
+      "evadeable": false,
+      "directTrajectory": false,
+      "aiPhysical": true,
+      "aiDirectTrajectory": false,
+      "aiExhaustive": false,
+      "preparedVerified": true
+    },
+    "ownerBlobsVerified": 10,
+    "ownerApprovedCiEdit": {
+      "path": ".circleci/config.yml",
+      "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+      "committed": true,
+      "ciEnabledDefault": false
+    },
+    "runtimeChanged": false,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "focusedManagedTestsPassed": 186,
+    "focusedPythonTestsPassed": 2,
+    "managedTestsExecuted": true
+  },
+  "preparedBattle": {
+    "path": "scratch/fft-decomp-work/build/extracted/files/BATTLE.BIN",
+    "byteLength": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000"
+  }
+}

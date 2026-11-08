@@ -209,9 +209,12 @@ regressions cover the fix; retail Dash/Stone0x37 expectations remain unchanged.
 The owner's follow-up dependency check freshly matches all14 source files/47
 functions and accounts for all five formula0x37 direct helpers plus their major
 subpaths. The [coverage checklist](behavior/physical-pipeline-review.md#formula0x37-dependency-coverage-follow-up)
-separates source tracing, supplied listings and runtime admission. Attack Up/
-Martial Arts, the physical cluster and alternative damage/knockback are useful
-remaining supplied listings; their source is already traced. Broader modifiers,
+separates source tracing, supplied listings and runtime admission. The supplied
+Attack Up/Martial Arts helper now matches 46 words/eight callers and 524,288
+signed-input/flag/type arithmetic cases. Its unarmed type gate and separate
+signed stores are retained; broader support inputs remain excluded. The physical
+cluster and alternative damage/knockback are the remaining useful supplied
+listings; their source is already traced. Broader modifiers,
 equipment and landing/fall behavior remain deferred. No runtime change.
 
 The subsequent supplied physical-evasion wrapper is also source/byte checked:
