@@ -225,8 +225,12 @@ combinations, preserving the two OR-groups and separate stores. Alternative
 damage/knockback now matches52 words/four calls/one listed return. Its unsigned
 XA/raw Y product, all-mode delay-slot damage store and execution-only three-draw
 order agree with current bounded calculation. Pass/Fail is already checked;
-Random Process is source-traced. Knockback Calculation at0x801843ec is the next
-useful supplied dependency listing, without activating broader landing/falls.
+Random Process is source-traced. [Knockback Calculation](behavior/knockback-calculation.md)
+now matches137 words/two calls/two returns, with 261,120 direction cases and
+1,024 movement/status flag combinations. It stages layer/flags rather than live
+movement; its destination checker allows equal edge heights. Knockback 2 at
+0x80184610 is the next useful supplied dependency, followed by effective movement
+at0x8017f020, without activating broader landing/falls.
 Broader modifiers,
 equipment and landing/fall behavior remain deferred. No runtime change.
 

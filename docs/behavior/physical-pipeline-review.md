@@ -78,8 +78,9 @@ runtime admission are distinct coverage claims:
   implemented.
 
 The supplied **Damage and Knockback Routine (alternative)** is now checked below.
-Its Knockback Calculation dependency is the next useful supplied listing; shared
-Pass/Fail is already checked and the formula RNG source is pinned.
+Its supplied [Knockback Calculation dependency](knockback-calculation.md) is now
+checked too. Knockback 2 is next useful; shared Pass/Fail is already checked and
+the formula RNG source is pinned.
 These pages add independent annotations; they do not block the currently
 admitted source-traced behavior. No runtime or owner-definition change is
 required by this coverage check, and no broader review group is closed.
@@ -316,8 +317,11 @@ The three dependencies are accounted for as follows:
 - **Knockback Calculation (`0x801843ec`)**: source-traced and represented within
   the admitted flat, single-target displacement path. A successful comparison
   merely invokes it; target eligibility and landing can still prevent staging
-  movement. Its supplied listing is next useful. Full terrain/fall/mount behavior
-  and its descendants remain separate.
+  movement. Its [supplied listing](knockback-calculation.md) now matches 137 words,
+  two calls and both listed returns, preserving target/tile gates, Y-axis ties
+  and pending kind/effect stores. Knockback 2 at `0x80184610` is the next useful
+  supplied dependency. Full terrain/fall/mount behavior and its descendants
+  remain separate.
 
 Ten factor, six stored-product and six Brave descriptions pass, alongside the
 existing 32 Dash descriptions and prepared record. Current neutral/signed-safe
