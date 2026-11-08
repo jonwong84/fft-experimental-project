@@ -21,7 +21,9 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 400 entries index completed bounded work; they do not mean the full game is complete.
+These 401 entries index completed bounded work; they do not mean the full game is complete.
+
+- [ZOD-426 — Trace ordinary spell movement origins and baseline ranks](../behavior/ordinary-spell-movement-origins.md)
 
 - [ZOD-436 — Review ordinary magic arithmetic, evasion and shared result consumers](../behavior/ordinary-magic-pipeline-review.md)
 

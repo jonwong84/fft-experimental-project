@@ -15,6 +15,12 @@ The [original AI algorithm guide](../architecture/original-ai-algorithm.md) owns
 the unified source map, policy precedence and documented implementation gaps.
 Use it to place each bounded child within the overall algorithm.
 
+The [ordinary spell origin study](../behavior/ordinary-spell-movement-origins.md)
+now traces ranked/exhaustive origins, ACT-first destination substitution,
+baseline widths, remaining aims and per-origin exits. ZOD-437 will derive fresh
+movement baseline diagnostics before moved-origin casting. This source milestone
+does not complete spell search, autonomous magic or the review gates below.
+
 ## Required readability review after the full port
 
 Owner direction recorded2026-11-07: once the full original AI routine set is

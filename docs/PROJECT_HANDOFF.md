@@ -6,12 +6,22 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-436 is complete within its bounded domain. Next: ZOD-426, ordinary spell
-movement origins and baseline ranks.** Read the active acceptance scope in
-[BACKLOG.md](BACKLOG.md) before extending the fixed-origin spell search.
-Trace origin order, origin priority, act/move alternatives, baseline admission,
-consumed aims and RNG continuity; select a bounded implementation child only
-after that source study. Full magic dispatch/lottery/commands remain separate.
+**ZOD-426 is complete as a source study. Next: ZOD-437, fresh ordinary spell
+movement baseline diagnostics.** Read the active acceptance scope in
+[BACKLOG.md](BACKLOG.md) and the [origin study](behavior/ordinary-spell-movement-origins.md).
+Derive D0/scenario destinations, baseline ranks, fresh priority writes and one
+decision RNG before adding moved-origin casting. Full magic dispatch/lottery/
+commands remain separate.
+
+The study pins ten source files, 31 routines, four prepared BATTLE ranges and 13
+instruction anchors. Its 24 literal descriptions cover unconditional ranked
+origins, reverse coordinate ties, full-word destination substitution, byte-count
+aliases, baseline widths, separate aim/reach masks and cross-origin consumption/
+unresolved exits. Eight new Python tests pass; no production or managed tests
+changed. Use named booleans for understood independent flags while preserving
+numeric counts/phases and opaque unknown bits. The
+[receipt](evidence/ai/spell-movement-origins-source-v1.json) records its exact
+scope and preservation.
 
 The [ordinary magic review](behavior/ordinary-magic-pipeline-review.md) checks
 formula0x08/0x0C arithmetic, modifiers, original compatibility, weather/affinities,
@@ -25,11 +35,13 @@ source/prepared audits, 365 descriptions, 25 files and 64 function fingerprints.
 Full queue/lifecycle/learning/rewards review, general statuses/Reflect/Golem,
 broader formulas/shapes, origin search, autonomous magic and frame RNG remain open.
 
-Latest full validation: Release build with zero warnings/errors; **5,189 .NET
-tests** (1,835 Framework, 1,384 AI) and **794 Python tests** pass. Logs/TRX use
-ignored `scratch/zod436-*`. Current coverage has 58 validated entries. All ten
-owner draft blobs, immutable JobStats, approved controller formatting and the
-disabled CI gate are preserved. No reference C, original executable or native
+Latest managed validation remains ZOD-436's Release build with zero warnings/
+errors and **5,189 .NET tests** (1,835 Framework, 1,384 AI). ZOD-426 passes all
+**802 Python tests**, source/prepared audits and planning checks. Logs/TRX use
+ignored `scratch/zod436-*` and `scratch/zod426-*`. Current coverage has 58
+validated entries. All ten owner draft blobs, immutable JobStats, approved
+controller formatting and the disabled CI gate are preserved. No reference C,
+original executable or native
 presentation was run for this review. Reference remains clean at
 `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 
@@ -64,8 +76,9 @@ until explicitly re-enabled; current validation is local.
 
 The [review programme](development/documentation-review-programme.md) and
 [progress receipt](evidence/maintenance/documentation-review-progress-v1.json)
-record completed bounded batches through ZOD-436. ZOD-428 and complete inventory
-groups remain open. Prior helper cross-checks and annotation corrections live
+record completed bounded batches through ZOD-436 and the supporting ZOD-426
+study. ZOD-428 and complete inventory groups remain open. Prior helper
+cross-checks and annotation corrections live
 in their behavior/evidence notes; use [history](history/README.md) for completed
 ticket checkpoints, not old next-task advice.
 

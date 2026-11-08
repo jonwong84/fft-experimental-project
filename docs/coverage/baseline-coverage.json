@@ -1856,7 +1856,9 @@
         "docs/architecture/ability-effect-families.md",
         "docs/evidence/combat/ability-formula-source-v1.json",
         "docs/development/framework-public-type-files.md",
-        "docs/evidence/maintenance/framework-public-type-files-v1.json"
+        "docs/evidence/maintenance/framework-public-type-files-v1.json",
+        "docs/behavior/ordinary-spell-movement-origins.md",
+        "docs/evidence/ai/spell-movement-origins-source-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -2485,6 +2487,10 @@
         {
           "path": "tools/verification/inventory_ability_formulas.py",
           "scope": "Pinned10 source files/17 functions,100 dispatch slots and verified368 secondary rows; generated catalog confined to scratch; no C execution or managed rule expansion."
+        },
+        {
+          "path": "tools/verification/test_spell_movement_origins.py",
+          "scope": "Source-only origin order, destinations, baseline widths, masks and supplied cross-origin iteration; no runtime/original execution."
         }
       ],
       "manualCheckpoint": {
@@ -2497,9 +2503,10 @@
         "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
         "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Bind ZOD-329 prepared Dash content/effects/grants through semantic AI setup; configurable policy variants require separate source-traced support.",
+      "nextAction": "Derive fresh ordinary-spell movement baseline diagnostics under ZOD-437 before moved-origin casting; broader policies, autonomous magic and full AI review remain separate.",
       "followUpTickets": [
-        "ZOD-329"
+        "ZOD-329",
+        "ZOD-437"
       ]
     },
     {

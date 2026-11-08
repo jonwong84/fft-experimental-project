@@ -93,8 +93,9 @@ or constitute a formula/original-game oracle. The
 records full validation and owner preservation. No host pathway changed, so this
 ticket does not introduce a new native presentation claim.
 
-ZOD-426 will trace movement-origin selection and baseline ranks before selecting
-the next runtime child. Multiple origins, full ability-list dispatch, list
+[ZOD-426](ordinary-spell-movement-origins.md) now traces movement-origin selection
+and baseline ranks, selecting ZOD-437 movement baseline diagnostics as the next
+runtime child. Multiple origins, full ability-list dispatch, list
 insertion/lottery, actual magic AI commands, autonomous turns, broader status/
 equipment/Reflect/trajectory/shape work, Golem, terminal/frame RNG, editor and
 custom cone work remain separate. Owner drafts and immutable JobStats are intact.

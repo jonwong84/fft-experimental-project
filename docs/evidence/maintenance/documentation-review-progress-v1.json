@@ -399,6 +399,14 @@
     }
   ],
   "fullyReviewedGroups": [],
-  "nextBatch": "ZOD-426",
-  "overallBehaviorReviewCompleted": false
+  "nextBatch": "ZOD-437",
+  "overallBehaviorReviewCompleted": false,
+  "supportingSourceStudies": [
+    {
+      "ticket": "ZOD-426",
+      "report": "docs/behavior/ordinary-spell-movement-origins.md",
+      "receipt": "docs/evidence/ai/spell-movement-origins-source-v1.json",
+      "disposition": "Source-only origin/baseline study; selects ZOD-437. No full review group or runtime spell search is completed."
+    }
+  ]
 }
