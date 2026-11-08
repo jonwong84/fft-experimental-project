@@ -237,8 +237,12 @@ from0x8017cba8 to0x8017cb6c. It forwards child results unchanged. The underlying
 lookup now matches138 words/one call/five returns and 6,144 filter combinations.
 It preserves status OR filters, first-slot/partner return and distinct -1/-2.
 Chocobo Check at0x801743c8 is gated by0x80 and never reached by knockback's zero
-filters; mounting stays deferred. Effective movement at0x8017f020 is the next
-useful supplied cross-check. Broader landing/falls remain guarded.
+filters; mounting stays deferred. Effective movement now matches51 words/eight
+caller references and 524,288 movement/status combinations. It is a leaf and
+preserves Fly/Teleport priority, Frog/Chicken suppression, Float/water behavior
+and Silent Walk. The knockback call at0x80184584 returns at0x8018458c. No more
+supplied page is needed for the admitted knockback branch; resume ZOD-436's
+actual/preview/AI shared-consumer review. Broader landing/falls remain guarded.
 Broader modifiers,
 equipment and landing/fall behavior remain deferred. No runtime change.
 

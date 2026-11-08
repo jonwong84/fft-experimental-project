@@ -44,8 +44,8 @@ There are two actual calls. Other hyperlinks describe callers or annotations.
 - **Float/Float/Fly movements**, `0x8017f020`, is
   `move_get_effective_flags(target)`. Its source combines movement abilities and
   statuses. The parent tests only effective Fly bit `0x80`; Float bit `0x40`
-  alone does not enable the no-fall kind. Its supplied listing remains useful
-  after the destination checker.
+  alone does not enable the no-fall kind. Its supplied leaf listing is now
+  checked below.
 
 After the destination helper succeeds, the parent indexes eight-byte tiles by
 `(layer << 8) + y * width + x`. It rejects untargetable bit `0x02` of tile byte 6,
@@ -189,6 +189,50 @@ zero-filter call suppression and the optional call's position before coordinates
 These are offline source checks; no general filtered lookup or mounting API is
 activated. Runtime, fixtures, owner drafts and the disabled CI gate are unchanged.
 
+## Supplied effective movement-flags leaf
+
+All 51 words at `0x8017f020`–`0x8017f0e8` and all eight listed caller references
+match the prepared file. The
+[movement-flags receipt](../evidence/combat/effective-movement-flags-trace-v1.json)
+pins the same clean reference, source and flag layouts. Seven listed locations
+are return addresses. The knockback entry `0x80184584` is the call instruction;
+its return address is `0x8018458c`. This helper is a leaf: there are no additional
+calls. The bottom links identify callers, not more dependencies to port.
+
+It reads current status byte `0x5a` and movement bytes `0x95`/`0x94`. Float
+status `0x40` ORs Float into the local movement copy. Frog or Chicken (`0x06`)
+clears local Fly. Neither operation writes the unit's statuses or abilities.
+
+Silent Walk independently contributes return bit `0x02`. Effective Fly wins
+over Teleport; either Teleport input bit (`movement2 & 0x0c`) selects the one
+return bit `0x08` when Fly is absent. Frog/Chicken can therefore expose the
+Teleport fallback by disabling Fly; it does not disable Float or Teleport.
+
+Water input `movement3 & 0x80` selects output `0x20`, taking priority over input
+`0x40`, which selects output `0x10`. Preserve these exact selectors. The pinned
+decomp labels the first input MOVE_IN_WATER but its output ON_WATER; the wiki
+inline ability labels differ. Names alone must not reverse the raw mapping.
+Without Float, water can coexist with Fly or Teleport. With Float, output `0x40`
+is added and both water outputs are removed, while Silent Walk and the selected
+Fly/Teleport output survive.
+
+The result is masked to a byte in the JR delay slot. Return bits `0x01` and
+`0x04` are never produced by this leaf: although masks preserve `0x04`
+syntactically, the zero-initialized local accumulator never sets it. This does
+not assign a broader semantic meaning to those unknown bits.
+
+All 256 values of both movement bytes across the eight combinations of relevant
+status bits were compared with an independent compositional description
+(524,288 cases). Sixteen literal examples retain priority, status overrides,
+water coexistence/clearing, ignored bits and combined movement flags. These are
+offline source checks, not original/C execution or new managed movement support.
+
+Knockback's normal input still returns no Fly, selecting pending kind `0x81`.
+Its effective-Fly test and extra Frog/Chicken check remain as originally written.
+No RNG, stack frame, live movement or unit-data writes occur in this leaf.
+Current runtime admission and owner drafts are unchanged; the existing recorded
+runtime validation was not repeated for this documentation-only milestone.
+
 ## Staged result and failure boundaries
 
 After all parent gates, work byte `0x801938ed` is assigned `0x81` normally.
@@ -217,8 +261,10 @@ physical validation. Flying, general layers/slopes/headroom, mounts, terrain
 and fall damage remain guarded or deferred. Neither source presence nor these
 instruction checks establish full implementation of those domains.
 
-Next useful supplied listing: the outer helper's **Float/Float/Fly movements
-(`0x8017f020`)**, source symbol `move_get_effective_flags`. The conditional
-Chocobo predicate is accounted for but remains deferred for mounting work.
-Map Location Calculation is already source-traced; no duplicate Pass/Fail or
-root BIOS RNG listing is needed.
+This completes the supplied outer-knockback dependency branch for the current
+admitted domain. No additional page is required before returning to ZOD-436's
+actual/preview/AI shared-consumer review. The conditional Chocobo predicate
+remains accounted for but deferred for mounting work. Map Location Calculation
+and the formula RNG helper are source-traced; duplicate Pass/Fail or root BIOS
+RNG listings are not needed. This does not complete the full AI port or broader
+movement/terrain implementation.

@@ -1,0 +1,368 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "be6e047a29a942a651283a4c8a76575dd5032f03",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Supplied effective movement-flags leaf and knockback consumer; no activation of Fly/Float/Teleport/water/mount runtime domains.",
+  "suppliedTextSha256": "f91bafa762780452358b7ede578ce44fc0cabb7ac1b0aa27c1f1aa9c774b5349",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/preparation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 80969,
+      "sha256": "e8ec92c02c53d3715b3813931685399e79481dad0fae6ae27505fbc5d086d444"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/status.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11673,
+      "sha256": "deeaeec02add8b9db7cca91c99517706033b18385ca433d32f1998d9d62e0e83"
+    },
+    {
+      "path": "include/fft/move.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11466,
+      "sha256": "28cb002ca1ab5bf2fe139ffea6e4a71acaef70fe50c9023327439a1465b56fab"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "move_get_effective_flags",
+      "startLine": 1923,
+      "endLine": 1969,
+      "normalizedLfSha256": "2b1d78715a580c8a3ddc1d77dd14709f39c6c63bcd03542a71c8318e74671f19"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "knockback_calculate",
+      "startLine": 99,
+      "endLine": 186,
+      "normalizedLfSha256": "5a7f2614c5426a583669e2a591af966ff3936a39ed9f41e38a11ad62003db9e2"
+    }
+  ],
+  "preparedBattle": {
+    "path": "scratch/fft-decomp-work/build/extracted/files/BATTLE.BIN",
+    "byteLength": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000"
+  },
+  "start": "0x8017f020",
+  "endInclusive": "0x8017f0e8",
+  "instructionCount": 51,
+  "instructionWords": [
+    "9086005a",
+    "90850095",
+    "90840094",
+    "30c20040",
+    "10400002",
+    "00001821",
+    "34a50008",
+    "30c20006",
+    "10400003",
+    "30a20080",
+    "30a500fb",
+    "30a20080",
+    "10400003",
+    "30a20040",
+    "0805fc1b",
+    "34030020",
+    "10400003",
+    "30a20002",
+    "34030010",
+    "30a20002",
+    "10400002",
+    "30a20004",
+    "34630002",
+    "10400003",
+    "3082000c",
+    "0805fc25",
+    "34640080",
+    "10400007",
+    "34640008",
+    "30a20008",
+    "10400012",
+    "00801821",
+    "3082008e",
+    "0805fc39",
+    "34430040",
+    "30a20008",
+    "10400003",
+    "30620006",
+    "0805fc39",
+    "34430040",
+    "30a20080",
+    "10400003",
+    "00000000",
+    "0805fc39",
+    "34630020",
+    "30a20040",
+    "10400002",
+    "00000000",
+    "34630010",
+    "03e00008",
+    "306200ff"
+  ],
+  "allMatched": true,
+  "directCalls": 0,
+  "listedCallers": [
+    {
+      "listed": "0x8006dcb0",
+      "listedKind": "return address",
+      "callPc": "0x8006dca8",
+      "returnAddress": "0x8006dcb0",
+      "matched": true
+    },
+    {
+      "listed": "0x8007d01c",
+      "listedKind": "return address",
+      "callPc": "0x8007d014",
+      "returnAddress": "0x8007d01c",
+      "matched": true
+    },
+    {
+      "listed": "0x8007d1ec",
+      "listedKind": "return address",
+      "callPc": "0x8007d1e4",
+      "returnAddress": "0x8007d1ec",
+      "matched": true
+    },
+    {
+      "listed": "0x80082820",
+      "listedKind": "return address",
+      "callPc": "0x80082818",
+      "returnAddress": "0x80082820",
+      "matched": true
+    },
+    {
+      "listed": "0x8008402c",
+      "listedKind": "return address",
+      "callPc": "0x80084024",
+      "returnAddress": "0x8008402c",
+      "matched": true
+    },
+    {
+      "listed": "0x80086d04",
+      "listedKind": "return address",
+      "callPc": "0x80086cfc",
+      "returnAddress": "0x80086d04",
+      "matched": true
+    },
+    {
+      "listed": "0x80177164",
+      "listedKind": "return address",
+      "callPc": "0x8017715c",
+      "returnAddress": "0x80177164",
+      "matched": true
+    },
+    {
+      "listed": "0x80184584",
+      "listedKind": "call instruction",
+      "callPc": "0x80184584",
+      "returnAddress": "0x8018458c",
+      "matched": true
+    }
+  ],
+  "inputs": {
+    "statusByte": "unit0x5a: Float0x40; Frog/Chicken0x06.",
+    "movementByte3": "unit0x95: Silent Walk0x02, Fly0x04, Float0x08, water inputs0x40/0x80.",
+    "movementByte2": "unit0x94: Teleport/Teleport2 bits0x0c."
+  },
+  "ordering": [
+    "Float status ORs local movement bit0x08.",
+    "Frog or Chicken clears local Fly bit0x04.",
+    "Water input0x80 selects return0x20 before input0x40 selects return0x10; Silent Walk independently adds0x02.",
+    "Effective Fly has priority over Teleport. Either Teleport input bit selects return0x08 when Fly is absent.",
+    "Float adds return0x40 and removes water bits0x30, preserving selected Fly/Teleport and Silent Walk.",
+    "Without Float, Fly/Teleport can coexist with a selected water bit. Return is masked to8 bits in JR delay slot."
+  ],
+  "comparisons": {
+    "movementBytes2And3": "All256*256 raw combinations.",
+    "relevantStatusCombinations": 8,
+    "total": 524288,
+    "observedOutputFlags": [
+      0,
+      2,
+      8,
+      10,
+      16,
+      18,
+      24,
+      26,
+      32,
+      34,
+      40,
+      42,
+      64,
+      66,
+      72,
+      74,
+      128,
+      130,
+      144,
+      146,
+      160,
+      162,
+      192,
+      194
+    ],
+    "literalDescriptions": [
+      {
+        "name": "No abilities or statuses",
+        "statusByte": 0,
+        "movementByte2": 0,
+        "movementByte3": 0,
+        "expectedFlags": 0
+      },
+      {
+        "name": "Silent Walk",
+        "statusByte": 0,
+        "movementByte2": 0,
+        "movementByte3": 2,
+        "expectedFlags": 2
+      },
+      {
+        "name": "Float status injects local Float",
+        "statusByte": 64,
+        "movementByte2": 0,
+        "movementByte3": 0,
+        "expectedFlags": 64
+      },
+      {
+        "name": "Fly",
+        "statusByte": 0,
+        "movementByte2": 0,
+        "movementByte3": 4,
+        "expectedFlags": 128
+      },
+      {
+        "name": "Fly takes priority over Teleport",
+        "statusByte": 0,
+        "movementByte2": 8,
+        "movementByte3": 4,
+        "expectedFlags": 128
+      },
+      {
+        "name": "Frog clears Fly before Teleport choice",
+        "statusByte": 2,
+        "movementByte2": 8,
+        "movementByte3": 4,
+        "expectedFlags": 8
+      },
+      {
+        "name": "Fly and water coexist without Float",
+        "statusByte": 0,
+        "movementByte2": 0,
+        "movementByte3": 132,
+        "expectedFlags": 160
+      },
+      {
+        "name": "Float clears water while retaining Fly and Silent Walk",
+        "statusByte": 0,
+        "movementByte2": 0,
+        "movementByte3": 142,
+        "expectedFlags": 194
+      },
+      {
+        "name": "Teleport retains water without Float",
+        "statusByte": 0,
+        "movementByte2": 8,
+        "movementByte3": 64,
+        "expectedFlags": 24
+      },
+      {
+        "name": "Float status clears water while retaining Teleport",
+        "statusByte": 64,
+        "movementByte2": 8,
+        "movementByte3": 128,
+        "expectedFlags": 72
+      },
+      {
+        "name": "Float clears both water inputs but preserves Silent Walk",
+        "statusByte": 0,
+        "movementByte2": 0,
+        "movementByte3": 202,
+        "expectedFlags": 66
+      },
+      {
+        "name": "Water input0x80 wins over0x40",
+        "statusByte": 0,
+        "movementByte2": 0,
+        "movementByte3": 192,
+        "expectedFlags": 32
+      },
+      {
+        "name": "Frog alone cancels Fly",
+        "statusByte": 2,
+        "movementByte2": 0,
+        "movementByte3": 4,
+        "expectedFlags": 0
+      },
+      {
+        "name": "Frog does not cancel Float",
+        "statusByte": 66,
+        "movementByte2": 0,
+        "movementByte3": 4,
+        "expectedFlags": 64
+      },
+      {
+        "name": "Unconsumed movement3 bits add no output",
+        "statusByte": 0,
+        "movementByte2": 0,
+        "movementByte3": 49,
+        "expectedFlags": 0
+      },
+      {
+        "name": "Either or both Teleport input bits select one output",
+        "statusByte": 0,
+        "movementByte2": 12,
+        "movementByte3": 0,
+        "expectedFlags": 8
+      }
+    ]
+  },
+  "clarifications": [
+    "The eight locations in the return list may be call instructions or return addresses; both are explicitly distinguished in this receipt.",
+    "Pinned decomp names input0x80 MOVE_IN_WATER and maps it to effective ON_WATER0x20; input0x40 WALK_ON_WATER maps to effective IN_WATER0x10. Wiki inline ability labels differ, so preserve raw selectors rather than silently swapping them by name.",
+    "Return bits0x01/0x04 are never generated by this leaf over all checked input classes. Masks preserve bit0x04 syntactically, but the zero-initialized local accumulator never sets it. No general meaning for unknown bits is assigned.",
+    "The apparent local OR/clear operations do not store back to unit statuses or movement abilities."
+  ],
+  "boundaries": [
+    "Leaf with no calls, RNG, stack frame, live movement or unit-data writes. Every hyperlink at the bottom is a caller reference, not another callee.",
+    "Knockback checks only effective Fly0x80 and independently rechecks Frog/Chicken before choosing0x81 or0x82 pending kind. Float alone is insufficient for0x82.",
+    "Current physical runtime remains the ordinary flat/nonflying admitted profile. General movement/terrain/mount behavior is still guarded/deferred.",
+    "This completes this supplied outer-knockback dependency branch without claiming full AI recreation or a broader completed review group. No more helper listing is required before returning to the ZOD-436 shared-consumer review."
+  ],
+  "validation": {
+    "referenceClean": true,
+    "ownerBlobsVerified": 10,
+    "ownerApprovedCiEdit": {
+      "path": ".circleci/config.yml",
+      "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+      "committed": true,
+      "ciEnabledDefault": false
+    },
+    "runtimeChanged": false,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "runtimeTestsRerun": false,
+    "previousRuntimeValidationReceipt": "docs/evidence/combat/attack-up-martial-arts-trace-v1.json"
+  }
+}
