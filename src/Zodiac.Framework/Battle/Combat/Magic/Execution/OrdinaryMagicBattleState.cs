@@ -31,10 +31,16 @@ public sealed class OrdinaryMagicBattleState
         LearningReport = learningReport;
     }
 
-    internal OrdinaryMagicBattleState With(ImmutableArray<OrdinaryMagicUnitState>? units = null,
-        TurnCycleState? turns = null, ImmutableDictionary<BattleUnitId, PendingMagicCast>? pending = null,
-        OrdinaryMagicClockPhase? phase = null, ulong? revision = null, bool? finished = null, bool? fallen = null,
-        OrdinaryMagicLearningReport? learningReport = null, bool clearLearningReport = false) =>
+    internal OrdinaryMagicBattleState With(
+        ImmutableArray<OrdinaryMagicUnitState>? units = null,
+        TurnCycleState? turns = null,
+        ImmutableDictionary<BattleUnitId,PendingMagicCast>? pending = null,
+        OrdinaryMagicClockPhase? phase = null,
+        ulong? revision = null,
+        bool? finished = null,
+        bool? fallen = null,
+        OrdinaryMagicLearningReport? learningReport = null,
+        bool clearLearningReport = false) =>
         new(Definition, units ?? Units, turns ?? Turns, pending ?? Pending, phase ?? ClockPhase,
             revision ?? Revision, finished ?? Finished, fallen ?? PlayerUnitFallen,
             clearLearningReport ? null : learningReport ?? LearningReport);
