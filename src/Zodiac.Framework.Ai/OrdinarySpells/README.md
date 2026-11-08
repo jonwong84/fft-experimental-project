@@ -1,5 +1,13 @@
 # Ordinary spell AI pathway
 
+For fresh move-only D0/D1, baseline rank and priority-write diagnostics, start
+with [OrdinarySpellAiMovementQuery.Evaluate](OrdinarySpellAiMovementQuery.cs).
+Follow `DecisionFlagsRefresh`, `ScenariosBuild`, `ReachableTilesScore` and
+`RankBaselineSeed`; shared geometry, clocks/scoring and `AiScenarioLayout` own
+their existing rules. The certified offensive domain and remaining gates are
+in [ZOD-437](../../../docs/behavior/ordinary-spell-movement-baselines.md).
+This query does not evaluate spells from moved origins or issue commands.
+
 For one spell's evaluated best at the current origin, start with
 [OrdinarySpellAiSearchQuery.Evaluate](OrdinarySpellAiSearchQuery.cs). It freshly
 enumerates, narrows each pass's useful mask, simulates in order with one decision

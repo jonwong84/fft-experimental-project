@@ -22,6 +22,15 @@ public static class OrdinarySpellAiClock
 
     public static OrdinarySpellAiClockResult Run(ImmutableArray<OrdinarySpellAiClockUnit> input, BattleUnitId actorId,
         byte chargeCounter, ulong initialTicks, RandomState entryRng)
+        => RunCore(input, actorId, chargeCounter, initialTicks, entryRng, moveOnly: false);
+
+    /// <summary>One effect-free event after turn_end, retaining the unused-ACT refund.</summary>
+    internal static OrdinarySpellAiClockResult RunMoveOnly(ImmutableArray<OrdinarySpellAiClockUnit> input,
+        BattleUnitId actorId, ulong initialTicks, RandomState entryRng)
+        => RunCore(input, actorId, 0, initialTicks, entryRng, moveOnly: true);
+
+    private static OrdinarySpellAiClockResult RunCore(ImmutableArray<OrdinarySpellAiClockUnit> input, BattleUnitId actorId,
+        byte chargeCounter, ulong initialTicks, RandomState entryRng, bool moveOnly)
     {
         OrdinarySpellAiClockResult Reject(OrdinarySpellAiClockRejection reason) => new(false, reason, null, entryRng);
         if (input.IsDefaultOrEmpty || input.Length > 21 || chargeCounter > 127 ||
@@ -32,10 +41,12 @@ public static class OrdinarySpellAiClock
             return Reject(OrdinarySpellAiClockRejection.UnsupportedContext);
         var units = input.OrderBy(u => u.SourceOrder).ToArray();
         int actorIndex = Array.FindIndex(units, u => u.UnitId == actorId);
-        if (actorIndex < 0 || units[actorIndex].Dead || units[actorIndex].Ct >= 100 || !units[actorIndex].ActionTaken)
+        if (actorIndex < 0 || units[actorIndex].Dead || units[actorIndex].Ct >= 100 ||
+            !moveOnly && !units[actorIndex].ActionTaken)
             return Reject(OrdinarySpellAiClockRejection.UnsupportedContext);
         var actor = units[actorIndex];
-        units[actorIndex] = actor with { Ct = Math.Min(60, actor.Ct + (actor.MovementTaken ? 0 : 20)) };
+        units[actorIndex] = actor with { Ct = Math.Min(60, actor.Ct + (actor.MovementTaken ? 0 : 20) +
+            (actor.ActionTaken ? 0 : 20)) };
         ulong ticks = initialTicks;
         var rng = entryRng;
         byte remaining = chargeCounter;

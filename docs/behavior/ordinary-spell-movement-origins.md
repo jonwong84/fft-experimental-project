@@ -5,6 +5,10 @@ This study traces the movement callers around the existing
 source milestone and selects ZOD-437, fresh ordinary-spell movement baseline
 diagnostics. It adds no runtime search, command authority or autonomous magic.
 
+The subsequent [ZOD-437 implementation](ordinary-spell-movement-baselines.md)
+now derives bounded fresh offensive movement baselines and priority writes.
+Cast-origin enumeration and moved-origin spell evaluation remain separate.
+
 The managed baseline is `700276a426b622d50d5075300c6aff049cd680da`. The clean,
 read-only decompilation is pinned to
 `11464943bbdbd2a0af022d90cb7f10455cf911df`. The

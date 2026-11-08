@@ -17,9 +17,11 @@ Use it to place each bounded child within the overall algorithm.
 
 The [ordinary spell origin study](../behavior/ordinary-spell-movement-origins.md)
 now traces ranked/exhaustive origins, ACT-first destination substitution,
-baseline widths, remaining aims and per-origin exits. ZOD-437 will derive fresh
-movement baseline diagnostics before moved-origin casting. This source milestone
-does not complete spell search, autonomous magic or the review gates below.
+baseline widths, remaining aims and per-origin exits. The
+[movement baseline query](../behavior/ordinary-spell-movement-baselines.md) now
+derives fresh offensive D0/D1, ranks and priority provenance through shared
+clocks/scoring. ZOD-438 will enumerate potential cast origins before moved-origin
+casting. Spell decisions, autonomous magic and the review gates remain open.
 
 ## Required readability review after the full port
 

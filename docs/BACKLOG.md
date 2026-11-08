@@ -4,7 +4,7 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-437 (fresh ordinary spell movement baseline diagnostics), supporting the ongoing AI/review programme.**
+**Next bounded work: ZOD-438 (fresh ordinary spell cast-origin enumeration), supporting the ongoing AI/review programme.**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 [Learning reports, owned slots and player casting](behavior/learn-on-hit.md)
@@ -57,14 +57,16 @@ confirms admitted authority, choice publication and recovery without a new defec
 shared arithmetic/evasion/routing and extracts named routine methods without a new
 gameplay defect. [ZOD-426 movement-origin study](behavior/ordinary-spell-movement-origins.md)
 now traces origin order, destination substitution, baseline admission, remaining
-aims and RNG, selecting ZOD-437 before multi-origin casting.
+aims and RNG. [ZOD-437 movement baselines](behavior/ordinary-spell-movement-baselines.md)
+now derive fresh offensive D0/D1, ranks, priority writes and one decision RNG.
+Cast-origin enumeration is next; multi-origin casting remains separate.
 ZOD-432 records the required readability review after the full AI port.
 The owner's interim [routine ownership refactor](architecture/ai-routine-ownership.md)
 now exposes named methods matching the supported decision flow: `ActionSelect`,
 `GeneralSelect`, scenario/ability/rank/fallback work, and ordinary spell
 `AiActionSimulateAndScore` / `ActionHitsSimulate` / `StrikesSimulate`.
 It preserves current admission and does not close the remaining AI review work.
-There are 36 open tickets below. The 401 completed tickets, prior checkpoints and
+There are 36 open tickets below. The 402 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -88,24 +90,26 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-437 — Derive fresh ordinary spell movement baseline diagnostics
+### ZOD-438 — Enumerate fresh ordinary spell cast origins
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-425, ZOD-426
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-424, ZOD-426, ZOD-437
 
-Follow the [ZOD-426 source study](behavior/ordinary-spell-movement-origins.md).
-Derive move-only baseline diagnostics for a fresh, definition-bound ordinary
-spell actor/owned slot in the certified dry flat lower-layer domain. Reuse
-preparation, isolated movement simulation, shared clocks and absolute scoring;
-carry one decision RNG and restore input state. Expose D0 and scenario
-destinations separately, baseline signed16 negation/hit100, foe proximity and
-explicit fresh priority writes. Unknown/unread workspace cells must not become
-zero or invented scores. Use named booleans for understood independent flags
-and recognizable routine methods. Add source-literal scenarios for ties,
-baseline widths, occupancy, RNG continuation and atomic rejection.
+Follow the [ZOD-426 source study](behavior/ordinary-spell-movement-origins.md) and
+[fresh ZOD-437 baselines](behavior/ordinary-spell-movement-baselines.md). Derive
+potential pass-specific cast origins from one internally owned fresh movement
+query, initialized spell usage and useful-target masks in the certified offensive
+flat lower-layer domain. Keep reachable origins separate from walkable aims;
+derive unit range versus tile range-plus-area masks before selectable range
+intersection. Preserve ranked/exhaustive order, reverse coordinate ties and
+ACT-first scenario-destination substitution. Require known fresh priority for
+every ranked read, reject unread/unknown values and unsigned-byte count aliases,
+and retain one RNG stream with atomic rejection. Test source-literal masks,
+origin/destination differences, occupancy, ties and provenance failures.
 
-Keep retained caller workspaces and casting from moved origins for later
-children. Do not activate broad movement search, full ability-list dispatch,
-ranked-list insertion/lottery, commands or autonomous magic turns here.
+This is potential enumeration only. Keep retained workspaces, moved-origin
+formula evaluation/aim consumption, broad dispatch, list insertion/lottery,
+commands and autonomous magic for later children. Do not accept caller-supplied
+cached movement outcomes or turn diagnostics into executable authority.
 
 Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
 Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.

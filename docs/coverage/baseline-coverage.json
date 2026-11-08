@@ -1858,7 +1858,9 @@
         "docs/development/framework-public-type-files.md",
         "docs/evidence/maintenance/framework-public-type-files-v1.json",
         "docs/behavior/ordinary-spell-movement-origins.md",
-        "docs/evidence/ai/spell-movement-origins-source-v1.json"
+        "docs/evidence/ai/spell-movement-origins-source-v1.json",
+        "docs/behavior/ordinary-spell-movement-baselines.md",
+        "docs/evidence/ai/spell-movement-baselines-implementation-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -2029,7 +2031,8 @@
         "src/Zodiac.Content/Definitions/TargetedAbilityDefinition.cs",
         "src/Zodiac.Content/ContentPackages/TargetedAbilityContentPackage.cs",
         "src/Zodiac.Content/BattleSetup/TargetedAbilityBattleSetup.cs",
-        "src/Zodiac.AssetTool.Cli/OriginalTargetedAbilityImporter.cs"
+        "src/Zodiac.AssetTool.Cli/OriginalTargetedAbilityImporter.cs",
+        "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiMovementQuery.cs"
       ],
       "automatedChecks": [
         {
@@ -2491,6 +2494,10 @@
         {
           "path": "tools/verification/test_spell_movement_origins.py",
           "scope": "Source-only origin order, destinations, baseline widths, masks and supplied cross-origin iteration; no runtime/original execution."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiMovementTests.cs",
+          "scope": "Fresh offensive D0/D1, baseline widths, priority provenance, occupancy, move-only CT/RNG, atomic rejection and replay."
         }
       ],
       "manualCheckpoint": {
@@ -2503,10 +2510,10 @@
         "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
         "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Derive fresh ordinary-spell movement baseline diagnostics under ZOD-437 before moved-origin casting; broader policies, autonomous magic and full AI review remain separate.",
+      "nextAction": "Enumerate fresh ordinary-spell cast origins under ZOD-438 with known priority reads before moved-origin casting; broader policies, autonomous magic and full AI review remain separate.",
       "followUpTickets": [
         "ZOD-329",
-        "ZOD-437"
+        "ZOD-438"
       ]
     },
     {
