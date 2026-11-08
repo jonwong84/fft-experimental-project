@@ -1868,7 +1868,9 @@
         "docs/behavior/ordinary-spell-pass-search.md",
         "docs/evidence/ai/spell-pass-search-implementation-v1.json",
         "docs/behavior/ordinary-spell-ability-search.md",
-        "docs/evidence/ai/spell-ability-search-implementation-v1.json"
+        "docs/evidence/ai/spell-ability-search-implementation-v1.json",
+        "docs/behavior/ordinary-spell-list-integration.md",
+        "docs/evidence/ai/spell-list-integration-source-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -2528,6 +2530,10 @@
         {
           "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiAbilitySearchTests.cs",
           "scope": "One fresh slot/scenario caller: unit/tile order and mask resets, shared best and RNG, recipient versus useful membership, cross-pass rank/proximity ties, nonvaluable/unresolved continuation, final baseline gate and atomic late rollback."
+        },
+        {
+          "path": "tools/verification/test_spell_list_integration.py",
+          "scope": "Twenty source-only human list/entry order, usage phase, general scenario sequence and ranked insertion descriptions; capacity/sentinel, stable duplicates, opaque bits and unknown/tampered input rejection. No managed runtime expansion."
         }
       ],
       "manualCheckpoint": {
@@ -2540,10 +2546,10 @@
         "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
         "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Trace fresh ordinary spell list/scenario integration under ZOD-442 before its next bounded runtime child; full dispatch/insertion, autonomous magic and full AI review remain separate.",
+      "nextAction": "Introduce the validated ordinary spell query context under ZOD-443; complete list/Attack integration, ranked insertion/lottery, autonomous magic and full AI review remain separate.",
       "followUpTickets": [
         "ZOD-329",
-        "ZOD-442"
+        "ZOD-443"
       ]
     },
     {

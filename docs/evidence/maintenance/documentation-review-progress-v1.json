@@ -399,7 +399,7 @@
     }
   ],
   "fullyReviewedGroups": [],
-  "nextBatch": "ZOD-442",
+  "nextBatch": "ZOD-443",
   "overallBehaviorReviewCompleted": false,
   "supportingSourceStudies": [
     {
@@ -407,6 +407,12 @@
       "report": "docs/behavior/ordinary-spell-movement-origins.md",
       "receipt": "docs/evidence/ai/spell-movement-origins-source-v1.json",
       "disposition": "Source-only origin/baseline study; selects ZOD-437. No full review group or runtime spell search is completed."
+    },
+    {
+      "ticket": "ZOD-442",
+      "report": "docs/behavior/ordinary-spell-list-integration.md",
+      "receipt": "docs/evidence/ai/spell-list-integration-source-v1.json",
+      "disposition": "Source-only list/scenario/ranked ownership and context lifetime study; selects ZOD-443. No runtime expansion or full review group completed."
     }
   ],
   "supportingRuntimeMilestones": [

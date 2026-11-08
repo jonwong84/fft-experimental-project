@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-442",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "originalExecuted": false,
+  "cExecuted": false,
+  "runtimeImplemented": false,
+  "scope": "Source-only clean ordinary-human list descriptions, supplied caller facts and supplied best-rank tapes. No formulas, full policy dispatch, C/C# execution or retail equivalence oracle.",
+  "lists": [
+    {
+      "id": "attack-primary-secondary-frog-with-duplicate-ability",
+      "input": {"cleanDefaultHuman": true, "maxMp": 20, "halfMp": false,
+        "primary": [[8,52,true,true,21],[4,0,true,true,0],[1,47,true,true,6],[2,48,false,true,8],[3,49,true,false,8]],
+        "secondary": [[5,47,true,true,6]]},
+      "expected": {"entries": ["attack","primary:1:47","secondary:5:47","frog"], "terminatorWritten": true}
+    },
+    {
+      "id": "maximum-mp-admission-with-half-mp",
+      "input": {"cleanDefaultHuman": true, "maxMp": 10, "halfMp": true,
+        "primary": [[0,8,true,true,21],[1,9,true,true,22]], "secondary": []},
+      "expected": {"entries": ["attack","primary:0:8","frog"], "terminatorWritten": true}
+    },
+    {
+      "id": "full-human-list-needs-capacity-bound-without-terminator",
+      "input": {"cleanDefaultHuman": true, "maxMp": 0, "halfMp": false,
+        "primary": [[0,8,true,true,0],[1,9,true,true,0],[2,10,true,true,0],[3,11,true,true,0],[4,12,true,true,0],[5,13,true,true,0],[6,14,true,true,0],[7,15,true,true,0],[8,16,true,true,0],[9,17,true,true,0],[10,18,true,true,0],[11,19,true,true,0],[12,20,true,true,0],[13,21,true,true,0],[14,22,true,true,0],[15,23,true,true,0]],
+        "secondary": [[0,24,true,true,0],[1,25,true,true,0],[2,26,true,true,0],[3,27,true,true,0],[4,28,true,true,0],[5,29,true,true,0],[6,30,true,true,0],[7,31,true,true,0],[8,32,true,true,0],[9,33,true,true,0],[10,34,true,true,0],[11,35,true,true,0],[12,36,true,true,0],[13,37,true,true,0],[14,38,true,true,0],[15,39,true,true,0]]},
+      "expected": {"entries": ["attack","primary:0:8","primary:1:9","primary:2:10","primary:3:11","primary:4:12","primary:5:13","primary:6:14","primary:7:15","primary:8:16","primary:9:17","primary:10:18","primary:11:19","primary:12:20","primary:13:21","primary:14:22","primary:15:23","secondary:0:24","secondary:1:25","secondary:2:26","secondary:3:27","secondary:4:28","secondary:5:29","secondary:6:30","secondary:7:31","secondary:8:32","secondary:9:33","secondary:10:34","secondary:11:35","secondary:12:36","secondary:13:37","secondary:14:38","secondary:15:39","frog"], "terminatorWritten": false}
+    }
+  ],
+  "walks": [
+    {
+      "id": "zero-ability-is-attack-not-terminator-and-unusable-entry-is-loaded",
+      "input": {"rows": [[1,3072,true],[11,3119,false],[169,3439,true],[255,null,null],"unread-tail"]},
+      "expected": {"loaded": [[1,0,3],[11,47,3],[169,367,3]], "eligible": [true,false,true], "outcomeCalls": 3, "termination": "sentinel"}
+    },
+    {
+      "id": "empty-sentinel-ignores-payload-and-following-storage",
+      "input": {"rows": [[255,null,null],"unread-tail"]},
+      "expected": {"loaded": [], "eligible": [], "outcomeCalls": 0, "termination": "sentinel"}
+    },
+    {
+      "id": "sparse-physical-slot-packing-is-not-compact-list-index",
+      "input": {"rows": [[11,20527,true],[255,null,null]]},
+      "expected": {"loaded": [[11,47,20]], "eligible": [true], "outcomeCalls": 1, "termination": "sentinel"}
+    }
+  ],
+  "usages": [
+    {
+      "id": "init-clears-low-three-and-preserves-opaque-high-bits",
+      "input": {"raw":255,"trajectory":false,"exhaustiveShape":false,"range":4,"area":1,"secondaryEvadeable":true,"cannotHitCaster":false,"canHitEnemies":false,"usableNow":true,"ct":2,"actorDelay":10,"selfEffectNone":false,"actionTaken":false},
+      "expected": {"initialized":248,"completed":248}
+    },
+    {
+      "id": "trajectory-skips-init-derivation-but-usable-deadline-completion-still-applies",
+      "input": {"raw":255,"trajectory":true,"exhaustiveShape":false,"range":1,"area":1,"secondaryEvadeable":true,"cannotHitCaster":true,"canHitEnemies":true,"usableNow":true,"ct":10,"actorDelay":10,"selfEffectNone":false,"actionTaken":false},
+      "expected": {"initialized":248,"completed":249}
+    },
+    {
+      "id": "exhaustive-shape-preserves-residual-bit4",
+      "input": {"raw":17,"trajectory":false,"exhaustiveShape":true,"range":4,"area":1,"secondaryEvadeable":true,"cannotHitCaster":false,"canHitEnemies":false,"usableNow":true,"ct":20,"actorDelay":10,"selfEffectNone":true,"actionTaken":false},
+      "expected": {"initialized":20,"completed":148}
+    },
+    {
+      "id": "short-evadeable-takes-exhaustive-before-force-consumption",
+      "input": {"raw":0,"trajectory":false,"exhaustiveShape":false,"range":1,"area":1,"secondaryEvadeable":true,"cannotHitCaster":true,"canHitEnemies":true,"usableNow":true,"ct":0,"actorDelay":10,"selfEffectNone":false,"actionTaken":false},
+      "expected": {"initialized":4,"completed":132}
+    },
+    {
+      "id": "already-acted-clears-usability-after-force-completion",
+      "input": {"raw":0,"trajectory":false,"exhaustiveShape":false,"range":4,"area":0,"secondaryEvadeable":true,"cannotHitCaster":false,"canHitEnemies":false,"usableNow":true,"ct":0,"actorDelay":10,"selfEffectNone":false,"actionTaken":true},
+      "expected": {"initialized":2,"completed":3}
+    },
+    {
+      "id": "unusable-entry-keeps-force-without-completing-consume",
+      "input": {"raw":128,"trajectory":false,"exhaustiveShape":false,"range":4,"area":1,"secondaryEvadeable":true,"cannotHitCaster":false,"canHitEnemies":true,"usableNow":false,"ct":20,"actorDelay":10,"selfEffectNone":false,"actionTaken":false},
+      "expected": {"initialized":130,"completed":2}
+    }
+  ],
+  "general": [
+    {
+      "id": "general-main-list-and-main-baseline-fallback-have-distinct-scenarios",
+      "input": {"chargingSelected":false,"hasTargets":true,"lotterySelected":false},
+      "expected": {"events":["scenarios:1","baseline:0","keep-charging:1","targets:any:1","list:1","lottery","fallback:0"],"listScenarios":[1],"baselineScenario":0,"fallbackScenario":0,"scenarioBuilds":1}
+    },
+    {
+      "id": "charging-selection-exits-before-list-and-lottery",
+      "input": {"chargingSelected":true,"hasTargets":true,"lotterySelected":false},
+      "expected": {"events":["scenarios:1","baseline:0","keep-charging:1"],"listScenarios":[],"baselineScenario":0,"fallbackScenario":null,"scenarioBuilds":1}
+    },
+    {
+      "id": "no-active-targets-still-reaches-lottery-before-fallback",
+      "input": {"chargingSelected":false,"hasTargets":false,"lotterySelected":false},
+      "expected": {"events":["scenarios:1","baseline:0","keep-charging:1","targets:any:1","lottery","fallback:0"],"listScenarios":[],"baselineScenario":0,"fallbackScenario":0,"scenarioBuilds":1}
+    },
+    {
+      "id": "successful-lottery-does-not-run-complement-or-fallback",
+      "input": {"chargingSelected":false,"hasTargets":true,"lotterySelected":true},
+      "expected": {"events":["scenarios:1","baseline:0","keep-charging:1","targets:any:1","list:1","lottery"],"listScenarios":[1],"baselineScenario":0,"fallbackScenario":null,"scenarioBuilds":1}
+    }
+  ],
+  "insertions": [
+    {
+      "id": "equal-baseline-cannot-enter-by-proximity-and-best-always-resets",
+      "input": {"baseline":[0,16,100],"bests":[["equal",0,16,100,0],["higher",0,17,0,9]]},
+      "expected": {"slots":["higher",null,null,null,null,null,null,null],"indices":[null,0],"bestResets":2,"insertionDraws":0}
+    },
+    {
+      "id": "exact-ties-are-stable-and-both-entries-remain-when-space-exists",
+      "input": {"baseline":[0,0,100],"bests":[["first",0,20,100,4],["second",0,20,100,4],["closer",0,20,100,3],["higher-hit",0,20,255,9]]},
+      "expected": {"slots":["higher-hit","closer","first","second",null,null,null,null],"indices":[0,1,0,0],"bestResets":4,"insertionDraws":0}
+    },
+    {
+      "id": "full-tail-must-be-beaten-before-any-shift",
+      "input": {"baseline":[0,0,100],"bests":[["a",0,18,100,4],["b",0,17,100,4],["c",0,16,100,4],["d",0,15,100,4],["e",0,14,100,4],["f",0,13,100,4],["g",0,12,100,4],["h",0,11,100,4],["equal-tail",0,11,100,4],["improved-tail",0,11,100,3]]},
+      "expected": {"slots":["a","b","c","d","e","f","g","improved-tail"],"indices":[0,1,2,3,4,5,6,7,null,7],"bestResets":10,"insertionDraws":0}
+    },
+    {
+      "id": "hit255-beats-equal-priority-hit100-baseline",
+      "input": {"baseline":[0,-10,100],"bests":[["unresolved",0,-10,255,8]]},
+      "expected": {"slots":["unresolved",null,null,null,null,null,null,null],"indices":[0],"bestResets":1,"insertionDraws":0}
+    }
+  ]
+}

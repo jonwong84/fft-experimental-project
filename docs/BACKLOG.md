@@ -4,7 +4,7 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-442 (trace fresh spell list/scenario integration), supporting the ongoing AI/review programme.**
+**Next bounded work: ZOD-443 (introduce the validated ordinary spell query context), supporting the ongoing AI/review programme.**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 [Learning reports, owned slots and player casting](behavior/learn-on-hit.md)
@@ -69,14 +69,17 @@ self-hit consumption, unresolved continuation and final-destination ties.
 [ZOD-441 ability search](behavior/ordinary-spell-ability-search.md) now composes
 one owned offensive slot/scenario's caller passes with fresh masks, shared best
 and RNG, and a final baseline gate. Full list/scenario dispatch and insertion
-remain separate.
+remain separate. [ZOD-442 integration study](behavior/ordinary-spell-list-integration.md)
+now maps original list families/order, per-entry usage/loading, general scenario1
+dispatch, scenario0 baseline/fallback, ranked ownership and the agreed context
+lifetime. It selects the bounded ZOD-443 API refactor without activating dispatch.
 ZOD-432 records the required readability review after the full AI port.
 The owner's interim [routine ownership refactor](architecture/ai-routine-ownership.md)
 now exposes named methods matching the supported decision flow: `ActionSelect`,
 `GeneralSelect`, scenario/ability/rank/fallback work, and ordinary spell
 `AiActionSimulateAndScore` / `ActionHitsSimulate` / `StrikesSimulate`.
 It preserves current admission and does not close the remaining AI review work.
-There are 36 open tickets below. The 406 completed tickets, prior checkpoints and
+There are 36 open tickets below. The 407 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -100,34 +103,33 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-442 — Trace fresh ordinary spell list/scenario integration
+### ZOD-443 — Introduce the validated ordinary spell query context
 
-**Type:** Study · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-426, ZOD-441
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-441, ZOD-442
 
-Owner-approved API direction: identify a narrow immutable context that pairs the
-current battle state with its matching definition-bound catalog. Keep actor,
-slot, scenario and supported-profile declaration in the request, with RNG passed
-explicitly. Establish context lifetime and validation in the enclosing decision
-flow before choosing a bounded refactor; retain fresh admission and reject
-mismatched definitions without accepting cached candidates or ranks.
+Implement the owner-approved [context boundary](behavior/ordinary-spell-list-integration.md#agreed-context-and-next-implementation)
+for the one-slot ability caller. Use a narrow immutable object pairing the
+captured `OrdinaryMagicBattleState` and its `OrdinarySpellAiCatalog`, rejecting
+null/mismatched definition references. Move the supported-profile declaration
+into the request beside actor/slot/scenario and expose
+`Evaluate(context, request, rng)`. Keep RNG explicit in both input and result.
 
-Trace `general_select`, `ability_list_evaluate`, `ai_ability_entry_load`,
-`ai_ability_outcome_evaluate`, scenario sequencing and `ai_best_rank_insert`
-against the pinned read-only reference. Map the existing fresh ordinary spell
-caller and shared rank owners to their enclosing original ownership: initialized
-list/slot order and terminators, movement/target preparation reuse, Main/Complement
-entry conditions, considered-usage resets, best/ranked reset and insertion
-boundaries, movement-baseline participation and RNG continuity. Include implicit
-Attack and other list families explicitly in the disposition; do not equate an
-owned spell subset with the complete original ability list.
+The context owns raw captured inputs only. Preserve fresh per-call actor, phase,
+learning/slot, current MP and profile admission, private hypotheses, whole-entry
+RNG rejection and immutable replay. Store no prepared work, list/mask/rank caches,
+RNG progress or command authority in the public context. New live state requires
+a new context; old contexts remain valid for pure old-snapshot replay.
+Migrate this caller and local call sites, preserve owner formatting and all
+existing candidate/pass/ability results, and add meaningful context identity,
+lifetime, null/profile and failed-query preservation regressions. State the
+constructor/factory failure contract explicitly. This is an API refactor, not
+list/scenario dispatch or gameplay expansion; keep other query migrations and
+shared full-list preparation as separately scoped work.
 
-Produce independently checkable source/literal ordering and rank-insertion
-descriptions, identify unsupported reads and choose a bounded next runtime child.
-Reuse existing insertion/lottery owners where appropriate; do not activate full
-dispatch, commands or a broad new interface in this source-study ticket.
-Mixed/healer/useful-self/Reflect paths, retained workspaces and broader geometry/
-statuses retain their gates. Owner drafts/JobStats, Knight slot mapping, editor,
-automatic facing, full corpse/Golem/terminal/frame RNG, ZOD-106 and cone stay separate.
+Full mixed lists/Attack integration, ranked insertion/lottery, commands,
+useful-self/healer/Reflect paths and retained workspaces keep their gates.
+Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, broad
+interfaces, full corpse/Golem/terminal/frame RNG, ZOD-106 and cone stay separate.
 
 ## Review programme
 

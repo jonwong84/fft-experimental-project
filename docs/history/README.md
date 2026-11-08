@@ -21,7 +21,9 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 406 entries index completed bounded work; they do not mean the full game is complete.
+These 407 entries index completed bounded work; they do not mean the full game is complete.
+
+- [ZOD-442 — Trace fresh ordinary spell list/scenario integration](../behavior/ordinary-spell-list-integration.md)
 
 - [ZOD-441 — Compose one fresh ordinary spell's caller passes](../behavior/ordinary-spell-ability-search.md)
 

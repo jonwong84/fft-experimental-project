@@ -29,9 +29,11 @@ one fresh selected pass with remaining aims/RNG, proven adverse-self consumption
 unresolved continuation and final-destination ties. The
 [ability caller query](../behavior/ordinary-spell-ability-search.md) now composes
 one owned offensive slot/scenario's passes with fresh masks, shared best/RNG and
-the final baseline gate. ZOD-442 next traces fresh list/scenario integration and
-ranked ownership before a bounded runtime child. Full spell decisions,
-autonomous magic and the review gates remain open.
+the final baseline gate. The [integration study](../behavior/ordinary-spell-list-integration.md)
+now maps original lists, current usage/loading, general scenario1 versus baseline0,
+rank insertion/reset and a narrow raw-input context. ZOD-443 next implements that
+context API for the ability caller. Full spell decisions, autonomous magic and
+the review gates remain open.
 
 ## Required readability review after the full port
 

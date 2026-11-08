@@ -6,20 +6,22 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-441 is complete. Next: ZOD-442, trace fresh spell list/scenario integration.**
-Read [BACKLOG.md](BACKLOG.md), the
-[origin study](behavior/ordinary-spell-movement-origins.md) and
-[ability caller](behavior/ordinary-spell-ability-search.md).
-Trace the enclosing list/scenario entry, preparation reuse, rank insertion/reset
-and implicit Attack ownership before choosing the next bounded runtime child.
-Full dispatch/lottery/commands stay separate.
+**ZOD-442 is complete. Next: ZOD-443, introduce the validated spell query context.**
+Read [BACKLOG.md](BACKLOG.md) and the
+[list/scenario integration study](behavior/ordinary-spell-list-integration.md).
+Implement the owner-approved narrow immutable state/catalog context, request-owned
+actor/slot/scenario/profile and explicit RNG for the one-slot ability caller:
+`Evaluate(context, request, rng)`. Context validates matching definition identity;
+all current per-call admission and private simulation remain. No public prepared
+work, rank/mask caches or command authority. Preserve the owner's review edits.
 
-Owner-approved API direction for ZOD-442: pair current battle state and its
-matching catalog in a narrow immutable context; keep actor/slot/scenario and
-supported-profile declaration in the request, and pass RNG explicitly. Determine
-the context's lifetime/validation from the enclosing flow before the bounded
-refactor. Preserve the owner's ongoing review edits to the ability query and
-battle state; the current five-argument API remains in place during this study.
+The study confirms general ability evaluation runs scenario1 once; scenario0
+owns the move-only baseline/fallback. Complement is a diagnostic mask, not an
+automatic second general list. Original lists include Attack, primary, secondary
+and Frog; current spell rows are a subset. Initialization, current usability and
+entry loading have distinct ownership. Ranked insertion resets best even on a
+failed gate and retains stable duplicate ranks when space remains. Full dispatch,
+ranked insertion/lottery and command integration remain separate.
 
 Start one-slot/scenario caller search at
 `src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAbilitySearchQuery.cs`.
@@ -35,13 +37,15 @@ restore between hypotheses and late rejection restores the entire entry RNG.
 Standalone pass and single-origin queries retain their previous contracts.
 
 Latest validation: zero-warning/error Release build, **5,263 .NET tests**
-(1,835 Framework, 1,458 AI) and **802 Python tests** pass. Sixteen new managed
-cases cover pass order/mask rebuilds, shared best/RNG, deadline versus recipient
-membership, later damage/proximity improvements, exact ties, nonvaluable and
-unresolved continuation, early/empty returns, final baseline gate and rollback.
-Logs and seven TRX reports are under ignored `scratch/zod441-*`. The
-[receipt](evidence/ai/spell-ability-search-implementation-v1.json) pins source
-and preservation. Coverage remains 58 validated planning entries and partial.
+(1,835 Framework, 1,458 AI) and **810 Python tests** pass. Eight new Python tests
+validate twenty source-only list, usage, caller and insertion descriptions,
+boundaries and tamper rejection. ZOD-442 changes no managed runtime behavior.
+The owner's two pending query/battle-state review edits remain byte-for-byte
+preserved and uncommitted. Logs and seven TRX reports are in ignored
+`scratch/zod442-*`; the [receipt](evidence/ai/spell-list-integration-source-v1.json)
+pins source, descriptions and preservation. Coverage remains 58 validated planning
+entries and partial. ZOD-443 is the context API implementation, not part of the
+completed source study.
 
 The owner's concurrent controller formatting is preserved exactly in separate
 commit `0e868ac`; its non-whitespace text is unchanged. Current
@@ -84,7 +88,7 @@ until explicitly re-enabled; current validation is local.
 The [review programme](development/documentation-review-programme.md) and
 [progress receipt](evidence/maintenance/documentation-review-progress-v1.json)
 record completed bounded batches through ZOD-436, the supporting ZOD-426
-study and bounded ZOD-437–441 implementations. ZOD-428 and complete inventory groups remain open. Prior helper
+study, bounded ZOD-437–441 implementations and the ZOD-442 integration study. ZOD-428 and complete inventory groups remain open. Prior helper
 cross-checks and annotation corrections live
 in their behavior/evidence notes; use [history](history/README.md) for completed
 ticket checkpoints, not old next-task advice.
