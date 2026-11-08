@@ -129,9 +129,14 @@ words, four calls, 17 direct callers and formula0x38 dispatch. Branch precedence
 mode conversion, in-place Separate work, threshold24 and Invite effect0x0040
 are recorded. Signed LH accuracy division agrees with the decomp s16 field;
 the preserving wrapper's unsigned saved copy retains the original bits.
-General status implementation remains separate. Validate Status Changes at
-0x80184b24 is the next useful listing; root RNG evidence already exists.
-ZOD-436 remains open.
+Validate Status Changes matches 199 words/12 callers and has no calls/RNG.
+The attachment's Modify Status Inflictions link labels alternative annotations
+for that same routine. Its rider/Frog/mask/ordered-cancellation work and byte-sum
+return agree with pinned source. Runtime check-set row6 is derived from prepared
+records and the pinned initializer, rather than read as initialized SCUS data.
+Eleven offline descriptions pass. General status implementation stays separate;
+no more helper listing is needed for current empty-record admission. Resume the
+ZOD-436 actual/preview/AI consumer review; the ticket remains open.
 The owner-approved `.circleci/config.yml` gate is committed: CircleCI is intentionally
 paused by default through the `ci-enabled: false` workflow gate, with existing
 jobs/filters retained. Re-enabling is a later owner decision. Continue local

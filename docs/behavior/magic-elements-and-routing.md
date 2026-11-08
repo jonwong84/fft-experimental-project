@@ -361,8 +361,9 @@ No runtime or fixture change is required. The supplied
 [Conditional Status Proc Roll wrapper](magic-conditional-proc.md#supplied-conditional-status-proc-roll-wrapper)
 at `0x001884c0` and its execution-only inner routine are now checked too; the
 shared Pass/Fail listing, preserving wrapper and
-[inner status applicator](status-action-application.md) also match. Validate
-Status Changes at `0x80184b24` is the next useful listing. ZOD-436 remains open.
+[inner status applicator](status-action-application.md) and validator also match.
+No additional helper listing is required for current empty-record admission;
+ZOD-436's shared-consumer review remains open.
 
 ## Original implementation checkpoint
 

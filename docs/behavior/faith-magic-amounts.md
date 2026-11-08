@@ -271,8 +271,8 @@ change is needed. The supplied [Elemental Absorb and status roll wrapper](magic-
 at `0x0018871c` and its absorption/conditional-proc/inner helpers are now checked
 too, including the shared Pass/Fail listing and preserving status wrapper at
 `0x80187eb4` and [inner status applicator](status-action-application.md) at
-`0x80187f24`. Validate Status Changes at `0x80184b24` is the next useful listing.
-ZOD-436 remains open.
+`0x80187f24`, plus its validator at `0x80184b24`. Current empty-record admission
+needs no additional helper listing. ZOD-436's shared-consumer review remains open.
 
 ## Original implementation checkpoint
 

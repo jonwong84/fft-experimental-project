@@ -135,6 +135,12 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 10491,
       "sha256": "da8e9849ec2247b02e9dbfaced4524c9b9ca5553101f5d39b7cc5367fc4eb435"
+    },
+    {
+      "path": "src/main/status_check_data.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2914,
+      "sha256": "27f6e99fe2d9627af92c2a46f5277bf10c93978c7f880d9995332207893f1ba0"
     }
   ],
   "sourceFunctions": [
@@ -382,6 +388,13 @@
       "startLine": 394,
       "endLine": 399,
       "normalizedLfSha256": "cdf6c4c0c319dc057ac12bd5c35829c7c3cd794b5acb4595ece35a9814e0512f"
+    },
+    {
+      "path": "src/main/status_check_data.c",
+      "symbol": "status_check_data_init",
+      "startLine": 9,
+      "endLine": 53,
+      "normalizedLfSha256": "74d4525fb05a45d294dee30dca144b02c76def68425a6cd30b475dc27963b2e6"
     }
   ],
   "managedFiles": [
@@ -5519,6 +5532,610 @@
           "fireTiersVerified": 4
         }
       },
+      "ownerBlobsVerified": 10,
+      "ownerControllerBlob": "4856db5509cd27ee13f02e7918d72ce42a47852f",
+      "ownerApprovedCiEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "committed": true,
+        "ciEnabledDefault": false
+      },
+      "focusedManagedTestsPassed": 29,
+      "focusedPythonTestsPassed": 16,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedStatusFilterCheck": {
+    "managedBaseRevision": "c5c4c17c153f706e7a743ffd25d43cda94de763c",
+    "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "suppliedTextSha256": "1457a0cc2ca2134c7390747be6f871f451eba31e435adf9c91eb86bb887566ac",
+    "start": "0x80184b24",
+    "endInclusive": "0x80184e3c",
+    "instructionCount": 199,
+    "instructionWords": [
+      "00803821",
+      "3c028019",
+      "8c422d98",
+      "00005021",
+      "90430005",
+      "90420182",
+      "00000000",
+      "30420080",
+      "1040000f",
+      "30680004",
+      "00003021",
+      "3c038019",
+      "8c632d90",
+      "3c018019",
+      "00260821",
+      "9024f60c",
+      "00661821",
+      "9062001b",
+      "24c60001",
+      "00441024",
+      "a062001b",
+      "28c20005",
+      "1440fff4",
+      "00000000",
+      "3c048019",
+      "8c842d90",
+      "00000000",
+      "9083001d",
+      "00000000",
+      "30620002",
+      "10400013",
+      "00003021",
+      "3c028019",
+      "8c422d98",
+      "00000000",
+      "9042005a",
+      "00000000",
+      "30420002",
+      "1040000b",
+      "00000000",
+      "14e00009",
+      "306200fd",
+      "a082001d",
+      "3c038019",
+      "8c632d90",
+      "00000000",
+      "90620022",
+      "00000000",
+      "34420002",
+      "a0620022",
+      "14e00023",
+      "28c20003",
+      "1040000a",
+      "00000000",
+      "3c058019",
+      "8ca52d90",
+      "3c028019",
+      "8c422d98",
+      "00000000",
+      "00461021",
+      "90430058",
+      "0806130f",
+      "00a62821",
+      "3c058019",
+      "8ca52d90",
+      "3c028019",
+      "8c422d98",
+      "00a62821",
+      "00461021",
+      "9043004e",
+      "90440053",
+      "90a2001b",
+      "00641827",
+      "00431024",
+      "1100000b",
+      "a0a2001b",
+      "3c028019",
+      "8c422d90",
+      "3c018006",
+      "00260821",
+      "902362ee",
+      "00461021",
+      "9044001b",
+      "00031827",
+      "00832024",
+      "a044001b",
+      "3c058019",
+      "8ca52d90",
+      "3c048019",
+      "8c842d98",
+      "00a62821",
+      "00862021",
+      "24c60001",
+      "9083004e",
+      "90a20020",
+      "908401bb",
+      "00031827",
+      "00431024",
+      "00441024",
+      "a0a20020",
+      "28c20005",
+      "1440ffcc",
+      "00000000",
+      "14e00051",
+      "00003021",
+      "340b0080",
+      "3c098006",
+      "25295def",
+      "04c10002",
+      "00c01021",
+      "24c20007",
+      "000238c3",
+      "3c028019",
+      "8c422d90",
+      "30c30007",
+      "00471021",
+      "9042001b",
+      "006b1807",
+      "00431024",
+      "10400019",
+      "00000000",
+      "00002821",
+      "00034027",
+      "01202021",
+      "3c028019",
+      "8c422d98",
+      "90830000",
+      "00451021",
+      "90420058",
+      "00000000",
+      "00431024",
+      "10400009",
+      "24840001",
+      "3c038019",
+      "8c632d90",
+      "00000000",
+      "00671821",
+      "9062001b",
+      "00000000",
+      "00481024",
+      "a062001b",
+      "24a50001",
+      "28a20005",
+      "1440ffec",
+      "00000000",
+      "24c60001",
+      "28c20028",
+      "1440ffd8",
+      "25290010",
+      "00003021",
+      "34090080",
+      "3c088006",
+      "25085dea",
+      "04c10002",
+      "00c01021",
+      "24c20007",
+      "000238c3",
+      "3c028019",
+      "8c422d90",
+      "30c30007",
+      "00471021",
+      "9042001b",
+      "00691807",
+      "00431024",
+      "1040000f",
+      "00000000",
+      "00002821",
+      "01003821",
+      "3c048019",
+      "8c842d90",
+      "90e30000",
+      "00852021",
+      "24a50001",
+      "9082001b",
+      "00031827",
+      "00431024",
+      "a082001b",
+      "28a20005",
+      "1440fff5",
+      "24e70001",
+      "24c60001",
+      "28c20028",
+      "1440ffe2",
+      "25080010",
+      "00003021",
+      "3c048019",
+      "8c842d90",
+      "00000000",
+      "00861821",
+      "24c60001",
+      "9062001b",
+      "90630020",
+      "01421021",
+      "00435021",
+      "28c20005",
+      "1440fff7",
+      "00000000",
+      "03e00008",
+      "01401021"
+    ],
+    "allMatched": true,
+    "directCalls": 0,
+    "listedCallers": [
+      {
+        "callPc": "0x80180070",
+        "returnAddress": "0x80180078",
+        "matched": true
+      },
+      {
+        "callPc": "0x80187054",
+        "returnAddress": "0x8018705c",
+        "matched": true
+      },
+      {
+        "callPc": "0x80187e64",
+        "returnAddress": "0x80187e6c",
+        "matched": true
+      },
+      {
+        "callPc": "0x801881fc",
+        "returnAddress": "0x80188204",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018b070",
+        "returnAddress": "0x8018b078",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018c4c8",
+        "returnAddress": "0x8018c4d0",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018d9d4",
+        "returnAddress": "0x8018d9dc",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018db70",
+        "returnAddress": "0x8018db78",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018dca4",
+        "returnAddress": "0x8018dcac",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018dccc",
+        "returnAddress": "0x8018dcd4",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018e104",
+        "returnAddress": "0x8018e10c",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018e434",
+        "returnAddress": "0x8018e43c",
+        "matched": true
+      }
+    ],
+    "sourceFunctions": [
+      {
+        "path": "src/battle/combat/formula_core.c",
+        "symbol": "status_modify_inflictions",
+        "startLine": 399,
+        "endLine": 469,
+        "normalizedLfSha256": "a19c63b4339bb0cd66da3a8b64d428b8fa1bf6a775490f5459a57352a611583e"
+      },
+      {
+        "path": "src/main/status_check_data.c",
+        "symbol": "status_check_data_init",
+        "startLine": 9,
+        "endLine": 53,
+        "normalizedLfSha256": "74d4525fb05a45d294dee30dca144b02c76def68425a6cd30b475dc27963b2e6"
+      }
+    ],
+    "alternativeAnnotations": {
+      "title": "Modify Status Inflictions",
+      "url": "https://ffhacktics.com/wiki/Modify_Status_Inflictions",
+      "classification": "The supplied heading labels this as alternative annotations for the same address range, not another call. Linked page could not be retrieved; no comparison of its contents is claimed."
+    },
+    "tables": {
+      "rider": {
+        "address": "0x8018f60c",
+        "bytes": [
+          239,
+          0,
+          49,
+          121,
+          226
+        ]
+      },
+      "statusEffectRecords": {
+        "address": "0x80065de4",
+        "records": 40,
+        "stride": 16,
+        "cancelsOffset": 6,
+        "cantStackOffset": 11,
+        "byteLength": 640,
+        "sha256": "8fb32c7548c877c6032beb9673597d02ef1bfb30c9e76524eb08a7028bd6d40a"
+      },
+      "formationBlacklist": {
+        "address": "0x800662ee",
+        "row": 6,
+        "tableBase": "0x800662d0",
+        "bytes": [
+          112,
+          197,
+          6,
+          0,
+          33
+        ],
+        "construction": "Derived offline from prepared status-effect flags_2 bit0x02 using pinned status_check_data_init; not mistaken for an initialized executable row."
+      }
+    },
+    "orderedStages": [
+      "Always apply rider whitelist to pending inflictions when target mount bit0x80 is set.",
+      "For mode0 only, pending Frog on current Frog becomes pending removal.",
+      "For mode0 only, mask inflictions by immunity and current bytes0-2 or innate bytes3-4, then by formation blacklist for immortal targets.",
+      "Always filter removals by NOT innate AND inflicted_status at unit0x1bb, not current statuses at0x58.",
+      "For mode0 only, remove inflictions blocked by target current statuses and cant_stack records.",
+      "For mode0 only, iterate status IDs0..39 in order and remove canceled pending inflictions in place.",
+      "Return the unsigned-byte sum of the ten remaining action status bytes, copied in JR delay slot."
+    ],
+    "literalDescriptionEncoding": "Each status-set string encodes five bytes as ten hexadecimal digits in source byte order; mode/flags and total remain scalar.",
+    "literalDescriptions": [
+      {
+        "name": "Frog toggles to a removable inflicted status",
+        "input": {
+          "infliction": "0000020000",
+          "removal": "0000000000",
+          "current": "0000020000",
+          "innate": "0000000000",
+          "immunity": "0000000000",
+          "inflicted": "0000020000",
+          "mode": 0,
+          "riding": false,
+          "immortal": false
+        },
+        "expected": {
+          "infliction": "0000000000",
+          "removal": "0000020000",
+          "total": 2
+        }
+      },
+      {
+        "name": "Innate Frog cannot be removed after toggle",
+        "input": {
+          "infliction": "0000020000",
+          "removal": "0000000000",
+          "current": "0000020000",
+          "innate": "0000020000",
+          "immunity": "0000000000",
+          "inflicted": "0000020000",
+          "mode": 0,
+          "riding": false,
+          "immortal": false
+        },
+        "expected": {
+          "infliction": "0000000000",
+          "removal": "0000000000",
+          "total": 0
+        }
+      },
+      {
+        "name": "Removal uses inflicted status even when current is clear",
+        "input": {
+          "infliction": "0000000000",
+          "removal": "0000020000",
+          "current": "0000000000",
+          "innate": "0000000000",
+          "immunity": "0000000000",
+          "inflicted": "0000020000",
+          "mode": 0,
+          "riding": false,
+          "immortal": false
+        },
+        "expected": {
+          "infliction": "0000000000",
+          "removal": "0000020000",
+          "total": 2
+        }
+      },
+      {
+        "name": "Current status alone does not admit removal",
+        "input": {
+          "infliction": "0000000000",
+          "removal": "0000020000",
+          "current": "0000020000",
+          "innate": "0000000000",
+          "immunity": "0000000000",
+          "inflicted": "0000000000",
+          "mode": 0,
+          "riding": false,
+          "immortal": false
+        },
+        "expected": {
+          "infliction": "0000000000",
+          "removal": "0000000000",
+          "total": 0
+        }
+      },
+      {
+        "name": "Removal of innate status is always filtered",
+        "input": {
+          "infliction": "0000000000",
+          "removal": "0000004000",
+          "current": "0000004000",
+          "innate": "0000004000",
+          "immunity": "0000000000",
+          "inflicted": "0000004000",
+          "mode": 1,
+          "riding": false,
+          "immortal": false
+        },
+        "expected": {
+          "infliction": "0000000000",
+          "removal": "0000000000",
+          "total": 0
+        }
+      },
+      {
+        "name": "Timed current status may be refreshed",
+        "input": {
+          "infliction": "0000004000",
+          "removal": "0000000000",
+          "current": "0000004000",
+          "innate": "0000000000",
+          "immunity": "0000000000",
+          "inflicted": "0000000000",
+          "mode": 0,
+          "riding": false,
+          "immortal": false
+        },
+        "expected": {
+          "infliction": "0000004000",
+          "removal": "0000000000",
+          "total": 64
+        }
+      },
+      {
+        "name": "Nonzero mode skips frog immunity and immortal filters",
+        "input": {
+          "infliction": "0000020000",
+          "removal": "0000000000",
+          "current": "0000020000",
+          "innate": "0000000000",
+          "immunity": "0000020000",
+          "inflicted": "0000000000",
+          "mode": 2,
+          "riding": false,
+          "immortal": true
+        },
+        "expected": {
+          "infliction": "0000020000",
+          "removal": "0000000000",
+          "total": 2
+        }
+      },
+      {
+        "name": "Rider filter still applies with nonzero mode",
+        "input": {
+          "infliction": "0000022000",
+          "removal": "0000000000",
+          "current": "0000020000",
+          "innate": "0000000000",
+          "immunity": "0000000000",
+          "inflicted": "0000020000",
+          "mode": 1,
+          "riding": true,
+          "immortal": false
+        },
+        "expected": {
+          "infliction": "0000002000",
+          "removal": "0000000000",
+          "total": 32
+        }
+      },
+      {
+        "name": "Formation blacklist applies to immortal full-mode target",
+        "input": {
+          "infliction": "0000020000",
+          "removal": "0000000000",
+          "current": "0000000000",
+          "innate": "0000000000",
+          "immunity": "0000000000",
+          "inflicted": "0000000000",
+          "mode": 0,
+          "riding": false,
+          "immortal": true
+        },
+        "expected": {
+          "infliction": "0000000000",
+          "removal": "0000000000",
+          "total": 0
+        }
+      },
+      {
+        "name": "Earlier pending Haste cancels later pending Slow",
+        "input": {
+          "infliction": "0000000c00",
+          "removal": "0000000000",
+          "current": "0000000000",
+          "innate": "0000000000",
+          "immunity": "0000000000",
+          "inflicted": "0000000000",
+          "mode": 0,
+          "riding": false,
+          "immortal": false
+        },
+        "expected": {
+          "infliction": "0000000800",
+          "removal": "0000000000",
+          "total": 8
+        }
+      },
+      {
+        "name": "Immunity filters full-mode pending status",
+        "input": {
+          "infliction": "0000008000",
+          "removal": "0000000000",
+          "current": "0000000000",
+          "innate": "0000000000",
+          "immunity": "0000008000",
+          "inflicted": "0000000000",
+          "mode": 0,
+          "riding": false,
+          "immortal": false
+        },
+        "expected": {
+          "infliction": "0000000000",
+          "removal": "0000000000",
+          "total": 0
+        }
+      }
+    ],
+    "boundaries": [
+      "The routine has no calls/RNG. It filters existing action work; it does not itself force a miss, add status attack type, settle live statuses or publish commands.",
+      "Nonzero input is not pure removal: rider filtering and the final sum still include pending inflictions.",
+      "Mode0 handles last-two-byte timed status refresh differently from first-three-byte current statuses. Preserve this byte-group behavior in compatibility adapters.",
+      "The cancellation pass mutates pending inflictions in status order. It does not queue canceled live statuses as action removals here.",
+      "Formation blacklist is generated at initialization; detailed original table construction/runtime mutation is not ported by this check.",
+      "Current admitted fresh empty status record skips this validator upstream. General nonempty statuses, rider behavior and other caller families remain outside managed admission.",
+      "No further listing is required for the current empty-status domain; resume the broader ZOD-436 actual/preview/AI review."
+    ],
+    "validation": {
+      "sourceAudits": {
+        "proc": {
+          "rollDescriptions": 6,
+          "decisionDescriptions": 26,
+          "originalExecuted": false,
+          "cExecuted": false,
+          "managedExecuted": false,
+          "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+          "referenceClean": true,
+          "sourceFiles": 9,
+          "sourceFunctions": 10,
+          "emptyStatusRecordVerified": true,
+          "fireTiersVerified": 4
+        },
+        "finalization": {
+          "rawDescriptions": 20,
+          "composedDescriptions": 20,
+          "originalExecuted": false,
+          "cExecuted": false,
+          "managedExecuted": false,
+          "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+          "referenceClean": true,
+          "sourceFiles": 8,
+          "sourceFunctions": 15,
+          "emptyStatusRecordVerified": true,
+          "fireTiersVerified": 4
+        }
+      },
+      "literalDescriptions": 11,
       "ownerBlobsVerified": 10,
       "ownerControllerBlob": "4856db5509cd27ee13f02e7918d72ce42a47852f",
       "ownerApprovedCiEdit": {

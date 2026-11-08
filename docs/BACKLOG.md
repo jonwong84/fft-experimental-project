@@ -142,8 +142,10 @@ returns: only hit/miss/unsigned16 accuracy are restored. Current empty-record
 composition agrees. The [inner status applicator](behavior/status-action-application.md)
 matches 217 words, four calls, 17 direct callers and formula0x38 dispatch.
 Separate uses24, Invite effect0x0040; signed accuracy division agrees with the
-decomp's s16 field. Validate Status Changes at0x80184b24 is
-the next useful listing; the full shared-consumer review remains open.
+decomp's s16 field. Validate Status Changes matches 199 words/12 callers, with
+no calls/RNG. Rider/Frog/mask/cancellation order, generated row6 and the byte-sum
+return are recorded without activating general statuses. No more helper listing
+is needed for current empty-record admission; the shared-consumer review is next.
 
 ## Review programme
 

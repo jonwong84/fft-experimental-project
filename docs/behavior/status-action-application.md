@@ -53,12 +53,64 @@ restore step. An empty result can therefore remain a miss for that caller.
   succeeds; 7865 scales to 24 and fails. Displayed quarter accuracy is separate
   from that literal threshold.
 - `0x80184b24`, `status_modify_inflictions(0)`: validates the accumulated action
-  sets. Its immunity, innate, current-status, mount and table rules need their
-  own detailed documentation cross-check. This is the next useful supplied page,
-  **Validate Status Changes**.
+  sets. The supplied **Validate Status Changes** listing is checked below,
+  including the rider, innate, current-status and table boundaries.
 - `0x8018430c`, `formula_force_attack_miss`: clears hit and 16-bit accuracy and
   assigns miss type 7. Its source is already pinned in the
   [preserving-wrapper check](magic-conditional-proc.md#supplied-preserving-status-wrapper).
+
+## Supplied status validator
+
+All 199 words at `0x80184b24`–`0x80184e3c` and all 12 listed callers match the
+prepared BATTLE.BIN. The attachment labels **Modify Status Inflictions** as
+alternative programmer annotations for this same routine, not another call.
+The linked page could not be retrieved; its annotations are not independently
+compared here. The supplied listing and pinned `status_modify_inflictions`
+source suffice for this cross-check. This is a leaf routine: no calls or RNG.
+
+Its input is zero for full filtering, or any nonzero value for a reduced path.
+The exact order is:
+
+1. Always mask pending inflictions for a riding target (mount bit `0x80`).
+2. In full mode, turn pending Frog into removal when the target is already Frog.
+3. In full mode, filter inflictions by immunity and current statuses for byte
+   groups 0–2, or innate statuses for groups 3–4. This permits timed-status
+   refresh. Immortal targets receive an additional formation-blacklist mask.
+4. In both modes, restrict removals to `~innate & inflicted_status`. The last
+   operand is the separate unit array at `0x1bb`, not current statuses at `0x58`.
+   An innate Frog cannot be removed even after the toggle stages its removal.
+5. In full mode, discard pending inflictions whose `cant_stack` table intersects
+   the target's current statuses.
+6. In full mode, visit source status IDs 0–39 in order. Each still-pending status
+   removes its `cancels` mask from pending **inflictions**, in place. It does not
+   add those canceled bits to action removals here. An earlier status can remove
+   a later one before its turn; with both pending and no current blockers, Haste
+   removes Slow.
+
+Nonzero input therefore does not mean "only removals change": the rider mask
+still filters inflictions. The final return adds all ten remaining action bytes
+(five infliction, five removal), including on that path. It ranges from 0 to
+2550, with zero meaning no pending work. The return copy is in the JR delay
+slot. This helper does not set attack type, force a miss or settle live statuses;
+its callers decide what to do with that result.
+
+The source table dependencies are the five-byte rider mask at `0x8018f60c` and
+40 status-effect records at `0x80065de4`, with 16-byte stride, `cancels` at +6 and
+`cant_stack` at +11. Their prepared bytes/hash are recorded in the receipt.
+The immortal filter reads row 6 at `0x800662ee` of `g_status_check_sets`, built by
+`status_check_data_init` from effect `flags_2 & 0x02`. This is a generated runtime
+row, not a static initialized-executable mask; it is distinct from row 5's
+immortal-immunity classification. The normal initialized row is derived offline
+from the prepared records, with the initializer source pinned.
+
+Eleven source-derived descriptions check Frog toggle/innate removal, current
+versus inflicted status, timed refresh, reduced-mode rider behavior, immunity,
+the immortal blacklist and ordered Haste/Slow cancellation. These descriptions
+do not constitute original/C execution or a managed general-status port.
+Current admitted empty action/status data skips this validator upstream.
+No additional helper listing is required for that domain; the next work is the
+broader ZOD-436 actual/preview/AI consumer review. General status support and
+the other listed caller families remain separate.
 
 ## Documentation corrections and signed accuracy
 

@@ -190,8 +190,10 @@ All 29 focused .NET proc/composition/finalization tests and 16 Python tests pass
 the ten owner drafts, approved controller edit and disabled CI gate are unchanged.
 The supplied [inner status applicator](status-action-application.md) at
 `0x80187f24` is now checked too: its branches, four calls, 17 direct callers and
-formula `0x38` entry are recorded without activating general statuses. Validate
-Status Changes at `0x80184b24` is the next useful supplied listing. ZOD-436 remains open.
+formula `0x38` entry are recorded without activating general statuses. The
+supplied validator at `0x80184b24` is now checked too. No additional helper page
+is required for current empty-record admission; ZOD-436's shared-consumer review
+remains open.
 
 ## Original implementation checkpoint
 
