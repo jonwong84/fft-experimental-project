@@ -220,9 +220,49 @@ not original/C execution or validation of stale result/effect work. The existing
 `MagicDamageElements.Transform` matches these admitted rules and retains its
 fresh-work and relevant Oil/Float/rider guards. All16 focused .NET tests and eight
 Python tests pass; all ten owner draft blobs and the unrelated CI edit remain
-unchanged. No runtime or fixture change is required. The next useful supplied
-page is Elemental Nullification.
-ZOD-436 remains open.
+unchanged. No runtime or fixture change is required. ZOD-436 remains open.
+
+### Supplied Elemental Nullification
+
+The owner's listing matches all22 instruction words at `0x80184e40`–`0x80184e94`,
+both cleanup calls and all five listed return locations. The same supporting
+receipt pins source helpers, prepared words and an offline byte-store footprint.
+The prose summary reverses one offset/value: **miss type at byte`0x02` is set
+to`0x05` (Nullified)**, not byte`0x05` to`0x02`.
+
+The routine directly clears hit byte`0x00`, HP-damage halfword`0x04`, accuracy
+halfword`0x2a`, special-effect halfword`0x10`, and attack-type byte`0x25`.
+The halfword writes clear both bytes, including accuracy`0x2b` and effects`0x11`.
+The type-byte clear is in the first cleanup call's delay slot, before the
+callee executes. A patterned44-byte result check confirms the exact nine-byte
+write footprint. Other result fields, such as HP healing and target-action
+reaction ID, are not directly reset; this must not become a blanket record clear.
+
+The ordered cleanup dependencies are:
+
+1. `0x8018bcf0`, `formula_clear_pending_proc` (Called by Nullify Action): only
+   when weapon-proc-pending is nonzero, clear work reaction ID and pending proc,
+   then remove AddedEffect`0x0200` from target effects. This is not unconditional
+   removal of every reaction or the target-action reaction-ID field.
+2. `0x8018bd34`, `move_knockback_cancel` (Remove Knockback Flag): only when the
+   pending bit is set, clear work knockback flags and remove target
+   Knockback`0x4000`. Their conditional global cleanup remains relevant even
+   though the main routine already cleared the target effect word.
+
+The nullified miss label is later tested by elemental absorption to skip its
+conversion. The admitted managed composition uses a nullified amount/frame with
+hit=false, accuracy0, label5 and empty supported HP types/effects. It skips the
+Faith/proc tail and adds no RNG draw; earlier evasion draws remain retained.
+`NoPendingWeaponProcOrReaction`, `NoPendingKnockback` and the bounded fresh HP-work
+profile are still required, so this does not implement broader pending-action
+cleanup, stale healing/status fields or all reactions.
+
+The existing finalization source/prepared audit passes20 raw and20 composed
+descriptions and four Fire tier/empty-status bindings. All35 focused .NET tests
+and16 Python tests pass; all ten owner draft blobs and the unrelated CI edit
+remain unchanged. No runtime or fixture change is required. The next useful
+supplied pages are Called by Nullify Action
+at `0x0018bcf0` and Remove Knockback Flag at `0x0018bd34`. ZOD-436 remains open.
 
 ## Original implementation checkpoint
 

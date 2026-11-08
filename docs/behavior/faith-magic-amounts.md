@@ -226,8 +226,8 @@ This completes the supplied-document checklist for the four magical-modifier
 dependencies, not ZOD-436's broader shared-consumer review. The supplied
 [Elemental XA * YA wrapper](magic-elements-and-routing.md#supplied-elemental-xa--ya-wrapper--zod-436-support)
 and its multiplication/weather/effective-weather/ability-element helpers are now
-checked too, along with common affinity modification; the nullification helper
-page is next.
+checked too, along with common affinity modification and nullification; the two
+conditional cleanup helpers are next.
 
 ## Original implementation checkpoint
 

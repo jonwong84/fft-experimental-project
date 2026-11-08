@@ -257,6 +257,20 @@
       "startLine": 154,
       "endLine": 156,
       "normalizedLfSha256": "bd672da379c7958c7cdb06829bfcbfe6039f5c210e5862481a0cc3628d803a4c"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "formula_clear_pending_proc",
+      "startLine": 757,
+      "endLine": 773,
+      "normalizedLfSha256": "679e3b748e75112e96b903da5b18fc71d97c015f84f6fedbaa2f8e63abf0080c"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "move_knockback_cancel",
+      "startLine": 777,
+      "endLine": 785,
+      "normalizedLfSha256": "b8375c1d3cc722956b37b757ea2dd50d20b60c3b9b884384b063a118dbbb0c57"
     }
   ],
   "managedFiles": [
@@ -2917,6 +2931,180 @@
       },
       "focusedManagedTestsPassed": 16,
       "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedElementalNullifierCheck": {
+    "managedBaseRevision": "82521b8d7ef0055d4cecc597988bb27977deacd3",
+    "start": "0x80184e40",
+    "endInclusive": "0x80184e94",
+    "instructionCount": 22,
+    "instructionWords": [
+      "3c028019",
+      "8c422d90",
+      "27bdffe8",
+      "afbf0010",
+      "a0400000",
+      "3c038019",
+      "8c632d90",
+      "34020005",
+      "a0620002",
+      "3c028019",
+      "8c422d90",
+      "a4600004",
+      "a460002a",
+      "a4600010",
+      "0c062f3c",
+      "a0400025",
+      "0c062f4d",
+      "00000000",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "orderedDirectCalls": [
+      {
+        "callPc": "0x80184e78",
+        "target": "0x8018bcf0",
+        "symbol": "formula_clear_pending_proc",
+        "delaySlotWord": "a0400025"
+      },
+      {
+        "callPc": "0x80184e80",
+        "target": "0x8018bd34",
+        "symbol": "move_knockback_cancel",
+        "delaySlotWord": "00000000"
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80184ef8",
+        "returnAddress": "0x80184f00",
+        "target": "0x80184e40",
+        "caller": "formula_element_modify_damage"
+      },
+      {
+        "callPc": "0x801870c8",
+        "returnAddress": "0x801870d0",
+        "target": "0x80184e40",
+        "caller": "formula_element_apply"
+      },
+      {
+        "callPc": "0x801897ac",
+        "returnAddress": "0x801897b4",
+        "target": "0x80184e40",
+        "caller": "formula_steal_equipment"
+      },
+      {
+        "callPc": "0x80189bbc",
+        "returnAddress": "0x80189bc4",
+        "target": "0x80184e40",
+        "caller": "formula_mighty_sword"
+      },
+      {
+        "callPc": "0x8018ad2c",
+        "returnAddress": "0x8018ad34",
+        "target": "0x80184e40",
+        "caller": "formula_apply_status_and_check_undead"
+      }
+    ],
+    "directResultWrites": [
+      {
+        "pc": "0x80184e50",
+        "offset": "0x00",
+        "byteWidth": 1,
+        "value": 0,
+        "inProcCallDelaySlot": false
+      },
+      {
+        "pc": "0x80184e60",
+        "offset": "0x02",
+        "byteWidth": 1,
+        "value": 5,
+        "inProcCallDelaySlot": false
+      },
+      {
+        "pc": "0x80184e6c",
+        "offset": "0x04",
+        "byteWidth": 2,
+        "value": 0,
+        "inProcCallDelaySlot": false
+      },
+      {
+        "pc": "0x80184e70",
+        "offset": "0x2a",
+        "byteWidth": 2,
+        "value": 0,
+        "inProcCallDelaySlot": false
+      },
+      {
+        "pc": "0x80184e74",
+        "offset": "0x10",
+        "byteWidth": 2,
+        "value": 0,
+        "inProcCallDelaySlot": false
+      },
+      {
+        "pc": "0x80184e7c",
+        "offset": "0x25",
+        "byteWidth": 1,
+        "value": 0,
+        "inProcCallDelaySlot": true
+      }
+    ],
+    "notesCorrection": "Miss type is byte0x02 set to0x05 (Nullified), not byte0x05 set to0x02. Type byte0x25 is also cleared; accuracy and effects are16-bit stores.",
+    "storeFootprint": {
+      "recordBytes": 44,
+      "changedByteOffsets": [
+        0,
+        2,
+        4,
+        5,
+        16,
+        17,
+        37,
+        42,
+        43
+      ],
+      "otherBytesPreservedBeforeCleanup": true,
+      "directDamageStoreDoesNotClearHpHealing": true,
+      "targetActionReactionIdNotDirectlyCleared": true
+    },
+    "cleanupBoundaries": [
+      "formula_clear_pending_proc only acts when weapon_proc_pending is nonzero: clear work reaction_id and proc_pending, then remove AddedEffect0x0200 from target effects.",
+      "move_knockback_cancel only acts when knockback Pending is set: clear the whole work knockback flags and remove target Knockback0x4000.",
+      "Type byte0x25 is cleared in the first cleanup call delay slot, before that helper executes.",
+      "This is not a wholesale action-result reset or unconditional clearing of all reactions/status work."
+    ],
+    "managedMapping": "MagicDamageElements nullification clears amount/affinity markers. FaithMagicFormula composes hitfalse, accuracy0, Nullified label and empty supported HP types/effects, skips Faith/proc output and adds no RNG draw; earlier evasion draws remain retained. NoPendingWeaponProcOrReaction/NoPendingKnockback guards keep broader cleanup outside admission.",
+    "validation": {
+      "sourceAudit": {
+        "rawDescriptions": 20,
+        "composedDescriptions": 20,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 8,
+        "sourceFunctions": 15,
+        "emptyStatusRecordVerified": true,
+        "fireTiersVerified": 4
+      },
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 35,
+      "focusedPythonTestsPassed": 16,
       "managedTestsExecuted": true,
       "runtimeChanged": false,
       "originalExecuted": false,

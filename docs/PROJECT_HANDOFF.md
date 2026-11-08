@@ -89,8 +89,12 @@ the unconditional affinity stage, whose nullifier can replace it with5.
 Relevant Oil/Float/rider contexts remain excluded. Elemental Damage Modification
 matches65 words/two returns and its nullifier call;1,048,576 fresh signed amount/
 affinity cases preserve absorb/nullify/half/weak order, flags and narrowing.
-Existing C# agrees. Elemental Nullification is next; the broader status filter is
-a captured dependency for separate status work. ZOD-436 remains open.
+Existing C# agrees. Elemental Nullification matches22 words/two calls/five returns
+and its nine-byte result-store footprint. Miss byte0x02 is set to0x05, correcting
+the prose summary; type0x25 is cleared in the first cleanup call's delay slot.
+Conditional pending-proc and knockback cleanup helpers at0x0018bcf0/0x0018bd34
+are next; the broader status filter is a captured dependency for separate status
+work. Existing no-pending/fresh-work guards remain. ZOD-436 remains open.
 The unrelated owner edit in `.circleci/config.yml` remains uncommitted and excluded.
 The shared Calculate Hit %/final-hit/per-source roll
 documentation was already supplied; no duplicate is needed.

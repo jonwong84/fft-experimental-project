@@ -120,7 +120,10 @@ precedence and corrects the notes' value5 label to Snow. Ability Elemental? matc
 65 words/three calls/four returns, retaining Oil's stored-damage quirk and continued
 affinity processing after Float cancellation. Elemental Damage Modification
 matches65 words/two returns and1,048,576 signed amount/affinity cases.
-Elemental Nullification is next; the full shared-consumer review remains open.
+Elemental Nullification matches22 words/two calls/five returns and its exact
+store footprint, correcting the notes to miss byte0x02/value0x05. Its conditional
+proc and knockback cleanup helpers are next; the full shared-consumer review
+remains open.
 
 ## Review programme
 
