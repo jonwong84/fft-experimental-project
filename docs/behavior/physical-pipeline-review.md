@@ -78,7 +78,7 @@ runtime admission are distinct coverage claims:
   implemented.
 
 For further FFHacktics comparison, the most useful remaining supplied listings
-are **Defense Up**, **Target Physical Statuses**, and
+are **Target Physical Statuses** and
 **Damage and Knockback Routine (alternative)**. Their nested calls can then be
 matched to this inventory without repeating the already supplied shared helpers.
 These pages add independent annotations; they do not block the currently
@@ -125,8 +125,8 @@ fixture or owner-definition change is required, and this does not activate all
 eight caller families. All 186 focused .NET Dash/Stone/formula-assignment tests
 and two Python Dash tests pass; all ten owner drafts and the disabled CI gate
 remain unchanged. The supplied **Cluster of Physical Routines** at `0x80188adc`
-is now checked below. Its Berserk/Frog child is checked too; Defense Up, Target
-Physical Statuses and alternative damage/knockback remain useful supplied checks.
+is now checked below. Its Berserk/Frog and Defense Up children are checked too;
+Target Physical Statuses and alternative damage/knockback remain useful supplied checks.
 
 ## Supplied physical-modifier cluster
 
@@ -142,7 +142,8 @@ review. The wrapper calls each helper unconditionally and in this order:
    Frog then overwrites XA with 1. The supplied listing is now checked below.
 2. **Defense Up (`0x801862cc`)**: the target's support applies a separate `2/3`
    step. The source name `without_supports` excludes the earlier attacker
-   Attack Up/Martial Arts stage, not this target support.
+   Attack Up/Martial Arts stage, not this target support. The supplied leaf
+   listing is now checked below.
 3. **Target physical statuses (`0x8018636c`)**: Protect applies `2/3`, then
    Sleep **or** Charging applies `3/2` once, then Chicken **or** Frog applies
    `3/2` once. The two positive groups are independent stages; the summary must
@@ -160,9 +161,9 @@ can become 0 at Defense Up before ordinary compatibility floors it back to 1.
 Serpentarius's early return skips that floor. Frog is therefore not a blanket
 guarantee about the final XA under every combination.
 
-These child details are source-traced coverage; the supplied Berserk/Frog
-listing is checked below. Defense Up and Target Physical Statuses listings
-remain useful independent checks. Current physical support/status/general-zodiac
+These child details are source-traced coverage; the supplied Berserk/Frog and
+Defense Up listings are checked below. Target Physical Statuses remains a useful
+independent check. Current physical support/status/general-zodiac
 inputs remain guarded. This milestone changes documentation/evidence only;
 runtime tests were not repeated after the preceding passing 186 .NET/two Python
 physical validation. The source/prepared Dash audit and all ten owner draft
@@ -199,7 +200,36 @@ Frog's 1 is an intermediate value: later cluster stages still run. Current
 physical status inputs remain excluded, so no runtime or fixture change is
 needed. Source/prepared Dash and owner-preservation checks pass; runtime tests
 were not repeated after the prior 186 .NET/two Python physical validation.
-The next useful supplied listing is **Defense Up** at `0x801862cc`.
+The supplied Defense Up listing is now checked below; Target Physical Statuses
+at `0x8018636c` is next.
+
+## Supplied Defense Up helper
+
+The owner's listing matches all 20 words at `0x801862cc`–`0x80186318` and all
+three listed caller return addresses. The
+[trace receipt](../evidence/combat/defense-up-trace-v1.json) pins clean reference
+`11464943bbdbd2a0af022d90cb7f10455cf911df`, prepared BATTLE.BIN, source and layouts.
+
+Target support byte `0x90`, bit `0x08`, gates the XA load/store. With the bit
+clear, the helper leaves XA unchanged. When set, signed 16-bit XA is multiplied
+by `2/3`, truncated toward zero and stored as a halfword. The constant
+`0x55555556`, signed multiply-high and sign correction implement that exact
+division. Literal 66% would differ: XA 99 becomes 66 here, rather than 65.
+Negative XA -5 becomes -3, rather than rounding down to -4.
+
+All 65,536 signed inputs agree with signed division, including extremes
+-32768 → -21845 and 32767 → 21844. Nine literal descriptions also retain the
+disabled gate, zero and small operands. There is no minimum clamp: XA 1 becomes
+0. Later compatibility retains its own floor and exceptions.
+
+This leaf makes no calls and consumes no RNG. It does not update YA, final HP
+work, Protect or compatibility. The physical support selector remains distinct
+from the already checked magical Defense Up selector, despite their shared
+arithmetic. Current physical admission still excludes the support. No runtime,
+fixture or owner definition changed; runtime tests were not repeated after the
+prior physical validation. Source/prepared Dash and owner-preservation checks
+pass. The next useful supplied listing is **Target Physical Statuses** at
+`0x8018636c`, followed by alternative damage/knockback.
 
 ## Supplied physical-evasion wrapper (2026-11-07)
 
