@@ -36,9 +36,13 @@ public static class AiTurnController
 
     public static AiTurnResult Resume(RosterFacingTurnState state, AiTurnRecovery recovery)
     {
-        ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(recovery);
+        ArgumentNullException.ThrowIfNull(state);
+        ArgumentNullException.ThrowIfNull(recovery);
+
+
         if (!ReferenceEquals(state, recovery.ExpectedState))
             return new(state, [], [], recovery.Inputs.Workspace, new(AiTurnStage.RecoveryBinding), null);
+
         return Run(state, recovery.Inputs, recovery.NextStep, recovery.Continuation);
     }
 
@@ -47,9 +51,18 @@ public static class AiTurnController
     {
         var events = ImmutableArray.CreateBuilder<AttackResultEvent>();
         var decisions = ImmutableArray.CreateBuilder<AiCommandOutcome>();
-        var workspace = inputs.Workspace; var request = inputs.Request; var c = inputs.Configuration;
-        AiTurnResult Failed(AiTurnFailure failure) => new(state, events.ToImmutable(), decisions.ToImmutable(), workspace,
-            failure, new(state, stage, inputs with { Workspace = workspace }, continuation));
+        var workspace = inputs.Workspace;
+        var request = inputs.Request;
+        var c = inputs.Configuration;
+
+        AiTurnResult Failed(AiTurnFailure failure) => new(
+            state,
+            events.ToImmutable(),
+            decisions.ToImmutable(),
+            workspace,
+            failure,
+            new(state, stage, inputs with { Workspace = workspace }, continuation));
+
         while (true)
         {
             switch (stage)
@@ -71,7 +84,8 @@ public static class AiTurnController
                     if (!facing.Accepted) return Failed(new(stage, FacingFailure: facing));
                     state = facing.State; events.AddRange(facing.Events);
                     break;
-                default: throw new InvalidOperationException("Unexpected bounded roster turn stage.");
+                default:
+                    throw new InvalidOperationException("Unexpected bounded roster turn stage.");
             }
             var next = AiTurnProgress.Next(state, request.ActorId, continuation);
             if (next is null) return new(state, events.ToImmutable(), decisions.ToImmutable(), workspace, null, null);
