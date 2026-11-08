@@ -231,9 +231,11 @@ now matches137 words/two calls/two returns, with 261,120 direction cases and
 movement; its destination checker allows equal edge heights. Knockback 2 now
 matches178 words/two calls/one return and 172,800 layer/headroom/occupancy cases.
 It requires exactly-1 from the selected layer's lookup and never retries another
-layer. Map Location Calculation is source-traced; the tile-unit lookup wrapper
-at0x8017dc88 is next useful, with effective movement at0x8017f020 still pending
-as a supplied cross-check. Broader landing/falls remain guarded.
+layer. Map Location Calculation is source-traced. The zero-filter tile-unit
+wrapper matches8 words/one call/six callers after correcting Reflect's return
+from0x8017cba8 to0x8017cb6c. It forwards child results unchanged. The underlying
+lookup at0x8017dca8 is next useful; effective movement at0x8017f020 also remains
+pending as a supplied cross-check. Broader landing/falls remain guarded.
 Broader modifiers,
 equipment and landing/fall behavior remain deferred. No runtime change.
 

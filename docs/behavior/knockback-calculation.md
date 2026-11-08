@@ -73,7 +73,7 @@ are:
   `target_find_unit_at_tile`: delegate to `unit_find_at_tile` at `0x8017dca8` with
   filters 0. Only return **-1** permits the landing. Occupied slots and -2
   (invalid or blocked/untargetable tile) reject. This is not an "any negative
-  means empty" test. Its supplied wrapper listing is next useful.
+  means empty" test. Its supplied wrapper listing is checked below.
 
 The Slope Type hyperlink describes packed tile data, not another call. No RNG
 is consumed along this checked path.
@@ -115,6 +115,35 @@ literal descriptions retain equality, layer ties, four-versus-three clearance,
 exact -1 occupancy, no retry and byte fall-height narrowing. These are offline
 source comparisons, not original/C execution or a managed general-geometry port.
 
+## Supplied zero-filter tile-unit wrapper
+
+All eight words at `0x8017dc88`–`0x8017dca4`, its single call and six listed
+caller checks match the prepared file after one return-address correction. The
+[wrapper receipt](../evidence/combat/tile-unit-lookup-wrapper-trace-v1.json)
+pins the same clean reference, source and layouts. The Reflect lookup in
+`reaction_targets_build` calls at `0x8017cb64` and returns at `0x8017cb6c`.
+The supplied `0x8017cba8` instead follows a call at `0x8017cba0` to
+`target_is_unit_untargetable_and_store_tile`, not this wrapper. The other five
+listed return addresses match without correction.
+
+The wrapper forwards X, Y and layer unchanged in r4/r5/r6. Its JAL at
+`0x8017dc90` calls **Check if another unit is on the same Tile** at `0x8017dca8`,
+source symbol `unit_find_at_tile`. The delay slot sets r7 to zero, selecting no
+optional status, Chocobo or dry/low-slope filters. That does not disable the
+child's bounds and tile-collision checks or exclude occupied active units by
+status.
+
+Nothing after the call changes r2. Child slot/mount-slot results, -1 and -2
+are forwarded unchanged. There is no boolean conversion or negative-result
+normalization. The wrapper does not validate coordinates itself, determine
+general ability target legality, publish movement or draw RNG. Knockback 2's
+caller-specific requirement remains exactly -1.
+
+The child is already source-traced. Its separately supplied listing at
+`0x8017dca8` is the next useful cross-check. These caller checks do not imply
+Reflect or the other targeting families are implemented; current runtime
+admission, fixtures and owner definitions are unchanged.
+
 ## Staged result and failure boundaries
 
 After all parent gates, work byte `0x801938ed` is assigned `0x81` normally.
@@ -143,7 +172,7 @@ physical validation. Flying, general layers/slopes/headroom, mounts, terrain
 and fall damage remain guarded or deferred. Neither source presence nor these
 instruction checks establish full implementation of those domains.
 
-Next useful supplied listing: **Get ID of Unit if Tile is Targetable
-(`0x8017dc88`)**. The outer helper's effective-movement routine at `0x8017f020`
+Next useful supplied listing: **Check if another unit is on the same Tile
+(`0x8017dca8`)**. The outer helper's effective-movement routine at `0x8017f020`
 also remains useful. Map Location Calculation is already source-traced; no
 duplicate Pass/Fail or root BIOS RNG listing is needed.
