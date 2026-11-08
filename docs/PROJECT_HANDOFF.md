@@ -124,8 +124,14 @@ also corrected to32 bytes. The preserving status wrapper matches 28 words, its
 inner call and 13 listed returns. It restores exactly four bytes: hit, miss type
 and unsigned16 accuracy, retaining inner status/flag/work/RNG changes. Existing
 empty-record composition agrees; general status application remains separate.
-The inner status applicator at0x80187f24 is the next useful listing; root RNG
-evidence already exists. ZOD-436 remains open.
+The [inner status applicator](behavior/status-action-application.md) matches 217
+words, four calls, 17 direct callers and formula0x38 dispatch. Branch precedence,
+mode conversion, in-place Separate work, threshold24 and Invite effect0x0040
+are recorded. Signed LH accuracy division agrees with the decomp s16 field;
+the preserving wrapper's unsigned saved copy retains the original bits.
+General status implementation remains separate. Validate Status Changes at
+0x80184b24 is the next useful listing; root RNG evidence already exists.
+ZOD-436 remains open.
 The owner-approved `.circleci/config.yml` gate is committed: CircleCI is intentionally
 paused by default through the `ci-enabled: false` workflow gate, with existing
 jobs/filters retained. Re-enabling is a later owner decision. Continue local

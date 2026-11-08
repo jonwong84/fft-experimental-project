@@ -139,8 +139,11 @@ matches 21 words, its RNG veneer and 14 listed callers after correcting the SCUS
 return to0x8005cfe8. Signed division and scaled thresholds agree with current C#.
 The preserving status wrapper matches 28 words, its inner call and 13 listed
 returns: only hit/miss/unsigned16 accuracy are restored. Current empty-record
-composition agrees. The inner status applicator at0x80187f24 is the next useful
-listing; the full shared-consumer review remains open.
+composition agrees. The [inner status applicator](behavior/status-action-application.md)
+matches 217 words, four calls, 17 direct callers and formula0x38 dispatch.
+Separate uses24, Invite effect0x0040; signed accuracy division agrees with the
+decomp's s16 field. Validate Status Changes at0x80184b24 is
+the next useful listing; the full shared-consumer review remains open.
 
 ## Review programme
 

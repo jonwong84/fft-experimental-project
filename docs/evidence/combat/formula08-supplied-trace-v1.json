@@ -375,6 +375,13 @@
       "startLine": 56,
       "endLine": 61,
       "normalizedLfSha256": "c787313b90664c07e6dfaf637f597f90ccd31d51d090e31654d906bf3e4c7528"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "formula_get_random",
+      "startLine": 394,
+      "endLine": 399,
+      "normalizedLfSha256": "cdf6c4c0c319dc057ac12bd5c35829c7c3cd794b5acb4595ece35a9814e0512f"
     }
   ],
   "managedFiles": [
@@ -5000,6 +5007,488 @@
       "The wrapper preserves incoming values; it does not force hit=1, accuracy=100 or miss type=Hit, and later finalization may change them.",
       "All13 supplied returns match, without claiming the list is exhaustive or those other ability families are ported.",
       "General status infliction/removal/filtering is not activated. Apply status (to action) at0x80187f24 is the next useful supplied listing; ZOD-436 stays open."
+    ],
+    "validation": {
+      "sourceAudits": {
+        "proc": {
+          "rollDescriptions": 6,
+          "decisionDescriptions": 26,
+          "originalExecuted": false,
+          "cExecuted": false,
+          "managedExecuted": false,
+          "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+          "referenceClean": true,
+          "sourceFiles": 9,
+          "sourceFunctions": 10,
+          "emptyStatusRecordVerified": true,
+          "fireTiersVerified": 4
+        },
+        "finalization": {
+          "rawDescriptions": 20,
+          "composedDescriptions": 20,
+          "originalExecuted": false,
+          "cExecuted": false,
+          "managedExecuted": false,
+          "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+          "referenceClean": true,
+          "sourceFiles": 8,
+          "sourceFunctions": 15,
+          "emptyStatusRecordVerified": true,
+          "fireTiersVerified": 4
+        }
+      },
+      "ownerBlobsVerified": 10,
+      "ownerControllerBlob": "4856db5509cd27ee13f02e7918d72ce42a47852f",
+      "ownerApprovedCiEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "committed": true,
+        "ciEnabledDefault": false
+      },
+      "focusedManagedTestsPassed": 29,
+      "focusedPythonTestsPassed": 16,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedStatusApplicatorCheck": {
+    "managedBaseRevision": "d31b6f2a3f74517585dd672661cfe5bfbb406284",
+    "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "suppliedTextSha256": "af58b94cab55e84c7728f1c20340c66af81928bfccf9b5de8a5e294cdd121f62",
+    "start": "0x80187f24",
+    "endInclusive": "0x80188284",
+    "instructionCount": 217,
+    "instructionWords": [
+      "3c038019",
+      "90633906",
+      "27bdff38",
+      "afbf00c0",
+      "afb300bc",
+      "afb200b8",
+      "afb100b4",
+      "30620020",
+      "1040000b",
+      "afb000b0",
+      "3c048019",
+      "8c842d90",
+      "00000000",
+      "8482002a",
+      "00000000",
+      "04410002",
+      "00000000",
+      "24420003",
+      "00021083",
+      "a482002a",
+      "30620060",
+      "10400008",
+      "30620080",
+      "3c028019",
+      "8c42f5fc",
+      "00000000",
+      "10400003",
+      "30620080",
+      "34030080",
+      "30620080",
+      "10400010",
+      "00008021",
+      "3c038019",
+      "8c632d90",
+      "3c018019",
+      "00300821",
+      "90243907",
+      "00701821",
+      "9062001b",
+      "26100001",
+      "00441025",
+      "a062001b",
+      "2a020005",
+      "1440fff4",
+      "00002021",
+      "08062070",
+      "00000000",
+      "30620040",
+      "10400030",
+      "00008821",
+      "00008021",
+      "34050080",
+      "27a40010",
+      "06010002",
+      "02001021",
+      "26020007",
+      "000210c3",
+      "3c018019",
+      "00220821",
+      "90233907",
+      "32020007",
+      "00451007",
+      "00621824",
+      "10600004",
+      "00000000",
+      "ac900000",
+      "24840004",
+      "26310001",
+      "26100001",
+      "2a020028",
+      "1440ffee",
+      "00000000",
+      "0c063ba8",
+      "00000000",
+      "00510018",
+      "00001012",
+      "04410002",
+      "00000000",
+      "24427fff",
+      "000213c3",
+      "00021080",
+      "03a21021",
+      "8c450010",
+      "3c028019",
+      "8c422d90",
+      "04a10002",
+      "00a02021",
+      "24a40007",
+      "000420c3",
+      "00442021",
+      "30a50007",
+      "34020080",
+      "9083001b",
+      "00a21007",
+      "00621825",
+      "0806206f",
+      "a083001b",
+      "30620020",
+      "10400033",
+      "00008021",
+      "34130080",
+      "06010002",
+      "02001021",
+      "26020007",
+      "000288c3",
+      "3c018019",
+      "00310821",
+      "90233907",
+      "32020007",
+      "00539007",
+      "00721824",
+      "10600012",
+      "34040064",
+      "0c017833",
+      "34050018",
+      "14400006",
+      "34020002",
+      "3c038019",
+      "8c63f5fc",
+      "00000000",
+      "14620009",
+      "00000000",
+      "3c018019",
+      "00310821",
+      "90223907",
+      "00000000",
+      "00521026",
+      "3c018019",
+      "00310821",
+      "a0223907",
+      "26100001",
+      "2a020028",
+      "1440ffe0",
+      "00000000",
+      "00008021",
+      "3c038019",
+      "8c632d90",
+      "3c018019",
+      "00300821",
+      "90243907",
+      "00701821",
+      "9062001b",
+      "26100001",
+      "00441025",
+      "a062001b",
+      "2a020005",
+      "1440fff4",
+      "00002021",
+      "08062070",
+      "00000000",
+      "30620010",
+      "1040000f",
+      "00002021",
+      "3c038019",
+      "8c632d90",
+      "3c018019",
+      "00300821",
+      "90243907",
+      "00701821",
+      "90620020",
+      "26100001",
+      "00441025",
+      "a0620020",
+      "2a020005",
+      "1440fff4",
+      "00000000",
+      "00002021",
+      "00008021",
+      "3c058019",
+      "8ca52d90",
+      "00000000",
+      "00b01021",
+      "9043001b",
+      "90420020",
+      "26100001",
+      "00621825",
+      "2a020005",
+      "1440fff8",
+      "00832025",
+      "308200ff",
+      "10400005",
+      "00000000",
+      "0c0612c9",
+      "00002021",
+      "14400005",
+      "00000000",
+      "0c0610c3",
+      "00000000",
+      "0806209a",
+      "00000000",
+      "3c028019",
+      "8c422d90",
+      "00000000",
+      "90430025",
+      "00000000",
+      "34630008",
+      "a0430025",
+      "3c038019",
+      "8c632d90",
+      "00000000",
+      "9062001c",
+      "00000000",
+      "30420040",
+      "10400005",
+      "00000000",
+      "94620010",
+      "00000000",
+      "34420040",
+      "a4620010",
+      "8fbf00c0",
+      "8fb300bc",
+      "8fb200b8",
+      "8fb100b4",
+      "8fb000b0",
+      "27bd00c8",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "directCalls": [
+      {
+        "pc": "0x80188044",
+        "target": "0x8018eea0"
+      },
+      {
+        "pc": "0x801880e8",
+        "target": "0x8005e0cc"
+      },
+      {
+        "pc": "0x801881fc",
+        "target": "0x80184b24"
+      },
+      {
+        "pc": "0x8018820c",
+        "target": "0x8018430c"
+      }
+    ],
+    "listedDirectCallers": [
+      {
+        "callPc": "0x80186ab8",
+        "returnAddress": "0x80186ac0",
+        "matched": true
+      },
+      {
+        "callPc": "0x80186bc4",
+        "returnAddress": "0x80186bcc",
+        "matched": true
+      },
+      {
+        "callPc": "0x80186cd0",
+        "returnAddress": "0x80186cd8",
+        "matched": true
+      },
+      {
+        "callPc": "0x80187edc",
+        "returnAddress": "0x80187ee4",
+        "matched": true
+      },
+      {
+        "callPc": "0x80188ea0",
+        "returnAddress": "0x80188ea8",
+        "matched": true
+      },
+      {
+        "callPc": "0x80188ee0",
+        "returnAddress": "0x80188ee8",
+        "matched": true
+      },
+      {
+        "callPc": "0x80189664",
+        "returnAddress": "0x8018966c",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018998c",
+        "returnAddress": "0x80189994",
+        "matched": true
+      },
+      {
+        "callPc": "0x80189e7c",
+        "returnAddress": "0x80189e84",
+        "matched": true
+      },
+      {
+        "callPc": "0x80189ff4",
+        "returnAddress": "0x80189ffc",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018a070",
+        "returnAddress": "0x8018a078",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018a0fc",
+        "returnAddress": "0x8018a104",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018a164",
+        "returnAddress": "0x8018a16c",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018a4d0",
+        "returnAddress": "0x8018a4d8",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018a53c",
+        "returnAddress": "0x8018a544",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018a7f4",
+        "returnAddress": "0x8018a7fc",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018a9ac",
+        "returnAddress": "0x8018a9b4",
+        "matched": true
+      }
+    ],
+    "formula38Dispatch": {
+      "tableAddress": "0x8018f614",
+      "oneBasedIndex": 56,
+      "entryAddress": "0x8018f6f0",
+      "entryValue": "0x80187f24",
+      "callPc": "0x8018b974",
+      "returnAddress": "0x8018b97c",
+      "instruction": "0040f809"
+    },
+    "sourceFunctions": [
+      {
+        "path": "src/battle/combat/formula_modifiers.c",
+        "symbol": "formula_apply_status_to_action",
+        "startLine": 674,
+        "endLine": 759,
+        "normalizedLfSha256": "f0d7b7151fe1d4a05cc9258db92475d68378d3c584ae19a57249aa68c2bebaa9"
+      },
+      {
+        "path": "src/battle/combat/formula_core.c",
+        "symbol": "status_modify_inflictions",
+        "startLine": 399,
+        "endLine": 469,
+        "normalizedLfSha256": "a19c63b4339bb0cd66da3a8b64d428b8fa1bf6a775490f5459a57352a611583e"
+      },
+      {
+        "path": "src/battle/combat/formula_core.c",
+        "symbol": "formula_force_attack_miss",
+        "startLine": 56,
+        "endLine": 61,
+        "normalizedLfSha256": "c787313b90664c07e6dfaf637f597f90ccd31d51d090e31654d906bf3e4c7528"
+      },
+      {
+        "path": "src/battle/combat/outcomes.c",
+        "symbol": "formula_get_random",
+        "startLine": 394,
+        "endLine": 399,
+        "normalizedLfSha256": "cdf6c4c0c319dc057ac12bd5c35829c7c3cd794b5acb4595ece35a9814e0512f"
+      }
+    ],
+    "findings": {
+      "modeOrder": "If Separate set, signed16 accuracy/4 is stored before mode conversion. Any nonzero mode and either Random/Separate locally replace type with0x80; work type byte is not rewritten.",
+      "typePrecedence": [
+        "AllOrNothing0x80",
+        "RandomOne0x40",
+        "Separate0x20",
+        "Cancel0x10"
+      ],
+      "allOrNothing": "OR five ability status bytes into existing TCA infliction bytes.",
+      "randomOne": "Enumerate40 MSB-first status IDs, call formula_get_random and select floor(raw*count/32768). No empty-list guard before the stack-list read.",
+      "separate": "For each configured status in ascending ID order call Pass/Fail(100,24); on failure remove that bit from ability work in place, then OR remaining five bytes into TCA infliction. Existing TCA inflictions survive this merge.",
+      "cancel": "OR five ability bytes into TCA removal.",
+      "confirmation": "Check accumulated TCA infliction/removal. If nonzero call status_modify_inflictions(0); if empty or filter returns0 call formula_force_attack_miss. Otherwise OR type0x08 and, if Invite remains, effect0x0040.",
+      "currentDomain": "Prepared Fire1-4 status record0 has all six bytes zero, and admitted TCA status changes start empty. No status RNG/filter call; force miss is undone by preserving wrapper. Proc draw/marker and HP work survive."
+    },
+    "accuracyCheck": {
+      "inputs": 65536,
+      "division": "Signed16 load, truncation toward zero, low16 store",
+      "sourceFieldType": "s16",
+      "sourceDivisionMatches": true,
+      "hypotheticalUnsignedDivisionDifferences": 32768,
+      "example": {
+        "inputBits": 32768,
+        "machineAndDecompOutputBits": 57344,
+        "hypotheticalUnsignedOutputBits": 8192
+      },
+      "currentRuntimeAffected": false
+    },
+    "separateThresholdDescriptions": [
+      {
+        "raw": 0,
+        "scaled": 0,
+        "keep": true
+      },
+      {
+        "raw": 7864,
+        "scaled": 23,
+        "keep": true
+      },
+      {
+        "raw": 7865,
+        "scaled": 24,
+        "keep": false
+      },
+      {
+        "raw": 32767,
+        "scaled": 99,
+        "keep": false
+      }
+    ],
+    "documentationCorrections": [
+      "Separate uses threshold24, while displayed accuracy is divided by4; the notes25% is not the literal execution roll.",
+      "Invitation sets effect0x0040, not the summary0x10.",
+      "The negative accuracy adjustment adds3 to the signed loaded value before shift; it does not force a minimum positive accuracy.",
+      "The status-work upper address is0x8019390b, not0x9019390b.",
+      "The local type register changes for nonexecution; the work type byte is not stored by this conversion."
+    ],
+    "boundaries": [
+      "Instruction equality plus source study, not original/C execution or a managed general status implementation.",
+      "The decomp field is s16 and matches signed LH/division. The outer wrapper saves/restores the bit pattern with unsigned LHU; that does not make inner arithmetic unsigned. Current empty-record path never enters Separate.",
+      "RandomOne with no configured statuses reads an uninitialized stack entry after its helper call; no deterministic empty-list behavior is claimed or activated.",
+      "Validate Status Changes is the next useful supplied listing. Its immunity/innate/mount/status-table dependencies remain a separate audit.",
+      "Pass/Fail and Force Attack Miss are already source-traced. Formula_get_random has an existing documented midpoint shortcut; its supplied listing may be checked separately without reopening root BIOS RNG.",
+      "Full original statuses, formula0x38, general AI status value and other listed formula families remain unimplemented by this milestone. ZOD-436 remains open."
     ],
     "validation": {
       "sourceAudits": {

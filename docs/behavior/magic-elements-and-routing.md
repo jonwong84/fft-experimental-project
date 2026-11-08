@@ -360,8 +360,9 @@ owner draft blobs and the approved disabled-by-default CI gate are unchanged.
 No runtime or fixture change is required. The supplied
 [Conditional Status Proc Roll wrapper](magic-conditional-proc.md#supplied-conditional-status-proc-roll-wrapper)
 at `0x001884c0` and its execution-only inner routine are now checked too; the
-shared Pass/Fail listing and preserving status wrapper also match. The inner
-status applicator at `0x80187f24` is the next useful listing. ZOD-436 remains open.
+shared Pass/Fail listing, preserving wrapper and
+[inner status applicator](status-action-application.md) also match. Validate
+Status Changes at `0x80184b24` is the next useful listing. ZOD-436 remains open.
 
 ## Original implementation checkpoint
 

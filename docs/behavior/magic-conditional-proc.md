@@ -188,9 +188,10 @@ is not an unconditional final-hit guarantee. No runtime or fixture change is
 required. The source audits retain the four Fire tier/empty-record bindings.
 All 29 focused .NET proc/composition/finalization tests and 16 Python tests pass;
 the ten owner drafts, approved controller edit and disabled CI gate are unchanged.
-The next useful supplied listing is **Apply status (to action)** itself, at
-`0x80187f24`. General status modes, filtering and their dependencies remain
-separate from this wrapper cross-check. ZOD-436 remains open.
+The supplied [inner status applicator](status-action-application.md) at
+`0x80187f24` is now checked too: its branches, four calls, 17 direct callers and
+formula `0x38` entry are recorded without activating general statuses. Validate
+Status Changes at `0x80184b24` is the next useful supplied listing. ZOD-436 remains open.
 
 ## Original implementation checkpoint
 
