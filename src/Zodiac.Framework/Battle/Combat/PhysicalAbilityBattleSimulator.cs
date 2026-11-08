@@ -96,12 +96,7 @@ public static class PhysicalAbilityBattleSimulator
         TilePosition destination = to;
         if (attempted && !ko)
         {
-            var candidate = Math.Abs(dx) > Math.Abs(dy)
-                ? new TilePosition(to.X + Math.Sign(dx), to.Y, 0)
-                : new TilePosition(to.X, to.Y + Math.Sign(dy), 0); // Y wins ties.
-            if (action.State.Battle.Map.TryGetTile(candidate, out _) &&
-                !action.State.Battle.Units.Any(unit => unit.Position == candidate))
-                destination = candidate;
+            destination = KnockbackRules.KnockbackCalculation(action.State.Battle, actor.UnitId, target.UnitId) ?? to;
         }
         var nextTarget = target.WithResult(hp, target.Facing, ko ? (target.KoCount + 1) & 255 : target.KoCount);
         var bodies = action.State.Battle.Units.Select(unit => unit.Id == target.UnitId && destination != to

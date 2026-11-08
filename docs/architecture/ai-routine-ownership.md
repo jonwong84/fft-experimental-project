@@ -73,6 +73,15 @@ keep shared formulas and combat rules in Framework. Source names/addresses in
 remarks and this map aid navigation without introducing raw RAM structures,
 one class per MIPS function or an ability-specific formula architecture.
 
+The owner clarified that recognizable source routine names should also be
+method names. Use a named method for the corresponding responsibility rather
+than leaving that logic embedded in a broader simulator. For example,
+[KnockbackRules.KnockbackCalculation](../../src/Zodiac.Framework/CombatRules/KnockbackRules.cs)
+now mirrors Knockback Calculation and calls `KnockbackDestinationCheck` for
+the currently admitted part of Knockback 2. Both actual physical-ability and
+sword settlement call it. Its source address and remaining limits are documented
+at the method; trigger RNG and actual movement remain with their source owners.
+
 Public types, namespaces, JSON/content definitions and query contracts remain
 unchanged. Only the two internal spell owners are renamed. Existing source
 receipts retain their original paths and hashes at their recorded revisions.

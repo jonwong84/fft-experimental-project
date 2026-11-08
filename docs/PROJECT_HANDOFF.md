@@ -13,6 +13,19 @@ review results before merge. The owner-approved
 `AiTurnController.cs` readability edit is now included in the branch; its exact
 blob was already covered by the passing ZOD-435 full validation.
 
+Owner clarification: recognizable source routines should have corresponding
+named methods. `CombatRules/KnockbackRules.KnockbackCalculation` now owns the
+shared flat-ground landing proposal for physical abilities and sword criticals,
+calling `KnockbackDestinationCheck` for the admitted Knockback 2 subset.
+Trigger RNG, lethal suppression and actual movement/events retain their owners;
+all admission/deferred terrain/fall boundaries remain unchanged. See the
+[managed entry point](behavior/knockback-calculation.md#managed-entry-point).
+Release build passes with zero warnings/errors, all 5,181 .NET tests and 27
+focused Python checks pass. A Python temporary-directory permission issue was
+resolved by using the existing writable scratch temp directory. All ten owner
+drafts, controller formatting and disabled CI retain their blobs. Logs/TRX are
+under ignored `scratch/knockback-routine-*`.
+
 Owner-requested routine ownership refactor: `AiDecisionMaker.Decide` now owns
 fresh preparation and atomic publication; `Decision/AiGeneralActionSelection`
 owns the prepared ability scan, insertion, ranked lottery and movement fallback.

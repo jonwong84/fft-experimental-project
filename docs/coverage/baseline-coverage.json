@@ -1579,6 +1579,7 @@
         "src/Zodiac.Framework/Battle/Combat/SwordKnockbackEvent.cs",
         "src/Zodiac.Framework/Battle/Combat/BoundedSwordWeapon.cs",
         "src/Zodiac.Framework/Battle/Combat/AttackBattleResult.cs",
+        "src/Zodiac.Framework/CombatRules/KnockbackRules.cs",
         "src/Zodiac.Framework/Battle/Combat/AttackBattleSimulator.cs",
         "src/Zodiac.Framework/Battle/Movement/VoluntaryPathCompletedEvent.cs",
         "src/Zodiac.Framework/Battle/Movement/PathMoveResult.cs",

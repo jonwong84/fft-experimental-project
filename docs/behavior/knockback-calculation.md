@@ -11,6 +11,26 @@ clean reference `11464943bbdbd2a0af022d90cb7f10455cf911df`, the supplied-text ha
 prepared bytes, field layouts and three relevant source functions.
 The original/C code was not executed.
 
+## Managed entry point
+
+Open [KnockbackRules.KnockbackCalculation](../../src/Zodiac.Framework/CombatRules/KnockbackRules.cs)
+for the current managed counterpart of the named routine. It proposes the
+one-square dominant-axis landing, with Y winning ties, then calls
+`KnockbackDestinationCheck` for the admitted flat-ground part of Knockback 2.
+It consumes no RNG and does not mutate battle state. A null result means no
+admitted landing; callers retain the original target position.
+
+`PhysicalAbilityBattleSimulator.ApplyPhysical` and `AttackBattleSimulator`
+share this method for ability and sword knockback. Caller profiles establish
+one ordinary target and clear, dry, level terrain with no mounts/immortality/
+importance restrictions. The Brave/critical trigger stays with damage work;
+lethal aftermath suppression, actual movement and result events stay with
+battle settlement. Legacy edge-only sword admission remains unchanged.
+
+This extraction replaces duplicated landing logic; it does not activate the
+full source terrain/layer/fall/pending-flag implementation described below.
+Reference remains the clean revision above; managed refactor base is `3b57e8f`.
+
 ## Eligibility and direction
 
 The helper rejects unless the working target counter is exactly 1. It also

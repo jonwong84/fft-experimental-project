@@ -56,6 +56,9 @@ AI choice/ranking remain in the AI project.
 - `Formulas/`: selected physical formula IDs/X/Y and neutral raw arithmetic.
 - `CombatRules/`: shared physical execution/preview/AI evasion, RNG, critical/
   knockback decisions, final cap and ordinary primary preparation.
+  [KnockbackRules.KnockbackCalculation](CombatRules/KnockbackRules.cs) mirrors
+  the named source routine for admitted flat-ground landings; its destination
+  check is separate from trigger RNG and actual movement publication.
   `PhysicalAbilityBattleProfile` / `PhysicalAbilityBattleSimulator` own shared
   delivery admission and settlement. [Delivery and limits](../../docs/architecture/physical-delivery-profiles.md).
 - `Properties/`: assembly metadata. `AssetId.cs` stays at the root as a shared ID.

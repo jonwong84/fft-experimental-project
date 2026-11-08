@@ -1,4 +1,5 @@
 using Zodiac.Framework.Random;
+using Zodiac.Framework.CombatRules;
 using System.Collections.Immutable;
 
 namespace Zodiac.Framework;
@@ -99,9 +100,10 @@ public static class AttackBattleSimulator
         TilePosition destination = to;
         // A sword critical directly attempts a push: no Brave contest or extra random draw.
         // Profiles prove same-height terrain; current occupancy and lethal damage gate the push.
-        if (validateProfile is not null && critical && !ko && action.State.Battle.Map.TryGetTile(candidate, out _) &&
-            !action.State.Battle.Units.Any(unit => unit.Position == candidate))
-            destination = candidate;
+        if (validateProfile is not null && critical && !ko)
+        {
+            destination = KnockbackRules.KnockbackCalculation(action.State.Battle, actor.UnitId, target.UnitId) ?? to;
+        }
         AttackUnitState nextTarget = target.WithResult(hp, target.Facing, ko ? (target.KoCount + 1) & 255 : target.KoCount);
         // Presentation temporarily turns the actor; reward_grant restores living units before control returns.
         // The closed profile cannot kill the actor, so publish only its incoming settled facing (ZOD-112).
