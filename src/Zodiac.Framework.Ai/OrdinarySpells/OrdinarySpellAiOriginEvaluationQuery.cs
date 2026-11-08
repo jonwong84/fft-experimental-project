@@ -1,4 +1,3 @@
-using System.Collections.Immutable;
 using Zodiac.Framework.Random;
 
 namespace Zodiac.Framework.Ai;
@@ -25,8 +24,13 @@ public static class OrdinarySpellAiOriginEvaluationQuery
             var pass = origins.Outcome!.Passes.SingleOrDefault(p => p.Potential.Kind == request.Pass);
             var origin = pass?.Origins.SingleOrDefault(o => o.CastOrigin == request.CastOrigin);
             if (pass is null || origin is null) return Reject("That cast origin is unavailable in the fresh selected pass.");
-            var selectedWork = work.ForOrigin(pass.Potential, origins.Outcome.Potential.Ability.Usage, origin);
-            return OriginAimTilesEvaluate(selectedWork, origins.Outcome, pass, origin, origins.RngState);
+            var evaluated = OrdinarySpellAiPassEvaluation.OriginReachableEvaluate(work, origins.Outcome, pass,
+                [origin], origins.RngState, consumeAims: false);
+            var scan = evaluated.Outcome!;
+            var trace = scan.Traces.Single();
+            byte proximity = origins.Outcome.Movement.Cells.Single(c => c.Tile == origin.MovementDestination).Proximity;
+            return new(true, null, new(origins.Outcome, pass, origin, proximity, trace.Evaluations,
+                scan.Best?.Evaluation, trace.OriginStoppedUnresolved, scan.PassesBaseline), evaluated.RngState);
         }
         catch (Exception e) when (e is ArgumentException or NotSupportedException or OverflowException)
         {
@@ -34,43 +38,4 @@ public static class OrdinarySpellAiOriginEvaluationQuery
         }
     }
 
-    private static OrdinarySpellAiOriginEvaluationResult OriginAimTilesEvaluate(OrdinarySpellAiWork work,
-        OrdinarySpellAiOriginOutcome origins, OrdinarySpellAiOriginPass pass, OrdinarySpellAiOrigin origin, RandomState rng)
-    {
-        var evaluations = ImmutableArray.CreateBuilder<OrdinarySpellAiAimEvaluation>();
-        OrdinarySpellAiAimEvaluation? best = null;
-        short bestPriority = -32767;
-        byte bestHit = 0;
-        bool stopped = false;
-        byte proximity = origins.Movement.Cells.Single(c => c.Tile == origin.MovementDestination).Proximity;
-        foreach (var aim in origin.Aims)
-        {
-            var candidate = OrdinarySpellAiActionSimulation.AiActionSimulateAndScore(work,
-                new(work.Actor.Id, work.Ability.Entry.Slot.Index, aim.Position, aim.UnitId is not null), rng);
-            if (!candidate.Accepted) throw new NotSupportedException(candidate.Rejection);
-            var score = candidate.Outcome!.Score;
-            // Every aim here has this same final destination/proximity. Equal rank keeps the first aim.
-            bool improves = score is not null &&
-                AiCandidateRank.Compare(score.Priority, score.HitPercent, bestPriority, bestHit) == AiRankOrder.Above;
-            var evaluated = new OrdinarySpellAiAimEvaluation(aim, rng, candidate, improves);
-            evaluations.Add(evaluated);
-            rng = candidate.RngState;
-            if (improves)
-            {
-                best = evaluated;
-                bestPriority = score!.Priority;
-                bestHit = score.HitPercent;
-            }
-            // Source compares first, then tests processing_done before consuming the aim or considering another.
-            if (candidate.Disposition == OrdinarySpellAiCandidateDisposition.ScoredUnresolved)
-            {
-                stopped = true;
-                break;
-            }
-        }
-        var baseline = origins.Movement.BaselineRank;
-        bool passesBaseline = best is not null &&
-            AiCandidateRank.Compare(bestPriority, bestHit, baseline.Priority, baseline.HitPercent) == AiRankOrder.Above;
-        return new(true, null, new(origins, pass, origin, proximity, evaluations.ToImmutable(), best, stopped, passesBaseline), rng);
-    }
 }

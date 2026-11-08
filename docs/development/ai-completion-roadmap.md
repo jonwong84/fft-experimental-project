@@ -24,8 +24,11 @@ clocks/scoring. The [cast-origin enumerator](../behavior/ordinary-spell-cast-ori
 now derives potential pass masks, order and destinations without formula
 evaluation. The [origin evaluation query](../behavior/ordinary-spell-origin-evaluation.md)
 now simulates one fresh origin/pass with ordered placement and baseline admission.
-ZOD-440 will traverse one pass's origins with remaining aims. Full spell decisions,
-autonomous magic and the review gates remain open.
+The [pass search query](../behavior/ordinary-spell-pass-search.md) now traverses
+one fresh selected pass with remaining aims/RNG, proven adverse-self consumption,
+unresolved continuation and final-destination ties. ZOD-441 will compose one
+slot/scenario's caller passes after tracing their resets and insertion boundaries.
+Full spell decisions, autonomous magic and the review gates remain open.
 
 ## Required readability review after the full port
 

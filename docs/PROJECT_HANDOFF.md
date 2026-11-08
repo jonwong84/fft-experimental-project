@@ -6,30 +6,31 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-439 is complete. Next: ZOD-440, one spell pass across cast origins.**
+**ZOD-440 is complete. Next: ZOD-441, compose one fresh spell's caller passes.**
 Read [BACKLOG.md](BACKLOG.md), the
-[origin study](behavior/ordinary-spell-movement-origins.md),
-[potential origins](behavior/ordinary-spell-cast-origins.md) and
-[origin evaluation](behavior/ordinary-spell-origin-evaluation.md).
-Trace dynamic caster-hit consumption flags, then retain remaining aims and RNG
-across one selected pass's origins. Full dispatch/lottery/commands stay separate.
+[origin study](behavior/ordinary-spell-movement-origins.md) and
+[pass search](behavior/ordinary-spell-pass-search.md).
+Trace caller pass order, best/mask resets and insertion ownership before composing
+one offensive owned slot/scenario. Full list dispatch/lottery/commands stay separate.
 
-Start one-origin simulation at
-`src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiOriginEvaluationQuery.cs`.
-It owns fresh binding/origin derivation, `ForOrigin`, `OriginAimTilesEvaluate`
-and shared `AiActionSimulateAndScore`. Immediate ACT-first hits before movement;
-charged ACT-first prepares, moves, then resolves from the new caster position.
-MOVE-first prepares at its placed origin and still consumes Move by comparison
-with the cached original position. All aims restore private units while RNG
-continues; baseline admission is separate from best selection. No cross-origin
-consumption, complete decisions or actual commands are activated.
+Start pass search at
+`src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiPassSearchQuery.cs`.
+It binds fresh work once and calls `OrdinarySpellAiPassEvaluation`'s named
+`OriginReachableEvaluate` → `OriginAimTilesEvaluate` → shared
+`AiActionSimulateAndScore`. One pass shares remaining aims/RNG, with source-proven
+caster accounting for adverse-self consumption. Unresolved hit255 is compared
+before origin-local exit without consumption; later origins continue. Equal ranks
+use final movement destination proximity; exact ties stay first. Baseline admission
+is rank-only. Each hypothesis restores private units; any unsupported work rejects
+the entire entry RNG. The single-origin query shares this runner with consumption
+disabled and preserves its seventeen previous cases.
 
-Latest validation: zero-warning/error Release build, **5,234 .NET tests**
-(1,835 Framework, 1,429 AI) and **802 Python tests** pass. Seventeen new managed
-cases cover placement/refunds, self collateral, ties, baseline admission,
-nonvaluable/unresolved exits, KO boundaries and rollback. Logs and seven TRX
-reports are under ignored `scratch/zod439-*`. The
-[receipt](evidence/ai/spell-origin-evaluation-implementation-v1.json) pins source
+Latest validation: zero-warning/error Release build, **5,247 .NET tests**
+(1,835 Framework, 1,442 AI) and **802 Python tests** pass. Thirteen new managed
+cases cover consumption/skips, self-hit exclusions, nonvaluable/empty recipients,
+unresolved continuation, ties, baseline admission, shared RNG and late rollback.
+Logs and seven TRX reports are under ignored `scratch/zod440-*`. The
+[receipt](evidence/ai/spell-pass-search-implementation-v1.json) pins source
 and preservation. Coverage remains 58 validated planning entries and partial.
 
 The owner's concurrent controller formatting is preserved exactly in separate
@@ -73,7 +74,7 @@ until explicitly re-enabled; current validation is local.
 The [review programme](development/documentation-review-programme.md) and
 [progress receipt](evidence/maintenance/documentation-review-progress-v1.json)
 record completed bounded batches through ZOD-436, the supporting ZOD-426
-study and bounded ZOD-437–439 implementations. ZOD-428 and complete inventory groups remain open. Prior helper
+study and bounded ZOD-437–440 implementations. ZOD-428 and complete inventory groups remain open. Prior helper
 cross-checks and annotation corrections live
 in their behavior/evidence notes; use [history](history/README.md) for completed
 ticket checkpoints, not old next-task advice.

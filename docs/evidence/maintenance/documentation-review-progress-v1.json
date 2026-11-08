@@ -399,7 +399,7 @@
     }
   ],
   "fullyReviewedGroups": [],
-  "nextBatch": "ZOD-440",
+  "nextBatch": "ZOD-441",
   "overallBehaviorReviewCompleted": false,
   "supportingSourceStudies": [
     {
@@ -427,6 +427,12 @@
       "report": "docs/behavior/ordinary-spell-origin-evaluation.md",
       "receipt": "docs/evidence/ai/spell-origin-evaluation-implementation-v1.json",
       "disposition": "One fresh selected-origin/pass simulation; no full cross-origin traversal, review group or autonomous magic completed."
+    },
+    {
+      "ticket": "ZOD-440",
+      "report": "docs/behavior/ordinary-spell-pass-search.md",
+      "receipt": "docs/evidence/ai/spell-pass-search-implementation-v1.json",
+      "disposition": "One fresh selected pass across origins with shared remaining aims/RNG; no caller/list dispatch, review group or autonomous magic completed."
     }
   ]
 }

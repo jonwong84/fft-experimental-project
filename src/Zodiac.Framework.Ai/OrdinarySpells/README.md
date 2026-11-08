@@ -1,12 +1,22 @@
 # Ordinary spell AI pathway
 
+For one fresh spell pass across cast origins, start with
+[OrdinarySpellAiPassSearchQuery.Evaluate](OrdinarySpellAiPassSearchQuery.cs).
+It derives fresh aims and movement once, then calls
+[OriginReachableEvaluate / OriginAimTilesEvaluate](Simulation/OrdinarySpellAiPassEvaluation.cs)
+with shared remaining aims and RNG. Shared simulation restores private units
+between hypotheses. Source self-hit consumption, unresolved exits, final-destination
+ties and separate baseline admission are documented in
+[ZOD-440](../../../docs/behavior/ordinary-spell-pass-search.md).
+Cross-pass/list dispatch, lottery and commands remain separate.
+
 For spell simulation at one fresh origin/pass, start with
 [OrdinarySpellAiOriginEvaluationQuery.Evaluate](OrdinarySpellAiOriginEvaluationQuery.cs).
 It derives the origin internally, creates `ForOrigin`, then follows
 `OriginAimTilesEvaluate` → shared `AiActionSimulateAndScore`, ordered movement/
 preparation/strikes/clock and strict best comparison. See
 [ZOD-439](../../../docs/behavior/ordinary-spell-origin-evaluation.md) for placement
-order, baseline admission and the remaining cross-origin/command gates.
+order and baseline admission. This adapter disables cross-origin consumption.
 
 For potential cast origins within one fresh movement scenario, start with
 [OrdinarySpellAiOriginQuery.Evaluate](OrdinarySpellAiOriginQuery.cs). Follow

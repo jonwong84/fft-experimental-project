@@ -30,7 +30,9 @@ cast origin. This mirrors `origin_aim_tiles_evaluate`, which places the actor
 before `ai_action_simulate_and_score` saves its baseline. The original live
 position remains available separately for movement/refund comparisons.
 
-`OriginAimTilesEvaluate` walks that origin's source-ordered aims through shared
+`OriginAimTilesEvaluate` (now shared in
+[`OrdinarySpellAiPassEvaluation`](../../src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiPassEvaluation.cs)
+with consumption disabled for this query) walks that origin's source-ordered aims through shared
 `AiActionSimulateAndScore`. Each hypothesis starts from the same private unit
 baseline while RNG continues from movement preparation and earlier attempts.
 The shared simulation now supports the selected origin's order:
