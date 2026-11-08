@@ -292,8 +292,37 @@ weapon-spell/reaction implementation is introduced. Existing source-prepared
 finalization descriptions remain valid. All29 focused .NET finalization/formula/
 proc tests and16 Python tests pass; all ten owner draft blobs and the unrelated
 CI edit are unchanged. No runtime or fixture change is needed.
-Remove Knockback Flag at `0x0018bd34` is the next useful supplied page.
-ZOD-436 remains open.
+
+### Supplied knockback cleanup
+
+Remove Knockback Flag matches all16 words at `0x8018bd34`–`0x8018bd70` and all
+six listed return locations. The same supporting receipt records seven literal
+descriptions covering absent/present pending state, lower kind bits and effect
+preservation. The pinned source names it `move_knockback_cancel`.
+
+The summary's "nonzero byte" condition is too broad: the routine reads the byte
+at `0x801938ed` and tests **bit`0x80`**. With that bit clear, it returns without
+writes, even for nonzero low kind/fall bits or a stale target Knockback marker.
+When the bit is set, it clears the **entire** work byte and ANDs the unsigned16
+target-action effect field at offset`0x10` with`0xbfff`, removing only
+Knockback`0x4000` (the second effect-byte bit`0x40`). All other target effect bits
+remain; clearing only the pending bit in the work byte would be wrong.
+
+For example, work`0x7f`/effect`0x4000` stays unchanged; work`0x81`/effect`0xc200`
+becomes work0/effect`0x8200`. No unit movement, fall resolution, proc-state clear,
+HP/hit/accuracy/type change, RNG or nested call happens here. Parent nullification
+has already cleared the target effects independently, so the conditional work
+reset still matters in that caller.
+
+The managed magic profile retains `NoPendingKnockback` plus supported fresh HP
+work. This confirms its scoped cleanup no-op, rather than adding a general
+pending-knockback implementation. All19 focused .NET finalization/formula tests
+and eight Python tests pass; all ten owner draft blobs and the unrelated CI edit
+remain unchanged. No runtime or fixture change is needed.
+The supplied-document checklist for elemental processing and these cleanup
+dependencies is now complete; broader status/Oil/Float/mount handling and the
+full ZOD-436 shared-consumer review remain separate/open. The next useful routine
+on formula0x08's surviving-hit path is Faith Calculation at `0x00187150`.
 
 ## Original implementation checkpoint
 

@@ -124,7 +124,9 @@ Elemental Nullification matches22 words/two calls/five returns and its exact
 store footprint, correcting the notes to miss byte0x02/value0x05. Pending-proc
 cleanup matches17 words/four returns and preserves all work when pending is0;
 it clears only AddedEffect from target effects when pending is nonzero.
-Knockback cleanup is next; the full shared-consumer review remains open.
+Knockback cleanup matches16 words/six returns: test bit0x80, then clear the whole
+work byte and only target effect0x4000. Faith Calculation is the next useful
+supplied routine; the full shared-consumer review remains open.
 
 ## Review programme
 

@@ -87,6 +87,12 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 17056,
       "sha256": "2f34b99b9835980040b59f97f5d3c5b7561abb1410c70e4251b6ce0b9b9cc6af"
+    },
+    {
+      "path": "include/fft/move.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11466,
+      "sha256": "28cb002ca1ab5bf2fe139ffea6e4a71acaef70fe50c9023327439a1465b56fab"
     }
   ],
   "sourceFunctions": [
@@ -339,6 +345,12 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 230,
       "sha256": "17f7ecfc92fd7d2534805fbff584bb934347983275c354b572de4e6118754193"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultFinalizationProfile.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 482,
+      "sha256": "ab974529b03dc13995560df1a3dafa2924a709bf2505645dc7692f8e4ca30e09"
     }
   ],
   "preparedValidation": {
@@ -3274,6 +3286,170 @@
       },
       "focusedManagedTestsPassed": 29,
       "focusedPythonTestsPassed": 16,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedKnockbackCleanupCheck": {
+    "managedBaseRevision": "edb730666ee598d2059cfc3361efc465688a7cb7",
+    "start": "0x8018bd34",
+    "endInclusive": "0x8018bd70",
+    "instructionCount": 16,
+    "instructionWords": [
+      "3c048019",
+      "248438ed",
+      "90820000",
+      "00000000",
+      "30420080",
+      "10400008",
+      "00000000",
+      "3c038019",
+      "8c632d90",
+      "a0800000",
+      "94620010",
+      "00000000",
+      "3042bfff",
+      "a4620010",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "guard": {
+      "address": "0x801938ed",
+      "byteWidth": 1,
+      "pendingMask": "0x80",
+      "skipBranchPc": "0x8018bd48",
+      "skipTarget": "0x8018bd6c",
+      "skipWhen": "pending bit clear, even if other bits are nonzero"
+    },
+    "storesWhenPending": [
+      {
+        "address": "0x801938ed",
+        "byteWidth": 1,
+        "value": 0,
+        "meaning": "Clear the entire work byte, including low kind/fall bits"
+      },
+      {
+        "field": "Target-action special_effect at0x10",
+        "byteWidth": 2,
+        "operation": "AND0xbfff: remove only Knockback0x4000"
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80184e80",
+        "returnAddress": "0x80184e88",
+        "target": "0x8018bd34",
+        "caller": "formula_nullify_action"
+      },
+      {
+        "callPc": "0x80187718",
+        "returnAddress": "0x80187720",
+        "target": "0x8018bd34",
+        "caller": "formula_queue_weapon_spell"
+      },
+      {
+        "callPc": "0x80187dc0",
+        "returnAddress": "0x80187dc8",
+        "target": "0x8018bd34",
+        "caller": "formula_apply_poach_and_train"
+      },
+      {
+        "callPc": "0x8018bb34",
+        "returnAddress": "0x8018bb3c",
+        "target": "0x8018bd34",
+        "caller": "action_finalize_target_result"
+      },
+      {
+        "callPc": "0x8018bc38",
+        "returnAddress": "0x8018bc40",
+        "target": "0x8018bd34",
+        "caller": "action_finalize_target_result"
+      },
+      {
+        "callPc": "0x8018bcd8",
+        "returnAddress": "0x8018bce0",
+        "target": "0x8018bd34",
+        "caller": "action_finalize_target_result"
+      }
+    ],
+    "literalDescriptions": [
+      {
+        "knockbackFlags": 0,
+        "effectsWord": 65535,
+        "expectedFlags": 0,
+        "expectedEffectsWord": 65535
+      },
+      {
+        "knockbackFlags": 1,
+        "effectsWord": 65535,
+        "expectedFlags": 1,
+        "expectedEffectsWord": 65535
+      },
+      {
+        "knockbackFlags": 127,
+        "effectsWord": 16384,
+        "expectedFlags": 127,
+        "expectedEffectsWord": 16384
+      },
+      {
+        "knockbackFlags": 128,
+        "effectsWord": 65535,
+        "expectedFlags": 0,
+        "expectedEffectsWord": 49151
+      },
+      {
+        "knockbackFlags": 129,
+        "effectsWord": 49664,
+        "expectedFlags": 0,
+        "expectedEffectsWord": 33280
+      },
+      {
+        "knockbackFlags": 255,
+        "effectsWord": 0,
+        "expectedFlags": 0,
+        "expectedEffectsWord": 0
+      },
+      {
+        "knockbackFlags": 128,
+        "effectsWord": 0,
+        "expectedFlags": 0,
+        "expectedEffectsWord": 0
+      }
+    ],
+    "notesCorrection": "The guard is bit0x80, not any nonzero work byte. Work values0x01..0x7f cause no writes.",
+    "boundaries": [
+      "No pending bit means no write to either work flags or target effects, even if a stale target Knockback marker is set.",
+      "When pending, clear the whole work byte, not only bit0x80; preserve every target effect bit except0x4000.",
+      "This helper does not move units, process falls, clear proc state, change HP/hit/accuracy/type or draw RNG; it contains no nested call.",
+      "Parent nullification separately clears target effects before this conditional work cleanup."
+    ],
+    "managedBoundary": "Ordinary magic still requires NoPendingKnockback and supported fresh result work. This confirms the scoped no-op cleanup boundary; no general pending-knockback cancellation integration is added to magic.",
+    "validation": {
+      "sourceAudit": {
+        "rawDescriptions": 20,
+        "composedDescriptions": 20,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 8,
+        "sourceFunctions": 15,
+        "emptyStatusRecordVerified": true,
+        "fireTiersVerified": 4
+      },
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 19,
+      "focusedPythonTestsPassed": 8,
       "managedTestsExecuted": true,
       "runtimeChanged": false,
       "originalExecuted": false,

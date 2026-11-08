@@ -227,7 +227,8 @@ dependencies, not ZOD-436's broader shared-consumer review. The supplied
 [Elemental XA * YA wrapper](magic-elements-and-routing.md#supplied-elemental-xa--ya-wrapper--zod-436-support)
 and its multiplication/weather/effective-weather/ability-element helpers are now
 checked too, along with common affinity modification, nullification and pending-
-proc cleanup; the knockback cleanup helper is next.
+proc/knockback cleanup. Faith Calculation is the next useful supplied routine;
+the full shared-consumer review remains open.
 
 ## Original implementation checkpoint
 
