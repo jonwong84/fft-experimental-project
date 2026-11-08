@@ -77,9 +77,9 @@ runtime admission are distinct coverage claims:
   is still separate; recording `knockback_calculate` does not claim all of it is
   implemented.
 
-The remaining direct helper listing useful for FFHacktics comparison is
-**Damage and Knockback Routine (alternative)**. Its nested calls can be
-matched to this inventory without repeating the already supplied shared helpers.
+The supplied **Damage and Knockback Routine (alternative)** is now checked below.
+Its Knockback Calculation dependency is the next useful supplied listing; shared
+Pass/Fail is already checked and the formula RNG source is pinned.
 These pages add independent annotations; they do not block the currently
 admitted source-traced behavior. No runtime or owner-definition change is
 required by this coverage check, and no broader review group is closed.
@@ -125,7 +125,7 @@ eight caller families. All 186 focused .NET Dash/Stone/formula-assignment tests
 and two Python Dash tests pass; all ten owner drafts and the disabled CI gate
 remain unchanged. The supplied **Cluster of Physical Routines** at `0x80188adc`
 is now checked below. Its three status/support children are checked too;
-alternative damage/knockback remains a useful supplied check.
+the supplied alternative damage/knockback helper is checked below too.
 
 ## Supplied physical-modifier cluster
 
@@ -263,8 +263,67 @@ of a vulnerability boost here; the earlier attacker Frog helper remains separate
 Current physical status inputs remain excluded. No runtime, fixture or owner
 definition changed; runtime tests were not repeated after the prior physical
 validation. Source/prepared Dash and all ten owner-preservation checks pass.
-The remaining useful direct formula0x37 listing is **Damage and Knockback
-Routine (alternative)** at `0x8018691c`; original Compatibility is already checked.
+The supplied **Damage and Knockback Routine (alternative)** at `0x8018691c`
+is now checked below; original Compatibility is already checked.
+
+## Supplied damage and knockback helper
+
+All 52 words at `0x8018691c`–`0x801869e8`, four call sites and the listed return
+`0x80189fbc` match the prepared BATTLE.BIN. The
+[trace receipt](../evidence/combat/random-pa-damage-knockback-trace-v1.json)
+pins clean reference `11464943bbdbd2a0af022d90cb7f10455cf911df`, this helper and
+its three distinct dependencies. No runtime or original/C execution is added.
+
+Damage first calls `formula_get_random` at `0x8018eea0`. It loads the unsigned
+ability Y byte at `0x801938fa` directly, rather than working YA, and computes
+`factor = raw * Y / 32768 + 1`. The XA load at `0x801938ce` is unsigned 16-bit;
+the product's low 16 bits are stored as HP damage. Attack type is assigned
+`0x80`, not ORed with a previous type. The HP damage store at `0x80186980` is the
+action-mode branch's delay slot, so it runs in every mode.
+
+For positive Y, the factor spans 1 through Y. For Y 0 it remains 1, preserving
+the already supported zero-Y behavior. The intermediate raw/Y and raw/Brave
+products are nonnegative and fit signed 32 bits for 15-bit raw and byte operands.
+The negative-correction sequences implement truncation, not a generic operation
+to make a product positive. Final damage still narrows independently; this
+helper neither caps at 999 nor applies live HP changes.
+
+In execution, the raw draw order is damage, attacker Brave, then target Brave.
+The second `formula_get_random` call produces the attacker threshold
+`actorRaw * actorBrave / 32768`. `random_roll_pass_fail` at `0x8005e0cc` then
+draws with maximum target Brave and that threshold; the threshold shift is in
+the call delay slot. Return 0 means the target's scaled roll is strictly below
+the attacker threshold and falls through to `knockback_calculate` at
+`0x801843ec`. A nonzero return skips that call. Equality never triggers it.
+Both Brave draws happen even when the threshold is 0 or the later landing is
+unusable. Zero maximum also still draws and scales to 0, though zero Brave is
+outside current managed admission.
+
+For any nonzero action mode, the formula RNG helper returns midpoint 16384
+without drawing. The damage is stored, then the mode branch skips the entire
+Brave/knockback tail. This helper consumes no draws in preview/AI. Earlier
+physical evasion retains its separate mode/draw contract; do not infer a whole
+action's draw count from this tail alone. Zero damage or a future lethal result
+does not provide an execution shortcut before these draws.
+
+The three dependencies are accounted for as follows:
+
+- **Random Process (`0x8018eea0`)**: source-traced `formula_get_random`, including
+  its nonexecution midpoint. Its separate supplied listing is an optional direct
+  check; no repeat of root BIOS RNG is needed.
+- **Pass/Fail Roll (`0x8005e0cc`)**: its supplied instructions and signed scaling
+  were already checked in the [proc review](magic-conditional-proc.md#supplied-passfail-roll).
+- **Knockback Calculation (`0x801843ec`)**: source-traced and represented within
+  the admitted flat, single-target displacement path. A successful comparison
+  merely invokes it; target eligibility and landing can still prevent staging
+  movement. Its supplied listing is next useful. Full terrain/fall/mount behavior
+  and its descendants remain separate.
+
+Ten factor, six stored-product and six Brave descriptions pass, alongside the
+existing 32 Dash descriptions and prepared record. Current neutral/signed-safe
+calculation and mode handling agree; no runtime, fixture or owner definition
+changed. Runtime tests were not repeated after the prior physical validation.
+All ten owner-preservation checks and the disabled CI gate remain unchanged.
 
 ## Supplied physical-evasion wrapper (2026-11-07)
 

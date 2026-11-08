@@ -1,6 +1,6 @@
 # Tessera / Zodiac / FFT handoff
 
-Updated 2026-11-07. Read [AGENTS.md](../AGENTS.md), the [active backlog](BACKLOG.md)
+Updated 2026-11-08. Read [AGENTS.md](../AGENTS.md), the [active backlog](BACKLOG.md)
 and the selected task's design before editing. This file describes current state;
 [planning history](history/README.md) holds completed tickets and old checkpoints.
 
@@ -222,7 +222,11 @@ cluster. Defense Up now matches20 words/three callers and all65,536 signed2/3
 inputs, with no minimum clamp or new runtime admission. Target XA affecting
 Statuses (Physical) now matches61 words/three returns and 2,097,152 signed/status
 combinations, preserving the two OR-groups and separate stores. Alternative
-damage/knockback at0x8018691c is the remaining useful direct formula0x37 listing.
+damage/knockback now matches52 words/four calls/one listed return. Its unsigned
+XA/raw Y product, all-mode delay-slot damage store and execution-only three-draw
+order agree with current bounded calculation. Pass/Fail is already checked;
+Random Process is source-traced. Knockback Calculation at0x801843ec is the next
+useful supplied dependency listing, without activating broader landing/falls.
 Broader modifiers,
 equipment and landing/fall behavior remain deferred. No runtime change.
 

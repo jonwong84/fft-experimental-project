@@ -1,0 +1,392 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "6db6d6a720dbf4a8f59baddc531ced4754df2fc7",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Supplied alternative damage/knockback helper; direct dependencies and mode/result/RNG boundaries, no general landing/fall port.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 46088,
+      "sha256": "a9e58962104849ae4e947e3833236aaf2c1334394a1af12b19930428e6885e03"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 23857,
+      "sha256": "57dd4fa8b07ef93c4a8e21c73657a0fdbe6c601a6db0b0351ae15b3cd15e4aea"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 15884,
+      "sha256": "7ddb1c8ed2e0cad3de18dae6945364d4fffd2299aa4383a659ecbe27717b7eb9"
+    },
+    {
+      "path": "include/fft/action.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14957,
+      "sha256": "6e97b3935c0d9cdcb8f6ba9ee2d40985b645bc0b03281a0d50d3d20aae35591c"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    },
+    {
+      "path": "target/main.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 135004,
+      "sha256": "b6066d98d481d73eb49d2d16be57ae3fc5ae4070830176fdeeeaae2bdeaec2a3"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_damage_and_knockback",
+      "startLine": 1283,
+      "endLine": 1301,
+      "normalizedLfSha256": "29ccebbc867f5dc10e796919cf3280b8cd0476d0d34efe29bb2aa34ce506e605"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "knockback_calculate",
+      "startLine": 99,
+      "endLine": 186,
+      "normalizedLfSha256": "5a7f2614c5426a583669e2a591af966ff3936a39ed9f41e38a11ad62003db9e2"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "formula_get_random",
+      "startLine": 394,
+      "endLine": 399,
+      "normalizedLfSha256": "cdf6c4c0c319dc057ac12bd5c35829c7c3cd794b5acb4595ece35a9814e0512f"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "symbol": "random_roll_pass_fail",
+      "startLine": 84,
+      "endLine": 88,
+      "normalizedLfSha256": "fe644f4e2a6aefc5520152de095c4762912d9dd0dbb92fadd12c0ff5a5c89f88"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_damage_random_y_times_pa",
+      "startLine": 852,
+      "endLine": 859,
+      "normalizedLfSha256": "732505faefa48d6ae1e172ca09a52c0e6cc4bdb2aaaadb5567de7642917ee85b"
+    }
+  ],
+  "preparedBattle": {
+    "path": "scratch/fft-decomp-work/build/extracted/files/BATTLE.BIN",
+    "byteLength": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000"
+  },
+  "start": "0x8018691c",
+  "endInclusive": "0x801869e8",
+  "instructionCount": 52,
+  "instructionWords": [
+    "27bdffe8",
+    "afbf0010",
+    "0c063ba8",
+    "00000000",
+    "3c038019",
+    "906338fa",
+    "00000000",
+    "00430018",
+    "00001012",
+    "04410002",
+    "00000000",
+    "24427fff",
+    "000213c3",
+    "3c038019",
+    "946338ce",
+    "24420001",
+    "00430018",
+    "3c048019",
+    "8c842d90",
+    "34020080",
+    "a0820025",
+    "3c038019",
+    "8c63f5fc",
+    "00001012",
+    "14600017",
+    "a4820004",
+    "0c063ba8",
+    "00000000",
+    "3c038019",
+    "8c632d94",
+    "00000000",
+    "90630024",
+    "00000000",
+    "00430018",
+    "00002812",
+    "04a10002",
+    "00000000",
+    "24a57fff",
+    "3c028019",
+    "8c422d98",
+    "00000000",
+    "90440024",
+    "0c017833",
+    "00052bc3",
+    "14400003",
+    "00000000",
+    "0c0610fb",
+    "00000000",
+    "8fbf0010",
+    "27bd0018",
+    "03e00008",
+    "00000000"
+  ],
+  "allMatched": true,
+  "callSites": [
+    {
+      "pc": "0x80186924",
+      "target": "0x8018eea0"
+    },
+    {
+      "pc": "0x80186984",
+      "target": "0x8018eea0"
+    },
+    {
+      "pc": "0x801869c4",
+      "target": "0x8005e0cc"
+    },
+    {
+      "pc": "0x801869d4",
+      "target": "0x801843ec"
+    }
+  ],
+  "uniqueDependencies": 3,
+  "listedCaller": {
+    "callPc": "0x80189fb4",
+    "returnAddress": "0x80189fbc",
+    "matched": true
+  },
+  "damage": {
+    "yInput": "Unsigned ability byte0x801938fa, not working YA0x801938d0.",
+    "xaInput": "Unsigned16 load at0x801938ce.",
+    "formula": "factor=floor(raw*Y/32768)+1; store low16 of unsignedXA*factor.",
+    "zeroY": "Still factor1, including one execution damage draw.",
+    "typeAssignment": "TCA0x25 assigned0x80; not ORed.",
+    "storeTiming": "TCA signed16 HP damage at0x04 stored in action-state branch delay slot in all modes.",
+    "factorDescriptions": [
+      {
+        "raw": 0,
+        "y": 0,
+        "factor": 1
+      },
+      {
+        "raw": 32767,
+        "y": 0,
+        "factor": 1
+      },
+      {
+        "raw": 32767,
+        "y": 1,
+        "factor": 1
+      },
+      {
+        "raw": 16383,
+        "y": 2,
+        "factor": 1
+      },
+      {
+        "raw": 16384,
+        "y": 2,
+        "factor": 2
+      },
+      {
+        "raw": 8191,
+        "y": 4,
+        "factor": 1
+      },
+      {
+        "raw": 8192,
+        "y": 4,
+        "factor": 2
+      },
+      {
+        "raw": 16384,
+        "y": 4,
+        "factor": 3
+      },
+      {
+        "raw": 32767,
+        "y": 4,
+        "factor": 4
+      },
+      {
+        "raw": 32767,
+        "y": 255,
+        "factor": 255
+      }
+    ],
+    "productDescriptions": [
+      {
+        "xaUnsignedBits": 0,
+        "factor": 255,
+        "storedSignedDamage": 0
+      },
+      {
+        "xaUnsignedBits": 99,
+        "factor": 4,
+        "storedSignedDamage": 396
+      },
+      {
+        "xaUnsignedBits": 32767,
+        "factor": 2,
+        "storedSignedDamage": -2
+      },
+      {
+        "xaUnsignedBits": 32768,
+        "factor": 1,
+        "storedSignedDamage": -32768
+      },
+      {
+        "xaUnsignedBits": 65535,
+        "factor": 2,
+        "storedSignedDamage": -2
+      },
+      {
+        "xaUnsignedBits": 65535,
+        "factor": 255,
+        "storedSignedDamage": -255
+      }
+    ]
+  },
+  "modeAndRng": {
+    "execution": "Draw damage raw, actor Brave raw, target Brave raw in that order. Pass/Fail target maximum and actor threshold are prepared before its call; the SRA threshold is in its delay slot.",
+    "nonexecution": "formula_get_random returns16384 without drawing. Damage is stored, then any nonzero action mode skips Brave comparison and knockback.",
+    "comparison": "Call knockback_calculate only when Pass/Fail returns0: target scaled roll strictly less than actor scaled threshold.",
+    "braveDescriptions": [
+      {
+        "actorBrave": 70,
+        "targetBrave": 70,
+        "actorRaw": 16384,
+        "targetRaw": 16384,
+        "actorThreshold": 35,
+        "targetRoll": 35,
+        "callKnockback": false,
+        "executionDrawsInHelper": 3
+      },
+      {
+        "actorBrave": 70,
+        "targetBrave": 70,
+        "actorRaw": 16384,
+        "targetRaw": 16383,
+        "actorThreshold": 35,
+        "targetRoll": 34,
+        "callKnockback": true,
+        "executionDrawsInHelper": 3
+      },
+      {
+        "actorBrave": 70,
+        "targetBrave": 70,
+        "actorRaw": 16383,
+        "targetRaw": 16384,
+        "actorThreshold": 34,
+        "targetRoll": 35,
+        "callKnockback": false,
+        "executionDrawsInHelper": 3
+      },
+      {
+        "actorBrave": 0,
+        "targetBrave": 70,
+        "actorRaw": 32767,
+        "targetRaw": 0,
+        "actorThreshold": 0,
+        "targetRoll": 0,
+        "callKnockback": false,
+        "executionDrawsInHelper": 3
+      },
+      {
+        "actorBrave": 70,
+        "targetBrave": 0,
+        "actorRaw": 32767,
+        "targetRaw": 32767,
+        "actorThreshold": 69,
+        "targetRoll": 0,
+        "callKnockback": true,
+        "executionDrawsInHelper": 3
+      },
+      {
+        "actorBrave": 70,
+        "targetBrave": 70,
+        "actorRaw": 0,
+        "targetRaw": 0,
+        "actorThreshold": 0,
+        "targetRoll": 0,
+        "callKnockback": false,
+        "executionDrawsInHelper": 3
+      }
+    ]
+  },
+  "dependencyCoverage": {
+    "randomProcess": "formula_get_random source is pinned and midpoint behavior already studied; its separate supplied listing remains an optional direct cross-check. No need to repeat root BIOS RNG.",
+    "passFail": "Supplied0x8005e0cc listing already checked; it always draws even when threshold or maximum is0.",
+    "knockbackCalculation": "Source and admitted single-target flat displacement traced; detailed supplied listing at0x801843ec is next useful. Landing/fall/mount/terrain descendants remain bounded or deferred."
+  },
+  "clarifications": [
+    "The negative-product add0x7fff implements signed truncation, not making arbitrary values positive. For15-bit raw and byte Y/Brave the scaled products are nonnegative and at most8355585.",
+    "Range1..Y presumes Y>0; zero Y still yields factor1. Likewise zero target Brave produces a scaled0 draw, not an empty-range exception. Zero Brave is outside current managed admission.",
+    "The BNE after Pass/Fail skips knockback for nonzero return; zero falls through. Equality never triggers the call.",
+    "The damage store runs for preview/AI too, despite the action-mode branch. Those modes consume no raw draws inside this helper; preceding evasion has its own draw contract."
+  ],
+  "boundaries": [
+    "No early test for zero damage, a lethal outcome or an impossible landing before the three execution draws.",
+    "Successful comparison calls knockback calculation, not guaranteed movement. That helper may reject target count, flags, mount/self/position or landing.",
+    "This helper does not cap damage at999 or apply HP/live movement. It assigns type and stored damage, then may stage knockback work.",
+    "Current neutral signed-safe physical formula and rules agree with the admitted path. No new physical modifiers, arbitrary signed-result settlement, general knockback or owner content is activated."
+  ],
+  "validation": {
+    "referenceClean": true,
+    "sourceAudit": {
+      "formulaDescriptions": 24,
+      "actualDescriptions": 8,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false
+    },
+    "preparedDash": {
+      "abilityId": 147,
+      "range": 1,
+      "verticalTolerance": 1,
+      "formula": 55,
+      "y": 4,
+      "evadeable": false,
+      "directTrajectory": false,
+      "aiPhysical": true,
+      "aiDirectTrajectory": false,
+      "aiExhaustive": false,
+      "preparedVerified": true
+    },
+    "ownerBlobsVerified": 10,
+    "ownerApprovedCiEdit": {
+      "path": ".circleci/config.yml",
+      "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+      "committed": true,
+      "ciEnabledDefault": false
+    },
+    "runtimeChanged": false,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "runtimeTestsRerun": false,
+    "previousRuntimeValidationReceipt": "docs/evidence/combat/attack-up-martial-arts-trace-v1.json"
+  }
+}
