@@ -103,9 +103,9 @@ The entire query retains the existing 15 movement-preparation draws, ending
 seed 39090480 from 57. A 16-unit, 16-by16 scenario unions all 256 aim panels and
 rejects transactionally after its private movement scan.
 
-ZOD-439 will evaluate one freshly enumerated origin/pass through shared spell
-simulation, preserving its ACT/Move order, one RNG, baseline admission and
-unresolved-origin exit. Cross-origin evaluation/consumption, broad dispatch,
+[ZOD-439](ordinary-spell-origin-evaluation.md) now evaluates one freshly
+enumerated origin/pass through shared simulation, preserving ACT/Move order,
+one RNG, baseline admission and unresolved-origin exit. Cross-origin evaluation/consumption, broad dispatch,
 insertion/lottery, commands and autonomous magic remain later milestones.
 General statuses, equipment/terrain/mounts, Golem, terminal/frame RNG, editor
 and custom cone work retain their gates. This pure diagnostic entry is not

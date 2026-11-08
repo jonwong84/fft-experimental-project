@@ -399,7 +399,7 @@
     }
   ],
   "fullyReviewedGroups": [],
-  "nextBatch": "ZOD-439",
+  "nextBatch": "ZOD-440",
   "overallBehaviorReviewCompleted": false,
   "supportingSourceStudies": [
     {
@@ -421,6 +421,12 @@
       "report": "docs/behavior/ordinary-spell-cast-origins.md",
       "receipt": "docs/evidence/ai/spell-cast-origins-implementation-v1.json",
       "disposition": "Potential cast-origin/pass diagnostics only; no moved-origin formulas, full review group or autonomous magic completed."
+    },
+    {
+      "ticket": "ZOD-439",
+      "report": "docs/behavior/ordinary-spell-origin-evaluation.md",
+      "receipt": "docs/evidence/ai/spell-origin-evaluation-implementation-v1.json",
+      "disposition": "One fresh selected-origin/pass simulation; no full cross-origin traversal, review group or autonomous magic completed."
     }
   ]
 }

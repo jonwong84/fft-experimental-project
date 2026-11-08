@@ -17,52 +17,60 @@ public static class OrdinarySpellAiOriginQuery
         OrdinarySpellAiOriginResult Reject(string reason) => new(false, reason, null, rng);
         try
         {
-            if (!Enum.IsDefined(request.Scenario)) return Reject("An explicit supported movement scenario is required.");
             OrdinarySpellAiAimEnumeration.ValidateRoster(state, request.ActorId);
             var work = new OrdinarySpellAiWork(state, catalog, request.ActorId, request.PrimarySlot, followUnit: false);
-            var potential = OrdinarySpellAiAimEnumeration.BuildPotentialPasses(work);
-            var movement = OrdinarySpellAiMovementQuery.Build(work, profile, rng);
-            if (!movement.Accepted) return Reject(movement.Rejection!);
-            var baseline = movement.Outcome!;
-            var scenario = baseline.Scenario1;
-            if (request.Scenario == OrdinarySpellAiOriginScenario.Complement) scenario = baseline.Scenario2;
-            var passes = ImmutableArray.CreateBuilder<OrdinarySpellAiOriginPass>();
-            foreach (var pass in potential.Passes)
-            {
-                var origins = AiCastAimTilesBuild(work, baseline, scenario, pass);
-                bool ranked = !potential.Ability.Usage.ExhaustiveOrigins;
-                var choices = ImmutableArray.CreateBuilder<OrdinarySpellAiOrigin>();
-                if (ranked)
-                {
-                    // Source's ranked while loop requires both nonzero byte counts before reading any priority.
-                    if (!pass.Aims.IsEmpty)
-                    {
-                        var order = AiRosterCastGeometry.BindFresh(baseline.Cells, origins, out var missing);
-                        if (missing is { } tile) return Reject($"Unwritten cast-origin priority at {tile}.");
-                        foreach (var key in order)
-                        {
-                            var choice = OriginDestinationFinalize(work, baseline, key.Tile, key);
-                            choices.Add(OriginAimTilesBuild(work, pass, choice));
-                        }
-                    }
-                }
-                else
-                {
-                    // The source scans masks directly for exhaustive origins and never reads tile priority here.
-                    foreach (var tile in origins.OrderBy(t => t.Layer).ThenBy(t => t.Y).ThenBy(t => t.X))
-                    {
-                        var choice = OriginDestinationFinalize(work, baseline, tile, null);
-                        choices.Add(OriginAimTilesBuild(work, pass, choice));
-                    }
-                }
-                passes.Add(new(pass, origins, ranked, choices.ToImmutable()));
-            }
-            return new(true, null, new(baseline, potential, request.Scenario, passes.ToImmutable()), movement.RngState);
+            return Build(work, request.Scenario, profile, rng);
         }
         catch (Exception e) when (e is ArgumentException or NotSupportedException or OverflowException)
         {
             return Reject("Unsupported ordinary spell cast origins: " + e.Message);
         }
+    }
+
+    // Composed queries reuse one freshly owned binding, not a caller's cached origin result.
+    internal static OrdinarySpellAiOriginResult Build(OrdinarySpellAiWork work, OrdinarySpellAiOriginScenario scenarioKind,
+        OrdinarySpellAiMovementProfile profile, RandomState rng)
+    {
+        OrdinarySpellAiOriginResult Reject(string reason) => new(false, reason, null, rng);
+        if (!Enum.IsDefined(scenarioKind)) return Reject("An explicit supported movement scenario is required.");
+        var potential = OrdinarySpellAiAimEnumeration.BuildPotentialPasses(work);
+        var movement = OrdinarySpellAiMovementQuery.Build(work, profile, rng);
+        if (!movement.Accepted) return Reject(movement.Rejection!);
+        var baseline = movement.Outcome!;
+        var scenario = baseline.Scenario1;
+        if (scenarioKind == OrdinarySpellAiOriginScenario.Complement) scenario = baseline.Scenario2;
+        var passes = ImmutableArray.CreateBuilder<OrdinarySpellAiOriginPass>();
+        foreach (var pass in potential.Passes)
+        {
+            var origins = AiCastAimTilesBuild(work, baseline, scenario, pass);
+            bool ranked = !potential.Ability.Usage.ExhaustiveOrigins;
+            var choices = ImmutableArray.CreateBuilder<OrdinarySpellAiOrigin>();
+            if (ranked)
+            {
+                // Source's ranked while loop requires both nonzero byte counts before reading any priority.
+                if (!pass.Aims.IsEmpty)
+                {
+                    var order = AiRosterCastGeometry.BindFresh(baseline.Cells, origins, out var missing);
+                    if (missing is { } tile) return Reject($"Unwritten cast-origin priority at {tile}.");
+                    foreach (var key in order)
+                    {
+                        var choice = OriginDestinationFinalize(work, baseline, key.Tile, key);
+                        choices.Add(OriginAimTilesBuild(work, pass, choice));
+                    }
+                }
+            }
+            else
+            {
+                // The source scans masks directly for exhaustive origins and never reads tile priority here.
+                foreach (var tile in origins.OrderBy(t => t.Layer).ThenBy(t => t.Y).ThenBy(t => t.X))
+                {
+                    var choice = OriginDestinationFinalize(work, baseline, tile, null);
+                    choices.Add(OriginAimTilesBuild(work, pass, choice));
+                }
+            }
+            passes.Add(new(pass, origins, ranked, choices.ToImmutable()));
+        }
+        return new(true, null, new(baseline, potential, scenarioKind, passes.ToImmutable()), movement.RngState);
     }
 
     // Aim rows come from the shared caller-pass builder; this completes their matching reachable-origin mask/counts.

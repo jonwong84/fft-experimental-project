@@ -27,11 +27,14 @@ internal static class OrdinarySpellAiActionSimulation
                     hit?.Accounting ?? new([], 0, 0, false), work.Units, null), exit);
         if (!work.Usefulness.Any(u => u.Effect == OrdinarySpellAiEffect.Useful))
             return NotValuable(null, null, null, null, rng);
+        var units = work.Units;
+        bool actFirst = work.SelectedOrigin?.ActBeforeMove ?? true;
+        if (!actFirst) units = MovementPickupSimulate(work, units);
         var prepared = work.Prepare(request.Aim, request.FollowUnit);
         var stored = prepared.Plan.Aim;
         counter = prepared.Plan.Counter;
         int actorIndex = work.Units.IndexOf(work.Units.Single(u => u.Id == work.Actor.Id));
-        var units = work.Units.SetItem(actorIndex, work.Units[actorIndex] with { Current = prepared.Caster });
+        units = units.SetItem(actorIndex, units[actorIndex] with { Current = prepared.Caster });
         OrdinarySpellAiHitOutcome? hit;
         OrdinarySpellAiClockOutcome clock;
         RandomState formulaEntry;
@@ -44,12 +47,14 @@ internal static class OrdinarySpellAiActionSimulation
             units = hit.Units;
             if (units.Single(u => u.Id == work.Actor.Id).Current.Statuses.Dead)
                 return Reject("Immediate caster KO/terminal clock simulation needs a separate profile.");
+            if (actFirst) units = MovementPickupSimulate(work, units);
             var advanced = RunClock(work, units, counter, hit.RngState);
             if (!advanced.Accepted) return Reject("Simulation clock rejected: " + advanced.Rejection);
             clock = advanced.Outcome!; exitRng = advanced.RngState;
         }
         else
         {
+            if (actFirst) units = MovementPickupSimulate(work, units);
             var advanced = RunClock(work, units, counter, rng);
             if (!advanced.Accepted) return Reject("Simulation clock rejected: " + advanced.Rejection);
             clock = advanced.Outcome!;
@@ -75,11 +80,25 @@ internal static class OrdinarySpellAiActionSimulation
             new(work.Ability, counter, stored, work.Usefulness, clock, formulaEntry, hit.Frames, hit.Accounting, units, score), exitRng);
     }
 
+    /// <summary>Admitted movement_pickup_simulate: placement only; crystal/treasure effects remain gated.</summary>
+    private static ImmutableArray<OrdinarySpellAiUnit> MovementPickupSimulate(OrdinarySpellAiWork work,
+        ImmutableArray<OrdinarySpellAiUnit> units)
+    {
+        if (work.SelectedOrigin is not { } origin ||
+            origin.MovementDestination == work.State.Units.Single(u => u.Id == work.Actor.Id).Position)
+            return units;
+        int actor = units.IndexOf(units.Single(u => u.Id == work.Actor.Id));
+        return units.SetItem(actor, units[actor] with {
+            Occupant = units[actor].Occupant with { Position = origin.MovementDestination }
+        });
+    }
+
     private static OrdinarySpellAiClockResult RunClock(OrdinarySpellAiWork work, ImmutableArray<OrdinarySpellAiUnit> units,
         byte counter, RandomState rng) => OrdinarySpellAiClock.Run(work.State.Turns.Units.Select(turn =>
         {
             var unit = units.Single(u => u.Id == turn.Id);
             return new OrdinarySpellAiClockUnit(unit.Id, unit.Occupant.SourceOrder, turn.Speed, turn.Ct,
-                unit.Current.Statuses.Dead, turn.MovementTaken, turn.Id == work.Actor.Id || turn.ActionTaken);
+                unit.Current.Statuses.Dead, turn.Id == work.Actor.Id ? work.MovementTaken : turn.MovementTaken,
+                turn.Id == work.Actor.Id || turn.ActionTaken);
         }).ToImmutableArray(), work.Actor.Id, counter, work.State.Turns.Ticks, rng);
 }

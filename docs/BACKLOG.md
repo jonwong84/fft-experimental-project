@@ -4,7 +4,7 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-439 (one fresh ordinary spell origin/pass evaluation), supporting the ongoing AI/review programme.**
+**Next bounded work: ZOD-440 (one fresh spell pass across cast origins), supporting the ongoing AI/review programme.**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 [Learning reports, owned slots and player casting](behavior/learn-on-hit.md)
@@ -61,14 +61,16 @@ aims and RNG. [ZOD-437 movement baselines](behavior/ordinary-spell-movement-base
 now derive fresh offensive D0/D1, ranks, priority writes and one decision RNG.
 [ZOD-438 cast-origin enumeration](behavior/ordinary-spell-cast-origins.md) now
 derives pass masks, source origin order, ACT-first destinations and selectable
-aims with known priorities. Formula evaluation at moved origins remains separate.
+aims with known priorities. [ZOD-439 origin evaluation](behavior/ordinary-spell-origin-evaluation.md)
+now resolves one fresh origin/pass with ordered placement, shared simulation,
+strict best rank and separate baseline admission. Cross-origin traversal remains separate.
 ZOD-432 records the required readability review after the full AI port.
 The owner's interim [routine ownership refactor](architecture/ai-routine-ownership.md)
 now exposes named methods matching the supported decision flow: `ActionSelect`,
 `GeneralSelect`, scenario/ability/rank/fallback work, and ordinary spell
 `AiActionSimulateAndScore` / `ActionHitsSimulate` / `StrikesSimulate`.
 It preserves current admission and does not close the remaining AI review work.
-There are 36 open tickets below. The 403 completed tickets, prior checkpoints and
+There are 36 open tickets below. The 404 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -92,28 +94,29 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-439 — Evaluate one fresh ordinary spell origin and aim pass
+### ZOD-440 — Evaluate one fresh ordinary spell pass across cast origins
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-425, ZOD-437, ZOD-438
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-426, ZOD-438, ZOD-439
 
 Follow the [origin study](behavior/ordinary-spell-movement-origins.md) and
-[ZOD-438 enumerator](behavior/ordinary-spell-cast-origins.md). Freshly derive
-movement/origin diagnostics internally, then evaluate one explicitly selected
-potential origin and pass through shared ordinary spell preparation, clock,
-formula/application and absolute scoring. Keep cast origin separate from final
-movement destination and preserve ACT-first versus MOVE-first placement/choice
-ordering. Retain the prefix RNG, candidate draws including NotValuable outcomes,
-strict best comparison, destination-proximity ties and comparison-before-unresolved
-exit. Report baseline admission separately from best-candidate selection. Require
-known priority reads and atomic rejection; restore every input unit/resource.
-Use named routine methods and independent source-literal scenario regressions.
+[ZOD-439 simulation](behavior/ordinary-spell-origin-evaluation.md). Trace the exact
+caster-hit/valuable-hit flags that drive dynamic aim consumption before coding;
+do not infer them from included score recipients without source proof. Internally
+derive one fresh offensive origin scenario and selected caller pass, then scan
+its origins in source order with one shared remaining-aim mask and one RNG.
+Preserve pass consumption settings, admitted dynamic self-effect overrides,
+origin-local unresolved exits before consumption, and comparison-before-exit.
+Compare best candidates with final-destination proximity on rank ties, keeping
+exact ties first; report movement-baseline admission separately. Restore private
+units between all hypotheses and reject unknown reads/unsupported work atomically.
+Add independent source-literal regressions for consumption, later-origin skips,
+unresolved continuation, ties, RNG and rollback.
 
-This is a selected-origin hypothetical evaluation, not a complete traversal:
-earlier origins' consumed aims and candidate-dependent skips are not inferred.
-Keep cross-origin search/consumption, broad dispatch, insertion/lottery, commands
-and autonomous magic separate. Do not accept cached caller outcomes or grant
-authority from diagnostics. Retained workspaces and broader geometry/status
-domains require their existing gates.
+This is one selected pass, not complete ability dispatch. Keep cross-pass/list
+composition, insertion/lottery, commands and autonomous magic separate. Accept
+no cached caller outcomes or command authority. Mixed/healer lists, useful-self
+pathways, retained workspaces and broader geometry/status domains retain their
+existing gates; implement only the admitted dynamic consumption branches.
 
 Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
 Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.

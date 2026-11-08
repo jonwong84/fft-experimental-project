@@ -112,7 +112,7 @@ public sealed class OrdinarySpellAiSearchTests
         Assert.Equal((ushort)84, result.Outcome.Best.Candidate.Outcome.Units.Single(u => u.Id == Guard).Vitals.Hp);
     }
 
-    private static (OrdinarySpellAiCatalog Catalog, OrdinaryMagicBattleState State) Congested(bool healing)
+    internal static (OrdinarySpellAiCatalog Catalog, OrdinaryMagicBattleState State) Congested(bool healing)
     {
         var x = OrdinarySpellAiReadyTests.Setup(charge: 127, heal: healing);
         var d = x.Content.Definition;

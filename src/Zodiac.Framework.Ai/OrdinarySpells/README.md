@@ -1,5 +1,13 @@
 # Ordinary spell AI pathway
 
+For spell simulation at one fresh origin/pass, start with
+[OrdinarySpellAiOriginEvaluationQuery.Evaluate](OrdinarySpellAiOriginEvaluationQuery.cs).
+It derives the origin internally, creates `ForOrigin`, then follows
+`OriginAimTilesEvaluate` → shared `AiActionSimulateAndScore`, ordered movement/
+preparation/strikes/clock and strict best comparison. See
+[ZOD-439](../../../docs/behavior/ordinary-spell-origin-evaluation.md) for placement
+order, baseline admission and the remaining cross-origin/command gates.
+
 For potential cast origins within one fresh movement scenario, start with
 [OrdinarySpellAiOriginQuery.Evaluate](OrdinarySpellAiOriginQuery.cs). Follow
 shared `BuildPotentialPasses`, fresh movement `Build`, `AiCastAimTilesBuild`,

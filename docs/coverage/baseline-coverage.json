@@ -1862,7 +1862,9 @@
         "docs/behavior/ordinary-spell-movement-baselines.md",
         "docs/evidence/ai/spell-movement-baselines-implementation-v1.json",
         "docs/behavior/ordinary-spell-cast-origins.md",
-        "docs/evidence/ai/spell-cast-origins-implementation-v1.json"
+        "docs/evidence/ai/spell-cast-origins-implementation-v1.json",
+        "docs/behavior/ordinary-spell-origin-evaluation.md",
+        "docs/evidence/ai/spell-origin-evaluation-implementation-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -2035,7 +2037,8 @@
         "src/Zodiac.Content/BattleSetup/TargetedAbilityBattleSetup.cs",
         "src/Zodiac.AssetTool.Cli/OriginalTargetedAbilityImporter.cs",
         "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiMovementQuery.cs",
-        "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiOriginQuery.cs"
+        "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiOriginQuery.cs",
+        "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiOriginEvaluationQuery.cs"
       ],
       "automatedChecks": [
         {
@@ -2505,6 +2508,10 @@
         {
           "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiOriginTests.cs",
           "scope": "Fresh unit/tile origin masks, ranked/exhaustive order, D1 substitution, selectable ranges, unknown/counter rejection, RNG and replay."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiOriginEvaluationTests.cs",
+          "scope": "Fresh selected-origin/pass ACT/Move ordering, self collateral, CT/RNG, strict ranks and baseline admission, exits, KO guards and rollback."
         }
       ],
       "manualCheckpoint": {
@@ -2517,10 +2524,10 @@
         "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
         "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Evaluate one freshly enumerated ordinary spell origin/pass under ZOD-439 before cross-origin traversal; broader dispatch, autonomous magic and full AI review remain separate.",
+      "nextAction": "Evaluate one fresh spell pass across origins under ZOD-440 after tracing dynamic aim-consumption flags; broader dispatch, autonomous magic and full AI review remain separate.",
       "followUpTickets": [
         "ZOD-329",
-        "ZOD-439"
+        "ZOD-440"
       ]
     },
     {
