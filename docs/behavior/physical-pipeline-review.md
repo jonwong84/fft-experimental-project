@@ -80,8 +80,9 @@ runtime admission are distinct coverage claims:
 The supplied **Damage and Knockback Routine (alternative)** is now checked below.
 Its supplied [Knockback Calculation dependency](knockback-calculation.md) is now
 checked too, including its Knockback 2 destination checker and zero-filter
-tile-unit wrapper. The underlying tile-unit lookup is next useful; shared
-Pass/Fail is already checked and the formula RNG source is pinned.
+tile-unit wrapper and filtered lookup. The effective-movement helper is next
+useful; Chocobo filtering is not reached by this knockback path. Shared Pass/Fail
+is already checked and the formula RNG source is pinned.
 These pages add independent annotations; they do not block the currently
 admitted source-traced behavior. No runtime or owner-definition change is
 required by this coverage check, and no broader review group is closed.
@@ -324,8 +325,10 @@ The three dependencies are accounted for as follows:
   178 words/two calls/one return, preserving equal heights, headroom and exact
   empty-tile checks. The `0x8017dc88` zero-filter wrapper also matches eight
   words and six caller checks after one Reflect return correction. The underlying
-  `0x8017dca8` lookup is next useful. Full terrain/fall/mount behavior and its
-  descendants remain separate.
+  `0x8017dca8` lookup also matches 138 words/one conditional call/five returns,
+  preserving optional filters, scan order and partner mapping. Knockback uses
+  filters0 and skips the Chocobo predicate. Effective movement `0x8017f020` is
+  next useful. Full terrain/fall/mount behavior and its descendants remain separate.
 
 Ten factor, six stored-product and six Brave descriptions pass, alongside the
 existing 32 Dash descriptions and prepared record. Current neutral/signed-safe

@@ -139,10 +139,55 @@ normalization. The wrapper does not validate coordinates itself, determine
 general ability target legality, publish movement or draw RNG. Knockback 2's
 caller-specific requirement remains exactly -1.
 
-The child is already source-traced. Its separately supplied listing at
-`0x8017dca8` is the next useful cross-check. These caller checks do not imply
+The child's supplied listing at `0x8017dca8` is now checked below. These caller
+checks do not imply
 Reflect or the other targeting families are implemented; current runtime
 admission, fixtures and owner definitions are unchanged.
+
+## Supplied filtered unit-at-tile lookup
+
+All 138 words at `0x8017dca8`–`0x8017decc`, its one call and all five listed
+caller returns match the prepared file. The
+[lookup receipt](../evidence/combat/unit-at-tile-trace-v1.json) pins the same
+clean reference, supplied text, source and field layouts. The duplicate
+Find Unit at Specified Coordinates link is labelled alternative formatting,
+not an additional call; its unprovided annotations are not compared here.
+
+X/Y must lie within the map; the layer is checked unsigned against 2, so
+negative bit patterns also reject. Blocked/untargetable tile bits `0x03` return
+-2 regardless of filters. Filter `0x02` additionally requires depth 0 and
+half-height below 3. The source scans slots 0–20 with stride `0x1c0`, skipping
+active-ID byte `0xff` before applying optional filters. These original bounds
+are source encoding, not a new fixed-size authored roster requirement.
+
+The preset is a bitmask: Treasure `0x01`, Transparent `0x10`, Crystal `0x40` are
+alternative status matches under mask `0x51`. Requesting Crystal and Treasure
+does not require both. With none selected, any occupied active slot can match;
+there is no alive-only or team filter. Chocobo bit `0x80` adds a separate
+requirement. Only after those checks does the routine compare X/Y/layer.
+
+The first matching scan index is returned, not the unit's active-ID byte or a
+campaign identity. If its mount byte is at least `0x80`, return the partner
+field `mount & 0x1f` instead. The layer comes from packed position bit 15.
+No match returns -1, which means **no unit matching these filters**. It proves
+absence of active occupancy for knockback because that caller supplies zero
+filters, not for every filtered caller. Invalid tile/coordinates remain -2.
+
+The only direct call is **Chocobo Check (`0x801743c8`)**, source symbol
+`unit_mount_get_chocobo_state`. Filter `0x80` gates it after presence/status
+checks but before coordinate comparison, so eligible off-coordinate units may
+also reach it. Any nonzero return passes, including both Free 1 and Paired 2.
+Source study pins its original job-range/unmountable-status classification;
+its separate listing is not claimed checked here. The source predicate belongs
+to the deferred mounting domain. **Knockback's zero-filter wrapper never calls
+it**, so its supplied page is not needed to finish this occupancy path.
+
+All 6,144 byte-filter/status/Chocobo-result combinations agree with an independent
+requested-status-set description. Sixteen literal scenarios retain invalid and
+empty results, dry/half-height boundaries, slot order, slot 20, partner mapping,
+zero-filter call suppression and the optional call's position before coordinates.
+These are offline source checks; no general filtered lookup or mounting API is
+activated. Runtime, fixtures, owner drafts and the disabled CI gate are unchanged.
 
 ## Staged result and failure boundaries
 
@@ -172,7 +217,8 @@ physical validation. Flying, general layers/slopes/headroom, mounts, terrain
 and fall damage remain guarded or deferred. Neither source presence nor these
 instruction checks establish full implementation of those domains.
 
-Next useful supplied listing: **Check if another unit is on the same Tile
-(`0x8017dca8`)**. The outer helper's effective-movement routine at `0x8017f020`
-also remains useful. Map Location Calculation is already source-traced; no
-duplicate Pass/Fail or root BIOS RNG listing is needed.
+Next useful supplied listing: the outer helper's **Float/Float/Fly movements
+(`0x8017f020`)**, source symbol `move_get_effective_flags`. The conditional
+Chocobo predicate is accounted for but remains deferred for mounting work.
+Map Location Calculation is already source-traced; no duplicate Pass/Fail or
+root BIOS RNG listing is needed.

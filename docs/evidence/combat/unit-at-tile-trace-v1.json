@@ -1,0 +1,572 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "630bef0f1cc37c0a27de7b5447f46b72b761fac4",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Supplied filtered tile-unit lookup; zero-filter knockback relevance and optional Chocobo dependency, no mounting/general lookup runtime expansion.",
+  "suppliedTextSha256": "d6448ec4ff89790536ec939375eb46e56b346c7fa5745545b709c69458c25524",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/preparation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 80969,
+      "sha256": "e8ec92c02c53d3715b3813931685399e79481dad0fae6ae27505fbc5d086d444"
+    },
+    {
+      "path": "src/battle/map/move_range.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 112855,
+      "sha256": "eab2f2f9f7074a9d8114636f0c048786410a3d6940ef5a357eb263ca39c85228"
+    },
+    {
+      "path": "include/fft/unit_runtime.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 24677,
+      "sha256": "dd205932204a10a48224c7ddc3b73ca6aad3bd92bcf3cdbdd4f0c205d206f865"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/battle_map.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 22162,
+      "sha256": "8e31c1b1320542770f2ddf587f22edf9e293e4bc45d5c85116d34a4cde96c296"
+    },
+    {
+      "path": "include/fft/move.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11466,
+      "sha256": "28cb002ca1ab5bf2fe139ffea6e4a71acaef70fe50c9023327439a1465b56fab"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "unit_find_at_tile",
+      "startLine": 1142,
+      "endLine": 1203,
+      "normalizedLfSha256": "80c44f88bd8eb2b4aa50d4df1640982f8defd67c4bc43835bb80e9c77e61df9f"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "target_find_unit_at_tile",
+      "startLine": 1129,
+      "endLine": 1131,
+      "normalizedLfSha256": "1079c2d8ebd0775ecf2d005aec6561c953176ba92bf9e7dc953265ed27b20828"
+    },
+    {
+      "path": "src/battle/map/move_range.c",
+      "symbol": "unit_mount_get_chocobo_state",
+      "startLine": 277,
+      "endLine": 285,
+      "normalizedLfSha256": "b82343250d6d347100db834cc8f6720da8f515b2408e1796f8099c8596351990"
+    }
+  ],
+  "preparedBattle": {
+    "path": "scratch/fft-decomp-work/build/extracted/files/BATTLE.BIN",
+    "byteLength": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000"
+  },
+  "start": "0x8017dca8",
+  "endInclusive": "0x8017decc",
+  "instructionCount": 138,
+  "instructionWords": [
+    "27bdffd0",
+    "afb40020",
+    "0080a021",
+    "afb50024",
+    "00a0a821",
+    "afb60028",
+    "00c0b021",
+    "afb20018",
+    "00e09021",
+    "afbf002c",
+    "afb3001c",
+    "afb10014",
+    "0680002c",
+    "afb00010",
+    "3c03800e",
+    "90634e9c",
+    "00000000",
+    "0283102a",
+    "10400026",
+    "00000000",
+    "06a0006a",
+    "2402fffe",
+    "3c02800e",
+    "90424ea0",
+    "00000000",
+    "02a2102a",
+    "1040001e",
+    "2ec20002",
+    "1040001c",
+    "02a30018",
+    "00161200",
+    "00001812",
+    "00431021",
+    "00541021",
+    "000210c0",
+    "3c038019",
+    "2463f8cc",
+    "00431821",
+    "90620006",
+    "00000000",
+    "30420003",
+    "14400055",
+    "2402fffe",
+    "30e20002",
+    "10400010",
+    "00008821",
+    "90620003",
+    "00000000",
+    "304200e0",
+    "1440004d",
+    "2402fffe",
+    "90620003",
+    "00000000",
+    "3042001f",
+    "28420003",
+    "14400006",
+    "00009821",
+    "0805f7a9",
+    "2402fffe",
+    "0805f7a9",
+    "3082001f",
+    "00009821",
+    "3c028019",
+    "244208cc",
+    "02628021",
+    "92030001",
+    "340200ff",
+    "10620036",
+    "32420051",
+    "10400018",
+    "32420040",
+    "10400007",
+    "32420001",
+    "92020058",
+    "00000000",
+    "30420040",
+    "14400012",
+    "32420080",
+    "32420001",
+    "10400007",
+    "32420010",
+    "92020059",
+    "00000000",
+    "30420001",
+    "1440000a",
+    "32420080",
+    "32420010",
+    "10400022",
+    "00000000",
+    "9202005a",
+    "00000000",
+    "30420010",
+    "1040001d",
+    "00000000",
+    "32420080",
+    "10400005",
+    "00000000",
+    "0c05d0f2",
+    "02002021",
+    "10400016",
+    "00000000",
+    "92020047",
+    "00000000",
+    "14540012",
+    "00000000",
+    "92020048",
+    "00000000",
+    "1455000e",
+    "00000000",
+    "96020048",
+    "00000000",
+    "000213c2",
+    "14560009",
+    "00000000",
+    "92040182",
+    "00000000",
+    "308200ff",
+    "2c420080",
+    "1040ffc4",
+    "02201021",
+    "0805f7a9",
+    "00000000",
+    "26310001",
+    "2a220015",
+    "1440ffc1",
+    "267301c0",
+    "2402ffff",
+    "8fbf002c",
+    "8fb60028",
+    "8fb50024",
+    "8fb40020",
+    "8fb3001c",
+    "8fb20018",
+    "8fb10014",
+    "8fb00010",
+    "27bd0030",
+    "03e00008",
+    "00000000"
+  ],
+  "allMatched": true,
+  "callSites": [
+    {
+      "pc": "0x8017de2c",
+      "target": "0x801743c8"
+    }
+  ],
+  "listedCallers": [
+    {
+      "callPc": "0x8017dc90",
+      "returnAddress": "0x8017dc98",
+      "matched": true
+    },
+    {
+      "callPc": "0x8017fe40",
+      "returnAddress": "0x8017fe48",
+      "matched": true
+    },
+    {
+      "callPc": "0x8017ffe8",
+      "returnAddress": "0x8017fff0",
+      "matched": true
+    },
+    {
+      "callPc": "0x8018030c",
+      "returnAddress": "0x80180314",
+      "matched": true
+    },
+    {
+      "callPc": "0x80180570",
+      "returnAddress": "0x80180578",
+      "matched": true
+    }
+  ],
+  "filters": {
+    "treasure": "0x01",
+    "dryLowSlope": "0x02",
+    "transparent": "0x10",
+    "crystal": "0x40",
+    "chocobo": "0x80",
+    "statusUnionMask": "0x51: requested statuses are alternatives, not all-required.",
+    "unitFlagWidth": "Low byte participates in unit filters; other flag bits have no added meaning here."
+  },
+  "lookup": {
+    "invalidReturn": -2,
+    "invalidConditions": [
+      "Negative/out-of-width-or-depth X/Y.",
+      "Unsigned layer>=2, including negative bit patterns.",
+      "Tile byte6&0x03: blocked or untargetable.",
+      "When filter0x02 set: any depth or halfheight>=3."
+    ],
+    "noMatchReturn": -1,
+    "scan": "Original slots0..20, stride0x1c0. Skip only active-battle ID byte0xff before optional filters.",
+    "order": "Selected-status OR filter, optional Chocobo predicate, then exact X/Y/layer.",
+    "success": "First matching slot index, not active ID byte. If mount byte>=0x80 return partner bits&0x1f instead."
+  },
+  "optionalDependency": {
+    "address": "0x801743c8",
+    "wikiTitle": "Chocobo Check",
+    "symbol": "unit_mount_get_chocobo_state",
+    "gate": "Filter bit0x80 after presence/status tests, before coordinates.",
+    "accepted": "Any nonzero result, including paired state2 as well as free state1.",
+    "source": "Original Chocobo job range and unmountable-status check, then0/1/2 classification. Supplied child listing is not checked here.",
+    "knockbackReached": false,
+    "reason": "Knockback uses the verified wrapper which sets filters0. Mounting remains deferred."
+  },
+  "comparisons": {
+    "statusFilterAndChocoboCombinations": 6144,
+    "literalDescriptions": [
+      {
+        "name": "Negative X rejects before any Chocobo check",
+        "input": {
+          "x": -1,
+          "y": 1,
+          "layer": 0,
+          "flags": 128,
+          "units": {
+            "0": {
+              "chocobo": 1
+            }
+          }
+        },
+        "expectedReturn": -2,
+        "expectedChocoboCallSlots": []
+      },
+      {
+        "name": "Unsigned invalid layer rejects",
+        "input": {
+          "x": 1,
+          "y": 1,
+          "layer": -1,
+          "flags": 0,
+          "units": {}
+        },
+        "expectedReturn": -2,
+        "expectedChocoboCallSlots": []
+      },
+      {
+        "name": "Untargetable tile is invalid even with zero filters",
+        "input": {
+          "x": 1,
+          "y": 1,
+          "layer": 0,
+          "flags": 0,
+          "units": {},
+          "tile_flags": 2
+        },
+        "expectedReturn": -2,
+        "expectedChocoboCallSlots": []
+      },
+      {
+        "name": "Water is not a base query rejection",
+        "input": {
+          "x": 1,
+          "y": 1,
+          "layer": 0,
+          "flags": 0,
+          "units": {},
+          "depth": 1
+        },
+        "expectedReturn": -1,
+        "expectedChocoboCallSlots": []
+      },
+      {
+        "name": "Dry low-slope flag rejects water",
+        "input": {
+          "x": 1,
+          "y": 1,
+          "layer": 0,
+          "flags": 2,
+          "units": {},
+          "depth": 1
+        },
+        "expectedReturn": -2,
+        "expectedChocoboCallSlots": []
+      },
+      {
+        "name": "Dry low-slope halfheight3 rejects",
+        "input": {
+          "x": 1,
+          "y": 1,
+          "layer": 0,
+          "flags": 2,
+          "units": {},
+          "half": 3
+        },
+        "expectedReturn": -2,
+        "expectedChocoboCallSlots": []
+      },
+      {
+        "name": "Dry low-slope halfheight2 is admitted",
+        "input": {
+          "x": 1,
+          "y": 1,
+          "layer": 0,
+          "flags": 2,
+          "units": {},
+          "half": 2
+        },
+        "expectedReturn": -1,
+        "expectedChocoboCallSlots": []
+      },
+      {
+        "name": "Return slot index rather than active ID byte",
+        "input": {
+          "x": 1,
+          "y": 1,
+          "layer": 0,
+          "flags": 0,
+          "units": {
+            "2": {
+              "activeId": 9
+            }
+          }
+        },
+        "expectedReturn": 2,
+        "expectedChocoboCallSlots": []
+      },
+      {
+        "name": "Crystal or treasure are alternative matches",
+        "input": {
+          "x": 1,
+          "y": 1,
+          "layer": 0,
+          "flags": 65,
+          "units": {
+            "0": {},
+            "1": {
+              "status": 2
+            }
+          }
+        },
+        "expectedReturn": 1,
+        "expectedChocoboCallSlots": []
+      },
+      {
+        "name": "Filtered no-match does not establish globally empty",
+        "input": {
+          "x": 1,
+          "y": 1,
+          "layer": 0,
+          "flags": 16,
+          "units": {
+            "0": {}
+          }
+        },
+        "expectedReturn": -1,
+        "expectedChocoboCallSlots": []
+      },
+      {
+        "name": "Zero filters never call Chocobo predicate",
+        "input": {
+          "x": 1,
+          "y": 1,
+          "layer": 0,
+          "flags": 0,
+          "units": {
+            "0": {
+              "chocobo": 0
+            }
+          }
+        },
+        "expectedReturn": 0,
+        "expectedChocoboCallSlots": []
+      },
+      {
+        "name": "Chocobo predicate precedes coordinate match",
+        "input": {
+          "x": 1,
+          "y": 1,
+          "layer": 0,
+          "flags": 128,
+          "units": {
+            "0": {
+              "chocobo": 1,
+              "position": [
+                2,
+                2,
+                0
+              ]
+            },
+            "1": {
+              "chocobo": 1
+            }
+          }
+        },
+        "expectedReturn": 1,
+        "expectedChocoboCallSlots": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "Paired Chocobo state is accepted as nonzero",
+        "input": {
+          "x": 1,
+          "y": 1,
+          "layer": 0,
+          "flags": 128,
+          "units": {
+            "0": {
+              "chocobo": 2,
+              "mount": 64
+            }
+          }
+        },
+        "expectedReturn": 0,
+        "expectedChocoboCallSlots": [
+          0
+        ]
+      },
+      {
+        "name": "Rider returns partner low5 bits",
+        "input": {
+          "x": 1,
+          "y": 1,
+          "layer": 0,
+          "flags": 0,
+          "units": {
+            "0": {
+              "mount": 135
+            }
+          }
+        },
+        "expectedReturn": 7,
+        "expectedChocoboCallSlots": []
+      },
+      {
+        "name": "First matching slot wins",
+        "input": {
+          "x": 1,
+          "y": 1,
+          "layer": 0,
+          "flags": 0,
+          "units": {
+            "0": {},
+            "1": {}
+          }
+        },
+        "expectedReturn": 0,
+        "expectedChocoboCallSlots": []
+      },
+      {
+        "name": "Slot20 participates in original21 slot scan",
+        "input": {
+          "x": 1,
+          "y": 1,
+          "layer": 0,
+          "flags": 0,
+          "units": {
+            "0": {
+              "activeId": 255
+            },
+            "20": {}
+          }
+        },
+        "expectedReturn": 20,
+        "expectedChocoboCallSlots": []
+      }
+    ]
+  },
+  "clarifications": [
+    "Presets are combinable flags:0x41 means Crystal OR Treasure;0x80 adds a mandatory Chocobo predicate.",
+    "-1 means no matching unit under chosen filters, not always an unoccupied tile. Only the zero-filter knockback path treats it as absence of active occupancy.",
+    "No alive-only, team, range, evasion or general ability-legality filter in this routine.",
+    "The mount return uses partner low5 bits, not actor ID or a guessed six-bit mask; the unit loop returns its slot index.",
+    "Original21-slot scan is observed compatibility behavior, not a new fixed-size authored content table."
+  ],
+  "boundaries": [
+    "The helper has no live movement, unit/status mutation or RNG along the zero-filter path.",
+    "The only direct callee is optional for0x80. Its mounting behavior is accounted for in source but not activated or required for the current knockback path.",
+    "The duplicate wiki page is labelled alternative formatting; it is not another call and its unprovided contents are not compared.",
+    "Current runtime, fixtures, owner drafts and broader mounting/terrain domains are unchanged. Effective movement0x8017f020 is the next useful outer-knockback supplied listing."
+  ],
+  "validation": {
+    "referenceClean": true,
+    "ownerBlobsVerified": 10,
+    "ownerApprovedCiEdit": {
+      "path": ".circleci/config.yml",
+      "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+      "committed": true,
+      "ciEnabledDefault": false
+    },
+    "runtimeChanged": false,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "runtimeTestsRerun": false,
+    "previousRuntimeValidationReceipt": "docs/evidence/combat/attack-up-martial-arts-trace-v1.json"
+  }
+}

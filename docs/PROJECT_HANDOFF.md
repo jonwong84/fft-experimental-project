@@ -234,8 +234,11 @@ It requires exactly-1 from the selected layer's lookup and never retries another
 layer. Map Location Calculation is source-traced. The zero-filter tile-unit
 wrapper matches8 words/one call/six callers after correcting Reflect's return
 from0x8017cba8 to0x8017cb6c. It forwards child results unchanged. The underlying
-lookup at0x8017dca8 is next useful; effective movement at0x8017f020 also remains
-pending as a supplied cross-check. Broader landing/falls remain guarded.
+lookup now matches138 words/one call/five returns and 6,144 filter combinations.
+It preserves status OR filters, first-slot/partner return and distinct -1/-2.
+Chocobo Check at0x801743c8 is gated by0x80 and never reached by knockback's zero
+filters; mounting stays deferred. Effective movement at0x8017f020 is the next
+useful supplied cross-check. Broader landing/falls remain guarded.
 Broader modifiers,
 equipment and landing/fall behavior remain deferred. No runtime change.
 
